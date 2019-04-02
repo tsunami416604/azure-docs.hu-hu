@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 2/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b40edf705ba61713f4b695dd55a6a20028936c82
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 56813d9a075e1c327fb5612c50ea72f067ec505d
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993818"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805601"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Az Azure Machine Learning-munkaterület-hozzáférés kezelése
 
@@ -33,7 +33,7 @@ Az Azure Machine Learning-munkaterület egy Azure-erőforrás. Egyéb Azure-erő
 | **Tulajdonos** | Teljes hozzáférés a munkaterület, beleértve a megtekintése, létrehozása, szerkesztése vagy törlése (ha vannak ilyenek) lehetővé teszi az eszközök a munkaterületen. Emellett módosíthatja a szerepkör-hozzárendeléseket. |
 
 > [!IMPORTANT]
-> Hozzáférés a szerepkör hatóköre beállítható több szintre az Azure-ban. Egy munkacsoporthoz tulajdonosi hozzáféréssel rendelkező felhasználó például nem lehet a munkacsoport tartalmazó erőforráscsoport tulajdonosi hozzáféréssel. További információkért lásd: [hogyan RBAC működik](/azure/role-based-access-control/overview#how-rbac-works).
+> Hozzáférés a szerepkör hatóköre beállítható több szintre az Azure-ban. Egy munkaterület tulajdonosi hozzáféréssel rendelkező felhasználó például nem lehet az azt tartalmazó erőforráscsoport tulajdonosi hozzáféréssel. További információkért lásd: [hogyan RBAC működik](/azure/role-based-access-control/overview#how-rbac-works).
 
 Adott beépített szerepkörökkel kapcsolatos további információkért lásd: [Azure a beépített szerepkörök](/azure/role-based-access-control/built-in-roles).
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 287ae3b8122dd2a1e43c31055ac0ea5b04dddb07
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: dfd91caf67592b349bd16bab673a3e45397ad282
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190692"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58807682"
 ---
 ## <a name="benefits-of-managed-disks"></a>Felügyelt lemezek előnyei
 
@@ -43,7 +43,7 @@ Használhat [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../articles
 
 ### <a name="data-disks"></a>Adatlemezek
 
-Adatlemez egy felügyelt lemezt, amely az alkalmazás vagy egyéb adatok továbbra is szeretné tárolni a virtuális géphez van csatolva. Adatlemezek SCSI-meghajtók, regisztrálva van, és betűvel, Ön által választott vannak ellátva. Az egyes adatlemezek kapacitása maximum, 4095 gibibájtban (GiB). A virtuális gép mérete határozza meg, hány adatlemez csatolható, és a tárolás típusát használhatja a lemezek.
+Adatlemez egy felügyelt lemezt, amely az alkalmazás vagy egyéb adatok továbbra is szeretné tárolni a virtuális géphez van csatolva. Adatlemezek SCSI-meghajtók, regisztrálva van, és betűvel, Ön által választott vannak ellátva. Az egyes adatlemezek kapacitása maximum, – 32 767 gibibájtban (GiB). A virtuális gép mérete határozza meg, hány adatlemez csatolható, és a tárolás típusát használhatja a lemezek.
 
 ### <a name="os-disks"></a>Operációsrendszer-lemezek
 
@@ -53,7 +53,7 @@ Ez a lemez maximális kapacitása, 2048 GIB-ra.
 
 ### <a name="temporary-disk"></a>Ideiglenes lemez
 
-Minden virtuális gép egy ideiglenes lemezt, amely nem egy felügyelt lemezt tartalmaz. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok, és csak az adatok, például lapozófájlokat tárolására szolgál. Az ideiglenes lemezen lévő adatok elveszhetnek során egy [karbantartási esemény](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) esemény, vagy ha Ön [egy virtuális gép ismételt üzembe](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Során a virtuális gép sikeres standard újraindítása az ideiglenes meghajtón lévő adatok megmaradnak. 
+Minden virtuális gép egy ideiglenes lemezt, amely nem egy felügyelt lemezt tartalmaz. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok, és csak az adatok, például lapozófájlokat tárolására szolgál. Az ideiglenes lemezen lévő adatok elveszhetnek során egy [karbantartási esemény](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) esemény, vagy ha Ön [egy virtuális gép ismételt üzembe](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Során a virtuális gép sikeres standard újraindítása az ideiglenes meghajtón lévő adatok megmaradnak.
 
 ## <a name="managed-disk-snapshots"></a>Felügyelt lemez-pillanatképek
 
@@ -62,7 +62,7 @@ Felügyelt lemez-pillanatképből alapértelmezés szerint egy standard szintű 
 A pillanatképek létrehozása felügyelt lemezekkel kapcsolatos további információkért lásd a következőket:
 
 * [Pillanatképekkel Windows felügyelt lemezként tárolt VHD másolatának létrehozása](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Pillanatképekkel Linux alatt felügyelt lemezként tárolt VHD másolatának létrehozása](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Linux alatt](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>Képek
 
@@ -71,7 +71,7 @@ Felügyelt lemezeket is támogatja a felügyelt egyéni lemezképek létrehozás
 Lemezképek létrehozásával kapcsolatos információkért tekintse meg a következő cikkeket:
 
 * [Az Azure-beli általánosított virtuális gép felügyelt rendszerképének rögzítése](../articles/virtual-machines/windows/capture-image-resource.md)
-* [Hogyan generalize és az Azure parancssori felületével Linux rendszerű virtuális gép rögzítése](../articles/virtual-machines/linux/capture-image.md)
+* [Linux rendszerű virtuális gép általánosítása és rögzítése Azure CLI használatával](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>Képek és pillanatképek
 

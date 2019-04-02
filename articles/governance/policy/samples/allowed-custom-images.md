@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8134ca98fe190a161d940387926e6b3dfea2989c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 1fc7b9f49b806c4b740f4f85330dc9e37f0f61f2
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337968"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805618"
 ---
-# <a name="sample---approved-vm-images"></a>Minta - engedélyezett Virtuálisgép-rendszerképek
+# <a name="sample---approved-virtual-machine-images"></a>Minta - engedélyezett virtuálisgép-lemezképek
 
 Ez a szabályzat előírja, hogy csak jóváhagyott lemezképek legyenek telepítve a környezetben. Meg kell adnia egy jóváhagyott lemezazonosítókat tartalmazó tömböt.
 
@@ -75,8 +75,8 @@ Ebben a példa paraméterben csak a _YourResourceGroup_ erőforráscsoportban ta
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![Üzembe helyezés az Azure-ban](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
-[![Üzembe helyezés az Azure Governmentben](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
+[![A házirend-minta üzembe helyezése Azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
+[![a házirend-minta üzembe helyezése az Azure-beli államigazgatás –](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fallowed-custom-images%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

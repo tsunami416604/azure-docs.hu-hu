@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: fee22561bb0c341ed5c6e4dc49a8d7f8aa8efaf2
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 64a1693907dbf144aa34f5c35ae925af74d2cb34
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445202"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803214"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC Analytics – gyakori kérdések
 
@@ -72,6 +72,7 @@ A traffic analytics használhat NSG-k, a következő támogatott régiók egyik�
 - USA középső régiója
 - USA nyugati régiója
 - USA nyugati régiója, 2.
+- Közép-Franciaország
 - Nyugat-Európa
 - Észak-Európa
 - Dél-Brazília
@@ -79,20 +80,26 @@ A traffic analytics használhat NSG-k, a következő támogatott régiók egyik�
 - Az Egyesült Királyság déli régiója
 - Kelet-Ausztrália
 - Délkelet-Ausztrália 
+- Kelet-Ázsia
 - Délkelet-Ázsia
+- Korea középső régiója
 - Közép-India
 - Dél-India
 - Kelet-Japán
+- Nyugat-Japán
 - USA-beli államigazgatás – Virginia
 
 A Log Analytics-munkaterület léteznie kell a következő régióban:
 - Közép-Kanada
 - USA nyugati középső régiója
+- USA nyugati régiója, 2.
 - USA keleti régiója
+- Közép-Franciaország
 - Nyugat-Európa
 - Az Egyesült Királyság déli régiója
 - Délkelet-Ausztrália
 - Délkelet-Ázsia 
+- Korea középső régiója
 - Közép-India
 - Kelet-Japán
 - USA-beli államigazgatás – Virginia

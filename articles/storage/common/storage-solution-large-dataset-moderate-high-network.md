@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: d3326713b0fbae070d04fa0fe7ead712fbcacf84
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 8dd55032c933cdc31b848addfdac991550376dcf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496893"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805582"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>A közepes és nagy méretű adatkészletek irányuló adatátvitel nagy hálózati sávszélesség
  
@@ -62,7 +62,7 @@ A következő táblázat összefoglalja az ajánlott beállítások legfontosabb
 
 Offline adatok átvitellel, ha az alábbi táblázat segítségével legfontosabb képességei a különbségeket.
 
-|                                     |    Data Box-lemezek (előzetes verzió)    |    Data Box                                      |    Data Box nehéz (előzetes verzió)              |    Import/Export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy            |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Adatok mérete                        |    Visszamenőleges tárolása akár 35 TB-osra bővül                 |    Legfeljebb 80 TB-osra bővül eszközönként                       |    Akár 800 TB eszközönként               |    Változó                            |
 |    Adattípus                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
@@ -83,7 +83,7 @@ Online adatátvitel használja, ha a táblázat használható a következő szak
 
 ### <a name="high-network-bandwidth"></a>Nagy hálózati sávszélesség
 
-|                                     |    Eszközök AzCopy, <br>Azure PowerShell, <br>Azure CLI             |    Az Azure Storage REST API-k, SDK-k                   |    Adatátjáró mezőben vagy a Data Box Edge (előzetes verzió)           |    Azure Data Factory                                            |
+|                                     |    Eszközök AzCopy, <br>Azure PowerShell, <br>Azure CLI             |    Az Azure Storage REST API-k, SDK-k                   |    Adatátjáró mezőben vagy a Data Box Edge          |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    Adattípus                  |    Azure-Blobok, az Azure Files, Azure-táblák    |    Azure-Blobok, az Azure Files, Azure-táblák    |    Azure Blobs, Azure Files                           |   70-nél több adatösszekötők támogatja az adattárak és formátumok    |
 |    Helyigény                |    Parancssori eszközök                        |    Programozható felületet                    |    A Microsoft több virtuális tartalmaz <br>vagy a fizikai eszköz     |    Az Azure Portalon                                            |

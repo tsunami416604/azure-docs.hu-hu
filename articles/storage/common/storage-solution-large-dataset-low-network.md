@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: a6505232066d7a2e63c3e9508cb16cb9a31f8e35
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6922d49affdde86728b41ef1d3d0c6a2da5c323e
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776665"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805091"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Adatok áthelyezése az alacsony vagy nincs hálózati sávszélesség a nagyméretű adathalmazok
  
@@ -45,7 +45,7 @@ Ebben a forgatókönyvben az elérhető lehetőségek az Azure Data Box offline 
 
 Az alábbi táblázat a legfontosabb képességei a különbségeket foglalja össze.
 
-|                                     |    Data Box-lemezek (előzetes verzió)    |    Data Box                                      |    Data Box nehéz (előzetes verzió)              |    Import/Export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Adatok mérete                        |    Visszamenőleges tárolása akár 35 TB-osra bővül                 |    Legfeljebb 80 TB-osra bővül eszközönként                       |    Akár 800 TB eszközönként               |    Változó                            |
 |    Adattípus                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |

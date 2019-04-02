@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 572a962e98332fc70c276346f497ed2e67e3c329
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 78b2f98b61306c22eaba59b9be7259b3a24d7bbe
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999847"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805754"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Egy meglévő tervezet-hozzárendelés frissítése
 
@@ -32,17 +32,17 @@ A tervezet hozzárendelésekor a hozzárendelés lehet frissíteni. A meglévő 
 
 1. Tervezetek listájában bal kattintással a tervezet-hozzárendelést. Kattintson a **hozzárendelés frissítése** gombra, vagy kattintson a jobb gombbal a tervezet-hozzárendelést, és válassza ki **hozzárendelés frissítése**.
 
-   ![Hozzárendelés frissítése](../media/update-existing-assignments/update-assignment.png)
+   ![Egy meglévő tervezet-hozzárendelés frissítése](../media/update-existing-assignments/update-assignment.png)
 
 1. A **tervezet hozzárendelése** lap betöltése az eredeti hozzárendelés az összes értékeivel előre kitöltött lesz. Módosíthatja a **tervrajz-definíció verziója**, a **zárolási hozzárendelés** állapotot, és a tervezetdefiníciót a dinamikus paraméterek egyikét. Kattintson a **hozzárendelése** Amikor végzett a módosításokkal.
 
 1. A frissített hozzárendelés részletei lapon tekintse meg az új állapot. Ebben a példában hozzáadtunk **zárolás** a hozzárendeléshez.
 
-   ![Frissített hozzárendelés - zárolva van](../media/update-existing-assignments/updated-assignment.png)
+   ![Frissíti egy meglévő tervezet-hozzárendelést - zárolási mód változása](../media/update-existing-assignments/updated-assignment.png)
 
 1. Részletes adatait más **hozzárendelési műveletek** használatával a listából. A tábla, **felügyelt erőforrások** frissítések által választott hozzárendelési műveletet.
 
-   ![Hozzárendelési műveletek](../media/update-existing-assignments/assignment-operations.png)
+   ![A tervezet-hozzárendelést a hozzárendelési műveletek](../media/update-existing-assignments/assignment-operations.png)
 
 ## <a name="rules-for-updating-assignments"></a>Szabályok hozzárendeléseinek frissítése folyamatban van
 

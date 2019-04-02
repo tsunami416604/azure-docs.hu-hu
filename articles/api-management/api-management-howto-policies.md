@@ -1,6 +1,6 @@
 ---
-title: Házirendek az Azure API Management |} Microsoft Docs
-description: Megtudhatja, hogyan létrehozása, szerkesztése és API-felügyeleti szabályzatok konfigurálására.
+title: Az Azure API Management házirendek |} A Microsoft Docs
+description: Ismerje meg, hogyan létrehozása, szerkesztése és az API Management házirendek konfigurálása.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,33 +13,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 54fbba197f6609731ffaf3ff15143a28e70a955f
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 99f756b5415811b3d4c2ee0167f98b31c905df1a
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29712868"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793674"
 ---
-# <a name="policies-in-azure-api-management"></a>Házirendek az Azure API Management
+# <a name="policies-in-azure-api-management"></a>Az Azure API Management házirendek
 
-Az Azure API Management (APIM), a házirendek olyan egy hatékony képesség, a rendszer, amelyek lehetővé teszik a közzétevőt úgy, hogy az API-t konfigurálással működésének módosításához. Házirendek olyan utasításokat, amelyek egymás után, ha a kérés végrehajtása gyűjteménye vagy egy API-t adott válaszokat. Népszerű utasítások JSON az XML-formátumú átalakítás tartalmazza, és hívja meg egy fejlesztő a bejövő hívások mennyiségének korlátozásához sebességével. Számos további házirendeket nem érhetők el.
+Az Azure API Management (APIM), a szabályzatok olyan egy hatékony képesség, a rendszer, amely lehetővé teszi a közzétevő, az API konfigurálással változtathatja meg. Szabályzatok olyan kérelmei végrehajtott utasítások gyűjteményei, vagy az API-válaszban. A népszerű utasítások közé tartozik a formátumátalakítás XML-ről JSON-ná, és a hívások sebességének korlátozása a fejlesztőktől érkező hívások mennyiségének korlátozásához. Számos további házirendeket beépített érhetők el.
 
-Házirendek az átjárón, amely az API-ügyfél és a felügyelt API között helyezkedik el belül érvényesek. Az átjáró összes kéréseket fogad, és általában továbbítja őket a mögöttes API változatlan. Azonban egy házirend módosításokat is alkalmazhatja a bejövő kérelem és a kimenő válasz.
+A szabályzatokkal belül az átjáró, amely az API-ügyfél és a felügyelt API között helyezkedik el. Az átjáró összes kérelmet kap, és általában továbbítja őket a mögöttes API változatlan. Egy házirend azonban módosításokat a bejövő kérelem és a kimenő válaszok is alkalmazhatja.
 
-A házirend-kifejezéseket attribútumértékekként vagy szövegértékekként lehet használni bármelyik API Management házirendben, hacsak a házirend másként nem rendelkezik. Egyes házirendek, például a [folyamatot szabályozhatja] [ Control flow] és [Set változó] [ Set variable] házirendek a házirend-kifejezések alapulnak. További információkért lásd: [házirendek speciális] [ Advanced policies] és [házirend-kifejezések][Policy expressions].
+A házirend-kifejezéseket attribútumértékekként vagy szövegértékekként lehet használni bármelyik API Management házirendben, hacsak a házirend másként nem rendelkezik. Néhány házirend, például a [átvitelvezérlés] [ Control flow] és [változó beállítása] [ Set variable] házirend-kifejezések alapul. További információkért lásd: [speciális szabályzatok] [ Advanced policies] és [házirend-kifejezések][Policy expressions].
 
-## <a name="sections"> </a>Házirend-konfiguráció ismertetése
+## <a name="sections"> </a>A szabályzatkonfiguráció ismertetése
 
-A házirend-definíció egy egyszerű XML-dokumentumban, amely leírja a bejövő és kimenő utasítás sorozata. Az XML-fájl közvetlenül a definíció ablakban szerkeszthető. Egy utasítás listája jobbra, és az aktuális hatókör vonatkozó utasítások engedélyezve van, és a kijelölt.
+A szabályzat-definíció egy egyszerű XML-dokumentum, amely leírja a bejövő és kimenő utasítások sorozata. Az XML-fájl a definíció ablakban közvetlenül szerkesztheti. Utasítások listáját a jobb és az aktuális hatókörben érvényes utasításokat engedélyezve van, és vannak kiemelve.
 
-Egy engedélyezett utasítás gombra kattintva adja hozzá a megfelelő XML a kurzor a definíció nézetben a helyen. 
+Egy engedélyezett utasítás kattintva hozzáadja a megfelelő XML a kurzor a definíció nézetben a helyen. 
 
 > [!NOTE]
-> Ha hozzá szeretne adni a házirend nincs engedélyezve, ellenőrizze, hogy az adott házirendnek megfelelő hatókörben. Minden egyes házirend-utasítás az egyes hatókörök és házirend szakaszok használatra szolgál. Tekintse át a házirend szakaszok és egy házirend hatókörök, ellenőrizze a **használati** a házirendhez tartozó szakasz a [szabályzataihoz][Policy Reference].
+> Ha a szabályzatot, amely a hozzáadni kívánt nincs engedélyezve, győződjön meg arról, hogy az adott házirendnek megfelelő hatókörben vannak-e. Minden egyes házirendutasítás az egyes hatókörök és a házirend-szakaszok használatra készült. Tekintse át a szabályzat szakaszok és a egy házirend hatókörök, ellenőrizze a **használati** , hogy a házirend a következő szakaszban a [házirend-referencia][Policy Reference].
 > 
 > 
 
-A konfigurációs oszlik `inbound`, `backend`, `outbound`, és `on-error`. A megadott házirend-utasításoknál, amely végrehajtja a ahhoz, hogy egy kérés és válasz.
+A konfigurációs van felosztva `inbound`, `backend`, `outbound`, és `on-error`. A megadott házirend-utasítások, amely a kérelem és válasz sorrendben hajtja végre.
 
 ```xml
 <policies>
@@ -59,25 +59,25 @@ A konfigurációs oszlik `inbound`, `backend`, `outbound`, és `on-error`. A meg
 </policies> 
 ```
 
-Ha a kérelem feldolgozása során hiba történt, a többi szükséges lépések a `inbound`, `backend`, vagy `outbound` szakaszok kimarad, és végrehajtási lévő utasítások ugrik a `on-error` szakasz. Úgy, hogy a házirend-utasításoknál a `on-error` tekintse át a hiba a szakasz a `context.LastError` tulajdonság, nézze meg, és testre szabhatja a hiba válasz használatával a `set-body` házirend, és konfigurálása, mi történik, ha a hiba akkor fordul elő. Nincsenek hibakódok beépített lépéseket és a házirend-utasításoknál feldolgozása során előforduló hibákat. További információkért lásd: [hiba történt az API-felügyeleti házirendek kezelése](https://msdn.microsoft.com/library/azure/mt629506.aspx).
+Kérelem feldolgozása során hiba történik, ha minden fennmaradó lépéseit a `inbound`, `backend`, vagy `outbound` szakaszok kimarad, és végrehajtási parancsfájlblokkokban lévő utasítások ugrik a `on-error` szakaszban. Úgy, hogy a házirend-utasítások a `on-error` szakaszt áttekintheti a hiba használatával a `context.LastError` tulajdonság, nézze meg, és testre szabhatja a hiba válasz használatával a `set-body` szabályzatot, és konfigurálhatja, mi történik, ha hiba lép fel. Nincsenek hibakódok beépített lépéseket és a házirend-utasítások feldolgozása során előforduló hibákat. További információkért lásd: [hibakezelés az API Management házirendek](/azure/api-management/api-management-error-handling-policies).
 
-## <a name="scopes"> </a>Házirendek konfigurálása
+## <a name="scopes"> </a>Szabályzatok konfigurálása
 
-Házirendek konfigurálásával kapcsolatos további információkért lásd: [beállítása vagy szerkesztheti a szabályzatokat](set-edit-policies.md).
+Házirendek konfigurálásáról további információért lásd: [állítsa be, vagy szerkesztheti a szabályzatokat](set-edit-policies.md).
 
-## <a name="policy-reference"></a>Házirend-hivatkozás
+## <a name="policy-reference"></a>Házirend-referencia
 
-Tekintse meg a [szabályzataihoz](api-management-policy-reference.md) házirend-utasításoknál és a beállítások teljes listáját.
+Tekintse meg a [házirend-referencia](api-management-policy-reference.md) házirend-utasítások és a beállítások teljes listáját.
 
-## <a name="policy-samples"></a>Házirend-minták
+## <a name="policy-samples"></a>A házirend-minták
 
 Lásd: [házirend minták](policy-samples.md) kód további példákat.
 
 ## <a name="examples"></a>Példák
 
-### <a name="apply-policies-specified-at-different-scopes"></a>Különböző hatóköröket megadott házirendek alkalmazása
+### <a name="apply-policies-specified-at-different-scopes"></a>A megadott különféle hatókörökben szabályzatok alkalmazása
 
-Ha a globális szinten és az API-k konfigurált házirendek egy házirendet, majd, hogy adott API-t igénybe mindkét házirendeket a rendszer alkalmazza. API-kezelés lehetővé teszi, hogy az Alap elem keresztül kombinált házirend kimutatások determinisztikus rendezéshez. 
+Ha egy szabályzatot a globális szinten és a egy olyan API-hoz konfigurált szabályzatot, majd, amikor az adott API használható mindkét házirend lépnek érvénybe. Az API Management lehetővé teszi, hogy determinisztikus rendezéshez egyesített szabályzat utasítások segítségével a alapszintű elemet. 
 
 ```xml
 <policies>
@@ -89,15 +89,15 @@ Ha a globális szinten és az API-k konfigurált házirendek egy házirendet, ma
 </policies>
 ```
 
-A fenti példa házirend-definíció a `cross-domain` utasítás futtatása előtt minden magasabb házirendet, amely viszont követnie a `find-and-replace` házirend. 
+A fenti példa szabályzatdefinícióban a `cross-domain` utasítás futtatása előtt követi, amely viszont magasabb szabályzatok a `find-and-replace` házirend. 
 
-### <a name="restrict-incoming-requests"></a>Korlátozhatja a bejövő kérelmeket
+### <a name="restrict-incoming-requests"></a>Korlátozza a bejövő kérések
 
-A megadott IP-címekre korlátozhatja a bejövő kérelmeket egy új utasítás hozzáadása, a kurzort belülre tartalmát a `inbound` XML-elemet, és kattintson a **korlátozása hívó IP-címek** utasítás.
+Adjon hozzá egy új utasítást a bejövő kérések korlátozhatja a megadott IP-címek, helyezze a kurzort a tartalmát csak belül a `inbound` XML-elemet, és kattintson a **korlátozása hívó IP-címek** utasítást.
 
 ![A szoftverkorlátozó házirendek][policies-restrict]
 
-Ez egy XML-részletet, hogy hozzáadja a `inbound` elem, amely az utasítás konfigurálásához nyújt útmutatást.
+Ez egy XML-részletet, hozzáadja a `inbound` elem, amely útmutatást nyújt az utasítás konfigurálása.
 
 ```xml
 <ip-filter action="allow | forbid">
@@ -106,7 +106,7 @@ Ez egy XML-részletet, hogy hozzáadja a `inbound` elem, amely az utasítás kon
 </ip-filter>
 ```
 
-Korlátozza a bejövő kéréseket, és fogadja csak azokat az IP-címről 1.2.3.4 módosítsa az XML-fájl az alábbiak szerint:
+Korlátozza a bejövő kéréseket, és fogadja el a következőképpen módosítása 1.2.3.4 IP-címek csak azokat az XML-fájl:
 
 ```xml
 <ip-filter action="allow">
@@ -118,9 +118,9 @@ Korlátozza a bejövő kéréseket, és fogadja csak azokat az IP-címről 1.2.3
 
 Házirendek használata további információkért lásd:
 
-+ [Átalakítás API-k](transform-api.md)
-+ [Házirend-hivatkozás](api-management-policy-reference.md) házirend-utasításoknál és a beállítások teljes listáját
-+ [Házirend-minták](policy-samples.md)   
++ [API-k átalakítása](transform-api.md)
++ [Házirend-referencia](api-management-policy-reference.md) házirend-utasítások és a beállítások teljes listáját
++ [A házirend-minták](policy-samples.md)   
 
 [Policy Reference]: api-management-policy-reference.md
 [Product]: api-management-howto-add-products.md
