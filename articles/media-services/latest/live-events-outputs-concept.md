@@ -11,30 +11,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: c446a71a363a9a81eeb7d0dddcdbd90ccee08b7d
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1d28701dd35b9d80fd52a1f102c53f2d59d63b09
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189359"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762354"
 ---
 # <a name="live-events-and-live-outputs"></a>Élő események és élő kimenetek
 
-Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőben lévő események élő közvetítésére. Konfigurálása az élő események streamelése a Media Services v3-as, meg kell ismernie a ebben a cikkben tárgyalt fogalmakat:
-
-* [Élő események](#live-events)
-* Élő események típusai
-* Élő esemény típusok összehasonlítása
-* [Élő esemény-létrehozási beállítások](#live-event-creation-options)
-* [Élő esemény betöltési URL-címek](#live-event-ingest-urls)
-* [Élő esemény előnézeti URL-címe](#live-event-preview-url)
-* [Élő kimenetek](#live-outputs).
+Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőben lévő események élő közvetítésére. Az élő események streamelése konfigurálása a Media Services v3-as, szüksége ebben a cikkben tárgyalt fogalmakat megértéséhez. <br/>A lap jobb oldalán a szakaszok listája megjelenik.
 
 ## <a name="live-events"></a>Élő események
 
-[Élő események](https://docs.microsoft.com/rest/api/media/liveevents) feldolgozására és feldolgozása az élő videóközvetítési felelősek. Amikor egy élő eseményt hoz létre, bemeneti végpont jön létre, használhatja élő jelet küld a távoli kódoló. A távoli az élő kódoló küld a hozzájárulás hírcsatorna, amelyek bemeneti végpont használatával vagy a [RTMP](https://www.adobe.com/devnet/rtmp.html) vagy [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (töredékes-MP4) protokollt. A Smooth Streaming betöltési protokollt, a támogatott URL-sémák a `http://` vagy `https://`. Az az RTMP betöltési protokollt, a támogatott URL-sémák a `rtmp://` vagy `rtmps://`. 
+Az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) az élő videóadatok betöltését és feldolgozását végzik. Amikor élő eseményt hoz létre, olyan bemeneti végpont jön létre, amellyel élő jelet küldhet egy távoli kódolóról. A távoli élő kódoló a bemeneti adatokat erre a bemeneti végpontra küldi az [RTMP](https://www.adobe.com/devnet/rtmp.html) vagy a [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (darabolt MP4) protokollal. A Smooth Streaming betöltési protokollt, a támogatott URL-sémák a `http://` vagy `https://`. Az az RTMP betöltési protokollt, a támogatott URL-sémák a `rtmp://` vagy `rtmps://`. 
 
 ## <a name="live-event-types"></a>Élő események típusai
 
@@ -44,9 +36,9 @@ A [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) két t�
 
 ![az átmenő](./media/live-streaming/pass-through.svg)
 
-Az átmenő használatakor **élő esemény**, amelyeket összeköthet a helyszíni élő kódoló készítése több sávszélességű video-adatfolyamot, és elküldeni, mint a hozzájárulás hírcsatorna az élő esemény (protokollal RTMP vagy töredékes MP4). Az élő esemény majd sorozatéhoz keresztül a bejövő video-adatfolyamok további feldolgozás nélkül. Ilyen egy csatlakoztatott videókhoz optimalizált hosszú ideig futó élő eseményeket vagy 24 x 365 lineáris élő adatfolyam. Az ilyen típusú élő esemény létrehozásakor adja meg a None (LiveEventEncodingType.None).
+A továbbított **élő esemény** használatakor a helyszíni élő kódoló használatával létrehoz egy többféle sávszélességű videóstreamet, amelyet elküld az élő eseménynek bemeneti adatként (RTMP vagy darabolt MP4 protokollal). Az élő esemény ezután további feldolgozás nélkül továbbítja a bejövő videóstreameket. Az ilyen továbbított élő események hosszú ideig futó élő eseményekhez vagy folyamatos (napi 24 órás, 365 napos) lineáris élő streameléshez vannak optimalizálva. Az ilyen típusú élő események létrehozásakor adja meg a None (LiveEventEncodingType.None) kódolási típust.
 
-Elküldheti a hozzájárulás hírcsatorna felbontás akár 4 K, illetve a keret 60 aránya keretek/másodperc H.264/AVC vagy H.265/HEVC videokodekek és AAC (AAC-LC, HE-AACv1 vagy HE-AACv2) hang kodek.  Tekintse meg a [élő esemény-típusok összehasonlítása](live-event-types-comparison.md) további részleteivel.
+A bemeneti adatokat legfeljebb 4K felbontással és 60 képkocka/másodperc képkockasebességgel továbbíthatja, H.264/AVC vagy H.265/HEVC videokodekkel és AAC (AAC-LC, HE-AACv1 vagy HE-AACv2) hangkodekkel.  További részleteket [az élő események típusainak összehasonlításában](live-event-types-comparison.md) talál.
 
 > [!NOTE]
 > Valamely áteresztő módszer használata a leggazdaságosabb megoldás, ha hosszú időn át több eseményt is közvetít élő adatfolyamként, és már befektetett helyszíni kódolókba. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/media-services/) nyújt.
@@ -58,14 +50,14 @@ Tekintse meg a .NET-példakód az [MediaV3LiveApp](https://github.com/Azure-Samp
 
 ![Live encoding](./media/live-streaming/live-encoding.svg)
 
-Valós idejű kódolás a Media Services használatakor állíthatók be a helyszíni élő kódoló egy egyféle sávszélességű videó elküldeni a hozzájárulás hírcsatorna az élő esemény (RTMP vagy Fragmented-Mp4 protokoll használatával). Az élő esemény kódol, hogy a bejövő egyféle sávszélességű adatfolyamot a egy [több sávszélességű video-adatfolyamot](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), elérhetővé tesz a kézbesítési lejátszására protokollok, mint például az MPEG-DASH, HLS és Smooth Streaming-eszközöket. Az ilyen típusú élő esemény létrehozásakor adja meg a kódolási típusként **Standard** (LiveEventEncodingType.Standard).
+Amikor élő kódolást alkalmaz a Media Services használatával, úgy konfigurálja a helyszíni élő kódolót, hogy egyféle sávszélességű videót küldjön bemeneti adatként az élő eseménynek (RTMP vagy darabolt Mp4 protokollal). Az élő esemény egy [többféle sávszélességű videóstreammé](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) kódolja ezt a bejövő egyféle sávszélességű streamet, így az olyan protokollokkal továbbítható a lejátszóeszközökre, mint az MPEG-DASH, a HLS és a Smooth Streaming. Az ilyen típusú élő események létrehozásakor adja meg a **Standard** kódolási típust (LiveEventEncodingType.Standard).
 
-A hírcsatorna legfeljebb 30 képkocka/másodperc, a videó kodek H.264/AVC és AAC keret válthatnak 1080 képpont felbontású hozzájárulás küldése (AAC-LC, HE-AACv1 vagy HE-AACv2) hang kodek. Tekintse meg a [élő esemény-típusok összehasonlítása](live-event-types-comparison.md) további részleteivel.
+A bemeneti adatokat legfeljebb 1080p felbontással és 30 képkocka/másodperc képkockasebességgel továbbíthatja H.264/AVC videokodekkel és AAC (AAC-LC, HE-AACv1 vagy HE-AACv2) hangkodekkel. További részleteket [az élő események típusainak összehasonlításában](live-event-types-comparison.md) talál.
 
-Valós idejű kódolás használata esetén (élő esemény beállítása **Standard**), a kódolási előbeállítás határozza meg, hogyan a bejövő streamből több bitsebességre való átkódolása vagy rétegek van kódolva. További információ: [rendszer készletek](live-event-types-comparison.md#system-presets).
+Élő kódolás használatakor (amikor az élő esemény beállítása **Standard**), a kódolási előbeállítás határozza meg, hogyan van többféle bitsebességbe vagy rétegbe kódolva a bejövő stream. További információkat a [rendszerbeállítás-készletekkel](live-event-types-comparison.md#system-presets) kapcsolatos szakaszban talál.
 
 > [!NOTE]
-> Jelenleg az egyetlen megengedett előre beállított érték az élő esemény szabványos típusát *Default720p*. Ha egy egyéni, élő kódolási beállításkészletet használja van szüksége, forduljon a amshelp@microsoft.com. Adjon meg a kívánt táblát felbontást és bitsebességre való átkódolása. Győződjön meg arról, hogy csak egy réteg 720 p, és legfeljebb 6 rétegek.
+> Jelenleg az élő események Standard típusához az egyetlen engedélyezett előbeállítási érték a *Default720p*. Ha egyéni élő kódolási előbeállítást kell használnia, írjon az amshelp@microsoft.com címre. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Győződjön meg arról, hogy csak egy réteg 720p sebességű, és hogy legfeljebb 6 réteg van.
 
 ## <a name="live-event-creation-options"></a>Élő esemény-létrehozási beállítások
 
@@ -79,24 +71,24 @@ Amikor egy élő eseményt hoz létre, megadhatja a következő beállításokat
 
 ## <a name="live-event-ingest-urls"></a>Élő esemény betöltési URL-címek
 
-Az élő esemény létrehozása után megjelenik a betöltési URL-címek, amelyek ezeket a helyszíni élő kódoló kell megadnia. Az élő kódoló bemeneti élő streamet ezen URL-címeket használ. További információkért lásd: [ajánlott a helyszíni élő kódolók](recommended-on-premises-live-encoders.md). 
+Az élő esemény létrehozása után lekérheti a betöltési URL-címeket. Ezeket kell megadnia az élő helyszíni kódolónak. Az élő kódoló ezekre az URL-címekre küldi a bemeneti élő streamet. További információkért lásd: [ajánlott a helyszíni élő kódolók](recommended-on-premises-live-encoders.md). 
 
-Használhatja a nem a kreatív URL-címeket vagy a kreatív URL-címeket. 
+Kreatív vagy nem kreatív URL-címeket is használhat. 
 
 * Non-vanity URL
 
-    Nem – személyes URL-je az AMS v3-as az alapértelmezett mód. Vélhetően az élő esemény gyorsan azonban betöltési URL-címe is ismert, csak ha az élő esemény elindult. Az URL-cím változik, ha leállításához/elindításához az élő esemény. <br/>Nem – személyes olyan esetekben hasznos, amikor egy végfelhasználó szeretne streamelni, ahol az alkalmazás szeretne egy élő esemény ASAP beolvasása és kellene egy dinamikus betöltési URL-címe nem probléma egy adott alkalmazás használatát.
+    A nem kreatív URL-cím az alapértelmezett mód az AMS 3-as verziójában. Az élő eseményt gyorsan megkaphatja, de a bemeneti URL-cím csak az élő esemény kezdetekor válik ismertté. Az URL-cím megváltozik, ha leállítja/elindítja az élő eseményt. <br/>A nem kreatív URL-címek olyan esetekben hasznosak, amikor egy végfelhasználó olyan alkalmazással szeretne streamelni, ahol az alkalmazás a lehető leghamarabb szeretné megkapni az élő eseményt, és nem jelent problémát a dinamikus bemeneti URL-cím.
 * Személyes URL-címe
 
-    Személyes módban van az előnyben részesített nagy adathordozó hardvert használó műsorszolgáltatók kódolók szórási, és nem szeretné újra azok kódolók konfigurálása, ha az élő esemény indítása. Szeretnék egy prediktív betöltési URL-címe, amely nem változik az idő függvényében.
+    A kreatív módot a nagy műsorszolgáltatók használják, akik hardveres közvetítéskódolókat használnak, és nem szeretnék újrakonfigurálni a kódolókat az élő esemény kezdetekor. Prediktív bemeneti URL-címet szeretnének, amely nem változik idővel.
 
 > [!NOTE] 
 > A bemeneti URL-címet kell prediktív használja a "személyes" módot, majd továbbítja a saját hozzáférési jogkivonat (egy véletlenszerű lexikális elem szerepel az URL-cím elkerülésére) szüksége.
 
 ### <a name="live-ingest-url-naming-rules"></a>Élő betöltési URL-elnevezési szabályok
 
-A *véletlenszerű* az alábbi karakterláncot az a 128 bites hexadecimális szám (amely áll, amelyek 32 karakter hosszú lehet a 0-9-f).<br/>
-A *hozzáférési jogkivonat* az alábbi, a rögzített URL-cím megadása szükséges. Emellett akkor is 128 bites hexadecimális szám.
+Az alábbi *véletlenszerű* sztring egy 128 bites hexadecimális szám (amely 32 karakterből áll 0-9-ig és a-f-ig).<br/>
+Az alábbi *hozzáférési jogkivonatot* kell megadnia rögzített URL-címhez. Ez is 128 bites hexadecimális szám.
 
 #### <a name="non-vanity-url"></a>Non-vanity URL
 
@@ -133,6 +125,10 @@ Miután a **élő esemény** fogadása a csatorna közreműködői elindul, hasz
 > [!IMPORTANT]
 > Győződjön meg arról, hogy a videó áramlik az előnézeti URL-címet a folytatás előtt!
 
+## <a name="live-event-long-running-operations"></a>Élő esemény hosszú ideig futó műveletek
+
+További információkért lásd: [hosszú ideig futó műveletek](entities-overview.md#long-running-operations)
+
 ## <a name="live-outputs"></a>Élő kimenetek
 
 Miután a stream az élő esemény beérkeznek, megkezdése a streamelési eseményt hoz létre egy [eszköz](https://docs.microsoft.com/rest/api/media/assets), [élő kimeneti](https://docs.microsoft.com/rest/api/media/liveoutputs), és [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators). Élő kimeneti fog archiválja a streamet, és tegye elérhetővé a nézők keresztül a [folyamatos átviteli végponton](https://docs.microsoft.com/rest/api/media/streamingendpoints).  
@@ -140,7 +136,7 @@ Miután a stream az élő esemény beérkeznek, megkezdése a streamelési esem�
 > [!NOTE]
 > Létrehozás kimenetek start Live, és állítsa le a törlésekor. Az élő kimeneti törlésekor nem törlünk az alapul szolgáló eszköz és az eszköz tartalmát. 
 
-Közötti kapcsolat egy **élő esemény** és a hozzá tartozó **élő kimenetek** van hagyományos televíziós adás, amellyel egy csatornát (**élő esemény**) állandó jelöli Stream-videó és a egy felvételt (**élő kimeneti**) egy adott időpont szegmens (például esténként hírek a 18:30:00, 7:00 és 18) hatókörét. Rögzítheti a televízió digitális videót rögzítő (DVR) használatával – az ennek megfelelő szolgáltatást, az élő események keresztül kezeli a **ArchiveWindowLength** tulajdonság. Egy ISO-8601 timespan időtartam (például PTHH:MM:SS), amely meghatározza a DVR kapacitását, és legfeljebb 25 óra legalább 3 percig állítható be.
+Közötti kapcsolat egy **élő esemény** és a hozzá tartozó **élő kimenetek** van hagyományos televíziós adás, amellyel egy csatornát (**élő esemény**) állandó jelöli Stream-videó és a egy felvételt (**élő kimeneti**) egy adott időpont szegmens (például esténként hírek a 18:30:00, 7:00 és 18) hatókörét. A televíziós adások egy digitális videórögzítővel (DVR) rögzíthetők – az élő eseményekben az ezzel egyenértékű funkciót az **ArchiveWindowLength** tulajdonság szabályozza. Egy ISO-8601 timespan időtartam (például PTHH:MM:SS), amely meghatározza a DVR kapacitását, és legfeljebb 25 óra legalább 3 percig állítható be.
 
 A **élő kimeneti** objektum olyan, mintha egy felvevő, amely a tényleges és jegyezze fel az élő stream a Media Services-fiók egy adategységbe. A fiók csatlakozik a tárolóba, az eszköz erőforrás által meghatározott Azure Storage-fiókba felvett tartalmát maradnak. A **élő kimeneti** is lehetővé teszi, hogy szabályozza a kimenő élő streamet, például az archív felvétel (például a felhőalapú DVR-Funkciókkal kapacitásának) mennyi az adatfolyam maradjanak, és e megkezdheti a megtekintők néhány tulajdonságát az élő stream megtekintését. Az archívum a lemezen egy kör alakú archive "időszak", amely csak a megadott tartalom mennyisége tárolja a **archiveWindowLength** tulajdonságát a **élő kimeneti**. Ebben az ablakban kívülre eső tartalom automatikusan törlődik a storage-tárolóból, és nem állítható helyre. Létrehozhat több **élő kimenetek** (legfeljebb három maximális) a egy **élő esemény** másik archiválási hosszúságok és beállításokkal.  
 

@@ -16,14 +16,15 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b3da5b2340b6bd4dd49dd6f8278f2fced477bc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 82b2b75d5505ddda91232bf1055bd70a68d333d0
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190721"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792399"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Az Azure AD Connect szinkronizálási szolgáltatás funkciók
+
 Az Azure AD Connect szinkronizálási szolgáltatás két összetevőből áll:
 
 * A helyszíni összetevő nevű **Azure AD Connect szinkronizálási**, más néven is néven **szinkronizálási motor**.
@@ -65,26 +66,29 @@ A következő beállításokat az Azure AD Connect által konfigurált, és nem 
 | UserWriteback |Jelenleg nem támogatott. |
 
 ## <a name="duplicate-attribute-resiliency"></a>Ismétlődő attribútumok rugalmassága
+
 A kiépítés sikertelen helyett objektumok az ismétlődő egyszerű felhasználónevek, illetve a proxyAddresses, a duplikált attribútummal "karanténba" és a egy ideiglenes érték van hozzárendelve. Az ütközés megoldásakor az ideiglenes egyszerű Felhasználónevet a megfelelő értékre automatikusan módosul. További részletekért lásd: [identitás identitásszinkronizálás és ismétlődő attribútumok rugalmassága](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
 ## <a name="userprincipalname-soft-match"></a>UserPrincipalName helyreállítható egyezés
+
 Ha ez a funkció engedélyezve van, egyezéssel engedélyezve van-e az egyszerű felhasználónév mellett a [elsődleges SMTP-cím](https://support.microsoft.com/kb/2641663), amely mindig engedélyezve van. Az Azure ad-ben meglévő felhőbeli felhasználók egyezik a helyszíni felhasználók egyezéssel szolgál.
 
 Ha szeretne egyezik a helyszíni AD-fiókokat a meglévő fiókokat, a felhőben létrehozott nem használ az Exchange online-hoz, majd ez a funkció akkor hasznos. Ebben a forgatókönyvben általában nem kell állítani az SMTP-attribútumot a felhőben okát.
 
 Ez a funkció a alapértelmezés szerint újonnan jön létre az Azure AD-címtár. Ha ez a funkció engedélyezve van az Ön számára futtatásával tekintheti meg:  
 
-```
+```powershell
 Get-MsolDirSyncFeatures -Feature EnableSoftMatchOnUpn
 ```
 
 Ha ez a funkció nincs engedélyezve az Azure AD-címtárhoz, majd engedélyezheti azt futtatásával:  
 
-```
+```powershell
 Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 ```
 
 ## <a name="synchronize-userprincipalname-updates"></a>UserPrincipalName frissítések szinkronizálása
+
 Hagyományosan a UserPrincipalName attribútum a helyszínről a szinkronizálási szolgáltatás használata frissítések le van tiltva, kivéve, ha az alábbi két feltétel teljesül:
 
 * A felhasználó felügyelt (nem összevont).
@@ -96,19 +100,19 @@ Ez a funkció lehetővé teszi, hogy a szinkronizálási motor frissítése a us
 
 Ez a funkció a alapértelmezés szerint újonnan jön létre az Azure AD-címtár. Ha ez a funkció engedélyezve van az Ön számára futtatásával tekintheti meg:  
 
-```
+```powershell
 Get-MsolDirSyncFeatures -Feature SynchronizeUpnForManagedUsers
 ```
 
 Ha ez a funkció nincs engedélyezve az Azure AD-címtárhoz, majd engedélyezheti azt futtatásával:  
 
-```
+```powershell
 Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 ```
 
 A funkció engedélyezése után a meglévő userPrincipalName értékeket marad,-van. A következő módosításakor a userPrincipalName attribútum a helyszínen a felhasználók a normál különbözeti szinkronizálás frissíteni fogja az egyszerű Felhasználónevet.  
 
 ## <a name="see-also"></a>Lásd még
+
 * [Az Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md)
 * [A helyszíni identitások integrálása az Azure Active Directory](whatis-hybrid-identity.md).
-

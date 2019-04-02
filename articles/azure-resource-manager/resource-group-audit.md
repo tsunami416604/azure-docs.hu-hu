@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: e7bcfce4e9d23839c623be3b54e97d931e6454cb
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 8348099d778a9ec65e907bb3d21ae995041b9fb6
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268294"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802287"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Tevékenységnaplók megtekintése az erőforrásokon végzett műveletek naplózásához
 
@@ -167,7 +167,7 @@ Információ a vizsgálati naplók a portálon keresztül, PowerShell, az Azure 
 
 ## <a name="rest-api"></a>REST API
 
-A tevékenységnapló használata REST-műveleteinek részét képezik a [Insights REST API-JÁNAK](https://msdn.microsoft.com/library/azure/dn931943.aspx). Tevékenységnapló-események lekéréséhez lásd: [egy adott előfizetés felügyeleti eseményeinek listázása](https://msdn.microsoft.com/library/azure/dn931934.aspx).
+A tevékenységnapló használata REST-műveleteinek részét képezik a [Insights REST API-JÁNAK](/rest/api/monitor/). Tevékenységnapló-események lekéréséhez lásd: [egy adott előfizetés felügyeleti eseményeinek listázása](/rest/api/monitor/activitylogs).
 
 ## <a name="next-steps"></a>További lépések
 

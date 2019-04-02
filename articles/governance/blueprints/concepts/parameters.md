@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 42a70f7ea21a58f40f7786d6c6f1a51093923f83
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 538015f3cd26d451285f1fd66853366f814f3b0a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838017"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805572"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Paramétereknek dinamikus tervezetek létrehozása
 
@@ -67,11 +67,11 @@ A paraméter értéke a tervrajz-definícióban meghatározott nevezzük egy **s
 
 1. Megjeleníti a paraméter közül a tervezet hozzáadott összetevők **X, Y paraméter kitöltve** a a **paraméterek** oszlop. Kattintson az összetevő sor összetevő paramétereit.
 
-   ![Tervparaméterek](../media/parameters/parameter-column.png)
+   ![Tervezet paramétereinek a tervezetdefiníciót](../media/parameters/parameter-column.png)
 
 1. A **szerkesztése összetevő** lap megjeleníti az összetevőben, amire kattintott a megfelelő értéket beállítások. Minden egyes az az összetevő paraméterének egy cím, egy érték mezőbe és egy jelölőnégyzetet. Állítsa a mező nincs bejelölve, hogy egy **statikus paraméter**. Az alábbi példában, csak _hely_ van egy **statikus paraméter** , mert nincs bejelölve, és _erőforráscsoport-név_ be van jelölve.
 
-   ![Statikus tervezet paraméterei](../media/parameters/static-parameter.png)
+   ![Tervezet statikus paraméter az a tervezet-összetevő](../media/parameters/static-parameter.png)
 
 #### <a name="setting-static-parameters-from-rest-api"></a>REST API-ból származó statikus paramétereinek beállítása
 
@@ -182,7 +182,7 @@ Ennek az ellenkezője, egy statikus paraméter egy **dinamikus paraméterek**. E
 
 1. Az a **tervezet hozzárendelése** lapon, keresse meg a **összetevő paraméterek** szakaszban. Minden egyes összetevő legalább egy **dinamikus paraméterek** jeleníti meg összetevő és a konfigurációs beállításokat. A tervezet hozzárendelése előtt adja meg a szükséges értékeket a paraméterekhez. Az alábbi példában _neve_ van egy **dinamikus paraméterek** tervezet-hozzárendelés végrehajtásához, meg kell határozni.
 
-   ![A dinamikus tervezetparaméter](../media/parameters/dynamic-parameter.png)
+   ![A dinamikus tervezetparaméter során tervezet-hozzárendelést](../media/parameters/dynamic-parameter.png)
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API-ból a dinamikus paraméterek beállítása
 
@@ -241,8 +241,8 @@ Függvény, mint például helyett `parameters()`, a megadott érték egy megfel
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [életciklus-tervezetet](lifecycle.md).
-- Ismerje meg, szabhatja testre a [alkalmazás-előkészítés rendelés tervezetet](sequencing-order.md).
-- Ismerje meg, győződjön meg arról, hogyan használhatja az [tervezetet erőforrás zárolása](resource-locking.md).
-- Ismerje meg, hogyan [meglévő hozzárendelések frissítése](../how-to/update-existing-assignments.md).
-- A tervrajz hozzárendelésének során felmerülő problémák megoldása [általános hibaelhárítási](../troubleshoot/general.md).
+- Tudnivalók a [tervek életciklusáról](lifecycle.md).
+- A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

@@ -1,6 +1,6 @@
 ---
-title: Tervrajz központi telepítés fázisa
-description: A tervezet szolgáltatások halad át a telepítés során szükséges lépések ismertetése.
+title: Terv üzembe helyezésének szakaszai
+description: Az Azure tervezet szolgáltatások halad át a telepítés során szükséges lépések ismertetése.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: a3ab5589cd327b73f2e66540da5c49343c4449cd
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: ced8c8ab2e65fb1d3f8a976f122a387fe9161750
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57999173"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801964"
 ---
-# <a name="stages-of-a-blueprint-deployment"></a>Tervrajz központi telepítés fázisa
+# <a name="stages-of-a-blueprint-deployment"></a>Terv üzembe helyezésének szakaszai
 
 Tervrajz megtörténik, amikor több csökken az Azure-tervek szolgáltatás által definiált a tervezet az erőforrásokat üzembe kívánja. Ez a cikk részletesen, mi minden lépésnek része.
 
@@ -61,8 +61,8 @@ A központi telepítések követően tervezetek visszavonja jogait a **alapérte
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan használhatja [statikus és dinamikus paraméterek](parameters.md).
-- Ismerje meg, szabhatja testre a [alkalmazás-előkészítés rendelés tervezetet](sequencing-order.md).
-- Ismerje meg, győződjön meg arról, hogyan használhatja az [tervezetet erőforrás zárolása](resource-locking.md).
-- Ismerje meg, hogyan [meglévő hozzárendelések frissítése](../how-to/update-existing-assignments.md).
-- A tervrajz hozzárendelésének során felmerülő problémák megoldása [általános hibaelhárítási](../troubleshoot/general.md).
+- A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md).

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fdf87bff026dee4969b3995b37c31de3ead7714b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0b27514dfa34963901fb94be37d8fe330a3c65ce
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004918"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804394"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definiálása és hozzárendelése egy Azure tervezet a portálon
 
@@ -40,7 +40,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    - A **Létrehozás** lehetőségre az **Első lépések** oldalon is rákattinthat, így közvetlenül a terv létrehozására léphet tovább.
 
-   ![Terv létrehozása](./media/create-blueprint-portal/create-blueprint-button.png)
+   ![Tervrajz-definíciók lapján tervrajz létrehozása](./media/create-blueprint-portal/create-blueprint-button.png)
 
 1. Adjon meg egy **tervrajznév** például a "MyBlueprint" (betűket és számokat – legfeljebb 48 karakterből állhat, de nincs szóközt vagy különleges karaktert) a tervrajz, de hagyja **leírás tervezetet** üresen. Az a **definíció helye** kattintson a jobb oldalon a három pontra, válassza ki a [felügyeleti csoport](../management-groups/overview.md) vagy ahol a tervezet mentse, és kattintson a kívánt előfizetés **kiválasztása**.
 
@@ -48,7 +48,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
 1. Szerepkör-hozzárendelés hozzáadása az előfizetéshez: Kattintson a bal gombbal a **+ Hozzáadás összetevő...**  sor alatt **előfizetés** és a böngésző jobb oldalán megjelenik az "Add összetevő" ablak. Válassza ki a szerepkör-hozzárendelés a _összetevőtípussal_. Alatt _szerepkör_válassza ki a "Közreműködői", hagyja a _felhasználó, alkalmazás vagy csoport hozzáadása_ mezőt a tájékoztatja a jelölőnégyzetet a **dinamikus paraméterek**. Az összetevőt a **Hozzáadás** lehetőségre kattintva adhatja hozzá a tervhez.
 
-   ![Összetevő – Szerepkör-hozzárendelés](./media/create-blueprint-portal/add-role-assignment.png)
+   ![Tervrajz összetevő - szerepkör-hozzárendelés](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
    > Az _összetevők_ többsége paramétereket is támogat. Az a paraméter, amelyhez a terv létrehozása során van érték rendelve, **statikus paraméter**. Ha a paraméter értéke a terv hozzárendelése során lesz megadva, akkor az **dinamikus paraméter**. További információkat a [tervparamétereket](./concepts/parameters.md) ismertető cikkben talál.
@@ -113,11 +113,11 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
    }
    ```
 
-   ![Összetevő – Resource Manager-sablon](./media/create-blueprint-portal/add-resource-manager-template.png)
+   ![Tervrajz összetevő – Resource Manager-sablon](./media/create-blueprint-portal/add-resource-manager-template.png)
 
 1. Kész tervének az alábbi ábrán láthatóhoz kell hasonlítania. Figyelje meg, hogy minden összetevő _Paraméterek_ oszlopában szerepel az „_y_ paraméterből _x_ kitöltve” szöveg. A **dinamikus paraméterek** beállítása a terv egyes hozzárendeléseikor történik.
 
-   ![Kész terv](./media/create-blueprint-portal/completed-blueprint.png)
+   ![Befejezett tervezetdefiníciót](./media/create-blueprint-portal/completed-blueprint.png)
 
 1. Az összes tervezett összetevő hozzáadása után kattintson az oldal alján lévő **Piszkozat mentése**.
 
@@ -135,11 +135,11 @@ A [Terv létrehozása](#create-a-blueprint) során nem adott meg leírást, és 
 
 1. Adja hozzá az erőforráscsoporthoz tartozó szerepkör-hozzárendelés: Kattintson a bal gombbal a **+ Hozzáadás összetevő...**  közvetlenül a sor a **ResourceGroup** bejegyzés. Válassza ki a szerepkör-hozzárendelés a _összetevőtípussal_. A _szerepkör_válassza ki a "Tulajdonos", távolítsa el a ellenőrzését a _felhasználó, alkalmazás vagy csoport hozzáadása_ mezőbe, majd keresse meg és válassza ki a felhasználó, alkalmazás vagy csoport hozzáadása. Az összetevő ugyanazt a **statikus paraméterkészletet** használja a terv minden hozzárendelésében. Az összetevőt a **Hozzáadás** lehetőségre kattintva adhatja hozzá a tervhez.
 
-   ![Összetevő – Szerepkör-hozzárendelés #2](./media/create-blueprint-portal/add-role-assignment-2.png)
+   ![Tervrajz összetevő - szerepkör hozzárendelési 2](./media/create-blueprint-portal/add-role-assignment-2.png)
 
 1. Kész tervének az alábbi ábrán láthatóhoz kell hasonlítania. Figyelje meg, hogy az újonnan hozzáadott szerepkör-hozzárendeléshez az **1 paraméterből 1 kitöltve** szöveg jelenik meg, tehát ez egy **statikus paraméter**.
 
-   ![Kész terv #2](./media/create-blueprint-portal/completed-blueprint-2.png)
+   ![Befejezett tervezetdefiníció #2](./media/create-blueprint-portal/completed-blueprint-2.png)
 
 1. Most, hogy a terv frissítve lett, kattintson a **Piszkozat mentése** lehetőségre.
 
@@ -224,7 +224,7 @@ Most, hogy a terv hozzá lett rendelve egy előfizetéshez, ellenőrizze az üze
 
 1. Tervezetek listájában kattintson a jobb gombbal az egyik korábban hozzárendelt, és válassza ki **hozzárendelés részleteinek megtekintése**.
 
-   ![Hozzárendelés részleteinek megtekintése](./media/create-blueprint-portal/view-assignment-details.png)
+   ![Hozzárendelt tervezetek oldaláról hozzárendelés részleteinek megtekintése](./media/create-blueprint-portal/view-assignment-details.png)
 
 1. Az a **hozzárendelés tervezetet** lapon, ellenőrizze, hogy az összes összetevők sikeresen telepítették, és, hogy nem történt hiba nélkül az üzembe helyezés során. Ha hiba történt, a [tervek hibaelhárításáról](./troubleshoot/general.md) szóló cikk alapján állapítsa meg a probléma okát.
 
@@ -249,9 +249,9 @@ Ha már nincs rájuk szükség, eltávolíthatja a tervek hozzárendelését az 
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [életciklus-tervezetet](./concepts/lifecycle.md).
-- Megtudhatja, hogyan használhatja [statikus és dinamikus paraméterek](./concepts/parameters.md).
-- Ismerje meg, szabhatja testre a [alkalmazás-előkészítés rendelés tervezetet](./concepts/sequencing-order.md).
-- Ismerje meg, győződjön meg arról, hogyan használhatja az [tervezetet erőforrás zárolása](./concepts/resource-locking.md).
-- Ismerje meg, hogyan [meglévő hozzárendelések frissítése](./how-to/update-existing-assignments.md).
-- A tervrajz hozzárendelésének során felmerülő problémák megoldása [általános hibaelhárítási](./troubleshoot/general.md).
+- Tudnivalók a [tervek életciklusáról](./concepts/lifecycle.md).
+- A [statikus és dinamikus paraméterek](./concepts/parameters.md) használatának elsajátítása.
+- A [tervekkel kapcsolatos műveleti sorrend](./concepts/sequencing-order.md) testreszabásának elsajátítása.
+- A [tervek erőforrás-zárolásának](./concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.
+- A [meglévő hozzárendelések frissítésének](./how-to/update-existing-assignments.md) elsajátítása.
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](./troubleshoot/general.md).

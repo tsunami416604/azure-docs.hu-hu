@@ -12,18 +12,18 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 4e853b9edbd000d8b61b5e05f3ae65c07258d73f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 60839fa06d8436d3d2202d1d97735c42c5768e9e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002156"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793772"
 ---
 # <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>Az Azure SQL Database fenyegetésészlelési önálló vagy készletezett adatbázisok
 
-[Veszélyforrások detektálása](sql-database-threat-detection-overview.md) egyetlen vagy készletezett adatbázisok észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek. A fenyegetésészlelés azonosíthatja **lehetséges SQL-injektálás**, **hozzáférés szokatlan helyről vagy a data Center**, **ismeretlen egyszerű vagy potenciálisan káros alkalmazástvalóhozzáférés**, és **találgatásos SQL hitelesítő adatok** – további részletek az [fenyegetés-észlelési riasztás](sql-database-threat-detection-overview.md#threat-detection-alerts).
+[Veszélyforrások detektálása](sql-database-threat-detection-overview.md) egyetlen vagy készletezett adatbázisok észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek. A fenyegetésészlelés azonosíthatja **lehetséges SQL-injektálás**, **hozzáférés szokatlan helyről vagy a data Center**, **ismeretlen egyszerű vagy potenciálisan káros alkalmazástvalóhozzáférés**, és **találgatásos SQL hitelesítő adatok** – további részletek az [fenyegetés-észlelési riasztás](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
 
-Is fogadhatja az értesítéseket keresztül észlelt fenyegetésről [e-mail-értesítések](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) vagy [Azure Portalon](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)
+Is fogadhatja az értesítéseket keresztül észlelt fenyegetésről [e-mail-értesítések](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) vagy [Azure Portalon](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)
 
 [Veszélyforrások detektálása](sql-database-threat-detection-overview.md) része a [adatbiztonság speciális](sql-database-advanced-data-security.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. A fenyegetésészlelés érheti el és a központi SQL ADS portálon keresztül kezelhetők. A speciális biztonsági csomag díjának 15 USD/hó / logikai kiszolgáló, az első 30 napban az ingyenesen elérhető.
 

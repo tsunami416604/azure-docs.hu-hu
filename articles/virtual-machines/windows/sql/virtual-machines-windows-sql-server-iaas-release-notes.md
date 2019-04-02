@@ -13,16 +13,30 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: d5c003b2588813f8e8a1dfc2923b9d4c8d8c6cc8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c46e2d4e2aa79d1d62d0361763911660349cfbb0
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820433"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762317"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Az SQL Server használata Azure virtuális gép kibocsátási megjegyzései
 
 Az Azure lehetővé teszi, hogy az SQL Server beépített rendszerképpel rendelkező virtuális gép üzembe helyezése. Ez a cikk összefoglalja a új funkciókat és fejlesztéseket a legutóbbi kiadásaiban [Azure virtuális gépeken futó SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/). A cikk nem közvetlenül kapcsolódó kiadására, de az időkeretből közzétett jelentős tartalomfrissítéseket is megjeleníti. Más Azure-szolgáltatások fejlesztései, lásd: [szolgáltatási hírek](https://azure.microsoft.com/updates)
+
+## <a name="march-2019"></a>2019. március
+
+### <a name="service-improvements"></a>Szolgáltatás fejlesztései
+
+| Szolgáltatás fejlesztései | Részletek |
+| --- | --- |
+| **Egyéni rendszerkép támogatási lehetőségek** | Most már telepítheti a [SQL IaaS-bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) egyéni operációs rendszer és az SQL-rendszerképek, amelyek kínál korlátozott működésének [rugalmas licencelési](virtual-machines-windows-sql-ahb.md). Ha az egyéni rendszerkép Regisztrálás az SQL erőforrás-szolgáltató adja meg a licenc típusa "AHUB" Ellenkező esetben a regisztráció sikertelen lesz. Az Azure Portalon az SQL konfigurációs panelen keresztül kezelhetőségi egyéni rendszerképek esetében nem támogatott.   | 
+| **Nevesített példány támogatási lehetőségek** | Mostantól használhat a [SQL IaaS-bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) nevesített példánnyal, ha az alapértelmezett példány megfelelően el lett távolítva. | 
+| &nbsp; | &nbsp; |
+
+### <a name="documentation-improvements"></a>Dokumentáció fejlesztései
+
+None
 
 
 ## <a name="february-2019"></a>2019. február
@@ -32,15 +46,9 @@ Az Azure lehetővé teszi, hogy az SQL Server beépített rendszerképpel rendel
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
 | **Portál javítása** | Mostantól módosíthatja a licencelési modellt, az SQL Server virtuális gép fizetéses bring-your-saját licenc használata a [az Azure portal](virtual-machines-windows-sql-ahb.md#with-the-azure-portal-1).|
-|**Rendelkezésre állási csoport üzembe helyezési egyszerűsítése az Azure SQL virtuális gép CLI-vel** | Mostantól egyszerűbb, mint valaha telepítenie kell egy rendelkezésre állási csoport egy SQL Server virtuális Gépet az Azure-ban. Az SQL virtuális gép az Azure CLI segítségével hozhat létre a WSFC, az ILB és a rendelkezésre állási csoport figyelőjét, mind a parancssorból, és a rögzítési idejéhez! További információkért lásd: [használata Azure SQL virtuális gép CLI Azure virtuális Gépeken futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása](virtual-machines-windows-sql-availability-group-cli.md). | 
+|**Rendelkezésre állási csoport üzembe helyezési egyszerűsítése az Azure SQL virtuális gép CLI-vel** | Mostantól egyszerűbb, mint valaha telepítenie kell egy rendelkezésre állási csoport egy SQL Server virtuális Gépet az Azure-ban. [Az Azure SQL virtuális gép CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) lehetővé teszi, hogy a WSFC, az ILB és a rendelkezésre állási csoport figyelőjének létrehozásához, mind a parancssorból, és a rögzítési idejéhez! További információkért lásd: [használata Azure SQL virtuális gép CLI Azure virtuális Gépeken futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása](virtual-machines-windows-sql-availability-group-cli.md). | 
 | &nbsp; | &nbsp; |
 
-### <a name="documentation-improvements"></a>Dokumentáció fejlesztései
-
-| Dokumentáció fejlesztései | Részletek |
-| --- | --- |
-|nincs | |
-| | |
 
 ## <a name="december-2018"></a>2018. december
 

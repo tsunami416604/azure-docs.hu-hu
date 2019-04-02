@@ -15,12 +15,12 @@ ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: b7f4ce9508928ccc6ab766e7164c674511bcaa37
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 7855c2bd45ba35ecb0ede5c60268e6446f37ed5a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342779"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804530"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Megismerheti az Azure-erőforrások szerepkör-definíciók
 
@@ -97,11 +97,11 @@ Műveletek támogatása érdekében új adattulajdonságok lettek hozzáadva a s
 - Írási storage blob-tárolóban
 - Egy üzenetsorban lévő üzenet törlése
 
-Íme a [Storage-Blobadatok olvasója (előzetes verzió)](built-in-roles.md#storage-blob-data-reader-preview) szerepkör-definíciót, amely tartalmazza a műveleteket is a `Actions` és `DataActions` tulajdonságait. Ez a szerepkör lehetővé teszi, hogy blob-tárolóban, és az alapul szolgáló blob-adatok olvasását.
+Íme a [Storage-Blobadatok olvasója](built-in-roles.md#storage-blob-data-reader) szerepkör-definíciót, amely tartalmazza a műveleteket is a `Actions` és `DataActions` tulajdonságait. Ez a szerepkör lehetővé teszi, hogy blob-tárolóban, és az alapul szolgáló blob-adatok olvasását.
 
 ```json
 {
-  "Name": "Storage Blob Data Reader (Preview)",
+  "Name": "Storage Blob Data Reader",
   "Id": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
   "IsCustom": false,
   "Description": "Allows for read access to Azure Storage blob containers and data",
@@ -125,18 +125,18 @@ Az összes felügyeleti műveletet API-hívások engedélyezési Azure Resource 
 
 ### <a name="data-operations-example"></a>Adatok operations példa
 
-Segít jobban megérteni, hogyan működnek a felügyeleti és műveleteket, vegyünk egy olyan példát. Alice hozzá lett rendelve a [tulajdonosa](built-in-roles.md#owner) szerepkör az előfizetések szintjén. Bob hozzá lett rendelve a [Storage-Blobadatok Közreműködője (előzetes verzió)](built-in-roles.md#storage-blob-data-contributor-preview) szerepkör egy storage-fiók hatókörben. Az alábbi ábrán látható az ebben a példában.
+Segít jobban megérteni, hogyan működnek a felügyeleti és műveleteket, vegyünk egy olyan példát. Alice hozzá lett rendelve a [tulajdonosa](built-in-roles.md#owner) szerepkör az előfizetések szintjén. Bob hozzá lett rendelve a [Storage-Blobadatok Közreműködője](built-in-roles.md#storage-blob-data-contributor) szerepkör egy storage-fiók hatókörben. Az alábbi ábrán látható az ebben a példában.
 
 ![Szerepköralapú hozzáférés-vezérlés ki van terjesztve a felügyelet és a műveletek támogatásához](./media/role-definitions/rbac-management-data.png)
 
-A [tulajdonosa](built-in-roles.md#owner) Alice szerepkör és a [Storage-Blobadatok Közreműködője (előzetes verzió)](built-in-roles.md#storage-blob-data-contributor-preview) Bob szerepkör rendelkezik a következő műveleteket:
+A [tulajdonosa](built-in-roles.md#owner) Alice szerepkör és a [Storage-Blobadatok Közreműködője](built-in-roles.md#storage-blob-data-contributor) Bob szerepkör rendelkezik a következő műveleteket:
 
 Tulajdonos
 
 &nbsp;&nbsp;&nbsp;&nbsp;Műveletek<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Storage-blobadatok közreműködője (minta)
+Storage-blobadatok közreműködője
 
 &nbsp;&nbsp;&nbsp;&nbsp;Műveletek<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
@@ -149,7 +149,7 @@ Storage-blobadatok közreműködője (minta)
 
 Mivel Alice szerepel egy helyettesítő karakter (`*`) műveletet egy előfizetési hatókörben, saját engedélyek öröklése le engedélyezéséhez számára a kezelési műveletek végrehajtásához. Alice olvasási, írási és törölheti a tárolókat. Azonban az Ágnes nem tudja végrehajtani az Adatműveletek anélkül, hogy további lépéseket. Például alapértelmezés szerint Ágnes nem tudja olvasni a blobok tárolóban. Olvassa el a blobokat, hogy Ágnes kellene a tárelérési kulcsok lekéréséhez, és ezek segítségével érheti el a blobokat.
 
-Bob engedélyek korlátozódnak csupán a `Actions` és `DataActions` megadott a [Storage-Blobadatok Közreműködője (előzetes verzió)](built-in-roles.md#storage-blob-data-contributor-preview) szerepkör. A szerepkör alapján, Bob végrehajthat felügyeleti és az üzemeltetés is. Például Bálint olvasási, írási és törölheti a tárolókat a megadott tárfiók, és ő is olvasási, írási, és a blobok törlése.
+Bob engedélyek korlátozódnak csupán a `Actions` és `DataActions` megadott a [Storage-Blobadatok Közreműködője](built-in-roles.md#storage-blob-data-contributor) szerepkör. A szerepkör alapján, Bob végrehajthat felügyeleti és az üzemeltetés is. Például Bálint olvasási, írási és törölheti a tárolókat a megadott tárfiók, és ő is olvasási, írási, és a blobok törlése.
 
 További információ a felügyeleti és az adatsík adatbiztonságot Storage: a [Azure Storage biztonsági útmutatóját](../storage/common/storage-security-guide.md).
 

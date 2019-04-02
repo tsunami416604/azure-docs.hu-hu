@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d1fdafaaecd448fd09fc40cf5f6173ce600ac4f9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a0972beff48e07b6ce8afdcec10581300f59ed41
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483205"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803578"
 ---
 # <a name="use-an-azure-ad-identity-to-access-blob-and-queue-data-with-cli-or-powershell"></a>Blob és üzenetsor adatok elérését az Azure AD identitás használata a parancssori felület vagy a PowerShell használatával
 
@@ -61,7 +61,7 @@ Az alábbi példa bemutatja, hogyan, létrehozhat egy tárolót az új storage-f
         --encryption-services blob
     ```
     
-1. A tároló létrehozásához, hozzárendeléséhez a [Storage-Blobadatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) szerepkör saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, akkor hajtsa végre a tárfiókon futtatható műveletekhez explicit engedélyre van szükségük. További információ az RBAC-szerepkörök hozzárendelése: [hozzáférést biztosít az Azure blob és üzenetsor az adatokat az RBAC az Azure Portalon](storage-auth-aad-rbac.md).
+1. A tároló létrehozásához, hozzárendeléséhez a [Storage-Blobadatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkör saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, akkor hajtsa végre a tárfiókon futtatható műveletekhez explicit engedélyre van szükségük. További információ az RBAC-szerepkörök hozzárendelése: [hozzáférést biztosít az Azure blob és üzenetsor az adatokat az RBAC az Azure Portalon](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > RBAC szerepkör-hozzárendelések propagálása néhány percig is eltarthat.
@@ -114,7 +114,7 @@ Az alábbi példa bemutatja, hogyan, létrehozhat egy tárolót az új storage-f
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. A tároló létrehozásához, hozzárendeléséhez a [Storage-Blobadatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview) szerepkör saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, akkor hajtsa végre a tárfiókon futtatható műveletekhez explicit engedélyre van szükségük. További információ az RBAC-szerepkörök hozzárendelése: [hozzáférést biztosít az Azure blob és üzenetsor az adatokat az RBAC az Azure Portalon](storage-auth-aad-rbac.md).
+1. A tároló létrehozásához, hozzárendeléséhez a [Storage-Blobadatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) szerepkör saját magának. Annak ellenére, hogy Ön a fiók tulajdonosa, akkor hajtsa végre a tárfiókon futtatható műveletekhez explicit engedélyre van szükségük. További információ az RBAC-szerepkörök hozzárendelése: [hozzáférést biztosít az Azure blob és üzenetsor az adatokat az RBAC az Azure Portalon](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > RBAC szerepkör-hozzárendelések propagálása néhány percig is eltarthat.

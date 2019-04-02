@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 36b60b3784739a884b887a29f3dd53c61c44cd6f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: adf4d8d5cfcef2dde8193ce1b7f2805a44e2d93d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57851346"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793271"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-szolgáltatás konfigurációjának beállítása
 
@@ -57,7 +57,7 @@ Megtekintheti, és a Git-konfigurációs beállítások konfigurálása, kattint
 >
 >
 
-Engedélyezés vagy letiltás Git-hozzáférés REST API használatával kapcsolatos információkért lásd: [engedélyezheti vagy letilthatja a REST API használatával Git hozzáférését](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit).
+Engedélyezés vagy letiltás Git-hozzáférés REST API használatával kapcsolatos információkért lásd: [engedélyezheti vagy letilthatja a REST API használatával Git hozzáférését](/rest/api/apimanagement/tenantaccess?EnableGit).
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>A szolgáltatás konfigurációjának mentéséhez, a Git-adattár
 
@@ -69,7 +69,7 @@ A konfiguráció mentése után néhány percet, és a konfigurációs a tárhá
 
 A tárház menti a konfigurációt, miután is lehet klónozni.
 
-Információ a REST API használatával a művelet végrehajtása: [véglegesítési konfiguráció pillanatkép készítése a REST API-val](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot).
+Információ a REST API használatával a művelet végrehajtása: [véglegesítési konfiguráció pillanatkép készítése a REST API-val](/rest/api/apimanagement/tenantaccess?CommitSnapshot).
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>A helyi gépen a tárház klónozásához
 
@@ -266,7 +266,7 @@ A szolgáltatáspéldány felügyeletének további lehetőségeiről további i
   * [Szolgáltatások üzembe helyezése – PowerShell-parancsmagok leírása](https://docs.microsoft.com/powershell/module/wds)
   * [Szolgáltatásfelügyeleti PowerShell-parancsmagok leírása](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 * Kezelheti a szolgáltatáspéldány, a REST API használatával
-  * [API Management REST API-referencia](https://msdn.microsoft.com/library/azure/dn776326.aspx)
+  * [API Management REST API-referencia](/rest/api/apimanagement/)
 
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png

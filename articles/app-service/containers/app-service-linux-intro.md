@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu;yili
 ms.custom: seodec18
-ms.openlocfilehash: 161b2054d690a2e609085852aa7caf2f02366f69
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 22c4096711bbc1d47ff6684e38ac829d77681a9f
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215659"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793441"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>A Linuxon futó Azure App Service bemutatása
 
@@ -73,7 +73,7 @@ Az Azure Portal megjeleníti a Web App for Containers szolgáltatással jelenleg
 
 A Linuxon futó App Service szolgáltatást csak az [Alapszintű, a Standard és a Prémium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service-csomagok támogatják, és nem rendelkezik [Ingyenes vagy Közös](https://azure.microsoft.com/pricing/details/app-service/plans/) szinttel. Nem hozhat létre Web App for Containers szolgáltatást olyan App Service-csomagban, amely már üzemeltet nem Linuxos webalkalmazásokat.  
 
-Ezenkívül alapján a jelenlegi korlátozás miatt, ne keverje ugyanabban az erőforráscsoportban lévő Windows és Linux rendszerű alkalmazásokat.
+Alapján a jelenlegi korlátozás miatt azonban nem használhatók vegyesen ugyanabban az erőforráscsoportban lévő Windows és Linux rendszerű alkalmazásokat.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

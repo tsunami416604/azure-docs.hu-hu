@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/015/2019
+ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91228074e13453ce53c0b4a7606479d45e8a90ac
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 40ed06bef45948068e3845e728d9c1d63ed62e71
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182778"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762803"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Az Azure használatához és az SAP munkaterhelés-forgatókönyvek
 
@@ -36,14 +36,16 @@ SAP munkaterhelés-forgatókönyvek az Azure-beli futtató is hozhat létre iden
 
 ## <a name="latest-changes"></a>Legutóbbi módosítások
 
+Kiadása [Azure HANA nagyméretű példányok szabályozhatja az Azure Portalon keresztül](hana-li-portal.md)
+
+Kiadása [magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure NetApp Files SAP alkalmazások az Azure virtuális gépeken](high-availability-guide-suse-netapp-files.md)
+
+A pontosítása **Linux operációs rendszer paraméter net.ipv4.tcp_timestamps** beállítások az Azure-ral összefüggésben terheléselosztó
+
 Kiadása [SAP munkaterhelés-konfigurációk az Azure-beli rendelkezésre állási zónák](sap-ha-availability-zones.md)
 
 Kiadása [SAP számítási feladatok tervezési és telepítési ellenőrzőlista](sap-deployment-checklist.md)
 
-Használati és konfigurációja pontosítása [Azure hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) a késés kritikus fontosságú kommunikáció elérési útjaiban az SAP-rendszerek:
-
-- [Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-- [SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 
 
 

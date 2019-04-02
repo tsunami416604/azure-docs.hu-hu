@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 04/01/2019
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225065e35e40c06d324bee89fa65a765a2727233
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f6ccc2a355b22c2235253b78a1efa3912234027a
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123759"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793492"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Engedélyek és jóváhagyás az Azure Active Directory v2.0-végpont
 
@@ -260,7 +260,7 @@ Az OAuth 2.0 protokollt és a hozzáférési tokenek beszerzése kapcsolatos tov
 
 Használhatja a `/.default` hatókör érdekében az alkalmazások áttelepíthetők az 1.0-s verziójú végpont a v2.0-végpontra. Ez a beépített hatókör minden alkalmazás, amely az engedélyek beállítása az alkalmazás regisztrálása a statikus listáján vonatkozik. A `scope` értékét `https://graph.microsoft.com/.default` pedig funkcionálisan ugyanaz, mint az 1.0-s verziójú végpontok `resource=https://graph.microsoft.com` -nevezetesen kéri le egy tokent a Microsoft Graph, amely az alkalmazás regisztrálva van az Azure Portalon hatókörökkel.
 
-/.Default hatóköre minden olyan OAuth 2.0 folyamatot is használható, de különösen szükség a [a-meghatalmazásos folyamat](v2-oauth2-on-behalf-of-flow.md) és [ügyfél hitelesítő adatai a flow](v2-oauth2-client-creds-grant-flow.md).  
+/.Default hatóköre minden olyan OAuth 2.0 folyamatot is használható, de különösen szükség a [a alapú meghatalmazásos folyamat](v2-oauth2-on-behalf-of-flow.md) és [ügyfél hitelesítő adatai a flow](v2-oauth2-client-creds-grant-flow.md).  
 
 > [!NOTE]
 > Az ügyfelek nem kombinálhatók egyetlen statikus (`/.default`) és a dinamikus jóváhagyás az egy kérelemhez. Ebből kifolyólag `scope=https://graph.microsoft.com/.default+mail.read` hatókör típusok kombinációja miatt egy hibát eredményez.

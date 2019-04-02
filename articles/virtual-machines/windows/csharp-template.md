@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 005b0e74084325606a9a07df6b36b9100cad1750
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 50d0d78e9dc0c7f51fcd82dd16eab5a180eae073
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885948"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792467"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>C# és a egy Resource Manager-sablon használatával, egy Azure virtuális gép üzembe helyezése
+
 Ez a cikk bemutatja, hogyan helyezhet üzembe Azure Resource Manager-sablon, C# használatával. A sablon által létrehozott telepít egy új virtuális hálózatot egyetlen alhálózattal rendelkező Windows Server rendszerű egyetlen virtuális gépet.
 
 A virtuális gép típusú erőforrást részletes ismertetését lásd: [egy Azure Resource Manager-sablonban virtuális gépek](template-description.md). A sablon összes erőforrásokra vonatkozó további információkért lásd: [Azure Resource Manager sablonokhoz](../../azure-resource-manager/resource-manager-template-walkthrough.md).
@@ -44,7 +45,7 @@ NuGet-csomagok a legegyszerűbben úgy, hogy először fejezze be a következő 
 1. Kattintson a **eszközök** > **Nuget-Csomagkezelő**, és kattintson a **Package Manager Console**.
 2. Írja be ezeket a parancsokat a konzolon:
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.Management.Fluent
     Install-Package WindowsAzure.Storage
     ```
@@ -206,15 +207,17 @@ Sablon központi telepítése, győződjön meg arról, hogy hozzáféréssel re
 3. Mentse a azureauth.properties fájlt.
 4. A fájl teljes elérési útja engedélyezési létrehozott, például a következő parancs használható PowerShell AZURE_AUTH_LOCATION nevű Windows környezeti változóban állíthatja be:
 
-    ```
+    ```powershell
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
+
     
+
 ## <a name="create-the-management-client"></a>A felügyeleti ügyfél létrehozása
 
 1. Nyissa meg a létrehozott projekt a Program.cs fájlt, és adja hozzá ezek using utasításokat a meglévő utasításokat a fájl felül:
 
-    ```
+    ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Fluent;
@@ -226,7 +229,7 @@ Sablon központi telepítése, győződjön meg arról, hogy hozzáféréssel re
 
 2. A felügyeleti ügyfél létrehozásához adja hozzá ezt a kódot a Main metódushoz:
 
-    ```
+    ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
         .FromFile(Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION"));
 
@@ -241,7 +244,7 @@ Sablon központi telepítése, győződjön meg arról, hogy hozzáféréssel re
 
 Az alkalmazás értékek megadásához adja hozzá a kódot a Main metódushoz:
 
-```
+```csharp
 var groupName = "myResourceGroup";
 var location = Region.USWest;
 
@@ -256,7 +259,7 @@ A sablon és paraméterek vannak telepítve az Azure storage-fiókból. Ebben a 
 
 A fiók létrehozásához adja hozzá ezt a kódot a Main metódushoz:
 
-```
+```csharp
 string storageAccountName = SdkContext.RandomResourceName("st", 10);
 
 Console.WriteLine("Creating storage account...");
@@ -296,7 +299,7 @@ Telepítse a sablon és paraméterek létrehozott storage-fiókból.
 
 A sablon üzembe helyezéséhez, adja hozzá ezt a kódot a Main metódushoz:
 
-```
+```csharp
 var templatePath = "https://" + storageAccountName + ".blob.core.windows.net/templates/CreateVMTemplate.json";
 var paramPath = "https://" + storageAccountName + ".blob.core.windows.net/templates/Parameters.json";
 var deployment = azure.Deployments.Define("myDeployment")
@@ -315,7 +318,7 @@ Mivel az Azure-ban használt erőforrások díjkötelesek, mindig érdemes mindi
 
 Az erőforráscsoport törléséhez adja hozzá ezt a kódot a Main metódushoz:
 
-```
+```csharp
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
@@ -328,5 +331,6 @@ Nagyjából öt perc alatt az a Konzolalkalmazás futtatása teljesen le kell ve
 2. Mielőtt lenyomja **Enter** indítása erőforrás törlése, eltarthat néhány percig, ellenőrizze az az Azure Portalon az erőforrások létrehozását. Kattintson a telepítés állapota, az üzembe helyezéssel kapcsolatos információk megtekintéséhez.
 
 ## <a name="next-steps"></a>További lépések
+
 * Ha a központi telepítési problémái vannak, és tekintse meg a következő lépésben lesz [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
 * Ismerje meg, hogyan helyezhet üzembe egy virtuális gép és a támogató erőforrások áttekintésével [üzembe helyezése egy Azure virtuális gép használata a C#](csharp.md).

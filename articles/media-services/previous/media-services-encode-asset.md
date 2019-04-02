@@ -12,18 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: a1b6fe38087975838d99ca4fe45ee0d0638c56c3
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: a976b7c1f697c09082ca0f7978bb23bb4e467e5d
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58187744"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801696"
 ---
 # <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Áttekintése és összehasonlítása az Azure igény szerinti médiakódolók a 
 
 ## <a name="encoding-overview"></a>Kódolási áttekintése
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+
 Az Azure Media Services media felhőalapú kódolási több lehetőséget biztosít.
 
 A Media Services kezdi, amikor fontos kodekeket és a fájl formátumok közötti különbségek megértése.
@@ -31,8 +35,7 @@ A kodekeket, amely megvalósítja a tömörítés és kibontás algoritmusok, mi
 
 Media Services dinamikus csomagolást, amely lehetővé teszi az adaptív sávszélességű MP4 vagy Smooth Streaming-kódolású tartalmak streamformátumok valamelyikében (MPEG DASH, HLS, Smooth Streaming), a Media Services által támogatott biztosít anélkül, hogy kellene csomagolni ezekbe adatfolyam-továbbítási formátumokba.
 
-> [!NOTE]
-> Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
+Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
 
 A Media Services az igény szerinti kódolók ebben a cikkben ismertetett a következőket támogatja:
 
@@ -41,8 +44,7 @@ A Media Services az igény szerinti kódolók ebben a cikkben ismertetett a köv
 
 Ez a cikk rövid áttekintést nyújt az igény szerinti médiakódolók, és hivatkozásokat tartalmaz a cikkek, amelyek segítségével a további tájékoztatáshoz. A témakör emellett a kódolók összehasonlítása.
 
->[!NOTE]
->Alapértelmezés szerint minden Media Services-fiók egy aktív kódolási feladat rendelkezhet egyszerre. Kódolási egységek, amelyek lehetővé teszik, hogy több kódolási feladat fut egyidejűleg, egy az egyes kódolási szolgáltatás számára fenntartott egység megvásárlása tartható fenn. További információ: [kódolási egységek méretezése](media-services-scale-media-processing-overview.md).
+Alapértelmezés szerint minden Media Services-fiók egy aktív kódolási feladat rendelkezhet egyszerre. Kódolási egységek, amelyek lehetővé teszik, hogy több kódolási feladat fut egyidejűleg, egy az egyes kódolási szolgáltatás számára fenntartott egység megvásárlása tartható fenn. További információ: [kódolási egységek méretezése](media-services-scale-media-processing-overview.md).
 
 ## <a name="media-encoder-standard"></a>Media Encoder Standard
 ### <a name="how-to-use"></a>A használat módja

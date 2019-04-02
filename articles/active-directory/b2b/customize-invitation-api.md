@@ -11,18 +11,19 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 610d81912ac0244f25bc39c41690ab7e7ea8897c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17b472b647dd27306ca95345e49dfeb3aee60665
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111310"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793383"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Az Azure Active Directory B2B együttműködés API és testreszabás
 
 Ossza meg velünk, hogy szeretné-e a meghívási folyamatot úgy, hogy a szervezetek számára a leginkább testre szabhatja a számos ügyfél volt. Az API-val, egyszerűen megteheti. [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>A meghívó API képességeit
+
 Az API-t a következő lehetőségeket biztosítja:
 
 1. A külső felhasználó meghívása *bármely* e-mail-címét.
@@ -68,21 +69,25 @@ Az API-t a következő lehetőségeket biztosítja:
 
 
 ## <a name="authorization-model"></a>Engedélyezési modellje
+
 Az API-t a következő hitelesítési mód környezetben is futtatható:
 
 ### <a name="app--user-mode"></a>Alkalmazás + felhasználói mód
+
 Ebben a módban személy, aki használja az API-t kell B2B meghívók lehet létrehozni a engedélyekkel kell rendelkeznie.
 
 ### <a name="app-only-mode"></a>Egyetlen alkalmazás mód
+
 Alkalmazás csak a környezetben az alkalmazás a meghívás sikeres User.Invite.All hatóköre van szüksége.
 
 További információkért tekintse meg: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
+
 PowerShell használatával adja hozzá, és a egy szervezet külső felhasználók könnyedén meghívása. Hozzon létre egy meghívást arra parancsmag segítségével:
 
-```
+```powershell
 New-AzureADMSInvitation
 ```
 
@@ -102,7 +107,8 @@ Miután egy külső felhasználót meghívó küldése, használhatja a **Get-Az
 
 Használhatja a **szűrő** szűrheti az eredményeket a beállítással **felhasználó állapota**. Az alábbi példa bemutatja, hogyan szűrheti az eredményeket, csak egy függőben lévő meghívás rendelkező felhasználók megjelenítéséhez. A példában is látható a **Format-List** beállítás, amely lehetővé teszi, hogy Ön adja meg a tulajdonságok megjelenítéséhez. 
  
-```
+
+```powershell
 Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Property DisplayName,UserPrincipalName,UserState,UserStateChangedOn
 ```
 
@@ -119,4 +125,3 @@ Tekintse meg a meghívó API-referencia a [ https://developer.microsoft.com/grap
 - [Az elemek a B2B együttműködés meghívó e-mail](invitation-email-elements.md)
 - [B2B együttműködés vendégmeghívás beváltása](redemption-experience.md)
 - [Adja hozzá a B2B-együttműködés felhasználók meghívás nélkül](add-user-without-invite.md)
-

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 6c182b4f8de96429f52e8c396503f7a89c5347ec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 835e0153039ecc3bb93fb7aa9b5007c205ec503e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871781"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793883"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Gyors útmutató: Adat-előállító és folyamat létrehozása a .NET SDK használatával
 
@@ -36,12 +36,15 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
 ### <a name="visual-studio"></a>Visual Studio
+
 A jelen cikkben található útmutató a Visual Studio 2017-et használja. A Visual Studio 2013-at vagy 2015-öt is használhatja.
 
 ### <a name="azure-net-sdk"></a>Azure .NET SDK
+
 Töltse le és telepítse az [Azure .NET SDK](https://azure.microsoft.com/downloads/)-t a gépen.
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Alkalmazás létrehozása az Azure Active Directoryban
+
 [A cikk](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) szakaszainak utasításaival a következő feladatokat végezheti el: 
 
 1. **Egy Azure Active Directory-alkalmazás létrehozása**. Olyan alkalmazást hozhat létre az Azure Active Directoryban, amely az oktatóanyagban létrehozott .NET-alkalmazást képviseli. A bejelentkezési URL-hez megadhat egy hamis URL-t, a cikkben láthatóak szerint (`https://contoso.org/exampleapp`).
@@ -64,7 +67,7 @@ Hozzon létre egy, a C# nyelvet használó .NET-konzolalkalmazást a Visual Stud
 1. Kattintson a **Tools** (Eszközök)  -> **NuGet Package Manager** (NuGet-csomagkezelő) -> **Package Manager Console** (Csomagkezelő konzol) elemre.
 2. Az a **Package Manager Console**, csomagok telepítéséhez a következő parancsokat. Tekintse meg [Microsoft.Azure.Management.DataFactory nuget-csomag](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) adatokkal.
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
     Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -408,6 +411,7 @@ Press any key to exit...
 ```
 
 ## <a name="verify-the-output"></a>Kimenet ellenőrzése
+
 A folyamat automatikusan létrehozza a kimeneti mappát az adftutorial blobtárolóban. Ezután átmásolja az emp.txt fájlt a bemeneti mappából a kimeneti mappába. 
 
 1. Az Azure Portal **adftutorial** tároló lapján kattintson a **Frissítés** elemre a kimeneti mappa megtekintéséhez. 
@@ -419,6 +423,7 @@ A folyamat automatikusan létrehozza a kimeneti mappát az adftutorial blobtáro
     ![Frissítés](media/quickstart-create-data-factory-dot-net/output-file.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
 Az adat-előállító programkódból történő törléséhez adja hozzá az alábbi kódsorokat a programhoz: 
 
 ```csharp
@@ -427,4 +432,5 @@ Az adat-előállító programkódból történő törléséhez adja hozzá az al
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információkért tekintse meg az [oktatóanyagokat](tutorial-copy-data-dot-net.md). 

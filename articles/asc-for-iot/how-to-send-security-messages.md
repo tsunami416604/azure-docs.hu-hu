@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2e8fc3e2cf85fb06d37347870e3b2b9c82f1aa96
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: be17c5bb4d09e0868af0c6fd9b31f7653b614735
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754789"
+ms.locfileid: "58762769"
 ---
 # <a name="send-security-messages-sdk"></a>Biztonsági üzenetküldés SDK
 
@@ -88,7 +88,7 @@ Beállítása után a biztonsági üzenetnek számít, és küldi el, ez az üze
 
 ## <a name="send-security-messages"></a>Biztonsági üzenetek küldéséhez 
 
-Biztonsági üzeneteket küldhet az ASC használata az IoT-ügynök használatával nélkül a [Azure IoT C# eszközoldali SDK](https://github.com/Azure/azure-iot-sdk-csharp) vagy [Azure IoT C eszközoldali SDK](https://github.com/Azure/azure-iot-sdk-c).
+Biztonsági üzeneteket küldhet az ASC használata az IoT-ügynök használatával nélkül a [Azure IoT C# eszközoldali SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) vagy [Azure IoT C eszközoldali SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview).
 
 Szeretne küldeni az eszközön lévő adatokat az eszközökről, az IoT ASC általi feldolgozáshoz, egyet a következő API-k való megjelöléséhez használja a megfelelő útválasztás az ASC-hez az IoT-feldolgozási folyamat üzeneteket. Ezzel a módszerrel küldött üzenetek feldolgozása lesz, és a rendszer az IoT, mind az IoT Hub vagy az Azure Security Center security insights ASC belül jelenik meg. 
 

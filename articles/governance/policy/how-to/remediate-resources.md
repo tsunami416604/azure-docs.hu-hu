@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: f0c05ddbc53d08334aded48ccb3a3ece547b4143
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e86553e789fc9879ea4a6326b08d893fe24c8ac8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816561"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802558"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Az Azure Policy segítségével a nem megfelelő erőforrások szervizelése
 
@@ -139,11 +139,11 @@ Hozhat létre egy **javítási feladat**, kövesse az alábbi lépéseket:
 
 1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
 
-   ![Szabályzat keresése](../media/remediate-resources/search-policy.png)
+   ![Az összes szolgáltatás szabályzat keresése](../media/remediate-resources/search-policy.png)
 
 1. Válassza ki **szervizelési** az Azure Policy oldal bal oldalán.
 
-   ![Válassza ki a szervizelés](../media/remediate-resources/select-remediation.png)
+   ![A szabályzat oldalon válassza ki a szervizelés](../media/remediate-resources/select-remediation.png)
 
 1. Az összes **deployIfNotExists** a szabályzat-hozzárendelést a nem megfelelő erőforrások tartalmazzák a **javítása házirendek** lapra, és az adatok table. Kattintson az erőforrások, amelyek nem megfelelő házirendet. A **új javítási feladat** lap megnyitásakor.
 
@@ -152,11 +152,11 @@ Hozhat létre egy **javítási feladat**, kövesse az alábbi lépéseket:
 
 1. A a **új javítási feladat** lapon, szűrheti az erőforrásokat a használatával javíthatja a **hatókör** választja ki a gyermekszintű erőforrása, ahol a szabályzat hozzá van rendelve a három pontra (beleértve az egyes erőforrások lefelé objektumok). Ezenkívül használhatja a **helyek** legördülő tovább szűkítheti az erőforrásokat. Csak a táblázatban szereplő erőforrások szervizelni fogja.
 
-   ![Szervizelje - erőforrások kiválasztása](../media/remediate-resources/select-resources.png)
+   ![Szervizelése – adja meg, mely erőforrásokat javítása](../media/remediate-resources/select-resources.png)
 
 1. A javítási feladat megkezdése után az erőforrások vannak szűrve kattintva **szervizelése**. A szabályzat megfelelőségi lap nyílik meg a **javítási feladatok** fülre, és a feladatok előrehaladásának megjelenítése.
 
-   ![Szervizelje - feladat a folyamatban](../media/remediate-resources/task-progress.png)
+   ![Szervizelje - javítási tevékenységek előrehaladásának](../media/remediate-resources/task-progress.png)
 
 1. Kattintson a **javítási feladat** a szabályzat megfelelőségi lapon részletes információkat a folyamat állapotát. A szűrés a feladat használható együtt a szervizelt alatt álló erőforrások listája látható.
 

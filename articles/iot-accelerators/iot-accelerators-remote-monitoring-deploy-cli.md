@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: a1e65466bb409007a2f112422f393eee786d7b3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182132"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793771"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>A távoli figyelési megoldásgyorsító a CLI-vel üzembe helyezése
 
@@ -62,6 +62,8 @@ Ez a szakasz az alap és normál központi telepítés közötti lényeges kül�
 
 ### <a name="basic"></a>Alapszintű
 
+Az alapszintű központi telepítést végezhet [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) vagy a parancssori felület használatával.
+
 Az alapszintű telepítés a megoldás bemutatását szolgálja. Költségek csökkentése érdekében minden mikroszolgáltatás egyetlen virtuális gép helyezik üzembe. A központi telepítés nem használ egy éles használatra kész architektúra.
 
 Alapszintű üzembe helyezéséhez az Azure-előfizetésben hoz létre a következő szolgáltatásokat:
@@ -80,6 +82,8 @@ Alapszintű üzembe helyezéséhez az Azure-előfizetésben hoz létre a követk
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 egység              | Tárolási üzenetek adatait, és lehetővé teszi, hogy részletesen telemetriai elemzés céljából |
 
 ### <a name="standard"></a>Standard
+
+Egy normál telepítése csak a parancssori felületről teheti meg.
 
 Normál telepítés az, hogy a fejlesztő testreszabhatja és kibővítheti éles használatra kész üzemelő. Használja a normál telepítés lehetőséget, ha készen áll egy éles használatra kész architektúrát, a méretezés és a bővíthetőségi beépített testreszabásához. Alkalmazás mikroszolgáltatások Docker-tárolókként épülnek, és az Azure Kubernetes Service használatával telepíthetők. A Kubernetes vezénylő helyez üzembe, méretezhető és felügyeli a mikroszolgáltatásokat.
 

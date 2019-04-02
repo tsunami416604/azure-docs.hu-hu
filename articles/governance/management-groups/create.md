@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 8e887409c35619261544b92395301ce06a033e8b
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: a89df98224634c08c84cb059eb58e64e3c7febf7
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992736"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801266"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erőforrás-szervezet és felügyeleti felügyeleti csoportok létrehozása
 
@@ -37,14 +37,14 @@ A felügyeleti csoport a portálon, a PowerShell vagy az Azure CLI használatáv
 
 1. A fő oldalon válassza ki a **új felügyeleti csoport**.
 
-   ![Fő csoport](./media/main.png)
+   ![A felügyeleti csoportok kezelése lap](./media/main.png)
 
 1. Adja meg a felügyeleti csoport azonosító mező.
 
    - A **felügyeleti csoport azonosítója** directory egyedi azonosítója, amellyel küldje el a felügyeleti csoportra parancsokat. Ez az azonosító adatok nem módosíthatók létrehozása után, mivel a Azure rendszerben ez a csoport azonosításához használt.
    - A megjelenített név mezőjének Ez a név jelenik meg az Azure Portalon. Egy külön megjelenített név mező kitöltése nem kötelező, ha a felügyeleti csoportot, és bármikor módosítható.  
 
-   ![Létrehozás](./media/create_context_menu.png)  
+   ![Beállítások ablaktábla az új felügyeleti csoport létrehozása](./media/create_context_menu.png)  
 
 1. Kattintson a **Mentés** gombra.
 

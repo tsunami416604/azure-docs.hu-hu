@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 166ffea9cbeb3f343d70737de9049ee721fa9a98
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b92ce1d5fb0e0b2b043b1bbfcb78dbaf3dde2e23
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448682"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804462"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Az Update Management kapcsolatos hibák elhárítása
 
@@ -29,7 +29,7 @@ Van egy ügynök hibaelhárító hibrid feldolgozó ügynök határozza meg a hi
 
 A következő üzenet jelenik a virtuális gépen 15 perc, az előkészítés után továbbra is:
 
-```
+```error
 The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
 ```
 
@@ -55,7 +55,7 @@ Ez a hiba oka lehet a következő okok miatt:
 
 Egy másik Azure-bérlőhöz frissítéstelepítés gépek létrehozására tett kísérlet közben a következő hibaüzenetet kapja:
 
-```
+```error
 The client has permission to perform action 'Microsoft.Compute/virtualMachines/write' on scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Automation/automationAccounts/automationAccountName/softwareUpdateConfigurations/updateDeploymentName', however the current tenant '00000000-0000-0000-0000-000000000000' is not authorized to access linked subscription '00000000-0000-0000-0000-000000000000'.
 ```
 
@@ -104,7 +104,7 @@ A következő szakasz az egyes konkrét hibaüzeneteket és a egy lehetséges me
 
 A következő hibaüzenet jelenhet meg:
 
-```
+```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
 ```
 
@@ -122,15 +122,15 @@ Hajtsa végre a régi összetevők tisztítását által a gépen [a hibrid runb
 
 A következő hibaüzeneteket egyikét kapja:
 
-```
+```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a receive. ---> System.ComponentModel.Win32Exception: The client and server can't communicate, because they do not possess a common algorithm
 ```
 
-```
+```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value.
 ```
 
-```
+```error
 The certificate presented by the service <wsid>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.
 ```
 
@@ -148,7 +148,7 @@ Tekintse át a hálózati, és győződjön meg, hogy a megfelelő portok és a 
 
 A következő hibaüzeneteket egyikét kapja:
 
-```
+```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception AgentService.HybridRegistration. PowerShell.Certificates.CertificateCreationException: Failed to create a self-signed certificate. ---> System.UnauthorizedAccessException: Access is denied.
 ```
 
@@ -203,7 +203,7 @@ A Linux hibrid feldolgozó állapota nem megfelelő.
 
 Készítsen másolatot a következő naplófájl, és megőrizheti azokat hibaelhárítás céljából:
 
-```
+```bash
 /var/opt/microsoft/omsagent/run/automationworker/worker.log
 ```
 
@@ -229,7 +229,7 @@ Bizonyos esetekben a csomagfrissítéseket zavarhatja megakadályozza, hogy befe
 
 Ha mégsem sikerül megoldani a javítási problémát, készítsen másolatot a következő naplófájlt, és megőrizheti azokat **előtt** a következő központi telepítési elindítja a hibaelhárítás céljából:
 
-```
+```bash
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
 ```
 

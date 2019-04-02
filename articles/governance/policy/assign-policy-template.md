@@ -1,5 +1,5 @@
 ---
-title: A nem megfelelő erőforrások esetében a szabályzat-hozzárendelés létrehozása a Resource Manager-sablonnal
+title: Szabályzat-hozzárendelés létrehozása a Resource Manager-sablonnal
 description: Ez a cikk végigvezeti a lépéseken egy Resource Manager-sablon használatával hozzon létre egy szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához.
 services: azure-policy
 author: DCtheGeek
@@ -8,12 +8,12 @@ ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 6ff76a66eba42fd87e88846f9ec2378bd63893f2
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 354d5aa250449b87345cef17778befddc761fa19
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58008615"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802507"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Szabályzat-hozzárendelés nem megfelelő erőforrások azonosításához használatával a Resource Manager-sablon létrehozása
 
@@ -31,14 +31,14 @@ Ebben a rövid útmutatóban a szabályzat-hozzárendelés létrehozása és hoz
 Többféleképpen szabályzat-hozzárendelések létrehozására. Ez a rövid egy [gyorsindítási sablon](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
 Itt látható a sablon egy példányát:
 
-[!code-json[policy-assingment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
+[!code-json[policy-assignment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
 
 > [!NOTE]
 > Az Azure Policy szolgáltatást díjmentes.  További információkért lásd: [áttekintése az Azure Policy](./overview.md).
 
 1. Válassza ki az alábbi képre kattintva jelentkezzen be az Azure Portalon, és nyissa meg a sablont:
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json"><img src="./media/assign-policy-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![A házirend-sablon üzembe helyezése az Azure-bA](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. Válassza ki vagy adja meg a következő értékeket:
 
@@ -48,7 +48,7 @@ Itt látható a sablon egy példányát:
    | Erőforráscsoport | Válassza ki **új létrehozása**, adjon meg egy nevet, és válassza **OK**. A képernyőképen az erőforráscsoport neve van *mypolicyquickstart<Date in MMDD>rg*. |
    | Hely | Válasszon régiót. Ha például **USA középső RÉGIÓJA**. |
    | Szabályzat-hozzárendelés neve | Adja meg a szabályzat-hozzárendelés neve. A szabályzat definíciója megjelenített is használhatja, ha azt szeretné. Ha például **felügyelt lemezeket nem használó virtuális gépek naplózása**. |
-   | Rg neve | Adja meg, ahol szeretné a szabályzat hozzárendelése egy erőforráscsoport-nevet. Ez a rövid útmutatóban használja az alapértelmezett értéket **[resourceGroup () .név]**. **[resourceGroup()](/azure/azure-resource-manager/resource-group-template-functions-resource#resourcegroup)**  egy sablon-függvény, amely lekéri az erőforráscsoportot. |
+   | Rg neve | Adja meg, ahol szeretné a szabályzat hozzárendelése egy erőforráscsoport-nevet. Ez a rövid útmutatóban használja az alapértelmezett értéket **[resourceGroup () .név]**. **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)**  egy sablon-függvény, amely lekéri az erőforráscsoportot. |
    | Szabályzatdefiníció azonosítója | Specify **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**. |
    | Elfogadom a fenti feltételeket és kikötéseket | (Válasszon) |
 
@@ -65,7 +65,7 @@ Néhány további erőforrást:
 
 Válassza ki **megfelelőségi** az oldal bal oldalán található. Keresse meg a **felügyelt lemezeket nem használó virtuális gépek naplózása** létrehozott szabályzat-hozzárendelést.
 
-![Szabályzatmegfelelőség](./media/assign-policy-template/policy-compliance.png)
+![Házirendek megfelelőség – áttekintés oldalra](./media/assign-policy-template/policy-compliance.png)
 
 Ha vannak olyan meglévő erőforrások, amelyek nem felelnek meg az új hozzárendelésnek, azok jelennek meg **nem megfelelő erőforrások**.
 
@@ -79,7 +79,7 @@ A létrehozott hozzárendelést eltávolításához kövesse az alábbi lépése
 
 1. Kattintson a jobb gombbal a **felügyelt lemezeket nem használó virtuális gépek naplózása** szabályzat-hozzárendelést, és válassza ki **hozzárendelés törlése**.
 
-   ![Hozzárendelés törlése](./media/assign-policy-template/delete-assignment.png)
+   ![Hozzárendelés törlése a megfelelőség áttekintése lapon](./media/assign-policy-template/delete-assignment.png)
 
 ## <a name="next-steps"></a>További lépések
 

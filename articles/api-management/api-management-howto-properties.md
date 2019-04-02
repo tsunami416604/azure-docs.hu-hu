@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: f7c52b7ab8aaad917eb03455800df6d8ba4cbc88
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082704"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791626"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Megnevezett értékek használata az Azure API Management házirendek
 Az API Management-házirendek olyan egy hatékony képesség, a rendszer, amelyek lehetővé teszik az Azure Portalon keresztül konfigurációs API-változtathatja meg. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. Házirend-utasítások szövegkonstans érték, a házirend-kifejezések, és az értékek nevű lehet létrehozni. 
@@ -34,7 +34,7 @@ Minden API Management-szolgáltatáspéldány tulajdonságok gyűjteménye, kulc
 
 ![Névvel ellátott értékek](./media/api-management-howto-properties/named-values.png)
 
-Tulajdonságértékek tartalmazhat szövegkonstansok és [házirend-kifejezések](https://msdn.microsoft.com/library/azure/dn910913.aspx). Például értékét `ExpressionProperty` egy házirend-kifejezés, amely az aktuális dátumot és időt tartalmazó karakterláncot ad vissza. A tulajdonság `ContosoHeaderValue` egy titkos kulcsot van megjelölve, ezért nem jelenik meg az értékét.
+Tulajdonságértékek tartalmazhat szövegkonstansok és [házirend-kifejezések](/azure/api-management/api-management-policy-expressions). Például értékét `ExpressionProperty` egy házirend-kifejezés, amely az aktuális dátumot és időt tartalmazó karakterláncot ad vissza. A tulajdonság `ContosoHeaderValue` egy titkos kulcsot van megjelölve, ezért nem jelenik meg az értékét.
 
 | Name (Név) | Érték | Titkos | Címkék |
 | --- | --- | --- | --- |
@@ -55,7 +55,7 @@ Tulajdonságértékek tartalmazhat szövegkonstansok és [házirend-kifejezések
 
 A tulajdonság létrehozása után szerkesztheti a tulajdonság kattintva. Ha módosítja a tulajdonság nevét, minden olyan szabályzatokat, hogy a tulajdonság automatikusan frissülnek az új nevét.
 
-A REST API-val tulajdonság szerkesztési információkért lásd: [a REST API-val tulajdonság módosítása](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch).
+A REST API-val tulajdonság szerkesztési információkért lásd: [a REST API-val tulajdonság módosítása](/rest/api/apimanagement/property?Patch).
 
 ## <a name="to-delete-a-property"></a>Egy tulajdonság
 
@@ -66,7 +66,7 @@ Vlastnost törléséhez kattintson **törlése** törli a tulajdonság mellett.
 > 
 > 
 
-A törölni egy tulajdonságot a REST API-val további információkért lásd: [törölni egy tulajdonságot a REST API-val](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete).
+A törölni egy tulajdonságot a REST API-val további információkért lásd: [törölni egy tulajdonságot a REST API-val](/rest/api/apimanagement/property?Delete).
 
 ## <a name="to-search-and-filter-named-values"></a>Keresés és nevű értékeinek szűrése
 
@@ -111,8 +111,8 @@ Tulajdonságértékek tartalmazhat házirend-kifejezések, míg a tulajdonságé
 ## <a name="next-steps"></a>További lépések
 * További információ a házirendek használata
   * [Az API Management házirendek](api-management-howto-policies.md)
-  * [Házirend-referencia](https://msdn.microsoft.com/library/azure/dn894081.aspx)
-  * [Házirend-kifejezések](https://msdn.microsoft.com/library/azure/dn910913.aspx)
+  * [Házirend-referencia](/azure/api-management/api-management-policies)
+  * [Házirend-kifejezések](/azure/api-management/api-management-policy-expressions)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

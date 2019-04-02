@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3258f4d36d80c2a501e4ceba3b428128fc3f781b
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 80c27d588bb8b4c60ae8432fbd3a2ac3d2db1394
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201007"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802660"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Apache Hadoop-fürtök kezelése az Azure portal használatával
 
@@ -22,13 +22,12 @@ ms.locfileid: "58201007"
 
 Használatával a [az Azure portal][azure-portal], kezelheti [Apache Hadoop](https://hadoop.apache.org/) Azure HDInsight-fürtök. Információ más eszközök használatával HDInsight Hadoop-fürtök kezelése a fenti lapon választómezőt használja.
 
-**Előfeltételek**
+## <a name="prerequisites"></a>Előfeltételek
 - Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 - Meglévő Apache Hadoop-fürt a HDInsight.  Lásd: [a HDInsight az Azure portal használatával Linux-alapú fürtök](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="getting-started"></a>Első lépések
 Jelentkezzen be itt: [https://portal.azure.com](https://portal.azure.com).
-
 
 ## <a name="showClusters"></a> Fürtök listázása és megjelenítése
 A **HDInsight-fürtök** lapon megjelennek a meglévő fürtök.  A portálról:
@@ -36,69 +35,88 @@ A **HDInsight-fürtök** lapon megjelennek a meglévő fürtök.  A portálról:
 2. Válassza ki **HDInsight-fürtök** alatt **ANALYTICS**.
 
 ## <a name="homePage"></a> Fürt kezdőlapja 
-Válassza ki a fürt nevét, a [ **HDInsight-fürtök** oldal](#showClusters).  Ekkor megnyílik a **áttekintése** nézetet, amely a következő képhez hasonlóan néz ki:
+Válassza ki a fürt nevét, a [ **HDInsight-fürtök** ](#showClusters) lapot.  Ekkor megnyílik a **áttekintése** nézetet, amely a következő képhez hasonlóan néz ki:
 
 ![Az Azure portal HDInsight fürt alapjai](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
 
 **Felső menüben:**  
-- **Helyezze át**: A fürt helyez, másik erőforráscsoportba, illetve egy másik előfizetésbe.  
-- **Törlés**: Törli a fürtöt.  
-- **Frissítés**:  A nézet frissítése.
+
+| Elem| Leírás |
+|---|---|
+|Áthelyezés|A fürt helyez, másik erőforráscsoportba, illetve egy másik előfizetésbe.|
+|Törlés|Törli a fürtöt. |
+|Frissítés|A nézet frissítése.|
 
 **Bal oldali menüben:**  
- - **Bal felső menü**  
-    - **Áttekintés**:  Általános információk a fürt számára.
-    -  **Tevékenységnapló**: Tevékenységnaplók lekérdezése és megjelenítése.
-    - **Hozzáférés-vezérlés (IAM)**: Szerepkör-hozzárendelésekkel.  Lásd: [az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése a szerepkör-hozzárendelésekkel](../role-based-access-control/role-assignments-portal.md).
-    - **A címkék**: Lehetővé teszi kulcs-érték párok meghatározásához egy egyéni besorolás, a cloud Services szolgáltatások beállítását. Például előfordulhat, hogy létre nevű kulcs **projekt**, majd használja az adott projekthez tartozó összes szolgáltatás közös értéket.
-    - **Problémák diagnosztizálása és megoldása**: Hibaelhárítási információk megjelenítése.
-    - **Gyors üzembe helyezési**:  Információit jeleníti meg, amely segítséget nyújt a HDInsight használatának megkezdéséhez.
-    - **Eszközök**: Információk a HDInsight kapcsolódó eszközök.
+  - **Bal felső menü**
 
-- **Beállítások menü**  
-  - **Fürt mérete**: Ellenőrizze, növelheti és csökkentheti a fürt munkavégző csomópontok számát. Lásd: [fürtök méretezése](hdinsight-administer-use-portal-linux.md#scale-clusters).
-  - **Magkvóta korlátozásának**: A használt és elérhető az előfizetéshez tartozó magok jelennek meg.
-  - **SSH + fürtbe való bejelentkezésekor**: Az utasításokat követve csatlakozhat a fürthöz Secure Shell (SSH)-kapcsolat használatával jeleníti meg. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
-  - **Data Lake Storage Gen1**: Data Lake Storage Gen1 hozzáférés konfigurálásához.  Lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
-  - **Storage-fiókok**: Tekintse meg a storage-fiókok és a kulcsokat. A storage-fiókok vannak konfigurálva, a fürt létrehozása során.
-  - **Alkalmazások**: HDInsight-alkalmazások hozzáadása és eltávolítása.  Lásd: [egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md).
-  - **Szkriptműveletek**: Bash parancsfájlok futtathatók a fürtön. Lásd: [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
-  - **Külső metaadattárak**: Nézet a [Apache Hive](https://hive.apache.org/) és [Apache Oozie](https://oozie.apache.org/) metaadattárak. A metaadattárakat csak a fürt létrehozása során konfigurálható.
-  - **HDInsight-partner**: A jelenlegi HDInsight-Partner felvétele/eltávolítása.
-  - **Tulajdonságok**: Nézet a [fürt tulajdonságai](#properties).
-  - **Zárolja**: Vegye fel a zárolást, hogy a fürt éppen módosított vagy törölt.
-  -  **Automation-szkript**: Megjelenítés és a fürt az Azure Resource Manager-sablon exportálása. Jelenleg csak exportálhatja a függő Azure storage-fiókban. Lásd: [Linux-alapú Apache Hadoop-fürtök a HDInsight az Azure Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+    | Elem| Leírás |
+    |---|---|
+    |Áttekintés|Általános információk a fürt számára.|
+    |Tevékenységnapló|Tevékenységnaplók lekérdezése és megjelenítése.|
+    |Hozzáférés-vezérlés (IAM)|Szerepkör-hozzárendelésekkel.  Lásd: [az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése a szerepkör-hozzárendelésekkel](../role-based-access-control/role-assignments-portal.md).|
+    |Címkék|Lehetővé teszi kulcs-érték párok meghatározásához egy egyéni besorolás, a cloud Services szolgáltatások beállítását. Például előfordulhat, hogy létre nevű kulcs **projekt**, majd használja az adott projekthez tartozó összes szolgáltatás közös értéket.|
+    |Problémák diagnosztizálása és megoldása|Hibaelhárítási információk megjelenítése.|
+    |Első lépések|Információit jeleníti meg, amely segítséget nyújt a HDInsight használatának megkezdéséhez.|
+    |Eszközök|Információk a HDInsight kapcsolódó eszközök.|
 
-- **Figyelési menü**
-  - **Riasztások**: Kezelheti a riasztásokat és műveleteket.
-  - **Metrikák**: Az Azure Monitor naplóira a fürt metrikák figyelése.
-  - **Diagnosztikai beállítások**: A diagnosztikai metrikák tárolására beállításait.
-  - **Az Operations Management Suite**:  A naplók az Azure Operations Management Suite (OMS) és az Azure Monitor-fürt monitorozásához.
+  - **Beállítások menü**  
 
-- **Támogatás + hibaelhárítás menüjében**
-  - **A Resource health**: Lásd: [az Azure resource health áttekintése](../service-health/resource-health-overview.md).
-  - **Új támogatási kérelem**: Lehetővé teszi, hogy hozzon létre egy támogatási jegyet a Microsoft ügyfélszolgálatához.
-    
+    | Elem| Leírás |
+    |---|---|
+    |Fürt mérete|Ellenőrizze, növelheti és csökkentheti a fürt munkavégző csomópontok számát. Lásd: [fürtök méretezése](hdinsight-administer-use-portal-linux.md#scale-clusters).|
+    |Kvótahatárok|A használt és elérhető az előfizetéshez tartozó magok jelennek meg.|
+    |SSH + a fürt bejelentkezési adatai|Az utasításokat követve csatlakozhat a fürthöz Secure Shell (SSH)-kapcsolat használatával jeleníti meg. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).|
+    |1. generációs Data Lake Storage|Data Lake Storage Gen1 hozzáférés konfigurálásához.  Lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
+    |Tárfiókok|Tekintse meg a storage-fiókok és a kulcsokat. A storage-fiókok vannak konfigurálva, a fürt létrehozása során.|
+    |Alkalmazások|HDInsight-alkalmazások hozzáadása és eltávolítása.  Lásd: [egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md).|
+    |Szkriptműveletek|Bash parancsfájlok futtathatók a fürtön. Lásd: [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).|
+    |Külső metaadattárak|Nézet a [Apache Hive](https://hive.apache.org/) és [Apache Oozie](https://oozie.apache.org/) metaadattárak. A metaadattárakat csak a fürt létrehozása során konfigurálható.|
+    |HDInsight-partner|A jelenlegi HDInsight-Partner felvétele/eltávolítása.|
+    |Tulajdonságok|Nézet a [fürt tulajdonságai](#properties).|
+    |Zárolások|Vegye fel a zárolást, hogy a fürt éppen módosított vagy törölt.|
+    |Automation-szkript|Megjelenítés és a fürt az Azure Resource Manager-sablon exportálása. Jelenleg csak exportálhatja a függő Azure storage-fiókban. Lásd: [Linux-alapú Apache Hadoop-fürtök a HDInsight az Azure Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).|
+
+  - **Figyelési menü**
+
+    | Elem| Leírás |
+    |---|---|
+    |Riasztások|Kezelheti a riasztásokat és műveleteket.|
+    |Mérőszámok|Az Azure Monitor naplóira a fürt metrikák figyelése.|
+    |Diagnosztikai beállítások|A diagnosztikai metrikák tárolására beállításait.|
+    |Operations Management Suite|A naplók az Azure Operations Management Suite (OMS) és az Azure Monitor-fürt monitorozásához.|
+
+  - **Támogatás + hibaelhárítás menüjében**
+
+    | Elem| Leírás |
+    |---|---|
+    |Erőforrás állapota|Lásd: [az Azure resource health áttekintése](../service-health/resource-health-overview.md).|
+    |Új támogatási kérelem|Lehetővé teszi, hogy hozzon létre egy támogatási jegyet a Microsoft ügyfélszolgálatához.|
+
 ## <a name="properties"></a> Fürt tulajdonságai
+
 Az a [fürt kezdőlap](#homePage)alatt **beállítások** válassza **tulajdonságok**.
-* **Állomásnév**: Fürt neve.
-* **A fürt URL-cím**: Az Ambari webes felület URL-CÍMÉT.
-* **Secure shell (SSH)**: A felhasználónév és a gazdagépcsoport nevét, a fürt SSH-n keresztüli eléréséhez.
-* **Állapot**: Egyike: Megszakítva fogadják el, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, működési, fut, a hiba, törlése, a törlés időtúllépés miatt megszakadt, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued, vagy ClusterCustomization.
-* **Régió**: Azure-helyen. Az Azure a támogatott helyek listáját lásd: a **régió** legördülő lista [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
-* **Létrehozás dátuma**: A dátum a fürtöt helyezett üzembe.
-* **Operációs rendszer**: Mindkét **Windows** vagy **Linux**.
-* **Típus**: Hadoop, HBase, Storm, Spark.
-* **Verzió**. Lásd: [HDInsight-verziók](hdinsight-component-versioning.md).
-* **Előfizetés**: Az előfizetés neve.
-* **Alapértelmezett adatforrás**: Az alapértelmezett fürt fájlrendszer.
-* **Munkavégző csomópontok mérete**: A kiválasztott virtuális gép mérete a feldolgozó csomópontok.
-* **Átjárócsomópont csomópontméret**: A kiválasztott virtuális gép mérete az átjárócsomópontokat.
-* **Virtuális hálózat**: Neve a virtuális hálózat, amely a fürt üzemel, ha egy központi telepítéskor lett kiválasztva.
+
+|Elem | Leírás |
+|---|---|
+|Gazdanév|Fürt neve.|
+|Fürt URL-címe|Az Ambari webes felület URL-CÍMÉT.|
+|Secure shell-(SSH)|A felhasználónév és a gazdagépcsoport nevét, a fürt SSH-n keresztüli eléréséhez.|
+|status|Egyike: Megszakítva fogadják el, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, működési, fut, a hiba, törlése, a törlés időtúllépés miatt megszakadt, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued, vagy ClusterCustomization.|
+|Régió|Azure-helyen. Az Azure a támogatott helyek listáját lásd: a **régió** legördülő lista [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).|
+|Létrehozás dátuma|A dátum a fürtöt helyezett üzembe.|
+|Operációs rendszer|Mindkét **Windows** vagy **Linux**.|
+|Typo|Hadoop, HBase, Storm, Spark.|
+|Verzió|Lásd: [HDInsight-verziók](hdinsight-component-versioning.md).|
+|Előfizetés|Az előfizetés neve.|
+|Alapértelmezett adatforrás|Az alapértelmezett fürt fájlrendszer.|
+|Munkavégző csomópontok mérete|A kiválasztott virtuális gép mérete a feldolgozó csomópontok.|
+|Velikost Hlavního uzlu|A kiválasztott virtuális gép mérete az átjárócsomópontokat.|
+|Virtuális hálózat|A virtuális hálózat, amely a fürt üzemel, ha egy központi telepítéskor választott neve.|
 
 ## <a name="move-clusters"></a>Helyezze át a fürtök
 
-Egy HDInsight-fürt áthelyezheti egy másik Azure-erőforráscsoportot, vagy egy másik előfizetésbe. 
+Egy HDInsight-fürt áthelyezheti egy másik Azure-erőforráscsoportot, vagy egy másik előfizetésbe.
 
 Az a [fürt kezdőlap](#homePage):
 
@@ -214,7 +232,7 @@ Az a [fürt kezdőlap](#homePage):
 További információkért lásd: [kezelése a HDInsight-fürtök az Apache Ambari webes felhasználói felület használatával](hdinsight-hadoop-manage-ambari.md).
 
 ## <a name="change-passwords"></a>Jelszó módosítása
-Egy HDInsight-fürt két felhasználói fiókot lehet. A HDInsight-fürt felhasználói fiók (más néven) HTTP-felhasználói fiókot) és a létrehozási folyamat során jönnek létre az SSH-felhasználói fiókot. A portál használatával módosítsa a fürt felhasználói fiók jelszavát, és a Parancsfájlműveletek az SSH-felhasználói fiók módosítása.
+Egy HDInsight-fürt két felhasználói fiókot lehet. A HDInsight fürt felhasználói fiókjának (HTTP-felhasználói fiókot) és az SSH-felhasználói fiókot a létrehozási folyamat során jönnek létre. A portál használatával módosítsa a fürt felhasználói fiók jelszavát, és a Parancsfájlműveletek az SSH-felhasználói fiók módosítása.
 
 ### <a name="change-the-cluster-user-password"></a>A fürt felhasználói jelszó módosítása
 
@@ -243,7 +261,7 @@ A jelszó módosítása a fürt minden csomópontján.
     ```
 
 2. Töltse fel a fájlt egy tárolási helye, amely a HDInsight egy HTTP vagy HTTPS-cím használatával érhető el. Például egy nyilvános fájlt például a onedrive-on vagy az Azure Blob storage tárolja. Mentse a fájlt, az URI-t (HTTP vagy HTTPS-cím), ezt az URI a következő lépésben van szükség szerint.
-3. Az a [fürt kezdőlap](#homePage) kiválasztása **Szkriptműveletek** alatt **beállítások**.
+3. Az a [fürt kezdőlap](#homePage)válassza **Szkriptműveletek** alatt **beállítások**.
 4. Az a **Parancsfájlműveletek** panelen válassza ki **új küldése**. 
 5. Az a **Szkriptművelet** panelen adja meg a következőket:
 
@@ -255,7 +273,8 @@ A jelszó módosítása a fürt minden csomópontján.
    | Csomóponttípus(ok): (A fő, feldolgozói, Nimbus, felügyelő, Zookeeper, stb.) |Minden csomópont esetében felsorolt ✓ |
    | Paraméterek |Adja meg az SSH-felhasználónevet és az új jelszót. Egy tárolóhely közötti a felhasználónevet és jelszót kell lennie. |
    | Parancsfájlműveletet... |Ne jelölje be ezt a mezőt. |
-5. Válassza ki **létrehozás** a alkalmazni a parancsfájlt. A szkript befejezése után Ön tud csatlakozni a fürthöz SSH használatával az új jelszóval.
+
+6. Válassza ki **létrehozás** a alkalmazni a parancsfájlt. A szkript befejezése után Ön tud csatlakozni a fürthöz SSH használatával az új jelszóval.
 
 ## <a name="grantrevoke-access"></a>GRANT/revoke-access
 HDInsight-fürtök a következő HTTP webes szolgáltatások (ezen szolgáltatások mindegyikéhez kell RESTful végpontokon) rendelkezik:

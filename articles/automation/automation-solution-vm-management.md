@@ -6,19 +6,22 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/26/2019
+ms.date: 03/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6b5ef0f165433e2dd0685aa0e4f64bd04bf5c823
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902246"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762939"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
 A gépek indítása/leállítása munkaidőn kívül megoldás elindítja és leállítja az Azure-beli virtuális gépek a felhasználó által definiált ütemezés, nyújt az Azure Monitor naplóira révén és a választható e-maileket küld a [Műveletcsoportok](../azure-monitor/platform/action-groups.md). Azure Resource Manager és klasszikus virtuális gépeket is támogatja a legtöbb forgatókönyvhöz.
+
+> [!NOTE]
+> A gépek indítása/leállítása munkaidőn kívül megoldás az Azure-modulokat az Automation-fiókba a megoldás üzembe helyezésekor importált rendszerrel tesztelték. A megoldás jelenleg nem működik az Azure-modul újabb verzióit. Ez csak az Automation-fiókot, amely a virtuális gépek indítása/leállítása munkaidőn kívül megoldás futtatásához használt érinti. Továbbra is használhatja az Azure-modul újabb verzióiban a más Automation-fiókok, a leírtak szerint [az Azure Automationben az Azure PowerShell-modulok frissítése](automation-update-azure-modules.md)
 
 Ez a megoldás a felhasználók számára, akik az saját VM-költségek optimalizálását decentralizált alacsony költségű automation lehetőséget kínál. Ezzel a megoldással a következőket teheti:
 

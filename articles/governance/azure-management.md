@@ -7,14 +7,14 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: c38d19b8528399ae09d92e48ed7dfc17c18938b7
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: f94cec7919edc6cf6ebb6618d38b8591feb1278b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338070"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804139"
 ---
-# <a name="management-in-azure"></a>Felügyelet az Azure-ban
+# <a name="overview-of-management-services-in-azure"></a>Felügyeleti szolgáltatások az Azure-ban – áttekintés
 
 Irányítás az Azure-ban az Azure-felügyelet egyik formája. Ez a cikk ismerteti a különböző felügyeleti területeket, üzembe helyezése és karbantartása az Azure-erőforrások számára.
 
@@ -22,7 +22,7 @@ Felügyelet alatt azokat a feladatokat és folyamatokat értjük, amelyekre szü
 
 A következő ábra azt illusztrálja, hogy milyen felügyeleti területekre van szükség az alkalmazások és erőforrások kezeléséhez. Ezekre a területekre egy életciklus, tekinthető. Minden terület gondolhatunk, egy erőforráscsoport szükséges folyamatos egymás után. Az erőforrás életciklusának kezdődik a kezdeti üzembe helyezést a folyamatos művelet, végül pedig ha már nincs.
 
-![Szabályok kezelése](../monitoring/media/management-overview/management-capabilities.png)
+![Az Azure-ban oktatnak](../monitoring/media/management-overview/management-capabilities.png)
 
 Nincs olyan Azure-szolgáltatás teljesen beírja egy adott felügyeleti területen követelményeinek. Ehelyett minden egyes van, hogy több szolgáltatás együttes használata által. Bizonyos szolgáltatásokhoz, például az Application Insights, adja meg a webes alkalmazásokhoz célzott figyelési funkciókat. Mások, például az Azure Monitor naplóira, felügyeleti adatok tárolására más szolgáltatásokhoz. Ez a funkció lehetővé teszi a különböző szolgáltatások által gyűjtött különböző típusú adatok elemzéséhez.
 

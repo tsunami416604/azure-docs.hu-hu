@@ -14,22 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: d32d593fcc93ec2e27676b1bb174940c12c24193
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b8e66a9d5bba0c48f15b1ccd3f2d47e5405db792
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667650"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791592"
 ---
 # <a name="package-an-application"></a>Alkalmazás becsomagolása
+
 Ez a cikk bemutatja, hogyan csomag a Service Fabric-alkalmazás, és lehetővé teszi a telepítésre készen áll.
 
 ## <a name="package-layout"></a>Csomag elrendezés
+
 Az alkalmazásjegyzékben, egy vagy több szolgáltatásjegyzékek és egyéb szükséges csomagfájlok kell beállítani egy Service Fabric-fürtön történő üzembe helyezéshez megadott elrendezésben. A példa jegyzékek ebben a cikkben a következő könyvtárstruktúrát szervezett kell:
 
 ```
-PS D:\temp> tree /f .\MyApplicationType
+tree /f .\MyApplicationType
+```
 
+```Output
 D:\TEMP\MYAPPLICATIONTYPE
 │   ApplicationManifest.xml
 │
@@ -49,6 +53,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 A médiafájlokat tartalmazó mappák neve megfelelően a **neve** minden megfelelő elem attribútumai. Például, ha a szolgáltatásjegyzék tartalmazott két kód csomagot a nevekkel **MyCodeA** és **MyCodeB**, majd ugyanazzal a névvel két mappát tartalmaz a szükséges bináris fájlokat minden kódcsomaghoz.
 
 ## <a name="use-setupentrypoint"></a>SetupEntryPoint használata
+
 A tipikus forgatókönyvek **SetupEntryPoint** amikor egy végrehajtható fájl futtatásához a szolgáltatás indulása előtt szüksége vagy egy emelt szintű jogosultságokkal a művelet végrehajtásához. Példa:
 
 * Beállítását, és a környezeti változók, amelyet a szolgáltatás futtatható fájlja inicializálása. Nem korlátozódik az csak a Service Fabric programozási modell használatával írt végrehajtható. Például npm.exe kell néhány környezeti változók konfigurált node.js-alkalmazás üzembe helyezéséhez.
@@ -57,8 +62,11 @@ A tipikus forgatókönyvek **SetupEntryPoint** amikor egy végrehajtható fájl 
 További információ a konfigurálása a **SetupEntryPoint**, lásd: [a házirend-szolgáltatásbeállítás belépési pontjának konfigurálása](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
+
 ## <a name="configure"></a>Konfigurálás
+
 ### <a name="build-a-package-by-using-visual-studio"></a>Csomag létrehozása a Visual Studio használatával
+
 Ha az alkalmazás létrehozása a Visual Studio 2015 használatával, a csomag paranccsal automatikusan hozzon létre egy csomagot, amely megfelel a fent leírt elrendezést.
 
 Hozzon létre egy csomagot, kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza ki a csomag parancs, ahogy az alábbi:
@@ -68,6 +76,7 @@ Hozzon létre egy csomagot, kattintson a jobb gombbal a projektre a Megoldáskez
 Csomagolási befejeződése után annak helye a csomag a **kimeneti** ablak. A csomagolási lépés üzembe helyezésekor vagy alkalmazás hibakeresése a Visual Studio automatikusan történik.
 
 ### <a name="build-a-package-by-command-line"></a>Csomag létrehozása a parancssorból
+
 Programozott módon csomagolnia az alkalmazást a lehetőség arra is `msbuild.exe`. Technikai részletek a Visual Studio fut, így a kimenet a azonos.
 
 ```shell
@@ -75,12 +84,16 @@ D:\Temp> msbuild HelloWorld.sfproj /t:Package
 ```
 
 ## <a name="test-the-package"></a>A csomag tesztelése
+
 A csomag struktúra helyileg a PowerShell használatával ellenőrizheti a [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) parancsot.
 Ez a parancs ellenőrzi a jegyzékfájl problémák elemzése, és ellenőrizze minden hivatkozás. Ezzel a paranccsal csak az a csomagban lévő fájlok és könyvtárak szerkezeti helyességét ellenőrzi.
 A kódon vagy csomag tartalmának ellenőrzése, hogy telepítve-e az összes szükséges fájlok túl bármelyike nem ellenőrzi.
 
+```powershell
+Test-ServiceFabricApplicationPackage .\MyApplicationType
 ```
-PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
+
+```Output
 False
 Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
@@ -89,8 +102,10 @@ FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_71957
 Ez a hiba azt mutatja, hogy a *MySetup.bat* szolgáltatásjegyzékben hivatkozott fájl **SetupEntryPoint** a kódcsomag hiányzik. A hiányzó fájl hozzáadása után az alkalmazás-ellenőrzésre adja át:
 
 ```
-PS D:\temp> tree /f .\MyApplicationType
+tree /f .\MyApplicationType
+```
 
+```Output
 D:\TEMP\MYAPPLICATIONTYPE
 │   ApplicationManifest.xml
 │
@@ -106,10 +121,14 @@ D:\TEMP\MYAPPLICATIONTYPE
     │
     └───MyData
             init.dat
+```
 
-PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
+```powershell
+Test-ServiceFabricApplicationPackage .\MyApplicationType
+```
+
+```Output
 True
-PS D:\temp>
 ```
 
 Ha az alkalmazás [alkalmazásparamétereket](service-fabric-manage-multiple-environment-app-configuration.md) definiált, továbbíthatja őket [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) megfelelő érvényesítés.
@@ -119,6 +138,7 @@ Ha tudja, hogy a fürt, ahol az alkalmazás központi telepítése, akkor ajánl
 Az alkalmazás megfelelően van csomagolva, és a átmennek az ellenőrzésen, fontolja meg a tömörítés gyorsabb üzembe helyezési műveletek esetében a csomagot.
 
 ## <a name="compress-a-package"></a>A csomag tömörítése
+
 Ha a csomag mérete nagy, vagy sok fájl van, gyorsabb üzembe helyezéshez képes tömöríteni. A tömörítés csökkenti a fájlok számát és a csomag mérete.
 Egy tömörített alkalmazáscsomag [az alkalmazáscsomag feltöltése](service-fabric-deploy-remove-applications.md#upload-the-application-package) hosszabb időt vehet igénybe, a tömörítetlen csomag feltöltése képest, különösen akkor, ha a tömörítés másolása részeként történik. A tömörítés [regisztrálása](service-fabric-deploy-remove-applications.md#register-the-application-package) és [nem regisztrálása az alkalmazástípus](service-fabric-deploy-remove-applications.md#unregister-an-application-type) gyorsabb.
 
@@ -131,8 +151,10 @@ A következő parancsot a csomag nélkül másolja, a lemezképtároló tömör�
 A csomag most már tartalmazza a fájlok kibontását a `code`, `config`, és `data` csomagokat. Az alkalmazásjegyzék- és a szolgáltatásjegyzékek vannak nem zip, mivel számos belső művelethez szükség van. Ha például a csomag megosztása után a alkalmazás kapcsolattípus neve és verziója kibontása a jegyzékek eléréséhez szükséges minden egyes ellenőrzések. A jegyzékek becsomagolás biztosítja, ezek a műveletek nem elég hatékony.
 
 ```
-PS D:\temp> tree /f .\MyApplicationType
+tree /f .\MyApplicationType
+```
 
+```Output
 D:\TEMP\MYAPPLICATIONTYPE
 │   ApplicationManifest.xml
 │
@@ -148,10 +170,14 @@ D:\TEMP\MYAPPLICATIONTYPE
     │
     └───MyData
             init.dat
-PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -CompressPackage -SkipCopy
+```
 
-PS D:\temp> tree /f .\MyApplicationType
+```powershell
+Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -CompressPackage -SkipCopy
+tree /f .\MyApplicationType
+```
 
+```Output
 D:\TEMP\MYAPPLICATIONTYPE
 │   ApplicationManifest.xml
 │
@@ -165,8 +191,9 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 Másik lehetőségként tömörítése, és másolja a csomagot a [másolási-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) egy lépésben.
 Ha a csomag nagyméretű, adja meg, hogy időt a csomag tömörítése és a feltöltés, a fürthöz is elég nagy időtúllépés.
-```
-PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -ApplicationPackagePathInImageStore MyApplicationType -ImageStoreConnectionString fabric:ImageStore -CompressPackage -TimeoutSec 5400
+
+```powershell
+Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -ApplicationPackagePathInImageStore MyApplicationType -ImageStoreConnectionString fabric:ImageStore -CompressPackage -TimeoutSec 5400
 ```
 
 A Service Fabric belsőleg, kiszámítja az ellenőrzőösszegek az alkalmazáscsomagok ellenőrzés céljából. Tömörítés használata esetén az ellenőrzőösszegek minden csomag tömörített verzióiban vannak számított. Különböző ellenőrzőösszeg egy új zip generálása az ugyanazon alkalmazás csomagból hoz létre. Érvényesítési hibák megelőzése érdekében használjon [diff kiépítés](service-fabric-application-upgrade-advanced.md). Ezzel a beállítással nem tartalmazzák a változatlan csomagokat az új verzióban. Ehelyett hivatkozzon őket közvetlenül a az új adatszolgáltatási jegyzékfájl.
@@ -176,6 +203,7 @@ Ha diff kiépítése nem lehetőség, a csomagok meg kell adni, hozzon létre az
 A csomag most már megfelelően csomagolva, érvényesítve, és tömörített (ha szükséges), hogy az készen álljon [üzembe helyezési](service-fabric-deploy-remove-applications.md) legalább egy Service Fabric-fürtök.
 
 ### <a name="compress-packages-when-deploying-using-visual-studio"></a>Compress csomagok üzembe helyezésekor a Visual Studio használatával
+
 Visual Studio csomagokat a központi telepítést a tömörítendő hozzáadásával utasíthatja a `CopyPackageParameters` elem a közzétételi profilt, és állítsa be a `CompressPackage` attribútumot `true`.
 
 ``` xml
@@ -187,6 +215,7 @@ Visual Studio csomagokat a központi telepítést a tömörítendő hozzáadás�
 ```
 
 ## <a name="create-an-sfpkg"></a>Hozzon létre egy sfpkg
+
 6.1-es verzióval kezdődően a Service Fabric lehetővé teszi a külső adattárba kiépítése.
 Ezzel a beállítással az alkalmazáscsomag nem kell átmásolni a lemezképtároló. Ehelyett létrehozhat egy `sfpkg` , és töltse fel az egy külső tároló, majd adja meg a letöltési URI-t a Service Fabric üzembe helyezésekor. Több fürt ugyanaz a csomag építhető ki. Másolja a csomagot minden egyes fürt szükséges idő a külső tárolóból kiépítés menti.
 
@@ -207,6 +236,7 @@ Hozza létre a csomagot, használja a külső kiépítését, amelyhez szükség
 > Kiépítés a lemezképet tároló relatív elérési út alapján jelenleg nem támogatja a `sfpkg` fájlokat. Ezért a `sfpkg` nem kell átmásolni a lemezképtároló.
 
 ## <a name="next-steps"></a>További lépések
+
 [Üzembe helyezése és távolíthat el alkalmazásokat] [ 10] ismerteti, hogyan lehet az alkalmazáspéldányok kezelése PowerShell használatával
 
 [Kezelése több környezethez alkalmazásparamétereket] [ 11] paramétereket és a különböző alkalmazáspéldányok a környezeti változók konfigurálását ismerteti.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 6f064bb875786fc50073ab4216bc1c52ace294bf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0688235d928584df223a3a6a6ca2821282e4cb92
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113265"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762684"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Gyakori kérdések az Azure-beli Windows virtuális gépeken futó SQL Serverhez
 
@@ -139,12 +139,7 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
 1. **Használhatok az SQL Server megnevezett példánya az IaaS-bővítménnyel**?
    
-   Igen, ha az elnevezett példány az egyetlen példány az SQL Server-kiszolgálón, és ha az eredeti alapértelmezett példány megfelelően el lett távolítva. Megnevezett példányt használ, tegye a következőket:
-    1. SQL Server virtuális gép üzembe helyezése a piactérről. 
-    1. Távolítsa el az IaaS-bővítményt.
-    1. Az SQL Server teljesen eltávolítani.
-    1. Telepítse az SQL Server nevesített példánnyal. 
-    1. Az IaaS-bővítményének telepítése. 
+   Igen, ha az elnevezett példány az egyetlen példány az SQL Server-kiszolgálón, és ha az eredeti alapértelmezés szerinti példány volt [megfelelően eltávolítani](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md#installation). Ha nem alapértelmezett példány, és több megnevezett példány egyetlen SQL Server virtuális géphez van, az IaaS-bővítmény telepítése sikertelen lesz. 
 
 1. **Eltávolíthatom teljesen az SQL Servert egy SQL-alapú virtuális gépről?**
 
@@ -176,6 +171,10 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 1. **Hogyan kell telepíteni az SQL Data eszközök a saját Azure virtuális gépen**
 
     Töltse le és telepítse az SQL Data eszközöket [Microsoft SQL Server Data Tools – Business Intelligence Visual Studio 2013-hoz készült](https://www.microsoft.com/en-us/download/details.aspx?id=42313).
+
+1. **Elosztott tranzakciók azok az SQL Server virtuális gépeken támogatott MSDTC?**
+   
+    Igen. Helyi DTC támogatott az SQL Server 2016 SP2 és újabb rendszer. Azonban alkalmazások ellenőrizze az Always On rendelkezésre állási csoportok használatával átvitel közben, a feladatátvétel alatt tranzakcióként sikertelen lesz, és meg kell ismételni. Fürtözött DTC-től érhető el a Windows Server 2019 kezdve. 
 
 ## <a name="resources"></a>További források
 

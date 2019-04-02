@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 76bf36f63051f02d6c37261799342f424609f9b2
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: dfdb419a5c06dc50717c0a8a3bdaffb302db52d0
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58442300"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793016"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources"></a>Hitelesíti a blobok és üzenetsorok, a felügyelt identitásokból hozzáférést az Azure-erőforrások
 
@@ -51,7 +51,7 @@ A mintakód feltételezi, hogy egy felügyelt identitás-hozzáférési jogkivon
 
 A Visual Studióban telepítse az Azure Storage ügyféloldali kódtárat. Az a **eszközök** menüjében válassza **Nuget-Csomagkezelő**, majd **Package Manager Console**. A konzolba írja be a következő parancsot:
 
-```
+```powershell
 Install-Package https://www.nuget.org/packages/WindowsAzure.Storage  
 ```
 

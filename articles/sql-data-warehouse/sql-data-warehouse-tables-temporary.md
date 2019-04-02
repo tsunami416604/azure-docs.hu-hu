@@ -7,21 +7,21 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 04/01/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: c989e53113557219e13dd730ac43621d3824baac
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 23a62e28700ad5fd733040c43ea0eec225fd286f
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57434759"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793101"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse az ideiglenes táblák
 Ez a cikk alapvető útmutatást nyújt az ideiglenes táblák használatával, és kiemeli a munkamenet szintű ideiglenes táblák alapelveit. Ebben a cikkben szereplő információk segítségével segítségével modularize újrahasznosíthatóság és a könnyű karbantartás a kód a kódba.
 
 ## <a name="what-are-temporary-tables"></a>Mik azok az ideiglenes táblák?
-Az ideiglenes táblák akkor hasznos, ha a data - feldolgozási különösen hol tárolja a köztes eredményeket a rendszer átmeneti átalakítása során. Az SQL Data Warehouse az ideiglenes táblák létezik, a munkamenet szintjén.  Csak azok a munkamenethez, amelyben létrejöttek, és a rendszer automatikusan elveti a munkamenet kijelentkezésekor látható.  Az ideiglenes táblák teljesítménybeli előnyt kínálnak, mert az eredményeket a távoli tárolás helyett a helyi készültek.  Ideiglenes táblák eltérnek kis mértékben az Azure SQL Data Warehouse Azure SQL Database, azokat is bárhonnan elérhető a munkamenetből belül és kívül tárolt eljárás is beleértve.
+Az ideiglenes táblák akkor hasznos, ha a data - feldolgozási különösen hol tárolja a köztes eredményeket a rendszer átmeneti átalakítása során. Az SQL Data Warehouse az ideiglenes táblák létezik, a munkamenet szintjén.  Csak azok a munkamenethez, amelyben létrejöttek, és a rendszer automatikusan elveti a munkamenet kijelentkezésekor látható.  Az ideiglenes táblák teljesítménybeli előnyt kínálnak, mert az eredményeket a távoli tárolás helyett a helyi készültek.
 
 ## <a name="create-a-temporary-table"></a>Hozzon létre egy ideiglenes táblát
 Az ideiglenes táblák jönnek létre a tábla neve a illesztésével egy `#`.  Példa:
@@ -215,7 +215,7 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>Az ideiglenes tábla korlátozások
-Az SQL Data Warehouse kivetett korlátozások néhány, az ideiglenes táblák végrehajtása során.  Jelenleg csak a munkamenet hatókörű ideiglenes táblák támogatottak.  Globális ideiglenes táblák nem támogatottak.  Emellett nézetek ideiglenes táblák nem hozható létre.
+Az SQL Data Warehouse kivetett korlátozások néhány, az ideiglenes táblák végrehajtása során.  Jelenleg csak a munkamenet hatókörű ideiglenes táblák támogatottak.  Globális ideiglenes táblák nem támogatottak.  Emellett nézetek ideiglenes táblák nem hozható létre.  Az ideiglenes táblák csak a kivonatoló vagy ciklikus időszeletelés terjesztési hozható létre.  A replikált ideiglenes tábla terjesztési nem támogatott. 
 
 ## <a name="next-steps"></a>További lépések
 Táblák fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [táblák áttekintésével](sql-data-warehouse-tables-overview.md).

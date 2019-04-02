@@ -5,24 +5,24 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 6664c3d5fde487b7add7c38dc602915d19adb767
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: f04fa5f43844080638c70c44410d233fbe6ad325
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361982"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805465"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL nyelvi referencia 
 
-Az Azure Cosmos DB támogatja a dokumentumok egy jól ismert SQL (Structured Query Language) lekérdezés nyelvtani például hierarchikus JSON-dokumentumokon végzett explicit séma vagy másodlagos indexek létrehozása nélkül. Ez a cikk az SQL-lekérdezési nyelvi szintaxis, amely kompatibilis az SQL API-fiókok dokumentációját. Példa SQL-lekérdezések leírását lásd: [SQL-lekérdezéseket a Cosmos DB](how-to-sql-query.md).  
+Az Azure Cosmos DB támogatja a dokumentumok egy jól ismert SQL (Structured Query Language) lekérdezés nyelvtani például hierarchikus JSON-dokumentumokon végzett explicit séma vagy másodlagos indexek létrehozása nélkül. Ez a cikk az SQL lekérdezési nyelvi szintaxisát használja az SQL API-fiókok dokumentációját. Példa SQL-lekérdezések leírását lásd: [Cosmos DB-ben az SQL-lekérdezés példák](how-to-sql-query.md).  
   
-Látogasson el a [Query Playground](https://www.documentdb.com/sql/demo) ahol Cosmos DB kipróbálása és az adatkészletet az SQL-lekérdezések futtatásához.  
+Látogasson el a [Query Playground](https://www.documentdb.com/sql/demo), ahol Cosmos DB kipróbálása és SQL-lekérdezések futtatásához egy minta adatkészletig.  
   
 ## <a name="select-query"></a>SELECT-lekérdezésben  
-Minden egyes lekérdezés SELECT záradékában és választható FROM áll és a WHERE záradék ANSI SQL előírások szerint. Általában az egyes lekérdezésekhez a forrás a FROM záradékban számbavétele megtörtént. Ezután a WHERE záradékban a szűrő alkalmazása a forrás a JSON-dokumentumok részhalmazának beolvasásához. Végül a SELECT záradékban szolgál a kért JSON-értékeit a kiválasztási listán. Az ismertető a SELECT utasításokban használt konvencióinak megjelennének a szintaxis konvenciók szakaszban. Példák: [SELECT-lekérdezésben példák](how-to-sql-query.md#SelectClause)
+Minden egyes lekérdezés SELECT záradékában és választható FROM áll és a WHERE záradék ANSI SQL előírások szerint. Általában az egyes lekérdezésekhez a forrás a FROM záradékban számbavétele megtörtént, majd a WHERE záradékban a szűrő a forrás JSON-dokumentumok részhalmazának beolvasásához a. Végül a SELECT záradékban szolgál a kért JSON-értékeit a kiválasztási listán. Példák: [SELECT-lekérdezésben példák](how-to-sql-query.md#SelectClause)
   
 **Syntax**  
   
@@ -2342,7 +2342,7 @@ StringToArray(<expr>)
   
 - `expr`  
   
-   Ez bármilyen érvényes JSON-tömböt kifejezés. Vegye figyelembe, hogy karakterlánc-értékeket kell megírni, az idézőjelekkel együtt, hogy érvényesek legyenek. A JSON-formátumban a részletekért lásd: [json.org](https://json.org/)
+   Van bármilyen érvényes, a egy JSON-tömböt kifejezéssel kiértékelendő skaláris kifejezés. Vegye figyelembe, hogy beágyazott karakterlánc-értékeket kell megírni, az idézőjelekkel együtt, hogy érvényesek legyenek. A JSON-formátumban a részletekért lásd: [json.org](https://json.org/)
   
   **Návratové Typy**  
   
@@ -2352,26 +2352,57 @@ StringToArray(<expr>)
   
   Az alábbi példa bemutatja, hogy több különböző típusú StringToArray működését. 
   
-```  
+ Az alábbi parancsok példák érvényes adatokkal.
+
+```
 SELECT 
-StringToArray('[]'), 
-StringToArray("[1,2,3]"),
-StringToArray("[\"str\",2,3]"),
-IS_ARRAY(StringToArray("[['5','6','7'],['8'],['9']]")), 
-IS_ARRAY(StringToArray('[["5","6","7"],["8"],["9"]]')),
-StringToArray('[1,2,3, "[4,5,6]",[7,8]]'),
-StringToArray("[1,2,3, '[4,5,6]',[7,8]]"),
-StringToArray(false), 
-StringToArray(undefined),
-StringToArray(NaN), 
-StringToArray("[")
-```  
-  
- Íme az eredményhalmaz.  
-  
-```  
-[{"$1": [], "$2": [1,2,3], "$3": ["str",2,3], "$4": false, "$5": true, "$6": [1,2,3,"[4,5,6]",[7,8]]}]
-```  
+    StringToArray('[]') AS a1, 
+    StringToArray("[1,2,3]") AS a2,
+    StringToArray("[\"str\",2,3]") AS a3,
+    StringToArray('[["5","6","7"],["8"],["9"]]') AS a4,
+    StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
+```
+
+ Íme az eredményhalmaz.
+
+```
+[{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
+```
+
+ Érvénytelen bemenet egy példát a következő: 
+   
+ A tömbön belüli szimpla idézőjelek között nem érvényes JSON.
+Akkor is, ha a lekérdezés érvényes, azok fog nem elemezhető érvényes tömbökhöz. A tömb karakterláncon belüli karakterláncokat vagy escape-karakterrel "[\"\"]" vagy a környező ajánlatot egyetlen kell lennie. a(z) [""] ".
+
+```
+SELECT
+    StringToArray("['5','6','7']")
+```
+
+ Íme az eredményhalmaz.
+
+```
+[{}]
+```
+
+ A következő példák érvénytelen bemenet.
+   
+ Az átadott kifejezés fog elemezhető, egy JSON-tömböt; a következő nem értékelik ki, írja be a tömb, és így a nem definiált visszaadása.
+   
+```
+SELECT
+    StringToArray("["),
+    StringToArray("1"),
+    StringToArray(NaN),
+    StringToArray(false),
+    StringToArray(undefined)
+```
+
+ Íme az eredményhalmaz.
+
+```
+[{}]
+```
 
 ####  <a name="bk_stringtoboolean"></a> StringToBoolean  
  Egy logikai lefordítani kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
@@ -2386,7 +2417,7 @@ StringToBoolean(<expr>)
   
 - `expr`  
   
-   Ez bármilyen érvényes kifejezés.  
+   Bármely érvényes skaláris kifejezés, egy logikai kifejezés értékelése van.  
   
   **Návratové Typy**  
   
@@ -2395,25 +2426,55 @@ StringToBoolean(<expr>)
   **Példák**  
   
   Az alábbi példa bemutatja, hogy több különböző típusú StringToBoolean működését. 
-  
+ 
+ Az alábbi parancsok példák érvényes adatokkal.
+
+ Elválasztó karakterek használata engedélyezett, csak előtt vagy után a "true"/ "false".
+
 ```  
 SELECT 
-StringToBoolean("true"), 
-StringToBoolean("    false"),
-IS_BOOL(StringToBoolean("false")), 
-StringToBoolean("null"),
-StringToBoolean(undefined),
-StringToBoolean(NaN), 
-StringToBoolean(false), 
-StringToBoolean(true), 
-StringToBoolean("TRUE"),
-StringToBoolean("False")
+    StringToBoolean("true") AS b1, 
+    StringToBoolean("    false") AS b2,
+    StringToBoolean("false    ") AS b3
 ```  
   
  Íme az eredményhalmaz.  
   
 ```  
-[{"$1": true, "$2": false, "$3": true}]
+[{"b1": true, "b2": false, "b3": false}]
+```  
+
+ Az alábbi példák a bemenet érvénytelen.
+ 
+ Logikai kis-és nagybetűket, és az összes kisbetűs karaktereket, azaz "true" és "false" kellett készülnie.
+
+```  
+SELECT 
+    StringToBoolean("TRUE"),
+    StringToBoolean("False")
+```  
+
+ Íme az eredményhalmaz.  
+  
+```  
+[{}]
+``` 
+
+ Az átadott kifejezés fog elemezhető, egy logikai kifejezés; Írja be a logikai érték, és így a nem definiált vissza nem értékelik ki ezeket a bemeneteket.
+
+ ```  
+SELECT 
+    StringToBoolean("null"),
+    StringToBoolean(undefined),
+    StringToBoolean(NaN), 
+    StringToBoolean(false), 
+    StringToBoolean(true)
+```  
+
+ Íme az eredményhalmaz.  
+  
+```  
+[{}]
 ```  
 
 ####  <a name="bk_stringtonull"></a> StringToNull  
@@ -2429,7 +2490,7 @@ StringToNull(<expr>)
   
 - `expr`  
   
-   Ez bármilyen érvényes kifejezés.  
+   Bármely érvényes, null kifejezésként kiértékelendő skaláris kifejezés van.
   
   **Návratové Typy**  
   
@@ -2438,24 +2499,54 @@ StringToNull(<expr>)
   **Példák**  
   
   Az alábbi példa bemutatja, hogy több különböző típusú StringToNull működését. 
-  
+
+ Az alábbi parancsok példák érvényes adatokkal.
+ 
+ Szóköz kizárólag előtt vagy után "null" használata engedélyezett.
+
 ```  
 SELECT 
-StringToNull("null"), 
-StringToNull("  null "),
-IS_NULL(StringToNull("null")), 
-StringToNull("true"), 
-StringToNull(false), 
-StringToNull(undefined),
-StringToNull(NaN), 
-StringToNull("NULL"),
-StringToNull("Null")
+    StringToNull("null") AS n1, 
+    StringToNull("  null ") AS n2,
+    IS_NULL(StringToNull("null   ")) AS n3
 ```  
   
  Íme az eredményhalmaz.  
   
 ```  
-[{"$1": null, "$2": null, "$3": true}]
+[{"n1": null, "n2": null, "n3": true}]
+```  
+
+ Az alábbi példák a bemenet érvénytelen.
+
+ NULL megkülönbözteti a kis-és nagybetűket, és kell megírni, azaz "null" kisbetűs karakterek.
+
+```  
+SELECT    
+    StringToNull("NULL"),
+    StringToNull("Null")
+```  
+  
+ Íme az eredményhalmaz.  
+  
+```  
+[{}]
+```  
+
+ Az átadott kifejezés fog elemezhető; null kifejezésként Írja be a NULL értékű, és így a nem definiált vissza nem értékelik ki ezeket a bemeneteket.
+
+```  
+SELECT    
+    StringToNull("true"), 
+    StringToNull(false), 
+    StringToNull(undefined),
+    StringToNull(NaN) 
+```  
+  
+ Íme az eredményhalmaz.  
+  
+```  
+[{}]
 ```  
 
 ####  <a name="bk_stringtonumber"></a> StringToNumber  
@@ -2471,7 +2562,7 @@ StringToNumber(<expr>)
   
 - `expr`  
   
-   Ez bármilyen érvényes JSON-szám kifejezés. A JSON-ban számok egész vagy lebegőpontos kell lennie. A JSON-formátumban a részletekért lásd: [json.org](https://json.org/)  
+   Van bármilyen érvényes skaláris kifejezés JSON-szám kifejezésként ki kell értékelni. A JSON-ban számok egész vagy lebegőpontos kell lennie. A JSON-formátumban a részletekért lásd: [json.org](https://json.org/)  
   
   **Návratové Typy**  
   
@@ -2480,27 +2571,52 @@ StringToNumber(<expr>)
   **Példák**  
   
   Az alábbi példa bemutatja, hogy több különböző típusú StringToNumber működését. 
-  
+
+ Elválasztó karakterek használata engedélyezett, a szám csak előtt vagy után.
+ 
 ```  
 SELECT 
-StringToNumber("1.000000"), 
-StringToNumber("3.14"),
-IS_NUMBER(StringToNumber("   60   ")), 
-StringToNumber("0xF"),
-StringToNumber("-1.79769e+308"),
-IS_STRING(StringToNumber("2")),
-StringToNumber(undefined),
-StringToNumber("99     54"), 
-StringToNumber("false"), 
-StringToNumber(false),
-StringToNumber(" "),
-StringToNumber(NaN)
+    StringToNumber("1.000000") AS num1, 
+    StringToNumber("3.14") AS num2,
+    StringToNumber("   60   ") AS num3, 
+    StringToNumber("-1.79769e+308") AS num4
 ```  
   
  Íme az eredményhalmaz.  
   
 ```  
-{{"$1": 1, "$2": 3.14, "$3": true, "$5": -1.79769e+308, "$6": false}}
+{{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
+```  
+
+ A JSON érvényes számnak kell lennie vagy kell egész vagy lebegőpontos szám.
+ 
+```  
+SELECT   
+    StringToNumber("0xF")
+```  
+  
+ Íme az eredményhalmaz.  
+  
+```  
+{{}}
+```  
+
+ Az átadott kifejezés fog elemezhető szám kifejezésként; Írja be a szám és így nem definiált nem értékelik ki ezeket a bemeneteket. 
+
+```  
+SELECT 
+    StringToNumber("99     54"),   
+    StringToNumber(undefined),
+    StringToNumber("false"),
+    StringToNumber(false),
+    StringToNumber(" "),
+    StringToNumber(NaN)
+```  
+  
+ Íme az eredményhalmaz.  
+  
+```  
+{{}}
 ```  
 
 ####  <a name="bk_stringtoobject"></a> StringToObject  
@@ -2516,7 +2632,7 @@ StringToObject(<expr>)
   
 - `expr`  
   
-   Bármely érvényes JSON-objektum kifejezés van. Vegye figyelembe, hogy karakterlánc-értékeket kell megírni, az idézőjelekkel együtt, hogy érvényesek legyenek. A JSON-formátumban a részletekért lásd: [json.org](https://json.org/)  
+   Van bármilyen érvényes, a egy JSON-objektum kifejezéssel kiértékelendő skaláris kifejezés. Vegye figyelembe, hogy beágyazott karakterlánc-értékeket kell megírni, az idézőjelekkel együtt, hogy érvényesek legyenek. A JSON-formátumban a részletekért lásd: [json.org](https://json.org/)  
   
   **Návratové Typy**  
   
@@ -2526,26 +2642,73 @@ StringToObject(<expr>)
   
   Az alábbi példa bemutatja, hogy több különböző típusú StringToObject működését. 
   
-```  
+ Az alábbi parancsok példák érvényes adatokkal.
+ 
+``` 
 SELECT 
-StringToObject("{}"), 
-StringToObject('{"a":[1,2,3]}'),
-StringToObject("{'a':[1,2,3]}"),
-StringToObject("{a:[1,2,3]}"),
-IS_OBJECT(StringToObject('{"obj":[{"b":[5,6,7]},{"c":8},{"d":9}]}')), 
-IS_OBJECT(StringToObject("{\"obj\":[{\"b\":[5,6,7]},{\"c\":8},{\"d\":9}]}")), 
-IS_OBJECT(StringToObject("{'obj':[{'b':[5,6,7]},{'c':8},{'d':9}]}")), 
-StringToObject(false), 
-StringToObject(undefined),
-StringToObject(NaN), 
-StringToObject("{")
+    StringToObject("{}") AS obj1, 
+    StringToObject('{"A":[1,2,3]}') AS obj2,
+    StringToObject('{"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]}') AS obj3, 
+    StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
+``` 
+
+ Íme az eredményhalmaz.
+
+```
+[{"obj1": {}, 
+  "obj2": {"A": [1,2,3]}, 
+  "obj3": {"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]},
+  "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
+```
+ 
+ Az alábbi példák a bemenet érvénytelen.
+Akkor is, ha a lekérdezés érvényes, azok fog nem elemezhető érvényes objektumra. Karakterláncok a karakterláncot, objektumot vagy escape-karakterrel "{\"egy\":\"str\"}", vagy a környező ajánlatot egyetlen kell lennie. a(z) "{"a":"str"}".
+
+ A tulajdonságnevek körülvevő szimpla idézőjelek között nem érvényes JSON.
+
+``` 
+SELECT 
+    StringToObject("{'a':[1,2,3]}")
+```
+
+ Íme az eredményhalmaz.
+
 ```  
-  
- Íme az eredményhalmaz.  
-  
+[{}]
 ```  
-[{"$1": {}, "$2": {"a": [1,2,3]}, "$5": true, "$6": true, "$7": false}]
+
+ Körülvevő idézőjeleket tulajdonság nevében a rendszer nem érvényes JSON.
+
+``` 
+SELECT 
+    StringToObject("{a:[1,2,3]}")
+```
+
+ Íme az eredményhalmaz.
+
 ```  
+[{}]
+``` 
+
+ Az alábbi példák a bemenet érvénytelen.
+ 
+ Az átadott kifejezés fog elemezhető JSON-objektumként; Írja be az objektum, és így a nem definiált vissza nem értékelik ki ezeket a bemeneteket.
+ 
+``` 
+SELECT 
+    StringToObject("}"),
+    StringToObject("{"),
+    StringToObject("1"),
+    StringToObject(NaN), 
+    StringToObject(false), 
+    StringToObject(undefined)
+``` 
+ 
+ Íme az eredményhalmaz.
+
+```
+[{}]
+```
 
 ####  <a name="bk_substring"></a> KARAKTERLÁNCRÉSZLET  
  Már a megadott karakter számolt helyzetét megadja egy karakterlánc-kifejezés részét adja vissza, és továbbra is fennáll, a megadott időtartam, illetve a karakterlánc végén.  

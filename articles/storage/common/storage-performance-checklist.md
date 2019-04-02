@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: d39c2414aa8299282b3896a9ceb57897fdb25ff1
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446000"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793968"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>A Microsoft Azure Storage teljesítmény- és méretezhetőségi ellenőrzőlistája
 ## <a name="overview"></a>Áttekintés
@@ -297,9 +297,7 @@ Ez a szakasz felsorolja a több gyors konfigurációs beállítások segítség�
 További információkért tekintse meg a bejegyzését [a Microsoft Azure-beli táblák: A JSON ismertetése](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) és [adattartalom formátuma a Table Service műveletek](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
 #### <a name="subheading26"></a>Nagle kikapcsolása
-A Nagle algoritmus széles körben van megvalósítva TCP/IP-hálózatokon keresztül való hálózati teljesítmény javításához. Azonban akkor sem optimális minden körülmények között (például az interaktív környezetekben). Az Azure Storage esetében Nagle a algoritmus negatív hatással van a tábla és üzenetsor szolgáltatásokra irányuló kérések teljesítményét, és tiltsa le, ha lehetséges.  
-
-További információkért lásd: a blogbejegyzést [Nagle az algoritmus a kis méretű kérések felé nem valódi](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), amely azt ismerteti, miért Nagle a algoritmus tábla és üzenetsor kérések rosszul kommunikál, és bemutatja, hogyan tilthatja le a az ügyfélben az alkalmazás.  
+A Nagle algoritmus széles körben van megvalósítva TCP/IP-hálózatokon keresztül való hálózati teljesítmény javításához. Azonban akkor sem optimális minden körülmények között (például az interaktív környezetekben). Az Azure Storage esetében Nagle a algoritmus negatív hatással van a tábla és üzenetsor szolgáltatásokra irányuló kérések teljesítményét, és tiltsa le, ha lehetséges.
 
 ### <a name="schema"></a>Séma
 Hogyan felel meg, és lekérdezheti az adatokat az a legnagyobb egyetlen szolgáltatás, amely befolyásolja a teljesítményt, a table Service. Bár minden alkalmazás különböző, az ebben a szakaszban néhány általános kapcsolódó bevált eljárásokat ismerteti:  
@@ -390,7 +388,7 @@ Megtekintheti az aktuális skálázhatósági célokat, [Azure Storage méretezh
 Című témakör a tábla-konfigurációt, amely ismerteti a Nagle algoritmus – a Nagle algoritmus a teljesítmény, várólista-kérelmek általában hibás, és tiltsa le.  
 
 ### <a name="subheading41"></a>Üzenet mérete
-Várólista teljesítményének és méretezhetőségének csökken a üzenet méretének növekedése. Az üzenet csak a fogadó kell információt helyezze.  
+Várólista teljesítményének és méretezhetőségének csökkentheti a üzenet méretének növekedése. Az üzenet csak a fogadó kell információt helyezze.  
 
 ### <a name="subheading42"></a>A Batch lekéréséhez
 Legfeljebb 32 üzenetet egy üzenetsorból egyetlen művelettel kérheti le. Ez csökkentheti életű könyvtárgyorsítótárból száma az ügyfélalkalmazás, amely különösen hasznos a környezetekben, mobileszközök, például magas késést biztosítanak.  
@@ -401,7 +399,7 @@ A legtöbb alkalmazás elindítja a lekérdezést az üzeneteket az üzenetsorb�
 Naprakész költség információkért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).  
 
 ### <a name="subheading44"></a>UpdateMessage
-Használhat **UpdateMessage** növelheti az láthatatlansági időkorlátot, vagy a állapotadatokat, egy üzenet frissítéséhez. Amíg ez a hatékony, ne feledje, hogy minden egyes **UpdateMessage** művelettel counts a skálázhatósági célok felé. Azonban ez lehet egy sokkal hatékonyabb megközelítést, mint ha egy munkafolyamatot, amely egy feladat a következő egy olyan sort adja át a feladat egyes lépéseinek befejezettként. Használatával a **UpdateMessage** művelet lehetővé teszi, hogy az alkalmazása az üzenetre a feladat állapot mentése és folytathatják a munkát, az üzenet a következő lépés a feladat újbóli queuing, minden alkalommal, amikor egy lépés befejezése helyett.  
+Használhat **UpdateMessage** növelheti az láthatatlansági időkorlátot, vagy a állapotadatokat, egy üzenet frissítéséhez. Amíg ez a hatékony, ne feledje, hogy minden egyes **UpdateMessage** művelettel counts a skálázhatósági célok felé. Azonban ez lehet egy sokkal hatékonyabb megközelítést, mint ha egy munkafolyamatot, amely egy feladat a következő egy olyan sort adja át a feladat egyes lépéseinek befejezettként. Használatával a **UpdateMessage** művelet lehetővé teszi, hogy az alkalmazása az üzenetre a feladat állapot mentése és folytathatják a munkát, az üzenet a feladat a következő lépéshez requeuing minden alkalommal, amikor egy lépés befejezi helyett.  
 
 További információkért tekintse meg a cikket [hogyan: Üzenetsorban található üzenet tartalmának módosítása](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
 

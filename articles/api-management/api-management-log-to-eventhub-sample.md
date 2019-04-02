@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: cdaaf5323543377d9c2b603ad7377d088710cde8
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c52a1942bda9881f8f782a227c81feaa4813722d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447745"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793637"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Az Azure API Management, az Event Hubs és Moesif API-k monitorozása
 A [API Management-szolgáltatás](api-management-key-concepts.md) javíthatják a HTTP API-nak küldött HTTP-kérések feldolgozását számos funkciót kínál. Létezik-e a kérelmek és válaszok azonban csak átmeneti. A kérelmet, és biztosítani az API Management szolgáltatás számára a háttérrendszeri API segítségével. Az API-t feldolgozza a kérést és választ keresztüláramló vissza az API fogyasztó számára. Az API Management szolgáltatás tartja néhány Megjelenítés az API-k leíró fontos statisztikákat az Azure portal irányítópultján, de után eltűnnek róla, hogy a részletek.
@@ -47,7 +47,7 @@ Egy Eseményközpont eseményadatok egyszerű karakterláncként fogad el. A kar
 
 Egy másik lehetséges volt, hogy használja a `application/http` media írja be a HTTP-specifikációnak leírtak szerint [RFC 7230](https://tools.ietf.org/html/rfc7230). Ez az adathordozó típusát pontosan ugyanazt a formátumot használja, amely ténylegesen a hálózaton keresztül a HTTP-üzenetek küldésére szolgál, de a teljes üzenetet lehet helyezni egy másik HTTP-kérelem törzse. Ebben az esetben az imént fogjuk a szervezet használja az üzenet küldése az Event Hubsba. Kényelmesen, van egy elemző, amely létezik a [Microsoft ASP.NET webes API 2.2-es ügyfél](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) kódtárakat, amely ebben a formátumban értelmezni és átalakíthatja a natív `HttpRequestMessage` és `HttpResponseMessage` objektumokat.
 
-Hogy ezt az üzenetet létrehozni, használja ki a C#-alapú kell [házirend-kifejezések](https://msdn.microsoft.com/library/azure/dn910913.aspx) az Azure API Management szolgáltatásban. Íme a szabályzatot, amely HTTP-kérelem üzenetet küld az Azure Event Hubs.
+Hogy ezt az üzenetet létrehozni, használja ki a C#-alapú kell [házirend-kifejezések](/azure/api-management/api-management-policy-expressions) az Azure API Management szolgáltatásban. Íme a szabályzatot, amely HTTP-kérelem üzenetet küld az Azure Event Hubs.
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -315,4 +315,4 @@ Az Azure API Management-szolgáltatás szempontokból ideális hely utazik, és 
 * További információ az API Management és az Event Hubs-integráció
   * [Eseménynaplózás az Azure Event Hubs az Azure API Management hogyan](api-management-howto-log-event-hubs.md)
   * [Naplózó entitások bemutatása](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [napló eventhub házirend-referencia](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
+  * [napló eventhub házirend-referencia](/azure/api-management/api-management-advanced-policies#log-to-eventhub)

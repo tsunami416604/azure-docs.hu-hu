@@ -7,20 +7,15 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: b9462866f0be62d288e121b71119d0f9885a0d39
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.date: 03/29/2019
+ms.openlocfilehash: 6661ed7e8950c1658ef89858140e2d196999d543
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439413"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803085"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
-
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
-
-> [!IMPORTANT]  
-> 2019. február 28., miután a hálózati erőforrások (például a hálózati adapterek, LBs stb.) egy virtuális hálózaton létrehozott új fürtök esetében a HDInsight fürt azonos erőforráscsoportban jön létre. Korábban ezeket az erőforrásokat kiépített virtuális hálózat az erőforráscsoportban. Nem történik változás az aktuális futó fürtök és ezeket a virtuális hálózat nélkül létrehozott fürtök.
 
 Ismerje meg, hogyan használható a HDInsight- [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Az Azure Virtual Network használatával lehetővé teszi, hogy a következő esetekben:
 
@@ -30,13 +25,17 @@ Ismerje meg, hogyan használható a HDInsight- [Azure Virtual Network](../virtua
 
 * Közvetlen hozzáférés [Apache Hadoop](https://hadoop.apache.org/) szolgáltatásokat, amelyek nem érhető el nyilvánosan az interneten keresztül. Ha például [Apache Kafka](https://kafka.apache.org/) API-k vagy a [Apache HBase](https://hbase.apache.org/) Java API-t.
 
-> [!WARNING]  
-> A jelen dokumentumban lévő információk a TCP/IP-hálózati ismeretét igényli. Ha nem ismeri a TCP/IP-hálózat, meg kell partneri valakivel, aki a módosításokat éles hálózati környezetben a végrehajtása előtt.
+> [!IMPORTANT]  
+> 2019. február 28., miután a hálózati erőforrások (például a hálózati adapterek, LBs stb.) egy virtuális hálózaton létrehozott új fürtök esetében a HDInsight fürt azonos erőforráscsoportban jön létre. Korábban ezeket az erőforrásokat kiépített virtuális hálózat az erőforráscsoportban. Nem történik változás az aktuális futó fürtök és ezeket a virtuális hálózat nélkül létrehozott fürtök.
+
+## <a name="prerequisites-for-code-samples-and-examples"></a>Kódminták és példák előfeltételei
+
+* A TCP/IP-hálózat megismerése. Ha nem ismeri a TCP/IP-hálózat, meg kell partneri valakivel, aki a módosításokat éles hálózati környezetben a végrehajtása előtt.
+* Ha a PowerShell használatával, akkor a [AZ modul](https://docs.microsoft.com/powershell/azure/overview).
+* Ha szeretnék használni az Azure CLI-vel, és még nem telepítette azt, lásd: [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 > [!IMPORTANT]  
 > Ha a csatlakozás részletes útmutatást HDInsight, a helyszíni hálózat az Azure Virtual Network használatával, lásd: a [HDInsight csatlakoztatása a helyszíni hálózathoz](connect-on-premises-network.md) dokumentumot.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="planning"></a>Tervezés
 
@@ -74,21 +73,21 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
 3. Használják a hálózati biztonsági csoportok, a felhasználó által megadott útvonalakat vagy a virtuális hálózati berendezések irányuló forgalom korlátozásához, vagy onnan máshová a virtuális hálózaton?
 
     Felügyelt szolgáltatásként a HDInsight több IP-címek az Azure-adatközpontban korlátlan hozzáférést igényel. Engedélyezi a kommunikációt az ezen IP-címek, bármely meglévő hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalak frissítése.
-
+    
     HDInsight különböző portok használata több szolgáltatások üzemelteti. Ne blokkolják ezeket a portokat a forgalmat. Engedélyezett a virtuális készülék tűzfalak, portok listáját tekintse meg a biztonsági szakaszt.
-
-    A meglévő biztonsági konfiguráció, használja a következő Azure PowerShell vagy a klasszikus Azure CLI-parancsokat:
+    
+    A meglévő biztonsági konfiguráció, használja a következő Azure PowerShell vagy az Azure CLI-parancsokat:
 
     * Network security groups (Hálózati biztonsági csoportok)
 
+        Cserélje le `RESOURCEGROUP` , amely tartalmazza a virtuális hálózathoz, és írja be a parancsot az erőforráscsoport nevét:
+    
         ```powershell
-        $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
-        get-Aznetworksecuritygroup -resourcegroupname $resourceGroupName
+        Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
         ```
-
-        ```azurecli-interactive
-        read -p "Enter the name of the resource group that contains the virtual network: " RESOURCEGROUP
-        az network nsg list --resource-group $RESOURCEGROUP
+    
+        ```azurecli
+        az network nsg list --resource-group RESOURCEGROUP
         ```
 
         További információkért lásd: a [hálózati biztonsági csoportok hibaelhárítása](../virtual-network/diagnose-network-traffic-filter-problem.md) dokumentumot.
@@ -98,14 +97,14 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
 
     * Felhasználó által megadott útvonalak
 
+        Cserélje le `RESOURCEGROUP` , amely tartalmazza a virtuális hálózathoz, és írja be a parancsot az erőforráscsoport nevét:
+
         ```powershell
-        $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
-        get-Azroutetable -resourcegroupname $resourceGroupName
+        Get-AzRouteTable -ResourceGroupName "RESOURCEGROUP"
         ```
 
-        ```azurecli-interactive
-        read -p "Enter the name of the resource group that contains the virtual network: " RESOURCEGROUP
-        az network route-table list --resource-group $RESOURCEGROUP
+        ```azurecli
+        az network route-table list --resource-group RESOURCEGROUP
         ```
 
         További információkért lásd: a [útvonalakkal kapcsolatos hibaelhárítás](../virtual-network/diagnose-network-routing-problem.md) dokumentumot.
@@ -178,16 +177,16 @@ További információkért lásd: a [virtuális gépek és Szerepkörpéldányok
 
 ## <a name="directly-connect-to-apache-hadoop-services"></a>Közvetlenül kapcsolódhat az Apache Hadoop-szolgáltatásokhoz
 
-Csatlakozhat a fürthöz https://CLUSTERNAME.azurehdinsight.net. A cím egy nyilvános IP-címet használja, ami nem feltétlenül érhető el, ha az NSG-k segítségével az internetről bejövő forgalom korlátozása. Emellett a fürt egy virtuális hálózaton üzembe hozzá tud férni a privát végpont használatával https://CLUSTERNAME-int.azurehdinsight.net. Ez a végpont a fürt hozzáférés a virtuális hálózaton belül egy privát IP-cím mutat.
+Csatlakozhat a fürthöz `https://CLUSTERNAME.azurehdinsight.net`. A cím egy nyilvános IP-címet használja, ami nem feltétlenül érhető el, ha az NSG-k segítségével az internetről bejövő forgalom korlátozása. Emellett a fürt egy virtuális hálózaton üzembe hozzá tud férni a privát végpont használatával `https://CLUSTERNAME-int.azurehdinsight.net`. Ez a végpont a fürt hozzáférés a virtuális hálózaton belül egy privát IP-cím mutat.
 
 Az Apache Ambari és a más weblapok, a virtuális hálózaton keresztül csatlakozni, használja az alábbi lépéseket:
 
 1. A HDInsight-fürtcsomópontok keresheti meg a belső teljesen minősített tartománynevet (FQDN), használja a következő módszerek egyikét:
 
-    ```powershell
-    $resourceGroupName = "The resource group that contains the virtual network used with HDInsight"
+    Cserélje le `RESOURCEGROUP` , amely tartalmazza a virtuális hálózathoz, és írja be a parancsot az erőforráscsoport nevét:
 
-    $clusterNICs = Get-AzNetworkInterface -ResourceGroupName $resourceGroupName | where-object {$_.Name -like "*node*"}
+    ```powershell
+    $clusterNICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP" | where-object {$_.Name -like "*node*"}
 
     $nodes = @()
     foreach($nic in $clusterNICs) {
@@ -201,7 +200,7 @@ Az Apache Ambari és a más weblapok, a virtuális hálózaton keresztül csatla
     ```
 
     ```azurecli
-    az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
+    az network nic list --resource-group RESOURCEGROUP --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
     A csomópontok visszaadott listában keresse meg a teljes tartománynév a fő csomópontok, és a teljes tartománynevek használatával csatlakozik az Ambari és más webes szolgáltatásokat. Például `http://<headnode-fqdn>:8080` Ambari eléréséhez.
@@ -224,7 +223,7 @@ Egy Azure-beli virtuális hálózatok hálózati forgalmához szabályozhatja a 
 
 * **Hálózati virtuális berendezések** replikálni, például a tűzfalak és az útválasztók eszközök működésével. További információkért lásd: a [hálózati berendezések](https://azure.microsoft.com/solutions/network-appliances) dokumentumot.
 
-Felügyelt szolgáltatásként HDInsight a HDinsight állapota nem korlátozott hozzáférésre van szüksége, és felügyeleti szolgáltatásokat, mind a bejövő és kimenő forgalmat a virtuális hálózatról. Az NSG-k és az udr-EK használata esetén győződjön meg róla, hogy ezek a szolgáltatások továbbra is kommunikál HDInsight-fürt.
+Felügyelt szolgáltatásként HDInsight a HDInsight állapota nem korlátozott hozzáférésre van szüksége, és felügyeleti szolgáltatásokat, mind a bejövő és kimenő forgalmat a virtuális hálózatról. Az NSG-k és az udr-EK használata esetén győződjön meg róla, hogy ezek a szolgáltatások továbbra is kommunikál HDInsight-fürt.
 
 ### <a id="hdinsight-ip"></a> A hálózati biztonsági csoportok és a felhasználó által megadott útvonalak HDInsight
 
@@ -445,48 +444,48 @@ $vnet | Set-AzVirtualNetwork
 > Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 > ```
 
-### <a name="azure-classic-cli"></a>Az Azure klasszikus parancssori felület
+### <a name="azure-cli"></a>Azure CLI
 
 Az alábbi lépések segítségével hozzon létre egy virtuális hálózatot, amely korlátozza a bejövő forgalmat, de lehetővé teszi, hogy a HDInsight által igényelt IP-címekről érkező forgalom.
 
-1. A következő paranccsal hozzon létre egy új hálózati biztonsági csoport nevű `hdisecure`. Cserélje le **RESOURCEGROUPNAME** az erőforráscsoport, amely tartalmazza az Azure Virtual Network. Cserélje le **hely** a hely (régió), amely a csoport sikeresen létrehozva.
+1. A következő paranccsal hozzon létre egy új hálózati biztonsági csoport nevű `hdisecure`. Cserélje le `RESOURCEGROUP` az erőforráscsoport, amely tartalmazza az Azure Virtual Network. Cserélje le `LOCATION` a hely (régió), amely a csoport sikeresen létrehozva.
 
     ```azurecli
-    az network nsg create -g RESOURCEGROUPNAME -n hdisecure -l LOCATION
+    az network nsg create -g RESOURCEGROUP -n hdisecure -l LOCATION
     ```
 
     A csoport létrehozása után az új csoport tájékoztatást kap.
 
-2. Használja a következő használatával adhat szabályokat az új hálózati biztonsági csoportot, amely engedélyezi a bejövő kommunikációt az az Azure HDInsight állapotát és a felügyeleti szolgáltatás a 443-as porton. Cserélje le **RESOURCEGROUPNAME** az erőforráscsoport, amely tartalmazza az Azure virtuális hálózat nevére.
+2. Használja a következő használatával adhat szabályokat az új hálózati biztonsági csoportot, amely engedélyezi a bejövő kommunikációt az az Azure HDInsight állapotát és a felügyeleti szolgáltatás a 443-as porton. Cserélje le `RESOURCEGROUP` az erőforráscsoport, amely tartalmazza az Azure virtuális hálózat nevére.
 
     > [!IMPORTANT]  
     > Módosítsa megfelelően az Azure-régió használata ebben a példában használt IP-címeket. Ezt az információt talál a [a hálózati biztonsági csoportok és a felhasználó által megadott útvonalak HDInsight](#hdinsight-ip) szakaszban.
 
     ```azurecli
-    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
-    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "13.74.153.132" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 301 --direction "Inbound"
-    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule3 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.49.99" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 302 --direction "Inbound"
-    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
-    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"
-    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule6 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 305 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "13.74.153.132" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 301 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule3 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.49.99" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 302 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule4 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule6 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 305 --direction "Inbound"
     ```
 
 3. Lekérdezheti a hálózati biztonsági csoport egyedi azonosítója, használja a következő parancsot:
 
     ```azurecli
-    az network nsg show -g RESOURCEGROUPNAME -n hdisecure --query 'id'
+    az network nsg show -g RESOURCEGROUP -n hdisecure --query 'id'
     ```
 
     Ez a parancs egy értéket ad vissza az alábbi szöveghez hasonló:
 
-        "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+        "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
 
-    A parancsban azonosító körüli dupla idézőjel használja, ha nem a várt eredményt kap.
+    Körüli dupla idézőjelet használni `id` a parancsban, ha nem a várt eredményt kap.
 
-4. Az alábbi parancs segítségével alkalmazhatja a hálózati biztonsági csoport egy alhálózatot. Cserélje le a __GUID__ és __RESOURCEGROUPNAME__ az előző lépésben által visszaadott értékeket olyanokra cserélni. Cserélje le __VNETNAME__ és __SUBNETNAME__ virtuális hálózat nevére, illetve, hogy a létrehozni kívánt alhálózat neve.
+4. Az alábbi parancs segítségével alkalmazhatja a hálózati biztonsági csoport egy alhálózatot. Cserélje le a `GUID` és `RESOURCEGROUP` az előző lépésben által visszaadott értékeket olyanokra cserélni. Cserélje le `VNETNAME` és `SUBNETNAME` virtuális hálózat nevére, illetve, hogy a létrehozni kívánt alhálózat neve.
 
     ```azurecli
-    az network vnet subnet update -g RESOURCEGROUPNAME --vnet-name VNETNAME --name SUBNETNAME --set networkSecurityGroup.id="/subscriptions/GUID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    az network vnet subnet update -g RESOURCEGROUP --vnet-name VNETNAME --name SUBNETNAME --set networkSecurityGroup.id="/subscriptions/GUID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
     ```
 
     Ez a parancs befejeződése után telepítheti a HDInsight a virtuális hálózatban.
@@ -497,7 +496,7 @@ Az alábbi lépések segítségével hozzon létre egy virtuális hálózatot, a
 > A következő példa bemutatja, hogyan engedélyezheti az internetről érkező SSH-hozzáférés:
 >
 > ```azurecli
-> az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
+> az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
 > ```
 
 ## <a id="example-dns"></a> Példa: DNS-konfiguráció
@@ -514,17 +513,17 @@ Ebben a példában feltételezésekre a következő:
 
 Az egyéni DNS-kiszolgálón a virtuális hálózat:
 
-1. Azure PowerShell vagy a klasszikus Azure CLI használatával keresse meg a virtuális hálózat DNS-utótag:
+1. Azure PowerShell vagy az Azure CLI használatával keresse meg a virtuális hálózat DNS-utótag:
+
+    Cserélje le `RESOURCEGROUP` , amely tartalmazza a virtuális hálózathoz, és írja be a parancsot az erőforráscsoport nevét:
 
     ```powershell
-    $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
-    $NICs = Get-AzNetworkInterface -ResourceGroupName $resourceGroupName
+    $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
 
-    ```azurecli-interactive
-    read -p "Enter the name of the resource group that contains the virtual network: " RESOURCEGROUP
-    az network nic list --resource-group $RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
+    ```azurecli
+    az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
 2. Az egyéni DNS-kiszolgálón a virtuális hálózat, használja a következő szöveget a tartalmát, a `/etc/bind/named.conf.local` fájlt:
@@ -596,17 +595,17 @@ Ebben a példában feltételezésekre a következő:
 
 * [Kötési](https://www.isc.org/downloads/bind/) telepítve van az egyéni DNS-kiszolgálók.
 
-1. Azure PowerShell vagy a klasszikus Azure CLI segítségével mindkét virtuális hálózat DNS-utótagját keresése:
+1. Azure PowerShell vagy az Azure CLI segítségével mindkét virtuális hálózat DNS-utótagját keresése:
+
+    Cserélje le `RESOURCEGROUP` , amely tartalmazza a virtuális hálózathoz, és írja be a parancsot az erőforráscsoport nevét:
 
     ```powershell
-    $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
-    $NICs = Get-AzNetworkInterface -ResourceGroupName $resourceGroupName
+    $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
 
-    ```azurecli-interactive
-    read -p "Enter the name of the resource group that contains the virtual network: " RESOURCEGROUP
-    az network nic list --resource-group $RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
+    ```azurecli
+    az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
 2. Használja a következő szöveget a tartalmát, a `/etc/bind/named.config.local` fájlt az egyéni DNS-kiszolgálón. A módosítás végrehajtása mindkét virtuális hálózat egyéni DNS-kiszolgálón.
@@ -650,9 +649,9 @@ Ebben a példában feltételezésekre a következő:
     };
     ```
     
-   * Cserélje le a `10.0.0.0/16` és `10.1.0.0/16` értékek IP-címtartományok a virtuális hálózatok. Ez a bejegyzés lehetővé teszi, hogy erőforrásokat az egyes hálózatok, hogy a DNS-kiszolgálók kéréseket.
+   Cserélje le a `10.0.0.0/16` és `10.1.0.0/16` értékek IP-címtartományok a virtuális hálózatok. Ez a bejegyzés lehetővé teszi, hogy erőforrásokat az egyes hálózatok, hogy a DNS-kiszolgálók kéréseket.
 
-     Az Azure rekurzív feloldó, amelyek nem a virtuális hálózatok (például microsoft.com) DNS-utótagot a kérések kezeli.
+    Az Azure rekurzív feloldó, amelyek nem a virtuális hálózatok (például microsoft.com) DNS-utótagot a kérések kezeli.
 
 4. A konfiguráció használatához indítsa újra a kötés. Ha például `sudo service bind9 restart` mindkét DNS-kiszolgálókon.
 

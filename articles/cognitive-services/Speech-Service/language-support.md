@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 3188b5acc00f7f0463ae1154346447bee463e09c
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 0a82c2ba8bdf3d01041aa06f55eaaecab29817b2
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225433"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803103"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>A beszédfelismerési szolgáltatás nyelvéhez és régiójához támogatása
 
@@ -55,7 +55,7 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egy
  ru-RU | orosz (Oroszország) | Igen | Igen | Nem
  SV-SE | svéd (Svédország) | Nem | Nem | Nem
  zh-CN | Kínai (Mandarin, egyszerűsített) | Igen | Igen | Nem
- zh-HK | Kínai (Mandarin, hagyományos) | Nem | Igen | Nem
+ zh-HK | Kínai (Kantoni, hagyományos) | Nem | Igen | Nem
  zh-TW | Kínai (tajvani Mandarin) | Nem | Igen | Nem
  cs-EDIK | thai (Thaiföld) | Nem | Nem | Nem
 

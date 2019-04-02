@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a4426b665c58dd2c0bf7f5b5b41ebfca158e782
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 3a0d10f373b045058c6df242c4d98f78d04c4490
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444725"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801133"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Az Azure Portallal blob és üzenetsor adatok elérését
 
@@ -47,11 +47,11 @@ A **olvasó** szerepkör-hozzárendelés vagy egy másik Azure-erőforrás-kezel
 
 A beépített szerepkörök, amelyek támogatják a blob és üzenetsor-adatokhoz való hozzáférést a következők:
 
-- [Tárolási Blob adatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner-preview): A POSIX hozzáférés-vezérlés az Azure Data Lake Storage Gen2 (előzetes verzió).
-- [Storage-Blobadatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview): Blobok olvasási, írási és törlési engedélyek.
-- [Storage-Blobadatok olvasója](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview): Blobok csak olvasható engedélyek.
-- [Storage-Üzenetsorbeli adatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor-preview): Olvasási, írási és törlési engedélyek sorra.
-- [Storage-Üzenetsorbeli adatok olvasója](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader-preview): Üzenetsorok csak olvasható engedélyek.
+- [Tárolási Blob adatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): A POSIX hozzáférés-vezérlés az Azure Data Lake Storage Gen2 (előzetes verzió).
+- [Storage-Blobadatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Blobok olvasási, írási és törlési engedélyek.
+- [Storage-Blobadatok olvasója](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Blobok csak olvasható engedélyek.
+- [Storage-Üzenetsorbeli adatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Olvasási, írási és törlési engedélyek sorra.
+- [Storage-Üzenetsorbeli adatok olvasója](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): Üzenetsorok csak olvasható engedélyek.
     
 Egyéni szerepkör ugyanazokkal az engedélyekkel a beépített szerepkörök által biztosított különböző kombinációit is támogatja. Egyéni RBAC-szerepkörök létrehozásával kapcsolatos további információkért lásd: [egyéni szerepkörök az Azure-erőforrások](../../role-based-access-control/custom-roles.md) és [megismerheti az Azure-erőforrások szerepkör-definíciók](../../role-based-access-control/role-definitions.md).
 

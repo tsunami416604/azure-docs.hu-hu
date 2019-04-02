@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 028b36cc442ccef8af4aa401846cbacdaaab35bf
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 14f84b5380a1c106114cdab425de7f69f4e19825
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428482"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793560"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Eseménynaplózás az Azure Event Hubs az Azure API Management hogyan
 Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs úgy működik, mint a "bejárati ajtajának" egy eseményfolyamat számára, és az összegyűjtött adatokat egy eseményközpontba, átalakíthatók, és bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével tárolják. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez.
@@ -40,7 +40,7 @@ Hozzon létre egy naplózó, győződjön meg arról, egy HTTP PUT kérelem a k�
 `https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2017-03-01`
 
 * Cserélje le `{your service}` az API Management szolgáltatáspéldányhoz nevére.
-* Cserélje le `{new logger name}` az új naplózó kívánt nevét. Ez a név hivatkozik, amikor konfigurálja a [log-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) házirend
+* Cserélje le `{new logger name}` az új naplózó kívánt nevét. Ez a név hivatkozik, amikor konfigurálja a [log-eventhub](/azure/api-management/api-management-advanced-policies#log-to-eventhub) házirend
 
 Adja hozzá a következő fejléceket a kérelmet:
 

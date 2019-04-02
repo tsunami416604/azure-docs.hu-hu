@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: aed3d08f96265736889deccf51d427a6631e1ea9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 4f5c7696e711db7c128317f7ed17dc051e8fd18a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241572"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803119"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
@@ -52,7 +52,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 |holland| `nl`    |Neurális érhető el|  Neurális|
 |Angol|   `en`    |Neurális érhető el|  Neurális|
 |észt|  `et`    |Neurális érhető el|  Neurális|
-|Fijian|    `fj`    |Csak statisztikai|  Statisztikai|
+|fidzsi|    `fj`    |Csak statisztikai|  Statisztikai|
 |filippínó|  `fil`   |Csak statisztikai|  Statisztikai|
 |finn|   `fi`    |Neurális érhető el|  Neurális|
 |francia|    `fr`    |Neurális érhető el|  Neurális|
@@ -83,7 +83,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 |Queretaro Otomi|   `otq`   |Csak statisztikai|  Statisztikai|
 |román|  `ro`    |Neurális érhető el|  Neurális|
 |orosz|   `ru`    |Neurális érhető el|  Neurális|
-|Samoa|    `sm`    |Csak statisztikai|  Statisztikai|
+|szamoai|    `sm`    |Csak statisztikai|  Statisztikai|
 |szerb (cirill betűs)|    `sr-Cyrl`   |Csak statisztikai|  Statisztikai|
 |szerb (latin betűs)|   `sr-Latn`   |Csak statisztikai   |Statisztikai|
 |szlovák|    `sk`    |Neurális érhető el|  Neurális|
@@ -290,6 +290,7 @@ Az alábbi nyelveken érhetők el, vagy az angol nyelvű testreszabási [egyéni
 | héber      | `he`          |
 | hindi      | `hi`          |
 | magyar      | `hu`          |
+| izlandi | `is` |
 | olasz      | `it`          |
 | japán      | `ja`          |
 | koreai      | `ko`          |
@@ -309,6 +310,7 @@ Az alábbi nyelveken érhetők el, vagy az angol nyelvű testreszabási [egyéni
 | török      | `tr`          |
 | ukrán      | `uk`          |
 | vietnami      | `vi`          |
+| walesi | `cy` |
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Hozzáférés a listában, a Microsoft Translator webhelyen
 

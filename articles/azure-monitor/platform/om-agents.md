@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: d2ecebf47c77baa81193939b64c27348541f7686
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 2768a23c217052a342538b67ec59868e25fd4914
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403408"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793815"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Az Operations Manager csatlakoztatása az Azure monitornak
 
@@ -41,6 +41,7 @@ Az alábbi ábrán látható a felügyeleti kiszolgálók és az ügynökök kö
 Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépek a hálózat csatlakozik az internethez, felügyeleti kiszolgálók beállítható úgy, hogy a konfigurációs adatokat fogad és küld attól függően, a megoldások összegyűjtött adatok Log Analytics-átjárón engedélyezve van. További információkat és lépéseket az Operations Manager felügyeleti csoportban való kommunikációhoz, az Azure Monitor egy Log Analytics-átjárón keresztül konfigurálásával: [számítógépek csatlakoztatása a Log Analytics-átjáró használata az Azure Monitor](../../azure-monitor/platform/gateway.md).  
 
 ## <a name="prerequisites"></a>Előfeltételek 
+
 Mielőtt hozzákezdene, tekintse át az alábbi követelményeknek.
 
 * Az Azure Monitor csak támogatja a System Center Operations Manager 2016-os vagy újabb, az Operations Manager 2012 SP1 UR6 vagy újabb, és az Operations Manager 2012 R2 UR2 vagy újabb. A proxytámogatás az Operations Manager 2012 SP1 UR 7-es és az Operations Manager 2012 R2 UR 3-as verziójában jelent meg.
@@ -60,6 +61,7 @@ Mielőtt hozzákezdene, tekintse át az alábbi követelményeknek.
 >A felügyeleti csomag frissítés nem alkalmazható a System Center Operations Manager 1807, azaz az 1801-es verziója és a egy teljes állítsa össze a termék egy frissítés kiadása.   
 
 ### <a name="network"></a>Network (Hálózat)
+
 Az alábbi listában a proxy- és tűzfalbeállítások szükséges konfigurációs információkat, az Operations Manager-ügynök, felügyeleti kiszolgáló és operatív konzol kommunikálni az Azure Monitor adatokat. Az egyes összetevők érkező forgalmat az Azure monitornak a hálózatból kimenő.   
 
 |Erőforrás | Portszám| HTTP-ellenőrzés kihagyása|  
@@ -87,9 +89,11 @@ Az alábbi listában a proxy- és tűzfalbeállítások szükséges konfiguráci
 |docs.loganalytics.io| 80 és 443||  
 
 ### <a name="tls-12-protocol"></a>A TLS 1.2 protokoll
+
 Az Azure Monitor az átvitt adatok biztonságának biztosítása érdekében, Határozottan javasoljuk, hogy használatához legalább az ügynök és a felügyeleti csoport konfigurálása Transport Layer Security (TLS) 1.2-es. Biztonsági rés található régebbi verziói a TLS/Secure Sockets Layer (SSL), és jelenleg továbbra is működnek, hogy a visszamenőleges kompatibilitás, amíg azok **nem ajánlott**. További információkért tekintse át a [biztonságosan a TLS 1.2 használatával az adatok küldésének](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Az Operations Manager csatlakoztatása az Azure monitornak
+
 Az alábbi lépések végrehajtásával konfigurálhatja Operations Manager felügyeleti csoportját, hogy a Log Analytics munkaterületei egyikéhez csatlakozzon.
 
 Az Operations Manager felügyeleti csoportban a Log Analytics-munkaterületet a kezdeti regisztráció során adhat meg a proxykonfiguráció a felügyeleti csoport nem áll rendelkezésre az operatív konzolon.  A felügyeleti csoportot sikeresen regisztrálni kell a szolgáltatásban ahhoz, hogy ez a lehetőség rendelkezésre álljon.  Ez elkerülhető, hogy frissíteni szeretné a rendszer proxykonfigurációt a Netsh segédprogrammal a rendszer a fut az operatív konzol integrációt és az összes felügyeleti kiszolgáló konfigurálása a felügyeleti csoportban.  
@@ -121,6 +125,7 @@ Integrálható az Azure Monitor szolgáltatással az alábbi lépések elvégzé
 1. Az a **Operations Management Suite előkészítési varázslója: Befejezés** kattintson **Bezárás**.
 
 ### <a name="add-agent-managed-computers"></a>Ügynök által felügyelt számítógépek hozzáadása
+
 Integrációjának konfigurálása után az a Log Analytics-munkaterülethez, csak a szolgáltatás kapcsolatot létesít, nem a gyűjtött adatokat a felügyeleti csoportnak jelentő ügynököktől. Ez nem fordulhat elő, amíg mely adott ügynök által felügyelt számítógépek Teljesítménynapló-adatok gyűjtése az Azure Monitor konfigurálása után. A számítógép-objektumokat kiválaszthatja egyenként, vagy kiválaszthat egy Windows számítógép-objektumokat tartalmazó csoportot. Nem választhat olyan csoportot, amely egy másik osztályba tartozó példányokat, például logikai lemezeket vagy SQL-adatbázisokat tartalmaz.
 
 1. Nyissa meg az Operations Manager-konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
@@ -131,6 +136,7 @@ Integrációjának konfigurálása után az a Log Analytics-munkaterülethez, cs
 A Felügyelt számítógépek csomópont adatgyűjtésre konfigurált számítógépei és csoportjai az Operations Management Suite-ben az Operatív konzol **Adminisztráció** munkaterületén láthatók. Itt szükség szerint hozzá is adhat és el is távolíthat számítógépeket és csoportokat.
 
 ### <a name="configure-proxy-settings-in-the-operations-console"></a>Proxybeállítások konfigurálása az Operatív konzolon
+
 Ha egy belső proxykiszolgáló között a felügyeleti csoport és az Azure Monitor, hajtsa végre az alábbi lépéseket. Ezek a beállítások központi a felügyeleti csoportban a felügyelt és ügynök által felügyelt rendszerekre, amelyek szerepelnek a hatókör Teljesítménynapló-adatok összegyűjtése az Azure Monitor elosztott.  Ez hasznosnak bizonyul, ha egyes megoldások megkerülik a felügyeleti kiszolgálót, és közvetlenül a szolgáltatásba küldik az adatokat.
 
 1. Nyissa meg az Operations Manager-konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
@@ -156,6 +162,7 @@ Miután a kapcsolat létrejött, és konfigurálnia, hogy mely ügynökök össz
 * A felügyeleti csoportban az adatok gyűjtésére konfigurált ügynökök és csoportok fel lesznek véve a **Microsoft System Center Advisor monitorozásikiszolgáló-csoportba**.
 
 ## <a name="management-pack-updates"></a>Felügyeleti csomagok frissítései
+
 Konfiguráció befejezése után az Operations Manager felügyeleti csoport kapcsolatot hoz létre az Azure Monitor szolgáltatással. A felügyeleti kiszolgáló szinkronizál a webszolgáltatással, és felügyeleti csomagok formájában megkapja a frissített konfigurációadatokat az Operations Managerrel való integrációra engedélyezett megoldásokra vonatkozóan. Az Operations Manager ellenőrzi a felügyeleti csomagok és az automatikus frissítések letöltése, és importálja őket, ha azok elérhetők. Ezt a működést kifejezetten két szabály vezérli:
 
 * **Microsoft.SystemCenter.Advisor.MPUpdate** -frissíti az alapszintű Azure Monitor felügyeleti csomagokat. Alapértelmezés szerint 12 óránként fut.
@@ -166,6 +173,7 @@ Két felülbírálhatja ezeket automatikus letöltését megakadályozása tilts
 Folytassa a meglévő vezérlő folyamatának szabályozni a felügyeleti csomag kiadásokban az éles környezetű felügyeleti csoportjában, a szabályok letiltása, és engedélyezheti őket a megadott időpontok engedélyezett a frissítések során. Ha rendelkezik fejlesztési vagy QA-felügyeleti csoporttal környezetében, és az képes kapcsolódni az internetre, konfigurálhatja a felügyeleti csoportot egy Log Analytics-munkaterülettel, amely támogatja ezt a forgatókönyvet. Ez lehetővé teszi, hogy ellenőrizze és értékelje a felügyeleti csomagok az Azure Monitor iteratív kiadások címek felszabadításával azok az éles környezetben a felügyeleti csoport előtt.
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Váltás Operations Manager csoportról egy új Log Analytics-munkaterületre
+
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 1. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet, és hozzon létre egy munkaterületet.  
 1. Nyissa meg az Operations Manager konzolt az Operations Manager-rendszergazdák szerepkörbe tartozó fiókkal, és válassza a **Felügyelet** munkaterületet.
@@ -179,9 +187,11 @@ Folytassa a meglévő vezérlő folyamatának szabályozni a felügyeleti csomag
    > 
 
 ## <a name="validate-operations-manager-integration-with-azure-monitor"></a>Az Azure Monitor az Operations Manager integrációjának ellenőrzése
+
 Ellenőrizheti, hogy létrejött-e az Operations Manager-integráció az Azure Monitor néhány különböző módja van.
 
 ### <a name="to-confirm-integration-from-the-azure-portal"></a>Integráció megerősítése az Azure Portalról
+
 1. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket.
 1. A Log Analytics-munkaterületek listájában válassza ki a vonatkozó munkaterületet.  
 1. Válassza a **Speciális beállítások**, a **Csatlakoztatott Források**, majd a **System Center** elemet. 
@@ -190,6 +200,7 @@ Ellenőrizheti, hogy létrejött-e az Operations Manager-integráció az Azure M
    ![oms-settings-connectedsources](./media/om-agents/oms-settings-connectedsources.png)
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>Integráció megerősítése az Operatív konzolról
+
 1. Nyissa meg az Operations Manager-konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
 1. Kattintson a **Felügyeleti csomagok** elemre, és a **Keresés:** szövegmezőbe írja be az **Advisor** vagy az **Intelligence** kifejezést.
 1. Ekkor a keresési eredményekben megjelenik a megfelelő felügyeleti csomag, attól függően, hogy mely megoldások lettek engedélyezve.  Ha például az Alert Management megoldást engedélyezte, akkor a listában a Microsoft System Center Advisor Riasztáskezelés csomag szerepel.
@@ -198,6 +209,7 @@ Ellenőrizheti, hogy létrejött-e az Operations Manager-integráció az Azure M
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
 ## <a name="remove-integration-with-azure-monitor"></a>Távolítsa el az Azure Monitor integrációja
+
 Ha már nincs szüksége az Operations Manager felügyeleti csoport és a Log Analytics-munkaterület közötti integrációra, több lépést is el kell végeznie a kapcsolat és a konfiguráció a felügyeleti csoportban való megfelelő eltávolításának érdekében. Az alábbi eljárást a hivatkozást a felügyeleti csoport törlésével a Naplóelemzési munkaterület frissítése, törlése az Azure Monitor-összekötők, és ezután törölje a felügyeleti csomagokat támogatja az integrációt a szolgáltatással rendelkezik.  
 
 Felügyeleti csomagok megoldások engedélyezve van, amelyekbe beépül az Operations Manager és az integráció az Azure monitorral támogatásához szükséges felügyeleti csomagokat nem lehet egyszerűen törölni a felügyeleti csoportból. Ennek az oka az Azure Monitor felügyeleti csomagok némelyike függőségekkel rendelkeznek más kapcsolódó felügyeleti csomagoktól függ. Ha törölni szeretné a más felügyeleti csomagoktól függő felügyeleti csomagokat, töltse le a [függőséggel rendelkező felügyeleti csomagok eltávolítására](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) szolgáló szkriptet a TechNet Script Centerből.  
@@ -244,7 +256,7 @@ Ha törölni szeretné a két összekötőt (a Microsoft.SystemCenter.Advisor.Da
 > 
 > 
 
-```
+```powershell
     param(
     [String] $connectorName,
     [String] $msName="localhost"
@@ -336,6 +348,5 @@ A jövőben, ha azt tervezi, hogy a felügyeleti csoport egy Log Analytics-munka
 * A felügyeleti csoporton alkalmazott legújabb kumulatív frissítésben. Az Operations Manager 2012 esetében a forrásmappa a ` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`, a 2012 R2 esetében pedig a `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
 
 ## <a name="next-steps"></a>További lépések
+
 Funkciók hozzáadása és az adatgyűjtésre [hozzáadása az Azure Monitor megoldások kövesse a megoldástárban](../../azure-monitor/insights/solutions.md).
-
-

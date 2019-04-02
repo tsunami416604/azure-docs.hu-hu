@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a2ec36a99b2940fa662b0d9bd16b06777684db2f
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: c8afa671a323e37a99be8b5a43d0a4823fe1877a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448057"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58800876"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Hibaelhárítás a Desired State Configuration (DSC)
 
@@ -28,13 +28,13 @@ Ez a cikk nyújt információkat a Desired State Configuration (DSC) rétegen a 
 
 A DSC-konfiguráció törlése a portálról megkísérlésekor a következő hiba jelenik meg:
 
-```
+```error
 An error occured while deleteing the DSC configuration '<name>'.  Error-details: The arguement configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
 ```
 
 #### <a name="cause"></a>Ok
 
-Ez a feloldott tervezett ideiglenes probléma.
+Ez a hiba nem oldható fel a tervezett ideiglenes probléma.
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -48,7 +48,7 @@ Ez a feloldott tervezett ideiglenes probléma.
 
 A csomópont rendelkezik egy jelentés **sikertelen** állapotát, és amely tartalmazza a hiba:
 
-```
+```error
 The attempt to get the action from server https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction failed because a valid configuration <guid> cannot be found.
 ```
 
@@ -58,11 +58,11 @@ Ez a hiba általában akkor fordul elő, amikor a csomópont hozzá van rendelve
 
 #### <a name="resolution"></a>Megoldás:
 
-* Győződjön meg arról, hogy a csomópont nem a "konfiguráció neve" és "csomópont-konfiguráció neve" rendeli hozzá.
+* Győződjön meg arról, hogy a csomópont nem a "konfiguráció neve" és "csomópont-konfiguráció neve" még való hozzárendelése.
 * Csomópont-konfiguráció rendelhet egy csomóponthoz, az Azure portal használatával, vagy egy PowerShell-parancsmaggal.
 
-  * Annak érdekében, hogy a csomópont-konfiguráció hozzárendelése egy csomóponthoz, az Azure portal használatával, nyissa meg a **DSC-csomópontok** lapon, majd válasszon ki egy csomópontot, és kattintson a **csomópont-konfiguráció hozzárendelése** gombra.  
-  * Annak érdekében, hogy a csomópont-konfiguráció hozzárendelése egy PowerShell-parancsmaggal csomópont, használjon **Set-AzureRmAutomationDscNode** parancsmag
+  * Csomópont-konfiguráció hozzárendelése az Azure portal használatával egy csomópontot, nyissa meg a **DSC-csomópontok** lapon, majd válasszon ki egy csomópontot, és kattintson a **csomópont-konfiguráció hozzárendelése** gombra.  
+  * Csomópont-konfiguráció hozzárendelése egy PowerShell-parancsmaggal csomópont, használjon **Set-AzureRmAutomationDscNode** parancsmag
 
 ### <a name="no-mof-files"></a>Forgatókönyv: Nincsenek csomópont-konfigurációk (MOF-fájlok) keletkezett, amikor a konfiguráció fordítása
 
@@ -70,7 +70,7 @@ Ez a hiba általában akkor fordul elő, amikor a csomópont hozzá van rendelve
 
 A DSC-fordítási feladat felfüggeszti a következő hibával:
 
-```
+```error
 Compilation completed successfully, but no node configuration.mofs were generated.
 ```
 
@@ -91,7 +91,7 @@ A probléma elhárításához a következő megoldások valamelyikét:
 
 A DSC-ügynök kimenete:
 
-```
+```error
 No instance found with given property values
 ```
 
@@ -101,7 +101,7 @@ A WMF-verzió frissítése, és rendelkezik a WMI sérült.
 
 #### <a name="resolution"></a>Megoldás:
 
-Javítsa ki a probléma kövesse az utasításokat a [ismert problémák és korlátozások DSC](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc) cikk.
+A probléma megoldásához kövesse a a [ismert problémák és korlátozások DSC](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc) cikk.
 
 ### <a name="issue-using-credential"></a>Forgatókönyv: Nem lehet hitelesítő adatot használja a DSC-konfiguráció
 
@@ -109,7 +109,7 @@ Javítsa ki a probléma kövesse az utasításokat a [ismert problémák és kor
 
 A DSC-fordítási feladat fel lett függesztve a következő hibával:
 
-```
+```error
 System.InvalidOperationException error processing property 'Credential' of type <some resource name>: Converting and storing an encrypted password as plaintext is allowed only if PSDscAllowPlainTextPassword is set to true.
 ```
 
@@ -119,7 +119,7 @@ Konfigurációban használt hitelesítő adatokat, de nem adott meg megfelelő *
 
 #### <a name="resolution"></a>Megoldás:
 
-* Győződjön meg arról, hogy adja át a megfelelő **ConfigurationData** beállítása **PSDscAllowPlainTextPassword** minden csomópont-konfiguráció már említettük, a konfigurációban az igaz értékre. További információkért lásd: [eszközök az Azure Automation DSC](../automation-dsc-compile.md#assets).
+* Győződjön meg arról, hogy adja át a megfelelő **ConfigurationData** beállítása **PSDscAllowPlainTextPassword** minden csomópont-konfiguráció, amely szerepel a konfigurációs igaz. További információkért lásd: [eszközök az Azure Automation DSC](../automation-dsc-compile.md#assets).
 
 ## <a name="next-steps"></a>További lépések
 

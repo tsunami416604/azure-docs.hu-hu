@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9f2eae4160dbef164ec70e8fa4d7b3a83706ae96
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 67a6c99253c549f0b8d3b55809b35b81756843eb
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880126"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803493"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Analysis Services rendszerbeli táblázatos modellek kompatibilitási szintje
 
@@ -27,7 +27,11 @@ Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és 1
 *  Az Objektumszintű biztonsági a bennük lévő adatok mellett a tábla- és oszlopneveket számára.
 *  Kibővített támogatás a hézagos hierarchiák.
 *  Teljesítmény- és figyelési fejlesztései.
- 
+
+> [!NOTE]
+> Az Azure Analysis Services támogatja az importált Power BI Desktop-fájlok az 1465 kompatibilitási szinten. Azonban a Power BI Desktop funkcióval rendelkezik, amely mindig van szükség az előzetes verziójú funkció, az importálás volt megszűnt, és eltávolítja a szolgáltatásból a március 2019. Meglévő modelleket a 1465 kompatibilitási szinten továbbra is támogatott.  
+
+
 ## <a name="set-compatibility-level"></a>Set-kompatibilitási szint
 
  Az SSDT-ben egy új táblázatos modellprojekt létrehozásakor megadhatja a kompatibilitási szint a **táblázatos modell tervezője** párbeszédpanel. 
@@ -47,6 +51,9 @@ Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és 1
  Az ssms-ben, kattintson a jobb gombbal a kiszolgáló neve > **tulajdonságok** > **támogatott kompatibilitási szint**.  
   
  Ez a tulajdonság egy adatbázist a kiszolgálón (kivéve az előzetes verzió) rendszerű a legmagasabb kompatibilitási szintjét határozza meg. A támogatott kompatibilitási szintje nem módosítható.  
+
+> [!NOTE]
+> Az ssms-ben, amikor csatlakozik az Azure Analysis Services-kiszolgáló a **támogatott kompatibilitási szint** jelennek meg a tulajdonság **1200-as**. Ez egy ismert probléma, és feloldásra kerül egy közelgő ssms-ben a frissítést. Állni, akkor ez a tulajdonság a legnagyobb támogatott kompatibilitási szint jelennek meg.
 
 ## <a name="next-steps"></a>További lépések
 

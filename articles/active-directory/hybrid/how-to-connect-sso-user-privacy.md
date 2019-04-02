@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c7b1f737d0331ecd40ab318cec0c082a3f7ddd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181337"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791547"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Felhasználói adatok védelme és az Azure AD közvetlen egyszeri bejelentkezés
 
@@ -50,7 +50,7 @@ Ellenőrizze a tartalmát **%ProgramData%\AADConnect** mappa, és törlése a ny
 
 Tekintse át és a Windows Explorer használatával nyomkövetési naplófájlok törlése, vagy használhatja a következő PowerShell-parancsfájlt a szükséges műveletek végrehajtásához:
 
-```
+```powershell
 $Files = ((Get-Item -Path "$env:programdata\aadconnect\trace-*.log").VersionInfo).FileName 
  
 Foreach ($file in $Files) { 
@@ -67,6 +67,7 @@ Tudjon meg többet az Azure AD Connect általános adatvédelmi rendelet követe
 Ha naplózása engedélyezve van, a termék hozzon létre a biztonsági naplók a tartományvezérlők. Naplózási házirendek konfigurálásával kapcsolatos további tudnivalókért olvassa el ezt [cikk](https://technet.microsoft.com/library/dd277403.aspx).
 
 ## <a name="next-steps"></a>További lépések
+
 * [Tekintse át a Microsoft Privacy szabályzat a biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter)
   - [**Hibaelhárítás** ](tshoot-connect-sso.md) – ismerje meg, a szolgáltatással kapcsolatos gyakori problémák megoldása.
   - [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) – új funkcióra vonatkozó javaslata tárolásához.

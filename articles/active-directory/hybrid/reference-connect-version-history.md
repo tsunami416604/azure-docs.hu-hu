@@ -16,12 +16,12 @@ ms.date: 03/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ae5b58fb87aaa94e081f9cb60d063c70e5d0359
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540958"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803153"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -39,17 +39,17 @@ Szükséges engedélyek | Tekintse meg a frissítés alkalmazásához szüksége
 Letöltés |} [Töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
->Az Azure AD Connect nem minden verziókban lesz elérhető az automatikus frissítés. A kiadási állapota e kiadás legyen elérhető, az automatikus frissítés, vagy csak le fogja jelezni. Ha az automatikus frissítés engedélyezése az Azure AD Connect-kiszolgálón majd, hogy a kiszolgáló automatikusan frissíti az Azure AD Connect automatikus frissítéshez kiadott a legújabb verzióra. Ne feledje, hogy az Azure AD Connect-konfigurációk nem mindegyike automatikus frissítésre jogosult. Kövesse ezt a hivatkozást tudjon meg többet az [automatikus frissítés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+>Közzétesz egy új verziója, az Azure AD Connect folyamat, amely a művelet a szolgáltatás működésének biztosítása több minőség-ellenőrzési lépést igényel, és közben meg is vagyunk a folyamat során a verziószám az új kiadás, valamint a kiadási állapota frissülni fog a legutóbbi állapot megfelelően.
+Miközben a a folyamat során, hogy a kiadás verziószáma jelenik meg a kisebb kiadás száma pozícióját, mint "1.3.X.0" - "x" Ez azt jelzi, hogy a kibocsátási megjegyzéseket, a jelen dokumentum "1.3." kezdve az összes verzió érvényes. Amint azt a kibocsátási folyamat véglegesítése a legutóbb kiadott verziót frissíti a kiadási verziószámát, és a kiadási állapota frissülni fog "A letöltésről és automatikus frissítés engedélyezett" értékre.
+Az Azure AD Connect nem minden verziókban lesz elérhető az automatikus frissítés. A kiadási állapota e kiadás legyen elérhető, az automatikus frissítés, vagy csak le fogja jelezni. Ha az automatikus frissítés engedélyezése az Azure AD Connect-kiszolgálón majd, hogy a kiszolgáló automatikusan frissíti az Azure AD Connect automatikus frissítéshez kiadott a legújabb verzióra. Ne feledje, hogy az Azure AD Connect-konfigurációk nem mindegyike automatikus frissítésre jogosult. Kövesse ezt a hivatkozást tudjon meg többet az [automatikus frissítés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
-## <a name="13100"></a>1.3.10.0 
+## <a name="13x0"></a>1.3.X.0 
 
 ### <a name="release-status"></a>Kiadási állapot 
 
-3/25/2019: Még nem elérhető 
+3/25/2019: Függőben
  
 ### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések 
-
-
 
 - Frissítési tartomány támogatása 
 - Az Exchange-levelezés nyilvános mappái a szolgáltatás általános elérhetőségével 
@@ -894,7 +894,7 @@ AD FS-kezelőben
 * Kijavítva egy probléma, amely a meghiúsuljon, ha haladnak keresztül hitelesítés van beállítva, de az összekötő regisztrálása meghiúsul az Azure AD Connect varázsló okoz.
 * Kijavítva egy probléma milyen okok Ha asztali egyszeri bejelentkezés szolgáltatás engedélyezve van a kijelölt bejelentkezési módszert ellenőrzésének kihagyását az Azure AD Connect varázslót.
 
-Jelszó visszaállítása
+Új jelszó kérése
 * Kijavítva egy probléma miatt előfordulhat, hogy a Azure AAD Connect-kiszolgáló kísérelje meg ismét csatlakozni, ha a kapcsolat egy tűzfal vagy proxy lett állítva.
 
 **Új funkciók és fejlesztések:**
@@ -909,7 +909,7 @@ AD FS-kezelőben
 * Mostantól megadhatja meglévő csoportosan felügyelt szolgáltatásfiókok (csoportosan felügyelt szolgáltatásfiók) az AD FS telepítése során.
 * A aláírás-kivonatoló algoritmus az Azure AD függő entitás megbízhatóságaként, mostantól konfigurálhatja az SHA-256.
 
-Jelszó visszaállítása
+Új jelszó kérése
 * Lehetővé teszi a funkció a termék szigorúbb tűzfalszabályokkal környezetekben fejlesztései bevezetésre.
 * Továbbfejlesztett kapcsolat megbízhatóságát, az Azure Service Bus.
 

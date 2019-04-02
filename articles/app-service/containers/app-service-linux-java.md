@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 4ca42e34dcf215fe45d1f25adb9509034c6144d2
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 71632b3846a5dac39d7827c874367bd9802574f8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335844"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803525"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -154,6 +154,14 @@ Spring Boot fejlesztők használhatják a [Azure Active Directory Spring Boot st
 ### <a name="configure-tlsssl"></a>A TLS/SSL konfigurálása
 
 Kövesse az utasításokat a [meglévő egyéni SSL-tanúsítvány kötése](/azure/app-service/app-service-web-tutorial-custom-ssl) meglévő SSL-tanúsítvány feltöltéséhez, és kösse az alkalmazás tartománynév. Alapértelmezés szerint az alkalmazás továbbra is lehetővé teszi a HTTP kapcsolatok – az adott lépése az oktatóanyagban az SSL és TLS.
+
+### <a name="use-keyvault-references"></a>KeyVault hivatkozások használata
+
+[Az Azure KeyVault](../../key-vault/key-vault-overview.md) biztosít a hozzáférési házirendek és a naplózási előzmények központi titkos kódok kezelése. A KeyVault titkos kulcsokat (például jelszavak vagy kapcsolati karakterláncok) tárolására, és a környezeti változók az alkalmazás titkos adatokat elérni.
+
+Először kövesse az utasításokat [biztosítása az alkalmazás hozzáférjen a Kulcstartóhoz](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) és [a titkos kód KeyVault hivatkozzon, így az alkalmazás-beállítás](../app-service-key-vault-references.md#reference-syntax). Ellenőrizheti, hogy a hivatkozás mutat a titkos kulcsot a környezeti változó nyomtasson az App Service-ben terminálon távoli elérése során.
+
+A Spring vagy Tomcat konfigurációs fájlban titkos adatok beszúrása, szintaxissal környezeti változó olyan injektálás (`${MY_ENV_VAR}`). Spring konfigurációs fájlokat, kérjük tekintse meg ezt a dokumentációt [konfigurációk externalized](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
 ## <a name="data-sources"></a>Adatforrások
 

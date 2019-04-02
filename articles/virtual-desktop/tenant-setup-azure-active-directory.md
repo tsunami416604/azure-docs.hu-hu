@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 8ab1f31d61b7a6a1637cd274cc5ac7fc4f5dc2f1
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 1c66b3de9e18cb74c43f20499e4065c7ec7ae5ca
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622161"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801679"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Oktatóanyag: Bérlő létrehozása a Windows virtuális asztal előzetes verzióban érhető el
 
@@ -30,6 +30,8 @@ A következő szükséges állítsa be a Windows virtuális asztal bérlő:
 * A [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) bérlői azonosító a Windows virtuális asztal felhasználói.
 * Egy globális rendszergazdai fiókkal az Azure Active Directory-bérlőn belül.
    * Ez a Cloud Solution Provider (CSP) szervezetek ügyfelek számára, akik Windows virtuális asztal bérlő létrehozására is vonatkozik. Ha egy CSP-szervezet, jelentkezhet be az ügyfél az Azure Active Directory globális rendszergazdájaként kell lennie.
+   * A rendszergazdai fiókot kell lennie származási hely az Azure Active Directory-bérlővel, amelyben próbál létrehozni a virtuális asztali Windows-bérlőt. Ez a folyamat nem támogatja az Azure Active Directory B2B (a Vendég).
+   * A rendszergazdai fiók egy munkahelyi vagy iskolai fióknak kell lennie.
 * Egy Azure-előfizetés azonosítója
 
 ## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>A Windows Virtual Desktop előzetes verziójú szolgáltatások biztosítása az Azure Active Directory engedélyekkel

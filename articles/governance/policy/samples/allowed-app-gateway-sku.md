@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 701cb7179db848e738253927c1c25eddce489b63
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3925eaad82e694f1f2f438778eb4c3c6e49832ed
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535784"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801912"
 ---
 # <a name="sample---allowed-application-gateway-skus"></a>Minta – az application gateway Termékváltozatai engedélyezett
 
@@ -29,7 +29,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Üzembe helyezés az Azure-ban](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fapplication-gateway-skus%2Fazurepolicy.json)
+[![Az Azure-bA a szabályzat minta üzembe helyezése](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fapplication-gateway-skus%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 

@@ -8,40 +8,37 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: andrl
 ms.custom: seodec18
-ms.openlocfilehash: f122d60a4f4df011a0adbe7806e70ae173222641
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 5f117d51378f895755b4f5a27fe892d85e12074a
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295096"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762582"
 ---
-# <a name="modeling-document-data-for-nosql-databases"></a>NoSQL-adatbázisok dokumentumadatok modellezése
+# <a name="data-modeling-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben adatmodellezés
 
-Bár a sémamentes adatbázisok, például az Azure Cosmos dB-ben, hogy fantasztikusan egyszerű kihasználni a módosításokat az adatmodellbe kell továbbra is töltött némi idő gondolkodás az adataival kapcsolatban.
+Bár a sémamentes adatbázisok, például az Azure Cosmos DB, hogy fantasztikusan egyszerű tárolására, és a strukturálatlan és részben strukturált adatok lekérdezése, az adatmodellben, hogy a legtöbbet a teljesítmény és méretezhetőség tekintetében a szolgáltatás és a legalacsonyabb kapcsolatos kell töltött némi idő terhelése költség.
 
-Hogyan fogja tárolni az adatokat? Hogyan fogja lekérni, illetve adatokat kérdezhet le az alkalmazást? Az a alkalmazás vastag olvasási vagy írási (nagy erőforrásigényű)?
+Hogyan fogja tárolni az adatokat? Hogyan fogja lekérni, illetve adatokat kérdezhet le az alkalmazást? Az alkalmazását, olvassa el, vagy nagyrészt írási műveltekből?
 
 Ez a cikk elolvasása után fogja tudni a következő kérdések megválaszolásával:
 
-* Hogyan kell egy dokumentumot a dokumentum-adatbázis gondolja?
 * Mi az adatmodellezés, és miért érdemes e fontos?
-* Miben különbözik a dokumentum-adatbázis a modellezési adatok egy relációs adatbázis?
+* Miben különbözik az Azure Cosmos DB modellezési adatok egy relációs adatbázis?
 * Hogyan express a nem relációs adatbázisban adatkapcsolatok?
 * Amikor ágyazhat be adatokat, és ha hivatkozás adatokhoz?
 
 ## <a name="embedding-data"></a>Adatok beágyazása
 
-A dokumentumtároló, például az Azure Cosmos DB, az adatok modellezését indításakor próbál az entitások gyökérkönyvtárral **önálló dokumentumok** JSON-ban kifejezve.
+Az Azure Cosmos DB az adatok modellezését indításakor próbál az entitások gyökérkönyvtárral **önálló elemek** JSON-dokumentumok formájában jelöli.
 
-Ahhoz hogy közelebbről túl sokkal tovább, ossza meg velünk vissza néhány lépést és hogyan tudjuk előfordulhat, hogy modell valamit a relációs adatbázis, a legtöbb felhasználó már ismeri a tárgyat tekintse meg. Az alábbi példa bemutatja, hogyan személy előfordulhat, hogy tárolja a relációs adatbázis.
+Az összehasonlítást először lássuk, hogyan tudjuk előfordulhat, hogy modellezni az adatokat relációs adatbázis. Az alábbi példa bemutatja, hogyan személy előfordulhat, hogy tárolja a relációs adatbázis.
 
 ![Relációs adatbázis-modell](./media/sql-api-modeling-data/relational-data-model.png)
 
-Relációs adatbázisok használata, amikor azt már lett színesített normalizálása, normalizálása, normalizálása évig.
+Relációs adatbázisok használata, ha a stratégia az, hogy normalizálása az összes adatot. Az adatok általában normalizálása egy entitás, például egy személy véve, és ossza fel diszkrét összetevőket foglalja magában. A fenti példában egy személy rendelkezhet több ügyfél részletes rekordok, valamint több cím rekord. Kapcsolattartási adatait is le kell bontani oly módon, további közös mezők, például egy típusa. Ugyanez vonatkozik a címet, minden egyes rekord típusúak lehetnek *kezdőlap* vagy *üzleti*.
 
-Az adatok általában normalizálása magában foglalja egy entitás, például egy személy véve, és ossza fel az adatok diszkrét darab. A fenti példában egy személy rendelkezhet több ügyfél részletes rekordok, valamint több cím rekord. Hogy még egy lépéssel tovább, és felosztania kapcsolattartási adatok oly módon, további közös mezők, például egy típusa. Ugyanazt a címet, itt minden rekord típussal rendelkező például *kezdőlap* vagy *üzleti*.
-
-A megtett helyi, amikor a normalizálás **elkerülése érdekében a redundáns adattárolás** az egyes rögzíti, és inkább az adatokra hivatkoznak. Ebben a példában egy személyt, a kapcsolattartási adatait és a címek, olvassa el szüksége ÖSSZEKAPCSOLÁSOK használatával hatékonyan összesítés is történik a futási időben.
+A megtett helyi, amikor a normalizálás **elkerülése érdekében a redundáns adattárolás** az egyes rögzíti, és inkább az adatokra hivatkoznak. Ebben a példában egy személyt, a kapcsolattartási adatait és a címek, olvassa el a joins ZÁRADÉKOT használják ténylegesen compose vissza (vagy denormalizálja) az adatok futásidőben kell.
 
     SELECT p.FirstName, p.LastName, a.City, cd.Detail
     FROM Person p
@@ -51,7 +48,7 @@ A megtett helyi, amikor a normalizálás **elkerülése érdekében a redundáns
 
 Írási műveletek között számos egyedi táblák frissítése egyetlen személy kapcsolattartási adatait és címek van szükség.
 
-Most nézzük tekintse meg, hogyan tudjuk lenne modell ugyanazokat az adatokat a dokumentum-adatbázis egy önálló entitásként.
+Most nézzük tekintse meg, hogyan tudjuk lenne modell ugyanazokat az adatokat az Azure Cosmos DB önálló entitásként.
 
     {
         "id": "1",
@@ -72,10 +69,10 @@ Most nézzük tekintse meg, hogyan tudjuk lenne modell ugyanazokat az adatokat a
         ]
     }
 
-Most a fenti módszerével **denormalizált** személy where jegyezze fel azt **beágyazott** a személy kapcsolattartási adatait és a címek, például egy JSON-ba kapcsolatos összes információ a dokumentum.
+A megközelítéssel felett, hogy rendelkezik **denormalizált** a személy szerint rögzítése **beágyazás** be ezt a személyt, például a kapcsolattartási adatait és a címek, kapcsolatos összes információt egy *egyetlen JSON* dokumentumot.
 Ezenkívül mivel azt már nem korlátozódik a rögzített sémát kell, hogy a rugalmasságot, például kapcsolattartási adatait a különböző alakzatokra teljes mértékben kellene.
 
-Az adatbázis teljes személy rekord lekérése mostantól egyetlen művelet egyetlen-gyűjteményeken, és egyetlen dokumentum olvasása. Frissíti egy személy rekordot, a kapcsolattartási adatait és a címek, egyben egy egyetlen dokumentum egyetlen írási művelet.
+Egy teljes személy rekord lekérése az adatbázis már egy **egyetlen olvasási művelete** egyetlen tároló szemben, és egyetlen cikkre. Frissíti egy személy rekordot, a kapcsolattartási adatait és a címek, egyben egy **írási művelet egyetlen** egyetlen elem ellen.
 
 Denormalizálni az adatokat, amelyet az alkalmazás szükségessé kevesebb lekérdezések és frissítések gyakori műveletek végrehajtásához.
 
@@ -86,15 +83,15 @@ Denormalizálni az adatokat, amelyet az alkalmazás szükségessé kevesebb lek�
 * Nincsenek **tartalmazott** entitások közötti kapcsolatok.
 * Nincsenek **egy néhány** entitások közötti kapcsolatok.
 * Beágyazott adatok, amelyek **csak ritkán változnak**.
-* Nincs beágyazott adatok nem növelhető **nélkül kötött**.
-* Nincs a beágyazott adatok **szerves** a dokumentumban szereplő adatokat.
+* Beágyazott adatok, amelyek nem fog **nélkül kötött**.
+* Nincs a beágyazott adatok **gyakran együtt lekérdezett**.
 
 > [!NOTE]
 > Általában a konzisztenciamodellből jobban adatok denormalizált **olvasási** teljesítményét.
 
 ### <a name="when-not-to-embed"></a>Mikor nem beágyazása
 
-Bár a dokumentum-adatbázis a tapasztalatok denormalizálja mindent, és minden adat egyetlen dokumentum ágyazhat be, ez bizonyos helyzetekben, el kell kerülni vezethet.
+Bár az Azure Cosmos DB a tapasztalatok denormalizálja mindent, és minden adat beágyazása egy elem, ez bizonyos helyzetekben, el kell kerülni vezethet.
 
 A JSON-kódrészletben igénybe vehet.
 
@@ -114,13 +111,13 @@ A JSON-kódrészletben igénybe vehet.
         ]
     }
 
-Ez azért lehet, hogy mi a post entitás beágyazott megjegyzésekkel láthatóhoz hasonló azt modellezési lettek egy tipikus blog vagy tartalomkezelő rendszer, a rendszer. Ebben a példában a probléma merült fel, hogy a megjegyzések tömb **korlátlan streameken működő**, ami azt jelenti, hogy nincs-e bármilyen egyedi közzétételek rendelkezhet hozzászólások számát (gyakorlati) nincs korlátozva. Ez lesz a probléma, a dokumentum mérete jelentősen sikerült növekedésével.
+Ez azért lehet, hogy mi a post entitás beágyazott megjegyzésekkel láthatóhoz hasonló azt modellezési lettek egy tipikus blog vagy tartalomkezelő rendszer, a rendszer. Ebben a példában a probléma merült fel, hogy a megjegyzések tömb **korlátlan streameken működő**, ami azt jelenti, hogy nincs-e bármilyen egyedi közzétételek rendelkezhet hozzászólások számát (gyakorlati) nincs korlátozva. Ez a növekedésével az elem méretének sikerült korlátlanul nagy probléma válhat.
 
-A dokumentum méretének növekedésével lehetővé teszi az adatátvitelhez a átviteli, valamint olvasása és frissítése ipari méretekben, a dokumentum érinti.
+Az elem méretének növekedésével képes továbbítani az adatokat a vezetékes, valamint olvasása és frissítése ipari méretekben, az elem felett érinti.
 
-Lenne ebben az esetben jobb megoldás fontolja meg a következő modell.
+Lenne ebben az esetben jobb megoldás fontolja meg a következő data model.
 
-    Post document:
+    Post item:
     {
         "id": "1",
         "name": "What's new in the coolest Cloud",
@@ -132,7 +129,7 @@ Lenne ebben az esetben jobb megoldás fontolja meg a következő modell.
         ]
     }
 
-    Comment documents:
+    Comment items:
     {
         "postId": "1"
         "comments": [
@@ -151,9 +148,9 @@ Lenne ebben az esetben jobb megoldás fontolja meg a következő modell.
         ]
     }
 
-Ez a modell az utolsó három rendelkezik a bejegyzéshez, amely egy tömböt egy rögzített beágyazott megjegyzések ezúttal kötve. A többi megjegyzések 100 megjegyzések váró szerint csoportosítva, és külön dokumentumokban tárolt. A Köteg mérete lett kiválasztva a 100, mert a fiktív alkalmazás lehetővé teszi, hogy a felhasználó egyszerre 100 megjegyzések betöltése.  
+Ebben a modellben van ágyazva a post tároló, amely egy tömböt attribútumok készletét a három legutóbbi megjegyzéseket. A többi megjegyzések 100 megjegyzések váró szerint csoportosítva, és a tárolt és különálló elemek. A Köteg mérete lett kiválasztva a 100, mert a fiktív alkalmazás lehetővé teszi, hogy a felhasználó egyszerre 100 megjegyzések betöltése.  
 
-Egy másik esetben, amikor beágyazási adatok nem célszerű akkor, ha a beágyazott adatok dokumentumok között gyakran használják, és gyakran változik.
+Egy másik esetben, amikor beágyazási adatok nem célszerű akkor, ha a beágyazott adatok elemek között gyakran használják, és gyakran változik.
 
 A JSON-kódrészletben igénybe vehet.
 

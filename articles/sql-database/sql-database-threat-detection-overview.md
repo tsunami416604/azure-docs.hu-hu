@@ -1,42 +1,42 @@
 ---
-title: Fenyegetések észlelése – Azure SQL Database |} A Microsoft Docs
-description: Fenyegetésészlelés észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések Azure SQL Database-ben.
+title: Komplex veszélyforrások elleni védelem – Azure SQL Database |} A Microsoft Docs
+description: Komplex veszélyforrások elleni védelem észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések Azure SQL Database-ben.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: rmatchoro
+author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 5f20fc6ac19e2c9d304f4ab429e485fedaa29f64
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/31/2019
+ms.openlocfilehash: 710a94c919f4262c3f572f28d03c79b77e658287
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001885"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793904"
 ---
-# <a name="azure-sql-database-threat-detection"></a>Az Azure SQL Database fenyegetések észlelése
+# <a name="advanced-threat-protection-for-azure-sql-database"></a>Az Azure SQL Database-adatbázis komplex veszélyforrások elleni védelem
 
-A fenyegetésészlelés [Azure SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek.
+Komplex veszélyforrások elleni védelem a [Azure SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek.
 
-Része a fenyegetésészlelés az [adatbiztonság speciális](sql-database-advanced-data-security.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. A fenyegetésészlelés érheti el és a központi SQL ADS portálon keresztül kezelhetők.
+Komplex veszélyforrások elleni védelem része a [adatbiztonság speciális](sql-database-advanced-data-security.md) (ADS) ajánlat, amely egységes csomag egy tapasztalt SQL biztonsági funkciók. Komplex veszélyforrások elleni védelem érheti el és a központi SQL ADS portálon keresztül kezelhetők.
 
 > [!NOTE]
 > Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
 
-## <a name="what-is-threat-detection"></a>Mi az a fenyegetésészlelés
+## <a name="what-is-advanced-threat-protection"></a>Mi az, hogy a komplex veszélyforrások elleni védelem
 
-A fenyegetésészlelés biztonsági, amely lehetővé teszi az ügyfelek bekövetkezésük pillanatában biztonsági riasztások révén a rendellenes tevékenységekre adott reagáljon a lehetséges veszélyforrásokra, és egy új réteget biztosít. A felhasználók kapnak riasztás esetén a gyanús adatbázis-tevékenységekről, a lehetséges biztonsági résekről, és az SQL-injektálási támadások, valamint a rendellenes adatbázis-hozzáférés, és lekérdezi a minták. Fenyegetésészlelési riasztások integrálható [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amely tartalmazza a gyanús tevékenység és a javasolt művelet vizsgálata, valamint a fenyegetés részleteit. A fenyegetésészlelés biztonsági szakértelem vagy fejlett biztonsági figyelőrendszerek üzemeltetése nélkül is egyszerűvé teszi az adatbázis elleni lehetséges fenyegetések elhárítását.
+ Komplex veszélyforrások elleni védelem, biztonság, amely lehetővé teszi az ügyfelek bekövetkezésük pillanatában biztonsági riasztások révén a rendellenes tevékenységekre adott reagáljon a lehetséges veszélyforrásokra, és egy új réteget biztosít. A felhasználók kapnak riasztás esetén a gyanús adatbázis-tevékenységekről, a lehetséges biztonsági résekről, és az SQL-injektálási támadások, valamint a rendellenes adatbázis-hozzáférés, és lekérdezi a minták. Komplex veszélyforrások elleni védelem integrálható a riasztások [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amely tartalmazza a gyanús tevékenység részleteit, és tegyen javaslatot a műveletre vizsgálata, valamint a fenyegetés mérséklésére. Komplex veszélyforrások elleni védelem is egyszerűvé teszi cím potenciális fenyegetések, az adatbázis szakértői biztonsági szakértelem vagy fejlett biztonsági monitorozási rendszerek felügyelete nélkül.
 
 Teljes vizsgálat biztosítása érdekében, javasoljuk, hogy engedélyezze [SQL Database naplózási szolgáltatásával](sql-database-auditing.md), amely írja az adatbázissal kapcsolatos események egy naplófájlba, jelentkezzen be az Azure storage-fiókjában.  
 
-## <a name="threat-detection-alerts"></a>Fenyegetésészlelési riasztások
+## <a name="advanced-threat-protection-alerts"></a>Advanced Threat Protection-riasztások
 
-Az Azure SQL Database fenyegetésészlelés észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek, és azt is aktiválhatja a következő riasztásokat:
+Komplex veszélyforrások elleni védelem az Azure SQL Database-adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek észleli, és azt is aktiválhatja a következő riasztásokat:
 
 - **Biztonsági rés az SQL-injektálás**: Ez a riasztás akkor aktiválódik, ha egy alkalmazás egy hibás SQL-utasítást hoz létre az adatbázis. Ez a riasztás az SQL-injektálási támadásokkal kihasználható biztonsági rést jelezhet. A hibás utasításokat két dolog okozhatja:
 
@@ -65,20 +65,20 @@ Rendellenes adatbázis-tevékenységek észlelésekor e-mail-értesítést kap. 
 
    ![Adott riasztás](./media/sql-database-threat-detection/specific_alert.png)
 
-## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Ismerkedés a fenyegetésészlelési riasztásokat az adatbázis az Azure Portalon
+## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>Ismerkedés az Azure Portalon az adatbázis komplex veszélyforrások elleni védelem riasztások
 
-A fenyegetésészlelés integrálható a riasztásokat az [az Azure security center](https://azure.microsoft.com/services/security-center/). Az élő SQL threat detection csempék belül az adatbázis és az SQL-HIRDETÉSEK paneleket az Azure Portalon aktív fenyegetéseket állapotának nyomon követése.
+Komplex veszélyforrások elleni védelem integrálható a riasztásokat az [az Azure security center](https://azure.microsoft.com/services/security-center/). Az adatbázis és az SQL-HIRDETÉSEK paneleket az Azure Portalon belüli élő SQL komplex veszélyforrások elleni védelem csempék aktív fenyegetéseket állapotának nyomon követése.
 
-Kattintson a **fenyegetés-észlelési riasztás** , indítsa el az Azure Security Center riasztások lapon, és áttekintheti a aktív SQL észlelt veszélyforrások alapján az adatbázist, sem az adattárházra.
+Kattintson a **komplex veszélyforrások elleni védelem riasztás** , indítsa el az Azure Security Center riasztások lapon, és áttekintheti a aktív SQL észlelt veszélyforrások alapján az adatbázist, sem az adattárházra.
 
-   ![Fenyegetés-észlelési riasztás](./media/sql-database-threat-detection/threat_detection_alert.png)
+   ![A speciális veszélyforrások elleni védelem riasztás](./media/sql-database-threat-detection/threat_detection_alert.png)
 
-   ![Fenyegetés-észlelési alert2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
+   ![Komplex veszélyforrások elleni védelem alert2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [fenyegetésészlelés egyetlen vagy készletezett adatbázisok](sql-database-threat-detection.md).
-- Tudjon meg többet [fenyegetések észlelése a felügyelt példány](sql-database-managed-instance-threat-detection.md).
+- Tudjon meg többet [egyetlen vagy készletezett adatbázisok a komplex veszélyforrások elleni védelem](sql-database-threat-detection.md).
+- Tudjon meg többet [komplex veszélyforrások elleni védelem a felügyelt példány](sql-database-managed-instance-threat-detection.md).
 - Tudjon meg többet [adatbiztonság speciális](sql-database-advanced-data-security.md).
 - Tudjon meg többet [Azure SQL Database naplózási szolgáltatásával](sql-database-auditing.md)
 - Tudjon meg többet [az Azure security Centerben](https://docs.microsoft.com/azure/security-center/security-center-intro)

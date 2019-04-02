@@ -8,19 +8,19 @@ ms.date: 02/12/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ddda2a8bf1fab4e4c48c647237617d8f705f0561
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 79b99532f5fb38123b03d2a39b7c9c6364e9f636
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112087"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802269"
 ---
 # <a name="create-a-custom-policy-definition"></a>Egyéni szabályzatdefiníció létrehozása
 
 Egyéni szabályzat-definíció lehetővé teszi a felhasználóknak a saját Azure használatára vonatkozó szabályok meghatározásához. Ezek a szabályok gyakran kényszerítése:
 
 - Biztonsági eljárások
-- Költségkezelés
+- Cost Management
 - Szervezetekre vonatkozó szabályok (például elnevezési vagy helyek)
 
 Függetlenül a stratégiai egyéni házirend létrehozásának a lépései megegyeznek az új egyéni szabályzat definiálása.
@@ -72,7 +72,7 @@ Többféleképpen is meg egy [Resource Manager-sablon](../../../azure-resource-m
 A legegyszerűbben úgy tulajdonságait, hogy tekintse meg az azonos típusú meglévő erőforrást. Erőforrások már be van állítva a beállítás kényszeríteni szeretné a érték is biztosítanak.
 Tekintse meg a **Automation-szkript** lap (alatt **beállítások**) az Azure Portalon, hogy az adott erőforráshoz.
 
-![Automation-szkript oldalon](../media/create-custom-policy-definition/automation-script.png)
+![Meglévő erőforrás sablon oldal exportálása](../media/create-custom-policy-definition/automation-script.png)
 
 Így a storage-fiókok tárja fel a sablonból példához hasonlóak:
 

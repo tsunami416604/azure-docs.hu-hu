@@ -1,28 +1,28 @@
 ---
 title: Azure Cosmos DB-adatbázisok, tárolók és elemek használata
 description: Ez a cikk bemutatja, hogyan hozhat létre és használhat az Azure Cosmos DB-adatbázisok, tárolók és elemek
-author: dharmas-cosmos
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.author: dharmas
+ms.date: 03/31/2019
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: c7288b112ce2fd062a67cb673a1efa6028ec7d57
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f3bec1b279c07e62e246ebfa933b3942e38406de
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888519"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762905"
 ---
 # <a name="work-with-databases-containers-and-items"></a>Adatbázisok, tárolók és elemek használata
 
-Miután létrehozott egy [Azure Cosmos DB-fiók](account-overview.md) az Azure-előfizetéshez adatai is kezelhetők a fiókban lévő adatbázisok, tárolók és elemek létrehozásával. Ez a cikk ismerteti ezeket az entitásokat: adatbázisok, tárolók és elemek. Az alábbi képen látható a különböző entitások hierarchiája egy Azure Cosmos-fiók:
+Miután létrehozott egy [Azure Cosmos-fiók](account-overview.md) az Azure-előfizetéshez adatai is kezelhetők a fiókban lévő adatbázisok, tárolók és elemek létrehozásával. Ez a cikk ismerteti ezeket az entitásokat: adatbázisok, tárolók és elemek. Az alábbi képen látható a különböző entitások hierarchiája egy Azure Cosmos-fiók:
 
 ![Azure Cosmos-fiók entitások](./media/databases-containers-items/cosmos-entities.png)
 
 ## <a name="azure-cosmos-databases"></a>Az Azure Cosmos Database.
 
-A fiók alatt létrehozhat egy vagy több Azure-Cosmos-adatbázis. Egy adatbázis nevű névtér, hanem több Azure-Cosmos-tárolók egysége. Az alábbi táblázat bemutatja, hogyan le van képezve egy Azure Cosmos database különböző API-specifikus entitások:
+A fiók alatt létrehozhat egy vagy több Azure-Cosmos-adatbázis. Egy adatbázis nevű névtér. Több Azure-Cosmos-tárolók egysége. Az alábbi táblázat bemutatja, hogyan le van képezve egy Azure Cosmos database különböző API-specifikus entitások:
 
 | **Azure Cosmos-entitás** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- |
@@ -33,7 +33,7 @@ A fiók alatt létrehozhat egy vagy több Azure-Cosmos-adatbázis. Egy adatbázi
 
 ### <a name="operations-on-an-azure-cosmos-database"></a>Egy Azure Cosmos database műveletek
 
-Egy Azure Cosmos database, az Azure Cosmos következő API-k használatával kezelheti:
+Kezelheti egy Azure Cosmos database az Azure-Cosmos-API-kkal a következőképpen:
 
 | **Művelet** | **Azure CLI**|**SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -45,25 +45,25 @@ Egy Azure Cosmos database, az Azure Cosmos következő API-k használatával kez
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos-tárolók
 
-Egy Azure Cosmos-tárolóhoz méretezhetőséget biztosít a kiosztott átviteli egység és tárolási elemeket. Egy tároló vízszintesen particionált, és több régióra replikált majd. Adja hozzá a tároló és az átviteli sebesség, a rajta üzembe helyezi az elemek automatikusan a partíciókulcs alapján logikai partíciók egy halmazában vannak elosztva. Particionálás és a partíciókulcs kapcsolatos további információkért lásd: [logikai partíció](partition-data.md) cikk. 
+Az Azure Cosmos-tárolókat méretezhetőséget biztosít a kiosztott átviteli sebesség és a tárolási egység. Egy tároló vízszintesen particionált, és több régióra replikált majd. Adja hozzá a tároló és az átviteli sebesség, a rajta üzembe helyezi az elemek automatikusan a partíciókulcs alapján logikai partíciók egy halmazában vannak elosztva. Particionálás és a partíciókulcsok kapcsolatos további információkért lásd: [ez](partition-data.md) cikk. 
 
 Egy Azure Cosmos-tároló létrehozásakor átviteli konfigurálja a következő módok egyikében:
 
-* **Dedikált kiosztott átviteli sebesség** mód: Egy tároló kiosztott átviteli sebesség kizárólag a hozzá tartozó fenntartott és a szavatolják. További tudnivalókért lásd: [hogyan helyezhet üzembe egy Azure Cosmos-tároló átviteli sebességet](how-to-provision-container-throughput.md).
+* **Dedikált kiosztott átviteli sebesség** mód: Egy tároló kiosztott átviteli kizárólag az adott tárolók számára fenntartott és a szavatolják. További tudnivalókért lásd: [hogyan helyezhet üzembe egy Azure Cosmos-tároló átviteli sebességet](how-to-provision-container-throughput.md).
 
-* **Megosztott kiosztott átviteli sebesség** mód: Ezek a tárolók a kiosztott átviteli sebesség megosztása más tárolók ugyanabban az adatbázisban (kivéve azokat, amelyek dedikált kiosztott átviteli sebesség a konfigurált tárolók). Más szóval a kiosztott átviteli sebesség az adatbázison a "megosztott" tárolók megosztják egymással. További tudnivalókért lásd: [kiosztott átviteli sebesség konfigurálása az Azure Cosmos database](how-to-provision-database-throughput.md).
+* **Megosztott kiosztott átviteli sebesség** mód: Ezek a tárolók a kiosztott átviteli sebesség megoszthatja a más tárolók ugyanabban az adatbázisban (kivéve azokat, amelyek dedikált kiosztott átviteli sebesség a konfigurált tárolók). Más szóval a kiosztott átviteli sebességét az adatbázis összes "megosztott átviteli" tároló között megosztott. További tudnivalókért lásd: [kiosztott átviteli sebesség konfigurálása az Azure Cosmos database](how-to-provision-database-throughput.md).
 
 Az Azure Cosmos-tárolókat rugalmasan méretezhető, hogy hoz létre a tárolót vagy a "megosztás" vagy "dedikált" kiosztott átviteli mód.
 
-Az Azure Cosmos-tárolókat az elemek sémafüggetlen tárolója. Tárolóban lévő elemek is tetszőleges sémákkal rendelkeznek. Ha például egy elemet egy személyt jelölő, egy autó jelölő elem helyezhető ugyanabban a tárolóban. Alapértelmezés szerint adja hozzá a tároló az összes elem automatikus indexelése semmilyen kifejezett index vagy séma kezelése nélkül. Testre szabhatja, hogy az indexelés viselkedésének az egy tárolót az indexelési házirend konfigurálásával. 
+Az Azure Cosmos-tárolókat az elemek sémafüggetlen tárolója. Tárolóban lévő elemek is tetszőleges sémákkal rendelkeznek. Például egy cikk egy személyt jelölő, egy autó jelölő elem nem helyezhető a *ugyanabban a tárolóban*. Alapértelmezés szerint adja hozzá a tároló az összes elem automatikus indexelése semmilyen kifejezett index vagy séma kezelése nélkül. Az indexelés viselkedésének konfigurálásával testre szabhatja a [indexelési szabályzat](index-overview.md) egy tárolón. 
 
-Az élettartam (TTL) állíthatja be a kijelölt elemek egy Azure Cosmos-tárolón belül vagy a teljes tárolót szabályosan kiürítése azok az elemek a rendszerből. Az Azure Cosmos DB automatikusan törli a cikkek járnak. Emellett biztosítja azt, hogy a tárolón végrehajtott lekérdezés nem ad vissza a lejárt elemek egy rögzített kötött belül. További tudnivalókért lásd: [élettartam konfigurálása a tároló](how-to-time-to-live.md).
+Beállíthat [élettartam (TTL)](time-to-live.md) a kijelölt elemek egy Azure Cosmos-tárolón belül vagy a teljes tárolót szabályosan kiürítése azok az elemek a rendszerből. Az Azure Cosmos DB automatikusan törli a cikkek járnak. Emellett biztosítja azt, hogy a tárolón végrehajtott lekérdezés nem ad vissza a lejárt elemek egy rögzített kötött belül. További tudnivalókért lásd: [élettartam konfigurálása a tároló](how-to-time-to-live.md).
 
-A változáscsatorna, előfizethet a műveleti napló minden a tároló logikai partíció felügyelt. A módosítási hírcsatorna biztosít az összes tartományvezérlőn végrehajtott frissítések összevonása a tároló és a napló a előtti és utáni képek elem. Lásd: [hogyan módosítása reaktív alkalmazásokat hozhat létre hírcsatorna](change-feed.md). Beállíthatja a változáscsatorna házirendet a tárolón a változáscsatorna megőrzési időtartamát. 
+Használatával [módosítási hírcsatorna](change-feed.md), előfizethet a műveleti napló minden a tároló logikai partíció felügyelt. A módosítási hírcsatorna biztosít az összes tartományvezérlőn végrehajtott frissítések összevonása a tároló és a napló a előtti és utáni képek elem. Lásd: [hogyan hozhat létre alkalmazásokat reaktív módosítási hírcsatorna](serverless-computing-database.md). Beállíthatja a megőrzési időtartam a hírcsatorna módosítsa a házirendet a tárolón a változáscsatorna használatával. 
 
-Tárolt eljárások, eseményindítók, felhasználó által definiált függvények (UDF) és egyesítés eljárásokkal regisztrálhatja az az Azure Cosmos-tároló. 
+Regisztrálhatja [tárolt eljárások, eseményindítók, felhasználó által definiált függvények (UDF)](stored-procedures-triggers-udfs.md) és [eljárások egyesítése](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy-with-a-stored-procedure) az Azure Cosmos-tárolóval. 
 
-Egy egyedi kulcsot az Azure Cosmos-tárolót is megadhat. Hozzon létre egyedi, a logikai partíciókulcs egy vagy több értéket, a egyediségének biztosítása. Miután a tároló egyedi létre lett hozva, nem kell létrehozni az új vagy frissített elemek által az egyedi kulcsmegkötés megadott értékek ismétlődő értékekkel. További tudnivalókért lásd: [egyedi kulcsra vonatkozó megkötések](unique-keys.md).
+Megadhat egy [egyedi kulcsmegkötés](unique-keys.md) az Azure Cosmos-tárolón. Hozzon létre egyedi, a logikai partíciókulcs egy vagy több értéket, a egyediségének biztosítása. Miután a tároló egyedi létre lett hozva, nem kell létrehozni az új vagy frissített elemek által az egyedi kulcsmegkötés megadott értékek ismétlődő értékekkel. További tudnivalókért lásd: [egyedi kulcsra vonatkozó megkötések](unique-keys.md).
 
 Az Azure Cosmos-tárolókat a következő kifejezetten az API-specifikus entitásokkal:
 
@@ -73,19 +73,19 @@ Az Azure Cosmos-tárolókat a következő kifejezetten az API-specifikus entitá
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Egy Azure Cosmos-tároló tulajdonságai
 
-Egy Azure Cosmos-tárolóhoz egy rendszer által meghatározott tulajdonságkészlettel rendelkezik. A kiválasztott API-t, attól függően némelyike nem lehet közvetlenül téve. A következő táblázat ismerteti a támogatott rendszer által definiált tulajdonságok listája:
+Egy Azure Cosmos-tárolóhoz egy rendszer által definiált tulajdonsággal rendelkezik. A kiválasztott API-t, attól függően némelyike nem lehet közvetlenül téve. A következő táblázat ismerteti a rendszer által definiált tulajdonságok listája:
 
-| **Rendszer által meghatározott tulajdonság** | **Létrehozott vagy felhasználó állítható be** | **Cél** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
+| **Rendszer által meghatározott tulajdonság** | **Létrehozott vagy felhasználó által konfigurálható** | **Cél** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |_rid | A rendszer által létrehozott | Tároló egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
 |_etag | A rendszer által létrehozott | Az optimista egyidejűség-vezérlési entitáscímkéje | Igen | Nem | Nem | Nem | Nem |
 |_ts | A rendszer által létrehozott | A tároló utolsó frissítés időbélyege | Igen | Nem | Nem | Nem | Nem |
 |_self | A rendszer által létrehozott | A tároló címezhető URI | Igen | Nem | Nem | Nem | Nem |
 |id | Felhasználó által konfigurálható | Felhasználó által megadott egyedi a tároló nevét. | Igen | Igen | Igen | Igen | Igen |
-|indexingPolicy | Felhasználó által konfigurálható | Lehetővé teszi az index elérési utat, a pontosság és a konzisztencia modell módosításához. | Igen | Nem | Nem | Nem | Igen |
+|indexingPolicy | Felhasználó által konfigurálható | Lehetővé teszi az index elérési útja, index típusa és index mód módosítása. | Igen | Nem | Nem | Nem | Igen |
 |TimeToLive | Felhasználó által konfigurálható | Lehetővé teszi elemek törlése automatikusan végre egy bizonyos idő elteltével. További részletekért tekintse meg a [Time To Live](time-to-live.md) cikk. | Igen | Nem | Nem | Nem | Igen |
-|changeFeedPolicy | Felhasználó által konfigurálható | Olvassa el a tárolóban lévő elemek segítségével. További részletekért tekintse meg a [módosításcsatornáját](change-feed.md) cikk. | Igen | Nem | Nem | Nem | Igen |
-|uniqueKeyPolicy | Felhasználó által konfigurálható | Az egyedi kulcs a logikai partíción belül egy vagy több értéket a egyediségének biztosítása. További információkért lásd: a [egyedi kulcsok](unique-keys.md) cikk. | Igen | Nem | Nem | Nem | Igen |
+|changeFeedPolicy | Felhasználó által konfigurálható | Olvassa el a tárolóban lévő elemek segítségével. További részletekért tekintse meg a [módosítási hírcsatorna](change-feed.md) cikk. | Igen | Nem | Nem | Nem | Igen |
+|uniqueKeyPolicy | Felhasználó által konfigurálható | Használja a logikai partíción belül egy vagy több értéket egyediségének biztosítása érdekében. További információkért lásd: a [egyedi kulcs megkötéseket](unique-keys.md) cikk. | Igen | Nem | Nem | Nem | Igen |
 
 ### <a name="operations-on-an-azure-cosmos-container"></a>Az Azure Cosmos-tárolókat műveletek
 
@@ -93,7 +93,7 @@ Az Azure Cosmos-tárolókat a következő műveletek bármelyikével az Azure Co
 
 | **Művelet** | **Azure CLI** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| A tárolók egy adatbázis számbavétele | Igen* | Igen | Igen | Igen | NA | NA |
+| A tárolók egy adatbázis számbavétele | Igen | Igen | Igen | Igen | NA | NA |
 | Egy tároló olvasása | Igen | Igen | Igen | Igen | NA | NA |
 | Új tároló létrehozása | Igen | Igen | Igen | Igen | NA | NA |
 | Tároló frissítése | Igen | Igen | Igen | Igen | NA | NA |
@@ -111,11 +111,11 @@ Az API-t a választás, attól függően egy Azure Cosmos-elemet vagy egy dokume
 
 Minden Azure-Cosmos-elem a következő definiált rendszertulajdonsággal rendelkezik. A kiválasztott API-t, attól függően némelyike nem lehet közvetlenül téve.
 
-|**Rendszer által meghatározott tulajdonság** | **Létrehozott vagy felhasználó állítható be**| **Cél** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
+|**Rendszer által meghatározott tulajdonság** | **Létrehozott vagy felhasználó által konfigurálható**| **Cél** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |_id | A rendszer által létrehozott | Elem egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
 |_etag | A rendszer által létrehozott | Az optimista egyidejűség-vezérlési entitáscímkéje | Igen | Nem | Nem | Nem | Nem |
-|_ts | A rendszer által létrehozott | A cikk utolsó frissítés időbélyege | Igen | Nem | Nem | Nem | Nem |
+|_ts | A rendszer által létrehozott | A cikk az utolsó frissítés történő küldés időbélyegzője | Igen | Nem | Nem | Nem | Nem |
 |_self | A rendszer által létrehozott | Az elemek címezhető URI azonosítója | Igen | Nem | Nem | Nem | Nem |
 |id | Vagy | Felhasználó által definiált belül egyedi nevet a logikai partíció. Ha a felhasználó nem ad meg az azonosító, a rendszer automatikusan létrehoz egyet. | Igen | Igen | Igen | Igen | Igen |
 |Tetszőleges, felhasználó által definiált tulajdonságai | Felhasználó által megadott | Felhasználó által definiált tulajdonságok jelölt API natív ábrázolás (JSON, BSON, CQL, stb.) | Igen | Igen | Igen | Igen | Igen |
@@ -130,7 +130,7 @@ Az Azure Cosmos-cikk támogatja a következő műveleteket az Azure Cosmos API-k
 
 ## <a name="next-steps"></a>További lépések
 
-Most már folytathatja kioszthatja az átviteli sebességet az Azure Cosmos-fiók, vagy tekintse meg a többi kapcsolatos fogalmak megismeréséhez:
+Folytassa a következő fogalmak további:
 
 * [Egy Azure Cosmos database kiosztott átviteli sebesség konfigurálása](how-to-provision-database-throughput.md)
 * [Egy Azure Cosmos-tároló kiosztott átviteli sebesség konfigurálása](how-to-provision-container-throughput.md)

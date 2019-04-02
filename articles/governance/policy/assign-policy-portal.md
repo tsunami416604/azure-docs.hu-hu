@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: af14b242ae7578e1f9797895bd18c37231959ac9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 99c9caa167b1615705adc29193bc395b0c9e2a66
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342711"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803986"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources"></a>Hozzon létre egy szabályzat-hozzárendelést a nem megfelelő erőforrások azonosításához
 
@@ -31,15 +31,15 @@ Ebben a rövid útmutatóban egy szabályzat-hozzárendelés létrehozása és h
 
 1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
 
-   ![Szabályzat keresése](./media/assign-policy-portal/search-policy.png)
+   ![Az összes szolgáltatás szabályzat keresése](./media/assign-policy-portal/search-policy.png)
 
 1. Válassza ki a **Hozzárendelések** elemet az Azure Policy oldal bal oldalán. A hozzárendelés egy olyan szabályzat, amely egy adott hatókörön belül érvényes.
 
-   ![Hozzárendelések kiválasztása](./media/assign-policy-portal/select-assignments.png)
+   ![Válassza ki a hozzárendeléseket lapon a házirendek – Áttekintés lap](./media/assign-policy-portal/select-assignments.png)
 
 1. Válassza a **Szabályzat hozzárendelése** lehetőséget a **Szabályzat – Hozzárendelések** oldal tetején.
 
-   ![Szabályzatdefiníció hozzárendelése](./media/assign-policy-portal/select-assign-policy.png)
+   ![Hozzárendeléseket lapon szabályzatdefiníció hozzárendelése](./media/assign-policy-portal/select-assign-policy.png)
 
 1. A **Szabályzat hozzárendelése** oldalon a **Hatókör** kiválasztásához kattintson a három pontra, majd válasszon felügyeleti csoportot vagy előfizetést. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve.  Ezután kattintson a **Kiválasztás** gombra a **Hatókör** oldal alján.
 
@@ -71,7 +71,7 @@ Most már készen áll a nem megfelelő erőforrások azonosítására a környe
 
 Válassza ki **megfelelőségi** az oldal bal oldalán található. Keresse meg a **felügyelt lemezeket nem használó virtuális gépek naplózása** létrehozott szabályzat-hozzárendelést.
 
-![Szabályzatmegfelelőség](./media/assign-policy-portal/policy-compliance.png)
+![A szabályzatoknak való megfelelés oldalon megfelelőségi részletei](./media/assign-policy-portal/policy-compliance.png)
 
 Ha vannak olyan meglévő erőforrások, amelyek nem felelnek meg az új hozzárendelésnek, azok jelennek meg **nem megfelelő erőforrások**.
 
@@ -94,7 +94,7 @@ A létrehozott hozzárendelést eltávolításához kövesse az alábbi lépése
 
 1. Kattintson a jobb gombbal a **Felügyelt lemezeket nem használó virtuális gépek naplózása** szabályzat-hozzárendelésre, és válassza a **Hozzárendelés törlése** lehetőséget.
 
-   ![Hozzárendelés törlése](./media/assign-policy-portal/delete-assignment.png)
+   ![Hozzárendelés törlése a megfelelőségi oldaláról](./media/assign-policy-portal/delete-assignment.png)
 
 ## <a name="next-steps"></a>További lépések
 

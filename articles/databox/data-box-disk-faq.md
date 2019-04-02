@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 97794675f3d489e1154d9c327c18d40708dd5b53
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1a192f5cbd0fb5a4dcb911f40753efcbd996a418
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877853"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793844"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
@@ -170,6 +170,6 @@ A. Igen. Az adatok feltöltése az Azure-ba, de ha nem látja a felügyelt lemez
 
 ## <a name="next-steps"></a>További lépések
 
-- A [Data Box rendszerkövetelményeinek](data-box-disk-system-requirements.md) áttekintése.
-- A [Data Box korlátjainak](data-box-disk-limits.md) értelmezése.
+- Tekintse át a [Data Box-lemezek rendszerkövetelmények](data-box-disk-system-requirements.md).
+- A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.
 - Az [Azure Data Box Disk](data-box-disk-quickstart-portal.md) gyors üzembe helyezése az Azure Portalon.

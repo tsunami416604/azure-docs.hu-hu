@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: alkohli
-ms.openlocfilehash: a3096729b2430adf0fd884fc03e3b051b17f5b51
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b4d047f4266d11a5f6b77f33054eb93e31f7090b
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660460"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791575"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Windows Powershellen keresztül az Azure Data Box peremhálózati eszköz kezelése
 
@@ -59,6 +59,7 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 További információ a tanúsítványok, nyissa meg [Azure IoT Edge-tanúsítványok](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) vagy [telepítse a tanúsítványokat az átjáró a](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
 
 ## <a name="view-device-information"></a>Eszköz adatainak megtekintése
+
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
@@ -75,9 +76,10 @@ Ha a számítási szerepkör konfigurálva van az eszközön, a PowerShell-felü
 
     Az alábbi példa bemutatja ennek a parancsmagnak a használatát:
 
-    ```
+    ```powershell
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
     ```
+
     Itt látható a parancsmag paraméterei leírása:
     - `Path`: Adja meg a megosztást, ahol szeretné létrehozni a számítási log csomagot egy hálózati elérési útját.
     - `Credential`: Adja meg a felhasználónevet és jelszót a hálózati megosztáson.

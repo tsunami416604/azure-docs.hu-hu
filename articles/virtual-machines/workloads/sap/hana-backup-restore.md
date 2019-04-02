@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2018
+ms.date: 04/01/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab71b8d3af573f62e69c02564c237ad433962ff9
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 69417551c1c8d410f75e74a8164c8b8a223ab835
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541230"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805329"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -58,7 +58,7 @@ A tároló-infrastruktúra az alapul szolgáló SAP HANA az Azure-ban (nagymére
 - Amikor elindítása egy pillanatkép /hana/data és /hana/shared (tartalmazza a /usr/sap) a kötetek, a pillanatkép-technológia egy SAP HANA hajtja végre a rendszer a storage-pillanatkép pillanatkép indítja el. Az SAP HANA pillanatképe végleges log visszaállítását a telepítő pontja, a storage-pillanatkép helyreállítása után. A sikeres HANA pillanatképe kell egy aktív HANA-példány.  HSR esetben tároló pillanatképe nem támogatott az aktuális másodlagos csomópontra, ahol a HANA pillanatképe nem hajtható végre.
 - Miután a tároló pillanatképe sikeresen végre lett hajtva, az SAP HANA pillanatképe törlődik.
 - Tranzakciónapló biztonsági mentései gyakran kerül, és a /hana/logbackups kötetet, vagy az Azure-ban tárolja. /Hana/logbackups tartalmazó kötetet, a tranzakciónapló biztonsági mentései pillanatképének külön-külön is indíthat. Ebben az esetben nem kell végrehajtani egy HANA pillanatképe.
-- Ha vissza kell állítania egy adatbázis egy bizonyos ponton időben, kérhet, hogy a Microsoft Azure-támogatást (egy éles kimaradásáról) vagy az SAP HANA az Azure Service Management egy bizonyos tárolási pillanatkép visszaállítása. Ilyen például, a védőfal rendszer tervezett visszaállítás az eredeti állapotba.
+- Ha vissza kell állítania egy adatbázis egy bizonyos ponton az ideje, kérelmek, hogy a Microsoft Azure-támogatást (egy éles kimaradásáról) vagy az SAP HANA Azure visszaállításkor egy bizonyos tárolási pillanatfelvétel. Ilyen például, a védőfal rendszer tervezett visszaállítás az eredeti állapotba.
 - Az SAP HANA pillanatképe, amely megtalálható a tároló pillanatképe az egy eltolási pont, a tranzakciónapló biztonsági mentéseivel, amelyek végrehajtása és a tárolt, miután a tároló pillanatkép alkalmazása.
 - Állítsa vissza az adatbázist vissza egy bizonyos ponton a időben megnyílik a tranzakciós napló biztonsági mentése.
 
@@ -167,15 +167,16 @@ MACs hmac-sha1
 
 Engedélyezi a hozzáférést a storage pillanatkép felületek a nagyméretű HANA-példány bérlő, meg kell létrehoznia egy bejelentkezési eljárást keresztül a nyilvános kulcs. Az első SAP HANA az Azure-ban (nagyméretű példányok) kiszolgáló a saját bérlőjében hozzon létre a tároló-infrastruktúra eléréséhez használt nyilvános kulcsot. A nyilvános kulcs biztosítja, hogy jelentkezzen be a storage-pillanatkép felületek nem szükséges jelszó. Nyilvános kulcs létrehozása is jelenti, hogy nem kell fenntartani a jelszavas hitelesítő adatokat. Az SAP HANA nagyméretű példányok kiszolgálón Linux hajtsa végre a következő parancsot a nyilvános kulcs létrehozásához:
 ```
-  ssh-keygen –t dsa –b 1024
+  ssh-keygen -t rsa –b 5120 -C ""
 ```
-Az új hely **_/root/.ssh/id\_dsa.pub**. Ne adjon meg egy tényleges jelszót, vagy pedig adja meg a jelszavát minden egyes bejelentkezés alkalmával kell. Ehelyett válassza **Enter** kétszer, távolítsa el a "jelszó" követelmény a bejelentkezéshez.
+
+Az új hely **_/root/.ssh/id\_rsa.pub**. Ne adjon meg egy tényleges jelszót, vagy pedig adja meg a jelszavát minden egyes bejelentkezés alkalmával kell. Ehelyett válassza **Enter** kétszer, távolítsa el a "jelszó" követelmény a bejelentkezéshez.
 
 Győződjön meg arról, hogy a nyilvános kulcs javította módosítása a mappákban elvárt **/root/.ssh/** majd végrehajtása és a `ls` parancsot. Ha a kulcs található, másolja azt a következő parancs futtatásával:
 
 ![Másolja a nyilvános kulcsot a parancs futtatása](./media/hana-overview-high-availability-disaster-recovery/image2-public-key.png)
 
-Ezen a ponton lépjen kapcsolatba az SAP HANA az Azure Service Management szolgáltatáshoz, és adja meg a nyilvános kulcsot. A szolgáltatás képviselő a nyilvános kulcs használatával regisztrálja a mögöttes tároló-infrastruktúra, amely van faragottnak nagyméretű HANA-példány-bérlője számára.
+Ezen a ponton lépjen kapcsolatba az Azure-beli SAP HANA, és adja meg a nyilvános kulcsot. A szolgáltatás képviselő a nyilvános kulcs használatával regisztrálja a mögöttes tároló-infrastruktúra, amely van faragottnak nagyméretű HANA-példány-bérlője számára.
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>4. lépés: Az SAP HANA-felhasználói fiók létrehozása
 
@@ -262,7 +263,7 @@ A különböző parancsprogramokat és fájlokat célja a következőképpen tö
 - **removeTestStorageSnapshot.pl**: Ez a szkript törli a létrehozott szkripttel teszt pillanatképének **testStorageSnapshotConnection.pl**.
 - **Azure\_hana\_dr\_failover.pl**: Ez a szkript egy másik régióba DR feladatátvételét kezdeményezi. A parancsfájl kell a nagyméretű HANA-példány egységen a Vészhelyreállítás régióban található, vagy a egység szeretné átadja a feladatokat. Ez a szkript a másodlagos oldalának elsődleges oldaláról storage replikálását, visszaállítja a legutóbbi pillanatképet a DR-köteteken, és a DR akkor a csatlakozási biztosít köteteket.
 - **Azure\_hana\_tesztelése\_dr\_failover.pl**: Ez a szkript a DR-helyre hajt végre feladatátvételi tesztet. A végrehajtási ellentétben a azure_hana_dr_failover.pl parancsfájl nem szakítja meg a tárreplikáció, az elsődleges, másodlagos. Ehelyett a replikált tároló kötetek klónok jönnek létre a DR oldalra, és a csatlakozási pontok le a klónozott kötetek találhatók. 
-- **HANABackupCustomerDetails.txt**: Ez a fájl egy módosíthatóvá konfigurációs fájlt, amely alkalmazkodni az SAP HANA konfigurációját módosítani kell. A *HANABackupCustomerDetails.txt* a vezérlő és a konfigurációs fájlt a parancsprogramot, amelynek a tárolási pillanatképek számára. Állítsa be a fájlt a célokra és a telepítőt. Kap a **Storage biztonsági mentés neve** és a **tárolási IP-cím** az SAP HANA az Azure Service Management-példányokat telepítésekor. Nem módosíthatja a feladatütemezési, rendezés, vagy bármely, a fájlban a változók térköz. Ha így tesz, a parancsfájlok nem működnek megfelelően. Megjelenhet az IP-címét a vertikális felskálázás vagy a fő csomópontot (ha horizontális felskálázás) SAP HANA az Azure Service Management-ból. Azt is tudnia a HANA-példány szám, amelyet kap az SAP HANA telepítése során. Most szüksége egy biztonsági mentési név a konfigurációs fájl hozzáadásához.
+- **HANABackupCustomerDetails.txt**: Ez a fájl egy módosíthatóvá konfigurációs fájlt, amely alkalmazkodni az SAP HANA konfigurációját módosítani kell. A *HANABackupCustomerDetails.txt* a vezérlő és a konfigurációs fájlt a parancsprogramot, amelynek a tárolási pillanatképek számára. Állítsa be a fájlt a célokra és a telepítőt. Kap a **Storage biztonsági mentés neve** és a **tárolási IP-cím** a példányok üzembe Azure-beli SAP HANA-ból. Nem módosíthatja a feladatütemezési, rendezés, vagy bármely, a fájlban a változók térköz. Ha így tesz, a parancsfájlok nem működnek megfelelően. Megjelenhet az IP-címét a vertikális felskálázás vagy a fő csomópontot (ha horizontális felskálázás) Azure-beli SAP HANA-ból. Azt is tudnia a HANA-példány szám, amelyet kap az SAP HANA telepítése során. Most szüksége egy biztonsági mentési név a konfigurációs fájl hozzáadásához.
 
 Vertikális vagy horizontális felskálázás központi telepítés a konfigurációs fájl módon jelenik meg az alábbi példában a kiszolgáló nevét a nagyméretű HANA-példány és a kiszolgáló IP-cím kitöltése után. Töltse ki az összes szükséges mezőket minden SAP HANA biztonsági azonosító biztonsági mentése vagy helyreállítása.
 
@@ -628,9 +629,9 @@ A pillanatkép-típusok **hana** és **naplók**, közvetlenül a köteteken a p
 
 Egy éles válassza ki a forgatókönyvben egy tárolási pillanatképből helyreállításának folyamatán, egy ügyfél eseményt a Microsoft Azure támogatási szolgálatával kezdeményezhetők. A magas sürgősségű függetlenül attól, hogy, akkor, ha adatokat törölte a termelési rendszer, és az egyetlen módszer is lekérheti azt, hogy az éles adatbázis visszaállításához.
 
-Egy másik esetben a időponthoz helyreállítás lehet, hogy alacsony sürgősség, és a tervezett nappal. Megtervezheti a helyreállítás, az SAP HANA az Azure Service Management helyett egy magas prioritású jelző előléptetése. Például előfordulhat, hogy lehet tervezi az SAP-szoftverek frissítése a fejlesztés új csomag alkalmazásával. Kell visszaállítania egy pillanatkép, amely előtt a fejlesztés Csomagfrissítés állapotát jelöli.
+Egy másik esetben a időponthoz helyreállítás lehet, hogy alacsony sürgősség, és a tervezett nappal. Megtervezheti a helyreállítás, az SAP HANA az Azure-ban egy magas prioritású jelző előléptetése helyett. Például előfordulhat, hogy lehet tervezi az SAP-szoftverek frissítése a fejlesztés új csomag alkalmazásával. Kell visszaállítania egy pillanatkép, amely előtt a fejlesztés Csomagfrissítés állapotát jelöli.
 
-Mielőtt elküldi a kérelmet, kell előkészíteni. Az SAP HANA az Azure Service Management csapata majd kezelni a kérést, és adja meg a visszaállított kötetek. Ezután állítsa vissza a HANA-adatbázis, a pillanatképek alapján. 
+Mielőtt elküldi a kérelmet, kell előkészíteni. Az SAP HANA az Azure-csapat majd kezelni a kérést, és adja meg a visszaállított kötetek. Ezután állítsa vissza a HANA-adatbázis, a pillanatképek alapján. 
 
 A következő bemutatja, hogyan készülhet fel a kérelmet:
 
@@ -648,9 +649,9 @@ A következő bemutatja, hogyan készülhet fel a kérelmet:
 
 1. Nyisson meg egy Azure-támogatási kérést, és a visszaállítást egy adott pillanatkép kapcsolatos utasításokat is tartalmazzák.
 
-   - A visszaállítás: alatt SAP HANA az Azure Service Management fel, hogy vegyen részt egy konferenciahívás koordinálása, ellenőrzése és megerősítése, hogy a helyes tárfiók-pillanatkép visszaállítása biztosítása érdekében. 
+   - A visszaállítás: alatt Azure-beli SAP HANA fel, hogy vegyen részt egy konferenciahívás koordinálása, ellenőrzése és megerősítése, hogy a helyes tárfiók-pillanatkép visszaállítása biztosítása érdekében. 
 
-   - Miután a visszaállítás: SAP HANA az Azure Service Management értesíti, amikor a storage-pillanatkép-visszaállítás.
+   - Miután a visszaállítás: SAP HANA az Azure Service értesíti, amikor a storage-pillanatkép-visszaállítás.
 
 1. A visszaállítási folyamat befejezése után csatlakoztassa újra az adatköteteket.
 
@@ -752,5 +753,5 @@ HANA snapshot deletion successfully.
 Ez a példa a láthatja, hogyan a parancsfájl rögzíti-e a HANA-pillanatkép létrehozását. A horizontális felskálázás esetben ez a folyamat a főcsomóponton indul el. A fő csomópont létrehozását kezdeményezi a szinkron a munkavégző csomópontok az SAP HANA készített pillanatképeket. A storage-pillanatkép kerül. A storage-pillanatképek sikeres végrehajtását követően a HANA pillanatképe törlődik. A HANA-pillanatkép törlését kezdeményezni a fő csomóponttal.
 
 
-**Következő lépések**
-- Tekintse meg [vész-helyreállítási alapelvek és -előkészítés](hana-concept-preparation.md).
+## <a name="next-steps"></a>További lépések
+- Lásd: [vész-helyreállítási alapelvek és -előkészítés](hana-concept-preparation.md).

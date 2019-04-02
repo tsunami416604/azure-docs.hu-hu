@@ -11,25 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: b6071bef4e4bbd9aaca3f587e5dfa584831d082e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d80a58f1886ecc1ca2a735881fc5822f2fc0c53b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316874"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802490"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Hozzáférés az Azure Media Services API Azure AD-hitelesítés  
- 
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+
 Az Azure Media Services API egy olyan RESTful API. Használhatja az adathordozó-erőforrások műveletek végrehajtásához, egy REST API-val vagy a rendelkezésre álló ügyfél SDK-k használatával. Az Azure Media Services a Microsoft .NET-keretrendszerhez készült Media Services ügyféloldali SDK kínál. Azt, hogy a Media Services-erőforrások és a Media Services API eléréséhez, akkor először hitelesíteni kell. 
 
 A Media Services támogatja a [Azure Active Directory (Azure AD)-alapú hitelesítés](../../active-directory/fundamentals/active-directory-whatis.md). Az Azure Media REST-szolgáltatást igényli, hogy a felhasználó vagy alkalmazás, amely lehetővé teszi a REST API-kérelmek van az egyik a **közreműködői** vagy **tulajdonosa** szerepkör az erőforrások eléréséhez. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon – első lépések](../../role-based-access-control/overview.md).  
 
-> [!IMPORTANT]
-> Jelenleg a Media Services az Azure Access Control service hitelesítési modellt támogatja. Azonban a hozzáférés-vezérlés engedélyezési érvénytelenné válnak 2018. június 1. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre.
-
 Ez a dokumentum áttekintést a Media Services API elérése REST vagy a .NET API-k használatával.
+
+> [!NOTE]
+> 2018. június 1. hozzáférés-vezérlési engedélyezési kivezettük.
 
 ## <a name="access-control"></a>Hozzáférés-vezérlés
 

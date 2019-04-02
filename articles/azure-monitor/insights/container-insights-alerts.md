@@ -11,26 +11,28 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: magoedte
-ms.openlocfilehash: e6fdb0d57a44578647c1f16dc76c557296f20ddb
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5bb0a727adcfb35b5d840a063b6fdb478d150953
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886770"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804824"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Teljesítményproblémák-tárolókhoz az Azure Monitor riasztásainak beállítása
 A tárolók figyelők az Azure Monitor a tárolók számítási feladatainak teljesítményét vagy az Azure Container Instances szolgáltatásban üzembe helyezett, vagy az Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes-fürtök felügyelt. 
 
 Ez a cikk ismerteti, hogyan engedélyezheti a riasztások az alábbi helyzetekben:
 
-* Ha a fürt csomópontjai a CPU és memória kihasználtságáról, vagy meghaladja a meghatározott küszöbértéket.
+* Ha a fürt csomópontjai a CPU és memória kihasználtsága meghaladja a meghatározott küszöbértéket.
 * Ha egy vezérlő lévő tárolók valamelyik CPU és memória kihasználtsága meghaladja a meghatározott küszöbértéket, mint a korábban megszokott a kapcsolódó erőforrás a beállított korlátnál.
+* **NotReady** állapot csomópontjánál száma
+* Pod fázis számolja **sikertelen**, **függőben lévő**, **ismeretlen**, **futó**, vagy **sikeres**
 
-Riasztás, ha a CPU és memória kihasználtsági értéke magas a fürt vagy egy tartományvezérlő, hozzon létre egy metrikamérési riasztási szabályt, amely a megadott naplólekérdezések engedményt alapul. A lekérdezések egy dátum és idő a jelenlegi most operátorral történő összehasonlítására, és visszatér egy óra. Az összes-tárolókhoz az Azure Monitor által tárolt dátumok UTC formátumban.
+Riasztás, ha a CPU vagy a fürt csomópontjai a magas kihasználtság memóriát, vagy hozzon létre metrikariasztás vagy egy metrikamérési riasztási szabályt, a megadott log lekérdezésekkel. Míg a metrikákhoz kapcsolódó riasztások naplóriasztások kisebb késést, egy riasztás biztosít speciális lekérdezés és kifinomultabbak, mint a metrikariasztás. Riasztások a lekérdezések egy dátum és idő a jelenlegi most operátorral történő összehasonlítására, és visszatér egy óra. Az összes-tárolókhoz az Azure Monitor által tárolt dátumok UTC formátumban.
 
-Mielőtt hozzákezdene, ha nem ismeri az Azure monitorban riasztásokat, lásd: [áttekintése a Microsoft Azure-ban riasztások](../platform/alerts-overview.md). Riasztások a log-lekérdezésekkel kapcsolatos további információkért lásd: [Naplóriasztások az Azure monitorban](../platform/alerts-unified-log.md)
+Mielőtt hozzákezdene, ha nem ismeri az Azure monitorban riasztásokat, lásd: [áttekintése a Microsoft Azure-ban riasztások](../platform/alerts-overview.md). Riasztások a log-lekérdezésekkel kapcsolatos további információkért lásd: [Naplóriasztások az Azure Monitor](../platform/alerts-unified-log.md). Metrikákhoz kapcsolódó riasztások kapcsolatos további információkért lásd: [metrikákhoz kapcsolódó riasztások az Azure monitorban](../platform/alerts-metric-overview.md).
 
 ## <a name="resource-utilization-log-search-queries"></a>Erőforrás kihasználtsága naplóbeli keresési lekérdezések
 Ebben a szakaszban a lekérdezések által minden riasztási forgatókönyv támogatásához. A lekérdezések szükségesek a 7. lépés a [riasztás létrehozása](#create-alert-rule) szakaszt.  
@@ -187,6 +189,72 @@ KubePodInventory
 | project Computer, ContainerName, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
+
+A következő lekérdezés visszaadja az minden csomópontján és száma, az állapota **készen** és **NotReady**.
+
+```kusto
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let clusterName = '<your-cluster-name>';
+KubeNodeInventory
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| distinct ClusterName, Computer, TimeGenerated
+| summarize ClusterSnapshotCount = count() by bin(TimeGenerated, trendBinSize), ClusterName, Computer
+| join hint.strategy=broadcast kind=inner (
+    KubeNodeInventory
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | summarize TotalCount = count(), ReadyCount = sumif(1, Status contains ('Ready'))
+                by ClusterName, Computer,  bin(TimeGenerated, trendBinSize)
+    | extend NotReadyCount = TotalCount - ReadyCount
+) on ClusterName, Computer, TimeGenerated
+| project   TimeGenerated,
+            ClusterName,
+            Computer,
+            ReadyCount = todouble(ReadyCount) / ClusterSnapshotCount,
+            NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
+| order by ClusterName asc, Computer asc, TimeGenerated desc
+```
+A következő lekérdezés visszatér a pod fázis száma alapján az összes fázisban - **sikertelen**, **függőben lévő**, **ismeretlen**, **futó**, vagy **Sikeres**.  
+
+```kusto
+let endDateTime = now();
+    let startDateTime = ago(1h);
+    let trendBinSize = 1m;
+    let clusterName = '<your-cluster-name>';
+    KubePodInventory
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | where ClusterName == clusterName
+    | distinct ClusterName, TimeGenerated
+    | summarize ClusterSnapshotCount = count() by bin(TimeGenerated, trendBinSize), ClusterName
+    | join hint.strategy=broadcast (
+        KubePodInventory
+        | where TimeGenerated < endDateTime
+        | where TimeGenerated >= startDateTime
+        | distinct ClusterName, Computer, PodUid, TimeGenerated, PodStatus
+        | summarize TotalCount = count(),
+                    PendingCount = sumif(1, PodStatus =~ 'Pending'),
+                    RunningCount = sumif(1, PodStatus =~ 'Running'),
+                    SucceededCount = sumif(1, PodStatus =~ 'Succeeded'),
+                    FailedCount = sumif(1, PodStatus =~ 'Failed')
+                 by ClusterName, bin(TimeGenerated, trendBinSize)
+    ) on ClusterName, TimeGenerated
+    | extend UnknownCount = TotalCount - PendingCount - RunningCount - SucceededCount - FailedCount
+    | project TimeGenerated,
+              TotalCount = todouble(TotalCount) / ClusterSnapshotCount,
+              PendingCount = todouble(PendingCount) / ClusterSnapshotCount,
+              RunningCount = todouble(RunningCount) / ClusterSnapshotCount,
+              SucceededCount = todouble(SucceededCount) / ClusterSnapshotCount,
+              FailedCount = todouble(FailedCount) / ClusterSnapshotCount,
+              UnknownCount = todouble(UnknownCount) / ClusterSnapshotCount
+| summarize AggregatedValue = avg(PendingCount) by bin(TimeGenerated, trendBinSize)
+```
+
+>[!NOTE]
+>Például bizonyos pod fázisok értesítenek **függőben lévő**, **sikertelen**, vagy **ismeretlen**, a lekérdezés utolsó sora módosítani kell. Például a riasztás *FailedCount* `| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`.  
 
 ## <a name="create-alert-rule"></a>Riasztási szabály létrehozása
 A következő lépésekkel hozhat létre egy Log riasztási az Azure Monitor használatával a korábban megadott log search szabályok egyikének.  

@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/11/2018
+ms.date: 03/29/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: fe986d24df8dce6a390d21a262056f7ab857070c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eae9dc6447dd8211a3919c52beaea64274fc0ec5
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886728"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801079"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik egy ASP.NET Core-webalkalmazás, használhatja a részletes �
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -45,9 +45,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 Az Application Insights bármely, az internethez csatlakozó alkalmazásról képes telemetriaadatokat gyűjteni, függetlenül attól, hogy az a helyszínen vagy a felhőben fut-e. Az adatok megjelenítéséhez hajtsa végre az alábbi lépéseket.
 
-1. Válassza az **Erőforrás létrehozása** > **Monitoring és felügyelet** > **Application Insights** elemet.
+1. Válassza az **Erőforrás létrehozása** > **Fejlesztői eszközök** > **Application Insights** elemet.
 
-   ![Application Insights-erőforrások hozzáadása](./media/dotnetcore-quick-start/0001-dc.png)
+   ![Application Insights-erőforrások hozzáadása](./media/dotnetcore-quick-start/1createresourceappinsight.png)
 
     Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
@@ -64,32 +64,36 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 1. Nyissa meg az ASP.NET Core-webalkalmazás **projektet** a Visual Studióban, majd kattintson a jobb gombbal az alkalmazás nevére a **Megoldáskezelőben**, és válassza a **Hozzáadás** > **Application Insights Telemetria** elemet.
 
-    ![Application Insights Telemetria hozzáadása](./media/dotnetcore-quick-start/0001.png)
+    ![Application Insights Telemetria hozzáadása](./media/dotnetcore-quick-start/2vsaddappinsights.png)
 
-2. Kattintson az **Ingyenes próba megkezdése** gombra, válassza ki az Azure Portalon létrehozott **Meglévő erőforrást**, és kattintson a **Regisztráció** parancsra.
+2. Kattintson a **Ismerkedés** gomb
 
-3. Az alkalmazás indításához válassza a **Hibakeresés** > **Indítás hibakeresés nélkül** (Ctrl+F5) elemet
+3. Válassza ki a fiókot és előfizetést > Válassza ki a **meglévő erőforrást** az Azure Portalon létrehozott > kattintson **regisztrálása**.
+
+4. Az alkalmazás indításához válassza a **Hibakeresés** > **Indítás hibakeresés nélkül** (Ctrl+F5) elemet
+
+    ![Az Application Insights áttekintése menü](./media/dotnetcore-quick-start/3debug.png)
 
 > [!NOTE]
 > 3–5 percet is igénybe vehet, mire az adatok elkezdenek megjelenni a portálon. Ha az alkalmazás egy alacsony forgalmú tesztalkalmazás, vegye figyelembe, hogy a legtöbb metrika rögzítése csak akkor történik, ha aktív kérések és műveletek vannak folyamatban.
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Monitorozás indítása az Azure Portalon
 
-1. Most megnyithatja ismét az Application Insights **Áttekintés** lapját az Azure Portalon (**Projekt** > **Application Insights** > **Application Insights portál megnyitása**) a jelenleg futó alkalmazás részleteinek megjelenítéséhez.
+1. Ismét az Application Insights **áttekintése** lapon válassza az Azure Portalon **kezdőlap** és a legutóbbi erőforrások válassza ki a korábban, a jelenleg futó részleteinek a megtekintéséhez létrehozott erőforrás az alkalmazás.
 
-   ![Az Application Insights áttekintése menü](./media/dotnetcore-quick-start/overview-001.png)
+   ![Az Application Insights áttekintése menü](./media/dotnetcore-quick-start/4overview.png)
 
 2. Kattintson az **Alkalmazástérkép** elemre az alkalmazás-összetevők függőségi viszonyait mutató vizuális elrendezés megjelenítéséhez. Minden egyes összetevőnél megjelennek a KPI-k, például a terhelés, a teljesítmény, a hibák és a riasztások.
 
-   ![Alkalmazástérkép](./media/dotnetcore-quick-start/application-map.png)
+   ![Alkalmazástérkép](./media/dotnetcore-quick-start/5appmap.png)
 
-3. Kattintson az **Alkalmazáselemzés** ikonra ![Alkalmazáselemzés ikon](./media/dotnetcore-quick-start/006.png).  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3. Kattintson a **Alkalmazáselemzés** ikon ![Alkalmazáselemzés ikon](./media/dotnetcore-quick-start/006.png) **megtekintés az Analyticsben**. Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
-   ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/dotnetcore-quick-start/0007-dc.png)
+   ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/dotnetcore-quick-start/6analytics.png)
 
 4. Lépjen vissza a **áttekintése** lapon és a KPI-irányítópultok részletesebb vizsgálatához.  Ezen az irányítópulton az alkalmazás állapotával kapcsolatos statisztikák jelennek meg, köztük a bejövő kérések száma, az egyes kérések időtartama, valamint az esetleges hibák. 
 
-   ![Az Állapotáttekintési időegyenes diagramjai](./media/dotnetcore-quick-start/overview-graphs.png)
+   ![Az Állapotáttekintési időegyenes diagramjai](./media/dotnetcore-quick-start/7kpidashboards.png)
 
    Ahhoz, hogy a **Lapmegtekintés betöltési ideje** diagramon megjelenjenek az **ügyféloldali telemetria** adatai, adja az alábbi szkriptet minden olyan oldalhoz, amelyet nyomon kíván követni:
 
@@ -113,13 +117,12 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
    </script>
    ```
 
-5. Kattintson a **Böngésző** gombra a **Vizsgálat** fejléc alatt. Itt találja az alkalmazás lapjainak teljesítményével kapcsolatos metrikákat. Az **Új diagram hozzáadása** gombra kattintva további egyéni nézeteket adhat hozzá, a **Szerkesztés** gombra kattintva pedig módosíthatja a meglévő diagramok típusát, magasságát, színpalettáját, csoportosításait és metrikáit.
+5. Kattintson a bal oldali **metrikák**. A metrikaböngésző használatával állapotának és az Erőforrás kihasználtsága vizsgálata. Az **Új diagram hozzáadása** gombra kattintva további egyéni nézeteket adhat hozzá, a **Szerkesztés** gombra kattintva pedig módosíthatja a meglévő diagramok típusát, magasságát, színpalettáját, csoportosításait és metrikáit. Például hogy megjelenítő diagram az átlagos böngészőlap-betöltési ideje kiválasztásával a "Böngésző lapbetöltési idő" a metrikák legördülő lista és a "Átlagos", összesítési. További információ az Azure Metrikaböngésző látogasson el [Ismerkedés az Azure Metrikaböngésző](../../azure-monitor/platform/metrics-getting-started.md).
 
-   ![Kiszolgálómetrikák diagram](./media/dotnetcore-quick-start/009-Black.png)
+     ![Metrikák lap: Diagram átlagos böngésző oldal betöltése](./media/dotnetcore-quick-start/8metrics.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti az Azure Portalon a rövid útmutatóhoz létrehozott összes erőforrást.
+Amikor végzett tesztelése, törölheti az erőforráscsoportot, és az összes kapcsolódó erőforrás. Ezért kövesse az alábbi lépéseket.
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
 2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.

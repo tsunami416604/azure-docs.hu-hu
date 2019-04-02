@@ -8,26 +8,26 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 04/01/2019
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8770648a3683c4f612536c9a04921682a01bcd0c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cda9f976a7680a1338584e4308426683de82a79
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089811"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802118"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Hozzáadhat vagy törölhet a felhasználók Azure Active Directory használatával
-Új felhasználók hozzáadása, és a meglévő felhasználók törlése az Azure Active Directory (Azure AD) bérlő.
+Új felhasználók hozzáadása, vagy törölje a meglévő felhasználók a szervezet Azure Active Directory (Azure AD).
 
 ## <a name="add-a-new-user"></a>Új felhasználó hozzáadása
 Létrehozhat egy új felhasználót az Azure Active Directory portál használatával.
 
 ### <a name="to-add-a-new-user"></a>Új felhasználó hozzáadása
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) globális rendszergazdai vagy a címtár felhasználói rendszergazdaként.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a felhasználó rendszergazdájaként a szervezet számára.
 
 2. Válassza ki **Azure Active Directory**válassza **felhasználók**, majd válassza ki **új felhasználó**.
 
@@ -39,7 +39,7 @@ Létrehozhat egy új felhasználót az Azure Active Directory portál használat
 
    - **A név (kötelező).** Az első és utolsó az új felhasználó neve. Ha például Anna Parker.
 
-   - **A felhasználónév (kötelező).** Az új felhasználó felhasználóneve. Például: mary@contoso.com. 
+   - **A felhasználónév (kötelező).** Az új felhasználó felhasználóneve. Például: mary@contoso.com.
     
        A felhasználó nevét tartomány része kell használnia a vagy a kezdeti alapértelmezett tartománynévnek, <_saját_tartománynév_>. onmicrosoft.com, vagy egy egyéni tartománynevet, például contoso.com. Egyéni tartománynév létrehozásával kapcsolatos további információkért lásd: [egyéni tartománynév hozzáadása az Azure Active Directoryhoz](add-custom-domain.md).
 
@@ -47,7 +47,7 @@ Létrehozhat egy új felhasználót az Azure Active Directory portál használat
 
    - **Csoportok.** Szükség esetén a felhasználót adhat hozzá egy vagy több meglévő csoportot. A felhasználói csoportokhoz egy későbbi időpontban is hozzáadhat. Felhasználói csoportok hozzáadásával kapcsolatos további információkért lásd: [létrehozásához, és tagokat vehet fel](active-directory-groups-create-azure-portal.md).
 
-   - **Címtárbeli szerepkör.** A felhasználó igény szerint, hogy olyan címtárbeli szerepkörrel adhat hozzá. Hozzárendelheti a felhasználó globális rendszergazdai, vagy hogy egy vagy több Azure AD-ben más rendszergazdai szerepköröket. További információ a szerepkörök hozzárendelése: [szerepkörök hozzárendelése a felhasználók](active-directory-users-assign-role-azure-portal.md).
+   - **Címtárbeli szerepkör.** Igény szerint adhat hozzá a felhasználót, hogy az Azure AD-Rendszergazda szerepkörhöz. A felhasználó a globális rendszergazda vagy egy vagy több a korlátozott rendszergazdai szerepkörök az Azure ad-ben rendelhet hozzá. További információ a szerepkörök hozzárendelése: [szerepkörök hozzárendelése a felhasználók](active-directory-users-assign-role-azure-portal.md).
 
 4. A megadott automatikusan létrehozott jelszó másolása a **jelszó** mezőbe. Kell megadnia ezt a jelszót a felhasználónak a kezdeti bejelentkezési folyamathoz.
 
@@ -62,7 +62,7 @@ Ha rendelkezik Azure Active Directory (felhő) és a Windows Server Active Direc
 Egy meglévő felhasználó Azure Active Directory portálon törölheti.
 
 ### <a name="to-delete-a-user"></a>Felhasználó törlése
-1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) egy felhasználó rendszergazdai fiók használatával a szervezet számára.
 
 2. Válassza ki **Azure Active Directory**válassza **felhasználók**, és keressen rá, és válassza ki a felhasználót az Azure AD-bérlőjéből törölni szeretné. Ha például _Mary Parker_.
 
@@ -70,12 +70,13 @@ Egy meglévő felhasználó Azure Active Directory portálon törölheti.
 
     ![Felhasználók – minden felhasználó oldalon a kiemelt felhasználó törlése](media/add-users-azure-active-directory/delete-user-all-users-blade.png)
 
-    A felhasználó törlődik, és már nem jelenik meg a **felhasználók – minden felhasználó** lapot. A felhasználó láthatók a **törölt felhasználók** lapon a következő 30 napra, és ez idő alatt vissza tudja állítani. A felhasználó visszaállításával kapcsolatos további információkért lásd: [visszaállítása, vagy véglegesen a közelmúltban törölt felhasználó eltávolítása](active-directory-users-restore.md).
+    A felhasználó törlődik, és már nem jelenik meg a **felhasználók – minden felhasználó** lapot. A felhasználó láthatók a **törölt felhasználók** lapon a következő 30 napra, és ez idő alatt vissza tudja állítani. A felhasználó visszaállításával kapcsolatos további információkért lásd: [visszaállítása, vagy véglegesen a közelmúltban törölt felhasználó eltávolítása](active-directory-users-restore.md). Felhasználó törlése esetén a felhasználó által felhasznált licencekre elérhetővé válnak a más felhasználók számára.
 
     >[!Note]
     >Az identitás, a kapcsolattartási adatok vagy a feladat adatainak a felhasználók számára, akiknek mérvadó forrás a Windows Server Active Directory frissítéséhez a Windows Server Active Directory kell használnia. Miután elvégezte a frissítést, meg kell várnia a következő szinkronizálási ciklus befejezését, mielőtt a módosítások láthatja.
 
 ## <a name="next-steps"></a>További lépések
+
 Miután hozzáadta a felhasználókat, a következő alapszintű folyamatok hajthatja végre:
 
 - [Profil adatok hozzáadása vagy módosítása](active-directory-users-profile-azure-portal.md)

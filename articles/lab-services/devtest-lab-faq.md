@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 3752e9c227e4db0f583b2f6b21d6c0aa3106d248
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d8fc929b21bedcb3e7e2bd3f5ed1d6c867bca3c8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337697"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803374"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Az Azure DevTest Labs kapcsolatos leggyakoribb kérdésekre adott válaszok.
@@ -44,7 +44,7 @@ Jelenleg folyamatban van (kivéve a szolgáltatáskimaradás frissítések) átt
 Fogja azt könyvelési szolgáltatáskimaradás frissítések használatával továbbítja a Twitter-leírót. Kövessen minket a Twitteren a legújabb frissítéseket a leállásokat és az ismert hibák.
 
 ### <a name="twitter"></a>Twitter 
-A Twitter-leírót: azlabservices
+A Twitter-leírót: [@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Mi történik, ha kérdésem itt nem választ?
 A kérdés nem szerepel itt, tudassa velünk, és segítünk választ találjanak.
@@ -139,7 +139,9 @@ Egyszerre több virtuális gép ugyanazt a sablont hoz létre a két lehetőség
 ## <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Hogyan helyezhetek át meglévő Azure virtuális gépek a DevTest Labs labor be?
 A meglévő virtuális gépek DevTest Labs másolása:
 
-1. A meglévő virtuális gép VHD-fájl másolása használatával egy [Windows PowerShell-parancsprogram](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyVHDFromVMToLab.ps1).
+1. A meglévő virtuális gép VHD-fájl másolása egy PowerShell-parancsprogram használatával:
+   * Erőforrás-kezelő: [CopyRmVHDFromVMToLab.ps1](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyRmVHDFromVMToLab.ps1)
+   * Klasszikus: [CopyClassicVHDFromVMToLab.ps1](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyClassicVHDFromVMToLab.ps1)
 2. [Az egyéni lemezkép készítése](devtest-lab-create-template.md) a DevTest Labs labor belül.
 3. Hozzon létre egy virtuális Gépet a labor létrehozása az egyéni rendszerképpel.
 

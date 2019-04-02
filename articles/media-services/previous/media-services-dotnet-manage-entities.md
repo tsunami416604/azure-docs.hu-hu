@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: d2651bc47f262a45a05217585eb00cbc721c01a1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58165777"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802677"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Eszközök és a Media Services .NET SDK-val kapcsolódó entitások kezelése
 > [!div class="op_single_selector"]
@@ -28,10 +28,12 @@ ms.locfileid: "58165777"
 > 
 > 
 
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+
 Ez a témakör bemutatja, hogyan lehet .NET-tel az Azure Media Services-entitások kezelését.
 
->[!NOTE]
-> 2017. április 1-től kezdődően a fiókokban a 90 napnál régebbi Feladat rekordok automatikusan törölve lesznek, a kapcsolódó Művelet rekordokkal egyetemben, még ha a rekordok összesített száma nem is éri el a maximális kvótát. Például 2017. április 1. feladat rekordot a régebbi, mint a 2016. December 31-én fiókjában automatikusan törölve lesznek. Ha a feladatok/műveletek adatainak archiválásához van szüksége, használhatja a jelen témakörben található kódot.
+2017. április 1-től kezdődően a fiókokban a 90 napnál régebbi Feladat rekordok automatikusan törölve lesznek, a kapcsolódó Művelet rekordokkal egyetemben, még ha a rekordok összesített száma nem is éri el a maximális kvótát. Például 2017. április 1. feladat rekordot a régebbi, mint a 2016. December 31-én fiókjában automatikusan törölve lesznek. Ha a feladatok/műveletek adatainak archiválásához van szüksége, használhatja a jelen témakörben található kódot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

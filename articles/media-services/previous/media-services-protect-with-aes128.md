@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7ff2e89c116ee74665c0e3a74505476972af5d9c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 8516035705ad9dfb2ff37592f9381c4f905bb67f
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317153"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802830"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128, a dinamikus titkosítás és a kulcstovábbítást használata
 > [!div class="op_single_selector"]
@@ -29,23 +29,18 @@ ms.locfileid: "58317153"
 >  
 
 > [!NOTE]
-> A Java SDK legújabb verziójának beszerzéséhez és a Java-fejlesztés megkezdéséhez tekintse meg [Az Azure Media Services Java ügyfél-SDK használatának megkezdése](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use) című cikket. <br/>
-> A legfrissebb Media Services PHP SDK letöltéséhez keresse meg a Microsoft/WindowsAzure-csomag 0.5.7-es verzióját a [Packagist-adattárban](https://packagist.org/packages/microsoft/windowsazure#v0.5.7).  
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
-## <a name="overview"></a>Áttekintés
-> [!NOTE]
-> Az az Advanced Encryption Standard (AES) Safari macOS rendszeren történő továbbítását tartalom titkosítása a további információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
-> AES-titkosítás a médiatartalmak védelme áttekintését lásd: [ebben a videóban](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption).
-> 
-> 
-
- A Media Services segítségével HTTP Live Streaming (HLS), és a Smooth Streaming az AES-128 bites titkosítási kulcsok használatával titkosítja. A Media Services emellett a legfontosabb licenctovábbítási szolgáltatása, amely a titkosítási kulcsokat biztosít a jogosult felhasználókra. Ha azt szeretné, hogy a Media Services az objektum titkosítására, rendelje hozzá egy titkosítási kulcsot az eszköz, és a kulcs engedélyezési házirendek is konfigurálhatja. Adatfolyam-lejátszó kér, amikor a Media Services a megadott kulcs használatával dinamikusan titkosítani az AES-titkosítás segítségével. A stream visszafejtéséhez a lejátszó lekéri a kulcsot a kulcstovábbító szolgáltatástól. Annak megállapításához, hogy a felhasználó jogosult kulcs lekérése, a szolgáltatás kiértékeli az engedélyezési házirendeket, amelyek a kulcshoz megadott.
+A Media Services segítségével HTTP Live Streaming (HLS), és a Smooth Streaming az AES-128 bites titkosítási kulcsok használatával titkosítja. A Media Services emellett a legfontosabb licenctovábbítási szolgáltatása, amely a titkosítási kulcsokat biztosít a jogosult felhasználókra. Ha azt szeretné, hogy a Media Services az objektum titkosítására, rendelje hozzá egy titkosítási kulcsot az eszköz, és a kulcs engedélyezési házirendek is konfigurálhatja. Adatfolyam-lejátszó kér, amikor a Media Services a megadott kulcs használatával dinamikusan titkosítani az AES-titkosítás segítségével. A stream visszafejtéséhez a lejátszó lekéri a kulcsot a kulcstovábbító szolgáltatástól. Annak megállapításához, hogy a felhasználó jogosult kulcs lekérése, a szolgáltatás kiértékeli az engedélyezési házirendeket, amelyek a kulcshoz megadott.
 
 A Media Services szolgáltatásban több különböző módot is beállíthat, amelynek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalomkulcs-hitelesítési szabályzat egy vagy több hitelesítési korlátozást tartalmazhat: ezek lehetnek nyitott vagy jogkivonat-korlátozások is. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. A Media Services a [Simple Web Tokens](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) és a [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) formátumú jogkivonatokat támogatja. További információkért tekintse át [a tartalomkulcs hitelesítési szabályzatának konfigurálásával](media-services-protect-with-aes128.md#configure_key_auth_policy) foglalkozó témakört.
 
 A dinamikus titkosítás által nyújtott előnyök kihasználásához többszörös sávszélességű MP4-fájlokat vagy Smooth Streaming-forrásfájlokat tartalmazó objektummal kell rendelkeznie. Azt is konfigurálnia kell (lásd a cikk későbbi részében) az objektum továbbítási szabályzatát. Ezt követően az igényalapú streamelési kiszolgáló a streamelési URL-címben megadott formátumnak megfelelően gondoskodik arról, hogy a rendszer a kiválasztott protokollal továbbítsa a streamet. Ennek eredményeképpen kell tárolni, és csak azért kell fizetnie a fájlokat egyetlen tárolási formátumban. A Media Services összeállítja és kiszolgálja az ügyféltől érkező kéréseknek megfelelő választ.
 
 Ez a cikk a védett médiatartalom-alkalmazások dolgozó fejlesztők számára hasznos. A cikk bemutatja, hogyan konfigurálhatja a kulcstovábbítást-engedélyezési szabályzatokat úgy, hogy csak jogosult ügyfelek kaphassák meg a titkosítási kulcsokat. Azt is bemutatja, hogyan dinamikus titkosítást használ.
+
+Az az Advanced Encryption Standard (AES) Safari macOS rendszeren történő továbbítását tartalom titkosítása a további információkért lásd: [ebben a blogbejegyzésben](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+AES-titkosítás a médiatartalmak védelme áttekintését lásd: [ebben a videóban](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption).
 
 
 ## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>AES-128, a dinamikus titkosítás és kulcskézbesítési szolgáltatás munkafolyamata

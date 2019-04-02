@@ -4,16 +4,16 @@ description: Ismerje meg, az Update Management, Change Tracking és Inventory me
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/25/2019
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ac11b1a2b625d1fc7b62130580d1f188ead21051
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: eaafee304f606ae4d511a6cea1824c26db838635
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342728"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802031"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Hibák elhárítása során megoldások bevezetése
 
@@ -25,19 +25,23 @@ Bevezetési megoldások, például az Update Management vagy a Change Tracking a
 
 #### <a name="issue"></a>Probléma
 
-Amikor megpróbálja felvétele egy megoldást a virtuális gép a következő üzenetet kapja:
+Ön kapni az alábbi üzenetek egyike a munkába egy megoldást a virtuális gép:
 
-```
+```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
+```
+
+```error
+The solution cannot be enabled on this VM because the permission to read the workspace is missing
 ```
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba oka helytelenek vagy hiányoznak a virtuális gépen vagy a felhasználó engedélyeit.
+Ez a hiba oka helytelenek vagy hiányoznak a virtuális gépen, a munkaterületet, vagy a felhasználó engedélyeit.
 
 #### <a name="resolution"></a>Megoldás:
 
-Győződjön meg arról, hogy megfelelő engedélyekkel ahhoz, előkészítheti a virtuális gép. Tekintse át a [előkészítheti a gépeket szükséges engedélyeket](../automation-role-based-access-control.md#onboarding) , és ismételje üzembe helyezni a megoldást.
+Győződjön meg arról, hogy megfelelő engedélyekkel ahhoz, előkészítheti a virtuális gép. Tekintse át a [előkészítheti a gépeket szükséges engedélyeket](../automation-role-based-access-control.md#onboarding) , és ismételje üzembe helyezni a megoldást. Ha a hibaüzenet `The solution cannot be enabled on this VM because the permission to read the workspace is missing`, ellenőrizze, hogy a `Microsoft.OperationalInsights/workspaces/read` tudja megtalálni, ha a virtuális gép-e előkészítve a munkaterület számára.
 
 ### <a name="computer-group-query-format-error"></a>Forgatókönyv: ComputerGroupQueryFormatError
 
@@ -73,17 +77,17 @@ A megoldás sikeresen üzembe kell figyelembe venni a jelzett szabályzat módos
   * Újra célzó a szabályzat egy adott erőforrás (például egy meghatározott Automation-fiók).
   * A készlet indítják az erőforrások az adott házirendnek megtagadásához lett konfigurálva.
 
-Ellenőrizze az értesítéseket az Azure Portal jobb felső sarokban lévő, vagy keresse meg az erőforráscsoportot, amely tartalmazza az automation-fiókot, és válassza **központi telepítések** alatt **beállítások** megtekintéséhez a sikertelen a központi telepítés. További információ az Azure Policy látogasson el: [Az Azure Policy áttekintése](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
+Ellenőrizze az Azure Portal jobb felső sarokban az értesítéseket, vagy keresse meg az erőforráscsoportot, amely tartalmazza az automation-fiókot, és válassza **központi telepítések** alatt **beállítások** megtekintéséhez a sikertelen a központi telepítés. További információ az Azure Policy látogasson el: [Az Azure Policy áttekintése](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ## <a name="mma-extension-failures"></a>Az MMA-bővítményekkel kapcsolatos hibák
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-A megoldás üzembe helyezésekor, a kapcsolódó erőforrások különböző vannak üzembe helyezve. Ezek az erőforrások egyike a Microsoft Monitoring Agent bővítményt és a Log Analytics Linux-ügynököt. Ezek a felelős a konfigurált Log Analytics-munkaterület újabb összehangolását a bináris fájlok letöltése céljából kommunikál a virtuális gép Vendégügynökét által telepített virtuális gépi bővítmények és egyéb fájlokat, a a megoldás bevezetése áll attól függenek, végrehajtás megkezdése után.
+A megoldás üzembe helyezésekor, a kapcsolódó erőforrások különböző vannak üzembe helyezve. Ezek az erőforrások egyike a Microsoft Monitoring Agent bővítményt és a Log Analytics Linux-ügynököt. Ezek a felelős a konfigurált Log Analytics-munkaterület újabb összehangolását a bináris fájlok letöltése céljából kommunikál a virtuális gép Vendégügynökét által telepített virtuális gépi bővítmények és egyéb fájlokat, a megoldás Ön bevezetési függenek, a végrehajtás megkezdése után.
 Általában először tudomást az MMA és a Log Analytics-ügynök Linux telepítési hibák az értesítési központ megjelenő értesítésekből. Az értesítések kattintva további információt nyújt az adott problémát. Az erőforráscsoportok erőforráshoz, majd azt a központi telepítések elemet a navigációs is részleteket nyújt a telepítési hibákat, amelyek történt.
 Az MMA és a Log Analytics Linux-ügynök telepítése nem sikerül, annak számos okból, és ezek a hibák elhárításához szereplő lépések eltérnek attól függően, a probléma. Kövesse az adott hibaelhárítási lépéseket.
 
-Az alábbi szakasz segítségével tapasztal, amikor a bevezetési okozó hiba az MMA-bővítmény a központi telepítésben lévő különböző kapcsolatos problémákat ismerteti.
+Az alábbi szakasz között közben visszatérhet, amikor a bevezetési okozó hiba az MMA-bővítmény a központi telepítésben lévő különböző kapcsolatos problémákat ismerteti.
 
 ### <a name="webclient-exception"></a>Forgatókönyv: Kivétel történt egy webes kérelem során
 
@@ -113,9 +117,9 @@ Ez a hiba, néhány lehetséges okok a következők:
 
 Győződjön meg arról, hogy rendelkezik a megfelelő portokat és a címek nyissa meg a kommunikációhoz. Portok és -címek listáját lásd: [hálózat megtervezése](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="transient-environment-issue"></a>Forgatókönyv: Átmeneti környezet problémák miatt sikertelen telepítés
+### <a name="transient-environment-issue"></a>Forgatókönyv: A telepítés egy átmeneti környezet problémák miatt nem sikerült
 
-A Microsoft Monitoring Agent bővítmény telepítése üzemelő példányt, mert egy másik telepítés vagy művelet blokkolja-e a telepítés során nem sikerült
+Üzembe helyezés során egy másik telepítés vagy blokkolja a telepítési művelet miatt nem sikerült a Microsoft Monitoring Agent bővítmény telepítése
 
 #### <a name="issue"></a>Probléma
 
@@ -138,7 +142,7 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 Ez a hiba, néhány lehetséges okok a következők:
 
 * Egy másik telepítés már folyamatban van
-* A rendszer nem lett elindítva az újraindításra a sablon telepítése
+* Akkor aktiválódik, a rendszer az újraindításra a sablon telepítése
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -146,11 +150,11 @@ Ez a hiba nem átmeneti hiba jellegűek. Próbálkozzon újra a telepítéssel, 
 
 ### <a name="installation-timeout"></a>Forgatókönyv: Telepítés időkorlátja
 
-Az MMA-bővítmény telepítése nem fejeződött be az időtúllépés miatt.
+Az MMA-bővítmény telepítése időtúllépés miatt nem fejeződött be.
 
 #### <a name="issue"></a>Probléma
 
-Az alábbiakban látható egy példa egy, a visszaadott hibaüzenet:
+Az alábbi példában van egy visszaadott hibaüzenet:
 
 ```error
 Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent, version 1.0.11081.4) with exception Command C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.11081.4\MMAExtensionInstall.exe of Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent has exited with Exit code: 15614
@@ -158,7 +162,7 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba miatt a virtuális gép telepítése során a nagy terhelés alatt folyamatban van.
+Ez a hiba akkor fordul elő, mert a virtuális gép telepítése során a nagy terhelés alatt folyamatban.
 
 ### <a name="resolution"></a>Megoldás:
 

@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 13ea4acb5a3b5b3e7ac6d53013193fddbfcbf9b7
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6d92273298c0448d7377acab6f3b8ea1cc1ed908
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759476"
+ms.locfileid: "58762922"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Az Azure HDInsight virtuális hálózat architektúrája
 
@@ -31,8 +31,6 @@ Az Azure HDInsight-fürtök különböző típusú virtuális gépeket, vagy a c
 | Régió csomópont | A HBase-fürt típusa a régió csomópont (más néven egy adatcsomópont) futtatható: a régió kiszolgáló. Régiókiszolgálók szolgál, és kezelheti a HBase által kezelt adatok egy részét. Régió csomópontok hozzáadására vagy eltávolítja a fürt méretezése a számítástechnikai képességek és a költségek kezelése.|
 | Nimbus-csomópont | A Storm-fürt típusa arról a Nimbus csomópont az átjárócsomópont hasonló funkcionalitást biztosít. A Nimbus csomópont rendeli hozzá a feladatokat Zookeeper, a futó Storm-topológiák alkalmazástelepítéseket keresztül a fürt más csomópontjaira. |
 | Felügyelő csomópont | A Storm-fürt típusa, a a felügyeleti csomópont végrehajtja a kívánt feldolgozást végez a Nimbus csomópont utasításait. |
-
-* = Apache Hadoop, Apache Hive, az Apache Kafka, Apache Spark, az Apache HBase és az R Server fürttípusok
 
 ## <a name="basic-virtual-network-resources"></a>Alapszintű virtuális hálózati erőforrások
 

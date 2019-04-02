@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: a102216a6a2a7dec471678e14f7050cb4ef41d77
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 4ba8977180e33256bfdc6652811495a02a9ef19c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370108"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802956"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen2
 
@@ -27,9 +27,9 @@ Bár az RBAC szerepkör-hozzárendelést a következő egy hatékony mechanizmus
 
 Az Azure Storage három beépített RBAC-szerepkört biztosít a Blob Storage: 
 
-- [Tárolási Blob adatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner-preview)
-- [Storage-Blobadatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)
-- [Storage-Blobadatok olvasója](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview)
+- [Tárolási Blob adatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- [Storage-Blobadatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- [Storage-Blobadatok olvasója](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)
 
 Amikor egy felhasználó vagy szolgáltatás jogosultságot kap az RBAC adatok egyik beépített szerepkör, vagy keresztül egy egyéni biztonsági szerepkört, ezek az engedélyek engedélyezési kérés esetén először értékeli ki. Ha a kért művelet RBAC-hozzárendeléseket a hívó által engedélyezett, akkor azonnal megoldódott, és nincs további engedélyezési ACL-ellenőrzés történik. Azt is megteheti, ha a hívó nem rendelkezik az RBAC-hozzárendelés, vagy a kért művelet nem felel meg a hozzárendelt engedély, majd ACL ellenőrzések elvégzése meghatározni, hogy a hívó jogosult-e a kért művelet végrehajtásához.
 
@@ -285,7 +285,7 @@ Egy GUID lesz látható, ha a bejegyzés felhasználót jelöl, és, hogy a felh
 
 Az egyszerű szolgáltatások hozzáférés-vezérlési listákat ad meg, ha fontos a objektumazonosító (OID), használja a *szolgáltatásnév* a létrehozott alkalmazás regisztráció. Fontos megjegyezni, hogy rendelkezik-e regisztrált alkalmazások külön szolgáltatásnévvel az adott Azure AD-bérlővel. Regisztrált alkalmazások az Azure Portalon látható OID rendelkezik, de a *szolgáltatásnév* rendelkezik egy másik (eltérő) Objektumazonosítóját.
 
-Szeretne kapni az Objektumazonosító egyszerű szolgáltatás számára, hogy az alkalmazás regisztrációját a corresonds, használhatja a `az ad sp show` parancsot. Paraméterként adja meg az Alkalmazásazonosítót. Íme egy példa, amely megfelel az alkalmazás regisztrációs azonosítót a szolgáltatásnévhez tartozó Objektumazonosítót beszerzésével 18218b12-1895-43e9-ad80-6e8fc1ea88ce =. Az Azure CLI-ben futtassa a következő parancsot:
+Az Objektumazonosító, amely megfelel az alkalmazás regisztrációját a szolgáltatásnévhez tartozó lekéréséhez használhatja a `az ad sp show` parancsot. Paraméterként adja meg az Alkalmazásazonosítót. Íme egy példa, amely megfelel az alkalmazás regisztrációs azonosítót a szolgáltatásnévhez tartozó Objektumazonosítót beszerzésével 18218b12-1895-43e9-ad80-6e8fc1ea88ce =. Az Azure CLI-ben futtassa a következő parancsot:
 
 `az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 <<OID will be displayed>>`

@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 87770a12ca7e489b11b2d176903f976fdcc256a0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7488231363b0cbf96e25da28751065012754212e
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551323"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803782"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Minta - engedélyezett termékváltozatok a storage-fiókok és a virtuális gépek
 
@@ -29,7 +29,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal) vagy a [PowerShell](#deploy-
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Üzembe helyezés az Azure-ban](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Az Azure-bA a szabályzat minta üzembe helyezése](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 45b34d12fbcecbf5f6bf1225c5bb82c5385224ed
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 186a9bafe70ab9644666868f11d5ddd865a66b8d
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338394"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802541"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök
 
@@ -44,7 +44,7 @@ Hozzon létre egy Azure Data Lake Storage Gen2 tárfiókot. Győződjön meg arr
 
 ### <a name="setup-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>A felügyelt identitás a Data Lake Storage Gen2 fiók engedélyeinek beállítása
 
-A felügyelt identitás hozzárendelése a **Storage Blob adatok tulajdonosa (előzetes verzió)** szerepkör a tárfiókban. További információkért lásd: [kezelés hozzáférési jogosultságok RBAC (előzetes verzió) az adatok Azure Blob és üzenetsor](../storage/common/storage-auth-aad-rbac.md).
+A felügyelt identitás hozzárendelése a **Storage Blob adatok tulajdonosa** szerepkör a tárfiókban. További információkért lásd: [kezelés hozzáférési jogosultságok RBAC (előzetes verzió) az adatok Azure Blob és üzenetsor](../storage/common/storage-auth-aad-rbac.md).
 
 1. Az a [az Azure portal](https://portal.azure.com), lépjen a tárfiókhoz.
 1. Válassza ki a tárfiókot, majd válassza ki **hozzáférés-vezérlés (IAM)** a fiókhoz tartozó hozzáférés-vezérlési beállítások megjelenítéséhez. Válassza ki a **szerepkör-hozzárendelések** lapján megtekintheti a szerepkör-hozzárendelések listáját.
@@ -52,7 +52,7 @@ A felügyelt identitás hozzárendelése a **Storage Blob adatok tulajdonosa (el
     ![Képernyőfelvétel: a tárolási hozzáférés-vezérlési beállításokkal](./media/hdinsight-hadoop-data-lake-storage-gen2/portal-access-control.png)
     
 1. Válassza ki a **+ szerepkör-hozzárendelés hozzáadása** gombra kattintva adhat hozzá egy új szerepkör.
-1. Az a **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a **Storage Blob adatok tulajdonosa (előzetes verzió)** szerepkör. Ezután válassza ki a felügyelt identitás- és storage-fiókot tartalmazó előfizetést. Ezután keresse meg a felhasználó által hozzárendelt felügyelt identitás, amelyet korábban hozott létre. Végül válassza ki a felügyelt identitást, és alatt helyezkednek el **kiválasztott tagok**.
+1. Az a **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a **Storage Blob adatok tulajdonosa** szerepkör. Ezután válassza ki a felügyelt identitás- és storage-fiókot tartalmazó előfizetést. Ezután keresse meg a felhasználó által hozzárendelt felügyelt identitás, amelyet korábban hozott létre. Végül válassza ki a felügyelt identitást, és alatt helyezkednek el **kiválasztott tagok**.
     
     ![Képernyőfelvétel: hogyan kell egy RBAC szerepkör hozzárendelése](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role3.png)
     
@@ -102,7 +102,7 @@ az storage account create --name hdinsightadlsgen2 \
     --kind StorageV2 --hierarchical-namespace true
 ```
 
-Ezután jelentkezzen be a portálra. Adja hozzá az új felhasználóhoz felügyelt identitásnak a **Storage-Blobadatok Közreműködője (előzetes verzió)** szerepkör a tárfiókban, a 3. lépésben leírtak szerint [az Azure portal használatával](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Ezután jelentkezzen be a portálra. Adja hozzá az új felhasználóhoz felügyelt identitásnak a **Storage-Blobadatok Közreműködője** szerepkör a tárfiókban, a 3. lépésben leírtak szerint [az Azure portal használatával](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 Miután hozzárendelte a szerepkört a felhasználó által hozzárendelt felügyelt identitás, a sablon üzembe helyezése a következő kódrészlet használatával.
 

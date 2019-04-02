@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b34a1716d077aeead572c60d0c6b9bcad60a5b1e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 84db71f8dabfb7557b5efbc06e024c43e654b56d
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005420"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805074"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -26,7 +26,7 @@ ms.locfileid: "58005420"
 A következő hibaüzenetet kapja, amikor dolgozik a `Add-AzureAccount` vagy `Connect-AzureRmAccount` parancsmagok.
 :
 
-```
+```error
 Unknown_user_type: Unknown User Type
 ```
 
@@ -81,7 +81,7 @@ Annak megállapításához, hogy mi okozza, tegye a következőket:
 
 A következő hibaüzenetet kapja, amikor dolgozik a `Select-AzureSubscription` vagy `Select-AzureRmSubscription` parancsmagok:
 
-```
+```error
 The subscription named <subscription name> cannot be found.
 ```
 
@@ -119,7 +119,7 @@ A következő lépésekkel határozza meg, ha már hitelesített, Azure-ba, és 
 
 Az Azure-bA az Azure felhasználónevével és jelszavával való hitelesítéskor a következő hibaüzenetet kapja:
 
-```
+```error
 Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is required
 ```
 
@@ -139,7 +139,7 @@ A klasszikus Azure üzemi modell parancsmagokban tanúsítványt használ, tekin
 
 A következő hibaüzenetet kapja, amikor egy childrunbook való meghívása a `-Wait` kapcsoló és a kimeneti adatfolyamba és objektum:
 
-```
+```error
 Object reference not set to an instance of an object
 ```
 
@@ -179,7 +179,7 @@ $jobResults | Get-AzureRmAutomationJobOutput | Get-AzureRmAutomationJobOutputRec
 
 Az a feladatstreamek egy runbook a következő üzenet jelenik meg a hiba:
 
-```
+```error
 Connect-AzureRMAccount : Method 'get_SerializationSettings' in type 
 'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 
 'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' 
@@ -205,7 +205,7 @@ Nem importálható az és AzureRM-parancsmagok és a talál további informáci�
 
 A runbook egy a következőhöz hasonló hibaüzenettel meghiúsul:
 
-```
+```error
 Exception: A task was canceled.
 ```
 
@@ -264,7 +264,7 @@ Start-AzureRmAutomationRunbook `
 
 A runbook egy a következőhöz hasonló hibaüzenettel meghiúsul:
 
-```
+```error
 The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, function, script file, or operable program.  Check the spelling of the name, or if the path was included verify that the path is correct and try again.
 ```
 
@@ -289,7 +289,7 @@ Ha egy különálló modul, ellenőrizze, hogy a modul importálása az Automati
 
 A runbook a következő hibával meghiúsul:
 
-```
+```error
 The job was tried three times but it failed
 ```
 
@@ -323,7 +323,7 @@ A probléma elhárításához a következő megoldások valamelyikét:
 
 A runbook a következő hibával meghiúsul:
 
-```
+```error
 Cannot bind parameter <ParameterName>.
 
 Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to type <ParameterType>.
@@ -375,7 +375,7 @@ Ha ezek a megoldások egyike sem oldja meg a problemReview a [naplók feladat](.
 
 A runbook-feladat a következő hibával meghiúsul:
 
-```
+```error
 The quota for the monthly total job run time has been reached for this subscription
 ```
 
@@ -398,7 +398,7 @@ Ha azt szeretné, 500 percnél több feldolgozási havonta használni, módosít
 
 A runbook-feladat a következő hibával meghiúsul:
 
-```
+```error
 <cmdlet name>: The term <cmdlet name> is not recognized as the name of a cmdlet, function, script file, or operable program.
 ```
 
@@ -421,7 +421,7 @@ A probléma elhárításához a következő megoldások valamelyikét:
 
 Megjeleníti a runbook egy **leállítva** állapot 3 óráig futtatása után. Emellett a hibaüzenet jelenhet meg:
 
-```
+```error
 The job was evicted and subsequently reached a Stopped state. The job cannot continue running
 ```
 
@@ -463,13 +463,13 @@ A webhookot, amely a meghívni kívánt vagy le van tiltva, vagy lejárt.
 
 A webhook le van tiltva, ha újból engedélyezheti a webhookot, az Azure Portalon keresztül. Amikor egy webhook lejárt, a webhook kell törölni kell, majd újra létre kell hozni. Csak [újítsa meg a webhook](../automation-webhooks.md#renew-webhook) Ha még nem már lejárt.
 
-### <a name="429"></a>Forgatókönyv: 429: A kérések aránya jelenleg túl nagy. Próbálkozzon újra
+### <a name="429"></a>Forgatókönyv: 429: A kérelmek száma jelenleg túl nagy. Próbálkozzon újra
 
 #### <a name="issue"></a>Probléma
 
 A következő hibaüzenetet kapja, futtatásakor a `Get-AzureRmAutomationJobOutput` parancsmagot:
 
-```
+```error
 429: The request rate is currently too large. Please try again
 ```
 

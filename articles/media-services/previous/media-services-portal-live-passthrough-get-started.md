@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 48906a12cd113ef613151bb802e757f218bce425
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758499"
+ms.locfileid: "58802813"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Élő Stream továbbítása helyszíni kódolókkal az Azure portal használatával
 > [!div class="op_single_selector"]
@@ -28,6 +28,9 @@ ms.locfileid: "58758499"
 > * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 Ez az ismertető végigkalauzolja egy olyan **csatorna** létrehozásának folyamatán, amely átmenő közvetítésre van konfigurálva az Azure Portalon. 
 

@@ -1,5 +1,5 @@
 ---
-title: Minta - naplózási, ha a megadott alkalmazások nem települnek a Linux rendszerű virtuális gépeken belül
+title: Minta - naplózási, ha az alkalmazásokat a Linux rendszerű virtuális gépeken belül nincsenek telepítve
 description: Ez a minta Vendég Szabályzatkonfiguráció-kezdeményezéshez és definíciók naplózása a megadott alkalmazások nem települnek a Linux rendszerű virtuális gépeken belül.
 services: azure-policy
 author: DCtheGeek
@@ -8,12 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 03/18/2019
 ms.author: dacoulte
-ms.openlocfilehash: bc4c54fa157f5468bbc324ebdf03dd65a47488c9
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: c939deda9b1468b5ce843d497b81a462938a2554
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190491"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805550"
 ---
 # <a name="sample---audit-if-specified-applications-are-not-installed-inside-linux-vms"></a>Minta - naplózási, ha a megadott alkalmazások nem települnek a Linux rendszerű virtuális gépeken belül
 
@@ -107,16 +107,16 @@ Után az **naplózási** és **deployIfNotExists** definíciók jönnek létre a
 
 ### <a name="create-copy-of-audit-definition"></a>Naplózási definíció másolatának létrehozása
 
-[![Üzembe helyezés az Azure-ban](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
-[![Üzembe helyezés az Azure Governmentben](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[![A házirend-minta üzembe helyezése Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[![a házirend-minta üzembe helyezése az Azure-beli államigazgatás –](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
 
 A gombok segítségével üzembe helyezése a portálon keresztül másolatot készít a **naplózási** szabályzat-definíció.
 Anélkül a párosított **deployIfNotExists** szabályzatdefiníciót, a Vendég-konfiguráció nem fog megfelelően működni.
 
 ### <a name="create-copy-of-deployifnotexists-definition"></a>Másolat deployIfNotExists-definíció létrehozása
 
-[![Üzembe helyezés az Azure-ban](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
-[![Üzembe helyezés az Azure Governmentben](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[![A házirend-minta üzembe helyezése Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[![a házirend-minta üzembe helyezése az Azure-beli államigazgatás –](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
 
 A gombok segítségével üzembe helyezése a portálon keresztül másolatot készít a **deployIfNotExists** szabályzat-definíció. Anélkül a párosított **naplózási** szabályzatdefiníciót, a Vendég-konfiguráció nem fog megfelelően működni.
 

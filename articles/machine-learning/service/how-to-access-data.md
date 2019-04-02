@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25da234e4210c98ce17bdeb502493c5c649dab28
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 85910e2f422ea45b2468f20b4ff9425f64ca3cbe
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481637"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793413"
 ---
 # <a name="access-data-from-your-datastores"></a>Az adattárolók érheti el adatait
 
@@ -123,13 +123,14 @@ Egy könyvtár tölthet fel egy adattár `ds`:
 
 ```Python
 import azureml.data
-from azureml.data import AzureFileDatastore, AzureBlobDatastore
+from azureml.data.azure_storage_datastore import AzureFileDatastore, AzureBlobDatastore
 
 ds.upload(src_dir='your source directory',
           target_path='your target path',
           overwrite=True,
           show_progress=True)
 ```
+
 `target_path` a helyét adja meg a feltöltendő fájlmegosztást (vagy blob-tároló). A rendszer alapértelmezés szerint `None`, ebben az esetben az adatfeltöltés lekérdezi a legfelső szintű. `overwrite=True` felülírja a meglévő adatokat `target_path`.
 
 Vagy töltse fel az egyes fájlok listáját az adattárhoz az adattár keresztül `upload_files()` metódust.
@@ -142,6 +143,7 @@ ds.download(target_path='your target path',
             prefix='your prefix',
             show_progress=True)
 ```
+
 `target_path` az a hely, az adatok letöltése a helyi könyvtárban. Adja meg a mappa elérési útját a letöltéséhez fájlmegosztást (vagy blob-tárolóba), adja meg, hogy az elérési út `prefix`. Ha `prefix` van `None`, a fájlmegosztást (vagy a blob-tároló) teljes tartalmát fogja letöltése.
 
 <a name="train"></a>
@@ -159,7 +161,7 @@ Feltöltés|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/a
 
  ```Python
 import azureml.data
-from azureml.data import DataReference
+from azureml.data.data_reference import DataReference
 
 ds.as_mount()
 ds.as_download(path_on_compute='your path on compute')

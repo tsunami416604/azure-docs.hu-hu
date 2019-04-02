@@ -9,12 +9,12 @@ ms.date: 01/03/2019
 ms.author: tamram
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 703256206a6626222013f4e502545c5c1f8cfab7
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: c4e81d9be09855cde986bfd21f8f688fa7d1341e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648690"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793715"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Oktatóanyag: A Blob storage magas rendelkezésre állású alkalmazás létrehozása
 
@@ -49,7 +49,7 @@ Az oktatóanyag elvégzéséhez:
 * Telepítse a [Pythont](https://www.python.org/downloads/).
 * A [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python) letöltése és telepítése
 
-# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK ](#tab/java-v7)
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
 
 * A [Maven](https://maven.apache.org/download.cgi) telepítése, és konfigurálása a parancssorból való működésre
 * [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) telepítése és konfigurálása
@@ -107,7 +107,7 @@ git clone https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-patter
 git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-pattern-ha-apps-using-ra-grs.git
 ```
 
-# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK ](#tab/java-v7)
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
 
 [Töltse le a mintaprojektet](https://github.com/Azure-Samples/storage-java-ha-ra-grs), és bontsa ki a storage-java-ragrs.zip fájlt. A [git](https://git-scm.com/) használatával is letöltheti az alkalmazás egy másolatát a fejlesztői környezetbe. A mintaprojekt tartalmaz egy egyszerű Java-alkalmazást.
 
@@ -161,7 +161,7 @@ export storageconnectionstring=\<yourconnectionstring\>
 setx storageconnectionstring "\<yourconnectionstring\>"
 ```
 
-# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK ](#tab/java-v7)
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
 
 Az alkalmazásban meg kell adnia a tárfiókjához tartozó kapcsolati sztringet. Javasoljuk, hogy ezt a kapcsolati karakterláncot egy környezeti változóban tárolja az alkalmazást futtató helyi gépen. A környezeti változó létrehozásához kövesse az alábbi példák egyikét az operációs rendszerének megfelelően.
 
@@ -370,7 +370,7 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK ](#tab/java-v7)
+# <a name="java-v7-sdktabjava-v7"></a>[Java V7 SDK](#tab/java-v7)
 
 Java esetén nem kell visszahívás-kezelőket meghatározni, ha a **BlobRequestOptions** **LocationMode** tulajdonsága először **PRIMARY\_, majd\_SECONDARY** értékűre lett beállítva. Ez lehetővé teszi, hogy az alkalmazás automatikusan a másodlagos helyszínre váltson, ha nem éri el az elsődleges helyszínt a **HelloWorld.png** letöltésére tett kísérletkor.
 

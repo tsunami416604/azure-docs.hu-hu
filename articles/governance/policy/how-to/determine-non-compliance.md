@@ -8,12 +8,12 @@ ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: dba8d9413229a0fa236b082e2e11dbd1a9fe5a5f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1121bdb379265ef592a26a8a31a90d402e529cc8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314126"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802745"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -46,7 +46,7 @@ A megfelelőségi részletek megjelenítéséhez kövesse az alábbi lépéseket
 
 1. A **megfelelőségi részletek** ablaktáblán jelennek meg a jelenlegi szabályzat-hozzárendelés a legújabb kiértékelés az erőforrás adatait. Ebben a példában a mező **Microsoft.Sql/servers/version** bizonyul _12.0-s_ során a várt szabályzatdefiníció _14.0_. Ha több okból az erőforrás nem megfelelő, mindegyik megjelenik ezen a panelen.
 
-   ![Megfelelőségi részletek ablaktábla](../media/determine-non-compliance/compliance-details-pane.png)
+   ![Megfelelőségi részletek ablaktábla és a meg nem felelés oka](../media/determine-non-compliance/compliance-details-pane.png)
 
    Az egy **auditIfNotExists** vagy **deployIfNotExists** szabályzatdefiníciót, szerepel a **details.type** tulajdonság és a választható tulajdonságok. Egy listát lásd: [auditIfNotExists tulajdonságok](../concepts/effects.md#auditifnotexists-properties) és [deployIfNotExists tulajdonságok](../concepts/effects.md#deployifnotexists-properties). **Legutóbbi értékelés erőforrás** a kapcsolódó erőforrások a **részletek** a definíció szakasza.
 
@@ -94,16 +94,16 @@ A következő mátrix térképek minden lehetséges _OK_ a a felelős [feltétel
 |Az aktuális értéknek léteznie kell. |Létezik |
 |Az aktuális értéknek a célértéken belülinek kell lennie. |a vagy **nem** notIn |
 |Az aktuális értéknek a célértékhez hasonlónak kell lennie. |például vagy **nem** notLike |
-|Aktuální hodnota kell egyeztet a célérték. |megfelelő vagy **nem** notMatch |
-|Aktuális érték a célérték kell a kis-és egyezést. |matchInsensitively vagy **nem** notMatchInsensitively |
+|Az aktuális értéknek a ki- és nagybetűk közötti különbség figyelembevételével meg kell felelnie a célértéknek. |megfelelő vagy **nem** notMatch |
+|Az aktuális értéknek a kis- és nagybetűk közötti különbség figyelmen kívül hagyásával meg kell felelnie a célértéknek. |matchInsensitively vagy **nem** notMatchInsensitively |
 |Az aktuális értéknek nem tartalmazhatja a célértéket kulcsként. |notContainsKey vagy **nem** containsKey|
 |Az aktuális értéknek nem tartalmazhatja a célértéket. |notContains vagy **nem** tartalmaz |
 |Az aktuális érték nem lehet egyenlő a célértékkel. |notEquals vagy **nem** egyenlő |
 |Az aktuális érték nem létezhet. |**nem** létezik  |
 |Az aktuális érték nem eshet a célértékbe. |notIn vagy **nem** a |
 |Az aktuális érték nem lehet a célértékhez hasonló. |notLike vagy **nem** például |
-|Aktuální hodnota kell nem egyeztet a célérték. |notMatch vagy **nem** felel meg |
-|Aktuální hodnota kell kis-és nem egyezik a célérték. |notMatchInsensitively vagy **nem** matchInsensitively |
+|Az aktuális érték a kis- és nagybetűk közötti különbség figyelembevételével nem felelhet meg a célértéknek. |notMatch vagy **nem** felel meg |
+|Az aktuális érték a kis- és nagybetűk közötti különbség figyelmen kívül hagyásával nem felelhet meg a célértéknek. |notMatchInsensitively vagy **nem** matchInsensitively |
 |A szabályzat definíciójában nem felel meg kapcsolódó erőforrás a hatás részleteinek. |A megadott típusú erőforrás **then.details.type** és a meghatározott erőforráshoz kapcsolódó a **Ha** része a szabály nem létezik. |
 
 ## <a name="change-history-preview"></a>Változások nyomon követése (előzetes verzió)
@@ -118,11 +118,11 @@ Egy új részeként **nyilvános előzetes verzióban**, az elmúlt 14 napban v�
 
 1. Válassza ki a **változások nyomon követése (előzetes verzió)** lapján a **erőforrás megfelelőségi** lapot. Listáját módosítások észlelése, ha a bármely exist jelennek meg.
 
-   ![A házirend-változások nyomon követése - lap](../media/determine-non-compliance/change-history-tab.png)
+   ![Erőforrás megfelelősége oldalon házirend-változások nyomon követése lap](../media/determine-non-compliance/change-history-tab.png)
 
 1. Válassza ki az egyik észlelt változás. A _diff vizuális_ esetében az erőforrás egyike jelenik meg a **módosítási előzmények** lapot.
 
-   ![A házirend-változások nyomon követése – Diff vizuális](../media/determine-non-compliance/change-history-visual-diff.png)
+   ![Szabályzat módosítása előzmények vizuális Diff módosítási előzmények lapon](../media/determine-non-compliance/change-history-visual-diff.png)
 
 A _diff vizuális_ segédeszközökkel erőforrásai azonosításában. A módosítások észlelhetők nem kapcsolódik az erőforrás aktuális megfelelőségi állapotát.
 

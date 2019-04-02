@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: df5b6268a2ecd7062969aac9d663ee751eeab130
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: da027e492633ba3e4da912c2c45b2432fd217576
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535210"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802953"
 ---
-# <a name="getting-compliance-data"></a>A megfelelőségi adatok beszerzése
+# <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi adatok lekérése
 
 Egyik legnagyobb előnye az Azure Policy egy insight- és vezérlőket biztosít egy adott előfizetés erőforrások vagy [felügyeleti csoport](../../management-groups/overview.md) előfizetések. Ez a vezérlő megakadályozza az erőforrások a megfelelő helyen létrehozott kényszerítése általános és következetes címke használatot, például számos különböző módon lehet érvényesíteni, vagy naplózási meglévő erőforrások, a szükséges konfigurációk és beállítások. Minden esetben adatokat ahhoz, hogy a környezet megfelelési állapotának megjelenítése szabályzat jön létre.
 
@@ -120,27 +120,27 @@ Szabályzat használja a **típus** és **neve** mezőket a definícióban, hogy
 Határozza meg a megfelelőség százalékos értékkel való osztásának **megfelelő** erőforrásokat _erőforrások teljes_.
 _Erőforrások teljes_ összege típusúként van definiálva a **megfelelő**, **nem megfelelő**, és **ütköző** erőforrásokat. Az általános megfelelőségi szám, a különböző erőforrások, amelyek összege **megfelelő** elosztja az összes különböző erőforrás. Az alábbi képen vannak 20 különböző erőforrások, amelyek alkalmazhatók, és csak az egyiket **nem megfelelő**. A teljes erőforrás-megfelelőség 95 %-os (19 20).
 
-![Egyszerű megfelelőségi példa](../media/getting-compliance-data/simple-compliance.png)
+![Szabályzatoknak való megfelelés megfelelőségi oldaláról – példa](../media/getting-compliance-data/simple-compliance.png)
 
 ## <a name="portal"></a>Portál
 
 Az Azure Portalon bemutatja egy grafikus felületet jelenítenek meg, és a környezet megfelelőségi állapotát ismertetése. Az a **házirend** lapon a **áttekintése** beállítás részletes adatokat biztosít a megfelelőségi szabályzatok és a kezdeményezések elérhető hatóköreit. A megfelelőségi állapotok és száma felhasználónként hozzárendelés együtt diagramját, az elmúlt hét napban megfelelőségi tartalmazza.
 A **megfelelőségi** lap tartalmaz szinte ugyanezeket az adatokat (kivéve a diagramot), de további szűrési és rendezési lehetőségeket biztosít.
 
-![Megfelelőségi szabályzatról](../media/getting-compliance-data/compliance-page.png)
+![Megfelelőségi szabályzat lapjának – példa](../media/getting-compliance-data/compliance-page.png)
 
 Egy szabályzatot vagy kezdeményezést több hatókörhöz is rendelhető, mert a tábla minden hozzárendelés és-definíciót, amely hozzá volt rendelve típusát a hatókör magában foglalja. A nem megfelelő erőforrások és a nem megfelelő szabályzatok egyes hozzárendelések száma is biztosítja. Kattintson egy szabályzatot vagy kezdeményezést a tábla a biztosít, hogy adott hozzárendelés megfelelőségi alaposabban.
 
-![Szabályzat megfelelőségi részletei](../media/getting-compliance-data/compliance-details.png)
+![Példa a szabályzatot a megfelelőségi Részletek lap](../media/getting-compliance-data/compliance-details.png)
 
 Az erőforrások listájában a **erőforrás megfelelőségi** lapon a meglévő erőforrások, az aktuális hozzárendelés értékelési állapotát jeleníti meg. A lapon alapértelmezés szerint a **nem megfelelő**, de szűrésével.
 Események (hozzáfűzés, naplózása, megtagadása, üzembe helyezése) váltott erőforrás létrehozására vonatkozó kérelem alatt látható a **események** fülre.
 
-![Megfelelőségi házirend-események](../media/getting-compliance-data/compliance-events.png)
+![Szabályzatoknak való megfelelés események – példa](../media/getting-compliance-data/compliance-events.png)
 
 Kattintson a jobb gombbal a sor az esemény gyűjtse össze a további részleteket a, és válassza ki, szeretné **Tevékenységnaplók megjelenítése**. A tevékenységnapló oldalon megnyílik, és a Keresés az események és az a hozzárendelés részleteit megjelenítő előre szűrt. A tevékenységnapló további kontextus és eseményekből információkat biztosít.
 
-![Szabályzat megfelelőségi tevékenységnapló](../media/getting-compliance-data/compliance-activitylog.png)
+![Szabályzat megfelelőség-tevékenységnaplóban – példa](../media/getting-compliance-data/compliance-activitylog.png)
 
 ### <a name="understand-non-compliance"></a>Meg nem felelés ismertetése
 
@@ -414,7 +414,7 @@ PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
 Trent Baker
 ```
 
-## <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
+## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
 Ha rendelkezik egy [Log Analytics-munkaterület](../../../log-analytics/log-analytics-overview.md) a `AzureActivity` származó a [Activity Log Analytics megoldás](../../../azure-monitor/platform/collect-activity-logs.md) vannak kötve, az előfizetéséhez, megtekintheti az értékelési ciklus használatával meg nem felelés eredményeinek egyszerű Kusto-lekérdezés és a `AzureActivity` tábla. A részleteket a naplókban az Azure Monitor riasztások beállítható úgy, hogy tekintse meg a meg nem felelés esetén.
 

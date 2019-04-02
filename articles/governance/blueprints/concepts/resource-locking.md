@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 16ec3428138361726d69eb9b45943b20129e32ed
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 5409de8aabb52a531551abbc28ae9e873b262eba
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630722"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762429"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Erőforrás zárolása az Azure-tervek ismertetése
 
@@ -52,6 +52,8 @@ A hozzárendelés eltávolítása után a rendszer eltávolítja a tervek szerin
 ## <a name="how-blueprint-locks-work"></a>Hogyan tervezet zárolja a munka
 
 Az RBAC [hozzárendelések megtagadása](../../../role-based-access-control/deny-assignments.md) megtagadási művelet során mikor lesz alkalmazva összetevő erőforrások a tervezet-hozzárendelést a hozzárendelés választásakor a **csak olvasható** vagy **ne törölje a** a beállítás. A megtagadási művelet által felügyelt identitását a tervezet-hozzárendelést kerülnek, és csak eltávolíthatók az összetevő-erőforrások által a azonos felügyelt identitás. Ez biztonsági okokból a zárolási mechanizmus kikényszeríti, és megakadályozza, hogy a tervek kívül a tervezet zárolás eltávolítása.
+
+![Tervezet erőforráscsoport-hozzárendelés elutasítása](../media/resource-locking/blueprint-deny-assignment.png)
 
 > [!IMPORTANT]
 > Az Azure Resource Manager akár 30 percig gyorsítótárazza a szerepkör-hozzárendelés részletei. Ennek eredményeképpen a megtagadási hozzárendelések megtagadási művelet a tervezet-erőforrások nem azonnal el teljes körű érvénybe. Ez idő alatt, előfordulhat, hogy lehet törölni a tervezet zárolások fogja védeni kívánt erőforrás.

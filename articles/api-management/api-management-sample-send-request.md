@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: bfb08cb3bb81917414e4d34afe47964b738980e7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: adb7329249570750002f04fb72465698f869afdc
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970178"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792484"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Az Azure API Management szolgáltatás a külső szolgáltatások használata
 Az Azure API Management szolgáltatásban elérhető házirendek számos hasznos munkát alapján csak a bejövő kérelem, a kimenő válaszok és alapvető konfigurációs adatai hajthatja végre. Azonban képes arra, hogy az API Management külső szolgáltatásokkal interakcióba sok további lehetőség nyílik házirendeket.
@@ -27,7 +27,7 @@ Az Azure API Management szolgáltatásban elérhető házirendek számos hasznos
 Hogyan kezelheti az korábban már látott a [Azure Event Hubs szolgáltatás a naplózás, figyelés és elemzés](api-management-log-to-eventhub-sample.md). Ez a cikk bemutatja a házirendekben, amelyek lehetővé teszik bármely külső HTTP-alapú szolgáltatással. Ezekkel a szabályzatokkal használható indítására, távoli események vagy az eredeti kérés-válasz valamilyen módon kezeléséhez használt információk beolvasásakor.
 
 ## <a name="send-one-way-request"></a>Send-One-Way-Request
-Valószínűleg a legegyszerűbb külső interakciónak számít, amely lehetővé teszi, hogy értesítést kapjon, néhány fontos esemény típusú külső szolgáltatásból kérés aktiválásának és elfelejt stílusát. A control flow házirend `choose` feltételt, amely az Önt érdeklő bármilyen típusú észleléséhez használható.  Ha a feltétel teljesül, akkor is használhatja egy külső HTTP kérés használatával az [küldési – egy-módon-kérelmek](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) házirend. Ez lehet egy üzenetkezelési rendszer például Hipchat vagy a Slack, illetve mint a SendGrid vagy a MailChimp API levél kérést, vagy a kritikus támogatási incidensek a PagerDuty alábbihoz hasonló. E üzenetkezelési rendszerek rendelkezik meghívható műveletkészletet jelölnek, egyszerű HTTP API-k.
+Valószínűleg a legegyszerűbb külső interakciónak számít, amely lehetővé teszi, hogy értesítést kapjon, néhány fontos esemény típusú külső szolgáltatásból kérés aktiválásának és elfelejt stílusát. A control flow házirend `choose` feltételt, amely az Önt érdeklő bármilyen típusú észleléséhez használható.  Ha a feltétel teljesül, akkor is használhatja egy külső HTTP kérés használatával az [küldési – egy-módon-kérelmek](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) házirend. Ez lehet egy üzenetkezelési rendszer például Hipchat vagy a Slack, illetve mint a SendGrid vagy a MailChimp API levél kérést, vagy a kritikus támogatási incidensek a PagerDuty alábbihoz hasonló. E üzenetkezelési rendszerek rendelkezik meghívható műveletkészletet jelölnek, egyszerű HTTP API-k.
 
 ### <a name="alerting-with-slack"></a>Slack-riasztások
 Az alábbi példa bemutatja, hogyan üzenet küldése egy Slack csevegőszoba, ha a HTTP-válaszként kapott állapotkód nem nagyobb, mint 500. Egy 500 tartomány hiba történt a háttérrendszeri API az API-ügyfél nem oldható fel magukat problémájára utal. Általában valamilyen az API Management részéről beavatkozást igényel.  
@@ -62,9 +62,9 @@ Slack bejövő webhook fogalma rendelkezik. Egy bejövő webhook konfigurálása
 ![Slack-Webhook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
 ### <a name="is-fire-and-forget-good-enough"></a>Fire, és elég jól elfelejtette?
-Bizonyos hátrányai is vannak, a kérés aktiválásának és elfelejt stílusát használatakor. Ha valamilyen okból, a kérelem meghiúsul, akkor nem kell jelenteni a hibát. Ez az adott esetben az összetettséget, hogy a jelentéskészítő rendszer és a további teljesítmény költsége a választ vár a többi másodlagos hiba nem igazolható. Forgatókönyvek, ahol ez elengedhetetlen, ellenőrizze a választ akkor a [küldési-kérelmek](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) házirend nem jobb megoldás.
+Bizonyos hátrányai is vannak, a kérés aktiválásának és elfelejt stílusát használatakor. Ha valamilyen okból, a kérelem meghiúsul, akkor nem kell jelenteni a hibát. Ez az adott esetben az összetettséget, hogy a jelentéskészítő rendszer és a további teljesítmény költsége a választ vár a többi másodlagos hiba nem igazolható. Forgatókönyvek, ahol ez elengedhetetlen, ellenőrizze a választ akkor a [küldési-kérelmek](/azure/api-management/api-management-advanced-policies#SendRequest) házirend nem jobb megoldás.
 
-## <a name="send-request"></a>Küldési-kérelmek
+## <a name="send-request"></a>Send-Request
 A `send-request` házirend lehetővé teszi, hogy egy külső szolgáltatás használatával összetett feldolgozás feladatokat és adatokat az API management szolgáltatás, amely további házirend feldolgozásának beállítása is használható.
 
 ### <a name="authorizing-reference-tokens"></a>Referencia-tokenek engedélyezése
@@ -209,7 +209,7 @@ Miután ezt az információt, hogy kéréseket a háttér-rendszerek. Minden ké
 Ezek a kérelmek hajtsa végre a feladatütemezés, ami nem ideális. 
 
 ### <a name="responding"></a>Válaszol
-Hozza létre a összetett választ, használhatja a [visszatérési-válasz](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) házirend. A `set-body` elem kifejezés használatával hozhat létre egy új `JObject` a beágyazott tulajdonságokként összetevő reprezentációinak.
+Hozza létre a összetett választ, használhatja a [visszatérési-válasz](/azure/api-management/api-management-advanced-policies#ReturnResponse) házirend. A `set-body` elem kifejezés használatával hozhat létre egy új `JObject` a beágyazott tulajdonságokként összetevő reprezentációinak.
 
 ```xml
 <return-response response-variable-name="existing response variable">

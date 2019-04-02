@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 6a13988af7a46ff6fafe352e850ee238cda79c08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996712"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58794019"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -34,6 +34,7 @@ Az Office 365 felügyeleti megoldás az Office 365-környezethez az Azure Monito
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 A következő kötelező végezniük a megoldás telepítve és konfigurálva.
 
 - Szervezeti Office 365-előfizetéssel.
@@ -42,12 +43,16 @@ A következő kötelező végezniük a megoldás telepítve és konfigurálva.
  
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
+
 Ez a megoldás nem telepíti a minden felügyeleti csomagot [csatlakoztatott felügyeleti csoportok](../platform/om-agents.md).
   
+
 ## <a name="install-and-configure"></a>Telepítés és konfigurálás
+
 Először adja hozzá a [az előfizetés az Office 365-megoldás](solutions.md#install-a-monitoring-solution). Miután hozzáadta, ebben a szakaszban neki hozzáférést az Office 365-előfizetéssel, hajtsa végre a konfigurációs lépéseket.
 
 ### <a name="required-information"></a>Szükséges információk
+
 Ez az eljárás megkezdése előtt gyűjtse össze a következő információkat.
 
 A Log Analytics-munkaterület:
@@ -64,6 +69,7 @@ Az Office 365-előfizetés:
 - Titkos Ügyfélkód: Titkosított karakterlánc-hitelesítéshez szükséges.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Az Office 365-alkalmazás létrehozása az Azure Active Directoryban
+
 Alkalmazás létrehozása az Azure Active Directoryban, amely a felügyeleti megoldás használatával fogja elérni az Office 365-megoldás első lépéseként.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com/) címen.
@@ -111,11 +117,12 @@ Alkalmazás létrehozása az Azure Active Directoryban, amely a felügyeleti meg
     ![Kulcsok](media/solution-office-365/keys.png)
 
 ### <a name="add-admin-consent"></a>Rendszergazdai jóváhagyás hozzáadása
+
 A rendszergazdai fiók engedélyezéséhez először, rendszergazdai jóváhagyás kell adnia az alkalmazáshoz. Ehhez egy PowerShell-parancsprogrammal. 
 
 1. Mentse a következő szkriptet, *office365_consent.ps1*.
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,     
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -161,9 +168,11 @@ A rendszergazdai fiók engedélyezéséhez először, rendszergazdai jóváhagy�
     ```
 
 2. Futtassa a parancsfájlt a következő paranccsal. Kétszer a hitelesítő adatok megadására kéri. Először adja meg a hitelesítő adatokat a Log Analytics-munkaterületet, és majd a globális rendszergazdai hitelesítő adatait az Office 365-bérlőben.
+
     ```
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
     ```
+
     Példa:
 
     ```
@@ -175,11 +184,12 @@ A rendszergazdai fiók engedélyezéséhez először, rendszergazdai jóváhagy�
     ![Rendszergazdai jóváhagyás](media/solution-office-365/admin-consent.png)
 
 ### <a name="subscribe-to-log-analytics-workspace"></a>Log Analytics-munkaterület előfizetés
+
 Az utolsó lépés, hogy az alkalmazás a Log Analytics-munkaterület előfizetés. Azt is megteheti egy PowerShell-parancsprogrammal.
 
 1. Mentse a következő szkriptet, *office365_subscription.ps1*.
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -342,12 +352,14 @@ Az utolsó lépés, hogy az alkalmazás a Log Analytics-munkaterület előfizet�
     ```
 
 2. Futtassa a parancsfájlt a következő paranccsal:
+
     ```
     .\office365_subscription.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeUsername <OfficeUsername> -OfficeTennantID <Tenant ID> -OfficeClientId <Client ID> -OfficeClientSecret <Client secret>
     ```
+
     Példa:
 
-    ```
+    ```powershell
     .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
     ```
 
@@ -355,7 +367,7 @@ Az utolsó lépés, hogy az alkalmazás a Log Analytics-munkaterület előfizet�
 
 A következő hiba jelenhet meg, ha az alkalmazás már elő van fizetve a munkaterületre, vagy ha a bérlő egy másik munkaterület elő van fizetve.
 
-```
+```Output
 Invoke-WebRequest : {"Message":"An error has occurred."}
 At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 + $officeresponse = Invoke-WebRequest @Officeparams
@@ -366,7 +378,7 @@ At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 
 Ha érvénytelen paraméterértékeket vannak megadva a következő hiba jelenhet meg.
 
-```
+```Output
 Select-AzSubscription : Please provide a valid tenant or a valid subscription.
 At line:12 char:18
 + ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
@@ -377,11 +389,12 @@ At line:12 char:18
 ```
 
 ## <a name="uninstall"></a>Eltávolítás
+
 Az Office 365 felügyeleti megoldás részben ismertetett eljárással eltávolíthatja [távolítsa el a felügyeleti megoldás](solutions.md#remove-a-monitoring-solution). Ez összegyűjtött adatokat az Office 365-ből az Azure Monitor szolgáltatásba, ha nem állítja le. Mondja le az Office 365 és az adatgyűjtés leállításához az alábbi eljárást követve.
 
 1. Mentse a következő szkriptet, *office365_unsubscribe.ps1*.
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -472,15 +485,18 @@ Az Office 365 felügyeleti megoldás részben ismertetett eljárással eltávol�
 
     Példa:
 
-    ```
+    ```powershell
     .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
     ```
 
 ## <a name="data-collection"></a>Adatgyűjtés
+
 ### <a name="supported-agents"></a>Támogatott ügynökök
+
 Az Office 365-megoldás nem adatlekéréshez bármelyikét a [Log Analytics-ügynökök](../platform/agent-data-sources.md).  Lekéri az adatokat közvetlenül az Office 365-höz.
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
+
 Kezdetben gyűjtendő adatokat, több óráig is eltarthat. Miután gyűjtése kezdődik, az Office 365 küld egy [webhook értesítési](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) részletes adatok az Azure monitornak minden alkalommal, amikor létrejön egy rekord. Ez a rekord érhető el az Azure monitorban fogadását követően néhány percen belül.
 
 ## <a name="using-the-solution"></a>A megoldás használata
@@ -511,6 +527,7 @@ Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. 
 A Log Analytics-munkaterületet az Azure monitorban az Office 365-megoldás által létrehozott összes rekordok egy **típus** , **OfficeActivity**.  A **OfficeWorkload** tulajdonság határozza meg, melyik a rekord hivatkozik – Exchange, az AzureActiveDirectory, a SharePoint vagy a onedrive vállalati verzió az Office 365 szolgáltatás.  A **RecordType** tulajdonság határozza meg a művelet típusát.  A tulajdonságok az egyes művelet eltérőek, és az alábbi táblázatban láthatók.
 
 ### <a name="common-properties"></a>Közös tulajdonságok
+
 A következő tulajdonságok megegyeznek az összes Office 365-rekord.
 
 | Tulajdonság | Leírás |
@@ -528,6 +545,7 @@ A következő tulajdonságok megegyeznek az összes Office 365-rekord.
 
 
 ### <a name="azure-active-directory-base"></a>Az Azure Active Directory alap
+
 A következő tulajdonságok megegyeznek az összes Azure Active Directory-rekordok.
 
 | Tulajdonság | Leírás |
@@ -539,6 +557,7 @@ A következő tulajdonságok megegyeznek az összes Azure Active Directory-rekor
 
 
 ### <a name="azure-active-directory-account-logon"></a>Az Azure Active Directory-fiók bejelentkezési
+
 Az Active Directory-felhasználó megpróbál bejelentkezni, ezeket a rekordokat hoz létre.
 
 | Tulajdonság | Leírás |
@@ -552,6 +571,7 @@ Az Active Directory-felhasználó megpróbál bejelentkezni, ezeket a rekordokat
 
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
+
 Ezek a rekordok módosítása vagy hozzáadása az Azure Active Directory-objektumok végrehajtott hoz létre.
 
 | Tulajdonság | Leírás |
@@ -569,6 +589,7 @@ Ezek a rekordok módosítása vagy hozzáadása az Azure Active Directory-objekt
 
 
 ### <a name="data-center-security"></a>Data Center Adatbiztonság
+
 Ezeket a rekordokat Data Center biztonsági naplózási adatok alapján jönnek létre.  
 
 | Tulajdonság | Leírás |
@@ -584,6 +605,7 @@ Ezeket a rekordokat Data Center biztonsági naplózási adatok alapján jönnek 
 
 
 ### <a name="exchange-admin"></a>Az Exchange-rendszergazda
+
 Ezeket a rekordokat jönnek létre, amikor a módosítások Exchange-konfiguráció.
 
 | Tulajdonság | Leírás |
@@ -598,6 +620,7 @@ Ezeket a rekordokat jönnek létre, amikor a módosítások Exchange-konfigurác
 
 
 ### <a name="exchange-mailbox"></a>Exchange-postaláda
+
 Ezek a rekordok módosítása vagy bővítése végrehajtott Exchange-postaládák hoz létre.
 
 | Tulajdonság | Leírás |
@@ -620,6 +643,7 @@ Ezek a rekordok módosítása vagy bővítése végrehajtott Exchange-postalád�
 
 
 ### <a name="exchange-mailbox-audit"></a>Exchange postaláda-naplózás
+
 Ezeket a rekordokat egy postaláda naplóbejegyzést létrehozásakor jönnek létre.
 
 | Tulajdonság | Leírás |
@@ -634,6 +658,7 @@ Ezeket a rekordokat egy postaláda naplóbejegyzést létrehozásakor jönnek l�
 
 
 ### <a name="exchange-mailbox-audit-group"></a>Exchange postaláda-naplózás csoport
+
 Ezek a rekordok módosítása vagy bővítése végrehajtott Exchange-csoportok jönnek létre.
 
 | Tulajdonság | Leírás |
@@ -652,6 +677,7 @@ Ezek a rekordok módosítása vagy bővítése végrehajtott Exchange-csoportok 
 
 
 ### <a name="sharepoint-base"></a>A SharePoint alapja
+
 Ezek a Tulajdonságok megegyeznek az összes SharePoint-rekordok.
 
 | Tulajdonság | Leírás |
@@ -668,6 +694,7 @@ Ezek a Tulajdonságok megegyeznek az összes SharePoint-rekordok.
 
 
 ### <a name="sharepoint-schema"></a>A SharePoint-séma
+
 Konfigurációs módosítások a SharePoint ezeket a rekordokat hoz létre.
 
 | Tulajdonság | Leírás |
@@ -680,6 +707,7 @@ Konfigurációs módosítások a SharePoint ezeket a rekordokat hoz létre.
 
 
 ### <a name="sharepoint-file-operations"></a>A SharePoint-fájl
+
 Ezeket a rekordokat a Sharepointban fájlműveletek válaszul jönnek létre.
 
 | Tulajdonság | Leírás |
@@ -700,6 +728,7 @@ Ezeket a rekordokat a Sharepointban fájlműveletek válaszul jönnek létre.
 
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
+
 A következő táblázat a megoldás által összegyűjtött frissítési rekordokkal kapcsolatos naplókeresési mintákat tartalmazza.
 
 | Lekérdezés | Leírás |
@@ -713,6 +742,7 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 
 
 ## <a name="next-steps"></a>További lépések
+
 * Használat [lekérdezések jelentkezzen be az Azure Monitor](../log-query/log-query-overview.md) frissítés részletes adatainak megtekintéséhez.
 * [Saját irányítópult létrehozásával](../learn/tutorial-logs-dashboards.md) kedvenc Office 365 keresési lekérdezések megjelenítéséhez.
 * [Riasztások létrehozása](../platform/alerts-overview.md) proaktívan értesíti a fontos Office 365-tevékenységek.  

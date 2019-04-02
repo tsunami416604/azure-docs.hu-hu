@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: eb807082443da495cd89e1dd624058c89d3ee65b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6a0d84a2aaf4b52c7fb0163231574eaea63c18c3
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825794"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58807657"
 ---
 ### <a name="what-is-expressroute-direct"></a>Mi az az ExpressRoute közvetlen?
 
@@ -52,6 +52,6 @@ Az ExpressRoute közvetlen nyújt a felhasználók számára a közvetlen 100 GB
 
 Az ExpressRoute közvetlen a port pár rögzített méretű, számlázunk. Standard Kapcsolatcsoportok tartalmazzák, nincs további órát, és prémium szintű enyhe kiegészítő díj fog rendelkezni. Kimenő forgalom a társviszony-létesítési helyszínen időzónája alapján / kapcsolatcsoport alapon számlázzuk.
 
-### <a name="when-does-billing-state-for-the-expressroute-direct-port-pairs"></a>Ha elvégzi az ExpressRoute közvetlen portból álló párok számlázási állapota?
+### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>Ha elvégzi az ExpressRoute közvetlen portból álló párok számlázási kezdő?
 
 Az ExpressRoute közvetlen portból álló párok 45 nap számolunk fel, az ExpressRoute közvetlen erőforrást, vagy ha 1 vagy mindkettőt, a kapcsolatok engedélyezve vannak, amelyiket hamarabb. A 45 napos türelmi időszak lehetővé teszi ügyfeleink számára a keresztkapcsolat befejezéséhez a közös elhelyezés szolgáltatójával kapnak.

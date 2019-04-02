@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 99b54a5fe5c28eb66a61fad61d23b94f0955f126
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9c0c8adca9d99c00e32127e02a3d68ff668a235e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728568"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793305"
 ---
 # <a name="azure-api-management-faqs"></a>Az Azure API Management – gyakori kérdések
 Válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure API Management.
@@ -32,9 +32,9 @@ Válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure API
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 * [Mit jelent az, ha egy funkció előzetes verzióban érhető el?](#what-does-it-mean-when-a-feature-is-in-preview)
 * [Hogyan védhetem meg a kapcsolatot az API Management-átjáró és a háttérszolgáltatások között?](#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)
-* [Hogyan másolja az API Management-szolgáltatáspéldány egy új példányt?](#how-do-i-copy-my-api-management-service-instance-to-a-new-instance)
+* [Hogyan másolhatom át az API Management-szolgáltatáspéldányomat új példányra?](#how-do-i-copy-my-api-management-service-instance-to-a-new-instance)
 * [Programozott módon is kezelhető az API Management-példány?](#can-i-manage-my-api-management-instance-programmatically)
-* [Hogyan adhatok hozzá a felhasználó a rendszergazdák csoporthoz?](#how-do-i-add-a-user-to-the-administrators-group)
+* [Hogyan adhatok hozzá felhasználót a rendszergazdák csoportjához?](#how-do-i-add-a-user-to-the-administrators-group)
 * [Miért van a házirend, amelyet szeretnék hozzáadni a Helyicsoportházirend-szerkesztő nem érhető el?](#why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor)
 * [Hogyan állíthatok be egy egyetlen API több környezetet?](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [Használhatom-e a SOAP API Management?](#can-i-use-soap-with-api-management)
@@ -42,12 +42,12 @@ Válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure API
 * Konfigurálhatok az OAuth 2.0 engedélyezési kiszolgáló az AD FS biztonsági?
 * [Milyen útválasztási módszert használni a az API Management a több földrajzi helyen történő központi telepítések?](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [Az Azure Resource Manager-sablonok segítségével az API Management szolgáltatáspéldány létrehozása?](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
-* [Használható a háttéralkalmazás az önaláírt SSL-tanúsítvány?](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
+* [Használhatok önaláírt SSL-tanúsítványt a háttérrendszerhez?](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
 * [Miért kapok hitelesítési hiba jelenik meg egy GIT-tárház klónozása?](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [Az API Management működik az Azure ExpressRoute használatával?](#does-api-management-work-with-azure-expressroute)
 * [Miért azt igénylik kijelölt alhálózatot a virtuális hálózatok Resource Manager-stílus be központi telepítésekor az API Management?](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
 * [Mi az API Management egy vnetbe telepítésekor szükséges minimális alhálózat méretét?](#what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet)
-* [Áthelyezhető egy API Management-szolgáltatás egy előfizetésből egy másikba?](#can-i-move-an-api-management-service-from-one-subscription-to-another)
+* [Áthelyezhetek egy API Management szolgáltatást az egyik előfizetésből egy másikba?](#can-i-move-an-api-management-service-from-one-subscription-to-another)
 * [A korlátozásokat és saját API importálása ismert problémái vannak-e?](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
 ### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Hogyan tehetek fel a Microsoft Azure API Management csapata egy kérdést?
@@ -72,13 +72,13 @@ Az API Management-átjáró és a háttér-szolgáltatások közötti kapcsolat 
 Ha szeretné másolni az API Management-példány új példányára számos lehetősége van. A következőket teheti:
 
 * A biztonsági másolat, és állítsa vissza a függvény az API Management szolgáltatásban. További információkért lásd: [vész-helyreállítási szolgáltatás biztonsági mentése segítségével megvalósítható, és az Azure API Management visszaállítása](api-management-howto-disaster-recovery-backup-restore.md).
-* Saját biztonsági mentést, és állítsa vissza a szolgáltatás használatával a [API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx). A REST API használatával mentése és visszaállítása az entitásokat a kívánt szolgáltatás példányból.
+* Saját biztonsági mentést, és állítsa vissza a szolgáltatás használatával a [API Management REST API](/rest/api/apimanagement/). A REST API használatával mentése és visszaállítása az entitásokat a kívánt szolgáltatás példányból.
 * A Git használatával töltheti le a szolgáltatás konfigurációját, és töltse fel azt egy új példányát. További információkért lásd: [mentésére és a Git használatával az API Management szolgáltatás konfigurációs konfigurálása](api-management-configuration-repository-git.md).
 
 ### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Programozott módon is kezelhető az API Management-példány?
 Igen, kezelheti az API Management programozott módon használatával:
 
-* A [az API Management REST API-val](https://msdn.microsoft.com/library/azure/dn776326.aspx).
+* A [az API Management REST API-val](/rest/api/apimanagement/).
 * A [a Microsoft Azure az ApiManagement Service Management Library SDK](https://aka.ms/apimsdk).
 * A [szolgáltatás telepítését](https://docs.microsoft.com/powershell/module/wds) és [szolgáltatásfelügyelet](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) PowerShell-parancsmagokat.
 
@@ -97,7 +97,7 @@ Az újonnan hozzáadott közreműködői használható Azure PowerShell most [pa
 4. A felügyeleti portál eléréséhez használja az URL-címet.
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Miért van a házirend, amelyet szeretnék hozzáadni a Helyicsoportházirend-szerkesztő nem érhető el?
-Ha a szabályzatot, amely a hozzáadni kívánt halványan jelenik meg, vagy a Helyicsoportházirend-szerkesztő árnyékolt, arra, hogy a megfelelő terjed ki a szabályzat jelenik meg. Minden egyes házirendutasítás lett tervezve, bizonyos hatókörökre és szabályzat szakaszok. A szabályzat szakaszok és a egy házirend hatóköreinek című témakörben találja a szabályzat használata című szakaszában található [API Management házirendek](https://msdn.microsoft.com/library/azure/dn894080.aspx).
+Ha a szabályzatot, amely a hozzáadni kívánt halványan jelenik meg, vagy a Helyicsoportházirend-szerkesztő árnyékolt, arra, hogy a megfelelő terjed ki a szabályzat jelenik meg. Minden egyes házirendutasítás lett tervezve, bizonyos hatókörökre és szabályzat szakaszok. A szabályzat szakaszok és a egy házirend hatóköreinek című témakörben találja a szabályzat használata című szakaszában található [API Management házirendek](/azure/api-management/api-management-policies).
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Hogyan állíthatok be egy egyetlen API több környezetet?
 Állítsa be több környezetet, például a tesztelési környezet és a egy éles környezetben egy API, két lehetősége van. A következőket teheti:
@@ -142,7 +142,7 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 ```
 
 #### <a name="direct-api-update-method"></a>Közvetlen API frissítési módszer ####
-1. Hozzon létre egy [háttérrendszer](https://msdn.microsoft.com/library/azure/dn935030.aspx) entitás API Management segítségével.       
+1. Hozzon létre egy [háttérrendszer](/rest/api/apimanagement/) entitás API Management segítségével.     
 2. Állítsa be a **skipCertificateChainValidation** tulajdonságot **igaz**.     
 3. Ha már nem szeretné, hogy az önaláírt tanúsítványokat, a háttérbeli entitás törlése, vagy állítsa be a **skipCertificateChainValidation** tulajdonságot **hamis**.
 

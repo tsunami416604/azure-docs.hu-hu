@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 4af27ad4fb5096f3ccac5de901c76e8d7464e1f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8c33cd7fe702f46f9c88643895b96445a9aa6a78
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887119"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805193"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Az adatbázis-kiszolgálók virtuális hálózati Szolgáltatásvégpontok és szabályok használata
 
@@ -197,7 +197,7 @@ PolyBase az adatok betöltése az Azure SQL Data Warehouse-bA az Azure Storage-f
    > - Ha rendelkezik egy általános célú v1- vagy blob storage-fiók, meg kell **először frissítse a v2** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
    > - Az Azure Data Lake Storage Gen2 kapcsolatos ismert problémákat, tekintse meg ezt [útmutató](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1. Lépjen a storage-fiók alatt **hozzáférés-vezérlés (IAM)**, és kattintson a **szerepkör-hozzárendelés hozzáadása**. Rendelje hozzá **Storage-Blobadatok Közreműködője (előzetes verzió)** RBAC szerepkör az SQL Database-kiszolgálóhoz.
+1. Lépjen a storage-fiók alatt **hozzáférés-vezérlés (IAM)**, és kattintson a **szerepkör-hozzárendelés hozzáadása**. Rendelje hozzá **Storage-Blobadatok Közreműködője** RBAC szerepkör az SQL Database-kiszolgálóhoz.
 
    > [!NOTE] 
    > Csak a tulajdonosa a jogosultsággal rendelkező tagok ebben a lépésben hajthat végre. A különféle beépített szerepkörök az Azure-erőforrásokhoz, tekintse meg a [útmutató](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).

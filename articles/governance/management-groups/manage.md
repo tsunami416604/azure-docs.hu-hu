@@ -1,17 +1,17 @@
 ---
-title: Módosítása, törlése és az Azure-ban – Azure Cégirányítási felügyeleti csoportok kezelése
+title: Módosítása, törlése és a felügyeleti csoportok – Azure Cégirányítási kezelése
 description: Útmutató megtekintése, kezelése, frissítése és a felügyeleti csoport hierarchia törlése.
 author: rthorn17
 ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 801a37496b36be1f98408c46807f5b10db2b0282
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: f9e9bf51d50863f2e37a2f579c2db0edcfeca634
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622059"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801769"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Az erőforrások kezelése a felügyeleti csoportokkal
 
@@ -37,11 +37,11 @@ A felügyeleti csoport nevét a portal, PowerShell vagy az Azure CLI használat�
 
 1. Válassza ki a **csoport átnevezése** lehetőséget az oldal tetején.
 
-   ![Csoport átnevezése lehetőség](./media/detail_action_small.png)
+   ![Csoport átnevezése a beállítás a felügyeleti csoport oldalán](./media/detail_action_small.png)
 
 1. Amikor megnyílik a menüben, adja meg az új nevet, amelyet szeretne megjeleníteni.
 
-   ![Csoport átnevezése panel](./media/rename_context.png)
+   ![Csoport átnevezése panelen felügyeleti csoport átnevezése](./media/rename_context.png)
 
 1. Kattintson a **Mentés** gombra.
 
@@ -223,7 +223,7 @@ Milyen engedélyekkel rendelkezik az Azure Portalon, válassza a felügyeleti cs
 
 1. Válassza ki az előfizetést a listában a helyes azonosítóval.
 
-   ![Gyermekek](./media/add_context_sub.png)
+   ![A felügyeleti csoport hozzáadása a rendelkezésre álló előfizetések](./media/add_context_sub.png)
 
 1. Válassza ki "a Mentés".
 
@@ -237,13 +237,13 @@ Milyen engedélyekkel rendelkezik az Azure Portalon, válassza a felügyeleti cs
 
 1. Válassza ki az előfizetés a sor végén található három pontra szeretné helyezni a listában.
 
-   ![Elem áthelyezése](./media/move_small.png)
+   ![Helyezze át a kapcsolót a felügyeleti csoport](./media/move_small.png)
 
 1. Válassza ki **áthelyezése**.
 
 1. A megnyíló menüben válassza a **fölérendelt felügyeleti csoport**.
 
-   ![Ablak áthelyezése](./media/move_small_context.png)
+   ![Helyezze át a szülő-csoport panel](./media/move_small_context.png)
 
 1. Kattintson a **Mentés** gombra.
 
@@ -294,7 +294,7 @@ Ha áthelyezi a fölérendelt felügyeleti csoport, a hierarchia adott csoportba
    - Új kiválasztásával létrehoz egy új felügyeleti csoport.
    - Válassza egy meglévő megjelennek egy legördülő áthelyezheti a felügyeleti csoport összes felügyeleti csoportot.  
 
-   ![Áthelyezés](./media/add_context_MG.png)
+   ![Új vagy meglévő csoport a felügyeleti csoport áthelyezése](./media/add_context_MG.png)
 
 1. Kattintson a **Mentés** gombra.
 

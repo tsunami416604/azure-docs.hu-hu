@@ -1,19 +1,19 @@
 ---
 title: Az Apache Ambari – Azure HDInsight-fürt konfigurációjának optimalizálása
 description: Az Apache Ambari webes felhasználói felület használatával konfigurálhatja és a HDInsight-fürtök optimalizálása.
-author: ashishthaps
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: ashish
-ms.openlocfilehash: 14b634e610fb0da71c5f0d742a250b18cea70dc7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/26/2019
+ms.author: hrasheed
+ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722923"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805380"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Az Apache Ambari használata a HDInsight-fürt konfigurációjának optimalizálása
 
@@ -51,7 +51,7 @@ A NameNode Java. generace módosítása:
 
     ![Szerkesztés NameNode Java. generace](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
-1. A NameNode Java halommemória mérete 1 GB-os megváltozott 2 GB-ra.
+1. A NameNode Java halommemória mérete 2 GB-tól 1 GB értékre változott.
 
     ![Szerkesztett NameNode Java. generace](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
@@ -125,7 +125,7 @@ A Hive-lekérdezések végrehajtása egy vagy több lépésben történik. A fü
 
 1.  Ahhoz, hogy a párhuzamos lekérdezés-végrehajtás, keresse meg a Hive **Config** lapra, és keresse meg a `hive.exec.parallel` tulajdonság. Az alapértelmezett értéke FALSE (hamis). Módosítsa az értéket Igaz értékre, és nyomja le az **Enter** mentheti az értéket.
  
-1.  Korlátozza az egyidejűleg futtatandó feladatok számát, módosítsa a `hive.exec.parallel.thread.number` tulajdonság. Az alapértelmezett értéke 8.
+1.  Párhuzamos feladatok számának korlátozásához, módosítsa a `hive.exec.parallel.thread.number` tulajdonság. Az alapértelmezett értéke 8.
 
     ![Hive-exec párhuzamos](./media/hdinsight-changing-configs-via-ambari/hive-exec-parallel.png)
 
@@ -178,7 +178,7 @@ A rendelkezésre álló tömörítési típusok a következők:
 
 | Formátum | Eszköz | Algoritmus | Fájlkiterjesztés | Felosztható? |
 | -- | -- | -- | -- | -- |
-| Gzip | Gzip | DEFLATE | .GZ | Nem |
+| Gzip | Gzip | DEFLATE | .gz | Nem |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | Igen |
 | LZO | Lzop | LZO | .lzo | Igen, ha indexelt |
 | Snappy | – | Snappy | Snappy | Nem |
@@ -295,7 +295,7 @@ A Hive-végrehajtó motor optimalizálásához további javaslatok:
 
 1. Keresse meg, és állítsa vissza a módosítani kívánt tulajdonság értékének módosítása.
 
-1. Válassza ki **mentése** mentse az új értéket az ablak felső jobb oldalán. Egyes tulajdonságok szükség lehet a szolgáltatás újraindítását.
+1. Válassza ki **mentése** mentheti az új értéket az ablak jobb felső részén. Egyes tulajdonságok szükség lehet a szolgáltatás újraindítását.
 
     ![Speciális pig-tulajdonságok](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
@@ -454,4 +454,4 @@ A tulajdonság határozza meg kapott helyi foglalási memóriapuffer-használat 
 ## <a name="next-steps"></a>További lépések
 
 * [Az Apache Ambari webes Felülettel rendelkező HDInsight-fürtök kezelése](hdinsight-hadoop-manage-ambari.md)
-* [Az Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

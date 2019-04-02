@@ -7,20 +7,22 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/08/2019
+ms.date: 03/25/2019
 ms.author: dobett
-ms.openlocfilehash: befef76e19640683ba3219374702a049bdecb43b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58184172"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792501"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Gyors útmutató: Próbálja ki a felhő alapú távoli figyelési megoldáshoz
 
 Ez a rövid útmutató bemutatja az Azure IoT távoli monitorozási megoldásgyorsító üzembe helyezését. Ebben a felhőalapú megoldásban a **Dashboard** (Irányítópult) lap segítségével jelenítheti meg a szimulált eszközöket egy térképen, és a **Maintenance** (Karbantartás) lapon válaszolhat a szimulált hűtőeszköz nyomással kapcsolatos riasztásaira. A megoldásgyorsítót saját megvalósítása kiindulópontjaként vagy képzési eszközként is használhatja.
 
 A kezdeti üzembe helyezés a Contoso nevű vállalat számára konfigurálja a megoldásgyorsítót. A Contoso operátoraként különféle fizikai környezetekben található, különböző típusú eszközöket (például hűtőeszközöket) felügyel. A hűtőeszköz a hőmérsékletre, a páratartalomra és a nyomásra vonatkozó telemetriai adatokat küld a távoli monitorozási megoldásgyorsítónak.
+
+Ebben a rövid útmutatóban üzembe helyez egy **alapszintű** verzióját a megoldásgyorsító a tesztelésre és demonstrációs céllal, hogy minimalizálja a költségeket. A különböző verzióit telepítheti kapcsolatos további információkért lásd: [alap és normál központi telepítések](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments).
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre.
 
@@ -36,9 +38,7 @@ Kattintson a **távoli megfigyelés** csempére. Az a **távoli megfigyelés** k
 
 ![Távoli monitorozás kiválasztása](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
-A **Megoldás létrehozása (Távoli monitorozás)** lapon válassza ki az **Alapszintű** üzembe helyezési lehetőséget. Ha a megoldásgyorsítót demonstráció céljából vagy azért helyezi üzembe, hogy megismerkedhessen a működésével, a költségek csökkentése érdekében mindenképpen az **Alapszintű** lehetőséget válassza.
-
-Válassza a **.NET** nyelvet. A Java és a .NET implementáció azonos funkciókat tartalmaz.
+Válasszon  **C# Mikroszolgáltatások** , a **központi telepítési beállítások**. A Java és C# megvalósításokhoz rendelkezik ugyanazokat a szolgáltatásokat.
 
 Adjon meg egy egyedi **megoldásnevet** a távoli monitorozási megoldásgyorsítóhoz. Ebben a rövid útmutatóban a miénk hívjuk **contoso-rm**.
 
@@ -111,7 +111,7 @@ Ha műveletet szeretne végrehajtani a hűtőeszközön, görgessen le a **Relat
 
 A **feladatok** paneljén válassza a **Run method** (Metódus futtatása) elemet, majd az **EmergencyValveRelease** metódust. Adja hozzá a **ChillerPressureRelease** feladatnevet, és kattintson az **Apply** (Alkalmaz) elemre. Ezek a beállítások egy olyan feladatot hoznak létre, amelyet a rendszer azonnal végrehajt.
 
-A feladat állapotának megtekintéséhez lépjen vissza a **karbantartási** lapra, és a **feladatok** nézetében tekintse meg a feladatok listáját. Lehet, hogy néhány másodpercet várnia kell, amíg megjelenik, hogy a rendszer futtatta a hűtőeszköz szelepnyomásának csökkentésére irányuló feladatot:
+A feladat állapotának megtekintéséhez lépjen vissza a **karbantartási** lapra, és a **feladatok** nézetében tekintse meg a feladatok listáját. Szükség lehet Várjon néhány másodpercet, ahhoz, hogy a feladat futott:
 
 [![A feladatok állapota a feladatok nézetében](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
 

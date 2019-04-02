@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 319791c2436395c00dafc744fb6fcb1ff18b0750
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f236c6a78edeb04a69685bf27c99997ed470f498
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652331"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791523"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejlécalapú hitelesítéskor az egyszeri bejelentkezést az alkalmazásproxy és a PingAccess
 
@@ -54,7 +54,7 @@ Ha még alkalmazásproxy engedélyezve van, és egy összekötő telepítve van,
 
 Az Application Proxy connector egy Windows Server-szolgáltatás, amely arra utasítja a közzétett alkalmazások a távoli alkalmazottak érkező forgalom. További részletes telepítési utasításokat: [alkalmazásproxy engedélyezése az Azure Portalon](application-proxy-add-on-premises-application.md).
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) alkalmazást rendszergazdaként.
 2. Válassza ki **Azure Active Directory** > **alkalmazásproxy**.
 3. Válassza ki **-összekötő letöltése** az Application Proxy connector letöltése elindításához. Kövesse a telepítési utasításokat.
 
@@ -69,7 +69,7 @@ Nincsenek két műveletet kell tennie az Azure Portalon. Először az alkalmazá
 
 Kövesse az alábbi lépéseket az alkalmazás közzétételéhez. Egy részletes útmutató lépéseit, 1 – 8., lásd: [alkalmazások közzététele az Azure AD-alkalmazásproxy](application-proxy-add-on-premises-application.md).
 
-1. Ha még nem az utolsó szakaszban, jelentkezzen be a [az Azure portal](https://portal.azure.com) globális rendszergazdaként.
+1. Ha még nem az utolsó szakaszban, jelentkezzen be a [az Azure portal](https://portal.azure.com) alkalmazást rendszergazdaként.
 2. Válassza ki **Azure Active Directory** > **vállalati alkalmazások**.
 3. Válassza ki **Hozzáadás** a panel tetején.
 4. Válassza ki **helyszíni alkalmazás**.
@@ -153,7 +153,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 }
 ```
 Ez a példa a [az Azure portal](https://portal.azure.com) frissíteni a *acceptedMappedClaims* mező:
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) alkalmazást rendszergazdaként.
 2. Válassza ki **Azure Active Directory** > **alkalmazásregisztrációk**.
 3. Válassza ki az alkalmazását > **Manifest**.
 4. Válassza ki **szerkesztése**, keresse meg a *acceptedMappedClaims* mezőben, és módosítsa az értéket **igaz**.

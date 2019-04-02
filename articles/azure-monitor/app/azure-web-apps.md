@@ -1,110 +1,134 @@
 ---
 title: Az Azure szolgáltatások teljesítményének figyelése |} A Microsoft Docs
-description: Az alkalmazásteljesítmény-figyelés az Azure app services. Diagrambetöltési és -válaszidők függőségi információk és beállított, teljesítménnyel kapcsolatos riasztások.
+description: Az alkalmazásteljesítmény-figyelés az Azure app services. Diagram betöltése és a válaszidő, a függőségi adatokat, és riasztásokat állíthat be a teljesítményre.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
 manager: carmonm
-ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
 ms.service: application-insights
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 92a7c1a45655f8804aa1f81b1a77ebf7cd5197e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7386f6bd92143cf3fb7b37725900425f99371cd0
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122165"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804992"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
-Az a [az Azure portal](https://portal.azure.com) beállíthat alkalmazásteljesítmény-figyelés a web apps, mobile háttérrendszerek és API-alkalmazások a [Azure App Service](../../app-service/overview.md). Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) úgy alakítja ki az alkalmazást, hogy telemetriát küldjön tevékenységeiről az Application Insights szolgáltatásnak, amely tárolja és elemzi azokat. Itt metrikus diagramok és keresőeszközök segítségével diagnosztizálhat problémákat, javíthatja a teljesítményt, és felmérheti a használatot.
 
-## <a name="runtime-or-build-time"></a>Futásidejű vagy felépítési idő
-A figyelés konfigurálásához kétféle módon alakíthatja ki az alkalmazást:
+Figyelés .NET és .NET Core alapú webalkalmazások futtatása az Azure App Servicesben engedélyezése mostantól egyszerűbb, mint valaha. Mivel korábban szükséges webhelybővítmény manuális telepítéséhez, a legújabb bővítési ügynök most már be van építve az app service lemezkép alapértelmezés szerint. Ez a cikk fog végigvezetik Application insights általi figyelés engedélyezése, valamint a nagyobb méretű környezetek esetében a folyamat automatizálásának előzetes útmutatást nyújtanak.
 
-* **Futásidejű** -kiválaszthat egy teljesítményfigyelési bővítményt, ha már élő az app service. Nem szükséges újraépíteni vagy telepítse újra az alkalmazást. Olyan standard csomagkészletet kap, amely figyeli a válaszidőt, a sikerességi arányokat, a kivételeket, a függőségeket stb.
+> [!NOTE]
+> Manuálisan hozzáadni egy Application Insights-webhelybővítményt keresztül **Fejlesztőeszközök** > **bővítmények** elavult. A bővítmény legújabb stabil kiadása már [előtelepített](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) az App Service-kép részeként. A fájlok találhatók `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` és automatikusan frissülnek minden stabil kiadással. Ha az ügynök utasítások figyelés engedélyezése az alábbiakban, automatikusan eltávolítja az elavult bővítmény az Ön számára.
 
-* **Felépítési idő** – Telepíthet egy csomagot fejlesztés alatt álló alkalmazásába. Ez a lehetőség jóval sokoldalúbb. A standard csomagkészlet mellett kódolással testreszabhatja a telemetriát, vagy elküldheti saját telemetriáját. Naplózhat konkrét tevékenységeket vagy rögzíthet eseményeket alkalmazástartománya szemantikájának megfelelően. Ez is biztosít az Application Insights SDK legújabb verziójának tesztelhetik, dönthet úgy, hogy kiértékelése béta SDK-k, mivel a legújabb stabil kiadásra a futásidejű ellenőrzés korlátozódik.
+## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
-## <a name="runtime-instrumentation-with-application-insights"></a>Az Application Insights futásidejű rendszerállapot
-Jelenleg az Azure-ban futtatja egy app Service-ben, ha már kap bizonyos figyelőket: alapértelmezés szerint a kérés és a hibák gyakoriságát. Adja hozzá az Application Insights további, például a válaszidők, a hívások figyelése, a függőségek, intelligens detektálás, valamint hozzáférés a Kusto a hatékony lekérdezési nyelvet. 
+Alkalmazások figyelése az Azure App Servicesben üzemeltetett alkalmazások engedélyezéséhez két módja van:
+
+* **Az ügynök-alapú alkalmazásfigyelés** (ApplicationInsightsAgent).  
+    * Ez a módszer engedélyezéséhez a legegyszerűbb, és semmilyen speciális konfigurációra szükség. Ezt gyakran nevezik "runtime" figyelése. Az Azure App Services azt javasoljuk ezt a szintű figyelés engedélyezése legalább, és majd kiértékelheti, hogy fejlett figyelési manuális instrumentation keresztül van szükség az adott forgatókönyv alapján.
+
+* **Kézileg állítja be az alkalmazást kód** az Application Insights SDK telepítésével.
+
+    * Ez a módszer sokkal testre szabható, de szükséges [függőség hozzáadása az Application Insights SDK NuGet-csomagok](https://docs.microsoft.com/azure/azure-monitor/app/asp-net). Ez a módszer azt is jelenti, kezelheti a frissítéseket a legújabb verzióra a csomagok saját magának kell.
+
+    * Ha kell, hogy egyéni API-hívások nyomon követheti az eseményeket/függőségek nem rögzíti az ügynök-alapú figyelés alapértelmezés szerint, kell ezt a módszert használja. Tekintse meg a [API-val egyéni eseményeket és mérőszámokat cikk](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) további.
+
+> [!NOTE]
+> Az ügynök-alapú figyelési és a manuális SDK-alapú instrumentation észlel csak a manuális instrumentation beállításait fogja lesz érvényes. Ez az, hogy a duplikált adatok, küldeni. További információ a tekintse meg a [hibaelhárítás szakaszhoz](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) alatt.
+
+## <a name="enable-agent-based-monitoring-net"></a>Az ügynök-alapú figyelés .NET engedélyezése
 
 1. **Válassza az Application Insights** az app service az Azure Vezérlőpultján.
 
-    ![A beállítások területen válassza az Application Insights](./media/azure-web-apps/settings-app-insights.png)
+    ![A beállítások területen válassza az Application Insights](./media/azure-web-apps/settings-app-insights-01.png)
 
    * Válassza ki, hozzon létre egy új erőforrást, kivéve, ha korábban már beállított egy Application Insights-erőforrást ehhez az alkalmazáshoz. 
 
      > [!NOTE]
      > Amikor rákattint **OK** meg fogja kérni az új erőforrás létrehozása **figyelési beállítások alkalmazása**. Kiválasztásával **Folytatás** társítani fogja az új Application Insights-erőforrást az app service-ben is ezzel **újra kell indítani az app service-trigger**. 
 
-     ![Webapp kialakítása](./media/azure-web-apps/create-resource.png)
+     ![Webapp kialakítása](./media/azure-web-apps/create-resource-01.png)
 
 2. Adjon meg, melyik erőforrást kell használnia, kiválaszthatja, hogyan szeretné az application insights a platformonként az alkalmazás adatainak gyűjtéséről. ASP.NET alkalmazás figyelésére szolgáló az alapértelmezés szerint a gyűjtemény két különböző szintű.
 
     ![Válassza a beállítások platformonként](./media/azure-web-apps/choose-options-new.png)
 
    * .NET **alapszintű gyűjtemény** szint alapvető egypéldányos APM funkciókat kínál.
-    
+
    * .NET **gyűjtemény ajánlott** szintje:
        * Hozzáadja a Processzor, memória és i/o-használati trendeket.
        * Mikroszolgáltatások hátterében a kérelem/függőségi határokon.
        * Gyűjti a használati trendeket, és lehetővé teszi, hogy a tranzakciók rendelkezésre állási eredmények korrelációs.
        * A gazdagép által nem kezelt kivételek gyűjti.
        * Mintavétel használatakor, javítja a APM metrikák pontosságot terhelés alatt.
-    
-     .NET core kínál **gyűjtemény ajánlott** vagy **letiltott** a .NET Core 2.0 és a 2.1-es verzióját.
 
-3. **Alakítsa ki az app service** Application Insights telepítése után.
+3. Például mintavételezése esetén, amely korábban vezérelheti az applicationinsights.config fájlban keresztül-beállítások konfigurálása most már használhatja azokat a megfelelő előtaggal Alkalmazásbeállítások keresztül ugyanazokat a beállításokat. 
 
-   **Az ügyféloldali figyelés engedélyezése** az oldal és a felhasználók telemetriai adatokat.
+    * Például ha módosítani szeretné a kezdeti mintavételi arányt, hozhat létre az alkalmazás-beállítás: `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` és a egy értéke `100`.
 
-    (A .NET Core-alkalmazások alapértelmezés szerint engedélyezve van ez **gyűjtemény ajánlott**, függetlenül attól, hogy jelen-e az alkalmazás 'APPINSIGHTS_JAVASCRIPT_ENABLED' állítja. A részletes Felhasználóifelület-alapú támogatás letiltása az ügyféloldali figyelés jelenleg nem áll rendelkezésre a .NET Core.)
-    
-   * Válassza a Beállítások > Alkalmazásbeállítások lehetőséget.
-   * Az alkalmazásbeállításoknál adjon meg egy új kulcs-érték párt:
+    * Támogatott adaptív mintavételezés telemetriai processzor beállítások listáját, olvassa az [kód](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) és [kapcsolódó dokumentáció](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
-     Kulcs: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+## <a name="enable-agent-based-monitoring-net-core"></a>Az ügynök-alapú figyelés .NET Core engedélyezése
+
+Az alábbi .NET Core-verziók támogatottak: ASP.NET Core 2.0, ASP.NET Core 2.1, ASP.NET Core 2.2
+
+A .NET Core, önálló telepítés és az ASP.NET Core 3.0 a teljes keretrendszer célzó jelenleg **nem támogatott** figyelési ügynök/bővítmény alapján. ([Manuális instrumentation](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) keresztül kódot fog működni az összes korábbi forgatókönyv esetében.)
+
+1. **Válassza az Application Insights** az app service az Azure Vezérlőpultján.
+
+    ![A beállítások területen válassza az Application Insights](./media/azure-web-apps/settings-app-insights-01.png)
+
+   * Válassza ki, hozzon létre egy új erőforrást, kivéve, ha korábban már beállított egy Application Insights-erőforrást ehhez az alkalmazáshoz. 
+
+     > [!NOTE]
+     > Amikor rákattint **OK** meg fogja kérni az új erőforrás létrehozása **figyelési beállítások alkalmazása**. Kiválasztásával **Folytatás** társítani fogja az új Application Insights-erőforrást az app service-ben is ezzel **újra kell indítani az app service-trigger**. 
+
+     ![Webapp kialakítása](./media/azure-web-apps/create-resource-01.png)
+
+2. Adjon meg, melyik erőforrást kell használnia, kiválaszthatja, hogyan történjen az Application Insights a platformonként az alkalmazás adatainak gyűjtéséről. .NET core kínál **gyűjtemény ajánlott** vagy **letiltott** a .NET Core 2.0, a 2.1-es és a 2.2-es.
+
+    ![Válassza a beállítások platformonként](./media/azure-web-apps/choose-options-new-net-core.png)
+
+## <a name="enable-client-side-monitoring-net"></a>Ügyféloldali figyelés .NET engedélyezése
+
+Feliratkozás az ASP.NET az ügyféloldali figyelés. Az ügyféloldali figyelés engedélyezése:
+
+* Válassza ki **beállítások** > ** ** alkalmazás beállítások x
+   * Alkalmazás beállításaiban, vegyen fel egy új **alkalmazásbeállítás neve** és **érték**:
+
+     név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Érték: `true`
+
    * **Mentse** a beállításokat, és **indítsa újra** az alkalmazást.
 
-4. Az alkalmazás figyelési adatok megismerése kattintva **beállítások** > **Application Insights** > **megtekintése további az Application Insights**.
+![Képernyőkép az alkalmazás felhasználói felület beállításai](./media/azure-web-apps/appinsights-javascript-enabled.png)
 
-Később igény szerint felépítheti az alkalmazást az Application Insights segítségével.
+Tiltsa le az ügyféloldali figyelés vagy távolítsa el a társított kulcs-érték párt a az alkalmazás beállításait, vagy állítsa az értékét HAMIS értékre.
 
-*Hogyan távolíthatom el az Application Insightst vagy válthatok másik erőforrás küldésére?*
+## <a name="enable-client-side-monitoring-net-core"></a>Ügyféloldali figyelés .NET Core engedélyezése
 
-* Az Azure-ban nyissa meg a webalkalmazás panelére vezérlő, és nyissa meg a beállítások **Application Insights**. Kapcsolhatja ki az Application Insights gombra kattintva **letiltása** tetején, vagy válasszon ki egy új erőforrás a **módosítsa az erőforrás** szakaszban.
+Az ügyféloldali figyelés **alapértelmezés szerint engedélyezett** for .NET Core-alkalmazásokat **gyűjtemény ajánlott**, függetlenül attól, hogy jelen-e az alkalmazás 'APPINSIGHTS_JAVASCRIPT_ENABLED' állítja.
 
-## <a name="build-the-app-with-application-insights"></a>Az alkalmazás építése az Application Insights segítségével
-Ha telepít egy SDK-t alkalmazásába, az Application Insights részletesebb telemetriát biztosít. Például gyűjthet nyomkövetési naplókat, [egyéni telemetriát írhat](../../azure-monitor/app/api-custom-events-metrics.md), és részletesebb, kivételjelentéseket kaphat.
+Ha valamilyen okból, tiltsa le az ügyféloldali figyelést szeretné:
 
-1. A **Visual Studióban** (2013 2. frissítés vagy újabb) konfigurálja az Application Insightst a projektjéhez.
+* Válassza ki **beállítások** > **nastavení Aplikace**
+   * Alkalmazás beállításaiban, vegyen fel egy új **alkalmazásbeállítás neve** és **érték**:
 
-    Kattintson a jobb gombbal a webes projektre, és válassza ki **Hozzáadás > Application Insights** vagy **projekt** > **Application Insights**  >  **Az Application Insights beállítása**.
+     név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-    ![Kattintson a jobb gombbal a webes projektre, és válassza a Hozzáadás vagy az Application Insights konfigurálása lehetőséget](./media/azure-web-apps/03-add.png)
+     Érték: `false`
 
-    Ha a rendszer arra kéri, hogy jelentkezzen be, használja az Azure-fiókjához tartozó hitelesítő adatokat.
+   * **Mentse** a beállításokat, és **indítsa újra** az alkalmazást.
 
-    A műveletnek két hatása van:
-
-   1. Létrehoz egy Application Insights-erőforrást az Azure-ban, ahol a telemetriai tárolja, elemzi és jelenik meg.
-   2. Hozzáadja a kódhoz (ha korábban még nem szerepelt benne) az Application Insights NuGet-csomagot, és konfigurálja, hogy az telemetriát küldjön az Azure-erőforrásnak.
-2. **Tesztelje a telemetriát** az alkalmazás a fejlesztői gépén való futtatásával (F5).
-3. **Tegye közzé az alkalmazást** az Azure-ban a megszokott módon. 
-
-*Hogyan válthatok más Application Insights-erőforrásnak való küldésre?*
-
-* A Visual Studióban kattintson a jobb gombbal a projektre, válassza a **Application Insights konfigurálása**, és válassza ki a kívánt erőforrást. Megjelenik az új erőforrás létrehozásának lehetősége. Építse újra, és ismételten helyezze üzembe.
+![Képernyőkép az alkalmazás felhasználói felület beállításai](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
 ## <a name="automate-monitoring"></a>Automatizálhatja a figyelése
 
-Csak az alkalmazás beállításait, és engedélyezze a telemetriai adatok gyűjtése az Application insights segítségével kell állítani:
+Annak érdekében, hogy az Application Insights telemetriai adatok gyűjtésének engedélyezéséhez, csak az alkalmazás beállításait meg kell adnia:
 
    ![App Service-Alkalmazásbeállítások elérhető Application Insights-beállításokkal](./media/azure-web-apps/application-settings.png)
 
@@ -115,7 +139,7 @@ Csak az alkalmazás beállításait, és engedélyezze a telemetriai adatok gyű
 |ApplicationInsightsAgent_EXTENSION_VERSION | Fő bővítmény, amely azt vezérli, hogy a futásidejű ellenőrzés. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  Az alapértelmezett mód csak, alapvető szolgáltatások engedélyezve vannak annak érdekében, hogy az optimális teljesítmény biztosítása érdekében. | `default` vagy `recommended`. |
 |InstrumentationEngine_EXTENSION_VERSION | Azt szabályozza, ha a bináris-újraírási motor `InstrumentationEngine` be lesz kapcsolva. Ez a beállítás a teljesítményre gyakorolt hatása van, és hatással van a ritkán használt start/indítási idejének. | `~1` |
-|XDT_MicrosoftApplicationInsights_BaseExtensions | A függőségi hívások együtt szabályozza, hogy az SQL és az Azure table szöveg fogja rögzíteni. Teljesítménnyel kapcsolatos figyelmeztetés: Ez igényli a `InstrumentationEngine`. | `~1` |
+|XDT_MicrosoftApplicationInsights_BaseExtensions | A függőségi hívások együtt szabályozza, hogy az SQL és az Azure table szöveg fogja rögzíteni. Teljesítménnyel kapcsolatos figyelmeztetés: Ez a beállítás megköveteli az `InstrumentationEngine`. | `~1` |
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>App Service-alkalmazás beállításai az Azure Resource Managerrel
 
@@ -144,7 +168,7 @@ Egy app Service-Alkalmazásbeállítások JSON alapvető struktúráját alatt v
 
 ```
 
-Példa egy Azure Resource Manager-sablon az alkalmazás beállításait konfigurálni az Application Insights ez [sablon](https://github.com/Andrew-MSFT/BasicImageGallery) hasznos lehet, kifejezetten a szakasz a kezdődően [238 sor](https://github.com/Andrew-MSFT/BasicImageGallery/blob/c55ada54519e13ce2559823c16ca4f97ddc5c7a4/CoreImageGallery/Deploy/CoreImageGalleryARM/azuredeploy.json#L238).
+Példa egy Azure Resource Manager-sablon az Alkalmazásbeállítások konfigurálása az Application Insights ez [sablon](https://github.com/Andrew-MSFT/BasicImageGallery) hasznos lehet, kifejezetten a szakasz a kezdődően [238 sor](https://github.com/Andrew-MSFT/BasicImageGallery/blob/c55ada54519e13ce2559823c16ca4f97ddc5c7a4/CoreImageGallery/Deploy/CoreImageGalleryARM/azuredeploy.json#L238).
 
 ### <a name="automate-the-creation-of-an-application-insights-resource-and-link-to-your-newly-created-app-service"></a>Egy Application Insights-erőforrás és a kapcsolat az újonnan létrehozott App Service létrehozásának automatizálása.
 
@@ -154,57 +178,185 @@ Válassza ki **automatizálási beállítások**
 
    ![Az App Service web app létrehozása menü](./media/azure-web-apps/create-web-app.png)
 
-Ez a legújabb Azure Resource Manager-sablon állít elő az összes szükséges beállítást.
+Ez a beállítás az összes szükséges beállítást állít elő, a legújabb Azure Resource Manager-sablon.
 
   ![Az App Service webalkalmazás-sablon](./media/azure-web-apps/arm-template.png)
+
+Alul látható egy minta lecserélendő `AppMonitoredSite` a webhely neve:
+
+```json
+{
+    "resources": [
+        {
+            "name": "[parameters('name')]",
+            "type": "Microsoft.Web/sites",
+            "properties": {
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                            "value": "[reference('microsoft.insights/components/AppMonitoredSite', '2015-05-01').InstrumentationKey]"
+                        },
+                        {
+                            "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
+                            "value": "~2"
+                        }
+                    ]
+                },
+                "name": "[parameters('name')]",
+                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "hostingEnvironment": "[parameters('hostingEnvironment')]"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "microsoft.insights/components/AppMonitoredSite"
+            ],
+            "apiVersion": "2016-03-01",
+            "location": "[parameters('location')]"
+        },
+        {
+            "apiVersion": "2016-09-01",
+            "name": "[parameters('hostingPlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('location')]",
+            "properties": {
+                "name": "[parameters('hostingPlanName')]",
+                "workerSizeId": "[parameters('workerSize')]",
+                "numberOfWorkers": "1",
+                "hostingEnvironment": "[parameters('hostingEnvironment')]"
+            },
+            "sku": {
+                "Tier": "[parameters('sku')]",
+                "Name": "[parameters('skuCode')]"
+            }
+        },
+        {
+            "apiVersion": "2015-05-01",
+            "name": "AppMonitoredSite",
+            "type": "microsoft.insights/components",
+            "location": "West US 2",
+            "properties": {
+                "ApplicationId": "[parameters('name')]",
+                "Request_Source": "IbizaWebAppExtensionCreate"
+            }
+        }
+    ],
+    "parameters": {
+        "name": {
+            "type": "string"
+        },
+        "hostingPlanName": {
+            "type": "string"
+        },
+        "hostingEnvironment": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "sku": {
+            "type": "string"
+        },
+        "skuCode": {
+            "type": "string"
+        },
+        "workerSize": {
+            "type": "string"
+        },
+        "serverFarmResourceGroup": {
+            "type": "string"
+        },
+        "subscriptionId": {
+            "type": "string"
+        }
+    },
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0"
+}
+```
 
 > [!NOTE]
 > A sablon létrehoz Alkalmazásbeállítások "alapértelmezett" módban. Ebben a módban a teljesítményre optimalizált, azonban módosíthatja a sablon igény szerint bármelyik funkciók aktiválásához.
 
-## <a name="more-telemetry"></a>További telemetria
+### <a name="enabling-through-powershell"></a>PowerShell-lel engedélyezése
 
-* [Weblapbetöltési adatok](../../azure-monitor/app/javascript.md)
-* [Egyéni telemetria](../../azure-monitor/app/api-custom-events-metrics.md)
+Ahhoz, hogy az alkalmazás figyelése a PowerShell-lel, csak az alapul szolgáló alkalmazásbeállításokat módosítani kell. Alább egy minta, amely lehetővé teszi az alkalmazásfigyelés "AppMonitoredSite" nevű erőforráscsoportban "AppMonitoredRG" webhelyekhez, és konfigurálja a "012345678-abcd-ef01-2345-6789abcd" kialakítási kulcs küldendő adatok.
+
+```powershell
+$app = Get-AzureRmWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
+$newAppSettings = @{} # case-insensitive hash map
+$app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} #preserve non Application Insights Application settings.
+$newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # enable the ApplicationInsightsAgent
+$newAppSettings["ApplicationInsightsAgent_EXTENSION_VERSION"] = "~2"; # enable the ApplicationInsightsAgent
+$app = Set-AzureRmWebApp -AppSettings $newAppSettings -ResourceGroupName $app.ResourceGroup -Name $app.Name -ErrorAction Stop
+```
+
+## <a name="upgrade-monitoring-extensionagent"></a>Figyelési bővítmény-ügynökök frissítése
+
+### <a name="upgrading-from-versions-289-and-up"></a>2.8.9 verziókról és mentése frissítése
+
+Történő frissítéskor 2.8.9 automatikusan történik, minden további műveletek nélkül. Az új figyelési bits érkezzenek a célként megadott app Service a háttérben, és az alkalmazás-újraindítás csak azt követően dolgozza.
+
+A bővítmény verziójának ellenőrzéséhez keresse fel futtatja `http://yoursitename.scm.azurewebsites.net/ApplicationInsights`
+
+![Képernyőkép az URL-cím http://yoursitename.scm.azurewebsites.net/ApplicationInsights](./media/azure-web-apps/extension-version.png)
+
+### <a name="upgrade-from-versions-100---265"></a>Frissítés a 2.6.5 1.0.0 - verziók
+
+2.8.9 verziótól kezdve az előre telepített webhelybővítményt szolgál. Ha egy korábbi, keresztül két módszer egyikével frissítheti:
+
+* [A portálon keresztül engedélyezésével frissítési](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights). (Akkor is, ha az Azure App Service telepítve van az Application Insights bővítményt, a felhasználói felület megjelenítése csak **engedélyezése** gombra. A színfalak mögött a régi privát webhelybővítmény távolítja el.)
+
+* [Frissítés a PowerShell-lel](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell):
+
+    1. Az előre telepített webhelybővítményt ApplicationInsightsAgent engedélyezése az alkalmazás beállításainak megadása Lásd: [engedélyezése a powershell-lel](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell).
+    2. Távolítsa el manuálisan az Application Insights bővítményt nevű az Azure App Service privát webhelybővítményt.
+
+Ha a frissítés előtt 2.5.1-es verziójában történik, ellenőrizze, hogy a ApplicationInsigths dll-fájlok törlődnek az alkalmazás bin mappájában [talál a hibaelhárítási lépéseket](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="do-i-still-need-to-go-to-extensions---add---application-insights-extension-for-new-app-service-apps"></a>Is meg kell bővítmények grás – Hozzáadás – új App Service-alkalmazások az Application Insights bővítményt?
-
-Nem, nem kell többé manuálisan adja hozzá a bővítményt. Az Application Insights engedélyezése a beállítások panelen keresztül felveszi az összes a szükséges alkalmazás beállításait, hogy engedélyezze a monitorozást. Ez a lehetőség most, mivel a bővítmény által korábban hozzáadott fájlok mostantól [előtelepített](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) az App Service-kép részeként. A fájlok találhatók `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent`.
-
-### <a name="if-runtime-and-build-time-monitoring-are-both-enabled-do-i-end-up-with-duplicate-data"></a>Ha-futtatókörnyezet és a felépítési idő figyelése egyaránt engedélyezve van do I kialakított duplikált adatok?
-
-Nem, alapértelmezés szerint felépítési idő figyelési észlelésekor futásidejű megfigyelése a bővítményével leállítja az adatok küldésének és csak a figyelés konfigurációja build alkalommal fog lesz érvényes. A meghatározását, hogy letiltja a futásidejű ellenőrzés-e ezek a fájlok észlelésének alapul:
-
-* Microsoft.ApplicationInsights dll
-* Microsoft.ASP.NET.TelemetryCorrelation dll
-* System.Diagnostics.DiagnosticSource dll
-
-Fontos, hogy sok verziója a Visual Studio néhány vagy összes fájl rendeljük hozzá alapértelmezés szerint az ASP.NET és az ASP.NET Core Visual Studio sablonfájlokat szem előtt tartani. Ha a projekt engedményt egyik sablont alapján készült, akkor is, ha explicit módon még nem engedélyezte az Application Insights, a fájl függőség jelenléte megakadályozná a futásidejű figyelés aktiválása.
-
-### <a name="appinsightsjavascriptenabled-causes-incomplete-html-response-in-net-core-web-applications"></a>APPINSIGHTS_JAVASCRIPT_ENABLED okoz NET CORE-webalkalmazások hiányos HTML-válaszban.
-
-App Services Javascript engedélyezése okozhat a html-válaszok csonkolva.
-
-* 1. megkerülő megoldás: APPINSIGHTS_JAVASCRIPT_ENABLED Alkalmazásbeállítás "false" értékűre, vagy távolítsa el teljesen, és indítsa újra a
-* 2. megkerülő megoldás: hozzáadhatja az sdk-kód-n keresztül, és távolítsa el a bővítményt (Ez a konfiguráció a Profiler és a pillanatkép-hibakereső nem fog működni)
-
-A probléma nyomon követéséhez nyissa meg [okozó hiányos HTML-válaszban az Azure-bővítmény](https://github.com/Microsoft/ApplicationInsights-Home/issues/277).
-
-A .NET Core az alábbi jelenleg **nem támogatott**:
-
-* Önálló telepítés.
-* Az alkalmazások .NET-keretrendszerre.
-* .NET Core 2.2 applications.
+Az alábbi, a részletes hibaelhárítási útmutató a bővítmény/ügynök-alapú figyelés .NET-hez készült, és a .NET Core-alapú alkalmazások futtatása az Azure App Servicesben.
 
 > [!NOTE]
-> .NET core 2.0 és a .NET Core 2.1-es verziója támogatott. .NET Core 2.2 támogatási hozzáadásakor, ez a cikk fog frissülni.
+> A Java és Node.js alkalmazások csak manuális alapú SDK instrumentation keresztül támogatott az Azure App Services szolgáltatásban, és ezért az alábbi lépések nem vonatkoznak ezek a forgatókönyvek.
+
+1. Ellenőrizze, hogy az alkalmazás-n keresztül figyelt `ApplicationInsightsAgent`.
+    * Ellenőrizze, hogy "ApplicationInsightsAgent_EXTENSION_AGENT Alkalmazásbeállítás"~ 2"értékre van állítva.
+2. Győződjön meg arról, hogy az alkalmazás megfelel-e figyelni a követelményeknek.
+    * Keresse meg a `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
+
+    ![Képernyőkép a https://yoursitename.scm.azurewebsites/applicationinsights eredmények lap](./media/azure-web-apps/app-insights-sdk-status.png)
+
+    * Ellenőrizze, hogy a `Application Insights Extension Status` van `Pre-Installed Site Extension, version 2.8.12.1527, is running.`
+        * Ha nem fut, kövesse a [utasításokat figyelése az Application Insights engedélyezése](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights)
+
+    * Győződjön meg arról, hogy az állapot forrás létezik, és néz ki: `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
+        * Ha egy hasonló értéke nem található, az azt jelenti, az alkalmazás jelenleg nem fut, vagy nem támogatott. Győződjön meg arról, hogy az alkalmazás fut, próbálja meg manuálisan felkeresése a URL-cím vagy alkalmazás végpontjainak, amely lehetővé teszi, hogy elérhető legyen, a futásidejű információkat.
+
+    * Ellenőrizze, hogy `IKeyExists` van `true`
+        * Ha FALSE (hamis), adja hozzá a "állítani az APPINSIGHTS_INSTRUMENTATIONKEY való az alkalmazás beállításait a rendszerállapotkulcsot GUID azonosítót.
+
+    * Győződjön meg arról, hogy nincsenek-e a bejegyzések `AppAlreadyInstrumented`, `AppContainsDiagnosticSourceAssembly`, és `AppContainsAspNetTelemetryCorrelationAssembly`.
+        * Ha ezek a bejegyzések bármelyikét létezik, a következő csomagok eltávolítása az alkalmazásból: `Microsoft.ApplicationInsights`, `System.Diagnostics.DiagnosticSource`, és `Microsoft.AspNet.TelemetryCorrelation`.
+
+Az alábbi táblázat ezek az értékek jelentése több részletes leírását tartalmazza, az alapul szolgáló okozza, és javasolt javítások:
+
+|A probléma érték|Magyarázat|Javítás
+|---- |----|---|
+| `AppAlreadyInstrumented:true` | Ez azt jelzi, hogy a bővítmény észlelte, hogy az SDK bizonyos elemeit már szerepel az alkalmazást, és fog visszatartás. Hivatkozás miatt lehet `System.Diagnostics.DiagnosticSource`, `Microsoft.AspNet.TelemetryCorrelation`, vagy `Microsoft.ApplicationInsights`  | Távolítsa el a hivatkozást. Néhány mutató hivatkozásokat hozzáadja az alapértelmezés szerint egyes Visual Studio-sablonok alapján, és a Visual Studio régebbi verzióiban előfordulhat, hogy adja hozzá a hivatkozásokat `Microsoft.ApplicationInsights`.
+|`AppAlreadyInstrumented:true` | Ez az érték a fenti DLL-fájlja egy korábbi központi telepítés az alkalmazás mappájában jelenlétének is okozhatja. | Tisztítsa meg az alkalmazás mappája, győződjön meg arról, hogy ezek a DLL fájlok törlődnek.|
+|`AppContainsAspNetTelemetryCorrelationAssembly: true` | Ez az érték azt jelzi, hogy a bővítmény mutató hivatkozásokat észlelt `Microsoft.AspNet.TelemetryCorrelation` az alkalmazásban, és a rendszer visszatartás. | Távolítsa el a hivatkozást.
+|`AppContainsDiagnosticSourceAssembly**:true`|Ez az érték azt jelzi, hogy a bővítmény mutató hivatkozásokat észlelt `System.Diagnostics.DiagnosticSource` az alkalmazásban, és a rendszer visszatartás.| Távolítsa el a hivatkozást.
+|`IKeyExists:false`|Ez az érték azt jelzi, hogy a kialakítási kulcsot nem szerepel az Alkalmazásbeállítás `APPINSIGHTS_INSTRUMENTATIONKEY`. Lehetséges okok: Az értékek véletlenül eltávolításra kerültek, elfelejtette állítsa az értékeket az automation-szkript stb. | Ellenőrizze, hogy a beállítás szerepel az App Service-alkalmazás beállításait.
+
+Az Application Insights-ügynök/bővítményt a legfrissebb információkért tekintse meg a [kibocsátási megjegyzések](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
 
 ## <a name="next-steps"></a>További lépések
+
 * [Futtassa a profilkészítőt a működő alkalmazásán.](../../azure-monitor/app/profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – az Azure Functions figyelése az Application Insights segítségével
 * [Engedélyezze az Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md) Application Insightsba való küldését.
 * [Figyelje a szolgáltatások állapotával kapcsolatos mérőszámokat](../../azure-monitor/platform/data-collection.md), így meggyőződhet róla, hogy szolgáltatása elérhető és válaszkész.
 * [Riasztási értesítéseket kaphat](../../azure-monitor/platform/alerts-overview.md), ha működési események történnek vagy a mérőszámok átlépnek egy küszöbértéket.
-* Az [Application Insights JavaScript-alkalmazásokhoz és weblapokhoz](../../azure-monitor/app/javascript.md) való használatával ügyféltelemetriát kaphat azoktól a böngészőktől, amelyek ellátogatnak egy weblapra.
 * [Állítson be rendelkezésre állási webes teszteket](../../azure-monitor/app/monitor-web-app-availability.md), így riasztást kaphat, ha webhelye nem működik.

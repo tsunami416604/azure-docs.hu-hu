@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/30/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9a02030cb2b785b027bb78bad5ef636dff9dd8f3
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6bf0efd6994315d56e7b1b2447ffed9154cf5ee5
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758538"
+ms.locfileid: "58804870"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-k
 
@@ -42,6 +42,30 @@ Példa erre:
 * a lekérdezési karakterlánc részét URL-címe (távolítsa el az aláírást) feladatok HTTP bemeneti URL-címek nem visszaadása.
 
 Tekintse meg a [beolvasni a tartalom a fő házirend - .NET](get-content-key-policy-dotnet-howto.md) példa.
+
+## <a name="long-running-operations"></a>Hosszú ideig futó műveletek
+
+A műveletek jelölése `x-ms-long-running-operation` az Azure Media Services [swagger-fájlok](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) hosszú futó műveletek. 
+
+Az Azure aszinkron műveletek követése kapcsolatos részletekért lásd: [aszinkron műveletek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)
+
+A Media Services a következő hosszú ideig futó műveleteket tartalmazza:
+
+* Létrehozása videókhoz
+* Frissítés videókhoz
+* Törölje a videókhoz
+* Indítsa el a videókhoz
+* Állítsa le a videókhoz
+* Visszaállítás videókhoz
+* LiveOutput létrehozása
+* Delete LiveOutput
+* Streamvégpontok létrehozása
+* Streamvégpontok frissítése
+* Streamvégpontok törlése
+* Start Streamvégpontok
+* Streamvégpontok leállítása
+* Méretezési csoport Streamvégpontok
+
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>A Media Services entitások szűrési, rendezési, stránkování
 

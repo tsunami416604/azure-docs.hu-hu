@@ -13,27 +13,31 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0594d99874ea9bb83673013a9a03272edcd8ce0b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0eededcc180d7652fd52c79b85ca3c34f65a22a4
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897673"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791552"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Hibaelhárításához és megoldásához kapcsolatos problémák szerepelnek
 
 ## <a name="troubleshooting-group-creation-issues"></a>Csoport létrehozásával kapcsolatos problémák elhárítása
+
 **Tudok biztonsági csoport létrehozása az Azure Portalon le van tiltva, de a csoportok továbbra is PowerShell-lel hozható létre** a **felhasználók létrehozhatnak biztonsági csoportokat az Azure-portálokon** beállítása az Azure portál-vezérlőelemek az-e a nem rendszergazda felhasználók létrehozhatnak biztonsági csoportokat a hozzáférési panelen és az Azure Portalon. Nem szabályozza a biztonsági csoport létrehozása Powershell segítségével.
 
 Csoport létrehozása a Powershell nem rendszergazdai felhasználók letiltása:
 1. Győződjön meg arról, hogy a nem rendszergazda felhasználók hozhatnak létre csoportokat:
    
+
+   ```powershell
+   Get-MsolCompanyInformation | Format-List UsersPermissionToCreateGroupsEnabled
    ```
-   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-   ```
+
   
 2. Ha a visszaadott érték `UsersPermissionToCreateGroupsEnabled : True`, akkor a nem rendszergazda jogosultságú felhasználók létrehozhatnak csoportokat. Ez a funkció letiltása:
   
+
    ``` 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
    ```

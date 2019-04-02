@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: celested
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee35fbfff676e8618a4e5ae02086193c503f482
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bb193119186c2cf9e758f8c74f99f18c5fb389b8
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170822"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792518"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Hozzon létre egy felügyelet nélküli telepítési parancsfájlt, az Azure AD-alkalmazásproxy-összekötő
 
@@ -34,7 +34,7 @@ Ez a funkció akkor hasznos, ha meg szeretné:
 * Az összekötő telepítése és a egy másik eljárás részeként regisztrációs integrálhatja.
 * Hozzon létre egy szabványos server-lemezképet, az összekötő bits tartalmaz, de nincs regisztrálva.
 
-Az a [Application Proxy connector](application-proxy-connectors.md) regisztrálni kell az Azure AD-címtár globális rendszergazdája és jelszóval rendelkezik használatát. Rendszerint ezeket az információkat is meg kell adni egy felugró párbeszédpanel összekötő telepítése során, de a PowerShell használatával automatizálható ehelyett Ez a folyamat.
+Az a [Application Proxy connector](application-proxy-connectors.md) regisztrálni kell az Azure AD-címtárhoz, egy alkalmazás-rendszergazda és a jelszóval rendelkezik használatát. Rendszerint ezeket az információkat is meg kell adni egy felugró párbeszédpanel összekötő telepítése során, de a PowerShell használatával automatizálható ehelyett Ez a folyamat.
 
 Felügyelet nélküli telepítéséhez két lépésből áll. Először telepítse az összekötőt. Másodszor az összekötő regisztrálására az Azure ad-ben. 
 

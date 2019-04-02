@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/14/2019
+ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a908b00022351b9a91f9381229c773d063390744
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 340f121f64cb01803401a972038677448849e94f
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444157"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803515"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -144,6 +144,11 @@ A tároláshoz és a lekérdezések futtatásához a DirectQuery mód* a hátté
 
 Az Azure Analysis Services táblázatos modelljei számos különféle adatforrást támogatnak, az egyszerű szöveges fájloktól kezdve az Azure Data Lake Store big data típusú adataiig. További információ: [Támogatott adatforrások az Azure Analysis Servicesben](analysis-services-datasource.md).
 
+## <a name="compatibility-level"></a>Kompatibilitási szint
+
+Kompatibilitási szint kiadás-specifikus viselkedést az Analysis Services motor a hivatkozik. Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as vagy magasabb kompatibilitási szinteken. További tudnivalókért lásd: [Analysis Services rendszerbeli táblázatos modellek kompatibilitási szintje](analysis-services-compat-level.md).
+
+
 ## <a name="your-data-is-secure"></a>Az adatok biztonságban vannak
 
 Az Azure Analysis Services többszintű biztonságot nyújt bizalmas adatai számára. Azure-szolgáltatásként az Analysis Services nyújt **alapszintű** szintű elosztott szolgáltatásmegtagadásos (DDoS) támadásoktól automatikusan engedélyezve van az Azure platform részeként. További tudnivalókért lásd: [Azure DDoS Protection Standard áttekintése](../virtual-network/ddos-protection-overview.md). 
@@ -225,7 +230,7 @@ Az Azure Analysis Services támogatja a [dinamikus felügyeleti nézetek (DMV-k)
 
 Itt található az Azure Analysis Services dokumentációja. A cikkeket a böngésző képernyőjének bal oldalán látható tartalomjegyzékben keresheti meg. 
 
-Mivel az Azure Analysis Services táblázatos modelljei nagyban hasonlítanak az SQL Server Analysis Services hasonló modelljeihez, az [SQL Server Analysis Services dokumentációjában](https://docs.microsoft.com/sql/analysis-services/analysis-services) megtalálható egy, a közös használatú fogalmakat, eljárásokat, valamint fejlesztői és referenciaanyagokat tartalmazó könyvtár. Az SQL Server Analysis Services dokumentációjában szereplő cikkek esetében a cím alatt megjelenő APPLIES TO szalagcím mutatja, hogy az adott anyag az Azure Analysis Servicesre is érvényes-e.
+Mivel az Azure Analysis Services rendszerbeli táblázatos modellek ugyanúgy zajlik, mint az SQL Server Analysis Services rendszerbeli táblázatos modellek, nincs-e egy tartalmazó könyvtár található megosztott fogalmakat, eljárásokat, fejlesztői és a referencia-cikkek [SQL Server Analysis Services Dokumentáció](https://docs.microsoft.com/sql/analysis-services/analysis-services). Az SQL Server Analysis Services dokumentációjában szereplő cikkek esetében a cím alatt megjelenő APPLIES TO szalagcím mutatja, hogy az adott anyag az Azure Analysis Servicesre is érvényes-e.
 
 ![Közös dokumentáció](./media/analysis-services-overview/aas-overview-applies-to.png)
 

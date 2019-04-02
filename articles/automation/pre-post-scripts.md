@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/12/2019
+ms.date: 04/01/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc30b28203ad416370f1304436e7e6e642921be9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: dc0c516ce9dc3a13474cefc61b6634dbeea0fce0
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441508"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793657"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Kezelése előtti és utáni parancsfájlokat (előzetes verzió)
 
@@ -116,6 +116,9 @@ Az alábbi példa a függvénynek átadott JSON-karakterláncot a **SoftwareUpda
 
 Az összes tulajdonság egy teljes példát tekinthet meg: [Frissítés szoftverkonfigurációjáról - Get-név alapján](/rest/api/automation/softwareupdateconfigurations/getbyname#examples)
 
+> [!NOTE]
+> A `SoftwareUpdateConfigurationRunContext` objektum gépekhez duplikált bejegyzéseket is tartalmazhat. Emiatt előtti és utáni parancsfájlok futtatását több alkalommal ugyanazon a gépen. A megoldás ezt a viselkedést, használja `Sort-Object -Unique` ki csak a virtuális gép egyedi nevek a szkriptet.
+
 ## <a name="samples"></a>Példák
 
 Minták előtti és utáni parancsfájlokat a találja a [Script Center-galéria](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell), vagy importált az Azure Portalon keresztül. Importálhatja őket a portálon keresztül, az Automation-fiók alatt **Folyamatautomatizálás**válassza **Runbookkatalógus**. Használat **az Update Management** a szűrőhöz.
@@ -167,7 +170,7 @@ $AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConn
 #If you wish to use the run context, it must be converted from JSON 
 $context = ConvertFrom-Json  $SoftwareUpdateConfigurationRunContext 
 #Access the properties of the SoftwareUpdateConfigurationRunContext 
-$vmIds = $context.SoftwareUpdateConfigurationSettings.AzureVirtualMachines 
+$vmIds = $context.SoftwareUpdateConfigurationSettings.AzureVirtualMachines | Sort-Object -Unique
 $runId = $context.SoftwareUpdateConfigurationRunId 
  
 Write-Output $context 

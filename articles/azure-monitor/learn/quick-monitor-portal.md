@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 03/29/2019
+ms.date: 04/01/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 13fce896c4d83f628bdb7e12e696e32e343fb689
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a43ad92181415593b309b9fafb20f9934a997924
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754942"
+ms.locfileid: "58805346"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Az ASP.NET-alkalmazás monitorozásának indítása
 
@@ -105,6 +105,11 @@ További információt a [nyílt forráskódú JavaScript SDK](https://github.co
 ## <a name="video"></a>Videó
 
 * Külső részletes videó [konfigurálása az Application Insights .NET-alkalmazás Előzmények](https://www.youtube.com/watch?v=blnGAVgMAfA).
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+Amikor végzett tesztelése, törölheti az erőforráscsoportot, és az összes kapcsolódó erőforrás. Ezért kövesse az alábbi lépéseket.
+1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
+2. Az erőforráscsoport oldalán kattintson a **Törlés** elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
 ## <a name="next-steps"></a>További lépések
 Ez a rövid útmutatóban engedélyezte az alkalmazás figyelése az Azure Application Insights.  Folytassa a további oktatóanyagokkal, amelyekből megtudhatja, hogyan használhatja a statisztika monitorozására és az alkalmazáshibák észlelésére is.

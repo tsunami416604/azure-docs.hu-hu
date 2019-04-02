@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 6dd404ec0ab9e88c9e5bc4af4b939b3aa1f2e675
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 348183e1a164dd0a0f5f9672346423b95c27eba4
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560872"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793702"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Az SQL Database teljesítménnyel kapcsolatos javaslatok
 
@@ -85,6 +85,10 @@ A "Schema probléma megoldásához" javaslat jelenik meg, ha az Azure SQL Databa
 | 213 |Oszlop neve vagy a megadott értékek száma nem egyezik tábla definíciójában. |
 | 2812 |Nem található a tárolt eljárás "*". |
 | 8144 |Az eljárás vagy függvény * a megadott túl sok argumentum van. |
+
+## <a name="custom-applications"></a>Egyéni alkalmazások
+
+A fejlesztők érdemes megfontolni az Azure SQL Database teljesítménnyel kapcsolatos javaslatok használatával egyéni alkalmazások fejlesztéséhez. Az adatbázis keresztül érhetők el a a portál szereplő összes ajánlás [Get-AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) API-t.
 
 ## <a name="next-steps"></a>További lépések
 Figyelheti a javaslatokat, és továbbra is alkalmazhatja őket, amellyel pontosíthatja a teljesítményt. Adatbázis-munkaterhelés dinamikusak, és folyamatosan változik. Az SQL Database Advisor továbbra is megfigyelheti és javíthatja az adatbázis teljesítményét javaslatokkal. 

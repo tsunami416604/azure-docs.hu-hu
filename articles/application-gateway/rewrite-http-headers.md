@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 67603e326583400e8fc250ea6120297e7a94d101
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e89fe10768331f5b4099ce9a9e2204dd72aa0bff
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520921"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793464"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>HTTP-fejlécek átfogalmazás az Application Gateway (nyilvános előzetes verzió)
 
@@ -96,7 +96,7 @@ Ez a funkció a következő kiszolgálói változó átírása fejlécek támoga
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | az ügyfél által támogatott rejtjel listáját adja vissza          |
 | ciphers_used               | a létrehozott SSL-kapcsolathoz használt Rejtjelek-karakterláncot ad vissza |
-| client_ip                  | IP-cím, amelyről az application gateway az a kérelem érkezett. ügyfél. Ha van egy fordított proxy előtt az application gateway és az eredeti ügyfelet, majd *client_ip* az IP-cím a fordított proxy adja vissza. tjsi változó különösen hasznos forgatókönyvekben, ahol ügyfelek írja újra az Application Gateway által beállított X – továbbított – a fejléc, hogy a fejlécet tartalmazza, csak az IP-címet a portadatokat nélkül kíván. |
+| client_ip                  | IP-cím, amelyről az application gateway az a kérelem érkezett. ügyfél. Ha van egy fordított proxy előtt az application gateway és az eredeti ügyfelet, majd *client_ip* az IP-cím a fordított proxy adja vissza. Ez a változó különösen hasznos forgatókönyvekben, ahol ügyfelek írja újra az Application Gateway által beállított X – továbbított – a fejléc, hogy a fejlécet tartalmazza, csak az IP-címet a portadatokat nélkül kíván. |
 | client_port                | ügyfél-port                                                  |
 | client_tcp_rtt             | információ az ügyfél; TCP-kapcsolat a rendszer támogatja a TCP_INFO szoftvercsatorna-lehetőség érhető el |
 | client_user                | HTTP-hitelesítés használata esetén a felhasználónév a hitelesítéshez megadott |

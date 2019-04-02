@@ -5,18 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 1/14/2019
+ms.date: 4/1/2019
 ms.author: victorh
-ms.openlocfilehash: 079790952263ae2ef68abc8e426b0330fef1c53f
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 7ee92a7508918635849caafab4632bbba81ee628
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321772"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805244"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Az Azure tűzfal integrálása az Azure Standard Load Balancer
 
-Az Azure-tűzfalak integrálható az Azure Standard Load Balancerhez (nyilvános vagy belső) rendelkező virtuális hálózatban. Azonban szüksége, vegye figyelembe, hogy a nyilvános load balancer forgatókönyv funkciókat, azzal aszimmetrikus útválasztási problémát.
+Az Azure-tűzfalak integrálható az Azure Standard Load Balancerhez (nyilvános vagy belső) rendelkező virtuális hálózatban. 
+
+Az előnyben részesített terv, hogy a belső terheléselosztó integrálása az Azure tűzfal, mivel ez egy sokkal egyszerűbb Tervező. Nyilvános load balancer is használhatja, ha már rendelkezik egy telepített, és tartsa helyen szeretne. Azonban szüksége, vegye figyelembe, hogy a nyilvános load balancer forgatókönyv funkciókat, azzal aszimmetrikus útválasztási problémát.
 
 Az Azure Load Balancer kapcsolatos további információkért lásd: [Mi az Azure Load Balancer?](../load-balancer/load-balancer-overview.md)
 
@@ -34,6 +36,8 @@ Egy alhálózathoz, az Azure-tűzfalak telepítésekor egy lépéssel az alapér
 
 A tűzfal töltsünk a terheléselosztói forgatókönyv, ha azt szeretné, az internetes forgalmat eljussanak a tűzfal nyilvános IP-címet. Itt a tűzfalon a terheléselosztó nyilvános IP-címet a tűzfal-szabályok és NAT a csomagok vonatkozik. Ez az, ha a probléma akkor fordul elő. Csomagok nyilvános IP-címet a tűzfalon az ügyfélszámítógépekre érkeznek, de térjen vissza a tűzfalon keresztül a magánhálózati IP-cím (az alapértelmezett útvonal használatával).
 A probléma elkerülése érdekében a tűzfala nyilvános IP-cím további gazdagépcsoport útvonal létrehozása. A tűzfal nyilvános IP-cím küldött csomagok az interneten keresztül továbbítódnak. Ezzel elkerülhető, hogy az alapértelmezett útvonal véve a tűzfal magánhálózati IP-címet.
+
+![Aszimmetrikus útválasztás](media/integrate-lb/Firewall-LB-asymmetric.png)
 
 Például a következő útvonalakat a nyilvános IP-cím 13.86.122.41 és magánhálózati IP-cím 10.3.1.4 tűzfalak vannak.
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure API Management-szabályozás Speciális kérelem
-description: Megtudhatja, hogyan hozhat létre és alkalmazhat a rugalmas kvóta és korlátozza az Azure API-felügyeleti szabályzatok alapján.
+title: Speciális kérésszabályzás az Azure API Management szolgáltatással
+description: Ismerje meg, hogyan hozhat létre és rugalmas kvótát és a sebesség korlátozása az Azure API Management házirendek vonatkoznak.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: c7fcbd57021134631e9f10dcbb2d40e4c130af02
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 22c3987121e2ab3479274c89c359c679f5f1135e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29800023"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793356"
 ---
-# <a name="advanced-request-throttling-with-azure-api-management"></a>Az Azure API Management-szabályozás Speciális kérelem
-Az Azure API Management kulcsfontosságú szerepet igényt bejövő kérelmek szabályozás. Lehet, hogy a kéréseket, és a teljes kérelmek/átvitt adatok mértékű vezérlése, API-kezelés lehetővé teszi a API-szolgáltatókat az API-való visszaélés elleni védelmében, és hozzon létre külön API termék rétegekhez értékét.
+# <a name="advanced-request-throttling-with-azure-api-management"></a>Speciális kérésszabályzás az Azure API Management szolgáltatással
+Az Azure API Management szerepet képes arra, hogy a bejövő kérelmek szabályozása. Vagy a kérések vagy a teljes kérések/átvitt adatok arányát, az API Management lehetővé teszi a API-szolgáltatókkal való visszaélés saját API-k védelme, és hozzon létre az API-termék különböző rétegek értéket.
 
-## <a name="product-based-throttling"></a>A termék-alapú sávszélesség-szabályozás
-Naprakész, sebessége szabályozási képességekkel rendelkezik volt korlátozva, egy adott termék-előfizetéshez, az Azure portálon meghatározott hatókörű alatt. Ez akkor hasznos, ha az API-szolgáltató szűkítheti a regisztráltak-e az API használatához a fejlesztőknek, azonban ez nem segít, például az egyes végfelhasználók számára az API-szabályozás. Előfordulhat, hogy az egyetlen teljes kvóta fogadni, és más ügyfelek a fejlesztő megakadályozza az alkalmazás használata a fejlesztői alkalmazás felhasználója. Nagy mennyiségű kérést hozhat létre több felhasználókat is, korlátozhatja az alkalmi felhasználók hozzáférésének.
+## <a name="product-based-throttling"></a>A termék-alapú szabályozása
+A dátum, a sebesség memóriaszabályozási képességekkel rendelkezik folyamatban van egy adott termék-előfizetés, az Azure Portalon meghatározott hatóköre korlátozva lett. Ez hasznos, ha a alkalmazni a korlátok a fejlesztők az API használatára regisztrált API-szolgáltató, azonban ez nem segít, például az egyes végfelhasználók számára az API-szabályozás. Előfordulhat, hogy az a teljes kvóta fogadni, és a többi ügyfél a fejlesztő megakadályozása képes használni az alkalmazást a fejlesztői alkalmazás felhasználói egyetlen. Ezenkívül számos olyan ügyfelek, akik nagy mennyiségű kérelmet generálhat, előfordulhat, hogy férjenek hozzá az alkalmi felhasználók.
 
-## <a name="custom-key-based-throttling"></a>Egyéni kulcs alapú sávszélesség-szabályozás
-Az új [arány-korlát-által-kulcs](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) és [a kulcs-kvóta](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) házirendek a forgalmi ellenőrzési rugalmasabb megoldást nyújt. Ezek új házirendek lehetővé teszik a kulcsokat, amely segítségével nyomon követhető a forgalom használati azonosításához kifejezések adhatók meg. Ez a megfelelő működésének easiest látható egy példa a. 
+## <a name="custom-key-based-throttling"></a>Egyéni kulcs alapján szabályozása
+Az új [arány-limit-by-key](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) és [kvóta-by-key](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) Forgalomvezérlés rugalmasabb megoldást nyújtanak a szabályzatokat. Ezek a házirendek lehetővé teszik azonosíthatja a kulcsok forgalom használat nyomon követésére használt kifejezések meghatározása. Ez a megfelelő működésének easiest mutatja be egy példával szemlélteti. 
 
-## <a name="ip-address-throttling"></a>IP-cím sávszélesség-szabályozás
-A következő házirendek korlátozása egyetlen ügyfél IP-címnek hívások csak 10 percenként 1 000 000 hívások összesen és 10 000 kilobájt havonta sávszélesség. 
+## <a name="ip-address-throttling"></a>IP-cím-szabályozás
+A következő házirendek korlátozzák egyetlen ügyfél IP-cím csak 10 hívás percenként összesen 1 000 000 hívást és 10 000 kilobájt / hó sávszélesség. 
 
 ```xml
 <rate-limit-by-key  calls="10"
@@ -44,10 +44,10 @@ A következő házirendek korlátozása egyetlen ügyfél IP-címnek hívások c
           counter-key="@(context.Request.IpAddress)" />
 ```
 
-Ha az interneten lévő összes ügyfél egy egyedi IP-címet használ, ez lehet hatékony módszer a felhasználó által használat korlátozása. Azonban valószínű, hogy több felhasználó is használja azokat az interneten keresztül egy NAT-eszköz használata miatt egyetlen nyilvános IP-címet. Annak ellenére, hogy az API-k esetében, amelyek lehetővé teszik a nem hitelesített hozzáférést a `IpAddress` előfordulhat, hogy a legjobb lehetőség.
+Ha az interneten lévő ügyfelek összes egyedi IP-címet használ, ez lehet hatékony módszer a felhasználó által a használat korlátozása. Azonban valószínű, hogy több felhasználó is használja őket a NAT-eszköz használatával az Internet elérése miatt egyetlen nyilvános IP-címet. Annak ellenére, hogy ez az API-k, amelyek lehetővé teszik a nem hitelesített hozzáférést a `IpAddress` lehet, hogy a legjobb lehetőség.
 
-## <a name="user-identity-throttling"></a>Felhasználói azonosító sávszélesség-szabályozás
-Ha a felhasználó hitelesítése, majd a sávszélesség-szabályozási kulcs hozhatók létre, amely egyedileg azonosítja az adott felhasználói adatok alapján.
+## <a name="user-identity-throttling"></a>Felhasználói identitás szabályozása
+Ha a felhasználó hitelesítése, majd a sávszélesség-szabályozási kulcs létrehozható, amely egyedileg azonosítja az adott felhasználói adatok alapján.
 
 ```xml
 <rate-limit-by-key calls="10"
@@ -55,13 +55,13 @@ Ha a felhasználó hitelesítése, majd a sávszélesség-szabályozási kulcs h
     counter-key="@(context.Request.Headers.GetValueOrDefault("Authorization","").AsJwt()?.Subject)" />
 ```
 
-Ez a példa bemutatja, hogyan bontsa ki az Authorization fejlécet, alakítsa át a következőre `JWT` objektumra, és a tulajdonos a jogkivonat segítségével azonosíthatja a felhasználót, és használja, amely a sebesség korlátozása kulcs. Ha a felhasználói azonosító található a `JWT` más jogcímeket egyikét, majd ezt az értéket használható helyette.
+Ez a példa bemutatja, hogyan bontsa ki az engedélyezési fejléc, alakítsa át a következőre `JWT` objektumra, és azonosítani a felhasználót, és a sebesség korlátozása a kulcsot használja, amely segítségével a jogkivonat tárgyában. Ha a felhasználó identitásának tárolja a `JWT` egyéb jogcímek az egyik, majd ezt az értéket használhatja helyette.
 
 ## <a name="combined-policies"></a>Kombinált házirendek
-Az új sávszélesség-szabályozási házirendek biztosítják nagyobb mértékben vezérelheti, mint a meglévő szabályozó házirendeket, bár nincs továbbra is érték kombinálásával mindkét szolgáltatást. Termékkulcs előfizetés általi szabályozás ([előfizetési határértéket hívás arányt a](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) és [Set memóriahasználati kvóta előfizetéssel](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota)) engedélyezéséhez a úgy használati szintek alapján, az API-k monetizing remek módja. Az eszközzel kombinálva felhasználóbarát nyomtatott irányítását képesek a felhasználó által szabályozás kiegészíti, és megakadályozza, hogy egy felhasználó viselkedését egy másik élmény terhelése. 
+Az új sávszélesség-szabályozási házirendek biztosítja, mint a meglévő szabályozási házirendek vezérlése, van még mindkét funkciók kombinálásával értéket. Termékkulcs-előfizetés által szabályozás ([előfizetés által a hívások sebességének korlátozása](/azure/api-management/api-management-access-restriction-policies#LimitCallRate) és [előfizetés használati kvóta beállítása](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)) kiválóan alkalmas API-használati szintjei alapján díjszabási által ismertségre engedélyezéséhez. Ennél részletes vezérlése képes arra, hogy a felhasználó által szabályozás kiegészíti a, és a egy felhasználói viselkedés megakadályozza, hogy a felhasználói élményt, egy másik gyorsítótárazhatók. 
 
-## <a name="client-driven-throttling"></a>Ügyfél-alapú sávszélesség-szabályozás
-Ha a sávszélesség-szabályozási kulcs használatával van megadva egy [házirend-kifejezést](https://msdn.microsoft.com/library/azure/dn910913.aspx), akkor célszerű az API-szolgáltatót, amelyet a sávszélesség-szabályozás hatóköre hogyan van választva. Azonban a fejlesztő előfordulhat, hogy kívánják vezérelni hogyan azok értékelje korlát a saját ügyfelek. Ez sikerült engedélyezni az API-szolgáltató egy egyéni fejlécet bevezetésével ahhoz, hogy a fejlesztő ügyfél alkalmazás való kommunikációhoz az API-t a kulcsot.
+## <a name="client-driven-throttling"></a>Ügyfél-driven szabályozása
+Ha a sávszélesség-szabályozási kulcs használatával egy [házirend kifejezés](/azure/api-management/api-management-policy-expressions), akkor az API-szolgáltatót, amelyet a megválasztása a módját a szabályozás hatókörét. Azonban a fejlesztő vezérelheti, hogyan azok Sebességkorlát saját érdemes ügyfelek. Ez sikerült engedélyezni az API-szolgáltató által bevezetésével egy egyéni fejlécet, hogy a fejlesztő ügyfélalkalmazás való kommunikációhoz a kulcsot az API-hoz.
 
 ```xml
 <rate-limit-by-key calls="100"
@@ -69,11 +69,11 @@ Ha a sávszélesség-szabályozási kulcs használatával van megadva egy [házi
           counter-key="@(request.Headers.GetValueOrDefault("Rate-Key",""))"/>
 ```
 
-Ez lehetővé teszi a fejlesztői ügyfélalkalmazás számára adja meg, hogy azok a sebesség korlátozása a kulcs létrehozásához. Az ügyfél-fejlesztők saját rétegek kulcsok készleteinek kiosztása a felhasználók számára, és a kulcshasználati elforgatása hozzon létre.
+Ez lehetővé teszi a fejlesztői ügyfélalkalmazás adja meg, hogyan azokat a sebesség korlátozása a kulcs létrehozásához. Az ügyfél létrehozhatnak saját rétegek kulcsok részhalmazához kiosztása a felhasználók számára, és a kulcshasználat elforgatása.
 
 ## <a name="summary"></a>Összegzés
-Az Azure API Management sebessége és ajánlat használatával történő védelméhez és értékkel adja hozzá az API-szolgáltatás is biztosít. Az egyéni szabályának új sávszélesség-szabályozási szabályzatok lehetővé teszik eszközzel kombinálva felhasználóbarát nyomtatott szabályozhatják, ezek a házirendek ahhoz, hogy az ügyfelek még élvezetesebbé alkalmazásokat hozhatnak létre. Ebben a cikkben szereplő példák bemutatják, ezeket az új házirendeket használata korlátozza az ügyfél IP-címeket, a felhasználói azonosító és a generált ügyfél értékek kulcsok gyártó szerint. Van azonban az üzenetet, például a felhasználói ügynök, az URL-cím elérési út töredék, az üzenet mérete használható sok többi részével.
+Az Azure API Management biztosít arányát és a sávszélesség-szabályozási is védeni, és adjon meg értéket, az API-szolgáltatás ajánlat. Az új sávszélesség-szabályozási házirendek hatókörkezelési egyéni szabályok lehetővé teszik ennél ügyfelei számára, hogy még jobb alkalmazások készítése ahhoz, hogy ezek a házirendek részletes felett. Ebben a cikkben szereplő példák bemutatják, ezeket az új házirendeket használata korlátozza az ügyfél IP-címeket, a felhasználói identitás és a generált ügyfél értékek kulcsok gyártási átviteli sebesség. Vannak azonban az üzenetet, például a felhasználói ügynök, a URL-cím elérési út töredék, az üzenet mérete a használható számos egyéb részei.
 
 ## <a name="next-steps"></a>További lépések
-Adja meg a visszajelzést a disqus-beszélgetésben teheti szál az ebben a témakörben. Más lehetséges értékek, amelyek egy logikai választás a forgatókönyvekben lettek szóló értesítésekre nagyszerű lenne.
+Szívesen fogadjuk visszajelzését a disqus-beszélgetésben teheti szál ebben a témakörben. Örülünk, kapcsolatos egyéb esetleges kulcsérték, amelyeket egy is logikus választás az Ön forgatókönyvei lenne.
 
