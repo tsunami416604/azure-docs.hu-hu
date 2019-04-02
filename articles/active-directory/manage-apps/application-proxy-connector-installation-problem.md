@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 645ba6e8306b063892babe25fde41d8dd3144fee
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 87d828e596c42b786d1c54a7158e1151f374c560
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444283"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793039"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor
 
@@ -64,13 +64,13 @@ Az összekötő telepítése nem sikerül, az alapvető ok általában a követk
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Ellenőrizze, hogy az összekötő telepítéséhez használt rendszergazdai
 
-**Cél:** Ellenőrizze, hogy a felhasználó, aki próbálja telepíteni az összekötőt a rendszergazda a helyes hitelesítő adatokkal. Jelenleg a felhasználónak kell lennie egy alkalmazás-rendszergazda vagy egy globális rendszergazdai, a telepítés sikeres.
+**Cél:** Ellenőrizze, hogy a felhasználó, aki próbálja telepíteni az összekötőt a rendszergazda a helyes hitelesítő adatokkal. A felhasználó jelenleg legalább egy alkalmazás-rendszergazda a telepítés sikeres kell lennie.
 
 **Annak ellenőrzése, hogy a hitelesítő adatok helyesek:**
 
 Csatlakozás <https://login.microsoftonline.com> és ugyanezeket a hitelesítő adatokat. Győződjön meg arról, hogy a bejelentkezés sikeres. A felhasználói szerepkör ellenőrizheti a **Azure Active Directory**  - &gt; **felhasználók és csoportok**  - &gt; **minden felhasználó**. 
 
-Válassza ki a felhasználói fiókot, majd "címtárbeli szerepkör" az eredményül kapott menüben. Ellenőrizze, hogy a kiválasztott szerepkör "alkalmazás-rendszergazda" vagy "Globális rendszergazda". Ha nem érhető el bármelyik, a lépések mentén, nem rendelkezik a szükséges szerepkör.
+Válassza ki a felhasználói fiókot, majd "címtárbeli szerepkör" az eredményül kapott menüben. Ellenőrizze, hogy a kiválasztott szerepkör "Alkalmazás-rendszergazda". Ha nem érhető el bármelyik, a lépések mentén, nem rendelkezik a szükséges szerepkör.
 
 ## <a name="next-steps"></a>További lépések
 [Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)
