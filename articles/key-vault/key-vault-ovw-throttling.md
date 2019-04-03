@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 823eebeddb64c15ef20d103f2f9290c800753f1a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0f8aafce4c4feeed742504db84664e4dfd472ca6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404756"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884142"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Az Azure Key Vault szabályozási útmutatója
 
@@ -34,7 +34,7 @@ Ha rendelkezik egy újabb szabályozási korlátairól üzleti esetet, lépjen k
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Az alkalmazás szolgáltatásokra vonatkozó korlátozások válaszul szabályozásának megtervezéséhez
 
-Az alábbi **ajánlott eljárások** szabályozási alkalmazását:
+Az alábbi **ajánlott eljárások** kell megvalósítania, ha a szolgáltatás Tranzakciókorlát elérése:
 - Műveletek kérelmenkénti számának csökkentése.
 - Csökkentse a kérelmek gyakoriságát.
 - Azonnali újrapróbálkozás elkerülése érdekében. 
@@ -115,7 +115,7 @@ Exponenciális visszatartással megvalósító kódot alább látható.
 ```
 
 
-A kód használatához az ügyfél C\# alkalmazás (egy másik webes API-ügyfél mikroszolgáltatás, ASP.NET MVC alkalmazásnak vagy akár a C\# Xamarin-alkalmazás) nagyon egyszerű. A következő példa bemutatja, hogy a HttpClient osztály használatával.
+A kód használatához az ügyfél C\# alkalmazás nagyon egyszerű. A következő példa bemutatja, hogy a HttpClient osztály használatával.
 
 ```csharp
 public async Task<Cart> GetCartItems(int page)

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 84f74392b93212558851f89dab924ae3db5620ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995110"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883717"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Első lépések az Azure Stream Analytics használatával: Csalások valós idejű észlelése
 
@@ -147,7 +147,7 @@ A TelcoGenerator alkalmazást a Kezdés előtt konfigurálnia kell azt, hogy a h
 
 Néhány, a csalások valós idejű észlelése alkalmazás által használt kulcs mezőt a következők:
 
-|**Rekord**|**Definíció**|
+|**Record**|**Meghatározás**|
 |----------|--------------|
 |`CallrecTime`|A hívási kezdési idejét jelölő időbélyegző. |
 |`SwitchNum`|A hívás csatlakozásához használt telefonkapcsoló. Ebben a példában a kapcsolók olyan sztringek, amelyek a származási országot jelölik (USA, Kína, Egyesült királyság, Németország vagy Ausztrália). |
@@ -292,7 +292,7 @@ Az átalakítás keresi, amelyek nincsenek átfedésben a historikus windows sor
 
     A leképezés tartalmaz `System.Timestamp`, minden időszak végén időbélyeggel ad vissza. 
 
-    Adja meg, hogy egy Átfedésmentes ablak használatához, használja a [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) működni a `GROUP BY `záradékban. A függvény időegységet (bárhol az egy napra mikromásodperces) és a egy ablakméret (hány egység) kell megadni. Ebben a példában az Átfedésmentes ablak áll 5 másodperces időközökkel, így országonként számát a hívásokat minden 5 másodperc alatt érkezett fog kapni.
+    Adja meg, hogy egy Átfedésmentes ablak használatához, használja a [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) működni a `GROUP BY` záradékban. A függvény időegységet (bárhol az egy napra mikromásodperces) és a egy ablakméret (hány egység) kell megadni. Ebben a példában az Átfedésmentes ablak áll 5 másodperces időközökkel, így országonként számát a hívásokat minden 5 másodperc alatt érkezett fog kapni.
 
 2. Kattintson a **teszt** újra. Figyelje meg, hogy az eredmények között, az időbélyegek alapján **WindowEnd** 5 másodperces növekményekben vannak.
 
@@ -415,7 +415,7 @@ Ez az oktatóanyag a következő cikkel továbbra is:
 
 További információ a Stream Analytics általában tanulmányozza a következő cikkeket:
 
-* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
-* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Bevezetés az Azure Stream Analytics használatába](stream-analytics-introduction.md)
+* [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

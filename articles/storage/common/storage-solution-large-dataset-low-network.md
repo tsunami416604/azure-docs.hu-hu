@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 6922d49affdde86728b41ef1d3d0c6a2da5c323e
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805091"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849610"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Adatok áthelyezése az alacsony vagy nincs hálózati sávszélesség a nagyméretű adathalmazok
  
@@ -59,7 +59,7 @@ Az alábbi táblázat a legfontosabb képességei a különbségeket foglalja ö
 |    Partnerintegráció              |    Néhány                         |    [Magas](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Magas](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Néhány                                |
 |    Szállítás                         |    A Microsoft által felügyelt            |    A Microsoft által felügyelt                             |    A Microsoft által felügyelt                     |    Felügyelt ügyfél                    |
 | Akkor használja, ha az adatok áthelyezése         |Egy kereskedelmi határán belül|Egy kereskedelmi határán belül|Egy kereskedelmi határán belül|Például az USA, Európa földrajzi határokon keresztül történő|
-|    Díjszabás                          |    [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/disk/)                    |   [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Díjszabás](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    Díjszabás                          |    [Díjszabás](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Díjszabás](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 ## <a name="next-steps"></a>További lépések

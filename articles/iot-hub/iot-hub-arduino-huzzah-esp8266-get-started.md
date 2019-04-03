@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 65f9b392f3ae57c1eaad7454434b4870954f36f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 82e31c498c6148454a5790a6eb4b82e3a2300a92
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085099"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847066"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather HUZZAH ESP8266 csatlakoztatása Azure IoT hubhoz a felhőben
 
@@ -168,10 +168,10 @@ A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartal
 
 9. Az a **felhasználói beállítások** ablakban másolja és illessze be a következő parancsot a fájl vége
 
-   ```
+   ```json
    "arduino.additionalUrls": "http://arduino.esp8266.com/stable/package_esp8266com_index.json"
    ```
-   
+
    ![Arduino csomag URL-cím konfigurálása a VS Code-ban](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)
 
 10. Mentse a fájlt, és zárja be a **felhasználói beállítások** fülre.
@@ -213,7 +213,7 @@ A mintaalkalmazás abban az esetben nem kell valódi érzékelő DHT22 szimulál
    ```c
    define SIMULATED_DATA true
    ```
-   
+
    ![A mintaalkalmazás szimulált adatok konfigurálása](media/iot-hub-arduino-huzzah-esp8266-get-started/15_vscode-configure-app-use-simulated-data.png)
 
 3. Mentse a fájlt.
@@ -251,8 +251,14 @@ Ha a soros figyelő ablakból és a villogó LED a következő kimenet látható
 
 ![Végeredmény a Arduino IDE](media/iot-hub-arduino-huzzah-esp8266-get-started/16_arduino-ide-final-output.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>Olvassa el a hub által fogadott üzeneteket
+
+Egy figyelheti az eszközről az IoT hub által fogadott üzeneteket módja az Azure IoT-eszközök használata a Visual Studio Code. További tudnivalókért lásd: [használata az Azure IoT Tools for Visual Studio Code használatával az eszközön, és az IoT Hub közötti üzenetek küldése és fogadása](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+
+A további lehetőségek a eszköz által küldött adatok feldolgozásához folytassa a következő szakaszban.
+
 ## <a name="next-steps"></a>További lépések
 
-Sikeresen egy Feather HUZZAH ESP8266 csatlakozik az IoT hubhoz, és az IoT hubnak küldött rögzített érzékelőadatokat. 
+Sikeresen egy Feather HUZZAH ESP8266 csatlakozik az IoT hubhoz, és az IoT hubnak küldött rögzített érzékelőadatokat.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

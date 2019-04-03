@@ -3,21 +3,21 @@ title: Az Azure Data Lake Storage Gen1 biztonságának áttekintése |} A Micros
 description: Megismerheti, hogyan történik az Azure Data Lake Storage Gen1 a biztonságosabb big data store
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ebd5b2ac-c5cc-46d4-9cfd-1a1ee70024c2
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: a310851819f70d138a4980b1ab61891fb0b2c311
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.author: twooley
+ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959612"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883299"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Biztonság az Azure Data Lake Storage Gen1
 Sok vállalat is kihasználhatja a big data-analitika, amelyekkel az intelligens döntések üzleti elemzések készítése. Egy szervezet rendelkezhet egy összetett és szabályozott környezettel, és az egyre növekvő számú különböző felhasználók. A vállalatok számára, győződjön meg arról, hogy kritikus fontosságú üzleti adatokat tárolja biztonságosabban, és egyéni felhasználók számára a hozzáférést a megfelelő szintű, elengedhetetlen, hogy. Az Azure Data Lake Storage Gen1 célja biztonsági követelményeknek. Ez a cikk többek között a Data Lake Storage Gen1 biztonsági funkcióinak bemutatása:
@@ -112,5 +112,5 @@ Ha meg szeretné tekinteni a új szolgáltatások a Data Lake Storage Gen1, kül
 ## <a name="see-also"></a>Lásd még
 * [Az Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 * [Ismerkedés a Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
+* [Biztonságos adattárolás a Data Lake Storage Gen1](data-lake-store-secure-data.md)
 

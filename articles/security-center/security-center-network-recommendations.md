@@ -3,7 +3,7 @@ title: Az Azure Security Center a hálózati erőforrások védelme |} A Microso
 description: Ez a dokumentum címek javaslatok az Azure Security Centerben, amelyekkel megvédheti az Azure network-erőforrásait, és megfelel a biztonsági házirendek maradjon.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 55318f40918833688e0c516924642c781141438c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 04/02/2019
+ms.author: monhaber
+ms.openlocfilehash: cca1962e5146300cc376fab4bcb1bf0876acec6c
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118003"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863151"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Az Azure Security Center hálózati erőforrások védelme
 Az Azure Security Center folyamatosan elemzi a hálózati biztonsági eljárások az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a erősíti, és az erőforrások védelme a szükséges vezérlők konfigurálásának folyamatán hoz létre.
@@ -30,10 +30,9 @@ Ez a cikk foglalkozik, javaslatok, amelyek a alkalmazni a hálózati biztonsági
 > A **hálózatkezelés** lap lehetővé teszi az Azure resource health hálózati szempontból részletes ismertetése. A hálózati térkép létrehozásához és adaptív hálózati vezérlők az Azure Security Center standard szintű csomag esetében érhetők el. [Ha az ingyenes szintet használja, a gombra kattinthat **örökölt hálózatműködés megtekintése** és fogadni a hálózati erőforrás javaslatok](#legacy-networking).
 >
 
-A **hálózatkezelés** lap a szakaszok is részletes áttekintést nyújt a hálózati erőforrások állapotával kapcsolatos további információért mélyedjen:
+A **hálózatkezelés** panelen a szakaszok is részletes áttekintést nyújt a hálózati erőforrások állapotával kapcsolatos további információért mélyedjen:
 
 - Hálózati térkép létrehozásához (csak az Azure Security Center Standard csomagja esetén)
-- NSG-t korlátozások a (hamarosan elérhető lesz. Regisztráljon az előzetes verzió)
 - Hálózati biztonsági javaslatokat.
 - Örökölt **hálózatkezelés** panelen (a korábbi hálózati panel) 
  
@@ -50,6 +49,7 @@ A hálózati térkép megnyitásához:
 A topológia térkép alapértelmezett nézetét jeleníti meg:
 - Az Azure-ban kiválasztott előfizetések. A térkép több előfizetést is támogatja.
 - Virtuális gépek, alhálózatok és virtuális hálózatokat a Resource Manager-erőforrástípus (klasszikus Azure-erőforrások nem támogatottak)
+- Társviszonyban lévő virtuális hálózatok
 - Csak olyan erőforrásokat, [hálózati javaslatok](security-center-recommendations.md) az olyan magas és közepes súlyosság  
 - Az Internet felé néző erőforrások
 - A térképen kiválasztott az Azure-ban az előfizetéseket van optimalizálva. Módosítsa a kijelölést, ha a térkép újraszámítja, és újra optimalizált új beállításai alapján.  
@@ -98,7 +98,7 @@ Például előfordulhat, hogy észlelni, hogy Ön nem tudtunk két gép képes k
 
 Részletes elemzések erőforrás:
 1. Amikor kiválaszt egy adott erőforrást a térképen, a jobb oldali panelen megnyílik, és az erőforrást, ha vannak ilyenek, csatlakoztatott biztonsági megoldások kapcsolatos általános információkat biztosít, és a javaslatok az erőforráshoz. Olyan erőforrástípusok választja működése azonos típusú. 
-2. Kattintson a **forgalom** Ez az átfogó listáját aki képes kommunikálni az erőforrást, és ki azt a, és mely protokollok és portok keresztül léphet kapcsolatba az erőforrás - lehetséges kimenő és bejövő forgalom listáját lásd:.
+2. Kattintson a **forgalom** Ez az átfogó listáját aki képes kommunikálni az erőforrást, és ki azt a, és mely protokollok és portok keresztül léphet kapcsolatba az erőforrás - lehetséges kimenő és bejövő forgalom listáját lásd:. Például amikor kiválaszt egy virtuális Gépet, a virtuális gépek képes legyen kommunikálni látható, és amikor kiválaszt egy alhálózathoz, az összes alhálózatot, amely képes kommunikálni láthatók.
 
 **Ezek az adatok elemzése a hálózati biztonsági csoportok, valamint a fejlett gépi tanulási algoritmusok elemzéséhez, megtudhatja, hogy azok vágánykapcsolatokat és és kapcsolati több szabály alapul.** 
 
@@ -143,7 +143,7 @@ Virtuális hálózat|5|DDoS protection-szabvány engedélyezése|Ezeket a virtu�
 ## <a name="see-also"></a>Lásd még
 Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
 
-* [Virtuális gépek védelme az Azure Security Centerben](security-center-virtual-machine-recommendations.md)
+* [Az Azure Security Centerben a virtuális gépek védelme](security-center-virtual-machine-recommendations.md)
 * [Alkalmazások védelme az Azure Security Centerben](security-center-application-recommendations.md)
 * [Az Azure SQL-szolgáltatás az Azure Security Center védelme](security-center-sql-service-recommendations.md)
 

@@ -10,12 +10,12 @@ ms.reviewer: plarsen, LADocs
 ms.topic: article
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: c46fd1791751ebf912670875f9c8e18e8b0c5c40
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311305"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878400"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Az Azure Logic Apps IBM DB2-erőforrások kezelése
 
@@ -109,7 +109,7 @@ A kapcsolat létrehozása, előtt már rendelkeznie kell a telepített helyszín
 | **Kapcsolat neve** | Igen | A hálózati kapcsolatot, például "MyLogicApp – DB2-kapcsolat" nevét | 
 | **Kiszolgáló** | Igen | A cím vagy alias kettőspont port számát a DB2-kiszolgáló, például a "myDB2server:50000" <p><p>**Megjegyzés**: Ez az érték egy TCP/IP-címet jelölő vagy alias, vagy IPv4- vagy IPv6 formátumban, majd egy kettőspontot és a egy TCP/IP-port száma. |
 | **Adatbázis** | Igen | Az adatbázis neve <p><p>**Megjegyzés**: Ez az érték a DRDA relációs adatbázis nevét (RDBNAM) jelölő: <p>-DB2 z/os fogad egy 16 bájtos karakterláncot, ahol az adatbázis egy "A – z/os IBM DB2-höz" hely nevezik. <br>-DB2 i-18-többbájtos karakterlánc, ahol az adatbázis nevezik, fogadja el a egy "az IBM DB2-höz i" relációs adatbázis. <br>-DB2 LUW számára egy 8 bájtos-karakterláncot fogad el. |
-| **Hitelesítés** | Igen | A hálózati kapcsolatot, például "Alapszintű" hitelesítési típusát <p><p>**Megjegyzés**: Válassza ki ezt az értéket a listából, amely tartalmazza az alapszintű vagy Windows (Kerberos). |
+| **Authentication** | Igen | A hálózati kapcsolatot, például "Alapszintű" hitelesítési típusát <p><p>**Megjegyzés**: Válassza ki ezt az értéket a listából, amely tartalmazza az alapszintű vagy Windows (Kerberos). |
 | **Felhasználónév** | Igen | A felhasználónév, az adatbázis <p><p>**Megjegyzés**: Ez az érték egy karakterláncot, amelynek hossza alapján az adott adatbázis: <p><p>-DB2 z/os egy 8 bájtos-karakterláncot fogad el. <br>-DB2 i fogad egy 10 – többbájtos karakterlánc esetében. <br>-A Linux vagy UNIX DB2 egy 8 bájtos-karakterláncot fogad el. <br>-DB2 a Windows-30 bájtos-karakterláncot fogad el. |
 | **Jelszó** | Igen | A Database jelszavát |
 | **Átjáró** | Igen | A telepített helyszíni adatátjáró neve <p><p>**Megjegyzés**: Válassza ki ezt az értéket a listából, amely tartalmazza az összes telepített átjárók belül az Azure-előfizetést és erőforráscsoportot. |

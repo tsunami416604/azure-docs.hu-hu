@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 95811459ff51b71153fb5ceef804a64c8b6a9be6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4cf3a9c19497057d7799be3bec78ad0de97e71a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816628"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851060"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Csatlakozás az Azure Cosmos DB BI elemzési eszközök használata az ODBC-illesztő
 
@@ -97,7 +97,7 @@ Mintavételi módszerek használható két típusa van: **gyűjtemény leképez�
 
 1. Miután befejezte a sémájának definiálásához, kattintson a **fájl** | **mentése**, lépjen abba a könyvtárba menteni a sémát, és kattintson **mentése**.
 
-    Ha a későbbiekben használni kívánt ebben a sémában az Adatbázisnevet, nyissa meg az Azure Cosmos DB ODBC DSN illesztőinek ablakot (keresztül az ODBC Data Source Administrator), kattintson a Speciális beállítások és a sémafájl mezőben keresse meg a mentett séma. Meglévő DSN mentése folyamatban van egy sémafájlt módosítja a DSN-kapcsolat hatókör struktúra séma határozza meg az adatokat.
+1. Ebben a sémában az adatbázis használatához nyissa meg a **Azure Cosmos DB ODBC DSN illesztőinek ablak** (keresztül az ODBC Data Source Administrator), kattintson a **speciális beállítások**, majd a **sémafájl** mezőben keresse meg a mentett séma. Meglévő DSN mentése folyamatban van egy sémafájlt módosítja a DSN-kapcsolat hatókör struktúra séma határozza meg az adatokat.
 
 ## <a id="table-mapping"></a>4. lépés: Hozzon létre egy sémadefiníciót a tábla-elválasztó karakterek használatával metódus leképezése
 

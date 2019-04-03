@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 76892e22e940476ca26cde7a91bfe928b47f22ba
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 695fdfba1573ff97b05f8e8b50a05bef9dbf48de
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522264"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846160"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>Az Azure Search nyelven szűrése 
 
@@ -39,7 +39,7 @@ A minták tallózása, beleértve a [ingatlan minta](search-get-started-portal.m
   ![](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> Hitelesítésikód-példák Meződefiníciók nyelvek esetén a megjelenítő, lásd: [(.NET) index definiálása](https://docs.microsoft.com/azure/search/search-create-index-dotnet) és [definiálása az indexekben (REST)](https://docs.microsoft.com/azure/search/search-create-index-rest-api-using-well-formed-json).
+> Hitelesítésikód-példák Meződefiníciók nyelvek esetén a megjelenítő, lásd: [(.NET) index definiálása](https://docs.microsoft.com/azure/search/search-create-index-dotnet) és [definiálása az indexekben (REST)](search-create-index-rest-api.md).
 
 ## <a name="build-and-load-an-index"></a>Hozhat létre és index betöltése
 

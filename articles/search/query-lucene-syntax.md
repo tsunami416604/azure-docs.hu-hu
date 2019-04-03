@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f1eba2da1404f5b47d137b3c4f7b4cb9ceab43ea
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 64a688df3b6ed8602bb440d72e7f061c5f5893d1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438053"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885604"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Lucene lekérdezési szintaxis az Azure Search szolgáltatásban
 Azure Search-lekérdezéseket a gazdag alapján írhat [Lucene lekérdezéselemző](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) Forms speciális lekérdezési szintaxis: helyettesítő karakter, intelligens keresést, közelségi keresésre, reguláris kifejezések összefűzése néhány példa. Nagy része a Lucene lekérdezéselemző szintaxist [átvenni megvalósítása az Azure Search](search-lucene-query-architecture.md), kivéve a *keresések tartomány* az Azure Search révén kialakítani, amely `$filter` kifejezéseket. 
@@ -85,7 +85,7 @@ A fenti példában a hullámos vonallal (~), de ugyanaz az elv érvényes az min
 
  Ellenőrizze, hogy az összes nem biztonságos és fenntartott karakterek kódolt egy URL-címet. Például "#" nem nem biztonságos karakter, mert az egy URL-fragement/horgony azonosítója. A karakter kell kódolni `%23` , ha egy URL-címet használják. "&" '=' és példák a fenntartott karakterek korlátozza a paramétereket, és adja meg az értékeket az Azure Search szolgáltatásban. Lásd: [RFC1738: Egységes erőforrás-keresők (URL)](https://www.ietf.org/rfc/rfc1738.txt) további részletekért.
 
- Nem biztonságos karakterek ``" ` < > # % { } | \ ^ ~ [ ] ``. Fenntartott karakterek: `; / ? : @ = + &`.
+ Nem biztonságos karakterek ``" ` < > # % { } | \ ^ ~ [ ]``. Fenntartott karakterek: `; / ? : @ = + &`.
 
 ### <a name="precedence-operators-grouping-and-field-grouping"></a>Sorrend operátorokat: csoportosítás és a mező csoportosítás  
  Zárójelek segítségével segédlekérdezések, beleértve az operátorok a zárójeles utasításon belül létrehozni. Ha például `motel+(wifi||luxury)` dokumentumok "amelyben" kifejezés és "Wi-Fi" vagy "engedélyezhető" (vagy mindkettő) fog keresni.

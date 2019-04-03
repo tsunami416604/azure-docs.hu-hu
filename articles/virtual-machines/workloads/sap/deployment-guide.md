@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 2d296281f6865030bcdfec33d8c69cc313a358a5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c93bca14d9385eaf9f79f69d76e9e704796da7a9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011903"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850889"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Az SAP NetWeaver számára az Azure virtuális gépek üzembe helyezése
 
@@ -178,7 +178,7 @@ ms.locfileid: "58011903"
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-azurermvmaemextension]:https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmaemextension
+[msdn-set-Azvmaemextension]:https://docs.microsoft.com/powershell/module/az.compute/set-azvmaemextension
 
 [planning-guide]:planning-guide.md (Az Azure virtuális gépek tervezése és megvalósítása SAP)
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (Erőforrások)
@@ -234,7 +234,6 @@ ms.locfileid: "58011903"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd (A Microsoft Azure-hálózatkezelés)
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (Storage: A Microsoft Azure Storage és az adatlemezek)
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
@@ -262,7 +261,7 @@ ms.locfileid: "58011903"
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
-[virtual-machines-azurerm-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
+[virtual-machines-Az-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md (Üzembe helyezése és kezelése a virtuális gépek az Azure Resource Manager-sablonokkal és az Azure CLI használatával)
 [virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md (Virtuális gépek kezelése az Azure Resource Manager és a PowerShell használatával)
@@ -318,6 +317,8 @@ Azure-beli virtuális gépek a megoldás olyan szervezeteknek, amelyek a szüks�
 Ez a cikk a virtuális gépek (VM) az Azure-ban, például az alternatív üzembe helyezési lehetőségeit, és hibaelhárítási SAP-alkalmazások telepítésének lépéseit ismerteti. Ebben a cikkben található információk épül [Azure Virtual Machines tervezési és megvalósítási az SAP NetWeaver számára][planning-guide]. Azt is egészíti ki a dokumentáció SAP és SAP-megjegyzések, amelyek az elsődleges erőforrások telepítéséhez és az SAP-szoftverek üzembe helyezésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 Az SAP szoftver központi telepítése Azure virtuális gép beállítása magában foglalja a több lépéseket és erőforrások. Mielőtt elkezdené, győződjön meg róla, hogy megfelelnek-e az Azure-beli virtuális gépeken SAP-szoftverek telepítéséhez szükséges előfeltételeket.
 
@@ -786,7 +787,7 @@ Gyakori frissítések keresése a PowerShell-parancsmagokról, amely általában
 
 Az Azure PowerShell-parancsmagot a számítógépen telepített verziójának ellenőrzéséhez futtassa a PowerShell-parancsot:
 ```powershell
-(Get-Module AzureRm.Compute).Version
+(Get-Module Az.Compute).Version
 ```
 Az eredmény a következőhöz hasonló:
 
@@ -937,22 +938,22 @@ Az Azure Enhanced Monitoring bővítményt az SAP telepítése a PowerShell hasz
 
 1. Győződjön meg arról, hogy telepítette-e a legújabb Azure PowerShell-parancsmag. További információkért lásd: [üzembe helyezése az Azure PowerShell-parancsmagok][deployment-guide-4.1].  
 1. Futtassa az alábbi PowerShell-parancsmagot.
-    Rendelkezésre álló környezetek listáját futtatása `commandlet Get-AzureRmEnvironment`. Ha szeretné használni az Azure globális, a környezet a **AzureCloud**. Válassza ki az Azure Kínában, **AzureChinaCloud**.
+    Rendelkezésre álló környezetek listáját futtatása `commandlet Get-AzEnvironment`. Ha szeretné használni az Azure globális, a környezet a **AzureCloud**. Válassza ki az Azure Kínában, **AzureChinaCloud**.
 
     ```powershell
-    $env = Get-AzureRmEnvironment -Name <name of the environment>
-    Connect-AzureRmAccount -Environment $env
-    Set-AzureRmContext -SubscriptionName <subscription name>
+    $env = Get-AzEnvironment -Name <name of the environment>
+    Connect-AzAccount -Environment $env
+    Set-AzContext -SubscriptionName <subscription name>
 
-    Set-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+    Set-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
     ```
 
 Miután adja meg a fiókja adatait, és azonosítsa az Azure virtuális gépen, a parancsfájl telepíti a szükséges bővítményeit, és lehetővé teszi, hogy a szükséges funkciókat. Ez több percet is igénybe vehet.
-További információ `Set-AzureRmVMAEMExtension`, lásd: [Set-AzureRmVMAEMExtension][msdn-set-azurermvmaemextension].
+További információ `Set-AzVMAEMExtension`, lásd: [Set-AzVMAEMExtension][msdn-set-Azvmaemextension].
 
-![Az SAP-specifikus sikeres végrehajtása az Azure a Set-AzureRmVMAEMExtension parancsmag][deployment-guide-figure-900]
+![Az SAP-specifikus sikeres végrehajtásának Azure parancsmag Set-AzVMAEMExtension][deployment-guide-figure-900]
 
-A `Set-AzureRmVMAEMExtension` konfigurációs does SAP-figyelési állomás konfigurálása a lépéseket.
+A `Set-AzVMAEMExtension` konfigurációs does SAP-figyelési állomás konfigurálása a lépéseket.
 
 A parancsfájl kimenete a következő információkat tartalmazza:
 
@@ -1129,15 +1130,15 @@ Ha minden ellenőrzés nem sikerül, és ismételt üzembe helyezése a bővítm
 
 ### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Az Azure figyelési infrastruktúra konfigurálásának állapotának ellenőrzése
 
-Ha egyes figyelési adatokat nem kézbesíti a rendszer a teszt leírt aszinkronitást megfelelően [készültség-ellenőrzés az Azure SAP Enhanced Monitoring][deployment-guide-5.1]futtassa a `Test-AzureRmVMAEMExtension` parancsmaggal ellenőrizheti-e a Az Azure SAP-infrastruktúra és a figyelés típusú kiterjesztés figyelése megfelelően vannak konfigurálva.
+Ha egyes figyelési adatokat nem kézbesíti a rendszer a teszt leírt aszinkronitást megfelelően [készültség-ellenőrzés az Azure SAP Enhanced Monitoring][deployment-guide-5.1]futtassa a `Test-AzVMAEMExtension` parancsmaggal ellenőrizheti-e a Az Azure SAP-infrastruktúra és a figyelés típusú kiterjesztés figyelése megfelelően vannak konfigurálva.
 
 1. Győződjön meg arról, hogy telepítette-e a legújabb Azure PowerShell-parancsmag leírtak szerint [üzembe helyezése az Azure PowerShell-parancsmagok][deployment-guide-4.1].
-1. Futtassa az alábbi PowerShell-parancsmagot. Rendelkezésre álló környezetek listáját, futtassa a parancsmagot `Get-AzureRmEnvironment`. Globális Azure használatához válassza ki a **AzureCloud** környezetben. Válassza ki az Azure Kínában, **AzureChinaCloud**.
+1. Futtassa az alábbi PowerShell-parancsmagot. Rendelkezésre álló környezetek listáját, futtassa a parancsmagot `Get-AzEnvironment`. Globális Azure használatához válassza ki a **AzureCloud** környezetben. Válassza ki az Azure Kínában, **AzureChinaCloud**.
    ```powershell
-   $env = Get-AzureRmEnvironment -Name <name of the environment>
-   Connect-AzureRmAccount -Environment $env
-   Set-AzureRmContext -SubscriptionName <subscription name>
-   Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+   $env = Get-AzEnvironment -Name <name of the environment>
+   Connect-AzAccount -Environment $env
+   Set-AzContext -SubscriptionName <subscription name>
+   Test-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
    ```
 
 1. Adja meg a fiókja adatait, és azonosítja az Azure virtuális gépen.
@@ -1168,7 +1169,7 @@ A telepítési könyvtár: C:\\csomagok\\beépülő modulok\\Microsoft.AzureCAT.
 
 ###### <a name="solution"></a>Megoldás
 
-A bővítmény nincs telepítve. Határozza meg, hogy ez-e a proxyval kapcsolatos probléma (a korábban ismertetett). Indítsa újra a gépet, vagy futtassa újra a szüksége lehet a `Set-AzureRmVMAEMExtension` konfigurációs parancsfájlt.
+A bővítmény nincs telepítve. Határozza meg, hogy ez-e a proxyval kapcsolatos probléma (a korábban ismertetett). Indítsa újra a gépet, vagy futtassa újra a szüksége lehet a `Set-AzVMAEMExtension` konfigurációs parancsfájlt.
 
 ##### <a name="service-for-azure-enhanced-monitoring-does-not-exist"></a>Az Azure Enhanced Monitoring szolgáltatás nem létezik.
 
@@ -1201,7 +1202,7 @@ A konfiguráció helytelen. Indítsa újra a monitorozási bővítményt a virtu
 
 A AzureEnhancedMonitoring Windows szolgáltatás adatokat gyűjt a teljesítmény-mérőszámok az Azure-ban. A szolgáltatás több forrásból származó adatok beolvasása. Helyileg összegyűjtött konfigurációs adatokat, és néhány teljesítmény-mérőszámok az Azure Diagnostics olvasható. A tároló előfizetési szinten a naplózási tároló számlálói használtak.
 
-Ha az SAP-Jegyzetnek hibaelhárítási [1999351] nem oldja meg a problémát, futtassa újra a `Set-AzureRmVMAEMExtension` konfigurációs parancsfájl. Várjon egy órát, mert storage analytics vagy a diagnosztika számlálók előfordulhat, hogy nem hozható létre, után azonnal engedélyezve vannak, előfordulhat, hogy rendelkezik. Ha a probléma tartósan fennáll, az összetevő BC-OP-NT-AZR Windows vagy BC-OP-LNX-AZR Linuxos virtuális gépek SAP customer támogatási üzenet megnyitása.
+Ha az SAP-Jegyzetnek hibaelhárítási [1999351] nem oldja meg a problémát, futtassa újra a `Set-AzVMAEMExtension` konfigurációs parancsfájl. Várjon egy órát, mert storage analytics vagy a diagnosztika számlálók előfordulhat, hogy nem hozható létre, után azonnal engedélyezve vannak, előfordulhat, hogy rendelkezik. Ha a probléma tartósan fennáll, az összetevő BC-OP-NT-AZR Windows vagy BC-OP-LNX-AZR Linuxos virtuális gépek SAP customer támogatási üzenet megnyitása.
 
 #### <a name="linuxlogolinux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Az Azure teljesítményszámlálók nem minden jelennek meg
 
@@ -1215,13 +1216,13 @@ A könyvtár \\var\\lib\\waagent\\ nem rendelkezik az Azure Enhanced Monitoring 
 
 ###### <a name="solution"></a>Megoldás
 
-A bővítmény nincs telepítve. Határozza meg, hogy ez-e a proxyval kapcsolatos probléma (a korábban ismertetett). Indítsa újra a gépet, és futtassa újra a szüksége lehet a `Set-AzureRmVMAEMExtension` konfigurációs parancsfájlt.
+A bővítmény nincs telepítve. Határozza meg, hogy ez-e a proxyval kapcsolatos probléma (a korábban ismertetett). Indítsa újra a gépet, és futtassa újra a szüksége lehet a `Set-AzVMAEMExtension` konfigurációs parancsfájlt.
 
-##### <a name="the-execution-of-set-azurermvmaemextension-and-test-azurermvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>A Set-AzureRmVMAEMExtension és Test-AzureRmVMAEMExtension végrehajtásának arról, hogy az standard szintű felügyelt lemezek használata nem támogatott figyelmeztető üzenetek megjelenítése
+##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>A Set-AzVMAEMExtension és Test-AzVMAEMExtension végrehajtásának arról, hogy az standard szintű felügyelt lemezek használata nem támogatott figyelmeztető üzenetek megjelenítése
 
 ###### <a name="issue"></a>Probléma
 
-Ha az alábbiakhoz hasonló végrehajtó Set-AzureRmVMAEMExtension és Test-AzureRmVMAEMExtension üzenetek jelennek meg:
+Ha az alábbiakhoz hasonló végrehajtó Set-AzVMAEMExtension vagy a Test-AzVMAEMExtension üzenetek jelennek meg:
 
 <pre><code>
 WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
@@ -1242,4 +1243,4 @@ Adatok beolvasása számos forrásból származó démon által gyűjtött telje
 
 Ismert problémák teljes és naprakész listája, tekintse meg az SAP-Jegyzetnek [1999351], amely további információkat talál a továbbfejlesztett Azure Monitoring for SAP rendelkezik.
 
-Ha az SAP-Jegyzetnek hibaelhárítási [1999351] nem oldja meg a problémát, futtassa újra a `Set-AzureRmVMAEMExtension` konfigurációs parancsfájl leírtak szerint [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP] [deployment-guide-4.5]. Előfordulhat, hogy egy óránál várakoznia, mivel a storage analytics vagy a diagnosztika számlálók előfordulhat, hogy nem jönnek létre után azonnal engedélyezve vannak. Ha a probléma tartósan fennáll, az összetevő BC-OP-NT-AZR Windows vagy BC-OP-LNX-AZR Linuxos virtuális gépek SAP customer támogatási üzenet megnyitása.
+Ha az SAP-Jegyzetnek hibaelhárítási [1999351] nem oldja meg a problémát, futtassa újra a `Set-AzVMAEMExtension` konfigurációs parancsfájl leírtak szerint [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP] [deployment-guide-4.5]. Előfordulhat, hogy egy óránál várakoznia, mivel a storage analytics vagy a diagnosztika számlálók előfordulhat, hogy nem jönnek létre után azonnal engedélyezve vannak. Ha a probléma tartósan fennáll, az összetevő BC-OP-NT-AZR Windows vagy BC-OP-LNX-AZR Linuxos virtuális gépek SAP customer támogatási üzenet megnyitása.

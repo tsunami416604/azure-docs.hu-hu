@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: 3b6ddd99d7b198cdc5274b2944a723e68864bd4f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d91e12de075ee6efebe39fd5ab582d4998046f9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993040"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847857"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik azok a Microsoft Azure klasszikus riasztások?
 
@@ -88,14 +88,14 @@ Webhookok lehetővé teszi, hogy automation és a szervizeléshez, például has
 ## <a name="next-steps"></a>További lépések
 Riasztási szabályok, és konfigurálja őket az adatainak beolvasása:
 
-* Tudjon meg többet [metrikák](../../azure-monitor/platform/data-collection.md)
+* Tudjon meg többet [metrikák](data-platform.md)
 * Konfigurálása [klasszikus metrika riasztások az Azure Portalon keresztül](alerts-classic-portal.md)
 * Konfigurálása [metrika riasztások klasszikus PowerShell](alerts-classic-portal.md)
 * Konfigurálása [klasszikus metrika riasztások parancssori felület (CLI)](alerts-classic-portal.md)
 * Konfigurálása [klasszikus metrika riasztások az Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* Tudjon meg többet [tevékenységnapló](../../azure-monitor/platform/activity-logs-overview.md)
-* Konfigurálása [tevékenységnapló-riasztások Azure-portálon](../../azure-monitor/platform/activity-log-alerts.md)
+* Tudjon meg többet [tevékenységnapló](activity-logs-overview.md)
+* Konfigurálása [tevékenységnapló-riasztások Azure-portálon](activity-log-alerts.md)
 * Konfigurálása [Resource Manageren keresztül tevékenységnapló-riasztások](alerts-activity-log.md)
-* Tekintse át a [tevékenység log riasztási webhook sémáról](../../azure-monitor/platform/activity-log-alerts-webhook.md)
-* Tudjon meg többet [Műveletcsoportok](../../azure-monitor/platform/action-groups.md)
-* Konfigurálása [újabb riasztások](../../azure-monitor/platform/alerts-metric.md)
+* Tekintse át a [tevékenység log riasztási webhook sémáról](activity-log-alerts-webhook.md)
+* Tudjon meg többet [Műveletcsoportok](action-groups.md)
+* Konfigurálása [újabb riasztások](alerts-metric.md)

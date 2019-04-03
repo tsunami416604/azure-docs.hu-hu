@@ -3,21 +3,21 @@ title: Adatok másolása az Azure Storage-Blobokból az Azure Data Lake Storage 
 description: Adatok másolása az Azure Storage-blobokat az Azure Data Lake Storage Gen1 AdlCopy eszközzel
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: dc273ef8-96ef-47a6-b831-98e8a777a5c1
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5049e280b65a9f223ea577ee4fde973657682b4c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: be66fd51b37c0e62b2b757a88ee1db9319b2093a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544639"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879811"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Adatok másolása az Azure Storage-blobokat az Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
@@ -179,6 +179,6 @@ Az AdlCopy másolhatja az adatokat tartalmazó fájlok és mappák ezer támogat
 * 1.0.13 - adatokat másolhat az Azure Data Lake Storage Gen1 ugyanazzal a fiókkal között több adlcopy parancs, ha Ön nem kell adnia a hitelesítő adatait az egyes futtatások többé. Az Adlcopy most ezt az információt fogja gyorsítótárazni több futtatás során.
 
 ## <a name="next-steps"></a>További lépések
-* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
+* [Biztonságos adattárolás a Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Az Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Az Azure HDInsight használata a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

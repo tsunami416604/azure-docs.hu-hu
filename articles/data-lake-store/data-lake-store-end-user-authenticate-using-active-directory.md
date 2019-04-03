@@ -1,22 +1,22 @@
 ---
-title: 'Végfelhasználói hitelesítés: Azure Data Lake Storage Gen1 az Azure Active Directoryban |} A Microsoft Docs'
+title: 'Végfelhasználói hitelesítés: Az Azure Data Lake Storage Gen1 az Azure Active Directoryhoz |} A Microsoft Docs'
 description: Ismerje meg, hogyan érhet el a végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 6f7b812f32eda0c671b1ad1101b13a1290df0482
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: twooley
+ms.openlocfilehash: c0fe63e395ee08cb65e9bbbadc4ce1f03032ce95
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954782"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880083"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ A hivatkozás utasításait, miközben mindenképpen jelölje ki **natív** alka
 
 ![Webalkalmazás létrehozása](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "natív alkalmazás létrehozása")
 
-## <a name="step-2-get-application-id-and-redirect-uri"></a>2. lépés: Alkalmazás Azonosítójának lekéréséhez és átirányítási URI
+## <a name="step-2-get-application-id-and-redirect-uri"></a>2. lépés: Alkalmazás Azonosítójának lekéréséhez és átirányítási URI
 
 Lásd: [alkalmazás Azonosítójának lekéréséhez](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key) lekérni az alkalmazás azonosítója.
 
@@ -90,7 +90,7 @@ Az átirányítási URI azonosító lekéréséhez kövesse az alábbi lépések
 
 2. Az a **beállítások** az alkalmazás paneljén kattintson **átirányítási URI-k**.
 
-    ![Get-átirányítási URI-ja](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-redirect-uri.png)
+    ![Get Redirect URI](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-redirect-uri.png)
 
 3. Másolja a megjelenített érték.
 

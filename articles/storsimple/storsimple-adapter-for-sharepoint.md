@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232867"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885587"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Telepítse és konfigurálja a StorSimple Adapter for SharePoint
 ## <a name="overview"></a>Áttekintés
@@ -145,9 +145,9 @@ Győződjön meg arról, hogy a SharePoint-kiszolgálófarm megfelelően van kon
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>Távoli BLOB Storage (RBS) előfeltételei
 Győződjön meg arról, hogy használ-e az SQL Server támogatott verziója. Csak a következő verziók a következők: támogatott és RBS használhatja:
 
-* Az SQL Server 2008 Enterprise Edition
-* Az SQL Server 2008 R2 Enterprise Edition
-* Az SQL Server 2012 Enterprise Edition
+* SQL Server 2008 Enterprise Edition
+* SQL Server 2008 R2 Enterprise Edition
+* SQL Server 2012 Enterprise Edition
 
 Blobok csak a, amely a StorSimple-eszköz jeleníti meg az SQL Server köteteken externalized is lehet. Nincs más célértékei BLOB externalizációja támogatottak.
 
@@ -226,9 +226,9 @@ A StorSimple Adapter for SharePoint szoftver eltávolítás előtt át kell tele
 4. Az a **konfigurálása a StorSimple Adapter** lap, kattintson a **letiltása** külső BLOB storage-ból eltávolítani kívánt tartalom-adatbázisok mindegyike az alábbi gombra. 
 5. Az objektumok törlése a Sharepointból, és ezután töltse fel őket újra.
 
-Másik lehetőségként használhatja a Microsoft` RBS Migrate()` SharePoint mellékelt PowerShell-parancsmagot. További információkért lásd: [tartalmainak Migrálása, vagy onnan máshová RBS](https://technet.microsoft.com/library/ff628255.aspx).
+Másik lehetőségként használhatja a Microsoft `RBS Migrate()` SharePoint mellékelt PowerShell-parancsmagot. További információkért lásd: [tartalmainak Migrálása, vagy onnan máshová RBS](https://technet.microsoft.com/library/ff628255.aspx).
 
-A Blobok vissza helyezi a tartalom-adatbázist, nyissa meg a következő lépés: [távolítsa el az adapter](#uninstall-the-adapter).
+A Blobok vissza helyezi a tartalom-adatbázist, nyissa meg a következő lépés: [Távolítsa el az adapter](#uninstall-the-adapter).
 
 ### <a name="uninstall-the-adapter"></a>Az adapter eltávolítása
 Lépjen vissza a blobokat a SQL Server tartalom-adatbázisok, az alábbi lehetőségek közül történő után távolítsa el a StorSimple Adapter for SharePoint.
@@ -238,7 +238,7 @@ Lépjen vissza a blobokat a SQL Server tartalom-adatbázisok, az alábbi lehető
 2. Kattintson duplán a StorSimple Adapter for SharePoint-telepítő. A telepítő varázsló elindul.
    
     ![A telepítő varázsló](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. Kattintson a **Tovább** gombra. A következő oldal jelenik meg.
+3. Kattintson a **tovább**. A következő oldal jelenik meg.
    
     ![A telepítő varázsló remove lapja](./media/storsimple-adapter-for-sharepoint/sasp3.png)
 4. Kattintson a **eltávolítása** jelölje be az eltávolítási folyamat. A következő oldal jelenik meg.

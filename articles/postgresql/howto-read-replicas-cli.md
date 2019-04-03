@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/29/2019
-ms.openlocfilehash: 4c8502aad40662766b038205eb19dd3302f601b7
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.date: 04/01/2019
+ms.openlocfilehash: 21408f87c4446ebad4092cb982179c7d78ea9e32
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632253"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847756"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Hozzon létre, és olvasási replikák kezelése az Azure parancssori felületen
 
 Ebből a cikkből megismerheti, hogyan hozhat létre és kezelheti a olvasható replikák az Azure Database for postgresql-hez az Azure parancssori felületen. Olvasási replikák kapcsolatos további információkért tekintse meg a [áttekintése](concepts-read-replicas.md).
-
-> [!IMPORTANT]
-> Az olvasási replika funkció nyilvános előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Egy [, Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-up-azure-cli.md) kell a fölérendelt kiszolgáló.
@@ -49,9 +46,9 @@ A `azure.replication_support` paramétert állítsa **REPLIKA** a fölérendelt 
 
 A `az mysql server replica create` parancs paraméterei a következők:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
-| resource-group | myResourceGroup |  Az erőforráscsoport, ahol a replikakiszolgálón létrejön.  |
+| resource-group | myResourceGroup |  Az erőforráscsoport, ahol a replikakiszolgálón létrejön.  |
 | név | mydemoserver-replica | A létrehozott új replikakiszolgáló neve. |
 | source-server | mydemoserver | Név vagy az erőforrás azonosítója a meglévő fölérendelt kiszolgáló a replikáláshoz. |
 

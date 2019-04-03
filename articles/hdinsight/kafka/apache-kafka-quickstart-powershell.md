@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 1bad28a80c388cfd8ddabb77c3c6b15743711617
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: c86e5faa212fb6458326e00cba02fbe2ea83c8f7
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757802"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850323"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Gyors útmutató: Hozzon létre egy Apache Kafka HDInsight-fürtön
 
@@ -82,7 +82,7 @@ New-AzStorageAccount `
         -Location $location
 ```
 
-A HDInsight egy blobtárolóban tárolja az adatokat a tárfiókban. Használat [New-AzStorageContainer](/powershell/module/Azure.Storage/New-AzStorageContainer) hozhat létre egy új tárolót.
+A HDInsight egy blobtárolóban tárolja az adatokat a tárfiókban. Használat [New-AzStorageContainer](/powershell/module/Az.Storage/New-AzStorageContainer) hozhat létre egy új tárolót.
 
 ```powershell
 $containerName = Read-Host -Prompt "Enter the container name"

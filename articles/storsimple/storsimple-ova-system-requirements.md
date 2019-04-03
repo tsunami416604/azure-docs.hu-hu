@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
-ms.openlocfilehash: becf48320b346feea82944ed2f7e752125795d40
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999503"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876836"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>A StorSimple virtuális tömb rendszerkövetelményei
 ## <a name="overview"></a>Áttekintés
@@ -92,7 +92,7 @@ Csak az Azure blokkblob típusú tárolás használata támogatott. Nem támogat
 ## <a name="networking-requirements"></a>Hálózati követelmények
 A következő táblázat sorolja fel a portot, amelyet meg kell nyitni a tűzfalon az iSCSI, SMB, a felhőben és felügyeleti forgalom engedélyezése. Ebben a táblázatban *a* vagy *bejövő* hivatkozik a irányát, amelyről a bejövő ügyfélkérelmek hozzáférjen eszközéhez. *Ki* vagy *kimenő* hivatkozik, amelyben a StorSimple-eszköz kívülről, adatokat küld a központi telepítés meghaladja a irány: például kimenő internetkapcsolattal.
 
-| **Port száma<sup>1</sup>** | **És leskálázása** | **Port hatókör** | **Kötelező** | **Megjegyzések** |
+| **Port száma<sup>1</sup>** | **És leskálázása** | **Port hatókör** | **Szükséges** | **Megjegyzések** |
 | --- | --- | --- | --- | --- |
 | TCP 80-AS (HTTP) |Ki |WAN |Nem |Kimenő port szolgál az Internet-hozzáférés frissítések lekéréséhez. <br></br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |
 | TCP 443 (HTTPS) |Ki |WAN |Igen |Kimenő port szolgál a felhőbeli adatok eléréséhez. <br></br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |
@@ -130,7 +130,7 @@ Azt javasoljuk, hogy beállította-e a tűzfalszabályok alapuló StorSimple lib
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |A Microsoft Update-kiszolgálók<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` |Támogatási csomag |
-| `https://*.data.microsoft.com ` |A telemetriai szolgáltatás, a Windows, tekintse meg a [frissítés a felhasználói élmény és a telemetria diagnosztikája](https://support.microsoft.com/en-us/kb/3068708) |
+| `https://*.data.microsoft.com` |A telemetriai szolgáltatás, a Windows, tekintse meg a [frissítés a felhasználói élmény és a telemetria diagnosztikája](https://support.microsoft.com/en-us/kb/3068708) |
 
 ## <a name="next-steps"></a>További lépések
 * [A StorSimple Virtual Array üzembe helyezéséhez a portál előkészítése](storsimple-virtual-array-deploy1-portal-prep.md)

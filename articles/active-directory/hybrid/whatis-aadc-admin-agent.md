@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17b99b7b03898ad72b4d9c7cc2ba9154855475ef
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 49234472481e30cf74efa3e72ac0e4f31466fada
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488408"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884890"
 ---
-# <a name="what-is-the-azure-ad-connect-admin-agent"></a>Mi az az Azure AD Connect felügyeleti ügynököt? 
+# <a name="what-is-the-azure-ad-connect-admin-agent"></a>Mi az az Azure AD Connect felügyeleti ügynök? 
 Az Azure AD Connect felügyeleti ügynök része egy új Azure Active Directory Connect, amely egy Azure Active Directory Connect-kiszolgálón telepítve van. Adott adatok gyűjtését az Active Directory-környezetet, amelynek segítségével a Microsoft támogatási szakértője hibák elhárításához, ha a támogatási eset nyitása szolgál.
 
 Telepítésekor a bizonyos kéréseket az Azure AD Connect felügyeleti ügynök várakozhat adatokat az Azure Active Directoryból, a kért adatokat olvas be a sync-környezetet, és elküldi azt az Azure Active Directoryhoz, ahol mutatnak be a Microsoft támogatja a visszafejtés.
@@ -39,7 +39,7 @@ A Microsoft támogatási szakembere nem módosítják az adatokat a rendszer, é
 
 ## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Mi történik, ha most nem kívánok adatok eléréséhez a Microsoft támogatási szakértő? 
  
-Ha nem szeretné, hogy a Microsoft-szolgáltatás egyik támogatási megnyitásakor jelezheti a támogatási hívás az adatok eléréséhez hívja meg a portálon: 
+Ha nem szeretné, hogy a Microsoft-szolgáltatás mérnök, egy támogatási hívás az adatok eléréséhez a szolgáltatás konfigurációs fájl módosításával, az alább ismertetett letilthatja ezt: 
 
   1.    Nyissa meg **C:\Program Files\Microsoft Azure AD Connect felügyeleti Agent\AzureADConnectAdministrationAgentService.exe.config** a Jegyzettömbben.
   2.    Tiltsa le **UserDataEnabled** beállítása a lent látható módon. Ha **UserDataEnabled** beállítás létezik, és igaz értékre, majd állítsa be hamis értékre van állítva. Ha a beállítás nem létezik, majd adja hozzá a beállítást alább látható módon.    

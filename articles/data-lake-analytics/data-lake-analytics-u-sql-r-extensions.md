@@ -9,20 +9,20 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 5d10d4d603312b3c75760a5d7c17a9028ddecea8
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 59a52b2aeb83732a608f1fcf5bc4de907d25dfd1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401215"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885026"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Az R-kód az Azure Data Lake Analytics U-SQL-szkriptek kiterjesztése
 
 Az alábbi példa az R-kód telepítésének alapvető lépéseit mutatja be:
 * Használja a `REFERENCE ASSEMBLY` R-bővítmények engedélyezéséhez a U-SQL parancsfájl-utasítást.
-* Használja a` REDUCE` művelet egy kulcsot a bemeneti adatok particionálásához.
+* Használja a `REDUCE` művelet egy kulcsot a bemeneti adatok particionálásához.
 * A U-SQL R-bővítmények közé tartozik egy beépített nyomáscsökkentő (`Extension.R.Reducer`) futó R-kód minden csúcspont a nyomáscsökkentő rendelve. 
-* Dedikált használatának nevű nevű adatkeretek `inputFromUSQL` és `outputToUSQL `jelölik, U-SQL, r-bemenet közötti átadni az adatokat, és azonosító nevek rögzítettek DataFrame kimeneti (azt jelenti, felhasználókat nem lehet módosítani ezeket előre definiált nevek a bemeneti és kimeneti DataFrame azonosítók).
+* Dedikált használatának nevű nevű adatkeretek `inputFromUSQL` és `outputToUSQL` jelölik, U-SQL, r-bemenet közötti átadni az adatokat, és azonosító nevek rögzítettek DataFrame kimeneti (azt jelenti, felhasználókat nem lehet módosítani ezeket előre definiált nevek a bemeneti és kimeneti DataFrame azonosítók).
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>A U-SQL-szkript R-kód beágyazása
 

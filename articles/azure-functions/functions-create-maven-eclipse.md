@@ -12,17 +12,14 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3cab94744a2ab87dce0a145665e957e1fed0dd2f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 123a24eb13de584d8e3b70d0d8b1173f583867c1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167545"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881426"
 ---
-# <a name="create-your-first-function-with-java-and-eclipse-preview"></a>Az első függvény létrehozása a Java és az eclipse-ben (előzetes verzió)
-
-> [!NOTE] 
-> A Java for Azure Functions jelenleg előzetes verzióban érhető el.
+# <a name="create-your-first-function-with-java-and-eclipse"></a>Az első függvény létrehozása a Java és az eclipse-ben 
 
 Ez a cikk bemutatja, hogyan hozhat létre egy [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) Functions-projektet az Eclipse IDE és az Apache Maven, tesztelheti és hibakeresés végrehajtása rajtuk, majd üzembe helyezése az Azure Functions. 
 
@@ -52,7 +49,7 @@ Erősen javasoljuk, hogy még a telepítés [Azure Functions Core Tools, 2. verz
 1. Válassza ki **hozzáadása Archetype** , és adja hozzá a bejegyzést a [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
     - Archetype Csoportazonosító: következőt: com.microsoft.azure
     - Archetype összetevő-azonosító: az azure-functions-archetype
-    - Verzió: Használható legújabb verziót [központi adattára](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    - Verzió: Legújabb verziót használja [központi adattára](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![Eclipse Maven létrehozása](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
 1. Kattintson a **OK** , és adja meg a részleteket az aktuális projekthez, és végül **Befejezés**.
 

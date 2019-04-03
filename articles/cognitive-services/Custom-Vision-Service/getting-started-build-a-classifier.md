@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: f2cd8f5074f815e84caaedb01335406657f29088
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf8a36145ebf5d5dabf8c539d4f245e1d4b209f0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088009"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886437"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>A Custom Vision besorolás létrehozása
 
@@ -32,7 +32,7 @@ A Custom Vision Service használatához szüksége lesz a Custom Vision betanít
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
-A böngészőben navigáljon a [Custom Vision weblap](https://customvision.ai) válassza __jelentkezzen be a__. Jelentkezzen be ugyanazzal a fiókkal jelentkezzen be az Azure Portal segítségével.
+A böngészőben navigáljon a [Custom Vision weblap](https://customvision.ai) válassza __jelentkezzen be a__. Jelentkezzen be ugyanazzal a fiókkal jelentkezzen be az Azure portal segítségével.
 
 ![A bejelentkezési lap képe](./media/browser-home.png)
 
@@ -43,8 +43,8 @@ A böngészőben navigáljon a [Custom Vision weblap](https://customvision.ai) v
 
 1. Adjon meg egy nevet és leírást a projekthez. Ezután válassza ki egy erőforráscsoportot. A bejelentkezett fiókban társítva az Azure-fiók, ha az erőforráscsoport legördülő megjeleníti az összes az Azure-erőforráscsoportok, amelyek tartalmazzák a Custom Vision Service erőforrás. 
 
-> [!NOTE]
-> Ha nincs erőforráscsoport nem érhető el, ellenőrizze, hogy bejelentkezett [customvision.ai](https://customvision.ai) szolgáltatásba való bejelentkezéshez használt ugyanazzal a fiókkal, a [az Azure Portal](https://portal.azure.com/). Ezenkívül erősítse meg kiválasztott "Könyvtárába" a Custom Vision portálon az Azure Portalon, ahol a Custom Vision erőforrások találhatók könyvtárként. Mindkét hely, előfordulhat, hogy válassza ki a címtárat, a képernyő jobb felső menüjében a legördülő listából. 
+   > [!NOTE]
+   > Ha nincs erőforráscsoport nem érhető el, ellenőrizze, hogy bejelentkezett [customvision.ai](https://customvision.ai) szolgáltatásba való bejelentkezéshez használt ugyanazzal a fiókkal, a [az Azure portal](https://portal.azure.com/). Ezenkívül erősítse meg kiválasztott "Könyvtárába" a Custom Vision portálon az Azure Portalon, ahol a Custom Vision erőforrások találhatók könyvtárként. Mindkét hely, előfordulhat, hogy válassza ki a címtárat, a képernyő jobb felső menüjében a legördülő listából. 
 
 1. Válassza ki __besorolási__ alatt __projekttípusok__. Ezután a __besorolási típust__, válasszon **Multilabel** vagy **osztályú**, attól függően, a használati eset. Multilabel besorolás a címkékkel tetszőleges számú közben többosztályos osztályozási (minden egyes kép küld be lesznek rendezve az a legvalószínűbb címke) egyetlen kategóriákba rendezi a lemezképek kép (nulla vagy több), vonatkozik. A besorolás típusának később módosíthatja, ha szeretné tudni fogja.
 
@@ -55,7 +55,7 @@ A böngészőben navigáljon a [Custom Vision weblap](https://customvision.ai) v
     |__Általános__| Optimalizált széles kép fájlosztályozási feladatokhoz. Ha más tartományok sem megfelelő, vagy Ön nem tudja biztosan, melyik tartománya, válassza ki, válassza ki a általános tartományt. |
     |__Élelmiszer__|Optimalizált csészék fényképeket, látnák őket egy étterem menüben. Ha szeretné besorolni különálló vagy zöldségek fényképek, használja az élelmiszer-tartomány.|
     |__Arcrész__|Könnyen felismerhető névre arcrész természetes és mesterséges optimalizálva. Ez a tartomány akkor működik a legjobban, ha a környezet a fénykép fókuszjelzőknek jól láthatóknak. Ez a tartomány működik, akkor is, ha a környezet némileg fedhetik személyek takarja.|
-    |__Kereskedelmi__|Optimalizált rendszerképeket, amelyeket egy vásárlási katalógus vagy a vásárlási webhelyén találhatók. Ha azt szeretné, hogy nagy pontosságú Írisz ruha pants és ing között, használja ezt a tartományt.|
+    |__Kiskereskedelem__|Optimalizált rendszerképeket, amelyeket egy vásárlási katalógus vagy a vásárlási webhelyén találhatók. Ha azt szeretné, hogy nagy pontosságú Írisz ruha pants és ing között, használja ezt a tartományt.|
     |__Felnőtt tartalom__|Optimalizált pontosabb meghatározásához a felnőtt tartalom, és nem felnőtt tartalom. Például ha azt szeretné, lemezképek emberek fürdés csomagok blokkolására, ebben a tartományban lehetővé teszi egyéni tartalombesoroló létrehozása valósítható meg.|
     |__Kompakt tartományok__| A korlátozások a mobileszközökön a valós idejű besorolás optimalizálva. A modellek kompakt tartományok által létrehozott helyi futtatásához exportálhatók.|
     
@@ -96,12 +96,7 @@ Ebben a szakaszban töltse fel, és manuálisan címkézhet meg képeket érdek�
 
     ![A folyamatjelző mutatja a minden feladat befejeződött.](./media/getting-started-build-a-classifier/add-images04.png)
 
-Tölthet fel képeket egy másik készletét, visszatérek a tetejére, az ebben a szakaszban, és ismételje meg a lépéseket. A projekt valamely pontján, előfordulhat, hogy hozzá kell _minták negatív_ annak érdekében, pontosabb az osztályozó által igénybe vett. Negatív minták azokat, amelyek a nem megfelelő más címkék. Ezek a lemezképek feltöltésekor a alkalmazni a speciális **negatív** címke működnek.
-
-> [!NOTE]
-> A Custom Vision Service néhány automatikus negatív kép kezelését támogatja. Például és banán osztályozó szőlőmustnak épít, és a egy cipő előrejelzéshez kép küldése, ha az osztályozó által igénybe vett kell pontszám a lemezképet, 0 % közelében szőlőmust és banán is.
-> 
-> Másrészről azokban az esetekben, ahol a negatív rendszerképekkel képzés használt rendszerképek egy változata, akkor valószínű, hogy a modell lesz a negatív képek besorolása, a nagyszerű Hasonlóságok miatt címkézett osztály. Például ha grépfrút osztályozó és a egy narancssárga rendelkezik, és a egy clementine képe, csatorna, előfordulhat, hogy pontszám a clementine egy narancs számos funkcióját a clementine csúcsos narancs, mert. Ha a negatív képek az ilyen jellegű, azt javasoljuk, létrehozhat egy vagy több további címkéket (például **más**) és a negatív képek a címkével ellátott címkét, hogy ezeket az osztályokat jobban megkülönböztetni a modell betanítása közben .
+Tölthet fel képeket egy másik készletét, visszatérek a tetejére, az ebben a szakaszban, és ismételje meg a lépéseket.
 
 ## <a name="train-the-classifier"></a>Az osztályozó betanítása
 
@@ -138,5 +133,5 @@ A bal oldali panelen is talál a **törlése** gombra, amely egy iterációját 
 
 Ebben az útmutatóban útmutatóból megtudhatta, hogyan hozhat létre, és a egy kép osztályozási modell a Custom Vision webhelyen betanításához. Ezután kérdezze le a további tájékoztatást a modell javításának az iteratív folyamat.
 
-[Modell tesztelése és újratanítása](test-your-model.md)
+[Tesztelje, és a modellek újratanítása](test-your-model.md)
 

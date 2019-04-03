@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
-ms.openlocfilehash: 4041bee71a41cee06243d53de128bcceecda5618
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: ac937ddb1bcaed6813a0de4d631f820eff01e26f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58001825"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877738"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>.NET-alkalmazások az Azure Service Fabric, a Felhőszolgáltatás és a virtuális gépek Snapshot Debugger engedélyezése
 
-Ha az ASP.NET- vagy ASP.NET core alkalmazás futtatása az Azure App Service-ben, az alábbi utasításokat is használható. Kivéve, ha az alkalmazás egy pillanatkép-hibakereső konfigurációs van szüksége, erősen javasoljuk, hogy [Snapshot Debugger engedélyezése az Application Insights portál oldalán keresztül](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Ha az alkalmazás fut, az Azure Service Fabric, a felhőalapú szolgáltatás, a Virtual Machines és a helyszíni gépek, az alábbi utasítások alapján kell használni. 
+Ha az ASP.NET- vagy ASP.NET core alkalmazás futtatása az Azure App Service-ben, az alábbi utasításokat is használható. Kivéve, ha az alkalmazás egy pillanatkép-hibakereső konfigurációs van szüksége, erősen javasoljuk, hogy [Snapshot Debugger engedélyezése az Application Insights portál oldalán keresztül](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Ha az alkalmazás Azure Service Fabric, a Cloud Service, a virtuális gép fut, vagy a helyszíni gépek, az alábbi utasítások alapján kell használni. 
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>Az ASP.NET-alkalmazások pillanatkép gyűjtésének konfigurálása
 

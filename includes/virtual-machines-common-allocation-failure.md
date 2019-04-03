@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 136c7e497b24db99b230884514d4a286bbeb64be
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8afaeaea3c8ceb0de33147e70e00f3f57c857ca7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084560"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883157"
 ---
 Hozzon létre egy virtuális gépet (VM), indítsa újra a leállított (felszabadított) virtuális gépek vagy virtuális gép átméretezése, a Microsoft Azure számítási erőforrásokat, amelyek az előfizetés foglal le. A Microsoft folyamatosan fektet be a további infrastruktúra és a szolgáltatások győződjön meg arról, hogy mindig van összes virtuális gép típusát támogatja az ügyfelek igényei szerint. Azonban alkalmanként tapasztalhat erőforrás foglalási hibák miatt az adott régióban található Azure-szolgáltatások iránti igény példa nélküli növekedését tapasztaltuk. Ez a probléma akkor fordulhat elő, amikor megpróbálja létrehozni, vagy indítsa el a virtuális gépek egy régióban, amíg a virtuális gépek a következő hibakóddal és üzenet megjelenítése:
 
 **Hibakód:**: AllocationFailed vagy ZonalAllocationFailed
 
-**Chybová zpráva**: "A lefoglalás sikertelen. Ebben a régióban nincs elegendő kapacitás a kért Virtuálisgép-méretet. További információ: sikeres javítása http://aka.ms/allocation-guidance"
+**Chybová zpráva**: "A lefoglalás sikertelen. Ebben a régióban nincs elegendő kapacitás a kért Virtuálisgép-méretet. További információ: sikeres javítása https://aka.ms/allocation-guidance"
 
 Ez a cikk ismerteti a gyakori hibák némelyike okait, és lehetséges megoldása javasol.
 
@@ -79,7 +79,7 @@ Azure-infrastruktúra bővítésekor üzembe új generációs tervezték, hogy a
 
 |Virtuálisgép-sorozat vagy méretének örökölt|Javasolt Virtuálisgép-sorozat vagy méretének újabb|További információ|
 |----------------------|----------------------------|--------------------|
-|Av1-sorozat|[Az Av2 sorozat](../articles/virtual-machines/windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
+|Av1-sorozat|[Av2-sorozat](../articles/virtual-machines/windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
 |Dv1 vagy DSv1 sorozat (D1-D5)|[Dv3 és a Dsv3 sorozat](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
 |Dv1 vagy DSv1 sorozat (D11 – D14)|[Ev3 vagy az Esv3-adatsorok](../articles/virtual-machines/windows/sizes-memory.md#esv3-series)|
 |D15v2 vagy DS15v2|TheResource Manager üzemi modell használatakor a nagyobb Virtuálisgép-méretek kihasználása érdekében érdemes lehet E16v3/E16sv3 vagy E32v3/E32sv3 történő áthelyezését. Ezek a legújabb generációs hardveren futtatott tervezték. Ha a Resource Manager üzemi modell használatával ellenőrizze, hogy a Virtuálisgép-példány egyetlen ügyfél számára dedikált hardverre elkülönített, fontolja meg az új elkülönített Virtuálisgép-méretek, E64i_v3 vagy E64is_v3, amely tervezték, hogy a legújabb generációs hardveren futtatott. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/

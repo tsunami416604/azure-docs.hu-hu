@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 64a7a52d39fcac87bdc49b9d36e80d453557bc5b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6ea8f4e591399e23b103871da115dbb937227ca9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002270"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850685"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>A Grafana az Azure-szolgáltatások figyelése
 Figyelheti az Azure szolgáltatásainak és alkalmazásainak [Grafana](https://grafana.com/) használatával a [Azure Monitor adatforrás-beépülő modul](https://grafana.com/plugins/grafana-azure-monitor-datasource). A beépülő modul az Azure Monitor, beleértve a különböző naplókat és mérőszámokat által gyűjtött alkalmazásteljesítmény-adatokat gyűjt. Ezután a Grafana irányítópulton jeleníti meg ezeket az adatokat.
@@ -47,7 +47,7 @@ Egy helyi Grafana kiszolgáló beállításához [töltse le és telepítse a Gr
 
 7. A Grafana kiszolgáló nyilvános IP-címének lekéréséhez – térjen vissza az erőforrásokat, és válassza ki a lista **nyilvános IP-cím**.
 
-## <a name="log-in-to-grafana"></a>Jelentkezzen be a Grafana számára
+## <a name="sign-in-to-grafana"></a>Jelentkezzen be a Grafana
 
 1. A kiszolgáló IP-cím használatával, nyissa meg a bejelentkezési lapot a *http://\<IP-cím\>: 3000* vagy a  *\<DNSName >\:3000* a böngészőben. Az alapértelmezett port pedig a 3000 vegye figyelembe, előfordulhat, hogy kiválasztott egy másik portot a telepítés során. A Grafana kiszolgáló létrehozott egy bejelentkezési lapját kell megjelennie.
 
@@ -167,5 +167,5 @@ Ha a telepítő a Grafana környezet az Azure-ban, amikor a virtuális gépek fu
 2. Az erőforráscsoport oldalán kattintson **törlése**, típus **Grafana** a szövegmezőbe, és kattintson a **törlése**.
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure Monitor-metrikák áttekintése](../../azure-monitor/platform/data-collection.md)
+* [Az Azure Monitor-metrikák áttekintése](data-platform.md)
 

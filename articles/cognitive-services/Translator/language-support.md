@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4f5c7696e711db7c128317f7ed17dc051e8fd18a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: d98922937781fd169d34881fa67a6b5746d06df7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803119"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882464"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
@@ -118,15 +118,15 @@ A Transliterate módszer a következő nyelveket támogatja. A "/", a "<> –" a
 | héber | `he` | héber `Hebr` | <--> | Latin `Latn` |
 | hindi | `hi` | Devanagári `Deva` | <--> | Latin `Latn` |
 | japán | `ja` | japán `Jpan` | <--> | Latin `Latn` |
-| kannada | `kn` | Kannada `Knda` | --> | Latin `Latn` |
+| kannada | `kn` | kannada `Knda` | --> | Latin `Latn` |
 | malajálam | `ml` | malajálam `Mlym` | --> | Latin `Latn` |
 | maráthi | `mr` | Devanagári `Deva` | --> | Latin `Latn` |
-| orija | `or` | Orija `Orya` | <--> | Latin `Latn` |
+| orija | `or` | orija `Orya` | <--> | Latin `Latn` |
 | pandzsábi | `pa` | Gurmukhi `Guru`  | <--> | Latin `Latn`  |
 | szerb (cirill betűs) | `sr-Cyrl` | Cyrilice `Cyrl`  | --> | Latin `Latn` |
 | szerb (latin betűs) | `sr-Latn` | Latin `Latn` | --> | Cyrilice `Cyrl`|
 | tamil | `ta` | tamil `Taml` | --> | Latin `Latn` |
-| telugu | `te` | Telugu `Telu` | --> | Latin `Latn` |
+| telugu | `te` | telugu `Telu` | --> | Latin `Latn` |
 | thai | `th` | thai `Thai` | <--> | Latin `Latn` |
 
 ## <a name="dictionary"></a>Szótár
@@ -268,7 +268,7 @@ A Translator Text API 3.0 a nyelvek metódussal a támogatott nyelvek listáját
 
 ## <a name="customization"></a>Testreszabás
 
-Az alábbi nyelveken érhetők el, vagy az angol nyelvű testreszabási [egyéni a fordítót](http://aka.ms/CustomTranslator).
+Az alábbi nyelveken érhetők el, vagy az angol nyelvű testreszabási [egyéni a fordítót](https://aka.ms/CustomTranslator).
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|

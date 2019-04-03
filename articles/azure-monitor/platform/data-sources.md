@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 4ae8ae43d8c245270b64611bed0ac4930aa0ecc3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6d03c219025c8cd39214bd8ab6807125709f9742
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763422"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849677"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Az Azure monitorban adatok forrásai
-Ez a cikk ismerteti az Azure Monitor állapotát és teljesítményét az erőforrások és a rajtuk futó alkalmazások figyelése által gyűjtött adatok forrásai. Ezeket az erőforrásokat az Azure-ban, egy másik felhőben vagy helyszíni lehet.  Lásd: [Azure Monitor által gyűjtött adatok](data-collection.md) hogyan tárolja ezeket az adatokat, és hogyan tekintheti meg.
+Ez a cikk ismerteti az Azure Monitor állapotát és teljesítményét az erőforrások és a rajtuk futó alkalmazások figyelése által gyűjtött adatok forrásai. Ezeket az erőforrásokat az Azure-ban, egy másik felhőben vagy helyszíni lehet.  Lásd: [Azure Monitor által gyűjtött adatok](data-platform.md) hogyan tárolja ezeket az adatokat, és hogyan tekintheti meg.
 
 Rétegek, a legmagasabb szinten az alkalmazás és bármely operációs rendszerek és az alacsonyabb rétegek folyamatban van az Azure platform összetevői monitorozási adatok az Azure-ban a különböző forrásokból csoportosítható származnak. Ezt szemlélteti az alábbi ábrán az egyes szintek, a következő szakaszok részletesen ismertetjük.
 
@@ -59,7 +59,7 @@ Metrikák és erőforrás szintű diagnosztikai naplók kapcsolatos adatok megad
 
 
 ### <a name="metrics"></a>Mérőszámok
-A legtöbb Azure-szolgáltatásokat hoz létre [platform metrikák](data-collection.md#metrics) , amely tükrözi a teljesítmény és működés. Az adott [metrikák változnak az olyan erőforrástípusok](metrics-supported.md).  Ezeket elérhető metrikák analytics és a népszerű és más elemzése a Log Analytics használatával a naplókhoz lehet másolni.
+A legtöbb Azure-szolgáltatásokat hoz létre [platform metrikák](data-platform-metrics.md) , amely tükrözi a teljesítmény és működés. Az adott [metrikák változnak az olyan erőforrástípusok](metrics-supported.md).  Ezeket elérhető metrikák analytics és a népszerű és más elemzése a Log Analytics használatával a naplókhoz lehet másolni.
 
 
 ### <a name="resource-diagnostic-logs"></a>Erőforrás-diagnosztikai naplók
@@ -116,4 +116,4 @@ Az Azure Monitor naplózási adatokat gyűjt a bármely REST-ügyfél használat
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet a [típusú monitorozási adatait az Azure Monitor által gyűjtött](data-collection.md) , és hogyan tekintheti meg és elemezheti ezeket az adatokat.
+- Tudjon meg többet a [típusú monitorozási adatait az Azure Monitor által gyűjtött](data-platform.md) , és hogyan tekintheti meg és elemezheti ezeket az adatokat.

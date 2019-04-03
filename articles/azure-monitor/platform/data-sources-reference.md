@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 02b4b2efb447e3ba8c45caa378268ec402b5c3e7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c703f735f59a8425c2a14641781f482a6e2d1c78
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001981"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848539"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Az Azure monitorozási adatok felhasználásához
 
@@ -42,13 +42,13 @@ Az Azure platformon keresztül azt is összevonhatja az Azure Monitor, egyetlen 
 | Az Azure Monitor metrikákhoz kapcsolódó riasztások | Értesítések | [Itt a lista](metrics-supported.md) | <ul><li>**Webhook:** [Az Azure metrikákhoz kapcsolódó riasztások](alerts-webhooks.md)</li></ul> |
 | Azure Monitor tevékenységnapló-riasztások | Értesítések | Azure-szolgáltatásokhoz | <ul><li>**Webhook:** Azure tevékenységnapló-riasztások</li></ul> |
 | Automatikus méretezési értesítésekhez | Értesítések | [Itt a lista](autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [Automatikus skálázási értesítések adattartalom webhookséma](autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Keresési lekérdezés naplóriasztások | Értesítések | Az Azure Monitor naplóira | <ul><li>**Webhook:** [Webhook művelettel a riasztási szabály](alerts-log-webhook.md)</li></ul> |
+| Keresési lekérdezés naplóriasztások | Értesítések | Azure Monitor-naplók | <ul><li>**Webhook:** [Webhook művelettel a riasztási szabály](alerts-log-webhook.md)</li></ul> |
 | Application Insights metrikákhoz kapcsolódó riasztások | Értesítések | Application Insights | <ul><li>**Webhook:** [Application Insights-riasztások](../../azure-monitor/app/alerts.md)</li></ul> |
 | Application Insights-webtesztek | Értesítések | Application Insights | <ul><li>**Webhook:** [Application Insights-riasztások](../../azure-monitor/app/alerts.md)</li></ul> |
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [Azure Monitor-metrikák](data-collection.md)
+- Tudjon meg többet [Azure Monitor-metrikák](data-platform.md)
 - Tudjon meg többet [az Azure-tevékenységnapló](activity-logs-overview.md)
 - Tudjon meg többet [Azure diagnosztikai naplók](diagnostic-logs-overview.md)
 

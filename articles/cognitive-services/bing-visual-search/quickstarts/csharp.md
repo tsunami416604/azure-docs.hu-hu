@@ -8,30 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 5/16/2018
+ms.date: 3/28/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7961fb05f7ca9c6e6b61330e7dff53f2d5a41001
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d2f5e87bd6c6780e8504abe1753e90eca5db763a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535314"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880406"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Gyors útmutató: A Bing Visual Search REST API használatával kép elemzések lekérése ésC#
 
-Ez a rövid útmutató segítségével a Bing Visual Search API az első hívását, és megtekintheti a keresési eredmények között. Ez egyszerű C# alkalmazás feltölt egy képet az API-hoz, és a visszaadott kapcsolatos információkat jeleníti meg.
+Ez a rövid útmutató bemutatja, hogyan tölthet fel képeket, a Bing Visual Search API, valamint a elemzési eredményeket adja vissza.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
-* A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
-* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
+* A [Json.NET keretrendszer](https://www.newtonsoft.com/json), NuGet-csomagként érhető el.
+* Ha Linux/MacOS rendszeren használja, akkor futtathatja az alkalmazást a [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új, `BingSearchApisQuickStart` nevű konzolmegoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
+1. A Visual Studióban hozzon létre egy új konzol megoldás BingSearchApisQuickStart nevű. A fő kódfájl adja hozzá a következő névterek:
 
     ```csharp
     using System;
@@ -41,16 +41,15 @@ Ez a rövid útmutató segítségével a Bing Visual Search API az első hívás
     using System.Collections.Generic;
     ```
 
-2. Adja hozzá a változókat az előfizetési kulcs, végpont és a feltölteni kívánt kép elérési útját.
+2. Adja hozzá a feltölteni kívánt kép változói az előfizetési kulcs, végpont és elérési útja:
 
     ```csharp
-        const string accessKey = "<yoursubscriptionkeygoeshere>";
+        const string accessKey = "<my_subscription_key>";
         const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
-        static string imagePath = @"<pathtoimagegoeshere>";
+        static string imagePath = @"<path_to_image>";
     ```
 
-
-1. Hozzon létre egy meghívott metódus `GetImageFileName()` az elérési utat a rendszerkép lekérése
+3. Hozzon létre egy metódust `GetImageFileName()` beolvasni a lemezkép elérési útja:
     
     ```csharp
     static string GetImageFileName(string path)
@@ -59,7 +58,7 @@ Ez a rövid útmutató segítségével a Bing Visual Search API az első hívás
             }
     ```
 
-2. Hozzon létre egy metódus a bináris karaktereket a kép lekéréséhez.
+4. A rendszerkép a bináris adatok metódus létrehozása:
 
     ```csharp
     static byte[] GetImageBinary(string path)
@@ -70,7 +69,7 @@ Ez a rövid útmutató segítségével a Bing Visual Search API az első hívás
 
 ## <a name="build-the-form-data"></a>Az űrlap-adatok létrehozása
 
-Ha feltöltenek egy helyi lemezképet, az űrlapadatokat, az API-nak küldött megfelelően kell formázni. A tartalom-szabályozó fejléc tartalmaznia kell a `name` paramétert állítsa "image", és a `filename` paraméter bármilyen karakterlánc lehet beállítani. A képernyő tartalmát a rendszerkép a bináris fájlt tartalmaz. A legnagyobb feltölthető képméret 1 MB.
+A helyi rendszerképet tölt fel, a képernyőn az API-hoz elküldendő adatok először létre. Az űrlapadatok tartalmaznia kell a `Content-Disposition` fejléc, annak `name` paraméter "image" értékre kell állítani, és a `filename` bármilyen karakterlánc paraméterrel állítható. A képernyő tartalmát a rendszerkép a bináris adatokat tartalmaz. A maximális képméret feltöltheti az 1 MB.
 
     ```
     --boundary_1234-abcd
@@ -81,7 +80,7 @@ Ha feltöltenek egy helyi lemezképet, az űrlapadatokat, az API-nak küldött m
     --boundary_1234-abcd--
     ```
 
-1. Az űrlap adatok formázásához, a POST űrlapadatok megfelelően formázási határ karakterláncok hozzáadása, amely meghatározza, hogy elején, teljes és az adatok soremelés karaktert.
+1. Adja hozzá a határ karakterláncok POST űrlap adatok formázásához. Határ karakterláncok határozza meg a kezdő, teljes és sortörés karaktereket az adatok:
 
     ```csharp
     // Boundary strings for form data in body of POST.
@@ -91,14 +90,14 @@ Ha feltöltenek egy helyi lemezképet, az űrlapadatokat, az API-nak küldött m
     static string EndBoundaryTemplate = "--{0}--";
     ```
 
-2. Az alábbi változókat paraméterek hozzáadása az űrlapadatok használható. 
+2. Paraméterek hozzáadása az űrlapadatok használja az alábbi változókat:
 
     ```csharp
     const string CONTENT_TYPE_HEADER_PARAMS = "multipart/form-data; boundary={0}";
     const string POST_BODY_DISPOSITION_HEADER = "Content-Disposition: form-data; name=\"image\"; filename=\"{0}\"" + CRLF +CRLF;
     ```
 
-3. Hozzon létre egy függvényt, nevű `BuildFormDataStart()` létrehozása az űrlap adatokat, a hálózathatár-karakterláncok és a lemezkép elérési útja elején része.
+3. Hozzon létre egy függvényt, nevű `BuildFormDataStart()` hozhat létre az űrlapadatokat, a határ karakterláncok és a lemezkép elérési útja kezdete:
     
     ```csharp
         static string BuildFormDataStart(string boundary, string filename)
@@ -112,7 +111,7 @@ Ha feltöltenek egy helyi lemezképet, az űrlapadatokat, az API-nak küldött m
         }
     ```
 
-4. Hozzon létre egy függvényt, nevű `BuildFormDataEnd()` hozhat létre a befejezési része az űrlap adatokat, a határ karakterláncok használatával.
+4. Hozzon létre egy függvényt, nevű `BuildFormDataEnd()` létrehozása az űrlap adatokat, a határ karakterláncok használatával végén:
     
     ```csharp
         static string BuildFormDataEnd(string boundary)
@@ -123,11 +122,11 @@ Ha feltöltenek egy helyi lemezképet, az űrlapadatokat, az API-nak küldött m
 
 ## <a name="call-the-bing-visual-search-api"></a>A Bing Visual Search API meghívása
 
-1. Hozzon létre egy függvényt, a Bing Visual Search-végpont meghívására, és a json-választ adja vissza. A függvény a kezdő vehet igénybe, és a befejező rész fo az űrlapadatokat, egy bájttömböt a rendszerkép-adatok és a egy contentType értéket tartalmazó.
+1. Hozzon létre egy függvényt, amely a Bing Visual Search-végpont meghívása, és a JSON-választ adja vissza. A függvény vesz igénybe, a kezdő és befejező adatai, egy bájttömböt a lemezkép-adatokat tartalmazó és a egy `contentType` értéket.
 
 2. Használja a `WebRequest` URI, contentType értéket, és a fejlécek tárolásához.  
 
-3. Használat `request.GetRequestStream()` az űrlap és a bináris adatokat írni. Kérje le a választ. Ez a funkció az alábbi kódhoz hasonlóan kell kinéznie:
+3. Használat `request.GetRequestStream()` a űrlap és a rendszerkép az adatokat, majd a választ. A függvény az alábbihoz hasonló lesz:
         
     ```csharp
         static string BingImageSearch(string startFormData, string endFormData, byte[] image, string contentTypeValue)
@@ -157,16 +156,16 @@ Ha feltöltenek egy helyi lemezképet, az űrlapadatokat, az API-nak küldött m
         }
     ```
 
-## <a name="create-the-main-method"></a>A fő metódus létrehozása
+## <a name="create-the-main-method"></a>Hozzon létre a Main metódushoz
 
-1. Az alkalmazás fő metódusban beolvasása a fájl nevét és a lemezkép bináris a rendszerképet. 
+1. Az a `Main` metódus az alkalmazás, a filename és a bináris adatokat, a lemezkép beolvasása:
 
     ```csharp
     var filename = GetImageFileName(imagePath);
     var imageBinary = GetImageBinary(imagePath);
     ```
 
-2. Állítsa be a bejegyzés törzse, a határ formázását. Ezután hívja meg `startFormData()` és `endFormData` , az űrlap adatok létrehozásához. 
+2. Állítsa be a bejegyzés törzse, a határ formázását. Ezután hívja meg `startFormData()` és `endFormData` , az űrlap adatok létrehozásához:
 
     ```csharp
     // Set up POST body.
@@ -175,13 +174,13 @@ Ha feltöltenek egy helyi lemezképet, az űrlapadatokat, az API-nak küldött m
     var endFormData = BuildFormDataEnd(boundary);
     ```
 
-3. Hozzon létre a ContentType értéket formázás `CONTENT_TYPE_HEADER_PARAMS` és az űrlap adatok határ.
+3. Hozzon létre a `ContentType` formázás érték `CONTENT_TYPE_HEADER_PARAMS` és adatok képernyőn határa:
 
     ```csharp
     var contentTypeHdrValue = string.Format(CONTENT_TYPE_HEADER_PARAMS, boundary);
     ```
 
-4. Az API-válasz lekérése meghívásával `BingImageSearch()`. Ezután nyomtassa ki a választ.
+4. Az API-válasz lekérése meghívásával `BingImageSearch()` és a válasz:
 
     ```csharp
     var json = BingImageSearch(startFormData, endFormData, imageBinary, contentTypeHdrValue);
@@ -192,9 +191,9 @@ Ha feltöltenek egy helyi lemezképet, az űrlapadatokat, az API-nak küldött m
 
 ## <a name="using-httpclient"></a>HttpClient használata
 
-HttpClient használata esetén a MultipartFormDataContent segítségével létrehozhatja az űrlapadatokat. Cserélje le az előző példában található elnevezett metódusokat a következő kódszakaszokra.
+Ha `HttpClient`, használhatja a `MultipartFormDataContent` hozhat létre az űrlapadatok osztály. Csak a következő részekben kód cserélje le az előző példában a megfelelő módszerek.
 
-Cserélje le a Main metódust a következő kódra:
+Cserélje le a `Main` metódus ezzel a kóddal:
 
 ```csharp
         static void Main()
@@ -234,7 +233,7 @@ Cserélje le a Main metódust a következő kódra:
         }
 ```
 
-Cserélje le a BingImageSearch metódust a következő kódra:
+Cserélje le a `BingImageSearch` metódus ezzel a kóddal:
 
 ```csharp
         /// <summary>
@@ -271,4 +270,4 @@ Cserélje le a BingImageSearch metódust a következő kódra:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyéni keresés webes alkalmazás készítése](../tutorial-bing-visual-search-single-page-app.md)
+> [Hozzon létre egy vizuális keresés egyoldalas webalkalmazást](../tutorial-bing-visual-search-single-page-app.md)

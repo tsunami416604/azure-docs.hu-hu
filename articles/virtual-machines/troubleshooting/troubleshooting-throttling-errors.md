@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: 401bd3badc555ee001fbc355c7bdb77786c2d053
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: fa65b108f3aea79d4417e65d706d42f0bd819f54
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977813"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880712"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API szabályozási hibák elhárítása 
 
@@ -35,7 +35,7 @@ Amikor egy Azure API-ügyfél megkapja a sávszélesség-szabályozási hiba, a 
 | Fejléc                            | Érték formátuma                           | Példa                               | Leírás                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | A Teljesítményszabályozási szabályzat, amely többek között a kérelem a cél erőforráscsoport gyűjtőben vagy a művelet az API-hívások számát van hátra                                                                   |
-| x-ms-request-charge               | ```<count>   ```                             | 1                                     | A hívások száma counts "felszámított" a HTTP-kérelem a megfelelő csoportházirend-korlát felé. Ez leggyakrabban az 1. Kérések, például a méretezése egy virtuálisgép-méretezési csoportot, több counts díjat. |
+| x-ms-request-charge               | ```<count>```                             | 1                                     | A hívások száma counts "felszámított" a HTTP-kérelem a megfelelő csoportházirend-korlát felé. Ez leggyakrabban az 1. Kérések, például a méretezése egy virtuálisgép-méretezési csoportot, több counts díjat. |
 
 
 Vegye figyelembe, hogy egy API-kérelem is kell alávetni, több Teljesítményszabályozási szabályzat. Egy külön lesz `x-ms-ratelimit-remaining-resource` minden fejléc. 

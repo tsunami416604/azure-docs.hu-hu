@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2019
 ms.author: bwren
-ms.openlocfilehash: 3557aa4236904a3654d40337e391fbcaa5486894
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 8f645f7d569546a8362d0149806a2b4636567fd0
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430772"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847993"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Az Azure Monitor elnevezési és terminológiát módosítások
 Jelentős módosultak az Azure monitornak nemrég, a különböző szolgáltatásokkal, konszolidált annak érdekében, hogy megkönnyítheti a figyelést az Azure-ügyfelek számára. Ez a cikk ismerteti a legutóbbi neve és az Azure Monitor dokumentációja terminológia változásait.
@@ -26,7 +26,7 @@ Jelentős módosultak az Azure monitornak nemrég, a különböző szolgáltatá
 Után az Azure Monitor különböző szolgáltatások összevonása azt még tart a következő lépés az általunk kiadott dokumentációról jobban írja le az Azure Monitor szolgáltatás és különböző összetevőjét terminológia módosításával. 
 
 ### <a name="log-analytics"></a>Log Analytics
-Az Azure Monitor log adatok nem a Log Analytics-munkaterületen tárolja, és továbbra is gyűjti, és az ugyanazon a Log Analytics szolgáltatás által elemzett, de az időszak azért módosítottuk _Log Analytics_ több helyen való _Azure Monitor-naplók_ . Ez a kifejezés jobban az Azure monitorban szerepét, és biztosítja a hatékonyabb konzisztencia [metrikák az Azure monitorban](platform/data-collection.md).
+Az Azure Monitor log adatok nem a Log Analytics-munkaterületen tárolja, és továbbra is gyűjti, és az ugyanazon a Log Analytics szolgáltatás által elemzett, de az időszak azért módosítottuk _Log Analytics_ több helyen való _Azure Monitor-naplók_ . Ez a kifejezés jobban az Azure monitorban szerepét, és biztosítja a hatékonyabb konzisztencia [metrikák az Azure monitorban](platform/data-platform-metrics.md).
 
 Az előfizetési időszak _log analytics_ elsődlegesen vonatkozik az oldal írható, és lekérdezéseket futtathat, és elemezheti a naplófájlok adatait az Azure Portalon. A működési egyenértékű [metrikaböngésző](platform/metrics-charts.md), ez az oldal metrikai adatok elemzéséhez az Azure Portalon.
 

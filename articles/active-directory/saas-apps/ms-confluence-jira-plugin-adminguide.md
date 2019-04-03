@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a674748e9e95828436df25222f6daad881e0487
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109137"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862862"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Az Azure Active Directory Atlassian Jira és való összefolyás felett rendszergazdai útmutatója
 
@@ -112,11 +112,11 @@ Az alábbi képen látható Jira és való összefolyás felett is a következő
 
 * **Metaadatok URL-címe**: Az Azure AD összevonási metaadatok beolvasása az URL-címe.
 
-* **Azonosítók**: Az URL-címet használó Azure ad-ben a forrás, a kérelem ellenőrzése. Vannak leképezve a **azonosító** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/.
+* **Azonosítók**: Az URL-címet használó Azure ad-ben a forrás, a kérelem ellenőrzése. Vannak leképezve a **azonosító** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím*\<tartomány és a portszám >*/.
 
-* **Válasz URL-cím**: Az identitásszolgáltató (IdP) kezdeményező SAML bejelentkezési válasz URL-cím. Vannak leképezve a **válasz URL-cím** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/plugins/servlet/saml/auth.
+* **Válasz URL-cím**: Az identitásszolgáltató (IdP) kezdeményező SAML bejelentkezési válasz URL-cím. Vannak leképezve a **válasz URL-cím** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím*\<tartomány és a portszám >*/plugins/servlet/saml/auth.
 
-* **Bejelentkezési URL-cím**: A bejelentkezési URL-címet az identitásszolgáltató SAML bejelentkezési kezdeményező. Vannak leképezve a **bejelentkezés** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím *< tartomány: port >*/plugins/servlet/saml/auth.
+* **Bejelentkezési URL-cím**: A bejelentkezési URL-címet az identitásszolgáltató SAML bejelentkezési kezdeményező. Vannak leképezve a **bejelentkezés** elem az Azure ad-ben. A beépülő modul automatikusan osztályból a https:// URL-cím*\<tartomány és a portszám >*/plugins/servlet/saml/auth.
 
 * **Identitásszolgáltató Entitásazonosító**: Az entitás azonosítója, amely az identitásszolgáltató használja. Ez a mező fel van töltve, ha megoldották a metaadatok URL-címe.
 

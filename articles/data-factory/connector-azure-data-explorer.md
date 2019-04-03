@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: orspod
-ms.openlocfilehash: 4e2448b3043c194bda884963975d85536c329baf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6138fadd060051c1b4264cd844ca2a4b8c28116a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531640"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880032"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása, vagy az Azure az adatkezelőt az Azure Data Factory használatával
 
@@ -66,7 +66,7 @@ Azure Data Explorer társított szolgáltatás a következő tulajdonságok tám
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** tulajdonságot állítsa **AzureDataExplorer** | Igen |
-| endpoint | Végpont fürt URL-címét az Azure Data Explorer, a következő formátumban, `https://<clusterName>.<regionName>.kusto.windows.net `. | Igen |
+| endpoint | Végpont fürt URL-címét az Azure Data Explorer, a következő formátumban, `https://<clusterName>.<regionName>.kusto.windows.net`. | Igen |
 | adatbázis | Adatbázis neve. | Igen |
 | bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Ez a szokásos módon tapasztalatai szerint "**szolgáltató azonosító**" a [Kusto-kapcsolati karakterlánc](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Az Azure portal jobb felső sarkában az egérrel viszi, lekéréséhez. | Igen |
 | servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. Ez a szokásos módon tapasztalatai szerint "**AAD-alkalmazás Ügyfélazonosítója**" a [Kusto-kapcsolati karakterlánc](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Igen |
@@ -141,7 +141,7 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a **típus** tulajdons�
 >[!NOTE]
 >Alapértelmezés szerint az Azure Data Explorer forrás rendelkezik 500 000 rekord vagy 64 MB-os méretkorlátot. Csonkolási nélkül a rekordok lekéréséhez is megadhat `set notruncation;` , a lekérdezés elején. Tekintse meg [lekérdezési korlátok](https://docs.microsoft.com/azure/kusto/concepts/querylimits) a további részleteket.
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -183,7 +183,7 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a type tulajdonság, a 
 | type | A **típus** értékre kell állítani a másolási tevékenység fogadó tulajdonságát: **AzureDataExplorerSink** | Igen |
 | ingestionMappingName | Egy előre létrehozott nevét **[leképezés](/azure/kusto/management/mappings#csv-mapping)** Kusto táblán. Az oszlopok forrásból az Adatkezelőbe az Azure - vonatkozik, amelyek leképezése **[összes támogatott forrás-tárolók/formátumok](copy-activity-overview.md#supported-data-stores-and-formats)** stb formázza a CSV vagy JSON/Avro is beleértve, használhatja a másolási tevékenység [oszlop leképezés](copy-activity-schema-and-type-mapping.md) (név alapján implicit vagy explicit módon konfigurált) és/vagy Azure Data Explorer leképezések. | Nem |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[

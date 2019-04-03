@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 02/20/2019
-ms.openlocfilehash: ce510168e2aa92758a3468fa55ff7b2a8d39b547
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 0d75b983ad6d3b6256852335dc523b481bbe046f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360267"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885893"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>Engedélyezze a naplózást az Azure Machine Learning szolgáltatás
 
@@ -115,7 +115,7 @@ Is bejelentkezhet egyéni veremkiíratásokat Application Insights, amely lehet�
 service.update(enable_app_insights=True)
 ```
 
-Tekintse meg a [útmutató](how-to-enable-app-insights.md#enable-and-disable-in-the-portal) további információ az Application Insights használata az Azure Portalon.
+Tekintse meg a [útmutató](how-to-enable-app-insights.md) további információ az Application Insights használata az Azure Portalon.
 
 ## <a name="python-native-logging-settings"></a>Python natív naplózási beállítások
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6cfe9b61d9bbb088e827386b2195bba21333937e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ae01b0fb088035240e670c16d4d457d8abda1bfa
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649086"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848929"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Hozzon létre egy teszteléséhez ügyfél való használatát egy Azure-beli virtuálisgép-lemezkép
 
@@ -51,7 +51,7 @@ Az alábbi ábrán látható, az engedélyezés működése a szolgáltatások k
 A teszteléséhez API tartalmaz egy végpontot, amely támogatja a POST-metódus.  Az alábbi struktúrával rendelkezik.
 
 ```
-Uri:             https:\//isvapp.azurewebsites.net/selftest-vm
+Uri:             https://isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -357,7 +357,7 @@ Az alábbi képernyőfelvétel-készítés mutat példát a curl-parancs haszná
 
 ### <a name="to-create-and-get-a-token-using-c35"></a>Hozhat létre, és a C használatával egy token beszerzése&#35;
 
-Kérje meg az Auth0 bármely az engedélyezett alkalmazások jogkivonatokat, hajtsa végre a POST műveletnek a [ https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) koncového bodu egy hasznos adat a következő formátumban:
+Kérje meg az Auth0 bármely az engedélyezett alkalmazások jogkivonatokat, hajtsa végre a POST művelet a https:\//soamtenant.auth0.com/oauth/token koncového bodu egy hasznos adat a következő formátumban:
 
 ```csharp
 string clientId = "Your Application Id";
@@ -380,7 +380,7 @@ var token = JObject.Parse(content)["access_token"];
 
 ### <a name="to-create-and-get-a-token-using-powershell"></a>Hozhat létre, és a egy PowerShell-lel token beszerzése
 
-Kérje meg az Auth0 bármely az engedélyezett alkalmazások jogkivonatokat, hajtsa végre a POST műveletnek a [ https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) koncového bodu egy hasznos adat a következő formátumban:
+Kérje meg az Auth0 bármely az engedélyezett alkalmazások jogkivonatokat, hajtsa végre a POST művelet a https:\//soamtenant.auth0.com/oauth/token koncového bodu egy hasznos adat a következő formátumban:
 
 ```powershell
 $clientId = "Application Id of AD Client APP";

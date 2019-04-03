@@ -1,6 +1,6 @@
 ---
 title: Az SAP számítási feladatok SQL Server Azure virtuális gépek DBMS üzembe |} A Microsoft Docs
-description: Az SQL Server Azure virtuális gépek DBMS üzembe helyezési SAP számítási feladatokhoz
+description: SQL Server rendszerű Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aac7ca7aa67143f89d9247da879a6fad2cfbb7b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c12c75bd5c357613d55e04aed67c0cc901135e6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992495"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881086"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines DBMS deployment for SAP NetWeaver
 
@@ -235,7 +235,6 @@ ms.locfileid: "57992495"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -477,8 +476,8 @@ Magas rendelkezésre ÁLLÁS módszer, az SQL Server Naplóküldést. Ha a magas
 Az SQL Server-naplóküldés funkció alig használja az Azure-ban egy Azure-régióban a magas rendelkezésre állás eléréséhez. Azonban a következő esetekben ügyfelek használta a naplóküldés sikeres együtt az Azure-ral:
 
 - Azure-régióból egy másik Azure-régióba történő vész-helyreállítási helyzetekben
-- Vészhelyreállítási konfiguráció helyszínről az Azure-régióba
-- Kivágási feladatátvételi forgatókönyvek helyszínről az Azure-bA. Ezekben az esetekben naplóküldés szolgál az új DBMS üzembe helyezés az Azure-ban és a folyamatos éles rendszer helyszíni szinkronizálása. Cutting keresztül időpontjában éles leáll, és arról, hogy a legutóbbi és a legújabb tranzakciónapló biztonsági mentései át lett az Azure DBMS üzembe helyezési történik. Ezután az Azure DBMS üzembe helyezési számára van nyitva éles környezetben.  
+- Vészhelyreállítási konfiguráció a helyszínről az Azure-régióba
+- Kivágási feladatátvételi forgatókönyvek a helyszínről az Azure-bA. Ezekben az esetekben naplóküldés szolgál az új DBMS üzembe helyezés az Azure-ban és a folyamatos éles rendszer helyszíni szinkronizálása. Cutting keresztül időpontjában éles leáll, és arról, hogy a legutóbbi és a legújabb tranzakciónapló biztonsági mentései át lett az Azure DBMS üzembe helyezési történik. Ezután az Azure DBMS üzembe helyezési számára van nyitva éles környezetben.  
 
 
 
@@ -525,13 +524,13 @@ Egy SQL Servert használó ügyfelek száma [transzparens adattitkosítási (TDE
 ### <a name="applying-sql-server-tde"></a>TDE SQL-kiszolgáló alkalmazása
 Azokban az esetekben, ahol egy másik adatbázis-kezelő, a helyszínen futó Azure-ban futó Windows vagy SQL Server a heterogén áttelepítés végrehajtása az üres céllal adatbázis az SQL Server előre kell létrehoznia. Következő lépésként, az SQL Server TDE funkció lenne alkalmazhatja. Amíg az éles rendszer helyi továbbra is futnak. Ez a sorozat a végrehajtani kívánt oka, hogy az üres adatbázis titkosító is eltarthat még egy darabig. Az SAP-importálási folyamatokat szeretne majd az adatok importálása a titkosított adatbázis az állásidő fázisban. Gyűjteményértékelést kelljen végezni egy titkosított adatbázis való importálásakor, mint az adatbázis titkosító után az exportálási folyamat fázisai a le módon alacsonyabb idő hatással van ideje fázisban. Negatív teljesen, ha a alkalmazni a TDE az adatbázis felett futó SAP számítási feladat a tett kísérlet során. Ezért javaslat van való kezelése központi telepítését a TDE, egy tevékenységgel, amely az SAP számítási feladatok az adott adatbázis nélkül kell elvégezni.
 
-Azokban az esetekben, ahol áthelyezi az SAP az SQL Server-adatbázisok helyszínről az Azure-bA javasoljuk, hogy mely infrastruktúrát a alkalmazni leggyorsabb titkosítási beszerezheti a teszteléshez. Ezt tartsa szem előtt ezeket a tények:
+Azokban az esetekben, ahol SAP SQL Server adatbázisok áthelyezése a helyszínről az Azure-bA javasoljuk, hogy mely infrastruktúrát a alkalmazni leggyorsabb titkosítási beszerezheti a teszteléshez. Ezt tartsa szem előtt ezeket a tények:
 
 - Hány szál használható adattitkosítás alkalmazandó az adatbázist nem lehet definiálni. Szálak száma a szolgáltatás az SQL Server adathoz és naplófájlhoz be vannak elosztva kötetek száma majorly függ. Azt jelenti, hogy a különböző kötetek (meghajtó-betűjelek), a több szál kell elvégezni a titkosítást fog párhuzamosan kell bekapcsolni. Ilyen konfiguráció egy kicsit javaslattal korábbi lemez konfigurációja az egy-vagy Azure virtuális gépeken futó SQL Server adatbázis-fájlok a tárolóhelyek kevesebb ellentmond. Egy konfigurációt a kötetek kis számú szál végrehajtása a titkosítás kis számú vezetne. Egy egyetlen szálból titkosítása van olvasása 64 KB-os egységek, titkosítja, és majd írja be a tranzakciós naplófájlt, amely arról tájékoztat, hogy a mértékben titkosítva lett egy rekordot. Ennek eredményeképpen a tranzakciós napló terhelése mérsékelt.
 - Az SQL Server régebbi kiadásokban biztonságimásolat-tömörítési funkciók nem tudták beszerezni hatékonyság többé, ha az SQL Server-adatbázis titkosított. Ezt a viselkedést sikerült fejlesztése problémába, amikor a csomag volt, hogy titkosítani az SQL Server adatbázis helyi, és másolja be a biztonsági másolat az Azure-ba, állítsa vissza az adatbázist az Azure-ban. Az SQL Server biztonságimásolat-tömörítési funkciók általában a tömörítési aránytól tényező 4 éri el.
 - Az SQL Server 2016 az SQL Server új funkció, amely lehetővé teszi a titkosított adatbázis, valamint tömöríti és hatékonyan vezetett be. Lásd: [a blogok](https://blogs.msdn.microsoft.com/sqlcat/2016/06/20/sqlsweet16-episode-1-backup-compression-for-tde-enabled-databases/) bizonyos részleteket.
  
-Az alkalmazás kevés SAP számítási feladatok csak a nem a TDE titkosítási kezelésére, tesztelje az adott konfigurációban meg, hogy-e jobb a alkalmazni a TDE az SAP adatbázis helyi vagy ehhez az Azure-ban. Az Azure-ban, természetesen magasabb fokú rugalmasság szempontjából fölösleges üzembe helyezési infrastruktúra és -csökkentése az infrastruktúra TDE van alkalmazása után.
+Az alkalmazás kevés SAP számítási feladatok csak a nem a TDE titkosítási kezelésére, tesztelje az adott konfigurációban az, hogy-e jobb a alkalmazni a TDE az SAP adatbázis a helyszíni vagy ehhez az Azure-ban. Az Azure-ban, természetesen magasabb fokú rugalmasság szempontjából fölösleges üzembe helyezési infrastruktúra és -csökkentése az infrastruktúra TDE van alkalmazása után.
 
 ### <a name="using-azure-key-vault"></a>Az Azure Key Vault használatával
 Az Azure szolgáltatás kínál egy [Key Vault](https://azure.microsoft.com/services/key-vault/) tárolja a titkosítási kulcsokat. SQL Server, a másik oldalon egy összekötőt, és kihasználhatja az Azure Key Vault a TDE-tanúsítványok tárolását is kínál.

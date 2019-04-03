@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81519a9452bf578c2640b547b2102b8e162e2878
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8f4f13a8b03f3ddba91fb4c4b69f550e1e88a491
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369785"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885077"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Az önkiszolgáló jelszó-visszaállítás hibaelhárítása
 
@@ -75,7 +75,7 @@ Az Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (S
 | A felhasználó hibaüzenetet látja, telefonszámát érvényesítése során. | Ez a hiba akkor fordul elő, ha a megadott telefonszám nem egyezik meg a fájl telefonszám. Győződjön meg arról, hogy a felhasználó a teljes telefonszám, többek között a terület- és ország kódot, amikor azok megkísérlik az olyan módszert használja a jelszó-visszaállításhoz lépjen be. |
 | Nincs hiba történt a kérelem feldolgozása közben. | Ez számos probléma okozhatja, de általában a hiba oka a szolgáltatás-kimaradás vagy konfigurációs hiba. Ha ezt a hibaüzenetet, és befolyásolhatná az üzleti, további segítségért forduljon a Microsoft ügyfélszolgálatához. |
 | A helyszíni szabályzat megsértése | A jelszó nem felel meg a helyszíni Active Directory jelszóházirend. |
-| Jelszó nem felel meg az intelligens házirend | A használt jelszót a letiltott jelszavak listájában jelenik meg, és nem használhatók. |
+| Jelszó nem felel meg az intelligens házirend | Megjelenik a jelszót használt a [le van tiltva a jelszó lista](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad#how-are-passwords-evaluated) , és nem használható. |
 
 ## <a name="troubleshoot-password-writeback"></a>A jelszóvisszaíró hibaelhárítása
 
@@ -286,13 +286,13 @@ Megfelelően, hogy tegye fel meg minél részletesebb információt a lehető es
 A következő cikkek nyújtanak jelszó-visszaállítás, az Azure AD-n keresztül további információt:
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
-* [Jelszó visszaállítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Állítsa alaphelyzetbe vagy a jelszó módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Regisztráció önkiszolgáló jelszó-visszaállításra](../user-help/active-directory-passwords-reset-register.md)
-* [Kérdése van a licenceléssel kapcsolatban?](concept-sspr-licensing.md)
+* [Licencelési kérdése van?](concept-sspr-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](concept-sspr-howitworks.md#authentication-methods)
 * [Mik az SSPR szabályzatbeállításai?](concept-sspr-policy.md)
-* [Mi a jelszóvisszaíró, és miért fontos?](howto-sspr-writeback.md)
-* [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](howto-sspr-reporting.md)
-* [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
-* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
+* [Mi a jelszóvisszaíró, és miért fontos információk?](howto-sspr-writeback.md)
+* [Hogyan jelenthetem a tevékenység az SSPR-ben?](howto-sspr-reporting.md)
+* [Mik azok az összes beállítás az SSPR-ben, és mire azok mean?](concept-sspr-howitworks.md)
+* [Szeretnék feltenni egy kérdést, amely máshol nem szerepelt más](active-directory-passwords-faq.md)

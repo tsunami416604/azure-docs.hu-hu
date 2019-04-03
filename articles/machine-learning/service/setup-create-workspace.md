@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: e55c898cdbb45dc7ff3466c61e968e3ae52be0cb
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f417aef1fd1cc48a37399ff7a157a0e658bbbb02
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521006"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879284"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Az Azure Machine Learning szolgáltatás munkaterület létrehozása
 
@@ -37,11 +37,11 @@ A munkaterület létrehozásakor a következő Azure-erőforrások lettek hozzá
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
 >[!Note]
->Csakúgy, mint más Azure-szolgáltatások, bizonyos korlátok és kvóták társítva a Machine Learning. [Ismerje meg a kvótákat és azt, hogyan kérhet belőlük többet.](how-to-manage-quotas.md)
+>Csakúgy, mint más Azure-szolgáltatások, bizonyos korlátok és kvóták társítva a Machine Learning. [Ismerje meg a kvóták és arról, hogyan kérhető több.](how-to-manage-quotas.md)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Munkaterület létrehozásához Azure-előfizetés szükséges. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree) még ma.
+Munkaterület létrehozásához Azure-előfizetés szükséges. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 ## <a name="portal"></a> Az Azure Portalon
 
@@ -139,7 +139,7 @@ Hozza létre a munkaterületet egy Jupyter Notebookot, a Python SDK használatá
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
 
-1. Keresse meg az értéket a `<azure-subscription-id>` paramétert a [előfizetési listát az Azure Portalon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Bármelyik előfizetést használhatja, amelyben a szerepköre tulajdonos vagy közreműködő.
+1. Keresse meg az értéket a `<azure-subscription-id>` paramétert a [előfizetési listát az Azure Portalon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Bármelyik előfizetést használhatja, amelyben a szerepköre tulajdonos vagy közreműködő. Szerepkörökkel kapcsolatos további információkért lásd: [osztálynak az Azure Machine Learning-munkaterület](how-to-assign-roles.md) cikk.
 
    ```python
    from azureml.core import Workspace

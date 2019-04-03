@@ -1,6 +1,6 @@
 ---
 title: Meglévő adatok áttelepítése az Azure Cosmos DB Table API-fiókot
-description: Ismerje meg, hogyan áttelepítése vagy importálása a helyszíni vagy felhőbeli adatok Azure Table API-fiókba az Azure Cosmos DB-ben.
+description: Ismerje meg, hogyan áttelepítése vagy importálása a helyszíni vagy felhőalapú adatok Azure Table API-fiókba az Azure Cosmos DB-ben.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e709aa25a8fa0a8ff6c94bf2e813151e5ecbae65
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a0d2927024dff78021d433b965bb6c0149236ddd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58006239"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876817"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Adatok migrálása az Azure Cosmos DB Table API-fiókba
 
@@ -39,11 +39,11 @@ Az Azure Cosmos DB parancssori adatmigrálási eszközének (dt.exe) segítség�
 Egy tábla adatainak migrálásához hajtsa végre az alábbi feladatokat:
 
 1. Töltse le a migrálási eszközt a [GitHubról](https://github.com/azure/azure-documentdb-datamigrationtool).
-2. Futtassa a `dt.exe` fájlt a forgatókönyvnek megfelelő parancssori argumentumokkal. A `dt.exe` a következő formátumban fogad el parancsokat:
+2. Futtassa a `dt.exe` fájlt a forgatókönyvnek megfelelő parancssori argumentumokkal. `dt.exe` a következő formátumban veszi a parancsot:
 
    ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
-```
+   ```
 
 A parancshoz használható kapcsolók:
 
@@ -74,9 +74,9 @@ Az Azure Cosmos DB Table API (előzetes verzió) szolgáltatásban létrehozott 
 
 ![Képernyőkép a HBase forrásbeállításairól](./media/table-import/cosmos-connection-string.png)
 
-[Példaparancs az Azure Table Storage esetén](#azure-table-storage)
+[Azure Table Storage mintaparancs](#azure-table-storage)
 
-[Példaparancs az Azure Cosmos DB Table API (előzetes verzió) esetén](#table-api-preview)
+[Mintául szolgáló Azure Cosmos DB Table API (előzetes verzió) parancs](#table-api-preview)
 
 ### <a name="command-line-target-settings"></a>Parancssori célbeállítások
 
@@ -147,4 +147,4 @@ Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 Továbbléphet a következő oktatóanyagra, amelyben megtudhatja, hogyan kérdezhet le adatokat az Azure Cosmos DB Table API használatával. 
 
 > [!div class="nextstepaction"]
->[Hogyan kérdezhetők le adatok?](../cosmos-db/tutorial-query-table.md)
+>[Hogyan kérdezhet le adatokat?](../cosmos-db/tutorial-query-table.md)

@@ -4,7 +4,7 @@ description: Az Azure Data Lake Storage Gen1 csatlakozhat az Azure virtuális h�
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
-manager: jhubbard
+manager: mtillman
 editor: cgronlun
 ms.assetid: 683fcfdc-cf93-46c3-b2d2-5cb79f5e9ea5
 ms.service: data-lake-store
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: a2367eff3095df82662f7b56571ecdbd966609fd
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c8d028a981d7811ed2c864db5750afc83ab93b2b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284012"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878060"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Hozzáférés az Azure Data Lake Storage Gen1 egy Azure virtuális hálózaton belüli virtuális gépek
 Az Azure Data Lake Storage Gen1 egy PaaS szolgáltatás, amely a nyilvános internetes IP-címeket. Bármely kiszolgálóra, amely képes kapcsolódni a nyilvános interneten általában csatlakozhat az Azure Data Lake Storage Gen1 végpontokat is. Alapértelmezés szerint minden virtuális gépre, amelyek az Azure Vneteken hozzáférnek az internethez, és így hozzáférhet az Azure Data Lake Storage Gen1. Azonban fontos konfigurálhatja a virtuális gépek Internet-hozzáféréssel rendelkezik a virtuális hálózaton. Az ilyen virtuális gépek az Azure Data Lake Storage Gen1 való hozzáférés korlátozva is. Nyilvános Internet-hozzáférés letiltása a virtuális gépek az Azure Vneteken teheti meg a következő módszerek bármelyikével:

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: df0dd3f54fb645590ff6e5b30a7ccc42f5ddd2eb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c3a3305197802906077dab330a6b51c1195c6c36
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036273"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879471"
 ---
 # <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>Az Azure Cosmos DB Ownership(TCO) teljes költsége
 
@@ -20,7 +20,7 @@ Az Azure Cosmos DB-a részletes több-bérlős és erőforrás-szabályozási te
 
 A nyílt Forráskódú nosql-alapú adatbázis megoldások, például az Apache Cassandra, MongoDB, a HBase- és motorok helyszíni lettek tervezve. Ha egy felügyelt szolgáltatásként érhető el azok a kiépített fürtök kezeléséhez és monitorozásához támogatási bérlői adatbázist a Resource Manager-sablon egyenértékű. Nyílt Forráskódú nosql-alapú architektúrák működési jelentős többletterhelést igényel, és azzal a szakértelemmel bonyolult és költséges találja. Másrészről az Azure Cosmos DB az olyan teljes körűen felügyelt felhőszolgáltatás, amely lehetővé teszi a fejlesztők számára, hogy fókusz üzleti innováció kezeléséről és adatbázis-infrastruktúra karbantartása helyett. 
 
-Egy natív adatbázis-szolgáltatás az Azure Cosmos DB, ellentétben a nosql-alapú nyílt Forráskódú adatbázismotorokat is nem terveztük és készítettük el az erőforrás-szabályozás vagy a minden részletre kiterjedő több-bérlős, az architekturális alapelveket. Nosql-alapú nyílt Forráskódú adatbázismotorokat, például Cassandra, MongoDB, és győződjön meg, egy alapvető feltételezzük, hogy a virtuális gép, amelyen fut az erőforrások elérhetők-e a használatukat. Ezek adatbázismotorokat számos nem fog működni, ha egy meghatározott küszöbérték alá csökken az erőforrás-mennyiséggel. Például kis méretű virtuális gép példányokat és azok érhetők el a szállítói ajánlott konfigurációkat javasolhat általában nagy méretű virtuális gépek magasabb költsége. Így nincs lehetőség egy nyílt Forráskódú nosql-alapú vagy bármely más helyszíni adatbázis-kezelő üzemeltethet, és a egy fogyasztásalapú díjszabási modell használatával például a kérelmek száma második vagy a felhasznált tárolási elérhetővé tenni.
+Egy natív adatbázis-szolgáltatás az Azure Cosmos DB, ellentétben a nosql-alapú nyílt Forráskódú adatbázismotorokat is nem terveztük és készítettük el az erőforrás-szabályozás vagy a minden részletre kiterjedő több-bérlős, az architekturális alapelveket. Nosql-alapú nyílt Forráskódú adatbázismotorokat, például Cassandra, MongoDB, és győződjön meg, egy alapvető feltételezzük, hogy a virtuális gép, amelyen fut az erőforrások elérhetők-e a használatukat. Ezek adatbázismotorokat számos nem fog működni, ha egy meghatározott küszöbérték alá csökken az erőforrás-mennyiséggel. Például kis méretű virtuális gép példányokat és azok érhetők el a szállítói ajánlott konfigurációkat javasolhat általában nagy méretű virtuális gépek magasabb költsége. Ezért nem lehetséges egy nyílt Forráskódú nosql-alapú üzemeltetésére, vagy bármely más helyszíni adatbázis-motorral, és lehetővé teszi egy fogyasztásalapú díjszabási modell használatával például a kérelmek száma második vagy a felhasznált tárolási.
 
 ## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Az Azure Cosmos DB tulajdonosi költségek 
 
@@ -38,7 +38,7 @@ A kiszolgáló nélküli üzembe helyezési modell az Azure Cosmos DB nincs szü
 
 * **Optimalizálva a felhőben:** Az Azure Cosmos DB részletes több-bérlős és a teljesítmény elkülönítését az alapoktól tervezték. Ez lehetővé teszi az optimális elhelyezése, végrehajtását és a bérlők és a számítási feladatok több ezer terheléselosztási fürtök és adatközpontok között. Ezzel szemben a nyílt Forráskódú NoSQL-adatbázisok a jelenlegi generációja működnek a helyszíni a teljes virtuális gépet feltételezi, hogy egyetlen bérlő számítási feladatok futtatásához. Ezek az adatbázisok nem is célja egy felhőszolgáltató infrastruktúra hardver- és a teljes mértékben kihasználni. Például egy nyílt Forráskódú nosql-alapú adatbázis-kezelő nem Vs le a virtuális gép folyamatban közötti különbségek figyelembe rutin lemezkép frissítése, vagy azt a tényt, hogy prémium szintű lemez már háromutas replikálja. Ez nem kihasználhatja ezeket az előnyöket, és adja át az előnyök és megtakarítások az ügyfelek számára.
 
-* **Óránkénti fizet:** Nagy méretű számítási feladatok esetén, hogy bármikor idő alatt szükség van, csak alapján számítjuk fel az órát. A számítási feladatok az alkalmazások általában az év, és a lekérdezett adatok között változhat. Az Azure Cosmos DB skálázhatja felfelé vagy lefelé kell, és csak akkor kell fizetnie. Helyszíni vagy IaaS által üzemeltetett rendszerekkel ebben a modellben nem egyezik, mert nincs olyan módon, a hardver óránként leszerelése. Ezekben az esetekben is potenciálisan mentheti közötti 10-14-szerese az Azure Cosmos DB az átlagos.
+* **Óránkénti fizet:** Nagy méretű számítási feladatok esetén, hogy bármikor idő alatt szükség van, csak alapján számítjuk fel az órát. A számítási feladatok az alkalmazások általában az év, és a lekérdezett adatok között változhat. Az Azure Cosmos DB skálázhatja felfelé vagy lefelé kell, és csak akkor kell fizetnie. A helyszíni vagy IaaS által üzemeltetett rendszerekkel ebben a modellben nem egyezik, mert nincs olyan módon, a hardver óránként leszerelése. Ezekben az esetekben is potenciálisan mentheti közötti 10-14-szerese az Azure Cosmos DB az átlagos.
 
 * **Számos funkciója ingyenesen kap:** Az Azure Cosmos DB a számítási feladatok lényegében olcsóbb összehasonlítja másodlagos adatbázis-szolgáltatások írni. Emellett az Azure Cosmos DB szolgáltatást kínál például például [Automatikus indexelés](indexing-policies.md), [élettartamot (TTL)](time-to-live.md), [módosítási hírcsatorna](change-feed.md) és más egyéb költségek nélkül valami más adatbázis-szolgáltatások jellemzően díja szerint számítjuk fel.
 

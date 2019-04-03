@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 549ec74514ff03e06ff25893d3fa865f179470e9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ab439eb77113c53ab046256dd8d448a18b63f887
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870686"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850068"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
@@ -70,10 +70,10 @@ Az Azure-tevékenységnapló adatok küldése az Event Hubs-névtér, beállíth
 ## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Azure-erőforrás-metrikák és diagnosztikai naplók
 
 Azure-erőforrás szolgáltat két típusú monitorozási adatait:
-1. [Erőforrás-diagnosztikai naplók](./../../azure-monitor/platform/diagnostic-logs-overview.md)
-2. [Metrikák](../../azure-monitor/platform/data-collection.md)
+1. [Erőforrás-diagnosztikai naplók](diagnostic-logs-overview.md)
+2. [Metrikák](data-platform.md)
 
-Mindkét típusú adatokat egy eseményközpontba egy erőforrás diagnosztikai beállításának érkeznek. [Ezt az útmutatót](./../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) állíthat be egy adott erőforrás az erőforrás diagnosztikai beállítást. Állítsa be, minden egyes erőforrás, amelyről el szeretné naplók gyűjtése az erőforrások diagnosztikai beállítása.
+Mindkét típusú adatokat egy eseményközpontba egy erőforrás diagnosztikai beállításának érkeznek. [Ezt az útmutatót](diagnostic-logs-stream-event-hubs.md) állíthat be egy adott erőforrás az erőforrás diagnosztikai beállítást. Állítsa be, minden egyes erőforrás, amelyről el szeretné naplók gyűjtése az erőforrások diagnosztikai beállítása.
 
 > [!TIP]
 > Az Azure Policy segítségével győződjön meg arról, hogy egy adott hatókörön belül minden erőforrás mindig be van állítva a diagnosztikai beállítást [a DeployIfNotExists hatást a szabályzatbeli szabályban használatával](../../governance/policy/concepts/definition-structure.md#policy-rule).

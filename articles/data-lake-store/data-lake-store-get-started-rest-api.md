@@ -3,21 +3,21 @@ title: 'REST API: Fiókkezelési műveletek az Azure Data Lake Storage Gen1 |} A
 description: Fiókkezelési műveletek végrehajtása a Data Lake Storage Gen1 fiók az Azure Data Lake Storage Gen1 és a WebHDFS REST API használatával
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 57ac6501-cb71-4f75-82c2-acc07c562889
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: b2c4d38462cf617d8417b269d47a8c1bb0c266c3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 97fe33309f36cd7545f8c9d6c2d34671641caa1f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530118"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880168"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Fiókkezelési műveletek az Azure Data Lake Storage Gen1 REST API használatával
 > [!div class="op_single_selector"]

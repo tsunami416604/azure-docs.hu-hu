@@ -16,14 +16,14 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
-ms.custom: aaddev
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6ccc2a355b22c2235253b78a1efa3912234027a
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: c0614a6bc588a26a23dc9d3795e532a303a472e3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793492"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881647"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Engedélyek és jóváhagyás az Azure Active Directory v2.0-végpont
 
@@ -40,7 +40,7 @@ A Microsoft identity platform valósítja meg a [OAuth 2.0](active-directory-v2-
 
 * Microsoft Graph: `https://graph.microsoft.com`
 * Az Office 365 Posta API: `https://outlook.office.com`
-* Az Azure AD Graph: `https://graph.windows.net`
+* Azure AD Graph: `https://graph.windows.net`
 
 > [!NOTE]
 > Javasoljuk, hogy a Microsoft Graph használata helyett az Azure AD Graph, az Office 365 Posta API, stb.
@@ -82,7 +82,7 @@ OpenID Connect v2.0 végrehajtására van néhány jól meghatározott hatókör
 
 ### <a name="openid"></a>openid
 
-Ha egy alkalmazás segítségével hajtja végre a bejelentkezési [OpenID Connect](active-directory-v2-protocols.md), azt kell igényelnie a `openid` hatókör. A `openid` hatókör jeleníti meg a munkahelyi fiók hozzájárulást kérő lap, a "Bejelentkezés" engedéllyel, és a személyes Microsoft fiók hozzájárulást kérő lap, a "Saját profil megtekintése és a Microsoft-fiókját használó alkalmazásokhoz és szolgáltatásokhoz való csatlakozás" engedéllyel. Ezzel az engedéllyel, egy alkalmazás akkor fogadhat egy egyedi azonosítót a felhasználó formájában a `sub` jogcím. Azt is hozzáférést biztosít az alkalmazás a UserInfo végpontra. A `openid` hatókör azonosító-jogkivonatokat, ami használható alkalmazás különböző összetevői közötti HTTP-hívások biztonságossá tételéhez beszerzésére használható jogkivonat 2.0-s verziójú végpontján.
+Ha egy alkalmazás segítségével hajtja végre a bejelentkezési [OpenID Connect](active-directory-v2-protocols.md), azt kell igényelnie a `openid` hatókör. A `openid` hatókör jeleníti meg a munkahelyi fiók hozzájárulást kérő lap, a "Bejelentkezés" engedéllyel, és a személyes Microsoft fiók hozzájárulást kérő lap, a "Saját profil megtekintése és a Microsoft-fiókját használó alkalmazásokhoz és szolgáltatásokhoz való csatlakozás" engedéllyel. Ezzel az engedéllyel, egy alkalmazás akkor fogadhat egy egyedi azonosítót a felhasználó formájában a `sub` jogcím. Azt is hozzáférést biztosít az alkalmazás a UserInfo végpontra. A `openid` hatókör beszerezni azonosító-jogkivonatokat, ami a hitelesítéshez használható az alkalmazás által használható jogkivonat 2.0-s verziójú végpontján.
 
 ### <a name="email"></a>e-mail
 

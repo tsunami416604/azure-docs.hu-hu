@@ -9,16 +9,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 03/28/2019
 ms.author: celested
-ms.reviewer: paulgarn, hirsin, jeedes
+ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af00c311b406a0bae285a00f0d537ce9bae3aa7e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e492586f0c70d4cd3013ef8f466afd6bb2bb65ac
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102109"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884077"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: A bérlőben (előzetes verzió) egy adott alkalmazáshoz tartozó jogkivonatok kibocsátott jogcímek testreszabása
 
@@ -52,142 +52,142 @@ Vannak bizonyos csoportok, amelyek meghatározzák, hogy mikor és hogyan haszn�
 
 ### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>1. táblázat: JSON webes jogkivonat (JWT) korlátozott jogcímek készletéhez
 
-|Jogcím típusa (név)|
+| Jogcím típusa (név) |
 | ----- |
-|_claim_names|
-|_claim_sources|
-|access_token|
-|account_type|
-|acr|
-|aktor|
-|actortoken|
-|aio-ra|
-|altsecid|
-|AMR|
-|app_chain|
-|app_displayname|
-|app_res|
-|appctx|
-|appctxsender|
-|alkalmazásazonosító|
-|appidacr|
-|assertion|
-|at_hash|
-|AUD|
-|auth_data|
-|auth_time|
-|authorization_code|
-|azp|
-|azpacr|
-|c_hash|
-|ca_enf|
-|cc|
-|cert_token_use|
-|client_id|
-|cloud_graph_host_name|
-|cloud_instance_name|
-|cnf|
-|Kód|
-|vezérlők|
-|credential_keys|
-|CSR-fájl|
-|csr_type|
-|az eszközazonosító|
-|dns_names|
-|domain_dns_name|
-|domain_netbios_name|
-|e_exp|
-|e-mail|
-|endpoint|
-|enfpolids|
-|Exp|
-|expires_on|
-|grant_type|
-|gráf|
-|group_sids|
-|csoportok|
-|hasgroups|
-|hash_alg|
-|home_oid|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/expired`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier`|
-|IAT|
-|identitásszolgáltató|
-|identitásszolgáltató|
-|in_corp|
-|példány|
-|ipaddr|
-|isbrowserhostedapp|
-|iss|
-|jwk|
-|key_id|
-|key_type|
-|mam_compliance_url|
-|mam_enrollment_url|
-|mam_terms_of_use_url|
-|mdm_compliance_url|
-|mdm_enrollment_url|
-|mdm_terms_of_use_url|
-|nameid|
-|NBF|
-|netbios_name|
-|egyszeri|
-|objektumazonosító|
-|on_prem_id|
-|onprem_sam_account_name|
-|onprem_sid|
-|openid2_id|
-|jelszó|
-|platf|
-|polids|
-|pop_jwk|
-|preferred_username|
-|previous_refresh_token|
-|primary_sid|
-|PUID azonosítója|
-|pwd_exp|
-|pwd_url|
-|redirect_uri|
-|refresh_token|
-|refreshtoken|
-|request_nonce|
-|erőforrás|
-|szerepkör|
-|roles|
-|scope|
-|scp|
-|biztonsági azonosító|
-|aláírás|
-|signin_state|
-|src1|
-|src2|
-|Sub|
-|tbid|
-|tenant_display_name|
-|tenant_region_scope|
-|thumbnail_photo|
-|TID|
-|tokenAutologonEnabled|
-|trustedfordelegation|
-|unique_name|
-|egyszerű felhasználónév|
-|user_setting_sync_url|
-|felhasználónév|
-|uti|
-|ver|
-|verified_primary_email|
-|verified_secondary_email|
-|wids|
-|win_ver|
+| _claim_names |
+| _claim_sources |
+| access_token |
+| account_type |
+| acr |
+| aktor |
+| actortoken |
+| aio-ra |
+| altsecid |
+| AMR |
+| app_chain |
+| app_displayname |
+| app_res |
+| appctx |
+| appctxsender |
+| alkalmazásazonosító |
+| appidacr |
+| assertion |
+| at_hash |
+| AUD |
+| auth_data |
+| auth_time |
+| authorization_code |
+| azp |
+| azpacr |
+| c_hash |
+| ca_enf |
+| cc |
+| cert_token_use |
+| client_id |
+| cloud_graph_host_name |
+| cloud_instance_name |
+| cnf |
+| Kód |
+| vezérlők |
+| credential_keys |
+| CSR-fájl |
+| csr_type |
+| az eszközazonosító |
+| dns_names |
+| domain_dns_name |
+| domain_netbios_name |
+| e_exp |
+| e-mail |
+| endpoint |
+| enfpolids |
+| Exp |
+| expires_on |
+| grant_type |
+| gráf |
+| group_sids |
+| csoportok |
+| hasgroups |
+| hash_alg |
+| home_oid |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/expired` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
+| IAT |
+| identitásszolgáltató |
+| identitásszolgáltató |
+| in_corp |
+| példány |
+| ipaddr |
+| isbrowserhostedapp |
+| iss |
+| jwk |
+| key_id |
+| key_type |
+| mam_compliance_url |
+| mam_enrollment_url |
+| mam_terms_of_use_url |
+| mdm_compliance_url |
+| mdm_enrollment_url |
+| mdm_terms_of_use_url |
+| nameid |
+| NBF |
+| netbios_name |
+| egyszeri |
+| objektumazonosító |
+| on_prem_id |
+| onprem_sam_account_name |
+| onprem_sid |
+| openid2_id |
+| jelszó |
+| platf |
+| polids |
+| pop_jwk |
+| preferred_username |
+| previous_refresh_token |
+| primary_sid |
+| PUID azonosítója |
+| pwd_exp |
+| pwd_url |
+| redirect_uri |
+| refresh_token |
+| refreshtoken |
+| request_nonce |
+| erőforrás |
+| szerepkör |
+| roles |
+| scope |
+| scp |
+| biztonsági azonosító |
+| aláírás |
+| signin_state |
+| src1 |
+| src2 |
+| Sub |
+| tbid |
+| tenant_display_name |
+| tenant_region_scope |
+| thumbnail_photo |
+| TID |
+| tokenAutologonEnabled |
+| trustedfordelegation |
+| unique_name |
+| egyszerű felhasználónév |
+| user_setting_sync_url |
+| felhasználónév |
+| uti |
+| ver |
+| verified_primary_email |
+| verified_secondary_email |
+| wids |
+| win_ver |
 
 ### <a name="table-2-saml-restricted-claim-set"></a>2. táblázat: SAML korlátozott jogcímek készletéhez
 
-|Jogcím típusa (URI)|
+| Jogcím típusa (URI) |
 | ----- |
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/expired`|
@@ -196,7 +196,7 @@ Vannak bizonyos csoportok, amelyek meghatározzák, hogy mikor és hogyan haszn�
 |`http://schemas.microsoft.com/identity/claims/identityprovider`|
 |`http://schemas.microsoft.com/identity/claims/objectidentifier`|
 |`http://schemas.microsoft.com/identity/claims/puid`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1] `|
+|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1]`|
 |`http://schemas.microsoft.com/identity/claims/tenantid`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod`|
@@ -246,7 +246,7 @@ Szabályozhatja a rendszer kibocsátott jogcímek és az adatok forrását, hasz
 
 **Adattípus:** Logikai érték (IGAZ vagy hamis)
 
-**Összefoglalás:** Ez a tulajdonság határozza meg, hogy az egyszerű jogcímek készletében szerepel-e a jogkivonatokban Ez a szabályzat által érintett. 
+**Összefoglalás:** Ez a tulajdonság határozza meg, hogy az egyszerű jogcímek készletében szerepel-e a jogkivonatokban Ez a szabályzat által érintett.
 
 - Ha igaz értékű, az egyszerű jogcímek készletében lévő összes jogcímek a jogkivonatokban, a szabályzat által érintett kibocsátása megtörténik. 
 - Ha az értéke HAMIS, az egyszerű jogcímek készletében lévő jogcímek nem szerepelnek a jogkivonatokat, kivéve, ha ugyanaz a szabályzat jogcímek séma tulajdonságában külön-külön kerül.
@@ -284,51 +284,51 @@ Az azonosító elem azonosítja, mely tulajdonság a forrás az értéket ad meg
 
 #### <a name="table-3-valid-id-values-per-source"></a>3. táblázat: Forrás azonosítója érvényes értéket
 
-|Forrás|ID (Azonosító)|Leírás|
+| Forrás | ID (Azonosító) | Leírás |
 |-----|-----|-----|
-|Felhasználó|Vezetéknév|Család neve|
-|Felhasználó|givenName|utónév;|
-|Felhasználó|DisplayName|Megjelenítendő név|
-|Felhasználó|objektumazonosító|ObjectID|
-|Felhasználó|levelezés|E-mail-cím|
-|Felhasználó|userprincipalname|Felhasználó egyszerű neve|
-|Felhasználó|Szervezeti egység|Részleg|
-|Felhasználó|onpremisessamaccountname|A helyi Sam-fiók neve|
-|Felhasználó|netbiosname|NetBios-név|
-|Felhasználó|dnsdomainname|Dns Domain Name|
-|Felhasználó|onpremisesecurityidentifier|a helyszíni biztonsági azonosítója|
-|Felhasználó|Cégnév|Szervezet neve|
-|Felhasználó|streetAddress|Utca, házszám|
-|Felhasználó|Irányítószám|Postai irányítószám|
-|Felhasználó|preferredlanguange|Elsődleges nyelv|
-|Felhasználó|onpremisesuserprincipalname|a helyszíni egyszerű Felhasználónévvel|
-|Felhasználó|mailnickname|Levelezési becenév|
-|Felhasználó|extensionattribute1|Mellék attribútum 1|
-|Felhasználó|extensionattribute2|Mellék attribútum 2|
-|Felhasználó|extensionattribute3|Mellék attribútum 3|
-|Felhasználó|extensionattribute4|Mellék attribútum 4|
-|Felhasználó|extensionattribute5|Mellék attribútum 5|
-|Felhasználó|extensionattribute6|Mellék attribútum 6|
-|Felhasználó|extensionattribute7|Mellék attribútum 7|
-|Felhasználó|extensionattribute8|Mellék attribútum 8|
-|Felhasználó|extensionattribute9|Mellék attribútum 9|
-|Felhasználó|extensionattribute10|Mellék attribútum 10|
-|Felhasználó|extensionattribute11|Mellék attribútum 11|
-|Felhasználó|extensionattribute12|Mellék attribútum 12|
-|Felhasználó|extensionattribute13|Mellék attribútum 13|
-|Felhasználó|extensionattribute14|Mellék attribútum 14|
-|Felhasználó|extensionattribute15|Mellék attribútum 15|
-|Felhasználó|othermail|Egyéb E-mail|
-|Felhasználó|Ország|Ország|
-|Felhasználó|city|Város|
-|Felhasználó|state|Állapot|
-|Felhasználó|Beosztás|Beosztás|
-|Felhasználó|EmployeeID|Alkalmazott azonosítója|
-|Felhasználó|facsimiletelephonenumber|Fax telefonszáma|
-|alkalmazás, erőforrás, célközönség|DisplayName|Megjelenítendő név|
-|alkalmazás, erőforrás, célközönség|hozzáadást|ObjectID|
-|alkalmazás, erőforrás, célközönség|tags|Egyszerű szolgáltatás címke|
-|Vállalat|tenantcountry|Bérlő országában|
+| Felhasználó | Vezetéknév | Család neve |
+| Felhasználó | givenName | utónév; |
+| Felhasználó | DisplayName | Megjelenítendő név |
+| Felhasználó | objektumazonosító | ObjectID |
+| Felhasználó | levelezés | E-mail-cím |
+| Felhasználó | userprincipalname | Felhasználó egyszerű neve |
+| Felhasználó | Szervezeti egység|Részleg|
+| Felhasználó | onpremisessamaccountname | A helyi SAM-fiók neve |
+| Felhasználó | netbiosname| NetBios-név |
+| Felhasználó | dnsdomainname | DNS-tartománynév |
+| Felhasználó | onpremisesecurityidentifier | a helyszíni biztonsági azonosítója |
+| Felhasználó | Cégnév| Szervezet neve |
+| Felhasználó | streetAddress | Utca, házszám |
+| Felhasználó | Irányítószám | Postai irányítószám |
+| Felhasználó | preferredlanguange | Elsődleges nyelv |
+| Felhasználó | onpremisesuserprincipalname | a helyszíni egyszerű Felhasználónévvel |
+| Felhasználó | mailnickname | Levelezési becenév |
+| Felhasználó | extensionattribute1 | Mellék attribútum 1 |
+| Felhasználó | extensionattribute2 | Mellék attribútum 2 |
+| Felhasználó | extensionattribute3 | Mellék attribútum 3 |
+| Felhasználó | extensionattribute4 | Mellék attribútum 4 |
+| Felhasználó | extensionattribute5 | Mellék attribútum 5 |
+| Felhasználó | extensionattribute6 | Mellék attribútum 6 |
+| Felhasználó | extensionattribute7 | Mellék attribútum 7 |
+| Felhasználó | extensionattribute8 | Mellék attribútum 8 |
+| Felhasználó | extensionattribute9 | Mellék attribútum 9 |
+| Felhasználó | extensionattribute10 | Mellék attribútum 10 |
+| Felhasználó | extensionattribute11 | Mellék attribútum 11 |
+| Felhasználó | extensionattribute12 | Mellék attribútum 12 |
+| Felhasználó | extensionattribute13 | Mellék attribútum 13 |
+| Felhasználó | extensionattribute14 | Mellék attribútum 14 |
+| Felhasználó | extensionattribute15 | Mellék attribútum 15 |
+| Felhasználó | othermail | Egyéb E-mail |
+| Felhasználó | Ország | Ország |
+| Felhasználó | city | Város |
+| Felhasználó | state | Állapot |
+| Felhasználó | Beosztás | Beosztás |
+| Felhasználó | EmployeeID | Alkalmazott azonosítója |
+| Felhasználó | facsimiletelephonenumber | Fax telefonszáma |
+| alkalmazás, erőforrás, célközönség | DisplayName | Megjelenítendő név |
+| alkalmazás, erőforrás, célközönség | hozzáadást | ObjectID |
+| alkalmazás, erőforrás, célközönség | tags | Egyszerű szolgáltatás címke |
+| Vállalat | tenantcountry | Bérlő országában |
 
 **TransformationID:** A TransformationID elemhez kötelező megadni, csak akkor, ha a forrás elem "átalakítás" értékre van állítva.
 
@@ -386,32 +386,32 @@ A kiválasztott módszert alapján, bemenetek és kimenetek várható. A bemenet
 
 |Forrás|ID (Azonosító)|Leírás|
 |-----|-----|-----|
-|Felhasználó|levelezés|E-mail-cím|
-|Felhasználó|userprincipalname|Felhasználó egyszerű neve|
-|Felhasználó|onpremisessamaccountname|A helyi Sam-fiók neve|
-|Felhasználó|EmployeeID|Alkalmazott azonosítója|
-|Felhasználó|extensionattribute1|Mellék attribútum 1|
-|Felhasználó|extensionattribute2|Mellék attribútum 2|
-|Felhasználó|extensionattribute3|Mellék attribútum 3|
-|Felhasználó|extensionattribute4|Mellék attribútum 4|
-|Felhasználó|extensionattribute5|Mellék attribútum 5|
-|Felhasználó|extensionattribute6|Mellék attribútum 6|
-|Felhasználó|extensionattribute7|Mellék attribútum 7|
-|Felhasználó|extensionattribute8|Mellék attribútum 8|
-|Felhasználó|extensionattribute9|Mellék attribútum 9|
-|Felhasználó|extensionattribute10|Mellék attribútum 10|
-|Felhasználó|extensionattribute11|Mellék attribútum 11|
-|Felhasználó|extensionattribute12|Mellék attribútum 12|
-|Felhasználó|extensionattribute13|Mellék attribútum 13|
-|Felhasználó|extensionattribute14|Mellék attribútum 14|
-|Felhasználó|extensionattribute15|Mellék attribútum 15|
+| Felhasználó | levelezés|E-mail-cím|
+| Felhasználó | userprincipalname|Felhasználó egyszerű neve|
+| Felhasználó | onpremisessamaccountname|A helyi Sam-fiók neve|
+| Felhasználó | EmployeeID|Alkalmazott azonosítója|
+| Felhasználó | extensionattribute1 | Mellék attribútum 1 |
+| Felhasználó | extensionattribute2 | Mellék attribútum 2 |
+| Felhasználó | extensionattribute3 | Mellék attribútum 3 |
+| Felhasználó | extensionattribute4 | Mellék attribútum 4 |
+| Felhasználó | extensionattribute5 | Mellék attribútum 5 |
+| Felhasználó | extensionattribute6 | Mellék attribútum 6 |
+| Felhasználó | extensionattribute7 | Mellék attribútum 7 |
+| Felhasználó | extensionattribute8 | Mellék attribútum 8 |
+| Felhasználó | extensionattribute9 | Mellék attribútum 9 |
+| Felhasználó | extensionattribute10 | Mellék attribútum 10 |
+| Felhasználó | extensionattribute11 | Mellék attribútum 11 |
+| Felhasználó | extensionattribute12 | Mellék attribútum 12 |
+| Felhasználó | extensionattribute13 | Mellék attribútum 13 |
+| Felhasználó | extensionattribute14 | Mellék attribútum 14 |
+| Felhasználó | extensionattribute15 | Mellék attribútum 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>6. táblázat: Az SAML NameID engedélyezett átalakítási módszerek
 
-|TransformationMethod|Korlátozások|
+| TransformationMethod | Korlátozások |
 | ----- | ----- |
-|ExtractMailPrefix|None|
-|Csatlakozás|Az utótag csatlakoztatott folyamatban van az erőforrás-bérlőkulcs ellenőrzött tartományt kell lennie.|
+| ExtractMailPrefix | None |
+| Csatlakozás | Az utótag csatlakoztatott folyamatban van az erőforrás-bérlőkulcs ellenőrzött tartományt kell lennie. |
 
 ### <a name="custom-signing-key"></a>Egyéni kulcs aláírása
 
@@ -437,19 +437,19 @@ A kezdéshez kövesse az alábbi lépéseket:
 
 1. Töltse le a legújabb [Azure AD PowerShell-modul nyilvános előzetes kiadás](https://www.powershellgallery.com/packages/AzureADPreview).
 1. A Connect paranccsal jelentkezzen be az Azure AD rendszergazdai fiókot. Futtassa ezt a parancsot minden alkalommal, amikor új munkamenet indításához.
-    
-     ``` powershell
-    Connect-AzureAD -Confirm
-    
-    ```
+
+   ``` powershell
+   Connect-AzureAD -Confirm
+   ```
 1. A szervezetben létrehozott összes szabályzat megtekintéséhez futtassa a következő parancsot. Azt javasoljuk, hogy a parancs futtatása után a következő esetekben, ellenőrizze, hogy a szabályzatok a várt módon létrehozott legtöbb művelet.
-   
-    ``` powershell
-        Get-AzureADPolicy
-    
-    ```
-   #### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Példa: Szabályzat létrehozása és hozzárendelése egy üresen hagyni az alapszintű jogcímeket egy egyszerű szolgáltatás a kiállított jogkivonatokban.
-   Ebben a példában létrehozott egy szabályzatot, amely az alapvető jogcímek készletében távolít el a társított szolgáltatás rendszerbiztonsági tagok kiállított jogkivonatokban.
+
+   ``` powershell
+   Get-AzureADPolicy
+   ```
+
+#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Példa: Az alapszintű jogcímeket egy egyszerű szolgáltatás a kiállított jogkivonatokban üresen hagyni a szabályzat létrehozása és hozzárendelése
+
+Ebben a példában létrehozott egy szabályzatot, amely az alapvető jogcímek készletében távolít el a társított szolgáltatás rendszerbiztonsági tagok kiállított jogkivonatokban.
 
 1. Hozzon létre egy jogcímek társítása a házirend. Ez a házirend-specifikus társított szolgáltatás egyszerű, az alapszintű jogcímek a jogkivonatok eltávolítja.
    1. A szabályzat létrehozásához a következő parancs futtatásával: 
@@ -462,7 +462,7 @@ A kezdéshez kövesse az alábbi lépéseket:
       ``` powershell
       Get-AzureADPolicy
       ```
-1. A szabályzat hozzárendelése az egyszerű szolgáltatást. Is kell objectid azonosítóját, a szolgáltatás egyszerű beolvasása. 
+1. A szabályzat hozzárendelése az egyszerű szolgáltatást. Is kell objectid azonosítóját, a szolgáltatás egyszerű beolvasása.
    1. A szervezet szolgáltatásnevek megtekintéséhez lekérdezheti a Microsoft Graph. Másik lehetőségként az Azure AD Graph Explorer, jelentkezzen be az Azure AD-fiókot.
    2. Ha objectid azonosítóját, az egyszerű szolgáltatás rendelkezik, futtassa a következő parancsot:  
      
@@ -475,7 +475,7 @@ A kezdéshez kövesse az alábbi lépéseket:
 Ebben a példában létrehozott egy szabályzatot, amely az EmployeeID és TenantCountry ad hozzá a társított szolgáltatás rendszerbiztonsági tagok kiállított jogkivonatokban. Az EmployeeID kibocsátott SAML-jogkivonatok és JWTs neve jogcím típusaként. Az ország jogcímtípus, a SAML-jogkivonatok és JWTs a TenantCountry áll rendelkezésre. Ebben a példában továbbra is az alapszintű, állítsa be a jogkivonatokat a jogcímeket tartalmaznak.
 
 1. Hozzon létre egy jogcímek társítása a házirend. Ez a szabályzat adott szolgáltatásnevek, kapcsolódó jogkivonatok az EmployeeID és TenantCountry jogcímeket hozzáadja.
-   1. A szabályzat létrehozásához a következő parancs futtatásával:  
+   1. A szabályzat létrehozásához futtassa a következő parancsot:  
      
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
@@ -499,10 +499,10 @@ Ebben a példában létrehozott egy szabályzatot, amely az EmployeeID és Tenan
 Ebben a példában létrehozott egy szabályzatot, amely egy egyéni jogcím "JoinedData" társított szolgáltatás rendszerbiztonsági tagok kiadott JWTs bocsát ki. Ez a jogcím a extensionattribute1 attribútum a user objektum ".sandbox" a tárolt adatok lett létrehozva értéket tartalmaz. Ebben a példában Elzárkózunk beállítása a jogkivonatok az alapszintű jogcímeket.
 
 1. Hozzon létre egy jogcímek társítása a házirend. Ez a szabályzat adott szolgáltatásnevek, kapcsolódó jogkivonatok az EmployeeID és TenantCountry jogcímeket hozzáadja.
-   1. A szabályzat létrehozásához a következő parancs futtatásával: 
+   1. A szabályzat létrehozásához futtassa a következő parancsot:
      
       ``` powershell
-      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy" 
+      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
     
    2. Az új házirend megtekintéséhez, és hogy lekérje a házirendet ObjectId, futtassa a következő parancsot: 
@@ -517,3 +517,7 @@ Ebben a példában létrehozott egy szabályzatot, amely egy egyéni jogcím "Jo
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
+
+## <a name="see-also"></a>Lásd még
+
+Az Azure Portalon keresztül SAML-jogkivonatban kiadott jogcímek testreszabása kapcsolatban lásd: [hogyan: Vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása](active-directory-saml-claims-customization.md)

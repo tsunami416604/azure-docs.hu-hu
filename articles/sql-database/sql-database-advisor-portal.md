@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 023395126a587992c1b5648bd9b8a993d9fa9ced
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d80581aae56fc9d65d6f24d21f2c582cb74b3f2d
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564238"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863202"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Keresse meg és teljesítménnyel kapcsolatos javaslatok alkalmazása
 
@@ -78,6 +78,7 @@ Tekintse át, és egyszerre ajánlásait egy fogadni.
 Kiválasztott ajánlás érvénybe lépnek az adatbázison.
 
 ### <a name="removing-recommendations-from-the-list"></a>Javaslatok eltávolítása a listából
+
 Ha a javaslatok listája, amelyek a el kívánja távolítani a listában több elemet tartalmaz, elvetheti a javaslat:
 
 1. Válasszon ki egy javaslatot listájában **javaslatok** , nyissa meg a részleteket.
@@ -110,18 +111,21 @@ Az Azure SQL Database automatikusan ajánlások megvalósítása állíthatja be
 
 Miután kiválasztotta a kívánt beállításait, kattintson az Alkalmaz gombra.
 
-### <a name="manually-run-the-recommended-t-sql-script"></a>A javasolt a T-SQL parancsfájl manuális futtatása
+### <a name="manually-apply-recommendations-through-t-sql"></a>Manuálisan alkalmazhatja a javaslatokat a T-SQL használatával
+
 Jelölje ki bármely javaslatra, és kattintson a **parancsfájl megjelenítése**. Futtassa ezt a szkriptet az adatbázison a manuálisan alkalmazhatja a javaslatot.
 
-*Manuálisan végrehajtott indexek nem monitorozott és a teljesítményt a a szolgáltatás által ellenőrzött* ezért javasoljuk, hogy nyomon, hogy ezek az indexek ellenőrizheti azok teljesítménynövekedést biztosít, és módosítsa vagy törölje őket, ha szükséges a létrehozása után. Az indexek létrehozásával kapcsolatos részletekért lásd: [a CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
+*Manuálisan végrehajtott indexek nem monitorozott és a teljesítményt a a szolgáltatás által ellenőrzött* ezért javasoljuk, hogy nyomon, hogy ezek az indexek ellenőrizheti azok teljesítménynövekedést biztosít, és módosítsa vagy törölje őket, ha szükséges a létrehozása után. Az indexek létrehozásával kapcsolatos részletekért lásd: [a CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx). Emellett manuálisan alkalmazott javaslatok marad aktív és látható a javaslatok listája 24-48 óra. Mielőtt a rendszer automatikusan visszavonja őket. Ha szeretne eltávolítani egy javaslatot hamarabb, manuálisan elvetheti.
 
 ### <a name="canceling-recommendations"></a>Javaslatok visszavonása
+
 Az ajánlások egy **függőben lévő**, **érvényesítés**, vagy **sikeres** állapot szakadhatnak meg. Javaslatok állapottal **Executing** nem szakítható meg.
 
 1. Válasszon ki egy javaslatot a a **hangolási előzmények** területen nyissa meg a **ajánlások részleteit** lapot.
 2. Kattintson a **Mégse** megszakítja a folyamatot a javaslat alkalmazása.
 
 ## <a name="monitoring-operations"></a>Figyelési műveletek
+
 A javaslat alkalmazása nem fordulhat elő, azonnal. A portálon részletesen ajánlás állapotával kapcsolatban. Lehetséges, hogy az index az állapotok a következők:
 
 | status | Leírás |
@@ -162,7 +166,7 @@ Figyelheti a javaslatokat, és továbbra is alkalmazhatja őket, amellyel pontos
 * Lásd: [lekérdezési teljesítmény Elemzéseihez](sql-database-query-performance.md) , a teljesítményre gyakorolt hatás, a lekérdezések megtekintésének megismerése.
 
 ## <a name="additional-resources"></a>További források
-* [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
+* [Lekérdezéstár](https://msdn.microsoft.com/library/dn817826.aspx)
 * [INDEX LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms188783.aspx)
 * [Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md)
 

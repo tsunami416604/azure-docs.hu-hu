@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: c7923282396481dcfd6aa19b75d110fa03e50931
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e51c56f54a4e30b5e9094388ed92aa0a62ba0840
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439902"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879148"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Egy egyéni rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban
 Ez a cikk bemutatja, hogyan állítható be egy egyéni rendszerkép gyári elérhető minta parancsfájlok használatával a [Git-tárház](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory).
@@ -27,7 +27,7 @@ Egy rendszerkép factory az olyan konfiguráció, a kód megoldás, amely épít
 
 A jelentős accelerator beolvasni a DevTest Labs szolgáltatásban létrehozott üzemkész állapotba fejlesztői asztali egyéni lemezképeket használ. Az egyéni lemezképek hátránya, hogy valami nincs extra fenntartása a tesztkörnyezetben. Például termékek próbaverziók lejárati idővel (vagy) újonnan kiadott biztonsági frissítések nem lesznek alkalmazva, amelyek kényszerítése számunkra, hogy rendszeresen frissíteni az egyéni rendszerképet. Egy rendszerkép-előállító rendelkező egy definíciót a kép a definíció alapján egyéni rendszerképek létrehozásához egy automatizált folyamattal és verziókövetési beadva.
 
-A megoldás lehetővé teszi, hogy a virtuális gépek létrehozása az egyéni rendszerképekből nyújthat hatékony további folyamatos karbantartási költségek sebessége. Ez a megoldás is automatikusan egyéni rendszerképek létrehozása, ossza ki őket a többi DevTest Labs szolgáltatásban, és a régi képeket kivonni. A következő videót megismerkedhet a lemezkép gyári, és hogyan történik a DevTest Labs szolgáltatással.  Az Azure Powershell-parancsfájlok is szabadon elérhető, és található itt: [ http://aka.ms/dtlimagefactory ](http://aka.ms/dtlimagefactory).
+A megoldás lehetővé teszi, hogy a virtuális gépek létrehozása az egyéni rendszerképekből nyújthat hatékony további folyamatos karbantartási költségek sebessége. Ez a megoldás is automatikusan egyéni rendszerképek létrehozása, ossza ki őket a többi DevTest Labs szolgáltatásban, és a régi képeket kivonni. A következő videót megismerkedhet a lemezkép gyári, és hogyan történik a DevTest Labs szolgáltatással.  Az Azure Powershell-parancsfájlok is szabadon elérhető, és található itt: [ https://aka.ms/dtlimagefactory ](https://aka.ms/dtlimagefactory).
 
 <br/>
 

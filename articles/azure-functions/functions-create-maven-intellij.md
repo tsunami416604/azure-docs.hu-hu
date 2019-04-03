@@ -12,17 +12,14 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: eb8499ef6c0f872a0761f7be606e058387947b2b
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: da93c60b52edf509900adf89fb688a0596d9763b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319880"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877806"
 ---
-# <a name="create-your-first-azure-function-with-java-and-intellij-preview"></a>Az első Azure-függvény létrehozása a Java és az intellij-vel (előzetes verzió)
-
-> [!NOTE]
-> A Java for Azure Functions jelenleg előzetes verzióban érhető el.
+# <a name="create-your-first-azure-function-with-java-and-intellij"></a>Az első Azure-függvény létrehozása a Java és az intellij-vel
 
 A cikk ismerteti:
 - Hogyan hozhat létre egy [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) Functions-projektet IntelliJ IDEA és az Apache Maven
@@ -53,9 +50,9 @@ A Java és az intellij-vel függvény fejlesztése, telepítse a következő szo
 1. Az a **új projekt** ablakban válassza **Maven** a bal oldali ablaktáblán.
 1. Válassza ki a **archetype létrehozása** jelölőnégyzetet, majd válassza ki **hozzáadása Archetype** számára a [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
 1. Az a **hozzáadása Archetype** ablakban töltse ki a mezőket a következőképpen:
-    - _GroupId_: következőt: com.microsoft.azure
+    - _GroupId_: com.microsoft.azure
     - _ArtifactId_: azure-functions-archetype
-    - _Verzió_: használja a legújabb verziót [központi adattára](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    - _Verzió_: A legújabb verziót használja [központi adattára](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![hozzon létre egy Maven-projektet az IntelliJ IDEA archetype](media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. Válassza ki **OK**, majd válassza ki **tovább**.
 1. Aktuální projekt adja meg az adatait, és válassza ki **Befejezés**.

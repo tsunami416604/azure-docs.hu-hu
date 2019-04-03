@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: e5565e257e511203043c84e499712cc6a0a78c3f
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d8cbae679552cce8df29410ad8a477801abd4ff1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286012"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847453"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Az Azure SQL Server biztonsági mentése – hibaelhárítás
 
@@ -98,12 +98,18 @@ Ha a visszaállítási feladat sikertelen a következő hibakódok jelennek meg.
 |---|---|---|
 | Visszaállítás sikertelen volt, mert az adatbázis nem sikerült offline állapotba. | A visszaállítás közben, cél-adatbázist kell offline állapotba kerül. Az Azure Backup nem sikerül az adatok offline állapotba. | Használja a további részletek a hiba az Azure portál menüjében oka szűkítéséhez. További információkért lásd: a [SQL-dokumentáció](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
-
 ###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Hibaüzenet | A lehetséges okok | Javasolt művelet |
 |---|---|---|
 | Nem található az ujjlenyomattal rendelkező kiszolgálói tanúsítvány a célhelyen. | A fő cél-példányon adatbázist nem rendelkezik egy érvényes ujjlenyomatot. | Importálja a cél-példányhoz a forráspéldányra használt érvényes tanúsítvány-ujjlenyomatot. |
+
+### <a name="usererrorrestorenotpossiblebecauselogbackupcontainsbulkloggedchanges"></a>UserErrorRestoreNotPossibleBecauseLogBackupContainsBulkLoggedChanges
+
+| Hibaüzenet | A lehetséges okok | Javasolt művelet |
+|---|---|---|
+| A helyreállításhoz használt naplóalapú biztonsági mentés Tömegesen naplózott módosításokat tartalmaz. Időpontban való megálláshoz az SQL-irányelvek alapján nem használható. | Ha egy adatbázis Tömegesen naplózott helyreállítási módban van, az adatok között egy tömegesen naplózott tranzakciós és a következő log tranzakció nem állítható helyre. | Válasszon egy másik időpontra időpontot a helyreállításhoz. [További információ](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
+
 
 ## <a name="registration-failures"></a>Regisztrációs hibák
 

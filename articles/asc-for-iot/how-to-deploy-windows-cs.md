@@ -1,25 +1,25 @@
 ---
 title: Az Azure Security Center telepítése Windows IoT ügynök előzetes verzió |} A Microsoft Docs
 description: Ismerje meg az Azure Security Center telepítése IoT ügynök 32 bites vagy 64 bites Windows-eszközökön.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 7e3cb1f44711a8eedb248320db8bce5dfd0eaf0c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: b45d64f56653ad6d0baabef4a63351ef14f24c42
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754592"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861955"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Üzembe helyezése az Azure Security Center az IoT C#-security-ügynök a Windows-alapú
 
@@ -127,7 +127,7 @@ Naplózás bekapcsolása:
      
    vagy
 
-    **CMD**
+    **PARANCS**
      ```
      sc.exe stop "ASC IoT Agent" 
      sc.exe start "ASC IoT Agent" 

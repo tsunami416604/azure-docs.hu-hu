@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 04/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6c340d6b410a289f8beca156f85472cb729b786a
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: de58f960842e0a4f8e9b964774ce62b3e2772113
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56427819"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863175"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a LinkedIn-fiókkal az Azure Active Directory B2C beállítása
 
@@ -41,3 +41,6 @@ Használatához a LinkedIn-fiók, mint egy [identitásszolgáltató](active-dire
 7. Válassza ki **az identitásszolgáltató beállítása** , és adja meg az ügyfél-azonosítót, mint korábban rögzített a **ügyfél-azonosító** , és adja meg a titkos Ügyfélkulcsot, feljegyzett a **titkos Ügyfélkód**korábban létrehozott LinkedIn-fiók alkalmazás.
 8. Kattintson a **OK** majd **létrehozás** a LinkedIn-fiók konfigurációjának mentéséhez.
 
+## <a name="migration-from-v10-to-v20"></a>Áttelepítés 1.0-s verziója a 2.0-s verzió
+
+Nemrég LinkedIn [frissíteni az API-k az 1.0-s verziója a 2.0-s verziójú](https://engineering.linkedin.com/blog/2018/12/developer-program-updates). Az áttelepítés részeként az Azure AD B2C-t csak akkor megkapják a LinkedIn-felhasználó teljes nevét a regisztráció során. Ha egy e-mail-címet a gyűjtött attribútumok egyike során-előfizetés, a felhasználó kell manuálisan adja meg az e-mail címét, és érvényesítse azt.

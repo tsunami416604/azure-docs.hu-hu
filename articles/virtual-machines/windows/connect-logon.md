@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 07a8195969df7ad7afd2bfe2e9124b07144d48cb
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 136b9141ccccfedf8d37fa0832b0673495d82417
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284782"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846549"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Hogyan csatlakozhat, és jelentkezzen be az Azure Windows rendszerű virtuális gép
 Használja az Azure Portal **Csatlakozás** gombját egy távoli asztali (RDP) munkamenet elindításához egy Windows asztali rendszerről. Először csatlakozzon a virtuális gépet, és jelentkezzen.
@@ -56,7 +56,9 @@ Egy Windows virtuális Géphez való csatlakozáshoz Mac rendszeren, akkor telep
 
 ## <a name="connect-to-the-virtual-machine-using-powershell"></a>Csatlakozzon a virtuális géphez PowerShell használatával
 
-Ha a Powershellt, és az AzureRM-modul telepítve van, is kapcsolódhatnak használatával a `Get-AzRemoteDesktopFile` parancsmag, az alább látható módon.
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Ha a Powershellt, és az Azure PowerShell-modul telepítve van, is kapcsolódhatnak használatával a `Get-AzRemoteDesktopFile` parancsmag, az alább látható módon.
 
 Ebben a példában azonnal elindul az RDP-kapcsolat, tart, mint a fenti hasonló kérdések keresztül.
 

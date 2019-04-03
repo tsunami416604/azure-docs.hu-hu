@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: d28ea2972b8b73921bb078d8570afe9a6dffce8f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6ae3ec566c05d2460747439d61c87c995a90b19c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461769"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881732"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Adatok áthelyezése az AzCopy az Windows rendszeren
 Az AzCopy egy parancssori segédprogram, és a Microsoft Azure Blob, fájl és Table storage, az adatok másolása szolgál az optimális teljesítmény érdekében tervezett egyszerű parancs használatával. Az adatokat egy fájlrendszer és egy tárfiók, illetve több tárfiók között is másolhatja.  
@@ -57,7 +57,7 @@ Lássunk erre többféle módon tölthet le blobokat az AzCopy használatával.
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
 ```
 
-Vegye figyelembe, hogy ha a mappa `C:\myfolder` nem létezik, az AzCopy létrehozza, és a letöltési `abc.txt ` az új mappába.
+Vegye figyelembe, hogy ha a mappa `C:\myfolder` nem létezik, az AzCopy létrehozza, és a letöltési `abc.txt` az új mappába.
 
 ### <a name="download-a-single-blob-from-the-secondary-region"></a>A másodlagos régióból egy blob letöltése
 
@@ -993,7 +993,7 @@ További, az Azure Storage szolgáltatással és az AzCopyval kapcsolatos adatok
 * [File storage a .NET használatával](../storage-dotnet-how-to-use-files.md)
 * [A Table storage a .NET használatával](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [Hogyan létrehozása, kezelése vagy törlése](../storage-create-storage-account.md)
-* [Adatok áthelyezése az AzCopyval Linux rendszeren](storage-use-azcopy-linux.md)
+* [Adatok áthelyezése az Azcopyval Linux rendszeren](storage-use-azcopy-linux.md)
 
 ### <a name="azure-storage-blog-posts"></a>Az Azure Storage-blogbejegyzések:
 * [Introducing Azure Storage adatátviteli könyvtár Adatelőnézet](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)

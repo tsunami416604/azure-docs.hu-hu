@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4eaaff859811e4d97cbd4f73231d702285792064
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d99a3d23959cfdd9bd068fbde3a882eb1bc9b4ae
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285445"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847299"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
 
@@ -55,7 +55,7 @@ Mielőtt elkezdené, ellenőrizze a következőket:
 
 - Az Azure Portalon konfigurálhatja az SQL Server biztonsági másolat vagy **PowerShell**. Nem támogatjuk a parancssori felület.
 - Az SQL Server rendszerű virtuális Gépet az Azure nyilvános IP-címek eléréséhez internetkapcsolatra van szükség.
-- SQL Server-alapú folyamatos a **Feladatátvevőfürt-példányok (példányoktól)** nem támogatottak.
+- Az SQL Server **feladatátvételi fürtbeli példány (FCI)** és SQL Server-alapú folyamatos a Feladatátvevőfürt-példány használata nem támogatott.
 - Tükrözött adatbázisok és az adatbázis-pillanatképeket a biztonsági mentési és visszaállítási műveletek nem támogatottak.
 - Egynél több biztonsági mentési megoldások biztonsági másolatot készíteni az önálló SQL Server példányt, vagy az SQL Always on rendelkezésre állási csoport vezethet, a biztonsági mentési hiba; így tartózkodik.
 - Biztonsági másolatot egy rendelkezésre állási csoport külön-külön az azonos vagy eltérő megoldások két csomópontot, a biztonsági is vezethet. Az Azure Backup a is észleli, és a a tárral azonos régióban lévő összes csomópont védelmét. Ha az SQL Server mindig a rendelkezésre állási csoport is kiterjed a több Azure-régióban, állítsa be a biztonsági mentés a régióból, amely rendelkezik az elsődleges csomópont. Az Azure Backup a is észleli, és a biztonsági mentési preferenciáját szerint a rendelkezésre állási csoportban található összes adatbázis védelmét.  

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
-ms.openlocfilehash: d8b0d78d33c0780b05ac6f4bd8a21c6423d801f4
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 93e05390d28b9e9998d84935417121696d2963cc
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445067"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877227"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>A VMware virtuális gépek vészhelyreállítására használt konfigurációs kiszolgáló kezelése
 
@@ -148,7 +148,7 @@ A kiszolgáló frissítése a következőképpen:
 
 1. A tárolót, lépjen a **kezelés** > **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
 2. Frissítés érhető el, ha egy hivatkozás megjelenik a **Ügynökverzió** > oszlop.
-    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
+    ![Frissítés](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Töltse le a frissítést telepítő a konfigurációs kiszolgálón.
 
     ![Frissítés](./media/vmware-azure-manage-configuration-server/update1.png)
@@ -252,7 +252,7 @@ Szükség esetén törölheti a konfigurációs kiszolgáló PowerShell-lel.
     `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. A konfigurációs kiszolgáló törlése.
 
-    `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
+    `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force]`
 
 > [!NOTE]
 > Használhatja a **-Force** kényszerített törlése a konfigurációs kiszolgáló, a Remove-AzureRmSiteRecoveryFabric lehetőséget.

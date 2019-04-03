@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: bb45062697b113b676f85381f0653c14ac8c0c67
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 785948c78b2b8205c4bebe2d68b62f6de7254d94
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621230"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863134"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
@@ -69,10 +69,15 @@ A következő diagnostics telemetriai adatainak gyűjtéséhez állíthat be az 
 | [DatabaseWaitStatistics](#database-wait-statistics-dataset): Az adatbázis töltött a különböző várakozási típusok vár mennyi ideig kapcsolatos információt tartalmazza. | Igen | Nem |
 | [Időtúllépések](#time-outs-dataset): Az adatbázis időtúllépések információkat tartalmazza. | Igen | Nem |
 | [Blokkok](#blockings-dataset): Blokkoló események az adatbázison kapcsolatos információt tartalmazza. | Igen | Nem |
+| [Holtpontok](#deadlocks-dataset): Az adatbázis holtpont eseményekkel kapcsolatos információkat tartalmazza. | Igen | Nem |
+| [AutomaticTuning](#automatic-tuning-dataset): Az adatbázis automatikus finomhangolási ajánlásait információkat tartalmazza. | Igen | Nem |
 | [SQLInsights](#intelligent-insights-dataset): Intelligent Insights teljesítményéről tartalmaz. További tudnivalókért lásd: [Intelligent Insights](sql-database-intelligent-insights.md). | Igen | Igen |
 
 > [!IMPORTANT]
 > Rugalmas készletek és a felügyelt példány rendelkezik a saját külön diagnostics telemetriai adatainak tartalmaznak adatbázisokból. Ez fontos megjegyezni a diagnostics telemetriai adatainak külön-külön vannak beállítva ezen erőforrások mindegyike módon lentebb.
+
+> [!NOTE]
+> Biztonsági naplózás és SQLSecurityAuditEvents naplók adatbázis diagnosztikai beállítások alapján nem lehet engedélyezni. Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), és [naplózás az Azure Monitor naplóira és az Azure Event Hubs-naplók](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -136,7 +141,7 @@ Az önálló vagy készletezett adatbázisok diagnostics telemetriai adatainak s
 1. Ismételje meg ezeket a lépéseket minden egyes figyelni kívánt adatbázist.
 
 > [!NOTE]
-> Adatbázis diagnosztikai beállítások alapján nem sikerült engedélyezni a biztonsági naplókat. Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), és [naplózás az Azure Monitor naplóira és az Azure Event Hubs-naplók](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Biztonsági naplózás és SQLSecurityAuditEvents naplók adatbázis diagnosztikai beállítások alapján nem lehet engedélyezni. Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), és [naplózás az Azure Monitor naplóira és az Azure Event Hubs-naplók](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
 > [!TIP]
 > Ismételje meg ezeket a lépéseket minden egyes Azure SQL Database figyelni szeretné.
 
@@ -410,13 +415,13 @@ Tekintse meg az összes metrikák részleteit az alábbi táblázatok erőforrá
 
 ### <a name="all-metrics-for-elastic-pools"></a>Rugalmas készletek minden metrika
 
-|**Erőforrás**|**Metrikák**|
+|**Erőforrás**|**Mérőszámok**|
 |---|---|
 |Rugalmas készlet|eDTU százalékos értéke, eDTU használja, az eDTU-korlát, processzor, fizikai adatok olvasási százalékos aránya, napló írási százalékos, munkamenetek százaléka, feldolgozók százalékos, tárhely, tárolási százalékos, tárolási kapacitása, XTP tárolási százalékos aránya |
 
 ### <a name="all-metrics-for-azure-sql-databases"></a>Az Azure SQL Database összes metrikák
 
-|**Erőforrás**|**Metrikák**|
+|**Erőforrás**|**Mérőszámok**|
 |---|---|
 |Azure SQL-adatbázis|Napló írási DTU százalékos értéke, dtu-k használt, DTU-korlát, processzor, fizikai adatok olvasási százalékos aránya, százalékos aránya, a sikeres/sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, tárolási százalékos aránya, XTP tárolási százalékos aránya, és holtpontok |
 

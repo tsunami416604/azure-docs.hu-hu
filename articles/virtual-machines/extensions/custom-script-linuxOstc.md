@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: 8638b788762a56813c622c0abffe2a8eae3c70c2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437105"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882429"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Az Azure egyéni parancsfájl bővítmény 1. verzió használata Linux rendszerű virtuális gépek
 
@@ -296,8 +296,7 @@ Megjegyzés: bizonyos szempontok:
 
 1. Engedélyezése esetén az, hogy a parancs futtatásának megkezdése.
 1. Letöltési vonatkozik, a CustomScript bővítmény csomag letöltése az Azure-ban, a parancsfájlok nem megadott fileUris.
-1. Emellett megtekintheti azt írja ki, hogy melyik naplófájlban`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log
-`
+1. Is láthatja, hogy melyik naplófájlban keresse meg, hogy írása `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 Következő lépés az, hogy go-ellenőrzés a naplófájlt, ez a következő formátumban:
 

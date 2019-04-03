@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e826c7a3fc12e819fd6f145d42b7381087d5970c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c7e78f89883e5cfc3fc8b9088c3ac0b3166682c7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000241"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878179"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure Blob Storage-adatok importálása az Azure Import/Export szolgáltatás használata
 
@@ -54,7 +54,7 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
     `cd C:\WaImportExportV1`
 5.  A BitLocker-kulcs a meghajtón futtassa a következő parancsot:
     
-    ` manage-bde -protectors -get <DriveLetter>: `
+    `manage-bde -protectors -get <DriveLetter>:`
 6.  Készítse elő a lemezen, futtassa a következő parancsot. **Az adatok méretétől függően ez eltarthat néhány órát napra.** 
 
     ```
@@ -70,7 +70,7 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
     |/ ID:     |A munkamenet-azonosítót. A parancs minden példánya esetében egyedi munkamenet több használ.      |
     |/sk:     |Az Azure Storage-fiókkulcs.         |
     |/t:     |A meghajtóbetűjel, a lemez szállításra. Ha például meghajtó `D`.         |
-    |/bk:     |A meghajtó BitLocker-kulcsa. A numerikus jelszó kimenetéből: ` manage-bde -protectors -get D: `      |
+    |/bk:     |A meghajtó BitLocker-kulcsa. A numerikus jelszó kimenetéből: `manage-bde -protectors -get D:`      |
     |/srcdir:     |A lemez szállításra meghajtóbetűjelének követ `:\`. Például: `D:\`.         |
     |/dstdir:     |Az Azure Storage-ban a cél tároló neve.         |
     |/skipwrite:     |A beállítást, amely megadja, hogy nem szükséges átmásolni új adatokat és a lemezen található meglévő adatokat, hogy elő kell készíteni.          |

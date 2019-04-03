@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/29/2019
-ms.openlocfilehash: 6661ed7e8950c1658ef89858140e2d196999d543
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: a2d06cdbcc6ce995c55c858cb7a50a93ef6b3fb1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803085"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883564"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -111,8 +111,8 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
 
 4. Hozzon létre egy HDInsight-fürtöt, és válassza ki az Azure Virtual Network konfigurálása során. A fürt létrehozását megértéséhez használja az alábbi dokumentumokban lépéseket:
 
-    * [HDInsight létrehozása az Azure Portalon](hdinsight-hadoop-create-linux-clusters-portal.md)
-    * [HDInsight létrehozása az Azure PowerShell-lel](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
+    * [Hozzon létre a HDInsight az Azure portal használatával](hdinsight-hadoop-create-linux-clusters-portal.md)
+    * [Azure PowerShell használatával HDInsight létrehozása](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
     * [Klasszikus Azure CLI-vel HDInsight létrehozása](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [A HDInsight használata az Azure Resource Manager-sablon létrehozása](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 

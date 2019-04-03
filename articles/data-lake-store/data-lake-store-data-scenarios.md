@@ -3,19 +3,19 @@ title: Data Lake Storage Gen1 érintő forgatókönyvek |} A Microsoft Docs
 description: Megismerheti a különböző forgatókönyveket és eszközök használatával, mely adatokat is betöltött, a feldolgozás, a letöltött és a webalkalmazásban jelennek meg a Data Lake Storage Gen1 (korábbi nevén Azure Data Lake Store)
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 64c7985508ed7f03b32340cbb2c78de61242f7e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: twooley
+ms.openlocfilehash: 0b16154edbda4bedfd4e9b680ba4311e7a235212
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984279"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878757"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Az Azure Data Lake Storage Gen1 használata big data-követelményekhez
 
@@ -55,7 +55,7 @@ Eszközök, amelyekkel a következők:
 ### <a name="relational-data"></a>Relációs adatok
 A forrásadatok relációs adatbázisból. Egy időszakon belül a relációs adatbázisok gyűjtése hatalmas mennyiségű adatokat, ami a legfontosabb elemzéseket keresztül big Data jellegű adatok feldolgozása. A következő eszközök segítségével a Data Lake Storage Gen1 helyezhetik át az adatokat.
 
-* [Az Apache sqoop használatával](data-lake-store-data-transfer-sql-sqoop.md)
+* [Apache Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
 
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Web server naplóadatok (feltöltés használó egyéni alkalmazások)
@@ -63,7 +63,7 @@ Ez a fajta adatkészlet azért hívjuk fel, mert a web server naplóadatok elemz
 
 * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
-* [Az Azure Data Lake Storage Gen1 .NET SDK-val](data-lake-store-get-started-net-sdk.md)
+* [Azure Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
 
 A web server naplózási adatok feltöltését, valamint is fel más típusú adatok (például közösségi hangulati adatok) egy jó módszer a saját egyéni parancsfájlok vagy alkalmazások írni, mert azt a rugalmasságot biztosít az adatok feltöltése összetevő részeként a nagyobb big data-alkalmazásokat. Bizonyos esetekben ez a kód is igénybe vehet egy parancsfájl vagy egyszerű parancssori segédprogrammal formájában. Más esetekben a kódot egy üzleti alkalmazás vagy megoldás big data-feldolgozáshoz integrálhatók használhatók.
@@ -71,7 +71,7 @@ A web server naplózási adatok feltöltését, valamint is fel más típusú ad
 ### <a name="data-associated-with-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtök kapcsolódó adatok
 A legtöbb HDInsight-fürttípusok (Hadoop, HBase, Storm-) tároló adattár Data Lake Storage Gen1 támogatja. HDInsight-fürtök az Azure Storage Blobs (WASB) adatok eléréséhez. A jobb teljesítmény érdekében a egy Data Lake Storage Gen1 figyelembe, hogy a fürthöz társított másolhatja az adatokat a WASB. A következő eszközök használatával másolja az adatokat.
 
-* [Az Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
+* [Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
 * [AdlCopy Service](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)
 
@@ -115,15 +115,15 @@ Tekintse meg az alábbi példák.
 
 Ilyen esetben a következő lehetőségek bármelyikét használhatja:
 
-* [Az Apache sqoop használatával](data-lake-store-data-transfer-sql-sqoop.md)
+* [Apache Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
-* [Az Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
+* [Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)
 
 Az alábbi módszerek használatával írja a saját adatokat letölteni a Data Lake Storage Gen1 parancsfájl/alkalmazást.
 
 * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
-* [Az Azure Data Lake Storage Gen1 .NET SDK-val](data-lake-store-get-started-net-sdk.md)
+* [Azure Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md)
 
 ## <a name="visualize-data-in-data-lake-storage-gen1"></a>Adatok megjelenítése a Data Lake Storage Gen1
 Szolgáltatások kombinációját használhatja létrehozása a Data Lake Storage Gen1 tárolt adatok vizuális ábrázolásai.

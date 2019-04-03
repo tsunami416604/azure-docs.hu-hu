@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 56cd2284fb4bf7dabb280170757c128b8f985433
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037310"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877465"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>A Spark az Azure Cosmos DB Cassandra API táblákon összesített műveletek 
 
@@ -76,7 +76,7 @@ booksDF.write
 sc.cassandraTable("books_ks", "books").count
 ```
 
-**A kimenetre:**
+**Kimenet:**
 ```
 res48: Long = 5
 ```
@@ -142,7 +142,7 @@ select count(*) from books_vw;
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Double) => c).mean
 ```
 
-**A kimenetre:**
+**Kimenet:**
 ```
 res24: Double = 16.016000175476073
 ```
@@ -159,7 +159,7 @@ spark
   .show
 ```
 
-**A kimenetre:**
+**Kimenet:**
 ```
 +------------------+
 |   avg(book_price)|
@@ -173,7 +173,7 @@ spark
 ```sql
 select avg(book_price) from books_vw;
 ```
-**A kimenetre:**
+**Kimenet:**
 ```
 16.016000175476073
 ```
@@ -186,7 +186,7 @@ select avg(book_price) from books_vw;
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).min
 ```
 
-**A kimenetre:**
+**Kimenet:**
 ```
 res31: Float = 11.33
 ```
@@ -203,7 +203,7 @@ spark
   .show
 ```
 
-**A kimenetre:**
+**Kimenet:**
 ```
 +---------------+
 |min(book_price)|
@@ -218,7 +218,7 @@ spark
 select min(book_price) from books_vw;
 ```
 
-**A kimenetre:**
+**Kimenet:**
 ```
 11.33
 ```
@@ -243,7 +243,7 @@ spark
   .show
 ```
 
-**A kimenetre:**
+**Kimenet:**
 ```
 +---------------+
 |max(book_price)|
@@ -257,8 +257,10 @@ spark
 ```sql
 select max(book_price) from books_vw;
 ```
-**A kimenetre:**
-```22.45 ```
+**Kimenet:**
+```
+22.45
+```
 
 ## <a name="sum-operation"></a>Összegzési művelet
 
@@ -268,7 +270,7 @@ select max(book_price) from books_vw;
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).sum
 ```
 
-**A kimenetre:**
+**Kimenet:**
 ```
 res46: Double = 80.08000087738037
 ```
@@ -284,7 +286,7 @@ spark
   .agg(sum("book_price"))
   .show
 ```
-**A kimenetre:**
+**Kimenet:**
 ```
 +-----------------+
 |  sum(book_price)|
@@ -299,7 +301,7 @@ spark
 select sum(book_price) from books_vw;
 ```
 
-**A kimenetre:**
+**Kimenet:**
 ```
 80.08000087738037
 ```
@@ -313,7 +315,7 @@ val readCalcTopRDD = sc.cassandraTable("books_ks", "books").select("book_name","
 readCalcTopRDD.zipWithIndex.filter(_._2 < 3).collect.foreach(println)
 //delivers the first top n items without collecting the rdd to the driver.
 ```
-**A kimenetre:**
+**Kimenet:**
 ```
 (CassandraRow{book_name: A sign of four, book_price: 22.45},0)
 (CassandraRow{book_name: The adventures of Sherlock Holmes, book_price: 19.83},1)
@@ -339,7 +341,7 @@ readBooksDF.explain
 readBooksDF.show
 ```
 
-**A kimenetre:**
+**Kimenet:**
 ```
 == Physical Plan ==
 TakeOrderedAndProject(limit=3, orderBy=[book_price#1840 DESC NULLS LAST], output=[book_name#1839,book_price#1840])

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 13c0346324ae8e3cf3485985a9014f9999230630
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 35f83832b0ceb7507b39095e9cc974d82a480c69
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351439"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883073"
 ---
 # <a name="how-to-improve-your-classifier"></a>Tartalombesoroló teljesítményének hogyan
 
@@ -72,6 +72,15 @@ A probléma megoldásához, annak érdekében, hogy az osztályozó által igén
 * __Stílusa:__ Adja meg a képeket, különböző stílust ugyanahhoz az osztályhoz (például a azonos gyümölcs különböző fajtáinak). Javasoljuk azonban, ha (például Mickey egér és a egy valós beszédhelyzetek egér) mutatkozhatnak stílusok objektummal rendelkezik, akkor címkézze különálló osztályt jobban a különböző funkciói.
 
     ![Style-minták képe](./media/getting-started-improving-your-classifier/style.png)
+
+## <a name="negative-images"></a>Negatív képek
+
+A projekt valamely pontján, előfordulhat, hogy hozzá kell _minták negatív_ annak érdekében, pontosabb az osztályozó által igénybe vett. Negatív minták azokat, amelyek a nem megfelelő más címkék. Ezek a lemezképek feltöltésekor a alkalmazni a speciális **negatív** címke működnek.
+
+> [!NOTE]
+> A Custom Vision Service néhány automatikus negatív kép kezelését támogatja. Például és banán osztályozó szőlőmustnak épít, és a egy cipő előrejelzéshez kép küldése, ha az osztályozó által igénybe vett kell pontszám a lemezképet, 0 % közelében szőlőmust és banán is.
+> 
+> Másrészről azokban az esetekben, ahol a negatív rendszerképekkel képzés használt rendszerképek egy változata, akkor valószínű, hogy a modell lesz a negatív képek besorolása, a nagyszerű Hasonlóságok miatt címkézett osztály. Például ha grépfrút osztályozó és a egy narancssárga rendelkezik, és a egy clementine képe, csatorna, előfordulhat, hogy pontszám a clementine egy narancs számos funkcióját a clementine csúcsos narancs, mert. Ha a negatív képek az ilyen jellegű, azt javasoljuk, létrehozhat egy vagy több további címkéket (például **más**) és a negatív képek a címkével ellátott címkét, hogy ezeket az osztályokat jobban megkülönböztetni a modell betanítása közben .
 
 ## <a name="use-prediction-images-for-further-training"></a>További oktatási előrejelzési képek használata
 

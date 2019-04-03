@@ -1,25 +1,25 @@
 ---
 title: Mi az Azure Security Center az IoT-előzetes verzió |} A Microsoft Docs
 description: További információk az Azure Security Center IoT-szolgáltatások és a szolgáltatás.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 21737017c5087d25e36aec9701d3b4c5ddcb54e8
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757597"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863032"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Az IoT Azure Security Center bemutatása
 
@@ -56,8 +56,8 @@ Bővített analitika és a Microsoft Intelligent Security Graph segítségével 
 Ez az Áttekintés megismerkedett a funkciók és -szolgáltatások az ASC az IoT. További információ az ASC a IoT-architektúra, előfeltételeket, és ismerje meg, hogyan kezdheti el, tekintse meg a következő cikkeket:
 
 - [Architektúra](architecture.md)
-- [Szolgáltatás előfeltételei](service-prerequisites.md)
-- [Bevezetés](getting-started.md)
+- [A szolgáltatás előfeltételei](service-prerequisites.md)
+- [Első lépések](getting-started.md)
 - [A megoldás meghatározása](quickstart-configure-your-solution.md)
 - [ASC IOT – gyakori kérdések](resources-frequently-asked-questions.md)
 - [ASC IoT-riasztások](concept-security-alerts.md)

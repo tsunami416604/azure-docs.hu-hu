@@ -17,24 +17,25 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 592f2ef95935ce1d1f83db6c3327cab9c20015d3
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 929d6b55b9261ae29ba43f05b378866adfdcd2ed
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652568"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882799"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás (nyilvános előzetes verzió)
+# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-preview"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás (előzetes verzió)
 
 Ez a szolgáltatás-k segítségével az alkalmazásfejlesztők adja meg, milyen jogcímeket szeretnének biztosítani az alkalmazásokban a jogkivonatokban. Nem kötelező jogcímeket is használhatja:
+
 - Válassza ki az alkalmazáshoz tartozó jogkivonatok foglalandó további jogcímek.
 - Változtathatja meg bizonyos jogcímek, az Azure AD eredményül a jogkivonatokban.
-- Adja hozzá, és egyéni jogcímek, az alkalmazás eléréséhez. 
+- Adja hozzá, és egyéni jogcímek, az alkalmazás eléréséhez.
 
 > [!NOTE]
 > Ez a lehetőség jelenleg nyilvános előzetes verzióban érhető el. Készüljön fel a módosítások visszavonására vagy eltávolítására. A szolgáltatás minden olyan Azure AD-előfizetéshez, a nyilvános előzetes verzióban érhető el. Amikor a szolgáltatás általánosan elérhetővé válik, azonban a szolgáltatást bizonyos aspektusainak szükség lehet egy Azure AD premium előfizetéssel.
 
-Standard jogcímek és azok hogyan használhatók a tokenek listáját lásd: a [alapjait, az Azure AD által kiállított jogkivonatokban](v1-id-and-access-tokens.md). 
+Standard jogcímeket, és hogyan használhatók a tokenek listáját lásd: a [alapjait, az Azure AD által kiállított jogkivonatokban](v1-id-and-access-tokens.md).
 
 Az egyik a [az Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md) az ügyfelek által az optimális teljesítmény biztosítása érdekében kisebb token méretű. Ennek eredményeképpen korábban szerepelni fog a hozzáférési és azonosító-jogkivonatokat több jogcím már nem találhatók a 2.0-s verziójú jogkivonatokban, és kifejezetten a alkalmazásonkénti alapján kell kérni.
 
@@ -50,7 +51,7 @@ Az egyik a [az Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md)
 
 ## <a name="standard-optional-claims-set"></a>Standard választható jogcímek készletébe
 
-Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem kötelező jogcímek készlete alább láthatók. Az egyéni opcionális jogcímek az alkalmazáshoz adni, tekintse meg a [Címtárbővítmények](active-directory-optional-claims.md#configuring-custom-claims-via-directory-extensions), az alábbi. Vegye figyelembe, hogy jogcímeket hozzáadásakor a **hozzáférési jogkivonat**, ez lesz érvényes hozzáférési jogkivonatok kért *a* az alkalmazás (webes API-k), azokat *által* az alkalmazást. Ez biztosítja, hogy az ügyfelet, az API elérése, függetlenül attól, hogy a megfelelő adatok már jelen vannak a hozzáférési jogkivonat hitelesíti a rendszer az API-t használják.
+Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem kötelező jogcímek készlete alább láthatók. Az egyéni opcionális jogcímek az alkalmazáshoz adni, tekintse meg a [Címtárbővítmények](#configuring-custom-claims-via-directory-extensions), az alábbi. Jogcímek hozzáadásakor a **hozzáférési jogkivonat**, ez vonatkozik a kért hozzáférési jogkivonatok *a* az alkalmazás (webes API-k), azokat *által* az alkalmazást. Ez biztosítja, hogy az ügyfelet, az API elérése, függetlenül attól, hogy a megfelelő adatok már jelen vannak a hozzáférési jogkivonat hitelesíti a rendszer az API-t használják.
 
 > [!NOTE]
 > A legtöbb ezeket a jogcímeket is szerepelnek JWTs az 1.0-s verziója és a 2.0-s verziójú jogkivonatok, de nem SAML-jogkivonatokat, kivéve, ahol ennek ellenezőjét jelöltük a jogkivonat típusa oszlopban. Emellett bár nem kötelező jogcímek csak jelenleg támogatott az AAD-felhasználók, MSA támogatási ad hozzá. Amikor MSA választható jogcímeket támogatja a v2.0-végpont, a felhasználói adattípusú oszlop jogcím elérhető-e az AAD vagy az MSA-felhasználók esetében fog jelöl. 
@@ -62,7 +63,7 @@ Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem k
 | `auth_time`                | Amikor a felhasználó legutóbbi hitelesített ideje. Lásd: OpenID Connect specifikációja.| JWT        |           |  |
 | `tenant_region_scope`      | Az erőforrás-bérlő régió | JWT        |           | |
 | `home_oid`                 | A vendégfelhasználók számára, a felhasználó bérlőjének a felhasználó Objektumazonosítóját.| JWT        |           | |
-| `sid`                      | Munkamenet-azonosító, a munkamenet-felhasználó kijelentkezés használt. | JWT        |           |         |
+| `sid`                      | Munkamenet-azonosító, a munkamenet-felhasználó a Kijelentkezés használt. | JWT        |           |         |
 | `platf`                    | Eszközplatform    | JWT        |           | Eszköztípus ellenőrizheti a felügyelt eszközökre korlátozva.|
 | `verified_primary_email`   | A felhasználó PrimaryAuthoritativeEmail forrása      | JWT        |           |         |
 | `verified_secondary_email` | A felhasználó SecondaryAuthoritativeEmail forrása   | JWT        |           |        |
@@ -71,7 +72,7 @@ Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem k
 | `fwd`                      | IP-cím.| JWT    |   | Felveszi az eredeti IPv4-címet a kérést küldő ügyfélnek (Ha egy virtuális hálózaton belül) |
 | `ctry`                     | A felhasználó ország | JWT |           | Az Azure AD vissza a `ctry` jogcím nem kötelező, ha telepítve, és a jogcím értéke egy standard kétbetűs országkód, például FR, JP, SZ és így tovább. |
 | `tenant_ctry`              | Erőforrás-bérlő ország | JWT | | |
-| `xms_pdl`          | Az adatok előnyben részesített helye   | JWT | | A Multi-földrajzi bérlők számára ez az a 3 betűs kód megjelenítő melyik földrajzi régiót, a felhasználó szerepel. További részletekért tekintse meg a [adatainak előnyben részesített helye az Azure AD Connect dokumentáció](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation). <br> Például: `APC` Ázsia Csendes-óceáni számára. |
+| `xms_pdl`          | Az adatok előnyben részesített helye   | JWT | | A Multi-földrajzi bérlők számára ez az a 3 betűs kód megjelenítése a földrajzi régiót, a felhasználó szerepel. További információ: a [adatainak előnyben részesített helye az Azure AD Connect dokumentáció](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation).<br/>Például: `APC` Ázsia Csendes-óceáni számára. |
 | `xms_pl`                   | A felhasználó preferált nyelvét  | JWT ||A felhasználó elsődleges nyelv, ha a beállítása. Származási hely a saját bérlőjén, a Vendég adathozzáférési forgatókönyvek esetében. R-CC formátumú ("en-us"). |
 | `xms_tpl`                  | A bérlői elsődleges nyelv| JWT | | Az erőforrás-bérlő elsődleges nyelv, ha a beállítása. Formázott LL ("hu"). |
 | `ztdid`                    | Beavatkozás nélküli telepítés azonosítója | JWT | | A használt eszközidentitás [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
@@ -91,7 +92,7 @@ Ezeket a jogcímeket 1.0-s verziójú jogkivonatok mindig szerepel, de nem tarta
 | `onprem_sid`  | Helyi biztonsági azonosító |                                             |       |
 | `pwd_exp`     | Jelszó lejárati ideje        | A dátumot/időt, amikor a jelszó lejár. |       |
 | `pwd_url`     | Jelszó URL-Címének módosítása             | Egy URL-címet, amely a felhasználó ellátogathat a jelszó módosítására.   |   |
-| `in_corp`     | Vállalati hálózaton belül        | Ha az ügyfél bejelentkezik a vállalati hálózatról jelek. Ha nem, a a jogcím lehetőség nem része.   |  Ki-alapú a [megbízható IP-címek](../authentication/howto-mfa-mfasettings.md#trusted-ips) beállításokat az MFA-ban.    |
+| `in_corp`     | Vállalati hálózaton belül        | Ha az ügyfél bejelentkezik a vállalati hálózatról jelek. Ha nem, a jogcím nem tartalmaz.   |  Ki-alapú a [megbízható IP-címek](../authentication/howto-mfa-mfasettings.md#trusted-ips) beállításokat az MFA-ban.    |
 | `nickname`    | Becenév.                        | A felhasználó, az első vagy utolsó külön további neve. | 
 | `family_name` | Vezetéknév                       | Az utolsó neve, Vezetéknév vagy felhasználó család neve biztosít az Azure AD-felhasználói objektum. <br>"family_name":"Miller" |       |
 | `given_name`  | Utónév                      | Itt az első vagy az "adott" a felhasználó neve az Azure AD-felhasználói objektum vannak megadva.<br>"given_name": "Frank"                   |       |
@@ -128,7 +129,7 @@ Ez OptionalClaims objektum okoz az azonosító jogkivonat, az ügyfél egy mási
 
 ## <a name="configuring-optional-claims"></a>Nem kötelező jogcím konfigurálása
 
-Az alkalmazás nem kötelező jogcímek az alkalmazásjegyzéknek (lásd például alább) módosításával konfigurálhatja. További információkért lásd: a [ismertetése az Azure AD application manifest cikk](reference-app-manifest.md).
+Az alkalmazás nem kötelező jogcímek az alkalmazásjegyzéknek (lásd például alább) módosításával konfigurálhatja. További információ: a [ismertetése az Azure AD application manifest cikk](reference-app-manifest.md).
 
 **Minta séma:**
 
@@ -188,7 +189,7 @@ Ha az egy adott jogcím támogatja, a további tulajdonságok mező használatá
 | `additionalProperties` | Collection (Edm.String) | Az igényt további tulajdonságai. Ha egy tulajdonság már létezik ebben a gyűjteményben, módosítja a a name tulajdonság nem kötelező jogcímek viselkedését.                                                                                                                                               |
 ## <a name="configuring-custom-claims-via-directory-extensions"></a>Egyéni jogcímek keresztül címtárbővítmények konfigurálása
 
-Felül a standard szintű választható jogcímek készletébe jogkivonatok is konfigurálhatók a directory-sémabővítmények tartalmazzák (lásd a [Directory séma bővítményei cikk](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) további információt). Ez a funkció akkor hasznos, amelyek az alkalmazás használhatja – például további felhasználói adatokat, egy további azonosító vagy a fontos konfigurációs beállítás, amelyet a felhasználó be van állítva. 
+A standard szintű választható jogcímek készletébe mellett tartalmazza a directory-sémabővítmények jogkivonatok is beállíthatja. További információ: [Directory sémakiterjesztései](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions). Ez a funkció akkor hasznos, amelyek az alkalmazás használhatja – például további felhasználói adatokat, egy további azonosító vagy a fontos konfigurációs beállítás, amelyet a felhasználó be van állítva. 
 
 > [!Note]
 > Directory-sémabővítmények egy csak AAD-funkció,, így ha az alkalmazás jegyzékfájlja kérelmek egyedi bővítmény és a egy MSA felhasználó bejelentkezik az alkalmazás, ezek a bővítmények nem állítható vissza. 
@@ -205,7 +206,7 @@ Az SAML-jogkivonatok belül ezeket a jogcímeket fog bocsátja ki az URI formát
 
 Ebben a szakaszban megtekintheti, hogyan használhatja a választható jogcímek szolgáltatást az alkalmazás egy forgatókönyvet is végig.
 Több lehetőség van egy alkalmazás identitás konfiguráció engedélyezése és konfigurálása nem kötelező jogcímek tulajdonságait frissítési érhető el:
--   Az alkalmazásjegyzékben módosíthatja. Az alábbi példában ez a módszer használatával végezheti el a konfigurálást. Olvassa el a [ismertetése az Azure AD application manifest dokumentum](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest) első bevezetést a jegyzékfájlban.
+-   Az alkalmazásjegyzékben módosíthatja. Az alábbi példában ez a módszer használatával a konfiguráció beállítása. Olvassa el a [ismertetése az Azure AD application manifest dokumentum](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest) első bevezetést a jegyzékfájlban.
 -   Akkor is használó alkalmazások írása a [Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) frissíteni az alkalmazást. A [entitások és összetett típusok segédletben](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) az a Graph API-referencia útmutató segítségére lehet a nem kötelező jogcímek konfigurálása.
 
 **Példa** Az alábbi példában egy alkalmazásjegyzékben jogcímalapú hozzáférés, az ID és a SAML hozzáadandó módosítják a tokenek számára az alkalmazás.
@@ -250,5 +251,5 @@ Több lehetőség van egy alkalmazás identitás konfiguráció engedélyezése 
 
 További információ az Azure AD által támogatott szabványos jogcímeket.
 
-- [Azonosító-jogkivonatokat](id-tokens.md)
+- [Azonosító jogkivonatok](id-tokens.md)
 - [Hozzáférési jogkivonatok](access-tokens.md)

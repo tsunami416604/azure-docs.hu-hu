@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 281e1109964ac64853b8b82525579b7ff4de0d2f
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 1e39f271eaf0eccd0b3f3439492205e0d3398358
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406405"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851178"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect és az Azure Active Directory használatával webes alkalmazásokhoz való hozzáférés engedélyezése
 
@@ -95,7 +95,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_type |szükséges |Tartalmaznia kell `id_token` OpenID Connect bejelentkezhet. Például a más response_types is tartalmazhat `code` vagy `token`. |
 | scope | Ajánlott | Az OpenID Connect-specifikáció igényel a hatókör `openid`, amelyet a rendszer lefordítja arra a jóváhagyási felhasználói felület a "Bejelentkezés" engedélyt. Ezzel és más OIDC hatókörök rendszer figyelmen kívül hagyja az 1.0-s verziójú végponton, de továbbra is ajánlott szabványokkal kompatibilis ügyfelek számára. |
 | egyszeri |szükséges |A kérésben, a létrejövő megtalálható az alkalmazás által generált értéket `id_token` jogcímként. Az alkalmazás ezután ellenőrizheti ezt az értéket ismétlésének támadások számának csökkentése érdekében. Az értéke általában egy véletlenszerű, egyedi karakterlánc vagy egy GUID Azonosítót, amelyet a kérés eredetének azonosítására használhatók. |
-| redirect_uri | Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. Ha hiányzik, a felhasználói ügynök küld vissza az átirányítási URI-k véletlenszerű regisztrált az alkalmazás egyik. |
+| redirect_uri | Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. Ha hiányzik, a felhasználói ügynök küld vissza az átirányítási URI-k véletlenszerű regisztrált az alkalmazás egyik. A maximális hossz 255 bájt |
 | response_mode |választható |Meghatározza az eredményül kapott authorization_code küldi vissza az alkalmazáshoz használandó módszert. Támogatott értékei a következők `form_post` a *HTTP post-űrlap* és `fragment` a *URL-cím töredék*. A webes alkalmazásokhoz, javasoljuk `response_mode=form_post` a legbiztonságosabb átvitelét jogkivonatok az alkalmazás biztosításához. Minden olyan folyamatot, beleértve az id_token alapértelmezés `fragment`.|
 | state |Ajánlott |A kérésben a token válaszban visszaadott érték. Bármilyen tartalmat, akinél karakterlánc lehet. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](https://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet is szolgál. |
 | parancssor |választható |Azt jelzi, hogy milyen típusú felhasználói beavatkozás szükséges. Jelenleg az egyetlen érvényes értékek a következők "bejelentkezés", "none", és a "jóváhagyás". `prompt=login` a felhasználónak meg kell adnia a hitelesítő adataik adott kérelem negating egyszeri bejelentkezéses kényszeríti. `prompt=none` Ellenkező – biztosítja, hogy a felhasználó el minden olyan interaktív kérdés nem egyike. Ha a kérés nem lehet végrehajtani csendes egyszeri bejelentkezéses keresztül, a végpont hibát ad vissza. `prompt=consent` Eseményindítók az OAuth hozzájárulás párbeszédpanel, amelyen felkéri a felhasználót az alkalmazás számára, a felhasználó bejelentkezése után. |

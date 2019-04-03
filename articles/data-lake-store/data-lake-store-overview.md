@@ -3,19 +3,19 @@ title: Az Azure Data Lake Storage Gen1 áttekintése |} A Microsoft Docs
 description: Ismerje meg, milyen Data Lake Storage Gen1 van (korábbi nevén Azure Data Lake Store), és milyen értékeket nyújt az egyéb adattárakhoz képest
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: b733a0bec20c7abae5df41acd74284bdf75bca2c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: twooley
+ms.openlocfilehash: 438eab091fac103b66f0789beca0098b87ee44cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124133"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885655"
 ---
 # <a name="overview-of-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 áttekintése
 
@@ -45,7 +45,7 @@ Data Lake Storage Gen1 korlátlan tárterületet biztosít, és különféle ele
 ### <a name="performance-tuned-for-big-data-analytics"></a>A teljesítmény a big data koncepción alapuló adatelemzéshez lett igazítva
 Data Lake Storage Gen1 az nagy méretű lekérdezéséhez és kielemzéséhez nagy mennyiségű adat teljesítményt igénylő elemző rendszerek futtatására lett tervezve. A data lake több egyéni tárolókiszolgáló között osztja el egy fájl részeit. Ez javítja az olvasás átviteli sebességét a fájl adatelemzés céljából történő párhuzamos beolvasásakor.
 
-### <a name="enterprise-ready-highly-available-and-secure"></a>Felkészült a nagyvállalatok igényeire: Magas rendelkezésre állású és biztonságos
+### <a name="enterprise-ready-highly-available-and-secure"></a>Enterprise-ready: Magas rendelkezésre állású és biztonságos
 Data Lake Storage Gen1 biztosít az iparági szabványnak megfelelő rendelkezésre állás és megbízhatóság. Adatvagyonának tartós tárolását a redundáns másolatok teszik lehetővé, amelyek védelmet biztosítanak a váratlan meghibásodások esetén. Vállalatok számára fontos része annak a létező adatplatform, használhatja saját megoldások Data Lake Storage Gen1.
 
 Data Lake Storage Gen1 is biztosít a nagyvállalati szintű biztonsággal, a tárolt adatok számára. További információkért lásd: [az adatok védelme az Azure Data Lake Storage Gen1](#DataLakeStoreSecurity).
@@ -60,7 +60,7 @@ Data Lake Storage Gen1 használja az Azure Active Directory a hitelesítéshez �
 
 | Szolgáltatás | Leírás |
 | --- | --- |
-| Hitelesítés |Data Lake Storage Gen1 együttműködik a Data Lake Storage Gen1 tárolt összes adat identitás- és hozzáférés-kezelés az Azure Active Directory (AAD). Eredményeként az integrációt, a Data Lake Storage Gen1 előnyöket AAD összes funkcióját, többek között a multi-factor authentication szolgáltatás, a feltételes hozzáférés, a szerepköralapú hozzáférés-vezérlés, a Alkalmazáshasználat monitorozását, biztonsági figyelést és riasztást stb. Data Lake Storage Gen1 támogatja az OAuth 2.0 protokollt a REST-felületen belüli hitelesítéshez. Lásd: [hitelesítés a Data Lake Storage Gen1](data-lakes-store-authentication-using-azure-active-directory.md)|
+| Authentication |Data Lake Storage Gen1 együttműködik a Data Lake Storage Gen1 tárolt összes adat identitás- és hozzáférés-kezelés az Azure Active Directory (AAD). Eredményeként az integrációt, a Data Lake Storage Gen1 előnyöket AAD összes funkcióját, többek között a multi-factor authentication szolgáltatás, a feltételes hozzáférés, a szerepköralapú hozzáférés-vezérlés, a Alkalmazáshasználat monitorozását, biztonsági figyelést és riasztást stb. Data Lake Storage Gen1 támogatja az OAuth 2.0 protokollt a REST-felületen belüli hitelesítéshez. Lásd: [hitelesítés a Data Lake Storage Gen1](data-lakes-store-authentication-using-azure-active-directory.md)|
 | Hozzáférés-vezérlés |Data Lake Storage Gen1 hozzáférés-vezérlést biztosít a WebHDFS protokoll által elérhetővé tett POSIX-stílusú engedélyek támogatásával. A hozzáférés-vezérlési listák a gyökérkönyvtáron, az alkönyvtárakon és az egyes fájlokon is engedélyezhetők. A hozzáférés-vezérlési listák Data Lake Storage Gen1 összefüggésben működéséről további információkért lásd: [hozzáférés-vezérlés a Data Lake Storage Gen1](data-lake-store-access-control.md). |
 | Titkosítás |Data Lake Storage Gen1 is biztosít a fiókban tárolt adatok titkosítását. A Data Lake Storage Gen1 fiók létrehozásakor megadhatja a titkosítási beállításokat. Dönthet úgy, hogy titkosítja az adatokat, vagy választhatja a titkosítás nélküli lehetőséget. További információkért lásd: [titkosítást a Data Lake Storage Gen1](data-lake-store-encryption.md). Útmutatás a titkosítással kapcsolatos konfigurációk megadására: [Azure Data Lake Storage Gen1 használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md). |
 

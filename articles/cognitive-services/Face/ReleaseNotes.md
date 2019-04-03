@@ -3,27 +3,31 @@ title: Kibocsátási megjegyzések – Face API-szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: Kibocsátási megjegyzések a Face API szolgáltatás különböző verzióinak kibocsátási változások előzményeit tartalmazza.
 services: cognitive-services
-author: SteveMSFT
+author: yluiu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.author: sbowles
-ms.openlocfilehash: 1af699a4b28309e7b004ed1eedf339e142065e50
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 03/29/2019
+ms.author: yluiu
+ms.openlocfilehash: 02e4e73bbbc7f843a3483bab4791484b89f97dd7
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878459"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862029"
 ---
 # <a name="face-api-release-notes"></a>Face API kibocsátási megjegyzései
 
 Ez a cikk a Face API szolgáltatás 1.0-s verziója vonatkozik.
 
+### <a name="release-changes-in-march-2019"></a>2019. márciusi kiadás változásai
+
+* Arcok felismerése új modell hozzáadva a pontosság jobb legyen. Használja azt a [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b), [LargeFaceList – hozzon létre](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc), [is lehet PersonGroup - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) és [ LargePersonGroup – hozzon létre](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d) arcok felismerése új modell nevének megadásával `recognition_02` a `recognitionModel` paraméter. További információk: [megadása egy modell több](Face-API-How-to-Topics/specify-recognition-model.md).
+
 ### <a name="release-changes-in-january-2019"></a>Január 2019 kiadás változásai
 
-* Pillanatkép funkció hozzáadott előfizetések közötti adatok áttelepítésének támogatásához: [Pillanatkép](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot).
+* Pillanatkép funkció hozzáadott előfizetések közötti adatok áttelepítésének támogatásához: [Pillanatkép](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot). További információk: [hogyan telepítheti át az arcfelismerési adatokat Face másik előfizetésbe való](Face-API-How-to-Topics/how-to-migrate-face-data.md).
 
 ### <a name="release-changes-in-october-2018"></a>2018. október kiadás változásai
 

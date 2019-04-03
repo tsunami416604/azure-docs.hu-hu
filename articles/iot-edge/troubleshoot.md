@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 92294700ac9a491bfdbfa3b3d3f781eb18d5339e
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437101"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847539"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -346,7 +346,10 @@ Hiba történt a központi telepítésben definiált modulok elindítása van az
 Alapértelmezés szerint az IoT Edge modulok saját elkülönített tároló hálózati indítja el. Az eszköz problémái lehetnek DNS-névfeloldás a magánhálózaton belül.
 
 ### <a name="resolution"></a>Megoldás:
-Adja meg a DNS-kiszolgáló, a környezetnek a tárolóbeállítások motor. Hozzon létre egy fájlt `daemon.json` adja meg a DNS-kiszolgáló használatára. Példa:
+
+**1. lehetőség: DNS-kiszolgáló a tárolóban állítsa be a motor beállításai**
+
+Adja meg a DNS-kiszolgáló, a környezetnek a tároló motor beállítására a motor által indított összes tároló-modulokkal. Hozzon létre egy fájlt `daemon.json` adja meg a DNS-kiszolgáló használatára. Példa:
 
 ```
 {
@@ -371,6 +374,22 @@ Ha már tartalmazza a hely `daemon.json` fájlt, adja hozzá a **dns** billenty�
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows (Admin Powershell) | `Restart-Service iotedge-moby -Force` |
+
+**2. lehetőség: Állítsa be a DNS-kiszolgáló az IoT Edge-példányban modulonként**
+
+Beállíthatja a DNS-kiszolgáló az egyes modulok *createOptions* az IoT Edge-telepítésben. Példa:
+
+```
+"createOptions": {
+  "HostConfig": {
+    "Dns": [
+      "x.x.x.x"
+    ]
+  }
+}
+```
+
+Győződjön meg arról, hogy ezt a a *edgeAgent* és *edgeHub* modulokat is. 
 
 ## <a name="next-steps"></a>További lépések
 Úgy gondolja, hogy hibát talált az IoT Edge platformon? [Küldje el a problémát](https://github.com/Azure/iotedge/issues) , hogy továbbra is javíthatja. 

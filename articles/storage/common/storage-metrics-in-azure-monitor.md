@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: a5ebd50b3a5fe3b611bae28db98979eee40f9490
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4be52fbc6d9fb01ac3cd3c0954042c35b45bbf23
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899026"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884363"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -284,9 +284,9 @@ Az alábbi példa bemutatja, hogyan olvashatja el a mérőszámparancshoz támog
 
 Erőforrás-azonosító az Azure-beli erőforrás egyedi azonosító. Metrikai meghatározások vagy értékeket beolvasni az Azure Monitor REST API használatakor, amelyen a művelethez használandó tervezi az erőforrás erőforrás-azonosító kell használnia. Az erőforrás-azonosítója sablon ezt a formátumot követi:
 
-`
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-`
+```
 
 Storage metrikákat, a storage-fiók szintjén, és a szolgáltatási szint és az Azure Monitor is biztosít. Letöltheti például csak Blob storage mérőszámait. Minden szinten vannak a saját erőforrás-azonosító, amelyre az imént adott szint esetében a metrikák beolvasásához használt.
 
@@ -294,34 +294,38 @@ Storage metrikákat, a storage-fiók szintjén, és a szolgáltatási szint és 
 
 Az alábbiakban látható egy storage-fiók erőforrás ID megadása a formátumát.
 
-`
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}
-`
+```
 
 ### <a name="resource-id-for-the-storage-services"></a>A tárolási szolgáltatások erőforrás-azonosító
 
 Az alábbiakban látható az erőforrás-azonosító megadása a tároló minden formátumát.
 
-* BLOB service erőforrás-azonosító `
+* BLOB service erőforrás-azonosító
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
-`
-* TABLE service erőforrás-azonosító `
+```
+* TABLE service erőforrás-azonosító
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
-`
-* Queue szolgáltatás erőforrás-azonosító `
+```
+* Queue szolgáltatás erőforrás-azonosító
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
-`
-* Service erőforrás-azonosító `
+```
+* Service erőforrás-azonosító
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
-`
+```
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>Az Azure Monitor REST API-t az erőforrás-azonosító
 
 Az alábbiakban látható a minta az Azure Monitor REST API hívása során használt.
 
-`
+```
 GET {resourceId}/providers/microsoft.insights/metrics?{parameters}
-`
+```
 
 ## <a name="capacity-metrics"></a>A kapacitás-metrikák
 A kapacitás értékeihez kapnak az Azure Monitor óránként. Az értékeket a naponta frissülnek. Az aggregációs időköz határozza meg az időintervallum, amelynek metrikák jelennek meg. A támogatott időfelbontási szint összes kapacitási mérőszámot az érték egy óra (PT1H).

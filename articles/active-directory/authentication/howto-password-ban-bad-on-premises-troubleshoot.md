@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12cbd9bebf001eb902147175c89b5d7ce49e8449
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 108ead982529d2ac6549cceffd9d2177ab6456bf
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487227"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863176"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Az Azure AD jelszóvédelem hibáinak elhárítása
 
@@ -44,7 +44,13 @@ A probléma tünete fő 30018 események a tartományvezérlő az ügynök felü
 
 ## <a name="the-proxy-service-can-receive-calls-from-dc-agents-in-the-domain-but-is-unable-to-communicate-with-azure"></a>A Proxy szolgáltatás hívást is fogadhat DC ügynököktől a tartományban, de nem tud kommunikálni az Azure-ral
 
-Ellenőrizze a proxy gép rendelkezik-e a felsorolt végpontokra irányuló a [központi telepítésére vonatkozó követelmények](howto-password-ban-bad-on-premises-deploy.md).
+1. Ellenőrizze a proxy gép rendelkezik-e a felsorolt végpontokra irányuló a [központi telepítésére vonatkozó követelmények](howto-password-ban-bad-on-premises-deploy.md).
+
+1. Győződjön meg arról, hogy az erdő és kiszolgálók ellen ugyanahhoz az Azure-bérlőhöz regisztrált összes proxy.
+
+   Futtatásával ellenőrizheti ezt az `Get-AzureADPasswordProtectionProxy` és `Get-AzureADPasswordProtectionDCAgent` PowerShell-parancsmagok, majd hasonlítsa össze a `AzureTenant` minden egyes tulajdonság elemet adott vissza. Helyes működéséhez ezeket azonosnak kell lennie az erdőn belül, az összes tartományvezérlő ügynökök és a proxykiszolgálókon keresztül.
+
+   Ha egy Azure-bérlő regisztrációs eltérés feltétel létezik, ez futtatásával javítható a `Register-AzureADPasswordProtectionProxy` és/vagy `Register-AzureADPasswordProtectionForest` PowerShell-parancsmagok szükség esetén gondoskodik róla, hogy az összes regisztrációs hitelesítő adatait az Azure-ugyanazt bérlőhöz használandó.
 
 ## <a name="the-dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files-and-other-state"></a>A tartományvezérlő-ügynök nem tudja titkosítása és visszafejtése a jelszóval házirendfájljait és más állapot
 

@@ -3,8 +3,8 @@ title: Hálózati biztonság az 1. generációs Azure Data Lake Storage-ben | Mi
 description: Megismerheti, hogyan virtuális hálózati integráció az Azure Data Lake Storage Gen1 működik
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 362129b4ccd0e46b6ffc682e7232c62c196ef334
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652129"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880593"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Virtuális hálózat integrációja Azure Data Lake Storage Gen1
 

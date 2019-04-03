@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: ebdc90dc35f891ea1811ce81c5bdc1b937c58a5c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0db28fb8016176bdd66e5406a6f1c0a18cc5c3e8
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529247"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847596"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi csatlakoztatása Azure IoT hubhoz (Node.js)
 
@@ -24,7 +24,6 @@ ms.locfileid: "57529247"
 Ez az oktatóanyag első lépésként, tanulás a Raspberry Pi Raspbian futtató való használatának alapjait. Ezután megismerheti, hogyan zökkenőmentes csatlakozás használatával a felhőbe az eszközök [Azure IoT Hub](about-iot-hub.md). A Windows 10 IoT Core-minta, nyissa meg a [Windows Dev Center](https://www.windowsondevices.com/).
 
 Még nem rendelkezik egy csomagot? Próbálja ki [Raspberry Pi online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md). Vagy egy új csomag vásárlása [Itt](https://azure.microsoft.com/develop/iot/starter-kits).
-
 
 ## <a name="what-you-do"></a>TEENDŐ
 
@@ -87,7 +86,7 @@ Készítse elő a Raspbian lemezkép telepítésének microSD-kártyán.
 
    > [!WARNING]
    > Használja a fenti hivatkozást letöltéséhez `raspbian-2017-07-5` zip-lemezképet. Raspbian lemezképek legújabb verziója van bizonyos ismert problémák kábelezés-Pi csomóponttal, amely a következő lépésben hibát okozhat.
- 
+
    b. Bontsa ki a Raspbian lemezképet a számítógép egyik mappájába.
 
 2. Telepítse a Raspbian a microSD-kártyán.
@@ -160,26 +159,26 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
 ### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>Klónozza a mintaalkalmazást, és telepítse az előfeltételként szolgáló csomagok
 
 1. Csatlakoztassa a gazdaszámítógépet az valamelyik a következő SSH-ügyfelet a Raspberry Pi:
-   
+
    **Windows-felhasználók**
   
    a. Töltse le és telepítse [PuTTY](https://www.putty.org/) Windows számára. 
 
    b. Másolja ki a gazdagép nevét (vagy IP-cím), a Pi szakasz IP-címét, és válassza ki az SSH a kapcsolat típusaként.
-   
+
    ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
-   
+
    **Mac- és Ubuntu-felhasználók**
-   
+
    A beépített SSH-ügyfél használata Ubuntu vagy macOS rendszeren. Előfordulhat, hogy kell futtatnia `ssh pi@<ip address of pi>` Pi SSH-n keresztül kapcsolódni.
 
    > [!NOTE] 
    > Az alapértelmezett felhasználónév az `pi` és a jelszó `raspberry`.
 
 2. Telepítse a Node.js és NPM, a Pi.
-   
+
    Először ellenőrizze a Node.js-verzió. 
-   
+
    ```bash
    node -v
    ```
@@ -203,6 +202,7 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
    cd iot-hub-node-raspberrypi-client-app
    sudo npm install
    ```
+
    > [!NOTE] 
    >Eltarthat néhány percig, attól függően, a hálózati kapcsolatot a telepítési folyamat befejezéséhez.
 
@@ -238,8 +238,14 @@ Amely az érzékelőktől kapott adatok és az IoT hubnak küldött üzeneteket 
 
 ![Kimenet – Raspberry Pi az IoT hubnak küldött érzékelőktől kapott adatok](./media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>Olvassa el a hub által fogadott üzeneteket
+
+Egy figyelheti az eszközről az IoT hub által fogadott üzeneteket módja az Azure IoT-eszközök használata a Visual Studio Code. További tudnivalókért lásd: [használata az Azure IoT Tools for Visual Studio Code használatával az eszközön, és az IoT Hub közötti üzenetek küldése és fogadása](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+
+A további lehetőségek a eszköz által küldött adatok feldolgozásához folytassa a következő szakaszban.
+
 ## <a name="next-steps"></a>További lépések
 
-Egy mintaalkalmazás érzékelőktől kapott adatok összegyűjtésére, és küldje el az IoT hubnak küldött futtatott. A Raspberry Pi a Raspberry Pi az IoT hub- vagy küldés üzeneteket küldött üzenetek, olvassa el a [használata az Azure IoT Tools for Visual Studio Code használatával az eszközön, és az IoT Hub közötti üzenetek küldése és fogadása](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+Egy mintaalkalmazás érzékelőktől kapott adatok összegyűjtésére, és küldje el az IoT hubnak küldött futtatott.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

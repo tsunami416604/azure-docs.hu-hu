@@ -1,22 +1,22 @@
 ---
-title: 'Szolgáltatások közötti hitelesítés: Azure Data Lake Storage Gen1 az Azure Active Directoryban |} A Microsoft Docs'
+title: 'Szolgáltatások közötti hitelesítés: Az Azure Data Lake Storage Gen1 az Azure Active Directoryhoz |} A Microsoft Docs'
 description: Ismerje meg, hogyan érhet el a szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 2ec5d469ba0708288881be3d905b492aa8aa4da6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: twooley
+ms.openlocfilehash: a7fdcf396f586a65efa17e489d002f1c8847a193
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956614"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884992"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Ez a cikk ismerteti hogyan hozhat létre egy **szolgáltatások közötti hitele
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="step-1-create-an-active-directory-web-application"></a>1. lépés: Hozzon létre egy Active Directory-webalkalmazás
+## <a name="step-1-create-an-active-directory-web-application"></a>1. lépés: Az Active Directory-webalkalmazás létrehozása
 
 Létrehozhat és konfigurálhat egy Azure AD webes alkalmazás szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával. Útmutatásért lásd: [hozzon létre egy Azure AD-alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -45,14 +45,14 @@ Során megadott utasítások a fenti hivatkozással, győződjön meg arról, ho
 
 ![Webalkalmazás létrehozása](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "webes alkalmazás létrehozása")
 
-## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>2. lépés: Alkalmazásazonosítót, a hitelesítési kulcsot és a bérlői azonosító beszerzése
+## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>2. lépés: Alkalmazás azonosítója, a hitelesítési kulcsot és a bérlői azonosító beszerzése
 Ha programozott módon jelentkezik be, az alkalmazás szükség van az azonosító. Ha az alkalmazás fut, a saját hitelesítő adatait, hitelesítési kulcs is szükséges.
 
 * Az alkalmazás az Alkalmazásazonosító és hitelesítési kulcs (más néven az ügyfél titkos kulcsát) lekérésével útmutatásért lásd: [Get Alkalmazásazonosító és hitelesítési kulcs](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
 
 * A Bérlőazonosító lekéréséhez kapcsolatos utasításokért lásd: [Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
 
-## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>3. lépés: Az Azure AD-alkalmazást az Azure Data Lake Storage Gen1 fiók fájl vagy mappa hozzárendelése
+## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>3. lépés: Rendelje hozzá az Azure AD-alkalmazást az Azure Data Lake Storage Gen1 fiók fájl vagy mappa
 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg a Data Lake Storage Gen1 fiókot, amely a korábban létrehozott Azure Active Directory-alkalmazással társítaná.

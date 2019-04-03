@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: barclayn
-ms.openlocfilehash: aed0eb6ba4cdaa57d282ac4484e0c27c0697afb5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d6672827a87fbb949237d51310f1a9febc192ff2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58083130"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886343"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Az Azure dedikált HSM-hálózatok
 
@@ -91,5 +91,5 @@ Globálisan elosztott alkalmazások vagy a magas rendelkezésre állású region
 - [Támogatási lehetőségek](supportability.md)
 - [Magas rendelkezésre állás](high-availability.md)
 - [Fizikai biztonság](physical-security.md)
-- [Monitorozás](monitoring.md)
+- [Figyelés](monitoring.md)
 - [Üzembe helyezési architektúrája](deployment-architecture.md)

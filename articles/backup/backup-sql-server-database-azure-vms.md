@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 899068141a936aa5257501e733c6600185f22b8e
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 1a596462eb42231a356ddc4fa67b6468b63cd97c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522162"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849305"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -69,6 +69,7 @@ Kerülje az adatbázis neve a következőket:
   * Kezdő/záró szóköz
   * Záró '!'
   * Záró szögletes zárójel "]"
+  * Adatbázisok név "F:\" kezdete
 
 Az Azure-tábla nem támogatott karaktereket aliasképző van, de azokat nem ajánlott. [További információk](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
 

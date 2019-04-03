@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53efe44f17f174073ea5ed39f94c9dc8078a9779
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9d986ccbf92192c1fb7375e9db1fb398ed86a829
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206769"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879964"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Gyors útmutató: A felhasználók és a Microsoft Graph API meghívása iOS-alkalmazások
 
@@ -112,13 +112,13 @@ Most, hogy már van egy alkalmazása az Azure AD-ben, telepítheti az ADAL-t, é
 
 1. A QuickStart projektben nyissa meg a következő plist fájlt: `settings.plist`.
 1. A szakaszban található elemek értékeit állítsa be úgy, hogy megegyezzenek az Azure Portalon megadott értékekkel. A kód ezekre az értékekre fog hivatkozni az ADAL használatakor.
-    * A `tenant` az Azure AD-bérlő tartománya, pl. contoso.onmicrosoft.com.
-    * A `clientId` az alkalmazás portálról kimásolt ügyfél-azonosítója.
-    * A `redirectUri` a portálon regisztrált átirányítási URI.
+    * `tenant` az a tartomány az Azure AD-bérlő, például contoso.onmicrosoft.com.
+    * `clientId` a portálról kimásolt az alkalmazás ügyfél-azonosító van.
+    * `redirectUri` a portál regisztrált átirányítási URL-címe van.
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>4. lépés: Adal-t használó tokenekhez Azure AD-ből való
 
-Az ADAL mögött álló alapelv az, hogy valahányszor az alkalmazásnak szüksége van egy hozzáférési jogkivonatra, egyszerűen meghívja a `+(void) getToken : ` completionBlockot, a többit pedig az ADAL végzi el.
+Az ADAL mögött álló alapelv az, hogy valahányszor az alkalmazásnak szüksége van egy hozzáférési jogkivonatra, egyszerűen meghívja a `+(void) getToken :` completionBlockot, a többit pedig az ADAL végzi el.
 
 1. A `QuickStart` projektben a `GraphAPICaller.m` fájl megnyitását követően keresse meg a `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` megjegyzést a fájl elején.
 
@@ -259,5 +259,5 @@ Az elkészült mintát (a konfigurációs értékek nélkül) referenciaként .z
 
 Most már továbbléphet a további forgatókönyvekre. Javasoljuk, hogy a következőkkel folytassa:
 
-* [Node.Js-alapú webes API biztonságossá tétele az Azure AD-vel](quickstart-v1-nodejs-webapi.md)
+* [Biztonságos Node.JS webes API-k az Azure ad-vel](quickstart-v1-nodejs-webapi.md)
 * Megtudhatja, [hogyan engedélyezheti az alkalmazások közötti egyszeri bejelentkezést az ADAL segítségével az iOS rendszeren](howto-v1-enable-sso-ios.md)  

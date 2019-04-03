@@ -1,5 +1,5 @@
 ---
-title: A modellek webszolgáltatásként üzembe helyezése
+title: Hogyan és hol érdemes a modellek üzembe helyezése
 titleSuffix: Azure Machine Learning service
 description: 'Ismerje meg, hogyan és hol, beleértve az Azure Machine Learning szolgáltatás modellek üzembe helyezése: Az Azure Container Instances, az Azure Kubernetes Service, Azure IoT Edge és Field-programmable gate arrays.'
 services: machine-learning
@@ -9,20 +9,22 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: ea2986ea2b2f561288773a7d187101f90f3e9fa9
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 1528b5e92e1952bf85799afd71bd5dac16aedcf4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622127"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878298"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
-Az Azure Machine Learning SDK-t telepítheti a betanított modell számos lehetőséget biztosít. Ebből a dokumentumból megtudhatja, hogyan helyezi üzembe a modellt webszolgáltatásként, amely az Azure-felhőben, vagy az IoT Edge-eszközök.
+Ebből a dokumentumból megtudhatja, hogyan helyezi üzembe a modellt webszolgáltatásként, amely az Azure-felhőben, vagy az IoT Edge-eszközök. 
 
-A következő számítási célnak modellek helyezhető üzembe:
+## <a name="compute-targets-for-deployment"></a>Számítási telepítési céljainak
+
+Az Azure Machine Learning SDK használatával a betanított modell üzembe helyezése a következő helyekre:
 
 | Számítási célt | Üzemelő példány típusa | Leírás |
 | ----- | ----- | ----- |
@@ -31,6 +33,8 @@ A következő számítási célnak modellek helyezhető üzembe:
 | [Az Azure Container Instances (aci Szolgáltatásban)](#aci) | Tesztelés | Jó fejlesztési vagy tesztelési célokra. **Nem megfelelő az éles számítási feladatokhoz.** |
 | [Azure IoT Edge](#iotedge) | (Előzetes verzió) IoT-modul | Az IoT-eszközökön a modellek üzembe helyezése. Következtetési történik az eszközön. |
 | [A mező-programmable gate array (FPGA)](#fpga) | (Előzetes verzió) Webszolgáltatás | Valós idejű következtetési ultraalacsony késése. |
+
+## <a name="deployment-workflow"></a>Telepítési munkafolyamat
 
 A modell üzembe helyezését a minden számítási célokhoz hasonlít:
 
@@ -46,7 +50,7 @@ A következő videó bemutatja az Azure Container Instancesben való üzembe hel
 
 Az üzembe helyezést megvalósító munkafolyamat a fogalmakat további információkért lásd: [kezelése, telepítheti és figyelheti a modellek az Azure Machine Learning szolgáltatás](concept-model-management-and-deployment.md).
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites-for-deployment"></a>Központi telepítésének előfeltételei
 
 [!INCLUDE [aml-prereq](../../../includes/aml-prereq.md)]
 

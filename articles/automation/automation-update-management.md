@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2019
+ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 42a7ae0e6ca5239aa83d20655817973e8f185d02
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 1af2117b1d12c98182434705181462fd7c9bebf4
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805397"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862947"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -52,9 +52,9 @@ Jelentések, hogy mennyire naprakész a számítógép az alapján, hogy milyen 
 > [!NOTE]
 > Hogy a szolgáltatás megfelelően jelentést, az Update Management igényel, bizonyos URL-címeket és portokat engedélyezni kell. Ezekkel a követelményekkel kapcsolatos további tudnivalókért lásd: [hálózati hibrid feldolgozók tervezése](automation-hybrid-runbook-worker.md#network-planning).
 
-A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létrehozhat egy ütemezett üzembe helyezést a frissítést igénylő számítógépeken. Besorolású frissítések *nem kötelező* nem része a Windows-számítógépek esetében az üzembe helyezés hatálya. Csak a szükséges frissítéseket az üzembe helyezés hatálya szerepelnek. 
+A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létrehozhat egy ütemezett üzembe helyezést a frissítést igénylő számítógépeken. Besorolású frissítések *nem kötelező* nem része a Windows-számítógépek esetében az üzembe helyezés hatálya. Csak a szükséges frissítéseket az üzembe helyezés hatálya szerepelnek.
 
-Az ütemezett telepítés határozza meg, mely célszámítógépek kapni az alkalmazható frissítéseket, vagy explicit módon adja meg a számítógépeket, vagy kiválasztásával egy [számítógépcsoport](../azure-monitor/platform/computer-groups.md) , amelyek naplókeresésekkel, a számítógépek adott halmazára alapul. Is adjon meg egy ütemezést, jóváhagyásához, és állítsa be a frissítések telepítése során, amelyek adott időszakban.
+Az ütemezett telepítés határozza meg, mely célszámítógépek kapni az alkalmazható frissítéseket, vagy explicit módon adja meg a számítógépeket, vagy kiválasztásával egy [számítógépcsoport](../azure-monitor/platform/computer-groups.md) , amelyek naplókeresésekkel, a számítógépek adott halmazára alapul. Is adjon meg egy ütemezést, jóváhagyásához, és állítsa be a frissítések telepítése során, amelyek adott időszakban. Ennyi ideig a karbantartási időszak neve. A karbantartási időszak tíz percnyi újraindítások számára van fenntartva, ha újraindítás szükséges, és a megfelelő újraindítás lehetőséget választotta. Javítás a vártnál hosszabb ideig tart, és kevesebb mint 10 perc alatt a karbantartási időszakban, ha az újraindítás nem történik meg.
 
 A telepítést az Azure Automation runbookjai végzik. A runbookok nem tekinthetők, és a runbookok nem igényelnek semmilyen konfigurálást. Frissítéstelepítés létrehozásakor a központi telepítési ütemezés, amely a megadott időben az érintett számítógépekre irányuló frissítési mester runbookot elindítja hoz létre. A mester runbook egy gyermek runbookot indít az egyes ügynököket, a szükséges frissítések telepítéséhez.
 
@@ -628,7 +628,7 @@ Az Update Management egy virtuális gép eltávolítása:
 Folytassa a következő oktatóanyagban megtudhatja, hogyan kezelheti a frissítéseket a Windows virtuális gépek számára.
 
 > [!div class="nextstepaction"]
-> [Az Azure Windows rendszerű virtuális gépek frissítéseinek és javításainak kezelése](automation-tutorial-update-management.md)
+> [Azure-beli Windows rendszerű virtuális gépek frissítéseinek és javításainak kezelése](automation-tutorial-update-management.md)
 
 * Naplókeresés funkciójával [naplózza az Azure Monitor](../log-analytics/log-analytics-log-searches.md) frissítés részletes adatainak megtekintéséhez.
 * [Riasztások létrehozása](automation-tutorial-update-management.md#configure-alerts) frissítés telepítési állapota.

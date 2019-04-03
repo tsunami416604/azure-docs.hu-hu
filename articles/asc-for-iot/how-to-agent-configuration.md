@@ -1,25 +1,25 @@
 ---
 title: Az Azure Security Center konfigurálása az IoT-ügynök előzetes verzió |} A Microsoft Docs
 description: Megtudhatja, hogyan használható az ügynökök konfigurálására az Azure Security Center az IoT.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: f95c445a-4f0d-4198-9c6c-d01446473bd0
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 27b548459bd1fee3c6596cce624b00d052e608fe
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 1e212e752309fd8347836d462a3394da2fca4a15
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757380"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862777"
 ---
 # <a name="tutorial-configure-security-agents"></a>Oktatóanyag: Biztonsági ügynökök konfigurálása
 
@@ -140,4 +140,4 @@ Alapértelmezett értékek érhetők el a megfelelő sémát [Github](https://ak
 
 - [ASC megismerheti az IoT-javaslatok](concept-recommendations.md)
 - [Fedezze fel az ASC IoT-riasztások](concept-security-alerts.md)
-- [Hozzáférés nyers biztonsági adatok](how-to-security-data-access.md)
+- [Hozzáférés a nyers biztonsági adatokhoz](how-to-security-data-access.md)

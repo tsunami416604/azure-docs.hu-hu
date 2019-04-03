@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: d73a43aedde9a88e009ddca1f0363dbcd92e1379
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080454"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882412"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Az Azure Logic Appsben hatókörökkel csoport állapota alapján műveletek futtatása
 
@@ -79,9 +79,9 @@ A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
 
       | Beállítás | Érték | Leírás |
       | ------- | ----- | ----------- |
-      | **1. útvonalpont** | <*Indítsa el*> | Adja meg az útvonal kiindulópontja. | 
-      | **2. útvonalpont** | <*vége*> | Adja meg az útvonal célállomása. | 
-      | **Elkerülés** | None | Adja meg az elemek elkerülése érdekében az útvonal, például autópályák, útdíjak, és így tovább. A lehetséges értékek megtekintéséhez [útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Waypoint 1** | <*Indítsa el*> | Adja meg az útvonal kiindulópontja. | 
+      | **Waypoint 2** | <*vége*> | Adja meg az útvonal célállomása. | 
+      | **Avoid** | None | Adja meg az elemek elkerülése érdekében az útvonal, például autópályák, útdíjak, és így tovább. A lehetséges értékek megtekintéséhez [útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optimalizálás** | timeWithTraffic | Válassza ki például távolság, időt a jelenlegi forgalom adatait, és így tovább, az útvonal optimalizálására szolgáló paraméter. Ebben a példában ez az érték: "timeWithTraffic" | 
       | **Távolság mértékegysége** | <*igény-szerint*> | Adja meg az irányítása kiszámítására távolság egysége. Ebben a példában ez az érték: "Mérföld" | 
       | **Közlekedési mód** | Vezetés | Adja meg az utazási mód a útvonal. Ebben a példában ez az érték "Vezetői" | 
@@ -119,7 +119,7 @@ A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
 
    1. Az a **törzs** mezőbe írja be a szöveget, záró szóközzel: 
 
-      ```Travel time: ```
+      ```Travel time:```
 
       Amíg a kurzor megjelenik a **törzs** mező, a dinamikus tartalmú lista nyitva marad, hogy kiválaszthatja a paramétereket, érhetők el ezen a ponton.
 
@@ -146,11 +146,13 @@ A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
 
    1. Ha elkészült, válassza ki a **OK**.
 
+   <!-- markdownlint-disable MD038 -->
    1. Oldja fel a kifejezés, miután adja hozzá ezt a szöveget egy vezető terület: ``` minutes```
   
        A **törzs** mező a következőhöz hasonló ebben a példában:
 
        ![Befejezett "Törzs" mező](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+   <!-- markdownlint-enable MD038 -->
 
 1. Mentse a logikai alkalmazást.
 

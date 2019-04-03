@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/28/2019
 ms.author: jowargo
-ms.openlocfilehash: 03cfecb2faaacbe1017fb4e7acfa3c475c18a9ab
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 79913fc300f2ca66a84cf47c0e5b650b9ea2cc59
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620020"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878774"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldésére Xamarin.Android-alkalmazásokkal az Azure Notification Hubs használatával
 
@@ -122,8 +122,8 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     ```
 1. Gyűjtse össze az alábbi információikat az Android-alkalmazásra és az értesítési központra vonatkozóan:
 
-   * **Figyelési kapcsolati karakterlánc**: Irányítópultján a [Azure Portal], válassza a **kapcsolati karakterláncok megtekintése**. Másolás a `DefaultListenSharedAccessSignature` kapcsolati karakterláncot ezen értékhez.
-   * **Eseményközpont neve**: A központ neve a [Azure Portal]. Például: *mynotificationhub2*.
+   * **Figyelési kapcsolati karakterlánc**: Irányítópultján a [az Azure portal], válassza a **kapcsolati karakterláncok megtekintése**. Másolás a `DefaultListenSharedAccessSignature` kapcsolati karakterláncot ezen értékhez.
+   * **Eseményközpont neve**: A központ neve a [az Azure portal]. Például: *mynotificationhub2*.
 3. Az a **Megoldáskezelőben** ablakban kattintson a jobb gombbal a **projekt**, jelölje be **hozzáadása**, majd válassza ki **osztály**.
 4. Hozzon létre egy `Constants.cs` osztályt a Xamarin-projektben, és adja meg a következő konstans értékeket az osztályban. A helyőrzőket cserélje le az értékekkel.
 
@@ -369,4 +369,4 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[GitHub]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/Xamarin/GetStartedXamarinAndroid
+[GitHub]: https://github.com/Azure/azure-notificationhubs-android

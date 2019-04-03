@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: e32bc2f4697b5ac32993a5da66e5c38cb7add03f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 3488e8501b0b9bea83bfcce5085d42b6476d3ed2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200582"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880423"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -92,7 +92,7 @@ További információ a virtuális hálózatok közötti társviszonyok létreho
 
 Egy névleges díj vonatkozik a társviszony-kapcsolatot használó bejövő és kimenő forgalomra. A virtuális társhálózatok és a globális virtuális társhálózatok díjszabásával kapcsolatos további tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-network) olvasható.
 
-Az átjáróval történő átvitel olyan társviszony-létesítési tulajdonság, amely lehetővé teszi egy virtuális hálózat számára egy VPN-átjáró használatát valamely virtuális társhálózaton belül a létesítmények vagy virtuális hálózatok közötti csatlakozáshoz. Ebben a forgatókönyvben a távoli átjárón áthaladó forgalomra a [VPN-átjáró díjai](https://azure.microsoft.com/pricing/details/vpn-gateway/) érvényesek, [virtuális társhálózati díjakat](https://azure.microsoft.com/pricing/details/virtual-network) azonban nem kell fizetni. Ha például az A virtuális hálózat VPN-átjáróval rendelkezik a helyszíni csatlakozáshoz, a B virtuális hálózat pedig megfelelő tulajdonságokkal konfigurált társviszonyban van az A virtuális hálózattal, akkor a B virtuális hálózatról a helyszíni felé irányuló forgalom után csak a VPN-átjáróra vonatkozó díjszabás szerint kell fizetni. Virtuális társhálózati díjak nem lesznek felszámolva. Ismerje meg, hogyan [konfigurálhat VPN-átjáróval történő adatátvitelt virtuális hálózatok közötti társviszony létesítéséhez](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Az átjáróval történő átvitel olyan társviszony-létesítési tulajdonság, amely lehetővé teszi egy virtuális hálózat számára egy VPN-átjáró használatát valamely virtuális társhálózaton belül a létesítmények vagy virtuális hálózatok közötti csatlakozáshoz. Ebben a forgatókönyvben a távoli átjárón áthaladó forgalomra a [VPN-átjáró díjai](https://azure.microsoft.com/pricing/details/vpn-gateway/) érvényesek, [virtuális társhálózati díjakat](https://azure.microsoft.com/pricing/details/virtual-network) azonban nem kell fizetni. Például ha hálózattal rendelkezik helyszíni kapcsolatok VPN-átjáró és a b társviszonyban van a hálózattal konfigurált megfelelő tulajdonságok b forgalmát a helyszíni, akkor csak mennyiségre kimenő forgalom VPN gateway díjszabás szerint. Virtuális társhálózati díjak nem lesznek felszámolva. Ismerje meg, hogyan [konfigurálhat VPN-átjáróval történő adatátvitelt virtuális hálózatok közötti társviszony létesítéséhez](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -100,10 +100,10 @@ Az átjáróval történő átvitel olyan társviszony-létesítési tulajdonsá
 
     |Azure üzembehelyezési modell             | Előfizetés  |
     |---------                          |---------|
-    |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
-    |                                   |[Különböző](create-peering-different-subscriptions.md)|
-    |Egy Resource Manager, egy klasszikus  |[Ugyanaz](create-peering-different-deployment-models.md)|
-    |                                   |[Különböző](create-peering-different-deployment-models-subscriptions.md)|
+    |Mindkét Resource Manager              |[Azonos](tutorial-connect-virtual-networks-portal.md)|
+    |                                   |[Eltérő](create-peering-different-subscriptions.md)|
+    |Egy Resource Manager, egy klasszikus  |[Azonos](create-peering-different-deployment-models.md)|
+    |                                   |[Eltérő](create-peering-different-deployment-models-subscriptions.md)|
 
 * További információ a [küllős hálózati topológiák létrehozásáról](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * További tudnivalók a [virtuális társhálózatok beállításairól és azok megváltoztatásáról](virtual-network-manage-peering.md).

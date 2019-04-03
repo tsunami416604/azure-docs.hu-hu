@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 85e5fc7e1c8a4561b51afaf0d665fedb6d9cde1f
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 2a35435f56a4bb09a8a1958fbc175ef7c889c380
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258377"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863015"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Biztonsági mentése Azure virtuális gépeken a PowerShell-lel
 
@@ -82,7 +82,7 @@ Hozza létre a tárolót a következőképpen:
 
 Biztonsági másolatok a biztonsági mentési szabályzatban meghatározott ütemezés szerint futtatni. Helyreállítási tár létrehozásakor a tár alapértelmezett védelmi és megőrzési szabályzatokkal rendelkezik.
 
-- Az alapértelmezett védelmi házirend indítja el a biztonsági mentési feladatot, egy adott időpontban naponta.
+- Az alapértelmezett védelmi házirend, egy megadott időpontban naponta egyszer indítja el a biztonsági mentési feladatot.
 - Az alapértelmezett megőrzési szabályzat 30 napig őrzi meg a napi helyreállítási pontokat. 
 
 Engedélyezi, és ebben az oktatóanyagban a mentése az Azure virtuális gép biztonsági mentése, hogy tegye a következőket:
@@ -123,4 +123,4 @@ Remove-AzRecoveryServicesVault -Vault $vault1
 
 - [Felülvizsgálat](backup-azure-vms-automation.md) biztonsági mentése és visszaállítása az Azure virtuális gépeken a PowerShell-lel részletesebb leírását. 
 - [Felügyelheti és figyelheti az Azure virtuális gépek](backup-azure-manage-vms.md)
-- [Az Azure virtuális gépek visszaállítása](backup-azure-arm-restore-vms.md)
+- [Azure-beli virtuális gépek visszaállítása](backup-azure-arm-restore-vms.md)

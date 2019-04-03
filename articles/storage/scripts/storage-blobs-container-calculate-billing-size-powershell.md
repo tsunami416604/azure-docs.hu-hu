@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 805abec84b26a6b2b9af3dfe318f877f4edb9547
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 02b4cfcc6d88430701f653665269532a4eb7092f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080896"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880763"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Teljes számlázási blobtároló méretének kiszámítása
 
@@ -43,11 +43,11 @@ Az alábbi szakaszok azt ismerteti, hogyan kerül kiszámításra a tárolási k
 
 A következő számítási ismerteti, hogyan lehet megbecsülni egy blobtároló felhasznált tárterület mérete:
 
-`
+```
 48 bytes + Len(ContainerName) * 2 bytes +
 For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
 For-Each Signed Identifier[512 bytes]
-`
+```
 
 A következő táblázat összefoglalja következő:
 * az egyes tárolók terheléssel 48 bájt az utolsó módosítás dátuma, engedélyek, nyilvános beállítások és néhány rendszer metaadatokat tartalmaz.
@@ -64,22 +64,22 @@ A következő számítások blobonkénti felhasznált tárterület mérete becsl
 
 * A blokkblobok (alap blob vagy pillanatkép):
 
-   `
+   ```
    124 bytes + Len(BlobName) * 2 bytes +
    For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
    8 bytes + number of committed and uncommitted blocks * Block ID Size in bytes +
    SizeInBytes(data in unique committed data blocks stored) +
    SizeInBytes(data in uncommitted data blocks)
-   `
+   ```
 
 * A lapblobok (alap blob vagy pillanatkép):
 
-   `
+   ```
    124 bytes + Len(BlobName) * 2 bytes +
    For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
    number of nonconsecutive page ranges with data * 12 bytes +
    SizeInBytes(data in unique pages stored)
-   `
+   ```
 
 A következő táblázat összefoglalja következő:
 

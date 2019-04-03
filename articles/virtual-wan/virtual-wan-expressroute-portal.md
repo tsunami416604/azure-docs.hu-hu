@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/5/2018
+ms.date: 04/02/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 017c8c2f060f969f2e7f8d387dcbafa2dac426d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7b7adcc85b9274af45ddab653e875377e959e40c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842945"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876326"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Oktatóanyag: Azure virtuális WAN (előzetes verzió) használatával egy ExpressRoute-társítás létrehozása
 
@@ -45,10 +45,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 A Virtual WAN konfigurálása előtt regisztrálnia kell az előfizetését az előzetes verzióban. Máskülönben nem használhatja a Virtual WAN-t a portálon. E-mail küldése a regisztrációhoz **azurevirtualwan\@microsoft.com** az előfizetés-azonosítóval. Az előfizetés regisztrációja után egy e-mailt fog kapni.
 
-**Előzetes verzióval kapcsolatos szempontok:**
+**Előzetes verzió szempontok:**
 
-* Régiók rendelkezésre állása: USA nyugati középső régiója
-* Olyan országban, amely támogatja az [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) használatát, engedélyezni kell az ExpressRoute-kapcsolatcsoportot.
+Az ExpressRoute-kapcsolatcsoport engedélyezni kell, amely támogatja az adott országban [ExpressRoute globális elérhetőségű](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
 
 ## <a name="vnet"></a>1. Virtuális hálózat létrehozása
 
@@ -70,16 +69,16 @@ Egy böngészőből lépjen az [Azure Portalra (előzetes verzió)](https://aka.
 
 ## <a name="hub"></a>4. Egy kapcsolatcsoport keresése és társítása a központhoz
 
-1. Válassza ki a virtuális WAN-t, majd a **Virtuális WAN-architektúra** területen válassza az **ExpressRoute-kapcsolatcsoportok** lehetőséget.
-1. Ha az ExpressRoute-kapcsolatcsoport ugyanabban az előfizetésben van, mint a virtuális WAN, kattintson az **ExpressRoute-kapcsolatcsoport kiválasztása** elemre az előfizetés(ek)ből. 
+1. Válassza ki a vWAN és **virtuális WAN architektúra**válassza **ExpressRoute-Kapcsolatcsoportok**.
+1. Ha az ExpressRoute-kapcsolatcsoport a vWAN ugyanazt az előfizetést, kattintson a **válassza ki az ExpressRoute-kapcsolatcsoport** az előfizetéséhez vagy előfizetéseihez. 
 1. A legördülő használ, válassza ki az ExpressRoute, amelyet szeretne hozzárendelni a hub.
 1. Ha az ExpressRoute-kapcsolatcsoport nem ugyanabban az előfizetésben, vagy hogy adtak meg [hitelesítési kulcsot és a társ azonosító](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)válassza **váltja be egy engedélyezési kulcsot expressroute-kapcsolatcsoporthoz keresése**
 1. Adja meg a következő részleteket:
 1. **Hitelesítési kulcs** – A kapcsolatcsoport tulajdonosa hozza létre a fent leírt módon
 1. **Társ-kapcsolatcsoport URI** – A kapcsolatcsoport URI-je, amelyet a kapcsolatcsoport tulajdonosa ad meg, és a kapcsolatcsoport egyedi azonosítójaként szolgál.
 1. **Útválasztás súly** - [útválasztás súly](../expressroute/expressroute-optimize-routing.md) lehetővé teszi, hogy inkább az egyes elérési utakat, több Kapcsolatcsoportok társviszony-létesítési különböző helyekről ugyanahhoz a hubhoz csatlakoztatott
-1. Kattintson a **Kapcsolatcsoport keresése** elemre, és ha a rendszer megtalálta a kapcsolatcsoportot, válassza ki.
-1. A legördülő listából válasszon ki egy vagy több központot, majd kattintson a **Mentés** elemre.
+1. Kattintson a **keresse meg a kapcsolatcsoport** , és válassza ki a kapcsolatcsoportot, ha található.
+1. Válassza ki a legördülő listából legalább 1 hubs le, és kattintson a **mentése**.
 
 ## <a name="vnet"></a>5. A virtuális hálózat csatlakoztatása egy elosztóhoz
 

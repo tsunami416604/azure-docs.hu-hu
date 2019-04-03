@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 125ad28f049662ae6d91c61bb5ee79c1c1428af5
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 720f4433c1e7b0d271e5729236f439c92a84687e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401757"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884652"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Az Azure Data Box Edge rendszerre vonatkozó követelmények
 
@@ -86,10 +86,14 @@ Azt javasoljuk, hogy beállította-e a tűzfalszabályok liberally fix IP-címei
 | https://\*.azurecr.io                     | Személyes, mind a külső tároló-beállításjegyzékek (nem kötelező) |   |
 | https://\*.azure-devices.net              | Az IoT Hub-hozzáférés (kötelező)                             |   |
 
+### <a name="url-patterns-for-azure-government"></a>Az Azure Government URL-minta
+
+[!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
+
 ## <a name="internet-bandwidth"></a>Internetes sávszélesség
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
 ## <a name="next-step"></a>Következő lépés
 
-- [Az Azure Data Box Edge üzembe helyezése](data-box-Edge-deploy-prep.md)
+- [Az Azure Data Box Edge üzembe helyezése](data-box-edge-deploy-prep.md)

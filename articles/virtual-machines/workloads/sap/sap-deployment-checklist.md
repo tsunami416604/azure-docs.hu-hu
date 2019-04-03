@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ba866ddf79a9970ef3f5c4ff3b7085242a1cdcd
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802796"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878723"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Az SAP számítási feladatok az Azure tervezési és telepítési ellenőrzőlista 
 
@@ -39,7 +39,7 @@ Ebben a fázisban tervezett áttelepítés SAP számítási feladatok Azure nyil
     2. Hozzon létre, és haladjon végig a felelősségi hozzárendelés mátrix (RACI), amely meghatározza a és a különböző felek-hozzárendeléseit. Indítsa el a magas szinten, és működik, több részletes szintek átviteli sebesség a tervezési és az első központi telepítések
     2. A megoldás magas szintű architektúrája
     3. Döntés az Azure-régióban való üzembe helyezéséhez. Az Azure-régiók listája, ellenőrizze a [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/). Az egyes Azure-régiókban elérhető szolgáltatások esetén ellenőrizze a cikk [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/)
-    4. A hálózati architektúra az Azure-bA a helyszíni csatlakozni. Indítsa el, hogy ismeri a saját maga a [az Azure Virtual Datacenter tervezet](https://docs.microsoft.com/azure/architecture/vdc/)
+    4. A hálózati architektúra az Azure-bA a helyszíni csatlakozás. Indítsa el, hogy ismeri a saját maga a [az Azure Virtual Datacenter tervezet](https://docs.microsoft.com/azure/architecture/vdc/)
     5. Az Azure-ban futó jelentős üzleti hatású adatokat biztonsági alapelveket. Jelentős kezdés olvasásához [Azure Security dokumentációja](https://docs.microsoft.com/azure/security/)
 2.  Műszaki tervezés – tartalmazó dokumentumot:
     1.  A megoldás blokkblob ábrája 
@@ -87,7 +87,7 @@ Ebben a fázisban tervezett áttelepítés SAP számítási feladatok Azure nyil
  
 A próbaüzem előtt, vagy projekttervezés és-előkészítés párhuzamosan futtathatók. A fázis is módszerek és a tervezési és az előkészítési fázisban végrehajtott tervezési teszteléséhez használható. A próbaüzem fázisában fogalmak valós megvalósíthatósági kiterjesztve is lehet. Javasoljuk, hogy állítsa be, és ellenőrizze a teljes magas rendelkezésre ÁLLÁSÚ és Vészhelyreállítási megoldást és a biztonság kialakítása során próbacélú telepítéshez. Néhány ügyfél esetben méretezhetőség vizsgálatokat is képes elvégezni ebben a fázisban. Más ügyfelek számára a próbaüzem fázisában védőfal SAP-rendszerek telepítése használjuk. Feltételezzük, hogy a rendszer, amely egy próbaprogram futtatása céljából az Azure-bA migrálni kívánt azonosított.
 
-1. Optimalizálja Azure-ba való adatátvitel. Nagymértékben függ a felhasználói esetek átviteli keresztül [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) helyszíni volt leggyorsabb, ha az Express kapcsolatcsoport rendelkezett elegendő sávszélesség. Más ügyfelekkel interneten keresztül szükséges a gyorsabb
+1. Optimalizálja Azure-ba való adatátvitel. Nagymértékben függ a felhasználói esetek átviteli keresztül [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) a helyi rendszer leggyorsabb, ha az Express kapcsolatcsoport rendelkezett elegendő sávszélesség. Más ügyfelekkel interneten keresztül szükséges a gyorsabb
 2. Egy SAP esetén heterogén adatplatform migrálását követően, amely magában foglalja az exportálás és az adatbázis az adatok importálása, teszteléséhez, és exportálási optimalizálása, és importálja a fázisok. Nagy áttelepítések használata esetén az SQL Server, a cél-platformként, javaslatok található [Itt](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAP-OS-DB-Migration-to-SQL-Server-8211-FAQ-v6-2-April-2017/ba-p/368070). A figyelő/SWPM áttelepítési módszert is igénybe vehet, abban az esetben nem kell egy kombinált kiadásban frissítést vagy [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) feldolgozni az áttelepítés egy SAP kiadásban frissítést egyesítése és bizonyos forrás- és adatbázis-kezelő platform teljesítése kombináció, például a dokumentált [adatbázis áttelepítési beállítás (DMO) a SUM 2.0 SP03](https://launchpad.support.sap.com/#/notes/2631152). 
    1.  Exportálja a forrás, exportálási fájl feltöltése az Azure és az importálási teljesítmény.  Az exportálás és importálás közötti átfedés maximalizálása
    2.  Kiértékelni között ahhoz, hogy tükrözze az infrastruktúra méretezése a cél- és cél platform adatbázis mérete    

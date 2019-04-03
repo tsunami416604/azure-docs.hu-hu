@@ -3,21 +3,21 @@ title: Stream a Stream Analyticsből származó adatokat az Azure Data Lake Stor
 description: Adatok streamelése az Azure Data Lake Storage Gen1 Azure Stream Analytics használatával
 services: data-lake-store,stream-analytics
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: nitinme
-ms.openlocfilehash: 1b18bd5aae398d2ec942120af5d96943636c346c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: twooley
+ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101111"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877550"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Stream-adatokat az Azure Storage-Blobból az Azure Data Lake Storage Gen1 Azure Stream Analytics használatával
 Ebben a cikkben, megtudhatja, hogyan használható az Azure Data Lake Storage Gen1 kimenetként Azure Stream Analytics-feladat. Ez a cikk bemutatja egy egyszerű forgatókönyvet, amely adatokat olvas be egy Azure Storage-blobot (bemenet) és az adatokat ír az Data Lake Storage Gen1 (kimenet).

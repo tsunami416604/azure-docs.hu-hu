@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 891b2988d04a3cf2f7c6676a837bc1ee199f4d16
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651490"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886097"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Útmutató az Azure Machine Learning Studio Net # Neurális hálózati specifikációs nyelvhez
 
@@ -450,11 +450,12 @@ output Digit [10] from Hid3 all;
 + A kulcsszó `convolve` azt jelzi, hogy a rétegek nevű `Conv1` és `Conv2` konvolúciós rétegek vannak. A réteg nyilatkozatok mindegyike a konvolúció attribútumok listája követi.
 + A háló harmadik rejtett réteget, `Hid3`, amely teljes mértékben csatlakozik a második rejtett réteg `Conv2`.
 + A kimenete rétegen `Digit`, csak a harmadik rejtett réteg csatlakozik `Hid3`. A kulcsszó `all` azt jelzi, hogy a kimenete rétegen teljes csatlakozik `Hid3`.
-+ A arita Pro instanci a konvolúció az harmadik: a rekordok felsorolásának hossza `InputShape`, `KernelShape`, `Stride, and `megosztás ".
++ A arita Pro instanci a konvolúció az harmadik: a rekordok felsorolásának hossza `InputShape`, `KernelShape`, `Stride`, és `Sharing`.
 + A kernel kiszolgálónként súlyok száma `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Vagy `26 * 50 = 1300`.
 + A következő kiszámíthatja a minden egyes rejtett rétegben található csomópontok:
 
-    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
+    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5`
+    `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
 + A csomópontok száma összesen számítható ki a réteg a deklarált dimenziói használatával [50, 5, 5], a következő: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`

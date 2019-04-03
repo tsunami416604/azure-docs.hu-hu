@@ -15,18 +15,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 2bae96c1c87a4bbb44c006ed628ee8019ab2635c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cd10c503c6e65f68d063deb5f8a537fc9f3c9f0f
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671250"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846326"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Figyelőfüggőség a Windows Azure virtuális gépi bővítmény
 
 Virtuális gépek térkép funkció az Azure Monitor az adatok lekérése a Microsoft Dependency agent. A Windows Azure virtuális gép függőségi ügynök virtuális gépi bővítmény közzétett és a Microsoft támogatja. A bővítmény a függőségi ügynök telepítése Azure-beli virtuális gépeken. Ez a dokumentum részletesen, a támogatott platformok, a konfigurációk és a Windows Azure virtuális gép függőségi ügynök virtuálisgép-bővítmény az üzembe helyezési lehetőségeit.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ### <a name="operating-system"></a>Operációs rendszer
 
@@ -130,11 +132,11 @@ Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőf
 
 ## <a name="powershell-deployment"></a>PowerShell környezetben végzett telepítés
 
-A `Set-AzureRmVMExtension` parancs a függőségi ügynök virtuálisgép-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez használható. A parancs futtatása előtt a nyilvános és privát konfigurációk kell egy PowerShell kivonattábla kell tárolni. 
+A `Set-AzVMExtension` parancs a függőségi ügynök virtuálisgép-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez használható. A parancs futtatása előtt a nyilvános és privát konfigurációk kell egy PowerShell kivonattábla kell tárolni. 
 
 ```powershell
 
-Set-AzureRmVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
+Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.Azure.Monitoring.DependencyAgent" `
@@ -150,7 +152,7 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgen
 Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure PowerShell-modul segítségével. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure PowerShell modullal.
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 Bővítmény végrehajtás kimenetének a rendszer naplózza a következő könyvtárban található fájlok:

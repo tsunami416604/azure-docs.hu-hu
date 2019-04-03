@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74b1ed79e04bcca05dcb5308b844622e4dd413ce
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 6f60fdced25fdc594c28972f555bb28a9c629f21
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410298"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878655"
 ---
-# <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-infrastruktúra konfigurációi és a műveletek az Azure-ban
+# <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra konfigurálása és SAP HANA rendszereit az Azure-beli natív virtuális gépek (VM) üzembe helyezett működő. A dokumentum az SAP HANA kibővített M128s VM-termékváltozat konfigurációs információkat is tartalmaz. Ez a dokumentum nem célja, hogy cserélje le a standard szintű SAP dokumentációját, amely magában foglalja az alábbi tartalommal:
 
 - [Az SAP-felügyeleti útmutató](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/330e5550b09d4f0f8b6cceb14a64cd22.html)
@@ -33,7 +33,7 @@ Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra konfigurálása és
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató használatához az alábbi Azure-összetevők alapszintű ismeretét szüksége:
 
-- [Azure-alapú virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+- [Azure virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 - [Az Azure-hálózatok és virtuális hálózatok](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 - [Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
@@ -206,7 +206,7 @@ SAP HANA futtatásához a virtuális gépek telepítésekor a virtuális gépek 
 >
 >
 
-Azonban, amelyek támpontul telepítések esetén szeretne létrehozni egy virtuális adatközpont hálózati architektúra az Azure-ban. Ez az architektúra az Azure virtuális hálózat átjáró, amely csatlakozik egy külön Azure vnetbe helyszíni szétválasztása javasolja. A virtuális hálózattal külön kell futtatni a forgalmat, hogy helyszíni vagy vagy az interneten. Ez a megközelítés lehetővé teszi a vizsgálati és naplózási forgalmat, amely a virtuális adatközpont belép az Azure-ban a külön agyi virtuális hálózat szoftvereket telepíthet. Ezért kell egy virtuális hálózat, amelyen a szoftverek és konfigurációk, hogy az Azure-alapú in - és kimenő adatforgalom vonatkozik.
+Azonban, amelyek támpontul telepítések esetén szeretne létrehozni egy virtuális adatközpont hálózati architektúra az Azure-ban. Ez az architektúra az Azure virtuális hálózat átjáró, amely kapcsolódik a helyszíni egy külön Azure vnetbe szétválasztása javasolja. A virtuális hálózattal külön kell gazdagép a forgalmat, hogy a helyszínen vagy az interneten. Ez a megközelítés lehetővé teszi a vizsgálati és naplózási forgalmat, amely a virtuális adatközpont belép az Azure-ban a külön agyi virtuális hálózat szoftvereket telepíthet. Ezért kell egy virtuális hálózat, amelyen a szoftverek és konfigurációk, hogy az Azure-alapú in - és kimenő adatforgalom vonatkozik.
 
 A cikkek [Azure Virtual Datacenter: A hálózati nézőpont](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) és [Azure Virtual Datacenter és a vállalati Vezérlősík](https://docs.microsoft.com/azure/architecture/vdc/) adjon további információ a virtual datacenter megközelítésével és a kapcsolódó Azure-beli virtuális Tervező.
 

@@ -1,21 +1,21 @@
 ---
-title: Komplex veszélyforrások elleni védelem az Azure Storage szolgáltatáshoz
+title: Advanced Threat Protection for Azure Storage
 description: Állítsa be az Azure Storage komplex veszélyforrások elleni védelem fióktevékenység rendellenességek észlelése és csupán a vélhetően kárt okozó kísérleteket hozzáférjen a fiókjához.
 services: storage
 author: rmatchoro
 ms.service: storage
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/02/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: b2e51b11e2d79d7f35d6b24df4ba5492ecf9a5c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 48fdf277f47b1e4abc8e3d7f7222d5b99a248b55
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58133229"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850720"
 ---
-# <a name="advanced-threat-protection-for-azure-storage"></a>Komplex veszélyforrások elleni védelem az Azure Storage szolgáltatáshoz
+# <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage
 
 Komplex veszélyforrások elleni védelem az Azure Storage, által észlelt szokatlan és vélhetően kárt okozó kísérleteket elérni vagy kiaknázni a storage-fiókok biztonsági információs réteget biztosít. A védelmi réteget teszi cím fenyegetések szakértői biztonsági szakértelem vagy biztonság monitorozási rendszerek felügyelete nélkül. 
 
@@ -51,6 +51,24 @@ A Standard szintű szolgáltatásra való előfizetéskor az Azure Security Cent
 
 Az Azure Resource Manager-sablon üzembe helyezéséhez a komplex veszélyforrások elleni védelem az Azure Storage-fiók használata engedélyezett.
 További információkért lásd: [komplex veszélyforrások elleni védelem tárfiók](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
+
+### <a name="using-azure-policy"></a>Az Azure Policy használata
+
+Az Azure Policy használatával komplex veszélyforrások elleni védelem engedélyezése egy adott előfizetés vagy az erőforrás-csoportban tárfiókok között.
+
+1. Az Azure delek **szabályzat – definíciók** lapot.
+
+1. Keresse meg a **üzembe helyezése komplex veszélyforrások elleni védelem a Storage-fiókok** házirend.
+
+     ![Keresés a házirend](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
+  
+1. Válasszon ki egy Azure előfizetést vagy az erőforrást.
+
+    ![Előfizetés vagy csoport kiválasztása](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
+
+1. A szabályzat hozzárendelése.
+
+    ![Definíciók szabályzatról](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="using-rest-api"></a>A REST API használata
 Rest API-parancsok segítségével létrehozása, frissítése és az adott tárfiókhoz a komplex veszélyforrások elleni védelem beállítás.

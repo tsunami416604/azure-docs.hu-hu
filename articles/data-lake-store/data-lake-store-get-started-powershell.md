@@ -3,19 +3,19 @@ title: Ismerkedés az Azure Data Lake Storage Gen1 PowerShell-lel |} A Microsoft
 description: Az Azure Data Lake Storage Gen1 fiók létrehozása és alapszintű műveletek végrehajtása az Azure PowerShell használatával
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 54d6dec6b61e4042b12cba833f4adf5d1321d1f1
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.author: twooley
+ms.openlocfilehash: 6635b572d11339307083b8aa2aaaba69dc731101
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237783"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885859"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Ismerkedés az Azure Data Lake Storage Gen1 Azure PowerShell-lel
 > [!div class="op_single_selector"]
@@ -123,6 +123,6 @@ Ha a rendszer rákérdez, írja be az **Y** karaktert a fiók törléséhez.
 ## <a name="next-steps"></a>További lépések
 * [Teljesítmény-finomhangolási útmutató a PowerShell használata az Azure Data Lake Storage Gen1](data-lake-store-performance-tuning-powershell.md)
 * [Az Azure Data Lake Storage Gen1 használata big data-követelményekhez](data-lake-store-data-scenarios.md) 
-* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
+* [Biztonságos adattárolás a Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Az Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Az Azure HDInsight használata a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

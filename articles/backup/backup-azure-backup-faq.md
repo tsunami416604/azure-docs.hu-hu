@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 420c81f6206c777efc303924d81763f5984aba4c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0981f4d5d9d5fcb243fc7ead6f4b529c096935d0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993383"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885876"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Az Azure Backup – gyakori kérdések
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -40,7 +40,7 @@ Nem. Recovery Services-tárolót is csak tárolási beállításainak módosít�
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Használhatom-e egy elem szintű visszaállítása (ILR) a virtuális gépek biztonsági mentése Recovery Services-tárolóra?
 - ILR támogatott Azure-beli virtuális gépek biztonsági mentése Azure virtuális gépek biztonsági mentését. További információ: [cikk](backup-azure-restore-files-from-vm.md)
-- ILR a helyszíni virtuális gépek biztonsági mentése az Azure backup Server vagy a System Center DPM által online helyreállítási pontok esetében nem támogatott.
+- Online helyreállítási pontok a helyszíni virtuális gépek biztonsági mentése az Azure backup Server vagy a System Center DPM ILR nem támogatott.
 
 
 ## <a name="azure-backup-agent"></a>Az Azure Backup ügynöke
@@ -93,7 +93,7 @@ Igen.
 ### <a name="what-operating-systems-are-supported-for-backup"></a>Milyen operációs rendszereket támogat a biztonsági mentés?
 Az Azure Backup biztonsági mentését a fájlok és mappák és az Azure Backup Server és a DPM által védett alkalmazások ezeket az operációs rendszereket támogatja.
 
-**OS** | **Termékváltozat** | **Részletek**
+**Operációs rendszer** | **SKU** | **Részletek**
 --- | --- | ---
 Munkaállomás | |
 Windows 10 64 bit | Enterprise, Pro, Home | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.

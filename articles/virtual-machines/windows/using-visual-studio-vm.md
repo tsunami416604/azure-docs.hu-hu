@@ -13,15 +13,15 @@ ms.workload: azure-vs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
-ms.date: 03/28/2019
+ms.date: 04/02/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: b9bfa49a94bca7f80cacedea0a08b1c0a6128ef8
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: df91ba12c1ee74b8e28f75344a5cd55af018d3cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619560"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884873"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure Visual Studio-rendszerképek
 A Visual Studio használatával egy előre konfigurált Azure virtuális gépen (VM) módja a gyors és egyszerű nyissa meg a művelet egy felfelé és a futó fejlesztési környezetben. Visual Studio különböző konfigurációival rendszerképek érhetők el a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=visual%20studio&page=1).
@@ -29,11 +29,11 @@ A Visual Studio használatával egy előre konfigurált Azure virtuális gépen 
 Most ismerkedik az Azure-ral? [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free).
 
 ## <a name="what-configurations-and-versions-are-available"></a>Mely konfigurációkat és verziói érhetők el?
-A legutóbbi főbb verziók, Visual Studio 2017-et és a Visual Studio 2015-öt, a lemezképek az Azure Marketplace-en található.  Nemrég kiterjesztettük a közelgő főverzió - Visual Studio a 2019-verziókra.  Minden egyes kiadott főverzió láthatja, eredetileg kiadott (RTW) verziója és a legújabb frissített verzióit.  Ezek a fájlok mindegyike kínál a Visual Studio Enterprise és a Visual Studio Community kiadása.  Ezek a lemezképek legalább havonta frissül a legújabb Visual Studio és a Windows-frissítéseket tartalmaznak.  A rendszerképek nevei változatlanok maradnak, amíg minden Képleírás tartalmazza a telepített verzió és a kép "megfelelő".
+A legutóbbi főbb verziók, Visual Studio 2019, a Visual Studio 2017 és a Visual Studio 2015-öt, a lemezképek az Azure Marketplace-en található.  Az egyes kiadott főverzió, megjelenik a "eredetileg webes" (RTW) verziójához és a legújabb frissített.  Ezek a fájlok mindegyike kínál a Visual Studio Enterprise és a Visual Studio Community kiadása.  Ezek a lemezképek legalább havonta frissül a legújabb Visual Studio és a Windows-frissítéseket tartalmaznak.  A rendszerképek nevei változatlanok maradnak, amíg minden Képleírás tartalmazza a telepített verzió és a kép "megfelelő".
 
 | Verzió                                              | Kiadások                     |     Termék verziószáma      |
 |:------------------------------------------------------------:|:----------------------------:|:------------------------:|
-|     Visual Studio 2019: Előzetes verzió (RC4)                        |           Enterprise         |    Verzió 16.0.0 RC4    |
+|     Visual Studio 2019: RTW                                  |    Enterprise, Community     |      Verzió 16.0.0      |
 | Visual Studio 2017: Legújabb (15.9 verzió)                    |    Enterprise, Community     |      Verzió 15.9.10     |
 |         Visual Studio 2017: RTW                              |    Enterprise, Community     |      Verzió 15.0.22     |
 |   Visual Studio 2015: Legújabb (3. frissítés)                      |    Enterprise, Community     |  Verzió 14.0.25431.01   |

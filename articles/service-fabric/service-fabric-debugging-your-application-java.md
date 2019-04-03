@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 8f0470b10589ecbbc9e2c98e8d3445435e7f8ed4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 2f00636da2b29e7815569a683fdf51c6a4e3b0e0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668823"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880299"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Az Eclipse-szel Java Service Fabric-alkalmazás hibakeresése
 > [!div class="op_single_selector"]
@@ -29,12 +29,12 @@ ms.locfileid: "58668823"
 
 1. A lépéseket követve indítsa el a helyi fejlesztési fürt [a Service Fabric fejlesztési környezet beállítása](service-fabric-get-started-linux.md).
 
-2. Frissítse a szeretne végezni, úgy, hogy ez a java-folyamatot a távoli hibakeresési paraméterekkel szolgáltatás entryPoint.sh. Ez a fájl a következő helyen található: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. Ebben a példában a 8001-es port van beállítva a hibakereséshez.
+2. Frissítse a szeretne végezni, úgy, hogy ez a java-folyamatot a távoli hibakeresési paraméterekkel szolgáltatás entryPoint.sh. Ez a fájl a következő helyen található: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`. Ebben a példában a 8001-es port van beállítva a hibakereséshez.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. Az alkalmazásjegyzék frissítéséhez példányszámát vagy replikaszámát a szolgáltatás a replika száma 1-re állításával. Ezzel a beállítással elkerülheti, hogy ütközések alakuljanak ki a hibakereséshez használt portnál. Állapotmentes szolgáltatások esetén például állítsa be az ``InstanceCount="1"`` értéket, állapotalapú szolgáltatások esetén pedig állítsa be a cél és a minimális replikakészlet méretét 1-re a következőképpen: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
+3. Az alkalmazásjegyzék frissítéséhez példányszámát vagy replikaszámát a szolgáltatás a replika száma 1-re állításával. Ezzel a beállítással elkerülheti, hogy ütközések alakuljanak ki a hibakereséshez használt portnál. Állapotmentes szolgáltatások esetén például állítsa be az `InstanceCount="1"` értéket, állapotalapú szolgáltatások esetén pedig állítsa be a cél és a minimális replikakészlet méretét 1-re a következőképpen: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
 
 4. Telepítse az alkalmazást.
 
@@ -46,7 +46,7 @@ ms.locfileid: "58668823"
    ```
 6.  Állítson be töréspontokat a kívánt pontokat, és az alkalmazás hibakereséséhez.
 
-Ha az alkalmazás összeomlik, is érdemes coredumps engedélyezéséhez. Hajtsa végre ``ulimit -c`` a rendszerhéj, és a 0 értéket adja vissza, akkor a coredumps nincsenek engedélyezve. Korlátlan számú coredumps engedélyezéséhez hajtsa végre a következő parancsot: ``ulimit -c unlimited``. Azt is ellenőrizheti az állapotát a parancs ``ulimit -a``.  Ha szeretne, frissítse a coredump generációs elérési útját, hajtsa végre a ``echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern``. 
+Ha az alkalmazás összeomlik, is érdemes coredumps engedélyezéséhez. Hajtsa végre `ulimit -c` a rendszerhéj, és a 0 értéket adja vissza, akkor a coredumps nincsenek engedélyezve. Korlátlan számú coredumps engedélyezéséhez hajtsa végre a következő parancsot: `ulimit -c unlimited`. Azt is ellenőrizheti az állapotát a parancs `ulimit -a`.  Ha szeretne, frissítse a coredump generációs elérési útját, hajtsa végre a `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`. 
 
 ### <a name="next-steps"></a>További lépések
 

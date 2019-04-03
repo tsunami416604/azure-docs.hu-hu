@@ -3,20 +3,20 @@ title: '.NET SDK: Fájlrendszerműveletek az Azure Data Lake Storage Gen1 |} A M
 description: Használja az Azure Data Lake Storage Gen1 .NET SDK fájlrendszer műveletek végrehajtása a Data Lake Storage Gen1 például mappák létrehozása.
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 0a6cfc5ca9a0b788075f4472649a6e1bcdf87637
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: twooley
+ms.openlocfilehash: 02091f1b650e3e9932f9924bf36a5841861d3b1e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119496"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876955"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Fájlrendszerműveletek az Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -59,8 +59,8 @@ A [GitHubon](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-s
    2. Győződjön meg arról, hogy a **NuGet Package Manager** (NuGet-csomagkezelő) lapon a **Package source** (Csomag forrása) értéke **nuget.org**, és az **Include prerelease** (Előzetes verzió belefoglalása) jelölőnégyzet be van jelölve.
    3. Keresse meg és telepítse az alábbi NuGet-csomagokat:
 
-      * `Microsoft.Azure.DataLake.Store` – Ez az oktatóanyag az 1.0.0-s verziót használja.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – Ez az oktatóanyag a 2.3.1-es verziót használja.
+      * `Microsoft.Azure.DataLake.Store` – Ez az oktatóanyag az 1.0.0-s.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – Ez az oktatóanyag a következő: 2.3.1-es.
     
       Zárja be a **NuGet-csomagkezelőt**.
 
@@ -182,4 +182,4 @@ Az alábbiakban néhány példa a Data Lake Storage Gen1 fájlrendszer SDK haszn
 * [Data Lake Storage Gen1 .NET SDK-referencia](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>További lépések
-* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
+* [Biztonságos adattárolás a Data Lake Storage Gen1](data-lake-store-secure-data.md)

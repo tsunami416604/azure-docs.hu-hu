@@ -3,21 +3,21 @@ title: Az Azure Data Lake Storage Gen1 tárolt adatok védelme |} A Microsoft Do
 description: Ismerje meg, hogyan használata az adatok megóvására az Azure Data Lake Storage Gen1 csoportok és hozzáférés-vezérlési listák
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ca35e65f-3986-4f1b-bf93-9af6066bb716
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: 15ef1e1b96a0da24714b4ddbda6b24f1f6f33ae0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: twooley
+ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296736"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885672"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 tárolt adatok védelme
 Az adatok védelme az Azure Data Lake Storage Gen1 egy három lépéses megközelítést.  Mindkét szerepköralapú hozzáférés-vezérlés (RBAC), és a hozzáférés-vezérlési listák (ACL) kell állítani a felhasználók és biztonsági csoportok adatokhoz való hozzáférés teljes mértékű engedélyezéséhez.
@@ -152,7 +152,7 @@ Ha eltávolítja az ACL-ek biztonsági csoport egy Data Lake Storage Gen1 fájlr
 * [Adatok másolása az Azure Storage-Blobokból a Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [Az Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Az Azure HDInsight használata a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Get Started with Data Lake Storage Gen1 PowerShell-lel](data-lake-store-get-started-powershell.md)
+* [Az 1. generációs Data Lake Storage használatának első lépései a PowerShell-lel](data-lake-store-get-started-powershell.md)
 * [Get Started with Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-get-started-net-sdk.md)
 * [Data Lake Storage Gen1 diagnosztikai naplóinak elérése](data-lake-store-diagnostic-logs.md)
 

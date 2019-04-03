@@ -5,46 +5,46 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 24a37775298d6c6b40ec49f34158fcb77f26a379
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/01/2019
+ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113214"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846968"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Hozzon létre, és olvasási replikák kezelése az Azure Portalról
 
 Ebből a cikkből megismerheti, hogyan hozhat létre és kezelése olvasható replikák az Azure Database for postgresql-hez az Azure Portalról. Olvasási replikák kapcsolatos további információkért tekintse meg a [áttekintése](concepts-read-replicas.md).
 
-> [!IMPORTANT]
-> Az olvasási replika funkció nyilvános előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Egy [, Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md) kell a fölérendelt kiszolgáló.
 
 ## <a name="prepare-the-master-server"></a>A fölérendelt kiszolgáló előkészítése
-Az általános célú és memóriahasználatra optimalizált szinten főkiszolgálóvá előkészítése ezeket a lépéseket kell használni.
-
-A `azure.replication_support` paramétert állítsa **REPLIKA** a fölérendelt kiszolgálón. Amikor ez a paraméter módosul, a kiszolgáló újraindítására szükség a módosítás érvénybe léptetéséhez.
+Az általános célú és memóriahasználatra optimalizált szinten főkiszolgálóvá előkészítése ezeket a lépéseket kell használni. A fölérendelt kiszolgáló replikáció kész azure.replication_support paraméterének beállításával. A replikációs paraméter módosul, a kiszolgáló újraindítására a módosítás érvénybe léptetéséhez szükség. Az Azure Portalon ezeket a lépéseket két vannak ágyazva egy-egy gomb, amelyet **replikációs támogatásának engedélyezése**.
 
 1. Az Azure Portalon válassza ki a meglévő Azure Database for PostgreSQL-kiszolgálóhoz használandó masterként.
 
-2. A bal oldali menüben válassza ki a **kiszolgáló paramétereinek**.
+2. A kiszolgáló oldalsávon alatt **beállítások**válassza **replikációs**.
 
-3. Keresse meg a `azure.replication_support` paraméter.
+3. Válassza ki **replikációs támogatásának engedélyezése**. 
 
-   ![Keresse meg a azure.replication_support paraméter](./media/howto-read-replicas-portal/azure-replication-parameter.png)
+   ![Replikációs támogatásának engedélyezése](./media/howto-read-replicas-portal/enable-replication-support.png)
 
-4. Állítsa be a `azure.replication_support` paraméterérték **REPLIKA**. Válassza ki **mentése** megtartja a módosításokat.
+4. Erősítse meg a replikációs támogatásának engedélyezése. Ez a művelet újraindítja a főkiszolgáló. 
 
-   ![A paraméter értéke REPLIKA, és mentse a módosításokat](./media/howto-read-replicas-portal/save-parameter-replica.png)
+   ![Erősítse meg a replikációs-támogatás engedélyezése](./media/howto-read-replicas-portal/confirm-enable-replication.png)
+   
+5. Két Azure portal-értesítést fog kapni, a művelet befejeződése után. Nincs a kiszolgáló paraméterének frissítésére szolgáló egy értesítést. A kiszolgáló újraindítására, a következő azonnal értesítést egy másik van.
 
-5. A módosítások mentése után értesítést kap:
+   ![Sikeres értesítések – engedélyezése](./media/howto-read-replicas-portal/success-notifications-enable.png)
 
-   ![Értesítési mentése](./media/howto-read-replicas-portal/parameter-save-notification.png)
+6. Frissítse az Azure portal oldalán, a replikáció eszköztár frissíteni. Mostantól létrehozhat olvasható replikák ehhez a kiszolgálóhoz.
 
-6. Indítsa újra a kiszolgálót, a módosítások alkalmazásához. Ismerje meg, hogyan indítsa újra a kiszolgálót, tekintse meg [egy Azure Database for PostgreSQL-kiszolgáló újraindítása](howto-restart-server-portal.md).
+   ![Frissített eszköztár](./media/howto-read-replicas-portal/updated-toolbar.png)
+   
+Replikációs támogatásának engedélyezése a műveletet egyszer kell egy fő kiszolgálón. A **replikációs támogatásának letiltása** gomb áll a kényelmi célokat szolgál. Nem ajánlott Replikációs támogatja, ha nem biztos a fő kiszolgálón soha nem fog létrehozni egy replikát. Replikációs támogatása nem tiltható le, míg a fölérendelt kiszolgáló a meglévő replikákat.
 
 
 ## <a name="create-a-read-replica"></a>Hozzon létre egy olvasható replika
@@ -52,9 +52,7 @@ Olvasási replika létrehozásához kövesse az alábbi lépéseket:
 
 1. Válassza ki a meglévő Azure Database for PostgreSQL-kiszolgálót a fő kiszolgálóként használni. 
 
-2. A kiszolgáló menü alatt **beállítások**válassza **replikációs**.
-
-   Ha nem állított be a `azure.replication_support` paramétert **REPLIKA** az általános célú vagy Memóriaoptimalizált kiszolgáló fő és a kiszolgáló újraindul, értesítést kap. Ezeket a lépéseket a replika létrehozása előtt.
+2. A kiszolgáló oldalsávon alatt **beállítások**válassza **replikációs**.
 
 3. Válassza ki **replika hozzáadása**.
 

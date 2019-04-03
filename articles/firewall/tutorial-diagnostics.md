@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 2befbf66733430e6077f5e5ff3044c30a77b7e5c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 10837730bea17f98083f456ec4c9fb0d7567af57
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958974"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877261"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Oktatóanyag: Azure tűzfal-naplók és metrikák figyelése
 
@@ -41,7 +41,7 @@ Az oktatóanyag elkezdése előtt olvassa el az [Azure Firewall naplói és metr
 A diagnosztikai naplózás bekapcsolása után eltarthat néhány percig, amíg az adatok megjelennek a naplókban. Ha nem jelennek meg azonnal az adatok, tekintse meg a naplókat néhány perc múlva.
 
 1. Az Azure Portalon nyissa meg a tűzfal erőforráscsoportját, és kattintson a tűzfalra.
-2. A **Monitorozás** területen kattintson a **Diagnosztikai naplók** elemre.
+2. A **figyelés**, kattintson a **diagnosztikai beállítások**.
 
    Az Azure Firewallhoz két szolgáltatásspecifikus napló érhető el:
 
@@ -57,7 +57,7 @@ A diagnosztikai naplózás bekapcsolása után eltarthat néhány percig, amíg 
 9. A **Log Analytics-munkaterület** lapon az új **Log Analytics-munkaterület** nevének írja be a **firewall-oms** nevet.
 10. Válassza ki az előfizetést, használja a meglévő tűzfal erőforráscsoportot (**Test-FW-RG**), válassza az **USA keleti régiója** helyet, majd válassza az **Ingyenes** tarifacsomagot.
 11. Kattintson az **OK** gombra.
-   ![A konfigurációs folyamat indítása][1] Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.  
+   ![A konfigurációs folyamat indítása][1] OMS-munkaterülete mostantól nevezzük Log Analytics-munkaterületeket.  
 12. A **Naplók** területen kattintson az **AzureFirewallApplicationRule** és az **AzureFirewallNetworkRule** elemre az alkalmazásszabályok és hálózati szabályok naplóinak gyűjtéséhez.
    ![Diagnosztikai beállítások mentése][2]
 13. Kattintson a **Save** (Mentés) gombra.

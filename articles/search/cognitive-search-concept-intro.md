@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3c2567564e015ef19adf9f8c776e1f377a9cdf30
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 187e40716bc55f71623ef758722eb58d27651d4d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58133059"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882495"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Mi az Azure Search "cognitive search"?
 
@@ -38,7 +38,7 @@ Természetes nyelvi és képfeldolgozás alkalmazni az adatok betöltési fázis
 
 ## <a name="components-of-cognitive-search"></a>A kognitív keresés összetevői
 
-Cognitive search szolgáltatás az előzetes verziójú funkció [Azure Search](search-what-is-azure-search.md), a támogatott [ezekben a régiókban](#where-do-i-start). 
+Cognitive search szolgáltatás az előzetes verziójú funkció [Azure Search](search-what-is-azure-search.md).
 
 A kognitív keresés folyamat alapján [Azure Search *indexelők* ](search-indexer-overview.md) , feltérképezi az adatforrásokat, és teljes körű index feldolgozási biztosítják. Képességek már csatlakoztatott elfogja, az indexelők és bővítését készségeitől dokumentumokat határoz meg. Miután indexelt, elérheti végig az összes keresési kéréseket a tartalomhoz [lekérdezése az Azure Search által támogatott típusok](search-query-overview.md).  Ha most ismerkedik az indexelők, ez a szakasz részletesen ismerteti a lépéseket.
 
@@ -94,7 +94,7 @@ Indexek jönnek létre az index sémájából, amely meghatározza a mezők és 
 
 **1. lépés: [Az Azure Search-erőforrás létrehozásához](search-create-service-portal.md)** 
 
-**2. lépés: Próbálja meg néhány gyorsútmutatókat és gyakorlati tapasztalatokat példáit**
+**2. lépés: Próbálja meg néhány gyorsútmutatókat és gyakorlati tapasztalatokat példáit**
 
 + [Rövid útmutató (portál)](cognitive-search-quickstart-blob.md)
 + [Az oktatóanyag (HTTP-kérések)](cognitive-search-tutorial-blob.md)
@@ -136,5 +136,5 @@ További információ a konkrét kérdések és problémák: [hibaelhárítási 
 ## <a name="next-steps"></a>További lépések
 
 + [A kognitív keresés dokumentációja](cognitive-search-resources-documentation.md)
-+ [Rövid útmutató: A portál az útmutató a kognitív keresés kipróbálása](cognitive-search-quickstart-blob.md)
++ [Gyors útmutató: A portál az útmutató a kognitív keresés kipróbálása](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag: Ismerje meg, a cognitive search API-k](cognitive-search-tutorial-blob.md)

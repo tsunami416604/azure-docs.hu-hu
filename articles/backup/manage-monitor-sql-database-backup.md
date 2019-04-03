@@ -8,15 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: 500986478e554a3a114d11ee4b25ea40b5decd97
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ea5495867d5f453db014e000e01d533d049dc628
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004128"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849602"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Kezelése és figyelése biztonsági mentés az SQL Server-adatbázisok
-
 
 Ez a cikk ismerteti a gyakori feladatokat, a táron kezeléséhez és monitorozásához és, amelyek biztonsági mentése az Azure biztonsági mentése Recovery Services-beli virtuális gépen (VM) futtató SQL Server-adatbázisok a [Azure Backup](backup-overview.md) szolgáltatás. Megtudhatja, feladatok és riasztások figyelése, állítsa le és adatbázis védelmének folytatása, a biztonsági mentési feladatok futtatása és a biztonsági mentéseket a virtuális gép regisztrációjának törlése.
 
@@ -113,6 +112,7 @@ Igény szerinti biztonsági mentések különböző típusairól futtathatja:
 * Különbségi biztonsági mentés
 * Naplóalapú biztonsági mentés
 
+Adja meg a megőrzési időtartam csak másolatot teljes biztonsági mentésre van szüksége, míg más biztonsági mentés esetén a megőrzési időtartam értéke automatikusan 30 napig aktuális időponthoz képest. <br/>
 További információkért lásd: [SQL Server biztonsági mentési típusok](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>SQL Server-példány regisztrációjának törlése

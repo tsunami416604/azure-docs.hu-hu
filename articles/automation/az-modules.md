@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c3f46e40dfaf0d1ba2ab393b593cdd479c48c45d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a076c924d57aadfae477a5df0d128aad8e67af60
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585062"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862726"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Házirendmodul-támogatás az Azure automationben
 
@@ -69,7 +69,7 @@ A runbookok tesztelésére, mielőtt módosítja a runbookot, hogy az új paranc
 
 ## <a name="after-migration-details"></a>Miután a migrálás részletei
 
-Az áttelepítés befejezése után ne indítsa el a runbookok használatával `AzureRM` modulok hosszabb ideig a fiókban. Ajánlott továbbá nem importálhatja, vagy frissíteni `AzureRM` modulok ehhez a fiókhoz. A pillanattól kezdve, fontolja meg ezt a fiókot át `Az`, és működtetésének megpróbálásakor `Az` csak modulok. Egy új Automation-fiók létrehozásakor a meglévő `AzureRM` modulok továbbra is telepítve lesz, és a runbook még mindig lehet készült, `AzureRM` parancsmagok. Ezek a runbookok nem kell futtatni.
+Az áttelepítés befejezése után ne indítsa el a runbookok használatával `AzureRM` modulok hosszabb ideig a fiókban. Ajánlott továbbá nem importálhatja, vagy frissíteni `AzureRM` modulok ehhez a fiókhoz. A pillanattól kezdve, fontolja meg ezt a fiókot át `Az`, és működtetésének megpróbálásakor `Az` csak modulok. Egy új Automation-fiók létrehozásakor a meglévő `AzureRM` modulok továbbra is telepítve lesz, és a runbook még mindig lehet készült, `AzureRM` parancsmagok. Ezek a runbookok nem futhat.
 
 ## <a name="next-steps"></a>További lépések
 

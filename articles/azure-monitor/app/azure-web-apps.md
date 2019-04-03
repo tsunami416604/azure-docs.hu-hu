@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 7386f6bd92143cf3fb7b37725900425f99371cd0
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 9d121146924eb153227e35d608a3c6c33aae31a1
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804992"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862607"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -99,7 +99,7 @@ Feliratkozás az ASP.NET az ügyféloldali figyelés. Az ügyféloldali figyelé
 * Válassza ki **beállítások** > ** ** alkalmazás beállítások x
    * Alkalmazás beállításaiban, vegyen fel egy új **alkalmazásbeállítás neve** és **érték**:
 
-     név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Érték: `true`
 
@@ -137,7 +137,7 @@ Annak érdekében, hogy az Application Insights telemetriai adatok gyűjtéséne
 |Alkalmazásbeállítás neve |  Meghatározás | Érték |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | Fő bővítmény, amely azt vezérli, hogy a futásidejű ellenőrzés. | `~2` |
-|XDT_MicrosoftApplicationInsights_Mode |  Az alapértelmezett mód csak, alapvető szolgáltatások engedélyezve vannak annak érdekében, hogy az optimális teljesítmény biztosítása érdekében. | `default` vagy `recommended`. |
+|XDT_MicrosoftApplicationInsights_Mode |  Az alapértelmezett mód csak, alapvető szolgáltatások engedélyezve vannak annak érdekében, hogy az optimális teljesítmény biztosítása érdekében. | `default` Vagy `recommended`. |
 |InstrumentationEngine_EXTENSION_VERSION | Azt szabályozza, ha a bináris-újraírási motor `InstrumentationEngine` be lesz kapcsolva. Ez a beállítás a teljesítményre gyakorolt hatása van, és hatással van a ritkán használt start/indítási idejének. | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | A függőségi hívások együtt szabályozza, hogy az SQL és az Azure table szöveg fogja rögzíteni. Teljesítménnyel kapcsolatos figyelmeztetés: Ez a beállítás megköveteli az `InstrumentationEngine`. | `~1` |
 
@@ -322,9 +322,9 @@ Az alábbi, a részletes hibaelhárítási útmutató a bővítmény/ügynök-al
 > A Java és Node.js alkalmazások csak manuális alapú SDK instrumentation keresztül támogatott az Azure App Services szolgáltatásban, és ezért az alábbi lépések nem vonatkoznak ezek a forgatókönyvek.
 
 1. Ellenőrizze, hogy az alkalmazás-n keresztül figyelt `ApplicationInsightsAgent`.
-    * Ellenőrizze, hogy "ApplicationInsightsAgent_EXTENSION_AGENT Alkalmazásbeállítás"~ 2"értékre van állítva.
+    * Ellenőrizze, hogy `ApplicationInsightsAgent_EXTENSION_VERSION` Alkalmazásbeállítás "~ 2" értékre van állítva.
 2. Győződjön meg arról, hogy az alkalmazás megfelel-e figyelni a követelményeknek.
-    * Keresse meg a `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
+    * Keresse meg a(z) `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
     ![Képernyőkép a https://yoursitename.scm.azurewebsites/applicationinsights eredmények lap](./media/azure-web-apps/app-insights-sdk-status.png)
 
@@ -353,10 +353,10 @@ Az alábbi táblázat ezek az értékek jelentése több részletes leírását 
 Az Application Insights-ügynök/bővítményt a legfrissebb információkért tekintse meg a [kibocsátási megjegyzések](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
 
 ## <a name="next-steps"></a>További lépések
-
-* [Futtassa a profilkészítőt a működő alkalmazásán.](../../azure-monitor/app/profiler.md)
+* [Futtassa a profilkészítőt a működő alkalmazásán.](../app/profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – az Azure Functions figyelése az Application Insights segítségével
-* [Engedélyezze az Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md) Application Insightsba való küldését.
-* [Figyelje a szolgáltatások állapotával kapcsolatos mérőszámokat](../../azure-monitor/platform/data-collection.md), így meggyőződhet róla, hogy szolgáltatása elérhető és válaszkész.
-* [Riasztási értesítéseket kaphat](../../azure-monitor/platform/alerts-overview.md), ha működési események történnek vagy a mérőszámok átlépnek egy küszöbértéket.
-* [Állítson be rendelkezésre állási webes teszteket](../../azure-monitor/app/monitor-web-app-availability.md), így riasztást kaphat, ha webhelye nem működik.
+* [Engedélyezze az Azure Diagnostics](../platform/diagnostics-extension-to-application-insights.md) Application Insightsba való küldését.
+* [Figyelje a szolgáltatások állapotával kapcsolatos mérőszámokat](../platform/data-platform.md), így meggyőződhet róla, hogy szolgáltatása elérhető és válaszkész.
+* [Riasztási értesítéseket kaphat](../platform/alerts-overview.md), ha működési események történnek vagy a mérőszámok átlépnek egy küszöbértéket.
+* Az [Application Insights JavaScript-alkalmazásokhoz és weblapokhoz](javascript.md) való használatával ügyféltelemetriát kaphat azoktól a böngészőktől, amelyek ellátogatnak egy weblapra.
+* [Állítson be rendelkezésre állási webes teszteket](monitor-web-app-availability.md), így riasztást kaphat, ha webhelye nem működik.

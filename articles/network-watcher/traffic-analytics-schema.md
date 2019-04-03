@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 922e01c26a2cfe24c8b8a32bb8037d9b3b3384c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 246c5256f56fd0b891d4e7d642c421b1e340fc6d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109120"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879335"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>A Traffic Analytics séma és adatok összesítése
 
@@ -120,7 +120,7 @@ Az alábbiakban a séma- és azok jelölésére mezői
 1. ExternalPublic – az IP-címek egyike tartozik, az Azure virtuális hálózat egy nyilvános IP-címet, amely nem az Azure-ban az IP-cím pedig nem készül jelentés, a Traffic Analytics feldolgozó között a feldolgozás alatt ASC adatcsatornákban lévő kártevő " FlowIntervalStartTime_t"és"FlowIntervalEndTime_t". 
 1. MaliciousFlow – az IP-címek egyike tartozik az azure virtual network egy nyilvános IP-címet, amely nem az Azure-ban és az elvártnak megfelelően az ASC-hírcsatornák, a Traffic Analytics feldolgozó között a feldolgozás alatt lévő kártevő IP-címe pedig" FlowIntervalStartTime_t"és"FlowIntervalEndTime_t". 
 1. UnknownPrivate – az IP-címek egyike tartozik Azure virtuális hálózaton az IP-cím tartozik, magánhálózati IP-címtartományt, ahogyan az az RFC 1918, és nem sikerült leképezni a Traffic Analytics által birtokolt, hely vagy az Azure Virtual Network ügyfél számára.
-1. Ismeretlen – térkép vagy az IP-címeket a flow a vásárlói topológia az Azure-ban, valamint a helyszíni (hely) nem sikerült.
+1. Ismeretlen – nem lehet hozzárendelni, vagy az IP-címek a folyamatokban a vásárlói topológia az Azure-ban, valamint a helyszíni (hely).
 
 ### <a name="next-steps"></a>További lépések
 Válaszok a gyakori kérdésekre, lásd: [Traffic analytics – gyakori kérdések](traffic-analytics-faq.md) funkció kapcsolatos részletekért lásd: [Traffic analytics – dokumentáció](traffic-analytics.md)

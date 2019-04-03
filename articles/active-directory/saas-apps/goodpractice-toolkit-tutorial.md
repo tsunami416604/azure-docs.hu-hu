@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8453c93b4e48a076d8efbe1d438d15d8131fc9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f9b847fd424e14eba492018887dbc28c44100f61
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57864405"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885349"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-goodpractice-toolkit"></a>Oktatóanyag: GoodPractice eszközkészlet az Azure Active Directory-integráció
 
@@ -105,7 +105,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés GoodPractice eszköz
 
     ![GoodPractice eszközkészlet tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-intiated.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címet a következő mintával: `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId> `.
+    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címet a következő mintával: `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>`.
 
     > [!Note]
     > A bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [GoodPractice eszközkészlet ügyfél-támogatási csapatának](mailto:support@goodpractice.com) a gépkulcsengedélyek értékének.
@@ -193,7 +193,7 @@ Ha a hozzáférési panelen a GoodPractice eszközkészlet csempére kattint, me
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

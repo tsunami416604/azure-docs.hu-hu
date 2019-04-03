@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 8e98b50e936ba97881e2937a50eb474d57a24a05
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107763"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862165"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Egyéni mintavétel létrehozása az Application Gateway a portál használatával
 
@@ -52,9 +52,9 @@ Mintavételezők egy kétlépéses folyamat, a portálon keresztül lehet konfig
    |**Beállítás** | **Érték** | **Részletek**|
    |---|---|---|
    |**Name (Név)**|customProbe|Ez az érték egy rövid nevet a mintavétel, amely elérhető a portálon.|
-   |**Protocol (Protokoll)**|HTTP- vagy HTTPS | A protokoll, amely használja az állapotmintához.|
+   |**Protokoll**|HTTP- vagy HTTPS | A protokoll, amely használja az állapotmintához.|
    |**Gazdagép**|i.e contoso.com|Ez az érték a gazdagép nevét, hogy a mintavétel használt. Alkalmazható csak akkor, ha a többhelyes konfigurálva van az Application Gatewayen, ellenkező esetben használja a "127.0.0.1". Ez az érték eltér a virtuális gép állomásnevét.|
-   |**Elérési út**|/ vagy egy másik elérési utat|Egyéni mintavétel teljes URL-cím része. Érvényes elérési utat kezdődik (/). Az alapértelmezett elérési útjának http://contoso.com használja (/) |
+   |**Útvonal**|/ vagy egy másik elérési utat|Egyéni mintavétel teljes URL-cím része. Érvényes elérési utat kezdődik (/). Az alapértelmezett elérési út http:\//contoso.com használja (/) |
    |**Időtartam (másodperc)**|30|A mintavétel gyakoriságát fut állapotának ellenőrzéséhez. Nem javasoljuk, hogy állítsa be az alacsonyabb, mint 30 másodperc.|
    |**Időkorlát (másodperc)**|30|Mennyi ideig időkorlátját vár a mintavétel. Az időkorlát kell lennie, elég nagy, hogy egy http-hívással hozható létre a háttérrendszer health-oldal az elérhető legyen.|
    |**Nem kifogástalan állapot küszöbértéke**|3|Nem megfelelő állapotú venni a sikertelen kísérletek száma. Ha az állapot-ellenőrzése sikertelen lesz a háttéralkalmazás határozza meg. nem megfelelő állapotú azonnal 0 azt jelenti, hogy küszöbértéket.|

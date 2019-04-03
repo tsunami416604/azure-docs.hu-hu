@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 1ebbce89c7a977dd9620bd8be67da647c107eadc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b2dec95e0258933b50d4437f1cb317639b62883d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889290"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886998"
 ---
 ### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>A SharePoint 2010 frissítése a SharePoint 2013-hoz, és telepítse a StorSomple Adapter a Sharepointhoz
 > [!IMPORTANT]
@@ -29,7 +29,7 @@ ms.locfileid: "55889290"
 > Olyan időszakra ütemezze a frissítést, tervezett karbantartási időszak alatt a következő okok miatt fordulhat elő:
 > 
 > * Korábban externalized tartalom nem lesz elérhető, amíg az adapter újratelepítése után.
-> * Minden előző verzióját a StorSimple Adapter for SharePoint eltávolítása után, de az új verzió telepítése előtt a webhely feltöltött tartalom a tartalom-adatbázist fog kell tárolni. Helyezze át a tartalmat a StorSimple-eszköz, az új adapter telepítése után kell. Használhatja a Microsoft` RBS Migrate()` a tartalmainak migrálása a SharePoint mellékelt PowerShell-parancsmagot. További információkért lásd: [tartalmainak Migrálása, vagy onnan máshová RBS](https://technet.microsoft.com/library/ff628255.aspx). 
+> * Minden előző verzióját a StorSimple Adapter for SharePoint eltávolítása után, de az új verzió telepítése előtt a webhely feltöltött tartalom a tartalom-adatbázist fog kell tárolni. Helyezze át a tartalmat a StorSimple-eszköz, az új adapter telepítése után kell. Használhatja a Microsoft `RBS Migrate()` a tartalmainak migrálása a SharePoint mellékelt PowerShell-parancsmagot. További információkért lásd: [tartalmainak Migrálása, vagy onnan máshová RBS](https://technet.microsoft.com/library/ff628255.aspx). 
 > 
 > 
 

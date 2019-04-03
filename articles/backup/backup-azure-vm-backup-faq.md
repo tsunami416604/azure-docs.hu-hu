@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: sogup
-ms.openlocfilehash: ef46c37fec3e5438aeb4f9309201d45365a96fdc
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9f233af316bd6022b93a7208bf3fae37e913e6af
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402065"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885264"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – biztonsági mentése Azure virtuális gépek
 
@@ -68,7 +68,7 @@ Igen. Biztonsági másolatok futtassa, ha egy gép le van állítva. A helyreál
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Egy folyamatban lévő biztonsági mentési feladat lemondható?
 Igen. A biztonsági mentési feladat megszakítható egy **véve pillanatkép** állapota. Egy feladat nem szakítható meg, ha folyamatban van a pillanatkép adatátvitel.
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie--azurebackuprggeonumber-will-my-backups-continue-to-work"></a>I engedélyezve van az Azure Backup szolgáltatással (vagyis) által létrehozott erőforráscsoport zárolása ` AzureBackupRG_<geo>_<number>`), a biztonsági mentések továbbra is működni fog?
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>I engedélyezve van az Azure Backup szolgáltatással (vagyis) által létrehozott erőforráscsoport zárolása `AzureBackupRG_<geo>_<number>`), a biztonsági mentések továbbra is működni fog?
 Ha zárolhatja az Azure Backup szolgáltatás által létrehozott erőforráscsoportot, biztonsági mentés sikertelen, mert legfeljebb 18 visszaállítási pontok indul el.
 
 Távolítsa el a zárolást, és törölje a jelet ebből az erőforráscsoportból a visszaállításipont-gyűjtemény annak érdekében, hogy a jövőbeni biztonsági mentések sikeres, a felhasználónak kell [kövesse az alábbi lépéseket](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) eltávolítása a visszaállításipont-gyűjtemény.
@@ -88,7 +88,7 @@ Pillanatképek nem használhatók a WA-kompatibilis lemezen. Azonban az Azure Ba
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Írási gyorsító (CS) lemezekkel rendelkező virtuális gép van, és az SAP HANA telepítve. Hogyan készíthetek biztonsági másolatot?
 Az Azure Backup a WA-kompatibilis lemez nem készíthető, de lehet kizárni, biztonsági másolatból. Azonban a biztonsági mentés módszer nem biztosítja adatbázis-konzisztencia, mert a WA-kompatibilis lemezen lévő adatokat nem készül. Ez a konfiguráció lemezek készíthető, ha azt szeretné, operációsrendszer-lemez biztonsági mentés, és a lemezek, amelyek nem WA-kompatibilis.
 
-Privát előzetes verzió, az SAP HANA biztonsági mentés egy 15 perces RPO-val futtatja azt. Az SQL-adatbázis biztonsági mentése hasonló módon épül, és az SAP HANA által hitelesített külső megoldások a backInt felületet használja. Ha érdekli, e-mailt küldjön ` AskAzureBackupTeam@microsoft.com ` témájával **regisztrálhat az Azure virtuális gépeken futó SAP HANA biztonsági mentéséhez a privát előzetes verzió**.
+Privát előzetes verzió, az SAP HANA biztonsági mentés egy 15 perces RPO-val futtatja azt. Az SQL-adatbázis biztonsági mentése hasonló módon épül, és az SAP HANA által hitelesített külső megoldások a backInt felületet használja. Ha érdekli, e-mailt küldjön `AskAzureBackupTeam@microsoft.com` témájával **regisztrálhat az Azure virtuális gépeken futó SAP HANA biztonsági mentéséhez a privát előzetes verzió**.
 
 
 ## <a name="restore"></a>Visszaállítás

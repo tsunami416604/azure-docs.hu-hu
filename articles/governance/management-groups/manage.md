@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f9e9bf51d50863f2e37a2f579c2db0edcfeca634
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f75686d19a468983a6b0ce68eb4a456e00c90eeb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58801769"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881052"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Az erőforrások kezelése a felügyeleti csoportokkal
 
@@ -330,7 +330,7 @@ Felügyeleti csoportok hivatkozó más erőforrás-szolgáltató műveleteket, h
 
 Példa az elérési út akkor, ha egy új szerepkör-hozzárendelés hozzárendelése a PowerShellben a felügyeleti csoport
 
-```powershell-interactive
+```azurepowershell-interactive
 New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
 ```
 
@@ -344,8 +344,8 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 
-- [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](create.md)
-- [Felügyeleti csoportok módosítása, törlése és kezelése](manage.md)
-- [Felügyeleti csoportok áttekintése az Azure PowerShell Erőforrások moduljában](/powershell/module/az.resources#resources)
-- [Felügyeleti csoportok áttekintése a REST API-ban](/rest/api/resources/managementgroups)
-- [Felügyeleti csoportok áttekintése az Azure CLI-ben](/cli/azure/account/management-group)
+- [Az Azure-erőforrások rendszerezése felügyeleti csoportok létrehozása](create.md)
+- [Módosítása, törlése és a felügyeleti csoportok kezelése](manage.md)
+- [Tekintse át a felügyeleti csoportok az Azure PowerShell modul](/powershell/module/az.resources#resources)
+- [Tekintse át a felügyeleti csoportok REST API-ban](/rest/api/resources/managementgroups)
+- [Tekintse át a felügyeleti csoportok az Azure CLI-vel](/cli/azure/account/management-group)

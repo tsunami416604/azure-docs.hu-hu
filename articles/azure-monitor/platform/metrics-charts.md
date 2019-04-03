@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 576a7948d4df7957d934fb4c8888712fa94cb202
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: b52e7c0de2d834c793bb30fa35bd53b45aaebe5d
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337074"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848862"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Az Azure Monitor metrikaböngészőjének
 
@@ -21,7 +21,7 @@ Az Azure Monitor metrikaböngészőjének összetevő, amely lehetővé teszi a 
 
 ## <a name="metrics-in-azure"></a>Metrikák az Azure-ban
 
-[Metrikák az Azure monitorban](data-collection.md#metrics) mért értékek sorozata, összegyűjtött és tárolt idővel számát is. Nincsenek metrikák standard (vagy "platform"), és egyéni mérőszámok. A standard mérőszámok az Azure platform saját maga által biztosított Önnek. Standard mérőszámok az Azure-erőforrások állapotát és a használati statisztikáit tükrözik. Mivel az egyéni metrikák használatával az alkalmazások által az Azure-bA küldött a [Application Insights API egyéni eseményekhez és a metrikák](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), [Windows Azure Diagnostics (WAD) bővítmény](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview), vagy [Azure Figyelheti a REST API-val](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
+[Metrikák az Azure monitorban](data-platform-metrics.md) mért értékek sorozata, összegyűjtött és tárolt idővel számát is. Nincsenek metrikák standard (vagy "platform"), és egyéni mérőszámok. A standard mérőszámok az Azure platform saját maga által biztosított Önnek. Standard mérőszámok az Azure-erőforrások állapotát és a használati statisztikáit tükrözik. Mivel az egyéni metrikák használatával az alkalmazások által az Azure-bA küldött a [Application Insights API egyéni eseményekhez és a metrikák](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), [Windows Azure Diagnostics (WAD) bővítmény](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview), vagy [Azure Figyelheti a REST API-val](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
 
 ## <a name="create-a-new-chart"></a>Új diagram létrehozása
 

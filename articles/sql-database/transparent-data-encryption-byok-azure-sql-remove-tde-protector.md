@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a49c22a0597c34075de3e5fd7b9a324169e1da00
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 73fcb2753fa7eb15f34b04ddc5bb0b55c4636623
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895174"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847811"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Távolítsa el a transzparens adattitkosítás (TDE) védőelem a PowerShell használatával
 
@@ -87,7 +87,7 @@ Ez az útmutató két módszer attól függően, a kívánt eredményt keresztü
    -OutputFile <DesiredBackupFilePath>
    ```
  
-5. A feltört kulcs törlése a Key Vault használatával a [Remove-AzKeyVaultKey](/powershell/module/azurerm.keyvault/remove-azurekeyvaultkey) parancsmagot. 
+5. A feltört kulcs törlése a Key Vault használatával a [Remove-AzKeyVaultKey](/powershell/module/az.keyvault/remove-azkeyvaultkey) parancsmagot. 
 
    ```powershell
    Remove-AzKeyVaultKey `

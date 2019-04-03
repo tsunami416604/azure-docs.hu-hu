@@ -6,22 +6,22 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: cforbe
-author: cforbe
+ms.author: sihhu
+author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 12a914b2cdef0a40493dac1a539cf0c2a7703093
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d2bd271557ae0deefeb12a2dc7343c46fbd35363
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999808"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847608"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 
-Ebben a cikkben megismerheti az Azure Machine Learning Data Prep SDK használata az adatok különböző módszert. Az SDK-t kínál, amelyek megkönnyítik az egyszerű oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására hiányzó funkciók. Az SDK dokumentációja, olvassa el a [áttekintése](https://aka.ms/data-prep-sdk).
+Ebben a cikkben megismerheti az Azure Machine Learning Data Prep SDK használatával az adatok átalakítása a különböző módszereket. Az SDK-t kínál, amelyek megkönnyítik az egyszerű oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására hiányzó funkciók. Az SDK dokumentációja, olvassa el a [áttekintése](https://aka.ms/data-prep-sdk).
 
 Ebben az útmutatóban példát a következő feladatokhoz:
 

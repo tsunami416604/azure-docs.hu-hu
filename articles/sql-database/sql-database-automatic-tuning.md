@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/06/2019
-ms.openlocfilehash: e872c29712c3fadca676ec87870bcc5c4eb58565
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 028c69294d693202b626044cb903dc3124b5d7b7
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727399"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863219"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Az Azure SQL Database automatikus finomhangolása
 
@@ -50,7 +50,7 @@ Az Azure SQL Database automatikus finomhangolása az SQL Server automatikus fino
 
 ## <a name="use-automatic-tuning"></a>Használja az automatikus hangolás
 
-Az automatikus hangolás az előfizetéshez, manuálisan engedélyeznie kell. Ha engedélyezni szeretné az automatikus hangolás az Azure portal használatával, lásd: [automatikus hangolás engedélyezése](sql-database-automatic-tuning-enable.md).
+Az automatikus hangolás az előfizetéshez, engedélyeznie kell. Ha engedélyezni szeretné az automatikus hangolás az Azure portal használatával, lásd: [automatikus hangolás engedélyezése](sql-database-automatic-tuning-enable.md).
 
 Az automatikus hangolás is üzemelnek automatikusan alkalmazza a finomhangolási ajánlásait, beleértve az automatizált ellenőrzése teljesítménynövekedést keresztül. 
 
@@ -74,7 +74,9 @@ Az Azure SQL Database automatikus finomhangolási beállítások a következők:
 
 Az automatikus hangolás azonosítja **a CREATE INDEX**, **DROP INDEX**, és **KÉNYSZERÍTETT utolsó JÓ terv** optimalizálhatja az adatbázis teljesítményét, és megjeleníti őket a javaslatok [Az azure portal](sql-database-advisor-portal.md), és elérhetővé teszi azokat keresztül [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) és [REST API-val](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). 
 
-Manuálisan alkalmazhatja a portál használatával finomhangolási ajánlásait, vagy hagyhatja, hogy az automatikus hangolás autonóm módon alkalmazhatja a hangolási javaslatokat az Ön számára. A finomhangolási ajánlásait, önállóan alkalmazza a rendszer így előnyeit van, hogy automatikusan ellenőrzi a hiba a számítási feladatok teljesítményére pozitív nyereség létezik, és ha nem észlelhető jelentős teljesítménybeli javulást, akkor automatikusan visszaállítja a hangolási javaslat. Vegye figyelembe, hogy érinti a hangolási javaslatokat, nem gyakran végrehajtott lekérdezések esetén az érvényesítési fázist eltarthat akár 72 óra elvárt. Abban az esetben, ha meg vannak manuálisan alkalmaz hangolási javaslatokat, a teljesítmény automatikus ellenőrzés és megfordítása mechanizmusok nem állnak rendelkezésre.
+Manuálisan alkalmazhatja a portál használatával finomhangolási ajánlásait, vagy hagyhatja, hogy az automatikus hangolás autonóm módon alkalmazhatja a hangolási javaslatokat az Ön számára. A finomhangolási ajánlásait, önállóan alkalmazza a rendszer így előnyeit van, hogy automatikusan ellenőrzi a hiba a számítási feladatok teljesítményére pozitív nyereség létezik, és ha nem észlelhető jelentős teljesítménybeli javulást, akkor automatikusan visszaállítja a hangolási javaslat. Vegye figyelembe, hogy érinti a hangolási javaslatokat, nem gyakran végrehajtott lekérdezések esetén az érvényesítési fázist eltarthat akár 72 óra elvárt.
+
+Abban az esetben, ha meg vannak manuálisan alkalmaz hangolási javaslatokat, a teljesítmény automatikus ellenőrzés és megfordítása mechanizmusok nem állnak rendelkezésre. Emellett manuálisan alkalmazott javaslatok marad aktív és látható a javaslatok listája 24-48 óra. Mielőtt a rendszer automatikusan visszavonja őket. Ha szeretne eltávolítani egy javaslatot hamarabb, manuálisan elvetheti.
 
 Az automatikus finomhangolási beállításokat is egymástól függetlenül engedélyezhető vagy letiltható adatbázisonként, vagy az SQL Database-kiszolgálók konfigurálva és minden adatbázis, amely örökli a beállításokat a kiszolgálóról a alkalmazni. SQL Database-kiszolgálók automatikus hangolási beállításai az Azure alapértelmezett is öröklik. Jelenleg az Azure alapértelmezés szerint engedélyezve van a FORCE_LAST_GOOD_PLAN, CREATE_INDEX engedélyezve van, és DROP_INDEX le van tiltva.
 

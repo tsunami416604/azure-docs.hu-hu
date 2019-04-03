@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 48a0400a471e06f65c1d548b7c1c419a1cb198bd
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 8d6323c73e5313a29b7b0df09ebdd24a190879f5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284578"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876428"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Egy Azure virtuális gépek biztonsági mentésének futó SQL Server-adatbázisok – gyakori kérdések
 
@@ -42,7 +42,7 @@ Automatikus – javítása, egy olyan funkció az összes felhasználó számár
 Igen. A sebesség, amellyel a biztonsági mentési szabályzat fut, és egy SQL Server-példány gyakorolt hatás minimalizálása érdekében szabályozhatja. A beállítás módosítása:
 1. Az SQL Server-példányon a a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozzon létre a *ExtensionSettingsOverrides.json* fájlt.
 2. Az a *ExtensionSettingsOverrides.json* fájl, módosítsa a **DefaultBackupTasksThreshold** (például 5) alacsonyabb értékűre állítja. <br>
-  ` {"DefaultBackupTasksThreshold": 5}`
+  `{"DefaultBackupTasksThreshold": 5}`
 
 3. Mentse a módosításokat, és zárja be a fájlt.
 4. Nyissa meg az SQL Server-példány **Feladatkezelő**. Indítsa újra a **AzureWLBackupCoordinatorSvc** szolgáltatás.

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: b8725dfcb2a337750c6e2a78ba7571114b8e3cd3
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: ab8d4fb9b46573d58fd93fc5121a4fc1918cc69d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407183"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879386"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő Stream a az Azure Media Services v3
 
@@ -31,7 +31,7 @@ Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőbe
 Ez a cikk áttekintést és útmutatást az élő adások online közvetítése a Media Services és más ide tartozó cikkekre mutató hivatkozásokat biztosít.
 
 > [!NOTE]
-> Az Azure portal jelenleg nem használható v3-erőforrások kezeléséhez. Használja a [REST API-val](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref), vagy a támogatott valamelyik [SDK-k](developers-guide.md).
+> Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](developers-guide.md).
 
 ## <a name="dynamic-packaging"></a>A dinamikus csomagolás
 
@@ -53,13 +53,13 @@ Egy élő eseményt két típus egyike lehet: csatlakoztatott mind az élő kód
 
 ![az átmenő](./media/live-streaming/pass-through.svg)
 
-Az átmenő használatakor **élő esemény**, amelyeket összeköthet a helyszíni élő kódoló készítése több sávszélességű video-adatfolyamot, és elküldeni, mint a hozzájárulás hírcsatorna az élő esemény (protokollal RTMP vagy töredékes MP4). Az élő esemény majd sorozatéhoz keresztül a bejövő video-adatfolyamok további feldolgozás nélkül. Az ilyen egy csatlakoztatott élő esemény hosszú ideig futó élő események van optimalizálva, vagy 24 x 365 lineáris élő adatfolyam. 
+A továbbított **élő esemény** használatakor a helyszíni élő kódoló használatával létrehoz egy többféle sávszélességű videóstreamet, amelyet elküld az élő eseménynek bemeneti adatként (RTMP vagy darabolt MP4 protokollal). Az élő esemény ezután további feldolgozás nélkül továbbítja a bejövő videóstreameket. Az ilyen egy csatlakoztatott élő esemény hosszú ideig futó élő események van optimalizálva, vagy 24 x 365 lineáris élő adatfolyam. 
 
 ### <a name="live-encoding"></a>Live Encoding  
 
 ![Live encoding](./media/live-streaming/live-encoding.svg)
 
-Valós idejű kódolás a Media Services használatakor állíthatók be a helyszíni élő kódoló egy egyféle sávszélességű videó elküldeni a hozzájárulás hírcsatorna az élő esemény (RTMP vagy Fragmented-Mp4 protokoll használatával). Az élő esemény kódol, hogy a bejövő egyféle sávszélességű adatfolyamot a egy [több sávszélességű video-adatfolyamot](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), elérhetővé tesz a kézbesítési lejátszására protokollok, mint például az MPEG-DASH, HLS és Smooth Streaming-eszközöket. 
+Amikor élő kódolást alkalmaz a Media Services használatával, úgy konfigurálja a helyszíni élő kódolót, hogy egyféle sávszélességű videót küldjön bemeneti adatként az élő eseménynek (RTMP vagy darabolt Mp4 protokollal). Az élő esemény egy [többféle sávszélességű videóstreammé](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) kódolja ezt a bejövő egyféle sávszélességű streamet, így az olyan protokollokkal továbbítható a lejátszóeszközökre, mint az MPEG-DASH, a HLS és a Smooth Streaming. 
 
 ## <a name="live-streaming-workflow"></a>Élő adatfolyam-továbbítási munkafolyamat
 
@@ -67,7 +67,7 @@ Szeretné megtudni, a Media Services v3 élő adatfolyam-továbbítási munkafol
 
 - [Streamvégpontok](streaming-endpoint-concept.md)
 - [Élő események és élő kimenetek](live-events-outputs-concept.md)
-- [A streamelési Lokátorok](streaming-locators-concept.md)
+- [Streamelési lokátor](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Általános lépései
 
@@ -86,7 +86,7 @@ Szeretné megtudni, a Media Services v3 élő adatfolyam-továbbítási munkafol
 ## <a name="other-important-articles"></a>Egyéb fontos cikkek
 
 - [Ajánlott élő kódolók](recommended-on-premises-live-encoders.md)
-- [Használatával a felhőalapú DVR-Funkciókkal](live-event-cloud-dvr.md)
+- [Egy felhőalapú DVR használata](live-event-cloud-dvr.md)
 - [Élő esemény típusú szolgáltatások összehasonlítása](live-event-types-comparison.md)
 - [Állapotok és számlázás](live-event-states-billing.md)
 - [Késés](live-event-latency.md)

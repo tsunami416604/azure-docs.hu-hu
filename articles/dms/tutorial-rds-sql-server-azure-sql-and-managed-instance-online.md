@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 5b91e3082dba2ac8ea19606f4269e65a0f537ce1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/03/2019
+ms.openlocfilehash: 4990b5f42291856c3695b4bf0eb6ec4084e9214e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183135"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886403"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: A távoli asztali szolgáltatások SQL Server migrálása az Azure SQL Database vagy Azure SQL Database felügyelt példány online DMS használatával
 Az Azure Database Migration Service segítségével az adatbázisokat át egy távoli asztali szolgáltatások az SQL Server-példány [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) vagy egy [Azure SQL Database felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) minimális állásidővel. Ebben az oktatóanyagban áttelepítése a **Adventureworks2012** visszaállított adatbázis egy távoli asztali szolgáltatások SQL Server példány SQL Server 2012 (vagy újabb) Azure SQL Database vagy az Azure SQL Database felügyelt példány az Azure Database Migration használatával A szolgáltatás.
@@ -61,7 +61,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
     >
     > Ez a konfiguráció szükség, mert az Azure Database Migration Service nem rendelkezik internetkapcsolattal. 
  
-- Győződjön meg arról, hogy a virtuális hálózatok közötti hálózati biztonsági csoport szabályai nem blokkolják a következő kommunikációs portokat a 443-as, 53-as és 9354-es, 445-ös, 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Győződjön meg arról, hogy a virtuális hálózatok közötti hálózati biztonsági csoport szabályai nem blokkolják a következő bejövő kommunikációs portokat, Azure Database Migration Service: 443, 53, 9354, 445, 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse az SQL-kiszolgáló forrását, amely alapértelmezés szerint az 1433-as TCP-port.
 - Hozzon létre egy kiszolgálószintű [tűzfalszabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure), hogy az Azure SQL Database Migration Service hozzáférhessen a céladatbázisokhoz. Adja meg az Azure Database Migration Service-hez használt virtuális hálózat alhálózati tartományát.
@@ -237,7 +237,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
     | ------------- | ------------- |
     | **Táblák párhuzamos betöltése maximális száma** | Itt adható meg, amely az áttelepítés során a DMS végrehajtja a párhuzamos táblák száma. Az alapértelmezett érték 5, de beállítható optimális érték alapján minden POC áttelepítések adott áttelepítési igényeinek. |
     | **Ha a forrástábla csonkítja** | Itt adhatja meg, hogy DMS a céltábla csonkolja a migrálás során. Ez a beállítás akkor lehet hasznos, ha egy vagy több tábla csonkolva lesznek az áttelepítési folyamat részeként. |
-    | **Nagyméretű objektumok (LOB) adatok beállításainak konfigurálása** | Megadja, hogy a DMS áttelepíti a korlátlan LOB-adatok, vagy a LOB-adatok korlátok át egy adott méretet.  Korlátozva van üzleti adatokat áttelepíteni, minden LOB-adatok gyűjthessen, hogy a rendszer csonkolja. Az éles környezetbeli migrálások, azt javasoljuk, hogy válasszon **LOB korlátlan méretű engedélyezése** adatvesztés megelőzése érdekében. Adjon meg, hogy a LOB korlátlan méretű, válassza ki a **áttelepítése LOB-adatok egyetlen blokkot LOB mérete kisebb, mint (KB) Ha a megadott** melletti jelölőnégyzetet, hogy a teljesítmény javítása. |
+    | **A nagy méretű objektum (LOB) típusú adatok beállításainak konfigurálása** | Megadja, hogy a DMS áttelepíti a korlátlan LOB-adatok, vagy a LOB-adatok korlátok át egy adott méretet.  Korlátozva van üzleti adatokat áttelepíteni, minden LOB-adatok gyűjthessen, hogy a rendszer csonkolja. Az éles környezetbeli migrálások, azt javasoljuk, hogy válasszon **LOB korlátlan méretű engedélyezése** adatvesztés megelőzése érdekében. Adjon meg, hogy a LOB korlátlan méretű, válassza ki a **áttelepítése LOB-adatok egyetlen blokkot LOB mérete kisebb, mint (KB) Ha a megadott** melletti jelölőnégyzetet, hogy a teljesítmény javítása. |
     
     ![Online migrálás speciális beállításainak megadása](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
 

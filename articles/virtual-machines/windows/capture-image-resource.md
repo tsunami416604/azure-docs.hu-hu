@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: b0dc587035509606059e3620201b2061bbe4d6a0
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 4e79e0a7d05ef70ae9f7ab2cbb2238c42b2a654b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341765"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847568"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Az Azure-beli általánosított virtuális gép felügyelt rendszerképének létrehozása
 
@@ -84,10 +84,11 @@ A Windows virtuális gép általánosításához, kövesse az alábbi lépéseke
 
 ## <a name="create-an-image-of-a-vm-using-powershell"></a>Hozzon létre egy rendszerképet a virtuális gépek Powershell-lel
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Lemezkép létrehozása a virtuális gépről közvetlenül biztosítja, hogy a rendszerkép tartalmazza a virtuális Géphez, többek között az operációsrendszer-lemez és bármely adatlemez társított lemezeket. Ez a példa bemutatja, hogyan hozhat létre egy felügyelt rendszerképet, hogy a használt felügyelt lemezek virtuális gépből.
 
-
-Mielőtt elkezdené, győződjön meg arról, hogy a legújabb verzióját az AzureRM.Compute PowerShell-modul, amely 5.7.0 verziójúnak kell lennie, vagy később. A verzió megkereséséhez futtassa `Get-Module -ListAvailable AzureRM.Compute` a PowerShellben. Ha frissíteni szeretne, olvassa el [Azure PowerShell telepítése a Windows a Powershellgettel](/powershell/azure/azurerm/install-azurerm-ps). Ha Ön helyileg futtatja a Powershellt, futtassa `Connect-AzAccount` kapcsolat létrehozása az Azure-ral.
+Mielőtt elkezdené, győződjön meg arról, hogy az Azure PowerShell-modul legújabb verzióját. A verzió megkereséséhez futtassa `Get-Module -ListAvailable Az` a PowerShellben. Ha frissíteni szeretne, olvassa el [Azure PowerShell telepítése a Windows a Powershellgettel](/powershell/azure/azurerm/install-az-ps). Ha Ön helyileg futtatja a Powershellt, futtassa `Connect-AzAccount` kapcsolat létrehozása az Azure-ral.
 
 
 > [!NOTE]

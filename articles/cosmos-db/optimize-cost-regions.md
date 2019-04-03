@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 1bf65883ecf23f726aefd2cd889a2bcb08e9b6a6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 012eacb172acfdeb0b82343c484c664a3f75310e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457649"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876739"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB többrégiós költségek optimalizálása
 
 Adja hozzá, és bármikor eltávolíthatja a régiók az Azure Cosmos-fiókjába. Az átviteli sebességet, a különböző Azure-Cosmos-adatbázis és a tárolók a fiókjához társított minden egyes régióban van fenntartva. Ha az átviteli sebességet, óránként, ez az összeg RU/s konfigurált összes adatbázisok és tárolók az Azure Cosmos-fiók `T` és az adatbázis-fiókhoz társított Azure-régiók száma `N`, majd az összes Cosmos-fiókja, egy adott órán keresztül kiosztott átviteli sebesség megegyezik:
 
-1. ` T x N RU/s` Ha az Azure Cosmos-fiók egy egyetlen írási régió van konfigurálva. 
+1. `T x N RU/s` Ha az Azure Cosmos-fiók egy egyetlen írási régió van konfigurálva. 
 
 1. `T x (N+1) RU/s` Ha az Azure Cosmos-fiók van konfigurálva az összes régióban írások feldolgozására alkalmas állapotban. 
 
@@ -25,19 +25,19 @@ A költségeket $0.008 és óránként 100 RU/s kiosztott átviteli sebesség az
 
 ## <a name="costs-for-multiple-write-regions"></a>Több írási régiót költség
 
-Több főkiszolgálós rendszerekben, a nettó elérhető RUs írási műveletek növekszik `N` where alkalommal `N` írási régiók száma. Egyetlen naplórekordjait, ellentétben minden régióban írhatóvá vált, és támogatnia kell a ütközésének feloldása. A írók számítási feladatok mennyisége nőtt. A tervezési szempontból végrehajtásához költsége` M` RU/s alatt az írások világszerte, kell rendelkezni M `RUs` egy tároló vagy az adatbázis szintjén. Hozzáadhatja például a, és használja őket, az írási műveletek végrehajtásához tetszőleges számú régiót `M` világszerte írások RU naplóban. 
+Több főkiszolgálós rendszerekben, a nettó elérhető RUs írási műveletek növekszik `N` where alkalommal `N` írási régiók száma. Egyetlen naplórekordjait, ellentétben minden régióban írhatóvá vált, és támogatnia kell a ütközésének feloldása. A írók számítási feladatok mennyisége nőtt. A tervezési szempontból végrehajtásához költsége `M` RU/s alatt az írások világszerte, kell rendelkezni M `RUs` egy tároló vagy az adatbázis szintjén. Hozzáadhatja például a, és használja őket, az írási műveletek végrehajtásához tetszőleges számú régiót `M` világszerte írások RU naplóban. 
 
 ### <a name="example"></a>Példa
 
 Fontolja meg egy tárolót az USA nyugati RÉGIÓJA van 10 ezer Kérelemegység/s kiosztott átviteli sebesség és 1 TB-nyi adatot tárol ebben a hónapban. Tegyük fel, akkor adjon hozzá három régiókban – USA keleti RÉGIÓJA, Észak-Európa és Kelet-Ázsia, mindegyike ugyanazt a tárhelyet és átviteli sebességet, és szeretné, hogy a globálisan elosztott alkalmazás ahhoz, hogy az összes négy régióban írni. Havi számlájának végösszege (31 napos feltételezve) az adott hónapban a következőképpen történik:
 
-|**Elem**|**Használat (havonta)**|**Arány**|**Havi költség**|
+|**Elem**|**Használat (havonta)**|**Rate (Egységár)**|**Havi költség**|
 |----|----|----|----|
 |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (több írási régió) lévő tároló esetén |10 ezer Kérelemegység/s * 24 * 31. |0.016 $ / 100 Kérelemegység/másodperc óránként |$1,190.40 |
 |Átviteli sebességre vonatkozó számla 3 további régió – USA keleti RÉGIÓJA, Észak-Európa és Kelet-Ázsia (több írási régió) esetén |(3 + 1) * 10 ezer Kérelemegység/s * 24 * 31. |0.016 $ / 100 Kérelemegység/másodperc óránként |$4,761.60 |
 |Adattárolásra vonatkozó számla az USA nyugati régiójában lévő tároló esetén |100 GB |$ 0,25/GB |$25 |
 |Adattárolásra vonatozó számla 3 további régió esetén – az USA keleti régiója, Észak-Európa, Kelet-Ázsia |3 * 1 TB |$ 0,25/GB |$75 |
-|**Összesen**|||**$6,052** |
+|**Összes**|||**$6,052** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Átvitel kihasználtsága javíthatja a egy régió-alapon történik
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 822dce08d4555d9039ce310464ba49b6e3d4849c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 5b647af7925ceb81c524deb0accf90f9e895080e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480651"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876989"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Egy vagy több Always On rendelkezésre állási csoport figyelője – erőforrás-kezelő konfigurálása
 Ez a témakör bemutatja, hogyan lehet:
@@ -35,8 +35,8 @@ Ehhez a témakörhöz, hogy a rendelkezésre állási csoportok már konfigurál
 
 Kapcsolódó témakörök a következők:
 
-* [AlwaysOn rendelkezésre állási csoportok konfigurálása Azure-beli virtuális gépen (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
-* [A virtuális hálózatok közötti kapcsolat konfigurálása Azure Resource Manager és a PowerShell használatával](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+* [AlwaysOn rendelkezésre állási csoportok konfigurálása Azure-beli virutális gépen (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
+* [Virtuális hálózatok közötti kapcsolat beállítása az Azure Resource Manager és a PowerShell használatával](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -65,13 +65,13 @@ Az aktuális [Microsoft sablon](virtual-machines-windows-portal-sql-alwayson-ava
 Ebben a cikkben szereplő példák a standard load balancer adja meg. A parancsfájl tartalmazza a példákban `-sku Standard`.
 
 ```powershell
-$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
+$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
 Alapszintű load balancer létrehozása, távolítsa el a `-sku Standard` a sorból, amely a terheléselosztó hoz létre. Példa:
 
 ```powershell
-$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
+$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
 ```
 
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Példa parancsfájl: Belső terheléselosztó létrehozása a PowerShell használatával
@@ -79,7 +79,7 @@ $ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupN
 > [!NOTE]
 > Ha létrehozta a rendelkezésre állási csoportnak a [Microsoft sablon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), a belső load balancer már létre lett hozva.
 
-A következő PowerShell-parancsfájl egy belső terheléselosztót hoz létre, konfigurálja a terheléselosztási szabályok és állítja be az IP-címet a terheléselosztóhoz. A szkript futtatásához nyissa meg a Windows PowerShell ISE-ben, és illessze be a parancsfájlt a parancsfájl panelen. Használat `Connect-AzAccount` való bejelentkezés a Powershellbe. Ha több Azure-előfizetéssel rendelkezik, használja a `Select-AzSubscription ` az előfizetés beállításához. 
+A következő PowerShell-parancsfájl egy belső terheléselosztót hoz létre, konfigurálja a terheléselosztási szabályok és állítja be az IP-címet a terheléselosztóhoz. A szkript futtatásához nyissa meg a Windows PowerShell ISE-ben, és illessze be a parancsfájlt a parancsfájl panelen. Használat `Connect-AzAccount` való bejelentkezés a Powershellbe. Ha több Azure-előfizetéssel rendelkezik, használja a `Select-AzSubscription` az előfizetés beállításához. 
 
 ```powershell
 # Connect-AzAccount

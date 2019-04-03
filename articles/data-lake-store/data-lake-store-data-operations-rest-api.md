@@ -3,20 +3,20 @@ title: 'REST API: Fájlrendszerműveletek az Azure Data Lake Storage Gen1 |} A M
 description: Az Azure Data Lake Storage Gen1 fájlrendszerműveletek végrehajtása a WebHDFS REST API-k használatával
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 4c61d68a948cbc5638dab30713871d1aaf822f03
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 351c92f1e1a698893f61004d523ba79ebca253e8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529248"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877630"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Fájlrendszerműveletek az Azure Data Lake Storage Gen1 REST API használatával
 > [!div class="op_single_selector"]
@@ -114,7 +114,7 @@ A Data Lake Storage Gen1 történő adatkiolvasás fiók egy kétlépéses folya
 * Először küldenie kell egy GET kérelmet a `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN` végponthoz. Ez a hívás visszaadja azt a helyet, ahová a következő GET kérelmet kell küldenie.
 * Ezután küldenie kell egy GET kérelmet a `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true` végponthoz. Ez a hívás megjeleníti a fájl tartalmát.
 
-Mivel azonban az első és második lépésben nincs különbség a bemeneti paraméterek között, az első kérelem elküldéséhez használhatja az `-L` paramétert. A `-L` kapcsoló lényegében egyesít két kérelmet, és megismételteti a kérelmet a cURL-paranccsal az új helyen. Végül megjelenik az összes kérelemhívás kimenete az alábbi kódrészletben látható módon. Cserélje le  **\<yourstorename >** a Data Lake Storage Gen1 fiók nevére.
+Mivel azonban az első és második lépésben nincs különbség a bemeneti paraméterek között, az első kérelem elküldéséhez használhatja az `-L` paramétert. `-L` a beállítás lényegében egyesít két kérelmet, és újra elvégzi az új helyen a kérelmet a curl. Végül megjelenik az összes kérelemhívás kimenete az alábbi kódrészletben látható módon. Cserélje le  **\<yourstorename >** a Data Lake Storage Gen1 fiók nevére.
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 

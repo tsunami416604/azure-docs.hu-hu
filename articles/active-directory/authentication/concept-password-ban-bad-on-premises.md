@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e6623e18fa319066f121dced551dcada133ebd5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9cd9f6112cbca78b323e0a14818b06f891a3f673
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479529"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862887"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Az Azure AD jelszóvédelem a Windows Server Active Directory kényszerítése
 
@@ -83,16 +83,6 @@ Az Azure AD jelszóvédelem egy valós idejű alkalmazás házirendmotor nem. Am
 Az Azure AD jelszavas védelem az Active Directory-erdő telepítése az adott erdőben, az Azure AD-regisztrációs igényel. Minden üzembe helyezett proxy szolgáltatás is regisztrálni kell az Azure ad-ben. Egy adott erdő és a proxy regisztrációk tartoznak az Azure AD-bérlőjéhez, amely implicit módon azonosíthatók a regisztráció során használt hitelesítő adatokkal.
 
 Az Active Directory-erdő és a egy erdőn belül minden üzembe helyezett alkalmazásproxy-szolgáltatásokat a ugyanazt bérlőhöz regisztrálva kell lennie. Szeretné, hogy az Active Directory-erdőben vagy bármely alkalmazásproxy-szolgáltatásokat, hogy az erdő regisztrálja a másik Azure AD-bérlők nem támogatott. Az ilyen egy rosszul konfigurált telepítési tünetei a jelszóházirendek letöltése nem.
-
-## <a name="license-requirements"></a>Licenckövetelmények
-
-A globális letiltott jelszavak lista előnyeit az Azure AD minden felhasználóra érvényes.
-
-Az egyéni le van tiltva – jelszó-lista alapszintű Azure AD-licenc szükséges.
-
-Az Azure AD jelszóvédelem a Windows Server Active Directory prémium szintű Azure AD-licenc szükséges.
-
-További licencelési információkért lásd: [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="download"></a>Letöltés
 

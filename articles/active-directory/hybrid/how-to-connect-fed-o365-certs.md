@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae036a0860ddb5ee2776f7ed4734492741907f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177721"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883445"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>-Office 365 és az Azure Active Directory összevonási tanúsítványainak megújítása
 ## <a name="overview"></a>Áttekintés
@@ -118,7 +118,7 @@ Ellenőrizze a következőket győződjön meg arról, hogy a tanúsítvány aut
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-ahol `(your_FS_name) `a szervezet használja, például fs.contoso.com összevonási szolgáltatás állomásnévvel váltja fel.  Ha Ön is ellenőrizheti, ezek a beállítások sikeresen, nincs teendője.  
+ahol `(your_FS_name)` a szervezet használja, például fs.contoso.com összevonási szolgáltatás állomásnévvel váltja fel.  Ha Ön is ellenőrizheti, ezek a beállítások sikeresen, nincs teendője.  
 
 Például: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 ## A jogkivonat-aláíró tanúsítványának manuális megújítása <a name="manualrenew"></a>

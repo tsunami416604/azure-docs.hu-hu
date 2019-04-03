@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7a61d8c1b9ec15327836f7d31e9e299c57cb21
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316337"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886080"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Hozzon létre egy rugalmas hozzáférés-vezérlési felügyeleti stratégia az Azure Active Directoryval
 
@@ -131,9 +131,9 @@ A készenléti feltételes hozzáférési szabályzat van egy **le van tiltva a 
   
 Az elnevezési szabványnak, a feltételes szabályzatokat a következő lesz: 
 
-`
+```
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
-`
+```
 
 Az alábbi példában: **A példában A - hozzáférés alapvető fontosságú csoportmunka-alkalmazás visszaállításához Contingency hitelesítésszolgáltató házirend**, a jellemző vállalati vészhelyzeti megoldásként alkalmazza. Ebben a forgatókönyvben a szervezet általában többtényezős Hitelesítést követel meg az összes Exchange online-hoz és a SharePoint online-hoz, és a megszakítások időtartamát ebben az esetben az MFA szolgáltatót, az ügyfél rendelkezik esetére (akár az Azure MFA, a helyszínen az MFA szolgáltatót, és a külső MFA). Ez a szabályzat csökkenti a szolgáltatáskimaradás azáltal, hogy adott megcélzott felhasználók hozzáférési ezekre az alkalmazásokra megbízható Windows-eszközök csak akkor, ha az alkalmazás megbízható vállalati hálózatról érnek el. Ezek a korlátozások a is vészelérési fiókok és a rendszergazdák core kizárja. A megcélzott felhasználók lesz majd hozzáférni Exchange online-hoz és a SharePoint Online, amíg más felhasználók továbbra is nem hozzáférhetnek a leállás miatt az alkalmazásokra. Ebben a példában egy olyan nevesített hálózati helyre van szükség **CorpNetwork** és a egy biztonsági csoportot **ContingencyAccess** cél felhasználóival, a csoport neve **CoreAdmins** -a Core-rendszergazdák és a egy nevű csoport **EmergencyAccess** a vészelérési fiókok együtt. Az eseti, adja meg a kívánt hozzáférési négy szabályzatokra van szüksége. 
 
@@ -261,12 +261,12 @@ Ha a szervezet az felhasználónkénti MFA örökölt házirendek, akkor érdeme
 
 ## <a name="learn-more"></a>Részletek
 
-* [Az Azure AD Authentication – dokumentáció](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
+* [Az Azure AD-hitelesítés dokumentációja](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [A válságkezelési-hozzáférési rendszergazdai fiókok kezelése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [Nevesített helyek konfigurálása az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-* [Vállalati Windows Hello – Üzembehelyezési útmutató](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
+* [Windows Hello for Business üzembe helyezési útmutató](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Tájékoztató a jelszavakról – a Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Mik azok a feltételek az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

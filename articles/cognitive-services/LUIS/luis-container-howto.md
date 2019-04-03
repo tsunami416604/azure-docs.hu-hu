@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: edd035bc95cd2e694a7cfac39e447c63fce0f7d3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b7788cc6854b477e8aab9e9df82ed2b54a3bdfe2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520156"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884567"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -24,7 +24,7 @@ A Language Understanding (LUIS) tároló betölti a betanított vagy közzétett
 
 A következő videó bemutatja a tároló használatával.
 
-[![Cognitive Services tároló bemutató](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[![CCognitive Services bemutató Tárolóstílusok](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -299,9 +299,9 @@ A verziónév rendelkezik egy legfeljebb 10 karakterből álló, és csak az eng
 Ha egy kimeneti csatlakoztatási van megadva, a LUIS-tároló, alkalmazás lekérdezés naplófájlok lesznek mentve a kimeneti könyvtárba, ahol {INSTANCE_ID} a tároló azonosítója. Az alkalmazás lekérdezési napló tartalmazza a lekérdezés, válasz és időbélyegek minden egyes előrejelzési lekérdezés elküldve a LUIS-tárolóhoz. 
 
 A következő helyen jeleníti meg a beágyazott könyvtárstruktúrát a tároló-naplófájlok.
-`
+```
 /output/luis/{INSTANCE_ID}/
-`
+```
  
 A LUIS-portálról, válassza ki az alkalmazást, majd válassza ki **végpont naplók importálása** feltölteni ezeket a naplókat. 
 

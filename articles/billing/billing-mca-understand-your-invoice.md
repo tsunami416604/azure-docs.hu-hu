@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: e5dc8ac0716e194dd0949e2e270346ee338a792a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839729"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883009"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>A Microsoft Ügyfélszerződéséhez számla feltételeinek értelmezése
 
@@ -49,7 +49,7 @@ A **számla Invoice Summary** az első lap tetején, és a számlázási profilj
 | P.O. szám |Egy nem kötelező beszerzési rendelésszámukra, nyomon követése az Ön által hozzárendelt |
 | A számla száma |Követési célból használt egyedi, a Microsoft által létrehozott számla szám |
 | Invoice Date (Számla dátuma) |A dátum, a számla általában 5 – 12 nap vége a számlázási ciklus után jön létre. A számla dátuma a számlázási profiltulajdonságok ellenőrizheti.|
-| Fizetési feltételek |Fizetés módjának a Microsoft szolgáltatásaiért. *30 nap* azt jelenti, hogy ellenőrzésével kell fizetnie, illetve a átvitel vezetékes számla időpontjától számított 30 napon belül. |
+| Fizetési feltételek |Fizetés módjának a Microsoft szolgáltatásaiért. *30 nap* azt jelenti, hogy a számla időpontjától számított 30 napon belül fizet. |
 
 ### <a name="billing-summary"></a>A számlázás összegzése
 

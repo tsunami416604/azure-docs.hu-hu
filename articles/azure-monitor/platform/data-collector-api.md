@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 7942b4eb5788357a807911d3eb89d1054a92c3eb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f3ee9b7aa595ae07bb97a8513bc0b751e94d7cc9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449359"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883938"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Napló adatokat küldeni a HTTP-adatgyűjtő API (nyilvános előzetes verzió) az Azure Monitor
 Ez a cikk bemutatja, hogyan Teljesítménynapló-adatok küldése az Azure monitornak a REST API-ügyfél a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és engedélyezte az Azure Monitor kérelmet.  A példák a PowerShell, a C# és Python.
@@ -166,6 +166,11 @@ De, ekkor történik a következő beküldése, ha az Azure Monitor létrehoznia
 A következő bejegyzést, majd a rekord típusa létrehozása előtt elküldve, ha az Azure Monitor lenne hozzon létre egy rekordot három tulajdonságot **sikeresek**, **boolean_s**, és **string_s**. Ebbe a bejegyzésbe a kezdeti értékekre vannak formázva, karakterlánc:
 
 ![4. példa rekord](media/data-collector-api/record-04.png)
+
+## <a name="reserved-properties"></a>Fenntartott tulajdonságai
+A következő tulajdonságok fenntartva, és nem használható az egyéni rekord típusát. Egy hibaüzenetet fog kapni, ha a tartalom magában foglalja a tulajdonságnevek.
+
+- bérlő
 
 ## <a name="data-limits"></a>Adatkorlátok
 Vannak bizonyos korlátozások az adatok elküldése az az Azure Monitor adatgyűjtési API körül.

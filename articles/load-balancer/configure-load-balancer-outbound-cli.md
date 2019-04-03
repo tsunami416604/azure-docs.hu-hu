@@ -11,20 +11,20 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 04/01/2019
 ms.author: kumud
-ms.openlocfilehash: bd40278015bf4580759c1b7b9522400b3dae31d6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0b46cbdec6d0ffe2a614a976f70b833726fb0e8a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475662"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849956"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Terheléselosztás és a kimenő szabályok konfigurálása az Azure CLI-vel Standard Load Balancer
 
 Ez a rövid útmutató bemutatja, hogyan kimenő szabályok konfigurálása a Standard Load Balancer az Azure CLI használatával.  
 
-Amikor elkészült, a terheléselosztó erőforrás tartalmaz két előterek és szabály tartozik: egy a bejövő és a egy másik kimenő.  Minden egyes előtérbeli nyilvános IP-cím és a egy másik nyilvános IP-cím a bejövő és kimenő forgatókönyv használ vonatkozó hivatkozás van.   A terheléselosztási szabály csak a bejövő terheléselosztást biztosít, és a kimenő szabály szabályozza a kimenő NAT a virtuális Géphez megadott.
+Amikor elkészült, a terheléselosztó erőforrás tartalmaz két előterek és szabály tartozik: egy a bejövő és a egy másik kimenő.  Minden egyes előtérbeli nyilvános IP-cím és a egy másik nyilvános IP-cím a bejövő és kimenő forgatókönyv használ vonatkozó hivatkozás van.   A terheléselosztási szabály csak a bejövő terheléselosztást biztosít, és a kimenő szabály szabályozza a kimenő NAT a virtuális Géphez megadott.  Ez a rövid útmutató használ két külön háttérkészletek, egy a bejövő és a egy kimenő, képesség bemutatják és rugalmasság ehhez a forgatókönyvhöz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -69,30 +69,41 @@ Hozzon létre egy szabványos IP-címet a terheléselosztó előtérbeli kimenő
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
 ```
 
-
 ## <a name="create-azure-load-balancer"></a>Az Azure Load Balancer létrehozása
 
 Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevőinek létrehozását és konfigurálását:
   - Egy előtérbeli IP-Címmel a terheléselosztón a bejövő hálózati forgalmat fogad.
   - A háttérkészlet, ahol az előtérbeli IP-címet küldi az elosztott terhelésű hálózati forgalmat.
+  - A háttérkészlet, a kimenő hálózati kapcsolatot. 
   - az állapotfigyelő mintavételező, amely a háttérbeli Virtuálisgép-példányok állapotát határozza meg.
   - Egy terheléselosztó bejövő szabályt, amely meghatározza, hogyan ossza el a virtuális gépek forgalmat.
   - Egy terheléselosztó kimenő-szabályt, amely meghatározza, hogyan ossza a virtuális gépekről érkező forgalmat.
 
 ### <a name="create-load-balancer"></a>Load Balancer létrehozása
 
-A bejövő IP cím használatával hozzon létre egy terheléselosztó [az network lb létrehozása](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű *lb* , amely tartalmaz egy bejövő előtérbeli IP-konfigurációt és a egy háttérkészlet társított nyilvános IP-cím *mypublicipinbound* az előző lépésben létrehozott.
+A bejövő IP cím használatával hozzon létre egy terheléselosztó [az network lb létrehozása](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű *lb* , amely tartalmaz egy bejövő előtérbeli IP-konfigurációt és a egy háttérkészlet *bepoolinbound*társított nyilvános IP-cím *mypublicipinbound* az előző lépésben létrehozott.
 
 ```azurecli-interactive
   az network lb create \
     --resource-group myresourcegroupoutbound \
     --name lb \
     --sku standard \
-    --backend-pool-name bepool \
+    --backend-pool-name bepoolinbound \
     --frontend-ip-name myfrontendinbound \
     --location eastus2 \
     --public-ip-address mypublicipinbound   
   ```
+
+### <a name="create-outbound-pool"></a>Kimenő készlet létrehozása
+
+Hozzon létre egy további háttércímkészlet kimenő kapcsolattal rendelkező virtuális gépek készletét meghatározásához [az network lb-címkészlet létrehozása](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű *bepooloutbound*.  Készletet hoz létre egy külön kimenő maximális rugalmasságot biztosít, de ezt a lépést kihagyhatja, és csak akkor használja a bejövő *bepoolinbound* is.
+
+```azurecli-interactive
+  az network lb address-pool \
+    --resource-group myresourcegroupoutbound \
+    --lb-name lb \
+    --name bepooloutbound
+```
 
 ### <a name="create-outbound-frontend-ip"></a>Kimenő előtérbeli IP-cím létrehozása
 A terheléselosztó kimenő előtérbeli IP-konfiguráció létrehozása [az network lb frontend-ip létrehozása](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) , amely tartalmazza, és a kimenő előtérbeli IP-konfiguráció neve *myfrontendoutbound* , amely nyilvános IP-címhez társított *mypublicipoutbound*
@@ -136,7 +147,7 @@ az network lb rule create \
 --backend-port 80 \
 --probe http \
 --frontend-ip-name myfrontendinbound \
---backend-pool-name bepool \
+--backend-pool-name bepoolinbound \
 --disable-outbound-snat
 ```
 
@@ -153,10 +164,12 @@ az network lb outbound-rule create \
  --protocol All \
  --idle-timeout 15 \
  --outbound-ports 10000 \
- --address-pool bepool
+ --address-pool bepooloutbound
 ```
 
-Ezen a ponton, és folytassa a virtuális gép hozzáadása a háttérkészlethez *bepool* álló megfelelő hálózati adapter IP-konfiguráció frissítésével.
+Ha nem szeretné használni egy másik kimenő készlet, módosíthatja a cím készlet argumentum, adja meg az előző parancsban szereplő *bepoolinbound* helyette.  Azt javasoljuk, hogy használjon különálló készleteket rugalmasságot és az így létrejövő konfiguráció az olvashatóság érdekében.
+
+Ezen a ponton, és folytassa a virtuális gép hozzáadása a háttérkészlethez *bepoolinbound* __és__ *bepooloutbound* szerint a megfelelő hálózati adapter IP-konfigurációjának frissítése erőforrások [az network nic ip-config-címkészlet hozzáadása](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -171,4 +184,3 @@ Ebben a cikkben létrehozott Standard Load Balancer, mind a bejövő terhelésel
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer-oktatóanyagok](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
-

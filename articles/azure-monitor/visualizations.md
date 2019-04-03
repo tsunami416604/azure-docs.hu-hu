@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 55aed5d1133756789c3ed8979f0a9599f465e5d9
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 4e9bb9bd86e22efa5dd514e742481911b09c5e17
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315095"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848773"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
 Ez a cikk összefoglalja a napló- és az Azure monitorban tárolt metrikai adatok megjelenítése a választható módszerek.
@@ -137,7 +137,7 @@ Napló adatai és az Azure monitorban metrikaadatok hozzáférhet bármely REST-
 
 
 ## <a name="next-steps"></a>További lépések
-- További információ a [Azure Monitor által gyűjtött adatok](platform/data-collection.md).
+- További információ a [Azure Monitor által gyűjtött adatok](platform/data-platform.md).
 - Ismerje meg [Azure-irányítópultok](../azure-portal/azure-portal-dashboards.md).
 - Ismerje meg [nézetek az Azure Monitor](platform/view-designer.md).
 - Ismerje meg [munkafüzetek](../azure-monitor/app/usage-workbooks.md).

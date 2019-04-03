@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 469c6802879707a3cf16b3e17876cb1f5e3854fa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093007"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886012"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>A felügyelt ügyfelek használata az Azure Mobile Apps-alkalmazásokhoz
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -62,13 +62,13 @@ public class TodoItem
 
 A [JsonPropertyAttribute] [ 6] meghatározására szolgál a *PropertyName* az ügyfél és a tábla mező közötti megfeleltetés.
 
-Megtudhatja, hogyan hozhat létre táblák a Mobile Apps-háttéralkalmazást, tekintse meg a [.NET Server SDK témakörben] [ 7] vagy a [Node.js Server SDK témakörben][8]. Mobile Apps-háttéralkalmazását az Azure Portalon a rövid útmutató segítségével létrehozott, ha akkor is használhatja a **könnyen kezelhető táblák** beállítását a [Azure Portal].
+Megtudhatja, hogyan hozhat létre táblák a Mobile Apps-háttéralkalmazást, tekintse meg a [.NET Server SDK témakörben] [ 7] vagy a [Node.js Server SDK témakörben][8]. Mobile Apps-háttéralkalmazását az Azure Portalon a rövid útmutató segítségével létrehozott, ha akkor is használhatja a **könnyen kezelhető táblák** beállítását a [az Azure portal].
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>Útmutató: Telepítse a felügyelt ügyfél SDK-csomagot
 A felügyelt ügyfél SDK-csomag telepítéséhez a Mobile Apps-alkalmazáshoz az alábbi módszerek valamelyikével [NuGet][9]:
 
 * **A Visual Studio** kattintson jobb gombbal a projektre, kattintson a **NuGet-csomagok kezelése**, keresse meg a `Microsoft.Azure.Mobile.Client` csomagot, majd kattintson a **telepítése**.
-* **A Xamarin Studio** kattintson jobb gombbal a projektre, kattintson a **Hozzáadás** > **NuGet-csomagok hozzáadása**, keresse meg a `Microsoft.Azure.Mobile.Client `csomagot, és kattintson a **csomag hozzáadása** .
+* **A Xamarin Studio** kattintson jobb gombbal a projektre, kattintson a **Hozzáadás** > **NuGet-csomagok hozzáadása**, keresse meg a `Microsoft.Azure.Mobile.Client` csomagot, és kattintson a **csomag hozzáadása** .
 
 A fő tevékenységi fájlhoz a ne felejtse el hozzáadni a következő **használatával** utasítást:
 
@@ -89,7 +89,7 @@ Az alábbi kód létrehoz a [MobileServiceClient] [ 12] objektum, amely használ
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-Cserélje le a fenti kóddal, `MOBILE_APP_URL` a Mobile Apps-háttéralkalmazás URL-címmel, amely megtalálható a Mobile Apps-háttéralkalmazását paneljén a [Azure Portal]. A MobileServiceClient egypéldányos kell lennie.
+Cserélje le a fenti kóddal, `MOBILE_APP_URL` a Mobile Apps-háttéralkalmazás URL-címmel, amely megtalálható a Mobile Apps-háttéralkalmazását paneljén a [az Azure portal]. A MobileServiceClient egypéldányos kell lennie.
 
 ## <a name="work-with-tables"></a>Táblázatok használata
 Az alábbi szakasz részletesen keresés és a rekordok és módosíthatja az adatokat a táblán belül.  A következő témákat tárgyalja:
@@ -200,7 +200,7 @@ A `Where` záradékban kell műveleteket támogatja az OData részét fordítjá
 * Az objektum tulajdonságai érhetők el, és
 * Ezek a műveletek bármelyike kombinálásával kifejezéseket.
 
-Amikor kiválasztja a Server SDK támogatja, érdemes lehet a [OData v3 dokumentációja].
+Amikor kiválasztja a Server SDK támogatja, érdemes lehet a [OData v3 dokumentáció].
 
 ### <a name="sorting"></a>kézikönyv: Visszaadott adatok rendezése
 Az alábbi kód bemutatja, hogyan rendezze az adatokat fel egy [OrderBy] vagy [OrderByDescending] függvényt a lekérdezésben. Szereplő elemeket adja vissza `todoTable` szerint növekvő sorrendbe rendezve a `Text` mező.
@@ -218,7 +218,7 @@ List<TodoItem> items = await query.ToListAsync();
 ```
 
 ### <a name="paging"></a>kézikönyv: Az oldalak adatokat adja vissza
-Alapértelmezés szerint a háttérrendszer csak az első 50 sort adja vissza. A visszaadott sorok száma meghívásával növelheti a [igénybe] metódus. Használja `Take` együtt a [Skip] módszer egy adott "lap" az összes adatkészlet a lekérdezés által visszaadott kéréséhez. A következő lekérdezés végrehajtásakor, az első három elemeket a táblát adja vissza.
+Alapértelmezés szerint a háttérrendszer csak az első 50 sort adja vissza. A visszaadott sorok száma meghívásával növelheti a [igénybe] metódus. Használja `Take` együtt a [kihagyása] módszer egy adott "lap" az összes adatkészlet a lekérdezés által visszaadott kéréséhez. A következő lekérdezés végrehajtásakor, az első három elemeket a táblát adja vissza.
 
 ```csharp
 // Define a filtered query that returns the top 3 items.
@@ -249,7 +249,7 @@ Egy valós alkalmazásban az előző példához hasonló lekérdezések használ
 
 
 ### <a name="selecting"></a>kézikönyv: Egyes oszlopok kiválasztásához
-Megadhatja, amely tulajdonságainak beállítása való hozzáadásával a keresési eredmények között szerepeljen egy [Kiválasztás] záradék a lekérdezés. Ha például a következő kód bemutatja, hogyan válassza ki egy mezőt, és válassza ki, és több mező formázása:
+Megadhatja, amely tulajdonságainak beállítása való hozzáadásával a keresési eredmények között szerepeljen egy [kiválasztása] záradék a lekérdezés. Ha például a következő kód bemutatja, hogyan válassza ki egy mezőt, és válassza ki, és több mező formázása:
 
 ```csharp
 // Select one field -- just the Text
@@ -462,7 +462,7 @@ private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 }
 ```
 
-További információkért lásd: a [Offline adatszinkronizálás az Azure Mobile Appsban] témakör.
+További információkért lásd: a [Offline adatszinkronizálás az Azure Mobile Apps] témakör.
 
 ### <a name="binding"></a>kézikönyv: A Mobile Apps-adatok kötése egy Windows felhasználói felület
 Ebben a szakaszban egy Windows-alkalmazás felhasználói felületi elemek használatával visszaadott adatok objektumokat mutatja be.  Az alábbi példakód egy lekérdezést a hiányos elemeket a lista forrása a van kötve. A [MobileServiceCollection] egy Mobile Apps-kompatibilis kötelező gyűjteményt hoz létre.
@@ -650,11 +650,11 @@ Példák a következő folyamat-ügyfél hitelesítési minták áll rendelkezé
 #### <a name="adal"></a>Felhasználók hitelesítése az Active Directory Authentication Library az
 Kezdeményezési felhasználói hitelesítést az Active Directory Authentication Library (ADAL) segítségével az ügyfél az Azure Active Directory-hitelesítés használatával.
 
-1. A mobil-háttéralkalmazás az AAD bejelentkezés konfigurálása a következő a [App Service-ben az Active Directory-bejelentkezés konfigurálása] oktatóanyag. Ellenőrizze, hogy a natív ügyfélalkalmazás regisztrációja nem kötelező lépése.
+1. A mobil-háttéralkalmazás az AAD bejelentkezés konfigurálása a következő a [konfigurálása App Service-ben az Active Directory-bejelentkezés] oktatóanyag. Ellenőrizze, hogy a natív ügyfélalkalmazás regisztrációja nem kötelező lépése.
 2. A Visual Studióban vagy a Xamarin Studióban nyissa meg a projektet, és vegyen fel egy hivatkozást a `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet-csomagot. Ha keres, kiadás előtti verziót tartalmaz.
 3. Adja hozzá a következő kódot az alkalmazását, használja a platformtól függően. Az egyes győződjön meg a következő cserét:
 
-   * Cserélje le **INSERT-SZOLGÁLTATÓ – Itt** , amelyben az alkalmazás kiosztása a bérlő nevével. A formátum https://login.microsoftonline.com/contoso.onmicrosoft.com. Ez az érték lehet másolni az Azure Active Directory tartományi lapról a [Azure Portal].
+   * Cserélje le **INSERT-SZOLGÁLTATÓ – Itt** , amelyben az alkalmazás kiosztása a bérlő nevével. A formátum https://login.microsoftonline.com/contoso.onmicrosoft.com. Ez az érték lehet másolni az Azure Active Directory tartományi lapról a [az Azure portal].
    * Cserélje le **INSERT-erőforrás-azonosító – Itt** az ügyfél-Azonosítóját a mobile Apps-háttéralkalmazást. Az ügyfél-Azonosítót a szerezheti be a **speciális** lapjára **Azure Active Directory-beállítások** a portálon.
    * Cserélje le **INSERT-ügyfél-azonosító – Itt** és az ügyfél-Azonosítót a natív ügyfélalkalmazás fájlból kimásolt.
    * Cserélje le **INSERT-REDIRECT-URI-Itt** a hellyel */.auth/login/done* végpontról, a HTTPS-sémát. Ez az érték legyen hasonló *https://contoso.azurewebsites.net/.auth/login/done*.
@@ -827,7 +827,7 @@ private async System.Threading.Tasks.Task Authenticate()
 
 Eltérő Facebook identitásszolgáltatót használja, ha értékének módosítása [MobileServiceAuthenticationProvider] értékét az a szolgáltatótól.
 
-A server flow-ban Azure App Service felügyeli az OAuth hitelesítési folyamatot megjeleníti a kiválasztott szolgáltató bejelentkezési oldal.  Ha az identitás szolgáltató értéket ad vissza, az Azure App Service-ben létrehoz egy App Service hitelesítési tokent. A [LoginAsync] metódus adja vissza egy [MobileServiceUser], is segíti a [Felhasználói azonosító] hitelesített felhasználó és a [MobileServiceAuthenticationToken], mint egy JSON webes jogkivonat (JWT). Ez a token gyorsítótárazható, és újra felhasználható, amíg le nem jár. További információkért lásd: [gyorsítótárazás a hitelesítési jogkivonat](#caching).
+A server flow-ban Azure App Service felügyeli az OAuth hitelesítési folyamatot megjeleníti a kiválasztott szolgáltató bejelentkezési oldal.  Ha az identitás szolgáltató értéket ad vissza, az Azure App Service-ben létrehoz egy App Service hitelesítési tokent. A [LoginAsync] metódus adja vissza egy [MobileServiceUser], is segíti a [UserId] hitelesített felhasználó és a [ MobileServiceAuthenticationToken], mint egy JSON webes jogkivonat (JWT). Ez a token gyorsítótárazható, és újra felhasználható, amíg le nem jár. További információkért lásd: [gyorsítótárazás a hitelesítési jogkivonat](#caching).
 
 ### <a name="caching"></a>A hitelesítési jogkivonat gyorsítótárazás
 Bizonyos esetekben a bejelentkezési metódus hívása elkerülhető az első sikeres hitelesítés után a hitelesítési jogkivonat-szolgáltatójáról való tárolásával.  Microsoft Store-és UWP-alkalmazások használhassák- [PasswordVault] a jelenlegi hitelesítési jogkivonat gyorsítótárazni a sikeres bejelentkezést követően, a következő:
@@ -912,7 +912,7 @@ Ez az érték beszerzése:
 1. A Visual Studio Megoldáskezelőben kattintson a jobb gombbal a Microsoft Store-projektet, kattintson a **Store** > **a Store alkalmazás hozzárendelése...** .
 2. A varázslóban kattintson **tovább**, jelentkezzen be Microsoft-fiókjával, adjon meg egy nevet az alkalmazáshoz tartozó **foglaljon le egy új nevet az alkalmazáshoz**, majd kattintson a **tartalék**.
 3. Az alkalmazásregisztráció sikeres létrehozása után válassza ki az alkalmazás nevét, kattintson a **tovább**, és kattintson a **társítása**.
-4. Jelentkezzen be a [Windows fejlesztői központ] Microsoft Account. A **saját alkalmazások**, kattintson a létrehozott alkalmazás regisztrációját.
+4. Jelentkezzen be a [Windows Dev Center] Microsoft Account. A **saját alkalmazások**, kattintson a létrehozott alkalmazás regisztrációját.
 5. Kattintson a **felügyeleti** > **alkalmazás identitását**, majd görgessen lefelé, keresse meg a **csomag biztonsági azonosítója**.
 
 A csomag biztonsági azonosítója számos felhasználási tekinti, egy URI-t, ebben az esetben kell használnia *ms-app: / /* sémát. Jegyezze meg a csomag biztonsági azonosítója, elkülönített változó összefűzésével előállítjuk ezt az értéket előtagjaként megfelelő verzióját.
@@ -986,7 +986,7 @@ private async void InsertTodoItem(TodoItem todoItem)
 }
 ```
 
-Egy másik példa a hibaállapotok többé vesződnie a sérült megtalálható a [A Mobile Apps fájlok minta]. A [LoggingHandler] példa biztosítja a naplózás delegált kezelő naplózni a háttérben történik.
+Egy másik példa a hibaállapotok többé vesződnie a sérült megtalálható a [Mobile Apps fájlok minta]. A [LoggingHandler] példa biztosítja a naplózás delegált kezelő naplózni a háttérben történik.
 
 ### <a name="headers"></a>kézikönyv: Kérelemfejlécek testreszabása
 Az adott forgatókönyv támogatásához, szüksége lehet testre szabhatja a Mobile Apps-háttéralkalmazás folytatott kommunikáció. Például érdemes hozzáadni egy egyéni fejlécet minden egyes kimenő kérelmekre, vagy is módosíthatja a válaszok állapotkódok. Használhat egyéni [DelegatingHandler], ahogy az alábbi példában:
@@ -1040,7 +1040,7 @@ public class MyHandler : DelegatingHandler
 [12]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
 [Hitelesítés hozzáadása az alkalmazáshoz]: app-service-mobile-windows-store-dotnet-get-started-users.md
-[Offline adatszinkronizálás az Azure Mobile Appsban]: app-service-mobile-offline-data-sync.md
+[Kapcsolat nélküli adatszinkronizálás az Azure Mobile Apps megoldásban]: app-service-mobile-offline-data-sync.md
 [Leküldéses értesítések hozzáadása az alkalmazáshoz]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Register your app to use a Microsoft account login]: ../app-service/configure-authentication-provider-microsoft.md
 [App Service-ben az Active Directory-bejelentkezés konfigurálása]: ../app-service/configure-authentication-provider-aad.md
@@ -1062,17 +1062,17 @@ public class MyHandler : DelegatingHandler
 [OrderBy]: https://msdn.microsoft.com/library/azure/dn250572(v=azure.10).aspx
 [OrderByDescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
 [ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
-[igénybe]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
-[Kiválasztás]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
-[Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
+[hajtsa végre a megfelelő]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
+[Válassza ezt:]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
+[Kihagyás]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [Felhasználói azonosító]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[ahol]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
+[Ahol]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [Azure Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
-[Windows fejlesztői központ]: https://dev.windows.com/overview
+[Windows Dev Center]: https://dev.windows.com/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
 [PasswordVault]: https://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: https://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx

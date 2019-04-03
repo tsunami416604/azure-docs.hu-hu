@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 7fb4c68d10478a7c8af62262b3fa4633eaac9d2b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 69df9eff85d96c9cc6ca7fa1d3aabd2c54fae416
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660408"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884720"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Több futtatható vendégalkalmazás üzembe helyezése
 Ez a cikk bemutatja, hogyan csomagolását és több futtatható vendégalkalmazás üzembe helyezése az Azure Service fabric. Fejlesztésére és üzembe helyezése a Service Fabric egyetlen csomagban további ismertetés a [egy futtatható vendégalkalmazás üzembe helyezése Service Fabric](service-fabric-deploy-existing-app.md).
@@ -33,7 +33,7 @@ A Visual Studio segítségével a több futtatható vendégalkalmazás tartalmaz
 * [Minta két Vendég végrehajtható fájlok (C# és nodejs) keresztül kommunikáljon az elnevezési szolgáltatásban REST használatával](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>A több Vendég futtatható alkalmazás manuális csomag
-Másik lehetőségként kézzel csomagot készíthet a Vendég végrehajtható. A manuális csomagolást, ebben a cikkben a Service Fabric csomagolási eszközt, amely mindig elérhető legyen az [ http://aka.ms/servicefabricpacktool ](https://aka.ms/servicefabricpacktool).
+Másik lehetőségként kézzel csomagot készíthet a Vendég végrehajtható. A manuális csomagolást, ebben a cikkben a Service Fabric csomagolási eszközt, amely mindig elérhető legyen az [ https://aka.ms/servicefabricpacktool ](https://aka.ms/servicefabricpacktool).
 
 ### <a name="packaging-the-nodejs-application"></a>A Node.js-alkalmazás csomagolása
 Ez a cikk azt feltételezi, hogy Node.js nincs telepítve, a Service Fabric-fürt csomópontjain. Ennek következményeképpen kell Node.exe hozzáadása előtt csomagolási a node-alkalmazás gyökérkönyvtárában. A könyvtárstruktúra, a Node.js-alkalmazás (Expressz webes keretrendszert és Jade sablonmotor használatával), az alábbihoz hasonlóan kell kinéznie:

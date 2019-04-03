@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8fc952af011231a9cc12f96e3db9ebb088c237a2
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8f444cebac6ee60fbe65399e3f9c8e05eb033843
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413328"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878213"
 ---
 # <a name="about-point-to-site-vpn"></a>Tudnivalók a pont – hely VPN
 
@@ -22,7 +22,7 @@ A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsol
 
 Pont – hely VPN a következő protokollok egyikét használhatja:
 
-* OpenVPN, az SSL/TLS-alapú VPN-protokoll. Az SSL VPN-megoldás behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva TCP 443-as portot, amely az SSL. OpenVPN használható csatlakozás Android, iOS-hez (11.0-s verzió vagy újabb verzió), Linux és Mac-eszközök (OSX verziói 10.13 és újabb).
+* OpenVPN, az SSL/TLS-alapú VPN-protokoll. Az SSL VPN-megoldás behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva TCP 443-as portot, amely az SSL. OpenVPN használható csatlakozás Android, iOS-hez (11.0-s verzió vagy újabb verzió), Windows, Linux és Mac-eszközök (OSX verziói 10.13 és újabb).
 
 * Secure Socket Tunneling Protocol (SSTP), egy egyéni SSL-alapú VPN-protokollt. Az SSL VPN-megoldás behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva TCP 443-as portot, amely az SSL. Az SSTP csak a Windows-eszközökön támogatott. Az Azure Windows SSTP (Windows 7 és újabb) rendelkező összes verziója támogatja.
 
@@ -94,7 +94,7 @@ P2S konfiguráció még néhány konkrét lépésre van szükség. A következő
 
 * [P2S-kapcsolat – az Azure natív tanúsítványalapú hitelesítésének konfigurálása](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-* [OpenVPN konfigurálása](vpn-gateway-howto-openvpn.md)
+* [Az OpenVPN konfigurálása](vpn-gateway-howto-openvpn.md)
 
 ## <a name="faqcert"></a>Az Azure natív tanúsítványalapú hitelesítésének – gyakori kérdések
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: a89043f814bc97aeb081789e92d9e4488712a465
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3d5c0ac068a6644f3499da6c3b642a4a04408370
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439026"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879659"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Terheléselosztás az Azure alkalmazáskézbesítési csomagjával
 
@@ -26,10 +26,10 @@ A Microsoft Azure több globális és regionális szolgáltatásokat kínál a k
 ![Alkalmazáscsomag-kézbesítés ][1]
  
 Ezek a szolgáltatások megszakadnak a két kategóriába sorolhatók:
-1. **Globális terheléselosztási szolgáltatás** , mint például a Traffic Manager és a bejárati ajtajának terjesztése Ön végfelhasználóitól érkező forgalmat a regionális háttérrendszerekre között, felhőkön és még a hibrid helyszíni szolgáltatások között. Globális terheléselosztás irányítja a forgalmat a legközelebbi szolgáltatás háttérrendszerhez, és reagálás a módosításokat a szolgáltatás megbízhatóságát és teljesítményét a felhasználók folyamatosan elérhető, a maximális teljesítményének fenntartása érdekében. 
+1. **Globális terheléselosztási szolgáltatás** például a Traffic Manager és a bejárati ajtajának elosztani a forgalmat, a végfelhasználók számára a regionális háttérrendszerekre több felhő között, vagy még a hibrid helyszíni szolgáltatásokat. Globális terheléselosztás irányítja a forgalmat a legközelebbi szolgáltatás háttérrendszerhez, és reagálás a módosításokat a szolgáltatás megbízhatóságát és teljesítményét a felhasználók folyamatosan elérhető, a maximális teljesítményének fenntartása érdekében. 
 2. **Regionális terheléselosztási szolgáltatás** például a Standard Load Balancer vagy az Application Gateway lehetővé teszi a virtuális hálózatok (Vnetek) forgalom elosztásához a virtuális gépek (VM) vagy egy adott régión belül zónaszintű Szolgáltatásvégpontok között.
 
-Az alkalmazás a globális és regionális szolgáltatások kombinálásával biztosít egy végpontok közötti megbízható, nagy teljesítményű, és biztonságos módon irányítani a forgalmat, és a felhasználók az IaaS, PaaS és helyszíni szolgáltatások. A következő szakaszban ismertetünk az ilyen szolgáltatásokkal.
+Az alkalmazás a globális és regionális szolgáltatások kombinálásával biztosít egy végpontok közötti megbízható, nagy teljesítményű, és biztonságos módon irányítani a forgalmat, és a felhasználók az IaaS, PaaS, vagy a helyszíni szolgáltatásokhoz. A következő szakaszban ismertetünk az ilyen szolgáltatásokkal.
 
 ## <a name="global-load-balancing"></a>Terhelés globális kiegyenlítéséhez
 **A TRAFFIC Manager** globális DNS terheléselosztást biztosít. Megvizsgálja a beérkező DNS és a egy megfelelően működő háttér megfelelően a vásárlói ki van választva az útválasztási házirend fűzi hozzá. Útválasztási módszerek lehetőségek közül választhat:
