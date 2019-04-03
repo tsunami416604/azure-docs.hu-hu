@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 698dc61d42adb398376161480cf4d32180846c48
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 0350db37e13101d315937840fdcf3d9900e214d5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577594"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880265"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>2.0-s protokollok – az OAuth 2.0 hitelesítési kódfolyamat
 
@@ -181,7 +181,7 @@ Token sikeres válasz fog kinézni:
 |---------------|------------------------------|
 | `access_token`  | A kért hozzáférési jogkivonatot. Az alkalmazás a jogkivonat használatával hitelesítik magukat a védett erőforráshoz, például a webes API-t.  |
 | `token_type`    | Typ tokenu értékét jelöli. Az egyetlen típus, amely támogatja az Azure ad-ben tulajdonosi |
-|` expires_in`    | Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
+| `expires_in`    | Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | `scope`         | A hatókörök, amely a access_token érvényes. |
 | `refresh_token` | Az OAuth 2.0-s frissítési jogkivonatot. Az alkalmazás használhatja ezt a jogkivonatot a jelenlegi hozzáférési jogkivonat lejárata után szerzi be a további hozzáférési jogkivonatokat. Refresh_tokens hosszú élettartamú, és az erőforrásokhoz való hozzáférés megőrzése hosszabb ideig is használható. A hozzáférési jogkivonat frissítése További részletekért tekintse meg a [az alábbi szakasz](#refresh-the-access-token). <br> **Megjegyzés:** Csak a megadott if `offline_access` a kért hatókörhöz. |
 | `id_token`      | A JSON webes jogkivonat (JWT). Az alkalmazásnak a bejelentkezett felhasználóval kapcsolatos információkat a token a szegmensek is dekódol. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [ `id_token reference` ](id-tokens.md). <br> **Megjegyzés:** Csak a megadott if `openid` a kért hatókörhöz. |

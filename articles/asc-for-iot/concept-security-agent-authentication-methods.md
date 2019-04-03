@@ -1,25 +1,25 @@
 ---
 title: Hitelesítési módszerek az Azure Security Center az IoT-előzetes verzió |} A Microsoft Docs
 description: Ismerje meg az elérhető különböző hitelesítési módszereit IoT-szolgáltatás az Azure Security Center használata esetén.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 10b38f20-b755-48cc-8a88-69828c17a108
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: ec87c2b65728d8ac29daa90de36271e24cd85c0e
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d1f9d77d1f87e8d201e2cb034401bb3cae14f41b
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758380"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862913"
 ---
 # <a name="security-agent-authentication-methods"></a>Biztonsági ügynök hitelesítési módszerek 
 
@@ -63,7 +63,7 @@ Ezek az argumentumok az alábbi táblázatban szerepelnek.
 
 |Paraméter|Leírás|Beállítások|
 |---------|---------------|---------------|
-|**Identitás**|Hitelesítési módszer| **A modul** vagy **eszköz**|
+|**identity**|Hitelesítési módszer| **A modul** vagy **eszköz**|
 |**type**|Hitelesítés típusa|**SymmetricKey** vagy **SelfSignedCertificate**|
 |**filePath**|A tanúsítvány és szimmetrikus kulcsot tartalmazó fájl abszolút teljes elérési útja| |
 |**gatewayHostname**|Az IoT Hub teljes Tartományneve|Példa: ContosoIotHub.azure-devices.net|
@@ -114,4 +114,4 @@ Szerkesztés _LocalConfiguration.json_ a következő paraméterekkel:
 ## <a name="see-also"></a>Lásd még
 - [Biztonsági ügynökök áttekintése](security-agent-architecture.md)
 - [Biztonsági ügynök telepítése](how-to-deploy-agent.md)
-- [Hozzáférés nyers biztonsági adatok](how-to-security-data-access.md)
+- [Hozzáférés a nyers biztonsági adatokhoz](how-to-security-data-access.md)

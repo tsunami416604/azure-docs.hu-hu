@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: d0902c0e0b4c669f3918155f8416f064485abbea
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0485f8e3b377ce94ec23a4a1a94eb7e189b0232b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874902"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850832"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -26,7 +26,7 @@ Az Azure Monitor a lehető legnagyobbra növeli a az alkalmazások teljesítmén
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
 ## <a name="overview"></a>Áttekintés
-Az alábbi ábrán egy magas szintű áttekintést nyújt az Azure Monitor. A diagram közepén olyan metrikákat és naplókat, amelyek adatokat használja az Azure Monitor két alapvető típusú adattárakban. A bal oldali vannak a [megfigyelési adatok forrásai](platform/data-sources.md) , amely feltölti ezeket [adattárak](platform/data-collection.md). A jobb oldalon a különböző függvényeket, amely az Azure Monitor az elemzés, például a gyűjtött adatok hajt végre, riasztó és a külső rendszerekkel streamelési vannak.
+Az alábbi ábrán egy magas szintű áttekintést nyújt az Azure Monitor. A diagram közepén olyan metrikákat és naplókat, amelyek adatokat használja az Azure Monitor két alapvető típusú adattárakban. A bal oldali vannak a [megfigyelési adatok forrásai](platform/data-sources.md) , amely feltölti ezeket [adattárak](platform/data-platform.md). A jobb oldalon a különböző függvényeket, amely az Azure Monitor az elemzés, például a gyűjtött adatok hajt végre, riasztó és a külső rendszerekkel streamelési vannak.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -34,7 +34,7 @@ Az alábbi ábrán egy magas szintű áttekintést nyújt az Azure Monitor. A di
 
 
 ## <a name="monitoring-data-platform"></a>Figyelési adatplatform
-Az Azure Monitor által gyűjtött összes adat illeszkedik a két alapvető típusok, [metrikák és naplók](platform/data-collection.md). [Metrikák](platform/data-collection.md#metrics) időben bizonyos elemeit a rendszer egy adott időpontban leíró numerikus érték. Azok a könnyen használható, és képes a közel valós idejű feldolgozásához. [Naplók](platform/data-collection.md#logs) tartalmazhat különböző típusú adatokkal rendelkező különböző tulajdonságokat az egyes rekordok vannak rendezve. Telemetriai adatokat – például az események és nyomok formájában tárolja naplók emellett teljesítményadatokká úgy, hogy azt az összes kombinálható is elemzés céljából.
+Az Azure Monitor által gyűjtött összes adat illeszkedik a két alapvető típusok, [metrikák és naplók](platform/data-platform.md). [Metrikák](platform/data-platform-metrics.md) időben bizonyos elemeit a rendszer egy adott időpontban leíró numerikus érték. Azok a könnyen használható, és képes a közel valós idejű feldolgozásához. [Naplók](platform/data-platform-logs.md) tartalmazhat különböző típusú adatokkal rendelkező különböző tulajdonságokat az egyes rekordok vannak rendezve. Telemetriai adatokat – például az események és nyomok formájában tárolja naplók emellett teljesítményadatokká úgy, hogy azt az összes kombinálható is elemzés céljából.
 
 Sok Azure-erőforrások látni fogja az áttekintő oldala az Azure Portalon az Azure Monitor jobb által gyűjtött adatokat. Például rendelkezik egy pillantást bármelyik virtuális gépet, és látni fogja a teljesítmény-mérőszámok megjelenítése több diagramot. Kattintson bármelyik, nyissa meg az adatokat a gráfok [metrikaböngésző](platform/metrics-charts.md) az Azure Portalon, amely lehetővé teszi, hogy idővel több mérőszámok értékeit diagram.  A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket.
 
@@ -55,7 +55,7 @@ Az Azure Monitor tud adatokat gyűjteni a különböző forrásokból. Az alkalm
 - **Azure-előfizetés monitorozási adatok**: A művelet és a felügyeleti Azure-előfizetés adatait, valamint állapotának és az Azure működésének adatait magát. 
 - **Az Azure-bérlő monitorozási adatok**: A bérlői szintű Azure-szolgáltatások, például az Azure Active Directory művelettel kapcsolatos adatokat.
 
-Amint hoz létre egy Azure-előfizetés és az erőforrások, például virtuális gépek és webalkalmazások hozzáadása kezdő, az Azure Monitor adatgyűjtés megkezdése.  [A Tevékenységnaplók](platform/activity-logs-overview.md) jegyezze fel, ha erőforrások létrehozásakor vagy módosításakor. [Metrikák](platform/data-collection.md) mondja el, hogyan működik-e az erőforrás és az erőforrásokat, azt használja. 
+Amint hoz létre egy Azure-előfizetés és az erőforrások, például virtuális gépek és webalkalmazások hozzáadása kezdő, az Azure Monitor adatgyűjtés megkezdése.  [A Tevékenységnaplók](platform/activity-logs-overview.md) jegyezze fel, ha erőforrások létrehozásakor vagy módosításakor. [Metrikák](platform/data-platform.md) mondja el, hogyan működik-e az erőforrás és az erőforrásokat, azt használja. 
 
 Kiterjesztheti az adatokat gyűjt be az erőforrások a tényleges művelet [engedélyezi a diagnosztikát](platform/diagnostic-logs-overview.md) és [hozzáadása egy ügynök](platform/agent-windows.md) számítási erőforrásokra. Ez a belső művelet az erőforrás telemetriai adatok gyűjtésére és konfigurálását lehetővé különböző [adatforrások](platform/agent-data-sources.md) naplók és mérőszámok gyűjtését a Windows és Linux rendszerű vendég operációs rendszer. 
 
@@ -143,6 +143,6 @@ Több API-t írási és olvasási metrikákat és naplókat, és az Azure Monito
 ## <a name="next-steps"></a>További lépések
 További információk:
 
-* [Metrikák és naplók](platform/data-collection.md) az Azure Monitor által összegyűjtött adatokat.
+* [Metrikák és naplók](platform/data-platform.md) az Azure Monitor által összegyűjtött adatokat.
 * [Adatforrások](platform/data-sources.md) számára az alkalmazás összetevői hogyan telemetriai adatokat küldhet.
 * [Lekérdezések naplózását](log-query/log-query-overview.md) összegyűjtött adatok elemzéséhez.

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 81213d1f7cfeb7ea10cdadfb124047ecb76aa7d4
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 6d18adfaec965d858bdcb1f74ebcea89f57eea39
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352085"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878026"
 ---
 # <a name="saas-fulfillment-api"></a>SaaS-teljesítési API
 
@@ -351,7 +351,7 @@ Belső kiszolgálóhiba
 |  x-ms-correlationid  | Egyedi karakterlánc értéke a művelethez az ügyfélen. Ez utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
 |  Engedélyezési     |  JSON webes jogkivonat (JWT) tulajdonosi jogkivonat |
 
-*A kérelem:*
+*Kérés:*
 
 ```json
 {
@@ -648,7 +648,7 @@ Lehetővé teszi a felhasználó egy aktivált aszinkron művelet (az előfizet�
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Content-Type      |  ` application/json`   |
+|  Content-Type      |  `application/json`   |
 |  x-ms-requestid    |   A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
 |  x-ms-correlationid |  A műveletet az ügyfél egyedi karakterlánc-érték. Ez a paraméter utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
 |  Engedélyezési     | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.  |

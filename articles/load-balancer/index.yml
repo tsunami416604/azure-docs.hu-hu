@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 80ead4921ac13117bbbcbfadfc1b58753759375e
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404739"
 documentType: LandingData
 title: Load Balancer
 metadata:
-  document_id: 
+  document_id: null
   title: Load Balancer
-  meta.description: Learn how to use Azure Load Balancer. Quickstarts, tutorials, samples, and more, show you how to deploy a load balancer and load balance traffic to and from virtual machines and cloud resources, and in cross-premises virtual networks.
+  meta.description: 'Learn how to use Azure Load Balancer. Quickstarts, tutorials, samples, and more, show you how to deploy a load balancer and load balance traffic to and from virtual machines and cloud resources, and in cross-premises virtual networks.'
   services: load-balancer
   author: KumudD
   manager: twooley
@@ -21,92 +15,92 @@ metadata:
   ms.date: 11/14/2018
   ms.author: kumud
 abstract:
-  description: Ismerje meg az Azure Load Balancer használatát. A rövid útmutatók, oktatóanyagok és egyéb dokumentumok bemutatják, hogyan helyezhet üzembe egy terheléselosztót és hogyan oszthatja el a virtuális gépek és felhőalapú erőforrások, illetve a helyszínek közötti virtuális hálózatok bejövő és kimenő forgalmát.
+  description: 'Ismerje meg az Azure Load Balancer használatát. A rövid útmutatók, oktatóanyagok és egyéb dokumentumok bemutatják, hogyan helyezhet üzembe egy terheléselosztót és hogyan oszthatja el a virtuális gépek és felhőalapú erőforrások, illetve a helyszínek közötti virtuális hálózatok bejövő és kimenő forgalmát.'
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: Ismerje meg, hogyan hozhat létre terheléselosztókat és háttérkiszolgálóként működő virtuális gépeket, hogyan telepíthet egyéni webalkalmazásokat a virtuális gépre, és hogyan oszthatja el a webalkalmazás terhelését a virtuális gépek között.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure Portal
-      href: /azure/load-balancer/quickstart-create-basic-load-balancer-portal
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/load-balancer/quickstart-create-basic-load-balancer-powershell
-    - image:
-        src: https://docs.microsoft.com/media/common/cli.svg
-      text: Azure CLI
-      href: /azure/load-balancer/quickstart-create-basic-load-balancer-cli
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Ismerje meg, hogyan hozhat létre terheléselosztókat, és hogyan oszthatja el a szolgáltatások terhelését a virtuális gépek között.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Ismerje meg, hogyan hozhat létre terheléselosztókat és háttérkiszolgálóként működő virtuális gépeket, hogyan telepíthet egyéni webalkalmazásokat a virtuális gépre, és hogyan oszthatja el a webalkalmazás terhelését a virtuális gépek között.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure Portal
+            href: /azure/load-balancer/quickstart-create-basic-load-balancer-portal
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
+            text: Azure PowerShell
+            href: /azure/load-balancer/quickstart-create-basic-load-balancer-powershell
+          - image:
+              src: 'https://docs.microsoft.com/media/common/cli.svg'
+            text: Azure CLI
+            href: /azure/load-balancer/quickstart-create-basic-load-balancer-cli
+  - title: Részletes útmutatók
     items:
-    - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-manage-portal">Virtuális gépek internetes forgalmának terheléselosztása</a>
-    - html: <a href="/azure/load-balancer/tutorial-load-balancer-basic-internal-portal">Virtuális gépek belső bejövő forgalmának terheléselosztása</a>
-    - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal">Virtuális gépek terheléselosztása rendelkezésre állási zónák között</a>
-    - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal">Virtuális gépek terheléselosztása adott rendelkezésre állási zónán belül</a>
-    - html: <a href="/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal">Porttovábbítás konfigurálása a Load Balancerben</a>
-- title: Fejlessze a készségeit a Microsoft Learnnel
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Ismerje meg, hogyan hozhat létre terheléselosztókat, és hogyan oszthatja el a szolgáltatások terhelését a virtuális gépek között.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-manage-portal">Virtuális gépek internetes forgalmának terheléselosztása</a>
+          - html: <a href="/azure/load-balancer/tutorial-load-balancer-basic-internal-portal">Virtuális gépek belső bejövő forgalmának terheléselosztása</a>
+          - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal">Virtuális gépek terheléselosztása rendelkezésre állási zónák között</a>
+          - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal">Virtuális gépek terheléselosztása adott rendelkezésre állási zónán belül</a>
+          - html: <a href="/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal">Porttovábbítás konfigurálása a Load Balancerben</a>
+  - title: Fejlessze a készségeit a Microsoft Learnnel
     items:
-    - title: Magas rendelkezésre állás biztosítása virtuális gépeknek
-      href: /learn/modules/intro-to-azure-virtual-machines/5-high-availability
-      image:
-        src: /learn/achievements/make-your-virtual-machines-highly-available.svg
-        href: /learn/modules/intro-to-azure-virtual-machines/5-high-availability
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-virtual-machines">További interaktív oktatóanyagok...</a>
-- title: Ingyenes Pluralsight videós képzés
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Magas rendelkezésre állás biztosítása virtuális gépeknek
+            href: /learn/modules/intro-to-azure-virtual-machines/5-high-availability
+            image:
+              src: /learn/achievements/make-your-virtual-machines-highly-available.svg
+              href: /learn/modules/intro-to-azure-virtual-machines/5-high-availability
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-virtual-machines">További interaktív oktatóanyagok...</a>
+  - title: Ingyenes Pluralsight videós képzés
     items:
-    - title: Azure-rendszergazda
-      href: https://go.microsoft.com/fwlink/?linkid=2012827
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012827
-    - title: Azure-beli megoldástervező
-      href: https://go.microsoft.com/fwlink/?linkid=2012824
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012824
-    - title: Azure-felügyelet AWS-rendszergazdáknak
-      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-- title: Példák
-  items:
-  - type: paragraph
-    text: Szkriptminták gyakori műveletekhez.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure-rendszergazda
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+          - title: Azure-beli megoldástervező
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+          - title: Azure-felügyelet AWS-rendszergazdáknak
+            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+  - title: Példák
     items:
-    - html: <a href="/azure/load-balancer/cli-samples">Azure CLI</a>
-    - html: <a href="/azure/load-balancer/powershell-samples">PowerShell</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Szkriptminták gyakori műveletekhez.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/load-balancer/cli-samples">Azure CLI</a>
+          - html: <a href="/azure/load-balancer/powershell-samples">PowerShell</a>
+  - title: Referencia
     items:
-    - title: Parancssor
-      html: <p><a href="/powershell/module/azurerm.network#load_balancer">PowerShell</a></p><p><a href="/cli/azure/network/lb">Azure CLI</a></p>
-    - title: Nyelvek
-      html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.network.v2017_10_01.models.LoadBalancer">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.network.v2015_06_15.operations.loadbalancersoperations">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/load-balancer/">REST API-referencia</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: '<p><a href="/powershell/module/az.network#load_balancer">PowerShell</a></p><p><a href="/cli/azure/network/lb">Azure CLI</a></p>'
+          - title: Nyelvek
+            html: '<p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.network.v2017_10_01.models.LoadBalancer">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.network.v2015_06_15.operations.loadbalancersoperations">Python</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/load-balancer/">REST API-referencia</a></p>

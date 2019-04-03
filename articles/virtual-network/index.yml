@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 24e096680e6118b19feeb26d6f5435811ccaa276
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985866"
 documentType: LandingData
 title: Virtual Network dokumentációja
 metadata:
   document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
-  title: A Virtual Network dokumentációja – Oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs
-  meta.description: Learn how to use Azure Virtual Network. Quickstarts, tutorials, samples, and more, show you how to deploy a virtual network, control traffic filtering and routing, and connect a virtual network to other virtual networks.
+  title: 'A Virtual Network dokumentációja – Oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs'
+  meta.description: 'Learn how to use Azure Virtual Network. Quickstarts, tutorials, samples, and more, show you how to deploy a virtual network, control traffic filtering and routing, and connect a virtual network to other virtual networks.'
   services: virtual-network
   author: jdial
   manager: jeconnoc
@@ -23,89 +17,89 @@ metadata:
 abstract:
   description: 'Útmutató az Azure Virtual Network használatához. A rövid útmutatók, oktatóanyagok, minták és egyebek segítségével a következőket ismerheti meg: virtuális hálózatok üzembe helyezése, a forgalomszűrés és az útválasztás vezérlése, valamint a virtuális hálózatok összekapcsolása más virtuális hálózatokkal.'
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: Ismerje meg, hogyan hozhat létre virtuális hálózatot, hogyan helyezhet üzembe virtuális gépeket a hálózatban és hogyan létesíthet kommunikációt a virtuális gépek, illetve az internet között.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-network/media/index/portal.svg
-      text: Azure Portal
-      href: /azure/virtual-network/quick-create-portal
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-network/media/index/powershell.svg
-      text: Azure PowerShell
-      href: /azure/virtual-network/quick-create-powershell
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-network/media/index/cli.svg
-      text: Azure CLI
-      href: /azure/virtual-network/quick-create-cli
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Ismerje meg, hogyan hozhat létre és csatlakoztathat virtuális hálózatokat, illetve hogyan vezérelheti az útválasztást és a szűrést.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Ismerje meg, hogyan hozhat létre virtuális hálózatot, hogyan helyezhet üzembe virtuális gépeket a hálózatban és hogyan létesíthet kommunikációt a virtuális gépek, illetve az internet között.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-network/media/index/portal.svg'
+            text: Azure Portal
+            href: /azure/virtual-network/quick-create-portal
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-network/media/index/powershell.svg'
+            text: Azure PowerShell
+            href: /azure/virtual-network/quick-create-powershell
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-network/media/index/cli.svg'
+            text: Azure CLI
+            href: /azure/virtual-network/quick-create-cli
+  - title: Részletes útmutatók
     items:
-    - html: <a href="/azure/virtual-network/tutorial-filter-network-traffic">Hálózati forgalom szűrése</a>
-    - html: <a href="/azure/virtual-network/tutorial-create-route-table-portal">Hálózati forgalom továbbítása</a>
-    - html: <a href="/azure/virtual-network/tutorial-restrict-network-access-to-resources">Erőforrások hálózati hozzáférésének korlátozása</a>
-    - html: <a href="/azure/virtual-network/tutorial-connect-virtual-networks-portal">Virtuális hálózatok csatlakoztatása</a>
-- title: Fejlessze a készségeit a Microsoft Learnnel
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Ismerje meg, hogyan hozhat létre és csatlakoztathat virtuális hálózatokat, illetve hogyan vezérelheti az útválasztást és a szűrést.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/virtual-network/tutorial-filter-network-traffic">Hálózati forgalom szűrése</a>
+          - html: <a href="/azure/virtual-network/tutorial-create-route-table-portal">Hálózati forgalom továbbítása</a>
+          - html: <a href="/azure/virtual-network/tutorial-restrict-network-access-to-resources">Erőforrások hálózati hozzáférésének korlátozása</a>
+          - html: <a href="/azure/virtual-network/tutorial-connect-virtual-networks-portal">Virtuális hálózatok csatlakoztatása</a>
+  - title: Fejlessze a készségeit a Microsoft Learnnel
     items:
-    - title: " Bevezetés az Azure hálózatkezelési funkcióinak használatába"
-      href: /learn/modules/intro-to-azure-networking/
-      image:
-        src: /learn/achievements/intro-to-azure-networking.svg
-        href: /learn/modules/intro-to-azure-networking/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure">További interaktív oktatóanyagok...</a>
-- title: Ingyenes Pluralsight videós képzés
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: "\_Bevezetés az Azure hálózatkezelési funkcióinak használatába"
+            href: /learn/modules/intro-to-azure-networking/
+            image:
+              src: /learn/achievements/intro-to-azure-networking.svg
+              href: /learn/modules/intro-to-azure-networking/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure">További interaktív oktatóanyagok...</a>
+  - title: Ingyenes Pluralsight videós képzés
     items:
-    - title: Azure-rendszergazda
-      href: https://go.microsoft.com/fwlink/?linkid=2012827
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012827
-    - title: Azure-beli megoldástervező
-      href: https://go.microsoft.com/fwlink/?linkid=2012824
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012824
-    - title: Azure-felügyelet AWS-rendszergazdáknak
-      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-- title: Példák
-  items:
-  - type: paragraph
-    text: Szkriptminták gyakori műveletekhez.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure-rendszergazda
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+          - title: Azure-beli megoldástervező
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+          - title: Azure-felügyelet AWS-rendszergazdáknak
+            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+  - title: Példák
     items:
-    - html: <a href="/azure/virtual-network/cli-samples">Azure CLI</a>
-    - html: <a href="/azure/virtual-network/powershell-samples">PowerShell</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Szkriptminták gyakori műveletekhez.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/virtual-network/cli-samples">Azure CLI</a>
+          - html: <a href="/azure/virtual-network/powershell-samples">PowerShell</a>
+  - title: Referencia
     items:
-    - title: Parancssor
-      html: <p><a href="/powershell/module/azurerm.network#networking">PowerShell</a></p><p><a href="/cli/azure/network">Azure CLI</a></p>
-    - title: Nyelvek
-      html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/virtual-network/">REST API-referencia</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: '<p><a href="/powershell/module/az.network#networking">PowerShell</a></p><p><a href="/cli/azure/network">Azure CLI</a></p>'
+          - title: Nyelvek
+            html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/virtual-network/">REST API-referencia</a></p>

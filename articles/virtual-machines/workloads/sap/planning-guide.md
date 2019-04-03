@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b2ca3d42fd5facb226fd3ddea8c48decaafade85
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 839f77df88314c95df1056b60c3612de27421ca0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009502"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886131"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
 
@@ -177,7 +177,7 @@ ms.locfileid: "58009502"
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
+[msdn-set-Azvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
 
 [planning-guide]:planning-guide.md  
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff
@@ -234,7 +234,7 @@ ms.locfileid: "58009502"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-az-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -257,7 +257,7 @@ ms.locfileid: "58009502"
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
-[virtual-machines-azurerm-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
+[virtual-machines-Az-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md
 [virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md
@@ -317,6 +317,8 @@ ms.locfileid: "58009502"
 A Microsoft Azure lehetővé teszi a vállalatok számára, hogy a számítási és tárolási erőforrások szerez minimális idő nélkül hosszadalmas beszerzési ciklusokat. Az Azure Virtual machines szolgáltatás lehetővé teszi a cégeknek üzembe helyezése a klasszikus alkalmazások, például az SAP NetWeaver-alapú alkalmazások az Azure-ba, és a megbízhatóságot és rendelkezésre állást kiterjesztése további erőforrás érhető el a helyszíni nélkül. Az Azure Virtual Machine Services támogatja a létesítmények közötti kapcsolatok, amely lehetővé teszi a vállalatok számára, hogy az Azure Virtual Machines aktívan integrálhat saját helyszíni tartományok, a Magánfelhők és az SAP-rendszer rendszeren is.
 Ez a tanulmány alapjait mutatja be, a Microsoft Azure virtuális gép ismerteti, és az Azure-beli SAP NetWeaver-telepítéseket vonatkozó tervezési és megvalósítási szempontokat ismerteti, és ilyen kell lennie a tényleges megkezdése előtt olvassa el a dokumentumot az SAP NetWeaver az Azure-ban üzemelő példányok.
 A tanulmány az SAP-telepítési dokumentációt és SAP-megjegyzések, amelyek tartalmazzák a telepítések és SAP-szoftverek központi telepítései az elsődleges erőforrásokat a megadott platformok egészíti ki.
+
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="summary"></a>Összegzés
 Felhő-számítástechnika széles körben használt fogalom, amely egyre több fontosságát az informatikai iparágban, belül van hozd a kisvállalatok nagy, nemzetközi vállalatok.
@@ -626,7 +628,7 @@ A Microsoft Azure egy hálózati infrastruktúra, amely lehetővé teszi, hogy m
 * Létesítmények közötti kapcsolat egy ügyfél a helyszíni hálózat és az Azure-hálózat között
 * Több Azure-régió vagy az adatközpontok az Azure webhelyek közötti kapcsolat
 
-További információt itt találhat: <https://azure.microsoft.com/documentation/services/virtual-network/>
+További információ itt található: <https://azure.microsoft.com/documentation/services/virtual-network/>
 
 Nincsenek neve és IP-feloldás konfigurálása az Azure-ban számos különböző lehetőségeit. Emellett van egy Azure DNS szolgáltatással, amelyre a saját DNS-kiszolgáló beállítása helyett alkalmazható. További információ található [Ez a cikk] [ virtual-networks-manage-dns-in-vnet] és a [ezt oldal](https://azure.microsoft.com/services/dns/).
 
@@ -720,7 +722,8 @@ Express Route használatával egy ExpressRoute-kapcsolatcsoport több Azure-elő
 #### <a name="forced-tunneling-in-case-of-cross-premises"></a>Kényszerített bújtatás esetén a létesítmények közötti
 A virtuális gépek site-to-site, pont – hely vagy az ExpressRoute használatával a helyszíni tartományokhoz való csatlakozás esetén győződjön meg arról, hogy az internetes proxybeállítások első telepítésére ezeken a virtuális gépeken, valamint az összes felhasználót kell. Alapértelmezés szerint az ezeket a virtuális gépek vagy az internet eléréséhez egy böngészőben használó felhasználók szoftvert nem sikerült a vállalat proxyn keresztül, de közvetlenül az Azure-on az interneten keresztül csatlakoznak. De még a proxybeállítást nem 100 %-os megoldást a vállalati proxyn keresztül a forgalom közvetlen óta feladata, a szoftverek és szolgáltatások a proxy kereséséhez. Ha a virtuális Gépen futó szoftver, amely nem végez, illetve a rendszergazda kezeli a beállításokat, az internetre irányuló forgalom is kell újra detoured közvetlenül az Azure-bA az interneten keresztül.
 
-Annak érdekében, hogy az ilyen egy közvetlen internetkapcsolattal, konfigurálhatja a kényszerített bújtatásról helyek közötti kapcsolattal a helyszíni és az Azure között. A kényszerített bújtatás funkció részletes leírása itt van közzétéve. <https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
+Annak érdekében, hogy az ilyen egy közvetlen internetkapcsolattal, konfigurálhatja a kényszerített bújtatásról helyek közötti kapcsolattal a helyszíni és az Azure között. A kényszerített bújtatás funkció részletes leírása itt van közzétéve.
+<https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
 
 Az expressroute-tal a kényszerített bújtatás engedélyezve van a vevők az ExpressRoute BGP-társviszony-létesítési munkamenetek keresztül egy alapértelmezett útvonalat hirdet által.
 
@@ -751,7 +754,8 @@ A nyers döntési fa eldönteni, hogy az SAP-rendszer illeszkedik a Azure Virtua
 
 **1. lépés**: A legfontosabb információt a kezdéshez egy adott SAP-rendszer a SAP követelménye. Az SAP-követelményeknek kell bontható az adatbázis-kezelő és a SAP alkalmazás részét, még akkor is, ha az SAP-rendszer már üzembe helyezett helyszíni 2 szintű konfigurációban. Meglévő rendszerekkel az SAP, gyakran használt hardver kapcsolatos határozza meg vagy meglévő SAP-referenciaalapok alapján. Az eredmények itt található: <https://sap.com/about/benchmark.html>.
 Az újonnan üzembe helyezett SAP-rendszereit érdemes elvégezte a méretezési gyakorlatban kell meghatározni, hogy a rendszer a SAP követelményeinek.
-Lásd még: erre a blogra és a csatolt dokumentumot SAP méretezéshez az Azure-ban: <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+Lásd még: erre a blogra és a csatolt dokumentumot SAP méretezéshez az Azure-ban:
+<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 **2. lépés**: A meglévő rendszerek esetében az i/o-kötet és i/o-műveletek száma másodpercenként a DBMS-kiszolgálón kell mérni. Újonnan tervezett rendszerek esetén a méretezés a gyakorlatban az új rendszer is kell biztosítania az i/o-követelményeket a DBMS oldalon hozzávetőleges ötleteit. Ha nem tudja biztosan, végül a koncepció igazolása magatartási kell.
 
@@ -801,10 +805,12 @@ Részletesebb útmutatást telepítése, frissítése és konfigurálása az Azu
 
 Felhasználói élmény eddig lett, hogy PowerShell (PS) természetesen-e a virtuális gépek üzembe helyezése és egyéni lépéseihez létrehozása a virtuális gépek központi hatékony eszköz. PS parancsmagok lehetőséget a felügyeleti feladatokat az Azure Portalon vagy a PS-parancsmagok is használ kizárólag az Azure-ban az üzembe helyezett megoldások kezelése az SAP-példányok Azure-ban futó ügyfelek használja. Mivel az Azure-ra vonatkozó parancsmagok oszt meg, a több mint 2000 Windows kapcsolatos parancsmagok ugyanazt az elnevezési konvenciót, célszerű ezeket a parancsmagokat a Windows-rendszergazdák egyszerű feladat.
 
-Példa itt talál: <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+Példa itt talál:
+<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 [comment]: <> (MShermannd TODO új CLI-paranccsal tesztelésekor leírása )
-Az SAP az Azure Monitoring bővítmény telepítését (című [Azure Monitoring megoldás az SAP] [ planning-guide-9.1] ebben a dokumentumban) csak akkor lehetséges, PowerShell vagy parancssori felület használatával. Ezért azt kötelező való telepítése és konfigurálása a PowerShell vagy parancssori felület üzembe helyezésekor és a egy Azure-beli SAP NetWeaver rendszer felügyelete.  
+Az SAP az Azure Monitoring bővítmény telepítését (című [Azure Monitoring megoldás az SAP] [ planning-guide-9.1] ebben a dokumentumban) csak akkor lehetséges, PowerShell vagy parancssori felület használatával. Ezért azt kötelező való telepítése és konfigurálása a PowerShell vagy parancssori felület üzembe helyezésekor és a egy Azure-beli SAP NetWeaver rendszer felügyelete.
+  
 
 Az Azure további funkciókat biztosít, új PS-parancsmagok fog hozzáadni, amely megköveteli, hogy a parancsmagok frissítése. Ezért logikus ellenőrizze az Azure letöltési hely a hónap során legalább egyszer <https://azure.microsoft.com/downloads/> parancsmag egy új verzióért. Az új verzió telepítve van a régebbi verziót felett.
 
@@ -948,13 +954,13 @@ Ebben az esetben azt szeretné, akár anélkül, az operációs rendszer VHD fel
 
 **PowerShell**
 
-* Jelentkezzen be az előfizetéshez *Connect-AzureRmAccount*
-* Az előfizetés az a környezet beállításához *Set-AzureRmContext* és előfizetés-azonosító paramétert vagy a SubscriptionName - lásd: <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
-* Töltse fel a virtuális Merevlemezt *Add-AzureRmVhd* egy Azure Storage-fiók – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
-* (Nem kötelező) Hozzon létre egy felügyelt lemezt a virtuális Merevlemezt a *New-AzureRmDisk* – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk>
-* Egy új virtuális gép konfigurációs operációsrendszer-lemezének beállítani a virtuális merevlemez vagy a felügyelt lemezről az *Set-AzureRmVMOSDisk* – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk>
-* Egy új virtuális gép létrehozása a virtuális gép konfigurációt *New-AzureRmVM* – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm>
-* Adatlemez hozzáadása egy új virtuális Gépet *Add-AzureRmVMDataDisk* – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmdatadisk>
+* Jelentkezzen be az előfizetéshez *Connect-AzAccount*
+* Az előfizetés az a környezet beállításához *Set-AzContext* és előfizetés-azonosító paramétert vagy a SubscriptionName - lásd: <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
+* Töltse fel a virtuális Merevlemezt *Add-AzVhd* egy Azure Storage-fiók – lásd: <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
+* (Nem kötelező) Hozzon létre egy felügyelt lemezt a virtuális Merevlemezt a *New-AzDisk* – lásd: <https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk>
+* Egy új virtuális gép konfigurációs operációsrendszer-lemezének beállítani a virtuális merevlemez vagy a felügyelt lemezről az *Set-AzVMOSDisk* – lásd: <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
+* Egy új virtuális gép létrehozása a virtuális gép konfigurációt *New-azvm parancsmag* – lásd: <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
+* Adatlemez hozzáadása egy új virtuális Gépet *Add-AzVMDataDisk* – lásd: <https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk>
 
 **Azure CLI**
 
@@ -975,14 +981,14 @@ Ebben az esetben azt szeretné, akár anélkül, az operációs rendszer VHD fel
 Egy meglévő virtuális Gépet vagy virtuális merevlemez feltöltéséhez a helyszíni hálózatból Azure-beli Virtuálisgép-lemezképként használatához egy virtuális Gépet vagy virtuális Merevlemezhez meg kell felelniük a fejezetben felsorolt követelményeknek [specifikus lemezképet használó virtuális gép telepítése az SAP-előkészítése] [ planning-guide-5.2.2] ebben a dokumentumban.
 
 * Használja *sysprep* a Windows vagy *waagent-deprovision* Linux általánosítani a virtuális gép – lásd: [technikai útmutató a Sysprep](https://technet.microsoft.com/library/cc766049.aspx) a Windows vagy [rögzítése egy Linuxos virtuális gép használja, mint egy Resource Manager-sablon] [ capture-image-linux-step-2-create-vm-image] linuxhoz
-* Jelentkezzen be az előfizetéshez *Connect-AzureRmAccount*
-* Az előfizetés az a környezet beállításához *Set-AzureRmContext* és előfizetés-azonosító paramétert vagy a SubscriptionName - lásd: <https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermcontext>
-* Töltse fel a virtuális Merevlemezt *Add-AzureRmVhd* egy Azure Storage-fiók – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd>
-* (Nem kötelező) Felügyelt lemez rendszerképének létrehozása a VHD-vel rendelkező *New-AzureRmImage* – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermimage>
+* Jelentkezzen be az előfizetéshez *Connect-AzAccount*
+* Az előfizetés az a környezet beállításához *Set-AzContext* és előfizetés-azonosító paramétert vagy a SubscriptionName - lásd: <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
+* Töltse fel a virtuális Merevlemezt *Add-AzVhd* egy Azure Storage-fiók – lásd: <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
+* (Nem kötelező) Felügyelt lemez rendszerképének létrehozása a VHD-vel rendelkező *New-AzImage* – lásd: <https://docs.microsoft.com/powershell/module/az.compute/new-Azimage>
 * Egy új virtuális gép konfigurációs az operációsrendszer-lemezének beállítani a
-  * A virtuális merevlemez *Set-AzureRmVMOSDisk - SourceImageUri - CreateOption fromImage* – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk>
-  * Felügyelt lemez rendszerképének *Set-AzureRmVMSourceImage* – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmsourceimage>
-* Egy új virtuális gép létrehozása a virtuális gép konfigurációt *New-AzureRmVM* – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm>
+  * A virtuális merevlemez *Set-AzVMOSDisk - SourceImageUri - CreateOption fromImage* – lásd: <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
+  * Felügyelt lemez rendszerképének *Set-AzVMSourceImage* – lásd: <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage>
+* Egy új virtuális gép létrehozása a virtuális gép konfigurációt *New-azvm parancsmag* – lásd: <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
 
 **Azure CLI**
 
@@ -1011,27 +1017,27 @@ A letöltés ideje alatt a VHD-k vagy a felügyelt lemezeket nem lehet aktív. A
   Először az alapul szolgáló blob a felügyelt lemez eléréséhez. Ezután az alapul szolgáló blob átmásolása egy új tárfiókot, és a blob letöltése a storage-fiókból.
 
   ```powershell
-  $access = Grant-AzureRmDiskAccess -ResourceGroupName <resource group> -DiskName <disk name> -Access Read -DurationInSecond 3600
-  $key = (Get-AzureRmStorageAccountKey -ResourceGroupName <resource group> -Name <storage account name>)[0].Value
-  $destContext = (New-AzureStorageContext -StorageAccountName <storage account name -StorageAccountKey $key)
-  Start-AzureStorageBlobCopy -AbsoluteUri $access.AccessSAS -DestContainer <container name> -DestBlob <blob name> -DestContext $destContext
+  $access = Grant-AzDiskAccess -ResourceGroupName <resource group> -DiskName <disk name> -Access Read -DurationInSecond 3600
+  $key = (Get-AzStorageAccountKey -ResourceGroupName <resource group> -Name <storage account name>)[0].Value
+  $destContext = (New-AzStorageContext -StorageAccountName <storage account name -StorageAccountKey $key)
+  Start-AzStorageBlobCopy -AbsoluteUri $access.AccessSAS -DestContainer <container name> -DestBlob <blob name> -DestContext $destContext
   # Wait for blob copy to finish
-  Get-AzureStorageBlobCopyState -Container <container name> -Blob <blob name> -Context $destContext
-  Save-AzureRmVhd -SourceUri <blob in new storage account> -LocalFilePath <local file path> -StorageKey $key
+  Get-AzStorageBlobCopyState -Container <container name> -Blob <blob name> -Context $destContext
+  Save-AzVhd -SourceUri <blob in new storage account> -LocalFilePath <local file path> -StorageKey $key
   # Wait for download to finish
-  Revoke-AzureRmDiskAccess -ResourceGroupName <resource group> -DiskName <disk name>
+  Revoke-AzDiskAccess -ResourceGroupName <resource group> -DiskName <disk name>
   ```
 
 * VHD letöltése  
-  Az SAP-rendszer le van állítva, és a virtuális gép leállt, használhatja a PowerShell-parancsmag Save-AzureRmVhd a helyszíni cél töltheti le a VHD lemezek vissza a helyszíni tételéhez. A virtuális Merevlemezt, amely találhatja meg a "storage szakasz" URL-CÍMÉT kell megtenni, az Azure Portalon (Nyissa meg a Tárfiók és a storage-tárolót, ahol a virtuális merevlemez létrehozásának szükség), és ismernie kell, a virtuális Merevlemezt másolja.
+  Az SAP-rendszer le van állítva, és a virtuális gép leállt, használhatja a PowerShell-parancsmag Save-AzVhd a helyszíni cél töltheti le a VHD lemezek vissza a helyszíni tételéhez. A virtuális Merevlemezt, amely találhatja meg a "storage szakasz" URL-CÍMÉT kell megtenni, az Azure Portalon (Nyissa meg a Tárfiók és a storage-tárolót, ahol a virtuális merevlemez létrehozásának szükség), és ismernie kell, a virtuális Merevlemezt másolja.
 
   A parancs kihasználhatja majd definiálásával SourceUri paraméter az URL-címet a virtuális merevlemez letöltésére és a LocalFilePath, mint a fizikai helye a VHD-t (mint például a neve). A parancs nézhet:
 
   ```powerhell
-  Save-AzureRmVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
+  Save-AzVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
   ```
 
-  A Save-AzureRmVhd parancsmag további részletekért ellenőrizze az itt <https://docs.microsoft.com/powershell/module/azurerm.compute/save-azurermvhd>.
+  A Save-AzVhd parancsmag további részletekért ellenőrizze az itt <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd>.
 
 #### <a name="azure-cli"></a>Azure CLI
 * Felügyelt lemez letöltése  
@@ -1067,11 +1073,11 @@ Az adatlemezeket is Managed Disks. Ebben az esetben a felügyelt lemezt használ
 
 ##### <a name="powershell"></a>PowerShell
 
-Azure PowerShell-parancsmagok segítségével másolja egy VHD-t, ahogyan az [Ez a cikk][storage-powershell-guide-full-copy-vhd]. Egy új felügyelt lemez létrehozásához használja a New-azurermdiskconfig parancsmaghoz és New-AzureRmDisk lehetőséget, az alábbi példában látható módon.
+Azure PowerShell-parancsmagok segítségével másolja egy VHD-t, ahogyan az [Ez a cikk][storage-powershell-guide-full-copy-vhd]. Új felügyelt lemez létrehozása, használja a New-AzDiskConfig és New-AzDisk lehetőséget, az alábbi példában látható módon.
 
 ```powershell
-$config = New-AzureRmDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" -Location <location>
-New-AzureRmDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
+$config = New-AzDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" -Location <location>
+New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
 ```
 
 ##### <a name="azure-cli"></a>Azure CLI
@@ -1097,26 +1103,26 @@ A virtuális merevlemez másolatának készítése magát a tárfiókon belül e
 
 ```powershell
 # attach a vhd to a vm
-$vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name newdatadisk -VhdUri <path to vhd> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption attach
-$vm | Update-AzureRmVM
+$vm = Get-AzVM -ResourceGroupName <resource group name> -Name <vm name>
+$vm = Add-AzVMDataDisk -VM $vm -Name newdatadisk -VhdUri <path to vhd> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption attach
+$vm | Update-AzVM
 
 # attach a managed disk to a vm
-$vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name newdatadisk -ManagedDiskId <managed disk id> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption attach
-$vm | Update-AzureRmVM
+$vm = Get-AzVM -ResourceGroupName <resource group name> -Name <vm name>
+$vm = Add-AzVMDataDisk -VM $vm -Name newdatadisk -ManagedDiskId <managed disk id> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption attach
+$vm | Update-AzVM
 
 # attach a copy of the vhd to a vm
-$vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name <disk name> -VhdUri <new path of vhd> -SourceImageUri <path to image vhd> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption fromImage
-$vm | Update-AzureRmVM
+$vm = Get-AzVM -ResourceGroupName <resource group name> -Name <vm name>
+$vm = Add-AzVMDataDisk -VM $vm -Name <disk name> -VhdUri <new path of vhd> -SourceImageUri <path to image vhd> -Caching <caching option> -DiskSizeInGB $null -Lun <lun, for example 0> -CreateOption fromImage
+$vm | Update-AzVM
 
 # attach a copy of the managed disk to a vm
-$vm = Get-AzureRmVM -ResourceGroupName <resource group name> -Name <vm name>
-$diskConfig = New-AzureRmDiskConfig -Location $vm.Location -CreateOption Copy -SourceUri <source managed disk id>
-$disk = New-AzureRmDisk -DiskName <disk name> -Disk $diskConfig -ResourceGroupName <resource group name>
-$vm = Add-AzureRmVMDataDisk -VM $vm -Caching <caching option> -Lun <lun, for example 0> -CreateOption attach -ManagedDiskId $disk.Id
-$vm | Update-AzureRmVM
+$vm = Get-AzVM -ResourceGroupName <resource group name> -Name <vm name>
+$diskConfig = New-AzDiskConfig -Location $vm.Location -CreateOption Copy -SourceUri <source managed disk id>
+$disk = New-AzDisk -DiskName <disk name> -Disk $diskConfig -ResourceGroupName <resource group name>
+$vm = Add-AzVMDataDisk -VM $vm -Caching <caching option> -Lun <lun, for example 0> -CreateOption attach -ManagedDiskId $disk.Id
+$vm | Update-AzVM
 ```
 ##### <a name="azure-cli"></a>Azure CLI
 
@@ -1144,18 +1150,18 @@ Virtuális merevlemezek előfizetések között is másolhatja. További inform�
 
 A PS-parancsmag logika használt alapvető folyamat a következőhöz hasonló:
 
-* Hozzon létre egy a tárfiók környezetét a **forrás** tárfiók *New-azurestoragecontext parancsmaggal kapcsolatos* – lásd: <https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext>
-* Hozzon létre egy a tárfiók környezetét a **cél** tárfiók *New-azurestoragecontext parancsmaggal kapcsolatos* – lásd: <https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext>
+* Hozzon létre egy a tárfiók környezetét a **forrás** tárfiók *New-AzStorageContext* – lásd: <https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext>
+* Hozzon létre egy a tárfiók környezetét a **cél** tárfiók *New-AzStorageContext* – lásd: <https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext>
 * Indítsa el a másolatot
 
 ```powershell
-Start-AzureStorageBlobCopy -SrcBlob <source blob name> -SrcContainer <source container name> -SrcContext <variable containing context of source storage account> -DestBlob <target blob name> -DestContainer <target container name> -DestContext <variable containing context of target storage account>
+Start-AzStorageBlobCopy -SrcBlob <source blob name> -SrcContainer <source container name> -SrcContext <variable containing context of source storage account> -DestBlob <target blob name> -DestContainer <target container name> -DestContext <variable containing context of target storage account>
 ```
 
 * Egy hurokba, és a másolat állapotának ellenőrzéséhez
 
 ```powershell
-Get-AzureStorageBlobCopyState -Blob <target blob name> -Container <target container name> -Context <variable containing context of target storage account>
+Get-AzStorageBlobCopyState -Blob <target blob name> -Container <target container name> -Context <variable containing context of target storage account>
 ```
 
 * Az új virtuális merevlemez egy virtuális géphez csatolni a fent leírt módon.
@@ -1326,7 +1332,8 @@ Tekintse meg a klasszikus modellen és ARM architektúra különbség leírtak s
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Az SAP-rendszerhez, és az SAP grafikus felhasználói felület az internetes kapcsolat konfigurációja
 
-Tekintse meg ebben a cikkben a részleteit, ez a témakör ismerteti: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+Tekintse meg ebben a cikkben a részleteit, ez a témakör ismerteti:
+<https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
 #### <a name="changing-firewall-settings-within-vm"></a>Virtuális gépen a tűzfal beállításainak módosítása
 
@@ -1384,39 +1391,39 @@ A forgatókönyv megvalósításához a eseménysorozat így néz ki:
 
 ```powershell
 $rgName = "SAPERPDemo1"
-New-AzureRmResourceGroup -Name $rgName -Location "North Europe"
+New-AzResourceGroup -Name $rgName -Location "North Europe"
 ```
 * Hozzon létre egy új tárfiókot, ha nem szeretné felügyelt lemezek használata
 
 ```powershell
 $suffix = Get-Random -Minimum 100000 -Maximum 999999
-$account = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name "saperpdemo$suffix" -SkuName Standard_LRS -Kind "Storage" -Location "North Europe"
+$account = New-AzStorageAccount -ResourceGroupName $rgName -Name "saperpdemo$suffix" -SkuName Standard_LRS -Kind "Storage" -Location "North Europe"
 ```
 
 * Hozzon létre egy új virtuális hálózat minden képzési/bemutató fekvő ahhoz, hogy az azonos állomásnévvel és IP-címek használatát. A virtuális hálózat, amely csak engedélyezi a forgalmat a 3389-es, a távoli asztali hozzáférés engedélyezéséhez és a 22-es port az SSH számára a hálózati biztonsági csoport védi.
 
 ```powershell
 # Create a new Virtual Network
-$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name SAPERPDemoNSGRDP -Protocol * -SourcePortRange * -DestinationPortRange 3389 -Access Allow -Direction Inbound -SourceAddressPrefix * -DestinationAddressPrefix * -Priority 100
-$sshRule = New-AzureRmNetworkSecurityRuleConfig -Name SAPERPDemoNSGSSH -Protocol * -SourcePortRange * -DestinationPortRange 22 -Access Allow -Direction Inbound -SourceAddressPrefix * -DestinationAddressPrefix * -Priority 101
-$nsg = New-AzureRmNetworkSecurityGroup -Name SAPERPDemoNSG -ResourceGroupName $rgName -Location  "North Europe" -SecurityRules $rdpRule,$sshRule
+$rdpRule = New-AzNetworkSecurityRuleConfig -Name SAPERPDemoNSGRDP -Protocol * -SourcePortRange * -DestinationPortRange 3389 -Access Allow -Direction Inbound -SourceAddressPrefix * -DestinationAddressPrefix * -Priority 100
+$sshRule = New-AzNetworkSecurityRuleConfig -Name SAPERPDemoNSGSSH -Protocol * -SourcePortRange * -DestinationPortRange 22 -Access Allow -Direction Inbound -SourceAddressPrefix * -DestinationAddressPrefix * -Priority 101
+$nsg = New-AzNetworkSecurityGroup -Name SAPERPDemoNSG -ResourceGroupName $rgName -Location  "North Europe" -SecurityRules $rdpRule,$sshRule
 
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name Subnet1 -AddressPrefix  10.0.1.0/24 -NetworkSecurityGroup $nsg
-$vnet = New-AzureRmVirtualNetwork -Name SAPERPDemoVNet -ResourceGroupName $rgName -Location "North Europe"  -AddressPrefix 10.0.1.0/24 -Subnet $subnetConfig
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name Subnet1 -AddressPrefix  10.0.1.0/24 -NetworkSecurityGroup $nsg
+$vnet = New-AzVirtualNetwork -Name SAPERPDemoVNet -ResourceGroupName $rgName -Location "North Europe"  -AddressPrefix 10.0.1.0/24 -Subnet $subnetConfig
 ```
 
 * Hozzon létre egy új nyilvános IP-címet, amely hozzáfér a virtuális géphez az internetről segítségével
 
 ```powershell
 # Create a public IP address with a DNS name
-$pip = New-AzureRmPublicIpAddress -Name SAPERPDemoPIP -ResourceGroupName $rgName -Location "North Europe" -DomainNameLabel $rgName.ToLower() -AllocationMethod Dynamic
+$pip = New-AzPublicIpAddress -Name SAPERPDemoPIP -ResourceGroupName $rgName -Location "North Europe" -DomainNameLabel $rgName.ToLower() -AllocationMethod Dynamic
 ```
 
 * Hozzon létre egy új hálózati adaptert a virtuális gép
 
 ```powershell
 # Create a new Network Interface
-$nic = New-AzureRmNetworkInterface -Name SAPERPDemoNIC -ResourceGroupName $rgName -Location "North Europe" -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
+$nic = New-AzNetworkInterface -Name SAPERPDemoNIC -ResourceGroupName $rgName -Location "North Europe" -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
 ```
 
 * Virtuális gépet hoz létre. Ebben a forgatókönyvben minden virtuális gép rendelkezik ugyanazzal a névvel. Az SAP SID ezeken a virtuális gépeken SAP NetWeaver-példánya azonos lesz is. Az Azure-erőforráscsoporton belül egyedinek kell lennie kell a virtuális gép nevét, de különböző Azure-erőforráscsoportok, virtuális gépeket futtatni képes ugyanazzal a névvel. A Windows vagy Linux rendszeren a "root" alapértelmezett "Administrator" fiók nem érvényesek. Ezért egy új rendszergazdai felhasználónevet kell definiálni és jelszóval. A virtuális gép méretét is kell definiálni.
@@ -1426,20 +1433,20 @@ $nic = New-AzureRmNetworkInterface -Name SAPERPDemoNIC -ResourceGroupName $rgNam
 # Create a new virtual machine with an official image from the Azure Marketplace
 #####
 $cred=Get-Credential -Message "Type the name and password of the local administrator account."
-$vmconfig = New-AzureRmVMConfig -VMName SAPERPDemo -VMSize Standard_D11
+$vmconfig = New-AzVMConfig -VMName SAPERPDemo -VMSize Standard_D11
 
 # select image
-$vmconfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2012-R2-Datacenter" -Version "latest"
-$vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-# $vmconfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName "SUSE" -Offer "SLES-SAP" -Skus "12-SP1" -Version "latest"
-# $vmconfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName "RedHat" -Offer "RHEL" -Skus "7.2" -Version "latest"
-# $vmconfig = Set-AzureRmVMSourceImage -VM $vmconfig -PublisherName "Oracle" -Offer "Oracle-Linux" -Skus "7.2" -Version "latest"
-# $vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
+$vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2012-R2-Datacenter" -Version "latest"
+$vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+# $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName "SUSE" -Offer "SLES-SAP" -Skus "12-SP1" -Version "latest"
+# $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName "RedHat" -Offer "RHEL" -Skus "7.2" -Version "latest"
+# $vmconfig = Set-AzVMSourceImage -VM $vmconfig -PublisherName "Oracle" -Offer "Oracle-Linux" -Skus "7.2" -Version "latest"
+# $vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
 
-$vmconfig = Add-AzureRmVMNetworkInterface -VM $vmconfig -Id $nic.Id
+$vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nic.Id
 
-$vmconfig = Set-AzureRmVMBootDiagnostics -Disable -VM $vmconfig
-$vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
+$vmconfig = Set-AzVMBootDiagnostics -Disable -VM $vmconfig
+$vm = New-AzVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
 ```
 
 ```powershell
@@ -1447,20 +1454,20 @@ $vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmc
 # Create a new virtual machine with a VHD that contains the private image that you want to use
 #####
 $cred=Get-Credential -Message "Type the name and password of the local administrator account."
-$vmconfig = New-AzureRmVMConfig -VMName SAPERPDemo -VMSize Standard_D11
+$vmconfig = New-AzVMConfig -VMName SAPERPDemo -VMSize Standard_D11
 
-$vmconfig = Add-AzureRmVMNetworkInterface -VM $vmconfig -Id $nic.Id
+$vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nic.Id
 
 $diskName="osfromimage"
 $osDiskUri=$account.PrimaryEndpoints.Blob.ToString() + "vhds/" + $diskName  + ".vhd"
 
-$vmconfig = Set-AzureRmVMOSDisk -VM $vmconfig -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri <path to VHD that contains the OS image> -Windows
-$vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred
-#$vmconfig = Set-AzureRmVMOSDisk -VM $vmconfig -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri <path to VHD that contains the OS image> -Linux
-#$vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
+$vmconfig = Set-AzVMOSDisk -VM $vmconfig -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri <path to VHD that contains the OS image> -Windows
+$vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred
+#$vmconfig = Set-AzVMOSDisk -VM $vmconfig -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri <path to VHD that contains the OS image> -Linux
+#$vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
 
-$vmconfig = Set-AzureRmVMBootDiagnostics -Disable -VM $vmconfig
-$vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
+$vmconfig = Set-AzVMBootDiagnostics -Disable -VM $vmconfig
+$vm = New-AzVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
 ```
 
 ```powershell
@@ -1468,29 +1475,29 @@ $vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmc
 # Create a new virtual machine with a Managed Disk Image
 #####
 $cred=Get-Credential -Message "Type the name and password of the local administrator account."
-$vmconfig = New-AzureRmVMConfig -VMName SAPERPDemo -VMSize Standard_D11
+$vmconfig = New-AzVMConfig -VMName SAPERPDemo -VMSize Standard_D11
 
-$vmconfig = Add-AzureRmVMNetworkInterface -VM $vmconfig -Id $nic.Id
+$vmconfig = Add-AzVMNetworkInterface -VM $vmconfig -Id $nic.Id
 
-$vmconfig = Set-AzureRmVMSourceImage -VM $vmconfig -Id <Id of Managed Disk Image>
-$vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred
-#$vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
+$vmconfig = Set-AzVMSourceImage -VM $vmconfig -Id <Id of Managed Disk Image>
+$vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Windows -ComputerName "SAPERPDemo" -Credential $cred
+#$vmconfig = Set-AzVMOperatingSystem -VM $vmconfig -Linux -ComputerName "SAPERPDemo" -Credential $cred
 
-$vmconfig = Set-AzureRmVMBootDiagnostics -Disable -VM $vmconfig
-$vm = New-AzureRmVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
+$vmconfig = Set-AzVMBootDiagnostics -Disable -VM $vmconfig
+$vm = New-AzVM -ResourceGroupName $rgName -Location "North Europe" -VM $vmconfig
 ```
 
 * Igény szerint adjon hozzá további lemezeket, és állítsa vissza a szükséges tartalom. Minden blob nevének (URL-címek használatával a blobok) Azure-on belül egyedinek kell lennie.
 
 ```powershell
 # Optional: Attach additional VHD data disks
-$vm = Get-AzureRmVM -ResourceGroupName $rgName -Name SAPERPDemo
+$vm = Get-AzVM -ResourceGroupName $rgName -Name SAPERPDemo
 $dataDiskUri = $account.PrimaryEndpoints.Blob.ToString() + "vhds/datadisk.vhd"
-Add-AzureRmVMDataDisk -VM $vm -Name datadisk -VhdUri $dataDiskUri -DiskSizeInGB 1023 -CreateOption empty | Update-AzureRmVM
+Add-AzVMDataDisk -VM $vm -Name datadisk -VhdUri $dataDiskUri -DiskSizeInGB 1023 -CreateOption empty | Update-AzVM
 
 # Optional: Attach additional Managed Disks
-$vm = Get-AzureRmVM -ResourceGroupName $rgName -Name SAPERPDemo
-Add-AzureRmVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -Lun 0 | Update-AzureRmVM
+$vm = Get-AzVM -ResourceGroupName $rgName -Name SAPERPDemo
+Add-AzVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -Lun 0 | Update-AzVM
 ```
 
 ##### <a name="cli"></a>parancssori felület
@@ -2020,10 +2027,12 @@ Azonban fennállásakor tavaly data center fejlesztett partnerek közös helyek 
 Függ az SAP-konfiguráció (2 szintű vagy 3 szintű) van kiválasztva a biztonsági mentéséhez szükséges lehet. A tartalom a virtuális gép plusz maga az adatbázis biztonsági mentésére. Az adatbázis-kezelő kapcsolatos biztonsági mentések várhatóan adatbázis-módszerekkel együtt kell végrehajtani. A különböző adatbázisokat, részletes leírását található [DBMS útmutató][dbms-guide]. Másrészről az SAP-adatok biztonsági másolat készíthető egy offline módon (beleértve az adatbázisok tartalmát is) ebben a szakaszban leírtak szerint, vagy online a következő szakaszban leírtak szerint.
 
 Az offline biztonsági mentés alapvetően megköveteli a az Azure Portalon a virtuális gép leállítása és a egy példányát az alap Virtuálisgép-lemez és az összes csatlakoztatott lemezek a virtuális géphez. Ezzel a virtuális gép és a kapcsolódó lemezt idő képen egy pont megőrzik. Javasoljuk, hogy a biztonsági másolatok másolása másik Azure Storage-fiókra. Ezért a fejezetben leírt eljárás [lemezek között az Azure Storage-fiókok másolása] [ planning-guide-5.4.2] ebben a dokumentumban a alkalmazni.
-A leállás mellett az Azure Portallal egy is megteheti Powershell vagy parancssori felület a itt leírtak szerint: <https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
+A leállás mellett az Azure Portallal egy is megteheti Powershell vagy parancssori felület a itt leírtak szerint:
+<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
 
 Visszaállítás, az állapotban, amelyek a kiindulási virtuális Gépet, valamint az eredeti lemezek alap virtuális gép törlése, és a csatlakoztatott lemezeket, a mentett lemezek másolása az eredeti Storage-fiókot vagy resource csoport felügyelt lemezek és a rendszer majd újratelepítésével.
-Ez a cikk mutatja be egy példa a folyamat a Powershell parancsfájllal történő: <http://www.westerndevs.com/azure-snapshots/>
+Ez a cikk mutatja be egy példa a folyamat a Powershell parancsfájllal történő:
+<http://www.westerndevs.com/azure-snapshots/>
 
 Ellenőrizze, hogy telepítése egy új SAP-licenccel, mivel visszaállítása egy virtuális gép biztonsági mentése a fent leírt módon létrehoz egy új hardver kulcsot.
 
@@ -2047,7 +2056,8 @@ Más virtuális gépein az SAP-rendszer Azure virtuális gépek biztonsági ment
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Nincs a Linux Windows VSS nem megfelelő. Így csak fájlkonzisztens biztonsági mentés lehetőség, de nem alkalmazásfüggő biztonsági másolatok. Az SAP DBMS biztonsági mentést kell végezni az adatbázis-kezelő szolgáltatással. A fájlrendszer, amely tartalmazza a SAP-kapcsolatos adatokat is mentve, például használatával tar leírtak szerint itt: <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
+> Nincs a Linux Windows VSS nem megfelelő. Így csak fájlkonzisztens biztonsági mentés lehetőség, de nem alkalmazásfüggő biztonsági másolatok. Az SAP DBMS biztonsági mentést kell végezni az adatbázis-kezelő szolgáltatással. A fájlrendszer, amely tartalmazza a SAP-kapcsolatos adatokat is mentve, például használatával tar leírtak szerint itt:
+> <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
 >
 

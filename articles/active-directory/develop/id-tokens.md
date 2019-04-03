@@ -16,13 +16,14 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
+ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 687b25ea5d792edf2f582c9929a0ae5f0c2426db
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b00dd8de47422cf849d97e66698be3300b96ff83
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442073"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884550"
 ---
 # <a name="id-tokens"></a>Azonosító jogkivonatok
 
@@ -79,6 +80,7 @@ Megtekintheti a v2.0-minta lexikális elem szerepel az [jwt.ms](https://jwt.ms/#
 |`name` | String | A `name` jogcím biztosítja az emberek számára olvasható érték, amely azonosítja a jogkivonat tárgyában. Az érték nem garantált, hogy egyedi legyen, ezekre kapott válaszokon, és úgy tervezték, hogy csak megjelenítési célokra használható. A `profile` hatókör szükséges, ezt a kérelmet kap. |
 |`nonce`| String | Az egyszeri megegyezik a paraméter tartalmazza az eredeti vagy az Identitásszolgáltató irányuló kérelem engedélyezéséhez. Ha nem egyezik, az alkalmazás a jogkivonatot kell utasítania. |
 |`oid` | Karakterlánc, egy GUID Azonosítót | A Microsoft identity rendszeren, ebben az esetben egy felhasználói fiókot egy objektum nem módosítható azonosítója. Alkalmazások közötti egyedileg azonosítja a felhasználó ezt az Azonosítót – ugyanaz a felhasználó bejelentkezik, két különböző alkalmazás ugyanazt az értéket a fog kapni a `oid` jogcím. A Microsoft Graph ezt az Azonosítót ad vissza a `id` tulajdonság egy adott felhasználói fiókhoz. Mivel a `oid` korrelációját, ha a felhasználók, több alkalmazás lehetővé teszi a `profile` hatókör szükséges, ezt a kérelmet kap. Vegye figyelembe, hogy ha egy felhasználó több bérlő már létezik, a felhasználó fogja tartalmazni az egyes bérlők egy másik objektum azonosítója – a különböző fiókok, annak ellenére, hogy a felhasználó bejelentkezik az egyes ugyanazokkal a hitelesítő adatokkal rendelkező fiók minősülnek. |
+|`roles`| karakterláncok tömbje | Szerepkörök, amely a felhasználó, aki bejelentkezik lettek hozzárendelve halmaza. |
 |`rh` | Átlátszatlan karakterlánc |Egy belső jogcím kísérelje meg újra érvényesítését jogkivonatok Azure segítségével. Figyelmen kívül lehet hagyni. |
 |`sub` | Karakterlánc, egy GUID Azonosítót | Az egyszerű arról, hogy mely a token használjon esetleg imperatív állításokat információkat, például a felhasználó az alkalmazás. Ez az érték nem módosítható és nem hozzárendelni és újra felhasználható. A tulajdonos az páros azonosító – egyedi legyen egy adott alkalmazás azonosítója. Ezért ha egy felhasználó bejelentkezik a két különböző ügyfél-azonosító használatával két különböző alkalmazásokat, ezeket az alkalmazásokat két különböző értékeket, a tulajdonos jogcím fog kapni. Ez előfordulhat, hogy, vagy előfordulhat, hogy nem megfelelő az architektúra és adatvédelmi követelményeitől függően. |
 |`tid` | Karakterlánc, egy GUID Azonosítót | Egy GUID jelöli, hogy a felhasználó Azure AD-bérlővel. Munkahelyi és iskolai fiókok esetében a GUID azonosító a szervezet, amely a felhasználó tartozik Bérlőazonosítója nem módosítható. Személyes fiókok esetében az érték `9188040d-6c67-4c5b-b112-36a304b66dad`. A `profile` hatókör szükséges, ezt a kérelmet kap. |

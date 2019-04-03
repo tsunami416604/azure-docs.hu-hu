@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b03a95c4a603ecf59aaaa8c831842117425ebf0a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448458"
 documentType: LandingData
 title: Traffic Manager
 metadata:
-  document_id: 
+  document_id: null
   title: Traffic Manager
-  meta.description: Learn how to use Traffic Manager to route incoming traffic for optimal application performance and reliability. Quickstarts, tutorials, samples, and more, show how to manage traffic to Azure or external service endpoints.
+  meta.description: 'Learn how to use Traffic Manager to route incoming traffic for optimal application performance and reliability. Quickstarts, tutorials, samples, and more, show how to manage traffic to Azure or external service endpoints.'
   services: traffic-manager
   author: KumudD
   manager: twooley
@@ -22,76 +16,76 @@ metadata:
   ms.date: 02/28/2019
   ms.author: kumud
 abstract:
-  description: Útmutató az Azure Traffic Manager használatához. Rövid útmutatók, oktatóanyagok, minták és más forrásanyagok mutatják be, hogyan kezelhető a bejövő forgalom az alkalmazások optimális teljesítménye érdekében, és hogyan osztható el a forgalom Azure- vagy külső szolgáltatásvégpontok között.
+  description: 'Útmutató az Azure Traffic Manager használatához. Rövid útmutatók, oktatóanyagok, minták és más forrásanyagok mutatják be, hogyan kezelhető a bejövő forgalom az alkalmazások optimális teljesítménye érdekében, és hogyan osztható el a forgalom Azure- vagy külső szolgáltatásvégpontok között.'
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: Útmutató a szolgáltatásvégpontokra irányuló webes forgalom kezeléséhez a Traffic Managerrel.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure Portal
-      href: /azure/traffic-manager/quickstart-create-traffic-manager-profile
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/traffic-manager/quickstart-create-traffic-manager-profile-powershell
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Forgalomirányítási útmutató a Traffic Managerben elérhető forgalomirányítási módszerekről.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Útmutató a szolgáltatásvégpontokra irányuló webes forgalom kezeléséhez a Traffic Managerrel.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure Portal
+            href: /azure/traffic-manager/quickstart-create-traffic-manager-profile
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
+            text: Azure PowerShell
+            href: /azure/traffic-manager/quickstart-create-traffic-manager-profile-powershell
+  - title: Részletes útmutatók
     items:
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-geographic-routing-method">Forgalom irányítása végpont földrajzi helye alapján</a>
-    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-improve-website-response">Forgalom irányítása az alacsony késés érdekében</a>
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-weighted-routing-method">Forgalom elosztása végpontok között</a>
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">Forgalom irányítása magas prioritású végpontra</a>
-    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing">Forgalom szabályozása súlyozott végpontokkal</a>
-    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-subnet-routing">Forgalom irányítása a felhasználó alhálózata alapján</a>
-- title: Ingyenes Pluralsight videós képzés
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: Forgalomirányítási útmutató a Traffic Managerben elérhető forgalomirányítási módszerekről.
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/traffic-manager/traffic-manager-configure-geographic-routing-method">Forgalom irányítása végpont földrajzi helye alapján</a>
+          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-improve-website-response">Forgalom irányítása az alacsony késés érdekében</a>
+          - html: <a href="/azure/traffic-manager/traffic-manager-configure-weighted-routing-method">Forgalom elosztása végpontok között</a>
+          - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">Forgalom irányítása magas prioritású végpontra</a>
+          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing">Forgalom szabályozása súlyozott végpontokkal</a>
+          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-subnet-routing">Forgalom irányítása a felhasználó alhálózata alapján</a>
+  - title: Ingyenes Pluralsight videós képzés
     items:
-    - title: Azure-rendszergazda
-      href: https://go.microsoft.com/fwlink/?linkid=2012827
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012827
-    - title: Azure-beli megoldástervező
-      href: https://go.microsoft.com/fwlink/?linkid=2012824
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012824
-    - title: Azure-felügyelet AWS-rendszergazdáknak
-      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-- title: Példák
-  items:
-  - type: paragraph
-    text: Szkriptminták gyakori műveletekhez.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure-rendszergazda
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+          - title: Azure-beli megoldástervező
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+          - title: Azure-felügyelet AWS-rendszergazdáknak
+            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+  - title: Példák
     items:
-    - html: <a href="/azure/traffic-manager/cli-samples">Azure CLI</a>
-    - html: <a href="/azure/traffic-manager/powershell-samples">PowerShell</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Szkriptminták gyakori műveletekhez.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/traffic-manager/cli-samples">Azure CLI</a>
+          - html: <a href="/azure/traffic-manager/powershell-samples">PowerShell</a>
+  - title: Referencia
     items:
-    - title: Parancssor
-      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/#traffic_manager">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>
-    - title: Nyelvek
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/virtual-network?view=azure-dotnet">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.trafficmanager">Java</a></p><p><a href="https://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/overview/azure/traffic-manager">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/trafficmanager/">REST API-referencia</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.trafficmanager/#traffic_manager">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>'
+          - title: Nyelvek
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/virtual-network?view=azure-dotnet">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.trafficmanager">Java</a></p><p><a href="https://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/overview/azure/traffic-manager">Python</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/trafficmanager/">REST API-referencia</a></p>

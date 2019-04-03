@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: c199adb9ee1d9e5fbc879441da7395efa16f0d40
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e70920e806b3d9838d693ff1fc74a3e9371319d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094660"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883919"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Az Azure Log Integration-oktatóanyag: Az Azure Key Vault események feldolgozása az Event Hubs használatával
 
@@ -92,10 +92,10 @@ Mielőtt elvégezhetné a jelen cikkben ismertetett lépések, a következők sz
     - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'``` (Az előfizetés neve eltérő lehet. Tekintheti meg az előző parancs részeként.)
     - ```$location = 'West US'``` (Ezt a változót használja át a helyet, ahol erőforrásokat kell létrehozni. Módosíthatja ezt a változót kell bármely tetszőleges helyre.)
     - ```$random = Get-Random```
-    - ``` $name = 'azlogtest' + $random``` (A neve bármi lehet, de ez csak kisbetűket és számokat kell tartalmaznia.)
-    - ``` $storageName = $name``` (Ezt a változót használja a storage-fiók neve.)
-    - ```$rgname = $name ``` (Ezt a változót használja az erőforráscsoport neveként.)
-    - ``` $eventHubNameSpaceName = $name``` (Ez a az eseményközpont-névtér nevét.)
+    - ```$name = 'azlogtest' + $random``` (A neve bármi lehet, de ez csak kisbetűket és számokat kell tartalmaznia.)
+    - ```$storageName = $name``` (Ezt a változót használja a storage-fiók neve.)
+    - ```$rgname = $name``` (Ezt a változót használja az erőforráscsoport neveként.)
+    - ```$eventHubNameSpaceName = $name``` (Ez a az eseményközpont-névtér nevét.)
 1. Adja meg az előfizetést, amelyhez a működik:
     
     ```Select-AzSubscription -SubscriptionName $subscriptionName```
@@ -114,7 +114,7 @@ Mielőtt elvégezhetné a jelen cikkben ismertetett lépések, a következők sz
     ```$eventHubNameSpace = New-AzEventHubNamespace -ResourceGroupName $rgname -NamespaceName $eventHubnamespaceName -Location $location```
 1. Insights-szolgáltatóval használandó szabály Azonosítójának lekéréséhez:
     
-    ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
+    ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey'```
 1. Első minden lehetséges Azure-helyen, és vegye fel a neveket, amely egy későbbi lépésben használható:
     
     a. ```$locationObjects = Get-AzLocation```    
@@ -128,7 +128,7 @@ Mielőtt elvégezhetné a jelen cikkben ismertetett lépések, a következők sz
     Az Azure log-profillal kapcsolatos további információkért lásd: [áttekintése az Azure-tevékenységnapló](../azure-monitor/platform/activity-logs-overview.md).
 
 > [!NOTE]
-> Előfordulhat, hogy kapott hibaüzenetet, amikor megpróbál létrehozni egy naplóprofil. Ezután a Get-AzLogProfile és a Remove-AzLogProfile dokumentációjában tekintheti meg. Ha futtatja a Get-AzLogProfile, láthatja a napló-profillal kapcsolatos információkat. Írja be a meglévő naplóprofil törölheti a ```Remove-AzLogProfile -name 'Log Profile Name' ``` parancsot.
+> Előfordulhat, hogy kapott hibaüzenetet, amikor megpróbál létrehozni egy naplóprofil. Ezután a Get-AzLogProfile és a Remove-AzLogProfile dokumentációjában tekintheti meg. Ha futtatja a Get-AzLogProfile, láthatja a napló-profillal kapcsolatos információkat. Írja be a meglévő naplóprofil törölheti a ```Remove-AzLogProfile -name 'Log Profile Name'``` parancsot.
 >
 >![Resource Manager-profil hiba](./media/security-azure-log-integration-keyvault-eventhub/rm-profile-error.png)
 
@@ -136,11 +136,11 @@ Mielőtt elvégezhetné a jelen cikkben ismertetett lépések, a következők sz
 
 1. A key vault létrehozása:
 
-   ```$kv = New-AzKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location ```
+   ```$kv = New-AzKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location```
 
 1. A key vault naplózásának konfigurálása:
 
-   ```Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true ```
+   ```Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true```
 
 ## <a name="generate-log-activity"></a>Naplózási tevékenység létrehozása
 
@@ -157,7 +157,8 @@ Kérelmek kell küldeni a Key Vault naplózása létrehozásához szükséges. M
    ```Get-AzStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
 1. Adja meg, és olvassa el a titkos kulcs létrehozásához további bejegyzései:
     
-   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
+   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)```
+   b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![Visszaadott titkos](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 
@@ -169,7 +170,7 @@ Most, hogy konfigurálta a szükséges elemeket, hogy a Key Vault-naplózás az 
 1. ```$storage = Get-AzStorageAccount -ResourceGroupName $rgname -Name $storagename```
 1. ```$eventHubKey = Get-AzEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
 1. ```$storagekeys = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
-1. ``` $storagekey = $storagekeys[0].Value```
+1. ```$storagekey = $storagekeys[0].Value```
 
 Minden event hubs AzLog parancsot:
 

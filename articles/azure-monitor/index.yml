@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d0fbabdae9b560a882bd4681eb9e681fd2a0398a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101770"
 documentType: LandingData
 title: Az Azure Monitor dokumentációja
 metadata:
   title: Az Azure Monitor dokumentációja | Microsoft Docs
-  description: Az Azure Monitor, amely már a Log Analytics és az Application Insights szolgáltatást is tartalmazza, kifinomult eszközöket kínál a telemetriai adatok begyűjtésére és elemzésére, és lehetővé teszi a felhőben futó és helyszíni erőforrások és alkalmazások maximális teljesítményének és rendelkezésre állásának biztosítását.
+  description: 'Az Azure Monitor, amely már a Log Analytics és az Application Insights szolgáltatást is tartalmazza, kifinomult eszközöket kínál a telemetriai adatok begyűjtésére és elemzésére, és lehetővé teszi a felhőben futó és helyszíni erőforrások és alkalmazások maximális teljesítményének és rendelkezésre állásának biztosítását.'
   services: azure-monitor
   author: bwren
   manager: carmonm
@@ -19,126 +13,126 @@ metadata:
   ms.date: 01/25/2019
   ms.author: bwren
 abstract:
-  description: Az Azure Monitor, amely már a Log Analytics és az Application Insights szolgáltatást is tartalmazza, kifinomult eszközöket kínál a telemetriai adatok begyűjtésére és elemzésére, és lehetővé teszi a felhőben futó és helyszíni erőforrások és alkalmazások maximális teljesítményének és rendelkezésre állásának biztosítását. Ez a szolgáltatás segít megérteni azt, hogy az alkalmazásai hogyan teljesítenek, valamint proaktív módon azonosítja a működésüket befolyásoló problémákat és azokat az erőforrásokat, amelyektől függenek.
+  description: 'Az Azure Monitor, amely már a Log Analytics és az Application Insights szolgáltatást is tartalmazza, kifinomult eszközöket kínál a telemetriai adatok begyűjtésére és elemzésére, és lehetővé teszi a felhőben futó és helyszíni erőforrások és alkalmazások maximális teljesítményének és rendelkezésre állásának biztosítását. Ez a szolgáltatás segít megérteni azt, hogy az alkalmazásai hogyan teljesítenek, valamint proaktív módon azonosítja a működésüket befolyásoló problémákat és azokat az erőforrásokat, amelyektől függenek.'
 sections:
-- title: Javasolt tartalom
-  items:
-  - type: paragraph
-    text: Kövesse az alábbi hivatkozásokat a Log Analyticsre és az Application Insightsra vonatkozó javasolt tartalmak listájának megtekintéséhez.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+  - title: Javasolt tartalom
     items:
-    - html: <a href="/azure/azure-monitor/azure-monitor-log-hub">Log Analytics</a>
-    - html: <a href="/azure/azure-monitor/azure-monitor-app-hub">Application Insights</a>
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: Megismerheti az Azure-erőforrásokból begyűjtött naplók mérőszámainak gyűjtési és elemzési módszereit.
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: Kövesse az alábbi hivatkozásokat a Log Analyticsre és az Application Insightsra vonatkozó javasolt tartalmak listájának megtekintéséhez.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/azure-monitor/azure-monitor-log-hub">Log Analytics</a>
+          - html: <a href="/azure/azure-monitor/azure-monitor-app-hub">Application Insights</a>
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/Chart.svg
-      text: Megfigyelési mérőszámok
-      href: /azure/monitoring-and-diagnostics/monitor-quick-resource-metric-alert-portal
-    - image:
-        src: /azure/azure-monitor/media/index/log-analytics.svg
-      text: Naplók elemzése
-      href: /azure/log-analytics/query-language/get-started-analytics-portal
-    - image:
-        src: https://docs.microsoft.com/azure/media/index/virtualmachine.svg
-      text: Azure-beli virtuális gépek
-      href: /azure/log-analytics/log-analytics-quick-collect-azurevm
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_linux.svg
-      text: Linux rendszerű számítógép
-      href: /azure/log-analytics/log-analytics-quick-collect-linux-computer
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_Windows.svg
-      text: Windows rendszerű számítógép
-      href: /azure/log-analytics/log-analytics-quick-collect-windows-computer
-    - image:
-        src: https://docs.microsoft.com/media/common/i_alert.svg
-      text: Előfizetés-naplózás és riasztások
-      href: /azure/monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription
-  - type: paragraph
-    text: Ismerje meg, hogyan monitorozhatók az alkalmazások az Azure Monitor Application Insights használatával.
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: Megismerheti az Azure-erőforrásokból begyűjtött naplók mérőszámainak gyűjtési és elemzési módszereit.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/Chart.svg'
+            text: Megfigyelési mérőszámok
+            href: /azure/monitoring-and-diagnostics/monitor-quick-resource-metric-alert-portal
+          - image:
+              src: /azure/azure-monitor/media/index/log-analytics.svg
+            text: Naplók elemzése
+            href: /azure/log-analytics/query-language/get-started-analytics-portal
+          - image:
+              src: 'https://docs.microsoft.com/azure/media/index/virtualmachine.svg'
+            text: Azure-beli virtuális gépek
+            href: /azure/log-analytics/log-analytics-quick-collect-azurevm
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+            text: Linux rendszerű számítógép
+            href: /azure/log-analytics/log-analytics-quick-collect-linux-computer
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
+            text: Windows rendszerű számítógép
+            href: /azure/log-analytics/log-analytics-quick-collect-windows-computer
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_alert.svg'
+            text: Előfizetés-naplózás és riasztások
+            href: /azure/monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription
+      - type: paragraph
+        text: 'Ismerje meg, hogyan monitorozhatók az alkalmazások az Azure Monitor Application Insights használatával.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/dotnet.svg'
+            text: .NET
+            href: /azure/application-insights/quick-monitor-portal
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
+            text: .NET Core
+            href: /azure/application-insights/app-insights-dotnetcore-quick-start
+          - image:
+              src: 'https://docs.microsoft.com/media/common/nodejs.svg'
+            text: Node.js
+            href: /azure/application-insights/app-insights-nodejs-quick-start
+          - image:
+              src: 'https://docs.microsoft.com/media/common/java.svg'
+            text: Java
+            href: /azure/application-insights/app-insights-java-quick-start
+          - image:
+              src: /azure/application-insights/media/index/mobile-center.png
+            text: Mobiltelefon
+            href: /azure/application-insights/app-insights-mobile-center-quickstart
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_web-color.svg'
+            text: Webhely
+            href: /azure/application-insights/app-insights-website-monitoring
+  - title: Részletes útmutatók
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/dotnet.svg
-      text: .NET
-      href: /azure/application-insights/quick-monitor-portal
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_NETcore.svg
-      text: .NET Core
-      href: /azure/application-insights/app-insights-dotnetcore-quick-start
-    - image:
-        src: https://docs.microsoft.com/media/common/nodejs.svg
-      text: Node.js
-      href: /azure/application-insights/app-insights-nodejs-quick-start
-    - image:
-        src: https://docs.microsoft.com/media/common/java.svg
-      text: Java
-      href: /azure/application-insights/app-insights-java-quick-start
-    - image:
-        src: /azure/application-insights/media/index/mobile-center.png
-      text: Mobiltelefon
-      href: /azure/application-insights/app-insights-mobile-center-quickstart
-    - image:
-        src: https://docs.microsoft.com/media/common/i_web-color.svg
-      text: Webhely
-      href: /azure/application-insights/app-insights-website-monitoring
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Ismerje meg, hogyan elemezhetők, jeleníthetők meg és kezelhetők a begyűjtött adatok.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Ismerje meg, hogyan elemezhetők, jeleníthetők meg és kezelhetők a begyűjtött adatok.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/log-analytics/log-analytics-tutorial-viewdata">A begyűjtött adatok megtekintése és elemzése</a>
+          - html: <a href="/azure/log-analytics/log-analytics-tutorial-dashboards">Irányítópultok létrehozása és megosztása</a>
+          - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule">Automatikus méretezés az ütemezés vagy az alkalmazásteljesítmény alapján</a>
+          - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data">Megfigyelési adatok archiválása</a>
+      - type: paragraph
+        text: 'Megismerheti, hogy miként javítható folyamatosan a webalkalmazások teljesítménye és használata.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/application-insights/app-insights-tutorial-runtime-exceptions">Futásidejű kivételek észlelése és diagnosztizálása</a>
+          - html: <a href="/azure/application-insights/app-insights-tutorial-performance">Teljesítményproblémák észlelése és diagnosztizálása</a>
+          - html: <a href="/azure/application-insights/app-insights-tutorial-alert">Alkalmazásállapot-figyelés és riasztások</a>
+          - html: <a href="/azure/application-insights/app-insights-tutorial-users">Ügyfelek használati adatainak elemzése</a>
+          - html: <a href="/azure/application-insights/app-insights-tutorial-dashboards">Egyéni KPI irányítópultok létrehozása</a>
+  - title: Ingyenes Pluralsight videós képzés
     items:
-    - html: <a href="/azure/log-analytics/log-analytics-tutorial-viewdata">A begyűjtött adatok megtekintése és elemzése</a>
-    - html: <a href="/azure/log-analytics/log-analytics-tutorial-dashboards">Irányítópultok létrehozása és megosztása</a>
-    - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule">Automatikus méretezés az ütemezés vagy az alkalmazásteljesítmény alapján</a>
-    - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data">Megfigyelési adatok archiválása</a>
-  - type: paragraph
-    text: Megismerheti, hogy miként javítható folyamatosan a webalkalmazások teljesítménye és használata.
-  - type: list
-    style: ordered
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure-rendszergazda
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+  - title: Példák
     items:
-    - html: <a href="/azure/application-insights/app-insights-tutorial-runtime-exceptions">Futásidejű kivételek észlelése és diagnosztizálása</a>
-    - html: <a href="/azure/application-insights/app-insights-tutorial-performance">Teljesítményproblémák észlelése és diagnosztizálása</a>
-    - html: <a href="/azure/application-insights/app-insights-tutorial-alert">Alkalmazásállapot-figyelés és riasztások</a>
-    - html: <a href="/azure/application-insights/app-insights-tutorial-users">Ügyfelek használati adatainak elemzése</a>
-    - html: <a href="/azure/application-insights/app-insights-tutorial-dashboards">Egyéni KPI irányítópultok létrehozása</a>
-- title: Ingyenes Pluralsight videós képzés
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: A következő minta használatával konfigurálhatja és kezelheti a Log Analytics programot.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/log-analytics/powershell-samples">Azure PowerShell</a>
+  - title: Referencia
     items:
-    - title: Azure-rendszergazda
-      href: https://go.microsoft.com/fwlink/?linkid=2012827
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012827
-- title: Példák
-  items:
-  - type: paragraph
-    text: A következő minta használatával konfigurálhatja és kezelheti a Log Analytics programot.
-  - type: list
-    style: unordered
-    className: spaced noBullet
-    items:
-    - html: <a href="/azure/log-analytics/powershell-samples">Azure PowerShell</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Parancssor
-      html: <p><a href="/powershell/module/azurerm.operationalinsights">Azure PowerShell</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/loganalytics">REST API-referencia</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: <p><a href="/powershell/module/az.operationalinsights">Azure PowerShell</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/loganalytics">REST API-referencia</a></p>

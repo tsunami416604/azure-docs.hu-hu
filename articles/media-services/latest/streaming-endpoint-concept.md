@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/30/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8cd6a68f6593a5b746a19e42e4835deb05e112b6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757185"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881018"
 ---
 # <a name="streaming-endpoints"></a>Streamvégpontok
 
@@ -24,6 +24,8 @@ A Microsoft Azure Media Services (AMS), a [adatfolyam-továbbítási végpontok]
 
 > [!NOTE]
 > Videók streamelése el kell indítania a **folyamatos átviteli végponton** , amelyre vonatkozóan szeretné a videó. 
+>  
+> Ha a futó állapotban van a folyamatos átviteli végponton csak számolunk fel.
 
 ## <a name="naming-convention"></a>Az elnevezési konvenciót
 
@@ -40,7 +42,7 @@ A táblázat a típusokat írja le:
 |Typo|Skálázási egységek|Leírás|
 |--------|--------|--------|  
 |**Standard streamvégpont** (ajánlott)|0|Az alapértelmezett streamvégpont egy **Standard** írja be, de a prémium szintű típusa módosítható.<br/> Standard típus gyakorlatilag az összes streamelési forgatókönyvekhez és bármilyen méretű közönségre a javasolt megoldás. A **Standard** típus automatikusan skálázza a kimenő sávszélességet. Az átviteli sebesség az ilyen típusú Streamvégpont legfeljebb 600 MB/s. A CDN gyorsítótárazza videó töredék ne használja a folyamatos átviteli végponton sávszélességet.<br/>A rendkívül nagy követelményeket támasztó ügyfelek számára a Media Services **Prémium** streamvégpontokat biztosít, amelyekkel a kapacitás még a legnagyobb internetes közönségekre is felskálázható. Ha várhatóan széles és egyidejű megtekintők, lépjen kapcsolatba velünk, amsstreaming\@útmutatást, hogy át kell helyeznie a Microsoft.com webhelyen a **prémium** típusa. |
-|**Prémium streamvégpont**|>0|A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. Helyez át egy **prémium** típusának a módosításával `scaleUnits`. `scaleUnits` Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. A **Prémium** típus használatakor mindegyik engedélyezett egység további sávszélesség-kapacitást nyújt az alkalmazásnak. |
+|**Prémium szintű Streamvégpont**|>0|A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. Helyez át egy **prémium** típusának a módosításával `scaleUnits`. `scaleUnits` Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. A **Prémium** típus használatakor mindegyik engedélyezett egység további sávszélesség-kapacitást nyújt az alkalmazásnak. |
  
 ## <a name="comparing-streaming-types"></a>Streamelési típusok összehasonlítása
 
@@ -62,24 +64,11 @@ Javasolt felhasználás |Javasolt a folyamatos átviteli forgatókönyvek túlny
 
 <sup>1</sup> csak közvetlenül a folyamatos átviteli végponton használni, ha a CDN nincs engedélyezve a végponton.
 
-## <a name="working-with-cdn"></a>A CDN használata
-
-A legtöbb esetben engedélyezve kell lennie a CDN-nek. Ha azonban egyidőben 500 nézőnél kevesebb várható, akkor ajánlott letiltani a CDN-t, mert a CDN a legjobban az egyidejűséghez skálázható.
-
-> [!NOTE]
-> A folyamatos átviteli végponton `hostname` és a streamelési URL-cím ugyanaz marad, engedélyezi a CDN-e.
-
-### <a name="detailed-explanation-of-how-caching-works"></a>Részletes ismertetése a gyorsítótárazás működése
-
-Nem érkezik a nem meghatározott sávszélesség értékét, ha a változó hozzáadása a CDN-t, mert a sávszélességet, a CDN engedélyezve van a tartalomstreameléshez használt streamvégpont. Rengeteg múlik azon, hogy a tartalmat, mennyire népszerű van, bitsebességre való átkódolása és a protokollok típusát. A CDN-t csak van gyorsítótárazás, mi kéri. Ez azt jelenti, hogy közvetlenül a CDN-t – a népszerű tartalmat szolgáltató mindaddig, amíg a rendszer gyorsítótárazza a videó töredék. Élő tartalmak valószínű, hogy a gyorsítótárazható, mert a figyelt pontosan ugyanaz sokan általában rendelkezik. Az igény szerinti tartalomterjesztésről egy kicsit bonyolultabb lehet, mivel bizonyos tartalmakat, amelyek a népszerű és néhány, amely nem lehet. Ha több millió eszköz videó, ahol egyikük sem népszerű (csak 1 vagy 2 megtekintők egy hét), de több ezer különböző videók megtekintése személyek, a CDN sokkal kevésbé hatékony lesz. Ez a gyorsítótár-tévesztések száma, a tartalomstreameléshez használt streamvégpont terhelését növeli.
- 
-Is kell figyelembe venni, hogyan adaptív adatfolyam-továbbítási működik. Minden egyes videó töredék saját entitás, mert van gyorsítótárazva. Például ha egy bizonyos videót a címzett figyeli, először a személy kihagyja körül nézi csupán néhány másodpercet Itt csak a videó szilánkok társított személy nézte lekérése a CDN gyorsítótárazza. Az adaptív streameléshez 5 – 7 különböző bitsebességre való átkódolása videó általában rendelkezik. Ha egy személy egy sávszélességű állapotfigyelőszolgáltatás, és a egy másik személy egy másik sávszélességű állapotfigyelőszolgáltatás, majd azokat minden egyes külön gyorsítótárazásának a CDN-ben. Akkor is, ha két ember által figyelt az azonos átviteli sebesség, sikerült kell streamelési különböző protokollokon keresztül. Minden egyes protokoll (HLS, MPEG-DASH, Smooth Streaming) külön-külön gyorsítótárazza. Így minden protokoll és átviteli külön gyorsítótárazásának, és csak ezen kért videó töredék lettek gyorsítótárazva.
- 
 ## <a name="properties"></a>Tulajdonságok 
 
 Ez a szakasz tájékoztatást nyújt a egyes a folyamatos átviteli végponton tulajdonságait. Hogyan hozhat létre egy új streamvégpont és leírások az összes tulajdonság példákért lásd [folyamatos átviteli végponton](https://docs.microsoft.com/rest/api/media/streamingendpoints/create). 
 
-- `accessControl` – Használja a következő biztonsági beállításokat adhatja meg ezen a streamvégponton: Akamai aláírás fejléc hitelesítési kulcsokat és IP-címek, amelyek jogosultak a végponthoz csatlakozik.<br />Ez a tulajdonság beállítható mikor `cdnEnabled` hamis értékre van állítva.
+- `accessControl` – Használja a következő biztonsági beállításokat adhatja meg ezen a streamvégponton: Akamai aláírás fejléc hitelesítési kulcsokat és IP-címek, amelyek jogosultak a végponthoz csatlakozik.<br />Ez a tulajdonság csak akkor állítható mikor `cdnEnabled` hamis értékre van állítva.
 - `cdnEnabled` -Azt jelzi-e az Azure CDN-integrációnak, a folyamatos átviteli végponton engedélyezett (alapesetben le van tiltva). Ha `cdnEnabled` TRUE értéket kap, a következő konfigurációk letiltásának: `customHostNames` és `accessControl`.
   
     Nem minden adatközpontban az Azure CDN-integrációt támogatja. Ellenőrizze-e az adatközpontot tartalmaz-e elérhető az Azure CDN-integrációnak, tegye a következőket:
@@ -128,7 +117,39 @@ Ez a szakasz tájékoztatást nyújt a egyes a folyamatos átviteli végponton t
     - A leállított állapotot leállításával - van való
     - Törlés - Törlés alatt van
     
-- `scaleUnits ` -Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. Ha szeretne áthelyezni egy **prémium szintű** írja be, módosítsa a `scaleUnits`.
+- `scaleUnits` -Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. Ha szeretne áthelyezni egy **prémium szintű** írja be, módosítsa a `scaleUnits`.
+
+## <a name="working-with-cdn"></a>A CDN használata
+
+A legtöbb esetben engedélyezve kell lennie a CDN-nek. Ha azonban egyidőben 500 nézőnél kevesebb várható, akkor ajánlott letiltani a CDN-t, mert a CDN a legjobban az egyidejűséghez skálázható.
+
+### <a name="considerations"></a>Megfontolandó szempontok
+
+* A folyamatos átviteli végponton `hostname` és a streamelési URL-cím ugyanaz marad, engedélyezi a CDN-e.
+* Ha a tartalom, vagy a CDN nélkül tesztelhetik, létrehozhat egy másik folyamatos átviteli végponton, amely nem a CDN engedélyezve van.
+
+### <a name="detailed-explanation-of-how-caching-works"></a>Részletes ismertetése a gyorsítótárazás működése
+
+Nem érkezik a nem meghatározott sávszélesség értékét, ha a változó hozzáadása a CDN-t, mert a sávszélességet, a CDN engedélyezve van a tartalomstreameléshez használt streamvégpont. Rengeteg múlik azon, hogy a tartalmat, mennyire népszerű van, bitsebességre való átkódolása és a protokollok típusát. A CDN-t csak van gyorsítótárazás, mi kéri. Ez azt jelenti, hogy közvetlenül a CDN-t – a népszerű tartalmat szolgáltató mindaddig, amíg a rendszer gyorsítótárazza a videó töredék. Élő tartalmak valószínű, hogy a gyorsítótárazható, mert a figyelt pontosan ugyanaz sokan általában rendelkezik. Az igény szerinti tartalomterjesztésről egy kicsit bonyolultabb lehet, mivel bizonyos tartalmakat, amelyek a népszerű és néhány, amely nem lehet. Ha több millió eszköz videó, ahol egyikük sem népszerű (csak 1 vagy 2 megtekintők egy hét), de több ezer különböző videók megtekintése személyek, a CDN sokkal kevésbé hatékony lesz. Ez a gyorsítótár-tévesztések száma, a tartalomstreameléshez használt streamvégpont terhelését növeli.
+ 
+Is kell figyelembe venni, hogyan adaptív adatfolyam-továbbítási működik. Minden egyes videó töredék saját entitás, mert van gyorsítótárazva. Például ha egy bizonyos videót a címzett figyeli, először a személy kihagyja körül nézi csupán néhány másodpercet Itt csak a videó szilánkok társított személy nézte lekérése a CDN gyorsítótárazza. Az adaptív streameléshez 5 – 7 különböző bitsebességre való átkódolása videó általában rendelkezik. Ha egy személy egy sávszélességű állapotfigyelőszolgáltatás, és a egy másik személy egy másik sávszélességű állapotfigyelőszolgáltatás, majd azokat minden egyes külön gyorsítótárazásának a CDN-ben. Akkor is, ha két ember által figyelt az azonos átviteli sebesség, sikerült kell streamelési különböző protokollokon keresztül. Minden egyes protokoll (HLS, MPEG-DASH, Smooth Streaming) külön-külön gyorsítótárazza. Így minden protokoll és átviteli külön gyorsítótárazásának, és csak ezen kért videó töredék lettek gyorsítótárazva.
+
+### <a name="enable-azure-cdn-integration"></a>Az Azure CDN-integráció engedélyezése
+
+Miután egy folyamatos átviteli végponton ki van építve a CDN engedélyezve van egy meghatározott várakozási idő a Media Services megkezdése előtt el DNS frissítése történik a folyamatos átviteli végponton leképezése a CDN-végponthoz.
+
+Ha később szeretné a CDN engedélyezése vagy tiltása, a streamvégpontnak kell lennie a **leállt** állapota. Azt az Azure CDN engedélyezve az integráció és a módosítások között minden a CDN jelenléti helyein lesz aktív akár két óráig is eltarthat. Azonban Ön telepítheti a streamelési végpontot és a stream nélkül megszakítások indítsa el a streamvégpontot, és az integráció befejezése után a CDN-ből továbbítsa a streamet. Az üzembe helyezési ideje alatt a tartalomstreameléshez használt streamvégpont szerepelni fog **indítása** állapotát, és előfordulhat, hogy figyelje a teljesítmény csökkenését.
+
+Ha a standard szintű streamvégpont jön létre, a Standard – Verizon alapértelmezés szerint van konfigurálva. Premium Verizon vagy Standard – Akamai szolgáltatók REST API-k használatával konfigurálhatja. 
+
+Az összes az Azure adatközpontjaiban kivéve Kínát és a Szövetségi kormányzati régió engedélyezve van a CDN-integrációt.
+
+> [!IMPORTANT]
+> Az Azure Media Services integrációja az Azure CDN van alkalmazva **verizon Azure CDN** a standard streamvégpontok. Prémium szintű streamelési végpontok használatával az összes konfigurálható **tarifacsomagok és szolgáltatók az Azure CDN**. Az Azure CDN-funkciókkal kapcsolatos további információkért lásd: a [CDN áttekintése](../../cdn/cdn-overview.md).
+
+### <a name="determine-if-dns-change-has-been-made"></a>Határozza meg, ha a DNS-módosítás történt.
+
+Megadhatja, hogy ha a DNS-módosítás történt-e egy folyamatos átviteli végponton, (a folyamatban átirányítja a forgalmat az Azure CDN) használatával https://www.digwebinterface.com. Ha az eredmények azureedge.net tartománynevek az eredmények között, a forgalom van most folyamatban mutatott a CDN-t.
 
 ## <a name="next-steps"></a>További lépések
 

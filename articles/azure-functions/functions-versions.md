@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
 ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
+ms.lasthandoff: 04/03/2019
 ms.locfileid: "58088417"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions runtime verziók áttekintése
@@ -133,6 +133,6 @@ Az alábbi táblázat mutatja, melyik kötések támogatottak a minden egyes mod
 
 További információkért lásd a következőket:
 
-* [Az Azure Functions helyi kódolása és tesztelése](functions-run-local.md)
+* [Kódolás és tesztelés az Azure Functions helyi](functions-run-local.md)
 * [Az Azure Functions runtime verziók bemutatásához](set-runtime-version.md)
 * [Kibocsátási megjegyzések](https://github.com/Azure/azure-functions-host/releases)
