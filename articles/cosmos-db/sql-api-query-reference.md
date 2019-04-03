@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: f04fa5f43844080638c70c44410d233fbe6ad325
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 9625cb75bcae60f7f6eb2bae61e73066520037fc
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805465"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878267"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL nyelvi referencia 
 
@@ -24,7 +24,7 @@ Látogasson el a [Query Playground](https://www.documentdb.com/sql/demo), ahol C
 ## <a name="select-query"></a>SELECT-lekérdezésben  
 Minden egyes lekérdezés SELECT záradékában és választható FROM áll és a WHERE záradék ANSI SQL előírások szerint. Általában az egyes lekérdezésekhez a forrás a FROM záradékban számbavétele megtörtént, majd a WHERE záradékban a szűrő a forrás JSON-dokumentumok részhalmazának beolvasásához a. Végül a SELECT záradékban szolgál a kért JSON-értékeit a kiválasztási listán. Példák: [SELECT-lekérdezésben példák](how-to-sql-query.md#SelectClause)
   
-**Syntax**  
+**Szintaxis**  
   
 ```sql
 <select_query> ::=  
@@ -62,14 +62,14 @@ Térközkaraktereket, amelyek nem részei egy Idézett karakterlánc vagy quoted
 
 A lekérdezési nyelvet támogatja például a T-SQL stílus megjegyzések  
 
--   SQL-utasítás `-- comment text [newline]`  
+-   SQL Statement `-- comment text [newline]`  
 
 Az elválasztó karakterek és a megjegyzések nincs semmilyen jelentőséggel a gramatice, amíg azok jogkivonatok külön kell használható. Például: `-1e5` egy egyetlen szám token, ideje van`: – 1 e5` egy mínusz tokent követi számának 1 és azonosító e5.  
 
 ##  <a name="bk_select_query"></a> SELECT záradék  
 A SELECT utasítás záradékai kell következniük, ahogy fent látható. A választható záradékot bármelyike elhagyható. De amikor választható záradékot használják, azok kell megjelennie a helyes sorrendben. Példák: [SELECT-lekérdezésben példák](how-to-sql-query.md#SelectClause).
 
-**Syntax**  
+**Szintaxis**  
 
 ```sql
 SELECT <select_specification>  
@@ -132,7 +132,7 @@ Mindkét `SELECT <select_list>` és `SELECT *` "szintaktikai cukor", és azt is 
 ##  <a name="bk_from_clause"></a> FROM záradékban  
 Itt adhatja meg, a forrás vagy a csatlakoztatott források. A FROM záradék nem kötelező, kivéve, ha a forrás van szűrve, vagy előre jelzett költségről később a lekérdezésben. Az ehhez a záradékhoz célja, hogy adja meg az adatforrás, amelyre a lekérdezést kell működnie. A teljes tárolót gyakran a forrás, de ehelyett egy adhat meg a tároló egy részét. Nincs megadva ez a záradék, ha más záradékok továbbra is, ha a FROM záradékban megadott egyetlen dokumentum hajtani. Példák: [záradék PÉLDÁKBÓL](how-to-sql-query.md#FromClause)
   
-**Syntax**  
+**Szintaxis**  
   
 ```sql  
 FROM <from_specification>  
@@ -304,14 +304,14 @@ Nézzük meg, a FROM záradék a következő: `<from_source1> JOIN <from_source2
   > [!NOTE]
   > Ennek következtében több termék között `<from_source2>` és `<from_source3>` mindkét hatóköre ugyanaz, mert `<from_source1>`.  Ennek következtében a 4 (2 x 2) a érték kellene kellene B (1 x 0) értéket 0 rekordokat tartalmazó rekordok. és 2 (2 x 1) rekordokat tartalmazó c-értékkel  
   
-**Lásd még:**  
+**Lásd még**  
   
  [SELECT záradék](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> WHERE záradék  
  Adja meg a keresési feltétel, a lekérdezés által visszaadott dokumentumok számára. Példák: [WHERE záradék példák](how-to-sql-query.md#WhereClause)
   
- **Syntax**  
+ **Szintaxis**  
   
 ```sql  
 WHERE <filter_condition>  
@@ -336,7 +336,7 @@ WHERE <filter_condition>
 ##  <a name="bk_orderby_clause"></a> ORDER BY záradék  
  Megadja a rendezési sorrendjét a lekérdezés által visszaadott eredményeket. Példák: [ORDER BY záradék példák](how-to-sql-query.md#OrderByClause)
   
- **Syntax**  
+ **Szintaxis**  
   
 ```sql  
 ORDER BY <sort_specification>  
@@ -376,7 +376,7 @@ ORDER BY <sort_specification>
   
  További információ az értékeket, amelyek esetében előfordulhat, hogy a skaláris kifejezés: [állandók](#bk_constants) szakaszban.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```sql  
 <scalar_expression> ::=  
@@ -477,43 +477,43 @@ ORDER BY <sort_specification>
 |**Bitenkénti**|Operátor kell a 32 bites előjeles egész számokat szám(ok) input(s) vár. Kimenet is a 32 bites, előjeles egész szám.<br /><br /> Nem egész értéket a rendszer kerekíti. Pozitív értéket lefelé, az értéket felfelé kerekíti a negatív.<br /><br /> Bármilyen érték, amely a 32 bites egész tartományon kívül esik a legutóbbi 32-bit a két cég hexadecimális végrehajtásával konvertálja.<br /><br /> Ha a bemeneti adatok bármelyike **nem definiált** , vagy írjon be más, mint a szám, akkor az eredmény **nem definiált**.<br /><br /> **Megjegyzés:** A fenti viselkedése összeegyeztethető JavaScript bitenkénti operátor viselkedését.|  
 |**Logikai**|Operátor input(s) Boolean(s) kell megadni. Kimeneti akkor is egy logikai érték.<br />Ha a bemeneti adatok bármelyike **nem definiált** , vagy írjon be másik logikai értéket, majd eredményül **nem definiált**.|  
 |**Összehasonlítás**|Operátor azonos típusú, és nem lehet a nem definiált input(s) vár. A kimenete egy logikai érték.<br /><br /> Ha a bemeneti adatok bármelyike **nem definiált** vagy a bemeneti adatok különböző rendelkezik, majd az eredmény **nem definiált**.<br /><br /> Lásd: **összehasonlított értékek rendezés** érték rendezése részletei táblázatban.|  
-|**string**|Operátor input(s) vágóelem kell megadni. Kimenet: karakterlánc.<br />Ha a bemeneti adatok bármelyike **nem definiált** , vagy írjon be másik karakterláncot, majd az eredmény **nem definiált**.|  
+|**sztring**|Operátor input(s) vágóelem kell megadni. Kimenet: karakterlánc.<br />Ha a bemeneti adatok bármelyike **nem definiált** , vagy írjon be másik karakterláncot, majd az eredmény **nem definiált**.|  
   
  **Az egyoperandusú operátorral:**  
   
-|**Name (Név)**|**Operátor**|**Részletek**|  
+|**Name (Név)**|**Művelet**|**Részletek**|  
 |-|-|-|  
 |**Aritmetikai**|+<br /><br /> -|A szám értéket ad vissza.<br /><br /> Bitenkénti negálást. Szám értéket ad vissza negated.|  
 |**Bitenkénti**|~|Kiépítettektől kiegészítése. Egy halmaza egy számértéket ad vissza.|  
-|**Logical**|**NEM**|Negálás. Értéket ad vissza negated logikai érték.|  
+|**Logikai**|**NEM**|Negálás. Értéket ad vissza negated logikai érték.|  
   
  **Binární operátory:**  
   
-|**Name (Név)**|**Operátor**|**Részletek**|  
+|**Name (Név)**|**Művelet**|**Részletek**|  
 |-|-|-|  
 |**Aritmetikai**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Emellett.<br /><br /> Kivonás.<br /><br /> Szorzás.<br /><br /> Osztás.<br /><br /> Modulációs.|  
 |**Bitenkénti**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Bitenkénti vagy.<br /><br /> Bitenkénti és művelet<br /><br /> Bitenkénti kizáró vagy.<br /><br /> Balra Tolást.<br /><br /> Jobbra Tolást.<br /><br /> Jobbra Tolást nulla ki.|  
 |**Logikai**|**ÉS**<br /><br /> **VAGY**|Logikai és. Adja vissza **igaz** Ha mindkét argumentum **igaz**, adja vissza **hamis** más módon.<br /><br /> Logikai vagy műveletet. Adja vissza **igaz** , ha bármely argumentuma **igaz**, adja vissza **hamis** más módon.|  
 |**Összehasonlítás**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Egyenlő. Adja vissza **igaz** , ha argumentumok egyenlő adja vissza **hamis** más módon.<br /><br /> Nem egyenlő. Adja vissza **igaz** argumentumok, amelyek nem egyeznek, ha függvény **hamis** ellenkező esetben.<br /><br /> Nagyobb, mint. Értéket ad vissza **igaz** első argumentum értéke nagyobb, mint a második, ha vissza **hamis** más módon.<br /><br /> Nagyobb vagy egyenlő. Értéket ad vissza **igaz** első argumentum értéke kisebb a másodiknál, ha vissza **hamis** más módon.<br /><br /> Kevesebb mint. Értéket ad vissza **igaz** Ha az első argumentum értéke kisebb, mint a második egy visszatérési **hamis** más módon.<br /><br /> Kisebb vagy egyenlő. Értéket ad vissza **igaz** első argumentum értéke kisebb vagy egyenlő, mint a második érték, ha vissza **hamis** más módon.<br /><br /> Coalesce. A második argumentum adja vissza, ha az első argumentum értéke egy **nem definiált** értéket.|  
-|**Karakterlánc**|**&#124;&#124;**|Összefűzés. Összefűzésével mindkét argumentumot adja vissza.|  
+|**String**|**&#124;&#124;**|Összefűzés. Összefűzésével mindkét argumentumot adja vissza.|  
   
  **Ternáris kezelők:**  
 
-|**Name (Név)**|**Operátor**|**Részletek**| 
+|**Name (Név)**|**Művelet**|**Részletek**| 
 |-|-|-|  
 |Ternáris operátor|?|A második argumentum adja vissza, ha az első argumentum értéke **igaz**; ellenkező esetben adja vissza a harmadik argumentum.|  
 
   
  **Az összehasonlított értékek rendezése**  
   
-|**Típus**|**Értékek sorrendje**|  
+|**Typo**|**Értékek sorrendje**|  
 |-|-|  
-|**Nincs definiálva**|Nem összehasonlítható.|  
-|**NULL**|Egyetlen érték: **null értékű**|  
+|**Nem definiált**|Nem összehasonlítható.|  
+|**Null**|Egyetlen érték: **null értékű**|  
 |**Szám**|Természetes valós szám.<br /><br /> Negatív végtelent értéke kisebb, mint bármely más érték szám.<br /><br /> Pozitív végtelen érték nagyobb, mint bármely más érték szám. **NaN** értéke nem összehasonlítható. Összehasonlítás a **NaN** eredményez **nem definiált** értéket.|  
-|**Karakterlánc**|Lexicographical sorrend.|  
-|**Pole**|Nincs rendezése, de méltányos.|  
-|**Object**|Nincs rendezése, de méltányos.|  
+|**String**|Lexicographical sorrend.|  
+|**Tömb**|Nincs rendezése, de méltányos.|  
+|**Objektum**|Nincs rendezése, de méltányos.|  
   
  **Megjegyzések**  
   
@@ -534,17 +534,17 @@ ORDER BY <sort_specification>
   
  **Skaláris adattípusokat támogatja:**  
   
-|**Típus**|**Értékek sorrendje**|  
+|**Typo**|**Értékek sorrendje**|  
 |-|-|  
-|**Nincs definiálva**|Egyetlen érték: **nem definiált**|  
-|**NULL**|Egyetlen érték: **null értékű**|  
-|**Logikai érték**|Értékek: **hamis**, **igaz**.|  
+|**Nem definiált**|Egyetlen érték: **nem definiált**|  
+|**Null**|Egyetlen érték: **null értékű**|  
+|**Logikai**|Értékek: **hamis**, **igaz**.|  
 |**Szám**|Egy dupla pontosságú lebegőpontos számnál, szabvány IEEE 754.|  
-|**Karakterlánc**|Nulla vagy több Unicode karakter sorozata. Karakterláncok egyszeres vagy kettős idézőjelek közé kell tenni.|  
-|**Pole**|Nulla vagy több elemek sorrendjét. Egyes elemek nincs megadva kivételével minden skaláris adattípusú érték lehet.|  
-|**Object**|Egy nulla vagy több név/érték párok rendezetlen készlete. Név egy Unicode karakterlánc, kivéve értéke lehet bármely skaláris adattípusú **Undefined**.|  
+|**String**|Nulla vagy több Unicode karakter sorozata. Karakterláncok egyszeres vagy kettős idézőjelek közé kell tenni.|  
+|**Tömb**|Nulla vagy több elemek sorrendjét. Egyes elemek nincs megadva kivételével minden skaláris adattípusú érték lehet.|  
+|**Objektum**|Egy nulla vagy több név/érték párok rendezetlen készlete. Név egy Unicode karakterlánc, kivéve értéke lehet bármely skaláris adattípusú **Undefined**.|  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```sql  
 <constant> ::=  
@@ -658,7 +658,7 @@ ORDER BY <sort_specification>
   
      A következő táblázat ismerteti a konvenciók leírása a szintaxisa a következő SQL-hivatkozás.  
   
-    |**Volání**|**Használt**|  
+    |**Volání**|**Alkalmazási cél**|  
     |-|-|    
     |NAGYBETŰK|Kis-és a kulcsszavak.|  
     |Kisbetűk|A kulcsszavak kis-és nagybetűket.|  
@@ -690,18 +690,18 @@ ORDER BY <sort_specification>
 ||||  
 |-|-|-|  
 |[ABS](#bk_abs)|[ACOS](#bk_acos)|[ASIN](#bk_asin)|  
-|[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[FELSŐ HATÁR](#bk_ceiling)|  
-|[COS](#bk_cos)|[COT](#bk_cot)|[DEGREES](#bk_degrees)|  
-|[EXP](#bk_exp)|[EMELET](#bk_floor)|[LOG](#bk_log)|  
+|[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[CEILING](#bk_ceiling)|  
+|[COS](#bk_cos)|[COT](#bk_cot)|[FOK](#bk_degrees)|  
+|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[LOG](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[POWER](#bk_power)|  
 |[RADIANS](#bk_radians)|[KEREKÍTÉS](#bk_round)|[SIN](#bk_sin)|  
-|[SQRT](#bk_sqrt)|[NÉGYSZÖG](#bk_square)|[SIGN](#bk_sign)|  
-|[BARACKSZÍNŰ](#bk_tan)|[TRUNC](#bk_trunc)||  
+|[SQRT](#bk_sqrt)|[SQUARE](#bk_square)|[SIGN](#bk_sign)|  
+|[TAN](#bk_tan)|[TRUNC](#bk_trunc)||  
   
 ####  <a name="bk_abs"></a> ABS  
  A megadott numerikus kifejezés (pozitív) abszolút értékét adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ABS (<numeric_expression>)  
@@ -734,7 +734,7 @@ SELECT ABS(-1), ABS(0), ABS(1)
 ####  <a name="bk_acos"></a> ACOS  
  Adja vissza a szög radiánban, amelynek a koszinusza a megadott numerikus kifejezés; egy szám arkusz koszinusza néven is ismert.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ACOS(<numeric_expression>)  
@@ -767,7 +767,7 @@ SELECT ACOS(-1)
 ####  <a name="bk_asin"></a> ASIN  
  Adja vissza a szög radiánban, amelynek szinusza a megadott numerikus kifejezés. Arkuszszinusz ezt is nevezik.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ASIN(<numeric_expression>)  
@@ -800,7 +800,7 @@ SELECT ASIN(-1)
 ####  <a name="bk_atan"></a> ATAN  
  Adja vissza a szög radiánban, amelynek tangense a megadott numerikus kifejezés. Arkusztangens ezt is nevezik.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ATAN(<numeric_expression>)  
@@ -833,7 +833,7 @@ SELECT ATAN(-45.01)
 ####  <a name="bk_atn2"></a> ATN2  
  Az arkusz tangens / x, y radiánban kifejezett fő értékét adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ATN2(<numeric_expression>, <numeric_expression>)  
@@ -866,7 +866,7 @@ SELECT ATN2(35.175643, 129.44)
 ####  <a name="bk_ceiling"></a> FELSŐ HATÁR  
  A legkisebb egész értéket ad vissza, nagyobb vagy egyenlő a megadott numerikus kifejezés.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 CEILING (<numeric_expression>)  
@@ -899,7 +899,7 @@ SELECT CEILING(123.45), CEILING(-123.45), CEILING(0.0)
 ####  <a name="bk_cos"></a> COS  
  A megadott kifejezést az radiánban megadott szög, trigonometriai koszinuszát adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 COS(<numeric_expression>)  
@@ -932,7 +932,7 @@ SELECT COS(14.78)
 ####  <a name="bk_cot"></a> COT  
  A megadott szög trigonometriai kotangensét adja vissza radiánban, a megadott numerikus kifejezés.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 COT(<numeric_expression>)  
@@ -965,7 +965,7 @@ SELECT COT(124.1332)
 ####  <a name="bk_degrees"></a> FOK  
  A megfelelő szöget adja vissza fokban a egy radiánban megadott szög.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 DEGREES (<numeric_expression>)  
@@ -998,7 +998,7 @@ SELECT DEGREES(PI()/2)
 ####  <a name="bk_floor"></a> EMELET  
  Visszaadja a legnagyobb egész szám kisebb vagy egyenlő a megadott numerikus kifejezés.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 FLOOR (<numeric_expression>)  
@@ -1031,7 +1031,7 @@ SELECT FLOOR(123.45), FLOOR(-123.45), FLOOR(0.0)
 ####  <a name="bk_exp"></a> EXP  
  Az exponenciális a megadott numerikus kifejezés értékét adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 EXP (<numeric_expression>)  
@@ -1084,7 +1084,7 @@ SELECT EXP(LOG(20)), LOG(EXP(20))
 ####  <a name="bk_log"></a> NAPLÓ  
  A megadott numerikus kifejezés természetes alapú logaritmusát adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 LOG (<numeric_expression> [, <base>])  
@@ -1141,7 +1141,7 @@ SELECT EXP(LOG(10))
 ####  <a name="bk_log10"></a> LOG10  
  A megadott numerikus kifejezés 10-es alapú logaritmusát adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 LOG10 (<numeric_expression>)  
@@ -1178,7 +1178,7 @@ SELECT LOG10(100)
 ####  <a name="bk_pi"></a> PI  
  Az állandó a PI értékét adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 PI ()  
@@ -1211,7 +1211,7 @@ SELECT PI()
 ####  <a name="bk_power"></a> ENERGIAGAZDÁLKODÁSI  
  A megadott hatványra a megadott kifejezés értékét adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 POWER (<numeric_expression>, <y>)  
@@ -1248,7 +1248,7 @@ SELECT POWER(2, 3), POWER(2.5, 3)
 ####  <a name="bk_radians"></a> RADIANS  
  Adja vissza radiánban, ha egy numerikus kifejezés, fokban is meg kell adni.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 RADIANS (<numeric_expression>)  
@@ -1287,7 +1287,7 @@ SELECT RADIANS(-45.01), RADIANS(-181.01), RADIANS(0), RADIANS(0.1472738), RADIAN
 ####  <a name="bk_round"></a> KEREKÍTÉS  
  Egy numerikus értéket, kerekítve a legközelebbi egész értéket ad vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ROUND(<numeric_expression>)  
@@ -1320,7 +1320,7 @@ SELECT ROUND(2.4), ROUND(2.6), ROUND(2.5), ROUND(-2.4), ROUND(-2.6)
 ####  <a name="bk_sign"></a> BEJELENTKEZÉS  
  A pozitív (+ 1), a nulla (0) vagy a megadott numerikus kifejezés mínuszjel (-1) adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 SIGN(<numeric_expression>)  
@@ -1353,7 +1353,7 @@ SELECT SIGN(-2), SIGN(-1), SIGN(0), SIGN(1), SIGN(2)
 ####  <a name="bk_sin"></a> SIN  
  A megadott kifejezést az radiánban megadott szög, trigonometriai szinuszát adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 SIN(<numeric_expression>)  
@@ -1386,7 +1386,7 @@ SELECT SIN(45.175643)
 ####  <a name="bk_sqrt"></a> SQRT  
  A megadott numerikus érték négyzetgyökét adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 SQRT(<numeric_expression>)  
@@ -1419,7 +1419,7 @@ SELECT SQRT(1), SQRT(2.0), SQRT(3)
 ####  <a name="bk_square"></a> NÉGYSZÖG  
  A megadott számérték négyzetét adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 SQUARE(<numeric_expression>)  
@@ -1452,7 +1452,7 @@ SELECT SQUARE(1), SQUARE(2.0), SQUARE(3)
 ####  <a name="bk_tan"></a> BARACKSZÍNŰ  
  A megadott szög tangensét adja vissza radiánban, a megadott kifejezésben.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 TAN (<numeric_expression>)  
@@ -1485,7 +1485,7 @@ SELECT TAN(PI()/2);
 ####  <a name="bk_trunc"></a> CSONK  
  Egy numerikus érték, csonkolva, a legközelebbi egész értéket ad vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 TRUNC(<numeric_expression>)  
@@ -1527,7 +1527,7 @@ SELECT TRUNC(2.4), TRUNC(2.6), TRUNC(2.5), TRUNC(-2.4), TRUNC(-2.6)
 ####  <a name="bk_is_array"></a> IS_ARRAY  
  Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy tömböt ad vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 IS_ARRAY(<expression>)  
@@ -1567,7 +1567,7 @@ SELECT
 ####  <a name="bk_is_bool"></a> IS_BOOL  
  Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy logikai érték visszaadása.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 IS_BOOL(<expression>)  
@@ -1607,7 +1607,7 @@ SELECT
 ####  <a name="bk_is_defined"></a> IS_DEFINED  
  Jelzi, ha a tulajdonság hozzá lett rendelve egy érték logikai érték beolvasása.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 IS_DEFINED(<expression>)  
@@ -1640,7 +1640,7 @@ SELECT IS_DEFINED({ "a" : 5 }.a), IS_DEFINED({ "a" : 5 }.b)
 ####  <a name="bk_is_null"></a> IS_NULL  
  Adja vissza egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa null.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 IS_NULL(<expression>)  
@@ -1680,7 +1680,7 @@ SELECT
 ####  <a name="bk_is_number"></a> IS_NUMBER  
  Egy logikai értéket, amely azt jelzi, ha a megadott kifejezés típusa egy számot ad vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 IS_NUMBER(<expression>)  
@@ -1720,7 +1720,7 @@ SELECT
 ####  <a name="bk_is_object"></a> IS_OBJECT  
  Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy JSON-objektumot ad vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 IS_OBJECT(<expression>)  
@@ -1760,7 +1760,7 @@ SELECT
 ####  <a name="bk_is_primitive"></a> IS_PRIMITIVE  
  Visszaad egy logikai értéket, amely azt jelzi, ha a megadott kifejezés típusa egy primitívet (string, logikai típusú, numerikus vagy null értékű).  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 IS_PRIMITIVE(<expression>)  
@@ -1800,7 +1800,7 @@ SELECT
 ####  <a name="bk_is_string"></a> IS_STRING  
  Egy logikai érték, amely azt jelzi, ha a megadott kifejezés típusa egy karakterláncot ad vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 IS_STRING(<expression>)  
@@ -1844,17 +1844,17 @@ SELECT
 |-|-|-|  
 |[CONCAT](#bk_concat)|[TARTALMAZ](#bk_contains)|[ENDSWITH](#bk_endswith)|  
 |[INDEX_OF](#bk_index_of)|[LEFT](#bk_left)|[HOSSZA](#bk_length)|  
-|[ALACSONYABB](#bk_lower)|[LTRIM](#bk_ltrim)|[CSERÉLJE LE](#bk_replace)|  
-|[REPLIKÁLÁS](#bk_replicate)|[FORDÍTOTT](#bk_reverse)|[RIGHT](#bk_right)|  
+|[LOWER](#bk_lower)|[LTRIM](#bk_ltrim)|[CSERÉLJE LE](#bk_replace)|  
+|[REPLIKÁLÁS](#bk_replicate)|[FORDÍTOTT](#bk_reverse)|[JOBBRA](#bk_right)|  
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[StringToArray](#bk_stringtoarray)|
 |[StringToBoolean](#bk_stringtoboolean)|[StringToNull](#bk_stringtonull)|[StringToNumber](#bk_stringtonumber)|
 |[StringToObject](#bk_stringtoobject)|[SUBSTRING](#bk_substring)|[ToString](#bk_tostring)|
-|[TRIM](#bk_trim)|[FELSŐ](#bk_upper)||
+|[TRIM](#bk_trim)|[UPPER](#bk_upper)||
   
 ####  <a name="bk_concat"></a> CONCAT  
  Legalább két karakterlánc-értékek összetűzésének eredménye karakterláncként adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 CONCAT(<str_expr>, <str_expr> [, <str_expr>])  
@@ -1887,7 +1887,7 @@ SELECT CONCAT("abc", "def")
 ####  <a name="bk_contains"></a> TARTALMAZ  
  Visszaadja egy logikai arról a második-e az első karakterlánc-kifejezést tartalmaz.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 CONTAINS(<str_expr>, <str_expr>)  
@@ -1920,7 +1920,7 @@ SELECT CONTAINS("abc", "ab"), CONTAINS("abc", "d")
 ####  <a name="bk_endswith"></a> ENDSWITH  
  Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második végződik.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ENDSWITH(<str_expr>, <str_expr>)  
@@ -1953,7 +1953,7 @@ SELECT ENDSWITH("abc", "b"), ENDSWITH("abc", "bc")
 ####  <a name="bk_index_of"></a> INDEX_OF  
  A második első előfordulásának kezdőpozícióját adja vissza karakterlánc-kifejezés található a megadott karakterlánc első kifejezés, vagy a -1, ha a karakterlánc nem található.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 INDEX_OF(<str_expr>, <str_expr>)  
@@ -1986,7 +1986,7 @@ SELECT INDEX_OF("abc", "ab"), INDEX_OF("abc", "b"), INDEX_OF("abc", "c")
 ####  <a name="bk_left"></a> BALRA  
  A megadott számú karakterből álló karakterlánc bal oldali részét adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 LEFT(<str_expr>, <num_expr>)  
@@ -2023,7 +2023,7 @@ SELECT LEFT("abc", 1), LEFT("abc", 2)
 ####  <a name="bk_length"></a> HOSSZA  
  A megadott karakterlánc-kifejezés karakterek számát adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 LENGTH(<str_expr>)  
@@ -2056,7 +2056,7 @@ SELECT LENGTH("abc")
 ####  <a name="bk_lower"></a> ALACSONYABB  
  Egy karakterlánc-kifejezés nagybetűt adatok átalakítása kisbetűvé után adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 LOWER(<str_expr>)  
@@ -2090,7 +2090,7 @@ SELECT LOWER("Abc")
 ####  <a name="bk_ltrim"></a> LTRIM  
  Egy karakterlánc-kifejezés adja vissza, miután eltávolítja a vezető üres.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 LTRIM(<str_expr>)  
@@ -2123,7 +2123,7 @@ SELECT LTRIM("  abc"), LTRIM("abc"), LTRIM("abc   ")
 ####  <a name="bk_replace"></a> CSERÉLJE LE  
  A megadott karakterlánc értéket az összes előfordulását lecseréli egy másik karakterláncérték.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 REPLACE(<str_expr>, <str_expr>, <str_expr>)  
@@ -2156,7 +2156,7 @@ SELECT REPLACE("This is a Test", "Test", "desk")
 ####  <a name="bk_replicate"></a> REPLIKÁLÁSA  
  Egy karakterláncértéket a megadott számú alkalommal ismétlődik.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 REPLICATE(<str_expr>, <num_expr>)  
@@ -2196,7 +2196,7 @@ SELECT REPLICATE("a", 3)
 ####  <a name="bk_reverse"></a> FORDÍTOTT  
  A karakterlánc-érték megfelelő sorrendben adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 REVERSE(<str_expr>)  
@@ -2229,7 +2229,7 @@ SELECT REVERSE("Abc")
 ####  <a name="bk_right"></a> JOBBRA  
  A megadott számú karaktert a karakterlánc jobb oldali részét adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 RIGHT(<str_expr>, <num_expr>)  
@@ -2266,7 +2266,7 @@ SELECT RIGHT("abc", 1), RIGHT("abc", 2)
 ####  <a name="bk_rtrim"></a> RTRIM  
  Egy karakterlánc-kifejezés adja vissza, miután eltávolítja a záró szóközöket.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 RTRIM(<str_expr>)  
@@ -2299,7 +2299,7 @@ SELECT RTRIM("  abc"), RTRIM("abc"), RTRIM("abc   ")
 ####  <a name="bk_startswith"></a> STARTSWITH  
  Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második kezdődik.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 STARTSWITH(<str_expr>, <str_expr>)  
@@ -2332,7 +2332,7 @@ SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")
   ####  <a name="bk_stringtoarray"></a> StringToArray  
  Egy tömb lefordítani kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 StringToArray(<expr>)  
@@ -2372,7 +2372,7 @@ SELECT
  Érvénytelen bemenet egy példát a következő: 
    
  A tömbön belüli szimpla idézőjelek között nem érvényes JSON.
-Akkor is, ha a lekérdezés érvényes, azok fog nem elemezhető érvényes tömbökhöz. A tömb karakterláncon belüli karakterláncokat vagy escape-karakterrel "[\"\"]" vagy a környező ajánlatot egyetlen kell lennie. a(z) [""] ".
+Akkor is, ha a lekérdezés érvényes, azok fog nem elemezhető érvényes tömbökhöz. A tömb karakterláncon belüli karakterláncokat vagy escape-karakterrel "[\\"\\"]" vagy a környező ajánlatot egyetlen kell lennie. a(z) [""] ".
 
 ```
 SELECT
@@ -2407,7 +2407,7 @@ SELECT
 ####  <a name="bk_stringtoboolean"></a> StringToBoolean  
  Egy logikai lefordítani kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 StringToBoolean(<expr>)  
@@ -2480,7 +2480,7 @@ SELECT
 ####  <a name="bk_stringtonull"></a> StringToNull  
  Null értékekké kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 StringToNull(<expr>)  
@@ -2552,7 +2552,7 @@ SELECT
 ####  <a name="bk_stringtonumber"></a> StringToNumber  
  Egy szám fordítja le kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 StringToNumber(<expr>)  
@@ -2622,7 +2622,7 @@ SELECT
 ####  <a name="bk_stringtoobject"></a> StringToObject  
  Az objektum-jogkivonattá alakítja kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 StringToObject(<expr>)  
@@ -2662,7 +2662,7 @@ SELECT
 ```
  
  Az alábbi példák a bemenet érvénytelen.
-Akkor is, ha a lekérdezés érvényes, azok fog nem elemezhető érvényes objektumra. Karakterláncok a karakterláncot, objektumot vagy escape-karakterrel "{\"egy\":\"str\"}", vagy a környező ajánlatot egyetlen kell lennie. a(z) "{"a":"str"}".
+Akkor is, ha a lekérdezés érvényes, azok fog nem elemezhető érvényes objektumra. Karakterláncok a karakterláncot, objektumot vagy escape-karakterrel "{\\" egy\\":\\" str\\"}", vagy a környező ajánlatot egyetlen kell lennie. a(z) "{"a":"str"}".
 
  A tulajdonságnevek körülvevő szimpla idézőjelek között nem érvényes JSON.
 
@@ -2713,7 +2713,7 @@ SELECT
 ####  <a name="bk_substring"></a> KARAKTERLÁNCRÉSZLET  
  Már a megadott karakter számolt helyzetét megadja egy karakterlánc-kifejezés részét adja vissza, és továbbra is fennáll, a megadott időtartam, illetve a karakterlánc végén.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 SUBSTRING(<str_expr>, <num_expr>, <num_expr>)  
@@ -2749,7 +2749,7 @@ SELECT SUBSTRING("abc", 1, 1)
 ####  <a name="bk_tostring"></a> ToString  
  Egy skaláris kifejezés karakterláncként adja vissza. 
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ToString(<expr>)
@@ -2824,7 +2824,7 @@ JOIN n IN food.nutrients
 ####  <a name="bk_trim"></a> TRIM  
  Egy karakterlánc-kifejezés adja vissza, miután eltávolítja a kezdő és záró üres.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 TRIM(<str_expr>)  
@@ -2856,7 +2856,7 @@ SELECT TRIM("   abc"), TRIM("   abc   "), TRIM("abc   "), TRIM("abc")
 ####  <a name="bk_upper"></a> FELSŐ  
  Egy karakterlánc-kifejezés után kisbetűt adatok nagybetűssé alakításával adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 UPPER(<str_expr>)  
@@ -2897,7 +2897,7 @@ SELECT UPPER("Abc")
 ####  <a name="bk_array_concat"></a> ARRAY_CONCAT  
  Egy tömb, amely az eredménye, összefűzi a két vagy több tömb értéket adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ARRAY_CONCAT (<arr_expr>, <arr_expr> [, <arr_expr>])  
@@ -2930,7 +2930,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
 Jelzi, hogy a tömb tartalmazza-e a megadott érték logikai érték beolvasása. Egy logikai kifejezés belül a parancs használatával ellenőrizheti az objektum teljes vagy részleges egyezést. 
 
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])  
@@ -2992,7 +2992,7 @@ SELECT
 ####  <a name="bk_array_length"></a> ARRAY_LENGTH  
  A megadott tömb kifejezés elemek számát adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ARRAY_LENGTH(<arr_expr>)  
@@ -3025,7 +3025,7 @@ SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"])
 ####  <a name="bk_array_slice"></a> ARRAY_SLICE  
  Egy tömböt megadó kifejezést részét adja vissza.
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])  
@@ -3090,7 +3090,7 @@ SELECT
 ####  <a name="bk_st_distance"></a> ST_DISTANCE  
  A két GeoJSON-pont, Polygon vagy LineString kifejezések között adja vissza a távolságot.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ST_DISTANCE (<spatial_expr>, <spatial_expr>)  
@@ -3127,7 +3127,7 @@ WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 3
 ####  <a name="bk_st_within"></a> ST_WITHIN  
  Egy logikai kifejezés, amely azt jelzi, hogy a második argumentum GeoJSON (pont, Polygon vagy LineString) belül van-e a GeoJSON-objektum (pont, Polygon vagy LineString) az első argumentumban megadott adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ST_WITHIN (<spatial_expr>, <spatial_expr>)  
@@ -3169,7 +3169,7 @@ WHERE ST_WITHIN(f.location, {
 ####  <a name="bk_st_intersects"></a> ST_INTERSECTS  
  Egy logikai kifejezés jelzi-e a GeoJSON-objektum (pont, Polygon vagy LineString) az első argumentumban megadott metszi a GeoJSON (pont, Polygon vagy LineString) a második argumentumban adja vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ST_INTERSECTS (<spatial_expr>, <spatial_expr>)  
@@ -3211,7 +3211,7 @@ WHERE ST_INTERSECTS(a.location, {
 ####  <a name="bk_st_isvalid"></a> ST_ISVALID  
  Jelzi, hogy a megadott GeoJSON-pont, Polygon vagy LineString kifejezés érvénytelen egy logikai értéket ad vissza.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ST_ISVALID(<spatial_expr>)  
@@ -3248,7 +3248,7 @@ SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 ####  <a name="bk_st_isvaliddetailed"></a> ST_ISVALIDDETAILED  
  Egy JSON-értéket tartalmazó logikai értéket, ha a megadott GeoJSON-pont, Polygon vagy LineString kifejezés érvénytelen, és ha érvénytelen értéket ad vissza, továbbá egy olyan karakterláncértéket, az oka.  
   
- **Syntax**  
+ **Szintaxis**  
   
 ```  
 ST_ISVALID(<spatial_expr>)  

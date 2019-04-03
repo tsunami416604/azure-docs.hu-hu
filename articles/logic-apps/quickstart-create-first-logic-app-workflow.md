@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: cc0f452cf9dc27354124437acc8d9a7c99fa80f4
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 577a047fb88208d7e14e8ba06a1b9e7e87c5ef91
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065188"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884234"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Gyors útmutató: Az első automatizált munkafolyamat létrehozása az Azure Logic Apps – Azure portal
 
@@ -114,7 +114,7 @@ Adjunk meg egy olyan [műveletet](../logic-apps/logic-apps-overview.md#logic-app
       Egyelőre hagyja figyelmen kívül a **Dinamikus tartalom hozzáadása** megjelenő listáját. 
       Amikor valamely szerkesztőmezőbe kattint, ez a lista jelenik meg, és tartalmazza az előző lépésből átvett azon paramétereket, amelyeket bemenetként a munkafolyamatba foglalhat. 
 
-   2. A **Tárgy** mezőbe írja be ezt a szöveget egy záró üres szóközzel: ```New RSS item: ```
+   2. A **Tárgy** mezőbe írja be ezt a szöveget egy záró üres szóközzel: ```New RSS item:```
 
       ![Írja be az e-mail tárgyát](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
  
@@ -139,8 +139,8 @@ Adjunk meg egy olyan [műveletet](../logic-apps/logic-apps-overview.md#logic-app
       | Tulajdonság | Leírás | 
       |----------|-------------| 
       | **Hírcsatorna címe** | Az elem címe | 
-      | **Hírcsatorna közzétételének időpontja** | Az elem közzétételének dátuma és ideje | 
-      | **Elsődleges hírcsatorna-hivatkozás** | Az elem URL-címe | 
+      | **Hírcsatorna közzétételi dátuma** | Az elem közzétételének dátuma és ideje | 
+      | **Elsődleges hírcsatorna hivatkozása** | Az elem URL-címe | 
       ||| 
    
 5. Mentse a logikai alkalmazást.
@@ -185,4 +185,4 @@ Ha már nincs szükség erre a mintára, törölje a logikai alkalmazást és a 
 Ebben a rövid útmutatóban létrehozta az első logikai alkalmazását, amely RSS-frissítéseket keres a megadott ütemezés alapján (percenként), és adott műveletet végez (e-mailt küld), amikor új tartalmakat talál. Ha további ismeretekre szeretne szert tenni, folytassa ezzel az oktatóanyaggal, amely összetettebb, ütemezésalapú munkafolyamatokat hoz létre:
 
 > [!div class="nextstepaction"]
-> [Forgalom ellenőrzése ütemezésalapú logikai alkalmazás használatával](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
+> [Forgalom ellenőrzése ütemezésalapú logikai alkalmazás](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

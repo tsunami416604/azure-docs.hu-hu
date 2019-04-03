@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 16c8444bdf91caf9da6f9625485090d09058ba52
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 66bda68b1313a7c172e273671bc3a03503d08e0d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522823"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876580"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>Gyors útmutató: Szöveg-hang transzformációs beszédhangot pythonnal listájának beolvasása
 
@@ -82,7 +82,7 @@ def get_token(self):
 
 Ide fog hozhat létre a kérést, és mentse a visszaadott beszédhangot listáját. Először be kell a `base_url` és `path`. Ez a példa feltételezi, hogy az USA nyugati RÉGIÓJA végpont használata. Ha az erőforrás egy másik régióba regisztrálva van, ellenőrizze, hogy frissíti a `base_url`. További információkért lásd: [beszédszolgáltatások régiók](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-Ezután adja hozzá a kéréshez szükséges fejlécek. Végül paritásadatok egy kérelmet a szolgáltatáshoz. Ha a kérelem sikeres, és egy 200 állapotkódot adott vissza, a beszéd válasz van egy időbélyegzővel fájlba írni.
+Ezután adja hozzá a kéréshez szükséges fejlécek. Végül paritásadatok egy kérelmet a szolgáltatáshoz. A kérelem sikeres, és egy 200 állapotkódot adott vissza, ha a válasz írt fájlt.
 
 Másolja be ezt a kódot a `GetVoices` osztály:
 

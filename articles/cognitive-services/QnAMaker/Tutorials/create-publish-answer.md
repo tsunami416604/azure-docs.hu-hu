@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 42d53cee48be73a0d151b6f44d381463fa1c4e16
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d209d73d67af96e99589dddcb71b6b50214356ee
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102162"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877278"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Oktatóanyag: Használatával C#, hozzon létre alapszintű majd kapcsolatos kérdésére választ kaphat
 
@@ -32,10 +32,10 @@ Ez az oktatóanyag végigvezeti egy tudásbázis (KB) programozott módon tört�
 
 Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
-* [Tudásbázis (KB) létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
-* [Műveletek részleteinek lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
-* [Tudásbázis részleteinek lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 
-* [Tudásbázis végpontjainak lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys)
+* [Hozzon létre a Tudásbázis (kb)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+* [A művelet részleteinek beolvasása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
+* [Tudásbázis részleteinek beolvasása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 
+* [Tudásbázis végpontok beolvasása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys)
 * [Közzététel](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -158,7 +158,7 @@ Az _elsődleges végpont_ fejlécként továbbítódik a válasz létrehozásár
 
 |Fejléc neve|Fejléc értéke|
 |--|--|
-|Engedélyezés|`Endpoint ` + **elsődleges végpont**<br>Például: `Endpoint xxxxxxx`<br>Figyelje meg, hogy a `Endpoint` szöveg és az elsődleges végpont értéke között egy szóköz szerepel. 
+|Engedélyezés|`Endpoint` + **elsődleges végpont**<br>Példa: `Endpoint xxxxxxx`<br>Figyelje meg, hogy a `Endpoint` szöveg és az elsődleges végpont értéke között egy szóköz szerepel. 
 
 A kérelem törzsének a megfelelő JSON-t kell továbbítania:
 
@@ -248,4 +248,4 @@ A tudásbázis létrehozása után a QnA Maker portálján, a [My knowledge base
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [A QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

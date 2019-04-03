@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
-ms.openlocfilehash: 2830772dd69ac94c2b8373936665b9445f9f5f10
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 24426a4249934af1d85f43552617cda7c1d7e172
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431198"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883887"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Python Flask-webalkalmazás létrehozása az Azure Cosmos DB használatával
 
@@ -417,7 +417,7 @@ Most, hogy helyben a teljes alkalmazás megfelelően működik az Azure Cosmos D
     ![A Bottle-, Flask- és a Django-alkalmazások App Service-beli közzétételének eredményei](./media/sql-api-python-application/python-published-app-services.png)
 
     > [!Tip] 
-    > Ha nem jelenik meg a webhely, vagy továbbra is megkapja „A lap belső kiszolgálóhiba miatt nem jeleníthető meg.” üzenetet, nyissa meg a web.config fájlt a Kudóban, adja hozzá a ` <httpErrors errorMode="Detailed"></httpErrors>` kifejezést a system.webServer szakaszhoz, majd frissítse a lapot. Ez megjeleníti a böngészőhöz tartozó részletes hibakimenetet. 
+    > Ha nem jelenik meg a webhely, vagy továbbra is megkapja „A lap belső kiszolgálóhiba miatt nem jeleníthető meg.” üzenetet, nyissa meg a web.config fájlt a Kudóban, adja hozzá a `<httpErrors errorMode="Detailed"></httpErrors>` kifejezést a system.webServer szakaszhoz, majd frissítse a lapot. Ez megjeleníti a böngészőhöz tartozó részletes hibakimenetet. 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha ez az első Python-alkalmazás, amelyet számítógépén futtat, győződjön meg arról, hogy a következő mappák (vagy az azokkal egyenértékű telepítési helyek) szerepelnek a PATH változóban:

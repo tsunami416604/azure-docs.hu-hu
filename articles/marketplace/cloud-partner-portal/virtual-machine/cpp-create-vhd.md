@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5643b7c80307cea36f60bcc116c82ea7b31171f9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 04a1741bbe4e60567a22445c5674ec03b232640c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096571"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883680"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Hozzon létre egy Azure-kompatibilis virtuális Merevlemezt.
 
 Ez a cikk ismerteti a lépéseket szükséges, hozzon létre egy virtuális merevlemezt (VHD) egy virtuális gép (VM) az ajánlat az Azure piactéren.  Ajánlott eljárások az üzemeltetés minőségének különböző szempontjait, például a távoli asztal protokoll (RDP) használatával, válassza ki a méretet a virtuális gép, a legújabb Windows-frissítések telepítése és általánosítása a VHD-lemezképet is tartalmaz.  A következő szakaszok középpontjában elsősorban a windows-alapú virtuális merevlemezek; Linux-alapú virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Linux-disztribúciók, Azure által támogatott](../../../virtual-machines/linux/endorsed-distros.md). 
 
 > [!WARNING]
-> Erősen ajánlott, hogy kövesse az útmutatást ebben a témakörben előre konfigurálva, a támogatott operációs rendszert tartalmazó virtuális gép létrehozása az Azure segítségével.  Ha ez nem kompatibilis a megoldását, majd akkor lehet létrehozni és konfigurálni egy jóváhagyott operációs rendszert használ, a helyszíni virtuális gép.  Ezután konfigurálja, és előkészítése feltöltéshez, leírtak szerint [készítse elő a Windows VHD vagy VHDX, az Azure-bA feltöltendő](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+> Erősen ajánlott, hogy kövesse az útmutatást ebben a témakörben előre konfigurálva, a támogatott operációs rendszert tartalmazó virtuális gép létrehozása az Azure segítségével.  Ha ez nem kompatibilis a megoldását, majd akkor lehet létrehozni és konfigurálni egy helyszíni virtuális gép egy jóváhagyott operációs rendszert használ.  Ezután konfigurálja, és előkészítése feltöltéshez, leírtak szerint [készítse elő a Windows VHD vagy VHDX, az Azure-bA feltöltendő](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
 
 
 ## <a name="select-an-approved-base"></a>Válasszon egy jóváhagyott alapja

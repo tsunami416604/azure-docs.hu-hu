@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f236c6a78edeb04a69685bf27c99997ed470f498
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 8eef15098eed8959655ae2904bf41a8c3dffc9f4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58791523"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882790"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejlécalapú hitelesítéskor az egyszeri bejelentkezést az alkalmazásproxy és a PingAccess
 
@@ -163,7 +163,7 @@ Ez a példa a [az Azure portal](https://portal.azure.com) frissíteni a *accepte
 >[!NOTE]
 >Egyéni jogcím használatával is rendelkeznie kell meghatározott, és az alkalmazáshoz hozzárendelt egyéni házirendet.  Ez a szabályzat tartalmaznia kell az összes szükséges egyéni attribútumokat.
 >
->Szabályzat-definíció és a hozzárendelés végezhető el a PowerShell, az Azure AD Graph Explorer vagy az MS Graph.  Ha ez a PowerShell, szüksége lehet, hogy először a `New-AzureADPolicy `, és hozzárendelheti az alkalmazást a `Set-AzureADServicePrincipalPolicy`.  További információ: a [Azure AD-Policy dokumentációja](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+>Szabályzat-definíció és a hozzárendelés végezhető el a PowerShell, az Azure AD Graph Explorer vagy az MS Graph.  Ha ez a PowerShell, szüksége lehet, hogy először a `New-AzureADPolicy` , és hozzárendelheti az alkalmazást a `Set-AzureADServicePrincipalPolicy`.  További információ: a [Azure AD-Policy dokumentációja](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 ### <a name="optional---use-a-custom-claim"></a>Nem kötelező – egyéni jogcím használata
 Ahhoz, hogy az alkalmazás egy egyéni jogcímszabályok használja, és további mezőket tartalmaznak, hogy rendelkezik-e is lehet [egy egyéni jogcímek társítása a házirend létrehozása és hozzárendelése, az alkalmazás](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).

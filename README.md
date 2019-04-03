@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2b1d75b4b32ebfffbddfaddf45b0c08fb1132995
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d4e9e26f2c6764cc179826266891d861514e23f6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168553"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882208"
 ---
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure-dokumentáció
 
@@ -12,7 +12,7 @@ ms.locfileid: "58168553"
 
 ## <a name="getting-started"></a>Első lépések
 
-A nyílt forráskódú anyagok bővítésében való közreműködés nem csak a frissítések rendelkezésre bocsátásából áll, hanem abból is, hogy értesít minket az esetlegesen felmerülő problémákról. További információért olvassa át [közreműködői útmutatónkat](.github/CONTRIBUTING.md).
+A nyílt forráskódú anyagok bővítésében való közreműködés nem csak a frissítések rendelkezésre bocsátásából áll, hanem abból is, hogy értesít minket az esetlegesen felmerülő problémákról. További információért olvassa át [közreműködői útmutatónkat](CONTRIBUTING.md).
 
 ### <a name="prerequisites"></a>Előfeltételek
 

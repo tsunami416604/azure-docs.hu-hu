@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: e8afdfece258986f5dc4cc6f1c7e66aed24e0500
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5eec77084e104f7bd541405e2ef18e5a178e869c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092548"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877788"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Figyelés megoldásra az Azure monitorban
 
@@ -365,7 +365,7 @@ Ha szeretné, omsagent DaemonSets létrehozása vagy a titkos kódok nélkül.
         KEY:    88 bytes
         ```
 
-    5. A omsagent futtatásával démon-készlet létrehozása ``` sudo kubectl create -f omsagent-ds-secrets.yaml ```
+    5. A omsagent futtatásával démon-készlet létrehozása ```sudo kubectl create -f omsagent-ds-secrets.yaml```
 
 2. Győződjön meg arról, hogy a Log Analytics-ügynököket DaemonSet fut, a következőhöz hasonló:
 
@@ -409,7 +409,7 @@ A Windows Kubernetes esetében, parancsfájl segítségével hozza létre a titk
         ```
         #> sudo bash ./secret-gen.sh
         ```
-    3. A omsagent futtatásával démon-készlet létrehozása ``` kubectl create -f omsagentsecret.yaml ```
+    3. A omsagent futtatásával démon-készlet létrehozása ```kubectl create -f omsagentsecret.yaml```
     4. Ellenőrizze, hogy futtassa a következőt:
 
         ```

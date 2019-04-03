@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
 ms.openlocfilehash: 55b4cf6e621bc1e5bd3d8ba4718e5714ea652c27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
+ms.lasthandoff: 04/03/2019
 ms.locfileid: "58111480"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# – fejlesztői referencia
@@ -158,7 +158,7 @@ A *function.json* fájlt végzi a NuGet-csomag [Microsoft\.NET\.Sdk\.funkciók](
 
 Ugyanaz a csomag mindkét verziójának szolgál az 1.x és a 2.x verzióját a Functions-futtatókörnyezetben. Cílová architektura egy 1.x jellegű parancsot a(z) projekt kódjába a 2.x projektből. Az alábbiakban a vonatkozó részeinek *.csproj* fájlok megjelenítése a különböző keretrendszerek és azonos cél `Sdk` csomag:
 
-**1.x függvények**
+**Functions 1.x**
 
 ```xml
 <PropertyGroup>
@@ -169,7 +169,7 @@ Ugyanaz a csomag mindkét verziójának szolgál az 1.x és a 2.x verzióját a 
 </ItemGroup>
 ```
 
-**2.x függvények**
+**Functions 2.x**
 
 ```xml
 <PropertyGroup>

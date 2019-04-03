@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: ece6c7048100a8204bfc067d9d57854b1d83c9b6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eac6a27c3bcf64462a9f3d9a57da6df736f30c78
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58074913"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883275"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware Monitoring (elavult) a megoldás az Azure monitorban
 
@@ -189,13 +189,13 @@ Több oka lehet:
   1. Győződjön meg arról, hogy jelentkezzen be az ssh használata a ESXi-gazdagépen, és futtassa a következő parancsot: `nc -z ipaddressofVM 1514`
 
       Ha ez nem jár sikerrel, a speciális konfigurációt a vSphere-beállítások valószínűleg helytelen. Lásd: [konfigurálása a rendszernaplók gyűjtése](#configure-syslog-collection) az ESXi-gazdagépen, a syslog-továbbítás beállításával kapcsolatos információkat.
-  1. Ha syslog-port kapcsolat létrejött, de nem is jelennek meg adatok, majd töltse be újra az ESXi-gazdagépen a syslog szerint az ssh használata a következő paranccsal: ` esxcli system syslog reload`
+  1. Ha syslog-port kapcsolat létrejött, de nem is jelennek meg adatok, majd töltse be újra az ESXi-gazdagépen a syslog szerint az ssh használata a következő paranccsal: `esxcli system syslog reload`
 * A virtuális Gépet a Log Analytics-ügynök nincs megfelelően beállítva. Ennek teszteléséhez hajtsa végre az alábbi lépéseket:
 
   1. A log Analytics figyeli a 1514 porthoz. Győződjön meg arról, hogy meg nyitva, futtassa a következő parancsot: `netstat -a | grep 1514`
   1. Megtekintheti az port `1514/tcp` megnyitásához. Ha nem, ellenőrizze, hogy a omsagent megfelelően van-e telepítve. Ha nem látja a portadatokat, majd a syslog-portjára, nem nyissa meg a virtuális gépen.
 
-     a. Győződjön meg arról, hogy a Log Analytics-ügynök fut-e a `ps -ef | grep oms`. Ha nem fut, a folyamat elindításához futtassa a parancsot ` sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Győződjön meg arról, hogy a Log Analytics-ügynök fut-e a `ps -ef | grep oms`. Ha nem fut, a folyamat elindításához futtassa a parancsot `sudo /opt/microsoft/omsagent/bin/service_control start`
 
      b. Nyissa meg az `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` fájlt.
 

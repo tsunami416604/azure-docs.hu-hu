@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: c344e8c2d0ad62b394792201ab52bb37413012f8
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 40e2baaeaae933e8ff6a88eff2e2d86f645ad37b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259907"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881041"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Az Azure Cosmos DB API kapcsolatos gyakori kérdések
 
@@ -201,7 +201,7 @@ Igen. A [Azure Cosmos DB Emulatort](local-emulator.md) egy élethű emulációs 
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Miért vannak kerekítve, ha a portálon az adatkezelőben megtekintett dokumentum mennyi ideig lebegőpontos értékeket.
 
-Ez a korlátozás a JavaScript. JavaScript kétszeres pontosságú lebegőpontos számformázás használja, mint a megadott IEEE 754, így biztonságosan – közötti szám (253 - 1) és a 253-1 (azaz a 9007199254740991) csak.
+Ez a korlátozás a JavaScript. JavaScript kétszeres pontosságú lebegőpontos számformázás használja, mint a megadott IEEE 754, így biztonságosan – közötti szám (2<sup>53-as</sup> – 1.) és 2<sup>53-as</sup>-1 (azaz a 9007199254740991) csak.
 
 ### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Ha engedélyezettek a engedélyek az objektum hierarchiában?
 
@@ -292,7 +292,7 @@ Ha ezek a különbségek bármelyike a projekt probléma, forduljon a [ askcosmo
 
 Az alábbi módokon is ossza meg velünk véleményét:
 
-* [Felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/263030-azure-cosmos-db)
+* [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). A stack Overflow a legjobb a programozási kérdéseit. Ellenőrizze, hogy a kérdés [témához illeszkedő](https://stackoverflow.com/help/on-topic) és [adja meg a legtöbb adatot lehet, így a kérdést, egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 

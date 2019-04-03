@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 5635e0f669cec64bdbbf947099f980066a4aebc1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f79614e4b1ec660d2ec5c8aee40924908cf8f5c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121417"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884125"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Oktatóanyag: Hozzon létre egy Tudásbázis, majd a QnA Maker portálján kérdés megválaszolása
 
@@ -66,7 +66,7 @@ Ehhez az oktatóanyaghoz egy meglévő [QnA Maker-szolgáltatásra](../How-To/se
     |Beállítás neve|Beállítás értéke|Cél|
     |--|--|--|
     |URL-cím|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |A megadott URL-címen található GYIK tartalma kérdés-válasz formátumú. A QnA Maker ebből a formátumból tudja kinyerni a kérdéseket és az azokhoz tartozó válaszokat.|
-    |Fájl |_ebben az oktatóanyagban nincs használatban_|Itt tölthetők fel a kérdéseket és válaszokat tartalmazó fájlok. |
+    |Fájl |_Ebben az oktatóanyagban nincs használatban_|Itt tölthetők fel a kérdéseket és válaszokat tartalmazó fájlok. |
     |Chit-chat personality (Csevegő személyisége)|The friend (A barát)|Ezzel barátságos, laza stílust kölcsönözhet a gyakori kérdéseknek és válaszoknak. A kérdéseket és válaszokat később szerkesztheti. |
 
     ![A tudásbázis létrehozásának 4. lépése](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
@@ -105,7 +105,7 @@ A tudásbázis közzététele után megjelenik a végpont
 
     ![Curl parancs](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
-1. Másolja ki a **Curl** lap szövegét, és futtassa egy Curl-kompatibilis terminálon vagy parancssorban. A hitelesítés fejlécének értéke tartalmazza az `Endpoint ` szöveget, amelyet egy szóköz után a kulcs követ.
+1. Másolja ki a **Curl** lap szövegét, és futtassa egy Curl-kompatibilis terminálon vagy parancssorban. A hitelesítés fejlécének értéke tartalmazza az `Endpoint` szöveget, amelyet egy szóköz után a kulcs követ.
 
 1. Cserélje le a `<Your question>` elemet a `How large can my KB be?` kérdésre. Ez hasonlít a `How large a knowledge base can I create?` kérdéshez, de nem pontosan ugyanaz. A QnA Maker természetes nyelvi feldolgozás segítségével határozza meg, hogy a két kérdés azonos-e.     
 
@@ -208,4 +208,4 @@ Tudjon meg többet a csevegő [személyiségeiről](../Concepts/best-practices.m
 Az alapértelmezett válasszal kapcsolatos további információkat lásd a [Nincs találat](../Concepts/confidence-score.md#no-match-found) című szakaszban. 
 
 > [!div class="nextstepaction"]
-> [A tudásbázissal kapcsolatos alapfogalmak](../Concepts/knowledge-base.md)
+> [Tudásbázis fogalmak](../Concepts/knowledge-base.md)

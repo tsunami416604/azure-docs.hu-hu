@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c888c134054f50bc8ab17d17524a4f89d5081dfc
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f60b9002f939cbf4c3a0ecfb78b358598713ea1c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259618"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881630"
 ---
 # <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Oktatóanyag: Cognitive Services API-k hívja meg az Azure Search folyamat (előzetes verzió) indexelése
 
@@ -129,9 +129,6 @@ Mivel ez az első kérése, az Azure Portalon ellenőrizze, hogy létrejött-e a
   ![Adatforrások csempe a portálon](./media/cognitive-search-tutorial-blob/data-source-tile.png "Adatforrások csempe a portálon")
 
 Ha a 403-as vagy 404-es hibát kapja, ellenőrizze a kérés szerkezetét: az `api-version=2017-11-11-Preview` legyen a végpont, az `api-key` szerepeljen a fejlécben a `Content-Type` kifejezés után, az értékének pedig érvényesnek kell lennie egy keresési szolgáltatáshoz. A fejlécet az oktatóanyag további lépéseiben ismét felhasználhatja.
-
-> [!TIP]
-> Most mielőtt rengeteg munkát, ellenőrizze, hogy a keresési szolgáltatás fut-e a támogatott helyek egyikén ideje biztosít az előzetes verziójú funkció: USA déli középső Régiójában és Nyugat-Európa.
 
 ## <a name="create-a-skillset"></a>Képességcsoport létrehozása
 
@@ -554,4 +551,4 @@ Az oktatóanyagok után fölöslegessé vált elemek eltávolítása leggyorsabb
 Egyéni képességekkel testre szabhatja vagy kibővítheti a folyamatot. Egyéni képességek létrehozása és egy képességcsoporthoz adása révén saját kezűleg írt szöveg- vagy képelemzést használhat. 
 
 > [!div class="nextstepaction"]
-> [Példa: egyéni képesség létrehozása](cognitive-search-create-custom-skill-example.md)
+> [Példa: hozzon létre egy egyéni szakértelem](cognitive-search-create-custom-skill-example.md)

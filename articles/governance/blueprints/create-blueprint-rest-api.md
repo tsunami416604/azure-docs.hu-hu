@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9dada3c6f0718db41a24368aca594bbd3215fec5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 06ee97cff08804093d3ee77ee11eca1b4e84bb0f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994864"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885961"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Azure Blueprints-tervek definiálása és hozzárendelése a REST API használatával
 
@@ -40,10 +40,10 @@ A Blueprints műszaki adataiért tekintse meg az [Azure Blueprints REST API-t is
 
 Ha még nem választott eszközt a REST API-hívások kezeléséhez, ennek az útmutatónak a keretében érdemes a PowerShellt használnia. Az alábbiakban egy mintafejlécet mutatunk be az Azure-beli hitelesítéshez. Hozzon létre egy hitelesítési fejlécet, vagy más néven **tulajdonosi jogkivonatot**, és adja meg a kapcsolódáshoz szükséges REST API URI-t a paraméterekkel vagy egy **kérelemtörzzsel**:
 
-```powershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if not using Cloud Shell
 
-$azContext = Get-AzureRmContext
+$azContext = Get-AzContext
 $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
 $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
 $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
@@ -69,7 +69,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie saját értékekre:
 
 - `{YourMG}` – Cserélje le a felügyeleti csoport azonosítója
-- `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
+- `{subscriptionId}` – Cserélje le az előfizetés-azonosító
 
 > [!NOTE]
 > Tervezetek is lehet létrehozni az előfizetés szintjén. Példaként lásd: [tervrajz létrehozása előfizetés példát](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
@@ -336,7 +336,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
 
 - `{tenantId}` – Cserélje le a bérlő azonosítója
 - `{YourMG}` – Cserélje le a felügyeleti csoport azonosítója
-- `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
+- `{subscriptionId}` – Cserélje le az előfizetés-azonosító
 
 1. Adja az Azure Blueprints-szolgáltatásnévnek a **Tulajdonos** szerepkört a célelőfizetésen. Az AppId je statická. (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), de bérlői eltérő a szolgáltatásnév-Azonosítót. A bérlőre vonatkozó adatok a következő REST API használatával kérhetők le. Az [Azure Active Directory Graph API-t](../../active-directory/develop/active-directory-graph-api.md) használja, amely más engedélyekkel rendelkezik.
 

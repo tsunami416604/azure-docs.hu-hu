@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: ca4cd1aa074353914f5187e353c233f8b45140eb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f23cf78bfca48b3a78e234520d645abdb354038f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091681"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878468"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>A LUIS-robot C# a Bot keretrendszer 3.x és az Azure Web app bot
 
@@ -49,7 +49,7 @@ A C# használatával hozzon létre egy csevegőrobotot integrált nyelvfelismer�
    * Állítsa be **alkalmazásnév** a robot neve. A robot a felhőben (például mynotesbot.azurewebsites.net) történő telepítése során az altartomány neve lesz. <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
    * Válassza ki az előfizetést [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), App service-csomagot, és [hely](https://azure.microsoft.com/regions/).
    * A **Bot sablon**, jelölje be:
-       * **SDK-t v3**
+       * **SDK v3**
        * **C#**
        * **Hangfelismerés**
    * Válassza ki a **LUIS alkalmazás hely**. Ez az a szerzői műveletekhez részben [régió](luis-reference-regions.md) jön létre az alkalmazást.
@@ -111,19 +111,19 @@ Nyissa meg **Alkalmazásbeállítások** és szerkesztheti a **LuisAppId** mező
 
    [!code-csharp[Dependencies](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=4-5&dedent=8 "dependencies")]
 
-3. Adjon állandókat tetején karakterláncok kezelése a `BasicLuisDialog ` osztály:
+3. Adjon állandókat tetején karakterláncok kezelése a `BasicLuisDialog` osztály:
 
    [!code-csharp[Add Intent and Entity Constants](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=23-32&dedent=8 "Add Intent and Entity Constants")]
 
-4. Adja hozzá a kódot, az új leképezések a `HomeAutomation.TurnOn` és `HomeAutomation.TurnOff` belül a `BasicLuisDialog ` osztály:
+4. Adja hozzá a kódot, az új leképezések a `HomeAutomation.TurnOn` és `HomeAutomation.TurnOff` belül a `BasicLuisDialog` osztály:
 
    [!code-csharp[Add Intents](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=61-71&dedent=8 "Add Intents")]
 
-5. Adja hozzá a kódot a LUIS belül található entitások beolvasása a `BasicLuisDialog ` osztály:
+5. Adja hozzá a kódot a LUIS belül található entitások beolvasása a `BasicLuisDialog` osztály:
 
    [!code-csharp[Collect entities](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=34-53&dedent=8 "Collect entities")]
 
-6. Változás **ShowLuisResult** metódus az a `BasicLuisDialog ` kerekítendő a pontszám, az entitások összegyűjtése és megjelenítése a válaszüzenet a csevegőrobot osztály:
+6. Változás **ShowLuisResult** metódus az a `BasicLuisDialog` kerekítendő a pontszám, az entitások összegyűjtése és megjelenítése a válaszüzenet a csevegőrobot osztály:
 
    [!code-csharp[Display message in chatbot](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=73-83&dedent=8 "Display message in chatbot")]
 

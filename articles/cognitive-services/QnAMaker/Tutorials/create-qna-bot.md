@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 04/02/2019
 ms.author: tulasim
-ms.openlocfilehash: b948835b1a15eee391c6902d18229ec4926b66ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 218103f2c75ec1016a997c259767ccd011191fab
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095211"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879610"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Oktatóanyag: A QnA robotot létrehozása az Azure Bot Service v3
 
@@ -25,7 +25,7 @@ Ez az oktatóanyag végigvezeti a QnA robotot az Azure Bot service v3-létrehoz�
 > [!Note] 
 > Ez a témakör olyan a robot SDK 3-as verziója. 4. verziójú annak [Itt](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs). 
 
-**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -104,6 +104,12 @@ Az Azure Portalon válassza ki a **tesztelni, webes csevegési** a robot tesztel
 ![A QnA Maker robotot](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat-response.PNG)
 
 A QnA robotot a Tudásbázis a választ.
+
+## <a name="related-to-qna-maker-bots"></a>A QnA Maker robotokat kapcsolatos
+
+* A QnA Maker súgó robot, a QnA Maker Portal használt érhető el egy [bot minta](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot).
+    ![A QnA Maker súgó bot ikonra a piros robot](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
+* [Egészségügyi robotokat](https://docs.microsoft.com/HealthBot/qna_model_howto) használata a QnA Maker egy saját [nyelvi modellek](https://docs.microsoft.com/HealthBot/qna_model_howto).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

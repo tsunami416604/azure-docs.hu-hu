@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e18c58aafd4aa56a27f5e4a97c9dcc9dcd0fdbd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9167a5ed72e6fec2ca03cc97d1d41dd6cd4aaba6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199782"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885842"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>Oktatóanyag: Titkos kulcs kiszolgálóval (helyszíni) az Azure Active Directory-integráció
 
@@ -111,7 +111,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Az a **azonosító** szövegmezőbe írja be a kiválasztott érték, mint például a felhasználó: `https://secretserveronpremises.azure`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<SecretServerURL>/SAML/AssertionConsumerService.aspx `
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<SecretServerURL>/SAML/AssertionConsumerService.aspx`
 
     > [!NOTE]
     > A fenti Entitásazonosító csak egy példa, és választhatja az összes egyedi érték, amely azonosítja a titkos kulcs kiszolgáló példányát az Azure ad-ben. Kell küldenie az entitás azonosítója a [titkos kiszolgáló (helyszíni) ügyfél-támogatási csapatának](https://thycotic.force.com/support/s/) és konfigurálása saját oldalán. További részletekért olvassa el [Ez a cikk](https://thycotic.force.com/support/s/article/Configuring-SAML-in-Secret-Server).
@@ -219,7 +219,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

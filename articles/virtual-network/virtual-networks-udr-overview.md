@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Megtudhatja, hogyan irányítja az Azure a virtuális hálózatok forgalmának útválasztását, és hogyan szabható testre az Azure útválasztása.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: malopMSFT
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
-ms.author: jdial
-ms.openlocfilehash: 90ca35ec899d71578a7da4061ca7842d13769072
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: malop;kumud
+ms.openlocfilehash: ad35d440904c7b65e27b4ead75cec00daa20f8ff
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123572"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878502"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -98,7 +98,7 @@ Felhasználó által megadott útvonal létrehozásakor az alábbi következő u
 
 Felhasználó által megadott útvonalak esetén nem adhat meg **Virtuális hálózatok közötti társviszonyt** vagy **VirtualNetworkServiceEndpoint** típust a következő ugrás típusaként. **Virtuális hálózatok közötti társviszony** vagy **VirtualNetworkServiceEndpoint** következő ugrási típusú útvonalakat az Azure csak akkor hoz létre, ha virtuális hálózati társviszonyt vagy szolgáltatásvégpontot konfigurál.
 
-**A következő ugrás típusai az Azure-eszközökben**
+**Következő ugrás típusai az Azure-eszközökben**
 
 A következő ugrás típusaihoz megjelenített és hivatkozott név eltér az Azure Portal és a parancssori eszközök között, valamint az Azure Resource Manager és a klasszikus üzemi modellek között. A következő táblázat felsorolja a neveket, amelyekkel a különféle eszközök és az [üzembehelyezési modellek](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a következő ugrások típusaira hivatkoznak:
 
@@ -181,7 +181,7 @@ A jelen cikk fogalmait bemutató alábbi szakaszok a következőket ismertetik:
 ### <a name="requirements"></a>Követelmények
 
 1. Hozzon létre két virtuális hálózatot egy Azure-régión belül, és engedélyezze az erőforrások kommunikációját a virtuális hálózatok között.
-2. Állítson be egy helyszíni hálózatot, amely biztonságosan kommunikál mindkét virtuális hálózattal az interneten keresztül, egy VPN-alagúton át. *Alternatív megoldásként egy ExpressRoute-kapcsolat is használható, de ebben a példában VPN-kapcsolatot használunk.*
+2. Állítson be egy helyszíni hálózatot, amely biztonságosan kommunikál mindkét virtuális hálózattal az interneten keresztül, egy VPN-alagúton át. *Azt is megteheti egy ExpressRoute-kapcsolat is használható, de ebben a példában egy VPN-kapcsolatot használunk.*
 3. Egy virtuális hálózaton belüli egyik alhálózat esetén:
  
     - Az Azure Storage-ba irányuló és az alhálózaton belüli forgalom kivételével minden kimenő adatforgalmat kényszerítsen egy hálózati virtuális berendezésen történő áthaladásra ellenőrzés és naplózás céljából.
@@ -255,8 +255,8 @@ A *Subnet2* útvonaltáblája tartalmazza az összes, Azure által létrehozott 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Felhasználó által megadott útvonaltábla létrehozása útvonalakkal és hálózati virtuális berendezéssel](tutorial-create-route-table-portal.md)
-- [A BGP konfigurálása Azure VPN Gateway-átjáróhoz](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [A BGP használata az ExpressRoute-tal](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
+- [Felhasználó által definiált útvonaltábla létrehozása útvonalakkal és hálózati virtuális készüléken](tutorial-create-route-table-portal.md)
+- [Az Azure VPN Gateway a BGP konfigurálása](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [A BGP használata az ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
 - [Alhálózat összes útvonalának megtekintése](diagnose-network-routing-problem.md). A felhasználó által megadott útvonaltáblák csak a felhasználó által megadott útvonalakat mutatják, az alhálózat alapértelmezett és BGP-útvonalait nem. Az összes útvonal megtekintésekor láthatja a hálózati adaptert tartalmazó alhálózat alapértelmezett, BGP- és felhasználó által megadott útvonalait.
 - Virtuális gép és cél IP-cím közötti [következő ugrás típusának meghatározása](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Az Azure Network Watcher Következő ugrás funkciójával meghatározhatja, hogy a forgalom elhagyja-e az alhálózatot, és arra halad-e, amerre szeretné.

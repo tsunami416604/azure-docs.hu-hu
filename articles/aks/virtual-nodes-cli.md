@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 841e00825b243d883303121022918efd51397f04
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 54c8e44685bb69e845c819b0c2846b188a771d71
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757435"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878230"
 ---
 # <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Előzetes verzió – létrehozása és konfigurálása az Azure Kubernetes szolgáltatás (AKS-) fürt használata a virtuális csomópontok az Azure CLI használatával
 
@@ -47,7 +47,7 @@ Ha a szolgáltató állapota *NotRegistered*, regisztrálja a szolgáltatót has
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability-limitations"></a>Régiónkénti rendelkezésre állás korlátozások
+## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
 A következő régiók virtuális csomópont központi telepítések támogatottak:
 
@@ -162,13 +162,7 @@ az aks create \
 
 Néhány perc múlva befejeződik a parancs végrehajtása, és visszaadja a fürttel kapcsolatos adatokat JSON formátumban.
 
-## <a name="enable-virtual-nodes"></a>Engedélyezze a virtuális csomópontok
-
-A virtuális csomópontok összekötő további funkciókat biztosít, használja az Azure CLI-bővítmény. A virtuális csomópontok-összekötő engedélyezése előtt először telepítse a bővítmény használatával a [az bővítmény hozzáadása] [ az-extension-add] parancsot:
-
-```azurecli-interactive
-az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
-```
+## <a name="enable-virtual-nodes-addon"></a>Virtuális csomópontok bővítmény engedélyezése
 
 Ahhoz, hogy a virtuális csomópontok, most már használhatja a [az aks enable-bővítmények] [ az-aks-enable-addons] parancsot. Az alábbi példában a nevű alhálózat *myVirtualNodeSubnet* az előző lépésben létrehozta:
 
@@ -179,6 +173,11 @@ az aks enable-addons \
     --addons virtual-node \
     --subnet-name myVirtualNodeSubnet
 ```
+> [!NOTE]
+> Ha egy virtuális csomópont nem található hibaüzenet kap, szükség lehet a CLI-bővítmény telepítése 
+> ```azurecli-interactive
+> az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
+> ```
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 

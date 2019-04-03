@@ -1,33 +1,24 @@
 ---
-title: HDInsight-fürtök testreszabása szkriptműveletek, az Azure használatával
+title: Az Azure HDInsight-fürtök testreszabása szkriptműveletek használatával
 description: Linux-alapú HDInsight-fürtök a Parancsfájlműveletek segítségével egyéni összetevőket adhat. A szkriptműveletek olyan Bash-szkriptek, amelyek segítségével a fürtkonfiguráció egyéni beállítását, vagy adjon hozzá további szolgáltatásokat és segédprogramok, mint például a Hue, Solr, vagy az R.
-services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: hrasheed
-ms.openlocfilehash: 80c2d25fa24acff92a462f0289259792f217fbfd
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.date: 04/02/2019
+ms.openlocfilehash: fe0fec082ace997a3bd66ca7c7575ce8dce3be1a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361693"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885570"
 ---
-# <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Linux-alapú HDInsight-fürtök testreszabása szkriptműveletek használatával
+# <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Az Azure HDInsight-fürtök testreszabása szkriptműveletek használatával
 
 Az Azure HDInsight nevű konfigurációs módszert biztosít a **szkriptműveletek** , amely meghívja az egyéni szkriptek a fürt testreszabása. Ezek a parancsfájlok segítségével további összetevők és konfigurációs beállításokat módosítaná. A szkriptműveletek használható során vagy a fürt létrehozása után.
 
-> [!IMPORTANT]  
-> Szkriptműveletek használhat egy már futó fürt csak Linux-alapú HDInsight-fürtök esetén érhető el.
->
-> Linux az egyetlen operációs rendszer használt a HDInsight 3.4-es vagy újabb verzió. További információkért lásd: [HDInsight Windows kivezetési](hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
 A szkriptműveletek HDInsight alkalmazásként is az Azure piactéren tehetők közzé. További információ a HDInsight-alkalmazások: [egy HDInsight-alkalmazás közzététele az Azure Marketplace-en](hdinsight-apps-publish-applications.md).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -225,7 +216,9 @@ További információ a sablon üzembe helyezése:
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Használjon szkriptműveletet az Azure PowerShell a fürt létrehozásakor
 
-Ebben a szakaszban használhatja a [Add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) parancsmag segítségével szabhatja testre a fürthöz-szkriptek meghívása. Mielőtt elkezdené, győződjön meg arról, telepítése és konfigurálása az Azure PowerShell-lel. Egy munkaállomás HDInsight PowerShell-parancsmagok futtatásához konfigurálásával kapcsolatos további információkért lásd: [áttekintése az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+Ebben a szakaszban használhatja a [Add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) parancsmag segítségével szabhatja testre a fürthöz-szkriptek meghívása. Mielőtt elkezdené, győződjön meg arról, telepítése és konfigurálása az Azure PowerShell-lel. A PowerShell-parancsok használatához van szüksége a [AZ modul](https://docs.microsoft.com/powershell/azure/overview).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Az alábbi parancsfájl bemutatja, hogyan szkriptműveletet alkalmazni, amikor a fürt létrehozása a PowerShell használatával:
 
@@ -277,7 +270,7 @@ Nyissa meg a [az Azure portal](https://portal.azure.com):
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>Egy futó fürt szkriptműveletet alkalmazni az Azure PowerShell-lel
 
-Mielőtt elkezdené, győződjön meg arról, telepítése és konfigurálása az Azure PowerShell-lel. Egy munkaállomás HDInsight PowerShell-parancsmagok futtatásához konfigurálásával kapcsolatos további információkért lásd: [áttekintése az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+A PowerShell-parancsok használatához van szüksége a [AZ modul](https://docs.microsoft.com/powershell/azure/overview).
 
 Az alábbi példa bemutatja, hogyan szkriptműveletet alkalmazandó futó fürt:
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 822c4631c08da27ef7b92af2df5e5e0d04f063b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f2ad46e7738582f82edcef6b54ac8234901c887d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013896"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885332"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL lekérdezési példák
 
@@ -53,7 +53,7 @@ Hozzunk létre két egyszerű JSON-elemek és az adatokat a lekérdezéshez. Ké
 
 Íme egy különbség – egy második elem `givenName` és `familyName` helyett használhatók `firstName` és `lastName`.
 
-**2 elem**
+**2. elem**
 
 ```json
 {
@@ -94,7 +94,7 @@ Most pedig próbáljuk ki néhány lekérdezéseket az ezeket az adatokat egy Az
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -124,7 +124,7 @@ Most pedig próbáljuk ki néhány lekérdezéseket az ezeket az adatokat egy Az
     WHERE f.address.city = f.address.state
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -145,7 +145,7 @@ Most pedig próbáljuk ki néhány lekérdezéseket az ezeket az adatokat egy Az
     ORDER BY f.address.city ASC
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -178,7 +178,7 @@ Az alábbi példa bemutatja egy tipikus SELECT-lekérdezésben.
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -202,7 +202,7 @@ A következő példában két beágyazott tulajdonságok hogy kivetítés `f.add
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -221,7 +221,7 @@ Leképezés JSON kifejezéseket is támogatja, az alábbi példában látható m
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -244,7 +244,7 @@ Nézzük, szerepe `$1` itt. A `SELECT` záradék létre kell hoznia egy JSON-obj
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -280,7 +280,7 @@ A forrás egy kisebb részhalmazra is csökkenteni lehet. Például számbavéte
     FROM Families.children
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -322,7 +322,7 @@ A fenti példában egy tömb használja forrásként, amíg egy objektumot is ha
     FROM Families.address.state
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -345,7 +345,7 @@ A következő lekérdezés kérelmek elemek, amelyek tartalmazzák a name tulajd
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -403,15 +403,15 @@ Bináris- és egyoperandusú operátorok mellett tulajdonság hivatkozásokat is
 
 Az alábbi táblázat egyenlőségi összehasonlítás eredménye minden két JSON-típusok között az SQL API-ban.
 
-| **Op** | **Nincs definiálva** | **NULL** | **Logikai érték** | **Szám** | **Karakterlánc** | **Object** | **Pole** |
+| **Op** | **Nem definiált** | **Null** | **Logikai** | **Szám** | **String** | **Objektum** | **Tömb** |
 |---|---|---|---|---|---|---|---|
-| **Nincs definiálva** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan |
-| **NULL** | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan |
-| **Logikai érték** | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan |
-| **Szám** | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan | Meghatározatlan |
-| **Karakterlánc** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan |
-| **Object** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan |
-| **Pole** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** |
+| **Nem definiált** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Nem definiált |
+| **Null** | Nem definiált | **OK** | Nem definiált | Meghatározatlan | Meghatározatlan | Meghatározatlan | Nem definiált |
+| **Logikai** | Nem definiált | Nem definiált | **OK** | Nem definiált | Meghatározatlan | Meghatározatlan | Nem definiált |
+| **Szám** | Nem definiált | Meghatározatlan | Nem definiált | **OK** | Nem definiált | Meghatározatlan | Nem definiált |
+| **String** | Nem definiált | Meghatározatlan | Meghatározatlan | Nem definiált | **OK** | Nem definiált | Nem definiált |
+| **Objektum** | Nem definiált | Meghatározatlan | Meghatározatlan | Meghatározatlan | Nem definiált | **OK** | Nem definiált |
+| **Tömb** | Nem definiált | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Nem definiált | **OK** |
 
 Más összehasonlító operátorok, mint például a >, > =,! =, <, és < =, a következő szabályok érvényesek:
 
@@ -452,7 +452,7 @@ Logikai operátorok a logikai értékek művelethez. Ezen operátorok logikai hi
 | --- | --- | --- | --- |
 | True (Igaz) |True (Igaz) |True (Igaz) |True (Igaz) |
 | False (Hamis) |True (Igaz) |False (Hamis) |Meghatározatlan |
-| Meghatározatlan |True (Igaz) |Meghatározatlan |Meghatározatlan |
+| Meghatározatlan |True (Igaz) |Meghatározatlan |Nem definiált |
 
 **ÉS operátor**
 
@@ -460,7 +460,7 @@ Logikai operátorok a logikai értékek művelethez. Ezen operátorok logikai hi
 | --- | --- | --- | --- |
 | True (Igaz) |True (Igaz) |False (Hamis) |Meghatározatlan |
 | False (Hamis) |False (Hamis) |False (Hamis) |False (Hamis) |
-| Meghatározatlan |Meghatározatlan |False (Hamis) |Meghatározatlan |
+| Meghatározatlan |Meghatározatlan |False (Hamis) |Nem definiált |
 
 **NOT operátor**
 
@@ -538,7 +538,7 @@ Abban az esetben, ha egy lekérdezést a két tulajdonság azonos nevű rendelke
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -562,7 +562,7 @@ Mellett tulajdonság hivatkozik a SELECT záradékban skaláris kifejezések ál
     SELECT "Hello World"
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -578,7 +578,7 @@ Mellett tulajdonság hivatkozik a SELECT záradékban skaláris kifejezések ál
     SELECT ((2 + 11 % 7)-2)/3
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -595,7 +595,7 @@ A következő példában a skaláris kifejezés eredménye egy logikai érték.
     FROM Families f
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -619,7 +619,7 @@ Az SQL API egy másik fontos szolgáltatása a tömb vagy objektum-létrehozás.
     FROM Families f
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -648,7 +648,7 @@ A **érték** kulcsszó lehetővé teszi a JSON-értéket adja vissza. Ha péld�
     SELECT VALUE "Hello World"
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -665,7 +665,7 @@ A következő lekérdezés nélkül JSON értékét adja vissza a `"address"` c�
     FROM Families f
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -691,7 +691,7 @@ Az alábbi példa kibővíti az ad vissza JSON egyszerű értékeket (az a JSON-
     FROM Families f
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -711,7 +711,7 @@ A speciális operátor (*) támogatott, az elem Project-van. Használatakor a cs
     WHERE f.id = "AndersenFamily"
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -744,7 +744,7 @@ A felső kulcsszó egy lekérdezés által értékek számának korlátozására
     FROM Families f
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -779,7 +779,7 @@ Az összesítéseket is elvégezheti a `SELECT` záradékban. Aggregátumfüggv�
     FROM Families f
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -796,7 +796,7 @@ Az összesítési skaláris értékét adja vissza a a `VALUE` kulcsszót. Péld
     FROM Families f
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [ 2 ]
@@ -812,7 +812,7 @@ A szűrők együtt is elvégezheti összesítések. Például a következő lek�
     WHERE f.address.state = "WA"
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [ 1 ]
@@ -850,7 +850,7 @@ Például itt látható egy lekérdezést, amely lekéri a tartózkodási város
     ORDER BY f.address.city
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -875,7 +875,7 @@ Például itt látható egy lekérdezést, amely lekéri a tartózkodási város
     ORDER BY f.creationDate DESC
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -903,7 +903,7 @@ Egy új szerkezet használatával lett hozzáadva a **IN** kulcsszó keresztül 
     FROM Families.children
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -941,7 +941,7 @@ Most nézzük meg egy másik lekérdezést, amely végrehajtja az iteráció gye
     FROM c IN Families.children
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -976,7 +976,7 @@ Ez további segítségével szűrhet a tömb minden egyes bejegyzés a következ
     WHERE c.grade = 8
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -993,7 +993,7 @@ Ez további segítségével szűrhet a tömb minden egyes bejegyzés a következ
     FROM child IN Families.children
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -1019,7 +1019,7 @@ Az alábbi példák bemutatják, hogyan működik a JOIN záradékban. A követk
     JOIN f.NonExistent
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -1036,7 +1036,7 @@ A következő példában a csatlakozás a cikk alapvető között van, és a `ch
     JOIN f.children
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -1059,7 +1059,7 @@ Az alábbi példa bemutatja a hagyományosabb csatlakozzon:
     JOIN c IN f.children
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -1098,7 +1098,7 @@ A valódi segédprogramot a JOIN űrlap rekordokat tartalmazó származik a term
     JOIN p IN c.pets
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -1156,7 +1156,7 @@ A következő példában van egy kiegészítő szűrőt `pet`, amely nem tartalm
     WHERE p.givenName = "Shadow"
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -1212,7 +1212,7 @@ Az UDF leképezés a lekérdezést most használatával. UDF-EK musí mít kvali
     FROM Families
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -1235,7 +1235,7 @@ Az UDF is használható belül egy szűrőt, ahogyan az alábbi példában is mi
     WHERE udf.REGEX_MATCH(Families.address.city, ".*eattle")
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -1279,7 +1279,7 @@ Alul látható egy példa, amely az UDF-ben él.
     FROM Families f
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
      [
@@ -1397,7 +1397,7 @@ Ha például már lekérdezéseket is futtathat az alábbi példában látható 
     SELECT VALUE ABS(-4)
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [4]
@@ -1418,7 +1418,7 @@ A típus ellenőrzése funkciók lehetővé teszik az SQL-lekérdezések belül 
 | [IS_OBJECT (kifejezés)](sql-api-query-reference.md#bk_is_object) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy JSON-objektumot ad vissza. |
 | [IS_STRING (kifejezés)](sql-api-query-reference.md#bk_is_string) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy karakterláncot ad vissza. |
 | [IS_DEFINED (kifejezés)](sql-api-query-reference.md#bk_is_defined) | Jelzi, ha a tulajdonság hozzá lett rendelve egy érték logikai érték beolvasása. |
-| [IS_PRIMITIVE (kifejezés)](sql-api-query-reference.md#bk_is_primitive) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy karakterlánc, szám, logikai vagy null értékű beolvasása. |
+| [IS_PRIMITIVE (expr)](sql-api-query-reference.md#bk_is_primitive) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy karakterlánc, szám, logikai vagy null értékű beolvasása. |
 
 Ezek a függvények használatával, mostantól lekérdezéseket is futtathat az alábbi példában látható módon:
 
@@ -1428,7 +1428,7 @@ Ezek a függvények használatával, mostantól lekérdezéseket is futtathat az
     SELECT VALUE IS_NUMBER(-4)
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [true]
@@ -1440,7 +1440,7 @@ A következő skaláris függvények végrehajtania egy műveletet a bemeneti ka
 
 | Használat | Leírás |
 | --- | --- |
-| [LENGTH (str_expr)](sql-api-query-reference.md#bk_length) | A megadott karakterlánc-kifejezés karakterek számát adja vissza |
+| [A hossz (str_expr)](sql-api-query-reference.md#bk_length) | A megadott karakterlánc-kifejezés karakterek számát adja vissza |
 | [CONCAT (str_expr, str_expr [, str_expr])](sql-api-query-reference.md#bk_concat) | Legalább két karakterlánc-értékek összetűzésének eredménye karakterláncként adja vissza. |
 | [KARAKTERLÁNCRÉSZLET (str_expr, num_expr, num_expr)](sql-api-query-reference.md#bk_substring) | Egy karakterlánc-kifejezés részét adja vissza. |
 | [STARTSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_startswith) | Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második kezdődik |
@@ -1454,7 +1454,7 @@ A következő skaláris függvények végrehajtania egy műveletet a bemeneti ka
 | [ALSÓ (str_expr)](sql-api-query-reference.md#bk_lower) | Egy karakterlánc-kifejezés nagybetűt adatok átalakítása kisbetűvé után adja vissza. |
 | [FELSŐ (str_expr)](sql-api-query-reference.md#bk_upper) | Egy karakterlánc-kifejezés után kisbetűt adatok nagybetűssé alakításával adja vissza. |
 | [Cserélje le a (str_expr, str_expr, str_expr)](sql-api-query-reference.md#bk_replace) | A megadott karakterlánc értéket az összes előfordulását lecseréli egy másik karakterláncérték. |
-| [REPLIKÁLÁS (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) | Egy karakterláncértéket a megadott számú alkalommal ismétlődik. |
+| [REPLICATE (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) | Egy karakterláncértéket a megadott számú alkalommal ismétlődik. |
 | [FORDÍTOTT (str_expr)](sql-api-query-reference.md#bk_reverse) | A karakterlánc-érték megfelelő sorrendben adja vissza. |
 
 Ezek a függvények használatával, mostantól lekérdezéseket is futtathat a következőhöz hasonló. Például lépjen vissza a családnevet nagybetűs módon:
@@ -1466,7 +1466,7 @@ Ezek a függvények használatával, mostantól lekérdezéseket is futtathat a 
     FROM Families
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [
@@ -1484,7 +1484,7 @@ Vagy az összefűzés például ebben a példában:
     FROM Families
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -1507,7 +1507,7 @@ Karakterlánc-függvények is szűrheti az eredményeket, mint például az alá
     WHERE STARTSWITH(Families.id, "Wakefield")
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -1537,7 +1537,7 @@ Tömb funkciók segítségével kezelheti a tömb JSON belül használható. Ha 
     WHERE ARRAY_CONTAINS(Families.parents, { givenName: "Robin", familyName: "Wakefield" })
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -1555,7 +1555,7 @@ Az egyező elemeket a tömbön belüli részleges töredéket is megadhat. A kö
     WHERE ARRAY_CONTAINS(Families.parents, { givenName: "Robin" }, true)
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -1572,7 +1572,7 @@ Az egyező elemeket a tömbön belüli részleges töredéket is megadhat. A kö
     FROM Families 
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -1607,7 +1607,7 @@ Térbeli funkciók térbeli adatokon közelségi lekérdezések végrehajtásáh
     WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```json
     [{
@@ -2004,7 +2004,7 @@ Az alábbi példák bemutatják egy SQL API-lekérdezés ellen a két minta elem
     }
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```
     HTTP/1.1 200 Ok
@@ -2078,7 +2078,7 @@ A második példa bemutatja egy összetettebb lekérdezés, amely a join több e
     }
 ```
 
-**Results**
+**Results (Eredmények)**
 
 ```
     HTTP/1.1 200 Ok
@@ -2208,7 +2208,7 @@ A következő minta bemutatja az illesztések, LINQ SelectMany keresztül.
 
 A .NET-ügyfél automatikusan végighalad a lekérdezési eredmények jelennek meg a foreach egységekben minden oldalára. A lekérdezési beállítások ismertetése a REST API-szakaszban is megtalálhatók a .NET SDK használatával a `FeedOptions` és `FeedResponse` osztályok a CreateDocumentQuery metódusban. A lapok száma használatával lehet irányítani a `MaxItemCount` beállítás.
 
-Explicit módon is szabályozhatja, lapozási létrehozásával `IDocumentQueryable` használatával a `IQueryable` objektumot, majd olvassa el a` ResponseContinuationToken` értékeket, és átadja azokat a biztonsági másolatot `RequestContinuationToken` a `FeedOptions`. `EnableScanInQuery` beállítható a vizsgálatok engedélyezéséhez, ha a lekérdezés a konfigurált indexelési szabályzat által nem támogatott. A particionált tárolók használhatja `PartitionKey` (bár az Azure Cosmos DB automatikusan kinyerheti az Ez a lekérdezés szövege a) egy olyan partíciót, a lekérdezés futtatásához és `EnableCrossPartitionQuery` előfordulhat, hogy kell futtatni több partíció-lekérdezések futtatásához.
+Explicit módon is szabályozhatja, lapozási létrehozásával `IDocumentQueryable` használatával a `IQueryable` objektumot, majd olvassa el a `ResponseContinuationToken` értékeket, és átadja azokat a biztonsági másolatot `RequestContinuationToken` a `FeedOptions`. `EnableScanInQuery` beállítható a vizsgálatok engedélyezéséhez, ha a lekérdezés a konfigurált indexelési szabályzat által nem támogatott. A particionált tárolók használhatja `PartitionKey` (bár az Azure Cosmos DB automatikusan kinyerheti az Ez a lekérdezés szövege a) egy olyan partíciót, a lekérdezés futtatásához és `EnableCrossPartitionQuery` előfordulhat, hogy kell futtatni több partíció-lekérdezések futtatásához.
 
 Tekintse meg [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet) további mintákat tartalmazó lekérdezések számára.
 
@@ -2254,7 +2254,7 @@ Az alábbi példa bemutatja, hogyan használható a queryDocuments az API a Java
 
 1. [Az Azure Cosmos DB bemutatása][introduction]
 2. [Az Azure Cosmos DB SQL-specifikáció](https://go.microsoft.com/fwlink/p/?LinkID=510612)
-3. [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet)
+3. [Azure Cosmos DB .NET samples](https://github.com/Azure/azure-cosmosdb-dotnet)
 4. [Az Azure Cosmos DB Konzisztenciaszintjeinek][consistency-levels]
 5. ANSI SQL 2011 [https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6. JSON-BAN [https://json.org/](https://json.org/)

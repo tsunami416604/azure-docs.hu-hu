@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: b4a35cb853326aa3e54c7b261eaa72f15929a84c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 325cd0d2f52405ae1cbf463f6335c8738317ea1f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483964"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878706"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
 
@@ -33,7 +33,7 @@ A táblázat összefoglalja a helyszíni konfigurációs kiszolgáló gép telep
 | Operációs rendszer területi beállítása | Angol (Egyesült Államok)|
 | VMware vSphere PowerCLI verziója | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
 | Windows Server-szerepkörök | Ezek a szerepkörök nem engedélyezi: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V |
-| Csoportházirendek| Ezek a szabályzatok csoport nem engedélyezi: <br> – Való hozzáférés letiltása a parancssor használatával <br> – Való hozzáférés letiltása a beállításjegyzék szerkesztőeszközeihez <br> -Megbízhatósági logika fájlmellékletekhez <br> – Kapcsolja be a parancsfájl végrehajtása <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+| Csoportházirendek| Ezek a szabályzatok csoport nem engedélyezi: <br> – Való hozzáférés letiltása a parancssor használatával <br> – Való hozzáférés letiltása a beállításjegyzék szerkesztőeszközeihez <br> -Megbízhatósági logika fájlmellékletekhez <br> – Kapcsolja be a parancsfájl végrehajtása <br> [Részletek](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 | IIS | – Nincs már meglévő alapértelmezett webhelye <br> -Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br> – Nincs már meglévő webhely vagy alkalmazás 443-as porton<br>|
 | Hálózati adapter típusa | VMXNET3 (Ha a VMware virtuális gépként telepített) |
 | IP-cím típusa | Statikus |
@@ -283,7 +283,7 @@ A kiszolgáló frissítése a következőképpen:
     `$Fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. A konfigurációs kiszolgáló törlése
 
-    `Remove-AzureRmSiteRecoveryFabric -Fabric $Fabric [-Force] `
+    `Remove-AzureRmSiteRecoveryFabric -Fabric $Fabric [-Force]`
 
 > [!NOTE]
 > A **-Force** a konfigurációs kiszolgáló eltávolításának vagy törlésének kényszerítése a Remove-AzureRmSiteRecoveryFabric lehetőség használható.

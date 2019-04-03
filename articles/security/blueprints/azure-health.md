@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 5f23435a43d139ecb9f20e5036124f175b1830c9
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 70721b8bfbecaf554a9502b9ec3417fc8e561b3f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225365"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885944"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
@@ -150,19 +150,19 @@ A tervezet anonimizált orvosi bemutatásához a megoldás betanítást, predikt
 
 **Hely rendszergazdája--Alex**
 
-*E-mail cím: Alex\_SiteAdmin*
+*E-mail: Alex\_SiteAdmin*
 
 Alex a feladat, amely egy helyszíni hálózat kezelésének terhe csökkentése és a felügyeleti költségek csökkentése technológiák kiértékelheti, hogy. Alex rendelkezik lett szeretném összehasonlítani az Azure egy kis ideig, de rendelkezik struggled konfigurálása a szolgáltatásokat, amelyek kell beteg adatokat tárolni a felhőben, a HiTrust megfelelőségi követelmények teljesítése érdekében. Alex ki van választva az Azure állapota AI telepíthet megfelelőségi használatra kész állapot megoldást, a HiTrust az ügyfelek igényeinek megfelelően a követelményeknek már képes kezelni.
 
 **Statisztikusnak Perényi**
 
-*E-mail cím: Debra\_DataScientist*
+*E-mail: Debra\_DataScientist*
 
 Perényi használatával, és elemzéséhez, orvosi betegellátásban betekintést biztosít a modellek létrehozására van. Perényi SQL és statisztikai R programozási nyelv használatával saját modelleket hozhat létre.
 
 **Adatbázis-elemző--Danny**
 
-*E-mail cím: Danny\_DBAnalyst*
+*E-mail: Danny\_DBAnalyst*
 
 Danny bármit fő forduljon a Microsoft SQL Server, amely a betegek adatokat tárolja a Contosoclinic kapcsolatban. Danny egy tapasztalt SQL Server-rendszergazdához, aki rendelkezik nemrég megismerkedhet az Azure SQL Database.
 
@@ -173,13 +173,13 @@ Caroline a hossz – a tartózkodási (LOS) megoldás által létrehozott javasl
 
 **Chris gondoskodik a betegápolási vezető--**
 
-*E-mail cím: Chris\_CareLineManager*
+*E-mail: Chris\_CareLineManager*
 
 Az egyéni közvetlenül betegek már a betegfelvétel és Contosoclinic, a kibocsátás kezeléséért Chris használ a LOS megoldás által generált előrejelzések győződjön meg arról, hogy elérhetők-e megfelelő gondossággal nyújt betegeket, míg azok tartózkodó a létesítmény.
 
 **Auditor--Han**
 
-*E-mail cím: Han\_Auditor*
+*E-mail: Han\_Auditor*
 
 Han egy hitelesített auditor rendelkező, az ISO, SOC és a HiTrust naplózásának élmény. Han volt felvett Contosoclinc a hálózati áttekintéséhez. Han tekintheti át az ügyfél felelőssége mátrix a megoldáshoz mellékelt győződjön meg arról, hogy a tervezet és LOS megoldás tárol, dolgoz fel, és jelenítheti meg a személyes adatok használhatók.
 
