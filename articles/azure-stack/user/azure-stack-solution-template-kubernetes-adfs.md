@@ -15,12 +15,12 @@ ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/11/2019
-ms.openlocfilehash: 7e11da971e86b605e3e17b07ebcdab97eef5b957
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bdb46a5e11b26f04d008160fa5a782050211b56e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122943"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484373"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Az Active Directory összevont szolgáltatásokat az Azure Stack üzembe helyezése Kubernetes
 
@@ -85,7 +85,7 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
 
    - Nyisson meg egy rendszergazda jogú parancssort, PowerShell és [csatlakozás az Azure Stack](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
 
-     ```PowerShell  
+   ```powershell  
        $armEndpoint="<Azure Resource Manager Endpoint>"
        $subscriptionId="<Your Subscription ID>"
        $username="<your user name >"
@@ -118,7 +118,7 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
        | Érték | Leírás |
        | ---   | ---         |
        | Tanúsítvány elérési útja | A teljes tartománynév vagy a fájl elérési útja a tanúsítványt. |
-       | Tanúsítványjelszó | A tanúsítvány jelszavát. |
+       | Tanúsítvány jelszava | A tanúsítvány jelszavát. |
        | Název tajného kódu | A mutató hivatkozás a tanúsítvány a tárolóban tárolt titkos neve. |
        | A Key vault neve | A key vault az előző lépésben létrehozott neve. |
        | Az Azure Resource Manager-végpont | A végpont az Azure Stack Development Kit (ASDK) a következő: `https://management.local.azurestack.external/`<br>A végpont az integrált rendszerekről van: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
@@ -126,7 +126,7 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
 
    - Nyisson meg egy rendszergazda jogú parancssort, PowerShell és [csatlakozás az Azure Stack](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
 
-     ```PowerShell  
+    ```powershell
         
      # upload the pfx to key vault
      $tempPFXFilePath = "<certificate path>"
@@ -210,7 +210,7 @@ Az AD FS-identitáskezelési megoldásként használatakor az egyszerű szolgál
 
 1. Adja meg a **Kubernetes az Azure Cloud szolgáltató verziója**. Ez az a verzió a Kubernetes Azure-szolgáltatóhoz. Az Azure Stack kiad egy egyéni Kubernetes-build minden egyes Azure Stack-verzió.
 
-### <a name="3-summary"></a>3. Összegzés
+### <a name="3-summary"></a>3. Összefoglalás
 
 1. Válassza ki a összegzése. A panel a Kubernetes-fürt konfigurációk beállítások érvényesítése üzenetet jelenít meg.
 

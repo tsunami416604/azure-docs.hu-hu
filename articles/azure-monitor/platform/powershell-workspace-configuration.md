@@ -8,18 +8,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: richrund
-ms.openlocfilehash: f37c8290defa5e7c9baa3b705393aba376936fd8
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 5c348adea0847929b37d1b61f024859b1d634fe7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539377"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903403"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>A PowerShell-lel az Azure Monitor Log Analytics-munkaterület kezelése
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Használhatja a [Log Analytics PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) különféle funkciók végrehajtásához a Log Analytics-munkaterületet az Azure monitorban parancssori vagy parancsfájl részeként.  A PowerShell használatával is elvégezheti a feladatok közé:
+Használhatja a [Log Analytics PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.operationalinsights/) különféle funkciók végrehajtásához a Log Analytics-munkaterületet az Azure monitorban parancssori vagy parancsfájl részeként.  A PowerShell használatával is elvégezheti a feladatok közé:
 
 * Munkaterület létrehozása
 * Adja hozzá, vagy eltávolíthat egy megoldást
@@ -33,10 +31,12 @@ Használhatja a [Log Analytics PowerShell-parancsmagok](https://docs.microsoft.c
 * A log analytics-ügynök hozzáadása egy Azure virtuális gépen
 * Konfigurálja a log analytics index adatokat gyűjteni, az Azure diagnostics használatával
 
-Ez a cikk két kódmintákért a függvények a Powershellből hajthat végre.  Olvassa el a [Log Analytics PowerShell-parancsmagok leírása](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) más függvények.
+Ez a cikk két kódmintákért a függvények a Powershellből hajthat végre.  Olvassa el a [Log Analytics PowerShell-parancsmagok leírása](https://docs.microsoft.com/powershell/module/az.operationalinsights/) más függvények.
 
 > [!NOTE]
 > A log Analytics korábbi neve Operational Insights, ezért a parancsmagok a név legyen.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ezekben a példákban az 1.0.0-s verziójának, vagy később, a Az.OperationalInsights modul dolgozik.
@@ -272,5 +272,5 @@ Az előző parancsfájlt használhatja gyűjteni a tárfiókok eltérő előfize
 
 
 ## <a name="next-steps"></a>További lépések
-* [Tekintse át a Log Analytics PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) további információk a PowerShell használatával a Log Analytics-konfigurációhoz.
+* [Tekintse át a Log Analytics PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.operationalinsights/) további információk a PowerShell használatával a Log Analytics-konfigurációhoz.
 

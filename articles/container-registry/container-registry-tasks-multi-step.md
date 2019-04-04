@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: b2b6da1739aa97f69f5744905564f638309a587f
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: ac0e4e9019a35d3fdb35c0b7af9cb1289f4bceeb
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854322"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895449"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Többlépéses buildelési, tesztelési és patch feladatok futtatása az ACR-feladatokban
 
@@ -32,8 +32,6 @@ Például futtathatja egy feladatot a lépéseket, amelyeket a következő logik
 
 Minden lépést az Azure-feladatkiszervezést a munkát az Azure számítási erőforrásokat, és így Ön az infrastruktúra belül menjenek végbe. Amellett, hogy az Azure container registry kell fizetnie csak az erőforrások után. Díjszabási információkért tekintse meg a **tárolót hozhat létre** szakasz [Azure Container Registry díjszabás][pricing].
 
-> [!IMPORTANT]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
 ## <a name="common-task-scenarios"></a>Általános tevékenység-forgatókönyvek
 
@@ -49,14 +47,14 @@ Többlépéses feladatok például a következő logikai forgatókönyvek megval
 
 A többlépéses feladat az ACR-feladatok több lépést jelentenek egy YAML-fájlt van definiálva. Az egyes lépések függőségek egy vagy több korábbi lépés sikeres befejezése is meghatározhat. A következő lépésben tevékenységtípust érhetők el:
 
-* [`build`](container-registry-tasks-reference-yaml.md#build): Egy vagy több tárolórendszerképek használata ismerős létrehozása `docker build` szintaxist, sorozat- vagy párhuzamosan.
-* [`push`](container-registry-tasks-reference-yaml.md#push): Leküldéses készített rendszerképek továbbíthat egy tárolóregisztrációs adatbázisba. Privát beállításjegyzékek, például az Azure Container Registry támogatottak, mert a nyilvános Docker Hub.
-* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Egy tárolóban, futtassa, hogy tudjon működni a futó feladat kontextusában függvényében. Paramétereket adhat át a tároló `[ENTRYPOINT]`, és adja meg a tulajdonságokat, mint az env, válassza le, és más ismerős `docker run` paramétereket. A `cmd` lehetővé teszi a lépés típusát egység és funkcionális tesztelés, a tároló egyidejű végrehajtása.
+* [`build`](container-registry-tasks-reference-yaml.md#build): Ismerős segítségével egy vagy több tárolórendszerképek létrehozása `docker build` szintaxist, sorozat- vagy párhuzamosan.
+* [`push`](container-registry-tasks-reference-yaml.md#push): Beépített rendszerképek leküldése egy tároló-beállításjegyzéket. Privát beállításjegyzékek, például az Azure Container Registry támogatottak, mert a nyilvános Docker Hub.
+* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Egy tárolóban, futtassa, úgy, hogy tudjon működni a futó feladat kontextusában függvényében. Paramétereket adhat át a tároló `[ENTRYPOINT]`, és adja meg a tulajdonságokat, mint az env, válassza le, és más ismerős `docker run` paramétereket. A `cmd` lehetővé teszi a lépés típusát egység és funkcionális tesztelés, a tároló egyidejű végrehajtása.
 
 Az alábbi kódrészletek bemutatják, hogyan kombinálhatók az alábbi lépés tevékenységtípust. Lehet, hogy egyszerűen egy Docker-fájlból egy lemezkép létrehozása és leküldése a beállításjegyzékbe, hasonlóan egy YAML-fájllal több lépésből álló feladatokat:
 
-```yaml
-version: 1.0-preview-1
+```yml
+version: v1.0.0
 steps:
   - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
@@ -64,8 +62,8 @@ steps:
 
 Vagy összetettebb, például a build szükséges lépéseket is tartalmaz a fiktív többlépéses definíció, tesztelés, a helm-csomagot és a helm és üzembe helyezése (tároló-beállításjegyzék Helm adattár-konfiguráció nem látható):
 
-```yaml
-version: 1.0-preview-1
+```yml
+version: v1.0.0
 steps:
   - id: build-web
     build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
@@ -150,14 +148,6 @@ Run ID: yd14 was successful after 19s
 ```
 
 A Git commit vagy alap rendszerképet update automatizált buildekig kapcsolatos további információkért lásd: a [rendszerképek létrehozásának automatizálása](container-registry-tutorial-build-task.md) és [rendszerképek frissítési létrehozásának kiinduló](container-registry-tutorial-base-image-update.md) oktatóanyag cikkeire.
-
-## <a name="preview-feedback"></a>Előzetes verzióval kapcsolatos visszajelzések
-
-Amíg az ACR-feladatokat a többlépéses feladat funkció előzetes verzióban érhető el, Felkérjük, hogy visszajelzést. Számos visszajelzés csatornák érhetők el:
-
-* [Problémák](https://aka.ms/acr/issues) – megtekintheti a meglévő hibák és problémák, és újakat naplózása
-* [UserVoice](https://aka.ms/acr/uservoice) -szavazhat a meglévő kérések funkciót, vagy hozzon létre új kérések
-* [Beszélgetés](https://aka.ms/acr/feedback) -léphet kapcsolatba az Azure Container Registry vitafórum a Stack Overflow Közösséggel
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,18 +8,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 43947413f061ec8b366392b676e848ebf5e6484e
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 994ccf292a4215624d4222fe13ca9ac25c863368
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570113"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895866"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Hitelesítés a Stream Analytics használatával az Azure Data Lake Storage Gen1 felügyelt identitások (előzetes verzió) használatával
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Hitelesítés a Stream Analytics használatával az Azure Data Lake Storage Gen1 felügyelt identitások használatával
 
 Az Azure Stream Analytics felügyelt identitás hitelesítés az Azure Data Lake Storage (ADLS) Gen1 kimeneti támogatja. Az identitás az Azure Active Directoryban, amely egy adott Stream Analytics-feladat egy felügyelt alkalmazást, és célzott erőforrás hitelesítéséhez használható. Felügyelt identitások megszüntetheti a felhasználó-alapú hitelesítési módszerek, például a jelszó módosítására vagy a felhasználói jogkivonat lejárhat 90 naponként előforduló miatt hitelesítse magát újra kellene vonatkozó korlátozások. Ezenkívül a felügyelt identitások, amelyek az Azure Data Lake Storage Gen1 kimenete Stream Analytics-feladat központitelepítését automatizálással segítségével.
-
-Látogasson el a [nyolc új funkciók az Azure Stream Analyticsben](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) feliratkozás az előzetes verzió és tanulmányozza részletesen az új funkciók a blogbejegyzést.
 
 Ez a cikk bemutatja, háromféleképpen engedélyezni az Azure Stream Analytics-feladat, amely, egy Azure Data Lake Storage Gen1 keresztül az Azure Portalon, az Azure Resource Manager-sablon üzembe helyezése és az Azure Stream Analytics tools for Visual Studio-felügyelt identitást.
 
@@ -27,11 +25,11 @@ Ez a cikk bemutatja, háromféleképpen engedélyezni az Azure Stream Analytics-
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Először hozzon létre egy új Stream Analytics-feladat vagy egy meglévő feladat nyissa meg az Azure Portalon. A képernyő bal oldalán található menüsávban válassza **felügyelt identitás (előzetes verzió)** alatt **konfigurálása**.
+1. Először hozzon létre egy új Stream Analytics-feladat vagy egy meglévő feladat nyissa meg az Azure Portalon. A képernyő bal oldalán található menüsávban válassza **felügyelt identitás** alatt **konfigurálása**.
 
-   ![Stream Analytics felügyelt identitás előzetes konfigurálása](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
+   ![Stream Analytics felügyelt identitás konfigurálása](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. Válassza ki **használható rendszer által hozzárendelt felügyelt identitás (előzetes verzió)** a jobb oldalon megjelenő ablakban. Kattintson a **mentése** identitását a Stream Analytics-feladat az Azure Active Directoryban egy egyszerű szolgáltatás. Az újonnan létrehozott identitás életciklusának fogja felügyelni az Azure-ban. A Stream Analytics-feladat törlése esetén a rendszer automatikusan törli a társított identitás (azaz a szolgáltatásnév) az Azure-ban.
+2. Válassza ki **felügyelt identitás használata rendszer által hozzárendelt** a jobb oldalon megjelenő ablakban. Kattintson a **mentése** identitását a Stream Analytics-feladat az Azure Active Directoryban egy egyszerű szolgáltatás. Az újonnan létrehozott identitás életciklusának fogja felügyelni az Azure-ban. A Stream Analytics-feladat törlése esetén a rendszer automatikusan törli a társított identitás (azaz a szolgáltatásnév) az Azure-ban.
 
    A konfiguráció mentésekor az objektumazonosító (OID) egyszerű szolgáltatás szerepel a résztvevő-azonosítóval alább látható módon:
 
@@ -39,7 +37,7 @@ Ez a cikk bemutatja, háromféleképpen engedélyezni az Azure Stream Analytics-
  
    A szolgáltatásnév neve megegyezik a Stream Analytics-feladat van. Például, ha a feladat neve **MyASAJob**, a létrehozott szolgáltatásnév neve nem is **MyASAJob**.
 
-3. Az ADLS Gen1 kimeneti fogadó kimeneti tulajdonságok ablakban kattintson a legördülő menüből, és válassza ki a hitelesítési mód **felügyelt identitás (előzetes verzió)**.
+3. Az ADLS Gen1 kimeneti fogadó kimeneti tulajdonságok ablakban kattintson a legördülő menüből, és válassza ki a hitelesítési mód ** felügyelt identitás **.
 
 4. Adja meg a további tulajdonságok. Egy ADLS-kimenet létrehozásával kapcsolatos további tudnivalókért lásd: [hozzon létre egy Data lake Store-kimenetet a stream analytics](../data-lake-store/data-lake-store-stream-analytics.md). Ha elkészült, kattintson a **mentése**.
 

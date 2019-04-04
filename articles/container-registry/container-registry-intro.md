@@ -5,15 +5,15 @@ services: container-registry
 author: stevelas
 ms.service: container-registry
 ms.topic: overview
-ms.date: 09/25/2018
+ms.date: 03/29/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: befac6f1429d5099f68f0c2ba0a90bb1217f8b6f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 39f643bd66e2a96b0b9b93989d2941a9c30ea7fc
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530262"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894013"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Az Azure-beli privát Docker-tárolójegyzékek bemutatása
 
@@ -42,9 +42,9 @@ Alkalmazás-lemezképek automatikusan újraépítheti a saját alaplemezképek f
 
 * **Tárház** -beállításjegyzék tartalmaz egy vagy több tárat, amelyek tárolórendszerképek csoportjai tárolja. Az Azure Container Registry támogatja a többszintű adattárnévtereket. A többszintű névterekkel csoportba rendezheti egy adott alkalmazáshoz vagy alkalmazások gyűjteményéhez kapcsolódó rendszerképek gyűjteményeit az egyes fejlesztői és üzemeltetői csoportok számára. Példa:
 
-  * A(z) `myregistry.azurecr.io/aspnetcore:1.0.1` egy, a teljes vállalatban elérhető rendszerképet jelöl
-  * A(z) `myregistry.azurecr.io/warrantydept/dotnet-build` egy .NET-alkalmazások felépítéséhez használt rendszerképet jelöl, amely a jótállási részlegen van megosztva
-  * A(z) `myregistry.azurecr.io/warrantydept/customersubmissions/web` egy, az ügyfélbeadványok alkalmazásban csoportosított webes rendszerképet jelöl, amely a jótállási részleg tulajdona
+  * `myregistry.azurecr.io/aspnetcore:1.0.1` a vállalatban elérhető rendszerképet jelöl
+  * `myregistry.azurecr.io/warrantydept/dotnet-build` egy .NET-alkalmazások, amely a jótállási részlegen megosztott felépítéséhez használt rendszerképet jelöl
+  * `myregistry.azurecr.io/warrantydept/customersubmissions/web` egy webes rendszerképet jelöl, alkalmazásban csoportosított az ügyfél a jelentkezés a jótállási részleg tulajdona
 
 * **Kép** – az adattárakban tárolt egyes rendszerképek egy Docker-kompatibilis tároló csak olvasható pillanatkép. Az Azure tároló-beállításjegyzékek Windows- és Linux-rendszerképeket is tartalmazhatnak. A rendszerképek neveit Ön határozza meg mindegyik tárolókörnyezetben. A rendszerképek szabványos [Docker-parancsokkal](https://docs.docker.com/engine/reference/commandline/) küldhetők le egy adattárba, vagy hívhatók elő onnan. Tárolórendszerképek mellett az Azure Container Registry tárolja [kapcsolódó tartalom formátumok](container-registry-image-formats.md) például [Helm-diagramok](container-registry-helm-repos.md)szolgál Kubernetes-alkalmazások központi telepítése.
 
@@ -54,10 +54,10 @@ Alkalmazás-lemezképek automatikusan újraépítheti a saját alaplemezképek f
 
 Az [Azure Container Registry Tasks](container-registry-tasks-overview.md) (ACR Tasks) az Azure Container Registry egy szolgáltatáscsomagja, amely lehetővé teszi a Docker-tárolórendszerképek zökkenőmentes és hatékony összeállítását az Azure-ban. Az ACR Tasks használatával kiterjesztheti a felhőbe a belső fejlesztési ciklust a `docker build`-műveletek Azure-ba való áthelyezése által. Konfigurálhat összeállítási feladatokat a tároló operációs rendszerének és a keretrendszer javítási folyamatának automatizálására, valamint a rendszerképek automatikus összeállítására, ha a csoport kódot véglegesít a forráskezelőben.
 
-A [többlépéses feladatok](container-registry-tasks-overview.md#multi-step-tasks-preview) az ACR Tasks egyik előzetes verziós funkciója, amelyekkel lépésekre osztott feladatdefiníciókat és buildelési, tesztelési és felhőbeli tárolólemezkép-javítást végezhet. A feladatlépések tárolólemezképek különálló buildelési és leküldéses műveleteit határozzák meg. Emellett egy vagy több tároló végrehajtását is definiálhatják; a lépések a tárolót használják végrehajtási környezetnek.
+[Több lépésből álló feladatokat](container-registry-tasks-overview.md#multi-step-tasks) adja meg lépés alapú feladatdefiníció és végrehajtási létrehozásához, teszteléséhez és a javítással tárolórendszerképeket a felhőben. A feladatlépések tárolólemezképek különálló buildelési és leküldéses műveleteit határozzák meg. Emellett egy vagy több tároló végrehajtását is definiálhatják; a lépések a tárolót használják végrehajtási környezetnek.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Tároló-beállításjegyzék létrehozása az Azure Portalon](container-registry-get-started-portal.md)
-* [Tároló beállításjegyzék létrehozása az Azure CLI-vel](container-registry-get-started-azure-cli.md)
-* [Operációs rendszer és keretrendszer javításának automatizálása az ACR Tasksszal](container-registry-tasks-overview.md)
+* [Tároló-beállításjegyzék létrehozása az Azure CLI-vel](container-registry-get-started-azure-cli.md)
+* [Az operációs rendszer és a keretrendszer javítás ACR feladatok automatizálása](container-registry-tasks-overview.md)

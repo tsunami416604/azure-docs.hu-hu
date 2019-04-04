@@ -14,12 +14,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 0ebd17eca363d7fc02daeb851bb24b8d1d307efc
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: bd5e5a3b6fa72698f04969219b1db3cdb0bde3a5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339601"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486699"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Csatlakozás Azure Stack az Azure ExpressRoute használatával
 
@@ -109,9 +109,9 @@ Az alábbi eljárásokkal a szükséges hálózati erőforrások létrehozása a
    |Mező  |Érték  |
    |---------|---------|
    |Name (Név)     |Tenant1VNet1         |
-   |Címtér     |10.1.0.0/16|
+   |Címtartomány     |10.1.0.0/16|
    |Alhálózat neve     |Tenant1-Sub1|
-   |Alhálózati címtartomány     |10.1.1.0/24|
+   |Alhálózat címtartománya     |10.1.1.0/24|
 
 6. A korábban létrehozott előfizetést kell megjelennie a **előfizetés** mező. A többi mezőhöz:
 
@@ -232,7 +232,7 @@ Az útválasztó az Útválasztás és távelérés szolgáltatást (RRAS) szere
 1. Jelentkezzen be rendszergazdai fiókjával az Azure Stack gazdagépen.
 1. Másolja, és szerkessze a következő PowerShell-parancsfájlt. Cserélje le `your administrator password` az a rendszergazdai jelszót, és futtassa a parancsfájlt egy rendszergazda jogú PowerShell ISE-ben. Ez a szkript adja vissza a **külső BGPNAT cím**.
 
-   ```PowerShell
+   ```powershell
    cd \AzureStack-Tools-master\connect
    Import-Module .\AzureStack.Connect.psm1
    $Password = ConvertTo-SecureString "your administrator password" `
@@ -250,7 +250,7 @@ Az útválasztó az Útválasztás és távelérés szolgáltatást (RRAS) szere
 
    Futtassa a következő parancsfájl egy rendszergazda jogú PowerShell ISE-ben:
 
-   ```PowerShell
+   ```powershell
    $ExtBgpNat = 'External BGPNAT address'
    $IntBgpNat = 'Internal IP address'
 
@@ -583,7 +583,7 @@ route-map VNET-ONLY permit 10
 !
 ```
 
-## <a name="test-the-connection"></a>A kapcsolat tesztelése
+## <a name="test-the-connection"></a>Kapcsolat tesztelése
 
 A helyek közötti kapcsolat és az ExpressRoute-kapcsolatcsoport létrehozása után a kapcsolat teszteléséhez.
 
@@ -599,7 +599,7 @@ Hajtsa végre a következő ping-vizsgálatok:
 
 Alapértelmezés szerint a Windows Server 2016 nem engedélyezi a bejövő ICMP-csomagokat a tűzfalon keresztül. Minden virtuális gép használhat olyan ping teszteknél engedélyeznie kell a bejövő ICMP-csomagokat. Hozzon létre egy tűzfalszabályt az ICMP, futtassa a következő parancsmagot egy emelt szintű PowerShell-ablakban:
 
-```PowerShell
+```powershell
 # Create ICMP firewall rule.
 New-NetFirewallRule `
   –DisplayName “Allow ICMPv4-In” `

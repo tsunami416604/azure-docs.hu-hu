@@ -1,19 +1,17 @@
 ---
 title: Micro fókusz fejlesztési és tesztelési környezetet az Azure-ban |} A Microsoft Docs
 description: Az IBM z/OS nagyszámítógépes-alapú számítási feladatokat Micro fókusz megoldások Azure-beli virtuális gépek (VM) az áthelyezési.
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
-manager: edprice
-editor: edprice
-tags: ''
-keywords: ''
-ms.openlocfilehash: 23a650698f8484e3ed8f033331693484c2e02fac
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.author: sread
+ms.date: 04/02/2019
+ms.topic: article
+ms.service: multiple
+ms.openlocfilehash: d83b4c89d0f37e2217974d6d1ed32ac73d8fa4df
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739649"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893775"
 ---
 # <a name="micro-focus-devtest-environments-on-azure"></a>Az Azure-ban Micro fókusz fejlesztési és tesztelési környezetek
 
@@ -23,7 +21,8 @@ Micro fókusz alakított ki a Microsoft meggyőző nagyszámítógépes migráci
 
 Micro fókusz kínál újratárolása fejlesztési és tesztelési újratárolása, amelyek meglévő COBOL és PL lehetővé teszik / I üzleti alkalmazások az Azure-bA.
 
-**Következő lépések**
+**További lépések**
 
-- [Micro fókusz Enterprise Server 4.0-s és 4.0-s vállalati fejlesztői telepítése Azure-ban](./set-up-micro-focus-on-azure.md)
+- [Micro fókusz Enterprise Server 4.0-s és 4.0-s vállalati fejlesztői telepítése Azure-ban](./set-up-micro-focus-azure.md)
 - [Állítsa be Micro fókusz CICS BankDemo Micro fókusz vállalati fejlesztői 4.0 az Azure-ban](./demo.md)
+- [A Docker-tárolók, Azure-on futtatott vállalati kiszolgáló](./run-enterprise-server-container.md)

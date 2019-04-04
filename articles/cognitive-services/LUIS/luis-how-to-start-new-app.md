@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 03/28/2019
 ms.author: diberry
-ms.openlocfilehash: 0acb844b8b10ff210985dfcd8c96f15da6669356
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 72c4f23f47e0a2c6d9a96dbbe36716bc3ab665f1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337476"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891429"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>A LUIS-portálon új LUIS-alkalmazás létrehozása
 Nincsenek többféle módon LUIS-alkalmazások létrehozásához. A LUIS-alkalmazásokon hozhat létre a [LUIS](https://www.luis.ai) portál, vagy a LUIS szerzői [API-k](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
@@ -66,6 +66,17 @@ Az Authoring Tool API-khoz többféle módon hozhat létre egy új alkalmazást:
 Hibák a következők: 
 
 * Már létezik ilyen nevű alkalmazás. Importálja újra az alkalmazást, és állítsa be a **nem kötelező neve** egy új nevet. 
+
+## <a name="export-app"></a>Alkalmazás exportálása
+
+1. A **saját alkalmazások** lapon jelölje be **importálása új alkalmazás**.
+1. Az a **importálása új alkalmazás** párbeszédpanelen válassza ki a JSON-fájlt a LUIS alkalmazás meghatározása.
+
+## <a name="delete-app"></a>Alkalmazás törlése
+
+1. A **saját alkalmazások** lapra, jelölje be az alkalmazások sor végén található három pontra (...).
+1. Válassza ki **törlése** a menüből.
+1. Válassza ki **Ok** a megerősítési ablakban.
 
 ## <a name="next-steps"></a>További lépések
 

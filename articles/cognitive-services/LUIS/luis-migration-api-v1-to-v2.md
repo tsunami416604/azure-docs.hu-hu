@@ -1,7 +1,7 @@
 ---
 title: V1-v2 API-k áttelepítése
 titleSuffix: Azure Cognitive Services
-description: Az 1-es verziójú végpont és -készítés Lanugage hangfelismerési API-k elavultak. Ez az útmutató segítségével megtudhatja, hogyan át a 2. verziójú végpont és az API-k készítése.
+description: Az 1-es verziójú végpont és a Language Understanding API-k készítése elavulttá váltak. Ez az útmutató segítségével megtudhatja, hogyan át a 2. verziójú végpont és az API-k készítése.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 7496142b1c762ce0a7afa96a1a94dd3026351cc9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9eb73db6f641d3a5f5bb82901bd12ea291eada58
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087924"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894081"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1-v2 áttelepítési útmutatója a LUIS-alkalmazások
 Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-jai elavultak. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 
@@ -134,7 +134,7 @@ A LUIS metaadatokat visszaadni több API-k új névvel rendelkeznek.
 
 
 ## <a name="sample-renamed-to-suggest"></a>"Sample", "javaslat" nevet kapott:
-A LUIS javasol utterances meglévő [végpont utterances](luis-how-to-review-endoint-utt.md) , előfordulhat, hogy növelje a modell. A korábbi verzióban ez nevű **minta**. Az új verzióban neve megváltozik a mintából **javaslat**. Ezt nevezzük **[tekintse át a végpont utterances](luis-how-to-review-endoint-utt.md)** a LUIS-webhelyen.
+A LUIS javasol utterances meglévő [végpont utterances](luis-how-to-review-endpoint-utterances.md) , előfordulhat, hogy növelje a modell. A korábbi verzióban ez nevű **minta**. Az új verzióban neve megváltozik a mintából **javaslat**. Ezt nevezzük **[tekintse át a végpont utterances](luis-how-to-review-endpoint-utterances.md)** a LUIS-webhelyen.
 
 | version | útvonal |
 |--|--|

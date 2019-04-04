@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 53d9aec5a689babb637d2eff6b36ea3b8bd8d97f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 277a1d5df0e6eb828c4d3c6faed91d55defb4108
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173938"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894030"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Egyéni attribútumok megadása az Azure Active Directory B2C-vel
 
  Minden ügyfél felé irányuló kérelmet kell gyűjteni az információkat egyedi követelményeket támaszt. Az Azure Active Directory (Azure AD) B2C-bérlő tartalmaz egy beépített az attribútumok, például utónév, Vezetéknév, város és irányítószám tárolt adatok. Az Azure AD B2C bővítheti az egyes felhasználói fiók a tárolt attribútumokat. 
  
- Létrehozhat egyéni attribútumokat a [az Azure portal](https://portal.azure.com/) és használja őket a regisztrálási felhasználói folyamatok, a regisztrálási vagy bejelentkezési felhasználói folyamatok vagy a Profilszerkesztési felhasználói folyamatok. Is olvasása és írása, ezek az attribútumok használatával a [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md). Az Azure AD B2C-vel egyéni attribútumok használata [az Azure AD Graph API Directory Sémakiterjesztései](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
+ Létrehozhat egyéni attribútumokat a [az Azure portal](https://portal.azure.com/) és használja őket a regisztrálási felhasználói folyamatok, a regisztrálási vagy bejelentkezési felhasználói folyamatok vagy a Profilszerkesztési felhasználói folyamatok. Is olvasása és írása, ezek az attribútumok használatával a [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md). Az Azure AD B2C-vel egyéni attribútumok használata [az Azure AD Graph API Directory Sémakiterjesztései](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
 
 ## <a name="create-a-custom-attribute"></a>Egyéni attribútum létrehozása
 

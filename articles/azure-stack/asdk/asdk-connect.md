@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: knithinc
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 42b67ae9b715670f1a0c6e0fed004487a52817d3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 31025582516198bdfe9da9312bae33852986a423
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206469"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884856"
 ---
 # <a name="connect-to-the-asdk"></a>Csatlakozás a ASDK
 
@@ -69,7 +69,7 @@ Mielőtt beállítaná a VPN-kapcsolat a ASDK, győződjön meg arról, az aláb
 
 A ASDK VPN-kapcsolat létrehozásához nyissa meg a Powershellt rendszergazdaként azon a helyi Windows-alapú számítógép. Ezután futtassa a következő szkriptet (frissítés a környezet értékei az IP-cím és jelszó):
 
-```PowerShell
+```powershell
 # Change directories to the default Azure Stack tools directory
 cd C:\AzureStack-Tools-master
 
@@ -109,9 +109,9 @@ Ha a telepítés sikeres, **azurestack** a VPN-kapcsolatok listájában jelenik 
 
   Kapcsolódás az Azure Stack-példány a következő módszerek egyikével:  
 
-  * Használja a `Connect-AzsVpn ` parancsot:
+  * Használja a `Connect-AzsVpn` parancsot:
       
-    ```PowerShell
+    ```powershell
     Connect-AzsVpn `
       -Password $Password
     ```
@@ -133,4 +133,4 @@ Jelentkezzen be a megfelelő előfizetést hitelesítő adataival az erőforrás
 
 ## <a name="next-steps"></a>További lépések
 
-[hibaelhárítással](asdk-troubleshooting.md)
+[Hibaelhárítás](asdk-troubleshooting.md)

@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: de61443da41f1015b2890e9052f38e25d3bed86a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551970"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893394"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>REST-végpontokat HTTP + Swagger összekötő az Azure Logic Appsben
 
@@ -28,7 +28,7 @@ Ismerje meg, hogyan hozhat létre a logic apps-összekötők, lásd: [hozzon lé
 
 A HTTP + Swagger-trigger és műveleti azonos módon működik a [HTTP-művelet](connectors-native-http.md) teszi elérhetővé az API szerkezete és kimeneteinek Logic App Designerben jobb felhasználói élményt biztosít, de a [Swagger-metaadatok](https://swagger.io). Is használhatja a HTTP + Swagger összekötő eseményindítóként. Szeretne egy lekérdezési eseményindító végrehajtása, ha az alábbi lekérdezés mintát leírt [meghívhatnak más API-kat, szolgáltatásokat és rendszereket a logic apps egyéni API-k létrehozása](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
 
-Tudjon meg többet [logikaialkalmazás-triggerek és műveletek](connectors-overview.md).
+Tudjon meg többet [logikaialkalmazás-triggerek és műveletek](../connectors/apis-list.md).
 
 Íme egy példa bemutatja, hogyan használja a HTTP + Swagger művelet-műveletként a logikai alkalmazás munkafolyamata.
 
@@ -72,14 +72,14 @@ A létrehozása, konfigurálása és a Swagger-dokumentumok tárolása az Azure 
 Eseményindítók és műveletek részleteit az alábbiakban, amely a HTTP + Swagger összekötő támogatja.
 
 ## <a name="http--swagger-triggers"></a>A HTTP + Swagger-eseményindítók
-Egy trigger egy eseményt, amely a logikai alkalmazásban definiált munkafolyamat elindításához használható. [További információ az eseményindítók.](connectors-overview.md) A HTTP + Swagger összekötő egy eseményindító tartozik.
+Egy trigger egy eseményt, amely a logikai alkalmazásban definiált munkafolyamat elindításához használható. A HTTP + Swagger összekötő egy eseményindító tartozik. [További tudnivalók a triggerek](../connectors/apis-list.md).
 
 | Eseményindító | Leírás |
 | --- | --- |
 | HTTP + Swagger |Egy HTTP-hívást, és adja vissza a válasz tartalma |
 
 ## <a name="http--swagger-actions"></a>A HTTP + Swagger-műveletek
-Egy műveletet, amely a logikai alkalmazásban definiált munkafolyamat által végzett művelet. [További információ azokról a műveletekről.](connectors-overview.md) A HTTP + Swagger összekötő tartalmaz egy lehetséges műveletet.
+Egy műveletet, amely a logikai alkalmazásban definiált munkafolyamat által végzett művelet. A HTTP + Swagger összekötő tartalmaz egy lehetséges műveletet. [További információért azokról a műveletekről](../connectors/apis-list.md).
 
 | Műveletek | Leírás |
 | --- | --- |
@@ -123,7 +123,6 @@ Bizonyos válaszok irányuló hívásokhoz különböző műveleteket hajthat v�
 | 404 |Nem található |
 | 500 |Belső kiszolgálóhiba. Ismeretlen hiba történt. |
 
-- - -
 ## <a name="next-steps"></a>További lépések
 
 * [Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)

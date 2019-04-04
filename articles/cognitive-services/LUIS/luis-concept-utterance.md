@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae3a2788a0d5451736433a6338a71eda3d0ad9ca
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2fd3416824189007bfdbe55d30907d9cb56f87ca
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984358"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895122"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Jó utterances Mik a LUIS alkalmazás ismertetése
 
@@ -72,7 +72,7 @@ A modell minden egyes ismétléskor ne adjon hozzá egy nagy mennyiségű kimond
 
 A LUIS épít fel, hogy alaposan választja ki a LUIS-modell Szerző megcímkézzen hatékony modelleket. Túl sok beszédmódok hozzáadása nem értékes, mert ez zavart.  
 
-Néhány utterances, majd indítása jobb [tekintse át a végpont utterances](luis-how-to-review-endoint-utt.md) megfelelő szándék előrejelzése és egyéb entitások kivonási.
+Néhány utterances, majd indítása jobb [tekintse át a végpont utterances](luis-how-to-review-endpoint-utterances.md) megfelelő szándék előrejelzése és egyéb entitások kivonási.
 
 ## <a name="punctuation-marks"></a>Központozási jelek
 
@@ -88,11 +88,11 @@ Képzési lehetőségek a lehetséges általában nem determinisztikus: az utter
 
 ## <a name="testing-utterances"></a>Tesztelési kimondott szöveg 
 
-A fejlesztők el kell valódi forgalmat a LUIS alkalmazás tesztelése a kimondott szöveg küldése a [előrejelzési végpont](luis-how-to-azure-subscription.md) URL-CÍMÉT. Ezek a kimondott szöveg a szándékok és entitások teljesítményének javítását szolgálják [tekintse át a kimondott szöveg](luis-how-to-review-endoint-utt.md). A LUIS-webhely panel tesztelése az elküldött tesztek nem kap a végponton keresztül, és ezért nem jelentenek aktív tanulás. 
+A fejlesztők el kell valódi forgalmat a LUIS alkalmazás tesztelése a kimondott szöveg küldése a [előrejelzési végpont](luis-how-to-azure-subscription.md) URL-CÍMÉT. Ezek a kimondott szöveg a szándékok és entitások teljesítményének javítását szolgálják [tekintse át a kimondott szöveg](luis-how-to-review-endpoint-utterances.md). A LUIS-webhely panel tesztelése az elküldött tesztek nem kap a végponton keresztül, és ezért nem jelentenek aktív tanulás. 
 
 ## <a name="review-utterances"></a>Tekintse át a kimondott szöveg
 
-Miután a modellt, betanított, a közzétett és a fogadó [végpont](luis-glossary.md#endpoint) lekérdezéseket, [tekintse át a kimondott szöveg](luis-how-to-review-endoint-utt.md) LUIS által javasolt. A LUIS választja ki a végpont kimondott szöveg, amely rendelkezik a leképezés vagy egy entitás alacsony értékeket. 
+Miután a modellt, betanított, a közzétett és a fogadó [végpont](luis-glossary.md#endpoint) lekérdezéseket, [tekintse át a kimondott szöveg](luis-how-to-review-endpoint-utterances.md) LUIS által javasolt. A LUIS választja ki a végpont kimondott szöveg, amely rendelkezik a leképezés vagy egy entitás alacsony értékeket. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 

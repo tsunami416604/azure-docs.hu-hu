@@ -1,6 +1,6 @@
 ---
-title: A lekérdezési művelet hozzáadása a logic apps |} Microsoft Docs
-description: A lekérdezés művelet, például a szűrő tömb műveletek végrehajtásához áttekintése.
+title: A query művelet hozzáadása a logic appsben |} A Microsoft Docs
+description: A lekérdezési műveletet hajt végre műveleteket, például a tömb szűrése áttekintése.
 services: ''
 documentationcenter: ''
 author: jeffhollan
@@ -15,71 +15,72 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
-ms.openlocfilehash: 05dd4ae3c4ee439d66401a3f5595f9104051f8ee
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2a82afe396039857e5b9ad6b8a6d0e710573037f
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27962645"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893567"
 ---
-# <a name="get-started-with-the-query-action"></a>Ismerkedjen meg a lekérdezési művelet
-A lekérdezési művelet használatával is dolgozhat kötegek és tömbök munkafolyamatokat elvégzéséhez:
+# <a name="get-started-with-the-query-action"></a>A lekérdezés művelettel használatának első lépései
+A query művelet használatával, használhatja a kötegek és tömbök munkafolyamatokat elvégzéséhez:
 
-* Hozzon létre egy feladatot az összes magasabb prioritású rekord adatbázisból.
-* Az e-mailekhez, az Azure-blobot összes PDF melléklet mentése.
+* Minden magas prioritású rögzíti a feladat létrehozása az adatbázisból.
+* Az e-mailekből másolja egy Azure-blobból az összes PDF-mellékletek mentése.
 
-Első lépések egy logikai alkalmazás lekérdezés műveletével, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+A lekérdezés művelettel, a logikai alkalmazás a használatának megkezdéséhez lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-query-action"></a>A lekérdezés művelettel
-Egy művelet során, amely a logikai alkalmazás definiált munkafolyamat végzi. [További információ a műveletek](connectors-overview.md).  
+Egy műveletet, amely a logikai alkalmazásban definiált munkafolyamat által végzett művelet. 
+[További információért azokról a műveletekről](../connectors/apis-list.md).  
 
-A lekérdezés jelenleg műveletnek egy művelet, a szűrő tömb, a tervezőben elérhetővé neve. Ez lehetővé teszi egy tömb lekérdezése, és a szűrt eredmények készlettel tért vissza.
+A lekérdezés művelettel jelenleg egy műveletet, a tömb szűrése, a tervezőben érintkező nevű rendelkezik. Ez lehetővé teszi egy tömb lekérdezését, és a egy szűrt eredmények készletét adja vissza.
 
-Itt látható, hogyan adhat hozzá azt a logikai alkalmazást:
+Itt látható, hogyan adhatja hozzá a logikai alkalmazás:
 
 1. Válassza ki a **új lépés** gombra.
 2. Válasszon **művelet hozzáadása**.
-3. A művelet a keresőmezőbe írja be **szűrő** listájára a **szűrő tömb** művelet.
+3. A művelet be a keresőmezőbe írja be **szűrő** listához a **tömb szűrése** művelet.
    
-    ![Válassza ki a lekérdezés](./media/connectors-native-query/using-action-1.png)
-4. Válassza ki a tömb szűréséhez. (Az alábbi képernyőfelvételen látható Twitter keresési eredmények tömbje.)
-5. Minden egyes kiértékelése feltétel létrehozása. (Az alábbi képernyőfelvételen szűrők a felhasználók, akik több mint 100 followers Twitter-üzeneteket.)
+    ![Válassza ki a lekérdezés művelettel](./media/connectors-native-query/using-action-1.png)
+4. Válassza ki a tömb szűrése. (A következő képernyőképen látható a tömbben, a Twitter keresési eredményeit.)
+5. Hozzon létre az egyes elemek kiértékelendő feltétel. (Az alábbi képernyőfelvételen látható szűrők-tweetek streamelését több mint 100 követővel rendelkező felhasználók számára).
    
-    ![A lekérdezés a művelet](./media/connectors-native-query/using-action-2.png)
+    ![A query művelet végrehajtása](./media/connectors-native-query/using-action-2.png)
    
-    A művelet egy új tömb csak, amely megfelel a szűrő eredményeit tartalmazó fog kimeneti.
-6. Kattintson az eszköztáron menteni a bal felső sarkában, és a Logic Apps alkalmazást mentése és közzététele (aktiválása).
+    A művelet kimenete egy új, csak olyan eredményeket, amely megfelel az szűrőt tartalmazó tömb.
+6. Kattintson az eszköztár menteni a bal felső sarkában, és a logikai alkalmazás mentése és közzététele (aktiválása).
 
-\*Ha Ön egy HTTP-végpont meghívása, és egy JSON-válasz fogadásakor, a _elemzése JSON_ művelettel a JSON-válasz elemzése. Ebben a lépésben anélkül _szűrő tömb_ a rendszer csak a Választörzs megtekintéséhez, majd a JSON-adattartalmat nem értelmezésekor.
+\* Ha Ön egy HTTP-végpontot hív-e, és egy JSON-válasz fogadása, használja a _JSON elemzése_ művelet a JSON-válasz elemzése. Anélkül, hogy ebben a lépésben _tömb szűrése_ meg csak a szervezet és a JSON-adattartalom nem értelmezésekor.
 
 ## <a name="query-action"></a>Lekérdezési művelet
-Az alábbiak a művelet, amely támogatja ezt az összekötőt. Az összekötő egy lehetséges művelettel rendelkezik.
+Az alábbiakban a művelet, amely támogatja ezt az összekötőt. Az összekötő egy lehetséges művelettel rendelkezik.
 
 | Műveletek | Leírás |
 | --- | --- |
-| Tömb szűrése |Minden elem tömbben feltételt ad meg, és az eredményt ad vissza. |
+| Tömb szűrése |Kiértékeli a feltételt a tömbben lévő egyes elemek, és az eredményeket adja vissza |
 
 ## <a name="action-details"></a>Művelet részletei
-A lekérdezési művelet egy lehetséges műveletet tartalmaz. A következő táblázatok ismertetik, hogy a művelet és a megfelelő kimeneti részletek művelettel társított szükséges és választható bemeneti mező.
+A lekérdezés művelettel egy lehetséges műveletet tartalmaz. Az alábbi táblázatok ismertetik a szükséges és választható adatbeviteli mezők a művelet és a megfelelő kimeneti részletek társított a művelettel.
 
 ### <a name="filter-array"></a>Tömb szűrése
-A művelet, amely a kimenő HTTP-kérelem a beviteli mezők a következők:
-A * azt jelenti, hogy mezőt kötelező kitölteni.
+Az alábbiakban a beviteli mezőket a művelet, ami lehetővé teszi a kimenő HTTP-kérést.
+A * azt jelenti, hogy egy kötelező mező.
 
 | Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
 | A * |forrás: |A tömb szűrése |
-| Az állapot * |Ha |A feltétel kiértékelése minden elemhez |
+| A feltétel * |ahol |Az egyes elemekhez tartozó kiértékelendő feltétel |
 
 <br>
 
 ### <a name="output-details"></a>Kimenet részletei
-A HTTP-válasz kimeneti részleteit az alábbiakban.
+Az alábbiakban a HTTP-válasz kimeneti adatait.
 
 | Tulajdonság neve | Adattípus | Leírás |
 | --- | --- | --- |
-| Szűrt tömb |tömb |Olyan tömb, amely minden szűrt eredmény objektumot tartalmaz |
+| Szűrt tömb |tömb |Egy tömb, amely az egyes szűrt eredmények objektumot tartalmaz |
 
 ## <a name="next-steps"></a>További lépések
-Most, próbálja ki a platformot és [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők logic Apps alkalmazások felmérésével felfedezheti a [API-k lista](apis-list.md).
+Most, próbálja ki a platformot és [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb elérhető összekötők a logic apps megtekintésével megismerheti a [API-k listája](apis-list.md).
 

@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 4c9c4bce0b63bd6d45522e2e069d1ae884916e09
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 17da540bd6077b8e045f125fd3cf13dc0e043000
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172399"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882038"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Kiegészítő skálázási egység csomópontok hozzáadása az Azure Stackben
 
@@ -75,7 +75,7 @@ Használja a **New-AzsScaleUnitNodeObject** parancsmag az egy csomóponton.
 Használja a következő PowerShell-példaszkriptekre egyikét, mielőtt cserélje le az értékeket *csomópontnevek* és *IP-címek* értékeit az Azure Stack környezettel.
 
   > [!Note]  
-  > Egy csomópont elnevezésekor a név kell hagynia kevesebb mint 15 karakter hosszú lehet. Még nem használható egy neve szóközt tartalmaz, vagy a következő karakterek egyikét sem tartalmazza: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`,` }`, `_`.
+  > Egy csomópont elnevezésekor a név kell hagynia kevesebb mint 15 karakter hosszú lehet. Még nem használható egy neve szóközt tartalmaz, vagy a következő karakterek egyikét sem tartalmazza: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`, `}`, `_`.
 
 **Csomópont hozzáadása:**
   ```powershell
@@ -104,9 +104,9 @@ A skálázási egység és a skálázási egység csomópontok állapota lehet b
 ### <a name="status-for-the-add-node-operation"></a>A Hozzáadás csomópont művelet állapota 
 **A skálázási egység:**
 
-|status               |Leírás  |
+|Állapot               |Leírás  |
 |---------------------|---------|
-|Fut              |A skálázási egység aktívan résztvevő összes csomópontot.|
+|Futtatás              |A skálázási egység aktívan résztvevő összes csomópontot.|
 |Leállítva              |A skálázási egység csomópont, lefelé vagy nem érhető el.|
 |Kibontás            |Egy vagy több skálázási egység csomópont jelenleg jelennek meg a számítási kapacitást.|
 |Tároló konfigurálása  |A számítási kapacitás ki lett terjesztve, és a tárolási konfiguráció fut-e.|
@@ -115,9 +115,9 @@ A skálázási egység és a skálázási egység csomópontok állapota lehet b
 
 **Egy méretezési egység csomópont:**
 
-|status                |Leírás  |
+|Állapot                |Leírás  |
 |----------------------|---------|
-|Fut               |A csomópont tevékenyen részt vesz a skálázási egység.|
+|Futtatás               |A csomópont tevékenyen részt vesz a skálázási egység.|
 |Leállítva               |A csomópont nem érhető el.|
 |Hozzáadás                |A csomópont aktívan ad hozzá a skálázási egység.|
 |Javítás             |A csomópont aktívan javítása folyamatban van.|

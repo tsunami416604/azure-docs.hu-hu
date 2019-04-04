@@ -14,16 +14,16 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 03/19/2019
-ms.openlocfilehash: 080129ca1520dc2b1b085c69f6389508f11c7ba2
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: da1ae76925ffeba7a1df57b4121f8cfe20b2887f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285921"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882106"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Az Azure Stackhez az infrastruktúra biztonsági mentési szolgáltatással a biztonsági mentés és adat-helyreállítás
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Készítsen biztonsági másolatot, és állítsa vissza a konfigurációs és szolgáltatási adatokat az infrastruktúra biztonsági másolat szolgáltatással. Minden egyes Azure Stack-telepítés tartalmazza a szolgáltatás egy példányát. Az újbóli üzembe helyezés az Azure Stack-felhőben, a szolgáltatás által létrehozott biztonsági mentéseket használatával állítsa vissza az identitás, a biztonság és az Azure Resource Manager-adatokat. 
 
@@ -32,7 +32,7 @@ Amikor készen áll a felhőben üzembe éles engedélyezheti a biztonsági ment
 Mielőtt engedélyezné a biztonsági mentési szolgáltatás, ellenőrizze, hogy [követelmények teljesülnek](#verify-requirements-for-the-infrastructure-backup-service).
 
 > [!Note]  
-> Az infrastruktúra biztonsági mentési szolgáltatás nem tartalmaz felhasználói adatokat és alkalmazásokat. Tekintse meg [védelme az Azure Stack üzembe helyezett virtuális gépek](user/azure-stack-manage-vm-protect.md) hogyan védheti meg bővebben IaaS VM-alapú alkalmazások. Az átfogó ismereteket bemutatja, hogyan védheti alkalmazásait az Azure Stacken, tekintse meg a [üzleti folytonossági és vészhelyreállítási helyreállítási tanulmány az Azure Stack onsiderations](http://aka.ms/azurestackbcdrconsiderationswp).
+> Az infrastruktúra biztonsági mentési szolgáltatás nem tartalmaz felhasználói adatokat és alkalmazásokat. Tekintse meg [védelme az Azure Stack üzembe helyezett virtuális gépek](user/azure-stack-manage-vm-protect.md) hogyan védheti meg bővebben IaaS VM-alapú alkalmazások. Az átfogó ismereteket bemutatja, hogyan védheti alkalmazásait az Azure Stacken, tekintse meg a [üzleti folytonossági és vészhelyreállítási helyreállítási tanulmány az Azure Stack szempontjai](https://aka.ms/azurestackbcdrconsiderationswp).
 
 ## <a name="the-infrastructure-backup-service"></a>A biztonsági mentési infrastruktúra-szolgáltatás
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3c9227a34c1b7208210b84b5b7d64ecdc8654a83
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: e6ae4cc527ae0828f530ab7f3904d2b3c64c910b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286380"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895749"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezhetőség a tartós függvények (az Azure Functions)
 
@@ -56,7 +56,7 @@ A tartós feladat bővítmény valósít meg egy véletlenszerű exponenciális 
 Maximális lekérdezési késleltetési idő legyen konfigurálhatók a `maxQueuePollingInterval` tulajdonságot a [host.json fájl](../functions-host-json.md#durabletask). E beállítás hatására a nagyobb érték magasabb üzenetfeldolgozási késések eredményezhet. Csak a tétlen időszakokat követően elvárható, nagyobb késleltetéssel jár. Ez alacsonyabb értékűre állítja azt eredményezheti, hogy magasabb tárolási költségek miatt megnövelt tárolási tranzakció.
 
 > [!NOTE]
-> Az Azure Functions-használat és a prémium szintű csomagokat, a futtatásakor a [Azure Functions méretezési vezérlő](../functions-scale.md#how-the-consumption-plan-works) elindítja a lekérdezést minden vezérlő és a munkaelem várólista 10 másodpercenként. A további lekérdezési szükség, hogy mikor alkalmazáspéldány függvény aktiválására és méretezési döntéseket hozhat. Írása idején ez 10 második időtartam alatt állandó, és nem konfigurálható.
+> Az Azure Functions-használat és a prémium szintű csomagokat, a futtatásakor a [Azure Functions méretezési vezérlő](../functions-scale.md#how-the-consumption-and-premium-plans-work) elindítja a lekérdezést minden vezérlő és a munkaelem várólista 10 másodpercenként. A további lekérdezési szükség, hogy mikor alkalmazáspéldány függvény aktiválására és méretezési döntéseket hozhat. Írása idején ez 10 második időtartam alatt állandó, és nem konfigurálható.
 
 ## <a name="storage-account-selection"></a>Storage-fiók kiválasztása
 
@@ -244,4 +244,4 @@ Ha nem jelennek meg a várt átviteli számokat és a CPU és memória használa
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az első tartós függvény létrehozása C# nyelven](durable-functions-create-first-csharp.md)
+> [A tartós függvény létrehozásaC#](durable-functions-create-first-csharp.md)

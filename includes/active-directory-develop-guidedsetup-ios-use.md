@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: d5a38d19541e59e0e2815362c0181a8e317a5d0f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: b7883de410a1fd281a154a792dd45132c08f0c03
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203503"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890978"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>A Microsoft-hitelesítési tár (MSAL) használatával egy token beszerzése a Microsoft Graph API-hoz
 
@@ -215,7 +215,7 @@ A `acquireTokenSilent` metódus kezeli a token beszerzését és -megújítás, 
 
 Végül `acquireTokenSilent` sikertelen lesz, – például a felhasználó kijelentkeztetése rendelkezik, vagy megváltoztatta a jelszavát egy másik eszközön. Ha az MSAL észleli, hogy a probléma megoldhatók egy interaktív intézkedést kér, akkor aktiválódik egy `MSALErrorCode.interactionRequired` kivétel. Az alkalmazás ehhez a kivételhez, két módon tudják kezelni:
 
-1. Győződjön meg arról, egy hívást kell végrehajtanunk `acquireToken` azonnal, aminek eredményeképpen kéri a felhasználót, hogy jelentkezzen be. Az online alkalmazások általában használják ezt a mintát, ha ott nem nem offline tartalma az alkalmazásban a felhasználó számára elérhető. Az interaktív telepítés által létrehozott mintaalkalmazás használja ezt a mintát: láthatja az alkalmazás végrehajtása az első művelet időben. Nincs felhasználó bármikor használták az alkalmazást, mert `applicationContext.allAccounts().first` fogja tartalmazni a null értéket, és a egy ` MSALErrorCode.interactionRequired ` , a rendszer hibajelzést. A kód a minta ezután kezeli a kivételt meghívásával `acquireToken` eredményez, amely felszólítja a felhasználót a bejelentkezéshez.
+1. Győződjön meg arról, egy hívást kell végrehajtanunk `acquireToken` azonnal, aminek eredményeképpen kéri a felhasználót, hogy jelentkezzen be. Az online alkalmazások általában használják ezt a mintát, ha ott nem nem offline tartalma az alkalmazásban a felhasználó számára elérhető. Az interaktív telepítés által létrehozott mintaalkalmazás használja ezt a mintát: láthatja az alkalmazás végrehajtása az első művelet időben. Nincs felhasználó bármikor használták az alkalmazást, mert `applicationContext.allAccounts().first` fogja tartalmazni a null értéket, és a egy `MSALErrorCode.interactionRequired` , a rendszer hibajelzést. A kód a minta ezután kezeli a kivételt meghívásával `acquireToken` eredményez, amely felszólítja a felhasználót a bejelentkezéshez.
 
 2. Alkalmazások tudja végrehajtani a vizuális jelzés a felhasználót, hogy egy interaktív bejelentkezési szükség, hogy a felhasználó kiválaszthatja a megfelelő időben való bejelentkezéshez, vagy az alkalmazás megpróbálhatja `acquireTokenSilent` egy későbbi időpontban. Ez általában akkor használatos, amikor a felhasználó használhatja az alkalmazás egyéb funkciók anélkül, hogy szakadhat meg – például nincs az offline tartalma elérhető az alkalmazásban. Ebben az esetben a felhasználó dönthet arról, ha szeretnének bejelentkezni a védett erőforrás elérésére, vagy a frissítés az elavult adatokat, vagy az alkalmazás dönt, hogy újra `acquireTokenSilent` amikor hálózati visszaállítása után folyamatban átmenetileg nem érhető el.
 

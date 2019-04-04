@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: c1b26b8a59ac0306fc06bf90f01642d4585a45be
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8c1e50064491032d78e467496f0c53300dd6acd1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991571"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892789"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Video Indexer-elemzések megtekintése és szerkesztése
 
@@ -34,17 +34,11 @@ Ez a témakör bemutatja, hogyan szeretné áttekinteni vagy módosítani a vide
 
     A Windows Media player és az elemzések szinkronizálva van. Például ha kulcsszó vagy a szöveges sorra kattint, a Windows Media player biztosít hozzáférést, hogy a videóban. A player/elemzések megtekintése és a szinkronizálás érheti el az alkalmazásban. További információkért lásd: [az alkalmazásba való beágyazása Azure indexelő widgetek](video-indexer-embed-widgets.md). 
 
-3. A Videóindexelő-elemzések szerkesztése.
-
-    Nyomja le a Szerkesztés a videó alatt. A videó teljes bontását mutatja meg az oldal jelenik meg. A lebontás blokkokra van osztva. A blokkok megkönnyítik az adatok áttekintését. A blokkokat például aszerint lehet bontani, hogy mikor váltanak a beszélők, vagy hogy mikor tartanak hosszú szünetet. Létrehozhatja a saját lejátszási listáját, amely csak a kívánt sorokat tartalmazza. Ha csak a forrásvideó bizonyos részeit szeretné megjeleníteni, témakörök/kulcsszavak, hangulatok, személyek és beszélők alapján szűrhet. Dönthet úgy, hogy csak a videó átiratát vagy az OCR-t tekinti meg.  
-
-    ![Insights](./media/video-indexer-view-edit/video-indexer-create-new-playlist.png)
-
 ## <a name="next-steps"></a>További lépések
 
 [Ismerje meg, hogyan hozhat létre saját alapján néhány egyéb videó a Video Indexer insights](video-indexer-create-new.md).
 
 ## <a name="see-also"></a>Lásd még
 
-[A Video Indexer áttekintése](video-indexer-overview.md)
+[Video Indexer – áttekintés](video-indexer-overview.md)
 

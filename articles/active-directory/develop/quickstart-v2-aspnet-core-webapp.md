@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/03/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fed62dfc3f7e7dc974fb709261e363f26ce97c51
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 0fa2e38a680e8590a89131717136a7960c1d3680
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200990"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903590"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: Bejelentkezés Microsoft-hozzáadása az ASP.NET Core-webalkalmazás
 
@@ -40,7 +40,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan bejelentkezhet az ASP.NET Core-
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Regisztráció és az automatikus állítsa be alkalmazását, és töltse le a kódminta
 >
-> 1. Nyissa meg a [az Azure portal - alkalmazásregisztrációk (előzetes verzió)](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
+> 1. Nyissa meg a [az Azure portal - alkalmazásregisztrációk](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
 > 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
 > 1. Kövesse az új alkalmazás egy kattintással való letöltésére és automatikus konfigurálására vonatkozó utasításokat.
 >
@@ -51,7 +51,8 @@ Ebben a rövid útmutatóban megtudhatja, hogyan bejelentkezhet az ASP.NET Core-
 >
 > 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-> 1. A bal oldali navigációs panelen válassza az **Azure Active Directory** szolgáltatást, majd válassza az **Alkalmazásregisztrációk (előzetes verzió)** > **Új regisztráció** lehetőséget.
+> 1. Keresse meg a fejlesztők a Microsoft identity platform [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapot.
+> 1. Válassza ki **új regisztrációs**.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `AspNetCore-Quickstart`).
 >    - A **válasz URL-cím**, adjon hozzá `https://localhost:44321/`, és válassza ki **regisztrálása**.
@@ -65,20 +66,20 @@ Ebben a rövid útmutatóban megtudhatja, hogyan bejelentkezhet az ASP.NET Core-
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
 > A kódminta működjön ez a rövid útmutató, a válasz URL-címek, hozzá kell `https://localhost:44321/` és `https://localhost:44321/signin-oidc`, adja hozzá a kijelentkezési URL-cím `https://localhost:44321/signout-oidc`, és a kérelem azonosító-jogkivonatokat állít ki, az engedélyezési végponton.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [A módosítás alkalmazása]()
+> > [A módosítás végrehajtása nekem]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Már konfigurált](media/quickstart-v2-aspnet-webapp/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
+> > ![Már be van állítva](media/quickstart-v2-aspnet-webapp/green-check.png) az alkalmazás ezekkel az attribútumokkal van konfigurálva.
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>2. lépés: Az ASP.NET Core-projekt letöltése
 
-- [A Visual Studio 2017-megoldás letöltése](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+- [Töltse le a Visual Studio 2017-megoldás](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
 
 1. Bontsa ki például a zip-fájlt egy helyi mappába a gyökérmappa - belül **C:\Azure-Samples**
 1. Ha a Visual Studio 2017-et használ, nyissa meg a megoldást a Visual Studióban (nem kötelező).
-1. Szerkessze a **appsettings.json** fájlt. Keresés `ClientId` , és cserélje le `Enter_the_Application_Id_here` az a **Alkalmazásazonosítót (ügyfél)** értékét az imént regisztrált alkalmazást. 
+1. Szerkessze a **appsettings.json** fájlt. Keresse meg `ClientId` , és frissítse az értéket a `ClientId` az a **Alkalmazásazonosítót (ügyfél)** az imént regisztrált alkalmazást értékét. 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
@@ -90,8 +91,8 @@ Ebben a rövid útmutatóban megtudhatja, hogyan bejelentkezhet az ASP.NET Core-
 > - `Enter_the_Application_Id_here` -a a **Alkalmazásazonosítót (ügyfél)** az alkalmazás az Azure Portalon regisztrálta. Annak **Alkalmazásazonosítót (ügyfél)** az alkalmazás **áttekintése** lapot.
 > - `Enter_the_Tenant_Info_Here` -a következő lehetőségek egyike:
 >   - Ha az alkalmazás támogatja a **fiókok csak a szervezeti könyvtárban található**, cserélje le ezt az értéket a **Bérlőazonosító** vagy **bérlőnevet** (például contoso.microsoft.com)
->   - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot** támogat, ezt az értéket az `organizations` értékre cserélje le
->   - Ha az alkalmazás **minden Microsoft-fiókfelhasználót** támogat, ezt az értéket a `common` értékre cserélje le
+>   - Ha az alkalmazás támogatja a **bármely szervezeti directory fiókok**, cserélje le ezt az értéket `organizations`
+>   - Ha az alkalmazás támogatja a **minden Microsoft-fiókok felhasználóinak**, cserélje le ezt az értéket `common`
 >
 > > [!TIP]
 > > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.

@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 01fce9813299465767bdaed7f3c2939813cfab87
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: HT
+ms.openlocfilehash: 5b2b7f3cd6bfa219b794edc63d6bf8b2784b713c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "56339486"
+ms.locfileid: "58891889"
 ---
 # <a name="azure-functions-developers-guide"></a>Az Azure Functions fejlesztői útmutatója
 Az Azure Functions, a speciális szoftverfrissítési funkciókat ossza meg néhány alapvető technikai kapcsolatos fogalmakról és összetevőkről, függetlenül a nyelvet, vagy a kötés használja. Mielőtt megkezdi a munkát egy adott nyelven vagy a kötési adatait tanuló, mindenképpen olvassa végig az áttekintés, amely mindegyik vonatkozik.
@@ -75,7 +75,7 @@ Függvényalkalmazások hozhat létre, és közzétette a különböző eszköz�
 A Functions szerkesztőjében, az Azure portal beépített lehetővé teszi a kód frissítése és a *function.json* közvetlenül a beágyazott fájl. Ez csak a kisebb változtatásokat vagy megvalósíthatósági próbák menete ajánlott – ajánlott eljárás, hogy egy helyi fejlesztői eszköz, például a VS Code használata.
 
 ## <a name="parallel-execution"></a>Párhuzamos végrehajtás
-Több riasztást kiváltó események bekövetkezésekor gyorsabb, mint egy egyszálas függvény futtatókörnyezetét azokat fel tudná dolgozni, a futásidejű alkalmazhatja a függvény párhuzamosan több alkalommal.  Ha nem használja a függvényalkalmazást a [Használatalapú szolgáltatási csomag](functions-scale.md#how-the-consumption-plan-works), a függvényalkalmazás automatikusan sikerült horizontálisan.  Minden példánya a függvényalkalmazást, hogy az alkalmazás fut-e a használat üzemeltetési csomag vagy egy rendszeres [App Service szolgáltatási csomagjában](../app-service/overview-hosting-plans.md), előfordulhat, hogy egyidejű függvény meghívásához használatával több szál párhuzamos feldolgozásához.  Maximális száma minden egyes függvény alkalmazáspéldány egyidejű függvény meghívásához használt triggert, valamint egyéb funkciók belül a függvényalkalmazás által használt erőforrások típusától függően változik.
+Több riasztást kiváltó események bekövetkezésekor gyorsabb, mint egy egyszálas függvény futtatókörnyezetét azokat fel tudná dolgozni, a futásidejű alkalmazhatja a függvény párhuzamosan több alkalommal.  Ha nem használja a függvényalkalmazást a [Használatalapú szolgáltatási csomag](functions-scale.md#how-the-consumption-and-premium-plans-work), a függvényalkalmazás automatikusan sikerült horizontálisan.  Minden példánya a függvényalkalmazást, hogy az alkalmazás fut-e a használat üzemeltetési csomag vagy egy rendszeres [App Service szolgáltatási csomagjában](../app-service/overview-hosting-plans.md), előfordulhat, hogy egyidejű függvény meghívásához használatával több szál párhuzamos feldolgozásához.  Maximális száma minden egyes függvény alkalmazáspéldány egyidejű függvény meghívásához használt triggert, valamint egyéb funkciók belül a függvényalkalmazás által használt erőforrások típusától függően változik.
 
 ## <a name="functions-runtime-versioning"></a>Functions runtime verziószámozás
 

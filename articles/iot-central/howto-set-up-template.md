@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1306b97ce7fcf2cd429be31bc99d022de53805d6
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 602c7385b252daa7db22bd47f43afec3ad072263
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259856"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904202"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>Állítson be egy eszköz sablont (új felhasználói felület tervezése)
 
@@ -281,3 +281,5 @@ Most, hogy megismerte az Azure IoT Central alkalmazáshoz egy eszköz-sablon be�
 
 > [!div class="nextstepaction"]
 > [Hozzon létre egy új eszköz sablon verziója](howto-version-devicetemplate.md)
+> [az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-devkit.md)
+> [egy általános ügyfél az Azure-alkalmazás csatlakoztatása IoT Central-alkalmazást (Node.js)](howto-connect-nodejs.md)

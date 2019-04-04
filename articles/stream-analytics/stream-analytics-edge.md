@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 4/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: c64bf11a5e0d95e2896bb717d4069f9b0d7ea721
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569994"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892228"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics az IoT Edge segítségével
  
@@ -44,12 +44,14 @@ ASA az IoT Hub telepítéséhez edge-feladatok (ök) höz használ. További inf
 
 ### <a name="installation-instructions"></a>Telepítési utasítások
 A magas szintű lépéseket a következő táblázat ismerteti. További információkat is megtudhat az alábbi szakaszokban található.
+
 |      |Lépés   | Megjegyzések   |
 | ---   | ---   |  ---      |
 | 1   | **Storage-tároló létrehozása**   | Storage-tárolók segítségével a feladatdefiníció mentése ha azok elérhetők az IoT-eszközök által. <br>  Használhat bármely meglévő storage-tárolóba.     |
 | 2   | **Edge ASA-feladatok létrehozása**   |  Hozzon létre egy új feladatot, válassza ki **Edge** , **üzemeltetési környezet**. <br> Ezek a feladatok létrehozott és kezelt a felhőből, és futtassa a saját IoT Edge-eszközökön.     |
 | 3   | **A az eszközt az IoT Edge-környezet beállítása**   | Utasítások [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) vagy [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
 | 4   | **Az IoT Edge-eszközt az ASA telepítése**   |  A korábban létrehozott tároló ASA-feladat definíciója exportálja.       |
+
 Követheti [részletes oktatóanyag](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) üzembe helyezéséhez az első ASA-feladat az IoT Edge-ben. Az alábbi videó segítenek megérteni a folyamat egy Stream Analytics-feladat futtatása az IoT edge-eszközön:  
 
 
@@ -142,7 +144,7 @@ Ebben a példában a következő útvonalakat határozza meg:
 
 ## <a name="technical-information"></a>Technikai információ
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Felhőalapú feladat képest az IoT Edge-feladatok aktuális korlátozások
-A cél, hogy a paritásos IoT Edge-feladatok és a felhőbeli feladatok között. A legtöbb SQL-lekérdezési nyelvi funkciók már használhatók.
+A cél, hogy a paritásos IoT Edge-feladatok és a felhőbeli feladatok között. A legtöbb SQL-lekérdezési nyelvi funkciók támogatottak, mind a felhőbeli, mind az IoT Edge ugyanazt a logikát futtatását engedélyezi.
 Azonban a következő funkciók még nem támogatottak az edge-feladatok:
 * Felhasználó által definiált függvények (UDF) a JavaScript. Az UDF érhetők el a [ C# IoT Edge-feladatok](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (előzetes verzió).
 * Felhasználó által definiált összesítések (UDA).
@@ -150,14 +152,6 @@ Azonban a következő funkciók még nem támogatottak az edge-feladatok:
 * Legfeljebb 14 összesítést használó egyetlen lépésben.
 * Bemeneti/kimeneti AVRO formátum. Jelenleg csak a fürt megosztott kötetei szolgáltatás és a JSON támogatott.
 * A következő SQL-operátorok:
-    * Térinformatikai kezelők:
-        * CreatePoint
-        * CreatePolygon
-        * CreateLineString
-        * ST_DISTANCE
-        * ST_WITHIN
-        * ST_OVERLAPS
-        * ST_INTERSECTS
     * A PARTÍCIÓ SZERINT
     * GetMetadataPropertyValue
 
@@ -216,7 +210,7 @@ További segítségre van szüksége, próbálja meg a [Azure Stream Analytics-f
 ## <a name="next-steps"></a>További lépések
 
 * [További információ az Azure Iot Edge-ben](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
-* [Az IoT Edge-oktatóanyag ASA](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [ASA on IoT Edge tutorial](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
 * [A Visual Studio-eszközökkel Stream Analytics Edge-feladatok fejlesztése](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
 * [CI/CD megvalósításához a Stream Analytics API-k használatával](stream-analytics-cicd-api.md)
 

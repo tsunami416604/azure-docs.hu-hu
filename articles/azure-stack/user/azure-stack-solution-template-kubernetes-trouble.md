@@ -1,6 +1,6 @@
 ---
-title: A Kubernetes üzembe helyezés az Azure Stack hibaelhárítása |} A Microsoft Docs
-description: Ismerje meg, hogyan háríthatók el a Kubernetes üzembe helyezés az Azure Stackhez.
+title: Hibaelhárítás a Kubernetes üzembe helyezés az Azure Stackben |} A Microsoft Docs
+description: Ismerje meg, hogyan háríthatók el a Kubernetes üzembe helyezés az Azure Stacken.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,30 +11,30 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabrigg
-ms.date: 03/20/2019
+ms.date: 04/02/2019
 ms.reviewer: waltero
 ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: 9af4b7a622bfb47d44c3da0edcece8c9528b08c4
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 2a9eccfa109292b7d142092f69f4a664b0ff8f20
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361540"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878128"
 ---
-# <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>A Kubernetes üzembe helyezés az Azure Stack hibaelhárítása
+# <a name="troubleshoot-kubernetes-deployment-to-azure-stack"></a>Az Azure Stack a Kubernetes üzembe helyezés hibaelhárítása
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!Note]  
 > Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban. Az Azure Stack kapcsolat nélküli forgatókönyv jelenleg nem érhető el az előzetes verzió.
 
 A következő cikket úgy tűnik, a Kubernetes-fürt hibaelhárítása. Tekintse át a központi telepítési riasztás, és a telepítéshez szükséges elemek által a központi telepítés állapotának áttekintése. Szüksége lehet a telepítési naplók gyűjtése az Azure Stack vagy a Linux rendszerű virtuális gépek, amelyeken Kubernetes. Emellett szüksége lehet az Azure Stack rendszergazdai naplók lekérése egy felügyeleti végpont használata.
 
-## <a name="overview-of-deployment"></a>Üzembe helyezés áttekintése
+## <a name="overview-of-kubernetes-deployment"></a>Kubernetes telepítésének áttekintése
 
 A fürt hibaelhárítás megkezdése előtt érdemes áttekinteni az Azure Stack-beli Kubernetes-fürt üzembe helyezési folyamat. A központi telepítés a virtuális gépek létrehozása és telepítése az ACS Engine, a fürt számára egy megoldás Azure Resource Manager-sablon használatával.
 
-### <a name="deployment-workflow"></a>Telepítési munkafolyamat
+### <a name="kubernetes-deployment-workflow"></a>Kubernetes-telepítési munkafolyamat
 
 Az alábbi ábrán látható, az általános folyamat a fürt üzembe helyezéséhez.
 
@@ -85,7 +85,7 @@ Az alábbi ábrán látható, az általános folyamat a fürt üzembe helyezés�
 
 A virtuális gépeken, amelyek támogatják a Kubernetes-fürtöt is összegyűjtheti a naplókat. Emellett áttekintheti a telepítési naplót. Szüksége lehet az Azure Stack rendszergazdai ellenőrizni a verziószámot, amely használja, és a naplók lekérése az Azure Stacken, amely a központi telepítés kapcsolódó van szüksége az Azure Stack-kommunikációhoz.
 
-1. Tekintse át a [központi telepítési állapot](#review-deployment-status) és [a naplók begyűjtéséről](#get-logs-from-a-vm) a Kubernetes-fürt fő csomópontból.
+1. Tekintse át a [központi telepítési állapot](#review-deployment-status) és a naplók lekérése a főcsomópont a Kubernetes-fürtben.
 2. Győződjön meg arról, hogy használ-e az Azure Stack legújabb verzióját. Ha biztos abban, hogy melyik verziót használ, lépjen kapcsolatba az Azure Stack rendszergazdai.
 3.  Tekintse át a virtuális gép létrehozása fájljait. Előfordulhat, hogy a következő problémák rendelkeztek:  
     - Lehet, hogy a nyilvános kulcs érvénytelen. Tekintse át a kulcsot, amelyet Ön hozott létre.  
@@ -113,7 +113,7 @@ Ha a Kubernetes-fürtöt telepít, a telepítés állapota minden olyan problém
     | ----     | ----        |
     | Erőforrás | Az erőforrás neve. |
     | Typo | Az erőforrás-szolgáltató és az erőforrás típusát. |
-    | status | Az elem állapota. |
+    | Állapot | Az elem állapota. |
     | Időbélyeg | Az az idő, UTC-időbélyeg. |
     | Művelet részletei | A művelet részleteit, például az erőforrás-szolgáltató, amely során a műveletet az erőforrás-végpont és az erőforrás nevét. |
 
@@ -172,4 +172,4 @@ Kövesse az alábbi lépéseket gyűjtése és a fürt naplók letöltéséhez:
 
 [Kubernetes-fürt hozzáadása a Marketplace-en (az Azure Stack-operátorokról)](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
-[Kubernetes az Azure-ban](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[A Kubernetes az Azure-on](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 52ec7c83b4070a4c38963b3ab12f58f923fa889d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 53608654392d7efb73b6dadac14f01a94bb035a7
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562625"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893520"
 ---
 # <a name="social-accounts-claims-transformations"></a>Közösségi fiókok a jogcímek átalakítása
 
@@ -38,7 +38,7 @@ Ez a cikk példákat ad az Azure AD B2C-ben a közösségi fiók a jogcímek át
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-Az Azure Active Directory felé irányuló hoz létre a felhasználó alternativeSecurityId tulajdonság használható JSON-ábrázolását. További információkért lásd: [AlternativeSecurityId a séma](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#AlternativeSecurityIdType).
+Az Azure Active Directory felé irányuló hoz létre a felhasználó alternativeSecurityId tulajdonság használható JSON-ábrázolását. További információkért lásd: [AlternativeSecurityId a séma](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#AlternativeSecurityIdType).
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |

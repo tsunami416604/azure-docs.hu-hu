@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: aed7d4fedd4781eac8c127744e5fe93fb054b99d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369717"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894457"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – gyakori kérdések (GYIK)
 
@@ -24,7 +24,7 @@ Ez a cikk a Language Understanding (LUIS) kapcsolatos gyakori kérdésekre adott
 
 <a name="luis-authoring"></a>
 
-## <a name="authoring"></a>Szerzői műveletek
+## <a name="authoring"></a>Tartalomkészítés
 
 ### <a name="what-are-the-luis-best-practices"></a>Mik azok a LUIS-ajánlott eljárások?
 Kezdje a [szerzői ciklus](luis-concept-app-iteration.md), olvassa el a [ajánlott eljárások](luis-concept-best-practices.md).
@@ -88,7 +88,7 @@ Lásd: [Azure Active Directory-erőforrások](luis-how-to-collaborate.md#azure-a
 
 Váratlan lekérdezési előrejelzési eredményeket a közzétett modell állapotának alapulnak. Javítsa ki a modell, előfordulhat, hogy módosítása a modell betanítását, és tegye közzé újra. 
 
-A modell javításának kezdődik [aktív tanulás](luis-how-to-review-endoint-utt.md).
+A modell javításának kezdődik [aktív tanulás](luis-how-to-review-endpoint-utterances.md).
 
 Eltávolíthatja a nem determinisztikus képzési frissítésével a [alkalmazás verziója beállítások API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) összes betanítási adatok használatához.
 
@@ -298,7 +298,7 @@ További szerzői [API útvonalak](https://github.com/Azure-Samples/cognitive-se
 Videók:
 * [Azure Friday Build 2018: Cognitive Services – nyelvi (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Build 2018 AI Show - a hangfelismerési szolgáltatás újdonságai](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [Build 2018-bemutató – Mesterséges intelligencia, beszédképességek és NLU – ajánlott eljárások](https://channel9.msdn.com/events/Build/2018/BRK3208)
+* [Build 2018 munkamenet - robot intelligencia, beszéd képességei és NLU ajánlott eljárások](https://channel9.msdn.com/events/Build/2018/BRK3208)
 * [Build 2018 - LUIS-frissítések](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 Projektek:

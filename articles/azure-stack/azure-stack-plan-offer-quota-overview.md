@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/26/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 10/12/2018
-ms.openlocfilehash: 0de021f4666da805eab8faba527f7c5322c39e9d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9d495087a0b3db5bba3b00fa9d0d40c91e5e9244
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763452"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497857"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Csomag, ajánlat, kvóta és előfizetés áttekintése
 
@@ -45,13 +45,16 @@ Miután létrehozta az ajánlatra, a felhasználók előfizethetnek hozzáférje
 
 ![Bérlő előfizetési ajánlatok és csomagok](media/azure-stack-key-features/image4.png)
 
-## <a name="plans"></a>Tervek
+## <a name="plans"></a>Csomagok
 
-Csomagok egy vagy több szolgáltatás csoportjai. Az Azure Stack operátorait szerint Ön [terveket hozhat létre](azure-stack-create-plan.md) nyújtani a felhasználóknak. Ezután a felhasználók előfizethetnek azokra a a csomagok és szolgáltatások tartoznak. Tervek létrehozásakor ügyeljen arra, hogy a kvóták beállítása, a alapcsomagok definiálása és fontolja meg, beleértve a választható kiegészítő csomagok.
+A Csomagok egy vagy több szolgáltatás csoportjai. Az Azure Stack operátorait szerint Ön [terveket hozhat létre](azure-stack-create-plan.md) nyújtani a felhasználóknak. A felhasználói előfizethetnek az ajánlataira, hogy használhassák a bennük foglalt csomagokat és szolgáltatásokat. Tervek létrehozásakor ügyeljen arra, hogy a kvóták beállítása, a alapcsomagok definiálása és fontolja meg, beleértve a választható kiegészítő csomagok.
 
 ### <a name="quotas"></a>Kvóták
 
 Használhatja, amelyek segítségével kezelheti a felhő kapacitása, előre konfigurált *kvóták*, vagy hozzon létre egy új kvótát az egyes szolgáltatások egy csomagban. Kvóták, amely a felhasználói előfizetés is üzembe helyezése és felhasználása felső erőforráskorlátok adja meg. Például kvóta lehetővé teheti a felhasználó legfeljebb öt virtuális gépek (VM) létrehozásához.
+
+> [!IMPORTANT]
+> Új kvóták csak akkor érhető el, a felhasználói portálon, vagy előtt módosított kvóták érvényesítése akár két órát is igénybe vehet.
 
 Beállíthatja, hogy kvótái régiónként. Például terület A számítási szolgáltatásokat nyújt a csomagot lehet két virtuális gépet egy kvótáját.
 

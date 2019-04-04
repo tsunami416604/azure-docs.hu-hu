@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8ebf9826f156245381ce3503dc64275bca571cc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a182b9ec0fb945b4c2ffddd7a977df8ad9a8d250
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890784"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895968"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
@@ -23,15 +23,17 @@ Az Azure Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure 
 ## <a name="video-insights"></a>Videóelemzések
 
 - **Arcfelismerés**: Észleli és csoportokat a videóban megjelenő arcokat.
-- **Hírességek azonosító**: A video Indexer automatikusan meghatározza a több mint 1 millió hírességek – például a világ vezető, aktorok és színésznők, elnyert érmek számának trendjeit, kutatók, üzleti és a világ vezető technológiai szakértőnk. E hírességekkel kapcsolatban különböző ismert webhelyeken, például a IMDB-n és a Wikipédián is találhatók adatok.
+- **Hírességek azonosító**: A video Indexer automatikusan meghatározza a több mint 1 millió hírességek – például a világ vezető, actors, színésznők, elnyert érmek számának trendjeit, kutatók, üzleti és technológiai szakértőnk, az egész világon. E hírességekkel kapcsolatban különböző ismert webhelyeken, például a IMDB-n és a Wikipédián is találhatók adatok.
 - **Tárfiókalapú arcfelismerés**: A video Indexer betanítja olyan modell, egy meghatározott fiók. Majd a betanított modell alapján a videóban arcokat észleli. További információkért lásd: [egy személy modellje a Video Indexer webhelyről](customize-person-model-with-website.md) és [a Video Indexer API személy modell testreszabása](customize-person-model-with-api.md).
 - **Az arcok miniatűr kinyerési** ("ajánlott face"): Automatikusan azonosítja az egyes csoportokban téglalapot (a minőségét, mérete és elülső pozíció alapján) legmegfelelőbb rögzített face, és csomagolja ki rendszerképet eszközként.
 - **Vizuális szövegek felismerése** (OCR): Kiolvassa a videóban vizuálisan megjelenített szöveget.
 - **Vizuális tartalom-jóváhagyás**: Észleli a felnőtt és/vagy pikáns vizualizációkat.
 - **Szoftverazonosító címkék**: Azonosítja a vizuális objektumok és műveletek jelennek meg.
-- **Elejtett észlelési**: Azt határozza meg, ha egy helyszín módosításokat a videóban.
+- **Jelenet Szegmentálás**: azt határozza meg, ha álló jelenet renderelése; a videóban vizuális jelek alapján változik. Jelenet ábrázolja egy adott eseményhez, és egymást követő helyességének, amely szemantikailag kapcsolódó sorozata épül fel. 
+- **Elejtett észlelési**: azt határozza meg, amikor egy képernyőkép-készítés módosítja a videóban vizuális jelek alapján. A képernyőkép-készítés származik az azonos film kamera képkocka. További információkért lásd: [jelenetek helyességének és kulcsképek](scenes-shots-keyframes.md).
 - **Keret észlelési fekete**: A videóban megjelenő fekete keretek azonosítja.
 - **Kulcsképkockák**: Videó stabil kulcsképek észleli.
+- **A működés közbeni kreditek**: elején és végén lévő filmek és TV-műsorok a működés közbeni kreditek azonosításához.
 
 ## <a name="audio-insights"></a>Hang insights
 
@@ -69,9 +71,8 @@ A szolgáltatásra meglévő AAD-, LinkedIn-, Facebook-, Google- vagy MSA-fiókk
 Az alábbiakban bemutatunk néhány olyan forgatókönyvet, amelyek során a Video Indexer hasznos eszköznek bizonyulhat.
 
 - Keresés – A videóból kinyert elemzésekkel javítható a keresési élmény a videótárakban. Például az elhangzott szavak és az arcok indexelése lehetőséget teremt arra, hogy a kereső megtaláljon a videókban bizonyos pillanatokat, amikor egy adott személy egy adott dolgot mond, vagy amikor két személy együtt látható. Az ilyen elemzések alapján való keresés hasznos lehet a hírügynökségek, az oktatási intézmények, a műsorszolgáltatók, a szórakoztató tartalmak tulajdonosai és a vállalati üzletági alkalmazások számára, illetve általánosságban bármely iparágban, ahol szükség lehet egy, a felhasználók által kereshető videótárra.
-
+- Tartalom létrehozása – insights videókból kinyert és segítségével hatékonyan készíthet például pótkocsik, közösségi médiatartalmak, news tartalom stb. a szervezet archívumban található meglévő tartalomból 
 - Értékesítés – A Video Indexer segíthet a videók értékének növelésében. Például a hirdetési bevételekre támaszkodó iparágak (híroldalak, közösségi média stb.) relevánsabb reklámokat jeleníthetnek meg azáltal, hogy a kinyert elemzéseket jelzésként továbbítják a reklámkiszolgálók felé (pl. egy sportcipő reklámját relevánsabb egy futballmérkőzés közepén megjeleníteni, mint egy úszóversenyen).
-
 - Felhasználói érdeklődés – A videóelemzésekkel növelhető a felhasználói érdeklődés oly módon, hogy feltüntetjük a felhasználók számára a videók releváns pillanatait. Például tegyük fel, hogy egy oktatóvideó első 30 perce a gömböket, a következő 30 perce pedig a gúlákat ismerteti. Egy diáknak, aki a gúlákról olvas, hasznosabb, ha a videó a 30. perctől kezdve indul el.
 
 ## <a name="next-steps"></a>További lépések
@@ -79,5 +80,5 @@ Az alábbiakban bemutatunk néhány olyan forgatókönyvet, amelyek során a Vid
 Készen áll a Video Indexer használatának megkezdésére. További információkért tekintse át a következő cikkeket:
 
 - [A Video Indexer webhely használatának első lépései](video-indexer-get-started.md)
-- [Tartalomfeldolgozás a Video Indexer REST API-val](video-indexer-use-apis.md)
-- [Vizuális widgetek beágyazása egy saját alkalmazásba](video-indexer-embed-widgets.md)
+- [Video Indexer – REST API-val feldolgozása tartalom](video-indexer-use-apis.md)
+- [Vizuális widgetek beágyazása az alkalmazásba](video-indexer-embed-widgets.md)

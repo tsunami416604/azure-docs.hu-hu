@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/30/2019
+ms.date: 04/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6bf0efd6994315d56e7b1b2447ffed9154cf5ee5
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: a5ab0b25a2a2db764854982b1a6801ce4f857dda
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804870"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891956"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-k
 
@@ -47,7 +47,7 @@ Tekintse meg a [beolvasni a tartalom a fő házirend - .NET](get-content-key-pol
 
 A műveletek jelölése `x-ms-long-running-operation` az Azure Media Services [swagger-fájlok](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) hosszú futó műveletek. 
 
-Az Azure aszinkron műveletek követése kapcsolatos részletekért lásd: [aszinkron műveletek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)
+Az Azure aszinkron műveletek követése kapcsolatos részletekért lásd: [aszinkron műveletek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
 A Media Services a következő hosszú ideig futó műveleteket tartalmazza:
 
@@ -65,7 +65,6 @@ A Media Services a következő hosszú ideig futó műveleteket tartalmazza:
 * Start Streamvégpontok
 * Streamvégpontok leállítása
 * Méretezési csoport Streamvégpontok
-
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>A Media Services entitások szűrési, rendezési, stránkování
 
@@ -356,4 +355,4 @@ Az alábbi táblázat mutatja, hogy ezek a beállítások alkalmazhatók a [alak
 
 ## <a name="next-steps"></a>További lépések
 
-[Fájl streamelése](stream-files-dotnet-quickstart.md)
+[Stream-fájl](stream-files-dotnet-quickstart.md)

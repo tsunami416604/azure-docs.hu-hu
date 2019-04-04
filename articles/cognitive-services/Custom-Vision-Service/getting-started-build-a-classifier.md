@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: cf8a36145ebf5d5dabf8c539d4f245e1d4b209f0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 78ee24280600d336d394819d33762d8cf6278858
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886437"
+ms.locfileid: "58891480"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>A Custom Vision besorolás létrehozása
 
@@ -125,9 +125,7 @@ Előrejelzés-hívást egy nagy valószínűséggel küszöbértéket értelmez�
 
 ## <a name="manage-training-iterations"></a>Képzési ismétléseinek kezelése
 
-Minden alkalommal, amikor Ön betaníthatja az, hozzon létre egy új _iteráció_ a saját frissített teljesítmény-mérőszámon. Az ismétlések összes, a bal oldali panelen megtekintheti az **teljesítmény** fülre. Ha kiválaszt egy, lehetősége van, így a _iteráció alapértelmezett_ kattintva a **alapértelmezett** gombra az oldal tetején. A _iteráció alapértelmezett_ pedig a modellt, amely alapértelmezés szerint lesz használható, ha az előrejelzési API-k lekérdezése (az alkalmazásokból, például). Frissíteni elutasításakor a _iteráció alapértelmezett_, továbbra is a modell betanítását anélkül, hogy befolyásolná az alkalmazás aktuális működésének; majd, ha elégedett a továbbfejlesztett modellt, módosíthatja az alapértelmezett.
-
-A bal oldali panelen is talál a **törlése** gombra, amely egy iterációját törlése, ha az elavult használhatja. Ha töröl egy iterációját, akkor törölje az összes egyedi társított, lemezképet.
+Minden alkalommal, amikor Ön betaníthatja az, hozzon létre egy új _iteráció_ a saját frissített teljesítmény-mérőszámon. Az ismétlések összes, a bal oldali panelen megtekintheti az **teljesítmény** fülre. A bal oldali panelen is talál a **törlése** gombra, amely egy iterációját törlése, ha az elavult használhatja. Ha töröl egy iterációját, akkor törölje az összes egyedi társított, lemezképet.
 
 ## <a name="next-steps"></a>További lépések
 

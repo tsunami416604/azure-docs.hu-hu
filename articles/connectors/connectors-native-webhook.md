@@ -11,12 +11,12 @@ ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
-ms.openlocfilehash: c0985df445ae34795d5287144d4664755cc006da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182115"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895579"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Hozzon létre eseményalapú munkafolyamatokat és műveleteket webhookok és az Azure Logic Apps használatával
 
@@ -29,7 +29,7 @@ Tudjon meg többet [egyéni API-k, amelyek támogatják a webhook létrehozása]
 
 ## <a name="use-the-webhook-trigger"></a>A webhook eseményindítóhoz használata
 
-A [ *eseményindító* ](connectors-overview.md) olyan esemény, amely elindítja a logikai alkalmazás munkafolyamatának. A webhook eseményindítóhoz eseményalapú, amely új elemeket a lekérdezése nem függ. Ha menti a logikai alkalmazás a webhook eseményindítóként, illetve ha módosítja a logikai alkalmazás le van tiltva, hogy engedélyezve van, a webhook eseményindítóhoz *feliratkozik* a megadott szolgáltatás vagy a végpont regisztrálásával egy *visszahívási URL-Címének* szolgáltatás vagy a végpont. Az eseményindító URL-CÍMRE használja fel a logikai alkalmazás futtatása szükséges. Például a [kérelem típusú trigger](connectors-native-reqres.md), a logikai alkalmazás akkor aktiválódik, ha a várt esemény történik, azonnal. Az eseményindító *lemondja az előfizetést* Ha eltávolítja az eseményindítót, a logikai alkalmazás mentése, illetve amikor megváltozik a logikai alkalmazást engedélyezett.
+A [ *eseményindító* ](../connectors/apis-list.md) olyan esemény, amely elindítja a logikai alkalmazás munkafolyamatának. A webhook eseményindítóhoz eseményalapú, amely új elemeket a lekérdezése nem függ. Ha menti a logikai alkalmazás a webhook eseményindítóként, illetve ha módosítja a logikai alkalmazás le van tiltva, hogy engedélyezve van, a webhook eseményindítóhoz *feliratkozik* a megadott szolgáltatás vagy a végpont regisztrálásával egy *visszahívási URL-Címének* szolgáltatás vagy a végpont. Az eseményindító URL-CÍMRE használja fel a logikai alkalmazás futtatása szükséges. Például a [kérelem típusú trigger](connectors-native-reqres.md), a logikai alkalmazás akkor aktiválódik, ha a várt esemény történik, azonnal. Az eseményindító *lemondja az előfizetést* Ha eltávolítja az eseményindítót, a logikai alkalmazás mentése, illetve amikor megváltozik a logikai alkalmazást engedélyezett.
 
 A következő példa bemutatja, hogyan állítható be a HTTP-trigger, a Logic App Designerben. A lépések azt feltételezik, hogy már üzembe helyezte, vagy fér hozzá a következő API-k a [webhook előfizetés, és a logic apps minta mondja](../logic-apps/logic-apps-create-api-app.md#webhook-triggers). 
 
@@ -48,7 +48,7 @@ A következő példa bemutatja, hogyan állítható be a HTTP-trigger, a Logic A
 
 ## <a name="use-the-webhook-action"></a>A webhook művelettel
 
-Egy [ *művelet* ](connectors-overview.md) egy meghatározott műveletet, és futtassa a logikai alkalmazás munkafolyamat által. Mikor fusson a logikai alkalmazás a webhook művelettel, a művelet *feliratkozik* a megadott szolgáltatás vagy a végpont regisztrálja a *visszahívási URL-Címének* szolgáltatás vagy a végpont. A webhook művelettel, majd megvárja, amíg, amely a szolgáltatás hívást az URL-cím a logikai alkalmazás folytatja futtatása előtt. A logikai alkalmazás lemondja az előfizetést a szolgáltatás vagy a végpont ezekben az esetekben: 
+Egy [ *művelet* ](../connectors/apis-list.md) egy meghatározott műveletet, és futtassa a logikai alkalmazás munkafolyamat által. Mikor fusson a logikai alkalmazás a webhook művelettel, a művelet *feliratkozik* a megadott szolgáltatás vagy a végpont regisztrálja a *visszahívási URL-Címének* szolgáltatás vagy a végpont. A webhook művelettel, majd megvárja, amíg, amely a szolgáltatás hívást az URL-cím a logikai alkalmazás folytatja futtatása előtt. A logikai alkalmazás lemondja az előfizetést a szolgáltatás vagy a végpont ezekben az esetekben: 
 
 * Ha a webhook művelet sikeres befejezését követően
 * Ha a logikai alkalmazás futtatásának megszakítása válaszra való várakozás közben

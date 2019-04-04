@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/29/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: 3d825a0f8a23380b4d9cf453076ab4b18ee67831
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.lastreviewed: 03/29/2019
+ms.openlocfilehash: e4678b445dce5b337fb7d51e1b938adb944b4440
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095517"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648724"
 ---
 # <a name="azure-stack-capacity-planning"></a>Az Azure Stack kapacitásának megtervezése
 Az Azure Stack megoldás kiértékelésekor nincsenek hardver konfigurációs lehetőségeket, amelyek közvetlen hatással vannak az Azure Stack-felhő összesített kapacitását. Ezek a CPU, memória sűrűség, tárolási konfigurációt, és a teljes megoldás méretezési vagy kiszolgálók száma, a klasszikus lehetőségek. Ellentétben a hagyományos virtualizálási megoldás az egyszerű számtani felhasználható kapacitás meghatározásához ezeket az összetevőket nem vonatkozik. Az első ennek oka, hogy az Azure Stack tervezésnek lesz-e üzemeltetni az infrastruktúrát vagy felügyeleti összetevők magát a megoldáson belül. A második oka, hogy a megoldás kapacitás némelyike rugalmasság; feladat foglalt a megoldás szoftverek oly módon, hogy bérlői számítási feladatok frissítése.
@@ -34,25 +34,11 @@ Az Azure Stack megoldás egy hiperkonvergens fürttel, számítási, hálózati 
 
 A csak fizikai erőforrás, amely az Azure Stack megoldással túlterhelt nincs kiépítve kiszolgálómemória. Az egyéb erőforrások, CPU magok, hálózati sávszélesség és tárolási kapacitás, a rendelkezésre álló erőforrások használható a leghatékonyabban kell overprovisioned. A megoldás számára rendelkezésre álló kapacitást kiszámításakor a fizikai kiszolgáló memória mérete a fő közreműködője. Egyéb erőforrások felhasználása, majd ismertetése, amely túlzott arány, lehetséges, és mi lesz a tervezett terhelés alapján elfogadható.
 
-Körülbelül 28 virtuális gépek üzemeltetése az Azure Stack-infrastruktúra, és teljes, a felhasználását a memória és a 124 virtuális mag körülbelül 208 GB szolgálnak.  A közösségértékek a virtuális gépek száma, hogy megfelelnek a biztonság, a méretezhetőség, a karbantartás és javítás követelmények teljesítéséhez szükséges szolgáltatás szétválasztását. Ez a belső struktúra lehetővé teszi, hogy a jövőbeli bevezetése új infrastruktúra-szolgáltatások, azok lettek kifejlesztve.
+Körülbelül 30 virtuális gépek üzemeltetése az Azure Stack-infrastruktúra, és összesen, körülbelül 230 GB memória és a virtuális magok 140 felhasználása szolgálnak. A közösségértékek a virtuális gépek száma, hogy megfelelnek a biztonság, a méretezhetőség, a karbantartás és javítás követelmények teljesítéséhez szükséges szolgáltatás szétválasztását. Ez a belső struktúra lehetővé teszi, hogy a jövőbeli bevezetése új infrastruktúra-szolgáltatások, azok lettek kifejlesztve.
 
 A fizikai kiszolgáló és a infrastruktúra szoftverösszetevőket, vagy a javítás és a frissítés, infrastruktúra és a felhasználói virtuális gép automatikus frissítésének támogatására szabadon elhelyezhetők a munkaterhelések a skálázási egység minden memória-erőforrásaira nem használnak fel. Az összes kiszolgálóján, a skálázási egységek a teljes memória mennyisége nem lefoglalt támogatásához a megoldás rugalmassági követelmények lesz. Például Windows Server-lemezképet a fizikai kiszolgáló frissítésekor a kiszolgálón futtatott virtuális gépek kerülnek máshol belül a skálázási egység, miközben a kiszolgáló Windows Server-lemezképeket frissült. A frissítés befejeződése után a kiszolgáló újraindul és számítási feladatok karbantartásába adja vissza. A javítás és a egy Azure Stack megoldás frissítése célja, hogy ne legyen szükség üzemeltetett virtuális gépek leállítása. A mindent megtesz felel meg a cél elérésében tett, legalább egy kiszolgáló memória-kapacitás az, hogy a skálázási egységben lévő virtuális gépek áthelyezését a fel nem használt. Az Elhelyezés és -mozgatás infrastruktúra virtuális gépeinek és a felhasználó vagy a bérlő az Azure Stack-megoldás a nevében létrehozott virtuális gépek is vonatkozik. A végső megvalósításának eredménye, hogy támogatásához szükséges a virtuális gép áthelyezését fenntartott memória mennyisége is lehet csupán egyetlen kiszolgáló kapacitásának elhelyezési kihívások miatt, ha a virtuális gépek rendelkeznek, különböző igényeket támasztó memória vannak. További többletterhelést jelenthet a kategóriában a memóriahasználatot, amely a Windows Server-példány magát. Az alap operációs rendszer minden egyes kiszolgáló-példány memóriát az operációs rendszer és a virtuális lap táblák kezelését, az üzemeltetett virtuális gépek mindegyike Hyper-V által felhasznált memória együtt fog felhasználni.
 
-Kapacitás számítások kiküszöböli további leírását ebben a szakaszban később írja le. Ez a bevezető az alábbi példák találhatók, amelyek segítik az elérhető kapacitása változó méretű megoldás ismertetése. Ezek a becslések, és ezért győződjön meg arról, feltételezéseket bérlői virtuális gép memória használata, amely nem lehet igaz az éles környezetekben. Ehhez a táblához a Standard D2 Azure Virtuálisgép-méretet használja. Az Azure Standard D2 virtuális gépek 2 virtuális processzorok és 7 GB memória van definiálva.
-
-|     |Kiszolgáló kapacitásának kiszolgálónként|| Skálázási egység kapacitás|  |  |||
-|-----|-----|-----|-----|-----|-----|-----|-----|
-|     | Memory (Memória) | Processzormagok | Azon kiszolgálók száma | Memory (Memória) | Processzormagok | Bérlői virtuális gépek<sup>1</sup>     | Mag arány<sup>2</sup>    |
-|1. példa|256 GB|28|4|1024 GB| 112 | 54 |4:3|
-|2. példa|512 GB|28|4|2024 GB|112|144|4:1|
-|3. példa|384 GB|28|12|4608 GB|336|432|3:1|
-|     |     |     |     |     |     |     |     |
-
-> <sup>1</sup> standard D2 virtuális gépeket.
-> 
-> <sup>2</sup> virtuális mag fizikai mag arány.
-
-Ahogy említettük, a Virtuálisgép-kapacitás rendelkezésre álló memória határozza meg. A virtuális-magot fizikai mag arány exemplify, hogy a Virtuálisgép-sűrűség hogyan módosítani rendelkezésre álló processzorkapacitást, kivéve, ha a megoldás több fizikai mag (egy másik CPU kiválasztott) úgy van felépítve. Ugyanez érvényes tárolási kapacitás és a gyorsítótár tárolókapacitást.
+A Virtuálisgép-kapacitás rendelkezésre álló memória határozza meg. A virtuális-magot fizikai mag arány exemplify, hogy a Virtuálisgép-sűrűség hogyan módosítani rendelkezésre álló processzorkapacitást, kivéve, ha a megoldás több fizikai mag (egy másik CPU kiválasztott) úgy van felépítve. Ugyanez érvényes tárolási kapacitás és a gyorsítótár tárolókapacitást.
 
 Virtuálisgép-sűrűség, a fenti példákban csak a magyarázat célokat szolgálnak. Nincs a számítások támogatást további összetettséget. Microsoft-partner vagy megoldásszolgáltató partner szükség, így jobban megismerheti a tervezési döntések és az eredményül kapott, a rendelkezésre álló kapacitás.
 

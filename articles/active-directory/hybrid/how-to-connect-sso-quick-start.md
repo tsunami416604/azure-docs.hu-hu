@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 345c97a19f789bb3d850df000824d4c23989a81f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4b56aeb4fb0c902d3c824c58d2ac589c5f1fb01b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086819"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894765"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Első lépések
 
@@ -93,7 +93,10 @@ Kövesse az alábbi utasításokat, győződjön meg arról, hogy engedélyezte 
 ![Az Azure Portalon: Az Azure AD Connect panel](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Közvetlen egyszeri bejelentkezés nevű számítógép-fiókot hoz létre `AZUREADSSOACC` (amely jelöli az Azure AD) a helyszíni Active Directory (AD) minden olyan AD-erdőben. Ennek a számítógépfióknak a funkció működéséhez szükség van. Ha a Pass-the-Hash és a hitelesítő adatok ellopásának kockázatcsökkentési architektúrák a helyszíni környezetben használ, ellenőrizze, hogy a `AZUREADSSOACC` számítógépfiók végül nem a a karanténba helyezett tárolóra. A megfelelő módosításokat a számítógépfiók létrehozása a számítógépek tárolóban. Miután a közvetlen egyszeri bejelentkezés az Azure AD Connect varázsló sikeresen engedélyezve van, a `AZUREADSSOACC` , egy szervezeti egység (OU), más fiókok, győződjön meg arról, hogy az nem törlődik az véletlenül felügyelt számítógépfiókot.
+> Közvetlen egyszeri bejelentkezés nevű számítógép-fiókot hoz létre `AZUREADSSOACC` a helyszíni Active Directory (AD) minden olyan AD-erdőben. A `AZUREADSSOACC` számítógépfiók biztonsági okokból erősen védeni kell. Csak a tartományi rendszergazdák kezelése a számítógépfiók képesnek kell lennie. Győződjön meg arról, hogy a Kerberos-delegálás, a számítógép fiók le van tiltva. A számítógépfiók a egy szervezeti egység (OU), hogy hol biztonságban véletlen törlések Store.
+
+>[!NOTE]
+> Annak érdekében, hogy ha a Pass-the-Hash és a hitelesítő adatok ellopásának kockázatcsökkentési architektúrák használ a helyszíni környezetben, megfelelő módosításokat a `AZUREADSSOACC` számítógépfiók végül nem a a karanténba helyezett tárolóra. 
 
 ## <a name="step-3-roll-out-the-feature"></a>3. lépés: A szolgáltatás bevezetése
 

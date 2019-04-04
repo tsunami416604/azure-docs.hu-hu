@@ -16,12 +16,12 @@ ms.date: 2/17/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 1ab59dfc42213fc5c5ce22841e572e2724e239aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a271edd710356ff612a4558034e9f7459a17ecaa
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119003"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666290"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Vendég operációs rendszereket támogatják az Azure Stackben
 
@@ -35,7 +35,7 @@ Az Azure Stack támogatja az alábbi táblázatban felsorolt Windows vendég ope
 | --- | --- | --- |
 | A Windows Server 1709-es verzió | 64 bites | A tárolók Core |
 | Windows Server 2016 | 64 bites |  Datacenter, Datacenter mag, Datacenter tárolókkal |
-| Windows Server 2012 R2 | 64 bites |  Adatközpont |
+| Windows Server 2012 R2 | 64 bites |  Adatközpont |
 | Windows Server 2012 | 64 bites |  Adatközpont |
 | Windows Server 2008 R2 SP1 | 64 bites |  Adatközpont |
 | Windows Server 2008 SP2 | 64 bites |  Saját kép használata |
@@ -53,11 +53,11 @@ Datacenter kiadások érhetők el le; a piactéren ügyfelek kihasználhatják a
 Linux-disztribúciók elérhetőként szerepel a Marketplace-en tartalmazza a szükséges Windows Azure Linux ügynök (WALA). Ha saját rendszerképet az Azure Stackhez, irányelvekhez [hozzáadása típusú Linux-rendszerképeket az Azure Stackhez](azure-stack-linux.md).
 
 > [!NOTE]
-> Egyéni rendszerképek nyilvános WALA legújabb verziójával vagy 2.2.20 verzióval kell építeni. Előfordulhat, hogy a verzió régebbi, mint 2.2.20 és 2.2.20 és 2.2.36 között nem működik megfelelően az Azure Stacken. 
+> Egyéni rendszerképek nyilvános WALA legújabb verziójával vagy 2.2.20 verzióval kell építeni. Előfordulhat, hogy a régebbi, mint 2.2.20 és 2.2.20 és 2.2.35.1 (exkluzív) közötti verziókat nem működik megfelelően az Azure Stacken. 
 >
 > [a cloud-init](https://cloud-init.io/) jelenleg nem támogatott az Azure Stacken.
 
-| Disztribúció | Leírás | Közzétevő | Piactér |
+| Megoszlás | Leírás | Közzétevő | Marketplace |
 | --- | --- | --- | --- |
 | CentOS-alapú 6.9. | 64 bites | Rogue Wave | Igen |
 | CentOS-alapú 7.4 | 64 bites | Rogue Wave | Igen |
@@ -68,9 +68,9 @@ Linux-disztribúciók elérhetőként szerepel a Marketplace-en tartalmazza a sz
 | Red Hat Enterprise Linux 7.x | 64 bites | Red Hat |Saját kép használata |
 | SLES 11SP4 | 64 bites | SUSE | Igen |
 | SLES 12SP3 | 64 bites | SUSE | Igen |
-| Ubuntu 14.04-LTS | 64 bites | Canonical | Igen |
-| Ubuntu 16.04-LTS | 64 bites | Canonical | Igen |
-| Ubuntu 18.04-LTS | 64 bites | Canonical | Igen |
+| Ubuntu 14.04-LTS | 64 bites | Kanonikus | Igen |
+| Ubuntu 16.04-LTS | 64 bites | Kanonikus | Igen |
+| Ubuntu 18.04-LTS | 64 bites | Kanonikus | Igen |
 
 Red Hat Enterprise Linux-támogatás információkért lásd: [Red Hat és az Azure Stack: Gyakori kérdések](https://access.redhat.com/articles/3413531).
 

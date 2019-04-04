@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 8b42361e7b94bf017dde4eaec882f9fed4d42ed6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861995"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918518"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Számlázási és a cost Management Automation-forgatókönyvek
 
@@ -80,9 +80,9 @@ Web Direct- és nagyvállalati ügyfelek használhatják az összes a következ�
 
 -   [Használat részletei API](https://docs.microsoft.com/rest/api/consumption/usagedetails): Az összes Azure-erőforrások díja és használati információk beolvasása a Microsoft. Információk a rendszer jelenleg a kibocsátott egyszer mérni / nap / használati részletes rekordok formájában van. Az információk segítségével a költségek összeadódhatnak összes erőforrás között, vagy vizsgálja meg a költségek/használati az adott erőforrásokra.
 
--   [RateCard API](https://msdn.microsoft.com/library/azure/mt219005.aspx): Kedvezményekkel mérőszám veheti igénybe, ha Ön a Web Direct-ügyfél. Ezután használhatja a visszaadott információ az erőforrás-használati adatait a várt számla kiszámításának alapjául manuálisan. 
+-   [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)): Kedvezményekkel mérőszám veheti igénybe, ha Ön a Web Direct-ügyfél. Ezután használhatja a visszaadott információ az erőforrás-használati adatait a várt számla kiszámításának alapjául manuálisan. 
 
--   [Használati API nem minősített](https://msdn.microsoft.com/library/azure/mt219003.aspx): Nyers használati adatai olvashatók be, mielőtt az Azure elvégzi az összes szoftverhasználat-mérő/díjszabási.
+-   [Használati API nem minősített](/previous-versions/azure/reference/mt219003(v=azure.100)): Nyers használati adatai olvashatók be, mielőtt az Azure elvégzi az összes szoftverhasználat-mérő/díjszabási.
 
 ### <a name="billing"></a>Számlázás
 -   [Számlázási időszak API](https://docs.microsoft.com/rest/api/billing/billingperiods): Határozza meg, hogy egy számlázási időszak elemzése, a számla azonosítók az adott időszak együtt. A számlák API-val számla azonosítók is használhatja.
@@ -121,7 +121,7 @@ Ezen API-k alapvetően más adatokat adja meg:
    - Az előre fizetett pénzügyi kötelezettségvállalással használatáért fiók módosításai
    - Használati fenntartásában derítette fel az Azure-fiók módosításai
 
-- A [használati API](https://msdn.microsoft.com/library/Mt219003.aspx) nyers Azure használati adatokat biztosít, mielőtt a rendszer az Azure-ban mérési költség keresztülhalad. Ezek az adatok esetleg nincs bármely korrelációs a használat vagy az akkumulátor lemerült összeget, amely után az Azure díjat a mérési rendszer látható.
+- A [használati API](/previous-versions/azure/reference/mt219003(v=azure.100)) nyers Azure használati adatokat biztosít, mielőtt a rendszer az Azure-ban mérési költség keresztülhalad. Ezek az adatok esetleg nincs bármely korrelációs a használat vagy az akkumulátor lemerült összeget, amely után az Azure díjat a mérési rendszer látható.
 
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Mi a különbség a számlák API-t és a használati részletek API-t?
 Ezekkel az API-adja meg az adatokat egy másik nézet:
@@ -135,7 +135,7 @@ Ezen API-k biztosítanak a hasonló adatkészletek, de különböző célközön
 
 - A [ár lap API](https://docs.microsoft.com/rest/api/consumption/pricesheet) biztosít az egyéni díjszabás, amely a nagyvállalati ügyfelek fiókazonosítóját volt egyeztetve.
 
-- A [RateCard API](https://msdn.microsoft.com/library/mt219005.aspx) biztosít a Web Direct ügyfelei számára, hogy nyilvános vonatkozik.
+- A [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) biztosít a Web Direct ügyfelei számára, hogy nyilvános vonatkozik.
 
 ## <a name="next-steps"></a>További lépések
 

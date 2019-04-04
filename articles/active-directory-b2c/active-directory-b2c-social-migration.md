@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a1ecc4de9475e735cd17286826c1d8cea05904ab
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 12b464d9b6bd09acb9c93ab1de0ba178f28a778a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089352"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894901"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Felhasználók migrálása közösségi identitásokkal
 Ha azt tervezi, az identitásszolgáltató migrálása az Azure AD B2C-vel, szükség lehet a közösségi identitású felhasználók áttelepítése. Ez a cikk azt ismerteti, hogyan telepítheti át meglévő közösségi identitások fiókokat, például: Facebook, a LinkedIn, a Microsoft és a Google fiókok Azure AD B2C-t. Ez a cikk az összevont identitások kialakítása, is vonatkozik, azonban ezek áttelepítések kevésbé gyakoriak.
@@ -63,7 +63,7 @@ Az alábbi lista tartalmazza a tulajdonságokat, amelyeket van szükség, amikor
 * **userIdentities** -közösségi adjon meg egy vagy több UserIdentity rekordot fiók típusát és a közösségi identitásszolgáltatótól egyedi felhasználói azonosítót.
 * [opcionális] **otherMails** – közösségi fiók csak a felhasználó e-mail-címei 
 
-További információkért lásd: [Graph API-referencia](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
+További információkért lásd: [Graph API-referencia](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>Közösségi fiók (csak) áttelepítése
 Csak a közösségi fiók létrehozása nélkül helyi fiók hitelesítő adatait. HTTPS POST kérés küldése a Graph API-t. A kérés törzse tartalmazza a felhasználó tulajdonságait a a közösségi fiók létrehozásához. Minimális meg kell adnia a szükséges tulajdonságokat. 

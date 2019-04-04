@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e21f7a67b11caf0180959de68d698f0ff4a1af1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a7a2866952d5e66e24770b81e69039d733fdd2a1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371859"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894593"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
-További információk a hitelesítési módszerek és biztonsági adatai áttekintéséhez néven erősítse meg, akinek mondja magát a társított szolgáltatások használata esetén az Azure AD önkiszolgáló jelszó-visszaállítás (SSPR) és a multi-factor Authentication (MFA) kérhet.
+A rendszergazda hitelesítési módszerek kiválasztása az Azure multi-factor Authentication és az önkiszolgáló jelszó-visszaállítást (SSPR), javasoljuk, hogy a felhasználók többféle hitelesítési módszer regisztrálásához szükséges. Hitelesítési módszerként a felhasználó számára nem érhető el, ha azok választhat egy másik módszer a hitelesítéshez.
 
-A házirend milyen hitelesítési módszerek érhetők el az SSPR és az MFA felhasználói rendszergazdák adhatja meg. Bizonyos hitelesítési módszereknél nem lehet elérhető összes szolgáltatáshoz.
+A házirend milyen hitelesítési módszerek érhetők el az SSPR és az MFA felhasználói rendszergazdák adhatja meg. Bizonyos hitelesítési módszereknél nem lehet elérhető összes szolgáltatáshoz. Konfigurálásával kapcsolatos további információk a szabályzatok: a cikkek [útmutató új jelszó önkiszolgáló kérésének sikeres bevezetése](howto-sspr-deployment.md) és [egy felhőalapú Azure multi-factor Authentication tervezése](howto-mfa-getstarted.md)
 
 A Microsoft nyomatékosan javasolja a rendszergazdák engedélyezés felhasználóknak, hogy több, mint a hitelesítési módszerek a minimális számú abban az esetben, ha nincs hozzáférése egy.
 

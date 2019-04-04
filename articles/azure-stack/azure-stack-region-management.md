@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 03/21/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
-ms.openlocfilehash: 29e4bb23b4b80f6e472d2dcb27fe5e5279a35890
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: a9fba2dc37646476ff2d802509da7b30ace85894
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337714"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805533"
 ---
 # <a name="region-management-in-azure-stack"></a>Régiók kezelése az Azure Stackben
 
@@ -56,4 +56,4 @@ Ha rákattint egy régiót a a **régiók kezelése** csempét, akkor férhet ho
 ## <a name="next-steps"></a>További lépések
 
 - [Állapot- és riasztásmonitorozás az Azure Stackben](azure-stack-monitor-health.md)
-- [Az Azure Stack frissítéseinek kezelése](azure-stack-updates.md)
+- [Frissítések kezelése az Azure Stackben](azure-stack-updates.md)

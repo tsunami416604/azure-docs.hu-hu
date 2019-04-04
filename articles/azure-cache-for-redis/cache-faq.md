@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
-ms.openlocfilehash: ddeaec9adc28fa5037a0fc01363e3ad6b78ceeef
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234356"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895596"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg a válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure Cache redis.
@@ -80,7 +80,7 @@ Ebben a szakaszban a gyakori kérdések a leggyakoribb monitorozási és hibaelh
 * [Miért megszakadt az ügyfél gyorsítótárából?](#why-was-my-client-disconnected-from-the-cache)
 
 ## <a name="prior-cache-offering-faqs"></a>Előzetes gyorsítótárat használjam – gyakori kérdések
-* [Melyik Azure gyorsítótárat használjam a megfelelő a számomra?](#which-azure-cache-offering-is-right-for-me)
+* [Melyik Azure Gyorsítótárat használjam?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Mi az Azure Cache redis?
 A Redis az Azure Cache a népszerű nyílt forráskódú szoftverek alapján [Redis](https://redis.io/). A Microsoft által felügyelt, és az Azure-on belül bármely szolgáltatásból elérhető, a Redis egy biztonságos, dedikált Azure Cache hozzáférést biztosít. Részletes ismertetőt talál a [Azure Cache redis](https://azure.microsoft.com/services/cache/) termékoldalán az Azure.com webhelyen.
@@ -175,7 +175,7 @@ Azure Cache a redis és más felhők használatánál megfontolandó szempontokr
 
 - [Az Azure Government-adatbázisok – az Azure Cache redis](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
 - [Az Azure China Cloud – az Azure Cache redis](https://www.azure.cn/home/features/redis-cache/)
-- [A Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
+- [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
 Azure Cache redis a PowerShell-lel az Azure Government Cloud, Azure China Cloud és a Microsoft Azure Germany használatával további információkért lásd: [kapcsolódás más felhőkben – Azure Cache redis Cache PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
 
@@ -392,7 +392,7 @@ Hogyan konfigurálja ezt a beállítást:
   > Ez a konfigurációs elemben megadott érték egy *magonként* beállítás. Ha például egy 4 processzormagos számítógép, és szeretné a minIOThreads beállítása futási időben 200 kell, ha használja `<processModel minIoThreads="50"/>`.
   >
 
-* Kívül, az ASP.NET és az Azure-webhelyek global.asax, használja a [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API.
+* Kívül, az ASP.NET és az Azure-webhelyek global.asax, használja a [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) API.
 
   > [!NOTE]
   > Az API által megadott érték egy globális beállítás, az egész AppDomain érintő. Ha rendelkezik egy 4 processzormagos számítógép, és szeretné beállítani minWorkerThreads és minIOThreads 50 CPU futási időben, akkor ThreadPool.SetMinThreads (200-as, 200-as) kell használnia.
@@ -402,9 +402,9 @@ Hogyan konfigurálja ezt a beállítást:
 ### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>További átviteli sebesség lekérdezése az ügyfélen, StackExchange.Redis használata esetén a kiszolgáló Szemétgyűjtési engedélyezése
 Kiszolgáló globális Katalógus engedélyezésével optimalizálhatja az ügyfél, és jobb teljesítményt és átviteli sebességet biztosít, StackExchange.Redis használatakor. Kiszolgáló globális Katalógus és engedélyezését a további információkért lásd a következő cikkeket:
 
-* [Kiszolgáló globális Katalógus engedélyezése](https://msdn.microsoft.com/library/ms229357.aspx)
-* [A szemétgyűjtés – alapok](https://msdn.microsoft.com/library/ee787088.aspx)
-* [A szemétgyűjtés és teljesítmény](https://msdn.microsoft.com/library/ee851764.aspx)
+* [Kiszolgáló globális Katalógus engedélyezése](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
+* [A szemétgyűjtés – alapok](/dotnet/standard/garbage-collection/fundamentals)
+* [A szemétgyűjtés és teljesítmény](/dotnet/standard/garbage-collection/performance)
 
 
 ### <a name="performance-considerations-around-connections"></a>Teljesítménnyel kapcsolatos megfontolások körül kapcsolatok
@@ -469,11 +469,11 @@ Redis gyorsítótár az Azure használatának első lépéseivel kapcsolatos tov
 ### <a name="managed-cache-service"></a>A felügyelt gyorsítótár-szolgáltatás
 [A felügyelt gyorsítótár szolgáltatás 2016. November 30-volt elavult.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Archivált dokumentáció megtekintéséhez lásd: [archivált Managed Cache Service dokumentációja](https://msdn.microsoft.com/library/azure/dn386094.aspx).
+Archivált dokumentáció megtekintéséhez lásd: [archivált Managed Cache Service dokumentációja](/previous-versions/azure/azure-services/dn386094(v=azure.100)).
 
 ### <a name="in-role-cache"></a>Szerepköralapú gyorsítótár
 [A szerepköralapú gyorsítótár a 2016. November 30-volt elavult.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Archivált dokumentáció megtekintéséhez lásd: [archivált In-Role Cache-dokumentáció](https://msdn.microsoft.com/library/azure/dn386103.aspx).
+Archivált dokumentáció megtekintéséhez lásd: [archivált In-Role Cache-dokumentáció](/previous-versions/azure/azure-services/dn386103(v=azure.100)).
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx

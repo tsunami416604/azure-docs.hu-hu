@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: be0b930c99bb14c34e395efce494e8d7372719b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7b81b53c03104023823bef75beb4ac6077feede7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998144"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918688"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>A Video Indexer webhelyet nyelvi modell testreszabása
 
@@ -116,6 +116,34 @@ Nyelvi modell, a fiók törléséhez kattintson a **...**  jobb oldalán találh
 Ekkor megjelenik egy új ablakot, amely arról tájékoztat, hogy a törlés nem vonható vissza. Kattintson a **törlése** lehetőséget az új ablakban.
 
 Ez a művelet a nyelvi modell teljesen eltávolítja a fiókból. Bármely videó használta a szolgáltatást a törölt nyelvi modell fogja megőrizni a ugyanazt az indexet, mindaddig, amíg újra indexeli a videót. Ha újraindexelni a videót, egy új nyelvi modellbe rendelhet a videót. Ellenkező esetben a Video Indexer használja az alapértelmezett modell újraindexelni a videót. 
+
+## <a name="customize-language-models-by-correcting-transcripts"></a>Nyelvi modell testreszabásával szövegekben javítása
+
+A video Indexer nyelvi modelleket, a tényleges javításokat felhasználók alapján győződjön meg arról, a beszédátírás videók megtekintése az automatikus testre szabható.
+
+1. Ahhoz, hogy egy szöveges javításokat, nyissa meg a videót, amely a szerkeszteni kívánt a fiók videókkal. Válassza ki a **ütemterv** fülre.
+
+    ![Nyelvi modell testreszabása](./media/customize-language-model/timeline.png)
+1. Kattintson a ceruza ikonra a beszédátírási szövegének szerkesztését. 
+
+    ![Nyelvi modell testreszabása](./media/customize-language-model/edits.png)
+
+    A video Indexer rögzíti az összes sort tartalmazza az Ön által a videóra vonatkozó szabálymezők, és hozzáadja őket automatikusan ", átirat módosításokat" nevű szövegfájlba. Ezeket a szerkesztéseket a megadott nyelvi modell, amellyel ez a videó index újbóli betanítása szolgálnak. 
+    
+    Ebben a videóban indexelésekor nyelvi modell nem adta meg, ha, majd a videó minden módosításokat fog tárolt nevű fiók betanítások belül a felismert nyelv a videó alapértelmezett nyelvi modell. 
+    
+    Abban az esetben, ha több módosítások történtek-e ugyanabban a sorban, csak a javított sor utolsó verziójának frissítéséhez a nyelvi modell használható.  
+    
+    > [!NOTE]
+    > A testreszabás csak szöveges korrekciók szolgálnak. Ez azt jelenti, hogy, amelyek nem tényleges szavak (például írásjelek vagy tárolóhelyek) javítások nem szerepelnek. 
+    
+1. Látni fogja a nyelvi lapja tartalommodell testreszabási megjelennek a szövegben javításokat.
+
+    ![Nyelvi modell testreszabása](./media/customize-language-model/customize.png)
+
+   Keresse meg a ", átirat módosításokat" fájlban az egyes nyelvi modelljeit, kattintson rá a megnyitásához. 
+
+    ![Átiratmódosításokból származó](./media/customize-language-model/from-transcript-edits.png)
 
 ## <a name="next-steps"></a>További lépések
 

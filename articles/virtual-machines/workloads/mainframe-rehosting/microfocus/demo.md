@@ -1,21 +1,18 @@
 ---
-title: Állítsa be Micro fókusz CICS BankDemo Micro fókusz vállalati fejlesztői 4.0 az Azure-ban |} A Microsoft Docs
-description: Futtassa a Micro fókusz BankDemo alkalmazás Micro fókusz Enterprise Server és a nagyvállalati fejlesztő további Azure-ban.
-services: virtual-machines-linux
-documentationcenter: ''
-author: njray
-manager: edprice
-editor: edprice
-tags: ''
-keywords: ''
-ms.openlocfilehash: 733649c2b7f27ec5e80cb77adba708a158fb2c22
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+title: Állítsa be Micro fókusz CICS BankDemo Micro fókusz vállalati fejlesztői 4.0 az Azure Virtual machines szolgáltatásban
+description: Futtassa a Micro fókusz BankDemo alkalmazást az Azure Virtual Machines (VM) azt ismerteti, hogyan használja a Micro fókusz Enterprise Server és a nagyvállalati fejlesztő.
+author: sread
+ms.date: 04/02/2019
+ms.topic: article
+ms.service: multiple
+ms.openlocfilehash: be94cf0367f93f14249239fce5e09c8635a01136
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099467"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892483"
 ---
-# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-in-azure"></a>Állítsa be Micro fókusz CICS BankDemo Micro fókusz vállalati fejlesztői 4.0 az Azure-ban
+# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Állítsa be Micro fókusz CICS BankDemo Micro fókusz vállalati fejlesztői 4.0 az Azure-ban
 
 Beállításakor Micro fókusz Enterprise Server 4.0-s és Enterprise fejlesztői 4.0-s verzióját az Azure-ban, IBM z/OS-munkaterhelések központi telepítések tesztelheti. Ez a cikk bemutatja, hogyan állítható be CICS BankDemo, egy mintaalkalmazást, amely együttműködik a vállalati fejlesztői.
 
@@ -23,7 +20,7 @@ CICs a vásárlói adatokat verziókövetési rendszert, a tranzakciós platform
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A virtuális gép [nagyvállalati fejlesztő](set-up-micro-focus-on-azure.md). Ne feledje, hogy rendelkezik-e nagyvállalati fejlesztő egy teljes példánya vállalati kiszolgáló, fejlesztési és tesztelési célokat szolgálnak. Ez a bemutató használt Enterprise Server-példány.
+- A virtuális gép [nagyvállalati fejlesztő](set-up-micro-focus-azure.md). Ne feledje, hogy rendelkezik-e nagyvállalati fejlesztő egy teljes példánya vállalati kiszolgáló, fejlesztési és tesztelési célokat szolgálnak. Ez a bemutató használt Enterprise Server-példány.
 
 - [Az SQL Server 2017 Express edition](https://www.microsoft.com/sql-server/sql-server-editions-express). Töltse le és telepítse a vállalati fejlesztői gépen. Enterprise Server egy adatbázis szükséges CICS régiók felügyeletéhez, és a BankDemo alkalmazás BANKDEMO nevű SQL Server adatbázist is használ. Ez a bemutató feltételezi, hogy mindkét adatbázisok SQL Server Expresst használ. Telepítése esetén válassza ki az Alapszintű telepítés.
 
@@ -80,7 +77,7 @@ Miután telepítette a vállalati fejlesztői 4.0-s verzióját a virtuális gé
 9. A Windows szolgáltatások után lépjen a **Vezérlőpult \> rendszer és biztonság \> felügyeleti eszközök**, válassza ki **szolgáltatások**. Görgessen lefelé, és ellenőrizze, hogy a következő szolgáltatások futnak, és állítsa **automatikus**:
 
     - **NetTcpPortSharing**
-    - **Adaptér Naslouchání Net.Pipe**
+    - **Net.Pipe Listener Adapter**
     - **Adaptér Naslouchání NET.TCP**
 
 10. Konfigurálja az IIS és a Service, WAS támogatás, a menüben keresse meg **Micro fókusz vállalati fejlesztői parancssort (64 bites)** és a Futtatás mint **rendszergazda**.
@@ -269,9 +266,10 @@ Az utolsó lépésben kell tennie az Rumba, egy 3270 emulator használatával 32
 
 Gratulálunk! Most egy CICS alkalmazást futtat az Azure-ban Micro fókusz vállalati kiszolgáló használatával.
 
-## <a name="learn-more"></a>Részletek
+## <a name="next-steps"></a>További lépések
 
+- [A Docker-tárolók, Azure-on futtatott vállalati kiszolgáló](run-enterprise-server-container.md)
 - [Nagyszámítógépek Migrálása – portál](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [Virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [hibaelhárítással](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [Az Azure-migrálás nagyszámítógépes nyelvszakértőinkből](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)
+- [Hibaelhárítás](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Nagyszámítógépek migrálása az Azure-ba egyszerűen](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

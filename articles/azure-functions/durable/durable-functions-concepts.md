@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e5be81efcd655f1f0361d8c00d978a81c3e6caa5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e54fe17e80382348bcf463624043f7922a29d1c1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443419"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892755"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions-minták és technikai kulcsfogalmak (az Azure Functions)
 
@@ -415,7 +415,7 @@ A tartós feladat keretrendszer dispatcher visszajátszását viselkedését mia
 
 A Durable Functions bővítmény az Azure Storage-blobok, táblák és üzenetsorok végrehajtási előzmények állapot és az eseményindító függvény végrehajtása megőrzéséhez használja. A függvényalkalmazás az alapértelmezett tárfiókot is használhat, vagy konfigurálhatja egy önálló tárfiókot. Érdemes lehet egy külön fiókot, a tárolási teljesítmény korlátok alapján. Az orchestrator kód írása az entitásokat a ezeket a storage-fiókok nem dolgozhat. A tartós feladat keretrendszer közvetlenül egy megvalósítási részletei, az entitások kezeli.
 
-Az orchestrator funkciók tevékenységfüggvényeket ütemezés, és azok belső üzenetsorbeli üzenetek keresztül válaszokat kaphatnak. Ha egy függvényalkalmazáshoz az Azure Functions használatalapú csomagban fut a [Azure Functions méretezési vezérlő](../functions-scale.md#how-the-consumption-plan-works) ezek a várólisták figyeli. Új számítási példányok kerülnek, igény szerint. Horizontálisan felskálázott több virtuális gépet, ha egy orchestrator-függvényt egy virtuális gép, amelyek az orchestrator függvényhívások számos különböző gépeken futhatnak tevékenységfüggvényeket során előfordulhat, hogy futtassa. Durable Functions, a méretezési csoport működésével kapcsolatos további információkért lásd: [teljesítmény és méretezhetőség](durable-functions-perf-and-scale.md).
+Az orchestrator funkciók tevékenységfüggvényeket ütemezés, és azok belső üzenetsorbeli üzenetek keresztül válaszokat kaphatnak. Ha egy függvényalkalmazáshoz az Azure Functions használatalapú csomagban fut a [Azure Functions méretezési vezérlő](../functions-scale.md#how-the-consumption-and-premium-plans-work) ezek a várólisták figyeli. Új számítási példányok kerülnek, igény szerint. Horizontálisan felskálázott több virtuális gépet, ha egy orchestrator-függvényt egy virtuális gép, amelyek az orchestrator függvényhívások számos különböző gépeken futhatnak tevékenységfüggvényeket során előfordulhat, hogy futtassa. Durable Functions, a méretezési csoport működésével kapcsolatos további információkért lásd: [teljesítmény és méretezhetőség](durable-functions-perf-and-scale.md).
 
 A futtatási előzményei, az orchestrator-fiókok esetében a table storage tárolja. Minden alkalommal, amikor egy példányt az egy adott virtuális gép rehydrates, az orchestrator olvas be a futtatási előzményei a table storage helyi állapotában újraépítését, így. Egy kényelmes szempont, hogy a table storage-ban elérhető előzmények, hogy használhatja-e és hasonló eszközökkel való [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) a vezénylések előzményeinek megtekintéséhez.
 

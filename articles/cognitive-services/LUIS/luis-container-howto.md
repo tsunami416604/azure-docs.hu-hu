@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: b7788cc6854b477e8aab9e9df82ed2b54a3bdfe2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: ca9b08cdccd43a093ca8b5001d3e30be0e5258b5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884567"
+ms.locfileid: "58894678"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -81,7 +81,7 @@ Ha a tároló a [gazdaszámítógép](#the-host-computer), a következő eljár�
 1. [A tároló futtatásához](##run-the-container-with-docker-run), és a szükséges _bemeneti csatlakoztatási_ és számlázási beállításait. További [példák](luis-container-configuration.md#example-docker-run-commands) , a `docker run` parancs érhetők el. 
 1. [A tároló előrejelzési végpontja lekérdezése](#query-the-containers-prediction-endpoint). 
 1. Amikor végzett a tárolóval [importálni az a végpont](#import-the-endpoint-logs-for-active-learning) a kimenetből csatlakoztassa a LUIS-portálon és [leállítása](#stop-the-container) a tárolót.
-1. Használja a LUIS portál [aktív tanulás](luis-how-to-review-endoint-utt.md) a a **tekintse át a végpont utterances** oldalon az alkalmazás javítására.
+1. Használja a LUIS portál [aktív tanulás](luis-how-to-review-endpoint-utterances.md) a a **tekintse át a végpont utterances** oldalon az alkalmazás javítására.
 
 Az alkalmazás a tárolóban futó nem módosítható. Az order a módosítás az alkalmazás a tárolóban, meg kell változtatnia az intelligens HANGFELISMERÉSI szolgáltatás használata az alkalmazás a [LUIS](https://www.luis.ai) portálon, vagy használja a LUIS [API-k készítése](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f). Ezután betanítása és/vagy közzététele, majd töltse le az új csomag és futtassa újra a tárolót.
 
@@ -268,7 +268,7 @@ A lekérdezési paraméterek konfigurálása módját és a lekérdezésekre ado
 |`timezoneOffset`|szám|A timezoneOffset lehetővé teszi, hogy [időzóna módosítása](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) az előre összeállított entitások datetimeV2 használják.|
 |`verbose`|logikai|Adja vissza minden leképezések és eredményeiket, ha a beállítása igaz értékre. Alapértelmezett érték FALSE (hamis), csak a felső leképezést ad vissza.|
 |`staging`|logikai|Átmeneti környezet eredményei, ha az értéket ad vissza lekérdezés beállítása igaz értékre. |
-|`log`|logikai|Lekérdezések, amellyel a rendszer később [aktív tanulás](luis-how-to-review-endoint-utt.md). Alapértelmezett érték az igaz.|
+|`log`|logikai|Lekérdezések, amellyel a rendszer később [aktív tanulás](luis-how-to-review-endpoint-utterances.md). Alapértelmezett érték az igaz.|
 
 ### <a name="query-published-app"></a>Közzétett alkalmazás lekérdezése
 

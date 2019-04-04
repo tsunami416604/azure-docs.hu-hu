@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 2479db2abcb578eb380655346582392770606b39
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0f6ee8729cbed9cb8baf3668f7b1a332bc5eddc1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552180"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892825"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>A kérések és válaszok összetevői használatának első lépései
 A logikai alkalmazás a kérések és válaszok összetevőivel reagálhat a valós idejű események.
@@ -34,7 +34,8 @@ Megteheti például a következőt:
 Használatának megkezdéséhez a kérelem- és válaszműveletek egy logikai alkalmazásban, lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-http-request-trigger"></a>Használja a HTTP-kérelem típusú trigger
-Egy trigger egy eseményt, amely a logikai alkalmazásban definiált munkafolyamat elindításához használható. [További tudnivalók a triggerek](connectors-overview.md).
+Egy trigger egy eseményt, amely a logikai alkalmazásban definiált munkafolyamat elindításához használható. 
+[További tudnivalók a triggerek](../connectors/apis-list.md).
 
 Íme egy parancssorozat-példa HTTP-kérést, a Logic App Designerben beállítása.
 

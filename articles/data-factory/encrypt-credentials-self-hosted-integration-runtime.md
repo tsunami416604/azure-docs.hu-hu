@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 65518e7515f9e233b12ae5406819c91e8e3f2a77
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8e705a4430f6ccee847dc7d41ef80456a6dc4ea5
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453167"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903794"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Az Azure Data Factory a helyszíni adattárak hitelesítő adatok titkosítása
 Titkosításához, és tárolja a hitelesítő adatait a helyszíni adattárakban (bizalmas adatokat a társított szolgáltatások) egy gépen a saját üzemeltetésű integrációs modult. 
@@ -51,7 +51,7 @@ Cserélje le `<servername>`, `<databasename>`, `<username>`, és `<password>` é
 ```
 
 ## <a name="encrypt-credentials"></a>Hitelesítő adatok titkosítása
-A bizalmas hasznos JSON-a helyszíni saját üzemeltetésű integrációs modul-adatok titkosításához futtassa **New-AzDataFactoryV2LinkedServiceEncryptedCredential**, és adja át a JSON-adattartalmat. Ez a parancsmag biztosítja, hogy a hitelesítő adatok titkosítottak DPAPI-t használ, és a saját üzemeltetésű integrációs modul csomópontján helyileg tárolja. A kimenő hasznos átirányíthatóak egy másik JSON-fájlt (ebben az esetben "encryptedlinkedservice.JSON fájlba"), amely titkosított hitelesítő adatokat tartalmazza.
+A bizalmas hasznos JSON-a helyszíni saját üzemeltetésű integrációs modul-adatok titkosításához futtassa **New-AzDataFactoryV2LinkedServiceEncryptedCredential**, és adja át a JSON-adattartalmat. Ez a parancsmag biztosítja, hogy a hitelesítő adatok titkosítottak DPAPI-t használ, és a saját üzemeltetésű integrációs modul csomópontján helyileg tárolja. A kimenő hasznos a tartalmazó titkosított a hitelesítő adatok átirányíthatóak egy másik JSON-fájlba (ebben az esetben "encryptedlinkedservice.JSON fájlba").
 
 ```powershell
 New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "SqlServerLinkedService" -DefinitionFile ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json

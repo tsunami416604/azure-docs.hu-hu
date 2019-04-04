@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/26/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 68e8bfa16c56b8c864ac99cdf6c19243bc7e881c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8cffcc938a247a2b08ff53b128560e1ab5e1653a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101873"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499777"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Üzemeltetési kiszolgáló hozzáadása a MySQL erőforrás-szolgáltató
 
@@ -90,16 +90,19 @@ Ajánlott eljárásként a üzemeltetési kiszolgáló, a Termékváltozat az az
 
 SKU-k az adott felhasználók vagy csoportok nem lehet hozzárendelni.
 
-SKU-k órát is igénybe vehet egy lesznek láthatók a portálon. Felhasználók nem hozható létre adatbázis, amíg a Termékváltozat létrehozása befejeződött.
+A Termékváltozat szerkesztéséhez lépjen a **minden szolgáltatás** > **MySQL Adapter** > **termékváltozatok**. Válassza ki a Termékváltozat módosítása, végezze el a szükséges módosításokat, majd kattintson a **mentése** módosítások mentéséhez. 
 
-A Termékváltozat szerkesztéséhez lépjen a **minden szolgáltatás** > **MySQL Adapter** > **termékváltozatok**. Válassza ki a Termékváltozat módosítása, végezze el a szükséges módosításokat, majd kattintson a **mentése** módosítások mentéséhez. A Termékváltozat, amely már nem szükséges törléséhez lépjen a **minden szolgáltatás** > **MySQL Adapter** > **termékváltozatok**. Kattintson a jobb gombbal a Termékváltozat nevét, és válassza ki **törlése** törli-e.
+A Termékváltozat, amely már nem szükséges törléséhez lépjen a **minden szolgáltatás** > **MySQL Adapter** > **termékváltozatok**. Kattintson a jobb gombbal a Termékváltozat nevét, és válassza ki **törlése** törli-e.
 
-> [!TIP]
-> Kíván szerkeszteni vagy törölni a MySQL erőforrás-szolgáltató kvóták ugyanazon a helyen.
+> [!IMPORTANT]
+> Elérhető lesz a felhasználói portál az új termékváltozatokra egy órát is igénybe vehet.
 
 ## <a name="make-mysql-database-servers-available-to-your-users"></a>MySQL-adatbázis-kiszolgálók elérhetővé tétele a felhasználók számára
 
 Hozzon létre a csomagok és ajánlatok típusa a MySQL-adatbázis-kiszolgálók elérhetővé tétele a felhasználók számára. Vegye fel a Microsoft.MySqlAdapter a terv és a egy új kvóta létrehozása. MySQL nem engedélyezi az adatbázisok méretét korlátozó.
+
+> [!IMPORTANT]
+> Új kvóták csak akkor érhető el, a felhasználói portálon, vagy előtt módosított kvóták érvényesítése akár két órát is igénybe vehet.
 
 ## <a name="next-steps"></a>További lépések
 

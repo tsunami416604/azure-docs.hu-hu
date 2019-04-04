@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 43de22f7e56178559df4fc45980d064962580d2b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: de737f20147e8208dd18388eedcac11583c8cb97
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403391"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891803"
 ---
 # <a name="data-box-edge-security-and-data-protection"></a>Data Box Edge biztonság és adatvédelem
 
@@ -35,6 +35,7 @@ A Data Box Edge/Data Box Gateway szolgáltatás nem a Microsoft Azure-ban üzeme
 
 - A Data Box Edge/Data Box Gateway szolgáltatás használatához a szervezet rendelkezik a nagyvállalati szerződés (EA) vagy a Cloud Solution Provider (CSP) előfizetésre. További információért ugorjon [Azure-előfizetéssel regisztrálhat](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)!
 - A felügyeleti szolgáltatás az Azure-ban üzemel, mert védi az Azure biztonsági szolgáltatásait. A Microsoft Azure által biztosított biztonsági funkciókról a [Microsoft Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/security/) talál további információt.
+- A felügyeleti műveletek SDK titkosítási kulcs érhető el a Data Box-Edge / Data Box-Gateway-erőforrásra **eszköztulajdonságok**. Megtekintheti a titkosítási kulcs csak akkor, ha rendelkezik engedéllyel az erőforrás Graph API-hoz.
 
 ## <a name="data-box-edge-device-protection"></a>Adatvédelem Box peremhálózati eszköz
 
@@ -44,7 +45,8 @@ A Data Box peremhálózati eszköz egy helyszíni eszköz, amely segít az adato
 - Van minden alkalommal eszköz jelszóval védett.
 - A zárolt eszköz van. Az eszköz BMC- és BIOS-ban, a BIOS-ban korlátozott felhasználói hozzáféréssel rendelkező jelszóval védett.
 - A biztonságos rendszerindítás engedélyezve van.
-- A Windows Defender Device Guard futtatja. A Device Guard lehetővé teszi, hogy csak az a kódintegritási házirendekben meghatározott megbízható alkalmazások futtathatók. 
+- A Windows Defender Device Guard futtatja. A Device Guard lehetővé teszi, hogy csak az a kódintegritási házirendekben meghatározott megbízható alkalmazások futtathatók.
+- A borító zárolja az eszközt használható belül kulccsal rendelkezik. Azt javasoljuk, hogy az eszköz konfigurálása után nyissa meg a lefedik. Keresse meg a kulcsot, és a cover található az eszközön található adatlemezek bármely jogosulatlan hozzáférés megelőzése érdekében zárolja.
 
 ### <a name="protect-the-device-via-activation-key"></a>Az eszköz aktiválási kulccsal védelme
 

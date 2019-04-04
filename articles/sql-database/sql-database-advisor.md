@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 3ac55ef4159ab97c909fc5dfc084889bc58a7b7c
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: d09adbfa7cb2782d710ef3116cbd7bc68ee247b7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58846669"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903319"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Az SQL Database teljesítménnyel kapcsolatos javaslatok
 
@@ -88,7 +88,7 @@ A "Schema probléma megoldásához" javaslat jelenik meg, ha az Azure SQL Databa
 
 ## <a name="custom-applications"></a>Egyéni alkalmazások
 
-A fejlesztők érdemes megfontolni az Azure SQL Database teljesítménnyel kapcsolatos javaslatok használatával egyéni alkalmazások fejlesztéséhez. Az adatbázis keresztül érhetők el a a portál szereplő összes ajánlás [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Sql/Get-AzSqlDatabaseRecommendedAction) API-t.
+A fejlesztők érdemes megfontolni az Azure SQL Database teljesítménnyel kapcsolatos javaslatok használatával egyéni alkalmazások fejlesztéséhez. Az adatbázis keresztül érhetők el a a portál szereplő összes ajánlás [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API-t.
 
 ## <a name="next-steps"></a>További lépések
 Figyelheti a javaslatokat, és továbbra is alkalmazhatja őket, amellyel pontosíthatja a teljesítményt. Adatbázis-munkaterhelés dinamikusak, és folyamatosan változik. Az SQL Database Advisor továbbra is megfigyelheti és javíthatja az adatbázis teljesítményét javaslatokkal. 

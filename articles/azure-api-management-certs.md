@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 3b6f1a004e4fb69bc08d5163734021bcb2aed9a2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 014a26c2500959502eeb1c50d3f311584c1ad84e
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765798"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895698"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Egy Azure Service Management-tanúsítvány feltöltése
 Felügyeleti tanúsítványok lehetővé teszik a klasszikus üzemi modellben az Azure biztosítja a hitelesítéshez. Számos programok telepítése és eszközök (például a Visual Studio vagy az Azure SDK-t) konfigurálása és a különböző Azure-szolgáltatások üzembe helyezésének automatizálása ezek a tanúsítványok használatával. 
@@ -56,4 +56,4 @@ Ha már van egy felügyeleti tanúsítvány létrehozása, a (.cer-fájl a nyilv
     ![Beállítások](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy egy előfizetés társított felügyeleti tanúsítvánnyal, helyileg a megfelelő tanúsítvány telepítése) (után programozott módon csatlakozhat a [klasszikus üzemi modell – REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) és automatizálhatja a különböző Azure-erőforrások, amelyek is az adott előfizetéshez.
+Most, hogy egy előfizetés társított felügyeleti tanúsítvánnyal, helyileg a megfelelő tanúsítvány telepítése) (után programozott módon csatlakozhat a [klasszikus üzemi modell – REST API](/azure/#pivot=sdkstools) és automatizálhatja a különböző Azure-erőforrások, amelyek is az adott előfizetéshez.

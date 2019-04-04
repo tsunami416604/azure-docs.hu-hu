@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 09b8556a83dec286ce8d67fa5fd6d27e027325bf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: cfea454b20b010148eba063ec724e55134944ac3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769216"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482929"
 ---
 # <a name="deploy-the-local-agent"></a>A helyi ügynök telepítése
 
@@ -57,7 +57,7 @@ Ellenőrizze, hogy a gép megfelel-e a következő feltételeknek:
 1. Nyisson meg egy rendszergazda jogú parancssort a gépen a tesztek futtatásához használhat Windows PowerShell.
 2. Futtassa a következő parancsot a helyi ügynök letöltéséhez:
 
-    ```PowerShell
+    ```powershell
     Invoke-WebRequest -Uri "https://storage.azurestackvalidation.com/packages/Microsoft.VaaSOnPrem.TaskEngineHost.latest.nupkg" -outfile "OnPremAgent.zip"
     Expand-Archive -Path ".\OnPremAgent.zip" -DestinationPath VaaSOnPremAgent -Force
     Set-Location VaaSOnPremAgent\lib\net46
@@ -65,7 +65,7 @@ Ellenőrizze, hogy a gép megfelel-e a következő feltételeknek:
 
 3. Futtassa a következő parancsot a helyi ügynök függőségek telepítéséhez:
 
-    ```PowerShell
+    ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
     Import-Module .\VaaSPreReqs.psm1 -Force
     Install-VaaSPrerequisites -AadTenantId $AadTenantId `
@@ -111,16 +111,17 @@ A tesztek futtatása távoli műveletek. A gép, amely futtatja a teszteket az A
 
 1. Nyissa meg a Windows Powershellt rendszergazda jogú parancssorban.
 
-2. Futtassa az alábbi parancsot:
+2. Futtassa a következő parancsot:
 
-    ```PowerShell
+    ```powershell
     .\Microsoft.VaaSOnPrem.TaskEngineHost.exe -u <VaaSUserId> -t <VaaSTenantId>
     ```
 
       **Paraméterek**  
+
     | Paraméter | Leírás |
     | --- | --- |
-    | VaaSUserId | Felhasználói azonosító segítségével jelentkezzen be a VaaS portálra (például UserName@Contoso.com) |
+    | VaaSUserId | Felhasználói azonosító segítségével jelentkezzen be a VaaS portálra (például felhasználónév\@Contoso.com) |
     | VaaSTenantId | Az Azure AD-bérlő azonosítója az Azure-fiók regisztrálva van szolgáltatásként érvényesítése. |
 
     > [!Note]  

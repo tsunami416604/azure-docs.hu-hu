@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
-ms.openlocfilehash: 5cfcbba58b4e4416a2f1a56adcbe21eeacb15a85
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fbd876ad46342dec7e2e73b92d3aafbd37cc205b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152155"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892296"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Döntse el, ha az Azure AD Domain Services hogyan ideális a használati eset
 Az Azure AD tartományi szolgáltatásokkal telepítheti a számítási feladatokat az Azure infrastruktúra-szolgáltatásokban, ne kelljen foglalkoznia az Azure-ban a személyazonosság-infrastruktúra karbantartása. A felügyelt szolgáltatás üzembe helyezése, és felügyelheti saját tipikus Windows Server Active Directory központi eltér. A szolgáltatás egyszerűen üzembe helyezhetők, és automatizált szolgáltatásállapot-figyelést, a javítási biztosít. Gyakori üzembe helyezési forgatókönyvek támogatása érdekében a szolgáltatás folyamatosan világával.
@@ -34,7 +34,7 @@ Az Azure AD tartományi szolgáltatásokat használó kell-e a következő anyag
 ## <a name="compare-azure-ad-domain-services-to-diy-ad-domain-in-azure"></a>Hasonlítsa össze az Azure AD tartományi szolgáltatások házi KÉSZÍTÉSŰ AD tartományhoz az Azure-ban
 Az alábbi táblázat segítségével eldöntheti, hogy Azure AD tartományi szolgáltatások használata és kezelése az Azure-ban a saját AD infrastruktúra között.
 
-| **Funkció** | **Az Azure AD tartományi szolgáltatások** | **"Saját munka" AD az Azure-beli virtuális gépeken** |
+| **Szolgáltatás** | **Azure AD Domain Services** | **"Saját munka" AD az Azure-beli virtuális gépeken** |
 | --- |:---:|:---:|
 | [**Felügyelt szolgáltatás**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**Biztonságos üzembe helyezését**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |A rendszergazdának az üzemelő példány biztonságossá tételéhez. |
@@ -44,7 +44,7 @@ Az alábbi táblázat segítségével eldöntheti, hogy Azure AD tartományi szo
 | [**Tartomány hitelesítése NTLM és Kerberos használatával**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
 | [**Kerberos által korlátozott delegálás**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|resource-based|erőforrás-alapú & fiók-alapú|
 | [**Egyéni Szervezetiegység-struktúrája**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
-| [**Sémakiterjesztések**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
+| [**Sémabővítmények**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
 | [**AD-tartomány vagy erdő megbízhatónak tekinti**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&#x2715;** |**&#x2713;** |
 | [**LDAP olvasása**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
 | [**Biztonságos LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
@@ -58,7 +58,7 @@ A Microsoft által felügyelt Azure AD Domain Services-tartomány. Nem kell agg�
 #### <a name="secure-deployments"></a>Biztonságos üzembe helyezését
 A felügyelt tartomány biztonságosan zárolva megfelelően a Microsoft biztonsági javaslatokat AD központi telepítésekhez. Ezeket a javaslatokat AD termékcsoport évtizedes tapasztalattal, mérnöki és a kiegészítő AD központi telepítések vezethető vissza. Saját munka üzemelő példánya esetében, lépésekkel kell adott üzembe helyezés le/secure zárolni az üzemelő példány.
 
-#### <a name="dns-server"></a>DNS server
+#### <a name="dns-server"></a>DNS-kiszolgáló
 Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz felügyelt DNS-szolgáltatást tartalmaz. Az "AAD DC rendszergazdák" csoport tagjai kezelheti a DNS a felügyelt tartományon. A csoport tagjai teljes DNS-felügyeleti jogosultságokat kapnak a felügyelt tartományhoz. DNS-kezelés használatával végezheti el a Távoli kiszolgálófelügyelet eszközei (RSAT) csomagban található a "DNS-felügyeleti konzol".
 [További információ](active-directory-ds-admin-guide-administer-dns.md)
 
@@ -115,9 +115,9 @@ Az Azure AD tartományi szolgáltatásokat a felügyelt tartományok az Azure-ba
 >
 >
 
-Microsoft közzétette [központi telepítése Windows Server Active Directory az Azure Virtual Machinesben irányelvek](https://msdn.microsoft.com/library/azure/jj156090.aspx) tanácsokat önálló telepítés megkönnyítése érdekében.
+Microsoft közzétette [központi telepítése Windows Server Active Directory az Azure Virtual Machinesben irányelvek](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) tanácsokat önálló telepítés megkönnyítése érdekében.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Szolgáltatások – Azure AD tartományi szolgáltatások](active-directory-ds-features.md)
 * [Központi telepítési forgatókönyv – Azure AD tartományi szolgáltatások](active-directory-ds-scenarios.md)
-* [Útmutató a Windows Server Active Directory-Azure-beli virtuális gépek üzembe helyezése](https://msdn.microsoft.com/library/azure/jj156090.aspx)
+* [Útmutató a Windows Server Active Directory-Azure-beli virtuális gépek üzembe helyezése](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)

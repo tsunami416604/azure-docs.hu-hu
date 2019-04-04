@@ -16,16 +16,16 @@ ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 4b9b91c17a9199c7890d17a2b721ce0803e6bd6c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ae5a824fbd96a9a76eb18811a46bfc17afa15073
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243334"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879352"
 ---
 # <a name="sql-resource-provider-11330-release-notes"></a>SQL erőforrás-szolgáltató 1.1.33.0 kibocsátási megjegyzései
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A kibocsátási megjegyzések a javításokat és a SQL-erőforrás-szolgáltató verziója 1.1.33.0 ismert problémákat ismertetik.
 
@@ -46,11 +46,12 @@ Az Azure Stack SQL erőforrás-szolgáltató ezen verziója tartalmazza a követ
 ### <a name="fixes"></a>Javítások
 - **SQL resource provider portálbővítmény előfordulhat, hogy válassza ki a megfelelő előfizetést**. Az erőforrás-szolgáltató az SQL Azure Resource Manager hívásait, lehet, hogy nem lesz meghatározni az első szolgáltatás rendszergazdai előfizetést szeretné használni, használja a *szolgáltatói előfizetés alapértelmezett*. Ha ez történik, az erőforrás-szolgáltató az SQL nem működik megfelelően. 
 
-- **SQL Állomáskiszolgálót nem tartalmazza a üzemeltetett adatbázisok.** Felhasználó által létrehozott adatbázisok előfordulhat, hogy nem szerepel a listában, az SQL-kiszolgálókat üzemeltető bérlői erőforrások megtekintésekor.
+- **SQL hosting server does not list hosted databases.** Felhasználó által létrehozott adatbázisok előfordulhat, hogy nem szerepel a listában, az SQL-kiszolgálókat üzemeltető bérlői erőforrások megtekintésekor.
 
 - **A korábbi SQL resource provider (1.1.30.0) központi telepítés sikertelen lehet, ha nincs engedélyezve a TLS 1.2**. Frissítve az SQL erőforrás-szolgáltató 1.1.33.0 engedélyezéséhez a TLS 1.2-es, az erőforrás-szolgáltató, az erőforrás-szolgáltató frissítése vagy titkos kulcsok Elforgatás üzembe helyezésekor. 
 
-- **SQL erőforrás-szolgáltató titkos elforgatás nem sikerül**. Kijavítva a hiba a következő hibakóddal eredményez, amikor a titkos kulcsok elforgatás: ` New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
+- **SQL erőforrás-szolgáltató titkos elforgatás nem sikerül**. Kijavítva a hiba a következő hibakóddal eredményez, amikor a titkos kulcsok elforgatás:
+`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
 ## <a name="known-issues"></a>Ismert problémák 
 

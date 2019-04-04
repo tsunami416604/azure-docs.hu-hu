@@ -1,6 +1,6 @@
 ---
-title: Adja hozzá a logic apps késleltetést |} Microsoft Docs
-description: A késleltetés és a késleltetés áttekintése-műveletek, és hogyan érdemes azokat használni az Azure Logic Apps alkalmazást.
+title: Késleltetés hozzáadása a logic appsben |} A Microsoft Docs
+description: Áttekintés a késleltetés és a késleltetés-műveletek és az Azure logic app használatával.
 services: ''
 documentationcenter: ''
 author: jeffhollan
@@ -15,63 +15,65 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 6cde5b8ba8d770a07199816286b666e952394de1
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 15e581454b60319ab734f2fa5faf0d90e0a7c8bf
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27963672"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893724"
 ---
-# <a name="get-started-with-the-delay-and-delay-until-actions"></a>Bevezetés az a késleltetés és a késleltetés-ig műveletek
-A késleltetés használatával és a "késleltetés-amíg" műveletek, befejezheti a munkafolyamatokban.
+# <a name="get-started-with-the-delay-and-delay-until-actions"></a>Ismerkedés a késleltetés és a késleltetés-ig műveletek
+A késleltetés használatával és a "késleltetés-mindaddig, amíg" műveletek, munkafolyamat-forgatókönyvek is elvégezheti.
 
 Megteheti például a következőt:
 
-* Várjon, amíg a hét napja állapotfrissítés keresztül e-mailek küldése.
-* A munkafolyamat elhalasztani, amíg egy HTTP-hívás befejezését, mielőtt folytatja a futtatását, és az eredmény beolvasása idő tartozik.
+* Várjon, amíg az állapot frissítéséhez küldése e-mailben egy hét napja.
+* Késleltetés a munkafolyamat, amíg egy HTTP-hívás befejezését, mielőtt folytatása, és az eredmény beolvasása idő tartozik.
 
-Első lépések egy logikai alkalmazás késleltetés műveletével, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Használatának megkezdéséhez a késleltetési műveletet egy logikai alkalmazásban, lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-delay-actions"></a>A késleltetés műveletek használata
-Egy művelet során, amely a logikai alkalmazás definiált munkafolyamat végzi. [További információ a műveletek](connectors-overview.md).
 
-Íme egy parancssorozat-példa a logikai alkalmazás egy késleltetés lépés használata:
+Egy műveletet, amely a logikai alkalmazásban definiált munkafolyamat által végzett művelet. 
+[További információért azokról a műveletekről](../connectors/apis-list.md).
+
+Íme egy parancssorozat-példa egy késleltetés lépés használata a Logic Apps-alkalmazás:
 
 1. A felvett egy eseményindítót, kattintson a **új lépés** művelet hozzáadása.
-2. Keresse meg **késleltetés** a késleltetés műveletek elindítani. Ebben a példában, azt fogja kiválasztani **késleltetés**.
+2. Keresse meg **késleltetés** viszi, megjelenik a késleltetési műveletet. Ebben a példában választjuk **késleltetés**.
    
     ![Késleltetés műveletek](./media/connectors-native-delay/using-action-1.png)
-3. A művelet tulajdonságait, a késés konfigurálásához hajtsa végre.
+3. Hajtsa végre a művelet tulajdonságainak konfigurálása a késés.
    
     ![Késleltetési konfiguráció](./media/connectors-native-delay/using-action-2.png)
-4. Kattintson a **mentése** közzététele, és aktiválja a logikai alkalmazást.
+4. Kattintson a **mentése** tehet közzé, és aktiválja a logikai alkalmazást.
 
 ## <a name="action-details"></a>Művelet részletei
-Az ismétlődési eseményindító tulajdonságai a következők konfigurálható.
+Az ismétlődési eseményindító funkcióját beállíthatja a következő tulajdonságokkal rendelkezik.
 
-### <a name="delay-action"></a>Késleltetés művelet
-Ez a művelet késlelteti a Futtatás egy meghatározott időtartam alatt.
-A * azt jelenti, hogy mezőt kötelező kitölteni.
+### <a name="delay-action"></a>Késleltetési műveletet
+Ez a művelet késlelteti a Futtatás egy adott időtartam alatt.
+A * azt jelenti, hogy egy kötelező mező.
 
 | Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| Száma * |darab |A késleltetési idő egységek száma |
-| Egység * |egység |Időegység: `Second`, `Minute`, `Hour`, vagy`Day` |
+| Száma * |count |Késleltetési idő egységek száma |
+| Unit* |egység |Az időegység: `Second`, `Minute`, `Hour`, vagy `Day` |
 
 <br>
 
-### <a name="delay-until-action"></a>Késleltetés-amíg művelet
-Ez a művelet késlelteti a Futtatás csak a megadott dátum és idő.
-A * azt jelenti, hogy mezőt kötelező kitölteni.
+### <a name="delay-until-action"></a>Késleltetés – amíg a művelet
+Ez a művelet késlelteti a futtatást, amíg egy megadott dátum/idő.
+A * azt jelenti, hogy egy kötelező mező.
 
 | Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| Év * |időbélyeg |Az év (GMT) amíg késleltetése |
-| Hónap * |időbélyeg |A hónap (GMT) amíg késleltetése |
-| Nap * |időbélyeg |A nap (GMT) amíg késleltetése |
+| Év * |időbélyeg |Az év, a késleltetés eddig (GMT) |
+| Havonta * |időbélyeg |Az elmúlt hónapban késleltetés eddig (GMT) |
+| Nap * |időbélyeg |A nap késleltetés eddig (GMT) |
 
 <br>
 
 ## <a name="next-steps"></a>További lépések
-Most, próbálja ki a platformot és [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők logic Apps alkalmazások felmérésével felfedezheti a [API-k lista](apis-list.md).
+Most, próbálja ki a platformot és [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb elérhető összekötők a logic apps megtekintésével megismerheti a [API-k listája](apis-list.md).
 

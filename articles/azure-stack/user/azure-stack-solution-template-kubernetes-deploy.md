@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stack üzembe helyezése Kubernetes |} A Microsoft Docs
-description: Ismerje meg, hogyan helyezhet üzembe Kubernetes az Azure Stackhez.
+title: Az Azure Stack-tárolókkal Kubernetes üzembe helyezése |} A Microsoft Docs
+description: Ismerje meg, hogyan helyezhet üzembe Kubernetes-tárolók használata az Azure Stack használatával.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,16 +15,16 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 6b00f63fac0110a8964270b9cbcad5330ac44645
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 77275ec274a9c76918874007cfe564eea09e6de5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986243"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877193"
 ---
-# <a name="deploy-kubernetes-to-azure-stack"></a>Az Azure Stack üzembe helyezése Kubernetes
+# <a name="deploy-kubernetes-to-use-containers-with-azure-stack"></a>Kubernetes-tárolók használata az Azure Stack üzembe helyezése
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!Note]  
 > Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban. Az Azure Stack kapcsolat nélküli forgatókönyv jelenleg nem érhető el az előzetes verzió.
@@ -43,11 +43,11 @@ A Kubernetes használhatja:
 
 Ön csak kell fizetnie a számítási feladatok használatáért támogatása a fürt csomópontjai által igényelt. További információkért lásd: [használat és számlázás az Azure Stackben](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback).
 
-## <a name="deploy-kubernetes"></a>Kubernetes üzembe helyezése
+## <a name="deploy-kubernetes-to-use-containers"></a>Kubernetes használhatók a tárolók üzembe helyezése
 
 A lépéseket az Azure Stacken Kubernetes-fürt üzembe helyezése az identity management-szolgáltatás függ. Ellenőrizze az identitáskezelési megoldás az Azure Stack telepítése által használt. Lépjen kapcsolatba az Azure Stack rendszergazdai az identity management szolgáltatás ellenőrzése.
 
-- **Az Azure Active Directory (Azure AD)**  
+- **Azure Active Directory (Azure AD)**  
 A fürtön telepíteni, ha az Azure AD-vel kapcsolatos utasításokért lásd: [Kubernetes üzembe helyezése az Azure Stackhez az Azure Active Directory (Azure AD) használatával](azure-stack-solution-template-kubernetes-azuread.md).
 
 - **Az Active Directory összevont szolgáltatások (AD FS)**  
@@ -69,4 +69,4 @@ Azt is tapasztalhatja a **Helm** Csomagkezelő hasznos telepítéséhez és alka
 
 [Az Active Directory összevonási szolgáltatásokban (AD FS) használatával az Azure Stack üzembe helyezése Kubernetes](azure-stack-solution-template-kubernetes-adfs.md)
 
-[Kubernetes az Azure-ban](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[A Kubernetes az Azure-on](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

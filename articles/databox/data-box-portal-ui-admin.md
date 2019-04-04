@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 6b6d0d1a7e14035f7a1b7998ec4b3e68761539f5
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5d1c3e4bb1c4b3545c8f051432016348112f16b0
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158108"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903646"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>A Data Box-lemezek felügyelete az Azure portal használatával
 
@@ -25,7 +25,7 @@ A Data Box Disk az Azure Portalon keresztül felügyelhető. A cikk az Azure Por
 
 A rendelések azok feladása utáni visszavonása mellett számos különféle okból döntet. A rendelést a meghajtók előkészítését megelőzően vonhatja vissza. A meghajtók előkészítését és a rendelés feldolgozását követően már nincs lehetőség a visszavonására. 
 
-A rendelések visszavonásához kövesse az alábbi lépéseket.
+A rendelés visszavonásához kövesse az alábbi lépéseket.
 
 1.  Lépjen az **Áttekintés > Megszakítás** menüpontra. 
 
@@ -55,7 +55,7 @@ A rendelések klónozásához kövesse az alábbi lépéseket.
 
 A klón létrehozása néhány percet vesz igénybe, és a portálon megjelenik az új rendelés.
 
-[![Rendelés klónozása 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![Cegyetlen order 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
 
 ## <a name="delete-order"></a>Rendelés törlése
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: bf5143c3c0c75bc37f6981c6d995339e41baa4c4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f872c61ad0597d2307cd244668fdfc258f7a45cb
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112104"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895686"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure identitáskezelési és hozzáférés-vezérlés ajánlott biztonsági eljárások
 
@@ -116,7 +116,7 @@ Az alábbiakban lehetőségeket és előnyöket a kétlépéses ellenőrzés eng
 **1. lehetőség**: [Többtényezős hitelesítés engedélyezése felhasználói állapot módosításával](../active-directory/authentication/howto-mfa-userstates.md).   
 **Értékelemek**: Ez az a kétlépéses ellenőrzést igénylő hagyományos módszere. Mindkét együttműködik [Azure multi-factor Authentication a felhőben és az Azure multi-factor Authentication-kiszolgáló](../active-directory/authentication/concept-mfa-whichversion.md). Ezzel a módszerrel megköveteli a felhasználóktól a kétlépéses hitelesítés végrehajtására, minden alkalommal, amikor bejelentkeznek, és felülírja a feltételes hozzáférési szabályzatokat.
 
-**2. lehetőség**: [Többtényezős hitelesítés engedélyezése a feltételes hozzáférési szabályzattal együtt](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access).   
+**2. lehetőség**: [Többtényezős hitelesítés engedélyezése a feltételes hozzáférési szabályzattal együtt](../active-directory/authentication/howto-mfa-getstarted.md).
 **Értékelemek**: Ez a beállítás lehetővé teszi a kétlépéses ellenőrzéshez meghatározott feltételek használatával kéri [feltételes hozzáférési](../active-directory/active-directory-conditional-access-azure-portal.md). Az egyes esetekben a felhasználó jelentkezzen be a különböző helyeken, nem megbízható eszközök vagy alkalmazások, amelyeket kockázatosnak lehet. Az egyes esetekben, ahol szükséges a kétlépéses ellenőrzés meghatározása lehetővé teszi, hogy ne állandó kérő üzenet, a felhasználók számára, amely lehet kellemetlen felhasználói felületet.
 
 Ez az a leginkább rugalmas módon engedélyezze a kétlépéses ellenőrzést, a felhasználók számára. Egy feltételes hozzáférési szabályzat engedélyezése csak az Azure multi-factor Authentication a felhőben működik, és az Azure AD prémium szintű funkció. Ez a módszer a további tájékoztatást talál [üzembe helyezése a felhőalapú Azure multi-factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md).

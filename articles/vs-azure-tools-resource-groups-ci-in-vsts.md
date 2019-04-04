@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: d7859572b090913db13fe9bb7f3ed67619fe5521
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cc9e2e09da572dc4260dcc0e20a8a1846ae17320
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456346"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894149"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Az Azure DevOps szolgáltatás használatával Azure erőforráscsoport-telepítési projektek folyamatos integráció
 Azure-sablon üzembe helyezéséhez, feladatokat különböző szakaszaiban: Buildelési, tesztelési, másolása az Azure-ba (más néven "Átmeneti"), és a sablon üzembe helyezése. Sablonok üzembe helyezése az Azure DevOps-szolgáltatásokkal való két különböző módja van. Mindkét módszer ugyanazt az eredményt adja meg, tehát azt, amelyik leginkább megfelel a munkafolyamatot.
@@ -37,7 +37,7 @@ A forgatókönyv, függetlenül összes összetevőt, amely szükséges ahhoz, h
 * Alkalmazás bináris fájljainak
 
 ### <a name="nested-templates-and-configuration-scripts"></a>Beágyazott sablont és parancsfájlokat
-A Visual Studio által kínált sablonok használatakor (vagy a Visual Studio-kódrészletek használatával létrehozott), a PowerShell-parancsprogram nem csupán előkészíti az összetevők, azt is felparaméterezi az URI-t, az erőforrások más környezetekben. A parancsfájl, majd másolja át az összetevők biztonságos tárolóba az Azure-ban, hoz létre a tároló SaS-tokent, és ezután továbbítja a be a sablon üzembe helyezéséhez. Lásd: [sablon üzembe helyezése](https://msdn.microsoft.com/library/azure/dn790564.aspx) beágyazott sablonokkal kapcsolatos további.  Feladatok használata az Azure DevOps-szolgáltatásokkal, válassza ki a megfelelő feladatokat. a sablon központi telepítéséhez, és szükség esetén át paraméter értékét az előkészítési lépés a sablon üzembe helyezéséhez.
+A Visual Studio által kínált sablonok használatakor (vagy a Visual Studio-kódrészletek használatával létrehozott), a PowerShell-parancsprogram nem csupán előkészíti az összetevők, azt is felparaméterezi az URI-t, az erőforrások más környezetekben. A parancsfájl, majd másolja át az összetevők biztonságos tárolóba az Azure-ban, hoz létre a tároló SaS-tokent, és ezután továbbítja a be a sablon üzembe helyezéséhez. Lásd: [sablon üzembe helyezése](/previous-versions/azure/reference/dn790564(v=azure.100)) beágyazott sablonokkal kapcsolatos további.  Feladatok használata az Azure DevOps-szolgáltatásokkal, válassza ki a megfelelő feladatokat. a sablon központi telepítéséhez, és szükség esetén át paraméter értékét az előkészítési lépés a sablon üzembe helyezéséhez.
 
 ## <a name="set-up-continuous-deployment-in-azure-pipelines"></a>Folyamatos üzembe helyezés az Azure-folyamatok beállítása
 A PowerShell-szkriptet hívja meg az Azure-folyamatok, frissíteni szeretné a buildelési folyamat. Röviden a lépések a következők: 

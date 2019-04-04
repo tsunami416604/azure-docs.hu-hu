@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 03bafcdbf6890573d1d2855e2b47520d0111fe13
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996772"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895013"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibaelhárítása az Azure App Service használatával a Visual Studio-
 ## <a name="overview"></a>Áttekintés
@@ -35,7 +35,7 @@ Az oktatóanyagból a következőket sajátíthatja el:
 * Megtekintése a webkiszolgáló naplófájljai, beleértve a részletes hibaüzeneteket, és a sikertelen kérelmek követésének.
 * Hogyan lehet elküldeni a diagnosztikai naplók egy Azure Storage-fiók, és megtekintheti, őket.
 
-Ha rendelkezik a Visual Studio Ultimate, akkor is használhatja [IntelliTrace](https://msdn.microsoft.com/library/vstudio/dd264915.aspx) a hibakereséshez. IntelliTrace ebben az oktatóanyagban nem terjed ki.
+Ha rendelkezik a Visual Studio Ultimate, akkor is használhatja [IntelliTrace](/visualstudio/debugger/intellitrace) a hibakereséshez. IntelliTrace ebben az oktatóanyagban nem terjed ki.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ebben az oktatóanyagban működik együtt a fejlesztési környezet, a webes projekt és a beállítása az App Service-alkalmazás [egy ASP.NET-alkalmazás létrehozása az Azure App Service](app-service-web-get-started-dotnet-framework.md). A webjobs-feladatok szakaszokat kell az alkalmazást, amelyet létrehozott [az Azure WebJobs SDK használatának első lépései][GetStartedWJ].
@@ -252,14 +252,14 @@ Ha a függvény [okkal készítette el a naplókat](https://github.com/Azure/azu
 ```
 * Ha azt tapasztalja, hogy a hibakeresőt, amelyen hibakeresést végez, a kód nem lép, előfordulhat, hogy rendelkezik a csak saját kód beállításának módosításához.  További információkért lásd: [adja meg, hogy csak a saját kód használata a Visual Studióban csak felhasználói kód hibakereséséhez](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * A kiszolgáló időmérő elindul, amikor engedélyezi a távoli hibakeresési funkciót, és 48 óra után a szolgáltatás automatikusan ki van kapcsolva. Biztonság és teljesítmény érdekében a 48 órás korlát, készen áll. A funkció azon tetszőleges számú alkalommal próbálkozhat, egyszerűen kapcsolhatja. Azt javasoljuk, hogy hagyja azokat le van tiltva, ha nincs aktív hibakeresés.
-* A hibakereső manuálisan csatlakoztathat valamilyen folyamat, nem csak az alkalmazás folyamata (w3wp.exe). A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
+* A hibakereső manuálisan csatlakoztathat valamilyen folyamat, nem csak az alkalmazás folyamata (w3wp.exe). A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](/visualstudio/debugger/debugging-in-visual-studio).
 
 ## <a name="logsoverview"></a>Diagnosztikai naplók áttekintése
 ASP.NET-alkalmazás, amely futtatja az App Service-alkalmazások a következő típusú naplókat hozhat létre:
 
 * **Alkalmazás nyomkövetési naplók**<br/>
-  Az alkalmazás a metódusok meghívásával hozza létre ezeket a naplókat a [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx) osztály.
-* **Webkiszolgáló-naplókkal**<br/>
+  Az alkalmazás a metódusok meghívásával hozza létre ezeket a naplókat a [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) osztály.
+* **Webkiszolgáló naplói**<br/>
   A webkiszolgáló az alkalmazás minden HTTP-kérelem naplóbejegyzés hoz létre.
 * **Részletes hibanaplókat üzenet**<br/>
   A webkiszolgáló egy HTML-oldalt hoz létre a sikertelen HTTP-kérelmek (állapotkód: 400 vagy nagyobb eredményező kérelmek) további információkat.
@@ -633,7 +633,7 @@ Egy adott hibaelhárítási kérdés segítség elindítani egy szálat a követ
 * [StackOverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Hibakeresés a Visual Studióban
-A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) és [tippek hibakeresés a Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
+A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](/visualstudio/debugger/debugging-in-visual-studio) és [tippek hibakeresés a Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
 
 ### <a name="remote-debugging-in-azure"></a>Távoli hibakeresése az Azure-ban
 App Service-alkalmazások és a webjobs-feladatok távoli hibakereséssel kapcsolatban további információkért lásd a következőket:
@@ -650,14 +650,14 @@ Nincsenek nem naprakész, és alapos tudnivalókra az ASP.NET nyomkövetési el�
 
 * [Monitoring és Telemetria (valós felhőalapú alkalmazások létrehozása az Azure-ral)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
   E-könyv fejezet ajánlásokkal nyomkövetés az Azure felhőalapú alkalmazásokat.
-* [Az ASP.NET nyomkövetési](https://msdn.microsoft.com/library/ms972204.aspx)<br/>
+* [ASP.NET Tracing](/previous-versions/dotnet/articles/ms972204(v=msdn.10))<br/>
   Régi azonban továbbra is a leghasznosabb, az alapszintű bevezetést a tulajdonosnak.
-* [Nyomkövetési figyelők](https://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
-  Információ a nyomkövetési figyelői nem említik, de a [WebPageTraceListener](https://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx).
-* [Forgatókönyv: Az ASP.NET nyomkövetési integrálása System.Diagnostics nyomkövetés](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
+* [Nyomkövetési figyelők](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
+  Információ a nyomkövetési figyelői nem említik, de a [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).
+* [Forgatókönyv: Az ASP.NET nyomkövetési integrálása System.Diagnostics nyomkövetés](/previous-versions/b0ectfxd(v=vs.140))<br/>
   Ez a cikk is régi, de nem vonatkozik a bevezető cikkben további információkat tartalmaz.
 * [Az ASP.NET MVC Razor nézetekben nyomon követése](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
-  Nyomon követését a Razor-nézetekben, amellett a hozzászólás is hozzon létre egy olyan hiba szűrőt, és minden nem kezelt kivételek naplózásához az MVC alkalmazások módját ismerteti. Minden nem kezelt kivételek jelentkezzen be egy Web Forms-alkalmazást kapcsolatos információkért lásd: Global.asax példa [hibakezelők teljes példa](https://msdn.microsoft.com/library/bb397417.aspx) az MSDN Webhelyén. MVC vagy Web Forms bizonyos kivételek naplózásához, de lehetővé teszik az alapértelmezett keretrendszer kezelése gyakorolt hatását, ha akkor is feltárhatja és újbóli kiváltásához a következő példához hasonlóan:
+  Nyomon követését a Razor-nézetekben, amellett a hozzászólás is hozzon létre egy olyan hiba szűrőt, és minden nem kezelt kivételek naplózásához az MVC alkalmazások módját ismerteti. Minden nem kezelt kivételek jelentkezzen be egy Web Forms-alkalmazást kapcsolatos információkért lásd: Global.asax példa [hibakezelők teljes példa](/previous-versions/bb397417(v=vs.140)) az MSDN Webhelyén. MVC vagy Web Forms bizonyos kivételek naplózásához, de lehetővé teszik az alapértelmezett keretrendszer kezelése gyakorolt hatását, ha akkor is feltárhatja és újbóli kiváltásához a következő példához hasonlóan:
 
 ``` c#
 try

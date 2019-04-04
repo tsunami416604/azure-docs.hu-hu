@@ -9,17 +9,14 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 41c665a2a1aec56cc07d5465742d01e41e6adfff
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: d915058e13f3c5287bdb037a1600e7f0a09da436
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443582"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895664"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
-
-> [!Note]
-> A Video Indexer API 1-es verziója 2018. augusztus 1-jével elavult. Használja a Video Indexer API 2-es verzióját. <br/>A Video Indexer API-k 2-es verziójával való fejlesztéshez tekintse át az [itt](https://api-portal.videoindexer.ai/) található útmutatót. 
 
 A Video Indexer számos, a Microsoft által kínált audió- és videótartalmakkal kapcsolatos mesterséges intelligenciai (MI) technológiát egyesít egy integrált szolgáltatásban, megkönnyítve ezzel a fejlesztést. Az API-k úgy lettek kialakítva, hogy a fejlesztők a médiával kapcsolatos MI-technológiák felhasználására összpontosíthassanak, és ne kelljen a felhőplatform skálázása, globális elérhetősége, rendelkezésre állása és megbízhatósága miatt aggódniuk. Az API segítségével feltöltheti a fájljait, részletes videóelemzéseket kérhet, megkaphatja az elemzés és a lejátszóvezérlők URL-címét, hogy beágyazhassa őket az alkalmazásba, valamint egyéb feladatokat is végezhet.
 
@@ -211,7 +208,7 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="see-also"></a>Lásd még
 
-- [A Video Indexer áttekintése](video-indexer-overview.md)
+- [Video Indexer – áttekintés](video-indexer-overview.md)
 - [Régiók](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
 
 ## <a name="next-steps"></a>További lépések

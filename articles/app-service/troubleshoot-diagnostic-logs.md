@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 023d12764e3dcfcf2f5471cb431528a14fbc1fed
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339635"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894918"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Az Azure App Service-alkalmazások diagnosztikai célú naplózásának engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -36,10 +36,10 @@ Engedélyezheti vagy letilthatja a naplók a következő típusú:
 
 * **Részletes hibanaplózás** – részletes információk minden kéréshez, amely HTTP-állapotkód: 400 vagy nagyobb eredményez. Tartalmazhat, amelyek segíthetnek meghatározni, miért érdemes a kiszolgáló a következő hibakódot adta vissza információt. Egy HTML-fájl jön létre minden egyes hibához, az alkalmazás fájlrendszerében, és legfeljebb 50 hibák (fájlok) megmaradnak. A HTML-fájlok száma meghaladja az 50, amikor a rendszer automatikusan töröl a legrégebbi 26 fájlokat.
 * **Sikertelen kérelmek nyomkövetésére vonatkozó** – részletes információk a sikertelen kérelmek, beleértve a nyomkövetés feldolgozni a kérelmet, és az egyes összetevőkben ideje használja az IIS-összetevőt. Ez akkor hasznos, ha a webhely teljesítményének javítása vagy különíteni egy adott HTTP hiba. Egy mappa jön létre minden egyes hibához az alkalmazás fájlrendszerében. Fájl adatmegőrzési szabályzatok ugyanazok, mint a részletes hibanaplózást felett.
-* **Webalkalmazás-kiszolgáló naplózási** – HTTP-tranzakciót használatával kapcsolatos információkat a [W3C bővített naplófájlformátum](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Ez hasznos, teljes webhelymetrikák például kezelt kérések, vagy hogy hány kérésnek egy adott IP-címről számának meghatározásakor.
+* **Webalkalmazás-kiszolgáló naplózási** – HTTP-tranzakciót használatával kapcsolatos információkat a [W3C bővített naplófájlformátum](/windows/desktop/Http/w3c-logging). Ez hasznos, teljes webhelymetrikák például kezelt kérések, vagy hogy hány kérésnek egy adott IP-címről számának meghatározásakor.
 
 ### <a name="application-diagnostics"></a>Alkalmazásdiagnosztika
-Az Application diagnostics lehetővé teszi egy webalkalmazás által létrehozott adatok rögzítését. ASP.NET-alkalmazások használhatják a [System.Diagnostics.Trace](https://msdn.microsoft.com/library/36hhw2t6.aspx) osztályt az alkalmazásnaplóba diagnosztikai információk naplózása. Példa:
+Az Application diagnostics lehetővé teszi egy webalkalmazás által létrehozott adatok rögzítését. ASP.NET-alkalmazások használhatják a [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) osztályt az alkalmazásnaplóba diagnosztikai információk naplózása. Példa:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -58,10 +58,10 @@ Amikor engedélyezi a **az application diagnostics**, azt is választhatja a **s
 | Szint| Belefoglalt naplókategóriák |
 |-|-|
 |**Letiltva** | None |
-|**Hiba történt** | Kritikus hiba |
+|**Hiba** | Kritikus hiba |
 |**Figyelmeztetés** | Figyelmeztetés, kritikus hiba|
 |**Információ** | Info, figyelmeztetés, kritikus hiba|
-|**részletes** | Nyomkövetési, hibakeresési, adatok, figyelmeztetés, hiba, kritikus (az összes kategória) |
+|**Részletes** | Nyomkövetési, hibakeresési, adatok, figyelmeztetés, hiba, kritikus (az összes kategória) |
 |-|-|
 
 A **alkalmazásnaplózás**, bekapcsolhatja a hibakeresési célokra az ideiglenes fájl helyrendszer-beállítást. 12 óra múlva automatikusan kikapcsolja ezt a beállítást. A blob beállítást válassza ki a naplók írhat egy blob-tárolóba is bekapcsolhatja.
@@ -101,7 +101,7 @@ A könyvtárstruktúra, a naplók vannak tárolva a következőképpen történi
 * **Protokoly aplikací** -/LogFiles/alkalmazás /. Ez a mappa tartalmaz egy vagy több, az alkalmazásadatok naplózása által előállított adatokat tartalmazó szöveges fájlok.
 * **Sikertelen kérelmek nyomkövetési** -/ LogFiles/W3SVC ### /. Ez a mappa tartalmaz egy XSL-fájl és a egy vagy több XML-fájlt. Győződjön meg arról, le kell tölteni a XSL-fájl ugyanabban a könyvtárban való, az XML-fájl fájl, mert a XSL-fájl formázására és az Internet Explorer megtekintve XML fájl(ok) tartalmát szűrés funkciót biztosít.
 * **Részletes hibanaplókat** -/LogFiles/DetailedErrors /. Ez a mappa tartalmaz egy vagy több HTTP-hibaüzeneteket előfordult széleskörű információkat biztosító .htm fájlt.
-* **Webalkalmazás-naplók** -/LogFiles/http/RawLogs. Ez a mappa tartalmaz egy vagy több szöveges fájlok formázva a [W3C bővített naplófájlformátum](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
+* **Webalkalmazás-naplók** -/LogFiles/http/RawLogs. Ez a mappa tartalmaz egy vagy több szöveges fájlok formázva a [W3C bővített naplófájlformátum](/windows/desktop/Http/w3c-logging).
 * **Telepítési naplók** -/ LogFiles/Git. Ez a mappa tartalmazza az Azure App Service által használt belső üzembe helyezési folyamat által létrehozott naplók, valamint-naplókban a Git-telepítéseket. Telepítési naplók D:\home\site\deployments alapján is megtalálhatja.
 
 ### <a name="ftp"></a>FTP
@@ -126,11 +126,11 @@ Ez a parancs menti a naplókat az alkalmazás neve a "appname" nevű **webapp_lo
 A Visual Studio Application Insights a szűréshez és a naplók keresése, és a kérésekkel és más eseményekkel való korreláláshoz a naplók eszközöket biztosít.
 
 1. Az Application Insights SDK hozzáadása a projekthez a Visual Studióban.
-   * A Megoldáskezelőben kattintson jobb gombbal a projektre, és válassza ki az Application Insights hozzáadása. Az interface végigvezeti lépéseket, amelyek tartalmazzák az Application Insights-erőforrás létrehozása. [További információ](../azure-monitor/app/asp-net.md)
+   * A Megoldáskezelőben kattintson jobb gombbal a projektre, és válassza ki az Application Insights hozzáadása. Az interface végigvezeti lépéseket, amelyek tartalmazzák az Application Insights-erőforrás létrehozása. [Részletek](../azure-monitor/app/asp-net.md)
 2. A nyomkövetés-figyelő csomag hozzáadása a projekthez.
    * Kattintson jobb gombbal a projektre, és válassza a NuGet-csomagok kezelése. Válassza ki `Microsoft.ApplicationInsights.TraceListener` [további](../azure-monitor/app/asp-net-trace-logs.md)
 3. Töltse fel a projektet, majd futtassa készítése a naplózási adatokat.
-4. Az a [az Azure portal](https://portal.azure.com/), keresse meg az új Application Insights-erőforrást, és nyissa meg a **keresési**. A naplózási adatokat, és a kérést, használatának és egyéb telemetriát kell megjelennie. Valamennyi telemetria is igénybe vehet néhány percet késik: a frissítés parancsra. [További információ](../azure-monitor/app/diagnostic-search.md)
+4. Az a [az Azure portal](https://portal.azure.com/), keresse meg az új Application Insights-erőforrást, és nyissa meg a **keresési**. A naplózási adatokat, és a kérést, használatának és egyéb telemetriát kell megjelennie. Valamennyi telemetria is igénybe vehet néhány percet késik: a frissítés parancsra. [Részletek](../azure-monitor/app/diagnostic-search.md)
 
 [További tudnivalók a teljesítmény nyomon követése az Application insights segítségével](../azure-monitor/app/azure-web-apps.md)
 
@@ -222,7 +222,7 @@ Sikertelen kérelmek nyomkövetési nevű XML-fájlokban van tárolva **fr ### .
 Részletes hibanaplókat olyan HTML-dokumentumok, amelyek előfordult HTTP-hibák részletes információkat biztosítanak. Egyszerűen csak a HTML-dokumentumok, mivel azok tekinthet meg webböngészővel.
 
 ### <a name="web-server-logs"></a>Webkiszolgáló naplói
-A webkiszolgáló-naplók használatával formázott a [W3C bővített naplófájlformátum](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Ez az információ egy szövegszerkesztő használatával olvashatja, vagy segédprogramok használatával például elemzett [naplóelemző](https://go.microsoft.com/fwlink/?LinkId=246619).
+A webkiszolgáló-naplók használatával formázott a [W3C bővített naplófájlformátum](/windows/desktop/Http/w3c-logging). Ez az információ egy szövegszerkesztő használatával olvashatja, vagy segédprogramok használatával például elemzett [naplóelemző](https://go.microsoft.com/fwlink/?LinkId=246619).
 
 > [!NOTE]
 > Az Azure App Service által előállított naplók nem támogatják a **s-computername**, **s-ip**, vagy **cs-version** mezőket.

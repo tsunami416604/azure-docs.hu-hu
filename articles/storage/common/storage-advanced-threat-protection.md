@@ -5,15 +5,15 @@ services: storage
 author: rmatchoro
 ms.service: storage
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 04/03/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: 48fdf277f47b1e4abc8e3d7f7222d5b99a248b55
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 78338ece1bc70d8410bd71183a34aaf1a52f2d1b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850720"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904117"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage
 
@@ -22,8 +22,8 @@ Komplex veszélyforrások elleni védelem az Azure Storage, által észlelt szok
 Biztonsági riasztások aktiválódnak rendellenességeket a tevékenység esetén.  Ezek a biztonsági riasztások integrálva vannak az [az Azure Security Center](https://azure.microsoft.com/services/security-center/), és az előfizetés adminisztrátorainak, gyanús tevékenységeket és a problémák kivizsgálásához és elhárításához fenyegetésekkel kapcsolatos javaslatok részleteit tartalmazó e-mailen keresztül is kapnak.
 
 > [!NOTE]
-> * Komplex veszélyforrások elleni védelem az Azure Storage jelenleg csak az a Blob storage. 
-> * Az új díjszabás részleteit érhető el a [az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-pricing) díjszabását ismertető lapon, többek között a beállítás a próbaidőszak alatt díjmentesen az első 30 nap. 
+> * Komplex veszélyforrások elleni védelem az Azure Storage jelenleg csak az a Blob storage.
+> * A díjszabás részleteiért, beleértve a 30 napos ingyenes próbaverziót, tekintse meg a [az Azure Security Center díjszabását ismertető lapon]( https://azure.microsoft.com/en-us/pricing/details/security-center/).
 > * Az Azure storage szolgáltatás ATP jelenleg nem érhető el az Azure government és szuverén felhő-régiók.
 
 Komplex veszélyforrások elleni védelem az Azure Storage-diagnosztikai naplók, olvasási, írási és törlési kérelmek a Blob storage, a fenyegetésészlelés fogadnak. A komplex veszélyforrások elleni védelem riasztások vizsgálatához megtekintheti a Storage Analytics-naplózás használata a kapcsolódó tárolási tevékenység. További információkért lásd: hogyan [Storage Analytics naplózási](storage-monitor-storage-account.md#configure-logging).
@@ -80,7 +80,7 @@ Rest API-parancsok segítségével létrehozása, frissítése és az adott tár
 
 A következő PowerShell-parancsmagokat használja:
 
-  * [A komplex veszélyforrások elleni védelem engedélyezése](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+  * [A Komplex veszélyforrások elleni védelem engedélyezése](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
   * [Első komplex veszélyforrások elleni védelem](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
   * [A komplex veszélyforrások elleni védelem letiltása](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 

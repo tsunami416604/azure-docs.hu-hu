@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8046721244b31539dc79eba3f2ba11d34c2df256
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6e9ee0d6fab96c84eee8a520d01d97faddab49f2
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170363"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904185"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Az Azure Active Directory szolgáltatás üzembe helyezési útmutató
 
@@ -33,7 +33,7 @@ Ebben az útmutatóban szereplő javaslatok implementálható az Azure AD ingyen
 Licenceléssel kapcsolatos további információ található a következő lapokon:
 
 * [Az Azure AD licencelése](https://azure.microsoft.com/pricing/details/active-directory/)
-* [A Microsoft 365 nagyvállalati verzió](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
+* [Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Az Azure AD B2B licencelési útmutató](../b2b/licensing-guidance.md)
 
@@ -46,7 +46,7 @@ Ebben a fázisban a rendszergazdák alapkonfiguráció biztonsági funkciók az 
 | [Egynél több globális rendszergazda kijelölése](../users-groups-roles/directory-emergency-access.md) | Rendelje hozzá legalább két állandó csak felhőalapú globális rendszergazdai fiókok, vészhelyzet esetén. Ezek a fiókok nincsenek napi használható, és rendelkeznie kell a hosszú és összetett jelszavak. | Azure AD Free |
 | [Használja a nem globális rendszergazdai szerepkört, ahol lehetséges](../users-groups-roles/directory-assign-admin-roles.md) | A rendszergazdák csak a szükséges hozzáférést biztosít csak azokat a területeket, szükségük van a hozzáférést. Nem minden rendszergazdának kell lennie a globális rendszergazdák. | Azure AD Free |
 | [Rendszergazdai szerepkör használat nyomon követése a Privileged Identity Management engedélyezése](../privileged-identity-management/pim-getting-started.md) | Engedélyezze a Privileged Identity Management elindításához a rendszergazdai szerepkör használat nyomon követése. | Prémium szintű Azure AD P2 |
-| [Önkiszolgáló jelszó-visszaállítás bevezetése](../authentication/howto-sspr-deployment.md) | Csökkentse a telefonhívások, a jelszavak alaphelyzetbe állításának azáltal, hogy munkatársak, alaphelyzetbe állíthatja saját jelszavait, házirendekkel, egy rendszergazda vezérlőként. | Azure AD Basic |
+| [Önkiszolgáló jelszóátállítás bevezetése](../authentication/howto-sspr-deployment.md) | Csökkentse a telefonhívások, a jelszavak alaphelyzetbe állításának azáltal, hogy munkatársak, alaphelyzetbe állíthatja saját jelszavait, házirendekkel, egy rendszergazda vezérlőként. | Azure AD Basic |
 | [Hozzon létre egy szervezet meghatározott egyéni letiltott jelszavak](../authentication/howto-password-ban-bad-configure.md) | Gyakori szavakat vagy kifejezéseket a szervezet vagy terület tartalmazó jelszavak létrehozásával megakadályozhatja a felhasználókat. | Azure AD Basic |
 | [A helyszíni integrációjának engedélyezése az Azure AD jelszóvédelem](../authentication/concept-password-ban-bad-on-premises.md) | A helyszíni címtár, jelszavak beállítása a helyszíni meg is megfelelnek-e a globális a letiltott jelszavak listájának kibővítése, és a bérlő-specifikus le van tiltva a jelszavak listáit. | Prémium szintű Azure AD P1 |
 | [A Microsoft tájékoztató a jelszavakról engedélyezése](https://www.microsoft.com/research/publication/password-guidance/) | Állítsa le a felhasználók számára beállított ütemezés szerint a jelszó módosítására, tiltsa le a bonyolultsági feltételeknek, és a felhasználók számára olyan több apt, ne felejtse el a jelszavukat, és láthatóan tartja őket olyan biztonságos. | Azure AD Free |

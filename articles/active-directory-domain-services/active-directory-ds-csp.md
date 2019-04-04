@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: ergreenl
-ms.openlocfilehash: 7210610f8a082c34f8e87ef715b8252c2821bc83
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8beba4f66cf24a937eec77e4bfdee2057b417269
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187096"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892806"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Az Azure Active Directory (AD) Domain Services, Azure Felhőszolgáltatók (CSP) számára
 Ez a cikk bemutatja, hogyan használhatja az Azure AD tartományi szolgáltatásokat az Azure CSP-előfizetésben.
@@ -41,7 +41,7 @@ További információkért lásd: a [Azure CSP áttekintése](https://docs.micro
 ## <a name="benefits-of-using-azure-ad-domain-services-in-an-azure-csp-subscription"></a>Az Azure CSP-előfizetés az Azure AD Domain Services használatának előnyei
 Az Azure AD tartományi szolgáltatásokat biztosít a Windows Server ad-vel kompatibilis szolgáltatások az Azure-ban például az LDAP, Kerberos/NTLM hitelesítés, a tartományhoz való csatlakozás, a csoportházirend és DNS. A évtizedes keresztül sok alkalmazás készített AD esetében működik, használja ezeket a képességeket. Számos, független szoftverszállítók (ISV-k) beépített és alkalmazások ügyfelek telephelyein üzembe helyezve. Ezek az alkalmazások olyan hátrányos támogatásához, mivel, amelyek gyakran hozzáférést igényel a a különböző környezetekhez, amelyekben ezek az alkalmazások vannak telepítve. Az Azure CSP-előfizetésekben van egy egyszerűbb alternatív és az Azure rugalmasságát.
 
-Az Azure AD Domain Services már támogatja az Azure CSP-előfizetésekben. Most már telepítheti az alkalmazást egy Azure CSP-előfizetésben, az ügyfél az Azure AD-címtárhoz kötni. Az alkalmazottak (támogatási csapattal) eredményeképpen kezelése, felügyelheti és szolgáltatás a virtuális gépek, amelyre az alkalmazás telepítve van a szervezet vállalati hitelesítő adatok használatával. Helyezhet további, az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz, az ügyfél az Azure AD-címtárhoz. Az alkalmazás csatlakoztatva van az ügyfél által felügyelt tartományokhoz. Az alkalmazáson belül, ezért a Kerberos/NTLM, az LDAP, a használó funkciók vagy a [System.DirectoryServices API](https://msdn.microsoft.com/library/system.directoryservices) az ügyfél-címtár alapján zökkenőmentesen munkahelyi. A végfelhasználókat nagy mértékben az alkalmazás, szolgáltatás, anélkül, hogy az alkalmazás telepítve van az infrastruktúra karbantartásával foglalkoznia eméssze előnyeit.
+Az Azure AD Domain Services már támogatja az Azure CSP-előfizetésekben. Most már telepítheti az alkalmazást egy Azure CSP-előfizetésben, az ügyfél az Azure AD-címtárhoz kötni. Az alkalmazottak (támogatási csapattal) eredményeképpen kezelése, felügyelheti és szolgáltatás a virtuális gépek, amelyre az alkalmazás telepítve van a szervezet vállalati hitelesítő adatok használatával. Helyezhet további, az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz, az ügyfél az Azure AD-címtárhoz. Az alkalmazás csatlakoztatva van az ügyfél által felügyelt tartományokhoz. Az alkalmazáson belül, ezért a Kerberos/NTLM, az LDAP, a használó funkciók vagy a [System.DirectoryServices API](/dotnet/api/system.directoryservices) az ügyfél-címtár alapján zökkenőmentesen munkahelyi. A végfelhasználókat nagy mértékben az alkalmazás, szolgáltatás, anélkül, hogy az alkalmazás telepítve van az infrastruktúra karbantartásával foglalkoznia eméssze előnyeit.
 
 Összes Azure-előfizetést, beleértve az Azure AD tartományi szolgáltatásokat, díjat számítunk fel visszatérhet ahhoz, hogy felhasznált erőforrások számlázását. A kapcsolat teljes körű irányítását karbantartása az ügyfélnél esetén, értékesítési, számlázási, műszaki támogatási stb. Az Azure CSP-platform rugalmasságával, egy kis csoportja támogatja az olyan ügynököket sok az ilyen ügyfelek, akik a példányok tud kiszolgálni az üzembe helyezett alkalmazás.
 
@@ -90,4 +90,4 @@ Az alábbi megfontolásokat a alkalmazni: az Azure CSP-előfizetésének a felü
 * [Az Azure CSP programhoz](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program) és kezdjen el az Azure CSP teheti vállalkozását.
 * Tekintse át a [Azure services elérhető az Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 * [Az Azure AD Domain Services engedélyezése a PowerShell-lel](active-directory-ds-enable-using-powershell.md)
-* [Az Azure AD Domain Services használatának első lépései](active-directory-ds-getting-started.md)
+* [Ismerkedés az Azure AD tartományi szolgáltatásokkal](active-directory-ds-getting-started.md)

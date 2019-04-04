@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 4e609bf6d96fa9cc3f2dc179157ecd27178608f9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 672c62c440708f8e949d67d545bee2179c6066b2
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860356"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894935"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Hozzáférés az Azure Cosmos DB a virtuális hálózatok (VNet)
 
@@ -54,6 +54,9 @@ NSG-szabályok és a egy alhálózatot a virtuális hálózati kapcsolat korlát
 
 ### <a name="are-service-endpoints-available-for-all-vnets"></a>A Szolgáltatásvégpontok mindegyik virtuális hálózat érhető el?
 Nem, csak az Azure Resource Managerbeli virtuális hálózat lehet a szolgáltatásvégpont engedélyezve van. A klasszikus virtuális hálózatok nem támogatják a Szolgáltatásvégpontok.
+
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Is szeretnék "Accept-kapcsolatok a nyilvános Azure-adatközpontok belül" Ha a szolgáltatás-végponti hozzáférés engedélyezve van az Azure Cosmos DB?  
+Erre azért szükség, ha azt szeretné, hogy az Azure Cosmos DB-fiók, Azure első felet elérésének services, Azure Data factory, az Azure Search vagy bármely szolgáltatás, amely csak a megadott Azure-régióban üzemel.
 
 
 ## <a name="next-steps"></a>További lépések

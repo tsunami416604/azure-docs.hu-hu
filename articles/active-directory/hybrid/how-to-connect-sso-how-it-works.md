@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 04/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5217f21449efeb2086770f040fb781765ea819eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 813ab2a349ba843e9f41675234e395470bef9740
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083937"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58896125"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Részletes technikai bemutatása
 
@@ -39,15 +39,12 @@ Ez a szakasz a következő három részből hozzá:
 
 Közvetlen egyszeri bejelentkezés engedélyezve van az Azure AD Connect használatával, ahogy [Itt](how-to-connect-sso-quick-start.md). A funkció engedélyezése közben a következő lépések történnek:
 
-- Egy számítógép-fiók nevű `AZUREADSSOACC` (amely jelöli az Azure AD) jön létre a helyszíni Active Directory (AD) minden olyan AD-erdőben.
-- A számítógépfiók Kerberos visszafejtési kulcs biztonságosan megosztott Azure AD-val. Ha több AD-erdőkkel, egyenként kell a saját Kerberos visszafejtési kulcsot.
-- Emellett két Kerberos egyszerű szolgáltatásnevek (SPN) jön létre, amelyek a két URL-címet, amelyekre az Azure AD-be.
-
->[!NOTE]
-> Minden AD-erdőben szinkronizál az Azure AD-(Azure AD Connect használatával), és segít a felhasználóknak a közvetlen egyszeri bejelentkezés azt szeretné, a számítógép fiókjának és a Kerberos egyszerű szolgáltatásnevek jönnek létre. Helyezze át a `AZUREADSSOACC` számítógépfiók, egy szervezeti egység (OU) más számítógépfiókokat tároló biztosíthatja, hogy ugyanúgy kezeli, és nem törlődik.
+- Egy számítógép-fiók (`AZUREADSSOACC`) jön létre a helyszíni Active Directory (AD) szinkronizált Azure ad-hez (Azure AD Connect használatával) minden AD-erdőben.
+- Ezenkívül számos Kerberos egyszerű szolgáltatásnevek (SPN) az Azure AD bejelentkezési folyamat során használandó jönnek létre.
+- A számítógépfiók Kerberos visszafejtési kulcs biztonságosan megosztott Azure AD-val. Ha több AD-erdőkkel, minden egyes számítógépfiók lesz a saját egyedi Kerberos visszafejtési kulcsot.
 
 >[!IMPORTANT]
->Kifejezetten ajánljuk, hogy Ön [vihetők át a Kerberos-visszafejtési kulcs](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) , a `AZUREADSSOACC` számítógépfiók legalább 30 nap.
+> A `AZUREADSSOACC` számítógépfiók biztonsági okokból erősen védeni kell. Csak a tartományi rendszergazdák kezelése a számítógépfiók képesnek kell lennie. Győződjön meg arról, hogy a Kerberos-delegálás, a számítógép fiók le van tiltva. A számítógépfiók a egy szervezeti egység (OU), hogy hol biztonságban véletlen törlések Store. A Kerberos visszafejtési kulcs a számítógépfiók is olyan érzékeny kell kezelni. Kifejezetten ajánljuk, hogy Ön [vihetők át a Kerberos-visszafejtési kulcs](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) , a `AZUREADSSOACC` számítógépfiók legalább 30 nap.
 
 A beállítás befejezése után a közvetlen egyszeri bejelentkezés működik ugyanúgy, mint bármely más jelentkezzen be, amely integrált Windows-hitelesítés (IWA) használja.
 

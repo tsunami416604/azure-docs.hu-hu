@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: d8ada53082b0ccc95d472b43a0ae2ff63cd76a3e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5f1774e02a34b60a8a6e936b62905a0a27ccfb85
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125187"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890973"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek infrastruktúra automatizálási eszközök használata
 Hozzon létre, és kezeli az Azure-beli virtuális gépek (VM) egységes módon végrehajtott, ipari méretekben, valamilyen automatizált általában van szükség. Nincsenek számos eszközöket és megoldásokat, amelyek lehetővé teszik a teljes Azure-infrastruktúra üzembe helyezés és felügyelet életciklusának automatizálásához. Ez a cikk egy részét az infrastruktúra automatizálási eszközöket, amelyek is használhatja az Azure-ban mutatja be. Ezek az eszközök általában pontosan a következő módszerek egyikét:
@@ -80,7 +80,7 @@ DSC-konfigurációk határozza meg, mi a telepíti egy számítógépre, és a g
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [Hozzon létre egy egyszerű DSC-konfiguráció](https://msdn.microsoft.com/powershell/dsc/quickstart).
+- [Hozzon létre egy egyszerű DSC-konfiguráció](https://msdn.microsoft.com/powershell/dsc/quickstarts/website-quickstart).
 - [Konfiguráljon egy DSC lekéréses kiszolgálót](https://msdn.microsoft.com/powershell/dsc/pullserver).
 - [Linuxhoz készült DSC használata](https://msdn.microsoft.com/powershell/dsc/lnxgettingstarted).
 

@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: d055b6775c9c788ecbb3a868055fa2402a537a83
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 6b80e73dec7d0e03823a8aa2867ee91bfb68f560
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231172"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893639"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technikai útmutató a Cortana Intelligence Megoldássablon igény szerint az energiaellátás előrejelzése
-## <a name="overview"></a>**Áttekintés**
+## **<a name="overview"></a>Áttekintés**
 Gyorsítsa fel a folyamat létrehozásának felül a Cortana Intelligence Suite-E2E bemutató Megoldássablonok lettek kialakítva. Egy üzembe helyezett sablon látja el az előfizetés szükséges a Cortana Intelligence-összetevővel, és a közötti kapcsolatokat hozhat létre. Első generált adatok szimuláció alkalmazás mintaadatokkal adatfolyamat is feltölti. Az adatszimuláló töltse le a megadott, és telepítheti a helyi gépén, tekintse meg a readme.txt fájlt a utasítás a szimulátor használatával. A szimulátor generált adatok hydrates a adatfolyamat és kezdő létrehozása a machine learning-előrejelzés, amelyek megjeleníthetők a Power BI-irányítópulton.
 
 A megoldássablon található [Itt](https://gallery.cortanaintelligence.com/SolutionTemplate/Demand-Forecasting-for-Energy-1)
@@ -27,13 +27,13 @@ Az üzembe helyezési folyamat végigvezeti a megoldás hitelesítő adatok beá
 
 A jelen dokumentum célja, hogy a referencia-architektúra és a különböző összetevőket az előfizetésében, ez a Megoldássablon részeként. A dokumentum is ismerteti a mintaadatokat, cserélje le tényleges adatok insights/előrejelzéseket, elért adatok láthatók a saját módjáról. Emellett a dokumentum előadások kapcsolatos azon részei a Megoldássablon, ha testre szeretné szabni a megoldást a saját adataival módosítani kellene. Ez a Megoldássablon hozhat létre a Power BI-irányítópulton való utasításokat a végén.
 
-## <a name="details"></a>**Részletek**
+## **<a name="details"></a>Részletek**
 ![](media/cortana-analytics-technical-guide-demand-forecast/ca-topologies-energy-forecasting.png)
 
 ### <a name="architecture-explained"></a>Az architektúra ismertetése
 Ha a megoldás üzembe lett helyezve, Cortana Analytics Suite belül különböző Azure-szolgáltatások rendszer aktiválja (azt jelenti, a Event Hub, az Stream Analytics, a HDInsight, a Data Factory, a Machine Learning, *stb.*). Architektúradiagram bemutatja, magas szinten, hogyan energia Megoldássablon készült kereslet-előrejelzési értékekből összeállított teljes körű. Ezek a szolgáltatások segítségével megvizsgálhatja a központi telepítés a megoldás használatával létrehozott sablon megoldásdiagramon rájuk kattintva. A következő szakaszok ismertetik az egyes.
 
-## <a name="data-source-and-ingestion"></a>**Adatforrás és feldolgozó**
+## **<a name="data-source-and-ingestion"></a>Adatforrás és feldolgozó**
 ### <a name="synthetic-data-source"></a>Szintetikus adatforrás
 Ehhez a sablonhoz használt adatforrás egy asztali alkalmazás, töltse le és futtassa helyileg a sikeres telepítést követően a jön létre. Töltse le és telepítse az alkalmazást a Tulajdonságok sávon, energia-előrejelzés Adatszimuláló nevű sablon megoldásdiagramon első csomópontjának kiválasztásakor utasításokat találja. Ez az alkalmazás-csatornák a [Azure Event Hub](#azure-event-hub) adatpontokat, vagy a megoldás folyamatának többi használt események szolgáltatásként.
 
@@ -42,7 +42,7 @@ Az esemény generálása alkalmazás feltöltése az Azure Event Hubs, csak azt 
 ### <a name="azure-event-hub"></a>Azure-eseményközpont
 A [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) szolgáltatás a címzett, a bemeneti leírt szintetikus adatforrás által biztosított.
 
-## <a name="data-preparation-and-analysis"></a>**Adat-előkészítési és -elemzés**
+## **<a name="data-preparation-and-analysis"></a>Adat-előkészítési és -elemzés**
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 A [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) érkező bemeneti Stream közel valós idejű szolgáltatást használja a [Azure Event Hub](#azure-event-hub) szolgáltatást, és tegye közzé az eredményeket a egy [Power BI](https://powerbi.microsoft.com)irányítópultot, valamint a nyers bejövő eseményeket, az archiválás a [Azure Storage](https://azure.microsoft.com/services/storage/) szolgáltatás később feldolgozásra, amelyet a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) szolgáltatás.
 
@@ -52,15 +52,15 @@ Az Azure HDInsight szolgáltatás futtatásához használt [Hive](https://blogs.
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 A [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) szolgáltatás használható-e (az Azure Data Factory által előkészített) alapján előrejelzi egy adott régió kapott bemeneti adatok jövőbeli fogyasztást.
 
-## <a name="data-publishing"></a>**Adatok közzététele**
+## **<a name="data-publishing"></a>Adatok közzététele**
 ### <a name="azure-sql-database-service"></a>Azure SQL Database Service
 A [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) szolgáltatás tárolására szolgál (az Azure Data Factory kezeli) az előrejelzés fogadja az Azure Machine Learning szolgáltatás a felhasznált a [Power BI](https://powerbi.microsoft.com) irányítópultot.
 
-## <a name="data-consumption"></a>**Adathasználat**
+## **<a name="data-consumption"></a>Adathasználat**
 ### <a name="power-bi"></a>Power BI
 A [Power BI](https://powerbi.microsoft.com) szolgáltatás által biztosított összesítések tartalmazó irányítópult megjelenítéséhez használja a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) szolgáltatás, valamint igény szerinti előrejelzési eredményeket tárolja [Azure SQL Adatbázis](https://azure.microsoft.com/services/sql-database/) használatával keletkezett a [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) szolgáltatás. Ez a Megoldássablon hozhat létre a Power BI-irányítópult kapcsolatos utasításokért tekintse meg a következő szakaszt.
 
-## <a name="how-to-bring-in-your-own-data"></a>**Hogyan lehet a saját adatok beolvasása**
+## **<a name="how-to-bring-in-your-own-data"></a>Hogyan lehet a saját adatok beolvasása**
 Ez a szakasz ismerteti, hogyan lehet a saját adatok importálása az Azure-ba, és milyen területeken igényel módosításokat az adatok, ez az architektúra állapotba.
 
 Nem valószínű, hogy minden olyan adatkészletben tenné az adatkészlet, ez a megoldássablon használt megfelel. Az adatok és a követelmények ismertetése alapvető fontosságúak a saját adatok sablon módosítása. Ha nem ismeri az Azure Machine Learning szolgáltatáshoz, kérheti, bemutató példa használatával [az első kísérlet létrehozása](machine-learning/studio/create-experiment.md).
@@ -106,40 +106,40 @@ Az öt az e-előállító folyamatok tartalmazhat [Hive](https://blogs.msdn.com/
 
 Hasonló a [Azure Stream Analytics](#azure-stream-analytics-1) lekérdezéseket, a [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok beállításszolgáltató jellegéből fakadóan ismeri a bejövő adatok formátumának, ezeket a lekérdezéseket lenne kell úgy kell módosítani az adatok formázása és alapján[jellemzőkiemelés](machine-learning/team-data-science-process/create-features.md) követelményeinek.
 
-#### <a name="aggregatedemanddatato1hrpipeline"></a>*AggregateDemandDataTo1HrPipeline*
-Ez [folyamat](data-factory/concepts-pipelines-activities.md) tartalmaz egyetlen tevékenység – egy [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) futtat egy [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) összesített adatfolyamként továbbított az igény szerinti adatok szkriptet 10 másodpercenként állomás szint óránként régió szintre, és helyezze [Azure Storage](https://azure.microsoft.com/services/storage/) keresztül az Azure Stream Analytics-feladatot.
+#### *<a name="aggregatedemanddatato1hrpipeline"></a>AggregateDemandDataTo1HrPipeline*
+Ez [folyamat](data-factory/concepts-pipelines-activities.md) tartalmaz egyetlen tevékenység – egy [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) futtat egy [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) összesített adatfolyamként továbbított az igény szerinti adatok szkriptet 10 másodpercenként állomás szint óránként régió szintre, és helyezze [Azure Storage](https://azure.microsoft.com/services/storage/) keresztül az Azure Stream Analytics-feladatot.
 
 A [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájl esetében ez a particionálási feladat ***AggregateDemandRegion1Hr.hql***
 
-#### <a name="loadhistorydemanddatapipeline"></a>*LoadHistoryDemandDataPipeline*
+#### *<a name="loadhistorydemanddatapipeline"></a>LoadHistoryDemandDataPipeline*
 Ez [folyamat](data-factory/concepts-pipelines-activities.md) két tevékenységet tartalmaz:
 
-* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) állomás szinten óránként régió szintre óránkénti előzmények igény szerint adatokat tudnak összesíteni, és az Azure Storage alatt az Azure Stream egy Hive-szkriptet futtat Analytics-feladat
-* [Másolás](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenységgel, amely helyezi át az összesített adatokat az Azure Storage-blobból az Azure SQL Database, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
+* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) állomás szinten óránként régió szintre óránkénti előzmények igény szerint adatokat tudnak összesíteni, és az Azure Storage alatt az Azure Stream egy Hive-szkriptet futtat Analytics-feladat
+* [Másolás](/previous-versions/azure/dn835035(v=azure.100)) tevékenységgel, amely helyezi át az összesített adatokat az Azure Storage-blobból az Azure SQL Database, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
 
 A [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájl esetében ez a feladat ***AggregateDemandHistoryRegion.hql***.
 
-#### <a name="mlscoringregionxpipeline"></a>*MLScoringRegionXPipeline*
+#### *<a name="mlscoringregionxpipeline"></a>MLScoringRegionXPipeline*
 Ezek [folyamatok](data-factory/concepts-pipelines-activities.md) több tevékenységet tartalmaz, és amelynek a végeredmény a pontozott előrejelzéseket, ez a megoldássablon társított Azure Machine Learning-kísérletből. Azok majdnem teljesen megegyezik azzal a különbséggel azok csak a másik régióban, amely minden olyan régió esetében az ADF folyamat és a hive-parancsfájlnak átadott különböző RegionID végzett kezeli.  
 Ez a folyamat található tevékenységeket a következők:
 
-* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) összesítést végez, és az Azure Machine Learning-kísérlet szükséges jellemzőkiemelés egy Hive-szkriptet futtat. A tevékenység a Hive-parancsprogramok megfelelő ***PrepareMLInputRegionX.hql***.
-* [Másolás](https://msdn.microsoft.com/library/azure/dn835035.aspx) helyezi át az eredményeket a tevékenység a [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység, amely egy Azure Storage blob, amely szerint érhetők el a [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység.
-* [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység, amely meghívja ezt az Azure Machine Learning kísérletet üzembe egy Azure Storage blob az eredmények eredményez.
+* [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) összesítést végez, és az Azure Machine Learning-kísérlet szükséges jellemzőkiemelés egy Hive-szkriptet futtat. A tevékenység a Hive-parancsprogramok megfelelő ***PrepareMLInputRegionX.hql***.
+* [Másolás](/previous-versions/azure/dn835035(v=azure.100)) helyezi át az eredményeket a tevékenység a [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység, amely egy Azure Storage blob, amely szerint érhetők el a [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) tevékenység.
+* [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) tevékenység, amely meghívja ezt az Azure Machine Learning kísérletet üzembe egy Azure Storage blob az eredmények eredményez.
 
-#### <a name="copyscoredresultregionxpipeline"></a>*CopyScoredResultRegionXPipeline*
-Ez [folyamat](data-factory/concepts-pipelines-activities.md) egyetlen tevékenységgel - tartalmaz egy [másolási](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenységgel, amely helyezi át az Azure Machine Learning-kísérlet eredményeit a megfelelő ***MLScoringRegionXPipeline***az Azure SQL Database, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
+#### *<a name="copyscoredresultregionxpipeline"></a>CopyScoredResultRegionXPipeline*
+Ez [folyamat](data-factory/concepts-pipelines-activities.md) egyetlen tevékenységgel - tartalmaz egy [másolási](/previous-versions/azure/dn835035(v=azure.100)) tevékenységgel, amely helyezi át az Azure Machine Learning-kísérlet eredményeit a megfelelő ***MLScoringRegionXPipeline***az Azure SQL Database, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
 
-#### <a name="copyaggdemandpipeline"></a>*CopyAggDemandPipeline*
-Ez [folyamat](data-factory/concepts-pipelines-activities.md) egyetlen tevékenységgel - tartalmaz egy [másolási](https://msdn.microsoft.com/library/azure/dn835035.aspx) helyezi át az összesített folyamatos igény szerint adatokat a tevékenységen ***LoadHistoryDemandDataPipeline*** az Azure SQL Adatbázis, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
+#### *<a name="copyaggdemandpipeline"></a>CopyAggDemandPipeline*
+Ez [folyamat](data-factory/concepts-pipelines-activities.md) egyetlen tevékenységgel - tartalmaz egy [másolási](/previous-versions/azure/dn835035(v=azure.100)) helyezi át az összesített folyamatos igény szerint adatokat a tevékenységen ***LoadHistoryDemandDataPipeline*** az Azure SQL Adatbázis, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
 
-#### <a name="copyregiondatapipeline-copysubstationdatapipeline-copytopologydatapipeline"></a>*CopyRegionDataPipeline, CopySubstationDataPipeline, CopyTopologyDataPipeline*
-Ez [folyamat](data-factory/concepts-pipelines-activities.md) egyetlen tevékenységgel - tartalmaz egy [másolási](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenységgel, amely áthelyezi a régió/állomás/Topologygeo a referenciaadatokat a megoldássablon részeként az Azure Storage-blobba feltölteni a telepítés az Azure SQL Database, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
+#### *<a name="copyregiondatapipeline-copysubstationdatapipeline-copytopologydatapipeline"></a>CopyRegionDataPipeline, CopySubstationDataPipeline, CopyTopologyDataPipeline*
+Ez [folyamat](data-factory/concepts-pipelines-activities.md) egyetlen tevékenységgel - tartalmaz egy [másolási](/previous-versions/azure/dn835035(v=azure.100)) tevékenységgel, amely áthelyezi a régió/állomás/Topologygeo a referenciaadatokat a megoldássablon részeként az Azure Storage-blobba feltölteni a telepítés az Azure SQL Database, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 A [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) kísérletezéshez felhasznált esetében ez a megoldássablon biztosít az igény szerinti régió előrejelzését. A kísérlet csak a felhasznált adathalmaz, és ezért van szükség, módosítása vagy adott állapotba kerül, az adatok cseréje.
 
-## <a name="monitor-progress"></a>**A figyelő folyamatban**
+## **<a name="monitor-progress"></a>A figyelő folyamatban**
 Az Adatgenerátor indul el, miután a folyamat megkezdi az első hidratált, és a megoldás összetevői, indítsa el a Data Factory által kiadott parancsok művelet következő be megkezdése. Kétféleképpen figyelheti a folyamatot.
 
 1. Ellenőrizze az adatok Azure Blob Storage-ból.
@@ -154,7 +154,7 @@ Az Adatgenerátor indul el, miután a folyamat megkezdi az első hidratált, és
 
     Gyakori elérésű útvonal Power BI-irányítópult állíthat a nyers bejövő adatok figyelésére. Kérjük, kövesse a "Power BI-irányítópult" szakaszban.
 
-## <a name="power-bi-dashboard"></a>**Power BI-irányítópult**
+## **<a name="power-bi-dashboard"></a>Power BI-irányítópult**
 ### <a name="overview"></a>Áttekintés
 Ez a szakasz ismerteti, hogyan állítható be a Power BI-irányítópulton jelenítheti meg az Azure stream analytics (gyakori elérésű útvonal) valós idejű adatok, valamint az Azure machine learning (ritka elérésű útvonal) származó eredmények előrejelzése.
 
@@ -224,14 +224,14 @@ A ritka elérésű útvonal adatfolyamatok alapvető célja az, hogy minden egye
    * Bontsa ki a **frissítés ütemezése** szakaszban. Kapcsolja be "tartsa adatait naprakészen".
    * A frissítés ütemezése az igényei szerint. További információkért lásd: [Adatfrissítés a Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/).
 
-## <a name="how-to-delete-your-solution"></a>**A megoldás törlése**
+## **<a name="how-to-delete-your-solution"></a>A megoldás törlése**
 Győződjön meg arról, hogy leállítsa az adatgenerálást amikor nem használja aktívan a megoldást, az adatgeneráló költsége magasabb szintre. Törölje a megoldást, ha nem használ. A megoldás törlésekor a megoldás üzembe helyezésekor az előfizetésben kiépített összes összetevőt. Törölje a megoldást kattintson a megoldás nevét a megoldássablon, majd kattintson a törlés, a bal oldali panelen.
 
-## <a name="cost-estimation-tools"></a>**Költségek becslése eszközök**
+## **<a name="cost-estimation-tools"></a>Költségek becslése eszközök**
 A következő két eszközök segítségével jobban megismerheti az a teljes költség a kereslet-előrejelzés energia Megoldássablon az előfizetésében futó részt érhetők el:
 
 * [A Microsoft Azure Cost Estimator eszközt (online)](https://azure.microsoft.com/pricing/calculator/)
 * [A Microsoft Azure Cost Estimator eszközt (asztali verzió)](https://www.microsoft.com/download/details.aspx?id=43376)
 
-## <a name="acknowledgements"></a>**Nyugtázás**
+## **<a name="acknowledgements"></a>Nyugták**
 Ez a cikk adattudós JI Chen és Szoftvermérnök Qiu perc, a Microsoft hozta létre.

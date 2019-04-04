@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b03e02a783245459fa28126b73eac2459f6aad67
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 62846fe744e7295f58902481400ce91770c916da
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182846"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893095"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói adatok kezelése
 
- Ez a cikk ismerteti, hogyan kezelheti a felhasználói adatokat az Azure Active Directory (Azure AD) B2C által biztosított műveletek segítségével a [Azure Active Directory Graph API](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog). Felhasználói adatok kezelésére is tartalmaz, törlése vagy exportálása az auditnaplók.
+ Ez a cikk ismerteti, hogyan kezelheti a felhasználói adatokat az Azure Active Directory (Azure AD) B2C által biztosított műveletek segítségével a [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog). Felhasználói adatok kezelésére is tartalmaz, törlése vagy exportálása az auditnaplók.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="delete-user-data"></a>Felhasználói adatok törlése
 
-Felhasználói adatok tárolása az Azure AD B2C-címtár és a naplók. Az összes felhasználói naplózási adatok az Azure AD B2C-t 30 napig őrződnek meg. Ha szeretne felhasználói adatok törlése a 30 napos időtartamon belül, akkor használhatja a [felhasználót törölni](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#DeleteUser) műveletet. Egy törlési művelet szükség az Azure AD B2C-bérlők mindegyike adatokat tároló lehet. 
+Felhasználói adatok tárolása az Azure AD B2C-címtár és a naplók. Az összes felhasználói naplózási adatok az Azure AD B2C-t 30 napig őrződnek meg. Ha szeretne felhasználói adatok törlése a 30 napos időtartamon belül, akkor használhatja a [felhasználót törölni](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) műveletet. Egy törlési művelet szükség az Azure AD B2C-bérlők mindegyike adatokat tároló lehet. 
 
 Az Azure AD B2C-ben minden felhasználó hozzá van rendelve egy objektumot. Az Objektumazonosító biztosít, hogy törli a felhasználói adatokat az Azure AD B2C-egyértelmű azonosítója. Az architektúra függően Objektumazonosítóját egy hasznos korrelációs azonosítót lehet más szolgáltatások, például a pénzügyi, marketing, és az ügyfél kapcsolat felügyeleti adatbázisok. 
 

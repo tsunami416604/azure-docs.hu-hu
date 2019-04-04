@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/26/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 1cef0010464671982109b8dc4bc94e6925eaf825
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1b9c7f00c8ec8408547620111634470d455334c8
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210526"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499233"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az erőforrás-szolgáltató SQL üzemeltetési kiszolgáló hozzáadása
 
@@ -186,14 +186,19 @@ SKU-k az adott felhasználók vagy csoportok nem lehet hozzárendelni.
 
 SKU-k órát is igénybe vehet egy lesznek láthatók a portálon. Felhasználók nem hozható létre adatbázis, amíg a Termékváltozat létrehozása befejeződött.
 
-A Termékváltozat szerkesztéséhez lépjen a **minden szolgáltatás** > **SQL Adapter** > **termékváltozatok**. Válassza ki a Termékváltozat módosítása, végezze el a szükséges módosításokat, majd kattintson a **mentése** módosítások mentéséhez. A Termékváltozat, amely már nem szükséges törléséhez lépjen a **minden szolgáltatás** > **SQL Adapter** > **termékváltozatok**. Kattintson a jobb gombbal a Termékváltozat nevét, és válassza ki **törlése** törli-e.
+A Termékváltozat szerkesztéséhez lépjen a **minden szolgáltatás** > **SQL Adapter** > **termékváltozatok**. Válassza ki a Termékváltozat módosítása, végezze el a szükséges módosításokat, majd kattintson a **mentése** módosítások mentéséhez. 
 
-> [!TIP]
-> Ön módosíthatja és törölheti-szolgáltató erőforráskvóták SQL ugyanazon a helyen.
+A Termékváltozat, amely már nem szükséges törléséhez lépjen a **minden szolgáltatás** > **SQL Adapter** > **termékváltozatok**. Kattintson a jobb gombbal a Termékváltozat nevét, és válassza ki **törlése** törli-e.
+
+> [!IMPORTANT]
+> Elérhető lesz a felhasználói portál az új termékváltozatokra egy órát is igénybe vehet.
 
 ## <a name="make-sql-databases-available-to-users"></a>SQL-adatbázisok elérhetővé tétele a felhasználók számára
 
 Hozzon létre a csomagok és ajánlatok az SQL Database-adatbázisok elérhetővé tétele a felhasználók számára. Adja hozzá a **Microsoft.SqlAdapter** a terv szolgáltatást, és a egy új kvóta létrehozása.
+
+> [!IMPORTANT]
+> Új kvóták csak akkor érhető el, a felhasználói portálon, vagy előtt módosított kvóták érvényesítése akár két órát is igénybe vehet.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d7ba922d66bf97dbd8173b0d5466a7e55a41f6b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993191"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891684"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és a felhasználók kezelése
 
@@ -26,7 +26,7 @@ Szerepkör-engedélyek a következők:
 *  **Folyamat** -felhasználók csatlakozhat és folyamat műveleteket az adatbázison, és model adatbázis adatok elemzéséhez.
 *  **Olvasási** -felhasználók egy ügyfélalkalmazás segítségével csatlakozhat, és a model adatbázis adatok elemzéséhez.
 
-Táblázatosmodell-projekt létrehozásakor, hozhat létre szerepköröket, és a felhasználók vagy csoportok hozzáadása, ezeket a szerepköröket a szerepkörkezelővel az SSDT-ben. Telepítésekor egy kiszolgálóhoz az SSMS-használja [Analysis Services PowerShell-parancsmagok](https://msdn.microsoft.com/library/hh758425.aspx), vagy [táblázatos modell Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) hozzáadása vagy eltávolítása a szerepkörök és a felhasználói tagok (TMSL).
+Táblázatosmodell-projekt létrehozásakor, hozhat létre szerepköröket, és a felhasználók vagy csoportok hozzáadása, ezeket a szerepköröket a szerepkörkezelővel az SSDT-ben. Telepítésekor egy kiszolgálóhoz az SSMS-használja [Analysis Services PowerShell-parancsmagok](/sql/analysis-services/powershell/analysis-services-powershell-reference), vagy [táblázatos modell Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) hozzáadása vagy eltávolítása a szerepkörök és a felhasználói tagok (TMSL).
 
 > [!NOTE]
 > Biztonsági csoportok kell rendelkeznie a `MailEnabled` tulajdonság `True`.
@@ -45,10 +45,10 @@ Táblázatosmodell-projekt létrehozásakor, hozhat létre szerepköröket, és 
   
     |Engedély|Leírás|  
     |----------------|-----------------|  
-    |**Nincsenek**|A tagok nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
+    |**None**|A tagok nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
     |**Olvasás**|A tagok lekérdezheti az adatokat (Sorszűrők alapján), de nem módosíthatja a modellsémát.|  
     |**Olvasás és feldolgozás**|Tagok (alapján sorszintű szűrők) adatok és a futtatási folyamat és a folyamat minden műveletek lekérdezheti, de nem módosítható a modellsémát.|  
-    |**Folyamat**|Tagok folyamat és a folyamat minden műveleteket is futtathat. Nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
+    |**Feldolgozás**|Tagok folyamat és a folyamat minden műveleteket is futtathat. Nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
     |**Rendszergazda**|A tagok modellsémát módosíthatja, és minden adat lekérdezése.|   
   
 5.  Ha a szerepkör létrehozása rendelkezik-e olvasási vagy olvasás és feldolgozás engedélyt adhat hozzá Sorszűrők DAX-képlet használatával. Kattintson a **Sorszűrők** lapra, majd válasszon ki egy táblát, majd kattintson a **DAX-szűrő** mezőben, majd írja be egy DAX-képletet.
@@ -120,13 +120,13 @@ Ebben a példában egy külső B2B-felhasználó és csoport hozzáadva a SalesB
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Szerepkörök és a felhasználók hozzáadása a PowerShell használatával
 
-A [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) a modul adja meg a feladat-specifikus adatbázis felügyeleti parancsmagok és az általános célú Invoke-ASCmd parancsmag, amely egy táblázatos modell parancsnyelv (TMSL) lekérdezést vagy parancsfájlt. A következő parancsmagok használhatók, adatbázis-szerepkörök és felhasználók kezeléséhez.
+A [SqlServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) a modul adja meg a feladat-specifikus adatbázis felügyeleti parancsmagok és az általános célú Invoke-ASCmd parancsmag, amely egy táblázatos modell parancsnyelv (TMSL) lekérdezést vagy parancsfájlt. A következő parancsmagok használhatók, adatbázis-szerepkörök és felhasználók kezeléséhez.
   
 |Parancsmag|Leírás|
 |------------|-----------------| 
-|[Adjon hozzá RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Egy tag hozzáadása egy adatbázis-szerepkörhöz.| 
-|[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|Tag eltávolítása egy adatbázis-szerepkörhöz.|   
-|[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Hajtsa végre a TMSL-parancsfájlt.|
+|[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Egy tag hozzáadása egy adatbázis-szerepkörhöz.| 
+|[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Tag eltávolítása egy adatbázis-szerepkörhöz.|   
+|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Hajtsa végre a TMSL-parancsfájlt.|
 
 ## <a name="row-filters"></a>Sorszűrők  
 

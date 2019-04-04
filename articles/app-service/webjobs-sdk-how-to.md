@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 81401d95b9c40f16a6e593d61b79f5c2d647c0c5
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518830"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895207"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata az eseményvezérelt háttérben történő feldolgozás
 
@@ -130,7 +130,7 @@ static void Main()
 
 A 3-as verziójú. *x*, végtelen kapcsolatok az alapértelmezett a kapcsolathoz megadott korlátot. Ha valamilyen okból módosítania ezt a korlátot, akkor használhatja a [ `MaxConnectionsPerServer` ](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) tulajdonságát a [ `WinHttpHandler` ](/dotnet/api/system.net.http.winhttphandler) osztály.
 
-A 2. verzióban. *x*, segítségével szabályozhatja az egyidejű kapcsolatok száma egy gazdagépre a [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) API-t. A 2. *x*, ezt az értéket az alapértelmezett 2. növelje a webjobs-feladatok gazdagép indítása előtt.
+A 2. verzióban. *x*, segítségével szabályozhatja az egyidejű kapcsolatok száma egy gazdagépre a [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API-t. A 2. *x*, ezt az értéket az alapértelmezett 2. növelje a webjobs-feladatok gazdagép indítása előtt.
 
 Az összes kimenő HTTP-kéréseket, amelyek egy függvény használatával teszik `HttpClient` áramlása `ServicePointManager`. Ha eléri beállított érték `DefaultConnectionLimit`, `ServicePointManager` üzenetsor kérelmek elindítja őket elküldése előtt. Tegyük fel, hogy a `DefaultConnectionLimit` értéke 2. és a kód révén az 1000 HTTP-kérelmekre. Kezdetben csak két kérelmek engedélyezettek keresztül az operációs rendszerre. A többi 998 a rendszer várólistára helyezi addig, amíg nincs hely a számukra. Azt jelenti, hogy a `HttpClient` előfordulhat, hogy időkorlátja, mert úgy tűnik, hogy a kérést leadó rendelkezik, de a kérést küldött az operációs rendszer soha nem a célkiszolgálón. Ezért előfordulhat, hogy nem Microsoft-jelentéssel bírnak viselkedés: a helyi `HttpClient` teljesítse a kérelmet 10 másodpercet vesz igénybe, de a szolgáltatás minden kérelemnél adja vissza a 200 ms. 
 

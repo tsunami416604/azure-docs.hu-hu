@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: e7e4e898142d6f9d1a93e91c1f1476ff81fc7d3c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 981ffce34c56f4becee2ed0c72da72baa220e395
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734659"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894355"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Az Azure Functions F# – fejlesztői referencia
 
@@ -115,7 +115,7 @@ let Run(req: HttpRequestMessage) =
 ```
 
 ## <a name="cancellation-token"></a>Token törlése
-Ha a függvény leállítási szabályosan kezelésére van szüksége, adhat egy [ `CancellationToken` ](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) argumentum. Ez kombinálva `async`, például:
+Ha a függvény leállítási szabályosan kezelésére van szüksége, adhat egy [ `CancellationToken` ](/dotnet/api/system.threading.cancellationtoken) argumentum. Ez kombinálva `async`, például:
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -166,7 +166,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 
 Az alábbi szerelvények a rendszer automatikusan hozzáadja az az Azure Functions üzemeltetési környezet:
 
-* `mscorlib`,
+* `mscorlib`; 
 * `System`
 * `System.Core`
 * `System.Xml`
@@ -294,7 +294,7 @@ A `#load` irányelv csak együttműködik `.fsx` (F# parancsfájl) fájlokat, é
 További információkért lásd a következőket:
 
 * [F#Útmutató](/dotnet/articles/fsharp/index)
-* [Azure Functions – ajánlott eljárások](functions-best-practices.md)
+* [Az Azure Functions – ajánlott eljárások](functions-best-practices.md)
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)
 * [Az Azure Functions eseményindítók és kötések](functions-triggers-bindings.md)
 * [Az Azure Functions tesztelése](functions-test-a-function.md)

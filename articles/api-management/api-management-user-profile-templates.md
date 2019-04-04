@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 77b704e9359e582664bad8e08e9389cfac8eaca7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 9d74cd3bd466578c61f8f12bf9b6e862c046e9bc
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121396"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903760"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Felhasználói profil sablonok az Azure API Management szolgáltatásban
 Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfigurálása a tartalom-sablonok használatával tartalmának testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxist és a szerkesztő szerkesztőprogramban, például [DotLiquid tervezők számára](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a egy megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [szimbóluma erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálhatja a lapok tartalmát, igény szerint ezek a sablonok használatával nagy rugalmasságot biztosít.  
@@ -106,17 +106,17 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Keresztnév|sztring|Az aktuális felhasználó utóneve.|  
-|Vezetéknév|sztring|Az aktuális felhasználó vezetékneve.|  
-|Cégnév|sztring|Az aktuális felhasználó vállalat neve.|  
-|addresserEmail|sztring|Az aktuális felhasználó e-mail-cím.|  
-|developersUsageStatisticsLinkk|sztring|Relatív URL-cím elemzéseket az aktuális felhasználó.|  
-|előfizetés|A gyűjtemény [előfizetés](api-management-template-data-model-reference.md#Subscription) entitásokat.|Az előfizetéseket, az aktuális felhasználó.|  
-|alkalmazások|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az alkalmazások, az aktuális felhasználó.|  
-|changePasswordUrl|sztring|A relatív URL-címe az aktuális felhasználó jelszavának módosítására.|  
-|changeNameOrEmailUrl|sztring|A relatív URL-cím neve és az aktuális felhasználó e-mail módosítása.|  
-|canChangePassword|logikai|Hogy az aktuális felhasználó módosíthatja a jelszavát.|  
-|isSystemUser|logikai|Hogy az aktuális felhasználó tagja egyik beépített [csoportok](api-management-key-concepts.md#groups).|  
+|`firstName`|sztring|Az aktuális felhasználó utóneve.|  
+|`lastName`|sztring|Az aktuális felhasználó vezetékneve.|  
+|`companyName`|sztring|Az aktuális felhasználó vállalat neve.|  
+|`addresserEmail`|sztring|Az aktuális felhasználó e-mail-cím.|  
+|`developersUsageStatisticsLink`|sztring|Relatív URL-cím elemzéseket az aktuális felhasználó.|  
+|`subscriptions`|A gyűjtemény [előfizetés](api-management-template-data-model-reference.md#Subscription) entitásokat.|Az előfizetéseket, az aktuális felhasználó.|  
+|`applications`|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az alkalmazások, az aktuális felhasználó.|  
+|`changePasswordUrl`|sztring|A relatív URL-címe az aktuális felhasználó jelszavának módosítására.|  
+|`changeNameOrEmailUrl`|sztring|A relatív URL-cím neve és az aktuális felhasználó e-mail módosítása.|  
+|`canChangePassword`|logikai|Hogy az aktuális felhasználó módosíthatja a jelszavát.|  
+|`isSystemUser`|logikai|Hogy az aktuális felhasználó tagja egyik beépített [csoportok](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Mintaadatok sablon  
   
@@ -327,17 +327,17 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Keresztnév|sztring|Az aktuális felhasználó utóneve.|  
-|Vezetéknév|sztring|Az aktuális felhasználó vezetékneve.|  
-|Cégnév|sztring|Az aktuális felhasználó vállalat neve.|  
-|addresserEmail|sztring|Az aktuális felhasználó e-mail-cím.|  
-|developersUsageStatisticsLinkk|sztring|Relatív URL-cím elemzéseket az aktuális felhasználó.|  
-|előfizetés|A gyűjtemény [előfizetés](api-management-template-data-model-reference.md#Subscription) entitásokat.|Az előfizetéseket, az aktuális felhasználó.|  
-|alkalmazások|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az alkalmazások, az aktuális felhasználó.|  
-|changePasswordUrl|sztring|A relatív URL-címe az aktuális felhasználó jelszavának módosítására.|  
-|changeNameOrEmailUrl|sztring|A relatív URL-cím neve és az aktuális felhasználó e-mail módosítása.|  
-|canChangePassword|logikai|Hogy az aktuális felhasználó módosíthatja a jelszavát.|  
-|isSystemUser|logikai|Hogy az aktuális felhasználó tagja egyik beépített [csoportok](api-management-key-concepts.md#groups).|  
+|`firstName`|sztring|Az aktuális felhasználó utóneve.|  
+|`lastName`|sztring|Az aktuális felhasználó vezetékneve.|  
+|`companyName`|sztring|Az aktuális felhasználó vállalat neve.|  
+|`addresserEmail`|sztring|Az aktuális felhasználó e-mail-cím.|  
+|`developersUsageStatisticsLink`|sztring|Relatív URL-cím elemzéseket az aktuális felhasználó.|  
+|`subscriptions`|A gyűjtemény [előfizetés](api-management-template-data-model-reference.md#Subscription) entitásokat.|Az előfizetéseket, az aktuális felhasználó.|  
+|`applications`|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az alkalmazások, az aktuális felhasználó.|  
+|`changePasswordUrl`|sztring|A relatív URL-címe az aktuális felhasználó jelszavának módosítására.|  
+|`changeNameOrEmailUrl`|sztring|A relatív URL-cím neve és az aktuális felhasználó e-mail módosítása.|  
+|`canChangePassword`|logikai|Hogy az aktuális felhasználó módosíthatja a jelszavát.|  
+|`isSystemUser`|logikai|Hogy az aktuális felhasználó tagja egyik beépített [csoportok](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Mintaadatok sablon  
   
@@ -481,7 +481,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 ### <a name="controls"></a>Vezérlők  
  Ez a sablon előfordulhat, hogy használja a következő [vezérlők lapon](api-management-page-controls.md).  
   
--   [App-műveletek](api-management-page-controls.md#app-actions)  
+-   [app-actions](api-management-page-controls.md#app-actions)  
   
 ### <a name="data-model"></a>Adatmodell  
   
@@ -490,17 +490,17 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Keresztnév|sztring|Az aktuális felhasználó utóneve.|  
-|Vezetéknév|sztring|Az aktuális felhasználó vezetékneve.|  
-|Cégnév|sztring|Az aktuális felhasználó vállalat neve.|  
-|addresserEmail|sztring|Az aktuális felhasználó e-mail-cím.|  
-|developersUsageStatisticsLinkk|sztring|Relatív URL-cím elemzéseket az aktuális felhasználó.|  
-|előfizetés|A gyűjtemény [előfizetés](api-management-template-data-model-reference.md#Subscription) entitásokat.|Az előfizetéseket, az aktuális felhasználó.|  
-|alkalmazások|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az alkalmazások, az aktuális felhasználó.|  
-|changePasswordUrl|sztring|A relatív URL-címe az aktuális felhasználó jelszavának módosítására.|  
-|changeNameOrEmailUrl|sztring|A relatív URL-cím neve és az aktuális felhasználó e-mail módosítása.|  
-|canChangePassword|logikai|Hogy az aktuális felhasználó módosíthatja a jelszavát.|  
-|isSystemUser|logikai|Hogy az aktuális felhasználó tagja egyik beépített [csoportok](api-management-key-concepts.md#groups).|  
+|`firstName`|sztring|Az aktuális felhasználó utóneve.|  
+|`lastName`|sztring|Az aktuális felhasználó vezetékneve.|  
+|`companyName`|sztring|Az aktuális felhasználó vállalat neve.|  
+|`addresserEmail`|sztring|Az aktuális felhasználó e-mail-cím.|  
+|`developersUsageStatisticsLink`|sztring|Relatív URL-cím elemzéseket az aktuális felhasználó.|  
+|`subscriptions`|A gyűjtemény [előfizetés](api-management-template-data-model-reference.md#Subscription) entitásokat.|Az előfizetéseket, az aktuális felhasználó.|  
+|`applications`|A gyűjtemény [alkalmazás](api-management-template-data-model-reference.md#Application) entitásokat.|Az alkalmazások, az aktuális felhasználó.|  
+|`changePasswordUrl`|sztring|A relatív URL-címe az aktuális felhasználó jelszavának módosítására.|  
+|`changeNameOrEmailUrl`|sztring|A relatív URL-cím neve és az aktuális felhasználó e-mail módosítása.|  
+|`canChangePassword`|logikai|Hogy az aktuális felhasználó módosíthatja a jelszavát.|  
+|`isSystemUser`|logikai|Hogy az aktuális felhasználó tagja egyik beépített [csoportok](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Mintaadatok sablon  
   

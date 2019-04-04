@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: a2af7ffde336016ae89a1ab03d753ed11b901e05
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5c4ad5c200bd2e49f3c472d82ad030c6a8f2478d
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818702"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918263"
 ---
 # <a name="sizes-for-cloud-services"></a>A Cloud Services méretei
 Ez a témakör ismerteti az elérhető méretek és a Cloud Service-szerepkörpéldányok (webes és feldolgozói szerepkörök) beállításokat. Telepítési szempontok figyelembe ezeket az erőforrásokat használatának tervezésekor is tartalmazza. Minden méretét rendelkezik egy Azonosítót, amely helyezi a [szolgáltatásdefiníciós fájl](cloud-services-model-and-package.md#csdef). Árak méreteire vonatkoztatva érhetők az [Cloud Services díjszabása](https://azure.microsoft.com/pricing/details/cloud-services/) lapot.
@@ -213,7 +213,7 @@ A számítási feladat változását követő vagy az új Virtuálisgép-mérete
 >
 
 ## <a name="get-a-list-of-sizes"></a>A méretek listáját
-PowerShell vagy a REST API segítségével méretek listáját. A REST API-szerződését [Itt](https://msdn.microsoft.com/library/azure/dn469422.aspx). A következő kódot egy PowerShell-parancsot, amely felsorolja az összes elérhető méretek a Cloud Services. 
+PowerShell vagy a REST API segítségével méretek listáját. A REST API-szerződését [Itt](/previous-versions/azure/reference/dn469422(v=azure.100)). A következő kódot egy PowerShell-parancsot, amely felsorolja az összes elérhető méretek a Cloud Services. 
 
 ```powershell
 Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize, RoleSizeLabel

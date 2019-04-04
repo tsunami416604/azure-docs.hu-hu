@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: ee64b4cbfd024c91b226736bc8cac0b9b33f964e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170394"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918552"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS használatával Azure CDN szolgáltatás használata
 
@@ -89,7 +89,8 @@ Ez a beállítás csak érhető el **verizon Azure CDN Premium** profilok. Ezzel
    ![A CDN URL-újraíró szabály – bal](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
    ![CDN URL-újraíró szabály – jobbra](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
-2. Miután az új szabály aktiválódásakor, bárki hozzáférhet a CDN-végpont, függetlenül attól, hogy használatát egy SAS-token az URL-címben lévő fájlok a megadott tároló. A következő formátumban: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. Miután az új szabály aktiválódásakor, bárki hozzáférhet a CDN-végpont, függetlenül attól, hogy használatát egy SAS-token az URL-címben lévő fájlok a megadott tároló. A következő formátumban:
+   `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Példa:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
@@ -137,7 +138,7 @@ SAS-paraméterek az Azure CDN nem láthatók el, mert az Azure CDN azokon kézbe
 | --- | --- |
 | Indítás | Az az idő, amely az Azure CDN megkezdheti a blob fájl elérésére. Óra miatt tevékenységdiagramon (érkezésekor óra jel különböző időpontokban különböző összetevők), válassza a 15 perccel korábbi, ha azt szeretné, hogy az eszköz azonnal elérhető legyen. |
 | Vége | Az idő, amely után az Azure CDN már nem tud hozzáférni a blobfájlba. Előzőleg gyorsítótárazott Azure CDN-en fájlok továbbra is elérhető. Szabályozhatja a lejárati időpont, vagy a megfelelő lejárati idő beállítása az Azure CDN biztonsági jogkivonat, vagy az eszköz törlése. |
-| Engedélyezett IP-címek | Választható. Ha használ **verizon Azure CDN**, és a meghatározott tartományok ezzel a paraméterrel megadható [Azure CDN a Verizon peremhálózati kiszolgáló IP-címtartományok](https://msdn.microsoft.com/library/mt757330.aspx). Ha használ **Akamai Azure CDN**, az IP-címtartományok paraméter nem állítható be, mert nem statikus IP-címeket.|
+| Engedélyezett IP-címek | Választható. Ha használ **verizon Azure CDN**, és a meghatározott tartományok ezzel a paraméterrel megadható [Azure CDN a Verizon peremhálózati kiszolgáló IP-címtartományok](/azure/cdn/cdn-pop-list-api). Ha használ **Akamai Azure CDN**, az IP-címtartományok paraméter nem állítható be, mert nem statikus IP-címeket.|
 | Engedélyezett protokollok | Az a fiók SAS kódjával végzett kérelemhez engedélyezett protokoll(ok). A HTTPS beállítás ajánlott.|
 
 ## <a name="next-steps"></a>További lépések

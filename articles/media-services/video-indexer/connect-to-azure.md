@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: 55828ea2235e42920a5179846d81711b1ada5dc2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: affa6f9a808543401b7d57812c7d2bef4324a83c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763673"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894217"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Hozzon létre egy kapcsolódik az Azure Video Indexer-fiókot
 
@@ -60,7 +60,7 @@ Keresse meg **Microsoft.Media** és **Microsoft.EventGrid**. Ha nem a "Regisztr�
 
 1. Nyissa meg a [Video Indexer](https://www.videoindexer.ai/) webhelyét, és jelentkezzen be.
 
-2. Kattintson a **csatlakozás az Azure** gombra:
+2. Kattintson a **hozzon létre új fiókot** gombra:
 
     ![Csatlakozás az Azure-bA](./media/create-account/connect-to-azure.png)
 
@@ -90,9 +90,7 @@ Keresse meg **Microsoft.Media** és **Microsoft.EventGrid**. Ha nem a "Regisztr�
 
     ![Új fiók](./media/create-account/new-account.png)
 
-7. Keresse meg az új fiók:
-
-    ![Video Indexer-fiókot](./media/create-account/vi-account.png)
+7. Tallózással keresse meg az új fiók
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>Csatlakozás az Azure-ban manuálisan (speciális beállítás)
 
@@ -140,11 +138,11 @@ A párbeszédpanelen adja meg a következő információkat:
 
 |Beállítás|Leírás|
 |---|---|
-|Video Indexer régiója|A Video Indexer-fiókot régió neve. A jobb teljesítmény és alacsonyabb költségek azt javasoljuk, adja meg a nevét, a régió, ahol az Azure Media Services-erőforrás és Azure Storage-fiókban találhatók. |
+|Video Indexer-fiók régiója|A Video Indexer-fiókot régió neve. A jobb teljesítmény és alacsonyabb költségek azt javasoljuk, adja meg a nevét, a régió, ahol az Azure Media Services-erőforrás és Azure Storage-fiókban találhatók. |
 |Az Azure Active Directory (AAD) bérlő|Az Azure AD-bérlővel, például "contoso.onmicrosoft.com" neve. A bérlői kapcsolatos információkat az Azure Portalról kérhető. Vigye a kurzort a jobb felső sarokban a bejelentkezett felhasználó neve. A neve, jobb oldalán található **tartomány**.|
 |Előfizetés azonosítója|Az Azure-előfizetést amellyel ezt a kapcsolatot kell létrehozni. Az előfizetés-azonosító az Azure Portalról kérhető. Kattintson a **minden szolgáltatás** a bal oldali panelen, és keressen a "előfizetések". Válassza ki **előfizetések** , majd válassza a kívánt Azonosítóját az előfizetések listáját.|
-|Az Azure Media Services erőforráscsoport-név|Az erőforráscsoport, amelyben létrehozta a Media Services-fiók neve.|
-|Médiaszolgáltatás erőforrás neve|Az Azure Media Services-fiók, amely az előző szakaszban létrehozott neve.|
+|Azure Media Services-erőforráscsoport neve|Az erőforráscsoport, amelyben létrehozta a Media Services-fiók neve.|
+|Media Services-szolgáltatási erőforrás neve|Az Azure Media Services-fiók, amely az előző szakaszban létrehozott neve.|
 |Alkalmazásazonosító|Az Azure AD alkalmazás Azonosítót (az engedélyeket a megadott Media Services-fiók), amely az előző szakaszban létrehozott.|
 |Alkalmazáskulcs|Az Azure AD alkalmazás kulcs az előző szakaszban létrehozott. |
 

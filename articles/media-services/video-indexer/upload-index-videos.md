@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: f9bf23094f47f5c200f7a02f81a8e185f469c580
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516961"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893452"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -22,7 +22,7 @@ Amikor a Video Indexer API videók feltöltését, akkor a következő feltölt�
 
 * videó feltöltése egy URL-címről (előnyben részesített),
 * küldje el a videó fájlt, egy bájttömböt a kérelem törzsében szereplő
-* Használja meglévő Azure Media Services eszköz azáltal, hogy a [eszközazonosító](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (fizetős fiókok csak a támogatott).
+* Használja meglévő Azure Media Services eszköz azáltal, hogy a [Eszközazonosító](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (fizetős fiókok csak a támogatott).
 
 A cikk bemutatja, hogyan használhatja a [Videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API-t a videók URL-cím alapján történő feltöltéséhez és indexeléséhez. A cikkben található kódminta tartalmazza a megjegyzésként szereplő kódot, amely bemutatja, hogyan lehet feltölteni a bájttömböt. <br/>A cikk emellett ismertet néhányat az API-ban beállítható paraméterek közül, amelyekkel módosíthatja az API folyamatát és kimenetét.
 
@@ -85,9 +85,9 @@ Egy URL-címet, amellyel az ügyfél (a POST-kérés használatával) a követke
 
 Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttérzajt tartalmaznak. Ez a paraméter az indexelési folyamat konfigurálására szolgál. A következő értékeket adhatja meg:
 
-- `Default` – Indexelés és elemzések kinyerése audio- és videotartalmak használatával
-- `AudioOnly` – Indexelés és elemzések kinyerése csak audiotartalmak használatával (videotartalmak figyelmen kívül hagyása)
-- `DefaultWithNoiseReduction` – Indexelés és elemzések kinyerése audio- és videotartalmakból, és zajcsökkentő algoritmusok alkalmazása az audiostreamen
+- `Default` – Index és az elemzések hang és videó együttes használatával
+- `AudioOnly` – Index és az elemzések használatával hang csak (figyelmen kívül hagyja a videó)
+- `DefaultWithNoiseReduction` – Indexelése és elemzési adatokat nyerhet a hang és videó, hang streamu zaj csökkentésére algoritmusok alkalmazása közben
 
 Az árat a kiválasztott indexelési lehetőség határozza meg.  
 
@@ -175,7 +175,7 @@ public async Task Sample()
     var uploadRequestResult = await client.PostAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos?{queryParams}", content);
     var uploadResult = await uploadRequestResult.Content.ReadAsStringAsync();
 
-    // get the video id from the upload result
+    // get the video ID from the upload result
     string videoId = JsonConvert.DeserializeObject<dynamic>(uploadResult)["id"];
     Debug.WriteLine("Uploaded");
     Debug.WriteLine("Video ID:");
@@ -290,4 +290,4 @@ A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi 
 
 ## <a name="next-steps"></a>További lépések
 
-[A v2 API által előállított Azure Video Indexer kimenet vizsgálata](video-indexer-output-json-v2.md)
+[Az Azure-Videóindexelő kimenetének API által előállított vizsgálata](video-indexer-output-json-v2.md)

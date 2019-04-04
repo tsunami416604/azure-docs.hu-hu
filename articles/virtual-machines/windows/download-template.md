@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 574227e010a37340ce7248d2e4657f6a3f231d0a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4ef0c09d2d2ea2ed06708342ab45abcaf149c23e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984528"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903114"
 ---
 # <a name="download-the-template-for-a-vm"></a>Virtuálisgép-sablon letöltése
 Az Azure-ban a portál vagy a PowerShell használatával egy virtuális Gépet hoz létre, amikor egy Resource Manager-sablon automatikusan létrejön az Ön számára. Ez a sablon használatával gyorsan ismétlődő egy központi telepítést. A sablon egy erőforráscsoportba tartozó összes információt tartalmazza. Virtuális gép esetén ez azt jelenti, a sablon tartalmaz mindent, ami jön létre a virtuális Gépet, az erőforráscsoport, beleértve a hálózati erőforrások támogatásához.
@@ -29,7 +29,7 @@ Az Azure-ban a portál vagy a PowerShell használatával egy virtuális Gépet h
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza a bal oldali menüben, egy **virtuális gépek**.
 3. Válassza ki a virtuális gépet a listából.
-4. Válassza ki **Automation-szkript**.
+4. Válassza ki **sablon exportálása**.
 5. Válassza ki **letöltése** a menü tetején, és mentse a .zip-fájlt a helyi számítógépen.
 6. Nyissa meg a .zip-fájlt, és bontsa ki a fájlokat egy mappában. A .zip-fájlban található:
    

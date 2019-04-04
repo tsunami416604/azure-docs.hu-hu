@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: e02a09bdc8bd80b93f7fa33632c32a75c1d705bd
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.lastreviewed: 03/27/2019
+ms.openlocfilehash: 00eb4fc3eb0b2e7120208e6318bf35fc2cc6f188
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226861"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649407"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 frissítése
 
@@ -56,18 +56,20 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 
 ### <a name="azure-stack-hotfixes"></a>Az Azure Stack-gyorsjavítások
 
+Ha már rendelkezik 1901 és nem telepítette a gyorsjavítások még akkor is [1902 közvetlenül telepítheti](azure-stack-update-1902.md), a 1901 gyorsjavítás telepítése nélkül.
+
 - **1809**: [KB 4481548 – az Azure Stack gyorsjavítás 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**: Nincs elérhető aktuális gyorsjavítást.
-- **1901**: [KB 4481548 – az Azure Stack gyorsjavítás 1.1901.2.103](https://support.microsoft.com/help/4494720)
+- **1901**: [KB 4495662 – az Azure Stack gyorsjavítás 1.1901.3.105](https://support.microsoft.com/help/4495662)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!IMPORTANT]
-> - Telepítse a [legújabb Azure Stack-gyorsjavítás](#azure-stack-hotfixes) esetében (ha vannak) 1811 1901 frissítése előtt.
+> Telepítse a [legújabb Azure Stack-gyorsjavítás](#azure-stack-hotfixes) esetében (ha vannak) 1811 1901 frissítése előtt. Ha már rendelkezik 1901, és még nem telepítette minden gyorsjavítást, telepítheti 1902, közvetlenül a 1901 gyorsjavítás telepítése nélkül.
 
 - A frissítés telepítésének megkezdése előtt futtassa [Test-AzureStack](azure-stack-diagnostic-test.md) az Azure Stack állapotának érvényesítéséhez, és hárítsa el a működési hibákat talált a következő paraméterekkel, többek között az összes figyelmeztetések és hibák esetén. Emellett tekintse át az aktív riasztások, és oldja meg az esetleges beavatkozást igénylő:
 
-    ```PowerShell
+    ```powershell
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
@@ -93,7 +95,7 @@ A frissítés tartalmazza a következő új funkciókat és fejlesztéseket az A
    * **AzureRm.Insights**  
          Összesítő AzureRm-modul mostantól tartalmazza a már közzétett verzió 5.1.5 támogató a **api-verzió a 2018-01-01** metrikákhoz, metrikadefinícióinak erőforrástípusok.
 
-- **1.7.0-ás AzureStack** Ez használhatatlanná tévő változást kiadás. A kompatibilitástörő változásokkal kapcsolatos részletekért tekintse meg a következőt: https://aka.ms/azspshmigration170.
+- **AzureStack 1.7.1** Ez használhatatlanná tévő változást kiadás. A kompatibilitástörő változásokkal kapcsolatos részletekért tekintse meg a következőt: https://aka.ms/azspshmigration171.
    * **Azs.Backup.Admin modul**  
          Kompatibilitástörő változás: Tanúsítványalapú titkosítási mód biztonsági mentésének módosításai. A tartalomkulcsok támogatása elavult.  
    * **Azs.Fabric.Admin Module**  
@@ -117,9 +119,6 @@ A frissített modulok referenciája áttekintéséhez lásd: [Azure Stack modulh
 
 - <!-- 3235634 – IS, ASDK -->
   Javítva lett egy probléma milyen üzembe virtuális gépeket tartalmazó méretű egy **v2** utótag; például **Standard_A2_v2**, mint az utótag megadása kötelező **Standard_A2_v2** () kis v). Mivel a globális Azure-ban, most már használhatják **Standard_A2_V2** (nagybetűs V).
-
-<!-- 2869209 – IS, ASDK --> 
-- Kijavítva használatakor a [Add-AzsPlatformImage parancsmag](/powershell/module/azs.compute.admin/add-azsplatformimage), amely kellett használni a a **- OsUri** paramétert, a tárfiók URI, ahol fel a rendszer a lemezen. Most már használhatja is a lemez helyi elérési útja.
 
 <!--  2795678 – IS, ASDK --> 
 - Kijavítva, hogy figyelmeztető üzenettel zárult, amikor a portál segítségével hozhat létre virtuális gépeket (VM) egy prémium szintű virtuális gép mérete (DS, Ds_v2, FS, FSv2). A virtuális gép létrejött, a standard szintű storage-fiókban. Bár ez nem érintette funkcionálisan, iops-t, illetve számlázással, a figyelmeztetés megoldották a problémát.
@@ -259,7 +258,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 <!-- ### Health and monitoring -->
 
-### <a name="compute"></a>Compute
+### <a name="compute"></a>Számítás
 
 - Amikor egy új Windows virtuális gép (VM) hoz létre, a következő hiba jelenhet meg:
 
@@ -280,7 +279,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 - Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy jelentkezzen be az SSH-kulcsok használata. Áthidaló megoldásként használja a Linux-bővítményt a Virtuálisgép-hozzáférés SSH-kulcsok megvalósításához a kiépítés után, vagy jelszóalapú hitelesítés használatára.
 
-### <a name="networking"></a>Hálózat  
+### <a name="networking"></a>Hálózatkezelés  
 
 <!-- 3239127 - IS, ASDK -->
 - Az Azure Stack portálon Ha módosít egy statikus IP-címet az IP-konfiguráció a Virtuálisgép-példányhoz csatolt hálózati adapterhez kötött látni fogja egy figyelmeztető üzenet arról, hogy 

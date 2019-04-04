@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: f2fc187518070bf199a3959889afd1ede4ef5b77
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 89b48175d7707458cd92916f6b26e298163a7416
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660714"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915923"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Az operációs rendszer és a keretrendszer javítás ACR feladatok automatizálása
 
@@ -27,7 +27,7 @@ Hozhat létre, és tesztelje a tárolórendszerképek az ACR-feladatok négy mó
 * [Gyors feladat](#quick-task): Hozhat létre, és küldje le a tároló lemezképek igény szerinti, az Azure-ban, egy helyi Docker-motor telepítése nélkül. Úgy gondolja, hogy `docker build`, `docker push` a felhőben. Helyi forráskód és a egy Git-tárház készíthető.
 * [Forrás kód véglegesítésére épülnek](#automatic-build-on-source-code-commit): Automatikusan indítható el egy tároló-rendszerkép összeállítását, ha a kód számára fontos, hogy egy Git-tárház.
 * [A rendszerkép alapszintű frissítésének létrehozása](#automate-os-and-framework-patching): Egy tároló-rendszerkép összeállítását indítható el, ha a lemezképet alaplemezkép frissítve lett.
-* [Több lépésből álló feladatokat](#multi-step-tasks-preview) (előzetes verzió): Adja meg a lemezképeket, a tárolók parancsok futnak, és a rendszerképek leküldése a beállításjegyzék több lépésből álló feladatokat. Ezt az ACR-feladatok előzetes funkciót támogatja az igény szerinti feladat-végrehajtás és párhuzamos rendszerkép összeállítását, teszteléséhez, és fejlessze a műveletek.
+* [Több lépésből álló feladatokat](#multi-step-tasks): Adja meg a lemezképeket, a tárolók parancsok futnak, és a rendszerképek leküldése a beállításjegyzék több lépésből álló feladatokat. Ez a funkció az ACR-feladatok által támogatott igény szerinti feladat-végrehajtás és párhuzamos rendszerkép összeállítását, tesztelési és leküldéses műveletek.
 
 ## <a name="quick-task"></a>A feladat kész
 
@@ -36,6 +36,8 @@ A belső-hurok szoftverfejlesztési ciklusokat, a kódírás, létrehozását é
 Az első sort véglegesíti code, ACR feladatok [gyors feladat](container-registry-tutorial-quick-task.md) szolgáltatást tud biztosítani az Azure-bA összeállít egy integrált fejlesztői felület a tárolórendszerkép felé történő kiszervezésével. A gyors feladatok ellenőrizheti, hogy az automatikus definíciókat hozhat létre, és nézze át a potenciális problémákat, a kód véglegesítése előtt.
 
 Az ismert `docker build` formátum, a [az acr-build] [ az-acr-build] paranccsal az Azure CLI-ben egy *környezet* (fájlok halmazát hozhat létre), elküldi ACR feladatokat, és alapértelmezés szerint az összeállított rendszerképet leküldi a beállításjegyzékbe befejezését követően.
+
+Bevezetésért lásd: a gyors útmutató: [létrehozása és futtatása egy tárolórendszerképet](container-registry-quickstart-task-cli.md) az Azure Container Registryben.  
 
 Az alábbi táblázatban néhány példa a támogatott környezeti helyek az ACR-feladatokat jeleníti meg:
 
@@ -76,9 +78,9 @@ Ismerje meg az operációs rendszer és a keretrendszert az ACR-feladatok harmad
 > [!NOTE]
 > Alaplemezkép frissíti az eseményindítót buildek csak akkor lehetséges, ha mind az alap- és az alkalmazás-lemezképek az ugyanazon az Azure container registry található, vagy egy nyilvános Docker Hub adattárban található alap.
 
-## <a name="multi-step-tasks-preview"></a>Többlépéses feladatok (előzetes verzió)
+## <a name="multi-step-tasks"></a>Többlépéses feladatok
 
-Több lépésből álló feladatokat, az ACR-feladatokat, egy előzetes funkció biztosít lépésközönként feladatdefiníció és végrehajtási létrehozásához, teszteléséhez és javítás tárolórendszerképeket a felhőben. A feladatlépések tárolólemezképek különálló buildelési és leküldéses műveleteit határozzák meg. Emellett egy vagy több tároló végrehajtását is definiálhatják; a lépések a tárolót használják végrehajtási környezetnek.
+Több lépésből álló feladatokat lépésközönként feladatdefiníció és a fejlesztés, tesztelés és a felhő-javítási tárolólemezképeket végrehajtási biztosítanak. A feladatlépések tárolólemezképek különálló buildelési és leküldéses műveleteit határozzák meg. Emellett egy vagy több tároló végrehajtását is definiálhatják; a lépések a tárolót használják végrehajtási környezetnek.
 
 Például egy több lépésből álló feladat, amely automatizálja a következő hozhat létre:
 
@@ -93,15 +95,12 @@ Többlépéses feladatok lehetővé teszik az épület, fut, és a egy kép töb
 
 További információ a több lépésből álló feladatokat [többlépéses buildelési, tesztelési és patch feladatok futtatása az ACR-feladatokban](container-registry-tasks-multi-step.md).
 
-> [!IMPORTANT]
-> ACR-feladatokat a többlépéses feladat funkció jelenleg előzetes verzióban érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. Ezt a képességet néhány szempontja változhat előtt általánosan (elérhetővé tétel GA)
-
 ## <a name="next-steps"></a>További lépések
 
 Amikor elkészült, az operációs rendszer és a felhőben a tárolólemezképek létrehozásával javítás keretrendszer automatizálása, tekintse meg háromrészes ACR feladatok oktatóanyag-sorozat.
 
 > [!div class="nextstepaction"]
-> [Tárolórendszerképek összeállítása a felhőben az Azure Container Registry Tasks használatával](container-registry-tutorial-quick-task.md)
+> [Az Azure Container Registry feladatokat a felhőben tárolórendszerképek létrehozása](container-registry-tutorial-quick-task.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

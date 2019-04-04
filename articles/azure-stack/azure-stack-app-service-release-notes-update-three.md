@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 08/20/2018
-ms.openlocfilehash: 765701188de6375a5dfe0c9a6c04afe1ee9f6740
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5ea711d3d4ffff72279e745290c1c8d9d854298e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886439"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447490"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service-ben az Azure Stack 3-as frissítés – kibocsátási megjegyzések
 
@@ -55,6 +55,8 @@ Az Azure App Service-ben az Azure Stack Update 3 tartalmazza a következő fejle
 - Új környezet paraméter hozzáadva a létrehozás-AADIdentityApp segítő parancsfájlt, amelyek segítik a célcsoport-kezelési régiókon aad-ben.
 
 - Frissítések **App Services-bérlő, a rendszergazda, a Functions-portálok és eszközök a Kudu**. Az Azure Stack Portal SDK-verzió összhangban.
+
+- Frissítések **Azure Functions runtime** való **v1.0.11820**.
 
 - Fokozható a megbízhatóság és a hibaüzenetek gyakori problémák egyszerűbb diagnosztika engedélyezése a core-szolgáltatás frissítése.
 
@@ -185,7 +187,7 @@ A tartalmazott adatbázis áttelepítése az Azure Stack üzemelő példányok a
 - Feldolgozók nem érhető el a fájlkiszolgálót, amikor az App Service-ben meglévő virtuális hálózaton van üzembe helyezve, és a fájlkiszolgáló csak érhető el a magánhálózaton.  Ez is feltüntettük az Azure App Service az Azure Stack központi telepítési dokumentációjában az.
 
 Ha úgy döntött, hogy egy meglévő virtuális hálózattal és belső IP-cím szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése. Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
- * Forrás: Bármelyik
+ * Forrás: Bármely
  * Forrás porttartomány: *
  * Cél: IP-címek
  * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz

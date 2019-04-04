@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 55b4cf6e621bc1e5bd3d8ba4718e5714ea652c27
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: HT
+ms.openlocfilehash: 71ba1266c3a6a1f063f1af4ab37a5f29752c62f0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58111480"
+ms.locfileid: "58896159"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# – fejlesztői referencia
 
@@ -131,7 +131,7 @@ public static class BindingExpressionsExample
 
 A létrehozási folyamat létrehoz egy *function.json* egy függvény mappában, a build-mappában fájlt. Korábban feljegyzett ezt a fájlt nem hivatott közvetlenül szerkeszthetők. Nem kötelező konfigurációjának módosítása, vagy tiltsa le a függvény a fájl szerkesztésével. 
 
-Ez a fájl az a célja, hogy kapcsolatban nyújtanak információkat a méretezési csoport vezérlő használandó [döntések méretezése a használatalapú csomag](functions-scale.md#how-the-consumption-plan-works). Ebből kifolyólag a fájl csak az eseményindító adatait nem bemeneti vagy kimeneti kötés rendelkezik.
+Ez a fájl az a célja, hogy kapcsolatban nyújtanak információkat a méretezési csoport vezérlő használandó [döntések méretezése a használatalapú csomag](functions-scale.md#how-the-consumption-and-premium-plans-work). Ebből kifolyólag a fájl csak az eseményindító adatait nem bemeneti vagy kimeneti kötés rendelkezik.
 
 A generált *function.json* fájl tartalmaz egy `configurationSource` tulajdonságot, amely a futtatókörnyezet kötések, .NET-attribútumok használata helyett *function.json* konfigurációja. Például:
 
@@ -274,7 +274,7 @@ Nem használhat `out` aszinkron funkciók paramétereket. A kimeneti kötések, 
 
 ## <a name="cancellation-tokens"></a>Megszakítási tokeneket
 
-Egy függvény elfogadhatja a [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) paraméter, amely lehetővé teszi a kód értesítése, ha a funkció arra készül, hogy állítható le, az operációs rendszer. Használhatja ezt az értesítést, hogy a funkció váratlanul leáll nem úgy, hogy az adatok inkonzisztens állapotban hagyja.
+Egy függvény elfogadhatja a [CancellationToken](/dotnet/api/system.threading.cancellationtoken) paraméter, amely lehetővé teszi a kód értesítése, ha a funkció arra készül, hogy állítható le, az operációs rendszer. Használhatja ezt az értesítést, hogy a funkció váratlanul leáll nem úgy, hogy az adatok inkonzisztens állapotban hagyja.
 
 Az alábbi példa bemutatja, hogyan közelgő függvény lezárást kereséséhez.
 
@@ -369,7 +369,7 @@ public static class IBinderExample
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) határozza meg a [tárolóblob](functions-bindings-storage-blob.md) bemeneti vagy kimeneti kötést, és [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) egy támogatott kimeneti kötés típusa.
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) határozza meg a [tárolóblob](functions-bindings-storage-blob.md) bemeneti vagy kimeneti kötést, és [TextWriter](/dotnet/api/system.io.textwriter) egy támogatott kimeneti kötés típusa.
 
 ### <a name="multiple-attribute-example"></a>Több attribútum példa
 

@@ -1,6 +1,6 @@
 ---
 title: IBM zD & T fejlesztési-tesztelési környezet telepítése az Azure-ban |} A Microsoft Docs
-description: Ddeploy IBM Z fejlesztési és tesztelési környezetet (zD & T) az Azure virtuális gép (VM) infrastruktúra-szolgáltatás (IaaS).
+description: Szolgáltatás (IaaS) az Azure virtuális gép (VM) infrastruktúra üzembe IBM Z fejlesztési és tesztelési környezetet (zD & T).
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: fa3bf2b513ce7c5a0ea0210c66a9123ceaf1de37
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2f5520213e7d8792c89f5445d470987323173dc3
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58015278"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894525"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>IBM zD & T fejlesztési-tesztelési környezet telepítése az Azure-ban
 

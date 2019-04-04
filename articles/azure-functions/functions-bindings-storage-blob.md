@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: e18a63892f000eff0f72656082d5e6e1f0ca159b
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: c1c20e225e15769a8cb09f60dfc371f4ec4d81f6
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437475"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895849"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
 Ez a cikk bemutatja, hogyan használható az Azure Blob storage-kötések az Azure Functions szolgáltatásban. Az Azure Functions támogatja a-trigger, bemeneti és kimeneti kötések blobok. A cikk tartalmazza minden egyes kötés szakaszát:
 
-* [Blob trigger](#trigger)
+* [Blobalapú eseményindító](#trigger)
 * [BLOB bemeneti kötéssel](#input)
 * [Kimeneti kötés BLOB](#output)
 
@@ -78,7 +78,7 @@ Event Grid mellett egy másik lehetőség az blobok feldolgozása a Queue storag
 Tekintse meg az adott nyelvű példa:
 
 * [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
+* [C#-szkript (.csx)](#trigger---c-script-example)
 * [Java](#trigger---java-example)
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
@@ -317,10 +317,10 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**type** | n/a | Meg kell `blobTrigger`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
-|**direction** | n/a | Meg kell `in`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. A kivételeket jeleztük a [használati](#trigger---usage) szakaszban. |
-|**name** | n/a | A változó, amely a függvény kódját a blob neve. |
-|**path** | **BlobPath** |A [tároló](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) figyeléséhez.  Előfordulhat, hogy egy [blob minta](#trigger---blob-name-patterns). |
-|**kapcsolat** | **kapcsolat** | A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [Blob storage-fiók](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**irány** | n/a | Meg kell `in`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. A kivételeket jeleztük a [használati](#trigger---usage) szakaszban. |
+|**név** | n/a | A változó, amely a függvény kódját a blob neve. |
+|**elérési út** | **BlobPath** |A [tároló](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) figyeléséhez.  Előfordulhat, hogy egy [blob minta](#trigger---blob-name-patterns). |
+|**kapcsolat** | **Kapcsolat** | A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [Blob storage-fiók](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -444,7 +444,7 @@ Ha minden 5 alkalommal sikertelen, a az Azure Functions egy üzenetet ad hozzá 
 
 A blob eseményindító az üzenetsor belsőleg, így az egyidejű függvény meghívásához maximális számát szabályozza a [üzenetsorok konfigurációját a host.json](functions-host-json.md#queues). Az alapértelmezett beállítások 24 indítások az egyidejűségi korlátozza. Ezt a korlátot külön-külön mindegyik függvény, amely egy blob eseményindító vonatkozik.
 
-[A használatalapú csomag](functions-scale.md#how-the-consumption-plan-works) korlátozza egy függvényalkalmazást egy virtuális gépen (VM) 1,5 GB memória. Memória és a Functions futtatókörnyezete maga minden párhuzamosan függvény példány által használt. Ha egy blob által aktivált függvény a teljes blob betölti a memóriába, csak a blobok a függvény által használt maximális memória: 24 * blob maximális mérete. Például egy függvényalkalmazást a három blob által aktivált függvények és az alapértelmezett beállításokat kellene 3 * 24 = 72 maximális VM-enkénti egyidejűségi függvény meghívásához.
+[A használatalapú csomag](functions-scale.md#how-the-consumption-and-premium-plans-work) korlátozza egy függvényalkalmazást egy virtuális gépen (VM) 1,5 GB memória. Memória és a Functions futtatókörnyezete maga minden párhuzamosan függvény példány által használt. Ha egy blob által aktivált függvény a teljes blob betölti a memóriába, csak a blobok a függvény által használt maximális memória: 24 * blob maximális mérete. Például egy függvényalkalmazást a három blob által aktivált függvények és az alapértelmezett beállításokat kellene 3 * 24 = 72 maximális VM-enkénti egyidejűségi függvény meghívásához.
 
 JavaScript és Java-funkciók a teljes blob betölti a memóriába, és C# funkciók, amelyek teendő, ha kötött `string`, `Byte[]`, vagy POCO.
 
@@ -463,7 +463,7 @@ A Blob storage bemeneti kötés használatával olvasni a blobokat.
 Tekintse meg az adott nyelvű példa:
 
 * [C#](#input---c-example)
-* [C# script (.csx)](#input---c-script-example)
+* [C#-szkript (.csx)](#input---c-script-example)
 * [Java](#input---java-examples)
 * [JavaScript](#input---javascript-example)
 * [Python](#input---python-example)
@@ -637,7 +637,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
 Ez a szakasz tartalmazza az alábbi példák:
 
 * [HTTP-eseményindító, keresse meg a lekérdezési karakterláncot a blob neve](#http-trigger-look-up-blob-name-from-query-string-java)
-* [Várólista-eseményindító, blobnév fogadjon üzenetsori üzenet](#queue-trigger-receive-blob-name-from-queue-message-java)
+* [Queue trigger, receive blob name from queue message](#queue-trigger-receive-blob-name-from-queue-message-java)
 
 #### <a name="http-trigger-look-up-blob-name-from-query-string-java"></a>HTTP-eseményindító, keresse meg a blob nevét, a lekérdezési karakterlánc (Java)
 
@@ -728,11 +728,11 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**type** | n/a | Meg kell `blob`. |
-|**direction** | n/a | Meg kell `in`. A kivételeket jeleztük a [használati](#input---usage) szakaszban. |
-|**name** | n/a | A változó, amely a függvény kódját a blob neve.|
-|**path** |**BlobPath** | A blob elérési útja. |
-|**kapcsolat** |**kapcsolat**| Tartalmazó alkalmazásbeállítás neve a [tárolási kapcsolati karakterlánc](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-azure-storage-account) használata ehhez a kötéshez. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak blob storage-fiók](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
-|n/a | **Access (Hozzáférés)** | Azt jelzi, hogy meg fog kell olvasása vagy írása. |
+|**irány** | n/a | Meg kell `in`. A kivételeket jeleztük a [használati](#input---usage) szakaszban. |
+|**név** | n/a | A változó, amely a függvény kódját a blob neve.|
+|**elérési út** |**BlobPath** | A blob elérési útja. |
+|**kapcsolat** |**Kapcsolat**| Tartalmazó alkalmazásbeállítás neve a [tárolási kapcsolati karakterlánc](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-azure-storage-account) használata ehhez a kötéshez. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak blob storage-fiók](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|n/a | **Hozzáférés** | Azt jelzi, hogy meg fog kell olvasása vagy írása. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -768,7 +768,7 @@ A Blob storage kimeneti kötések segítségével írhat a blobokat.
 Tekintse meg az adott nyelvű példa:
 
 * [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
+* [C#-szkript (.csx)](#output---c-script-example)
 * [Java](#output---java-examples)
 * [JavaScript](#output---javascript-example)
 * [Python](#output---python-example)
@@ -1062,11 +1062,11 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**type** | n/a | Meg kell `blob`. |
-|**direction** | n/a | Meg kell `out` a kimeneti kötés. A kivételeket jeleztük a [használati](#output---usage) szakaszban. |
-|**name** | n/a | A változó, amely a függvény kódját a blob neve.  Állítsa be `$return` való hivatkozáshoz függvény visszatérési értéke.|
-|**path** |**BlobPath** | A blobco elérési útja. |
-|**kapcsolat** |**kapcsolat**| A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak blob storage-fiók](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
-|n/a | **Access (Hozzáférés)** | Azt jelzi, hogy meg fog kell olvasása vagy írása. |
+|**irány** | n/a | Meg kell `out` a kimeneti kötés. A kivételeket jeleztük a [használati](#output---usage) szakaszban. |
+|**név** | n/a | A változó, amely a függvény kódját a blob neve.  Állítsa be `$return` való hivatkozáshoz függvény visszatérési értéke.|
+|**elérési út** |**BlobPath** | A blobco elérési útja. |
+|**kapcsolat** |**Kapcsolat**| A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak blob storage-fiók](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|n/a | **Hozzáférés** | Azt jelzi, hogy meg fog kell olvasása vagy írása. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -1105,7 +1105,7 @@ A JavaScript, a blob adatait az eléréséhez `context.bindings.<name from funct
 |---|---|
 | Blob | [A BLOB-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | Blob, Table, Queue |  [Storage-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob, Table, Queue |  [hibaelhárítással](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Blob, Table, Queue |  [Hibaelhárítás](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 323de505bc1bfa9747f372033392a9fd6e08462c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898856"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895783"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató csomópont-alkalmazásokhoz az Azure App Service Windows
 
@@ -98,7 +98,7 @@ Az alapértelmezett értéke FALSE (hamis). Ha engedélyezve van, a node-alkalma
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
-Az alapértelmezett értéke 0, ami azt jelenti, hogy ez a funkció le van tiltva. Ha megadott néhány értéket 0-nál nagyobbnak, iisnode fog lapon minden gyermekfolyamata ki minden "idlePageOutTimePeriod" ezredmásodpercben. Lásd: [dokumentáció](https://msdn.microsoft.com/library/windows/desktop/ms682606.aspx) megérteni, milyen lapon azt jelenti, hogy ki. A beállítás akkor hasznos, ha az alkalmazásokat, amelyek egy nagy mennyiségű memória felhasználását, és szeretné ki lemez alkalmanként RAM memória felszabadítása érdekében memória lapon.
+Az alapértelmezett értéke 0, ami azt jelenti, hogy ez a funkció le van tiltva. Ha megadott néhány értéket 0-nál nagyobbnak, iisnode fog lapon minden gyermekfolyamata ki minden "idlePageOutTimePeriod" ezredmásodpercben. Lásd: [dokumentáció](/windows/desktop/api/psapi/nf-psapi-emptyworkingset) megérteni, milyen lapon azt jelenti, hogy ki. A beállítás akkor hasznos, ha az alkalmazásokat, amelyek egy nagy mennyiségű memória felhasználását, és szeretné ki lemez alkalmanként RAM memória felszabadítása érdekében memória lapon.
 
 > [!WARNING]
 > Legyen körültekintő, amikor engedélyezi az éles üzemi alkalmazások pedig az alábbi konfigurációs beállításai. A javaslat, hogy nem engedélyezheti őket, az éles alkalmazások.
@@ -280,7 +280,7 @@ NODE.exe van egy nevű beállítás `NODE_PENDING_PIPE_INSTANCES`. Az Azure App 
 
 Az alábbi hivatkozásokból tudhat meg többet az Azure App Service node.js-alkalmazások.
 
-* [Ismerkedés a Node.js-webalkalmazásokkal az Azure App Service-ben](app-service-web-get-started-nodejs.md)
+* [Ismerkedés a Node.js webalkalmazásokkal az Azure App Service-ben](app-service-web-get-started-nodejs.md)
 * [A Node.js webalkalmazás hibakeresése az Azure App Service-ben](app-service-web-tutorial-nodejs-mongodb-app.md)
 * [A Node.js modulok használata az Azure alkalmazásokkal](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)

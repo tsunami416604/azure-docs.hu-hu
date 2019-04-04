@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b00082ec567d51c320f55210cb38dcab9547e0d9
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: d2324f9538ce8079be5e660a1613c1c093ecc85a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258751"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484596"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>Kezelése a Key Vault az Azure Stack PowerShell-lel
 
@@ -45,7 +45,7 @@ A Key Vault az Azure Stack PowerShell használatával kezelheti. További tudniv
 
 Key vault kapcsolatos bármilyen művelet adhat ki, mielőtt kell győződjön meg arról, hogy a bérlő előfizetés engedélyezve van-e a vault-műveletek. Győződjön meg arról, hogy engedélyezve vannak-e a vault-műveletek, futtassa a következő parancsot:
 
-```PowerShell  
+```powershell  
 Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
 ```
 
@@ -57,7 +57,7 @@ Az előfizetés vault-műveletek engedélyezett, ha a kimenet mutatja, "Registra
 
 Ha vault-műveletek nem engedélyezettek, meghívása az előfizetés regisztrálása a Key Vault szolgáltatás a következő parancsot:
 
-```PowerShell
+```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
 ```
 
@@ -71,7 +71,7 @@ Ha a regisztráció sikeres, a következő eredményt adja vissza:
 
 Mielőtt egy kulcstartót hoz létre, hozzon létre egy erőforráscsoportot, hogy az összes olyan erőforrást a key vaulttal kapcsolatos egy erőforráscsoportban létezik. A következő paranccsal hozzon létre egy új erőforráscsoportot:
 
-```PowerShell
+```powershell
 New-AzureRmResourceGroup -Name "VaultRG" -Location local -verbose -Force
 
 ```
@@ -84,7 +84,7 @@ Mostantól használhatja a **New-AzureRMKeyVault** parancs használatával hozzo
 
 Futtassa a key vault létrehozása a következő parancsot:
 
-```PowerShell
+```powershell
 New-AzureRmKeyVault -VaultName "Vault01" -ResourceGroupName "VaultRG" -Location local -verbose
 ```
 
@@ -98,7 +98,7 @@ Ez a parancs kimenetét mutatja az Ön által létrehozott kulcstartó tulajdons
 
 Az AD FS telepítése az ezt a figyelmeztetést kaphat: "A hozzáférési szabályzat nincs beállítva. Nincs felhasználó vagy alkalmazás nem hozzáférési engedélyt a tár használatára." A probléma megoldásához állítsa be a tároló hozzáférési házirend használatával a [Set-AzureRmKeyVaultAccessPolicy](#authorize-an-application-to-use-a-key-or-secret) parancsot:
 
-```PowerShell
+```powershell
 # Obtain the security identifier(SID) of the active directory user
 $adUser = Get-ADUser -Filter "Name -eq '{Active directory user name}'"
 $objectSID = $adUser.SID.Value
@@ -115,7 +115,7 @@ Miután létrehozott egy tárolót, a következő eljárással hozhat létre, é
 
 Használja a **Add-AzureKeyVaultKey** parancs használatával hozzon létre vagy importáljon egy szoftveresen védett kulcsot a kulcstartóban.
 
-```PowerShell
+```powershell
 Add-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01" -verbose -Destination Software
 ```
 
@@ -134,7 +134,7 @@ A létrehozott kulcsot az URI használatával hivatkozhat. Hozzon létre vagy im
 
 Használja a **Get-AzureKeyVaultKey** parancs egy kulcsot és az adatok olvasásához.
 
-```PowerShell
+```powershell
 Get-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01"
 ```
 
@@ -142,7 +142,7 @@ Get-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01"
 
 Használja a **Set-AzureKeyVaultSecret** parancsot létrehozni vagy frissíteni egy tároló titkos kulcs. Titkos kulcs jön létre, ha egy már nem létezik. A titkos kulcs új verziója jön létre, ha már létezik.
 
-```PowerShell
+```powershell
 $secretvalue = ConvertTo-SecureString "User@123" -AsPlainText -Force
 Set-AzureKeyVaultSecret -VaultName "Vault01" -Name "Secret01" -SecretValue $secretvalue
 ```
@@ -155,7 +155,7 @@ Set-AzureKeyVaultSecret -VaultName "Vault01" -Name "Secret01" -SecretValue $secr
 
 Használja a **Get-AzureKeyVaultSecret** parancsot a kulcstartóban található titkos olvasásához. Ezzel a paranccsal lépjen vissza az összes vagy titkos kulcs bizonyos verziójának.
 
-```PowerShell
+```powershell
 Get-AzureKeyVaultSecret -VaultName "Vault01" -Name "Secret01"
 ```
 
@@ -166,13 +166,13 @@ Miután létrehozta a kulcsok és titkos kulcsok, engedélyezheti a külső alka
 Használja a **Set-AzureRmKeyVaultAccessPolicy** parancsot az alkalmazások számára a hozzáférési kulcs vagy titkos kulcsot a kulcstartóban.
 A következő példában a tároló nevére van *ContosoKeyVault* , és a regisztrálni kívánt alkalmazás Ügyfélazonosítója *8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed*. Engedélyezze az alkalmazás, futtassa a következő parancsot. Másik lehetőségként megadhatja a **PermissionsToKeys** paraméter segítségével állítsa be az engedélyeket a felhasználó, alkalmazás vagy egy biztonsági csoportot.
 
-```PowerShell
+```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
 ```
 
 Ha azt szeretné, hogy a tároló titkos kulcsainak olvasásához az alkalmazás engedélyezésére, futtassa a következő parancsmagot:
 
-```PowerShell
+```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300 -PermissionsToKeys Get
 ```
 

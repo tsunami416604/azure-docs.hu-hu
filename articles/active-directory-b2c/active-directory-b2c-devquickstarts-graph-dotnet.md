@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a516f99af05ba3f3bb7ab98d3def123a488e0d9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0f380aa9f2efc1ae9636b7704f7eb75004bb71f9
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075901"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895054"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Az Azure AD Graph API használata
 
 >[!NOTE]
-> Kell használnia a [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) az Azure AD B2C-címtár felhasználóinak kezelését. Ez eltér a Microsoft Graph API-ból. További információkat [itt](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/) talál.
+> Kell használnia a [Azure AD Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) az Azure AD B2C-címtár felhasználóinak kezelését. Ez eltér a Microsoft Graph API-ból. További információkat [itt](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/) talál.
 
 Az Azure Active Directory (Azure AD) B2C-bérlők általában nagyon nagy. Ez azt jelenti, hogy számos gyakori bérlő felügyeleti feladatokat kell végrehajtani ahhoz, programozott módon. Egy elsődleges például, felhasználók kezelése. Szüksége lehet egy meglévő felhasználó-tároló áttelepítése B2C-bérlőre. Érdemes a saját oldalon a felhasználói regisztráció üzemeltethet, és a háttérben az Azure AD B2C-címtárban lévő felhasználói fiókokat hozhat létre. Ilyen típusú feladatok van szükség, hogy a létrehozás, Olvasás, frissítés, és törölje a felhasználói fiókokat. Ezeket a feladatokat az Azure AD Graph API használatával teheti meg.
 
@@ -239,7 +239,7 @@ Content-Length: 338
 }
 ```
 
-Ezek a tulajdonságok a kéréshez a legtöbb identitásrendszerében a felhasználók létrehozásához szükségesek. További tudnivalókért kattintson [Itt](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser). Vegye figyelembe, hogy a `//` megjegyzések megjelent az ábrán látható. Ne foglalja bele őket egy tényleges kérést.
+Ezek a tulajdonságok a kéréshez a legtöbb identitásrendszerében a felhasználók létrehozásához szükségesek. További tudnivalókért kattintson [Itt](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser). Vegye figyelembe, hogy a `//` megjegyzések megjelent az ábrán látható. Ne foglalja bele őket egy tényleges kérést.
 
 A kérelem megtekintéséhez futtassa a következő parancsok egyikét:
 
@@ -248,7 +248,7 @@ B2C Create-User ..\..\..\usertemplate-email.json
 B2C Create-User ..\..\..\usertemplate-username.json
 ```
 
-A `Create-User` parancs fogadja bemeneti paraméterként egy .JSON kiterjesztésű fájlt. Ez tartalmazza a felhasználói objektum JSON-ábrázolását. Két minta .JSON kiterjesztésű fájlok vannak a mintakód: `usertemplate-email.json` és `usertemplate-username.json`. Ezeket a fájlokat, igény szerint módosíthatja. Szükséges a fenti mezőkön kívül több választható mező, amelyet használhat szerepelnek ezek a fájlok. Az opcionális mezők értékét a részletek megtalálhatók a [Azure AD Graph API entitáshivatkozás](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity).
+A `Create-User` parancs fogadja bemeneti paraméterként egy .JSON kiterjesztésű fájlt. Ez tartalmazza a felhasználói objektum JSON-ábrázolását. Két minta .JSON kiterjesztésű fájlok vannak a mintakód: `usertemplate-email.json` és `usertemplate-username.json`. Ezeket a fájlokat, igény szerint módosíthatja. Szükséges a fenti mezőkön kívül több választható mező, amelyet használhat szerepelnek ezek a fájlok. Az opcionális mezők értékét a részletek megtalálhatók a [Azure AD Graph API entitáshivatkozás](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity).
 
 Láthatja, hogyan jön létre a POST-kérés a `B2CGraphClient.SendGraphPostRequest(...)`.
 
@@ -257,7 +257,7 @@ Láthatja, hogyan jön létre a POST-kérés a `B2CGraphClient.SendGraphPostRequ
 * A JSON-user objektum tartalmazza a kérés törzsében.
 
 > [!NOTE]
-> Ha a fiókok, amelyeket szeretné áttelepíteni egy meglévő felhasználó-áruházból, mint az alacsonyabb jelszó erőssége a [kényszeríti ki az Azure AD B2C-vel erős jelszó erőssége](https://msdn.microsoft.com/library/azure/jj943764.aspx), letilthatja az erős jelszót a követelmény használatával a `DisableStrongPassword` az érték a `passwordPolicies` tulajdonság. Például módosíthatja a következőképpen fent megadott felhasználói kérés: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
+> Ha a fiókok, amelyeket szeretné áttelepíteni egy meglévő felhasználó-áruházból, mint az alacsonyabb jelszó erőssége a [kényszeríti ki az Azure AD B2C-vel erős jelszó erőssége](/previous-versions/azure/jj943764(v=azure.100)), letilthatja az erős jelszót a követelmény használatával a `DisableStrongPassword` az érték a `passwordPolicies` tulajdonság. Például módosíthatja a következőképpen fent megadott felhasználói kérés: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
 > 
 > 
 
@@ -317,7 +317,7 @@ B2C Delete-User <object-id-of-user>
 
 Vizsgálja meg a `B2CGraphClient.SendGraphDeleteRequest(...)` módszer részletes tájékoztatás a kérelem elküldéséhez.
 
-Felhasználók kezelése mellett az Azure AD Graph API-val számos más művelet elvégzése. A [Azure AD Graph API-referencia](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) részletesen minden művelet, mintául szolgáló kérelmek együtt.
+Felhasználók kezelése mellett az Azure AD Graph API-val számos más művelet elvégzése. A [Azure AD Graph API-referencia](/previous-versions/azure/ad/graph/api/api-catalog) részletesen minden művelet, mintául szolgáló kérelmek együtt.
 
 ## <a name="use-custom-attributes"></a>Egyéni attribútumok használata
 A legtöbb otthoni használatra szánt alkalmazásai kell valamilyen típusú egyéni felhasználói profil adatait tárolja. Ezt megteheti egy módja határozza meg az egyéni attribútum a B2C-bérlőben. Ezt az attribútumot, minden más tulajdonság kezelnie a user objektum ugyanúgy majd kezelnie. Az attribútum módosítására, az attribútum törlése, attribútum lekérdezése, küldjön az attribútum a bejelentkezési tokeneket, és több jogcímként.

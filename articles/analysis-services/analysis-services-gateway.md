@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3f87a4c520327f1a13a48c70502b6737c0aa9b3a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630971"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58896023"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz a helyszíni adatátjáróval
 A helyszíni adatátjáró a helyszíni adatforrások és a felhőben az Azure Analysis Services-kiszolgálók közötti biztonságos adatátvitelt biztosít. Mellett használata több Azure Analysis Services-kiszolgáló ugyanabban a régióban, az átjáró legújabb verzióját is használható az Azure Logic Apps, a Power bi-ban, a Power Apps és a Microsoft Flow. Egyetlen átjáró ugyanabban az előfizetésben és azonos régióban több szolgáltatást is társíthat. 
 
 A telepítő az átjáró első először az egy négyrészes folyamat:
 
-- **Töltse le és futtassa a telepítőt** – Ez a lépés telepíti egy átjárószolgáltatás a szervezet egyik számítógépén. Is jelentkezik be egy olyan fiókkal, az Azure-bA a [bérlő](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) Azure ad-ben. Az Azure B2B (vendég) fiókok nem támogatottak.
+- **Töltse le és futtassa a telepítőt** – Ez a lépés telepíti egy átjárószolgáltatás a szervezet egyik számítógépén. Is jelentkezik be egy olyan fiókkal, az Azure-bA a [bérlő](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant) Azure ad-ben. Az Azure B2B (vendég) fiókok nem támogatottak.
 
 - **Az átjáró regisztrálásához** – ebben a lépésben megad egy nevet és a helyreállítási kulcsra az átjáró, és válassza ki a régiót, regisztrálja az átjárót az átjáró Felhőszolgáltatása. Az átjáró-erőforrás regisztrálni lehet bármelyik régióban, de javasoljuk, hogy azt az Analysis Services-kiszolgáló ugyanabban a régióban kell. 
 
@@ -203,5 +203,5 @@ Telemetria használható figyeléséhez és hibaelhárításához. Alapértelmez
 
 ## <a name="next-steps"></a>További lépések
 * [Telepítse és konfigurálja a helyszíni adatátjáró](analysis-services-gateway-install.md).   
-* [Analysis Services kezelése](analysis-services-manage.md)
+* [Manage Analysis Services](analysis-services-manage.md)
 * [Adatok lekérése az Azure Analysis Services](analysis-services-connect.md)

@@ -1,53 +1,72 @@
 ---
 title: 'Gyors útmutató: A szövegelemzési API meghívására Python használatával'
 titleSuffix: Azure Cognitive Services
-description: Ezekkel a rövid útmutatókkal és kódmintákkal gyorsan kezdheti meg a Text Analytics API használatát a Microsoft Cognitive Services-ben az Azure-on.
+description: Get information és kód minták segítségével gyorsan Ismerkedés a szövegelemzési API-val az Azure Cognitive Servicesben.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 03/28/2019
 ms.author: aahi
-ms.openlocfilehash: 1219a5f43d8abd78c4840e824c2f4c69a6fa7939
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6edcb4501feb0ac2911fed075ed4866aa267a80e
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330137"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893078"
 ---
 # <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához Python használatával 
 <a name="HOLTop"></a>
 
 Ebből az útmutatóból megtudhatja, hogyan [észlelheti a nyelvet](#Detect), [elemezhet hangulatot](#SentimentAnalysis) és [nyerhet ki kulcskifejezéseket](#KeyPhraseExtraction) a [Text Analytics API-kkal](//go.microsoft.com/fwlink/?LinkID=759711) a Python használatával.
 
-Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder.org), az indítás Binder-jelvényére kattintva: 
+Ebben a példában a parancssorból vagy egy Jupyter notebookot futtathatja [MyBinder](https://mybinder.org) jelvények Binder indításkor kattintva:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=TextAnalytics.ipynb)
+
+### <a name="command-line"></a>Parancssor
+
+Előfordulhat, hogy frissíteni kell [IPython](https://ipython.org/install.html), a Jupyter a kernel:
+```bash
+pip install --upgrade IPython
+```
+
+Előfordulhat, hogy frissíteni kell a [kérelmek](http://docs.python-requests.org/en/master/) könyvtár:
+```bash
+pip install requests
+```
 
 Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+* [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell. 
+* A [végpontját és hozzáférési kulcsát](../How-tos/text-analytics-how-to-access-key.md) létrehozott az Ön számára a regisztrációhoz.
 
-Az útmutató folytatásához cserélje le a `subscription_key` elemet egy korábban beszerzett érvényes előfizetői azonosítóval.
+* Az alábbi importálásokat, az előfizetési kulcsot, és `text_analytics_base_url` minden az alábbi rövid útmutatók szolgálnak. Adja hozzá a import.
 
-
-```python
-subscription_key = None
-assert subscription_key
-```
-
-Ezután ellenőrizze, hogy a `text_analytics_base_url` által mutatott régió megegyezik-e azzal, amelyet a szolgáltatás beállításakor használt. Ha ingyenes próbakulcsot használ, nem kell semmin változtatnia.
-
-
-```python
-text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/"
-```
+    ```python
+    import requests
+    # pprint is pretty print (formats the JSON)
+    from pprint import pprint
+    from IPython.display import HTML
+    ```
+    
+    Adja hozzá ezeket a sorokat, majd cserélje le `subscription_key` korábban beszerzett érvényes előfizetéssel kulccsal.
+    
+    ```python
+    subscription_key = '<ADD KEY HERE>'
+    assert subscription_key
+    ```
+    
+    Ezután adja hozzá ezt a sort, majd ellenőrizze, hogy az a régió `text_analytics_base_url` felel meg, amelyet használ, a szolgáltatás beállítása során. Ha egy ingyenes próba-kulcsot használ, nem kell bármin változtatni.
+    
+    ```python
+    text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/"
+    ```
 
 <a name="Detect"></a>
 
@@ -55,19 +74,18 @@ text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/tex
 
 A Language Detection API a [Detect Language metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) használatával felismeri a szöveges dokumentumok nyelvét. A nyelvfelismerési API szolgáltatásvégpontja az Ön régiójához az alábbi URL-címen érhető el:
 
-
 ```python
 language_api_url = text_analytics_base_url + "languages"
 print(language_api_url)
 ```
 
-    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/languages
-
+```url
+https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/languages
+```
 
 Az API hasznos adatait `documents` egy listája teszi ki, amelyek mindegyike tartalmaz egy `id` és egy `text` attribútumot. A `text` attribútum az elemzendő szöveget tárolja. 
 
-Nyelvfelismeréshez cserélje le a `documents` szótárt bármely más szöveggel. 
-
+Nyelvfelismeréshez cserélje le a `documents` szótárt bármely más szöveggel.
 
 ```python
 documents = { 'documents': [
@@ -79,16 +97,27 @@ documents = { 'documents': [
 
 A következő néhány kódsor a dokumentumok nyelvének felismeréséhez meghívja a nyelvfelismerő API-t a Python nyelvű `requests` kódtár használatával.
 
-
 ```python
-import requests
-from pprint import pprint
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
 response  = requests.post(language_api_url, headers=headers, json=documents)
 languages = response.json()
 pprint(languages)
 ```
 
+Az alábbi kódsorok a JSON-adatokat egy HTML-táblaként jelenítik meg.
+
+```python
+table = []
+for document in languages["documents"]:
+    text  = next(filter(lambda d: d["id"] == document["id"], documents["documents"]))["text"]
+    langs = ", ".join(["{0}({1})".format(lang["name"], lang["score"]) for lang in document["detectedLanguages"]])
+    table.append("<tr><td>{0}</td><td>{1}</td>".format(text, langs))
+HTML("<table><tr><th>Text</th><th>Detected languages(scores)</th></tr>{0}</table>".format("\n".join(table)))
+```
+
+A sikeres JSON-választ:
+
+```json
     {'documents': [{'detectedLanguages': [{'iso6391Name': 'en',
                                            'name': 'English',
                                            'score': 1.0}],
@@ -102,40 +131,23 @@ pprint(languages)
                                            'score': 1.0}],
                     'id': '3'}],
      'errors': []}
-
-
-Az alábbi kódsorok a JSON-adatokat egy HTML-táblaként jelenítik meg.
-
-
-```python
-from IPython.display import HTML
-table = []
-for document in languages["documents"]:
-    text  = next(filter(lambda d: d["id"] == document["id"], documents["documents"]))["text"]
-    langs = ", ".join(["{0}({1})".format(lang["name"], lang["score"]) for lang in document["detectedLanguages"]])
-    table.append("<tr><td>{0}</td><td>{1}</td>".format(text, langs))
-HTML("<table><tr><th>Text</th><th>Detected languages(scores)</th></tr>{0}</table>".format("\n".join(table)))
 ```
 
 <a name="SentimentAnalysis"></a>
 
 ## <a name="analyze-sentiment"></a>Vélemények elemzése
 
-A Sentiment Analysis API kinyeri a hangulatot a szöveges bejegyzésekből a [Sentiment metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) használatával. A következő példa két dokumentumhoz rendel pontszámot, az egyik angol, a másik spanyol nyelvű.
+A Sentiment Analysis API felismeri a vélemény (tartomány közötti pozitív vagy negatív) szöveg rekordkészlet, a használatával a [vélemények metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). A következő példa két dokumentumhoz rendel pontszámot, az egyik angol, a másik spanyol nyelvű.
 
 A hangulatelemzés szolgáltatásvégpontja az Ön régiójához az alábbi URL-címen érhető el:
-
 
 ```python
 sentiment_api_url = text_analytics_base_url + "sentiment"
 print(sentiment_api_url)
 ```
-
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment
 
-
-Ahogy a nyelvfelismerési példában, a szolgáltatás ebben esetben is el van látva egy `documents` kulccsal rendelkező szótárral, amely egy dokumentumlistából áll. Minden dokumentum egy rekord, amely az `id`, az elemzendő `text` és a szöveg `language` tulajdonságából áll. Ennek a mezőnek a feltöltéséhez használhatja az előző szakasz nyelvfelismerési API-ját. 
-
+Ahogy a nyelvfelismerési példában, a szolgáltatás ebben esetben is el van látva egy `documents` kulccsal rendelkező szótárral, amely egy dokumentumlistából áll. Minden dokumentum egy rekord, amely az `id`, az elemzendő `text` és a szöveg `language` tulajdonságából áll. Ennek a mezőnek a feltöltéséhez használhatja az előző szakasz nyelvfelismerési API-ját.
 
 ```python
 documents = {'documents' : [
@@ -148,7 +160,6 @@ documents = {'documents' : [
 
 A hangulati API-t mostantól használhatja a dokumentumokban található hangulatok elemzéséhez.
 
-
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
 response  = requests.post(sentiment_api_url, headers=headers, json=documents)
@@ -156,13 +167,16 @@ sentiments = response.json()
 pprint(sentiments)
 ```
 
-    {'documents': [{'id': '1', 'score': 0.7673527002334595},
-                   {'id': '2', 'score': 0.18574094772338867},
-                   {'id': '3', 'score': 0.5}],
-     'errors': []}
+A sikeres JSON-választ:
 
+```json
+{'documents': [{'id': '1', 'score': 0.7673527002334595},
+                {'id': '2', 'score': 0.18574094772338867},
+                {'id': '3', 'score': 0.5}],
+    'errors': []}
+```
 
-Egy dokumentum hangulatpontszáma $0$ és $1$ között van, ahol a magasabb pontszám pozitívabb hangulatot jelöl.
+A dokumentumok értelmezhetőségi pontszámot 0,0 és 1,0, között van, a nagyobb pozitív vélemények jelző magasabb pontszámot.
 
 <a name="KeyPhraseExtraction"></a>
 
@@ -172,17 +186,13 @@ A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumok
 
 A kulcskifejezés-kinyerés szolgáltatásvégpontja az alábbi URL-címen érhető el:
 
-
 ```python
 key_phrase_api_url = text_analytics_base_url + "keyPhrases"
 print(key_phrase_api_url)
 ```
-
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases
 
-
 A dokumentumgyűjtemény megegyezik a hangulatelemzésnél használttal.
-
 
 ```python
 documents = {'documents' : [
@@ -191,27 +201,11 @@ documents = {'documents' : [
   {'id': '3', 'language': 'es', 'text': 'Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos.'},  
   {'id': '4', 'language': 'es', 'text': 'La carretera estaba atascada. Había mucho tráfico el día de ayer.'}
 ]}
-headers   = {'Ocp-Apim-Subscription-Key': subscription_key}
-response  = requests.post(key_phrase_api_url, headers=headers, json=documents)
-key_phrases = response.json()
-pprint(key_phrases)
 ```
 
-
-    {'documents': [
-        {'keyPhrases': ['wonderful experience', 'staff', 'rooms'], 'id': '1'},
-        {'keyPhrases': ['food', 'terrible time', 'hotel', 'staff'], 'id': '2'},
-        {'keyPhrases': ['Monte Rainier', 'caminos'], 'id': '3'},
-        {'keyPhrases': ['carretera', 'tráfico', 'día'], 'id': '4'}],
-     'errors': []
-    }
-
-
-A JSON-objektum ismét megjeleníthető HTML-táblaként az alábbi kódsorok használatával:
-
+A JSON-objektum a következő kódsorokat használatával HTML-táblázatként jeleníthetők meg:
 
 ```python
-from IPython.display import HTML
 table = []
 for document in key_phrases["documents"]:
     text    = next(filter(lambda d: d["id"] == document["id"], documents["documents"]))["text"]    
@@ -220,12 +214,30 @@ for document in key_phrases["documents"]:
 HTML("<table><tr><th>Text</th><th>Key phrases</th></tr>{0}</table>".format("\n".join(table)))
 ```
 
+A következő néhány kódsor a dokumentumok nyelvének felismeréséhez meghívja a nyelvfelismerő API-t a Python nyelvű `requests` kódtár használatával.
+```python
+headers   = {'Ocp-Apim-Subscription-Key': subscription_key}
+response  = requests.post(key_phrase_api_url, headers=headers, json=documents)
+key_phrases = response.json()
+pprint(key_phrases)
+```
+
+A sikeres JSON-választ:
+```json
+{'documents': [
+    {'keyPhrases': ['wonderful experience', 'staff', 'rooms'], 'id': '1'},
+    {'keyPhrases': ['food', 'terrible time', 'hotel', 'staff'], 'id': '2'},
+    {'keyPhrases': ['Monte Rainier', 'caminos'], 'id': '3'},
+    {'keyPhrases': ['carretera', 'tráfico', 'día'], 'id': '4'}],
+    'errors': []
+}
+```
+
 ## <a name="identify-entities"></a>Entitások azonosítása
 
 Az Entities API azonosítja a szöveges dokumentumok jól ismert entitásait az [Entities metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) használatával. Az alábbi példa angol nyelvű dokumentumok entitásait azonosítja.
 
 Az entitáskapcsoló szolgáltatás szolgáltatásvégpontja az alábbi URL-címen érhető el:
-
 
 ```python
 entity_linking_api_url = text_analytics_base_url + "entities"
@@ -234,9 +246,7 @@ print(entity_linking_api_url)
 
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities
 
-
 A dokumentumgyűjtemény alább látható:
-
 
 ```python
 documents = {'documents' : [
@@ -244,7 +254,6 @@ documents = {'documents' : [
   {'id': '2', 'text': 'The Great Depression began in 1929. By 1933, the GDP in America fell by 25%.'}
 ]}
 ```
-
 A dokumentumokat most elküldheti a Text Analytics API-nak, hogy megkapja a választ.
 
 ```python
@@ -253,6 +262,7 @@ response  = requests.post(entity_linking_api_url, headers=headers, json=document
 entities = response.json()
 ```
 
+A sikeres JSON-választ:
 ```json
 {
     "Documents": [
@@ -412,9 +422,9 @@ entities = response.json()
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Szövegelemzés a Power BI-jal](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Szövegelemzés a Power bi-ban](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Lásd még 
 
- [A Text Analytics áttekintése](../overview.md)  
+ [Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

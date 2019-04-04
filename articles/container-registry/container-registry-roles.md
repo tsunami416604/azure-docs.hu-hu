@@ -3,16 +3,17 @@ title: Az Azure Container Registry - szerepkörök és engedélyek
 description: Azure szerepköralapú hozzáférés-vezérlés (RBAC) és az identitás és hozzáférés-kezelés (IAM) használatával adja meg a részletes engedélyeket az erőforrásokhoz az Azure container registry.
 services: container-registry
 author: dlepow
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 03/20/2019
 ms.author: danlep
-ms.openlocfilehash: 0148894bb013dc9f8cce595f14919f87d6292df8
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: b6e26bfa476c5c13e6e478f40c39978af61d83e7
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593624"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894268"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Az Azure Container Registry-szerepkörök és engedélyek
 
@@ -23,8 +24,9 @@ Az Azure Container Registry szolgáltatás támogat egy Azure-szerepkörök, eng
 | Tulajdonos | X | X | X | X | X | X |  |  
 | Közreműködő | X | X | X |  X | X | X |  |  
 | Olvasó | X |  |  | X |  |  |  |
-| AcrPush |  |  | X | X | X |  |  |  
+| AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | X |  |  |  |  
+| AcrDelete |  |  |  |  | X |  |  |
 | ACR-lemezképaláíró |  |  |  |  |  |  | X |
 
 ## <a name="differentiate-users-and-services"></a>Különbséget tenni a felhasználók és szolgáltatások
@@ -61,7 +63,7 @@ Lehetővé teszi `docker pull` egy nem-karanténba képfájl, illetve egy másik
 
 ## <a name="delete-image-data"></a>Rendszerkép-adatok törlése
 
-Lehetővé teszi [tárolórendszerképek vagy tárházak törlése](container-registry-delete.md).
+Lehetővé teszi [törölje a tárolórendszerképeket](container-registry-delete.md), vagy más törlése [összetevők támogatott](container-registry-image-formats.md) például a Helm-diagramok a beállításjegyzékből.
 
 ## <a name="change-policies"></a>Szabályzatok módosítása
 
