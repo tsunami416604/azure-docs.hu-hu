@@ -6,12 +6,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.openlocfilehash: b1259d8f15ac719db833bef5ae37a7c2e665b2fb
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 4a225dbc8e84d65a6ea25f63627599e5bb7d2ced
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480634"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905444"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat az Azure Monitor használatával
 
@@ -89,7 +89,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 Ez a szakasz azt mutatja be, hogyan használható a PowerShell-parancsok létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat. A cikkben szereplő példák bemutatják, hogyan használhatja az Azure Monitor-parancsmagok a klasszikus metrikariasztásokat.
 
-1. Ha még nem tette, PowerShell beállítása a futást a számítógépen. További információkért lásd: [telepítése és konfigurálása PowerShell](/powershell/azure/overview). Emellett áttekintheti a teljes listáját, az Azure Monitor PowerShell-parancsmagok [Azure Monitor (elemzés) parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.insights).
+1. Ha még nem tette, PowerShell beállítása a futást a számítógépen. További információkért lásd: [telepítése és konfigurálása PowerShell](/powershell/azure/overview). Emellett áttekintheti a teljes listáját, az Azure Monitor PowerShell-parancsmagok [Azure Monitor (elemzés) parancsmagok](https://docs.microsoft.com/powershell/module/az.applicationinsights).
 
 2. Első lépésként jelentkezzen be az Azure-előfizetéshez.
 

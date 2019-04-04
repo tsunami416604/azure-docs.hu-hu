@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3e217e0e3367c6e1200567f589749fec9e626da8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5f9cd5edfb360da507320306314e67ac61503132
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817456"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916835"
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation-adatok kezelése
 Ez a cikk egy Azure Automation környezet kezeléséhez több témaköröket tartalmazza.
@@ -45,17 +45,17 @@ Azonban ha szeretne egy hosszabb ideig megőrizni az adatokat, is továbbíthatj
 Ha töröl egy automation-fiókot a Microsoft Azure-ban, a rendszer törli a fiókban lévő összes objektumra, többek között a runbookok, modulok, konfigurációk, beállítások, feladatokat és eszközöket. Az objektumok nem állítható helyre, miután a fiókot törölték.  Az alábbi információkat használhatja a biztonsági mentés az automation-fiók tartalmát azok törlése előtt. 
 
 ### <a name="runbooks"></a>Runbookok
-A runbookok exportálhatók. a parancsfájlok vagy az Azure portal használatával, vagy a [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) parancsmagot a Windows PowerShellben.  Ezek a parancsfájlok importálható egy másik automation-fiókba az [létrehozása vagy importálása a Runbook](https://msdn.microsoft.com/library/dn643637.aspx).
+A runbookok exportálhatók. a parancsfájlok vagy az Azure portal használatával, vagy a [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) parancsmagot a Windows PowerShellben.  Ezek a parancsfájlok importálható egy másik automation-fiókba az [létrehozása vagy importálása a Runbook](/previous-versions/azure/dn643637(v=azure.100)).
 
 ### <a name="integration-modules"></a>Integrációs modulok
 Az Azure Automation integrációs modulok nem exportálhatja.  Biztosítania kell, hogy azok elérhetők kívül az automation-fiókot.
 
 ### <a name="assets"></a>Objektumok
-Nem lehet exportálni [eszközök](https://msdn.microsoft.com/library/dn939988.aspx) az Azure Automationben.  Az Azure portal használatával kell vegye figyelembe a változókat, hitelesítő adatok, tanúsítványok, kapcsolatok és ütemezések részleteit.  Ezután manuálisan kell létrehoznia egy másik automation alkalmazásba importált runbookok által használt összes olyan adategység.
+Nem lehet exportálni [eszközök](/previous-versions/azure/dn939988(v=azure.100)) az Azure Automationben.  Az Azure portal használatával kell vegye figyelembe a változókat, hitelesítő adatok, tanúsítványok, kapcsolatok és ütemezések részleteit.  Ezután manuálisan kell létrehoznia egy másik automation alkalmazásba importált runbookok által használt összes olyan adategység.
 
 Használhat [Azure parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) részleteit nem titkosított eszközökre, és menti őket a későbbiekben beolvasni, vagy azzal egyenértékű objektumok létrehozása egy másik automation-fiókban.
 
-Az érték a titkosított változók vagy a jelszó mező parancsmagokkal hitelesítő adatok nem olvashatók be.  Ha nem ismeri ezeket az értékeket, majd a runbookok kérheti a [Get-AutomationVariable](https://msdn.microsoft.com/library/dn940012.aspx) és [Get-AutomationPSCredential](https://msdn.microsoft.com/library/dn940015.aspx) tevékenységeket.
+Az érték a titkosított változók vagy a jelszó mező parancsmagokkal hitelesítő adatok nem olvashatók be.  Ha nem ismeri ezeket az értékeket, majd a runbookok kérheti a [Get-AutomationVariable](/previous-versions/azure/dn940012(v=azure.100)) és [Get-AutomationPSCredential](/previous-versions/azure/dn940015(v=azure.100)) tevékenységeket.
 
 Tanúsítványok nem exportálhatja az Azure Automationben.  Biztosítania kell, hogy a tanúsítványok érhetők el Azure-on kívül.
 

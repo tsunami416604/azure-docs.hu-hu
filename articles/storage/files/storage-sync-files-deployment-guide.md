@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: eeb9765cfd6242ecdc14dd59dd9b5337cc56c597
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a5d6f7757b5a4a5a2048c9822c4f52bee6d19bfe
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481215"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905120"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -47,16 +47,16 @@ Javasoljuk, hogy olvasási [Azure Files üzembe helyezésének megtervezése](st
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>A Windows Server előkészítése az Azure File Sync használatára
 Tiltsa le minden olyan kiszolgálón, az Azure File Sync, többek között az egyes kiszolgáló-csomópont egy feladatátvevő fürtben használni kívánt **az Internet Explorer fokozott biztonsági beállításai**. Ez azért szükséges, csak a kezdeti kiszolgálói regisztrációhoz. A kiszolgáló regisztrációja után újra engedélyezheti.
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# [<a name="portal"></a>Portál](#tab/azure-portal)
 1. Nyissa meg a Kiszolgálókezelőt.
 2. Kattintson a **helyi kiszolgáló**:  
-    ![A Server Manager felhasználói felületén bal oldalán a "helyi kiszolgáló"](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
+    ![A "Helyi kiszolgáló" a Kiszolgálókezelő felhasználói felület bal oldalán](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. A **Tulajdonságok** lapon, válassza ki az **Internet Explorer fokozott biztonsági beállításai** hivatkozást.  
-    ![A Server Manager felhasználói felületén a "Internet Explorer – fokozott biztonsági beállítások" panelen](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
+    ![Az "Internet Explorer – fokozott biztonsági beállítások" panel a Kiszolgálókezelőben](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
 4. Az a **az Internet Explorer fokozott biztonsági beállításai** párbeszédpanelen jelölje ki **ki** a **rendszergazdák** és **felhasználók**:  
-    ![Az Internet Explorer fokozott biztonsági beállításai pop-ablak "Kikapcsolva" a kijelölt](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
+    ![Az Internet Explorer fokozott biztonsági beállítások felugró ablak a "Kikapcsolva" beállítással](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 Az Internet Explorer fokozott biztonsági beállítások letiltása, egy rendszergazda jogú PowerShell-munkamenetben hajtsa végre az alábbiakat:
 
 ```powershell
@@ -82,7 +82,7 @@ Az üzembe helyezés az Azure File Sync kezdődik elhelyezése egy **Társzinkro
 > [!Note]
 > A Storage Sync Service a hozzáférési engedélyek öröklődnek az előfizetés és erőforráscsoport rendelkezik lett üzembe helyezve. Azt javasoljuk, hogy alaposan ellenőrizze ki férhet hozzá. Írási hozzáféréssel rendelkező entitások megkezdheti a kiszolgálók regisztrálva új fájlkészleteket szinkronizálása ezt a tárolót a szinkronizálási szolgáltatás és flow az Azure storage, amely hozzáférhető annak azokat az adatokat.
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# [<a name="portal"></a>Portál](#tab/azure-portal)
 A Storage Sync Service telepítése, keresse fel a [az Azure portal](https://portal.azure.com/), kattintson a *erőforrás létrehozása* , és keressen rá az Azure File Sync. A keresési eredmények között, válassza ki a **Azure File Sync**, majd válassza ki **létrehozása** megnyitásához a **Társzinkronizálási üzembe helyezése** fülre.
 
 A megnyíló panelen adja meg a következőket:
@@ -94,7 +94,7 @@ A megnyíló panelen adja meg a következőket:
 
 Ha elkészült, válassza ki a **létrehozás** a Storage Sync Service telepítése.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 Az Azure File Sync parancsmagokat implementálására, mielőtt szüksége lesz egy DLL-fájl importálását, és hozzon létre egy Azure-fájlszinkronizálás felügyeleti környezet. Ez azért szükséges, mert a parancsmagokat az Azure File Sync egyelőre nem része az Azure PowerShell-modulok.
 
 > [!Note]  
@@ -158,7 +158,7 @@ Login-AzureRmStorageSync `
     -Location $region
 ```
 
-Az Azure File Sync-környezet létrehozása után a `Login-AzureR,StorageSync` parancsmaggal hozhat létre a Storage Sync Service. Ne felejtse el `<my-storage-sync-service>` a Storage Sync Service kívánt nevét.
+Az Azure File Sync-környezet létrehozása után a `Login-AzureRmStorageSync` parancsmaggal hozhat létre a Storage Sync Service. Ne felejtse el `<my-storage-sync-service>` a Storage Sync Service kívánt nevét.
 
 ```powershell
 $storageSyncName = "<my-storage-sync-service>"
@@ -170,7 +170,7 @@ New-AzureRmStorageSyncService -StorageSyncServiceName $storageSyncName
 ## <a name="install-the-azure-file-sync-agent"></a>Az Azure File Sync-ügynök telepítése
 Az Azure File Sync ügynök egy letölthető csomag, amely lehetővé teszi a Windows Server szinkronizálását Azure-fájlmegosztással. 
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# [<a name="portal"></a>Portál](#tab/azure-portal)
 Az ügynököt a letöltheti a [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257). Ha a letöltés befejeződött, kattintson duplán az MSI-csomag az Azure File Sync ügynök telepítésének indításához.
 
 > [!Important]  
@@ -182,7 +182,7 @@ Javasoljuk, hogy tegye a következőket:
 
 Az Azure File Sync ügynök telepítésének befejezését követően a kiszolgáló regisztrációs felhasználói felület automatikusan megnyílik. Mielőtt regisztrálná; rendelkeznie kell a Társzinkronizálási szolgáltatás Tekintse meg a következő szakaszban a Társzinkronizálási szolgáltatás létrehozása.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 Futtassa a következő PowerShell-kódot az operációs rendszer az Azure File Sync ügynök megfelelő verzióját töltse le és telepítse azt a rendszer.
 
 > [!Important]  
@@ -228,7 +228,7 @@ A Windows Server regisztrálásával a Társzinkronizálási szolgáltatásra me
 > [!Note]
 > Kiszolgáló regisztrálása Azure hitelesítő adatait használja a Storage Sync Service és a Windows Server, de ezt követően a kiszolgáló hoz létre, illetve a saját identitás, amely érvényes mindaddig, amíg a kiszolgáló marad regisztrált közötti megbízhatósági kapcsolat létrehozásához és a aktuális közös hozzáférésű Jogosultságkód (SAS-tároló) token érvényes. Egy új SAS-jogkivonat nem lehet kiadni a kiszolgálón a kiszolgáló regisztrációjának törlése, így az a kiszolgáló elérését az Azure-fájlmegosztások, bármely szinkronizálás leállítása eltávolítása után.
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# [<a name="portal"></a>Portál](#tab/azure-portal)
 A kiszolgáló regisztrációs felhasználói felület automatikusan megnyitja az Azure File Sync ügynök telepítése után. Ha nem, manuálisan is megnyithatja, a fájlok helyéről: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Amikor megnyílik a kiszolgáló regisztrációs felhasználói felületén, válassza ki a **bejelentkezési** megkezdéséhez.
 
 Miután bejelentkezett, a rendszer felszólítja a következő információkat:
@@ -241,7 +241,7 @@ Miután bejelentkezett, a rendszer felszólítja a következő információkat:
 
 Miután kiválasztotta a megfelelő információkat, válassza ki a **regisztrálása** a kiszolgáló regisztráció befejezéséhez. A regisztrációs folyamat részeként a rendszer újabb bejelentkezésre kéri fel.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 ```powershell
 $registeredServer = Register-AzureRmStorageSyncServer -StorageSyncServiceName $storageSyncName
 ```
@@ -256,7 +256,7 @@ Felhőbeli végpont az Azure-fájlmegosztások mutató. Összes kiszolgálói v�
 > [!Important]  
 > Felhőbeli végpont vagy a szinkronizálási csoportban lévő kiszolgálói végpont módosításokat végezheti el, és a fájlok szinkronizálta már a szinkronizálási csoport végpontja. Ha módosítja a felhőbeli végponthoz (Azure-fájlmegosztás) közvetlenül, módosítások először az Azure File Sync módosítás észlelési feladat deríteniük. A módosítás észlelési feladat csak egyszer 24 óránként indul a felhőbeli végpont. További információkért lásd: [– gyakori kérdések az Azure Files](storage-files-faq.md#afs-change-detection).
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# [<a name="portal"></a>Portál](#tab/azure-portal)
 A szinkronizálási csoport létrehozása a [az Azure portal](https://portal.azure.com/)nyissa meg a Storage Sync Service, és válassza ki **+ szinkronizálási csoport**:
 
 ![Új szinkronizálási csoport létrehozása az Azure portálon](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
@@ -268,7 +268,7 @@ A megnyíló panelen adja meg a következő információkat a szinkronizálási 
 - **Storage-fiók**: Ha **válassza ki a tárfiókot**, egy másik ablaktáblán jelenik meg, amelyben kiválaszthatja a tárfiók, amely rendelkezik az Azure-fájlmegosztást, amelyet szeretne szinkronizálni.
 - **Azure-fájlmegosztás**: Az Azure-, amellyel szinkronizálni kívánt fájlmegosztás neve.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 A szinkronizálási csoport létrehozásához hajtsa végre az alábbi PowerShell-lel. Ne felejtse el kicserélni `<my-sync-group>` a szinkronizálási csoport kívánt nevét.
 
 ```powershell
@@ -318,7 +318,7 @@ New-AzureRmStorageSyncCloudEndpoint `
 ## <a name="create-a-server-endpoint"></a>Kiszolgálói végpont létrehozása
 A kiszolgálói végpont a regisztrált kiszolgálón egy konkrét helyet jelöl, például egy mappát egy kiszolgálói köteten. Kiszolgálói végpont egy regisztrált kiszolgáló (ahelyett, hogy egy csatlakoztatott megosztás) elérési útnak kell lennie, és a felhőbeli rétegezést használni, az elérési út egy nem rendszer-köteten kell lennie. Csatlakoztatott hálózati tárolóeszközök (NAS) nem támogatott.
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# [<a name="portal"></a>Portál](#tab/azure-portal)
 Kiszolgálói végpont hozzáadásához nyissa meg a szinkronizálási újonnan létrehozott csoportot, majd **kiszolgálói végpont felvétele**.
 
 ![Új kiszolgálói végpontok hozzáadása a szinkronizálási csoport panelen](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
@@ -332,7 +332,7 @@ A **Kiszolgálói végpont felvétele** panelen adja meg a következő informác
 
 A kiszolgálói végpont hozzáadásához válassza **létrehozás**. Vannak, a fájlok mostantól szinkronban tartani az Azure-fájlmegosztást és a Windows Server. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 Hajtsa végre a következő PowerShell-parancsokat a kiszolgálói végpont létrehozása, és ne felejtse el `<your-server-endpoint-path>` és `<your-volume-free-space>` a kívánt értékekkel.
 
 ```powershell

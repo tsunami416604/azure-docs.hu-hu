@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 18e65fc51f99aa19162daa3f6e5b9b7012214f64
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 347ea75673336574f7517f2f7d0c802b0ed16560
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765543"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918297"
 ---
 # <a name="hybrid-connections-overview"></a>Hibrid kapcsolatok áttekintése
 
@@ -94,9 +94,9 @@ A hibrid kapcsolatok a következő TCP-portokat használják:
 [Create and Manage Hybrid Connections (Hibrid kapcsolatok létrehozása és felügyelete)](integration-hybrid-connection-create-manage.md)
 
 ## <a name="see-also"></a>Lásd még:
-[REST API a BizTalk Services felügyeletéhez a Microsoft Azure-ban](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
-[A BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)  
+[REST API a BizTalk Services felügyeletéhez a Microsoft Azure](/previous-versions/azure/reference/dn232347(v=azure.100))  
+[BizTalk Services: Táblázat a termékváltozatokról](biztalk-editions-feature-chart.md)  
 [BizTalk-szolgáltatás létrehozása](biztalk-provision-services.md)  
-[A BizTalk Services: Irányítópult, figyelés és méret lapok](biztalk-dashboard-monitor-scale-tabs.md)  
+[BizTalk Services: Irányítópult, figyelés és méret lapok](biztalk-dashboard-monitor-scale-tabs.md)  
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png

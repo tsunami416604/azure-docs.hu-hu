@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec039beecdcfa6dacd19e5910209c58f13543fce
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1ca57746d1b13d2020f78d3c527e7d0c7a444769
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199884"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918399"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>Azure Active Directory-bérlői alkalmazások megtekintése
 
@@ -39,23 +39,19 @@ Az Azure AD-bérlői alkalmazások az Azure Portal **Vállalati alkalmazások** 
 
 A bérlői alkalmazások megkeresésének lépései:
 
-1. Az **[Azure Portal](https://portal.azure.com)** bal oldali navigációs paneljén kattintson az **Azure Active Directory** elemre. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, válassza a bal oldali navigációs panelen, **Azure Active Directory**. 
 
-2. Az Azure Active Directory panelen kattintson a **Vállalati alkalmazások** elemre. 
+2. Az a **Azure Active Directory** ablaktáblán válassza előbb **vállalati alkalmazások**. 
 
-3. Az **Alkalmazás típusa** legördülő listából válassza a **Minden alkalmazás** lehetőséget, majd kattintson az **Alkalmaz** gombra. Ekkor egy véletlenszerűen kiválasztott minta jelenik meg a bérlői alkalmazásokból.
-
-    ![Vállalati alkalmazások](media/view-applications-portal/open-enterprise-apps.png)
+3. A a **alkalmazástípus** legördülő menüjében válassza **minden alkalmazás**, és válassza a **alkalmaz**. Ekkor egy véletlenszerűen kiválasztott minta jelenik meg a bérlői alkalmazásokból.
    
-4. További alkalmazások megtekintéséhez kattintson a **Továbbiak megjelenítése** gombra a lista alján. A bérlői alkalmazások számától függően a listában való görgetés helyett hasznosabbnak bizonyulhat [az adott alkalmazás megkeresése](#search-for-a-tenant-application).
+4. További alkalmazások megtekintéséhez jelölje ki **Továbbiak betöltése** a lista alján. A bérlői alkalmazások számától függően a listában való görgetés helyett hasznosabbnak bizonyulhat [az adott alkalmazás megkeresése](#search-for-a-tenant-application).
 
 ## <a name="select-viewing-options"></a>Megtekintési beállítások kiválasztása
 
-Ebben a szakaszban kiválaszthatja a keresési beállításokat.
+Válassza ki a beállítások szerint, amit keres.
 
-1. Az alkalmazásokat megtekintheti az **Alkalmazás típusa**, az **Alkalmazás állapota** és az **Alkalmazás láthatósága** alapján. 
-
-    ![Keresési beállítások](media/view-applications-portal/search-options.png)
+1. Megtekintheti, hogy az alkalmazások által **alkalmazástípus**, **Alkalmazásállapot**, és **alkalmazás láthatósága**. 
 
 2. Az **Alkalmazás típusa** területen az alábbi beállítások egyikét választhatja ki:
 
@@ -65,30 +61,30 @@ Ebben a szakaszban kiválaszthatja a keresési beállításokat.
 
 3. Az **Alkalmazás állapota** területen a **Bármely**, **Letiltva** vagy **Engedélyezve** lehetőségek közül választhat. A **Bármely** beállítás magában foglalja a letiltott és az engedélyezett alkalmazásokat is.
 
-4. Az **Alkalmazás láthatósága** területen a **Bármely** vagy a **Rejtett** lehetőségek közül választhat. A **Rejtett** beállítással olyan alkalmazásokat jeleníthet meg, amelyek megtalálhatók a bérlőn, de a felhasználók számára nem láthatók.
+4. Az **Alkalmazás láthatósága** területen a **Bármely** vagy a **Rejtett** lehetőségek közül választhat. A **rejtett** beállítást választja, megjelenik az alkalmazásokat, amelyek a bérlőbe, de nem látható a felhasználók számára.
 
-5. A kívánt beállítások megadását követően kattintson az **Alkalmaz** gombra.
+5. Miután kiválasztotta a kívánt beállításokat, válassza ki a **alkalmaz**.
  
 
 ## <a name="search-for-a-tenant-application"></a>Bérlői alkalmazás keresése
 
-Egy adott alkalmazást az alábbi lépésekkel kereshet meg:
+Egy adott alkalmazás keresése:
 
-1. Az **Alkalmazás típusa** menüben válassza a **Minden alkalmazás** lehetőséget, majd kattintson az **Alkalmaz** gombra.
+1. Az a **alkalmazástípus** menüjében válassza **minden alkalmazás**, és válassza a **alkalmaz**.
 
-2. Adja meg a megkeresni kívánt alkalmazás nevét. Ha az alkalmazás hozzá lett adva az Azure AD-bérlőhöz, az megjelenik a keresési eredmények között. Ebben a példában az látható, hogy a GitHub nem lett hozzáadva a bérlői alkalmazásokhoz.
+2. Adja meg a megkeresni kívánt alkalmazás nevét. Ha az alkalmazás az Azure AD-bérlő van adva, megjelenik a keresési eredmények között. Ez a példa bemutatja, hogy a GitHub még nem sikerült hozzáadni a bérlő alkalmazásokhoz.
 
     ![Alkalmazás keresése](media/view-applications-portal/search-for-tenant-application.png)
 
-3. Próbálkozzon az alkalmazásnév első néhány betűjének beírásával.  Ebben a példában az összes olyan alkalmazás látható, amelyek neve a **Sales** sztringgel kezdődik.
+3. Próbálkozzon az alkalmazásnév első néhány betűjének beírásával. Ebben a példában az összes olyan alkalmazás látható, amelyek neve a **Sales** sztringgel kezdődik.
 
     ![Keresés előtaggal](media/view-applications-portal/search-by-prefix.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megismerte, hogyan tekintheti meg az Azure AD-bérlőn lévő alkalmazásokat, illetve hogyan szűrheti az alkalmazásokat típus, állapot és láthatóság szerint. Emellett azt is megtanulta, hogyan kereshet meg egy adott alkalmazást.
+Ebből a gyors útmutatóból megtudhatta, hogyan az alkalmazások megtekintéséhez az Azure AD-bérlővel. Megtudhatta, hogyan az alkalmazások által alkalmazástípus, állapotát és látható-e a lista szűréséhez. Emellett azt is megtanulta, hogyan kereshet meg egy adott alkalmazást.
 
-Most, hogy megtalálta a keresett alkalmazást, folytathatja a [további bérlői alkalmazások hozzáadását](add-application-portal.md) ismertető oktatóanyaggal, vagy az alkalmazásra kattintva megtekintheti vagy szerkesztheti a tulajdonságokat és a konfigurációs beállításokat. Konfigurálhat például egyszeri bejelentkezést. 
+Most, hogy az alkalmazás talált, keresnek a továbbra is [adja hozzá a bérlő több alkalmazás](add-application-portal.md). Másik lehetőségként kiválaszthatja, hogy az alkalmazás megtekintéséhez vagy módosításához a tulajdonságok és a konfigurációs beállításokat. Konfigurálhat például egyszeri bejelentkezést. 
 
 > [!div class="nextstepaction"]
 > [Egyszeri bejelentkezés konfigurálása](configure-single-sign-on-portal.md)

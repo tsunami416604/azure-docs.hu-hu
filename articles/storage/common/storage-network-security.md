@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c475fc4d958044413ae7566c027c0e796f1d699a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 27ba1a1b5fbc0c7533da3634ec8a435468704c33
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486393"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906089"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -241,7 +241,7 @@ Minden tárfióknak támogatja a legfeljebb 100 IP hálózati szabályok, amelye
 
 Való hozzáférés biztosítása a helyszíni hálózat egy IP-hálózati szabállyal a tárfiókhoz, meg kell adnia az internetkapcsolattal rendelkező, a hálózat által használt IP-címek. Segítségért forduljon a rendszergazdához.
 
-Használhat [ExpressRoute](/azure/expressroute/expressroute-introduction) , a hálózat csatlakoztatása az Azure-hálózatot. Itt minden kapcsolatnak két nyilvános IP-cím van beállítva. A Microsoft Edge tekinthet meg, és a használata [Azure nyilvános társviszony-létesítés](/azure/expressroute/expressroute-circuit-peerings) hasonlóan az Azure Storage a Microsoft Serviceshez való csatlakozáshoz. Engedélyezi a kommunikációt az Azure Storage, a nyilvános IP-címét a Kapcsolatcsoportok IP hálózati szabályokat létrehozni. Az ExpressRoute-kapcsolatcsoport nyilvános IP-címek keresése [nyisson egy támogatási jegyet az expressroute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon keresztül.
+Ha használ [ExpressRoute](/azure/expressroute/expressroute-introduction) a helyszíni eredetű nyilvános társviszony-létesítéshez vagy Microsoft társviszony-létesítés, lesz azonosítania kell a használt NAT IP-címeket. Nyilvános társviszony-létesítés esetén alapértelmezés szerint minden ExpressRoute-kapcsolatcsoport két NAT IP-címet használ, amelyeket akkor alkalmaz az Azure-szolgáltatások forgalmára, amikor a forgalom belép a Microsoft Azure gerinchálózatába. Microsoft-társviszony-létesítés esetén a használt NAT IP-cím(ek)et vagy az ügyfél vagy a szolgáltató adja meg. A szolgáltatási erőforrások hozzáférésének engedélyezéséhez engedélyeznie kell ezeket a nyilvános IP-címeket az erőforrás IP-tűzfalának beállításai között. A nyilvános társviszony-létesítési ExpressRoute-kapcsolatcsoport IP-címeinek megkereséséhez [hozzon létre egy támogatási jegyet az ExpressRoute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon. További információk az [ExpressRoute NAT nyilvános és Microsoft-társviszony-létesítéséről](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering).
 
 ### <a name="managing-ip-network-rules"></a>IP-hálózati szabályok kezelése
 

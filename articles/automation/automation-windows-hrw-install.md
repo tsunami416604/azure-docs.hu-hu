@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0a32f45326eb307bc31d10f4efb842d811a38c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7c6d8fbe54d89fc587c8841b8983d7fdcba29b7d
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842500"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916462"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Egy Windows hibrid Runbook-feldolgozó üzembe helyezése
 
@@ -134,9 +134,9 @@ A telepítés részletes információt kap, használja a **-Verbose** felülette
 
 Runbookok a tevékenységeket és az Azure Automation környezetében telepített modulok meghatározott parancsmagok bármelyikét használhatja. Ezek a modulok nem automatikusan települnek az a helyszíni számítógépeken, ezért kell manuálisan telepítenie. A kivétel ez alól az Azure-modul, amely alapértelmezés szerint telepítve van, és az összes Azure-szolgáltatások és a tevékenységek parancsmagok hozzáférést biztosít az Azure Automation.
 
-Mivel az elsődleges célja, hogy a hibrid Runbook-feldolgozó szolgáltatás a helyi erőforrások kezelésére, nagy valószínűséggel telepítenie kell a modulokat, amelyek támogatják ezeket az erőforrásokat. Windows PowerShell-modul telepítéséről további információkért lásd: [modulok telepítése](https://msdn.microsoft.com/library/dd878350.aspx). 
+Mivel az elsődleges célja, hogy a hibrid Runbook-feldolgozó szolgáltatás a helyi erőforrások kezelésére, nagy valószínűséggel telepítenie kell a modulokat, amelyek támogatják ezeket az erőforrásokat. Windows PowerShell-modul telepítéséről további információkért lásd: [modulok telepítése](/powershell/developer/windows-powershell). 
 
-Telepített modulok által hivatkozott helyen kell lennie a **PSModulePath** környezeti változót, hogy a hibrid feldolgozó automatikusan importálhatja őket. További információkért lásd: [módosítása a PSModulePath telepítési útvonal](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx).
+Telepített modulok által hivatkozott helyen kell lennie a **PSModulePath** környezeti változót, hogy a hibrid feldolgozó automatikusan importálhatja őket. További információkért lásd: [módosítása a PSModulePath telepítési útvonal](/powershell/developer/windows-powershell).
 
 ## <a name="next-steps"></a>További lépések
 

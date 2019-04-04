@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2019
 ms.author: cwatson
-ms.openlocfilehash: 9eba59bcdc9974519fc1ed37078a205eff28f116
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: fe0d0f0baa2b3d1c08e871541dce1511e00f7f87
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58653082"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917056"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Megismerheti, hogyan alkalmazza a a Red Hat Linux Enterprise szoftvert foglalási terv kedvezményt van az Azure-hoz
 
@@ -38,7 +38,7 @@ Például ha egy virtuális Gépet a 3 vagy 4 vcpu-k vásárol egy tervet a Red 
 - 1-3 vagy 4 Vcpu, üzembe helyezett virtuális gép
 - vagy 0.77 vagy hamarosan 77: % 5 vagy több vcpu-k rendelkező virtuális gépek.
 
-Az 5 vagy több Vcpu arány, 2.6-os. Így a Red Hat vcpu-k 5 vagy több virtuális gép a Foglalás szoftverköltség, ami körülbelül 77 % csak része ismerteti.
+Az 5 vagy több Vcpu arány, 2.6-os. Így a Red Hat vcpu-k 5 vagy több virtuális gép a Foglalás egy szoftverköltség, ami körülbelül 77 % csak része ismerteti.
 
 ## <a name="understand-red-hat-vm-usage-before-you-buy"></a>Red Hat virtuális gép használatának megértéséhez, vásárlás előtt
 
@@ -160,7 +160,7 @@ Foglalások kapcsolatos további információkért tekintse meg a következő ci
 
 - [Mik azok a foglalást az Azure-hoz](billing-save-compute-costs-reservations.md)
 - [Fizessen elő az Azure foglalást a Red Hat szoftvercsomagok – alap](../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Azure-foglalások kezelése](billing-manage-reserved-vm-instance.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)

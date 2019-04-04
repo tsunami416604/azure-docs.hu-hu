@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/20/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e54ea079789ddfb2a6d85f808453589637522f1d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d55ae4077b3ec14cb8dc2226714b094574ed9522
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896177"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905647"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>Oktatóanyag: A Dropbox Business az Azure Active Directory-integráció
 
@@ -154,7 +154,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Dropbox Business, ha
 
     ![Egyszeri bejelentkezés konfigurálása](./media/dropboxforbusiness-tutorial/configure5.png "egyszeri bejelentkezés konfigurálása")
 
-    a. Válassza ki **szükséges** mint lehetőséget a legördülő menüből a **egyszeri bejelentkezési**.
+    a. Válassza ki **szükséges** beállítás lehetőséget a legördülő menüből a **egyszeri bejelentkezési**.
 
     b. Kattintson a **bejelentkezési URL-hozzáadása** és a a **identitásszolgáltató bejelentkezési URL-címe szolgáltató** szövegmezőjébe illessze be a **bejelentkezési URL-cím** érték, amely az Azure Portalon, és ezután válassza másolta **Kész**.
 
@@ -234,7 +234,7 @@ Ha rákattint a Dropbox Business csempe a hozzáférési panelen, meg kell autom
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

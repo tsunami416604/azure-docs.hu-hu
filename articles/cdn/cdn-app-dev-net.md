@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5379586355ece98af6295236d6cbd09cb31c742b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 838c76e6a383b61ff465f3ed7506af34c8cd01d4
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38454464"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916614"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Ismerkedés az Azure CDN-fejlesztéssel
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "38454464"
 > 
 > 
 
-Használhatja a [Azure CDN-kódtár a .NET-hez](https://msdn.microsoft.com/library/mt657769.aspx) létrehozása és a CDN-profilok és a végpontok felügyeletének automatizálására.  Ez az oktatóanyag végigvezeti egy egyszerű .NET Konzolalkalmazás, amely bemutatja az elérhető műveletek számos létrehozását.  Ebben az oktatóanyagban nem célja, hogy a .NET-hez, részletesen leírja az Azure CDN-kódtár minden aspektusát.
+Használhatja a [Azure CDN-kódtár a .NET-hez](/dotnet/api/overview/azure/cdn) létrehozása és a CDN-profilok és a végpontok felügyeletének automatizálására.  Ez az oktatóanyag végigvezeti egy egyszerű .NET Konzolalkalmazás, amely bemutatja az elérhető műveletek számos létrehozását.  Ebben az oktatóanyagban nem célja, hogy a .NET-hez, részletesen leírja az Azure CDN-kódtár minden aspektusát.
 
 Visual Studio 2015-oktatóanyag elvégzéséhez szüksége lesz.  [A Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) szabadon letölthető.
 
@@ -155,7 +155,7 @@ Folytassuk a program írt alapszintű struktúrát.
 
 Most, hogy a program az alapszintű struktúrát írt, hogy hozzon létre meghívott módszerek a `Main` metódust.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 Ahhoz, hogy az Azure CDN Management Library, kell az egyszerű szolgáltatásnév hitelesítése és a egy hitelesítési jogkivonat beszerzése.  Ez a módszer adal-t használja a jogkivonatot beolvasni.
 
 ```csharp
@@ -338,7 +338,7 @@ Majd ellenőrizheti, hogy az utasításokat a többi, a program futtatásához.
 ## <a name="next-steps"></a>További lépések
 A kész projektet ebben a bemutatóban a megtekintéséhez [töltse le a mintát](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c).
 
-A .NET-hez az Azure CDN Management Library további dokumentációért megkereséséhez tekintse meg a [leírása az MSDN](https://msdn.microsoft.com/library/mt657769.aspx).
+A .NET-hez az Azure CDN Management Library további dokumentációért megkereséséhez tekintse meg a [leírása az MSDN](/dotnet/api/overview/azure/cdn).
 
 A CDN-erőforrások kezelése a [PowerShell](cdn-manage-powershell.md).
 

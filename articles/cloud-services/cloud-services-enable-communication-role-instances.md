@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 4adc6ef6e7dd445eea3fd567072a995e3ac07dda
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539632"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918161"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Az azure-szerepkörpéldányok kommunikáció engedélyezése
 A felhőszolgáltatásokhoz tartozó szerepkörök belső és külső kapcsolatok keresztül kommunikálnak. A külső kapcsolatokat az úgynevezett **bemeneti végpontok** közben belső kapcsolatok nevezzük **belső végpont**. Ez a témakör ismerteti, hogyan lehet módosítani a [szolgáltatásdefiníciós](cloud-services-model-and-package.md#csdef) végpontok létrehozásához.
 
 ## <a name="input-endpoint"></a>Bemeneti végpont
-A bemeneti végpont szeretné közzétenni a külső port használatos. Protokoll típusa és a végpont, amely mind a belső és külső portok a végpont majd alkalmazza a portot kell megadni. Ha azt szeretné, az a végpont egy másik belső portot is megadhat a [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) attribútum.
+A bemeneti végpont szeretné közzétenni a külső port használatos. Protokoll típusa és a végpont, amely mind a belső és külső portok a végpont majd alkalmazza a portot kell megadni. Ha azt szeretné, az a végpont egy másik belső portot is megadhat a [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#InputEndpoint) attribútum.
 
 A bemeneti végpont használhatja az alábbi protokollok: **http, https, tcp, udp**.
 
@@ -96,7 +96,7 @@ Az Azure által felügyelt erőforrástár szerepkörpéldány kommunikáljanak 
 > 
 > 
 
-Használhatja a [példányok](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) szerepkör példányai beolvasására szolgáló tulajdonság. Első alkalommal használják a [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) küldhet vissza egy hivatkozást az aktuális szerepkörpéldány, majd a [szerepkör](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) tulajdonságát adja vissza egy hivatkozást a szerepkör magát.
+Használhatja a [példányok](/previous-versions/azure/reference/ee741904(v=azure.100)) szerepkör példányai beolvasására szolgáló tulajdonság. Első alkalommal használják a [CurrentRoleInstance](/previous-versions/azure/reference/ee741907(v=azure.100)) küldhet vissza egy hivatkozást az aktuális szerepkörpéldány, majd a [szerepkör](/previous-versions/azure/reference/ee741918(v=azure.100)) tulajdonságát adja vissza egy hivatkozást a szerepkör magát.
 
 Egy szerepkörpéldány programozott módon a .NET SDK használatával csatlakozik, esetén viszonylag egyszerű, és hozzáférést a végpont adatait. Például miután már csatlakozott egy adott szerepkör környezethez, kaphat egy adott végpontnak, ezzel a kóddal, a port:
 
@@ -111,7 +111,7 @@ A **példányok** tulajdonság gyűjteményét adja vissza **RoleInstance** obje
 > 
 > 
 
-Annak megállapításához, a belső végpont egy szerepkörpéldány a portnak a számát, használhatja a [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) tulajdonságát adja vissza egy szótárobjektum, amely tartalmazza a végpont neve és a megfelelő IP-címek és portok. A [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) tulajdonság IP-cím és port egy megadott végponton adja vissza. A **PublicIPEndpoint** tulajdonságot adja vissza egy elosztott terhelésű végpont portja. Az IP cím része az **PublicIPEndpoint** tulajdonság nincs használatban.
+Annak megállapításához, a belső végpont egy szerepkörpéldány a portnak a számát, használhatja a [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) tulajdonságát adja vissza egy szótárobjektum, amely tartalmazza a végpont neve és a megfelelő IP-címek és portok. A [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) tulajdonság IP-cím és port egy megadott végponton adja vissza. A **PublicIPEndpoint** tulajdonságot adja vissza egy elosztott terhelésű végpont portja. Az IP cím része az **PublicIPEndpoint** tulajdonság nincs használatban.
 
 Íme egy példa, amely a szerepkörpéldányok ismétlődik.
 
@@ -368,7 +368,7 @@ Csak lehetővé teszi, hogy a hálózati forgalom **WebRole1** való **WorkerRol
 </ServiceDefinition>
 ```
 
-Egy XML-séma hivatkozása a fenti elemek találhatók [Itt](https://msdn.microsoft.com/library/azure/gg557551.aspx).
+Egy XML-séma hivatkozása a fenti elemek találhatók [Itt](/previous-versions/azure/reference/gg557551(v=azure.100)).
 
 ## <a name="next-steps"></a>További lépések
 További információ a felhőalapú szolgáltatás [modell](cloud-services-model-and-package.md).

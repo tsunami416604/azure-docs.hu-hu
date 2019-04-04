@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9e4b9d8cf3300f977824f95aeb14a614d8897abd
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: f1491d6b87816dfc70e94e01653567bda101d045
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430267"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916971"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Hogyan dolgozza fel, és információt nyerhet ki képekből a kognitív keresés forgatókönyvek
 
@@ -34,7 +34,7 @@ Nem kapcsolhatja ki rendszerképet normalizálási. Képek ciklustevékenység k
 
 | Konfigurációs paraméter | Leírás |
 |--------------------|-------------|
-| imageAction   | Ha nem kell műveletet, ha a beágyazott képek vagy képek észlelt állítsa be a "nincs". <br/>Állítsa a "generateNormalizedImages" normalizált lemezképek tömbjét létrehozásához dokumentumleképezési részeként.<br/>Állítsa "generateNormalizedImagePerPage" normalizált lemezképek tömbjét létrehozni, PDF-fájlok az adatforrás, minden lapon jelenik meg egy kimeneti lemezképhez.  A funkció megegyezik a "generateNormalizedImages"-PDF fájl esetében.<br/>Minden olyan beállítás, amely nem "none", a képek lesz közzétéve a a *normalized_images* mező. <br/>Az alapértelmezett érték a "nincs." Ez a konfiguráció csak a tárolására blob az adatforrásokat, ha "dataToExtract" értéke "contentAndMetadata." |
+| imageAction   | Ha nem kell műveletet, ha a beágyazott képek vagy képek észlelt állítsa be a "nincs". <br/>Állítsa a "generateNormalizedImages" normalizált lemezképek tömbjét létrehozásához dokumentumleképezési részeként.<br/>Állítsa "generateNormalizedImagePerPage" normalizált lemezképek tömbjét létrehozni, PDF-fájlok az adatforrás, minden lapon jelenik meg egy kimeneti lemezképhez.  A funkció megegyezik a "generateNormalizedImages"-PDF fájl esetében.<br/>Minden olyan beállítás, amely nem "none", a képek lesz közzétéve a a *normalized_images* mező. <br/>Az alapértelmezett érték a "nincs." Ez a konfiguráció csak a tárolására blob az adatforrásokat, ha "dataToExtract" értéke "contentAndMetadata." <br/>Legfeljebb 1000 képek egy adott dokumentum kinyerése. Ha egy dokumentum több mint 1000 képek, az első 1000 ki kell nyerni a, és a egy figyelmeztetést hoz létre. |
 |  normalizedImageMaxWidth | A maximális szélességét (képpontban) normalizált a képeket. Az alapértelmezett érték 2000.|
 |  normalizedImageMaxHeight | A maximális magasságát (képpontban) normalizált a képeket. Az alapértelmezett érték 2000.|
 

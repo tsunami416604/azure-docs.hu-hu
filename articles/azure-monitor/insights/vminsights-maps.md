@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 0bf7c335f552fee103118e57239bcd872e880edb
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984849"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916733"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Az Azure Monitor használatával virtuális gépek (előzetes verzió) térkép az alkalmazás-összetevők ismertetése
 Megtekintés a detektált alkalmazás-összetevők a környezet figyelhető meg az Azure Monitor szolgáltatással kétféleképpen virtuális gépek esetén közvetlenül a virtuális gépről vagy virtuális gépek az Azure Monitor csoportokhoz Azure-ban futó Windows és Linux rendszerű virtuális gépeken. 
@@ -43,7 +43,7 @@ A jobb oldali ablaktábla, a kattintson a **alkalmazásnapló-események** ikonr
 
 ![A Tulajdonságok panelen naplófájl-keresési lista](./media/vminsights-maps/properties-pane-logs-01.png)
 
-Zárja be *naplók** és térjen vissza a **tulajdonságai** ablaktáblán, és válassza **riasztások** , riasztások megtekintése, amely riasztást küld a virtuális gép állapotára vonatkozó feltételek a kiváltott. Térkép integrálható az Azure-riasztások a kiválasztott kiszolgálóhoz tartozó aktivált riasztások megjelenítéséhez a kijelölt időtartományban található. A kiszolgáló ikont jelenít meg, ha nincsenek aktuális riasztásokat, és a gép riasztások panel felsorolja a riasztásokat. 
+Zárja be **naplók** és térjen vissza a **tulajdonságai** ablaktáblán, és válassza **riasztások** , riasztások megtekintése, amely riasztást küld a virtuális gép állapotára vonatkozó feltételek a kiváltott. Térkép integrálható az Azure-riasztások a kiválasztott kiszolgálóhoz tartozó aktivált riasztások megjelenítéséhez a kijelölt időtartományban található. A kiszolgáló ikont jelenít meg, ha nincsenek aktuális riasztásokat, és a gép riasztások panel felsorolja a riasztásokat. 
 
 ![A Tulajdonságok panelen gép riasztások](./media/vminsights-maps/properties-pane-alerts-01.png)
 

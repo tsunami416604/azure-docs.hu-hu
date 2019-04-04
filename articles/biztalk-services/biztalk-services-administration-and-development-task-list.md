@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: baee8c8e931a18c1d72b52c6141c29cba98f9c53
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6b8e0fea73dc24f7e680482be1f06fba6d702804
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096401"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916240"
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>Felügyelet és a BizTalk Services fejlesztői feladatlista
 
@@ -33,30 +33,30 @@ Ha a Microsoft Azure BizTalk Services dolgozik, nincsenek több helyszíni és f
 | Lépés | Kinek a feladata | Tevékenység | Kapcsolódó hivatkozások |
 | --- | --- | --- | --- |
 | 1. |Rendszergazda |A Microsoft Azure-előfizetés használatával egy Microsoft-fiókjával vagy szervezeti fiók létrehozása |[Azure Portal](https://portal.azure.com) |
-| 2. |Rendszergazda |Hozzon létre, vagy üzembe helyezhetik a BizTalk szolgáltatás. |[BizTalk-szolgáltatás létrehozása](https://msdn.microsoft.com/library/azure/dn232347.aspx) |
-| 3. |Rendszergazda |Ön vagy vállalata a BizTalk Services üzembe helyezési regisztrálása |[Regisztráció és a BizTalk-szolgáltatások üzembe helyezéséhez a BizTalk Services portálon frissítése](https://msdn.microsoft.com/library/azure/hh689837.aspx) |
+| 2. |Rendszergazda |Hozzon létre, vagy üzembe helyezhetik a BizTalk szolgáltatás. |[BizTalk-szolgáltatás létrehozása](/previous-versions/azure/reference/dn232347(v=azure.100)) |
+| 3. |Rendszergazda |Ön vagy vállalata a BizTalk Services üzembe helyezési regisztrálása |[Regisztráció és a BizTalk-szolgáltatások üzembe helyezéséhez a BizTalk Services portálon frissítése](/previous-versions/azure/hh689837(v=azure.100)) |
 | 4. |Rendszergazda |Érvényes, ha az alkalmazás egy helyszíni üzletági (LOB) rendszerhez való csatlakozáshoz használja a BizTalk Adapter szolgáltatást, vagy egy üzenetsor vagy témakör cél használja.  Hozzon létre az Azure Service Bus-Namespace. A névtér, a Service Bushoz kapcsolódó kibocsátói név és a Service Bus kiállító kulcsa értékeket adhat a fejlesztő. |[Útmutató: Létrehozása vagy módosítása egy Service Bus szolgáltatás Namespace](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md) és [értékek első kiállító neve és kiállító kulcsa](biztalk-issuer-name-issuer-key.md) |
-| 5. |Fejlesztői |Az SDK telepítése és a BizTalk-szolgáltatás-projekt létrehozása a Visual Studióban. |[Telepítse az Azure BizTalk Services SDK-val](https://msdn.microsoft.com/library/azure/hh689760.aspx) és [gazdag üzenetkezelési végpontok létrehozása az Azure-ban](https://msdn.microsoft.com/library/azure/hh689766.aspx) |
-| 6. |Fejlesztői |Telepítse a projektet a BizTalk-szolgáltatás az Azure-platformon futó BizTalk-szolgáltatás. |[Üzembe helyezése és a BizTalk Services-projekt frissítése](https://msdn.microsoft.com/library/azure/hh689881.aspx) |
-| 7. |Rendszergazda |Ha használ EDI vonatkozik.  Hozzáadhat a partnerek és szerződések létrehozása a Microsoft Azure BizTalk Services Portáljára. Amikor egy szerződést hoz létre, adhat hozzá a híd és/vagy a szerződés beállításokat a fejlesztő által létrehozott átalakítások. |[A BizTalk Services portáljának EDI, AS2 és EDIFACT konfigurálása](https://msdn.microsoft.com/library/azure/hh689853.aspx) |
-| 8. |Rendszergazda |Használatával [REST](https://msdn.microsoft.com/library/azure/dn232347.aspx), a BizTalk-szolgáltatás, beleértve a teljesítmény-mérőszámok állapotának monitorozásához. |[A BizTalk Services: Irányítópult, figyelés és méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281) |
-| 9. |Rendszergazda |A Microsoft Azure BizTalk Services portáljának használatával, kezelheti az összetevők, amelyet a BizTalk Services és üzenetek nyomon követése, a híd-fájlok feldolgozása. |[A BizTalk Services portáljának használata](https://msdn.microsoft.com/library/azure/dn874043.aspx) |
-| 10. |Rendszergazda |Hozzon létre egy biztonsági mentési tervet, készítsen biztonsági másolatot a BizTalk-szolgáltatás. |[Üzletmenet-folytonossági és vészhelyreállítási a BizTalk Services](https://msdn.microsoft.com/library/azure/dn509557.aspx) |
+| 5. |Fejlesztői |Az SDK telepítése és a BizTalk-szolgáltatás-projekt létrehozása a Visual Studióban. |[Telepítse az Azure BizTalk Services SDK-val](/previous-versions/azure/hh689760(v=azure.100)) és [gazdag üzenetkezelési végpontok létrehozása az Azure-ban](/previous-versions/azure/hh689766(v=azure.100)) |
+| 6. |Fejlesztői |Telepítse a projektet a BizTalk-szolgáltatás az Azure-platformon futó BizTalk-szolgáltatás. |[Üzembe helyezése és a BizTalk Services-projekt frissítése](/previous-versions/azure/hh689881(v=azure.100)) |
+| 7. |Rendszergazda |Ha használ EDI vonatkozik.  Hozzáadhat a partnerek és szerződések létrehozása a Microsoft Azure BizTalk Services Portáljára. Amikor egy szerződést hoz létre, adhat hozzá a híd és/vagy a szerződés beállításokat a fejlesztő által létrehozott átalakítások. |[A BizTalk Services portáljának EDI, AS2 és EDIFACT konfigurálása](/previous-versions/azure/hh689853(v=azure.100)) |
+| 8. |Rendszergazda |Használatával [REST](/previous-versions/azure/reference/dn232347(v=azure.100)), a BizTalk-szolgáltatás, beleértve a teljesítmény-mérőszámok állapotának monitorozásához. |[BizTalk Services: Irányítópult, figyelés és méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281) |
+| 9. |Rendszergazda |A Microsoft Azure BizTalk Services portáljának használatával, kezelheti az összetevők, amelyet a BizTalk Services és üzenetek nyomon követése, a híd-fájlok feldolgozása. |[A BizTalk Services portáljának használata](/previous-versions/azure/dn874043(v=azure.100)) |
+| 10. |Rendszergazda |Hozzon létre egy biztonsági mentési tervet, készítsen biztonsági másolatot a BizTalk-szolgáltatás. |[Üzletmenet-folytonossági és vészhelyreállítási a BizTalk Services](/previous-versions/azure/dn509557(v=azure.100)) |
 
 ## <a name="next-steps"></a>További lépések
-[Oktatóanyagok és minták](https://msdn.microsoft.com/library/azure/hh689895.aspx)
+[Oktatóanyagok és minták](/previous-versions/azure/hh689895(v=azure.100))
 
-[A projekt létrehozása a Visual Studióban](https://msdn.microsoft.com/library/azure/hh689811.aspx)
+[A projekt létrehozása Visual Studióban](/previous-versions/azure/hh689811(v=azure.100))
 
-[Az Azure BizTalk Services SDK telepítése](https://msdn.microsoft.com/library/azure/hh689760.aspx)
+[Az Azure BizTalk Services SDK telepítése](/previous-versions/azure/hh689760(v=azure.100))
 
 ## <a name="concepts"></a>Alapelvek
-[A projekt létrehozása a Visual Studióban](https://msdn.microsoft.com/library/azure/hh689811.aspx)  
-[EDI, AS2 és EDIFACT-alapú üzenetkezelés (vállalatközi)](https://msdn.microsoft.com/library/azure/hh689898.aspx)  
+[A projekt létrehozása Visual Studióban](/previous-versions/azure/hh689811(v=azure.100))  
+[EDI, AS2 és EDIFACT-alapú üzenetkezelés (vállalatközi)](/previous-versions/azure/hh689898(v=azure.100))  
 
 ## <a name="other-resources"></a>Egyéb források
-[Adja hozzá a forrás, cél és üzenetkezelési végpontok híd](https://msdn.microsoft.com/library/azure/hh689877.aspx)  
-[Ismerje meg, és üzenet térképeket és átalakítások](https://msdn.microsoft.com/library/azure/hh689905.aspx)  
-[A BizTalk Adapter Service (BAS) használatával](https://msdn.microsoft.com/library/azure/hh689889.aspx)  
-[Az Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=303664)
+[Adja hozzá a forrás, cél és üzenetkezelési végpontok híd](/previous-versions/azure/hh689877(v=azure.100))  
+[Ismerje meg, és üzenet térképeket és átalakítások](/previous-versions/azure/hh689905(v=azure.100))  
+[A BizTalk Adapter Service (BAS) használatával](/previous-versions/azure/hh689889(v=azure.100))  
+[Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=303664)
 

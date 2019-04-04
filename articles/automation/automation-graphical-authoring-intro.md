@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d637436721ff464f58e41069bb00746fcd82410
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427236"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918144"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus létrehozás az Azure Automationben
 
@@ -48,7 +48,7 @@ A könyvtár vezérlőben, ahol ki kell választania [tevékenységek](#activiti
 |:--- |:--- |
 | Parancsmagok |A runbook felhasználható összes parancsmagot tartalmazza. Parancsmagok modul szerint vannak rendszerezve. A modulokat az automation-fiókban telepített összes érhetők el. |
 | Runbookok |Tartalmazza a forgatókönyvek az automation-fiók. Ezek a runbookok gyermek runbookként használható vásznon lehet hozzáadni. Csak az azonos core típusú, a runbook szerkesztett forgatókönyvek jelennek meg; a grafikus runbookok csak PowerShell-alapú forgatókönyvek jelennek meg, amíg a grafikus PowerShell-munkafolyamati runbookok csak PowerShell-munkafolyamat-alapú forgatókönyvek jelennek meg. |
-| Objektumok |Magában foglalja a [automation-adategységeket](https://msdn.microsoft.com/library/dn939988.aspx) az automation-fiókban a runbookban használható. Egy objektumot ad hozzá egy runbookot, amikor hozzáadja a munkafolyamat-tevékenység, amely lekérdezi a kiválasztott eszköz. Változó adategységek esetén azt is kiválaszthatja, hogy egy tevékenység, a változó vagy állítsa be a változó hozzáadása. |
+| Objektumok |Magában foglalja a [automation-adategységeket](/previous-versions/azure/dn939988(v=azure.100)) az automation-fiókban a runbookban használható. Egy objektumot ad hozzá egy runbookot, amikor hozzáadja a munkafolyamat-tevékenység, amely lekérdezi a kiválasztott eszköz. Változó adategységek esetén azt is kiválaszthatja, hogy egy tevékenység, a változó vagy állítsa be a változó hozzáadása. |
 | Runbook-vezérlés |Használható a runbook-vezérlési tevékenységek az aktuális runbookot tartalmazza. A *csatlakozási* több bemenet tart, és megvárja, amíg az összes munkafolyamat folytatása előtt befejeződött. A *kód* tevékenység fut egy vagy több sort a PowerShell vagy a PowerShell-munkafolyamati kód a grafikus forgatókönyv típusától függően. Ezt a tevékenységet is használhatja, egyéni kódot, vagy más tevékenységekkel elérése a funkciókat. |
 
 ### <a name="configuration-control"></a>Konfiguráció-ellenőrzés
@@ -249,7 +249,7 @@ Az alábbi példa egy runbookot, amely elindítja a virtuális gépek egyidejűl
 
 Egy ciklus akkor, ha egy cél tevékenység hivatkozások vissza a forrásoldali tevékenység vagy egy másik tevékenység hivatkozó végül forrásként. Ciklusok jelenleg nem engedélyezett a grafikus létrehozásról. Ha a runbook egy ciklust, megfelelően menti, de hibaüzenetet kap, futtatásakor.
 
-![Ciklus](media/automation-graphical-authoring-intro/runbook-cycle.png)
+![Ciklikus](media/automation-graphical-authoring-intro/runbook-cycle.png)
 
 ### <a name="sharing-data-between-activities"></a>Tevékenységek között adatokat megosztó
 
@@ -326,7 +326,7 @@ Egyes bemeneti paramétereket határozzák meg a tulajdonságait az alábbi táb
 |:--- |:--- |
 | Name (Név) |A paraméternek egyedi neve. Ez csak alfanumerikus karaktereket tartalmazhat, és nem tartalmazhat szóközt. |
 | Leírás |A bemeneti paraméter leírását. |
-| Típus |A paraméter értéke a várt adattípus. Az Azure Portalon kimondása a bemeneti biztosít az egyes paraméterekhez tartozó adattípus egy megfelelő vezérlőt. |
+| Typo |A paraméter értéke a várt adattípus. Az Azure Portalon kimondása a bemeneti biztosít az egyes paraméterekhez tartozó adattípus egy megfelelő vezérlőt. |
 | Kötelező |Itt adhatja meg, hogy értéket kell adni a paraméter. A runbook nem indítható el, ha nem ad meg értéket minden kötelező paraméter, amely nem rendelkezik meghatározott alapértelmezett értéket. |
 | Alapértelmezett érték |Itt adhatja meg, milyen értéket a paraméterhez szolgál, ha nincs megadva. Ez lehet null értékű vagy egy adott érték. |
 

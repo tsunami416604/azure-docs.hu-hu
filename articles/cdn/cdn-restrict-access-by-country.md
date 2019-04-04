@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: 471a7e3704f10674c8a1d9bdf26df5f0aaf8519b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f6efec64b4e6659b822b76e0fd7f9cc71a164094
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093306"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917753"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Az Azure CDN-tartalom országonként korlátozása
 
@@ -47,16 +47,16 @@ Alkalmazhatja a földrajzi szűrés egy előre az összes fájl perjel (/), vagy
 Ha például a következő könyvtár elérési útja szűrők összes érvényes:   
 */*                                 
 */Photos/*     
-*/Photos/Strasbourgban /*     
-*/Photos/Strasbourg/City.png*
+*/Photos/Strasbourg/*     
+*/Photos/Strasbourg/city.png*
 
 ### <a name="define-the-type-of-action"></a>Adja meg a művelet típusát
 
 Az a **művelet** listáról válassza ki **engedélyezése** vagy **blokk**: 
 
-- **Lehetővé teszi**: csak az adott országból származó felhasználók férhetnek hozzá a kért rekurzív elérési úton található eszközöket.
+- **Lehetővé teszi**: Csak a megadott országokból felhasználók férhetnek hozzá a kért rekurzív elérési úton található eszközöket.
 
-- **Blokk**: a megadott országokból hozzáférés nem engedélyezett a rekurzív elérési úton található a kért eszközökhöz. Ha nincs más ország szűrési beállítások vannak konfigurálva, az adott hely, majd a többi felhasználó hozzáférése engedélyezett lesz.
+- **Blokk**: A megadott országokból hozzáférés nem engedélyezett a rekurzív elérési úton található a kért eszközökhöz. Ha nincs más ország szűrési beállítások vannak konfigurálva, az adott hely, majd a többi felhasználó hozzáférése engedélyezett lesz.
 
 Például a földrajzi szűrés szabály blokkolja-e az elérési út */fényképek/Strasbourgban/* szűri a következő fájlokat:     
 *http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
@@ -110,5 +110,5 @@ Az ország szűrési szabályok tábla válassza ki egy szabályt, törölje azt
 
 * Csak egy szabályt a relatív elérési útját is alkalmazható. Több országban szűrők, amelyek azonos relatív elérési útját, nem hozható létre. Azonban mivel ország szűrők rekurzív, a mappa lehet több országban szűrőt. Más szóval egy korábban konfigurált mappa egyik almappájára más országban szűrőt is hozzárendelhető.
 
-* A geoszűrési szolgáltatás országhívó számokat használ az ország, amelyből kérelem engedélyezett vagy letiltott egy védett könyvtárban meghatározására. Bár az Akamai és a Verizon profilok támogatása az azonos országhívó számokat a legtöbb, néhány különbségek vannak. További információkért lásd: [Azure CDN országkódok](https://msdn.microsoft.com/library/mt761717.aspx). 
+* A geoszűrési szolgáltatás országhívó számokat használ az ország, amelyből kérelem engedélyezett vagy letiltott egy védett könyvtárban meghatározására. Bár az Akamai és a Verizon profilok támogatása az azonos országhívó számokat a legtöbb, néhány különbségek vannak. További információkért lásd: [Azure CDN országkódok](/previous-versions/azure/mt761717(v=azure.100)). 
 

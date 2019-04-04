@@ -12,22 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 3d9376ba5945c97d18f6cf68c242d5217beee679
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 848b2a0c912a00a2185d7e4b7b8d8446bc1f6aca
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349705"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497176"
 ---
 # <a name="quota-types-in-azure-stack"></a>Az Azure Stackben kvótatípusok
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-[Kvóták](azure-stack-plan-offer-quota-overview.md#plans) erőforrásokat, amelyeket a felhasználói előfizetés is üzembe helyezése és felhasználása a vonatkozó korlátok beállításához. Például kvóták lehetővé teheti a felhasználó legfeljebb öt virtuális gépek létrehozásához. Az egyes erőforrások a saját kvótatípusokat is rendelkezhet.
+[Kvóták](azure-stack-plan-offer-quota-overview.md#plans) erőforrásokat, amelyeket a felhasználói előfizetés is üzembe helyezése és felhasználása a vonatkozó korlátok beállításához. Egy kvóta megszabhatja például, hogy egy felhasználó legfeljebb öt virtuális gépet hozhat létre. Mindegyik erőforrásra különböző típusú kvóták vonatkoznak.
+
+> [!IMPORTANT]
+> Új kvóták csak akkor érhető el, a felhasználói portálon, vagy előtt módosított kvóták érvényesítése akár két órát is igénybe vehet.
 
 ## <a name="compute-quota-types"></a>COMPUTE kvótatípusok
 
@@ -41,9 +44,9 @@ ms.locfileid: "58349705"
 | Maximális kapacitás (GB) prémium szintű felügyelt lemez | 2048 | A prémium szintű maximális kapacitását a felügyelt lemezek, ezen a helyen létrehozott. |
 
 > [!NOTE]  
-> Nem felügyelt lemez (lapblobok) maximális kapacitása elkülönül a felügyelt lemez kvóta, kell állítani a tárolási kvótát.
+> Nem felügyelt lemez (lapblobok) maximális kapacitása elkülönül a felügyelt lemez kvótát. Ez az érték állítható be **tárolási kvótákat**.
 
-## <a name="storage-quota-types"></a>Tárolási kvóta típusa 
+## <a name="storage-quota-types"></a>Tárolási kvóta típusa
 
 | **Elem** | **Alapértelmezett érték** | **Leírás** |
 | --- | --- | --- |
@@ -51,7 +54,7 @@ ms.locfileid: "58349705"
 | Tárfiókok teljes száma |20 |Egy előfizetést hozhat létre ezen a helyen storage-fiókok maximális számát. |
 
 > [!NOTE]  
-> Mielőtt a tárhelykvótát van érvényben akár két óráig is eltarthat. Felügyelt lemez maximális kapacitása nem azonos az összes tárolási kvótát, a számítási kvótájának kell állítani.
+> A maximális kapacitás, a felügyelt lemezek elkülönül a teljes tárolási kvótát. Ez az érték állítható be **kvóták számítási**.
 
 ## <a name="network-quota-types"></a>Hálózati kvótatípusok
 
@@ -69,7 +72,7 @@ ms.locfileid: "58349705"
 
 Egy meglévő kvóta megtekintése két különböző módja van:
 
-### <a name="plans"></a>Tervek
+### <a name="plans"></a>Csomagok
 
 1. Az adminisztrátori portál bal oldali navigációs panelén válassza **csomagok**.
 2. Válassza ki a csomagot, szeretné, részleteinek megtekintéséhez kattintson annak nevére.

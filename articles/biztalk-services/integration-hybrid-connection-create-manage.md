@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 584b9d67808e75222d832f045e5d3f93fbb326ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d659262195fef0cc6871bac409dd5914b70f401
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105090"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916121"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Hibridkapcsolatok létrehozása és felügyelete
 
@@ -50,7 +50,7 @@ Ez a témakör felsorolja az alábbi lépéseket.
 > 
 
 ## <a name="CreateHybridConnection"></a>Hibrid kapcsolat létrehozása
-A hibrid kapcsolat hozható létre [Azure App Service hibrid kapcsolataira](../app-service/app-service-hybrid-connections.md) **vagy** használatával [BizTalk Services – REST API-k](https://msdn.microsoft.com/library/azure/dn232347.aspx). 
+A hibrid kapcsolat hozható létre [Azure App Service hibrid kapcsolataira](../app-service/app-service-hybrid-connections.md) **vagy** használatával [BizTalk Services – REST API-k](/previous-versions/azure/reference/dn232347(v=azure.100)). 
 
 <!-- **To create Hybrid Connections using Web Apps**, see [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md). You can also install the Hybrid Connection Manager (HCM) from your web app, which is the preferred method.  -->
 
@@ -118,10 +118,10 @@ Ha már másolva lettek, a Helyicsoportházirend-szerkesztő használatával mó
 [A hibrid kapcsolatok áttekintése](integration-hybrid-connection-overview.md)
 
 ## <a name="see-also"></a>Lásd még:
-[REST API a BizTalk Services felügyeletéhez a Microsoft Azure-ban](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
-[A BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)  
+[REST API a BizTalk Services felügyeletéhez a Microsoft Azure](/previous-versions/azure/reference/dn232347(v=azure.100))  
+[BizTalk Services: Táblázat a termékváltozatokról](biztalk-editions-feature-chart.md)  
 [BizTalk-szolgáltatás létrehozása](biztalk-provision-services.md)  
-[A BizTalk Services: Irányítópult, figyelés és méret lapok](biztalk-dashboard-monitor-scale-tabs.md)
+[BizTalk Services: Irányítópult, figyelés és méret lapok](biztalk-dashboard-monitor-scale-tabs.md)
 
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png

@@ -5,30 +5,29 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 04/03/2019
 ms.author: tamram
-ms.openlocfilehash: 2641e1653e14a7c101d95b02b8a5af71ceb9fdc6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 86bb7e736754cbc6a93bba5fff5d8d1877b1e3b4
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398174"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916580"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Tulajdonságok és metaadatok beállítása és lekérése
 
 Azure Storage támogatási Rendszertulajdonságok és a felhasználó által definiált metaadatok mellett az adatokat tartalmazó objektumot. Ez a cikk ismerteti a kezelését Rendszertulajdonságok és a felhasználó által definiált metaadatok a [Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage/).
 
-* **A Rendszertulajdonságok**: rendszer tulajdonságai az egyes tárolási erőforrás létezik. Némelyike olvasása vagy beállítása, míg mások csak olvasható. A háttérben néhány Rendszertulajdonságok bizonyos szabványos HTTP-fejlécek felelnek meg. Az Azure Storage ügyfélkódtáraival ezeket a tulajdonságokat fenntartani az Ön számára.
+* **A Rendszertulajdonságok**: Rendszertulajdonságok minden egyes tárolási erőforrás található. Némelyike olvasása vagy beállítása, míg mások csak olvasható. A háttérben néhány Rendszertulajdonságok bizonyos szabványos HTTP-fejlécek felelnek meg. Az Azure Storage ügyfélkódtáraival ezeket a tulajdonságokat fenntartani az Ön számára.
 
-* **Felhasználó által definiált metaadatok**: egy vagy több név-érték párok, amely egy Azure Storage-erőforrást a megadott felhasználó által definiált metaadatok áll. Metaadatok segítségével tárolja az erőforrás további értékeket. Metaadatértékeket csak a saját célokat szolgálnak, és nincsenek hatással az erőforrások működését.
+* **Felhasználó által definiált metaadatok**: Egy vagy több név-érték párok, amely egy Azure Storage-erőforrást a megadott felhasználó által definiált metaadatok áll. Metaadatok segítségével tárolja az erőforrás további értékeket. Metaadatértékeket csak a saját célokat szolgálnak, és nincsenek hatással az erőforrások működését.
 
 Tulajdonság és a metaadatok értékek tárolási erőforrás beolvasásakor két lépésből áll. Mielőtt el tudja olvasni ezeket az értékeket, meg kell explicit módon beolvassa őket meghívásával a **FetchAttributes** vagy **FetchAttributesAsync** metódust. Kivételt jelent, ha a hívás a **Exists** vagy **ExistsAsync** erőforrás metódust. Ha felhívja a következők egyikét, az Azure Storage meghívja a megfelelő **FetchAttributes** valójában metódus hívása részeként a **Exists** metódus.
 
 > [!IMPORTANT]
 > Ha azt tapasztalja, hogy vlastnost nebo metaadatok értékek tárolási erőforrás nem lett feltöltve, ellenőrizze, hogy a kód meghívja a **FetchAttributes** vagy **FetchAttributesAsync** metódust.
 >
-> Metaadatok név/érték párok csak ASCII-karaktereket tartalmazhat. Metaadatok név/érték párok érvényes HTTP-fejléceket, és ezért meg kell felelnie a HTTP-fejlécek vonatkozó összes korlátozás. URL-Címének kódolása vagy a Base64 kódolás neveket és értékeket tartalmazó-ASCII karakterek használata ajánlott.
->
+> Metaadatok név/érték párok érvényes HTTP-fejléceket, és ezért meg kell felelnie, HTTP-fejlécek vonatkozó összes korlátozás. Metaadatneveknek egyedieknek kell lenniük a HTTP-fejlécet az érvényes nevek, csak ASCII-karaktereket tartalmazhat, és kell-e kezelni a kis-és. Nem ASCII-karaktereket tartalmazó metaadatértékeket Base64-kódolású vagy URL-kódolású kell lennie.
 
 ## <a name="setting-and-retrieving-properties"></a>Beállítási és lekérési tulajdonságai
 Tulajdonságértékek lekéréséhez hívja meg a **FetchAttributesAsync** metódust a blob vagy a tároló feltöltéséhez a tulajdonságait, majd olvassa el az értékeket.

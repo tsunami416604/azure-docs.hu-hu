@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 4c4b5491bba072ba22ec20e164b7315691877a22
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b20fa7a1f43369cde85c2535637eec7ceb1d3c29
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42061361"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918331"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Diagnosztika engedélyezése az Azure Cloud Services szolgáltatással a PowerShell használatával
 Alkalmazásnaplók, például a diagnosztikai adatokat gyűjthet a teljesítményszámlálók stb egy felhőalapú szolgáltatásából, az Azure Diagnostics bővítmény használatával. Ez a cikk ismerteti az Azure diagnosztikai bővítmény engedélyezése egy felhőszolgáltatás, PowerShell-lel.  Lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) esetében ez a cikk szükséges előfeltételeket.
@@ -136,5 +136,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>További lépések
 * További útmutató az Azure diagnostics és az egyéb módszerek használatával kapcsolatos hibák elhárításához, lásd: [Diagnosztikának az Azure Cloud Services és Virtual Machines](cloud-services-dotnet-diagnostics.md).
-* A [diagnosztikai konfigurációs séma](https://msdn.microsoft.com/library/azure/dn782207.aspx) a diagnosztikai bővítményt a különböző xml konfigurációk lehetőségeit ismerteti.
+* A [diagnosztikai konfigurációs séma](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot2) a diagnosztikai bővítményt a különböző xml konfigurációk lehetőségeit ismerteti.
 * A diagnosztikai bővítmény engedélyezése a virtuális gépek kezelésével kapcsolatos információkért lásd: [Windows virtuális gép létrehozása figyelési és diagnosztikai funkciókkal, az Azure Resource Manager-sablon használatával](../virtual-machines/windows/extensions-diagnostics-template.md)

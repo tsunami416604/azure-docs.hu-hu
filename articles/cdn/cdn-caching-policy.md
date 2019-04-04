@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: a747e5064ff0ef99fb43c545c29c2a34535445d0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 516df2f6177303987fc0354dde647c1fc26820ef
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540148"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918280"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Az Azure CDN gyorsítótárazási házirend a az Azure Media Services kezelése
 Az Azure Media Services biztosítja a HTTP-alapú adaptív Streamelés és a progresszív letöltés. HTTP-alapú streamelési az előnyökkel, a gyorsítótárazás a proxy- és a CDN-rétegek, valamint a ügyféloldali gyorsítótárazás rugalmasan méretezhető. Streamvégpontok nyújt általános idejű közvetítési lehetőségeket, és HTTP-fejlécek gyorsítótár konfigurációját. Streamvégpontok beállítja a HTTP Cache-Control: max-age és Expires fejlécet. További információt a HTTP-gyorsítótár fejléceket [W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
@@ -39,7 +39,7 @@ Az Azure Media Services modullal járulékos konfigurálás [integrált CDN](htt
 Az Azure portal vagy az Azure Media Services API-k segítségével állíthatja be a gyorsítótár fejléc értékét.
 
 1. Konfigurálhatja az Azure portal használatával gyorsítótár-fejléceket, tekintse meg [adatfolyam-továbbítási végpontok kezelése hogyan](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) szakasz a Streamvégpont konfigurálása.
-2. Az Azure Media Services REST API-t [Streamvégpontok](https://msdn.microsoft.com/library/azure/dn783468.aspx#StreamingEndpointCacheControl).
+2. Az Azure Media Services REST API-t [Streamvégpontok](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
 3. Az Azure Media Services .NET SDK- [StreamingEndpointCacheControl tulajdonságok](https://go.microsoft.com/fwlink/?LinkId=615302).
 
 ## <a name="cache-configuration-precedence-order"></a>Gyorsítótár konfigurációs sorrendet

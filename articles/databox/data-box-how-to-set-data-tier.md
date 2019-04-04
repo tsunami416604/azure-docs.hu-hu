@@ -8,18 +8,21 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: bb1d6c5bd51fcfe35127c2f6d8dd6a80b727c45f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 44fa81ddf6b0892c6d900fd065589b3d6ac5a0bd
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517147"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905562"
 ---
 # <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Azure Data Box segítségével adatokat küldeni a megfelelő Azure Storage blob szintjének
 
 Az Azure Data Box helyezi át, elküldünk Önnek egy saját fejlesztésű tárolóeszköz által nagy mennyiségű adat Azure-bA. Töltse fel az eszközt az adatokat, és küldje vissza. Az adatok Data Box egy társított a tárfiók alapértelmezett szintje van feltöltve. Ezután áthelyezheti az adatokat egy új blobtárolási réteg.
 
 Ez a cikk bemutatja, hogyan helyezhetők az adatok Data Box által feltöltött egy gyors Elérésűre, ritka elérésű vagy archív blobszint.  
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="choose-the-correct-storage-tier-for-your-data"></a>Válassza ki a megfelelő tárolási réteget az adatok
 
@@ -58,7 +61,7 @@ Következő lépések bemutatják, hogyan állíthatja a blob szintjének archiv
 
 2. Jelentkezzen be az Azure PowerShell-lel. 
 
-   `Login-AzureRmAccount`  
+   `Login-AzAccount`  
 
 3. A storage-fiók, hozzáférési kulcsot, tároló és a tárolási környezet változókat határozhat meg.
 
@@ -66,12 +69,12 @@ Következő lépések bemutatják, hogyan állíthatja a blob szintjének archiv
     $StorageAccountName = "<enter account name>"
     $StorageAccountKey = "<enter account key>"
     $ContainerName = "<enter container name>"
-    $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+    $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
     ```
 
 4. Kérje le a tároló összes blobjának.
 
-    `$blobs = Get-AzureStorageBlob -Container "<enter container name>" -Context $ctx`
+    `$blobs = Get-AzStorageBlob -Container "<enter container name>" -Context $ctx`
  
 5. Az archív tárolóban lévő összes BLOB szintjének megadása
 
@@ -91,7 +94,7 @@ Következő lépések bemutatják, hogyan állíthatja a blob szintjének archiv
     Major  Minor  Build  Revision
     -----  -----  -----  --------
     5      1      17763  134
-    PS C:\WINDOWS\system32> Login-AzureRmAccount
+    PS C:\WINDOWS\system32> Login-AzAccount
 
     Account          : gus@contoso.com
     SubscriptionName : MySubscription
@@ -102,8 +105,8 @@ Következő lépések bemutatják, hogyan állíthatja a blob szintjének archiv
     PS C:\WINDOWS\system32> $StorageAccountName = "mygpv2storacct"
     PS C:\WINDOWS\system32> $StorageAccountKey = "mystorageacctkey"
     PS C:\WINDOWS\system32> $ContainerName = "test"
-    PS C:\WINDOWS\system32> $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
-    PS C:\WINDOWS\system32> $blobs = Get-AzureStorageBlob -Container "test" -Context $ctx
+    PS C:\WINDOWS\system32> $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+    PS C:\WINDOWS\system32> $blobs = Get-AzStorageBlob -Container "test" -Context $ctx
     PS C:\WINDOWS\system32> Foreach ($blob in $blobs) {
     >> $blob.ICloudBlob.SetStandardBlobTier("Archive")
     >> }

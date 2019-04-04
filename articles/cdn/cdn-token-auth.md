@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 6ff7b018cea8bedd93d3c9aef3b3250ecf5251b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 75d6fb063a6cb5336a4d9945bf6a79a65ed25d40
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123725"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918892"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Az eszközjogkivonattal történő hitelesítés az Azure CDN-eszközök védelme
 
@@ -33,7 +33,7 @@ Jogkivonat-hitelesítés olyan mechanizmus, amely lehetővé teszi, hogy megakad
 
 Jogkivonat-hitelesítés ellenőrzi, hogy kérelmeket alapján jönnek létre a megbízható helyek úgy, hogy visszatartással kódolású a kérelmező információ token értéket tartalmazó kérelmek. Tartalomkézbesítés egy kérelmezőnek csak akkor, ha a kódolt információt kielégíti; Ellenkező esetben kérelmek elutasítva. A követelmények beállítása egy vagy több, a következő paraméterek közül:
 
-- Ország/régió: Engedélyezi vagy megtagadja a által meghatározott országokból kérelmekkel azok [országkód](https://msdn.microsoft.com/library/mt761717.aspx).
+- Ország/régió: Engedélyezi vagy megtagadja a által meghatározott országokból kérelmekkel azok [országkód](/previous-versions/azure/mt761717(v=azure.100)).
 - URL-cím: Csak azok a kérelmek, amelyek megfelelnek a megadott eszköz vagy az elérési út engedélyezése.
 - Gazdagép: Engedélyezése vagy letiltása a kérelem fejlécében a megadott gazdagépek kérelmeket.
 - Hivatkozó: Engedélyezi vagy elutasítja a kérelmet, a megadott hivatkozó.
@@ -120,7 +120,7 @@ A következő folyamatábra szemlélteti azt ismerteti, hogyan Azure CDN érvén
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Csak lehetővé teszi, hogy egy vagy több megadott országokból kérelmekkel. A rendszer megtagadta a más országokból kérelmekkel. Használja a kétbetűs [ISO 3166 országkód](https://msdn.microsoft.com/library/mt761717.aspx) országokra, és mindegyiket egy-egy vesszővel tagolt külön; ne vegyen fel egy helyet. Ha azt szeretné, engedélyezze a hozzáférést csak az Egyesült Államokban és Franciaország, írja be például `US,FR`.</td>
+      >    <td>Csak lehetővé teszi, hogy egy vagy több megadott országokból kérelmekkel. A rendszer megtagadta a más országokból kérelmekkel. Használja a kétbetűs [ISO 3166 országkód](/previous-versions/azure/mt761717(v=azure.100)) országokra, és mindegyiket egy-egy vesszővel tagolt külön; ne vegyen fel egy helyet. Ha azt szeretné, engedélyezze a hozzáférést csak az Egyesült Államokban és Franciaország, írja be például `US,FR`.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 

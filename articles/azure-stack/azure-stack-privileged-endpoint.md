@@ -15,18 +15,18 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 9eb2e8ddde13783eabf3d82173e6a2fa75ec2b06
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ef75b161bcdb9e1b9658612b783dff46d1fa2502
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082670"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484338"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>A kiemelt jogosultságú végpont használata az Azure Stackben
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Az Azure Stack operátorait szerint a felügyeleti portálon, a PowerShell vagy az Azure Resource Manager API-k legtöbb napi szintű felügyeleti feladatokhoz használjon. Azonban az egyes kevésbé gyakori műveleteket kell használnia a *kiemelt végponthoz* (EGP). Az EGP egy előre konfigurált távoli PowerShell-konzolt, és éppen elegendő lehetőségekkel segíti elő a szükséges feladat elvégzését. A végpontok [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview) elérhetővé a parancsmag csak korlátozott készletével. Az EGP eléréséhez, és meghívja a parancsmagok korlátozott készletét, egy alacsony jogosultsági szintű fiókot használja. Nem rendszergazdai fiókok szükség. A fokozott biztonság érdekében parancsfájlok nem engedélyezett.
+Azure Stack-operátorként a legtöbb napi rendszerességű felügyeleti feladat ellátásához a felügyeleti portált, a PowerShellt vagy az Azure Resource Manager API-kat használhatja. Azonban az egyes kevésbé gyakori műveleteket kell használnia a *kiemelt végponthoz* (EGP). Az EGP egy előre konfigurált távoli PowerShell-konzolt, és éppen elegendő lehetőségekkel segíti elő a szükséges feladat elvégzését. A végpontok [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview) elérhetővé a parancsmag csak korlátozott készletével. Az EGP eléréséhez, és meghívja a parancsmagok korlátozott készletét, egy alacsony jogosultsági szintű fiókot használja. Nem rendszergazdai fiókok szükség. A fokozott biztonság érdekében parancsfájlok nem engedélyezett.
 
 Az EGP használhatja például a következő feladatok elvégzéséhez:
 
@@ -53,7 +53,7 @@ Mielőtt elkezdené integrált rendszer ezt az eljárást, győződjön meg arr�
 
     - Az integrált rendszereken, futtassa a következő parancsot egy rendszergazda jogú Windows PowerShell-munkamenetben az EGP a megerősített virtuális gépen, a hardver életciklus gazdagép-vagy a Privileged Access Workstation megbízható gazdagépként hozzáadni.
 
-      ```PowerShell
+      ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
     - Ha a ASDK futtatja, jelentkezzen be a development kit gazdagépre.
@@ -61,7 +61,7 @@ Mielőtt elkezdené integrált rendszer ezt az eljárást, győződjön meg arr�
 2. A megerősített futó virtuális géphez a hardver életciklus-gazdagép vagy a Privileged Access Workstation nyisson meg egy Windows PowerShell-munkamenetet. Futtassa a következő parancsok futtatásával hozzon létre egy távoli munkamenetet a virtuális gépen, amelyen az EGP:
  
    - Az integrált rendszereken:
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName <IP_address_of_ERCS> `
@@ -70,7 +70,7 @@ Mielőtt elkezdené integrált rendszer ezt az eljárást, győződjön meg arr�
      A `ComputerName` paraméter lehet, az IP-cím vagy egy virtuális gépet, amelyen az EGP DNS-nevét. 
    - Ha a ASDK futtatja:
      
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName azs-ercs01 `
@@ -113,7 +113,7 @@ Ahogy említettük, az EGP van egy [PowerShell JEA](https://docs.microsoft.com/p
 
 Így például a paraméterek listája egy adott parancsmag, futtassa a következő parancsot:
 
-```PowerShell
+```powershell
     Get-Command <cmdlet_name> -Syntax
 ```
 
@@ -125,7 +125,7 @@ Importálja a EGP-munkamenetet a helyi gépén, tegye a következőket:
 
     -A egy integrált rendszer, a következő parancsot egy rendszergazda jogú Windows PowerShell-munkamenetben az EGP a megerősített virtuális gépen, a hardver életciklus gazdagép-vagy a Privileged Access Workstation megbízható gazdagépként hozzáadni a.
 
-      ```PowerShell
+      ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
     - Ha a ASDK futtatja, jelentkezzen be a development kit gazdagépre.
@@ -133,7 +133,7 @@ Importálja a EGP-munkamenetet a helyi gépén, tegye a következőket:
 2. A megerősített futó virtuális géphez a hardver életciklus-gazdagép vagy a Privileged Access Workstation nyisson meg egy Windows PowerShell-munkamenetet. Futtassa a következő parancsok futtatásával hozzon létre egy távoli munkamenetet a virtuális gépen, amelyen az EGP:
  
    - Az integrált rendszereken:
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
@@ -142,7 +142,7 @@ Importálja a EGP-munkamenetet a helyi gépén, tegye a következőket:
      A `ComputerName` paraméter lehet, az IP-cím vagy egy virtuális gépet, amelyen az EGP DNS-nevét. 
    - Ha a ASDK futtatja:
      
-     ```PowerShell
+     ```powershell
       $cred = Get-Credential
 
       $session = New-PSSession -ComputerName azs-ercs01 `
@@ -154,7 +154,7 @@ Importálja a EGP-munkamenetet a helyi gépén, tegye a következőket:
      - **Jelszó**: Adja meg ugyanazt a jelszót a Azurestack tartományi rendszergazdai fiók a telepítés során megadott.
 
 3. A EGP munkamenet importálja a helyi gépen
-    ```PowerShell 
+    ```powershell 
         Import-PSSession $session
     ```
 4. Most-kiegészítés használata, és hajtsa végre a parancsfájl-kezelési a szokásos módon a helyi PowerShell-munkamenetet a functions és az EGP-parancsmagok a nélkül csökkentése az Azure Stack biztonsági állapotát. Jó munkát!

@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: e7243c1f0c0bc26b2e77a060b5def6e204835235
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b275a86f8fd35c43865fd920d1bfc9994a796a9c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553746"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919249"
 ---
 >[!NOTE]
 >Nem rögzített erőforrások nyissa meg egy támogatási jegyet, lépjen kapcsolatba a kvóták növelését. Ne hozzon létre további Azure Media Services-fiókokat az, hogy megpróbálja tágítani a magasabb korlátok.
@@ -39,7 +39,7 @@ ms.locfileid: "57553746"
 
 2017. április 1. a fiókban 90 napnál régebbi feladat rekordot automatikusan törlődik, és a kapcsolódó bejegyzések. Az automatikus törlés akkor fordul elő, akkor is, ha a rekordok száma nem éri a maximális kvótát. A feladatok és tevékenységek információkat archiválni, használja a kódot ismertetett [a Media Services .NET SDK-eszközök kezelése](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
 
-<sup>3</sup>egy kérést lista feladat entitások, legfeljebb 1000 feladatok kérelmenként adja vissza. Az összes elküldött feladatot nyomon, használja a top vagy lekérdezések folytassa leírtak szerint [OData rendszerlekérdezési beállításait](https://msdn.microsoft.com/library/gg309461.aspx).
+<sup>3</sup>egy kérést lista feladat entitások, legfeljebb 1000 feladatok kérelmenként adja vissza. Az összes elküldött feladatot nyomon, használja a top vagy lekérdezések folytassa leírtak szerint [OData rendszerlekérdezési beállításait](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
 
 <sup>4</sup>lokátorok nem felhasználónkénti hozzáférés-vezérlés kezelésére tervezték. Az egyes felhasználóknak különböző hozzáférési jogosultságokat biztosíthat, használja a digitális jogkezelési (DRM) megoldásokat. További információkért lásd: [a tartalmat az Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md).
 

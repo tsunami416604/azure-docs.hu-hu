@@ -12,21 +12,21 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 30a16c2a8b82ff4b32b95b14937166b94aba06b5
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: f94d731fd7b9a9fa85ae42d22949c7ca4024aabe
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726957"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904355"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Lekérdezések figyelése és a számítási feladatok teljesítményének javítása automatikus hangolás engedélyezése
 
 Azure SQL Database egy olyan automatikusan felügyelt szolgáltatás, amely folyamatosan figyeli a lekérdezések és az eseményekből eredő műveleteket is végezhet a számítási feladat teljesítményét azonosítja. Áttekinthesse javaslatok, és manuálisan alkalmazhatja őket, vagy lehetővé teszik az Azure SQL Database automatikusan alkalmazza a javítási műveleteket – ez az úgynevezett **automatikus hangolási módja**.
 
-Az automatikus hangolás a kiszolgáló vagy az adatbázis szintjén keresztül engedélyezhető a [az Azure portal](sql-database-automatic-tuning-enable.md#azure-portal), [REST API-val](sql-database-automatic-tuning-enable.md#rest-api) hívások és [T-SQL](sql-database-automatic-tuning-enable.md#t-sql) parancsokat.
+Az automatikus hangolás a kiszolgáló vagy az adatbázis szintjén keresztül engedélyezhető a [az Azure portal](sql-database-automatic-tuning-enable.md#azure-portal), [REST API-val](sql-database-automatic-tuning-enable.md#rest-api) hívások és [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) parancsokat.
 
 > [!NOTE]
-> Felügyelt példány esetében a támogatott beállítás FORCE_LAST_GOOD_PLAN konfigurálható [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) csak. Portal-alapú konfigurációs, és automatikus hangolási lehetőségeket a cikkben leírtak nem vonatkoznak a felügyelt példányhoz.
+> Felügyelt példány esetében a támogatott beállítás FORCE_LAST_GOOD_PLAN konfigurálható [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) csak. Portal-alapú konfigurációs, és automatikus hangolási lehetőségeket a cikkben leírtak nem vonatkoznak a felügyelt példányhoz.
 
 > [!NOTE]
 > Konfigurálása (Azure Resource Manager) ARM-sablon segítségével automatikus finomhangolási beállítások jelenleg nem támogatott.

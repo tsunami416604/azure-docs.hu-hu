@@ -2,20 +2,19 @@
 title: Az Apache Hadoop-összetevők és verziók – Azure HDInsight
 description: Ismerje meg, az Apache Hadoop-összetevők és verziók a HDInsight és a felhőalapú terjesztési Hortonworks Data platform elérhető a szolgáltatási szintek.
 keywords: hadoop-verziók, hadoop-ökoszisztéma összetevők, hadoop-összetevők, hogyan ellenőrizheti a hadoop-verzió
-services: hdinsight
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 03/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1783bf51c33a1dec84572b76149771a9723fe209
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 1c8977090fe0ea0dfd5822c7bb448d313de7cf14
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519646"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917923"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?
 

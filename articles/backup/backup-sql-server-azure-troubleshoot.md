@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: d8cbae679552cce8df29410ad8a477801abd4ff1
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: db204c0e881200f667484daf4348c336f94a0ce7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847453"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916684"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Az Azure SQL Server biztonsági mentése – hibaelhárítás
 
@@ -67,7 +67,7 @@ Az alábbi táblázatok hibakód alapján vannak rendezve.
 
 | Hibaüzenet | A lehetséges okok | Javasolt művelet |
 |---|---|---|
-| Az Azure Backup nem tud csatlakozni az SQL-példányhoz. | Az Azure Backup nem tud kapcsolódni az SQL-példányhoz. | Használja a további részletek a hiba az Azure portál menüjében oka szűkítéséhez. Tekintse meg [SQL biztonsági mentésének hibaelhárítása](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) a hiba javításához.<br/><ul><li>Ha az alapértelmezett SQL-beállítások nem engedélyezik a távoli kapcsolatokat, módosítsa a beállításokat. Tekintse meg az alábbi hivatkozások a beállítások módosítása.<ul><li>[https://msdn.microsoft.com/library/bb326495.aspx](https://msdn.microsoft.com/library/bb326495.aspx)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Bejelentkezési problémák esetén tekintse meg az alábbi hivatkozások a javításhoz:<ul><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Az Azure Backup nem tud csatlakozni az SQL-példányhoz. | Az Azure Backup nem tud kapcsolódni az SQL-példányhoz. | Használja a további részletek a hiba az Azure portál menüjében oka szűkítéséhez. Tekintse meg [SQL biztonsági mentésének hibaelhárítása](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) a hiba javításához.<br/><ul><li>Ha az alapértelmezett SQL-beállítások nem engedélyezik a távoli kapcsolatokat, módosítsa a beállításokat. Lásd az alábbi cikkeket a beállítások megváltoztatásával kapcsolatos információkat.<ul><li>[MSSQLSERVER_-1](/previous-versions/sql/sql-server-2016/bb326495(v=sql.130))</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Bejelentkezési problémák esetén tekintse meg az alábbi hivatkozások a javításhoz:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
@@ -108,7 +108,7 @@ Ha a visszaállítási feladat sikertelen a következő hibakódok jelennek meg.
 
 | Hibaüzenet | A lehetséges okok | Javasolt művelet |
 |---|---|---|
-| A helyreállításhoz használt naplóalapú biztonsági mentés Tömegesen naplózott módosításokat tartalmaz. Időpontban való megálláshoz az SQL-irányelvek alapján nem használható. | Ha egy adatbázis Tömegesen naplózott helyreállítási módban van, az adatok között egy tömegesen naplózott tranzakciós és a következő log tranzakció nem állítható helyre. | Válasszon egy másik időpontra időpontot a helyreállításhoz. [További információ](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
+| A helyreállításhoz használt naplóalapú biztonsági mentés Tömegesen naplózott módosításokat tartalmaz. Időpontban való megálláshoz az SQL-irányelvek alapján nem használható. | Ha egy adatbázis Tömegesen naplózott helyreállítási módban van, az adatok között egy tömegesen naplózott tranzakciós és a következő log tranzakció nem állítható helyre. | Válasszon egy másik időpontra időpontot a helyreállításhoz. [Részletek](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
 
 
 ## <a name="registration-failures"></a>Regisztrációs hibák
@@ -169,7 +169,8 @@ Ezek a problémák merülhetnek fel a következő okok legalább egyike miatt:
   * Virtuális gép le lett állítva, ami miatt a bővítmény konfigurációja, lejárt hosszabb ideig
   * Virtuális gép törölve lett, és a egy másik virtuális gép létrejött, ezzel a névvel, és ugyanazt az erőforráscsoportot, a törölt virtuális gép
   * Az egyik rendelkezésre állási csoport csomópontot nem kapta meg a teljes biztonsági mentési konfiguráció, ez akkor fordulhat elő, vagy a rendelkezésre állási csoport regisztrációját, hogy a tároló időpontjában, vagy ha egy új csomópont hozzáadása  <br>
-    A fenti esetekben ajánlott művelet regisztrálja újra a virtuális gép indításához. Ez a beállítás csak Powershellen keresztül érhető el, és hamarosan az Azure Portalon elérhető lesz.
+   
+A fenti esetekben ajánlott művelet regisztrálja újra a virtuális gép indításához. Ez a beállítás csak Powershellen keresztül érhető el, és hamarosan az Azure Portalon elérhető lesz.
 
 
 ## <a name="next-steps"></a>További lépések

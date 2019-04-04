@@ -11,12 +11,12 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 1c02a30800e86c7b32524fb9cdba7dacf3bba9c7
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652093"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904576"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 
@@ -356,7 +356,7 @@ Ha rendelkezik meglévő .NET-kódot írni a verziók 1 (egyéni) DotNet tevéke
   - A Microsoft.Azure.Management.DataFactories NuGet-csomag már nem szükséges.
   - A kód fordítása, a végrehajtható fájlt, és annak függőségeit feltöltése az Azure Storage és az elérési utat adja meg a `folderPath` tulajdonság.
 
-Teljes minta, hogyan a teljes körű DLL-t és a folyamat minta ismertetett az adat-előállító verziója 1. cikk [egyéni tevékenységek használata Azure Data Factory-folyamatot](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) is kell írni a Data Factory egyéni tevékenységként, Lásd:[ Data Factory egyéni tevékenység minta](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample).
+Teljes minta, hogyan a teljes körű DLL-t és a folyamat minta ismertetett az adat-előállító verziója 1. cikk [egyéni tevékenységek használata Azure Data Factory-folyamatot](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) is kell írni a Data Factory egyéni tevékenységként, Lásd:[ Data Factory egyéni tevékenység minta](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample).
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatikus skálázás az Azure Batch
 
@@ -382,10 +382,10 @@ Ha a készletet használja az alapértelmezett [autoScaleEvaluationInterval](htt
 Tekintse meg a következő cikkek, amelyek bemutatják, hogyan alakíthat át adatokat, egyéb módon:
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)
-* [Hive-tevékenység](transform-data-using-hadoop-hive.md)
+* [Struktúratevékenység](transform-data-using-hadoop-hive.md)
 * [Pig-tevékenység](transform-data-using-hadoop-pig.md)
-* [MapReduce-tevékenység](transform-data-using-hadoop-map-reduce.md)
+* [MapReduce tevékenység](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop Streamelési tevékenységben](transform-data-using-hadoop-streaming.md)
 * [Spark-tevékenység](transform-data-using-spark.md)
 * [Machine Learning kötegelt végrehajtási tevékenység](transform-data-using-machine-learning.md)
-* [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)
+* [Tárolt eljárás tevékenysége](transform-data-using-stored-procedure.md)

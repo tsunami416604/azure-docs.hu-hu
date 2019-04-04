@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: ddcf3428f32698c9825f13975929bc4677139acf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9f43eb1623ec784bd960fb182dffec48e7b0833
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081049"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481246"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 frissítése
 
@@ -61,7 +61,7 @@ Az Azure Stack rendszeresen gyorsjavításait. Ne felejtse el telepíteni a [leg
 
 - A frissítés telepítésének megkezdése előtt futtassa [Test-AzureStack](azure-stack-diagnostic-test.md) az Azure Stack állapotának érvényesítéséhez, és hárítsa el a működési hibákat talált a következő paraméterekkel, többek között az összes figyelmeztetések és hibák esetén. Emellett tekintse át az aktív riasztások, és oldja meg az esetleges beavatkozást igénylő.  
 
-    ```PowerShell
+    ```powershell
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
@@ -270,7 +270,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
     Mindkét riasztás biztonságosan figyelmen kívül hagyhatja. Ezek automatikusan megszűnik idővel.  
 
-### <a name="compute"></a>Compute
+### <a name="compute"></a>Számítás
 
 - Amikor létrehozza az új Windows virtuális gép (VM), a **beállítások** panel megköveteli, hogy a folytatáshoz válassza ki a nyilvános bejövő port. 1811 Ez a beállítás megadása kötelező, de nem lesz hatása. Ennek az oka a funkció működéséhez az Azure-tűzfal, amely az Azure Stackben není implementována. Választhat **nem nyilvános bejövő portok**, vagy az egyéb beállításokat a virtuális gép létrehozásának folytatásához. A beállítás nem lesz hatása.
 
@@ -331,7 +331,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 - Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy jelentkezzen be az SSH-kulcsok használata. Áthidaló megoldásként használja a Linux-bővítményt a Virtuálisgép-hozzáférés SSH-kulcsok megvalósításához a kiépítés után, vagy jelszóalapú hitelesítés használatára.
 
-### <a name="networking"></a>Hálózat  
+### <a name="networking"></a>Hálózatkezelés  
 
 <!-- 1766332 - IS ASDK --> 
 - A **hálózatkezelés**, ha rákattint **VPN-átjáró létrehozása** egy VPN-kapcsolat beállítása **csoportházirend-alapú** jelenik meg a VPN-típust. Válassza ezt a beállítást. Csak a **útválasztó alapú** beállítás támogatott az Azure Stackben.
@@ -375,7 +375,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - Miután engedélyezte az automatikus biztonsági mentést, a Feladatütemező szolgáltatás hiányzóra tiltva váratlanul. A biztonsági mentési hálózativezérlő-szolgáltatás észleli, hogy az automatikus biztonsági mentés le vannak tiltva, és figyelmeztetés a felügyeleti portálon. Ez a figyelmeztetés várható, ha az automatikus biztonsági mentés le vannak tiltva. 
     - OK: A probléma van a szolgáltatásban, amely az ütemezési konfiguráció elvesztését eredményezi egy hiba miatt. Ez a hiba nem változik, a tárolási helyét, a felhasználónevet, a jelszó vagy a titkosítási kulcs.   
     - Szervizelési: A probléma megoldásához nyissa meg a biztonsági mentési infrastruktúra erőforrás-szolgáltató a biztonsági mentés vezérlő beállítások panelre, és válassza **engedélyezze az automatikus biztonsági mentés**. Ellenőrizze, hogy a kívánt gyakoriság és megőrzési időszak beállítása.
-    - Előfordulás: Alacsony 
+    - Előfordulás: Nem súlyos 
 
 <!-- ### SQL and MySQL-->
 

@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 36815010c3e8fccc2ec24ce344071d0836da219b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 442551424fea353aa7eddef6e7eba6e934f95691
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097457"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905851"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 
 A Visual Studio alkalmazással olyan projekteket hozhat létre, amelyekkel telepíthető az infrastruktúra és kód az Azure rendszerébe. Meghatározhatja például az alkalmazás webállomását, webhelyét és adatbázisát, továbbá telepítheti az infrastruktúrát a kóddal együtt. A Visual Studio számos különböző kezdősablont kínál a gyakori forgatókönyvek telepítéséhez. Ebben a cikkben egy webapp és egy SQL Database üzembe helyezésének módját ismerheti meg.  
 
 Ez a cikk bemutatja, hogyan használhatja a [Visual Studio 2017-et az Azure-fejlesztéssel és telepített ASP.NET számítási feladatokkal](/dotnet/azure/dotnet-tools). Amennyiben a Visual Studio 2015 2. frissítését és a Microsoft Azure SDK for .NET 2.9-et használja vagy a Visual Studio 2013-as verzióját Azure SDK 2.9-cel, a tapasztalt működés nagyjából azonos lesz.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-azure-resource-group-project"></a>Azure erőforráscsoport-projekt létrehozása
 
@@ -148,7 +150,7 @@ Készen áll a projekt üzembe helyezésére. Az Azure Erőforráscsoport-projek
    > [!NOTE]
    > Előfordulhat, hogy a Visual Studio megkéri, hogy telepítse az Azure PowerShell-parancsmagokat. Ha a program kéri, telepítse őket. Az Azure PowerShell-modulok az erőforráscsoportok sikeres üzembe helyezéséhez szükséges. A projekt a PowerShell-parancsprogram nem működik az új [Az Azure PowerShell modul](/powershell/azure/new-azureps-module-az). 
    >
-   > További információkért lásd: [telepítése és konfigurálása az Azure PowerShell-modulok](/powershell/azure/azurerm/install-azurerm-ps).
+   > További információkért lásd: [telepítése és konfigurálása az Azure PowerShell-modulok](/powershell/azure/install-Az-ps).
    > 
    > 
 6. Az üzembe helyezés eltarthat néhány percig. A **Kimenet** ablakban követhető az üzembe helyezés állapota. Az üzembe helyezés befejeztével az utolsó üzenet jelzi az üzembe helyezés sikerességét, a következőhöz hasonló módon:

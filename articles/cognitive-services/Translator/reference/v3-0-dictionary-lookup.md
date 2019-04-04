@@ -3,19 +3,19 @@ title: Translator Text API szótár keresési metódus
 titlesuffix: Azure Cognitive Services
 description: A Translator Text API szótár keresési módszert használja.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: e97d308bca585cdb26ccc2f20e125436707c481e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 89b4058c384440b83f60fb6147cd373ecf893011
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876334"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917005"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: Keresés a szótárban
 
@@ -140,7 +140,7 @@ A sikeres válasz egy JSON-tömböt az egyes sztringek a bemeneti számtömbből
 
 Ez a példa bemutatja, hogyan felkínálásával spanyol nyelven az angol nyelvű kifejezést talált `fly` .
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>A curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
@@ -191,7 +191,7 @@ A válasz törzsében (rövidítése az átláthatóság érdekében) a követke
 
 Ez a példa bemutatja, mi történik, ha az előfizetési időszak alatt kulcskeresési a érvényes szótár pár nem létezik.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>A curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"

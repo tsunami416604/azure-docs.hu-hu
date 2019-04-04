@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: b2e87b2855ac1d76fe2ad544c17c33bfa14f635a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4ca26c7b8fbfebbce8cfcb9915a7db12e5ad2352
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812378"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918671"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services – tanúsítványok áttekintése
 Tanúsítványokat használ az Azure cloud Services ([szolgáltatási tanúsítványok](#what-are-service-certificates)) és a felügyeleti API-hoz való hitelesítéshez használt ([felügyeleti tanúsítványok](#what-are-management-certificates)). Ez a témakör hogyan mindkét tanúsítványtípusok általános áttekintést nyújt a [létrehozása](#create) és üzembe helyezheti őket az Azure-bA.
@@ -69,7 +69,7 @@ Elérhető mindaddig, amíg azok betartja ezeket a beállításokat, hozzon lét
 Nincsenek a Windows, a tanúsítvány létrehozása a két egyszerű módon a `makecert.exe` segédprogramot, vagy az IIS.
 
 ### <a name="makecertexe"></a>Makecert.exe
-A segédprogram elavult, és már nem dokumentált itt. További információkért lásd: [MSDN-cikkben](https://msdn.microsoft.com/library/windows/desktop/aa386968).
+A segédprogram elavult, és már nem dokumentált itt. További információkért lásd: [MSDN-cikkben](/windows/desktop/SecCrypto/makecert).
 
 ### <a name="powershell"></a>PowerShell
 ```powershell

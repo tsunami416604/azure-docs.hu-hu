@@ -3,19 +3,15 @@ title: Alkalmazásátjáró létrehozása URL-útvonalon alapuló átirányítá
 description: Megtudhatja, hogyan hozhat létre alkalmazásátjárót URL-útvonal alapján átirányított forgalommal az Azure PowerShell használatával.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 11/13/2018
+ms.date: 4/3/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 23541543daaf1a354da370178f82b222acfebe72
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: febe02ac7fe4dfcb4140a8e5796c4c9fa86f6de3
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58876633"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918382"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Alkalmazásátjáró létrehozása URL-útvonalon alapuló átirányítással az Azure PowerShell használatával
 
@@ -502,7 +498,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/tutorial-url-redirect-powershell/application-gateway-iistest.png)
 
-Módosítsa az URL-címet http://&lt;ip-address&gt;:8080/video/test.htm értékre, és cserélje az &lt;ip-address&gt; részt a saját IP-címére. Ekkor a következő példához hasonló eredmény látható:
+Módosítsa az URL-címet http://&lt;ip-address&gt;:8080/images/test.htm értékre, és cserélje az &lt;ip-address&gt; részt a saját IP-címére. Ekkor a következő példához hasonló eredmény látható:
 
 ![Képek URL-címének tesztelése az alkalmazásátjáróban](./media/tutorial-url-redirect-powershell/application-gateway-iistest-images.png)
 

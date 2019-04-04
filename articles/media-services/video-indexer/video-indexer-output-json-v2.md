@@ -9,16 +9,16 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 05de1640fbee7799da0a14bba262ef9724686878
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 552c3fa81a213d0be32c5498cde5a50fb44291d0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650080"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892575"
 ---
-# <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>A v2 API által előállított Videóindexelő kimenetének vizsgálata
+# <a name="examine-the-video-indexer-output-produced-by-api"></a>Az API által előállított Videóindexelő kimenetének vizsgálata
 
-Meghívásakor a **első videó Index** API és a válasz állapota OK, a részletes JSON-kimenet, a válasz tartalma kapunk. A JSON-tartalmak a megadott feltárását részleteit tartalmazza. Az insights közé tartozik például a dimenziók: szövegekben felismerése, arcok, témakörök, blokkok, stb. A dimenziók időtartományok azt mutatják be, amikor a videó minden dimenzió jelentek meg a példányban.  
+Meghívásakor a **első videó Index** API és a válasz állapota OK, a részletes JSON-kimenet, a válasz tartalma kapunk. A JSON-tartalmak a megadott feltárását részleteit tartalmazza. Az insights közé tartozik például a dimenziók: szövegekben, felismerése, arcokat, témakörök, blokkok stb. A dimenziók időtartományok azt mutatják be, amikor a videó minden dimenzió jelentek meg a példányban.  
 
 Vizuálisan is megvizsgálhatja a videó összefoglaló insights billentyűkombináció lenyomásával a **lejátszása** videó gombot a [Video Indexer](https://www.videoindexer.ai/) webhelyén. További információkért lásd: [megtekintés és Szerkesztés feltárását](video-indexer-view-edit.md).
 
@@ -83,7 +83,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |arcok|Nulla vagy több arcokat is tartalmazhat. Részletesebb információkért lásd: [arcok](#faces).|
 |kulcsszavak|Nulla vagy több kulcsszavak tartalmazhat. Részletesebb információkért lásd: [kulcsszavak](#keywords).|
 |hangulati|Nulla vagy több hangulati tartalmazhat. Részletesebb információkért lásd: [hangulati](#sentiments).|
-|audioEffects| Nulla vagy több audioEffects tartalmazhat. Részletesebb információkért lásd: [audioEffects](#audioeffects).|
+|audioEffects| Nulla vagy több audioEffects tartalmazhat. Részletesebb információkért lásd: [audioEffects](#audioEffects).|
 |címkék| Nulla vagy több címkéket tartalmazhat. További információ részletes: [címkék](#labels).|
 |márka| Nulla vagy több márkái tartalmazhat. Részletesebb információkért lásd: [márkái](#brands).|
 |statisztika | Részletesebb információkért lásd: [statisztika](#statistics).|
@@ -153,14 +153,14 @@ Előfordulhat, hogy egy ARC Azonosítóját, nevét, a miniatűr, más metaadato
 |sourceLanguage|A videó Forrásnyelv (feltéve, hogy egy fő nyelvet). Formájában egy [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc.|
 |language|Az insights nyelv (a forrás nyelvről lefordított). Formájában egy [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc.|
 |a szövegben|A [átirat](#transcript) dimenzió.|
-|optikai karakterfelismerés|A [ocr](#ocr) dimenzió.|
+|optikai karakterfelismerés|A [OCR](#ocr) dimenzió.|
 |kulcsszavak|A [kulcsszavak](#keywords) dimenzió.|
 |blokkok|Tartalmazhat egy vagy több [blokkok](#blocks)|
 |arcok|A [arcok](#faces) dimenzió.|
 |címkék|A [címkék](#labels) dimenzió.|
 |helyességének|A [helyességének](#shots) dimenzió.|
 |márka|A [márkái](#brands) dimenzió.|
-|audioEffects|A [audioEffects](#audioeffects) dimenzió.|
+|audioEffects|A [audioEffects](#audioEffects) dimenzió.|
 |hangulati|A [hangulati](#sentiments) dimenzió.|
 |visualContentModeration|A [visualContentModeration](#visualcontentmoderation) dimenzió.|
 |textualContentModeration|A [textualContentModeration](#textualcontentmoderation) dimenzió.|
@@ -419,61 +419,85 @@ Példa:
   ] 
 ```
 
+#### <a name="scenes"></a>Jelenetek
+
+|Name (Név)|Leírás|
+|---|---|
+|id|A helyszín azonosítója.|
+|példányok|A helyszín (jelenet legfeljebb 1 példány) időtartományok listája.|
+
+```json
+"scenes":[  
+    {  
+      "id":0,
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+    {  
+      "id":1,
+      "instances":[  
+          {  
+            "start":"0:00:06.34",
+            "end":"0:00:47.047",
+            "duration":"0:00:40.707"
+          }
+      ]
+    },
+
+]
+```
+
 #### <a name="shots"></a>helyességének
 
 |Name (Név)|Leírás|
 |---|---|
 |id|A képernyőkép-azonosítót.|
-|Kulcsképek|Kulcs keretek belül a képernyőkép-készítés (megvannak-azonosító és példányok idő tartományok listája) listája. Kulcs keretek példányok rendelkeznek egy thumbnailId mezőt, a Kulcsképkocka miniatűr-azonosítóját.|
-|példányok|A képernyőkép-készítés ideje tartományainak listáját (a helyességének 1 példánnyal rendelkezik).|
+|Kulcsképek|A képernyőkép-készítés (megvannak-azonosító és példányok idő tartományok listája) belül kulcsképek listája. Minden egyes Kulcsképkocka-példány rendelkezik egy thumbnailId mező, amely tartalmazza a Kulcsképkocka miniatűr-azonosító.|
+|példányok|A képernyőkép-készítés (a képernyőkép-készítés legfeljebb 1 példány) az idő a tartományok listája.|
 
 ```json
-"Shots": [
-    {
-      "id": 0,
-      "keyFrames": [
-        {
-          "id": 0,
-          "instances": [
-            {
-                "thumbnailId": "00000000-0000-0000-0000-000000000000",
-              "start": "00: 00: 00.1670000",
-              "end": "00: 00: 00.2000000"
-            }
-          ]
-        }
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
       ],
-      "instances": [
-        {
-            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
-          "start": "00: 00: 00.2000000",
-          "end": "00: 00: 05.0330000"
-        }
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
       ]
     },
-    {
-      "id": 1,
-      "keyFrames": [
-        {
-          "id": 1,
-          "instances": [
-            {
-                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
-              "start": "00: 00: 05.2670000",
-              "end": "00: 00: 05.3000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-      "thumbnailId": "00000000-0000-0000-0000-000000000000",
-          "start": "00: 00: 05.2670000",
-          "end": "00: 00: 10.3000000"
-        }
-      ]
-    }
-  ]
+
+]
 ```
 
 #### <a name="brands"></a>márka

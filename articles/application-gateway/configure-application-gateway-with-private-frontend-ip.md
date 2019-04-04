@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
-ms.openlocfilehash: 4755eeda6a254389f0e0fbceec602fef718a9c45
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100172"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905538"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Application gateway konfigurálása egy belső terheléselosztó (ILB) végponthoz
 
@@ -25,9 +25,12 @@ Ez a cikk azt ismerteti, hogyan lehet:
 - Az Application Gateway egy magánhálózati előtérbeli IP-konfiguráció létrehozása
 - Hozzon létre egy application gateway magánhálózati előtérbeli IP-konfiguráció
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure Portalra a <https://portal.azure.com> címen.
+Az Azure Portalra való bejelentkezéshez <https://portal.azure.com>
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
@@ -67,7 +70,7 @@ A háttérkészlet irányíthatja a kérelmeket a háttérkiszolgálók, amely a
 3. Adja meg a következő értékeket a virtuális gép számára:
    - A virtuális gép neve *myVM*.
    - A rendszergazda felhasználóneve: *azureuser*.
-   - A jelszó *Azure123456!* .
+   - *Azure123456!* .
    - Válassza a **Meglévő használata**, majd a *myResourceGroupAG* lehetőséget.
 4. Kattintson az **OK** gombra.
 5. Válassza ki **DS1_V2** méretét, a virtuális gépet, majd kattintson **kiválasztása**.
@@ -82,7 +85,7 @@ A háttérkészlet irányíthatja a kérelmeket a háttérkiszolgálók, amely a
 2. Futtassa a következő parancsot az IIS a virtuális gépen való telepítéséhez:
 
    ```azurepowershell
-   Set-AzureRmVMExtension `
+   Set-AzVMExtension `
    
      -ResourceGroupName myResourceGroupAG `
    
@@ -100,7 +103,7 @@ A háttérkészlet irányíthatja a kérelmeket a háttérkiszolgálók, amely a
 
 
 
-3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzureRmVMExtension.
+3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzVMExtension.
 
 ### Add backend servers to backend pool
 

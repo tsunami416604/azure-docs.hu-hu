@@ -3,19 +3,19 @@ title: Vissza a legjobb N fordítások – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Legjobb N fordítás a Microsoft Translator Text API használatával adja vissza.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 41027cf83fd6074822c70b6039906592cb8698b0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 62992122dc16003078bb80ecd87c2bd3692586dd
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878646"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918314"
 ---
 # <a name="how-to-return-n-best-translations"></a>Legjobb N fordítások visszaállítása
 
@@ -27,7 +27,7 @@ A metódus legfeljebb maxTranslations alternatívák ad vissza, ahol a különb�
 
 Az aláírás az:
 
-**Syntax**
+**Szintaxis**
 
 | C# |
 |:---|

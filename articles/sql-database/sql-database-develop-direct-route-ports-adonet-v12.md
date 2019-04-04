@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 11/07/2018
-ms.openlocfilehash: 96b6b4866b17e15f544a10124d07e651d747b58b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 04/03/2019
+ms.openlocfilehash: ddb115370c62371e769ef98e0031f7e0379bafbf
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306442"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916172"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Az ADO.NET 4.5 szoftverrel 1433-ason túli
 
@@ -43,11 +43,11 @@ A feladatütemezés a következőképpen történik:
 
 1. Az ADO.NET 4.5 (vagy újabb verzió) kezdeményez az Azure-felhő rövid interakció, és dinamikusan azonosított portszám kap.
 
-   * A dinamikusan azonosított portszám a 11000-11999 vagy 14000-14999 tartományán van.
+   * A dinamikusan azonosított portszám a 11000-11999 tartományán van.
 2. ADO.NET majd csatlakozik az SQL Database-kiszolgálóhoz, közvetlenül nem közbenső a kettő között.
 3. Adatbázissal küldi el, és közvetlenül az ügyfél az eredményt.
 
-Győződjön meg arról, hogy a port 11000-11999 és az Azure-ügyfél gépen 14000-14999 tartományok ADO.NET 4.5 ügyfél interakciók az SQL Database elérhető marad.
+Győződjön meg arról, hogy a port 11000-11999 az Azure-ügyfél gépen adattartományokat van hátra az ADO.NET 4.5 ügyfél interakciók az SQL Database érhető el.
 
 * A tartomány portokat, ingyenes, bármely más kimenő blockers kell megadni.
 * Az Azure virtuális gépen a **fokozott biztonságú Windows tűzfal** szabályozza a portbeállításokat.
@@ -82,7 +82,7 @@ Ez a szakasz a termékváltozatokra hivatkozó monikerek értelmezi. Emellett eg
 * Csatlakozás az Azure SQL Database V12 átirányítás https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
 * [TDS protokollverziók listája](http://www.freetds.org/userguide/tdshistory.htm)
-* [Az SQL Database fejlesztési áttekintése](sql-database-develop-overview.md)
+* [SQL-adatbázis-fejlesztés – áttekintés](sql-database-develop-overview.md)
 * [Az Azure SQL Database-tűzfal](sql-database-firewall-configure.md)
 * [Útmutató: A tűzfal beállításainak konfigurálása az SQL Database szolgáltatásban](sql-database-configure-firewall-settings.md)
 

@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: ad389cfaa92ad487fad8b7ecb6feac40324572f0
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: eb7deacc068661ca9a4f473ee2d36b7d4464c81c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100567"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905511"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Hibaelhárítási & korlátozások az Azure Cloud Shell
 
 Ismert megoldásuk kapcsolatos hibák elhárítása az Azure Cloud Shellben a következők:
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-troubleshooting"></a>Általános hibaelhárítási tippek
 
@@ -74,7 +76,7 @@ Ismert megoldásuk kapcsolatos hibák elhárítása az Azure Cloud Shellben a k�
 > Az Azure virtuális gépek rendelkeznie kell egy nyilvános IP-cím elérhető.
 
 - **Részletek**: A Rendszerfelügyeleti webszolgáltatások a Windows tűzfal alapértelmezett beállításai miatt a felhasználó a következő hiba jelenhet meg: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Megoldás**:  Futtatás `Enable-AzureRmVMPSRemoting` engedélyezése a PowerShell-táveléréssel a célgépen minden aspektusát.
+- **Megoldás**:  Futtatás `Enable-AzVMPSRemoting` engedélyezése a PowerShell-táveléréssel a célgépen minden aspektusát.
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` az eredmény az Azure-meghajtó nem frissül
 

@@ -1,6 +1,6 @@
 ---
-title: OpenId Connect technikai profil meghatározása egy egyéni házirendek az Azure Active Directory B2C |} A Microsoft Docs
-description: Adja meg az Azure Active Directory B2C egyéni szabályzat OpenId Connect technikai profil.
+title: Adja meg az OpenId Connect technikai profil egy egyéni házirendek az Azure Active Directory B2C |} A Microsoft Docs
+description: Adja meg az OpenId Connect technikai profil az Azure Active Directory B2C-vel egyéni szabályzatok.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 730d32fd5b9451c2b4edfe0fb1e50c06c2156815
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a13ca362bf08b86297641061992f0820f0b624c5
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159471"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916767"
 ---
-# <a name="define-a-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OpenId Connect technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
+# <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az OpenId Connect technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 4757b20e1a3d9830c2d52a5fbc85fd935b27fb62
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7862e4d5c4dd603dacf5784df6c4194392ebc351
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245035"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918195"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-webworker-role"></a>Alapértelmezett TEMP mappa mérete túl kicsi egy felhőalapú szolgáltatás webes/feldolgozói szerepkör
 Egy cloud service feldolgozó vagy webes szerepkör alapértelmezett ideiglenes könyvtár maximális mérete 100 MB, amely teljes körű valamikor válhat rendelkezik. Ez a cikk bemutatja, hogyan kevés a hely az ideiglenes könyvtár elkerülése érdekében.
@@ -33,8 +33,8 @@ A szabványos Windows környezeti változók TEMP és TMP érhetők el a kódot,
 ## <a name="suggestion-to-fix-the-problem"></a>A probléma megoldása érdekében
 A következő alternatív megoldások egyikét valósítják:
 
-* Konfigurálja a helyi tároló egyik erőforrásához, és közvetlenül a TEMP és TMP használata helyett férni. Helyi tároló erőforrások eléréséhez az alkalmazáson belül futó kódból, hívja meg a [RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) metódust.
-* Konfigurálja a helyi tároló egyik erőforrásához, és mutasson a TEMP és TMP könyvtárak átirányítása a helyi tárolási erőforrás elérési útja. Ez a módosítás belül kell végrehajtani a [RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) metódust.
+* Konfigurálja a helyi tároló egyik erőforrásához, és közvetlenül a TEMP és TMP használata helyett férni. Helyi tároló erőforrások eléréséhez az alkalmazáson belül futó kódból, hívja meg a [RoleEnvironment.GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) metódust.
+* Konfigurálja a helyi tároló egyik erőforrásához, és mutasson a TEMP és TMP könyvtárak átirányítása a helyi tárolási erőforrás elérési útja. Ez a módosítás belül kell végrehajtani a [RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) metódust.
 
 Az alábbi példakód bemutatja, hogyan módosíthatja a cél-könyvtárak a TEMP és TMP a belül az OnStart metódus:
 

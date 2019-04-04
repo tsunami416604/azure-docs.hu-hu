@@ -3,19 +3,19 @@ title: Translation Customization - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: A Microsoft Translator Hub használatával hozhat létre a saját gépi fordítási rendszer használatával az előnyben részesített terminológia és a stílust.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: e66387a904f0026eb862178b19fd1b005212d674
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124014"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918229"
 ---
 # <a name="customize-your-text-translations"></a>A szöveg fordítások testreszabása
 
@@ -47,7 +47,7 @@ További információt a rendelkezésre álló adatok alapján testreszabási k�
 
 ## <a name="custom-translator-versus-hub"></a>Eseményközpont és egyéni fordító
 
-|   | **Hub** | **Egyéni a fordítót**|
+|   | **Központ** | **Custom Translator**|
 |:-----|:----:|:----:|
 |Testreszabás funkció állapota   | Általános rendelkezésre állás  | Általános rendelkezésre állás |
 | Text API-verzió  | Csak v2   | Csak a v3 |

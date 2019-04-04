@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: d500e26f5701e59dacfd5f09f6eaf88c5ced74e6
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 340cba65a1faac247678cd187f106157ba566f3e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648520"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918722"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Az Azure Reserved VM Instances nem tartalmazza a szoftverek díjait.
 
-Ha az Azure Hybrid Use Benefit nem rendelkezik a fenntartott VM-példányokon, majd kell fizetnie a szoftver mérőszámok az alábbiakban felsorolt.
+Ha nem rendelkezik az Azure Hybrid Benefit értékelem a fenntartott VM-példányokon, majd díja az alábbi szakaszban felsorolt szoftver mérőszámokhoz tartozó.
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>Windows szoftverek mérőszámok nem szerepel a fenntartás költsége
 
@@ -66,13 +66,13 @@ Ha az Azure Hybrid Use Benefit nem rendelkezik a fenntartott VM-példányokon, m
 
 ## <a name="rates-for-azure-meters"></a>Az Azure-mérőszámok díjszabása
 
-Ezek a mérőszámok költsége Azure RateCard API-n keresztül kérheti le. A díjszabás lekérése egy azure-mérőszámok információkért lásd: [Azure-előfizetésben használt erőforrások kapcsolatos díja és metaadatok beolvasása](https://msdn.microsoft.com/library/azure/mt219004).
+Ezek a mérőszámok költsége Azure RateCard API-n keresztül kérheti le. A díjszabás lekérése egy azure-mérőszámok információkért lásd: [Azure-előfizetésben használt erőforrások kapcsolatos díja és metaadatok beolvasása](/previous-versions/azure/reference/mt219004(v=azure.100)).
 
 ## <a name="next-steps"></a>További lépések
 Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mik azok a foglalást az Azure-hoz?](billing-save-compute-costs-reservations.md)
-- [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Azure-foglalások kezelése](billing-manage-reserved-vm-instance.md)
 - [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](billing-understand-vm-reservation-charges.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)

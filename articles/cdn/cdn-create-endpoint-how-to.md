@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: a3fd85d1dbcba769f47e537e0231f63110752492
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ba25bef75bc21eea2b0c3a57599a3b9ddd3164e0
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093680"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916818"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Hozzon létre egy Azure CDN-végponthoz
 Ez a cikk bemutatja az összes beállítás létrehozásához egy [Azure Content Delivery Network (CDN)](cdn-overview.md) végpontot egy meglévő CDN-profilt. Miután létrehozott egy profilt és egy végpontot, elindíthatja a tartalomszolgáltatást az ügyfelek. A profil és -végpont létrehozása egy rövid útmutatóban talál [a rövid útmutató: Azure CDN-profil és -végpont létrehozása](cdn-create-new-endpoint.md).
@@ -67,7 +67,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
    > [!NOTE]
    > A **forrásport** érték azt határozza meg, csak az a port, a végpontot használja az eredeti kiszolgálón lévő információk lekéréséhez. Magát a végpontot a végfelhasználók – a **Forrásport** értékétől függetlenül – csak az alapértelmezett HTTP- és HTTPS-porton (azaz a 80-as és a 443-as porton) érik el.  
    > 
-   > Az **Akamai Azure CDN**-profilok végpontjai esetén a forrásportok számára nem áll rendelkezésre a teljes TCP-porttartomány. A nem engedélyezett forrásportok listáját lást: [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx) (Az Akamai Azure CDN engedélyezett forrásportjai).  
+   > Az **Akamai Azure CDN**-profilok végpontjai esetén a forrásportok számára nem áll rendelkezésre a teljes TCP-porttartomány. A nem engedélyezett forrásportok listáját lást: [Azure CDN from Akamai Allowed Origin Ports](/previous-versions/azure/mt757337(v=azure.100)) (Az Akamai Azure CDN engedélyezett forrásportjai).  
    > 
    > Az Azure CDN egyéni tartományok HTTPS-támogatása nem támogatott az **Akamai Azure CDN** termékek. További információkért lásd: [HTTPS konfigurálása az Azure CDN egyéni tartományon](cdn-custom-ssl.md).
     
@@ -84,7 +84,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
     - **Az Azure CDN Akamai Standard** profilok:
        - [**Általános webes kézbesítés**](cdn-optimization-overview.md#general-web-delivery)
        - [**Általános médiastreaming**](cdn-optimization-overview.md#general-media-streaming)
-       - [**A videó igényalapú videóstreaming**](cdn-optimization-overview.md#video-on-demand-media-streaming)
+       - [**Igényalapú videóstreaming**](cdn-optimization-overview.md#video-on-demand-media-streaming)
        - [**Nagyméretű fájl letöltése**](cdn-optimization-overview.md#large-file-download)
        - [**Dinamikus helygyorsítás**](cdn-optimization-overview.md#dynamic-site-acceleration)
 

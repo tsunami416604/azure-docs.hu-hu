@@ -14,16 +14,16 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 4e92f2aeec21ccef5a6a553b17e099d54de7266a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4385e982b2a1da52ae55acf50c601108863c452a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774337"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905953"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Adatok átvitele tools for Azure Stack-tároló használata
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A Microsoft Azure Stack a storage-szolgáltatás, a lemezek, blobok, táblák, üzenetsorok és fiók felügyeleti funkciókat biztosít. Az Azure storage-eszközöket is használhatja, ha szeretné kezelni, vagy helyezze át az adatokat, vagy az Azure Stack-storage-ból. Ez a cikk áttekintést a rendelkezésre álló eszközöket.
 
@@ -71,7 +71,7 @@ Nincsenek az AzCopy segédprogram két verziója: Az AzCopy Windows és Linux re
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>Adatátvitel az AzCopy parancs példák
 
-Az alábbi példák hajtsa végre az adatok másolása, és az Azure Stack-blobokból jellemző forgatókönyvei. További tudnivalókért lásd: [az AzCopy Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) és [AzCopy linuxon](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux).
+Az alábbi példák hajtsa végre az adatok másolása, és az Azure Stack-blobokból jellemző forgatókönyvei. További tudnivalókért lásd: [az AzCopy Windows](../../storage/common/storage-use-azcopy.md) és [AzCopy linuxon](../../storage/common/storage-use-azcopy-linux.md).
 
 ### <a name="download-all-blobs-to-a-local-disk"></a>Az összes blobokat a helyi lemez
 
@@ -156,7 +156,7 @@ Ez a minta azt feltételezik, hogy sikeresen [PowerShell telepítve van az Azure
    > [!NOTE]
    > A szkriptre a gyökérkönyvtárban a futtatandó **AzureStack_Tools**.
 
-```PowerShell  
+```powershell  
 # begin
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environment name
@@ -264,7 +264,7 @@ A parancsfájl futtatása előtt győződjön meg arról, hogy képes sikeresen 
 2. A parancsfájl-változókat, hogy a konfigurációs beállítások frissítése.
 3. A szükséges változók frissítése után mentse a parancsfájlt, és lépjen ki a saját szerkesztőben. A következő lépések azt feltételezik, hogy a parancsfájl nevű **my_storage_sample.sh**.
 4. Megjelölés végrehajtható, mint a szkriptet, szükség esetén: `chmod +x my_storage_sample.sh`
-5. A szkript végrehajtása. Ha például a Bash: `./my_storage_sample.sh`
+5. A szkript végrehajtása. Például a Bashben: `./my_storage_sample.sh`
 
 ```azurecli
 #!/bin/bash

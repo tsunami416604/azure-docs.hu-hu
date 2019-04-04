@@ -9,16 +9,19 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: lyrana
 ms.custom: seodec18
-ms.openlocfilehash: 725f95797de0a4d4e6240be4d42cf8a196d94889
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118591"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905307"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Létrehozása és kezelése az Azure digitális Twins szerepkör-hozzárendelések
 
 Az Azure digitális Twins használ a szerepköralapú hozzáférés-vezérlés ([RBAC](./security-role-based-access-control.md)) erőforrásokhoz való hozzáférés kezelésére.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="role-assignments-overview"></a>Szerepkör-hozzárendelések – áttekintés
 
@@ -38,11 +41,11 @@ Az alábbi táblázat ismerteti az egyes tulajdonságokat:
 
 | Attribútum | Name (Név) | Szükséges | Típus | Leírás |
 | --- | --- | --- | --- | --- |
-| Szerepkör azonosítója | Szerepkör-definíció azonosítója | Igen | Karakterlánc | A kívánt szerepkör-hozzárendelés egyedi azonosítója. Keresse meg a szerepkör-definíciók és azok azonosító lekérdezésekor a rendszer API-t, vagy tekintse át az alábbi táblázat szerint. |
-| objectId | Objektumazonosító | Igen | Karakterlánc | Az Azure Active Directory azonosítója, azonosítója vagy tartománynév számára. Milyen vagy akikkel a szerepkör-hozzárendelés hozzá van rendelve. A szerepkör-hozzárendelés vzhledem ke svému társított typu kell formázni. Az a `DomainName` objectId objectIdType, kell kezdődnie az `“@”` karakter. |
-| objectIdType | Objektumtípus azonosítója | Igen | Karakterlánc | Milyen típusú használt objektumazonosító. Lásd: **ObjectIdTypes támogatott** alatt. |
-| elérési út | Terület elérési útja | Igen | Karakterlánc | A teljes elérési útvonal a `Space` objektum. Például: `/{Guid}/{Guid}`. Ha egy azonosítót a szerepkör-hozzárendelést a teljes grafikon van szüksége, adja meg `"/"`. Ezt a karaktert jelöli meg a legfelső szintű, de a használata nem ajánlott. A minimális jogosultság elvének mindig követik. |
-| tenantId | Bérlőazonosító | Változó | Karakterlánc | A legtöbb esetben az Azure Active Directory-bérlő azonosítója. Nem engedélyezett a `DeviceId` és `TenantId` ObjectIdTypes. Szükséges `UserId` és `ServicePrincipalId` ObjectIdTypes. A tartománynév ObjectIdType esetén nem kötelező. |
+| roleId | Szerepkör-definíció azonosítója | Igen | String | A kívánt szerepkör-hozzárendelés egyedi azonosítója. Keresse meg a szerepkör-definíciók és azok azonosító lekérdezésekor a rendszer API-t, vagy tekintse át az alábbi táblázat szerint. |
+| objectId | Objektumazonosító | Igen | String | Az Azure Active Directory azonosítója, azonosítója vagy tartománynév számára. Milyen vagy akikkel a szerepkör-hozzárendelés hozzá van rendelve. A szerepkör-hozzárendelés vzhledem ke svému társított typu kell formázni. Az a `DomainName` objectId objectIdType, kell kezdődnie az `“@”` karakter. |
+| objectIdType | Objektumtípus azonosítója | Igen | String | Milyen típusú használt objektumazonosító. Lásd: **ObjectIdTypes támogatott** alatt. |
+| elérési út | Terület elérési útja | Igen | String | A teljes elérési útvonal a `Space` objektum. Például: `/{Guid}/{Guid}`. Ha egy azonosítót a szerepkör-hozzárendelést a teljes grafikon van szüksége, adja meg `"/"`. Ezt a karaktert jelöli meg a legfelső szintű, de a használata nem ajánlott. A minimális jogosultság elvének mindig követik. |
+| tenantId | Bérlőazonosító | Változó | String | A legtöbb esetben az Azure Active Directory-bérlő azonosítója. Nem engedélyezett a `DeviceId` és `TenantId` ObjectIdTypes. Szükséges `UserId` és `ServicePrincipalId` ObjectIdTypes. A tartománynév ObjectIdType esetén nem kötelező. |
 
 ### <a name="supported-role-definition-identifiers"></a>Támogatott szerepkör-definíció azonosítók
 
@@ -83,8 +86,8 @@ Az Alkalmazásazonosító Önnek van megadva, az Azure Active Directoryban. Tov�
 Miután az alkalmazás azonosítója, hajtsa végre a következő PowerShell-parancsokat:
 
 ```shell
-Login-AzureRmAccount
-Get-AzureRmADServicePrincipal -ApplicationId  <ApplicationId>
+Login-AzAccount
+Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
 ```
 
 A felhasználó a **rendszergazdai** szerepkör is hozzárendelheti a terület-rendszergazdai szerepkör a felhasználó hitelesített HTTP POST-kérelmet, így az URL-cím:
@@ -160,12 +163,12 @@ Ellenőrizze a megadott szerepkör-hozzárendelés, győződjön meg arról, egy
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **Hodnota parametru** | **Kötelező** |  **Típus** |  **Leírás** |
+| **Paraméter értéke** | **Szükséges** |  **Típus** |  **Leírás** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True (Igaz) | Karakterlánc |   A felhasználói azonosító objectIdType objectid azonosítója. |
-| YOUR_PATH | True (Igaz) | Karakterlánc |   A kiválasztott útvonal a hozzáférés ellenőrzéséhez. |
-| YOUR_ACCESS_TYPE |  True (Igaz) | Karakterlánc |   A hozzáférés típusa kereséséhez. |
-| YOUR_RESOURCE_TYPE | True (Igaz) | Karakterlánc |  Ellenőrizze az erőforrás. |
+| YOUR_USER_ID |  True (Igaz) | String |   A felhasználói azonosító objectIdType objectid azonosítója. |
+| YOUR_PATH | True (Igaz) | String |   A kiválasztott útvonal a hozzáférés ellenőrzéséhez. |
+| YOUR_ACCESS_TYPE |  True (Igaz) | String |   A hozzáférés típusa kereséséhez. |
+| YOUR_RESOURCE_TYPE | True (Igaz) | String |  Ellenőrizze az erőforrás. |
 
 A kérelem sikeres egy logikai értéket ad vissza `true` vagy `false` jelzi, hogy a hozzáférés típusa van rendelve a felhasználó a megadott elérési út és erőforrás.
 

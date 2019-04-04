@@ -7,16 +7,19 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: bcfb50a2d7d5221abaa15a5b286163cf63b7a875
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 0c1c466149b4992d99e18cfb1fd5d8416834df35
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446677"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904525"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Az Azure Application Gateway munkamenet-affinitási problémák elhárítása
 
 Ismerje meg, hogyan diagnosztizálhatja és megoldhatja a munkamenet-affinitási problémák az Azure Application Gateway szolgáltatással.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Áttekintés
 
@@ -50,7 +53,7 @@ Egyes esetekben a munkamenet-affinitási problémák fordulhatnak elő, ha elfel
 
 Értékét is ellenőrizheti a "**CookieBasedAffinity**" értékre van állítva *engedélyezve*alatt "**backendHttpSettingsCollection**" a következő módszerek egyikével:
 
-- Futtatás [Get-AzureRmApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermapplicationgatewaybackendhttpsettings) a PowerShellben
+- Futtatás [Get-AzApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsettings) a PowerShellben
 - Nézze át a JSON-fájlt az Azure Resource Manager-sablon használatával
 
 ```

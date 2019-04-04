@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b52e7c0de2d834c793bb30fa35bd53b45aaebe5d
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 08ae74bcd9ee0a7cf5e0fb6d38758b1429c39145
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848862"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916342"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Az Azure Monitor metrikaböngészőjének
 
@@ -76,11 +76,33 @@ A diagramok, amelyek megmutatják a dimenziókkal rendelkező metrikák szűrők
 
 5. Megismételheti a lépéseket több szűrőket alkalmaz az azonos diagramok 1 – 4.
 
+## <a name="multiple-metrics-and-charts"></a>Több mértékek és diagramok
+
+Diagramok, amelyek több metrikákat jeleníti meg, vagy több mérőszám-diagramok megjelenítése egyszerre is létrehozhat. Ez a funkció lehetővé teszi:
+
+- az ugyanazon a grafikonon egy érték összevetését kapcsolódó metrikák kapcsolódik egy másik
+- metrikák megjelenítése a közvetlen egymás közelében lévő különböző mértékegységek
+- vizuálisan összesíteni, és hasonlítsa össze a különböző erőforrásokból származó metrikák
+
+Például ha 5 tárfiókok rendelkezik, és meg szeretné ismerni a teljes lemezterület felhasznált közöttük, létrehozhat egy (halmozott) területdiagramot, amely az egyéni és az összes érték összegét mutatja adott időpontokban időben.
+
+### <a name="multiple-metrics-on-a-chart"></a>Több metrikát a diagram
+
+Először [hozzon létre egy új diagramot](#create-a-new-chart). Kattintson a **metrika hozzáadása** , és ismételje meg a lépéseket egy másik metrika hozzáadása ugyanezen a diagramon.
+
+### <a name="multiple-charts"></a>Több diagram
+
+Kattintson a **Hozzáadás diagram** , és hozzon létre egy másik diagramot egy másik metrikát választani.
+
+### <a name="order-or-delete-multiple-charts"></a>Megrendelés vagy több diagram törlése
+
+Rendelés, vagy törli a több diagramot, kattintson a három pontra ( **...**  ) a diagram menü megnyitásához, és válassza ki a megfelelő menüelem a szimbólum **feljebb**, **lejjebb**, vagy **törlése**.
+
 ## <a name="apply-splitting-to-a-chart"></a>Alkalmazza a megosztáshoz, hogy a diagram
 
-Jeleníthetik meg egymással szembeni metrika összehasonlítási különböző szegmensek dimenzió egy metrikát felosztás és a egy dimenzió lakatlan szegmensek azonosítja. 
+Jeleníthetik meg egymással szembeni metrika összehasonlítási különböző szegmensek dimenzió egy metrikát felosztás és a egy dimenzió lakatlan szegmensek azonosítja.
 
-### <a name="to-apply-splitting"></a>A alkalmazni a felosztás
+### <a name="apply-splitting"></a>Felosztás alkalmazása
 
 1. Kattintson a **alkalmazni a felosztás** a diagram felett.
  

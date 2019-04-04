@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: adaed4c7af1d325f85d6fc349ac9a4faf73c1169
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 08d74f866fe28a4c424ba504795b4a22f09785ca
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078814"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916257"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services üzembe helyezési problémák: Gyakori kérdések (GYIK)
 
@@ -70,7 +70,7 @@ Mivel a felhőalapú szolgáltatás, nem közvetlenül az Azure Resource Manager
  
 - Az üzembe helyezést REST API-t.
 
-    Service Management REST API-n keresztül történő telepítésekor, a blob Storage, amely működik a klasszikus és az Azure Resource Manager-Storage-fiók egy SAS URL-cím megadásával megkerülésében sikerült a korlátozást. További információ a "PackageUrl" tulajdonság [Itt](https://msdn.microsoft.com/library/azure/ee460813.aspx).
+    Service Management REST API-n keresztül történő telepítésekor, a blob Storage, amely működik a klasszikus és az Azure Resource Manager-Storage-fiók egy SAS URL-cím megadásával megkerülésében sikerült a korlátozást. További információ a "PackageUrl" tulajdonság [Itt](/previous-versions/azure/reference/ee460813(v=azure.100)).
   
 - Az üzembe helyezést [az Azure portal](https://portal.azure.com).
 

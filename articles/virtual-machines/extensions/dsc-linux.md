@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 01c3e9c82959629dc3e43fb6b0833d4dbb05e0aa
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 67f72c5b396bc935f7bec34bc8a52f63131649b1
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823008"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904474"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC Extension for Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -67,7 +67,7 @@ A támogatott nyilvános konfiguráció-paraméterek a következők:
 * `ConfigurationModeFrequencyMins`: (nem kötelező, csak int) meghatározza, milyen gyakorisággal (percben) DSC biztosítja, hogy a konfiguráció a kívánt állapotban van.
 
 > [!NOTE]
-> Verzió < 2.3 használatakor mode paraméter megegyezik ExtensionAction. Mód úgy tűnik, hogy egy túlterhelt kifejezést. Ezért a félreértések elkerülése végett ExtensionAction használja a 2.3-as verzió frissítésétől kezdve. A visszamenőleges kompatibilitás érdekében a bővítmény és ExtensionAction is támogatja. 
+> Verzió < 2.3 használatakor mode paraméter megegyezik ExtensionAction. Mód úgy tűnik, hogy egy túlterhelt kifejezés. Ezért a félreértések elkerülése végett ExtensionAction használja a 2.3-as verzió frissítésétől kezdve. A visszamenőleges kompatibilitás érdekében a bővítmény és ExtensionAction is támogatja. 
 >
 
 ### <a name="12-protected-configuration"></a>1.2 védett konfiguráció

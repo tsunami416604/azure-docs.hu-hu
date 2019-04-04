@@ -16,12 +16,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: c6bee5c66661f59a6287d624bf5a55428ebbe56e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6bad40b840d6bd511ad0526c47e8a43f692a5cc2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238117"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483576"
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>Az Azure Stack PowerShell API-verzióprofilok használata
 
@@ -33,7 +33,7 @@ API-verzióprofilok kezelése az Azure és az Azure Stack közötti terveztek. E
 
 A **AzureRM.Bootstrapper** modul, amely a PowerShell-galériából érhető el az API-verzióprofilok működéséhez szükséges PowerShell-parancsmagokat kínál. A következő parancsmag segítségével telepítse a **AzureRM.Bootstrapper** modul:
 
-```PowerShell
+```powershell
 Install-Module -Name AzureRm.BootStrapper
 ```
 
@@ -55,7 +55,7 @@ A következő táblázat felsorolja az API-profil szükséges verzió és a hasz
 
 Használja a **Install-azurermprofile új** parancsmagot a **2018-03-01-hibrid** API-verzióprofil az Azure Stack által igényelt AzureRM-modulok telepítéséhez. Az Azure Stack operátori modulok nincsenek telepítve a profil API verziója. Akkor kell telepíteni külön meghatározott a 3. lépését a [Azure Stack PowerShell telepítése](../azure-stack-powershell-install.md) cikk.
 
-```PowerShell
+```powershell
 Install-AzureRMProfile -Profile 2018-03-01-hybrid
 ```
 
@@ -67,7 +67,7 @@ Használja a **használata-azurermprofile új** parancsmag telepítése és a eg
 2. Letölti és telepíti a modulokat, ha azok nem települnek.
 3. Importálja a modulokat az aktuális PowerShell-munkamenetbe.
 
-```PowerShell
+```powershell
 # Installs and imports the specified API version profile into the current PowerShell session.
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Scope CurrentUser
 
@@ -77,7 +77,7 @@ Use-AzureRmProfile -Profile 2018-03-01-hybrid -Scope CurrentUser -Force
 
 Telepítse, és a kiválasztott AzureRM-modulok importálása egy API-verzióprofil, futtassa a **használata-azurermprofile új** parancsmagot a **modul** paraméter:
 
-```PowerShell
+```powershell
 # Installs and imports the compute, storage and network modules from the specified API version profile into your current PowerShell session.
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
 ```
@@ -86,7 +86,7 @@ Use-AzureRmProfile -Profile 2018-03-01-hybrid -Module AzureRM.Compute, AzureRM.S
 
 Használja a **Get-azurermprofile új** parancsmag elérhető API-verzióprofilok listájának beolvasása:
 
-```PowerShell
+```powershell
 # lists all API version profiles provided by the AzureRM.BootStrapper module.
 Get-AzureRmProfile -ListAvailable
 
@@ -102,13 +102,13 @@ Használja a **Update-azurermprofile új** parancsmagot, hogy a modulok egy API-
 2. Kéri, hogy a telepítés, ha azok nem települnek.  
 3. Telepíti, és importálja a frissített modulok az aktuális PowerShell-munkamenetbe.  
 
-```PowerShell
+```powershell
 Update-AzureRmProfile -Profile 2018-03-01-hybrid
 ```
 
 <!-- To remove the previously installed versions of the modules before updating to the latest available version, use the Update-AzureRmProfile cmdlet along with the **-RemovePreviousVersions** parameter:
 
-```PowerShell 
+```powershell 
 Update-AzureRmProfile -Profile 2018-03-01-hybrid -RemovePreviousVersions
 ``` -->
 
@@ -123,7 +123,7 @@ Ez a parancsmag futtatása a következő feladatokat:
 
 Használja a **Uninstall-azurermprofile új** parancsmag segítségével távolítsa el a megadott API-verzió profilt.
 
-```PowerShell
+```powershell
 Uninstall-AzureRmProfile -Profile  2018-03-01-hybrid
 ```
 

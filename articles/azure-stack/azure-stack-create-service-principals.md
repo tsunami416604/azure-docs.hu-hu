@@ -13,12 +13,12 @@ ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 3c36bca12a16a796a964c4447b47265eecd756be
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0f5a4dc76830740d69547a01ce40b5e10cf4a74b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809248"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499408"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Hozzáférést biztosít az alkalmazásoknak az Azure Stackhez
 
@@ -47,7 +47,7 @@ Az egyszerű szolgáltatás létrehozása után az AD FS és az Azure Active Dir
 
 Ha helyezte az Azure Stack az Azure Active Directoryval (Azure AD), az identity management-szolgáltatás, létrehozhat egyszerű szolgáltatásokat, mint az Azure-ban végezhet el. Ez a szakasz bemutatja, hogyan végezheti el a lépéseket a portálon keresztül. Ellenőrizze, hogy rendelkezik a [szükséges Azure AD-engedélyekről](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) megkezdése előtt.
 
-### <a name="create-service-principal"></a>Egyszerű szolgáltatás létrehozása
+### <a name="create-service-principal"></a>Szolgáltatásnév létrehozása
 
 Ebben a szakaszban az alkalmazást képviselő Azure AD-alkalmazásokhoz (egyszerű szolgáltatásnevének) létrehozása.
 
@@ -86,14 +86,14 @@ A szolgáltatásnév létrehozásához az AD FS-sel két módszer egyikét haszn
 
 Feladatok kezelése az AD FS szolgáltatás rendszerbiztonsági tagok.
 
-| Typo | Műveletek |
+| Typo | Művelet |
 | --- | --- |
 | Az AD FS-tanúsítványt | [Létrehozás](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate) |
-| Az AD FS-tanúsítványt | [Update](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-AD-FS) |
-| Az AD FS-tanúsítványt | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-AD-FS) |
+| Az AD FS-tanúsítványt | [Update](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-ad-fs) |
+| Az AD FS-tanúsítványt | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
 | Az AD FS titkos Ügyfélkód | [Létrehozás](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
 | Az AD FS titkos Ügyfélkód | [Update](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
-| Az AD FS titkos Ügyfélkód | [Remove](azure-stack-create-service-principals.md##remove-a-service-principal-for-AD-FS) |
+| Az AD FS titkos Ügyfélkód | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
 
 ### <a name="create-a-service-principal-using-a-certificate"></a>Egy tanúsítvány használatával egyszerű szolgáltatás létrehozása
 
@@ -124,7 +124,7 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsmagokat:
 
-   ```PowerShell  
+   ```powershell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
     $Creds = Get-Credential
 
@@ -173,7 +173,7 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
    > [!Note]  
    > Érvényesítési jellegű önaláírt tanúsítvány használatával hozható létre az alábbi példában:
 
-   ```PowerShell  
+   ```powershell  
    $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
    ```
 
@@ -254,7 +254,7 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsmagokat:
 
-     ```PowerShell  
+     ```powershell  
       # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
      $Creds = Get-Credential
 
@@ -272,7 +272,7 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
 
 2. Parancsmagok futtatása után a rendszerhéj használata az egyszerű Szolgáltatásnevet a szükséges adatokat jeleníti meg. Ellenőrizze, hogy a titkos ügyfélkulcsot tárolja.
 
-     ```PowerShell  
+     ```powershell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
      ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
      Thumbprint            : 
@@ -304,7 +304,7 @@ A példában a **ResetClientSecret** paraméter, amely azonnal megváltoztatja a
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsmagokat:
 
-     ```PowerShell  
+     ```powershell  
           # Creating a PSSession to the ERCS PrivilegedEndpoint
           $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
@@ -318,7 +318,7 @@ A példában a **ResetClientSecret** paraméter, amely azonnal megváltoztatja a
 
 2. Az automation befejezését követően az újonnan létrehozott titkos SPN-hitelesítéshez szükséges jeleníti meg. Ellenőrizze, hogy az új titkos ügyfélkulcsot tárolja.
 
-     ```PowerShell  
+     ```powershell  
           ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2120
           ClientId              :  
           Thumbprint            : 

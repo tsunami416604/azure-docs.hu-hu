@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 57a97d76a864a644426296cf24401b2210709d39
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 5ddae616f81052e005210310e2d28b1bc10512ab
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805805"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906208"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -557,7 +557,7 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.AzureActiveDirectory/b2cDirectories/delete | B2C-címtárerőforrás törlése |
 > | Műveletek | Microsoft.AzureActiveDirectory/b2cDirectories/read | B2C-címtárerőforrás megtekintése |
 > | Műveletek | Microsoft.AzureActiveDirectory/b2cDirectories/write | Hozzon létre vagy a B2C-címtárerőforrás frissítése |
-> | Műveletek | Microsoft.AzureActiveDirectory/b2ctenants/read | Az összes olyan B2C-bérlő listázása, amelynek a felhasználó tagja |
+> | Műveletek | Microsoft.AzureActiveDirectory/b2ctenants/read | Felsorolja az összes B2C-bérlők, ahol a felhasználó tagja |
 > | Műveletek | Microsoft.AzureActiveDirectory/operations/read | A Microsoft.AzureActiveDirectory erőforrás-szolgáltatóhoz választható összes API-művelet olvasása |
 > | Műveletek | Microsoft.AzureActiveDirectory/register/action | A Microsoft.AzureActiveDirectory erőforrás-szolgáltatóhoz tartozó előfizetés regisztrálása |
 
@@ -1432,11 +1432,11 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > | Műveletek | Microsoft.ContainerService/managedClusters/resetServicePrincipalProfile/action | A szolgáltatás egyszerű profil egy felügyelt fürt alaphelyzetbe állítása |
 > | Műveletek | Microsoft.ContainerService/managedClusters/upgradeprofiles/read | A fürt frissítési profiljának beolvasása |
 > | Műveletek | Microsoft.ContainerService/managedClusters/write | Új felügyelt fürt létrehozása vagy meglévő frissítése |
-> | Műveletek | Microsoft.ContainerService/openShiftClusters/delete | Open Shift fürt törlése |
-> | Műveletek | Microsoft.ContainerService/openShiftClusters/read | Open Shift-fürt létrehozása |
+> | Műveletek | Microsoft.ContainerService/openShiftClusters/delete | Az Open Shift fürt törlése |
+> | Műveletek | Microsoft.ContainerService/openShiftClusters/read | Az Open Shift fürt beolvasása |
 > | Műveletek | Microsoft.ContainerService/openShiftClusters/write | Létrehoz egy új Open Shift-fürtöt, vagy egy meglévő frissítése |
-> | Műveletek | Microsoft.ContainerService/openShiftManagedClusters/delete | Open Shift felügyelt fürt törlése |
-> | Műveletek | Microsoft.ContainerService/openShiftManagedClusters/read | Felügyelt Open Shift-fürt létrehozása |
+> | Műveletek | Microsoft.ContainerService/openShiftManagedClusters/delete | Az Open Shift felügyelt fürt törlése |
+> | Műveletek | Microsoft.ContainerService/openShiftManagedClusters/read | Az Open Shift felügyelt fürt beolvasása |
 > | Műveletek | Microsoft.ContainerService/openShiftManagedClusters/write | Létrehoz egy új Open Shift felügyelt fürtöt, vagy egy meglévő frissítése |
 > | Műveletek | Microsoft.ContainerService/operations/read | A Microsoft.ContainerService erőforrás-szolgáltató elérhető műveleteinek listázása |
 > | Műveletek | Microsoft.ContainerService/register/action | Előfizetés regisztrálása a Microsoft.ContainerService erőforrás-szolgáltatónál |
@@ -4190,7 +4190,7 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > | Műveletek | Microsoft.PolicyInsights/remediations/listDeployments/read | Egy szabályzatszervizeléshez szükséges telepítések listázása. |
 > | Műveletek | Microsoft.PolicyInsights/remediations/read | Szabályzatszervizelések beolvasása. |
 > | Műveletek | Microsoft.PolicyInsights/remediations/write | Szabályzatszervizelések létrehozása vagy frissítése. |
-> | Műveletek | Microsoft.PolicyInsights/unregister/action | A házirend insights erőforrás-szolgáltató regisztrációjának törlése. |
+> | Műveletek | Microsoft.PolicyInsights/unregister/action | A szabályzatelemzési erőforrás-szolgáltató regisztrációjának törlése. |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
@@ -5902,4 +5902,4 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 ## <a name="next-steps"></a>További lépések
 
 - [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md)
-- [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md)
+- [Az Azure-erőforrások beépített szerepkörök](built-in-roles.md)

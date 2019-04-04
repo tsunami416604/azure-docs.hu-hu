@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: a7131a66e9d722265282ac98b67b52db8de086e2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551896"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904491"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Az MXChip IoT DevKit IoT Hub-regisztráció az Azure IoT Hub Device Provisioning Service automatikus kiépítés használatával
 
@@ -30,7 +30,7 @@ A [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy teljes körű Arduino-kompa
 
 Ez az oktatóanyag lépéseinek végrehajtásához először a következő feladatokat végezheti el:
 
-* Készítse elő a DevKit a lépéseket követve [IoT DevKit AZ3166 csatlakoztatása az Azure IoT hubba a felhőben](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
+* A fejlesztői készlet Wi-Fi konfigurálása és a fejlesztési környezet előkészítését a lépéseket követve [IoT DevKit AZ3166 csatlakoztatása az Azure IoT hubba a felhőben](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
 * Frissítés a legújabb belső vezérlőprogramjának (1.3.0 vagy újabb) az a [frissítés DevKit belső vezérlőprogram](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) oktatóanyag.
 * Létrehozzák és összekapcsolják az IoT Hub Device Provisioning service-példánnyal a lépéseket követve [állítsa be az IoT Hub Device Provisioning Service az Azure Portallal](/azure/iot-dps/quick-setup-auto-provision).
 
@@ -122,13 +122,13 @@ Nyomja le az **alaphelyzetbe** a DevKit gombjára. Megtekintheti az **DPS csatla
 1. Sikeres regisztráció esetén a Device Provisioning service visszaküldi az IoT Hub URI-t, az Eszközazonosítót és a titkosított kulcs az eszközhöz.
 1. Az IoT Hub-ügyfélalkalmazás az eszköz csatlakozik a hubhoz.
 1. Sikeres csatlakozás a hubhoz tekintse meg az eszközt az IoT Hub Device Explorer jelennek meg.
-  ![Eszköz regisztrálása](./media/how-to-connect-mxchip-iot-devkit/device-registered.png)
+  ![Eszköz regisztrálva](./media/how-to-connect-mxchip-iot-devkit/device-registered.png)
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 
 Ha problémákat tapasztal, tekintse meg az Iot DevKit [– gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/), vagy keresse fel a következő támogatási csatornákat:
 
-* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.IM](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>További lépések

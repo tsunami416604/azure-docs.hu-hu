@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 6cddb513249b424ef0df2ed2d1b5609de17c0744
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a5fe2d9b295a72b8e2e3adb7e5cffd5a98c03070
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894036"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487515"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Kezelheti a frissítéseket az Azure Stack áttekintése
 
@@ -29,7 +29,7 @@ A Microsoft update csomagok az Azure Stack integrált rendszerek általában kia
 
 A Microsoft különböző kiadásai egyetlen frissítési csomag részét képezi. Az Azure Stack operátorait szerint importálhatja, telepítése és a figyelő ezeket a telepítési folyamat frissítési csomagok a felügyeleti portálról. 
 
-A számítógépgyártó (OEM) hardver szállítójával is frissítéseket, például az illesztőprogram- és belsővezérlőprogram-frissítések. Bár ezek a frissítések a számítógép-Gyártói hardver gyártója által lépnek különálló csomagként, azok importált, telepített és felügyelhető az azonos módon frissítési csomagokat a Microsoft frissítési csomagok importálása, telepített és felügyelt.
+A számítógépgyártó (OEM) hardver szállítójával is frissítéseket, például az illesztőprogram- és belsővezérlőprogram-frissítések. Bár ezeket a frissítéseket a hardvergyártó szállítója külön csomagokként nyújtja, ugyanúgy importálhatók, telepíthetők és felügyelhetők, mint a Microsoft Update-csomagok frissítési csomagjai.
 
 Hogy a rendszer a támogatás keretében, Azure Stack egy adott verzió szintre frissíteni kell hagynia. Győződjön meg arról, hogy tekintse át a [karbantartási szabályzat az Azure Stack](azure-stack-servicing-policy.md).
 
@@ -48,7 +48,7 @@ Javasoljuk, hogy a karbantartási műveleteket felhasználók értesítése, és
 
 - A frissítés telepítésének megkezdése előtt futtassa [Test-AzureStack](azure-stack-diagnostic-test.md) az Azure Stack állapotának érvényesítéséhez, és hárítsa el a működési hibákat talált a következő paraméterekkel, többek között az összes figyelmeztetések és hibák esetén. Emellett tekintse át az aktív riasztások, és oldja meg az esetleges beavatkozást igénylő.  
 
-  ```PowerShell
+  ```powershell
   Test-AzureStack -Group UpdateReadiness
   ``` 
 
@@ -71,7 +71,7 @@ A frissítés csempe az Azure Stack aktuális verzióját mutatja. A felügyelet
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Stack karbantartási szabályzat](azure-stack-servicing-policy.md) 
+- [Azure Stack-karbantartási szabályzat](azure-stack-servicing-policy.md) 
 - [Régiók kezelése az Azure Stackben](azure-stack-region-management.md)     
 
 

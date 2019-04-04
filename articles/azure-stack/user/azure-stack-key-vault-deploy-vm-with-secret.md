@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 30ebccd6bee26900ac01f7f4d17993e24c9db745
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3318e52b29723eaa08d8c3a4fba18e278e6cfe9c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779249"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487753"
 ---
 # <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Az Azure Stack Key Vaultban tárolt biztonságos jelszó használata virtuális gép létrehozása
 
@@ -53,7 +53,7 @@ A virtuális gép létrehozásához a Key Vaultban tárolt jelszó lekéréséve
 
 A következő parancsfájl egy kulcstartót hoz létre, és tárolja a jelszót, egy titkos kulcsot a key vaultban. Használja a `-EnabledForDeployment` paraméter a kulcstartó létrehozásakor. Ez a paraméter gondoskodik arról, hogy a key vault az Azure Resource Manager-sablonok lehet hivatkozni.
 
-```PowerShell
+```powershell
 
 $vaultName = "contosovault"
 $resourceGroup = "contosovaultrg"
@@ -114,11 +114,11 @@ A KeyVault URI secretName, a virtuális gép értékek alapján a környezet adm
 
 ```
 
-## <a name="template-deployment"></a>Sablonalapú telepítés
+## <a name="template-deployment"></a>Sablon telepítése
 
 Most helyezze üzembe a sablont a következő PowerShell-parancsfájl használatával:
 
-```PowerShell  
+```powershell  
 New-AzureRmResourceGroupDeployment `
   -Name KVPwdDeployment `
   -ResourceGroupName $resourceGroup `

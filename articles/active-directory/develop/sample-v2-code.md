@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b518235efa4cd236afd8f79cb70cf30696931fdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f1aca8eb16e9474f8ec834178748c27682372f7b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086768"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905392"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Az Azure Active Directory-Kódminták (v2.0-végpontra)
 
@@ -74,7 +74,7 @@ A következő példák bemutatják nyilvános ügyfél (asztali és mobil alkalm
 
 Ügyfélalkalmazás | Platform | A folyamat/engedélyezés | A Microsoft Graph hívások | Az ASP.NET Core 2.0-s webes API-hívások
 ------------------ | -------- |  ----------| ---------- | -------------------------
-(WPF) asztali      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Interaktív | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+(WPF) asztali      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Interaktív | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi)
 Asztal (konzol)   | ![.NET/C# (Desktop)](media/sample-v2-code/logo_NET.png) | Integrált Windows-hitelesítés |[dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
 Asztal (konzol)   | ![.NET/C# (Desktop)](media/sample-v2-code/logo_NETcore.png) | Felhasználónév/jelszó |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)
 Mobile (UWP)   | ![.NET/C# (UWP)](media/sample-v2-code/logo_windows.png) | Interaktív |[dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
@@ -101,11 +101,11 @@ Asztal (konzol)   | ![.NET/C# (Desktop)](media/sample-v2-code/logo_NETcore.png) 
 
 ## <a name="web-apis"></a>Webes API-k
 
-A következő minta bemutatja, hogyan védheti meg az Azure AD v2.0-végpont a webes API-t. Az API-t a WPF-alkalmazás által történik, de minden olyan alkalmazás is meghívható.
+A következő minta bemutatja, hogyan védheti meg az Azure AD v2.0-végpont a webes API-t. Az API-t a WPF-alkalmazás által történik, de minden olyan alkalmazás is meghívható. A webes API a Microsoft Graph is meghívja.
 
 Platform | Sample
  -------- | -------------------
-![.NET/C#](media/sample-v2-code/logo_NET.png) | A (szolgáltatás) WebAPI [dotnet-natív-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+![.NET/C#](media/sample-v2-code/logo_NET.png) | A (szolgáltatás) WebAPI [dotnet-natív-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)
 
 ## <a name="other-microsoft-graph-samples"></a>Más Microsoft Graph-minták
 

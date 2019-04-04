@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 720f4433c1e7b0d271e5729236f439c92a84687e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a67cbd3bfca478a45e12adeb0bf119b891866718
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884652"
+ms.locfileid: "58905239"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Az Azure Data Box Edge rendszerre vonatkozó követelmények
 
@@ -80,15 +80,23 @@ Azt javasoljuk, hogy beállította-e a tűzfalszabályok liberally fix IP-címei
 
 ### <a name="url-patterns-for-compute-feature"></a>Számítási szolgáltatás URL-minta
 
-| Az URL-minta                      | Összetevő vagy funkció                     |   |
-|----------------------------------|---------------------------------------------|---|
-| `https://mcr.microsoft.com`<br></br>https://\*.cdn.mscr.io | A Microsoft a tárolóregisztrációs adatbázis (szükséges)               |   |
-| https://\*.azurecr.io                     | Személyes, mind a külső tároló-beállításjegyzékek (nem kötelező) |   |
-| https://\*.azure-devices.net              | Az IoT Hub-hozzáférés (kötelező)                             |   |
+| Az URL-minta                      | Összetevő vagy funkció                     |   
+|----------------------------------|---------------------------------------------|
+| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | A Microsoft a tárolóregisztrációs adatbázis (szükséges)               |
+| https://\*.azurecr.io                     | Személyes, mind a külső tároló-beállításjegyzékek (nem kötelező) | 
+| https://\*.azure-devices.net              | Az IoT Hub-hozzáférés (kötelező)                             | 
 
-### <a name="url-patterns-for-azure-government"></a>Az Azure Government URL-minta
+### <a name="url-patterns-for-gateway-for-azure-government"></a>Az Azure Government-átjáró URL-minta
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
+
+### <a name="url-patterns-for-compute-for-azure-government"></a>Az Azure Government számítási URL-minta
+
+| Az URL-minta                      | Összetevő vagy funkció                     |  
+|----------------------------------|---------------------------------------------|
+| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | A Microsoft a tárolóregisztrációs adatbázis (szükséges)               |
+| https://\*.azure-devices.us              | Az IoT Hub-hozzáférés (kötelező)           |
+| https://\*.azurecr.us                    | Személyes, mind a külső tároló-beállításjegyzékek (nem kötelező) | 
 
 ## <a name="internet-bandwidth"></a>Internetes sávszélesség
 

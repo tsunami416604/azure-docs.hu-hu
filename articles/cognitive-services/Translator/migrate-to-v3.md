@@ -3,19 +3,19 @@ title: V3 – Translator Text API áttelepítése
 titlesuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan V2 át a Translator Text API v3-as.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 1857cd7c4fe6102f94487dbb2cc5ad5c43c18f99
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d3ffdcb79a56bf2f9f4a6eb192293bbc6bab7dab
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101176"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916716"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
 
@@ -43,14 +43,14 @@ Az alábbi listában szereplő V2 és V3 módszerek a v3-as módszerek és API-k
 
 | V2 API-metódus   | V3 API-kompatibilitás |
 |:----------- |:-------------|
-| `Translate`     | [Fordítása](reference/v3-0-translate.md)          |
-| `TranslateArray`      | [Fordítása](reference/v3-0-translate.md)        |
-| `GetLanguageNames`      | [Nyelvek](reference/v3-0-languages.md)         |
-| `GetLanguagesForTranslate`     | [Nyelvek](reference/v3-0-languages.md)       |
+| `Translate`     | [Translate](reference/v3-0-translate.md)          |
+| `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
+| `GetLanguageNames`      | [Languages](reference/v3-0-languages.md)         |
+| `GetLanguagesForTranslate`     | [Languages](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| `Detect`     | [Észlelése](reference/v3-0-detect.md)         |
-| `DetectArray`     | [Észlelése](reference/v3-0-detect.md)         |
+| `Detect`     | [Detect](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
 | `AddTranslation`     | A szolgáltatás már nem támogatott.       |
 | `AddTranslationArray`    | A szolgáltatás már nem támogatott.          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
@@ -141,8 +141,8 @@ Nincs a fordító API-verzió létrehoz egy rekordot a fordítások. A fordítá
 ## <a name="links"></a>Hivatkozások
 
 * [A Microsoft adatvédelmi szabályzata](https://privacy.microsoft.com/privacystatement)
-* [A Microsoft Azure – jogi információk](https://azure.microsoft.com/support/legal)
-* [Online Services Terms](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Microsoft Azure – Jogi információk](https://azure.microsoft.com/support/legal)
+* [Online szolgáltatások használati feltételeit](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>További lépések
 

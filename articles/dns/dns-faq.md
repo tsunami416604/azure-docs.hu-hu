@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 1d0506179f9f0044f9f05edd3395d2677310c2d0
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 4f0800dfd264059e1dc8aac32a54f216f777647f
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337106"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905715"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS FAQ
 
@@ -80,7 +80,7 @@ A DNSSEC szolgáltatást az Azure DNS várakozó fájlok számát a követi. Has
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Does Azure DNS support zone transfers (AXFR/IXFR)?
 
-Nem. Az Azure DNS jelenleg nem támogatja a zónaletöltések. DNS-zónák lehet [importált az Azure DNS az Azure CLI-vel](dns-import-export.md). DNS-rekordok segítségével történik a [DNS az Azure felügyeleti portálján](dns-operations-recordsets-portal.md), [REST API-val](https://docs.microsoft.com/powershell/module/azurerm.dns), [SDK](dns-sdk.md), [PowerShell-parancsmagok](dns-operations-recordsets.md), vagy a [ Parancssori eszköz](dns-operations-recordsets-cli.md).
+Nem. Az Azure DNS jelenleg nem támogatja a zónaletöltések. DNS-zónák lehet [importált az Azure DNS az Azure CLI-vel](dns-import-export.md). DNS-rekordok segítségével történik a [DNS az Azure felügyeleti portálján](dns-operations-recordsets-portal.md), [REST API-val](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell-parancsmagok](dns-operations-recordsets.md), vagy a [ Parancssori eszköz](dns-operations-recordsets-cli.md).
 
 A zónák adatátviteli funkciója nyomon van az Azure DNS várakozó fájlok számát. Használja a visszajelzés hely [ennek a funkciónak a támogatási regisztrálása](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
 
@@ -116,7 +116,7 @@ A következő rekordtípusokhoz, az Azure DNS-zóna alias rekordhalmazok támoga
 
 ### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>Alias rekordhalmazok célként által támogatott?
 
-- **A DNS A vagy AAAA típusú rekordhalmaz mutasson a nyilvános IP-erőforrást.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource.
+- **Point to a public IP resource from a DNS A/AAAA record set.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource.
 - **A DNS A/AAAA/CNAME-rekordhalmazok átirányítása a Traffic Manager-profil.** A CNAME REKORDOT a Traffic Manager-profil egy DNS CNAME rekord készletből is mutasson. Ez például akkor contoso.trafficmanager.net. Most is mutathat, amely rendelkezik egy DNS-zónáját A vagy AAAA típusú rekordot a külső végpontok Traffic Manager-profilhoz.
 - **Az Azure Content Delivery Network (CDN) végpontjára mutató**. Ez akkor hasznos, amikor hoz létre az Azure storage és az Azure CDN használatával statikus webhelyek kiszolgálására.
 - **Egy másik DNS rekordhalmaz ugyanabban a zónában lévő mutasson.** Alias rekordok hivatkozhat, más azonos típusú rekordhalmazok. Például rendelkezhet egy DNS CNAME-rekordhalmazzal, amely egy ugyanolyan típusú másik CNAME-rekordhalmaz aliasa. Ezzel az elrendezéssel fokozott akkor hasznos, ha azt szeretné, hogy néhány rekordhalmazt kell aliasok és az egyes nem alias.
@@ -149,7 +149,7 @@ Igen. Az Azure DNS támogatja a közös üzemeltetési tartományok más DNS-szo
 
 Állítsa be a közös üzemeltetési, módosítsa a Névkiszolgálói rekordokat átirányítása mindkét szolgáltatót a névkiszolgálókat a tartományhoz. A névkiszolgáló (NS) vezérlőelem, mely szolgáltatók kapjanak a tartomány DNS-lekérdezések rögzíti. Ezeket a Névkiszolgálói rekordokat Azure DNS-ben, a másik szolgáltató és a szülőzóna rekordhalmazának módosíthatja. A szülőzóna rekordhalmazának általában van konfigurálva a tartomány tartománynév-n keresztül. A DNS-delegálás további információkért lásd: [tartomány DNS-delegálás](dns-domain-delegation.md).
 
-Bizonyosodjon meg róla, hogy mindkét DNS-szolgáltatók között a szinkronban-e a tartomány DNS-rekordjait. Az Azure DNS jelenleg nem támogatja a DNS zónaletöltés. DNS-rekordok segítségével szinkronizálva kell lenniük a [DNS az Azure felügyeleti portálján](dns-operations-recordsets-portal.md), [REST API-val](https://docs.microsoft.com/powershell/module/azurerm.dns), [SDK](dns-sdk.md), [PowerShell-parancsmagok](dns-operations-recordsets.md), vagy a [Parancssori eszköz](dns-operations-recordsets-cli.md).
+Bizonyosodjon meg róla, hogy mindkét DNS-szolgáltatók között a szinkronban-e a tartomány DNS-rekordjait. Az Azure DNS jelenleg nem támogatja a DNS zónaletöltés. DNS-rekordok segítségével szinkronizálva kell lenniük a [DNS az Azure felügyeleti portálján](dns-operations-recordsets-portal.md), [REST API-val](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [PowerShell-parancsmagok](dns-operations-recordsets.md), vagy a [Parancssori eszköz](dns-operations-recordsets-cli.md).
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Rendelkezik az összes négy Azure DNS névkiszolgálóit saját tartomány delegálása?
 

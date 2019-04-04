@@ -1,6 +1,6 @@
 ---
-title: Teljesítmény az Azure Stack virtuális gépeken az SQL Server ajánlott eljárásai
-description: A Microsoft Azure Stack Virtual Machines. az SQL Server teljesítményének optimalizálásához bemutatja a bevált eljárásokat.
+title: Használja az SQL Server ajánlott eljárásokat és az Azure Stack virtuális gépek teljesítményének növelése érdekében |} A Microsoft Docs
+description: Ez a cikk az SQL server ajánlott eljárások a teljesítmény növelése és az Azure Stack-beli virtuális gépeken az SQL Server optimalizálása.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7981df6aa1e08688bdbe3b18629450b996f7609e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 03a354a7d670033fa86ebbb094710a836b6219c4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123402"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879064"
 ---
-# <a name="optimize-sql-server-performance"></a>Az SQL Server teljesítményének optimalizálásához
+# <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack"></a>SQL server – gyakorlati tanácsok az Azure Stackben teljesítményének optimalizálása
 
-Ez a cikk nyújt útmutatást a Microsoft Azure Stack virtuális gépeken az SQL Server teljesítményének optimalizálásához. Amikor az Azure Stack virtuális gépeken futó SQL Server, az azonos adatbázis teljesítmény-finomhangolási beállításokat használják alkalmazható az SQL Server egy helyi kiszolgálói környezetben. A relációs adatbázisok az Azure Stack-felhőben a teljesítmény számos tényezőtől függ. Tényezők közé tartozik a családba tartozó virtuális gépek és az adatlemezek konfigurációja.
+Ez a cikk az SQL server ajánlott eljárások az SQL Server optimalizálása és a Microsoft Azure Stack virtuális gépek teljesítményének növelése érdekében. Amikor az Azure Stack virtuális gépeken futó SQL Server, az azonos adatbázis teljesítmény-finomhangolási beállításokat használják alkalmazható az SQL Server egy helyi kiszolgálói környezetben. A relációs adatbázisok az Azure Stack-felhőben a teljesítmény számos tényezőtől függ. Tényezők közé tartozik a családba tartozó virtuális gépek és az adatlemezek konfigurációja.
 
 Az SQL Server-rendszerképeken létrehozásakor [fontolja meg az Azure Stack portálon a virtuális gépek kiépítése](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Töltse le az SQL IaaS-bővítményt a Marketplace-kezelés az Azure Stack felügyeleti portálon, és töltse le a választott SQL virtuális gép virtuális merevlemezek (VHD). Ezek közé tartozik a SQL2014SP2 SQL2016SP1 és SQL2017.
 
@@ -37,7 +37,8 @@ Bevezetés a *ajánlott* Azure Stack virtuális gépeken az SQL Server teljesít
 > [!NOTE]  
 > Teljesítmény kapcsolatos útmutató az SQL Server Azure-beli virtuális gépeken, tekintse meg [Ez a cikk](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="checklist-for-sql-server-best-practices"></a>Ellenőrzőlista az SQL server – gyakorlati tanácsok
+
 Az alábbi ellenőrzőlista az Azure Stack virtuális gépeken az SQL Server az optimális teljesítmény van:
 
 
@@ -112,7 +113,7 @@ Azt javasoljuk, hogy az egyes adatlemezek biztosít az adatok akár 2,300 Lemeze
 
        Például a következő PowerShell-a szektorszórás mérete 64 KB és 2. az oszlopok száma egy új tárolókészletet hoz létre:
 
-       ```PowerShell  
+       ```powershell  
        $PoolCount = Get-PhysicalDisk -CanPool $True
        $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
 

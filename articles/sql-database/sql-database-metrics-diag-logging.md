@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 785948c78b2b8205c4bebe2d68b62f6de7254d94
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 3004f073100b45de25655fc6dee6a96c90612c46
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863134"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905203"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
@@ -64,14 +64,14 @@ A következő diagnostics telemetriai adatainak gyűjtéséhez állíthat be az 
 | :------------------- | ----- | ----- |
 | [Minden metrika](#all-metrics): Dtu-k/Processzorhasználat (%), a dtu-k/CPU-korlát, a fizikai tartalmaz napló írási adatok olvasása a százalékos aránya, százalékos aránya, sikeres/sikertelen/letiltott által tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, storage, és XTP tároló (%). | Igen | Nem |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): A lekérdezések futásidejének statisztikai adatait, például a CPU-használat és a lekérdezés időtartama statisztikai információkat tartalmaz. | Igen | Igen |
-| [QueryStoreWaitStatistics](#query-store-wait-statistics): A lekérdezés várakozási statisztika (Mi a lekérdezések megvárta) kapcsolatos információt tartalmazza, például a Processzor, a napló és a ZÁROLÁS. | Igen | Igen |
-| [Hibák](#errors-dataset): Az adatbázis SQL-hibákkal kapcsolatos információkat tartalmaz. | Igen | Igen |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Az adatbázis töltött a különböző várakozási típusok vár mennyi ideig kapcsolatos információt tartalmazza. | Igen | Nem |
-| [Időtúllépések](#time-outs-dataset): Az adatbázis időtúllépések információkat tartalmazza. | Igen | Nem |
-| [Blokkok](#blockings-dataset): Blokkoló események az adatbázison kapcsolatos információt tartalmazza. | Igen | Nem |
-| [Holtpontok](#deadlocks-dataset): Az adatbázis holtpont eseményekkel kapcsolatos információkat tartalmazza. | Igen | Nem |
-| [AutomaticTuning](#automatic-tuning-dataset): Az adatbázis automatikus finomhangolási ajánlásait információkat tartalmazza. | Igen | Nem |
-| [SQLInsights](#intelligent-insights-dataset): Intelligent Insights teljesítményéről tartalmaz. További tudnivalókért lásd: [Intelligent Insights](sql-database-intelligent-insights.md). | Igen | Igen |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): A lekérdezés várakozási statisztika (Mi a lekérdezések megvárta) kapcsolatos információkat tartalmaz például a Processzor, a napló és a ZÁROLÁS is. | Igen | Igen |
+| [Hibák](#errors-dataset): Az adatbázisok SQL-hibákkal kapcsolatos információkat tartalmaz. | Igen | Igen |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Egy adatbázis töltött a különböző várakozási típusok vár mennyi ideig kapcsolatos információt tartalmazza. | Igen | Nem |
+| [Időtúllépések](#time-outs-dataset): Egy adatbázis időtúllépések információkat tartalmazza. | Igen | Nem |
+| [Blokkok](#blockings-dataset): Blokkoló események az adatbázisok kapcsolatos információt tartalmazza. | Igen | Nem |
+| [Holtpontok](#deadlocks-dataset): Az adatbázisok holtpont eseményekkel kapcsolatos információkat tartalmazza. | Igen | Nem |
+| [AutomaticTuning](#automatic-tuning-dataset): Az adatbázis automatikus finomhangolási ajánlásait kapcsolatos információt tartalmazza. | Igen | Nem |
+| [SQLInsights](#intelligent-insights-dataset): Intelligent Insights adatbázis teljesítményéről tartalmaz. További tudnivalókért lásd: [Intelligent Insights](sql-database-intelligent-insights.md). | Igen | Igen |
 
 > [!IMPORTANT]
 > Rugalmas készletek és a felügyelt példány rendelkezik a saját külön diagnostics telemetriai adatainak tartalmaznak adatbázisokból. Ez fontos megjegyezni a diagnostics telemetriai adatainak külön-külön vannak beállítva ezen erőforrások mindegyike módon lentebb.

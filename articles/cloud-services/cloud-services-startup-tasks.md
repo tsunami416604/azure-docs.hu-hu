@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 6601eba90f3c3644d418ddd0a74746e1a12bcbd3
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 59bfa83ab3432adb7a4df5112367f87014a0b292
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007779"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917617"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Futtassa az indítási feladatok felhőszolgáltatásokhoz és konfigurálása
 Indítási feladatok segítségével hajtsa végre a műveleteket a szerepkör elindítása előtt. Esetlegesen végrehajtani kívánt műveletek közé tartozik egy összetevő telepítése, COM-összetevők regisztrálása, beállításkulcsokat vagy hosszú ideig futó folyamat indítása.
@@ -30,7 +30,7 @@ Indítási feladatok segítségével hajtsa végre a műveleteket a szerepkör e
 > 
 
 ## <a name="how-startup-tasks-work"></a>Indítási feladatok működése
-Indítási feladatok olyan műveletek, amelyeket a rendszer a szerepkörök megkezdése és meghatározott előtt a [ServiceDefinition.csdef] fájl használatával a [Tevékenység] elemen belül a [Indítás] elem. Gyakori indítási feladatok olyan a batch-fájlokat, de lehet is konzolon alkalmazásokat, vagy indítsa el a PowerShell-parancsfájlok, kötegfájlok.
+Indítási feladatok olyan műveletek, amelyeket a rendszer a szerepkörök megkezdése és meghatározott előtt a [ServiceDefinition.csdef] fájl használatával a [feladat] elemen belül a [indítási] elem. Gyakori indítási feladatok olyan a batch-fájlokat, de lehet is konzolon alkalmazásokat, vagy indítsa el a PowerShell-parancsfájlok, kötegfájlok.
 
 A környezeti változók adhatók át információk egy indítási feladat, és helyi tárhely adhatók át információk egy indítási feladat nem használható. Például egy környezeti változóhoz adhatja meg a telepíteni kívánt program elérési útja, és a fájlok helyi tárba, amelyeket majd később a szerepkörök írhatók.
 
@@ -50,13 +50,13 @@ Az alábbi lista tartalmazza a szerepkör indítási eljárás az Azure-ban:
    * A **háttér** és **előtérbeli** feladatok elindulnak, aszinkron módon, párhuzamosan a indítási feladatához.  
      
      > [!WARNING]
-     > Az IIS nem teljes mértékben konfigurálható az indítási tevékenység szakasza a rendszerindítási folyamat során, előfordulhat, hogy a szerepkör-specifikus adatok nem érhető el. Indítási feladatok, amelyhez szükséges szerepkör-specifikus használjon [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx).
+     > Az IIS nem teljes mértékben konfigurálható az indítási tevékenység szakasza a rendszerindítási folyamat során, előfordulhat, hogy a szerepkör-specifikus adatok nem érhető el. Indítási feladatok, amelyhez szükséges szerepkör-specifikus használjon [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)).
      > 
      > 
 3. A szerepkör a gazdagép folyamat elindul, és a webhely létrehozása IIS-ben.
-4. A [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) módszert hívja meg.
+4. A [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) módszert hívja meg.
 5. A példány van megjelölve **készen** és adatforgalmat a példányhoz.
-6. A [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) módszert hívja meg.
+6. A [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](/previous-versions/azure/reference/ee772746(v=azure.100)) módszert hívja meg.
 
 ## <a name="example-of-a-startup-task"></a>Egy indítási feladat – példa
 Indítási feladatok vannak meghatározva a [ServiceDefinition.csdef] fájlban, az a **feladat** elemet. A **commandLine** attribútum meghatározza, hogy a név és a paraméterek az indítási batch fájl vagy -konzol parancs, a **executionContext** attribútum meghatározza, hogy az indítási feladat a jogosultsági szintet, és a **taskType** attribútum meghatározza, hogy a feladat végrehajtásának módját.
@@ -100,7 +100,7 @@ A következő szakasz ismerteti a attribútumai a **feladat** eleme a [ServiceDe
 **executionContext** – az indítási tevékenység a jogosultsági szintet határoz meg. A jogosultsági szint korlátozott lehet vagy emelt szintű:
 
 * **Korlátozott**  
-  Az indítási feladat fut, mint a szerepkör ugyanazokkal a jogosultságokkal. Ha a **executionContext** az attribútum a [Modul] elem is **korlátozott**, használja a rendszer a felhasználói jogosultságok.
+  Az indítási feladat fut, mint a szerepkör ugyanazokkal a jogosultságokkal. Ha a **executionContext** az attribútum a [futásidejű] elem is **korlátozott**, használja a rendszer a felhasználói jogosultságok.
 * **emelt szintű**  
   Az indítási feladat fut, rendszergazdai jogosultságokkal. Ez lehetővé teszi az indítási feladatok programok telepítése, az IIS-konfigurációs változtatásokat, elvégezheti a beállításjegyzék-módosításokat, és egyéb rendszergazdai szintű feladatokat, a szerepkör magát a jogosultsági szintet növelése nélkül.  
 
@@ -128,13 +128,13 @@ A következő szakasz ismerteti a attribútumai a **feladat** eleme a [ServiceDe
 ## <a name="environment-variables"></a>Környezeti változók
 A környezeti változók módon adhatók át információk egy indítási feladat. Például az elérési út lehet helyezni egy blobot, amely tartalmaz egy programot szeretne telepíteni, vagy a szerepkör által használt portszámok, vagy az indítási feladat funkcióinak vezérléséhez beállításai.
 
-Két fajtája van az indítási feladatok; a környezeti változók statikus környezeti változókat és a környezeti változók alapján tagjai a [RoleEnvironment] osztály. A mindkettő a [környezet] szakaszában a [ServiceDefinition.csdef] fájlt, és mindkét használni a [A változó] elem és **neve** attribútum.
+Két fajtája van az indítási feladatok; a környezeti változók statikus környezeti változókat és a környezeti változók alapján tagjai a [RoleEnvironment] osztály. A mindkettő a [környezet] szakaszában a [ServiceDefinition.csdef] fájlt, és mindkét használni a [változó] elem és **neve** attribútum.
 
-Statikus környezeti változókat használ a **érték** attribútuma a [A változó] elemet. A fenti példában a környezeti változót hoz **MyVersionNumber** egy állandó érték, amelynek "**1.0.0.0**". Egy másik példa lehet létrehozni egy **StagingOrProduction** környezeti változót, amely kézzel állítható be az értékét "**átmeneti**"vagy"**éles**" végrehajtásához eltérő indítási műveleteket értéke alapján a **StagingOrProduction** környezeti változót.
+Statikus környezeti változókat használ a **érték** attribútuma a [változó] elemet. A fenti példában a környezeti változót hoz **MyVersionNumber** egy állandó érték, amelynek "**1.0.0.0**". Egy másik példa lehet létrehozni egy **StagingOrProduction** környezeti változót, amely kézzel állítható be az értékét "**átmeneti**"vagy"**éles**" végrehajtásához eltérő indítási műveleteket értéke alapján a **StagingOrProduction** környezeti változót.
 
-Ne használjon környezeti változókat a RoleEnvironment osztály tagjai alapján a **érték** attribútuma a [A változó] elemet. Ehelyett a [RoleInstanceValue] gyermekelemet, a megfelelő **XPath** attribútum értéke, egy adott tagjához alapú környezeti változó létrehozásához használt az [RoleEnvironment] osztály. Az értékek a **XPath** eléréséhez különböző attribútum [RoleEnvironment] értékek találhatók [Itt](cloud-services-role-config-xpath.md).
+Ne használjon környezeti változókat a RoleEnvironment osztály tagjai alapján a **érték** attribútuma a [változó] elemet. Ehelyett a [RoleInstanceValue] gyermekelemet, a megfelelő **XPath** attribútum értéke, egy adott tagjához alapú környezeti változó létrehozásához használt az [ RoleEnvironment] osztály. Az értékek a **XPath** eléréséhez különböző attribútum [RoleEnvironment] értékek találhatók [Itt](cloud-services-role-config-xpath.md).
 
-Például hozzon létre egy környezeti változó, amely "**igaz**" a compute emulatorban, a példány futása közben és "**hamis**" fut a felhőben, ha használja a következő [A változó] és [RoleInstanceValue] elemek:
+Például hozzon létre egy környezeti változó, amely "**igaz**" a compute emulatorban, a példány futása közben és "**hamis**" fut a felhőben, ha használja a következő [változó ] és [RoleInstanceValue] elemek:
 
 ```xml
 <Startup>
@@ -163,8 +163,8 @@ Ismerje meg, hogyan hajthat végre az egyes [gyakori indítási feladatok](cloud
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
 [Tevékenység]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Indítás]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Modul]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
+[Futtatókörnyezet]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Környezet]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[A változó]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
+[Változó]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx

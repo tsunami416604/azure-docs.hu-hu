@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 4c4870dc0f5a423288e6cb561b985501414e8525
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 9b88a6f3f7e17cfc549b30d1f0d80d4cdf1c3e2d
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203634"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919245"
 ---
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
@@ -27,7 +27,7 @@ Az alkalmazás tesztelése a Visual Studióban, nyomja le a **F5** , futtassa a 
 
 Amikor elkészült, futtassa a tesztet, használja a Microsoft Azure Active Directory (Azure AD-) fiók (munkahelyi vagy iskolai fiók) vagy személyes Microsoft-fiókkal (<span>élő.</span> COM vagy <span>outlook.</span> COM) való bejelentkezéshez.
 
-![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![Bejelentkezés Microsofttal](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![Jelentkezzen be Microsoft-fiókjával](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
@@ -48,7 +48,7 @@ A vezérlő nézetben keresse meg, miután egy táblát, amely tartalmazza a fel
 |**Name (Név)** |A felhasználó teljes neve | A felhasználó vezetékneve és nevét.
 |**Felhasználónév** |Felhasználó<span>@domain.com</span> | A felhasználónév, amely a felhasználó azonosítására szolgál.
 |**Tárgy** |Tárgy |Egy karakterlánc, amely egyedileg azonosítja a felhasználó a weben.|
-|**Bérlő azonosítója** |Guid | A **guid** , amely a felhasználó Azure ad-ben szervezete egyedi jelöli.|
+|**Bérlőazonosító** |Guid | A **guid** , amely a felhasználó Azure ad-ben szervezete egyedi jelöli.|
 
 Emellett megtekintheti az egy táblázat minden jogcím található a hitelesítési kérelmet. További információkért lásd: a [listája, amelyeket egy Azure AD-azonosító jogkivonat](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
@@ -95,6 +95,6 @@ Jelentkezzen be a hozzáférés csak felhasználói fiókok, egy Azure AD-szerve
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>3. lehetőség: Egyéni módszer használatával kiállítók ellenőrzése
 
-Egy egyéni módszert, kiállítók használatával valósítható meg a **IssuerValidator** paraméter. Ez a paraméter használatával kapcsolatos további információkért olvassa el a [TokenValidationParameters osztály](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx) az MSDN Webhelyén.
+Egy egyéni módszert, kiállítók használatával valósítható meg a **IssuerValidator** paraméter. Ez a paraméter használatával kapcsolatos további információkért olvassa el a [TokenValidationParameters osztály](/previous-versions/visualstudio/dn464192(v=vs.114)).
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

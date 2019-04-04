@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 36b49002a5e947f2803e00974f242e49eb26d45b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 213f4313e96638e4d94455be5f16aa3221d35b73
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309250"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905681"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés az Application Insights
 
@@ -25,6 +25,9 @@ Szabályozhatja, hogy rendelkezik-e olvasási és frissítési hozzáférés az 
 
 > [!IMPORTANT]
 > Hozzáférés hozzárendelése a felhasználók számára a **erőforráscsoportba vagy előfizetésbe** , amelyhez az alkalmazás-erőforrás tartozik – nem található a erőforrásán. Rendelje hozzá a **Application Insights-összetevők közreműködője** szerepkör. Ez biztosítja, hogy a webes tesztek és a riasztások mellett az alkalmazás-erőforrás elérését egységes irányítását. [További információk](#access).
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="resources-groups-and-subscriptions"></a>Erőforrások, csoportok és előfizetések
 
@@ -86,17 +89,17 @@ Adott esetben arra mutató hivatkozás a társított hivatalos dokumentációjá
 | [Olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Megtekintheti, de nem bármin változtatni. |
 | [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Application Insights Snapshot Debugger szolgáltatásainak használatához a felhasználónak engedélyt ad. Vegye figyelembe, hogy ezt a szerepkört sem a tulajdonosa, sem a közreműködői szerepkör tartalmazza. |
 | Azure-beli szolgáltatástelepítés kiadáskezelési közreműködője | Közreműködői szerepkör-szolgáltatásokhoz az Azure szolgáltatás üzembe helyezése az üzembe helyezést. |
-| [Adatok Purger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Személyes adatok végleges törlése a különleges szerepkörrel. Tekintse meg a [személyes adatokra vonatkozó útmutatás](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) további információt.   |
+| [Adattörlő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Személyes adatok végleges törlése a különleges szerepkörrel. Tekintse meg a [személyes adatokra vonatkozó útmutatás](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) további információt.   |
 | Az ExpressRoute-rendszergazda | Létrehozhat a delete és express-útvonalak kezelése.|
-| [Log Analytics-közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics-közreműködő az összes monitorozási adat olvashatja és szerkesztheti a figyelési beállításokat. Figyelési beállítások szerkesztése magában foglalja a virtuális gépek; a Virtuálisgép-bővítmény hozzáadása tudni naplógyűjtemény konfigurálása céljából az Azure Storage; tárfiók kulcsainak beolvasását létrehozásáról és konfigurálásáról az Automation-fiókok; megoldások hozzáadását; és az Azure diagnostics konfigurálása az összes Azure-erőforrást.  |
+| [Log Analytics közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics-közreműködő az összes monitorozási adat olvashatja és szerkesztheti a figyelési beállításokat. Figyelési beállítások szerkesztése magában foglalja a virtuális gépek; a Virtuálisgép-bővítmény hozzáadása tudni naplógyűjtemény konfigurálása céljából az Azure Storage; tárfiók kulcsainak beolvasását létrehozásáról és konfigurálásáról az Automation-fiókok; megoldások hozzáadását; és az Azure diagnostics konfigurálása az összes Azure-erőforrást.  |
 | [Log Analytics olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | A Log Analytics-olvasó megtekintheti az összes figyelési adatot, és kereshet azokban, valamint megtekintheti a figyelési beállításokat, beleértve az összes Azure-erőforrás Azure-beli diagnosztikájának konfigurációját is. |
 | masterreader | Lehetővé teszi, hogy a felhasználót, hogy mindent megtekinthessen, de nem végezhet módosításokat. |
-| [Közreműködő figyelése](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Olvashatja az összes figyelési adatot, és frissítheti a figyelési beállításokat. |
-| [Figyelési metrikák közzétevő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Lehetővé teszi a metrikákat az Azure-erőforrások közzétételét. |
-| [Olvasó figyelése](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Olvashatja az összes figyelési adatot. |
+| [Figyelési közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Olvashatja az összes figyelési adatot, és frissítheti a figyelési beállításokat. |
+| [Figyelési metrikák közzétevője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Lehetővé teszi a metrikákat az Azure-erőforrások közzétételét. |
+| [Figyelési olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Olvashatja az összes figyelési adatot. |
 | Erőforrás-szabályzati közreműködő (előnézet) | Erőforrás-szabályzat létrehozására/módosítására jogosultságokkal EA-beli visszatöltött felhasználók hozzon létre támogatási jegyet, és olvassa el az erőforrások/hierarchia.  |
 | [Felhasználói hozzáférés rendszergazdája](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Lehetővé teszi a felhasználóknak más felhasználók Azure-erőforrásokhoz való hozzáférés kezelésére.|
-| [Webhelyek Közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Lehetővé teszi websites (a webes tarifacsomagokét), de az azokhoz való hozzáférés kezelése...|
+| [Webhelyek közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Lehetővé teszi websites (a webes tarifacsomagokét), de az azokhoz való hozzáférés kezelése...|
 
 "Szerkesztés" tartalmazza, létrehozása, törlése és frissítése:
 
@@ -121,7 +124,7 @@ Mivel az egyes szerepkörök kapcsolhatók értesítések és e-mail-értesíté
 ### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>Rendszergazdai szerepkörök + közreműködői szerepkörrel teljes előfizetés lekérdezése
 
 ```powershell
-(Get-AzureRmRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>A tulajdonos és közreműködő egy adott Application Insights-erőforrást kontextusában lekérdezése
@@ -130,14 +133,14 @@ Mivel az egyes szerepkörök kapcsolhatók értesítések és e-mail-értesíté
 $resourceGroup = “RGNAME”
 $resourceName = “AppInsightsName”
 $resourceType = “microsoft.insights/components”
-(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>A tulajdonos és közreműködő egy adott erőforráscsoportban kontextusában lekérdezése
 
 ```powershell
 $resourceGroup = “RGNAME”
-(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 <!--Link references-->

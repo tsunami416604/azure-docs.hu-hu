@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: e58a62761284e0671c0083d41f5dde4c13b32fe2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 35c30ec97d4c033a687204b926d2f686c52be069
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108256"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916025"
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk Services: Hibaelhárítás a műveletnaplók használatával
 
@@ -31,8 +31,8 @@ ms.locfileid: "58108256"
 A műveletnaplók szolgáltatások funkciója lehetővé teszi, hogy az Azure-szolgáltatások, többek között a BizTalk Services a végrehajtott műveletek korábbi naplók megtekintéséhez. Ez lehetővé teszi, hogy a műveletek a legfeljebb 180 nappal a BizTalk-szolgáltatás előfizetésével kapcsolatos előzményadatok megtekintése.
 
 > [!NOTE]
-> Ez a funkció csak rögzíti a műveletek a BizTalk-szolgáltatások, például ha a szolgáltatás elindult, a Naplók biztonsági fel, és így tovább. Az ilyen műveletek használatával nyomon követi a [BizTalk-szolgáltatás REST API-k](https://msdn.microsoft.com/library/azure/dn232347.aspx). Az operations Management-szolgáltatások használatával nyomon követett teljes listáját lásd: [műveletek nyomon követett Azure Management szolgáltatások segítségével](#bizops).<br/><br/>
-> Ez nem rögzíti a BizTalk szolgáltatások modul (például hidat, és így tovább által feldolgozott üzenetet.) kapcsolatos tevékenységeket a naplókat. Ezek a naplók megtekintéséhez használja a dokumentumkövetési nézet a BizTalk Services portálon. További információkért lásd: [üzenetek nyomon követése](https://msdn.microsoft.com/library/azure/hh949805.aspx).
+> Ez a funkció csak rögzíti a műveletek a BizTalk-szolgáltatások, például ha a szolgáltatás elindult, a Naplók biztonsági fel, és így tovább. Az ilyen műveletek használatával nyomon követi a [BizTalk-szolgáltatás REST API-k](/previous-versions/azure/reference/dn232347(v=azure.100)). Az operations Management-szolgáltatások használatával nyomon követett teljes listáját lásd: [műveletek nyomon követett Azure Management szolgáltatások segítségével](#bizops).<br/><br/>
+> Ez nem rögzíti a BizTalk szolgáltatások modul (például hidat, és így tovább által feldolgozott üzenetet.) kapcsolatos tevékenységeket a naplókat. Ezek a naplók megtekintéséhez használja a dokumentumkövetési nézet a BizTalk Services portálon. További információkért lásd: [üzenetek nyomon követése](/previous-versions/azure/hh949805(v=azure.100)).
 > 
 > 
 
@@ -66,12 +66,12 @@ A következő táblázat felsorolja a műveleteket, a rendszer nyomon követi az
 ## <a name="see-also"></a>Lásd még:
 * [Backup BizTalk Service](https://go.microsoft.com/fwlink/p/?LinkID=325584)
 * [BizTalk-szolgáltatás a biztonsági másolatból](https://go.microsoft.com/fwlink/p/?LinkID=325582)
-* [A BizTalk Services: Fejlesztői, alapszintű, Standard és prémium kiadások diagramja](https://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [A BizTalk Services: Kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280)
-* [A BizTalk Services: Kiépítési állapot diagramja](https://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [A BizTalk Services: Irányítópult, figyelés és méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [A BizTalk Services: Szabályozás](https://go.microsoft.com/fwlink/p/?LinkID=302282)
-* [A BizTalk Services: Kiállító neve és kiállító kulcsa](https://go.microsoft.com/fwlink/p/?LinkID=303941)
+* [BizTalk Services: Fejlesztői, alapszintű, Standard és prémium kiadások diagramja](https://go.microsoft.com/fwlink/p/?LinkID=302279)
+* [BizTalk Services: Kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk Services: Kiépítési állapot diagramja](https://go.microsoft.com/fwlink/p/?LinkID=329870)
+* [BizTalk Services: Irányítópult, figyelés és méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk Services: Throttling](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk Services: Kiállító neve és kiállító kulcsa](https://go.microsoft.com/fwlink/p/?LinkID=303941)
 * [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png

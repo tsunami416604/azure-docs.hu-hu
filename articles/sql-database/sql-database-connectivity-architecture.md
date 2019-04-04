@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: c5fadf5c445310534ab3001371e1b73b1f502f15
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 04/03/2019
+ms.openlocfilehash: 619893ad42664f8d37fff5e61b8560f6c6d83e23
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661786"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918603"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Az Azure SQL-kapcsolati architektúra
 
@@ -37,7 +37,7 @@ Ez a cikk ismerteti az Azure SQL Database és az SQL Data Warehouse kapcsolati a
 > - Alkalmazás ritkán csatlakozik egy meglévő kiszolgálót, így a telemetria adott alkalmazásokra vonatkozó információk nem rögzítése
 > - Automatizált üzembehelyezési logic létrehoz egy SQL Database-kiszolgálóhoz, feltéve, hogy az alapértelmezett viselkedést, a szolgáltatás végpontja kapcsolatokhoz `Proxy`
 >
-> Végpont szolgáltatáskapcsolatokat nem sikerült létrehozni az Azure SQL Serverhez, és meg is feltételezi, hogy ez a változás által érintett, győződjön meg arról, hogy kapcsolattípus explicit módon értéke `Redirect`. Ha ez a helyzet, hogy nyissa meg a virtuális gép tűzfal-szabályok és a hálózati biztonsági csoportok (NSG) régióban minden olyan Azure IP-címekhez tartozó Sql [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) portok 11000-12000. Ha ez nem megfelelő megoldás, váltson kiszolgáló explicit módon a `Proxy`.
+> Végpont szolgáltatáskapcsolatokat nem sikerült létrehozni az Azure SQL Serverhez, és meg is feltételezi, hogy ez a változás által érintett, győződjön meg arról, hogy kapcsolattípus explicit módon értéke `Redirect`. Ha ez a helyzet, hogy nyissa meg a virtuális gép tűzfal-szabályok és a hálózati biztonsági csoportok (NSG) régióban minden olyan Azure IP-címekhez tartozó Sql [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) 11000-11999 portokon. Ha ez nem megfelelő megoldás, váltson kiszolgáló explicit módon a `Proxy`.
 > [!NOTE]
 > Ez a témakör önálló adatbázisok és rugalmas készletek, az SQL Data Warehouse adatbázisok, Azure Database for MySQL, Azure Database for MariaDB és üzemeltetésére, Azure Database for PostgreSQL Azure SQL Database-kiszolgálókra vonatkozik. Az egyszerűség kedvéért SQL Database megnevezése SQL Database, az SQL Data Warehouse, Azure Database for MySQL, Azure Database for MariaDB és, Azure Database for PostgreSQL.
 
@@ -57,7 +57,7 @@ Az alábbi lépések bemutatják, hogyan létrejön a kapcsolat az Azure SQL Dat
 
 Az Azure SQL Database támogatja a kapcsolat egy SQL Database-kiszolgáló házirend-beállítás a következő három módon:
 
-- **Redirect (recommended):** Az ügyfelek közvetlenül az adatbázist futtató csomópontot kapcsolatokat hozhat létre. Ahhoz, hogy a kapcsolat, az ügyfelek engedélyeznie kell a kimenő tűzfalszabályokat, hogy az összes Azure IP-címek a régióban a hálózati biztonsági csoportok (NSG) a használatával [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags)) portok 11000-12000, nem csak az Azure SQL Database gateway-IP címek 1433-as portot. Mivel a csomagok adatbázissal, teljesítmény és a késés teljesítményűek.
+- **Redirect (recommended):** Az ügyfelek közvetlenül az adatbázist futtató csomópontot kapcsolatokat hozhat létre. Ahhoz, hogy a kapcsolat, az ügyfelek engedélyeznie kell a kimenő tűzfalszabályokat, hogy az összes Azure IP-címek a régióban a hálózati biztonsági csoportok (NSG) a használatával [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags)) portok 11000-11999, nem csak az Azure SQL Database gateway-IP címek 1433-as portot. Mivel a csomagok adatbázissal, teljesítmény és a késés teljesítményűek.
 - **Proxy:** Ebben a módban az összes kapcsolat az Azure SQL Database-átjárókon keresztül webszolgáltatásokhoz használják proxyként. Ahhoz, hogy a kapcsolat, az ügyfél kimenő tűzfalszabályokat, amelyek lehetővé teszik az Azure SQL Database-átjáró IP-címek (általában két IP-címek régiónként) kell rendelkeznie. Ez a mód kiválasztása nagyobb késést és alacsonyabb átviteli sebességet a számítási feladatok természetétől függően eredményezhet. Kifejezetten ajánljuk a `Redirect` keresztül a kapcsolódási szabályzat a `Proxy` kapcsolódási szabályzat a legkisebb késés és a legnagyobb átviteli sebességet.
 - **alapértelmezett érték:** Ez a kapcsolat-házirend érvényben minden kiszolgálón létrehozása után hacsak nem változtatja meg a kapcsolódási szabályzat vagy `Proxy` vagy `Redirect`. A tényleges házirend attól függ, hogy Azure-ban származik kapcsolatok (`Redirect`) vagy Azure-on kívül (`Proxy`).
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sogup
-ms.openlocfilehash: 0bc1ab0586d1a591464711fb0652f81fb082e6c3
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 7745f986c6e9ba22258f51f9329444b8232762e1
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199244"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905766"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és erőforráscsoportok (korlátozott nyilvános előzetes verzió)
 
@@ -21,6 +21,8 @@ Ez a cikk bemutatja, hogyan helyezheti át a több Azure-előfizetés, vagy egy 
 
 > [!NOTE]
 > Recovery Services-tároló és az összes kapcsolódó erőforrás áthelyezése másik erőforráscsoportba, akkor először [a forrás-előfizetés regisztrálása](#register-the-source-subscription-to-move-your-recovery-services-vault).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites-for-moving-a-vault"></a>Tároló áthelyezése előfeltételei
 
@@ -50,24 +52,24 @@ A forrás-előfizetés regisztrálása **áthelyezése** a Recovery Services-tá
 1. Jelentkezzen be az Azure-fiókjába
 
    ```
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
 2. Válassza ki a regisztrálni kívánt előfizetést
 
    ```
-   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+   Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
    ```
 3. Ez az előfizetés regisztrálása
 
    ```
-   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+   Register-AzProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
    ```
 
 4. A parancs futtatása
 
    ```
-   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+   Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices
    ```
 
 Várjon 30 perc alatt az előfizetést engedélyezési listára kell az áthelyezési művelet az Azure portal vagy a PowerShell használatával az megkezdése előtt.
@@ -137,18 +139,18 @@ Recovery Services-tároló és az összes kapcsolódó erőforrás áthelyezheti
 
 ## <a name="use-powershell-to-move-a-vault"></a>Egy tároló áthelyezéséhez a PowerShell használatával
 
-Recovery Services-tároló áthelyezése másik erőforráscsoportba, használja a `Move-AzureRMResource` parancsmagot. `Move-AzureRMResource` az erőforrás nevét és a felhasznált erőforrás típusa, igényel. A is beszerezheti a `Get-AzureRmRecoveryServicesVault` parancsmagot.
+Recovery Services-tároló áthelyezése másik erőforráscsoportba, használja a `Move-AzResource` parancsmagot. `Move-AzResource` az erőforrás nevét és a felhasznált erőforrás típusa, igényel. A is beszerezheti a `Get-AzRecoveryServicesVault` parancsmagot.
 
 ```
 $destinationRG = "<destinationResourceGroupName>"
-$vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
-Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+$vault = Get-AzRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
+Move-AzResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 Az erőforrások áthelyezése másik előfizetésben, adjon meg a `-DestinationSubscriptionId` paraméter.
 
 ```
-Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+Move-AzResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 A fenti parancsmagok végrehajtása után kell adnia annak ellenőrzéséhez, hogy szeretné-e a megadott erőforrások áthelyezése. Típus **Y** megerősítéséhez. Sikeres ellenőrzést követően az erőforrás áthelyezése.

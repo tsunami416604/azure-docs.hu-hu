@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 04/12/2018
+ms.date: 04/02/2019
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: ab439566da38a537534fc10e70058ab57005ce22
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a3bed9df5b62ce7f2f3df7046357dc4f2458575c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183798"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917906"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse hitelesítése
 Ismerje meg, hogyan hitelesítheti az Azure SQL Data Warehouse, Azure Active Directory (AAD) vagy az SQL Server-hitelesítés használatával.
@@ -56,7 +56,7 @@ Az Azure Active Directory előnyöket nyújtják:
 * Integrált Windows-hitelesítés és egyéb Azure Active Directory által támogatott hitelesítési engedélyezésével kiküszöböli a jelszavak tárolását.
 * Használja a tartalmazott adatbázis-felhasználók az adatbázis szintjén identitások hitelesítésére.
 * Jogkivonat-alapú hitelesítés támogatja az alkalmazások csatlakoztatásához az SQL Data warehouse-bA.
-* SQL Server Management Studio támogatja a többtényezős hitelesítést az Active Directory univerzális hitelesítéssel. A multi-factor Authentication szolgáltatás leírását lásd: [SSMS-támogatás az Azure AD MFA és az SQL Database és az SQL Data Warehouse](../sql-database/sql-database-ssms-mfa-authentication.md).
+* Támogatja a többtényezős hitelesítést az Active Directory univerzális hitelesítéssel a különböző eszközöket, beleértve a [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) és [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json).
 
 > [!NOTE]
 > Az Azure Active Directory még viszonylag újak és bizonyos korlátozások vonatkoznak. Győződjön meg arról, hogy az Azure Active Directory jó megoldás lehet a környezetben, lásd: [Azure AD-funkciók és korlátozások][Azure AD features and limitations], kifejezetten a további szempontok.

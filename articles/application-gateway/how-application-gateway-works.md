@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: ef07def377b74fb74d57372f471efcf48fcf7aa2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bbaf651233d4cebad3f45e5cf3823bcaf6ce38b6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881095"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905783"
 ---
 # <a name="how-application-gateway-works"></a>Az Application Gateway működése
 
@@ -36,7 +36,7 @@ A háttérkiszolgáló meghatározása után az application gateway a háttérki
 
 Belső Application Gateway csak magánhálózati IP-címmel rendelkezik. Egy belső Application Gateway DNS-nevét a belső oldható fel a magánhálózati IP-címére. Ezért belső terheléselosztók csak irányíthatja a virtuális hálózathoz hozzáféréssel rendelkező ügyfelek kéréseit az Application Gateway számára.
 
-Vegye figyelembe, hogy az Internet felé néző mind a belső Application Gateway átjárók irányíthatja a háttérkiszolgálókon magánhálózati IP-címek használatával, ha a készlet háttérerőforrásra magánhálózati IP-cím, virtuális gép hálózati Adapteres konfiguráció vagy egy belső feloldható címet tartalmaz, és kéri a háttérkészlet egy nyilvános végpontot, az Application Gateway az előtérbeli nyilvános IP-címet használ a kiszolgáló eléréséhez. Előtérbeli nyilvános IP-cím még nincs kiépítve, ha egy kimenő külső csatlakoztatásához van hozzárendelve.
+Ha a háttérkiszolgáló-készletet tartalmaz egy belső feloldható teljes tartománynévnek, vagy magánhálózati IP-cím, az Application Gateway a kérelmet és a háttérkiszolgáló, a példány magánhálózati IP-címek használatával irányítja. Ha a háttérkiszolgáló-készletet tartalmaz külső végpont és a egy külsőleg feloldható teljes tartománynévnek, az Application Gateway a kérelmet és a háttérkiszolgáló előtérbeli nyilvános IP-címére irányítja. A DNS-feloldás a saját DNS-zóna vagy egyéni DNS-kiszolgáló azon alapul, ha konfigurálva, vagy az Azure DNS által biztosított alapértelmezett vesz igénybe. Előtérbeli nyilvános IP-cím még nincs kiépítve, ha egy kimenő külső csatlakoztatásához van hozzárendelve.
 
 ### <a name="modifications-to-the-request"></a>A kérelem módosításai
 

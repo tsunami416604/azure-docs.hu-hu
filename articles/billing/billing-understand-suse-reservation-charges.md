@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
 ms.author: banders
-ms.openlocfilehash: 04b456cbaeeb4ba285fd874f7b21abffcc714653
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 4305db991a8129b0ae4205300051391df893c52c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649256"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917787"
 ---
 # <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Megismerheti, hogyan alkalmazza a a SUSE Linux Enterprise szoftvert foglalási terv kedvezményt van az Azure-hoz
 
@@ -38,7 +38,7 @@ Például ha vásárol egy csomag az SUSE Linux Enterprise Server for HPC Priori
 - 1-3 vagy 4 Vcpu, üzembe helyezett virtuális gép
 - vagy 0.77 vagy hamarosan 77: % 5 vagy több vcpu-k rendelkező virtuális gépek.
 
-Az 5 vagy több Vcpu arány, 2.6-os. Ezért a SUSE egy virtuális Gépet az 5 vagy több Vcpu-foglalás szoftverköltség, ami körülbelül 77 % csak része ismerteti.
+Az 5 vagy több Vcpu arány, 2.6-os. Ezért a SUSE egy virtuális Gépet az 5 vagy több Vcpu-foglalás egy szoftverköltség, ami körülbelül 77 % csak része ismerteti.
 
 ## <a name="understand-suse-vm-usage-before-you-buy"></a>SUSE virtuális gépek használatának megértéséhez, vásárlás előtt
 
@@ -126,10 +126,10 @@ Az Azure portal marketplace nevei:
 
 Foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
+- [Mi az az Azure Reservations?](billing-save-compute-costs-reservations.md)
 - [Fizessen elő az az Azure-foglalások SUSE szoftvercsomagok – alap](../virtual-machines/linux/prepay-suse-software-charges.md)
-- [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
+- [Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Az Azure-fenntartások kezelése](billing-manage-reserved-vm-instance.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
 

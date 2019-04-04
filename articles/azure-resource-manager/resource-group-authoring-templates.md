@@ -12,18 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5c8ec54df0d578c6d12524a4128b9cc54e6464a0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f79518b26752d581d6360a3b770e8a5cba293fd7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781901"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904933"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
 
 Ez a cikk ismerteti az Azure Resource Manager-sablonok szerkezetének. Egy sablon és az elérhető tulajdonságok köre szakaszt az eltérő szakaszok tükrözze. A sablon JSON-t és kifejezések, amelyek segítségével kialakíthatja az üzemelő példány értékeit áll.
 
 Ez a cikk szól, akik rendelkeznek a Resource Manager-sablonok bizonyos fokú ismeretét. Ez a struktúra és a sablon szintaxisát részletes információkat tartalmaz. Ha azt szeretné, hogy a sablonok létrehozásának bemutatása, [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="template-format"></a>Sablon formátuma
 
@@ -49,8 +52,8 @@ A legegyszerűbb szerkezetét, a sablon a következő elemekből áll:
 | apiProfile |Nem | Egy API-verzió, amely erőforrástípusok API-verziók gyűjteményének szolgál. Ez az érték használatával elkerülése érdekében, hogy meg kellene adni az egyes erőforrások API-verziók a sablonban. Adja meg az API-profil verziót, és API-verziót, az erőforrástípushoz nem ad meg, ha a Resource Manager API verzióját használja az erőforrás típusát, akkor a profilban megadott.<br><br>Az API-profil tulajdonság akkor hasznos, ha a különböző környezetekben, például az Azure Stack és a globális Azure-sablonok telepítésével. Az API-profil verzió használatával győződjön meg arról, hogy a sablon automatikusan használja mindkét környezetben támogatott. A jelenlegi API-profil verziók és az erőforrás-profilban megadott API-verziók listáját lásd: [API profil](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>További információkért lásd: [nyomon követése az API-profilok használatával verziók](templates-cloud-consistency.md#track-versions-using-api-profiles). |
 | [paraméterek](#parameters) |Nem |Üzembe helyezés testreszabásához erőforrások üzembe helyezésének végrehajtásakor biztosított értékeket. |
 | [Változók](#variables) |Nem |Egyszerűsítése érdekében a Sablonnyelv-kifejezések, JSON-töredék a sablonban használt értékeket. |
-| [Függvények](#functions) |Nem |Felhasználó által megadott funkciók érhetők el a sablonon belül. |
-| [Erőforrások](#resources) |Igen |Erőforrástípusok, telepített vagy egy erőforráscsoport vagy előfizetés frissített. |
+| [functions](#functions) |Nem |Felhasználó által megadott funkciók érhetők el a sablonon belül. |
+| [erőforrások](#resources) |Igen |Erőforrástípusok, telepített vagy egy erőforráscsoport vagy előfizetés frissített. |
 | [kimenetek](#outputs) |Nem |Üzembe helyezés után visszaadott értékek. |
 
 Minden elem is megadhatja a tulajdonságokkal rendelkezik. Ez a cikk ismerteti a sablon nagyobb részletességgel szakaszait.
@@ -784,7 +787,7 @@ Nem használhatja a `reference` függvény kimenetek szakaszában egy [beágyazo
 |---------|---------|
 |[Másolja a változók](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Komplex változók hoz létre, és kiírja ezeket az értékeket. Nem telepíti az erőforrásokat. |
 |[Nyilvános IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Létrehoz egy nyilvános IP-címet, és kiírja az erőforrás-azonosítója. |
-|[Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Az előző sablon mutató hivatkozásokat tartalmaz. A terheléselosztó létrehozásakor használja a kimenetben az erőforrás-azonosítója. |
+|[Terheléselosztó](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Az előző sablon mutató hivatkozásokat tartalmaz. A terheléselosztó létrehozásakor használja a kimenetben az erőforrás-azonosítója. |
 
 
 <a id="comments" />

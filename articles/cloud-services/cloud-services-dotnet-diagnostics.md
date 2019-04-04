@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 017461d5b73bb48ce61678fbbd795026cef60bc1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ba69a5aaffb39c26731ffd209587a8c8223b032a
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536849"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915357"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Diagnostics használatának engedélyezésével az Azure Cloud Servicesben
 Lásd: [Azure Diagnostics – áttekintés](../azure-diagnostics.md) Azure Diagnostics háttér számára.
@@ -191,7 +191,7 @@ A Visual Studio **Server Explorer**, lépjen a wadexample tárfiókhoz. A felhő
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Konfigurációs fájl séma
-A diagnosztika konfigurációs fájljának inicializálása diagnosztikai beállításait, a diagnosztikai ügynök indulásakor használt értékeket határozza meg. Tekintse meg a [legújabb sémaleírás](https://msdn.microsoft.com/library/azure/mt634524.aspx) az érvényes értékek és a példákat.
+A diagnosztika konfigurációs fájljának inicializálása diagnosztikai beállításait, a diagnosztikai ügynök indulásakor használt értékeket határozza meg. Tekintse meg a [legújabb sémaleírás](/azure/azure-monitor/platform/diagnostics-extension-schema) az érvényes értékek és a példákat.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha gondja van, tekintse meg [Azure Diagnostics hibaelhárítása](../azure-diagnostics-troubleshooting.md) segítséget a gyakori problémák megoldásához.

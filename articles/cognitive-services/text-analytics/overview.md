@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: aahi
-ms.openlocfilehash: f79700d3b57623693bf1d0d62dd9ab171df464fb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 59763b1146986b9920b87152101fd1dcdb00fece
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882515"
+ms.locfileid: "58904763"
 ---
 # <a name="what-is-text-analytics-api"></a>Mit jelent a szövegelemzési API-t?
 
@@ -77,7 +77,7 @@ A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. A jele
 | Teljes kérés maximális mérete | 1 MB |
 | Egy kérésbe foglalt dokumentumok maximális száma | 1000 dokumentum |
 
-A sávszélesség-korlátjának a második és az 1000 hívás percenként 100 hívás hajtható végre. Vegye figyelembe, hogy egyetlen hívásba nagy mennyiségű (akár 1000) dokumentumot is belefoglalhat.
+A sávszélesség-korlátjának a második és az 1000 percenkénti kérések 100 kérelemből állhat. Elküldheti a nagy mennyiségű dokumentumok száma (legfeljebb 1000 dokumentumot).
 
 ## <a name="unicode-encoding"></a>Unicode-kódolás
 

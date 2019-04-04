@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 2a41316eadb43145628d6c625935c751bfbc6ad6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b885098ff0efeb4d723cbaaac46fbb57cb40f2ea
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531526"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918824"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>A CDN-fájlok tömörítési hibáinak elhárítása
 Ez a cikk segít a hibák elhárításában [CDN-fájltömörítés](cdn-improve-performance.md).
@@ -116,6 +116,6 @@ Jogosult a tömörítést, a fájl a következő méret követelményeknek kell 
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Ellenőrizze a forrás kiszolgálón a kérés egy **keresztül** fejléc
 A **keresztül** HTTP-fejléc azt jelzi, hogy a webkiszolgáló egy proxykiszolgáló által átadott a kérelmet.  Microsoft IIS-kiszolgálók alapértelmezés szerint nem tömöríthetők válaszokat, ha a kérés tartalmaz egy **keresztül** fejléc.  Bírálja felül ezt a viselkedést, hajtsa végre a következőket:
 
-* **AZ IIS 6**: [HcNoCompressionForProxies állítsa "FALSE" = az IIS-metabázis tulajdonságai](https://msdn.microsoft.com/library/ms525390.aspx)
+* **AZ IIS 6**: [HcNoCompressionForProxies állítsa "FALSE" = az IIS-metabázis tulajdonságai](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
 * **Az IIS 7, és akár**: [Állítsa be mindkét **noCompressionForHttp10** és **noCompressionForProxies** hamis, a kiszolgáló konfigurációjában](http://www.iis.net/configreference/system.webserver/httpcompression)
 

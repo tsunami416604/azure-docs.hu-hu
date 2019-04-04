@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 7e43a32a415e58925bda5195b3943afca315f9be
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9c9f7dfd9ecbf085da19fc010e497caef8c18629
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238182"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917311"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Mi a Cloud Service-modell, és hogyan tegye Becsomagolhatja azt?
 Egy felhőalapú szolgáltatás létrehozása az három összetevőt, a szolgáltatás definíciós *(.csdef)*, a szolgáltatás konfigurációs *(.cscfg)*, és a egy szolgáltatáscsomag *(.cspkg)*. Mindkét a **ServiceDefinition.csdef** és **ServiceConfig.cscfg** fájlok XML-alapú, és ismertetik a felhőalapú szolgáltatás, és hogyan van konfigurálva; szerkezete együttesen: a modell. A **ServicePackage.cspkg** egy zip-fájl, amely jön létre a **ServiceDefinition.csdef** , és többek között tartalmazza a szükséges bináris alapú függőségeket. Az Azure egy felhőalapú szolgáltatás létrehozása is a **ServicePackage.cspkg** és a **ServiceConfig.cscfg**.
@@ -39,7 +39,7 @@ Ha a felhőszolgáltatás már fut az Azure-ban, újrakonfigurálhatja az keresz
 <a name="csdef"></a>
 
 ## <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
-A **ServiceDefinition.csdef** fájl adja meg a felhőszolgáltatás konfigurálása az Azure által használt beállításokat. A [Azure szolgáltatásdefiníciós sémában (.csdef fájl)](https://msdn.microsoft.com/library/azure/ee758711.aspx) biztosít az engedélyezett formátum a szolgáltatásdefiníciós fájlban. Az alábbi példa bemutatja a beállításokat, amelyek a webes és feldolgozói szerepkörök:
+A **ServiceDefinition.csdef** fájl adja meg a felhőszolgáltatás konfigurálása az Azure által használt beállításokat. A [Azure szolgáltatásdefiníciós sémában (.csdef fájl)](/previous-versions/azure/reference/ee758711(v=azure.100)) biztosít az engedélyezett formátum a szolgáltatásdefiníciós fájlban. Az alábbi példa bemutatja a beállításokat, amelyek a webes és feldolgozói szerepkörök:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -90,9 +90,9 @@ A **ServiceDefinition.csdef** fájl adja meg a felhőszolgáltatás konfigurál�
 </ServiceDefinition>
 ```
 
-Olvassa el a [szolgáltatásdefiníciós sémában](https://msdn.microsoft.com/library/azure/ee758711.aspx) jobban megérteni az itt használt XML-séma, azonban a következő néhány elemét rövid leírását:
+Olvassa el a [szolgáltatásdefiníciós sémában](/previous-versions/azure/reference/ee758711(v=azure.100)) jobban megérteni az itt használt XML-séma, azonban a következő néhány elemét rövid leírását:
 
-**Helyek**  
+**Webhelyek**  
 Az IIS7 szolgáltatásban üzemeltetett webhelyek vagy webalkalmazások számára vonatkozó definíciókat tartalmazza.
 
 **InputEndpoints**  
@@ -110,7 +110,7 @@ A tanúsítványok, a szerepkör szükséges definíciókat tartalmazza. Az elő
 **LocalResources**  
 Helyi tároló-erőforrások vonatkozó definíciókat tartalmazza. Helyi tároló egyik erőforrásához az egy fenntartott könyvtár a virtuális gép szerepkör-példány fut, amelyben a fájlrendszerben.
 
-**Import**  
+**Importálások**  
 Importált modulok vonatkozó definíciókat tartalmazza. Az előző példakód bemutatja a modulok a távoli asztali kapcsolat, és csatlakozzon az Azure.
 
 **Indítás**  
@@ -119,7 +119,7 @@ A szerepkör indításakor futtatott feladatokat tartalmazza. A feladatok egy .c
 <a name="cscfg"></a>
 
 ## <a name="serviceconfigurationcscfg"></a>ServiceConfiguration.cscfg
-A beállításokat a felhőszolgáltatás konfigurációja határozza meg az értékeket a **ServiceConfiguration.cscfg** fájlt. Megadhatja, hogy telepíteni szeretné a fájlban minden szerepkör-példányok száma. Az értékeket a szolgáltatásdefiníciós fájlban meghatározott konfigurációs beállításainak kerülnek a szolgáltatás konfigurációs fájlja. Bármely a felhőszolgáltatáshoz társított felügyeleti tanúsítványok ujjlenyomatait is bekerülnek a fájlt. A [Azure szolgáltatás konfigurációs sémáját (.cscfg fájl)](https://msdn.microsoft.com/library/azure/ee758710.aspx) az engedélyezett formátum biztosít egy konfigurációs fájlban.
+A beállításokat a felhőszolgáltatás konfigurációja határozza meg az értékeket a **ServiceConfiguration.cscfg** fájlt. Megadhatja, hogy telepíteni szeretné a fájlban minden szerepkör-példányok száma. Az értékeket a szolgáltatásdefiníciós fájlban meghatározott konfigurációs beállításainak kerülnek a szolgáltatás konfigurációs fájlja. Bármely a felhőszolgáltatáshoz társított felügyeleti tanúsítványok ujjlenyomatait is bekerülnek a fájlt. A [Azure szolgáltatás konfigurációs sémáját (.cscfg fájl)](/previous-versions/azure/reference/ee758710(v=azure.100)) az engedélyezett formátum biztosít egy konfigurációs fájlban.
 
 A szolgáltatás konfigurációs fájlja nem az alkalmazás együtt van csomagolva, de egy külön fájlként az Azure-bA feltöltött és a felhőalapú szolgáltatás konfigurálására szolgál. Új szolgáltatáskonfigurációs fájlt tölthet fel a felhőalapú szolgáltatás újbóli telepítése nélkül. A konfigurációs értékeket a felhőszolgáltatás számára is módosítható, a felhőalapú szolgáltatás futása közben. Az alábbi példa bemutatja a konfigurációs beállításokat, amelyek a webes és feldolgozói szerepkörök:
 
@@ -141,9 +141,9 @@ A szolgáltatás konfigurációs fájlja nem az alkalmazás együtt van csomagol
 </ServiceConfiguration>
 ```
 
-Olvassa el a [szolgáltatás konfigurációs sémáját](https://msdn.microsoft.com/library/azure/ee758710.aspx) jobb megértéséhez, az itt használt XML-séma, azonban itt van egy rövid magyarázatot elemek:
+Olvassa el a [szolgáltatás konfigurációs sémáját](/previous-versions/azure/reference/ee758710(v=azure.100)) jobb megértéséhez, az itt használt XML-séma, azonban itt van egy rövid magyarázatot elemek:
 
-**példányok**  
+**Példányok**  
 Konfigurálja a futó a szerepkör példányainak számát. Megakadályozni a felhőszolgáltatás frissítések során esetleg elérhetetlenné válik, javasoljuk, hogy telepít-e a webalkalmazás felé néző szerepkörök több példánya. Több példány telepítésével tartja vannak az irányelveket a [Azure számítási szolgáltatás szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/), amely garantálja, hogy a 99,95 %-os külső kapcsolatokat az Internet felé néző szerepkörök, amikor két vagy több szerepkör példányai üzembe helyezett szolgáltatáshoz.
 
 **ConfigurationSettings**  
@@ -208,11 +208,11 @@ A felhőszolgáltatás konfigurációjának futás közben az Azure-ban, a szolg
   A tanúsítvány csak akkor frissíthető, ha egy szerepkörpéldány offline állapotban. Ha a tanúsítvány hozzáadása, törlése, vagy módosítható, amíg egy szerepkörpéldány online állapotban, az Azure szabályosan vesz igénybe a példány offline frissítse a tanúsítványt, és ismét online állapotba a módosítás befejezése után.
 
 ### <a name="handling-configuration-changes-with-service-runtime-events"></a>Konfigurációs módosítások szolgáltatás futtatókörnyezeti események kezelése
-A [Azure-futtatókörnyezeti kódtárának](https://msdn.microsoft.com/library/azure/mt419365.aspx) magában foglalja a [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.aspx) névtér, amely osztályokat biztosít az Azure-környezetet egy szerepkörből való interakcióhoz. A [RoleEnvironment](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) osztály határozza meg a következő események előállított előtt és után a konfiguráció módosítása:
+A [Azure-futtatókörnyezeti kódtárának](/previous-versions/azure/reference/mt419365(v=azure.100)) magában foglalja a [Microsoft.WindowsAzure.ServiceRuntime](/previous-versions/azure/reference/ee741722(v=azure.100)) névtér, amely osztályokat biztosít az Azure-környezetet egy szerepkörből való interakcióhoz. A [RoleEnvironment](/previous-versions/azure/reference/ee773173(v=azure.100)) osztály határozza meg a következő események előállított előtt és után a konfiguráció módosítása:
 
-* **[Módosítása](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx) esemény**  
+* **[Módosítása](/previous-versions/azure/reference/ee758134(v=azure.100)) esemény**  
   Ez akkor fordul elő, a konfiguráció módosításának egy szerepkört, és szükség esetén a szerepkörpéldányok forgalommegugrást így megadott példányra alkalmazása előtt.
-* **[Módosított](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changed.aspx) esemény**  
+* **[Módosított](/previous-versions/azure/reference/ee758129(v=azure.100)) esemény**  
   Akkor következik be, miután a konfiguráció módosításának alkalmazott egy megadott szerepkör-példány.
 
 > [!NOTE]

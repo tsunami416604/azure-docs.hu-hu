@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 05dd3b292f90964c6af21890aaeafab9849a09ed
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9eb8b3aefedb3e3330715408595a21596f33a413
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242977"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480939"
 ---
 # <a name="download-azure-stack-tools-from-github"></a>Azure Stack-eszközök letöltése a githubról
 
@@ -28,7 +28,7 @@ ms.locfileid: "55242977"
 
 **1.2.9-es-eszközök** van egy [GitHub-adattár](https://github.com/Azure/AzureStack-Tools) kezelésére és üzembe erőforrásokat az Azure Stack PowerShell-modulok helyadatbázist. Ha azt tervezi, VPN-kapcsolatot létesíteni, letöltheti ezek a PowerShell-modulok, az Azure Stack fejlesztői készletet, vagy egy Windows-alapú külső ügyfél. Ezek az eszközök beszerzése, klónozza a GitHub-adattárát, vagy töltse le a **AzureStack-eszközök** mappában a következő szkript futtatásával:
 
-```PowerShell
+```powershell
 # Change directory to the root directory. 
 cd \
 

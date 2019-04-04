@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/06/2019
-ms.openlocfilehash: 028c69294d693202b626044cb903dc3124b5d7b7
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 6e818da29b7ee0d17ebe4f8e523648146973fa63
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863219"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905358"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Az Azure SQL Database automatikus finomhangolása
 
@@ -70,9 +70,9 @@ Az Azure SQL Database automatikus finomhangolási beállítások a következők:
 | :----------------------------- | ----- | ----- |
 | **A CREATE INDEX** -indexek, amely növelheti a számítási feladatok teljesítményére, indexeli, és automatikusan ellenőrzi, hogy a lekérdezések teljesítménye javult azonosítja. | Igen | Nem | 
 | **DROP INDEX** -redundáns és ismétlődő indexeket naponta, azonosítja egyedi indexek és az indexek, amelyek hosszú ideje nem használtak (> 90 nap). Vegye figyelembe, hogy jelenleg a beállítást, nem kompatibilis alkalmazások használatával a partíció közötti váltás és index mutatókat. | Igen | Nem |
-| **FORCE LAST GOOD Plan csomag** – azonosítja az SQL-lekérdezések végrehajtási terv, amely alacsonyabb, mint az előző jó terv, és lekérdezi az utolsó ismert jó terv helyett a romlott csomag használatával. | Igen | Igen |
+| **FORCE LAST GOOD Plan csomag** (automatikus terv-korrekció) - végrehajtási terv, amely alacsonyabb, mint az előző jó terv, és lekérdezi az utolsó ismert jó terv helyett a romlott terv használatával azonosítja az SQL-lekérdezéseket. | Igen | Igen |
 
-Az automatikus hangolás azonosítja **a CREATE INDEX**, **DROP INDEX**, és **KÉNYSZERÍTETT utolsó JÓ terv** optimalizálhatja az adatbázis teljesítményét, és megjeleníti őket a javaslatok [Az azure portal](sql-database-advisor-portal.md), és elérhetővé teszi azokat keresztül [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) és [REST API-val](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). 
+Az automatikus hangolás azonosítja **a CREATE INDEX**, **DROP INDEX**, és **KÉNYSZERÍTETT utolsó JÓ terv** optimalizálhatja az adatbázis teljesítményét, és megjeleníti őket a javaslatok [Az azure portal](sql-database-advisor-portal.md), és elérhetővé teszi azokat keresztül [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) és [REST API-val](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). További tudnivalók a FORCE LAST GOOD Plan csomag, és T-SQL, az automatikus finomhangolási beállítások konfigurálása [az automatikus hangolás vezet be az automatikus terv-korrekció](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).
 
 Manuálisan alkalmazhatja a portál használatával finomhangolási ajánlásait, vagy hagyhatja, hogy az automatikus hangolás autonóm módon alkalmazhatja a hangolási javaslatokat az Ön számára. A finomhangolási ajánlásait, önállóan alkalmazza a rendszer így előnyeit van, hogy automatikusan ellenőrzi a hiba a számítási feladatok teljesítményére pozitív nyereség létezik, és ha nem észlelhető jelentős teljesítménybeli javulást, akkor automatikusan visszaállítja a hangolási javaslat. Vegye figyelembe, hogy érinti a hangolási javaslatokat, nem gyakran végrehajtott lekérdezések esetén az érvényesítési fázist eltarthat akár 72 óra elvárt.
 

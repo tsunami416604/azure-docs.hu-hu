@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 37e3dbb5f69d7319e0b56a5d209e0487e0562e00
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6ab5ee923cc439901149a26d7af4b57f9933ee19
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838799"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905885"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -53,7 +53,7 @@ A következő magas szintű adatok folyamat lépéseit egy saját üzemeltetés�
 ![Áttekintés](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
 1. A data-fejlesztési belül egy Azure data factory egy saját üzemeltetésű integrációs modult egy PowerShell-parancsmag használatával hoz létre. Az Azure portal jelenleg nem támogatja ezt a szolgáltatást.
-2. A data-fejlesztési egy helyszíni adattár társított szolgáltatás megadja a saját üzemeltetésű integrációsmodul-példány, amelyet szeretne csatlakozni az adattárak használnia kell hoz létre. A társított szolgáltatás beállításának részeként az adatok fejlesztői használ a hitelesítőadat-kezelő alkalmazás (jelenleg nem támogatott) hitelesítési típusok és a hitelesítő adatok beállítása. A hitelesítőadat-kezelő alkalmazás kommunikál az adattár, tesztelje a kapcsolatot és a saját üzemeltetésű integrációs modult a hitelesítő adatok mentéséhez.
+2. A data-fejlesztési egy helyszíni adattár társított szolgáltatás megadja a saját üzemeltetésű integrációsmodul-példány, amelyet szeretne csatlakozni az adattárak használnia kell hoz létre.
 3. A saját üzemeltetésű integration runtime csomópontja a hitelesítő adatokat a Windows Data Protection alkalmazás alkalmazásprogramozási felületet (DPAPI) segítségével titkosítja, és a hitelesítő adatok helyben menti. Ha több csomóponton vannak beállítva, a magas rendelkezésre állás, a hitelesítő adatok további szinkronizálódnak, más csomópontok között. Minden egyes csomópont titkosítja a hitelesítő adatok használatával a DPAPI-t, és helyileg tárolja azokat. Adatok szinkronizálása a data-fejlesztési átlátható és kezeli a saját üzemeltetésű    
 4. A Data Factory szolgáltatás a saját üzemeltetésű integrációs modul az ütemezés és a felügyeleti feladatok keresztül kommunikál egy *vezérlőcsatorna* megosztott Azure Service Bus-üzenetsort használó. Amikor egy tevékenység feladatot kell futtatni, a Data Factory semmilyen hitelesítő információt együtt a kérelem várólistára helyezi (Ha a hitelesítő adatok már nem kerülnek be a saját üzemeltetésű integrációs modul). A várólista lekérdezés után a feladat a saját üzemeltetésű integrációs modul címmel.
 5. A saját üzemeltetésű integrációs modul adatokat másol egy helyszíni adattár, a felhőalapú tárolást, vagy fordítva az adatok folyamatban, a másolási tevékenység konfigurációjától függően. Az ebben a lépésben a saját üzemeltetésű integrációs modul közvetlenül kommunikál a felhőalapú tárolási szolgáltatások – például az Azure Blob storage egy biztonságos csatornán (HTTPS).
@@ -329,7 +329,7 @@ Ha a következő hasonló hibákat észlel, akkor valószínű, a tűzfal vagy p
     ```
 
 ### <a name="enabling-remote-access-from-an-intranet"></a>Az intranetes távoli hozzáférés engedélyezése  
-Ha a hitelesítőadat-kezelő alkalmazás vagy a PowerShell használatával eltérő, ahol a saját üzemeltetésű integrációs modul telepítve van (a hálózatban) egy másik gépről hitelesítő adatok titkosításához, engedélyezheti a **távoli hozzáférés intranetről**lehetőséget. Ha Powershellt vagy a hitelesítőadat-kezelő alkalmazás ugyanazon a gépen hitelesítő adatainak titkosítása a saját üzemeltetésű integrációs modul telepítési helyéül, nem engedélyezheti **távoli hozzáférés intranetről**.
+Ha a PowerShell használatával eltérő, ahol a saját üzemeltetésű integrációs modul telepítve van (a hálózatban) egy másik gépről hitelesítő adatok titkosításához, engedélyezheti a **távoli hozzáférés intranetről** lehetőséget. Ha ugyanazon a gépen hitelesítő adatainak titkosítása PowerShell futtatja, ahol a saját üzemeltetésű integrációs modul telepítve van, nem engedélyezheti **távoli hozzáférés intranetről**.
 
 Engedélyeznie kell a **távoli hozzáférés intranetről** a magas rendelkezésre állás és méretezhetőség érdekében egy másik csomópont hozzáadása előtt.  
 
@@ -339,9 +339,7 @@ Ha egy külső tűzfalat használ, manuálisan megnyithatja 8060 (vagy felhaszn�
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
-```
-> [!NOTE]
-> A hitelesítőadat-kezelő alkalmazás még nem érhető el az Azure Data Factory V2 hitelesítő adatok titkosításához.  
+``` 
 
 Ha nem kíván nyissa meg a saját üzemeltetésű integrációs modul gépen 8060 portot, a mechanizmus a hitelesítő adatok beállítása alkalmazás eltérő segítségével konfigurálhatja az adattár hitelesítő adatait. Használhatja például a **New-AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell-parancsmagot.
 

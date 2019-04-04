@@ -3,19 +3,19 @@ title: Együttműködésen alapuló fordítás Framework (CTF) jelentéskészít
 titlesuffix: Azure Cognitive Services
 description: Hogyan használható a reporting által biztosított együttműködési környezettel Translation Framework (CTF).
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: a2f8a9c5ceaac6209391df17f4ec08027991382b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da321aa2a4db441fa5bb51e4986d00889cb7482d
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123419"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917396"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>A Collaborative Translation Framework (CTF) jelentéskészítés használata
 
@@ -53,7 +53,7 @@ Ezek a metódusok lehetővé teszi:
 
 Ez a módszer lekérdezi a felhasználó által létrehozott fordításainak száma. A fordítási számát a uriPrefix szerint csoportosítva, a felhasználó minRating és maxRating kérelem paramétereinek listáját biztosít.
 
-**Syntax**
+**Szintaxis**
 
 > [!div class="tabbedCodeSnippets"]
 > ```cs
@@ -124,7 +124,7 @@ Az eredményhalmaz tömbjét tartalmazza a **UserTranslationCount**. Minden egye
 
 Ez a módszer a fordítások, a felhasználó által létrehozott kérdezi le. A fordítások szerint csoportosítva a uriPrefix, to, felhasználói, és minRating és maxRating kérelem paramétereket biztosít.
 
-**Syntax**
+**Szintaxis**
 
 > [!div class="tabbedCodeSnippets"]
 > ```cs
@@ -153,7 +153,7 @@ Ez a módszer a fordítások, a felhasználó által létrehozott kérdezi le. A
 | erre:| **Nem kötelező** karakterláncként lefordítani a szöveget a nyelvi kódot.|
 | minRating| **Nem kötelező** a minőségi besorolása a lefordított szöveg jelölő egész szám. Az érvényes érték -10- és 10 között. Az alapértelmezett érték az 1.|
 | maxRating| **Nem kötelező** a legmagasabb minőségű besorolása a lefordított szöveg jelölő egész szám. Az érvényes érték -10- és 10 között. Az alapértelmezett érték az 1.|
-| Felhasználó| **Nem kötelező. Egy karakterlánc, amellyel szűrheti az eredményeket a Küldés létrehozója alapján**|
+| Felhasználó| **Választható. Egy karakterlánc, amellyel szűrheti az eredményeket a Küldés létrehozója alapján**|
 | category| **Nem kötelező** a kategóriát vagy a tartomány a fordítás tartalmazó karakterlánc. Ez a paraméter csak az alapértelmezett beállítás általános támogatja.|
 | minDateUtc| **Nem kötelező** a dátum, amikor szeretné beolvasni a fordításokat. A dátum az UTC formátumban kell lennie.|
 | maxDateUtc| **Nem kötelező** : Ha szeretné a fordítások beolvasni a dátumot. A dátum az UTC formátumban kell lennie.|

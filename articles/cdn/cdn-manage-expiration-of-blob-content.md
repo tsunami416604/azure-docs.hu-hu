@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 1b2009b54c7f436667c316b7ca002314bc966a1b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7fc11af8cd2574271b26f7dec62072692685672
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531929"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916801"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Az Azure Blob storage-ban az Azure CDN lejáratának kezelése
 > [!div class="op_single_selector"]
@@ -114,7 +114,7 @@ $blob.ICloudBlob.SetProperties()
 >
 
 ## <a name="setting-cache-control-headers-by-using-net"></a>A Cache-Control fejléc beállítása a .NET-keretrendszerrel
-Egy blob megadása `Cache-Control` fejléc használatával a .NET-kód, használja a [Azure Storage ügyféloldali kódtára a .NET-hez](../storage/blobs/storage-dotnet-how-to-use-blobs.md) beállítása a [CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) tulajdonság.
+Egy blob megadása `Cache-Control` fejléc használatával a .NET-kód, használja a [Azure Storage ügyféloldali kódtára a .NET-hez](../storage/blobs/storage-dotnet-how-to-use-blobs.md) beállítása a [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol#Microsoft_WindowsAzure_Storage_Blob_BlobProperties_CacheControl) tulajdonság.
 
 Példa:
 
@@ -163,18 +163,18 @@ Frissítése az *CacheControl* egy blobot az Azure Storage Explorerrel tulajdons
 ![Az Azure Storage Explorer tulajdonságai](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure parancssori felület
-Az a [Azure parancssori felület](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) (CLI), az Azure blob-erőforrások is kezelhetők a parancssorból. A cache-control fejléc beállítása, ha feltölt egy blobot az Azure CLI-vel, állítsa be a *cacheControl* tulajdonság használatával a `-p` váltani. Az alábbi példa bemutatja, hogyan állítható be az élettartam egy óra (3600 másodperc):
+Az a [Azure parancssori felület](https://docs.microsoft.com/cli/azure) (CLI), az Azure blob-erőforrások is kezelhetők a parancssorból. A cache-control fejléc beállítása, ha feltölt egy blobot az Azure CLI-vel, állítsa be a *cacheControl* tulajdonság használatával a `-p` váltani. Az alábbi példa bemutatja, hogyan állítható be az élettartam egy óra (3600 másodperc):
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>
 ```
 
 ### <a name="azure-storage-services-rest-api"></a>Az Azure storage szolgáltatásaihoz való REST API-val
-Használhatja a [Azure storage szolgáltatásaihoz való REST API-val](https://msdn.microsoft.com/library/azure/dd179355.aspx) beállításának a *x-ms-blob-cache-control* tulajdonság használatával a kérelem a következő műveleteket:
+Használhatja a [Azure storage szolgáltatásaihoz való REST API-val](/rest/api/storageservices/) beállításának a *x-ms-blob-cache-control* tulajdonság használatával a kérelem a következő műveleteket:
   
-   - [Put Blob](https://msdn.microsoft.com/library/azure/dd179451.aspx)
-   - [PUT tiltólista](https://msdn.microsoft.com/library/azure/dd179467.aspx)
-   - [A Blob tulajdonságainak megadása](https://msdn.microsoft.com/library/azure/ee691966.aspx)
+   - [Put Blob](/rest/api/storageservices/Put-Blob)
+   - [PUT tiltólista](/rest/api/storageservices/Put-Block-List)
+   - [A Blob tulajdonságainak megadása](/rest/api/storageservices/Set-Blob-Properties)
 
 ## <a name="testing-the-cache-control-header"></a>A Cache-Control fejléc tesztelése
 Élettartam beállításait, a blobokat egyszerűen ellenőrizheti. A böngésző [fejlesztői eszközök](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), tesztelje, hogy a blob magában foglalja a `Cache-Control` válaszfejléc. Például egy eszköz is használható [Wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/), vagy [Fiddler](https://www.telerik.com/fiddler) a válaszfejlécek vizsgálatához.

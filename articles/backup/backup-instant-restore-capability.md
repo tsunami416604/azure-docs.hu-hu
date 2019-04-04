@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: 1f96c47e993e9b3d123972aba8eefc54b1d5cdfa
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 56c75840ca3114af40a2c843e2107f850bbff51a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652671"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905970"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentés, és állítsa vissza a teljesítmény az Azure Backup azonnali visszaállítási képesség
 
@@ -28,6 +28,7 @@ Az új modellre azonnali visszaállítása a következő szolgáltatás fejleszt
 * Standard SSD-lemezeket Standard HDD és a prémium szintű SSD-lemezek mellett támogatja.
 *   Használhat egy nem felügyelt virtuális gép eredeti tárfiókokban (lemezenként) visszaállítása során. Ez a lehetőség létezik, akkor is, ha a virtuális gép lemezei tárfiókokban vannak elosztva. Ez felgyorsítja a visszaállítási műveletek számos különböző Virtuálisgép-konfigurációk esetében.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-new-in-this-feature"></a>Ez a szolgáltatás újdonságai
 
@@ -74,9 +75,9 @@ Az Azure Portalon, tekintse meg a hozzáadott mező a **virtuális gép biztons�
 > Az PowerShell 1.6.0-s verziójának és újabb verziók frissítheti az azonnali helyreállítás pillanatkép megőrzési időszak házirend PowerShell-lel
 
 ```powershell
-PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+PS C:\> $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=5
-PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 Az alapértelmezett pillanatkép megőrzési minden házirend értéke 2 nap. Felhasználók módosíthatják az érték legalább 1 és legfeljebb 5 napig. Heti házirendek a pillanatkép megőrzési rögzített 5 nap.
 

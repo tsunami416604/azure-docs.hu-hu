@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: c5d4f67e9c1e4e983133675c440b8c5b64183227
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 664c8b659152a370d7fb31907b6cdbcd414dce31
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851861"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905100"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Az Azure virtuális gépek TCP/IP-teljesítményhangolása
 
@@ -128,7 +128,7 @@ Az aktuális ajánljuk az Azure-hoz, hogy TCP MSS korlátozását 1350 bájt és
 
 #### <a name="latency-and-round-trip-time"></a>Valós idejű adatelérést és üzenetváltási idő
 
-Hálózati késés szabályozzák a fénysebességgel fiber száloptikás hálózaton keresztül. A valóságban ez, TCP a hálózati átviteli sebesség is hatékonyan szabályozottabbá (gyakorlati méretkorlát) miatt a az üzenetváltási időt (RTT) két hálózati eszköz között.
+Hálózati késés szabályozzák a fénysebességgel fiber száloptikás hálózaton keresztül. A valóságban ez hálózati átviteli sebessége a TCP is hatékonyan szabályozottabbá (gyakorlati méretkorlát) miatt az üzenetváltási időt (RTT) két hálózati eszköz között.
 
 | | | | |
 |-|-|-|-|
@@ -343,7 +343,7 @@ További információ alatt található:
 
 - [Az Expressroute hálózati teljesítmény hibaelhárítása](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
 
-- [VPN teljesítményének érvényesítése virtuális hálózaton](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
+- [Hogyan lehet egy virtuális hálózati VPN teljesítményének érvényesítése](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
 
 ### <a name="detect-inefficient-tcp-behaviors"></a>Nem elég hatékony TCP viselkedések észleléséhez
 

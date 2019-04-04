@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: ad9e22668d0f6d994ad0fce7b207b5849dfa27e9
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 199843be72df473ae501eaf6bd47dce41b079c94
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651241"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906106"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Kezelheti a DNS-rekordok és -rekordhalmazok az Azure DNS Azure powershellel
 
@@ -33,9 +33,9 @@ Ez a cikk bemutatja, hogyan kezelheti DNS-rekordokat a DNS-zóna Azure PowerShel
 
 Ebben a cikkben szereplő példák feltételezik, hogy már [telepítette az Azure Powershellt, bejelentkezett, és létrehozott egy DNS-zónát](dns-operations-dnszones.md).
 
-## <a name="introduction"></a>Bevezetés
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="introduction"></a>Bevezetés
 
 Mielőtt létrehozná a DNS-rekordokat Azure DNS-ben, tisztában kell lennie azzal, hogyan rendezi az Azure DNS DNS-rekordhalmazokba a DNS-rekordokat.
 
@@ -398,4 +398,4 @@ Tudjon meg többet [zónák és -rekordok az Azure DNS](dns-zones-records.md).
 <br>
 Ismerje meg, hogyan [a zónák és -rekordok védelme](dns-protect-zones-recordsets.md) Azure DNS használata esetén.
 <br>
-Tekintse át a [Azure DNS PowerShell-referenciáinak dokumentációja](/powershell/module/azurerm.dns).
+Tekintse át a [Azure DNS PowerShell-referenciáinak dokumentációja](/powershell/module/az.dns).

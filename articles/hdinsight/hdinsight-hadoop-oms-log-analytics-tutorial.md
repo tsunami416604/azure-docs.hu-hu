@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: hrasheed
-ms.openlocfilehash: b7e0dba70d7f3a201c5f3491f0bc906977fbf229
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 399a6bcb6e0bfd0edaddca471ba2c8e0802d3394
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886451"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904780"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Használja az Azure Monitor naplózza a HDInsight-fürtök figyelése
 
-Ismerje meg, a HDInsight Hadoop-fürt műveletek figyelése az Azure Monitor-naplók engedélyezése és a egy futtató HDInisght figyelési megoldás hozzáadása.
+Ismerje meg, a HDInsight Hadoop-fürt műveletek figyelése az Azure Monitor-naplók engedélyezése és a egy HDInsight-figyelési megoldás hozzáadása.
 
 [Az Azure Monitor naplóira](../log-analytics/log-analytics-overview.md) egy szolgáltatás az Azure Monitor, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson.
 

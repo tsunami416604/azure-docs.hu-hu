@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: danlep
-ms.openlocfilehash: 3e7e292f36296ce09af89f03e8b154b57e18b55c
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2ea85b2b04600708381423e16408ba34b1e27566
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369991"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904899"
 ---
 # <a name="set-environment-variables"></a>Környezeti változók beállítása
 
@@ -25,6 +25,8 @@ Például, ha futtatja a Microsoft [aci-wordcount] [ aci-wordcount] tárolórend
 *A MinLength*: Ahhoz, hogy a megszámlálandó szó karaktereinek minimális száma. Ha nagyobb figyelmen kívül hagyja a gyakori szavakat, például a "," és "a."
 
 Környezeti változókként adja át a titkos kulcsok van szüksége, ha támogatja az Azure Container Instances [értékek biztonságos](#secure-values) Windows- és Linux-tárolókhoz.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-cli-example"></a>Az Azure CLI-példa
 
@@ -255,6 +257,6 @@ Feladatalapú forgatókönyvek, például a kötegelt feldolgozási egy nagy mé
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/
 [azure-instance-log]: /powershell/module/az.containerinstance/get-azcontainerinstancelog
-[azure-powershell-install]: /powershell/azure/azurerm/install-Az-ps
+[azure-powershell-install]: /powershell/azure/install-Az-ps
 [new-Azcontainergroup]: /powershell/module/az.containerinstance/new-azcontainergroup
 [portal]: https://portal.azure.com

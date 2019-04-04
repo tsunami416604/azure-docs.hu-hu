@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: magattus
-ms.openlocfilehash: a3777533fc967e1974b99375496dd3777fa9fb3a
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 76e7817be81a97c8d1a0b9ca2fea8378c3c733e1
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093850"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916479"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Az Azure CDN-végpont végleges törlése
 ## <a name="overview"></a>Áttekintés
@@ -52,14 +52,14 @@ Ez az oktatóanyag végigvezeti a végpont összes élcsomópontokból eszközö
    > 
    > 
 4. Válassza ki a élcsomópontokból véglegesen törölni kívánt milyen eszközöket.  Ha az összes erőforrás törléséhez, kattintson a **összes kiürítése** jelölőnégyzetet.  Ellenkező esetben adja meg a véglegesen törölni kívánt minden egyes eszköz elérési útját a **elérési út** szövegmezőbe. Az elérési út által támogatott formátumok alatt.
-    1. **Egyetlen URL-cím kiürítése**: a teljes URL-cím megadásával, vagy a fájl kiterjesztése például anélkül eszköz egyedi kiürítési`/pictures/strasbourg.png`; `/pictures/strasbourg`
-    2. **A helyettesítő karakteres kiürítés**: csillag (\*) helyettesítő karakter is használható. Összes mappa, almappák és fájlok alatt a végpont végleges törlése `/*` végleges törlés vagy az elérési utat összes almappák és fájlok egy adott mappában a mappa megadásával követ `/*`, például`/pictures/*`.  Vegye figyelembe, hogy a helyettesítő karakteres kiürítés jelenleg nem támogatott az Akamai Azure CDN által. 
-    3. **Legfelső szintű tartomány kiürítése**: végleges törlése a végpontot az "/" az elérési út gyökerében.
+    1. **Egyetlen URL-cím kiürítése**: A teljes URL-cím megadásával, vagy a fájl kiterjesztése például anélkül eszköz egyedi kiürítése`/pictures/strasbourg.png`; `/pictures/strasbourg`
+    2. **A helyettesítő karakteres kiürítés**: Csillag (\*) helyettesítő karakter is használható. Összes mappa, almappák és fájlok alatt a végpont végleges törlése `/*` végleges törlés vagy az elérési utat összes almappák és fájlok egy adott mappában a mappa megadásával követ `/*`, például`/pictures/*`.  Vegye figyelembe, hogy a helyettesítő karakteres kiürítés jelenleg nem támogatott az Akamai Azure CDN által. 
+    3. **Legfelső szintű tartomány kiürítése**: Törölje a végpontot az "/" az elérési út gyökerében.
    
    > [!TIP]
-   > Elérési utak meg kell adni a végleges törlés és a egy relatív URL-cím a következő igazodó kell lennie [reguláris kifejezés](https://msdn.microsoft.com/library/az24scfc.aspx). **Összes kiürítése** és **helyettesítő karakteres kiürítés** által nem támogatott **Akamai Azure CDN** jelenleg.
+   > Elérési utak meg kell adni a végleges törlés és a egy relatív URL-cím a következő igazodó kell lennie [reguláris kifejezés](/dotnet/standard/base-types/regular-expression-language-quick-reference). **Összes kiürítése** és **helyettesítő karakteres kiürítés** által nem támogatott **Akamai Azure CDN** jelenleg.
    > > Egyetlen URL-cím végleges törlése `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
-   > > Lekérdezési karakterlánc `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
+   > > Lekérdezési sztring `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
    > > A helyettesítő karakteres kiürítés `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`. 
    > 
    > További **elérési út** szövegmezőből adategységek listáját létrehozását teszik lehetővé a szöveg beírása után jelenik meg.  Eszközök a három pontra (...) gombra kattintva törölheti a listából.
@@ -75,5 +75,5 @@ Ez az oktatóanyag végigvezeti a végpont összes élcsomópontokból eszközö
 
 ## <a name="see-also"></a>Lásd még
 * [Eszközök előzetes betöltése Azure CDN-végponton](cdn-preload-endpoint.md)
-* [Az Azure CDN – REST API-referencia - végleges törlése, vagy a végpont előzetes betöltése](https://msdn.microsoft.com/library/mt634451.aspx)
+* [Az Azure CDN – REST API-referencia - végleges törlése, vagy a végpont előzetes betöltése](/rest/api/cdn/endpoints)
 

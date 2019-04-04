@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 5a03805fc055583f1f965854d4da3ae6b0c90e20
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 9fb689a2a6e2c1c309d22836e88a63662fed9832
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444893"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904831"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosító csatolása az Azure-fiókok
 
 Partnerként követheti a hatás az ügyfélesetekből között. A Partnerazonosítóra kapcsolat egy ügyfél-erőforrások kezeléséhez használt fiókokhoz.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-access-from-your-customer"></a>Az ügyfél hozzáférhet
 
@@ -57,9 +59,8 @@ Az ügyfél-erőforrásokhoz való hozzáférést, ha használja az Azure portal
 2. Jelentkezzen be az ügyfélbérlőn a felhasználói fiók vagy az egyszerű szolgáltatás. További információkért lásd: [jelentkezzen be a PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
  
    ```azurepowershell-interactive
-    C:\> Connect-AzureRmAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
+    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
    ```
-
 
 3. Hivatkozás az új partner. A partner-azonosító a [Microsoft Partner Network](https://partner.microsoft.com/) Azonosítót a szervezet számára.
 

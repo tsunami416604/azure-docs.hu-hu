@@ -15,12 +15,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 76af6d6585d52eee99548f69c92bd414068fa28d
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 4e9df0d413b964b4a14cf9ca48db8b7956b441f9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259210"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482589"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Hozzáférés a Kubernetes-irányítópultot az Azure Stackben 
 
@@ -65,21 +65,21 @@ Az irányítópult URL-CÍMÉT a fő csomópont kérheti le a fürtben.
 
 4.  Amikor a terminál csatlakozik, írja be a `kubectl` megnyitásához a Kubernetes parancssori ügyfelét.
 
-5. Futtassa az alábbi parancsot:
+5. Futtassa a következő parancsot:
 
     ```Bash   
     kubectl cluster-info 
     ``` 
     Az URL-cím az irányítópulton található. Példa: `https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
 
-6.  Bontsa ki az önaláírt tanúsítvány, és a PFX-formátumba konvertálja. Futtassa az alábbi parancsot:
+6.  Bontsa ki az önaláírt tanúsítvány, és a PFX-formátumba konvertálja. Futtassa a következő parancsot:
 
     ```Bash  
     sudo su 
     openssl pkcs12 -export -out /etc/kubernetes/certs/client.pfx -inkey /etc/kubernetes/certs/client.key  -in /etc/kubernetes/certs/client.crt -certfile /etc/kubernetes/certs/ca.crt 
     ```
 
-7.  A titkos kulcsok lekéréséhez a **kube rendszer** névtér. Futtassa az alábbi parancsot:
+7.  A titkos kulcsok lekéréséhez a **kube rendszer** névtér. Futtassa a következő parancsot:
 
     ```Bash  
     kubectl -n kube-system get secrets
@@ -106,7 +106,7 @@ Az irányítópult URL-CÍMÉT a fő csomópont kérheti le a fürtben.
 
 3. Jegyezze meg a fájlok helyét. A parancsfájl frissítse a helyeket, és a PowerShell nyisson meg egy rendszergazda jogú parancssorba. Futtassa a frissített parancsfájlt:  
 
-    ```PowerShell   
+    ```powershell   
     Import-Certificate -Filepath "ca.crt" -CertStoreLocation cert:\LocalMachine\Root 
     $pfxpwd = Get-Credential -UserName 'Enter password below' -Message 'Enter password below' 
     Import-PfxCertificate -Filepath "client.pfx" -CertStoreLocation cert:\CurrentUser\My -Password $pfxpwd.Password 
@@ -119,7 +119,7 @@ Az irányítópult URL-CÍMÉT a fő csomópont kérheti le a fürtben.
 2. Az URL-címet a böngésző jelezve, hogy a parancs futtatásakor pont `kubectl cluster-info`. Például: https:\//azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard: / proxy 
 3. Jelölje be az ügyféltanúsítványt.
 4. Adja meg a jogkivonatot. 
-5. A bash parancssorban, a fő csomópont újra, és engedélyeket biztosíthat a `kubernetes-dashboard`. Futtassa az alábbi parancsot:
+5. A bash parancssorban, a fő csomópont újra, és engedélyeket biztosíthat a `kubernetes-dashboard`. Futtassa a következő parancsot:
 
     ```Bash  
     kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard 

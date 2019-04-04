@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 5b4f9715e47483fa64840c521620bec79f3041cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106406"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905069"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Rövid útmutató a Powershellhez az Azure Cloud Shellben
 
@@ -267,7 +267,7 @@ A hitelesítést a kiszolgálók vagy virtuális gépek SSH-val, a Cloud Shellbe
 
 ### <a name="using-ssh"></a>SSH-val
 
-Kövesse az utasításokat [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) hozhat létre egy új Virtuálisgép-konfigurációt AzureRM-parancsmagok használatával.
+Kövesse az utasításokat [Itt](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell) hozhat létre egy új Virtuálisgép-konfigurációt, az Azure PowerShell-parancsmagok használatával.
 Mielőtt hívása `New-AzVM` felhőplatformos termékeiért az üzembe helyezés, adja hozzá az SSH nyilvános kulcs a virtuális gép konfigurációjához.
 Az újonnan létrehozott virtuális gép a nyilvános kulcsot fogja tartalmazni a `~\.ssh\authorized_keys` helyét, ezáltal a hitelesítőadat-mentes SSH-munkamenetből a virtuális géphez.
 
@@ -292,7 +292,7 @@ ssh azureuser@MyVM.Domain.Com
 
 A `Azure` meghajtó, írja be a `Get-AzCommand` környezetfüggő Azure-parancsok beolvasásához.
 
-Azt is megteheti, bármikor használhat `Get-Command *azurerm* -Module AzureRM.*` megtudhatja az elérhető Azure-parancsok.
+Azt is megteheti, bármikor használhat `Get-Command *az* -Module Az.*` megtudhatja az elérhető Azure-parancsok.
 
 ## <a name="install-custom-modules"></a>Egyéni modulok telepítése
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: a82035bfbed109d6521131d8c730bef04030c94f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 92fc8e9edfc745ae89c2b4d44e193566292d4f08
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093541"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918875"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Az Azure BizTalk Services – kibocsátási megjegyzések
 
@@ -30,7 +30,7 @@ ms.locfileid: "58093541"
 A Microsoft Azure BizTalk Services – kibocsátási megjegyzések az ebben a kiadásban az ismert hibákat tartalmaznak.
 
 ## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>A BizTalk Services novemberi frissítés újdonságai
-* Titkosítás inaktív állapotban is engedélyezhető a BizTalk Services Portáljára. Lásd: [titkosítás inaktív állapotban a BizTalk Services portáljának engedélyezése](https://msdn.microsoft.com/library/azure/dn874052.aspx).
+* Titkosítás inaktív állapotban is engedélyezhető a BizTalk Services Portáljára. Lásd: [titkosítás inaktív állapotban a BizTalk Services portáljának engedélyezése](/previous-versions/azure/dn874052(v=azure.100)).
 
 ## <a name="update-history"></a>Frissítési előzmények
 ### <a name="october-update"></a>. Októberi frissítés
@@ -39,14 +39,14 @@ A Microsoft Azure BizTalk Services – kibocsátási megjegyzések az ebben a ki
   * **A forgatókönyv**: BizTalk-szolgáltatások üzembe helyezéséhez egy Azure Active Directory szervezeti fiókkal regisztrált (például user@fabrikam.com vagy user@contoso.com). Ebben a forgatókönyvben a csak az Azure Active Directory-felhasználók a szervezeten belül a BizTalk Service a BizTalk Services portáljának használata kezelheti. Microsoft-fiók nem használható.  
 * BizTalk-szolgáltatás létrehozása, amikor Ön automatikusan regisztrálva van a BizTalk Services portálon.
   * **A forgatókönyv**: Az Azure-ba, BizTalk-szolgáltatás létrehozása, és válassza ki **kezelés** Ez az első alkalommal. Amikor megnyílik a BizTalk Services portáljára, a BizTalk Service automatikusan regisztrálja, és készen áll a központi telepítések a.  
-    Lásd: [Regisztrálásán, illetve frissítésén BizTalk-szolgáltatások üzembe helyezéséhez a BizTalk Services portál](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
+    Lásd: [Regisztrálásán, illetve frissítésén BizTalk-szolgáltatások üzembe helyezéséhez a BizTalk Services portál](/previous-versions/azure/hh689837(v=azure.100)).  
 
 ### <a name="august-14-update"></a>Augusztus 14-frissítés
-* Szerződés és a híd elválasztás – kereskedelmi partneri szerződéseket és hidak most leválasztott a BizTalk Services Portáljára. Most már szerződések és a hidak külön létrehozott, és futásidőben hidak feloldani egy szerződést az EDI-üzenetben értékei alapján. Lásd: [szerződések létrehozása az Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689908.aspx), [hozzon létre egy BizTalk Services portáljának használata EDI híd](https://msdn.microsoft.com/library/azure/dn793986.aspx), [hozzon létre egy AS2-hidat, BizTalk Services portáljának használata](https://msdn.microsoft.com/library/azure/dn793993.aspx), és [ Hogyan megoldja hidak futásidőben szerződéseket?](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
+* Szerződés és a híd elválasztás – kereskedelmi partneri szerződéseket és hidak most leválasztott a BizTalk Services Portáljára. Most már szerződések és a hidak külön létrehozott, és futásidőben hidak feloldani egy szerződést az EDI-üzenetben értékei alapján. Lásd: [szerződések létrehozása az Azure BizTalk Services](/previous-versions/azure/hh689908(v=azure.100)), [hozzon létre egy BizTalk Services portáljának használata EDI híd](/previous-versions/azure/dn793986(v=azure.100)), [hozzon létre egy AS2-hidat, BizTalk Services portáljának használata](/previous-versions/azure/dn793993(v=azure.100)), és [ Hogyan megoldja hidak futásidőben szerződéseket?](/previous-versions/azure/dn794001(v=azure.100))  
 * A szerződések sablonok létrehozásának lehetőségét megszakad.  
-* A küldési-oldalon szerződés mostantól megadhatja az egyes séma csoportjainak különböző elválasztó karakter. Ez a konfiguráció a küldési oldalon szerződés protokoll beállításaiban van megadva. További információkért lásd: [egy X12 létrehozása az Azure BizTalk Services szerződés](https://msdn.microsoft.com/library/azure/hh689847.aspx) és [az EDIFACT-egyezmény létrehozása az Azure BizTalk Services](https://msdn.microsoft.com/library/azure/dn606267.aspx). Két új entitásokat is bekerülnek a TPM OM API ugyanazt a célt. Lásd: [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) és [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
-* Standard XSD szerkezeteket, beleértve a származtatott típusok, mostantól támogatottak. Lásd: [használjon standard XSD hoz létre, a maps-](https://msdn.microsoft.com/library/azure/dn793987.aspx) és [használata származtatott típusok Leképezési forgatókönyvek és példák a](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
-* AS2 új MIC üzenet az aláíráshoz és új titkosítási algoritmusok támogatja. Lásd: [egy AS2-egyezmény létrehozása az Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
+* A küldési-oldalon szerződés mostantól megadhatja az egyes séma csoportjainak különböző elválasztó karakter. Ez a konfiguráció a küldési oldalon szerződés protokoll beállításaiban van megadva. További információkért lásd: [egy X12 létrehozása az Azure BizTalk Services szerződés](/previous-versions/azure/hh689847(v=azure.100)) és [az EDIFACT-egyezmény létrehozása az Azure BizTalk Services](/previous-versions/azure/dn606267(v=azure.100)). Két új entitásokat is bekerülnek a TPM OM API ugyanazt a célt. Lásd: [X12DelimiterOverrides](/previous-versions/azure/dn798749(v=azure.100)) és [EDIFACTDelimiterOverride](/previous-versions/azure/dn798748(v=azure.100)).  
+* Standard XSD szerkezeteket, beleértve a származtatott típusok, mostantól támogatottak. Lásd: [használjon standard XSD hoz létre, a maps-](/previous-versions/azure/dn793987(v=azure.100)) és [használata származtatott típusok Leképezési forgatókönyvek és példák a](/previous-versions/azure/).  
+* AS2 új MIC üzenet az aláíráshoz és új titkosítási algoritmusok támogatja. Lásd: [egy AS2-egyezmény létrehozása az Azure BizTalk Services](/previous-versions/azure/hh689890(v=azure.100)).  
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -85,7 +85,7 @@ Ha nem állhat kizárólag szóközökből túl egy IEA szegmenst, a kicsomagol�
 
 ### <a name="tracking-in-biztalk-services-portal"></a>A BizTalk Services portáljának nyomon követése
 Akár az EDI-üzenetfeldolgozást, és bármely korrelációs rögzítve lesznek a követési események. Ha egy üzenetet a protokoll szakaszban kívül nem sikerül, nyomkövetési sikeres jelennek meg. Ebben a helyzetben, tekintse meg a szakasz alatt a **részletek** oszlopa **követési** a hiba részletei.
-A X12 beállítások küldhet és fogadhat ([hozzon létre egy X12 szerződés az Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx)) a protokoll szakasz információkat tartalmaz.  
+A X12 beállítások küldhet és fogadhat ([hozzon létre egy X12 szerződés az Azure BizTalk Services](/previous-versions/azure/hh689847(v=azure.100))) a protokoll szakasz információkat tartalmaz.  
 
 ### <a name="update-agreement"></a>Szerződés frissítése
 A BizTalk Services portáljának lehetővé teszi a identitás minősítője módosíthatja, amikor egy van konfigurálva. Ez az inkonzisztens tulajdonságok eredményezheti. Például nincs ZZ:1234567 és ZZ:7654321 a minősítő egy szerződést. A BizTalk Services portáljának-profiljának beállításainál ZZ:1234567 01:ChangedValue kell módosítania. Megnyitja a szerződést, és 01:ChangedValue ZZ:1234567 helyett jelenik meg.
@@ -109,7 +109,8 @@ Példaként vegyünk egy forgatókönyvet, a következő sorrendben:
 * Zárja be a .bcs fájlt (a Visual Studióban a lapon bezárásával) a módosítások mentése nélkül.  
 * Nyissa meg a .bcs fájlt újra a Megoldáskezelőben.  
   Láthatja majd, míg a társított .bridgeconfig fájl a megadott új néven, az entitás neve a tervezőfelületre, továbbra is a régi nevére. Ha megpróbálja megnyitni a híd konfigurációjához ehhez kattintson duplán a híd összetevő, a következő hibaüzenetet kap:  
-  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` Ebben a forgatókönyvben való futtatásának elkerüléséhez ellenőrizze a BizTalk Service-projektet az entitások átnevezése után a módosítások mentéséhez.  
+  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist`
+  Ebben a forgatókönyvben való futtatásának elkerüléséhez ellenőrizze a BizTalk Service-projektet az entitások átnevezése után a módosítások mentéséhez.  
   
 ### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>BizTalk-szolgáltatás projekt sikeresen létrejön, még akkor is, ha egy összetevő ki van zárva a Visual Studio-projekt
 Példaként vegyünk egy forgatókönyvet, ahol hozzáadhat egy összetevő (például XSD-fájl) BizTalk-szolgáltatás-projektbe, adott összetevő bevonni a híd konfigurációjához (például megadásával, a kérelem üzenet típusa) és kizárása a Visual Studio-projekt. Ebben az esetben elkészítése nem biztosít semmilyen hiba mindaddig, amíg a törölt összetevő érhető el a lemezen, ahol a Visual Studio-projekt méretéből ugyanazon a helyen.
@@ -224,5 +225,5 @@ Tegyük fel, a forgatókönyv, amelyben egy XML-hidat, a BizTalk Services előze
 Ebben a dokumentumban a kifejezés "folyamatok" és "hidak" kifejezés ugyanazt jelenti. Mindkét lényegében amely, a BizTalk Services telepített üzenet feldolgozóegység ugyanazt jelenti.  
 
 ### <a name="concepts"></a>Alapelvek
-[BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
+[BizTalk Services](/previous-versions/azure/hh689864(v=azure.100))   
 

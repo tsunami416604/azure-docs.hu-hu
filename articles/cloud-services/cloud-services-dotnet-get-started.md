@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: aa62db0948ffa036b37736477b872d694d14836b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762600"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917476"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
 ## <a name="overview"></a>Áttekintés
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre többrétegű .NET-alkalmazást ASP.NET MVC kezelőfelülettel, illetve hogyan telepítheti azt egy [Azure-felhőszolgáltatásban](cloud-services-choose-me.md). Az alkalmazás az [Azure SQL Database](https://msdn.microsoft.com/library/azure/ee336279) szolgáltatást, az [Azure Blob szolgáltatást](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) és az [Azure Queue szolgáltatást](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használja. A [Visual Studio projekt letölthető](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) az MSDN kódgalériából.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre többrétegű .NET-alkalmazást ASP.NET MVC kezelőfelülettel, illetve hogyan telepítheti azt egy [Azure-felhőszolgáltatásban](cloud-services-choose-me.md). Az alkalmazás az [Azure SQL Database](/previous-versions/azure/ee336279(v=azure.100)) szolgáltatást, az [Azure Blob szolgáltatást](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) és az [Azure Queue szolgáltatást](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használja. A [Visual Studio projekt letölthető](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) az MSDN kódgalériából.
 
 Ebből az oktatóanyagból megtudhatja, hogyan állíthatja össze és futtathatja az alkalmazást helyileg, hogyan telepítheti az Azure-ban, hogyan futtathatja a felhőben, valamint hogyan építheti fel az alapoktól kezdve. Ha szeretné, kezdheti az alapoktól a felépítést, majd később elvégezheti a tesztelés és a telepítés lépéseit.
 
@@ -81,7 +81,7 @@ Amikor egy felhasználó feltölt egy képet, a webes szerepkörrel rendelkező 
 6. Ha a Visual Studio 2015-öt használja, módosítsa az SQL Server kapcsolati sztringjét az alkalmazás *Web.config* fájljában a ContosoAdsWeb projekt esetében, illetve a *ServiceConfiguration.Local.cscfg* fájlt a ContosoAdsCloudService projekt esetében. Mindkét esetben módosítsa a „(localdb)\v11.0” elemet a következőre: „(localdb)\MSSQLLocalDB”.
 7. Az alkalmazás futtatásához nyomja le a Ctrl+F5 billentyűkombinációt.
 
-    Amikor helyileg futtat egy felhőszolgáltatás-projektet, a Visual Studio automatikusan meghívja az Azure *Compute Emulator* és az Azure *Storage Emulator* eszközöket. A Compute Emulator a számítógép erőforrásait felhasználva szimulálja a webes és a feldolgozói szerepkörök környezeteit. A Storage Emulator egy [SQL Server Express LocalDB](https://msdn.microsoft.com/library/hh510202.aspx) adatbázis használatával szimulálja az Azure felhőalapú tárolást.
+    Amikor helyileg futtat egy felhőszolgáltatás-projektet, a Visual Studio automatikusan meghívja az Azure *Compute Emulator* és az Azure *Storage Emulator* eszközöket. A Compute Emulator a számítógép erőforrásait felhasználva szimulálja a webes és a feldolgozói szerepkörök környezeteit. A Storage Emulator egy [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb) adatbázis használatával szimulálja az Azure felhőalapú tárolást.
 
     Egy felhőszolgáltatás-projekt első futtatásakor nagyjából egy percet vesz igénybe az emulátorok elindítása. Az emulátorok elindulását követően az alapértelmezett böngésző megnyitja az alkalmazás kezdőlapját.
 
@@ -178,7 +178,7 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
 
     Ha a felhőszolgáltatás és a tárfiók különböző adatközpontokban van (különböző régiókban), a késés mértéke megnő, és az adatközponton kívül használt sávszélességért fizetnie kell. Az adatközponton belül használt sávszélesség ingyenes.
 
-    Az Azure-affinitáscsoportok egy olyan mechanizmust biztosítanak, amely minimálisra csökkenti az erőforrások között lévő távolságot az adatközpontban, csökkentve ezáltal a késés mértékét is. A jelen oktatóanyag nem használ affinitáscsoportokat. További információ: [Affinitáscsoportok létrehozása az Azure-ban](https://msdn.microsoft.com/library/azure/gg715317.aspx).
+    Az Azure-affinitáscsoportok egy olyan mechanizmust biztosítanak, amely minimálisra csökkenti az erőforrások között lévő távolságot az adatközpontban, csökkentve ezáltal a késés mértékét is. A jelen oktatóanyag nem használ affinitáscsoportokat. További információ: [Affinitáscsoportok létrehozása az Azure-ban](/previous-versions/azure/reference/gg715317(v=azure.100)).
 7. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Új tárfiók](./media/cloud-services-dotnet-get-started/newstorage.png)
@@ -549,7 +549,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-A vezérlőkód nagy része jellemzően egy DbContext osztályt használó Entity Framework-adatmodellel történő használatra való. Kivétel ez alól a HttpPost `Create` metódus, amely feltölti és blobtárolóba menti a fájlokat. A modellkötő [HttpPostedFileBase](https://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) objektumot biztosít a metódus számára.
+A vezérlőkód nagy része jellemzően egy DbContext osztályt használó Entity Framework-adatmodellel történő használatra való. Kivétel ez alól a HttpPost `Create` metódus, amely feltölti és blobtárolóba menti a fájlokat. A modellkötő [HttpPostedFileBase](/dotnet/api/system.web.httppostedfilebase) objektumot biztosít a metódus számára.
 
 ```csharp
 [HttpPost]
@@ -703,7 +703,7 @@ Ha a ciklus egyes ismétlései után nem található üzenet, a program egy más
 
 Néha előfordul, hogy az üzenetsor egyik üzenetének tartalma feldolgozási hibát okoz. Az ilyet *ártalmas üzenetnek* nevezik, és ha épp naplózott egy hibát, majd újraindította a ciklust, akkor az üzenet feldolgozásával a végtelenségig próbálkozhat.  Ezért a catch blokk tartalmaz egy if utasítást, amely ellenőrzi, hogy az alkalmazás hány alkalommal próbálta feldolgozni az aktuális üzenetet, és amennyiben több mint 5 alkalommal, az üzenet törlődik az üzenetsorból.
 
-`ProcessQueueMessage`akkor lesz meghívva, ha az üzenetsorban található üzenet.
+`ProcessQueueMessage` akkor lesz meghívva, ha az üzenetsorban található üzenet.
 
 ```csharp
 private void ProcessQueueMessage(CloudQueueMessage msg)

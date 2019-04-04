@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: 4ce4cdbaf49fb743a14c7a5285ed29b9ad49faf5
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f0540ff1fc1844c133e238267770b971992f61e6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652654"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905001"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Azure virtuális gépek replikálása egyik régióból a másikba-támogatási mátrixa
 
@@ -22,12 +22,12 @@ Ez a cikk összefoglalja támogatott konfigurációk és összetevők replikál�
 
 ## <a name="deployment-method-support"></a>Üzembe helyezési módszer támogatása
 
-**Üzembe helyezés** |  **Támogatás**
+**Környezet** |  **Támogatás**
 --- | ---
 **Azure Portal** | Támogatott.
-**PowerShell** | Támogatott. [További információ](azure-to-azure-powershell.md)
+**PowerShell** | Támogatott. [Részletek](azure-to-azure-powershell.md)
 **REST API** | Támogatott.
-**Parancssori felület** | Jelenleg nem támogatott
+**parancssori felület** | Jelenleg nem támogatott
 
 
 ## <a name="resource-support"></a>Erőforrások támogatása
@@ -113,8 +113,11 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 14.04 LTS | 9.22 | a 3.13.0-164-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-140-generic, 4.4.0-21-Generic<br/>4.15.0-1023-azure to 4.15.0-1036-azure |
 14.04 LTS | 9.21 | a 3.13.0-163-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-140-generic, 4.4.0-21-Generic<br/>a 4.15.0-1035-azure 4.15.0-1023-Azure |
 14.04 LTS | 9.20 | a 3.13.0-161-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-138-generic, 4.4.0-21-Generic<br/>a 4.15.0-1030-azure 4.15.0-1023-Azure |
-
-||| 16.04 LTS |} 9.23 |} a 4.4.0-142-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-45-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>4.15.0-1012-azure to 4.15.0-1037-azure| 16.04 LTS | 9.22 | 4.4.0-21-generic to 4.4.0-140-generic,<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-43-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>4.15.0-1012-azure to 4.15.0-1036-azure| 16.04 LTS | 9.21 | 4.4.0-21-generic to 4.4.0-140-generic,<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-42-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>4.15.0-1012-azure to 4.15.0-1035-azure| 16.04 LTS | 9.20 | 4.4.0-21-generic to 4.4.0-138-generic,<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-38-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1030-azure| 4.15.0-1012-Azure
+|||
+16.04 LTS | 9.23 | a 4.4.0-142-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-45-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1037-azure 4.15.0-1012-Azure|
+16.04 LTS | 9.22 | a 4.4.0-140-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-43-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1036-azure 4.15.0-1012-Azure|
+16.04 LTS | 9.21 | a 4.4.0-140-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-42-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1035-azure 4.15.0-1012-Azure|
+16.04 LTS | 9.20 | a 4.4.0-138-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-45-generic, 4.13.0-16-Generic<br/>a 4.15.0-38-generic 4.15.0-13-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>4.13.0-1005-azure to 4.13.0-1018-azure <br/>a 4.15.0-1030-azure 4.15.0-1012-Azure|
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Debian kernel verziója támogatott Azure-beli virtuális gépek
 
@@ -155,10 +158,11 @@ Azure-katalógus-rendszerképek – a Microsoft közzétett | Támogatott | Tám
 Azure-katalógus-lemezkép - harmadik féltől származó közzétett | Támogatott | Támogatott, ha a virtuális Gépet egy támogatott operációs rendszert futtat.
 Egyéni lemezkép - harmadik féltől származó közzétett | Támogatott | Támogatott, ha a virtuális Gépet egy támogatott operációs rendszert futtat.
 Virtuális gépek áttelepítése a Site Recovery | Támogatott | Ha VMware virtuális gép vagy fizikai gép lett migrálva az Azure Site Recovery segítségével, távolítsa el a gépen futó mobilitási szolgáltatás régebbi verzióját, és indítsa újra a gépet egy másik Azure-régióban való replikálásához, mielőtt szüksége.
+Az RBAC-szabályzatok | Nem támogatott | A szerepköralapú hozzáférés-vezérlés (RBAC) házirendek a virtuális gépek nem lesznek replikálva a feladatátvételi virtuális Gépen a célrégióban.
 
 ## <a name="replicated-machines---disk-actions"></a>Replikált gépek - lemez műveletek
 
-**Művelet** | **Részletek**
+**Műveletek** | **Részletek**
 -- | ---
 A replikált virtuális gép lemez átméretezése | Támogatott
 Adjon hozzá egy lemezt egy replikált virtuális gép | Nem támogatott.<br/><br/> Meg kell letiltani a virtuális gép adja hozzá a lemezt, és majd újból engedélyezze a replikációt.
@@ -213,7 +217,7 @@ Az alábbi táblázat foglalja össze a Site Recovery korlátait.
 - Lemezenként adatokat a forgalom és a egy virtuális gép adatainak churn figyelembe venni két korlátozva van.
 - Például ha egy prémium szintű P20 lemez használjuk, az alábbi táblázatban leírtak szerint a Site Recovery kezelni tud lemez, adatforgalom az 5 MB, legfeljebb öt ilyen lemezek virtuális gépenkénti, a 25 MB/s összes adatforgalom virtuális gépenként miatt.
 
-**Tárolási célja** | **Forráslemez átlagos i/o** |**Forráslemez átlagos adatváltozása** | **Forráslemez teljes napi adatváltozása**
+**Tárolási célja** | **Forráslemez átlagos i/o** |**Átlagos lemez adatváltozása** | **Teljes lemez napi adatváltozása**
 ---|---|---|---
 Standard szintű Storage | 8 KB | 2 MB/s | Lemezenként 168 GB
 Prémium szintű P10 vagy P15 lemez | 8 KB  | 2 MB/s | Lemezenként 168 GB
@@ -237,8 +241,8 @@ Azure DNS | Támogatott |
 Egyéni DNS  | Támogatott |
 Hitelesített proxykiszolgálói | Támogatott | [Learn more].(site-recovery-azure-to-azure-networking-guidance.md)   
 Authenticated Proxy | Nem támogatott | Ha a virtuális gép egy hitelesített proxyt használ a kimenő hálózati kapcsolatot, azt nem lehet replikálni az Azure Site Recovery használatával.    
-A helyszíni VPN-helyek közötti kapcsolat<br/><br/>(a vagy ExpressRoute nélkül)| Támogatott | Győződjön meg arról, hogy úgy, hogy a Site recovery nem adatforgalmat helyszíni az udr-EK és NSG-k vannak konfigurálva. [További információ](site-recovery-azure-to-azure-networking-guidance.md)    
-Virtuális hálózatok közötti kapcsolat | Támogatott | [További információ](site-recovery-azure-to-azure-networking-guidance.md)  
+A helyszíni VPN-helyek közötti kapcsolat<br/><br/>(a vagy ExpressRoute nélkül)| Támogatott | Győződjön meg arról, hogy úgy, hogy a Site recovery nem adatforgalmat helyszíni az udr-EK és NSG-k vannak konfigurálva. [Részletek](site-recovery-azure-to-azure-networking-guidance.md)    
+Virtuális hálózatok közötti kapcsolat | Támogatott | [Részletek](site-recovery-azure-to-azure-networking-guidance.md)  
 Virtuális hálózati szolgáltatásvégpontok | Támogatott | Ha a tárfiókok vannak, a virtuális hálózati hozzáférés korlátozása, győződjön meg arról, hogy a megbízható Microsoft-szolgáltatások engedélyezettek-e a tárfiókhoz való hozzáférést.
 Gyorsított hálózatkezelés | Támogatott | A forrásoldali virtuális gép gyorsított hálózatkezelés engedélyezni kell. [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
 

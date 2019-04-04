@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 77cfade382d2c2533b803412157a1d5268e89983
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9b7a5aef76ec72b0de76fb4517ffda02808eab9d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764319"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882488"
 ---
 # <a name="connect-to-azure-stack"></a>Csatlakozás az Azure Stackhez
 
@@ -55,7 +55,7 @@ Egy osztott alagút az Azure Stack Development Kit virtuális magánhálózati (
 
 A csomagban található VPN-kapcsolat létrehozásához nyisson meg egy rendszergazda jogú PowerShell-munkamenetből a helyi Windows-alapú számítógépről, és futtassa a következő szkriptet (ügyeljen arra, hogy frissítse az IP-címmel és jelszóval értékeket környezete számára):
 
-```PowerShell 
+```powershell 
 # Configure winrm if it's not already configured
 winrm quickconfig  
 
@@ -92,9 +92,9 @@ Ha a beállítás sikeres, az **azurestack** a VPN-kapcsolatok listájában.
 
 Kapcsolódás az Azure Stack-példány, az alábbi két módszer egyikével:  
 
-* Használatával a `Connect-AzsVpn ` parancsot: 
+* Használatával a `Connect-AzsVpn` parancsot: 
     
-  ```PowerShell
+  ```powershell
   Connect-AzsVpn `
     -Password $Password
   ```

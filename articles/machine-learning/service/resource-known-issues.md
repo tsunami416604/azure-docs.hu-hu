@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7542909df336555e17aea9b0e680879b25dc17f
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: db0eccb542cb4253e6e891fa9fa51e60fb7951a1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58791745"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892738"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
 
@@ -50,7 +50,7 @@ Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és a
 
 ## <a name="automated-machine-learning"></a>Automatizált gépi tanulás
 
-Tensor Flow automatikus machine learning jelenleg nem támogatja a tensor flow verzió 1.13. Ez telepítése miatt nem működik a csomagfüggőségek. Dolgozunk a probléma megoldásához egy későbbi kiadásban. 
+Tensor Flow automatikus machine learning jelenleg nem támogatja a tensor flow verzió 1.13. Ez a verzió telepítése miatt nem működik a csomagfüggőségek. Dolgozunk a probléma megoldásához egy későbbi kiadásban. 
 
 
 ## <a name="databricks"></a>Databricks
@@ -96,7 +96,7 @@ Ha ezt a hibaüzenetet használatakor automatikus gépi tanulás:
 
 1. Válassza le, és mellékelje a notebookot a fürt. 
 
-Ha ez nem oldja meg a probléma, indítsa újra a fürtöt.
+Ha ezeket a lépéseket a probléma nem oldódik meg, próbálja újraindítani a fürtöt.
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -104,7 +104,7 @@ Ha közvetlenül a munkaterületet egy megosztás hivatkozás az SDK-t vagy a po
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Egyes esetekben hasznos lehet, ha a diagnosztikai adatok segítség kérése során megadhatja. Néhány a naplók megtekintéséhez keresse fel [az Azure portal](https://portal.azure.com) , és lépjen a workpsace, és válassza **munkaterület > kísérlet > Futtatás > Naplók**.
+Egyes esetekben hasznos lehet, ha a diagnosztikai adatok segítség kérése során megadhatja. Néhány a naplók megtekintéséhez keresse fel [az Azure portal](https://portal.azure.com) és nyissa meg a munkaterületet, és kattintson **munkaterület > kísérlet > Futtatás > Naplók**.
 
 ## <a name="resource-quotas"></a>Erőforráskvóták
 
@@ -123,7 +123,3 @@ Ha egy felügyeleti műveletet egy számítási célnak a távoli feladatokat ha
 ```
 
 Például egy hibaüzenetet fog kapni, ha megpróbálja hozzon létre vagy csatlakoztasson egy számítási célnak, egy gépi Tanulási folyamatot, amely a távoli végrehajtás céljából elküldésekor.
-
-## <a name="get-more-support"></a>További támogatás
-
-Küldje el a támogatási kéréseket, és kérjen segítséget a technikai támogatási, fórumok és más. [tudj meg többet...](support-for-aml-services.md)

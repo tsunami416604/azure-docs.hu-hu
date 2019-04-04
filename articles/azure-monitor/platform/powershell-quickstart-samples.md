@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 1ca2faca6c3d34ec4c987df85fff65e0a8fdc7f1
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: e9376b0d137534f301332feaf4e99bfa937fbfa9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486049"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905477"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Az Azure Monitor PowerShell gyors üzembe helyezési minták
 Ez a cikk mutatja, a minta PowerShell-parancsok segítségével elérheti az Azure Monitor-funkciók.
@@ -27,7 +27,7 @@ Ez a cikk mutatja, a minta PowerShell-parancsok segítségével elérheti az Azu
 Ha még nem tette, PowerShell beállítása a futást a számítógépen. További információkért lásd: [telepítése és konfigurálása PowerShell](/powershell/azure/overview).
 
 ## <a name="examples-in-this-article"></a>Ebben a cikkben szereplő példák
-A cikkben szereplő példák bemutatják, hogyan használhatja az Azure Monitor-parancsmagokat. Emellett áttekintheti a teljes listáját, az Azure Monitor PowerShell-parancsmagok [Azure Monitor (elemzés) parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.insights).
+A cikkben szereplő példák bemutatják, hogyan használhatja az Azure Monitor-parancsmagokat. Emellett áttekintheti a teljes listáját, az Azure Monitor PowerShell-parancsmagok [Azure Monitor (elemzés) parancsmagok](https://docs.microsoft.com/powershell/module/az.applicationinsights).
 
 ## <a name="sign-in-and-use-subscriptions"></a>Jelentkezzen be, és előfizetések használata
 Első lépésként jelentkezzen be az Azure-előfizetéshez.

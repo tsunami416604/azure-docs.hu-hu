@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: pafarley
-ms.openlocfilehash: 23db6f889e2ca4266b7e3566c18cf9a85d4062a8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 16844f60f03e2bf488450797f43915462df08064
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517555"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904916"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Az Azure Cognitive Services számítógépes Látástechnológiai SDK a Pythonhoz
 
-A Computer Vision szolgáltatás a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Számítógép Látástechnológiai algoritmus kép tartalma érdekli visual funkcióktól függően különböző módokon elemezheti. 
+A Computer Vision szolgáltatás a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Számítógép Látástechnológiai algoritmus kép tartalma érdekli visual funkcióktól függően különböző módokon elemezheti.
 
-* [Kép elemzése](#analyze-an-image)
+* [Rendszerkép elemzése](#analyze-an-image)
 * [Tulajdonos tartomány listájának lekérése](#get-subject-domain-list)
 * [Tartomány szerint kép elemzése](#analyze-an-image-by-domain)
 * [A kép leírását beolvasása](#get-text-description-of-an-image)
@@ -38,23 +38,23 @@ További dokumentáció keres?
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Python 3.6-os +][python]
-* Ingyenes [számítógépes Látástechnológiai kulcs] [ computervision_resource] és társított régió. Ezekre az értékekre szüksége az példány létrehozásakor a [ComputerVisionAPI] [ ref_computervisionclient] objektumot. Az alábbi módszerek valamelyikével beolvasni ezeket az értékeket. 
+* Ingyenes [számítógépes Látástechnológiai kulcs] [ computervision_resource] és a kapcsolódó végpont. Ezekre az értékekre szüksége az példány létrehozásakor a [ComputerVisionClient] [ ref_computervisionclient] objektumot. Az alábbi módszerek valamelyikével beolvasni ezeket az értékeket.
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>Ha nem rendelkezik Azure-előfizetéssel
 
-A 7 napig érvényes ingyenes kulcs létrehozása a **[Kipróbálom] [ computervision_resource]** élmény a Computer Vision service a. A kulcs létrehozásakor másolja a kulcs és a régió nevét. Szüksége lesz a [az ügyfél létrehozása](#create-client).
+A 7 napig érvényes ingyenes kulcs létrehozása a **[Kipróbálom] [ computervision_resource]** élmény a Computer Vision service a. A kulcs létrehozásakor másolja a kulcs és a végpont nevét. Szüksége lesz a [az ügyfél létrehozása](#create-client).
 
 Tartsa a következő, a kulcs létrehozása után:
 
-* Kulcs értékét: egy 32 karakter hosszúságú karakterlánc formátumban `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` 
-* Kulcsfontosságú terület: az a végpont URL-cím altartomány https://**westcentralus**. api.cognitive.microsoft.com
+* Kulcs értékét: egy 32 karakter hosszúságú karakterlánc formátumban `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
+* Fő végponthoz: bázisvégpont URL-címe https://westcentralus.api.cognitive.microsoft.com
 
 ### <a name="if-you-have-an-azure-subscription"></a>Ha rendelkezik Azure-előfizetéssel
 
-Hozzon létre egy erőforrást az előfizetésében, a legegyszerűbb módszer, hogy használja a következő [Azure CLI-vel] [ azure_cli] parancsot. Ez létrehoz egy Cognitive Services-szolgáltatás-kulcsot, a cognitive services számos is használható. Meg kell adnia a _meglévő_ erőforráscsoport nevét, például "my-cogserv-group" és az új számítógép vision erőforrás nevével, például a "my-számítógép-látás-erőforrás". 
+Hozzon létre egy erőforrást az előfizetésében, a legegyszerűbb módszer, hogy használja a következő [Azure CLI-vel] [ azure_cli] parancsot. Ez létrehoz egy Cognitive Services-szolgáltatás-kulcsot, a cognitive services számos is használható. Meg kell adnia a _meglévő_ erőforráscsoport nevét, például "my-cogserv-group" és az új számítógép vision erőforrás nevével, például a "my-számítógép-látás-erőforrás".
 
 ```Bash
-RES_REGION=westeurope 
+RES_REGION=westeurope
 RES_GROUP=<resourcegroup-name>
 ACCT_NAME=<computervision-account-name>
 
@@ -92,31 +92,31 @@ pip install azure-cognitiveservices-vision-computervision
 
 ## <a name="authentication"></a>Authentication
 
-Miután a Computer Vision erőforrást hoz létre, meg kell annak **régió**, és az egyik a **tárfiókkulcsokat** az ügyfél objektumpéldány.
+Miután a Computer Vision erőforrást hoz létre, meg kell annak **végpont**, és az egyik a **tárfiókkulcsokat** az ügyfél objektumpéldány.
 
-Az példány létrehozásakor használja ezeket az értékeket a [ComputerVisionAPI] [ ref_computervisionclient] objektumot. 
+Az példány létrehozásakor használja ezeket az értékeket a [ComputerVisionClient] [ ref_computervisionclient] objektumot.
 
 Például a Bash terminál segítségével beállíthatja a környezeti változókat:
 
 ```Bash
-ACCOUNT_REGION=<resourcegroup-name>
+ACCOUNT_ENDPOINT=<resourcegroup-name>
 ACCT_NAME=<computervision-account-name>
 ```
 
-### <a name="for-azure-subscription-users-get-credentials-for-key-and-region"></a>A felhasználók Azure-előfizetés hitelesítő adatainak lekérése a kulcs és a régió
+### <a name="for-azure-subscription-users-get-credentials-for-key-and-endpoint"></a>A felhasználók Azure-előfizetés hitelesítő adatainak lekérése a kulcs és a végpont
 
-Ha nem emlékszik a régiót és a kulcsot, a következő metódust használhatja azokat. Hozzon létre egy kulcsot és egy régió van szüksége, ha a módszert használhatja [Azure-előfizetés tulajdonosai](#if-you-have-an-azure-subscription) vagy [nem Azure-előfizetéssel rendelkező felhasználók](#if-you-dont-have-an-azure-subscription).
+Ha nem emlékszik a végpont és a kulcsot, a következő metódust használhatja azokat. Hozzon létre egy kulcsot és a végpontot kell, ha a módszert használhatja [Azure-előfizetés tulajdonosai](#if-you-have-an-azure-subscription) vagy [nem Azure-előfizetéssel rendelkező felhasználók](#if-you-dont-have-an-azure-subscription).
 
-Használja a [Azure CLI-vel] [ cloud_shell] feltölti a Computer Vision fiókkal két környezeti változó az alábbi kódrészlet **régió** és az egyik a **kulcsok**(is megtalálhatja ezeket az értékeket a [az Azure portal][azure_portal]). A kódrészlet esetében a Bash felületen van formázva.
+Használja a [Azure CLI-vel] [ cloud_shell] feltölti a Computer Vision fiókkal két környezeti változó az alábbi kódrészlet **végpont** és az egyik a **kulcsok**(is megtalálhatja ezeket az értékeket a [az Azure portal][azure_portal]). A kódrészlet esetében a Bash felületen van formázva.
 
 ```Bash
 RES_GROUP=<resourcegroup-name>
 ACCT_NAME=<computervision-account-name>
 
-export ACCOUNT_REGION=$(az cognitiveservices account show \
+export ACCOUNT_ENDPOINT=$(az cognitiveservices account show \
     --resource-group $RES_GROUP \
     --name $ACCT_NAME \
-    --query location \
+    --query endpoint \
     --output tsv)
 
 export ACCOUNT_KEY=$(az cognitiveservices account keys list \
@@ -129,28 +129,28 @@ export ACCOUNT_KEY=$(az cognitiveservices account keys list \
 
 ### <a name="create-client"></a>Ügyfél létrehozása
 
-A régió és -kulcs beszerzéséhez a környezeti változókat, majd hozza létre a [ComputerVisionAPI] [ ref_computervisionclient] objektumot.  
+A végpont és -kulcs beszerzéséhez a környezeti változókat, majd hozza létre a [ComputerVisionClient] [ ref_computervisionclient] objektumot.
 
 ```Python
-from azure.cognitiveservices.vision.computervision import ComputerVisionAPI
+from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
 
-# Get region and key from environment variables
+# Get endpoint and key from environment variables
 import os
-region = os.environ['ACCOUNT_REGION']
+endpoint = os.environ['ACCOUNT_ENDPOINT']
 key = os.environ['ACCOUNT_KEY']
 
 # Set credentials
 credentials = CognitiveServicesCredentials(key)
 
 # Create client
-client = ComputerVisionAPI(region, credentials)
+client = ComputerVisionClient(endpoint, credentials)
 ```
 
 ## <a name="examples"></a>Példák
 
-Kell egy [ComputerVisionAPI] [ ref_computervisionclient] ügyfélobjektumát használata a következő feladatok közül bármelyik előtt.
+Kell egy [ComputerVisionClient] [ ref_computervisionclient] ügyfélobjektumát használata a következő feladatok közül bármelyik előtt.
 
 ### <a name="analyze-an-image"></a>Rendszerkép elemzése
 
@@ -178,7 +178,7 @@ for x in models.models_property:
 
 ### <a name="analyze-an-image-by-domain"></a>Tartomány szerint kép elemzése
 
-Elemezheti a tulajdonos tartományonként kép [ `analyze_image_by_domain` ] [ ref_computervisionclient_analyze_image_by_domain]. Első a [támogatott területek listája](#get-subject-domain-list) annak érdekében, hogy a megfelelő tartománynevet használja.  
+Elemezheti a tulajdonos tartományonként kép [ `analyze_image_by_domain` ] [ ref_computervisionclient_analyze_image_by_domain]. Első a [támogatott területek listája](#get-subject-domain-list) annak érdekében, hogy a megfelelő tartománynevet használja.
 
 ```Python
 # type of prediction
@@ -216,7 +216,7 @@ for caption in analysis.captions:
 
 ### <a name="get-text-from-image"></a>Získat text z kép
 
-Kézzel írt vagy nyomtatott szöveg kaphat egy rendszerképből. Ehhez szükséges, hogy az SDK két hívások: [ `recognize_text` ] [ ref_computervisionclient_recognize_text] és [ `get_text_operation_result` ] [ ref_computervisionclient_get_text_operation_result]. A hívás recognize_text aszinkron. Az eredmények között, a get_text_operation_result hívás, ha az első hívás befejeződött, ellenőrizze kell [ `TextOperationStatusCodes` ] [ ref_computervision_model_textoperationstatuscodes] előtt szöveges adatok kinyeréséhez. Az eredmények tartalmazzák a szöveg, valamint a határolókeret koordinátái meg a szöveget. 
+Kézzel írt vagy nyomtatott szöveg kaphat egy rendszerképből. Ehhez szükséges, hogy az SDK két hívások: [ `recognize_text` ] [ ref_computervisionclient_recognize_text] és [ `get_text_operation_result` ] [ ref_computervisionclient_get_text_operation_result]. A hívás recognize_text aszinkron. Az eredmények között, a get_text_operation_result hívás, ha az első hívás befejeződött, ellenőrizze kell [ `TextOperationStatusCodes` ] [ ref_computervision_model_textoperationstatuscodes] előtt szöveges adatok kinyeréséhez. Az eredmények tartalmazzák a szöveg, valamint a határolókeret koordinátái meg a szöveget.
 
 ```Python
 # import models
@@ -238,13 +238,14 @@ idLocation = len(operationLocation) - numberOfCharsInOperationId
 operationId = operationLocation[idLocation:]
 
 # SDK call
-while result.status in ['NotStarted', 'Running']:
-    time.sleep(1)
+while True:
     result = client.get_text_operation_result(operationId)
+    if result.status not in ['NotStarted', 'Running']:
+        break
+    time.sleep(1)
 
 # Get data
 if result.status == TextOperationStatusCodes.succeeded:
-
     for line in result.recognition_result.lines:
         print(line.text)
         print(line.bounding_box)
@@ -252,13 +253,13 @@ if result.status == TextOperationStatusCodes.succeeded:
 
 ### <a name="generate-thumbnail"></a>Létrehozásához miniatűrön
 
-A kép miniatűrjét (JPG) is létrehozhat [ `generate_thumbnail` ] [ ref_computervisionclient_generate_thumbnail]. A miniatűr nem kell az eredeti rendszerkép azonos arányban kell. 
+A kép miniatűrjét (JPG) is létrehozhat [ `generate_thumbnail` ] [ ref_computervisionclient_generate_thumbnail]. A miniatűr nem kell az eredeti rendszerkép azonos arányban kell.
 
 Telepítés **párnád** használata ebben a példában:
 
 ```bash
 pip install Pillow
-``` 
+```
 
 Párnád telepítése után, akkor az alábbi példakód használhatja a csomagot létrehozza a miniatűrt.
 
@@ -285,7 +286,7 @@ image.save('thumbnail.jpg')
 
 ### <a name="general"></a>Általános kérdések
 
-Amikor dolgozhat a [ComputerVisionAPI] [ ref_computervisionclient] ügyfélobjektumot, a Python SDK-val a [ `ComputerVisionErrorException` ] [ ref_computervision_computervisionerrorexception] osztály szolgál olvasni a hibákat. A szolgáltatás által visszaadott hibák REST API-kérések vissza ugyanazon HTTP-állapotkódok felelnek meg.
+Amikor dolgozhat a [ComputerVisionClient] [ ref_computervisionclient] ügyfélobjektumot, a Python SDK-val a [ `ComputerVisionErrorException` ] [ ref_computervision_computervisionerrorexception] az osztály az olvasni a hibákat. A szolgáltatás által visszaadott hibák REST API-kérések vissza ugyanazon HTTP-állapotkódok felelnek meg.
 
 Például, ha a kép elemzése érvénytelen kulccsal próbál egy `401` hibát akkor adja vissza. Az alábbi kódrészletben a [hiba] [ ref_httpfailure] szabályosan kezeli a kivétel kölcsönhatásai és megjelenítése a hibával kapcsolatos további információkat.
 
@@ -304,14 +305,14 @@ try:
         print(caption.confidence)
 except HTTPFailure as e:
     if e.status_code == 401:
-        print("Error unauthorized. Make sure your key and region are correct.")
+        print("Error unauthorized. Make sure your key and endpoint are correct.")
     else:
         raise
 ```
 
 ### <a name="handle-transient-errors-with-retries"></a>Újrapróbálkozás átmeneti hibák kezelése
 
-A munka során a [ComputerVisionAPI] [ ref_computervisionclient] ügyfél, akkor léphetnek fel átmeneti hibák által okozott [sebességhatárok] [ computervision_request_units] kényszerítve a szolgáltatás, vagy más átmeneti problémák, például a hálózati kimaradások. További információ az ilyen típusú hibák kezelése: [újrapróbálkozási minta] [ azure_pattern_retry] útmutató a tervezési minták Felhőkhöz, és a kapcsolódó [áramkör-megszakító minta] [azure_pattern_circuit_breaker].
+A munka során a [ComputerVisionClient] [ ref_computervisionclient] ügyfél, akkor léphetnek fel átmeneti hibák által okozott [sebességhatárok] [ computervision_request_units] a szolgáltatás, vagy más átmeneti problémák, például a hálózati kimaradások kényszeríti. További információ az ilyen típusú hibák kezelése: [újrapróbálkozási minta] [ azure_pattern_retry] útmutató a tervezési minták Felhőkhöz, és a kapcsolódó [áramkör-megszakító minta] [azure_pattern_circuit_breaker].
 
 ### <a name="more-sample-code"></a>További mintakód
 

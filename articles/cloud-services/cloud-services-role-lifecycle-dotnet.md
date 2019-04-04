@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 56f7b5e3b303ce68868f15528d1ec200919b52aa
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 13f500b32bb85bdc0f84b812ef4ef9188a257771
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001558"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916308"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Webes és feldolgozói szerepkörök életciklusának testreszabása a .NET-ben
-Feldolgozói szerepkör létrehozásakor kiterjeszti a [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) osztályt, amelyet itt felülbírálhatja a módszereket, amelyekkel életciklusesemények válaszolni. Webes szerepkörök esetében ez az osztály nem kötelező, így életciklusesemények válaszolni kell használni.
+Feldolgozói szerepkör létrehozásakor kiterjeszti a [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) osztályt, amelyet itt felülbírálhatja a módszereket, amelyekkel életciklusesemények válaszolni. Webes szerepkörök esetében ez az osztály nem kötelező, így életciklusesemények válaszolni kell használni.
 
 ## <a name="extend-the-roleentrypoint-class"></a>A RoleEntryPoint osztály kiterjesztése
-A [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) osztály tartalmazza az Azure által meghívott módszerek amikor azt **elindul**, **fut**, vagy **leállítja** egy webes vagy feldolgozói szerepkörben. Ezek a metódusok kezelése a szerepkör inicializálása, a szerepkör leállítása feladatütemezések vagy a szerepkör a végrehajtási szál igény szerint felül lehet bírálni. 
+A [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) osztály tartalmazza az Azure által meghívott módszerek amikor azt **elindul**, **fut**, vagy **leállítja** egy webes vagy feldolgozói szerepkörben. Ezek a metódusok kezelése a szerepkör inicializálása, a szerepkör leállítása feladatütemezések vagy a szerepkör a végrehajtási szál igény szerint felül lehet bírálni. 
 
 Amikor bővíti **RoleEntryPoint**, vegye figyelembe a módszer a következő viselkedésmódok közül:
 
-* A [OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) és [OnStop](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx) módszerek egy logikai értéket ad vissza, így érdemes lehet térni **hamis** az ezen módszerek.
+* A [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) és [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) módszerek egy logikai értéket ad vissza, így érdemes lehet térni **hamis** az ezen módszerek.
   
    Ha a kódot ad vissza **hamis**, a szerepkör-folyamat váratlanul megszakadt, bármely leállítási folyamat futtatása nélkül lehet helyen. Általában kerülje visszaadó **hamis** származó a **OnStart** metódus.
 * Bármelyik nem kezelt kivétel belül egy túlterhelésére egy **RoleEntryPoint** metódus nem kezelt kivétel számít.
   
-   Ha kivétel történik az életciklus módszerek belül, kiváltja az Azure a [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) esemény, majd a folyamat megszakadt. Miután a szerepkör offline állapotban van, az Azure-ban újraindul. Ha nem kezelt kivétel lép fel, a [leállítása](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.stopping.aspx) esemény nem jelenik meg, és a **OnStop** metódus nem lett meghívva.
+   Ha kivétel történik az életciklus módszerek belül, kiváltja az Azure a [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) esemény, majd a folyamat megszakadt. Miután a szerepkör offline állapotban van, az Azure-ban újraindul. Ha nem kezelt kivétel lép fel, a [leállítása](/previous-versions/azure/reference/ee758136(v=azure.100)) esemény nem jelenik meg, és a **OnStop** metódus nem lett meghívva.
 
-Ha a szerepkör nem indul el, vagy az inicializálás, foglalt, és leállításával állapotok közötti mindig újraindul, előfordulhat, hogy a kód értesítő egyikébe az életciklus-események minden alkalommal, amikor a szerepkör újraindítása nem kezelt kivétel. Ebben az esetben használja a [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) eseményhez, és állapítsa meg a kivétel okát, és megfelelően kezelni. A szerepkör is visszatérésre a [futtatása](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) metódussal, amely a szerepkör újraindítását okozza. További információ a központi telepítési állapotok: [gyakori problémák amely ok szerepkörök újrahasznosításával](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
+Ha a szerepkör nem indul el, vagy az inicializálás, foglalt, és leállításával állapotok közötti mindig újraindul, előfordulhat, hogy a kód értesítő egyikébe az életciklus-események minden alkalommal, amikor a szerepkör újraindítása nem kezelt kivétel. Ebben az esetben használja a [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) eseményhez, és állapítsa meg a kivétel okát, és megfelelően kezelni. A szerepkör is visszatérésre a [futtatása](/previous-versions/azure/reference/ee772746(v=azure.100)) metódussal, amely a szerepkör újraindítását okozza. További információ a központi telepítési állapotok: [gyakori problémák amely ok szerepkörök újrahasznosításával](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 > [!NOTE]
 > Ha használja a **Microsoft Visual Studióhoz készült Azure-eszközök** és fejlessze alkalmazását, a szerepkör projektsablonok automatikusan kiterjeszti a **RoleEntryPoint** osztály, az  *WebRole.cs* és *WorkerRole.cs* fájlokat.

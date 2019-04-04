@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b929182ce1c89e7508aeae91a95b5c9b0d599774
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621379"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918790"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 
@@ -214,7 +214,7 @@ Az alábbi táblázatok bemutatják a virtuális gépek előkészítése a Chang
 
 ### <a name="onboarding-from-a-virtual-machine"></a>Bevezetés a virtuális gépről
 
-|**Művelet**  |**Engedély**  |**Minimális hatókör**  |
+|**Műveletek**  |**Engedély**  |**Minimális hatókör**  |
 |---------|---------|---------|
 |Új központi telepítés írása      | Microsoft.Resources/deployments/*          |Előfizetés          |
 |Új erőforráscsoport írása      | Microsoft.Resources/subscriptions/resourceGroups/write        | Előfizetés          |
@@ -237,7 +237,7 @@ Az alábbi táblázatok bemutatják a virtuális gépek előkészítése a Chang
 
 ### <a name="onboarding-from-automation-account"></a>Előkészítés Automation-fiók
 
-|**Művelet**  |**Engedély** |**Minimális hatókör**  |
+|**Műveletek**  |**Engedély** |**Minimális hatókör**  |
 |---------|---------|---------|
 |Új üzemelő példány létrehozása     | Microsoft.Resources/deployments/*        | Előfizetés         |
 |Új erőforráscsoport létrehozása     | Microsoft.Resources/subscriptions/resourceGroups/write         | Előfizetés        |
@@ -317,7 +317,7 @@ Egy felhasználó, aki nem kezel az Automation-fiókot, vagy akik már nem műk�
 
 Szerepköralapú hozzáférés is konfigurálható egy Automation-fiókot az alábbi [Azure PowerShell-parancsmagok](../role-based-access-control/role-assignments-powershell.md):
 
-[Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) sorolja fel az Azure Active Directoryban elérhető összes RBAC-szerepkört. Ezt a parancsot használhatja a **Name** (Név) tulajdonsággal, ha fel szeretné sorolni az összes műveletet, amelyet egy adott szerepkörrel lehet elvégezni.
+[Get-AzureRmRoleDefinition](/previous-versions/azure/mt603792(v=azure.100)) sorolja fel az Azure Active Directoryban elérhető összes RBAC-szerepkört. Ezt a parancsot használhatja a **Name** (Név) tulajdonsággal, ha fel szeretné sorolni az összes műveletet, amelyet egy adott szerepkörrel lehet elvégezni.
 
 ```azurepowershell-interactive
 Get-AzureRmRoleDefinition -Name 'Automation Operator'
@@ -336,7 +336,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx) sorolja fel az Azure AD RBAC szerepkör-hozzárendelések a megadott hatókörben. Paraméterek nélkül ez a parancs az előfizetéshez tartozó összes szerepkör-hozzárendelést visszaadja. Az **ExpandPrincipalGroups** paraméter segítségével felsorolhatja egy adott felhasználó vagy a felhasználó csoportjának összes hozzáférés-hozzárendelését.
+[Get-AzureRmRoleAssignment](/previous-versions/azure/mt619413(v=azure.100)) sorolja fel az Azure AD RBAC szerepkör-hozzárendelések a megadott hatókörben. Paraméterek nélkül ez a parancs az előfizetéshez tartozó összes szerepkör-hozzárendelést visszaadja. Az **ExpandPrincipalGroups** paraméter segítségével felsorolhatja egy adott felhasználó vagy a felhasználó csoportjának összes hozzáférés-hozzárendelését.
     **Példa** A következő paranccsal listázhatja az összes felhasználót és azok szerepkörét egy automation-fiókot.
 
 ```azurepowershell-interactive
@@ -357,7 +357,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-[Új-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx) hozzáférés hozzárendelése a felhasználók, csoportok és alkalmazások egy adott hatókörhöz.
+[Új-AzureRmRoleAssignment](/previous-versions/azure/mt603580(v=azure.100)) hozzáférés hozzárendelése a felhasználók, csoportok és alkalmazások egy adott hatókörhöz.
     **Példa** A következő paranccsal rendelje hozzá a "Automation-operátor" szerepkört az Automation-fiók tartományában lévő felhasználó számára.
 
 ```azurepowershell-interactive
@@ -378,7 +378,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-Használat [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx) segítségével távolítsa el a megadott felhasználó, csoport vagy alkalmazás hozzáférését egy adott hatókörből.
+Használat [Remove-AzureRmRoleAssignment](/previous-versions/azure/mt603781(v=azure.100)) segítségével távolítsa el a megadott felhasználó, csoport vagy alkalmazás hozzáférését egy adott hatókörből.
     **Példa** A következő paranccsal eltávolítja a felhasználót az Automation-fiók tartományában lévő "Automation-operátor" szerepkör.
 
 ```azurepowershell-interactive

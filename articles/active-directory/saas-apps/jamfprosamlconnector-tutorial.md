@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50349d008e3c2a7a8a09fd3e2d9e96097acc0c9e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 18b575b74c80499f2ddd6648bf051b5245077d2f
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855818"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906140"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Oktatóanyag: A Jamf Pro az Azure Active Directory-integráció
 
@@ -160,11 +160,11 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a Jamf Pro, hajtsa végre az
 
     ![A Jamf Pro-konfiguráció](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-    a. Válassza ki **más** a lehetőségként a **IDENTITÁSSZOLGÁLTATÓ** legördülő listából.
+    a. Válassza ki **más** a beállítás a **IDENTITÁSSZOLGÁLTATÓ** legördülő listából.
 
     b. Az a **egyéb SZOLGÁLTATÓ** szövegmezőbe írja be **Azure ad-ben**.
 
-    c. Válassza ki **metaadatok URL-címe** lehetőségként a a **IDENTITY PROVIDER METAADATFORRÁS** legördülő listából, majd illessze be az alábbi szövegmezőbe a **alkalmazás összevonási metaadatainak URL-címe** érték, amely az Azure Portalról másolta.
+    c. Válassza ki **metaadatok URL-címe** a beállítás a **IDENTITY PROVIDER METAADATFORRÁS** legördülő listából, majd illessze be az alábbi szövegmezőbe a **alkalmazás összevonási metaadatainak URL-címe** érték amely az Azure Portalról másolta.
 
     d. Másolás a **Entitásazonosító** értékét, és illessze be azt a **azonosító (entityid)** szövegmezőjébe **a Jamf Pro tartomány és URL-címek** szakaszban az Azure Portalon.
 
@@ -276,6 +276,6 @@ Ha a hozzáférési panelen a Jamf Pro csempére kattint, meg kell lehet automat
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

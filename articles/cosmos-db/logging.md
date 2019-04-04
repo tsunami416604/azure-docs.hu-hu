@@ -7,18 +7,21 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: d75eb87bff812589e4d3a3a14079ddaaf368a588
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 8839d7ea93bcb205b1900e63d3ab98394e72cd75
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259771"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904865"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnosztikai naplózás az Azure Cosmos DB-ben 
 
 Legalább egy Azure Cosmos DB-adatbázisok használatához elindítása után előfordulhat, hogy figyelni kívánt hogyan és mikor érhetők el az adatbázisok. Ez a cikk az Azure platformon elérhető naplók áttekintést nyújt. Megtudhatja, hogyan ellenőrzési célból elküldeni a naplókat a diagnosztikai naplózás engedélyezése [Azure Storage](https://azure.microsoft.com/services/storage/), naplók közvetítése [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), és a naplók exportálása [AzureMonitor-naplók](https://azure.microsoft.com/services/log-analytics/).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="logs-available-in-azure"></a>Az Azure-ban elérhető naplók
 
@@ -132,7 +135,7 @@ Ha már telepített Azure PowerShell-lel, és nem ismeri a verzió, a PowerShell
 Indítson el egy Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fiókjába az alábbi paranccsal:  
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. Az Azure PowerShell megkeresi az összes az előfizetést, amely, társítva ehhez a fiókhoz, és alapértelmezés szerint kiválasztja az elsőt.
@@ -140,13 +143,13 @@ Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét �
 Ha egynél több előfizetéssel rendelkezik, akkor előfordulhat, hogy adja meg az adott előfizetés létrehozása az Azure key vaultban használt. A fiókhoz tartozó előfizetések megtekintéséhez írja be a következő parancsot:
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Ezt követően az Azure Cosmos DB-fiókot, hogy bejelentkezik a tartozó előfizetés megadásához írja be a következő parancsot:
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 > [!NOTE]
@@ -162,7 +165,7 @@ Bár ebben az oktatóanyagban használhatja egy meglévő tárfiókot a naplók,
 Az egyszerű, ebben az oktatóanyagban ugyanazt az erőforráscsoportot használjuk, az Azure Cosmos DB adatbázis tartalmazza. Helyettesítse be a saját értékeit a **ContosoResourceGroup**, **contosocosmosdblogs**, és **USA északi középső Régiója** paraméterek, amennyiben alkalmazhatók:
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup `
+$sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup `
 -Name contosocosmosdblogs -Type Standard_LRS -Location 'North Central US'
 ```
 
@@ -175,15 +178,15 @@ $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup `
 Állítsa be az Azure Cosmos DB-fiók nevét egy nevű változóhoz **fiók**, ahol **ResourceName** az Azure Cosmos DB-fiók neve.
 
 ```powershell
-$account = Get-AzureRmResource -ResourceGroupName ContosoResourceGroup `
+$account = Get-AzResource -ResourceGroupName ContosoResourceGroup `
 -ResourceName contosocosmosdb -ResourceType "Microsoft.DocumentDb/databaseAccounts"
 ```
 
 ### <a id="enable"></a>Naplózás engedélyezése
-Az Azure Cosmos DB a naplózás engedélyezéséhez használja a `Set-AzureRmDiagnosticSetting` parancsmagot az új tárfiókot, az Azure Cosmos DB-fiók és a naplózás engedélyezéséhez a kategória változókat. Futtassa a következő parancsot, és állítsa be a **-kompatibilis** jelzőt **$true**:
+Az Azure Cosmos DB a naplózás engedélyezéséhez használja a `Set-AzDiagnosticSetting` parancsmagot az új tárfiókot, az Azure Cosmos DB-fiók és a naplózás engedélyezéséhez a kategória változókat. Futtassa a következő parancsot, és állítsa be a **-kompatibilis** jelzőt **$true**:
 
 ```powershell
-Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
+Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
 ```
 
 A parancs kimenete a következő mintát kell hasonlítania:
@@ -221,7 +224,7 @@ A parancs kimenete megerősíti, hogy a naplózás engedélyezve van az adatbáz
 Igény szerint is beállíthat a megtartási házirend a naplók úgy, hogy a régebbi naplófájlok automatikusan törlődnek. Például állítsa be a megőrzési házirend a **- RetentionEnabled** jelző értékre **$true**. Állítsa be a **- RetentionInDays** paramétert **90** úgy, hogy a 90 napnál régebbi naplófájlok automatikusan törlődnek.
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
+Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
  -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests`
   -RetentionEnabled $true -RetentionInDays 90
 ```
@@ -238,7 +241,7 @@ Először hozzon létre egy változót a tároló nevéhez. Az útmutatóban has
 Összes ebben a tárolóban lévő blobok listázása, írja be:
 
 ```powershell
-Get-AzureStorageBlob -Container $container -Context $sa.Context
+Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
 A parancs kimenete a következő mintát kell hasonlítania:
@@ -273,13 +276,13 @@ New-Item -Path 'C:\Users\username\ContosoCosmosDBLogs'`
 Kérje le az összes BLOB listáját:  
 
 ```powershell
-$blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
+$blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
-A listát a keresztül a `Get-AzureStorageBlobContent` paranccsal töltse le a a rendeltetési mappára:
+A listát a keresztül a `Get-AzStorageBlobContent` paranccsal töltse le a a rendeltetési mappára:
 
 ```powershell
-$blobs | Get-AzureStorageBlobContent `
+$blobs | Get-AzStorageBlobContent `
  -Destination 'C:\Users\username\ContosoCosmosDBLogs'
 ```
 
@@ -290,27 +293,27 @@ A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa
 * Ha több adatbázist, és szeretné egy adatbázis nevű tartozó naplók letöltéséhez **CONTOSOCOSMOSDB3**, használja a parancsot:
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
      -Context $sa.Context -Blob '*/DATABASEACCOUNTS/CONTOSOCOSMOSDB3
     ```
 
 * Ha több erőforráscsoportok és a egy erőforráscsoporthoz tartozó naplók letöltéséhez szeretne, használja a parancsot `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
     -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
     ```
 * Ha azt szeretné, töltse le a 2017 július hónapja naplóját, a paranccsal `-Blob '*/year=2017/m=07/*'`:
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
      -Context $sa.Context -Blob '*/year=2017/m=07/*'
     ```
 
 Is futtathatja a következő parancsokat:
 
-* Az adatbázis-erőforrás diagnosztikai beállítások állapotának lekérdezése, a parancs segítségével `Get-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`.
-* A naplózás letiltása az **DataPlaneRequests** kategória az adatbázis-fiók erőforrás a parancs használata `Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests`.
+* Az adatbázis-erőforrás diagnosztikai beállítások állapotának lekérdezése, a parancs segítségével `Get-AzDiagnosticSetting -ResourceId $account.ResourceId`.
+* A naplózás letiltása az **DataPlaneRequests** kategória az adatbázis-fiók erőforrás a parancs használata `Set-AzDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests`.
 
 
 A blobok, az egyes lekérdezések visszaadott szövegként tárolt, formázott JSON-blobként, az alábbi kódban látható módon:
@@ -437,20 +440,20 @@ A következő táblázat ismerteti a tartalom minden eseménynapló-bejegyzés.
 
 | Az Azure Storage mezőjével vagy tulajdonságával | Az Azure Monitor-naplók tulajdonság | Leírás |
 | --- | --- | --- |
-| **idő** | **TimeGenerated** | Dátuma és időpontja (UTC), ha a művelet történt. |
+| **time** | **TimeGenerated** | Dátuma és időpontja (UTC), ha a művelet történt. |
 | **resourceId** | **Erőforrás** | Az Azure Cosmos DB-fiókot, amelynek a naplói engedélyezve vannak.|
-| **kategória** | **Kategória** | Az Azure Cosmos DB-naplók **DataPlaneRequests** az egyetlen elérhető érték. |
-| **OperationName** | **OperationName** | A művelet neve. Ez az érték a következő műveletek bármelyike lehet: Hozzon létre, frissítés, olvasási, ReadFeed, törlés, csere, SQL-lekérdezés, lekérdezés, JSQuery, Head, HeadFeed vagy Upsert hajtható végre.   |
-| **Tulajdonságok** | n/a | Ez a mező tartalma kövesse azokat a sorokat ismerteti. |
-| **activityId** | **activityId_g** | A naplózott műveletnek egyedi GUID azonosítója. |
-| **userAgent** | **userAgent_s** | Egy karakterlánc, amely meghatározza a kérést végrehajtó felhasználó ügyfélügynök. A formátum a következő {felhasználói ügynök neve} / {version}.|
+| **category** | **Kategória** | Az Azure Cosmos DB-naplók **DataPlaneRequests** az egyetlen elérhető érték. |
+| **operationName** | **OperationName** | A művelet neve. Ez az érték a következő műveletek bármelyike lehet: Hozzon létre, frissítés, olvasási, ReadFeed, törlés, csere, SQL-lekérdezés, lekérdezés, JSQuery, Head, HeadFeed vagy Upsert hajtható végre.   |
+| **properties** | n/a | Ez a mező tartalma kövesse azokat a sorokat ismerteti. |
+| **Tevékenységazonosító** | **activityId_g** | A naplózott műveletnek egyedi GUID azonosítója. |
+| **UserAgent** | **userAgent_s** | Egy karakterlánc, amely meghatározza a kérést végrehajtó felhasználó ügyfélügynök. A formátum a következő {felhasználói ügynök neve} / {version}.|
 | **requestResourceType** | **requestResourceType_s** | Elért erőforrás típusa. Ez az érték a következő erőforrás-típusok egyike lehet: Adatbázis, tároló, a dokumentum, melléklet, felhasználói, engedélyt, StoredProcedure, eseményindító, UserDefinedFunction vagy ajánlat. |
 | **statusCode** | **statusCode_s** | A válasz állapota a műveletet. |
 | **requestResourceId** | **ResourceId** | Az erőforrás-azonosító, amely a kérelem vonatkozik. Az érték databaseRid, collectionRid vagy documentRid végrehajtott művelettől függően előfordulhat, hogy mutasson.|
 | **clientIpAddress** | **clientIpAddress_s** | Az ügyfél IP-cím. |
 | **requestCharge** | **requestCharge_s** | A művelet által használt fenntartott egységek száma |
 | **collectionRid** | **collectionId_s** | A gyűjtemény egyedi azonosítója.|
-| **Időtartam** | **duration_s** | A művelet az órajelben időtartama. |
+| **időtartam** | **duration_s** | A művelet az órajelben időtartama. |
 | **requestLength** | **requestLength_s** | A kérelem bájtban hossza. |
 | **responseLength** | **responseLength_s** | A válasz bájtban hossza.|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Ezt az értéket kötelező nem üres Ha [erőforrás-jogkivonatokat](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) hitelesítéshez használhatók. Az érték a felhasználó erőforrás-Azonosítójára mutat. |

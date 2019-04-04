@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 8c1e463378cc2c1ba3fdc0bcf91f800f634cc5f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 66ee211856bb451caad7af02103aa306d76e8f97
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077122"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916274"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404-es állapotkódot adja vissza az Azure CDN-végpontok hibaelhárítása
 Ez a cikk lehetővé teszi az Azure Content Delivery Network (CDN) végpontok, amelyek 404-es HTTP-állapotkódok vissza kapcsolatos hibaelhárítás.
@@ -76,7 +76,7 @@ Ellenőrizze a **HTTP** és **HTTPS-portok**. A legtöbb esetben 80-as és 443-a
 Előfordulhat azonban, hogy az URL-cím, az eredeti fájl, amely korábban, a tesztelt van http:\//www.contoso.com:8080/file.txt. Megjegyzés: a *: 8080-as* végén található a hostname szegmens részét. A 8080-as porton található a www-kiszolgáló kapcsolódáshoz a böngésző arra utasítja a szám meglévő\.contoso.com, ezért kell megadnia *8080-as* a a **HTTP-port** mező. Fontos megjegyezni, hogy ezeket a portbeállításokat hatással vannak, melyik porton csak a végpontot használja a forrás lévő információk lekéréséhez.
 
 > [!NOTE]
-> **Az Azure CDN Akamai Standard** végpontok nem teszik lehetővé a teljes TCP-porttartomány források.  A nem engedélyezett forrásportok listáját lást: [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx) (Az Akamai Azure CDN engedélyezett forrásportjai).  
+> **Az Azure CDN Akamai Standard** végpontok nem teszik lehetővé a teljes TCP-porttartomány források.  A nem engedélyezett forrásportok listáját lást: [Azure CDN from Akamai Allowed Origin Ports](/previous-versions/azure/mt757337(v=azure.100)) (Az Akamai Azure CDN engedélyezett forrásportjai).  
 > 
 > 
 

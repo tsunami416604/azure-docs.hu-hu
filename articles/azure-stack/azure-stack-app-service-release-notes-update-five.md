@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: 0a0eb9586e78442947138831dd774298906aaf9c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 851673de4a711f5eb64228233ea7703ef86bfa7b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993082"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500202"
 ---
 # <a name="app-service-on-azure-stack-update-5-release-notes"></a>App Service-ben az Azure Stack update 5 kibocsátási megjegyzései
 
@@ -59,11 +59,14 @@ Az Azure App Service-ben az Azure Stack Update 5 tartalmazza a következő fejle
 
 - Frissítések **App Services-bérlő, a rendszergazda, a Functions-portálok és eszközök a Kudu**. Az Azure Stack Portal SDK-verzió összhangban.
 
+- Frissítések **Azure Functions runtime** való **v1.0.12205**.
+
 - Frissítések **Kudu eszközök** stílusának és funkciókkal kapcsolatos problémák megoldása működő ügyfelek **leválasztott** Azure Stack. 
 
 - Fokozható a megbízhatóság és a hibaüzenetek gyakori problémák egyszerűbb diagnosztika engedélyezése a core-szolgáltatás frissítése.
 
 - **A következő alkalmazás-keretrendszerek és eszközök frissítések**:
+  - Új ASP.NET Core 2.1.6 és 2.2.0
   - A hozzáadott NodeJS 10.14.1
   - A hozzáadott NPM 6.4.1
   - Frissített Kudu 79.20129.3767
@@ -185,7 +188,7 @@ A tartalmazott adatbázis áttelepítése az Azure Stack üzemelő példányok a
 - Feldolgozók nem érhető el a fájlkiszolgálót, ha App Service-ben üzemel egy meglévő virtuális hálózatot és a fájlkiszolgáló csak érhető el a magánhálózaton, feltüntettük az Azure App Service az Azure Stack központi telepítési dokumentációjában az.
 
 Ha úgy döntött, hogy egy meglévő virtuális hálózattal és belső IP-cím szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése. Nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
- * Forrás: Bármelyik
+ * Forrás: Bármely
  * Forrás porttartomány: *
  * Cél: IP-címek
  * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz

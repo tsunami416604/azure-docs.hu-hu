@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 5543fd5ee2b86a57414a384df9d808e87b297a5e
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: e6f0b11c99cbe8778b51024c418ffba70da61a77
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983030"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917379"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>BizTalk Server EDI-megoldások áttelepítése a BizTalk Services: Műszaki útmutató
 
@@ -32,7 +32,7 @@ Elektronikus adatcserére (EDI) az egyik a legelterjedtebb azt jelenti, hogy mel
 
 Egyes ügyfeleink a BizTalk Services új EDI-megoldások "zöldmezős" platformként tekinti meg, míg számos ügyfelünk aktuális BizTalk Server EDI-megoldások, amelyek szeretnék áttelepíteni az Azure-bA. Mivel a BizTalk Services EDI tervezésnek lesz a azonos kulcsentitások (kereskedelmi partnerek, entitásokat, szerződések), a BizTalk Server EDI-architektúra alapján, lehetőség a BizTalk Services áttelepítése a BizTalk Server EDI-összetevők.
 
-Ez a dokumentum ismerteti a BizTalk Services áttelepítése a BizTalk Server EDI-összetevőkkel kapcsolatos eltérések képest. Ez a dokumentum a BizTalk Server EDI-feldolgozást és kereskedelmi partneri szerződéseket ismeretét feltételezi. A BizTalk Server EDI további információkért lásd: [Partner Management használatával BizTalk Server kereskedelmi](https://msdn.microsoft.com/library/bb259970.aspx).
+Ez a dokumentum ismerteti a BizTalk Services áttelepítése a BizTalk Server EDI-összetevőkkel kapcsolatos eltérések képest. Ez a dokumentum a BizTalk Server EDI-feldolgozást és kereskedelmi partneri szerződéseket ismeretét feltételezi. A BizTalk Server EDI további információkért lásd: [Partner Management használatával BizTalk Server kereskedelmi](/biztalk/core/trading-partner-management-using-biztalk-server).
 
 ## <a name="which-version-of-biztalk-server-edi-artifacts-can-be-migrated-to-biztalk-services"></a>BizTalk Server EDI-összetevők verziójának telepíthető át a BizTalk Services?
 A BizTalk Server EDI modul jelentősen bővült a BizTalk Server 2010-hez, amikor a partnerek, profilok és szerződések újra lett modellezett. A BizTalk Services ugyanannak a modellnek a kereskedelmi partnerekkel és a kereskedelmi partnereknek üzleti osztályai rendszerezéséhez használja. Ennek eredményeképpen EDI-összetevők áttérés a BizTalk Server 2010 és újabb verziókban a BizTalk Services, van egy sokkal nagyon egyszerű folyamatot. Áttelepítése a BizTalk Server 2010 korábbi verziók társított EDI-összetevők, először frissítse a BizTalk Server 2010, és majd áttelepítése a BizTalk Services az EDI-összetevőkhöz.
@@ -65,10 +65,10 @@ BizTalk Services modullal járulékos egy könnyen használható konfigurációs
 Ez a dokumentum további fogalmi útmutatást nyújt a néhányat a különböző BizTalk Server EDI áttelepítése a BizTalk Services.
 
 ## <a name="sendreceive-ports-to-trading-partners"></a>Küldése/fogadása portok a kereskedelmi partnerek
-A BizTalk Server-Fogadóhely és a fogadás portok az EDI/XML-üzenetek fogadása a kereskedelmi partnerek beállította, és az EDI/XML-üzeneteket küldeni a kereskedelmi partner küldési portok beállítása. Ezután lefoglalhatnak ezeket a portokat a kereskedelmipartner-egyezmény a BizTalk Server felügyeleti konzol használatával. A BizTalk Services, a helyeken, ahol a kereskedelmi partnerekkel üzeneteket fog kapni, és ahol küld e-kereskedelmi partnerek üzenetek vannak konfigurálva a kereskedelmi partneri szerződést (az átviteli beállítások részeként) magát a BizTalk Services portálon részeként.  Így nem igazán kell a "küldési port" és "helyek megkapta", fogalmát önmagában, a BizTalk Services. További információkért lásd: [szerződések létrehozása](https://msdn.microsoft.com/library/windowsazure/hh689908.aspx).
+A BizTalk Server-Fogadóhely és a fogadás portok az EDI/XML-üzenetek fogadása a kereskedelmi partnerek beállította, és az EDI/XML-üzeneteket küldeni a kereskedelmi partner küldési portok beállítása. Ezután lefoglalhatnak ezeket a portokat a kereskedelmipartner-egyezmény a BizTalk Server felügyeleti konzol használatával. A BizTalk Services, a helyeken, ahol a kereskedelmi partnerekkel üzeneteket fog kapni, és ahol küld e-kereskedelmi partnerek üzenetek vannak konfigurálva a kereskedelmi partneri szerződést (az átviteli beállítások részeként) magát a BizTalk Services portálon részeként.  Így nem igazán kell a "küldési port" és "helyek megkapta", fogalmát önmagában, a BizTalk Services. További információkért lásd: [szerződések létrehozása](/previous-versions/azure/hh689908(v=azure.100)).
 
 ## <a name="pipelines-bridges"></a>A folyamatok (hidat)
-A BizTalk Server EDI a folyamatok olyan üzenet feldolgozása entitások, amelyek meghatározott feldolgozási képességei, az alkalmazás által kért egyéni logikát is használható. A BizTalk Services-megfelelője lenne egy EDI híd. Azonban a BizTalk Services egyelőre az EDI hidak "bezárul".  EDI-híd azt jelenti, nem adja hozzá a saját egyéni tevékenységeket. Bármilyen egyéni feldolgozási kell elvégezni kívül az EDI-hidat, az alkalmazás előtt vagy után az üzenetet a híd a kereskedelmi partneri szerződés részeként beállított kerül. EAI-hidak egyéni feldolgozási nem rendelkezik. Ha azt szeretné, hogy egyéni feldolgozási, EAI-hidak használhatja, előtt vagy után az üzenetet a EDI híd dolgoz fel. További információkért lásd: [egyéni kód belefoglalása a hidak hogyan](https://msdn.microsoft.com/library/azure/dn232389.aspx).
+A BizTalk Server EDI a folyamatok olyan üzenet feldolgozása entitások, amelyek meghatározott feldolgozási képességei, az alkalmazás által kért egyéni logikát is használható. A BizTalk Services-megfelelője lenne egy EDI híd. Azonban a BizTalk Services egyelőre az EDI hidak "bezárul".  EDI-híd azt jelenti, nem adja hozzá a saját egyéni tevékenységeket. Bármilyen egyéni feldolgozási kell elvégezni kívül az EDI-hidat, az alkalmazás előtt vagy után az üzenetet a híd a kereskedelmi partneri szerződés részeként beállított kerül. EAI-hidak egyéni feldolgozási nem rendelkezik. Ha azt szeretné, hogy egyéni feldolgozási, EAI-hidak használhatja, előtt vagy után az üzenetet a EDI híd dolgoz fel. További információkért lásd: [egyéni kód belefoglalása a hidak hogyan](/previous-versions/azure/dn232389(v=azure.100)).
 
 Egyéni kód és/vagy a Service Bus-üzenetkezelés üzenetsorokat és Üzenettémákat, mielőtt a kereskedelmi partneri szerződés fogadja az üzenetet, vagy ha a szerződés feldolgozza az üzenetet, és továbbítja azt a Service Bus-végpont használatával közzétételi és előfizetési folyamat beszúrásához.
 
@@ -93,7 +93,7 @@ Egy másik példa a BizTalk Services alakítja át az új funkciók vannak a **h
 Még egy másik példa a **If-majd más** kifejezés térkép művelete.  Ennek során egy if-majd más művelet nem volt lehetőség a BizTalk eseményleképező, de ez több functoids látszólag egyszerű feladat elvégzéséhez szükséges.
 
 ### <a name="migrating-biztalk-server-maps"></a>A BizTalk-kiszolgáló áttelepítése térképek
-A Microsoft Azure BizTalk Services biztosítja, hogy egy eszköz a BizTalk-kiszolgáló áttelepítése a BizTalk Services átalakítások képez le. A **BTMMigrationTool** elérhető része a **eszközök** megadott csomag a [BizTalk Services SDK letöltése](https://go.microsoft.com/fwlink/p/?LinkId=235057). Az eszközzel kapcsolatos további információkért lásd: [BizTalk térkép átalakítása a BizTalk Services átalakítása](https://msdn.microsoft.com/library/windowsazure/hh949812.aspx).
+A Microsoft Azure BizTalk Services biztosítja, hogy egy eszköz a BizTalk-kiszolgáló áttelepítése a BizTalk Services átalakítások képez le. A **BTMMigrationTool** elérhető része a **eszközök** megadott csomag a [BizTalk Services SDK letöltése](https://go.microsoft.com/fwlink/p/?LinkId=235057). Az eszközzel kapcsolatos további információkért lásd: [BizTalk térkép átalakítása a BizTalk Services átalakítása](/previous-versions/azure/hh949812(v=azure.100)).
 
 Emellett tekintse meg a mintát Sandro Pereira, BizTalk MVP, amelyet szeretne [BizTalk Server leképezések áttelepítése a BizTalk Services átalakítások](https://social.technet.microsoft.com/wiki/contents/articles/23220.migrating-biztalk-server-maps-to-windows-azure-biztalk-services-wabs-maps.aspx).
 
@@ -103,13 +103,13 @@ Ha szeretné áttelepíteni a BizTalk Server vezénylési feldolgozása a Micros
 * [*A munkafolyamat WCF-szolgáltatások integrálása a Service Bus-üzenetsorok és témakörök* ](https://blogs.msdn.microsoft.com/paolos/2013/04/09/how-to-integrate-a-wcf-workflow-service-with-service-bus-queues-and-topics/) Paolo Salvatori szerint. 
 * [*Alkalmazások a Windows Workflow Foundation és az Azure* munkamenet](https://go.microsoft.com/fwlink/p/?LinkId=237314) a Build 2011 konferenciáról.
 * [*Windows folyamatkövető alaprendszer fejlesztői központja*](https://docs.microsoft.com/previous-versions/dotnet/articles/ee342461(v=msdn.10)).
-* [*Windows munkafolyamat Foundation 4 (WF4) dokumentációja* ](https://msdn.microsoft.com/library/dd489441.aspx) az MSDN Webhelyén.
+* [*Windows munkafolyamat Foundation 4 (WF4) dokumentációja* ](/dotnet/framework/windows-workflow-foundation/index) az MSDN Webhelyén.
 
 ## <a name="other-considerations"></a>Egyéb szempontok
 Az alábbiakban néhány megfontolandó szempont a BizTalk Services használata közben kell végrehajtania.
 
 ### <a name="fallback-agreements"></a>Tartalék szerződések
-BizTalk Server EDI-feldolgozást tartalmaz "Tartalék szerződések" fogalma.  A BizTalk Services does **nem** , amennyiben rendelkezik egy tartalék szerződés fogalom.  A BizTalk-dokumentáció témakörök [feldolgozása EDI szerződések a a szerepkör](https://go.microsoft.com/fwlink/p/?LinkId=237317) és [globális konfigurálása vagy tartalék megállapodás tulajdonságai](https://msdn.microsoft.com/library/bb245981.aspx) információ a tartalék szerződések használata a BizTalk A kiszolgáló.
+BizTalk Server EDI-feldolgozást tartalmaz "Tartalék szerződések" fogalma.  A BizTalk Services does **nem** , amennyiben rendelkezik egy tartalék szerződés fogalom.  A BizTalk-dokumentáció témakörök [feldolgozása EDI szerződések a a szerepkör](https://go.microsoft.com/fwlink/p/?LinkId=237317) és [globális konfigurálása vagy tartalék megállapodás tulajdonságai](/biztalk/core/configuring-global-or-fallback-agreement-properties) információ a tartalék szerződések használata a BizTalk A kiszolgáló.
 
 ### <a name="routing-to-multiple-destinations"></a>Több célhelyre Útválasztás
 A BizTalk Services-hidat, a jelenlegi állapotában nem támogatja a útválasztási üzenetek, több célra irányuló használatával közzétételi-feliratkozási modell. Ehelyett sikerült irányíthatja a Service Bus-témakörbe, majd az üzenetet, egynél több végponton több előfizetéssel is rendelkezhet, amely a BizTalk Services hidat üzeneteket.

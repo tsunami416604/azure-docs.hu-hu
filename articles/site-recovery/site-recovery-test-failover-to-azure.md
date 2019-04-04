@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 19f41256866b42962be36bbb97f5f6d3c06d7fed
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6d8ad71894444b3759e506c50244b592ac1f8aac
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976555"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904712"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Vészhelyreállítási próba végrehajtása az Azure-ba 
 
@@ -42,7 +42,7 @@ Ez az eljárás ismerteti egy helyreállítási terv feladatátvételi teszt fut
     - Hely helyreállítási kísérletek hozhat létre egy alhálózatot az azonos nevű és azonos IP-címre, amelyek a virtuális gépek tesztelése a **számítás és hálózat** a virtuális gép beállításait.
     - Ha egy azonos nevű alhálózat nem érhető el a feladatátvételi teszthez használni az Azure virtuális hálózatban, majd a teszt virtuális gép létrehozása az első alhálózat betűrend szerint.
     - Ha azonos IP-cím nem érhető el az alhálózatot, majd a virtuális gép kap egy másik elérhető IP-cím az alhálózat. [További információk](#create-a-network-for-test-failover).
-4. Ha Ön feladatátvétele már az Azure-ba, és engedélyezett az adattitkosítás, a **titkosítási kulcs**, válassza ki a titkosítási szolgáltató telepítése közben engedélyezésekor korábban kiadott tanúsítványt. Ebben a lépésben figyelmen kívül hagyhatja nincs engedélyezve a titkosítás.
+4. Ha Ön feladatátvétele már az Azure-ba, és engedélyezett az adattitkosítás, a **titkosítási kulcs**, válassza ki a titkosítási szolgáltató telepítése közben engedélyezésekor korábban kiadott tanúsítványt. Figyelmen kívül hagyhatja ezt a lépést, ha nincs engedélyezve a titkosítás.
 5. A feladatátvételi folyamat előrehaladásának nyomon a **feladatok** fülre. Megtekintheti a teszt replika gépet az Azure Portalon kell lennie.
 6. Az Azure virtuális gép RDP-kapcsolatának kezdeményez, kell [egy nyilvános IP-cím hozzáadása](https://aka.ms/addpublicip) , a feladatátvételen átesett virtuális gép hálózati adapterén.
 7. Ha minden a várt módon működik, kattintson az **feladatátvételi teszt utáni karbantartás**. Ezzel törli a feladatátvételi teszt során létrehozott virtuális gépeket.
@@ -70,7 +70,7 @@ A következő esetekben feladatátvételi egy extra közbenső lépés, amely á
     * storvsc
     * VMBus
     * storflt
-    * Intelide
+    * intelide
     * ATAPI
 * VMware virtuális gépek, amelyek nem rendelkeznek a DHCP-kompatibilis, megadásától használatával e DHCP vagy statikus IP-címek.
 
