@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box-dokumentáció
-description: 'Az Azure Data Box termékcsalád különböző kapacitású tárolókat biztosít több terabájtnyi adat az Azure-ba való gyors, olcsó és megbízható elküldéséhez. A Microsoft az adatok gyors és biztonságos átviteléhez saját fejlesztésű tárolóeszközöket küld Önnek, amelyekkel kapcsolat nélküli üzemmódban vagy a hálózaton keresztül végezheti az adatátvitelt.'
+description: Az Azure Data Box termékcsalád különböző kapacitású tárolókat biztosít több terabájtnyi adat az Azure-ba való gyors, olcsó és megbízható elküldéséhez. A Microsoft az adatok gyors és biztonságos átviteléhez saját fejlesztésű tárolóeszközöket küld Önnek, amelyekkel kapcsolat nélküli üzemmódban vagy a hálózaton keresztül végezheti az adatátvitelt.
 services: databox
 author: alkohli
 manager: twooley
@@ -11,6 +11,12 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
+ms.openlocfilehash: c0c5ea8dc069d24d01313bb68c0afb7c7aac1a33
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417700"
 ---
 <div id="main" class="v2">
 <h1>Azure Data Box</h1>

@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Analysis Services dokumentációja – oktatóanyagok, API-referencia'
-description: 'Ismerje meg, hogyan építhet ki adatmodellezési megoldásokat az Analysis Services használatával a felhőben. A dokumentáció bemutatja, hogyan hozhat létre vállalati BI-megoldásokat táblázatos adatok használatával.'
+title: Az Azure Analysis Services dokumentációja – oktatóanyagok, API-referencia
+description: Ismerje meg, hogyan építhet ki adatmodellezési megoldásokat az Analysis Services használatával a felhőben. A dokumentáció bemutatja, hogyan hozhat létre vállalati BI-megoldásokat táblázatos adatok használatával.
 services: analysis-services
 author: minewiskan
 ms.author: owend
@@ -8,6 +8,12 @@ layout: LandingPage
 ms.service: azure-analysis-services
 ms.topic: landing-page
 ms.date: 02/14/2018
+ms.openlocfilehash: ec3c45961ac92a505ee565373474ce3dc2fbabcc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106967"
 ---
 # <a name="analysis-services-documentation"></a>Analysis Services – dokumentáció
 

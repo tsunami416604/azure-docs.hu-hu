@@ -1,12 +1,18 @@
 ---
 title: Azure Service Health | Microsoft Docs
-description: 'Az Azure Service Health egy olyan szolgáltatáscsomag, amely személyre szabott útmutatást és támogatást nyújt, ha problémák merülnek fel az Azure használata közben.'
+description: Az Azure Service Health egy olyan szolgáltatáscsomag, amely személyre szabott útmutatást és támogatást nyújt, ha problémák merülnek fel az Azure használata közben.
 author: stephbaron
 layout: LandingPage
 ms.service: service-health
 ms.topic: landing-page
 ms.date: 03/4/2019
 ms.author: stbaron
+ms.openlocfilehash: cf7084b569e2c90337e475beb9f49563214941d2
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496702"
 ---
 # <a name="azure-service-health-documentation"></a>Azure Service Health dokumentációja
 

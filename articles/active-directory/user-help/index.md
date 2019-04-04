@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
-title: 'Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközkezeléshez – Azure Active Directory | Microsoft Docs'
-description: 'A felhasználói súgó olyan személyeknek szól, akiknek segítségre van szükségük a biztonsági adatok, a kétlépéses ellenőrzés, az új jelszó önkiszolgáló kérése, az eszközkezelés, a Microsoft Authenticator alkalmazás és a Saját alkalmazások portál beállításához és használatához.'
+title: Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközkezeléshez – Azure Active Directory | Microsoft Docs
+description: A felhasználói súgó olyan személyeknek szól, akiknek segítségre van szükségük a biztonsági adatok, a kétlépéses ellenőrzés, az új jelszó önkiszolgáló kérése, az eszközkezelés, a Microsoft Authenticator alkalmazás és a Saját alkalmazások portál beállításához és használatához.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -11,8 +11,13 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6e73e089f0753f49233c75a5e55513ebaf7bf9c9
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338105"
 ---
-
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Felhasználói súgó a hitelesítéshez, az alkalmazásokhoz és az eszközkezeléshez
 
 Ezeket a tartalmakat azért hoztuk létre, hogy segítséget nyújtsunk a biztonsági adatok és a kétlépéses ellenőrzés beállításához és használatához, az új jelszó önkiszolgáló kérésének elsajátításához, az Azure Active Directory-eszközök beállításához és csatlakoztatásához, valamint a Microsoft Authenticator alkalmazás és a Saját alkalmazások portál beállításához és használatához.

@@ -1,7 +1,7 @@
 ---
 layout: HubPage
 title: Az Azure Cognitive Services dokumentációja
-description: 'Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, webhelyeket és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg, hogyan használhatja az API-kat.'
+description: Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, webhelyeket és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg, hogyan használhatja az API-kat.
 services: cognitive-services
 author: nitinme
 manager: nitinme
@@ -9,8 +9,13 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 02/21/2019
 ms.topic: hub-page
+ms.openlocfilehash: 621cf49284ac1080bf18619f80f14c8a21c2f761
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472922"
 ---
-
 <div id="main" class="v2">
 <h1>Az Azure Cognitive Services dokumentációja</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, weboldalakat és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.</p>
