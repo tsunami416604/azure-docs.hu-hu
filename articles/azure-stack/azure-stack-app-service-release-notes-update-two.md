@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: d57b06a33421a94c4f849a1c1fd7cd6f1f4248dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98d084794accb99e0fecac85f7de861ec35bc15e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848898"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446027"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service-ben az Azure Stack 2-es frissítés – kibocsátási megjegyzések
 
@@ -52,6 +52,8 @@ Tekintse meg a [mielőtt elkezdené a dokumentáció](azure-stack-app-service-be
 Az Azure App Service az Azure Stack Update 2 tartalmazza a következő fejlesztések és javítások:
 
 - Frissítések **App Services-bérlő, a rendszergazda, a Functions-portálok és eszközök a Kudu**. Az Azure Stack Portal SDK-verzió összhangban.
+
+- Frissítések **Azure Functions runtime** való **v1.0.11612**.
 
 - Fokozható a megbízhatóság és a hibaüzenetek gyakori problémák egyszerűbb diagnosztika engedélyezése a core-szolgáltatás frissítése.
 
@@ -84,7 +86,7 @@ Az Azure App Service az Azure Stack Update 2 tartalmazza a következő fejleszt�
 - Feldolgozók nem érhető el a fájlkiszolgálót, amikor az App Service-ben meglévő virtuális hálózaton van üzembe helyezve, és a fájlkiszolgáló csak érhető el a magánhálózaton.
 
 Ha úgy döntött, hogy egy meglévő virtuális hálózattal és belső IP-cím szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése. Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
-* Forrás: Bármelyik
+* Forrás: Bármely
 * Forrás porttartomány: *
 * Cél: IP-címek
 * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz

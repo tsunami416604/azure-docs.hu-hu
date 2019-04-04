@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 6dc3fb97c912aa9ac66e3d40a8a0318a6938905c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ee86b9aa2d920668cf036f3e8f8634e9289e8913
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230291"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916869"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk Services: Biztonsági mentés és visszaállítás
 
@@ -34,7 +34,7 @@ Az Azure BizTalk Services biztonsági mentési és visszaállítási képessége
 
 
 ## <a name="before-you-begin"></a>A telepítés megkezdése előtt
-* Biztonsági mentés és visszaállítás nem lehet elérhető összes kiadása esetén. Lásd: [a BizTalk Services: kiadások diagramja](biztalk-editions-feature-chart.md).
+* Biztonsági mentés és visszaállítás nem lehet elérhető összes kiadása esetén. Lásd: [a BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md).
 * Biztonsági mentési tartalom visszaállíthatók, ugyanazt a BizTalk-szolgáltatás vagy egy új BizTalk szolgáltatást. A BizTalk-szolgáltatás nevének használatával visszaállításához törölni kell a meglévő BizTalk-szolgáltatás, és a név elérhetőnek kell lennie. Miután törli a BizTalk-szolgáltatás, ugyanazzal a névvel elérhető legyen az olyan hosszabb időt is igénybe vehet. Ha nem várja meg ugyanazzal a névvel elérhető legyen, majd állítsa vissza egy új BizTalk szolgáltatást.
 * A BizTalk Services vissza tudja állítani a kiadást vagy magasabb kiadásra. A BizTalk Services alacsonyabb verzióra történő visszaállításához, amikor a biztonsági mentés készült, nem támogatott.
   
@@ -43,13 +43,13 @@ Az Azure BizTalk Services biztonsági mentési és visszaállítási képessége
 * Ha egy kötegelt aktív üzenetek, dolgozza fel a batch **előtt** biztonsági másolat készítése. Biztonsági másolat létrehozása (a szükséges vagy ütemezett), ha üzeneteket, és kötegekben soha nem tárolja. 
   
     **Ha egy biztonsági mentés készül az aktív üzenetek találhatók egy kötegelt, ezeket az üzeneteket nem készül biztonsági másolat, és emiatt elvesznek.**
-* Választható lehetőség: A BizTalk Services Portáljára, nem felügyeleti műveleteket sem.
+* Nem kötelező: A BizTalk Services Portáljára nem felügyeleti műveleteket sem.
 
 ## <a name="create-a-backup"></a>Biztonsági mentés létrehozása
-Biztonsági másolat tetszőleges időpontban lehet végrehajtani, és Ön teljes mértékben szabályozza. Biztonsági másolat létrehozásához használja a [REST API a BizTalk Services felügyelete az Azure-ban](https://msdn.microsoft.com/library/azure/dn232347.aspx).
+Biztonsági másolat tetszőleges időpontban lehet végrehajtani, és Ön teljes mértékben szabályozza. Biztonsági másolat létrehozásához használja a [REST API a BizTalk Services felügyelete az Azure-ban](/previous-versions/azure/reference/dn232347(v=azure.100)).
 
 ## <a name="restore"></a>Visszaállítás
-Biztonsági másolat visszaállításához használja a [REST API a BizTalk Services felügyelete az Azure-ban](https://msdn.microsoft.com/library/azure/dn232347.aspx).
+Biztonsági másolat visszaállításához használja a [REST API a BizTalk Services felügyelete az Azure-ban](/previous-versions/azure/reference/dn232347(v=azure.100)).
 
 ### <a name="postrestore"></a>Biztonsági másolat visszaállítása után
 A BizTalk-szolgáltatás mindig állítja vissza az egy **felfüggesztett** állapota. Ebben az állapotban végrehajtott bármilyen konfigurációs módosításokat előtt működési, beleértve az új környezet teheti meg:
@@ -92,19 +92,19 @@ Biztonsági másolat létrehozásakor a következő elemek készül biztonsági 
 
 <tr>
 <td colspan="2">
- <strong>Az Azure BizTalk-szolgáltatás</strong></td>
+ <strong>Azure BizTalk Service</strong></td>
 </tr> 
 <tr>
 <td>SSL-tanúsítvány</td> 
 <td>
 <ul>
-<li>SSL-tanúsítvány adatait</li>
-<li>SSL-tanúsítványának jelszava</li>
+<li>SSL Certificate Data</li>
+<li>SSL Certificate Password</li>
 </ul>
 </td>
 </tr> 
 <tr>
-<td>A BizTalk-szolgáltatás beállításai</td> 
+<td>BizTalk Service Settings</td> 
 <td>
 <ul>
 <li>Skálázási egységek száma</li>
@@ -132,16 +132,16 @@ A követés adatbázisa törlődik, és az adatbázis igényeinek megfelelő hel
 </table>
 
 ## <a name="next"></a>Következő lépés
-Azure BizTalk Services létrehozása, lépjen a [BizTalk Services: kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280). Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
+Azure BizTalk Services létrehozása, lépjen a [BizTalk Services: Kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280). Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
 
 ## <a name="see-also"></a>Lásd még:
-* [Biztonsági mentési BizTalk-szolgáltatás](https://go.microsoft.com/fwlink/p/?LinkID=325584)
+* [Backup BizTalk Service](https://go.microsoft.com/fwlink/p/?LinkID=325584)
 * [BizTalk-szolgáltatás a biztonsági másolatból](https://go.microsoft.com/fwlink/p/?LinkID=325582)
-* [A BizTalk Services: Fejlesztői, alapszintű, Standard és prémium kiadások diagramja](https://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [A BizTalk Services: kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk Services: Fejlesztői, alapszintű, Standard és prémium kiadások diagramja](https://go.microsoft.com/fwlink/p/?LinkID=302279)
+* [BizTalk Services: Kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280)
 * [BizTalk Services: Kiépítési állapot diagramja](https://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [BizTalk Services: Irányítópult, Figyelés és Méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk Services: Szabályozás](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk Services: Irányítópult, figyelés és méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk Services: Throttling](https://go.microsoft.com/fwlink/p/?LinkID=302282)
 * [BizTalk Services: Kiállító neve és kiállító kulcsa](https://go.microsoft.com/fwlink/p/?LinkID=303941)
 * [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 

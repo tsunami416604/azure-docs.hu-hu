@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 3f0d3c5748afaac2544232fc1ff84316d9eb7347
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 0dcfa4e7cd792f61d1620a57330f87c5c86e6c9f
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351065"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915691"
 ---
 # <a name="scaling-media-processing"></a>Skálázás médiafeldolgozás
 
-Az Azure Media Services lehetővé teszi, hogy méretezhető médiafeldolgozás a fiókjában, mivel kezeli az Media szolgáltatás számára fenntartott egységek (helyet). Helyet határozza meg, hogy a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egység típusok közül választhat: **S1**, **S2**, vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett. 
+Az Azure Media Services a fenntartott médiaegységek (MRU-k) kezelésével lehetővé teszi a médiafeldolgozás skálázását a fiókjában. Helyet határozza meg, hogy a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egység típusok közül választhat: **S1**, **S2**, vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett. 
 
 A szolgáltatás számára fenntartott egység típusának meghatározása, mellett megadhatja fiókja ellátása szolgáltatás számára fenntartott egységek. A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát. Például ha a fiókja rendelkezik öt fenntartott egységet, majd öt feldolgozható médiafeladatok fog futni, amíg egy időben, amennyi a feldolgozandó feladatok. A hátralévő feladatok a várólistában várakozik, és feldolgozására egymás után futtatott feladat végeztével lesznek első mértékének. Ha a fiók nem rendelkezik minden üzembe helyezett szolgáltatás számára fenntartott egységeket, majd feladatok fog felvenni, egymás után. Ebben az esetben egy feladat befejeződik, és a következő egy kezdő között a várakozási idő függ az erőforrások rendelkezésre állása a rendszerben.
 
@@ -45,9 +45,9 @@ Az alábbi táblázat segít a különböző kódolási sebességű közötti ki
 A cikk bemutatja, hogyan [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) méretezése a helyet.
 
 > [!NOTE]
-> A hangelemzés és videó elemzési feladatokat a Media Services v3 által aktivált vagy a Video Indexer azt javasoljuk 10 S3 szintű helyet a fiók kiépítése. Ha több mint 10 S3-helyet, nyisson meg egy támogatási jegyet a a [az Azure portal](https://portal.azure.com/).
+> A Media Services v3 vagy a Video Indexer által aktivált hangelemzési és videoelemzési feladatok esetében javasolt 10 S3 MRU-val ellátni a fiókot. Ha több mint 10 S3-helyet, nyisson meg egy támogatási jegyet a a [az Azure portal](https://portal.azure.com/).
 >
-> Az Azure portal jelenleg nem használható más v3-erőforrások kezeléséhez. Használja a [REST API-val](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref), vagy a támogatott valamelyik [SDK-k](developers-guide.md).
+> Az Azure portal jelenleg nem használható más v3-erőforrások kezeléséhez. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](developers-guide.md).
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -67,7 +67,7 @@ az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
 
 ## <a name="billing"></a>Számlázás
 
-Díja a száma, típusa és helyet felhasznált idő alapján a fiókjában. A díjak vonatkoznak-e a feladatok futtatásához. – Gyakori kérdések című szakaszában talál részletes magyarázatát, a [Media Services-díjszabás](https://azure.microsoft.com/pricing/details/media-services/) lapot.   
+A számlázás a alapján a Media szolgáltatás számára fenntartott egységek felhasznált percek számát a fiókjában. Ez akkor fordulhat elő, hogy e független bármely a fiókban futó feladatok. – Gyakori kérdések című szakaszában talál részletes magyarázatát, a [Media Services-díjszabás](https://azure.microsoft.com/pricing/details/media-services/) lapot.   
 
 ## <a name="next-step"></a>Következő lépés
 

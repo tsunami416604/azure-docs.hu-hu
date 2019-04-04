@@ -15,12 +15,12 @@ ms.date: 03/19/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
-ms.openlocfilehash: 34e49060a28869015f067f058b81239ec13eff47
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: ceb092192924b79f1584d72b307e3bc3512c0025
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226399"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484169"
 ---
 # <a name="manage-azure-stack-storage-accounts"></a>Azure Stack tárfiókok kezelése
 
@@ -136,7 +136,7 @@ Explicit módon a megőrzési időszak felülbírálására PowerShell is haszn�
 > [!NOTE]  
 > Ha ezen parancsmagok futtatásához véglegesen törli a fiókot, és annak tartalmát. Esetén nem állítható helyre. Ez körültekintően szabad használni.
 
-```PowerShell  
+```powershell  
     $farm_name = (Get-AzsStorageFarm)[0].name
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ```

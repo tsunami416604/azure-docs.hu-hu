@@ -16,12 +16,12 @@ ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 58be7b6dc9eeeadd69fe82f1dc03d959aa94f9c8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb2c01052b8dc5fe346196a64e3fcbf7d1b69c2b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088434"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485750"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Mielőtt elkezdené, az Azure Stack App Service-szel
 
@@ -61,7 +61,7 @@ Futtassa a *Get-AzureStackRootCert.ps1* parancsfájlt a mappát, amelyikbe kibon
 
 A következő PowerShell-parancs futtatásakor kell a AzureStack\CloudAdmin adja meg a kiemelt végponthoz és a hitelesítő adatokat.
 
-```PowerShell
+```powershell
     Get-AzureStackRootCert.ps1
 ```
 
@@ -353,7 +353,7 @@ Kövesse az alábbi lépéseket:
 13. Válassza ki **beállítások**.
 14. Válassza ki **szükséges engedélyek** > **engedélyeket** > **Igen**.
 
-```PowerShell
+```powershell
     Create-AADIdentityApp.ps1
 ```
 
@@ -365,7 +365,7 @@ Kövesse az alábbi lépéseket:
 | AzureStackAdminCredential | Szükséges | Null | Az Azure AD szolgáltatás rendszergazdai hitelesítő adataihoz. |
 | CertificateFilePath | Szükséges | Null | **Teljes elérési útja** , az identitás alkalmazástanúsítvány-fájlja korábban létrehozott. |
 | CertificatePassword | Szükséges | Null | Olyan jelszót, amely segít megvédeni a tanúsítvány titkos kulcsa. |
-| Környezet | Optional | AzureCloud | A neve, a támogatott Felhőbeli környezet, amelyben a cél Azure Active Directory Graph szolgáltatás érhető el.  Megengedett értékek: 'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment', 'AzureGermanCloud'.|
+| Környezet | Választható | AzureCloud | A neve, a támogatott Felhőbeli környezet, amelyben a cél Azure Active Directory Graph szolgáltatás érhető el.  Megengedett értékek: 'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment', 'AzureGermanCloud'.|
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Active Directory összevonási szolgáltatások alkalmazás létrehozása
 
@@ -389,7 +389,7 @@ Kövesse az alábbi lépéseket:
 5. Az a **Credential** ablakban adja meg az AD FS felhőalapú rendszergazdai fiók és jelszó. Kattintson az **OK** gombra.
 6. Adja meg a tanúsítványfájl elérési útja és a tanúsítvány jelszavát a [korábban létrehozott tanúsítvány](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started). Alapértelmezés szerint ez a lépés a létrehozott tanúsítványt **sso.appservice.local.azurestack.external.pfx**.
 
-```PowerShell
+```powershell
     Create-ADFSIdentityApp.ps1
 ```
 

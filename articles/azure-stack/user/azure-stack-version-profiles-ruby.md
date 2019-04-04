@@ -16,12 +16,12 @@ ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 5c7031b0d0a08106473409233db0ad95ecb32525
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 226416688fe4f2c48981718e7a2f40b0ba5b0685
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095364"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649611"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Ruby használatával
 
@@ -91,7 +91,7 @@ Azure Ruby SDK használatához az Azure Stack használatával, adja meg a követ
 | Ügyfél-azonosító | AZURE_CLIENT_ID | A szolgáltatás egyszerű alkalmazást azonosító mentése az előző szakaszban Ez a dokumentum az egyszerű szolgáltatás létrehozásakor.  |
 | Előfizetés azonosítója | AZURE_SUBSCRIPTION_ID | A [előfizetés-azonosító](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) van, hogy miként férhetnek hozzá az ajánlatok az Azure Stackben. |
 | Titkos ügyfélkulcs | AZURE_CLIENT_SECRET | A szolgáltatás egyszerű alkalmazás titkos kulcs mentése egyszerű szolgáltatás létrehozásakor. |
-| Resource Manager-végpont | ARM_ENDPOINT | Lásd: [az Azure Stack resource manager-végpont](#The-azure-stack-resource-manager-endpoint).  |
+| Resource Manager-végpont | ARM_ENDPOINT | Lásd: [az Azure Stack resource manager-végpont](#the-azure-stack-resource-manager-endpoint).  |
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Az Azure Stack resource manager-végpont
 
@@ -232,7 +232,7 @@ A minta futtatásához, győződjön meg arról, hogy telepítette a Rubyt. Ha a
    Egyszerű szolgáltatás létrehozásával kapcsolatos útmutatóért lásd: [tanúsítvánnyal egyszerű szolgáltatás létrehozása az Azure PowerShell használatával](../azure-stack-create-service-principals.md).
 
    Szükséges értékek a következők:
-   - Bérlőazonosító
+   - Bérlő azonosítója
    - Ügyfél-azonosító
    - Titkos ügyfélkulcs
    - Előfizetés azonosítója

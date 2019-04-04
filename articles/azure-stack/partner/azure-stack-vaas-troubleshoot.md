@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4b212ae884b184ffc60cdc0b3a2181a59efa3904
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fedfd7f83a35398586734fa647751e537b850bf8
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760868"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481195"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>Érvényesítési szolgáltatás hibaelhárítása
 
@@ -44,7 +44,7 @@ Az ügynök folyamata leállt ungracefully például, ha a gép újraindul, leá
 > [!Note]
 > Ütemezett vizsgálatok egy munkafolyamaton belül egymás után futnak. **Függőben lévő** tesztek nem lekérése amíg a tesztek végrehajtása a **futó** állapot teljes ugyanabban a munkafolyamatban.
 
-## <a name="vm-images"></a>Virtuálisgép-rendszerképek
+## <a name="vm-images"></a>VM-lemezképek
 
 ### <a name="handle-slow-network-connectivity"></a>Lassú hálózati kapcsolat kezeléséhez
 
@@ -60,7 +60,7 @@ Letöltheti a PIR kép megosztásra a helyi adatközpontban. És a lemezkép ell
 
 3. Nyissa meg a Windows Powershellt egy rendszergazda jogú parancssorból. Futtassa az alábbi parancsot:
 
-```PowerShell  
+```powershell  
     .\azcopy.exe /Source:'https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container' /Dest:'<LocalFileShare>' /Pattern:'Server2016DatacenterFullBYOL.vhd' /NC:12 /V:azcopylog.log /Y
     .\azcopy.exe /Source:'https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container' /Dest:'<LocalFileShare>' /Pattern:'Server2016DatacenterCoreBYOL.vhd' /NC:12 /V:azcopylog.log /Y
     .\azcopy.exe /Source:'https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container' /Dest:'<LocalFileShare>' /Pattern:'WindowsServer2012R2DatacenterBYOL.vhd' /NC:12 /V:azcopylog.log /Y
@@ -104,7 +104,7 @@ Ha a környezet megfelelő, manuális VaaS tesztelési célú futtatások szüks
     | Közzétevő | MicrosoftWindowsServer |
     | Ajánlat | WindowsServer |
     | Operációs rendszer típusa | Windows |
-    | SKU | 2012-R2-Datacenter |
+    | Termékváltozat | 2012-R2-Datacenter |
     | Verzió | 1.0.0 |
     | Operációsrendszer-lemez Blob URI-t | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
 
@@ -113,13 +113,13 @@ Ha a környezet megfelelő, manuális VaaS tesztelési célú futtatások szüks
 
 5 Virtuálisgép-rendszerképek tulajdonságai a következők:
 
-| Közzétevő  | Ajánlat  | Operációs rendszer típusa | SKU | Verzió | Operációsrendszer-lemez Blob URI-t |
+| Közzétevő  | Ajánlat  | Operációs rendszer típusa | Termékváltozat | Verzió | Operációsrendszer-lemez Blob URI-t |
 |---------|---------|---------|---------|---------|---------|
 | MicrosoftWindowsServer| WindowsServer | Windows | 2012-R2-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
 | MicrosoftWindowsServer | WindowsServer | Windows | 2016-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterFullBYOL.vhd |
 | MicrosoftWindowsServer | WindowsServer | Windows | 2016-Datacenter-Server-Core | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterCoreBYOL.vhd |
-| Canonical | UbuntuServer | Linux | 14.04.3-LTS | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Ubuntu1404LTS.vhd |
-| Canonical | UbuntuServer | Linux | 16.04-LTS | 16.04.20170811 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Ubuntu1604-20170619.1.vhd |
+| Kanonikus | UbuntuServer | Linux | 14.04.3-LTS | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Ubuntu1404LTS.vhd |
+| Kanonikus | UbuntuServer | Linux | 16.04-LTS | 16.04.20170811 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Ubuntu1604-20170619.1.vhd |
 
 ## <a name="next-steps"></a>További lépések
 

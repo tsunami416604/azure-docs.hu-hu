@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 3d9c2a694562977c2a012d9faa9c282c6b8fff9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 76f8fed8d185598d62eef5a412fda2c3fd1317bd
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099831"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893979"
 ---
 # <a name="data-extraction-from-intents-and-entities"></a>Adatok kinyerése a szándékok és entitások felismerésére
 A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni. A következő szakaszban megtudhatja, milyen adatokat küld vissza, a szándékok és entitások példákkal a JSON.
@@ -432,13 +432,13 @@ Nevének lekérése az utterance (kifejezés) azért nehéz, mert a neve betűke
 [PersonName](luis-reference-prebuilt-person.md) és [GeographyV2](luis-reference-prebuilt-geographyV2.md) entitások érhetők el az egyes [nyelvi kulturális környezetek](luis-reference-prebuilt-entities.md). 
 
 ### <a name="names-of-people"></a>Személyek nevét
-Emberek neve nem lehet néhány kisebb formátum nyelvi és kulturális környezet függően. Vezetéknév és utónév gyermekeként vagy egy hierarchikus entitás használata, vagy egy egyszerű entitás a szerepkörök az utónév és Vezetéknév. Ügyeljen arra, hogy példákkal szemlélteti, hogy az első és utolsó az utterance (kifejezés), a különböző hosszúságú kimondott szöveg és a kimondott szöveg különböző részein nevét használja az összes szándék fog vonatkozni, akár a egy sem szándék. [Felülvizsgálat](luis-how-to-review-endoint-utt.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
+Emberek neve nem lehet néhány kisebb formátum nyelvi és kulturális környezet függően. Vezetéknév és utónév gyermekeként vagy egy hierarchikus entitás használata, vagy egy egyszerű entitás a szerepkörök az utónév és Vezetéknév. Ügyeljen arra, hogy példákkal szemlélteti, hogy az első és utolsó az utterance (kifejezés), a különböző hosszúságú kimondott szöveg és a kimondott szöveg különböző részein nevét használja az összes szándék fog vonatkozni, akár a egy sem szándék. [Felülvizsgálat](luis-how-to-review-endpoint-utterances.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
 
 ### <a name="names-of-places"></a>Helyek nevei
-Hely neve beállítása és ismert, például a város, megyék, államok, megyék és országok. Ha az alkalmazás egy helyen tudja készletét használja, fontolja meg egy lista entitást. Ha meg kell keresnie az összes helyezze el a neveket, hozzon létre egy egyszerű entitás, és adja meg a különböző példákat. Adja hozzá a hely nevének megerősítése milyen helyen nevek néz ki az alkalmazásban kifejezés listáját. [Felülvizsgálat](luis-how-to-review-endoint-utt.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
+Hely neve beállítása és ismert, például a város, megyék, államok, megyék és országok. Ha az alkalmazás egy helyen tudja készletét használja, fontolja meg egy lista entitást. Ha meg kell keresnie az összes helyezze el a neveket, hozzon létre egy egyszerű entitás, és adja meg a különböző példákat. Adja hozzá a hely nevének megerősítése milyen helyen nevek néz ki az alkalmazásban kifejezés listáját. [Felülvizsgálat](luis-how-to-review-endpoint-utterances.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
 
 ### <a name="new-and-emerging-names"></a>Új és újonnan megjelenő neve
-Bizonyos alkalmazásokhoz kell tudni új és újonnan felbukkanó nevek, például a termékek vagy cégek keresése. Az ilyen típusú nevek az adatok kinyerése a legbonyolultabb típusa. Egy egyszerű entitás előtaggal kell kezdődnie, és adja hozzá a kifejezések listáját. [Felülvizsgálat](luis-how-to-review-endoint-utt.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
+Bizonyos alkalmazásokhoz kell tudni új és újonnan felbukkanó nevek, például a termékek vagy cégek keresése. Az ilyen típusú nevek az adatok kinyerése a legbonyolultabb típusa. Egy egyszerű entitás előtaggal kell kezdődnie, és adja hozzá a kifejezések listáját. [Felülvizsgálat](luis-how-to-review-endpoint-utterances.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
 
 ## <a name="pattern-roles-data"></a>A minta szerepkörök adatok
 Szerepkörök az entitások környezetfüggő különbségek.

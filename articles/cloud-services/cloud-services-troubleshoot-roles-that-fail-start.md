@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: a73559e233f647d5bf0812a5acdf5e19f05b0858
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255421"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918416"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>A nem induló Felhőszolgáltatási szerepkörök hibaelhárítása
 Az alábbiakban néhány gyakori problémát és az Azure Cloud servicesben kapcsolódó megoldások szerepköröket, amelyek nem indulnak el.
@@ -69,14 +69,14 @@ Használhatja a távoli asztali eléréséhez a szerepkört, és teljes hibaadat
 6. Nyisson meg egy parancsablakot.
 7. Gépelje be: `IPconfig`.
 8. Jegyezze fel az IPV4-cím értékét.
-9. Nyissa meg az Internet Explorert.
+9. Open Internet Explorer.
 10. Írja be a címet és a webalkalmazás nevére. Például: `http://<IPV4 Address>/default.aspx`.
 
 Ellenőrizheti, hogy a webhely most visszatér több explicit hibaüzenetek:
 
 * Kiszolgálóhiba a "/" alkalmazás.
 * Leírás: Nem kezelt kivétel történt az aktuális webes kérelem végrehajtása közben. Tekintse át a híváslánc a hibával kapcsolatban, és ahol, adja meg a kódot a további információt.
-* Kivétel részletei: System.IO.FIleNotFoundException: nem sikerült betölteni a fájlt vagy a szerelvény "Microsoft.WindowsAzure.StorageClient, a verzió 1.1.0.0-s, Culture = neutral, PublicKeyToken = = 31bf856ad364e35" vagy a hozzá tartozó függőségek egyike. A rendszer a megadott fájl nem található.
+* Kivétel részletei: System.IO.FIleNotFoundException: Could not load file or assembly ‘Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35’ or one of its dependencies. A rendszer nem találja a megadott fájlt.
 
 Példa:
 
@@ -96,7 +96,7 @@ Ezzel a módszerrel a diagnosztikai a legjobb eredmények érdekében egy szám�
 7. A szerepkör indulásakor látni fogja a hibával kapcsolatos részletes információk az Internet Explorerben. Használhatja a hibaelhárítási eszközei szabványos Windows a probléma további diagnosztizálása érdekében.
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>IntelliTrace segítségével diagnosztizálhatja a problémákat
-A feldolgozó és használó .NET-keretrendszer 4 webes szerepkörök esetében használható [IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx), amely is elérhető a Microsoft Visual Studio Enterprise.
+A feldolgozó és használó .NET-keretrendszer 4 webes szerepkörök esetében használható [IntelliTrace](/visualstudio/debugger/intellitrace), amely is elérhető a Microsoft Visual Studio Enterprise.
 
 Kövesse az alábbi lépéseket az IntelliTrace engedélyezve van a szolgáltatás üzembe helyezéséhez:
 

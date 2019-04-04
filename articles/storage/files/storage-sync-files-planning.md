@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 034beeaaebb86786106f7884fc147ff15167538e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ad3b5a1d684c500eff3d20832d7aa290a13849b9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480719"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918637"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -278,6 +278,8 @@ Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjá
 | Kelet-Ázsia           | Délkelet-Ázsia     |
 | USA keleti régiója             | USA nyugati régiója            |
 | USA 2. keleti régiója           | USA középső régiója         |
+| Korea középső régiója       | Korea déli régiója        |
+| Korea déli régiója         | Korea középső régiója      |
 | Észak-Európa        | Nyugat-Európa        |
 | USA északi középső régiója    | USA déli középső régiója   |
 | Dél-India         | Közép-India      |

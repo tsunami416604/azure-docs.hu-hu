@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 5f34991dca4dbb4275033c764981c44492b9920e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 14095d4ffbd23a57ef769aa702b6e7c3c8af9994
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257807"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485985"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Egy csatlakoztatott esetben válassza ki az Azure AD vagy az AD FS. A leválasztott esetben csak az AD FS használata támogatott.
@@ -86,14 +86,14 @@ Ebben az eljárásban az Adatközpont-hálózatát, amely képes kommunikálni a
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet (Futtatás rendszergazdaként), és csatlakozzon a rendszerjogosultságú végpont IP-címét. A hitelesítő adatok használata **CloudAdmin** hitelesítéséhez.
 
-   ```PowerShell  
+   ```powershell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. Most, hogy a kiemelt végponthoz csatlakozik, futtassa a következő parancsot: 
 
-   ```PowerShell  
+   ```powershell  
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
    ```
 
@@ -131,20 +131,20 @@ Ebben az eljárásban használja olyan számítógépre, amely képes kommuniká
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és a kiemelt végponthoz csatlakozik.
 
-   ```PowerShell  
+   ```powershell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. Most, hogy a kiemelt végponthoz csatlakozik, futtassa a következő parancsot, a környezetnek megfelelő paraméterek használatával:
 
-   ```PowerShell  
+   ```powershell  
    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml
    ```
 
 3. Futtassa a következő parancsot a környezetnek megfelelő paraméterekkel az alapértelmezett szolgáltatója előfizetés tulajdonosának frissítése:
 
-   ```PowerShell  
+   ```powershell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
@@ -169,7 +169,7 @@ A következő eljárás olyan számítógépen, amelyen a hálózati kapcsolat �
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsot, és válasszon a környezetének megfelelő paraméterekkel:
 
-   ```PowerShell  
+   ```powershell  
     $url = "https://win-SQOOJN70SGL.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml"
     $webclient = New-Object System.Net.WebClient
     $webclient.Encoding = [System.Text.Encoding]::UTF8
@@ -185,7 +185,7 @@ Ez az eljárás, amely képes kommunikálni az Azure Stack a rendszerjogosultsá
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és a kiemelt végponthoz csatlakozik.
 
-   ```PowerShell  
+   ```powershell  
    $federationMetadataFileContent = get-content c:\metadata.xml
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
@@ -193,13 +193,13 @@ Ez az eljárás, amely képes kommunikálni az Azure Stack a rendszerjogosultsá
 
 2. Most, hogy a kiemelt végponthoz csatlakozik, futtassa a következő parancsot, a környezetnek megfelelő paraméterek használatával:
 
-    ```PowerShell
+    ```powershell
     Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
     ```
 
 3. Futtassa a következő parancsot a környezetnek megfelelő paraméterekkel az alapértelmezett szolgáltatója előfizetés tulajdonosának frissítése:
 
-   ```PowerShell  
+   ```powershell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
@@ -249,7 +249,7 @@ Ha úgy dönt, hogy manuálisan futtassa a parancsokat, kövesse az alábbi lép
 
 2. Ellenőrizze, hogy a Windows Forms-alapú hitelesítés extranetes és intranetes engedélyezve van. Először ellenőrizheti, hogy az már engedélyezve van a következő parancsmagot:
 
-   ```PowerShell  
+   ```powershell  
    Get-AdfsAuthenticationProvider | where-object { $_.name -eq "FormsAuthentication" } | select Name, AllowedForPrimaryExtranet, AllowedForPrimaryIntranet
    ```
 
@@ -260,13 +260,13 @@ Ha úgy dönt, hogy manuálisan futtassa a parancsokat, kövesse az alábbi lép
 
    **Az AD FS 2016**
 
-   ```PowerShell  
+   ```powershell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone" -TokenLifeTime 1440
    ```
 
    **Az AD FS 2012/2012 R2-ben**
 
-   ```PowerShell  
+   ```powershell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -TokenLifeTime 1440
    ```
 
@@ -278,7 +278,7 @@ Ha úgy dönt, hogy manuálisan futtassa a parancsokat, kövesse az alábbi lép
    > [!note]  
    > Ez a lépés nem alkalmazható, ha a Windows Server 2012 vagy 2012 R2 AD FS használatával. Hagyja ki ezt a parancsot, és folytassa az integráció biztonságos legyen.
 
-   ```PowerShell  
+   ```powershell  
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
 
@@ -306,14 +306,14 @@ Ha hiba lép fel, amelyek a környezetet, akkor nem tudják hitelesíteni állap
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsokat:
 
-   ```PowerShell  
+   ```powershell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. Ezután futtassa a következő parancsmagot:
 
-   ```PowerShell  
+   ```powershell  
    Reset-DatacenterIntegrationConfiguration
    ```
 
@@ -322,7 +322,7 @@ Ha hiba lép fel, amelyek a környezetet, akkor nem tudják hitelesíteni állap
    > [!IMPORTANT]
    > Konfigurálnia kell az eredeti tulajdonost az alapértelmezett szolgáltatója előfizetés
 
-   ```PowerShell  
+   ```powershell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "azurestackadmin@[Internal Domain]"
    ```
 
@@ -332,14 +332,14 @@ A parancsmagok bármelyike sikertelen, ha további naplók segítségével begy�
 
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsokat:
 
-   ```PowerShell  
+   ```powershell  
    $creds = Get-Credential
    Enter-pssession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. Ezután futtassa a következő parancsmagot:
 
-   ```PowerShell  
+   ```powershell  
    Get-AzureStackLog -OutputPath \\myworstation\AzureStackLogs -FilterByRole ECE
    ```
 

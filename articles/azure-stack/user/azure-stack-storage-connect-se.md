@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 314304e75ce0f2586f41b71a889fa0185501b845
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763367"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622008"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Storage explorer csatlakoztatása Azure Stack-előfizetéshez vagy a storage-fiók
 
@@ -49,25 +49,27 @@ Exportálja és importálja az Azure Stack-tanúsítvány esetében a ASDK. Inte
 
 1. Nyissa meg `mmc.exe` az Azure Stack gazdagépen vagy az Azure Stackhez VPN-kapcsolattal egy helyi számítógépre. 
 
-2. A **fájl**válassza **beépülő modul hozzáadása/eltávolítása**, majd adja hozzá **tanúsítványok** kezeléséhez **saját felhasználói fiókot**.
+2. A **fájl**válassza **beépülő modul hozzáadása/eltávolítása**. Válassza ki **tanúsítványok** az elérhető beépülő modulok. 
 
-3.  A **Console Root\Certificated (helyi számítógép) \Trusted Root Certification Authorities\Certificates**. Find **AzureStackSelfSignedRootCert**.
+3. Válassza ki **számítógépfiók**, majd válassza ki **tovább**. Válassza ki **helyi számítógép**, majd válassza ki **Befejezés**.
+
+4.  A **Console Root\Certificated (helyi számítógép) \Trusted Root Certification Authorities\Certificates**. Find **AzureStackSelfSignedRootCert**.
 
     ![Az Azure Stack főtanúsítványának betöltése az mmc.exe segítségével](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
-4. Válassza ki a tanúsítványra jobb kattintás **feladatok** > **exportálása**, majd kövesse az utasításokat a tanúsítvány exportálása a **Base-64 kódolású X.509 (. CER)**.
+5. Válassza ki a tanúsítványra jobb kattintás **feladatok** > **exportálása**, majd kövesse az utasításokat a tanúsítvány exportálása a **Base-64 kódolású X.509 (. CER)**.
 
     Az exportált tanúsítványt a következő lépésben fogja használni.
 
-5. Indítsa el a tártallózót, és ha a **csatlakozás az Azure Storage** párbeszédpanel mezőben, törölje azt.
+6. Indítsa el a tártallózót, és ha a **csatlakozás az Azure Storage** párbeszédpanel mezőben, törölje azt.
 
-6. Az a **szerkesztése** menüben mutasson a **SSL-tanúsítványok**, majd válassza ki **tanúsítványok importálása**. A fájlválasztó párbeszédpanellel keresse meg és nyissa meg az előző lépésben exportált tanúsítványt.
+7. Az a **szerkesztése** menüben mutasson a **SSL-tanúsítványok**, majd válassza ki **tanúsítványok importálása**. A fájlválasztó párbeszédpanellel keresse meg és nyissa meg az előző lépésben exportált tanúsítványt.
 
     A tanúsítvány az importálás után kéri, hogy a Tártallózó újraindítására.
 
     ![A tanúsítvány importálása a tártallózóba](./media/azure-stack-storage-connect-se/import-azure-stack-cert-storage-explorer.png)
 
-7. Storage explorer újraindítása után válassza ki a **szerkesztése** menüt, és ellenőrzi, hogy **cél Azure Stack** van kiválasztva. Ha nem, válassza ki a **cél Azure Stack**, majd indítsa újra a tártallózót a módosítás érvénybe léptetéséhez. Ez a konfiguráció szükséges az Azure Stack környezettel való kompatibilitáshoz.
+8. Storage explorer újraindítása után válassza ki a **szerkesztése** menüt, és ellenőrzi, hogy **cél Azure Stack API-k** van kiválasztva. Ha nem, válassza ki a **cél Azure Stack**, majd indítsa újra a tártallózót a módosítás érvénybe léptetéséhez. Ez a konfiguráció szükséges az Azure Stack környezettel való kompatibilitáshoz.
 
     ![Győződjön meg arról, hogy be van jelölve a Cél Azure Stack.](./media/azure-stack-storage-connect-se/target-azure-stack.png)
 
@@ -82,7 +84,7 @@ A következő lépések segítségével a storage explorer csatlakoztatása Azur
 
     ![Azure Stack-fiók hozzáadása](./media/azure-stack-storage-connect-se/add-azure-stack-account.png)
 
-3. A csatlakozás Azure Storage párbeszédpanelen alatt **Azure-környezet**válassza **Azure** vagy **Azure China**, amely függ az Azure Stack-fiókkal, amely használatban van, válassza ki **Jelentkezzen be a** legalább egy aktív Azure Stack-előfizetéssel társított az Azure Stack-fiókkal.
+3. A csatlakozás Azure Storage párbeszédpanelen alatt **Azure-környezet**válassza **Azure**, **Azure China**, **Azure Germany**,  **Az Azure US Government**, vagy **új környezet hozzáadásához**, amely függ az Azure Stack-fiókkal, amely használatban van. Válassza ki **jelentkezzen be a** legalább egy aktív Azure Stack-előfizetéssel társított az Azure Stack-fiókkal.
 
     ![Csatlakozás az Azure Storage-hoz](./media/azure-stack-storage-connect-se/azure-stack-connect-to-storage.png)
 

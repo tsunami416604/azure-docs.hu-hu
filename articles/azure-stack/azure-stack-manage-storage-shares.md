@@ -1,6 +1,6 @@
 ---
 title: Kezelheti a tárolási kapacitást az Azure Stackben |} A Microsoft Docs
-description: Figyelheti és kezelheti a rendelkezésre álló tárhely az Azure Stackhez.
+description: Figyelheti, és az Azure Stack-tárolási kapacitás és a rendelkezésre állási tárterület kezelése az Azure Stackhez.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 03/29/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 617696c842ab90fc36c68e74831ffd1d79d14bc4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: e5188a7f7a1ce889c8f4340f100cfe767ff2dff8
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225705"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629399"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Az Azure stack-beli tárolási kapacitás kezelése 
 
@@ -53,11 +53,10 @@ Megosztások, kötetek bérlői adatok tárolásához. Bérlők adatainak magáb
 
 Ha egy megosztást alacsony a szabad terület és műveletek [VISSZAIGÉNYLÉSE](#reclaim-capacity) terület nem sikeres, illetve érhető el, az Azure Stack-felhő üzemeltetője telepíthet át a blob-tárolók egy megosztást a másikra.
 
-- Tárolók és blobok kapcsolatos további információkért lásd: [a Blob storage-](azure-stack-key-features.md#blob-storage) a kulcs funkcióiról és koncepciójáról az Azure Stackben.
 - Bérlő felhasználók miként használják a blob storage, az Azure Stack használatával kapcsolatos információkért lásd: [Azure Stack tárolószolgáltatások](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).
 
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Tárolók
 Bérlő felhasználók létrehozása, amely majd Blobadatok tárolására szolgáló tárolókat. Amíg a felhasználó úgy dönt, hogy melyik tárolóban helyezhető el a blobokat, a storage szolgáltatás segítségével egy olyan algoritmust határozza meg, melyik köteten helyezi a tárolót. Az algoritmus általában úgy dönt, a kötet a legtöbb szabad területtel rendelkező.  
 
 Miután egy blobot egy tárolóban kerül, a, hogy a blob nagyobb területet növelhető. Amikor új blobok és a meglévő blobok növekszik, a kötet, amely tartalmazza a tároló zsugorítja rendelkezésre álló területet.  
@@ -142,14 +141,14 @@ Próbálkozzon egy másik megosztásba néhány blobtárolók manuális áttelep
 1. Győződjön meg arról, hogy [Azure PowerShell telepítését és konfigurálását](https://azure.microsoft.com/documentation/articles/powershell-install-configure/). További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](https://go.microsoft.com/fwlink/?LinkId=394767).
 2. Vizsgálja meg a tároló, milyen adatokat a megosztáson található, amely az áttelepíteni kívánt van. A legjobb jelöltek tárolók egy kötet az áttelepítéshez azonosításához használja a **Get-AzsStorageContainer** parancsmagot:
 
-   ```PowerShell  
+   ```powershell  
    $farm_name = (Get-AzsStorageFarm)[0].name
    $shares = Get-AzsStorageShare -FarmName $farm_name
    $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
    ```
    Majd megvizsgálja a $containers:
 
-   ```PowerShell
+   ```powershell
    $containers
    ```
 
@@ -157,14 +156,14 @@ Próbálkozzon egy másik megosztásba néhány blobtárolók manuális áttelep
 
 3. Határozza meg, amely tárolja a tároló áttelepítése a legjobb cél megosztások:
 
-   ```PowerShell
+   ```powershell
    $destinationshares = Get-AzsStorageShare -SourceShareName
    $shares[0].ShareName -Intent ContainerMigration
    ```
 
    Majd megvizsgálja a $destinationshares:
 
-   ```PowerShell 
+   ```powershell 
    $destinationshares
    ```
 
@@ -172,20 +171,20 @@ Próbálkozzon egy másik megosztásba néhány blobtárolók manuális áttelep
 
 4. Indítsa el áttelepítési tárolóhoz. Az áttelepítés akkor aszinkron. Ha az első áttelepítés befejezése előtt további tárolókat migrálásának indul el, használja a feladat azonosítója egyes állapotának nyomon követését.
 
-   ```PowerShell
+   ```powershell
    $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
    ```
 
    Majd megvizsgálja a $jobId. A következő példában cserélje le a *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* meg szeretné vizsgálni a feladatazonosító:
 
-   ```PowerShell
+   ```powershell
    $jobId
    d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
    ```
 
 5. Használja a Feladatazonosító az áttelepítési feladat állapotának ellenőrzése. Ha a tároló áttelepítése befejeződött, **MigrationStatus** értékre van állítva **Complete**.
 
-   ```PowerShell 
+   ```powershell 
    Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
    ```
 
@@ -193,7 +192,7 @@ Próbálkozzon egy másik megosztásba néhány blobtárolók manuális áttelep
 
 6. Egy folyamatban lévő migrálási feladat megszakítása Áttelepítési feladatok feldolgozása aszinkron módon megszakította. Megszakítás $jobid használatával követheti nyomon:
 
-   ```PowerShell
+   ```powershell
    Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
    ```
 
@@ -208,5 +207,5 @@ Próbálkozzon egy másik megosztásba néhány blobtárolók manuális áttelep
 
 Címtér kezelésére rendkívüli módszernél az áthelyezés virtuálisgép-lemezek. Mivel áthelyezése egy csatlakoztatott tároló (egy Virtuálisgép-lemez tartalmazó) összetett, forduljon a Microsoft Support Ez a művelet elvégzéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tudjon meg többet [kínál a virtuális gépeket a felhasználók számára](azure-stack-tutorial-tenant-vm.md).

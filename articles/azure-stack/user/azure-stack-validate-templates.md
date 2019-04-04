@@ -16,12 +16,12 @@ ms.date: 12/27/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 6bf84d7ecf2d436bdc00839699b150466b9de3ca
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 02ceb6cbcbf824f8bf830c66bc9899c20f6ed822
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247306"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484041"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Ellenőrizze a sablonokat az Azure Stack a sablon érvényesítése eszközzel
 
@@ -47,13 +47,13 @@ Mielőtt használná a sablon érvényesítési, futtassa a **AzureRM.CloudCapab
 1. Győződjön meg arról, hogy rendelkezik az Azure Stackhez. Az Azure Stack development kit állomás hajthat végre ezeket a lépéseket, vagy használhatja egy [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) való csatlakozáshoz a munkaállomáson.
 2. Importálás a **AzureRM.CloudCapabilities** PowerShell-modult:
 
-    ```PowerShell
+    ```powershell
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
 3. Használja a `Get-CloudCapabilities` parancsmaggal szolgáltatásverziók lekérni, és hozzon létre egy felhőalapú képességek JSON-fájlt. Ha nem ad meg **- OutputPath**, a fájl AzureCloudCapabilities.Json jön létre az aktuális könyvtárban található. A tényleges helyet használja:
 
-    ```PowerShell
+    ```powershell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
     ```
 
@@ -63,14 +63,14 @@ Sablonok használatával érvényesítéséhez kövesse az alábbi lépéseket a
 
 1. Importálás a **AzureRM.TemplateValidator.psm1** PowerShell-modult:
 
-    ```PowerShell
+    ```powershell
     cd "c:\AzureStack-Tools-master\TemplateValidator"
     Import-Module .\AzureRM.TemplateValidator.psm1
     ```
 
 2. A sablon érvényesítési futtassa:
 
-    ```PowerShell
+    ```powershell
     Test-AzureRMTemplate -TemplatePath <path to template.json or template folder> `
     -CapabilitiesPath <path to cloudcapabilities.json> `
     -Verbose
@@ -98,7 +98,7 @@ A sablon érvényesítési az alábbi paramétereket támogatja.
 
 Ebben a példában az összes érvényesíti a [Azure Stack-gyorssablonok](https://github.com/Azure/AzureStack-QuickStart-Templates) helyi tároló le. A példa azt is ellenőrzi, virtuálisgép-méretek és bővítmények ellen az Azure Stack fejlesztői készletének képességei:
 
-```PowerShell
+```powershell
 test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 -CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json `
 -TemplatePattern MyStandardTemplateName.json `

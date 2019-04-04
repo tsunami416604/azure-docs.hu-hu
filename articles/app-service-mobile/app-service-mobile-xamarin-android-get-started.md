@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 67bf0499b6dcf4257380f601c802723b2993a092
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 29efa963a254913e3d4744ade1d161c5c8ce42e4
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771480"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893350"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Xamarin.Android-alkalmazás létrehozása
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -37,7 +37,7 @@ Az oktatóanyag végrehajtása feltétele a Mobile Apps Xamarin.Android-alkalmaz
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 * Aktív Azure-fiók. Ha nem rendelkezik fiókkal, regisztráljon az Azure próba-előfizetésére, amellyel akár 10 ingyenes Mobile Apps-alkalmazáshoz is hozzájuthat. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* Visual Studio és Xamarin. Az útmutatót lásd: [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) (A Visual Studio és a Xamarin beállítása és telepítése).
+* Visual Studio és Xamarin. Az útmutatót lásd: [Setup and install for Visual Studio and Xamarin](/visualstudio/cross-platform/setup-and-install) (A Visual Studio és a Xamarin beállítása és telepítése).
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Azure Mobile Apps-háttéralkalmazás létrehozása
 Mobile Apps-háttéralkalmazás létrehozásához tegye a következőket.

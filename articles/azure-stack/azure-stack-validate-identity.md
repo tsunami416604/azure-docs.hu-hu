@@ -16,12 +16,12 @@ ms.date: 03/23/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 3dfb87e5f6c231831cd9c007b19ad001e1fce326
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b6a859f1104be8650b95ac789f3da606fb1b70f6
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403187"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486682"
 ---
 # <a name="validate-azure-identity"></a>Azure-identitás ellenőrzése
 
@@ -85,7 +85,7 @@ A következő előfeltételek teljesülésére szükség:
 
 4. Az eszköz futtatása után tekintse át a kimenetet. Az állapot megerősítéséhez **OK** a telepítési követelményeknek. Sikeres ellenőrzés a következő képhez hasonlóan jelenik meg:
 
-   ```shell
+   ```powershell
    Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
    Starting Azure Identity Validation
 
@@ -119,7 +119,7 @@ Az alábbi példák gyakori ellenőrzési hibákat ad útmutatást.
 
 ### <a name="expired-or-temporary-password"></a>Lejárt vagy ideiglenes jelszó
 
-```shell
+```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -145,9 +145,9 @@ Login-AzureRMAccount
 
 Azt is megteheti, hogy jelentkezzen be a [az Azure portal](https://portal.azure.com) , a fiók tulajdonosa, és a felhasználó kényszeríti a jelszó módosítására.
 
-### <a name="unknown-user-type"></a>Ismeretlen felhasználó típusa
-
-```shell
+### <a name="unknown-user-type"></a>Ismeretlen felhasználó típusa 
+ 
+```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -173,7 +173,7 @@ Login-AzureRmAccount –EnvironmentName AzureChinaCloud
 
 ### <a name="account-is-not-an-administrator"></a>Fiók nem áll a rendszergazda
 
-```shell
+```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -195,7 +195,7 @@ Invoke-AzsAzureIdentityValidation Completed
 
 Az Azure Stack kell lennie, hogy a tartomány nevét az elsődleges tartomány nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure-regisztráció ellenőrzése](azure-stack-validate-registration.md)  
 [A készültségi jelentés megtekintése](azure-stack-validation-report.md)  

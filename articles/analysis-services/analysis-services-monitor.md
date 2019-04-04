@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6f686ff40805050b6da05a1971aeabb367da96d7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: cdffa8e138062a91bd1876ac6e44728c47d9cdd7
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190826"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893180"
 ---
 # <a name="monitor-server-metrics"></a>A kiszolgáló metrikáinak monitorozása
 
@@ -57,8 +57,8 @@ Ez a táblázat segítségével meghatározhatja, pontosan mely mérőszámokat 
 |MemoryUsage|Memória: Memóriahasználat|Bájt|Átlag|A kiszolgálói folyamat tisztító memória ár kiszámításakor memóriahasználat. Megegyezik a számláló Process\PrivateBytes plusz a memória által leképezett adatok figyelmen kívül hagyva, amely a leképezett vagy lefoglalt biztosította a motor memória felső korlátja a memóriabeli elemzési motor (VertiPaq) által méretét.|
 |Kvóta|Memória: Kvóta|Bájt|Átlag|Aktuális memóriakvóta bájtban. A memóriakvóta memória grant vagy a memória foglalás is nevezik.|
 |QuotaBlocked|Memória: Blokkolt kvóta|Darabszám|Átlag|Aktuális száma, amelyek le vannak tiltva, amíg a további Memóriakvóták felszabadítását.|
-|VertiPaqNonpaged|Memória: VertiPaq, lapozható|Bájt|Átlag|Bájt memóriát a memóriabeli motor általi használatra munkakészletében lévő zárolva van.|
-|VertiPaqPaged|Memória: VertiPaq, lapozható|Bájt|Átlag|Lapozható memória, a memóriában lévő adatok bájt.|
+|VertiPaqNonpaged|Memória: VertiPaq Nonpaged|Bájt|Átlag|Bájt memóriát a memóriabeli motor általi használatra munkakészletében lévő zárolva van.|
+|VertiPaqPaged|Memória: VertiPaq Paged|Bájt|Átlag|Lapozható memória, a memóriában lévő adatok bájt.|
 |ProcessingPoolJobQueueLength|Feldolgozási készlet feladat-várólistájának hossza|Darabszám|Átlag|Az a feldolgozási szálkészlet üzenetsorában lévő nem I/o feladatok száma.|
 |RowsConvertedPerSec|Feldolgozás: Másodpercenként konvertált sorok|Egység/s|Átlag|Sorok konvertálásának sebessége a feldolgozás során.|
 |RowsReadPerSec|Feldolgozás: Másodpercenként beolvasott sorok száma|Egység/s|Átlag|Sorok beolvasásának sebessége az összes relációs adatbázisból.|
@@ -87,4 +87,4 @@ Ez a táblázat segítségével meghatározhatja, pontosan mely mérőszámokat 
 ## <a name="next-steps"></a>További lépések
 [Figyelés a Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md)   
 [A Microsoft Azure-ban mérőszámok](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)   
-[Mérőszámok az Azure Monitor REST API-val](https://msdn.microsoft.com/library/azure/dn931930.aspx)
+[Mérőszámok az Azure Monitor REST API-val](/rest/api/monitor/metrics)

@@ -3,7 +3,7 @@ title: Hozzon létre és töltse fel a Red Hat Enterprise Linux rendszerű virtu
 description: Ismerje meg, hozhat létre és töltse fel az Azure virtuális merevlemez (VHD), amely egy Red Hat Linux operációs rendszert tartalmazza.
 services: azure-stack
 documentationcenter: ''
-author: JeffGoldner
+author: mattbriggs
 manager: BradleyB
 editor: ''
 tags: ''
@@ -13,15 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
-ms.author: jeffgo
+ms.date: 03/28/2019
+ms.author: mabrigg
+ms.reviewer: jeffgo
 ms.lastreviewed: 08/15/2018
-ms.openlocfilehash: ad0419cee3fc5c838d6d81adf9040432b9feaf07
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e287a6f436b51f55d9a5aa59dbbe2a195015c292
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242229"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883120"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Red Hat-alapú virtuális gép előkészítése az Azure Stackhez
 
@@ -100,6 +101,13 @@ Ez a szakasz azt feltételezi, hogy már rendelkezik egy ISO-fájlt, a Red Hat-w
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+
+1. Állítsa le, és a cloud-init eltávolítása:
+
+    ```bash
+    systemctl stop cloud-init
+    yum remove cloud-init
     ```
 
 1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítve és konfigurálva van rendszerindításkor, amely általában az alapértelmezett elindításához. Módosítsa `/etc/ssh/sshd_config` tartalmazza a következő sort:
@@ -246,15 +254,17 @@ Ez a szakasz azt feltételezi, hogy már rendelkezik egy ISO-fájlt, a Red Hat-w
     dracut -f -v
     ```
 
-1. Távolítsa el a cloud-Init használatával:
+1. Állítsa le, és a cloud-init eltávolítása:
 
     ```bash
+    systemctl stop cloud-init
     yum remove cloud-init
     ```
 
 1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítve és konfigurálva van rendszerindítás elindításához:
 
     ```bash
+    systemctl stop cloud-init
     systemctl enable sshd
     ```
 
@@ -265,22 +275,55 @@ Ez a szakasz azt feltételezi, hogy már rendelkezik egy ISO-fájlt, a Red Hat-w
     ClientAliveInterval 180
     ```
 
-1. A WALinuxAgent csomag `WALinuxAgent-<version>`, a Red Hat kiegészítő funkciók tárház lett leküldve. A kiegészítő funkciók tárház engedélyezze a következő parancs futtatásával:
+1. Ha egy egyéni virtuális merevlemezt hoz létre az Azure Stack, vegye figyelembe, hogy WALinuxAgent verzió 2.2.20 és 2.2.35.1 (mindkét kizárólagos) között nem működnek a build 1903 előtt futó Azure Stack-környezetek. A probléma megoldásához 1901/1902 gyorsjavítást, vagy kövesse az utasításokat a részét, második felében. 
+
+Az Azure Stack-build 1903 futtatásakor (vagy újabb) vagy a 1901/1902 gyorsjavítás, töltse le a WALinuxAgent csomagot a Redhat kiegészítő funkciók adattárból, például így:
+    
+   A WALinuxAgent csomag `WALinuxAgent-<version>`, a Red Hat kiegészítő funkciók tárház lett leküldve. A kiegészítő funkciók tárház engedélyezze a következő parancs futtatásával:
 
     ```bash
     subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-1. Az Azure Linux-ügynök telepítése a következő parancs futtatásával:
+   Az Azure Linux-ügynök telepítése a következő parancs futtatásával:
 
     ```bash
     yum install WALinuxAgent
     ```
 
-    A waagent szolgáltatás engedélyezése:
+   A waagent szolgáltatás engedélyezése:
 
     ```bash
     systemctl enable waagent.service
+    ```
+    
+    
+Ha egy Azure Stack-build 1903 előtt futtatja, és nem alkalmazza a 1901/1902 gyorsjavítás, majd kövesse ezeket az utasításokat a WALinuxAgent letöltése:
+    
+   a.   Setuptools letöltése
+    ```bash
+    wget https://pypi.python.org/packages/source/s/setuptools/setuptools-7.0.tar.gz --no-check-certificate
+    tar xzf setuptools-7.0.tar.gz
+    cd setuptools-7.0
+    ```
+   b. Töltse le és csomagolja ki az ügynök legújabb verzióját, a github. Itt látható egy példa, hogy töltse le az "2.2.36" verzió, a github-adattárból.
+    ```bash
+    wget https://github.com/Azure/WALinuxAgent/archive/v2.2.36.zip
+    unzip v2.2.36.zip
+    cd WALinuxAgent-2.2.36
+    ```
+    c. Install setup.py
+    ```bash
+    sudo python setup.py install
+    ```
+    d. Restart waagent
+    ```bash
+    sudo systemctl restart waagent
+    ```
+    e. Test if the agent version matches the one your downloaded. For this example, it should be 2.2.36.
+    
+    ```bash
+    waagent -version
     ```
 
 1. Nem hozható létre lapozófájl-kapacitás az operációsrendszer-lemez.
@@ -420,6 +463,13 @@ Ez a szakasz azt feltételezi, hogy már telepítve van egy RHEL virtuális gép
 
     ```bash
     dracut -f -v
+    ```
+
+1. Állítsa le, és a cloud-init eltávolítása:
+
+    ```bash
+    systemctl stop cloud-init
+    yum remove cloud-init
     ```
 
 1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítve és konfigurálva van rendszerindítás elindításához. Ez a beállítás általában az alapértelmezett érték. Módosítsa `/etc/ssh/sshd_config` tartalmazza a következő sort:
@@ -581,6 +631,10 @@ Ez a szakasz azt feltételezi, hogy már telepítve van egy RHEL virtuális gép
     Install latest repo update
     yum update -y
 
+    Stop and Uninstall cloud-init
+    systemctl stop cloud-init
+    yum remove cloud-init
+    
     Enable extras repo
     subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -657,15 +711,15 @@ A probléma megoldásához initramfs ad hozzá a Hyper-V-modulokkal és azt újj
 
 Szerkesztés `/etc/dracut.conf`, és adja hozzá az alábbi tartalommal:
 
-    ```sh
-    add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
-    ```
+```sh
+add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+```
 
 Építse újra initramfs:
 
-    ```bash
-    dracut -f -v
-    ```
+```bash
+dracut -f -v
+```
 
 További információkért lásd: [initramfs újraépítése](https://access.redhat.com/solutions/1958).
 

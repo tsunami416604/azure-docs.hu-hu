@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 04/03/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.lastreviewed: 09/18/2018
-ms.custom: mvc
-ms.openlocfilehash: 4ab04fc69d29d9bb5386261f6453b2f47bfd66bc
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.lastreviewed: 04/03/2019
+ms.custom: ''
+ms.openlocfilehash: 437e55b1a2907418fe47f418245431fa1c882b80
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446324"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915685"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Az Azure Stack számítási kapacitásának megtervezése
 A [Virtuálisgép-méretek támogatott az Azure Stacken](./user/azure-stack-vm-sizes.md) részhalmazát alkotják, az Azure-ban támogatott. Az Azure erőforrások (helyi és a szolgáltatásiszint-kiszolgáló) overconsumption elkerülése érdekében számos vektorok mentén erőforráskorlátok ír elő. Nélkül betartatásához bérlői használat bizonyos korlátozások, a bérlő élményt, amikor más bérlők overconsume erőforrások romlani fog. Hálózati kimenő forgalom a virtuális gépről a sávszélesség a caps teljesülnek az Azure Stacken, amelyek megfelelnek az Azure korlátai vannak. Storage access-bérlők a tárolási erőforrások, az Azure Stack-erőforrások egyszerű overconsumption elkerülése érdekében történtek tárolási IOPs-korlátok.  
@@ -45,7 +45,7 @@ A következő számítási eredményezi a teljes, rendelkezésre álló memória
 
   A Virtuálisgép-Elhelyezés a rendelkezésre álló memória = futtató virtuális gépek – az Azure Stack-infrastruktúra terhelését által használt összes kiszolgáló memória – tartalék rugalmasság – memória <sup>1</sup>
 
-  Rugalmasság tartalék H + R = * (N-1) + V * (N-2)
+  Rugalmasság tartalék H + R = * ((N-1) * H) + V * (N-2)
 
 > Az elemek magyarázata:
 > - H = egykiszolgálós memória mérete
@@ -53,7 +53,7 @@ A következő számítási eredményezi a teljes, rendelkezésre álló memória
 > - Az R = az operációs rendszer az operációs rendszer terhelést pufferkészletének tartalék<sup>2</sup>
 > - V legnagyobb virtuális gép = a skálázási egységben
 
-  <sup>1</sup> az azure Stack-infrastruktúra többletterhelést okoz a 208 GB =
+  <sup>1</sup> az azure Stack-infrastruktúra többletterhelést okoz a 230 GB =
 
   <sup>2</sup> többletterhelést az operációs rendszer tartalék = 15 %-a csomópont memóriája. Az operációs rendszer számára fenntartott érték egy becsült, és terméktípustól függ a kiszolgáló és az általános operációs rendszer terhelést a fizikai memória kapacitását.
 

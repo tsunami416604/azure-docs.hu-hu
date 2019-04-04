@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2019
+ms.date: 04/03/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: fbf9f4aa79af32cf0e73f4e383130c565de16f53
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.lastreviewed: 04/03/2019
+ms.openlocfilehash: 5971692b3e6447bc790b2e34cf84eae66979f7f5
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372369"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862080"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 frissítése
 
-*Vonatkozik: Az Azure Stack integrált rendszerek*
+*A következőre érvényes Az Azure Stackkel használható integrált rendszerek*
 
 Ez a cikk ismerteti a 1902 csomag tartalmát. A frissítési fejlesztései, javításokat és új funkciók az Azure Stack ezen verziója tartalmazza. Ez a cikk is ebben a kiadásban az ismert problémákat, és tartalmaz egy hivatkozást a frissítés letöltése. Ismert problémákkal kapcsolatban közvetlenül a frissítési folyamat, és a build (telepítés utáni) problémái vannak felosztva.
 
@@ -57,12 +57,12 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!IMPORTANT]
-> - Telepítse a [legújabb Azure Stack-gyorsjavítás](#azure-stack-hotfixes) esetében (ha vannak) 1901 1902 frissítése előtt.
+> 1902 telepítheti közvetlenül a vagy a [1.1901.0.95 vagy 1.1901.0.99](azure-stack-update-1901.md#build-reference) kiadási, bármely 1901 a gyorsjavítás telepítése nélkül. Azonban ha már telepítette a korábbi **1901.2.103** gyorsjavítás, telepítenie kell az újabb [1901.3.105 gyorsjavítás](https://support.microsoft.com/help/4495662) 1902 előtt folytatja.
 
 - A frissítés telepítésének megkezdése előtt futtassa [Test-AzureStack](azure-stack-diagnostic-test.md) az Azure Stack állapotának érvényesítéséhez, és hárítsa el a működési hibákat talált a következő paraméterekkel, többek között az összes figyelmeztetések és hibák esetén. Emellett tekintse át az aktív riasztások, és oldja meg az esetleges beavatkozást igénylő:
 
-    ```PowerShell
-    Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
+    ```powershell
+    Test-AzureStack -Include AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
 - Ha az Azure Stack a System Center Operations Manager (SCOM) által felügyelt, ügyeljen arra, hogy frissítse a [felügyeleti csomag a Microsoft Azure Stackhez készült](https://www.microsoft.com/download/details.aspx?id=55184) verzióra 1.0.3.11 1902 alkalmazása előtt.
@@ -77,6 +77,9 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 
 - A 1902 build vezet be az Azure Stack rendszergazdai portál csomagok, ajánlatok, kvóták és kiegészítő csomagok létrehozására szolgáló új felhasználói felületet. További információk, többek között a képernyőképek: [csomagok, ajánlatok és kvóták létrehozása](azure-stack-create-plan.md).
 
+<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
+- Fejlesztések a megbízhatóságot, egyszerű kapacitásbővítést téve lehetővé során a csomópont hozzáadása a skálázási egység állapot "Expanding tároló" futó állapotban történő váltáskor.
+
 <!--
 1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
 1399240 3322580: [PNU] Optimize the DSC resource execution on the Host  PNU
@@ -84,23 +87,21 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 1398818 3685138, 3734779: ECE exception logging, VirtualMachine ConfigurePending should take node name from execution context   PNU
 1381018 [1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists   PNU
 -->
-- Csomag integritás és a biztonsági és offline támogatunk könnyebb kezelhetőség javítása érdekében a Microsoft megváltozott a csomag formátuma .exe és .bin fájlt egy .zip-fájlt. Az új formátum további megbízhatóság hozzáadása a kicsomagolása folyamat, amely időnként okozhat a frissítés előkészítése leáll. A csomag formátuma is vonatkozik, az OEM-csomagok frissítése.
-
-- Az Azure Stack-kezelői élmény javításához futtatásakor **Test-AzureStack**, operátorok segítségével mostantól egyszerűen `Test-AzureStack -Group UpdateReadiness` után tíz további paraméterek átadása helyett egy `include` utasítást. Példa:
+- Csomag integritás és a biztonsági, valamint offline támogatunk könnyebb kezelhetőség javítása érdekében a Microsoft megváltozott a csomag formátuma .exe és .bin fájlt egy .zip-fájlt. Az új formátum hozzáadja a kicsomagolása folyamat, amely időnként okozhat a frissítés előkészítése stagnálni további megbízhatóságát. A csomag formátuma is vonatkozik, az OEM-csomagok frissítése.
+- Test-AzureStack futtatásakor az Azure Stack-kezelői élmény javításához operátorok most már egyszerűen használhatják, "Test-AzureStack-csoport UpdateReadiness" figyelésekor tíz további paraméterek átadása egy Belefoglalás utasítás után.
 
   ```powershell
-  Test-AzureStack -Group UpdateReadiness  
-  ```
-
-- A frissítési folyamat során a teljes megbízhatóságot és rendelkezésre állást az alapvető infrastruktúra-szolgáltatások javításához a natív erőforrás-szolgáltató frissítése, a frissítési művelet terv részeként lesz észlelése és automatikus globális szervizelések meghívása, igény szerint. Globális szervizelési "javítás" a munkafolyamatok a következők:
-
-  - Ellenőrizze, hogy a virtuális gépeket, amelyek nem optimális állapotban van, és próbálja meg őket igény szerint.
-  - SQL-szolgáltatási problémák keresése a vezérlő terv részeként, és próbálja meg őket igény szerint.
-  - A szoftveres terheléselosztó (SLB) szolgáltatás állapotának ellenőrzése során, a hálózati vezérlő (NC), és próbálja meg őket igény szerint.
-  - Ellenőrizze a hálózati vezérlő (NC) szolgáltatás állapotát, és próbálja meg helyreállítani igény szerint.
-  - Ellenőrizze a válságkezelési helyreállítási konzol szolgáltatás (ERCS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint.
-  - Ellenőrizze a XRP service fabric-csomópont állapotát, és szükség esetén javítsa ki őket.
-  - Ellenőrizze az Azure-konzisztens tároló (ACS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint.
+    Test-AzureStack -Group UpdateReadiness  
+  ```  
+  
+- A teljes megbízhatóságot és alapvető infrastruktúra-szolgáltatások rendelkezésre állásának javítása a frissítési folyamat során, a natív frissítés erőforrás-szolgáltató, a frissítési művelet terv részeként érzékeli, és igény szerint az automatikus globális szervizelések meghívása. Globális szervizelési "javítás" a munkafolyamatok a következők:
+    - A virtuális gépeket, amelyek nem optimális állapotban van, és próbálja meg őket igény szerint ellenőrzése 
+    - Ellenőrizze az SQL-szolgáltatással kapcsolatos problémák, a vezérlő terv részeként, és próbálja meg őket igény szerint
+    - A szoftveres terheléselosztó (SLB) szolgáltatás állapotának ellenőrzése során, a hálózati vezérlő (NC), és próbálja meg őket igény szerint
+    - Ellenőrizze a hálózati vezérlő (NC) szolgáltatás állapotát, és próbálja meg helyreállítani igény szerint
+    - Ellenőrizze a válságkezelési helyreállítási konzol szolgáltatás (ERCS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint
+    - Ellenőrizze a XRP service fabric-csomópont állapotát, és javítsa ki őket igény szerint
+    - Ellenőrizze az Azure-konzisztens tároló (ACS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint
 
 <!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
 - Fejlesztések a megbízhatóságot, egyszerű kapacitásbővítést téve lehetővé során a csomópont hozzáadása a skálázási egység állapot "Expanding tároló" futó állapotban történő váltáskor.    
@@ -115,13 +116,13 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 - Fejlesztések az Azure stack diagnosztikai eszközök napló gyűjtése megbízhatóságának és teljesítményének javítása érdekében. További naplózás a hálózati és identitáskezelési szolgáltatásokat. 
 
 <!-- 1384958    Adding a Test-AzureStack group for Secret Rotation  Diagnostics -->
-- Megbízhatóságát fejlesztései **Test-AzureStack** titkos Elforgatás készenléti teszt.
+- Érintő fejlesztések a megbízhatóságot a Test-AzureStack titkos Elforgatás készültségének teszteléséhez.
 
 <!-- 1404751    3617292: Graph: Remove dependency on ADWS.  Identity -->
-- Továbbfejlesztett AD Graph megbízhatóságának növelése, az ügyfél Active Directory-környezetbe való kommunikáció során.
+- AD Graph megbízhatóságának növelése, ha az ügyfél Active Directory-környezetbe való kommunikáció közben fejlesztései
 
 <!-- 1391444    [ISE] Telemetry for Hardware Inventory - Fill gap for hardware inventory info   System info -->
-- Hardver fejlesztései készlet gyűjtemény **Get-AzureStackStampInformation**.
+- Fejlesztések hardverleltározást a Get-AzureStackStampInformation.
 
 - ERCS infrastruktúrán futó műveletek megbízhatóságának javítása érdekében a memória ERCS példányonként növeli a 8 GB-tól 12 GB. Az Azure Stackkel integrált rendszerek telepítés esetén az eredmény egy 12 GB-os növekedést teljes.
 
@@ -145,17 +146,17 @@ Ez a frissítés a következő biztonsági frissítéseket telepíti:
 - [CVE-2019-0618](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0618)
 - [CVE-2019-0619](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0619)
 - [CVE-2019-0621](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0621)
-- [CVE-2019-0623](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0623)
+- [CVE – A 2019-0623](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0623)
 - [CVE-2019-0625](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0625)
-- [CVE-2019-0626](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0626)
-- [CVE-2019-0627](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0627)
+- [CVE – A 2019-0626](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0626)
+- [CVE – A 2019-0627](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0627)
 - [CVE-2019-0628](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0628)
 - [CVE-2019-0630](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0630)
-- [CVE-2019-0631](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0631)
+- [CVE – A 2019-0631](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0631)
 - [CVE-2019-0632](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0632)
-- [CVE-2019-0633](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0633)
+- [CVE – A 2019-0633](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0633)
 - [CVE-2019-0635](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0635)
-- [CVE-2019-0636](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0636)
+- [CVE – A 2019-0636](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0636)
 - [CVE-2019-0656](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0656)
 - [CVE-2019-0659](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0659)
 - [CVE-2019-0660](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0660)
@@ -199,7 +200,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 <!-- ### Health and monitoring -->
 
-### <a name="compute"></a>Compute
+### <a name="compute"></a>Számítás
 
 - Amikor egy új Windows virtuális gép (VM) hoz létre, a következő hiba jelenhet meg:
 
@@ -220,20 +221,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 - Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy jelentkezzen be az SSH-kulcsok használata. Áthidaló megoldásként használja a Linux-bővítményt a Virtuálisgép-hozzáférés SSH-kulcsok megvalósításához a kiépítés után, vagy jelszóalapú hitelesítés használatára.
 
-- Ha nem rendelkezik egy életciklus állomás (HLH): Build 1902, mielőtt kellett állítani a csoportházirend **Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Biztonsági beállítások** való **LM- és NTLM – használja NTLMv2 munkamenet, haegyeztetése**. Build 1902, mivel azt hagyja **nincs definiálva** vagy - **csak a válasz küldése NTLMv2** (azaz az alapértelmezett érték). Ellenkező esetben nem tudott létrehozni egy távoli PowerShell-munkamenetet, és kapni fog egy **a hozzáférés megtagadva** hiba:
-
-   ```shell
-   PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
-   New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
-   about_Remote_Troubleshooting Help topic.
-   At line:1 char:12
-   + $session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
-   +            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      + CategoryInfo          : OpenError: (System.Manageme....RemoteRunspace:RemoteRunspace) [New-PSSession], PSRemotingTransportException
-      + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed
-   ```
-
-### <a name="networking"></a>Hálózat  
+### <a name="networking"></a>Hálózatkezelés  
 
 <!-- 3239127 - IS, ASDK -->
 - Az Azure Stack portálon Ha módosít egy statikus IP-címet az IP-konfiguráció a Virtuálisgép-példányhoz csatolt hálózati adapterhez kötött látni fogja egy figyelmeztető üzenet arról, hogy 

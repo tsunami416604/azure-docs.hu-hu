@@ -11,12 +11,12 @@ ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 47cc7d9f09b7fb22cf99ad010f1dc75e6388c314
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 23cc0f03c41801de944eb9938d4cd15896d1745e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731920"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482181"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Azure stack-bővítmény gazdagép előkészítése
 
@@ -47,13 +47,13 @@ Az Azure Stack készültségi ellenőrző eszköz lehetővé teszi a tanúsítv�
 1. Nyissa meg a Powershellt a hardver életciklus gazdagépen vagy az Azure Stack felügyeleti munkaállomás emelt szintű engedélyekkel.
 2. Az Azure Stack készültségi ellenőrző eszköz telepítése a következő parancsmag futtatásával.
 
-    ```PowerShell  
+    ```powershell  
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
 3. Futtassa a következő parancsfájlt a szükséges mappa-struktúra létrehozása:
 
-    ```PowerShell  
+    ```powershell  
     New-Item C:\Certificates -ItemType Directory
 
     $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal', 'Admin extension host', 'Public extension host'
@@ -69,7 +69,7 @@ Az Azure Stack készültségi ellenőrző eszköz lehetővé teszi a tanúsítv�
 4. Helyezze el a meglévő tanúsítványok, amelyet jelenleg használ az Azure Stackben, a megfelelő címtárakban. Például helyezze a **rendszergazdai ARM** -tanúsítványt a `Arm Admin` mappát. Majd helyezzük az újonnan létrehozott szolgáltatási tanúsítványok a `Admin extension host` és `Public extension host` könyvtárak.
 5. Futtassa a tanúsítvány-ellenőrzés indítása a következő parancsmagot:
 
-    ```PowerShell  
+    ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
@@ -86,7 +86,7 @@ Használjon egy számítógépet, amely képes kapcsolódni a következő lépé
 2. Nyissa meg a PowerShell ISE-ben, hajtsa végre a következő parancsfájl-blokkokban
 3. Importálhatja a tanúsítványt a felügyeleti végpontot üzemeltető.
 
-    ```PowerShell  
+    ```powershell  
 
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 
@@ -104,7 +104,7 @@ Használjon egy számítógépet, amely képes kapcsolódni a következő lépé
     }
     ```
 4. Importálja a tanúsítványt, a üzemeltetési végpont.
-    ```PowerShell  
+    ```powershell  
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 
     $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -127,7 +127,7 @@ Használjon egy számítógépet, amely képes kapcsolódni a következő lépé
 > Ebben a lépésben nincs szükség, ha a DNS-zónadelegálás használja a DNS-integráció.
 Ha az egyéni gazdagépeken A rekordok közzététele az Azure Stack-végpontok konfigurálása megtörtént, két további gazdagépcsoport A rekordok létrehozásához szüksége:
 
-| IP | Gazdanév | Typo |
+| IP | Állomásnév | Typo |
 |----|------------------------------|------|
 | \<IP> | *. Adminhosting. \<Régió >. \<Teljesen minősített Tartományneve > | A |
 | \<IP> | *. Üzemeltetési. \<Régió >. \<Teljesen minősített Tartományneve > | A |
@@ -142,7 +142,7 @@ A cikk [adatközpont integrációja az Azure Stack - végpontok közzététele](
 
 Kötelező a tűzfalon keresztül nyilvánosságra két új végpontja van. A nyilvános VIP-címkészlet lefoglalt IP-címekről lehet beolvasni a következő kóddal kell futtatni az Azure Stack [környezet a rendszerjogosultságú végpont](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -173,7 +173,7 @@ Remove-PSSession -Session $PEPSession
 
 #### <a name="sample-output"></a>Kimeneti példa
 
-```PowerShell
+```powershell
 Can access AZS DNS
 The IP for the Admin Extension Host is: *.adminhosting.\<region>.\<fqdn> - is: xxx.xxx.xxx.xxx
 The Record to be added in the DNS zone: Type A, Name: *.adminhosting.\<region>.\<fqdn>, Value: xxx.xxx.xxx.xxx

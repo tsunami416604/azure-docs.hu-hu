@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0e20e9c8e248b446b7b938ae4180ffb546d823
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: d30fe326ef677ca4543534d57dd306ed2a660300
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517598"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895562"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Az Azure Active Directory-beli feltételes hozzáférésre vonatkozó ajánlott eljárások
 
@@ -46,11 +46,11 @@ Amikor létrehoz egy új szabályzatot, nincsenek nincsenek felhasználók, csop
 Ahhoz, hogy a szabályzat működik, konfigurálnia kell:
 
 
-|Mi           | Hogyan                                  | miért|
-|:--            | :--                                  | :-- |
-|**Felhőalkalmazások** |Válassza ki egy vagy több alkalmazást.  | A feltételes hozzáférési szabályzat célja, hogy szabályozhatja, hogy jogosult felhasználók érhetik el az alkalmazásokat a felhőben.|
+| Mi           | Hogyan                                  | miért |
+| :--            | :--                                  | :-- |
+| **Felhőalkalmazások** |Válassza ki egy vagy több alkalmazást.  | A feltételes hozzáférési szabályzat célja, hogy szabályozhatja, hogy jogosult felhasználók érhetik el az alkalmazásokat a felhőben.|
 | **Felhasználók és csoportok** | Válasszon legalább egy felhasználót vagy csoportot, amely a kiválasztott felhőalapú alkalmazások elérésére jogosult. | Feltételes hozzáférési szabályzatot, amely nem rendelkezik felhasználók és csoportok hozzárendelve, soha nem aktiválódott. |
-| **Hozzáférés-vezérlés** | Válasszon legalább egy hozzáférés-vezérlés. | Ha a feltételek teljesülnek, a házirend processzor tudnia kell, mi a teendő.|
+| **Hozzáférés-szabályozás** | Válasszon legalább egy hozzáférés-vezérlés. | Ha a feltételek teljesülnek, a házirend processzor tudnia kell, mi a teendő. |
 
 
 
@@ -111,6 +111,13 @@ Minden bejelentkezéshez az Azure Active Directory kiértékeli az összes szab�
 
 Igen, használhatja az Exchange ActiveSync feltételes hozzáférési szabályzat.
 
+### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Hogyan kell konfigurálnia a feltételes hozzáférés az Office 365-alkalmazások?
+
+Office 365-alkalmazások vannak összekapcsolva, mert azt javasoljuk hozzárendelése a gyakran használt alkalmazások együtt szabályzatok létrehozásakor.
+
+Közös összekapcsolt alkalmazások közé tartozik a Microsoft Flow, a Microsoft Planner, Microsoft Teams, Office 365 Exchange Online, az Office 365 SharePoint Online és az Office 365 Yammer.
+
+Fontos a felhasználói tevékenységeket, például a többtényezős hitelesítést, amikor egy munkamenet vagy a feladat kezdetétől érvényesül hozzáférésének igénylő szabályzatainak. Ha nem, akkor felhasználók nem fog tudni végezzünk el néhány feladatot az alkalmazáson belül. Például ha van szüksége a multi-factor authentication a nem felügyelt eszközök férhessenek hozzá a SharePoint, de nem e-mailt, az e-mail-címét a felhasználója nem lehet csatlakozni a SharePoint-fájlok, egy üzenet. További információ a cikkben található [függőségei Mik az Azure Active Directory feltételes hozzáférés?](service-dependencies.md).
 
 
 

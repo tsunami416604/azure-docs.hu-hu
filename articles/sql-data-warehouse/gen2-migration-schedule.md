@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: 575b6384d910abac1c0a1184aef4aa72f686538c
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ed3029f2e336c03de616bc00733f1b9c104ddb86
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648573"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917889"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Frissítse az adattárház Gen2-re
 
@@ -32,38 +32,38 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 
 | **Régió** | **Alacsonyabb Gen2 érhető el** | **Az automatikus frissítések megkezdése** |
 |:--- |:--- |:--- |
-| Kelet-Ausztrália |Elérhető |2019. május 1. |
-| Délkelet-Ausztrália |2019. április 02. |2019. június 1. |
+| Kelet-Ausztrália |Elérhető |2019. június 1. |
+| Délkelet-Ausztrália |2019. április 02. |2019. május 1. |
 | Dél-Brazília |2019. május 15. |\* |
-| Közép-Kanada |Elérhető |2019. május 1. |
+| Közép-Kanada |Elérhető |2019. június 1. |
 | Kelet-Kanada |\* |\* |
-| USA középső régiója |Elérhető |2019. május 1. |
+| USA középső régiója |Elérhető |2019. június 1. |
 | Kelet-Kína |\* |\* |
 | Kelet-Kína 2 |\* |\* |
 | Észak-Kína |\* |\* |
 | Észak-Kína 2 |\* |\* |
-| Kelet-Ázsia |Elérhető |2019. május 1. |
-| USA keleti régiója |Elérhető |2019. május 1. |
-| USA 2. keleti régiója |Elérhető |Május 1. 2019 |
+| Kelet-Ázsia |Elérhető |2019. június 1. |
+| USA keleti régiója |Elérhető |2019. június 1. |
+| USA 2. keleti régiója |Elérhető |Június 1-től. 2019 |
 | Közép-Franciaország |\* |\* |
 | Közép-Németország |\* |\* |
 | Németország nyugati középső régiója |2019. szeptember 1.|2020. január 2. |
-| Közép-India |Elérhető |2019. május 1. |
+| Közép-India |Elérhető |2019. június 1. |
 | Dél-India |2019. április 02. |2019. június 1. |
-| Kelet-Japán |Elérhető |2019. május 1. |
-| Nyugat-Japán |Elérhető |2019. június 1. |
-| Korea középső régiója |2019. április 02. |2019. május 1. |
-| Korea déli régiója |2019. április 02. |2019. június 1. |
-| USA északi középső régiója |2019. április 02. |2019. június 1. |
-| Észak-Európa |Elérhető |2019. május 1. |
-| USA déli középső régiója |Elérhető |2019. május 1. |
-| Délkelet-Ázsia |Elérhető |2019. május 1. |
-| Az Egyesült Királyság déli régiója |2019. április 02. |2019. május 1. |
+| Kelet-Japán |Elérhető |2019. június 1. |
+| Nyugat-Japán |Elérhető |2019. május 1. |
+| Korea középső régiója |2019. április 02. |2019. június 1. |
+| Korea déli régiója |2019. április 02. |2019. május 1. |
+| USA északi középső régiója |2019. április 02. |2019. május 1. |
+| Észak-Európa |Elérhető |2019. június 1. |
+| USA déli középső régiója |Elérhető |2019. június 1. |
+| Délkelet-Ázsia |Elérhető |2019. június 1. |
+| Az Egyesült Királyság déli régiója |2019. április 02. |2019. június 1. |
 | Az Egyesült Királyság nyugati régiója |\*|\* |
 | USA nyugati középső régiója |2019. szeptember 2. |2020. január 2.|
-| Nyugat-Európa |Elérhető |2019. május 1. |
+| Nyugat-Európa |Elérhető |2019. június 1. |
 | USA nyugati régiója |2019. április 02. |2019. június 1. |
-| USA nyugati régiója, 2. |Elérhető |2019. május 1. |
+| USA nyugati régiója, 2. |Elérhető |2019. június 1. |
 
 ## <a name="automatic-upgrade-process"></a>Az automatikus frissítési folyamat
 

@@ -16,16 +16,16 @@ ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 7f44e8c2c4587ecfdb3bd5eb4304789674da96f3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e0101aebadcaef71f35c72b54f9126e69cff0f61
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252005"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882835"
 ---
 # <a name="mysql-resource-provider-11330--release-notes"></a>MySQL erőforrás-szolgáltató 1.1.33.0 kibocsátási megjegyzései
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A kibocsátási megjegyzések a fejlesztéseket és a MySQL erőforrás-szolgáltató verziója 1.1.33.0 az ismert problémákat ismertetik.
 
@@ -46,11 +46,12 @@ Az Azure Stack MySQL erőforrás-szolgáltató ezen verziója tartalmazza a köv
 ### <a name="fixes"></a>Javítások
 - **MySQL erőforrás-szolgáltató portál bővítmény előfordulhat, hogy válassza ki a megfelelő előfizetést**. A MySQL erőforrás-szolgáltatót használja az Azure Resource Manager hívások megállapításához az első szolgáltatás rendszergazdai előfizetést szeretné használni, amely nem lehet a *szolgáltatói előfizetés alapértelmezett*. Ha ez történik, a MySQL erőforrás-szolgáltató nem működik megfelelően. 
 
-- **A MySQL üzemeltető kiszolgálót nem tartalmazza a tárolt adatbázisok.** Felhasználó által létrehozott adatbázisok előfordulhat, hogy nem szerepel a listán, bérlői erőforrások üzemeltető kiszolgálók MySQL-hez készült megtekintésekor.
+- **MySQL hosting server does not list hosted databases.** Felhasználó által létrehozott adatbázisok előfordulhat, hogy nem szerepel a listán, bérlői erőforrások üzemeltető kiszolgálók MySQL-hez készült megtekintésekor.
 
 - **A korábbi MySQL erőforrás szolgáltató (1.1.30.0) központi telepítés sikertelen lehet, ha nincs engedélyezve a TLS 1.2**. Frissítve a MySQL erőforrás-szolgáltató 1.1.33.0 engedélyezéséhez a TLS 1.2-es, az erőforrás-szolgáltató, az erőforrás-szolgáltató frissítése vagy titkos kulcsok Elforgatás üzembe helyezésekor. 
 
-- **MySQL erőforrás-szolgáltató titkos elforgatás nem sikerül**. Kijavítva a hiba a következő hibakóddal eredményez, amikor a titkos kulcsok elforgatás: ` New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
+- **MySQL erőforrás-szolgáltató titkos elforgatás nem sikerül**. Kijavítva a hiba a következő hibakóddal eredményez, amikor a titkos kulcsok elforgatás:
+`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
 ## <a name="known-issues"></a>Ismert problémák 
 

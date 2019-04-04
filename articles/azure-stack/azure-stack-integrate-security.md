@@ -11,12 +11,12 @@ ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/28/2019
 keywords: ''
-ms.openlocfilehash: a47b38acc372e6c1d215c7440657486b5babf3bb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3694425ac72d3b75d66d870e3746bc1738ba0138
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009476"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481909"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Az Azure Stack adatközpont integrációja - syslog-továbbítás
 
@@ -185,13 +185,13 @@ Távolítsa el teljesen a syslog-kiszolgáló konfigurációját, és állítsa 
 
 **Távolítsa el a syslog-kiszolgáló konfigurálása az ügyfél**
 
-```PowerShell  
+```powershell  
 Set-SyslogServer -Remove
 ```
 
 **Távolítsa el az ügyféltanúsítványt az ügyfél**
 
-```PowerShell  
+```powershell  
 Set-SyslogClient -RemoveCertificate
 ```
 
@@ -201,13 +201,13 @@ Ha a syslog-kiszolgáló sikeresen csatlakozott a syslog-ügyfél, hamarosan web
 
 **A syslog-ügyfél konfigurációjának ellenőrzése**
 
-```PowerShell  
+```powershell  
 Get-SyslogServer
 ```
 
 **Ellenőrizze a tanúsítvány beállítása a syslog-ügyfélben**
 
-```PowerShell  
+```powershell  
 Get-SyslogClient
 ```
 
@@ -242,7 +242,7 @@ Prefix fields
 
 A kiemelt végponthoz események táblázatát:
 
-| Esemény | EGP-esemény azonosítója | EGP feladat neve | Severity |
+| Esemény (event) | EGP-esemény azonosítója | EGP feladat neve | Súlyosság |
 |-------|--------------| --------------|----------|
 |PrivilegedEndpointAccessed|1000|PrivilegedEndpointAccessedEvent|5|
 |SupportSessionTokenRequested |1001|SupportSessionTokenRequestedEvent|5|
@@ -258,7 +258,7 @@ A kiemelt végponthoz események táblázatát:
 
 EGP súlyossági tábla:
 
-| Severity | Szint | Numerikus érték |
+| Súlyosság | Szint | Numerikus érték |
 |----------|-------| ----------------|
 |0|Nem definiált|Érték: 0. Azt jelzi, hogy minden szinten naplók|
 |10|Kritikus|Érték: 1. Azt jelzi, hogy a naplók kritikus riasztás|
@@ -278,7 +278,7 @@ Prefix fields
 
 A helyreállítási végpont események táblázatát:
 
-| Esemény | REP-esemény azonosítója | REP feladat neve | Severity |
+| Esemény (event) | REP-esemény azonosítója | REP feladat neve | Súlyosság |
 |-------|--------------| --------------|----------|
 |RecoveryEndpointAccessed |1011|RecoveryEndpointAccessedEvent|5|
 |RecoverySessionTokenRequested |1012|RecoverySessionTokenRequestedEvent |5|
@@ -289,7 +289,7 @@ A helyreállítási végpont események táblázatát:
 
 Tábla REP súlyossága:
 
-| Severity | Szint | Numerikus érték |
+| Súlyosság | Szint | Numerikus érték |
 |----------|-------| ----------------|
 |0|Nem definiált|Érték: 0. Azt jelzi, hogy minden szinten naplók|
 |10|Kritikus|Érték: 1. Azt jelzi, hogy a naplók kritikus riasztás|
@@ -357,7 +357,7 @@ Windows-események az Azure Stack egyéni bővítmény tábla:
 
 Riasztások súlyosság táblázatban:
 
-| Severity | Szint |
+| Súlyosság | Szint |
 |----------|-------|
 |0|Nem definiált|
 |10|Kritikus|

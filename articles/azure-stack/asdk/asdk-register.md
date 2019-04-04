@@ -15,12 +15,12 @@ ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: dc146c6e8877a99570aab25d198ba365abbe7c86
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4dc4c9d4d936bbcf626884c5c90e16f640f268a0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078176"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487770"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack-regisztráció
 Regisztrálhat az Azure Stack Development Kit (ASDK) telepítése az Azure marketplace-elemek letöltése az Azure-ból, és megkezdheti a Microsoft kereskedelmi adatok beállítása. Regisztráció teljes Azure Stack-funkciók, többek között a piactér tartalomtípus-gyűjtési támogatásához szükséges. Regisztráció szükséges ahhoz, hogy tesztelje fontos Azure Stack-funkciók, például a Marketplace-en tartalomtípus-gyűjtési és használati jelentések készítése. Miután regisztrálta Azure Stack, az Azure kereskedelmi jelentett használati. Láthatja a regisztráció során használt előfizetés alatt. Azonban ASDK felhasználók nem számítunk fel díjat minden használati jelentést.
@@ -32,7 +32,7 @@ Mielőtt ezeket az utasításokat a ASDK regisztrálni az Azure-ral, győződjö
 
 Emellett a PowerShell nyelvmód értékre kell állítani **FullLanguageMode** azon a számítógépen, az Azure-ral a ASDK regisztrálhatók. Annak ellenőrzéséhez, hogy a jelenlegi nyelvmód beállítása teljes nyisson meg egy rendszergazda jogú PowerShell-ablakot, és futtassa a következő PowerShell-parancsokat:
 
-```PowerShell  
+```powershell  
 $ExecutionContext.SessionState.LanguageMode
 ```
 
@@ -50,7 +50,7 @@ Kövesse az alábbi lépéseket a ASDK regisztrálni az Azure-ral.
 
 2. Futtassa a következő PowerShell-parancsokat a ASDK telepítési regisztrálni az Azure-ral. Jelentkezzen be az Azure számlázási előfizetés-Azonosítóját és a helyi ASDK telepítési is kell. Ha nem rendelkezik az Azure számlázási előfizetés-azonosító, még akkor is [ingyenes Azure-fiók létrehozása itt](https://azure.microsoft.com/free/?b=17.06). Az Azure-előfizetése ingyenes regisztrálása az Azure Stack tekintetében.<br><br>Állítsa be egy egyedi nevet a regisztráció futtatásakor a **Set-AzsRegistration** parancsmagot. A **RegistrationName** paraméterének alapértelmezett értéke **AzureStackRegistration**. Azonban, ha ugyanazzal a névvel egynél több Azure Stack-példányt használ, a parancsfájl futtatása sikertelen lesz.
 
-    ```PowerShell  
+    ```powershell  
     # Add the Azure cloud subscription environment name. 
     # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
     Add-AzureRmAccount -EnvironmentName "<environment name>"
@@ -89,7 +89,7 @@ Ha regisztrál az Azure Stack kapcsolat nélküli környezetben (az internet-hoz
 ### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>Szerezze be egy regisztrációs tokent az Azure Stack-környezet
 A ASDK gazdaszámítógépen indítsa el a Powershellt rendszergazdaként, és keresse meg a **regisztrációs** mappájában a **AzureStack-Tools-master** jön létre, amikor az Azure Stack eszközök letöltött könyvtár. A következő PowerShell-parancsok segítségével importálhatja a **RegisterWithAzure.psm1** modult, majd a **Get-AzsRegistrationToken** parancsmagot, hogy a regisztrációs jogkivonat lekérése:  
 
-   ```PowerShell  
+   ```powershell  
    # Import the registration module that was downloaded with the GitHub tools
    Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
 
@@ -110,7 +110,7 @@ A regisztrációs jogkivonat használatra mentse az internethez csatlakozó szá
 ### <a name="connect-to-azure-and-register"></a>Csatlakozás az Azure és a regisztráció
 Az interneten csatlakoztatott számítógépen, a következő PowerShell-parancsok használata importálása a **RegisterWithAzure.psm1** modult, majd a **Register-AzsEnvironment** parancsmag regisztrálhat az Azure-ban az imént létrehozott regisztrációs jogkivonatot, és egyedi regisztrációs nevét:  
 
-  ```PowerShell  
+  ```powershell  
   # Add the Azure cloud subscription environment name. 
   # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
   Add-AzureRmAccount -EnvironmentName "<environment name>"
@@ -134,7 +134,7 @@ Az interneten csatlakoztatott számítógépen, a következő PowerShell-parancs
 
 Másik lehetőségként használhatja a **Get-tartalom** parancsmagot, hogy a regisztrációs jogkivonatot tartalmazó fájlra mutat:
 
-  ```PowerShell  
+  ```powershell  
   # Add the Azure cloud subscription environment name. 
   # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
   Add-AzureRmAccount -EnvironmentName "<environment name>"

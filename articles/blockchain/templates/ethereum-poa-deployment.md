@@ -10,14 +10,16 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 50d24fd41a0a933d9cfec37477773463a918ca0a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5a693fef2f77471f799bec46f149ff19d6edca80
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549068"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905919"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>A koncepció jogosultság consortium Ethereum
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Áttekintés
 [Ez a megoldás](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) célja, hogy könnyebben telepítése, konfigurálása és egy többtagú koncepció jogosultság Ethereum konzorciumhálózat minimális Azure és az Ethereum kapcsolatos szabályozzák.
@@ -250,7 +252,7 @@ Egyes paraméterek részletes leírását a következő:
   Érvényesítési csomópont tároló-teljesítményre|A telepített érvényesítő csomópontok biztonsági felügyelt lemez típusa.|Standard SSD- vagy prémium|Standard SSD
   Érvényesítési csomópont virtuális gépének mérete|Az érvényesítő csomópontok használt virtuálisgép-méretet.|Standard A, Standard D, Standard D-v2, Standard F sorozat, Standard DS és a Standard FS|Standard D1 v2
 
-[A Storage szolgáltatás díjszabását.](https://azure.microsoft.com/pricing/details/managed-disks/)
+[A Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)
 
 [Virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
 
@@ -395,7 +397,7 @@ $MyGatewayName = $splitValue[8]
 
 ## $otherGatewayResourceid tells me what the subscription and VNet GatewayName are
 $OtherGatewayName = $OtherGatewayResourceId.Split('/')[8]
-$Subscription=Select-AzureRmSubscription -SubscriptionId $MySubscriptionid
+$Subscription=Select-AzSubscription -SubscriptionId $MySubscriptionid
 
 ## create a PSVirtualNetworkGateway instance for the gateway I want to connect to
 $OtherGateway=New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
@@ -405,10 +407,10 @@ $OtherGateway.GatewayType = "Vpn"
 $OtherGateway.VpnType = "RouteBased"
 
 ## get a PSVirtualNetworkGateway instance for my gateway
-$MyGateway = Get-AzureRmVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName $MyResourceGroup
+$MyGateway = Get-AzVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName $MyResourceGroup
 
 ## create the connection
-New-AzureRmVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
+New-AzVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
 ```
 
 ### <a name="service-monitoring"></a>Szolgáltatásfigyelés

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 677fec21b7491398da5e4958441e5405e0c10e0e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 5fdee4edce0301a5a4524725879f599b0a2e3532
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745673"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916699"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) az Azure Monitor szolgáltatással kapcsolatos ismert problémák
 
@@ -31,7 +31,6 @@ Az alábbi ismert problémák az állapotfigyelő szolgáltatás jelenlegi kiad�
 - Egy Azure virtuális gép eltávolítása vagy törlése, ha egy ideig a virtuális gép nézetben jelenik meg. Ezenkívül egy eltávolított vagy törölt virtuális gép állapotát kattintva megnyílik a **egészségügyi diagnosztikai** megtekintheti, és ezután kezdeményezi a betöltés hurkot. A törölt virtuális gép nevét kiválasztva megnyílik egy ablaktábla és a egy üzenet, amely megállapítja, hogy a virtuális gép törölve lett.
 - Konfigurációs módosítások, például frissítése egy küszöbértéket, akár 30 percet igénybe vehet, még akkor is, ha a portálon vagy a számítási feladatok a figyelő API előfordulhat, hogy azokat azonnal frissítse. 
 - A Health diagnosztikai élmény frissítések gyorsabb, mint a más nézetekhez. Az adatokat késhetnek, amikor azok között. 
-- Virtuális gépek leállítása frissítések állapotára vonatkozó feltételek az egyes *kritikus* és mások *kifogástalan*. A hálózati virtuális gép állapota látható *kritikus*.
 - Linux rendszerű virtuális gépekhez az ajánlati a virtuális gép egyetlen nézetben a állapotára vonatkozó feltételek lap címe rendelkezik a virtuális gép, a felhasználó által megadott virtuális gép neve helyett a teljes tartománynév. 
 - Miután letiltja a támogatott módszerek egyikének használatával virtuális gépek figyelése, és megpróbálja ismét üzembe helyezné, ugyanazon a munkaterületen kell telepíteni. Ha egy másik munkaterületet, és próbálja meg a virtuális Gépeket az állapot megtekintése, akkor előfordulhat, hogy megjelenítése kiszámíthatatlan működést.
 - Teljes CPU-kihasználtság egészségügyi szempont a Windows jeleníti meg egy küszöbértéket *nem egyenlő* **4**, azaz a Processzor kihasználtsága nagyobb, mint 95 %-os és rendszer-várólista hossza nagyobb, mint 15. Ezen állapot feltétel nem konfigurálható ebben az előzetes verzióban.  

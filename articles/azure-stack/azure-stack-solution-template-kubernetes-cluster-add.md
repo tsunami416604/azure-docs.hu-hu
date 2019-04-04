@@ -15,12 +15,12 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: ca58059716ebebfaf663412b37014ae4f534d0e3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf831c6f8faad1892291794bc43dc13e6a17eba1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081508"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484848"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Adja hozzá a Kubernetes az Azure Stack piactéren
 
@@ -78,7 +78,7 @@ Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity man
 
     - Nyisson meg egy rendszergazda jogú parancssorba PowerShell. Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
 
-        ```PowerShell  
+        ```powershell  
         # Creates a new self signed certificate 
         $passwordString = "<password>"
         $certlocation = "<local certificate path>.pfx"
@@ -106,7 +106,7 @@ Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity man
 
 2.  Jegyezze fel az új tanúsítvány azonosító jelenik meg a PowerShell-munkamenetet a `1C2ED76081405F14747DC3B5F76BB1D83227D824`. Az azonosító használható az egyszerű szolgáltatás létrehozásakor.
 
-    ```PowerShell  
+    ```powershell  
     VERBOSE: Generated new certificate 'CN=<certificate name>' (1C2ED76081405F14747DC3B5F76BB1D83227D824).
     ```
 
@@ -117,7 +117,7 @@ Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity man
        | Érték | Leírás                     |
        | ---   | ---                             |
        | ERCS IP | A ASDK a kiemelt végponthoz van általában `AzS-ERCS01`. |
-       | Alkalmazásnév | Adja meg az egyszerű szolgáltatás egyszerű nevét. |
+       | Alkalmazás neve | Adja meg az egyszerű szolgáltatás egyszerű nevét. |
        | Tanúsítványtár helye | A számítógépen, a tanúsítványt tároló elérési útja. Ez jelzi a tárolási helynek, és a tanúsítvány Azonosítóját az első lépésben létrehozott. Például:`Cert:\LocalMachine\My\1C2ED76081405F14747DC3B5F76BB1D83227D824` |
 
        Amikor a rendszer kéri, használja a következő hitelesítő adatok a jogosultság végponthoz csatlakozik. 
@@ -126,7 +126,7 @@ Ha az Active Directory összevonási szolgáltatásokban (AD FS) az identity man
 
     - Futtassa a következő szkriptet a paraméterekkel az értékek a frissített:
 
-        ```PowerShell  
+        ```powershell  
         #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
@@ -200,7 +200,7 @@ Adja hozzá a következő Ubuntu Server-lemezképet a Marketplace-en:
 1. Írja be a `Ubuntu Server` (igen) kifejezést.
 
 1. Válassza ki a kiszolgálót a legújabb verziója. A teljes verziószám, és győződjön meg arról, hogy a legújabb verzióval rendelkezik:
-    - **Közzétevő**: Canonical
+    - **Közzétevő**: Kanonikus
     - **Ajánlat**: UbuntuServer
     - **Verzió**: 16.04.201806120 (vagy a legújabb verzió)
     - **TERMÉKVÁLTOZAT**: 16.04-LTS
@@ -259,7 +259,7 @@ A Kubernetes-elem eltávolítása:
 
 2. Keresse meg az aktuális Kubernetes-fürt elemet a katalógusban.
 
-    ```PowerShell  
+    ```powershell  
     Get-AzsGalleryItem | Select Name
     ```
     
@@ -267,7 +267,7 @@ A Kubernetes-elem eltávolítása:
 
 4. A következő PowerShell-parancsmag segítségével eltávolítja az elemet:
 
-    ```PowerShell  
+    ```powershell  
     $Itemname="Microsoft.AzureStackKubernetesCluster.0.3.0"
 
     Remove-AzsGalleryItem -Name $Itemname

@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 3df5bd177dfd88e74a8dbc72dd1966a18a61d0f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2c2b0d022c81dffe5e98932c22b9707eb10b7e63
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860584"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481722"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Földrajzilag elosztott alkalmazás megoldás létrehozása az Azure és az Azure Stackben
 
@@ -248,10 +248,10 @@ Az [Azure App Service](https://docs.microsoft.com/azure/app-service/overview) eg
 ![Helyettesítő szöveg](media/azure-stack-solution-geo-distributed/image27.png)
 
 > [!div class="checklist"]
-> - Meglévő egyéni DNS-név leképezése az Azure Web Appsra
+> - Meglévő egyéni DNS-név hozzárendelése az Azure Web Appshez
 > - Használja a ** CNAME recorder egy **rekord** egy egyéni DNS-név leképezése az App Service-ben.
 
-### <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Meglévő egyéni DNS-név leképezése az Azure Web Appsra
+### <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Meglévő egyéni DNS-név hozzárendelése az Azure Web Appshez
 
 > [!Note]  
 >  Minden egyéni DNS-neveit gyökértartomány kivételével (example,northwind.com) egy olyan CNAME REKORDOT használjon.
@@ -472,7 +472,7 @@ Egyesített SSL-tanúsítvány exportálása a titkos kulccsal, a tanúsítvány
 
 Egy titkos kulcsfájlt OpenSSL lett létrehozva. A tanúsítvány exportálása PFX-FÁJLBA, futtassa a következő parancsot, és cserélje le a helyőrzőket *< private-key-file >* és *< egyesített-certificate-file >* titkos kulcs elérési úttal, és egyesített tanúsítványfájl.
 
-```PowerShell
+```powershell
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
 ```
 

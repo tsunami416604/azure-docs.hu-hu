@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: c7bfa8351a2599ff8616364a093cd6154e90830c
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 88a66cae00bcd1256f6c3ad76a04d1333d1db9db
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850873"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917090"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Élő adatfolyam továbbítása többszörös átviteli sebességű Streamek létrehozása az Azure Portalon a Media Services használatával  
 > [!div class="op_single_selector"]
@@ -42,6 +42,8 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
 > Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@microsoft.com e-mail-címen.
 
 1. Csatlakoztasson egy videokamerát a számítógéphez. <br/>A telepítő ötleteket, tekintse meg [egyszerű és hordozható esemény videó fogaskerék beállítása]( https://link.medium.com/KNTtiN6IeT).
+
+    Ha nem rendelkezik a kamerához való hozzáférés, eszközök, mint például [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) segítségével hozzon létre egy élő adás videót.
 1. Indítsa el, és adja meg, amely a következő protokollok egy egyféle sávszélességű adatfolyamot küldhetnek kimenetet a helyszíni élő kódoló: RTMP vagy Smooth Streaming. További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://go.microsoft.com/fwlink/?LinkId=532824) <br/>Emellett tekintse meg ezt a blogot: [Élő streamelés az éles üzemre OBS](https://link.medium.com/ttuwHpaJeT).
 
     Ezt a lépést a csatorna létrehozása után is elvégezheti.

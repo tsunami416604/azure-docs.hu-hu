@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 1a192f5cbd0fb5a4dcb911f40753efcbd996a418
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: b104f2578938997ff12778d65f08cca226d9a445
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793844"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892330"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
@@ -42,7 +42,7 @@ A lemezek a Microsoft BitLocker meghajtótitkosítással vannak titkosítva, ame
 A. Ha 40 TB-nyi (vagy kevesebb) adata van, amelyet szeretne átvinni az Azure-ba, akkor hasznos lehet a Data Box Disk-lemezek használata.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>K. Mennyibe kerülnek a Data Box Disk-lemezek?
-A. Információk a Data Box-lemezek az árat, [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
+A. Információk a Data Box-lemezek az árat, [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/databox/disk/).
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>K. Hogyan kaphatok Data Box Disk-lemezeket? 
 A.  Az Azure Data Box-lemezek jelentkezzen be az Azure Portalra, és hozzon létre egy Data Box-rendelés lemezek. Adja meg a kapcsolattartási és értesítési adatait. A megrendelés elküldése után a rendelkezésre állás függvényében 10 napon belül szállítjuk Önnek a lemezeket.
@@ -129,8 +129,8 @@ A. A Data Box-lemezek érhető el az eszközkészlet három eszközöket tartalm
  - **Data Box lemez felosztása Fájlmásoló eszközt**: Használja ezt az eszközt, ha több lemezeket használ, és a egy nagy méretű adathalmazt, amelyek felosztása és lemez minden másolt kell rendelkeznie. Ez az eszköz Windows jelenleg érhető el. Ez az eszköz nem felügyelt lemezekkel rendelkező támogatott. Ez az eszköz azt is ellenőrzi, mivel átmásolja az adatokat, így az ellenőrzési lépést kihagyhatja az eszköz használatakor.
 
 Az eszközkészlet Windows és Linux egyaránt érhető el. Az eszközkészlet Itt töltheti le:
-- [Data Box Disk eszközkészlet letöltése Windowsra](https://aka.ms/databoxdisktoolswin) 
-- [Data Box Disk eszközkészlet letöltése Linuxra](https://aka.ms/databoxdisktoolslinux)
+- [A Windows Data Box-lemezek eszközkészlet letöltése](https://aka.ms/databoxdisktoolswin) 
+- [Töltse le a Data Box-lemezek eszközkészlet linuxhoz](https://aka.ms/databoxdisktoolslinux)
  
   ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>K. Használható az Azure Files adatátvitelt, majd az adatokat az Azure File Sync Data Box-lemezek? 
   A. Az Azure Files Data Box-lemezek használata támogatott, de nem működnek jól az Azure File Sync használatával. Metaadatok nem marad meg, ha a fájl adatait használja az Azure File Sync használatával.

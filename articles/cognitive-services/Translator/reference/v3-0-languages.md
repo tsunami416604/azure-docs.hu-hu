@@ -3,19 +3,19 @@ title: Translator Text API nyelvek metódus
 titlesuffix: Azure Cognitive Services
 description: A Translator Text API nyelvek módszert használja.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 45baf915ffbc2723d3ed5b4c4dcd96b583a12802
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122403"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915764"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
@@ -93,7 +93,7 @@ A sikeres válasz egy JSON-objektum egy tulajdonsággal kért csoportonkénti:
 
 Minden egyes tulajdonság értéke a következőképpen.
 
-* `translation` A tulajdonság
+* `translation` tulajdonság
 
   Értékét a `translation` tulajdonság értéke egy szótár (kulcs, érték) párok. Minden egyes kulcs a BCP-47 nyelvi címke. A kulcs azonosítja, amelynek szöveget a lefordított vagy a lefordított nyelvet. A kulcshoz tartozó érték leíró nyelv tulajdonságokkal rendelkező JSON-objektum:
 
@@ -119,7 +119,7 @@ Minden egyes tulajdonság értéke a következőképpen.
   }
   ```
 
-* `transliteration` A tulajdonság
+* `transliteration` tulajdonság
 
   Értékét a `transliteration` tulajdonság értéke egy szótár (kulcs, érték) párok. Minden egyes kulcs a BCP-47 nyelvi címke. A kulcs azonosítja, amelynek szöveget lehet alakítani egy parancsfájlból származó egy másik parancsprogramra nyelvet. A kulcshoz tartozó érték a nyelv és a támogatott szkriptek leíró tulajdonságokkal rendelkező JSON-objektum:
 
@@ -184,7 +184,7 @@ Minden egyes tulajdonság értéke a következőképpen.
   }
   ```
 
-* `dictionary` A tulajdonság
+* `dictionary` tulajdonság
 
   Értékét a `dictionary` tulajdonság értéke egy szótár (kulcs, érték) párok. Minden egyes kulcs a BCP-47 nyelvi címke. A kulcs azonosítja egy nyelvet, amely felkínálásával és vissza – fordítások érhetők el. Az érték a következő JSON-objektum, amely leírja a Forrásnyelv és a fordításokat és a cél nyelvek:
 
@@ -281,7 +281,7 @@ Ha hiba történik, a kérelem is hiba JSON-választ adja vissza. A hibakód egy
 
 Az alábbi példa bemutatja, hogyan szövegfordítás támogatott nyelvek beolvasása.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>A curl](#tab/curl)
 
 ```
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"

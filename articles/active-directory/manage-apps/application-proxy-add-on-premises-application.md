@@ -12,12 +12,12 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29f2de6eb0171e5e1c792e8860a56f014dad501f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: fd494ffe6bc48495c882ed84062503bdc00ae9f4
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314824"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917838"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 
@@ -49,7 +49,7 @@ Magas rendelkezésre álláshoz az éles környezetben javasoljuk, hogy egynél 
 
 1. Fizikailag keresse meg az összekötő kiszolgáló közel az alkalmazáskiszolgálók között az összekötő és az alkalmazás teljesítményének optimalizálásához. További információkért lásd: [hálózati topológiai szempontok a](application-proxy-network-topology.md).
 
-2. Az összekötő és a webes alkalmazások kiszolgáló az Active Directory-tartományhoz kell tartoznia. A kiszolgálók ugyanabban a tartományban, akkor az integrált Windows-hitelesítés (IWA) és a Kerberos által korlátozott delegálás (KCD) egyszeri bejelentkezéses (SSO) használatára vonatkozó követelmény. Ha az összekötő kiszolgáló és a webalkalmazás-kiszolgálón is eltérő Active Directory-tartományok, delegálási erőforrás-alapú egyszeri bejelentkezést használni szeretne. További információkért lásd: [KCD az egyszeri bejelentkezés alkalmazásproxyval való](application-proxy-configure-single-sign-on-with-kcd.md).
+2. Az összekötő és a webes alkalmazások kiszolgáló kell az Active Directory-tartományhoz tartozik, vagy span megbízó tartományokban. A kiszolgálókat kellene ugyanabban a tartományban vagy megbízható tartományok esetében az integrált Windows-hitelesítés (IWA) és a Kerberos által korlátozott delegálás (KCD) egyszeri bejelentkezéses (SSO) használatára vonatkozó követelmény. Ha az összekötő kiszolgáló és a webalkalmazás-kiszolgálón is eltérő Active Directory-tartományok, delegálási erőforrás-alapú egyszeri bejelentkezést használni szeretne. További információkért lásd: [KCD az egyszeri bejelentkezés alkalmazásproxyval való](application-proxy-configure-single-sign-on-with-kcd.md).
 
 #### <a name="software-requirements"></a>Szoftverkövetelmények
 
@@ -182,10 +182,10 @@ Most, hogy a környezet előkészítése és egy összekötőt, készen áll a h
 
     | Mező | Leírás |
     | :---- | :---------- |
-    | **Háttéralkalmazás túllépte az időkorlátot** | Ez az érték **hosszú** csak akkor, ha az alkalmazás lassú hitelesítéshez és csatlakozáshoz. |
-    | **Csak HTTP cookie-k használata** | Ez az érték **Igen** kell Application Proxy cookie-kat a HTTPOnly jelző bevonni a HTTP-válaszfejléc. Ha a távoli asztali szolgáltatásokat, állítsa be ezt az értéket **nem**.|
-    | **Biztonságos cookie-k használata**| Ez az érték **Igen** cookie-k egy biztonságos csatornán, például egy titkosított HTTPS-kérést küldött.
-    | **Állandó cookie-k használata**| Tartsa ezt az értéket állítsa **nem**. Ez a beállítás csak az alkalmazásokat, amelyek nem lehet megosztani a folyamatok közötti cookie-kat kell használható. Cookie-k beállításairól további információ: [cookie-k beállításairól a helyszíni alkalmazások az Azure Active Directory eléréséhez](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)
+    | **A háttéralkalmazás túllépte az időkorlátot** | Ez az érték **hosszú** csak akkor, ha az alkalmazás lassú hitelesítéshez és csatlakozáshoz. |
+    | **Csak HTTP-cookie használata** | Ez az érték **Igen** kell Application Proxy cookie-kat a HTTPOnly jelző bevonni a HTTP-válaszfejléc. Ha a távoli asztali szolgáltatásokat, állítsa be ezt az értéket **nem**.|
+    | **Biztonságos cookie használata**| Ez az érték **Igen** cookie-k egy biztonságos csatornán, például egy titkosított HTTPS-kérést küldött.
+    | **Állandó cookie használata**| Tartsa ezt az értéket állítsa **nem**. Ez a beállítás csak az alkalmazásokat, amelyek nem lehet megosztani a folyamatok közötti cookie-kat kell használható. Cookie-k beállításairól további információ: [cookie-k beállításairól a helyszíni alkalmazások az Azure Active Directory eléréséhez](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)
     | **A fejlécek URL-címek lefordítása** | Tartsa ezt az értéket **Igen** , kivéve, ha az alkalmazás által igényelt az eredeti állomásfejlécet a hitelesítési kérelmet. |
     | **A kérelem törzsében URL-címek lefordítása** | Tartsa ezt az értéket **nem** , ha rendelkezik szoftveresen kötött HTML-hivatkozások más helyszíni alkalmazásokhoz, és ne használja az egyéni tartományok. További információkért lásd: [hivatkozásra a proxyval fordítási](application-proxy-configure-hard-coded-link-translation.md).<br><br>Ez az érték **Igen** Ha azt tervezi, hogy az alkalmazás a Microsoft Cloud App Security (MCAS) figyelésére. További információkért lásd: [valós idejű hozzáférés az alkalmazásfigyelés konfigurálása a Microsoft Cloud App Security és az Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md) |
    

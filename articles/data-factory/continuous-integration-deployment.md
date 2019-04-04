@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: gamal
 manager: craigg
-ms.openlocfilehash: 5f5a9ef689fefd5683f7b6f1ebc9b2193ce020e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2edd4e28a0dd67be3c06159bce2e968d681b7f70
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995767"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905256"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
 
@@ -24,11 +24,11 @@ Folyamatos integráció az eljárás a tesztelési minden módosítás történi
 
 Az Azure Data Factoryhoz folyamatos integráció és teljesítés azt jelenti, hogy a másikra történő áthelyezésének Data Factory-folyamatok az egyik környezetből (fejlesztési, tesztelési és éles környezetben). Ehhez a folyamatos integráció és teljesítés, Data Factory felhasználói felülete integrációs használhatja az Azure Resource Manager-sablonok. A Data Factory felhasználói felülete egy Resource Manager-sablont hozhat létre, kiválasztásakor a **ARM-sablon** beállítások. Ha bejelöli **exportálása ARM-sablon**, a portál létrehozza a Resource Manager-sablon a data factory és a egy konfigurációs fájl, amely tartalmazza az összes kapcsolat-karakterlánc és más paramétereket. Akkor rendelkezik az egyes környezetekhez (fejlesztési, tesztelési és éles környezetben) egy konfigurációs fájl létrehozása céljából. A fő Resource Manager-sablonfájl minden környezet esetében ugyanaz marad.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 A 9 perces bevezető és a funkció bemutatójáért tekintse meg a következő videót:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-resource-manager-template-for-each-environment"></a>Az egyes környezetekhez Resource Manager-sablon létrehozása
 Válassza ki **exportálása ARM-sablon** a Resource Manager-sablon a fejlesztési környezetben a data Factory exportálása.

@@ -4,19 +4,19 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 9b3261679b64e054bb8f750ad99983661a5b6035
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 89d5483347f93cd3b57a02ced19b1e8b099a5ab0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56213066"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919248"
 ---
 ## <a name="specifying-formats"></a>Formátumok meghatározása
 Az Azure Data Factory a következő formátumtípusokat támogatja:
 
 * [Szöveges formátum](#specifying-textformat)
-* [JSON formátum](#specifying-jsonformat)
-* [Avro formátum](#specifying-avroformat)
+* [JSON-formátumban](#specifying-jsonformat)
+* [Az Avro formátum](#specifying-avroformat)
 * [ORC formátum](#specifying-orcformat)
 * [Parquet formátum](#specifying-parquetformat)
 
@@ -30,10 +30,10 @@ Ha elemezni szeretné a szöveges fájlokat, vagy szöveges formátumban szeretn
 | escapeChar |Az oszlophatároló feloldására szolgáló speciális karakter a bemeneti fájl tartalmában. <br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Példa: vessző (', ') az oszlophatároló, de szeretné a vessző karakter a szövegben (például: "Helló, világ"), adja meg a "$" feloldójelként, és karakterlánc használata "Helló$, világ" a forrás. |Nem |
 | quoteChar |Egy sztringérték idézéséhez használt karakter. Ekkor az idézőjel-karakterek közötti oszlop- és sorhatárolókat a rendszer a sztringérték részeként kezeli. Ez a tulajdonság a bemeneti és a kimeneti adatkészleteken is alkalmazható.<br/><br/>Egy táblához nem határozható meg az escapeChar és a quoteChar is. |Csak egy karakter használata engedélyezett. Nincs alapértelmezett érték. <br/><br/>Ha például vessző (,) az oszlophatároló, de a vessző karaktert szeretné megjeleníteni a szövegben (például: &lt;Helló, világ&gt;), megadhatja a " (angol dupla idézőjel) értéket idézőjel-karakterként, és a "Helló$, világ" sztringet használhatja a forrásban. |Nem |
 | nullValue |A null értéket jelölő egy vagy több karakter. |Egy vagy több karakter. Az **alapértelmezett** értékek az **„\N” és „NULL”** olvasás, illetve **„\N”** írás esetén. |Nem |
-| encodingName |A kódolási név megadására szolgál. |Egy érvényes kódolási név. Lásd az [Encoding.EncodingName tulajdonságot](https://msdn.microsoft.com/library/system.text.encoding.aspx). Például: windows-1250 vagy shift_jis. Az **alapértelmezett** érték az **UTF-8**. |Nem |
-| firstRowAsHeader |Megadja, hogy az első sort fejlécnek kell-e tekinteni. A bemeneti adatkészletek első sorát a Data Factory fejlécként olvassa be. A kimeneti adatkészletek első sorát a Data Factory fejlécként írja ki. <br/><br/>[A `firstRowAsHeader` és a `skipLineCount` használatára vonatkozó forgatókönyvekben](#scenarios-for-using-firstrowasheader-and-skiplinecount) tekinthet meg minta-forgatókönyveket. |True (Igaz)<br/>**False (alapértelmezett)** |Nem |
+| encodingName |A kódolási név megadására szolgál. |Egy érvényes kódolási név. Lásd az [Encoding.EncodingName tulajdonságot](/dotnet/api/system.text.encoding). Például: windows-1250 vagy shift_jis. Az **alapértelmezett** érték az **UTF-8**. |Nem |
+| firstRowAsHeader |Megadja, hogy az első sort fejlécnek kell-e tekinteni. A bemeneti adatkészletek első sorát a Data Factory fejlécként olvassa be. A kimeneti adatkészletek első sorát a Data Factory fejlécként írja ki. <br/><br/>[A `firstRowAsHeader` és a `skipLineCount` használatára vonatkozó forgatókönyvekben](#scenarios-for-using-firstrowasheader-and-skiplinecount) tekinthet meg minta-forgatókönyveket. |True (Igaz)<br/>**FALSE (alapértelmezett)** |Nem |
 | skipLineCount |Az adatok bemeneti fájlokból való olvasásakor kihagyandó sorok számát jelzi. Ha a skipLineCount és a firstRowAsHeader tulajdonság is meg van adva, a rendszer először kihagyja a sorokat, majd beolvassa a fejléc-információkat a bemeneti fájlból. <br/><br/>[A `firstRowAsHeader` és a `skipLineCount` használatára vonatkozó forgatókönyvekben](#scenarios-for-using-firstrowasheader-and-skiplinecount) tekinthet meg minta-forgatókönyveket. |Egész szám |Nem |
-| treatEmptyAsNull |Meghatározza, hogy az adatok bemeneti fájlból történő olvasásakor a null vagy üres értékeket null értékként kell-e kezelni. |**True (alapértelmezett)**<br/>False (Hamis) |Nem |
+| treatEmptyAsNull |Meghatározza, hogy az adatok bemeneti fájlból történő olvasásakor a null vagy üres értékeket null értékként kell-e kezelni. |**TRUE (alapértelmezett)**<br/>False (Hamis) |Nem |
 
 #### <a name="textformat-example"></a>A TextFormat használatát bemutató példa
 A következő minta bemutatja a TextFormat néhány formázási tulajdonságát.
@@ -78,7 +78,7 @@ Ha elemezni szeretné a JSON-fájlokat, vagy JSON formátumban szeretne adatokat
 | filePattern |Az egyes JSON-fájlokban tárolt adatok mintáját jelzi. Az engedélyezett értékek a következők: **setOfObjects** és **arrayOfObjects**. Az **alapértelmezett** érték a **setOfObjects**. A mintákkal kapcsolatban lásd a [JSON-fájlminták](#json-file-patterns) című szakaszt. |Nem |
 | jsonNodeReference | Ha egy azonos mintával rendelkező tömbmezőben található objektumokat szeretne iterálni, vagy azokból adatokat kinyerni, adja meg a tömb JSON-útvonalát. Ez a tulajdonság csak akkor támogatott, ha JSON-fájlokból másol adatokat. | Nem |
 | jsonPathDefinition | Megadja az egyes oszlopmegfeleltetések JSON-útvonalának kifejezését testre szabott oszlopnevekkel (kezdje kisbetűvel). Ez a tulajdonság csak akkor támogatott, ha JSON-fájlokból másol adatokat, és ki tud nyerni adatokat objektumokból vagy tömbökből. <br/><br/> A gyökérobjektum alatti mezők esetében kezdjen a gyökér $ értékkel. A `jsonNodeReference` tulajdonság által kiválasztott tömbben lévő mezők esetében kezdjen a tömbelemmel. A konfigurálással kapcsolatban lásd [A JsonFormat használatát bemutató példa](#jsonformat-example) című szakaszt. | Nem |
-| encodingName |A kódolási név megadására szolgál. Érvényes kódolási nevekkel listájáért lásd: [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) tulajdonság. Például: windows-1250 vagy shift_jis. A **alapértelmezett** érték: **UTF-8**. |Nem |
+| encodingName |A kódolási név megadására szolgál. Érvényes kódolási nevekkel listájáért lásd: [Encoding.EncodingName](/dotnet/api/system.text.encoding) tulajdonság. Például: windows-1250 vagy shift_jis. A **alapértelmezett** érték: **UTF-8**. |Nem |
 | nestingSeparator |A beágyazási szinteket elválasztó karakter. Az alapértelmezett érték a „.” (pont). |Nem |
 
 #### <a name="json-file-patterns"></a>JSON-fájlminták
@@ -89,7 +89,7 @@ A másolási tevékenység a JSON-fájlok következő mintáit tudja elemezni:
 
     Minden fájl egyetlen objektumot, illetve több, sorokkal határolt/összefűzött objektumot tartalmaz. Ha ezt a lehetőséget választja egy kimeneti adatkészletben, a másolási tevékenység egyetlen JSON-fájlt állít elő, soronként egy objektummal (sorokkal határolt).
 
-    * **példa egy objektumot tartalmazó JSON-fájlra**
+    * **egyetlen objektum JSON-példa**
 
         ```json
         {
@@ -102,7 +102,7 @@ A másolási tevékenység a JSON-fájlok következő mintáit tudja elemezni:
         }
         ```
 
-    * **példa sorokkal határolt JSON-fájlra**
+    * **Példa sorokkal határolt JSON**
 
         ```json
         {"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}
@@ -110,7 +110,7 @@ A másolási tevékenység a JSON-fájlok következő mintáit tudja elemezni:
         {"time":"2015-04-29T07:13:21.4370000Z","callingimsi":"466923101048691","callingnum1":"678901578","callingnum2":"345626404","switch1":"Germany","switch2":"UK"}
         ```
 
-    * **példa összefűzött JSON-fájlra**
+    * **Példa összefűzött JSON**
 
         ```json
         {
@@ -139,7 +139,7 @@ A másolási tevékenység a JSON-fájlok következő mintáit tudja elemezni:
         }
         ```
 
-- **II. típus: arrayOfObjects**
+- **Típus: arrayOfObjects**
 
     Minden fájl objektumok egy tömbjét tartalmazza.
 
@@ -178,7 +178,7 @@ A másolási tevékenység a JSON-fájlok következő mintáit tudja elemezni:
 
 Alább láthatja a figyelembe veendő általános pontokat, valamint két példatípust az adatok JSON-fájlokból való másolásáról:
 
-**1. példa: adatok kigyűjtése objektumból és tömbből**
+**1. példa: adatok kinyerése az objektumból és tömbből**
 
 Ebben a példában egy JSON-gyökérobjektum képződik le egyetlen rekordba táblázatos nézetben. Ha a JSON-fájl a következőt tartalmazza:  
 
@@ -213,8 +213,8 @@ Ebben a példában egy JSON-gyökérobjektum képződik le egyetlen rekordba tá
 
 A **JsonFormat** típusú bemeneti adatkészlet a következőképpen van meghatározva (részleges meghatározás, csak a fontos részekkel). Pontosabban:
 
-- A `structure` szakasz határozza meg a testre szabott oszlopneveket és a megfelelő adattípusokat, miközben átalakítja őket táblázatos adatokká. Ez a szakasz **nem kötelező**, kivéve, ha oszlopleképezést kell végeznie. Specifying struktúrameghatározást négyszögletes adatkészletek szakasz további részletekért tekintse meg.
-- A `jsonPathDefinition` határozza meg az egyes oszlopok JSON-útvonalát, amely jelzi, hogy honnan történjen az adatok kinyerése. Adatok másolása egy olyan tömbből, használhatja **array [x] .property** bontsa ki az adott tulajdonság értékét az x. objektumot, vagy használja **array [*] .property** , keresse meg az értéket az összes ilyen tartalmazó tulajdonság.
+- `structure` miközben átalakítja őket táblázatos adatok szakasz határozza meg a testre szabott oszlopneveket és a megfelelő adattípusokat. Ez a szakasz **nem kötelező**, kivéve, ha oszlopleképezést kell végeznie. Specifying struktúrameghatározást négyszögletes adatkészletek szakasz további részletekért tekintse meg.
+- `jsonPathDefinition` Itt adhatja meg az egyes oszlopok, jelezve, hol az adatokat szeretne kinyerni a JSON-útvonalhoz. Adatok másolása egy olyan tömbből, használhatja **array [x] .property** bontsa ki az adott tulajdonság értékét az x. objektumot, vagy használja **array [*] .property** , keresse meg az értéket az összes ilyen tartalmazó tulajdonság.
 
 ```json
 "properties": {
@@ -251,7 +251,7 @@ A **JsonFormat** típusú bemeneti adatkészlet a következőképpen van meghat�
 }
 ```
 
-**2. példa: a tömbből származó ugyanazon minta keresztalkalmazása több objektumra**
+**2. példa: több alkalmazása több, azonos mintával rendelkező objektumok egy olyan tömbből**
 
 Ebben a példában egy JSON-gyökérobjektumot alakít át több rekorddá táblázatos nézetben. Ha a JSON-fájl a következőt tartalmazza:  
 
@@ -286,9 +286,9 @@ Ebben a példában egy JSON-gyökérobjektumot alakít át több rekorddá tábl
 
 A **JsonFormat** típusú bemeneti adatkészlet a következőképpen van meghatározva (részleges meghatározás, csak a fontos részekkel). Pontosabban:
 
-- A `structure` szakasz határozza meg a testre szabott oszlopneveket és a megfelelő adattípusokat, miközben átalakítja őket táblázatos adatokká. Ez a szakasz **nem kötelező**, kivéve, ha oszlopleképezést kell végeznie. Specifying struktúrameghatározást négyszögletes adatkészletek szakasz további részletekért tekintse meg.
-- A `jsonNodeReference` jelzi az orderlines **tömb** alatti, azonos mintával rendelkező objektumok iterálását, illetve az adatok azokból való kinyerését.
-- A `jsonPathDefinition` határozza meg az egyes oszlopok JSON-útvonalát, amely jelzi, hogy honnan történjen az adatok kinyerése. Ebben a példában az „ordernumber”, az „orderdate” és a „city” a „$.” értékkel kezdődő JSON-útvonallal jelzett gyökérobjektum alatt találhatók, míg az „order_pd” és az „order_price” a „$.” értéket nem tartalmazó tömbelemből származtatott útvonallal vannak meghatározva.
+- `structure` miközben átalakítja őket táblázatos adatok szakasz határozza meg a testre szabott oszlopneveket és a megfelelő adattípusokat. Ez a szakasz **nem kötelező**, kivéve, ha oszlopleképezést kell végeznie. Specifying struktúrameghatározást négyszögletes adatkészletek szakasz további részletekért tekintse meg.
+- `jsonNodeReference` azt jelzi, hogy ismételt futtatásával és az adatok kinyerése a alatt azonos mintával rendelkező objektumok **tömb** iterálását.
+- `jsonPathDefinition` Itt adhatja meg az egyes oszlopok, jelezve, hol az adatokat szeretne kinyerni a JSON-útvonalhoz. Ebben a példában az „ordernumber”, az „orderdate” és a „city” a „$.” értékkel kezdődő JSON-útvonallal jelzett gyökérobjektum alatt találhatók, míg az „order_pd” és az „order_price” a „$.” értéket nem tartalmazó tömbelemből származtatott útvonallal vannak meghatározva.
 
 ```json
 "properties": {
