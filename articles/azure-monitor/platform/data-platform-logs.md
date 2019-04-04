@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: 990aad4df05a9cc765baa965da2293d51a19e705
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: a7271aa3faf438b42319f8c2c297c6e39baab92e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851876"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904151"
 ---
 # <a name="logs-in-azure-monitor"></a>Naplók az Azure Monitorban
 
@@ -46,7 +46,7 @@ Az alábbi táblázat a különböző módon, hogy használhatja az Azure monito
 | Elemzés | Használat [Log Analytics](../log-query/get-started-portal.md) írni az Azure Portalon [lekérdezések naplózását](../log-query/log-query-overview.md) és interaktív módon elemezheti a naplófájlok adatait az adatkezelő hatékony elemzési motor használatával.<br>Használja a [Application Insights analytics konzoljának](../app/analytics.md) log lekérdezéseket írni, és interaktív módon elemezheti a naplófájlok adatait az Application Insights az Azure Portalon. |
 | Vizualizáció | Lekérdezési eredmények jelenik meg a táblázatokat vagy diagramokat való rögzítése egy [Azure irányítópultján](../../azure-portal/azure-portal-dashboards.md).<br>Hozzon létre egy [munkafüzet](../app/usage-workbooks.md) egy interaktív jelentésben szereplő adatok több példányban egyesítenie. <br>A lekérdezés eredményeinek exportálására [Power BI](powerbi.md) különböző Vizualizációk használata és megosztása Azure-on kívüli felhasználókkal.<br>A lekérdezés eredményeinek exportálására [Grafana](grafana-plugin.md) annak dashboarding használatát, és más adatforrásokkal együtt.|
 | Riasztás | Konfigurálja egy [riasztási szabály](alerts-log.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](action-groups.md) mikor a a lekérdezés eredménye megfelel-e egy adott eredményt.<br>Konfigurálja a [a metrikaalapú riasztási szabály](alerts-metric-logs.md) az egyes log adatnaplók mérőszámokként ki kell olvasni. |
-| Lekérés | A parancssor használatával a lekérdezés eredményeihez elérését [Azure CLI-vel](/azure/ext/log-analytics/monitor/log-analytics).<br>A parancssor használatával a lekérdezés eredményeihez elérését [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1).<br>Egy egyéni alkalmazást a lekérdezés eredményeihez elérését [REST API-val](https://dev.loganalytics.io/). |
+| Lekérés | A parancssor használatával a lekérdezés eredményeihez elérését [Azure CLI-vel](/azure/ext/log-analytics/monitor/log-analytics).<br>A parancssor használatával a lekérdezés eredményeihez elérését [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Egy egyéni alkalmazást a lekérdezés eredményeihez elérését [REST API-val](https://dev.loganalytics.io/). |
 | Exportálás | Naplóadatok lekérése, és másolja azt egy külső helyre a munkafolyamat létrehozása [Logic Apps](~/articles/logic-apps/index.yml). |
 
 

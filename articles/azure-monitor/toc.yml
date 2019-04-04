@@ -64,17 +64,17 @@ items:
     href: azure-management.md
   - name: Folyamatos monitorozás
     href: continuous-monitoring.md
-  - name: Naplóadatok elemzése
+  - name: Adatplatform
     items:
-    - name: Naplólekérdezések
-      href: log-query/log-query-overview.md
-    - name: Naplólekérdezési portálok
-      href: log-query/portals.md
-  - name: Adatok monitorozása
+    - name: Áttekintés
+      href: platform/data-platform.md
+    - name: Mérőszámok
+      href: platform/data-platform-metrics.md
+    - name: Logs
+      href: platform/data-platform-logs.md
+  - name: Adatforrások
     items:
-    - name: Metrikák és naplók
-      href: platform/data-collection.md
-    - name: Adatforrások
+    - name: Adatforrások – összefoglalás
       href: platform/data-sources.md
     - name: Azure-beli adatforrások
       href: platform/data-sources-reference.md
@@ -86,14 +86,20 @@ items:
       href: platform/data-ingestion-time.md
     - name: Egyéni metrikák a metrikatárba
       href: platform/metrics-custom-overview.md
-    - name: Adatbiztonság
-      items:
-      - name: Naplóadatok
-        href: platform/data-security.md
-      - name: Személyes naplóadatok kezelése
-        href: platform/personal-data-mgmt.md
-      - name: Alkalmazásadatok gyűjtése, megőrzése és tárolása
-        href: app/data-retention-privacy.md
+  - name: Naplóadatok elemzése
+    items:
+    - name: Naplólekérdezések
+      href: log-query/log-query-overview.md
+    - name: Naplólekérdezési portálok
+      href: log-query/portals.md
+  - name: Adatbiztonság
+    items:
+    - name: Naplóadatok
+      href: platform/data-security.md
+    - name: Személyes naplóadatok kezelése
+      href: platform/personal-data-mgmt.md
+    - name: Alkalmazásadatok gyűjtése, megőrzése és tárolása
+      href: app/data-retention-privacy.md
   - name: Insights
     items:
     - name: Application Insights
@@ -128,6 +134,8 @@ items:
       href: platform/alerts-unified-log.md
     - name: Tevékenységnapló-riasztások
       href: platform/activity-log-alerts.md
+    - name: Gyakori riasztási séma
+      href: platform/alerts-common-schema.md
   - name: Adatok vizualizációja
     href: visualizations.md
   - name: Partnerintegrációk
@@ -180,8 +188,6 @@ items:
           href: learn/quick-create-workspace-posh.md
       - name: Munkaterület törlése
         href: platform/delete-workspace.md
-      - name: Munkaterületek kezelése
-        href: platform/manage-access.md
       - name: A szolgáltatókat szem előtt tartó tervezés
         href: platform/service-providers.md
   - name: Adatok gyűjtése
@@ -341,6 +347,8 @@ items:
           href: app/annotations.md
         - name: ApplicationInsights.config
           href: app/configuration-with-applicationinsights-config.md
+        - name: Pillanatkép-hibakereső
+          href: app/snapshot-debugger.md
       - name: Java-alkalmazások
         items:
         - name: Webalkalmazások
@@ -434,6 +442,8 @@ items:
         href: platform/collect-azure-metrics-logs.md
       - name: Diagnosztikai vagy naplóadatok az Azure Storage-ból
         href: platform/azure-storage-iis-table.md
+      - name: Azure PaaS-erőforrások
+        href: platform/collect-azurepass-posh.md
       - name: Egyéni adatforrások egyeztetése
         href: app/custom-data-correlation.md
     - name: Egyéni adatok gyűjtése
@@ -460,10 +470,10 @@ items:
         href: platform/archive-diagnostic-logs.md
       - name: Diagnosztikai naplók tárolása
         href: platform/diagnostic-logs-stream-log-store.md
-      - name: Azure-erőforrásadatok az Event Hubsra
-        href: platform/stream-monitoring-data-event-hubs.md
       - name: Tevékenységnapló streamelése az Event Hubs szolgáltatásba
         href: platform/activity-logs-stream-event-hubs.md
+      - name: Naplók és metrikák küldése az Event Hubsba
+        href: platform/stream-monitoring-data-event-hubs.md
       - name: Diagnosztikai naplók küldése az Event Hubsba
         href: platform/diagnostic-logs-stream-event-hubs.md
       - name: Alkalmazásadatok küldése a Log Analyticsbe
@@ -650,9 +660,8 @@ items:
   - name: Adatok vizualizációja
     items:
     - name: Nézetek
+      href: platform/view-designer.md
       items:
-      - name: Nézettervező
-        href: platform/view-designer.md
       - name: Csempe referenciája
         href: platform/view-designer-tiles.md
       - name: Vizualizációs rész referenciája
@@ -807,6 +816,8 @@ items:
           href: platform/action-groups.md
         - name: Információ a webhook sémáról
           href: platform/activity-log-alerts-webhook.md
+        - name: Gyakori riasztásiséma-definíciók
+          href: platform/alerts-common-schema-definitions.md
         - name: Az SMS-riasztás viselkedése
           href: platform/alerts-sms-behavior.md
         - name: A riasztási arány korlátozása
@@ -978,9 +989,9 @@ items:
   - name: Azure PowerShell
     items:
     - name: Figyelés
-      href: /powershell/module/azurerm.insights
+      href: /powershell/module/az.applicationinsights
     - name: Logs
-      href: /powershell/module/azurerm.operationalinsights
+      href: /powershell/module/az.operationalinsights
   - name: REST API
     items:
     - name: Figyelés
@@ -1056,9 +1067,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Kódminták
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 48ea888b5c21bc2c689d93684b4dbae7eaee1ed8
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 9c0f17f113b7940f83e3d3b5b2161fe9f88c01ac
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629434"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886641"

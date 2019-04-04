@@ -1,17 +1,11 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1d6daf9805737294fb5bf0e9f4e48a3c7cfbb98e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731837"
 documentType: LandingData
 title: A Translator Text dokumentációja
 metadata:
-  title: A Translator Text dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
-  description: Ismerje meg, hogyan fordíthat le szövegeket több nyelvre a Translator Text használatával.
+  title: 'A Translator Text dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs'
+  description: 'Ismerje meg, hogyan fordíthat le szövegeket több nyelvre a Translator Text használatával.'
   services: cognitive-services
-  author: Jann-Skotdal
+  author: v-pawal
   manager: Chris.Wendt
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
@@ -22,85 +16,85 @@ metadata:
 abstract:
   description: 'A Translator Text egy felhőalapú gépi fordítási szolgáltatás, amellyel közel valós időben fordíthat le szövegeket egy egyszerű REST API-hívással. Az API modern idegi gépi fordítási technológiát használ, és statisztikai gépi fordító technológiával is rendelkezik. A Custom Translator a Translator Text API bővítménye, amellyel neurális fordítási rendszereket hozhat létre. A testre szabott fordítási rendszerrel a Translator Text API vagy a <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/"> Microsoft Speech Services</a> használatával fordíthat le szövegeket. A neurális és a statisztikai gépi fordítás által támogatott nyelvek listájáért lásd: <a href="languages.md">Támogatott nyelvek</a>.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/translator/translator-info-overview
+            html: <p>A Translator Text API ismertetése</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Mi a Translator Text API?
+          - href: /azure/cognitive-services/translator/custom-translator/overview
+            html: <p>A Custom Translator ismertetése</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Mi a Custom Translator?
+          - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
+            html: <p>Bevezetés a Custom Translator használatába</p>
+            image:
+              src: ../media/index/i_get-started.svg
+            title: A Custom Translator rövid útmutatója
+  - title: 5 perces gyors útmutatók
     items:
-    - href: /azure/cognitive-services/translator/translator-info-overview
-      html: <p>A Translator Text API ismertetése</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Mi a Translator Text API?
-    - href: /azure/cognitive-services/translator/custom-translator/overview
-      html: <p>A Custom Translator ismertetése</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Mi a Custom Translator?
-    - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
-      html: <p>Bevezetés a Custom Translator használatába</p>
-      image:
-        src: ../media/index/i_get-started.svg
-      title: A Custom Translator rövid útmutatója
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Ismerkedés a Translator Text API-val:'
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/logo_csharp.svg
-      title: C#
-    - image:
-        src: media/index/logo_java.svg
-      title: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      title: Node.js
-    - image:
-        src: media/index/logo_python.svg
-      title: Python
-    - image:
-        src: media/index/logo_go.svg
-      title: Indítás
-    rows:
-    - title: Szövegek fordítása egyik nyelvről a másikra
-      values:
-      - href: quickstart-csharp-translate
-      - href: quickstart-java-translate
-      - href: quickstart-nodejs-translate
-      - href: quickstart-python-translate
-      - href: quickstart-go-translate
-    - title: Szövegek konvertálása egyik szkriptből a másikba
-      values:
-      - href: quickstart-csharp-transliterate
-      - href: quickstart-java-transliterate
-      - href: quickstart-nodejs-transliterate
-      - href: quickstart-python-transliterate
-      - href: quickstart-go-transliterate
-    - title: Szöveg nyelvének azonosítása
-      values:
-      - href: quickstart-csharp-detect
-      - href: quickstart-java-detect
-      - href: quickstart-nodejs-detect
-      - href: quickstart-python-detect
-      - href: quickstart-go-detect
-    - title: Alternatív fordítások és használat lekérése
-      values:
-      - href: quickstart-csharp-dictionary
-      - href: quickstart-java-dictionary
-      - href: quickstart-nodejs-dictionary
-      - href: quickstart-python-dictionary
-      - href: quickstart-go-dictionary
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'További információ a Translator Text API-t használó alkalmazások fejlesztéséről:'
-  - type: paragraph
-    text: <a href="tutorial-wpf-translation-csharp.md">Translator Textet használó WPF-alkalmazás írása C# nyelven</a>
-- title: Referencia
-  items:
-  - type: paragraph
-    text: <p><a href="reference/v3-0-reference.md">API-referencia</a></p>
+      - type: paragraph
+        text: 'Ismerkedés a Translator Text API-val:'
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/logo_csharp.svg
+            title: 'C#'
+          - image:
+              src: media/index/logo_java.svg
+            title: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            title: Node.js
+          - image:
+              src: media/index/logo_python.svg
+            title: Python
+          - image:
+              src: media/index/logo_go.svg
+            title: Indítás
+        rows:
+          - title: Szövegek fordítása egyik nyelvről a másikra
+            values:
+              - href: quickstart-csharp-translate
+              - href: quickstart-java-translate
+              - href: quickstart-nodejs-translate
+              - href: quickstart-python-translate
+              - href: quickstart-go-translate
+          - title: Szövegek konvertálása egyik szkriptből a másikba
+            values:
+              - href: quickstart-csharp-transliterate
+              - href: quickstart-java-transliterate
+              - href: quickstart-nodejs-transliterate
+              - href: quickstart-python-transliterate
+              - href: quickstart-go-transliterate
+          - title: Szöveg nyelvének azonosítása
+            values:
+              - href: quickstart-csharp-detect
+              - href: quickstart-java-detect
+              - href: quickstart-nodejs-detect
+              - href: quickstart-python-detect
+              - href: quickstart-go-detect
+          - title: Alternatív fordítások és használat lekérése
+            values:
+              - href: quickstart-csharp-dictionary
+              - href: quickstart-java-dictionary
+              - href: quickstart-nodejs-dictionary
+              - href: quickstart-python-dictionary
+              - href: quickstart-go-dictionary
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'További információ a Translator Text API-t használó alkalmazások fejlesztéséről:'
+      - type: paragraph
+        text: '<a href="tutorial-wpf-translation-csharp.md">Translator Textet használó WPF-alkalmazás írása C# nyelven</a>'
+  - title: Referencia
+    items:
+      - type: paragraph
+        text: <p><a href="reference/v3-0-reference.md">API-hivatkozás</a></p>
