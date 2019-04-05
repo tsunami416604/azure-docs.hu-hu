@@ -135,8 +135,10 @@ items:
         href: devtest-lab-add-vm.md
       - name: Igényelhető virtuális gépek létrehozása és felügyelete
         href: devtest-lab-add-claimable-vm.md
-      - name: Virtuális gépek létrehozása és kezelése az Azure parancssori felülettel
+      - name: Virtuális gépek létrehozása és kezelése az Azure CLI-vel
         href: devtest-lab-vmcli.md
+      - name: Virtuális gép létrehozása az Azure PowerShell használatával
+        href: devtest-lab-vm-powershell.md
       - name: Virtuális gép létrehozása Resource Manager-sablonból
         href: devtest-lab-use-resource-manager-template.md
       - name: Virtuális gép újraindítása
@@ -277,9 +279,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: Gyakori kérdések
       href: devtest-lab-faq.md
-ms.openlocfilehash: bee44d9ce7378bd48960c47ed9be9c7f53e23110
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 0b8c70629d17ed93b67a746fadfe66944d9489c9
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886675"
+ms.locfileid: "58894440"
