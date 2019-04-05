@@ -7,16 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 441b58e60bf8dfd5f164ac24d746b9791158ade2
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 69b8e1c533747d1bade69949911ea43f299f49e9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58420113"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59043808"
 ---
 # <a name="manage-mobility-agent-on-protected-machines"></a>Mobilitási szolgáltatást a védett számítógépek kezelése
 
 Beállíthatja a mobilitási ügynököt a kiszolgálón vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA az Azure Site Recovery használatakor. A mobilitási ügynök a védett számítógépen, a konfigurációs kiszolgáló vagy kibővíthető folyamatkiszolgáló közötti kommunikáció koordinálását, és felügyeli az adatreplikációt. Ez a cikk összefoglalja a gyakori feladatok kezeléséhez a mobilitási ügynök telepítése után.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="update-mobility-service-from-azure-portal"></a>Mobilitási szolgáltatás frissítése az Azure Portalról
 
@@ -37,7 +40,7 @@ Beállíthatja a mobilitási ügynököt a kiszolgálón vész-helyreállítási
 Az alábbi parancsfájl power shell parancsmag segítségével a kiszolgálón a mobilitási szolgáltatás frissítése
 
 ```azurepowershell
-Update-AzureRmRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
+Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>Frissítse a mobilitási szolgáltatás leküldéses telepítéséhez használt fiók

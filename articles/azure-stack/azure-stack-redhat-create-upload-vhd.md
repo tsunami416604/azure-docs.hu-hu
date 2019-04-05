@@ -13,16 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 04/03/2019
 ms.author: mabrigg
 ms.reviewer: jeffgo
 ms.lastreviewed: 08/15/2018
-ms.openlocfilehash: e287a6f436b51f55d9a5aa59dbbe2a195015c292
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 728839accbce80ece6795e098d5d2855320fab06
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883120"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006680"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Red Hat-alapú virtuális gép előkészítése az Azure Stackhez
 
@@ -264,7 +264,6 @@ Ez a szakasz azt feltételezi, hogy már rendelkezik egy ISO-fájlt, a Red Hat-w
 1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítve és konfigurálva van rendszerindítás elindításához:
 
     ```bash
-    systemctl stop cloud-init
     systemctl enable sshd
     ```
 
@@ -277,7 +276,7 @@ Ez a szakasz azt feltételezi, hogy már rendelkezik egy ISO-fájlt, a Red Hat-w
 
 1. Ha egy egyéni virtuális merevlemezt hoz létre az Azure Stack, vegye figyelembe, hogy WALinuxAgent verzió 2.2.20 és 2.2.35.1 (mindkét kizárólagos) között nem működnek a build 1903 előtt futó Azure Stack-környezetek. A probléma megoldásához 1901/1902 gyorsjavítást, vagy kövesse az utasításokat a részét, második felében. 
 
-Az Azure Stack-build 1903 futtatásakor (vagy újabb) vagy a 1901/1902 gyorsjavítás, töltse le a WALinuxAgent csomagot a Redhat kiegészítő funkciók adattárból, például így:
+    Az Azure Stack-build 1903 futtatásakor (vagy újabb) vagy a 1901/1902 gyorsjavítás, töltse le a WALinuxAgent csomagot a Redhat kiegészítő funkciók adattárból, például így:
     
    A WALinuxAgent csomag `WALinuxAgent-<version>`, a Red Hat kiegészítő funkciók tárház lett leküldve. A kiegészítő funkciók tárház engedélyezze a következő parancs futtatásával:
 
@@ -298,7 +297,7 @@ Az Azure Stack-build 1903 futtatásakor (vagy újabb) vagy a 1901/1902 gyorsjav�
     ```
     
     
-Ha egy Azure Stack-build 1903 előtt futtatja, és nem alkalmazza a 1901/1902 gyorsjavítás, majd kövesse ezeket az utasításokat a WALinuxAgent letöltése:
+    Ha egy Azure Stack-build 1903 előtt futtatja, és nem alkalmazza a 1901/1902 gyorsjavítás, majd kövesse ezeket az utasításokat a WALinuxAgent letöltése:
     
    a.   Setuptools letöltése
     ```bash
@@ -312,15 +311,15 @@ Ha egy Azure Stack-build 1903 előtt futtatja, és nem alkalmazza a 1901/1902 gy
     unzip v2.2.36.zip
     cd WALinuxAgent-2.2.36
     ```
-    c. Install setup.py
+    c. Telepítse a setup.py
     ```bash
     sudo python setup.py install
     ```
-    d. Restart waagent
+    d. Indítsa újra a waagent
     ```bash
     sudo systemctl restart waagent
     ```
-    e. Test if the agent version matches the one your downloaded. For this example, it should be 2.2.36.
+    e. Ha az ügynök verziója megegyezik a letöltött teszteléséhez. Ebben a példában 2.2.36 kell lennie.
     
     ```bash
     waagent -version

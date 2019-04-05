@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: c0e953434e947703308ff8d796107838df8cc979
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 74c33d73f15c4edf63a02ea5c9a0cdcad88bb68c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437314"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049745"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Contoso áttelepítése: Az Azure-bA a helyszíni alkalmazás újraépítése
 
@@ -22,13 +22,13 @@ Ez a cikk bemutatja, hogyan Contoso áttelepíti, és ismét létrehozza a Smart
 Ez a dokumentum az egyik, a cikkeket, amelyek megmutatják, hogyan a fiktív Contoso áttelepíti a Microsoft Azure felhőbe helyszíni erőforrásait. A sorozat része a háttér-információkat és forgatókönyvek, amelyek a migrálás infrastruktúra beállításával, az áttelepítéshez a helyszíni erőforrások értékelése és áttelepítések különböző típusú futtató mutatják be. Forgatókönyvek egyre összetettebbé válnak. Idővel további cikkek adunk hozzá.
 
 
-**Cikk** | **Részletek** | **Állapot**
+**Cikk** | **Részletek** | **status**
 --- | --- | ---
-[1. cikk: – Áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk sorozat és a mintaalkalmazások használjuk áttekintést nyújt. | Elérhető
-[2. cikk: Egy Azure-infrastruktúra üzembe helyezése](contoso-migration-infrastructure.md) | Ismerteti, hogyan Contoso előkészíti a helyszíni és az Azure-infrastruktúra az áttelepítéshez. Az összes migrálásról szóló cikksorozat ugyanazon az infrastruktúrán használható. | Elérhető
-[3. cikk: A helyszíni erőforrások értékelése](contoso-migration-assessment.md)  | Bemutatja, hogyan Contoso fut a VMware-en futó helyszíni kétrétegű SmartHotel360 alkalmazás értékelése. Contoso alkalmazás rendelkező virtuális gépek értékeli a [Azure Migrate](migrate-overview.md) szolgáltatás és az alkalmazás SQL Server-adatbázisnak a [Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Elérhető
+[1. cikk: Áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk sorozat és a mintaalkalmazások használjuk áttekintést nyújt. | Elérhető
+[2. cikk: Azure-infrastruktúra üzembe helyezése](contoso-migration-infrastructure.md) | Ismerteti, hogyan Contoso előkészíti a helyszíni és az Azure-infrastruktúra az áttelepítéshez. Az összes migrálásról szóló cikksorozat ugyanazon az infrastruktúrán használható. | Elérhető
+[3. cikk: Helyszíni erőforrások felmérése](contoso-migration-assessment.md)  | Bemutatja, hogyan Contoso fut a VMware-en futó helyszíni kétrétegű SmartHotel360 alkalmazás értékelése. Contoso alkalmazás rendelkező virtuális gépek értékeli a [Azure Migrate](migrate-overview.md) szolgáltatás és az alkalmazás SQL Server-adatbázisnak a [Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Elérhető
 [4. cikk: Az Azure virtuális gépeken és a egy felügyelt SQL-példány egy alkalmazás újratárolása](contoso-migration-rehost-vm-sql-managed-instance.md) | Bemutatja, hogyan Contoso fut egy lift-and-shift-migrálás az Azure-bA a SmartHotel360 alkalmazáshoz. Contoso áttelepíti az alkalmazás előtérbeli virtuális gép használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), és az alkalmazás-adatbázis SQL felügyelt példányra, használja a [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Elérhető
-[5. cikk: Az Azure virtuális gépein egy alkalmazás újratárolása](contoso-migration-rehost-vm.md) | Bemutatja, hogyan a Contoso át a SmartHotel360 app virtuális gépek csak a Site Recovery használatával. | Elérhető
+[5. cikk: Alkalmazás áthelyezése Azure-beli virtuális gépre](contoso-migration-rehost-vm.md) | Bemutatja, hogyan a Contoso át a SmartHotel360 app virtuális gépek csak a Site Recovery használatával. | Elérhető
 [6. cikk: Egy alkalmazás újratárolása az Azure virtuális gépek és az SQL Server Always On rendelkezésre állási csoport](contoso-migration-rehost-vm-sql-ag.md) | Bemutatja, hogyan telepíti át a Contoso a SmartHotel360 alkalmazást. Contoso számára, hogy az alkalmazás virtuális gépeit és a Database Migration service, az alkalmazás-adatbázis migrálása az AlwaysOn rendelkezésre állási csoport által védett SQL Server-fürtöt a Site Recovery használja. | Elérhető
 [7. cikk: Egy Azure-beli virtuális gépeken Linux alkalmazás újratárolása](contoso-migration-rehost-linux-vm.md) | Bemutatja, hogyan Contoso hajtja végre a Linux osTicket alkalmazás lift-and-shift áttelepítés Azure virtuális gépekre, a Site Recovery | Elérhető
 [8. cikk: Egy Azure virtuális gépeken és az Azure MySQL-kiszolgáló Linux alkalmazás újratárolása](contoso-migration-rehost-linux-vm-mysql.md) | Bemutatja, hogyan Contoso áttelepíti a Linux-osTicket alkalmazás Azure-beli virtuális gépek Site Recovery használatával, és az alkalmazás-adatbázis áttelepítése Azure MySQL Server-példány, a MySQL Workbench használatával. | Elérhető
@@ -40,6 +40,9 @@ Ez a dokumentum az egyik, a cikkeket, amelyek megmutatják, hogyan a fiktív Con
 [14. cikk: Áttelepítés az Azure-bA méretezése](contoso-migration-scale.md) | Után próbálja ki a migrálás kombinációit, Contoso előkészíti a teljes migrálás az Azure-ba való méretezése. | Elérhető
 
 Ez a cikk a Contoso áttelepíti a kétrétegű Windows. NET SmartHotel360 alkalmazás VMware virtuális gépeken futó Azure-bA. Ha szeretné használni ezt az alkalmazást, nyílt forráskódú nyújtja, és töltheti le a [GitHub](https://github.com/Microsoft/SmartHotel360-Backend).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="business-drivers"></a>A stratégiai
 
@@ -96,7 +99,7 @@ Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrán
 **Consideration** | **Részletek**
 --- | ---
 **Szakemberek számára** | PaaS- és kiszolgáló nélküli megoldások teljes körű központi telepítésére vonatkozó használata jelentősen csökkenti a felügyeleti időt, amely a Contoso meg kell adnia.<br/><br/> Áthelyezése a mikroszolgáltatási architektúrát lehetővé teszi, hogy a Contoso, könnyedén kiterjesztheti a megoldásokat az idő függvényében.<br/><br/> Új funkciók online állapotba helyezhetők a már meglévő megoldások kódbázissal bármelyikét megszakítása nélkül.<br/><br/> A webalkalmazás több példányával, és nem rendszerkritikus meghibásodási pontot lesz konfigurálva.<br/><br/> Az automatikus skálázás engedélyezve lesz, hogy az alkalmazás válaszolhat a különböző forgalommal képes kezelni.<br/><br/> A PaaS-szolgáltatások helyezze át a Contoso kivonhatja az elavult megoldások Windows Server 2008 R2 operációs rendszeren.<br/><br/> Cosmos DB, amely nem igényel konfigurálást a Contoso beépített hibatűrő képességgel rendelkezik. Ez azt jelenti, hogy az adatréteg már nem feladatátvételi hibaérzékeny pont.
-**Hátrányai** | Tárolók összetettebbek, mint más áttelepítési lehetőségek. Gyorsan elsajátítható contoso problémát okozhatja.  Egy új szint által biztosított nagy mennyiségű értéket a görbe érték összetettségi vezetnek.<br/><br/> Az üzemeltetési csapat, contoso kell számára és Azure-tárolók és mikroszolgáltatások az alkalmazás támogatja.<br/><br/> Contoso még nem teljes körűen megvalósítva fejlesztési és üzemeltetési a teljes megoldás. Gondolja át, amely a központi telepítés az AKS, a functions és az App Services-szolgáltatások a Contoso cégnek szüksége van.
+**Hátrányok** | Tárolók összetettebbek, mint más áttelepítési lehetőségek. Gyorsan elsajátítható contoso problémát okozhatja.  Egy új szint által biztosított nagy mennyiségű értéket a görbe érték összetettségi vezetnek.<br/><br/> Az üzemeltetési csapat, contoso kell számára és Azure-tárolók és mikroszolgáltatások az alkalmazás támogatja.<br/><br/> Contoso még nem teljes körűen megvalósítva fejlesztési és üzemeltetési a teljes megoldás. Gondolja át, amely a központi telepítés az AKS, a functions és az App Services-szolgáltatások a Contoso cégnek szüksége van.
 
 
 
@@ -175,7 +178,7 @@ A Contoso-rendszergazdák az üzembe helyezés végrehajtása:
 
     ![AKS](./media/contoso-migration-rebuild/aks3.png)
 
-5. A PowerShell integrált terminálon bejelentkeznek az Azure-bA a Connect-AzureRmAccount paranccsal. [További](https://docs.microsoft.com/powershell/azure/get-started-azureps) PowerShell használatának első lépéseivel kapcsolatos.
+5. A PowerShell integrált terminálon, jelentkezzen be Azure-ban a Connect-AzAccount parancsot. [További](https://docs.microsoft.com/powershell/azure/get-started-azureps) PowerShell használatának első lépéseivel kapcsolatos.
 
     ![AKS](./media/contoso-migration-rebuild/aks4.png)
 

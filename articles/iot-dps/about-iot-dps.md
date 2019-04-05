@@ -3,17 +3,17 @@ title: Az Azure IoT Hub Device Provisioning Service áttekintése | Microsoft Do
 description: A Device Provisioning Service és az IoT Hub használatával az Azure-ban történő eszközregisztrációt írja le.
 author: nberdy
 ms.author: nberdy
-ms.date: 12/05/2017
+ms.date: 04/04/2019
 ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: bad33376b9457eff25e3407c8e480cf7c0078a1d
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
-ms.translationtype: HT
+ms.openlocfilehash: 89e0b6b5bedf36c89bf3a54f4baf42f7019625c0
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316414"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051467"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Eszközregisztráció az Azure IoT Hub Device Provisioning Service használatával
 A Microsoft Azure integrált nyilvános felhőszolgáltatások széles skáláját biztosítja, az IoT-megoldásokkal kapcsolatos igények teljes körű kielégítése céljából. Az IoT Hub Device Provisioning Service az IoT Hub segítő szolgáltatása, amely emberi beavatkozás nélkül teszi lehetővé a megfelelő IoT Hubon való érintésmentes, igény szerinti üzembe helyezést, így az ügyfelek eszközök millióit építhetik ki biztonságos és méretezhető módon.
@@ -110,7 +110,7 @@ Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, �
 
 További információ a kvótakorlátozásokról:
 
-* [Az Azure-előfizetés szolgáltatásokra vonatkozó korlátozásai](../azure-subscription-service-limits.md)
+* [Az Azure-előfizetési szolgáltatási korlátok](../azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>Kapcsolódó Azure-összetevők
 A Device Provisioning Service az eszközkiépítést az Azure IoT Hub segítségével automatizálja. További információk az [IoT Hubról](https://docs.microsoft.com/azure/iot-hub/).

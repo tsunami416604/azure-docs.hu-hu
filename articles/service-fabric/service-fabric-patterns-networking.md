@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
-ms.openlocfilehash: feea57122d805ae065278458f90afbc960221a9d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d5aa09f3ff899766e6eb6d1784e4417f7b48eac0
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670251"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049897"
 ---
 # <a name="service-fabric-networking-patterns"></a>Hálózati Service Fabric-minták
 Más Azure hálózati szolgáltatásokkal integrálható az Azure Service Fabric-fürt. Ebben a cikkben bemutatjuk, hogyan hozhat létre a következő szolgáltatásokat használó fürtök:
@@ -34,6 +34,9 @@ A Service Fabric fut egy standard szintű virtuálisgép-méretezési csoportot.
 A Service Fabric egy egyedülálló megoldás, a más hálózati funkciókat a egy aspektust. A [az Azure portal](https://portal.azure.com) belsőleg az a Service Fabric erőforrás-szolgáltató használatával meghívja a csomópontok és alkalmazásokkal kapcsolatos információkat lekérni egy fürtön. A Service Fabric erőforrás-szolgáltató a HTTP átjáró portjára (19080-as, alapértelmezés szerint port) a felügyeleti végponthoz nyilvánosan elérhető-e bejövő hozzáférésre van szüksége. [A Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) használ a felügyeleti végpont a fürt kezeléséhez. A Service Fabric erőforrás-szolgáltató is ezt a portot, a fürttel kapcsolatos adatlekérdezés használ az Azure Portalon jelennek meg. 
 
 Ha 19080-as port nem érhető el a Service Fabric erőforrás-szolgáltatótól származó, egy üzenet, például *csomópont nem található* megjelenik a portálon, és a csomópont és az alkalmazások listája üres jelenik meg. Ha meg szeretné tekinteni a a fürt az Azure Portalon, a terheléselosztó nyilvános IP-címet kell közzétennie, és a hálózati biztonsági csoportot engedélyeznie kell a 19080-as porton bejövő forgalmat. A telepítő nem felel meg a követelménynek, ha az Azure Portalon nem jelennek meg a fürt állapotát.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="templates"></a>Sablonok
 
@@ -51,7 +54,7 @@ A következő példában kezdődik meg a nevű ExistingRG virtuális hálózatok
 Statikus nyilvános IP-cím általában egy dedikált erőforrás a virtuális Gépet vagy virtuális gépek hozzá van rendelve a külön-külön kezelt. Annak kiépítése egy dedikált hálózati erőforráscsoportban (azaz a Service Fabric-fürt erőforrás csoportosítás maga nem). Hozzon létre egy statikus nyilvános IP-címet staticIP1 ugyanazon ExistingRG erőforráscsoportban, az Azure Portalon vagy a PowerShell használatával:
 
 ```powershell
-PS C:\Users\user> New-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
+PS C:\Users\user> New-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
 
 Name                     : staticIP1
 ResourceGroupName        : ExistingRG
@@ -166,8 +169,8 @@ A cikkben szereplő példák a Service Fabric template.json használjuk. A stand
 6. A sablon üzembe helyezéséhez:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkingexistingvnet -Location westus
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
+    New-AzResourceGroup -Name sfnetworkingexistingvnet -Location westus
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
     ```
 
     Az üzembe helyezést követően a virtuális hálózat tartalmaznia kell az új méretezési csoport virtuális gépeinek. A virtuális gép méretezési készlet csomóponttípus meg kell jelennie a meglévő virtuális hálózatot és alhálózatot. Is használhatja Remote Desktop Protocol (RDP) eléri a virtuális Gépet, amely már volt a virtuális hálózatban, és az új méretezési pingelni állítsa be a virtuális gépek:
@@ -276,13 +279,13 @@ Egy másik példa: [, amely nem adott meg a Service Fabric](https://github.com/g
 8. A sablon üzembe helyezéséhez:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkingstaticip -Location westus
+    New-AzResourceGroup -Name sfnetworkingstaticip -Location westus
 
-    $staticip = Get-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG
+    $staticip = Get-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG
 
     $staticip
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
     ```
 
 Az üzembe helyezést követően láthatja, hogy a terheléselosztó van kötve a statikus nyilvános IP-címet a többi erőforráscsoportból. A Service Fabric ügyfélkapcsolati végpont és [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) végpont pontot a DNS-FQDN statikus IP-cím.
@@ -378,9 +381,9 @@ Ebben a forgatókönyvben egy belső terheléselosztót az alapértelmezett a Se
 7. A sablon üzembe helyezéséhez:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkinginternallb -Location westus
+    New-AzResourceGroup -Name sfnetworkinginternallb -Location westus
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
 Az üzembe helyezést követően a terheléselosztó 10.0.0.250 statikus magánhálózati IP-címet használja. Ha egy másik gép ugyanazon a virtuális hálózaton található, megnyithatja a belső [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) végpont. Vegye figyelembe, hogy csatlakozik az egyik csomópontot a terheléselosztó mögött.
@@ -595,9 +598,15 @@ Egy két csomóponttípus fürtben egy csomópont típusa van a külső terhelé
 7. A sablon üzembe helyezéséhez:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkinginternalexternallb -Location westus
+    New-AzResourceGroup -Name sfnetworkinginternalexternallb -Location westus
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
+    ```
+
+Üzembe helyezés után megjelenik az erőforráscsoportban lévő két terheléselosztók. Miután felkereste a terheléselosztók, láthatja a nyilvános IP cím és felügyeleti végpont (19000 és a 19080-as portot) rendelt nyilvános IP-cím. A statikus belső IP cím és az alkalmazások végpont (80-as port) a belső terheléselosztó rendelt is láthatja. Mindkét terheléselosztók az azonos virtuális gép méretezési készlet háttérkészlet-használja.
+
+## <a name="next-steps"></a>További lépések
+[Hozzon létre egy fürtöt](service-fabric-cluster-creation-via-arm.md) ternalLB.json
     ```
 
 Üzembe helyezés után megjelenik az erőforráscsoportban lévő két terheléselosztók. Miután felkereste a terheléselosztók, láthatja a nyilvános IP cím és felügyeleti végpont (19000 és a 19080-as portot) rendelt nyilvános IP-cím. A statikus belső IP cím és az alkalmazások végpont (80-as port) a belső terheléselosztó rendelt is láthatja. Mindkét terheléselosztók az azonos virtuális gép méretezési készlet háttérkészlet-használja.

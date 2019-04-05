@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: aa8292aac82f478422f9214c26d974825872eed6
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: d70f2b2f0afb99263eaefe1122dba565231d978c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226335"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046928"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Állítsa be a VMware virtuális gépek vészhelyreállítása az Azure-ban a PowerShell-lel
 
@@ -28,32 +28,35 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 > - Replikációs adatok tárolásához a storage-fiókok létrehozásához, és a virtuális gépek replikálása.
 > - Feladatátvétel végrehajtása. Feladatátvétel-beállítások konfigurálása, hajtsa végre a beállításokat a virtuális gépek replikálásához.
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Előkészületek:
 
 - Ismernie kell a [forgatókönyv-architektúrát és az összetevőket](vmware-azure-architecture.md).
 - Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](site-recovery-support-matrix-to-azure.md).
-- 5.0.1-es verzióval rendelkezik, vagy nagyobb, mint az AzureRm PowerShell-modul. Ha telepíteni vagy frissíteni az Azure PowerShell-lel van szüksége, kövesse ezt [útmutató az Azure PowerShell telepítése és konfigurálása](/powershell/azureps-cmdlets-docs).
+- Az Azure PowerShell rendelkezik `Az` modul. Ha telepíteni vagy frissíteni az Azure PowerShell-lel van szüksége, kövesse ezt [útmutató az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-az-ps).
 
 ## <a name="log-into-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure-előfizetés a Connect-AzureRmAccount parancsmag használatával:
+Jelentkezzen be az Azure-előfizetés a Connect-AzAccount parancsmaggal:
 
 ```azurepowershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
-A VMware virtuális gépek replikálásához használni kívánt Azure-előfizetés kiválasztásához. A Get-AzureRmSubscription parancsmaghoz használatával hozzáféréssel rendelkezik az Azure-előfizetések listájának beolvasása. Válassza ki a Select-AzureRmSubscription parancsmag használata az Azure-előfizetést.
+A VMware virtuális gépek replikálásához használni kívánt Azure-előfizetés kiválasztásához. A Get-AzSubscription parancsmaggal hozzáféréssel rendelkezik az Azure-előfizetések listájának beolvasása. Válassza ki a Select-AzSubscription parancsmag használata az Azure-előfizetést.
 
 ```azurepowershell
-Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
+Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 ```
 ## <a name="set-up-a-recovery-services-vault"></a>Helyreállítási tár beállítása
 
 1. Hozzon létre egy erőforráscsoportot, amelyben létrehozza a Recovery Services-tároló. Az alábbi példában az erőforráscsoport VMwareDRtoAzurePS neve, és a kelet-ázsiai régióban jön létre.
 
    ```azurepowershell
-   New-AzureRmResourceGroup -Name "VMwareDRtoAzurePS" -Location "East Asia"
+   New-AzResourceGroup -Name "VMwareDRtoAzurePS" -Location "East Asia"
    ```
    ```
    ResourceGroupName : VMwareDRtoAzurePS
@@ -66,7 +69,7 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
 2. Hozzon létre egy Recovery services-tárolót. Az alábbi példában a Recovery services-tároló VMwareDRToAzurePs neve, és a Kelet-Ázsia régióban, és az előző lépésben létrehozott erőforráscsoportban jön létre.
 
    ```azurepowershell
-   New-AzureRmRecoveryServicesVault -Name "VMwareDRToAzurePs" -Location "East Asia" -ResourceGroupName "VMwareDRToAzurePs"
+   New-AzRecoveryServicesVault -Name "VMwareDRToAzurePs" -Location "East Asia" -ResourceGroupName "VMwareDRToAzurePs"
    ```
    ```
    Name              : VMwareDRToAzurePs
@@ -82,10 +85,10 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
 
    ```azurepowershell
    #Get the vault object by name and resource group and save it to the $vault PowerShell variable 
-   $vault = Get-AzureRmRecoveryServicesVault -Name "VMwareDRToAzurePS" -ResourceGroupName "VMwareDRToAzurePS"
+   $vault = Get-AzRecoveryServicesVault -Name "VMwareDRToAzurePS" -ResourceGroupName "VMwareDRToAzurePS"
 
    #Download vault registration key to the path C:\Work
-   Get-AzureRmRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
+   Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
    ```
    ```
    FilePath
@@ -102,7 +105,7 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
 Állítsa be a tárolási környezet, a Set-ASRVaultContext parancsmag használatával. Beállítása után a PowerShell-munkamenetben későbbi Azure Site Recovery-műveletek a kiválasztott tár környezetében történik.
 
 > [!TIP]
-> A legtöbb parancsmag könnyen használható aliasok az Azure Site Recovery PowerShell modul (AzureRm.RecoveryServices.SiteRecovery modul) tartalmaz. A modul parancsmagjai utat  *\<művelet >-**: AzureRmRecoveryServicesAsr**\<objektum >* és egyenértékű aliast is beállíthat, amely formájában  *\<Művelet >-**ASR**\<objektum >*. Ebben a cikkben a parancsmag aliasok átláthatóbbá tétele.
+> A legtöbb parancsmag könnyen használható aliasok az Azure Site Recovery PowerShell modul (Az.RecoveryServices modul) tartalmaz. A modul parancsmagjai utat  *\<művelet >-**AzRecoveryServicesAsr**\<objektum >* és egyenértékű aliast is beállíthat, amely formájában  *\< A művelet >-**ASR**\<objektum >*. Ebben a cikkben a parancsmag aliasok átláthatóbbá tétele.
 
 Az alábbi példában a tároló részleteit a $vault változójával adja meg a tárolási környezetet a PowerShell-munkamenetben.
 
@@ -115,11 +118,11 @@ Az alábbi példában a tároló részleteit a $vault változójával adja meg a
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-As an alternative to the Set-ASRVaultContext cmdlet, one can also use the Import-AzureRmRecoveryServicesAsrVaultSettingsFile cmdlet to set the vault context. Az elérési út, amikor a tároló regisztrációs kulcsfájl nem található, mint a Import-AzureRmRecoveryServicesAsrVaultSettingsFile parancsmagot a - path paraméterrel adja meg. Példa:
+As an alternative to the Set-ASRVaultContext cmdlet, one can also use the Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet to set the vault context. Az elérési út, amikor a tároló regisztrációs kulcsfájl nem található, mint a Import-AzRecoveryServicesAsrVaultSettingsFile parancsmagot a - path paraméterrel adja meg. Példa:
 
    ```azurepowershell
-   Get-AzureRmRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
-   Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path "C:\Work\VMwareDRToAzurePs_2017-11-23T19-52-34.VaultCredentials"
+   Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
+   Import-AzRecoveryServicesAsrVaultSettingsFile -Path "C:\Work\VMwareDRToAzurePs_2017-11-23T19-52-34.VaultCredentials"
    ```
 Ez a cikk későbbi részeiben azt feltételezik, hogy a tárolási környezetet az Azure Site Recovery-műveletek van beállítva.
 
@@ -321,11 +324,11 @@ Ebben a lépésben a tárfiókok replikációs használatra jönnek létre. A st
 
 ```azurepowershell
 
-$PremiumStorageAccount = New-AzureRmStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "premiumstorageaccount1" -Location "East Asia" -SkuName Premium_LRS
+$PremiumStorageAccount = New-AzStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "premiumstorageaccount1" -Location "East Asia" -SkuName Premium_LRS
 
-$LogStorageAccount = New-AzureRmStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "logstorageaccount1" -Location "East Asia" -SkuName Standard_LRS
+$LogStorageAccount = New-AzStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "logstorageaccount1" -Location "East Asia" -SkuName Standard_LRS
 
-$ReplicationStdStorageAccount= New-AzureRmStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "replicationstdstorageaccount1" -Location "East Asia" -SkuName Standard_LRS
+$ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "replicationstdstorageaccount1" -Location "East Asia" -SkuName Standard_LRS
 ```
 
 ## <a name="replicate-vmware-vms"></a>VMware virtuális gépek replikálása
@@ -355,10 +358,10 @@ Most már az ebben a táblázatban megadott beállításokat használja a követ
 ```azurepowershell
 
 #Get the target resource group to be used
-$ResourceGroup = Get-AzureRmResourceGroup -Name "VMwareToAzureDrPs"
+$ResourceGroup = Get-AzResourceGroup -Name "VMwareToAzureDrPs"
 
 #Get the target virtual network to be used
-$RecoveryVnet = Get-AzureRmVirtualNetwork -Name "ASR-vnet" -ResourceGroupName "asrrg" 
+$RecoveryVnet = Get-AzVirtualNetwork -Name "ASR-vnet" -ResourceGroupName "asrrg" 
 
 #Get the protection container mapping for replication policy named ReplicationPolicy
 $PolicyMap  = Get-ASRProtectionContainerMapping -ProtectionContainer $ProtectionContainer | where PolicyFriendlyName -eq "ReplicationPolicy"
@@ -444,7 +447,7 @@ Errors           : {}
    #Test failover of Win2K12VM1 to the test virtual network "V2TestNetwork"
 
    #Get details of the test failover virtual network to be used
-   TestFailovervnet = Get-AzureRmVirtualNetwork -Name "V2TestNetwork" -ResourceGroupName "asrrg" 
+   TestFailovervnet = Get-AzVirtualNetwork -Name "V2TestNetwork" -ResourceGroupName "asrrg" 
 
    #Start the test failover operation
    $TFOJob = Start-ASRTestFailoverJob -ReplicationProtectedItem $ReplicatedVM1 -AzureVMNetworkId $TestFailovervnet.Id -Direction PrimaryToRecovery
@@ -487,4 +490,4 @@ Ebben a lépésben azt átadja a feladatokat a virtuális gép Win2K12VM1 egy ad
 2. Miután sikeresen megtörtént, akkor feladatátvétel érvényesítése a feladatátvételi művelet, és állítsa be a visszirányú replikálás az Azure-ból biztonsági a helyszíni VMware-hely.
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan további feladatainak automatizálása a [Azure Site Recovery PowerShell-referencia](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery).
+Ismerje meg, hogyan további feladatainak automatizálása a [Azure Site Recovery PowerShell-referencia](https://docs.microsoft.com/powershell/module/Az.RecoveryServices).

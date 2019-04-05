@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 4ee1c9edf8cb10cae1a8a6e1c15f9bcf6e9a8ff8
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 266859c1d2076354dbd4f8f09adf0bea084b90f9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359459"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049680"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>A JavaScript tartós függvény létrehozása
 
-*Durable Functions* kiterjesztése [Azure Functions](../functions-overview.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény kezeli a állapot, ellenőrzőpontok és újraindul az Ön számára.
+*Durable Functions* kiterjesztése [Azure Functions](../functions-overview.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
 
 Ebből a cikkből elsajátíthatja az Azure Functions Visual Studio Code-bővítmény használata helyi létrehozásához és a egy "hello world" tartós függvény tesztelése.  Ez a függvény összehangolására, és a lánc együttesen hívások egyéb funkciók. Ezután közzéteheti a függvénykódot az Azure-ban.
 
@@ -125,7 +125,29 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 
 5. Hasonló eszköz használatával [Postman](https://www.getpostman.com/) vagy [cURL](https://curl.haxx.se/), egy HTTP POST kérést küldhet az URL-végpontot.
 
-6. Hibakeresés leállításához nyomja le a Shift + F1 csomag a VS Code-ban.
+    A válasz, a HTTP-függvény, arról a tartós vezénylési kezdeti eredmény sikeresen elindult.  Ez még nem áll a vezénylési végeredményét.  A válasz néhány hasznos URL-címeket tartalmazza.  Most tegyük a vezénylési állapotának lekérdezése.
+
+6. Másolja az URL-cím értéke `statusQueryGetUri`, illessze be a böngésző címsorában, és hajtsa végre a kérést.
+
+    A kérelem lekérdezi az orchestration-példány állapota. Az alábbihoz hasonló végleges választ kell kapnia.  Ez megmutatja a példány befejeződött, és tartalmazza a kimenetek vagy a tartós függvény eredményét.
+
+    ```json
+    {
+        "instanceId": "d495cb0ac10d4e13b22729c37e335190",
+        "runtimeStatus": "Completed",
+        "input": null,
+        "customStatus": null,
+        "output": [
+            "Hello Tokyo!",
+            "Hello Seattle!",
+            "Hello London!"
+        ],
+        "createdTime": "2018-11-08T07:07:40Z",
+        "lastUpdatedTime": "2018-11-08T07:07:52Z"
+    }
+    ```
+
+7. Hibakeresés leállításához nyomja le az ENTER **Shift + F5** a VS Code-ban.
 
 Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
 

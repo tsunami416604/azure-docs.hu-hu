@@ -1,19 +1,18 @@
 ---
-title: Változó igényeket elégíthet méretezési Azure adatkezelő fürt
+title: Horizontális felskálázás az Azure Data Explorer fürt változó igényeket elégíthet
 description: Ez a cikk ismerteti a lépéseket horizontális felskálázása és skálázhatja az adatkezelőt az Azure-fürtben alapú igény szerinti módosítására.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 9b54bf182f23eceb47c392059ff52c04bf0a8aed
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: ab4ced6695e6066098dd5ff7348528deedfc0e1b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755070"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044234"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Fürt horizontális felskálázás változó igényeket elégíthet kezelése
 
@@ -46,17 +45,17 @@ A következő ábrán látható a folyamat a következő néhány lépést. Tov�
     | **Idő összesítése** | Válassza ki például egy összesítő feltételek **átlagos**. |
     | **Metrika neve** | Válassza ki a kívánt kell alapulnia, például a skálázási művelet **gyorsítótár-kihasználtság**. |
     | **Időfelbontási szint statisztikája** | Választhat **átlagos**, **minimális**, **maximális**, és **Sum**. |
-    | **Operátor** | Válassza ki a megfelelő beállítást, például **nagyobb vagy egyenlő**. |
+    | **Művelet** | Válassza ki a megfelelő beállítást, például **nagyobb vagy egyenlő**. |
     | **Küszöbérték** | Válasszon egy megfelelő értéket. Gyorsítótár-kihasználtság, például a 80 %-a egy jó kiindulási pont. |
     | **Időtartam (perc)** | Válassza ki a megfelelő összeget, és tekintse meg a vissza mérőszámok kiszámításakor a rendszer. Indítsa el az alapértelmezett 10 perc. |
     |  |  |
 
-    **Művelet**
+    **Műveletek**
 
     | Beállítás | Leírás és érték |
     | --- | --- |
     | **Művelet** | Válassza ki a megfelelő beállítást a vertikális vagy horizontális felskálázás. |
-    | **Példányok száma** | Válassza ki a csomópontok vagy hozzáadása vagy eltávolítása metrikai feltétel teljesülésekor kívánt példányok számát. |
+    | **Példányszám** | Válassza ki a csomópontok vagy hozzáadása vagy eltávolítása metrikai feltétel teljesülésekor kívánt példányok számát. |
     | **Lehűlés (percben)** | Válasszon egy megfelelő várakozási időköz a skálázási műveletek között. Indítsa el az alapértelmezett öt perc alatt. |
     |  |  |
 
@@ -66,7 +65,7 @@ A következő ábrán látható a folyamat a következő néhány lépést. Tov�
 
     | Beállítás | Leírás és érték |
     | --- | --- |
-    | **Minimum** | A fürt nem méretezhető alább függetlenül kihasználtsági példányok száma. |
+    | **Minimális** | A fürt nem méretezhető alább függetlenül kihasználtsági példányok száma. |
     | **Maximum** | A fürt nem méretezhető felett, függetlenül a kihasználtság példányok száma. |
     | **Alapértelmezett** | Példányok alapértelmezett száma. Ezt a beállítást használja, ha problémák adódnak az erőforrás-metrikák olvasása. |
     |  |  |

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: pbutlerm
-ms.openlocfilehash: da3e7e44ed1ad0698392ba1afcb59887ffbc53fe
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 6f1a93c3d3059e612d8c309b263e263dbb84c67f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639778"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050101"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Hozzon létre egy virtuálisgép-ajánlat technikai eszközök
 
@@ -37,6 +37,7 @@ Konfigurálnia kell a virtuális gép operációs rendszeren a virtuális gép m
 > [!IMPORTANT]
 > *Az új lemezkép verzióban lemezek száma nem változik.* A kép adatlemezek újra kell konfigurálnia, ha egy új Termékváltozat meghatározása. Közzététel egy másik lemez számokkal új lemezkép verziója lesz a használhatatlanná tévő új üzembe helyezési azokban az esetekben az automatikus méretezés, automatikus központi telepítését az Azure Resource Manager-sablonokkal és az egyéb forgatókönyvek megoldásokat az új lemezkép-verzió alapján lehetséges.
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="fundamental-technical-knowledge"></a>Alapvető technikai ismereteit
 
@@ -58,9 +59,9 @@ Emellett javasoljuk, hogy a következő eszközöket ad hozzá a fejlesztési k�
 
 -   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Bővítmény: [Azure Resource Manager-eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Bővítmény: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Bővítmény: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+    *   Mellék: [Azure Resource Manager-eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Mellék: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Mellék: [JSON prettify](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Emellett javasoljuk, hogy az elérhető eszközök áttekintése a [Azure fejlesztői eszközök](https://azure.microsoft.com/tools/) oldal és a Visual Studio használata a [Visual Studio-piactér](https://marketplace.visualstudio.com/).
 

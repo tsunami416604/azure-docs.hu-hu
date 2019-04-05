@@ -1,19 +1,18 @@
 ---
 title: Mintaadatok betöltése az Azure Data Explorer
 description: További tudnivalók az Azure Data Explorer (betöltés) Időjárással kapcsolatos mintaadatok betöltését.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2ebbe3434f032b38c33ec7b82e445532836f78c9
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: e80322cda671e2145cf3e65aa1457f1fa1827737
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758477"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050628"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Mintaadatok betöltése az Azure Data Explorer
 
@@ -24,7 +23,7 @@ Ez a cikk bemutatja, hogyan az Adatkezelőbe az Azure database-be (betöltés) m
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
+[Egy teszt fürt és adatbázis](create-cluster-database-portal.md)
 
 ## <a name="ingest-data"></a>Adatok betöltése
 
@@ -58,7 +57,7 @@ A **StormEvents** mintaadatkészlet a [környezeti adatok nemzeti központjaibó
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+> [Gyors útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
 
 > [!div class="nextstepaction"]
 > [Lekérdezések írása](write-queries.md)

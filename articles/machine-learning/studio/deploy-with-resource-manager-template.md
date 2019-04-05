@@ -10,16 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: 83ae58e4a86d3bc2ffb2197f48d2c641790e8524
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 91413aa461261824782717ae4edacc2757ad5405
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648282"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048724"
 ---
 # <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>Az Azure Machine Learning Studio-munkaterület használata az Azure Resource Manager üzembe helyezése
 
 Az egy Azure Resource Manager központi telepítési sablont, így Ön egy skálázható módon, hogy Ön időt takarít az érvényesítést összekapcsolt összetevők üzembe helyezése és újrapróbálkozási mechanizmus. Az Azure Machine Learning Studio-munkaterületek beállításával kapcsolatban például szeretne konfigurálja egy Azure storage-fiókot, majd üzembe helyezése a munkaterületen. Tegyük fel, így manuálisan munkaterületek több száz. Egyszerűbb a másik lehetőség az Azure Resource Manager-sablon segítségével üzembe helyezése a Studio-munkaterülethez, és minden függőségét. Ez a cikk végigvezeti a részletes folyamat. Az Azure Resource Manager, nagyszerű áttekintése: [Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>Részletes útmutató: Machine Learning-munkaterület létrehozása
 Azt fogja hozzon létre egy Azure-erőforráscsoportot, majd egy új Azure storage-fiókot és a egy új Azure Machine Learning Studio-munkaterület használatával a Resource Manager-sablon üzembe helyezése. Az üzembe helyezés befejezése után a rendszer (az elsődleges kulcsot, a munkaterület azonosítója és az URL-cím a munkaterületre) létrehozott munkaterületeket fontos információinak kinyomtatásához.
@@ -83,7 +85,7 @@ Ez a sablon mentése c:\temp\ mlworkspace.json fájlt.
 
 ```powershell
 # Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
-Install-Module AzureRM -Scope CurrentUser
+Install-Module Az -Scope CurrentUser
 
 # Install the Azure Service Management modules from the PowerShell Gallery (press “A”)
 Install-Module Azure -Scope CurrentUser
@@ -95,7 +97,7 @@ Install-Module Azure -Scope CurrentUser
 
 ```powershell
 # Authenticate (enter your credentials in the pop-up window)
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 Ebben a lépésben meg kell ismételni minden munkamenethez. A hitelesítést követően az előfizetési adatai üzenetnek kell megjelennie.
 
@@ -106,7 +108,7 @@ Most, hogy már az Azure-ba, hogy hozhat létre az erőforráscsoportot.
 * Hozzon létre egy erőforráscsoportot
 
 ```powershell
-$rg = New-AzureRmResourceGroup -Name "uniquenamerequired523" -Location "South Central US"
+$rg = New-AzResourceGroup -Name "uniquenamerequired523" -Location "South Central US"
 $rg
 ```
 
@@ -119,7 +121,7 @@ Az erőforráscsoport nevét használják a sablont létrehozni a tárfiók nev�
 
 ```powershell
 # Create a Resource Group, TemplateFile is the location of the JSON template.
-$rgd = New-AzureRmResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworkspace.json" -ResourceGroupName $rg.ResourceGroupName
+$rgd = New-AzResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworkspace.json" -ResourceGroupName $rg.ResourceGroupName
 ```
 
 Az üzembe helyezés befejezése után az üzembe helyezett munkaterület tulajdonságai magától értetődő. Ha például is elérheti az elsődleges kulcs Token.
@@ -129,11 +131,11 @@ Az üzembe helyezés befejezése után az üzembe helyezett munkaterület tulajd
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
-Egy másik meglévő munkaterület-jogkivonatok módja az Invoke-AzureRmResourceAction parancs használata. Például listázhatja az összes munkaterületet az elsődleges és másodlagos jogkivonatokat.
+Egy másik meglévő munkaterület-jogkivonatok módja az Invoke-AzResourceAction parancs használata. Például listázhatja az összes munkaterületet az elsődleges és másodlagos jogkivonatokat.
 
 ```powershell
 # List the primary and secondary tokens of all workspaces
-Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
+Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
 A munkaterület kiépítése, után számos Azure Machine Learning Studio feladatokat is automatizálhatja a [PowerShell-modul az Azure Machine Learning Studio](https://aka.ms/amlps).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ec66a4fdffcff2d2ff7c11c969900c8b12dda755
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669695"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049455"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>A Windows Azure Diagnostics bővítményt az alkalmazásteljesítmény-figyelés
 
@@ -27,6 +27,9 @@ Ez a dokumentum ismerteti a rendszerteljesítmény-számlálók a Windows-fürt�
 
  > [!NOTE]
 > Az alábbi lépéseket az Ön számára a fürtön a WAD-bővítményt kell telepíteni. Ha nem állította be, látogasson el [esemény összesítésére és a Windows Azure Diagnostics segítségével gyűjteményt](service-fabric-diagnostics-event-aggregation-wad.md).  
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="collect-performance-counters-via-the-wadcfg"></a>A WadCfg keresztül teljesítményszámlálók gyűjtése
 
@@ -192,10 +195,10 @@ Teljesítményszámlálók adatainak összegyűjtése a WAD-n keresztül, akkor 
  >[!NOTE]
  >Bár használhatja `*` teljesítményszámlálókat hasonlóképpen nevesített csoportok megadásához számlálókat küldése egy fogadó keresztül (az Application Insightsba) szükséges, hogy azok külön-külön deklarált. 
 
-1. Miután hozzáadta a megfelelő teljesítményszámlálókat kell gyűjteni, a fürt erőforrásai frissíteni, hogy ezek a módosítások megjelennek a futó fürt szeretne. Mentse a módosított `template.json` , és nyissa meg a powershellt. A fürt használatával frissítheti `New-AzureRmResourceGroupDeployment`. A hívás szükség van az az erőforráscsoport, a frissített sablon fájlt, és a paramétereket tartalmazó fájlt, és kérni fogja, hogy a megfelelő módosításokat frissített erőforrások Resource Manager. Miután bejelentkezett a fiókjába, és a megfelelő előfizetéshez tartozik, használja a következő parancsot a frissítés futtatásához:
+1. Miután hozzáadta a megfelelő teljesítményszámlálókat kell gyűjteni, a fürt erőforrásai frissíteni, hogy ezek a módosítások megjelennek a futó fürt szeretne. Mentse a módosított `template.json` , és nyissa meg a powershellt. A fürt használatával frissítheti `New-AzResourceGroupDeployment`. A hívás szükség van az az erőforráscsoport, a frissített sablon fájlt, és a paramétereket tartalmazó fájlt, és kérni fogja, hogy a megfelelő módosításokat frissített erőforrások Resource Manager. Miután bejelentkezett a fiókjába, és a megfelelő előfizetéshez tartozik, használja a következő parancsot a frissítés futtatásához:
 
     ```sh
-    New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
+    New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
 1. A frissítés befejeződése után jelennek meg (attól függően, hogy-e az első üzembe helyezés és az erőforráscsoport mérete 15-45 perc között vesz igénybe), WAD kell a teljesítményszámlálók gyűjtése és elküldi azokat a tábla neve A fürthöz társított tárfiókban WADPerformanceCountersTable. Tekintse meg az Application Insights által a teljesítményszámlálók [a Resource Manager-sablon hozzáadása a mesterséges Intelligencia fogadó](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
@@ -203,4 +206,4 @@ Teljesítményszámlálók adatainak összegyűjtése a WAD-n keresztül, akkor 
 ## <a name="next-steps"></a>További lépések
 * A fürt több teljesítményszámlálót gyűjt. Lásd: [teljesítmény-mérőszámok](service-fabric-diagnostics-event-generation-perf.md) listája számlálókat kell gyűjteni.
 * [Használat monitorozása és diagnosztizálása egy Windows virtuális gép és az Azure Resource Manager-sablonokkal](../virtual-machines/windows/extensions-diagnostics-template.md) módosításokat továbbá az `WadCfg`, beleértve a diagnosztikai adatok küldése további tárfiókok konfigurálásáról.
-* Látogasson el a [WadCfg builder](https://azure.github.io/azure-diagnostics-tools/config-builder/) hozhat létre egy teljesen új sablont, és ellenőrizze, hogy a szintaxisa helyes.
+* Látogasson el a [WadCfg builder](https://azure.github.io/azure-diagnostics-tools/config-builder/) hozhat létre egy teljesen új sablont, és ellenőrizze, hogy a szintaxisa helyes. () https://azure.github.io/azure-diagnostics-tools/config-builder/) hozhat létre egy teljesen új sablont, és ellenőrizze, hogy a szintaxisa helyes.

@@ -1,21 +1,20 @@
 ---
-title: A duplikált adatok kezelése
-description: Ez a témakör bemutatja, különböző módjait a duplikált adatok kezelése
-services: data-explorer
+title: Az Azure Data Explorer duplikált adatok kezelése
+description: Ez a témakör bemutatja, különböző megközelítések a duplikált adatok foglalkozik, amikor az Azure az adatkezelő segítségével.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 7a9ccd5139168393019a70aafb9b7b705ca25919
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756362"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045781"
 ---
-# <a name="deal-with-duplicate-data"></a>A duplikált adatok kezelése
+# <a name="handle-duplicate-data-in-azure-data-explorer"></a>Az Azure Data Explorer duplikált adatok kezelése
 
 A felhőbe történő adatküldés eszközök kezelése az adatok a helyi gyorsítótárat. Az adatok méretétől függően a helyi gyorsítótár sikerült tárolja az adatokat napokat vagy akár hónapok. Küldje el újra a gyorsítótárazott adatok, és az analitikai adatbázis okozhat az adatdeduplikáció nem megfelelően működő eszközökre az analitikai adatbázisok védelme érdekében szeretné. Ez a témakör ismerteti az ajánlott eljárások az ilyen típusú forgatókönyvek duplikált adatok kezelésének alapelveit.
 
@@ -123,4 +122,4 @@ Adatdeduplikáció többféle módon lehet kezelni. Értékelje ki a beállítá
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
+> [Az Azure Data Explorer lekérdezéseket írni](write-queries.md)

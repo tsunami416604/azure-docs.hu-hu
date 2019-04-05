@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: ff02f79321823e42c25897e9de30dfbb6fac46b0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 552c9820cca4380c00e1bf435fdb3d068c0690fb
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949618"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047939"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>A Service Fabric-fürt programozott skálázása 
 
 Azure-ban futó Service Fabric-fürtök a virtual machine scale sets épülnek.  [Fürtméretezés](./service-fabric-cluster-scale-up-down.md) ismerteti, hogyan Service Fabric-fürtök vertikálisan fel-vagy manuálisan, vagy az automatikus skálázási szabályok. Ez a cikk hitelesítő adatok kezelése és a fürtök skálázásának módját ismerteti, vagy ki az fluent Azure számítási SDK-t, amely egy speciális forgatókönyv. Áttekintéséhez olvassa el a [Azure méretezési műveletek koordinálása a programozott módszerekkel](service-fabric-cluster-scaling.md#programmatic-scaling). 
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Hitelesítő adatok kezelése
 Méretezés kezelésére való írásával szolgáltatás az egyik kihívás, hogy a szolgáltatás hozzáférjen a virtuális gép méretezési csoport erőforrásainak nélkül egy interaktív bejelentkezést kell lennie. A Service Fabric-fürt eléréséhez akkor egyszerűen, ha a méretezési szolgáltatás módosítja a saját Service Fabric-alkalmazás, de a méretezési eléréséhez szükséges hitelesítő adatokat. Jelentkezzen be, használhatja a [szolgáltatásnév](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) hoztak létre a [Azure CLI-vel](https://github.com/azure/azure-cli).
@@ -65,7 +68,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Azt is megteheti virtuális gép méretezési készlet mérete is kezelhetők a PowerShell-parancsmagokkal. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) a virtuálisgép-méretezési készlet objektumot is lekérheti. A jelenlegi kapacitás keresztül érhető el a `.sku.capacity` tulajdonság. Miután megváltoztatta a kapacitás a kívánt értékre, az Azure-beli virtuálisgép-méretezési frissíthetők a [ `Update-AzureRmVmss` ](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) parancsot.
+Azt is megteheti virtuális gép méretezési készlet mérete is kezelhetők a PowerShell-parancsmagokkal. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) a virtuálisgép-méretezési készlet objektumot is lekérheti. A jelenlegi kapacitás keresztül érhető el a `.sku.capacity` tulajdonság. Miután megváltoztatta a kapacitás a kívánt értékre, az Azure-beli virtuálisgép-méretezési frissíthetők a [ `Update-AzVmss` ](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) parancsot.
 
 Amikor csomópontot ad manuálisan, hozzáadása egy méretezési csoport példánya kell lennie minden, ami szükséges egy új Service Fabric-csomópont elindítani, mert a méretezési csoport sablonját automatikusan az új példányok csatlakoztatása a Service Fabric-fürt kiterjesztéseket is tartalmaz. 
 

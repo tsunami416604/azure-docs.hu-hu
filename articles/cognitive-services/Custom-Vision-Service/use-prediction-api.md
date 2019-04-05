@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 78ca1d7ceb9086e0d589f904b24b967d36b079a0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895613"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046070"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>A modell használata az előrejelzési API
 
@@ -45,7 +45,7 @@ A modell közzététele után képes-e a szükséges információk beszerzéséh
 ![A Teljesítmény lapon megjelenő egy vörös téglalappal képfájl és az előrejelzési-kulcs-érték segítségével előrejelzési URL-cím értékét.](./media/use-prediction-api/prediction-api-info.png)
 
 > [!TIP]
-> A __előrejelzés-kulcs__ is megtalálható a [az Azure Portal](https://portal.azure.com) oldala a Custom Vision Azure-erőforrás a társított a projekthez a __kulcsok__ panelen.
+> A __előrejelzés-kulcs__ is megtalálható a [az Azure portal](https://portal.azure.com) oldala a Custom Vision Azure-erőforrás a társított a projekthez a __kulcsok__ panelen.
 
 Ebben az útmutatóban azt fogja használni a helyi rendszerképet, ezért másolja az URL-CÍMÉT a **Ha képfájl** egy ideiglenes helyre. Másolja be a megfelelő __előrejelzés-kulcs__ értéket is.
 

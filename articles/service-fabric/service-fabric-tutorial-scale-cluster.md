@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/19/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 40e372b779d06656b111ad3d7de435b99c401dc3
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 05a30bee8e6eb0db2e06d6d5a3a7af0d0759fb4c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669503"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049404"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt méretezése az Azure-ban
 
@@ -41,12 +41,15 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > * [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
 > * [Fürt törlése](service-fabric-tutorial-delete-cluster.md)
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Telepítse az [Azure PowerShell-modul 4.1-es vagy újabb verzióját](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps), vagy az [Azure CLI-t](/cli/azure/install-azure-cli).
+* Telepítés [az Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy [az Azure CLI](/cli/azure/install-azure-cli).
 * Hozzon létre egy biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) az Azure-ban
 
 ## <a name="important-considerations-and-guidelines"></a>Fontos szempontokat és irányelveket
@@ -98,7 +101,7 @@ Ha a méretezéssel csomópontot távolíthat egy, a csomópont típusa bronz [t
 Mentse a módosításokat a *template.json* és *parameters.json* fájlokat.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 Vagy az Azure CLI-parancsot:
 ```azure-cli
@@ -804,7 +807,7 @@ Az a *parameters.json* fájlt, adja hozzá a következő új paramétereket és 
 Mentse a módosításokat a *template.json* és *parameters.json* fájlokat.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 Vagy az Azure CLI-parancsot:
 ```azure-cli
@@ -815,16 +818,16 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 Egy Service Fabric-fürt létrehozását követően méretezheti a fürt vízszintesen csomópont típusa (virtuálisgép-méretezési) és az összes hozzá tartozó csomópont eltávolításával. Méretezheti a fürt bármikor, még akkor is, ha a számítási feladatok a fürtön futnak. A fürt skálázható, mivel az alkalmazások automatikus méretezése is.
 
 > [!WARNING]
-> Typ uzlu eltávolítása egy éles fürtöt Remove-AzureRmServiceFabricNodeType használatával nem ajánlott a gyakran használható. Ez megegyezik a veszélyes parancs törli a virtuális gép méretezési csoport erőforrás mögött typ uzlu. 
+> Typ uzlu eltávolítása egy éles fürtöt Remove-AzServiceFabricNodeType használatával nem ajánlott a gyakran használható. Ez megegyezik a veszélyes parancs törli a virtuális gép méretezési csoport erőforrás mögött typ uzlu. 
 
-A csomóponttípus eltávolításához futtassa a [Remove-AzureRmServiceFabricNodeType](/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) parancsmagot.  A csomópont típusúnak kell lennie Silver vagy Gold [tartóssági szint] [ durability] a parancsmag törli a méretezési csoporthoz társított a csomópont típusa és eltarthat egy ideig.  Ezután futtassa a [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) parancsmagot a csomópontok szeretne eltávolítani, amely törli a csomópont állapota és a csomópontok eltávolítása a fürtből. Ha a csomópontok szolgáltatásokat, majd a szolgáltatások először kerülnek egy másik csomópontra. A kezelőt nem található a csomópont a replika vagy szolgáltatások, a művelet, késleltetett/blokkolja-e.
+A csomóponttípus eltávolításához futtassa a [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) parancsmagot.  A csomópont típusúnak kell lennie Silver vagy Gold [tartóssági szint] [ durability] a parancsmag törli a méretezési csoporthoz társított a csomópont típusa és eltarthat egy ideig.  Ezután futtassa a [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) parancsmagot a csomópontok szeretne eltávolítani, amely törli a csomópont állapota és a csomópontok eltávolítása a fürtből. Ha a csomópontok szolgáltatásokat, majd a szolgáltatások először kerülnek egy másik csomópontra. A kezelőt nem található a csomópont a replika vagy szolgáltatások, a művelet, késleltetett/blokkolja-e.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
 $nodetype = "nt4vm"
 $clustername = "mysfcluster123"
 
-Remove-AzureRmServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
+Remove-AzServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
 
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.eastus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
@@ -861,7 +864,7 @@ A VM-Termékváltozat minden három csomópont esetében be van állítva a *vmI
 Mentse a módosításokat a *template.json* és *parameters.json* fájlokat.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 Vagy az Azure CLI-parancsot:
 ```azure-cli
@@ -874,6 +877,18 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adjon hozzá és távolíthat el csomópontokat (horizontális felskálázás és horizontális leskálázás)
+> * Hozzáadhat és eltávolíthat csomóponttípusok (horizontális felskálázás és horizontális leskálázás)
+> * Növelje a csomópont erőforrásokat (vertikális felskálázási)
+
+Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan frissíthetők a fürtök futtatókörnyezetei.
+> [!div class="nextstepaction"]
+> [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
+
+[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
+[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
+ND horizontális leskálázás))
 > * Hozzáadhat és eltávolíthat csomóponttípusok (horizontális felskálázás és horizontális leskálázás)
 > * Növelje a csomópont erőforrásokat (vertikális felskálázási)
 

@@ -1,21 +1,20 @@
 ---
-title: Jupyter Notebook és Kqlmagic használata az adatok elemzése
-description: Ez a témakör bemutatja, hogyan elemezhet Jupyter Notebook és KQLmagic használata az adatok
-services: data-explorer
+title: Jupyter Notebook használata az adatok elemzése az Azure Data Explorer
+description: Ez a témakör bemutatja, hogyan az adatok elemzése az Azure Data Explorer Jupyter Notebook és a Kqlmagic bővítmény használatával.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 0e7d6148297dd4208374d9900e10564ac4052c67
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 896a5d13279c15f0035f214da3d5a7d7e6f1861f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756212"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045064"
 ---
-# <a name="analyze-data-using-jupyter-notebook-and-kql-magic"></a>A Jupyter Notebook és KQL Magic Quadrant használata az adatok elemzése
+# <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Adatok elemzése az Azure Data Explorer egy Jupyter Notebookot, és Kqlmagic bővítmény használatával
 
 Jupyter Notebook egy nyílt forráskódú webes alkalmazás, amely lehetővé teszi, hogy hozzon létre és megoszthatja a dokumentumokat, amely tartalmazza az élő kód, a egyenletek, a Vizualizációk és a leíró szöveg. Használati adatok tisztítása és átalakítása numerikus szimuláció, statisztikai modellezési, adatvizualizáció és machine learning tartalmazza.
 [Jupyter Notebook](https://jupyter.org/) magic függvények támogatásával, további parancsok a kernel képességeit kibővítő támogatja. KQL Magic Quadrant, amely bővíti a Python-kernel a Jupyter Notebook Kusto nyelvi lekérdezések futtatásához natív módon parancs. A Python és Kusto lekérdezési nyelv lekérdezése és gazdag és integrált Plot.ly könyvtár használatával adatok vizualizációja révén könnyedén egyesítheti `render` parancsokat. A futó lekérdezések adatforrások támogatottak. Ezeknek az adatforrásoknak az Azure az adatkezelőt, egy gyors és hatékonyan méretezhető exploration szolgáltatás napló és a telemetriai adatokat, csakúgy, mint az Azure Monitor naplóira és az Application Insights tartalmazza. KQL Magic Quadrant Azure notebookok, a Jupyter labor és a Visual Studio Code Jupyter kiterjesztésű is működik.

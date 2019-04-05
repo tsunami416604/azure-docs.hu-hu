@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: f5eefd1d3fa26738729d98e60d8a56cd8d33d86c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084878"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051937"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizált vész-helyreállítási megoldás StorSimple található fájlmegosztások az Azure Site Recovery használatával
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="overview"></a>Áttekintés
 A Microsoft Azure StorSimple hibrid felhőalapú tárolási megoldás, amely kiküszöböli a strukturálatlan adatok gyakran társított fájlmegosztások a. A StorSimple felhőalapú tárolás kiterjesztése, a helyszíni megoldást, és automatikusan rétegek adatok között a helyszíni és felhőbeli tárolására használja. Integrált adatvédelmet biztosít, helyi és felhőalapú pillanatfelvételek, szükségtelenné teszi a tárolási infrastruktúrák sprawling.
 
@@ -167,7 +170,7 @@ A helyreállítási terv hozhat létre fájlmegosztást a feladatátvételi foly
    
 1. Az automation-fiókban kattintson **változók** &gt; **változó hozzáadása** , és adja hozzá a következő változókat. Kiválaszthatja, hogy ezek az eszközök titkosításához. Ezeket a változókat a helyreállítási terv megadott. Ha a helyreállítási terv, amely a következő lépésben létrehozza név TestPlan, majd a változók kell TestPlan StorSimRegKey, TestPlan-AzureSubscriptionName, és így tovább.
 
-   - **BaseUrl**: Az Azure-felhő erőforrás-kezelő URL-címét. Első használatával **Get-AzureRmEnvironment |} Select-Object Name, ResourceManagerUrl** parancsmagot.
+   - **BaseUrl**: Az Azure-felhő erőforrás-kezelő URL-címét. Első használatával **Get-AzEnvironment |} Select-Object Name, ResourceManagerUrl** parancsmagot.
    - *RecoveryPlanName***-ResourceGroupName**: A Resource Manager-csoport, amely a StorSimple-erőforrás.
    - * RecoveryPlanName ***- ManagerName**: A StorSimple-erőforrás, amely a StorSimple-eszköz rendelkezik.
    - * RecoveryPlanName ***- eszköznév**: A StorSimple-eszköz, amelyen feladatátvételt kell végrehajtani.

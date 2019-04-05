@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 3530dbfe15f6dbdf481df70de6d03979750aa38e
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 3a34af77a2806ceb56e939e2b153f2e68bba61cd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352102"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048936"
 ---
 # <a name="glossary-of-terms-for-custom-vision-service"></a>A Custom Vision Service kifejezések jegyzéke
 
@@ -32,7 +32,6 @@ Egy projekt létrehozásakor ki kell választania, hogy a projekt "tartomány". 
 - **Az élelmiszer-tartomány.** Optimalizált csészéket jelennének meg egy étterem menüben. Az egyes zöldségekből vagy FELISMERVE nem lett optimalizálva. Ha szeretné besorolni különálló vagy zöldségek fényképeket, használja az általános tartomány erre a célra.
 - **A környezet tartományhoz.** Könnyen felismerhető névre arcrész természetes és mesterséges optimalizálva. Ebben a tartományban akkor működik a legjobban, ha a környezet a fényképet és a fókuszjelzőknek jól láthatóknak akkor is, ha a környezet valamivel probléma egyik oka egy csoportnak jelentő takarja.
 - **A kiskereskedelmi tartományhoz.** Optimalizált Írisz képek egy vásárlási katalógus vagy a vásárlási webhelyén. Ha nagy pontosságú ruha besorolásakor, pants, ing, stb., majd a kiskereskedelmi következő tartomány használata.
-- **A felnőtt tartományhoz.** Optimalizált pontosabb meghatározásához felnőtt tartalom, és nem felnőtt tartalom között. Például ha azt szeretné, lemezképek emberek fürdés csomagok blokkolására, ebben a tartományban lehetővé teszi egyéni tartalombesoroló létrehozása valósítható meg.
 - **Az általános tartomány.** Olyan széles kép fájlosztályozási feladatokhoz.
 
 A modell által létrehozott **tartományok tömörítése** exportálható legyen az iteráció exportálási funkciókkal. A korlátozások a mobileszközökön a valós idejű besorolás vannak optimalizálva. Kompakt tartomány beépített deklarációkkal némileg kevésbé pontos lehet a betanítási adatok akkora standard tartománnyal. Az egyensúlyt a rendszer, hogy azok kellően kicsire közel valós idejű helyben kell futtatni. 

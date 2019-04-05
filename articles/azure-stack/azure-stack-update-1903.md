@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 2a2e289423eda53d610b2346193f6ee8a30b9c48
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.lastreviewed: 04/05/2019
+ms.openlocfilehash: a62c4dced78ef75588ef0fcc90e56bd6969c15a9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917685"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048809"
 ---
 # <a name="azure-stack-1903-update"></a>Azure Stack 1903 frissítése
 
@@ -64,6 +64,12 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 
 - Az észlelési és alacsony lemezterületre vonatkozó feltételek szervizelésének fejlesztései.
 
+### <a name="secret-management"></a>Titkos kódok kezelése
+
+- Az Azure Stack mostantól támogatja a főtanúsítvány titkos Elforgatás külső tanúsítványok által használt rotációját. További információ [ebben a cikkben](azure-stack-rotate-secrets.md).
+
+- 1903 javított teljesítménye, a titkos Elforgatás belső titkos elforgatás végrehajtásához szükséges időt csökkentő tartalmazza.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!IMPORTANT]
@@ -91,7 +97,7 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 
 - Futtatásakor [Test-AzureStack](azure-stack-diagnostic-test.md), megjelenik egy figyelmeztető üzenet az alaplapi felügyeleti vezérlő (BMC). Biztonságosan figyelmen kívül hagyhatja ezt a figyelmeztetést.
 
-- <!-- 2468613 - IS --> Ez a frissítés telepítése során láthatja a címmel riasztások `Error – Template for FaultType UserAccounts.New is missing.` biztonságosan figyelmen kívül hagyhatja ezeket a riasztásokat. A riasztás automatikusan bezáródik a frissítés a telepítés befejezése után.
+- <!-- 2468613 - IS --> Ez a frissítés telepítése során láthatja a címmel riasztások **hiba – a sablon typu FaultType UserAccounts.New hiányzik.** Ezek a riasztások nyugodtan figyelmen kívül hagyhatja. A riasztás automatikusan bezáródik a frissítés a telepítés befejezése után.
 
 ## <a name="post-update-steps"></a>Frissítés utáni lépések
 
@@ -130,7 +136,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 <!-- ### Health and monitoring -->
 
-### <a name="compute"></a>Számítás
+### <a name="compute"></a>Compute
 
 - Amikor egy új Windows virtuális gép (VM) hoz létre, a következő hiba jelenhet meg:
 
@@ -151,9 +157,9 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 - Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy az SSH-kulcsokkal való bejelentkezéshez használ. Áthidaló megoldásként használja a Linux-bővítményt a Virtuálisgép-hozzáférés SSH-kulcsok megvalósításához a kiépítés után, vagy jelszóalapú hitelesítés használatára.
 
-- Ha nem rendelkezik egy életciklus állomás (HLH): Build 1902, mielőtt kellett állítani csoportházirend *Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Biztonsági beállítások* való **LM- és NTLM – használja NTLMv2 munkamenet, haegyeztetése**. Build 1902, mivel azt hagyja **nincs definiálva** vagy - **csak a válasz küldése NTLMv2** (amely az alapértelmezett érték). Ellenkező esetben nem lehet hozzon létre egy távoli PowerShell-munkamenetet, és kap egy *a hozzáférés megtagadva* hiba:
+- Ha egy életciklus állomás (HLH) nem rendelkezik: build 1902, mielőtt kellett állítani csoportházirend **Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Biztonsági beállítások** való **LM- és NTLM – NTLMv2 munkamenet használja, ha az egyeztetett**. Build 1902, mivel azt hagyja **nincs definiálva** vagy - **csak a válasz küldése NTLMv2** (azaz az alapértelmezett érték). Ellenkező esetben nem lehet hozzon létre egy távoli PowerShell-munkamenetet, és megjelenik egy **a hozzáférés megtagadva** hiba:
 
-   ```PowerShell
+   ```shell
    PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
    New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
    about_Remote_Troubleshooting Help topic.
@@ -164,12 +170,12 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
       + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed
    ```
 
-### <a name="networking"></a>Hálózatkezelés  
+### <a name="networking"></a>Hálózat  
 
 <!-- 3239127 - IS, ASDK -->
 - Az Azure Stack portálon Ha módosít egy statikus IP-címet az IP-konfiguráció a Virtuálisgép-példányhoz csatolt hálózati adapterhez kötött látni fogja egy figyelmeztető üzenet arról, hogy 
 
-    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`.
+    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`
 
     Biztonságosan figyelmen kívül hagyhatja ezt az üzenetet; az IP-cím megváltozik, akkor is, ha a Virtuálisgép-példány nem indítja újra.
 
@@ -193,7 +199,6 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 <!-- 2352906 - IS ASDK --> 
 - A storage erőforrás-szolgáltatót regisztrálnia kell, az előfizetés az első Azure-függvény létrehozása előtt.
-
 
 <!-- ### Usage -->
 

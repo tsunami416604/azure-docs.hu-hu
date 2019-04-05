@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 0372f34d5e58361d460465a9ddf4b6eed79a49f0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474819"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049149"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Oktatóanyag: Windows-fájlkiszolgálók kiterjesztése az Azure File Sync használatával
 
@@ -28,6 +28,8 @@ A cikk egy Windows server tárolási kapacitását kiterjesztése az Azure File 
 > * Kiszolgálói végpont létrehozása
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -181,7 +183,7 @@ Ezután a Windows Server 2016 Datacenter VM, telepítse az Azure PowerShell-modu
 1. Futtassa az alábbi parancsot:
 
    ```powershell
-   Install-Module -Name AzureRm
+   Install-Module -Name Az
    ```
 
    > [!NOTE]
@@ -200,7 +202,7 @@ Ezután a Windows Server 2016 Datacenter VM, telepítse az Azure PowerShell-modu
 
 1. Válasz **Igen** vagy **Igen, az összeset** a telepítés folytatásához.
 
-Az `AzureRM` modul az Azure PowerShell-parancsmagok összesített modulja. A modul telepítésével letölti az összes elérhető Azure Resource Manager-modult, és használatra elérhetővé teszi a parancsmagjaikat.
+Az `Az` modul az Azure PowerShell-parancsmagok összesített modulja. A modul telepítésével letölti az összes elérhető Azure Resource Manager-modult, és használatra elérhetővé teszi a parancsmagjaikat.
 
 Ezen a ponton beállította a környezet-t az oktatóanyaghoz. Készen áll a Storage Sync Service telepítése.
 
@@ -263,7 +265,7 @@ A kiszolgáló regisztrációs felhasználói felület automatikusan meg kell az
    | | |
    | ----- | ----- |
    | Érték | Leírás |
-   | **Azure előfizetés** | Az előfizetés, amely tartalmazza a Társzinkronizálási szolgáltatást ehhez az oktatóanyaghoz. |
+   | **Azure-előfizetés** | Az előfizetés, amely tartalmazza a Társzinkronizálási szolgáltatást ehhez az oktatóanyaghoz. |
    | **Erőforráscsoport** | A Storage Sync Service tartalmazó erőforráscsoportot. Használat _afsresgroup101918_ ehhez az oktatóanyaghoz. |
    | **Társzinkronizálási szolgáltatás** | A Társzinkronizálási szolgáltatás neve. Használat _afssyncservice02_ ehhez az oktatóanyaghoz. |
 
@@ -285,7 +287,7 @@ A szinkronizálási csoport határozza meg fájlok egy halmazára a szinkronizá
    | ----- | ----- |
    | **Szinkronizálási csoport neve** | A Társzinkronizálási szolgáltatáson belül egyedinek kell lennie a névnek, de lehet bármilyen Ön számára logikus név. Használat *afssyncgroup* ehhez az oktatóanyaghoz.|
    | **Előfizetés** | Az előfizetés, ahova a Társzinkronizálási szolgáltatást telepítette ehhez az oktatóanyaghoz. |
-   | **Storage-fiók** | Válasszon **válassza ki a tárfiókot**. A megjelenő panelen válassza ki a tárfiókot, amely rendelkezik a létrehozott Azure-fájlmegosztást. Használat *afsstoracct101918* ehhez az oktatóanyaghoz. |
+   | **Tárfiók** | Válasszon **válassza ki a tárfiókot**. A megjelenő panelen válassza ki a tárfiókot, amely rendelkezik a létrehozott Azure-fájlmegosztást. Használat *afsstoracct101918* ehhez az oktatóanyaghoz. |
    | **Azure-fájlmegosztás** | A létrehozott Azure-fájlmegosztás neve. Használat *afsfileshare* ehhez az oktatóanyaghoz. |
 
 1. Kattintson a **Létrehozás** gombra.
@@ -306,8 +308,8 @@ Kiszolgálói végpont egy adott helyen, egy regisztrált kiszolgálón jelöli.
    | ----- | ----- |
    | Érték | Leírás |
    | **Regisztrált kiszolgáló** | A létrehozott kiszolgáló nevét. Használat *afsvm101918* ehhez az oktatóanyaghoz. |
-   | **Elérési út** | A Windows Server meghajtó elérési útját a létrehozott. Használat *f:\filestosync* ebben az oktatóanyagban. |
-   | **Felhőbeli rétegzés** | Hagyja letiltott állapotban az oktatóanyaghoz. |
+   | **Útvonal** | A Windows Server meghajtó elérési útját a létrehozott. Használat *f:\filestosync* ebben az oktatóanyagban. |
+   | **Felhőbeli rétegezés** | Hagyja letiltott állapotban az oktatóanyaghoz. |
    | **Szabad terület a köteten** | Ebben az oktatóanyagban üresen hagyjuk. |
 
 1. Kattintson a **Létrehozás** gombra.
@@ -325,4 +327,4 @@ A fájlok az Azure-fájlmegosztások és a Windows Server között most már szi
 Ebben az oktatóanyagban megtudhatta, az alapvető lépéseken, a tárolási kapacitás, a Windows Server kiterjesztése az Azure File Sync használatával. Alaposan tekintse meg az Azure File Sync üzembe helyezésének megtervezése lásd:
 
 > [!div class="nextstepaction"]
-> [Azure File Sync üzembe helyezésének megtervezése](./storage-sync-files-planning.md)
+> [Az Azure File Sync üzembe helyezésének tervezése](./storage-sync-files-planning.md)

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: fe348daa4613e0b515244686e48ed63a41991d81
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 79751dc0de8817c940355e8b64652014b1c67c35
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009372"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045900"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használatával a Time Series Insights-erőforrások létrehozása
 
@@ -38,6 +38,9 @@ A Resource Manager-sablon egy JSON-fájlt, amely meghatározza az infrastruktúr
 - [Microsoft.TimeSeriesInsights erőforrástípusok](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 A [201-timeseriesinsights-környezet-a-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) gyorssablont a Githubon közzétett. Ez a sablon létrehoz egy Time Series Insights környezetet, a gyermek eseményforrás úgy konfigurálva, hogy az Eseményközpontban lévő események felhasználásához és hozzáférési házirendek, amelyek hozzáférést biztosítani a környezeti adatok. Ha egy meglévő Eseményközponton nincs megadva, az egyik való üzembe helyezéséhez létrejön.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>A helyi PowerShell-lel gyorsindítási sablon üzembe helyezése
 
@@ -110,8 +113,8 @@ Hozzon létre egy paramétereket tartalmazó fájlt, másolja át a [201-timeser
    | eventSourceDisplayName | Egy nem kötelező rövid név azokat az eszközöket, vagy a felhasználói felületen helyett az eseményforrás nevének megjelenítéséhez. |
    | eventSourceTimestampPropertyName | Az esemény tulajdonság, amely az eseményforrás időbélyegzőként használható. Ha az érték nincs megadva a timestampPropertyName, vagy az null értékű vagy üres karakterlánc van megadva, az esemény létrehozásának időpontját használható. |
    | eventSourceKeyName | A közös hozzáférési kulcs, amely a Time Series Insights szolgáltatás használni fog csatlakozni az eseményközpont neve. |
-   | accessPolicyReaderObjectIds | A felhasználók vagy alkalmazások az Azure ad-ben, amely elvben olvasó hozzáférést a környezethez azonosítói objektum listáját. A szolgáltatás egyszerű objectId meghívásával is beszerezhetők a **Get-AzureRMADUser** vagy a **Get-AzureRMADServicePrincipal** parancsmagok. Az Azure AD-csoportok a hozzáférési szabályzat létrehozása még nem támogatott. |
-   | accessPolicyContributorObjectIds | A felhasználók vagy alkalmazások, amelyek a környezetet közreműködői hozzáféréssel kell rendelkeznie az Azure AD-ben objektumazonosítók listáját. A szolgáltatás egyszerű objectId meghívásával is beszerezhetők a **Get-AzureRMADUser** vagy a **Get-AzureRMADServicePrincipal** parancsmagok. Az Azure AD-csoportok a hozzáférési szabályzat létrehozása még nem támogatott. |
+   | accessPolicyReaderObjectIds | A felhasználók vagy alkalmazások az Azure ad-ben, amely elvben olvasó hozzáférést a környezethez azonosítói objektum listáját. A szolgáltatás egyszerű objectId meghívásával is beszerezhetők a **Get-AzADUser** vagy a **Get-AzADServicePrincipal** parancsmagok. Az Azure AD-csoportok a hozzáférési szabályzat létrehozása még nem támogatott. |
+   | accessPolicyContributorObjectIds | A felhasználók vagy alkalmazások, amelyek a környezetet közreműködői hozzáféréssel kell rendelkeznie az Azure AD-ben objektumazonosítók listáját. A szolgáltatás egyszerű objectId meghívásával is beszerezhetők a **Get-AzADUser** vagy a **Get-AzADServicePrincipal** parancsmagok. Az Azure AD-csoportok a hozzáférési szabályzat létrehozása még nem támogatott. |
 
 Tegyük fel a következő paramétereket tartalmazó fájlt szeretne használható egy környezetet, és a egy eseményforrás, amely eseményeket olvas be egy meglévő eseményközponton. A környezet közreműködői hozzáférést két hozzáférési házirendeket is létrehoz.
 
@@ -155,27 +158,27 @@ További információkért lásd: a [paraméterek](../azure-resource-manager/res
 Egy PowerShell-parancssorban futtassa a következő parancsot:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Jelentkezzen be az Azure-fiókja kéri. A bejelentkezés után futtassa a következő parancsot a rendelkezésre álló előfizetések megtekintéséhez:
 
 ```powershell
-Get-AzureRMSubscription
+Get-AzSubscription
 ```
 
 Ez a parancs elérhető Azure-előfizetések listáját adja vissza. Válasszon egy előfizetést, az aktuális munkamenet a következő parancs futtatásával. Cserélje le `<YourSubscriptionId>` használni kívánt Azure-előfizetéshez tartozó GUID Azonosítóval rendelkező:
 
 ```powershell
-Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
+Set-AzContext -SubscriptionID <YourSubscriptionId>
 ```
 
 ### <a name="set-the-resource-group"></a>Állítsa be az erőforráscsoport
 
-Ha nem rendelkezik egy meglévő erőforrást, csoport, hozzon létre egy új erőforráscsoportot a **New-AzureRmResourceGroup** parancsot. Adja meg az erőforráscsoportot és helyet használni kívánt nevét. Példa:
+Ha nem rendelkezik egy meglévő erőforrást, csoport, hozzon létre egy új erőforráscsoportot a **New-AzResourceGroup** parancsot. Adja meg az erőforráscsoportot és helyet használni kívánt nevét. Példa:
 
 ```powershell
-New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
+New-AzResourceGroup -Name MyDemoRG -Location "West US"
 ```
 
 Ha ez sikeres, az új erőforráscsoport összegzését jelenik meg.
@@ -190,38 +193,38 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>Az üzemelő példány tesztelése
 
-A telepítés ellenőrzése futtatásával a `Test-AzureRmResourceGroupDeployment` parancsmagot. A központi telepítés tesztelésekor paramétereket megadnia, pontosan, mint a központi telepítés végrehajtása közben.
+A telepítés ellenőrzése futtatásával a `Test-AzResourceGroupDeployment` parancsmagot. A központi telepítés tesztelésekor paramétereket megadnia, pontosan, mint a központi telepítés végrehajtása közben.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
+Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
 ### <a name="create-the-deployment"></a>Az üzemelő példány létrehozása
 
-Az új központi telepítés létrehozásához futtassa a `New-AzureRmResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, amikor a rendszer kéri. A paraméterek tartalmaznia kell egy nevet az üzembe helyezés a sablonfájl az erőforráscsoport és az elérési útja vagy URL-cím nevére. Ha a **mód** paraméter nincs megadva, az alapértelmezett érték **növekményes** szolgál. További információkért lásd: [növekményes és teljes körű központi telepítések](../azure-resource-manager/deployment-modes.md).
+Az új központi telepítés létrehozásához futtassa a `New-AzResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, amikor a rendszer kéri. A paraméterek tartalmaznia kell egy nevet az üzembe helyezés a sablonfájl az erőforráscsoport és az elérési útja vagy URL-cím nevére. Ha a **mód** paraméter nincs megadva, az alapértelmezett érték **növekményes** szolgál. További információkért lásd: [növekményes és teljes körű központi telepítések](../azure-resource-manager/deployment-modes.md).
 
 A következő parancs kéri a öt szükséges paraméterek a PowerShell-ablakban:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
 ```
 
 Ehelyett adja meg a paramétereket tartalmazó fájlt, használja a következő parancsot:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
 Emellett használhatja a beágyazott paraméterek, a központi telepítési parancsmag futtatásakor. A parancs a következőképpen történik:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
 Futtatásához egy [teljes](../azure-resource-manager/deployment-modes.md) központi telepítését, állítsa be a **mód** paramétert **Complete**:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése

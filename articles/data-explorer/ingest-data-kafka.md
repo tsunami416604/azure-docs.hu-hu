@@ -1,19 +1,18 @@
 ---
 title: 'Gyors útmutató: Betölteni az adatokat a Kafkából az Azure Data Explorer'
 description: Ez a rövid útmutatóban megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer kafka.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/19/2018
-ms.openlocfilehash: 5c7d533cbd8a69b8fd9dcc704e7b83b0e476e499
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 180053aa2146d8ab80df832044ac3ee4d45970da
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756646"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047109"
 ---
 # <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Gyors útmutató: Betölteni az adatokat a Kafkából az Azure Data Explorer
  
@@ -23,7 +22,7 @@ Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési s
  
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. 
  
-* [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
+* [Egy teszt fürt és adatbázis](create-cluster-database-portal.md)
  
 * [Egy mintaalkalmazás](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka) , amely adatokat állít elő, és elküldi azokat a Kafka
 
@@ -164,4 +163,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
 ## <a name="next-steps"></a>További lépések
  
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+> [Gyors útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)

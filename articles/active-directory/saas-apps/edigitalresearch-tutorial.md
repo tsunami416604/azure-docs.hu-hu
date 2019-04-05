@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4bebbda528f7ed6d7bee6ce77c744c6349d0bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d81797f0d1e7f72842c3a5a127756b99bdc93992
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190891"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező eDigitalResearch
 
@@ -89,7 +89,7 @@ Az Azure AD egyszeri bejelentkezés az eDigitalResearch tesztelése és konfigur
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
 1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy eDigitalResearch tesztfelhasználót](#create-a-edigitalresearch-test-user)**  – egy megfelelője a Britta Simon a felhasználó Azure ad-ben reprezentációja kapcsolódó eDigitalResearch rendelkeznie.
+1. **[Hozzon létre egy eDigitalResearch tesztfelhasználót](#create-an-edigitalresearch-test-user)**  – egy megfelelője a Britta Simon a felhasználó Azure ad-ben reprezentációja kapcsolódó eDigitalResearch rendelkeznie.
 1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
 1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  ellenőrzése, hogy működik-e a konfiguráció.
 
@@ -169,7 +169,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     d. Kattintson a **Create** (Létrehozás) gombra.
   
-### <a name="create-a-edigitalresearch-test-user"></a>EDigitalResearch tesztfelhasználó létrehozása
+### <a name="create-an-edigitalresearch-test-user"></a>Hozzon létre egy eDigitalResearch tesztfelhasználó számára
 
 Ez a szakasz célja eDigitalResearch Britta Simon nevű felhasználó létrehozásához. 
 
@@ -218,7 +218,7 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 

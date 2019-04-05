@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f2334497c6329ee335c529e1490a2f966f51dff
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: fc09c8d8e284fc81a26097a7c1a58732539029c6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891718"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051122"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférés beállításainak ismertetése
 
@@ -120,8 +120,8 @@ Ez a beállítás minden böngésző együttműködik. Azonban teljesítéséhez
 | Windows 10             | Az Internet Explorer, a Microsoft Edge, Chrome-ban     |
 | Windows 8 / 8.1        | Internet Explorer, Chrome                     |
 | Windows 7              | Internet Explorer, Chrome                     |
-| iOS                    | A Safari, az Intune Managed Browser                |
-| Android                | Chrome-ban, az Intune Managed Browser                |
+| iOS                    | A Safari, a Microsoft Edge, Intune által felügyelt böngészőben |
+| Android                | A Microsoft Edge, Chrome, Intune által felügyelt böngészőben |
 | Windows Phone          | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Chrome                                        |

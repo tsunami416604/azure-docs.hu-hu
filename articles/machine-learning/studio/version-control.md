@@ -9,15 +9,17 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: ff7aa1ab8972b6cbb891a67b1065044b48f1cfa3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 046afaa0e83fa572d6cd43a3717707892b25af69
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446222"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051869"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Alkalmazáséletciklus-kezelés az Azure Machine Learning Studióban
 Az Azure Machine Learning Studio egy olyan eszköz, amely a rendszer üzembe helyezte azt az Azure-felhőplatformon a machine learning-kísérletek fejlesztéséhez. Például a Visual Studio IDE, és a méretezhető felhőalapú szolgáltatás Egyesítés egyetlen platformban. Beépítheti a verziókezelés standard Application Lifecycle Management (ALM) eljárásait különböző eszközök automatikus végrehajtás és üzembe helyezés, Azure Machine Learning studióba. Ez a cikk ismerteti az egyes beállítások és módszerek.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="versioning-experiment"></a>Verziókezelés kísérlet
 Kétféleképpen ajánlott verzió, a kísérletek. A beépített futtatási előzmények támaszkodnak, vagy exportálja a kísérletet, külsőleg kezelheti, hogy JSON formátumban. Mindegyik megközelítésnek és a hátrányai tartalmaz.
@@ -73,7 +75,7 @@ Idővel lehetséges, hogy az azonos web service-ben létrehozott sok végpont. M
 Sok azonos webszolgáltatás-végpontok is létrehozhat, és ezután javítani a iLearner-fájlt a végpontra hasonló hatás eléréséhez különböző verzióit. [Ez a cikk](create-models-and-endpoints-with-powershell.md) részletesebben ismerteti, hogyan hajthatja végre, hogy.
 
 ### <a name="new-web-service"></a>Új webszolgáltatás
-Ha létrehoz egy új Azure Resource Manager-alapú webes szolgáltatás, a végpont szerkezet már nem érhető el. Ehelyett létrehozhat webes szolgáltatás definíciós (WSD) fájlok, JSON formátumban, az a prediktív kísérletből a [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell-parancsmag segítségével, vagy a [ *Export-AzureRmMlWebservice* ](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) egy már üzembe helyezett Resource Manager-alapú webszolgáltatás a PowerShell-parancsmag segítségével.
+Ha létrehoz egy új Azure Resource Manager-alapú webes szolgáltatás, a végpont szerkezet már nem érhető el. Ehelyett létrehozhat webes szolgáltatás definíciós (WSD) fájlok, JSON formátumban, az a prediktív kísérletből a [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell-parancsmag segítségével, vagy a [ *Export-AzMlWebservice* ](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) egy már üzembe helyezett Resource Manager-alapú webszolgáltatás a PowerShell-parancsmag segítségével.
 
 Miután az exportált WSD-fájlt, és szabályozhatja azt a verziót, is telepítheti a WSD új webszolgáltatásként egy másik web service-csomag egy másik Azure-régióban. Csak ellenőrizze, hogy a megfelelő storage-fiók konfigurációját, valamint az új webes szolgáltatási csomag. Adjon meg Javítása a különböző iLearner-fájlt, módosítsa a WSD-fájlt, és a hely hivatkozás a betanított modell frissítése, és új webszolgáltatásként üzembe helyezni.
 

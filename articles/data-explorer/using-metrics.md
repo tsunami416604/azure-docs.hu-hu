@@ -1,19 +1,18 @@
 ---
 title: Azure Data Explorer Teljesítményfigyelő, egészségügyi és használati metrikákkal
 description: Ismerje meg, hogy a fürt teljesítmény, állapotának és használatának monitorozása az Azure Data Explorer metrikák használatával.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: 5252ca8898439b63a8819f6abfd634de0786932b
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: a9c9f4d827d21c374bebba9d39e33b0bcad8a83e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851803"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050614"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Azure Data Explorer Teljesítményfigyelő, egészségügyi és használati metrikákkal
 
@@ -41,17 +40,17 @@ A metrikák panelen:
 
 1. Metrika diagram létrehozásához válassza **metrika** nevét és a megfelelő **összesítési** metrikánként leírtaknak megfelelően az alábbi. A **erőforrás** és **metrika Namespace** színválasztó előre kiválasztott az Azure Data Explorer fürthöz.
 
-    **Metrika** | **Egység** | **Összesítés** | **Metrika leírása**
+    **Metrika** | **Unit (Egység)** | **Összesítés** | **Metrika leírása**
     |---|---|---|---|
-    | Gyorsítótár-kihasználtság | Százalék | Avg, Max, Min | Szükséges gyorsítótár méretének (üzletszabályzata előírja a meghatározott gyorsítótár) és a gyorsítótár teljes mérete (a felhasználói tevékenység megadott SSD teljes méretét) fürt aránya. Egy gyorsítótár átlagos kihasználtsága 80 %-os vagy még kevesebb csak egy fürt fenntartható állapot. Ha a gyorsítótár átlagos kihasználtság meghaladja a 80 %-os, a fürt kell [vertikálisan](manage-cluster-scale-up.md) egy Storage-tarifacsomag optimalizált vagy [horizontálisan felskálázott](manage-cluster-scale-out.md) több példányra. Másik lehetőségként alkalmazkodik a gyorsítótár-szabályzat (kevesebb napig a gyorsítótárban). Ha több mint 100 %-os gyorsítótár-kihasználtság, az adatok gyorsítótárazását, a gyorsítótárazási házirend szerint mérete nagyobb, amelyek a fürtön a gyorsítótár teljes mérete. |
-    | CPU | Százalék | Avg, Max, Min | Teljes CPU-használatának és az egész fürtön elérhető CPU aránya. Az átlagos Processzorhasználat 80 %-os vagy még kevesebb fenntartható egy fürthöz. CPU maximális értéke 100 %, ami azt jelenti, hogy nincsenek további számítási erőforrások fel adatokat. Amikor a fürt nem teljesít jól, ellenőrizze a CPU-határozza meg, hogy vannak-e le vannak tiltva adott processzorok maximális értékét. |
-    | (Az Event Hubs) feldolgozott események | Darabszám | Sum, Min, max | Események száma összesen az Event Hubs által küldött, és a fürt által fogadott. Az események elutasított és fogadja el a fürt motor események vannak felosztva. |
-    | Adatbetöltési késés | másodperc | Avg, Max, Min | Az idő, az adatok mindaddig, amíg készen áll a lekérdezés érkezett a fürtben található adatok késését. Adatbetöltési késés idejének mérése másodpercben történik. Az Adatbetöltési késés időszak az adatfeldolgozási forgatókönyvtől függ. |
-    | Adatbetöltési eredménye | Darabszám | Darabszám | Sikertelen volt, és sikerült Adatbetöltési műveletek teljes száma. Használat **alkalmazni a felosztás** siker gyűjtők létrehozásához, és sikertelen eredményt.|
-    | Adatbetöltési kihasználtsága | Százalék | Avg, Max, Min | Az adatok feldolgozására használt tényleges erőforrásokat és a feldolgozó ehhez a kapacitás házirendben lefoglalt erőforrások teljes aránya. Az alapértelmezett kapacitás házirend nem több, mint 512 egyidejű Adatbetöltési műveletek vagy 75 %-a fürt feldolgozó erőforrásaikat. Átlagos betöltési kihasználtsága 80 %-os vagy még kevesebb csak egy fürt fenntartható állapot. Maximális betöltési kihasználtsági értéke 100 %-os, ami azt jelenti, hogy minden fürt feldolgozási képessége szolgál, és a egy Adatbetöltési üzenetsor vonhat maga után. |
-    | Adatbetöltési kötet (megabájtban) | Darabszám | Sum, Min, max | Teljes méretét (megabájtban) a fürt betöltött adatokért. Az egységek olyan MB gondoskodik a feldolgozott adatok száma. |
+    | Gyorsítótár-kihasználtság | Százalék | Avg, Max, Min | A fürt által használt lefoglalt gyorsítótár erőforrások százaléka. Gyorsítótár felhasználói tevékenységet a megadott gyorsítótár-szabályzatnak megfelelően számára lefoglalt SSD méretét jelenti. Egy gyorsítótár átlagos kihasználtsága 80 %-os vagy még kevesebb csak egy fürt fenntartható állapot. Ha a gyorsítótár átlagos kihasználtság meghaladja a 80 %-os, a fürt kell [vertikálisan](manage-cluster-scale-up.md) egy Storage-tarifacsomag optimalizált vagy [horizontálisan felskálázott](manage-cluster-scale-out.md) több példányra. Másik lehetőségként alkalmazkodik a gyorsítótár-szabályzat (kevesebb napig a gyorsítótárban). Ha több mint 100 %-os gyorsítótár-kihasználtság, az adatok gyorsítótárazását, a gyorsítótárazási házirend szerint mérete nagyobb, amelyek a fürtön a gyorsítótár teljes mérete. |
+    | CPU | Százalék | Avg, Max, Min | Jelenleg a gépek a fürt által használt lefoglalt számítási erőforrások százaléka. Az átlagos Processzorhasználat 80 %-os vagy még kevesebb fenntartható egy fürthöz. CPU maximális értéke 100 %, ami azt jelenti, hogy nincsenek további számítási erőforrások fel adatokat. Amikor a fürt nem teljesít jól, ellenőrizze a CPU-határozza meg, hogy vannak-e le vannak tiltva adott processzorok maximális értéke. |
+    | (Az Event Hubs) feldolgozott események | Darabszám | Sum, Min, max | Események száma összesen event hubs szolgáltatásból, és a fürt által feldolgozott. Az események elutasított és fogadja el a fürt motor események vannak felosztva. |
+    | Adatbetöltési késés | másodperc | Avg, Max, Min | Betöltött, kezdve az adatok mindaddig, amíg készen áll a lekérdezés érkezett a fürtben lévő adatok késését. Az Adatbetöltési késés időszak az adatfeldolgozási forgatókönyvtől függ. |
+    | Adatbetöltési eredménye | Darabszám | Darabszám | Sikertelen volt, és sikerült Adatbetöltési műveletek teljes száma. Használat **alkalmazni a felosztás** és hozhat létre gyűjtők a sikeres és sikertelen eredményt a dimenziók elemzése (**érték** > **állapota**).|
+    | Adatbetöltési kihasználtsága | Százalék | Avg, Max, Min | Gyűjthet adatokat a lefoglalt erőforrások teljes mennyisége, a kapacitás házirendben Adatbetöltési végrehajtásához használt tényleges erőforrások százaléka. Az alapértelmezett kapacitás házirend nem több, mint 512 egyidejű Adatbetöltési műveletek vagy 75 %-a fürt feldolgozó erőforrásaikat. Átlagos betöltési kihasználtsága 80 %-os vagy még kevesebb csak egy fürt fenntartható állapot. Maximális betöltési kihasználtsági értéke 100 %-os, ami azt jelenti, hogy minden fürt feldolgozási képessége szolgál, és a egy Adatbetöltési üzenetsor vonhat maga után. |
+    | Adatbetöltési kötet (megabájtban) | Darabszám | Sum, Min, max | A tömörítés előtti (megabájtban) a fürthöz betöltött adatok teljes mérete. |
     | Életben tartási | Darabszám | Átlag | A fürt rendelkezésre állását követi nyomon. Egy teljes mértékben rugalmas fürt 1 értéket ad vissza, és a letiltott vagy leválasztott fürt 0 értéket adja vissza. |
-    | Lekérdezés időtartama | másodperc | Száma, Avg, Min., max. és összeg | Teljes idő, amíg a lekérdezés eredményeit a rendszer küldjön. |
+    | Lekérdezés időtartama | másodperc | Száma, Avg, Min., max. és összeg | Teljes idő, amíg a lekérdezés eredményeit a rendszer küldjön (nem tartalmazza a hálózati késés). |
     | | | |
 
     További információk kapcsolatos [támogatott az Azure Data Explorer fürtmetrikák](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)
@@ -69,4 +68,4 @@ További tájékoztatást a [Metrikaböngésző](/azure/azure-monitor/platform/m
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+> [Gyors útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)

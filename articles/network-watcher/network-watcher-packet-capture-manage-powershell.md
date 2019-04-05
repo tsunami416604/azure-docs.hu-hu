@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 01efbd928630b491419f6231007590c4f0fb0b22
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 267b2c375ef9672c8e5bd7cb8280b4dd40dbcd0d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888485"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045543"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>A csomagrögzítés kezelése az Azure Network Watcher PowerShell-lel
 
@@ -38,6 +38,9 @@ Ez a cikk végigvezeti a különböző felügyeleti feladatok csomagrögzítés 
 - [**Csomagrögzítés törlése**](#delete-a-packet-capture)
 - [**Töltse le a csomagrögzítés**](#download-a-packet-capture)
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy az alábbi forrásanyagokat:
@@ -54,33 +57,33 @@ Ez a cikk feltételezi, hogy az alábbi forrásanyagokat:
 ### <a name="step-1"></a>1. lépés
 
 ```powershell
-$VM = Get-AzureRmVM -ResourceGroupName testrg -Name VM1
+$VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 ```
 
 ### <a name="step-2"></a>2. lépés
 
-Az alábbi példa lekéri a sémakiterjesztési adatok futtatásához szükséges a `Set-AzureRmVMExtension` parancsmagot. Ez a parancsmag telepíti a csomag rögzítési ügynököt a Vendég virtuális gépen.
+Az alábbi példa lekéri a sémakiterjesztési adatok futtatásához szükséges a `Set-AzVMExtension` parancsmagot. Ez a parancsmag telepíti a csomag rögzítési ügynököt a Vendég virtuális gépen.
 
 > [!NOTE]
-> A `Set-AzureRmVMExtension` parancsmag több percet is igénybe vehet.
+> A `Set-AzVMExtension` parancsmag több percet is igénybe vehet.
 
 Windows virtuális gépek:
 
 ```powershell
-$AzureNetworkWatcherExtension = Get-AzureRmVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentWindows -Version 1.4.585.2
+$AzureNetworkWatcherExtension = Get-AzVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentWindows -Version 1.4.585.2
 $ExtensionName = "AzureNetworkWatcherExtension"
-Set-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
+Set-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ```
 
 Linux rendszerű virtuális gépek:
 
 ```powershell
-$AzureNetworkWatcherExtension = Get-AzureRmVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentLinux -Version 1.4.13.0
+$AzureNetworkWatcherExtension = Get-AzVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentLinux -Version 1.4.13.0
 $ExtensionName = "AzureNetworkWatcherExtension"
-Set-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
+Set-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ```
 
-Az alábbi példa a sikeres válasz futtatása után a `Set-AzureRmVMExtension` parancsmagot.
+Az alábbi példa a sikeres válasz futtatása után a `Set-AzVMExtension` parancsmagot.
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -90,13 +93,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ### <a name="step-3"></a>3. lépés
 
-Győződjön meg arról, hogy az ügynök telepítve van-e, futtassa a `Get-AzureRmVMExtension` parancsmagot, és adja át azt a virtuális gép és a bővítmény nevét.
+Győződjön meg arról, hogy az ügynök telepítve van-e, futtassa a `Get-AzVMExtension` parancsmagot, és adja át azt a virtuális gép és a bővítmény nevét.
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
+Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Az alábbi minta egy példa a válasz futását `Get-AzureRmVMExtension`
+Az alábbi minta egy példa a válasz futását `Get-AzVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -124,11 +127,11 @@ Ha az előző lépések befejeződött, a csomag rögzítési ügynök telepítv
 
 ### <a name="step-1"></a>1. lépés
 
-A következő lépés, hogy a Network Watcher-példány beolvasása. Az megörökli a változót a `New-AzureRmNetworkWatcherPacketCapture` parancsmag a 4. lépésben.
+A következő lépés, hogy a Network Watcher-példány beolvasása. Az megörökli a változót a `New-AzNetworkWatcherPacketCapture` parancsmag a 4. lépésben.
 
 ```powershell
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName  
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName  
 ```
 
 ### <a name="step-2"></a>2. lépés
@@ -136,7 +139,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 Storage-fiók beolvasása. Ez a tárfiók a packet capture fájl tárolására szolgál.
 
 ```powershell
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name testrgsa123
+$storageAccount = Get-AzStorageAccount -ResourceGroupName testrg -Name testrgsa123
 ```
 
 ### <a name="step-3"></a>3. lépés
@@ -144,8 +147,8 @@ $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name test
 Szűrők a csomagrögzítés által tárolt adatok korlátozására használható. Az alábbi példa két szűrő beállítása.  Egy szűrő csak a helyi 10.0.0.3 IP-cím kimenő TCP-forgalom, 20, a 80-as és 443-as célportok gyűjti.  A második szűrőt gyűjti csak az UDP-forgalmat.
 
 ```powershell
-$filter1 = New-AzureRmPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
-$filter2 = New-AzureRmPacketCaptureFilterConfig -Protocol UDP
+$filter1 = New-AzPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
+$filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 ```
 
 > [!NOTE]
@@ -153,13 +156,13 @@ $filter2 = New-AzureRmPacketCaptureFilterConfig -Protocol UDP
 
 ### <a name="step-4"></a>4. lépés
 
-Futtassa a `New-AzureRmNetworkWatcherPacketCapture` parancsmagot, hogy a csomag rögzítési folyamat elindításához szükséges értékeket átadása az előző lépésben lekért.
+Futtassa a `New-AzNetworkWatcherPacketCapture` parancsmagot, hogy a csomag rögzítési folyamat elindításához szükséges értékeket átadása az előző lépésben lekért.
 ```powershell
 
-New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
+New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
 ```
 
-Az alábbi példában a várt kimeneti futtatását a `New-AzureRmNetworkWatcherPacketCapture` parancsmagot.
+Az alábbi példában a várt kimeneti futtatását a `New-AzNetworkWatcherPacketCapture` parancsmagot.
 
 ```
 Name                    : PacketCaptureTest
@@ -199,13 +202,13 @@ Filters                 : [
 
 ## <a name="get-a-packet-capture"></a>Csomagrögzítés beolvasása
 
-Fut a `Get-AzureRmNetworkWatcherPacketCapture` parancsmag jelenleg fut, vagy befejezett csomagrögzítés állapotát kérdezi le.
+Fut a `Get-AzNetworkWatcherPacketCapture` parancsmag jelenleg fut, vagy befejezett csomagrögzítés állapotát kérdezi le.
 
 ```powershell
-Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
+Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
-Az alábbi példa kimenetében a `Get-AzureRmNetworkWatcherPacketCapture` parancsmagot. Az alábbi példa a rögzítés befejezése után van. A PacketCaptureStatus érték le van állítva, és a egy TimeExceeded StopReason. Ez az érték látható, hogy a csomagrögzítés sikeres volt-e, és futtatta az időt.
+Az alábbi példa kimenetében a `Get-AzNetworkWatcherPacketCapture` parancsmagot. Az alábbi példa a rögzítés befejezése után van. A PacketCaptureStatus érték le van állítva, és a egy TimeExceeded StopReason. Ez az érték látható, hogy a csomagrögzítés sikeres volt-e, és futtatta az időt.
 ```
 Name                    : PacketCaptureTest
 Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
@@ -246,10 +249,10 @@ PacketCaptureError      : []
 
 ## <a name="stop-a-packet-capture"></a>Csomagrögzítés leállítása
 
-Futtassa a `Stop-AzureRmNetworkWatcherPacketCapture` parancsmagot, ha azt folyamatban a rögzítési munkamenet le van állítva.
+Futtassa a `Stop-AzNetworkWatcherPacketCapture` parancsmagot, ha azt folyamatban a rögzítési munkamenet le van állítva.
 
 ```powershell
-Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
+Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
 > [!NOTE]
@@ -258,7 +261,7 @@ Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketC
 ## <a name="delete-a-packet-capture"></a>Csomagrögzítés törlése
 
 ```powershell
-Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
+Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
 > [!NOTE]

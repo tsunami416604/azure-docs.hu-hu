@@ -14,18 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: aljo
-ms.openlocfilehash: 526e70fe8548b23f08a2c85e8a59bdc2c25199b4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d95d2802398a61b948ff6c59fb3eab0e1ddddbc5
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660932"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051665"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Nyissa meg a portokat a Service Fabric-fürt
 
 A terheléselosztó az Azure Service Fabric-fürtben üzembe helyezett irányítja a forgalmat a csomóponton futó alkalmazásnak. Ha megváltoztatja az alkalmazás egy másik port használatára, a portok (vagy az útvonal egy másik portot) az Azure Load balancerben.
 
 A Service Fabric-fürt üzembe helyezésekor az Azure-ba, az Ön számára automatikusan létrehozott egy terheléselosztót. Ha nem rendelkezik egy terheléselosztót, [egy internetkapcsolattal rendelkező load balancer konfigurálása](../load-balancer/load-balancer-get-started-internet-portal.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="configure-service-fabric"></a>A service fabric beállítása
 
@@ -82,14 +85,14 @@ PowerShell az egy kicsit bonyolultabb, mint az Azure parancssori felület. Köve
 >[!NOTE]
 >Határozza meg a terheléselosztó nevét kell, ha ez a parancs segítségével gyorsan hozzáférhet a terheléselosztókkal és a kapcsolódó erőforráscsoportok listája.
 >
->`Get-AzureRmLoadBalancer | Select Name, ResourceGroupName`
+>`Get-AzLoadBalancer | Select Name, ResourceGroupName`
 
 ```powershell
 # Get the load balancer
-$lb = Get-AzureRmLoadBalancer -Name LB-svcfab3 -ResourceGroupName svcfab_cli
+$lb = Get-AzLoadBalancer -Name LB-svcfab3 -ResourceGroupName svcfab_cli
 
 # Create the rule based on information from the load balancer.
-$lbrule = New-AzureRmLoadBalancerRuleConfig -Name my-app-rule7 -Protocol Tcp -FrontendPort 39990 -BackendPort 40009 `
+$lbrule = New-AzLoadBalancerRuleConfig -Name my-app-rule7 -Protocol Tcp -FrontendPort 39990 -BackendPort 40009 `
                                             -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
                                             -BackendAddressPool  $lb.BackendAddressPools[0] `
                                             -Probe $lb.Probes[0]
@@ -98,14 +101,14 @@ $lbrule = New-AzureRmLoadBalancerRuleConfig -Name my-app-rule7 -Protocol Tcp -Fr
 $lb.LoadBalancingRules.Add($lbrule)
 
 # Update the load balancer on Azure
-$lb | Set-AzureRmLoadBalancer
+$lb | Set-AzLoadBalancer
 ```
 
-Kapcsolatos a `New-AzureRmLoadBalancerRuleConfig` parancsot, a `-FrontendPort` jelenti. a portot a load balancer tesz elérhetővé a külső kapcsolatokat, és a `-BackendPort` jelenti. a portot, a service fabric-alkalmazás figyel.
+Kapcsolatos a `New-AzLoadBalancerRuleConfig` parancsot, a `-FrontendPort` jelenti. a portot a load balancer tesz elérhetővé a külső kapcsolatokat, és a `-BackendPort` jelenti. a portot, a service fabric-alkalmazás figyel.
 
 >[!NOTE]
 >Load balancer létrehozása a PowerShell-lel kapcsolatos további információkért lásd: [load balancer létrehozása a PowerShell-lel](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [hálózatkezelés a Service Fabric](service-fabric-patterns-networking.md).
+Tudjon meg többet [hálózatkezelés a Service Fabric](service-fabric-patterns-networking.md).rvice-fabric-minták – networking.md).

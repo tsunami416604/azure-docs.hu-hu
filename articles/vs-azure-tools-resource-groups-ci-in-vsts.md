@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: cc9e2e09da572dc4260dcc0e20a8a1846ae17320
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894149"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047322"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Az Azure DevOps szolgáltatás használatával Azure erőforráscsoport-telepítési projektek folyamatos integráció
 Azure-sablon üzembe helyezéséhez, feladatokat különböző szakaszaiban: Buildelési, tesztelési, másolása az Azure-ba (más néven "Átmeneti"), és a sablon üzembe helyezése. Sablonok üzembe helyezése az Azure DevOps-szolgáltatásokkal való két különböző módja van. Mindkét módszer ugyanazt az eredményt adja meg, tehát azt, amelyik leginkább megfelel a munkafolyamatot.
@@ -28,6 +28,8 @@ Azure-sablon üzembe helyezéséhez, feladatokat különböző szakaszaiban: Bui
 2. Adja hozzá a több Azure-fejlesztési és üzemeltetési szolgáltatásokat hozhat létre lépéseket, mindegyiknél fázis feladatot végez.
 
 Ez a cikk mindkét lehetőséget bemutatja. Az első lehetőség az előnye, ugyanazzal a parancsfájllal használják a fejlesztők a Visual Studióban és biztosító konzisztencia életciklusa során. A második lehetőség alternatívája a beépített parancsfájlt. Mindkét eljárások feltételezik, hogy már rendelkezik Visual Studio-telepítési projekt be van jelölve, az Azure DevOps-szolgáltatásokkal.
+
+[!INCLUDE [updated-for-az](../includes/updated-for-az.md)]
 
 ## <a name="copy-artifacts-to-azure"></a>Összetevők másolása az Azure-bA
 A forgatókönyv, függetlenül összes összetevőt, amely szükséges ahhoz, hogy a sablon telepítése, ha meg kell hozzáférést Azure Resource Manager őket. Ezek az összetevők például a fájlok lehetnek:
@@ -87,7 +89,7 @@ Az alábbi eljárások végigvezetik a folyamatos üzembe helyezés konfigurál�
       
       PowerShell-parancsfájlok használata:
       
-      `Get-AzureRmSubscription`
+      `Get-AzSubscription`
       
       Azure CLI esetén használja az alábbi parancsot:
       

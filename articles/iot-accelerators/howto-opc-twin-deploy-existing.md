@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: da11d4977cc998c9fccb3628a44e45db95c7d977
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 9b1dee8ea43d01825449cb6010fbfa62e4715cff
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759539"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047262"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Az OPC-Ikereszköz egy meglévő projekt üzembe helyezése
 
@@ -30,10 +30,7 @@ A modul középpontjában a felügyelő identitását. A felügyelő kezeli a v�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-> [!NOTE]
-> Megjegyzés: Az AzureRM-modul a függőség miatt telepítési jelenleg csak támogatott Windows.
-
-Ellenőrizze, hogy a PowerShell és [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-1.1.0) bővítmények telepítve.   Ha Ön még nem tette még, klónozza a GitHub-adattárban.  Nyisson meg egy parancssort vagy a terminált, és futtassa:
+Ellenőrizze, hogy a PowerShell és [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-az-ps) bővítmények telepítve.   Ha Ön még nem tette még, klónozza a GitHub-adattárban.  Nyisson meg egy parancssort vagy a terminált, és futtassa:
 
 ```bash
 git clone --recursive https://github.com/Azure/azure-iiot-components 
@@ -143,4 +140,4 @@ AAD-bérlő használatához.
 Most, hogy megtanulhatta, hogyan helyezhet üzembe egy meglévő projekt OPC Ikereszköz, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [Az OPC-ügyfél és az OPC-PLC biztonságos kommunikáció ](howto-opc-vault-deploy-existing-client-plc-communication.md)
+> [Az OPC-ügyfél és az OPC PLC kommunikációjának biztonságossá tétele ](howto-opc-vault-deploy-existing-client-plc-communication.md)

@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 64a1693907dbf144aa34f5c35ae925af74d2cb34
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 65948b1de3a972687e738b011acf3542073db277
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803214"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046987"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC Analytics – gyakori kérdések
 
 Ez a cikk összegyűjti a egy helyen számos, a traffic analytics az Azure Network Watcher leggyakrabban feltett kérdésekre.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-are-the-prerequisites-to-use-traffic-analytics"></a>Mik a traffic analytics használatának előfeltételei?
 
@@ -51,11 +54,11 @@ Felhasználói fiók megfelel a traffic analytics engedélyezéséhez a követke
         
 A felhasználó előfizetéshez hozzárendelt szerepkörök ellenőrzése:
 
-1. Jelentkezzen be az Azure-bA **Login-AzureRmAccount**. 
+1. Jelentkezzen be az Azure-bA **bejelentkezési-AzAccount**. 
 
-2. Válassza ki a kötelező előfizetést használatával **Select-AzureRmSubscription**. 
+2. Válassza ki a kötelező előfizetést használatával **Select-AzSubscription**. 
 
-3. Az adott felhasználóhoz rendelt szerepkörök listájában, használja a **Get-AzureRmRoleAssignment - SignInName [felhasználó e-mail címe] - IncludeClassicAdministrators**. 
+3. Az adott felhasználóhoz rendelt szerepkörök listájában, használja a **Get-AzRoleAssignment - SignInName [felhasználó e-mail címe] - IncludeClassicAdministrators**. 
 
 Kimenetet nem jelennek meg, ha lépjen kapcsolatba a megfelelő előfizetés rendszergazdája hozzáférhet a parancsok futtatásához. További részletekért lásd: [szerepköralapú hozzáférés-vezérlés kezelése az Azure PowerShell-lel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
@@ -139,8 +142,8 @@ Ha a probléma tartósan fennáll, forduljon a támogatási.
 A flow-naplózás helyes működéséhez regisztrálni kell a Microsoft.Insights szolgáltató. Ha nem biztos abban, hogy a a Microsoft.Insights szolgáltató regisztrálva van az előfizetéshez tartozó, cserélje le a *: xxxxx-xxxxx-xxxxxx-xxxx* a következő parancsot, és a PowerShellben futtassa a következő parancsokat:
 
 ```powershell-interactive
-**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Konfiguráltam az megoldás. Miért nem jelenik meg semmit az irányítópult?
@@ -170,7 +173,7 @@ Az erőforrások információk jelennek meg az irányítópult; azonban nem flow
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Konfigurálhatom úgy a traffic analytics PowerShell-lel vagy az Azure Resource Manager-sablon, vagy az ügyfél?
 
-A traffic analytics 6.2.1 verzió frissítésétől kezdve a Windows PowerShell segítségével konfigurálhatja. Csoportforgalom naplózása és a traffic analytics egy adott NSG a Set parancsmag használatával, lásd: [Set-AzureRmNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog). A flow naplózási és a traffic analytics állapota egy adott NSG lekéréséhez lásd: [Get-AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus).
+A traffic analytics 6.2.1 verzió frissítésétől kezdve a Windows PowerShell segítségével konfigurálhatja. Csoportforgalom naplózása és a traffic analytics egy adott NSG a Set parancsmag használatával, lásd: [Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). A flow naplózási és a traffic analytics állapota egy adott NSG lekéréséhez lásd: [Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
 
 Jelenleg a traffic analytics konfigurálása Azure Resource Manager-sablon nem használható.
 

@@ -8,18 +8,18 @@ manager: rosh
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/27/2019
+ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: 6b7685f837cabf7ec659311c54f8c168981e4777
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8c350b5c2d945ed48566f549ab85844fc14625dc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544716"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049286"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Gyors útmutató: A Bing Visual Search REST API és a Ruby rendszerképet elemzések lekérése
 
-Ez a rövid útmutató a Ruby programozási nyelv használatával hívja meg a Bing vizuális keresés és az eredményeket megjeleníti. Egy Post kérést Rendszerképadatok az API-végpont. Az eredmények tartalmazzák a URL-címek és a feltöltött kép hasonló képek leíró adatait.
+Ez a rövid útmutató a Ruby programozási nyelv használatával hívja meg a Bing vizuális keresés és az eredményeket megjeleníti. Egy POST kérést Rendszerképadatok az API-végpont. Az eredmények tartalmazzák a URL-címek és a feltöltött kép hasonló képek leíró adatait.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,7 +32,7 @@ Ez a rövid útmutató futtatása:
 
 ## <a name="project-and-required-modules"></a>Projekt és a szükséges modulok
 
-Hozzon létre egy új Ruby-projektet az integrált Fejlesztőkörnyezetével vagy szerkesztőjével a. Importálás `net/http`, `uri` , és `json` kezeli a JSON-szöveget az eredmények. A `base64` tárat szeretne használni a fájl karakterlánc kódolása. 
+Hozzon létre egy új Ruby-projektet az integrált Fejlesztőkörnyezetével vagy szerkesztőjével a. Importálás `net/http`, `uri` , és `json` kezeli a JSON-szöveget az eredmények. A `base64` tárhasználat kódolja a fájlt karakterláncát: 
 
 ```
 require 'net/https'
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>Változók meghatározása
 
-A következő kódot a szükséges változók rendeli hozzá. Győződjön meg arról, hogy helyesen-e a végpont, és cserélje le a `accessKey` érték és a egy előfizetési kulcsot az Azure-fiókjával.  A `batchNumber` egy kezdő és záró határait a Post data szükséges GUID.  A `fileName` változó a képfájl azonosítja a Post esetében.  A `if` letiltása a tesztek a egy érvényes előfizetési kulcsot.
+A következő kódot a szükséges változók rendeli hozzá. Győződjön meg arról, hogy helyesen-e a végpont, és cserélje le a `accessKey` érték és a egy előfizetési kulcsot az Azure-fiókjával.  A `batchNumber` egy kezdő és záró határait a POST data szükséges GUID.  A `fileName` változó a képfájl azonosítja a POST esetében.  A `if` letiltása a tesztek a egy érvényes előfizetési kulcsot.
 
 ```
 accessKey = "ACCESS-KEY"
@@ -61,9 +61,9 @@ end
 
 ```
 
-## <a name="form-data-for-post-request"></a>A Post-kérés űrlapadatok
+## <a name="form-data-for-post-request"></a>A POST-kérés űrlapadatok
 
-A bejegyzéshez képadatok kezdő és záró határok kapcsos van.  A következő funkciók állítsa be a határokat.
+A bejegyzéshez képadatok kezdő és záró határok kapcsos van. Az alábbi funkciókat a határok beállítása:
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -74,10 +74,9 @@ end
 def BuildFormDataEnd(batNum)
     return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
 end
-
 ```
 
-Ezután hozza létre a végpont URI-t és a egy tömböt a bejegyzés törzse tartalmazza.  Az előző funkció segítségével a kezdő határ betölteni a tömbbe. Olvassa el a képfájl a tömbbe. Ezután olvassa el a teljes határt a tömbbe. 
+Ezután hozza létre a végpont URI-t és a egy tömböt a bejegyzés törzse tartalmazza.  Az előző funkció segítségével a kezdő határ betölteni a tömbbe. Olvassa el a képfájl a tömbbe. Ezután olvassa el a teljes határt a tömbbe:
 
 ```
 uri = URI(uri + path)
@@ -91,12 +90,11 @@ post_body << BuildFormDataStart(batchNumber, fileName)
 post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 
 post_body << BuildFormDataEnd(batchNumber)
-
 ```
 
 ## <a name="create-the-http-request"></a>A HTTP-kérelem létrehozása
 
-Állítsa be a `Ocp-Apim-Subscription-Key` fejléc.  Létrehozza a kérést.  Ezután rendelje hozzá a fejlécet és a tartalom típusa.  Csatlakozzon a bejegyzés törzse, korábban létrehozott ad a kéréshez.
+Állítsa be a `Ocp-Apim-Subscription-Key` fejléc.  Létrehozza a kérést. Ezután rendelje hozzá a fejlécet és a tartalom típusa. Csatlakozás a korábban létrehozott ad a kéréshez bejegyzés törzse:
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -110,7 +108,7 @@ request.body = post_body.join
 
 ## <a name="request-and-response"></a>Kérések és válaszok
 
-Ruby elküldi a kérelmet, és lekérdezi a következő kódsort a válaszban.
+Ruby elküldi a kérelmet, és lekérdezi a következő kódsort a választ:
 
 ```
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -121,7 +119,7 @@ end
 
 ## <a name="print-the-results"></a>Az eredmények nyomtatása
 
-Nyomtassa ki a fejlécek, a válasz. A JSON-könyvtár használatával kimenet formázása.
+Nyomtatása válasz a fejlécek, és a kimenet formázása a JSON-kódtár használatával:
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -138,7 +136,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="results"></a>Results (Eredmények)
 
-A következő JSON-ra a kimenet egy szegmens.
+A következő JSON-ja a kimenet egy szegmens:
 
 ```
 Relevant Headers:
@@ -287,4 +285,4 @@ JSON Response:
 
 > [!div class="nextstepaction"]
 > [A Bing Visual Search áttekintése](../overview.md)
-> [egyéni keresés webes alkalmazás készítése](../tutorial-bing-visual-search-single-page-app.md)
+> [vizuális keresés egyoldalas webes alkalmazás készítése](../tutorial-bing-visual-search-single-page-app.md)

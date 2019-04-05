@@ -14,18 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 2a4c3adb39ebf6e58770348eccc8c78e8ff92167
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804467"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049620"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktúra mint kód
 
 Hozzon létre egy éles forgatókönyvet Resource Manager-sablonok használata az Azure Service Fabric-fürtök. Resource Manager-sablonok adja meg az erőforrás-tulajdonságok nagyobb irányítását, és gondoskodjon arról, hogy egységes erőforrás-modellt.
 
 Mintául szolgáló Resource Manager-sablonok érhetők el a Windows és Linux rendszerben az [Azure-minták a Githubon](https://github.com/Azure-Samples/service-fabric-cluster-templates). Ezek a sablonok fürtsablonhoz kiindulási pontként használható. Töltse le `azuredeploy.json` és `azuredeploy.parameters.json` és szerkeszti őket, hogy az egyéni igényeknek.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Üzembe helyezéséhez a `azuredeploy.json` és `azuredeploy.parameters.json` a fent letöltött sablonok használja a következő Azure CLI-parancsokat:
 
@@ -45,8 +47,8 @@ $Location="westus"
 $Template="azuredeploy.json"
 $Parameters="azuredeploy.parameters.json"
 
-New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
-New-AzureRmResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -TemplateParameterFile $Parameters
+New-AzResourceGroup -Name $ResourceGroupName -Location $Location
+New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -TemplateParameterFile $Parameters
 ```
 
 ## <a name="azure-service-fabric-resources"></a>Azure Service Fabric-erőforrások

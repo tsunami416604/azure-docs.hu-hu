@@ -13,18 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 68fd33dc3e9def11f72b7aec14f83f86b8bb74d0
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: fb3300a45f905eb57fcc4880269e4a9bed9dac0c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749706"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045985"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Állítsa be az Azure Key Vault kulcsforgatással és vizsgálattal
 
 ## <a name="introduction"></a>Bevezetés
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Miután egy kulcstartót, elkezdheti a kulcsok és titkos kulcsok tárolására használja. Az alkalmazások többé nem kell megőrizni a kulcsok vagy titkos adatait, de lehetőség igényelni azokat a tárolóból igény szerint. Key vault lehetővé teszi a kulcsok és titkos kódok frissítése az alkalmazás, amely nyit meg, hogy a kulcs és titkos kódok kezelése szánt viselkedésének módosítása nélkül.
 
@@ -39,6 +37,8 @@ Ez a cikk ismerteti:
 
 > [!NOTE]
 > Ez a cikk nem részletesen elmagyarázza, a kezdeti beállítás a key vault. Ez az információ: [Mi az Azure Key Vault?](key-vault-overview.md). Platformfüggetlen parancssori felületre vonatkozó utasításokat, lásd: [kezelése a Key Vault az Azure CLI-vel](key-vault-manage-with-cli2.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="set-up-key-vault"></a>A Key Vault beállítása
 
@@ -166,6 +166,9 @@ Az alkalmazás futtatásakor kell hitelesítése az Azure Active Directoryhoz, �
 
 ## <a name="key-rotation-using-azure-automation"></a>A kulcsforgatás Azure Automation használatával
 
+> [!IMPORTANT]
+> Azure Automation-runbookok továbbra is használatának megkövetelése a `AzureRM` modul.
+
 Most már készen áll, állítsa be a Key Vault titkos kódként tárolt értékek Elforgatás stratégiáját. Titkos kódok többféle módon is rotációja:
 
 - Manuális folyamat részeként
@@ -210,7 +213,7 @@ try
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
     "Logging in to Azure..."
-    Connect-AzAccount `
+    Connect-AzureRmAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -235,12 +238,12 @@ $VaultName = <keyVaultName>
 $SecretName = <keyVaultSecretName>
 
 #Key name. For example key1 or key2 for the storage account
-New-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
-$SAKeys = Get-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
+New-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
+$SAKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
 
 $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 
-$secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
+$secret = Set-AzureRmKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
 A Lekérdezésszerkesztő panelén válassza **teszt panel** tesztelni a parancsfájlt. Miután a parancsfájl hiba nélkül fut, kijelölheti **közzététel**, és a runbook a runbook konfiguráció panelen ütemezés alkalmazhatja.

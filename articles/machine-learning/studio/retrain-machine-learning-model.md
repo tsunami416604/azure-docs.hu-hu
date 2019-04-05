@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: ea73c16687d393cd1e61c4aee83fbf74cc4ae9a7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 903f2700ad127c9bcc69e69ee125ba62fccf52e0
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108120"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051631"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Újratanítás PowerShell és a egy gépi tanulási modell üzembe helyezése
 
@@ -28,6 +28,8 @@ Ez a cikk feltételezi, hogy már telepített egy prediktív webszolgáltatás. 
 1. Üzembe helyezése egy **átképezési webszolgáltatás**
 1. Egy új modell használatával betanítása a **átképezési webszolgáltatás**
 1. Frissítse a meglévő **prediktív kísérletté** az új modell használata
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="deploy-the-retraining-web-service"></a>A megőrzési webszolgáltatás üzembe helyezése
 
@@ -130,15 +132,15 @@ Mentse a *BaseLocation*, *RelativeLocation*, és *SasBlobToken* a kimeneti eredm
 
 ### <a name="sign-in-to-azure-resource-manager"></a>Jelentkezzen be az Azure Resource Manager
 
-Első lépésként jelentkezzen be Azure-fiókjába, a PowerShell környezetben a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) parancsmagot.
+Első lépésként jelentkezzen be Azure-fiókjába, a PowerShell környezetben a [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) parancsmagot.
 
 ### <a name="get-the-web-service-definition-object"></a>A webszolgáltatás-definíciójának objektum lekérése
 
-Ezután kérdezze le a webszolgáltatás-definíciójának objektum meghívásával a [Get-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/get-azurermmlwebservice) parancsmagot.
+Ezután kérdezze le a webszolgáltatás-definíciójának objektum meghívásával a [Get-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) parancsmagot.
 
-    $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+    $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-Meglévő webszolgáltatás, az erőforráscsoport nevének megállapításához futtassa a Get-AzureRmMlWebService parancsmag a webes szolgáltatások megjelenítéséhez az előfizetésében paraméterek nélkül. Keresse meg a webszolgáltatás, és tekintse meg a webszolgáltatás-azonosítót. Az erőforráscsoport neve nem az azonosító, a negyedik eleme után a *resourceGroups* elemet. A következő példában az erőforráscsoport nevének alapértelmezett-MachineLearning-SouthCentralUS.
+Meglévő webszolgáltatás, az erőforráscsoport nevének megállapításához futtassa a Get-AzMlWebService parancsmag a webes szolgáltatások megjelenítéséhez az előfizetésében paraméterek nélkül. Keresse meg a webszolgáltatás, és tekintse meg a webszolgáltatás-azonosítót. Az erőforráscsoport neve nem az azonosító, a negyedik eleme után a *resourceGroups* elemet. A következő példában az erőforráscsoport nevének alapértelmezett-MachineLearning-SouthCentralUS.
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -153,9 +155,9 @@ Azt is megteheti az erőforráscsoport nevének egy létező webes szolgáltatá
 
 ### <a name="export-the-web-service-definition-object-as-json"></a>A webszolgáltatás-definíciójának objektum exportálása JSON-fájlként
 
-Az újonnan betanított modell használatára a betanított modell definícióját módosításához először használjon a [Export-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) JSON-formátumú fájlba exportálhatja, a parancsmag.
+Az újonnan betanított modell használatára a betanított modell definícióját módosításához először használjon a [Export-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) JSON-formátumú fájlba exportálhatja, a parancsmag.
 
-    Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
+    Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
 ### <a name="update-the-reference-to-the-ilearner-blob"></a>Frissítés a ilearner blob mutató hivatkozás
 
@@ -176,15 +178,15 @@ Az eszközök, keresse meg a [betanított modell], frissítse a *uri* értékét
 
 ### <a name="import-the-json-into-a-web-service-definition-object"></a>A JSON importálhat egy webszolgáltatás-definíciójának objektum
 
-Használja a [Import-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/import-azurermmlwebservice) parancsmag a módosított JSON-fájlt vissza alakítható át egy webszolgáltatás-definíciójának objektum, amely segítségével a predicative kísérletben frissíteni.
+Használja a [Import-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) parancsmag a módosított JSON-fájlt vissza alakítható át egy webszolgáltatás-definíciójának objektum, amely segítségével a predicative kísérletben frissíteni.
 
-    $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
+    $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 ### <a name="update-the-web-service"></a>A web service frissítése
 
-Végül a [Update-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/update-azurermmlwebservice) parancsmag, amellyel frissíthetőek a prediktív kísérletet.
+Végül a [Update-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) parancsmag, amellyel frissíthetőek a prediktív kísérletet.
 
-    Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+    Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
 ## <a name="next-steps"></a>További lépések
 

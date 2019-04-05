@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/02/2019
+ms.date: 04/05/2019
 ms.author: monhaber
-ms.openlocfilehash: cca1962e5146300cc376fab4bcb1bf0876acec6c
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 3d9658a6b7501714a6aad0e8eaa30ce587284bfe
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863151"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046206"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Az Azure Security Center hálózati erőforrások védelme
 Az Azure Security Center folyamatosan elemzi a hálózati biztonsági eljárások az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a erősíti, és az erőforrások védelme a szükséges vezérlők konfigurálásának folyamatán hoz létre.
@@ -30,9 +30,10 @@ Ez a cikk foglalkozik, javaslatok, amelyek a alkalmazni a hálózati biztonsági
 > A **hálózatkezelés** lap lehetővé teszi az Azure resource health hálózati szempontból részletes ismertetése. A hálózati térkép létrehozásához és adaptív hálózati vezérlők az Azure Security Center standard szintű csomag esetében érhetők el. [Ha az ingyenes szintet használja, a gombra kattinthat **örökölt hálózatműködés megtekintése** és fogadni a hálózati erőforrás javaslatok](#legacy-networking).
 >
 
-A **hálózatkezelés** panelen a szakaszok is részletes áttekintést nyújt a hálózati erőforrások állapotával kapcsolatos további információért mélyedjen:
+A **hálózatkezelés** lap a szakaszok is részletes áttekintést nyújt a hálózati erőforrások állapotával kapcsolatos további információért mélyedjen:
 
 - Hálózati térkép létrehozásához (csak az Azure Security Center Standard csomagja esetén)
+- Adaptív hálózat-megerősítés
 - Hálózati biztonsági javaslatokat.
 - Örökölt **hálózatkezelés** panelen (a korábbi hálózati panel) 
  

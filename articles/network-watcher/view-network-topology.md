@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: eb98fc2da95f1aa2b7294d09ec2a3145bdb5c789
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a9cddf3f8091115f7cd39999e8c52d87ead4af07
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112738"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044328"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Az Azure-beli virtuális hálózathoz a topológia megtekintése
 
 Ebből a cikkből megismerheti, hogyan erőforrás megtekintését egy Microsoft Azure virtuális hálózatban, és az erőforrásainak kapcsolatai. Ha például egy virtuális hálózatok alhálózatokat tartalmaznak. Alhálózatok erőforrások, például az Azure Virtual Machines (VM) tartalmaz. Virtuális gépek egy vagy több hálózati adapter rendelkeznek. Minden alhálózat egy hálózati biztonsági csoport és a egy útvonaltábla társítható rendelkezhet. A topológia funkció az Azure Network Watcher lehetővé teszi, hogy minden erőforrást egy virtuális hálózatban, az erőforrás megtekintését egy virtuális hálózatot és az erőforrásainak kapcsolatai lévő erőforrásokhoz tartozó.
 
 Használhatja a [az Azure portal](#azure-portal), a [Azure CLI-vel](#azure-cli), vagy [PowerShell](#powershell) egy topológiájának megtekintéséhez.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name = "azure-portal"></a>Topológia megtekintése – Azure portal
 
@@ -85,38 +87,38 @@ A fióknak rendelkeznie kell a szükséges [engedélyek](required-rbac-permissio
 
 A parancsok a következő lépések futtatható:
 - Az Azure Cloud shellben kiválasztásával **Kipróbálom** felső bármilyen parancs, jobb. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület, amely rendelkezik közös Azure-eszközök előre telepítve és konfigurálva a fiókjával való használat.
-- Által a számítógépről futtatja a Powershellt. Ha a számítógépről futtatja a PowerShell, a cikkben ismertetett lépések verziójának 5.7.0 megkövetelése és újabb verzióiban az AzureRm-modul. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- Által a számítógépről futtatja a Powershellt. Ha a számítógépről futtatja a PowerShell, ehhez a cikkhez az Azure PowerShell `Az` modul. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 A fióknak rendelkeznie kell a szükséges [engedélyek](required-rbac-permissions.md).
 
-1. Ha már rendelkezik egy network watcher-topológia a létrehozandó virtuális hálózatok ugyanabban a régióban, folytassa a 3. Hozzon létre egy erőforráscsoportot a network watchert tartalmazó [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup). A következő parancs létrehozza az erőforráscsoportot a *eastus* régió:
+1. Ha már rendelkezik egy network watcher-topológia a létrehozandó virtuális hálózatok ugyanabban a régióban, folytassa a 3. Hozzon létre egy erőforráscsoportot a network watchert tartalmazó [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). A következő parancs létrehozza az erőforráscsoportot a *eastus* régió:
 
     ```azurepowershell-interactive
-    New-AzureRmResourceGroup -Name NetworkWatcherRG -Location EastUS
+    New-AzResourceGroup -Name NetworkWatcherRG -Location EastUS
     ```
 
-2. A network watchert létrehozása [New-AzureRmNetworkWatcher](/powershell/module/azurerm.network/new-azurermnetworkwatcher). Az alábbi példa létrehoz egy network watcher az eastus régióban:
+2. A network watchert létrehozása [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher). Az alábbi példa létrehoz egy network watcher az eastus régióban:
 
     ```azurepowershell-interactive
-    New-AzureRmNetworkWatcher `
+    New-AzNetworkWatcher `
       -Name NetworkWatcher_eastus `
       -ResourceGroupName NetworkWatcherRG
     ```
 
-3. Egy Network Watcher-példány beolvasása [Get-AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher). Az alábbi példa lekéri a network watchert az USA keleti régiójában:
+3. Egy Network Watcher-példány beolvasása [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher). Az alábbi példa lekéri a network watchert az USA keleti régiójában:
 
     ```azurepowershell-interactive
-    $nw = Get-AzurermResource `
+    $nw = Get-AzResource `
       | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "EastUS" }
-    $networkWatcher = Get-AzureRmNetworkWatcher `
+    $networkWatcher = Get-AzNetworkWatcher `
       -Name $nw.Name `
       -ResourceGroupName $nw.ResourceGroupName
     ```
 
-4. A topológia a lekéréséhez [Get-AzureRmNetworkWatcherTopology](/powershell/module/azurerm.network/get-azurermnetworkwatchertopology). Az alábbi példa lekéri egy nevű erőforráscsoportot a virtuális hálózati topológia *MyResourceGroup*:
+4. A topológia a lekéréséhez [Get-AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology). Az alábbi példa lekéri egy nevű erőforráscsoportot a virtuális hálózati topológia *MyResourceGroup*:
 
     ```azurepowershell-interactive
-    Get-AzureRmNetworkWatcherTopology `
+    Get-AzNetworkWatcherTopology `
       -NetworkWatcher $networkWatcher `
       -TargetResourceGroupName MyResourceGroup
     ```

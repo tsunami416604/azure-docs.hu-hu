@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 9cc06e97730ac846e8aa42c2cee77dfe17be99bb
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: b22dd2dcf575362b96d150ef98148076f4ec631f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089646"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047585"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Biztonsági csoport nézet PowerShell használatával a virtuális gép biztonsági elemzése
 
@@ -30,9 +30,12 @@ ms.locfileid: "39089646"
 
 Biztonsági csoport nézet konfigurált és érvényben lévő hálózati biztonsági szabályok a virtuális gépek alkalmazott adja vissza. Ez a funkció akkor hasznos, naplózás, és diagnosztizálhatja hálózati biztonsági csoportok és annak érdekében, hogy folyamatban van a forgalom egy virtuális gépen konfigurált szabályok megfelelően engedélyezi vagy megtagadja. Ebben a cikkben bemutatjuk, hogyan kérheti le a konfigurált és érvényben lévő biztonsági szabályokat egy virtuális gépet PowerShell-lel
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ebben a forgatókönyvben futtatja a `Get-AzureRmNetworkWatcherSecurityGroupView` a biztonsági szabály adatok beolvasásához.
+Ebben a forgatókönyvben futtatja a `Get-AzNetworkWatcherSecurityGroupView` a biztonsági szabály adatok beolvasásához.
 
 Ez a forgatókönyv azt feltételezi, hogy már követte a lépéseket a [hozzon létre egy Network Watcher](network-watcher-create.md) egy Network Watcher létrehozásához.
 
@@ -42,19 +45,19 @@ Az ebben a cikkben ismertetett forgatókönyvben egy adott virtuális géphez ko
 
 ## <a name="retrieve-network-watcher"></a>A Network Watcher beolvasása
 
-Az első lépés, hogy a Network Watcher-példány beolvasása. Az megörökli a változót a `Get-AzureRmNetworkWatcherSecurityGroupView` parancsmagot.
+Az első lépés, hogy a Network Watcher-példány beolvasása. Az megörökli a változót a `Get-AzNetworkWatcherSecurityGroupView` parancsmagot.
 
 ```powershell
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 ```
 
 ## <a name="get-a-vm"></a>A virtuális gép lekérése
 
-A virtuális gépek futtatásához szükséges a `Get-AzureRmNetworkWatcherSecurityGroupView` parancsmag ellen. Az alábbi példa lekéri a Virtuálisgép-objektum.
+A virtuális gépek futtatásához szükséges a `Get-AzNetworkWatcherSecurityGroupView` parancsmag ellen. Az alábbi példa lekéri a Virtuálisgép-objektum.
 
 ```powershell
-$VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1
+$VM = Get-AzVM -ResourceGroupName testrg -Name testvm1
 ```
 
 ## <a name="retrieve-security-group-view"></a>Biztonsági csoport nézet beolvasása
@@ -62,7 +65,7 @@ $VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1
 A következő lépés, hogy a biztonsági csoport nézet eredmény beolvasása.
 
 ```powershell
-$secgroup = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
+$secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
 ```
 
 ## <a name="viewing-the-results"></a>Az eredmények megtekintése

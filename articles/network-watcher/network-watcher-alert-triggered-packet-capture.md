@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 71e71b417f12b58fc03c581826c0e5c2412e684b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c7bfd36bb4e36b10487edbbaa40421f067c9ed3e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876646"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048758"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Proaktív hálózatmonitorozás riasztások és az Azure Functions használata a csomagrögzítést
 
@@ -33,9 +33,12 @@ A Network watcherrel, riasztási és függvények a belül az Azure-ökosziszté
 
 ![Forgatókönyv][scenario]
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A legújabb [Azure PowerShell-lel](/powershell/azure/azurerm/install-azurerm-ps).
+* A legújabb [Azure PowerShell-lel](/powershell/azure/install-Az-ps).
 * A Network Watcher egy meglévő példányát. Ha még nem rendelkezik ilyennel, [a Network Watcher-példány létrehozása](network-watcher-create.md).
 * A Network Watcher ugyanabban a régióban egy meglévő virtuális gépet a [Windows bővítmény](../virtual-machines/windows/extensions-nwa.md) vagy [Linux virtuálisgép-bővítmény](../virtual-machines/linux/extensions-nwa.md).
 
@@ -74,7 +77,7 @@ Az első lépés, ha a riasztás feldolgozása és csomagrögzítés hozzon lét
 
     |**Beállítás** | **Érték** | **Részletek** |
     |---|---|---|
-    |**Alkalmazás neve**|PacketCaptureExample|A függvényalkalmazás nevére.|
+    |**App neve**|PacketCaptureExample|A függvényalkalmazás nevére.|
     |**Előfizetés**|[Az Ön előfizetése] Az előfizetés, amelynek a függvényalkalmazás létrehozásához.||
     |**Erőforráscsoport**|PacketCaptureRG|Az erőforráscsoport tartalmazza a függvényalkalmazást.|
     |**Szolgáltatási csomag**|Használatalapú csomag| A típusú tervezze meg a függvény alkalmazást használ. Lehetőségek a következők használat vagy az Azure App Service-csomag. |
@@ -89,7 +92,7 @@ Az első lépés, ha a riasztás feldolgozása és csomagrögzítés hozzon lét
     |---|---|---|
     |**Forgatókönyv**|Kísérleti|Forgatókönyv típusa|
     |**A függvény neve**|AlertPacketCapturePowerShell|A függvény neve|
-    |**Engedélyszint**|Függvény|A függvény a jogosultsági szint|
+    |**Authorization level (Engedélyszint)**|Függvény|A függvény a jogosultsági szint|
 
 ![Functions-példa][functions1]
 
@@ -105,16 +108,16 @@ Network Watcher PowerShell-parancsmagok használatához töltse fel a legújabb 
 1. A a legújabb Azure PowerShell-modulok telepítése a helyi gépén futtassa a következő PowerShell-parancsot:
 
     ```powershell
-    (Get-Module AzureRM.Network).Path
+    (Get-Module Az.Network).Path
     ```
 
     Ebben a példában biztosít az Azure PowerShell-modulok helyi elérési útja. Ezek a mappák egy későbbi lépésben használt. Az ebben a forgatókönyvben használt modulokra:
 
-   * AzureRM.Network
+   * Az.Network
 
-   * AzureRM.Profile
+   * Az.Accounts
 
-   * AzureRM.Resources
+   * Az.Resources
 
      ![PowerShell-mappák][functions5]
 
@@ -128,17 +131,17 @@ Network Watcher PowerShell-parancsmagok használatához töltse fel a legújabb 
 
     ![Mappa és annak almappáiban][functions3]
 
-    * AzureRM.Network
+    * Az.Network
 
-    * AzureRM.Profile
+    * Az.Accounts
 
-    * AzureRM.Resources
+    * Az.Resources
 
-1. Kattintson a jobb gombbal a **AzureRM.Network** almappát, és válassza ki **fájlok feltöltése**. 
+1. Kattintson a jobb gombbal a **Az.Network** almappát, és válassza ki **fájlok feltöltése**. 
 
-6. Nyissa meg az Azure-modulokat. A helyi **AzureRM.Network** mappát, válassza ki az összes fájl a mappában. Ezután kattintson az **OK** gombra. 
+6. Nyissa meg az Azure-modulokat. A helyi **Az.Network** mappát, válassza ki az összes fájl a mappában. Ezután kattintson az **OK** gombra. 
 
-7. Ismételje meg ezeket a lépéseket **AzureRM.Profile** és **AzureRM.Resources**.
+7. Ismételje meg ezeket a lépéseket **Az.Accounts** és **Az.Resources**.
 
     ![Fájlok feltöltése][functions6]
 
@@ -196,10 +199,10 @@ Az ügyfél-azonosító az Azure Active Directory-alkalmazás Alkalmazásazonos�
 1. Ha még nem rendelkezik az alkalmazás használ, futtassa az alábbi példa egy alkalmazás létrehozására.
 
     ```powershell
-    $app = New-AzureRmADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
-    New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
+    $app = New-AzADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
+    New-AzADServicePrincipal -ApplicationId $app.ApplicationId
     Start-Sleep 15
-    New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $app.ApplicationId
+    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $app.ApplicationId
     ```
 
    > [!NOTE]
@@ -218,7 +221,7 @@ Az ügyfél-azonosító az Azure Active Directory-alkalmazás Alkalmazásazonos�
 A Bérlőazonosító beszerzése futtassa a következő PowerShell-mintát:
 
 ```powershell
-(Get-AzureRmSubscription -SubscriptionName "<subscriptionName>").TenantId
+(Get-AzSubscription -SubscriptionName "<subscriptionName>").TenantId
 ```
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
@@ -266,9 +269,9 @@ Az alábbi példában PowerShell-kódot, amely a függvényben használható. Va
 
 ```powershell
             #Import Azure PowerShell modules required to make calls to Network Watcher
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Profile\AzureRM.Profile.psd1" -Global
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Network\AzureRM.Network.psd1" -Global
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Resources\AzureRM.Resources.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Accounts\Az.Accounts.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Network\Az.Network.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Resources\Az.Resources.psd1" -Global
 
             #Process alert request body
             $requestBody = Get-Content $req -Raw | ConvertFrom-Json
@@ -290,7 +293,7 @@ Az alábbi példában PowerShell-kódot, amely a függvényben használható. Va
             #Authentication
             $secpassword = $pw | ConvertTo-SecureString -Key (Get-Content $keypath)
             $credential = New-Object System.Management.Automation.PSCredential ($clientid, $secpassword)
-            Connect-AzureRmAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
+            Connect-AzAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
 
 
             #Get the VM that fired the alert
@@ -302,22 +305,22 @@ Az alábbi példában PowerShell-kódot, amely a függvényben használható. Va
                 Write-Output ("Resource Type:  {0}" -f $requestBody.context.resourceType)
 
                 #Get the Network Watcher in the VM's region
-                $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
-                $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+                $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
+                $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 
                 #Get existing packetCaptures
-                $packetCaptures = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
+                $packetCaptures = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
 
                 #Remove existing packet capture created by the function (if it exists)
                 $packetCaptures | %{if($_.Name -eq $packetCaptureName)
                 { 
-                    Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
+                    Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
                 }}
 
                 #Initiate packet capture on the VM that fired the alert
-                if ((Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
+                if ((Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
                     echo "Initiating Packet Capture"
-                    New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
+                    New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
                     Out-File -Encoding Ascii -FilePath $res -inputObject "Packet Capture created on ${requestBody.context.resourceID}"
                 }
             } 
@@ -346,7 +349,7 @@ Ugrás a meglévő virtuális gépet, és adja hozzá a riasztási szabályt. É
   |**Name (Név)**|TCP_Segments_Sent_Exceeded|A riasztási szabály neve.|
   |**Leírás**|TCP-szegmens küldött túllépte a határértéket|A riasztási szabály leírását.|
   |**Metrika**|Elküldött TCP-szegmens| A metrika a riasztást kiváltó használatára. |
-  |**a feltétel**|Nagyobb, mint| A feltétel a metrika értékeléséhez.|
+  |**Állapot**|Nagyobb, mint| A feltétel a metrika értékeléséhez.|
   |**Küszöbérték**|100| A riasztást kiváltó a mérőszám értéke. Ez az érték a környezetnek érvényes értékre kell állítani.|
   |**Időszak**|Az elmúlt öt percben| Meghatározza, hogy az időszak, amelyben a küszöbértéket, a metrika a keresett.|
   |**Webhook**|[a webhook URL-cím függvényalkalmazásból]| A webhook URL-CÍMÉT az előző lépésekben létrehozott függvényalkalmazás.|

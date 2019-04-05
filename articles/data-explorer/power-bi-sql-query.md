@@ -1,19 +1,18 @@
 ---
-title: 'Gyors útmutató: Adatok megjelenítése Power BI-ban egy SQL-lekérdezés használatával'
+title: 'Gyors útmutató: SQL-lekérdezést használja a Power bi-ban Azure adatkezelő adatainak megjelenítése'
 description: 'Ebben a rövid útmutató az adatok a Power bi-ban az a három lehetőség közül: egy Azure Data Explorer-fürtöt egy SQL-lekérdezést.'
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: f41bd1dcd354d75788569f5c1f24a50c604b5737
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 4a3a688adaae8fe66c336617cdd0a4807f16ec68
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756344"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045507"
 ---
 # <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Gyors útmutató: Adatok megjelenítése a Power bi-hoz az Azure Data Explorer-összekötő használatával
 
@@ -86,4 +85,4 @@ Ha már nincs szüksége a létrehozott jelentés ebben a rövid, törölje a Po
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Adatok megjelenítése Power BI-ban az importált lekérdezés használatával](power-bi-connector.md)
+> [Gyors útmutató: Adatok megjelenítése Power BI-ban az importált lekérdezés használatával](power-bi-connector.md)

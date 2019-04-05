@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 7490287a56a4cd1fe72e843e2666d171bb9b6729
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 52623183139be2b8ac6b12d3adca64e72de932d3
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665302"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050321"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Az Azure Resource Manager egy Service Fabric-fürt létrehozása 
 > [!div class="op_single_selector"]
@@ -34,6 +34,9 @@ Fürtbiztonság van beállítva, amikor a fürt első telepítést, és később
 
 Ha éles számítási feladatok futtatásához egy éles fürtöt hoz létre, javasoljuk, hogy első olvasási keresztül a [éles készültségi ellenőrzőlista](service-fabric-production-readiness-checklist.md).
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek 
 Ebben a cikkben a Service Fabric-RM powershell vagy az Azure CLI-modulok telepítéséhez használja egy fürt:
 
@@ -41,7 +44,7 @@ Ebben a cikkben a Service Fabric-RM powershell vagy az Azure CLI-modulok telepí
 * [Az Azure CLI 2.0-s vagy újabb verzió][azure-CLI]
 
 A dokumentációja a Service Fabric-modulok itt találja:
-* [AzureRM.ServiceFabric](https://docs.microsoft.com/powershell/module/azurerm.servicefabric)
+* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [az SF CLI modul](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -49,8 +52,8 @@ A dokumentációja a Service Fabric-modulok itt találja:
 Ebben a cikkben a parancsok egyikét futtatja, előtt először jelentkezzen be az Azure-bA.
 
 ```powershell
-Connect-AzureRmAccount
-Set-AzureRmContext -SubscriptionId <subscriptionId>
+Connect-AzAccount
+Set-AzContext -SubscriptionId <subscriptionId>
 ```
 
 ```azurecli
@@ -71,7 +74,7 @@ A használt sablon érhető el a [Azure Service Fabric-sablonminták: windows-sa
 A következő paranccsal hozhat létre bármelyik Windows vagy Linux-fürtön, adja meg az operációs rendszer ennek megfelelően kell. A PowerShell és CLI-parancsok is a tanúsítványt a megadott kimeneti *CertificateOutputFolder*, azonban győződjön meg arról, hogy tanúsítványmappa már létrehozott. A parancs a többi paramétert, valamint a VM-Termékváltozatok például vesz igénybe.
 
 > [!NOTE]
-> A következő PowerShell-parancs csak működik az Azure Resource Manager PowerShell-lel verzió > 6.1-es verzióját. Az Azure Resource Manager PowerShell-verzió aktuális verziójának ellenőrzéséhez futtassa a következő PowerShell-parancsot: "Get-Module AzureRM". Hajtsa végre a [ezt a hivatkozást](/powershell/azure/azurerm/install-azurerm-ps) frissítése az Azure Resource Manager PowerShell-verzió. 
+> A következő PowerShell-parancs csak működik az Azure PowerShell-lel `Az` modul. Az Azure Resource Manager PowerShell-verzió aktuális verziójának ellenőrzéséhez futtassa a következő PowerShell-parancsot: "Get-Module Az". Hajtsa végre a [ezt a hivatkozást](/powershell/azure/install-Az-ps) frissítése az Azure Resource Manager PowerShell-verzió. 
 >
 >
 
@@ -89,7 +92,7 @@ $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 $certOutputFolder="c:\certificates"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser
 ```
 
 A fürt Azure CLI-vel üzembe helyezéséhez:
@@ -143,7 +146,7 @@ $certOutputFolder="c:\certificates"
 $parameterFilePath="c:\mytemplates\mytemplateparm.json"
 $templateFilePath="c:\mytemplates\mytemplate.json"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
 A fürt Azure CLI-vel üzembe helyezéséhez:
@@ -184,7 +187,7 @@ $vmpassword=("Password!4321" | ConvertTo-SecureString -AsPlainText -Force)
 $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
 ```
 
 A fürt Azure CLI-vel üzembe helyezéséhez:
@@ -237,7 +240,7 @@ $parameterFilePath="c:\mytemplates\mytemplateparm.json"
 $templateFilePath="c:\mytemplates\mytemplate.json"
 $certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword $certPassword
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword $certPassword
 ```
 
 A fürt Azure CLI-vel üzembe helyezéséhez:
@@ -264,13 +267,13 @@ Egy meglévő key vault használata esetén a key vaultban kell [engedélyezve v
 A fürt PowerShell-lel üzembe helyezéséhez:
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 $parameterFilePath="c:\mytemplates\mytemplate.json"
 $templateFilePath="c:\mytemplates\mytemplateparm.json"
 $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
 A fürt Azure CLI-vel üzembe helyezéséhez:
@@ -292,7 +295,7 @@ Ezen a ponton rendelkezik egy Azure-ban futó biztonságos fürt. Ezután [csatl
 A JSON-szintaxist és egy sablon tulajdonságait: [Microsoft.ServiceFabric/clusters sablonreferenciája](/azure/templates/microsoft.servicefabric/clusters).
 
 <!-- Links -->
-[azure-powershell]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
+[azure-powershell]:https://docs.microsoft.com/powershell/azure/install-Az-ps
 [azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-create-template.md

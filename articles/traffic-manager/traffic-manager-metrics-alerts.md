@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: 0bce0d407246ceab05c3951dc976884dd6f15b08
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c251cc851b34f708a2150d3b0444f235d2bc50d6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200190"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045304"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>A TRAFFIC Manager-mérőszámok és riasztások
 
@@ -58,7 +58,7 @@ Ez a metrika jeleníthetnek meg, vagy a mérőszámok (3. ábra) állapotát jel
 
 *4. ábra: Végpont állapota metrikák megtekintését felosztása*
 
-Használhatja fel ezeket a metrikákat keresztül [Azure Monitor szolgáltatásban](../azure-monitor/platform/metrics-supported.md)a portálon [REST API-val](https://docs.microsoft.com/rest/api/monitor/), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/monitor), és [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azurerm.insights), vagy – Traffic Manager portálja metrikáit ismertető szakaszban.
+Használhatja fel ezeket a metrikákat keresztül [Azure Monitor szolgáltatásban](../azure-monitor/platform/metrics-supported.md)a portálon [REST API-val](https://docs.microsoft.com/rest/api/monitor/), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/monitor), és [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/az.applicationinsights), vagy – Traffic Manager portálja metrikáit ismertető szakaszban.
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Riasztások a Traffic Manager-metrikák
 Feldolgozása és a Traffic Managerből metrikák megjelenítése mellett az Azure Monitor segítségével az ügyfelek konfigurálása, valamint ezek a metrikák tartozó riasztások fogadása. Feltételeknek kell teljesülniük az ezeket a metrikákat egy riasztás történik, gyakoriságát. Ezek a feltételek figyelni szeretne, és hogyan a riasztások kell küldeni, választhat. További információkért lásd: [Azure Monitor riasztásainak dokumentáció](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).

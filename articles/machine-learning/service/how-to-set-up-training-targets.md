@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec509fc8957d20f95123e9f0f645c3e9b6e832f2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d75deaca7ce052d40274f1f57a8f6603a3ecdfd2
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122369"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046155"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak
 
@@ -44,8 +44,8 @@ Az Azure Machine Learning szolgáltatás különböző támogatással rendelkezi
 |[Az Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
 |[Távoli virtuális Gépen](#vm) | ✓ | ✓ | ✓ | ✓ |
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
-|[Az Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Az Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 **Célok több betanítási feladatokhoz felhasználható számítási**. Például ha csatlakoztat egy távoli virtuális Gépen a munkaterülethez, felhasználhatja azt több feladat esetében.
@@ -92,7 +92,7 @@ Használja a számítási céljainak konfigurálhatja ezeket az alábbi szakaszo
 * [Helyi számítógép](#local)
 * [Az Azure Machine Learning Compute](#amlcompute)
 * [Távoli virtuális gépek](#vm)
-* [Az Azure HDInsight](#hdinsight)
+* [Azure HDInsight](#hdinsight)
 
 
 ### <a id="local"></a>Helyi számítógép
@@ -118,7 +118,10 @@ Az Azure Machine Learning számítási környezetet hozhat létre, ha ütemez eg
 
 #### <a name="run-based-creation"></a>Futtatás-alapú létrehozása
 
-Hozhat létre az Azure Machine Learning Compute számítási célként futási időben. A számítási automatikusan létrejön a futtatáskor. A fürt skálázását követve rugalmasan méretezhető száma legfeljebb **max_nodes** , amelyeket a futtatási konfiguráció. A Futtatás befejeződése után a rendszer automatikusan törli a számítást.
+Hozhat létre az Azure Machine Learning Compute számítási célként futási időben. A számítási automatikusan létrejön a futtatáskor. A Futtatás befejeződése után a rendszer automatikusan törli a számítást. 
+
+> [!NOTE]
+> Adja meg a használandó csomópontok maximális számát, hogy így rendszerint állíthatja `node_count` a csomópontok számát. Jelenleg (04/04/2019) egy hiba, amely megakadályozza a működését. Áthidaló megoldásként használja a `amlcompute._cluster_max_node_count` tulajdonság a futtatási konfiguráció. Például: `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > Futtatás-alapú létrehozása az Azure Machine Learning compute jelenleg előzetes verzióban érhető el. Ne használja a run-alapú létrehozása, ha automatizált hiperparaméter finomhangolása használja, vagy az automatizált a machine learning. Hiperparaméter finomhangolása vagy automatizált a machine learning használatához hozzon létre egy [állandó számítási](#persistent) cél helyette.
@@ -415,8 +418,8 @@ Vagy használhatja:
 ## <a name="notebook-examples"></a>A jegyzetfüzet-példák
 
 Tekintse meg ezeket a notebookokat-betanítás a különböző számítási célnak példákat:
-* [útmutatóval-to-használat – azureml/képzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [oktatóanyagok és img-besorolás-1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [how-to-use-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

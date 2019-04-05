@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/03/2019
-ms.openlocfilehash: 5971692b3e6447bc790b2e34cf84eae66979f7f5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.lastreviewed: 04/05/2019
+ms.openlocfilehash: befb5370dce5b9b7617370f0b14d471dfeb35437
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862080"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051682"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 frissítése
 
@@ -64,6 +64,8 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
     ```powershell
     Test-AzureStack -Include AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
+
+  Ha a `AzsControlPlane` paraméter megtalálható mikor **Test-AzureStack** van hajtja végre, látni fogja a következő hiba a **Test-AzureStack** kimenete: **SIKERTELEN az Azure Stack vezérlési sík webhelyek összefoglalás**. Ez a hiba nyugodtan figyelmen kívül hagyhatja.
 
 - Ha az Azure Stack a System Center Operations Manager (SCOM) által felügyelt, ügyeljen arra, hogy frissítse a [felügyeleti csomag a Microsoft Azure Stackhez készült](https://www.microsoft.com/download/details.aspx?id=55184) verzióra 1.0.3.11 1902 alkalmazása előtt.
 
@@ -200,7 +202,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 <!-- ### Health and monitoring -->
 
-### <a name="compute"></a>Számítás
+### <a name="compute"></a>Compute
 
 - Amikor egy új Windows virtuális gép (VM) hoz létre, a következő hiba jelenhet meg:
 
@@ -221,7 +223,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 - Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy jelentkezzen be az SSH-kulcsok használata. Áthidaló megoldásként használja a Linux-bővítményt a Virtuálisgép-hozzáférés SSH-kulcsok megvalósításához a kiépítés után, vagy jelszóalapú hitelesítés használatára.
 
-### <a name="networking"></a>Hálózatkezelés  
+### <a name="networking"></a>Hálózat  
 
 <!-- 3239127 - IS, ASDK -->
 - Az Azure Stack portálon Ha módosít egy statikus IP-címet az IP-konfiguráció a Virtuálisgép-példányhoz csatolt hálózati adapterhez kötött látni fogja egy figyelmeztető üzenet arról, hogy 

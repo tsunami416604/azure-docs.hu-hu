@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: ddfd8ce14ca20c7094fa927aeafc36ae53271499
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 2fdea1f088dd6eabdf7d72342c837d976133a1bc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665508"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046181"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>A Service Fabric fürt Resource Manager-sablon létrehozása
 
@@ -28,6 +28,9 @@ Egy [Azure Service Fabric-fürt](service-fabric-deploy-anywhere.md) mikroszolgá
 Fürtbiztonság van beállítva, amikor a fürt első be van állítva, és később nem módosítható. A fürt beállítása előtt olvassa el a [Service Fabric-fürtök biztonsági forgatókönyveit][service-fabric-cluster-security]. Az Azure-ban a Service Fabric használ x509 tanúsítványt a biztonságos a fürt és a végpontok, az ügyfelek hitelesítése, és adatok titkosításához. Az Azure Active Directory emellett javasoljuk, hogy a biztonságos hozzáférés a felügyeleti végpontok. Az Azure AD-bérlőt, és a felhasználók a fürt létrehozása előtt létre kell hozni.  További információkért olvassa el [állítsa be az Azure AD-ügyfelek hitelesítésére](service-fabric-cluster-creation-setup-aad.md).
 
 Éles számítási feladatok futtatásához egy fürt üzembe helyezése előtt ügyeljen arra, hogy először olvassa el a [éles készültségi ellenőrzőlista](service-fabric-production-readiness-checklist.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-the-resource-manager-template"></a>A Resource Manager-sablon létrehozása
 Mintául szolgáló Resource Manager-sablonok érhetők el a [Azure-minták a Githubon](https://github.com/Azure-Samples/service-fabric-cluster-templates). Ezek a sablonok fürtsablonhoz kiindulási pontként használható.
@@ -242,13 +245,13 @@ Az erőforrás-kezelő modulok nem tudnak létrehozni az Azure ad-ben a konfigur
 A következő PowerShell-parancs használatával a Resource Manager-sablon tesztelés alkalmazásparaméter-fájlt:
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
+Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
 Abban az esetben problémákat, és rejtélyes üzeneteket, majd a "-Debug" beállítás.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
+Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 
 A következő diagram azt ábrázolja, ahol a key vault és az Azure AD konfigurálása elférnek a Resource Manager-sablon.

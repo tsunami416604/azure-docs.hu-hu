@@ -1,19 +1,18 @@
 ---
 title: 'Gyors útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)'
 description: Ez a rövid útmutatóban megismerheti, hogyan (betöltés) adatok betöltését az Azure Data Explorer Standard .NET SDK használatával.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/18/2018
-ms.openlocfilehash: 327ab46b01e15b77e675e052dbfe8b3453b566a6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6a068c45a13bd45a09ed51fd154b5842938e0c5e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757119"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044668"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Gyors útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)
 
@@ -23,7 +22,7 @@ Az Azure Data Explorer (ADX) az adatok gyors és hatékonyan méretezhető explo
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-* [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
+* [Egy teszt fürt és adatbázis](create-cluster-database-portal.md)
 
 ## <a name="install-the-ingest-library"></a>A betöltés erőforrástár telepítése
 

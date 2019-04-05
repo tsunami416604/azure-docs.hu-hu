@@ -7,13 +7,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
-ms.author: robin.shahan
-ms.openlocfilehash: 04f3f05c8c18a3356c282144cda62d1f980362fe
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.author: robinsh
+ms.openlocfilehash: bd7cc37b8fc81fc9d4109826743f2243913d0604
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008441"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047279"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Konfigurálja az IoT Hub fájlt tölt fel az Azure portal használatával
 
@@ -46,7 +46,7 @@ Az IoT Hub a fájl feltöltése képességeivel kapcsolatos további informáci�
 Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
 
 * [IoT-eszközök tömeges felügyelete](iot-hub-bulk-identity-mgmt.md)
-* [Az IoT Hub-metrikák](iot-hub-metrics.md)
+* [IoT Hub metrics](iot-hub-metrics.md)
 * [Műveletek figyelése](iot-hub-operations-monitoring.md)
 
 Részletesebb megismerése az IoT Hub képességeit, tekintse meg:

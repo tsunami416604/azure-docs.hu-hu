@@ -1,5 +1,5 @@
 ---
-title: Modell-e
+title: Modell értelmezhetősége
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan használható az Azure Machine Learning e SDK annak magyarázata, hogy miért a modell előrejelzéseket tesz. Használat során betanítási vagy következtetési tudni, hogy a modell előrejelzéseket tesz.
 services: machine-learning
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 03/27/2019
-ms.openlocfilehash: 1cd5f48e8e0e74dfa04465993246e5d68840a783
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.date: 04/04/2019
+ms.openlocfilehash: f72923b80751f16ece128ced209679bbc325226c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58919725"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051801"
 ---
 # <a name="azure-machine-learning-interpretability-sdk"></a>Az Azure Machine Learning-e SDK
 
-Ismerje meg, hogyan annak magyarázata, hogy miért a modell érkezik-e az előrejelzés teszi. Az Azure Machine Learning e SDK a következőket teheti a modellt, amely a következő okokból fontos ismertetik:
+Ebben a cikkben, megtudhatja, hogyan annak magyarázata, hogy miért a modell készült-e az előrejelzés elavulttá tette az Azure Machine Learning e SDK használatával. A modell azt ismertetik, hogy fontos a következő okok miatt:
 
 * Ügyfelek és az érdekelt felekkel szeretné tudni, hogy **nyugodtan megbízhatják az előrejelzéseket Ha a modell lehetővé teszi a**.
 * Értenie az adatokhoz, mint szeretné megismerni **lekérdezése a modell a háttérismeretek**. Szükség lehet tájékozott döntést az eszközök **a modell fejlesztéséhez**.
@@ -27,16 +27,10 @@ Ismerje meg, hogyan annak magyarázata, hogy miért a modell érkezik-e az előr
 
 Machine learning-e fontos gépi tanulási fejlesztési ciklus két fázisban történik: **képzési** idő és **következtetési** idő:
 
-* Során **képzési**: Modell tervezők és értékelők szükséges az érdekelt felek hozhat létre megbízhatósági modell kimenete ismertetik e eszközöket. E eszközök lehetővé teszi, hogy a modell debug:
-
-    * Egyezik annak viselkedését a célok és célkitűzések?
-    * Van az alábbiak torzítatlan azt?
-
+* Során **képzési**: Modell tervezők és értékelők szükséges az érdekelt felek hozhat létre megbízhatósági modell kimenete ismertetik e eszközöket. Is szükségük van a modellbe insights, hogy a modell hibakeresése és megfontoltabb döntéseket hozhat a, hogy a viselkedés megegyezik-e a célokat is. Végül biztosítani kell, hogy a modell nem van-e torzítatlan.
 * Során **következtetési**: Előrejelzés kell lennie a személyeknek a modellt használó explainable. Például, miért volt a modell a törlesztés kölcsön megtagadása, vagy előre jelezni, hogy egy befektetési portfólió sorozatéhoz nagyobb eséllyel?
 
-Az Azure Machine Learning e SDK technológiák magában foglalja a Microsoft által kifejlesztett és bevált külső gyártótól származó kódtárakat (például Alakzatadatok és SÁRGÁSZÖLD). Közös API-t biztosít a beépített kódtárak között, és az Azure Machine Learning services szolgáltatásainak használatával. 
-
-Ez az SDK használatával, machine learning-modellek is ismertetik **globálisan az összes adat**, vagy **helyileg, egy adott adatpontot** a legmodernebb technológiák használatával egy könnyen használható és méretezhető módon.
+Az Azure Machine Learning e SDK technológiák magában foglalja a Microsoft által kifejlesztett és bevált külső gyártótól származó kódtárakat (például Alakzatadatok és SÁRGÁSZÖLD). Az SDK-t hoz létre egy közös API-t a beépített kódtárak között, és integrálja az Azure Machine Learning-szolgáltatások. Ez az SDK használatával, machine learning-modellek is ismertetik **globálisan az összes adat**, vagy **helyileg, egy adott adatpontot** a legmodernebb technológiák használatával egy könnyen használható és méretezhető módon.
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
@@ -48,11 +42,7 @@ Az Azure Machine Learning-e meg, hogyan modell lehetővé teszi az előrejelzés
 
 * Globális vagy helyi relatív funkció fontosság
 * Globális vagy helyi szolgáltatás és az előrejelzési kapcsolat
-* Interaktív vizualizációkat:
-
-    * Előrejelzések
-    * A szolgáltatás és az előrejelzési kapcsolatok
-    * Relatív funkció fontossági értékek helyileg és globálisan
+* Interaktív vizualizációkat bemutató előrejelzéseket, a szolgáltatás és az előrejelzési kapcsolat, és a relatív funkció fontossági értékek helyileg és globálisan
 
 ## <a name="architecture"></a>Architektúra
 
@@ -114,11 +104,7 @@ A magyarázat functions fogadja el a modellek és a folyamatok bemenetként. A m
 
 ### <a name="local-and-remote-compute-target"></a>Helyi és távoli számítási célnak
 
-A Machine Learning e SDK használata mindkét helyi és távoli számítási célokhoz tervezték. 
-
-* Ha a Futtatás **helyileg**, az SDK nem tud kapcsolatba lépni bármely Azure-szolgáltatást.
-
-* Ha a Futtatás **távolról**, a Futtatás kapcsolatos információkat az Azure Machine Learning futtassa-előzmények szolgáltatások be van jelentkezve. Ezeket az adatokat a rendszer naplózza, ha jelentéseket és vizualizációkat a magyarázat érhetők el azonnal az Azure Machine Learning munkaterület portál felhasználói elemzés céljából.
+A Machine Learning e SDK használata mindkét helyi és távoli számítási célokhoz tervezték. Ha helyileg futtatja, az SDK-függvények nem kapcsolatba fog lépni bármely Azure-szolgáltatást. MAGYARÁZAT távolról futtatni az Azure Machine Learning COMPUTE számítási, és a magyarázatot info jelentkezzen be az Azure Machine Learning előzmények szolgáltatások futtatása. Ezeket az adatokat a rendszer naplózza, ha jelentéseket és vizualizációkat a magyarázat érhetők el azonnal az Azure Machine Learning munkaterület portál felhasználói elemzés céljából.
 
 ## <a name="train-and-explain-locally"></a>Betanítása és helyileg magyarázata
 
@@ -138,9 +124,7 @@ A Machine Learning e SDK használata mindkét helyi és távoli számítási cé
     model = clf.fit(x_train, y_train)
     ```
 
-2. Hívja meg a ismertető. Az ismertető objektum hárítható el, adja át a modellt, és a betanítási adatok. Igény szerint lehetőségeket adhat át. Besorolás használata esetén adja át a kimeneti osztály nevét.
-
-    Az alábbi példa bemutatja, hogyan hozzon létre egy ismertető objektum [TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py), [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py), és `LimeExplainer` helyileg. `TabularExplainer` hívja a három explainers alatti egyik (`TreeExplainer`, `DeepExplainer`, vagy `KernelExplainer`), és automatikusan a legmegfelelőbbhöz az használati esetekhez jelöl. Ugyanakkor a három alapul szolgáló explainers mindegyike közvetlenül hívja.
+2. Hívja meg a ismertető: Ismertető objektum kezdeményezni, teljesítenie kell a a modell, a betanítási adatok, a Funkciók, (nem kötelező), és kimeneti osztályneveket (ha besorolási), a ismertető. Így egy ismertető objektum használatával példányosítható [TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py), [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py), és `LimeExplainer` helyileg. `TabularExplainer` hívja a három explainers alatti egyik (`TreeExplainer`, `DeepExplainer`, vagy `KernelExplainer`), és automatikusan a legmegfelelőbbhöz az használati esetekhez jelöl. Ugyanakkor a három alapul szolgáló explainers mindegyike közvetlenül hívja.
 
     ```python
     from azureml.explain.model.tabular_explainer import TabularExplainer
@@ -213,7 +197,7 @@ Az Azure Machine Learning szolgáltatás támogatja a különböző számítási
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-2. A betanítási Futtatás elküldéséhez kövesse a lépéseket a [állítsa be a modell betanítása és számítási célnak](how-to-set-up-training-targets.md#amlcompute) cikk. A lépések segítségével hozzon létre egy Azure Machine Learning COMPUTE számítási célt, és ezután küldenie a betanítási Futtatás.
+2. Kövesse az [állítsa be a modell betanítása és számítási célnak](how-to-set-up-training-targets.md#amlcompute) hogyan állíthatja be az Azure Machine Learning COMPUTE számítási, a számítási célnak, és küldje el a betanítási Futtatás.
 
 3. Töltse le a helyi Jupyter notebook a magyarázatot. 
 

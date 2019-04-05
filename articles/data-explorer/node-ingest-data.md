@@ -1,19 +1,18 @@
 ---
 title: 'Gyors útmutató: Az Azure Data Explorer csomópontja library használata az adatok betöltése'
 description: Ennek a rövid útmutatónak a segítségével megtanulhatja, hogyan tölthet be adatokat az Azure Data Explorerbe a Node.js használatával.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
-ms.openlocfilehash: 0a23c171d99d46eb29dd589867ce70ca2739ff29
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d530ed3710a3406e5cd8115d615e91d5056a5f8c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756443"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047653"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Gyors útmutató: Az Azure Data Explorer csomópontja library használata az adatok betöltése
 
@@ -25,7 +24,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A rövid útmutató elvégzéséhez az Azure-előfizetés mellett szüksége lesz a következőkre is:
 
-* [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
+* [Egy teszt fürt és adatbázis](create-cluster-database-portal.md)
 
 * A fejlesztői számítógépen telepített [Node.js](https://nodejs.org/en/download/)
 

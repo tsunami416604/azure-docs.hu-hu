@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: d259fd5fc8c60837c6b6110eb751360227d70836
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d685b06b95af42f07449cc84e70220dd1a4afa9f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338428"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051784"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Az Azure SQL Database Azure Stream Analytics-kimenet
 
@@ -29,7 +29,7 @@ Az alábbiakban az egyes szolgáltatásban, amelyekkel javíthatja a megoldás t
 - **Particionálás öröklése** – Ez az SQL kimeneti konfigurációs beállítás lehetővé teszi, hogy örökli az előző lekérdezés lépés vagy a bemeneti particionálási sémát. A beállítás engedélyezve van, a lemezalapú táblák írása, és a egy [teljes párhuzamos](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) a feladat, topológia várt jobb termékváltozatokat. A particionálás már automatikusan történik, számos más [kimenete](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). Ezzel a beállítással végrehajtott tömeges Beszúrások a tábla zárolása (TABLOCK) is letiltja.
 
 > [!NOTE] 
-> Ha több mint 8 bemeneti partíció, örökli a particionálási séma bemeneti adatok nem feltétlenül megfelelő választás. Ez a felső határ figyelhető meg egyetlen identitás oszlopa és a egy fürtözött indexet tartalmazó táblán. A séma- és az indexek választás alapján a megfigyelések eltérőek lehetnek.
+> Ha több mint 8 bemeneti partíció, örökli a particionálási séma bemeneti adatok nem feltétlenül megfelelő választás. Ez a felső határ figyelhető meg egyetlen identitás oszlopa és a egy fürtözött indexet tartalmazó táblán. Ebben az esetben érdemes lehet [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8 az lekérdezésekben, explicit módon adja meg a kimeneti írók számát. A séma- és az indexek választás alapján a megfigyelések eltérőek lehetnek.
 
 - **Kötegméret** – SQL kimeneti konfiguráció lehetővé teszi, hogy adja meg a Köteg maximális mérete egy Azure Stream Analytics SQL kimeneti jellegét a céloldali tábla/számítási feladatok alapján. A köteg méretét kötelező minden tömeges küldött rekordok maximális száma helyezze be a tranzakciót. Fürtözött oszlopcentrikus indexek, a batch-méretek körül [100 ezer](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) lehetővé teszik a további ezerszer minimális naplózás és optimalizálásokat zárolását. A lemezalapú táblák 10 ezer (alapértelmezett), vagy alacsonyabb lehet a megoldás optimális magasabb köteg méretek kezdeményezheti a zárolás eszkalációs tömeges Beszúrások során.
 

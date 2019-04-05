@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 3dd2518c23f2cd323d7c3b2b46465e4144c1ba1a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f75236c826584d742fe3163a2fdac29c4030bf66
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665321"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045798"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Gyakori kérdések a Service Fabric
 
 Nincsenek számos összetevővel kapcsolatos gyakori kérdésekre mi a Service Fabric képességeit és hogyan kell használni. Ez a dokumentum ismerteti ezeket a gyakori kérdéseket és a válaszok.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cluster-setup-and-management"></a>Fürt beállítása és kezelése
 
@@ -133,7 +136,7 @@ Nem. Alacsony prioritású virtuális gépek nem támogatottak.
 Azt jelenti, hogy az alkalmazás hitelesítéséhez a KeyVault hitelesítő adatok beszerzése a következők:
 
 A. Az alkalmazások létrehozási/csomagolási feladat során kérje le a tanúsítványt az SF alkalmazás adatok csomagba, és használja ezt a KeyVault hitelesítésre.
-B. Virtuálisgép-méretezési csoport beállítása engedélyezve van az MSI-gazdagépek, egy egyszerű PowerShell SetupEntryPoint SF alkalmazásához be is fejleszthet [egy hozzáférési jogkivonatot az MSI-végpontról](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), majd [beolvasni a titkos kulcsokat a KeyVault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret)
+B. Virtuálisgép-méretezési csoport beállítása engedélyezve van az MSI-gazdagépek, egy egyszerű PowerShell SetupEntryPoint SF alkalmazásához be is fejleszthet [egy hozzáférési jogkivonatot az MSI-végpontról](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), majd [beolvasni a titkos kulcsokat a KeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzureKeyVaultSecret)
 
 ## <a name="application-design"></a>Alkalmazás-tervezés
 
@@ -189,4 +192,4 @@ Kövesse a [Service Fabric blog](https://blogs.msdn.microsoft.com/azureservicefa
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg [alapvető fogalmait. a Service Fabric](service-fabric-technical-overview.md) és [ajánlott eljárások](service-fabric-best-practices-overview.md)
+Ismerje meg [alapvető fogalmait. a Service Fabric](service-fabric-technical-overview.md) és [ajánlott eljárások](service-fabric-best-practices-overview.md) Fabric concepts](service-fabric-technical-overview.md) jég és [ajánlott eljárások](service-fabric-best-practices-overview.md)

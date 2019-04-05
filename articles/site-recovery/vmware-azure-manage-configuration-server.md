@@ -7,16 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
-ms.openlocfilehash: 93e05390d28b9e9998d84935417121696d2963cc
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c23f3ec9c85bb3997380d83c097f2690b91c1f4f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877227"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049697"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>A VMware virtuális gépek vészhelyreállítására használt konfigurációs kiszolgáló kezelése
 
 Beállította egy helyszíni konfigurációs kiszolgálót használatakor [Azure Site Recovery](site-recovery-overview.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA. A konfigurációs kiszolgáló közötti kommunikáció koordinálja a helyszíni VMware és az Azure és felügyeli az adatreplikációt. Ez a cikk összefoglalja a gyakori feladatok kezeléséhez a konfigurációs kiszolgáló telepítése után.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="access-configuration-server"></a>Konfigurációs kiszolgáló
 
@@ -234,28 +237,28 @@ ProxyPassword="Password"
 
 Szükség esetén törölheti a konfigurációs kiszolgáló PowerShell-lel.
 
-1. [Telepítés](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) az Azure PowerShell modult.
+1. [Telepítés](https://docs.microsoft.com/powershell/azure/install-Az-ps) az Azure PowerShell modult.
 2. Jelentkezzen be az Azure-fiókjába a következő paranccsal:
 
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 3. Válassza ki a tároló előfizetését.
 
-     `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
+     `Get-AzSubscription –SubscriptionName <your subscription name> | Select-AzSubscription`
 3.  Állítsa be a tárolási környezet.
 
     ```
-    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
-    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+    $vault = Get-AzRecoveryServicesVault -Name <name of your vault>
+    Set-AzSiteRecoveryVaultSettings -ARSVault $vault
     ```
 4. A konfigurációs kiszolgáló lekéréséhez.
 
-    `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
+    `$fabric = Get-AzSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. A konfigurációs kiszolgáló törlése.
 
-    `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force]`
+    `Remove-AzSiteRecoveryFabric -Fabric $fabric [-Force]`
 
 > [!NOTE]
-> Használhatja a **-Force** kényszerített törlése a konfigurációs kiszolgáló, a Remove-AzureRmSiteRecoveryFabric lehetőséget.
+> Használhatja a **-Force** kényszerített törlése a konfigurációs kiszolgáló, a Remove-AzSiteRecoveryFabric lehetőséget.
 
 ## <a name="generate-configuration-server-passphrase"></a>Konfigurációs kiszolgáló hozzáférési kód létrehozása
 

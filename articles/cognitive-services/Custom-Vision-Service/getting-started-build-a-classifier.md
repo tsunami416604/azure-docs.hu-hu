@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 78ee24280600d336d394819d33762d8cf6278858
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: d0f0f3b120187a7538989f219876a8c10569a98e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891480"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051472"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>A Custom Vision besorolás létrehozása
 
@@ -56,9 +56,8 @@ A böngészőben navigáljon a [Custom Vision weblap](https://customvision.ai) v
     |__Élelmiszer__|Optimalizált csészék fényképeket, látnák őket egy étterem menüben. Ha szeretné besorolni különálló vagy zöldségek fényképek, használja az élelmiszer-tartomány.|
     |__Arcrész__|Könnyen felismerhető névre arcrész természetes és mesterséges optimalizálva. Ez a tartomány akkor működik a legjobban, ha a környezet a fénykép fókuszjelzőknek jól láthatóknak. Ez a tartomány működik, akkor is, ha a környezet némileg fedhetik személyek takarja.|
     |__Kiskereskedelem__|Optimalizált rendszerképeket, amelyeket egy vásárlási katalógus vagy a vásárlási webhelyén találhatók. Ha azt szeretné, hogy nagy pontosságú Írisz ruha pants és ing között, használja ezt a tartományt.|
-    |__Felnőtt tartalom__|Optimalizált pontosabb meghatározásához a felnőtt tartalom, és nem felnőtt tartalom. Például ha azt szeretné, lemezképek emberek fürdés csomagok blokkolására, ebben a tartományban lehetővé teszi egyéni tartalombesoroló létrehozása valósítható meg.|
     |__Kompakt tartományok__| A korlátozások a mobileszközökön a valós idejű besorolás optimalizálva. A modellek kompakt tartományok által létrehozott helyi futtatásához exportálhatók.|
-    
+
 1. Végül válassza __Create project__.
 
 ## <a name="choose-training-images"></a>Betanító kép kiválasztása

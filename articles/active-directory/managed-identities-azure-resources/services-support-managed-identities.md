@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5592ee7f3c4b5f55785100ceff09659aa437cb6
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d524f5f58e7381dd89f36c5d2821e6911ed9ec15
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578577"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045457"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitást támogató szolgáltatások
 
@@ -40,7 +40,7 @@ Tekintse meg az alábbi lista a felügyelt identitás konfigurálása az Azure V
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Az Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
+- [Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Az Azure Virtual Machine Scale Sets
@@ -55,7 +55,7 @@ Tekintse meg az alábbi lista a felügyelt identitás konfigurálása az Azure V
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Az Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
+- [Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
@@ -177,7 +177,7 @@ Tekintse meg az alábbi lista az Azure Resource Manager-hozzáférés konfigurá
 | Azure Germany |  `https://vault.microsoftazure.de` | Elérhető |
 | Azure China 21Vianet | `https://vault.azure.cn` | Elérhető |
 
-## <a name="azure-data-lake"></a>Azure Data Lake 
+### <a name="azure-data-lake"></a>Azure Data Lake 
 
 | Felhő | Erőforrás-azonosító | status |
 |--------|------------|--------|
@@ -186,7 +186,7 @@ Tekintse meg az alábbi lista az Azure Resource Manager-hozzáférés konfigurá
 | Azure Germany |   | Nincs |
 | Azure China 21Vianet |  | Nincs |
 
-## <a name="azure-sql"></a>Azure SQL 
+### <a name="azure-sql"></a>Azure SQL 
 
 | Felhő | Erőforrás-azonosító | status |
 |--------|------------|--------|
@@ -195,7 +195,7 @@ Tekintse meg az alábbi lista az Azure Resource Manager-hozzáférés konfigurá
 | Azure Germany | `https://database.cloudapi.de/` | Elérhető |
 | Azure China 21Vianet | `https://database.chinacloudapi.cn/` | Elérhető |
 
-## <a name="azure-event-hubs"></a>Azure Event Hubs
+### <a name="azure-event-hubs"></a>Azure Event Hubs
 
 | Felhő | Erőforrás-azonosító | status |
 |--------|------------|--------|
@@ -204,7 +204,7 @@ Tekintse meg az alábbi lista az Azure Resource Manager-hozzáférés konfigurá
 | Azure Germany |   | Nincs |
 | Azure China 21Vianet |  | Nincs |
 
-## <a name="azure-service-bus"></a>Azure Service Bus
+### <a name="azure-service-bus"></a>Azure Service Bus
 
 | Felhő | Erőforrás-azonosító | status |
 |--------|------------|--------|
@@ -213,7 +213,7 @@ Tekintse meg az alábbi lista az Azure Resource Manager-hozzáférés konfigurá
 | Azure Germany |   | Nincs |
 | Azure China 21Vianet |  | Nincs |
 
-## <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Storage
 
 | Felhő | Erőforrás-azonosító | status |
 |--------|------------|--------|

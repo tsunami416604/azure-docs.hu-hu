@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: troubleshooting
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: a6d5d7b3ab83c8e405c6866562b4095434b9acff
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 20b8dbcae36555baf3913ab160575a631e204dd9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539020"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049423"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>A Bing Image Search API kapcsolatos gyakori kérdések (GYIK)
 
@@ -25,11 +25,11 @@ Kapcsolatos fogalmakat, a kód és a forgatókönyvek a Bing Image Search API a 
 
 Előfordulhat, hogy a következő fejléceket a Bing Image Search API érkező válaszokat.
 
-|||
-|-|-|
-|`X-MSEdge-ClientID`|A Bing a felhasználó rendelkezik hozzárendelt egyedi azonosítója|
-|`BingAPIs-Market`|A piacon, amellyel a kérés teljesítéséhez|
-|`BingAPIs-TraceId`|A Bing API-kiszolgálón (a támogatási) a kérés a naplóbejegyzés|
+| `Attribute`         | `Description` |
+| ------------------- | ------------- |
+| `X-MSEdge-ClientID` |A Bing a felhasználó rendelkezik hozzárendelt egyedi azonosítója |
+| `BingAPIs-Market`   |A piacon, amellyel a kérés teljesítéséhez |
+| `BingAPIs-TraceId`  |A Bing API-kiszolgálón (a támogatási) a kérés a naplóbejegyzés |
 
 Különösen fontos megőrizni az ügyfél-Azonosítót, és küldje vissza a későbbi kérelmeket. Ha így tesz, a Keresés a környezetben, a keresési eredmények rangsorolása korábbi, és egységes felhasználói élmény is biztosítanak.
 
@@ -65,4 +65,4 @@ Egy hiányzó szolgáltatás vagy funkció a kérdése van? Kérő vagy szavaz, 
 
 ## <a name="see-also"></a>Lásd még
 
- [A stack Overflow: A cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)
+ [A stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

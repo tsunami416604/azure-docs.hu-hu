@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b3ec0616a7f022a104a20589f3281262b2717e35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014117"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050977"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása egyéni tartományon bejárati ajtajának
 
@@ -40,6 +40,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > - Saját tanúsítvány használata, amely egyéni SSL-tanúsítvány
 > - A tartomány érvényesítése
 > - HTTPS-protokoll letiltása az egyéni tartományon
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -86,11 +89,11 @@ A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezé
 
 Regisztrálja az Azure Front Door Service szolgáltatásnevét alkalmazásként az Azure Active Directoryban a PowerShell használatával.
 
-1. Ha szükséges, telepítse az [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) bővítményt a PowerShellhez a helyi számítógépen.
+1. Ha szükséges, telepítse az [Azure PowerShell](/powershell/azure/install-az-ps) bővítményt a PowerShellhez a helyi számítógépen.
 
 2. Futtassa a PowerShellben az alábbi parancsot:
 
-     `New-AzureRmADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
+     `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
 #### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>Hozzáférés biztosítása az Azure Front Door Service számára a Key Vaulthoz
  
@@ -238,7 +241,7 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-1. *Ki a tanúsítványszolgáltató és milyen típusú tanúsítvány van használatban?*
+1. *A tanúsítványszolgáltató és milyen típusú tanúsítvány van használatban?*
 
     A rendszer egy Digicert által biztosított dedikált/egyetlen tanúsítványt használ az egyéni tartományhoz. 
 
@@ -246,15 +249,15 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
     Az Azure Front Door Service SNI TLS/SSL-t használ.
 
-3. *Mi a teendő, ha nem kapok visszaigazolási e-mailt a DigiCerttől?*
+3. *Mi történik, ha az e-mailt nem jelenik meg a DigiCert?*
 
     Ha van olyan CNAME-bejegyzése az egyéni tartomány esetében, amely közvetlenül a gazdanév végpontjára mutat (és nem használja az afdverify altartománynevet), nem fog a tartomány visszaigazolására vonatkozó e-mailt kapni. A hitelesítés automatikusan történik. Máskülönben, ha nem rendelkezik CNAME-bejegyzéssel, és 24 órán belül nem kapott e-mailt, forduljon a Microsoft támogatási szolgálatához.
 
-4. *A SAN tanúsítvány használata kevésbé biztonságos, mint egy dedikált tanúsítvány használata?*
+4. *Kevésbé biztonságos, mint egy dedikált tanúsítvány SAN tanúsítványt használ?*
     
     A SAN-tanúsítvány ugyanolyan titkosítási és biztonsági előírásokat követ, mint a dedikált tanúsítvány. Az összes kiállított SSL-tanúsítvány az SHA-256-ot használja a kiszolgáló fokozott biztonsága érdekében.
 
-5. *Szükségem van hitelesítésszolgáltató engedélyezési rekordra a DNS szolgáltatómnál?*
+5. *Szükségem van egy hitelesítésszolgáltatói engedélyezési rekordra DNS szolgáltatómnál?*
 
     Nem, hitelesítésszolgáltatói engedélyezési rekordra jelenleg nincs szükség. Viszont ha van ilyenje, mindenképpen tartalmaznia kell a DigiCertet mint érvényes CA-t.
 

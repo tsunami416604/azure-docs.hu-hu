@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: e86bd797774448d8e4821ff02d358d420a099442
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: fe6a008a6cbd2ca4e8aedeeca6d96cc00f6b29d1
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810779"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046053"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure-függvényalkalmazás importálása API-ként az Azure API Management használatával
 
@@ -69,7 +69,7 @@ Kövesse az alábbi lépéseket egy új API létrehozásához egy Azure-függvé
     ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-05.png)
 
     > [!NOTE]
-    > Kizárólag olyan függvényeket importálhat, amelyek rendelkeznek HTTP-triggerrel, és az engedélyszintjük *Névtelenre* vagy *Függvényre* van állítva.
+    > Kizárólag olyan függvényeket importálhat, amelyek rendelkeznek HTTP-triggerrel, és az engedélyszintjük *Névtelenre* vagy *Függvényre* van állítva. Linux-alapú Függvényalkalmazások jelen pillanatban nem támogatott.
 
 7. Váltson **teljes** nézetre, és rendelje hozzá a **terméket** az új API-hoz. Szerkessze az előre kitöltött mezőket, ha szükséges.
 
@@ -111,11 +111,14 @@ Kövesse az alábbi lépéseket, hogy egy Azure-függvényalkalmazást hozzáfű
 
     ![Hozzáfűzés függvényalkalmazásból](./media/import-function-app-as-api/append-04.png)
 
-## <a name="function-app-import-keys"></a> Létrehozott Azure-függvényalkalmazás gazdagépkulcsa
+## <a name="authorization"></a> Engedélyezési
 
 Az Azure-függvényalkalmazás importáláskor automatikusan létrehozza a következőket:
-* gazdagépkulcs a függvényalkalmazásban apim-{*saját Azure API Management-szolgáltatáspéldány neve*} névvel,
-* névvel ellátott érték az Azure API Management példányban {*saját Azure-függvényalkalmazás példány neve*}-kulcs névvel, amely a létrehozott gazdagépkulcsot tartalmazza.
+
+* a függvény alkalmazásban, az a név az apim - állomás kulcsát {*az Azure API Management szolgáltatás példánynév*},
+* megnevezett érték belül az Azure API Management-példány nevét {*az Azure-Függvényalkalmazás példánynév*}-kulcs, amely tartalmazza a létrehozott állomás kulcsát.
+
+Április 4. 2019 után létrehozott API-t a-állomás kulcsát kerül átadásra a HTTP-kérések az API Management egy fejléc a Függvényalkalmazást. Régebbi API-k adja át a gazdagép kulcsot [egy lekérdezési paraméter](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization). Ez a viselkedés keresztül lehet módosítani a `PATCH Backend` [REST API-hívás](https://docs.microsoft.com/rest/api/apimanagement/backend/update#backendcredentialscontract) a a *háttérrendszer* a Függvényalkalmazás társított entitás.
 
 > [!WARNING]
 > Az új Azure-függvényalkalmazás gazdagépkulcsának vagy az Azure API Management névvel ellátott értékének eltávolítása vagy megváltoztatása megszakítja a szolgáltatások közti kommunikációt. Az értékek nem szinkronizálódnak automatikusan.
@@ -181,4 +184,4 @@ A műveletek meghívhatók a fejlesztői portálról is az API-k teszteléséhez
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Közzétett API átalakítása és védelme](transform-api.md)
+> [A közzétett API átalakítása és védelme](transform-api.md)

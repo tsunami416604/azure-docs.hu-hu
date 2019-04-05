@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: d42349de4324428103ccca3ef270ceb9109ca0c7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fb3c0e46324a22bdd95bf7d93c28e69c195927e8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011663"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045422"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux-rendszerképeket az Azure-ban
 Ez a cikk ismerteti az elérhető Red Hat Enterprise Linux (RHEL) rendszerképek mellett saját elnevezési és adatmegőrzési szabályzatok az Azure piactéren.
@@ -65,7 +65,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 ### <a name="current-naming-convention"></a>Aktuális elnevezési egyezmény
 Az összes jelenleg közzétett RHEL-lemezképek a használatalapú modellt használja, és csatlakozik [Red Hat frissítési infrastruktúrához (RHUI) az Azure-ban](https://aka.ms/rhui-update). RHUI tervezési korlátai miatt egy új elnevezési konvenciót RHEL 7 rendszerű rendszerképek elfogadott. Az RHEL-6 családba tartozó elnevezési jelenleg még nem változott.
 
-A korlátozás van az a tény, hogy amikor egy nem szelektív `yum update` vonatkozóan egy virtuális gép fut RHUI csatlakozik, az RHEL-verzió frissül a legfrissebb a jelenlegi család. További információkért lásd: [ezt a hivatkozást](https://aka.ms/rhui-udate). Előfordulhat, hogy emiatt a keveredési, amikor egy RHEL 7.2 üzembe helyezett rendszerképet RHEL 7.6 válik a frissítés után. Továbbra is telepíthet egy régebbi rendszerképből explicit módon adja meg a szükséges verzió a fenti példákban szemléltetett módon. Ha nincs megadva a szükséges verzió új RHEL 7 lemezkép kiépítése során, majd a legújabb rendszerképet lesznek üzembe helyezve.
+A korlátozás van az a tény, hogy amikor egy nem szelektív `yum update` vonatkozóan egy virtuális gép fut RHUI csatlakozik, az RHEL-verzió frissül a legfrissebb a jelenlegi család. További információkért lásd: [ezt a hivatkozást](https://aka.ms/rhui-update). Előfordulhat, hogy emiatt a keveredési, amikor egy RHEL 7.2 üzembe helyezett rendszerképet RHEL 7.6 válik a frissítés után. Továbbra is telepíthet egy régebbi rendszerképből explicit módon adja meg a szükséges verzió a fenti példákban szemléltetett módon. Ha nincs megadva a szükséges verzió új RHEL 7 lemezkép kiépítése során, majd a legújabb rendszerképet lesznek üzembe helyezve.
 
 >[!NOTE]
 > Az RHEL for SAP képkészlet az RHEL-verzió rögzített marad. Mint ilyen az elnevezési konvenciót termékváltozatban egy adott verziót is tartalmazza.

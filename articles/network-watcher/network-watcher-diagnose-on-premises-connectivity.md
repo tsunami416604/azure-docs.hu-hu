@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: f5c4f8d2c9cec4372ef5de70485d45ab33e022de
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 323e5d63b5f8566d570dfd47323fcf12f7c6b28b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099396"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051580"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN-átjárók helyszíni kapcsolatok diagnosztizálása
 
 Az Azure VPN Gateway lehetővé teszi, hogy hozzon létre hibrid megoldás, a címet a biztonságos kapcsolat a helyszíni hálózat és az Azure virtuális hálózat között van szükség. Egyediek-e a követelményeknek, mivel így a választás a helyszíni VPN-eszköz van. Az Azure jelenleg támogatja [több VPN-eszközök](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) , amely folyamatosan ellenőrzi a ellenőriztünk. A helyszíni VPN-eszköz konfigurálása előtt tekintse át az eszközre vonatkozó konfigurációs beállításokat. Hasonló módon van konfigurálva az Azure VPN Gateway vannak beállítva [IPsec paraméterek támogatott](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) használt kapcsolatokat lehessen létesíteni. Jelenleg nincs lehetőség, hogy adja meg vagy válassza ki az IPsec paraméterek adott kombinációinak az Azure VPN Gateway átjárón. Sikeres kapcsolatlétesítés a helyszíni és az Azure között, a helyszíni VPN-eszközbeállításokat megadni az Azure VPN Gateway átjárók által előírt IPsec paraméterek összhangban kell lennie. Ha a beállítások helyesek, ott a megszakad a kapcsolat és az eddig ezen kapcsolatos hibák elhárítása nem triviális és óra azonosíthatja és megoldhatja a problémát általában tartott.
 
 Az Azure Network Watcher szolgáltatással a szolgáltatás hibaelhárítása, az átjáró és kapcsolatok problémák diagnosztizálása és percen belül van, hogy érdemes-e hibanaplóit a probléma megoldásához elég információ áll.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>Forgatókönyv
 
@@ -57,7 +60,7 @@ Ezek olyan problémák hibaelhárítása nehéz, és általában nem intuitív a
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>Hibaelhárítás az Azure Network Watcher használatával
 
-A kapcsolat diagnosztizálásához, csatlakozhat az Azure PowerShell-lel, és a a `Start-AzureRmNetworkWatcherResourceTroubleshooting` parancsmagot. Az információk a következő parancsmag használatával [elhárítása virtuális hálózati átjáró és kapcsolatok – PowerShell](network-watcher-troubleshoot-manage-powershell.md). Ez a parancsmag igénybe vehet néhány percet végrehajtásához.
+A kapcsolat diagnosztizálásához, csatlakozhat az Azure PowerShell-lel, és a a `Start-AzNetworkWatcherResourceTroubleshooting` parancsmagot. Az információk a következő parancsmag használatával [elhárítása virtuális hálózati átjáró és kapcsolatok – PowerShell](network-watcher-troubleshoot-manage-powershell.md). Ez a parancsmag igénybe vehet néhány percet végrehajtásához.
 
 A parancsmag befejeződése után navigálhat a parancsmag részletes információkhoz juthat kapcsolatos a probléma és a naplók a megadott tárolási helyre. Az Azure Network Watcher a következő naplófájlokat tartalmazó zip mappát hoz létre:
 
@@ -104,10 +107,10 @@ Az Azure Network Watcher hibaelhárítása szolgáltatás lehetővé teszi a dia
 | ConnectionIsMarkedDisconnected | A kapcsolat meg van jelölve "leválasztott". |Nem|
 | ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatás nem rendelkezik konfigurált kapcsolat. | Igen |
 | ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti van megjelölve.| Igen|
-| Hitelesítés | Előmegosztott kulcs eltérés. | Igen|
+| Authentication | Előmegosztott kulcs eltérés. | Igen|
 | PeerReachability | A társ-átjáró nem érhető el. | Igen|
 | IkePolicyMismatch | A társ-átjáró IKE-szabályzatok, amelyek nem támogatottak az Azure rendelkezik. | Igen|
-| WfpParse hiba | Hiba történt a Windows Fájlvédelem napló elemzése. |Igen|
+| WfpParse Error | Hiba történt a Windows Fájlvédelem napló elemzése. |Igen|
 
 ## <a name="next-steps"></a>További lépések
 

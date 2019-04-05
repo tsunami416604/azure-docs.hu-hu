@@ -7,18 +7,21 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 9039c1fd94bbc62f48ca5a6869f455aa41b740c9
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 75a7424f6c3bb6ef13de9e44b46489ab1ef0fbcc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673931"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047721"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Az Azure-bA vészhelyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és Azure Resource Manager használatával
 
 [Az Azure Site Recovery](site-recovery-overview.md) replikálásával segít a vállalatnak replikálása, feladatátvétele és helyreállítása Azure virtuális gépeken (VM), az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában, és a helyszíni virtuális gépek és fizikai kiszolgálók.
 
 Ez a cikk ismerteti a Hyper-V virtuális gépek replikálása az Azure-ban a Windows PowerShell-lel, és az Azure Resource Manager használatával. A példában ez a cikk bemutatja, hogyan replikálható egyetlen virtuális Gépet a Hyper-V gazdagép, az Azure-bA.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -35,8 +38,7 @@ Nem kell lennie egy PowerShell-lel szakértői ebből a cikkből, de az alapvet�
 Győződjön meg arról, hogy az előfeltételek teljesülnek:
 
 * A [Microsoft Azure](https://azure.microsoft.com/) fiókot. Kezdésként használhatja az [ingyenes próbaverziót](https://azure.microsoft.com/pricing/free-trial/) is. Emellett itt olvashat [Azure Site Recovery Managert díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/).
-* Azure PowerShell 1.0. Ezen kiadásról és annak telepítéséről további információkért lásd: [Azure PowerShell 1.0-t.](https://azure.microsoft.com/)
-* A [AzureRM.SiteRecovery](https://www.powershellgallery.com/packages/AzureRM.SiteRecovery/) és [AzureRM.RecoveryServices](https://www.powershellgallery.com/packages/AzureRM.RecoveryServices/) modulok. Ezek a modulok a legújabb verziókat kap a [PowerShell-galéria](https://www.powershellgallery.com/)
+* Azure PowerShell. Ezen kiadásról és annak telepítéséről további információkért lásd: [Azure PowerShell telepítése](/powershell/azure/install-az-ps).
 
 Emellett az adott példa az ebben a cikkben leírt előfeltételei a következők:
 
@@ -45,37 +47,37 @@ Emellett az adott példa az ebben a cikkben leírt előfeltételei a következő
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>1. lépés: Jelentkezzen be az Azure-fiókjába
 
-1. Nyisson meg egy PowerShell-konzolt, és jelentkezzen be az Azure-fiókkal, az alábbi paranccsal. A parancsmag kimenetei weblap kéri a hitelesítő adatait: **Connect-AzureRmAccount**.
-    - Azt is megteheti, megadhatja a fiók hitelesítő adatait a paramétert a **Connect-AzureRmAccount** parancsmag használatával a **-hitelesítő adat** paraméter.
-    - Ha Ön CSP-partner nevében egy bérlő dolgozik, adja meg az ügyfél egy bérlőt az elsődleges tartomány Bérlőazonosítója vagy a bérlő neve. Példa: **Connect-AzureRmAccount -Tenant "fabrikam.com"**
+1. Nyisson meg egy PowerShell-konzolt, és jelentkezzen be az Azure-fiókkal, az alábbi paranccsal. A parancsmag kimenetei weblap kéri a hitelesítő adatait: **Connect-AzAccount**.
+    - Azt is megteheti, megadhatja a fiók hitelesítő adatait a paramétert a **Connect-AzAccount** parancsmag használatával a **-hitelesítő adat** paraméter.
+    - Ha Ön CSP-partner nevében egy bérlő dolgozik, adja meg az ügyfél egy bérlőt az elsődleges tartomány Bérlőazonosítója vagy a bérlő neve. Példa: **Connect-AzAccount -Tenant "fabrikam.com"**
 2. Társítsa az előfizetést szeretné használni a fiókot, mert egy fiók több előfizetéssel is rendelkezik:
 
-    `Select-AzureRmSubscription -SubscriptionName $SubscriptionName`
+    `Select-AzSubscription -SubscriptionName $SubscriptionName`
 
 3. Győződjön meg arról, hogy az előfizetése regisztrálva van-e az Azure-szolgáltatók használata a Recovery Services és a Site Recovery az alábbi parancsokkal:
 
-    `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
+    `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
 4. A parancs kimeneténél ellenőrizze, hogy a **RegistrationState** értékre van állítva **regisztrált**, továbbléphet a 2. lépés. Ha nem kell regisztrálnia a hiányzó-szolgáltatót az előfizetésében, ezek a parancsok futtatásával:
 
-    `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
+    `Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
 5. Győződjön meg arról, hogy a szolgáltatók regisztrálása sikeresen befejeződött, a következő parancsokkal:
 
-    `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
+    `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
 ## <a name="step-2-set-up-the-vault"></a>2. lépés: A tároló beállítása
 
 1. Hozzon létre egy Azure Resource Manager-erőforráscsoportot, amelyben létrehozza a tárolót, vagy használjon egy meglévő erőforráscsoportot. Hozzon létre egy új erőforráscsoportot a következő. $ResourceGroupName változó tartalmazza a létrehozandó erőforráscsoport nevét, és a $Geo változó tartalmazza az Azure-régió, amelyben létrehozza az erőforráscsoportot (például "Dél-Brazília").
 
-    `New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Geo`
+    `New-AzResourceGroup -Name $ResourceGroupName -Location $Geo`
 
-2. Az előfizetésében, futtassa az erőforráscsoportok listájának beszerzése a **Get-AzureRmResourceGroup** parancsmagot.
+2. Az előfizetésében, futtassa az erőforráscsoportok listájának beszerzése a **Get-AzResourceGroup** parancsmagot.
 2. Következőképpen hozhat létre egy új Azure Recovery Services-tároló:
 
-        $vault = New-AzureRmRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
+        $vault = New-AzRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
 
-    Kérheti le a meglévő tárolók listáját a **Get-AzureRmRecoveryServicesVault** parancsmagot.
+    Kérheti le a meglévő tárolók listáját a **Get-AzRecoveryServicesVault** parancsmagot.
 
 
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>3. lépés: A Recovery Services vault környezet beállítása
@@ -97,7 +99,7 @@ A tárolási környezetet állítsa be a következőképpen:
 
     ```
     $SiteIdentifier = Get-AsrFabric -Name $sitename | Select -ExpandProperty SiteIdentifier
-    $path = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vault -SiteIdentifier $SiteIdentifier -SiteFriendlyName $sitename
+    $path = Get-AzRecoveryServicesVaultSettingsFile -Vault $vault -SiteIdentifier $SiteIdentifier -SiteFriendlyName $sitename
     ```
 
 5. Másolja a letöltött kulcsot a Hyper-V-gazdagépen. Szüksége lesz a kulcs regisztrálja a Hyper-V gazdagépet a helyhez.
@@ -121,7 +123,7 @@ A Kezdés előtt vegye figyelembe, hogy a megadott tárfiók ugyanabban a régi�
         $ReplicationFrequencyInSeconds = "300";        #options are 30,300,900
         $PolicyName = “replicapolicy”
         $Recoverypoints = 6                    #specify the number of recovery points
-        $storageaccountID = Get-AzureRmStorageAccount -Name "mystorea" -ResourceGroupName "MyRG" | Select -ExpandProperty Id
+        $storageaccountID = Get-AzStorageAccount -Name "mystorea" -ResourceGroupName "MyRG" | Select -ExpandProperty Id
 
         $PolicyResult = New-AsrPolicy -Name $PolicyName -ReplicationProvider “HyperVReplicaAzure” -ReplicationFrequencyInSeconds $ReplicationFrequencyInSeconds  -RecoveryPoints $Recoverypoints -ApplicationConsistentSnapshotFrequencyInHours 1 -RecoveryAzureStorageAccountId $storageaccountID
 
@@ -158,7 +160,7 @@ A Kezdés előtt vegye figyelembe, hogy a megadott tárfiók ugyanabban a régi�
         Completed
 4. Frissítés recovery tulajdonságait (például a virtuális gépi szerepkör mérete,), és az Azure-hálózatot, amelyhez a feladatátvételt követően a virtuális gép hálózati Adaptert csatlakoztatni.
 
-        PS C:\> $nw1 = Get-AzureRmVirtualNetwork -Name "FailoverNw" -ResourceGroupName "MyRG"
+        PS C:\> $nw1 = Get-AzVirtualNetwork -Name "FailoverNw" -ResourceGroupName "MyRG"
 
         PS C:\> $VMFriendlyName = "Fabrikam-App"
 
@@ -178,7 +180,7 @@ A Kezdés előtt vegye figyelembe, hogy a megadott tárfiók ugyanabban a régi�
 ## <a name="step-8-run-a-test-failover"></a>8. lépés: Feladatátvételi teszt futtatása
 1. Feladatátvételi teszt futtatása a következőképpen:
 
-        $nw = Get-AzureRmVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group
+        $nw = Get-AzVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group
 
         $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
 
@@ -189,4 +191,4 @@ A Kezdés előtt vegye figyelembe, hogy a megadott tárfiók ugyanabban a régi�
         $TFjob = Start-AsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "TFO done"
 
 ## <a name="next-steps"></a>További lépések
-[További](https://docs.microsoft.com/powershell/module/azurerm.siterecovery) Azure Site Recoveryvel Azure Resource Manager PowerShell-parancsmagokkal kapcsolatos.
+[További](https://docs.microsoft.com/powershell/module/az.recoveryservices) Azure Site Recoveryvel Azure Resource Manager PowerShell-parancsmagokkal kapcsolatos.

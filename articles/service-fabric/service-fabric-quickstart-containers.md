@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 34a967640ec039727e8947e865eeff1f5fef4649
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: afeaccd798204ab0973be87ea36c275e1d633403
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758584"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051546"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Gyors útmutató: Windows-tárolók üzembe helyezése a Service Fabric
 
@@ -36,6 +36,9 @@ Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 * A kommunikáció konfigurálása
 * Service Fabric-alkalmazás felépítése és becsomagolása
 * A tárolóalkalmazás üzembe helyezése az Azure-on
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -95,7 +98,7 @@ Az alábbi parancsprogram létrehoz egy öt csomópontot számláló X.509 tanú
 
 Ha szükséges, telepítse az Azure Powershellt utasításait a [Azure PowerShell útmutatójának](/powershell/azure/overview).
 
-A PowerShellben futtassa a következő parancsfájl futtatása előtt `Connect-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
+A PowerShellben futtassa a következő parancsfájl futtatása előtt `Connect-AzAccount` kapcsolat létrehozása az Azure-ral.
 
 Másolja a vágólapra, és nyissa meg a következő parancsfájl **Windows PowerShell ISE-ben**.  Az üres Untitled1.ps1 ablakban illessze be a tartalmát. Majd adjon meg értékeket a változókat a parancsfájl: `subscriptionId`, `certpwd`, `certfolder`, `adminuser`, `adminpwd`stb.  A megadott könyvtár `certfolder` a parancsfájl futtatása előtt léteznie kell.
 

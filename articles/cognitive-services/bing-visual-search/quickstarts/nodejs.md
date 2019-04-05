@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 5/16/2018
+ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7a0103e21b4c287526e53b9f886e98027f49c392
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9414bac220d928618b403aa2f7df7748772e0e9a
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863992"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047568"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Gyors útmutató: Lemezkép-elemzések, a Bing Visual Search REST API és a Node.js használatával
 
 Ez a rövid útmutató segítségével a Bing Visual Search API az első hívását, és megtekintheti a keresési eredmények között. Ez az egyszerű JavaScript alkalmazás Rendszerképadatok az API-t, és a visszaadott kapcsolatos információkat jeleníti meg. Az alkalmazás JavaScript nyelven van megírva, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
 
-Ha feltöltenek egy helyi lemezképet, az űrlapadatok tartalmaznia kell a tartalom-szabályozó fejléc. A `name` paraméter értéke „image” legyen, a `filename` paraméter értéke viszont bármilyen sztring lehet. Az űrlap tartalmát a kép bináris adatai adják. A legnagyobb feltölthető képméret 1 MB.
+Ha feltöltenek egy helyi lemezképet, az űrlapadatok tartalmaznia kell a `Content-Disposition` fejléc. Be kell állítani a `name` paraméter "image", és a `filename` paraméter bármilyen karakterlánc értékre lehet beállítani. Az űrlap a rendszerkép a bináris adatokat is tartalmazza. A legnagyobb feltölthető képméret 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -35,18 +35,14 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Node.js](https://nodejs.org/en/download/)
-* A JavaScript-kérelem modul
-    * Ez a modul segítségével lehet telepíteni `npm install request`
-* Az űrlap-adatok modul
-    * Ez a modul segítségével lehet telepíteni `npm install form-data`
-
+* A JavaScript-kérelem modul. Használhat `npm install request` parancsot a modul telepítéséhez.
+* Az űrlap-adatok modul. Használhatja a `npm install form-data` parancsot a modul telepítéséhez. 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-
 ## <a name="initialize-the-application"></a>Az alkalmazás inicializálása
 
-1. Hozzon létre egy új JavaScript-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és állítsa be az alábbi követelményeknek:
+1. Hozzon létre egy JavaScript-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és állítsa be az alábbi követelményeknek:
 
     ```javascript
     var request = require('request');
@@ -54,7 +50,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     var fs = require('fs');
     ```
 
-2. Változók létrehozása az API-végpont, előfizetési kulcsot, és a lemezkép elérési útja.
+2. Változók létrehozása az API-végpont, előfizetési kulcsot, és a lemezkép elérési útja:
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -62,7 +58,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     var imagePath = "path-to-your-image";
     ```
 
-3. Hozzon létre egy függvényt, nevű `requestCallback()` nyomtatása válasz az API-ból.
+3. Hozzon létre egy függvényt, nevű `requestCallback()` nyomtatása válasz az API-val:
 
     ```javascript
     function requestCallback(err, res, body) {
@@ -72,14 +68,14 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="construct-and-send-the-search-request"></a>Hozza létre, és a keresési kérelem küldése
 
-1. Hozzon létre egy új űrlapadatokból `FormData()`, és fűzze hozzá a lemezkép elérési útja, használatával `fs.createReadStream()`.
+1. Hozzon létre egy új **űrlapadat-tartalmat** objektumba `FormData()`, és fűzze hozzá a lemezkép elérési útja, használatával `fs.createReadStream()`:
     
     ```javascript
     var form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
     ```
 
-2. A kérelem könyvtár segítségével feltölti a lemezképet hívása `requestCallback()` a válasz. Győződjön meg arról, az előfizetési kulcs hozzáadása a kérelem fejlécében. 
+2. A kérelem könyvtár segítségével feltölti a lemezképet, és hívja `requestCallback()` a válasz. Ügyeljen arra, hogy az előfizetési kulcs hozzáadása a kérelem fejléce:
 
     ```javascript
     form.getLength(function(err, length){
@@ -95,4 +91,4 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyéni keresés webes alkalmazás készítése](../tutorial-bing-visual-search-single-page-app.md)
+> [Vizuális keresés egyoldalas webes alkalmazás készítése](../tutorial-bing-visual-search-single-page-app.md)

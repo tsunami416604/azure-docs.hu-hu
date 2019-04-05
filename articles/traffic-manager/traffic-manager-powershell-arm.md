@@ -11,16 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 2b480df0100690a7a5064044d435a34845516fa6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2ce2e2b35d731c3edfed931d158b420e66ed5620
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442103"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045747"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager kezelése a PowerShell segítségével
 
 Az Azure Resource Manager az Azure-szolgáltatások az előnyben részesített felügyeleti kezelőfelület. Az Azure Traffic Manager-profilok az Azure Resource Manager-alapú API-k és eszközök használatával kezelhetők.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-model"></a>Erőforrásmodell
 
@@ -36,7 +38,7 @@ Minden egyes Traffic Manager-profil "TrafficManagerProfiles" típusú erőforrá
 
 Ezek az utasítások a Microsoft Azure PowerShell-lel. A következő cikk ismerteti az Azure PowerShell telepítése és konfigurálása.
 
-* [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
+* [How to install and configure Azure PowerShell (Az Azure PowerShell telepítése és konfigurálása)](/powershell/azure/overview)
 
 Ebben a cikkben szereplő példák feltételezik, hogy egy meglévő erőforráscsoportot. Létrehozhat egy erőforráscsoportot a következő paranccsal:
 
@@ -253,10 +255,10 @@ Ezeket a módosításokat a végpontot, illetve profil erőforrások beolvasása
 
 ### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>1. példa: Engedélyezése és letiltása Traffic Manager-profil
 
-Engedélyezze a Traffic Manager-profil az `Enable-AzureRmTrafficManagerProfile`. A profilt a profil objektummal adható meg. A profil objektum használatával vagy a folyamat keresztül át lehet adni a "-TrafficManagerProfile" paraméter. Ebben a példában azt adja meg a profilhoz a profil- és erőforrás-csoport nevét.
+Engedélyezze a Traffic Manager-profil az `Enable-AzTrafficManagerProfile`. A profilt a profil objektummal adható meg. A profil objektum használatával vagy a folyamat keresztül át lehet adni a "-TrafficManagerProfile" paraméter. Ebben a példában azt adja meg a profilhoz a profil- és erőforrás-csoport nevét.
 
 ```powershell
-Enable-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
+Enable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
 Traffic Manager-profil letiltása:
@@ -269,13 +271,13 @@ A Disable-AzTrafficManagerProfile parancsmag megerősítést kér. Ez a parancss
 
 ### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>2. példa Engedélyezése és letiltása Traffic Manager végpont
 
-Engedélyezze a Traffic Manager végpont az `Enable-AzureRmTrafficManagerEndpoint`. Adja meg a végpont kétféleképpen
+Engedélyezze a Traffic Manager végpont az `Enable-AzTrafficManagerEndpoint`. Adja meg a végpont kétféleképpen
 
 1. Egy TrafficManagerEndpoint objektum átadása a folyamat, vagy pedig a "-TrafficManagerEndpoint" paraméter
 2. A végpont neve, a végpont típusa, a profil nevét és a erőforráscsoport-név használatával:
 
 ```powershell
-Enable-AzureRmTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
+Enable-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
 ```
 
 Hasonlóképpen egy Traffic Manager végpont letiltása:
@@ -323,4 +325,4 @@ Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzT
 
 [Traffic Manager figyelése](traffic-manager-monitoring.md)
 
-[A Traffic Manager teljesítményével kapcsolatos megfontolások](traffic-manager-performance-considerations.md)
+[A TRAFFIC Manager teljesítményével kapcsolatos megfontolások](traffic-manager-performance-considerations.md)

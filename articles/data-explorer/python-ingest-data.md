@@ -1,19 +1,18 @@
 ---
 title: 'Gyors útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése'
 description: Ennek a rövid útmutatónak a segítségével megtanulhatja, hogyan tölthet be adatokat az Azure Data Explorerbe a Python használatával.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: 309e391412a0e2c698173f02eb9fd00d576ead09
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: fdeae2c6b598feee0abc57c80ea32f2108504330
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757711"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046461"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Gyors útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése
 

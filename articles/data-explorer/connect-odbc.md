@@ -1,19 +1,18 @@
 ---
 title: Csatlakozás az Azure Data Explorer ODBC
 description: Ebben az útmutatóban megismerheti, hogyan az Adatkezelőbe az Azure egy ODBC-kapcsolat beállításához, majd a kapcsolat használata az adatok vizualizálása a Tableau.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: 0ec1c2f4fc412ca6c81e179d0ad22f781b896357
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d01c825e50e30e3545a0d47e432835c658d677af
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757627"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59043881"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>Csatlakozás az Azure Data Explorer ODBC
 
@@ -101,6 +100,6 @@ Most végzett ODBC konfigurálása, a mintaadatokat, Tableau is tenné.
 
 ## <a name="next-steps"></a>További lépések
 
-[Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
+[Az Azure Data Explorer lekérdezéseket írni](write-queries.md)
 
 [Oktatóanyag: A Power bi-ban az Azure Data Explorer adatainak megjelenítése](visualize-power-bi.md)

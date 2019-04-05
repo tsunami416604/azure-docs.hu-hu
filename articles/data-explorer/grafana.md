@@ -1,19 +1,18 @@
 ---
-title: A Grafana az Azure Data Explorer adatainak megjelenítése
+title: Azure Data Explorer grafanával adatainak megjelenítése
 description: Ebben az útmutatóban megismerheti, hogyan állítsa be az Azure Data Explorer adatforrásként a Grafana, és ezután megjelenítheti egy minta-fürtből származó adatokat.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
-ms.openlocfilehash: c77475c052ab3ce74563aba6e4c75a50c7e41bcc
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 188cb310cfc13fe2fc41ba3e01deb01068c0184d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758267"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048316"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>A Grafana az Azure Data Explorer adatainak megjelenítése
 
@@ -209,6 +208,6 @@ Most már végzett konfigurálása az Azure Data Explorer adatforrásként a Gra
 
 ## <a name="next-steps"></a>További lépések
 
-[Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
+[Az Azure Data Explorer lekérdezéseket írni](write-queries.md)
 
 [Oktatóanyag: A Power bi-ban az Azure Data Explorer adatainak megjelenítése](visualize-power-bi.md)

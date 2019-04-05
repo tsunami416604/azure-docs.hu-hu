@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: f886de9160b52b8a4e3ee8beaf2e22022a097666
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d49104c1d1402969917de63e22bd41e7489a08c7
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662788"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046292"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és -gyűjteményt Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -31,6 +31,9 @@ ms.locfileid: "58662788"
 Egy Azure Service Fabric-fürtön futtatja, esetén érdemes egy központi helyen összes csomópontja a naplók gyűjtését. A naplók kellene egy központi helyen segítségével elemezheti és a fürtben, vagy az alkalmazások és szolgáltatások a fürtben futó problémák elhárítása.
 
 Fel-és naplók gyűjtése az egyik módja, hogy használja a Windows Azure Diagnostics (WAD) bővítmény, amely feltölti a naplókat az Azure Storage, és a naplók elküldése az Azure Application Insights és az Event Hubs lehetősége is van. Használhatja egy külső folyamatba, olvassa az eseményeket a storage-ból, és helyezze el őket olyan elemzési felhőplatform-megoldás, mint például [naplózza az Azure Monitor](../log-analytics/log-analytics-service-fabric.md) vagy egy másik log-elemzési megoldás.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 A következő eszközök vannak a cikk ezt használja:
@@ -71,7 +74,7 @@ Fürt létrehozása a Resource Manager használatával, hozzá kell a diagnoszti
 
 A Resource Manager-sablonban a diagnosztikai beállítás megtekintéséhez nyissa meg az azuredeploy.json fájlt, és keresse meg **IaaSDiagnostics**. Ez a sablon használatával a fürt létrehozásához válassza a **üzembe helyezés az Azure** gombra a fenti hivatkozáson érhető el.
 
-Azt is megteheti, töltse le a Resource Manager-mintát, módosításához és a fürt létrehozása a módosított sablon használatával a `New-AzureRmResourceGroupDeployment` parancsot egy Azure PowerShell-ablakban. Tekintse meg a következő kódot a paraméterek, amelyek adja át a következő paranccsal. Egy erőforráscsoport PowerShell használatával történő központi telepítéséről részletes információkért tekintse meg a cikket [egy erőforráscsoportot az Azure Resource Manager-sablon üzembe helyezése](../azure-resource-manager/resource-group-template-deploy.md).
+Azt is megteheti, töltse le a Resource Manager-mintát, módosításához és a fürt létrehozása a módosított sablon használatával a `New-AzResourceGroupDeployment` parancsot egy Azure PowerShell-ablakban. Tekintse meg a következő kódot a paraméterek, amelyek adja át a következő paranccsal. Egy erőforráscsoport PowerShell használatával történő központi telepítéséről részletes információkért tekintse meg a cikket [egy erőforráscsoportot az Azure Resource Manager-sablon üzembe helyezése](../azure-resource-manager/resource-group-template-deploy.md).
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>A diagnosztikai bővítmény hozzáadása egy meglévő fürthöz
 Ha meglévő fürtöt, amely nem rendelkezik telepített diagnosztikai, adja hozzá, vagy frissítse a fürt sablon használatával. Módosítsa a Resource Manager-sablon, amellyel a meglévő fürt létrehozásához, vagy letöltheti a sablont a portálról korábban leírtaknak megfelelően. Módosítsa a template.json fájlt az alábbi feladatok végrehajtásával:
@@ -269,7 +272,7 @@ Ahhoz, hogy a **alap műveleti csatorna** Javaslataink a lehető legkevesebb zaj
 
 Frissíteni a diagnosztikai naplók gyűjtését új EventSource csatornák, amelyek egy új alkalmazást, hogy Ön kapcsolatos üzembe helyezéséhez végezhet azonos fürt a meglévő diagnosztika beállítása az előzőleg ismertetett lépéseket.
 
-Frissítse a `EtwEventSourceProviderConfiguration` szakaszban lévő bejegyzéseket hozzáadása előtt a konfiguráció alkalmazásához új EventSource csatornák használatával módosítsa a template.json fájlt a `New-AzureRmResourceGroupDeployment` PowerShell-parancsot. Az eseményforrás nevét a kód a Visual Studio által létrehozott ServiceEventSource.cs fájl részeként van definiálva.
+Frissítse a `EtwEventSourceProviderConfiguration` szakaszban lévő bejegyzéseket hozzáadása előtt a konfiguráció alkalmazásához új EventSource csatornák használatával módosítsa a template.json fájlt a `New-AzResourceGroupDeployment` PowerShell-parancsot. Az eseményforrás nevét a kód a Visual Studio által létrehozott ServiceEventSource.cs fájl részeként van definiálva.
 
 Például az eseményforrás neve saját Eventsource, adja hozzá a következő kódot a saját Eventsource eseményei helyezze MyDestinationTableName nevű táblát.
 
@@ -346,5 +349,7 @@ Miután konfigurálta az Azure diagnostics megfelelően, az adatok megjelennek a
 >Jelenleg nem lehet szűrni vagy karcsúsítása az a tábla küldött események. Ha egy folyamat események eltávolítja a tábla nem alkalmazza, a tábla továbbra is nő. Jelenleg egy futó karcsúsítási szolgáltatás például a [figyelő minta](https://github.com/Azure-Samples/service-fabric-watchdog-service), ajánlott, hogy Ön írása ilyennel, kivéve, ha van egy jó oka, hogy 30 vagy 90 nap határidőn túli naplók tárolására.
 
 * [Ismerje meg, hogyan teljesítményszámlálók vagy a naplók gyűjtésére a diagnosztikai bővítmény használatával](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Esemény elemzése és vizualizációs az Application insights segítségével](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Esemény elemzése és képi megjelenítése a Azure Monitor naplóira](service-fabric-diagnostics-event-analysis-oms.md)
 * [Esemény elemzése és vizualizációs az Application insights segítségével](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Esemény elemzése és képi megjelenítése a Azure Monitor naplóira](service-fabric-diagnostics-event-analysis-oms.md)

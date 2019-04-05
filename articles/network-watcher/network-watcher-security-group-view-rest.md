@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 77519c57c9a603ae0eff46d248ff15432d0404fa
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a2f55a65d88b499384fc961c3d6a479bac804ba8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485391"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051529"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Biztonsági csoport nézet REST API-val a virtuális gép biztonsági elemzése
 
@@ -29,6 +29,9 @@ ms.locfileid: "58485391"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 Biztonsági csoport nézet konfigurált és érvényben lévő hálózati biztonsági szabályok a virtuális gépek alkalmazott adja vissza. Ez a funkció akkor hasznos, naplózás, és diagnosztizálhatja hálózati biztonsági csoportok és annak érdekében, hogy folyamatban van a forgalom egy virtuális gépen konfigurált szabályok megfelelően engedélyezi vagy megtagadja. Ebben a cikkben bemutatjuk, hogyan kérheti le a hatékony és alkalmazott biztonsági szabályok egy virtuális géphez, a REST API használatával
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -50,7 +53,7 @@ armclient login
 
 Futtassa a következő szkriptet egy virtuális machineThe vissza a következő kód változók van szüksége:
 
-- **subscriptionId** – az előfizetés-azonosítót is lekérhető az a **Get-AzureRMSubscription** parancsmagot.
+- **subscriptionId** – az előfizetés-azonosítót is lekérhető az a **Get-AzSubscription** parancsmagot.
 - **resourceGroupName** -egy virtuális gépeket tartalmazó erőforráscsoport nevét.
 
 ```powershell

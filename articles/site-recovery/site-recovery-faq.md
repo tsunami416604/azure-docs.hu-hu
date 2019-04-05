@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/18/2019
 ms.author: raynew
-ms.openlocfilehash: 018368d28dd34787046ae655a98527aede28603f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 231533f9609a4cf8cc11bedf88aafdfd37d1cb7e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313368"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050118"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
 Ez a cikk összefoglalja az Azure Site Recovery – gyakori kérdések. 
@@ -36,8 +36,8 @@ Igen, támogatott Azure virtuális gépeket replikálhatja az Azure-régiók kö
 ### <a name="what-do-i-need-in-hyper-v-to-orchestrate-replication-with-site-recovery"></a>Mit kell a Hyper-V Site Recovery-vel való replikáció vezényléséhez?
 A szükséges Hyper-V gazdakiszolgálóra vonatkozó feltételek a telepítési forgatókönyvtől függenek. A Hyper-V-vel kapcsolatos előfeltételekről az alábbi cikkekben olvashat:
 
-* [Azure-ba történő Hyper-V virtuális gépek (VMM nélkül)](site-recovery-hyper-v-site-to-azure.md)
-* [Azure-ba történő Hyper-V virtuális gépek (VMM-mel)](site-recovery-vmm-to-azure.md)
+* [Hyper-V virtuális gépek replikálása Azure-ba (VMM nélkül)](site-recovery-hyper-v-site-to-azure.md)
+* [Hyper-V virtuális gépek replikálása Azure-ba (VMM-mel)](site-recovery-vmm-to-azure.md)
 * [Hyper-V virtuális gépek replikálása másodlagos adatközpontba](site-recovery-vmm-to-vmm.md)
 * Ha replikál egy másodlagos adatközpontba, olvassa el [támogatott vendég operációs rendszerként a Hyper-V virtuális gépek](https://technet.microsoft.com/library/mt126277.aspx).
 * Ha az Azure-bA replikál, a Site Recovery támogatja az összes a vendég operációs rendszerek, amelyek [Azure által támogatott](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).
@@ -143,7 +143,7 @@ Igen. További információ a központi telepítési cikkekben sávszélesség s
 
 ## <a name="failover"></a>Feladatátvétel
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-virtual-machines-after-failover"></a>Ha e vagyok átvitelét az Azure-ba, hogyan férhetek hozzá az Azure-beli virtuális gépek a feladatátvételt követően?
-Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. Készítse elő a számos dolgot, hogy csatlakozni kell. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
+Az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, helyek közötti VPN-en keresztül, vagy Azure ExpressRoute segítségével érheti el. Készítse elő a számos dolgot, hogy csatlakozni kell. [Részletek](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Lehet feladatátvételt az Azure hogyan Azure győződjön meg arról, ha az adatok hibatűréséről?
@@ -153,7 +153,7 @@ Az Azure-t hibatűrőnek terveztük. Szükség esetén a Site Recovery már kate
 Elindíthat egy nem tervezett feladatátvételt a másodlagos helyről. A Site Recovery nem követeli meg a feladatátvétel végrehajtásához, hogy az elsődleges helyről kapcsolódjon.
 
 ### <a name="is-failover-automatic"></a>Automatikus a feladatátvétel?
-A feladatátvétel nem automatikus. A portálon egyetlen kattintással feladatátvételt, vagy használhat [Site Recovery PowerShell](/powershell/module/azurerm.siterecovery) feladatátvétel indításához. A Site Recovery portálon egy egyszerű művelet visszavétel.
+A feladatátvétel nem automatikus. A portálon egyetlen kattintással feladatátvételt, vagy használhat [Site Recovery PowerShell](/powershell/module/az.recoveryservices) feladatátvétel indításához. A Site Recovery portálon egy egyszerű művelet visszavétel.
 
 Automatizálhatja, sikerült helyi Orchestrator vagy az Operations Manager használata virtuális gép hibájának észlelésére, és majd elindíthatja a feladatátvételt az SDK-val.
 

@@ -8,29 +8,29 @@ manager: rosh
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: 68dd71687e18243a112df0c2568af5b2b6d0d687
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a0d7c1611f7c6851d98fea734dfdbd3940b59b89
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340983"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048019"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Gyors útmutató: A Bing Visual Search REST API és a Go lemezkép elemzések lekérése
 
-Ez a rövid útmutató a Go programnyelv használatával a Bing Visual Search API meghívása és az eredményeket megjeleníti. Egy Post kérést Rendszerképadatok az API-végpont. Az eredmények tartalmazzák a URL-címek és a feltöltött kép hasonló képek leíró adatait.
+Ez a rövid útmutató a Go programnyelv használatával a Bing Visual Search API meghívása és az eredményeket megjeleníti. Egy POST kérést Rendszerképadatok az API-végpont. Az eredmények tartalmazzák a URL-címek és a feltöltött kép hasonló képek leíró adatait.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 * Telepítse a [nyissa meg a bináris fájlok](https://golang.org/dl/).
-* A go-kimenet mély közérthető nyomtató hasznos jeleníti meg az eredményeket.
-    * Telepítse a libarary: `$ go get -u https://github.com/davecgh/go-spew`.
+* A go-kimenet mély közérthető nyomtató eredmények megjelenítéséhez használatos. Go-kimenet és telepítheti a `$ go get -u https://github.com/davecgh/go-spew` parancsot.
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="project-and-libraries"></a>Projekt és könyvtárak
 
-Hozzon létre egy új Go-projektet az integrált Fejlesztőkörnyezetével vagy szerkesztőjével a. Importálja az `net/http` kérelmeknél `ioutil` beolvasni a választ, és `encoding/json` kezeli a JSON-szöveget az eredmények. A `go-spew` tárhasználat elemzése JSON-eredményeket. 
+Az integrált Fejlesztőkörnyezetével vagy szerkesztőjével a Go-projekt létrehozása. Importálja az `net/http` kérelmeknél `ioutil` beolvasni a választ, és `encoding/json` kezeli a JSON-szöveget az eredmények. A `go-spew` tárhasználat elemzése JSON-eredményeket.
 
 ```
 package main
@@ -52,7 +52,7 @@ import (
 
 ## <a name="struct-to-format-results"></a>Typ Struktura eredmények formázása
 
-A `BingAnswer` struct, amely többszintű és meglehetősen összetett JSON válaszban visszaadott adatok formátumát.  Az alábbi megvalósításra áttekint néhány az essentials.
+A `BingAnswer` struktúra, amely többszintű és komplex JSON válaszban visszaadott adatok formátumát. Az alábbi megvalósításra áttekint néhány az alapvető erőforrások:
 
 ```
 type BingAnswer struct {
@@ -109,7 +109,7 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>Fő függvényhez, és a változók  
 
-A következő kódot a fő függvényt deklarálja, és hozzárendeli a szükséges változókat. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából.  A `batchNumber` egy kezdő és záró határait a Post data szükséges GUID.  A `fileName` változó a képfájl azonosítja a Post esetében.  Az alábbi szakaszok ismertetik a kód részletei.
+A következő kódot a fő függvényt deklarálja, és hozzárendeli a szükséges változókat. Győződjön meg arról, hogy helyes a végpont, és cserélje le a `token` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. A `batchNumber` egy kezdő és záró határait a POST data szükséges GUID. A `fileName` változó a képfájl azonosítja a POST esetében. Az alábbi szakaszok ismertetik a kód részletei:
 
 ```
 func main() {
@@ -159,7 +159,7 @@ func main() {
 
 ## <a name="boundaries-of-post-body"></a>A bejegyzés törzse határok
 
-A Visual Search-végpont egy Post kérelmet kezdő és záró határokat a Post data mellékelve van szükség.  A vezető határhoz tartozik egy kötegelt tartalomtípus-azonosító szám `Content-Disposition: form-data; name="image"; filename=`, a lemezkép-bejegyzésre mutató fájlneve továbbá.  A záró határ egyszerűen a batch számos.  Ezek a függvények nem szerepelnek a `main` letiltása.
+A Visual Search-végpont egy POST kérelmet kezdő és záró határokat a POST data mellékelve van szükség. A vezető határhoz tartozik egy kötegelt tartalomtípus-azonosító szám `Content-Disposition: form-data; name="image"; filename=`, a lemezkép-bejegyzésre mutató fájlneve továbbá. A záró határ egyszerűen a batch számos. Ezek a függvények nem szerepelnek a `main` letiltása:
 
 ```
 func BuildFormDataStart(batNum string, fileName string) string{
@@ -178,7 +178,7 @@ func BuildFormDataEnd(batNum string) string{
 ```
 ## <a name="add-image-bytes-to-post-body"></a>Kép bájt hozzáadása bejegyzés törzse
 
-A kódszegmensben hoz létre, amely tartalmazza a rendszerkép-adatok a Post-kérés. 
+A kódszegmensben hoz létre a POST-kérelmet, amely tartalmazza a rendszerkép-adatok:
 
 ```
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
@@ -207,7 +207,7 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 ## <a name="send-the-request"></a>A kérés küldése
 
-Az alábbi kód elküldi a kérelmet, és beolvassa az eredményeket.
+Az alábbi kód elküldi a kérelmet, és az eredmények beolvasása:
 
 ```
 resp, err := client.Do(req)
@@ -226,7 +226,7 @@ resp, err := client.Do(req)
 
 ## <a name="handle-the-response"></a>A válasz kezelése
 
-A `Unmarshall` függvény információkat gyűjt a a Visual Search API által visszaadott JSON-szövegben.  A `go-spew` közérthető nyomtató eredményeit jeleníti meg.
+A `Unmarshall` függvény információkat gyűjt a a Visual Search API által visszaadott JSON-szövegben. A `go-spew` közérthető nyomtató az eredményeket jeleníti meg:
 
 ```
     // Create a new answer.  
@@ -249,7 +249,7 @@ A `Unmarshall` függvény információkat gyűjt a a Visual Search API által vi
 
 ## <a name="results"></a>Results (Eredmények)
 
-Az eredmények Post törzsében képen láthatóhoz hasonló képek azonosítása.  A hasznos mezők `WebSearchUrl` és `Name`.
+Az eredmények POST törzsében képen láthatóhoz hasonló képek azonosítása. A hasznos mezők `WebSearchUrl` és `Name`:
 
 ```
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
@@ -287,5 +287,5 @@ Az eredmények Post törzsében képen láthatóhoz hasonló képek azonosítás
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Mi az a Bing Visual Search](../overview.md)
-> [, lépjen a Bing webes keresés rövid útmutató](../../Bing-Web-Search/quickstarts/go.md)
+> [Mi az a Bing Visual Search API? ](../overview.md) 
+>  [, Lépjen a Bing webes keresés rövid útmutató](../../Bing-Web-Search/quickstarts/go.md)

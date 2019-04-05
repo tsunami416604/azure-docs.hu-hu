@@ -3,19 +3,19 @@ title: Az Azure IoT Hub Device Provisioning Service - szimmetrikus kulcsigazolá
 description: Ez a cikk az IoT Device Provisioning Service használatával szimmetrikus kulcsigazolás fogalmi áttekintése.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/18/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 80828876ffe8b58697cfaacad4991354ac070730
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: philmea
+ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971790"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050944"
 ---
-# <a name="symmetric-key-attestation"></a>A szimmetrikus kulcsigazolás
+# <a name="symmetric-key-attestation"></a>Szimmetrikus kulcsú igazolás
 
 Ez a cikk ismerteti az identitás igazolási folyamat, amikor a szimmetrikus kulcsok használata a Device Provisioning Service. 
 
@@ -114,6 +114,6 @@ Ha az eszköz kulcsok nincsenek telepítve az előállító egy [hardveres bizto
 
 Most, hogy a szimmetrikus kulcs állapotigazolási megismerése, tekintse meg a következő cikkekben további információ:
 
-* [Gyors útmutató: A szimmetrikus kulcsokat a szimulált eszköz kiépítése](quick-create-simulated-device-symm-key.md)
+* [Gyors útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok](quick-create-simulated-device-symm-key.md)
 * [További információ az Automatikus kiépítés fogalmak](./concepts-auto-provisioning.md)
 * [Automatikus kiépítés használatának első lépései](./quick-setup-auto-provision.md) 

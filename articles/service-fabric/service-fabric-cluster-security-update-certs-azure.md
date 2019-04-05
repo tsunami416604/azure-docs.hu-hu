@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 534335b15d61d1e411ec2e7fb96123eb4701878e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315272"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050237"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Adja hozzá, vagy távolítsa el a tanúsítványokat a Service Fabric-fürtön az Azure-ban
 Javasoljuk, hogy Ismerkedjen meg hogyan a Service Fabric X.509-tanúsítványokat használ, és ismernie kell a [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md). Ismernie kell a fürt tanúsítványt, és mire használható, mielőtt folytatná.
@@ -33,6 +33,9 @@ A Service fabric lehetővé teszi két fürttanúsítványok, az elsődleges és
 > 
 > 
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>A portál használatával a másodlagos fürttanúsítvány hozzáadása
 Az Azure Portalon, az Azure powershell használata a másodlagos fürttanúsítvány nem adható hozzá. A folyamat a rendszer később a jelen dokumentumban vázolt.
 
@@ -45,7 +48,7 @@ Ha a leképezés eltávolítani a tanúsítványt, amely elsődleges van megjel�
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Resource Manager Powershell-lel másodlagos tanúsítvány hozzáadása
 > [!TIP]
-> Most már jobb és egyszerűbb a módon hozzáadni egy másodlagos tanúsítvány használatával a [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) parancsmagot. Nem kell követhesse a jelen szakaszban ismertetett lépéseket.  Emellett nem kell létrehozni és üzembe helyezni a fürt használatakor eredetileg használt sablon a [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) parancsmagot.
+> Most már jobb és egyszerűbb a módon hozzáadni egy másodlagos tanúsítvány használatával a [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) parancsmagot. Nem kell követhesse a jelen szakaszban ismertetett lépéseket.  Emellett nem kell létrehozni és üzembe helyezni a fürt használatakor eredetileg használt sablon a [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) parancsmagot.
 
 A lépések feltételezik, hogy ismeri a Resource Manager működését, és legalább egy Service Fabric-fürtöt egy Resource Manager-sablon használatával telepített, és rendelkezik a sablont, amely hasznos a fürt beállításához használt. Azt is feltételezzük, hogy járatos JSON.
 
@@ -195,19 +198,19 @@ A Resource Manager-sablon paraméter fájl szerkesztése, a két új paramétere
 - Jelentkezzen be az Azure-fiókot, és válassza ki az adott azure-előfizetés. Ez a fontos lépés a azok számára, akik hozzáférhetnek a több mint egy azure-előfizetéssel.
 
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionId <Subscription ID> 
+Connect-AzAccount
+Select-AzSubscription -SubscriptionId <Subscription ID> 
 
 ```
 
 Tesztelje a sablon üzembe helyezése előtt. Használja ugyanazt az erőforráscsoportot, amely a fürt jelenlegi üzembe.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
+Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 
 ```
 
-Az erőforráscsoportba helyezheti üzembe a sablont. Használja ugyanazt az erőforráscsoportot, amely a fürt jelenlegi üzembe. A New-AzureRmResourceGroupDeployment parancs futtatásával. Nem kell megadnia a a módot, mivel az alapértelmezett érték **növekményes**.
+Az erőforráscsoportba helyezheti üzembe a sablont. Használja ugyanazt az erőforráscsoportot, amely a fürt jelenlegi üzembe. Futtassa a New-AzResourceGroupDeployment parancsot. Nem kell megadnia a a módot, mivel az alapértelmezett érték **növekményes**.
 
 > [!NOTE]
 > Fejezze be a mód állítja be, ha véletlenül törölheti erőforrások, amelyek nem a sablonban. Ebben a forgatókönyvben azt nem használja.
@@ -215,7 +218,7 @@ Az erőforráscsoportba helyezheti üzembe a sablont. Használja ugyanazt az er�
 > 
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
 Íme egy kitöltött példa az ugyanazon PowerShell.
@@ -225,7 +228,7 @@ $ResourceGroup2 = "chackosecure5"
 $TemplateFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure_Step2.json"
 $TemplateParmFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure.parameters_Step2.json"
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
+New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
 
 ```
 

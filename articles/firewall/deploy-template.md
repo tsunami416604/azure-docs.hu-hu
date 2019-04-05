@@ -8,12 +8,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: victorh
-ms.openlocfilehash: a15ffa23b64f944d8b2c088113bcc29443ce6873
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e0fbec8b22993345114d8d6642e42095191d0b37
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038959"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046274"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Üzembe helyezése Azure tűzfal-sablon használatával
 
@@ -24,6 +24,9 @@ A tűzfal van a *AzureFirewallSubnet* alhálózathoz, és rendelkezik az alkalma
 Egy felhasználó által megadott útvonalat mutat érkező hálózati forgalmat a *ServersSubnet* alhálózat a tűzfalon, ahol a tűzfalszabályok vannak alkalmazva.
 
 Az Azure-tűzfallal kapcsolatos további információkért lásd: [központi telepítése és konfigurálása az Azure portal segítségével Azure tűzfal](tutorial-firewall-deploy-portal.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-the-template-to-deploy-azure-firewall"></a>A sablon segítségével üzembe helyezése az Azure-tűzfal
 
@@ -56,10 +59,10 @@ A JSON-szintaxist és a egy sablonban tűzfalak tulajdonságaival kapcsolatos tu
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége rájuk, eltávolíthatja az erőforráscsoportot, a tűzfal és az összes kapcsolódó erőforrást futtatásával a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) PowerShell-parancsot. Eltávolítható egy nevű erőforráscsoport *MyResourceGroup*futtassa: 
+Ha már nincs szüksége rájuk, eltávolíthatja az erőforráscsoportot, a tűzfal és az összes kapcsolódó erőforrást futtatásával a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) PowerShell-parancsot. Eltávolítható egy nevű erőforráscsoport *MyResourceGroup*futtassa: 
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name MyResourceGroup
+Remove-AzResourceGroup -Name MyResourceGroup
 ```
 Ne távolítsa el az erőforráscsoportot és a tűzfal, ha azt tervezi, hogy a tűzfal oktatóanyag figyelési folytassa. 
 

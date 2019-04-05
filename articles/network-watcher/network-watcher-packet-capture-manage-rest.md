@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 49a703164b302443d8b50ba950cf23b8601cb599
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 614c3e1831680fff50058cd5192449f8e6e28179
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480702"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049796"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>A csomagrögzítés kezelése az Azure Network Watcher Azure REST API használatával
 
@@ -39,6 +39,9 @@ Ez a cikk végigvezeti a különböző felügyeleti feladatok csomagrögzítés 
 - [**Csomagrögzítés indítása**](#start-packet-capture)
 - [**Csomagrögzítés leállítása**](#stop-packet-capture)
 - [**Csomagrögzítés törlése**](#delete-packet-capture)
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -60,7 +63,7 @@ Futtassa a következő szkriptet egy virtuális gép adja vissza. Ez az informá
 
 A következő kódot a változók van szüksége:
 
-- **subscriptionId** – az előfizetés-azonosítót is lekérhető az a **Get-AzureRMSubscription** parancsmagot.
+- **subscriptionId** – az előfizetés-azonosítót is lekérhető az a **Get-AzSubscription** parancsmagot.
 - **resourceGroupName** -egy virtuális gépeket tartalmazó erőforráscsoport nevét.
 
 ```powershell

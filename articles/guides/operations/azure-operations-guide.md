@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 5e879395e034813f954d1046e4a69e21534f3968
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077156"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051170"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Ismerkedés az Azure-operátorok
 
@@ -169,7 +169,7 @@ Mellett létrehozása, kezelése és törlése erőforrásokat az Azure portal h
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-Az Azure PowerShell-modulok biztosító Azure kezelésére szolgáló parancsmagok olyan. A parancsmagok használatával létrehozása, kezelése és az Azure-szolgáltatások eltávolítása. A parancsmagok segítségével érheti el, egységes, megismételhető és hands-off központi telepítések. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/azurerm/install-azurerm-ps) foglalkozó témakörben talál.
+Az Azure PowerShell-modulok biztosító Azure kezelésére szolgáló parancsmagok olyan. A parancsmagok használatával létrehozása, kezelése és az Azure-szolgáltatások eltávolítása. A parancsmagok segítségével érheti el, egységes, megismételhető és hands-off központi telepítések. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/install-Az-ps) foglalkozó témakörben talál.
 
 #### <a name="azure-command-line-interface"></a>Azure parancssori felületén
 
@@ -491,5 +491,5 @@ Segíthet az Azure virtuális hálózatok biztonságos hálózati biztonsági cs
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egy Windows virtuális gép létrehozása](../../virtual-machines/windows/quick-create-portal.md)
+- [Windows rendszerű virtuális gép létrehozása](../../virtual-machines/windows/quick-create-portal.md)
 - [Linux rendszerű virtuális gép létrehozása](../../virtual-machines/linux/quick-create-portal.md)

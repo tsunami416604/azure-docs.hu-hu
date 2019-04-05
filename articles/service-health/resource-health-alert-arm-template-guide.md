@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: de5419bbfa5a364cb570651fd4d57d7560e4aafd
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: afa89fc90552c7ccba1fcea0945ee223d0096be4
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663434"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047517"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager-sablonok használatával a resource health-riasztások konfigurálása
 
@@ -22,30 +22,32 @@ Az Azure Resource Health láthatók a jelenlegi és korábbi állapotát az Azur
 > [!NOTE]
 > Resource Health-riasztások jelenleg előzetes verzióban érhető el.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az alábbi utasításokat, lesz szüksége az előzetesen beállításához néhány dolgot:
 
-1. Telepítenie kell a [Azure PowerShell-modul](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) (`AzureRm`)
+1. Telepítenie kell a [Azure PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. Kell [létrehozása vagy újbóli műveletcsoport](../azure-monitor/platform/action-groups.md) arra az esetre, konfigurálva
 
 ## <a name="instructions"></a>Utasítások
 1. PowerShell használatával jelentkezzen be Azure-fiókjával, és válassza ki az előfizetést, amellyel kommunikálni szeretne
 
-        Login-AzureRmAccount
-        Select-AzureRmSubscription -Subscription <subscriptionId>
+        Login-AzAccount
+        Select-AzSubscription -Subscription <subscriptionId>
 
-    > Használhat `Get-AzureRmSubscription` előfizetések listájának fér hozzá.
+    > Használhat `Get-AzSubscription` előfizetések listájának fér hozzá.
 
 2. Keresse meg és mentse a teljes Azure Resource Manager-Azonosítót a műveleti csoport
 
-        (Get-AzureRmActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+        (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
 3. Hozzon létre és mentsen egy Resource Manager-sablon, a Resource Health-riasztások `resourcehealthalert.json` ([lásd lejjebb](#resource-manager-template-for-resource-health-alerts))
 
 4. Hozzon létre egy új Azure Resource Manager-alapú, ez a sablon használatával
 
-        New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+        New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
 
 5. A rendszer felszólítja a riasztás neve és korábban vágólapra másolt műveletcsoport erőforrás azonosítója:
 
@@ -162,7 +164,7 @@ Egy erőforrás-csoport szintű hatókörhöz a hatókörök szakasz hasonlóan 
 ],
 ```
 
-Például:`"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
+Példa: `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
 > Nyissa meg az Azure Portalon, és tekintse meg az URL-címe, ez a karakterlánc lekérése az Azure-erőforrás megtekintésekor.
 
@@ -427,7 +429,7 @@ Azonban meg fogja tudja, milyen konfigurációk érvényesek az Ön számára le
 
 További információ a Resource Health:
 -  [Az Azure Resource Health áttekintése](Resource-health-overview.md)
--  [Az Azure Resource Health segítségével elérhető erőforrástípusok és állapot-ellenőrzések](resource-health-checks-resource-types.md)
+-  [Az Azure Resource Health segítségével elérhető erőforrástípusok és állapotellenőrzések](resource-health-checks-resource-types.md)
 
 Hozza létre a Service Health-riasztások:
 -  [Service Health-riasztások beállítása](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
-ms.openlocfilehash: 21309060b7b4a93d798c444bd96bc21c62693a54
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534003"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051818"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure tűzfal log analytics-minták
 
@@ -40,7 +40,7 @@ Itt látható, hogyan néz ki a nézet az alkalmazás szabály naplóadatok:
 
 ![Hálózati szabály naplóadatok]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Az Azure tűzfal-naplókon adatokat alább: AzureDiagnostics kategóriával rendelkezik, vagy **AzureFirewallApplicationRule** vagy **AzureFirewallApplicationRule**. Az adatok részleteit tartalmazó msg_s mező van tárolva. Használatával a [elemezni](https://docs.microsoft.com/azure/kusto/query/parseoperator) azt is érdekes tulajdonságait kinyerése a msg_s mező operátor. Az alábbi lekérdezésekhez bontsa ki a mindkét kategóriák vonatkozó információkat.
+Az Azure tűzfal-naplókon adatokat alább: AzureDiagnostics kategóriával rendelkezik, vagy **AzureFirewallApplicationRule** vagy **AzureFirewallNetworkRule**. Az adatok részleteit tartalmazó msg_s mező van tárolva. Használatával a [elemezni](https://docs.microsoft.com/azure/kusto/query/parseoperator) azt is érdekes tulajdonságait kinyerése a msg_s mező operátor. Az alábbi lekérdezésekhez bontsa ki a mindkét kategóriák vonatkozó információkat.
 
 ## <a name="application-rules-log-data-query"></a>Alkalmazás szabályok naplólekérdezés adatok
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 592bf638cf0be26182dfdb28ac5a0c8345a7a250
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ad58b914c22c112a83c18a7c0377b567424e4efd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116707"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046019"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio Web Services: Telepítés és használat
 
@@ -49,7 +49,7 @@ Az Azure Machine Learning Studio web services-erőforrás-szolgáltató REST API
 
 Az Azure Machine Learning Studio web services-erőforrás-szolgáltató üzembe helyezését és felügyeletét a webes szolgáltatások lehetővé teszi PowerShell-parancsmagok használatával.
 
-A parancsmagok használatához, először jelentkezzen be Azure-fiókjába, a PowerShell környezetben használatával a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) parancsmagot. Ha ismeri, hogyan hívhat meg alapuló PowerShell-parancsokat a Resource Managerrel, tekintse meg [az Azure PowerShell az Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
+A parancsmagok használatához, először jelentkezzen be Azure-fiókjába, a PowerShell környezetben használatával a [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) parancsmagot. Ha ismeri, hogyan hívhat meg alapuló PowerShell-parancsokat a Resource Managerrel, tekintse meg [az Azure PowerShell az Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
 
 A prediktív kísérletté exportálásához használja [a mintakód](https://github.com/ritwik20/AzureML-WebServices). Az .exe fájlt hoz létre a kódot, miután írhatja be:
 
@@ -78,7 +78,7 @@ Például:
 
 Tekintse meg a következő cikkek és további részleteket a mintakód:
 
-* [Az Azure Machine Learning Studio parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.machinelearning) hivatkozást az MSDN-en
+* [Az Azure Machine Learning Studio parancsmagok](https://docs.microsoft.com/powershell/module/az.machinelearning) hivatkozást az MSDN-en
 * Minta [forgatókönyv](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) a Githubon
 
 ## <a name="consume-the-web-services"></a>A webszolgáltatások felhasználása
@@ -88,7 +88,7 @@ Tekintse meg a következő cikkek és további részleteket a mintakód:
 Az Azure Machine Learning Web Services portálon a webszolgáltatás tesztelheti. Tesztelés a kérés-válasz szolgáltatás (RRS) és a kötegelt végrehajtási szolgáltatás (BES) felületek.
 
 * [Új webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md)
-* [Az Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md)
+* [Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md)
 * [3. oktatóanyag: Kredit kockázati modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Az Excelből

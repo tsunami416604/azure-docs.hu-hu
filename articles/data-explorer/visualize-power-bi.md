@@ -1,19 +1,18 @@
 ---
 title: 'Oktatóanyag: A Power bi-ban az Azure Data Explorer adatainak megjelenítése'
 description: Ebben az oktatóanyagban megtanulhatja, hogyan csatlakoztathatja az Azure Data Explorert a Power BI-hoz, és hogyan jelenítheti meg az adatait.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: f253911c1830e606dd47b64aaea1f17cb3478cd5
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 70a06b75db9ff49222c2de4aa78519b32d863478
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757743"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049880"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Oktatóanyag: A Power bi-ban az Azure Data Explorer adatainak megjelenítése
 
@@ -34,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az Azure- és Power BI-előfizetések mellett a következőkre lesz szüksége az oktatóanyag elvégzéséhez:
 
-* [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
+* [Egy teszt fürt és adatbázis](create-cluster-database-portal.md)
 
 * [A StormEvents mintaadatok](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 

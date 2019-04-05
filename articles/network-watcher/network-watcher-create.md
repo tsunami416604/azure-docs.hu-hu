@@ -14,19 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: ea10e83e8a5963c1ea0073179c15b1c2f3230805
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 601a3f273a8da9100d24dfdbd13bd598b0e48884
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615213"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051563"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Az Azure Network Watcher-példány létrehozása
 
 A Network Watcher egy regionális szolgáltatás, amely lehetővé teszi a figyelési és diagnosztizálási tevékenységet végezhet hálózati forgatókönyvek szintjén, a, és az Azure-ból. Forgatókönyv szintű figyelése lehetővé teszi egy teljes körű hálózati szintű áttekintés a problémák diagnosztizálásához. A hálózati diagnosztikai és vizualizációs eszközök a Network Watcherrel elérhető segítenek megérteni, diagnosztizálása és betekintést nyerhet az Azure-ban a hálózati. A Network Watcher engedélyezve van a Network Watcher-erőforrást kell létrehozni. Ehhez az erőforráshoz lehetővé teszi, hogy a Network Watcher képességek használatát.
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="network-watcher-is-automatically-enabled"></a>A Network Watcher automatikusan engedélyezve van
-Ha hoz létre, vagy frissítse a virtuális hálózat az előfizetésben, Network Watcher a virtuális hálózati régióban automatikusan lesz engedélyezve. Ez nincs hatással az erőforrások vagy társított díj automatikusan a Network Watcher engedélyezése.
+Ha hoz létre, vagy frissítse a virtuális hálózat az előfizetésben, Network Watcher a virtuális hálózati régióban automatikusan lesz engedélyezve. A Network Warcher automatikus engedélyezése semmilyen hatással sincs az Ön erőforrásaira, sem a díjaikra.
 
 #### <a name="opt-out-of-network-watcher-automatic-enablement"></a>Lemondja a Network Watcher automatikus engedélyezés
 Ha szeretné tilthatják le a Network Watcher automatikus lehetővé tétele, megteheti a következő parancsok futtatásával:
@@ -35,8 +38,8 @@ Ha szeretné tilthatják le a Network Watcher automatikus lehetővé tétele, me
 > Engedélyezés meg a Network Watcher automatikus engedélyezését, a módosítás végleges. Ha Ön az elutasítás, nem vehetnek részt nélkül [ügyfélszolgálaton](https://azure.microsoft.com/support/options/)
 
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -FeatureName DisableNetworkWatcherAutocreation -ProviderNamespace Microsoft.Network
-Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Network
+Register-AzProviderFeature -FeatureName DisableNetworkWatcherAutocreation -ProviderNamespace Microsoft.Network
+Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
 ```azurecli-interactive
@@ -63,7 +66,7 @@ Ha szeretne egy Network Watcher-példány és az erőforráscsoport nevét testr
 A Network Watcher-példány létrehozásához futtassa az alábbi példában:
 
 ```powershell
-New-AzureRmNetworkWatcher -Name "NetworkWatcher_westcentralus" -ResourceGroupName "NetworkWatcherRG" -Location "West Central US"
+New-AzNetworkWatcher -Name "NetworkWatcher_westcentralus" -ResourceGroupName "NetworkWatcherRG" -Location "West Central US"
 ```
 
 ## <a name="create-a-network-watcher-with-the-azure-cli"></a>A Network Watcher létrehozásához az Azure CLI-vel
@@ -108,7 +111,7 @@ Most, hogy a Network Watcher-példány, elérhető szolgáltatások megismerése
 * [Csomagrögzítés](network-watcher-packet-capture-overview.md)
 * [IP-forgalom ellenőrzése](network-watcher-ip-flow-verify-overview.md)
 * [Következő ugrás](network-watcher-next-hop-overview.md)
-* [Biztonsági csoport nézet](network-watcher-security-group-view-overview.md)
+* [Biztonságicsoport-nézet](network-watcher-security-group-view-overview.md)
 * [NSG-t csoportforgalom naplózása](network-watcher-nsg-flow-logging-overview.md)
 * [Virtuális hálózati átjáró hibáinak elhárítása](network-watcher-troubleshoot-overview.md)
 

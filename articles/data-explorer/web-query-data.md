@@ -1,19 +1,18 @@
 ---
 title: 'Gyors útmutató: Az Azure Data Explorer adatok lekérdezése'
 description: Ennek a rövid útmutatónak a segítségével megtanulhatja, hogyan kérdezhet le és oszthat meg adatokat az Azure Data Explorerből.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 1774ae943dc96e07837a3cd155b5980ff732ceb4
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6b371cf9aeb55a92fc72357ad7dc6b2cbddcc058
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756138"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050560"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>Gyors útmutató: Az Azure Data Explorer adatok lekérdezése
 
@@ -193,4 +192,4 @@ Ebben a rövid útmutatóban nem hozott létre erőforrásokat, de ha el szeretn
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
+> [Az Azure Data Explorer lekérdezéseket írni](write-queries.md)

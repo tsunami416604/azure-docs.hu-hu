@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: ac4351bd2e125c922cb3044c1d06298b3ad6de97
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f00c816f34978ee2f14f16ee9882860750d0e658
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805057"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051886"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -28,6 +28,9 @@ A TRAFFIC Analytics egy felhőalapú megoldás, amely a felhőbeli hálózatok f
 - Biztonsági kockázatok azonosítása, és tegye biztonságossá hálózatát, például a nyitott portok, internet-hozzáférés és a virtual machines (VM) hálózatok támadó csatlakozik megkísérlő alkalmazások adatokkal.
 - Ismerje meg, flow forgalmat az Azure-régiók és az internethez, hogy a saját hálózati telepítéséhez a teljesítmény és a kapacitás optimalizálása.
 - Azonosíthatja a hálózati konfigurációs hibák és sikertelen kapcsolatokat a hálózaton.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="why-traffic-analytics"></a>Miért érdemes a traffic analytics?
 
@@ -133,7 +136,7 @@ Elemezze az adatforgalmat, hogy szüksége lesz egy meglévő a network watcher 
 A traffic analytics használata előtt újra kell regisztrálni a hálózati erőforrás-szolgáltató. Kattintson a **Kipróbálom** a következő kód mezőbe az Azure Cloud Shell megnyitásához. A Cloud Shell automatikusan naplózza, hogy az Azure-előfizetéshez. A Cloud Shell megnyitása után adja meg az újbóli regisztrációt a hálózati erőforrás-szolgáltató a következő parancsot:
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Network"
+Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
 ```
 
 ### <a name="select-a-network-security-group"></a>Válassza ki a hálózati biztonsági csoport
@@ -153,13 +156,13 @@ Mielőtt engedélyezné a flow naplózási beállításai, a következő feladat
 Az Azure Insights-szolgáltató regisztrálása a, ha még nincs regisztrálva van az előfizetéséhez:
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Insights
+Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
 Ha még nem rendelkezik Azure Storage-fiókot, az NSG-folyamat tárolására bejelentkezik, létre kell hoznia egy tárfiókot. A következő paranccsal is hozzon létre egy tárfiókot. A parancs futtatása előtt cserélje le a `<replace-with-your-unique-storage-account-name>` , egyedi el az összes Azure-helyen 3 – 24 karakter közötti hosszúságú, melynek neve használatával csak számokból és kisbetűkből állhat. Az erőforráscsoport neve, szükség esetén is módosíthatja.
 
 ```azurepowershell-interactive
-New-AzureRmStorageAccount `
+New-AzStorageAccount `
   -Location westcentralus `
   -Name <replace-with-your-unique-storage-account-name> `
   -ResourceGroupName myResourceGroup `
@@ -182,7 +185,7 @@ Válassza ki a következő beállításokat, amint a képen látható:
 
 Ismételje meg az előző lépéseket bármely más NSG-k, amelyhez hozzá szeretné a traffic analytics engedélyezéséhez. A folyamat-naplók továbbítja a munkaterület, ezért győződjön meg arról, hogy a helyi jogszabályoknak és előírásoknak, az Ön országában lehetővé teszik az adattárolás a régióban, ahol a munkaterület létezik.
 
-Traffic analytics segítségével is konfigurálhatja a [Set-AzureRmNetworkWatcherConfigFlowLog](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) PowerShell-parancsmagot az AzureRm PowerShell-modul verzióját 6.2.1 vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket.
+Traffic analytics segítségével is konfigurálhatja a [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) az Azure PowerShell PowerShell-parancsmagot. Futtatás `Get-Module -ListAvailable Az` a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
 ## <a name="view-traffic-analytics"></a>A traffic analytics megtekintése
 

@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 01/06/2019
+ms.date: 04/04/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 1fa9eaa5f4ba399622e0b8889ab722e4a4e130a0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7f501bf8496d1293a45c15908d4f2b21b6ed01d2
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770476"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045405"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -114,13 +114,13 @@ Az Azure Event Grid árképzése eseményenkénti fizetésen alapul, tehát a fi
 
 ## <a name="next-steps"></a>További lépések
 
-* [Storage Blob-események útválasztása](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
+* [A Blob Storage-események irányítása](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   Az Event Grid használatával válaszolhat a Storage Blob-eseményekre.
-* [Egyéni események: létrehozás és előfizetés](custom-event-quickstart.md)  
+* [Hozzon létre, és fizessen elő az egyéni események](custom-event-quickstart.md)  
   Lásson azonnal munkához, és küldje el saját egyéni eseményeit egy végpontra az Azure Event Grid rövid útmutatója alapján.
-* [A Logic Apps használata eseménykezelőként](monitor-virtual-machine-changes-event-grid-logic-app.md)  
+* [Egy eseménykezelőt a Logic Apps használatával](monitor-virtual-machine-changes-event-grid-logic-app.md)  
   Ez az oktatóanyag bemutatja egy olyan alkalmazás létrehozását a Logic Appsszel, amely az Event Grid által leküldött eseményekre reagál.
 * [Big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md)  
   Ez az oktatóanyag az Azure Functions használatával streameli az adatokat az Event Hubsból az SQL Data Warehouse-ba.
-* [Event Grid REST API-referencia](/rest/api/eventgrid)  
+* [Event Grid – REST API-referencia](/rest/api/eventgrid)  
   Segédanyagok biztosít esemény-előfizetések kezeléséhez útválasztást és a szűrést.

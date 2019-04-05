@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f922f940f6c579c8710dadec29b365e7cf4c7938
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6385838064c408ccfa23dacbd5785f8e82f3cc8b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577186"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049438"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows virtuális asztal előzetes verziója? 
 
@@ -54,12 +54,12 @@ Rendelje hozzá is, és csatlakoztatja a felhasználókat a virtuális asztali k
 
 Néhány dolgot végre kell Windows virtuális asztal beállítását, és sikeresen csatlakozott-e a Windows asztali számítógépek és az alkalmazások a felhasználók számára.
 
-Győződjön meg róla, az asztal és alkalmazások telepítését tervezi alapján a felhasználók számára a megfelelő licencekkel rendelkezik:
+Győződjön meg róla, hogy telepítette a [a megfelelő licencek](https://azure.microsoft.com/pricing/details/virtual-desktop/) az asztal és alkalmazások telepítését tervezi alapján a felhasználók számára:
 
 |Operációs rendszer|Licenc szükséges|
 |---|---|
-|Windows 10 Enterprise több munkamenetet vagy a Windows 10-es egyetlen munkamenet-|A Microsoft E3 csomag, E5, A3, a5 méretű, üzleti<br>Windows E3, E5, A3, a5 csomag|
-|Windows 7|A Microsoft E3 csomag, E5, A3, a5 méretű, üzleti<br>Windows E3, E5, A3, a5 csomag|
+|Windows 10 Enterprise több munkamenetet vagy a Windows 10-es egyetlen munkamenet-|Microsoft 365 E3, E5, A3, A5, Business, F1<br>Windows E3, E5, A3, a5 csomag|
+|Windows 7|Microsoft 365 E3, E5, A3, A5, Business, F1<br>Windows E3, E5, A3, a5 csomag|
 |Windows Server 2012 R2, 2016, 2019|A távoli asztali szolgáltatások ügyfél-hozzáférési licenc (CAL) frissítési garanciával rendelkező|
 
 Az infrastruktúra Windows virtuális asztal támogatásához a következőkre van szüksége:

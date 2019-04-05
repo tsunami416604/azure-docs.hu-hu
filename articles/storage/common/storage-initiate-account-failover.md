@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f582ef8cca3c36bad40f14026aea1ad422b6106f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fd8eecbd20446bfde8d3a7467e2982398c3b8c19
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668564"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044963"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Storage-fiók feladatátvétel (előzetes verzió)
 
@@ -23,6 +23,8 @@ Ez a cikk bemutatja, hogyan, hogy a tárfiók használata az Azure portal, Power
 
 > [!WARNING]
 > Egy fiók feladatátvételt általában kis mértékű adatvesztést eredményez. Egy fiók feladatátvételt megszegéseinek, és az adatvesztést előkészítése, tekintse át a [megismerheti a fiók feladatátvételi folyamatot](storage-disaster-recovery-guidance.md#understand-the-account-failover-process).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +37,7 @@ Egy fiók feladatátvételt az a tárfiók elvégzése előtt győződjön meg a
 
 Amikor egy fiók feladatátvételt kezdeményez a tárfiók, a DNS-rekordokat a másodlagos végpontot, hogy a másodlagos végpontra lesz az elsődleges végpont frissül. Győződjön meg arról, hogy megértette a lehetséges hatás a tárfiókhoz való feladatátvétel elindítása előtt.
 
-Mértékének becsléséhez nagy valószínűséggel adatvesztést előtt feladatátvételt kezdeményezni, ellenőrizze a **utolsó szinkronizálás időpontja** tulajdonság használatával a `Get-AzureRmStorageAccount` PowerShell-parancsmagot, és tartalmazzák a `-IncludeGeoReplicationStats` paraméter. Ezután ellenőrizze a `GeoReplicationStats` tulajdonság a fiókjához. 
+Mértékének becsléséhez nagy valószínűséggel adatvesztést előtt feladatátvételt kezdeményezni, ellenőrizze a **utolsó szinkronizálás időpontja** tulajdonság használatával a `Get-AzStorageAccount` PowerShell-parancsmagot, és tartalmazzák a `-IncludeGeoReplicationStats` paraméter. Ezután ellenőrizze a `GeoReplicationStats` tulajdonság a fiókjához. 
 
 A feladatátvétel után a tárfiók típusa automatikusan az új elsődleges régióban helyileg redundáns tárolás (LRS) alakítja át. Georedundáns tárolás (GRS) vagy írásvédett georedundáns tárolás (RA-GRS) a fiók újra engedélyezheti. Vegye figyelembe, hogy egy további költséget konvertáláskor LRS, GRS vagy RA-GRS áll. További információkért lásd: [adatforgalmi díjszabás részletei](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
@@ -105,5 +107,5 @@ az storage account failover \ --name accountName
 ## <a name="next-steps"></a>További lépések
 
 - [Katasztrófa utáni helyreállítás és a fiók feladatátvétel (előzetes verzió) az Azure Storage-ban](storage-disaster-recovery-guidance.md)
-- [Magas rendelkezésre állású alkalmazások tervezése az RA-GRS használatával](storage-designing-ha-apps-with-ragrs.md)
+- [RA-GRS használatával magas rendelkezésre állású alkalmazások tervezése](storage-designing-ha-apps-with-ragrs.md)
 - [Oktatóanyag: A Blob storage magas rendelkezésre állású alkalmazás létrehozása](../blobs/storage-create-geo-redundant-storage.md) 

@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: be0c1611856a1fa68d20696c32b5fadcd8572004
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793611"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049472"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Storsimple-höz készült szerepköralapú hozzáférés-vezérlés
 
 Ez a cikk az Azure szerepköralapú hozzáférés-vezérlés (RBAC) segítségével hogyan biztosítható a StorSimple eszköz rövid leírását. Az RBAC hozzáféréskezelést az Azure biztosít. Az RBAC használatával adja meg a StorSimple-felhasználók helyett mindenki számára a feladataik elvégzéséhez a hozzáférést csak a megfelelő mennyiségű ugyanolyan korlátlan hozzáféréssel. Hozzáférés-kezelés az Azure-ban az alapokat további információ: [szerepköralapú hozzáférés-vezérlés az Azure Portalon – első lépések](../role-based-access-control/overview.md).
 
 Ez a cikk vonatkozik, a StorSimple 8000 sorozatú eszközök Update 3.0 vagy később az Azure Portalon.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="rbac-roles-for-storsimple"></a>Storsimple-höz készült RBAC-szerepkörök
 
@@ -46,14 +48,14 @@ A következő példában a beépített szerepkörrel rendelkező módszertan **o
 
 2. Bejelentkezik az Azure-ba.
 
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 
 3. Az Olvasó szerepkör exportálása egy JSON-sablon a számítógépen.
 
     ```powershell
-    Get-AzureRMRoleDefinition -Name "Reader"
+    Get-AzRoleDefinition -Name "Reader"
 
-    Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+    Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
 4. Nyissa meg a JSON-fájlt a Visual Studióban. Láthatja, hogy egy tipikus RBAC szerepkör áll három fő szakaszra, **műveletek**, **NotActions**, és **AssignableScopes**.
@@ -62,7 +64,7 @@ A következő példában a beépített szerepkörrel rendelkező módszertan **o
 
     Használja a Powershellt, tekintse meg az összes erőforrás-szolgáltató elérhető és a regisztrált az előfizetésében.
 
-    `Get-AzureRMResourceProvider`
+    `Get-AzResourceProvider`
 
     Az összes elérhető PowerShell-parancsmagok az erőforrás-szolgáltatók kezelése is kereshet.
 
@@ -102,7 +104,7 @@ A következő példában a beépített szerepkörrel rendelkező módszertan **o
 
 6. Az egyéni RBAC szerepkör importálja vissza a környezetben.
 
-    `New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"`
+    `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 
 
 Ez a szerepkör meg kell jelennie a listában, a szerepkörök a **hozzáférés-vezérlés** panelen.
@@ -114,7 +116,7 @@ További információért ugorjon [egyéni szerepkörök](../role-based-access-c
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Az egyéni szerepkör létrehozása a PowerShell segítségével a kimeneti példa
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ```Output
@@ -127,7 +129,7 @@ CurrentStorageAccount :
 ```
 
 ```powershell
-Get-AzureRMRoleDefinition -Name "Reader"
+Get-AzRoleDefinition -Name "Reader"
 ```
 
 ```Output
@@ -141,8 +143,8 @@ AssignableScopes : {/}
 ```
 
 ```powershell
-Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
-New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"
+Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"
 ```
 
 ```Output

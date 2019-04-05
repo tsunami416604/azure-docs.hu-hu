@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: c26117bf298d5fe7fd8a14e0aa2b14834e412328
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6086c182763885b62f28ab093be2a7f3f8282b8a
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009930"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046308"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager – gyakori kérdések (GYIK)
 
@@ -309,7 +309,7 @@ Az Azure Resource Manager összes erőforráscsoportra adjon meg egy helyet, ame
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Hogyan állapítható meg minden végpont aktuális állapota?
 
-Az aktuális figyelési állapotát végpontot, a teljes profil mellett megjelenik az Azure Portalon. Ez az információ is a forgalmat figyelő keresztül érhető el [REST API-val](https://msdn.microsoft.com/library/azure/mt163667.aspx), [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager), és [platformfüggetlen Azure parancssori felület](../cli-install-nodejs.md).
+Az aktuális figyelési állapotát végpontot, a teljes profil mellett megjelenik az Azure Portalon. Ez az információ is a forgalmat figyelő keresztül érhető el [REST API-val](https://msdn.microsoft.com/library/azure/mt163667.aspx), [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.trafficmanager), és [platformfüggetlen Azure parancssori felület](../cli-install-nodejs.md).
 
 Az Azure Monitor segítségével nyomon követheti a végpontok állapotát, és tekintse meg a vizuális ábrázolását. Az Azure Monitor használatával kapcsolatos további információkért lásd: a [Azure Monitoring dokumentáció](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 

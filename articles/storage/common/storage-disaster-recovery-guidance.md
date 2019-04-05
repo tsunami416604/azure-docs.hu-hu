@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f0963e7f558de7b591576a49a74750d6697d7127
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 87499c1b71e243fe976e436b525e0150689d3aa1
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486054"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051189"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Katasztrófa utáni helyreállítás és a tárolási fiók feladatátvételi (előzetes verzió) az Azure Storage-ban
 
@@ -22,6 +22,9 @@ A Microsoft nagy hangsúlyt fektet a győződjön meg arról, hogy Azure-szolgá
 Azure Storage (előzetes verzió) fiók feladatátvételi georedundáns storage-fiókok támogatja. Fiók feladatátvétellel is kezdeményezhető a feladatátvételi folyamat a tárfiók, ha az elsődleges végpont elérhetetlenné válik. A feladatátvétel a másodlagos végpontot, hogy a tárfiók elsődleges végpontjába válnak frissíti. A feladatátvétel befejezése után az ügyfelek az új elsődleges végpontra tartalomkészítés elkezdéséhez.
 
 Ez a cikk ismerteti a fogalmakat és a folyamat vesz egy fiók feladatátvétellel, és ismerteti az ügyfél hatása a lehető legkevesebb helyreállítását készíti elő a tárfiók. Egy fiók feladatátvétel inicializálása az Azure Portalon vagy a PowerShell kezelésével kapcsolatos információkért lásd: [egy fiók feladatátvétel (előzetes verzió)](storage-initiate-account-failover.md).
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="choose-the-right-redundancy-option"></a>Válassza ki a megfelelő adatredundáns tárolási mód
 
@@ -122,14 +125,14 @@ Az előzetes verzió csak a nem éles használatra szolgál. Éles szolgáltatá
 Regisztráljon az előzetes verzióra, a következő parancsokat a PowerShellben. Ügyeljen arra, hogy lévő a helyőrzőt cserélje le a saját előfizetés-azonosító:
 
 ```powershell
-Connect-AzureRmAccount -SubscriptionId <subscription-id>
-Register-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
+Connect-AzAccount -SubscriptionId <subscription-id>
+Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 Az előzetes verzióra jóváhagyását 1-2 nap telhet. Győződjön meg arról, hogy a regisztrációban jóvá lett hagyva, futtassa a következő parancsot:
 
 ```powershell
-Get-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
+Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 ### <a name="additional-considerations"></a>Néhány fontos megjegyzés 
@@ -177,5 +180,5 @@ Szélsőséges esetben, ha egy régió jelentős katasztrófa miatt megszakadt, 
 ## <a name="see-also"></a>Lásd még
 
 * [Egy fiók feladatátvétel (előzetes verzió)](storage-initiate-account-failover.md)
-* [Magas rendelkezésre állású alkalmazások tervezése az RA-GRS használatával](storage-designing-ha-apps-with-ragrs.md)
+* [RA-GRS használatával magas rendelkezésre állású alkalmazások tervezése](storage-designing-ha-apps-with-ragrs.md)
 * [Oktatóanyag: A Blob storage magas rendelkezésre állású alkalmazás létrehozása](../blobs/storage-create-geo-redundant-storage.md) 

@@ -16,29 +16,32 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 0b6baec08470754c04aaa0bea2a3e6defe7fd91f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 895e29d9855372e418ad5ebf2a3949dc01ddb8de
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117855"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050492"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Nézet relatív késés-Azure-régiókhoz való adott helyekről
 
 Ebből az oktatóanyagból megtudhatja, hogyan használható az Azure [Network Watcher](network-watcher-monitoring-overview.md) szolgáltatás segítségével eldöntheti, hogy melyik Azure-régióban helyezze üzembe az alkalmazást vagy szolgáltatást, a felhasználó demográfiai alapján. Továbbá használhatja azt mérik a szolgáltatók kapcsolatok az Azure-bA.  
         
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="create-a-network-watcher"></a>A network watcher létrehozásához
 
 Ha már rendelkezik egy network watcher legalább egy Azure-ban [régió](https://azure.microsoft.com/regions), kihagyhatja a jelen szakaszban leírt műveletekhez. Hozzon létre egy erőforráscsoportot a hálózati figyelő. Ebben a példában az erőforráscsoport az USA keleti régiójában jön létre, de bármelyik Azure-régióban hozhat létre az erőforráscsoportot.
 
 ```powershell
-New-AzureRmResourceGroup -Name NetworkWatcherRG -Location eastus
+New-AzResourceGroup -Name NetworkWatcherRG -Location eastus
 ```
 
 A network watcher létrehozásához. Rendelkeznie kell legalább egy Azure-régióban létrehozott network watchert. Ebben a példában a network watchert a keleti velünk a Kapcsolatot Azure-régióban jön létre.
 
 ```powershell
-New-AzureRmNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
+New-AzNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
 ```
 
 ## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Egyetlen Azure-régióba relatív hálózati késések összehasonlítani egy adott helyen
@@ -46,7 +49,7 @@ New-AzureRmNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName Network
 Szolgáltatók kiértékelése és a egy felhasználó problémát jelent, mint például az "a hely nem volt," hibakeresést egy adott helyről, ahol a szolgáltatás üzembe helyezése az azure-régióban. Például a következő parancsot a Washington állam az Egyesült Államokban és a 13. 15., 2017 December között West US 2 Azure-régió között az átlagos relatív internetes szolgáltatás szolgáltató késések adja vissza:
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityReport `
+Get-AzNetworkWatcherReachabilityReport `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
   -Location "West US 2" `
@@ -109,7 +112,7 @@ A visszaadott értéke kimenetben **pontszám** régiók és szolgáltatók köz
 Ha egy adott hely és a egy adott Azure-régió az között a relatív késési megadása helyett `-Location`, szeretne meghatározni, hogy a relatív késési az összes Azure-régióban egy adott fizikai helyen, akkor ezt is megteheti. Például a következő parancs segítségével kiértékelheti milyen azure-régiót, a szolgáltatás üzembe helyezése, ha az elsődleges felhasználók Washington államban Comcast számára:
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityReport `
+Get-AzNetworkWatcherReachabilityReport `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
   -Provider "Comcast Cable Communications, LLC - ASN 7922" `
@@ -127,7 +130,7 @@ Get-AzureRmNetworkWatcherReachabilityReport `
 Adatok bizonyos internetszolgáltatók, országok, államok és városok érhető el. Az összes elérhető internetszolgáltatók listájának megtekintéséhez országok, államok és városok, megtekintheti az adatait, adja meg a következő parancsot:
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
+Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
 Adatok csak az országok, államok és városok az előző parancs által visszaadott számára érhető el. Az előző parancs megköveteli, hogy adjon meg egy meglévő hálózati figyelő. A megadott példa a *NetworkWatcher_eastus* network watcher nevű erőforráscsoportot a *NetworkWatcherRG*, de megadhat minden olyan meglévő hálózati figyelő. Ha egy meglévő a network watcher nincs, hozzon létre egyet a feladatok végrehajtásával [egy network watcher létrehozásához](#create-a-network-watcher). 
@@ -135,7 +138,7 @@ Adatok csak az országok, államok és városok az előző parancs által vissza
 Az előző parancs futtatása után a kimenet adott vissza érvényes értékeinek megadásával szűrheti **ország**, **állapot**, és **Város**, ha szükséges.  Írja be például a Seattle, Washington, elérhető internetszolgáltatók listájának megtekintéséhez az Egyesült Államokban, a következő parancsot:
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityProvidersList `
+Get-AzNetworkWatcherReachabilityProvidersList `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
   -City Seattle `

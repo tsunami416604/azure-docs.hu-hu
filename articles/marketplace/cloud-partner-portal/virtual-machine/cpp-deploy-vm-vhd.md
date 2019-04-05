@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a5b4e0465e83dec5620954998db329e7902fb59c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f37ab1b9eef5be4aff6e5f8aecebc3688592f040
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106049"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046682"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Virtuális gép üzembe helyezése a VHD-ből
 
@@ -32,13 +32,14 @@ Virtuálisgép-rendszerképek kapcsolatos további információkért tekintse me
 - [Virtuálisgép-lemezkép](https://azure.microsoft.com/blog/vm-image-blog-post/)
 - [VM-lemezkép PowerShell "How To:](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisite-install-the-necessary-tools"></a>Előfeltétel: a szükséges eszközök telepítése
 
 Ha még nem tette meg, telepítse az Azure PowerShell-lel és az Azure CLI, az alábbi utasítások szerint:
 
-- [Az Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)
-- [Telepítse az Azure CLI 2.0-t.](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Az Azure PowerShell telepítése](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+- [Telepítse az Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
 ## <a name="deployment-steps"></a>A központi telepítés lépései
@@ -61,7 +62,7 @@ A virtuális gép üzembe helyezését követően készen áll [igazolja, a Virt
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
-   |  **A paraméter**              |   **Leírás**                                                            |
+   |  **Paraméter**              |   **Leírás**                                                            |
    |  -------------              |   ---------------                                                            |
    | Felhasználói Tárfiók neve   | Ahol a általánosított virtuális merevlemez tárfiók neve                    |
    | Felhasználói tároló neve | Tároló neve, ahol az általánosított virtuális merevlemez                          |

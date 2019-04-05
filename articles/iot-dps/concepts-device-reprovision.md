@@ -3,29 +3,29 @@ title: Az Azure IoT Hub Device Provisioning Service reprovisioning eszköz fogal
 description: Ismerteti az Azure IoT Hub Device Provisioning Service fogalmak reprovisioning eszköz
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/14/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: f52e2a1095c329aabf44a846a644cc05548d4df3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+manager: philmea
+ms.openlocfilehash: fa8cb29f145c7658227f93d08a990c98563a0cfc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712279"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050849"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub Device reprovisioning fogalmak
 
 IoT-megoldás élettartama során szokás az eszközök IoT-központok között. Az erről az áthelyezésről okok a következők lehetnek a következő esetekben:
 
-* **Földrajzi hely meghatározásának / GeoLatency**: egy eszköz között helyezi át, mert az eszköz által növelése a hálózati késés közelebb IoT hubra át.
+* **Földrajzi hely meghatározásának / GeoLatency**: Eszköz helye között helyezi át, mert az eszköz által növelése a hálózati késés közelebb IoT hubra át.
 
-* **Több-bérlős**: Előfordulhat, hogy belül az IoT-megoldásban használt és egy új ügyfél vagy ügyfél telephelyén van rendelve egy eszközt. Az új ügyféllel előfordulhat, hogy szolgálja ki a különböző IoT hub használatával.
+* **Több-bérlős**: Előfordulhat, hogy egy eszköz belül az IoT-megoldásban használt és egy új ügyfél vagy ügyfél telephelyén van rendelve. Az új ügyféllel előfordulhat, hogy szolgálja ki a különböző IoT hub használatával.
 
-* **Megoldás módosítása**: eszköz sikerült áthelyezni egy új vagy frissített IoT-megoldás. Az újbóli hozzárendelést szükség lehet az eszköz kommunikáljon az egy új IoT hubot, amelyhez csatlakozik a többi háttérkomponensnek.
+* **Megoldás módosítása**: Sikerült áthelyezni egy eszközt egy új vagy frissített IoT-megoldás. Az újbóli hozzárendelést szükség lehet az eszköz kommunikáljon az egy új IoT hubot, amelyhez csatlakozik a többi háttérkomponensnek.
 
-* **Karantén**: hasonló, hogy a megoldás módosítása. Olyan eszköz, amely hibásan működik, sérült vagy elavult rendelésekor lehet egy IoT hubra, amely csak frissítse és megfelelőségi visszaszerzésében. Miután az eszköz megfelelően működik-e, azt rendelkezik majd vissza áttelepített a fő hub.
+* **Karantén**: Hasonló a megoldás módosítása. Olyan eszköz, amely hibásan működik, sérült vagy elavult rendelésekor lehet egy IoT hubra, amely csak frissítse és megfelelőségi visszaszerzésében. Miután az eszköz megfelelően működik-e, azt rendelkezik majd vissza áttelepített a fő hub.
 
 Belül a Device Provisioning Service-címeket támogatja ezen igények reprovisioning. Eszközök automatikusan máshoz lehessen az új IoT hubra a reprovisioning házirend, amely konfigurálva van az eszköz regisztrációs bejegyzés alapján.
 
@@ -51,17 +51,17 @@ A forgatókönyvtől függően szerint az eszköz IoT-központok között helyez
 
 A forgatókönyvtől függően egy eszköz általában egy kérést küld a kiépítési szolgáltatás példánya újraindítás. Manuálisan aktiválhatja az igény szerinti kiépítési módszert is támogatja. A regisztrációs bejegyzés reprovisioning házirend határozza meg, hogyan a device provisioning service-példány kezeli, ezek a kérelmek kiépítése. A szabályzat azt is meghatározza, e során reprovisioning eszköz állapotadatok kell áttelepíteni. Az ugyanazon házirend érhető el az egyéni regisztrációk és regisztrációs csoportok:
 
-* **Újbóli üzembe helyezése és az adatok áttelepítése**: Ez a házirend az alapértelmezett az új regisztrációs bejegyzés. Ez a szabályzat hajt végre műveletet, amikor regisztrációs bejegyzés társított eszközök küldjön új kérelmet (1). A regisztrációs bejegyzés konfigurációjától függően az eszköz lehet hozzárendelni egy másik IoT hubra. Ha az eszköz IoT-központok változnak, az eszköz regisztrációját, a kezdeti az IoT hub távolítja el. A frissített Eszközállapot-adatokat a kezdeti IoT hubról fog migráljuk az új IoT hub (2). Az áttelepítés során az eszköz állapota nem szerepel, **hozzárendelése**.
+* **Újbóli üzembe helyezése és az adatok áttelepítése**: Ez a házirend az alapértelmezett érték az új regisztrációs bejegyzéseket. Ez a szabályzat hajt végre műveletet, amikor regisztrációs bejegyzés társított eszközök küldjön új kérelmet (1). A regisztrációs bejegyzés konfigurációjától függően az eszköz lehet hozzárendelni egy másik IoT hubra. Ha az eszköz IoT-központok változnak, az eszköz regisztrációját, a kezdeti az IoT hub távolítja el. A frissített Eszközállapot-adatokat a kezdeti IoT hubról fog migráljuk az új IoT hub (2). Az áttelepítés során az eszköz állapota nem szerepel, **hozzárendelése**.
 
     ![A Device Provisioning Service-mel](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* **Újbóli üzembe helyezése és a kezdeti konfiguráció alaphelyzetbe**: Ez a szabályzat művelet vesz igénybe, amikor regisztrációs bejegyzés társított eszközök elküld egy új kiépítési kérést (1). A regisztrációs bejegyzés konfigurációjától függően az eszköz lehet hozzárendelni egy másik IoT hubra. Ha az eszköz IoT-központok változnak, az eszköz regisztrációját, a kezdeti az IoT hub távolítja el. A kezdeti konfigurációs adatokat (2) az új IoT hub által biztosított a kiépítési szolgáltatás példány kapta, amikor az eszköz lett üzembe helyezve. Az áttelepítés során az eszköz állapota nem szerepel, **hozzárendelése**.
+* **Újbóli üzembe helyezése és a kezdeti konfiguráció alaphelyzetbe**: Ez a szabályzat hajt végre műveletet, amikor regisztrációs bejegyzés társított eszközök elküld egy új kiépítési kérést (1). A regisztrációs bejegyzés konfigurációjától függően az eszköz lehet hozzárendelni egy másik IoT hubra. Ha az eszköz IoT-központok változnak, az eszköz regisztrációját, a kezdeti az IoT hub távolítja el. A kezdeti konfigurációs adatokat (2) az új IoT hub által biztosított a kiépítési szolgáltatás példány kapta, amikor az eszköz lett üzembe helyezve. Az áttelepítés során az eszköz állapota nem szerepel, **hozzárendelése**.
 
     Ez a szabályzat gyakran használják a gyári beállításokat az IoT-központok módosítása nélkül.
 
     ![A Device Provisioning Service-mel](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
-* **Soha ne újbóli létesítéséhez**: az eszköz soha nem rendelve egy másik központ. Ez a házirend kezeléséhez a visszamenőleges kompatibilitás biztosítunk.
+* **Soha ne újbóli létesítéséhez**: Az eszköz soha nem van rendelve egy másik központ. Ez a házirend kezeléséhez a visszamenőleges kompatibilitás biztosítunk.
 
 ### <a name="managing-backwards-compatibility"></a>Visszamenőleges kompatibilitási kezelése
 
@@ -81,7 +81,7 @@ Az alábbi folyamatábra segít megjelenítése a viselkedés megléte esetén:
 
 Az alábbi táblázat a rendelkezésre állási reprovisioning natív támogatást az API-verziókban a Device Provisioning Service-ben:
 
-| REST API | C SDK-T | Python SDK |  Node SDK | Java SDK | .NET SDK |
+| REST API | C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
 | -------- | ----- | ---------- | --------- | -------- | -------- |
 | [2018-04-01-es vagy korábbi kiadásai](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 és korábbi verziók](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 és korábbi verziók](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 vagy régebbi](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 vagy régebbi](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0-ás vagy korábbi](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
 

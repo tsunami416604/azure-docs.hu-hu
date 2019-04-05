@@ -3,17 +3,17 @@ title: Azure IoT Hub-feladatok ismertetése |} A Microsoft Docs
 description: Az IoT hub fejlesztői útmutató – több eszközön futtatandó feladatok ütemezése csatlakoztatva. Feladatok frissítheti a címkéket és kívánt tulajdonságok és több eszközön közvetlen metódusok meghívása.
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.openlocfilehash: c2b05b1854b4f1d7ee4ac65ebe635330ba8c604e
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: aacb0ab69dad45f9ca7655daaae0c2acff0403f5
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011364"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044372"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Feladatok ütemezése több eszközön
 
@@ -121,7 +121,7 @@ Az alábbi lista a tulajdonságait, és a vonatkozó leírásokat, amely haszná
 | **type** |Feladatok típusai: |
 | | **scheduledUpdateTwin**: Egy feladat, kívánt tulajdonságok vagy címkék frissítése. |
 | | **scheduledDeviceMethod**: Ikereszközök különböző eszköz metódus meghívásához használt feladat. |
-| **Állapot** |A feladat jelenlegi állapota. Lehetséges értékek a állapota: |
+| **status** |A feladat jelenlegi állapota. Lehetséges értékek a állapota: |
 | | **Függőben lévő**: Ütemezett és váró észlelnie kell a feladatokat végző szolgáltatás. |
 | | **Ütemezett**: Ütemezi későbbi időpontra. |
 | | **Futó**: A jelenleg aktív feladat. |

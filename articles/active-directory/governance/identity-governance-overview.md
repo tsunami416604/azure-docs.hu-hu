@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7872a43d5000ddb1ba581f76358c8001902ab56b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e4e2f564de254c2aea779b30286183d0a4e17db6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579716"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045484"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure ad-ben identitáskezelést?
 
@@ -56,7 +56,7 @@ Egy folyamatot, hogy milyen eredetileg kiosztott egy felhasználó a felhasznál
 
 Szervezetek számára a hozzáférés életciklus folyamat technológiákkal például automatizálható [dinamikus csoportok](../users-groups-roles/groups-dynamic-membership.md), összekapcsolt az való [SaaS-alkalmazások](../saas-apps/tutorial-list.md) vagy [alkalmazások integrált SCIM-mel](../manage-apps/use-scim-to-provision-users-and-groups.md).  Szervezetek is meghatározhatja, amely [vendég felhasználók férhetnek hozzá a helyszíni alkalmazások](../b2b/hybrid-cloud-to-on-premises.md).  Ezek a hozzáférési jogok is, majd rendszeresen ismétlődő használata vizsgálni [az Azure AD hozzáférési felülvizsgálatok](access-reviews-overview.md).
 
-Amikor egy felhasználó megpróbál hozzáférni az alkalmazásokhoz, az Azure ad-ben kényszerít [feltételes hozzáférési](/azure/active-directory/conditional-access/) házirendeket. Például a feltételes hozzáférési szabályzatok lehetnek megjelenítése egy [használati feltételeket tartalmazó fájl](active-directory-tou.md) és [biztosítása a felhasználó hozzájárult ezeket a kifejezéseket](../conditional-access/require-tou.md) előtt nem tudnak hozzáférni az alkalmazáshoz.
+Amikor egy felhasználó megpróbál hozzáférni az alkalmazásokhoz, az Azure ad-ben kényszerít [feltételes hozzáférési](/azure/active-directory/conditional-access/) házirendeket. Például a feltételes hozzáférési szabályzatok lehetnek megjelenítése egy [használati feltételeket tartalmazó fájl](../conditional-access/terms-of-use.md) és [biztosítása a felhasználó hozzájárult ezeket a kifejezéseket](../conditional-access/require-tou.md) előtt nem tudnak hozzáférni az alkalmazáshoz.
 
 ## <a name="privileged-access-lifecycle"></a>Emelt szintű hozzáférés életciklusa
 
@@ -69,19 +69,19 @@ Az Azure AD Privileged Identity Management (PIM) szabott több eszközt biztosí
 Nem áll fenn tökéletes megoldás vagy javaslat, minden ügyfél számára, miközben a következő konfigurációk biztosítanak egy útmutató, amellyel a Microsoft azt javasolja, annak biztosítására, egy további biztonságosan és hatékonyan munkaerő alapkonfiguráció szabályzatokat.
 
 - [Identitás- és eszköz-hozzáférési konfigurációk](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Emelt szintű hozzáférés biztonsága](../users-groups-roles/directory-admin-roles-secure.md)
+- [Emelt szintű hozzáférés biztonságossá tétele](../users-groups-roles/directory-admin-roles-secure.md)
 
 
 ### <a name="access-reviews"></a>Hozzáférési felülvizsgálatok
 
 - [Mi az a hozzáférési felülvizsgálat?](access-reviews-overview.md)
-- [Felhasználói hozzáférés kezelése hozzáférési felülvizsgálatokkal](manage-user-access-with-access-reviews.md)
-- [Vendéghozzáférés kezelése hozzáférési felülvizsgálatokkal](manage-guest-access-with-access-reviews.md)
+- [A hozzáférési felülvizsgálatok felhasználói hozzáférés felügyelete](manage-user-access-with-access-reviews.md)
+- [Vendéghozzáférés hozzáférési felülvizsgálatokkal kezelése](manage-guest-access-with-access-reviews.md)
 - [Az Azure AD-szerepkörök hozzáférési felülvizsgálat indítása](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>Használati feltételek
 
-- [Mire használhatom a Használati feltételek funkciót?](active-directory-tou.md)
+- [Mire használhatom a Használati feltételek funkciót?](../conditional-access/terms-of-use.md)
 
 ### <a name="privileged-identity-management"></a>Privileged identity management
 

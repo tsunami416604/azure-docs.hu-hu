@@ -1,20 +1,18 @@
 ---
 title: 'Gyors útmutató: Azure-Blobok tölti be az Azure Data Explorer'
 description: Ez a rövid útmutatóban megismerheti, hogyan tárolási fiók adatokat küldeni az Azure Data Explorer Event Grid-előfizetés használatával.
-services: data-explorer
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 1/30/2019
-Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
-ms.openlocfilehash: 8efe8b95b09fa8b4de16c08345699cee88e11285
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 01/30/2019
+ms.openlocfilehash: 19db47610449ced45fa61610bbe964042e815c7a
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756436"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051852"
 ---
 # <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Gyors útmutató: Blobok tölti be az adatkezelőt az Azure Event Grid értesítések való feliratkozással
 
@@ -42,11 +40,11 @@ Ebben a rövid útmutató beállítani egy [Azure Event Grid](/azure/event-grid/
     |---|---|---|
     | Name (Név) | *test-grid-connection* | Az event griddel, hogy a létrehozni kívánt nevére.|
     | Eseményséma | *Event Grid-séma* | A séma, amely az event grid kell használni. |
-    | Témakörtípus | *Storage-fiók* | Az event grid-témakör típusa. |
+    | Témakörtípus | *Tárfiók* | Az event grid-témakör típusa. |
     | Témakörerőforrás | *gridteststorage* | A tárfiók neve. |
-    | Előfizetés az összes eseménytípusra | *clear* | Nem minden eseményt a értesítést kaphat. |
-    | Definiált eseménytípusok | *Létrehozott BLOB* | Értesítés küldése a meghatározott események. |
-    | Végpont típusa | *Az Event hubs* | A végpont, amelyhez az események küldése típusa. |
+    | Előfizetés az összes eseménytípusra | *törlés* | Nem minden eseményt a értesítést kaphat. |
+    | Definiált eseménytípusok | *Létrehozott blob* | Értesítés küldése a meghatározott események. |
+    | Végpont típusa | *Event Hubs* | A végpont, amelyhez az események küldése típusa. |
     | Végpont | *test-hub* | A létrehozott eseményközpont. |
     | | |
 
@@ -199,4 +197,4 @@ Ha nem szeretné újra használni az event griddel, tisztítása **test-hub-rg**
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+> [Gyors útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)

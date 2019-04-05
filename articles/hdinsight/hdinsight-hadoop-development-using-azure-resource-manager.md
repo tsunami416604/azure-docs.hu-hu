@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 501f215ae3daf24db6307b4f8afb0c7d3271d8a5
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 2c64019ae667ff4a2ce0694ffc4a9cd69b9116b3
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361863"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048919"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Áttelepítés az Azure Resource Manager-alapú fejlesztői eszközöket a HDInsight-fürtök
 
@@ -94,7 +94,7 @@ A HDInsight-parancsmagok használata előtt Azure-fiókjához csatlakozhat, és 
 ### <a name="renamed-cmdlets"></a>Átnevezett parancsmagok
 A HDInsight ASM-parancsmagok a Windows PowerShell-konzol megjelenítése:
 
-    help *azurermhdinsight*
+    help *azurehdinsight*
 
 Az alábbi táblázat az ASM-parancsmagok és a Resource Manager módban nevét:
 
@@ -180,7 +180,7 @@ Régi parancs (ASM):
         -SshCredential $sshCredentials
 
 
-**Fürt törlése**
+**A fürt törlése**
 
 Régi parancs (ASM):
 

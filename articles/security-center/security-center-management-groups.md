@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3282afb87672ba25294e65ea1474a9e06df03362
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871062"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045764"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Összes bérlőre vonatkozó információk megjelenítése az Azure Security Centerben
 Ez a cikk használatának megkezdésébe vezeti be, amely az Azure Security Center biztosít előnyök maximalizálása és több művelet végrehajtásával. Ezek a műveletek végrehajtása lehetővé teszi, hogy nagyobb láthatóságot érhet el az összes Azure-előfizetések vannak kapcsolva, az Azure Active Directory-bérlőhöz, és hatékonyan kezelheti a szervezet biztonsági állapotáról, ipari méretekben több biztonsági házirendek alkalmazásával előfizetések aggregative módon.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="management-groups"></a>Felügyeleti csoportok
 Az Azure felügyeleti csoportok lehetővé teszi, hogy hatékonyan kezelheti a hozzáférést, a házirendek és a csoportok előfizetések-jelentések, valamint hatékonyan kezelheti a teljes Azure hagyatéki műveletek végrehajtásával a legfelső szintű felügyeleti csoporton. Minden egyes Azure AD-bérlőt kap egy legfelső szintű felügyeleti csoport gyökérszintű felügyeleti csoport neve. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a csoport lehetővé teszi a globális szabályzatok és az RBAC-hozzárendeléseket a könyvtár szintjén alkalmazható. 
@@ -188,7 +191,7 @@ A felügyeleti csoport létrehozott előfizetések adhat hozzá. Ezeket a lépé
 Ebben a cikkben megtanulta, hogyan figyelheti az Azure Security Center a bérlői szintű. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 > [!div class="nextstepaction"]
-> [Biztonsági állapot monitorozása az Azure Security Centerben](security-center-monitoring.md)
+> [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md)
 
 > [!div class="nextstepaction"]
 > [Kezelése és válaszadás a biztonsági riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)

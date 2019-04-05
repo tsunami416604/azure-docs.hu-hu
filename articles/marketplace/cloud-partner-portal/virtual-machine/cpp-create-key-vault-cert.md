@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 4223f9ec3bfaeacf7843508b13b5b5d81474311f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a25418f30225184424011527def468d0d3909563
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197012"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045696"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Tanúsítványok létrehozása az Azure Key Vault
 
@@ -32,11 +32,14 @@ Ez a cikk azt ismerteti, hogyan építheti ki az Azure-ban üzemeltetett virtuá
 Ezt a munkát használhatja az új vagy meglévő Azure-erőforráscsoportban.  A korábbi megközelítés a következő magyarázatot használatban van.
 
 
+
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
+
 ## <a name="create-the-certificate"></a>A tanúsítvány létrehozása
 
 Szerkessze és futtassa a következő Azure Powershell-parancsprogram létrehozásához a tanúsítványfájlt (.pfx) a helyi mappában.  Cserélje le a következő paraméterek értékeit kell:
 
-|  **A paraméter**        |   **Leírás**                                                               |
+|  **Paraméter**        |   **Leírás**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$certroopath` | A .pfx fájlt a helyi mappa  |
 | `$location`    | Az Azure standard földrajzi helyek egyikén  |
@@ -82,7 +85,7 @@ Szerkessze és futtassa a következő Azure Powershell-parancsprogram létrehoz�
 
 Másolja ki a tartalmát a [központi telepítési sablont a key vault](./cpp-key-vault-deploy-template.md) egy fájl a helyi gépen. (az alábbi példa parancsprogram, ehhez az erőforráshoz van `C:\certLocation\keyvault.json`.)  Szerkessze és futtassa a következő Azure Powershell-parancsfájlt hozhat létre egy Azure Key Vault-példány és a társított erőforráscsoportokhoz.  Cserélje le a következő paraméterek értékeit kell:
 
-|  **A paraméter**        |   **Leírás**                                                               |
+|  **Paraméter**        |   **Leírás**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$postfix`            | Üzembe helyezés azonosítók hozzáfűzi tetszőleges numerikus karakterlánc                     |
 | `$rgName`             | Hozhat létre Azure-erőforrás (RG) csoport neve                                        |
@@ -130,7 +133,7 @@ Másolja ki a tartalmát a [központi telepítési sablont a key vault](./cpp-ke
         $id = $accountSelected.Id
                               
         Write-Host "User $id Selected"
-        $myobjectId=(Get-AzureRmADUser -Mail $id)[0].Id
+        $myobjectId=(Get-AzADUser -Mail $id)[0].Id
       }
       catch
       {
@@ -181,9 +184,9 @@ Másolja ki a tartalmát a [központi telepítési sablont a key vault](./cpp-ke
      Write-Host "-----------------------------------" 
     
     # Create key vault and configure access
-    New-AzureRmResourceGroupDeployment -Name "kvdeploy$postfix" -ResourceGroupName $rgName -TemplateFile $kvTemplateJson -keyVaultName $kvname -tenantId $mytenantId -objectId $myobjectId
+    New-AzResourceGroupDeployment -Name "kvdeploy$postfix" -ResourceGroupName $rgName -TemplateFile $kvTemplateJson -keyVaultName $kvname -tenantId $mytenantId -objectId $myobjectId
     
-    Set-AzureRmKeyVaultAccessPolicy -VaultName $kvname -ObjectId $myobjectId -PermissionsToKeys all -PermissionsToSecrets all 
+    Set-AzKeyVaultAccessPolicy -VaultName $kvname -ObjectId $myobjectId -PermissionsToKeys all -PermissionsToSecrets all 
         
 ```
 
