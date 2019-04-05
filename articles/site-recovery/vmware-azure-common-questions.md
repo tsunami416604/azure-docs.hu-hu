@@ -8,17 +8,16 @@ services: site-recovery
 ms.date: 03/21/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: cdb8fe5deb71c014f7e0af01d070e5004d8c9994
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 4237e259d1ba9cb826d89eba212b6931d933626d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418789"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051920"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
 Ez a cikk gyakori kérdéseket, láthatjuk, a helyszíni VMware virtuális gépek vészhelyreállítása az Azure-bA telepítésekor. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
-
 
 ## <a name="general"></a>Általános kérdések
 ### <a name="how-is-site-recovery-priced"></a>Hogyan van a Site Recovery díjszabása?
@@ -284,8 +283,8 @@ Telepíti az egyes virtuális Gépeken szeretne replikálni, használatával egy
 ### <a name="what-access-does-site-recovery-need-to-vmware-servers"></a>Milyen hozzáférést kell a Site Recovery VMware-kiszolgálók?
 A Site Recoverynek hozzáféréssel kell rendelkeznie a VMware-kiszolgálókhoz az alábbiak érdekében:
 
-- Állítsa be a VMware virtuális gép fut a konfigurációs kiszolgálót, és a helyszíni Site Recovery egyéb összetevőit. [További információ](vmware-azure-deploy-configuration-server.md)
-- Replikáció a virtuális gépek felderítéséhez. Ismerje meg a fiók előkészítése automatikus felderítéshez. [További információ](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)
+- Állítsa be a VMware virtuális gép fut a konfigurációs kiszolgálót, és a helyszíni Site Recovery egyéb összetevőit. [Részletek](vmware-azure-deploy-configuration-server.md)
+- Replikáció a virtuális gépek felderítéséhez. Ismerje meg a fiók előkészítése automatikus felderítéshez. [Részletek](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)
 
 
 ### <a name="what-access-does-site-recovery-need-to-vmware-vms"></a>Milyen hozzáférést kell a Site Recovery VMware virtuális gépeket?
@@ -317,13 +316,13 @@ Erősen ajánlott a folyamatkiszolgáló létrehozása az Azure-ban feladat-viss
 VMware-ről az Azure-bA a legrégebbi helyreállítási pont használható érték 72 óra.
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Hogyan érhetem el az Azure virtuális gépek a feladatátvételt követően
-A feladatátvételt követően elérheti az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, egy helyek közötti VPN-kapcsolaton keresztül, vagy Azure expressroute-on keresztül. Készítse elő a számos dolgot, hogy csatlakozni kell. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
+A feladatátvételt követően elérheti az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, egy helyek közötti VPN-kapcsolaton keresztül, vagy Azure expressroute-on keresztül. Készítse elő a számos dolgot, hogy csatlakozni kell. [Részletek](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 
 ### <a name="is-failed-over-data-resilient"></a>Nem sikerült rugalmas adatokon?
 Az Azure-t hibatűrőnek terveztük. A Site Recovery a feladatátvétel egy másodlagos Azure adatközpontba, az Azure SLA kategóriában. Feladatátvétel esetén biztosítjuk, hogy a metaadatokat, és a tárolók maradjanak ugyanabban a földrajzi régióban, a tároló számára is választott.
 
 ### <a name="is-failover-automatic"></a>Automatikus a feladatátvétel?
-[Feladatátvétel](site-recovery-failover.md) nem automatikus. A portálon egyetlen kattintással feladatátvételt, vagy használhat [PowerShell](/powershell/module/azurerm.siterecovery) feladatátvétel indításához.
+[Feladatátvétel](site-recovery-failover.md) nem automatikus. A portálon egyetlen kattintással feladatátvételt, vagy használhat [PowerShell](/powershell/module/az.recoveryservices) feladatátvétel indításához.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>E visszaadhatja egy másik helyre?
 Igen, ha az Azure-bA feladatátvétel, visszaadhatja a másik helyet, ha az eredeti kapcsolatot nem érhető el. [További információk](concepts-types-of-failback.md#alternate-location-recovery-alr).
