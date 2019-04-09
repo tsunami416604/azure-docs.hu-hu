@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5213affe953636c46486614ee2a020d7727e1478
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: d2de802b2170feb6130cdce8007e16cc37561f5e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407515"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265389"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Az Azure Resource Manager üzembe helyezési mód
 
@@ -28,11 +28,13 @@ Mindkét mód esetében az erőforrás-kezelő megpróbálja létrehozni a sablo
 
 Resource Manager a teljes módban **törli** erőforráscsoportban létezik, de nem a sablonban megadott erőforrások. Erőforrások, amelyek a sablonban megadott, de nincs telepítve, mert egy [feltétel](resource-group-authoring-templates.md#condition) kifejezés hamis, a rendszer nem törli.
 
-Van néhány különbség hogyan kezelik az erőforrástípusok a teljes mód törlések. Szülő erőforrások telepítésekor nem a sablon, amely teljes körű módban automatikusan törlődnek. Néhány gyermekerőforrásait automatikusan nem, amely a sablon nem törlődnek. A gyermek-erőforrás azonban akkor is törlődik, ha a szülő erőforrás törléséig. 
+Nincsenek eltérések hogyan kezelik az erőforrástípusok a teljes mód törlések. Szülő erőforrások telepítésekor nem a sablon, amely teljes körű módban automatikusan törlődnek. Néhány gyermekerőforrásait automatikusan nem, amely a sablon nem törlődnek. Ezek gyermekerőforrásait azonban akkor is törlődik, ha a szülő erőforrás törléséig. 
 
 Például az erőforráscsoport tartalmazza a DNS-zóna (Microsoft.Network/dnsZones erőforrás típusa) és a egy CNAME-rekordot (Microsoft.Network/dnsZones/CNAME erőforrástípus), a DNS-zóna-e a CNAME rekord a szülő erőforrás. Ha üzembe helyezés a teljes módban, és a sablon ne tartalmazza a DNS-zóna, a DNS-zóna és a CNAME-rekordot is törlődik. Ha a DNS-zónát tartalmazza a sablonban szereplő, de nem tartalmazza a CNAME rekord, a CNAME nem törlődik. 
 
 Hogyan erőforrástípusok kezeli a törlés listáját lásd: [törlése az Azure-erőforrások teljes üzemmód központi telepítésekhez](complete-mode-deletion.md).
+
+Ha az erőforráscsoport [zárolva](resource-group-lock-resources.md), teljes körű mód nem törli az erőforrásokat.
 
 > [!NOTE]
 > Csak a legfelső szintű sablonok támogatja a teljes üzembe helyezési módot. A [sablonok beágyazott vagy kapcsolódó](resource-group-linked-templates.md), növekményes módot kell használnia. 

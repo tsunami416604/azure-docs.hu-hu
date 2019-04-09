@@ -1,22 +1,22 @@
 ---
 title: Tudásbázisok – QnA Maker áttelepítése
 titleSuffix: Azure Cognitive Services
-description: Helyezze át az új Tudásbázis a QnA Maker létrehozott Tudásbázis.
+description: Tudásbázis áttelepítése igényel, egy Tudásbázis exportálása, majd egy másik való importálásakor.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 04/08/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: e91f41633bf6cf6581c237e7634150a5b92746a7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245915"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264318"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Exportálás-importálás segítségével Tudásbázis áttelepítése
 
@@ -48,10 +48,10 @@ Tudásbázis áttelepítése igényel, egy Tudásbázis exportálása, majd egy 
    ![Importálás Tudásbázis](../media/qnamaker-how-to-migrate-kb/Import.png)
 
 1. **Teszt** az új Tudásbázis a teszt panelt. Ismerje meg, hogyan [a Tudásbázis tesztelése](../How-To/test-knowledge-base.md).
-1. **Közzététel** a Tudásbázis. Ismerje meg, hogyan [közzéteheti a tudásbázist](../How-To/publish-knowledge-base.md).
+1. **Közzététel** a Tudásbázis. Ismerje meg, hogyan [közzéteheti a tudásbázist](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 1. A végpontot használja az alkalmazás vagy robot kódjában. Itt látható, hogyan [hozzon létre egy QnA robotot](../Tutorials/create-qna-bot.md).
 
-    ![A QnA Maker értékek](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
+    ![A QnA Maker értékek](../media/qnamaker-how-to-migrate-kb/qnamaker-settings-kbid-key.png)
 
     Ezen a ponton minden a Tudásbázis-tartalmat – kérdések, válaszok és metaadatokat, és a forrásfájlok az URL-címeket, nevét és az új Tudásbázis importálásakor. 
 

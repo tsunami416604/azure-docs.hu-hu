@@ -1,7 +1,7 @@
 ---
 title: A Python fejlesztési környezet beállítása
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, a fejlesztési környezet konfigurálása az Azure Machine Learning szolgáltatáshoz való munka során. Ebből a cikkből megismerheti, hogyan Conda-környezetek használata, konfigurációs fájljainak létrehozása és konfigurálása a Jupyter notebookok, Azure notebookok, az Azure Databricks, ide-ket, kód szerkesztők és az adatelemző virtuális gép.
+description: Ismerje meg, a fejlesztési környezet konfigurálása az Azure Machine Learning szolgáltatáshoz való munka során. Ebből a cikkből elsajátíthatja Conda-környezetek használata, konfigurációs fájljainak létrehozása és konfigurálása saját felhőalapú notebook server, Jupyter notebookok, az Azure Databricks, Azure notebookok, ide-ket, kód szerkesztők és az adatelemző virtuális gép.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: c4bdeb4e00a59d6ba2b415801c0689d77ed9a825
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 4aabf15478a6f8e688ea591832ca325f53144df8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577560"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263196"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -26,7 +26,7 @@ A fejlesztési környezet csak követelményei a Python 3, az Anaconda (az elkü
 
 Ez a cikk elsősorban a következő környezetekben és eszközöket:
 
-* Az Azure notebookok: A Jupyter notebookok az Azure-felhőben üzemeltetett szolgáltatás. Első lépésként a legegyszerűbb módja,, mert az Azure Machine Learning SDK már telepítve van.
+* A saját [felhőalapú notebook server](#workstation): A munkaállomás számítási erőforrás használatával futtatása a Jupyter notebooks. Első lépésként a legegyszerűbb módja,, mert az Azure Machine Learning SDK már telepítve van.
 
 * [Az adatelemző virtuális gép (DSVM)](#dsvm): Egy előre konfigurált fejlesztői és kísérleti környezet az Azure-felhőben, amely a data science munkahelyi készült, és csak Virtuálisgép-példányok CPU vagy a GPU-alapú példányok is telepíthető. Python 3, Conda, a Jupyter notebookok és az Azure Machine Learning SDK már telepítve vannak. A virtuális gép együttműködik a népszerű machine learning és a deep learning-keretrendszerek, eszközök és -szerkesztők, gépi tanulási megoldások fejlesztéséhez. Fontos valószínűleg a legteljesebb körű fejlesztői környezet, a machine learning az Azure platformon.
 
@@ -36,16 +36,19 @@ Ez a cikk elsősorban a következő környezetekben és eszközöket:
 
 * [Az Azure Databricks](#aml-databricks): Egy népszerű elemzési platform, amely az Apache Spark alapul. Ismerje meg, hogyan tehet szert az Azure Machine Learning SDK alakzatot a fürthöz úgy, hogy a modellek üzembe helyezése.
 
+* [Az Azure notebookok](#aznotebooks): A Jupyter notebookok az Azure-felhőben üzemeltetett szolgáltatás. Emellett egyszerűen a kezdéshez, mert az Azure Machine Learning SDK már telepítve van.  
+
 Ha már a Python 3-környezettel rendelkezik, vagy csak szeretné, az SDK telepítésének alapvető lépéseit, tekintse meg a [helyi számítógép](#local) szakaszban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásához lásd: [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](setup-create-workspace.md).
 
-- Vagy a [Anaconda](https://www.anaconda.com/download/) vagy [Miniconda](https://conda.io/miniconda.html) Csomagkezelő.
+Munkaterület ennyire szüksége a kezdéshez a saját [felhőalapú notebook server](#workstation), amely egy [DSVM](#dsvm), [Azure Databricks](#aml-databricks), vagy [Azure notebookok](#aznotebooks).
 
-    > [!IMPORTANT]
-    > Anaconda és Miniconda nem szükséges, ha Azure notebookok használata.
+Az SDK környezet telepítése a [helyi számítógép](#local), [Jupyter Notebook server](#jupyter) vagy [Visual Studio Code](#vscode) is szükség van:
+
+- Vagy a [Anaconda](https://www.anaconda.com/download/) vagy [Miniconda](https://conda.io/miniconda.html) Csomagkezelő.
 
 - Linux vagy MacOS rendszeren szüksége lesz a bash felületet.
 
@@ -54,16 +57,16 @@ Ha már a Python 3-környezettel rendelkezik, vagy csak szeretné, az SDK telep�
 
 - A Windows, a parancssort vagy szükséges Anaconda parancssort (telepített Anaconda és Miniconda).
 
-## <a id="aznotebooks"></a>Az Azure notebookok
+## <a id="workstation"></a>A saját felhőalapú notebook server
 
-[Az Azure notebookok](https://notebooks.azure.com) (előzetes verzió) egy interaktív fejlesztési környezetben az Azure-felhőben. Ismerkedés az Azure Machine Learning fejlesztési legegyszerűbb módja.
+Hozzon létre egy jegyzetfüzetet kiszolgáló a legegyszerűbb módja az Azure Machine Learning-fejlesztés – első lépések az Azure Machine Learning-munkaterület.
 
 * Az Azure Machine Learning SDK már telepítve van.
-* Miután létrehozott egy Azure Machine Learning szolgáltatás munkaterület az Azure Portalon, kattintson a egy gombot, amellyel automatikusan konfigurálja a jegyzetfüzetet az Azure-környezet a munkaterülethez.
+* A munkaállomás-környezetet a rendszer automatikusan konfigurálja a munkaterület dolgozhat.
+* Az erőforrás érhető el, és kezelheti a munkaterületen
 
-Bevezetés az Azure-jegyzetfüzetek történő fejlesztésbe, lásd: [Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-run-cloud-notebook.md).
+Bevezetés a felhőalapú notebook server történő fejlesztésbe, lásd: [Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-run-cloud-notebook.md).
 
-Alapértelmezés szerint az Azure-jegyzetfüzetek használja, amely a 4GB memóriát és 1GB adat ingyenes szolgáltatási réteg. Azonban eltávolíthatja ezeket a korlátokat az Azure-jegyzetfüzetek projekt egy adatelemző virtuális gép példány csatolásával. További információkért lásd: [kezelése és konfigurálása az Azure-jegyzetfüzetek projektek - számítási kapacitás](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="dsvm"></a>Adatelemző virtuális gép
 
@@ -376,6 +379,17 @@ Háromféleképpen hozhat létre a konfigurációs fájlban:
     ```
 
     Ez a kód írása a konfigurációs fájlt a *aml_config/config.json* fájlt.
+
+## <a id="aznotebooks"></a>Az Azure notebookok
+
+[Az Azure notebookok](https://notebooks.azure.com) (előzetes verzió) egy interaktív fejlesztési környezetben az Azure-felhőben. Ismerkedés az Azure Machine Learning fejlesztése egyszerűen.
+
+* Az Azure Machine Learning SDK már telepítve van.
+* Miután létrehozott egy Azure Machine Learning szolgáltatás munkaterület az Azure Portalon, kattintson a egy gombot, amellyel automatikusan konfigurálja a jegyzetfüzetet az Azure-környezet a munkaterülethez.
+
+Használja a [az Azure portal](https://portal.azure.com) Azure notebookok használatának megkezdéséhez.  Nyissa meg a munkaterületet és a **áttekintése** szakaszban jelölje be **első lépései az Azure-jegyzetfüzetekben**.
+
+Alapértelmezés szerint az Azure-jegyzetfüzetek használja, amely a 4GB memóriát és 1GB adat ingyenes szolgáltatási réteg. Azonban eltávolíthatja ezeket a korlátokat az Azure-jegyzetfüzetek projekt egy adatelemző virtuális gép példány csatolásával. További információkért lásd: [kezelése és konfigurálása az Azure-jegyzetfüzetek projektek - számítási kapacitás](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a name="next-steps"></a>További lépések
 

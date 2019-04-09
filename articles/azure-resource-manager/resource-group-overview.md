@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/04/2019
+ms.date: 04/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 115b1fcd1b1e878a9b4a7efdf6f24d7391945619
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: d4af11f5956d548ec25eb0dd9b553e2cf56b195f
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409840"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058543"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 
@@ -84,6 +84,8 @@ Néhány fontos tényezőt érdemes figyelembe venni az erőforráscsoport megha
 * Egy erőforrás más erőforráscsoportok erőforrásaival is interakcióba tud lépni. Ez az interakció gyakori, amikor a két erőforrás kapcsolódik, de nem ugyanaz az életciklusuk (például amikor egy webalkalmazás csatlakozik egy adatbázishoz).
 
 Egy erőforráscsoport létrehozásakor meg kell adnia az erőforráscsoport helyét. Most felmerülhet Önben a kérdés, hogy „Miért van szüksége egy erőforráscsoportnak helyre? Ha pedig az erőforrások rendelkezhetnek az erőforrástól eltérő hellyel, akkor miért számít egyáltalán az erőforráscsoport helye?” Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha az erőforráscsoport számára megad egy helyet, akkor a metaadatok tárolási helyét adja meg. Megfelelőségi okokból szükség lehet arra, hogy az adatokat egy adott régióban tárolja.
+
+Ha az erőforráscsoport átmenetileg nem érhető el, mert a metaadatok nem érhető el az erőforráscsoportban lévő erőforrásokat nem frissíthető. Más régiókban található erőforrások továbbra is elvárt módon működnek, de azokat nem lehet frissíteni. A kockázat minimalizálása érdekében keresse meg az erőforráscsoport és erőforrások ugyanabban a régióban.
 
 ## <a name="resource-providers"></a>Erőforrás-szolgáltatók
 
@@ -181,4 +183,4 @@ A Deployment Manager jelenleg privát előzetes verzióban érhető el.
 Ebben a cikkben megismerte, hogyan használhatja az Azure Resource Manager eszközt erőforrások telepítésére, felügyeletére és hozzáférés-vezérlésére az Azure-ban. A következő cikkből megtudhatja, hogyan hozhatja létre első Azure Resource Manager-sablonját.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával](./resource-manager-quickstart-create-templates-use-the-portal.md)
+> [Gyors útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával](./resource-manager-quickstart-create-templates-use-the-portal.md)

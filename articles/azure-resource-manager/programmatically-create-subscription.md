@@ -2,23 +2,21 @@
 title: Az Azure Enterprise-előfizetések létrehozása programozott módon |} A Microsoft Docs
 description: Megtudhatja, hogyan további Azure Enterprise vagy a Enterprise Dev/Test-előfizetések létrehozása programozott módon.
 services: azure-resource-manager
-author: adpick
-manager: adpick
-editor: ''
+author: tfitzmac
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/05/2018
-ms.author: adpick
-ms.openlocfilehash: 1b772fdbda8e58db9414e09ef3ef7c98fc9f86b8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 04/05/2019
+ms.author: tomfitz
+ms.openlocfilehash: 93df0c196d78a4685ff82108354b82a07d67695d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486979"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256923"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programozott módon létrehozhat az Azure Enterprise-előfizetések (előzetes verzió)
 
@@ -30,9 +28,9 @@ Az API-ból egy Azure-előfizetést hoz létre, ha ezt az előfizetést a szerz�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A regisztrációs fiók-előfizetések létrehoz egy tulajdonosi vagy közreműködői szerepkörhöz kell rendelkeznie. Ezek a szerepkörök beolvasása a két módja van:
+A regisztrációs fiók-előfizetések létrehoz egy tulajdonosi szerepkör kell rendelkeznie. Ezek a szerepkörök beolvasása a két módja van:
 
-* A regisztráció rendszergazdájához is [győződjön meg arról, hogy fióktulajdonos](https://ea.azure.com/helpdocs/addNewAccount) (bejelentkezés szükséges), amely lehetővé teszi, hogy a regisztrációs fiók tulajdonosának. Kövesse az utasításokat a meghívó e-mailben kapott manuálisan hozzon létre egy kezdeti előfizetést. Erősítse meg a fiók tulajdonjogát, és manuálisan hozzon létre egy kezdeti, mielőtt továbblép a következő lépés a nagyvállalati szerződéses előfizetésében. Csak hozzáadása a regisztrációt a fiók nem elég.
+* A regisztráció rendszergazdájához is [győződjön meg arról, hogy fióktulajdonos](https://ea.azure.com/helpdocs/addNewAccount) (bejelentkezés szükséges) ami lehetővé teszi, a regisztrációs fiók tulajdonosának. Kövesse az utasításokat a meghívó e-mailben kapott manuálisan hozzon létre egy kezdeti előfizetést. Erősítse meg a fiók tulajdonjogát, és manuálisan hozzon létre egy kezdeti, mielőtt továbblép a következő lépés a nagyvállalati szerződéses előfizetésében. Csak hozzáadása a regisztrációt a fiók nem elég.
 
 * A regisztrációs fiók meglévő tulajdonosává is [hozzáférési](grant-access-to-create-subscription.md). Hasonlóképpen, ha azt szeretné, a nagyvállalati szerződéses előfizetésében létrehozni az egyszerű szolgáltatás használatával, meg kell [megadása egyszerű szolgáltatást az előfizetések létrehozása](grant-access-to-create-subscription.md).
 
@@ -42,7 +40,7 @@ A regisztrációs fiók-előfizetések létrehoz egy tulajdonosi vagy közreműk
 
 Az alábbi parancsok futtatásához, meg kell bejelentkeznie a fiók tulajdonosának *kezdőkönyvtár*, azaz a címtár előfizetések alapértelmezés szerint létrehozott.
 
-# <a name="resttabrest"></a>[REST](#tab/rest)
+# [<a name="rest"></a>REST](#tab/rest)
 
 A kérelem az összes regisztrációs fiókok listáját:
 
@@ -75,7 +73,7 @@ Azure válaszol az hozzáfér az összes regisztrációs fiókok listáját:
 }
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 
 Használja a [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) parancsmag használatával listázhatja az összes regisztrációs fiókok hozzáfér.
 
@@ -91,7 +89,7 @@ ObjectId                               | PrincipalName
 4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
 
 Használja a [az számlázási regisztrációs-fióklista](https://aka.ms/EASubCreationPublicPreviewCLI) paranccsal listát készíthet az összes regisztrációs fiókok hozzáfér.
 
@@ -132,7 +130,7 @@ Használja a `principalName` azonosítani a fiókot, amelyet az előfizetések k
 
 A következő példában létrehozunk egy kérelem nevű előfizetés létrehozása *fejlesztői csapat előfizetés* előfizetési ajánlatok között pedig *MS-AZR - 0017P* (normál nagyvállalati szerződéssel rendelkező). A regisztrációs fiók `747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (helyőrző értékét, ez az érték a GUID), amely az, hogy a regisztrációs fiók a SignUpEngineering@contoso.com. Azt is két felhasználót ad RBAC tulajdonosként az előfizetés.
 
-# <a name="resttabrest"></a>[REST](#tab/rest)
+# [<a name="rest"></a>REST](#tab/rest)
 
 Használja a `id` , a `enrollmentAccount` az előfizetés létrehozására vonatkozó kérelem elérési útját.
 
@@ -161,7 +159,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 A válaszban szerezheti vissza egy `subscriptionOperation` figyelés objektumot. Ha az előfizetés létrehozása befejeződött, a `subscriptionOperation` objektum esetén ad vissza egy `subscriptionLink` objektum, amely rendelkezik az előfizetés azonosítóját.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 
 Ez a modul előzetes verziójának használatához futtatásával telepítse `Install-Module Az.Subscription -AllowPrerelease` első. Győződjön meg arról, hogy `-AllowPrerelease` működik, a PowerShellGet legújabb verziójának telepítése [a PowerShellGet modul beolvasása](/powershell/gallery/installing-psget).
 
@@ -182,7 +180,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 Összes paraméter teljes listáját lásd: [New-AzSubscription](/powershell/module/az.subscription.preview).
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
 
 Ez a minta bővítmény használatához futtatásával telepítse `az extension add --name subscription` első.
 

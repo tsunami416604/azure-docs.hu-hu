@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.openlocfilehash: 21408f87c4446ebad4092cb982179c7d78ea9e32
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.date: 04/05/2019
+ms.openlocfilehash: b5e0336a290090ed6bd7f5af508e691677780a80
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847756"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265288"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Hozzon létre, és olvasási replikák kezelése az Azure parancssori felületen
 
@@ -44,7 +44,7 @@ A `azure.replication_support` paramétert állítsa **REPLIKA** a fölérendelt 
 
 ## <a name="create-a-read-replica"></a>Hozzon létre egy olvasható replika
 
-A `az mysql server replica create` parancs paraméterei a következők:
+A [az postgres server replika létrehozása](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) parancs paraméterei a következők:
 
 | Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
@@ -64,14 +64,14 @@ A kiszolgáló ugyanazt a konfigurációt a master létrehoztak egy replikát. R
 > Egy fölérendelt kiszolgáló konfigurációs frissül az új értékekre, mielőtt frissíteni a replikát konfigurációt egyenlő vagy nagyobb értékre. Ez a művelet biztosítja, hogy a replika továbbra is a fő végzett módosítások.
 
 ## <a name="list-replicas"></a>Replikák listája
-Megtekintheti a lista egy fölérendelt kiszolgáló replikával.
+Megtekintheti a lista egy fölérendelt kiszolgáló replikával használatával [listáján az postgres server](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list) parancsot.
 
 ```azurecli-interactive
-az postgres server replica stop --server-name mydemoserver --resource-group myresourcegroup 
+az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
 ## <a name="stop-replication-to-a-replica-server"></a>Az adatbázisreplika-kiszolgáló replikáció leállítása
-Egy fölérendelt kiszolgáló és a egy olvasási replika közötti replikációt is leállíthatja.
+Egy fölérendelt kiszolgáló és a egy olvasási replika közötti replikációt használatával állítsa le [az postgres server replika stop](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop) parancsot.
 
 Miután leállította egy fölérendelt kiszolgáló és a egy olvasási replika-replikáció, nem lehet visszavonni. Az olvasási replika egy önálló kiszolgáló, amely támogatja az olvasásokat és az írásokat válik. Az önálló kiszolgáló nem hajtható végre egy replika be újra.
 
@@ -80,7 +80,7 @@ az postgres server replica stop --name mydemoserver-replica --resource-group myr
 ```
 
 ## <a name="delete-a-master-or-replica-server"></a>A master és a replika kiszolgáló törlése
-A master és a replika kiszolgáló törléséhez használhatja ugyanazt a parancsot, hogy egy különálló Azure Database for PostgreSQL-kiszolgáló törlése. 
+A master és a replika kiszolgáló törléséhez használja a [az postgres server delete](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-delete) parancsot.
 
 Ha töröl egy fölérendelt kiszolgáló, a replikáció az összes olvasható replika le van állítva. Az olvasási replikák önálló kiszolgálók által mostantól támogatják az olvasásokat és az írásokat válnak.
 

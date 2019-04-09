@@ -26,6 +26,7 @@ items:
     href: apache-spark-load-data-run-query.md
   - name: Apache Spark-lekérdezések futtatása VSCode használatával
     href: ../hdinsight-for-vscode.md
+    maintainContext: true
   - name: Apache Spark-lekérdezések futtatása IntelliJ használatával
     href: apache-spark-intellij-tool-plugin.md
   - name: Adatok elemzése BI-eszközökkel
@@ -38,6 +39,7 @@ items:
     href: apache-spark-create-standalone-application.md
   - name: Fürtök rendelkezésre állásának monitorozása az Ambarival és az Azure Monitor-naplókkal
     href: ../hdinsight-cluster-availability.md
+    maintainContext: true
 - name: Útmutató
   items:
   - name: Fürttároló használata
@@ -105,6 +107,7 @@ items:
       href: apache-spark-connect-to-sql-database.md
     - name: Lambdaarchitektúra megvalósítása az Apache Spark és a Cosmos DB használatával
       href: ../../cosmos-db/lambda-architecture.md
+      maintainContext: true
     - name: Azure ML-feladatok futtatása AutoML használatával
       href: apache-spark-run-machine-learning-automl.md
       maintainContext: true
@@ -442,9 +445,9 @@ items:
   - name: A HDInsight Windows-eszközei
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 9775c1da15b5ac5e675e84487006339b1c9701ce
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 973adb6fb1c8761ff03935d09faf699040604544
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670170"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058900"

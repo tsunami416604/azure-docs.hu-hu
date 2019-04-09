@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
-ms.openlocfilehash: d839e2e9922ac68af3aea37884e8b2f72b80b0e7
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791579"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258113"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub-műveletek figyelése (elavult)
 
 Az IoT Hub-műveletek figyelése lehetővé teszi az IoT hub valós idejű műveleti állapotának figyelése. Az IoT Hub események nyomon követi a műveletek számos kategóriájában. Mekkorák egy vagy több kategóriához eseményeket küldeni egy végpontot az IoT hub feldolgozás céljából. Adatok minták alapján összetettebb feldolgozási beállítása, illetve figyelheti az adatait a hibákat.
 
 >[!NOTE]
->Az IoT Hub **műveletek figyelése elavult, és el lett távolítva a 2019. március 10 IoT-központból**. Az operatív és az IoT Hub állapotának figyelése, lásd: [Azure IoT Hub állapotának Monitorozásához és a problémák gyorsan diagnosztizálása][lnk-monitor]. Az elavulással kapcsolatos ütemterv kapcsolatos további információkért lásd: [monitorozása az Azure IoT-megoldások az Azure monitorral és az Azure Resource Health][lnk-blog-announcement].
+>Az IoT Hub **műveletek figyelése elavult, és el lett távolítva a 2019. március 10 IoT-központból**. Az operatív és az IoT Hub állapotának figyelése, lásd: [Azure IoT Hub állapotának Monitorozásához és a problémák gyorsan diagnosztizálása](iot-hub-monitor-resource-health.md). Az elavulással kapcsolatos ütemterv kapcsolatos további információkért lásd: [monitorozása az Azure IoT-megoldások az Azure monitorral és az Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
 
 Az IoT Hub hat azokat a eseményeket figyeli:
 
@@ -36,15 +36,15 @@ Az IoT Hub hat azokat a eseményeket figyeli:
 
 ## <a name="how-to-enable-operations-monitoring"></a>Műveletek figyelése engedélyezése
 
-1. Hozzon létre egy IoT hubot. Az IoT hub létrehozása a talál útmutatást a [Ismerkedés] [ lnk-get-started] útmutató.
+1. Hozzon létre egy IoT hubot. Az IoT hub létrehozása a talál útmutatást a [Ismerkedés](quickstart-send-telemetry-dotnet.md) útmutató.
 
-1. Az IoT hub panel megnyitásához. Itt kattintson **műveletek figyelése**.
+2. Az IoT hub panel megnyitásához. Itt kattintson **műveletek figyelése**.
 
-    ![Hozzáférési műveletek konfigurációját a portálon figyelése][1]
+    ![Hozzáférési műveletek konfigurációját a portálon figyelése](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-1. Válassza ki a figyelése, és kattintson a kívánt figyelési kategóriák **mentése**. Az események állnak rendelkezésre a felsorolt Event Hub-kompatibilis végpontról való olvasáshoz **figyelési beállítások**. Az IoT Hub-végponton nevezzük `messages/operationsmonitoringevents`.
+3. Válassza ki a figyelése, és kattintson a kívánt figyelési kategóriák **mentése**. Az események állnak rendelkezésre a felsorolt Event Hub-kompatibilis végpontról való olvasáshoz **figyelési beállítások**. Az IoT Hub-végponton nevezzük `messages/operationsmonitoringevents`.
 
-    ![Műveletek figyelése az IoT hub konfigurálása][2]
+    ![Műveletek figyelése az IoT hub konfigurálása](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
 > [!NOTE]
 > Kiválasztásával **részletes** figyelését a **kapcsolatok** kategória hatására az IoT Hub létrehozásához további diagnosztikai üzeneteket. Minden más kategóriák a **részletes** beállítása a módosításokat az IoT Hub információ mennyisége minden hibaüzenet tartalmazza.
@@ -145,7 +145,9 @@ A kapcsolatok kategória hibák fordulhatnak elő, amikor az eszközök csatlako
 A fájl feltöltése kategória nyomon követi az IoT hubra és a fájlfeltöltési funkciókhoz kapcsolódó hibák. Ez a kategória tartalmazza:
 
 * Az SAS URI-t, például amikor egy eszköz értesíti a hub egy befejezett feltöltésről, mielőtt lejár az előforduló hibákat.
+
 * Nem sikerült az eszköz által jelentett feltöltések.
+
 * Ha egy fájl nem található a tároló az IoT Hub értesítési üzenet létrehozása során előforduló hibákat.
 
 Ez a kategória nem tényleges jelentkező hibák közvetlenül az eszköz egy fájlt tölt Storage.
@@ -188,31 +190,31 @@ Az üzenet-útválasztási kategória üzenet útvonal értékelése és a végp
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>A felügyeleti végponthoz való csatlakozás
 
-A figyelési végponthoz az IoT hub Event Hub-kompatibilis végpont. Minden olyan mechanizmus, amely együttműködik a erről a végpontról figyelési üzenetek olvasásához az Event Hubs is használhatja. Az alábbi minta létrehoz egy alapszintű olvasót, amely nem alkalmas a nagy átviteli sebességű üzemelő. Az Event Hubs-üzenetek feldolgozásával kapcsolatos további információkért lásd [az Event Hubs használatának első lépéseit][lnk-eventhubs-tutorial] ismertető oktatóanyagot.
+A figyelési végponthoz az IoT hub Event Hub-kompatibilis végpont. Minden olyan mechanizmus, amely együttműködik a erről a végpontról figyelési üzenetek olvasásához az Event Hubs is használhatja. Az alábbi minta létrehoz egy alapszintű olvasót, amely nem alkalmas a nagy átviteli sebességű üzemelő. Event hubs szolgáltatástól érkező üzenetek feldolgozásával kapcsolatos további információkért lásd: a [Event Hubs használatának első lépései](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) oktatóanyag.
 
 A felügyeleti végponthoz csatlakozik, szüksége van egy kapcsolati karakterláncot, és a végpont neve. A következő lépések bemutatják, hogyan találhatja meg a szükséges értékek a portálon:
 
 1. A portálon lépjen az IoT Hub-erőforrás paneljének.
 
-1. Válassza ki **műveletek figyelése**, és jegyezze fel a **Event Hub-kompatibilis nevet** és **Event Hub-kompatibilis végponthoz** értékek:
+2. Válassza ki **műveletek figyelése**, és jegyezze fel a **Event Hub-kompatibilis nevet** és **Event Hub-kompatibilis végponthoz** értékek:
 
-    ![Event Hub-compatible endpoint values][img-endpoints]
+    ![Event Hub-compatible endpoint values](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-1. Válasszon **megosztott elérési házirendek**, majd válassza a **szolgáltatás**. Jegyezze fel a **elsődleges kulcs** érték:
+3. Válasszon **megosztott elérési házirendek**, majd válassza a **szolgáltatás**. Jegyezze fel a **elsődleges kulcs** érték:
 
-    ![Megosztott hozzáférési szabályzat elsődleges kulcsot][img-service-key]
+    ![Megosztott hozzáférési szabályzat elsődleges kulcsot](./media/iot-hub-operations-monitoring/service-key.png)
 
 Az alábbi C# kódminta egy Visual Studio nézetéből **Windows klasszikus Asztalialkalmazás** C# konzolalkalmazást. A projekt már a **WindowsAzure.ServiceBus** NuGet-csomag telepítve van.
 
 * A kapcsolati karakterlánc helyőrzőjét cserélje le a kapcsolati karakterlánccal, amely a **Event Hub-kompatibilis végpont** és a szolgáltatás **elsődleges kulcs** az alábbi példában látható módon korábban feljegyzett értékekre:
 
-    ```cs
+    ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
 * Cserélje le a felügyeleti végpont neve helyőrzőjét az **Event Hub-kompatibilis nevet** korábban feljegyzett értéket.
 
-```cs
+```csharp
 class Program
 {
     static string connectionString = "{your monitoring endpoint connection string}";
@@ -263,24 +265,9 @@ class Program
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
 
-* [Az IoT Hub fejlesztői útmutató][lnk-devguide]
-* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
+* [Az IoT Hub fejlesztői útmutató](iot-hub-devguide.md)
 
-<!-- Links and images -->
-[1]: media/iot-hub-operations-monitoring/enable-OM-1.png
-[2]: media/iot-hub-operations-monitoring/enable-OM-2.png
-[img-endpoints]: media/iot-hub-operations-monitoring/monitoring-endpoint.png
-[img-service-key]: media/iot-hub-operations-monitoring/service-key.png
-
-[lnk-blog-announcement]: https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health
-[lnk-monitor]: iot-hub-monitor-resource-health.md
-[lnk-get-started]: quickstart-send-telemetry-dotnet.md
-[lnk-diagnostic-metrics]: iot-hub-metrics.md
-[lnk-scaling]: iot-hub-scaling.md
-[lnk-dr]: iot-hub-ha-dr.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
+* [Edge-eszközök mesterséges Intelligencia telepítése az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)

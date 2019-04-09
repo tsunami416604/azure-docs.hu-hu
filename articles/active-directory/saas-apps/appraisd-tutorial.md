@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd7d1e3511bf74650ddc9dca1cf77c2b7c297c96
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f1beb825eda7e4d6a59810aada7063863b48d8ec
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861502"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260901"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appraisd"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Appraisd
 
@@ -161,7 +161,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Appraisd, hajtsa vé
 
 1. Egy másik böngészőablakban jelentkezzen be Appraisd egy biztonsági-rendszergazdaként.
 
-2. A felső, az oldal jobb kattintson a **beállítások** ikonra, majd keresse meg a **konfigurációs**.
+2. A felső, az oldal jobb kattintson a **beállítások** ikonra, majd keresse meg a **konfigurációs**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
@@ -173,9 +173,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Appraisd, hajtsa vé
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
-    a. Másolás a **alapértelmezett továbbítási állapot** értékét, és illessze be a **továbbítási állapot** szövegmezőjébe **alapszintű SAML-konfigurációja** az Azure Portalon.
+    a. Másolás a **alapértelmezett továbbítási állapot** értékét, és illessze be a **továbbítási állapot** szövegmezőjébe **alapszintű SAML-konfigurációja** az Azure Portalon.
 
-    b. Másolás a **szolgáltatás által kezdeményezett bejelentkezési URL-cím** értékét, és illessze be a **bejelentkezési URL-** szövegmezőjébe **alapszintű SAML-konfigurációja** az Azure Portalon.
+    b. Másolás a **szolgáltatás által kezdeményezett bejelentkezési URL-cím** értékét, és illessze be a **bejelentkezési URL-** szövegmezőjébe **alapszintű SAML-konfigurációja** az Azure Portalon.
 
 5. Görgessen lefelé az oldalon, amelyek ugyanazt a **felhasználók azonosítása**, hajtsa végre az alábbi lépéseket:
 
@@ -185,7 +185,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Appraisd, hajtsa vé
 
     b. Az a **Identity Provider kiállítójának URL-címe** szövegmezőbe, illessze be az értéket a **Azure Ad-azonosító**, az Azure Portalon, majd kattintson a másolt **mentése**.
 
-    c. A Jegyzettömbben, nyissa meg az Azure Portalról letöltött base-64 kódolású tanúsítványt, másolja a tartalmat, és illessze be azt a **X.509-tanúsítvány** mezőbe, majd kattintson a **mentése**.
+    c. A Jegyzettömbben, nyissa meg az Azure Portalról letöltött base-64 kódolású tanúsítványt, másolja a tartalmat, és illessze be azt a **X.509-tanúsítvány** mezőbe, majd kattintson a **mentése**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -246,11 +246,11 @@ Ahhoz, hogy az Azure AD felhasználói bejelentkeznek a Appraisd, akkor ki kell 
 
 1. Jelentkezzen be egy biztonsági-rendszergazdaként Appraisd.
 
-2. A felül, jobb a lapon kattintson a **beállítások** ikonra, majd keresse meg a **felügyeleti központ**.
+2. A felül, jobb a lapon kattintson a **beállítások** ikonra, majd keresse meg a **felügyeleti központ**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
-3. Kattintson az eszköztáron az oldal tetején lévő **személyek**, majd keresse meg a **új felhasználó hozzáadása**.
+3. Kattintson az eszköztáron az oldal tetején lévő **személyek**, majd keresse meg a **új felhasználó hozzáadása**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
@@ -276,6 +276,6 @@ Ha a hozzáférési panelen a Appraisd csempére kattint, meg kell lehet automat
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

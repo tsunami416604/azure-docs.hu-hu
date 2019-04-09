@@ -9,22 +9,19 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 0c6be20bfb2a6f15335564a1aa98dc0ac88e3507
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c616b2578f7606ce7df19fdbef16bec8a24428d3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905834"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262499"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
 Figyelés .NET és .NET Core alapú webalkalmazások futtatása az Azure App Servicesben engedélyezése mostantól egyszerűbb, mint valaha. Mivel korábban szükséges webhelybővítmény manuális telepítéséhez, a legújabb bővítési ügynök most már be van építve az app service lemezkép alapértelmezés szerint. Ez a cikk fog végigvezetik Application insights általi figyelés engedélyezése, valamint a nagyobb méretű környezetek esetében a folyamat automatizálásának előzetes útmutatást nyújtanak.
 
 > [!NOTE]
-> Manuálisan hozzáadni egy Application Insights-webhelybővítményt keresztül **Fejlesztőeszközök** > **bővítmények** elavult. A bővítmény legújabb stabil kiadása már [előtelepített](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) az App Service-kép részeként. A fájlok találhatók `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` és automatikusan frissülnek minden stabil kiadással. Ha az ügynök utasítások figyelés engedélyezése az alábbiakban, automatikusan eltávolítja az elavult bővítmény az Ön számára.
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> Manuálisan hozzáadni egy Application Insights-webhelybővítményt keresztül **Fejlesztőeszközök** > **bővítmények** elavult. Ezzel a módszerrel telepíteni a bővítményt minden egyes új verzió frissítései manuális függött. A bővítmény legújabb stabil kiadása már [előtelepített](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) az App Service-kép részeként. A fájlok találhatók `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` és automatikusan frissülnek minden stabil kiadással. Ha az ügynök utasítások figyelés engedélyezése az alábbiakban, automatikusan eltávolítja az elavult bővítmény az Ön számára.
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
@@ -285,6 +282,8 @@ Alul látható egy minta lecserélendő `AppMonitoredSite` a webhely neve:
 
 Ahhoz, hogy az alkalmazás figyelése a PowerShell-lel, csak az alapul szolgáló alkalmazásbeállításokat módosítani kell. Alább egy minta, amely lehetővé teszi az alkalmazásfigyelés "AppMonitoredSite" nevű erőforráscsoportban "AppMonitoredRG" webhelyekhez, és konfigurálja a "012345678-abcd-ef01-2345-6789abcd" kialakítási kulcs küldendő adatok.
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ```powershell
 $app = Get-AzWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
 $newAppSettings = @{} # case-insensitive hash map
@@ -348,6 +347,7 @@ Az alábbi táblázat ezek az értékek jelentése több részletes leírását 
 |A probléma érték|Magyarázat|Javítás
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Ez azt jelzi, hogy a bővítmény észlelte, hogy az SDK bizonyos elemeit már szerepel az alkalmazást, és fog visszatartás. Hivatkozás miatt lehet `System.Diagnostics.DiagnosticSource`, `Microsoft.AspNet.TelemetryCorrelation`, vagy `Microsoft.ApplicationInsights`  | Távolítsa el a hivatkozást. Néhány mutató hivatkozásokat hozzáadja az alapértelmezés szerint egyes Visual Studio-sablonok alapján, és a Visual Studio régebbi verzióiban előfordulhat, hogy adja hozzá a hivatkozásokat `Microsoft.ApplicationInsights`.
+|`AppAlreadyInstrumented:true` | Ha a .NET Core 2.1-es vagy a 2.2-es van-e állítva az alkalmazást, és hivatkozik [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta-csomagot, majd lehetővé teszi az Application insights szolgáltatásban, és a bővítmény fog visszatartási. | A .NET Core 2.1,2.2 ügyfeleinknek [ajánlott](https://github.com/aspnet/Announcements/issues/287) helyette használhatja Microsoft.AspNetCore.App meta-csomagot.|
 |`AppAlreadyInstrumented:true` | Ez az érték a fenti DLL-fájlja egy korábbi központi telepítés az alkalmazás mappájában jelenlétének is okozhatja. | Tisztítsa meg az alkalmazás mappája, győződjön meg arról, hogy ezek a DLL fájlok törlődnek.|
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | Ez az érték azt jelzi, hogy a bővítmény mutató hivatkozásokat észlelt `Microsoft.AspNet.TelemetryCorrelation` az alkalmazásban, és a rendszer visszatartás. | Távolítsa el a hivatkozást.
 |`AppContainsDiagnosticSourceAssembly**:true`|Ez az érték azt jelzi, hogy a bővítmény mutató hivatkozásokat észlelt `System.Diagnostics.DiagnosticSource` az alkalmazásban, és a rendszer visszatartás.| Távolítsa el a hivatkozást.

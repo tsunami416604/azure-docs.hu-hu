@@ -4,15 +4,15 @@ description: A cikk áttekintést nyújt az Azure Migrate szolgáltatásról.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 04/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9f1d127405046400e2a92ffc5ab695d287e297bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.openlocfilehash: e0249535813c6b8d652775f68a696d8c25ead5a1
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894969"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058441"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -32,7 +32,7 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 - Csak a helyszíni VMware virtuális gépeket értékelheti ki az Azure-beli virtuális gépekre való migráláshoz. A VMware virtuális gépeket (verziójú 5.5-ös, 6.0-s, 6.5-ös vagy 6.7) vCenter Servernek kell felügyelnie.
 - Támogatja a Hyper-V szolgáltatás jelenleg előzetes verzióban a termelési támogatásával, ha szeretné kipróbálni szeretné azt, a regisztráljon [itt.](https://aka.ms/migratefuture)
 - A fizikai kiszolgálók értékeléséhez, kihasználhatja az [eszközök partneri](https://azure.microsoft.com/migration/partners/).
-- Egyetlen felderítéssel legfeljebb 1500 virtuális gépet, egyetlen projekt részeként pedig szintén legfeljebb 1500 virtuális gépet deríthet fel. Egyetlen értékeléssel emellett legfeljebb 1500 virtuális gépet értékelhet.
+- Felfedezheti, hogy egyetlen projekt és egyetlen felderítéssel legfeljebb 1500 virtuális gépeket. Rendelkezünk egy előzetes kiadásban érhető el, amely lehetővé teszi, hogy legfeljebb 10 000 VMware virtuális gépek felderítését egyetlen berendezés használata egyetlen projekt, ha az Önt érdeklő kipróbálni szeretné azt, regisztráljon [itt.](https://aka.ms/migratefuture)
 - Ha egy nagyobb méretű környezetet szeretne felderíteni, feloszthatja a felderítést, és létrehozhat több projektet. [További információk](how-to-scale-assessment.md). Az Azure Migrate előfizetésenként legfeljebb 20 projektet támogat.
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
 -  Azure Migrate-projektet csak az alábbi földrajzi területeken hozhat létre. Azonban ez nem korlátozza az értékelések más létrehozásának lehetősége cél Azure-helyen.

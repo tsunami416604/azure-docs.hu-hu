@@ -1,25 +1,24 @@
 ---
 title: Minta - ISO 27001 ASE/SQL számítási feladatok tervezet - vezérlő leképezés
 description: Az ISO 27001 App Service környezet/SQL-adatbázis számítási feladatok tervezet minta Azure Policy és RBAC vezérlő leképezését.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
-ms.topic: conceptual
+ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: fb251d71ca9aa20ed06d0a917394097b36322b3c
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 7a760bfe70fa2a83c43a0b41b77ba9bf45e809ca
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802711"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258607"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Az ISO 27001 ASE/SQL számítási feladatok tervezet minta vezérlő leképezés
 
 A következő cikk részletezi, hogyan Azure tervezetek ISO 27001 ASE/SQL számítási feladatok tervezet minta képez le az ISO 27001 vezérlők. A vezérlőkkel kapcsolatos további információkért lásd: [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 
-A következő hozzárendeléseket a rendszer a **ISO 27001:2013** szabályozza. A jobb oldalon a navigációs segítségével közvetlenül egy adott vezérlőt leképezés ugorhat. Számos, a csatlakoztatott vezérlők implementálása egy [Azure Policy](../../../policy/overview.md) kezdeményezésére. Tekintse át a teljes kezdeményezés, nyissa meg a **házirend** az Azure Portalon, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki a  **[Előzetes verzió] naplózási ISO 27001:2013 vezérli, és a naplózási követelmények támogatására adott Virtuálisgép-bővítmények telepítése** beépített szabályzat-kezdeményezéshez.
+A következő hozzárendeléseket a rendszer a **ISO 27001:2013** szabályozza. A jobb oldalon a navigációs segítségével közvetlenül egy adott vezérlőt leképezés ugorhat. Számos, a csatlakoztatott vezérlők implementálása egy [Azure Policy](../../../policy/overview.md) kezdeményezésére. Tekintse át a teljes kezdeményezés, nyissa meg a **házirend** az Azure Portalon, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki a  **[előzetes] naplózási ISO 27001:2013 vezérli, és a naplózási követelmények támogatására adott Virtuálisgép-bővítmények telepítése** beépített szabályzat-kezdeményezéshez.
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 szétválasztására
 

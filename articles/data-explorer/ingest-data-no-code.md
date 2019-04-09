@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 03/14/2019
-ms.openlocfilehash: 7006c6dcfb149247a066b850f59da626b2826e31
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/07/2019
+ms.openlocfilehash: 9f4b7ee0dcc87ca03fd051be0dacedf0912b5320
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051903"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262907"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Oktatóanyag: Az Azure Data Explorer adatokat egyetlen sor kód nélkül
 
@@ -209,12 +209,12 @@ A vizsgálati naplók adatok leképezése a táblában, használja a következő
 
 #### <a name="activity-log-data-update-policy"></a>Tevékenységnapló adatainak szabályzat frissítése
 
-1. Hozzon létre egy [függvény](/azure/kusto/management/functions) , amely kibővíti a tevékenység log-rekordok gyűjteményei, hogy a gyűjteményben szereplő összes értékhez kap külön sorba. Használja a [ `mvexpand` ](/azure/kusto/query/mvexpandoperator) operátor:
+1. Hozzon létre egy [függvény](/azure/kusto/management/functions) , amely kibővíti a tevékenység log-rekordok gyűjteményei, hogy a gyűjteményben szereplő összes értékhez kap külön sorba. Használja a [ `mv-expand` ](/azure/kusto/query/mvexpandoperator) operátor:
 
     ```kusto
     .create function ActivityLogRecordsExpand() {
         ActivityLogsRawRecords
-        | mvexpand events = Records
+        | mv-expand events = Records
         | project
             Timestamp = todatetime(events["time"]),
             ResourceId = tostring(events["resourceId"]),
@@ -238,11 +238,11 @@ A vizsgálati naplók adatok leképezése a táblában, használja a következő
 
 #### <a name="diagnostic-log-data-update-policy"></a>Diagnosztikai naplóadatokat szabályzat frissítése
 
-1. Hozzon létre egy [függvény](/azure/kusto/management/functions) , amely kibővíti a diagnosztikai napló-rekordok gyűjteményei, hogy a gyűjteményben szereplő összes értékhez kap külön sorba. Használja a [ `mvexpand` ](/azure/kusto/query/mvexpandoperator) operátor:
+1. Hozzon létre egy [függvény](/azure/kusto/management/functions) , amely kibővíti a diagnosztikai napló-rekordok gyűjteményei, hogy a gyűjteményben szereplő összes értékhez kap külön sorba. Használja a [ `mv-expand` ](/azure/kusto/query/mvexpandoperator) operátor:
      ```kusto
     .create function DiagnosticLogRecordsExpand() {
         DiagnosticLogsRawRecords
-        | mvexpand events = Records
+        | mv-expand events = Records
         | project
             Timestamp = todatetime(events["time"]),
             ResourceId = tostring(events["resourceId"]),

@@ -7,15 +7,15 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 928cb790bd97270870618534a73316bba5eeb070
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 2dd2a6e071533deef47a6482bfb9ed92953864ba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057438"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259807"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erőforrás-szervezet és felügyeleti felügyeleti csoportok létrehozása
 
@@ -50,7 +50,7 @@ A felügyeleti csoport a portálon, a PowerShell vagy az Azure CLI használatáv
 
 ### <a name="create-in-powershell"></a>A PowerShell létrehozása
 
-Belül a PowerShell a New-AzManagementGroup parancsmagot használja:
+PowerShell esetén használja a [New-AzManagementGroup](/powershell/module/az.resources/new-azmanagementgroup) parancsmaggal hozzon létre egy új felügyeleti csoporthoz.
 
 ```azurepowershell-interactive
 New-AzManagementGroup -GroupName 'Contoso'
@@ -58,20 +58,39 @@ New-AzManagementGroup -GroupName 'Contoso'
 
 A **GroupName** létrehozott egyedi azonosítója. Ezt az Azonosítót ehhez a csoporthoz hivatkozhat más parancsok használja, és azt később már nem módosítható.
 
-Ha a felügyeleti csoport egy másik nevet az Azure Portalon megjelenítendő szeretett volna, kell felvenni a **DisplayName** karakterlánc paraméterrel. Például ha a felügyeleti csoport létrehozása a Contoso GroupName és "Contoso csoport" megjelenített neve, használja a következő parancsmagot:
+Ha azt szeretné, hogy a felügyeleti csoport egy másik nevet az Azure Portalon megjelenítendő, hozzáadása a **DisplayName** paraméter. Például a Contoso GroupName és "Contoso csoport" megjelenített neve a felügyeleti csoport létrehozásához használja a következő parancsmagot:
 
 ```azurepowershell-interactive
-New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoTenant'
+New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group'
 ```
 
-Használja a **ParentId** paramétert a felügyeleti csoportot létrehozni egy másik felügyeleti csoportban.
+A fenti példákban a legfelső szintű felügyeleti csoportban az új felügyeleti csoport jön létre. Adja meg egy másik felügyeleti csoportban, mint a szülő, használja a **ParentId** paraméter.
+
+```azurepowershell-interactive
+$parentGroup = Get-AzManagementGroup -GroupName Contoso
+New-AzManagementGroup -GroupName 'ContosoSubGroup' -ParentId $parentGroup.id
+```
 
 ### <a name="create-in-azure-cli"></a>Hozzon létre az Azure CLI-ben
 
-Azure CLI-t, akkor használhat a az fiók felügyeleti-group create paranccsal.
+Azure CLI esetén használja a [az fiók felügyeleti-csoport létrehozása](/cli/azure/account/management-group?view=azure-cli-latest#az-account-management-group-create) paranccsal hozzon létre egy új felügyeleti csoporthoz.
 
 ```azurecli-interactive
-az account management-group create --name 'Contoso'
+az account management-group create --name Contoso
+```
+
+A **neve** létrehozott egyedi azonosítója. Ezt az Azonosítót ehhez a csoporthoz hivatkozhat más parancsok használja, és azt később már nem módosítható.
+
+Ha azt szeretné, hogy a felügyeleti csoport egy másik nevet az Azure Portalon megjelenítendő, hozzáadása a **megjelenítési névvel** paraméter. Például a felügyeleti csoport létrehozása a Contoso GroupName és "Contoso csoport" megjelenített neve, a következő paranccsal:
+
+```azurecli-interactive
+az account management-group create --name Contoso --display-name 'Contoso Group'
+```
+
+A fenti példákban a legfelső szintű felügyeleti csoportban az új felügyeleti csoport jön létre. Adja meg egy másik felügyeleti csoportban, mint a szülő, használja a **szülő** paramétert, és adja meg a szülőcsoport nevét.
+
+```azurecli-interactive
+az account management-group create --name ContosoSubGroup --parent Contoso
 ```
 
 ## <a name="next-steps"></a>További lépések

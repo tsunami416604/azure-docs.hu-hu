@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 87ad3b8984907b5f5b889c36c2406f07cbeb242b
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 8ceb9aefb1e68ceb6030f078aba8b0717cdf9e7c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056775"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260884"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Útvonal keresése egy hasznos helyhez az Azure Mapsszel
 
@@ -47,11 +47,11 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
 
         <script>
             var map, datasource, client;
@@ -83,7 +83,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
 
     Figyelje meg, hogy a HTML-fejléc tartalmazza az Azure Térkép vezérlőelem-kódtárban található CSS- és JavaScript-erőforrásfájlokat. Tekintse meg a laptörzs `onload` eseményét, amely a laptörzs betöltését követően meghívja a `GetMap` függvényt. Ez a függvény tartalmazza az Azure Maps API-k elérésére szolgáló beágyazott JavaScript-kódot. 
 
-3. Adja hozzá az alábbi JavaScript-kódot a `GetMap` függvényhez. A **\<Your Azure Maps Key\>** sztringet cserélje le a Maps-fiókból kimásolt elsődleges kulcsra.
+3. Adja hozzá az alábbi JavaScript-kódot a `GetMap` függvényhez. Cserélje le a karakterláncot `<Your Azure Maps Key>` elsődleges kulccsal, a Maps-fiók fájlból kimásolt.
 
     ```JavaScript
    //Instantiate a map object
@@ -96,11 +96,11 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
    });
    ```
 
-    Az Azure Térkép vezérlőelem API **atlas.Map** összetevőjével egy vizuális és interaktív webes térkép vezérelhető.
+    Az Azure Maps-vezérlő API `atlas.Map` összetevőjével egy vizuális és interaktív webes térkép vezérelhető.
 
 4. Mentse a fájlt, és nyissa meg a böngészőben. Ekkor már rendelkezik egy egyszerű, fejleszthető térképpel.
 
-   ![Egyszerű térkép megtekintése](./media/tutorial-route-location/basic-map.png)
+   ![Egyszerű térkép megtekintése](media/tutorial-route-location/basic-map.png)
 
 ## <a name="define-how-the-route-will-be-rendered"></a>Az útvonal megjelenítésének meghatározása
 
@@ -168,7 +168,7 @@ Ebben az oktatóanyagban a program egy egyszerű útvonalat jelenít meg. Az út
 
 3. Mentse a **MapRoute.html** fájlt, és frissítse a böngészőt. Most már a térkép felett Seattle középre igazított, és a kék PIN-kódot a kezdőpontja jelölés és a round kék PIN-kód a Befejezés pont jelölés látható.
 
-   ![A kiindulási és végpontokat jelölő térkép megtekintése](./media/tutorial-route-location/map-pins.png)
+   ![A kiindulási és végpontokat jelölő térkép megtekintése](media/tutorial-route-location/map-pins.png)
 
 <a id="getroute"></a>
 
@@ -189,9 +189,9 @@ Ez a szakasz bemutatja, hogyan használhatja az Azure Maps route service API-t a
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   A **SubscriptionKeyCredential** létrehoz egy **SubscriptionKeyCredentialPolicy** az előfizetési kulcsot az Azure Maps HTTP-kérések hitelesítéséhez. A **atlas.service.MapsURL.newPipeline()** veszi a **SubscriptionKeyCredential** házirend, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) példány. A **routeURL** egy URL-címet jelöli az Azure Maps [útvonal](https://docs.microsoft.com/rest/api/maps/route) műveleteket.
+   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` az előfizetési kulcsot az Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` veszi a `SubscriptionKeyCredential` házirend, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) példány. A `routeURL` egy URL-címet jelöli az Azure Maps [útvonal](https://docs.microsoft.com/rest/api/maps/route) műveleteket.
 
-2. Miután beállította a hitelesítő adatok és az URL-címet, adja hozzá a következő JavaScript-kódot az útvonal kezdő végpontot létrehozni. A **routeURL** kéréseket az Azure Maps route service útvonalat kiszámításához. A válaszból GeoJSON funkció gyűjtemény majd ki kell olvasni használatával a **geojson.getFeatures()** metódust, és hozzáadja az adatforráshoz.
+2. Miután beállította a hitelesítő adatok és az URL-címet, adja hozzá a következő JavaScript-kódot az útvonal kezdő végpontot létrehozni. A `routeURL` kéréseket az Azure Maps route service útvonalat kiszámításához. A válaszból GeoJSON funkció gyűjtemény majd ki kell olvasni használatával a `geojson.getFeatures()` metódust, és hozzáadja az adatforráshoz.
 
     ```JavaScript
     //Start and end point input to the routeURL

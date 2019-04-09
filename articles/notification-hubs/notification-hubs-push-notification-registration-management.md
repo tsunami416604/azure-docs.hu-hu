@@ -13,13 +13,13 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
-ms.date: 01/23/2019
-ms.openlocfilehash: 028e9a2973ed524037f6415d9e802f947458cfa6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/08/2019
+ms.openlocfilehash: 559dd5ecfa4615e42e4f7ac40008e69c9210e2a4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58166769"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260454"
 ---
 # <a name="registration-management"></a>Regisztrációkezelés
 
@@ -45,12 +45,12 @@ Egy továbbfejlesztett egy telepítés, amely tartalmaz egy leküldéses tulajdo
 Fő előnye, hogy telepítések az alábbiak:
 
 - Teljes körűen idempotensnek létrehozása vagy frissítése egy telepítés. Ezért is újraindítható bármely duplikált regisztrációk aggodalmak nélkül.
-- A telepítési modell megkönnyíti az egyes leküldések - eszközre célzó tegye. A rendszer a címke **"$InstallationId: [installationId]"** automatikusan hozzáadott minden egyes-alapú telepítés a regisztráció. Ezért ezt a címkét egy adott eszköz célként ehhez további kódírás nélkül történő küldés meghívhatja.
+- A telepítési modell egy speciális címkével formátumot támogatja (`$InstallationId:{INSTALLATION_ID}`), amely lehetővé teszi, hogy közvetlenül az adott eszköz küld értesítést. Például, ha az alkalmazás beállítása a telepítési Azonosítót `joe93developer` az adott eszköz a fejlesztők célként az eszköz egy értesítés küldéséhez a `$InstallationId:{joe93developer}` címke. Ez lehetővé teszi, hogy egy adott eszköz célként ehhez további kódírás nélkül.
 - Telepítés használatával is lehetővé teszi, hogy részleges regisztrációfrissítés. A részleges frissítési telepítés kérése történik a PATCH módszer használatával a [JSON-javítás standard](https://tools.ietf.org/html/rfc6902). Ez akkor hasznos, ha frissíti a címkéket a regisztrációt. Nem kell kérje le a teljes regisztrációját, és küldje el újra a korábbi címkéket.
 
 Telepítés az alábbi tulajdonságokat is tartalmazzák. A telepítési tulajdonságok teljes listáját lásd: [létrehozása vagy a telepítés felülírja a REST API-val](https://msdn.microsoft.com/library/azure/mt621153.aspx) vagy [telepítési tulajdonságok](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
 
-```javascript
+```json
 // Example installation format to show some supported properties
 {
     installationId: "",
@@ -101,8 +101,7 @@ Minden sablon neve leképez egy sablon törzsét és címkék nem kötelező meg
 
 Az ügyfélalkalmazások Windows Store értesítések küldése a másodlagos csempék megegyezik a elküldi azokat a közül. A telepítések is támogatják. Másodlagos csempénél van egy másik amiatt, és az SDK az ügyfélalkalmazás az átlátható módon kezeli.
 
-A SecondaryTiles szótárban az azonos TileId, amellyel a SecondaryTiles objektum létrehozása a Windows Store App használ.
-Csakúgy, mint az elsődleges amiatt, a másodlagos csempék ChannelUris bármikor módosíthatja. Annak érdekében, hogy ne a telepítések az értesítési központ frissítése, az eszköz frissítenie kell azokat a az aktuális ChannelUris a másodlagos csempék.
+A SecondaryTiles szótárban az azonos TileId, amellyel a SecondaryTiles objektum létrehozása a Windows Store App használ. Csakúgy, mint az elsődleges amiatt, a másodlagos csempék ChannelUris bármikor módosíthatja. Annak érdekében, hogy ne a telepítések az értesítési központ frissítése, az eszköz frissítenie kell azokat a az aktuális ChannelUris a másodlagos csempék.
 
 ## <a name="registration-management-from-the-device"></a>Az eszközről regisztrációkezelés
 

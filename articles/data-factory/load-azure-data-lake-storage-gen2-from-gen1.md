@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: b975b34c638db812d3809bf50d1eccbb651028b5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: e3a27ab15c72289dd28e31d832b81407a66dc754
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448934"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256787"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Adatok másolása az Azure Data Lake Storage Gen1 Gen2-re az Azure Data Factoryvel
 
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * Az Azure Data Lake Storage Gen1 fiók adattal.
-* Azure Storage-fiókjába Data Lake Storage Gen2 engedélyezve: Ha nem rendelkezik egy tárfiókot, kattintson a [Itt](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) hozhat létre egyet.
+* Azure Storage-fiókjába Data Lake Storage Gen2 engedélyezve: Ha egy Storage-fiók nem rendelkezik [hozzon létre egy fiókot](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
@@ -104,7 +104,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
    
    ![Az Azure Data Lake Storage Gen2-fiók megadása](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 
-9. Az a **a kimeneti fájl vagy mappa kiválasztása** lap, adja meg **copyfromadlsgen1** , a kimeneti mappa nevét, és válassza **tovább**: 
+9. Az a **a kimeneti fájl vagy mappa kiválasztása** lap, adja meg **copyfromadlsgen1** , a kimeneti mappa nevét, és válassza **tovább**. Az ADF hoz létre a megfelelő ADLS Gen2-fájlrendszer és almappák másolása során, ha még nem létezik.
 
     ![Adja meg a kimeneti mappa](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-path.png)
 

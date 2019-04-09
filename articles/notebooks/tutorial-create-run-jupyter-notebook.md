@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 65bbb5fe-9939-4e8e-8f5b-c197d4be142a
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 8fa873ca1ab20fbd8b3ca4ff57507adf34529246
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d5ccf3e9f35a8d35387962278577333ff92ff02b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903657"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258532"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Oktatóanyag: létrehozása és futtatása a Jupyter notebook Python használatával
 
@@ -128,7 +128,7 @@ Készen áll az adatfájlban és a projekt környezet beállítása hogy mostant
 1. Mert rendelkezik egy *requirements.txt* fájl a környezet beállításaiban látja az üzenetet, "Várakozás a tároló befejezéséhez a előkészítésére." Választhat **OK** zárja be az üzenetet, és folytatni a munkát a notebook; kód cellák, azonban nem tudja futtatni, amíg a környezet teljes van beállítva.
 1. A Notebookban egy üres kódcellába Jupyter kapcsolaton alapértelmezett nyílik meg.
 
-    [![Kezdeti nézete egy új jegyzetfüzetet az Azure-jegyzetfüzetekben](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Iegy új jegyzetfüzetet az Azure-jegyzetfüzetekben nitial nézete](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>A notebook felület bemutatása
 
@@ -144,7 +144,7 @@ Az ablak tetején jelenik meg a következő elemek:
 (F) jelzi, hogy a notebook megbízható (alapértelmezett érték a **nem megbízható**).
 (G) a kernel a jegyzetfüzet futtatásához egy tevékenységet jelző együtt használja.
 
-[![A Jupyter felület területeit elsődleges felhasználói felület](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![Pa Jupyter felület lsődleges felhasználói felület területek](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter biztosít beépített Ismerkedjen meg az elsődleges felhasználói felületi elemeket. A bemutató első lépésként válassza ki a **súgó** > **felhasználói felületet bemutató** parancs, és kattintson az előugró ablakok keresztül.
 
@@ -425,10 +425,10 @@ Is [Visual Studio Code - Jupyter támogatási](https://code.visualstudio.com/doc
 
 Útmutatók:
 
-- [Hozzon létre, és klónozza a projektek](create-clone-jupyter-notebooks.md)
+- [Projektek létrehozása és klónozása](create-clone-jupyter-notebooks.md)
 - [Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
 - [Egy jegyzetfüzetet a csomagok telepítése](install-packages-jupyter-notebook.md)
-- [Diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)
+- [Diavetítés bemutatása](present-jupyter-notebooks-slideshow.md)
 - [Adatfájlok használata](work-with-project-data-files.md)
-- [Adatok erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
+- [Adatforrások elérése](access-data-resources-jupyter-notebooks.md)
 - [Az Azure Machine Learning-szolgáltatások használata](use-machine-learning-services-jupyter-notebooks.md)

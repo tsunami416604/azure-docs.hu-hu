@@ -3,18 +3,18 @@ title: A teljesítmény – Azure HDInsight Spark-feladatok optimalizálása
 description: A legjobb teljesítmény érdekében a Spark-fürtök gyakori stratégiát mutatja.
 services: hdinsight
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: d1eeedfd91dfe1d4a174a3cbed2c0db826a8d5ab
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: MT
+ms.date: 04/03/2019
+ms.openlocfilehash: b846b19d180bf19a0d023a9cd0b92393132f47d4
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117860"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058628"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Az Apache Spark-feladatok optimalizálása
 
@@ -24,7 +24,7 @@ A következő szakaszok ismertetik a Spark-feladat közös optimalizálása és 
 
 ## <a name="choose-the-data-abstraction"></a>Válassza ki az adatok absztrakciós
 
-A Spark a korábbi rdd-k segítségével absztrakt az adatokat, a Spark 1.3 és 1.6-os bevezetett DataFrames és adatkészleteket, illetve. Vegye figyelembe a következő relatív érdemi:
+Korábbi Spark rdd-k segítségével absztrakt az adatokat, a Spark 1.3-as és 1.6-os bevezetett DataFrames és adatkészleteket, illetve. Vegye figyelembe a következő relatív érdemi:
 
 * **DataFrames**
     * A legtöbb esetben a legjobb választás.
@@ -60,8 +60,9 @@ Amikor létrehoz egy új Spark-fürtöt, lehetősége van az Azure Blob Storage 
 
 | Store típusa | Fájlrendszer | Sebesség | Átmeneti | Használati példák |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//url/ | **Standard** | Igen | Átmeneti fürt |
-| Azure Data Lake Storage | **Adl:**//url/ | **Gyorsabb** | Igen | Átmeneti fürt |
+| Azure Blob Storage | **wasb[s]:**//url/ | **Standard** | Igen | Átmeneti fürt |
+| Azure Data Lake Storage Gen 2| **abfs[s]:**//url/ | **Gyorsabb** | Igen | Átmeneti fürt |
+| Azure Data Lake Storage Gen 1| **adl:**//url/ | **Gyorsabb** | Igen | Átmeneti fürt |
 | Helyi HDFS | **hdfs:**//url/ | **Leggyorsabb** | Nem | Interaktív 24/7 fürt |
 
 ## <a name="use-the-cache"></a>A gyorsítótár használata

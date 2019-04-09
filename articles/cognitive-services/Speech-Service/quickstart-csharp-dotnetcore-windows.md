@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: A beszédfelismerést, C# (.NET Core Windows) – beszédszolgáltatások'
+title: 'Gyors útmutató: A beszédfelismerést, C# (.NET Core) – beszédszolgáltatások'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan a beszédfelismerést C# alatt a .NET Core, a Windows, a beszéd SDK-val
+description: Ismerje meg, hogyan a beszédfelismerést C# alatt a .NET Core Windows vagy MacOS rendszeren, a beszéd SDK-val
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 13d5d5b57c4c52b213f3c369244348b00a49332b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 938efe79d4f9f0b9003fcf83196df80d71d16e75
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895610"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009427"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Gyors útmutató: A .NET Core beszédfelismerést a Speech SDK-val
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben a cikkben létre fog hozni a Windowson egy C# konzolalkalmazást a .NET Core-hoz a Cognitive Services [Speech SDK](speech-sdk.md) használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
+Ebben a cikkben létrehoz egy C# a Cognitive Services használatával a Windows vagy macOS rendszeren a .NET Core Konzolalkalmazás [beszéd SDK](speech-sdk.md). A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
 
 > [!NOTE]
 > A .NET Core egy nyílt forráskódú, platformfüggetlen .NET-platform, amely implementálja a [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) specifikációt.

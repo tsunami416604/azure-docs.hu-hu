@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c9ef471ca1536f928ca5ae2fe4f55e8e2b3424
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4b94004aa4b4834be80c13a044fcf7eb0023b6f7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878417"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259864"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Az Azure Active Directory hozzáférési jogkivonatok
 
@@ -173,14 +173,14 @@ A `alg` jogcím azt jelzi, hogy a jogkivonat, ideje aláírásához használt al
 
 Lekérdezhet az idő az Azure AD egy meghatározott készlete nyilvános-titkos kulcspárok használatával id_token előfordulhat, hogy alá. Az Azure AD elforgatása a kulcsok rendszeres időközönként, lehetséges készletét, így az alkalmazás automatikusan kezeli a fő módosításokat kell írni. Az Azure AD által használt nyilvános kulcsok frissítései ésszerű gyakoriságot van 24 óránként.
 
-Az aláíró kulcs adatokat kell érvényesíteni az aláírást, az OpenID Connect metaadat-dokumentumban található használatával szerezheti be:
+Lekérheti a szükséges érvényesíteni az aláírást az aláíró kulcs adatokat a [OpenID Connect metaadat-dokumentumokról](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) helyen található:
 
 ```
-https://login.microsoftonline.com/common/.well-known/openid-configuration
+https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> Próbálja ki a [URL-cím](https://login.microsoftonline.com/common/.well-known/openid-configuration) böngészőben!
+> Próbálja ki a [URL-cím](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) böngészőben!
 
 A metaadat-dokumentum:
 
@@ -190,7 +190,9 @@ A metaadat-dokumentum:
 > [!NOTE]
 > Az 1.0-s verziójú végpont adja vissza, mind a `x5t` és `kid` állítja, miközben a v2.0-végpont csak válaszol az a `kid` jogcím. Továbbítja, javasoljuk, hogy használja a `kid` jogcím a jogkivonat érvényesítéséhez.
 
-Aláírás-ellenőrzés végrehajtása terjed ki a dokumentum - érhetők el számos nyílt forráskódú kódtár segít, ha szükséges.
+Aláírás-ellenőrzés végrehajtása terjed ki a dokumentum - érhetők el számos nyílt forráskódú kódtár segít, ha szükséges.  A Microsoft Identity platform viszont egy jogkivonat-aláíró a szabványoknak - aláírókulcs egyéni bővítmény rendelkezik.  
+
+Ha az alkalmazás egyéni aláíró kulcsok használatával rendelkezik-e a [jogcím-hozzárendelési](active-directory-claims-mapping.md) funkciót, hozzá kell fűzni a egy `appid` lekérdezési paraméter lekérése érdekében Azonosítót tartalmazó egy `jwks_uri` a webalkalmazásra mutató az aláíró kulcs adatokat, amelyek érvényesítési kell használni. Például: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` tartalmaz egy `jwks_uri` , `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
 ### <a name="claims-based-authorization"></a>Jogcímalapú engedélyezési
 

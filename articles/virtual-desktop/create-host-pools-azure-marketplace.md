@@ -5,16 +5,16 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: cc404c84bf855ab6e49d13207f40b9faa32cdbb2
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f539a71fccca116ee031781df855ec55158eb63a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399871"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257450"
 ---
-# <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Oktatóanyag: Gazdagép-készlet létrehozása az Azure Marketplace-en
+# <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Oktatóanyag: Gazdagépcsoport létrehozása az Azure Marketplace-en
 
 Gazdagép-készletekre egy gyűjtemény egy vagy több egyforma virtuális gépek virtuális Windows Desktop előzetes verziójához bérlői környezetekben. Minden gazdagép címkészlet tartalmazhat egy alkalmazás-csoportot, amely a felhasználók használhatják, mint a fizikai számítógépen.
 
@@ -116,6 +116,9 @@ Az alábbiakban a jelenlegi támogatott ügyfelek:
 
 - [Távoli asztali ügyfél Windows 7 és Windows 10-es](connect-windows-7-and-10.md)
 - [Windows virtuális asztal webes ügyféllel](connect-web.md)
+
+>[!IMPORTANT]
+>Védelme érdekében az Azure-ban, a Windows virtuális asztali környezetben ajánlott ne nyissa meg a 3389-es porton bejövő a virtuális gépeken. Windows virtuális asztal nyílt bejövő port felhasználók számára hozzáférést a gazdagép-készlet virtuális gépek a 3389-es nem igényel. Ha a 3389-es port hibaelhárítás céljából kell megnyitni, azt javasoljuk, használja [just-in-time VM access](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time).
 
 ## <a name="next-steps"></a>További lépések
 

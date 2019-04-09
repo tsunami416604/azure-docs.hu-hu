@@ -1,7 +1,6 @@
 ---
 title: Speciális lekérdezési minták
 description: Néhány speciális lekérdezéseket futtatnia, beleértve a VMSS-kapacitás használt, minden címke listázása az Azure Erőforrás-grafikon és a megfelelő virtuális gépek használata a reguláris kifejezéseket.
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9cb43cfdf930b14449f5c7130df275ef0b8d6484
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9a243dd236a8c499602a9070a7dd61e69541d58d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842617"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256821"
 ---
 # <a name="advanced-resource-graph-queries"></a>Speciális Resource Graph-lekérdezések
 
@@ -23,9 +22,9 @@ Az Azure Resource Graph-fal végzett lekérdezések megértéséhez először a 
 A következő speciális lekérdezéseken vezetjük végig:
 
 > [!div class="checklist"]
-> - [VMSS kapacitásának és méretének lekérése](#vmss-capacity)
-> - [Összes címkenév listázása](#list-all-tags)
-> - [Reguláris kifejezésekkel egyező virtuális gépek](#vm-regex)
+> - [VMSS-kapacitás és méret](#vmss-capacity)
+> - [Az összes tartalmaznak a címkenevek listázása](#list-all-tags)
+> - [Reguláris kifejezéssel egyező virtuális gépek](#vm-regex)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -76,14 +75,14 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 Ez a lekérdezés olyan virtuális gépeket keres, amelyek egyeznek egy [reguláris kifejezéssel](/dotnet/standard/base-types/regular-expression-language-quick-reference) (más néven _regex-szel_).
 A **blobnévelőtagjaként \@**  lehetővé teszi számunkra, hogy adja meg a következő reguláris kifejezésre megfelelően, amely `^Contoso(.*)[0-9]+$`. A reguláris kifejezés definíciójának magyarázata:
 
-- `^` – Az egyezésnek a sztring elején kell kezdődnie.
-- `Contoso` – A kis- és nagybetűket megkülönböztető sztring.
-- `(.*)` – Egy alkifejezés egyezése:
-  - `.` – Egyezik bármely egyetlen karakterrel (az új sor kivételével).
-  - `*` – Az előző elemmel nullaszor vagy többször egyezik.
-- `[0-9]` – Karaktercsoport-egyezés a 0 és 9 közötti számokhoz.
-- `+` – Az előző elemmel egyszer vagy többször egyezik.
-- `$` – Az előző elemmel történő egyezésnek a sztring végén kell lennie.
+- `^` -Match a karakterlánc elején kell elindítani.
+- `Contoso` – A kis-és nagybetűket karakterlánc.
+- `(.*)` -A alkifejezés egyezés:
+  - `.` -A (kivéve egy új sor) minden egyes karakterére illeszkedik.
+  - `*` – Egyezések előző elemhez nulla vagy több alkalommal.
+- `[0-9]` -0 – 9 számokat csoport egyezéssel karakter.
+- `+` – Egyezések előző elem egy vagy több alkalommal.
+- `$` -Az előző elemhez match a karakterlánc végén kell észlelnie.
 
 A név alapján történő egyezéseket követően a lekérdezés levetíti és ábécé sorrendbe rendezi a neveket.
 

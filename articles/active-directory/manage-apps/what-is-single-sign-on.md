@@ -12,39 +12,40 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84f1b7c9461d2eba5e13be8b15b2cbcc62715c23
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: MT
+ms.openlocfilehash: 0357b7f421da753f102d2f05eaf8021cfc74aa2c
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792038"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057194"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
+
 Egyszeri bejelentkezés (SSO) ad hozzá biztonsági és kényelmet, amikor a felhasználók bejelentkezés az Azure Active Directoryban (Azure AD-) alkalmazások. Ez a cikk az egyszeri bejelentkezési módszereket írja le, és segítséget nyújt az alkalmazások konfigurálásakor, válassza ki a legmegfelelőbb egyszeri bejelentkezési módszert.
 
-- **Az egyszeri bejelentkezés**, egy fiókhoz való hozzáférés a tartományhoz csatlakoztatott eszközök bejelentkezéssel felhasználók vállalati erőforrásokhoz, mint a szoftverszolgáltatások (SaaS) alkalmazások, szoftverek és webalkalmazásokat. Bejelentkezés után a felhasználó el is indíthatja az alkalmazások az Office 365 portál és az Azure AD MyApps hozzáférési panelen. A rendszergazdák központosítása felhasználóifiók-kezelés, és automatikusan hozzáadhat vagy eltávolíthat felhasználók csoport tagsága alapján alkalmazásokhoz való hozzáférése. 
+- **Az egyszeri bejelentkezés**, egy fiókhoz való hozzáférés a tartományhoz csatlakoztatott eszközök bejelentkezéssel felhasználók vállalati erőforrásokhoz, mint a szoftverszolgáltatások (SaaS) alkalmazások, szoftverek és webalkalmazásokat. Bejelentkezés után a felhasználó el is indíthatja az alkalmazások az Office 365 portál és az Azure AD MyApps hozzáférési panelen. A rendszergazdák központosítása felhasználóifiók-kezelés, és automatikusan hozzáadhat vagy eltávolíthat felhasználók csoport tagsága alapján alkalmazásokhoz való hozzáférése.
 
 - **Egyszeri bejelentkezés nélkül**, felhasználók kell alkalmazásspecifikus jelszó megjegyzése, és jelentkezzen be minden alkalmazáshoz. Informatikai munkatársak kell létrehozni és frissíteni a felhasználói fiókok az egyes alkalmazások, például az Office 365-höz, a Box vagy a Salesforce. Felhasználók ne felejtse el a jelszavukat, valamint időt kelljen szánnia a jelentkezzen be a minden alkalmazás kell.
 
 ## <a name="choosing-a-single-sign-on-method"></a>Egyszeri bejelentkezés módszer kiválasztása
 
-Többféleképpen is lehet az alkalmazás egyszeri bejelentkezés konfigurálása. Egyszeri bejelentkezés módszer kiválasztása attól függ, hogy az alkalmazás hogyan van konfigurálva a hitelesítéshez. 
+Többféleképpen is lehet az alkalmazás egyszeri bejelentkezés konfigurálása. Egyszeri bejelentkezés módszer kiválasztása attól függ, hogy az alkalmazás hogyan van konfigurálva a hitelesítéshez.
 
 - A felhőalapú alkalmazások OpenID Connect, OAuth, SAML, jelszóalapú, a társított, vagy letiltott módszereket használhatja az egyszeri bejelentkezés. 
 - A helyszíni alkalmazások használhatják a jelszóalapú, integrált Windows hitelesítést, az egyszeri bejelentkezés fejlécalapú, összekapcsolt vagy letiltott metódust. A helyszíni lehetőségek működnek, ha a alkalmazások Application Proxy van konfigurálva.
 
-Ez a folyamatábra segít eldönteni, ajánlott az adott helyzetben melyik egyszeri bejelentkezésének módját. 
+Ez a folyamatábra segít eldönteni, ajánlott az adott helyzetben melyik egyszeri bejelentkezésének módját.
 
-![Egyszeri bejelentkezés módszer kiválasztása](./media/what-is-single-sign-on/choose-single-sign-on-method-updated.png)
+![Egyszeri bejelentkezés módszer kiválasztása](./media/what-is-single-sign-on/choose-single-sign-on-method-040419.png)
 
-Az alábbi táblázat foglalja össze az egyszeri bejelentkezési módszereket, és hivatkozásokat tartalmaz további részleteket. 
+Az alábbi táblázat foglalja össze az egyszeri bejelentkezési módszereket, és hivatkozásokat tartalmaz további részleteket.
 
 | Egyszeri bejelentkezési módszer | Alkalmazástípusok | A következő esetekben használja |
 | :------ | :------- | :----- |
 | [OpenID Connect és az OAuth révén](#openid-connect-and-oauth) | Csak a felhőben | OpenID Connect és az OAuth használata egy új alkalmazások fejlesztése során. Ez a protokoll egyszerűbbé teszi az alkalmazás konfigurációja, egyszerűen használható SDK-kkal rendelkezik, és lehetővé teszi, hogy az alkalmazás használhatja az MS Graph.
 | [SAML](#saml-sso) | felhőbeli és helyszíni | Válassza ki a SAML, amikor csak lehetséges, a meglévő alkalmazásokat, amelyek nem használnak az OpenID Connect vagy az OAuth szolgáltatástól. Az SAML az alkalmazásokat, amelyek hitelesítést végezni a SAML-protokoll esetében működik.|
 | [Jelszóalapú](#password-based-sso) | felhőbeli és helyszíni | Válassza a jelszóalapú, amikor az alkalmazás hitelesíti a felhasználónevet és jelszót. Jelszavas egyszeri bejelentkezés lehetővé teszi a biztonságos tárolását és ismétlését egy webböngésző-bővítmény vagy mobilalkalmazás segítségével. Ezt a módszert használja a meglévő bejelentkezési folyamat az alkalmazás által biztosított, de lehetővé teszi, hogy egy rendszergazda kezelje a jelszavakat. |
-| [A csatolt](#linked-sso) | felhőbeli és helyszíni | Válassza ki társított egyszeri bejelentkezést, amikor az alkalmazás úgy van konfigurálva, az egyszeri bejelentkezés egy másik identitás szolgáltató szolgáltatásban. Ez a beállítás nem adja hozzá egyszeri bejelentkezés az alkalmazáshoz. Az alkalmazás azonban már előfordulhat, hogy rendelkezik az egyszeri bejelentkezés egy másik szolgáltatás, például az Active Directory összevonási szolgáltatások használatával implementált.|
+| [Csatolt](#linked-sso) | felhőbeli és helyszíni | Válassza ki társított egyszeri bejelentkezést, amikor az alkalmazás úgy van konfigurálva, az egyszeri bejelentkezés egy másik identitás szolgáltató szolgáltatásban. Ez a beállítás nem adja hozzá egyszeri bejelentkezés az alkalmazáshoz. Az alkalmazás azonban már előfordulhat, hogy rendelkezik az egyszeri bejelentkezés egy másik szolgáltatás, például az Active Directory összevonási szolgáltatások használatával implementált.|
 | [Letiltva](#disabled-sso) | felhőbeli és helyszíni | Válassza a letiltott egyszeri bejelentkezés, ha az alkalmazás nem áll készen az egyszeri bejelentkezéshez konfigurálandó. Adja meg a felhasználónevüket és jelszavukat minden alkalommal, amikor az alkalmazás indításakor kell felhasználók.|
 | [Integrált Windows-hitelesítés (IWA)](#integrated-windows-authentication-iwa-sso) | csak helyszíni | IWA egyszeri bejelentkezést használó alkalmazások esetében válassza [integrált Windows-hitelesítés (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication), vagy jogcímeket használó alkalmazásokat. IWA az alkalmazásproxy-összekötők használatával a Kerberos által korlátozott delegálás (KCD) hitelesítheti a felhasználókat az alkalmazáshoz. | 
 | [Fejlécalapú](#header-based-sso) | csak helyszíni | Használja fejléc-alapú egyszeri bejelentkezés, ha az alkalmazás fejléceket használja a hitelesítéshez. Fejléc-alapú egyszeri bejelentkezés szükséges a PingAccess Azure AD-hez. Az alkalmazásproxy az Azure AD segítségével hitelesíti a felhasználót, és ezután továbbítja a forgalmat az összekötő szolgáltatást.  | 
@@ -58,7 +59,7 @@ További információkért lásd:
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
 - [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-## <a name="saml-sso"></a>SAML EGYSZERI BEJELENTKEZÉS
+## <a name="saml-sso"></a>SAML SSO
 A **SAML egyszeri bejelentkezés**, az Azure AD akkor hitelesíti az alkalmazásnak a felhasználó Azure AD-fiók használatával. Azure ad-ben a bejelentkezési adatait az alkalmazás egy kapcsolat protokollon keresztül kommunikál. SAML-alapú egyszeri bejelentkezés, a felhasználók leképezheti a SAML-jogcímek az meghatározott szabályok alapján adott alkalmazás-szerepkörökhöz.
 
 Válassza az SAML-alapú egyszeri bejelentkezés, ha az alkalmazás ezt támogatja.

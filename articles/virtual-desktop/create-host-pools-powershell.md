@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: bd46e5f7428bab58508521b2c7d4d7cca25d689b
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 2af9df4771d58f2288820dad8ef8d7ac84deb8ae
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439073"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258470"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Gazdagépcsoport létrehozása a PowerShell-lel
 
@@ -111,6 +111,9 @@ Regisztrálja a virtuális asztali Windows-ügynökök, hajtsa végre a művelet
      - Az a **Start** menüben keresse meg a Windows PowerShell ISE-ben, kattintson a jobb gombbal, majd válassza ki **Futtatás rendszergazdaként**.
      - Válassza ki **fájl**, majd **megnyitása...** , majd keresse meg a PowerShell-parancsprogramot a letöltött fájlokat, és nyissa meg.
      - Válassza ki a zöld lejátszás gombra a szkript futtatásához.
+
+>[!IMPORTANT]
+>Védelme érdekében az Azure-ban, a Windows virtuális asztali környezetben ajánlott ne nyissa meg a 3389-es porton bejövő a virtuális gépeken. Windows virtuális asztal nyílt bejövő port felhasználók számára hozzáférést a gazdagép-készlet virtuális gépek a 3389-es nem igényel. Ha a 3389-es port hibaelhárítás céljából kell megnyitni, azt javasoljuk, használja [just-in-time VM access](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 01/17/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8d3bc70b467cabfc5d45c51b79b43d2942d558ae
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: c48acf7e9074ac3c5a7d19765a9524a411fa26c8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885727"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264029"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
 
@@ -22,7 +22,7 @@ Az Azure Search egy olyan önálló erőforrás, az egyéni alkalmazások keres�
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy Azure Search-erőforrást a [az Azure portal](https://portal.azure.com/).
 
-[![Animált GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
+[![A[animált GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szolgáltatássablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Segítség az első lépések: [Azure Search kezelése a PowerShell-lel](search-manage-powershell.md).
 
@@ -71,7 +71,7 @@ Ha nem kombinálásával erőforrást rendezhet egy csoportba, vagy ha meglévő
 
 Az Azure Search mint Azure-szolgáltatás világszerte sok adatközpontban üzemeltethető. [Árak eltérőek lehetnek](https://azure.microsoft.com/pricing/details/search/) földrajzi hely szerint.
 
-Ha azt tervezi, a kognitív keresés használatára, válassza ki a [szolgáltatásainak elérhetősége régió](cognitive-search-quickstart-blob.md#supported-regions).
+Ha meg vannak az Azure-ban található tartalom indexelése szolgáltatást (Azure storage, Azure Cosmos DB, Azure SQL Database), az Azure Search szolgáltatás létrehozása az adatok sávszélesség díjak elkerülése érdekében ugyanabban a régióban. Nem számítunk fel díjat a kimenő ugyanabban a régióban szolgáltatások esetén.
 
 ## <a name="select-a-pricing-tier-sku"></a>Tarifacsomag (SKU) kiválasztása
 

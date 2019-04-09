@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 06fedddffd51dc22b45e8ae6e415ad139346c5b6
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670387"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058611"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Egyéni Service Fabric-állapotjelentések hozzáadása
 Az Azure Service Fabric mutatja be egy [állapotmodell](service-fabric-health-introduction.md) célzó jelző nem megfelelő állapotú fürt és az alkalmazás feltételeket az adott entitásokon. Használja az állapotközpontú modellről **egészségügyi jelentéskészítők** (rendszer összetevőit és watchdogs). A cél, egyszerű és gyors diagnosztizálása és javítás. Szolgáltatás írók kell health szolgáltatással kapcsolatos előzetes költségek. Tetszőleges feltételt, amely hatással lehet a health kell jelenteni, különösen akkor, ha a legfelső szintű közeli jelző problémák megkönnyíti. Az egészségügyi információk takaríthat meg időt és energiát a Hibakeresés és kivizsgálása érdekében. Az üzletmenetet különösen törlése után a szolgáltatás nem működik és ipari méretekben a felhőben (magán- vagy Azure).
@@ -55,18 +55,18 @@ Egyszer az egészségügyi jelentéskészítő Tervező nincs bejelölve, rendsz
 > 
 
 ## <a name="health-client"></a>Állapot ügyfél
-A rendszerállapot-jelentések küldése a a health Store adatbázisban, egy állapot-ügyfelet, amely lakik belsejében a fabric-ügyfél használatával. Az állapot-ügyfél a következő beállításokkal konfigurálhatók:
+A rendszerállapot-jelentések küldése a az ügyfélállapot-kezelő egy rendszerállapot-ügyfelet, amely lakik belsejében a fabric-ügyfél használatával. A health manager jelentéseket menti a health Store adatbázisban. Az állapot-ügyfél a következő beállításokkal konfigurálhatók:
 
-* **HealthReportSendInterval**: A health Store adatbázisban továbbítja a jelentést kerül az ügyfél és az idő közötti késleltetés. A batch-jelentésekhez használt, egy üzenet, nem pedig egy üzenet küldése az egyes jelentések. A kötegelés javítja a teljesítményt. Alapértelmezett: 30 másodperc.
-* **HealthReportRetrySendInterval**: Az időköz, amelyen az állapotfigyelő létrehozása után újraküldi összesített állapotát jelenti a health Store adatbázisban. Alapértelmezett: 30 másodperc.
-* **HealthOperationTimeout**: Az időkorlát a health Store adatbázisban egy jelentés üzenetet. Egy üzenet túllépi az időkorlátot, ha az állapotfigyelő ügyfél azt újrapróbálkozik, mindaddig, amíg a health Store adatbázisban megerősíti, hogy a jelentés feldolgozása megtörtént. Alapértelmezett: két perc.
+* **HealthReportSendInterval**: A health manager továbbítja a jelentést kerül az ügyfél és az idő közötti késleltetés. A batch-jelentésekhez használt, egy üzenet, nem pedig egy üzenet küldése az egyes jelentések. A kötegelés javítja a teljesítményt. Alapértelmezett: 30 másodperc.
+* **HealthReportRetrySendInterval**: A health manager jelenti az időközt, amelyen az állapotfigyelő létrehozása után újraküldi összesített állapotát. Alapértelmezett: 30 másodperc, minimális: 1 másodperc.
+* **HealthOperationTimeout**: Az időkorlát a health manager küldött jelentés üzenet. Egy üzenet túllépi az időkorlátot, ha az állapotfigyelő ügyfél azt újrapróbálkozik, mindaddig, amíg a health manager megerősíti, hogy a jelentés feldolgozása megtörtént. Alapértelmezett: két perc.
 
 > [!NOTE]
-> Ha a jelentések kötegelni vannak, a fabric ügyfél kell tartani fenn legalább a HealthReportSendInterval annak érdekében, hogy azok elküldéséhez. Ha az üzenet elveszik, vagy az átmeneti hibák miatt a health Store adatbázisban nem alkalmazza, a fabric ügyfél kell tartandó már neki, és próbálkozzon újra.
+> Ha a jelentések kötegelni vannak, a fabric ügyfél kell tartani fenn legalább a HealthReportSendInterval annak érdekében, hogy azok elküldéséhez. Ha az üzenet elveszik, vagy az ügyfélállapot-kezelő nem tudja alkalmazni őket átmeneti hibák miatt, a fabric ügyfél kell tartandó már neki, és próbálkozzon újra.
 > 
 > 
 
-Az egyedi-e a jelentések figyelembe veszi az ügyfélen pufferelés vesz igénybe. Például ha egy adott hibás riporter jelent meg ugyanaz az entitás ugyanazon tulajdonságát másodpercenként 100 jelentést, a jelentések helyettesíti a legutóbbi verzióra. Legfeljebb egy ilyen jelentés létezik, az ügyfél-üzenetsorban. Ha kötegelés van konfigurálva, a health Store adatbázisban küldött jelentések száma / küldési időköz csak az egyik. Ez a jelentés az utolsó új jelentést, amely tükrözi a legfrissebb állapotba az entitás nem.
+Az egyedi-e a jelentések figyelembe veszi az ügyfélen pufferelés vesz igénybe. Például ha egy adott hibás riporter jelent meg ugyanaz az entitás ugyanazon tulajdonságát másodpercenként 100 jelentést, a jelentések helyettesíti a legutóbbi verzióra. Legfeljebb egy ilyen jelentés létezik, az ügyfél-üzenetsorban. Ha kötegelés van konfigurálva, a health manager küldött jelentések száma / küldési időköz csak az egyik. Ez a jelentés az utolsó új jelentést, amely tükrözi a legfrissebb állapotba az entitás nem.
 Adja meg a konfigurációs paramétereket amikor `FabricClient` jön létre átadásával [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) a health kapcsolatos bejegyzéseket a kívánt értékekkel.
 
 Az alábbi példa létrehoz egy fabric ügyfél, és itt adhatja meg, hogy a jelentéseket küld-e, amikor hozzáadja őket. Az időtúllépések és az újrapróbálható hibák az újrapróbálkozások 40 másodpercenként fordulhat elő.
@@ -312,7 +312,7 @@ Az egészségügyi adatok alapján, szolgáltatás írók és a fürt/alkalmazá
 
 [Hibaelhárítás rendszerállapot-jelentések használata](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
-[A szolgáltatások helyi monitorozása és diagnosztizálása](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+[A szolgáltatások helyi figyelése és diagnosztikája](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric-alkalmazás frissítése](service-fabric-application-upgrade.md)
 

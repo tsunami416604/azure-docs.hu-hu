@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7354ed8362412c40d52a3895a9b4118eb7c1544
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449381"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258912"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Felügyelt identitások használata az Azure-erőforrások egy Azure-beli virtuális gépen a hozzáférési jogkivonat beszerzése 
 
@@ -79,10 +79,11 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `Metadata` | Egy HTTP kérelem fejléce, kötelező mező által felügyelt identitásokat az Azure-erőforrások, a kiszolgáló kiszolgálóoldali kérelmet hamisítására (SSRF) támadások elleni megoldás. Ezt az értéket állítsa "true", csupa kisbetű szerepel. |
 | `object_id` | (Nem kötelező) A lekérdezési sztring paramétereként, a object_id az felügyelt identitás szeretné token jelzi. Szükséges, ha a virtuális gépen több felhasználó által hozzárendelt felügyelt identitást.|
 | `client_id` | (Nem kötelező) A lekérdezési sztring paramétereként, a client_id az felügyelt identitás szeretné token jelzi. Szükséges, ha a virtuális gépen több felhasználó által hozzárendelt felügyelt identitást.|
+| `mi_res_id` | (Nem kötelező) A lekérdezési sztring paramétereként, a felügyelt identitás token szeretné a mi_res_id (az Azure erőforrás-azonosító) jelző. Szükséges, ha a virtuális gépen több felhasználó által hozzárendelt felügyelt identitást. |
 
 A felügyelt identitások használatával az Azure-erőforrások Virtuálisgép-bővítmény végpont mintakérelem *(elavult. január 2019 a tervezett)*:
 
-```
+```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
 Metadata: true
 ```
@@ -96,10 +97,9 @@ Metadata: true
 | `object_id` | (Nem kötelező) A lekérdezési sztring paramétereként, a object_id az felügyelt identitás szeretné token jelzi. Szükséges, ha a virtuális gépen több felhasználó által hozzárendelt felügyelt identitást.|
 | `client_id` | (Nem kötelező) A lekérdezési sztring paramétereként, a client_id az felügyelt identitás szeretné token jelzi. Szükséges, ha a virtuális gépen több felhasználó által hozzárendelt felügyelt identitást.|
 
-
 Mintaválasz:
 
-```
+```json
 HTTP/1.1 200 OK
 Content-Type: application/json
 {

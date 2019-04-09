@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: e9bfb835a1dea240573c21ccbbe13088561851ab
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: c2f953c98e41291951f07556bd0cd441d2793d1d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661411"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259133"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Az Azure Service Fabric-figyelés partnerek
 
@@ -45,6 +45,9 @@ A New Relic, egy másik alkalmazásteljesítmény-felügyeleti eszköz, amely j�
 
 Az ELK stack gyűjteménye, nyílt forráskódú technológiák: Az Elasticsearch, Logstash és Kibana. Ezek együttes használatával gyűjthet, tárolhatja és elemezheti a Service Fabric monitorozási és diagnosztikai adatokat. Rendelkezünk egy oktatóanyag, az ehhez a Service Fabric natív Java-alkalmazások [Itt](service-fabric-tutorial-java-elk.md). 
 
+## <a name="humio"></a>Humio
+
+Humio, amely képes gyűjteni a naplók az alkalmazások és a Service Fabric a felhőben vagy egy helyszíni valós idejű eseményeket a log adatgyűjtési szolgáltatás. Élő observability Humio legmodernebb elemzési és vizualizációs képességei tekinthetők meg és insights összegyűjti a diagnosztika lehetőséget biztosít. Humio költséghatékony díjcsomagok rendelkezik, és be van építve, megőrzése méretezési van könnyítve gyors sebessége. Közvetlenül integrálható a Service Fabric platform eseményeket és alkalmazás telemetriát. Tudjon meg többet a Humio és a Service Fabric integrálása [Itt](https://github.com/humio/service-fabric-humio).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,27 +1,27 @@
 ---
-title: B2B-együttműködés felhasználó – Azure Active Directory tulajdonságainak |} A Microsoft Docs
-description: Az Azure Active Directory B2B együttműködés felhasználói tulajdonságok konfigurálható
+title: A B2B tulajdonságainak Vendég felhasználó – Azure Active Directory |} A Microsoft Docs
+description: Az Azure Active Directory B2B-vendégként felhasználói tulajdonságok és állapotok előtt és után vendégmeghívás beváltása
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 791dcfadf1db6cae48bee5c926f75e454c88fc55
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 4d4466e4ac7a4e818da6332254e3094eccbaf2b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294654"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257603"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B együttműködés felhasználó tulajdonságai
 
-Egy Azure Active Directory (Azure AD) vállalatközi (B2B) együttműködés felhasználói a felhasználó a UserType = Vendég. A vendégfelhasználó általában egy fiókpartner-szervezet, és korlátozott jogosultságokkal a meghívó könyvtárban, alapértelmezés szerint.
+Ez a cikk ismerteti a tulajdonságok és az Azure Active Directory (Azure AD) a B2B-Vendég felhasználói objektum állapotokat előtt és után vendégmeghívás beváltása. Egy Azure AD vállalatközi (B2B) együttműködés felhasználói a felhasználó a UserType = Vendég. A vendégfelhasználó általában egy fiókpartner-szervezet, és korlátozott jogosultságokkal a meghívó könyvtárban, alapértelmezés szerint.
 
 A meghívó szervezetet szükségleteinek egy Azure AD B2B együttműködés felhasználói lehet, a következő fiók állapota:
 

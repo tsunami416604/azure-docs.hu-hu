@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: c1165fcebf8382d30b1be86f102da78ef0a4ac9a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3b6860c9a84384bfade099fb7c8c8c72281c3593
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244366"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257161"
 ---
 # <a name="set-alerts-in-application-insights"></a>Riasztásokat állíthat be az Application insights szolgáltatásban
 [Az Azure Application Insights] [ start] riasztja Önt, a webalkalmazásban a teljesítmény vagy a használati metrikák változásai. 
@@ -143,7 +143,7 @@ Ebben a szakaszban végigvesszük azokat a lekérdezés alapú kivétel riasztá
 
 10. Végül adja hozzá a riasztás részleteinek (riasztási szabály nevét, leírását, súlyosság). Amikor elkészült, kattintson a **riasztási szabály létrehozása** alján.
 
-    ![A riasztás részletei adja meg a riasztási szabály nevét, egy leírást és egy súlyosság kiválasztása ](./media/alerts/9alertdetails.png)
+    ![A riasztás részletei adja meg a riasztási szabály nevét, egy leírást és egy súlyosság kiválasztása](./media/alerts/9alertdetails.png)
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Ki kapja a (klasszikus) riasztási értesítések?
 

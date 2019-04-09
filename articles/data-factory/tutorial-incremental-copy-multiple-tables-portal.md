@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: d8d96d929e55bd4423bdb0cd0dd064e275462ce2
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 77be9d80d535cced48a39c47695257d4868f698c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445361"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257433"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL Database-be.    
@@ -175,6 +175,11 @@ END
 ### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Adattípusok és további tárolt eljárások létrehozása az Azure SQL Database-ben
 Az alábbi lekérdezés futtatásával hozzon létre két tárolt eljárást és két adattípust az SQL-adatbázisban. Ezek összevonják a forrástáblák adatait a céltáblákba.
 
+Annak érdekében, hogy az utazás egyszerűen a következővel kell kezdődnie, azt közvetlenül a tárolt eljárások a változásadatok a passing táblázatváltozó keresztül használja, és majd céltár egyesíti a azokat. Legyen óvatos, hogy, nem a várt "" nagyszámú (több mint 100). a különbözeti sorok a következő táblaváltozót tárolja.  
+
+Ha szeretné a különbözeti sorokat nagy számú egyesítse a céltár, javasoljuk, hogy kell használni a másolási tevékenység a változásadatok másolásához a célhelyen "átmeneti" ideiglenes táblába első tárolja, és majd beépített táblában vari használata nélkül a saját tárolt eljárás lehet egyesíteni őket, a "átmeneti" tábla "záró" táblához. 
+
+
 ```sql
 CREATE TYPE DataTypeforCustomerTable AS TABLE(
     PersonID int,
@@ -226,10 +231,9 @@ END
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza ki a **erőforrás létrehozása** > **adatok + analitika** > **adat-előállító**: 
+1. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
-   ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
-
+   ![New (Új)->DataFactory](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory-menu.png)
 1. Az **Új data factory** lapon, a **Név** mezőben adja meg a következőt: **ADFMultiIncCopyTutorialDF**. 
       
      ![Új adat-előállító lap](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory.png)
@@ -271,7 +275,7 @@ Mialatt adatokat helyez át egy magánhálózaton (helyszínen) lévő adattárb
 1. Az **Integration Runtime Setup** (Integrációs modul beállítása) ablakban válassza a **Perform data movement and dispatch activities to external computes** (Adatáthelyezés és tevékenységek kiosztása külső számításokhoz) lehetőséget, majd kattintson a **Next** (Tovább) gombra. 
 
    ![Az integrációsmodul-típus kiválasztása](./media/tutorial-incremental-copy-multiple-tables-portal/select-integration-runtime-type.png)
-1. Válassza a **Private Network** (Magánhálózat) lehetőséget, majd kattintson a **Next** (Tovább) gombra. 
+1. Válassza a ** Private Network ** (Magánhálózat) lehetőséget, majd kattintson a **Next** (Tovább) gombra. 
 
    ![Magánhálózat kiválasztása](./media/tutorial-incremental-copy-multiple-tables-portal/select-private-network.png)
 1. Írja be a **MySelfHostedIR** nevet a **név** mezőjébe, és kattintson a **Next** (Tovább) gombra. 
@@ -383,7 +387,7 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
    ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
 
    
-   1. Kattintás után **Befejezés**, látja  **\@dataset(). SinkTableName** table neveként.
+ 1. Miután a **Finish** (Befejezés) gombra kattint, a **@dataset().SinkTableName** táblanévként fog megjelenni.
    
    ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -425,11 +429,11 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     ![Folyamat neve](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
 1. A **Properties** (Tulajdonságok) ablakban hajtsa végre a következő lépéseket: 
 
-   1. Kattintson az **+ Új** elemre. 
-   1. A paraméter **nevénél** adja meg a **tableList** nevet. 
-   1. A paraméter **típusaként** válassza az **Object** (Objektum) lehetőséget.
+    1. Kattintson az **+ Új** elemre. 
+    1. A paraméter **nevénél** adja meg a **tableList** nevet. 
+    1. A paraméter **típusaként** válassza az **Object** (Objektum) lehetőséget.
 
-      ![Folyamat paraméterei](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
+    ![Folyamat paraméterei](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
 1. A **tevékenységek** eszközkészletében bontsa ki az **Ismétlés és feltételek** elemet, és húzza a **ForEach** tevékenységet a folyamat tervezőfelületére. A **Properties** (Tulajdonságok) ablak **General** (Általános) lapján az **IterateSQLTables** értéket adja meg. 
 
     ![ForEach tevékenység – név](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
@@ -458,69 +462,69 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     ![Második keresési tevékenység – név](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-name.png)
 1. Váltson a **Settings** (Beállítások) lapra.
 
-     1. Válassza ki a **SourceDataset** elemet a **Forrásadatkészlet** mezőnél. 
-     1. A **Lekérdezés használata** elemnél válassza a **Lekérdezés** lehetőséget.
-     1. A **Lekérdezés** elemhez adja meg az alábbi SQL-lekérdezést.
+    1. Válassza ki a **SourceDataset** elemet a **Forrásadatkészlet** mezőnél. 
+    1. A **Lekérdezés használata** elemnél válassza a **Lekérdezés** lehetőséget.
+    1. A **Lekérdezés** elemhez adja meg az alábbi SQL-lekérdezést.
 
-         ```sql    
-         select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
-         ```
+        ```sql    
+        select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
+        ```
     
-         ![Második keresési tevékenység – beállítások](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
+        ![Második keresési tevékenység – beállítások](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
 1. Húzza a **Copy** (Másolás) tevékenységet az **Activities** (Tevékenységek) eszközkészletből, és írja be az **IncrementalCopyActivity** **nevet**. 
 
-     ![Másolási tevékenység – név](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
+    ![Másolási tevékenység – név](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
 1. Kapcsolja egymás után a **Lookup** (Keresés) tevékenységeket a **Copy** (Másolás) tevékenységhez. A csatlakozáshoz húzza a **Lookup** (Keresés) tevékenységhez tartozó **zöld** gombot a **Copy** (Másolás) tevékenységre. Amikor a másolási tevékenység szegélyének színe **kékre** vált, engedje el az egér gombját.
 
-     ![Keresési tevékenységek hozzákapcsolása egy másolási tevékenységhez](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
+    ![Keresési tevékenységek hozzákapcsolása egy másolási tevékenységhez](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
 1. Válassza ki a folyamatban a **Copy** (Másolás) tevékenységet. Váltson a **Source** (Forrás) lapra a **Properties** (Tulajdonságok) ablakban. 
 
-     1. Válassza ki a **SourceDataset** elemet a **Forrásadatkészlet** mezőnél. 
-     1. A **Lekérdezés használata** elemnél válassza a **Lekérdezés** lehetőséget. 
-     1. A **Lekérdezés** elemhez adja meg az alábbi SQL-lekérdezést.
+    1. Válassza ki a **SourceDataset** elemet a **Forrásadatkészlet** mezőnél. 
+    1. A **Lekérdezés használata** elemnél válassza a **Lekérdezés** lehetőséget. 
+    1. A **Lekérdezés** elemhez adja meg az alábbi SQL-lekérdezést.
 
-         ```sql
-         select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
-         ```
+        ```sql
+        select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
+        ```
 
-         ![Másolási tevékenység – forrás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
+        ![Másolási tevékenység – forrás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. Váltson a **Sink** (Fogadó) lapra, és válassza a **SinkDataset** lehetőséget a **Sink Dataset** (Fogadó adatkészlet) mezőnél. 
         
-     ![Másolási tevékenység – fogadóbeállítások](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
+    ![Másolási tevékenység – fogadóbeállítások](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. Váltson a **Parameters** (Paraméterek) lapra, és hajtsa végre a következő lépéseket:
 
-     1. A **Sink Stored Procedure Name** (Fogadó tárolt eljárás neve) tulajdonsághoz írja be a következőt: `@{item().StoredProcedureNameForMergeOperation}`.
-     1. A **Sink Table Type** (Fogadó táblatípusa) tulajdonsághoz írja be a következőt: `@{item().TableType}`.
-     1. A **Sink Dataset** (Fogadó adatkészlet) szakasz **SinkTableName** paraméteréhez írja be a következőt: `@{item().TABLE_NAME}`.
+    1. A **Sink Stored Procedure Name** (Fogadó tárolt eljárás neve) tulajdonsághoz írja be a következőt: `@{item().StoredProcedureNameForMergeOperation}`.
+    1. A **Sink Table Type** (Fogadó táblatípusa) tulajdonsághoz írja be a következőt: `@{item().TableType}`.
+    1. A **Sink Dataset** (Fogadó adatkészlet) szakasz **SinkTableName** paraméteréhez írja be a következőt: `@{item().TABLE_NAME}`.
 
-         ![Másolási tevékenység – paraméterek](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+        ![Másolási tevékenység – paraméterek](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Húzza át a **Tárolt eljárás** tevékenységet a **tevékenységek** eszközkészletéből a folyamat tervezőfelületére. Kapcsolja a **Copy** (Másolás) tevékenységet a **Stored Procedure** (Tárolt eljárás) tevékenységhez. 
 
-     ![Másolási tevékenység – paraméterek](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
+    ![Másolási tevékenység – paraméterek](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
 1. Válassza ki a **Stored Procedure** (Tárolt eljárás) tevékenységet a folyamatban, és írja be a **StoredProceduretoWriteWatermarkActivity** **nevet** a **Properties** (Tulajdonságok) ablak **General** (Általános) lapján. 
 
-     ![Tárolt eljárási tevékenység – név](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
+    ![Tárolt eljárási tevékenység – név](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
 1. Váltson az **SQL Account** (SQL-fiók) lapra, majd a **Linked Service** (Társított szolgáltatás) elemnél válassza az **AzureSqlDatabaseLinkedService** lehetőséget.
 
-     ![Tárolt eljárási tevékenység – SQL-fiók](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
+    ![Tárolt eljárási tevékenység – SQL-fiók](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. Váltson a **Tárolt eljárás** lapra, és végezze el az alábbi lépéseket:
 
-     1. A **tárolt eljárás neveként** válassza az `usp_write_watermark` lehetőséget. 
-     1. Válassza az **Importálási paraméter** lehetőséget. 
-     1. Adja meg a következő értékeket a paraméterekhez: 
+    1. A **tárolt eljárás neveként** válassza az `usp_write_watermark` lehetőséget. 
+    1. Válassza az **Importálási paraméter** lehetőséget. 
+    1. Adja meg a következő értékeket a paraméterekhez: 
 
-         | Name (Név) | Típus | Érték | 
-         | ---- | ---- | ----- |
-         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | Name (Név) | Típus | Érték | 
+        | ---- | ---- | ----- |
+        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
-         ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
+        ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. A bal oldali panelen kattintson a **Publish** (Közzététel) elemre. Ez a művelet közzéteszi a Data Factory szolgáltatásban a létrehozott entitásokat. 
 
-     ![Közzététel gomb](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
+    ![Közzététel gomb](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
 1. Várjon, amíg megjelenik a **Sikeres közzététel** üzenet. Az értesítések megtekintéséhez kattintson a **Show Notifications** (Értesítések megjelenítése) hivatkozásra. Az **X** gombra kattintva zárja be az értesítések ablakát.
 
-     ![Értesítések megjelenítése](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
+    ![Értesítések megjelenítése](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
 
  
 ## <a name="run-the-pipeline"></a>A folyamat futtatása
@@ -739,6 +743,6 @@ Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 Folytassa a következő oktatóanyaggal, amelyben az adatok Azure Spark-fürtök használatával való átalakítását ismerheti meg:
 
 > [!div class="nextstepaction"]
->[Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba a változáskövetési technológia használatával](tutorial-incremental-copy-change-tracking-feature-portal.md)
+>[Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob storage-változáskövetési technológia használatával](tutorial-incremental-copy-change-tracking-feature-portal.md)
 
 

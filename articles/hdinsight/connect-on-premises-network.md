@@ -1,19 +1,19 @@
 ---
-title: HDInsight csatlakoztatása a helyszíni hálózathoz – Azure HDInsight
+title: Az Azure HDInsight csatlakoztatása a helyszíni hálózathoz
 description: Útmutató egy HDInsight-fürt létrehozása az Azure Virtual Networkhöz, és hogyan csatlakoztathatja a helyszíni hálózathoz. Útmutató a HDInsight és a helyszíni hálózat között névfeloldás konfigurálása egyéni DNS-kiszolgáló használatával.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/28/2018
-ms.author: hrasheed
-ms.openlocfilehash: 56ca9615bed8d5570d73c44a25ffcec28311b013
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.date: 04/04/2019
+ms.openlocfilehash: 52fe8c05101f9647549acec276f0bdb9fa52d1c7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361353"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256804"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
 
@@ -24,20 +24,11 @@ Ismerje meg a HDInsight csatlakoztatása a helyszíni hálózathoz az Azure Virt
 * A HDInsight internet-hozzáférés korlátozása a hálózati biztonsági csoportok konfigurálása.
 * A portok HDInsight biztosítja a virtuális hálózaton.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="create-the-virtual-network-configuration"></a>A virtuális hálózati konfiguráció létrehozása
-
-A következő dokumentumok segítségével megtudhatja, hogyan hozhat létre egy Azure virtuális hálózat, amely a helyszíni hálózathoz csatlakozik:
-    
-* [Az Azure Portal használata](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-* [Az Azure PowerShell használata](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
-* [Az Azure parancssori felület használata](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)
-
-## <a name="configure-name-resolution"></a>Névfeloldás konfigurálása
+## <a name="overview"></a>Áttekintés
 
 A csatlakoztatott hálózati kommunikációhoz név szerint a HDInsight és az erőforrások engedélyezéséhez hajtsa végre a következő műveleteket:
 
+* Azure virtuális hálózat létrehozása.
 * Hozzon létre egy egyéni DNS-kiszolgálót az Azure Virtual Network.
 * Az egyéni DNS-kiszolgáló használata helyett az alapértelmezett Azure rekurzív feloldó virtuális hálózat konfigurálása.
 * Az egyéni DNS-kiszolgáló és a helyi DNS-kiszolgáló közötti továbbítás konfigurálása.
@@ -51,25 +42,34 @@ Az alábbi ábrán a zöld sorai, amely a virtuális hálózat DNS-utótagját e
 
 ![DNS-kérések az itt bemutatott konfiguráció feloldási módját ábrázoló diagram](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
-### <a name="create-a-custom-dns-server"></a>Create a custom DNS server
+## <a name="prerequisites"></a>Előfeltételek
 
-> [!IMPORTANT]
+* Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](./hdinsight-hadoop-linux-use-ssh-unix.md).
+* Ha a PowerShell használatával, akkor a [AZ modul](https://docs.microsoft.com/powershell/azure/overview).
+* Ha szeretnék használni az Azure CLI-vel, és még nem telepítette azt, lásd: [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+## <a name="create-virtual-network-configuration"></a>Virtuális hálózati konfiguráció létrehozása
+
+A következő dokumentumok segítségével megtudhatja, hogyan hozhat létre egy Azure virtuális hálózat, amely a helyszíni hálózathoz csatlakozik:
+
+* [Az Azure Portal használata](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Az Azure PowerShell használata](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+* [Az Azure parancssori felület használata](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)
+
+## <a name="create-custom-dns-server"></a>Create custom DNS server
+
+> [!IMPORTANT]  
 > Kell létrehozni, és a DNS-kiszolgáló konfigurálása a virtuális hálózatban a HDInsight telepítése előtt.
 
-Ezek a lépések használják a [az Azure portal](https://portal.azure.com) egy Azure virtuális gép létrehozásához. Egyéb módokon is létrehozhat egy virtuális gépet, lásd: [virtuális gép létrehozása – Azure CLI-vel](../virtual-machines/linux/quick-create-cli.md) és [virtuális gép létrehozása – Azure PowerShell-lel](../virtual-machines/linux/quick-create-portal.md).  Használó Linuxos virtuális gép létrehozása a [kötési](https://www.isc.org/downloads/bind/) DNS szoftver, kövesse az alábbi lépéseket:
+Ezek a lépések használják a [az Azure portal](https://portal.azure.com) egy Azure virtuális gép létrehozásához. Egyéb módokon is létrehozhat egy virtuális gépet, lásd: [virtuális gép létrehozása – Azure CLI-vel](../virtual-machines/linux/quick-create-cli.md) és [virtuális gép létrehozása – Azure PowerShell-lel](../virtual-machines/linux/quick-create-powershell.md).  Használó Linuxos virtuális gép létrehozása a [kötési](https://www.isc.org/downloads/bind/) DNS szoftver, kövesse az alábbi lépéseket:
 
-  
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
   
-1. A bal oldali menüben válassza ki a **+ erőforrás létrehozása**.
- 
-1. Válassza ki **számítási**.
-
-1. Válassza ki **Ubuntu Server 18.04 LTS**.<br />  
+2. Lépjen a bal oldali menüből **+ erőforrás létrehozása** > **számítási** > **Ubuntu Server 18.04 LTS**.
 
     ![Egy Ubuntu virtuális gép létrehozása](./media/connect-on-premises-network/create-ubuntu-vm.png)
 
-1. Az a __alapjai__ lapra, adja meg a következőket:  
+3. Az a __alapjai__ lapra, adja meg a következőket:  
   
     | Mező | Érték |
     | --- | --- |
@@ -78,57 +78,46 @@ Ezek a lépések használják a [az Azure portal](https://portal.azure.com) egy 
     |Virtuális gép neve | Adjon meg egy rövid nevet, amely azonosítja a virtuális gépet. Ez a példa **DNSProxy**.|
     |Régió | Válasszon ugyanabban a régióban, a korábban létrehozott virtuális hálózatot.  Nem minden Virtuálisgép-méret érhető el minden régióban.  |
     |Rendelkezésre állási beállításai |  Válassza ki a kívánt szintű rendelkezésre állást.  Az Azure kínál lehetőségek rendelkezésre állását és rugalmasságát, az alkalmazások kezeléséhez.  A Megoldástervezés adatközpont szolgáltatáskimaradásokat és karbantartási események az alkalmazások és adatok védelme a replikált virtuális gépek rendelkezésre állási zónák vagy rendelkezésre állási csoportok használatával. Ez a példa **szükséges infrastruktúra redundancia**. |
-    |Kép | Válassza ki az operációs rendszer vagy alkalmazás a virtuális gép számára.  Ebben a példában válassza a legkisebb és a legalacsonyabb költséget. |
-    |Hitelesítés típusa | __Jelszó__ vagy __nyilvános SSH-kulcs__: Az SSH-fiókhoz tartozó hitelesítési módszer. Azt javasoljuk, nyilvános kulcsok, mivel ezek biztonságosabb. Ebben a példában egy nyilvános kulcsot használja.  További információkért lásd: a [létrehozása és használata Linux rendszerű virtuális gépek SSH-kulcsok](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentumot.|
+    |Kép | Maradjon a **Ubuntu Server 18.04 LTS**. |
+    |Hitelesítés típusa | __Jelszó__ vagy __nyilvános SSH-kulcs__: Az SSH-fiókhoz tartozó hitelesítési módszer. Azt javasoljuk, nyilvános kulcsok, mivel ezek biztonságosabb. Ez a példa **jelszó**.  További információkért lásd: a [létrehozása és használata Linux rendszerű virtuális gépek SSH-kulcsok](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentumot.|
     |Felhasználónév |Adja meg a virtuális gép rendszergazdai felhasználóneve.  Ez a példa **sshuser**.|
     |Jelszó vagy SSH nyilvános kulcs | A rendelkezésre álló mező határozza meg a választott **hitelesítési típus**.  Adja meg a megfelelő értékre.|
-    |||
+    |Nyilvános bejövő portok|Válassza ki **lehetővé teszi a kiválasztott portok**. Válassza ki **SSH (22)** származó a **bejövő portok kiválasztása** legördülő listából.|
 
     ![Alapszintű virtuálisgép-konfiguráció](./media/connect-on-premises-network/vm-basics.png)
 
     Más bejegyzések hagyja az alapértelmezett értéken, és válassza ki a **hálózatkezelés** fülre.
 
-1. Az a **hálózatkezelés** lapra, adja meg a következőket: 
+4. Az a **hálózatkezelés** lapra, adja meg a következőket:
 
     | Mező | Érték |
     | --- | --- |
     |Virtuális hálózat | Válassza ki a korábban létrehozott virtuális hálózat.|
     |Alhálózat | Válassza ki a korábban létrehozott virtuális hálózat alapértelmezett alhálózat. Tegye __nem__ használják a VPN-átjáró-alhálózatot válassza ki.|
-    |Nyilvános IP-cím | Használja az értéket automatikusan kitölti.  |
+    |Nyilvános IP-cím | A töltve értéket használja.  |
 
     ![A virtuális hálózati beállítások](./media/connect-on-premises-network/virtual-network-settings.png)
 
     Más bejegyzések hagyja az alapértelmezett értéken, és válassza ki a **felülvizsgálat + létrehozása**.
 
-1. A a **felülvizsgálat + létrehozása** lapon jelölje be **létrehozása** a virtuális gép létrehozásához.
- 
+5. A a **felülvizsgálat + létrehozása** lapon jelölje be **létrehozása** a virtuális gép létrehozásához.
 
 ### <a name="review-ip-addresses"></a>Tekintse át az IP-címek
 A virtuális gép létrehozása után kapni fog egy **üzembe helyezés sikeres** értesítés egy **erőforrás megnyitása** gombra.  Válassza ki **erőforrás megnyitása** , nyissa meg az új virtuális gépet.  Az alapértelmezett nézetben az új virtuális gép kövesse az alábbi lépéseket a társított IP-címek azonosításához:
 
-1. A **beállítások**válassza **tulajdonságok**. 
+1. A **beállítások**válassza **tulajdonságok**.
 
-1. Vegye figyelembe a tartozó értékeket **nyilvános IP-cím/DNS-NÉVCÍMKE** és **MAGÁNHÁLÓZATI IP-címet** későbbi használatra.
+2. Vegye figyelembe a tartozó értékeket **nyilvános IP-cím/DNS-NÉVCÍMKE** és **MAGÁNHÁLÓZATI IP-címet** későbbi használatra.
 
    ![Nyilvános és privát IP-címek](./media/connect-on-premises-network/vm-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>Telepítse és konfigurálja a kötés (DNS-szoftver)
 
-1. Az SSH használatával csatlakozhat a __nyilvános IP-cím__ a virtuális gép. Az alábbi példa egy virtuális gép 40.68.254.142 csatlakozik:
+1. Az SSH használatával csatlakozhat a __nyilvános IP-cím__ a virtuális gép. Cserélje le `sshuser` a virtuális gép létrehozásakor megadott SSH felhasználói fiókkal. Az alábbi példa egy virtuális gép 40.68.254.142 csatlakozik:
 
     ```bash
     ssh sshuser@40.68.254.142
     ```
-
-    Cserélje le `sshuser` a a fürt létrehozásakor megadott SSH-felhasználói fiókkal.
-
-    > [!NOTE]  
-    > Számos módon juthat a `ssh` segédprogramot. A Linux, Unix és macOS nyújtja az operációs rendszer részeként. Ha Windows használ, fontolja meg az alábbi lehetőségek közül:
-    >
-    > * [Azure Cloud Shell](../cloud-shell/quickstart.md)
-    > * [Bash on Ubuntu on Windows 10-es](https://msdn.microsoft.com/commandline/wsl/about)
-    > * [Git)https://git-scm.com/)](https://git-scm.com/)
-    > * [OpenSSH)https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 2. Kötési telepítéséhez használja az SSH-munkamenetből a következő parancsokat:
 
@@ -184,7 +173,9 @@ A virtuális gép létrehozása után kapni fog egy **üzembe helyezés sikeres*
 
     Ez a parancs egy értéket ad vissza az alábbi szöveghez hasonló:
 
-        dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+    ```output
+    dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+    ```
 
     A `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` szöveg a __DNS-utótag__ ehhez a virtuális hálózathoz. Mentse ezt az értéket, mivel később még használni fogjuk.
 
@@ -227,32 +218,32 @@ A virtuális gép létrehozása után kapni fog egy **üzembe helyezés sikeres*
 
     A válasz jelenik meg az alábbi szöveghez hasonló:
 
-        Server:         10.0.0.4
-        Address:        10.0.0.4#53
+    ```output
+    Server:         10.0.0.4
+    Address:        10.0.0.4#53
 
-        Non-authoritative answer:
-        Name:   dns.mynetwork.net
-        Address: 192.168.0.4
+    Non-authoritative answer:
+    Name:   dns.mynetwork.net
+    Address: 192.168.0.4
+    ```
 
-### <a name="configure-the-virtual-network-to-use-the-custom-dns-server"></a>Egyéni DNS-kiszolgáló használata a virtuális hálózat konfigurálása
+## <a name="configure-virtual-network-to-use-the-custom-dns-server"></a>Virtuális hálózat használatához az egyéni DNS-kiszolgáló konfigurálása
 
 A virtuális hálózat használatához az egyéni DNS-kiszolgáló helyett az Azure rekurzív feloldó konfigurálásához használja az alábbi lépéseket a a [az Azure portal](https://portal.azure.com):
 
-1. A bal oldali menüben válassza ki a **minden szolgáltatás**.  
+1. Lépjen a bal oldali menüből **minden szolgáltatás** > **hálózatkezelés** > **virtuális hálózatok**.
 
-1. A **hálózatkezelés**válassza **virtuális hálózatok**.  
+2. Válassza ki a virtuális hálózat a listából, ekkor megnyílik az alapértelmezett nézet a virtuális hálózat.  
 
-1. Válassza ki a virtuális hálózat a listából, ekkor megnyílik az alapértelmezett nézet a virtuális hálózat.  
+3. Az alapértelmezett nézet a csoportban **beállítások**, jelölje be **DNS-kiszolgálók**.  
 
-1. Az alapértelmezett nézet a csoportban **beállítások**, jelölje be **DNS-kiszolgálók**.  
+4. Válassza ki __egyéni__, és adja meg a **MAGÁNHÁLÓZATI IP-címet** az egyéni DNS-kiszolgáló.   
 
-1. Válassza ki __egyéni__, és adja meg a **MAGÁNHÁLÓZATI IP-címet** az egyéni DNS-kiszolgáló.   
-
-1. Kattintson a __Mentés__ gombra.  <br />  
+5. Kattintson a __Mentés__ gombra.  <br />  
 
     ![Az egyéni DNS-kiszolgáló a hálózat beállítása](./media/connect-on-premises-network/configure-custom-dns.png)
 
-### <a name="configure-the-on-premises-dns-server"></a>A helyi DNS-kiszolgáló konfigurálása
+## <a name="configure-on-premises-dns-server"></a>A helyi DNS-kiszolgáló konfigurálása
 
 Az előző szakaszban konfigurált továbbítja a kérelmeket a helyi DNS-kiszolgáló egyéni DNS-kiszolgáló. Ezután konfigurálnia kell a helyi DNS-kiszolgáló továbbítja a kérelmeket az egyéni DNS-kiszolgáló.
 
@@ -300,14 +291,13 @@ Az NSG-k létrehozása az Azure PowerShell vagy az Azure parancssori felület ha
 
 Kövesse a [hozzon létre egy HDInsight-fürtön az Azure Portalon](./hdinsight-hadoop-create-linux-clusters-portal.md) dokumentum hozhat létre HDInsight-fürtöt.
 
-> [!WARNING]
+> [!WARNING]  
 > * Fürt létrehozása során ki kell választania, amely tartalmazza a virtuális hálózat helyét.
->
 > * Az a __speciális beállítások__ rész-konfiguráció, jelöljön ki a virtuális hálózatot és alhálózatot, amelyet korábban hozott létre.
 
 ## <a name="connecting-to-hdinsight"></a>A HDInsight csatlakoztatása
 
-A legtöbb dokumentáció a HDInsight feltételezi, hogy a fürt a hozzáférést az interneten keresztül. Például hogy a https://CLUSTERNAME.azurehdinsight.net címen tud csatlakozni a fürthöz. A cím, amely nem érhető el, ha használta az NSG-k vagy udr-EK hozzáférés korlátozása az internetről a nyilvános átjárót használja.
+A legtöbb dokumentáció a HDInsight feltételezi, hogy a fürt a hozzáférést az interneten keresztül. Például hogy a `https://CLUSTERNAME.azurehdinsight.net` címen tud csatlakozni a fürthöz. A cím, amely nem érhető el, ha használta az NSG-k vagy udr-EK hozzáférés korlátozása az internetről a nyilvános átjárót használja.
 
 Néhány dokumentáció is hivatkozik `headnodehost` történő csatlakozás a fürthöz SSH-munkamenetből. Ez a cím csak a fürt csomópontjainak érhető el, és már nem használható a virtuális hálózaton keresztül csatlakozó ügyfeleken.
 

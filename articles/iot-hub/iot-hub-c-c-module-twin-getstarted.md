@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 853dc443a994601e3900ed16da534254f6af07db
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 2642d956d94a0a685d6586be1a7b0446e94f1042
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452444"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264437"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-c-backend-and-c-device"></a>Ismerkedés az IoT Hub identitás- és modul ikermodul háttérrendszer C és C eszköz használatával
 
@@ -178,7 +178,7 @@ Ebben a szakaszban létrehozza a C alkalmazás az a szimulált eszköz, amely fr
 
 1. **A modul kapcsolati sztring lekérése** – Ha bejelentkezik az [az Azure portal](https://portal.azure.com). Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresés myFirstDevice, nyissa meg azt, és tekintse meg a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
-    ![Az Azure Portal moduladatai](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG)
+    ![Az Azure Portal moduladatai](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
 2. **UpdateModuleTwinReportedProperties alkalmazás létrehozása** adja hozzá a következő `using` tetején található utasításokat a **Program.cs** fájlt:
 

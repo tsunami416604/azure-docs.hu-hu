@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 216ce32997a4114f4f2684b14338b4e36d9afd03
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558005"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257280"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Az Azure Machine Learning-függvényekkel a Stream Analytics-feladatok méretezése
 Legyen nagyon egyszerű Stream Analytics-feladat beállítását, és néhány Mintaadat végigfuttatása. Mit kell? ha ellenőriznünk kell a magasabb adatkötettel ugyanez a feladat futtatása Ez megköveteli tőlünk, megtudhatja, hogyan konfigurálja a Stream Analytics-feladat, így a méretezés. Ebben a dokumentumban koncentrálunk a Machine Learning-függvényekkel a Stream Analytics-feladatok méretezése különleges szempontjait. A Stream Analytics-feladatok méretezése az általános információkat lásd: a cikk [feladatok méretezése](stream-analytics-scale-jobs.md).
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>Mi az az Azure Machine Learning-függvény a Stream Analytics?
-A Stream Analytics a Machine Learning-függvény is használható, mint egy normál függvény hívásához szükséges a Stream Analytics lekérdezési nyelv a. Azonban a jelenet mögött a függvényhívások valójában az Azure Machine Learning Web Service kérelmeket is. Machine Learning webszolgáltatások támogatja a "kötegelés" több sort mini batch meghívta a azonos webszolgáltatás API-hívások, általános teljesítmény növelése érdekében. További információkért lásd: [a Stream Analytics az Azure Machine Learning-függvények](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/) és [Azure Machine Learning webszolgáltatások](../machine-learning/studio/consume-web-services.md).
+A Stream Analytics a Machine Learning-függvény is használható, mint egy normál függvény hívásához szükséges a Stream Analytics lekérdezési nyelv a. Azonban a jelenet mögött a függvényhívások valójában az Azure Machine Learning Web Service kérelmeket is. Machine Learning webszolgáltatások támogatja a "kötegelés" több sort mini batch meghívta a azonos webszolgáltatás API-hívások, általános teljesítmény növelése érdekében. További információkért lásd: [Azure Machine Learning webszolgáltatások](../machine-learning/studio/consume-web-services.md).
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Machine Learning-függvényekkel a Stream Analytics-feladat konfigurálása
 Stream Analytics-feladat egy Machine Learning-függvény konfigurálásakor nincsenek két paramétert kell figyelembe venni, a Machine Learning függvényhívások és a streamelési egységek (su), a Stream Analytics-feladat kiépítve a Köteg mérete. Annak megállapításához, a megfelelő értékeket a SUS-t, először egy kell döntést közötti teljesítmény, és a késés, a Stream Analytics-feladat, és mindegyik Adategység átviteli sebességet a késés. SUS-t mindig vehetők egy feladathoz, növelheti a teljesítményt és particionált Stream Analytics-lekérdezés, bár további SUS-t a feladat futtatásával járó költségeket.
@@ -112,7 +112,7 @@ Egy teljes körűen particionált Stream Analytics lekérdezési példa lett meg
 ## <a name="next-steps"></a>További lépések
 A Stream Analytics kapcsolatos további információkért lásd:
 
-* [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
-* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Get started using Azure Stream Analytics (Bevezetés az Azure Stream Analytics használatába)](stream-analytics-real-time-fraud-detection.md)
+* [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
+* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

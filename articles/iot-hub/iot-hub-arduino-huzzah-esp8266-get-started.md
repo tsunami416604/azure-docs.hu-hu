@@ -1,20 +1,20 @@
 ---
 title: A felhőbe – ESP8266 Feather HUZZAH ESP8266 csatlakozhat az Azure IoT Hub |} A Microsoft Docs
 description: Ismerje meg, hogyan és beállítása és kapcsolódás Adafruit Feather HUZZAH ESP8266 Azure IoT Hub, az Azure felhőalapú platformján ebben az oktatóanyagban adatokat küldeni.
-author: rangv
-manager: nasing
+author: wesmc7777
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: 82e31c498c6148454a5790a6eb4b82e3a2300a92
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.author: wesmc
+ms.openlocfilehash: 928860cd9b6493200ed8a14b7654f6a6f32c45d5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847066"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259388"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather HUZZAH ESP8266 csatlakoztatása Azure IoT hubhoz a felhőben
 

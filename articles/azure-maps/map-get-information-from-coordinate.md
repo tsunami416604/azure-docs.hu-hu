@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9ab6d9708843cda492795b92b6fb5f58bd7a9154
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 50f906a9d8a0dc19f5eb47bef4cb68f4703f020f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571422"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256056"
 ---
 # <a name="get-information-from-a-coordinate"></a>Koordináta információinak lekérése
 
@@ -29,11 +29,11 @@ Győződjön meg arról, fordított cím keresés két módon lehet. Egyik móds
 
 A fenti kód az első kódblokkot egy térkép-objektumot hoz létre, és beállítja a hitelesítési mechanizmust, az előfizetési kulcsot használják. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A második kódblokkot létrehoz egy **SubscriptionKeyCredentialPolicy** az előfizetési kulcsot az Azure Maps HTTP-kérések hitelesítéséhez. A **atlas.service.MapsURL.newPipeline()** fogadja a a **SubscriptionKeyCredential** házirendet, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) példány. A **searchURL** egy URL-címet jelöli az Azure Maps [keresési](https://docs.microsoft.com/rest/api/maps/search) műveleteket.
+A második kódblokkot létrehoz egy `SubscriptionKeyCredentialPolicy` az előfizetési kulcsot az Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` fogadja a a `SubscriptionKeyCredential` házirendet, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) példány. A `searchURL` egy URL-címet jelöli az Azure Maps [keresési](https://docs.microsoft.com/rest/api/maps/search) műveleteket.
 
 A harmadik kódblokkot mutató egérmutatót stílusát frissíti, és létrehoz egy [előugró](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) objektum. Látható [egy előugró ablak hozzáadása a térképen](./map-add-popup.md) útmutatást.
 
-A negyedik kódblokkot hozzáad egy kattintásra [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events). Amikor elindul, egy keresési lekérdezést hoz a koordináták a való kattintás pont. Ezután használja a szolgáltatás-modulja [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) lekérdezési metódust a [első Search cím fordított API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) a koordináták a cím. A válaszból GeoJSON funkció gyűjtemény majd ki kell olvasni használatával a **geojson.getFeatures()** metódust.
+A negyedik kódblokkot hozzáad egy kattintásra [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events). Amikor elindul, egy keresési lekérdezést hoz a koordináták a való kattintás pont. Ezután használja a szolgáltatás-modulja [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-) lekérdezési metódust a [első Search cím fordított API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) a koordináták a cím. A válaszból GeoJSON funkció gyűjtemény majd ki kell olvasni használatával a `geojson.getFeatures()` metódust.
 
 Az ötödik kódblokkot beállítja a helyi menü HTML-tartalom megjelenítése a válasz koordináta pozice való kattintás.
 
@@ -67,7 +67,7 @@ További információ az osztályok és módszerek a cikk ezt használja:
 A teljes hitelesítésikód-példák a következő cikkekben talál:
 
 > [!div class="nextstepaction"]
-> [Útvonal megjelenítése a-b](./map-route.md)
+> [Útvonal megjelenítése A-ból B-be](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [Forgalom megjelenítése](./map-show-traffic.md)

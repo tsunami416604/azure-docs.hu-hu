@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 82755f01cc881703eeefb6415b2e8e87e50fba60
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652382"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264063"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>A Microsoft Azure-számla megtekintése és letöltése
 
@@ -135,7 +135,7 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 A számlák és a költségek kapcsolatos további információkért lásd:
 
-- [Megtekintheti és letöltheti a Microsoft Azure-használat és a díj](billing-download-azure-daily-usage.md)
+- [A Microsoft Azure használati adatainak és díjainak megtekintése és letöltése](billing-download-azure-daily-usage.md)
 - [A Microsoft Azure-hoz kapcsolódó számlák magyarázata](billing-understand-your-bill.md)
 - [Az Azure-számla feltételeinek értelmezése](billing-understand-your-invoice.md)
 - [A feltételeinek értelmezése a Microsoft Azure részletes használat](billing-understand-your-usage.md)
@@ -143,7 +143,7 @@ A számlák és a költségek kapcsolatos további információkért lásd:
 
 Ha a Microsoft vevői szerződéssel rendelkezik, tekintse meg:
 
-- [A költségek, a számlán a számlázási profiljához ismertetése ](billing-mca-understand-your-bill.md)
+- [A költségek, a számlán a számlázási profiljához ismertetése](billing-mca-understand-your-bill.md)
 - [A számlázási profil a számla feltételeinek értelmezése](billing-mca-understand-your-invoice.md)
 - [Megismerheti az Azure-beli használat és költségek fájlmegosztás a számlázási profiljához](billing-mca-understand-your-usage.md)
 - [Megtekintheti, és a számlázási profiljához adó dokumentumok letöltése](billing-mca-download-tax-document.md)

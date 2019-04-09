@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 04/05/2019
 ms.author: diberry
-ms.openlocfilehash: 3b728984b2bda836d3d4924b93f1b11a5d05d8bb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: ce2d39f3941030059cef329aa60e804a44d73a98
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342462"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263094"
 ---
 # <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>Gyors útmutató: Első válasz a Tudásbázis a cURL használatával
 
@@ -28,13 +28,13 @@ A cURL-alapú rövid útmutató végigvezeti a Tudásbázis-válasz lekérése.
 
 ## <a name="publish-to-get-endpoint"></a>Végpont közzététele
 
-Amikor készen áll egy kérdésre adott válasz a Tudásbázis, a létrehozásához [közzététele](../How-to/publish-knowledge-base.md) a tudásbázist.
+Amikor készen áll egy kérdésre adott válasz a Tudásbázis, a létrehozásához [közzététele](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) a tudásbázist.
 
 ## <a name="use-production-endpoint-with-curl"></a>Éles környezetben a végpontot használja a curl használatával
 
 A Tudásbázis közzétételekor a **közzététel** lap megjeleníti a HTTP-kérelem beállítások választ létrehozásához. A **CURL** lapon látható választ létrehozása a parancssori eszköz, a szükséges beállításokat [CURL](https://www.getpostman.com).
 
-[![Eredmények közzététele](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
+[![Peredmények közzététele](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 
 A curl használatával választ létrehozásához kövesse az alábbi lépéseket:
 

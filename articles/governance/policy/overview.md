@@ -1,19 +1,18 @@
 ---
 title: Az Azure szabályzatának áttekintése
 description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az Azure-környezetben.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7440c9bbfce801ffcfc5c4e0f800f6f4f9d34f8c
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 0e66327a04d1390061580d82716b44b25139bf67
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805125"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259456"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Az Azure Policy szolgáltatás áttekintése
 
@@ -145,8 +144,8 @@ Az Azure Policy alábbi áttekintése a 2018-as buildből származik. Diák vagy
 
 Most, hogy áttekintette az Azure Policy tudnivalóit és néhány fontosabb fogalmat, folytatásként a következő témaköröket javasoljuk:
 
-- [Szabályzatdefiníció hozzárendelése a portállal](assign-policy-portal.md)
-- [Szabályzatdefiníció hozzárendelése az Azure CLI-vel](assign-policy-azurecli.md)
-- [Szabályzatdefiníció hozzárendelése a PowerShell-lel](assign-policy-powershell.md)
+- [A portál használatával szabályzatdefiníció hozzárendelése](assign-policy-portal.md)
+- [Az Azure CLI-vel szabályzatdefiníció hozzárendelése](assign-policy-azurecli.md)
+- [PowerShell-lel szabályzatdefiníció hozzárendelése](assign-policy-powershell.md)
 - A felügyeleti csoportok áttekintéséért lásd [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](..//management-groups/overview.md) ismertető részt.
 - A Channel 9 blog [Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) (Az Azure-környezet szabályozása az Azure Policy használatával) című témakörének megtekintése
