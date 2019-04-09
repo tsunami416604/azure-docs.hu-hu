@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: b633c6a8ccbf9f29b93314bb9391215031d523eb
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.openlocfilehash: 208370884d89a7a2585f320c037284d6657732db
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893061"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010600"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -288,10 +288,9 @@ További információkért lásd: [ALTER DATABASE](https://docs.microsoft.com/sq
     - Üzenetsor-olvasó nem támogatott.  
     - Parancs-rendszerhéj még nem támogatott.
   - Felügyelt példány nem fér hozzá a külső erőforrások (például a hálózati megosztások robocopy keresztül).  
-  - PowerShell még nem támogatott.
   - Analysis Services nem támogatottak.
 - Értesítések részlegesen támogatott.
-- E-mail értesítés használata támogatott, kell konfigurálni az adatbázisbeli levelezés profil. Csak egy adatbázisbeli levelezési profil lehet és kell meghívni `AzureManagedInstance_dbmail_profile` (átmeneti korlátozás) nyilvános előzetes verzióban érhető el.  
+- E-mail értesítés használata támogatott, kell konfigurálni az adatbázisbeli levelezés profil. Az SQL Agent használhatják csak egy adatbázisbeli levelezési profil és kell meghívni `AzureManagedInstance_dbmail_profile`.  
   - Személyi hívó nem támogatott.  
   - NetSend nem támogatott.
   - Riasztások még nem támogatott.
@@ -432,10 +431,7 @@ Korlátozások:
 - `.BAK` több biztonságimentés-készlet tartalmazó fájlok nem állíthatók vissza.
 - `.BAK` több naplófájlt tartalmazó fájlok nem állíthatók vissza.
 - Helyreállítás sikertelen lesz, ha a .bak tartalmaz `FILESTREAM` adatokat.
-- Jelenleg aktív memórián belüli objektumok rendelkező adatbázisokat tartalmazó biztonsági mentés nem állítható vissza.  
-- Ha valamikor memórián belüli objektumok létezett jelenleg adatbázisokat tartalmazó biztonsági mentés nem állítható vissza.
-- Biztonsági másolatok csak olvasható módban adatbázisokat tartalmazó jelenleg nem lehet visszaállítani. Ez a korlátozás hamarosan eltávolítjuk.
-
+- Aktív memórián belüli objektumok rendelkező adatbázisokat tartalmazó biztonsági mentés nem állítható vissza az általános célú példányok.  
 Restore utasítások kapcsolatos információkért lásd: [VISSZAÁLLÍTÁSA utasítások](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
 ### <a name="service-broker"></a>Service broker
@@ -485,6 +481,8 @@ Felügyelt példány nem állítható vissza [tartalmazott adatbázisok](https:/
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Tárhely túllépése kis teljesítményigényű adatbázis-fájlokkal
 
+`CREATE DATABASE `, `ALTER DATABASE ADD FILE`, és `RESTORE DATABASE` utasítások sikertelen lehet, mert a példány elérheti az Azure Storage-korlátot.
+
 Egyes általános célú felügyelt példányok rendelkezik az Azure prémium szintű lemez terület számára lefoglalt 35 TB tárterület, és egyes adatbázisfájlok külön fizikai lemezen kerül. Adatlemez-méretet 128 GB-os, 256 GB, 512 GB, 1 TB vagy 4 TB-os lehet. Nem használt területet a lemezen nem számítunk fel díjat, de az Azure prémium szintű lemezméretek teljes összege legfeljebb 35 TB. Bizonyos esetekben egy felügyelt példányt, amely nem kell 8 TB összesen meghaladhatja a 35 TB-os az Azure a belső töredezettség miatt a tárhely mérete korlátozza.
 
 Ha például egy általános célú felügyelt példány lehet egy 1,2 TB-os fájlt, amely el van helyezve a 4 TB-os lemez mérete, és 248-fájlok (minden 1 GB-os méretig) külön 128 GB-os lemezeken vannak elhelyezve. Ebben a példában:
@@ -514,9 +512,13 @@ Az SQL Server Management Studio (SSMS) és az SQL Server Data Tools (SSDT) közb
 
 Több rendszernézetek, teljesítményszámlálók, hibaüzenetek, xevent típusú eseményekhez és hibanapló-bejegyzést jelennek meg a GUID adatbázis-azonosítókat a tényleges adatbázis neve helyett. Ne támaszkodjon kizárólag ezek GUID azonosítókat, mert azok kellene írni a tényleges adatbázisnevek a jövőben.
 
+### <a name="database-mail"></a>Adatbázisbeli levelezés
+
+`@query` a paraméter [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) eljárás nem működnek.
+
 ### <a name="database-mail-profile"></a>Adatbázisbeli levelezési profil
 
-Az SQL-ügynök által használt adatbázisbeli levelezési profil kell meghívni `AzureManagedInstance_dbmail_profile`.
+Az SQL-ügynök által használt adatbázisbeli levelezési profil kell meghívni `AzureManagedInstance_dbmail_profile`. Nincsenek más levelezési profil adatbázisnevek vonatkozó korlátozás.
 
 ### <a name="error-logs-are-not-persisted"></a>Hibanaplók nem megőrzött
 

@@ -4,14 +4,14 @@ description: Az Azure-ban a Avere vFXT fürt telepítése
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/05/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7dbfc39075bb42b1ec13823849eb769e117ddd4a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 7ded66c29f12b8f68746726ca6c126bffbc51f0d
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409686"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056605"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
@@ -31,18 +31,17 @@ Mielőtt az létrehozása sablon használatával ellenőrizze, rendelkezik az El
 1. [Új előfizetés](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [Előfizetés tulajdonosi engedélyekkel](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [A vFXT fürt kvóta](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Egyéni hozzáférési szerepkörök](avere-vfxt-prereqs.md#create-access-roles) -létre kell hoznia egy szerepköralapú hozzáférés-vezérlési szerepkör hozzárendelése a fürtcsomópontok. Lehetősége van is létre kell hoznia egy egyéni hozzáférés szerepkört a fürt vezérlő, de a felhasználók többsége az alapértelmezett tulajdonosi szerepkört, amely megfelelő vezérlő jogosultságot ad az egy erőforráscsoport-tulajdonosnak vesz igénybe. Olvasási [beépített szerepkörök az Azure-erőforrások](../role-based-access-control/built-in-roles.md#owner) további részleteket talál.
 1. [Storage-szolgáltatásvégpont (ha szükséges)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) szükséges – telepíti a meglévő virtuális hálózattal, és a blob-tároló létrehozása
 
 Fürt telepítés lépéseit, valamint a tervezési kapcsolatos további információkért olvassa el a [megtervezése a Avere vFXT rendszer](avere-vfxt-deploy-plan.md) és [üzembe helyezés – áttekintés](avere-vfxt-deploy-overview.md).
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>Az Azure a Avere vFXT létrehozása
 
-A létrehozás sablon az Azure Portal eléréséhez Avere keresése és kiválasztása "Avere vFXT ARM üzembe helyezési". 
+Hozzáférés a létrehozás sablon Avere keresése, és válassza a "Avere vFXT Azure ARM-sablon" az Azure Portalon. 
 
-![Az Azure portal a kiemelt kenyér megjelenítő böngészőablakban morzsalékok "Új > Marketplace > minden". A lapon a minden, a keresőmezőbe a "avere" és a második eredmény rendelkezik "Avere vFXT ARM üzembe helyezési" szemlélteti az jelöljön ki red.](media/avere-vfxt-template-choose.png)
+![Az Azure portal a kiemelt kenyér megjelenítő böngészőablakban morzsalékok "Új > Marketplace > minden". Az összes lapon, a keresőmezőbe a "avere" és a második eredmény "Avere vFXT Azure ARM-sablon" szemlélteti az jelöljön ki red.](media/avere-vfxt-template-choose.png)
 
-Kattintson a részletek a Avere vFXT ARM üzembe helyezési oldalon elolvasásával **létrehozás** megkezdéséhez. 
+Miután olvasása az Azure ARM-sablon lap Avere vFXT részleteit, kattintson a **létrehozás** megkezdéséhez. 
 
 ![A központi telepítési sablon bemutató első oldalán az Azure Marketplace-en](media/avere-vfxt-deploy-first.png)
 
@@ -69,14 +68,6 @@ Töltse ki a következő információkat:
 
 * **Jelszó** vagy **nyilvános SSH-kulcs** – attól függően, a kiválasztott hitelesítési típus, meg kell adnia egy nyilvános RSA-kulcs vagy egy jelszót, a következő mezőket. Ezt a hitelesítő adatot használnak a korábban megadott felhasználónév.
 
-* **Avere fürt létrehozása a szerepkör-azonosító** -használja ezt a mezőt a hozzáférés-vezérlő szerepkör a fürt vezérlő megadásához. Az alapértelmezett érték: a beépített szerepkör [tulajdonosa](../role-based-access-control/built-in-roles.md#owner). A fürt erőforráscsoport tulajdonosi jogosultságokkal a fürt vezérlő korlátozódnak. 
-
-  A globálisan egyedi azonosító, a szerepkör kell használnia. Az alapértelmezett érték (tulajdonos) a GUID 8e3af657-a8ff – 443-as c-a75c-2fe8c4bcb635. A GUID egy egyéni szerepkör, használja ezt a parancsot: 
-
-  ```azurecli
-  az role definition list --query '[*].{roleName:roleName, name:name}' -o table --name 'YOUR ROLE NAME'
-  ```
-
 * **Előfizetés** – válassza ki az előfizetést a Avere vFXT. 
 
 * **Erőforráscsoport** – válasszon ki egy meglévő üres erőforráscsoportot a Avere vFXT fürthöz, vagy kattintson az "Új létrehozása", és adjon meg egy új erőforráscsoport-nevet. 
@@ -97,10 +88,6 @@ A második oldalán a központi telepítési sablont a fürt mérete, a csomópo
 * **Avere vFXT fürtcsomópontok számának** – válassza ki a fürtben található csomópontok számát. Legalább három csomóponttal, a maximális tizenkét. 
 
 * **Fürt felügyeleti jelszó** -fürt felügyeleti a jelszavát. Ez a jelszó felhasználónév együtt használható ```admin``` való bejelentkezéshez a fürt Vezérlőpult-beállítások konfigurálása és a fürt monitorozására.
-
-* **Műveletek fürtszerepkör Avere** – adja meg a fürt csomópontjai a hozzáférés-vezérlő szerepkör nevét. Ez az előfeltétel-ellenőrzési lépésben létrehozott egyéni szerepkör. 
-
-  A példában leírt [hozza létre a fürt csomópont hozzáférés szerepkört](avere-vfxt-prereqs.md#create-the-cluster-node-access-role) menti a fájlt az ```avere-operator.json``` és a megfelelő szerepkör neve ```avere-operator```.
 
 * **Avere vFXT fürtnév** – adjon meg egy egyedi nevet a fürt. 
 
@@ -138,7 +125,7 @@ Három lap foglalja össze a konfigurációt, és érvényesíti a paraméterek.
 
 ![A központi telepítési sablon - ellenőrzési harmadik oldalán](media/avere-vfxt-deploy-3.png)
 
-Négy lapon kattintson a **létrehozás** gombra kattintva fogadja el a feltételeket, és hozzon létre a Avere vFXT az Azure-fürtben. 
+A négy lapon adja meg minden szükséges kapcsolattartási adatokat, majd kattintson a **létrehozás** gombra kattintva fogadja el a feltételeket, és hozzon létre az Azure-fürtön a Avere vFXT. 
 
 ![A központi telepítési sablon – használati feltételeket, a negyedik oldal létrehozása gomb](media/avere-vfxt-deploy-4.png)
 

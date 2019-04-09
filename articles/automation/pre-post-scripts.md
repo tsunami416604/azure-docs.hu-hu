@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/01/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc0c516ce9dc3a13474cefc61b6634dbeea0fce0
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
-ms.translationtype: MT
+ms.openlocfilehash: 76cd877380090ccad8b2f7b7dbe79957e0eab5bb
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793657"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056677"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Kezelése előtti és utáni parancsfájlokat (előzetes verzió)
 
@@ -67,6 +67,23 @@ Ha előre konfigurál, és utáni parancsfájlokat, adhat át a paraméterek has
 Ha egy másik objektum típusa, is szavazattal azt egy másik a saját a runbook logikája.
 
 A standard szintű runbook paraméterek kívül egy további paraméter biztosítunk. Ez a paraméter **SoftwareUpdateConfigurationRunContext**. Ez a paraméter egy JSON-karakterlánc, és ha a előtti vagy utáni parancsfájl adja meg a paramétert, automatikusan átadott a frissítéstelepítés által. A paraméter tartalmazza a frissítés központi telepítését, amelynek része a információ által visszaadott információk a [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) az alábbi táblázat bemutatja, a tulajdonságok vannak megadva, a változóban:
+
+## <a name="stopping-a-deployment"></a>Központi telepítés leállítása
+
+Ha a központi telepítés előtti parancsprogram kell alapján le szeretné [throw](automation-runbook-execution.md#throw) kivételt. Ha Ön nem kivételt, az üzembe helyezés és az utólagos parancsfájl továbbra is futni fog. A [példa runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0) a katalógus bemutatja, hogyan ezt megteheti. Az alábbiakban látható egy részlet a runbookból.
+
+```powershell
+#In this case, we want to terminate the patch job if any run fails.
+#This logic might not hold for all cases - you might want to allow success as long as at least 1 run succeeds
+foreach($summary in $finalStatus)
+{
+    if ($summary.Type -eq "Error")
+    {
+        #We must throw in order to fail the patch deployment.  
+        throw $summary.Summary
+    }
+}
+```
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext tulajdonságai
 
@@ -231,6 +248,17 @@ if ($summary.Type -eq "Error")
 }
 ```
 
+## <a name="abort-patch-deployment"></a>Javítás üzembe helyezés megszakítása
+
+A előtti parancsprogram hibát ad vissza, ha szüksége lehet a központi telepítés megszakítására. Ehhez meg kell [throw](/powershell/module/microsoft.powershell.core/about/about_throw) hiba a parancsfájlban az összes logikát, amely a hibát jelentene.
+
+```powershell
+if (<My custom error logic>)
+{
+    #Throw an error to fail the patch deployment.  
+    throw "There was an error, abort deployment"
+}
+```
 ## <a name="known-issues"></a>Ismert problémák
 
 * Nem adhatók át objektum vagy tömb paraméterek előtti és utáni parancsfájlok használata esetén. A runbook sikertelen lesz.
@@ -240,5 +268,5 @@ if ($summary.Type -eq "Error")
 Folytassa a következő oktatóanyagban megtudhatja, hogyan kezelheti a frissítéseket a Windows virtuális gépek számára.
 
 > [!div class="nextstepaction"]
-> [Az Azure Windows rendszerű virtuális gépek frissítéseinek és javításainak kezelése](automation-tutorial-update-management.md)
+> [Azure-beli Windows rendszerű virtuális gépek frissítéseinek és javításainak kezelése](automation-tutorial-update-management.md)
 

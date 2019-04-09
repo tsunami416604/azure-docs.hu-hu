@@ -5,18 +5,18 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/04/2019
 ms.author: helohr
-ms.openlocfilehash: af4147de06f9fb7c856dfd93dc186f1a6e83ffff
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.openlocfilehash: a7e2f3c95819c6ab6d2e63e5c7a2f62649ebd15c
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58628990"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056095"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Felhasználói profil megosztásának beállítása a gazdagépcsoporton
 
-A Windows Virtual Desktop előzetes verziójú szolgáltatások FSLogix profil tárolók a javasolt felhasználói profil megoldás kínál. A felhasználói profil lemezre (UPD) megoldás használatával nem ajánlott, és azt a virtuális asztali Windows későbbi verzióiban elavulttá válik.
+A Windows Virtual Desktop előzetes verziójú szolgáltatások FSLogix profil tárolók a javasolt felhasználói profil megoldás kínál. Nem ajánlott, a felhasználói profil lemezre (UPD) megoldást, amely lesz, és elavult későbbi Windows virtuális asztali verzióiban.
 
 Ebben a szakaszban megtudhatja, hogyan állítható be a gazdagép-készletben FSLogix profil tároló megosztást. FSLogix kapcsolatos általános dokumentációjáért lásd: a [FSLogix hely](https://docs.fslogix.com/).
 
@@ -40,12 +40,12 @@ Miután létrehozta a virtuális gépet, csatlakoztassa a tartományhoz tegye az
 
 Általános útmutatás segítségével történő virtuális gép előkészítése a felhasználói profilok fájlmegosztás-kiszolgálóként a következők:
 
-1. Csatlakozás a munkamenet gazdagép virtuális gépeket egy [Active Directory biztonsági csoportban](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups). Ez a biztonsági csoport a munkamenet gazdagépek virtuális gépeket a fájl megosztási újonnan létrehozott virtuális gép hitelesítéséhez használható.
+1. A Windows virtuális asztal Active Directory-felhasználók hozzáadása egy [Active Directory biztonsági csoportban](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups). Ez a biztonsági csoport a fájl megosztási újonnan létrehozott virtuális géphez a Windows virtuális asztali felhasználók hitelesítéséhez használható.
 2. [A fájl megosztási virtuális géphez csatlakozni](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine).
 3. A fájl megosztási virtuális gépen, hozzon létre egy mappát a **C meghajtó** , hogy a profil megosztás szolgál.
 4. Kattintson a jobb gombbal az új mappára, válassza ki **tulajdonságok**válassza **megosztási**, majd **Speciális megosztás...** .
 5. Válassza ki **a mappa megosztása**válassza **engedélyek...** , majd **hozzáadása...** .
-6. Keresse meg a biztonsági csoportot, amelyhez hozzáadta a munkamenet gazdagép virtuális gépeket, és győződjön meg arról, hogy a csoport **teljes hozzáférés**.
+6. Keresse meg a biztonsági csoportot, amelyhez hozzáadta a Windows virtuális asztal felhasználói, és győződjön meg arról, hogy a csoport **teljes hozzáférés**.
 7. Után adja hozzá a biztonsági csoporthoz, kattintson a jobb gombbal a mappára, válassza ki **tulajdonságok**válassza **megosztási**, majd másolja le a **hálózati elérési út** való későbbi használatra.
 
 Engedélyekkel kapcsolatos további információkért lásd: a [FSLogix dokumentáció](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers).
@@ -56,17 +56,13 @@ Konfigurálja a virtuális gépek a FSLogix szoftverrel, tegye a következőt az
 
 1. [Csatlakozzon a virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
 2. Indítsa el egy webböngészőt, és navigáljon a [ezt a hivatkozást](https://go.microsoft.com/fwlink/?linkid=2084562) a FSLogix ügynök letöltéséhez. A Windows virtuális asztal nyilvános előzetes verzió része egy licenckulcs aktiválásához FSLogix fog kapni. A kulcs a a LicenseKey.txt fájlt a FSLogix ügynök .zip-fájlban.
-3. Telepítse a FSLogix ügynököt.
+3. Keresse meg vagy \\ \\Win32\\kiadás vagy \\ \\X64\\a .zip-fájlt, és futtassa a kiadási **FSLogixAppsSetup** FSLogix-ügynök telepítése.
 4. Navigáljon a **Program Files** > **FSLogix** > **alkalmazások** ellenőrizze az ügynök telepítve van.
-5. Futtassa a start menüből **RegEdit** rendszergazdaként. Navigáljon a **számítógép\\HKEY_LOCAL_MACHINE\\szoftver\\FSLogix\\profilok**
-6. Hozza létre a következő értékeket:
+5. Futtassa a start menüből **RegEdit** rendszergazdaként. Navigáljon a **számítógép\\HKEY_LOCAL_MACHINE\\szoftver\\FSLogix**.
+6. Hozzon létre egy kulcsot nevű **profilok**.
+7. Hozza létre a profilok kulcs a következő értékeket:
 
 | Name (Név)                | Typo               | Data/Value                        |
 |---------------------|--------------------|-----------------------------------|
 | Engedélyezve             | DWORD              | 1                                 |
-| VHDLocations        | Karakterláncsoros érték | "A fájlmegosztás hálózati elérési út" |
-| VolumeType          | String             | VHDX                              |
-| SizeInMBs           | DWORD              | "profil méret egész"     |
-| IsDynamic           | DWORD              | 1                                 |
-| LockedRetryCount    | DWORD              | 1                                 |
-| LockedRetryInterval | DWORD              | 0                                 |
+| VHDLocations        | Karakterláncsoros érték | "A fájlmegosztás hálózati elérési út"     |

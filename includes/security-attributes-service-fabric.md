@@ -2,22 +2,22 @@
 author: msmbaldwin
 ms.service: service-fabric
 ms.topic: include
-ms.date: 01/31/2019
+ms.date: 04/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 179d87a0c1af587148f1b5ffa2cad8085ef0886f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 41a8d6c2812b0fbd1d7e2fd4fd88a4343b52714f
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56306841"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59007274"
 ---
 ## <a name="preventative"></a>Megelőző
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen | Az ügyfél a tulajdonosa a fürt és a virtuális gép (VM) méretezési, a fürt épül. A Virtuálisgép-méretezési csoportot az Azure disk encryption is engedélyezhetők. |
+| Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen | Az ügyfél a tulajdonosa a fürt és a virtuális gép (VM) méretezési, a fürt épül. A virtuálisgép-méretezési csoportot az Azure disk encryption is engedélyezhetők. |
 | Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen |  |
-| Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Igen | Az ügyfél a tulajdonosa a fürt és a virtuális gép (VM) méretezési, a fürt épül. A Virtuálisgép-méretezési csoportot az Azure disk encryption is engedélyezhetők. |
+| Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Igen | Az ügyfél a tulajdonosa a fürt és a virtuális gép (VM) méretezési, a fürt épül. A virtuálisgép-méretezési csoportot az Azure disk encryption is engedélyezhetők. |
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| – |  |
 | Titkosított API-hívások| Igen | Service Fabric API-hívások Azure Resource Manageren keresztül történik. Egy érvényes JSON webes jogkivonat (JWT) megadása kötelező. |
 
@@ -34,7 +34,7 @@ ms.locfileid: "56306841"
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitorozási támogatása (a Log analytics, az App insights stb.)| Igen | Az Azure monitoring és harmadik féltől származó támogatást. |
+| Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | Figyelés és külső támogatást az Azure használatával. |
 
 ## <a name="iam-support"></a>IAM-támogatás
 
@@ -55,5 +55,5 @@ ms.locfileid: "56306841"
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfiguráció kezelésével kapcsolatos támogatás (versioning konfiguráció stb)| Igen | A szolgáltatás konfigurációs, verzióval ellátott és üzembe helyezett üzembe az Azure használatával. A kód (alkalmazás- és futásidejű) rendszerverzióval ellátott Azure Build használatával.
+| Konfiguráció kezelésével kapcsolatos támogatás (versioning konfiguráció stb.)| Igen | A szolgáltatás konfigurációs, verzióval ellátott és üzembe helyezett üzembe az Azure használatával. A kód (alkalmazás- és futásidejű) rendszerverzióval ellátott Azure Build használatával.
  |

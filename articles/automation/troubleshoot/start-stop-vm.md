@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/13/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f503d890dcc8ba90a8a4d8bafc09d5fd8b2856e6
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 03bad12b7fcba5a247e05884aa0eb0493163a5c4
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804853"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009784"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>A gépek indítása/leállítása közben ki óra solution hibaelhárítása
 
@@ -88,7 +88,7 @@ Tekintse át a problémával vagy helyek keresse meg a lehetséges megoldások a
 
 * Ellenőrizze, hogy megfelelően konfigurálta a indítása és leállítása a VM-megoldás ütemezését. Ismerje meg, hogyan állítson be egy ütemezést, tekintse meg a [ütemezések](../automation-schedules.md) cikk.
 
-* Ellenőrizze a feladatstreamek keresse ki a hibákat a runbookok számára. A portálon lépjen az Automation-fiókját, és válassza **feladatok** alatt **Folyamatautomatizálás**. Az a **feladatok** lapon keresse meg a következő forgatókönyvek közül feladatok:
+* Ellenőrizze a [feladat-Streamek](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) keresse ki a hibákat. A portálon lépjen az Automation-fiókját, és válassza **feladatok** alatt **Folyamatautomatizálás**. Az a **feladatok** lapon keresse meg a következő forgatókönyvek közül feladatok:
 
   * AutoStop_CreateAlert_Child
   * AutoStop_CreateAlert_Parent
@@ -143,6 +143,8 @@ Tekintse át a problémával vagy helyek keresse meg a lehetséges megoldások a
 
 * Ha a virtuális gép nem indul vagy felszabadítása hibás, ez a viselkedés a virtuális gépre a problémát okozhatja. Néhány példa vagy potenciális problémák, egy frissítését végzi, Leállítás, a szolgáltatás tett kísérlet során lefagy és egyebek). Keresse meg a virtuális gép erőforrást, és ellenőrizze a **tevékenységeket tartalmazó naplók** van-e hibák a naplók megtekintéséhez. Is megkísérelheti a jelentkezzen be a virtuális gép nem találhatók esetleges hibákat az eseménynaplóban. A virtuális gép hibaelhárítással kapcsolatos további tudnivalókért lásd: [hibaelhárítása Azure virtual machines szolgáltatásban](../../virtual-machines/troubleshooting/index.md)
 
+* Ellenőrizze a [feladat-Streamek](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) keresse ki a hibákat. A portálon lépjen az Automation-fiókját, és válassza **feladatok** alatt **Folyamatautomatizálás**.
+
 ## <a name="custom-runbook"></a>Forgatókönyv: Saját egyéni runbook indítása és leállítása a virtuális gépek nem
 
 ### <a name="issue"></a>Probléma
@@ -155,7 +157,7 @@ A hiba okát sok dolog lehet. Lépjen az Automation-fiókját az Azure Portalon,
 
 ### <a name="resolution"></a>Megoldás:
 
-Azt javasoljuk, hogy használja a [indítása és leállítása a virtuális gépek ki óra solution](../automation-solution-vm-management.md) elindíthatja és leállíthatja a virtuális gépek az Azure Automationben. Ez a megoldás a Microsoft hozta létre. Egyéni runbookjai nem támogatottak a Microsoft által. Láthatja a megoldás az egyéni runbook meglátogatják a [runbook hibaelhárítási](runbooks.md) cikk. Ez a cikk általános útmutatás és hibaelhárítás a runbookok összes típusú.
+Azt javasoljuk, hogy használja a [indítása és leállítása a virtuális gépek ki óra solution](../automation-solution-vm-management.md) elindíthatja és leállíthatja a virtuális gépek az Azure Automationben. Ez a megoldás a Microsoft hozta létre. Egyéni runbookjai nem támogatottak a Microsoft által. Láthatja a megoldás az egyéni runbook meglátogatják a [runbook hibaelhárítási](runbooks.md) cikk. Ez a cikk általános útmutatás és hibaelhárítás a runbookok összes típusú. Ellenőrizze a [feladat-Streamek](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) keresse ki a hibákat. A portálon lépjen az Automation-fiókját, és válassza **feladatok** alatt **Folyamatautomatizálás**.
 
 ## <a name="dont-start-stop-in-sequence"></a>Forgatókönyv: Virtuális gépek ne indítsa el vagy állítsa le a megfelelő sorrendben
 
@@ -209,7 +211,7 @@ Sokszor hibát okozhatja a megoldás egy régi és az elavult verzióját haszn�
 
 ### <a name="resolution"></a>Megoldás:
 
-Sok hiba elhárításához, azt javasoljuk, hogy távolítsa el, és a megoldás frissítése. A megoldás frissítésével kapcsolatban lásd: [frissítése a gépek indítása/leállítása közben ki óra solution](../automation-solution-vm-management.md#update-the-solution).
+Sok hiba elhárításához, azt javasoljuk, hogy távolítsa el, és a megoldás frissítése. A megoldás frissítésével kapcsolatban lásd: [frissítése a gépek indítása/leállítása közben ki óra solution](../automation-solution-vm-management.md#update-the-solution). Ezenkívül ellenőrizheti a [feladat-Streamek](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) keresse ki a hibákat. A portálon lépjen az Automation-fiókját, és válassza **feladatok** alatt **Folyamatautomatizálás**.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: 53cd84d669a3f14d5ac028cc29ae483962860f72
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 429770b7651a93473c03f5e386d8f7b72692c161
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447214"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006099"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Az Azure Monitor riasztási lekérdezések naplózása
 [Riasztási szabályok alapján az Azure Monitor naplóira](alerts-unified-log.md) futtatása rendszeres időközönként, ezért győződjön meg arról, hogy azok írt terhelést és a késés minimalizálása érdekében. Ez a cikk naplóriasztások hatékony lekérdezések és a egy folyamat alakítása a meglévő lekérdezések írásáról javaslatokat nyújt. 
 
 ## <a name="types-of-log-queries"></a>Napló a lekérdezések típusai
-[A Log Analytics lekérdezések](../log-query/log-query-overview.md) kezdődnie vagy egy táblát vagy egy [keresési](/azure/kusto/query/searchoperator) vagy [union](/azure/kusto/query/unionoperator) operátor.
+[Lekérdezések jelentkezzen be az Azure Monitor](../log-query/log-query-overview.md) kezdődnie vagy egy táblát vagy egy [keresési](/azure/kusto/query/searchoperator) vagy [union](/azure/kusto/query/unionoperator) operátor.
 
 Ha például a következő lekérdezés hatókörét a _SecurityEvent_ tábla- és megkeresi az adott esemény azonosítóját. Ez az egyetlen tábla, amely a lekérdezést kell feldolgozni.
 

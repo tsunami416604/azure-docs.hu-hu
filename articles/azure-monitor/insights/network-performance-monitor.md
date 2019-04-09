@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: d35918659acb899e43f76e94168abcba080aa006
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1c80395880c556138313ebfd9af1610ace946c8a
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452130"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006764"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -59,7 +59,7 @@ ExpressRoute-figyelő érhető el a támogatott régiók listáját a [dokument�
 
 ### <a name="install-and-configure-agents"></a>Ügynökök telepítése és konfigurálása 
 
-Az alapszintű folyamatok használatával, ügynökök telepítése [Azure Log Analyticshez való csatlakozáshoz Windows számítógépek](../../azure-monitor/platform/agent-windows.md) és [Operations Manager csatlakoztatása a Log Analytics](../../azure-monitor/platform/om-agents.md).
+Az alapszintű folyamatok használatával, ügynökök telepítése [csatlakozás Windows számítógépek számára az Azure Monitor](../platform/agent-windows.md) és [Operations Manager csatlakoztatása az Azure monitornak](../platform/om-agents.md).
 
 ### <a name="where-to-install-the-agents"></a>Az ügynökök telepítési helyét 
 
@@ -101,7 +101,7 @@ A Network Performance Monitor szintetikus tranzakciók használatával a forrás
 
 ### <a name="configure-the-solution"></a>A megoldás konfigurálása 
 
-1. A Network Performance Monitor megoldás hozzáadása a munkaterületet a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). A leírt folyamatot is használható [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../../azure-monitor/insights/solutions.md). 
+1. A Network Performance Monitor megoldás hozzáadása a munkaterületet a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). A leírt folyamatot is használható [hozzáadása az Azure Monitor megoldások kövesse a megoldástárban](../../azure-monitor/insights/solutions.md). 
 2. Nyissa meg a Log Analytics-munkaterületet, és válassza ki a **áttekintése** csempére. 
 3. Válassza ki a **Network Performance Monitor** üzenettel csempe *megoldás további konfigurálást igényel*.
 
@@ -151,9 +151,9 @@ A telepített ügynökkel rendelkező csomópontok közt a **csomópontok** fül
 
 Adja meg a kívánt képességek:
 
-- [A Teljesítményfigyelő](network-performance-monitor-performance-monitor.md#configuration)
+- [Teljesítménymonitorozás](network-performance-monitor-performance-monitor.md#configuration)
 - [Szolgáltatásvégpont-figyelő](network-performance-monitor-performance-monitor.md#configuration)
-- [ExpressRoute Monitor](network-performance-monitor-expressroute.md#configuration)
+- [ExpressRoute-figyelő](network-performance-monitor-expressroute.md#configuration)
 
  
 
@@ -168,7 +168,7 @@ Az alábbi táblázat adatgyűjtési módszerek és egyéb hogyan adatgyűjtés 
  
 
  
-A megoldás szintetikus tranzakciók használatával a hálózat állapotának felmérése. Log Analytics-ügynökök telepítése egymással a hálózaton exchange TCP-csomagokat vagy az ICMP Echo különböző időpontokban. A figyeléshez kijelölt protokoll használja-e az ügynökök a TCP- vagy az ICMP Echo függ. A folyamat ügynökök üzenetváltási idő és a csomag adatvesztést, megtudhatja, ha van ilyen. Minden ügynök rendszeres időközönként is egy nyomkövetési útvonalat a hálózatot, amelyet meg kell vizsgálni a különböző útvonalak keresése más ügynökök hajt végre. Ezen adatok alapján az ügynökök is kikövetkeztetni a hálózati késés és a csomag bontásban. A tesztek öt másodpercenként ismétlődik. Adatok körülbelül 3 percig szerint összesítve az ügynökök a Log Analytics szolgáltatással való feltöltésük előtt.
+A megoldás szintetikus tranzakciók használatával a hálózat állapotának felmérése. Log Analytics-ügynökök telepítése egymással a hálózaton exchange TCP-csomagokat vagy az ICMP Echo különböző időpontokban. A figyeléshez kijelölt protokoll használja-e az ügynökök a TCP- vagy az ICMP Echo függ. A folyamat ügynökök üzenetváltási idő és a csomag adatvesztést, megtudhatja, ha van ilyen. Minden ügynök rendszeres időközönként is egy nyomkövetési útvonalat a hálózatot, amelyet meg kell vizsgálni a különböző útvonalak keresése más ügynökök hajt végre. Ezen adatok alapján az ügynökök is kikövetkeztetni a hálózati késés és a csomag bontásban. A tesztek öt másodpercenként ismétlődik. Adatok körülbelül 3 percig szerint összesítve az ügynökök a Log Analytics-munkaterületet az Azure monitorban való feltöltésük előtt.
 
 
 
@@ -241,9 +241,9 @@ A topológia a gráfon látható 3. rétegbeli topológia, és nem tartalmazza 2
 ![Topológia](media/network-performance-monitor/topology-map.png)
  
 
-## <a name="log-analytics-search"></a>A log Analytics-keresés 
+## <a name="log-queries-in-azure-monitor"></a>Az Azure Monitor log-lekérdezések
 
-Összes adat, amely grafikusan közzétett keretében a Network Performance Monitor-irányítópult és a részletezés oldal is érhető el natív módon [Log Analytics keresési](../../azure-monitor/log-query/log-query-overview.md). Az adatok interaktív elemzéseket végezhet a tárházban, és vesse össze a különböző forrásokból származó adatok. Emellett egyéni riasztások és nézetek létrehozása és az adatok exportálása az Excel, a Power bi-ban vagy a megosztható hivatkozás. A **gyakori lekérdezések** tartalmaz néhány hasznos lekérdezést, amely kiindulási pontként használhatja a saját lekérdezéseket és jelentéseket hozhat létre az irányítópulton. 
+Összes adat, amely grafikusan közzétett keretében a Network Performance Monitor-irányítópult és a részletezés oldal is érhető el natív módon [lekérdezések naplózását](../log-query/log-query-overview.md). Az adatok interaktív elemzéseket végezhet a tárházban, és vesse össze a különböző forrásokból származó adatok. Emellett egyéni riasztások és nézetek létrehozása és az adatok exportálása az Excel, a Power bi-ban vagy a megosztható hivatkozás. A **gyakori lekérdezések** tartalmaz néhány hasznos lekérdezést, amely kiindulási pontként használhatja a saját lekérdezéseket és jelentéseket hozhat létre az irányítópulton. 
 
 ## <a name="alerts"></a>Riasztások
 
@@ -251,7 +251,7 @@ A Network Performance Monitor riasztási képességeit használja [Azure Monitor
 
 Ez azt jelenti, hogy minden értesítés, amely segítségével kezelt [Műveletcsoportok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
 
-Ha Ön egy NPM felhasználó hoz létre riasztást, a Log Analytics-n keresztül: 
+Ha Ön egy NPM-felhasználó keresztül LAzure figyelő riasztás létrehozása: 
 1. Megjelenik egy hivatkozás, amely átirányítja Önt az Azure Portalon. Kattintson rá a portál eléréséhez.
 2. Kattintson a Network Performance Monitor megoldás csempére. 
 3. Keresse meg a konfigurálása.  

@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 0a06293a648460694bbe222f36f81bea2d6acdac
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a418966ce72876d58d39b939ecb7dd5a05e41b9b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57841174"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008986"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Gyors útmutató: A JavaScript beszédfelismerést egy böngészőben, a beszéd SDK-val
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ez a cikk azt mutatja be, hogyan hozhat létre egy webhelyet, amely a Cognitive Services Speech SDK JavaScript-kötésével írja át a beszédet szöveggé.
-Az alkalmazás a Microsoft Cognitive Services beszédfelismerő SDK alapul ([letöltési verzióra 1.3.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Az alkalmazás JavaScript alapul a Speech SDK ([letöltési verzióra 1.4.0-s](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Előfizetői azonosító a Speech Service-hez. Lásd: [próbálja ki ingyenesen a beszédszolgáltatások](get-started.md).
 * Egy PC vagy Mac számítógép egy működő mikrofonnal.
 * Egy szövegszerkesztő.
-* A Chrome vagy a Microsoft Edge egy aktuális verziója.
+* Chrome, a Microsoft Edge vagy a Safari aktuális verzióját.
 * Egy webkiszolgáló, amely támogatja a PHP-szkriptek futtatását (nem kötelező).
 
 ## <a name="create-a-new-website-folder"></a>Új webhelymappa létrehozása
@@ -52,7 +52,7 @@ Hozzon létre egy új fájlt a mappában `index.html` néven, és nyissa meg a f
    ```html
    <html>
    <head>
-      <title>Microsoft Cognitive Service Speech SDK JavaScript Quickstart</title>
+      <title>Speech SDK JavaScript Quickstart</title>
    </head>
    <body>
     <!-- UI code goes here -->
@@ -98,6 +98,10 @@ Ha egy webkiszolgálón szeretné futtatni a weblapot, opcionálisan megadhat eg
 ## <a name="build-and-run-the-sample-locally"></a>A minta helyi buildelése és futtatása
 
 Az alkalmazás elindításához kattintson duplán az index.html fájlra, vagy nyissa meg az index.html fájlt kedvenc webböngészőjében. Egy egyszerű grafikus felhasználói felület fog megjelenni, amelyen megadhatja az előfizetői azonosítót és a [régiót](regions.md), majd a mikrofon használatával aktiválhatja a felismerést.
+
+> [!NOTE]
+> Ez a módszer a Safari böngészőben nem működik.
+> A Safari a minta weboldal kell üzemeltetését a webkiszolgálón; A Safari nem teszi lehetővé a mikrofon használatára egy helyi fájlból betöltött webhelyeket.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>A minta buildelése és futtatása webkiszolgáló használatával
 

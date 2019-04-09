@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 63adb354d51caa8f01df8bf05c85257c75b5fe41
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 280d389875d5ac951e0a846f3331ea727176b5e0
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877826"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009767"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB kiosztott átviteli sebesség költségek optimalizálása
 
@@ -33,7 +33,7 @@ Az alábbiakban néhány kiosztott átviteli sebesség stratégia vonatkozó ir�
 
 1. Néhány tucat Azure Cosmos-tárolók rendelkezik, és meg szeretné osztani az átviteli sebesség néhányat vagy mindegyiket között. 
 
-2. Egy egybérlős adatbázis futtatható IaaS által üzemeltetett virtuális gépek vagy a helyszínen, például az nosql-alapú vagy a relációs adatbázisok az Azure Cosmos DB-ről végez áttelepítést. Ha sok gyűjtemények/táblák/diagramok és, és nem szeretne végezze el a módosításokat az adatmodellbe. Vegye figyelembe, hogy szükség lehet a veszélyezteti, ha nem frissíti az adatmodellben egy helyszíni adatbázisból való migrálás során, az Azure Cosmos DB által kínált előnyöket nyújtja. Javasoljuk, hogy Ön mindig reaccess az adatmodellben, a teljesítmény tekintetében a legtöbbet és a költségek optimalizálása érdekében. 
+2. Egy egybérlős adatbázis futtatható IaaS által üzemeltetett virtuális gépek vagy a helyszínen, például az nosql-alapú vagy a relációs adatbázisok az Azure Cosmos DB-ről végez áttelepítést. Ha számos gyűjtemények/táblák/diagramok és Ön rendelkezik, és nem szeretné, hogy végezze el a módosításokat az adatmodellbe. Vegye figyelembe, hogy szükség lehet a veszélyezteti, ha nem frissíti az adatmodellben egy helyszíni adatbázisból való migrálás során, az Azure Cosmos DB által kínált előnyöket nyújtja. Javasoljuk, hogy Ön mindig reaccess az adatmodellben, a teljesítmény tekintetében a legtöbbet és a költségek optimalizálása érdekében. 
 
 3. Nem tervezett kiugrások hez készletezett átviteli sebesség az adatbázis szintjén váratlan megnövekedett számítási feladat alá tartozó számítási feladatok számára szeretné. 
 

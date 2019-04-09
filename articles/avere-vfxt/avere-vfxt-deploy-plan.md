@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 3212befac60e3677c0b556825560cc548df42969
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: MT
+ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990985"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056724"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Az Avere vFXT rendszer megtervezése
 
@@ -130,6 +130,17 @@ A fürt létrehozásakor kiválaszthatja-e egy nyilvános IP-cím létrehozása 
 
 * Egy új virtuális hálózat vagy egy új alhálózatot hoz létre, ha a fürt-vezérlő kap egy nyilvános IP-címet.
 * Ha kiválaszt egy meglévő vnetet és alhálózatot, a fürt vezérlő csak magánhálózati IP-címeket kell. 
+
+## <a name="vm-access-roles"></a>Virtuálisgép-szerepkörök hozzáférési 
+
+Azure az [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) a fürt virtuális gépeihez bizonyos feladatokat engedélyezéséhez. Például a fürt vezérlő kell létrehozni és konfigurálni a fürtcsomóponti virtuális gépek engedélyezési. A fürtcsomópontok kell hozzárendelni, vagy egyéb fürtcsomópontok IP-cím ismételt hozzárendelése.
+
+Két beépített Azure-szerepkörök Avere vFXT virtuális gépekhez használhatók: 
+
+* A fürt vezérlő használja a beépített szerepkör [Avere közreműködői](../role-based-access-control/built-in-roles.md#avere-contributor). 
+* Fürtcsomópontok használja a beépített szerepkör [Avere operátor](../role-based-access-control/built-in-roles.md#avere-operator)
+
+Ha testre szeretné szabni a hozzáférés szerepkörök Avere vFXT összetevők, kell meghatározása a saját szerepkör és majd rendelje hozzá a virtuális gépeket a létrehozásuk időpontjában. A központi telepítési sablon nem használható az Azure piactéren. Tekintse meg a Microsoft ügyfél- és támogatási jegy megnyitása az Azure Portalon leírtak szerint [segítség a rendszer a](avere-vfxt-open-ticket.md). 
 
 ## <a name="next-step-understand-the-deployment-process"></a>Következő lépés: Az üzembe helyezési folyamat ismertetése
 
