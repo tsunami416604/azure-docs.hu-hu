@@ -2,18 +2,18 @@
 title: Az Azure storage table tervezési minták |} A Microsoft Docs
 description: Az Azure table service-megoldások minták használatával.
 services: storage
-author: MarkMcGeeAtAquent
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
-ms.author: sngun
+ms.date: 04/08/2019
+ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: f2f4fb04ac483f7716c0b7a0fb1f87843d8b817f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995299"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271628"
 ---
 # <a name="table-design-patterns"></a>Táblatervezési minták
 Ez a cikk néhány tábla szolgáltatási megoldások használható mintákat ismerteti. Ezenkívül láthatja, miként, gyakorlatilag kezelheti néhány problémákat és egyéb tárolási tervezési cikkek tárgyalt feláldozását. Az alábbi ábrán a különböző minták között létesített kapcsolatait összegzi:  
@@ -197,7 +197,7 @@ Vezetéknév keresési engedélyezése a fenti entitás struktúrával, meg kell
 * Hozzon létre index entitások az alkalmazottak entitásokként ugyanazon a partíción.  
 * Index entitások létrehozása egy külön partíciót vagy tábla.  
 
-<u>#1. lehetőség: Blob storage használata</u>  
+<u>#1. lehetőség: Blob Storage használata</u>  
 
 Az első lehetőség, akkor hozzon létre minden egyedi Vezetéknév, és minden egyes blob-tárolóban lévő blobok listáját a **PartitionKey** (részleg) és **RowKey** (alkalmazott azonosítója) értékét az alkalmazottak a múlt nevet. Hozzáadásakor, vagy egy alkalmazott törlése biztosítania kell, hogy idővel konzisztenssé váljanak az alkalmazott entitások-e a megfelelő blob tartalmát.  
 
@@ -583,27 +583,25 @@ var query = (from employee in employeeQuery
             employee.RowKey.CompareTo("B") >= 0 &&
             employee.RowKey.CompareTo("C") < 0
             select employee).AsTableQuery();
+            
 var employees = query.Execute();  
 ```
 
 Figyelje meg, hogyan a lekérdezés határoz meg, mindkét egy **rowkey tulajdonságok esetén** és a egy **PartitionKey** jobb teljesítmény biztosítása érdekében.  
 
-A következő mintakód bemutatja a fluent API-val megfelelő funkciók (További információ a fluent API-k általában: [egy Fluent API-t tervezése ajánlott eljárásai](https://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
+Az alábbi kódmintában látható a megfelelő funkciók LINQ-szintaxist használata nélkül:  
 
 ```csharp
-TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(
-    TableQuery.CombineFilters(
-    TableQuery.CombineFilters(
-        TableQuery.GenerateFilterCondition(
-    "PartitionKey", QueryComparisons.Equal, "Sales"),
-    TableOperators.And,
-    TableQuery.GenerateFilterCondition(
-    "RowKey", QueryComparisons.GreaterThanOrEqual, "B")
-),
-TableOperators.And,
-TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, "C")
-    )
-);
+TableQuery<EmployeeEntity> employeeQuery = 
+    new TableQuery<EmployeeEntity>().Where(
+        TableQuery.CombineFilters(
+            TableQuery.CombineFilters(
+                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales"),
+                TableOperators.And,
+                TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, "B")),
+            TableOperators.And,
+            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, "C")));
+            
 var employees = employeeTable.ExecuteQuery(employeeQuery);  
 ```
 
@@ -622,36 +620,31 @@ Egy lekérdezést a table service is visszaadhatnak maximum 1000 entitás egy id
 Ha használja a Storage ügyféloldali kódtár, automatikusan kezelheti folytatási token az Ön számára, hogy entitásokat ad vissza a Table szolgáltatásból. Az alábbi C# kódmintát a Storage ügyféloldali kódtár használatával automatikusan kezeli a folytatási token, ha a table service ad vissza, a válasz:  
 
 ```csharp
-string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, "Sales");
-TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter);
+string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
+TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
 
 var employees = employeeTable.ExecuteQuery(employeeQuery);
 foreach (var emp in employees)
 {
-        ...
+    // ...
 }  
 ```
 
 Az alábbi C#-kódot a folytatási token explicit módon kezeli:  
 
 ```csharp
-string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, "Sales");
-TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter);
+string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
+TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
 
 TableContinuationToken continuationToken = null;
-
 do
 {
-        var employees = employeeTable.ExecuteQuerySegmented(
-        employeeQuery, continuationToken);
+    var employees = employeeTable.ExecuteQuerySegmented(employeeQuery, continuationToken);
     foreach (var emp in employees)
     {
-    ...
+        // ...
     }
+    
     continuationToken = employees.ContinuationToken;
 } while (continuationToken != null);  
 ```
@@ -677,16 +670,15 @@ employeeQuery.TakeCount = 50;
 Egyetlen entitás legfeljebb 255 tulajdonságok és a legfeljebb 1 MB méretű lehet. Ha lekérdezéséhez a táblából, és kérje le az entitásokat, előfordulhat, hogy nem kell az összes tulajdonság, és tudja kerülni a szükségtelenül (a késés és a költségek csökkentése érdekében) történő adatátvitel. Kiszolgálóoldali leképezés használatával átvitele csak a szükséges tulajdonságokat. Az alábbi példa lekéri az csak a **E-mail** tulajdonság (az **PartitionKey**, **rowkey tulajdonságok esetén**, **időbélyeg**, és **ETag**), a lekérdezés által kiválasztott entitások.  
 
 ```csharp
-string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, "Sales");
+string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
 List<string> columns = new List<string>() { "Email" };
 TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter).Select(columns);
+    new TableQuery<EmployeeEntity>().Where(filter).Select(columns);
 
 var entities = employeeTable.ExecuteQuery(employeeQuery);
 foreach (var e in entities)
 {
-        Console.WriteLine("RowKey: {0}, EmployeeEmail: {1}", e.RowKey, e.Email);
+    Console.WriteLine("RowKey: {0}, EmployeeEmail: {1}", e.RowKey, e.Email);
 }  
 ```
 
@@ -921,31 +913,29 @@ Ha tudja, hogy az entitást, tárolja és a egy adott típusú **rowkey tulajdon
 A második lehetőség a **DynamicTableEntity** típusa (egy tulajdonságcsomagot) helyett egy konkrét POCO entitás típusa (ezt a lehetőséget is javíthatja a teljesítményt, mert nem kell szerializálható és deszerializálható az entitás a .NET-típusok). Az alábbi C#-kód potenciálisan több különböző típusú entitás beolvasása a táblából, de adja vissza minden entitás, **DynamicTableEntity** példányok. Ezután a **EntityType** tulajdonságot minden entitás típusának meghatározása:  
 
 ```csharp
-string filter = TableQuery.CombineFilters(
-    TableQuery.GenerateFilterCondition("PartitionKey",
-    QueryComparisons.Equal, "Sales"),
-    TableOperators.And,
+string filter =
     TableQuery.CombineFilters(
-    TableQuery.GenerateFilterCondition("RowKey",
-                    QueryComparisons.GreaterThanOrEqual, "B"),
+        TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales"),
         TableOperators.And,
-        TableQuery.GenerateFilterCondition("RowKey",
-        QueryComparisons.LessThan, "F")
-    )
-);
+        TableQuery.CombineFilters(
+            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, "B"),
+            TableOperators.And,
+            TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, "F")));
+        
 TableQuery<DynamicTableEntity> entityQuery =
     new TableQuery<DynamicTableEntity>().Where(filter);
+    
 var employees = employeeTable.ExecuteQuery(entityQuery);
 
 IEnumerable<DynamicTableEntity> entities = employeeTable.ExecuteQuery(entityQuery);
 foreach (var e in entities)
 {
-EntityProperty entityTypeProperty;
-if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
-{
-    if (entityTypeProperty.StringValue == "Employee")
+    EntityProperty entityTypeProperty;
+    if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
     {
-        // Use entityTypeProperty, RowKey, PartitionKey, Etag, and Timestamp
+        if (entityTypeProperty.StringValue == "Employee")
+        {
+            // use entityTypeProperty, RowKey, PartitionKey, Etag, and Timestamp
         }
     }
 }  
@@ -958,42 +948,43 @@ Egy harmadik lehetőség, hogy összevonhatja a **DynamicTableEntity** típusa �
 ```csharp
 EntityResolver<TableEntity> resolver = (pk, rk, ts, props, etag) =>
 {
-
-        TableEntity resolvedEntity = null;
-        if (props["EntityType"].StringValue == "Department")
-        {
+    TableEntity resolvedEntity = null;
+    if (props["EntityType"].StringValue == "Department")
+    {
         resolvedEntity = new DepartmentEntity();
-        }
-        else if (props["EntityType"].StringValue == "Employee")
-        {
+    }
+    else if (props["EntityType"].StringValue == "Employee")
+    {
         resolvedEntity = new EmployeeEntity();
-        }
-        else throw new ArgumentException("Unrecognized entity", "props");
+    }
+    else 
+    {
+        throw new ArgumentException("Unrecognized entity", "props");
+    }
 
-        resolvedEntity.PartitionKey = pk;
-        resolvedEntity.RowKey = rk;
-        resolvedEntity.Timestamp = ts;
-        resolvedEntity.ETag = etag;
-        resolvedEntity.ReadEntity(props, null);
-        return resolvedEntity;
+    resolvedEntity.PartitionKey = pk;
+    resolvedEntity.RowKey = rk;
+    resolvedEntity.Timestamp = ts;
+    resolvedEntity.ETag = etag;
+    resolvedEntity.ReadEntity(props, null);
+    return resolvedEntity;
 };
 
-string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, "Sales");
-TableQuery<DynamicTableEntity> entityQuery =
-        new TableQuery<DynamicTableEntity>().Where(filter);
+string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Sales");
+        
+TableQuery<DynamicTableEntity> entityQuery = new TableQuery<DynamicTableEntity>().Where(filter);
 
 var entities = employeeTable.ExecuteQuery(entityQuery, resolver);
 foreach (var e in entities)
 {
-        if (e is DepartmentEntity)
-        {
-    ...
-        }
-        if (e is EmployeeEntity)
-        {
-    ...
-        }
+    if (e is DepartmentEntity)
+    {
+        // ...
+    }
+    else if (e is EmployeeEntity)
+    {
+        // ...
+    }
 }  
 ```
 
@@ -1001,19 +992,17 @@ foreach (var e in entities)
 Nem kell tudni, hogy egy entitást, törölje azt a típusát, és mindig tudja, entitás típusa, amikor a meghajtóba. Használhatja azonban **DynamicTableEntity** írja be az entitások frissítésének jeho typu ismerete nélkül, és egy POCO entitásosztályt használata nélkül. A következő mintakód beolvassa egy entitás, és ellenőrzi a **EmployeeCount** frissítés előtti létezik tulajdonság.  
 
 ```csharp
-TableResult result =
-        employeeTable.Execute(TableOperation.Retrieve(partitionKey, rowKey));
+TableResult result = employeeTable.Execute(TableOperation.Retrieve(partitionKey, rowKey));
 DynamicTableEntity department = (DynamicTableEntity)result.Result;
 
 EntityProperty countProperty;
-
 if (!department.Properties.TryGetValue("EmployeeCount", out countProperty))
 {
-        throw new
-        InvalidOperationException("Invalid entity, EmployeeCount property not found.");
+    throw new InvalidOperationException("Invalid entity, EmployeeCount property not found.");
 }
+
 countProperty.Int32Value += 1;
-employeeTable.Execute(TableOperation.Merge(department));  
+employeeTable.Execute(TableOperation.Merge(department));
 ```
 
 ## <a name="controlling-access-with-shared-access-signatures"></a>Közös hozzáférésű jogosultságkódokkal hozzáférés szabályozása
@@ -1038,23 +1027,20 @@ Egy ügyfél példány belül úgy, hogy végrehajtja a tárolási műveletek as
 ```csharp
 private static void ManyEntitiesQuery(CloudTable employeeTable, string department)
 {
-        string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, department);
-        TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter);
+    string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, department);
+    TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
 
-        TableContinuationToken continuationToken = null;
-
-        do
-        {
-        var employees = employeeTable.ExecuteQuerySegmented(
-                employeeQuery, continuationToken);
-        foreach (var emp in employees)
+    TableContinuationToken continuationToken = null;
+    do
     {
-        ...
-    }
+        var employees = employeeTable.ExecuteQuerySegmented(employeeQuery, continuationToken);
+        foreach (var emp in employees)
+        {
+            // ...
+        }
+        
         continuationToken = employees.ContinuationToken;
-        } while (continuationToken != null);
+    } while (continuationToken != null);
 }  
 ```
 
@@ -1063,22 +1049,20 @@ Egyszerűen módosíthatja ezt a kódot, így az alábbiak szerint aszinkron mó
 ```csharp
 private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, string department)
 {
-        string filter = TableQuery.GenerateFilterCondition(
-        "PartitionKey", QueryComparisons.Equal, department);
-        TableQuery<EmployeeEntity> employeeQuery =
-        new TableQuery<EmployeeEntity>().Where(filter);
-        TableContinuationToken continuationToken = null;
-
-        do
-        {
-        var employees = await employeeTable.ExecuteQuerySegmentedAsync(
-                employeeQuery, continuationToken);
+    string filter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, department);
+    TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(filter);
+    
+    TableContinuationToken continuationToken = null;
+    do
+    {
+        var employees = await employeeTable.ExecuteQuerySegmentedAsync(employeeQuery, continuationToken);
         foreach (var emp in employees)
         {
-            ...
+            // ...
         }
+    
         continuationToken = employees.ContinuationToken;
-            } while (continuationToken != null);
+    } while (continuationToken != null);
 }  
 ```
 
@@ -1094,24 +1078,24 @@ Ne feledje, hogy van-e nem aszinkron verziója a **Execute** metódus az a **Tab
 Beszúrása, frissítése, és aszinkron módon entitások törlése. Az alábbi C# példa bemutatja egy egyszerű, a szinkron módszer beszúrása vagy alkalmazotti entitás cseréje:  
 
 ```csharp
-private static void SimpleEmployeeUpsert(CloudTable employeeTable,
-        EmployeeEntity employee)
+private static void SimpleEmployeeUpsert(
+    CloudTable employeeTable,
+    EmployeeEntity employee)
 {
-        TableResult result = employeeTable
-        .Execute(TableOperation.InsertOrReplace(employee));
-        Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
+    TableResult result = employeeTable.Execute(TableOperation.InsertOrReplace(employee));
+    Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
 }  
 ```
 
 Így a frissítés aszinkron módon fut. Ez a kód egyszerűen módosíthatja:  
 
 ```csharp
-private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
-        EmployeeEntity employee)
+private static async Task SimpleEmployeeUpsertAsync(
+    CloudTable employeeTable,
+    EmployeeEntity employee)
 {
-        TableResult result = await employeeTable
-        .ExecuteAsync(TableOperation.InsertOrReplace(employee));
-        Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
+    TableResult result = await employeeTable.ExecuteAsync(TableOperation.InsertOrReplace(employee));
+    Console.WriteLine("HTTP Status: {0}", result.HttpStatusCode);
 }  
 ```
 
@@ -1124,7 +1108,7 @@ Az ügyfélalkalmazás több aszinkron metódusok ehhez hasonló meghívhatja, �
 
 ## <a name="next-steps"></a>További lépések
 
-- [Kapcsolatok modellezését](table-storage-design-modeling.md)
-- [Lekérdezés tervezése](table-storage-design-for-query.md)
-- [Táblák adatainak titkosítása](table-storage-design-encrypt-data.md)
-- [Adatmódosítás tervezése](table-storage-design-for-modification.md)
+- [Kapcsolatok modellezése](table-storage-design-modeling.md)
+- [Tervezés lekérdezéshez](table-storage-design-for-query.md)
+- [Táblaadatok titkosítása](table-storage-design-encrypt-data.md)
+- [Tervezés adatmódosításhoz](table-storage-design-for-modification.md)

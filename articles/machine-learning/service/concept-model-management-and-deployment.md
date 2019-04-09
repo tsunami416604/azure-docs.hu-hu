@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 1/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8dea667b15471accd4fc8b09d0ff1eb7aa5daed5
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 2cd2d328d33744854bc525e5ecf1dfa3b6e4bcc8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403685"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275442"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Kezelheti, telepítheti és figyelheti a modellek az Azure Machine Learning szolgáltatás
 
@@ -33,7 +33,7 @@ Az üzembe helyezést megvalósító munkafolyamat a következő lépésekből �
 
 Az egyes lépések egymástól függetlenül, vagy egy egyetlen központi telepítési parancs részeként hajtható végre. Ezenkívül integrálható üzembe helyezését egy **CI/CD a munkafolyamat** alábbi képen szemléltetett módon.
 
-[!["Az azure Machine Learning folyamatos integráció/folyamatos készregyártás (CI/CD) ciklus:](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+[!['Az Azure Machine Learning folyamatos integráció/folyamatos készregyártás (CI/CD) ciklus '](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 ## <a name="step-1-register-model"></a>1. lépés: Modell regisztrálása
 
@@ -63,7 +63,9 @@ Naplózás és figyelés az SDK-összetevők a lemezképet is tartalmazhatnak. A
 Az Azure Machine Learning a népszerű keretrendszereket támogat, de általában is dolgozhat bármely keretrendszer, amely a pip telepítve lehet.
 
 A munkaterület létrehozása után úgy más számos egyéb Azure-erőforrások használta a munkaterülethez.
-A lemezkép létrehozására használt összes objektum munkaterületét az Azure storage-fiókban vannak tárolva. A rendszerkép létrehozásakor megadhat további metaadat-címkéket. A metaadat-címkéket is tárolódnak a regisztrációs adatbázisba, és kérdezhetők le a lemezkép található.
+Az alapértelmezett lemezkép létrehozásához használt összes objektum munkaterületét az Azure storage-fiókban vannak tárolva. A rendszerkép létrehozásakor megadhat további metaadat-címkéket. A metaadat-címkéket is tárolódnak a regisztrációs adatbázisba, és kérdezhetők le a lemezkép található.
+
+Egyéni rendszerképek, amelyek feltöltése az Azure Container Registrybe, és az Azure Machine Learning szolgáltatás által használt is használhatja.
 
 További információkért tekintse meg a beállítás, és regisztrálja a lemezkép szakaszában [modellek üzembe helyezése](how-to-deploy-and-where.md#configureimage).
 
@@ -73,7 +75,7 @@ Regisztrált lemezképeket telepíthet a felhőben vagy a peremhálózati eszkö
 
 Webszolgáltatások üzembe helyezéséhez is kereshetők. Kereshet például egy adott modell- vagy képfájl, központi telepítések.
 
-[![Következtetési célok](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+[![Inferencing célok](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
 
 Az alábbi üzembe helyezési célokhoz, a felhőben is üzembe helyezhetik a rendszerképeket:
 

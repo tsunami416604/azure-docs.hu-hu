@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 782027f19d4e82f26fc1265f25b86223386d7182
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9cb3c028c14e6c47d47eafcf6279a918c0917442
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903385"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272206"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Adatok másolása és az Azure SQL Database felügyelt példány az Azure Data Factory használatával
 
@@ -83,7 +83,7 @@ Az Azure SQL Database felügyelt példányába társított szolgáltatás a köv
 }
 ```
 
-**2. példa: SQL-hitelesítés használata az Azure Key Vaultban jelszó**
+**2. példa SQL-hitelesítés használata az Azure Key Vaultban jelszó**
 
 ```json
 {
@@ -282,7 +282,7 @@ Adatok másolása az Azure SQL Database felügyelt példányába, állítsa a fo
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó típusa tulajdonságát állítsa **SqlSink**. | Igen. |
-| WriteBatchSize |Ez a tulajdonság végez adatbeszúrást az SQL-táblát a pufferméret writeBatchSize elérésekor.<br/>Megengedett értékek: sorok számának egész számok. |Nem (alapértelmezett: 10,000). |
+| WriteBatchSize |Az SQL-táblába beilleszti sorok száma **kötegenként**.<br/>Megengedett értékek: sorok számának egész számok. |Nem (alapértelmezett: 10,000). |
 | writeBatchTimeout |Ez a tulajdonság határozza meg a várakozási idő a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot.<br/>Megengedett értékek: az időtartam. Például "00: 30:00," vagyis 30 perc. |Nem. |
 | preCopyScript |Ez a tulajdonság határozza meg, hogy a másolási tevékenység végrehajtása előtt az adatok írása a következő felügyelt példányt az SQL-lekérdezést. Indítva csak egyszer futtatni példányonkénti. Ez a tulajdonság használatával előre betöltött adatok törlése. |Nem. |
 | sqlWriterStoredProcedureName |Ez a név a tárolt eljárás, amely meghatározza, hogyan alkalmazhatja a forrásadatok a célként megadott táblába. Eljárások példák upserts vagy átalakítások ehhez használatával saját üzleti logikája szerint. <br/><br/>A tárolt eljárás *kötegenként meghívása*. Egy műveletet, amely csak egyszer fut le, és nem tartalmazó adatforrásból, például törlés vagy csonkolása teheti a `preCopyScript` tulajdonság. |Nem. |
@@ -324,7 +324,7 @@ Adatok másolása az Azure SQL Database felügyelt példányába, állítsa a fo
 ]
 ```
 
-**2. példa: Tárolt eljárás meghívása során az upsert másolása**
+**2. példa Tárolt eljárás meghívása során az upsert másolása**
 
 További részletek a [a egy SQL-fogadó tárolt eljárás meghívása](#invoke-a-stored-procedure-from-a-sql-sink).
 
@@ -438,9 +438,9 @@ Adatok átmásolja az Azure SQL Database felügyelt példányába, amikor egy t�
 
 Tárolt eljárás segítségével használhatja, ha a beépített másolási mechanizmusokkal nem szolgálnak ki erre a célra. Ha az upsert (frissítés + insert) vagy az extra feldolgozási kell elvégezni a forrásadatok a céloldali tábla utolsó beszúrási előtt általában szolgál. További feldolgozás feladatokat, köztük a további értéket, és annak több tábla keresésekor oszlopok egyesítése tartalmazhatnak.
 
-A következő minta bemutatja, hogyan hajtsa végre az upsert egy táblába a következő felügyelt példányt a tárolt eljárás használatával. A minta azt feltételezi, hogy a bemeneti adatokat és a fogadó "Marketing" tábla is három oszlopot: ProfileID, állapotát és kategória. Hajtsa végre az upsert ProfileID oszlop alapján, és csak egy adott kategóriát a alkalmazni.
+A következő minta bemutatja, hogyan egy tárolt eljárást az upsert ehhez az SQL Server-adatbázisban egy táblába. Tegyük fel, amelyek bemeneti és a fogadó **Marketing** tábla minden egyes háromoszloposak: **ProfileID**, **állapot**, és **kategória**. Hajtsa végre az upsert alapján a **ProfileID** oszlopot, és csak egy adott kategória alkalmazhatja azt.
 
-**Kimeneti adatkészlet**
+**Kimeneti adatkészlet:** a "tableName" kell lennie a ugyanazon tábla típusú paraméter neve a tárolt eljárás (lásd az alábbi tárolt eljárás szkriptet).
 
 ```json
 {
@@ -459,7 +459,7 @@ A következő minta bemutatja, hogyan hajtsa végre az upsert egy táblába a k�
 }
 ```
 
-Adja meg az SqlSink szakaszban másolási tevékenység a következő:
+Adja meg a **SQL-fogadó** a másolási tevékenység a következő szakaszban.
 
 ```json
 "sink": {
@@ -474,7 +474,7 @@ Adja meg az SqlSink szakaszban másolási tevékenység a következő:
 }
 ```
 
-Az adatbázis SqlWriterStoredProcedureName definiálhatja a tárolt eljárás ugyanazzal a névvel. Kezeli a bemeneti adatokat az adott forrásból származnak, és azt a kimeneti tábla egyesít. A tábla típusú a tárolt eljárás paraméter neve megegyezik a "tableName" az adatkészletben definiált.
+Az adatbázis határoz meg a tárolt eljárás, amelynek a neve megegyezik a **SqlWriterStoredProcedureName**. Kezeli a bemeneti adatokat az adott forrásból származnak, és azt a kimeneti tábla egyesít. A tárolt eljárást a táblázat típusú paraméter neve legyen ugyanaz, mint a **tableName** adatkészletben történő definiálása okozza.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)

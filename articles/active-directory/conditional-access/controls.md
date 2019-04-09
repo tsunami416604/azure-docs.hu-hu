@@ -18,12 +18,12 @@ ms.date: 03/23/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ceaf472f53c48b17701b14fdf4107045c2e43fdc
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521975"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258742"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?
 
@@ -58,7 +58,7 @@ Az engedély teljesen letiltja a hozzáférést, vagy a kívánt vezérlők kiv�
 - Az összes kiválasztott teljesítendő vezérlők (*és*)
 - Az egyik kijelölt vezérlő teljesítendő (*vagy*)
 
-![Vezérlés](./media/controls/17.png)
+![Vezérlés](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
@@ -76,9 +76,9 @@ Konfigurálhatja, amelyek a eszközalapú feltételes hozzáférési szabályzat
 
 Az eszköz regisztrálva kell lennie az Azure AD, mielőtt azt is megfelelőként megjelölt. Három lehetősége van az eszköz regisztrálása: 
 
-- [Az Azure ad-ben regisztrált eszközök](../devices/overview.md#azure-ad-registered-devices)
-- [Az Azure AD-csatlakoztatott eszközök](../devices/overview.md#azure-ad-joined-devices)  
-- [Hibrid Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#hybrid-azure-ad-joined-devices)
+- [Azure AD-ben regisztrált eszközök](../devices/overview.md#azure-ad-registered-devices)
+- [Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#azure-ad-joined-devices)  
+- [Hibrid Azure AD-csatlakoztatott eszközök](../devices/overview.md#hybrid-azure-ad-joined-devices)
 
 További információkért lásd: [a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés igénylése a felügyelt eszközök](require-managed-devices.md).
 
@@ -94,6 +94,18 @@ Mivel az alkalmazottak mobileszközök mind a személyes és munkahelyi feladato
 Használhat [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy) független a mobileszköz-kezelési (MDM) megoldásoktól a vállalati adatok védelme érdekében.
 
 A jóváhagyott ügyfélalkalmazások is egy ügyfélalkalmazás, amely megpróbálja elérni a felhőalapú alkalmazások támogatásához szükséges [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy). Például korlátozhatja hozzáférést az Exchange online-hoz az Outlook alkalmazást. Más néven van egy feltételes hozzáférési szabályzat megköveteli a jóváhagyott ügyfélalkalmazások [alapján az alkalmazásalapú feltételes hozzáférési szabályzat](app-based-conditional-access.md). Támogatott a jóváhagyott ügyfélalkalmazások listájának megtekintéséhez lásd: [jóváhagyott alkalmazás megkövetelése ügyfél](technical-reference.md#approved-client-app-requirement).
+
+### <a name="app-protection-policy-preview"></a>Alkalmazásvédelmi szabályzat (előzetes verzió)
+
+Mivel az alkalmazottak mobileszközök mind a személyes és munkahelyi feladatokhoz, érdemes elért eszközök még abban az esetben, ha azok által nem kezelt, vállalati adatok védelme érdekében lehetősége.
+Használhat [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy) független a mobileszköz-kezelési (MDM) megoldásoktól a vállalati adatok védelme érdekében.
+
+Az alkalmazásvédelmi szabályzatot, a hozzáférés korlátozható az ügyfélalkalmazások számára, amely az Azure-bA jelentett AD rendelkezik, miután megkapta [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy). Például korlátozhatja hozzáférést az Exchange online-hoz az Outlook alkalmazást, amely rendelkezik az Intune alkalmazásvédelmi szabályzat. Más néven az alkalmazásvédelmi szabályzatot igénylő feltételes hozzáférési szabályzat [app protection alkalmazásalapú feltételes hozzáférési szabályzat](app-protection-based-conditional-access.md). 
+
+Az Azure AD-alkalmazás házirend által védett megjelölhető előtt regisztrálni kell az eszközt.
+
+Védett ügyfélalkalmazások, a támogatott házirend listájáért lásd [alkalmazás alkalmazásvédelmi szabályzat követelménye úgy](technical-reference.md#app-protection-policy-requirement).
+
 
 ### <a name="terms-of-use"></a>Használati feltételek
 

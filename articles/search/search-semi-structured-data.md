@@ -1,22 +1,22 @@
 ---
-title: Az oktatóanyag az Azure Blob storage – Azure Search JSON keresése
-description: Ebben az oktatóanyagban megtanulhatja, hogyan kereshet részben strukturált Azure-beli blobadatokat az Azure Search használatával.
+title: 'Oktatóanyag: A JSON-blobok – Azure Search félig-strutured adatok indexelése'
+description: Ismerje meg az Azure Search és a Postman használatával félig strukturált Azure JSON-blobok indexelése és.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 1c8ce14dd3961eff33a54a14c2bd0b27650d8a50
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 8436bb1fc84d5a944b35cd7b2c9667d2148c0af3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201347"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270464"
 ---
-# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Oktatóanyag: Részben strukturált adatok keresése az Azure felhőalapú tárolóban
+# <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Oktatóanyag: Index, és részben strukturált adatok (JSON-blobok) keresése az Azure Search szolgáltatásban
 
 Az Azure Search indexelheti a JSON-dokumentumok és az Azure blob storage-tömbök egy [indexelő](search-indexer-overview.md) , amely meg tudja részben strukturált adatokat olvasni. A részben strukturált adatok címkéket és jelölőket tartalmaznak, amelyek a tartalmakat választják el az adatokon belül. A különbség a között a strukturálatlan adatok, amelyek teljes mértékben indexelendő, és a formálisan strukturált adatok egy adatmodellt, például egy relációsadatbázis-sémát, mező alapon is indexelhető osztja.
 
@@ -33,37 +33,47 @@ Ebben az oktatóanyagban használja a [Azure Search REST API-k](https://docs.mic
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja.
+Ez a rövid útmutató az alábbi szolgáltatások, eszközök és adatok használatosak. 
 
-[Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) mintaadatok tárolásához.
+[Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja. 
 
-[Postman használata](https://www.getpostman.com/) vagy egy másik REST-ügyfél a kérelmek küldésére. HTTP-kérést a Postmanben beállításával kapcsolatos utasításokat a következő szakaszban.
+[Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account), majd [hozzon létre egy blobtárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) mintaadatok tárolásához. Mivel a kapcsolat kulcs és a tárolási fiók nevét fogja használni, ellenőrizze, hogy a tároló nyilvános hozzáférés szintje "Tároló (névtelen olvasási hozzáférés tárolók)".
 
-## <a name="set-up-postman"></a>A Postman beállítása
+[Postman asztali alkalmazás](https://www.getpostman.com/) az Azure Search kérelmek küldésére szolgál.
 
-Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha ismeri ezt az eszközt, tekintse meg [Ismerkedés az Azure Search REST API-k a postmannel](search-fiddler.md).
+[Klinikai-kísérletek-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) ebben az oktatóanyagban használt adatokat tartalmaz. Töltse le és csomagolja ki ezt a fájlt a saját mappájába. Adatok származnak [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results), ebben az oktatóanyagban a konvertált JSON-ná.
 
-A kérelem metódusa az oktatóanyagban található minden hívás esetében: POST. A fejléckulcsok Content-type (tartalomtípus) és api-key (API-kulcs) típusúak. A fejléckulcsok értékei: application/json (alkalmazás/json) és admin key (adminisztrációs kulcs, amely az elsődleges keresési kulcs helyőrzője). A törzs az a hely, ahol elhelyezi a hívás tényleges tartalmát. Attól függően, hogy milyen ügyfélt használ, különböző módszerekkel hozhatja létre a lekérdezést, de ezek az alapvető tudnivalók.
+## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
 
-  ![Részben strukturált keresés](media/search-semi-structured-data/postmanoverview.png)
+A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-A jelen oktatóanyagban bemutatott REST-hívásokhoz szükség van a keresési API-kulcsra. Az API-kulcsot a keresési szolgáltatás **Kulcsok** területén találja meg. Ennek az API-kulcsnak szerepelnie kell minden API-hívás fejlécében (cserélje le rá az előző képernyőképen látható „adminisztrációs kulcsot”), amelyet ezen oktatóanyagban hoz létre. Őrizze meg a kulcsot, mivel minden híváshoz szüksége lesz rá.
+1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/), és a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-  ![Részben strukturált keresés](media/search-semi-structured-data/keys.png)
+1. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
+
+![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
+
+Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 ## <a name="prepare-sample-data"></a>Mintaadatok létrehozása
 
-1. **Töltse le a [clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) fájlt**, és bontsa ki a saját mappájába. Adatok származnak [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results), ebben az oktatóanyagban a konvertált JSON-ná.
+1. Keresse meg a mintaadatokat, a rendszer letöltötte.
 
-2. Jelentkezzen be a [az Azure portal](https://portal.azure.com), keresse meg az Azure storage-fiókjába, nyissa meg a **adatok** , és kattintson **feltöltése**.
+1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com), keresse meg az Azure storage-fiók és a Blob-tárolóba, majd kattintson **feltöltése**.
 
-3. Kattintson a **Speciális** elemre, írja be a clinical-trials-json kifejezést, majd töltse fel az összes letöltött JSON-fájlt.
+1. Kattintson a **Speciális** elemre, írja be a clinical-trials-json kifejezést, majd töltse fel az összes letöltött JSON-fájlt.
 
   ![Részben strukturált keresés](media/search-semi-structured-data/clinicalupload.png)
 
 Ha befejeződött a feltöltés, a fájlok a saját almappájukban jelennek meg az adattárolóban.
 
-## <a name="connect-your-search-service-to-your-container"></a>Keresési szolgáltatás csatlakoztatása a tárolóhoz
+## <a name="set-up-postman"></a>A Postman beállítása
+
+Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha ismeri ezt az eszközt, tekintse meg [Ismerkedés az Azure Search REST API-k a postmannel](search-fiddler.md).
+
+A kérelem a módszer minden hívás ebben az oktatóanyagban **POST**. A fejléckulcsok Content-type (tartalomtípus) és api-key (API-kulcs) típusúak. A fejléckulcsok értékei: application/json (alkalmazás/json) és admin key (adminisztrációs kulcs, amely az elsődleges keresési kulcs helyőrzője). A törzs az a hely, ahol elhelyezi a hívás tényleges tartalmát. Attól függően, hogy milyen ügyfélt használ, különböző módszerekkel hozhatja létre a lekérdezést, de ezek az alapvető tudnivalók.
+
+  ![Részben strukturált keresés](media/search-semi-structured-data/postmanoverview.png)
 
 A Postmannel három API-hívást indítunk a keresési szolgáltatás felé annak érdekében, hogy létrehozzunk egy adatforrást, egy indexet és egy indexelőt. Az adatforrás tartalmaz egy, a tárfiókjára irányuló mutatót és a JSON-adatait. A keresési szolgáltatás az adatok betöltésekor hozza létre a kapcsolatot.
 
@@ -276,4 +286,4 @@ Az oktatóanyagok után feleslegessé vált elemek az Azure Search szolgáltatá
 Mesterséges intelligencia által vezérelt algoritmusokat csatolhat egy indexelőfolyamathoz. Következő lépésként folytassa az alábbi oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Dokumentumok indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md)
+> [Dokumentumok indexelése az Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)

@@ -1,16 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cf5eeff9aa56a2c3366c57ddef47f4020e73c161
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804649"
 documentType: LandingData
 title: Az Azure Policy szolgáltatás dokumentációja
 metadata:
   title: Az Azure Policy dokumentációja – oktatóanyagok és API-referencia
-  description: Az Azure Policy segítségével kezelheti és megelőzheti az erőforrásokra vonatkozó szabályokat és az azokra gyakorolt hatást kikényszerítő szabályzatdefiníciókkal kapcsolatos informatikai problémákat. Az Azure Policy használatával gondoskodhat róla, hogy az erőforrások megfeleljenek a vállalati szabványoknak és a szolgáltatói szerződéseknek.
-  services: azure-policy
+  description: 'Az Azure Policy segítségével kezelheti és megelőzheti az erőforrásokra vonatkozó szabályokat és az azokra gyakorolt hatást kikényszerítő szabályzatdefiníciókkal kapcsolatos informatikai problémákat. Az Azure Policy használatával gondoskodhat róla, hogy az erőforrások megfeleljenek a vállalati szabványoknak és a szolgáltatói szerződéseknek.'
   author: DCtheGeek
   manager: carmonm
   ms.service: azure-policy
@@ -18,62 +11,62 @@ metadata:
   ms.date: 03/16/2019
   ms.author: dacoulte
 abstract:
-  description: Az Azure Policy segítségével kezelheti és megelőzheti az erőforrásokra vonatkozó szabályokat és az azokra gyakorolt hatást kikényszerítő szabályzatdefiníciókkal kapcsolatos informatikai problémákat. Az Azure Policy használatával gondoskodhat róla, hogy az erőforrások megfeleljenek a vállalati szabványoknak és a szolgáltatói szerződéseknek.
+  description: 'Az Azure Policy segítségével kezelheti és megelőzheti az erőforrásokra vonatkozó szabályokat és az azokra gyakorolt hatást kikényszerítő szabályzatdefiníciókkal kapcsolatos informatikai problémákat. Az Azure Policy használatával gondoskodhat róla, hogy az erőforrások megfeleljenek a vállalati szabványoknak és a szolgáltatói szerződéseknek.'
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: Megtudhatja, hogyan hozhat létre, rendelhet hozzá és kezelhet szabályzatdefiníciókat az Azure-ban.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        alt: Azure Portal
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure Portal
-      href: ./assign-policy-portal
-    - image:
-        alt: Azure PowerShell
-        src: ./media/powershell.svg
-      text: Azure PowerShell
-      href: ./assign-policy-powershell
-    - image:
-        alt: Azure CLI
-        src: ./media/cli.svg
-      text: Azure CLI
-      href: ./assign-policy-azurecli
-    - image:
-        alt: Resource Manager-sablon
-        src: https://docs.microsoft.com/media/logos/logo_vs-code.svg
-      text: Resource Manager-sablon
-      href: ./assign-policy-template
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Megtudhatja, hogyan hozhat létre, rendelhet hozzá és kezelhet szabályzatdefiníciókat az Azure-ban.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Megtudhatja, hogyan hozhat létre, rendelhet hozzá és kezelhet szabályzatdefiníciókat az Azure-ban.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: Azure Portal
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure Portal
+            href: ./assign-policy-portal
+          - image:
+              alt: Azure PowerShell
+              src: ./media/powershell.svg
+            text: Azure PowerShell
+            href: ./assign-policy-powershell
+          - image:
+              alt: Azure CLI
+              src: ./media/cli.svg
+            text: Azure CLI
+            href: ./assign-policy-azurecli
+          - image:
+              alt: Resource Manager-sablon
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Resource Manager-sablon
+            href: ./assign-policy-template
+  - title: Részletes útmutatók
     items:
-    - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Azure-szabályzat létrehozása és kezelése</a>
-    - html: <a href="/azure/governance/policy/tutorials/create-custom-policy-definition">Egyéni szabályzatdefiníció létrehozása</a>
-- title: Példák
-  items:
-  - type: paragraph
-    text: Az alábbi minták áttekintése segíthet a szabályzatdefiníciók Azure-ban való létrehozásában.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Megtudhatja, hogyan hozhat létre, rendelhet hozzá és kezelhet szabályzatdefiníciókat az Azure-ban.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Azure-szabályzat létrehozása és kezelése</a>
+          - html: <a href="/azure/governance/policy/tutorials/create-custom-policy-definition">Egyéni szabályzatdefiníció létrehozása</a>
+  - title: Példák
     items:
-    - html: <a href="/azure/governance/policy/samples/index">Minták tárgymutatója</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Az alábbi minták áttekintése segíthet a szabályzatdefiníciók Azure-ban való létrehozásában.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/governance/policy/samples/index">Minták tárgymutatója</a>
+  - title: Referencia
     items:
-    - title: Parancssor
-      html: <p><a href="/cli/azure/policy">Azure CLI</a></p><p><a href="/powershell/module/az.resources/#policies">Azure PowerShell (szabályzat)</a></p><p><a href="/powershell/module/az.policyinsights#policy_insights">Azure PowerShell (Policy Insights)</a></p><p><a href="https://www.powershellgallery.com/packages/Az.GuestConfiguration">Azure PowerShell (vendégkonfiguráció)</a></p>
-    - title: Resource Manager-sablonok
-      html: <p><a href="/azure/templates/microsoft.authorization/policyassignments">Hozzárendelések</a></p><p><a href="/azure/templates/microsoft.authorization/policydefinitions">Szabályzatdefiníciók</a></p><p><a href="/azure/templates/microsoft.authorization/policysetdefinitions">Kezdeményezési definíciók</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/policy-insights/policyevents">Események</a></p><p><a href="/rest/api/policy-insights/policystates">Állapotok</a></p><p><a href="/rest/api/resources/policyassignments">Hozzárendelések</a></p><p><a href="/rest/api/resources/policydefinitions">Szabályzatdefiníciók</a></p><p><a href="/rest/api/resources/policysetdefinitions">Kezdeményezési definíciók</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">Szabályzattal nyomon követett erőforrások</a></p><p><a href="/rest/api/policy-insights/remediations">Javítások</a></p><p><a href="/rest/api/guestconfiguration/">Vendégkonfiguráció</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: '<p><a href="/cli/azure/policy">Azure CLI</a></p><p><a href="/powershell/module/az.resources/#policies">Azure PowerShell (szabályzat)</a></p><p><a href="/powershell/module/az.policyinsights#policy_insights">Azure PowerShell (Policy Insights)</a></p><p><a href="https://www.powershellgallery.com/packages/Az.GuestConfiguration">Azure PowerShell (vendégkonfiguráció)</a></p>'
+          - title: Resource Manager-sablonok
+            html: <p><a href="/azure/templates/microsoft.authorization/policyassignments">Hozzárendelések</a></p><p><a href="/azure/templates/microsoft.authorization/policydefinitions">Szabályzatdefiníciók</a></p><p><a href="/azure/templates/microsoft.authorization/policysetdefinitions">Kezdeményezésdefiníciók</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/policy-insights/policyevents">Események</a></p><p><a href="/rest/api/policy-insights/policystates">Állapotok</a></p><p><a href="/rest/api/resources/policyassignments">Hozzárendelések</a></p><p><a href="/rest/api/resources/policydefinitions">Szabályzatdefiníciók</a></p><p><a href="/rest/api/resources/policysetdefinitions">Kezdeményezésdefiníciók</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">Szabályzattal nyomon követett erőforrások</a></p><p><a href="/rest/api/policy-insights/remediations">Javítások</a></p><p><a href="/rest/api/guestconfiguration/">Vendégkonfiguráció</a></p>

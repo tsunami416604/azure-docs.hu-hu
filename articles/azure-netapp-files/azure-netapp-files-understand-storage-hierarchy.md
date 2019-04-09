@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2019
+ms.date: 04/03/2019
 ms.author: b-juche
-ms.openlocfilehash: 1cce1883295277f6c6c36d686d90370238265dbf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3df092377a29492facd972745933cd5f4a1ae3bf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775849"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275521"
 ---
 # <a name="understand-the-storage-hierarchy-of-azure-netapp-files"></a>Az Azure NetApp Files tárhely-hierarchiájának ismertetése
 
@@ -36,18 +36,15 @@ Mielőtt létrehozna egy kötetet az Azure NetApp Filesban, meg kell vásárolni
 
 - A kapacitáskészletek mérése a kiosztott kapacitás alapján történik.  
 - A kapacitás a rögzített termékváltozatok (például egy 4-TiB kapacitás) vásárolt lett kiépítve.
-- Egyetlen kapacitás készlet minimális mérete 4 Tib-ra, és a maximális mérete 500 Tib-ra. 
 - A kapacitáskészletek csak egy szolgáltatásszinttel rendelkezhetnek.  
-  Jelenleg csak a Prémium szolgáltatásszint érhető el.
 - Minden kapacitás címkészlet NetApp csak egy fiók is tartozik. Azonban akkor is több kapacitás készletek NetApp-fiókon belül.  
 - A kapacitáskészletek nem mozgathatók a NetApp-fiókok között.   
   Az alábbi, [tárhely-hierarchiát ábrázoló fogalmi diagramon](#conceptual_diagram_of_storage_hierarchy) például az 1. kapacitáskészlet nem helyezhető át az USA keleti régiójában lévő NetApp-fiókból az USA 2. nyugati régiójának NetApp-fiókjába.  
 
 ## <a name="volumes"></a>Kötetek
 
-- A kötet logikai kapacitásfogyasztásának mérjük és skálázható. Egy kötetet minimális mérete 100 GB, és a maximális méretet 92 Tib-ra.
+- A kötet logikai kapacitásfogyasztásának mérjük és skálázható. 
 - A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába.
--   Legfeljebb 100 kötetek Azure-előfizetésenként és régiónként rendelkezhet. 
 - Minden kötet egyetlen készlethez tartozik, de egy készlet több kötetet is tartalmazhat. 
 - Ugyanazon a NetApp-fiókon belül áthelyezheti a köteteket az egyik készletből egy másikba.    
   Az alábbi, [tárhely-hierarchiát ábrázoló fogalmi diagramon](#conceptual_diagram_of_storage_hierarchy) például áthelyezheti a köteteket az 1. kapacitáskészletből a 2. kapacitáskészletbe.
@@ -60,4 +57,4 @@ Az alábbi példák az Azure-előfizetés, a NetApp-fiókok, a kapacitáskészle
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
-- [Regisztráljon a Azure NetApp-fájlok](azure-netapp-files-register.md)
+- [Regisztrálás az Azure NetApp Filesra](azure-netapp-files-register.md)

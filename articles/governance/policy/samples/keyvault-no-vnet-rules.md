@@ -1,19 +1,18 @@
 ---
 title: Minta - naplózási Key vault-Kulcstartók nincs virtuális hálózat végpontok
 description: A szabályzatdefiníció-minta naplózza a Key Vault-tárolók nem virtuális hálózati szolgáltatásvégpontokkal rendelkező példányok észleléséhez.
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: f2f6e5c60553a55fd1a65e45cd38aef0b883020e
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: bc5ce4a6a2e52ed8d21de8db8da1f815293b61f7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802257"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276371"
 ---
 # <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Minta – nincs virtuális hálózat végpontokkal rendelkező Key Vault-tárolók
 
@@ -128,11 +127,11 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az policy definition create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Létrehoz egy új Azure Policy-definíciót. |
-| [az group show](/cli/azure/group?view=azure-cli-latest#az-group-show) | Egyetlen erőforráscsoportot kér le. |
-| [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
-| [az policy assignment delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Eltávolít egy létező Azure Policy-hozzárendelést. |
-| [az policy definition delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Eltávolít egy létező Azure Policy-definíciót. |
+| [az a szabályzat-definíció létrehozása](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Létrehoz egy új Azure Policy-definíciót. |
+| [az csoport megjelenítése](/cli/azure/group?view=azure-cli-latest#az-group-show) | Egyetlen erőforráscsoportot kér le. |
+| [az szabályzat-hozzárendelés létrehozása](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
+| [az szabályzat-hozzárendelés törlése](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Eltávolít egy létező Azure Policy-hozzárendelést. |
+| [az szabályzat-definíció törlése](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Eltávolít egy létező Azure Policy-definíciót. |
 
 ## <a name="rest-api"></a>REST API
 

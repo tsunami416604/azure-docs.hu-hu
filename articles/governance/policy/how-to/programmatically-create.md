@@ -1,7 +1,6 @@
 ---
 title: Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
 description: Ez a cikk végigvezeti programozott módon szabályzatok létrehozása és kezelése az Azure Policyvel.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/31/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e929fd80e87524b62c08a159c457be6f1f21eaad
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ade5d55833f1d63a8d70b6eedb3c3e4bdffe590b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768604"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276490"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
 
@@ -253,4 +252,4 @@ Tekintse át a parancsok és lekérdezések ebben a cikkben további informáci�
 - [Az Azure PowerShell-modulok](/powershell/module/az.resources/#policies)
 - [A házirend-parancsok az Azure CLI](/cli/azure/policy?view=azure-cli-latest)
 - [A házirend Insights erőforrás-szolgáltató REST API-referencia](/rest/api/policy-insights)
-- [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/overview.md)
+- [Erőforrások rendszerezése az Azure Management Groups segítségével](../../management-groups/overview.md)

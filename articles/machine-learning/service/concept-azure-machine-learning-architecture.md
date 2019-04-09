@@ -10,18 +10,18 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9e910fb3bc75c285986871627d875296f1a2a746
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 1cc1b1584fdeb24aaba07f33cc260532c75249a2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577322"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269129"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
 Ez a cikk ismerteti az architektúra és az Azure Machine Learning szolgáltatás fogalmak. A szolgáltatás és az általános munkafolyamat a szolgáltatás fő összetevőit az alábbi ábrán láthatók:
 
-[![Munkafolyamat és az Azure Machine Learning szolgáltatás architektúrája](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+[![Azure Machine Learning szolgáltatás architektúrája és a munkafolyamat](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
 A munkafolyamat általában ez a sorozat következő:
 
@@ -66,7 +66,7 @@ Amikor létrehoz egy új munkaterületet, automatikusan létrehoz több Azure-a 
 
 A besorolás, a munkaterület az alábbi ábra mutatja be:
 
-[![Munkaterület besorolás](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![Workspace besorolást](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="experiment"></a>Kísérlet
 
@@ -80,7 +80,7 @@ A legegyszerűbb esetben egy modell olyan kódot, amely veszi a bemenetnek és k
 
 Futtatás az Azure Machine Learning-modell elő. Egy modellt, amely be van tanítva, az Azure Machine Learning-en kívül is használhatja. Az Azure Machine Learning szolgáltatás munkaterületen egy modell regisztrálhat.
 
-Az Azure Machine Learning szolgáltatás keretrendszer független. Amikor létrehoz egy modellt, minden olyan közkedvelt machine learning-keretrendszerek, például a Scikit-ismerje meg, a XGBoost, a PyTorch, a TensorFlow, a Chainer és a Microsoft Cognitive Toolkittel (korábban cntk) is használhatja.
+Az Azure Machine Learning szolgáltatás keretrendszer független. Amikor létrehoz egy modellt, minden olyan közkedvelt machine learning-keretrendszerek, például a Scikit-ismerje meg, XGBoost, PyTorch, tensorflow-hoz és Chainer is használhatja.
 
 A modell tanítása példát talál [oktatóanyag: Egy rendszerkép osztályozási modell Azure Machine Learning szolgáltatással betanításához](tutorial-train-models-with-aml.md).
 
@@ -186,6 +186,10 @@ Az Azure Machine Learning két típusú lemezképek hozhatók létre:
 * **FPGA-lemezkép**: Amikor üzembe helyezi a egy mezőben-programmable gate array az Azure-ban használni.
 * **Docker-rendszerkép**: Amikor üzembe helyezi a számítási céljainak eltérő FPGA használja. Példák a következők: Azure Container Instances szolgáltatásban és az Azure Kubernetes Service-ben.
 
+Az Azure Machine Learning szolgáltatáshoz biztosít alapképet, amely alapértelmezés szerint használt. A saját egyéni rendszerképeit is megadhatja.
+
+További információkért tekintse meg a beállítás, és regisztrálja a lemezkép szakaszában [modellek üzembe helyezése](how-to-deploy-and-where.md#configureimage).
+
 Lemezkép létrehozása a példát talál [egy kép besorolási modell az Azure Container Instancesben üzembe](tutorial-deploy-models-with-aml.md).
 
 ### <a name="image-registry"></a>Regisztrációs adatbázisba
@@ -230,5 +234,5 @@ Ismerkedés az Azure Machine Learning szolgáltatással, tekintse meg:
 
 * [Mi az Azure Machine Learning szolgáltatás?](overview-what-is-azure-ml.md)
 * [Az Azure Machine Learning szolgáltatás munkaterület létrehozása](setup-create-workspace.md)
-* [Oktatóanyag: A modell tanítása](tutorial-train-models-with-aml.md)
+* [Oktatóanyag: Modell betanítása](tutorial-train-models-with-aml.md)
 * [Munkaterület létrehozása egy Resource Manager-sablonnal](how-to-create-workspace-template.md)

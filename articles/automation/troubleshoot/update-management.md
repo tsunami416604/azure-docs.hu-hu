@@ -4,16 +4,16 @@ description: Ismerje meg, az Update Management hibáinak elhárítása
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/05/2018
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b92ce1d5fb0e0b2b043b1bbfcb78dbaf3dde2e23
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 22e3ea1c90946902fc2a16d947ff2884e5e0a44b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804462"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274586"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Az Update Management kapcsolatos hibák elhárítása
 
@@ -45,7 +45,7 @@ Ez a hiba oka lehet a következő okok miatt:
 1. Látogasson el, [hálózattervezés](../automation-hybrid-runbook-worker.md#network-planning) további információt arról, hogy mely címeket és portokat engedélyezni kell, az Update Management működjön.
 2. Ha egy klónozott rendszerkép használatával:
    1. A Log Analytics munkaterületén távolítsa el a virtuális gép számára a hatókör-konfigurációt a mentett keresés `MicrosoftDefaultScopeConfig-Updates` ez-e meg. Mentett keresések területen található **általános** a munkaterületén.
-   2. Futtassa a `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force` parancsot.
+   2. Futtassa a következőt: `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`
    3. Futtatás `Restart-Service HealthService` újraindítani a `HealthService`. Ez hozza létre újra a kulcsot, és hozzon létre egy új UUID azonosítója.
    4. Ha ez sem működik, a sysprep lemezkép az első és az MMA-ügynök telepítése után az a tény.
 
@@ -181,6 +181,8 @@ Kattintson duplán a kivételt a kivétel teljes üzenet jelenik meg a vörös s
 |`0x8024402C`     | Ha egy WSUS-kiszolgálót használ, ellenőrizze, hogy a beállításkulcs-értékeket `WUServer` és `WUStatusServer` a beállításkulcs alatt `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` megfelelő a WSUS-kiszolgálót.        |
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Győződjön meg arról, hogy a Windows Update szolgáltatás (wuauserv) fut-e, és nincs letiltva.        |
 |Bármely egyéb általános kivétel     | Keresés a lehetséges megoldásokat az interneten működnek és a helyi IT-támogatással.         |
+
+Tekintse át a `windowsupdate.log` állapítható meg, valamint a lehetséges ok nyújt segítséget. A naplófájl olvasása. További információkért lásd: [a Windowsupdate.log fájl olvasása](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file).
 
 Emellett töltse le és futtassa a [Windows frissítési hibaelhárító](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) ellenőrizze, hogy vannak-e a gépen Windows Update szolgáltatással kapcsolatos problémák.
 

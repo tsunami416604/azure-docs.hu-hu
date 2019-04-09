@@ -1,19 +1,18 @@
 ---
 title: Példa – számlázási címkék szabályzatának kezdeményezése
 description: A minta szabályzatkészlet-definíció költségek és a Terméknév neve címkének a megadott értékekkel kell rendelkeznie.
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 13a9dd86e83099e25f7688ddb8ecc04793d3bb27
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 9d9a3a5af304c1080d1d43b9bbfbafe2554a9844
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58801765"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275011"
 ---
 # <a name="sample---billing-tags-policy-initiative"></a>Példa – számlázási címkék szabályzatának kezdeményezése
 
@@ -29,7 +28,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal) vagy a [PowerShell](#deploy-
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Az Azure-bA a szabályzat minta üzembe helyezése](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Daz Azure-bA a szabályzat minta eploy](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 

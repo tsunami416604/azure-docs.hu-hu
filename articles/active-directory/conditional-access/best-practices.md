@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d30fe326ef677ca4543534d57dd306ed2a660300
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: eafc379a65fda1ed64c6afee1427e704558b1ee6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895562"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261537"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Az Azure Active Directory-beli feltételes hozzáférésre vonatkozó ajánlott eljárások
 
@@ -138,6 +138,7 @@ A környezetben kerülje a következő beállításokat:
 
 - **A tartományhoz való csatlakozás megkövetelése** – Ez a házirend letiltása hozzáférés potenciálisan is letiltja a hozzáférést a szervezet összes felhasználója számára, ha még nem rendelkezik a tartományhoz csatlakoztatott eszköz.
 
+- **Alkalmazásvédelmi szabályzat szükséges** – Ez a házirend letiltása hozzáférés potenciálisan is letiltja a hozzáférést a szervezet összes felhasználója számára, ha nem rendelkezik Intune-szabályzattal. Ha a rendszergazda anélkül, hogy az Intune alkalmazásvédelmi szabályzattal ellátott ügyfélalkalmazás, akkor ez a szabályzat letiltja a ki vissza portálok, például az Intune és az Azure.
 
 **Minden felhasználó, a minden felhőalapú alkalmazásra, az összes eszközplatformot:**
 

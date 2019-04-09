@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8a6023c87dd1d68ab76c5c2342cb825e63d2b336
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c52ac6128ad00d9bb772816d6130f3aedc480138
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620640"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273396"
 ---
 # <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatási korlátai
 Maximális korlátozza a storage, a számítási feladatok és az indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [üzembe helyezése az Azure Search](search-create-service-portal.md) , **ingyenes**, **alapszintű**,  **Standard szintű**, vagy **tárolásra optimalizált** díjcsomagok árából.
@@ -114,7 +114,7 @@ Erőforrás-igényes művelet, például képelemzés, az Azure blob-indexelés 
 | BLOB indexelőjével: blob maximális mérete, MB |16 |16 |128 |256 |256 |–  |256 |256 |
 | BLOB indexelőjével: blob kinyert tartalom maximális karakter |32,000 |64,000 |4 millió |4 millió |4 millió |– |4 millió |4 millió |
 
-<sup>1</sup> ingyenes szolgáltatások indexelő maximális végrehajtási ideje 3 perc alatt van, a blob-forrásoknak és minden más adatforrás esetében 1 perc.
+<sup>1</sup> ingyenes szolgáltatások indexelő maximális végrehajtási ideje 3 perc alatt van, a blob-forrásoknak és minden más adatforrás esetében 1 perc. A mesterséges indexeléshez, hogy meghívja a Cognitive Services ingyenes szolgáltatások korlátozva, 20 ingyenes tranzakció naponta, ahol egy tranzakció egy dokumentumot, amelyek sikeresen átmegy az Adatbővítés folyamat nevezünk.
 
 <sup>2</sup> késői 2017 Miután megnövekedett legfeljebb 15 indexeket, adatforrásból és indexelőből létrehozott alapvető szolgáltatások. Korábban létrehozott szolgáltatások 5 rendelkeznek.
 

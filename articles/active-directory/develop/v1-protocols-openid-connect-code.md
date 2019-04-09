@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e39f271eaf0eccd0b3f3439492205e0d3398358
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 06639f943542e322e79e137e31be7b8954566a0f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851178"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261989"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect és az Azure Active Directory használatával webes alkalmazásokhoz való hozzáférés engedélyezése
 
@@ -47,12 +47,12 @@ A metaadat-dokumentum, amely tartalmazza az alkalmazás bejelentkezési végreha
 ```
 https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
 ```
-Egy egyszerű JavaScript Object Notation (JSON) a dokumentum metaadatai. Tekintse meg példaként az alábbi kódrészletet. A kódtöredék tartalma részletesen a [OpenID Connect specifikáció](https://openid.net). Vegye figyelembe, hogy biztosítani bérlő helyett `common` helyen {tenant}, a fenti eredményez bérlőspecifikus URI-k visszaadott JSON-objektum.
+Egy egyszerű JavaScript Object Notation (JSON) a dokumentum metaadatai. Tekintse meg példaként az alábbi kódrészletet. A kódtöredék tartalma részletesen a [OpenID Connect specifikáció](https://openid.net). Vegye figyelembe, egy bérlői azonosító megadása helyett `common` helyen {tenant}, a fenti eredményez bérlőspecifikus URI-k visszaadott JSON-objektum.
 
 ```
 {
-    "authorization_endpoint": "https://login.microsoftonline.com/common/oauth2/authorize",
-    "token_endpoint": "https://login.microsoftonline.com/common/oauth2/token",
+    "authorization_endpoint": "https://login.microsoftonline.com/{tenant}/oauth2/authorize",
+    "token_endpoint": "https://login.microsoftonline.com/{tenant}/oauth2/token",
     "token_endpoint_auth_methods_supported":
     [
         "client_secret_post",
@@ -64,6 +64,8 @@ Egy egyszerű JavaScript Object Notation (JSON) a dokumentum metaadatai. Tekints
     ...
 }
 ```
+
+Ha az alkalmazás egyéni aláíró kulcsok használatával rendelkezik-e a [jogcím-hozzárendelési](active-directory-claims-mapping.md) funkciót, hozzá kell fűzni a egy `appid` lekérdezési paraméter lekérése érdekében Azonosítót tartalmazó egy `jwks_uri` a webalkalmazásra mutató az aláíró kulcs információk. Például: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` tartalmaz egy `jwks_uri` , `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
 ## <a name="send-the-sign-in-request"></a>A bejelentkezési kérelem küldése
 
@@ -91,7 +93,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Paraméter |  | Leírás |
 | --- | --- | --- |
 | bérlő |szükséges |A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. A megengedett értékek: bérlő azonosítókat, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy `contoso.onmicrosoft.com` vagy `common` bérlői független jogkivonatokat |
-| client_id |szükséges |Az alkalmazásazonosítót az alkalmazáshoz rendelt Azure AD-vel való regisztrációja. Az Azure Portalon találja. Kattintson a **Azure Active Directory**, kattintson a **Alkalmazásregisztrációk**, válassza ki az alkalmazást, és keresse meg az alkalmazás azonosítóját az alkalmazás oldalán található. |
+| client_id |szükséges |Az Alkalmazásazonosítót az alkalmazáshoz rendelt Azure AD-vel való regisztrációja. Az Azure Portalon találja. Kattintson a **Azure Active Directory**, kattintson a **Alkalmazásregisztrációk**, válassza ki az alkalmazást, és keresse meg az alkalmazás Azonosítóját az alkalmazás oldalán található. |
 | response_type |szükséges |Tartalmaznia kell `id_token` OpenID Connect bejelentkezhet. Például a más response_types is tartalmazhat `code` vagy `token`. |
 | scope | Ajánlott | Az OpenID Connect-specifikáció igényel a hatókör `openid`, amelyet a rendszer lefordítja arra a jóváhagyási felhasználói felület a "Bejelentkezés" engedélyt. Ezzel és más OIDC hatókörök rendszer figyelmen kívül hagyja az 1.0-s verziójú végponton, de továbbra is ajánlott szabványokkal kompatibilis ügyfelek számára. |
 | egyszeri |szükséges |A kérésben, a létrejövő megtalálható az alkalmazás által generált értéket `id_token` jogcímként. Az alkalmazás ezután ellenőrizheti ezt az értéket ismétlésének támadások számának csökkentése érdekében. Az értéke általában egy véletlenszerű, egyedi karakterlánc vagy egy GUID Azonosítót, amelyet a kérés eredetének azonosítására használhatók. |
@@ -179,13 +181,13 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| post_logout_redirect_uri |Ajánlott |Az URL-cím, amely a felhasználó sikeres kijelentkezést követően a rendszer átirányítja. Ha nem tartalmazza, a felhasználó egy általános üzenet jelenik meg. |
+| post_logout_redirect_uri |Ajánlott |Az URL-cím, amely a felhasználót át kell irányítani, sikeres bejelentkezés után. Ha nem tartalmazza, a felhasználó egy általános üzenet jelenik meg. |
 
 ## <a name="single-sign-out"></a>Egyszeri kijelentkezés
 
 Amikor átirányítja a felhasználót, hogy a `end_session_endpoint`, az Azure AD törli a felhasználói munkamenetet a böngészőből. Azonban a előfordulhat, hogy továbbra is lehet bejelentkezett felhasználó egyéb alkalmazásokhoz, amelyek az Azure ad-ben használnak a hitelesítéshez. Ahhoz, hogy ezek az alkalmazások a felhasználó egyszerre jelentkezzen ki, az Azure AD egy HTTP GET kérést küld a regisztrált `LogoutUrl` , a felhasználó jelenleg be van jelentkezve az alkalmazásokat. Alkalmazások válaszolnia kell ehhez a kérelemhez, amely azonosítja a felhasználói munkamenettől és visszaadó egy `200` választ. Ha szeretne egyszeri bejelentkezés támogatására ki az alkalmazásban, meg kell valósítani például egy `LogoutUrl` az alkalmazás kódjában. Beállíthatja a `LogoutUrl` az Azure Portalról:
 
-1. Keresse meg a [az Azure Portal](https://portal.azure.com).
+1. Lépjen az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki az Active Directory kattintson a fiókra az oldal jobb felső sarkában található.
 3. A bal oldali navigációs panelen válassza a **Azure Active Directory**, majd válassza a **alkalmazásregisztrációk** , és válassza ki az alkalmazását.
 4. Kattintson a **beállítások**, majd **tulajdonságok** , és keresse meg a **kijelentkezési URL-címe** szövegmezőben. 
@@ -200,7 +202,7 @@ Hozzáférési jogkivonatok beszerzésére, módosítania a bejelentkezési kér
 // Line breaks for legibility only
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/authorize?
-client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application Id
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Application ID
 &response_type=id_token+code
 &redirect_uri=http%3A%2F%2Flocalhost%3a12345          // Your registered Redirect Uri, url encoded
 &response_mode=form_post                              // `form_post' or 'fragment'

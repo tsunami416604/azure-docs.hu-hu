@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/29/2019
-ms.openlocfilehash: e71039c84c79c27a372a378144b21f6f724d08d8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.date: 04/08/2019
+ms.openlocfilehash: bd696a003b54face4f95ae426c11840bb8805bee
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670835"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273141"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
 
@@ -156,7 +156,7 @@ Emellett az [adaptív lekérdezésfeldolgozási](/sql/relational-databases/perfo
 Az SQl Database számos [beépített biztonsági és megfelelőségi szolgáltatást](sql-database-security-overview.md) kínálva járul hozzá, hogy az Ön alkalmazása eleget tegyen a különféle biztonsági és megfelelőségi elvárásoknak.
 
 > [!IMPORTANT]
-> Az Azure SQL Database (az összes központi telepítési beállítások), egy több megfelelőségi szabvány tanúsított módon. További információkat az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/) talál, az [SQL Database megfelelőségi tanúsítványainak](https://www.microsoft.com/trustcenter/compliance/complianceofferings) aktuális listájával együtt.
+> Az Azure SQL Database (az összes központi telepítési beállítások), egy több megfelelőségi szabvány tanúsított módon. További információkért lásd: a [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
 
 ### <a name="advance-threat-protection"></a>Fejlett fenyegetésvédelem
 
@@ -186,7 +186,7 @@ Az SQL Database az [Azure Active Directory-integráció](sql-database-aad-authen
 
 ### <a name="compliance-certification"></a>Megfelelőségi tanúsítvány
 
-Az SQL Database rendszeres ellenőrzéseken vesz részt és számos megfelelőségi szabványnak tesz eleget tanúsított módon. További információkat az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/) talál, az [SQL Database megfelelőségi tanúsítványainak](https://azure.microsoft.com/support/trust-center/services/) aktuális listájával együtt.
+Az SQL Database rendszeres ellenőrzéseken vesz részt és számos megfelelőségi szabványnak tesz eleget tanúsított módon. További információkért lásd: a [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
 
 ## <a name="easy-to-use-tools"></a>Egyszerűen használható eszközök
 
@@ -255,10 +255,10 @@ Az SQL Database ügyfelei az Azure Hybrid benefittel az SQL Server társított a
 - Tekintse meg az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/sql-database/) az önálló adatbázisok és a rugalmas készletek költségeinek összehasonlításáért és árkalkulációjáért.
 - Tekintse meg ezeket a rövid útmutatókat a kezdéshez:
 
-  - [SQL Database létrehozása az Azure Portalon](sql-database-single-database-get-started.md)  
-  - [SQL Database létrehozása az Azure CLI-vel](sql-database-get-started-cli.md)
-  - [SQL Database létrehozása PowerShell használatával](sql-database-get-started-powershell.md)
+  - [SQL-adatbázis létrehozása az Azure Portalon](sql-database-single-database-get-started.md)  
+  - [SQL-adatbázis létrehozása az Azure CLI-vel](sql-database-get-started-cli.md)
+  - [Hozzon létre egy SQL database PowerShell-lel](sql-database-get-started-powershell.md)
 
 - Több Azure CLI és PowerShell-mintát talál itt:
-  - [Azure CLI-minták az SQL Database-hez](sql-database-cli-samples.md)
-  - [Azure PowerShell-minták az SQL Database-hez](sql-database-powershell-samples.md)
+  - [Az Azure CLI-minták az SQL-adatbázis](sql-database-cli-samples.md)
+  - [Az Azure PowerShell-minták az SQL-adatbázis](sql-database-powershell-samples.md)

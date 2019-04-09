@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés az Azure DevTest Labs használatával
+title: Az Azure DevTest Labs használatával gyakori felhasználási helyzetek
 description: Ez a cikk az elsődleges forgatókönyvek az Azure DevTest Labs szolgáltatásban és a két általános elérési segítségével megkezdheti a szolgáltatás használatát a szervezetben.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 219697451174811fab7880ba0d5930ba85edf8fb
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803799"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272383"
 ---
-# <a name="get-started-with-using-azure-devtest-labs"></a>Ismerkedés az Azure DevTest Labs használatával
+# <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Az Azure DevTest Labs használatával gyakori felhasználási helyzetek
 A vállalat igényeitől függően DevTest Labs konfigurálható különböző követelményeinek.  Ez a cikk ismerteti a gyakori felhasználási helyzetek. Egyes forgatókönyvek előnyeit, illetve a forgatókönyvek megvalósításához használja a DevTest Labs és erőforrások használatával indított ismerteti.  
 
 - Fejlesztői asztalok

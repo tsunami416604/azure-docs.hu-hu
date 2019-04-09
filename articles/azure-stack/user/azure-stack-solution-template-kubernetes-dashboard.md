@@ -15,16 +15,16 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 4e9df0d413b964b4a14cf9ca48db8b7956b441f9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: fa663cce10a39ef60a0efa5838b81b257fd02b46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482589"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59255937"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Hozzáférés a Kubernetes-irányítópultot az Azure Stackben 
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete* 
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete* 
 > [!Note]   
 > Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban. Az Azure Stack kapcsolat nélküli forgatókönyv jelenleg nem érhető el az előzetes verzió. 
 
@@ -47,7 +47,7 @@ Kubernetes webes irányítópultot is használhatja az alapvető felügyeleti m�
 ## <a name="overview-of-steps-to-enable-dashboard"></a>További lépések elvégzésével irányítópult áttekintése
 
 1.  A Kubernetes tanúsítványokat exportálhat a fürt fő csomópontja. 
-2.  A tanúsítványok importálása az Azure Stackhez felügyeleti gépén.
+2.  A tanúsítványok importálása az Azure Stack felügyeleti gépére.
 2.  Nyissa meg a Kubernetes webes irányítópultot. 
 
 ## <a name="export-certificate-from-the-master"></a>Exportálja a tanúsítványt a főágból 
@@ -65,21 +65,21 @@ Az irányítópult URL-CÍMÉT a fő csomópont kérheti le a fürtben.
 
 4.  Amikor a terminál csatlakozik, írja be a `kubectl` megnyitásához a Kubernetes parancssori ügyfelét.
 
-5. Futtassa a következő parancsot:
+5. Futtassa az alábbi parancsot:
 
     ```Bash   
     kubectl cluster-info 
     ``` 
-    Az URL-cím az irányítópulton található. Példa: `https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+    Az URL-cím az irányítópulton található. Példa:  `https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
 
-6.  Bontsa ki az önaláírt tanúsítvány, és a PFX-formátumba konvertálja. Futtassa a következő parancsot:
+6.  Bontsa ki az önaláírt tanúsítvány, és a PFX-formátumba konvertálja. Futtassa az alábbi parancsot:
 
     ```Bash  
     sudo su 
     openssl pkcs12 -export -out /etc/kubernetes/certs/client.pfx -inkey /etc/kubernetes/certs/client.key  -in /etc/kubernetes/certs/client.crt -certfile /etc/kubernetes/certs/ca.crt 
     ```
 
-7.  A titkos kulcsok lekéréséhez a **kube rendszer** névtér. Futtassa a következő parancsot:
+7.  A titkos kulcsok lekéréséhez a **kube rendszer** névtér. Futtassa az alábbi parancsot:
 
     ```Bash  
     kubectl -n kube-system get secrets
@@ -119,7 +119,7 @@ Az irányítópult URL-CÍMÉT a fő csomópont kérheti le a fürtben.
 2. Az URL-címet a böngésző jelezve, hogy a parancs futtatásakor pont `kubectl cluster-info`. Például: https:\//azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard: / proxy 
 3. Jelölje be az ügyféltanúsítványt.
 4. Adja meg a jogkivonatot. 
-5. A bash parancssorban, a fő csomópont újra, és engedélyeket biztosíthat a `kubernetes-dashboard`. Futtassa a következő parancsot:
+5. A bash parancssorban, a fő csomópont újra, és engedélyeket biztosíthat a `kubernetes-dashboard`. Futtassa az alábbi parancsot:
 
     ```Bash  
     kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard 
@@ -137,4 +137,4 @@ Használhatja az irányítópultot. A Kubernetes-irányítópult további inform
 
 [Kubernetes-fürt hozzáadása a Marketplace-en (az Azure Stack-operátorokról)](../azure-stack-solution-template-kubernetes-cluster-add.md)  
 
-[Kubernetes az Azure-ban](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)  
+[A Kubernetes az Azure-on](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)  

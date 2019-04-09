@@ -8,14 +8,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/06/2019
 ms.author: heidist
-ms.openlocfilehash: a59451c659effb55a2e16236b359b7601eb31cd4
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 64b07d37ce9267681ccfb5de3c7201586bd85b35
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286601"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273413"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Az Azure Search szolgáltatás api-kulcsok létrehozása és kezelése
 
@@ -53,30 +53,37 @@ Hozzáférési kulcsok a portálon vagy keresztül szerezheti be a [felügyeleti
 
 ## <a name="create-query-keys"></a>Lekérdezési kulcsok létrehozása
 
-Lekérdezési kulcsok használhatók belüli index dokumentumok a csak olvasási hozzáféréssel. Hozzáférés és az ügyfélalkalmazások műveletek korlátozása elengedhetetlen a a szolgáltatás a keresés eszközök védelmére. Mindig használjon egy rendszergazdai kulcs helyett lekérdezési kulcs bármely ügyfél alkalmazásból származó lekérdezést.
+Lekérdezési kulcsok használhatók egy dokumentumok gyűjteményt célzó műveletek az index-dokumentumokat a csak olvasási hozzáféréssel. Keresés, szűrés és javaslat lekérdezések az összes műveletet, amelyek egy lekérdezési kulcsot. Bármely csak olvasható, adatok vagy az objektum-definíciókat, például egy index-definícióhoz vagy az indexelő állapotának adja vissza a rendszer a művelethez rendszergazdai kulcsot.
+
+Hozzáférés és az ügyfélalkalmazások műveletek korlátozása elengedhetetlen a a szolgáltatás a keresés eszközök védelmére. Mindig használjon egy rendszergazdai kulcs helyett lekérdezési kulcs bármely ügyfél alkalmazásból származó lekérdezést.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Lista a [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az előfizetéshez.
 3. Válassza ki a szolgáltatást, és a áttekintése lapon kattintson a **beállítások** >**kulcsok**.
 4. Kattintson a **lekérdezési kulcsok kezelése**.
-5. A szolgáltatás már létrehozott lekérdezést, vagy hozzon létre akár 50 új lekérdezés kulcsok. Az alapértelmezett lekérdezési kulcs neve nem, de további lekérdezési kulcsok elnevezheti kezelhetőség érdekében.
+5. A szolgáltatás már létrehozott lekérdezési kulcs használata, vagy hozzon létre akár 50 új lekérdezés kulcsok. Az alapértelmezett lekérdezési kulcs neve nem, de további lekérdezési kulcsok elnevezheti kezelhetőség érdekében.
 
    ![Hozzon létre vagy a lekérdezési kulcs használata](media/search-security-overview/create-query-key.png) 
-
 
 > [!Note]
 > A lekérdezési kulcs használata megjelenítő példakód található [az Azure Search-index lekérdezése C# ](search-query-dotnet.md).
 
+<a name="regenerate-admin-keys"></a>
+
 ## <a name="regenerate-admin-keys"></a>Az adminisztrációs kulcsok újragenerálása
 
-Két adminisztrációs kulcsot minden egyes szolgáltatás jön létre, így elforgathat egy elsődleges kulcs, a másodlagos kulcs használatával a folyamatos hozzáférés érdekében.
-
-Ha az elsődleges és másodlagos kulcsok egy időben hozza létre újra mindkét kulcsot használó szolgáltatási műveletek eléréséhez szükséges alkalmazások többé nem lesz a szolgáltatáshoz való hozzáférést.
+Két adminisztrációs kulcsot minden egyes szolgáltatás jön létre, így elforgathat egy elsődleges kulcs, a másodlagos kulcs használatával gondoskodik az üzletmenet folytonosságáról.
 
 1. Az a **beállítások** >**kulcsok** lapon, a másodlagos kulcs másolásához.
 2. Az összes alkalmazást frissítse a másodlagos kulcs használatára api-kulcs beállításait.
 3. Az elsődleges kulcs újragenerálása.
 4. Frissítse az összes alkalmazást az új elsődleges kulcsot használja.
+
+Ha véletlenül generálja újra mindkét kulcsot egyszerre, a ezeknek a kulcsoknak összes ügyfél kérelem sikertelen lesz, és HTTP 403 Tiltott. Azonban nem törlik a tartalmát, és, nem záródik véglegesen. 
+
+A portálon vagy a felügyeleti réteg keresztül érhetik el a szolgáltatást még ([REST API-val](https://docs.microsoft.com/rest/api/searchmanagement/), [PowerShell](https://docs.microsoft.com/azure/search/search-manage-powershell), vagy az Azure Resource Manager). Felügyeleti funkciók operatív keresztül egy előfizetés-azonosító nem egy szolgáltatás api-kulcsát, és így továbbra is elérhető, akkor is, ha az api-kulcsok nem. 
+
+Miután létrehozta a portálon vagy a felügyeleti réteg új hívóbetűket, a tartalomra (indexek, indexelők, adatforrásokat, szinonimatérképet) kapcsolat helyreállítása után az új kulccsal rendelkezik, és adja meg ezeknek a kulcsoknak a kérelmeket.
 
 ## <a name="secure-api-keys"></a>Biztonságos api-kulcsok
 Kulcsfontosságú biztonsági biztosított korlátozza a hozzáférést a portálon vagy a Resource Manager-felületeket (a PowerShell vagy a parancssori felület). Feljegyzett, előfizetés-rendszergazda megtekintheti, és minden api-kulcsok újragenerálása. Elővigyázatosságból tekintse át a szerepkör-hozzárendelések megértéséhez, hogy ki férhet hozzá az adminisztrációs kulcsok.
@@ -91,5 +98,5 @@ Megtekintheti és kulcsok újragenerálása a következő szerepkörök tagjai: 
 ## <a name="see-also"></a>Lásd még
 
 + [Szerepköralapú hozzáférés-vezérlés az Azure Search](search-security-rbac.md)
-+ [Kezelés a PowerShell használatával](search-manage-powershell.md) 
++ [Kezelés a PowerShell-lel](search-manage-powershell.md) 
 + [Teljesítmény és optimalizálás a cikk](search-performance-optimization.md)

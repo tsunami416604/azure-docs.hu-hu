@@ -1,19 +1,18 @@
 ---
 title: Minta - naplózása nem Azure AD-rendszergazda
 description: A szabályzatdefiníció-minta eseményeket, amikor nincs hozzárendelve az SQL server az Azure Active Directory-rendszergazda.
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7a496e0c2f135279b9f342ad71ba7de8bfa309ad
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 769d860195df5d681d7426d33d70adf8851eed3a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58800402"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274212"
 ---
 # <a name="sample---audit-no-azure-active-directory-administrator"></a>Minta - naplózása nem az Azure Active Directory-rendszergazda
 
@@ -29,7 +28,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Az Azure-bA a szabályzat minta üzembe helyezése](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FSQL%2Faudit-if-no-sql-active-directory-admin%2Fazurepolicy.json)
+[![Daz Azure-bA a szabályzat minta eploy](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FSQL%2Faudit-if-no-sql-active-directory-admin%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 

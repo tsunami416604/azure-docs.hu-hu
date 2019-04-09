@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cd3286d51154c9c1dd53a2f87dd8a97999d064a
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: e5d85d1f211a4cc0307cca6d631a4bf286d3e576
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046699"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271815"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -39,7 +39,39 @@ Ezen a lapon havonta frissül, így rendszeresen ellenőrizni. Ha a keresett ele
 
 ---
 
+## <a name="april-2019"></a>Április 2019
+
+### <a name="increased-security-using-the-app-protection-based-conditional-access-policy-in-azure-ad-public-preview"></a>Nagyobb biztonság az alkalmazásvédelmi alkalmazásalapú feltételes hozzáférési szabályzat segítségével az Azure ad-ben (nyilvános előzetes verzió)
+
+**Írja be:** Új funkció  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+**A termék szolgáltatás:** Identitásbiztonság és -védelem
+
+App protection-alapú feltételes hozzáférés már elérhető használatával a **megkövetelése alkalmazásvédelmi** házirend. Az új szabályzat segít növelni a szervezet biztonsági segít elkerülése érdekében:
+
+- A felhasználók férjenek hozzá az alkalmazások Microsoft Intune-licenc nélkül.
+
+- A felhasználó nem a Microsoft Intune alkalmazásvédelmi szabályzat lekérése.
+
+- A felhasználók férjenek hozzá a konfigurált a Microsoft Intune alkalmazásvédelmi szabályzat nélküli alkalmazások.
+
+További információkért lásd: [kötelezővé tétele az alkalmazásvédelmi szabályzatot a cloud app hozzáféréshez a feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/conditional-access/app-protection-based-conditional-access).
+
+---
+
 ## <a name="march-2019"></a>2019. március
+
+### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Új támogatás az Azure ad egyszeri bejelentkezést és feltételes hozzáférés a Microsoft Edge (nyilvános előzetes verzió)
+
+**Írja be:** Új funkció  
+**Szolgáltatás kategóriája:** Feltételes hozzáférés  
+**A termék szolgáltatás:** Identitásbiztonság és -védelem
+
+Ezért továbbfejlesztettük az Azure AD-támogatás a Microsoft Edge, beleértve az új Azure AD egyszeri bejelentkezést és feltételes hozzáférés gondoskodik. Ha korábban már használta a Microsoft Intune Managed Browser, most már használhatja a Microsoft Edge helyett.
+
+Beállítását és kezelését, az eszközök és alkalmazások feltételes hozzáférés használatával kapcsolatos további információkért lásd: [megkövetelése eszközök feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés felügyelt](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/require-managed-devices) és [igényel jóváhagyott ügyfélalkalmazások felhő a feltételes hozzáférést biztosító alkalmazás-hozzáférés](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/app-based-conditional-access). -Hozzáférés kezelése a Microsoft Edge a Microsoft Intune-házirendek használatával kapcsolatos további információkért lásd: [Internet-hozzáférés kezelése a Microsoft Intune a házirend által védett böngészővel](https://docs.microsoft.com/en-us/intune/app-configuration-managed-browser).
+
+---
 
 ### <a name="identity-experience-framework-and-custom-policy-support-in-azure-active-directory-b2c-is-now-available-ga"></a>Identitás-kezelőfelületi keretrendszer és az egyéni házirend támogatása az Azure Active Directory B2C jelenleg elérhető (GA)
 

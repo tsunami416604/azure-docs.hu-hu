@@ -1,10 +1,9 @@
 ---
-title: Az Azure SQL Database felügyelt példány a T-SQL eltérései |} A Microsoft Docs
+title: Az Azure SQL Database felügyelt példány – T-SQL eltérései |} A Microsoft Docs
 description: Ez a cikk ismerteti az Azure SQL Database felügyelt példány és az SQL Server T-SQL eltérései
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
@@ -12,20 +11,17 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 208370884d89a7a2585f320c037284d6657732db
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.custom: seoapril2019
+ms.openlocfilehash: 14e33ec25dd2384607d41e4be6e5a33ebf889cbc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010600"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260493"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
-A felügyelt példány üzembe helyezési lehetőséget biztosít nagy mértékben kompatibilis a helyszíni SQL Server Database Engine. Felügyelt példány az SQL Server adatbázismotor-funkciók a legtöbb támogatottak.
-
-![Áttelepítés](./media/sql-database-managed-instance/migration.png)
-
-Különbségek is vannak a továbbra is a szintaxist és a viselkedés, mivel ez a cikk összefoglalja, és ismerteti a különbségeket. <a name="Differences"></a>
+Ez a cikk összefoglalja, és ismerteti a különbségeket a szintaxist és a viselkedés az Azure SQL Database felügyelt példánya és a helyszíni SQL Server Database Engine között. <a name="Differences"></a>
 
 - [Rendelkezésre állási](#availability) többek között a különbségek [Always-On](#always-on-availability) és [biztonsági mentések](#backup),
 - [Biztonsági](#security) többek között a különbségek [naplózási](#auditing), [tanúsítványok](#certificates), [hitelesítő adatok](#credential), [kriptográfiai szolgáltatókat](#cryptographic-providers), [Bejelentkezések és felhasználók](#logins--users), [szolgáltatás kulcs és a szolgáltatás főkulcsát](#service-key-and-service-master-key),
@@ -33,6 +29,10 @@ Különbségek is vannak a továbbra is a szintaxist és a viselkedés, mivel ez
 - [Funkciók](#functionalities) beleértve [TÖMEGES beszúrási vagy OPENROWSET](#bulk-insert--openrowset), [CLR-beli](#clr), [DBCC](#dbcc), [elosztott tranzakciók](#distributed-transactions), [ Bővített események](#extended-events), [külső kódtáraiban](#external-libraries), [Filestream- és Filetable](#filestream-and-filetable), [szemantikai teljes szöveges keresés](#full-text-semantic-search), [társított kiszolgálók](#linked-servers), [Polybase](#polybase), [replikációs](#replication), [VISSZAÁLLÍTÁSA](#restore-statement), [Service Broker](#service-broker), [ Tárolt eljárások, függvények és eseményindítók](#stored-procedures-functions-triggers),
 - [A felügyelt példányok eltérő viselkedéssel rendelkező szolgáltatások](#Changes)
 - [Ideiglenes korlátozásai és ismert problémák](#Issues)
+
+A felügyelt példány üzembe helyezési lehetőséget biztosít nagy mértékben kompatibilis a helyszíni SQL Server Database Engine. Felügyelt példány az SQL Server adatbázismotor-funkciók a legtöbb támogatottak.
+
+![Áttelepítés](./media/sql-database-managed-instance/migration.png)
 
 ## <a name="availability"></a>Rendelkezésre állás
 
@@ -473,7 +473,7 @@ A következő változók, functions és a nézetek különböző eredményeket a
 
 ### <a name="tempdb-size"></a>A TEMPDB mérete
 
-Maximális fájlméret `tempdb` nem lehet az időtúllépésnek nagyobbnak, mint 24 GB és mag, általános célú szintjén. Maximális `tempdb` üzletileg kritikus mérete korlátozott, a példány tárolási mérettel. `tempdb` mindig van felosztva 12 adatfájlokat. Nem lehet módosítani a fájlonkénti a maximális méret és új fájlokat is hozzáadhatók `tempdb`. Néhány lekérdezést előfordulhat, hogy vissza hibát, ha szükségük van, több mint 24GB / mag a `tempdb`.
+Maximális fájlméret `tempdb` nem lehet nagyobb, mint 24 GB és mag, általános célú szintjén. Maximális `tempdb` üzletileg kritikus mérete korlátozott, a példány tárolási mérettel. `tempdb` mindig van felosztva 12 adatfájlokat. Nem lehet módosítani a fájlonkénti a maximális méret és új fájlokat is hozzáadhatók `tempdb`. Néhány lekérdezést előfordulhat, hogy vissza hibát, ha szükségük van, több mint 24GB / mag a `tempdb`.
 
 ### <a name="cannot-restore-contained-database"></a>Tartalmazott adatbázis nem állítható vissza.
 
@@ -494,7 +494,7 @@ Ez az ábra bemutatja, hogy bizonyos körülmény miatt a fájlok egy adott terj
 
 Ebben a példában a meglévő adatbázisok továbbra is működni fog, és növelhető bármilyen probléma nélküli mindaddig, amíg az új fájlok nem lettek hozzáadva. Azonban új adatbázisokat nem kell létrehozni, vagy vissza, mert nem áll elég hely az új meghajtók, még akkor is, ha az összes adatbázis teljes mérete nem éri el a példány méretének korlátja. A visszaadott hiba ebben az esetben nem egyértelmű.
 
-Is [hátralévő fájlok számának meghatározása](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) rendszernézetek használatával. Ha az elérni próbált ezt a korlátot próbál [üres, és a egy, a DBCC SHRINKFILE utasítással kisebb fájlok törlése](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) vagy shitch a [fontos üzleti szint, amely nem rendelkezik ezt a korlátot](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+Is [hátralévő fájlok számának meghatározása](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) rendszernézetek használatával. Ha az elérni próbált ezt a korlátot próbál [üres, és töröljön néhány, a DBCC SHRINKFILE utasítással kisebb fájlok](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) vagy váltson [fontos üzleti szint, amely nem rendelkezik ezt a korlátot](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Adatbázis során SAS-kulcs helytelen konfiguráció visszaállítása
 

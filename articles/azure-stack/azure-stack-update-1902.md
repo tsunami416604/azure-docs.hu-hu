@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: befb5370dce5b9b7617370f0b14d471dfeb35437
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.openlocfilehash: 1cb99bba1fa5c762af57a1ad26d034974ff196a6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051682"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271832"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 frissítése
 
@@ -80,7 +80,7 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 - A 1902 build vezet be az Azure Stack rendszergazdai portál csomagok, ajánlatok, kvóták és kiegészítő csomagok létrehozására szolgáló új felhasználói felületet. További információk, többek között a képernyőképek: [csomagok, ajánlatok és kvóták létrehozása](azure-stack-create-plan.md).
 
 <!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
-- Fejlesztések a megbízhatóságot, egyszerű kapacitásbővítést téve lehetővé során a csomópont hozzáadása a skálázási egység állapot "Expanding tároló" futó állapotban történő váltáskor.
+- Fejlesztések a megbízhatóságot, egyszerű kapacitásbővítést téve lehetővé a skálázási egység állapot "Expanding tároló" "Fut" váltáskor Hozzáadás csomópont művelet során.
 
 <!--
 1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
@@ -104,9 +104,6 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
     - Ellenőrizze a válságkezelési helyreállítási konzol szolgáltatás (ERCS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint
     - Ellenőrizze a XRP service fabric-csomópont állapotát, és javítsa ki őket igény szerint
     - Ellenőrizze az Azure-konzisztens tároló (ACS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint
-
-<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
-- Fejlesztések a megbízhatóságot, egyszerű kapacitásbővítést téve lehetővé során a csomópont hozzáadása a skálázási egység állapot "Expanding tároló" futó állapotban történő váltáskor.    
 
 <!-- 
 1426690 [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log   Diagnostics
@@ -259,6 +256,10 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>Rendszernapló 
+- A syslog-konfiguráció nincs megőrizve folyamata alatt tartózkodnak egy frissítést, a syslog-ügyfél elveszíti a annak konfigurációját, és leállítja a továbbított syslog-üzeneteket eredményez. A probléma az Azure Stack minden verziójára vonatkozik, a syslog-ügyfél (1809) a nyilvánosan elérhető verzió óta.
+A megoldás, hogy a syslog-ügyfél újrakonfigurálása az Azure Stack-frissítés telepítését követően.
 
 ## <a name="download-the-update"></a>A frissítés letöltése
 

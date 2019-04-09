@@ -1,7 +1,6 @@
 ---
 title: A lekérdezési nyelv ismertetése
 description: Ismerteti az elérhető Kusto-operátorok és funkciók lehet majd használni az Azure Erőforrás-grafikon.
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/11/2018
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 618445c5b792317d4de4b668e7ea1a186707007c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 08e4f09665a3501073f55b7f5b82bf51cf508ea9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317917"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276677"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure-erőforrás Graph lekérdezési nyelv ismertetése
 
@@ -28,15 +27,15 @@ A következő erőforrás Graph támogatott táblázatos szereplők listáját:
 
 - [count](/azure/kusto/query/countoperator)
 - [distinct](/azure/kusto/query/distinctoperator)
-- [extend](/azure/kusto/query/extendoperator)
-- [limit](/azure/kusto/query/limitoperator)
+- [Kiterjesztése](/azure/kusto/query/extendoperator)
+- [Korlát](/azure/kusto/query/limitoperator)
 - [rendezési](/azure/kusto/query/orderoperator)
-- [project](/azure/kusto/query/projectoperator)
+- [Projekt](/azure/kusto/query/projectoperator)
 - [project-away](/azure/kusto/query/projectawayoperator)
 - [Minta](/azure/kusto/query/sampleoperator)
 - [sample-distinct](/azure/kusto/query/sampledistinctoperator)
-- [Rendezés](/azure/kusto/query/sortoperator)
-- [summarize](/azure/kusto/query/summarizeoperator)
+- [rendezés szempontja](/azure/kusto/query/sortoperator)
+- [Összegzés](/azure/kusto/query/summarizeoperator)
 - [hajtsa végre a megfelelő](/azure/kusto/query/takeoperator)
 - [felső](/azure/kusto/query/topoperator)
 - [top-nested](/azure/kusto/query/topnestedoperator)

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2018
+ms.date: 04/08/2019
 ms.author: diberry
-ms.openlocfilehash: dd60897d19ef4de7369b2b127c88e778363a387f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852270"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273464"
 ---
 # <a name="quickstart-change-model-using-c"></a>Gyors útmutató: Módosítsa a modell használatávalC#
 
@@ -37,19 +37,19 @@ ms.locfileid: "57852270"
 
 ## <a name="create-quickstart-code"></a>A rövid útmutató kódjának létrehozása 
 
-A Visual Studióban hozzon létre egy új **Windows klasszikus asztal konzol** alkalmazás a .NET-keretrendszer használatával. 
+A Visual Studióban hozzon létre egy új **Windows klasszikus asztal konzol** alkalmazás a .NET-keretrendszer használatával. Adja a projektnek `ConsoleApp1`.
 
 ![Visual Studio-projekt típusa](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 
 ### <a name="add-the-systemweb-dependency"></a>A System.Web függőség hozzáadása
 
-A Visual Studio-projektnek szüksége van a következőre: **System.Web**. A Solution Explorer (Megoldáskezelő) ablakban kattintson a jobb gombbal a **References** (Hivatkozások) elemre, és válassza az **Add Reference** (Hivatkozás hozzáadása) lehetőséget.
+A Visual Studio-projektnek szüksége van a következőre: **System.Web**. A megoldáskezelőben kattintson a jobb gombbal a **hivatkozások** válassza **hivatkozás hozzáadása** szerelvények szakaszából.
 
 ![A System.Web hivatkozás hozzáadása](./media/luis-quickstart-cs-add-utterance/system.web.png)
 
 ### <a name="add-other-dependencies"></a>Más függőségek hozzáadása
 
-A Visual Studio-projektnek szüksége van a következőkre: **JsonFormatterPlus** és **CommandLineParser**. A Solution Explorer (Megoldáskezelő) ablakban kattintson a jobb gombbal a **References** (Hivatkozások) elemre, és válassza a **Manage NuGet Packages...** (NuGet-csomagok kezelése...) lehetőséget. Keresse meg és adja hozzá a két csomagot. 
+A Visual Studio-projektnek szüksége van a következőkre: **JsonFormatterPlus** és **CommandLineParser**. A Solution Explorer (Megoldáskezelő) ablakban kattintson a jobb gombbal a **References** (Hivatkozások) elemre, és válassza a **Manage NuGet Packages...** (NuGet-csomagok kezelése...) lehetőséget. Keresse meg, és adja hozzá az egyes két csomagokat. 
 
 ![Külső függőségek hozzáadása](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
 
@@ -64,7 +64,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp3
+namespace ConsoleApp1
 {
     class Program
     {
@@ -75,7 +75,7 @@ namespace ConsoleApp3
 }
 ```
 
-Adja hozzá a függőségeket.
+Frissítse a függőségeket, hogy a, amelyek:
 
    [!code-csharp[Add the dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=1-11 "Add the dependencies")]
 
@@ -115,7 +115,7 @@ Adja hozzá a fő kódot a parancssori argumentumok kezeléséhez. Adja hozzá a
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>Az utterances.json másolása a kimeneti könyvtárba
 
-A Solution Explorer (Megoldáskezelő) ablakban kattintson a jobb gombbal az `utterances.json` fájlra, és válassza a **Properties** (Tulajdonságok) lehetőséget. A tulajdonságok ablakban jelölje meg a `Content` **Build Action** (Létrehozási művelet) elemét és a `Copy Always` **Copy to Output Directory** (Másolás a kimeneti könyvtárba) elemét.  
+A Megoldáskezelőben, adja hozzá a `utterances.json` kattintson a jobb gombbal a projekt nevére a Megoldáskezelőben, majd válassza **Hozzáadás**, majd válassza **meglévő elem**. Válassza ki a `utterances.json` fájlt. A fájl hozzáadása a projekthez. Ezután azt hozzá kell adnia a kimeneti irányra. Kattintson a jobb gombbal a `utterances.json` válassza **tulajdonságok**. A tulajdonságok ablakban jelölje meg a `Content` **Build Action** (Létrehozási művelet) elemét és a `Copy Always` **Copy to Output Directory** (Másolás a kimeneti könyvtárba) elemét.  
 
 ![A JSON-fájl megjelölése tartalomként](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 
@@ -128,7 +128,7 @@ Buildelje a kódot a Visual Studióban.
 A projekt /bin/Debug könyvtárában futtassa az alkalmazást egy parancssorból. 
 
 ```console
-ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
+ConsoleApp1.exe --add utterances.json --train --status
 ```
 
 A parancssor megjeleníti a kimondott szövegek hozzáadása API meghívásának eredményét. 
@@ -140,4 +140,4 @@ Miután végzett a rövid útmutatóval, távolítsa el a rövid útmutatóban l
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
-> [LUIS-alkalmazások felépítése programozott módon](luis-tutorial-node-import-utterances-csv.md) 
+> [Programozott módon a LUIS-alkalmazások felépítése](luis-tutorial-node-import-utterances-csv.md) 

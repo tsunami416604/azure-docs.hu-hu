@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: CodyBorn
 ms.author: coborn
-ms.date: 8/2/2018
+ms.date: 04/08/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 5a693fef2f77471f799bec46f149ff19d6edca80
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905919"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274790"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>A koncepció jogosultság consortium Ethereum
 
@@ -279,7 +279,7 @@ Hálózatazonosító|A hálózati Azonosítót a consortium Ethereum hálózati 
 Rendszergazdai Ethereum-cím|Ethereum fiók címét, amely részt vesz a PoA cégirányítási szolgál.  Az Ethereum-cím generálásához MetaMask használatát javasoljuk.|0 x 42 alfanumerikus karakterek|NA
 Speciális beállítások|Speciális beállítások Ethereum-beállítások|Engedélyezése vagy letiltása|Letiltás
 Nyilvános IP-cím (Speciális beállítások = engedélyezés)|A hálózati virtuális hálózati átjáró mögött helyezi üzembe, és eltávolítja a társviszony-létesítési hozzáférés. Ha ezt a lehetőséget választja, minden tag kell használnia a kapcsolatot a virtuális hálózati átjáró kompatibilis.|Nyilvános IP-Címek privát virtuális hálózaton|Nyilvános IP-cím
-Gáz korlát letiltása (Speciális beállítások = engedélyezés)|A hálózati kezdő blokk gáz korlátot|Numerikus|50,000,00
+Gáz korlát letiltása (Speciális beállítások = engedélyezés)|A hálózati kezdő blokk gáz korlátot|Numerikus|50000000
 Tiltási Reseal időtartam (másodperc)|A gyakoriságot, amellyel üres blokk jön létre, amikor nem léteznek tranzakciók a hálózaton. Nagyobb gyakorisággal lesz gyorsabb véglegességére, de magasabb tárolási költségek.|Numerikus|15
 Tranzakció engedély szerződés (Speciális beállítások = engedélyezés)|A tranzakció csatornákban szerződés ByteCode. Korlátozza az intelligens szerződés üzembe helyezésének és végrehajtásának engedélyezett listájához, Ethereum-fiókok.|Szerződés bytecode|NA
 

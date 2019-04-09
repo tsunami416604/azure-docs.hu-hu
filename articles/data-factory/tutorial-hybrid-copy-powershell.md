@@ -3,7 +3,7 @@ title: Adatok másolása az SQL Server-adatbázisból Blob Storage-tárolóba az
 description: Megismerheti az adatok a helyszíni adattárolókból az Azure-beli felhőbe, az Azure Data Factory saját üzemeltetésű Integration Runtime átjáróval történő másolásának folyamatát.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: nabhishek
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: jingwang
-ms.openlocfilehash: 8131806aa741c3f2c347599f857f45ade392d90e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: abnarain
+ms.openlocfilehash: adec7b90d5c38ed85f4b6f9ada8a530eff3846b9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451637"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272512"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 Ebben az oktatóanyagban az Azure PowerShell használatával egy Data Factory-folyamatot hozunk létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között. 
@@ -365,7 +365,7 @@ Ebben a lépésben a helyszíni SQL Server-példányt társítja az adat-előál
     > [!IMPORTANT]
     > Válassza ki az SQL Serverhez való kapcsolódáshoz használt hitelesítési módszernek megfelelő szakaszt.
 
-    **SQL-hitelesítés használata (sa):**
+    **SQL-hitelesítéssel (sa):**
 
     ```json
     {

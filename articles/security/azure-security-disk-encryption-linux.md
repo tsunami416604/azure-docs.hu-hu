@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 33011a419c8c966fc59b769106aaff428b2a0709
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 624ad22b1c63498e8ce936472cfc884910bc6f84
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057676"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276949"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Linux rendszerű IaaS virtuális gépekhez az Azure Disk Encryption engedélyezése 
 
@@ -226,8 +226,7 @@ Használja a [Set-AzVmssDiskEncryptionExtension](/powershell/module/az.compute/s
 Titkosítása és visszafejtése Linux virtuálisgép-méretezési csoportok, az Azure Resource Manager-sablonokkal és az alábbi utasításokat:
 
 - [Linux rendszerű virtuális gép méretezési titkosításának engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
-- [Virtuálisgép-méretezési készlet Linuxos virtuális gépek a jumpbox üzembe, és engedélyezheti a titkosítást a Linux rendszerű Virtuálisgép-méretezési csoportot](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
-- [Linux Virtuálisgép-méretezési készlet titkosításának letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+- [Linux rendszerű virtuális gép méretezési titkosításának letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
      1. Kattintson a **Deploy to Azure** (Üzembe helyezés az Azure-ban) elemre.
      2. Töltse ki a kötelező mezőket, majd fogadja el a feltételeket és kikötéseket.

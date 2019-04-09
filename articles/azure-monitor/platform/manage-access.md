@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: fd47b5de2226d88b6295cb28713db2a5d251e768
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577246"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276411"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és az Azure monitorban munkaterületek kezelése
 Az Azure Monitor-tárolók adatok jelentkezzen be a Log Analytics-munkaterület, amely lényegében, ha egy tároló, amely adatot és konfigurációs információt tartalmazza. Az adatok hozzáférésének kezelése, munkaterületekhez kapcsolódó különféle adminisztratív feladatokat végezhet. Ön vagy a szervezet más tagjai több munkaterületet is használhatnak az informatikai infrastruktúra egészéből vagy egyes részeiből begyűjtött különböző adatkészletek kezeléséhez.
@@ -102,7 +102,6 @@ A _hozzáférési mód_ vonatkozik, hogy egy felhasználó hozzáfér a Log Anal
 > - Service Fabric
 > - Application Insights
 > - Containers
-> - HTTP-adatgyűjtő API által létrehozott egyéni naplók
 >
 > Ha a naplók rendelt megfelelően az erőforrás egy lekérdezés futtatásával és a rekordok vizsgálatával érdekli tesztelheti. Ha a helyes erőforrás-azonosító szerepel a [_ResourceId](log-standard-properties.md#_resourceid) tulajdonság, majd az adatok érhető el az erőforrás-központú lekérdezéseket.
 

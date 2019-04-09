@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 04/08/2018
 ms.author: diberry
-ms.openlocfilehash: 6f775ffaf53019cc50bc38c294b4d5f40c8eca90
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d6173ee25f28aa884513d126c06a8a7c722098d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076751"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273838"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Beszédszolgáltatás integráció a Language Understanding alkalmazással
 A [Speech Service-szel](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) egyetlen kérésben kérhet le hanganyagokat, és adathat vissza LUIS-előrejelzési JSON-objektumokat. A cikkben egy C#-projektet fog letölteni és felhasználni a Visual Studióban arra, hogy mikrofonnal rögzítsen egy kimondott szöveget, és LUIS-előrejelzési adatokhoz jusson. A projekt a Speech [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/)-csomagot használja, amelyet referenciaként már tartalmaz. 
@@ -24,7 +24,7 @@ A [Speech Service-szel](https://docs.microsoft.com/azure/cognitive-services/Spee
 Szüksége lesz egy ingyenes [LUIS][LUIS]-webhelyfiókra az alkalmazás importálásához.
 
 ## <a name="create-luis-endpoint-key"></a>LUIS-végpont kulcsának létrehozása
-Az Azure Portalon [hozzon létre](luis-how-to-azure-subscription.md) egy **Language Understanding-** (LUIS-) kulcsot. 
+Az Azure Portalon [létrehozása](luis-how-to-azure-subscription.md) egy **Cognitive Service** a LUIS-alkalmazás (LUIS) kulcsa.  
 
 ## <a name="import-human-resources-luis-app"></a>A Human Resources LUIS-alkalmazás importálása
 A leképezések és a kimondott szöveg ebben a cikkben vannak az emberi erőforrások LUIS érhető el az alkalmazásból a [Azure-minták](https://github.com/Azure-Samples/cognitive-services-language-understanding) GitHub-adattárban. Töltse le a [HumanResources.json](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources.json) fájlt, mentse `.json` kiterjesztéssel, és [importálja](luis-how-to-start-new-app.md#import-new-app) a LUIS-ba. 
@@ -66,7 +66,7 @@ Ebben a cikkben a számítógép audioeszközét használjuk. Ez lehet egy mikro
 
 A projekt már tartalmazza referenciaként a Speech SDK-t. 
 
-[![Képernyőfelvétel a Visual Studio 2017 megjelenítésének Microsoft.CognitiveServices.Speech NuGet-csomag](./media/luis-tutorial-speech-to-intent/nuget-package.png "képernyőfelvétel a Visual Studio 2017 megjelenítésének Microsoft.CognitiveServices.Speech NuGet-csomag")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![Sa Megjelenítés Microsoft.CognitiveServices.Speech NuGet-csomagot a Visual Studio 2017 creenshot](./media/luis-tutorial-speech-to-intent/nuget-package.png "képernyőfelvétel a Visual Studio 2017 megjelenítésének Microsoft.CognitiveServices.Speech NuGet-csomag")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>A C#-kód módosítása
 Nyissa meg a `Program.cs` fájlt, és módosítsa a következő változókat:
@@ -74,7 +74,7 @@ Nyissa meg a `Program.cs` fájlt, és módosítsa a következő változókat:
 |Változó neve|Cél|
 |--|--|
 |LUIS_assigned_endpoint_key|A végponti URL-hez hozzárendelt előfizetői azonosító értékét adja meg a Közzététel oldalról|
-|LUIS_endpoint_key_region|A végponti URL-cím első altartományát adja meg, például `westus`.|
+|LUIS_endpoint_key_region|A végpont URL-cím első együtt, például felel meg `westus`|
 |LUIS_app_ID|A végponti URL-cím útvonalát adja meg az **apps/** előtag után|
 
 A `Program.cs` fájlban az emberierőforrás- (HR-) szándékok már le vannak képezve.
@@ -98,6 +98,6 @@ Ne felejtse el, törölje a könyvtárat, ha elkészült, azzal a mintakóddal.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A LUIS integrálása robotokkal](luis-csharp-tutorial-build-bot-framework-sample.md)
+> [A ROBOT a LUIS integrálása](luis-csharp-tutorial-build-bot-framework-sample.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

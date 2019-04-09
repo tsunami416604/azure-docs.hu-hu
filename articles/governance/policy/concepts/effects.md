@@ -1,7 +1,6 @@
 ---
 title: Megismerheti, hogyan működnek a hatások
 description: Azure szabályzat-definíció rendelkezik, amelyek meghatározzák, hogyan megfelelőségét, és jelentett különböző hatásokkal.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/29/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: ae9c9c5ed8b951760ddac3034c617a13ebe35006
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 67a195932ad1afc3c93a94dfcbda8ab8a47760b2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802643"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256855"
 ---
 # <a name="understand-azure-policy-effects"></a>Az Azure Policy hatások ismertetése
 
@@ -183,7 +182,7 @@ A **részletek** a altulajdonságokat, amelyek meghatározzák a kapcsolódó er
   - Ha **details.type** egy erőforrástípus alá a **Ha** feltétel erőforrás, a szabályzat lekérdezi az ezen erőforrások **típus** a kiértékelt erőforrás hatókörén belül. Egyébként, házirend, és az értékelés erőforrásnak ugyanabban az erőforráscsoportban lévő lekérdezéseket.
 - **Név** (nem kötelező)
   - A megfelelő erőforrás pontos nevét adja meg, és a egy adott erőforrás helyett a megadott típusú összes erőforrást beolvasni a szabályzat okoz.
-  - Ha a feltétel értékei **if.field.type** és **then.details.type** egyeznek, majd **neve** válik _szükséges_ és kelllennie`[field('name')]`. Azonban egy [naplózási](#audit) érvénybe kell tekinteni, helyette.
+  - Ha a feltétel értékei **if.field.type** és **then.details.type** egyeznek, majd **neve** válik _szükséges_ és kelllennie.`[field('name')]`. Azonban egy [naplózási](#audit) érvénybe kell tekinteni, helyette.
 - **ResourceGroupName** (nem kötelező)
   - Lehetővé teszi, hogy a rendszer a kapcsolódó erőforrás egy másik erőforráscsoportban található származnak.
   - Nem alkalmazható, ha **típus** egy erőforrás, amely alatt a **Ha** erőforrás feltételt.
@@ -254,7 +253,7 @@ A **részletek** a DeployIfNotExists hatást tulajdonsága egyezik a kapcsolód�
   - Úgy, hogy lekérni egy erőforrást alatt elindítja a **Ha** feltétel erőforrás, akkor az azonos erőforráscsoportjában lévő lekérdezéseket a **Ha** erőforrás feltételt.
 - **Név** (nem kötelező)
   - A megfelelő erőforrás pontos nevét adja meg, és a egy adott erőforrás helyett a megadott típusú összes erőforrást beolvasni a szabályzat okoz.
-  - Ha a feltétel értékei **if.field.type** és **then.details.type** egyeznek, majd **neve** válik _szükséges_ és kelllennie`[field('name')]`.
+  - Ha a feltétel értékei **if.field.type** és **then.details.type** egyeznek, majd **neve** válik _szükséges_ és kelllennie.`[field('name')]`.
 - **ResourceGroupName** (nem kötelező)
   - Lehetővé teszi, hogy a rendszer a kapcsolódó erőforrás egy másik erőforráscsoportban található származnak.
   - Nem alkalmazható, ha **típus** egy erőforrás, amely alatt a **Ha** erőforrás feltételt.

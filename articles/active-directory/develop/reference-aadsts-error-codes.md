@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ff37184cd8789c5408d02a427080db86de00b7d
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 69440fb99439231cdc046ef48bddfa852c17924c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295453"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271798"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Hitelesítés és hitelesítési hibakódok
 
@@ -58,7 +58,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS50007 | PartnerEncryptionCertificateMissing – a partner titkosítási tanúsítvány nem található ehhez az alkalmazáshoz. [Hozzon létre egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a Microsofttal a probléma kijavítva. |
 | AADSTS50008 | InvalidSamlToken - SAML-előfeltétel nem található vagy a jogkivonat rosszul van konfigurálva. Forduljon az összevonási szolgáltatójához. |
 | AADSTS50010 | AudienceUriValidationFailed - célközönség URI-t az alkalmazás érvényesítése sikertelen volt, mert nincs jogkivonat célközönség lettek konfigurálva. |
-| AADSTS50011 | InvalidReplyTo – a válaszcím hiányzik, hibásan van konfigurálva, vagy nem felel meg az alkalmazáshoz konfigurált válaszcímekkel. Tekintse meg a következő helyen ismertetett megoldást: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application). Ha problémák továbbra is megjelenik, forduljon az alkalmazás tulajdonosa vagy alkalmazást rendszergazdaként. |
+| AADSTS50011 | InvalidReplyTo – a válaszcím hiányzik, hibásan van konfigurálva, vagy nem felel meg az alkalmazáshoz konfigurált válaszcímekkel.  A felbontást, győződjön meg arról a hiányzó címet ad hozzá az Azure Active Directory-alkalmazás, illetve egy engedélyekkel rendelkező felhasználó az Active Directory-ban az alkalmazás kezelheti ezt a műveletet.|
 | AADSTS50012 | AuthenticationFailed - hitelesítés meghiúsult a következő okok valamelyike:<ul><li>Az aláíró tanúsítvány tulajdonosának neve nem engedélyezett.</li><li>Egy megfelelő megbízható hatóság házirend nem található a jogosult tulajdonos neve</li><li>A tanúsítványlánc nem érvényes</li><li>Az aláíró tanúsítvány nem érvényes</li><li>A házirend nincs konfigurálva, a bérlő:</li><li>Az aláíró tanúsítvány ujjlenyomata nem engedélyezett.</li><li>Ügyféltény érvénytelen aláírást tartalmaz</li></ul> |
 | AADSTS50013 | InvalidAssertion – a különböző okok miatt érvénytelen helyességi feltétel – a jogkivonat kibocsátója nem felel meg az api-verzió a érvényes időn belül, tartomány - lejárt – hibás - frissítési jogkivonat a a helyességi feltétel nem egy elsődleges frissítési jogkivonatot. |
 | AADSTS50014 | GuestUserInPendingState – a felhasználó érvényesítési függő állapotban van. A Vendég felhasználói fiókhoz nem teljes mértékben jön még. |
@@ -153,7 +153,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS70007 | UnsupportedResponseMode – az alkalmazás a nem támogatott értéket adott vissza `response_mode` jogkivonat kérése során.  |
 | AADSTS70008 | ExpiredOrRevokedGrant – a frissítési jogkivonat inaktivitás miatt lejárt. A jogkivonat XXX lett kiadva, és a egy bizonyos ideig inaktív volt. |
 | AADSTS70011 | Az alkalmazás által kért hatókörrel InvalidScope – érvénytelen. |
-| AADSTS70012 | MsaServerError – A kiszolgáló hitelesítése során hiba történt az MSA (felhasználói) felhasználó. Próbálja meg újra. Ha továbbra sem sikerül, [hozzon létre egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError – A kiszolgáló hitelesítése során hiba történt az MSA (felhasználói) felhasználó. Próbálja meg újra. Ha a hiba továbbra is fennáll, [küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending – az OAuth 2.0 eszköz folyamat hiba. Engedélyezési függőben. Az eszköz ismét megkísérli a kérelem lekérdezési. |
 | AADSTS70018 | BadVerificationCode – a felhasználó beírja a helytelen felhasználói kódban az eszköz kódfolyamat miatt érvénytelen ellenőrző kódot. Engedélyezési nem engedélyezett. |
 | AADSTS70019 | CodeExpired - ellenőrző kód lejárt. Ismételje meg a bejelentkezéskor a felhasználó rendelkezik. |

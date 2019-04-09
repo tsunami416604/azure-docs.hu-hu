@@ -16,16 +16,16 @@ ms.date: 03/11/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 3565bf4c4a19bcf1b136b4cbb781006658865a1c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 58c16b8a102ea27499fc464c209d4ca1c0d4db33
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767209"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264709"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>A hozzáférés-vezérléssel Azure Stack Role-Based erőforrásaihoz való hozzáférés kezelése
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Az Azure Stack is támogatja a szerepköralapú hozzáférés-vezérlést (RBAC), ugyanez [kezelési biztonsági modell](https://docs.microsoft.com/azure/role-based-access-control/overview) , amely a Microsoft Azure. Az RBAC használatával kezelheti a felhasználó, csoport vagy alkalmazás-hozzáférés az előfizetések, erőforrások és szolgáltatások.
 
@@ -40,28 +40,6 @@ Az Azure Stack rendelkezik, amelyek minden erőforrástípus alkalmazhat három 
 * **Tulajdonos** mindent felügyelhetnek, beleértve az erőforrásokhoz való hozzáférést.
 * **Közreműködői** erőforrásokhoz való hozzáférés kivételével mindent felügyelhetnek.
 * **Olvasó** , aki mindent megtekinthet, de nem végezhet módosításokat.
-
-### <a name="resource-hierarchy-and-inheritance"></a>Erőforrás-hierarchiát és öröklődés
-
-Az Azure Stack a következő erőforrás-hierarchia rendelkezik:
-
-* Az egyes előfizetésekhez tartozik egy címtárban.
-* Minden erőforráscsoport egy előfizetéshez tartozik.
-* Minden erőforrás egy erőforráscsoportba tartozik.
-
-A gyermek hatókörök örökölt, amely egy szülő hatókörben számára biztosítson hozzáférést. Példa:
-
-* Az Olvasó szerepkör hozzárendelése az Azure AD-csoportok az előfizetések szintjén. A csoport tagjai tekinthetik minden erőforráscsoport és az erőforrás az előfizetést.
-* A közreműködő szerepkört rendel egy alkalmazást, az erőforrás-csoport hatókörben. Az alkalmazás az adott erőforráscsoportba tartozó, de nem egyéb erőforráscsoportok az előfizetés összes típusú erőforrások is kezelhetők.
-
-### <a name="assigning-roles"></a>Szerepkörök hozzárendelése
-
-Egynél több szerepkörhöz hozzárendelni egy felhasználóhoz, és minden egyes szerepkör társítható egy másik hatókört. Példa:
-
-* TestUser-A az Olvasó szerepkör hozzárendelése – 1. előfizetéshez.
-* TestUser-A a tulajdonosi szerepkör hozzárendelése TestVM – 1.
-
-Az Azure [szerepkör-hozzárendelések](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) cikk megtekintése, hozzárendelése és törlése a szerepkörök részletes információkat tartalmaz.
 
 ### <a name="resource-hierarchy-and-inheritance"></a>Erőforrás-hierarchiát és öröklődés
 
@@ -104,4 +82,4 @@ A következő lépések bemutatják, hogyan engedélyek konfigurálása a felhas
 
 ## <a name="next-steps"></a>További lépések
 
-[Egyszerű szolgáltatások létrehozása](azure-stack-create-service-principals.md)
+[Szolgáltatásnevek létrehozása](azure-stack-create-service-principals.md)

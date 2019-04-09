@@ -1,7 +1,7 @@
 ---
-title: Hozzon létre, betöltését és használata a PowerShell és a REST API – Azure Search-index lekérdezése
-description: Hozzon létre, betöltését és kérdezheti le az indexeket, PowerShell, Invoke-RestMethod és az Azure Search REST API használatával.
-ms.date: 03/15/2019
+title: 'Gyors útmutató: Hozzon létre, betöltését és használata a PowerShell és a REST API – Azure Search-index lekérdezése'
+description: Hozzon létre, betöltését és a PowerShell-lel index lekérdezése az Azure Search REST API és az Invoke-RestMethod.
+ms.date: 04/08/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9e1b6fc0dc4e6a6c2c191960fa061c810e3a2e79
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2deba4bf941d561fcef7c2dff804646732e7ce24
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372114"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268024"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Gyors útmutató: A PowerShell és a REST API használatával az Azure Search-index létrehozása
 > [!div class="op_single_selector"]
@@ -29,19 +29,23 @@ Ez a cikk végigvezeti a folyamat létrehozása, betöltése és lekérdezése a
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja. Egyéb előfeltételek foglalja bele a következő elemeket.
+Ez a rövid útmutató a következő szolgáltatásokat és eszközöket használatosak. 
+
+[Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja. 
 
 [A PowerShell 5.1-es vagy újabb](https://github.com/PowerShell/PowerShell)révén [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) szekvenciális és interaktív lépéseit.
 
-A végpont URL-cím és a felügyeleti api-kulcsot a keresési szolgáltatás. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
 
-1. Az Azure Portalon, a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. Végpontok például a https hasonló lehet:\//my-service-name.search.windows.net.
+A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+
+1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/), és a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
 2. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
 
-   ![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
+![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
 
-   Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
+Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 ## <a name="connect-to-azure-search"></a>Kapcsolódás az Azure Search
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: a7e2f3c95819c6ab6d2e63e5c7a2f62649ebd15c
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 0cb4df099faad8ca482fd15cf0bb50504c1528ab
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056095"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276388"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Felhasználói profil megosztásának beállítása a gazdagépcsoporton
 
@@ -66,3 +66,6 @@ Konfigurálja a virtuális gépek a FSLogix szoftverrel, tegye a következőt az
 |---------------------|--------------------|-----------------------------------|
 | Engedélyezve             | DWORD              | 1                                 |
 | VHDLocations        | Karakterláncsoros érték | "A fájlmegosztás hálózati elérési út"     |
+
+>[!IMPORTANT]
+>Védelme érdekében az Azure-ban, a Windows virtuális asztali környezetben ajánlott ne nyissa meg a 3389-es porton bejövő a virtuális gépeken. Windows virtuális asztal nyílt bejövő port felhasználók számára hozzáférést a gazdagép-készlet virtuális gépek a 3389-es nem igényel. Ha a 3389-es port hibaelhárítás céljából kell megnyitni, azt javasoljuk, használja [just-in-time VM access](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time).

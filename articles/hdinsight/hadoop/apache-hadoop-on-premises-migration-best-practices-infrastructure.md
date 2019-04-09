@@ -3,24 +3,22 @@ title: A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - inf
 description: Ismerje meg az infrastruktúra áttelepítését a helyszíni Hadoop-fürtöket az Azure HDInsight ajánlott eljárásai.
 services: hdinsight
 author: hrasheed-msft
-ms.reviewer: ashishth
+ms.reviewer: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6c57b62d63be55abc51b85327957afffa5dd3a42
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 4fe47feff6ac3a58ba4db8c700a3e34b2cdc0df9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360197"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274689"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - infrastruktúra ajánlott eljárások
 
 Ez a cikk az Azure HDInsight-fürtök-infrastruktúra kezelésére alkalmas javaslatok biztosít. Ez azt egy olyan sorozat részét, amely ajánlott eljárásokat, amelyek segítik az Azure HDInsight áttelepítése a helyszíni Apache Hadoop-rendszerekhez biztosít.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="plan-for-hdinsight-cluster-capacity"></a>HDInsight-fürt kapacitásának tervezése
 
@@ -47,11 +45,11 @@ Alkalmazások és összetevők, amelyek nem voltak elérhetők a helyi fürtökb
 
 |**Alkalmazás**|**Integráció**
 |---|---|
-|Légmozgás|IaaS-vagy HDInsight Élcsomóponthoz
+|Légmozgás|IaaS vagy HDInsight élcsomóponthoz
 |Alluxio|IaaS  
 |Arcadia|IaaS 
 |Atlas|Egyik sem (csak HDP)
-|Datameer|HDInsight Edge node
+|Datameer|HDInsight élcsomóponthoz
 |A Datastax (Cassandra)|IaaS (helyett az Azure cosmos DB)
 |DataTorrent|IaaS 
 |Drill|IaaS 
@@ -60,15 +58,15 @@ Alkalmazások és összetevők, amelyek nem voltak elérhetők a helyi fürtökb
 |Mapador|IaaS 
 |Mongo|IaaS (helyett az Azure cosmos DB)
 |NiFi|IaaS 
-|Presto|IaaS-vagy HDInsight Élcsomóponthoz
+|Presto|IaaS vagy HDInsight élcsomóponthoz
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
 |SAS|IaaS 
 |Vertica|IaaS (SQLDW helyett az Azure-ban)
-|A tableau|IaaS 
-|Vízvonallal|HDInsight Edge node
-|StreamSets|HDInsight Edge 
+|Tableau|IaaS 
+|Vízvonallal|HDInsight élcsomóponthoz
+|StreamSets|HDInsight edge 
 |Palantir|IaaS 
 |Sailpoint|Iaas 
 
@@ -105,7 +103,7 @@ További információkért tekintse át a következő cikkeket:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>Testreszabása a Bootstrap használatával HDInsight-konfigurációkat
 
-Például a konfigurációs fájlokban configs vált `core-site.xml`, `hive-site.xml` és `oozie-env.xml` Bootstrap használatával módosíthatók. A következő parancsfájlt a következő példa a Powershell használatával:
+Például a konfigurációs fájlokban configs vált `core-site.xml`, `hive-site.xml` és `oozie-env.xml` Bootstrap használatával módosíthatók. A következő parancsfájl egy példa a Powershell használatával [AZ modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) parancsmag [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster):
 
 ```powershell
 # hive-site.xml configuration
@@ -130,7 +128,7 @@ New—AzHDInsightCluster `
     —Config $config
 ```
 
-További információkért tekintse meg a cikket [Bootstrap használatával testre szabhatja a HDInsight-fürtök](../hdinsight-hadoop-customize-cluster-bootstrap.md).
+További információkért tekintse meg a cikket [Bootstrap használatával testre szabhatja a HDInsight-fürtök](../hdinsight-hadoop-customize-cluster-bootstrap.md).  Lásd még a [kezelése a HDInsight-fürtök az Apache Ambari REST API-val](../hdinsight-hadoop-manage-ambari-rest-api.md).
 
 ## <a name="access-client-tools-from-hdinsight-hadoop-cluster-edge-nodes"></a>Hozzáférés ügyféleszközök a HDInsight Hadoop-fürt élcsomópontok
 
@@ -148,37 +146,10 @@ További információkért tekintse meg a cikket [üres élcsomópontok használ
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Fürtök felfelé és lefelé méretezési funkciójával
 
-HDInsight biztosítja a rugalmasságot felkínálva a lehetőséget az növelheti vagy csökkentheti a feldolgozó csomópontok a fürtben. Ez a funkció lehetővé teszi, hogy egy fürt zsugorítani óra múlva, vagy a hétvégeken, és bontsa ki a üzleti megnövekedett igényeket kell kielégíteni során.
+HDInsight biztosítja a rugalmasságot felkínálva a lehetőséget az növelheti vagy csökkentheti a feldolgozó csomópontok a fürtben. Ez a funkció lehetővé teszi, hogy egy fürt zsugorítani óra múlva, vagy a hétvégeken, és bontsa ki a üzleti megnövekedett igényeket kell kielégíteni során. További információkért lásd:
 
-Fürtméretezés automatizálható a következő módszerekkel:
-
-### <a name="powershell-cmdlet"></a>PowerShell-parancsmag
-
-```powershell
-Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```powershell
-azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
-```
-
-### <a name="azure-portal"></a>Azure Portal
-
-Ha csomópontot ad hozzá a futó HDInsight-fürt, a folyamatban lévő vagy futó feladatok nem befolyásolja. Új feladatok biztonságosan küldheti a skálázási művelet végrehajtása közben. Ha a méretezési műveletek bármilyen okból nem sikerül, a hiba szabályosan történik, a fürt és a egy működési állapotot.
-
-Azonban ha a fürt csomópontjai eltávolításával leskálázódott, folyamatban lévő vagy futó feladat sikertelen lesz a skálázási művelet befejeződése után. Ezt a hibát az okozza a szolgáltatások újraindítása a folyamat során. A probléma megoldására, várja meg, a feladat befejeződését, mielőtt a fürt vertikális, manuálisan a feladatok leállítása vagy küldje el újra a feladatok, miután a skálázási művelet lezárult.
-
-Ha csökkenti a méretét a fürt egy feldolgozó csomópontok minimális le, HDFS előfordulhat, hogy letöltés állapottal csökkentett módban, ha a munkavégző csomópontok javítás céljából, vagy közvetlenül a skálázási művelet után indulnak újra. Ahhoz, hogy a HDFS biztonságos módból a következő parancsot futtathatja:
-
-```bash
-hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
-```
-
-A csökkentett mód elhagyása, után manuálisan eltávolíthatja az ideiglenes fájlokat, vagy várja meg, Hive idővel törölni őket automatikusan.
-
-További információkért tekintse meg a cikket [méretezési HDInsight-fürtök](../hdinsight-scaling-best-practices.md).
+* [HDInsight-fürtök méretezése](../hdinsight-scaling-best-practices.md).
+* [Fürtök méretezése](../hdinsight-administer-use-portal-linux.md#scale-clusters).
 
 ## <a name="use-hdinsight-with-azure-virtual-network"></a>HDInsight használata az Azure Virtual Network
 
@@ -190,7 +161,7 @@ Azure Virtual Network használata a HDInsight lehetővé teszi, hogy a következ
 - HDInsight-adatokhoz való csatlakozásról tárolja egy Azure-beli virtuális hálózathoz.
 - Közvetlen hozzáférés a Hadoop-szolgáltatásokhoz, amelyek nem érhetők el nyilvánosan az interneten keresztül. Ha például Kafka API-k vagy a HBase Java API-t.
 
-HDInsight vagy hozzáadhat egy új vagy meglévő Azure virtuális hálózatban. HDInsight ad hozzá egy meglévő virtuális hálózatot, ha a meglévő hálózati biztonsági csoportok és a felhasználó által megadott útvonalak frissítenie kell, hogy a korlátlan hozzáférés [több IP-címek](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) az Azure-adatközpontban. Győződjön meg arról, hogy nem blokkolja a forgalmat is, a [portok](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports) HDInsight szolgáltatásokat használják.
+HDInsight vagy hozzáadhat egy új vagy meglévő Azure virtuális hálózatban. HDInsight ad hozzá egy meglévő virtuális hálózatot, ha a meglévő hálózati biztonsági csoportok és a felhasználó által megadott útvonalak frissítenie kell, hogy a korlátlan hozzáférés [több IP-címek](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) az Azure-adatközpontban. Győződjön meg arról, hogy nem blokkolja a forgalmat is, a [portok](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports), HDInsight-szolgáltatások használják.
 
 > [!Note]  
 > HDInsight jelenleg nem támogatja a kényszerített bújtatás. Kényszerített bújtatás az alhálózat-beállítással, amely kényszeríti a kimenő internetes forgalmat egy eszközön, az ellenőrzés és naplózás. Kényszerített bújtatás egyik alhálózatában HDInsight telepítése előtt távolítsa el, vagy hozzon létre egy új alhálózatot a HDInsight. HDInsight még nem támogatja a kimenő hálózati kapcsolat korlátozása.
@@ -198,11 +169,11 @@ HDInsight vagy hozzáadhat egy új vagy meglévő Azure virtuális hálózatban.
 További információkért tekintse át a következő cikkeket:
 
 - [Az Azure virtuális hálózatok – áttekintés](../../virtual-network/virtual-networks-overview.md)
-- [Azure virtuális hálózat használatával Azure HDInsight kiterjesztése](../hdinsight-extend-hadoop-virtual-network.md)
+- [Az Azure Virtual Network használata Azure HDInsight kiterjesztése](../hdinsight-extend-hadoop-virtual-network.md)
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Azure virtuális hálózati Szolgáltatásvégpontok az Azure-szolgáltatásokhoz való biztonságos kapcsolódás
 
-HDInsight támogatja [virtuális hálózati Szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) Ez lehetővé teszi annak biztonságosan csatlakozhat az Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos DB és SQL-adatbázisok. Egy szolgáltatásvégpont engedélyezésével az Azure HDInsight, a forgalom egy biztonságos útvonalat az Azure adatközponton belül keresztül. A megnövelt biztonság, a hálózati rétegben zárolását, így a megadott virtuális hálózatok (Vnetek) tárfiókok big Data típusú adatok, és továbbra is használni HDInsight-fürtök zökkenőmentesen eléréséhez, és az adatok feldolgozásához.
+HDInsight támogatja [virtuális hálózati Szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md), amely lehetővé teszi, hogy biztonságosan csatlakozhat az Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos DB és SQL-adatbázisok. Egy szolgáltatásvégpont engedélyezésével az Azure HDInsight, a forgalom egy biztonságos útvonalat az Azure adatközponton belül keresztül. A megnövelt biztonság, a hálózati rétegben zárolását, így a megadott virtuális hálózatok (Vnetek) tárfiókok big Data típusú adatok, és továbbra is használni HDInsight-fürtök zökkenőmentesen eléréséhez, és az adatok feldolgozásához.
 
 További információkért tekintse át a következő cikkeket:
 

@@ -5,15 +5,15 @@ services: cosmos-db
 author: roygara
 ms.service: cosmos-db
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: cosmosdb-table
-ms.openlocfilehash: c5491683a74321e370044cd6eb270cc34bbbce6a
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 840c2793928816c6346e2039a38678585f8e0bc7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056408"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273124"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Az Azure Table storage műveleteket az Azure PowerShell használatával 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -35,13 +35,16 @@ A cikkben található útmutató bemutatja, hogyan hozhat létre egy új Azure S
 A példák megkövetelése Az PowerShell-modulok `Az.Storage (1.1.0 or greater)` és `Az.Resources (1.2.0 or greater)`. Egy PowerShell-ablakot a Futtatás `Get-Module -ListAvailable Az*` a verzió megkereséséhez. Ha semmi nem jelenik meg, vagy szeretné frissíteni, lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> Ezzel a funkcióval az Azure PowerShell megköveteli, hogy Ön a `Az` modul telepítve van. Az aktuális AzureRmStorageTable verziója nem kompatibilis a régebbi AzureRM-modul.
+> Ezzel a funkcióval az Azure PowerShell megköveteli, hogy Ön a `Az` modul telepítve van. Jelenlegi verziója `AzTable` , nem kompatibilis a régebbi AzureRM-modul.
 > Kövesse a [legújabb telepítési Az modul telepítésére vonatkozó utasításokat](/powershell/azure/install-az-ps) szükség esetén.
 
-Miután az Azure PowerShell telepítése vagy frissítése, telepítenie kell a modult **AzureRmStorageTable**, amely rendelkezik, és az entitáskezelésről parancsokat. Ez a modul telepítéséhez futtassa a Powershellt rendszergazdaként, és használja a **Install-Module** parancsot.
+Miután az Azure PowerShell telepítése vagy frissítése, telepítenie kell a modult **AzTable**, amely rendelkezik, és az entitáskezelésről parancsokat. Ez a modul telepítéséhez futtassa a Powershellt rendszergazdaként, és használja a **Install-Module** parancsot.
+
+> [!IMPORTANT]
+> Modul neve kompatibilitási okokból továbbra is közzétesszük a ugyanazon modul a régi néven `AzureRmStorageTables` a PowerShell-galériában. Ez a dokumentum az új név csak hivatkozik.
 
 ```powershell
-Install-Module AzureRmStorageTable
+Install-Module AzTable
 ```
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -115,9 +118,9 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 ## <a name="reference-cloudtable-property-of-a-specific-table"></a>Egy adott tábla hivatkozási CloudTable tulajdonság
 
 > [!IMPORTANT]
-> CloudTable használata nem kötelező, ha **AzureRmStorageTable** PowerShell-modult. Hívja a **Get-AzTableTable** parancs használatával beszerezheti az ezen objektum hivatkozását. Ezzel a paranccsal emellett a táblát hoz létre, ha azt nem létezik.
+> CloudTable használata nem kötelező, ha **AzTable** PowerShell-modult. Hívja a **Get-AzTableTable** parancs használatával beszerezheti az ezen objektum hivatkozását. Ezzel a paranccsal emellett a táblát hoz létre, ha azt nem létezik.
 
-Egy táblát a műveletek végrehajtásához **AzureRmStorageTable**, egy hivatkozás egy adott tábla CloudTable tulajdonság van szüksége.
+Egy táblát a műveletek végrehajtásához **AzTable**, egy hivatkozás egy adott tábla CloudTable tulajdonság van szüksége.
 
 ```powershell
 $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable
@@ -160,6 +163,6 @@ További információkért tekintse meg a következő cikkek
 
 * [Tárolási PowerShell-parancsmagok](/powershell/module/az.storage#storage)
 
-* [Azure PowerShell - modul v2.0 AzureRmStorageTable PS-táblák használata](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
+* [Azure PowerShell - modul v2.0 AzureRmStorageTable/AzTable PS-táblák használata](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 
 * A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.

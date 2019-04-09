@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/04/2019
+ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 98406df3746bb0ca2fc658697ee25b1f11b54c0b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eeaff4769dba5b6e6951665d09cd12d13f22af07
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084589"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273711"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: A C IoT Edge-modul fejlesztése és üzembe helyezése a szimulált eszköz
 
@@ -36,8 +36,10 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 Egy Azure IoT Edge-eszköz:
 
-* Használhat egy fejlesztői vagy virtuális gépet is Edge-eszközként a [Linux-](quickstart-linux.md) vagy [Windows-eszközök](quickstart.md) rövid útmutatójának lépéseit követve. 
-* Az Azure IoT Edge-hez elérhető C-modulok nem támogatják a Windows-tárolókat. Ha az IoT Edge-eszközt egy Windows-gépen, győződjön meg arról, hogy Linux-tárolók használatára van konfigurálva. Telepítés Windows és Linux-tárolók közötti különbségekkel kapcsolatos további információkért lásd: [az IoT Edge-futtatókörnyezet telepíthető Windows](how-to-install-iot-edge-windows.md).
+* Használhatja az Azure virtuális gép IoT Edge-eszköz esetében ez a rövid útmutató lépéseit követve [Linux](quickstart-linux.md) vagy [Windows-eszközök](quickstart.md). 
+
+   >[!TIP]
+   >Ez az oktatóanyag a Visual Studio Code használatával egy Linux-tárolók használatával C modul fejlesztése. Ha azt szeretné, C, a Windows-tárolók fejlesztéshez, szeretné használni a Visual Studio 2017-ben. További információkért lásd: [használatát a Visual Studio 2017 fejlesztésről és hibakeresésről modulok az Azure IoT Edge](how-to-visual-studio-develop-module.md).
 
 Felhőerőforrások:
 
@@ -100,7 +102,7 @@ Létrehozhat egy C-megoldást, amelyet a saját kódjával testreszabhat.
  
    ![Docker-rendszerkép adattárának megadása](./media/tutorial-c-module/repository.png)
 
-A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét. A megoldás munkaterület öt legfelső szintű összetevőt tartalmaz. A **modules** mappa a modul C-kódját, valamint a modul tárolórendszerképként való összeállítására szolgáló Docker-fájlokat tartalmazza. Az **\.env** fájl a tárolóregisztrációs adatbázis hitelesítő adatait tárolja. A **deployment.template.json** fájl az IoT Edge-futtatókörnyezet által a modulok eszközön való üzembe helyezéséhez használt információkat tartalmazza. És **deployment.debug.template.json** tárolók a hibakeresési verzió-modulok fájlt. Ebben az oktatóanyagban nem fogja szerkeszteni a **\.vscode** mappát vagy a **\.gitignore** fájlt.
+A VS Code-ablak betölti az IoT Edge megoldás munkaterület öt legfelső szintű összetevőkkel. A **modulok** mappa tartalmazza a C kódjának a modul és a egy tárolórendszerképbe, a modul docker-fájlok. Az **\.env** fájl a tárolóregisztrációs adatbázis hitelesítő adatait tárolja. A **deployment.template.json** fájl az IoT Edge-futtatókörnyezet által a modulok eszközön való üzembe helyezéséhez használt információkat tartalmazza. És **deployment.debug.template.json** tárolók a hibakeresési verzió-modulok fájlt. Ebben az oktatóanyagban nem fogja szerkeszteni a **\.vscode** mappát vagy a **\.gitignore** fájlt.
 
 Ha nem adott meg tárolóregisztrációs adatbázist a megoldás létrehozásakor, de elfogadta az alapértelmezett localhost:5000 értéket, akkor nem lesz \.env fájlja.
 
@@ -118,7 +120,7 @@ A környezeti fájl tárolja a tárolóregisztrációs adatbázis hitelesítő a
 
 ### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 
-Adjon olyan kódot a C-modulhoz, amely lehetővé teszi adatok beolvasását az érzékelőről, ellenőrizze, hogy a gép jelentett hőmérséklete túllépte-e a biztonságos küszöbértéket, és adja át az információkat az IoT Hubnak.
+Adja hozzá a kódot a C-modul, amely lehetővé teszi, hogy ellenőrizze, hogy a gép jelentett hőmérséklet túllépte egy biztonságos küszöbértéket. Túl magas hőmérséklet esetén a modul ad hozzá egy riasztási paraméter az üzenetet az IoT hubhoz az adatok elküldése előtt. 
 
 1. Ebben a forgatókönyvben az érzékelőről származó adatok JSON formátumban szerepelnek. A JSON formátumú üzenetek szűréséhez importáljon egy C-hez készült JSON-kódtárat. Ez az oktatóanyag Parson-kódtárat használ.
 
@@ -319,9 +321,9 @@ Adjon olyan kódot a C-modulhoz, amely lehetővé teszi adatok beolvasását az 
 
 ## <a name="build-and-push-your-solution"></a>És a megoldás leküldéses
 
-Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy kódot a CModule modulhoz, amely kiszűri az olyan üzeneteket, ahol a jelentett géphőmérséklet az elfogadható határértékeken belül van. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba.
+Az előző szakaszban létrehozott egy IoT Edge-megoldás, és hozzá kódot a CModule, hogy a rendszer kiszűri azokat az üzeneteket a gép jelentett hőmérséklet esetén az elfogadható határokon belül. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba.
 
-1. A VS Code integrált termináljának megnyitásához válassza a **View** (Nézet)  > **Integrated Terminal** (Integrált terminál) elemet.
+1. A VS Code integrált termináljának megnyitásához válassza a **View** (Nézet)  > **Terminal** (Terminál) elemet.
 
 1. A Visual Studio Code integrált termináljában az alábbi paranccsal jelentkezzen be a Dockerbe. Be kell jelentkeznie az Azure Container Registry hitelesítő adataival, hogy a beállításjegyzékbe küldhesse le a modul rendszerképét.
      
@@ -368,7 +370,7 @@ Miután alkalmazta az üzembehelyezési jegyzéket az IoT Edge-eszközén, az es
 
 Az IoT Edge-eszköz állapotát a Visual Studio Code Explorer **Azure IoT Hub-eszközök** szakaszában tekintheti meg. Bontsa ki az eszköz részleteit, és megjelenik a telepített és a futó modulok listája.
 
-Magán az IoT Edge-eszközön az üzembehelyezési modulok állapotának megtekintéséhez használja az `iotedge list` parancsot. Négy modult kell látnia: a két IoT Edge-futtatókörnyezeti modult, a tempSensort és az ebben az oktatóanyagban létrehozott egyéni modult. Az összes modul elindítása eltarthat néhány percig, ezért ha nem látja mindet azonnal, futtassa újra a parancsot.
+Az IoT Edge-eszköz magát, a központi telepítési modulok, a parancs állapotát megtekintheti `iotedge list`. Négy modult kell látnia: a két IoT Edge-futtatókörnyezeti modult, a tempSensort és az ebben az oktatóanyagban létrehozott egyéni modult. Az összes modul elindítása eltarthat néhány percig, ezért ha nem látja mindet azonnal, futtassa újra a parancsot.
 
 Az egyes modulok által létrehozott üzenetek megtekintéséhez használja az `iotedge logs <module name>` parancsot.
 
@@ -396,5 +398,5 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha saját modulokat kíván létrehozni, a témáról további információt [a C-modulok a Visual Studio Code és az Azure IoT Edge segítségével történő fejlesztését](how-to-develop-c-module.md) ismertető cikkben talál. Továbbléphet a következő oktatóanyagokra, és megtudhatja, milyen más módokon alakíthatja üzleti megállapításokká ezeket az adatokat a peremhálózaton az Azure IoT Edge segítségével.
 
 > [!div class="nextstepaction"]
-> [Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal](tutorial-store-data-sql-server.md)
+> [Az SQL Server-adatbázisok a peremhálózaton data Store](tutorial-store-data-sql-server.md)
 

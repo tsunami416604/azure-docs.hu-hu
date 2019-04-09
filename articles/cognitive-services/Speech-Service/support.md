@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: a4c256a6acd8e51986b40e28a6f658f1103ab337
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: c403bca3abf493448265e25316babe20ea9c8544
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877700"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272020"
 ---
 # <a name="support-and-help-options"></a>Támogatás és Súgó
 
@@ -23,6 +23,7 @@ Akkor most használja először a beszédszolgáltatások működésének megism
 
 > [!div class="checklist"]
 > * Az új fejlesztések kapcsolatos tájékozott *Azure Cognitive Services*, vagy keresse meg a kapcsolódó legújabb híreket *beszédszolgáltatás*.
+> * Kibocsátási megjegyzések az összes kiadásához tartozó információkat tartalmaznak.
 > * Keresés a tekintse meg, ha a probléma megoldásához a Közösség által hozzászóló, vagy a szolgáltatás már a megvalósítani kívánt vonatkozó meglévő dokumentáció van-e.
 > * Ha nem találja a megfelelő választ, a kérdés feltevése *Stack Overflow*.
 > * Ha probléma egy mintát a Githubon találja, emelje egy *GitHub* probléma.
@@ -31,6 +32,10 @@ Akkor most használja először a beszédszolgáltatások működésének megism
 ## <a name="stay-informed"></a>Naprakész lehet
 
 Cognitive Services kapcsolatos híreket az összegyűjtött a [a Cognitive Services blogja](https://azure.microsoft.com/blog/topics/cognitive-services/). A legfrissebb információkat beszédszolgáltatások, nyomon követheti a [beszédszolgáltatások blog](https://azure.microsoft.com/blog/tag/speech-service/).
+
+## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+A [kibocsátási megjegyzések]] (https://aka.ms/csspeech/whatsnew) frissül, amint az új kiadásban érhető el. A kiegészítő információkat tartalmaznak arról új funkciók, fejlesztések és hibajavításokat tartalmaz.
 
 ## <a name="search"></a>Keresés
 
@@ -77,7 +82,7 @@ Ha nem talál választ a problémára felvétellel, küldje el a Stack Overflow 
 A minták gyakran feladja a nyílt forráskódú. Kérdések és problémák, hozzon létre egy *probléma* a megfelelő GitHub-adattárában. A lekéréses kérelem túl is nyújt. Az alábbi lista tartalmazza a minta tárház mutató hivatkozásokat:
 
 * [Beszéd SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Eszközoldali SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
 Hozzon létre egy hibajelentéseit funkcióra vonatkozó kérést, vagy kérje meg egy általános kérdés és megoszthatók az ajánlott eljárások. Hibajelentéseire kövesse a megadott sablon:
 
@@ -108,7 +113,7 @@ Az SDK melyik verzióját használja.
 **További környezet**
 
  - Hibaüzenetek és naplóadatok híváslánc...
- - Ha jelenti a egy adott szolgáltatás kapcsolati hiba, jelentse a munkamenet-azonosító és az időt (beleértve a időzóna), az incidensek. Összes hívás-készít biztonsági másolatot/eseményt kap a munkamenet-azonosító jelenti.
+ - Ha egy adott szolgáltatás kapcsolati hibát jelenti, a munkamenet-azonosító és az időt (beleértve a időzóna), az incidensek jelentést. Összes hívás-készít biztonsági másolatot/eseményt kap a munkamenet-azonosító jelenti.
  - További adatok
 
 
@@ -116,4 +121,4 @@ Az SDK melyik verzióját használja.
 
 Ossza meg ötleteit, hogy a Cognitive Services és a hozzájuk tartozó API-k egyre jobban működnek az alkalmazások fejlesztése. Gyakori kérdésekre adott válaszok a növekvő Tudásbázisunkhoz használatával:
 
-[UserVoice-on](https://cognitive.uservoice.com/)
+[UserVoice](https://cognitive.uservoice.com/)

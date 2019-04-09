@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 04/05/2019
 ms.author: diberry
-ms.openlocfilehash: c418e15dbe133d94c081db2b925fa390307c240f
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 96157511c0255774a64c0f64a333fe88a37f80d6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905052"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261424"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitás / kulturális környezetet a LUIS-modell
 
@@ -110,12 +110,12 @@ Támogatottak a következő entitásokat:
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>dátum<br>DateRange<br>time<br>timerange   |    ✔   | 
 [Dimenzió](luis-reference-prebuilt-dimension.md):<br>kötet<br>terület<br>súlyozás<br>információk (például: bit/bájt)<br>hossz (például: az érték)<br>sebesség (például: mérföld / óra)  |    ✔   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    ✔   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Százalék](luis-reference-prebuilt-percentage.md)   |    ✔   | 
-[PersonName](luis-reference-prebuilt-person.md)   |    ✔   | 
+[PersonName](luis-reference-prebuilt-person.md)   |   -   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
 [URL-cím](luis-reference-prebuilt-url.md)   |    ✔   |

@@ -6,23 +6,23 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sujayt
-ms.openlocfilehash: 34f207b3c82ada0cb20152bb71ae900f5de132cb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c7c91a2cf9a25d0a5a4aeed6621e89f9c7cc18f0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878315"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269622"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
 
 Ez a cikk az Azure Site Recoveryben replikálása és helyreállítása Azure-beli virtuális gépek egyik régióból egy másik régióba gyakori problémákat ismerteti, és azok megoldását ismerteti. Támogatott konfigurációk kapcsolatos további információkért lásd: a [támogatási mátrixa Azure virtuális gépek replikálása](site-recovery-support-matrix-azure-to-azure.md).
 
 ## <a name="list-of-errors"></a>Hibák listája
-- **[Azure-erőforrás kvótával kapcsolatos problémák (hibakód: 150097)](#azure-resource-quota-issues-error-code-150097)** 
-- **[Megbízható legfelső szintű tanúsítványok (hibakód: 151066)](#trusted-root-certificates-error-code-151066)** 
-- **[Kimenő kapcsolat esetén a Site Recovery (hibakód: 151195)](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)** 
+- **[Azure-erőforrás kvótával kapcsolatos problémák (hibakód: 150097)](#azure-resource-quota-issues-error-code-150097)**
+- **[Megbízható legfelső szintű tanúsítványok (hibakód: 151066)](#trusted-root-certificates-error-code-151066)**
+- **[Kimenő kapcsolat esetén a Site Recovery (hibakód: 151195)](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)**
 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Azure-erőforrás kvótával kapcsolatos problémák (hibakód: 150097)
 Az előfizetés engedélyezni kell a célrégióban a vészhelyreállítási régióban használni kívánt Azure-beli virtuális gépek létrehozásához. Emellett az előfizetés meghatározott méretű virtuális gépek létrehozásához engedélyezett kvóta elegendő kell rendelkeznie. Alapértelmezés szerint a Site Recovery a forrásoldali virtuális Géppel megegyező méretű a cél virtuális gép választja ki. Ha a megfelelő méret nem érhető el, a legközelebbi lehetséges mérete automatikusan követi. Ha nincs megfelelő mérete, amely támogatja a forrás virtuális gép konfigurációs van, ez a hibaüzenet jelenik meg:
@@ -238,13 +238,13 @@ Ha nem látja a virtuális gép replikációs engedélyezni szeretné, akkor el�
 
 ### <a name="fix-the-problem"></a>A probléma megoldása
 
->[!NOTE] 
+>[!NOTE]
 >
->Ne feledje frissíteni a "" AzureRM.Resources"" modul használata előtt az alábbi szkriptet. 
+>Ne feledje frissíteni a "" AzureRM.Resources"" modul használata előtt az alábbi szkriptet.
 
 Használhat [távolítsa el az elavult automatikus konfigurációs szkript](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412) , és távolítsa el az elavult a Site Recovery konfigurálása az Azure virtuális gépen. A virtuális gép láthatja a elavult konfiguráció eltávolítása után kell lennie.
 
-## <a name="unable-to-select-virtual-machine-for-protection"></a>Válassza ki a virtuális gép védelemre nem sikerült 
+## <a name="unable-to-select-virtual-machine-for-protection"></a>Válassza ki a virtuális gép védelemre nem sikerült
  **1. ok:  Virtuális gép rendelkezik néhány bővítmény telepítve állapota sikertelen, vagy nem válaszol** <br>
  Lépjen a virtuális gépek > Beállítás > bővítmények és annak ellenőrzése, hogy minden olyan bővítmények hibás állapotban vannak. Távolítsa el a sikertelen bővítményt, és próbálkozzon újra a virtuális gép védelmét.<br>
  **2. ok:  [Virtuális gép kiépítési állapota nem érvényes](#vms-provisioning-state-is-not-valid-error-code-150019)**
@@ -296,7 +296,7 @@ Nyissa meg a "Szolgáltatások" konzolt, és győződjön meg, hogy a "COM + Sys
 
 **Hibakód** | **A lehetséges okok** | **Javaslatok**
 --- | --- | ---
-150172<br></br>**Üzenet**: Nem sikerült engedélyezni a védelmet, az a virtuális gép, mert (DiskName) méretű (DiskSize), amely kisebb, mint a támogatott minimális méret 1024 MB-ra. | – A lemez kisebb, mint 1024 MB-os támogatott méretet| Győződjön meg arról, hogy a lemezméretek a támogatott tartományon belül, és próbálja megismételni a műveletet. 
+150172<br></br>**Üzenet**: Nem sikerült engedélyezni a védelmet, az a virtuális gép, mert (DiskName) méretű (DiskSize), amely kisebb, mint a támogatott minimális méret 1024 MB-ra. | – A lemez kisebb, mint 1024 MB-os támogatott méretet| Győződjön meg arról, hogy a lemezméretek a támogatott tartományon belül, és próbálja megismételni a műveletet.
 
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Nem sikerült, mert a GRUB-konfiguráció (hibakód: 151126) UUID helyett az említett eszköznév védelem engedélyezése
 
@@ -319,11 +319,11 @@ Az eszköz nevét le kell cserélni a megfelelő UUID azonosítója.<br>
 
 1. Az eszköz UUID található parancs végrehajtásával "blkid \<eszköz neve >". Példa:<br>
    ```
-   blkid /dev/sda1 
+   blkid /dev/sda1
    ```<br>
    ```/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap" ```<br>
-   ```blkid /dev/sda2```<br> 
-   ```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+   ```blkid /dev/sda2```<br>
+   ```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```<br>
 
 
@@ -334,16 +334,16 @@ Az eszköz nevét le kell cserélni a megfelelő UUID azonosítója.<br>
 
 ## Enable protection failed as device mentioned in the GRUB configuration doesn't exist(error code 151124)
 **Possible Cause:** </br>
-The GRUB configuration files ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub") may contain the parameters "rd.lvm.lv" or "rd_LVM_LV" to indicate the LVM device that should be discovered at the time of booting. If these LVM devices doesn't exist, then the protected system itself will not boot and stuck in the boot process. Even the same will be observed with the failover VM. Below are few examples: 
+The GRUB configuration files ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub") may contain the parameters "rd.lvm.lv" or "rd_LVM_LV" to indicate the LVM device that should be discovered at the time of booting. If these LVM devices doesn't exist, then the protected system itself will not boot and stuck in the boot process. Even the same will be observed with the failover VM. Below are few examples:
 
 Few examples: </br>
 
 1. The following line is from the GRUB file **"/boot/grub2/grub.cfg"** on RHEL7. </br>
    *linux16 /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel=128M\@64M **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet LANG=en_US.UTF-8*</br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg". 
+   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".
 1. The following line is from the GRUB file **"/etc/default/grub"** on RHEL7 </br>
    *GRUB_CMDLINE_LINUX="crashkernel=auto **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet"*</br>
-   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg". 
+   Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".
 1. The following line is from the GRUB file **"/boot/grub/menu.lst"** on RHEL6 </br>
    *kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=rootvg/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=rootvg/lv_swap rd_NO_DM rhgb quiet* </br>
    Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".<br>
@@ -360,8 +360,8 @@ Site Recovery mobility service has many components, one of which is called filte
 ## Protection couldn't be enabled as replica managed disk 'diskname-replica' already exists without expected tags in the target resource group( error code 150161
 
 **Cause**: It can occur if the  virtual machine was protected earlier in the past and during disabling the replication, replica disk was not cleaned due to some reason.</br>
-**How to fix:** 
-Delete the mentioned replica disk in the error message and restart the failed protection job again. 
+**How to fix:**
+Delete the mentioned replica disk in the error message and restart the failed protection job again.
 
 ## Next steps
 [Replicate Azure virtual machines](site-recovery-replicate-azure-to-azure.md)

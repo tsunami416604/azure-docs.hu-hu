@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8b56151ae56de44cbab3003743ce6df33ec89612
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 20c05bddddce4c7748e29551fe78d3e5609b2fa5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075629"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275895"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok
 A következő esetekben felvázolják a Key Vault tanúsítvány management szolgáltatás többek között a további lépéseket az első tanúsítvány létrehozásához a key vaultban lévő szükséges elsődleges használatokban.
@@ -102,6 +102,17 @@ Megjegyzés: ezt a folyamatot, 3.1. lépés egy olyan egyszeri művelet.
 
 -   Emellett a felhasználó szerkesztheti a szabályzatot, amely importálás idején már működik esetén, de tartalmazza, ahol nem adatok importálása során meghatározott alapértelmezett. Pl. Nincs kibocsátó adatai  
 
+### <a name="formats-of-import-we-support"></a>Importálás támogatott formátumok
+Importálás a következő típusú támogatjuk az PEM formátumú. Egyetlen PEM-kódolású tanúsítvány egy PKCS #8 kódolású, nem titkosított kulcs, amely rendelkezik a következő együtt
+
+---BEGIN TANÚSÍTVÁNY------END TANÚSÍTVÁNY---
+
+---BEGIN PRIVATE KEY-------END PRIVATE KEY----
+
+A tanúsítvány egyesítési támogatjuk a 2-alapú PEM-formátumú. Vagy egyesíthet egyetlen PKCS #8 kódolású tanúsítványt, vagy egy base64 kódolású P7B fájlt. ---BEGIN TANÚSÍTVÁNY------END TANÚSÍTVÁNY---
+
+Jelenleg nem támogatjuk EK kulcsok PEM formátumban.
+
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Key Vault nem közreműködésével CA-tanúsítvány létrehozása  
  Ez a módszer lehetővé teszi, hogy más hitelesítésszolgáltatók, mint a Key Vault termékekért felelős csoportokkal együttműködésben szolgáltatók, tehát a szervezet saját maga által kiválasztott hitelesítésszolgáltató együttműködve dolgozhat.  
 
@@ -121,4 +132,4 @@ Megjegyzés: ezt a folyamatot, 3.1. lépés egy olyan egyszeri művelet.
 
 ## <a name="see-also"></a>Lásd még:
 
-- [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)
+- [Tudnivalók a kulcsok, titkos kódok és tanúsítványok](about-keys-secrets-and-certificates.md)

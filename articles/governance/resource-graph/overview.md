@@ -1,19 +1,18 @@
 ---
 title: Az Azure Resource Graph áttekintése
 description: Ismerje meg, hogyan az Azure-erőforrás Graph szolgáltatás lehetővé teszi, hogy nagy mennyiségű erőforrást összetett lekérdezés.
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/06/2019
+ms.date: 03/29/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 15cfdc87fafa25e9f37c63c8159289b25a547817
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 28efdabc024fd32c83ba966b15284ec6ff368d4d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802322"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269288"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Az Azure-erőforrás Graph szolgáltatás áttekintése
 
@@ -26,13 +25,13 @@ Az Azure Resource Graph egy szolgáltatás az Azure-ban, amelynek rendeltetése 
 Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 > [!NOTE]
-> Az Azure Resource Graphot használja az Azure Portal új, „Minden erőforrás” tallózására szolgáló felülete. Olyan ügyfelek támogatására tervezték, akiknek nagyméretű környezeteket kell felügyelniük.
+> Az Azure Resource Graphot használja az Azure Portal új, „Minden erőforrás” tallózására szolgáló felülete. Úgy van kialakítva, hogy az ügyfelek nagy méretű környezetek kezeléséhez szükséges.
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Hogyan egészíti ki a Resource Graph az Azure Resource Managert
 
 Az Azure Resource Manager jelenleg egy korlátozott erőforrás-gyorsítótárba küld adatokat, amely elérhetővé tesz számos erőforrás-mezőt, így az Erőforrásnév, az Azonosító, a Típus, az Erőforráscsoport, az Előfizetések és a Hely mezőt is. Korábban különböző erőforrás-tulajdonságok használata esetén minden egyes erőforrás-szolgáltatót meg kellett hívni, és minden erőforrás tulajdonságrészleteit le kellett kérni.
 
-Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenkénti hívása nélkül is hozzáférhet az általuk visszaadott tulajdonságokhoz.
+Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenkénti hívása nélkül is hozzáférhet az általuk visszaadott tulajdonságokhoz. Támogatott erőforrástípusait listáját, keressen egy **Igen** a a [erőforrások teljes üzemmód telepítéseit](../../azure-resource-manager/complete-mode-deletion.md) tábla.
 
 ## <a name="the-query-language"></a>A lekérdezőnyelv
 
@@ -45,6 +44,9 @@ Első lépésként olvassa el az Azure Resource Graphfal használható művelete
 ## <a name="permissions-in-azure-resource-graph"></a>Engedélyek az Azure Resource Graphban
 
 A Resource Graph használatához megfelelő jogosultságokkal kell rendelkeznie a [szerepköralapú hozzáférés-vezérlésben](../../role-based-access-control/overview.md) (RBAC), és legalább olvasási jogosultsággal kell rendelkeznie a lekérdezni kívánt erőforrásokon. Ha nem rendelkezik legalább `read` engedélyekkel az Azure-objektumhoz vagy -objektumcsoporthoz, a rendszer nem ad vissza eredményeket.
+
+> [!NOTE]
+> Erőforrás-grafikon egy egyszerű elérhető előfizetések használja a bejelentkezés során. Aktív munkamenet során hozzáadott új előfizetés erőforrások megtekintéséhez az egyszerű frissítenie kell a környezetben. Ez a művelet automatikusan megtörténik, amikor kijelentkezik, majd újból.
 
 ## <a name="throttling"></a>Throttling
 

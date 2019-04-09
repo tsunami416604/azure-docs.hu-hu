@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 7/17/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 445437fe92ec75f1d34021808d7d47a372c2a44b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d167ed012e3f0e45988c88b64040208d87623518
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535178"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275496"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Virtuális gép biztonsági mentése az Azure-ban
 Az Azure biztonsági másolatok létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít az Azure biztonsági másolatok, valamint az összes kapcsolódó erőforrás létrehozásához és konfigurálásához. Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolható helyreállítási pontokat hoz létre. Ez a cikk a virtuális gépek (VM-ek) az Azure Portal használatával való biztonsági mentését mutatja be részletesen. 
@@ -79,7 +79,7 @@ Ha egy Biztonsági mentéssel foglalkozó oktatóanyaggal folytatja, amely a vir
 
 3. Válassza az **Biztonsági másolat adatainak törlése** lehetőséget a legördülő menüből.
 
-4. A **Biztonságimásolat-elem nevének megadása** párbeszédpanelen adja meg a virtuális gép nevét – például *myVM*. Válassza a **Biztonsági mentés leállítása** lehetőséget.
+4. A **Biztonságimásolat-elem nevének megadása** párbeszédpanelen adja meg a virtuális gép nevét – például *myVM*. Válassza ki **biztonsági mentés leállítása**.
 
     Miután a virtuális gép biztonsági mentése leállt, és a helyreállítási pontok is ellettek távolítva, törölheti az erőforráscsoportot. Ha egy meglévő virtuális gépet használt, megtarthatja az erőforráscsoportot és a virtuális gépet.
 
@@ -94,4 +94,4 @@ Ha egy Biztonsági mentéssel foglalkozó oktatóanyaggal folytatja, amely a vir
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot. Ha bővebb információra van szüksége az Azure Backup és a Recovery Services szolgáltatásokkal kapcsolatban, lépjen tovább a következő oktatóanyagokra.
 
 > [!div class="nextstepaction"]
-> [Biztonsági mentés készítése több Azure-beli virtuális gépről](./tutorial-backup-vm-at-scale.md)
+> [Több Azure virtuális gépek biztonsági mentése](./tutorial-backup-vm-at-scale.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: e6e20db39be8a6e60833bf5c4f9b6a34a9ead461
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 22a95ce506a7f906604cc65d08a04b7f761bb4c2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013043"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273583"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Létrehozása és kezelése az Azure költségvetése
 
@@ -63,7 +63,9 @@ Kattintson a **Hozzáadás** parancsra.
 
 ![Az Azure Portalon látható a Cost Management költségvetése](./media/tutorial-acm-create-budgets/budgets01.png)
 
-Az a **létrehozás költségvetés** ablakban adja meg a költségvetés és a költségvetés összege. Ezután válassza ki egy havi, negyedéves, vagy egy éves időtartama. Ezután válassza ki a befejező dátum. Költségvetés legalább egy költséget küszöb (% költségvetés) és a egy megfelelő e-mail-címre van szükség. Szükség esetén belefoglalhatja a legfeljebb öt küszöbértékeket és a egy egyetlen költségvetésben öt e-mail címet. Amikor teljesül a költségvetés küszöbértéket, e-mail-értesítések általában kevesebb mint nyolc óra fogadott. Értesítések kapcsolatos további információkért lásd: [használata költség riasztások](cost-mgt-alerts-monitor-usage-spending.md).
+Az a **létrehozás költségvetés** ablakban adja meg a költségvetés és a költségvetés összege. Ezután válassza ki a havi, negyedéves és éves időtartama<sup>1</sup>. Ezután válassza ki a befejező dátum. Költségvetés legalább egy költséget küszöb (% költségvetés) és a egy megfelelő e-mail-címre van szükség. Szükség esetén belefoglalhatja a legfeljebb öt küszöbértékeket és a egy egyetlen költségvetésben öt e-mail címet. Amikor teljesül a költségvetés küszöbértéket, e-mail-értesítések általában kevesebb mint nyolc óra fogadott. Értesítések kapcsolatos további információkért lásd: [használata költség riasztások](cost-mgt-alerts-monitor-usage-spending.md).
+
+<sup>1</sup> egy használatalapú fizetés, az MSDN vagy a Visual Studio ügyfelei a számla egy előfizetéshez tartozó számlázási időszak eltérhetnek a naptári hónapra. Előfizetések és erőforráscsoportok, melyek a gyűjtőhöz létrehozhat költségvetési igazított a számla vagy naptári hónapban. A számla ellenében igazítva költségvetési létrehozásához jelöljön ki egy számlázási hónapban, a számlázás negyedév vagy a létrehozáskor történik a számlázás év visszaállítási időtartamot. A naptári hónapra igazítva költségvetési létrehozásához válassza a visszaállítási időtartamot havonta, negyedévente vagy évente létrehozáskor.
 
 Íme egy példa egy havi költségvetés hoz létre az $4500. E-mailek beolvasása riasztás 90 %-a költségvetés elérésekor.
 

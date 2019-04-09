@@ -1,19 +1,19 @@
 ---
 title: Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#) |} A Microsoft Docs
-description: Eszköz fejlesztőként Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz, C# használatával.
+description: Eszköz a fejlesztők hogyan Raspberry Pi csatlakozhat az Azure IoT Central alkalmazást a C#.
 author: viv-liu
 ms.author: viviali
-ms.date: 10/31/2018
+ms.date: 04/05/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 6330e941f3308920ff4d5404663824633484146a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 8137f7d167cc697671de99699c6031014d6a966e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108358"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275963"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#)
 
@@ -25,37 +25,34 @@ Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők Raspberry Pi kapcsolódni 
 
 A jelen cikkben ismertetett lépések végrehajtásához szüksége van a következő összetevők:
 
-* [.NET core 2](https://www.microsoft.com/net) a fejlesztői gépen telepítve van. Emellett rendelkeznie kell egy megfelelő Kódszerkesztő például [Visual Studio Code](https://code.visualstudio.com/).
 * A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
-* Raspberry Pi eszköz a Raspbian operációs rendszert.
-
+* Raspberry Pi eszköz a Raspbian operációs rendszert. A Raspberry Pi kell rendelkezniük az internethez való kapcsolódáshoz. További információkért lásd: [beállítása a Raspberry Pi](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
 ## <a name="sample-devkits-application"></a>**Minta Devkits** alkalmazás
 
-A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **Raspberry Pi** eszköz sablon a következő jellemzőkkel: 
+A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **Raspberry Pi** eszköz sablon a következő jellemzőkkel:
 
 - Telemetriai adatokat, amely tartalmazza az eszköz összegyűjti a következő mérési:
-    - Páratartalom
-    - Hőmérséklet
-    - Pressure
-    - Magnetométer (X, Y, a – Z)
-    - Érzékelőből (X, Y, a – Z)
-    - Giroszkóp (X, Y, a – Z)
+  - Páratartalom
+  - Hőmérséklet
+  - Pressure
+  - Magnetométer (X, Y, a – Z)
+  - Érzékelőből (X, Y, a – Z)
+  - Giroszkóp (X, Y, a – Z)
 - Beállítások
-    - Feszültségérzékelő
-    - Aktuális
-    - Sebesség ventilátor
-    - Integrációs modul váltógombot.
+  - Feszültségérzékelő
+  - Aktuális
+  - Sebesség ventilátor
+  - Integrációs modul váltógombot.
 - Tulajdonságok
-    - Eszköz-tulajdonságot die
-    - Hely felhőalapú tulajdonság
+  - Eszköz-tulajdonságot die
+  - Hely felhőalapú tulajdonság
 
-Tekintse meg a konfigurációs eszköz sablon kapcsolatos részletes [Raspberry PI eszköz sablon részletei](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details)
-
+A konfigurációs eszköz-sablon teljes részletekért lásd: a [Raspberry Pi eszköz sablon részleteinek](#raspberry-pi-device-template-details).
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Raspberry Pi** eszköz sablont, és jegyezze fel az eszköz kapcsolati karakterláncát. További információkért lásd: [valós eszköz hozzáadása az Azure IoT Central alkalmazásnak](tutorial-add-device.md).
+Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Raspberry Pi** eszköz sablont. Jegyezze fel az eszköz kapcsolati adatok (**hatókör azonosítója**, **Eszközazonosító**, és **elsődleges kulcs**). További információkért lásd: [valós eszköz hozzáadása az Azure IoT Central alkalmazásnak](tutorial-add-device.md).
 
 ### <a name="create-your-net-application"></a>A .NET-alkalmazás létrehozása
 
@@ -86,7 +83,7 @@ A következő lépéseket, használhatja a Visual Studio Code-ot. További infor
         <RuntimeIdentifiers>win-arm;linux-arm</RuntimeIdentifiers>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.5.2" />
+        <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.19.0" />
       </ItemGroup>
     </Project>
     ```
@@ -272,12 +269,9 @@ A következő lépéseket, használhatja a Visual Studio Code-ot. További infor
 
 ## <a name="run-your-net-application"></a>A .NET-alkalmazás futtatása
 
-Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközspecifikus kapcsolati karakterláncra. Az Azure IoT Central alkalmazásnak a valódi eszköz hozzáadásakor végzett jegyezze fel ezt a kapcsolati karakterláncot.
+Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközspecifikus kapcsolati karakterláncra. Ezeket az utasításokat követve [az eszköz kapcsolati karakterláncának létrehozása](concepts-connectivity.md#get-a-connection-string) használatával a **hatókör azonosítója**, **Eszközazonosító**, és **elsődleges kulcs** történtek egy korábban vegye figyelembe a.
 
-  > [!NOTE]
-   > Az Azure IoT Central átváltott használatával az Azure IoT Hub Device Provisioning service (DPS) az összes eszköz kapcsolat, ezeket az utasításokat követve [az eszköz kapcsolati karakterláncának lekérése](concepts-connectivity.md#get-a-connection-string) és az oktatóanyag további részeinek folytatásához.
-
-1. Cserélje le `{your device connection string}` a a **Program.cs** fájlt a korábban feljegyzett kapcsolati karakterláncra.
+1. Cserélje le `{your device connection string}` a a **Program.cs** fájl létrehozott kapcsolati karakterlánccal.
 
 1. Futtassa a következő parancsot a parancssori környezetben:
 
@@ -286,7 +280,7 @@ Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközs
    dotnet publish -r linux-arm
    ```
 
-1. Másolás a `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` mappát a Raspberry Pi-eszközre. Használhatja a **scp** parancs használatával másolja ki a fájlokat, például:
+1. Másolás a `pisample\bin\Debug\netcoreapp2.1\linux-arm\publish` mappát a Raspberry Pi-eszközre. Használhatja a **scp** parancs használatával másolja ki a fájlokat, például:
 
     ```cmd/sh
     scp -r publish pi@192.168.0.40:publish
@@ -321,8 +315,7 @@ Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközs
 
      ![Raspberry Pi fogad beállítás változása](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
 
-
-## <a name="raspberry-pi-device-template-details"></a>Raspberry PI eszköz sablon részletei
+## <a name="raspberry-pi-device-template-details"></a>Raspberry Pi eszköz sablon részletei
 
 A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **Raspberry Pi** eszköz sablon a következő jellemzőkkel:
 

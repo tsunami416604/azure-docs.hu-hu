@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: kgremban
-ms.openlocfilehash: 0a230ff1c4d5c6bb36003f07cc1c411f7e2c3629
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241000"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274042"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának monitorozásához és a problémák gyorsan diagnosztizálása
 
-Azure IoT Hub alkalmazó vállalatok erőforrásaikat a megbízható teljesítmény várható. Segítséget egy közeli nézze meg a műveletek a kezelése, az IoT Hub teljesen integrálva van a [Azure Monitor](../azure-monitor/index.yml) és [az Azure Resource Health](../service-health/resource-health-overview.md). A két szolgáltatás működik biztosítani számukra, így az IoT-megoldásait, mentése és kifogástalan állapotban fut szükséges adatokat. 
+Azure IoT Hub alkalmazó vállalatok erőforrásaikat a megbízható teljesítmény várható. Segítséget egy közeli nézze meg a műveletek a kezelése, az IoT Hub teljesen integrálva van a [Azure Monitor](../azure-monitor/index.yml) és [az Azure Resource Health](../service-health/resource-health-overview.md). A két szolgáltatás működik biztosítani számukra, így az IoT-megoldásait, mentése és kifogástalan állapotban fut szükséges adatokat.
 
 Az Azure Monitor egyetlen adatforrás a figyelés és naplózás az Azure-szolgáltatásokhoz. Elküldheti a diagnosztikai naplók, amely létrehozza az Azure Monitor az Azure Monitor naplók, az Event Hubs vagy Azure Storage egyéni feldolgozáshoz. Az Azure Monitor-metrikák és diagnosztikai beállításait az erőforrások betekintést nyújtanak. Olvassa ebből a cikkből megtudhatja, hogyan [használata az Azure Monitor](#use-azure-monitor) az IoT hubbal. 
 
@@ -30,7 +30,7 @@ IoT Hub is biztosít a saját mérőszámok, amelyek segítségével az IoT-erő
 
 ## <a name="use-azure-monitor"></a>Az Azure Monitor használata
 
-Az Azure Monitor biztosít a diagnosztikai adatokat az Azure-erőforrásokhoz, ami azt jelenti, hogy figyelemmel kísérheti a műveleteket, az IoT hub között kerül sor. 
+Az Azure Monitor biztosít a diagnosztikai adatokat az Azure-erőforrásokhoz, ami azt jelenti, hogy figyelemmel kísérheti a műveleteket, az IoT hub között kerül sor.
 
 Az Azure Monitor diagnosztikai beállításait lecseréli az IoT Hub-műveletek monitorozása. Ha jelenleg használja a műveletek figyelése, át kell telepítenie a munkafolyamatokat. További információkért lásd: [a műveletek figyelése a diagnosztikai beállítások](iot-hub-migrate-to-diagnostics-settings.md).
 
@@ -40,7 +40,7 @@ Az adott mérőszámok és eseményeket figyeli az Azure Monitor kapcsolatos tov
 
 ### <a name="understand-the-logs"></a>A naplók értelmezése
 
-Az Azure Monitor nyomon követi az IoT Hub előforduló különféle műveletek. Az egyes kategóriákhoz hogyan készül jelentés adott kategóriába tartozó eseményeket definiáló séma. 
+Az Azure Monitor nyomon követi az IoT Hub előforduló különféle műveletek. Az egyes kategóriákhoz hogyan készül jelentés adott kategóriába tartozó eseményeket definiáló séma.
 
 #### <a name="connections"></a>Kapcsolatok
 
@@ -49,11 +49,10 @@ A kapcsolatok kategóriában nyomon követi eszköz csatlakoztatása, és esemé
 > [!NOTE]
 > Az eszközök megbízható kapcsolat állapotának ellenőrzése [eszköz szívverés](iot-hub-devguide-identity-registry.md#device-heartbeat).
 
-
 ```json
 {
-    "records": 
-    [
+   "records":
+   [
         {
             "time": " UTC timestamp",
             "resourceId": "Resource Id",
@@ -73,13 +72,13 @@ A felhőből az eszközre irányuló parancsok kategória előforduló hibák az
 
 * Felhőből az eszközre irányuló üzenetek küldése (például a jogosulatlan feladótól hibák)
 * (Például a szállítási darabszám túllépve hibák), a felhőből az eszközre irányuló üzenetek fogadása és
-* A visszajelzést a felhőből az eszközre irányuló üzenet (például a visszajelzések hibák lejárt). 
+* A visszajelzést a felhőből az eszközre irányuló üzenet (például a visszajelzések hibák lejárt).
 
 Ez a kategória nem hibák észlelését, ha a felhőből az eszközre irányuló üzenet sikeresen kézbesítve, de nem megfelelően kezeli a rendszer az eszköz által.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": " UTC timestamp",
@@ -89,7 +88,7 @@ Ez a kategória nem hibák észlelését, ha a felhőből az eszközre irányul�
             "level": "Error",
             "resultType": "Event status",
             "resultDescription": "MessageDescription",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"messageId\":\"<messageId>\",\"messageSizeInBytes\":\"<messageSize>\",\"protocol\":\"Amqp\",\"deliveryAcknowledgement\":\"<None, NegativeOnly, PositiveOnly, Full>\",\"deliveryCount\":\"0\",\"expiryTime\":\"<timestamp>\",\"timeInSystem\":\"<timeInSystem>\",\"ttl\":<ttl>, \"EventProcessedUtcTime\":\"<UTC timestamp>\",\"EventEnqueuedUtcTime\":\"<UTC timestamp>\", \"maskedIpAddresss\": \"<maskedIpAddress>\", \"statusCode\": \"4XX\"}",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"messageId\":\"<messageId>\",\"messageSizeInBytes\":\"<messageSize>\",\"protocol\":\"Amqp\",\"deliveryAcknowledgement\":\"<None, NegativeOnly, PositiveOnly, Full>\",\"deliveryCount\":\"0\",\"expiryTime\":\"<timestamp>\",\"timeInSystem\":\"<timeInSystem>\",\"ttl\":<ttl>, \"EventProcessedUtcTime\":\"<UTC timestamp>\",\"EventEnqueuedUtcTime\":\"<UTC timestamp>\", \"maskedIpAddress\": \"<maskedIpAddress>\", \"statusCode\": \"4XX\"}",
             "location": "Resource location"
         }
     ]
@@ -102,14 +101,14 @@ Eszközkategória identitás műveletek nyomon követi, létrehozásához, friss
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
             "resourceId": "Resource Id",
             "operationName": "get",
             "category": "DeviceIdentityOperations",
-            "level": "Error",    
+            "level": "Error",
             "resultType": "Event status",
             "resultDescription": "MessageDescription",
             "properties": "{\"maskedIpAddress\":\"<maskedIpAddress>\",\"deviceId\":\"<deviceId>\", \"statusCode\":\"4XX\"}",
@@ -131,7 +130,7 @@ Ebbe a kategóriába nem tartalmazza a konkrét hibákat maguk az üzenetek (pé
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -152,7 +151,7 @@ Az eszközkategória telemetriai előforduló hibák az IoT hubra kapcsolódnak,
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -174,14 +173,16 @@ Az eszközkategória telemetriai előforduló hibák az IoT hubra kapcsolódnak,
 A fájl feltöltése kategória nyomon követi az IoT hubra és a fájlfeltöltési funkciókhoz kapcsolódó hibák. Ez a kategória tartalmazza:
 
 * Az SAS URI-t, például amikor egy eszköz értesíti a hub egy befejezett feltöltésről, mielőtt lejár az előforduló hibákat.
+
 * Nem sikerült az eszköz által jelentett feltöltések.
+
 * Ha egy fájl nem található a tároló az IoT Hub értesítési üzenet létrehozása során előforduló hibákat.
 
 Ez a kategória nem tényleges jelentkező hibák közvetlenül az eszköz egy fájlt tölt Storage.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -201,11 +202,11 @@ Ez a kategória nem tényleges jelentkező hibák közvetlenül az eszköz egy f
 
 #### <a name="cloud-to-device-twin-operations"></a>Felhőalapú ikereszköz műveletek
 
-A felhő ikereszköz műveletkategória események szolgáltatás által az ikereszközök követi nyomon. Ezek a műveletek belefoglalhat get ikereszköz, frissítése vagy cserélje le a címkéket, és a frissítése vagy cserélje le a kívánt tulajdonságok. 
+A felhő ikereszköz műveletkategória események szolgáltatás által az ikereszközök követi nyomon. Ezek a műveletek belefoglalhat get ikereszköz, frissítése vagy cserélje le a címkéket, és a frissítése vagy cserélje le a kívánt tulajdonságok.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -214,7 +215,7 @@ A felhő ikereszköz műveletkategória események szolgáltatás által az iker
             "category": "C2DTwinOperations",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"messageSize\":\"<messageSize>\"}", 
+            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"messageSize\":\"<messageSize>\"}",
             "location": "Resource location"
         }
     ]
@@ -227,7 +228,7 @@ Az eszközről a felhőbe – az ikereszköz műveletkategória eszköz által k
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -236,7 +237,7 @@ Az eszközről a felhőbe – az ikereszköz műveletkategória eszköz által k
             "category": "D2CTwinOperations",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authenticationType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\"}", 
+            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authenticationType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\"}",
             "location": "Resource location"
         }
     ]
@@ -245,11 +246,11 @@ Az eszközről a felhőbe – az ikereszköz műveletkategória eszköz által k
 
 #### <a name="twin-queries"></a>Ikereszköz-lekérdezések
 
-Az ikereszköz-lekérdezéseket kategória, amely a felhőben kezdeményezett ikereszközök lekérdezésekre vonatkozó kérelmek kapcsolatos jelentések. 
+Az ikereszköz-lekérdezéseket kategória, amely a felhőben kezdeményezett ikereszközök lekérdezésekre vonatkozó kérelmek kapcsolatos jelentések.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -258,7 +259,7 @@ Az ikereszköz-lekérdezéseket kategória, amely a felhőben kezdeményezett ik
             "category": "TwinQueries",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"query\":\"<twin query>\",\"sdkVersion\":\"<sdkVersion>\",\"messageSize\":\"<messageSize>\",\"pageSize\":\"<pageSize>\", \"continuation\":\"<true, false>\", \"resultSize\":\"<resultSize>\"}", 
+            "properties": "{\"query\":\"<twin query>\",\"sdkVersion\":\"<sdkVersion>\",\"messageSize\":\"<messageSize>\",\"pageSize\":\"<pageSize>\", \"continuation\":\"<true, false>\", \"resultSize\":\"<resultSize>\"}",
             "location": "Resource location"
         }
     ]
@@ -267,11 +268,11 @@ Az ikereszköz-lekérdezéseket kategória, amely a felhőben kezdeményezett ik
 
 #### <a name="jobs-operations"></a>Feladatműveletek
 
-A feladatok műveletkategória feladatkérések ikereszközök frissítéséhez, vagy több eszközön közvetlen metódusok meghívása kapcsolatos jelentések. Ezek a kérelmek kezdeményezett a felhőben. 
+A feladatok műveletkategória feladatkérések ikereszközök frissítéséhez, vagy több eszközön közvetlen metódusok meghívása kapcsolatos jelentések. Ezek a kérelmek kezdeményezett a felhőben.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -280,7 +281,7 @@ A feladatok műveletkategória feladatkérések ikereszközök frissítéséhez,
             "category": "JobsOperations",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"jobId\":\"<jobId>\", \"sdkVersion\": \"<sdkVersion>\",\"messageSize\": <messageSize>,\"filter\":\"DeviceId IN ['1414ded9-b445-414d-89b9-e48e8c6285d5']\",\"startTimeUtc\":\"Wednesday, September 13, 2017\",\"duration\":\"0\"}", 
+            "properties": "{\"jobId\":\"<jobId>\", \"sdkVersion\": \"<sdkVersion>\",\"messageSize\": <messageSize>,\"filter\":\"DeviceId IN ['1414ded9-b445-414d-89b9-e48e8c6285d5']\",\"startTimeUtc\":\"Wednesday, September 13, 2017\",\"duration\":\"0\"}",
             "location": "Resource location"
         }
     ]
@@ -289,11 +290,11 @@ A feladatok műveletkategória feladatkérések ikereszközök frissítéséhez,
 
 #### <a name="direct-methods"></a>Közvetlen metódusok
 
-A közvetlen metódusok kategória nyomon követi a kérés-válasz interakciók egyes eszközöknek. Ezek a kérelmek kezdeményezett a felhőben. 
+A közvetlen metódusok kategória nyomon követi a kérés-válasz interakciók egyes eszközöknek. Ezek a kérelmek kezdeményezett a felhőben.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -302,7 +303,7 @@ A közvetlen metódusok kategória nyomon követi a kérés-válasz interakciók
             "category": "DirectMethods",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"deviceId\":<messageSize>, \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
+            "properties": "{\"deviceId\":<messageSize>, \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}",
             "location": "Resource location"
         }
     ]
@@ -313,15 +314,15 @@ A közvetlen metódusok kategória nyomon követi a kérés-válasz interakciók
 
 Kategória elosztott nyomkövetést korrelációs azonosítók, amelyek a nyomkövetési környezet fejléc üzenetek követi nyomon. Ezek a naplók teljes engedélyezéséhez ügyféloldali kódot frissíteni kell a következő [elemzés és diagnosztizálhatja a IoT alkalmazások – teljes körű az IoT Hub elosztott nyomkövetést (előzetes verzió)](iot-hub-distributed-tracing.md).
 
-Vegye figyelembe, hogy `correlationId` megfelel-e a [W3C nyomkövetési környezet](https://github.com/w3c/trace-context) javaslatot, ha tartalmaz egy `trace-id` , valamint egy `span-id`. 
+Vegye figyelembe, hogy `correlationId` megfelel-e a [W3C nyomkövetési környezet](https://github.com/w3c/trace-context) javaslatot, ha tartalmaz egy `trace-id` , valamint egy `span-id`.
 
 ##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C (device-to-cloud) logs
 
-Az IoT Hub tartalmaz tulajdonságokat érvényes nyomkövetési üzenet érkezik a IoT Hub ebbe a naplófájlba rögzíti. 
+Az IoT Hub tartalmaz tulajdonságokat érvényes nyomkövetési üzenet érkezik a IoT Hub ebbe a naplófájlba rögzíti.
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -333,7 +334,7 @@ Az IoT Hub tartalmaz tulajdonságokat érvényes nyomkövetési üzenet érkezik
             "resultType": "Success",
             "resultDescription":"Receive message success",
             "durationMs": "",
-            "properties": "{\"messageSize\": 1, \"deviceId\":\"<deviceId>\", \"callerLocalTimeUtc\": : \"2017-02-22T03:27:28.633Z\", \"calleeLocalTimeUtc\": \"2017-02-22T03:27:28.687Z\"}", 
+            "properties": "{\"messageSize\": 1, \"deviceId\":\"<deviceId>\", \"callerLocalTimeUtc\": : \"2017-02-22T03:27:28.633Z\", \"calleeLocalTimeUtc\": \"2017-02-22T03:27:28.687Z\"}",
             "location": "Resource location"
         }
     ]
@@ -355,7 +356,7 @@ Az IoT Hub ebbe a naplófájlba rögzíti, amikor érvényes nyomkövetési tula
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -367,14 +368,14 @@ Az IoT Hub ebbe a naplófájlba rögzíti, amikor érvényes nyomkövetési tula
             "resultType": "Success",
             "resultDescription":"Ingress message success",
             "durationMs": "10",
-            "properties": "{\"isRoutingEnabled\": \"true\", \"parentSpanId\":\"0144d2590aacd909\"}", 
+            "properties": "{\"isRoutingEnabled\": \"true\", \"parentSpanId\":\"0144d2590aacd909\"}",
             "location": "Resource location"
         }
     ]
 }
 ```
 
-Az a `properties` szakaszban Ez a napló tartalmaz további információt a bejövő üzenet
+Az a `properties` szakaszban Ez a napló üzenet bejövő kapcsolatos további információkat tartalmaz.
 
 | Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
@@ -387,7 +388,7 @@ IoT Hub rekordok naplózása Ez mikor [útválasztási](iot-hub-devguide-message
 
 ```json
 {
-    "records": 
+    "records":
     [
         {
             "time": "UTC timestamp",
@@ -399,106 +400,107 @@ IoT Hub rekordok naplózása Ez mikor [útválasztási](iot-hub-devguide-message
             "resultType": "Success",
             "resultDescription":"Egress message success",
             "durationMs": "10",
-            "properties": "{\"endpointType\": \"EventHub\", \"endpointName\": \"myEventHub\", \"parentSpanId\":\"349810a9bbd28730\"}", 
+            "properties": "{\"endpointType\": \"EventHub\", \"endpointName\": \"myEventHub\", \"parentSpanId\":\"349810a9bbd28730\"}",
             "location": "Resource location"
         }
     ]
 }
 ```
 
-Az a `properties` szakaszban Ez a napló tartalmaz további információt a bejövő üzenet
+Az a `properties` szakaszban Ez a napló üzenet bejövő kapcsolatos további információkat tartalmaz.
 
 | Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **endpointName** | String | Az útválasztási végpont neve |
-| **EndpointType** | String | Az útválasztási végpont típusa |
+| **endpointType** | String | Az útválasztási végpont típusa |
 | **parentSpanId** | String | A [span-id](https://w3c.github.io/trace-context/#parent-id) a szülő üzenet, amely ebben az esetben lenne az IoT Hub bejövő üzenet nyomkövetési |
-
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Az Azure Event Hubs naplóinak olvasása
 
 Miután beállította a diagnosztikai beállításokon keresztül eseménynaplózás, olvassa el a naplókat, hogy azok az információk alapján műveleteket végezheti el alkalmazásokat hozhat létre. A mintakód beolvassa a naplók egy adott eseményközpontból:
 
 ```csharp
-class Program 
+class Program
 { 
-    static string connectionString = "{your AMS eventhub endpoint connection string}"; 
-    static string monitoringEndpointName = "{your AMS event hub endpoint name}"; 
-    static EventHubClient eventHubClient; 
-//This is the Diagnostic Settings schema 
-    class AzureMonitorDiagnosticLog 
-    { 
-        string time { get; set; } 
-        string resourceId { get; set; } 
-        string operationName { get; set; } 
-        string category { get; set; } 
-        string level { get; set; } 
-        string resultType { get; set; } 
-        string resultDescription { get; set; } 
-        string durationMs { get; set; } 
-        string callerIpAddress { get; set; } 
-        string correlationId { get; set; } 
-        string identity { get; set; } 
-        string location { get; set; } 
-        Dictionary<string, string> properties { get; set; } 
-    }; 
-    static void Main(string[] args) 
-    { 
-        Console.WriteLine("Monitoring. Press Enter key to exit.\n"); 
-        eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, monitoringEndpointName); 
-        var d2cPartitions = eventHubClient.GetRuntimeInformationAsync().PartitionIds; 
-        CancellationTokenSource cts = new CancellationTokenSource(); 
-        var tasks = new List<Task>(); 
-        foreach (string partition in d2cPartitions) 
-        { 
-            tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token)); 
-        } 
-        Console.ReadLine(); 
-        Console.WriteLine("Exiting..."); 
-        cts.Cancel(); 
-        Task.WaitAll(tasks.ToArray()); 
-    } 
-    private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct) 
-    { 
-        var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow); 
-        while (true) 
-        { 
-            if (ct.IsCancellationRequested) 
-            { 
-                await eventHubReceiver.CloseAsync(); 
-                break; 
-            } 
-            EventData eventData = await eventHubReceiver.ReceiveAsync(new TimeSpan(0,0,10)); 
-            if (eventData != null) 
-            { 
-                string data = Encoding.UTF8.GetString(eventData.GetBytes()); 
-                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data); 
-                var deserializer = new JavaScriptSerializer(); 
-                //deserialize json data to azure monitor object 
-                AzureMonitorDiagnosticLog message = new JavaScriptSerializer().Deserialize<AzureMonitorDiagnosticLog>(result); 
- 
-            } 
-        } 
-    } 
-} 
+    static string connectionString = "{your AMS eventhub endpoint connection string}";
+    static string monitoringEndpointName = "{your AMS event hub endpoint name}";
+    static EventHubClient eventHubClient;
+    //This is the Diagnostic Settings schema
+    class AzureMonitorDiagnosticLog
+    {
+        string time { get; set; }
+        string resourceId { get; set; }
+        string operationName { get; set; }
+        string category { get; set; }
+        string level { get; set; }
+        string resultType { get; set; }
+        string resultDescription { get; set; }
+        string durationMs { get; set; }
+        string callerIpAddress { get; set; }
+        string correlationId { get; set; }
+        string identity { get; set; }
+        string location { get; set; }
+        Dictionary<string, string> properties { get; set; }
+    };
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Monitoring. Press Enter key to exit.\n");
+        eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, monitoringEndpointName);
+        var d2cPartitions = eventHubClient.GetRuntimeInformationAsync().PartitionIds;
+        CancellationTokenSource cts = new CancellationTokenSource();
+        var tasks = new List<Task>();
+        foreach (string partition in d2cPartitions)
+        {
+            tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token));
+        }
+        Console.ReadLine();
+        Console.WriteLine("Exiting...");
+        cts.Cancel();
+        Task.WaitAll(tasks.ToArray());
+    }
+
+    private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
+    {
+        var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow);
+        while (true)
+        {
+            if (ct.IsCancellationRequested)
+            {
+                await eventHubReceiver.CloseAsync();
+                break;
+            }
+            EventData eventData = await eventHubReceiver.ReceiveAsync(new TimeSpan(0,0,10));
+            if (eventData != null)
+            {
+                string data = Encoding.UTF8.GetString(eventData.GetBytes());
+                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data);
+                var deserializer = new JavaScriptSerializer();
+                //deserialize json data to azure monitor object
+                AzureMonitorDiagnosticLog message = new JavaScriptSerializer().Deserialize<AzureMonitorDiagnosticLog>(result);
+            }
+        }
+    }
+}
 ```
 
 ## <a name="use-azure-resource-health"></a>Az Azure Resource Health eszközt használni
 
-Az Azure Resource Health segítségével figyelheti az IoT hub működik-e. Emellett megismerjük, akár regionális kimaradás az IoT hub állapotának negatív hatással van. Szeretné megtudni, részletes adatait az Azure IoT Hub állapotát, akkor javasoljuk, hogy Ön [használata az Azure Monitor](#use-azure-monitor). 
+Az Azure Resource Health segítségével figyelheti az IoT hub működik-e. Emellett megismerjük, akár regionális kimaradás az IoT hub állapotának negatív hatással van. Szeretné megtudni, részletes adatait az Azure IoT Hub állapotát, akkor javasoljuk, hogy Ön [használata az Azure Monitor](#use-azure-monitor).
 
 Az Azure IoT Hub egy regionális szinten állapotát jelzi. Regionális kimaradás hatással van az IoT hubhoz, ha az állapot mutatja **ismeretlen**. További tudnivalókért lásd: [erőforrástípusok és állapot-ellenőrzések a az Azure resource health segítségével elérhető](../service-health/resource-health-checks-resource-types.md).
 
 Az IoT hub állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Navigáljon a **Service Health** > **a Resource health**.
-1. A legördülő mezőben válassza ki az előfizetését, majd válassza ki **az IoT Hub** erőforrás típusaként.
+
+2. Navigáljon a **Service Health** > **a Resource health**.
+
+3. A legördülő mezőben válassza ki az előfizetését, majd válassza ki **az IoT Hub** erőforrás típusaként.
 
 Egészségügyi adatok értelmezése kapcsolatos további információkért lásd: [az Azure resource health áttekintése](../service-health/resource-health-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Megismerheti az IoT Hub-metrikák](iot-hub-metrics.md)
-- [IoT távoli figyelés és értesítések az Azure Logic Apps csatlakoztatása az IoT hub és a postaláda](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
-
+* [Understand IoT Hub metrics](iot-hub-metrics.md)
+* [IoT távoli figyelés és értesítések az Azure Logic Apps csatlakoztatása az IoT hub és a postaláda](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

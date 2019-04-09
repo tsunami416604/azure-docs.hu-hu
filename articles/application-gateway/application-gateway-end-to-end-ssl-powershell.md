@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/10/2019
+ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 3da9982d1af886a4329ddc77a7b297e9e285453e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 258113f5201ad3d09df6119dec738d528e640c40
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101550"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269350"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Végpontok közötti SSL konfigurálása az Application Gateway a PowerShell használatával
 
@@ -52,20 +52,17 @@ A konfigurációs folyamat a következő szakaszokban ismertetett.
 
 Ez a szakasz végigvezeti egy erőforráscsoport, amely tartalmazza az application gateway létrehozása.
 
-
 1. Jelentkezzen be Azure-fiókjába.
 
    ```powershell
    Connect-AzAccount
    ```
 
-
 2. Válassza ki a ebben a forgatókönyvben használni kívánt előfizetést.
 
    ```powershell
    Select-Azsubscription -SubscriptionName "<Subscription name>"
    ```
-
 
 3. Hozzon létre egy erőforráscsoportot. (Hagyja ki ezt a lépést, ha egy meglévő erőforráscsoportot használ.)
 
@@ -77,7 +74,6 @@ Ez a szakasz végigvezeti egy erőforráscsoport, amely tartalmazza az applicati
 
 Az alábbi példa létrehoz egy virtuális hálózatot és két alhálózatra. Egy alhálózatot az application gateway tárolásához. A másik alhálózatot a háttérrendszerek, amelyek a webalkalmazás üzemeltetéséhez.
 
-
 1. Rendeljen hozzá egy használható az application gateway az alhálózat-címtartományt.
 
    ```powershell
@@ -86,8 +82,7 @@ Az alábbi példa létrehoz egy virtuális hálózatot és két alhálózatra. E
 
    > [!NOTE]
    > Az application Gateway konfigurált alhálózatok megfelelően kell méretezni. Egy application gateway konfigurálható legfeljebb 10-példányokhoz. Minden példány egy IP-címet az alhálózatról vesz igénybe. Túl kicsi alhálózat kedvezőtlen hatással lehet, horizontális felskálázás egy application gateway.
-   > 
-   > 
+   >
 
 2. A háttér-címkészletet kell használni egy olyan címtartományt rendel.
 
@@ -130,7 +125,6 @@ Minden konfigurációs elemet az application gateway létrehozása előtt vannak
    $gipconfig = New-AzApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
    ```
 
-
 2. Hozzon létre egy előtérbeli IP-konfigurációhoz. Ez a beállítás egy nyilvános vagy magánhálózati IP-címet az előtér az application Gateway rendeli hozzá. A következő lépés a nyilvános IP-címet az előző lépésben társítja az előtérbeli IP-konfigurációhoz.
 
    ```powershell
@@ -145,7 +139,6 @@ Minden konfigurációs elemet az application gateway létrehozása előtt vannak
 
    > [!NOTE]
    > Egy teljesen minősített tartománynevét (FQDN) is egy érvényes értéket használja az IP-cím helyett a háttér-kiszolgálókhoz. Használatával engedélyezheti a **- BackendFqdns** váltani. 
-
 
 4. Konfigurálja az előtérbeli IP-portot a nyilvános IP-cím végponthoz. A port a port, amelyet a végfelhasználók csatlakozni.
 
@@ -177,7 +170,7 @@ Minden konfigurációs elemet az application gateway létrehozása előtt vannak
    > Állomásfejléc és kiszolgálónév jelzése (SNI) a háttérben használja, ha a lekért nyilvános kulcs nem lehet a kívánt helyet, hogy melyik adatforgalmi folyamatokat. Ha kétségei vannak, látogasson el a https://127.0.0.1/ győződjön meg arról, melyik tanúsítványt használják a háttér-kiszolgálókon a *alapértelmezett* SSL-kötés létrehozásához. A kérelemből a nyilvános kulcsot használja az ebben a szakaszban. Ha a HTTPS-kötések használunk állomásfejléc és SNI, és nem jelenik meg egy válasz és a tanúsítvány manuális böngésző kérést a https://127.0.0.1/ a háttér-kiszolgálókon be kell állítania egy alapértelmezett SSL-kötés van a számukra. Ha ezt nem teszi meg, a sikertelen mintavételek és a háttér nem szerepel az engedélyezési listán.
 
    ```powershell
-   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
+   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\cert.cer
    ```
 
    > [!NOTE]
@@ -227,7 +220,7 @@ Minden konfigurációs elemet az application gateway létrehozása előtt vannak
     Az alábbi példa állítja a minimális protokoll verziója **TLSv1_2** , és lehetővé teszi **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384**, és **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256** csak.
 
     ```powershell
-    $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+    $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
     ```
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása

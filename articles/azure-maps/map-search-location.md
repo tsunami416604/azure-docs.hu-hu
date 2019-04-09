@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8ae6c8a20a05df723d3f6b394e0639f218896a85
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: be01c9d96386804b8bc074d81041104cbf592df6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845137"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271594"
 ---
 # <a name="show-search-results-on-the-map"></a>A térképen a keresési eredmények megjelenítése
 
@@ -29,11 +29,11 @@ Két módon hely hasznos helyek keresése. Egyik módja egy modul segítségéve
 
 A fenti kód az első kódblokkot egy térkép-objektumot hoz létre, és beállítja a hitelesítési mechanizmust, az előfizetési kulcsot használják. Látható [térkép létrehozásához](./map-create.md) útmutatást.
 
-A második kódblokkot létrehoz egy **SubscriptionKeyCredentialPolicy** az előfizetési kulcsot az Azure Maps HTTP-kérések hitelesítéséhez. A **atlas.service.MapsURL.newPipeline()** fogadja a a **SubscriptionKeyCredential** házirendet, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) példány. A **searchURL** egy URL-címet jelöli az Azure Maps [keresési](https://docs.microsoft.com/rest/api/maps/search) műveleteket.
+A második kódblokkot létrehoz egy `SubscriptionKeyCredentialPolicy` az előfizetési kulcsot az Azure Maps HTTP-kérések hitelesítéséhez. A `atlas.service.MapsURL.newPipeline()` fogadja a a `SubscriptionKeyCredential` házirendet, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) példány. A `searchURL` egy URL-címet jelöli az Azure Maps [keresési](https://docs.microsoft.com/rest/api/maps/search) műveleteket.
 
 A harmadik kódblokkot létrehoz egy objektum használhatja a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) osztályt, és a keresési eredmények hozzá. A [szimbólum réteg](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) használja a szöveges vagy ikonjai csomagolni szoftverfrissítésipont-alapú adatok megjelenítése a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) szimbólumra a térképen.  Egy szimbólum réteg majd jön létre, és az adatforrás hozzáadásakor a szimbólum réteghez, majd a térkép felvett.
 
-A negyedik kódblokk használja a [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) metódus az a [modul](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2). Lehetővé teszi a szabad formátumú szöveges keresés keresztül végezhető el a [keresés intelligens lekérése rest API-t](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) hasznos helyekre vezető útvonalak keresése. Get-keresés intelligens API intelligens bemenetek bármilyen kombinációját képes kezelni. A válaszból GeoJSON funkció gyűjtemény majd ki kell olvasni használatával a **geojson.getFeatures()** metódust, és hozzáadja az adatforráshoz, ami az adatok a térképen a szimbólum réteg keresztül rendereli a rendszer automatikusan eredményez.
+A negyedik kódblokk használja a [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) metódus az a [modul](https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js). Lehetővé teszi a szabad formátumú szöveges keresés keresztül végezhető el a [keresés intelligens lekérése rest API-t](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) hasznos helyekre vezető útvonalak keresése. Get-keresés intelligens API intelligens bemenetek bármilyen kombinációját képes kezelni. A válaszból GeoJSON funkció gyűjtemény majd ki kell olvasni használatával a `geojson.getFeatures()` metódust, és hozzáadja az adatforráshoz, ami az adatok a térképen a szimbólum réteg keresztül rendereli a rendszer automatikusan eredményez.
 
 A legutóbbi kódblokkot segítségével állítja be a kamera esik, a térkép a térkép [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonság.
 
@@ -75,4 +75,4 @@ A teljes hitelesítésikód-példák a következő cikkekben talál:
 > [Koordináta információinak lekérése](./map-get-information-from-coordinate.md)
 <!-- Comment added to suppress false positive warning -->
 > [!div class="nextstepaction"]
-> [Útvonal megjelenítése a-b](./map-route.md)
+> [Útvonal megjelenítése A-ból B-be](./map-route.md)

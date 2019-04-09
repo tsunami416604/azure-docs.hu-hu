@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: jingwang
-ms.openlocfilehash: d589714be387bdff14d76ccd9417123295a62770
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: aba469081bf1f1aa265a55ffbd683ba19bc41b6e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522006"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263332"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Lake Storage Gen2 Azure Data Factory használatával
 
@@ -52,7 +52,7 @@ A következő szakaszok segítségével határozhatók meg adott Data Factory-en
 Az Azure Data Lake Storage Gen2-összekötő a következő hitelesítési típusok támogatása, tekintse meg a megfelelő szakaszban talál:
 
 - [Fiók kulcsos hitelesítés](#account-key-authentication)
-- [Egyszerű szolgáltatás hitelesítése](#service-principal-authentication)
+- [Egyszerű szolgáltatásnév hitelesítése](#service-principal-authentication)
 - [Felügyelt identitások Azure-erőforrások hitelesítéshez](#managed-identity)
 
 ### <a name="account-key-authentication"></a>Fiók kulcsos hitelesítés
@@ -66,7 +66,7 @@ A storage-fiók kulcsos hitelesítést használ, a következő tulajdonságok t�
 | accountKey | A Data Lake Storage Gen2 szolgáltatás-fiók kulcsát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -104,7 +104,7 @@ Egyszerű szolgáltatásnév hitelesítése használatához kövesse az alábbi 
     - **Fogadóként**, a Storage Explorerben, adjon meg legalább **írás + végrehajtás** engedély szükséges gyermekelemek létrehozásához a mappában. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább **Storage-Blobadatok Közreműködője** szerepkör.
 
 >[!NOTE]
->Listára mappákat a fiók szintjén kezdve, be kell állítania a szolgáltatásnév az engedély megadása az engedély **storage-fiók "Execute" engedéllyel rendelkező** vagy IAM engedéllyel. Ez igaz, ha használja a:
+>A lista mappákat a fiók szintjén, vagy a kapcsolat teszteléséhez, be kell állítania a szolgáltatásnév az engedély megadása az engedély **IAM az "Execute" engedéllyel rendelkező tárfiók**. Ez igaz, ha használja a:
 >- **Adatok másolása eszköz** a szerző másolási folyamat.
 >- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt. 
 >Ha a fiók szintjén engedély megadására szempont, kihagyhatja kapcsolat tesztelése és a bemeneti elérési út manuális létrehozása alatt. A másolási tevékenység továbbra is működni fog, amíg a egyszerű szolgáltatást kell másolni a fájlokat a megfelelő engedéllyel rendelkező kapnak.
@@ -120,7 +120,7 @@ Ezek a Tulajdonságok támogatottak társított szolgáltatást:
 | bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -158,7 +158,7 @@ Felügyelt identitások Azure-erőforrások hitelesítés használatához köves
     - **Fogadóként**, a Storage Explorerben, adjon meg legalább **írás + végrehajtás** engedély szükséges gyermekelemek létrehozásához a mappában. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább **Storage-Blobadatok Közreműködője** szerepkör.
 
 >[!NOTE]
->Listára a fiók szintjén kezdve mappákba, be kell állítania az engedély az engedély megadása a felügyelt identitás **storage-fiók "Execute" engedéllyel rendelkező** vagy IAM engedéllyel. Ez igaz, ha használja a:
+>Listára mappákat a fiók szintjén, vagy a kapcsolat teszteléséhez, be kell állítania az engedély az engedély megadása a felügyelt identitás **IAM az "Execute" engedéllyel rendelkező tárfiók**. Ez igaz, ha használja a:
 >- **Adatok másolása eszköz** a szerző másolási folyamat.
 >- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt. 
 >Ha a fiók szintjén engedély megadására szempont, kihagyhatja kapcsolat tesztelése és a bemeneti elérési út manuális létrehozása alatt. A másolási tevékenység továbbra is működni fog, amíg a felügyelt identitást kapnak a átmásolni a fájlokat a megfelelő engedéllyel rendelkező.
@@ -171,7 +171,7 @@ Ezek a Tulajdonságok támogatottak társított szolgáltatást:
 | url | A Data Lake Storage Gen2-mintával rendelkező végpontot `https://<accountname>.dfs.core.windows.net`. | Igen | 
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -206,7 +206,7 @@ Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját
 >[!TIP]
 >Másolja egy mappában található összes fájlt, adja meg a **folderPath** csak.<br>Adja meg a megadott nevű egyetlen fájl másolásához **folderPath** mappára vonatkozó részt a és **fileName** nevére.<br>Másolja a fájlokat egy mappában egy részét, adja meg a **folderPath** mappára vonatkozó részt a és **fileName** helyettesítő szűrővel. 
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -249,7 +249,7 @@ A következő tulajdonságok támogatottak a másolási tevékenység **forrás*
 | type | A másolási tevékenység forrása típusa tulajdonságát állítsa **AzureBlobFSSource**. |Igen |
 | a rekurzív | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappába. Vegye figyelembe, hogy ha a rekurzív értéke igaz, és a fogadó a fájlalapú tároló, egy üres mappát vagy almappát nem másolja vagy létrehozott, a fogadó.<br/>Engedélyezett értékek a következők **igaz** (alapértelmezett), és **hamis**. | Nem |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -290,7 +290,7 @@ A következő tulajdonságok támogatottak a másolási tevékenység **fogadó*
 | type | A másolási tevékenység fogadó típusa tulajdonságát állítsa **AzureBlobFSSink**. |Igen |
 | a copyBehavior | A másolási viselkedés határozza meg, ha a forrás fájlok fájlalapú adattárból.<br/><br/>Engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: Megőrzi a hierarchiája a célmappában. A forrásmappa forrás-fájl elérési útja megegyezik a célmappában a célfájl elérési útja.<br/><b>-FlattenHierarchy</b>: Minden fájl a forrásmappából szerepelnek, az első szintjét a célmappában. A cél fájlok automatikusan létrehozott névvel rendelkeznek. <br/><b>-MergeFiles</b>: Egy fájl összes fájlt a forrásmappából egyesíti. A fájl neve meg van adva, az egyesített fájlnév-e a megadott néven. Ellenkező esetben egy automatikusan létrehozott nevét. | Nem |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[

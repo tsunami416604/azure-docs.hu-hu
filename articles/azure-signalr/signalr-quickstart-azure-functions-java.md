@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: b2f89d3fbb427cc3e14be231d4ffae879e641f2c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9e4e64b99a69e523547bae04146c7460d08bc1df
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554527"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261173"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-java"></a>Gyors útmutató: Csevegőszoba létrehozása az Azure Functions és a SignalR Service Java használatával
 
@@ -58,18 +58,18 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
     ![SignalR szolgáltatás létrehozása](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. A Kódszerkesztő, nyissa meg a *Csevegés/src/java* a klónozott adattár-mappában.
+1. A Kódszerkesztő, nyissa meg a *a java/src/Csevegés* a klónozott adattár-mappában.
 
 1. Nevezze át a *local.settings.sample.json* fájlt *local.settings.json* névre.
 
 1. A **local.settings.json** fájlban illessze be a kapcsolati sztringet az **AzureSignalRConnectionString** beállítás értékéhez. Mentse a fájlt.
 
-1. A fő fájlt, amely tartalmazza a funkciók vannak *src/main/java/com/function/Functions.java*:
+1. A fő fájlt, amely tartalmazza a funkciók vannak *src/chat/java/src/main/java/com/function/Functions.java*:
 
     - **negotiate** – A *SignalRConnectionInfo* bemeneti kötést használja érvényes kapcsolatadatok létrehozásához és visszaküldéséhez.
     - **SendMessage** – Csevegési üzenet fogadása a kérelem törzsében szereplő, és használja a *SignalR* kimeneti, kötelező, az üzenet összes szórási csatlakoztatva az ügyfélalkalmazások számára.
 
-1. A terminálban ellenőrizze, hogy az a *Csevegés/src/java* mappát. A függvényalkalmazás létrehozása.
+1. A terminálban ellenőrizze, hogy az a *a java/src/Csevegés* mappát. A függvényalkalmazás létrehozása.
 
     ```bash
     mvn clean package

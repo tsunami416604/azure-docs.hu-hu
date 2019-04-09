@@ -16,11 +16,11 @@ ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
 ms.openlocfilehash: feab6bcaf23852ae00a1cd09f9ad30cd6397bb99
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056282"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276201"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Gyors útmutató: Windows Server virtuális gép létrehozása az Azure Stack PowerShell használatával
 

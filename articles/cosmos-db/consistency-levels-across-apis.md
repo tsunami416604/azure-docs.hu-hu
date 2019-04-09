@@ -1,18 +1,18 @@
 ---
 title: Konzisztenciaszintek és Azure Cosmos DB API-k
 description: A konzisztenciaszintek ismertetése az Azure Cosmos DB API-k között.
-author: markjbrown
-ms.author: mjbrown
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 04/08/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 902303a8f55f4494e0cc6c21b0438e41437c0567
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 7a8617ae2b01fc89a4c957b8610164a2b53a16f5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620665"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274773"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és Azure Cosmos DB API-k
 
@@ -33,7 +33,7 @@ Eltérően AzureCosmos DB Apache Cassandra nem natív módon biztosít pontosan 
 
 Az alábbi táblázat mutatja be, hogyan Cassandra natív konzisztenciaszintekről vannak leképezve konzisztenciaszintek az Azure Cosmos DB Cassandra API használatakor:  
 
-[ ![Cassandra konzisztencia modell leképezés](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png) ](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
+[![Cassandra konzisztencia modell leképezés](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
 ## <a id="mongo-mapping"></a>Mongodb-hez és az Azure Cosmos DB konzisztenciaszintjeinek közötti megfeleltetés
 
@@ -51,7 +51,7 @@ Mongodb-hez készült Azure Cosmos DB API használatakor:
 
 Az alábbi táblázat bemutatja, hogyan a natív MongoDB írási/olvasási aggályokat vannak leképezve az Azure Cosmos konzisztenciaszintek mongodb-hez készült Azure Cosmos DB API használatakor:
 
-[ ![MongoDB konzisztencia modell leképezés](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png) ](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
+[![MongoDB konzisztencia modell leképezés](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 

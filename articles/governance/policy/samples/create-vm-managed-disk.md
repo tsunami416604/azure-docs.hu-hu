@@ -1,19 +1,18 @@
 ---
 title: Minta - naplózása nem használó virtuális gép felügyelt lemez
 description: A példa json-definícióját, ha egy virtuális gép létrehozása felügyelt lemezeket nem használó eseményeket.
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 469e50e0f71f9c4bba93f3d339e02348b4952e4b
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 8f1823ecfad7b78dc6360ffdfb517b0dbe858b53
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803476"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271441"
 ---
 # <a name="sample---audit-when-vm-does-not-use-managed-disk"></a>Minta - naplózása, amikor a virtuális gép nem használ felügyelt lemez
 
@@ -29,7 +28,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Az Azure-bA a szabályzat minta üzembe helyezése](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Faudit-non-managed-disk-vm%2Fazurepolicy.json)
+[![Daz Azure-bA a szabályzat minta eploy](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Faudit-non-managed-disk-vm%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 

@@ -16,16 +16,16 @@ ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/27/2019
-ms.openlocfilehash: 00eb4fc3eb0b2e7120208e6318bf35fc2cc6f188
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: bf355aec2a76a42986320a74447860a8baa968ef
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649407"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257400"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 frissítése
 
-*Vonatkozik: Az Azure Stack integrált rendszerek*
+*A következőre érvényes Az Azure Stackkel használható integrált rendszerek*
 
 Ez a cikk ismerteti a 1901 csomag tartalmát. A frissítési fejlesztései, javításokat és új funkciók az Azure Stack ezen verziója tartalmazza. Ez a cikk is ebben a kiadásban az ismert problémákat, és tartalmaz egy hivatkozást a frissítés letöltése. Ismert problémákkal kapcsolatban közvetlenül a frissítési folyamat, és a build (telepítés utáni) problémái vannak felosztva.
 
@@ -102,7 +102,7 @@ A frissítés tartalmazza a következő új funkciókat és fejlesztéseket az A
          `Get-AzsInfrastructureVolume` elavult. Új parancsmag `Get-AzsVolume`.  
          `Get-AzsStorageSystem` elavult.  Új parancsmag `Get-AzsStorageSubSystem`.  
          `Get-AzsStoragePool` elavult. A `StorageSubSystem` objektum tartalmazza a kapacitás tulajdonság.  
-   * **Azs.Compute.Admin Module**  
+   * **Azs.Compute.Admin modul**  
          Hibajavítás – `Add-AzsPlatformImage`, `Get-AzsPlatformImage`: Hívó `ConvertTo-PlatformImageObject` csak az a sikerhez vezető utat.  
          BugFix - `Add-AzsVmExtension`, `Get-AzsVmExtension`: ConvertTo-VmExtensionObject hívása csak a sikerhez vezető utat.  
    * **Azs.Storage.Admin Module**  
@@ -193,17 +193,17 @@ Abban az esetben, ha a rendszer elérte a Virtuálisgép-méretezési csoport me
 
 Ez a frissítés a következő biztonsági frissítéseket telepíti:  
 
-- [CVE-2018-8477](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8477)
+- [CVE – 2018-8477](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8477)
 - [CVE-2018-8514](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8514)
-- [CVE-2018-8580](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8580)
+- [CVE – 2018-8580](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8580)
 - [CVE-2018-8595](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8595)
 - [CVE-2018-8596](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8596)
 - [CVE-2018-8598](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8598)
-- [CVE-2018-8621](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8621)
-- [CVE-2018-8622](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8622)
-- [CVE-2018-8627](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8627)
-- [CVE-2018-8637](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8637)
-- [CVE-2018-8638](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8638)
+- [CVE – 2018-8621](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8621)
+- [CVE – 2018-8622](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8622)
+- [CVE – 2018-8627](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8627)
+- [CVE – 2018-8637](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8637)
+- [CVE – 2018-8638](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2018-8638)
 - [ADV190001](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190001)
 - [CVE-2019-0536](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0536)
 - [CVE-2019-0537](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0537)
@@ -215,8 +215,8 @@ Ez a frissítés a következő biztonsági frissítéseket telepíti:
 - [CVE-2019-0560](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0560)
 - [CVE-2019-0561](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0561)
 - [CVE-2019-0569](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0569)
-- [CVE-2019-0585](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0585)
-- [CVE-2019-0588](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0588)
+- [CVE – A 2019-0585](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0585)
+- [CVE – A 2019-0588](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0588)
 
 
 További információ a biztonsági rések, kattintson a fenti hivatkozásokat a, vagy tekintse meg a Microsoft Tudásbázis cikkei [4480977](https://support.microsoft.com/en-us/help/4480977).
@@ -258,7 +258,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 <!-- ### Health and monitoring -->
 
-### <a name="compute"></a>Számítás
+### <a name="compute"></a>Compute
 
 - Amikor egy új Windows virtuális gép (VM) hoz létre, a következő hiba jelenhet meg:
 
@@ -279,7 +279,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 - Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy jelentkezzen be az SSH-kulcsok használata. Áthidaló megoldásként használja a Linux-bővítményt a Virtuálisgép-hozzáférés SSH-kulcsok megvalósításához a kiépítés után, vagy jelszóalapú hitelesítés használatára.
 
-### <a name="networking"></a>Hálózatkezelés  
+### <a name="networking"></a>Hálózat  
 
 <!-- 3239127 - IS, ASDK -->
 - Az Azure Stack portálon Ha módosít egy statikus IP-címet az IP-konfiguráció a Virtuálisgép-példányhoz csatolt hálózati adapterhez kötött látni fogja egy figyelmeztető üzenet arról, hogy 
@@ -315,6 +315,10 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>Rendszernapló 
+- A syslog-konfiguráció nincs megőrizve folyamata alatt tartózkodnak egy frissítést, a syslog-ügyfél elveszíti a annak konfigurációját, és leállítja a továbbított syslog-üzeneteket eredményez. A probléma az Azure Stack minden verziójára vonatkozik, a syslog-ügyfél (1809) a nyilvánosan elérhető verzió óta.
+A megoldás, hogy a syslog-ügyfél újrakonfigurálása az Azure Stack-frissítés telepítését követően.
 
 ## <a name="download-the-update"></a>A frissítés letöltése
 

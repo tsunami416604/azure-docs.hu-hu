@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3253c26f99c470a256b937844138d8875219cbd1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 35f9a8949f5b51f88b9297890fc5562e7b8dd591
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878040"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273379"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Oktatóanyag: A Scout segít az Azure Active Directory-integráció
 
@@ -157,7 +157,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés segítségével Scou
 
     ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings4.png)
 
-    a. A **egyszeri bejelentkezési URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+    a. A **egyszeri bejelentkezési URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
 
     b. Kattintson a **tanúsítvány feltöltése** feltölteni a **Certificate(Base64)** az Azure-portálról letöltött.
 
@@ -232,6 +232,6 @@ Ha a hozzáférési panelen a Scout súgó csempére kattint, akkor kell lehet a
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

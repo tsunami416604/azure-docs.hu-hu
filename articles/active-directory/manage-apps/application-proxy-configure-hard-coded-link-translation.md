@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c010a7bcd2d811b31d9c2d05e81cce5dc85c2ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118595"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262550"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Átirányítási szoftveresen kötött mutató hivatkozásokat az Azure AD-alkalmazásproxyval közzétett alkalmazások
 
@@ -81,6 +81,31 @@ A helyszíni alkalmazások belső hivatkozások közös két típusa van:
 
 - **Belső relatív hivatkozásokat** , hogy egy közös erőforráshoz egy helyi fájlszerkezetet a pont, például `/claims/claims.html`. Ezek a hivatkozások automatikusan alkalmazásokat, amelyek alkalmazásproxyn keresztül közzétett, és továbbra is működik, vagy a hivatkozás fordítási nélkül működik. 
 - **Szoftveresen kötött belső hivatkozások** hasonló más helyszíni alkalmazások `http://expenses` vagy hasonló fájlok közzétett `http://expenses/logo.jpg`. A hivatkozás fordítási szolgáltatást szoftveresen kötött belső hivatkozások működik, és módosítja őket, hogy a külső URL-címeket, a távoli felhasználók oldhatják mutasson.
+
+Az, hogy a Application Proxy hivatkozás fordítási támogatja a beágyazott HTML-kód címkék teljes listája:
+* a
+* Hang
+* Alapja
+* Gomb
+* DIV
+* Beágyazása
+* űrlap
+* keret
+* a fő
+* html
+* IFRAME-keret
+* kép
+* bemenet
+* hivatkozás
+* MenuItem
+* meta
+* objektum
+* parancsfájl
+* source
+* Nyomon követése
+* Videó
+
+Ezenkívül a CSS belül az URL-cím attribútum is fordítja le.
 
 ### <a name="how-do-apps-link-to-each-other"></a>Alkalmazások hogyan tegye hivatkozni egymással?
 

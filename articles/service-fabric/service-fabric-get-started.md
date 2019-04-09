@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2018
+ms.date: 04/02/2019
 ms.author: aljo
-ms.openlocfilehash: ccb5f690b7947192af401233aa03e799e5c5be0b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 45d5d1b4e050d01b003b6321e1af44c0da762e19
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668721"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275493"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -69,8 +69,8 @@ Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
 * [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
 
 Az aktuális verziók a következők:
-* Service Fabric SDK és eszközök 3.3.644
-* Service Fabric-futtatókörnyezet 6.4.644
+* Service Fabric SDK és eszközök 3.3.654
+* Service Fabric-futtatókörnyezet 6.4.654
 * Service Fabric Tools Pro Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 tartalmazza a Service Fabric Tools for Visual Studio 2.4.11024.1 
 
@@ -94,7 +94,7 @@ Most, hogy végzett a fejlesztőkörnyezet beállításával, belefoghat az alka
 * [Ismerje meg, hogyan hozzon létre, telepíthetnek és alkalmazások kezelése](service-fabric-tutorial-create-dotnet-app.md)
 * [További tudnivalók a programozási modellekről: A Reliable Services és Reliable Actors](service-fabric-choose-framework.md)
 * [A Service Fabric mintakódjainak megtekintése a GitHubon](https://aka.ms/servicefabricsamples)
-* [A fürt megjelenítése a Service Fabric Explorer segítségével](service-fabric-visualizing-your-cluster.md)
+* [A fürt megjelenítése a Service Fabric Explorerrel](service-fabric-visualizing-your-cluster.md)
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "A Service Fabric kampányoldala"

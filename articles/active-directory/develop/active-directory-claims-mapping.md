@@ -13,12 +13,12 @@ ms.date: 03/28/2019
 ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e492586f0c70d4cd3013ef8f466afd6bb2bb65ac
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884077"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260306"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: A bérlőben (előzetes verzió) egy adott alkalmazáshoz tartozó jogkivonatok kibocsátott jogcímek testreszabása
 
@@ -415,7 +415,7 @@ A kiválasztott módszert alapján, bemenetek és kimenetek várható. A bemenet
 
 ### <a name="custom-signing-key"></a>Egyéni kulcs aláírása
 
-Egyéni aláíró kulcs hozzá kell rendelni egy jogcímtársítások házirend érvénybe a szolgáltatásnév-objektum. Az egyéni aláírókulccsal aláírt kiadott összes jogkivonat, a szabályzat által lett érintő, és fogadja el a jogkivonatok alkalmazásokat kell konfigurálni a aláírókulccsal aláírt. Ez biztosítja, hogy a jogkivonatok létrehozója a jogcímek társítása a házirend által módosítva lett, és úgy védi az alkalmazásokat kártékony szándékú felhasználók által létrehozott házirendek hozzárendelése jogcímekből származó nyugtázása.
+Egyéni aláíró kulcs hozzá kell rendelni egy jogcímtársítások házirend érvénybe a szolgáltatásnév-objektum. Ez biztosítja, hogy a jogkivonatok létrehozója a jogcímek társítása a házirend által módosítva lett, és úgy védi az alkalmazásokat kártékony szándékú felhasználók által létrehozott házirendek hozzárendelése jogcímekből származó nyugtázása.  Alkalmazások, amelyekre engedélyezve leképezés ellenőriznie kell a jogkivonat-aláíró a kulcsok hozzáfűzésével speciális URI jogcímek `appid={client_id}` , azok [metaadat-kérelmek OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document).  
 
 ### <a name="cross-tenant-scenarios"></a>Több-bérlős forgatókönyvek
 

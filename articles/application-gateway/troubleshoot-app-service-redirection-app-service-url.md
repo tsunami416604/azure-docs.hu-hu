@@ -7,18 +7,24 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 359d75f10f95b0e41ccd9a869d49247355f0d5d0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f456cfec82a315a2be877a52e4f3f1850b992736
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123181"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274536"
 ---
-# <a name="troubleshoot-application-gateway-with-app-service--redirection-to-app-services-url"></a>App Service-szel rendelkező Application Gateway hibaelhárítása – átirányítás az App Service URL-címére
+# <a name="troubleshoot-application-gateway-with-app-service"></a>Az App Service az Application Gateway hibaelhárítása
 
- Ismerje meg, hogyan diagnosztizálhatja és megoldhatja a problémákat is az Application Gateway, ahol az App Service URL-cím első elérhetővé.
+Ismerje meg, hogyan diagnosztizálhatja és megoldhatja a problémákat észlelt az Application Gateway és az App Service-t a háttérkiszolgálóra.
 
 ## <a name="overview"></a>Áttekintés
+
+Ebben a cikkben, megtudhatja, hogyan háríthatja el a következő hibákat:
+
+> [!div class="checklist"]
+> * Az App Service első téve a böngészőben, ha van egy átirányítási URL-címe
+> * Az App Service ARRAffinity Cookie-készlet App Service-ben gazdagépnevére (example.azurewebsites.net) eredeti gazdára helyett
 
 Amikor konfigurál egy App Service az Application Gateway háttérkészlet rendelkező nyilvános, és ha az alkalmazás kódjában konfigurált átirányítás, előfordulhat, hogy látható az Application Gateway használatakor, amelyeket a böngésző közvetlenül az alkalmazás a rendszer átirányítja Szolgáltatás URL-CÍMÉT.
 
@@ -28,6 +34,8 @@ A probléma a következő fő okok miatt fordulhat elő:
 - Azure AD-hitelesítés, amely azt eredményezi, az átirányítás rendelkezik.
 - Engedélyezte, hogy az Application Gateway a HTTP-beállítások "Válasszon gazdagépnév a háttér-cím" kapcsolóhoz.
 - Nem kell az egyéni tartomány az App Service regisztrálva.
+
+Is amikor az Application Gateway mögött App Services használ, és az Application Gateway eléréséhez egy egyéni tartományt használ, látni a ARRAffinity cookie-t, az App Service által beállított tartomány értékét képviselik, a "example.azurewebsites.net" tartománynév. Ha azt szeretné, hogy a cookie-k tartományhoz, valamint az eredeti hostname, kövesse az ebben a cikkben a megoldást.
 
 ## <a name="sample-configuration"></a>Példa konfigurációja
 
@@ -94,6 +102,16 @@ Ennek érdekében kell egy egyéni tartománnyal, és kövesse az alábbi folyam
 - Társítsa az egyéni mintavétel a háttérbeli HTTP-beállításokra, és ellenőrizze a háttérrendszer állapota, ha kifogástalan.
 
 - Miután ez megtörtént, az Application Gateway az azonos állomásnévvel "www.contoso.com" most továbbítani kell az App Service-ben, és az átirányítás úgy történik, az azonos állomásnévvel a. A példa-kérelmek és válaszfejlécek alább megtekinthető.
+
+Megvalósítása a PowerShell használatával egy meglévő telepítéshez a fenti lépéseket, kövesse az alábbi minta PowerShell-parancsfájlt. Ne feledje, hogy azt még nem használta a - PickHostname kapcsolók a HTTP-beállítások és a mintavételi konfigurációban.
+
+```azurepowershell-interactive
+$gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG
+Set-AzApplicationGatewayProbeConfig -ApplicationGateway $gw -Name AppServiceProbe -Protocol Http -HostName "example.azurewebsites.net" -Path "/" -Interval 30 -Timeout 30 -UnhealthyThreshold 3
+$probe=Get-AzApplicationGatewayProbeConfig -Name AppServiceProbe -ApplicationGateway $gw
+Set-AzApplicationGatewayBackendHttpSettings -Name appgwhttpsettings -ApplicationGateway $gw -Port 80 -Protocol Http -CookieBasedAffinity Disabled -Probe $probe -RequestTimeout 30
+Set-AzApplicationGateway -ApplicationGateway $gw
+```
   ```
   ## Request headers to Application Gateway:
 

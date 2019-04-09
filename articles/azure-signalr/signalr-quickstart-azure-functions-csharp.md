@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: e3a437d44c557d2ec53182d4f6178cbea3e54eba
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: df1b2cdd265b9cf48801174d1f0cd9936eae5f8b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544973"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264993"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Gyors útmutató: Csevegőszoba létrehozása az Azure Functions és a SignalR szolgáltatáshoz C használatával\#
 
@@ -36,7 +36,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Az Azure-függvényalkalmazás konfigurálása és futtatása
 
-1. Indítsa el a Visual Studio (vagy egy másik Kódszerkesztő), és nyissa meg a megoldás a *chat\src\csharp* a klónozott adattár mappát.
+1. Indítsa el a Visual Studio (vagy egy másik Kódszerkesztő), és nyissa meg a megoldás a *src/Csevegés/csharp* a klónozott adattár mappát.
 
 1. A böngészőben, amelyben meg van nyitva az Azure Portal, a portál tetején levő keresőmezőben a példány nevére való kereséssel ellenőrizze, hogy a korábban üzembe helyezett SignalR-szolgáltatáspéldány sikeresen létrejött-e. A megnyitáshoz válassza ki a példányt.
 
@@ -76,4 +76,4 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 Ebben a rövid útmutatóban létrehozott, és futtatta egy valós idejű kiszolgáló nélküli alkalmazást a Visual Studióban. A következő lépésként tudjon meg többet az Azure-függvények Visual Studióval való fejlesztéséről és üzembe helyezéséről.
 
 > [!div class="nextstepaction"]
-> [Azure-függvények fejlesztése a Visual Studióval](../azure-functions/functions-develop-vs.md)
+> [Fejlesztés az Azure Functions Visual Studio használatával](../azure-functions/functions-develop-vs.md)

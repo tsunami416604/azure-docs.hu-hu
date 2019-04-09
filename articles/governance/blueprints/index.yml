@@ -1,16 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bc646bd1c1e2ada45971359b9a17d71d66e301d4
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58800437"
 documentType: LandingData
 title: Az Azure Blueprints szolgáltatás dokumentációja
 metadata:
   title: Az Azure Blueprints dokumentációja – oktatóanyagok és API-referencia
-  description: Az Azure Blueprints az Azure egy szolgáltatása, amelynek használatával összetevőket hozhat létre, definiálhat és helyezhet üzembe az Azure-környezetben.
-  services: blueprints
+  description: 'Az Azure Blueprints az Azure egy szolgáltatása, amelynek használatával összetevőket hozhat létre, definiálhat és helyezhet üzembe az Azure-környezetben.'
   author: DCtheGeek
   manager: carmonm
   ms.service: blueprints
@@ -18,34 +11,34 @@ metadata:
   ms.date: 03/26/2019
   ms.author: dacoulte
 abstract:
-  description: Az Azure Blueprints lehetővé teszi felhőkörnyezetek megismételhető üzembe helyezését és frissítését összeállítható összetevők, például erőforrás-kiosztásra szolgáló Azure Resource Manager-sablonok, szerepköralapú hozzáférés-vezérlők és szabályzatok használatával.
+  description: 'Az Azure Blueprints lehetővé teszi felhőkörnyezetek megismételhető üzembe helyezését és frissítését összeállítható összetevők, például erőforrás-kiosztásra szolgáló Azure Resource Manager-sablonok, szerepköralapú hozzáférés-vezérlők és szabályzatok használatával.'
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: Megtudhatja, hogyan hozhat létre, rendelhet hozzá és kezelhet tervrajz-definíciókat az Azure-ban.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        alt: Azure Portal
-        src: ./media/portal.svg
-      text: Azure Portal
-      href: create-blueprint-portal.md
-    - image:
-        alt: REST
-        src: ./media/rest.svg
-      text: REST
-      href: create-blueprint-rest-api.md
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Megtudhatja, hogyan hozhat létre, rendelhet hozzá és kezelhet tervrajz-definíciókat az Azure-ban.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: Azure Portal
+              src: ./media/portal.svg
+            text: Azure Portal
+            href: create-blueprint-portal.md
+          - image:
+              alt: REST
+              src: ./media/rest.svg
+            text: REST
+            href: create-blueprint-rest-api.md
+  - title: Referencia
     items:
-    - title: Parancssor
-      html: <p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>
-    - title: Nyelvek
-      html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure SDK for .NET</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/blueprints/">API-referencia</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: '<p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>'
+          - title: Nyelvek
+            html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure SDK for .NET</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/blueprints/">API-hivatkozás</a></p>

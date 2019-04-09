@@ -4,7 +4,7 @@ description: Ismerje meg a követelményeket és a common data több-bérlős sz
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
@@ -12,18 +12,18 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d55d8f8f945e30402cb772c7e26b234e3e460698
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 6332555c1a176a06004ddfeee513844ad5875c30
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217869"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260544"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS-adatbázis bérlős minták
 
-Egy több-bérlős SaaS-alkalmazás tervezésekor alaposan ki kell választania a bérlős modell, amely legjobban megfelel az alkalmazás igényeinek megfelelően.  Bérlős modell meghatározza, hogy hogyan minden egyes bérlő adatai tárolási van leképezve.  A választott bérlős modell hatással van az alkalmazás-tervezés és felügyeleti.  Néha költségesnek számít később átválthat egy másik modellhez.
+Ez a cikk ismerteti a különböző bérlős modellek érhető el egy több-bérlős SaaS-alkalmazáshoz.
 
-Ez a cikk ismerteti az alternatív bérlős modell.
+Egy több-bérlős SaaS-alkalmazás tervezésekor alaposan ki kell választania a bérlős modell, amely legjobban megfelel az alkalmazás igényeinek megfelelően.  Bérlős modell meghatározza, hogy hogyan minden egyes bérlő adatai tárolási van leképezve.  A választott bérlős modell hatással van az alkalmazás-tervezés és felügyeleti.  Néha költségesnek számít később átválthat egy másik modellhez.
 
 ## <a name="a-saas-concepts-and-terminology"></a>A. SaaS-alapelvek és fogalmak
 

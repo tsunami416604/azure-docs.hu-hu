@@ -1,16 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4e2515e8976976184b720ad1a612f96bff3eeaba
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803415"
 documentType: LandingData
 title: Az Azure Resource Graph szolgáltatás dokumentációja
 metadata:
   title: Az Azure Resource Graph dokumentációja – oktatóanyagok és API-referencia
-  description: Az Azure Resource Graph egy olyan Azure-szolgáltatás, amely lehetővé teszi az erőforrások nagy mennyiségben való komplex lekérdezését.
-  services: resource-graph
+  description: 'Az Azure Resource Graph egy olyan Azure-szolgáltatás, amely lehetővé teszi az erőforrások nagy mennyiségben való komplex lekérdezését.'
   author: DCtheGeek
   manager: carmonm
   ms.service: resource-graph
@@ -18,38 +11,38 @@ metadata:
   ms.date: 03/11/2019
   ms.author: dacoulte
 abstract:
-  description: Az Azure Resource Graph dokumentációja segít konfigurálni és megismerni a lekérdezési nyelvet, amely lehetővé teszi az erőforrások mennyiségi felderítését és feltárását.
+  description: 'Az Azure Resource Graph dokumentációja segít konfigurálni és megismerni a lekérdezési nyelvet, amely lehetővé teszi az erőforrások mennyiségi felderítését és feltárását.'
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: A Resource Graph konfigurálása és az első lekérdezés futtatása.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        alt: Azure CLI
-        src: ./media/cli.svg
-      text: Azure CLI
-      href: first-query-azurecli.md
-    - image:
-        alt: Azure PowerShell
-        src: ./media/powershell.svg
-      text: Azure PowerShell
-      href: first-query-powershell.md
-- title: Visszajelzés
-  items:
-  - type: paragraph
-    text: Ha visszajelzést küldene a funkcióval kapcsolatban, vagy segítségre van szüksége a lekérdezésekkel, az Azure Portal <b>Azure Policy</b> részéből lépjen a <b>Resource Graph (előzetes verzió)</b> oldalára, és kattintson a visszajelzési lehetőségre. Megoszthatja velünk javaslatait a <a href="https://feedback.azure.com/forums/915958-azure-governance">UserVoice-on</a>.
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: A Resource Graph konfigurálása és az első lekérdezés futtatása.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: Azure CLI
+              src: ./media/cli.svg
+            text: Azure CLI
+            href: first-query-azurecli.md
+          - image:
+              alt: Azure PowerShell
+              src: ./media/powershell.svg
+            text: Azure PowerShell
+            href: first-query-powershell.md
+  - title: Visszajelzés
     items:
-    - title: Parancssor
-      html: <p><a href="/cli/azure/ext/resource-graph/graph">Azure CLI</a></p><p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
-    - title: Nyelvek
-      html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">Azure SDK for .NET</a></p><p><a href="/python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph">Pythonhoz készült Azure SDK</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/azureresourcegraph/resources/resources">API-referencia</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview">2018-09-01-preview (OpenAPI)</a></p>
+      - type: paragraph
+        text: 'Ha visszajelzést küldene a funkcióval kapcsolatban, vagy segítségre van szüksége a lekérdezésekkel, az Azure Portal <b>Azure Policy</b> részéből lépjen a <b>Resource Graph (előzetes verzió)</b> oldalára, és kattintson a visszajelzési lehetőségre. Megoszthatja velünk javaslatait a <a href="https://feedback.azure.com/forums/915958-azure-governance">UserVoice-on</a>.'
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: <p><a href="/cli/azure/ext/resource-graph/graph">Azure CLI</a></p><p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
+          - title: Nyelvek
+            html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">Azure SDK for .NET</a></p><p><a href="/python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph">Azure SDK for Python</a></p>
+          - title: REST
+            html: '<p><a href="/rest/api/azureresourcegraph/resources/resources">API-hivatkozás</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview">2018-09-01-preview (OpenAPI)</a></p>'

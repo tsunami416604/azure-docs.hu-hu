@@ -1,19 +1,18 @@
 ---
 title: Minta - engedélyezett termékváltozatok a storage-fiókok és a virtuális gépek
 description: A szabályzatdefiníció-minta megköveteli, hogy storage-fiókok és a virtuális gépek használata engedélyezett termékváltozatok.
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7488231363b0cbf96e25da28751065012754212e
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 088dd8414c93b609326e7cd72828426dcb00fc28
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803782"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274569"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Minta - engedélyezett termékváltozatok a storage-fiókok és a virtuális gépek
 
@@ -29,7 +28,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal) vagy a [PowerShell](#deploy-
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Az Azure-bA a szabályzat minta üzembe helyezése](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![Daz Azure-bA a szabályzat minta eploy](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 

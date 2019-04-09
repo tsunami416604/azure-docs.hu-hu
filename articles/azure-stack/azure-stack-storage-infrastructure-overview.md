@@ -15,16 +15,16 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 03/11/2019
 ms.reviewer: jiahan
-ms.openlocfilehash: 4a8287d7ca4da380ad7c2b1e039ab3058ca07a96
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 416d75b254d0fbe14a0b39e5ae77d09a48e548f6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760273"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271288"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack"></a>Azure stack-beli tároló-infrastruktúra kezelése
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Ez a cikk bemutatja az egészségügyi és a tárolási infrastruktúra-erőforrások Azure Stack működési állapotát. Ilyen erőforrások többek között a tárolóeszközöket és köteteket. Ebben a témakörben található információk felbecsülhetetlen értékű lehet, ha különböző problémák megoldásához, mint például a meghajtó nem adható hozzá a készlethez.
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja az egészségügyi és a tárolási infrastruktúra-erőforr
 
 ### <a name="drives"></a>Meghajtók
 
-Az Azure Stack segítségével a Windows Servert storage szolgáltatásai, a közvetlen tárolóhelyek (S2D) és a Windows Server feladatátvételi fürtszolgáltatási, biztosítanak a nagy teljesítményű, méretezhető és rugalmas tárolási szolgáltatás definiálva.
+Működteti, a Windows Servert, az Azure Stack a közvetlen tárolóhelyek (S2D) és a Windows Server feladatátvételi fürtszolgáltatási biztosít a nagy teljesítményű, méretezhető és rugalmas tárolási szolgáltatás kombinációjával tárolási képességeinek határozza meg.
 
 Az Azure Stackkel integrált rendszer partnerei számos megoldás változata, beleértve számos különféle tárolási rugalmasságot kínálnak. Háromféle meghajtó kombinációja jelenleg választhat: NVMe (Express nem felejtő memória), SSD (SSD-meghajtóra), SATA/SAS HDD (merevlemez-meghajtó).
 
