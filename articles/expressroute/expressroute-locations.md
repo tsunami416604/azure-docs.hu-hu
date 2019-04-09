@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/03/2019
+ms.date: 04/05/2019
 ms.author: pareshmu
-ms.openlocfilehash: 6d1fa0235c91d17887a40bbe0be9831623fce775
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: HT
+ms.openlocfilehash: a30280339b2172860fa8c859de569c2de1c68e17
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006981"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267446"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -108,7 +108,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Támogatott |Támogatott | Amszterdam, London2, szilícium-völgy, Toronto |
 | **Jisc** |Támogatott |Támogatott |London |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Támogatott |Támogatott |Szöul |
-| **Kordia** | Támogatott |Támogatott |Sydney |
+| **[Kordia](https://www.kordia.co.nz/cloudconnect)** | Támogatott |Támogatott |Sydney |
 | **[KPN](https://www.kpn.com/zakelijk/cloud/connect.htm)** | Támogatott | Támogatott | Amszterdam | 
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, London, Newport (Wales), Sao Paulo, Seattle, szilícium-völgy, Szingapúr, Washington, D.C. |
 | **LG CNS** |Támogatott |Támogatott |Busan, Szöul |

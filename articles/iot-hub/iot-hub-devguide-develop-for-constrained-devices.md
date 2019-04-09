@@ -7,16 +7,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: yizhon
-ms.openlocfilehash: 683f3ca88c349fef31f9647566dbed8a840f94dd
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7788bca621a59ec8cdfe36edf73a99efca8c460c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451731"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261394"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Fejlesztés az Azure IoT C SDK-val korlátozott eszközök
 
 Az Azure IoT Hub C SDK ANSI C (C99), ami lehetővé teszi az kiválóan működjön, többféle platformon a kis méretű lemez- és erőforrás-igényű nyelven van megírva. A javasolt RAM-MAL legalább 64 KB-nál, de a pontos memóriaigényét attól függ, a használt protokoll, a megnyitott kapcsolatok számát, valamint a megcélzott platform.
+> [!NOTE]
+> * Az Azure IoT C SDK rendszeresen közzéteszi az erőforrás-felhasználási adatokat fejlesztési kiküszöbölni.  Látogasson el a [GitHub-adattár](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md) , és tekintse át a legújabb teljesítményteszt.
+>
 
 C SDK-t az apt-get paranccsal végzi, NuGet és MBED csomag formájában érhető el. Célozhat korlátozott, érdemes az helyben a célként megadott platformjához tartozó SDK felépítése. Ez a dokumentáció bemutatja, hogyan csökkentheti az C SDK-t használó kapacitásigényéhez bizonyos szolgáltatások eltávolítása [cmake](https://cmake.org/). Emellett ez a dokumentáció ismerteti az ajánlott eljárás programozási modellek használata korlátozott eszközök.
 
@@ -30,7 +33,7 @@ Kövesse ezt [C SDK-beállítási útmutató](https://github.com/Azure/azure-iot
 
 ### <a name="remove-additional-protocol-libraries"></a>Távolítsa el a további protokoll kódtárakat
 
-C SDK-t még ma öt protokollt támogat: mqtt-ről, a WebSocket, AMQPs, AMQP WebSocket, valamint a HTTPS keresztüli MQTT. A legtöbb forgatókönyvek igényelnek, az ügyfélen futó egy vagy két protokollt, ezért távolíthatja el a protokoll-könyvtár nem használja az SDK-t. További információ a megfelelő kommunikációs protokollt választja, a forgatókönyv találja a [válassza ki az IoT Hub-kommunikációs protokoll](iot-hub-devguide-protocols.md). Például MQTT egy egyszerűsített protokoll, amely gyakran jobban megfelelő a korlátozott eszközök.
+C SDK-t még ma öt protokollokat támogatja: Mqtt-ről, WebSocket, AMQPs, AMQP WebSocket, valamint a HTTPS keresztüli MQTT. A legtöbb forgatókönyvek igényelnek, az ügyfélen futó egy vagy két protokollt, ezért távolíthatja el a protokoll-könyvtár nem használja az SDK-t. További információ a megfelelő kommunikációs protokollt választja, a forgatókönyv találja a [válassza ki az IoT Hub-kommunikációs protokoll](iot-hub-devguide-protocols.md). Például MQTT egy egyszerűsített protokoll, amely gyakran jobban megfelelő a korlátozott eszközök.
 
 Az amqp-t és HTTP kódtárakat, az alábbi cmake paranccsal távolíthatja el:
 

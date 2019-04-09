@@ -16,12 +16,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: 51ab999880dd3bfd453b0e6c2d20d8d6f9a0e093
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6d3cb99a55ae5eb8276391f22675a88e8b3d072
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660119"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276439"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure Stack nyilvános kulcsokra épülő infrastruktúra tanúsítványkövetelmények
 
@@ -38,7 +38,7 @@ Az Azure Stack egy nyilvános infrastruktúra-hálózaton kívülről hozzáfér
 Az alábbi lista ismerteti a tanúsítványokra vonatkozó követelményeket, melyek szükségesek ahhoz, hogy az Azure Stack üzembe helyezése: 
 - Egy belső hitelesítésszolgáltató vagy egy nyilvános hitelesítésszolgáltató kell kiállítaniuk. Nyilvános hitelesítésszolgáltató használata esetén, szerepelnie kell az alap operációs rendszer lemezképét, a Microsoft megbízható legfelső szintű hatóság Program részeként. A teljes listáját itt találja: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
 - Az Azure Stack-infrastruktúra a hitelesítésszolgáltató visszavont tanúsítványok listája (CRL) helyre a tanúsítványt a közzétett hálózati hozzáféréssel kell rendelkeznie. A CRL-t egy http-végpontot kell lennie.
-- Amikor a tanúsítványok elforgatása, tanúsítványokat kell lennie, vagy ki az üzembe helyezés vagy bármely nyilvános hitelesítésszolgáltatótól a fent megadott tanúsítványok aláírásához használt azonos belső hitelesítésszolgáltatótól származó
+- Ha a tanúsítványok elforgatása előtti-1903 épít, tanúsítványokat kell lennie, vagy ki az üzembe helyezés vagy bármely nyilvános hitelesítésszolgáltatótól a fent megadott tanúsítványok aláírásához használt azonos belső hitelesítésszolgáltatótól származó. 1903 és azt követő tanúsítványok adhatnak ki minden olyan vállalati vagy nyilvános hitelesítésszolgáltatótól.
 - Önaláírt tanúsítványok használata nem támogatottak.
 - A rendszerbe állítás és az elforgatás választhatja a tanúsítvány tulajdonos neve és a tulajdonos alternatív nevére (SAN) mezőben minden neve szóközt kiterjedő egyetlen tanúsítványt használjon, vagy használhat egyéni tanúsítványokat az egyes névterek alatt látható, az Azure Stack szükséges szolgáltatások szeretné használják. Mindkét módszerénél a helyettesítő karakterek használatával végpontok, ahol azok szükség, mint például szükséges **KeyVault** és **KeyVaultInternal**. 
 - A tanúsítvány PFX-titkosítást kell lennie a 3DES. 

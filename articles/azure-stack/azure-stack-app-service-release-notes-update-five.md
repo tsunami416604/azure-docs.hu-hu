@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: 851673de4a711f5eb64228233ea7703ef86bfa7b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 192ac256f013498e57ecf7939d29796af073b948
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500202"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260561"
 ---
 # <a name="app-service-on-azure-stack-update-5-release-notes"></a>App Service-ben az Azure Stack update 5 kibocsátási megjegyzései
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A kibocsátási megjegyzések láthatók a fejlesztései, valamint a javításokat az Azure App Service az Azure Stack Update 5 és olyan ismert problémákat. Ismert problémák az üzembe helyezési, frissítési folyamat és a build (telepítés utáni) problémái közvetlenül kapcsolódó problémák vannak felosztva.
 
@@ -77,7 +77,7 @@ Az Azure App Service-ben az Azure Stack Update 5 tartalmazza a következő fejle
 ### <a name="post-deployment-steps"></a>Üzembe helyezés utáni lépések
 
 > [!IMPORTANT]  
-> Ha az App Service RP példánnyal SQL mindig az adott kell [adja hozzá a appservice_hosting és appservice_metering adatbázisokat egy rendelkezésre állási csoport](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) , így elkerülhető, hogy a szolgáltatás az adatbázis szinkronizálásához, és a egy adatbázis feladatátvételi esemény.
+> Ha megadta az App Service erőforrás-szolgáltató-példánnyal SQL mindig meg kell [adja hozzá a appservice_hosting és appservice_metering adatbázisokat egy rendelkezésre állási csoport](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) és így elkerülhető, hogy az adatbázisok szinkronizálása a szolgáltatás adatbázis-feladatátvétel esetén.
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
 
@@ -188,7 +188,7 @@ A tartalmazott adatbázis áttelepítése az Azure Stack üzemelő példányok a
 - Feldolgozók nem érhető el a fájlkiszolgálót, ha App Service-ben üzemel egy meglévő virtuális hálózatot és a fájlkiszolgáló csak érhető el a magánhálózaton, feltüntettük az Azure App Service az Azure Stack központi telepítési dokumentációjában az.
 
 Ha úgy döntött, hogy egy meglévő virtuális hálózattal és belső IP-cím szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése. Nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
- * Forrás: Bármely
+ * Forrás: Bármelyik
  * Forrás porttartomány: *
  * Cél: IP-címek
  * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz

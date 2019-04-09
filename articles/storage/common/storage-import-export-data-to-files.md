@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e3cd9d0036a55a3e6de49988dddcd6a91b81b078
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28026a429643c62434ddfd7591126169857a7371
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088655"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265634"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Adatok importálása az Azure Files Azure Import/Export szolgáltatás használata
 
@@ -30,7 +30,7 @@ Adatok átviteléhez az Azure Files importálási feladat létrehozása, előtt 
 - A lemezek elegendő számú [támogatott típusok](storage-import-export-requirements.md#supported-disks). 
 - A Windows rendszert futtató egy [támogatott operációsrendszer-verzió](storage-import-export-requirements.md#supported-operating-systems).
 - [Töltse le a 2. verzió WAImportExport](https://aka.ms/waiev2) a Windows rendszeren. Csomagolja ki az alapértelmezett mappába kívánja `waimportexport`. Például: `C:\WaImportExport`.
-- FedEx/DHL fiókkal rendelkeznie. 
+- FedEx/DHL fiókkal rendelkeznie. Ha szeretne egy szolgáltató eltérő FedEx/DHL használja, forduljon a az Azure Data Box műveletek csapatának `adbops@microsoft.com`.  
     - A fiók érvényesnek kell lennie, kell rendelkeznie az egyenleg és visszaszállítási képességek kell rendelkeznie.
     - Követési szám az exportálási feladat létrehozása.
     - Minden feladat rendelkeznie kell egy külön követési szám. Több feladat egy követési szám nem támogatottak.
@@ -145,7 +145,7 @@ A következő lépésekkel importálási feladat létrehozása az Azure Portalon
 
 4. A **szállítási adatok visszaadása**:
 
-    - A legördülő listából válassza ki a szolgáltató.
+    - A legördülő listából válassza ki a szolgáltató. Ha szeretne egy szolgáltató eltérő FedEx/DHL használja, válasszon egy meglévő lehetőséget a legördülő listából. A csapat kapcsolattartási Azure Data Box Operations `adbops@microsoft.com` együtt tervezi használni a szállítmányozó vonatkozó információkat.
     - Adjon meg egy érvényes Szállítmányozó számlaszáma, amelyek a szolgáltató létrehozta. A Microsoft ezt a fiókot használja, a meghajtók vissza tehetnek az importálási feladat befejeződése után. 
     - Adja meg a kész, érvényes ügyfél nevét, telefonszám, e-mail, utca, házszám, város, zip, államot/megyét és ország/régió.
 

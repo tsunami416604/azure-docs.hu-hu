@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 84db71f8dabfb7557b5efbc06e024c43e654b56d
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f93f6c8891ba9f7407310a8f09387e97f5c1f578
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805074"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267344"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -137,7 +137,7 @@ A klasszikus Azure üzemi modell parancsmagokban tanúsítványt használ, tekin
 
 #### <a name="issue"></a>Probléma
 
-A következő hibaüzenetet kapja, amikor egy childrunbook való meghívása a `-Wait` kapcsoló és a kimeneti adatfolyamba és objektum:
+A következő hibaüzenetet kapja, amikor a gyermekrunbook a `-Wait` kapcsoló és a kimeneti adatfolyamba és objektum:
 
 ```error
 Object reference not set to an instance of an object
@@ -483,6 +483,29 @@ Ez a hiba megoldásához két módja van:
 
 * A runbook szerkesztése és a feladatstreamek, amely azt bocsát ki számának csökkentése.
 * Kevesebb Streamek lekérni a parancsmag futtatásakor. Kövesse ezt a viselkedést, megadhatja a `-Stream Output` paramétert a `Get-AzureRmAutomationJobOutput` csak a kimeneti steamjeihez beolvasásához. 
+
+### <a name="cannot-invoke-method"></a>Forgatókönyv: PowerShell-feladatok hibaüzenettel meghiúsul: Nem lehet meghívni a metódust
+
+#### <a name="issue"></a>Probléma
+
+A PowerShell-feladat egy Azure-ban futó runbook indításakor a következő hibaüzenetet kapja:
+
+```error
+Exception was thrown - Cannot invoke method. Method invocation is supported only on core types in this language mode.
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba akkor fordulhat elő, egy PowerShell az Azure-ban futtatott feladat a runbook elindításakor. Ez akkor fordulhat elő, mert az Azure-ban futtatott runbookok védőfal előfordulhat, hogy nem működik a [teljes nyelvmód](/powershell/module/microsoft.powershell.core/about/about_language_modes)).
+
+#### <a name="resolution"></a>Megoldás:
+
+Ez a hiba megoldásához két módja van:
+
+* Használata helyett `Start-Job`, használjon `Start-AzureRmAutomationRunbook` runbook indítása
+* Ha a runbook ezt a hibaüzenetet, futtassa a hibrid Runbook-feldolgozón
+
+Ez a viselkedés, és az Azure Automation-forgatókönyvek más viselkedéseinek kapcsolatos további információkért lásd: [Runbook viselkedése](../automation-runbook-execution.md#runbook-behavior).
 
 ## <a name="next-steps"></a>További lépések
 

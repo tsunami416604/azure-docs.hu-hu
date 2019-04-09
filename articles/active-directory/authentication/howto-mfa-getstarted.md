@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11846ca2a323da5889f444024767df4803a48a51
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.openlocfilehash: b91af553c402cc1cb241e51e2bb2289bf45b1825
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892211"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269027"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>A felhőalapú Azure multi-factor Authentication tervezése
 
@@ -60,8 +60,14 @@ Az Azure multi-factor Authentication van üzembe helyezve, a feltételes hozzáf
 * Megfelelő eszköz
 * Hibrid Azure AD-csatlakoztatott eszköz
 * Jóváhagyott ügyfélalkalmazás
+ 
+
+Használatával a testre szabható poszterek és e-mail sablonok [a multi-factor authentication szolgáltatás bevezetés anyagok] a többtényezős hitelesítés bevezetése a szervezet számára. (https://www.microsoft.com/en-us/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all)
+
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>A feltételes hozzáférés többtényezős hitelesítés engedélyezése
 
 Feltételes hozzáférési szabályzatok kényszeríti a regisztrációt, a nem regisztrált pédául első bejelentkezés, egy fontos biztonsági teendő a regisztráció befejezéséhez.
+
 
 [Az Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) járul hozzá a regisztrációs házirendet és a kockázati észlelése és eltávolítása szabályzatokat az Azure multi-factor Authentication történetet. Szabályzatok kényszerítése a jelszó módosítására, feltört identitás fenyegetés esetén hozhatók létre, és többtényezős hitelesítés kérése, amikor egy bejelentkezési sikertelennek kockázatos az alábbiak szerint [események](../reports-monitoring/concept-risk-events.md):
 

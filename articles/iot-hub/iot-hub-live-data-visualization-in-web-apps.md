@@ -1,19 +1,19 @@
 ---
 title: Az Azure IoT hub – a Web Apps érzékelőktől kapott adatok valós idejű adatok vizualizációját |} A Microsoft Docs
 description: A Microsoft Azure App Service Web Apps szolgáltatás használatával jelenítheti meg az érzékelő összegyűjtött és az Iot hubnak küldött hőmérséklettel és páratartalommal kapcsolatos adatokat.
-author: rangv
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: c43431cd6ddbbbf8f6cb709b8c1783179d6cf760
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.author: robinsh
+ms.openlocfilehash: b870c432ea8021d9eeb14eec85ff9912b96ddc96
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158720"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270880"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Az Azure App Service Web Apps szolgáltatásának használatát az Azure IoT hub valós idejű érzékelői adatainak megjelenítése
 

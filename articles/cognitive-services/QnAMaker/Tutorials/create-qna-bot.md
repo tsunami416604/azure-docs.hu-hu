@@ -1,7 +1,7 @@
 ---
 title: QnA robotot – Azure Bot Service – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Ez az oktatóanyag végigvezeti a QnA robotot az Azure Bot service v3 létrehozása az Azure Portalon.
+description: A közzétételi oldalon egy meglévő Tudásbázis – kérdések és válaszok csevegőrobotot hozzon létre. Ez a robot a Bot keretrendszer SDK v4 használ. Nem kell a robotot hozhat létre bármilyen kód megírását, minden a kódot biztosítunk Önnek.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
@@ -9,101 +9,80 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.author: tulasim
-ms.openlocfilehash: 218103f2c75ec1016a997c259767ccd011191fab
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 85b0004288a06a834b61f6e3d50017d35d66ce86
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879610"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263876"
 ---
-# <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Oktatóanyag: A QnA robotot létrehozása az Azure Bot Service v3
+# <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Oktatóanyag: A QnA robotot létrehozása az Azure Bot Service v4
 
-Ez az oktatóanyag végigvezeti a QnA robotot az Azure Bot service v3-létrehozásához a [az Azure portal](https://portal.azure.com) kód írása nélkül. Közzétett Tudásbázis (KB) csatlakozik egy robot rendkívül egyszerű, bot alkalmazás beállításainak módosítása. 
-
-> [!Note] 
-> Ez a témakör olyan a robot SDK 3-as verziója. 4. verziójú annak [Itt](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs). 
+A QnA csevegőrobotot létrehozása a **közzététel** egy meglévő Tudásbázis lapját. Ez a robot a Bot keretrendszer SDK v4 használ. Nem kell a robotot hozhat létre bármilyen kód megírását, minden a kódot biztosítunk Önnek.
 
 **Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Az Azure Bot Service a QnA Maker sablon létrehozása
+> * Az Azure Bot Service egy meglévő Tudásbázis létrehozása
 > * Ellenőrizze, működik-e a kód a robot cseveghet 
-> * A robot a közzétett KB-os csatlakozás
-> * A robot a kérdés tesztelése
-
-Ebben a cikkben is használhatja az ingyenes a QnA Maker [szolgáltatás](../how-to/set-up-qnamaker-service-azure.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz egy közzétett Tudásbázis ehhez az oktatóanyaghoz. Ha nem rendelkezik egy, kövesse a [Tudásbázis létrehozása](../How-To/create-knowledge-base.md) QnA Maker szolgáltatás létrehozása a kérdések és válaszok.
+Szüksége lesz egy közzétett Tudásbázis ehhez az oktatóanyaghoz. Ha nem rendelkezik egy, kövesse a [létrehozása és a válasz a KB-os](create-publish-query-in-portal.md) az oktatóanyag a QnA Maker Tudásbázis létrehozása a kérdések és válaszok.
+
+<a name="create-a-knowledge-base-bot"></a>
 
 ## <a name="create-a-qna-bot"></a>Hozzon létre egy QnA robotot
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget.
+Hozzon létre egy robot a Tudásbázis ügyfélalkalmazást. 
 
-    ![a robot szolgáltatás létrehozása](../media/qnamaker-tutorials-create-bot/bot-service-creation.png)
+1. A QnA Maker portálon nyissa meg a **közzététel** lapon, és közzéteheti a tudásbázist. Válassza ki **létrehozni a Bot**. 
 
-2. A keresőmezőbe keresése **Web App Bot**.
+    ![A QnA Maker portálon nyissa meg a közzétételi oldalon, és közzéteheti a tudásbázist. Válassza a robot létrehozása.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
 
-    ![bot service kiválasztása](../media/qnamaker-tutorials-create-bot/bot-service-selection.png)
+    Az Azure portal megnyitása a robot létrehozásának konfigurációval.
 
-3. A **Bot Service** szolgáltatásban adja meg a szükséges adatokat:
+1.  Adja meg a beállításokat a robot létrehozásához:
 
-    - Állítsa be **alkalmazásnév** a robot neve. A robot a felhőben (például mynotesbot.azurewebsites.net) történő telepítése során az altartomány neve lesz.
-    - Válassza ki az előfizetést, erőforráscsoportot, App service-csomag és helyét.
+    |Beállítás|Érték|Cél|
+    |--|--|--|
+    |Robot neve|`my-tutorial-kb-bot`|Ez az az Azure-erőforrás neve a robot.|
+    |Előfizetés|Tekintse meg a cél.|Válassza ki a ugyanahhoz az előfizetéshez, a QnA Maker erőforrások létrehozásához használt.|
+    |Erőforráscsoport|`my-tutorial-rg`|Az összes bot kapcsolódó Azure-erőforrások használt erőforráscsoport.|
+    |Hely|`west us`|A robot Azure-erőforrás helye.|
+    |Tarifacsomag|`F0`|Az Azure bot service az ingyenes szintet.|
+    |App neve|`my-tutorial-kb-bot-app`|Ez a webes alkalmazás csak a robot támogatásához. Ezzel nem kell az ugyanazon alkalmazás neve, ahogy a QnA Maker szolgáltatás már használja. A QnA Maker webalkalmazás osztanak meg minden egyéb erőforrás nem támogatott.|
+    |SDK-nyelv|C#|Ez az az alapul szolgáló programozási nyelv, a bot framework SDK-t használják. A választható lehetőségek: C# vagy node.js nyelven.|
+    |A QnA hitelesítési kulcs|**Ne módosítsa**|Ez az érték kitölti a rendszer az Ön számára.|
+    |App Service-csomag helye|**Ne módosítsa**|A jelen oktatóanyag esetében a hely nem számít.|
+    |Azure Storage|**Ne módosítsa**|Az Azure Storage-táblák beszélgetési adatok tárolódik.|
+    |Application Insights|**Ne módosítsa**|Naplózás küld az Application Insights.|
+    |A Microsoft-alkalmazás azonosítója|**Ne módosítsa**|Az Active directory – felhasználók és a jelszó megadása kötelező.|
 
-4. A v3-sablonok használatával válassza ki az SDK-verziót **SDK v3** és az SDK nyelvi **C#** vagy **Node.js**.
+    ![Hozzon létre a Tudásbázis robot ezekkel a beállításokkal.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base.png)
 
-    ![a robot sdk-beállítások](../media/qnamaker-tutorials-create-bot/bot-v3.png)
+    Várjon néhány percig, amíg a robot létrehozásának folyamata értesítési sikeres befejezést jelent.
 
-5. Válassza ki a **kérdést és választ** sablon a robot sablon mező, majd mentse a sablon beállításokat kiválasztásával **kiválasztása**.
-
-    ![Mentse a bot service sablon kiválasztása](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
-
-6. Tekintse át a beállításokat, majd válassza a **létrehozás**. Ez létrehozza és telepíti a bot service az Azure-bA.
-
-    ![a robot létrehozása](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
-
-7. Győződjön meg arról, hogy a bot service van telepítve.
-
-    - Válassza ki **értesítések** (Harang ikon, amely mentén felső szegélyéhez, hogy az Azure Portalon található). Az értesítés módosul **központi telepítés elindítva** való **üzembe helyezés sikeres**.
-    - Miután az értesítés megváltozik, és **üzembe helyezés sikeres**, jelölje be **erőforrás megnyitása** adott értesítésre.
+<a name="test-the-bot"></a>
 
 ## <a name="chat-with-the-bot"></a>A robot cseveghet
 
-Kiválasztásával **erőforrás megnyitása** végigvezeti a robot-erőforráshoz.
+1. Az Azure Portalon nyissa meg az új bot erőforrás a értesítésből. 
 
-Válassza ki **vizsgálat a webes csevegési** a webes csevegési ablak megnyitásához. Írja be a "hi" a webes csevegési.
+    ![Az Azure Portalon nyissa meg az új bot erőforrás a értesítésből.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
 
-![A QnA robotot webes csevegési](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat.PNG)
+1. A **Bot felügyeleti**válassza **vizsgálat a webes csevegési** , és írja be: `How large can my KB be?`. A robot válaszol, és: 
 
-A robot válaszol "állítsa be QnAKnowledgebaseId és QnASubscriptionKey az alkalmazásbeállítások. Ez a válasz megerősíti, hogy a QnA robotot az üzenetet kapott, de nem tartozik még a QnA Maker Tudásbázis van. 
 
-## <a name="connect-your-qna-maker-knowledge-base-to-the-bot"></a>A QnA Maker Tudásbázis csatlakozni a robotot
+    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment)for more details.`
 
-1. Nyissa meg **Alkalmazásbeállítások** és szerkesztheti a **QnAKnowledgebaseId**, **QnAAuthKey**, és a **QnAEndpointHostName** mezőket tartalmaz a QnA Maker Tudásbázis értékeit.
 
-    ![Alkalmazásbeállítások](../media/qnamaker-tutorials-create-bot/application-settings.PNG)
+    ![Tesztelje az új Tudásbázis robot.](../media/qnamaker-tutorial-create-publish-query-in-portal/test-bot-in-web-chat-in-azure-portal.png)
 
-1. A Tudásbázis Azonosítóját, gazdagép URL-cím és a végpont kulcs beszerzése a Tudásbázis a QnA Maker portál beállítások lapján.
-
-   - Jelentkezzen be a [a QnA Maker](https://qnamaker.ai)
-   - Nyissa meg a Tudásbázis
-   - Válassza ki a **beállítások** lap
-   - **Közzététel** a Tudásbázis, ha még nem tette
-
-     ![A QnA Maker értékek](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
-
-## <a name="test-the-bot"></a>A robot tesztelése
-
-Az Azure Portalon válassza ki a **tesztelni, webes csevegési** a robot teszteléséhez. 
-
-![A QnA Maker robotot](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat-response.PNG)
-
-A QnA robotot a Tudásbázis a választ.
+    Azure Robotokat kapcsolatos további információkért lásd: [használata a QnA Maker megválaszolandó kérdések](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs)
 
 ## <a name="related-to-qna-maker-bots"></a>A QnA Maker robotokat kapcsolatos
 
@@ -113,7 +92,11 @@ A QnA robotot a Tudásbázis a választ.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Amikor elkészült, ebben az oktatóanyagban robottal, távolítsa el a robotot az Azure Portalon. A bot Service-szolgáltatások a következők:
+Amikor elkészült, ebben az oktatóanyagban robottal, távolítsa el a robotot az Azure Portalon. 
+
+Ha létrehozott egy új erőforráscsoportot a robot-erőforrások, törölje az erőforráscsoportot. 
+
+Létrehozott egy új erőforráscsoportot, meg kell keresnie a robot kapcsolódó erőforrások. A legegyszerűbb módja a robot és a robot neve szerint kereshet. A robot erőforrások a következők:
 
 * Az App Service-csomag
 * A keresési szolgáltatás

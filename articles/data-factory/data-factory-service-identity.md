@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 3663526dc32b0a607c9fca3d7c76496bfb5566f4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549144"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260748"
 ---
 # <a name="managed-identity-for-data-factory"></a>Felügyelt identitás Data Factoryhoz
 
@@ -46,7 +46,7 @@ Ha látja az adat-előállító nem rendelkezik egy felügyelt identitás kapcso
 
 - [Hozzon létre felügyelt identitás PowerShell-lel](#generate-managed-identity-using-powershell)
 - [A REST API használatával felügyelt identitás létrehozása](#generate-managed-identity-using-rest-api)
-- Hozzon létre egy Azure Resource Manager-sablon használatával felügyelt identitás
+- [Hozzon létre egy Azure Resource Manager-sablon használatával felügyelt identitás](#generate-managed-identity-using-an-azure-resource-manager-template)
 - [Hozzon létre felügyelt identitás SDK-val](#generate-managed-identity-using-sdk)
 
 >[!NOTE]
@@ -156,11 +156,11 @@ A felügyelt identitás, az Azure Portalon vagy programozott módon kérheti le.
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Az Azure portal használatával felügyelt identitás beolvasása
 
-A felügyelt azonosító adatok az Azure portal -> annak a data factory -> Beállítások -> Tulajdonságok:
+A felügyelt azonosító adatok az Azure portal -> annak a data factory -> Tulajdonságok:
 
-- SZOLGÁLTATÁSIDENTITÁS AZONOSÍTÓJA
-- SZOLGÁLTATÁSIDENTITÁS BÉRLŐJE
-- **SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója** > másolja ezt az értéket
+- Felügyelt identitás objektumazonosítója
+- Felügyelt identitás bérlője
+- **Felügyelt identitás Alkalmazásazonosítója** > másolja ezt az értéket
 
 ![Felügyelt identitás beolvasása](media/data-factory-service-identity/retrieve-service-identity-portal.png)
 

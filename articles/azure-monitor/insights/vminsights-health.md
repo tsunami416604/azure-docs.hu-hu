@@ -11,16 +11,16 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.author: magoedte
-ms.openlocfilehash: 987d28470b8a848755cdd7d1264ba7f7f66544df
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4c330e36210e97172c8f06bbfc3850210e200777
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918943"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260340"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) és az Azure Monitor az Azure virtuális gépek állapotának ismertetése
+# <a name="understand-the-health-of-your-azure-virtual-machines"></a>Az Azure-beli virtuális gépek állapotának ismertetése 
 Az Azure több szolgáltatást tartalmaz, amelyek külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés területen, de biztosít az Azure-beli virtuális gépeken futó operációs rendszer egy részletes állapota szempontjából nem volt elérhető.  Felügyelheti az Azure Monitor használatával különböző feltételeket, míg úgy nem lett kialakítva, hogy modellezheti, és az alapvető összetevők állapotát vagy a virtuális gép általános állapotát.  Az Azure virtuális gépek Állapotfigyelő szolgáltatás figyelője proaktív módon figyeli a rendelkezésre állás és a Windows vagy Linux-alapú vendég operációs rendszer, amelyek a legfontosabb összetevők és a kapcsolatok, feltételek, amely meghatározza, hogy miként állapotát, a modell teljesítményét összetevők, és riasztást küld, ha a nem kifogástalan állapot észlelésekor.  
 
 Megtekintése az Azure virtuális gép összesített állapotát és operációs rendszer alapjául szolgáló virtuális gépek Health, közvetlenül a virtuális gépről vagy az Azure Monitor egy erőforráscsoportba tartozó minden virtuális gépen az Azure Monitor szolgáltatással két perspektíva adatai figyelhető meg.
@@ -92,16 +92,16 @@ A virtuális gép meghatározott állapotokat az alábbi táblázat ismerteti:
 
 |Ikon |Állapot |Jelentés |
 |-----|-------------|------------|
-| |Kifogástalan |Állapot állapota kifogástalan, ha meghatározott egészségügyi feltételek, a virtuális gép észlelt problémákat nem jelző belül, és szükség szerint működik-e. Egy szülő összesítő figyelő esetén a health tekercsben felfelé és a legkedvezőbb vagy legrosszabb állapota a gyermek tükrözi.|
-| |Kritikus |Állapot, kritikus fontosságú, ha nem található a meghatározott egészségügyi feltételt, amely azt jelzi, hogy legalább egy kritikus fontosságú problémák, amelyek kell oldani annak érdekében, hogy a normál működés visszaállítása. Egy szülő összesítő figyelő esetén a health tekercsben felfelé és a legkedvezőbb vagy legrosszabb állapota a gyermek tükrözi.|
-| |Figyelmeztetés |Állapota figyelmet igényel, hogy meghatározott egészségügyi feltétel, ahol egy azt jelzi, hogy két küszöbérték közötti egy *figyelmeztetés* állapota és a egy másik jelzi egy *kritikus* (három állapot állapot küszöbértékeket is állapota konfigurálható), vagy ha egy nem kritikus problémát észlel, amelyek kritikus fontosságú problémákat okozhat, ha nem szűnik meg. Esetén a fölérendelt összegző figyelő esetén, ha egy vagy több gyermek figyelmeztetési állapotba kerül, akkor jelenik meg a szülő *figyelmeztetés* állapota. Ha van, amely a gyermek egy *kritikus* és a egy másik alárendelt egy *figyelmeztetés* állapot, a fölérendelt összegző megjelenik egy állapotát *kritikus*.|
+| |Kifogástalan |Állapot állapota kifogástalan, ha meghatározott egészségügyi feltételek, a virtuális gép észlelt problémákat nem jelző belül, és szükség szerint működik-e. Egy szülő összesítő figyelő esetén, az egészségügyi tekercsben felfelé és a legkedvezőbb vagy legrosszabb állapota a gyermek tükrözi.|
+| |Kritikus |Állapot, kritikus fontosságú, ha nem található a meghatározott egészségügyi feltételt, amely azt jelzi, hogy legalább egy kritikus fontosságú problémák, amelyek kell oldani annak érdekében, hogy a normál működés visszaállítása. Egy szülő összesítő figyelő esetén, az egészségügyi tekercsben felfelé és a legkedvezőbb vagy legrosszabb állapota a gyermek tükrözi.|
+| |Figyelmeztetés |Állapota figyelmet igényel, hogy meghatározott egészségügyi feltétel, ahol egy azt jelzi, hogy két küszöbérték közötti egy *figyelmeztetés* állapota és a egy másik jelzi egy *kritikus* (három állapot állapot küszöbértékeket is állapota konfigurálható), vagy ha egy nem kritikus problémát észlel, amelyek kritikus fontosságú problémákat okozhat, ha nem szűnik meg. Egy szülő összesítő figyelő esetén, ha egy vagy több gyermek van figyelmeztetési állapotban, akkor jelenik meg a szülő *figyelmeztetés* állapota. Ha van, amely a gyermek egy *kritikus* és a egy másik alárendelt egy *figyelmeztetés* állapot, a fölérendelt összegző megjelenik egy állapotát *kritikus*.|
 | |Ismeretlen |Állapot szerepel egy *ismeretlen* állapot, amikor az objektum állapota nem számítható ki több okból, például nem tudja majd gyűjteni az adatokat, a szolgáltatás nem inicializált, stb. A health állapota nem konfigurálható.| 
 
 Kiválasztásával **diagnosztikai állapot megtekintése** kattint, megnyílik egy oldal, a virtuális gép, kapcsolódó állapotára vonatkozó feltételek, állapotváltozások és más jelentős problémák, a virtuális géphez kapcsolódó összetevők-figyelési szolgáltatás által észlelt összes összetevőjét bemutató. További információkért lásd: [egészségügyi diagnosztikai](#health-diagnostics). 
 
 Alatt a **összetevő állapota** szakaszban, a táblázat egy összesítő állapot kifejezetten az ilyen területeken állapotára vonatkozó feltételek által figyelt elsődleges teljesítmény kategória **CPU**,  **Memória**, **lemez**, és **hálózati**.  Az összetevők közül bármelyik kiválasztásával tartalmazza az összes az adott összetevő és a megfelelő állapot egyes aspektusait figyelési egyes állapotfigyelő feltétel oldal megnyitása.  
 
-Health a Windows operációs rendszert futtató Azure virtuális gépből elérésekor a 5 leggyakoribb alapvető Windows-szolgáltatások állapotát a szakaszában látható **Core állapotfigyelő szolgáltatások**.  A szolgáltatások bármelyike kiválasztása az adott összetevő és az állapot figyelése állapotára vonatkozó feltételek ajánlati oldal megnyitása.  A tulajdonság panelen a állapotára vonatkozó feltételek nevére kattintva megnyílik, és itt tekintse át a konfigurációs részleteket, beleértve, ha a állapotára vonatkozó feltételek rendelkezik egy megfelelő Azure Monitor alert definiálva. További tudnivalókért lásd: [egészségügyi diagnosztikai és állapotára vonatkozó feltételek használatának](#health-diagnostics).  
+Health a Windows operációs rendszert futtató Azure virtuális gépből elérésekor állapotát, az első öt alapvető Windows szolgáltatások a szakaszában látható **Core állapotfigyelő szolgáltatások**.  A szolgáltatások bármelyike kiválasztása az adott összetevő és az állapot figyelése állapotára vonatkozó feltételek ajánlati oldal megnyitása.  A tulajdonság panelen a állapotára vonatkozó feltételek nevére kattintva megnyílik, és itt tekintse át a konfigurációs részleteket, beleértve, ha a állapotára vonatkozó feltételek rendelkezik egy megfelelő Azure Monitor alert definiálva. További tudnivalókért lásd: [egészségügyi diagnosztikai és állapotára vonatkozó feltételek használatának](#health-diagnostics).  
 
 ## <a name="aggregate-virtual-machine-perspective"></a>Összesített virtuálisgép-perspektíva
 Állapotadat-gyűjtés az összes, a virtuális gépek megtekintése egy erőforráscsoportot a portálon, a navigációs listából válassza ki a **Azure Monitor** majd **(előzetes verzió) virtuális gépek**.  
@@ -133,7 +133,7 @@ A virtuális gépek listája nézet a virtuális gép nevére kattintva megnyíl
 
 ![A kiválasztott Azure virtuális gép virtuális gép insights](./media/vminsights-health/vminsights-directvm-health.png)
 
-Itt jelenik meg egy összegző **állapot** a virtuális gép és **riasztások**, kategorizált által súlyosságának, amelyek tartalmazzák a virtuális gép állapota riasztás jelenik meg, ha az állapot a állapota nem kifogástalan változik egy állapotára vonatkozó feltételek.  Kiválasztásával **kritikus állapotban lévő virtuális gépek** megnyit egy oldalt egy vagy több kritikus állapotban lévő virtuális gépek listáját.  Az állapot ellenőrzése a jelennek meg a virtuális gépek, a lista egyik kattint a **egészségügyi diagnosztikai** nézet a virtuális gép.  Itt találja meg, melyik állapotára vonatkozó feltételek állapot állapotprobléma lépett van tükrözve. Ha a **egészségügyi diagnosztikai** oldal megjelenik, azt mutatja, hogy a virtuális gép és a társított állapotára vonatkozó feltételek aktuális állapotát az összes összetevője.  Tekintse meg a [egészségügyi diagnosztikai](#health-diagnostics) további részleteket a következő szakaszban.  
+Itt jelenik meg egy összegző **állapot** a virtuális gép és **riasztások**, kategorizált által súlyosságának, amelyek tartalmazzák a virtuális gép állapota riasztás jelenik meg, ha az állapot a állapota nem kifogástalan változik egy állapotára vonatkozó feltételek.  Kiválasztásával **kritikus állapotban lévő virtuális gépek** megnyit egy oldalt egy vagy több kritikus állapotban lévő virtuális gépek listáját.  Az állapot ellenőrzése a jelennek meg a virtuális gépek, a lista egyik kattint a **egészségügyi diagnosztikai** nézet a virtuális gép.  Itt találja meg, melyik állapotára vonatkozó feltételek állapot állapotprobléma lépett van tükrözve. Ha a **egészségügyi diagnosztikai** oldal megjelenik, azt mutatja, hogy a virtuális gép és a társított állapotára vonatkozó feltételek aktuális állapotát az összes összetevője. További információkért lásd: [egészségügyi diagnosztikai](#health-diagnostics).  
 
 Kiválasztásával **megtekintheti az összes állapotára vonatkozó feltételek** minden elérhető ez a szolgáltatás állapotának feltétel listáját tartalmazó oldal megnyitása.  Az adatokat tovább szűrhetők alapján a következő beállításokat:
 
@@ -164,7 +164,7 @@ Diagnosztikai állapot az állapotinformációkat a következő kategóriákba s
 * Rendelkezésre állás
 * Teljesítmény
  
-Például a logikai lemez, a Processzor és a egy adott összetevőre definiált állapotára vonatkozó feltételek stb. Kategóriát adta meg a figyelő a mellette látható továbbá a **állapotára vonatkozó feltételek** oszlop.  
+Például a logikai lemez adott összetevő definiált állapotára vonatkozó feltételek CPU, stb. a két kategória (az összes feltétel teljes képet) a szűrés nélküli tekinthet meg, vagy bármelyik kategória szerint szűrheti az eredményeket, amikor kiválasztja **rendelkezésre állása**  vagy **teljesítmény** beállítások lapon. Kategóriát adta meg a feltételeknek a mellette látható továbbá a **állapotára vonatkozó feltételek** oszlop. A feltételek nem felel meg a kiválasztott kategória, ha azt jeleníti meg az üzenet **nem érhető el a kiválasztott kategória állapotára vonatkozó feltételek** a a **állapotára vonatkozó feltételek** oszlop.  
 
 Egy állapotára vonatkozó feltételek állapotát határozza meg a négy állapota – *kritikus*, *figyelmeztetés*, *kifogástalan*, és *ismeretlen*. Az első három is konfigurálható, ami azt jelenti, módosíthatja a küszöbértékeket a figyelő használatával a [számítási feladatok a figyelő API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update). *Ismeretlen* még nem konfigurálható, és a fenntartott bizonyos forgatókönyvek esetén.  
 
@@ -190,7 +190,7 @@ A Health diagnosztika lapot center oszlopa a **állapotára vonatkozó feltétel
 
 Egészségügyi kritériumnak bizonyos feltételek, amely lehet egy küszöbértéket állapota egy entitás, és így tovább a figyelt példány állapotát méri. Egészségügyi kritériumnak konfigurálható egészségügyi állapota két vagy három küszöbértékek rendelkezik, a fentebb leírt módon. Csak egy lehetséges állapottal lekérdezhet, az egészségügyi feltétel is lehet. 
 
-A cél általános állapotát annak állapotára vonatkozó feltételek az állapotközpontú modellről meghatározott állapotát határozza meg. Ez állapotára vonatkozó feltételek a cél közvetlenül megcélzó megcélzó a cél egy összesített állapotát feltétel keresztül működés közbeni összetevők állapotára vonatkozó feltételek kombinációja lesz. Ezt a hierarchiát mutatja be a **állapotára vonatkozó feltételek** állapotának diagnosztikája lap részében. A állapotán alapuló szabály konfigurációját az összesített állapotára vonatkozó feltételek része (alapértelmezett értéke *legrosszabb,*). Alapértelmezés szerint ez a funkció a szakaszában részeként futó állapotára vonatkozó feltételek listáját találja [figyelési konfiguráció részletei](#monitoring-configuration-details).  
+A cél általános állapotát annak állapotára vonatkozó feltételek az állapotközpontú modellről meghatározott állapotát határozza meg. Fontos állapotára vonatkozó feltételek a cél közvetlenül megcélzó megcélzó a cél egy összesített állapotát feltétel keresztül működés közbeni összetevők állapotára vonatkozó feltételek kombinációját. Ezt a hierarchiát mutatja be a **állapotára vonatkozó feltételek** állapotának diagnosztikája lap részében. A állapotán alapuló szabály konfigurációját az összesített állapotára vonatkozó feltételek része (alapértelmezett értéke *legrosszabb,*). Alapértelmezés szerint ez a funkció a szakaszában részeként futó állapotára vonatkozó feltételek listáját találja [figyelési konfiguráció részletei](#monitoring-configuration-details).  
 
 **Egység** egészségügyi feltételtípust rendelkezhet az sokkal jobb és a kiválasztja a három pontra hivatkozásra kattintva módosítani a konfigurációt **részletek megjelenítése** a konfigurációs panel megnyitásához. 
 
@@ -256,6 +256,64 @@ A **riasztás részletes** ki kell választania egy riasztást a riasztás rész
 ![Riasztás részleteinek ablaktáblája tartalmazza a kijelölt riasztás](./media/vminsights-health/alert-details-pane-01.png)
 
 Riasztás állapota is módosítható egy vagy több riasztást a jelölje ki őket, és kiválasztja az **Állapotváltozáshoz** a a **minden riasztás** oldalán a bal felső sarkában található. Az a **riasztás állapotának módosítása** ablaktáblán válassza ki az állapotok valamelyikével adjon meg egy leírást a változás a a **Megjegyzés** mezőben, majd kattintson a **Ok** a módosítások véglegesítéséhez. Bár az adatokat a rendszer ellenőrzi, és a módosítások érvénybe lépnek, nyomon követheti a folyamat állapotát **értesítések** a menüből.  
+
+### <a name="configure-alerts"></a>Riasztások konfigurálása
+Bizonyos riasztás a felügyeleti feladatok nem kezelhető az Azure Portalról, és használatával kell végrehajtani a [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Konkrétan:
+
+- Engedélyezés vagy letiltás riasztást állapotára vonatkozó feltételek 
+- Feltételek állapotriasztások értesítések beállítása 
+
+A példában minden egyes használt módszert használ [ARMClient](https://github.com/projectkudu/armclient) a Windows-gépen. Ha nem ismeri ezt a módszert, lásd: [használatával ARMClient](../platform/rest-api-walkthrough.md#use-armclient).  
+
+#### <a name="enable-or-disable-alert-rule"></a>Engedélyezheti vagy tilthatja le a riasztási szabály
+
+Engedélyezheti vagy tilthatja le a riasztási szabály egy adott állapotára vonatkozó feltételek, az egészségügyi vlastnost kritérií *alertGeneration* módosítani kell egy értéket a **letiltott** vagy **engedélyezve**. Azonosíthatja a *monitorid attribútumként* az egy adott feltételek az alábbi példa bemutatja hogyan lehet lekérdezni a ezt az értéket a feltétel számára **teljesítményszámlálójának korlátját lemez másodperc / átviteli**.
+
+1. Egy terminálablakban, írja be a **armclient.exe bejelentkezési**. Ezt kéri, hogy jelentkezzen be az Azure-bA.
+
+2. Írja be a következő parancsot minden aktív az egy adott virtuális gép állapota feltételt és értékének azonosítása *monitorid attribútumként* tulajdonság. 
+
+    ```
+    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview”
+    ```
+
+    Az alábbi példa bemutatja, hogy a parancs kimenetét. Jegyezze fel az értékét *monitorid attribútumként* vörös színnel. Az értéket kötelező megadni a következő lépéshez hol kell a állapotára vonatkozó feltételek Azonosítóját adja meg, és hozzon létre egy riasztást a vonatkozó tulajdonság módosításával.
+
+    ![Példa a figyelő azonosítója állapotára vonatkozó feltételek beolvasása](./media/vminsights-health/get-monitor-identifier-01.png)
+
+3. Írja be a következő paranccsal módosíthatja a *alertGeneration* tulajdonság.
+
+    ```
+    armclient patch subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors/Microsoft_LogicalDisk_AvgDiskSecPerTransfer?api-version=2018-08-31-preview 1-preview "{'properties':{'alertGeneration':'Disabled'}}"
+    ```   
+
+4. A GET paranccsal ellenőrizheti, hogy a tulajdonság értéke 2. lépésben használt **letiltott**.  
+
+#### <a name="associate-action-group-with-health-criteria"></a>Műveletcsoport társítása állapotára vonatkozó feltételek
+
+Amikor riasztások jönnek létre a virtuális gépek állapotát az Azure Monitor támogatja az SMS- és e-mail-értesítések mikor állapotára vonatkozó feltételek akkor kerül sérült. Értesítések konfigurálása, jegyezze fel az SMS-EK vagy e-mail értesítések küldéséhez konfigurált műveleti csoport nevét kell. 
+
+>[!NOTE]
+>Ez a művelet kell megfigyelt egyes virtuális gépekre végre a rendszer, hogy szeretne értesítést kapni.
+
+1. Egy terminálablakban, írja be a **armclient.exe bejelentkezési**. Ezt kéri, hogy jelentkezzen be az Azure-bA.
+
+2. Írja be a következő parancsot egy műveletcsoporton társítandó riasztási szabályok.
+ 
+    ```
+    $payload = "{'properties':{'ActionGroupResourceIds':['/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/microsoft.insights/actionGroups/actiongroupName']}}" 
+    armclient PUT https://management.azure.com/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/notificationSettings/default?api-version=2018-08-31-preview $payload
+    ```
+
+3. A tulajdonság értékének ellenőrzése **actionGroupResourceIds** sikeresen frissítve, írja be a következő parancsot.
+
+    ```
+    armclient GET "subscriptions/subscriptionName/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/notificationSettings?api-version=2018-08-31-preview"
+    ```
+
+    A kimenet a következő kell hasonlítania:
+    
+    ![A Get-notificationSettings példa a kimenetre](./media/vminsights-health/get-notification-config-status.png)
 
 ## <a name="next-steps"></a>További lépések
 Azonosíthatja a szűk keresztmetszeteket és a virtuális gépek teljesítményét a teljes kihasználtság, lásd: [megtekintése az Azure virtuális gép teljesítménye](vminsights-performance.md), vagy a felderített alkalmazások függőségeinek megtekintése: [megtekintése az Azure Monitor virtuális gépeket a térképen](vminsights-maps.md). 

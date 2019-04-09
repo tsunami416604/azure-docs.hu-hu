@@ -6,16 +6,16 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 2d141a330b6b6c5fc102dd70ae1d6b3b01283d19
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 67526eddd19c5869aa54432f963d9b80396f878d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444871"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270982"
 ---
-# <a name="set-up-disaster-recovery-for-sql-server"></a>Vészhelyreállítás beállítása az SQL Server 
+# <a name="set-up-disaster-recovery-for-sql-server"></a>Vészhelyreállítás beállítása az SQL Server
 
 Ez a cikk azt ismerteti, hogyan védheti meg az SQL Server háttéralkalmazását az SQL Server üzletmenet-folytonossági és vészhelyreállítási (BCDR) helyreállítási technológiák kombinációját használó alkalmazások és [Azure Site Recovery](site-recovery-overview.md).
 
@@ -30,7 +30,7 @@ Számos számítási feladatokhoz használja az SQL Server alaprendszert, és in
 * **SQL Server feladatátvételi fürtszolgáltatási példányok (mindig az FCI)**: Legalább két csomóponttal instanced megosztott lemezzel rendelkező SQL Server szoftvert futtató Windows feladatátvevő fürtben vannak konfigurálva. Ha egy csomópont nem működik, a fürt átveheti az SQL Server egy másik példányhoz. A telepítő egy elsődleges helyen magas rendelkezésre állás megvalósításához általában szolgál. A központi telepítési hiba, illetve a megosztott tárolási réteg leállás nem ellen. Az iSCSI, a fiber channel vezérlőt használó vagy a megosztott vhdx-fájlt egy megosztott lemezt kell végrehajtani.
 * **SQL Always On rendelkezésre állási csoportok**: Két vagy több csomópont a megosztott semmi fürt, egy rendelkezésre állási csoportban, a szinkron replikáció és automatikus feladatátvételi konfigurált SQL Server-adatbázisok állíthatók be.
 
- Ez a cikk használja az alábbi natív SQL katasztrófa utáni helyreállítás technológiákat adatbázisok egy távoli helyre történő helyreállítását:
+  Ez a cikk használja az alábbi natív SQL katasztrófa utáni helyreállítás technológiákat adatbázisok egy távoli helyre történő helyreállítását:
 
 * SQL Always On rendelkezésre állási csoportok, a vész-helyreállítási adja meg az SQL Server 2012 vagy 2014 Enterprise kiadások.
 * Az SQL adatbázis-tükrözés a magas biztonsági üzemmódú, SQL Server 2008 R2 vagy SQL Server Standard kiadásához (bármilyen verzió).
@@ -45,7 +45,7 @@ Site Recovery szolgáltatás védi az SQL Server, a táblázat foglalja össze.
 **Hyper-V** | Igen | Igen
 **VMware** | Igen | Igen
 **Fizikai kiszolgáló** | Igen | Igen
-**Azure**|NA| Igen
+**Azure** |NA| Igen
 
 ### <a name="supported-sql-server-versions"></a>Támogatott SQL Server-verziók
 Ezek az SQL Server-verziók támogatottak, a támogatott forgatókönyveket:
@@ -59,7 +59,7 @@ Ezek az SQL Server-verziók támogatottak, a támogatott forgatókönyveket:
 
 A Site Recovery egy vész-helyreállítási megoldást biztosít a táblázatban összefoglalt natív SQL Server BCDR-technológiákkal integrálható.
 
-**Funkció** | **Részletek** | **SQL Server** |
+**Szolgáltatás** | **Részletek** | **SQL Server** |
 --- | --- | ---
 **Always On rendelkezésre állási csoport** | Több különálló példány az SQL Server futtatása több csomóponttal rendelkező feladatátvevő fürtben.<br/><br/>Adatbázisok lehet csoportosítani feladatátvételi csoportokba másolható (tükrözött) az SQL Server-példányokat, hogy a nem megosztott tárolóra van szükség.<br/><br/>Itt a vész-helyreállítási egy elsődleges hely és a egy vagy több másodlagos hely között. Két csomópont állítható a megosztott semmi nem SQL Server-adatbázisok a fürt egy rendelkezésre állási csoportban, a szinkron replikáció és automatikus feladatátvételi konfigurálva. | Az SQL Server 2016, az SQL Server 2014 és SQL Server 2012 Enterprise edition
 **A Feladatátvételi fürtszolgáltatás (mindig az FCI)** | Az SQL Server kihasználja a Windows feladatátvételi fürtszolgáltatás magas rendelkezésre állás, a helyszíni SQL Server számítási feladatok számára.<br/><br/>Az SQL Server-példányok futó megosztott lemezzel rendelkező csomópontok feladatátvevő fürtben vannak konfigurálva. Ha egy példány nem működik a fürt átadja a feladatokat másikat.<br/><br/>A fürt nem hiba vagy a megosztott tárolóban leállások ellen. A megosztott lemez implementálható az iSCSI, a fiber channel vezérlőt használó, vagy a megosztott vhdx-fájlokat. | Az SQL Server Enterprise kiadás<br/><br/>Az SQL Server Standard kiadása esetén (legfeljebb csak két csomópont)
@@ -70,14 +70,14 @@ A Site Recovery egy vész-helyreállítási megoldást biztosít a táblázatban
 
 Ez a táblázat összefoglalja a javaslatok az SQL Server BCDR-technológiákkal való integrálásához a Site recoveryvel.
 
-| **Verzió** | **Kiadás** | **Üzembe helyezés** | **A helyszíni, a helyszínen** | **Az Azure-bA helyszíni** |
+| **Verzió** | **Kiadás** | **Környezet** | **A helyszíni, a helyszínen** | **Az Azure-bA helyszíni** |
 | --- | --- | --- | --- | --- |
 | Az SQL Server 2016-ot, 2014 vagy 2012 |Enterprise |Feladatátvevőfürt-példány |Always On rendelkezésre állási csoportok |Always On rendelkezésre állási csoportok |
-|| Enterprise |Always On rendelkezésre állási csoportokat magas rendelkezésre állás érdekében |Always On rendelkezésre állási csoportok |Always On rendelkezésre állási csoportok | |
-|| Standard |Feladatátvevőfürt-példány (FCI) |Site Recovery-replikációja helyi tükrözött |Site Recovery-replikációja helyi tükrözött | |
-|| Enterprise vagy Standard |Különálló |Site Recovery-replikációja |Site Recovery-replikációja | |
+|| Enterprise |Always On rendelkezésre állási csoportokat magas rendelkezésre állás érdekében |Always On rendelkezésre állási csoportok |Always On rendelkezésre állási csoportok |
+|| Standard |Feladatátvevőfürt-példány (FCI) |Site Recovery-replikációja helyi tükrözött |Site Recovery-replikációja helyi tükrözött |
+|| Enterprise vagy Standard |Különálló |Site Recovery-replikációja |Site Recovery-replikációja |
 | SQL Server 2008 R2 or 2008 |Enterprise vagy Standard |Feladatátvevőfürt-példány (FCI) |Site Recovery-replikációja helyi tükrözött |Site Recovery-replikációja helyi tükrözött |
-|| Enterprise vagy Standard |Különálló |Site Recovery-replikációja |Site Recovery-replikációja | |
+|| Enterprise vagy Standard |Különálló |Site Recovery-replikációja |Site Recovery-replikációja |
 | SQL Server (bármilyen verzió) |Enterprise vagy Standard |Feladatátvevőfürt-példány - DTC-alkalmazás |Site Recovery-replikációja |Nem támogatott |
 
 ## <a name="deployment-prerequisites"></a>Üzembehelyezési előfeltételek
@@ -101,7 +101,7 @@ Itt látható, mit kell tennie:
 
 1. Parancsfájlok importálja az Azure Automation-fiók. Ez tartalmazza a feladatátvétel SQL rendelkezésre állási csoport szkripteket a egy [Resource Manager virtuális gépének](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) és a egy [klasszikus virtuális gép](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1).
 
-    [![Üzembe helyezés az Azure-ban](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [![Daz Azure-bA eploy](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 
 1. Adja hozzá az ASR-SQL-FailoverAG előzetes műveletként az első csoport a helyreállítási terv.

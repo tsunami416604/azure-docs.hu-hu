@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: b4d40f011b9a9e69953496fbdb0dc63ffc8a5027
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d1f94c5fd774b51f57da2885d1ccd8eb909cd3c0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774557"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268007"
 ---
 # <a name="manage-and-configure-projects"></a>Projektek kezelése és konfigurálása
 
@@ -35,7 +35,7 @@ A projekt Azure notebookok lényegében a mögöttes Linux rendszerű virtuális
 
 Azure notebookok a mögöttes virtuális gép elindul, ha a jegyzetfüzet vagy más fájl futtatását. A kiszolgáló automatikusan menti a fájlokat, és 60 perc inaktivitás után leáll. A kiszolgáló is bármikor leállíthatja a **leállítási** parancsot (billentyűparancs: h).
 
-## <a name="compute-tier"></a>COMPUTE-kapacitás
+## <a name="compute-tier"></a>Számítási szint
 
 A **futtatása** legördülő listából válassza ki a projekt irányítópultján Itt választhatja ki a számítási kapacitás, amelyen futtatja a projektet. Alapértelmezés szerint a projektek futnak a **ingyenes számítási** szint, amely a 4 GB memóriát és 1 GB adatot visszaélések megelőzése érdekében:
 
@@ -95,7 +95,7 @@ A **+ új** parancsot (billentyűparancs: n) hoz létre az új fájlokat vagy ma
 
 | Elemtípus | Leírás | A parancs viselkedését |
 | --- | --- | --- |
-| **Notebook** | Jupyter notebook | Egy előugró ablak, amelyben adja meg a notebook fájlnévvel és a nyelvet jeleníti meg. |
+| **Jegyzetfüzet** | Jupyter notebook | Egy előugró ablak, amelyben adja meg a notebook fájlnévvel és a nyelvet jeleníti meg. |
 | **Mappa** | Almappa | Létrehoz egy szerkesztőmezőben, amelybe, adja meg a mappa nevét a projekt-fájlok listája. |
 | **Üres fájl** | Egy fájlt, amelybe tárolhatja bármilyen tartalmat, például szöveg, adatok, stb. | Létrehoz egy szerkesztőmezőben, amelybe a fájlnév megadása a projekt-fájlok listája. |
 | **Markdown** | Egy Markdown-fájlt. | Létrehoz egy szerkesztőmezőben, amelybe a fájlnév megadása a projekt-fájlok listája. |

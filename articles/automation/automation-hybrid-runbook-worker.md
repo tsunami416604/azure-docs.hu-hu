@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/31/2019
+ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f98cf51b618686e3c608535667993e9d5f9e939
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4c91bf389f5c63b95e5b68784b6657e92b109a46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852919"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265865"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizálhatja az erőforrások az adatközpontban vagy a felhőben a hibrid Runbook-feldolgozó
 
@@ -36,7 +36,7 @@ Telepítése és konfigurálása a Windows hibrid Runbook-feldolgozók, két mó
 
 |Operációs rendszer  |Központi telepítési típusok  |
 |---------|---------|
-|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Manuális](automation-windows-hrw-install.md#manual-deployment)        |
+|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Kézi](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
@@ -97,11 +97,11 @@ Eltávolítja a csoportot, akkor először távolítsa el a hibrid Runbook-feldo
 
 ### <a name="hybrid-worker-role"></a>A hibrid feldolgozói szerepkör
 
-A hibrid Runbook-feldolgozó kapcsolódni és regisztrálni az Azure Monitor naplóira, az azt a portszámot és az ebben a szakaszban leírt URL-hozzáféréssel kell rendelkeznie. Ez az elérés felül, akkor a [portokat és a Microsoft Monitoring Agent számára a szükséges URL-címek](../azure-monitor/platform/agent-windows.md) szeretne csatlakozni az Azure Monitor naplóira.
+A hibrid Runbook-feldolgozó kapcsolódni és regisztrálni az Azure Automationnel, a azt a portszámot és az URL-címeket ebben a szakaszban ismertetett hozzáféréssel kell rendelkeznie. Ez az elérés felül, akkor a [portokat és a Microsoft Monitoring Agent számára a szükséges URL-címek](../azure-monitor/platform/agent-windows.md) szeretne csatlakozni az Azure Monitor naplóira.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Ha az ügynök és az Azure Monitor szolgáltatás közötti kommunikációhoz proxykiszolgálót használ, győződjön meg arról, hogy elérhetők-e a megfelelő erőforrásokat. Ha tűzfal használatával korlátozza az internethez való hozzáférést, konfigurálnia kell a tűzfalat, hogy engedélyezze a hozzáférést. Ha a Log Analytics átjáró proxyként használja, győződjön meg arról, hibrid feldolgozók van konfigurálva. Ehhez az utasításokért lásd: [konfigurálása a Log Analytics-átjáró Automation hibrid feldolgozók](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway).
+Ha az ügynök és az Azure Automation szolgáltatás közötti kommunikációhoz proxykiszolgálót használ, győződjön meg arról, hogy elérhetők-e a megfelelő erőforrásokat. A hibrid Runbook-feldolgozó és az Automation szolgáltatás érkező kéréseket az időtúllépési érték 30 másodperc. 3 kísérlet után a kérelem sikertelen lesz. Ha tűzfal használatával korlátozza az internethez való hozzáférést, konfigurálnia kell a tűzfalat, hogy engedélyezze a hozzáférést. Ha a Log Analytics átjáró proxyként használja, győződjön meg arról, hibrid feldolgozók van konfigurálva. Ehhez az utasításokért lásd: [konfigurálása a Log Analytics-átjáró Automation hibrid feldolgozók](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway).
 
 A következő portot és az URL-címek a hibrid Runbook-feldolgozó szerepkör, Automation folytatott kommunikációhoz szükségesek:
 
@@ -114,7 +114,7 @@ Javasoljuk, hogy a címek kivételek meghatározásakor. Az IP-címeket, letölt
 
 Ha egy Automation-fiókot, amely egy adott régióban van definiálva, korlátozhatja a kommunikációt a regionális adatközpontjának. A következő táblázat tartalmazza a DNS-rekord minden olyan régió esetében:
 
-| **Régió** | **DNS-rekord** |
+| **Régió** | **DNS record** |
 | --- | --- |
 | USA nyugati középső régiója | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | USA déli középső régiója |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |

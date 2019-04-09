@@ -7,19 +7,21 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 523c99436eb49f1658a5d4c56d64248adccc5c3a
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: da8c8adacfead598a8dec6280cf3518fb7b31f49
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621270"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270952"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
-Az Azure Search szolgáltatásban egy [erőforrás létrehozása](search-create-service-portal.md) tarifacsomag vagy SKU, amely a szolgáltatás teljes élettartama rögzített címen. Szolgáltatásszintek **ingyenes**, **alapszintű**, **Standard**, vagy **tárolásra optimalizált**.  **Standard szintű** és **tárolásra optimalizált** érhetők el a konfigurációkat és a kapacitások több. A legtöbb ügyfél kezdje a **ingyenes** tesztelési csomagot, és ezután végezni a fejlesztési és éles üzemelő példányokhoz magasabb fizetős csomagok valamelyikére. Az elvégezhető összes útmutatóink és oktatóanyagaink segítségével a **ingyenes** szint, beleértve a nagy erőforrásigényű cognitive search.
+Az Azure Search szolgáltatásban egy [erőforrás létrehozása](search-create-service-portal.md) tarifacsomag vagy SKU, amely a szolgáltatás teljes élettartama rögzített címen. Szolgáltatásszintek **ingyenes**, **alapszintű**, **Standard**, vagy **tárolásra optimalizált**.  **Standard szintű** és **tárolásra optimalizált** érhetők el a konfigurációkat és a kapacitások több. 
+
+A legtöbb ügyfél kezdje a **ingyenes** tesztelési csomagot, és ezután végezni a fejlesztési és éles üzemelő példányokhoz magasabb fizetős csomagok valamelyikére. Az elvégezhető összes útmutatóink és oktatóanyagaink segítségével a **ingyenes** szint, beleértve a nagy erőforrásigényű cognitive search.
 
 > [!NOTE]
 > Tárolásra optimalizált szolgáltatásszintjét jelenleg előzetes verzióként érhető el egy vizsgálat és a Kísérletezési céljából a cél az, hogy visszajelzéseket kedvezményes áron. Végső díjszabás lesz bejelentve később, amikor ezek a rétegek általánosan elérhetők. Azt javasoljuk, hogy az éles környezetben ezek a rétegek tanúsítványokkal szemben.
@@ -29,7 +31,7 @@ Rétegek helyett az szolgáltatást (szolgáltatásokat) üzemeltető a hardver 
 + Indexeket hozhat létre száma
 + Méretétől és sebességétől partíciók (fizikai tároló)
 
-Bár minden szint esetében, beleértve a **ingyenes** réteg, általában kínálnak funkcióparitás, nagyobb méretű számítási feladatokat is szabályozzák a magasabb szintű követelményei. Ha például [cognitive search](cognitive-search-concept-intro.md) indexelő rendelkezik hosszú ideig futó képességeit, hogy időtúllépés egy ingyenes szolgáltatás, ha az adatkészlet kicsi történik.
+Bár minden szint esetében, beleértve a **ingyenes** réteg, általában kínálnak funkcióparitás, nagyobb méretű számítási feladatokat is szabályozzák a magasabb szintű követelményei. Ha például [mesterséges indexeléshez a Cognitive Services](cognitive-search-concept-intro.md) rendelkezik hosszú ideig futó képességeit, hogy időtúllépés egy ingyenes szolgáltatás, ha az adatkészlet kicsi történik.
 
 > [!NOTE] 
 > Funkcióparitás kivételt [indexelők](search-indexer-overview.md), amely nem áll rendelkezésre a S3HD.
@@ -53,7 +55,7 @@ A következő táblázat felsorolja az elérhető tarifacsomag. Egyéb informác
 |Tárolásra optimalizált 2 (L2) | 2 TB-os partíciónként (legfeljebb 24 TB szolgáltatásonként) |
 
 > [!NOTE] 
-> A tárolásra optimalizált rétegei kedvezőbb áron / TB, mint a Standard szint nagyobb tárolási kapacitás.  Az elsődleges egyensúlyt a lekérdezés nagyobb késést, amelynek ellenőrizni kell az alkalmazás specifikus igényei.  Ez a szint a teljesítménnyel kapcsolatos megfontolások kapcsolatos további információkért lásd: [teljesítmény és optimalizálás szempontok](search-performance-optimization.md).
+> A tárolásra optimalizált rétegei kedvezőbb áron / TB, mint a Standard szint nagyobb tárolási kapacitás. Az elsődleges egyensúlyt a lekérdezés nagyobb késést, amelynek ellenőrizni kell az alkalmazás specifikus igényei.  Ez a szint a teljesítménnyel kapcsolatos megfontolások kapcsolatos további információkért lásd: [teljesítmény és optimalizálás szempontok](search-performance-optimization.md).
 >
 
 ## <a name="how-billing-works"></a>A számlázás működése
@@ -70,17 +72,27 @@ Az alábbi képernyőképen / alapegység jelzi a Basic, S1 és az ingyenes (S2,
 
 További replikák és partíciók olyan bővítménye, a kezdeti díja. Egy keresési szolgáltatás, a minimális konfigurációs egy replika és a partíció szükséges. A minimális túli hozzáadhat replikák és partíciók egymástól függetlenül. Például hozzáadhat csak a replikákat és a csak a partíciókat. 
 
-További replikák és partíciók alapján lesznek kiszámlázva egy [képlet](#search-units). A költségek, amelyek nem lineáris (kétszeresére matematikában költsége nagyobb kapacitás). Példa bemutatja, hogyan a képlet működését, lásd: ["Útmutató a replikák és partíciók lefoglalni"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)
+További replikák és partíciók alapján lesznek kiszámlázva egy [képlet](#search-units). A költségek, amelyek nem lineáris (kétszeresére matematikában költsége nagyobb kapacitás). Példa bemutatja, hogyan a képlet működését, lásd: ["Útmutató a replikák és partíciók lefoglalni"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
 ### <a name="2-data-egress-charges-during-indexing"></a>2. Kimenő adatforgalom díját az indexelés során
 
-Ha az adatok lekérése egy Azure SQL Database vagy a Cosmos DB-adatforrásból, díjkategóriát alkalmazzuk a tranzakció a számlán, az erőforrásokhoz. Ezek a díjak nem Azure Search-mérőszámok, de itt azok szerepelnek, mert ha adatok kérhetők le az Azure SQL Database vagy Azure Cosmos DB-hez indexelők használ, látni fogja, hogy a díj szerepel a számlán.
+Felhasználása [Azure Search-indexelők](search-indexer-overview.md) hatása attól függően, hol találhatók a szolgáltatások számlázási eredményezhet. Kimenő adatforgalom díját kiküszöbölheti az teljes mértékben, ha az Azure Search szolgáltatás hoz létre ugyanabban a régióban, mint az adatokat.
+
++ A díjfizetés nélkül használhatók az Azure-ban bármely szolgáltatás a bejövő adatokat.
+
++ A díjfizetés nélkül használhatók az Azure Search kimenő adatokat.
+
++ Nem számítunk fel díjat, az adatok és az SQL DB, Cosmos, Blob storage a kimenő fájlok (bejövő az Azure Search) mindaddig, amíg az összes szolgáltatás ugyanabban a régióban vannak.
+
++ A kimenő adatok vagy fájlok díjakat számítjuk Ha storage és az Azure Search különböző régiókban találhatók.
+
+Útválasztás az adatok Azure-régióban, látni fogja a sávszélesség díjai a számlán, az erőforrásokhoz. Ezek a díjak nem részei az Azure Search számla, de itt azok szerepelnek, mert ha indexelők használatával kérje le az adatok vagy fájlok a hálózaton keresztül, látni fogja, hogy a díj a a teljes számlája összegét.
+
+Ha az indexelők nem használ, nem számítunk sávszélesség fel díjat. 
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. AI-bővített indexelés kognitív szolgáltatások használata
 
-A [cognitive search](cognitive-search-concept-intro.md) csak, kép kibontása során dokumentumfeltörést alapján számítjuk fel a dokumentumok kinyert képek számát. Szövegkinyerés jelenleg díjmentes. Más végrehajtott információbeolvasás alapján [beépített kognitív képességeket](cognitive-search-predefined-skills.md) Cognitive Services-erőforrás terhelve van. Végrehajtott információbeolvasás számlázása megegyező módon, ha végrehajtotta a Cognitive Services használatával közvetlenül a feladatot.
-
-Ha nem használ [cognitive search](cognitive-search-concept-intro.md) vagy [Azure Search-indexelők](search-indexer-overview.md), replikák és partíciók aktívan használnak, rendszeres indexelés és a lekérdezési számítási feladatokhoz kapcsolódó csak költségeit.
+A [mesterséges indexeléshez a Cognitive Services](cognitive-search-concept-intro.md) csak, kép kibontása során dokumentumfeltörést alapján számítjuk fel a dokumentumok kinyert képek számát. Szövegkinyerés jelenleg díjmentes. Más végrehajtott információbeolvasás, természetes nyelvi feldolgozás, például a alapuló [beépített kognitív képességeket](cognitive-search-predefined-skills.md) Cognitive Services-erőforrás terhelve van. Végrehajtott információbeolvasás számlázása megegyező módon, ha végrehajtotta a Cognitive Services használatával közvetlenül a feladatot.
 
 <a name="search-units"></a>
 

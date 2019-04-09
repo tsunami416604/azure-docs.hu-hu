@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 11/06/2018
-ms.openlocfilehash: 3c40e00d55af49b1b040d3fe706f08af719b2238
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/02/2019
+ms.openlocfilehash: 1e02eaeae4757a9a41ec59be81c3d9510d035232
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112789"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273821"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Oktatóanyag: Apache Kafka streams API
 
@@ -23,14 +23,13 @@ Ismerje meg, hogyan hozhat létre az Apache Kafka Streams API-t használó alkal
 A jelen oktatóanyagban használt alkalmazás egy streamelési szószámláló. Szöveges adatokat olvas be egy Kafka-témakörből, kigyűjti az egyes szavakat, majd eltárolja a szavakat és azok számát egy másik Kafka-témakörben.
 
 > [!NOTE]  
-> A Kafka adatfolyam-feldolgozás gyakran történik az Apache Spark és Apache Storm használatával. A Kafka Streams API a Kafka 0.10.0-s verziójában (a HDInsight 3.5-ben és 3.6-ban) lett bevezetve. Ez az API lehetővé teszi az adatstreamek a bemeneti és kimeneti témakörök közötti átalakítását. Bizonyos esetekben ez alternatív megoldás lehet a streamelési Storm- vagy Spark-megoldások létrehozása helyett. 
+> A Kafka adatfolyam-feldolgozás gyakran történik az Apache Spark és Apache Storm használatával. A Kafka (a HDInsight 3.5-ös és 3.6-os) 1.1.0-s a Kafka Streams API-t vezetett be. Ez az API lehetővé teszi az adatstreamek a bemeneti és kimeneti témakörök közötti átalakítását. Bizonyos esetekben ez alternatív megoldás lehet a streamelési Storm- vagy Spark-megoldások létrehozása helyett. 
 >
 > A Kafka Streams megoldással kapcsolatos további információkért tekintse meg [a Streams bevezető](https://kafka.apache.org/10/documentation/streams/) dokumentációját az Apache.org webhelyen.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A fejlesztési környezet beállítása
 > * A kód értelmezése
 > * Az alkalmazás létrehozása és üzembe helyezése
 > * Kafka-témakörök konfigurálása
@@ -42,15 +41,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * A lépések elvégzéséhez a [előállítói API-t és az Apache Kafka-fogyasztók](apache-kafka-producer-consumer-api.md) dokumentumot. A dokumentumban leírt lépések az ebben az oktatóanyagban létrehozott példaalkalmazást és -témaköröket használják.
 
-## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
+* [Java fejlesztői készlet (JDK) 8-as verzió](https://aka.ms/azure-jdks) vagy azzal egyenértékű, például az OpenJDK.
 
-A fejlesztési környezetben a következő összetevőket kell telepítenie:
+* [Az Apache Maven](https://maven.apache.org/download.cgi) megfelelően [telepített](https://maven.apache.org/install.html) Apache megfelelően.  Maven egy projektet a Java-projektek rendszert hozhat létre.
 
-* [Java JDK 8](https://aka.ms/azure-jdks) vagy azzal egyenértékű, például az OpenJDK.
-
-* [Apache Maven](https://maven.apache.org/)
-
-* Egy SSH-ügyfél és az `scp` parancs. További információ: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
@@ -135,65 +130,73 @@ public class Stream
 }
 ```
 
-
 ## <a name="build-and-deploy-the-example"></a>A példa létrehozása és üzembe helyezése
 
 A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe helyezéséhez hajtsa végre a következő lépéseket:
 
-1. A példákat a [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) címről töltheti le.
+1. Állítsa be az aktuális könyvtár helyét a `hdinsight-kafka-java-get-started-master\Streaming` könyvtárra, és majd használja az alábbi parancsot egy jar-csomag létrehozásához:
 
-2. Módosítsa a könyvtárakat a `Streaming` könyvtárra, majd a következő parancs használatával hozzon létre egy JAR-csomagot:
-
-    ```bash
+    ```cmd
     mvn clean package
     ```
 
     Ez a parancs a `target/kafka-streaming-1.0-SNAPSHOT.jar` helyen hozza létre a csomagot.
 
-3. Az alábbi paranccsal másolja a `kafka-streaming-1.0-SNAPSHOT.jar` fájlt a HDInsight-fürtbe:
-   
-    ```bash
+2. Cserélje le az `sshuser` elemet a fürt SSH-felhasználójára, illetve a `clustername` elemet a fürt nevére. A következő parancs használatával másolja a `kafka-streaming-1.0-SNAPSHOT.jar` fájlt a HDInsight-fürthöz. Ha a rendszer kéri, adja meg az SSH-felhasználói fiók jelszavát.
+
+    ```cmd
     scp ./target/kafka-streaming-1.0-SNAPSHOT.jar sshuser@clustername-ssh.azurehdinsight.net:kafka-streaming.jar
     ```
-   
-    Cserélje le az `sshuser` elemet a fürt SSH-felhasználójára, illetve a `clustername` elemet a fürt nevére. Ha a rendszer kéri, adja meg az SSH-felhasználói fiók jelszavát. Az `scp` HDInsighttal való használatával kapcsolatos további információkat [az SSH a HDInsighttal való használatáról szóló cikkben](../hdinsight-hadoop-linux-use-ssh-unix.md) találhat.
 
 ## <a name="create-apache-kafka-topics"></a>Hozzon létre Apache Kafka-témakörökhöz
 
-1. A fürttel létesített SSH-kapcsolat megnyitásához használja a következő parancsot:
+1. Cserélje le az `sshuser` elemet a fürt SSH-felhasználójára, illetve a `CLUSTERNAME` elemet a fürt nevére. Nyissa meg a fürthöz az SSH-kapcsolatot az alábbi parancs megadásával. Ha a rendszer kéri, adja meg az SSH-felhasználói fiók jelszavát.
 
     ```bash
-    ssh sshuser@clustername-ssh.azurehdinsight.net
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Cserélje le az `sshuser` elemet a fürt SSH-felhasználójára, illetve a `clustername` elemet a fürt nevére. Ha a rendszer kéri, adja meg az SSH-felhasználói fiók jelszavát. Az `scp` HDInsighttal való használatával kapcsolatos további információkat [az SSH a HDInsighttal való használatáról szóló cikkben](../hdinsight-hadoop-linux-use-ssh-unix.md) találhat.
-
-2. A fürtnév változóként való mentéséhez és egy JSON-elemző segédprogram (`jq`) telepítéséhez használja az alábbi parancsokat. Ha a rendszer kéri, adja meg a Kafka-fürt nevét:
+2. Telepítés [jq](https://stedolan.github.io/jq/), egy parancssori JSON feldolgozó. Nyitott fennálló SSH-kapcsolatból, adja meg az alábbi paranccsal telepíthető `jq`:
 
     ```bash
     sudo apt -y install jq
-    read -p 'Enter your Kafka cluster name:' CLUSTERNAME
     ```
 
-3. A Kafka-közvetítő gazdagépek a gazdagépek és az Apache Zookeeper lekéréséhez használja a következő parancsokat. Ha a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) fiókjának jelszavát. A rendszer kétszer kéri a jelszó megadására.
+3. Állítsa be a környezeti változók. Cserélje le `PASSWORD` és `CLUSTERNAME` a fürt bejelentkezési jelszava és a fürt neve rendre, majd adja meg a parancsot:
 
     ```bash
-    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
-    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
+    export password='PASSWORD'
+    export clusterNameA='CLUSTERNAME'
     ```
 
-4. A streamelési művelet által használt témakörök létrehozásához használja az alábbi parancsokat:
+4. Bontsa ki a fürt megfelelően kisbetűsek nevét. A fürt nevét, a tényleges kis-és várható, a fürt létrehozási módjától függően eltérő lehet. Ez a parancs szerezze be a tényleges kis-és nagybetűhasználatot, egy változó tárolja, és majd jelenítse meg a megfelelő cased nevét és a korábban megadott nevét. Írja be a következő parancsot:
+
+    ```bash
+    export clusterName=$(curl -u admin:$password -sS -G "https://$clusterNameA.azurehdinsight.net/api/v1/clusters" \
+  	| jq -r '.items[].Clusters.cluster_name')
+    echo $clusterName, $clusterNameA
+    ```
+
+5. A Kafka-közvetítő gazdagépek a gazdagépek és az Apache Zookeeper lekéréséhez használja a következő parancsokat. Ha a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) fiókjának jelszavát. A rendszer kétszer kéri a jelszó megadására.
+
+    ```bash
+    export KAFKAZKHOSTS=`curl -sS -u admin:$password -G \
+    https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER \
+  	| jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`;
+    export KAFKABROKERS=`curl -sS -u admin:$password -G \
+    https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER \
+  	| jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`;
+    ```
+
+6. A streamelési művelet által használt témakörök létrehozásához használja az alábbi parancsokat:
 
     > [!NOTE]  
     > Hibaüzenetet kaphat, miszerint a `test` témakör már létezik. Ez rendben van, mivel lehetséges, hogy a témakör az előállítói és fogyasztói API-val foglalkozó oktatóanyagban már létre lett hozva.
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
-
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic wordcounts --zookeeper $KAFKAZKHOSTS
-
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic RekeyedIntermediateTopic --zookeeper $KAFKAZKHOSTS
-
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic wordcount-example-Counts-changelog --zookeeper $KAFKAZKHOSTS
     ```
 
@@ -251,11 +254,20 @@ A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe 
     > [!NOTE]  
     > A `--from-beginning` paraméter arra konfigurálja a fogyasztót, hogy a témakörben tárolt rekordok elején kezdjen. A számláló minden egyes szó beolvasásával nő, így a témakör az egyes szavakhoz több bejegyzést is tartalmaz, növekvő számlálóval.
 
-7. A __Ctrl + C__ billentyűparanccsal zárhatja be az előállítót. A __Ctrl + C__ billentyűparancs ismételt lenyomásával zárhatja be az alkalmazást és a fogyasztót is.
+4. A __Ctrl + C__ billentyűparanccsal zárhatja be az előállítót. A __Ctrl + C__ billentyűparancs ismételt lenyomásával zárhatja be az alkalmazást és a fogyasztót is.
+
+5. A témakörök a streamelési művelet által használt törléséhez használja a következő parancsokat:
+
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic test --zookeeper $KAFKAZKHOSTS
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic wordcounts --zookeeper $KAFKAZKHOSTS
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic RekeyedIntermediateTopic --zookeeper $KAFKAZKHOSTS
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic wordcount-example-Counts-changelog --zookeeper $KAFKAZKHOSTS
+    ```
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben a dokumentumban megismerkedett az Apache Kafka Streams API használata a HDInsight alatt futó Kafka. Az alábbiak további információt biztosítanak a Kafka használatával kapcsolatban:
 
-* [Az Apache Kafka-naplók elemzése](apache-kafka-log-analytics-operations-management.md)
+* [Apache Kafka-naplók elemzése](apache-kafka-log-analytics-operations-management.md)
 * [Adatok replikálása Apache Kafka-fürtök között](apache-kafka-mirroring.md)

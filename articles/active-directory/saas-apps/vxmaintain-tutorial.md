@@ -4,216 +4,197 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/26/2018
+ms.topic: tutorial
+ms.date: 03/28/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d0e8f8526d866c308be8684546397f282dcce51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c034e12c372e0514fa6cbb1f35af48cbdb4bf865
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194104"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278445"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező vxMaintain
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan vxMaintain integrálása az Azure Active Directory (Azure AD).
+VxMaintain integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-Ez az integráció kínál számos fontos előnnyel jár. A következőket teheti:
+* Szabályozhatja, ki férhet hozzá vxMaintain Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve vxMaintain (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-- Szabályozza, ki férhet hozzá vxMaintain Azure AD-ben.
-- Engedélyezze a felhasználók automatikusan jelentkezhetnek be vxMaintain egyszeri bejelentkezéssel (SSO) az Azure AD-fiókjaik használatával.
-- A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
-
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 VxMaintain az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy vxMaintain előfizetés SSO engedélyezése
-
-> [!NOTE]
-> Ha ebben az oktatóanyagban a lépéseket, azt javasoljuk, hogy nem használja éles környezetben.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
+* vxMaintain egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. 
 
-Ez az oktatóanyag ismerteti a forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-* VxMaintain hozzáadása a katalógusból
-* Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+* támogatja a vxMaintain **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
 
-## <a name="add-vxmaintain-from-the-gallery"></a>VxMaintain hozzáadása a katalógusból
-VxMaintain integrációjának konfigurálása az Azure ad-vel, hozzá kell vxMaintain a galériából a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-vxmaintain-from-the-gallery"></a>VxMaintain hozzáadása a katalógusból
 
-A katalógusból vxMaintain hozzáadásához tegye a következőket:
+Az Azure AD integrálása a vxMaintain konfigurálásához hozzá kell vxMaintain a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory** gombra. 
+**VxMaintain hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-    ![Az Azure Active Directory gomb][1]
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-1. Válassza ki **vállalati alkalmazások** > **minden alkalmazás**.
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-    ![A "Nagyvállalati alkalmazások" panel][2]
-    
-1. Egy alkalmazás hozzáadása a a **minden alkalmazás** párbeszédpanelen jelölje ki **új alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![Az "új alkalmazás" gombra][3]
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-1. A Keresés mezőbe írja be a **vxMaintain**.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Az "Egyszeri bejelentkezési mód" legördülő lista](./media/vxmaintain-tutorial/tutorial_vxmaintain_search.png)
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-1. Az eredmények listájában válassza ki a **vxMaintain**, majd válassza ki **Hozzáadás**.
+4. A Keresés mezőbe írja be a **vxMaintain**válassza **vxMaintain** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![A vxMaintain hivatkozás](./media/vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
+     ![az eredmények listájában vxMaintain](common/search-new-app.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD SSO vxMaintain, a teszt "Britta Simon." nevű felhasználó használatával
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Az SSO működjön az Azure AD tudnia kell, a vxMaintain partner, az Azure AD-felhasználót. Azt jelenti az Azure AD-felhasználók és a megfelelő vxMaintain felhasználó közötti kapcsolat kapcsolatot kell létesítenie.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az vxMaintain nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó vxMaintain hivatkozás kapcsolata kell létrehozni.
 
-A hivatkozás kapcsolatot hozhat létre, rendelje hozzá a vxMaintain **felhasználónév** érték, mint az Azure AD **felhasználónév** értéket.
+Az Azure AD egyszeri bejelentkezés az vxMaintain tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-Konfigurálja és az Azure AD egyszeri bejelentkezés tesztelése vxMaintain használatával végezze el a következő építőelemeit.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Egyszeri bejelentkezés vxMaintain konfigurálása](#configure-vxmaintain-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre vxMaintain tesztfelhasználót](#create-vxmaintain-test-user)**  – egy megfelelője a Britta Simon a felhasználó Azure ad-ben reprezentációja kapcsolódó vxMaintain rendelkeznie.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban is mind az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon, valamint egyszeri Bejelentkezést az vxMaintain alkalmazásban az alábbiak szerint:
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-1. Az Azure Portalon az a **vxMaintain** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés vxMaintain, hajtsa végre az alábbi lépéseket:
 
-    ![Az "Egyszeri bejelentkezés" parancs][4]
+1. Az a [az Azure portal](https://portal.azure.com/), az a **vxMaintain** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-1. Az SSO engedélyezéséhez a **egyszeri bejelentkezési mód** legördülő listában válassza **SAML-alapú bejelentkezés**.
- 
-    ![Az "SAML-alapú bejelentkezés" parancs](./media/vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. A **vxMaintain tartomány és URL-címek**, tegye a következőket:
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-    ![A tartomány és URL-címek szakaszt vxMaintain](./media/vxmaintain-tutorial/tutorial_vxmaintain_url.png)
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    a. Az a **azonosító** mezőbe írja be egy URL-címet, amely rendelkezik a következő szintaxist: `https://<company name>.verisae.com`
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    b. Az a **válasz URL-cím** mezőbe írja be egy URL-címet, amely rendelkezik a következő szintaxist: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    > [!NOTE] 
-    > Az előző értékek nem valódi. Frissítse azokat a tényleges azonosítóval, és a válasz URL-címe. Az értékek beszerzéséhez forduljon a [vxMaintain támogatási csapatának](https://www.hubspot.com/company/contact).
- 
-1. Alatt **SAML-aláíró tanúsítvány**válassza **metaadatainak XML**, majd mentse a metaadat-fájlt a számítógépre.
+4. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a következő lépésekkel:
 
-    ![Az "SAML aláíró tanúsítvány" szakasz](./media/vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
+    ![vxMaintain tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
 
-1. Kattintson a **Mentés** gombra.
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<company name>.verisae.com`
 
-    ![A Mentés gombra](./media/vxmaintain-tutorial/tutorial_general_400.png)
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
-1. Konfigurálása **vxMaintain** SSO, küldjön a letöltött **metaadatainak XML** fájlt a [vxMaintain támogatási csapatának](https://www.hubspot.com/company/contact).
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [vxMaintain ügyfél-támogatási csapatának](https://www.hubspot.com/company/contact) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-> [!TIP]
-> Az alkalmazás beállítása során az előző utasítások a tömör verziója olvashat a [az Azure portal](https://portal.azure.com). Az alkalmazás hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** lapra, és hozzáférhet a beágyazott dokumentáció a **konfigurációs** szakaszban. 
->
->A beágyazott dokumentáció szolgáltatással kapcsolatos további tudnivalókért lásd: [egyszeri bejelentkezést a vállalati alkalmazások kezelése](https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
-Ebben a szakaszban tesztfelhasználó Britta Simon az Azure Portalon létrehozhat az alábbiak szerint:
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-![Az Azure ad-ben tesztfelhasználó számára][100]
+6. Az a **vxMaintain beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
-1. Az a **az Azure portal**, a bal oldali panelen válassza ki a **Azure Active Directory** gombra.
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    ![Az "Azure Active Directory" gomb](./media/vxmaintain-tutorial/create_aaduser_01.png) 
+    a. Bejelentkezési URL
 
-1. Felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** > **minden felhasználó**.
-    
-    ![A "Minden felhasználó" hivatkozásra](./media/vxmaintain-tutorial/create_aaduser_02.png)  
-    A **minden felhasználó** párbeszédpanel nyílik meg. 
+    b. Azure AD-azonosító
 
-1. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás**.
- 
-    ![A Hozzáadás gombra.](./media/vxmaintain-tutorial/create_aaduser_03.png) 
+    c. Kijelentkezési URL
 
-1. Az a **felhasználói** párbeszédpanelen tegye a következőket:
- 
-    ![A felhasználó párbeszédpanel](./media/vxmaintain-tutorial/create_aaduser_04.png) 
+### <a name="configure-vxmaintain-single-sign-on"></a>VxMaintain egyszeri bejelentkezés konfigurálása
+
+Az egyszeri bejelentkezés konfigurálása **vxMaintain** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [vxMaintain támogatási csapatának](https://www.hubspot.com/company/contact). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+
+2. Válassza ki **új felhasználó** a képernyő tetején.
+
+    ![Új felhasználó gomb](common/new-user.png)
+
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a tesztfelhasználó Britta Simon e-mail-címét.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a létrehozott értéket a **jelszó** mezőbe.
-
-    d. Kattintson a **Létrehozás** gombra.
- 
-### <a name="create-a-vxmaintain-test-user"></a>VxMaintain tesztfelhasználó létrehozása
-
-Ebben a szakaszban vxMaintain Britta Simon tesztfelhasználót hoz létre. Felhasználók hozzáadása az vxMaintain platformon, dolgozni a [vxMaintain támogatási csapatának](https://www.hubspot.com/company/contact). Mielőtt használná az egyszeri bejelentkezés, hozzon létre, és aktiválja a felhasználókat.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze tesztfelhasználó Britta Simon Azure egyszeri bejelentkezés használatára vxMaintain való hozzáférést. Ehhez tegye a következőket:
+Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejelentkezés vxMaintain való hozzáférést.
 
-![A megjelenítendő név listában a tesztfelhasználó számára][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **vxMaintain**.
 
-1. Az Azure Portalon **alkalmazások** nézet, lépjen a **Directory** Nézet > **vállalati alkalmazások** > **minden alkalmazás**.
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Az "Összes alkalmazás" hivatkozásra][201] 
+2. Az alkalmazások listájában jelölje ki a **vxMaintain**.
 
-1. Az a **alkalmazások** listáról válassza ki **vxMaintain**.
+    ![Az alkalmazások listáját a vxMaintain hivatkozásra](common/all-applications.png)
 
-    ![A vxMaintain hivatkozás](./media/vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-1. A bal oldali panelen válassza ki a **felhasználók és csoportok**.
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-    ![A "Felhasználók és csoportok" hivatkozásra][202] 
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-1. Válassza ki **Hozzáadás** , majd a **hozzárendelés hozzáadása** ablaktáblán válassza **felhasználók és csoportok**.
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-    ![A "Felhasználók és csoportok" hivatkozásra][203]
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-1. A a **felhasználók és csoportok** párbeszédpanel a **felhasználók** listáról válassza ki **Britta Simon**, majd válassza ki a **válassza** gombra.
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
-    
-### <a name="test-your-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-Ebben a szakaszban az Azure AD SSO konfigurálása a hozzáférési Panel használatával tesztelheti.
+### <a name="create-vxmaintain-test-user"></a>VxMaintain tesztfelhasználó létrehozása
 
-Válassza a **vxMaintain** csempe a hozzáférési panelen kell jelentkezhet be a vxMaintain alkalmazását automatikusan.
+Ebben a szakaszban egy felhasználói Britta Simon nevű vxMaintain hoz létre. Együttműködve [vxMaintain támogatási csapatának](https://www.hubspot.com/company/contact) a felhasználók hozzáadása az vxMaintain platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-## <a name="next-steps"></a>További lépések
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-* [Az Azure Active Directory SaaS-alkalmazások integrálását ismertető oktatóanyagok listáját](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+Ha a hozzáférési panelen a vxMaintain csempére kattint, meg kell lehet automatikusan bejelentkezett a vxMaintain, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-<!--Image references-->
+## <a name="additional-resources"></a>További források
 
-[1]: ./media/vxmaintain-tutorial/tutorial_general_01.png
-[2]: ./media/vxmaintain-tutorial/tutorial_general_02.png
-[3]: ./media/vxmaintain-tutorial/tutorial_general_03.png
-[4]: ./media/vxmaintain-tutorial/tutorial_general_04.png
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-[100]: ./media/vxmaintain-tutorial/tutorial_general_100.png
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[200]: ./media/vxmaintain-tutorial/tutorial_general_200.png
-[201]: ./media/vxmaintain-tutorial/tutorial_general_201.png
-[202]: ./media/vxmaintain-tutorial/tutorial_general_202.png
-[203]: ./media/vxmaintain-tutorial/tutorial_general_203.png
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

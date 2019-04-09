@@ -1,21 +1,21 @@
 ---
-title: Az oktatóanyag a Cognitive Services API-k hívása egy indexelési folyamat – Azure Search
-description: Ez az oktatóanyag részletesen bemutat egy példát adatok mesterséges intelligencia segítségével történő kinyerésére, illetve természetes nyelvi és képfeldolgozásra az Azure Search adatkinyerési és -átalakítási indexelőszolgáltatásában.
+title: 'Oktatóanyag: Cognitive Services API-k egy indexelési folyamat – Azure Search-hívás'
+description: '. Lépés: adatok kinyerése, természetes nyelvi és image AI példán keresztül az Azure Search szolgáltatásban az adatok kinyerése és átalakítására JSON-blobok indexelése feldolgozási.'
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 13361bb73043e83a0162e86604f048b98eb1c3a0
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.openlocfilehash: 5fbcef1d8bc19df251a4d33cafa2fa7b5a7d9431
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009631"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261921"
 ---
 # <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Oktatóanyag: Cognitive Services API-k hívja meg az Azure Search folyamat (előzetes verzió) indexelése
 
@@ -32,60 +32,44 @@ Az oktatóanyagban REST API-hívásokat fog indítani az alábbi feladatok végr
 
 A kimenet egy teljes szöveges, kereshető index az Azure Search szolgáltatásban. Az indexet egyéb standard képességekkel, például [szinonimákkal](search-synonyms.md), [pontozási profilokkal](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [elemzőkkel](search-analyzers.md) és [szűrőkkel](search-filters.md) is bővítheti.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ebben az oktatóanyagban az ingyenes szolgáltatás fut, de az ingyenes tranzakciók száma korlátozott a naponta 20 dokumentumokhoz. Ha azt szeretné, ez az oktatóanyag többször futtatása ugyanazon a napon, használja az egy kisebb fájlt, hogy a további futtatási illeszkednek.
 
 > [!NOTE]
-> December 21, 2018-as, lesz egy Cognitive Services-erőforrás társítása egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon is megkezdjük a dokumentumfeltörést fázis részeként a lemezkép kinyerési díjszabási. A szövegek dokumentumokból való kinyerése továbbra is ingyenesen használható.
+> Növelje a feldolgozása, további dokumentumok hozzáadása, illetve további AI-algoritmusokat hozzáadása gyakorisága bontsa ki a hatókört, szüksége lesz egy számlázható Cognitive Services-erőforrás csatolása. A díjakat API-k hívásakor, a Cognitive Services, valamint a lemezkép kinyerése a az Azure Search-dokumentumfeltörést fázis részeként. Nem számítunk fel díjat a szövegkinyerés dokumentumok közül.
 >
-> A végrehajtás beépített képességek díjat számítunk fel a meglévő [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás az előzetes verziók díjszabása díjat számítunk fel, és a leírt a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). További [információ](cognitive-search-attach-cognitive-services.md).
+> Végrehajtási beépített képességek a meglévő díjakat [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás havidíjat számítunk fel az előzetes verzió díjszabása, lásd a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). További [információ](cognitive-search-attach-cognitive-services.md).
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Nem járatos a kognitív keresés használatában? Olvassa el a [kognitív keresés bemutatását](cognitive-search-concept-intro.md), amelyből megismerheti a funkciót, vagy próbálja ki a [portál rövid útmutatóját](cognitive-search-quickstart-blob.md), amely gyakorlati megközelítéssel mutatja be a legfontosabb alapelveket.
+[Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja.
 
-REST-hívások az Azure Search-be való küldéséhez használja a PowerShellt vagy egy webes tesztelőeszközt (pl.: Telerik Fiddler vagy Postman), a HTTP-kérések összeállításához. Ha nem ismeri ezeket az eszközöket, olvassa el [az Azure Search REST API-k a Fiddlerrel vagy a Postmannel történő vizsgálatát](search-fiddler.md) ismertető cikket.
+[Postman asztali alkalmazás](https://www.getpostman.com/) szolgál az Azure Search REST-hívások.
 
-Az [Azure Portal](https://portal.azure.com/) segítségével hozzon létre teljes körű munkafolyamatban használt szolgáltatásokat. 
+### <a name="get-an-azure-search-api-key-and-endpoint"></a>Első Azure Search api-kulcsát és -végpont
 
-### <a name="set-up-azure-search"></a>Az Azure Search beállítása
+A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-Első lépésként regisztráljon az Azure Search szolgáltatásra. 
+1. Az Azure Portalon, a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://my-service-name.search.windows.net`.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be Azure-fiókjával.
+2. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
 
-1. Kattintson az **Erőforrás létrehozása** gombra, keresse meg az Azure Search szolgáltatást, majd kattintson a **Létrehozás** gombra. Ha első alkalommal próbálkozik keresési szolgáltatás beállításával, tekintse meg az [Azure Search szolgáltatás a portálon történő létrehozását](search-create-service-portal.md) ismertető szakaszt.
+![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
 
-   ![A portál irányítópultja](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Azure Search szolgáltatás létrehozása a portálon")
-
-1. Az Erőforráscsoport résznél hozzon létre egy erőforráscsoportot az oktatóanyag során létrehozott erőforrások tárolására. Ezáltal könnyebb lesz az erőforrások eltávolítása, miután az oktatóanyag végére ért.
-
-1. A helyen válasszon egy közeli régiót, az adatok és más felhőalapú alkalmazáshoz.
-
-1. A Tarifacsomagra vonatkozóan az oktatóanyagok és rövid útmutatók elvégzéséhez létrehozhat egy **ingyenes** szolgáltatást. A saját adatok mélyrehatóbb vizsgálatához hozzon létre egy **Alapszintű** vagy **Standard** [fizetős szolgáltatást](https://azure.microsoft.com/pricing/details/search/). 
-
-   Az ingyenes szolgáltatás legfeljebb 3 indexet és 2 perc indexelést tartalmazhat, 16 MB-os maximális blobmérettel, amely nem elegendő a kognitív keresés funkcióinak teljes körű használatához. A különböző csomagok korlátozásait a [szolgáltatási korlátozásokat](search-limits-quotas-capacity.md) ismertető részben tekintheti meg.
-
-   ![A portál szolgáltatás-definíció lap](./media/cognitive-search-tutorial-blob/create-search-service1.png "szolgáltatás definíció lap a portálon")
-   ![szolgáltatás definíció lap a portálon](./media/cognitive-search-tutorial-blob/create-search-service2.png "Service definition lap az a portálon")
-
- 
-1. A szolgáltatási információk gyors eléréséhez rögzítse a szolgáltatást az irányítópulton.
-
-   ![Szolgáltatásdefiníciós oldal a portálon](./media/cognitive-search-tutorial-blob/create-search-service3.png "Szolgáltatásdefiníciós oldal a portálon")
-
-1. A szolgáltatás létrehozása után gyűjtse össze a következő információkat: **URL-cím** – Áttekintés lapon, és **api-kulcs** (elsődleges vagy másodlagos) a kulcsok lapról.
-
-   ![Végpont- és kulcsadatok a portálon](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "Végpont- és kulcsadatok a portálon")
+Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Az Azure Blob szolgáltatás beállítása és a mintaadatok betöltése
 
 A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forrásadatoknak egy [Azure Search-indexelő](search-indexer-overview.md) által támogatott adatforrástípusból kell származniuk. Vegye figyelembe, hogy az Azure Table Storage a kognitív keresés nem támogatott. Ebben a gyakorlatban a blobtárolót használjuk több tartalomtípus bemutatásához.
 
-1. [Töltse le a mintaadatokat](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4). A mintaadatokat különböző típusú fájlok egy kis készlete alkotja. 
+1. [Töltsön le mintaadatokat](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), amelyek különböző típusú fájlok kis készletéből állnak. 
 
-1. Regisztráljon az Azure Blob Storage-ra, hozzon létre egy tárfiókot, jelentkezzen be a Storage Explorerbe, és hozzon létre egy `basicdemo` nevű tárolót. Részletes útmutatást az [Azure Storage Explorer rövid útmutatójában](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) talál.
+1. [Iratkozzon fel az Azure Blob storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal), hozzon létre egy tárfiókot, nyissa meg a Blob szolgáltatás oldalt, és hozzon létre egy tárolót. A storage-fiók létrehozása az Azure Search és ugyanabban a régióban.
 
-1. A mintafájlok az Azure Storage Explorerrel való feltöltéséhez a létrehozott `basicdemo` nevű tárolóban kattintson a **Feltöltés** gombra.
+1. Kattintson a létrehozott tárolót, **feltöltése** az előző lépésben letöltött minta fájlok feltöltéséhez.
+
+   ![Forrásfájlok az Azure Blob Storage-ban](./media/cognitive-search-quickstart-blob/sample-data.png)
 
 1. A mintafájlok feltöltése után kérje le a tároló nevét és a kapcsolati karakterláncot a Blob Storage-hoz. Ezt megteheti úgy is, ha megkeresi a tárfiókját az Azure Portalon. Lépjen az **Elérési kulcsokhoz**, majd másolja ki a **Kapcsolati karakterlánc** mező tartalmát.
 

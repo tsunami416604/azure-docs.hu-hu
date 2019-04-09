@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 520319fb21dce3cf4f3cc1b36c52657cf9eb24e7
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 77dda80e538c8b742a96e7b7f81abe8650ee6b5d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58903998"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257297"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Külső figyelő megoldás integrálása az Azure Stack használatával
 
@@ -30,7 +30,7 @@ Külső figyelés az Azure Stack-infrastruktúra figyelése az Azure Stack szoft
 - Fizikai számítógépek is elérhetővé állapot és riasztási adatokat az alaplapi felügyeleti vezérlővel (bmc) keresztül.
 - Fizikai hálózati eszközöket is elérhetővé állapot és riasztási adatokat az SNMP protokollon keresztül.
 
-Minden egyes Azure Stack megoldás hardver életciklus állomással letöltésként érhető el. Ezen a gazdagépen fut, a számítógépgyártó (OEM) hardver gyártója által biztosított felügyeleti szoftver a fizikai kiszolgálók és a hálózati eszközök. Ha szükséges, ezeket a figyelési megoldások megkerülése, és közvetlenül integrálható meglévő figyelési megoldásokkal az adatközpontban.
+Minden egyes Azure Stack megoldás hardver életciklus állomással letöltésként érhető el. Ezen a gazdagépen fut, a számítógépgyártó (OEM) hardver gyártója által biztosított felügyeleti szoftver a fizikai kiszolgálók és a hálózati eszközök. Ha azok figyelési megoldásokkal integrálható a meglévő figyelési megoldások az adatközpontban található Ellenőrizze a OEM-szolgáltatónál.
 
 > [!IMPORTANT]
 > A külső figyelési megoldást használ az ügynök nélküli kivételfigyelés kell lennie. Külső ügynökök belül az Azure Stack-összetevők nem telepíthető.
@@ -40,7 +40,7 @@ Az alábbi ábrán látható, az Azure Stackkel integrált rendszerek, a hardver
 ![Azure Stack, figyelés, és hibajegy-kezelési megoldás közötti forgalom bemutató diagram.](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
 
 > [!NOTE]
-> Külső figyelési integráció közvetlenül a fizikai kiszolgálók és a hálózati eszközök nem engedélyezett, aktívan blokkolja a hozzáférés-vezérlési listák (ACL). 
+> Külső figyelési integráció közvetlenül a fizikai kiszolgálók nem engedélyezett, aktívan blokkolja a hozzáférés-vezérlési listák (ACL).  Külső figyelési integrációs közvetlenül a fizikai hálózati eszközöket támogatott, ellenőrizze a Ez a funkció engedélyezése az OEM-szolgáltatónál.
 
 Ez a cikk bemutatja, hogyan integrálható az Azure Stack külső figyelési megoldásokkal, például a System Center Operations Manager és a Nagios. Hogyan használható a riasztásokat programozott módon PowerShell vagy REST API-hívások is tartalmaz.
 

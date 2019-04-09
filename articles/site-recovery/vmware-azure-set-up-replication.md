@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 18dc7ea513d1e3787dbd38b1ab687be607a79f8b
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: HT
+ms.openlocfilehash: b60d8a8fb9b9300a6914ad33b2f760fb5adde3b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006810"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278224"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Vész-helyreállítási VMware – Azure replikációs szabályzatok konfigurálására és felügyeletére
 Ez a cikk ismerteti a replikációs szabályzat konfigurálása, Ön VMware virtuális gépek replikálása az Azure-ba, amikor használatával [Azure Site Recovery](site-recovery-overview.md).
@@ -20,7 +20,7 @@ Ez a cikk ismerteti a replikációs szabályzat konfigurálása, Ön VMware virt
 ## <a name="create-a-policy"></a>Szabályzat létrehozása
 
 1. Válassza a **Kezelés** > **Site Recovery-infrastruktúra** lehetőséget.
-2. A **a VMware és fizikai gépek**válassza **replikációs házirendek**. 
+2. A **a VMware és fizikai gépek**válassza **replikációs házirendek**.
 3. Kattintson a **+ replikációs házirend**, és adja meg a házirend nevét.
 4. Az **RPO küszöbértéke** beállításnál adja meg az RPO-korlátot. Riasztások akkor jönnek létre, ha a folyamatos replikáció túllépi ezt a korlátot.
 5. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú legyen az egyes helyreállítási pontok adatmegőrzési időtartama (a beállítás értéke órákban adható meg). A védelemmel ellátott gépeket az adatmegőrzési időtartamon belüli bármelyik pontra visszaállíthatja. A rendszer a prémium tárolóra replikált gépek esetében 24 órás megőrzést támogat. Akár 72 órát standard tárterület esetén támogatott.
@@ -29,7 +29,7 @@ Ez a cikk ismerteti a replikációs szabályzat konfigurálása, Ön VMware virt
 
 Amikor létrehoz egy replikációs házirendet, a megfelelő feladatátvételi replikációs házirend automatikusan létrejön, a "feladat-visszavétel" utótaggal. A szabályzat létrehozása után szerkesztheti ezt, ha kiválasztja > **beállításainak szerkesztése**.
 
-## <a name="associate-a-configuration-server"></a>Konfigurációs kiszolgáló társítása 
+## <a name="associate-a-configuration-server"></a>Konfigurációs kiszolgáló társítása
 
 A replikációs házirend társítása a helyszíni konfigurációs kiszolgálót.
 

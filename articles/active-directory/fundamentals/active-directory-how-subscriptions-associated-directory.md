@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8c5cb04c17e508409e67f0441daee4bc44c29d5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 3322e49c6fdc590b785806f67b5081700bf8b37b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285006"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264896"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Hozzárendelése vagy Azure-előfizetés hozzáadása az Azure Active Directory-bérlővel
 
@@ -30,6 +30,8 @@ Minden felhasználó rendelkezik-e egy *otthoni* hitelesítési címtárat. Azon
 
 > [!Important]
 > Ha egy előfizetés másik címtárhoz, használatával szerepkörrel rendelkező felhasználók társítania [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/role-assignments-portal.md) elveszítik a hozzáférésüket. Hagyományos előfizetés-rendszergazda (szolgáltatás-rendszergazda és Társrendszergazdák) is elveszíti a hozzáférést.
+> 
+> Emellett az Azure Kubernetes Service (AKS)-fürt egy másik előfizetésbe való áthelyezését, vagy a fürt tulajdonos előfizetés áthelyezése egy új bérlőt hatására a fürt elveszítené funkciók miatt elveszett szerepkör-hozzárendelések és a szolgáltatás egyszerű jogosultságokat. Aks-sel kapcsolatos további információkért lásd: [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -67,15 +69,16 @@ Mielőtt hozzárendelése, vagy adja hozzá az előfizetés, el kell végeznie a
 
     ![Környezetválasztó könyvtárlap, mintául szolgáló adatokkal](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-Az előfizetés címtárának módosítása egy szolgáltatásiszint-művelet, így ez nincs hatással az előfizetés számlázási tulajdonjogát. A fiók rendszergazdája továbbra is módosíthatja a szolgáltatás-rendszergazda, a [Account Center](https://account.azure.com/subscriptions). Törli az eredeti címtárat, át kell adnia az előfizetés számlázási tulajdonjogának átadása egy új fiókrendszergazdának. További információ a számlázási tulajdonjog átadásáról: [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../../billing/billing-subscription-transfer.md). 
+Az előfizetés címtárának módosítása egy szolgáltatásiszint-művelet, így ez nincs hatással az előfizetés számlázási tulajdonjogát. A fiók rendszergazdája továbbra is módosíthatja a szolgáltatás-rendszergazda, a [Account Center](https://account.azure.com/subscriptions). Törli az eredeti címtárat, át kell adnia az előfizetés számlázási tulajdonjogának átadása egy új fiókrendszergazdának. További információ a számlázási tulajdonjog átadásáról: [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../../billing/billing-subscription-transfer.md).
 
 ## <a name="post-association-steps"></a>POST társítás lépések
-
 Miután egy előfizetés másik címtárhoz történő társításához lehet további lépéseket is végre kell hajtania, ha folytatni működését.
 
 1. Ha bármely kulcstartók, módosítania kell a kulcstartó bérlőazonosítója. További információkért lásd: [egy kulcstartó Bérlőazonosítójának módosítása az előfizetés áthelyezése után](../../key-vault/key-vault-subscription-move-fix.md).
 
-1. Ha regisztrált az Azure Stack ezt az előfizetést, akkor újra regisztrálnia kell. További információkért lásd: [regisztrálása az Azure Stack az Azure-ral](../../azure-stack/azure-stack-registration.md).
+2. Ha regisztrált az Azure Stack ezt az előfizetést, akkor újra regisztrálnia kell. További információkért lásd: [regisztrálása az Azure Stack az Azure-ral](../../azure-stack/azure-stack-registration.md).
+
+
 
 ## <a name="next-steps"></a>További lépések
 

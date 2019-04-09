@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: 218af82d2385632e7e7a0e77060c5deb758d1e83
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.openlocfilehash: 0448f583743f9e5b3f8fd6de3a85b05e16bff126
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057053"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269146"
 ---
 # <a name="azure-stack-1903-update"></a>Azure Stack 1903 frissítése
 
@@ -208,6 +208,10 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>Rendszernapló 
+- A syslog-konfiguráció nincs megőrizve folyamata alatt tartózkodnak egy frissítést, a syslog-ügyfél elveszíti a annak konfigurációját, és leállítja a továbbított syslog-üzeneteket eredményez. A probléma az Azure Stack minden verziójára vonatkozik, a syslog-ügyfél (1809) a nyilvánosan elérhető verzió óta.
+A megoldás, hogy a syslog-ügyfél újrakonfigurálása az Azure Stack-frissítés telepítését követően.
 
 ## <a name="download-the-update"></a>A frissítés letöltése
 

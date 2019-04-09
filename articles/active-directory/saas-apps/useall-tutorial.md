@@ -4,58 +4,49 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 8dd9e452-a5b6-4a16-a97c-b60211ea6b95
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/30/2018
+ms.topic: tutorial
+ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5117f8c161161555b39bef539c542920984279c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d66b23878176b0b508d3fa0c4973d36b5731de82
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835994"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-useall"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Useall
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Useall integrálása az Azure Active Directory (Azure AD).
-
 Useall integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, ki férhet hozzá Useall Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Useall (egyszeri bejelentkezés), az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja, ki férhet hozzá Useall Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Useall (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md)
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Useall az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy Useall egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
+* Useall egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-1. Useall hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+* Támogatja a Useall **SP** által kezdeményezett egyszeri bejelentkezés
 
 ## <a name="adding-useall-from-the-gallery"></a>Useall hozzáadása a katalógusból
 
@@ -65,144 +56,136 @@ Az Azure AD integrálása a Useall konfigurálásához hozzá kell Useall a kata
 
 1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen][2]
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Az új alkalmazás gomb][3]
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
 4. A Keresés mezőbe írja be a **Useall**válassza **Useall** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Az eredmények listájában Useall](./media/useall-tutorial/tutorial_useall_addfromgallery.png)
+    ![Az eredmények listájában Useall](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Useall a teszt "Britta Simon" nevű felhasználó.
-
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Useall mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Useall hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Useall nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Useall hivatkozás kapcsolata kell létrehozni.
 
 Az Azure AD egyszeri bejelentkezés az Useall tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Useall tesztfelhasználó létrehozása](#creating-useall-test-user)**  – egy megfelelője a Britta Simon Useall, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Useall egyszeri bejelentkezés konfigurálása](#configure-useall-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Useall tesztfelhasználót](#create-useall-test-user)**  – egy megfelelője a Britta Simon Useall, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Useall alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Useall, hajtsa végre az alábbi lépéseket:**
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Useall, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **Useall** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **Useall** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen kattintson **kiválasztása** a **SAML** módot az egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-    ![Egyszeri bejelentkezés konfigurálása](common/tutorial_general_301.png)
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](common/editconfigure.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Useall tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/useall-tutorial/tutorial_useall_url.png)
+    ![Useall tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<SUBDOMAIN>.useall.com.br/tenant/useall`
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.useall.com.br/tenant/useall`
 
-    b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<SUBDOMAIN>.useall.com.br/tenant/apiuseall/saml2`
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<SUBDOMAIN>.useall.com.br/tenant/apiuseall/saml2`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Useall támogatási csapatának](mailto:luizotavio@useall.com.br) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Useall ügyfél-támogatási csapatának](mailto:luizotavio@useall.com.br) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a számítógép.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/useall-tutorial/tutorial_useall_certificate.png)
+    ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
 
-6. Az egyszeri bejelentkezés konfigurálása **Useall** oldalon kell küldenie a letöltött **alkalmazás összevonási metaadatainak URL-címe** való [Useall támogatási csapatának](mailto:luizotavio@useall.com.br). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+### <a name="configure-useall-single-sign-on"></a>Useall egyszeri bejelentkezés konfigurálása
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+Az egyszeri bejelentkezés konfigurálása **Useall** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [Useall támogatási csapatának](mailto:luizotavio@useall.com.br). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-    ![Az Azure AD-felhasználó létrehozása][100]
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
 2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](common/create_aaduser_01.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
 3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](common/create_aaduser_02.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** írja be a következőt **BrittaSimon**.
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
-    d. Kattintson a **Létrehozás** gombra.
-  
-### <a name="creating-useall-test-user"></a>Useall tesztfelhasználó létrehozása
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Useall hoz létre. Együttműködve [Useall támogatási csapatának](mailto:luizotavio@useall.com.br) a felhasználók hozzáadása az Useall platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
-
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Useall Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Useall**.
 
-    ![Felhasználó hozzárendelése][201]
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 2. Az alkalmazások listájában jelölje ki a **Useall**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/useall-tutorial/tutorial_useall_app.png)
+    ![Az alkalmazások listáját a Useall hivatkozásra](common/all-applications.png)
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202]
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Felhasználó hozzárendelése][203]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
 5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelése** gombra.
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+
+### <a name="create-useall-test-user"></a>Useall tesztfelhasználó létrehozása
+
+Ebben a szakaszban egy felhasználói Britta Simon nevű Useall hoz létre. Együttműködve [Useall támogatási csapatának](mailto:luizotavio@useall.com.br) a felhasználók hozzáadása az Useall platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Useall csempére kattint, meg kell lekérése automatikusan bejelentkezett az Useall alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a Useall csempére kattint, meg kell lehet automatikusan bejelentkezett a Useall, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: common/tutorial_general_01.png
-[2]: common/tutorial_general_02.png
-[3]: common/tutorial_general_03.png
-[4]: common/tutorial_general_04.png
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[100]: common/tutorial_general_100.png
-
-[200]: common/tutorial_general_200.png
-[201]: common/tutorial_general_201.png
-[202]: common/tutorial_general_202.png
-[203]: common/tutorial_general_203.png

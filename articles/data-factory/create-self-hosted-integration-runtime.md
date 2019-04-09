@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 6ab5ee923cc439901149a26d7af4b57f9933ee19
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 7fd4fd65b48c199527d9172b7cea89010c962f5b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905885"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261037"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -39,7 +39,9 @@ Ez a dokumentum ismerteti, hogyan, létrehozhat és konfigurálhat egy saját ü
 3. A hitelesítési kulcs lekérése, és regisztrálja a kulcsot a saját üzemeltetésű integrációs modult. Itt látható egy PowerShell-példa:
 
     ```powershell
-    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+
+    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
+
     ```
 
 ## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Egy saját üzemeltetésű integrációs modul egy Azure virtuális gépen az Azure Resource Manager-sablon (automatizálás) beállítása
@@ -110,7 +112,7 @@ A saját üzemeltetésű integrációs modult telepítheti az MSI-telepítő cso
 
 
 ## <a name="high-availability-and-scalability"></a>Magas rendelkezésre állás és méretezhetőség
-Egy saját üzemeltetésű integrációs modul több helyszíni gép társítható. Ezek a gépek csomópontok nevezzük. Egy saját üzemeltetésű integrációs modul társított legfeljebb négy csomóponttal rendelkezhet. Több csomópont (telepített átjáró a helyszíni gépek) rendelkező logikai átjáró előnyei a következők:
+Lehet, hogy egy saját üzemeltetésű integrációs modul a helyszíni gépek vagy az Azure-beli virtuális gépek több tartozik. Ezek a gépek csomópontok nevezzük. Egy saját üzemeltetésű integrációs modul társított legfeljebb négy csomóponttal rendelkezhet. Több csomópont (telepített átjáró a helyszíni gépek) rendelkező logikai átjáró előnyei a következők:
 * A saját üzemeltetésű integrációs modult úgy, hogy a már nem az egypontos meghibásodás big Data típusú adatok megoldást vagy felhőalapú Adatintegráció az Azure Data Factoryt, legfeljebb négy csomópont folytonosság biztosítása a magasabb rendelkezésre állás.
 * Javult a teljesítmény és az átviteli sebesség a helyszíni és felhő közötti adatátvitel során adattárakban. További információ [teljesítmény összehasonlítások](copy-activity-performance.md).
 

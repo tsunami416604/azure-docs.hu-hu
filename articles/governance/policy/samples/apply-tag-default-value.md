@@ -1,19 +1,18 @@
 ---
 title: Minta – címke és az alapértelmezett címkeérték alkalmazása
 description: A szabályzatdefiníció-minta fűzi hozzá egy megadott tag nevét és értékét, ha a címke nem biztosított.
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 36947eae2c134761f61459dac37b324c03bd85dd
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: a9ad211ac1ef9889fcff9646f30fe306458c3538
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804021"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266647"
 ---
 # <a name="sample---apply-tag-and-its-default-value"></a>Minta – címke és az alapértelmezett címkeérték alkalmazása
 
@@ -157,11 +156,11 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az policy definition create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Létrehoz egy új Azure Policy-definíciót. |
-| [az group show](/cli/azure/group?view=azure-cli-latest#az-group-show) | Egyetlen erőforráscsoportot kér le. |
-| [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
-| [az policy assignment delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Eltávolít egy létező Azure Policy-hozzárendelést. |
-| [az policy definition delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Eltávolít egy létező Azure Policy-definíciót. |
+| [az a szabályzat-definíció létrehozása](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Létrehoz egy új Azure Policy-definíciót. |
+| [az csoport megjelenítése](/cli/azure/group?view=azure-cli-latest#az-group-show) | Egyetlen erőforráscsoportot kér le. |
+| [az szabályzat-hozzárendelés létrehozása](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
+| [az szabályzat-hozzárendelés törlése](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Eltávolít egy létező Azure Policy-hozzárendelést. |
+| [az szabályzat-definíció törlése](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Eltávolít egy létező Azure Policy-definíciót. |
 
 Számos eszköz alkalmas a Resource Manager REST API-val való kommunikációra, például az [ARMClient](https://github.com/projectkudu/ARMClient) vagy a PowerShell. A REST API PowerShellből való meghívására a **Szabályzatdefiníciók struktúrája** [Aliasok](../concepts/definition-structure.md#aliases) szakaszában találhat példát.
 

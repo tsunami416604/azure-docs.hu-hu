@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: c2c02283518bab0723b7bc815f034c4324c944e1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ecd30d30434d91893102ce6ec0df21daa84b677c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232886"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276849"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Oracle Linux-alapú virtuális gép előkészítése Azure-beli használatra
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,7 +37,7 @@ Ez a cikk feltételezi, hogy már telepítette az Oracle Linux operációs rends
 * NUMA nagyobb Virtuálisgép-méretek a Linux kernel-verzióknál 2.6.37 alább egy hiba miatt nem támogatott. A probléma elsősorban hatással van a felsőbb rétegbeli használó disztribúciók Red Hat 2.6.32 kernel. Az Azure-beli Linuxos (waagent) ügynök manuális telepítése automatikusan letiltja a NUMA a Linux kernel GRUB konfigurációjában. További információ található a következő lépéseket.
 * Az operációsrendszer-lemez nem konfigurál egy lapozó partíciót. A Linux-ügynök beállítható úgy, hogy hozzon létre egy ideiglenes erőforrás lemezen a lapozófájl.  További információ található a következő lépéseket.
 * Az Azure-ban minden virtuális merevlemezek rendelkeznie kell egy virtuális méret 1 MB igazítva. A virtuális merevlemez nyers lemezről történő konvertálása során biztosítania kell, hogy a nyers lemez mérete nagyobb-e az átalakítás előtt 1MB többszöröse. Lásd: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.
-* Győződjön meg arról, hogy a `Addons` adattár engedélyezve van. Szerkessze a fájlt `/etc/yum.repo.d/public-yum-ol6.repo`(Oracle Linux 6) vagy `/etc/yum.repo.d/public-yum-ol7.repo`(Oracle Linux), és módosítsa a sor `enabled=0` való `enabled=1` alatt **[ol6_addons]** vagy **[ol7_addons]** ebben a fájlban.
+* Győződjön meg arról, hogy a `Addons` adattár engedélyezve van. Szerkessze a fájlt `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) vagy `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7), és módosítsa a sor `enabled=0` való `enabled=1` alatt **[ol6_addons]** vagy **[ol7_addons]** ebben a fájlban.
 
 ## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
 Az operációs rendszerben a virtuális gép futtatása az Azure-ban a konfigurációs lépéseket kell végrehajtania.
@@ -48,7 +48,7 @@ Az operációs rendszerben a virtuális gép futtatása az Azure-ban a konfigur�
    
         # sudo rpm -e --nodeps NetworkManager
    
-    **Megjegyzés:** a csomag nem telepítette, ha ez a parancs egy hibaüzenettel meghiúsul. Ez a várható eredmény.
+    **Megjegyzés:** Ha a csomag nem telepítette, ez a parancs egy hiba miatt sikertelen lesz. Ez a várható eredmény.
 4. Hozzon létre egy fájlt **hálózati** a a `/etc/sysconfig/` könyvtár, amely tartalmazza a következő szöveget:
    
         NETWORKING=yes

@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/08/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d71df99096e58b3ac7adc920b91891b9a50cd6f7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9c1df99557293030dc0b1c0693b0bbc517a3f0ff
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479581"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262295"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>A sablon üzembe helyezése az Azure Stack PowerShell-lel
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 Azure Stack üzembe helyezése Azure Resource Manager-sablonok a PowerShell használatával is. Ez a cikk ismerteti a sablon üzembe helyezése a PowerShell használatával.
 
@@ -34,9 +34,9 @@ Azure Stack üzembe helyezése Azure Resource Manager-sablonok a PowerShell hasz
 Ez a példa **AzureRM** a Githubon tárolt PowerShell-parancsmagok és a egy sablont. A sablon létrehoz egy Windows Server 2012 R2 Datacenter virtuális gépet.
 
 >[!NOTE]
->Előtt meg ebben a példában, győződjön meg arról, hogy [PowerShell konfigurált](azure-stack-powershell-configure-user.md) az Azure Stack felhasználói számára.
+> Előtt meg ebben a példában, győződjön meg arról, hogy [PowerShell konfigurált](azure-stack-powershell-configure-user.md) az Azure Stack felhasználói számára.
 
-1. Lépjen a [ https://aka.ms/AzureStackGitHub ](https://aka.ms/AzureStackGitHub) , és keresse meg a **101-egyszerű-windows-vm** sablont. A sablon mentése ezen a helyen: `C:\templates\azuredeploy-101-simple-windows-vm.json`.
+1. Keresse meg a [AzureStackGitHub tárház](https://aka.ms/AzureStackGitHub) , és keresse meg a **101-egyszerű-windows-vm** sablont. A sablon mentése ezen a helyen: `C:\templates\azuredeploy-101-simple-windows-vm.json`.
 2. Nyisson meg egy rendszergazda jogú PowerShell-parancssort.
 3. Cserélje le `username` és `password` az a felhasználónév és jelszó és futtassa a parancsfájlt a következő parancsfájlt:
 
@@ -45,10 +45,10 @@ Ez a példa **AzureRM** a Githubon tárolt PowerShell-parancsmagok és a egy sab
     $myNum = "001" # Modify this per deployment
     $RGName = "myRG$myNum"
     $myLocation = "local"
-   
+
     # Create resource group for template deployment
     New-AzureRmResourceGroup -Name $RGName -Location $myLocation
-   
+
     # Deploy simple IaaS template
     New-AzureRmResourceGroupDeployment `
         -Name myDeployment$myNum `
@@ -63,7 +63,7 @@ Ez a példa **AzureRM** a Githubon tárolt PowerShell-parancsmagok és a egy sab
     ```
 
     >[!IMPORTANT]
-    >Ez a szkript minden futtatásakor értékét növelje a `$myNum` paraméter az üzembe helyezés felülírásának elkerülése érdekében.
+    > Ez a szkript minden futtatásakor értékét növelje a `$myNum` paraméter az üzembe helyezés felülírásának elkerülése érdekében.
 
 4. Nyissa meg az Azure Stack portálon, válassza **Tallózás**, majd válassza ki **virtuális gépek** keresése az új virtuális gépet (**myDeployment001**).
 

@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 0a4d9f355a5cdc92bab4491c08677042c42986cb
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 15b67218b129b5e017e67651587c389af412d7a1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517929"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268417"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure-beli virtuális hálózathoz vagy a tűzfal-szabályok használata Azure container registry való hozzáférés korlátozása
 
@@ -29,6 +29,8 @@ Ez a cikk bemutatja a hálózati hozzáférési szabályok az férjenek hozzá a
 * Csak egy **prémium** tároló-beállításjegyzék hálózati hozzáférési szabályok is konfigurálhatók. Beállításjegyzék szolgáltatásszintek kapcsolatos információkért lásd: [Azure Container Registry Termékváltozatai](container-registry-skus.md). 
 
 * Csak egy [Azure Kubernetes Service](../aks/intro-kubernetes.md) fürt vagy az Azure [virtuális gép](../virtual-machines/linux/overview.md) egy tároló-beállításjegyzéket egy virtuális hálózat eléréséhez használható gazdagépként. *Más Azure-szolgáltatások többek között az Azure Container Instances szolgáltatásban jelenleg nem támogatottak.*
+
+* [ACR-feladatok](container-registry-tasks-overview.md) műveletek jelenleg nem támogatottak a tároló-beállításjegyzék üzembe helyezni egy virtuális hálózatban.
 
 * Minden egyes registry támogatja a legfeljebb 100 virtuális hálózati szabályok.
 

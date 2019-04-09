@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 2c04c13eb6399bebf908337d8f71bd03adf4d06a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8e3a23b38dc95f05ed9a6d99d303f3d86eac60ad
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447221"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269265"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Storage Gen2 az Azure Data Factoryvel
 
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* Azure Storage-fiókjába Data Lake Storage Gen2 engedélyezve: Ha nem rendelkezik egy tárfiókot, kattintson a [Itt](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) hozhat létre egyet.
+* Azure Storage-fiókjába Data Lake Storage Gen2 engedélyezve: Ha egy Storage-fiók nem rendelkezik [hozzon létre egy fiókot](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
 * AWS-fiók és a egy S3 gyűjtő, amely adatokat tartalmaz: Ez a cikk bemutatja, hogyan másolhat adatokat az Amazon S3-ból. Hasonló lépéseket követve más adattárakban is használhatja.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
@@ -104,7 +104,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
    
    ![Az Azure Data Lake Storage Gen2-fiók megadása](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
 
-9. Az a **a kimeneti fájl vagy mappa kiválasztása** lap, adja meg **copyfroms3** , a kimeneti mappa nevét, és válassza **tovább**: 
+9. Az a **a kimeneti fájl vagy mappa kiválasztása** lap, adja meg **copyfroms3** , a kimeneti mappa nevét, és válassza **tovább**. Az ADF hoz létre a megfelelő ADLS Gen2-fájlrendszer és almappák másolása során, ha még nem létezik.
 
     ![Adja meg a kimeneti mappa](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 

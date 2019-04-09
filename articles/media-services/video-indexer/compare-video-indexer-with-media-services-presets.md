@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 04/07/2019
 ms.author: juliako
-ms.openlocfilehash: 041e76ccecb4dd0fe9c060681609dfb92c03ec5a
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 2c98f6d12f4868e5f90874fe3210fe5368f7ca2d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893146"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270336"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Hasonlítsa össze az Azure Media Services v3 készletek és a Video Indexer 
 
@@ -33,9 +33,9 @@ Jelenleg nincs által nyújtott szolgáltatások között átfedés a [Video Ind
 |Media Insights|[Továbbfejlesztett](video-indexer-output-json-v2.md) |[Alapok](../latest/intelligence-concept.md)|
 |Élményeket|Támogatott szolgáltatások teljes listáját lásd: <br/> [Áttekintés](video-indexer-overview.md)|Csak a videó insights adja vissza|
 |Számlázás|[A Media Services-díjszabás](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[A Media Services-díjszabás](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
-|Megfelelőség|[Azure-megfelelőség](https://aka.ms/AzureCompliance)|A Media Services számos tanúsítványok megfeleljenek. Tekintse meg [Azure megfelelőségi Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) , és keressen a "Media Services", ha megfelel a lényeges tanúsítvány megtekintéséhez.|
+|Megfelelőség|[Az ISO 27001](https://www.microsoft.com/TrustCenter/Compliance/ISO-IEC-27001), [ISO 27018](https://www.microsoft.com/trustcenter/Compliance/ISO-IEC-27018), [SOC 1,2,3](https://www.microsoft.com/TrustCenter/Compliance/SOC), [HIPAA](https://www.microsoft.com/trustcenter/compliance/hipaa), [FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/fedramp), [PCI](https://www.microsoft.com/trustcenter/compliance/pci), és [ HITRUST](https://www.microsoft.com/TrustCenter/Compliance/hitrust) certified. Látogasson el a legújabb frissítésekkel [minősítések aktuális állapotát a Video Indexer](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).|A Media Services számos tanúsítványok megfeleljenek. Tekintse meg [Azure megfelelőségi Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) , és keressen a "Media Services", ha megfelel a lényeges tanúsítvány megtekintéséhez.|
 |Free Trial (Ingyenes próba)|USA keleti régiója|Nem érhető el|
-|Rendelkezésre állás |USA nyugati RÉGIÓJA, Kelet-Ázsiában, Észak-Európa|Lásd: [az Azure állapota](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
+|Régiónkénti elérhetőség|USA keleti RÉGIÓJA 2, USA déli középső RÉGIÓJA, 2. nyugati RÉGIÓJA, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Kelet-Ázsia és Kelet-Ausztrália.  A legújabb frissítésekkel, látogasson el a [termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services) lapot.|Lásd: [az Azure állapota](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
 
 ## <a name="next-steps"></a>További lépések
 

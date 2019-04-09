@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor metrikaböngészőjének
-description: Az Azure Monitor metrikaböngészőjének új szolgáltatásainak megismerése
+title: Fejlett funkcióira Metrikaböngészőt Azure
+description: Az Azure Monitor Metrikaböngészőjének speciális funkcióinak megismerése
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,51 +8,46 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 08ae74bcd9ee0a7cf5e0fb6d38758b1429c39145
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916342"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271679"
 ---
-# <a name="azure-monitor-metrics-explorer"></a>Az Azure Monitor metrikaböngészőjének
+# <a name="advanced-features-of-azure-metrics-explorer"></a>Fejlett funkcióira Metrikaböngészőt Azure
 
-Az Azure Monitor metrikaböngészőjének összetevő, amely lehetővé teszi a ábrázolási diagramok, vizuálisan naplókezelője trendeket, és vizsgálja a csúcsok és süllyedések értékeihez ' a Microsoft Azure-portálon. Metrikaböngésző egy alapvető kiindulási pontként különböző teljesítmény- és az alkalmazások és az Azure-ban üzemeltetett vagy az Azure Monitor szolgáltatás által figyelt infrastruktúra rendelkezésre állási problémák kivizsgálása.
+> [!NOTE]
+> Ez a cikk feltételezi, hogy Ön ismeri a Metrikaböngésző alapszintű szolgáltatásaihoz. Ha szeretné megtudni, hogyan hozzon létre az első metrikadiagram, és új felhasználó [Ismerkedés az Azure Metrikaböngésző](metrics-getting-started.md).
 
 ## <a name="metrics-in-azure"></a>Metrikák az Azure-ban
 
 [Metrikák az Azure monitorban](data-platform-metrics.md) mért értékek sorozata, összegyűjtött és tárolt idővel számát is. Nincsenek metrikák standard (vagy "platform"), és egyéni mérőszámok. A standard mérőszámok az Azure platform saját maga által biztosított Önnek. Standard mérőszámok az Azure-erőforrások állapotát és a használati statisztikáit tükrözik. Mivel az egyéni metrikák használatával az alkalmazások által az Azure-bA küldött a [Application Insights API egyéni eseményekhez és a metrikák](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), [Windows Azure Diagnostics (WAD) bővítmény](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview), vagy [Azure Figyelheti a REST API-val](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
 
-## <a name="create-a-new-chart"></a>Új diagram létrehozása
+## <a name="create-views-with-multiple-metrics-and-charts"></a>Nézetek létrehozása több mértékek és diagramok
 
-1. Nyissa meg az Azure Portalon
-2. Lépjen az új **figyelő** lapra, és válassza ki **metrikák**.
+Diagramok, amelyek több metrikák vonal megrajzolásához vagy több mérőszám-diagramok megjelenítése egyszerre hozhat létre. Ez a funkció lehetővé teszi:
 
-   ![Metrikák kép](./media/metrics-charts/00001.png)
+- az ugyanazon a grafikonon egy érték összevetését kapcsolódó metrikák kapcsolódik egy másik
+- metrikák megjelenítése a közvetlen egymás közelében lévő különböző mértékegységek
+- vizuálisan összesíteni, és hasonlítsa össze a különböző erőforrásokból származó metrikák
 
-3. A **metrika választó** automatikusan lesz nyissa meg az Ön számára. Válassza ki egy erőforrást a listából, a kapcsolódó metrikákat tekinthet meg. Csak a metrikák az erőforrások listájában jelennek meg.
+Például ha 5 tárfiókok rendelkezik, és meg szeretné ismerni a teljes lemezterület felhasznált közöttük, létrehozhat egy (halmozott) területdiagramot, amely az egyéni és az összes érték összegét mutatja adott időpontokban időben.
 
-   ![Metrikák kép](./media/metrics-charts/00002.png)
+### <a name="multiple-metrics-on-the-same-chart"></a>Több metrika ugyanezen a diagramon
 
-   > [!NOTE]
-   >Ha egynél több Azure-előfizetéssel, Metrikaböngésző lekéri az erőforrásokat az összes előfizetés, amely ki van jelölve, a portál beállításaiban -> szűrő által az előfizetések listája. Módosításához kattintson a portál beállítások fogaskerék ikonra a képernyő fölött, és válassza ki a használni kívánt melyik előfizetések.
-
-4. Néhány erőforrás esetében (Storage-fiókok és a virtuális gépek) metrika kijelölése előtt ki kell választania egy **Namespace**. Minden névtér csak ezt a névteret, és más névterek nem releváns metrikákat a saját készletét hordozza.
-
-   Például minden Azure Storage, a "BLOB", "Fájlok", "Üzenetsorok" és "Táblák", a storage-fiók minden részét képező subservices metrikáit. A metrika "Üzenetsorbeli üzenetek száma" azonban csak a subservice "Várólista" és a bármely más tároló-subservices természetes módon alkalmazható.
-
-   ![Metrikák kép](./media/metrics-charts/00003.png)
-
-5. Válasszon ki egy metrikát a listából. Ha ismeri a mérőszám kívánt név, kezdje el beírni a rendelkezésre álló metrikák szűrt listájának megtekintéséhez:
-
-   ![Metrikák kép](./media/metrics-charts/00004.png)
-
-6. Miután egy metrikát, a diagram az alapértelmezett összesítés a kiválasztott metrika az jelenik meg. Ezen a ponton, egyszerűen kattintson a a **metrikák választó** bezárásához. A diagram egy másik összesítésre is igény szerint válthat. Bizonyos metrikák összesítési váltás lehetővé teszi, hogy kiválaszthatja, melyik értéket meg szeretné tekinteni a diagramra. Például átválthat az átlagos, minimális és maximális értékek között. 
-
-7. Kattintson a **metrika hozzáadása** és 3 – 6. lépéseket, ismétlődő adhat hozzá további metrikák ugyanezen a diagramon.
+Először [hozzon létre egy új diagramot](metrics-getting-started.md#create-your-first-metric-chart). Kattintson a **metrika hozzáadása** , és ismételje meg a lépéseket egy másik metrika hozzáadása ugyanezen a diagramon.
 
    > [!NOTE]
    > Általában nem érdemes metrikák különböző mértékegységben (pl. "ezredmásodperc" és "kilobájt") vagy jelentősen eltérő méretezési rendelkezik egy diagram. Ehelyett érdemes lehet több diagramot. Kattintson a több diagram létrehozása a metrikaböngészőben diagram hozzáadása gombra.
+
+### <a name="multiple-charts"></a>Több diagram
+
+Kattintson a **Hozzáadás diagram** , és hozzon létre egy másik diagramot egy másik metrikát választani.
+
+### <a name="order-or-delete-multiple-charts"></a>Megrendelés vagy több diagram törlése
+
+Rendelés, vagy törli a több diagramot, kattintson a három pontra ( **...**  ) a diagram menü megnyitásához, és válassza ki a megfelelő menüelem a szimbólum **feljebb**, **lejjebb**, vagy **törlése**.
 
 ## <a name="apply-filters-to-charts"></a>Szűrőket alkalmazhat a diagramok
 
@@ -76,27 +71,7 @@ A diagramok, amelyek megmutatják a dimenziókkal rendelkező metrikák szűrők
 
 5. Megismételheti a lépéseket több szűrőket alkalmaz az azonos diagramok 1 – 4.
 
-## <a name="multiple-metrics-and-charts"></a>Több mértékek és diagramok
 
-Diagramok, amelyek több metrikákat jeleníti meg, vagy több mérőszám-diagramok megjelenítése egyszerre is létrehozhat. Ez a funkció lehetővé teszi:
-
-- az ugyanazon a grafikonon egy érték összevetését kapcsolódó metrikák kapcsolódik egy másik
-- metrikák megjelenítése a közvetlen egymás közelében lévő különböző mértékegységek
-- vizuálisan összesíteni, és hasonlítsa össze a különböző erőforrásokból származó metrikák
-
-Például ha 5 tárfiókok rendelkezik, és meg szeretné ismerni a teljes lemezterület felhasznált közöttük, létrehozhat egy (halmozott) területdiagramot, amely az egyéni és az összes érték összegét mutatja adott időpontokban időben.
-
-### <a name="multiple-metrics-on-a-chart"></a>Több metrikát a diagram
-
-Először [hozzon létre egy új diagramot](#create-a-new-chart). Kattintson a **metrika hozzáadása** , és ismételje meg a lépéseket egy másik metrika hozzáadása ugyanezen a diagramon.
-
-### <a name="multiple-charts"></a>Több diagram
-
-Kattintson a **Hozzáadás diagram** , és hozzon létre egy másik diagramot egy másik metrikát választani.
-
-### <a name="order-or-delete-multiple-charts"></a>Megrendelés vagy több diagram törlése
-
-Rendelés, vagy törli a több diagramot, kattintson a három pontra ( **...**  ) a diagram menü megnyitásához, és válassza ki a megfelelő menüelem a szimbólum **feljebb**, **lejjebb**, vagy **törlése**.
 
 ## <a name="apply-splitting-to-a-chart"></a>Alkalmazza a megosztáshoz, hogy a diagram
 

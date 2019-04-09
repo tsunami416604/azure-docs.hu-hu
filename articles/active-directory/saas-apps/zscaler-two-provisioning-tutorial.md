@@ -6,20 +6,21 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 0a250fcd-6ca1-47c2-a780-7a6278186a69
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/03/2019
+ms.date: 03/27/2019
 ms.author: v-ant-msft
-ms.openlocfilehash: 797804be2588fb5c04c052c6f14c5b2b51146c32
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d7b0828dc4cb37afa9dda647c4407b4039ca4f73
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106508"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273566"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása Zscaler két konfigurálása
 
@@ -27,46 +28,42 @@ Ez az oktatóanyag célja a lépéseket kell végrehajtania a Zscaler két és A
 
 > [!NOTE]
 > Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../active-directory-saas-app-provisioning.md).
-> 
+>
+
 > Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az általános Microsoft Azure használati feltételek az előzetes verziójú funkciók további információkért lásd: [kiegészítő használati feltételei a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik az alábbiakkal:
 
-*   Az Azure AD-bérlő
-*   Zscaler két bérlő
-*   A Zscaler két rendszergazdai engedélyekkel rendelkező felhasználói fiókkal
+* Az Azure AD-bérlő
+* Zscaler két bérlő
+* A Zscaler két rendszergazdai engedélyekkel rendelkező felhasználói fiókkal
 
 > [!NOTE]
 > Az Azure AD létesítési integráció támaszkodik a Zscaler két SCIM API, a vállalati csomaggal rendelkező fiókok esetében két Zscaler fejlesztők számára elérhető.
 
 ## <a name="adding-zscaler-two-from-the-gallery"></a>A katalógusból Zscaler két hozzáadása
+
 Az Azure AD-felhasználók automatikus a Zscaler két konfigurálása előtt hozzá kell Zscaler két, az Azure AD alkalmazáskatalógusában a felügyelt SaaS-alkalmazások listájára.
 
 **Adja hozzá a Zscaler két, az Azure AD alkalmazáskatalógusában, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen, kattintson a a **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** > **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások szakasz][2]
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Zscaler két hozzáadásához kattintson a **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Az új alkalmazás gomb][3]
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Zscaler két**.
+4. A Keresés mezőbe írja be a **Zscaler két**válassza **Zscaler két** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Zscaler két kiépítése](./media/zscaler-two-provisioning-tutorial/app-search.png)
-
-5. Az eredmények panelen válassza ki a **Zscaler két**, majd kattintson a **Hozzáadás** gombra kattintva adhat hozzá a Zscaler két a SaaS-alkalmazások listájára.
-
-    ![Zscaler két kiépítése](./media/zscaler-two-provisioning-tutorial/app-search-results.png)
-
-    ![Zscaler két kiépítése](./media/zscaler-two-provisioning-tutorial/app-creation.png)
+    ![Az eredmények listájában két Zscaler](common/search-new-app.png)
 
 ## <a name="assigning-users-to-zscaler-two"></a>Felhasználók hozzárendelése Zscaler két
 
@@ -74,13 +71,13 @@ Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával hat
 
 Felhasználók automatikus kiépítés engedélyezése és konfigurálása, mielőtt, meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure ad-ben két Zscaler hozzáférésre van szükségük. Ha úgy döntött, rendelhet a felhasználók és csoportok Zscaler két utasításokat követve:
 
-*   [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-two"></a>Felhasználók hozzárendelése Zscaler két fontos tippek
 
-*   Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve Zscaler két a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok később is rendelhető.
+* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve Zscaler két a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok később is rendelhető.
 
-*   Amikor egy felhasználó hozzárendelése Zscaler két, a hozzárendelés párbeszédpanelen válassza ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
+* Amikor egy felhasználó hozzárendelése Zscaler két, a hozzárendelés párbeszédpanelen válassza ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető). A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
 
 ## <a name="configuring-automatic-user-provisioning-to-zscaler-two"></a>Zscaler két történő automatikus felhasználókiépítés konfigurálása
 
@@ -91,11 +88,13 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-two-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása a Zscaler két Azure AD-ben:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és keresse meg a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás**.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és válassza ki **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Zscaler két**.
 
-2. Válassza ki a Zscaler két az SaaS-alkalmazások listájában.
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Zscaler két kiépítése](./media/zscaler-two-provisioning-tutorial/app-instance-search.png)
+2. Az alkalmazások listájában jelölje ki a **Zscaler két**.
+
+    ![A Zscaler két hivatkozás az alkalmazások listáját](common/all-applications.png)
 
 3. Válassza ki a **kiépítési** fülre.
 
@@ -107,20 +106,20 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **bérlői URL-cím** és **titkos jogkivonat** Zscaler két fiókja 6. lépésben leírtak szerint.
 
-6. Beszerzése a **bérlői URL-cím** és **titkos jogkivonat**, navigáljon a **felügyelet > hitelesítési beállítások** a Zscaler két portál felhasználói felülete, és kattintson a  **SAML** alatt **hitelesítési típus**. 
+6. Beszerzése a **bérlői URL-cím** és **titkos jogkivonat**, navigáljon a **felügyelet > hitelesítési beállítások** a Zscaler két portál felhasználói felülete, és kattintson a  **SAML** alatt **hitelesítési típus**.
 
     ![Zscaler két kiépítése](./media/zscaler-two-provisioning-tutorial/secret-token-1.png)
-    
-    Kattintson a **SAML konfigurálása** megnyitásához **konfigurációs SAML** beállítások. 
+
+    Kattintson a **SAML konfigurálása** megnyitásához **konfigurációs SAML** beállítások.
 
     ![Zscaler két kiépítése](./media/zscaler-two-provisioning-tutorial/secret-token-2.png)
-    
+
     Válassza ki **Enable SCIM-Based kiépítés** lekéréséhez **alap URL-cím** és **tulajdonosi jogkivonat**, majd mentse a beállításokat. Másolás a **alap URL-cím** való **bérlői URL-cím** és **tulajdonosi jogkivonat** való **titkos jogkivonat** az Azure Portalon.
 
 7. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat Zscaler két. Ha a kapcsolat hibája esetén, győződjön meg arról, a Zscaler két fiók rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
 
     ![Zscaler két kiépítése](./media/zscaler-two-provisioning-tutorial/test-connection.png)
-    
+
 8. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet kell **e-mail-értesítés küldése, ha hiba történik**.
 
     ![Zscaler két kiépítése](./media/zscaler-two-provisioning-tutorial/notification.png)
@@ -164,7 +163,7 @@ Az Azure AD létesítési naplók olvasása további információkért lásd: [-
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
