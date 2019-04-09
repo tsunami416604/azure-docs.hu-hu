@@ -1,18 +1,18 @@
 ---
-title: Horizontális felskálázás az Azure Data Explorer fürt változó igényeket elégíthet
+title: Horizontális felskálázás az Azure Data Explorer fürt
 description: Ez a cikk ismerteti a lépéseket horizontális felskálázása és skálázhatja az adatkezelőt az Azure-fürtben alapú igény szerinti módosítására.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 02/18/2019
-ms.openlocfilehash: ab4ced6695e6066098dd5ff7348528deedfc0e1b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/05/2019
+ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044234"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261598"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Fürt horizontális felskálázás változó igényeket elégíthet kezelése
 
@@ -22,21 +22,23 @@ Az, hogy esetleg jobb megközelítés *méretezési* egy fürthöz, hozzáadása
 
 Ez a cikk bemutatja, hogyan kezelheti a fürt kibővített, más néven az automatikus méretezés. Az automatikus skálázás lehetővé teszi a horizontális felskálázás a példányok száma automatikusan alapján előre meghatározott szabályok és ütemezések. Adja meg a fürt számára az automatikus skálázási beállítások az Azure Portalon, ebben a cikkben leírtak szerint.
 
-Nyissa meg a fürt. A **beállítások**válassza **horizontális felskálázása**. A **konfigurálása**válassza **automatikus skálázás engedélyezése**.
+## <a name="steps-to-configure-autoscale"></a>Automatikus skálázási konfigurálásának lépései
 
-![Automatikus skálázás engedélyezése](media/manage-cluster-scaling/enable-autoscale.png)
+Az Azure Portalon lépjen az adatkezelő fürt-erőforrásra. Alatt a **beállítások** szakaszban kattintson **horizontális felskálázása**. Az a **konfigurálása** lapon jelölje be **automatikus skálázás engedélyezése**.
 
-A következő ábrán látható a folyamat a következő néhány lépést. További részleteket az alábbiakban a képet.
+   ![Automatikus skálázás engedélyezése](media/manage-cluster-scaling/enable-autoscale.png)
 
-![Szabály skálázása](media/manage-cluster-scaling/scale-rule.png)
+A következő ábrán látható a folyamat a következő néhány lépést. További részletekért kövesse a képet.
 
-1. Az a **automatikus skálázási beállítás neve** mezőben adjon meg egy nevet, például: *horizontális felskálázás: kihasználtsági gyorsítótár*.
+1. Az a **automatikus skálázási beállítás neve** mezőben adjon meg egy nevet, például: *horizontális felskálázás: kihasználtsági gyorsítótár*. 
 
-1. A **skálázási mód**válassza **skálázás metrika alapján**. Ebben a módban a dinamikus méretezést biztosít. Lehetőség kiválasztásával **skálázás adott példányszámra**.
+   ![Szabály skálázása](media/manage-cluster-scaling/scale-rule.png)
 
-1. Válassza ki **és a egy szabály hozzáadásához**.
+2. A **skálázási mód**válassza **skálázás metrika alapján**. Ebben a módban a dinamikus méretezést biztosít. Lehetőség kiválasztásával **skálázás adott példányszámra**.
 
-1. Az a **skálázási szabályhoz** a jobb oldali területén adja meg az értékeket a beállításokhoz.
+3. Válassza ki **és a egy szabály hozzáadásához**.
+
+4. Az a **skálázási szabályhoz** a jobb oldali területén adja meg az értékeket a beállításokhoz.
 
     **Feltételek**
 
@@ -59,9 +61,9 @@ A következő ábrán látható a folyamat a következő néhány lépést. Tov�
     | **Lehűlés (percben)** | Válasszon egy megfelelő várakozási időköz a skálázási műveletek között. Indítsa el az alapértelmezett öt perc alatt. |
     |  |  |
 
-1. Válassza a **Hozzáadás** lehetőséget.
+5. Válassza a **Hozzáadás** lehetőséget.
 
-1. Az a **Példányszámkorlátoknál** szakaszban a bal oldalon található, adja meg az értékeket a beállításokhoz.
+6. Az a **Példányszámkorlátoknál** szakaszban a bal oldalon található, adja meg az értékeket a beállításokhoz.
 
     | Beállítás | Leírás és érték |
     | --- | --- |
@@ -70,10 +72,14 @@ A következő ábrán látható a folyamat a következő néhány lépést. Tov�
     | **Alapértelmezett** | Példányok alapértelmezett száma. Ezt a beállítást használja, ha problémák adódnak az erőforrás-metrikák olvasása. |
     |  |  |
 
-1. Kattintson a **Mentés** gombra.
+7. Kattintson a **Mentés** gombra.
 
 Most már konfigurálta az Azure Data Explorer fürt egy horizontális felskálázási művelet. Adjon meg egy másik szabályt a horizontális leskálázási művelet. Ez a konfiguráció lehetővé teszi, hogy a fürt méretezése dinamikusan megadott metrikák alapján.
 
 Emellett [kezelheti a fürt vertikális felskálázása](manage-cluster-scale-up.md) a fürt megfelelő méretezéshez.
 
 Ha a fürt méretezése problémák segítségre van szüksége [nyisson egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon.
+
+## <a name="next-steps"></a>További lépések
+
+[Azure Data Explorer Teljesítményfigyelő, egészségügyi és használati metrikákkal](using-metrics.md)

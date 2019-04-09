@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 264b4737974010baffd82b38275a8fe56163e1f2
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 30154c55e60b7150257729c9bc90ee07a561e08e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361438"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264539"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Linux-alapú fürtök létrehozása az Azure PowerShell használatával HDInsight
 
@@ -71,7 +71,7 @@ Egy HDInsight konfigurációs objektum használatával is létrehozhat `New-AzHD
 
 A következő szkriptet az R Server HDInsight-fürt típusának konfigurálása egy konfigurációs objektumot hoz létre. A konfiguráció lehetővé teszi, az élcsomóponton, az RStudio és egy tárfiókot.
 
-[!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-98)]
+[!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-99)]
 
 > [!WARNING]  
 > A HDInsight-fürt, mint egy másik helyen lévő tárfiókok használata nem támogatott. Ebben a példában használatakor a kiszolgáló ugyanazon a helyen hozza létre a további tárfiókot.

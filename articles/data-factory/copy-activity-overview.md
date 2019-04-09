@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 154e0dcefab6d5bcdfc9532ba4258d09593f0970
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311132"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267157"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory másolási tevékenysége
 
@@ -54,14 +54,15 @@ A másolási tevékenység adatokat másol a forrásadattárból egy fogadó, a 
 
 A másolási tevékenység használható **másolja a fájlokat,-van** két fájlalapú adattárak között, amelyben az esetben az adatok másolódik hatékonyan bármely szerializálás/deszerializálás nélkül.
 
-A másolási tevékenység is támogatja a olvasását és írását megadott formátumú: **Szöveg, JSON, Avro, ORC és a parquet eszközökben**, és a tömörítési kodek **GZip, Deflate, BZip2 és ZipDeflate** támogatottak. Lásd: [támogatott fájl- és tömörítési formátumok](supported-file-formats-and-compression-codecs.md) adatokkal.
+A másolási tevékenység is támogatja a olvasását és írását megadott formátumú: **Szöveg, JSON, Avro, ORC és a parquet eszközökben**, és a következő kodekek tömöríti és decompresing fájlok: **A GZip, Deflate, BZip2 és ZipDeflate**. Lásd: [támogatott fájl- és tömörítési formátumok](supported-file-formats-and-compression-codecs.md) adatokkal.
 
 Ha például a következő másolási tevékenységek teheti:
 
-* Adatok másolása helyszíni SQL Server és írni az Azure Data Lake Store ORC formátumban.
+* Adatok másolása helyszíni SQL Server és a Parquet formátumban szeretne az Azure Data Lake Storage Gen2-re írni.
 * Fájlok másolása a helyszíni fájlrendszer (CSV) szöveges formátumban, és Avro formátumban az Azure-Blobba írni.
-* Tömörített fájlok másolása a helyszíni fájlrendszerben és az Azure Data Lake Store föld majd kibontása a.
+* Tömörített fájlok másolása a helyszíni fájlrendszerben, és ezután kibontani a föld Azure Data Lake Storage Gen2-re.
 * A GZip tömörített szöveg (CSV) formátumú adatok másolása az Azure-Blobból, és az Azure SQL Database írási.
+* És sok további esetben szerializálás/deszerializálás vagy tömörítése és kibontása kell.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 

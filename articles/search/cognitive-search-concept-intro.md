@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 03/17/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 187e40716bc55f71623ef758722eb58d27651d4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c421d99f1071c7a38cfe315cc3054136f81598e0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882495"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265968"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Mi az Azure Search "cognitive search"?
 
@@ -99,6 +99,8 @@ Indexek jönnek létre az index sémájából, amely meghatározza a mezők és 
 + [Rövid útmutató (portál)](cognitive-search-quickstart-blob.md)
 + [Az oktatóanyag (HTTP-kérések)](cognitive-search-tutorial-blob.md)
 + [A példában egyéni képesség (C#)](cognitive-search-create-custom-skill-example.md)
+
+Javasolt az ingyenes szolgáltatás tanulási célokra, de vegye figyelembe, hogy ingyenes tranzakciók száma korlátozott a naponta 20 dokumentumokhoz. A rövid útmutató és oktatóanyag futtatásához a napon, használhat egy kisebb fájlt megadva (10 dokumentumok), így mindkét gyakorlatokban is elférjen.
 
 **3. lépés: Tekintse át az API-t (csak REST)**
 

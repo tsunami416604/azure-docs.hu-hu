@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: 9f890a8468eaa22fbfce326fc16afe545fd515d6
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339312"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268411"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása
 
@@ -279,7 +279,7 @@ function updateMetadataCallback(err, items, responseOptions) {
 }
 ```
 
-Egy dolog, amire a vegye figyelembe az Azure Cosmos DB eseményindítók tranzakciós végrehajtása. Ez az eseményindító utáni futtatja ugyanabban a tranzakcióban, amelyet az Azure Cosmos DB-elem létrehozása. Ezért utáni eseményindító végrehajtása közben kivételt kap, ha például, ha nem tudja frissíteni a metaadatokat elem a teljes tranzakció meghiúsulnak, és vissza lesz állítva. Így az Azure Cosmos DB elem jön létre, és kivételt adja vissza.
+Egy dolog, amire a vegye figyelembe az Azure Cosmos DB eseményindítók tranzakciós végrehajtása. Az alkalmazásnak eseményindító magát az alapul szolgáló elemet az ugyanazon tranzakció részeként futtatja. Az alkalmazásnak az eseményindító végrehajtása során kivétel sikertelen lesz a teljes tranzakciót. Bármi is vissza lesz állítva, és kivételt adja vissza.
 
 Hogyan kell regisztrálni, és a egy üzem előtti trigger meghívása példákért lásd [előtti eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) és [utáni eseményindítók](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) cikkek. 
 

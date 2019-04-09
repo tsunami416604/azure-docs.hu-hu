@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 4b5b7cf3a00e21b9904f72a98d5f24264bb0ecbc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 544ef8947f3a593071cabea018c722db96ab1475
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484287"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266205"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Állítsa be átmeneti környezeteket az Azure App Service-ben
 <a name="Overview"></a>
@@ -84,7 +84,12 @@ Az egy másik üzembe helyezési pont konfigurációs klónozásakor a klónozot
 * Monitorozási és diagnosztikai beállítások
 * A nyilvános tanúsítványok
 * WebJobs-tartalom
-* Hibrid kapcsolatok
+* Hibrid kapcsolatok *
+* VNet-integráció *
+* Service Endpoints *
+* Azure CDN *
+
+Szolgáltatások jelölve egy * kell tenni a bővítőhelyre kiemelt bevezetését tervezzük. 
 
 **Beállítások, amely nem cserélhető**:
 
@@ -93,10 +98,15 @@ Az egy másik üzembe helyezési pont konfigurációs klónozásakor a klónozot
 * Privát tanúsítványok és az SSL-kötések
 * Lépték beállításai
 * Webjobs-feladatok ütemezők
+* Az IP-korlátozások
+* Folyamatos üzem
+* Beállítások protokollt (HTTP**S**, TLS-verziót, ügyfél-tanúsítványok)
+* Diagnosztikai beállítások
+* CORS
 
-<!-- VNET, IP restrictions, CORS, hybrid connections? -->
+<!-- VNET and hybrid connections not yet sticky to slot -->
 
-Adja meg egy alkalmazás beállítás vagy kapcsolati karakterlánc (nem a felcserélés) egy adott tárhely anyagot, lépjen a **nastavení Aplikace** , üzembe helyezési pont lapon, majd válassza ki a **Tárhelybeállítás** jelölőnégyzetet a érdemes elgondolkodni a bővítőhelyre konfigurációs elemeket. Megjelölése a konfigurációs elem tárolóhely adott utasítja az App Service, hogy azt ne legyen cserélhető.
+Adja meg egy alkalmazás beállítás vagy kapcsolati karakterlánc (nem a felcserélés) egy adott tárhely anyagot, lépjen a **nastavení Aplikace** , üzembe helyezési pont lapon, majd válassza ki a **Tárhelybeállítás** jelölőnégyzetet a érdemes elgondolkodni a bővítőhelyre konfigurációs elemeket. Megjelölése a konfigurációs elem tárolóhely adott utasítja az App Service, hogy azt ne legyen cserélhető. 
 
 ![Tárhelybeállítás](./media/web-sites-staged-publishing/SlotSetting.png)
 

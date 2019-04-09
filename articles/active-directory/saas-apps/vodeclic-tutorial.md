@@ -4,234 +4,206 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: d77a0f53-e3a3-445e-ab3e-119cef6e2e1d
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/06/2017
+ms.topic: tutorial
+ms.date: 03/28/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3dcd39d58089b202d9e9d61cfc5d25e12ff7a6b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0879f9026276eb7149ae44906377a7b369e05116
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217768"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267072"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Vodeclic
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Vodeclic integrálása az Azure Active Directory (Azure AD).
-
 Vodeclic integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, ki férhet hozzá Vodeclic Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezve Vodeclic (egyszeri bejelentkezés, vagy az SSO) az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen--az Azure Portalon kezelheti.
+* Szabályozhatja, ki férhet hozzá Vodeclic Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Vodeclic (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Vodeclic az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Előfizetés Vodeclic egyszeri bejelentkezés engedélyezve
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a javaslatokat:
-
-- Ne használja éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure AD-próba környezetet [egy hónapos ingyenes próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
+* Vodeclic egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Vodeclic hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-## <a name="add-vodeclic-from-the-gallery"></a>Vodeclic hozzáadása a katalógusból
+* Támogatja a Vodeclic **SP** és **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+
+## <a name="adding-vodeclic-from-the-gallery"></a>Vodeclic hozzáadása a katalógusból
+
 Az Azure AD integrálása a Vodeclic konfigurálásához hozzá kell Vodeclic a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**A katalógusból Vodeclic hozzáadásához tegye a következőket:**
+**Vodeclic hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. Lépjen a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen][2]
-    
-1. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Az új alkalmazás gomb][3]
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. A Keresés mezőbe írja be a **Vodeclic**. Válassza ki **Vodeclic** az eredmények panelen, és válassza ki a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az eredmények listájában Vodeclic](./media/vodeclic-tutorial/tutorial_vodeclic_addfromgallery.png)
+4. A Keresés mezőbe írja be a **Vodeclic**válassza **Vodeclic** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+
+     ![Az eredmények listájában Vodeclic](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban konfigurálja, és a teszt "Britta Simon." nevű felhasználó Vodeclic az Azure AD egyszeri bejelentkezés tesztelése
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Vodeclic nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Vodeclic hivatkozás kapcsolata kell létrehozni.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, akik a Vodeclic megfelelőjére felhasználót, hogy egy felhasználó Azure AD-ben. Más szóval kell Vodeclic az Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolatot létesít.
+Az Azure AD egyszeri bejelentkezés az Vodeclic tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-Vodeclic, adjon az érték **felhasználónév** azonos értéket **felhasználónév** az Azure ad-ben. Most hozott létre a kapcsolatot a két olyan felhasználó között.
-
-Az Azure AD egyszeri bejelentkezés az Vodeclic tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
-
-1. [Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. [Hozzon létre egy Vodeclic tesztfelhasználót](#create-a-vodeclic-test-user) egy megfelelője a Britta Simon Vodeclic, amely a felhasználó Azure ad-ben reprezentációja van csatolva van.
-1. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) ellenőrzése, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Vodeclic egyszeri bejelentkezés konfigurálása](#configure-vodeclic-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Vodeclic tesztfelhasználót](#create-vodeclic-test-user)**  – egy megfelelője a Britta Simon Vodeclic, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Vodeclic alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Vodeclic, tegye a következőket:**
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Vodeclic, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **Vodeclic** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **Vodeclic** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédpanel **Single-Sign-on mód**, jelölje be **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezési párbeszédpanel](./media/vodeclic-tutorial/tutorial_vodeclic_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-1. Ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, a **Vodeclic tartomány és URL-címek** területén az alábbi lépéseket:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![Vodeclic tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/vodeclic-tutorial/tutorial_vodeclic_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **azonosító** mezőbe írja be egy URL-CÍMÉT a következő mintának: `https://<companyname>.lms.vodeclic.net/auth/saml`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **válasz URL-cím** mezőbe írja be egy URL-CÍMÉT a következő mintának: `https://<companyname>.lms.vodeclic.net/auth/saml/callback`
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
 
-1. Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett módot, jelölje be a **speciális URL-beállítások megjelenítése** jelölőnégyzetet, majd hajtsa végre az alábbi lépést:
+    ![Vodeclic tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
 
-    ![Vodeclic tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/vodeclic-tutorial/tutorial_vodeclic_url1.png)
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<companyname>.lms.vodeclic.net/auth/saml`
 
-    Az a **bejelentkezési URL-** mezőbe írja be egy URL-CÍMÉT a következő mintának: `https://<companyname>.lms.vodeclic.net/auth/saml`
-     
-    > [!NOTE] 
-    > Ezek az értékek nem valódi. Az értékeket módosítsa a tényleges azonosítóval, válasz URL-cím és bejelentkezés URL-címe. Forduljon a [Vodeclic ügyfél-támogatási csapatának](mailto:hotline@vodeclic.com) beolvasni ezeket az értékeket.
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<companyname>.lms.vodeclic.net/auth/saml/callback`
 
-1. Az a **SAML-aláíró tanúsítvány** szakaszban jelölje be **metaadatainak XML**. Mentse a metaadat-fájlt a számítógépen.
+5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![A tanúsítvány letöltési hivatkozás](./media/vodeclic-tutorial/tutorial_vodeclic_certificate.png) 
+    ![Vodeclic tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
 
-1. Kattintson a **Mentés** gombra.
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<companyname>.lms.vodeclic.net/auth/saml`
 
-    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/vodeclic-tutorial/tutorial_general_400.png)
-    
-1. Az egyszeri bejelentkezés konfigurálásához a **Vodeclic** oldalán, a letöltött küldése **metaadatainak XML** , a [Vodeclic támogatási csapatával](mailto:hotline@vodeclic.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [Vodeclic ügyfél-támogatási csapatának](mailto:hotline@vodeclic.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com) közben állítja be az alkalmazás. Ez az alkalmazás hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** lapra, és a beágyazott eléréséhez dokumentáció a **konfigurációs** alul található szakaszában. További tudnivalók a beágyazott dokumentáció funkció [Azure ad-ben a beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985).
+6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+
+7. Az a **Vodeclic beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-vodeclic-single-sign-on"></a>Vodeclic egyszeri bejelentkezés konfigurálása
+
+Az egyszeri bejelentkezés konfigurálása **Vodeclic** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory** gombra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure Active Directory gomb](./media/vodeclic-tutorial/create_aaduser_01.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**. Válassza ki **minden felhasználó**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/vodeclic-tutorial/create_aaduser_02.png)
-
-1. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
-
-    ![A Hozzáadás gombra.](./media/vodeclic-tutorial/create_aaduser_03.png)
-
-1. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/vodeclic-tutorial/create_aaduser_04.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-
-    d. Kattintson a **Létrehozás** gombra.
- 
-### <a name="create-a-vodeclic-test-user"></a>Vodeclic tesztfelhasználó létrehozása
-
-Ebben a szakaszban egy felhasználói Britta Simon nevű Vodeclic hoz létre. Együttműködik a [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com) a felhasználók hozzáadása az Vodeclic platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
-
-> [!NOTE]
-> Alkalmazás követelményeinek megfelelően szüksége lehet beolvasni a gép szerepel az engedélyezési listán. Az, hogy megtörténjen, meg kell osztania a nyilvános IP-címet a [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com).
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Vodeclic Azure egyszeri bejelentkezés használatára.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Vodeclic**.
 
-**Britta Simon hozzárendelése Vodeclic, tegye a következőket:**
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és keresse meg a könyvtár nézetben. Folytassa **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Az alkalmazások listájában jelölje ki a **Vodeclic**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Az alkalmazások listáját a Vodeclic hivatkozásra](common/all-applications.png)
 
-1. Az alkalmazások listájában jelölje ki a **Vodeclic**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![Az alkalmazások listáját a Vodeclic hivatkozásra](./media/vodeclic-tutorial/tutorial_vodeclic_app.png)  
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. A bal oldali menüben válassza **felhasználók és csoportok**.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A "Felhasználók és csoportok" hivatkozásra][202]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-1. Válassza ki a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-    ![A hozzárendelés hozzáadása panel][203]
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-1. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a a **felhasználók** listája.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-1. Az a **felhasználók és csoportok** párbeszédpanelen válassza ki a **kiválasztása** gombra.
+### <a name="create-vodeclic-test-user"></a>Vodeclic tesztfelhasználó létrehozása
 
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza ki a **hozzárendelése** gombra.
-    
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+Ebben a szakaszban egy felhasználói Britta Simon nevű Vodeclic hoz létre. Együttműködve [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com) a felhasználók hozzáadása az Vodeclic platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panel segítségével tesztelheti.
+> [!NOTE]
+> Alkalmazás követelményeinek megfelelően szüksége lehet beolvasni a gép szerepel az engedélyezési listán. Az, hogy megtörténjen, meg kell osztania a nyilvános IP-címet a [Vodeclic támogatási csapatának](mailto:hotline@vodeclic.com).
 
-A Vodeclic csempe kiválasztásakor a hozzáférési panelen, első automatikusan bejelentkezett Vodeclic alkalmazását.
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+
+Ha a hozzáférési panelen a Vodeclic csempére kattint, meg kell lehet automatikusan bejelentkezett a Vodeclic, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/vodeclic-tutorial/tutorial_general_01.png
-[2]: ./media/vodeclic-tutorial/tutorial_general_02.png
-[3]: ./media/vodeclic-tutorial/tutorial_general_03.png
-[4]: ./media/vodeclic-tutorial/tutorial_general_04.png
-
-[100]: ./media/vodeclic-tutorial/tutorial_general_100.png
-
-[200]: ./media/vodeclic-tutorial/tutorial_general_200.png
-[201]: ./media/vodeclic-tutorial/tutorial_general_201.png
-[202]: ./media/vodeclic-tutorial/tutorial_general_202.png
-[203]: ./media/vodeclic-tutorial/tutorial_general_203.png
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

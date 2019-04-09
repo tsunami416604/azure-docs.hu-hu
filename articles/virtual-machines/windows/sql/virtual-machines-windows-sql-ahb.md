@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c0d659d983e62cd2a85c0d6768c54e5a1d9e9217
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: HT
+ms.openlocfilehash: f3ebbfb1b9894b2bf1ca41ac46970e138d107f7b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005792"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265083"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Az Azure-beli SQL Server virtuális gép licencelési modelljét módosítása
 Ez a cikk bemutatja, hogyan módosíthatja az Azure-ban az új SQL Server virtuális gép licencelési modelljét SQL virtuális gép erőforrás-szolgáltató – **Microsoft.SqlVirtualMachine**. Kettő licencelési üzemeltető SQL Server – használatalapú fizetés, egy virtuális gépet (VM) modellt és a hozott licences (BYOL). És most már, PowerShell vagy az Azure CLI használatával, módosíthatja licencelési modellt az SQL Server virtuális gép használja. 
@@ -43,6 +43,7 @@ Váltás a két licenc modell között felmerülő **állásidő nélkül**, nem
  - A licencmodell konvertálása jelenleg csak használatalapú fizetéses SQL Server virtuálisgép-rendszerképek esetén érhető el. A rendszerképek saját licenccel használható verziói nem konvertálhatóak használatalapú fizetésessé.
   - Jelenleg a licencelési modelljének megváltoztatása csak támogatott a Resource Manager modellel üzembe helyezett virtuális gépek számára. A klasszikus modellel üzembe helyezett virtuális gépek nem támogatottak. 
    - Jelenleg a licencelési modelljének megváltoztatása csak engedélyezve van a nyilvános felhőalapú telepítések.
+   - Jelenleg ez az eljárás csak a virtuális gépeket, amelyek egyetlen hálózati adapter (hálózati adapter) használata támogatott. Az egynél több hálózati Adapterrel rendelkező virtuális gépek, el kell távolítani egy hálózati adapter (az Azure portal használatával) mielőtt elkezdené az eljárást. Ellenkező esetben hiba történt az alábbihoz hasonlóan fog futtatni: "A virtuális gép"\<vmname\>"kapcsolódó egynél több hálózati Adapterrel rendelkezik." Bár előfordulhat, hogy térjen vissza a virtuális gép hozzáadása a hálózati adapter, a licencelési módot módosítása után, az automatikus javítás és a biztonsági mentés, például az SQL konfigurációs panelen keresztül végzett műveletek már nem tekinthető támogatott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

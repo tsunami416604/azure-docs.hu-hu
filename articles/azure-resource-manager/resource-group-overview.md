@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: d4af11f5956d548ec25eb0dd9b553e2cf56b195f
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 0ad1d12a4a2ca3a293546f2bac85210bb9152269
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59058543"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269296"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 
@@ -53,7 +53,7 @@ A Resource Manager számos előnyt kínál:
 
 ## <a name="understand-management-scope"></a>Megismerheti a felügyeleti hatóköre
 
-Az Azure biztosít a felügyeleti hatókör négy szintű: felügyeleti csoportok, előfizetések, erőforráscsoportok és erőforrásokat. A [felügyeleti csoportok](../governance/management-groups/index.md) szintje egyelőre előzetes verzióban érhető el. Az alábbi ábra ezekre a rétegekre mutat egy példát.
+Az Azure biztosít a felügyeleti hatókör négy szint: [felügyeleti csoportok](../governance/management-groups/index.md), előfizetések, [erőforráscsoportok](#resource-groups), és erőforrásokat. Az alábbi ábra ezekre a rétegekre mutat egy példát.
 
 ![Hatókör](./media/resource-group-overview/scope-levels.png)
 

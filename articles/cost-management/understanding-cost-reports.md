@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/18/2019
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 92ce35e88cc73c16e3d3670e07ff8b996192b825
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f856aeae74ea285cd6a0326fd225e454a1cbe43
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109814"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265831"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Understanding Cloudyn cost management jelentések
 
@@ -99,7 +99,7 @@ Minden egyes számozott terület az előző képen leírt részletei a következ
        - A felhőszolgáltató, ahol a eszközök és a költségek tartoznak.
      - **Régió**
        - Régió, amelyen az erőforrás található.
-     - **Rendelkezésre állási zónában**
+     - **Rendelkezésre állási zóna**
        - Az AWS elkülönített helyek egy adott régión belül.
      - **Erőforrás típusa**
        - A használatban lévő erőforrás típusát.
@@ -116,7 +116,7 @@ Minden egyes számozott terület az előző képen leírt részletei a következ
        - Helyszíni
      - **Díj típusa**
        - Válassza ki a negatív és pozitív díj típus vagy mindkettőt.
-     - **Bérleti**
+     - **Bérlős**
        - Egy gép van futtat-e egy dedikált géppel.
      - **Használat típusa**
        - Használati típus lehet egyszeri díjak vagy ismétlődő díjak.
@@ -141,7 +141,7 @@ Minden egyes számozott terület az előző képen leírt részletei a következ
 
    Amortizáció, válassza a **amortizált költségek** vagy **tényleges költségek**.
 
-8. **Felbontás**
+8. **Megoldás:**
 
     Megoldás segítségével válassza ki a alkalommal feloldási belül a kijelölt dátumtartományban. A alkalommal feloldási határozza meg, hogyan egységek jelennek meg a jelentést, és lehet:
     - Napi
@@ -168,7 +168,7 @@ Minden egyes számozott terület az előző képen leírt részletei a következ
 
     ![Megjelenítési formátum kiválasztható, szimbólumok](./media/understanding-cost-reports/display-formats.png)
 
-13. **Multi-color**
+13. **Több színe**
 
     Több szín használatával a jelentésben szereplő diagramok színének beállítását.
 

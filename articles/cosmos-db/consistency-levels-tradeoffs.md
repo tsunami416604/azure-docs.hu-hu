@@ -1,18 +1,18 @@
 ---
 title: Kompromisszumot kínál a különböző konzisztenciaszintet az Azure Cosmos DB rendelkezésre állás és teljesítmény
 description: Az Azure Cosmos DB különböző konzisztenciaszintet rendelkezésre állás és teljesítmény kompromisszumot.
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 2/13/2019
-ms.author: mjbrown
+ms.date: 04/08/2019
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: ac5b6e0d44376332e005d30b4a8fcc97021c4eda
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: a76e277bf56861bcaefb5bf7f8b3b3bc03ad1164
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407521"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266426"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között 
 
@@ -50,7 +50,7 @@ Egy globálisan elosztott adatbázis-környezeten belül nincs közvetlen kapcso
 
 Az alábbi táblázat a konzisztencia modellek és az adatok tartóssága régió széles körű leállás zajok mellett közötti kapcsolat határozza meg. Fontos megjegyezni, hogy az elosztott rendszerekben, még akkor is, erős konzisztencia, nem lehet nulla miatt a CAP-tétel RTO és RPO elosztott adatbázist. Miért kapcsolatos további információkért lásd: [Azure Cosmos DB-ben konzisztenciaszintek](consistency-levels.md).
 
-|**Régió(k)**|**Replikációs mód**|**Konzisztenciaszint**|**RPO**|**RTO**|
+|**Régió(k)**|**Replikációs mód**|**Konzisztenciaszint**|**Helyreállítási időkorlát**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Egy vagy több főkiszolgálós|Bármely Konzisztenciaszint|< 240 perc|< 1 hét|
 |>1|Single Master|Session, Consistent Prefix, Eventual|< 15 perc|< 15 perc|

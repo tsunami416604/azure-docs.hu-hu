@@ -3,17 +3,17 @@ title: Az Azure IoT Central webhookok használata az Azure Functions aktiválás
 description: Hozzon létre egy függvényalkalmazást, amely minden alkalommal, amikor egy szabály akkor lesz kiváltva futtatja az Azure IoT Central.
 author: viv-liu
 ms.author: viviali
-ms.date: 02/20/2018
+ms.date: 03/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c80b007c3c9c1a35540e690554603a5ae8f16d62
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 0d92e9bdf8ec207e5ef0e3f891c162182b5a4fff
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284629"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264845"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Az Azure IoT Central webhookok használata az Azure Functions aktiválása
 

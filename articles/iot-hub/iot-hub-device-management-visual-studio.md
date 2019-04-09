@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: xshi
-ms.openlocfilehash: f0cb740f04970aeed4342511a046862f05aaa736
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 87a0847f5d42e014f3b2691c96446892176b481b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54108201"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269571"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>A Visual Studio Cloud Explorer használata az Azure IoT Hub-Eszközfelügyelet
 
-![Végpontok közötti diagram](media/iot-hub-get-started-e2e-diagram/2.png)
+![Végpontok közötti diagram](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
 
 [A cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) egy hasznos, a Visual Studio-bővítmény, amely lehetővé teszi az Azure-erőforrások megtekintése, azok tulajdonságait megvizsgálhatja és műveleteket kulcs Fejlesztőeszközök a Visual Studión belül. Felügyeleti lehetőségeket, amelyek segítségével különböző feladatok elvégzésére, tartalmaz.
 
@@ -35,7 +35,7 @@ Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációi
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-Bemutatja a Visual Studio Cloud Explorer használatával különféle felügyeleti lehetőségekkel, a fejlesztői gépen.
+Megismerheti a Cloud Explorer for Visual Studio használata a fejlesztési számítógépén különböző felügyeleti lehetőségek.
 
 ## <a name="what-you-do"></a>TEENDŐ
 
@@ -43,8 +43,8 @@ A Visual Studio Cloud Explorer futtatási különböző felügyeleti lehetőség
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-- Aktív Azure-előfizetés.
-- Az Azure IoT Hub az előfizetéséhez.
+- Aktív Azure-előfizetéssel
+- Az előfizetéshez tartozó Azure IoT Hub
 - A Microsoft Visual Studio 2017 Update 8 vagy újabb
 - Cloud Explorer összetevő a Visual Studio telepítőjének (az Azure számítási feladatok alapértelmezés szerint kiválasztva)
 

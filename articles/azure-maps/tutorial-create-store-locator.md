@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fd3228194ac232cf8fc0efae46454075c5c02314
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 61fdaec79e563ba4d87e73b22aba52a5c3f8251b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59058730"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270803"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Egy tároló-lokátor létrehozása az Azure Maps használatával
 
@@ -132,14 +132,14 @@ A felhasználói felület létrehozásához adja hozzá a kódot *index.html*:
 1. Adja hozzá hivatkozásokat az Azure-térképek webes vezérlőinek JavaScript és CSS-fájlokat:
 
     ```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
 1. Adjon hozzá egy hivatkozást az Azure Maps Services modul. A modul az egy JavaScript-függvénytárat, amely becsomagolja az Azure Maps REST szolgáltatások, és lehetővé teszi a JavaScript gyerekjáték. A modul hasznos motorja olyan keresési funkciókat.
 
     ```HTML
-    <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
     ```
 
 1. Adja hozzá hivatkozásokat *index.js* és *index.css*:
@@ -970,3 +970,6 @@ További példakódok és az interaktív kódolási felület bemutatása:
 
 > [!div class="nextstepaction"]
 > [A térkép vezérlőelem használata](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"]
+> [Az adatvezérelt stílus kifejezések használata](data-driven-style-expressions-web-sdk.md)

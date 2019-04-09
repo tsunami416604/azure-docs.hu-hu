@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3482a5516e0a044716ac38e7a60a9a8484f73245
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 6afe76aca388f1f6bd479f53eb4e18cc62c10584
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056214"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268670"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Az Azure Maps segítségével egy interaktív keresés térkép létrehozása
 
@@ -73,12 +73,12 @@ Az oktatóanyagok bemutatják, hogyan használhatja és konfigurálhatja az Azur
 Ebben a rövid útmutatóban az Azure Maps-fiók létrehozása, és létrehozott egy bemutató alkalmazást. Vessen egy pillantást az alábbi oktatóanyagok az Azure Maps olvashat:
 
 > [!div class="nextstepaction"]
-> [Az Azure Maps használatával közeli hasznos helyek keresése](./tutorial-search-location.md)
+> [Az Azure Maps használatával közeli hasznos helyek keresése](tutorial-search-location.md)
 
 További hitelesítésikód-példák és interaktív kódolási felületet: ezek az útmutatók:
 
 > [!div class="nextstepaction"]
-> [Keresse meg egy címet az Azure Maps search szolgáltatással](./how-to-search-for-address.md)
+> [Keresse meg egy címet az Azure Maps search szolgáltatással](how-to-search-for-address.md)
 
 > [!div class="nextstepaction"]
-> [Az Azure Maps térkép vezérlőelem használata](./how-to-use-map-control.md)
+> [Az Azure Maps térkép vezérlőelem használata](how-to-use-map-control.md)

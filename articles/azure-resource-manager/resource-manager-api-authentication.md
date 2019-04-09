@@ -4,22 +4,20 @@ description: Fejlesztői útmutató az alkalmazás integrálása más Azure-elő
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
-manager: timlt
-editor: tysonn
 ms.assetid: 17b2b40d-bf42-4c7d-9a88-9938409c5088
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 3/22/2019
+ms.date: 04/05/2019
 ms.author: dugill
-ms.openlocfilehash: 7e6ce8c4e5e6ff79a8e77708bd76cef6c24cadd3
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: ae405d5dd99a0e2acced924ccccab292b4489cde
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805516"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264335"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Erőforrás-kezelő használata hitelesítési API az előfizetések hozzáféréséhez
 
@@ -31,8 +29,6 @@ Az alkalmazás hozzáférhessen a Resource Manager API-k több módon:
 2. **Csak az alkalmazásra vonatkozó hozzáférési**: démonszolgáltatásokat vagy ütemezett feladatokat futtató alkalmazásokhoz. Az alkalmazás identitását közvetlen hozzáférést az erőforrásokhoz. Ez a megközelítés az Azure-bA hosszú távú távfelügyelt (felügyelet) hozzáférést igénylő alkalmazások esetében működik.
 
 Ez a cikk részletes utasításokat követve hozzon létre egy alkalmazást, amely a két hitelesítési módszert alkalmaz. Azt mutatja be minden egyes lépést REST API-val vagy C#. A teljes ASP.NET MVC alkalmazás mindig elérhető legyen [ https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense ](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-the-web-app-does"></a>A webes alkalmazás leírása
 
@@ -72,27 +68,9 @@ A csatlakoztatott előfizetések kezelése:
 ## <a name="register-application"></a>Alkalmazás regisztrálása
 Mielőtt elkezdené, kódolás, webes alkalmazás regisztrálása az Azure Active Directory (AD). Az alkalmazás regisztrációját az alkalmazás központi azonosítót hoz létre az Azure ad-ben. Alapszintű információkat az alkalmazásról, mint például az OAuth-Ügyfélazonosító, a válasz URL-címek és a hitelesítő adatok, az alkalmazás által használt hitelesítés és Azure Resource Manager API-k elérése akkor tárolja. Az alkalmazás regisztrációját a különféle delegált engedélyeket az alkalmazása szükséges, amikor a felhasználó éri el a Microsoft APIs is rögzíti.
 
-Mivel az alkalmazás más előfizetésben hozzáfér, mint egy több-bérlős alkalmazást kell konfigurálnia. Érvényesítési átadni, adja meg egy társított az Azure Active Directory-tartományhoz. A tartományok az Azure Active Directory társított megtekintéséhez jelentkezzen be a portálra.
+Regisztrálja az alkalmazást, lásd: [a rövid útmutató: Alkalmazás regisztrálása a Microsoft identity platform az](../active-directory/develop/quickstart-register-app.md). Nevezze el az alkalmazást, és válassza ki **bármely szervezeti directory fiókok** a támogatott fióktípus esetében. Átirányítási URL-címet adja meg egy társított az Azure Active Directory-tartományhoz.
 
-Az alábbi példa bemutatja, hogyan regisztrálja az alkalmazás az Azure PowerShell-lel. A parancs működéséhez az Azure PowerShell legújabb (2016. augusztus) verzióját kell telepítenie.
-
-```azurepowershell-interactive
-$app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
-```
-
-Jelentkezzen be az AD-alkalmazást, szüksége van az alkalmazás Azonosítóját és jelszavát. Az Alkalmazásazonosítót az előző parancs által visszaadott használja:
-
-```azurepowershell-interactive
-$app.ApplicationId
-```
-
-Az alábbi példa bemutatja, hogyan az alkalmazás regisztrálása az Azure parancssori felület használatával.
-
-```azurecli-interactive
-az ad app create --display-name {app name} --homepage https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available-to-other-tenants true
-```
-
-Az eredmények tartalmazzák a AppId, amelyre akkor van szükség, ahol az alkalmazás hitelesítéséhez.
+Jelentkezzen be az AD-alkalmazást, szüksége van az alkalmazás azonosítója és a egy titkos kulcsot. Az Áttekintés az alkalmazás megjelenik az Alkalmazásazonosítót. Titkos kulcs létrehozása és az API-engedélyek kéréséhez [a rövid útmutató: Webes API-k eléréséhez ügyfélalkalmazás konfigurálása](../active-directory/develop/quickstart-configure-app-access-web-apis.md). Adjon meg egy új titkos ügyfélkulcsot. Válassza ki az API-engedélyek **Azure Service Management**. Válassza ki **delegált engedélyek** és **user_impersonation**.
 
 ### <a name="optional-configuration---certificate-credential"></a>Választható konfiguráció – tanúsítványalapú hitelesítő adatot
 Azure ad-ben is támogatja a tanúsítványalapú alkalmazásokhoz: hozzon létre egy önaláírt tanúsítvány, a titkos kulcs tároljuk, és a nyilvános kulcs hozzáadása az Azure AD-alkalmazás regisztrációja. A hitelesítéshez az alkalmazás Azure ad-hez, a titkos kulcs használatával aláírt küld el egy kis terhelés, és az Azure AD ellenőrzi az aláírást a nyilvános kulccsal, hogy regisztrált.

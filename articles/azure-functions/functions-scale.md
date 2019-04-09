@@ -13,19 +13,19 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f09fded38e384126a8dfdbe567ce4a3ebd5b1af4
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 459758142c94ddfd244df1427dd5632186efc0de
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893588"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266930"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
 Az Azure Functions két különböző csomagokról fut: Használatalapú csomag és a prémium szintű csomag (nyilvános előzetes verzió). A Használatalapú csomag automatikusan hozzáadja a kódja fut. számítási teljesítmény. Az alkalmazás horizontálisan felskálázott, ha a terhelés kezeléséhez szükséges, és ha leállítja a kódot futtató vertikálisan leskálázni. Nem kell fizetnie a tétlen virtuális gépeket vagy foglalhat le előre a kapacitás.  A prémium szintű csomag is automatikusan méretezhető, és adjon hozzá további számítási teljesítményt, ha a kódja fut.  A prémium szintű csomag érhető el, további funkciókat, például a prémium szintű számítási példányok, a példányok meleg tartani határozatlan ideig képességét és virtuális hálózatok közötti kapcsolat.  Ha rendelkezik egy meglévő App Service-csomag, a függvényalkalmazások azokon belül is futtathatja.
 
 > [!NOTE]  
-> Mindkét [prémium szintű csomag](https://azure.microsoft.com/blog/uncompromised-serverless-scale-for-enterprise-workloads-with-the-azure-functions-premium-plan/preview/) és [Használatalapú csomag Linux](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/) jelenleg előzetes verzióban érhető el.
+> Mindkét [prémium szintű csomag](https://aka.ms/functions-premiumplan) és [Használatalapú csomag Linux](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/) jelenleg előzetes verzióban érhető el.
 
 Ha nem ismeri az Azure Functions, tekintse meg a [Azure Functions áttekintő](functions-overview.md).
 

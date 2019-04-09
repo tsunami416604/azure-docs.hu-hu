@@ -1,5 +1,5 @@
 ---
-title: Az index létrehozása C# – Azure Search
+title: 'Gyors útmutató: Az index létrehozása egy C# Konzolalkalmazás – Azure Search'
 description: Ismerje meg, hogyan hozhat létre a kereshető teljes szöveges index C# az Azure Search .NET SDK használatával.
 author: heidisteen
 manager: cgronlun
@@ -9,15 +9,21 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/22/2019
-ms.openlocfilehash: a5861faaf26962d34d1c356e29dce1be40f8716b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.date: 04/08/2019
+ms.openlocfilehash: 83842893e0ffc6bb954832cd65b6312b59bbcaa3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370584"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269044"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Gyors útmutató: 1 – az Azure Search-index létrehozásaC#
+> [!div class="op_single_selector"]
+> * [C#](search-create-index-dotnet.md)
+> * [Portál](search-get-started-portal.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Postman](search-fiddler.md)
+>*
 
 Ez a cikk végigvezeti a létrehozásának folyamatán [Azure Search-index](search-what-is-an-index.md) használatával C# és a [.NET SDK-val](https://aka.ms/search-sdk). Ez az első leckéje egy 3. rész – a gyakorlatban a létrehozása, betöltés és lekérdezés az index. Az index létrehozása ezen feladatok végrehajtásával valósul meg:
 
@@ -28,43 +34,51 @@ Ez a cikk végigvezeti a létrehozásának folyamatán [Azure Search-index](sear
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+Ez a rövid útmutató az alábbi szolgáltatások, eszközök és adatok használatosak. 
+
 [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja.
 
 [A Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), bármely kiadás esetén. Mintakód és útmutató az ingyenes közösségi kiadása lettek tesztelve.
 
-A végpont URL-cím és a felügyeleti api-kulcsot a keresési szolgáltatás. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
+[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) biztosít egy .NET Core nyelven írt konzolalkalmazással a Mintamegoldás C#, az Azure-minták GitHub-adattárában található. Töltse le és csomagolja ki a megoldást. Alapértelmezés szerint a megoldások olyan csak olvasható. Kattintson a jobb gombbal a megoldás, és törölje a csak olvasható attribútumot, így módosíthatja a fájlokat. A megoldás adatokat tartalmazza.
 
-  1. Az Azure Portalon, a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
 
-  2. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
+Szolgáltatáshívásokat egy URL-végpontot és a egy hozzáférési kulcsot halasztása minden kérelemnél van szükség. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-  ![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
+1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/), és a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
+
+2. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
+
+![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
 
 Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-## <a name="1---open-the-project"></a>1 – a projekt megnyitása
+## <a name="1---configure-and-build"></a>1 – konfigurálása és létrehozása
 
-A mintakód letöltése [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) a Githubról. 
+1. Nyissa meg a **DotNetHowTo.sln** fájlt a Visual Studióban.
 
-Az appSettings.JSON fájl, cserélje le a tartalmat az alábbi példa a alapértelmezett, és adja meg a szolgáltatás nevét és a felügyeleti api-kulcsát. A szolgáltatásnév számára a név csak kell. Például, ha az URL-cím https://mydemo.search.windows.net, adjon hozzá `mydemo` a JSON-fájlba.
+1. Az appSettings.JSON fájl, cserélje le a tartalmat az alábbi példa a alapértelmezett, és adja meg a szolgáltatás nevét és a felügyeleti api-kulcsát. 
 
 
-```json
-{
-    "SearchServiceName": "Put your search service name here",
-    "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-}
-```
+   ```json
+   {
+       "SearchServiceName": "Put your search service name here (not the full URL)",
+       "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
+    }
+   ```
 
-Miután beállította ezeket az értékeket, így F5 build a megoldást a Konzolalkalmazás futtatása. Ebben a gyakorlatban, valamint azokat, amelyeket hajtsa végre a fennmaradó lépésekkel olyan áttekintése, ez a kód működését. 
+  A szolgáltatásnév számára a név csak kell. Például, ha az URL-cím https://mydemo.search.windows.net, adjon hozzá `mydemo` a JSON-fájlba.
 
-Azt is megteheti, olvassa el [használata az Azure Search .NET-alkalmazásból ](search-howto-dotnet-sdk.md) lefedettségét az SDK működésének részletesebb. 
+1. Nyomja le az F5 állítsa össze a megoldást, és futtassa a konzolalkalmazást. Ebben a gyakorlatban, valamint azokat, amelyeket hajtsa végre a fennmaradó lépésekkel olyan áttekintése, ez a kód működését. 
+
+Azt is megteheti, olvassa el [használata az Azure Search .NET-alkalmazásból](search-howto-dotnet-sdk.md) lefedettségét az SDK működésének részletesebb. 
 
 <a name="CreateSearchServiceClient"></a>
 
 ## <a name="2---create-a-client"></a>2 – az ügyfél létrehozása
 
-Az Azure Search .NET SDK használatának megkezdéséhez hozzon létre egy példányt a `SearchServiceClient` osztály. Ez az osztály több konstruktorral rendelkezik. Az, amelyiket Ön szeretne, a keresőszolgáltatása nevét és egy `SearchCredentials` objektumot használ paraméterként. A `SearchCredentials` becsomagolja az API-kulcsot.
+Az Azure Search .NET SDK használatának megkezdéséhez hozzon létre egy példányt a `SearchServiceClient` osztály. Ez az osztály több konstruktorral rendelkezik. Az, amelyiket Ön szeretne, a keresőszolgáltatása nevét és egy `SearchCredentials` objektumot használ paraméterként. `SearchCredentials` becsomagolja az API-kulcsot.
 
 A következő kódot a Program.cs fájlban található. Létrehoz egy új `SearchServiceClient` a search-szolgáltatásnév és api-kulcsot, az alkalmazás konfigurációs fájljában (appsettings.json) tárolt értékekkel.
 
@@ -79,7 +93,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 }
 ```
 
-`SearchServiceClient``Indexes`tulajdonsággal rendelkezik. Ez a tulajdonság az Azure Search-indexek létrehozásához, listázásához, frissítéséhez vagy törléséhez szükséges összes módszert biztosítja.
+`SearchServiceClient` `Indexes` tulajdonsággal rendelkezik. Ez a tulajdonság az Azure Search-indexek létrehozásához, listázásához, frissítéséhez vagy törléséhez szükséges összes módszert biztosítja.
 
 > [!NOTE]
 > A `SearchServiceClient` osztály kezeli a keresőszolgáltatása kapcsolatait. A túl sok kapcsolat megnyitásának elkerülése érdekében, ha lehetséges, próbálja meg a `SearchServiceClient` egyetlen példányát megosztani az alkalmazásban. A módszerei szálbiztosak az ilyen megosztás engedélyezéséhez.

@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 07/18/2018
+ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa21b1054fa6860a8acc5d6971f75e1d74c889f7
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193755"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267038"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Egy előző verzióról a legújabbra frissítése
 Ez a témakör ismerteti a különböző módszereket, amelyek segítségével az Azure Active Directory (Azure AD) Connect-telepítésre frissítsen a legújabb verziót. Azt javasoljuk, hogy őrizze meg magát a kiadások, az Azure AD Connect az aktuális. Is szereplő lépések segítségével a [párhuzamos migrálás](#swing-migration) szakaszt, ha létrehoz egy jelentős konfigurációs módosítást.
+
+>[!NOTE]
+> Jelenleg az Azure AD Connect bármely verziójának frissítése az aktuális verzióra támogatott. Helyszíni frissítés a DirSync vagy az ADSync nem támogatott, és a egy párhuzamos migrálás megadása kötelező.  Ha azt szeretné, hogy frissítésre a dirsyncről, [frissítése az Azure AD Szinkronizáló eszközéről (DirSync)](how-to-dirsync-upgrade-get-started.md) vagy a [párhuzamos migrálás](#swing-migration) szakaszban.  </br>A gyakorlatban rendkívül régi verziók rendelkező ügyfeleink az Azure AD Connect nem közvetlenül kapcsolódó problémák fordulhatnak elő. Kiszolgálók, amely már évek, éles környezetben általában számos javítást alkalmazza őket eszközt, és ezek közül nem mindegyik számítani lehet.  Ügyfelek, akik nem frissítette a 12-18 hónapos általában gondolja át a párhuzamos frissítés ehelyett Ez a beállítás a legszigorúbb és legalább kockázatos.
 
 Ha azt szeretné, hogy frissítésre a dirsyncről, [frissítése az Azure AD Szinkronizáló eszközéről (DirSync)](how-to-dirsync-upgrade-get-started.md) helyette.
 

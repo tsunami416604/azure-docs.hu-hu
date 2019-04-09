@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97419dac33688d24159b35f00f1e9bffbd587497
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2aed12b085557eda4210be9c067f5cdad4cd2d1b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886388"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261768"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Agiloft
 
@@ -167,13 +167,13 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Agiloft, hajtsa vég
 
     ![Agiloft Configuration](./media/agiloft-tutorial/setup4.png)
 
-    a. A **identitásszolgáltató entitásazonosító / kibocsátó** szövegmező, illessze be az értéket a **Azure Ad-azonosító**, az Azure Portalról másolt.
+    a. A **identitásszolgáltató entitásazonosító / kibocsátó** szövegmező, illessze be az értéket a **Azure Ad-azonosító**, az Azure Portalról másolt.
 
-    b. A **identitásszolgáltató bejelentkezési URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
+    b. A **identitásszolgáltató bejelentkezési URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
 
-    c. A **identitásszolgáltató kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket a **kijelentkezési URL-címe**, az Azure Portalról másolt.
+    c. A **identitásszolgáltató kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket a **kijelentkezési URL-címe**, az Azure Portalról másolt.
 
-    d. Nyissa meg a **base-64 kódolású tanúsítvány** a Jegyzettömbben az Azure-portálról letöltött, másolja a tartalmát a vágólapra, és illessze be azt a **identitásszolgáltató megadott X.509 tanúsítvány tartalma**  szövegmezőbe.
+    d. Nyissa meg a **base-64 kódolású tanúsítvány** a Jegyzettömbben az Azure-portálról letöltött, másolja a tartalmát a vágólapra, és illessze be azt a **identitásszolgáltató megadott X.509 tanúsítvány tartalma** szövegmezőbe.
 
     e. Kattintson a **Befejezés** gombra.
 
@@ -242,6 +242,6 @@ Ha a hozzáférési panelen a Agiloft csempére kattint, meg kell lehet automati
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,26 +1,26 @@
 ---
-title: Az Azure portal – Azure Search mesterséges indexeléshez cognitive search folyamat létrehozása
-description: Példa adatkinyerési, természetes nyelvi és képfeldolgozási képességekre az Azure Portalon, mintaadatok használatával.
+title: 'Gyors útmutató: Hozhat létre a mesterséges Intelligencia által működtetett adatfeltöltéssel az Azure portal – Azure Search'
+description: Adatok kinyerése, természetes nyelvi és feldolgozási képességek egy Azure Search-indexelő portálon az Azure portal használatával, és az adatokat.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 03/17/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f00df841f81ea5c7aa1fd53309b00487602e5143
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 161d3ff3e00f7e9e979527533f6b8ac365c41490
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200624"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265015"
 ---
-# <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Gyors útmutató: Folyamat létrehozása a kognitív keresés használatával képességeit, és mintaadatok
+# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-and-sample-data"></a>Gyors útmutató: Hozzon létre egy olyan kognitív képességekkel és mintaadatok használatával AI indexelése folyamat
 
-A kognitív keresés (előzetes verzió) adatkinyerési, természetes nyelvi feldolgozási (NLP) és képfeldolgozási képességekkel bővíti az Azure Search indexelőfolyamatát, ezáltal javítja a nem kereshető vagy strukturálatlan tartalmak kereshetőségét. 
+Integrálható az Azure Search [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), a tartalom kivonása, természetes nyelvi feldolgozást (NLP) és feldolgozási képességek kép hozzáadása egy Azure Search-indexelő folyamatot, így unsearchable vagy strukturálatlan tartalom több kereshető. 
 
-A kognitív keresés folyamat integrálható [Cognitive Services-erőforrások](https://azure.microsoft.com/services/cognitive-services/) – például [OCR](cognitive-search-skill-ocr.md), [nyelvfelismerés](cognitive-search-skill-language-detection.md), [entitások felismerése](cognitive-search-skill-entity-recognition.md)– egy indexelő folyamatba. Az AI-algoritmusokat, Cognitive Services segítségével keresse meg a mintákat, szolgáltatások és jellemzői forrásadatok visszaadni struktúrák és a szöveges tartalom használható teljes szöveges keresési megoldások Azure Search alapján.
+Számos Cognitive Services-erőforrások – például [OCR](cognitive-search-skill-ocr.md), [nyelvfelismerés](cognitive-search-skill-language-detection.md), [entitások felismerése](cognitive-search-skill-entity-recognition.md) hogy néhányat említsünk - kapcsolható egy indexelési folyamat. Az AI-algoritmusokat, Cognitive Services segítségével keresse meg a mintákat, szolgáltatások és jellemzői forrásadatok visszaadni struktúrák és a szöveges tartalom használható teljes szöveges keresési megoldások Azure Search alapján.
 
 Ebben a rövid útmutatóban a felderítési bővítést az első folyamat létrehozása a [az Azure portal](https://portal.azure.com) egy egyetlen sor kód írása előtt:
 
@@ -30,63 +30,28 @@ Ebben a rövid útmutatóban a felderítési bővítést az első folyamat létr
 > * Futtassa a varázslót (egy entitásképesség észleli a személyeket, a tartózkodási helyet és a szervezeteket)
 > * Használat [ **keresési ablak** ](search-explorer.md) a bővített adatok lekérdezése
 
-## <a name="supported-regions"></a> Támogatott régiók
+Ez a rövid útmutató az ingyenes szolgáltatás fut, de az ingyenes tranzakciók száma korlátozott a naponta 20 dokumentumokhoz. Ha azt szeretné, ez a rövid útmutató egynél többször futtatása ugyanazon a napon, használja az egy kisebb fájlt, hogy a további futtatási illeszkednek.
 
-AI-bővített indexelés kognitív szolgáltatásokon keresztül érhető el az összes Azure Search-régióban.
+> [!NOTE]
+> Növelje a feldolgozása, további dokumentumok hozzáadása, illetve további AI-algoritmusokat hozzáadása gyakorisága bontsa ki a hatókört, szüksége lesz egy számlázható Cognitive Services-erőforrás csatolása. A díjakat API-k hívásakor, a Cognitive Services, valamint a lemezkép kinyerése a az Azure Search-dokumentumfeltörést fázis részeként. Nem számítunk fel díjat a szövegkinyerés dokumentumok közül.
+>
+> Végrehajtási beépített képességek a meglévő díjakat [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás havidíjat számítunk fel az előzetes verzió díjszabása, lásd a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). További [információ](cognitive-search-attach-cognitive-services.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-> [!NOTE]
-> December 21, 2018-as, lesz egy Cognitive Services-erőforrás társítása egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon is megkezdjük a dokumentumfeltörést fázis részeként a lemezkép kinyerési díjszabási. A szövegek dokumentumokból való kinyerése továbbra is ingyenesen használható.
->
-> A végrehajtás beépített képességek díjat számítunk fel a meglévő [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás az előzetes verziók díjszabása díjat számítunk fel, és a leírt a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). További [információ](cognitive-search-attach-cognitive-services.md).
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-[A kognitív keresés bemutatása](cognitive-search-concept-intro.md) ismerteti a bővítés architektúráját és összetevőit. 
+[Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja.
 
-Ebben a forgatókönyvben kizárólag Azure-szolgáltatásokat használunk. A szükséges szolgáltatások létrehozása az előkészületek részét képezi.
+[A cognitive Services](https://azure.microsoft.com/services/cognitive-services/) biztosít az AI. Ez a rövid útmutató hozzáadásának ezen erőforrások beágyazott, amikor az a folyamat lépései tartalmazza. Nem kell előzetesen fiókok beállítása.
 
-+ [Az Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) biztosít a forrásadatok
-+ [A cognitive Services](https://azure.microsoft.com/services/cognitive-services/) biztosít az AI (hozhat létre ezen erőforrások beágyazott, a folyamat megadása esetén)
-+ [Az Azure Search](https://azure.microsoft.com/services/search/) a képi elemekben gazdag indexelési folyamat és a egy gazdag szabad formátumú szöveges keresés biztosít az egyéni alkalmazások használata
-
-### <a name="set-up-azure-search"></a>Az Azure Search beállítása
-
-Első lépésként regisztráljon az Azure Search szolgáltatásra. 
-
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) Azure-fiókjával.
-
-1. Kattintson az **Erőforrás létrehozása** gombra, keresse meg az Azure Search szolgáltatást, majd kattintson a **Létrehozás** gombra. Ha első alkalommal próbálkozik keresési szolgáltatás beállításával, és segítségre van szüksége, tekintse meg az [Azure Search szolgáltatás a portálon történő létrehozását](search-create-service-portal.md) ismertető szakaszt.
-
-   ![A portál irányítópultja](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Azure Search szolgáltatás létrehozása a portálon")
-
-1. Az erőforráscsoport területen hozzon létre egy új ebben a rövid útmutatóban létrehozott összes erőforrást tartalmazó erőforráscsoport. Ezáltal könnyebb lesz az erőforrások eltávolítása, miután a rövid útmutató végére ért.
-
-1. A helyen, válasszon egyet az a [támogatott régiók](#supported-regions) cognitive search.
-
-1. A Tarifacsomagra vonatkozóan az oktatóanyagok és rövid útmutatók elvégzéséhez létrehozhat egy **ingyenes** szolgáltatást. A saját adatok mélyrehatóbb vizsgálatához hozzon létre egy **Alapszintű** vagy **Standard** [fizetős szolgáltatást](https://azure.microsoft.com/pricing/details/search/). 
-
-   Az ingyenes szolgáltatás legfeljebb 3 indexet és 2 perc indexelést tartalmazhat, 16 MB-os maximális blobmérettel, amely nem elegendő a kognitív keresés funkcióinak teljes körű használatához. A különböző csomagok korlátozásait a [szolgáltatási korlátozásokat](search-limits-quotas-capacity.md) ismertető részben tekintheti meg.
-
-   ![Szolgáltatásdefiníciós oldal a portálon](./media/cognitive-search-tutorial-blob/create-search-service2.png "Szolgáltatásdefiníciós oldal a portálon")
-
-   > [!NOTE]
-   > A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoportok végrehajtása jelenleg minden csomagban elérhető, az ingyenes csomagot is beleértve. Fogja tudni elvégezni a végrehajtott információbeolvasás korlátozott számú fizetős Cognitive Services-erőforrás társítása nélkül. További [információ](cognitive-search-attach-cognitive-services.md).
-
-1. A szolgáltatási információk gyors eléréséhez rögzítse a szolgáltatást az irányítópulton.
-
-   ![Szolgáltatásdefiníciós oldal a portálon](./media/cognitive-search-tutorial-blob/create-search-service3.png "Szolgáltatásdefiníciós oldal a portálon")
+Azure-szolgáltatások a bemeneti adatok az indexelési folyamat megadása szükséges. Bármilyen által támogatott adatforrást használhat [Azure Search-indexelők](search-indexer-overview.md) kivéve az Azure Table Storage, amely nem támogatott mesterséges indexeléshez. Ebben a rövid útmutatóban használt [Azure Blob storage](https://azure.microsoft.com/services/storage/blobs/) forrásadatfájlok tárolójaként. 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Az Azure Blob szolgáltatás beállítása és a mintaadatok betöltése
 
-A bővítési folyamat az [Azure Search indexelői](search-indexer-overview.md) által támogatott Azure-adatforrásokból hívja le az adatokat. Vegye figyelembe, hogy az Azure Table Storage a kognitív keresés nem támogatott. Ebben a gyakorlatban a blobtárolót használjuk több tartalomtípus bemutatásához.
-
 1. [Töltsön le mintaadatokat](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), amelyek különböző típusú fájlok kis készletéből állnak. 
 
-1. Iratkozzon fel az Azure Blob storage, hozzon létre egy tárfiókot, nyissa meg a Blob szolgáltatás oldalt, és hozzon létre egy tárolót. 
-
-1. A tárolóban, állítsa a nyilvános hozzáférés szintet **tároló (névtelen olvasási hozzáférés tárolók és blobok)**. További információkért lásd: ["Tároló létrehozása" szakaszban](../storage/blobs/storage-unstructured-search.md#create-a-container) a a *strukturálatlan adatok keresése* oktatóanyag.
+1. [Iratkozzon fel az Azure Blob storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal), hozzon létre egy tárfiókot, nyissa meg a Blob szolgáltatás oldalt, és hozzon létre egy tárolót.  A storage-fiók létrehozása az Azure Search és ugyanabban a régióban.
 
 1. Kattintson a létrehozott tárolót, **feltöltése** az előző lépésben letöltött minta fájlok feltöltéséhez.
 

@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 04/06/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c0f824e2be0215192ca4ca1a722e814cbf299b7a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342422"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269554"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Biztonsági és az adatvédelem az Azure Search szolgáltatásban
 
@@ -31,7 +31,7 @@ Az Azure Search minősítéssel az alábbi előírásoknak, mint [2018 június b
 + [Health Insurance Portability and Accountability Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
 + [GxP (21 CFR Part 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
-+ [1. szintű PCI DSS](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [PCI DSS 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
 + [Ausztrál IRAP nem besorolt DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 Általánosan elérhető szolgáltatásainak szabványoknak való megfelelés vonatkozik. Előzetes verziójú funkciók az általánosan elérhető az átmenet, és nem használható az olyan megoldások szigorú szabványokat követelményekkel rendelkező hitelesített. Megfelelőségi tanúsítvány leírása itt található [áttekintése a Microsoft Azure-megfelelőségi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) és a [biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trustcenter). 
@@ -58,6 +58,8 @@ Több biztonsági mechanizmus áll rendelkezésre álló Azure kiterjedő, és �
 
 Minden Azure-szolgáltatás támogatja a szerepköralapú hozzáférés-vezérlést (RBAC) állítja a hozzáférési szintet konzisztens az összes szolgáltatásban. Például bizalmas adatokat, például az adminisztrációs kulcsot megtekintése korlátozódik, a tulajdonos és közreműködő szerepköröket, mivel a szolgáltatás állapotának megtekintését minden szerepkör tagjai számára érhető el. Az RBAC a tulajdonos, közreműködő és olvasó szerepkört biztosít. Alapértelmezés szerint az összes szolgáltatás-rendszergazdák a tulajdonos szerepkör tagjai.
 
+<a name="service-access-and-authentication"></a>
+
 ## <a name="service-access-and-authentication"></a>Szolgáltatás-hozzáférés és hitelesítés
 
 Bár az Azure Search örökli a biztonsági ellenőrzése az Azure platform, a saját kulcs alapú hitelesítés is tartalmazza. Api-kulcsát: véletlenszerűen generált számokból és betűkből álló karakterlánc. (A rendszergazda vagy a lekérdezés) kulcs típusa határozza meg a hozzáférési szintet. Érvényes kulcs benyújtása számít, koncepció a kérés egy megbízható entitás származik. 
@@ -65,11 +67,11 @@ Bár az Azure Search örökli a biztonsági ellenőrzése az Azure platform, a s
 Nincsenek a keresési szolgáltatás, kétféle típusú kulcsok által engedélyezett hozzáférési két szintet:
 
 * Rendszergazdai hozzáférés (érvényes a szolgáltatás minden olvasási és írási művelet)
-* Lekérdezési hozzáférési jogosultsággal (például a lekérdezéseket az index csak olvasható műveletekhez érvényes)
+* Lekérdezési hozzáférési jogosultsággal (csak olvasási műveletek, például a lekérdezések, az index dokumentumok gyűjteményét érvényes)
 
-*Az adminisztrációs kulcsok* jön létre, amikor a szolgáltatást annak üzembe helyezése. Nincsenek kijelölt két adminisztrációs kulcsot *elsődleges* és *másodlagos* Újévi ugrik, de valójában azok felcserélhetők. Minden szolgáltatásnak van két adminisztrációs kulcsot, így lehet vonni az egyik a szolgáltatáshoz való hozzáférés elvesztése nélkül. Létrehozhatja vagy rendszergazdai kulcs, de a teljes rendszergazdai kulcsok száma nem lehet hozzáadni. Nincs legfeljebb két adminisztrációs kulcsot a keresési szolgáltatás esetében.
+*Az adminisztrációs kulcsok* jön létre, amikor a szolgáltatást annak üzembe helyezése. Nincsenek kijelölt két adminisztrációs kulcsot *elsődleges* és *másodlagos* Újévi ugrik, de valójában azok felcserélhetők. Minden szolgáltatásnak van két adminisztrációs kulcsot, így lehet vonni az egyik a szolgáltatáshoz való hozzáférés elvesztése nélkül. Is [újragenerálása adminisztrációs kulcsot](search-security-api-keys.md#regenerate-admin-keys) rendszeres időközönként / az Azure security ajánlott eljárásokat, de nem adható hozzá a teljes rendszergazdai kulcsok száma. Nincsenek legfeljebb két adminisztrációs kulcsot a keresési szolgáltatás esetében.
 
-*Lekérdezési kulcsokkal* igény szerint jönnek létre, és úgy tervezték, az ügyfélalkalmazások, amelyek keresési közvetlenül hívják. Legfeljebb 50 lekérdezési kulcsok hozhat létre. Az alkalmazás kódjában adja meg a keresési URL-CÍMÉT és a egy lekérdezési api-kulcs a szolgáltatás csak olvasható hozzáférést. Az alkalmazás kódja is megadja az indexet, az alkalmazása által használt. A végpont, a csak olvasási hozzáféréssel az api-kulcsát és a egy célindex együtt, a kapcsolat az ügyfélalkalmazás hatókörrel és a hozzáférési szintjének meghatározását.
+*Lekérdezési kulcsokkal* igény szerint jönnek létre, és az ügyfélalkalmazások, amelyek lekérdezések készültek. Legfeljebb 50 lekérdezési kulcsok hozhat létre. Az alkalmazás kódjában adja meg a Keresés URL-CÍMÉT és a egy lekérdezési api-kulcs csak olvasási hozzáférést egy adott indexének dokumentumok gyűjteményét. A végpont, a csak olvasási hozzáféréssel az api-kulcsát és a egy célindex együtt, a kapcsolat az ügyfélalkalmazás hatókörrel és a hozzáférési szintjének meghatározását.
 
 Hitelesítés minden kérelemnél, ahol minden egyes kérés áll, amelyek kötelező kulcs, a művelet és a egy objektum szükséges. Összeláncolt, ha a két jogosultsági szintek (teljes vagy csak olvasható) és a környezetben (például egy lekérdezési művelet indexen) elegendőek a teljes körű biztonsági megoldásai a szolgáltatási műveletek. Kulcsokkal kapcsolatos további információkért lásd: [létrehozása és kezelése az api-kulcsainak](search-security-api-keys.md).
 
@@ -83,17 +85,11 @@ Rendszergazdai és fejlesztői hozzáférést indexek magánháztartás: mindké
 
 A több-bérlős megoldásokat igénylő biztonsági határokat a index szintjén az ilyen megoldások általában tartalmazza a középső réteg, mely ügyfelek index elkülönítési kezelésére használhatja. További információ a több-bérlős használati eset: [tervezési minták több-bérlős SaaS-alkalmazások és az Azure Search az](search-modeling-multitenant-saas-applications.md).
 
-## <a name="admin-access-from-client-apps"></a>Rendszergazdai hozzáférés az ügyfélalkalmazások
+## <a name="admin-access"></a>Rendszergazdai hozzáférés
 
-Az Azure Search felügyeleti REST API kiterjesztése az Azure Resource Manager és a fájlmegosztások annak függőségeit. Mint ilyen az Active Directory az Azure Search szolgáltatás felügyeletének előfeltétele. Az összes felügyeleti kérések ügyfél-code-ból az Azure Active Directoryval, mielőtt a kérelem eléri az erőforrás-kezelő kell hitelesíteni.
+[Szerepköralapú hozzáférés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) határozza meg, hogy hozzáfér vezérlők a szolgáltatást és annak tartalmát. Ha az Azure Search szolgáltatás tulajdonosához vagy Közreműködőjéhez, használhatja a portálon vagy a PowerShell **Az.Search** modul létrehozása, frissítése vagy a szolgáltatás objektumok törlése. Is használhatja a [Azure Search felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 
-Index létrehozása (Azure Search szolgáltatás REST API) vagy a dokumentumok keresése (Azure Search szolgáltatás REST API), például az Azure Search szolgáltatási végpont adatok kérelmeket a kérelem fejlécében api-kulcsát használja.
-
-Ha az alkalmazás kódjában kezeli a szolgáltatás felügyeleti műveletek, valamint a keresési indexek vagy dokumentumok műveletekhez, a programkódban implementálni két hitelesítési módszer: a natív Azure Search és az Active Directory-hitelesítés hozzáférési kulcs Resource Manager által igényelt módszert. 
-
-Információ az Azure Search egy kérelem strukturálásáról: [Azure Search szolgáltatás REST](https://docs.microsoft.com/rest/api/searchservice/). Resource Manager-hitelesítés követelményeiről további információkért lásd: [használható erőforrás-kezelő hitelesítési API az előfizetések hozzáféréséhez](../azure-resource-manager/resource-manager-api-authentication.md).
-
-## <a name="user-access-to-index-content"></a>Index tartalomhoz való hozzáférés
+## <a name="user-access"></a>Felhasználói hozzáférés
 
 Alapértelmezés szerint felhasználói hozzáférést az index határozza meg a hozzáférési kulcsot a lekérdezési kérésre. A legtöbb fejlesztő létrehozása és hozzárendelése [ *lekérdezési kulcsokkal* ](search-security-api-keys.md) a ügyféloldali keresési kéréseket. Lekérdezési kulcs olvasási hozzáférést biztosít az indexen belüli összes tartalom.
 

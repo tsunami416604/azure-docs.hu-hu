@@ -14,19 +14,19 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9da6f85f194d9aebab22584f8cba8b227ed38a72
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 70e4e56742f45e0f6bfd80455e4d7545523a478b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223308"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265780"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure ad-ben
 
 A Csoportalapú licencelés összes funkciójának keresztül érhető el a [az Azure portal](https://portal.azure.com), és a PowerShell és a Microsoft Graph-támogatása jelenleg korlátozott. Vannak azonban néhány hasznos feladatot, használja a meglévő végrehajtható [MSOnline PowerShell-parancsmagok](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) és a Microsoft Graph. Ez a dokumentum mi minden lehetséges példákat.
 
 > [!NOTE]
-> Parancsmagok futtatása előtt győződjön meg arról, hogy kapcsolódni a szervezet először futtassa a `Connect-MsolService`  parancsmagot.
+> Parancsmagok futtatása előtt győződjön meg arról, hogy kapcsolódni a szervezet először futtassa a `Connect-MsolService` parancsmagot.
 
 > [!WARNING]
 > Ez a kód biztosítunk példaként, bemutatási céllal. Ha szeretne használni, a környezetben, fontolja meg, vizsgálja, hogy először egy kisméretű, vagy külön tesztelési célú bérlői. Előfordulhat, hogy kell módosítania a kódot az adott környezet igényeinek kielégítése érdekében.
@@ -115,7 +115,7 @@ Get-MsolGroup -All | Where {$_.Licenses}  | Foreach {
     $licenseAssignedCount = 0;
     $licenseErrorCount = 0;
 
-    Get-MsolGroupMember -All -GroupObjectId $groupId
+    Get-MsolGroupMember -All -GroupObjectId $groupId |
     #get full info about each user in the group
     Get-MsolUser -ObjectId {$_.ObjectId} |     Foreach {
         $user = $_;
@@ -623,10 +623,10 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 
 Csoportokon keresztül licenckezelésre funkciókészlethez kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
-* [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
-* [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
+* [Mi az Azure Active Directory-beli csoportalapú licencelés?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [Licencek hozzárendelése egy csoporthoz az Azure Active Directory](licensing-groups-assign.md)
+* [Az Azure Active Directory csoport kapcsolatos problémák észleléséhez és a](licensing-groups-resolve-problems.md)
+* [Hogyan kell egyéni licenccel rendelkező felhasználók migrálása Csoportalapú licencelésre, az Azure Active Directoryban](licensing-groups-migrate-users.md)
 * [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](licensing-group-advanced.md)
+* [Csoportalapú licencelés további forgatókönyvek az Azure Active Directory](licensing-group-advanced.md)
 * [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](../users-groups-roles/licensing-ps-examples.md)

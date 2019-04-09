@@ -10,71 +10,71 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 761ecefa768914e0c27f46d37050743e4f1f60ff
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
-ms.translationtype: MT
+ms.openlocfilehash: 9cd643185fb4647b19082980edfd333c507aab8a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58362438"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266256"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Ismerkedés az Azure Machine Learning felhőalapú notebook server használatával
 
-Ez a cikk az Azure-jegyzetfüzetek futtatásához használt kódot, amely be van jelentkezve az Azure Machine Learning szolgáltatás [munkaterület](concept-azure-machine-learning-architecture.md). A munkaterület az eligazodást blokk, amellyel kísérletezhet, betanítását és a Machine Learning gépi tanulási modellek üzembe helyezése a felhőben. 
+Hozzon létre egy felhőalapú notebook kiszolgálót, majd futtassa a kódot, amely értékek bejelentkezik az Azure Machine Learning szolgáltatás használatával [munkaterület](concept-azure-machine-learning-architecture.md). A munkaterület az eligazodást blokk, amellyel kísérletezhet, betanítását és a Machine Learning gépi tanulási modellek üzembe helyezése a felhőben. 
 
-Ez a rövid útmutató felhőerőforrásokat használ, és nem igényel telepítést. A saját környezetben használja, lásd: [a rövid útmutató: A saját notebook server használata az Azure Machine Learning használatának első lépései](quickstart-run-local-notebook.md).  
+Ez a rövid útmutató bemutatja, hogyan felhőalapú erőforrás létrehozása az Azure Machine Learning-munkaterületet, a konfigurált az Azure Machine Learning futtatásához szükséges Python-környezetet. A saját környezetben használja, lásd: [a rövid útmutató: A saját notebook server használata az Azure Machine Learning használatának első lépései](quickstart-run-local-notebook.md).  
  
 Ebben a rövid útmutatóban tegye a következőket:
 
-* Csatlakozás a munkaterülethez, a Python egy Jupyter Notebookban. A notebook pi és naplók hibák megbecsülni, minden egyes ismétléskor kódját tartalmazza. 
-* A naplózott hiba értékeinek megtekintése a munkaterületén.
+* Hozzon létre egy munkaállomás
+* Indítsa el a Jupyter Notebook kiszolgálót a munkaállomáson
+* Nyisson meg egy jegyzetfüzetet, pi, és a naplók a hibákat, minden egyes ismétléskor becslésbe kódot tartalmaz.
+* A jegyzetfüzet futtatásához.
+* A naplózott hiba értékeinek megtekintése a munkaterületén.  Ez a példa bemutatja, hogyan segíthet a munkaterület a szkriptben létrehozott információk nyomon követésében. 
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-## <a name="prerequisite"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 1. [Az Azure Machine Learning-munkaterület létrehozása](setup-create-workspace.md#portal) Ha nem rendelkezik ilyennel.
 
-1. Nyissa meg a munkaterület a [az Azure portal](https://portal.azure.com/).  Lásd: hogyan [keresse meg a munkaterület](how-to-manage-workspace.md#view).
+1. Nyissa meg a munkaterület a [az Azure portal](https://portal.azure.com/).  Ha nem biztos abban, hogy hogyan keresse meg a munkaterület a portálon, hogyan [keresse meg a munkaterület](how-to-manage-workspace.md#view).
 
-## <a name="use-your-workspace"></a>Saját munkaterület használatára
+## <a name="create-a-workstation"></a>Hozzon létre egy munkaállomás 
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
+A notebook munkaállomás lehetővé teszi egy felhőalapú platform, amely az Azure Machine Learning szolgáltatást futtatja, amit az előre konfigurált Jupyter notebookokhoz. A munkaterület hozhat létre erre a platformra Jupyter notebookok használatának megkezdéséhez.
 
+1. A munkaterület oldalán az Azure Portalon, válassza **Notebook munkaállomás** a bal oldalon.
 
-
-Ismerje meg, hogyan munkaterület segítségével kezelheti a gépi tanulási parancsfájlok. Ebben a szakaszban hajtsa végre a következő lépéseket:
-
-* Megnyit egy notebookot az Azure Notebooksban.
-* Naplózott értékeket létrehozó kódot futtat.
-* A naplózott értékek megtekintése a munkaterületen.
-
-Ez a példa bemutatja, hogyan segíthet a munkaterület a szkriptben létrehozott információk nyomon követésében. 
-
-### <a name="open-a-notebook"></a>Notebook megnyitása 
-
-[Az Azure notebookok](https://notebooks.azure.com) ingyenes felhőalapú platformot nyújt a Machine Learning végrehajtásához, amit az előre konfigurált Jupyter-notebookok. A munkaterületen indítsa el a platform az Azure Machine Learning szolgáltatás munkaterület használatának megkezdéséhez.
-
-1. A munkaterület áttekintése lapon válassza ki a **első lépései az Azure notebookok** szeretné kipróbálni az első kísérlet az Azure-jegyzetfüzeteket.  Az Azure notebookok egy külön szolgáltatás, amely lehetővé teszi, hogy a futtatása a Jupyter notebooks ingyenes a felhőben.  Erre a hivatkozásra a szolgáltatás használata esetén a munkaterülethez csatlakoztassa információ felveszi a notebookok Azure-ban létrehozott könyvtárba.
+1. Válassza ki **Notebookjait hozzon létre egy Azure Machine Learning munkaállomás (előzetes verzió)**
 
    ![Ismerje meg a munkaterület](./media/quickstart-run-cloud-notebook/explore-aml.png)
 
-1. Jelentkezzen be az Azure-jegyzetfüzeteket.  Ellenőrizze, hogy ugyanazt a fiókot, amellyel jelentkezzen be az Azure Portalra jelentkezik. A cég vagy az intézmény a bejelentkezéshez [rendszergazdai hozzájárulást](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) írhat elő.
+1. A **Notebook munkaállomások** szakasz bemutatja az összes rendelkezésre álló jegyzetfüzet felhőalapú kiszolgálók listáját a munkaterületén.  Itt is kezelheti ezeket az erőforrásokat és törölje őket, ha már nincs szüksége. 
 
-1. A bejelentkezés után megnyílik egy új lap, és megjelenik egy `Clone Library` üzenet. Ebben a könyvtárban a Klónozás betölti a notebookok és egyéb fájlokat az Azure-jegyzetfüzet-fiókba.  Ezeket a fájlokat, Fedezze fel az Azure Machine Learning segítségével.
+1. Válassza ki **Munkaállomás hozzáadása** hozhat létre egy notebookot munkaállomás.
 
-1. Törölje a jelet **nyilvános** úgy, hogy a munkaterület-információk nem megosztja másokkal.
+     ![Válassza a Munkaállomás hozzáadása](./media/quickstart-run-cloud-notebook/add-workstation.png)
 
-1. Válassza ki **Klónozás**.
+1. A Notebook Munkaállomás hozzáadása szakaszban adjon a munkaállomáson a **nevű számítási** , és válassza ki a **számítási típus**. Ezután kattintson a **Létrehozás** elemre.
 
-   ![Klónozza a tár](./media/quickstart-run-cloud-notebook/clone.png)
+    ![Hozzon létre új munkaállomás](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
-1. Ha látja, hogy a projekt állapot Leállítva, kattintson a **ingyenes számítógépen futtassa** az ingyenes notebook server használatához.
+    > [!NOTE]
+    > A munkaállomás létrehozása körülbelül két percet vesz igénybe. Amikor végzett, a állapota "Fut" frissítések és a Jupyter és JupyterLab mutató hivatkozásokat tartalmaz jelennek meg.
 
-    ![Futtassa a projektet az ingyenes számítási](./media/quickstart-run-cloud-notebook/run-project.png)
+## <a name="launch-jupyter-web-interface"></a>Indítsa el a Jupyter webes felület
+
+A munkaállomás létrehozása után a Notebook munkaállomások szakasz segítségével indítsa el a Jupyter webes felületén.
+
+* Válassza ki **Jupyter** vagy **Jupyter labor** a a **indítsa el a** oszlopában a munkaállomáson.
+
+    ![Jupyter notebook server indítása](./media/quickstart-run-cloud-notebook/start-notebook-server.png)
+
+    Ez elindítja a notebook kiszolgálót, és a egy új böngészőlapon nyílik meg a kiszolgáló kezdőlapja.  A kiszolgáló látható mintafüzetek a használhatja az Azure Machine Learning szolgáltatás használatába.
 
 ### <a name="run-the-notebook"></a>A notebook futtatása
 
-A projekthez tartozó fájlok listáját, megjelenik egy `config.json` fájlt. A konfigurációs fájlban, az Azure Portalon hozza létre a munkaterületet információkat tartalmaz.  Ez a fájl lehetővé teszi, hogy a kód való csatlakozáshoz, és adja meg adatait egyszerűen a munkaterületre.
+-Pi becslése és naplózza a hibát a munkaterülethez jegyzetfüzet futtatása.
 
 1. Válassza ki **01.run-experiment.ipynb** a notebook megnyitásához.
 
@@ -82,9 +82,7 @@ A projekthez tartozó fájlok listáját, megjelenik egy `config.json` fájlt. A
 
     ![Várjon, amíg a kernel indítása](./media/quickstart-run-cloud-notebook/wait-for-kernel.png)
 
-1. Miután elindult a kernel, futtassa a cellák egy egyszerre **Shift + Enter**. Válassza ki vagy **cellák** > **összes futtatása** a teljes jegyzetfüzet futtatásához. Amikor megjelenik egy csillag __*__, mellett egy cellába, továbbra is fut a cellát. A cella kódjának lezárulása után megjelenik egy szám. 
-
-1. Kövesse a Notebookban lévő utasításokat hitelesítéséhez az Azure-előfizetésében.
+1. Miután elindult a kernel, futtassa a cellák egy egyszerre **Shift + Enter**. Válassza ki vagy **cellák** > **összes futtatása** a teljes jegyzetfüzet futtatásához. Amikor megjelenik egy csillag (__*__) mellett egy cellába, továbbra is fut a cellát. A cella kódjának lezárulása után megjelenik egy szám.  
 
 Ha végzett a jegyzetfüzet-ban futó összes cellát, megtekintheti a bejelentkezett értékek a munkaterületén.
 
@@ -108,9 +106,16 @@ Mivel a kódot a hozzávetőleges pi véletlenszerű értéket használ, a grafi
 
 Tartsa meg az erőforráscsoportot is, de egyetlen munkaterület törlése. A munkaterület tulajdonságainak megjelenítéséhez, és válassza ki **törlése**.
 
+
 ## <a name="next-steps"></a>További lépések
 
-Létrehozta a modellekkel való kísérletezéshez és azok üzembe helyezéséhez szükséges erőforrásokat. Kódot is futtatott egy notebookban, és áttekintette a kód futtatási előzményeit a felhőben lévő munkaterületen.
+Ebben a rövid útmutatóban elvégezte a következőket:
+
+* Hozzon létre egy munkaállomás
+* Indítsa el a Jupyter Notebook kiszolgálót a munkaállomáson
+* Nyisson meg egy jegyzetfüzetet, pi, és a naplók a hibákat, minden egyes ismétléskor becslésbe kódot tartalmaz.
+* A jegyzetfüzet futtatásához.
+* A naplózott hiba értékeinek megtekintése a munkaterületén.  Ez a példa bemutatja, hogyan segíthet a munkaterület a szkriptben létrehozott információk nyomon követésében. 
 
 Részletes munkafolyamat élményt biztosít betanítása és a modell üzembe helyezése a Machine Learning-oktatóanyagokat követve:  
 

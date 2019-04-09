@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2019
+ms.date: 04/02/2019
 ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 3d4b0b143b41daca376aecc64cf734fadcc94faa
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 557757fc4d99fe57ad545e9d2eebcce61ddb3a8f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226572"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268721"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Mik azok a rendelkezésre állási zónák az Azure-ban?
 A rendelkezésre állási zónák a magas rendelkezésre állást kínál, amely megvédi alkalmazásait és adatait az adatközpontok meghibásodásai. A rendelkezésre állási zónák egyedi fizikai helyszínek az Azure-régióban. Minden zóna egy vagy több adatközpont független áramellátással, hűtéssel és hálózati található tevődik össze. Rugalmasság biztosítása érdekében legalább három különálló zónát, az összes engedélyezett régióban van. Egy adott régión belül a rendelkezésre állási zónák fizikai elválasztása adatközpont meghibásodása ellen védi az alkalmazásokat és adatokat. Zónaredundáns szolgáltatásokat az alkalmazások és adatok replikálása single-pontok-az-hibákkal szembeni rendelkezésre állási zónák között. A rendelkezésre állási zónákban az Azure iparági ajánlott 99,99 %-os virtuális gép ÜZEMIDŐT biztosít. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
@@ -45,6 +45,7 @@ Az Azure-ban átfogó üzleti folytonossági eléréséhez hozhat létre a rende
 - Közép-Franciaország
 - Észak-Európa
 - Délkelet-Ázsia 
+- Egyesült Királyság déli régiója&#42;
 - Nyugat-Európa
 - USA nyugati régiója, 2.
 
@@ -57,8 +58,8 @@ Az Azure-szolgáltatások, amelyek támogatják a rendelkezésre állási zóná
 - Windows rendszerű virtuális gépek
 - Virtual Machine Scale Sets
 - Felügyelt lemezek
-- Load Balancer
-- Nyilvános IP-cím
+- A standard Load Balancer&#42;
+- Standard nyilvános IP-cím&#42;
 - Zónaredundáns tárolás
 - SQL Database
 - Event Hubs
@@ -66,6 +67,8 @@ Az Azure-szolgáltatások, amelyek támogatják a rendelkezésre állási zóná
 - VPN Gateway
 - ExpressRoute
 - Az Application Gateway (előzetes verzió)
+
+&#42;Egyesült Királyság déli régiója 2019. márciusi 25. előtt létrehozott erőforrásokat hamarosan kell zónaredundáns alakul. 2019. márciusi 25. után létrehozott erőforrások lesznek zónaredundáns azonnal.
 
 ## <a name="services-resiliency"></a>Szolgáltatások rugalmasság
 Minden Azure management szolgáltatás kihasználására tervezett is ellenáll a terület-szint hibák után. Hibák a különböző rendelkezésre állási zónában egy vagy több hiba egy adott régión belül egy teljes régióra hibát képest kisebb hiba radius rendelkezik. Az Azure felügyeleti szolgáltatások a régión belül a zónaszintű meghibásodása vagy egy másik Azure-régióból állíthatja helyre. Az Azure legfontosabb karbantartási egy zóna ugyanabban a régióban, egy adott régión belül a rendelkezésre állási zónában üzembe helyezett ügyfélerőforrásait érintő hibák elkerülése érdekében egyszerre hajtja végre.

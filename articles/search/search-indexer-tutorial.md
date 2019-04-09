@@ -1,23 +1,23 @@
 ---
-title: Az oktatóanyag az Azure SQL-adatbázisok Azure portal – Azure Search az indexeléshez
-description: Ebben az oktatóanyagban az Azure SQL database csatlakoztatásához, kereshető adatok kinyeréséhez és betöltése, az Azure Search-index.
+title: 'Oktatóanyag: Az Azure SQL-adatbázisok származó adatok indexelése egy C# kódpéldákat – Azure Search'
+description: A C# történő csatlakozás az Azure SQL database, kereshető adatok kinyeréséhez és betöltése, az Azure Search-index bemutató mintakód.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4e94f4c1b5de47e36dd9a5be6b9e7f43d264de82
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 401ad90f1ae4ffb4915a0b51aea41430e7045aa9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201398"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270462"
 ---
-# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Oktatóanyag: Feltérképezi az Azure SQL-adatbázisok Azure Search-indexelők használatával
+# <a name="tutorial-in-c-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Az oktatóanyag C#: Feltérképezi az Azure SQL-adatbázisok Azure Search-indexelők használatával
 
 Ismerje meg, hogyan konfigurálhatja az indexelőket kereshető adatok kinyeréséhez egy minta Azure SQL database. Az [indexelők](search-indexer-overview.md) olyan Azure Search-összetevők, amelyek feltérképezik a külső adatforrásokat, és tartalommal töltenek fel egy [keresési indexet](search-what-is-an-index.md). Mind az indexelő az Azure SQL Database a leggyakrabban használt. 
 
@@ -37,35 +37,39 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+Ez a rövid útmutató az alábbi szolgáltatások, eszközök és adatok használatosak. 
+
 [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja.
 
-* Egy [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) a az indexelő által használt külső adatforrást biztosít. A minta megoldás biztosítja a tábla létrehozásához szükséges SQL-adatfájlt.
+[Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/) tárolja a az indexelő által használt külső adatforrást. A minta megoldás biztosítja a tábla létrehozásához szükséges SQL-adatfájlt. A szolgáltatás és az adatbázis létrehozásának lépései ebben az oktatóanyagban vannak megadva.
 
-* + [A Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), bármely kiadás esetén. Mintakód és útmutató az ingyenes közösségi kiadása lettek tesztelve.
+[A Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), bármely kiadás esetén, a minta megoldás futtatásához használható. Mintakód és útmutató az ingyenes közösségi kiadása lettek tesztelve.
+
+[Az Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) a mintául szolgáló megoldás, az Azure-minták GitHub-adattárában található itt. Töltse le és csomagolja ki a megoldást. Alapértelmezés szerint a megoldások olyan csak olvasható. Kattintson a jobb gombbal a megoldás, és törölje a csak olvasható attribútumot, így módosíthatja a fájlokat.
 
 > [!Note]
 > Az ingyenes Azure Search-szolgáltatás használata három indexre, három indexelőre és három adatforrásra korlátozódik. Az oktatóanyagban mindegyikből egyet hozhat majd létre. Ellenőrizze, hogy a szolgáltatás elegendő hellyel rendelkezik-e az új erőforrások fogadásához.
 
-### <a name="download-the-solution"></a>A megoldás letöltése
+## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
 
-A jelen oktatóanyagban használt indexelő az egyetlen letöltéssel elérhető Azure Search-minták gyűjteményéből való. A jelen oktatóanyag esetében használt megoldás: *DotNetHowToIndexers*.
+A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-1. Az Azure-minták GitHub-adattárjában nyissa meg a következőt: [**Azure-Samples/search-dotnet-getting-started**](https://github.com/Azure-Samples/search-dotnet-getting-started).
+1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/), és a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-2. Kattintson a **Klónozás vagy letöltés** > **ZIP letöltése** elemre. Alapértelmezés szerint a fájl a Letöltések mappába kerül.
+1.. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
 
-3. A **Fájlkezelő** > **Letöltések** területen kattintson a jobb gombbal a fájlra, majd válassza a **Összes kibontása** lehetőséget.
+![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
 
-4. Kapcsolja ki a csak olvasási jogosultságokat. Kattintson a jobb gombbal a mappa nevére, kattintson a **Tulajdonságok** > **Általános** elemre, és törölje az aktuális mappához, almappákhoz és fájlokhoz tartozó **Írásvédett** attribútum jelölését.
+Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-5. Nyissa meg a *DotNetHowToIndexers.sln* megoldást a **Visual Studio 2017** alkalmazásban.
-
-6. A **Megoldáskezelőben** kattintson a jobb gombbal a legfelső csomópont szülő megoldására, majd kattintson a **NuGet-csomagok visszaállítása** lehetőségre.
-
-### <a name="set-up-connections"></a>Kapcsolatok beállítása
+## <a name="set-up-connections"></a>Kapcsolatok beállítása
 A szükséges szolgáltatásokhoz tartozó kapcsolódási adatok a megoldás **appsettings.json** fájljában vannak megadva. 
 
-A Megoldáskezelőben nyissa meg az **appsettings.json** fájlt az egyes beállítások feltöltéséhez a jelen oktatóanyagban szereplő utasítások segítségével.  
+1. A Visual Studióban nyissa meg a **DotNetHowToIndexers.sln** fájlt.
+
+1. A Megoldáskezelőben nyissa meg a **appsettings.json** úgy, hogy egyes beállítások feltöltéséhez.  
+
+Az első két bejegyzés kitöltése, az URL-cím és a rendszergazdai kulcsok használata az Azure Search szolgáltatás. A végpont a megadott `https://mydemo.search.windows.net`, a szolgáltatás neve biztosít `mydemo`.
 
 ```json
 {
@@ -75,48 +79,17 @@ A Megoldáskezelőben nyissa meg az **appsettings.json** fájlt az egyes beáll�
 }
 ```
 
-### <a name="get-the-search-service-name-and-admin-api-key"></a>A keresési szolgáltatás nevének és az adminisztrációs API-kulcsok lekérése
-
-A keresési szolgáltatás végpontját és kulcsát a portálon találja. A szolgáltatási műveletekhez való hozzáféréshez kulccsal kell rendelkeznie. A rendszergazdai kulcsok biztosítják az objektumok (például indexek és indexelők) létrehozásához és törléséhez szükséges írási hozzáférést a szolgáltatásban.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és keresse meg az [előfizetéséhez elérhető keresési szolgáltatásokat](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
-
-2. Nyissa meg a szolgáltatás oldalát.
-
-3. A főoldal felső részén láthatja a szolgáltatás nevét. Az alábbi képernyőképen ez az *azs-tutorial*.
-
-   ![Szolgáltatásnév](./media/search-indexer-tutorial/service-name.png)
-
-4. Másolja és illessze be első bejegyzésként az **appsettings.json** fájlba a Visual Studióban.
-
-   > [!Note]
-   > A szolgáltatásnév része a search.windows.net fájlt tartalmazó végpontnak. Ha kíváncsi rá, a teljes URL-címet az Áttekintés oldal **Alapvető szolgáltatások** részében tekintheti meg. Az URL-cím a következő példához hasonlít: https://your-service-name.search.windows.net
-
-5. A bal oldalon másolja az egyik rendszergazdai kulcsot a **Beállítások** > **Kulcsok** területről, majd illessze be azt második bejegyzésként az **appsettings.json** fájlba. A kulcsok olyan alfanumerikus sztringek, amelyeket a rendszer a kiépítés során hoz létre a szolgáltatás számára, és amelyekre a szolgáltatási műveletekhez történő engedélyezett hozzáféréshez van szükség. 
-
-   A két beállítás hozzáadását követően a fájlnak a következő példához hasonlóan kell kinéznie:
-
-   ```json
-   {
-    "SearchServiceName": "azs-tutorial",
-    "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
-    . . .
-   }
-   ```
+Az utolsó bejegyzés szükséges egy meglévő adatbázist. Ez a következő lépésben fog létrehozni.
 
 ## <a name="prepare-sample-data"></a>Mintaadatok létrehozása
 
-Ebben a lépésben egy olyan külső adatforrást fog létrehozni, amelyet az indexelő fel tud térképezni. Az oktatóanyaghoz tartozó adatfájl a *hotels.sql*, amely a \DotNetHowToIndexers mappában található. 
-
-### <a name="azure-sql-database"></a>Azure SQL Database
-
-Az Azure Portal és a mintában megtalálható *hotels.sql* fájl segítségével hozhatja létre az adatkészletet az Azure SQL Database-ben. Az Azure Search egybesimított (például nézetből vagy lekérdezésből előállított) sorhalmazokat használ. A minta megoldásban található SQL-fájl egyetlen táblát hoz létre és tölt fel.
+Ebben a lépésben egy olyan külső adatforrást fog létrehozni, amelyet az indexelő fel tud térképezni. Az Azure Portal és a mintában megtalálható *hotels.sql* fájl segítségével hozhatja létre az adatkészletet az Azure SQL Database-ben. Az Azure Search egybesimított (például nézetből vagy lekérdezésből előállított) sorhalmazokat használ. A minta megoldásban található SQL-fájl egyetlen táblát hoz létre és tölt fel.
 
 Az alábbi gyakorlat azzal a feltételezéssel él, hogy Ön nem rendelkezik sem meglévő kiszolgálóval, sem adatbázissal. Mindkettőt a 2. lépésben kell létrehozni. Ha esetleg már rendelkezik meglévő erőforrással, a 4. lépéstől kezdődően hozzáadhatja a „hotels” táblát.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
 
-2. Adatbázis, kiszolgáló és erőforráscsoport létrehozásához kattintson az **Erőforrás létrehozása** > **SQL Database** lehetőségre. Használhatja az alapértelmezett beállításokat és a legalacsonyabb szintű tarifacsomagot. A kiszolgáló létrehozásának egyik előnye, hogy megadhat egy rendszergazdai felhasználónevet és jelszót, amelyekre egy későbbi lépésben lesz szüksége a táblák létrehozásához és betöltéséhez.
+2. Keresse meg, vagy hozzon létre egy **Azure SQL Database** , egy adatbázis, kiszolgáló és erőforráscsoport létrehozásához. Használhatja az alapértelmezett beállításokat és a legalacsonyabb szintű tarifacsomagot. A kiszolgáló létrehozásának egyik előnye, hogy megadhat egy rendszergazdai felhasználónevet és jelszót, amelyekre egy későbbi lépésben lesz szüksége a táblák létrehozásához és betöltéséhez.
 
    ![Új adatbázis oldal](./media/search-indexer-tutorial/indexer-new-sqldb.png)
 
@@ -143,7 +116,7 @@ Az alábbi gyakorlat azzal a feltételezéssel él, hogy Ön nem rendelkezik sem
     ```sql
     SELECT HotelId, HotelName, Tags FROM Hotels
     ```
-    A prototípusos lekérdezés (`SELECT * FROM Hotels`) nem működik a Lekérdezésszerkesztőben. A mintaadatok olyan földrajzi koordinátákat is tartalmaznak a Hely mezőben, amelyeket a szerkesztő jelenleg nem kezel. A további lekérdezhető oszlopok listájának megtekintéséhez futtassa a következő utasítást: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
+    A prototípusos lekérdezés (`SELECT * FROM Hotels`) nem működik a Lekérdezésszerkesztőben. A mintaadatok olyan földrajzi koordinátákat is tartalmaznak a Hely mezőben, amelyeket a szerkesztő jelenleg nem kezel. Más oszlopok listáját a jelen nyilatkozat hajthat végre: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
 
 10. Most, hogy már rendelkezik külső adatkészlettel, másolja ki az adatbázishoz tartozó ADO.NET kapcsolati sztringet. Az adatbázis SQL Database oldalának **Beállítások** > **Kapcsolati sztringek** területéről másolja az ADO.NET kapcsolati sztringet.
  
@@ -156,13 +129,13 @@ Az alábbi gyakorlat azzal a feltételezéssel él, hogy Ön nem rendelkezik sem
 
     ```json
     {
-      "SearchServiceName": "azs-tutorial",
-      "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
+      "SearchServiceName": "<placeholder-Azure-Search-service-name>",
+      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
       "AzureSqlConnectionString": "Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security  Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
     }
     ```
 
-## <a name="understand-index-and-indexer-code"></a>Az index és az indexelő kódjának értelmezése
+## <a name="understand-the-code"></a>A kód értelmezése
 
 A kód most már készen áll az előállításra és a futtatásra. De előbb még szánjunk egy percet a jelen mintában szereplő index és indexelő meghatározásainak tanulmányozására. A megfelelő kód a következő két fájlban található meg:
 
@@ -279,4 +252,4 @@ Az oktatóanyagok után feleslegessé vált elemek az Azure Search szolgáltatá
 Mesterséges intelligencia által vezérelt algoritmusokat csatolhat egy indexelőfolyamathoz. Következő lépésként folytassa az alábbi oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Dokumentumok indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md)
+> [Dokumentumok indexelése az Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: ea7f2e730b4963016d221705ba8c9356efffa858
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 9d5e25e0fd00f9c0635009f684e79336d58b7b4a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905273"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263759"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>A .NET Core ILogger naplókhoz ApplicationInsightsLoggerProvider
 
@@ -208,10 +208,10 @@ Amíg a régi szolgáltató továbbra is használható (azt most már elavult, �
 1. Előző szolgáltatót nem tartalmazott támogatási [hatókörök](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes). Az új szolgáltató tulajdonságai hatókörből automatikusan hozzáadódnak egyéni tulajdonságok formájában gyűjtött telemetriai adatokat.
 2. Naplók mostantól a az alkalmazás indítási folyamat jóval korábbi rögzíthetők. i.e Program és az indítási osztály naplóinak most rögzíthetők.
 3. Az új szolgáltató a kerül sor a keretrendszer szintjén magát. Naplók szűrése az Application Insights-szolgáltató végezhető, pontosan ugyanúgy, mint más szolgáltatók, beleértve a beépített szolgáltatók, például a konzolon, a Debug stb. Akkor is több szolgáltató azonos szűrőket alkalmaz.
-4. A [ajánlott](https://github.com/aspnet/Announcements/issues/255) naplózási szolgáltatók engedélyezése az Asp.Net Core (2.0-s és újabb verziók esetében) úgy, hogy a ILoggingBuilder bővítmény módszerekkel `Program.cs` magát.
+4. A [ajánlott](https://github.com/aspnet/Announcements/issues/255) naplózási szolgáltatók engedélyezése az ASP.NET Core (2.0-s és újabb verziók esetében) úgy, hogy a ILoggingBuilder bővítmény módszerekkel `Program.cs` magát.
 
 > [!Note]
-Az új szolgáltató érhető el az alkalmazások `NETSTANDARD2.0` vagy újabb verziója. Ha az alkalmazás például a .NET Core 1.1 régebbi .NET Core-verzió van-e állítva, vagy ha a .NET-keretrendszer célzó, továbbra is a régi szolgáltatóval.
+> Az új szolgáltató érhető el az alkalmazások `NETSTANDARD2.0` vagy újabb verziója. Ha az alkalmazás például a .NET Core 1.1 régebbi .NET Core-verzió van-e állítva, vagy ha a .NET-keretrendszerre, továbbra is a régi szolgáltatóval.
 
 ## <a name="console-application"></a>Konzolalkalmazás
 
