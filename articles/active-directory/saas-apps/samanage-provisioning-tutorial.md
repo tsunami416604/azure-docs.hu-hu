@@ -6,21 +6,22 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 62d0392f-37d4-436e-9aff-22f4e5b83623
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2018
+ms.date: 03/28/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b51f8d9329bc86320501183d7dba7735fb369fa5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: ca43b62e66e3a736aa52fdd10fe36e635daba245
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092378"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058016"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Samanage konfigurálása
 
@@ -33,39 +34,34 @@ Ez az oktatóanyag célja a lépéseket kell végrehajtania a Samanage és Azure
 
 Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik az alábbiakkal:
 
-*   Az Azure AD-bérlő
-*   A [Samanage bérlői](https://www.samanage.com/pricing/) a professzionális csomag
-*   Samanage rendszergazdai engedélyekkel rendelkező felhasználói fiók
+* Az Azure AD-bérlő
+* A [Samanage bérlői](https://www.samanage.com/pricing/) a professzionális csomag
+* Samanage rendszergazdai engedélyekkel rendelkező felhasználói fiók
 
 > [!NOTE]
 > Az Azure AD létesítési integrációs támaszkodik a [Samanage Rest API-val](https://www.samanage.com/api/), a fiókok esetén a Professional csomag a Samanage fejlesztők számára elérhető.
 
 ## <a name="adding-samanage-from-the-gallery"></a>Samanage hozzáadása a katalógusból
+
 Az Azure AD-felhasználók automatikus Samanage konfigurálja, mielőtt szüksége az Azure AD alkalmazáskatalógusában Samanage hozzáadása a felügyelt SaaS-alkalmazások listája.
 
 **Az Azure AD alkalmazáskatalógusában Samanage hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen, kattintson a a **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** > **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások szakasz][2]
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Samanage hozzáadásához kattintson a **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Az új alkalmazás gomb][3]
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Samanage**.
+4. A Keresés mezőbe írja be a **Samanage**válassza **Samanage** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Samanage kiépítése](./media/samanage-provisioning-tutorial/AppSearch.png)
-
-5. Az eredmények panelen válassza ki a **Samanage**, majd kattintson a **hozzáadása** gombra kattintva adhat hozzá Samanage a SaaS-alkalmazások listájára.
-
-    ![Samanage kiépítése](./media/samanage-provisioning-tutorial/AppSearchResults.png)
-
-    ![Samanage kiépítése](./media/samanage-provisioning-tutorial/AppCreation.png)
+    ![Az eredmények listájában Samanage](common/search-new-app.png)
 
 ## <a name="assigning-users-to-samanage"></a>Felhasználók hozzárendelése Samanage
 
@@ -92,11 +88,13 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 ### <a name="to-configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása Samanage az Azure AD-ben:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és keresse meg a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás**.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és válassza ki **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Samanage**.
 
-2. Válassza ki a Samanage SaaS-alkalmazások listájából.
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Samanage kiépítése](./media/samanage-provisioning-tutorial/AppInstanceSearch.png)
+2. Az alkalmazások listájában jelölje ki a **Samanage**.
+
+    ![Az alkalmazások listáját a Samanage hivatkozásra](common/all-applications.png)
 
 3. Válassza ki a **kiépítési** fülre.
 
@@ -164,7 +162,7 @@ Az Azure AD létesítési naplók olvasása további információkért lásd: [-
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 
 ## <a name="next-steps"></a>További lépések
