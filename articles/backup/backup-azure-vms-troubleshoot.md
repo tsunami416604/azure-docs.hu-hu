@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: srinathv
-ms.openlocfilehash: e5e84c22285d1cdec9678c8bf33dab1568d333cd
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: b8d1152856935c239a59eb9133aaf48d26a5a8b6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621583"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259949"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása
 Észlelt, miközben az adatokat az Azure Backup segítségével a következő táblázatban felsorolt hibák elhárítását:
@@ -27,13 +27,13 @@ ms.locfileid: "58621583"
 | Biztonsági mentés nem tudja végrehajtani a műveletet a Virtuálisgép-ügynök nem válaszol. |Ez a hiba akkor fordul elő, ha probléma adódott a Virtuálisgép-ügynök vagy az Azure-infrastruktúra való hálózati hozzáférés valamilyen módon le van tiltva. Windows virtuális gépek szolgáltatások, valamint hogy az ügynök jelenik meg, a Vezérlőpult Programok telepítése és törlése a Virtuálisgép-ügynök szolgáltatás állapota megtekinthető. <br><br>Próbálja ki a Vezérlőpult program eltávolítása és újratelepítése az ügynök leírtak szerint [Virtuálisgép-ügynök](#vm-agent). Miután, telepítse újra az ügynököt, indítson egy ad-hoc biztonsági mentést ellenőrzi, hogy. |
 | A recovery services-bővítmény művelet sikertelen volt: <br>Győződjön meg arról, a legújabb Virtuálisgép-ügynök-e a virtuális gép, és a Virtuálisgép-ügynök szolgáltatás fut-e. Próbálkozzon újra a biztonsági mentési művelettel. Ha a biztonsági mentési művelet nem sikerül, forduljon a Microsoft Support. |Ez a hiba történik, ha a Virtuálisgép-ügynök nem naprakész. Tekintse meg a Virtuálisgép-ügynök frissítéséhez elhárítása Azure virtuális gépek biztonsági mentése. |
 | A virtuális gép nem létezik: <br>Győződjön meg arról, hogy a virtuális gép valóban létezik, vagy válasszon másik virtuális gépet. |Ez a hiba akkor fordul elő, amikor az elsődleges virtuális gép törlődik, de a biztonsági mentési szabályzat továbbra is figyeli a virtuális gép biztonsági mentése. Ez a hiba elhárításához tegye a következőket: <ol><li> Hozza létre újból az azonos nevű és azonos erőforráscsoport neve, a virtuális gép **felhőszolgáltatás neve**,<br>**vagy**<br></li><li>Állítsa le a virtuális gép védelmét a biztonsági mentési adatok törlése nélkül. További információkért lásd: [állítsa le a virtuális gépek védelme](https://go.microsoft.com/fwlink/?LinkId=808124).</li></ol> |
-| A parancs futtatása nem sikerült: <br>Egy másik művelet van folyamatban ezen az elemen. Várjon, amíg az előző művelet befejeződik. Próbálkozzon újra a művelettel. |Egy meglévő biztonsági mentési feladat fut, és a egy új feladat nem indítható el, a jelenlegi feladat befejezéséig. |
+| A parancs végrehajtása nem sikerült: <br>Egy másik művelet van folyamatban ezen az elemen. Várjon, amíg az előző művelet befejeződik. Próbálkozzon újra a művelettel. |Egy meglévő biztonsági mentési feladat fut, és a egy új feladat nem indítható el, a jelenlegi feladat befejezéséig. |
 | Lejárt az idő a Recovery Services-tároló másolása VHD-fájlokat: <br>Ismételje meg a műveletet néhány perc múlva. Ha a probléma nem szűnik meg, forduljon a Microsoft ügyfélszolgálatához. | Ez a hiba akkor fordul elő, ha átmeneti hiba van a tároló oldalán, vagy ha a Backup szolgáltatás nem kap megfelelő tárfiók IOPS való adatátvitel a tárolóhoz, a határidőn belül. Kövesse a [ajánlott eljárásokat, a virtuális gépek konfigurálásakor](backup-azure-vms-introduction.md#best-practices). A virtuális gép áthelyezése egy másik tárfiókot, amely nincs betöltve, és próbálkozzon újra a biztonsági mentési feladat.|
-| Biztonsági mentés belső hiba miatt meghiúsult: <br>Ismételje meg a műveletet néhány perc múlva. Ha a probléma nem szűnik meg, forduljon a Microsoft ügyfélszolgálatához. |Két oka megjelenik a hibaüzenet: <ul><li> A Virtuálisgép-tárolók elérése során egy átmeneti probléma van. Ellenőrizze a [állapotjelző Azure-webhely](https://azure.microsoft.com/status/) megtekintéséhez, hogy vannak-e számítási, tárolási és hálózatkezelési problémákat a régióban. Miután a probléma nem oldódik meg, próbálkozzon újra a biztonsági mentési feladat. <li> Az eredeti virtuális gép törölve lett, és a helyreállítási pont nem végezhető. Egy törölt virtuális gép biztonsági mentési adatok megtartása, de a biztonsági mentési hibák eltávolítása a virtuális gép védelmének, és válassza ki a lehetőséget az adatok megőrzéséhez. Ez a művelet leállítja az ütemezett biztonsági mentési feladat, és az ismétlődő hibaüzenetek. |
-| Az Azure Recovery Services-bővítmény telepítéséhez a kijelölt elem biztonsági mentés nem sikerült: <br>A Virtuálisgép-ügynök az Azure Recovery Services-bővítmény előfeltétele. Az Azure virtuálisgép-ügynök telepítése, és indítsa újra a regisztrációs művelet. |<ol> <li>Ellenőrizze, hogy ha a Virtuálisgép-ügynök megfelelően van-e telepítve. <li>Győződjön meg arról, hogy megfelelően van-e beállítva a virtuális gép konfigurációs jelölőjét.</ol> További információ a Virtuálisgép-ügynök és a Virtuálisgép-ügynök telepítésének ellenőrzése. |
+| Biztonsági másolatot készíteni, egy belső hiba miatt sikertelen volt: <br>Ismételje meg a műveletet néhány perc múlva. Ha a probléma nem szűnik meg, forduljon a Microsoft ügyfélszolgálatához. |Két oka megjelenik a hibaüzenet: <ul><li> A Virtuálisgép-tárolók elérése során egy átmeneti probléma van. Ellenőrizze a [állapotjelző Azure-webhely](https://azure.microsoft.com/status/) megtekintéséhez, hogy vannak-e számítási, tárolási és hálózatkezelési problémákat a régióban. Miután a probléma nem oldódik meg, próbálkozzon újra a biztonsági mentési feladat. <li> Az eredeti virtuális gép törölve lett, és a helyreállítási pont nem végezhető. Egy törölt virtuális gép biztonsági mentési adatok megtartása, de a biztonsági mentési hibák eltávolítása a virtuális gép védelmének, és válassza ki a lehetőséget az adatok megőrzéséhez. Ez a művelet leállítja az ütemezett biztonsági mentési feladat, és az ismétlődő hibaüzenetek. |
+| Biztonsági mentése nem tudta telepíteni az Azure Recovery Services-bővítményt a kijelölt elem: <br>A Virtuálisgép-ügynök az Azure Recovery Services-bővítmény előfeltétele. Az Azure virtuálisgép-ügynök telepítése, és indítsa újra a regisztrációs művelet. |<ol> <li>Ellenőrizze, hogy ha a Virtuálisgép-ügynök megfelelően van-e telepítve. <li>Győződjön meg arról, hogy megfelelően van-e beállítva a virtuális gép konfigurációs jelölőjét.</ol> További információ a Virtuálisgép-ügynök és a Virtuálisgép-ügynök telepítésének ellenőrzése. |
 | A bővítmény telepítése sikertelen volt a hibával **COM + nem tudta felvenni a kapcsolatot, a Microsoft Distributed Transaction Coordinator**. |Ez a hiba általában azt jelenti, hogy a COM + szolgáltatás nem fut-e. Forduljon a Microsoft Support segítséget a probléma javítása. |
 | A pillanatkép-készítési művelet sikertelen volt a kötet árnyékmásolata szolgáltatás (VSS) művelet hibája: **a meghajtó BitLocker meghajtótitkosítással zárolva van. Meg kell oldja fel a zárolást a Vezérlőpulton.** |Kapcsolja ki a BitLocker az összes meghajtón a virtuális gépen, és ellenőrizze, hogy megoldódott-e a VSS-hiba. |
-| A virtuális gép olyan állapotban, amely lehetővé teszi, hogy a biztonsági másolatok nem. |<ul><li>Ha a virtuális gép átmeneti állapotban közötti **futó** és **Leállítás**, várjon, amíg az állapot módosítása. Ezután aktiválja a biztonsági mentési feladatot. <li> Ha a virtuális gép Linux rendszerű virtuális gép, és az Security-Enhanced Linux-kernel modult használja, zárja ki az Azure Linux-ügynök elérési út **/var/lib/waagent** a biztonsági házirendet, és ellenőrizze, hogy a Backup bővítmény telepítve van.  |
+| A virtuális gép olyan állapotban, amely lehetővé teszi, hogy a biztonsági másolatok nem. |<ul><li>Ha a virtuális gép átmeneti állapotban közötti **futó** és **Leállítás**, várjon, amíg az állapot módosítása. Ezután aktiválja a biztonsági mentési feladatot. <li> Ha a virtuális gép Linux rendszerű virtuális gép, és az Security-Enhanced Linux-kernel modult használja, zárja ki az Azure Linux-ügynök elérési út **/var/lib/waagent** a biztonsági házirendet, és ellenőrizze, hogy az Azure Backup bővítmény telepítve van.  |
 | Az Azure virtuális gép nem található. |Ez a hiba akkor fordul elő, amikor az elsődleges virtuális gép törlődik, de a biztonsági mentési szabályzat továbbra is figyeli a nem a törölt virtuális gép. Javítsa ki a hibát a következőképpen: <ol><li>Hozza létre újból az azonos nevű és azonos erőforráscsoport neve, a virtuális gép **felhőszolgáltatás neve**, <br>**vagy** <li> Tiltsa le a virtuális gép védelmét, így a biztonsági mentési feladatok nem jön létre. </ol> |
 | A Virtuálisgép-ügynök nem található a virtuális gépen: <br>Bármely előfeltétel és a Virtuálisgép-ügynök telepítése. Ezután indítsa újra a műveletet. |Tudjon meg többet [Virtuálisgép-ügynök telepítésének és a Virtuálisgép-ügynök telepítésének ellenőrzése](#vm-agent). |
 | A pillanatkép-készítési művelet nem sikerült, mert a VSS-írók rossz állapotban volt. |Indítsa újra a VSS-írók rossz állapotban lévő. Egy rendszergazda jogú parancssorból futtassa ```vssadmin list writers```. A kimenet tartalmazza az összes VSS-író és az állapotuk. A minden VSS-író nem állapotú **[1] Stable**, hogy indítsa újra a VSS-író, futtassa a következő parancsokat egy rendszergazda jogú parancssorból: <ol><li>```net stop serviceName``` <li> ```net start serviceName```</ol>|
@@ -124,8 +124,30 @@ Virtuális gép biztonsági mentése a pillanatkép-parancsok kiadása az alapul
 - **Ha több mint négy virtuális gépek megosztás ugyanazon a felhőszolgáltatáson, elosztva a virtuális gépek több biztonsági mentési szabályzatok**. A biztonsági mentési szinkronizálások idejének eltolása, így nincs négynél több virtuális gép biztonsági mentései kezdenek egyszerre. Próbálja meg külön a kezdési idejének legalább egy órával azokban a házirendekben.
 - **A virtuális gép fut, a magas CPU és memória**. Ha a virtuális gép fut magas memória és CPU-használat, több mint 90 %-os, a pillanatkép-feladat várólistára és késleltetett. Végül azt az időkorlátot. Ha a probléma történik, próbálja meg egy igény szerinti biztonsági mentést.
 
+## <a name="troubleshoot-backup-of-encrypted-vms"></a>Titkosított virtuális gépek biztonsági mentésének hibaelhárítása
+
+### <a name="azure-backup-doesnt-have-permissions-for-key-vault-access"></a>Az Azure Backup nincs engedélye a Key Vault-hozzáférés
+- **Hibakód:**: UserErrorKeyVaultPermissionsNotConfigured
+- **Chybová zpráva**: Az Azure Backup szolgáltatás nem rendelkezik megfelelő engedélyekkel a Key Vault a biztonsági mentés a titkosított virtuális gépek.
+- **Megoldás**: A Key vault az Azure Backup engedélyek hozzárendelése a [portál](backup-azure-vms-encryption.md#provide-permissions), vagy [PowerShell](backup-azure-vms-automation.md#enable-protection)
+
+### <a name="the-vm-cant-be-restored-because-the-associated-key-vault-doesnt-exist"></a>A virtuális gép nem állítható vissza, mert a társított kulcstartó nem létezik.
+- **Megoldás**: Győződjön meg arról, hogy [létrehozott egy Key Vaultot](../key-vault/quick-create-portal.md#create-a-vault).
+- **Megoldás**: Hajtsa végre a [ezek az utasítások](backup-azure-restore-key-secret.md) visszaállítása egy kulcsot és titkos kulcsot, akkor is, ha azok még nem léteznek a Key Vaultban.
+
+### <a name="the-vm-cant-be-restored-because-the-associated-key-doesnt-exist"></a>A virtuális gép nem állítható vissza, mert a hozzá tartozó kulcs nem létezik.
+- **Hibakód:**: UserErrorKeyVaultKeyDoesNotExist
+- **Chybová zpráva**: A titkosított virtuális gép nem állítható vissza, mert a virtuális Géphez társított kulcs nem létezik.
+- **Megoldás**: Hajtsa végre a [ezek az utasítások](backup-azure-restore-key-secret.md) visszaállítása egy kulcsot és titkos kulcsot, akkor is, ha azok még nem léteznek a Key Vaultban.
+
+### <a name="the-vm-cant-be-restored-because-azure-backup-doesnt-have-authorization"></a>A virtuális gép nem állítható vissza, mert az Azure Backup nem jogosult
+- **Hibakód:**: ProviderAuthorizationFailed/UserErrorProviderAuthorizationFailed
+- **Chybová zpráva**: A Backup szolgáltatás nem jogosult az Ön előfizetésében biztosított erőforrások elérésére.
+- **Megoldás**: Lemezek visszaállítása javasolt módon. [További információk](backup-azure-vms-encryption.md#restore-an-encrypted-vm). 
+
+
 ## <a name="networking"></a>Hálózat
-Például az összes bővítmény Backup bővítmény működjön a nyilvános interneten hozzá kell férniük. Nem férhető hozzá a nyilvános interneten is manifest maga különböző módokon:
+Az összes bővítmény, mint például az Azure Backup bővítmény működjön a nyilvános interneten hozzá kell férnie. Nem férhető hozzá a nyilvános interneten is manifest maga különböző módokon:
 
 * A bővítmény telepítése sikertelen lehet.
 * Biztonsági mentési műveleteket, például a lemez-pillanatképből sikertelen lehet.

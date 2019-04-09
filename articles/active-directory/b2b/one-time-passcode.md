@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 1/25/2019
+ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5234674bc41e1f5bfa260dfc32042a3345d9f7
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 3b817346c37ec43fd66d166684f5d51ecb5a9718
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294825"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257331"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mailben kapott egyszeri jelszót hitelesítés (előzetes verzió)
 
@@ -26,7 +26,7 @@ ms.locfileid: "58294825"
 | E-mailben kapott egyszeri jelszót az Azure Active Directory nyilvános előzetes verziójú funkció. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Az e-mailben kapott egyszeri jelszót funkció nem hitelesíthetők, más módon, például az Azure ad-ben, egy Microsoft-fiókkal (MSA) vagy a Google összevonási B2B vendégfelhasználók hitelesíti. Egyszeri jelszó hitelesítéssel hiba esetén nem kell egy Microsoft-fiók létrehozásához. Ha a vendégfelhasználó meghívó visszaváltja, vagy egy megosztott erőforráshoz fér hozzá, igényelhetik egy ideiglenes kódra, amely az e-mail címre. Ezután ezek meg ezt a kódot, a folytatáshoz jelentkezzen be.
+Ez a cikk bemutatja, hogyan B2B vendégfelhasználó e-mailben kapott egyszeri jelszót hitelesítés engedélyezése. Az e-mailben kapott egyszeri jelszót funkció nem hitelesíthetők, más módon, például az Azure ad-ben, egy Microsoft-fiókkal (MSA) vagy a Google összevonási B2B vendégfelhasználók hitelesíti. Egyszeri jelszó hitelesítéssel hiba esetén nem kell egy Microsoft-fiók létrehozásához. Ha a vendégfelhasználó meghívó visszaváltja, vagy egy megosztott erőforráshoz fér hozzá, igényelhetik egy ideiglenes kódra, amely az e-mail címre. Ezután ezek meg ezt a kódot, a folytatáshoz jelentkezzen be.
 
 Ez a funkció jelenleg elérhető előzetes verzióban (lásd: [az előzetes verzióra való engedélyezés](#opting-in-to-the-preview) alább). A minta után ez a funkció, lesz kapcsolva alapértelmezés szerint az összes bérlőre vonatkozóan.
 

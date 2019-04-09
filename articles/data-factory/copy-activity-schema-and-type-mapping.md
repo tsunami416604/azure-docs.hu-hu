@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 99798b35419ec9574c99aaba42803fbeeb1555f1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358711"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267123"
 ---
-# <a name="schema-mapping-in-copy-activity"></a>A másolási tevékenység séma hozzárendelése
+# <a name="schema-mapping-in-copy-activity"></a>Séma-hozzárendelés másolási tevékenységben
 Ez a cikk bemutatja, hogyan történik az Azure Data Factory másolási tevékenység a séma-hozzárendelés és a forrásadatok a fogadó-adatok adattípus-leképezés végrehajtása közben az adatok másolását.
 
 ## <a name="column-mapping"></a>Oszlopleképezés
@@ -147,7 +147,7 @@ Séma-hozzárendelés érvényes, ha a hierarchikus alakú és táblázatos alak
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység translator type tulajdonsága értékre kell állítani: **TabularTranslator** | Igen |
-| schemaMapping | Kulcs-érték párok, egy gyűjteményt, amely a leképezési kapcsolat táblázatos oldaláról hierarchikus részére jelöli.<br/>- **Kulcs:** táblázatos adatok, az oszlop neve meg van adva adatkészlet-szerkezetekben.<br/>- **Érték:** egyes mezők kinyerése és képezze le a JSON-útvonalának kifejezését. A gyökérobjektum alatti mezők esetében kezdjen a gyökér $ értékkel. A `collectionReference` tulajdonság által kiválasztott tömbben lévő mezők esetében kezdjen a tömbelemmel.  | Igen |
+| schemaMapping | Kulcs-érték párok, egy gyűjteményt, amely jelöli az leképezési kapcsolat **a fogadó oldali forrás oldaláról**.<br/>- **Kulcs:** forrás jelöli. A **táblázatos adatforrás**, adja meg az oszlop neve; adatkészletszerkezet a meghatározott **hierarchikus forrás**, adja meg az egyes mezők kinyerése és képezze le a JSON-útvonalának kifejezését.<br/>- **Érték:** fogadó jelöli. A **táblázatos fogadó**, adja meg az oszlop neve; adatkészletszerkezet a meghatározott **hierarchikus fogadó**, adja meg az egyes mezők kinyerése és képezze le a JSON-útvonalának kifejezését. <br/> Hierarchikus adatokkal dolgozik, a, a gyökérobjektum alatti mezők esetén JSON-útvonal elindítja a gyökér $; által kiválasztott tömbben lévő mezők esetében `collectionReference` tulajdonság, a tömbelem indul JSON-útvonalhoz.  | Igen |
 | collectionReference | Ha szeretné-e ismételt futtatásával és az adatok kinyerése az objektumok **egy tömbmezőben található** ugyanazt a mintát és convert objektumonkénti soronként cross-alkalmazásához a tömb JSON elérési útjának megadásához. Ez a tulajdonság csak a forrás hierarchikus adatok esetén támogatott. | Nem |
 
 **Példa: SQL MongoDB-ből másolja:**
@@ -228,18 +228,18 @@ Nativní typ "Adattípus leképezés" szakaszában található minden egyes öss
 
 A Data Factory a következő, köztes adattípusokat támogatja: Írja be az adatokat konfigurálásakor ad meg alábbi értékek [adatkészlet-szerkezetekben](concepts-datasets-linked-services.md#dataset-structure) konfiguráció:
 
-* Byte]
+* Byte[]
 * Logikai
 * Dátum és idő
 * Datetimeoffset
-* Tizedes tört
-* Dupla
-* GUID
+* Decimal
+* Double
+* Guid
 * Int16
 * Int32
 * Int64
-* Önálló
-* Karakterlánc
+* Single
+* String
 * Időtartomány
 
 ### <a name="explicit-data-type-conversion"></a>Explicit adattípus-konverzió
@@ -255,8 +255,8 @@ Az alábbi forgatókönyvek esetén "struktúra" adatkészletben levő szükség
 
 * Alkalmazása [explicit adattípus-konverzió](#explicit-data-type-conversion) fájl források során másolása (a bemeneti adatkészlet)
 * Alkalmazása [explicit oszlopleképezés](#explicit-column-mapping) során másolási (mindkettő bemeneti és kimeneti adatkészlet)
-* Másolás Dynamics 365 és CRM forrás (a bemeneti adatkészlet)
-* Ha az adatforrás nem JSON-fájlok (kimeneti adatkészlet) beágyazott objektumként Cosmos DB-hez másolása
+* Másolás Dynamics 365-/CRM-forrásból (bemeneti adathalmaz).
+* Másolás Cosmos DB-be beágyazott objektumként, ha a forrás nem JSON-fájl (kimeneti adathalmaz).
 
 Az alábbi forgatókönyvek esetén "struktúra" adatkészletben levő ajánlott:
 

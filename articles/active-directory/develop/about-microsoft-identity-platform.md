@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3fcbda160d84e41fd2244a4d58766ae3991e52
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c7b3eee08c036862e6ce9f0c590a596f7b1d3fb0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197657"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258691"
 ---
 # <a name="about-microsoft-identity-platform"></a>A Microsoft identitásplatformja
 
@@ -38,7 +38,7 @@ A legújabb ADAL-t és a legújabb MSAL-t használó alkalmazások egyszeri beje
 
 Az alábbi ábra a Microsoft-identitásplatform környezetének áttekintését ábrázolja, beleértve az alkalmazásregisztrációs környezetet, az SDK-kat, a végpontokat és a támogatott identitásokat.
 
-![A Microsoft-identitásplatform ma](./media/about-microsoft-identity-platform/microsoft-identity-platform-preview.png)
+![A Microsoft-identitásplatform ma](./media/about-microsoft-identity-platform/about-microsoft-identity-platform.svg)
 
 A Microsoft identitásplatform két végponttal (1.0-s és 2.0-s verzió), és a végpontokat kezelő két kódtárral rendelkezik. Új alkalmazás fejlesztésekor vegye figyelembe a végpontok és a hitelesítési kódtárak előnyeit és aktuális állapotát. Az alábbi szempontokat is vegye figyelembe:
 
@@ -62,5 +62,5 @@ A Microsoft identitásplatform két végponttal (1.0-s és 2.0-s verzió), és a
 
 Tudjon meg többet az 1.0-s és 2.0-s verzióról.
 
-* [Az 1.0-s verzió bemutatása](v1-overview.md)
+* [Információk az 1.0-s verzió](v1-overview.md)
 * [A 2.0-s verzió bemutatása](v2-overview.md)

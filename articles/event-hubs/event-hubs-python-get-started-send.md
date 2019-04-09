@@ -1,6 +1,6 @@
 ---
 title: Pythonnal – Azure Event Hubs események küldése |} A Microsoft Docs
-description: Ez a cikk egy forgatókönyv Node.js-alkalmazás, amely az Azure Event Hubs küldi az eseményeket létrehozásához.
+description: Ez a cikk a forgatókönyv egy Python-alkalmazás, amely az Azure Event Hubs küldi az eseményeket létrehozásához.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 11/16/2018
 ms.author: shvija
-ms.openlocfilehash: b7adf3976f5f7e028ffa9ffeb13db22d3d4bba8e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2168fc89134615ffb4e0e718cc0cc27b8c1a7839
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102979"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262771"
 ---
 # <a name="send-events-to-event-hubs-using-python"></a>Események küldése az Event Hubs Python használatával
 
@@ -36,7 +36,7 @@ Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szükség
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
 Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md).
 
-Az eseményközpont hozzáférési kulcs értékének lekérése kövesse a cikkben szereplő: [kapcsolati sztring lekérése](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A hozzáférési kulcsot a kód írása az oktatóanyag későbbi részében fogja használni. Az alapértelmezett kulcs neve: **RootManageSharedAccessKey**.
+Az eseményközpont hozzáférési kulcs értékének lekéréséhez kövesse a cikkben szereplő: [Kapcsolati sztring lekérése](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A hozzáférési kulcsot a kód írása az oktatóanyag későbbi részében fogja használni. Az alapértelmezett nevet, majd: **RootManageSharedAccessKey**.
 
 Most folytassa a következő lépéseket ebben az oktatóanyagban.
 

@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/22/2018
+ms.date: 04/05/2019
 ms.author: bwren
-ms.openlocfilehash: 6e84344e1c0229d15891bd15a512880da6e20cfe
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110762"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259031"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Az Azure Monitor log-adatok megtekintésére és elemzésére
 Log Analytics a Teljesítménynapló-adatok kezelése és a lekérdezések létrehozása az Azure monitorban elsődleges élményét. Nyissa meg a Log Analytics **naplók** a a **Azure Monitor** menü. Ismerkedjen meg ezen a portálon, és vizsgálja meg a szolgáltatásokat [Log Analytics első lépései az Azure Portalon](get-started-portal.md).
@@ -39,7 +39,7 @@ A log Analytics naplóbeli lekérdezések való munkához a következő szolgál
 
 ![Log Analytics](media/portals/log-analytics.png)
 
-### <a name="resource-logs"></a>Erőforrás-naplók
+## <a name="resource-logs"></a>Erőforrás-naplók
 A log Analytics különféle Azure-erőforrások például a virtuális gépek integrálható. Ez azt jelenti, hogy meg tudja nyitni a Log Analytics közvetlenül az erőforrás figyelési menü átváltás az Azure Monitor és az erőforrás-környezet elvesztése nélkül. **Naplók** még nincs engedélyezve az összes Azure-erőforrások, de elindul, a különböző erőforrások menü a portálon megjelenő típusok esetében.
 
 A Log Analytics egy adott erőforráshoz megnyitásakor automatikusan hatóköre csak erőforrás rekordok naplózására.   Ha szeretné, hogy más rekordokat tartalmaz, majd kell az Azure figyelő menü megnyitásához.
@@ -52,7 +52,7 @@ A következő beállítások még nem érhető el a Log Analytics-erőforrás n�
 - Váltás másik munkaterületet és az erőforrások (jelenleg nem tervezett)
 
 
-### <a name="firewall-requirements"></a>Tűzfalra vonatkozó követelmények
+## <a name="firewall-requirements"></a>Tűzfalra vonatkozó követelmények
 A böngészőben a következő címek eléréséhez a Log Analytics hozzáférésre van szüksége.  Ha a böngésző tűzfalon keresztül fér hozzá az Azure Portalon, engedélyeznie kell ezeket a címeket a hozzáférést.
 
 | URI | IP | Portok |
@@ -60,14 +60,6 @@ A böngészőben a következő címek eléréséhez a Log Analytics hozzáféré
 | portal.loganalytics.io | Dinamikus | 80,443 |
 | api.loganalytics.io    | Dinamikus | 80,443 |
 | docs.loganalytics.io   | Dinamikus | 80,443 |
-
-
-## <a name="log-search-classic"></a>Naplókeresés (klasszikus)
-Naplóbeli keresés a korábbi architektúra az Azure Portalon az Azure Monitor a naplózási adatok lekérdezésére és elemzésére. Azt hamarosan megszűnnek, de jelenleg továbbra is elérhető. Nyissa meg a naplóbeli keresés **naplók (klasszikus)** a Log Analytics menüben.
-
-
-
-![Naplók keresése](media/portals/log-search-portal.png)
 
 
 ## <a name="next-steps"></a>További lépések

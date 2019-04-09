@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: f3ee9b7aa595ae07bb97a8513bc0b751e94d7cc9
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9fd65dc0a6d2a5756acd2de7cb46fbf7943a8758
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883938"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264091"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Napló adatokat küldeni a HTTP-adatgyűjtő API (nyilvános előzetes verzió) az Azure Monitor
 Ez a cikk bemutatja, hogyan Teljesítménynapló-adatok küldése az Azure monitornak a REST API-ügyfél a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és engedélyezte az Azure Monitor kérelmet.  A példák a PowerShell, a C# és Python.
@@ -61,7 +61,8 @@ A HTTP-adatgyűjtő API használatához hozzon létre egy POST-kérelmet, amely 
 | Engedélyezés |Az engedélyezési aláírást. A cikk későbbi részében olvashat egy HMAC-SHA256-fejlécben létrehozása. |
 | Log-Type |Adja meg a rekord típusa adatok küldése folyamatban van. A méretkorlát a paraméter nem 100 karakternél. |
 | x-ms-date |A dátum, a kérelem feldolgozott RFC 1123 formátumban. |
-| time-generated-field |Az adatok, amely tartalmazza az időbélyeget, az elem egy mező nevét. Ha megad egy mezőt, akkor a tartalmát használt **TimeGenerated**. Ha ez a mező nincs megadva, alapértelmezett **TimeGenerated** az az idő, az üzenet betöltött. A mező tartalma követnie kell az ISO 8601 formátum éééé-hh-DDThh:mm:ssZ. |
+| x-ms-AzureResourceId | Az adatok Azure-erőforrás erőforrás-azonosító társítani kell. Ez kitölti a [_ResourceId](log-standard-properties.md#_resourceid) tulajdonságot, és lehetővé teszi az adatok foglalandó [erőforrás-központú](manage-access.md#access-modes) lekérdezéseket. Ha ez a mező nincs megadva, az adatok nem szerepelni fog az erőforrás-központú lekérdezéseket. |
+| time-generated-field | Az adatok, amely tartalmazza az időbélyeget, az elem egy mező nevét. Ha megad egy mezőt, akkor a tartalmát használt **TimeGenerated**. Ha ez a mező nincs megadva, alapértelmezett **TimeGenerated** az az idő, az üzenet betöltött. A mező tartalma követnie kell az ISO 8601 formátum éééé-hh-DDThh:mm:ssZ. |
 
 ## <a name="authorization"></a>Engedélyezés
 Bármely, az Azure Monitor HTTP-adatgyűjtő API-kérésnek tartalmaznia engedélyeztetési fejléc. Hitelesíteni a kérelmet, be kell jelentkeznie a kérelmet az elsődleges vagy másodlagos kulcsát a munkaterületet, amely a kérés küldője. Ezt követően adja át az aláírást a kérés részeként.   

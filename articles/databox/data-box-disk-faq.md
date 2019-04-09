@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 04/01/2019
+ms.date: 04/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b104f2578938997ff12778d65f08cca226d9a445
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892330"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258776"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
@@ -54,7 +54,7 @@ A. 5 darab egyenként 8 TB-os lemez (7 TB-os felhasználható kapacitással) ese
 A.  Ahol a Data Box-lemezek elérhetők jelenleg megtekintéséhez nyissa meg a [régiók rendelkezésre állása](data-box-disk-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>K. Mely régiókban tárolhatok adatokat a Data Box Disk-lemezekkel?
-A. Data Box-lemezek díját minden régióhoz az USA, Kanadában, Ausztráliában, és Nyugat-Európa és Észak-Európa belül támogatott. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
+A. Data Box-lemezek NEKÜNK, Kanadában, Ausztráliában, Nyugat-Európa és Észak-Európa, koreai és japán belül minden régió esetében támogatott. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>K. Kihez fordulhatok, ha probléma merülne fel a Data Box Disk-lemezekkel kapcsolatban?
 A. Ha problémába ütközik a Data Box-lemezeit, [forduljon a Microsoft Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -132,8 +132,8 @@ Az eszközkészlet Windows és Linux egyaránt érhető el. Az eszközkészlet I
 - [A Windows Data Box-lemezek eszközkészlet letöltése](https://aka.ms/databoxdisktoolswin) 
 - [Töltse le a Data Box-lemezek eszközkészlet linuxhoz](https://aka.ms/databoxdisktoolslinux)
  
-  ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>K. Használható az Azure Files adatátvitelt, majd az adatokat az Azure File Sync Data Box-lemezek? 
-  A. Az Azure Files Data Box-lemezek használata támogatott, de nem működnek jól az Azure File Sync használatával. Metaadatok nem marad meg, ha a fájl adatait használja az Azure File Sync használatával.
+### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>K. Használható az Azure Files adatátvitelt, majd az adatokat az Azure File Sync Data Box-lemezek? 
+A. Az Azure Files Data Box-lemezek használata támogatott, de nem működnek jól az Azure File Sync használatával. Metaadatok nem marad meg, ha a fájl adatait használja az Azure File Sync használatával.
 
 
 ## <a name="verify-and-upload"></a>Ellenőrzés és feltöltés
@@ -166,7 +166,7 @@ A. Lehetősége van klónozni az előző megrendelését. A klónozással létre
 A. Igen. Az adatok feltöltése az Azure-ba, de ha nem látja a felügyelt lemezeket a megadott erőforrás-csoportokat, valószínű, mert nem volt érvényes az adatok. A lapblobok blokkblobokat, az Azure Files, és a felügyelt lemezeket nem érvényes, ha ezek akkor lépjen a következő mappák:
  - Lapblobok block blob-tárolóba kezdődően lép majd *databoxdisk – érvénytelen-pb -*.
  - Az Azure Files helyezkedik el kezdve block blob-tárolóba *databoxdisk – érvénytelen-af -*.
- - A felügyelt lemezek helyezkedik el kezdve block blob-tárolóba *databoxdisk-invliad-md -*.
+ - A felügyelt lemezek helyezkedik el kezdve block blob-tárolóba *databoxdisk – érvénytelen-md -*.
 
 ## <a name="next-steps"></a>További lépések
 

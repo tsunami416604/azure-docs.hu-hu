@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD v2.0 OAuth-engedélyezési kód Flow |} A Microsoft Docs
-description: Webes alkalmazások létrehozása az OAuth 2.0 hitelesítési protokoll megvalósítását az Azure AD használatával.
+title: A Microsoft identity platform és az OAuth-engedélyezési kód Flow |} Az Azure
+description: Webes alkalmazások létrehozása a Microsoft identity platform megvalósítását az OAuth 2.0 hitelesítési protokoll használatával.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,20 +12,20 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/24/2019
+ms.topic: conceptual
+ms.date: 04/05/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0350db37e13101d315937840fdcf3d9900e214d5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.openlocfilehash: cc7feb77830fe8312cc2b48ffdb2c1af0abfb4b8
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880265"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058747"
 ---
-# <a name="v20-protocols---oauth-20-authorization-code-flow"></a>2.0-s protokollok – az OAuth 2.0 hitelesítési kódfolyamat
+# <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>A Microsoft identity platform és az OAuth 2.0 hitelesítési kódfolyamat
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -34,7 +34,7 @@ Az OAuth 2.0 hitelesítési kódmegadás alkalmazást, amely egy eszközön a v�
 > [!NOTE]
 > Nem minden Azure Active Directory-forgatókönyvet és funkciót támogatja a v2.0-végpontra. Annak megállapításához, ha a v2.0-végpont használja, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
 
-Az OAuth 2.0 hitelesítési kódfolyamat leírt [, az OAuth 2.0 ismertetőjének 4.1 szakaszában](https://tools.ietf.org/html/rfc6749). A legtöbb alkalmazástípust, beleértve a hitelesítési és engedélyezési végrehajtásához használatos [webes alkalmazások](v2-app-types.md#web-apps) és [natív módon telepített alkalmazások](v2-app-types.md#mobile-and-native-apps). A folyamat lehetővé teszi, hogy az alkalmazások biztonságos beszerezni a v2.0-végpont által védett erőforrások eléréséhez használható access_tokens. 
+Az OAuth 2.0 hitelesítési kódfolyamat leírt [, az OAuth 2.0 ismertetőjének 4.1 szakaszában](https://tools.ietf.org/html/rfc6749). A legtöbb alkalmazástípust, beleértve a hitelesítési és engedélyezési végrehajtásához használatos [webes alkalmazások](v2-app-types.md#web-apps) és [natív módon telepített alkalmazások](v2-app-types.md#mobile-and-native-apps). A folyamat lehetővé teszi, hogy az alkalmazások biztonságos beszerezni a v2.0-végpont által védett erőforrások eléréséhez használható access_tokens.
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
 

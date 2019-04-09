@@ -1,7 +1,7 @@
 ---
 title: Hozzon létre, közzététel, válaszoljon a QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Ez a portálalapú oktatóanyag végigvezeti egy tudásbázis programozott módon történő létrehozásának és közzétételének, majd egy kérdés a tudásbázisból való megválaszolásának folyamatán.
+description: Hozzon létre egy új Tudásbázis kérdések és válaszok a nyilvános webes – gyakori kérdések. Mentse, betanítását és a Tudásbázis közzététele. A Tudásbázis közzététele után küldjön egy kérdést, és kapja meg a választ a CURL paranccsal. Ezután hozzon létre egy robot, és tesztelje a robot a ugyanezt a kérdést.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 12/17/2018
+ms.date: 04/08/2019
 ms.author: diberry
-ms.openlocfilehash: 6f79614e4b1ec660d2ec5c8aee40924908cf8f5c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884125"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266953"
 ---
-# <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Oktatóanyag: Hozzon létre egy Tudásbázis, majd a QnA Maker portálján kérdés megválaszolása
+# <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Oktatóanyag: A QnA Maker Portalról Tudásbázis létrehozása
 
-Ez az oktatóanyag végigvezeti egy tudásbázis létrehozásának és közzétételének, majd egy kérdés tudásbázisból való megválaszolásának folyamatán.
+Hozzon létre egy új Tudásbázis kérdések és válaszok a nyilvános webes – gyakori kérdések. Mentse, betanítását és a Tudásbázis közzététele. A Tudásbázis közzététele után küldjön egy kérdést, és kapja meg a választ a Curl paranccsal. Ezután hozzon létre egy robot, és tesztelje a robot a ugyanezt a kérdést. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni: 
 
@@ -29,6 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A tudásbázis ellenőrzése, mentése és betanítása
 > * A tudásbázis közzététele
 > * CURL használata a tudásbázis lekérdezéséhez
+> * Hozzon létre egy robot
 > 
 > [!NOTE]
 > Ebben az oktatóanyagban programozott verziója érhető el a teljes körű megoldást a [ **Azure-Samples/cognitive-services-qnamaker-csharp** GitHub-adattár](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
@@ -51,7 +52,7 @@ Ehhez az oktatóanyaghoz egy meglévő [QnA Maker-szolgáltatásra](../How-To/se
 
     |Beállítás|Cél|
     |--|--|
-    |Microsoft Azure Directory-azonosító|A _Microsoft Azure Directory-azonosító_ ugyanahhoz a fiókhoz van társítva, amelyet az Azure Portalra és a QnA Maker portálra való bejelentkezéshez használ. |
+    |Microsoft Azure Directory-azonosító|A _a Microsoft Azure címtár-azonosító_ társítva a fiók használatával jelentkezzen be az Azure portal és a QnA Maker portálra. |
     |Azure-előfizetés neve|Az a számlázási fiók, amelyben létrehozta a QnA Maker-erőforrást.|
     |Azure QnA-szolgáltatás|A meglévő QnA Maker-erőforrás.|
 
@@ -99,7 +100,9 @@ A tudásbázis közzététele után megjelenik a végpont
 
 ![Oldal végpont nastavení publikování](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
 
-## <a name="use-curl-to-query-for-an-faq-answer"></a>CURL használata a GYIK egyik válaszának lekérdezéséhez
+Ne zárja be ezt **közzététel** lap, szüksége lesz rájuk a robot létrehozásához az oktatóanyag későbbi részében. 
+
+## <a name="use-curl-to-query-for-an-faq-answer"></a>A Curl használatával lekérdezés a választ a gyakori kérdések
 
 1. Válassza ki a **Curl** lapot. 
 
@@ -109,7 +112,7 @@ A tudásbázis közzététele után megjelenik a végpont
 
 1. Cserélje le a `<Your question>` elemet a `How large can my KB be?` kérdésre. Ez hasonlít a `How large a knowledge base can I create?` kérdéshez, de nem pontosan ugyanaz. A QnA Maker természetes nyelvi feldolgozás segítségével határozza meg, hogy a két kérdés azonos-e.     
 
-1. Hajtsa végre a CURL parancsot, és a rendszer válaszként egy pontszámot és választ tartalmazó JSON-fájlt ad vissza. 
+1. A Curl-parancs végrehajtása, és a JSON-választ, beleértve a pontszám és a válasz fogadására. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -133,11 +136,11 @@ A tudásbázis közzététele után megjelenik a végpont
 
     A QnA Maker 42,81%-os pontszámmal megközelítőleg biztos a válaszban.  
 
-## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>CURL használata egy csevegési válasz lekérdezéséhez
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>A Curl használatával lekérdezés egy Chit csevegési válasz
 
-1. A CURL-kompatibilis terminálon cserélje le a `How large can my KB be?` kérdést egy robotbeszélgetés-befejező felhasználói utasítással, például: `Thank you`.   
+1. Cserélje le a Curl-kompatibilis terminálban `How large can my KB be?` bot beszélgetés és Befejezés utasítást a felhasználótól például `Thank you`.   
 
-1. Hajtsa végre a CURL parancsot, és a rendszer válaszként egy pontszámot és választ tartalmazó JSON-fájlt ad vissza. 
+1. A Curl-parancs végrehajtása, és a JSON-választ, beleértve a pontszám és a válasz fogadására. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -173,13 +176,13 @@ A tudásbázis közzététele után megjelenik a végpont
 
     Mivel a `Thank you` utasításhoz tartozó kérdés pontosan megegyezik egy csevegési kérdéssel, a QnA Maker 100-as pontszámmal teljesen biztos a válaszban. A QnA Maker is a kapcsolódó kérdések, valamint a csevegési Chit metaadatok címke adatokat tartalmazó metaadat-tulajdonságot adott vissza.  
 
-## <a name="use-curl-to-query-for-the-default-answer"></a>A CURL használata az alapértelmezett válasz lekérdezéséhez
+## <a name="use-curl-to-query-for-the-default-answer"></a>A Curl használatával lekérdezést az alapértelmezett válasz
 
 A rendszer az alapértelmezett választ adja bármely olyan kérdésre, amelynek válaszában a QnA Maker nem biztos. Ezt a választ az Azure Portalon kell konfigurálni. 
 
 1. A Curl-kompatibilis terminálon cserélje le a `Thank you` kérdést egy `x` karakterre. 
 
-1. Hajtsa végre a CURL parancsot, és a rendszer válaszként egy pontszámot és választ tartalmazó JSON-fájlt ad vissza. 
+1. A Curl-parancs végrehajtása, és a JSON-választ, beleértve a pontszám és a válasz fogadására. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -197,15 +200,25 @@ A rendszer az alapértelmezett választ adja bármely olyan kérdésre, amelynek
     }
     ```
     
-    A QnA Maker 0 pontot adott vissza, ami azt jelenti, hogy nem biztos a válaszban, emellett azonban az alapértelmezett választ is visszaadta. 
+    A QnA Maker egy pontszámát visszaadott `0`, ami azt jelenti, hogy nem megbízható, de is az alapértelmezett választ adja vissza. 
+
+## <a name="create-a-knowledge-base-bot"></a>Hozzon létre egy Tudásbázis robotot
+
+További információkért lásd: [hozzon létre egy csevegőrobot a Tudásbázis](create-qna-bot.md).
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Amikor elkészült, a Tudásbázis robottal, távolítsa el az erőforráscsoportot, `my-tutorial-rg`, eltávolítja az összes Azure-erőforrást létrehozni a bot folyamatban.
+
+Amikor végzett a Tudásbázis következő, a QnA Maker Portal válassza **saját tudásbázisok**, majd válassza ki a Tudásbázis **saját oktatóanyag kb**, majd válassza a Törlés ikonra a jobb szélen abban a sorban.  
 
 ## <a name="next-steps"></a>További lépések
 
-A támogatott fájlformátumokról további információ a [támogatott adatforrásokat](../Concepts/data-sources-supported.md) ismertető szakaszban talál. 
+További információkért lásd: [támogatott adatforrások](../Concepts/data-sources-supported.md) fájlformátumokhoz támogatás további információt. 
 
 Tudjon meg többet a csevegő [személyiségeiről](../Concepts/best-practices.md#chit-chat).
 
 Az alapértelmezett válasszal kapcsolatos további információkat lásd a [Nincs találat](../Concepts/confidence-score.md#no-match-found) című szakaszban. 
 
 > [!div class="nextstepaction"]
-> [Tudásbázis fogalmak](../Concepts/knowledge-base.md)
+> [A Tudásbázis hozzon létre egy csevegőrobot](create-qna-bot.md)

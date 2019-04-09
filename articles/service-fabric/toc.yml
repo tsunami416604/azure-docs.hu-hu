@@ -84,6 +84,22 @@ items:
       href: service-fabric-tutorial-standalone-install-an-application.md
     - name: 4 – A fürt tisztítása és az infrastruktúra törlése
       href: service-fabric-tutorial-standalone-clean-up.md
+- name: Ajánlott eljárások
+  items:
+  - name: Service Fabric – ajánlott eljárások áttekintése
+    href: service-fabric-best-practices-overview.md
+  - name: Biztonság
+    href: service-fabric-best-practices-security.md
+  - name: Hálózat
+    href: service-fabric-best-practices-networking.md
+  - name: Számítási teljesítmény tervezése és méretezése
+    href: service-fabric-best-practices-capacity-scaling.md
+  - name: Infrastruktúra mint kód
+    href: service-fabric-best-practices-infrastructure-as-code.md
+  - name: Monitorozás és diagnosztika
+    href: service-fabric-best-practices-monitoring.md
+  - name: Termelési készenlét ellenőrzőlistája
+    href: service-fabric-production-readiness-checklist.md
 - name: Példák
   items:
   - name: Kódminták
@@ -112,20 +128,6 @@ items:
       href: service-fabric-cluster-security.md
     - name: Gyakori Azure-beli biztonsági attribútumok
       href: service-fabric-security-attributes.md
-  - name: Ajánlott eljárások
-    items:
-    - name: Service Fabric – ajánlott eljárások áttekintése
-      href: service-fabric-best-practices-overview.md
-    - name: Hálózat
-      href: service-fabric-best-practices-networking.md
-    - name: Számítási teljesítmény tervezése és méretezése
-      href: service-fabric-best-practices-capacity-scaling.md
-    - name: Infrastruktúra mint kód
-      href: service-fabric-best-practices-infrastructure-as-code.md
-    - name: Monitorozás és diagnosztika
-      href: service-fabric-best-practices-monitoring.md
-    - name: Termelési készenlét ellenőrzőlistája
-      href: service-fabric-production-readiness-checklist.md
   - name: Terminológia
     href: service-fabric-technical-overview.md
   - name: Alkalmazások létrehozása
@@ -851,9 +853,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 02b5712aedc96fce447f11b755b837b52855379b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1e2e30552272dd49979c9e26c3737abeec6e8c6d
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278462"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058832"
