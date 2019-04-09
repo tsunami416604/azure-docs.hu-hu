@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cb0d04e46834530c8fea29ef79a2156caabeeeff
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202367"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008973"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>Példa: Szinonimák felvétele az Azure SearchC#
 
@@ -36,9 +36,9 @@ Több szinonimatérképet is létrehozhat, közzéteheti őket bármely index sz
 Az oktatóanyag az alábbi követelményekkel rendelkezik:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure Search szolgáltatás](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET-könyvtár](https://aka.ms/search-sdk)
-* [Az Azure Search szolgáltatás használata .NET-alkalmazásból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Az Azure Search-szolgáltatás](search-create-service-portal.md)
+* [Microsoft.Azure.Search .NET library](https://aka.ms/search-sdk)
+* [Az Azure Search .NET-alkalmazás használata](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -168,11 +168,11 @@ A jelen útmutatóban használt mintaalkalmazás teljes forráskódját a [GitHu
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A leggyorsabban megtisztítása után egy példa az erőforráscsoport, amely tartalmazza az Azure Search szolgáltatás törlésével. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Search szolgáltatás Áttekintés lapján szerepel.
+A leggyorsabban például után törli az erőforráscsoportot, amely tartalmazza az Azure Search szolgáltatás karbantartása. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Search szolgáltatás Áttekintés lapján szerepel.
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben a példában bemutatott a [szinonimák REST API-val](https://aka.ms/rgm6rq) a C# létrehozása és közzététele a leképezési szabályokat, és ezután hívja meg a lekérdezés a szinonimatérkép kódot. További információt a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referencia-dokumentációjában találhat.
 
 > [!div class="nextstepaction"]
-> [Szinonimák használata az Azure Searchben](search-synonyms.md)
+> [Az Azure Search szolgáltatásban a szinonimák használata](search-synonyms.md)

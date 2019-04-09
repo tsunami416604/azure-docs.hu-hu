@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan, és szabályozhatja a nagy méretű adatkészl
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ef61314ae124668fc8970e6d68a0f927bdf771bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: MT
+ms.openlocfilehash: 40aa8ca0ebfcc8eb5b686143960af1441768622a
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889035"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058391"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Azure-erőforrások nagy adatkészletek használata
 
@@ -63,7 +63,7 @@ Az a [REST API-val](/rest/api/azureresourcegraph/resources/resources), a vezérl
 
 ## <a name="paging-results"></a>Lapozás eredményei
 
-Szükséges egy eredményhalmazt bemásolja a feldolgozáshoz kisebb rekordhalmazok esetén, vagy mert az eredményhalmaz túllépné a megengedett maximális értékét _5000_ lapozással adja vissza a rekordokat. A [REST API-val](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** értékek jelzésére egy készlet rendelkezik lett osztva az eredmények itt: **resultTruncated** és **$skipToken** .
+Szükséges egy eredményhalmazt bemásolja a feldolgozáshoz kisebb rekordhalmazok esetén, vagy mert az eredményhalmaz túllépné a megengedett maximális értékét _1000_ lapozással adja vissza a rekordokat. A [REST API-val](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** értékek jelzésére egy készlet rendelkezik lett osztva az eredmények itt: **resultTruncated** és **$skipToken** .
 **resultTruncated** egy logikai érték, amely tájékoztatja a fogyasztó további rekordok léteznek. Ha nem a válaszban visszaadott. Ez az állapot akkor is azonosítható, ha a **száma** tulajdonság értéke kisebb, mint a **totalRecords** tulajdonság. **totalRecords** határozza meg, hogy hány rögzíti a lekérdezésnek megfelelő.
 
 Amikor **resultTruncated** van **igaz**, a **$skipToken** tulajdonság értéke a válaszban. Ez az érték szolgál ugyanazon lekérdezés és az előfizetés értékekkel lekérése a következő rekordkészletet, amely megfelel a lekérdezést.

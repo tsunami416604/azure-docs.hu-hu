@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1dda3e379a9dcec9dc48d741c107ee352c4f2033
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404637"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057149"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Gyakori kérdések az Azure-hoz készült Avere vFXT-ről
 
@@ -200,6 +200,14 @@ Késésérzékeny környezetekben 1 GB/s sebességű minimális hivatkozás fibe
 
 Nem, Avere vFXT célja, hogy az működtetni – ajánlott eljárások biztonságos hálózati környezetben.  
 
+### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Internet-hozzáférés korlátozhatom a fürt virtuális hálózatból? 
+
+Általában további biztonsági konfigurálhatja a vnet igény szerint, de bizonyos korlátozások megzavarhatja a fürt működését.
+
+Például a virtuális hálózatról kimenő internet-hozzáférés korlátozása problémákat okoz a fürt számára, ha a szabályokat, amelyek hozzáférhetnek a AzureConnectors AzureCloud explicit módon engedélyezik is hozzáadhat. Ez a helyzet leírt [kiegészítő dokumentációjában, a Githubon](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md).
+
+Testre szabott biztonsági segítségért forduljon az ügyfélszolgálathoz leírtak szerint [segítség a rendszer a](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt).
+
 ## <a name="technical-back-end-storage-core-filers"></a>Technikai: Háttér-tároló (core kiemelik)
 
 ### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>Hány core kiemelik támogatja egyetlen Avere vFXT környezethez?
@@ -278,9 +286,9 @@ Nem, a Avere vFXT fürtök kötelező "always on" szolgáltatás. A fürtök is 
 
 Első lépések Avere vFXT az Azure-hoz, olvassa el ezeket a cikkeket megtudhatja, hogyan tervezheti meg és a saját rendszerek központi telepítéséhez:
 
-* [A Avere vFXT rendszer tervezése](avere-vfxt-deploy-plan.md)
-* [Az üzembe helyezés áttekintése](avere-vfxt-deploy-overview.md)
+* [Az Avere vFXT rendszer megtervezése](avere-vfxt-deploy-plan.md)
+* [Üzembe helyezés – áttekintés](avere-vfxt-deploy-overview.md)
 * [-Avere vFXT fürt előkészítése](avere-vfxt-prereqs.md)
-* [Az Avere vFXT-fürt üzembe helyezése](avere-vfxt-deploy.md)
+* [A Avere vFXT fürt üzembe helyezése](avere-vfxt-deploy.md)
 
 További információ és eseteinek Avere vFXT látogasson el [Avere vFXT Azure](https://azure.microsoft.com/services/storage/avere-vfxt/).

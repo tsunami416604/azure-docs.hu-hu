@@ -12,27 +12,22 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: reference
-ms.date: 02/27/2019
+ms.date: 03/28/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 5c25d6703fe631a401994039200539156cc7b4de
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4908233280c69a37ea470eed2ef077cb220a7930
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579461"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009734"
 ---
-# <a name="saas-fulfillment-apis-version-1"></a>SaaS teljesítése API-k 1-es verzió
+# <a name="saas-fulfillment-apis-version-1--deprecated"></a>SaaS teljesítése API-k (elavult) 1-es verzió
 
-Ez a cikk bemutatja, hogyan hozhat létre egy SaaS-ajánlatok API-kkal. Ha rendelkezik értékesítési kiválasztott Azure-on keresztül, amely lehetővé teszi, hogy az SaaS-ajánlat előfizetéseinek az API-k szükségesek.  
+Ez a cikk bemutatja, hogyan hozhat létre egy SaaS-ajánlatok API-kkal. Az API-k, a REST-módszerek és a végpontok, ha a kiválasztott Azure-on keresztül kell árul, amely lehetővé teszi, hogy az SaaS-ajánlat előfizetéseinek szükségesek.  
 
 > [!WARNING]
-> A kezdeti SaaS teljesítése API-verzió elavult; Ehelyett használjon [SaaS teljesítése API V2](./cpp-saas-fulfillment-api-v2.md).
-
-
-Ez a cikk két részből áll:
-
--   Szolgáltatások közötti hitelesítés egy SaaS-szolgáltatás és az Azure Marketplace-en között
--   API-metódusai és végpontok
+> A kezdeti SaaS teljesítése API-verzió elavult; Ehelyett használjon [SaaS teljesítése API V2](./cpp-saas-fulfillment-api-v2.md).  Ez az API jelenleg tartják fenn csak a létező gyártók kiszolgálása érdekében. 
 
 A következő API-kat a SaaS-szolgáltatás integrációját az Azure-ral áll rendelkezésre:
 
@@ -41,112 +36,11 @@ A következő API-kat a SaaS-szolgáltatás integrációját az Azure-ral áll r
 -   Konvertálás
 -   Leiratkozás
 
-Az alábbi ábrán látható, az előfizetés folyamatot egy új ügyfél, és ezen API-k használatakor:
 
-![SaaS API-folyamat ajánlat](./media/saas-offer-publish-api-flow-v1.png)
-
-
-## <a name="service-to-service-authentication-between-saas-service-and-azure-marketplace"></a>SaaS-szolgáltatás és az Azure piactér szolgáltatás hitelesítési szolgáltatás
-
-Azure nincsenek megkötések a hitelesítést, amely a SaaS-szolgáltatás elérhetővé teszi a végfelhasználók számára. Azonban esetén, az Azure Marketplace-en API-kkal való kommunikációhoz SaaS-szolgáltatás, a hitelesítés történik, az Azure Active Directory (Azure AD-) alkalmazás környezetében.
-
-Az alábbi szakasz létrehozása az Azure AD-alkalmazást.
-
-
-### <a name="register-an-azure-ad-application"></a>Az Azure AD alkalmazás regisztrálása
-
-Az Azure AD képességeit felhasználó alkalmazásokat először regisztrálni kell egy Azure AD-bérlőben. A regisztrálási folyamat magában foglalja a jogosultságot ad az alkalmazások, például az URL-címet, hogy hol található, a válaszok elküldésére, a felhasználó hitelesítése után az URL-cím az Azure AD részleteit az URI-t, amely azonosítja az alkalmazást, és így tovább.
-
-Az Azure Portallal egy új alkalmazás regisztrálásához hajtsa végre az alábbi lépéseket:
-
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
-2. Ha a fiókja több bérlőhöz is biztosít hozzáférést, kattintson a fiókra az oldal jobb felső sarkában, és állítsa a portál munkamenetét a kívánt Azure AD-bérlőre.
-3. A bal oldali navigációs ablaktáblán kattintson a **Azure Active Directory** szolgáltatást, kattintson a **alkalmazásregisztrációk**, és kattintson a **új alkalmazásregisztráció**.
-
-   ![SaaS-AD Alkalmazásregisztrációk](./media/saas-offer-app-registration-v1.png)
-
-4. A Létrehozás lapon adja meg az alkalmazás\'s regisztrációs adatokat:
-   - **Név**: Adjon meg egy kifejező alkalmazásnevet
-   - **Az alkalmazástípus**: 
-     - Válassza a **Natív** lehetőséget a helyileg vagy eszközre telepített [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) esetében. Ez a beállítás használatos a nyilvános OAuth [natív ügyfelekhez](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client).
-     - Válassza ki **webalkalmazás / API** a [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) és [erőforrás és az API-alkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) biztonságos kiszolgálón telepített. Ezzel a beállítással az OAuth bizalmas [webes ügyfél](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) és nyilvános [felhasználói ügynök-alapú ügyfelek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
-     Egyazon alkalmazás az ügyfelet és az erőforrást/API-t is elérhetővé teheti.
-   - **Bejelentkezés URL-cím**: Webes alkalmazás és az API-alkalmazások adja meg az alkalmazás alap URL-CÍMÉT. Ha például **http:\//localhost:31544** lehet, hogy a helyi gépen futó webalkalmazás URL-CÍMÉT. Felhasználók a webes ügyfélalkalmazás bejelentkezni majd használna az URL-címet.
-   - **Átirányítási URI**: Natív alkalmazások esetén adja meg az Azure AD a jogkivonatválaszok visszaadására használt URI-ja. Adja meg például egy adott értéket az alkalmazás **http:\//MyFirstAADApp**.
-
-     ![SaaS-AD Alkalmazásregisztrációk](./media/saas-offer-app-registration-v1-2.png)
-
-     Adott példák a webalkalmazásokra vagy natív alkalmazásokat, tekintse meg a gyors üzembe helyezési interaktív bevezetés szakaszában rendelkezésre álló beállításokat a [az Azure AD fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
-
-5. Ha végzett, kattintson a **Létrehozás** gombra. Az Azure AD egy egyedi Alkalmazásazonosító rendeli az alkalmazást, és\'újra megnyílik az alkalmazás\'s fő való regisztrációhoz. Attól függően, hogy az alkalmazás webes vagy natív, eltérő lehetőségek állnak rendelkezésre az alkalmazás további funkcióinak hozzáadásához.
-
->[!Note]
->Alapértelmezés szerint az újonnan regisztrált alkalmazást, hogy csak a felhasználók az ugyanazon bérlőről, jelentkezzen be az alkalmazás van konfigurálva.
-
-<a name="api-methods-and-endpoints"></a>API-metódusai és végpontok
--------------------------
+## <a name="api-methods-and-endpoints"></a>API-metódusai és végpontok
 
 A következő szakaszok ismertetik az API-metódusai és a egy SaaS-ajánlat előfizetéseinek engedélyezése végpontok.
 
-### <a name="get-a-token-based-on-the-azure-ad-app"></a>Az Azure AD-alkalmazás alapján egy token beszerzése
-
-HTTP-metódus
-
-`GET`
-
-*Kérés URL-címe*
-
-**https://login.microsoftonline.com/*{Bérlőazonosító}*  /oauth2/jogkivonat**
-
-*URI-paraméter*
-
-|  **Paraméter neve**  | **Kötelező**  | **Leírás**                               |
-|  ------------------  | ------------- | --------------------------------------------- |
-| tenantId             | True (Igaz)          | A regisztrált AAD-alkalmazás Bérlőazonosítója   |
-|  |  |  |
-
-
-*Kérelem fejléce*
-
-|  **Fejléc neve**  | **Kötelező** |  **Leírás**                                   |
-|  --------------   | ------------ |  ------------------------------------------------- |
-|  Content-Type     | True (Igaz)         | A kéréshez társított tartalom típusa. Az alapértelmezett érték `application/x-www-form-urlencoded`.  |
-|  |  |  |
-
-
-*Kérelem törzse*
-
-| **Tulajdonság neve**   | **Kötelező** |  **Leírás**                                                          |
-| -----------------   | -----------  | ------------------------------------------------------------------------- |
-|  Grant_type         | True (Igaz)         | Engedélyezési típus. Az alapértelmezett érték `client_credentials`.                    |
-|  Client_id          | True (Igaz)         |  Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás azonosítója.                  |
-|  client_secret      | True (Igaz)         |  Az Azure AD-alkalmazáshoz társított jelszót.                               |
-|  Erőforrás           | True (Igaz)         |  A célerőforrás, amelyre a jogkivonat kérik. Az alapértelmezett érték `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
-|  |  |  |
-
-
-*Válasz*
-
-|  **Name (Név)**  | **Típus**       |  **Leírás**    |
-| ---------- | -------------  | ------------------- |
-| 200 OK    | TokenResponse  | A kérelem sikeres volt   |
-|  |  |  |
-
-*TokenResponse*
-
-Minta válasz token:
-
-``` json
-  {
-      "token_type": "Bearer",
-      "expires_in": "3600",
-      "ext_expires_in": "0",
-      "expires_on": "15251…",
-      "not_before": "15251…",
-      "resource": "62d94f6c-d599-489b-a797-3e10e42fbe22",
-      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
-  }               
-```
 
 ### <a name="marketplace-api-endpoint-and-api-version"></a>Piactér API végpontot és API-verzió
 
@@ -175,7 +69,7 @@ Független Szoftverszállító webhelyre a rendszer átirányítja a felhasznál
 
 *Fejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                                                                                                                                                  |
+| **Fejléc kulcs**     | **Szükséges** | **Leírás**                                                                                                                                                                                                                  |
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | Nem           | A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
 | x-ms-correlationid | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
@@ -207,7 +101,7 @@ Független Szoftverszállító webhelyre a rendszer átirányítja a felhasznál
 
 *Válaszkódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                                         |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
 | 200                  | `OK`                 | A jogkivonat sikeresen feloldva.                                                            |
 | 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy a megadott api-verziója érvénytelen. Nem sikerült feloldani a jogkivonatot, mert helytelen formátumúak vagy lejártak vagy a token (a token érvényességét csak 1 órán keresztül létrehozott). |
@@ -219,11 +113,11 @@ Független Szoftverszállító webhelyre a rendszer átirányítja a felhasznál
 
 *Válaszfejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcs**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
 | x-ms-correlationid | Igen          | Korrelációs Azonosítót, ha az ügyfél által átadott ellenkező esetben ezt az értéket, a korrelációs azonosítóját.                   |
-| x-ms-activityid    | Igen          | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Bármely egyeztetések szolgál. |
+| x-ms-activityid    | Igen          | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Ez az azonosító bármelyik egyeztetések szolgál. |
 | Retry-After        | Nem           | Ez az érték csak egy 429 válaszra van beállítva.                                                                   |
 |  |  |  |
 
@@ -238,13 +132,13 @@ Az előfizetési végpont lehetővé teszi, hogy a felhasználók számára egy 
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | Saas-előfizetés, hogy a jogkivonat feloldása API-n keresztül megoldása után egyedi azonosítója.                              |
+| subscriptionId      | Egyedi azonosítója az SaaS-előfizetés, hogy a jogkivonat feloldása API-n keresztül megoldása után.                              |
 | API-verzió         | A művelet ehhez a kérelemhez használt verziója. |
 |  |  |
 
 *Fejlécek*
 
-|  **Fejléc kulcs**        | **Kötelező** |  **Leírás**                                                  |
+|  **Fejléc kulcs**        | **Szükséges** |  **Leírás**                                                  |
 | ------------------     | ------------ | --------------------------------------------------------------------------------------- |
 | x-ms-requestid         |   Nem         | A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
 | x-ms-correlationid     |   Nem         | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
@@ -269,7 +163,7 @@ Az előfizetési végpont lehetővé teszi, hogy a felhasználók számára egy 
 
 *Válaszkódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                           |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | SaaS-előfizetés aktiválási egy adott csomag érkezett.                   |
 | 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy a JSON törzsében helytelen formátumú. |
@@ -284,7 +178,7 @@ Az előfizetési végpont lehetővé teszi, hogy a felhasználók számára egy 
 
 *Válaszfejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcs**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
 | x-ms-correlationid | Igen          | Korrelációs Azonosítót, ha az ügyfél által átadott ellenkező esetben ezt az értéket, a korrelációs azonosítóját.                   |
@@ -309,7 +203,7 @@ A módosítás végpont lehetővé teszi, hogy a felhasználó az aktuálisan el
 
 *Fejlécek*
 
-| **Fejléc kulcs**          | **Kötelező** | **Leírás**                                                                                                                                                                                                                  |
+| **Fejléc kulcs**          | **Szükséges** | **Leírás**                                                                                                                                                                                                                  |
 |-------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
 | x-ms-requestid          | Nem           | Az ügyfél a kérés követési egyedi karakterlánc-érték. Javasoljuk, egy GUID Azonosítót. Ha nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.   |
 | x-ms-correlationid      | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
@@ -333,7 +227,7 @@ A módosítás végpont lehetővé teszi, hogy a felhasználó az aktuálisan el
 
 *Válaszkódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                           |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | SaaS-előfizetés aktiválási egy adott csomag érkezett.                   |
 | 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy a JSON törzsében helytelen formátumú. |
@@ -346,7 +240,7 @@ A módosítás végpont lehetővé teszi, hogy a felhasználó az aktuálisan el
 
 *Válaszfejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcs**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
 | x-ms-correlationid | Igen          | Korrelációs Azonosítót, ha az ügyfél által átadott ellenkező esetben ezt az értéket, a korrelációs azonosítóját.                   |
@@ -373,7 +267,7 @@ Az előfizetési végpont a törlési művelet lehetővé teszi, hogy a felhaszn
 
 *Fejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                                                                                                                                                  |
+| **Fejléc kulcs**     | **Szükséges** | **Leírás**                                                                                                                                                                                                                  |
 |--------------------|--------------| ----------------------------------------------------------|
 | x-ms-requestid     | Nem           | Az ügyfél a kérés követési egyedi karakterlánc-érték. Javasoljuk, egy GUID Azonosítót. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.                                                           |
 | x-ms-correlationid | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
@@ -382,7 +276,7 @@ Az előfizetési végpont a törlési művelet lehetővé teszi, hogy a felhaszn
 
 *Válaszkódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                           |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | SaaS-előfizetés aktiválási egy adott csomag érkezett.                   |
 | 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy a JSON törzsében helytelen formátumú. |
@@ -396,7 +290,7 @@ Az előfizetési végpont a törlési művelet lehetővé teszi, hogy a felhaszn
 
 *Válaszfejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcs**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
 | x-ms-correlationid | Igen          | Korrelációs azonosító által átadott az ügyfelet, egyébként ez-e a korrelációs azonosítóját.                   |
@@ -423,7 +317,7 @@ Ez a végpont lehetővé teszi a felhasználó egy aktivált aszinkron művelet 
 
 *Fejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                                                                                                                                                  |
+| **Fejléc kulcs**     | **Szükséges** | **Leírás**                                                                                                                                                                                                                  |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Nem           | Az ügyfél a kérés követési egyedi karakterlánc-érték. Javasoljuk, egy GUID Azonosítót. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.   |
 | x-ms-correlationid | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
@@ -453,7 +347,7 @@ Ez a végpont lehetővé teszi a felhasználó egy aktivált aszinkron művelet 
 
 *Válaszkódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                              |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | A get-kérés sikeresen feloldva, és a válasz törzsében.    |
 | 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy egy érvénytelen api-Version paraméter lett megadva. |
@@ -465,7 +359,7 @@ Ez a végpont lehetővé teszi a felhasználó egy aktivált aszinkron művelet 
 
 *Válaszfejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcs**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
 | x-ms-correlationid | Igen          | Korrelációs azonosító által átadott az ügyfelet, egyébként ez-e a korrelációs azonosítóját.                   |
@@ -491,7 +385,7 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
 
 *Fejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                           |
+| **Fejléc kulcs**     | **Szükséges** | **Leírás**                                                                                           |
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Nem           | A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.                                                           |
 | x-ms-correlationid | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
@@ -525,7 +419,7 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
 
 *Válaszkódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                              |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | A get-kérés sikeresen feloldva, és a válasz törzsében.    |
 | 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy egy érvénytelen api-Version paraméter lett megadva. |
@@ -537,7 +431,7 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
 
 *Válaszfejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcs**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
 | x-ms-correlationid | Igen          | Korrelációs azonosító által átadott az ügyfelet, egyébként ez-e a korrelációs azonosítóját.                   |
@@ -563,7 +457,7 @@ A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhaszná
 
 *Fejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                           |
+| **Fejléc kulcs**     | **Szükséges** | **Leírás**                                           |
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | Nem           | Az ügyfél a kérés követési egyedi karakterlánc-érték. Javasoljuk, egy GUID Azonosítót. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.             |
 | x-ms-correlationid | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
@@ -597,7 +491,7 @@ A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhaszná
 
 *Válaszkódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                              |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | A get-kérés sikeresen feloldva, és a válasz törzsében.    |
 | 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy egy érvénytelen api-Version paraméter lett megadva. |
@@ -609,7 +503,7 @@ A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhaszná
 
 *Válaszfejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcs**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
 | x-ms-correlationid | Igen          | Korrelációs azonosító által átadott az ügyfelet, egyébként ez-e a korrelációs azonosítóját.                   |

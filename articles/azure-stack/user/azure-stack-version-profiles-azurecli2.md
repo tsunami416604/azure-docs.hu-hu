@@ -14,16 +14,16 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 21167366ff3af2bb360c33eaae9d591020bf11a5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: fa1731c9361be83949aa794ed8842681bd81d995
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487583"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057778"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>API-verzióprofilok használata az Azure CLI-vel az Azure Stackben
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A lépésekkel állíthatja be az Azure parancssori felület (CLI) Azure Stack Development Kit (ASDK) erőforrások kezelése a Linux, Mac és Windows-ügyfélplatformokon ebben a cikkben.
 
@@ -99,7 +99,7 @@ Az Azure CLI és a számítógépen telepített függő könyvtárak verzióját
     python -m pip install --upgrade pip
     ```
 
-3. Telepítse a **certifi** modul. [Certifi](https://pypi.org/project/certifi/) egy modul és a egy SSL-tanúsítványok megbízhatósága ellenőrzése közben a TLS-gazdagép identitásának ellenőrzésére vonatkozó legfelső szintű tanúsítványok gyűjteménye. Nyisson meg egy parancssort, vagy egy rendszergazda jogú PowerShell-parancssort, és írja be a következő parancsot:
+3. Telepítse a **certifi** modul. [Certifi](https://pypi.org/project/certifi/) modul és a egy legfelső szintű tanúsítványok gyűjteménye megbízhatósága SSL-tanúsítványok érvényesítése közben TLS gazdagép identitásának ellenőrzésére szolgál. Nyisson meg egy parancssort, vagy egy rendszergazda jogú PowerShell-parancssort, és írja be a következő parancsot:
 
     ```powershell
     pip install certifi
@@ -139,7 +139,7 @@ Az Azure CLI és a számítógépen telepített függő könyvtárak verzióját
     sudo -H pip3 install --upgrade pip
     ```
 
-3. Telepítse a **certifi** modul. [Certifi](https://pypi.org/project/certifi/) egy modul és a egy SSL-tanúsítványok megbízhatósága ellenőrzése közben a TLS-gazdagép identitásának ellenőrzésére vonatkozó legfelső szintű tanúsítványok gyűjteménye. Nyisson meg egy parancssort, vagy egy rendszergazda jogú PowerShell-parancssort, és írja be a következő parancsot:
+3. Telepítse a **certifi** modul. [Certifi](https://pypi.org/project/certifi/) modul és a egy legfelső szintű tanúsítványok gyűjteménye megbízhatósága SSL-tanúsítványok érvényesítése közben TLS gazdagép identitásának ellenőrzésére szolgál. Nyisson meg egy parancssort, vagy egy rendszergazda jogú PowerShell-parancssort, és írja be a következő parancsot:
 
     ```bash
     pip3 install certifi

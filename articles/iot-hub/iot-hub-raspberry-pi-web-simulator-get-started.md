@@ -1,21 +1,21 @@
 ---
 title: Raspberry Pi szimulált felhőbe (Node.js) – csatlakozás Raspberry Pi-webszimulátor Azure IoT hubra |} A Microsoft Docs
 description: Raspberry Pi-webszimulátor csatlakozhat az Azure IoT Hub használata a Raspberry Pi adatokat küldeni az Azure-felhőben.
-author: rangv
-manager: ''
+author: wesmc7777
+manager: philmea
 keywords: raspberry pi simulator, azure iot raspberry pi, raspberry pi iot hub, raspberry pi send data to cloud, raspberry pi to cloud
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: 3f8fbf571efafe22d7d0c5ccfd71dded381ba6fb
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.author: wesmc
+ms.openlocfilehash: 58e05ba4fb2e362147f7ca28d83440ddabb6ef38
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847218"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267735"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Online szimulátor Raspberry Pi csatlakoztatása Azure IoT hubhoz (Node.js)
 

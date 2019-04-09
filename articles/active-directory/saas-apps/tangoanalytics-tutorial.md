@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 7a701e71b164a13f8c7136d88b83dddf626b1913
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 7252fcd0ce3e12c411729002e9594d1a75a49885
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359563"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258527"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>Oktatóanyag: Az Azure Active Directory-integráció Tango elemzésekkel
 
@@ -193,8 +193,8 @@ Ha a hozzáférési panelen a Tango Analytics csempére kattint, akkor kell auto
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

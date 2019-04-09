@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 3/7/2019
+ms.date: 4/4/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 063699f016c3e165dfb07d17c26e7f29a13c81f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: e709ccee9dfcc6b6931df86b5dd38c7255baefdb
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118612"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057608"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -25,7 +25,8 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 
 | Mérföldkő | Az ügynök verziószáma | Kiadási dátum | status |
 |----|----------------------|--------------|------------------|
-| Március a 2019 -. kumulatív frissítés [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019. március 7. | Támogatott (ajánlott verzió) |
+| Április a 2019 -. kumulatív frissítés [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019. április 4. | Támogatott (ajánlott verzió) |
+| Március a 2019 -. kumulatív frissítés [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019. március 7. | Támogatott |
 | V5-ös verziója Engedje - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019. február 12. | Támogatott |
 | Január a 2019 -. kumulatív frissítés [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 2019. január 14. | Támogatott |
 | 2018. decemberi kumulatív - [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 2018. december 10. | Támogatott |
@@ -38,6 +39,13 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-5200"></a>Ügynök verziója 5.2.0.0
+Az alábbi kibocsátási megjegyzések olyan verziójára 5.2.0.0 az Azure File Sync ügynök 2019. április 4. Ezek a megjegyzések kibocsátási megjegyzéseinek kiegészítéséül verzió 5.0.2.0 kívül vannak.
+
+Ebben a kiadásban megoldott problémák listája:  
+- Offline adatok átvitelét és az adatforgalom megbízhatóság fejlesztései szolgáltatások folytatása
+- Szinkronizálási telemetriai fejlesztései
 
 ## <a name="agent-version-5100"></a>Ügynök verziója 5.1.0.0-s
 Az alábbi kibocsátási megjegyzések olyan verziójára 5.1.0.0-s az Azure File Sync ügynök 2019. március 7. Ezek a megjegyzések kibocsátási megjegyzéseinek kiegészítéséül verzió 5.0.2.0 kívül vannak.

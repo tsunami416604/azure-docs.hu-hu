@@ -8,13 +8,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
-ms.date: 11/06/2018
-ms.openlocfilehash: ddcde2956da774e687c1e587649e65b79003bf3a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.date: 04/03/2019
+ms.openlocfilehash: 18f5d34e50a4ed4ed82a3ceb4740d594ce4bd78d
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448985"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058220"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Oktatóanyag: Adatok betöltése, és lekérdezéseket futtathat az Azure HDInsight az Apache Spark-fürt
 
@@ -24,8 +24,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Adathalmaz létrehozása egy CSV-fájlból
 > * Lekérdezések futtatása az adathalmazon
-
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +36,11 @@ Az alkalmazások közvetlenül hozhatnak létre adathalmazokat a távoli tárhel
 ![Az interaktív Spark SQL-lekérdezés adatainak pillanatképe](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Az interaktív Spark SQL-lekérdezés adatainak pillanatképe")
 
 
-1. Nyissa meg az előfeltételeket ismertető szakaszban létrehozott Jupyter notebookot.
+1. Nyissa meg az Előfeltételek szakaszban létrehozott Jupyter notebookot, és az új notebook létrehozása PySpark.
+
+    > [!NOTE]  
+    > Ha a notebookot a PySpark-kernellel hozza létre, a `spark`-munkamenet az első kódcella futtatásakor automatikusan jön létre. A munkamenetet nem szükséges manuálisan létrehoznia.
+
 2. Illessze be a következő kódot a notebook egy üres cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához. A kód importálja az alábbi forgatókönyvhöz szükséges típusokat:
 
     ```python
@@ -58,10 +60,6 @@ Az alkalmazások közvetlenül hozhatnak létre adathalmazokat a távoli tárhel
     csvFile.write.saveAsTable("hvac")
     ```
 
-    > [!NOTE]  
-    > Ha a notebookot a PySpark-kernellel hozza létre, a `spark`-munkamenet az első kódcella futtatásakor automatikusan jön létre. A munkamenetet nem szükséges manuálisan létrehoznia.
-
-
 ## <a name="run-queries-on-the-dataframe"></a>Lekérdezések futtatása az adathalmazon
 
 A tábla létrehozása után az adatokon interaktív lekérdezéseket futtathat.
@@ -77,13 +75,13 @@ A tábla létrehozása után az adatokon interaktív lekérdezéseket futtathat.
 
      ![Az interaktív Spark-lekérdezési eredmény táblázati kimenete](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Az interaktív Spark-lekérdezési eredmény táblázati kimenete")
 
-3. Az eredményeket egyéb megjelenítési formákban is megtekintheti. Az azonos kimenethez tartozó területgrafikon megjelenítéséhez válassza az **Area** (Terület) lehetőséget, majd állítsa be a további értékeket az ábra szerint.
+2. Az eredményeket egyéb megjelenítési formákban is megtekintheti. Az azonos kimenethez tartozó területgrafikon megjelenítéséhez válassza az **Area** (Terület) lehetőséget, majd állítsa be a további értékeket az ábra szerint.
 
     ![Az interaktív Spark-lekérdezési eredmény területgrafikonja](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Az interaktív Spark-lekérdezési eredmény területgrafikonja")
 
-10. A notebook **File** (Fájl) menüjében kattintson a **Save and Checkpoint** (Mentés és ellenőrzőpont) elemre. 
+3. Lépjen a notebook menüsoron **fájl** > **mentése és ellenőrzőpont**.
 
-11. Ha most kezd bele a [következő oktatóanyagba](apache-spark-use-bi-tools.md), hagyja nyitva a notebookot. Ha nem, állítsa le a notebookot a fürt erőforrásainak felszabadítása érdekében: az a **fájl** a jegyzetfüzetet, válassza a menü **zárja be és Halt**.
+4. Ha most kezd bele a [következő oktatóanyagba](apache-spark-use-bi-tools.md), hagyja nyitva a notebookot. Ha nem, állítsa le a notebookot a fürt erőforrásainak felszabadítása érdekében: lépjen a notebook menüsoron **fájl** >  **zárja be és Halt**.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -98,11 +96,10 @@ Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport ol
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-* Hozzon létre egy Apache Spark dataframe.
-* Spark SQL-lekérdezések futtatása az adathalmazon
+> [!div class="checklist"]
+> * Hozzon létre egy Apache Spark dataframe.
+> * Spark SQL-lekérdezések futtatása az adathalmazon
 
 Folytassa a következő cikkben tekintheti meg az adatokat, az Apache Spark regisztrált hogyan tölthetők be egy BI elemzőeszköz, mint a Power BI. 
 > [!div class="nextstepaction"]
 > [Adatok elemzése BI-eszközökkel](apache-spark-use-bi-tools.md)
-

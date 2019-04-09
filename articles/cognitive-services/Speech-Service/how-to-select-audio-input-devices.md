@@ -10,16 +10,17 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: e8e2bd34ebb5b789bb3e9ba4a419ab424d3fdf5a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 97a3f00bcb5b1a0fb3f499657044b9d83f5b08d7
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550676"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010379"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>A beszédfelismerés SDK-val egy hangbemeneti eszköz kiválasztása
 
-1.3.0 a Speech SDK tartalmazza az API-t, jelölje be a hangbemenet, ez a cikk bemutatja, hogyan juthat hozzá a rendszerhez csatlakoztatott eszközök azonosítói.
+A verzió 1.3.0 beszéd SDK tartalmaz egy API-t, jelölje be a hangbemenet.
+Ez a cikk ismerteti, hogyan juthat hozzá a rendszerhez csatlakoztatott eszközök azonosítói.
 Ezek ezután a Speech SDK által használható keresztül az eszköz konfigurálása a `AudioConfig` objektum:
 
 ```C++
@@ -42,8 +43,11 @@ audioConfig = AudioConfiguration.FromMicrophoneInput("<device id>");
 audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 
-> [!NOTE]
-> Ez a funkció még nem áll rendelkezésre a JavaScript-alapú.
+```JavaScript
+audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
+```
+>[!Note]
+> Mikrofon használatának nem érhető el a node.js-ben futó JavaScript
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Hangeszköz azonosítójuk a Windows asztali alkalmazások
 
@@ -367,6 +371,10 @@ Ha például a utasítás
 ```
 
 Bluetooth-mikrofonos egy beszéd-kompatibilis alkalmazások használatát teszi lehetővé.
+
+## <a name="audio-device-ids-in-javascript"></a>Hangeszköz javascriptben azonosítók
+
+A JavaScript a [MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) módszer használható az adathordozó eszközök enumerálása, és keresse meg egy Eszközazonosítót átadása `fromMicrophone(...)`.
 
 ## <a name="next-steps"></a>További lépések
 

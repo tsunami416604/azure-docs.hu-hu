@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3d20316903efde516ec99b0a548449297bdf1419
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805108"
 documentType: LandingData
 title: Az Azure Media Services v3 dokumentációja
 metadata:
-  document_id: 
+  document_id: null
   title: Az Azure Media Services v3 dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: Ismerje meg, hogyan streamelhet igény szerint, hogyan közvetíthet élőben, és hogyan elemezheti videóit a Media Serviceszel. Oktatóanyagok, API-referenciák és egyebek.
+  description: 'Ismerje meg, hogyan kódolhat és csomagolhat be tartalmakat, streamelhet videókat igény szerint, közvetíthet élőben, illetve hogyan elemezheti videóit a Media Services 3-as verziójával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is.'
   services: media-services
   author: Juliako
   manager: femila
@@ -21,114 +15,114 @@ metadata:
   ms.date: 03/20/2019
   ms.author: juliako
 abstract:
-  description: Ismerje meg, hogyan kódolhat és csomagolhat be tartalmakat, streamelhet videókat igény szerint, közvetíthet élőben, illetve hogyan elemezheti videóit a Media Services 3-as verziójával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is. <br/> Az SDK-k alapját a <a href="https://aka.ms/ams-v3-rest-sdk">Media Services v3 OpenAPI specifikáció (Swagger)</a> képezi.
+  description: 'Ismerje meg, hogyan kódolhat és csomagolhat be tartalmakat, streamelhet videókat igény szerint, közvetíthet élőben, illetve hogyan elemezheti videóit a Media Services 3-as verziójával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is. <br/> Az SDK-k alapját a <a href="https://aka.ms/ams-v3-rest-sdk">Media Services v3 OpenAPI specifikáció (Swagger)</a> képezi.'
 sections:
-- title: 
-  items:
-  - type: list
-    style: cards
-    className: cardImageOuter
+  - title: null
     items:
-    - title: Az alapvető fogalmak
-      html: <p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Felhőbe történő feltöltés és tárolás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Kódolás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">Monitorozás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Media analytics (Médiaelemzés)</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Csomagolás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Védelem</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Live streaming (Élő adatfolyam)</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Lejátszóügyfelek</a></p>
-    - title: Fejlesztés a v3 API-val
-      html: <p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">A fejlesztés megkezdése az SDK használatával</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Fejlesztés a REST használatával</a></p>
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Megtudhatja, hogyan hozhat létre egy Media Services-fiókot, hogyan kezdheti el saját videói kódolását, és hogyan játszhatja le azokat az Azure Media Player használatával:'
-  - type: list
-    style: icon48
+      - type: list
+        style: cards
+        className: cardImageOuter
+        items:
+          - title: Az alapvető fogalmak
+            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Felhőbe történő feltöltés és tárolás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Encoding</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">Figyelés</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Media analytics (Médiaelemzés)</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Csomagolás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Védelem</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Élő streamelés</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Lejátszóügyfelek</a></p>'
+          - title: Fejlesztés a v3 API-val
+            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">A fejlesztés megkezdése az SDK használatával</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Fejlesztés REST-tel</a></p>'
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: media/index/dotnet.svg
-      text: Kódolás és streamelés a .NET használatával
-      href: /azure/media-services/latest/stream-files-dotnet-quickstart
-    - image:
-        src: media/index/cli.svg
-      text: Kódolás és streamelés parancssori felülettel
-      href: /azure/media-services/latest/stream-files-cli-quickstart
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Kódolás és streamelés a Node.js használatával
-      href: /azure/media-services/latest/stream-files-nodejs-quickstart
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Ismerje meg, hogyan streamelhet fájlokat igény szerint, hogyan közvetíthet élőben, és hogyan elemezheti videóit a Media Services 3-as verziója használatával:'
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 1
+      - type: paragraph
+        text: 'Ismerkedjen meg a Media Services-fiók létrehozásával, illetve a videók kódolásának, csomagolásának és streamelésének első lépéseivel:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/dotnet.svg
+            text: Kódolás és streamelés a .NET használatával
+            href: /azure/media-services/latest/stream-files-dotnet-quickstart
+          - image:
+              src: media/index/cli.svg
+            text: Kódolás és streamelés parancssori felülettel
+            href: /azure/media-services/latest/stream-files-cli-quickstart
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Kódolás és streamelés a Node.js használatával
+            href: /azure/media-services/latest/stream-files-nodejs-quickstart
+  - title: Részletes útmutatók
     items:
-    - image:
-        src: media/index/dotnet.svg
-      html: <p>Az oktatóanyag feltölt egy helyi videófájlt, majd kódolja és streameli a kódolt tartalmat.<p/>
-      href: /azure/media-services/latest/stream-files-tutorial-with-api
-      title: Feltöltött fájl kódolása és videó streamelése
-    - image:
-        src: media/index/dotnet.svg
-      html: <p>Az oktatóanyag ismerteti, hogyan kell beállítani egy élő eseményt. Ezután bemutatja, hogyan hozhat létre átmenő típusú élő eseményt a .NET használatával.</p>
-      href: /azure/media-services/latest/stream-live-tutorial-with-api
-      title: Élő közvetítés
-    - image:
-        src: media/index/dotnet.svg
-      html: <p>Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Services API-val.</p>
-      href: /azure/media-services/latest/analyze-videos-tutorial-with-api
-      title: Videó elemzése
-    - image:
-        src: media/index/dotnet.svg
-      html: <p>Ismerje meg, hogyan kell konfigurálni és használni a Media Services API-kat a tartalmak 128 bites AES-titkosítással történő dinamikus titkosítására.</p>
-      href: /azure/media-services/latest/protect-with-aes128
-      title: Dinamikus titkosítás 128 bites AES-titkosítással
-    - image:
-        src: media/index/dotnet.svg
-      html: <p>Ismerje meg, hogyan kell konfigurálni és használni a Media Services API-kat a tartalmak több DRM-mel (PlayReady, Widevine és FairPlay) történő dinamikus titkosítására.</p>
-      href: /azure/media-services/latest/protect-with-drm
-      title: Dinamikus titkosítás több DRM-mel
-    - image:
-        src: media/index/rest.svg
-      html: <p>Az oktatóanyag bemutatja, hogyan kell kódolni egy távoli fájlt URL-cím alapján, majd streamelni a videót.</p>
-      href: /azure/media-services/latest/stream-files-tutorial-with-rest
-      title: Távoli fájl kódolása és videó streamelése
-- title: Példák
-  items:
-  - type: paragraph
-    text: 'A következő GitHub-minták bemutatják, hogyan használhatók az API-k videók streamelésére, élő közvetítésre és videók elemzésére a Media Services 3-as verziójával:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Az oktatóanyagok bemutatják az igény szerinti és élő videók biztonságos, igény szerinti csomagolását, illetve a skálázást az integrált Azure CDN teljesítményének kiaknázásával:'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 1
+        items:
+          - image:
+              src: media/index/dotnet.svg
+            html: '<p>Az oktatóanyag feltölt egy helyi videófájlt, majd kódolja és streameli a kódolt tartalmat.<p/>'
+            href: /azure/media-services/latest/stream-files-tutorial-with-api
+            title: Feltöltött fájl kódolása és videó streamelése
+          - image:
+              src: media/index/dotnet.svg
+            html: '<p>Az oktatóanyag ismerteti, hogyan kell beállítani egy élő eseményt. Ezután bemutatja, hogyan hozhat létre átmenő típusú élő eseményt a .NET használatával.</p>'
+            href: /azure/media-services/latest/stream-live-tutorial-with-api
+            title: Élő közvetítés
+          - image:
+              src: media/index/dotnet.svg
+            html: '<p>Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Services API-val.</p>'
+            href: /azure/media-services/latest/analyze-videos-tutorial-with-api
+            title: Videó elemzése
+          - image:
+              src: media/index/dotnet.svg
+            html: '<p>Ismerje meg, hogyan kell konfigurálni és használni a Media Services API-kat a tartalmak 128 bites AES-titkosítással történő dinamikus titkosítására.</p>'
+            href: /azure/media-services/latest/protect-with-aes128
+            title: Dinamikus titkosítás 128 bites AES-titkosítással
+          - image:
+              src: media/index/dotnet.svg
+            html: '<p>Ismerje meg, hogyan kell konfigurálni és használni a Media Services API-kat a tartalmak több DRM-mel (PlayReady, Widevine és FairPlay) történő dinamikus titkosítására.</p>'
+            href: /azure/media-services/latest/protect-with-drm
+            title: Dinamikus titkosítás több DRM-mel
+          - image:
+              src: media/index/rest.svg
+            html: '<p>Az oktatóanyag bemutatja, hogyan kell kódolni egy távoli fájlt URL-cím alapján, majd streamelni a videót.</p>'
+            href: /azure/media-services/latest/stream-files-tutorial-with-rest
+            title: Távoli fájl kódolása és videó streamelése
+  - title: Példák
     items:
-    - image:
-        src: media/index/cli.svg
-      text: Azure CLI
-      href: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services
-    - image:
-        src: media/index/rest.svg
-      text: REST és Postman
-      href: https://github.com/Azure-Samples/media-services-v3-rest-postman
-    - image:
-        src: media/index/logo_dotnet_core.svg
-      text: .NET Core és Visual Studio Code
-      href: https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials
-    - image:
-        src: media/index/dotnet.svg
-      text: .NET Visual Studióval
-      href: https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: https://github.com/Azure-Samples/media-services-v3-node-tutorials
-- title: Referencia
-  items:
-  - type: paragraph
-    text: ''
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'A következő GitHub-minták bemutatják, hogyan használhatók az API-k videók streamelésére, élő közvetítésre és videók elemzésére a Media Services 3-as verziójával:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/cli.svg
+            text: Azure CLI
+            href: 'https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services'
+          - image:
+              src: media/index/rest.svg
+            text: REST és Postman
+            href: 'https://github.com/Azure-Samples/media-services-v3-rest-postman'
+          - image:
+              src: media/index/logo_dotnet_core.svg
+            text: .NET Core és Visual Studio Code
+            href: 'https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials'
+          - image:
+              src: media/index/dotnet.svg
+            text: .NET Visual Studióval
+            href: 'https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials'
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            href: 'https://github.com/Azure-Samples/media-services-v3-node-tutorials'
+  - title: Referencia
     items:
-    - html: <a href="https://aka.ms/ams-v3-cli-ref">Azure CLI</a>
-    - html: <a href="https://aka.ms/ams-v3-rest-ref">REST</a>
-    - html: <a href="https://aka.ms/ams-v3-dotnet-ref">.NET</a>
-    - html: <a href="https://aka.ms/ams-v3-java-ref">Java</a>
-    - html: <a href="https://aka.ms/ams-v3-python-ref">Python</a>
-    - html: <a href="https://aka.ms/ams-v3-nodejs-ref">Node.js</a>
+      - type: paragraph
+        text: ''
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://aka.ms/ams-v3-cli-ref">Azure CLI</a>'
+          - html: '<a href="https://aka.ms/ams-v3-rest-ref">REST</a>'
+          - html: '<a href="https://aka.ms/ams-v3-dotnet-ref">.NET</a>'
+          - html: '<a href="https://aka.ms/ams-v3-java-ref">Java</a>'
+          - html: '<a href="https://aka.ms/ams-v3-python-ref">Python</a>'
+          - html: '<a href="https://aka.ms/ams-v3-nodejs-ref">Node.js</a>'

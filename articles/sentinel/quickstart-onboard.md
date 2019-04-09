@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: b6ea852c9a1bb8ea6eb51df310aab97e9b10d48e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.openlocfilehash: c055b3d9dec2e2538a7dc7ac0eb707c97313d0d6
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399677"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006590"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>A helyi Azure Sentinel előzetes verzió
 
@@ -36,21 +36,19 @@ Miután csatlakozott az adatforrásokat, egy katalógus, amely az adatok alapjá
 
 ## <a name="global-prerequisites"></a>Általános Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+- Aktív Azure-előfizetést, ha nem rendelkezik ilyennel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) megkezdése előtt.
 
 - Log Analytics-munkaterületet. Ismerje meg, hogyan [Log Analytics-munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md)
 
-- Közreműködői jogosultságokat a bérlő Azure Sentinel-engedélyezése
-
-- A bérlő globális vagy biztonsági rendszergazdai engedélyek
- 
+    - Az erőforráscsoport Azure Sentinel-kötött közreműködői engedélyekkel
+    - Közreműködői engedélyekkel, az erőforráscsoport Azure Sentinel-engedélyezése 
 
 ## Az Azure Sentinel engedélyezése <a name="enable"></a>
 
 1. Lépjen be az Azure Portalra.
 2. Győződjön meg arról, hogy az előfizetés, amelyben az Azure-Sentinel létrehozta, van-e kiválasztva. 
 3. Keresse meg az Azure Sentinel. 
-   ![Keresés](./media/quickstart-onboard/search-product.png)
+   ![keresés](./media/quickstart-onboard/search-product.png)
 
 1. Kattintson a **+ Hozzáadás**.
 1. Válassza ki szeretné használni, vagy hozzon létre egy új munkaterületet. Egynél több munkaterület Azure Sentinel-futtatható, de az adatok el különítve egy munkaterülethez.

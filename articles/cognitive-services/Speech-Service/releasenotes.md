@@ -8,17 +8,45 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 4/3/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 7f54507fdfd21c9402e04eb867710a774f9e6bb3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 13d43a3810bc07cede2a49760f122157de86c44d
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856090"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010158"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
+
+## <a name="speech-sdk-140-2019-april-release"></a>Speech SDK 1.4.0: A 2019-áprilisi kiadás
+
+**Új funkciók** 
+
+* Az SDK-val most már támogatja a szöveg-hang transzformációs szolgáltatás bétaverziójának. A Windows és Linux rendszerű asztali C++, a támogatott C#, és a Java használatával. További információkért tekintse a [szöveg-hang transzformációs áttekintése](text-to-speech.md#get-started-with-text-to-speech).
+* Az SDK-val most stream bemeneti fájlok formájában támogatja az MP3- és Opus/Ogg hangfájlok. Ez a funkció csak a c++ segítségével Linux rendszeren érhető el, és C# és jelenleg bétaverzióban (További részletek [Itt](how-to-use-compressed-audio-input-streams.md)).
+* A beszédfelismerés SDK a .NET core, Java, C++ és Objective-C macOS-támogatás révén. Az Objective-C támogatja a macOS jelenleg bétaverzióban.
+* iOS: A beszédfelismerés SDK IOS (Objective-C) most is közzéteszi, egy CocoaPod.
+* JavaScript: Nem alapértelmezett mikrofon beviteli eszközként támogatása.
+* JavaScript: Proxy-támogatás a node.js-ben.
+
+**Példák**
+
+* A macOS rendszeren a Speech SDK Objective-C és c++ minták érhetők el.
+* Az a szöveg-hang transzformációs szolgáltatás használatának bemutatásához minták érhetők el.
+
+**Fejlesztések / módosítása**
+
+* Python: További tulajdonságainak felismerési eredményeket most keresztül érhetők el a `properties` tulajdonság.
+* A további fejlesztés és hibakeresés támogatása SDK naplózási és diagnosztikai információk egy naplófájlba átirányíthatja (További részletek [Itt](how-to-use-logging.md)).
+* JavaScript: Hang feldolgozási teljesítmény javítása.
+
+**Hibajavítások**
+
+* Mac/iOS: Egy hiba, ha a Speech Service-kapcsolatot nem lehet létrehozni egy hosszú ideig várakozott vezetett a rendszerriasztások mechanizmusában.
+* Python: javíthatja a Python-visszahívások argumentumok a hibakezelést.
+* JavaScript: A beszédfelismerés reporting rögzített nem megfelelő állapotban RequestSession napon fejeződött be.
 
 ## <a name="speech-sdk-131-2019-february-refresh"></a>Beszédfelismerés SDK 1.3.1: A 2019-februári frissítés
 
@@ -177,7 +205,7 @@ Az a [mintaadattár](https://aka.ms/csspeech/samples), egy új mintát, JavaScri
 * Objective-C támogatása IOS-eszközökön. Tekintse meg a [Objective-C rövid útmutató iOS-es](quickstart-objectivec-ios.md).
 * A böngészőben JavaScript támogatása. Tekintse meg a [JavaScript rövid](quickstart-js-browser.md).
 
-**Használhatatlanná tévő változásai**
+**Kompatibilitástörő változások**
 
 * Ebben a kiadásban bevezetett kompatibilitástörő változások számos.
   Ellenőrizze a [ezt oldal](https://aka.ms/csspeech/breakingchanges_1_0_0) részleteiről.
@@ -196,7 +224,7 @@ Az a [mintaadattár](https://aka.ms/csspeech/samples), egy új mintát, JavaScri
 
 * Tegyen elérhetővé további részletes információ a hibáról a csatlakozási hibák.
 
-**Használhatatlanná tévő változásai**
+**Kompatibilitástörő változások**
 
 * Java (Android) a `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` függvény már nem csak egy elérésiút-paraméter. Az elérési út most már automatikusan észleli az összes támogatott platformon.
 * A get-hozzáférő tulajdonság `EndpointUrl` Java-és C# el lett távolítva.
@@ -225,7 +253,7 @@ Az a [mintaadattár](https://aka.ms/csspeech/samples), egy új mintát, JavaScri
 * A felismerés eredményét további mezőket tartalmaz. Hang elején és időtartama (a órajel során végbemenő is) a felismert szöveget és további értékek, amelyek a felismerés állapotát, például tolva vagyunk `InitialSilenceTimeout` és `InitialBabbleTimeout`.
 * Támogatási AuthorizationToken előállító példányok létrehozásához.
 
-**Használhatatlanná tévő változásai**
+**Kompatibilitástörő változások**
 
 * Elismerés események: NoMatch eseménytípus hibaesemény lett egyesítve.
 * C# nyelven SpeechOutputFormat átnevezte OutputFormat igazított c++ marad.
@@ -241,7 +269,7 @@ Az a [mintaadattár](https://aka.ms/csspeech/samples), egy új mintát, JavaScri
 * A Windows media foundation kódtárak függőség el lett távolítva. Az SDK mostantól az alapvető hang API-k.
 * Dokumentációs javítás: Hozzáadott egy [régiók](regions.md) a támogatott régiók leíró oldalon.
 
-**Ismert hiba**
+**Ismert probléma**
 
 * A beszédfelismerés SDK for Android nem jelentést speech összefoglaló eredmények a fordítás. A probléma a következő kiadás javítja.
 

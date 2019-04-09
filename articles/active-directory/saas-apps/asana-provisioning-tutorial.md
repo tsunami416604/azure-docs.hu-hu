@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f35de1865f2e02331b8455bbdce92e8fe2f9a1b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.openlocfilehash: a763b2516f88e8c92efc321db50dc15881f54c9b
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210475"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057846"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Asana konfigurálása
 
@@ -32,16 +32,16 @@ Ez az oktatóanyag célja, a lépéseket kell elvégeznie a Asana és az Azure A
 
 Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
 
-*   Az Azure AD-bérlő
-*   Az egy Asana-bérlőt egy [vállalati](https://www.asana.com/pricing) a terv és jobban engedélyezve 
-*   Egy felhasználói fiók rendszergazdai jogosultságokkal rendelkezik az Asanában 
+* Az Azure AD-bérlő
+* Az egy Asana-bérlőt egy [vállalati](https://www.asana.com/pricing) a terv és jobban engedélyezve
+* Egy felhasználói fiók rendszergazdai jogosultságokkal rendelkezik az Asanában
 
-> [!NOTE] 
+> [!NOTE]
 > Azure AD létesítési integrációs támaszkodik a [Asana API](https://asana.com/developers/api-reference/users), amely Asana rendelkezésére áll.
 
 ## <a name="assign-users-to-asana"></a>Felhasználók hozzárendelése az Asanában
 
-Azure ad-ben más néven "hozzárendeléseket" fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus fióklétesítés kontextusában csak a az Azure AD-alkalmazáshoz hozzárendelt felhasználók szinkronizálása. 
+Azure AD elküldi egy fogalom megértéséhez nevű *hozzárendelések* meghatározni, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus fióklétesítés kontextusában csak a az Azure AD-alkalmazáshoz hozzárendelt felhasználók szinkronizálása.
 
 Beállítása, és a kiépítési szolgáltatás engedélyezése előtt el kell döntenie, hogy mely felhasználók Azure AD-ben az Asanában alkalmazás hozzáférésre van szükségük. Ezután ezek a felhasználók utasításokat követve hozzárendelheti az Asanában alkalmazás:
 
@@ -51,7 +51,7 @@ Beállítása, és a kiépítési szolgáltatás engedélyezése előtt el kell 
 
 Azt javasoljuk, hogy hozzárendelje egyetlen Azure AD-felhasználót az Asanában, az üzembe helyezési konfiguráció tesztelése. További felhasználók később is hozzárendelhető.
 
-## <a name="configure-user-provisioning-to-asana"></a>Konfigurálnom a felhasználókiépítést az Asanában 
+## <a name="configure-user-provisioning-to-asana"></a>Konfigurálnom a felhasználókiépítést az Asanában
 
 Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Asana-felhasználói fiókot. Is konfigurálhatja az eszközkiépítési szolgáltatás létrehozása, frissítése és tiltsa le a hozzárendelt felhasználói fiókok az Asanában, az Azure AD felhasználói hozzárendelések alapján.
 
@@ -86,7 +86,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Asana-
 
 1. Adja meg az e-mail-címét egy személy vagy csoport, amely az üzembe helyezési hiba értesítéseket kapni szeretné **értesítő e-mailt**. Jelölje be a jelölőnégyzetet alá.
 
-1. Kattintson a **Mentés** gombra. 
+1. Kattintson a **Mentés** gombra.
 
 1. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók az Asanában**.
 
@@ -94,7 +94,7 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás üzembe helyezési API Asana-
 
 1. Ahhoz, hogy az Azure AD létesítési szolgáltatás az Asanában, az a **beállítások** területén módosíthatja **üzembe helyezési állapotra** való **a**.
 
-1. Kattintson a **Mentés** gombra. 
+1. Kattintson a **Mentés** gombra.
 
 Most a kezdeti szinkronizálás indítása az Asanában rendelt bármely felhasználó számára a **felhasználók** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut hosszabb időt vesz igénybe. Használja a **szinkronizálás részleteivel** előrehaladásának figyeléséhez, és kövesse a hivatkozásokat tevékenységeket tartalmazó naplók kiépítés szakaszt. A naplók a Asana-alkalmazásban a kiépítési szolgáltatás által végrehajtott összes műveletet ismerteti.
 
@@ -103,5 +103,5 @@ Az Azure AD létesítési naplók olvasása további információkért lásd: [a
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](asana-tutorial.md)

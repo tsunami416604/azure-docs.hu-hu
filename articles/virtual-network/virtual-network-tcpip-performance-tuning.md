@@ -19,7 +19,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/30/2019
+ms.date: 04/02/2019
 ms.author:
 - rimayber
 - dgoddard
@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 664c8b659152a370d7fb31907b6cdbcd414dce31
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
-ms.translationtype: MT
+ms.openlocfilehash: 6d53b8fe46997f6b4f915bfb14a64d69b22cc5d4
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905100"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057829"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Az Azure virtuális gépek TCP/IP-teljesítményhangolása
 
@@ -141,7 +141,7 @@ Ez a táblázat bemutatja a lineáris távolság két helye között azonban há
 
 Propagálás sebessége egy standard értéke 200 is használható.-1 ezredmásodpercre az fogadja a távolságot a mérőszámok alacsony érték.
 
-A példában New York, San Francisco célszerű a lineáris távolság 4,148-km-re. Minimális RTT = 2 * (4,148 / 20). A kimenet a egyenlet ezredmásodpercben lesz.
+A példában New York, San Francisco célszerű a lineáris távolság 4,148-km-re. Minimális RTT = 2 * (4,148 200). A kimenet a egyenlet ezredmásodpercben lesz.
 
 Mivel a két hely közötti fizikai távolság rögzített valósággá, ha a legnagyobb hálózati teljesítmény szükség, majd válassza ki a célhelyek között legkisebb távolságot, leginkább logikus lehetőség. Másodlagosan tervezési döntéseket a virtuális hálózaton belül lehet tenni elérési útjának forgalom optimalizálása, és a késés csökkentése érdekében. Ezek a virtuális hálózati megfontolások a hálózati kialakítási szempontok az alábbi szakasz ismerteti.
 
@@ -350,3 +350,7 @@ További információ alatt található:
 Az Azure-ügyfelek, amelyek a hálózati teljesítményproblémák csomagrögzítés jelenhet meg a TCP-csomagokat a TCP-jelzők (ZSÁK, Ismétlődő ACK, ÚJRAKÜLDÉSI és gyors TIMEOUTS). Ezek a csomagok kifejezetten hálózati hatékonysági eredményeként csomagvesztés jelzik. Csomagveszteség viszont nem feltétlenül Azure teljesítménnyel kapcsolatos problémák miatt. Teljesítménnyel kapcsolatos problémák az alkalmazást, operációs rendszer vagy más problémákat is előfordulhat, hogy nem közvetlenül kapcsolódik az Azure platform oka lehet. Is fontos megjegyezni, hogy néhány újraküldési vagy duplikált, a hálózat ACK normál – megbízható készült TCP protokollt. És a TCP-csomagokat a csomagrögzítés bizonyítékokat nem feltétlenül jelez rendszeres hálózati probléma, amennyiben azok túlzott nem.
 
 Azonban, hogy meg kell adni egyértelműen, hogy ezek csomagtípusok-e, hogy TCP átviteli sebesség nem éri el a maximális teljesítmény – a többi szakasz az említett okokból jelzések.
+
+## <a name="next-steps"></a>További lépések
+
+Most, hogy már beszéltünk a TCP/IP teljesítmény hangolása az Azure virtuális gépek, a következő lépések tartalmazzák [más virtuális hálózat megtervezése](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-vnet-plan-design-arm) szempontok vagy [tudjon meg többet a csatlakozás és a virtuális hálózatok konfigurálása](https://docs.microsoft.com/en-us/azure/virtual-network/).

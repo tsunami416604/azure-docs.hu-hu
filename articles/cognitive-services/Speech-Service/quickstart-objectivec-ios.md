@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2520f05c83cb5b727c8cdae1602b39320de4b99d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094922"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009271"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK használatával iOS rendszeren beszédfelismerést Objective-C nyelven
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebből a cikkből megtudhatja, hogyan írhat Objective-C nyelven olyan iOS-alkalmazást, amely a Cognitive Services Speech SDK-val átírja a felvett beszédet tartalmazó hangfájlokat szöveggé.
+Ebből a cikkből elsajátíthatja egy iOS-alkalmazás létrehozása az Objective-C-t, a Cognitive Services beszédfelismerő SDK segítségével lefényképezze beszéd szöveggé mikrofont, vagy a hanganyagot egy fájlból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,16 +29,16 @@ Mielőtt elkezdené, a következő előfeltételek listáját:
 
 * A [előfizetési kulcs](get-started.md) a beszédfelismerési szolgáltatás
 * Olyan macOS-gépeken, [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) vagy újabb
-* A cél 11.4 vagy újabb IOS-verzió beállítása
+* A cél beállítása verziója IOS 9.3 vagy újabb
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Az iOS-re szánt Speech SDK letöltése
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.3.1`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.4.0`.
 
-A Macre és iOS-re szánt Cognitive Services Speech SDK-t jelenleg Cocoa-keretrendszerként áll rendelkezésre.
-Innen tölthető le: https://aka.ms/csspeech/iosbinary. Töltse le a fájlt a kezdőkönyvtárába.
+A Cognitive Services beszédfelismerő SDK IOS rendszerhez készült terjesztése zajlik, Cocoa keretrendszert.
+Le is tölthetők: [Itt](https://aka.ms/csspeech/iosbinary). Töltse le a fájlt a kezdőkönyvtárába.
 
 ## <a name="create-an-xcode-project"></a>Xcode-projekt létrehozása
 
@@ -61,7 +61,7 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
         ![A hozzáadott keretrendszer](media/sdk/qs-objectivec-framework.png)
         1. Lépjen a **Build Settings** lapra, és engedélyezze az **összes** beállítást.
         1. Vegye fel a könyvtárat `$(SRCROOT)/..` a keretrendszer-keresési útvonalak közé (*Framework Search Paths* a **Search Paths** részben).
-        ![Keretrendszer-keresési útvonal beállítása](media/sdk/qs-objectivec-framework-search-paths.png)
+        ![Keretrendszer keresési útvonalat beállítás](media/sdk/qs-objectivec-framework-search-paths.png)
 
 ## <a name="set-up-the-ui"></a>A felhasználói felület beállítása
 
@@ -102,4 +102,5 @@ Cserélje le az automatikusan létrehozott nevet XML ezt a kódot:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Explore Objective-C samples on GitHub](https://aka.ms/csspeech/samples)
+> [Objective-C-minták megtekintése a Githubon](https://aka.ms/csspeech/samples)
+

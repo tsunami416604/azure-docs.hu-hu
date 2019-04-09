@@ -4,17 +4,17 @@ description: Használja az Azure Erőforrás-grafikon futtatása néhány alapsz
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 04/04/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fd945b5fd9f26cc65c5b049406831228a3d5f327
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: MT
+ms.openlocfilehash: bfeb1678a5271cf1e498cee0a12be12c2cbc2902
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338716"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058458"
 ---
 # <a name="starter-resource-graph-queries"></a>Alapszintű Resource Graph-lekérdezések
 
@@ -23,16 +23,16 @@ Az Azure Resource Graph-fal végzett lekérdezések megértéséhez először a 
 A következő alapszintű lekérdezéseken vezetjük végig:
 
 > [!div class="checklist"]
-> - [Az Azure-erőforrások száma](#count-resources)
-> - [Az erőforrások listája név szerint rendezve](#list-resources)
-> - [Az összes virtuális gép megjelenítése név szerint rendezve, csökkenő sorrendben](#show-vms)
-> - [Az első öt virtuális gép megjelenítése a nevük és az operációs rendszerük típusa szerint](#show-sorted)
-> - [A virtuális gépek száma az operációs rendszer típusa szerint](#count-os)
-> - [A tárolót tartalmazó erőforrások megjelenítése](#show-storage)
-> - [Az összes nyilvános IP-cím listázása](#list-publicip)
-> - [A konfigurált IP-címekkel rendelkező erőforrások száma előfizetés szerint](#count-resources-by-ip)
-> - [Az adott címkeértékkel rendelkező erőforrások listázása](#list-tag)
-> - [Az összes, adott címkeértékkel rendelkező tárfiók listázása](#list-specific-tag)
+> - [Száma Azure-erőforrások](#count-resources)
+> - [Az erőforrások listázására név szerint rendezve](#list-resources)
+> - [Csökkenő sorrendben név szerint rendezett összes virtuális gép megjelenítése](#show-vms)
+> - [Megjelenítés az első öt virtuális gépek nevét és az operációs rendszer típusa](#show-sorted)
+> - [Az operációs rendszer típus szerint a virtuális gépek száma](#count-os)
+> - [Amelyek tartalmazzák a tárolási erőforrások megjelenítése](#show-storage)
+> - [Az összes nyilvános IP-címek listája](#list-publicip)
+> - [Erőforrások, amelyek rendelkeznek az előfizetés által konfigurált IP-címek száma](#count-resources-by-ip)
+> - [Egy adott címkeértékkel erőforrások listája](#list-tag)
+> - [Adott címkeértékkel rendelkező összes storage-fiókok listázása](#list-specific-tag)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -95,7 +95,7 @@ Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Co
 
 ## <a name="show-sorted"></a>Az első öt virtuális gép megjelenítése a nevük és az operációs rendszerük típusa szerint
 
-Ez a lekérdezés a `limit` paramétert használja ahhoz, hogy a feltételeknek megfelelőkből csak öt rekordot kérjen le, amelyek név szerint vannak rendezve. Az Azure-erőforrás típusa `Microsoft.Compute/virtualMachines`. A `project` adja meg az Azure Resource Graph-nak, hogy a lekérdezés mely tulajdonságokat tartalmazza.
+Ez a lekérdezés a `limit` paramétert használja ahhoz, hogy a feltételeknek megfelelőkből csak öt rekordot kérjen le, amelyek név szerint vannak rendezve. Az Azure-erőforrás típusa `Microsoft.Compute/virtualMachines`. `project` arra utasítja az Azure Erőforrás-grafikon mely tulajdonságokat tartalmazza.
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -167,20 +167,22 @@ Search-AzGraph -Query "where type contains 'storage' | distinct type"
 ## <a name="list-publicip"></a>Az összes nyilvános IP-cím listázása
 
 Az előző lekérdezéshez hasonlóan minden olyan elemet megtalál, amelynek a típusa tartalmazza a **publicIPAddresses** sztringet.
-Ez a lekérdezés úgy bővül ki, hogy kizárja azokat az eredményeket, amelyeknél a **properties.ipAddress** értéke null, hogy csak a **properties.ipAddress** értékkel rendelkezőket adja vissza, és az eredményeket az első 100-ra korlátozza (`limit`). A kiválasztott parancshéjtól függően szükség lehet az idézőjelek escape-elésére.
+Csak az eredmények belefoglalása a minta kibővíti ezt a lekérdezést, **properties.ipAddress**
+`isnotempty`, csak a **properties.ipAddress**, és a `limit` az eredményeket a felső szerint
+100. A kiválasztott parancshéjtól függően szükség lehet az idézőjelek escape-elésére.
 
 ```Query
-where type contains 'publicIPAddresses' and properties.ipAddress != ''
+where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)
 | project properties.ipAddress
 | limit 100
 ```
 
 ```azurecli-interactive
-az graph query -q "where type contains 'publicIPAddresses' and properties.ipAddress != '' | project properties.ipAddress | limit 100"
+az graph query -q "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type contains 'publicIPAddresses' and properties.ipAddress != '' | project properties.ipAddress | limit 100"
+Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
 ## <a name="count-resources-by-ip"></a>A konfigurált IP-címekkel rendelkező erőforrások száma előfizetés szerint csoportosítva
@@ -188,16 +190,16 @@ Search-AzGraph -Query "where type contains 'publicIPAddresses' and properties.ip
 Ha maradunk az előző lekérdezéspéldánál, és hozzáadjuk a `summarize` és a `count()` paramétert, megkaphatjuk a konfigurált IP-címekkel rendelkező erőforrások előfizetés szerinti listáját.
 
 ```Query
-where type contains 'publicIPAddresses' and properties.ipAddress != ''
+where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress)
 | summarize count () by subscriptionId
 ```
 
 ```azurecli-interactive
-az graph query -q "where type contains 'publicIPAddresses' and properties.ipAddress != '' | summarize count () by subscriptionId"
+az graph query -q "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type contains 'publicIPAddresses' and properties.ipAddress != '' | summarize count () by subscriptionId"
+Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
 ## <a name="list-tag"></a>Az adott címkeértékkel rendelkező erőforrások listázása
@@ -250,7 +252,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 ```
 
 > [!NOTE]
-> Ez példa az egyező találatok kereséséhez az `==` paramétert használja az `=~` feltételes helyett. Az `==` kis- és nagybetűket megkülönböztető találatot ad.
+> Ez példa az egyező találatok kereséséhez az `==` paramétert használja az `=~` feltételes helyett. `==` van egy kis-és nagybetűk megkülönböztetése.
 
 ## <a name="next-steps"></a>További lépések
 

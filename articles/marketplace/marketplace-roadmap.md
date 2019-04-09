@@ -4,7 +4,7 @@ description: Egy ütemtervet, hogy mi történik a Marketplace-en
 services: Azure, Marketplace, Compute
 documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
+manager: MaggiePucciEvans
 editor: ''
 ms.assetid: ''
 ms.service: marketplace
@@ -12,23 +12,37 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 01/31/2019
-ms.author: ellacroi
-ms.openlocfilehash: b3f5fec16a1f100bc5286f8983580f5012928221
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.date: 03/29/2019
+ms.author: BrianLevenson
+ms.openlocfilehash: 4a1586d965a51a3c655346994274159b99ab0a9a
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743973"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010634"
 ---
-# <a name="azure-marketplace-and-appsource-roadmap"></a>Az Azure Marketplace és AppSource ütemterve
+# <a name="azure-marketplace-and-appsource-roadmap"></a>Az Azure Marketplace és az AppSource ütemterve
 
-Ez a dokumentum mit tartogat a jövő az Azure Marketplace, az appsource-ban és a kapcsolódó partner programok betekintést biztosít. Egyes sértették meg azt a jelentős funkciókat és mikor várható megjelenik egy nyers időszakon rögzíti. Nem minden új szolgáltatások teljes listája, de a célja, hogy betekintést a fő befektetéseit. Ezek a szolgáltatáskészletek és kézbesítési időkereteknek jelenlegi, még változhatnak. Ezen a lapon a havonta frissül.
+Ez a dokumentum mit tartogat a jövő az Azure Marketplace, az appsource-ban és a kapcsolódó partner programok betekintést biztosít. A jelentős funkcióit, hogy sértették meg, vagy hozzávetőleges időszakon láthatók őket, és frissülni fog havonta rögzíti. Nem minden új szolgáltatások teljes listája de célja, hogy betekintést a fő befektetéseit. Ezek a szolgáltatáskészletek és kézbesítési időkeretének meghatározása jelenlegi, még változhatnak.
 
 Örömmel vesszük javaslatait! Beszélgetésbe a [Microsoft Partnerközösségéhez](https://www.microsoftpartnercommunity.com/) a legújabb frissítéseinek új funkciókat, programok és események.
 
 ## <a name="roadmap"></a>Ütemterv
 ![](./media/marketplace-publishers-guide/roadmap.png)
+
+## <a name="recent-releases"></a>Verziók
+
+Ha egy olyan képességet, azt törlődni fog az ütemterv részét képezi. Funkció, amely hozzá van adva a piactéren az alábbiakat foglalja magában.
+
+### <a name="for-march-2019"></a>A március 2019
+
+* [Marketplace-en és a CSP frissítés Blog](https://azure.microsoft.com/blog/azure-marketplace-and-cloud-solution-provider-updates-march-2019/)
+* [CSP csatornákhoz (ISV) ajánlatok közzététele](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)
+* [Már viszonteladóként is értékesítheti a Piactéri ajánlatok elérhetőségének (CSP)](https://docs.microsoft.com/partner-center/sell-marketplace-products)
+* [Standard szerződés](https://docs.microsoft.com/azure/marketplace/standard-contract)
+* [SaaS-teljesítési API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis)
+* [Marketplace-en helyeken és pénznemek](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)
+* [Értékesítői elemzések](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
 
 ## <a name="next-steps"></a>További lépések
 

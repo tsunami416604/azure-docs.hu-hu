@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 4d82cc59eb1098451a263957aa028b66996bb072
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: fb54e11c9da6bec2a1e0354317df6343140cbf09
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307182"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006788"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Az Azure felügyeleti eseményriasztások át a tevékenységnapló-riasztások
 
@@ -104,7 +104,7 @@ Szeretne létrehozni egy új tevékenység Log riasztási, közül választhat:
 * Hajtsa végre a [útmutatónk bemutatja a riasztás létrehozása az Azure Portalon](../../azure-monitor/platform/activity-log-alerts.md)
 * Ismerje meg, hogyan [hozzon létre egy riasztást, Resource Manager-sablon használatával](../../azure-monitor/platform/alerts-activity-log.md)
  
-Riasztások a korábban létrehozott felügyeleti események nem lesz automatikusan áttelepítve a tevékenységnapló-riasztásokra. Az előző PowerShell-parancsfájl használatával, hogy van konfigurálva, és manuálisan hozza létre őket újra, a tevékenységnapló-riasztások felügyeleti események riasztások felsorolása kell. Ez október 1., utána felügyeleti eseményriasztások többé nem jelenik meg az Azure-előfizetés előtt kell elvégezni. Más típusú Azure-riasztások, beleértve az Azure Monitor metrikákhoz kapcsolódó riasztások, az Application Insights-riasztások és a Log Analytics-riasztások nem érinti a változás. Ha bármilyen kérdése van, az alábbi megjegyzések közzététele.
+Riasztások a korábban létrehozott felügyeleti események nem lesz automatikusan áttelepítve a tevékenységnapló-riasztásokra. Az előző PowerShell-parancsfájl használatával, hogy van konfigurálva, és manuálisan hozza létre őket újra, a tevékenységnapló-riasztások felügyeleti események riasztások felsorolása kell. Ez október 1., utána felügyeleti eseményriasztások többé nem jelenik meg az Azure-előfizetés előtt kell elvégezni. Más típusú Azure-riasztások, beleértve az Azure Monitor metrikákhoz kapcsolódó riasztások, az Application Insights-riasztások és Naplókeresési riasztások nem érinti a változás. Ha bármilyen kérdése van, az alábbi megjegyzések közzététele.
 
 
 ## <a name="next-steps"></a>További lépések

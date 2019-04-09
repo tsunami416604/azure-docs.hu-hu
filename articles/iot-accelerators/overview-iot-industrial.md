@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1dee51354ba9210e52459dcf7a96695bc3736648
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: b4fbfc1d9c9441c6c9f12987de5feb1a90e9f17f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759286"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256379"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Mi az ipari IoT (IIoT)
 
@@ -28,7 +28,7 @@ Csökkentse a időigényes folyamat gyári emelet gépek az Azure IoT OPC UA-esz
 ![Ipari IoT – áttekintés](media/overview-iot-industrial/overview.png)
 
 > [!NOTE]
-> Ipari IoT Azure-szolgáltatásokkal kapcsolatos további információkért tekintse meg a GitHub [tárház ](https://github.com/Azure/azure-iiot-services).
+> Ipari IoT Azure-szolgáltatásokkal kapcsolatos további információkért tekintse meg a GitHub [tárház](https://github.com/Azure/azure-iiot-services).
 Ha még nem ismeri az Azure IoT Edge-modulok működéséről, kezdődik a következő cikkeket:
 - [Tudnivalók az Azure IoT Edge-ről](../iot-edge/about-iot-edge.md)
 - [Az Azure IoT Edge-modulok](../iot-edge/iot-edge-modules.md)
@@ -50,4 +50,4 @@ Az Azure IoT OPC UA-tanúsítványkezelés vagy az OPC-tároló az OPC UA globá
 Most, hogy a bemutató ipari IoT és annak összetevői már rendelkezett, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [Mi az OPC-Twin](overview-opc-twin.md)
+> [Mi az az OPC-iker?](overview-opc-twin.md)

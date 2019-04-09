@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 1edc2587ef8680f60082bf6271b73d30184f331b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: 52f74bb3cb9e460fc5c572079355f47b4b0bf0a3
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521244"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010447"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az szöveg-hang transzformációs?
 
@@ -38,7 +38,7 @@ Ez a táblázat felsorolja a szöveg-hang transzformációs alapvető funkciói:
 
 | Használati eset | SDK | REST |
 |----------|-----|------|
-| Szöveg-beszéd átalakítás. | Nem | Igen |
+| Szöveg-beszéd átalakítás. | Igen | Igen |
 | Töltse fel a hangalapú betanítás adatkészletek. | Nem | igen\* |
 | Hozzon létre, és hang betűtípus modellek kezelése. | Nem | igen\* |
 | Hozzon létre, és hang betűtípus központi telepítések felügyeletéhez szükséges. | Nem | igen\* |
@@ -54,24 +54,31 @@ Ez a táblázat felsorolja a szöveg-hang transzformációs alapvető funkciói:
 
 Rövid útmutatók, kevesebb mint 10 perc múlva a kódot futtató úgy tervezték, hogy biztosítunk. Ez a táblázat szöveg-hang transzformációs útmutatóink nyelv szerint rendezett listáját tartalmazza.
 
-| Első lépések | Platform | API-referencia |
+| Rövid útmutató (REST) | Platform | API-referencia |
 |------------|----------|---------------|
 | [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Node.js](quickstart-nodejs-text-to-speech.md) | Window, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Python](quickstart-python-text-to-speech.md) | Window, macOS, Linux | [Tallózás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+
+| Rövid útmutató (SDK) | Platform | API-referencia |
+|------------|----------|---------------|
+| [C#, .NET-keretrendszer](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
+| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Tallózás](https://aka.ms/csspeech/cppref) |
+| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Tallózás](https://aka.ms/csspeech/cppref) |
 
 ## <a name="sample-code"></a>Mintakód
 
 A szöveg-hang transzformációs mintakód a Githubon érhető el. Ezek a minták a legnépszerűbb programnyelv a szöveg-beszéd átalakítás terjed ki.
 
 * [Szöveg-hang transzformációs minták (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+* [Szöveg-hang transzformációs minták (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 
 ## <a name="reference-docs"></a>Segédanyagok
 
 * [Beszéd SDK](speech-sdk-reference.md)
-* [Speech Devices SDK](speech-devices-sdk.md)
-* [REST API: Speech-to-text](rest-speech-to-text.md)
-* [REST API: Szöveg-hang transzformációs](rest-text-to-speech.md)
+* [Beszédeszközök SDK](speech-devices-sdk.md)
+* [REST API: Diktálás](rest-speech-to-text.md)
+* [REST API: Szövegfelolvasás](rest-text-to-speech.md)
 * [REST API: A Batch beszédátírási és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>További lépések

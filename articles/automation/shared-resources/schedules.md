@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/22/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d99c6b419ee201be50e74849cd95a332845f5b73
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 483f9092d29fc40937ed9d54510269af2af30872
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58623168"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008646"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Runbook ütemezése az Azure Automationben
 
@@ -156,6 +156,9 @@ Ha letilt egy ütemezést, bármely olyan runbookhoz, hozzá kell kapcsolni már
 1. Válassza ki az Azure Portalon, az Automation-fiók **ütemezések** a szakaszában **megosztott erőforrások** a bal oldalon.
 2. Kattintson a jobb oldali ablaktáblában nyissa meg az ütemezés nevét.
 3. Változás **engedélyezve** való **nem**.
+
+> [!NOTE]
+> Ha azt szeretné, hogy rendelkezik egy kezdő dátuma a múltban ütemezésének letiltása, módosítania kell a kezdő dátum mentése előtt a jövőben időpontot.
 
 ### <a name="to-disable-a-schedule-with-powershell"></a>A PowerShell-lel ütemezésének letiltása
 

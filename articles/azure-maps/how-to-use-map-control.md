@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 56580454753ae6af60f5f8c51d9504f813f91e97
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: ffd2afd66c108f9eef690d641d9c4cbc85e9d609
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540125"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256090"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Az Azure Maps térkép vezérlőelem használata
 
@@ -30,8 +30,8 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     a. Az URL-végpontot a stíluslap és parancsfájl útmutatót hozzáadásával az Azure Maps Web SDK globálisan üzemeltetett CDN verzióját használja a `<head>` elem a fájl:
 
     ```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
     b. Azt is megteheti, betöltése az Azure Maps Web SDK forráskódját használatával helyben a [azure maps-ellenőrző](https://www.npmjs.com/package/azure-maps-control) NPM csomag, és tárolja azt az alkalmazást. Ez a csomag is TypeScript definíciókat tartalmazza.
@@ -102,7 +102,7 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     </script>
     ```
 
-    Lásd: [hitelesítés az Azure Maps](azure-maps-authentication.md) további részletekért.
+    További információkért lásd: [hitelesítés az Azure Maps](azure-maps-authentication.md) további részletekért.
 
 6. Igény szerint hasznosnak találhatja, a következő meta tag elemeket ad hozzá a fő az oldal hasznos:
 
@@ -114,7 +114,7 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 
-7. A teljes kép a HTML-fájl hasonlóan kell kinéznie a következőket:
+7. A teljes kép a HTML-fájl hasonlóan kell kinéznie a következő kódot:
 
     ```HTML
     <!DOCTYPE html>
@@ -131,8 +131,8 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <style>
             html, body {
@@ -164,7 +164,7 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     </html>
     ```
 
-8. A böngészőben nyissa meg a fájlt, és megtekintheti a megjelenített térképen. A következőhöz hasonlóan kell kinéznie:
+8. A böngészőben nyissa meg a fájlt, és megtekintheti a megjelenített térképen. A következő kódhoz hasonlóan kell kinéznie:
 
     <iframe height="700" style="width: 100%;" scrolling="no" title="A térkép vezérlőelem használata" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>a térkép vezérlőelem használata</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
@@ -180,4 +180,4 @@ Ismerje meg, hogyan hozhat létre, és a egy térkép interakcióba:
 Ismerje meg, hogyan térkép stílus:
 
 > [!div class="nextstepaction"]
-> [Térkép stílus kiválasztása](choose-map-style.md)
+> [Térképstílus kiválasztása](choose-map-style.md)

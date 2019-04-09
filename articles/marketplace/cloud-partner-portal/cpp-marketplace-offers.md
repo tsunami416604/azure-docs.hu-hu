@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: fd51a9f70d60219a9429ff66d6f1d404391f6fb0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f537a43f5d4d0431e1659daa258e0c1453f2295b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446709"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010583"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Az Azure és az appsource-ban Marketplace-ajánlat
 
@@ -56,11 +56,11 @@ A következő táblázat felsorolja az aktuális az ajánlat által támogatott 
 | [Tanácsadási szolgáltatás](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | Mindkét | A Microsoft minősített tanácsadók listázhatja a tartomány-specifikus szolgáltatások az Azure Marketplace-en vagy az appsource-ban.  Összpontosíthassák segítséget nyújt az ügyfeleknek értékelésekor problémák és a létrehozott és a megfelelő megoldások az üzleti célok eléréséhez.  |
 | [Tároló](./containers/cpp-containers-offer.md)  | Azure | Megoldás, vagy egy Kubernetes-alapú szolgáltatás, vagy az Azure Container Instances szolgáltatásban üzembe helyezett Docker-tároló rendszerképét. |
 | [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Csomag, amely kiterjeszti a vállalat erőforrás tervezési (ERP) és üzleti felügyeleti rendszer. |
-| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Egy csomagot, amely kibővíti az ügyfelek erőforrás-kezelő (CRM) rendszer a sales, a szolgáltatás, a project service és a mező szolgáltatás modulok.  |
-| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Egy csomagot, amely kiterjeszti a vállalatierőforrás-tervezési (ERP) szolgáltatást, hogy támogatja a speciális pénzügyi, műveletek, gyártási és ellátásilánc-kezelés. |
+| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Egy csomagot, amely kibővíti az ügyfelek erőforrás-kezelő (CRM) rendszer a sales, a szolgáltatás, a project service és a mező szolgáltatás modulok  |
+| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Egy csomagot, amely kiterjeszti a vállalatierőforrás-tervezési (ERP) szolgáltatást, hogy támogatja a speciális pénzügyi, műveletek, gyártási és ellátásilánc-kezelés |
 | [IoT Edge-modul](./iot-edge-module/cpp-offer-process-parts.md) | Azure | A Docker-kompatibilis tároló, amely IoT Edge-eszköz futtat.  Az egyéni kódot, más Azure-szolgáltatások és a 3. fél szolgáltatások kombinációját használó, kis számítási modulokat tartalmaz. |
-| [Power BI App](./power-bi/cpp-power-bi-offer.md) | AppSource | Jelentések és irányítópultok csatlakozhat adatokhoz a közös adattárolás adatfolyamok használó csomag. |
-| [SaaS-alkalmazás](./saas-app/cpp-saas-offer.md) | Azure | Megoldás, a szoftver--szolgáltatásként előfizetés, a közzétevő, hogy mely felhasználók jelentkezzen be, amely az Azure Active Directoryt használja testre szabott felületen keresztül kezeli. |
+| [Power BI App](./power-bi/cpp-power-bi-offer.md) | AppSource | Csomagok, testre szabható Power BI-tartalmakat, beleértve az adatkészlet, jelentések és irányítópultok Power BI-alkalmazás |
+| [SaaS app](./saas-app/cpp-saas-offer.md) | Azure | Megoldás, a szoftver--szolgáltatásként előfizetés, a közzétevő, hogy mely felhasználók jelentkezzen be, amely az Azure Active Directory testre szabott felületen keresztül kezeli. |
 | [Virtuális gép](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Megoldás az ügyfél-előfizetés keretében üzembe egy virtuális gépen belül található.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |
 
@@ -69,4 +69,4 @@ További információkért lásd: [közzétételi útmutató ajánlat típus sze
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan hajthat végre a marketplace-ajánlat és a gyakori technikai attribútumok és eszközök a témakör általános műveleteiről [ajánlatok kezelése](./manage-offers/cpp-manage-offers.md).
+Megtudhatja, hogyan hajthat végre a marketplace-ajánlat és a gyakori technikai attribútumok és eszközök a cikk általános műveleteiről [ajánlatok kezelése](./manage-offers/cpp-manage-offers.md).

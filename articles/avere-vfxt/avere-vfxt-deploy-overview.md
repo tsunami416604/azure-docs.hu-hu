@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0c61db5e34ba58bb767b0bda773a54c8e65cd404
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: MT
+ms.openlocfilehash: 88305e5d877f5bc3cc7ebb116f69b0f49f162b79
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991801"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056231"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT az Azure-ban – üzembe helyezés – áttekintés
 
@@ -32,14 +32,6 @@ Itt látható az összes lépést áttekintése.
 1. Előfeltételek konfigurálása 
 
    Virtuális gép létrehozása előtt hozzon létre egy új előfizetést a Avere vFXT projekt, konfigurálja az előfizetés tulajdonjogának, vegye kvóták és növelésére, ha szükséges, és fogadja el a Avere vFXT szoftver használatára vonatkozó feltételeket. Olvasási [a Avere vFXT létrehozásának előkészítéséhez](avere-vfxt-prereqs.md) részletes útmutatást.
-
-1. A fürtcsomópontok hozzáférés szerepkör létrehozása
-
-   Azure az [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) történő hitelesítéséhez, a fürtcsomópont virtuális gépein bizonyos feladatokat. Például a fürtcsomópontok kell tudni hozzárendelése vagy egyéb fürtcsomópontok IP-cím ismételt hozzárendelése. A fürt létrehozása előtt meg kell határoznia egy szerepkört biztosít a számukra megfelelő engedélyekkel.
-
-   Olvasási [hozza létre a fürt csomópont hozzáférés szerepkört](avere-vfxt-prereqs.md#create-the-cluster-node-access-role) útmutatást.
-
-   A fürt vezérlő is használ egy hozzáférés-szerepkör, de elfogadhatja az alapértelmezett szerepkör, a tulajdonos, ahelyett, hogy létrehozná a saját. Ha azt szeretné, a fürt vezérlő egyéni szerepkör létrehozása, olvasása [testre szabott hozzáférés szerepkört](avere-vfxt-controller-role.md). 
 
 1. A Avere vFXT fürt létrehozása 
 

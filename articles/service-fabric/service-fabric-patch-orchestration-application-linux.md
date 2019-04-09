@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 5efcc92bc2054dfb66b5fe03ae083c49f924d2ce
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 537450dbc386a94fa5c2e0d9334435dce041a32f
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668194"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057642"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>A Linux operációs rendszer a Service Fabric-fürtben
 
@@ -121,13 +121,13 @@ Az Ubuntu [felügyelet nélküli frissítéseket](https://help.ubuntu.com/commun
 
 Telepítési parancsfájlok mellett alkalmazást is letölthető [archív hivatkozás](https://go.microsoft.com/fwlink/?linkid=867984).
 
-Alkalmazás sfpkg formátumban letölthető [sfpkg hivatkozás](https://aka.ms/POA/POA_v2.0.2.sfpkg). Ez hasznos tartalmaz [Azure Resource Manager-alapú alkalmazás központi telepítésének](service-fabric-application-arm-resource.md).
+Alkalmazás sfpkg formátumban letölthető [sfpkg hivatkozás](https://aka.ms/POA/POA_v2.0.3.sfpkg). Ez hasznos tartalmaz [Azure Resource Manager-alapú alkalmazás központi telepítésének](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Az alkalmazás konfigurálása
 
 A patch orchestration app viselkedését konfigurálhatja az igényeinek. Alkalmazás létrehozása vagy módosítása során az alkalmazás paraméter megadásával bírálja felül az alapértelmezett értékeket. Alkalmazás paraméterek megadásával adható meg `ApplicationParameter` , a `Start-ServiceFabricApplicationUpgrade` vagy `New-ServiceFabricApplication` parancsmagok.
 
-|**A paraméter**        |**Típus**                          | **Részletek**|
+|**Paraméter**        |**Typo**                          | **Részletek**|
 |:-|-|-|
 |MaxResultsToCache    |Hosszú                              | Frissítés eredményeket, amely a gyorsítótárba kerüljenek maximális számát. <br>Alapértelmezett érték 3000 feltéve, hogy a: <br> -Csomópontok száma, 20. <br> -Történik a havi csomópont frissítések száma, öt. <br> -Művelet eredmények száma 10 lehet. <br> -Az elmúlt három havi eredmény kell tárolni. |
 |TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a szabályzatot, amely a frissítések telepítése a Service Fabric-fürt csomópontjain a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. A frissítések olyan telepített egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. Frissítések egyszerre több frissítési tartományt telepített állnak. (A maximumot, a frissítési tartományokhoz tartozó összes csomópontját meg frissítés.)
@@ -173,7 +173,8 @@ Az Ön kényelme érdekében a powershell (Undeploy.ps1) és (Undeploy.sh) bash-
 
 ## <a name="view-the-update-results"></a>A frissítési eredmények megtekintése
 
-A patch orchestration app közzététele a REST API-k, a felhasználó korábbi eredményeinek megjelenítésére. Következő egy minta eredmény: ```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
+A patch orchestration app közzététele a REST API-k, a felhasználó korábbi eredményeinek megjelenítésére. Következő egy minta eredmény:
+```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
 ```json
 [ 
   { 
@@ -373,5 +374,10 @@ A patch orchestration alkalmazás használatának és teljesítményének nyomon
 ### <a name="version-201"></a>2.0.1-es verziója
 - Újrafordítani az alkalmazást a legújabb Service Fabric SDK használatával
 
-### <a name="version-202-latest"></a>2.0.2-es verzió (legújabb)
+### <a name="version-202"></a>2.0.2-es verzió 
 - Kijavítva állapotfigyelési figyelmeztetése első magányos újraindítás közben.
+
+### <a name="version-203-latest"></a>Verzió 2.0.3 (legújabb)
+- A probléma kijavítása, ahol CPU-használat csomóponti ügynök démon szolgáltatás elérte a legfeljebb 99 %-os standard D1 v2 virtuális gépeken.
+- A probléma, amely befolyásolja a javítási élettartam-cyle egy csomóponton, abban az esetben, ha az aktuális csomópont nevét részhalmaza nevű csomópont kijavítása. Az ilyen csomópontokon, lehetséges, a javítás hiányzik, vagy újraindítás függőben.
+- Kijavítva a hiba, amely miatt csomóponti ügynök démon tartja összeomlik, ha sérült beállítások lesznek átadva a szolgáltatás.

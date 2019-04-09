@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: a1d92f324c30c498b1a42f6155a478cf131ecc96
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 6644b6ae3a9482a1bd3f840a814d3bb6361517fc
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961958"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006500"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for MariaDB virtuális hálózati Szolgáltatásvégpontok és a VNet-szabályok az Azure portal használatával
 
@@ -22,11 +22,18 @@ Virtuális hálózat (VNet) szolgáltatások végpontok és a szabályok egy vir
 
 ## <a name="create-a-vnet-rule-and-enable-service-endpoints"></a>Hozzon létre egy virtuális hálózati szabályt, és engedélyezze a szolgáltatásvégpontokat
 
-1. A MariaDB kiszolgálót a beállítások lapon kattintson a fejléc **kapcsolatbiztonság** nyissa meg a kapcsolat biztonsági ablaktáblát az Azure Database for MariaDB. Ezután kattintson a **+ meglévő virtuális hálózat hozzáadása**. Ha nem rendelkezik egy meglévő Vnetet **+ új virtuális hálózat létrehozása** hozhat létre egyet. Lásd: [a rövid útmutató: Hozzon létre egy virtuális hálózatot az Azure portal használatával](../virtual-network/quick-create-portal.md)
+1. A MariaDB kiszolgálót a beállítások lapon kattintson a fejléc **kapcsolatbiztonság** nyissa meg a kapcsolat biztonsági ablaktáblát az Azure Database for MariaDB.
+
+2. Győződjön meg arról, hogy a hozzáférés engedélyezése az Azure-szolgáltatások vezérlő értéke **OFF**.
+
+> [!Important]
+> ON értékre állítsa be, ha az Azure MariaDB adatbázis-kiszolgáló minden olyan alhálózat-kommunikációt fogad el. Hagyja a vezérlőt, állítsa be, előfordulhat, hogy egy biztonsági szempontból túlzott mértékű hozzáférést. A Microsoft Azure Virtual Network szolgáltatás végpont szolgáltatás együttes a virtuális hálózati szabály funkció az Azure Database for MariaDB, együtt csökkentheti a biztonsági támadási.
+
+3. Ezután kattintson a **+ meglévő virtuális hálózat hozzáadása**. Ha nem rendelkezik egy meglévő Vnetet **+ új virtuális hálózat létrehozása** hozhat létre egyet. Lásd: [a rövid útmutató: Hozzon létre egy virtuális hálózatot az Azure portal használatával](../virtual-network/quick-create-portal.md)
 
    ![Az Azure portal – kapcsolatbiztonság kattintson](./media/howto-manage-vnet-portal/1-connection-security.png)
 
-2. Adja meg a virtuális hálózati szabály nevét, válassza ki az előfizetést, virtuális hálózat és alhálózat neve, majd kattintson **engedélyezése**. Ez automatikusan lehetővé teszi a virtuális hálózati Szolgáltatásvégpontok az alhálózaton használatával a **Microsoft.SQL** szolgáltatáscímke.
+4. Adja meg a virtuális hálózati szabály nevét, válassza ki az előfizetést, virtuális hálózat és alhálózat neve, majd kattintson **engedélyezése**. Ez automatikusan lehetővé teszi a virtuális hálózati Szolgáltatásvégpontok az alhálózaton használatával a **Microsoft.SQL** szolgáltatáscímke.
 
    ![Az Azure portal – virtuális hálózat konfigurálása](./media/howto-manage-vnet-portal/2-configure-vnet.png)
 
@@ -44,7 +51,7 @@ Virtuális hálózat (VNet) szolgáltatások végpontok és a szabályok egy vir
    > Ez a cikk szolgáltatáskonfiguráció endpoint és megfontolandó szempontok a Szolgáltatásvégpontok konfigurálása előtt erősen ajánlott. **Virtuális hálózati szolgáltatásvégpont:** A [virtuális hálózati szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) egy alhálózat, amelynek a következők: egy vagy több hivatalos Azure-szolgáltatás nevét. Virtuális hálózat services végpontjainak használja a szolgáltatás neve **Microsoft.Sql**, amely hivatkozik az Azure-szolgáltatás SQL-adatbázis neve. Ez a szolgáltatás címke az Azure SQL Database, Azure Database for MariaDB, PostgreSQL és MySQL-szolgáltatásokra is vonatkozik. Fontos, hogy alkalmazása esetén vegye figyelembe a **Microsoft.Sql** szolgáltatáscímke egy szolgáltatásvégpont, konfigurálja a szolgáltatás végpontja forgalmat az összes Azure-adatbázis szolgáltatás, így az Azure SQL Database, Azure Database for PostgreSQL, Azure Database for MariaDB, és az Azure Database for MySQL-kiszolgálók az alhálózaton.
    > 
 
-3. Kattintson az engedélyezés után a **OK** és látni fogja, hogy a virtuális hálózati Szolgáltatásvégpontok engedélyezve vannak és a egy virtuális hálózati szabályt.
+5. Kattintson az engedélyezés után a **OK** és látni fogja, hogy a virtuális hálózati Szolgáltatásvégpontok engedélyezve vannak és a egy virtuális hálózati szabályt.
 
    ![Virtuális hálózati Szolgáltatásvégpontok engedélyezve van, és a VNet szabály létrehozása](./media/howto-manage-vnet-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 

@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: d9de47ad83f37fa976c3816a0cb2e3e3beaa5472
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 9ef7dd7603b93f6b15988cc4cca089f0486eb3b0
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437577"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010116"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -274,9 +274,9 @@ A nyomkövetési szint függvény streamnaplókba vizsgálatát teszi lehetővé
 | Módszer                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
 | **Hiba (_üzenet_)**   | Naplózás, vagy alacsonyabb hibaszintet ír.   |
-| **warn(_message_)**    | Figyelmeztetési szint naplózás vagy alacsonyabb ír. |
-| **info(_message_)**    | Írási és naplózás, vagy alacsonyabb információ szintet.    |
-| **verbose(_message_)** | Részletes webhelyszintű naplózás ír.           |
+| **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szint naplózás vagy alacsonyabb ír. |
+| **Info (_üzenet_)**    | Írási és naplózás, vagy alacsonyabb információ szintet.    |
+| **részletes (_üzenet_)** | Részletes webhelyszintű naplózás ír.           |
 
 A következő példa ír a naplófájlba a figyelmeztetési nyomkövetési szint:
 
@@ -350,12 +350,12 @@ A `context.req` (kérelem) objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság      | Leírás                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _body_        | Egy objektum, amely tartalmazza a kérelem törzsében.               |
-| _headers_     | Egy objektum, amely tartalmazza a kérelem fejlécében.                   |
-| _Metódus_      | A kérelem HTTP-metódus.                                |
+| _törzs_        | Egy objektum, amely tartalmazza a kérelem törzsében.               |
+| _A fejlécek_     | Egy objektum, amely tartalmazza a kérelem fejlécében.                   |
+| _method_      | A kérelem HTTP-metódus.                                |
 | _originalUrl_ | A kérelem URL-címe                                        |
-| _params_      | Egy objektum, amely tartalmazza a kérés útválasztási paramétereit. |
-| _Lekérdezés_       | Egy objektum, amely tartalmazza a lekérdezési paramétereket.                  |
+| _paraméterei_      | Egy objektum, amely tartalmazza a kérés útválasztási paramétereit. |
+| _lekérdezés_       | Egy objektum, amely tartalmazza a lekérdezési paramétereket.                  |
 | _rawBody_     | A karakterláncként az üzenet törzsében.                           |
 
 
@@ -365,10 +365,10 @@ A `context.res` (válasz) objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság  | Leírás                                               |
 | --------- | --------------------------------------------------------- |
-| _body_    | Egy objektum, amely a válasz törzse tartalmazza.         |
-| _headers_ | A válaszfejlécek tartalmazó objektum.             |
+| _törzs_    | Egy objektum, amely a válasz törzse tartalmazza.         |
+| _A fejlécek_ | A válaszfejlécek tartalmazó objektum.             |
 | _isRaw_   | Azt jelzi, hogy a válasz formázás kihagyva.    |
-| _Állapot_  | A válasz HTTP-állapotkódot.                     |
+| _status_  | A válasz HTTP-állapotkódot.                     |
 
 ### <a name="accessing-the-request-and-response"></a>A kérés- és hozzáférés 
 

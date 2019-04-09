@@ -12,16 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 03/28/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 6d18adfaec965d858bdcb1f74ebcea89f57eea39
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 437009079c1bebe3694aaa26f945bd726b3c9fb9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878026"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59010572"
 ---
-# <a name="saas-fulfillment-api"></a>SaaS-teljesítési API
+# <a name="saas-fulfillment-apis-version-2"></a>SaaS teljesítése API-k 2-es verzió 
 
 Ez a cikk részletesen, amely lehetővé teszi a független szoftvergyártók (ISV) integrálása az SaaS-alkalmazások számára az API az Azure Piactérrel. Ez az API lehetővé teszi, hogy minden engedélyezett kereskedelmi csatornán részt ISV-alkalmazások: a közvetlen partner által irányított (viszonteladói) és a mező által vezetett.  Az API-t annak listaelem transactable SaaS kínál az Azure Marketplace-en.
 
@@ -73,14 +73,34 @@ Ez az állapot azt jelzi, hogy a felhasználó fizetési még nem érkeztek. Sza
 
 Előfizetések ebben az állapotban egy explicit ügyfélkérés vagy adott válaszként díjak megfizetése nem érhető el. A független Szoftvergyártók az elvárás, hogy az ügyfél adatainak őrizzük meg helyreállítási X napnál minimum kérésre és majd törli. 
 
+
 ## <a name="api-reference"></a>API-referencia
 
-Ez a szakasz a SaaS-dokumentumok *előfizetés API* és *műveleti API*.
+Ez a szakasz a SaaS-dokumentumok *előfizetés API* és *műveleti API*.  Értékét a `api-version` 2-es verziójú API-k paramétere `2018-08-31`.  
+
+
+### <a name="parameter-and-entity-definitions"></a>A paraméter és az entitás-definíciók
+
+Az alábbi táblázat a gyakori paramétereket és teljesítése API-k által használt entitások definícióit.
+
+|     A paraméter/entitás     |     Meghatározás                         |
+|     ----------------     |     ----------                         |
+| `subscriptionId`         | Egy SaaS-erőforrás GUID azonosítója  |
+| `name`                   | Az ügyfél által ehhez az erőforráshoz megadott rövid név |
+| `publisherId`            | Minden közzétevő, például a "conotosocorporation" automatikusan létrehozott egyedi karakterlánc-azonosító |
+| `offerId`                | Automatikusan létrehozott ajánlatok, például a "contosooffer1" egyedi karakterlánc-azonosító  |
+| `planId`                 | Minden csomagot/sku, például a "contosobasicplan" számára automatikusan létrehozott egyedi karakterlánc-azonosító |
+| `operationId`            | Egy adott művelet GUID azonosítója  |
+|  `action`                | A művelet végrehajtása egy erőforrást, vagy `subscribe`, `unsubscribe`, `suspend`, `reinstate`, vagy `changePlan`  |
+|   |   |
+
+Globálisan egyedi azonosítóra ([GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) 128 bites (32 hexadecimális) szám, amely általában automatikusan jönnek létre. 
 
 
 ### <a name="subscription-api"></a>Előfizetés API
 
 Az előfizetés API a következő HTTPS műveleteket támogatja: **Első**, **Post**, **javítás**, és **törlése**.
+
 
 #### <a name="list-subscriptions"></a>Előfizetések listázása
 
@@ -106,34 +126,37 @@ A közzétevő SaaS-előfizetések listája.
 *Válaszkódot:*
 
 Kód: 200<br>
-A közzétevő és a megfelelő előfizetések a kiadó, amelyek alapján a hitelesítési jogkivonat lekérése.<br> Válasz tartalma:<br>
+Az authN jogkivonat alapján, beszerezheti a közzétevő és a kiadó, amelyek megfelelő előfizetések.<br> Válasz tartalma:<br>
 
 ```json
 {
-  "subscriptions": [
+  [
       {
-          "id": "",
-          "name": "CloudEndure for Production use",
-          "publisherId": "cloudendure",
-          "offerId": "ce-dr-tier2",
+          "id": "<guid>",
+          "name": "Contoso Cloud Solution",
+          "publisherId": "contoso",
+          "offerId": "cont-cld-tier2",
           "planId": "silver",
           "quantity": "10",
           "beneficiary": { // Tenant for which SaaS subscription is purchased.
-              "tenantId": "cc906b16-1991-4b6d-a5a4-34c66a5202d7"
+              "tenantId": "<guid>"
           },
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
-              "tenantId": "0396833b-87bf-4f31-b81c-c67f88973512"
+              "tenantId": "<guid>"
           },
           "allowedCustomerOperations": [
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "status": "Subscribed" // Indicates the status of the operation. [Provisioning, Subscribed, Suspended, Unsubscribed]
+          "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation. [Provisioning, Subscribed, Suspended, Unsubscribed]
       }
   ],
   "continuationToken": ""
 }
 ```
+
+A folytatási token csak akkor van jelen, ha nincsenek további "lapok" lekérdezni a csomagokat. 
+
 
 Kód: 403 <br>
 Nem engedélyezett. A hitelesítési token nem lett megadva, az érvénytelen, vagy a kérelem próbál hozzáférni egy beszerzési, amely az aktuális felhasználó nem tartozik. 
@@ -174,22 +197,22 @@ Lekérdezi a megadott SaaS-előfizetés. Ez a hívás használatával licencelé
 *Válaszkódot:*
 
 Kód: 200<br>
-Lekérdezi a saas-előfizetés azonosítója<br> Válasz tartalma:<br>
+Lekérdezi a SaaS-előfizetés azonosítója<br> Válasz tartalma:<br>
 
 ```json
 Response Body:
 { 
         "id":"",
-        "name":"CloudEndure for Production use",
-        "publisherId": "cloudendure",
-        "offerId": "ce-dr-tier2",
+        "name":"Contoso Cloud Solution",
+        "publisherId": "contoso",
+        "offerId": "cont-cld-tier2",
         "planId": "silver",
         "quantity": "10"",
           "beneficiary": { // Tenant for which SaaS subscription is purchased.
-              "tenantId": "cc906b16-1991-4b6d-a5a4-34c66a5202d7"
+              "tenantId": "<guid>"
           },
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
-              "tenantId": "0396833b-87bf-4f31-b81c-c67f88973512"
+              "tenantId": "<guid>"
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
@@ -240,25 +263,23 @@ Ez a hívás segítségével ismerje meg, hogy vannak-e az aktuális felhasznál
 Kód: 200<br>
 Elérhető csomagok listájának lekérése az ügyfél.<br>
 
+Válasz törzsében:
+
 ```json
-Response Body:
-[{
-    "planId": "silver",
-    "displayName": "Silver",
-    "isPrivate": false
-},
 {
-    "planId": "silver-private",
-    "displayName": "Silver-private",
-    "isPrivate": true
-}]
+    "plans": [{
+        "planId": "Platinum001",
+        "displayName": "Private platinum plan for Contoso",
+        "isPrivate": true
+    }]
+}
 ```
 
 Kód: 404<br>
 Nem található<br> 
 
 Kód: 403<br>
-Nem engedélyezett. A hitelesítési token nem lett megadva, érvénytelen vagy a kérelem próbál hozzáférni egy beszerzési, amely az aktuális felhasználó nem tartozik. <br> 
+Nem engedélyezett. A hitelesítési token nem lett megadva, az érvénytelen, vagy a kérelem próbál hozzáférni egy beszerzési, amely az aktuális felhasználó nem tartozik. <br> 
 
 Kód: 500<br>
 Belső kiszolgálóhiba<br>
@@ -301,12 +322,12 @@ Oldja fel a átlátszatlan token SaaS-előfizetésre.<br>
 ```json
 Response body:
 {
-    "subscriptionId": "cd9c6a3a-7576-49f2-b27e-1e5136e57f45",  
-    "subscriptionName": "My Saas application",
-    "offerId": "ce-dr-tier2",
+    "subscriptionId": "<guid>",  
+    "subscriptionName": "Contoso Cloud Solution",
+    "offerId": "cont-cld-tier2",
     "planId": "silver",
     "quantity": "20",
-    "operationId": " be750acb-00aa-4a02-86bc-476cbe66d7fa"  
+    "operationId": "<guid>"  
 }
 ```
 
@@ -348,7 +369,7 @@ Belső kiszolgálóhiba
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json`  |
 |  x-ms-requestid    | Egyedi karakterlánc-érték a kérés követési az ügyfélről, lehetőleg egy GUID Azonosítót. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
-|  x-ms-correlationid  | Egyedi karakterlánc értéke a művelethez az ügyfélen. Ez utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
+|  x-ms-correlationid  | Egyedi karakterlánc értéke a művelethez az ügyfélen. Ez a karakterlánc utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
 |  Engedélyezési     |  JSON webes jogkivonat (JWT) tulajdonosi jogkivonat |
 
 *Kérés:*
@@ -511,7 +532,7 @@ A műveletek API támogatja a következő javítás és a Get műveletek.
 
 Előfizetés frissítése a megadott értékeket.
 
-**Javítás:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operation/<operationId>?api-version=<ApiVersion>`**
+**Javítás:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
 
 *Lekérdezési paraméterek:*
 
@@ -534,15 +555,15 @@ Előfizetés frissítése a megadott értékeket.
 
 ```json
 {
-    "planId": "",
-    "quantity": "",
+    "planId": "cont-cld-tier2",
+    "quantity": "44",
     "status": "Success"    // Allowed Values: Success/Failure. Indicates the status of the operation.
 }
 ```
 
 *Válaszkódot:*
 
-Kód: 200<br> Hívja meg a független Szoftverszállító oldalon művelet befejezéséről tájékoztatja. Ez lehet például a munkaállomások és tervek módosítása.
+Kód: 200<br> Hívja meg a független Szoftverszállító oldalon művelet befejezéséről tájékoztatja. Ez a válasz például a módosítást, a munkaállomások és tervek sikerült jelezni.
 
 Kód: 404<br>
 Nem található
@@ -551,7 +572,7 @@ Kód: 400<br>
 Hibás kérelem-ellenőrzési hibák
 
 Kód: 403<br>
-Nem engedélyezett. A hitelesítési token nem lett megadva, érvénytelen vagy a kérelem próbál hozzáférni egy beszerzési, amely az aktuális felhasználó nem tartozik.
+Nem engedélyezett. A hitelesítési token nem lett megadva, az érvénytelen, vagy a kérelem próbál hozzáférni egy beszerzési, amely az aktuális felhasználó nem tartozik.
 
 Kód: 409<br>
 Ütközés történt. Ha például egy újabb tranzakció már teljesítette
@@ -597,11 +618,11 @@ Válasz tartalma:
 
 ```json
 [{
-    "id": "be750acb-00aa-4a02-86bc-476cbe66d7fa",  
-    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "subscriptionId": "cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "ce-dr-tier2",
-    "publisherId": "cloudendure",  
+    "id": "<guid>",  
+    "activityId": "<guid>",
+    "subscriptionId": "<guid>",
+    "offerId": "cont-cld-tier2",
+    "publisherId": "contoso",  
     "planId": "silver",
     "quantity": "20",
     "action": "Convert",
@@ -634,7 +655,7 @@ Belső kiszolgálóhiba
 
 #### <a name="get-operation-status"></a>Műveleti állapotának beolvasása
 
-Lehetővé teszi a felhasználó egy aktivált aszinkron művelet (az előfizetés/Unsubscribe/csomag módosítása) állapotának nyomon követését.
+Lehetővé teszi a felhasználó a megadott aktivált aszinkron művelet (az előfizetés/Unsubscribe/csomag módosítása) állapotának nyomon követését.
 
 **Kérje le:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
 
@@ -653,23 +674,23 @@ Lehetővé teszi a felhasználó egy aktivált aszinkron művelet (az előfizet�
 |  x-ms-correlationid |  A műveletet az ügyfél egyedi karakterlánc-érték. Ez a paraméter utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
 |  Engedélyezési     | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.  |
 
-*Válaszkódot:* Kód: 200<br> Az összes függőben lévő SaaS-műveletek listájának beolvasása<br>
+*Válaszkódot:* Kód: 200<br> Függőben lévő SaaS művelet lekérdezi a megadott<br>
 Válasz tartalma:
 
 ```json
 Response body:
-[{
-    "id  ": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "subscriptionId":"cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "ce-dr-tier2",
-    "publisherId": "cloudendure",  
+{
+    "id  ": "<guid>",
+    "activityId": "<guid>",
+    "subscriptionId":"<guid>",
+    "offerId": "cont-cld-tier2",
+    "publisherId": "contoso",  
     "planId": "silver",
     "quantity": "20",
     "action": "Convert",
     "timeStamp": "2018-12-01T00:00:00",
     "status": "NotStarted"
-}]
+}
 
 ```
 
@@ -700,11 +721,11 @@ A közzétevő meg kell valósítania egy webhook proaktívan értesíti a felha
 
 ```json
 {
-    "operationId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "subscriptionId":"cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "ce-dr-tier2",
-    "publisherId": "cloudendure",
+    "operationId": "<guid>",
+    "activityId": "<guid>",
+    "subscriptionId":"<guid>",
+    "offerId": "cont-cld-tier2",
+    "publisherId": "contoso",
     "planId": "silver",
     "quantity": "20"  ,
     "action": "Activate",   // Activate/Delete/Suspend/Reinstate/Change[new]  
@@ -713,14 +734,12 @@ A közzétevő meg kell valósítania egy webhook proaktívan értesíti a felha
 
 ```
 
-<!-- Review following, might not be needed when this publishes -->
-
 
 ## <a name="mock-api"></a>API utánzása
 
-Utánzatként funkcionáló Jaink használatával segítséget nyújtanak fejlesztési feladatokhoz, különösen a prototípus-készítéshez és a tesztelési projekteket használatának első lépései. 
+Utánzatként funkcionáló Jaink használatával segítséget nyújtanak fejlesztési feladatokhoz, különösen prototípus-készítéshez, használatának első lépései, és a tesztelés projektek. 
 
-Gazdagép-végpont: https://marketplaceapi.microsoft.com/api API-verzió: 2018-09-15 nincs hitelesítés szükséges a minta Uri: https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15
+Gazdagép-végpont: `https://marketplaceapi.microsoft.com/api` API-verzió: `2018-09-15` Nincs hitelesítés szükséges a minta Uri: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15`
 
 Ebben a cikkben az API-hívások bármelyikét a utánzatként funkcionáló gazdagép-végpontra is végezhető. Várható utánzatként funkcionáló adatok vissza válaszként.
 

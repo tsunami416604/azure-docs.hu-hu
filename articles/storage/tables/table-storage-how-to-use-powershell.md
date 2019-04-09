@@ -5,15 +5,15 @@ services: cosmos-db
 author: roygara
 ms.service: cosmos-db
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 04/04/2019
 ms.author: rogarana
 ms.subservice: cosmosdb-table
-ms.openlocfilehash: bb8f0fd98296d0cc4de1596480988b154a731d41
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: c5491683a74321e370044cd6eb270cc34bbbce6a
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540227"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056408"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Az Azure Table storage műveleteket az Azure PowerShell használatával 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,7 +32,7 @@ A cikkben található útmutató ismerteti a gyakori Azure Table storage-művele
 
 A cikkben található útmutató bemutatja, hogyan hozhat létre egy új Azure Storage-fiók az egy új erőforráscsoportot, így könnyen eltávolíthatja, ha elkészült. Ha szeretné inkább egy meglévő tárfiókot, is megteheti, helyette.
 
-A példák megkövetelése Az PowerShell-modulok `Az.Storage (1.1.3 or greater)` és `Az.Resources (1.2.0 or greater)`. Egy PowerShell-ablakot a Futtatás `Get-Module -ListAvailable Az*` a verzió megkereséséhez. Ha semmi nem jelenik meg, vagy szeretné frissíteni, lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps).
+A példák megkövetelése Az PowerShell-modulok `Az.Storage (1.1.0 or greater)` és `Az.Resources (1.2.0 or greater)`. Egy PowerShell-ablakot a Futtatás `Get-Module -ListAvailable Az*` a verzió megkereséséhez. Ha semmi nem jelenik meg, vagy szeretné frissíteni, lásd: [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
 > Ezzel a funkcióval az Azure PowerShell megköveteli, hogy Ön a `Az` modul telepítve van. Az aktuális AzureRmStorageTable verziója nem kompatibilis a régebbi AzureRM-modul.

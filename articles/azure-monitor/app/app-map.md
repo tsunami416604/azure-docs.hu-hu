@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: a42eb7b57319df7de4c5277cdcdd93eb777f376c
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 11f7bb69ed408adf87d62a4af1aa4bd87e70bd6d
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622110"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009195"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: Az elosztott alkalmazások osztályozása
 
@@ -36,7 +36,7 @@ Alkalmazás-hozzárendelés segít a helyszíni teljesítmény szűk vagy hiba e
 
 A teljes Alkalmazástopológia kapcsolódó alkalmazás-összetevők szinteken átívelő megjelenik. Összetevők különböző Application Insights-erőforrások, és a egy adott erőforrásban a különböző szerepkörrel lehet. Az alkalmazástérkép összetevők a következő függőségi végzett HTTP-hívások az Application Insights SDK telepített kiszolgálók között talál. 
 
-Ez a tapasztalat összetevők fokozatos felderítés kezdődik. Ha először tölt be az alkalmazás-hozzárendelés, a lekérdezések ehhez az összetevőhöz kapcsolódó összetevők felderítése aktiválódnak. A bal felső sarkában található gomb frissíteni fogja az alkalmazását az összetevők számát tudásukat azok felderítése. 
+Ez a tapasztalat összetevők fokozatos felderítés kezdődik. Ha először tölt be az alkalmazás-hozzárendelés, lekérdezések akkor aktiválódik, ehhez az összetevőhöz kapcsolódó összetevők felderítése. A bal felső sarkában található gomb frissíteni fogja az alkalmazását az összetevők számát tudásukat azok felderítése. 
 
 A "Frissítés térképösszetevők" gombra kattintva a térkép a felderített mutasson, amíg az összes összetevő frissülnek. Az alkalmazás összetettségétől függően ez eltarthat egy kis ideig, betölteni.
 
@@ -109,7 +109,8 @@ namespace CustomInitializer.Telemetry
             if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
             {
                 //set custom role name here
-                telemetry.Context.Cloud.RoleName = "RoleName";
+                telemetry.Context.Cloud.RoleName = "Custom RoleName";
+                telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance"
             }
         }
     }
@@ -184,6 +185,32 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+
+### <a name="understanding-cloudrolename-within-the-context-of-the-application-map"></a>Az Alkalmazástérkép kontextusában Cloud.RoleName ismertetése
+
+Csakúgy, hogy hogyan Cloud.RoleName gondolja át, és tekintse meg az alkalmazás-hozzárendelés hasznos lehet, amely rendelkezik több Cloud.RoleNames található:
+
+![Képernyőkép az alkalmazásról térkép](media/app-map/cloud-rolename.png)
+
+A fenti zöld mezőben szereplő nevek mindegyike Alkalmazástérkép vannak az adott elosztott alkalmazás különböző aspektusainak Cloud.RoleName/role értékeit. Így az alkalmazás a szerepkörök állnak: `Authentication`, `acmefrontend`, `Inventory Management`, amely egy `Payment Processing Worker Role`. 
+
+Az alkalmazás minden egyes ezek esetén `Cloud.RoleNames` is jelenti a saját kialakítási kulcs egy másik egyedi Application Insights-erőforrást. Mivel ez az alkalmazás tulajdonosa e négy különböző Application Insights-erőforrások mindegyike hozzáféréssel rendelkezik, alkalmazás-hozzárendelés el tudja összefűzheti a térképet az alapul szolgáló kapcsolatot.
+
+Az a [hivatalos definíciók](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93):
+
+```
+   [Description("Name of the role the application is a part of. Maps directly to the role name in azure.")]
+    [MaxStringLength("256")]
+    705: string      CloudRole = "ai.cloud.role";
+    
+    [Description("Name of the instance where the application is running. Computer name for on-premises, instance name for Azure.")]
+    [MaxStringLength("256")]
+    715: string      CloudRoleInstance = "ai.cloud.roleInstance";
+```
+
+Azt is megteheti Cloud.RoleInstance akkor lehet hasznos, ahol Cloud.RoleName jelzi, hogy a probléma valahol az előtér-webkiszolgáló van, de, előfordulhat, hogy fut a webes előtér kiegyenlített terhelésű több kiszolgáló között, így képes arra, hogy a mélyebb rétegben részletes forgatókönyvek Kusto-lekérdezések és, hogy ha a probléma negatív hatással van minden webes előtér-kiszolgálók/példány, vagy csak az egyik lehet rendkívül fontos.
+
+Egy olyan forgatókönyvet, ahol előfordulhat, hogy szeretné felülbírálni az értéket a Cloud.RoleInstance lehet, hogy az alkalmazás fut-e a tárolóalapú környezetben, csak az adott kiszolgálóhoz, hogy nem feltétlenül elegendő információt egy adott probléma keresse meg.
 
 A telemetriai adatok inicializálók cloud_RoleName tulajdonság felülbírálása kapcsolatos további információkért lásd: [tulajdonságok hozzáadása: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
 

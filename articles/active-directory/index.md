@@ -11,12 +11,12 @@ ms.topic: landing-page
 ms.date: 01/24/2019
 ms.author: barbkess
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3ad12ac45a90edc5b3d9be0dc78786ef01a0f04
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 352050f4bd53188a420f75607677d88ebc081505
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337833"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051035"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -164,8 +164,8 @@ ms.locfileid: "58337833"
                                                         <h3><a href="authentication/index.yml">Hitelesítés</a></h3>
                                                         <p>
                                                             <a href="authentication/concept-mfa-howitworks.md">Működés: Azure MFA</a><br>
-                                                            <a href="authentication/concept-sspr-howitworks.md">Azure AD önkiszolgáló jelszómódosítás</a><br>
-                                                            <a href="authentication/concept-password-ban-bad.md">Azure AD-jelszóvédelem</a><br>
+                                                            <a href="authentication/concept-sspr-howitworks.md">Azure AD önkiszolgáló jelszóátállítás</a><br>
+                                                            <a href="authentication/concept-password-ban-bad.md">Azure AD jelszóvédelem</a><br>
                                                             <a href="authentication/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                             </p>
                                                         <br><br>
@@ -180,7 +180,7 @@ ms.locfileid: "58337833"
                                                         <h3><a href="/azure/active-directory-b2c/index">Vállalat és ügyfél közötti (B2C)</a></h3>
                                                         <p>
                                                             <a href="/azure/active-directory-b2c/active-directory-b2c-overview">Mi az az Azure AD B2C?</a><br>
-                                                            <a href="/azure/active-directory-b2c/tutorial-create-tenant">Azure AD B2C-bérlő létrehozása</a><br>
+                                                            <a href="/azure/active-directory-b2c/tutorial-create-tenant">Azure AD B2C bérlő létrehozása</a><br>
                                                             <a href="/azure/active-directory-b2c/active-directory-b2c-get-started-custom">Egyéni szabályzatok az Azure AD B2C-ben</a><br>
                                                             <a href="/azure/active-directory-b2c/index"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
@@ -197,7 +197,7 @@ ms.locfileid: "58337833"
                                                     <div class="cardText">
                                                         <h3><a href="conditional-access/index.yml">Feltételes hozzáférés</a></h3>
                                                         <p>
-                                                            <a href="conditional-access/overview.md">Mi az a feltételes hozzáférés?</a><br>
+                                                            <a href="conditional-access/overview.md">Mi a feltételes hozzáférés?</a><br>
                                                             <a href="conditional-access/app-based-mfa.md">MFA megkövetelése adott alkalmazásokhoz</a><br>
                                                             <a href="conditional-access/location-condition.md">Feltételek hely szerint</a><br>
                                                             <a href="conditional-access/index.yml"><i>Több megjelenítése &gt;</i></a>
@@ -211,7 +211,7 @@ ms.locfileid: "58337833"
                                                             <a href="develop/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                             </p>
                                                         <br><br>
-                                                        <h3><a href="devices/index.yml">Eszközkezelés</a></h3>
+                                                        <h3><a href="devices/index.yml">Eszközfelügyelet</a></h3>
                                                         <p>
                                                             <a href="devices/overview.md">Mi az az eszközfelügyelet?</a><br>
                                                             <a href="devices/hybrid-azuread-join-plan.md">Hibrid Azure AD-csatlakozás megtervezése</a><br>
@@ -221,8 +221,8 @@ ms.locfileid: "58337833"
                                                         <br><br>
                                                         <h3><a href="/azure/active-directory-domain-services/index">Tartományi szolgáltatások</a></h3>
                                                         <p>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-overview">Az Azure AD tartományi szolgáltatások ismertetése</a><br>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started">Az Azure AD Domain Services engedélyezése</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-overview">Mi az Azure AD tartományi szolgáltatások?</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started">Az Azure AD tartományi szolgáltatások engedélyezése</a><br>
                                                             <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy">Csoportszabályzat-felügyelet</a><br>
                                                             <a href="/azure/active-directory-domain-services/index"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
@@ -257,7 +257,7 @@ ms.locfileid: "58337833"
                                                         <p>
                                                             <a href="governance/create-access-review.md">Hozzáférési felülvizsgálat létrehozása</a><br>
                                                             <a href="governance/perform-access-review.md">Hozzáférési felülvizsgálat indítása</a><br>
-                                                            <a href="governance/active-directory-tou.md">Használati feltételek alkalmazása</a><br>
+                                                            <a href="conditional-access/terms-of-use.md">Használati feltételek alkalmazása</a><br>
                                                             <a href="governance/index.yml"><i>Több megjelenítése &gt;</i></a>
                                                         </p>
                                                         <br><br>

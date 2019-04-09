@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: a6746fa193331aff66b8726da1cb3afe49fdc9bf
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
-ms.translationtype: MT
+ms.openlocfilehash: de5432c4e04fb0cfaf0517426fe9ee9da2a57b37
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351547"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058084"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -30,13 +30,15 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 ## <a name="known-issues"></a>Ismert problémák
 
 > [!NOTE]
-> Az Azure portal jelenleg nem használható v3-erőforrások kezeléséhez. Használja a [REST API-val](https://aka.ms/ams-v3-rest-sdk), CLI-t, vagy valamelyik támogatott SDK-k.
+> Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-val](https://aka.ms/ams-v3-rest-sdk), CLI-t, vagy valamelyik támogatott SDK-k.
 
 További információkért lásd: [Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3](migrate-from-v2-to-v3.md#known-issues).
 
 ## <a name="march-2019"></a>2019. március
 
 A dinamikus csomagolás mostantól támogatja a Dolby Atmos. További információkért lásd: [dinamikus becsomagolás által támogatott hang kodekek](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
+
+Most már megadhatja az eszköz vagy a fiók szűrők, a Streamelési lokátor alkalmazandó listáját. További információkért lásd: [szűrők társítása Streamelési lokátor](filters-concept.md#associate-filters-with-streaming-locator).
 
 ## <a name="february-2019"></a>2019. február
 
@@ -67,12 +69,12 @@ A CLI 2.0 modul már elérhető a [Azure Media Services v3 GA](https://docs.micr
 
 ### <a name="new-commands"></a>Új parancsok
 
-- [az ams-fiók](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
+- [az ams account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
 - [az ams-fiók-szűrő](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
 - [az ams-adategység](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
 - [az ams az eszközintelligencia-szűrő](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
 - [az ams tartalom-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [az ams-feladat](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
 - [élő az ams-esemény](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
 - [az ams élő kimenet](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)

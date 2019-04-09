@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: e74b9b5c8347c7348c4da27b80d00daa091b826f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: a5350befd8d0fb1582606554314d909f7fec04c5
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521092"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058764"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -133,6 +133,7 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * Az Azure adatbázis-Migrálás
 * Azure Databricks
 * Azure Firewall
+* Azure Kubernetes Service (AKS)
 * Azure Migrate
 * Azure NetApp Files
 * Tanúsítványok – App Service-tanúsítványok is áthelyezhetők, de a feltöltött tanúsítványok [korlátozások](#app-service-limitations).
@@ -143,7 +144,6 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * Fejlesztői tárolóhelyek
 * Dynamics LCS
 * ExpressRoute
-* Kubernetes Service
 * A Lab Services – osztályterem-tesztkörnyezetek nem lehet áthelyezni egy új erőforráscsoportot vagy előfizetést. DevTest Labs szolgáltatásban egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések között nem helyezheti át.
 * Felügyelt alkalmazások
 * Microsoft Genomics

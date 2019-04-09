@@ -11,20 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 82ae0ef72bb4f546a1f946f3127aa5d74bec3c3b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: d22da92355616c208c7616b4b0e8c26b7f9e7006
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957759"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058039"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Az Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban
 
 Az Azure API Management támogatja a több régióból álló üzemelő, amely lehetővé teszi tetszőleges számú kívánt Azure-régiók között oszthatja el a egyetlen Azure API management szolgáltatás API-kiadók. Ez segít csökkenteni a kérelem által által tapasztalt késés földrajzilag elosztott az API-fogyasztókat és szolgáltatás rendelkezésre állása is növeli, ha egy adott régióban offline állapotba kerül.
 
-Egy új Azure API Management szolgáltatás tartalmaz kezdetben csak az egyik [egység] [ unit] egyetlen Azure-régióban, az elsődleges régióba. További régiók könnyen hozzáadhatók az Azure Portalon keresztül. Az API Management-átjáró kiszolgáló összes régióban telepíti, és hívás forgalmat a rendszer átirányítja a legközelebbi átjáró. Ha egy régió elérhetetlenné válik, a rendszer automatikusan átirányítja a forgalmat tovább legközelebbi átjáróhoz.
+Egy új Azure API Management szolgáltatás tartalmaz kezdetben csak az egyik [egység] [ unit] egyetlen Azure-régióban, az elsődleges régióba. További régiók könnyen hozzáadhatók az Azure Portalon keresztül. Az API Management-átjáró kiszolgáló összes régióban telepíti, és hívás forgalmat a rendszer átirányítja a legközelebbi átjáró késés szempontjából. Ha egy régió elérhetetlenné válik, a rendszer automatikusan átirányítja a forgalmat tovább legközelebbi átjáróhoz.
 
 > [!NOTE]
 > Az Azure API Management az API gateway összetevővel régióban replikálja. A szolgáltatás felügyeleti összetevőt csak az elsődleges régióban üzemel. Egy esetleges leállás az elsődleges régióban konfigurációs módosítások alkalmazása az Azure API Management szolgáltatáspéldányt, esetén nem lehet – beleértve a beállítások és szabályzatok frissítéseket.
@@ -105,6 +105,20 @@ Teljes mértékben kihasználhatja a rendszer földrajzi eloszlása, a Háttérs
         </on-error>
     </policies>
     ```
+
+> [!TIP]
+> Akkor is előfordulhat, hogy előtér-a háttérszolgáltatásokat az [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), közvetlenül a Traffic Manager API-hívások, és biztosítani, hogy az Útválasztás automatikusan feloldani.
+
+## <a name="custom-routing"> </a>Használjon egyéni útválasztás az API Management regionális átjárók
+
+Az API Management egy régióhoz irányítja a kérelmeket *átjáró* alapján [a legkisebb késéssel](../traffic-manager/traffic-manager-routing-methods.md#performance). Bár ez nem lehetséges bírálja felül ezt a beállítást, az API Management szolgáltatásban, használhatja a saját Traffic Manager egyéni útválasztási szabályok.
+
+1. Hozzon létre egy saját [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/).
+1. Ha egy egyéni tartományt használ [vele a Traffic Manager](../traffic-manager/traffic-manager-point-internet-domain.md) az API Management szolgáltatás helyett.
+1. [Az API Management regionális végpontok Traffic Managerben konfigurálása](../traffic-manager/traffic-manager-manage-endpoints.md). Az alábbi URL-cím mintát követik a regionális végpontok `https://<service-name>-<region>-01.regional.azure-api.net`, például `https://contoso-westus2-01.regional.azure-api.net`.
+1. [Az API Management regionális állapot végpontok Traffic Managerben konfigurálása](../traffic-manager/traffic-manager-monitoring.md). Az alábbi URL-cím mintát követik a regionális állapot végpontok `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`, például `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`.
+1. Adja meg [az útválasztási módszer](../traffic-manager/traffic-manager-routing-methods.md) a Traffic Manager.
+
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
 

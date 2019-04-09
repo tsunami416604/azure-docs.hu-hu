@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 04/05/2019
 ms.author: tulasim
-ms.openlocfilehash: 1fa15c4420cb1e42fcaa34c56a1b0aef9c4102b1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bafc39e7d9237fc7dd8469e5f9e97adb30355c8f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872458"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257229"
 ---
 # <a name="what-is-qna-maker"></a>Mi a QnA Maker?
 
@@ -66,13 +66,12 @@ A QnA Maker-architektúra a következő két összetevőből áll:
 
 ## <a name="service-highlights"></a>A szolgáltatásokkal kapcsolatos legfontosabb tudnivalók
 
-- **Kódolás nélküli** környezet [GYIK-robot](https://aka.ms/qnamaker-docs-create-faqbot) létrehozásához.
+- Teljes **kód nélküli** felhasználói élményt [hozzon létre egy robot](../Quickstarts/create-publish-knowledge-base.md#create-a-bot) a Tudásbázis.
 - **Nincs hálózati szabályozás az előrejelzések esetében**. A tranzakciók száma helyett a szolgáltatás üzemeltetéséért fizethet. További részleteket a [díjszabási oldalon](https://aka.ms/qnamaker-docs-pricing) talál.
 - **Igény szerinti skálázás**. Válassza ki a forgatókönyvhöz illő egyéni összetevők megfelelő SKU-it. Lásd QnA Maker szolgáltatáshoz tartozó [kapacitás kiválasztásának módját](https://aka.ms/qnamaker-docs-capacity) ismertető részt.
-- **Teljes adatkezelési megfelelőség**. Az előrejelzési szolgáltatás összetevőit a rendszer az Azure-előfizetésében helyezi üzembe, ügyelve a megfelelőségi korlátokra.
 
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [QnA Maker-szolgáltatás létrehozása](../how-to/set-up-qnamaker-service-azure.md)
+> [A QnA Maker szolgáltatás létrehozása](../how-to/set-up-qnamaker-service-azure.md)

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/18/2019
+ms.date: 04/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dbb50ba703221c28576b4c3614c77bbac7eeabb9
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: 9d4661f6c975265ec710b29a8a05cc7ef41b4011
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519119"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057421"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -43,7 +43,7 @@ Az Azure Automation Runbookjai futhat bármelyiken védőfal mögött az Azure-b
 |Egy fájl vagy egy runbook-mappa figyelése|hibrid runbook-feldolgozó|Használja a [figyelőfeladat](automation-watchers-tutorial.md) egy hibrid Runbook-feldolgozón|
 |Nagy számításigényű script erőforrás|hibrid runbook-feldolgozó| Az Azure próbakörnyezetbe lefordítja rendelkezik [erőforrásokra vonatkozó korlátozás](../azure-subscription-service-limits.md#automation-limits)|
 |Modulok használata az adott követelményekhez| hibrid runbook-feldolgozó|Néhány példa:</br> **WinSCP** -winscp.exe függőség </br> **IISAdministration** -kell az IIS engedélyezve|
-|Telepítő igénylő modul telepítése|hibrid runbook-feldolgozó|A védőfal modulok xcopyable kell lennie.|
+|Telepítő igénylő modul telepítése|hibrid runbook-feldolgozó|A védőfal modulok copiable kell lennie.|
 |A runbookok vagy a .NET-keretrendszer 4.7.2 eltérő igénylő modulok|hibrid runbook-feldolgozó|Automation próbakörnyezetbe lefordítja a .NET-keretrendszer 4.7.2 rendelkezik, és azt nem lehet|
 |Magasabb jogosultsági szintet igénylő parancsfájlok|hibrid runbook-feldolgozó|Próbakörnyezetbe lefordítja a jogosultságszint-emelés nem engedélyezett. Oldja meg ezt, használja a hibrid Runbook-feldolgozók és kikapcsolhatja a felhasználói fiókok felügyelete és használata `Invoke-Command` mikor igényel, amely a következő parancs futtatásával jogosultságszint-emelés|
 |WMI-hozzáférést igénylő parancsfájlok|hibrid runbook-feldolgozó|A felhő próbakörnyezetbe lefordítja a futó feladatok [nem rendelkeznek hozzáféréssel a WMI](#device-and-application-characteristics)|
@@ -246,9 +246,9 @@ Az egy adott runbookhoz tartozó feladatok a következő lépésekkel tekinthet�
 3. A kiválasztott runbook lapon kattintson a **feladatok** csempére.
 4. Kattintson a listában a feladatok egyikét, és a runbook-feladat részletei lapon megtekintheti azok részleteit és kimenetét.
 
-## <a name="retrieving-job-status-using-windows-powershell"></a>Windows PowerShell-lel feladatállapot lekérése
+## <a name="retrieving-job-status-using-powershell"></a>PowerShell-lel feladatállapot lekérése
 
-Használhatja a [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) lekérheti feladatokat, létrehozott egy runbookot és a egy adott feladat részleteit. Ha elindít egy runbookot a Windows PowerShell [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook), majd visszaadja az eredményezett feladatot. Használat [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) beolvasni a feladat kimenetének.
+Használhatja a [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) lekérheti feladatokat, létrehozott egy runbookot és a egy adott feladat részleteit. Ha elindít egy runbookot a PowerShell [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook), majd visszaadja az eredményezett feladatot. Használat [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) beolvasni a feladat kimenetének.
 
 Az alábbi Példaparancsok lekérni a minta-runbookhoz tartozó utolsó feladatot, és az állapotot, a forgatókönyv-paramétereket, és a feladat kimenetét a megadott értékek megjelenítése.
 
@@ -285,11 +285,30 @@ Egyéb részleteket, például a személy vagy a fiókot, amelyet a runbook lek�
 
 ```powershell-interactive
 $SubID = "00000000-0000-0000-0000-000000000000"
-$rg = "ResourceGroup01"
-$AutomationAccount = "MyAutomationAccount"
-$JobResourceID = "/subscriptions/$subid/resourcegroups/$rg/providers/Microsoft.Automation/automationAccounts/$AutomationAccount/jobs"
+$AutomationResourceGroupName = "MyResourceGroup"
+$AutomationAccountName = "MyAutomationAccount"
+$RunbookName = "MyRunbook"
+$StartTime = (Get-Date).AddDays(-1)
+$JobActivityLogs = Get-AzureRmLog -ResourceGroupName $AutomationResourceGroupName -StartTime $StartTime `
+                                | Where-Object {$_.Authorization.Action -eq "Microsoft.Automation/automationAccounts/jobs/write"}
 
-Get-AzureRmLog -ResourceId $JobResourceID -MaxRecord 1 | Select Caller
+$JobInfo = @{}
+foreach ($log in $JobActivityLogs)
+{
+    # Get job resource
+    $JobResource = Get-AzureRmResource -ResourceId $log.ResourceId
+
+    if ($JobInfo[$log.SubmissionTimestamp] -eq $null -and $JobResource.Properties.runbook.name -eq $RunbookName)
+    { 
+        # Get runbook
+        $Runbook = Get-AzureRmAutomationJob -ResourceGroupName $AutomationResourceGroupName -AutomationAccountName $AutomationAccountName `
+                                            -Id $JobResource.Properties.jobId | ? {$_.RunbookName -eq $RunbookName}
+
+        # Add job information to hash table
+        $JobInfo.Add($log.SubmissionTimestamp, @($Runbook.RunbookName,$Log.Caller, $JobResource.Properties.jobId))
+    }
+}
+$JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 ```
 
 ## <a name="fair-share"></a>Igazságos elosztás

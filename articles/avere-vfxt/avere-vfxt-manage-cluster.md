@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: bc91b052d3d69924af9afeb012c0ebb5be01dfbf
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: MT
+ms.openlocfilehash: be9205fdf7fec0661d7382ed0d1bedf47487b15e
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745554"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058050"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt felügyelete
 
@@ -98,7 +98,7 @@ Adja meg a következő értékeket:
 * Erőforráscsoport-nevet a fürt és a hálózati és tárolási erőforrásokat, ha azok nem ugyanaz, mint a fürt
 * Fürt helye
 * Fürt hálózatot és alhálózatot 
-* Fürtszerepkört csomópont hozzáférés 
+* Fürtszerepkört csomópont hozzáférést (a beépített szerepkör használja [Avere operátor](../role-based-access-control/built-in-roles.md#avere-operator))
 * Felügyeleti IP-címet és a rendszergazdai jelszó 
 * Csomópontok hozzáadása (1, 2 vagy 3)
 * Csomópont példány típusát és a gyorsítótár mérete értékei 
@@ -113,7 +113,7 @@ Ha nem használ a prototípust, kell hozhatnak létre a következő, beleértve 
    --add-nodes --nodes NODE_COUNT \
    --management-address CLUSTER_IP --admin-password ADMIN_PASSWORD \
    --instance-type TYPE --node-cache-size SIZE \
-   --azure-role ROLE_NAME \
+   --azure-role "Avere Operator" \
    --log ~/vfxt.log
 ```
 
@@ -187,7 +187,7 @@ Az Azure Portalon törlésével véglegesen megsemmisítheti csomópont példán
 
 ### <a name="delete-additional-cluster-resources-from-the-azure-portal"></a>Törölje a fürt további erőforrások az Azure Portalról
 
-Ha hozta létre kimondottan a vFXT fürt további erőforrások, érdemes távolítsa el őket a fürt kell részeként. Nem kell megsemmisíteni a szükséges adatokat, vagy bármely más projektek megosztott elemeket tartalmazó elemeket.
+Ha hozta létre kimondottan a vFXT fürt további erőforrások, érdemes távolítsa el őket a fürt kell részeként. Semmisítse meg a szükséges adatokat, vagy bármely más projektek megosztott elemeket tartalmazó elemeket.
 
 Törlés a fürtcsomópontok, vegye figyelembe ezeket az összetevőket eltávolítása: 
 

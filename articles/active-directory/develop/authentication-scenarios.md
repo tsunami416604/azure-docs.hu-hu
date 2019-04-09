@@ -1,6 +1,6 @@
 ---
-title: Hitelesítés az Azure Active Directoryban
-description: Megismerheti az Azure Active Directory-beli (Azure AD) hitelesítést, az alkalmazásmodellt, az API-t, a kiépítést, valamint az Azure AD által támogatott leggyakrabban használt hitelesítési forgatókönyveket.
+title: Hitelesítés a Microsoft identity platform |} Az Azure
+description: További tudnivalók a Microsoft identity platform, az alkalmazás hitelesítési modellezheti, API, a kiépítést, és a leggyakrabban használt hitelesítési forgatókönyvek, hogy a Microsoft identity platform támogatja.
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 04/05/2019
 ms.author: celested
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 172bc96857c6aa0ab19fd4f1a13870dd493100bf
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: MT
+ms.openlocfilehash: b1d54347b9a3ccc72cfd5b88400d699d93132fbf
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295708"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057098"
 ---
 # <a name="what-is-authentication"></a>Mi a hitelesítés?
 
@@ -31,24 +31,24 @@ A *hitelesítési* valamely fél érvényes hitelesítő adatainak bekérése, a
 
 Az *engedélyezés* egy műveletre jogosító engedély megadása egy hitelesített rendszerbiztonsági tag számára. Meghatározza az elérhető adatok körét és az azokon végrehajtható műveleteket. Az engedélyezést (angolul authorization) szokás az AuthZ rövidítéssel is jelölni.
 
-Az Azure Active Directory (Azure AD) használatával a hitelesítés egyszerűbb az alkalmazásfejlesztők számára, mivel ez az iparágban elterjedt protokollokat, például az OAuth 2.0-t és az OpenID Connectet támogató identitásszolgáltatást biztosít nyílt forrású kódtárakkal a különböző platformokhoz, amelyekkel gyorsan megkezdhető a kód megírása.
+A Microsoft identity platform leegyszerűsíti a hitelesítési alkalmazásfejlesztőknek szánt identitás-szolgáltatás, megadásával szabványos protokollok, mint például az OAuth 2.0 és OpenID Connect támogatása, valamint a különböző platformok, nyílt forráskódú kódtárai segít gyorsan a kódírás.
 
-Az Azure AD programozási modellben két alapvető használati eset létezik:
+A Microsoft identity platform programozási modell két elsődleges használati eset szerepelnek:
 
 * Az OAuth 2.0 engedélyezési folyamat – amikor az erőforrás tulajdonosa adja meg az engedélyt az ügyfélalkalmazás számára, hogy az elérhesse az erőforrás-tulajdonos erőforrásait.
 * Az erőforrások ügyfél általi elérése – ezt az erőforrás-kiszolgáló valósítja meg a hozzáférési jogkivonatokban foglalt jogcímértékek alapján, amelyek a vonatkozó hozzáférés-vezérlési döntések meghozatalát irányítják.
 
-## <a name="authentication-basics-in-azure-active-directory"></a>Az Azure Active Directory-hitelesítés alapjai
+## <a name="authentication-basics-in-microsoft-identity-platform"></a>A Microsoft identitásplatformja hitelesítés alapjai
 
 Vegyük a legalapvetőbb forgatókönyvet, amelyben az identitásokat alkalmazni kell: a felhasználónak a böngészőben hitelesítenie kell magát egy webalkalmazásban. Az alábbi ábra ezt a forgatókönyvet mutatja be:
 
-![Webalkalmazásba való bejelentkezés áttekintése](./media/authentication-scenarios/basics_of_auth_in_aad.png)
+![Webalkalmazásba való bejelentkezés áttekintése](./media/authentication-scenarios/auth-basics-microsoft-identity-platform.svg)
 
 Az ábrán lévő összetevőkről a következőket érdemes tudni:
 
-* Az Azure AD az identitásszolgáltató. Az identitásszolgáltató feladata a szervezet címtárában lévő felhasználók és alkalmazások identitásának ellenőrzése, majd a felhasználók és alkalmazások sikeres hitelesítését követően a biztonsági jogkivonatok kiadása.
-* A hitelesítést az Azure AD-vel végeztető alkalmazásokat regisztrálni kell az Azure AD-ben. Az Azure AD regisztrálja és egyedileg azonosítja az alkalmazást a címtárban.
-* A fejlesztők az Azure AD nyílt forrású hitelesítési kódtáraival egyszerűen valósíthatják meg a hitelesítést, mivel a protokolladatok kezelését az Azure AD végzi. További információkért tekintse meg az Azure ad-ben [2.0-s verziójú hitelesítési tárak](reference-v2-libraries.md) és [1.0-s verziójú hitelesítési tárak](active-directory-authentication-libraries.md).
+* A Microsoft identity platform az identitásszolgáltató az. Az identitásszolgáltató feladata a szervezet címtárában lévő felhasználók és alkalmazások identitásának ellenőrzése, majd a felhasználók és alkalmazások sikeres hitelesítését követően a biztonsági jogkivonatok kiadása.
+* Egy alkalmazás, amely kiszervezik a Microsoft identitásplatformja hitelesítést szeretne regisztrálni kell az Azure Active Directoryban (Azure AD). Az Azure AD regisztrálja és egyedileg azonosítja az alkalmazást a címtárban.
+* Fejlesztők használhatják a nyílt forráskódú Microsoft identity platform hitelesítési tárak megkönnyítése hitelesítési protokoll részleteinek kezeli az Ön számára. További információ: a Microsoft identity platform [2.0-s verziójú hitelesítési tárak](reference-v2-libraries.md) és [1.0-s verziójú hitelesítési tárak](active-directory-authentication-libraries.md).
 * A felhasználó hitelesítését követően az alkalmazásnak ellenőriznie kell a felhasználó biztonsági jogkivonatát, hogy megbizonyosodhasson róla a hitelesítés sikeréről. A rövid útmutatók, oktatóanyagok és a különböző nyelvekhez és keretrendszerekhez elérhető kódminták mutatják be, hogy az alkalmazásnak mit kell tennie.
   * Az alkalmazások gyors felépítésével és a jogkivonatok beszerzését és frissítését, a felhasználók bejelentkeztetését és a felhasználóadatok megjelenítését végző funkcionalitás hozzáadásával kapcsolatban lásd a dokumentáció **Rövid útmutatók** szakaszát.
   * A hitelesítéssel kapcsolatos legfontosabb fejlesztői feladatok elvégzéséhez, például a hozzáférési jogkivonatok beszerzéséhez és azok Microsoft Graph API és egyéb API-k hívásaiban való használatához, a hagyományos böngészőalapú alkalmazásokon belüli, OpenID Connect használatával végzett Microsoft-bejelentkezések megvalósításához, valamint hasonló feladatokhoz használható részletes, forgatókönyv-alapú eljárásokat a dokumentáció **Oktatóanyagok** szakaszában találja.
@@ -60,28 +60,28 @@ A fenti példaforgatókönyvben az alkalmazásokat az alábbi két szerepkör sz
 * Olyan alkalmazások, amelyeknek biztonságosan kell hozzáférniük az erőforrásokhoz
 * Olyan alkalmazások, amelyek az erőforrások szerepét töltik be
 
-Most, hogy az alapokat áttekintettük, a továbbiakban megismerkedhet az identitáskezelési alkalmazásmodellel és API-val, valamint az Azure AD-beli kiépítés működésével, továbbá az Azure AD által támogatott gyakori forgatókönyvekre mutató hivatkozásokat találhat.
+Most, hogy az identitás az app model és API-t az alapokat, látogasson el lapunkra áttekintése, hogyan kiépítés működik a Microsoft identity platform, és hivatkozásokat tartalmaz a gyakori forgatókönyvek részletes információ a Microsoft identity platform támogatja.
 
 ## <a name="application-model"></a>Alkalmazásmodell
 
-Az Azure AD az alkalmazásokat egy specifikus modell szerint képezi le, amely két fő funkció kiszolgálására lett kialakítva:
+A Microsoft identity platform, amely van kialakítva, hogy két fő funkciókat teljesíteni modell a következő alkalmazások jelöli:
 
-* **Az alkalmazás azonosítása a támogatott hitelesítési protokollnak megfelelően** – Ez az összes azonosító, URL-cím, titkos kulcs és a hitelesítés alkalmával szükséges összes vonatkozó információ számba vételét jelenti. Az Azure AD ebben az esetben:
+* **Az alkalmazás azonosítása a támogatott hitelesítési protokollnak megfelelően** – Ez az összes azonosító, URL-cím, titkos kulcs és a hitelesítés alkalmával szükséges összes vonatkozó információ számba vételét jelenti. Itt a Microsoft identity platform:
 
     * Tárolja a futásidejű hitelesítés támogatásához szükséges összes adatot.
     * Tárolja a szükséges adatokat annak eldöntéséhez, hogy az alkalmazásoknak milyen erőforrásokat kellhet elérniük, és az adott kéréseket teljesíteni kell-e, illetve milyen körülmények között kell teljesíteni.
     * Biztosítja az infrastruktúrát az alkalmazásregisztráció megvalósításához az alkalmazásfejlesztő bérlőjén és a többi Azure AD-bérlőn.
 
-* **Felhasználói hozzájárulás kezelése a jogkivonat-igénylés alkalmával és az alkalmazások dinamikus kiépítésének elősegítése a bérlők közt** – Az Azure AD ebben az esetben:
+* **Felhasználói jóváhagyás, jogkivonat kérése idő alatt kezelni, és elősegítik a bérlők között az alkalmazások dinamikus kiépítést** – Itt a Microsoft identity platform:
 
     * Lehetővé teszi, hogy a felhasználó vagy a rendszergazda dinamikusan megadhassa vagy megtagadhassa a hozzájárulást, hogy az alkalmazás a nevében elérhesse az erőforrásokat.
     * Lehetővé teszi, hogy a rendszergazda alapvetően meghatározhassa, hogy az alkalmazások mely tevékenységei engedélyezettek, mely felhasználók mely alkalmazásokat használhatják, és hogy a címtárerőforrások hogyan érhetők el.
 
-Az Azure AD az alkalmazásokat absztrakt entitásokként, **alkalmazásobjektumokkal** írja le. A fejlesztők alkalmazásokkal dolgoznak. Az üzembe helyezés során az Azure AD az adott alkalmazásobjektumot tervként használva létrehoz egy **szolgáltatásnevet**, amely az alkalmazás konkrét példányát jelöli egy adott címtárban vagy bérlőn. Ez a szolgáltatásnév határozza meg, hogy az alkalmazás ténylegesen milyen tevékenységeket hajthat végre az adott célcímtárban, mely erőforrásokat érheti el, és így tovább. Az Azure AD a szolgáltatásneveket az alkalmazásobjektumokból **hozzájárulás** alapján hozza létre.
+A Microsoft identity platform egy **alkalmazásobjektum** során egy absztrakt entitást ismerteti. A fejlesztők alkalmazásokkal dolgoznak. A telepítéskor, a Microsoft identity platform az adott alkalmazáshoz objektumot használ webportált hozhat létre egy **egyszerű szolgáltatás**, amely egy adott könyvtárban vagy a bérlő egy alkalmazás egy konkrét példányát jelöli. Ez a szolgáltatásnév határozza meg, hogy az alkalmazás ténylegesen milyen tevékenységeket hajthat végre az adott célcímtárban, mely erőforrásokat érheti el, és így tovább. A Microsoft identity platform hoz létre egy egyszerű szolgáltatást az alkalmazásobjektum keresztül **hozzájárulás**.
 
-Az alábbi ábrán az Azure AD hozzájárulás-alapú kiépítési folyamatának egyszerűsített vázát mutatja.  Két bérlőjéhez léteznek, (A és B), ahol A bérlő az alkalmazás tulajdonosa, és a bérlőtől a B bérlőhöz van hárítható el az alkalmazást egy egyszerű szolgáltatást.  
+Az alábbi ábrán látható egy egyszerűsített a Microsoft identity platform-üzembehelyezési hátterében a jóváhagyási folyamatot.  Két bérlőjéhez léteznek, (A és B), ahol A bérlő az alkalmazás tulajdonosa, és a bérlőtől a B bérlőhöz van hárítható el az alkalmazást egy egyszerű szolgáltatást.  
 
-![Hozzájárulás-alapú egyszerűsített kiépítési folyamat](./media/authentication-scenarios/simplified-provisioning-flow-consent.png)
+![Hozzájárulás-alapú egyszerűsített kiépítési folyamat](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
 A kiépítési folyamat:
 
@@ -90,15 +90,15 @@ A kiépítési folyamat:
 | 1 | A felhasználó a bérlőtől a B bérlőhöz próbál jelentkezzen be az alkalmazás |
 | 2 | A rendszer kéri és ellenőrzi a felhasználó hitelesítő adatait |
 | 3 | A rendszer kéri a felhasználó hozzájárulását ahhoz, hogy az alkalmazás hozzáférjen a B bérlőhöz |
-| 4 | Azure ad-ben használja az alkalmazásobjektum a tervrajz egyszerű szolgáltatás létrehozása a bérlőtől a B bérlőhöz |
+| 4 | A Microsoft identity platform használja az alkalmazásobjektum a tervrajz létrehozni egy szolgáltatásnevet a bérlőtől a B bérlőhöz |
 | 5 | A felhasználó megkapja az igényelt jogkivonatot |
 |   |   |
 
-A folyamat tetszőleges mennyiségben ismételhető a többi bérlőre (C, D és így tovább) vonatkozóan. A bérlő megőrzi a tervezet az alkalmazás (alkalmazásobjektum). A többi bérlőn, amelyekre az alkalmazás hozzájárulást kapott, továbbra is a felhasználók és a rendszergazdák határozhatják meg az egyedi bérlőkön lévő megfelelő szolgáltatásnév-objektumokon keresztül, hogy az alkalmazás milyen tevékenységeket hajthat végre. További információkért lásd [az Azure AD alkalmazás- és szolgáltatásnév-objektumait](app-objects-and-service-principals.md) ismertető cikket.
+A folyamat tetszőleges mennyiségben ismételhető a többi bérlőre (C, D és így tovább) vonatkozóan. A bérlő megőrzi a tervezet az alkalmazás (alkalmazásobjektum). A többi bérlőn, amelyekre az alkalmazás hozzájárulást kapott, továbbra is a felhasználók és a rendszergazdák határozhatják meg az egyedi bérlőkön lévő megfelelő szolgáltatásnév-objektumokon keresztül, hogy az alkalmazás milyen tevékenységeket hajthat végre. További információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok a Microsoft identity platform](app-objects-and-service-principals.md).
 
-## <a name="claims-in-azure-ad-security-tokens"></a>Jogcímek az Azure AD biztonsági jogkivonataiban
+## <a name="claims-in-microsoft-identity-platform-security-tokens"></a>A Microsoft identity platform biztonsági jogkivonatokat a jogcím
 
-Az Azure AD által kiadott biztonsági jogkivonatok (hozzáférési és azonosító jogkivonatok) jogcímeket, azaz a hitelesített alanyra vonatkozó megerősített információkat tartalmaznak. Az alkalmazások a jogcímeket különféle műveletekhez használhatják:
+Biztonsági jogkivonatok (hozzáférési és azonosító-jogkivonatokat), a Microsoft identity platform által kiadott jogcímeket, vagy a helyességi feltételek hitelesítését, a tulajdonos adatait tartalmaznak. Az alkalmazások a jogcímeket különféle műveletekhez használhatják:
 
 * A jogkivonat érvényesítése
 * Az alany címtárbérlőjének azonosítása
@@ -107,7 +107,7 @@ Az Azure AD által kiadott biztonsági jogkivonatok (hozzáférési és azonosí
 
 Az egyes biztonsági jogkivonatokban lévő jogcímek a jogkivonat típusától, a felhasználó hitelesítéséhez használt hitelesítő adatoktól és az alkalmazás konfigurációjától függenek.
 
-Az Azure AD által kibocsátott egyes jogcímek rövid leírását az alábbi táblázat tartalmazza. Részletesebb információkat az Azure AD által kibocsátott [hozzáférési jogkivonatok](access-tokens.md) és [azonosító jogkivonatok](id-tokens.md) leírásában talál.
+Az alábbi táblázat röviden a Microsoft identity platform által kibocsátott jogcímek különböző típusú biztosítja. Részletesebb információkért lásd: a [hozzáférési jogkivonatokat](access-tokens.md) és [azonosító-jogkivonatokat](id-tokens.md) identity platform a Microsoft által kiadott.
 
 | Jogcím | Leírás |
 | --- | --- |
@@ -134,4 +134,4 @@ Az Azure AD által kibocsátott egyes jogcímek rövid leírását az alábbi t�
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [az Azure Active Directory által támogatott alkalmazástípusokat és forgatókönyveket](app-types.md)
+* További információ a [alkalmazástípusok és a Microsoft identitásplatformja támogatott forgatókönyveket](app-types.md)

@@ -11,20 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2018
+ms.date: 04/08/2019
 ms.author: celested
 ms.reviewer: tomfitz
+ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a8311e359b5afa84020227de309e8b153a7ccda
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: ee12cb2a0fdd4547ffae8dfce4fddee03167e539
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238062"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257416"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az Azure AD-alkalmazás és -erőforrások elérésére képes egyszerű szolgáltatás létrehozása a portál használatával
 
-Ha rendelkezik, amelyet eléréséhez, vagy módosítsa erőforrások, az alkalmazáshoz tartozó identitást hozhat létre. Ezt az identitást szolgáltatásnévnek nevezzük. A szolgáltatásnévnek majd hozzárendelheti a szükséges engedélyekkel. Ez a cikk bemutatja, hogyan az egyszerű szolgáltatás létrehozása a portál használatával. Egy egybérlős alkalmazást, ahol az alkalmazás futtatásához csak egy szervezeten belül célja összpontosít. Általában használnak a egybérlős alkalmazások az üzleti alkalmazások futtatására a szervezeten belül.
+Ez a cikk bemutatja, hogyan hozhat létre egy új Azure Active Directory-alkalmazás és szolgáltatás egyszerű, amely használható a szerepköralapú hozzáférés-vezérlést. Ha rendelkezik, amelyet eléréséhez, vagy módosítsa erőforrások, az alkalmazáshoz tartozó identitást hozhat létre. Ezt az identitást szolgáltatásnévnek nevezzük. A szolgáltatásnévnek majd hozzárendelheti a szükséges engedélyekkel. Ez a cikk bemutatja, hogyan az egyszerű szolgáltatás létrehozása a portál használatával. Egy egybérlős alkalmazást, ahol az alkalmazás futtatásához csak egy szervezeten belül célja összpontosít. Általában használnak a egybérlős alkalmazások az üzleti alkalmazások futtatására a szervezeten belül.
 
 > [!IMPORTANT]
 > Egyszerű szolgáltatás létrehozása helyett fontolja meg a felügyelt identitások használatával az Azure-erőforrások esetében az alkalmazás azonosítóját. A kódot, amely támogatja a felügyelt identitások és hozzáférések erőforrások, amelyek támogatják az Azure Active Directory (Azure AD) hitelesítési szolgáltatás fut, ha a felügyelt identitásokból, jobb megoldás. További információ az Azure-erőforrásokhoz, mely szolgáltatások jelenleg támogatja, beleértve a felügyelt identitásokból [Mi az Azure-erőforrások felügyelt identitások?](../managed-identities-azure-resources/overview.md).

@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 895f6ce728ce608184bf6f68be3b73d5dc384d79
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: MT
+ms.openlocfilehash: 7f1379bbd3a52b364efc5e4c47612e645fa119ed
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892319"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056996"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Vegyen fel egy buborék réteget a térkép
 
 Ez a cikk bemutatja, hogyan renderelni a pont adatokat egy adatforrásból egy buborék a térképen rétegként. Buborékdiagram rétegek pontok rögzített képpontos radius-szal a térképen a körök jelennek meg. 
 
 > [!TIP]
-> Alapértelmezés szerint a buborék rétegek egy adatforrásban lévő összes geometriája koordinátáit jelenik meg. A réteg korlátozása úgy, hogy a vártak csak pont geometriai szolgáltatások beállítása az `filter` tulajdonság a réteg `['==', '$type', 'Point']`
+> Alapértelmezés szerint a buborék rétegek egy adatforrásban lévő összes geometriája koordinátáit jelenik meg. A réteg korlátozása úgy, hogy a vártak csak pont geometriai szolgáltatások beállítása az `filter` tulajdonság a réteg `['==', ['geometry-type'], 'Point']` vagy `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` Ha fel szeretne venni, valamint a MultiPoint szolgáltatások.
 
-## <a name="add-a-bubble-layer"></a>Egy buborék réteg hozzáadása
+## <a name="add-a-bubble-layer"></a>Buborékréteg hozzáadása
 
 <iframe height='500' scrolling='no' title='BubbleLayer DataSource' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -73,4 +73,4 @@ További információ az osztályok és módszerek a cikk ezt használja:
 Tekintse meg a további Kódminták a maps hozzá az alábbi cikkeket:
 
 > [!div class="nextstepaction"]
-> [Egy szimbólum réteg hozzáadása](./map-add-pin.md)
+> [Szimbólumréteg hozzáadása](./map-add-pin.md)

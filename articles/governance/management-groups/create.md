@@ -7,15 +7,15 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/20/2018
+ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: a89df98224634c08c84cb059eb58e64e3c7febf7
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: MT
+ms.openlocfilehash: 928cb790bd97270870618534a73316bba5eeb070
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58801266"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057438"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erőforrás-szervezet és felügyeleti felügyeleti csoportok létrehozása
 
@@ -41,7 +41,7 @@ A felügyeleti csoport a portálon, a PowerShell vagy az Azure CLI használatáv
 
 1. Adja meg a felügyeleti csoport azonosító mező.
 
-   - A **felügyeleti csoport azonosítója** directory egyedi azonosítója, amellyel küldje el a felügyeleti csoportra parancsokat. Ez az azonosító adatok nem módosíthatók létrehozása után, mivel a Azure rendszerben ez a csoport azonosításához használt.
+   - A **felügyeleti csoport azonosítója** directory egyedi azonosítója, amellyel küldje el a felügyeleti csoportra parancsokat. Ez az azonosító nem szerkeszthető a létrehozása után, mivel a Azure rendszerben ez a csoport azonosításához használt. A [gyökérszintű felügyeleti csoport](index.md#root-management-group-for-each-directory) automatikusan létrejön egy azonosítóval, amely az Azure Active Directory-azonosítója. Minden más felügyeleti csoportokhoz rendelje hozzá egy egyedi azonosítót.
    - A megjelenített név mezőjének Ez a név jelenik meg az Azure Portalon. Egy külön megjelenített név mező kitöltése nem kötelező, ha a felügyeleti csoportot, és bármikor módosítható.  
 
    ![Beállítások ablaktábla az új felügyeleti csoport létrehozása](./media/create_context_menu.png)  
@@ -78,8 +78,8 @@ az account management-group create --name 'Contoso'
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 
-- [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](create.md)
-- [Felügyeleti csoportok módosítása, törlése és kezelése](manage.md)
-- [Felügyeleti csoportok áttekintése az Azure PowerShell Erőforrások moduljában](/powershell/module/az.resources#resources)
-- [Felügyeleti csoportok áttekintése a REST API-ban](/rest/api/resources/managementgroups)
-- [Felügyeleti csoportok áttekintése az Azure CLI-ben](/cli/azure/account/management-group)
+- [Az Azure-erőforrások rendszerezése felügyeleti csoportok létrehozása](create.md)
+- [Módosítása, törlése és a felügyeleti csoportok kezelése](manage.md)
+- [Tekintse át a felügyeleti csoportok az Azure PowerShell modul](/powershell/module/az.resources#resources)
+- [Tekintse át a felügyeleti csoportok REST API-ban](/rest/api/resources/managementgroups)
+- [Tekintse át a felügyeleti csoportok az Azure CLI-vel](/cli/azure/account/management-group)

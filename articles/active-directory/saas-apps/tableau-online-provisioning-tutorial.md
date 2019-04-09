@@ -6,21 +6,22 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 0be9c435-f9a1-484d-8059-e578d5797d8e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 03/27/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ed8bae32cb8d0680b1f9aa66f26407c3313ea06
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: f732eebd410a6b52a21a46925a29bf4676f7c8cb
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077819"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057489"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása Tableau Online konfigurálása
 
@@ -45,27 +46,21 @@ A felhasználók automatikus átadása az Azure AD-, Tableau Online konfigurál�
 
 **Adhat hozzá a Tableau Online az Azure AD alkalmazáskatalógusában, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen, kattintson a a **Azure Active Directory** ikonra.
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** > **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások szakasz][2]
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. A Tableau Online hozzáadásához kattintson a **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Az új alkalmazás gomb][3]
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Tableau Online**.
+4. A Keresés mezőbe írja be a **Tableau Online**válassza **Tableau Online** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/AppSearch.png)
-
-5. Az eredmények panelen válassza ki a **Tableau Online**, majd kattintson a **Hozzáadás** gombra kattintva adhat hozzá a Tableau Online a SaaS-alkalmazások listájára.
-
-    ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/AppSearchResults.png)
-
-    ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/AppCreation.png)
+    ![Az eredmények listájában a tableau Online](common/search-new-app.png)
 
 ## <a name="assigning-users-to-tableau-online"></a>Felhasználók hozzárendelése a Tableau Online
 
@@ -90,11 +85,13 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 ### <a name="to-configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása a Tableau online-hoz az Azure ad-ben:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) és keresse meg a **Azure Active Directory > Vállalati alkalmazások > minden alkalmazás**.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és válassza ki **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Tableau Online**.
 
-2. Válassza ki a Tableau Online SaaS-alkalmazások listájából.
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/AppInstanceSearch.png)
+2. Az alkalmazások listájában jelölje ki a **Tableau Online**.
+
+    ![Az alkalmazások listáját a Tableau Online hivatkozás](common/all-applications.png)
 
 3. Válassza ki a **kiépítési** fülre.
 
@@ -116,13 +113,16 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 6. Miután bejelentkezett a rendszergazdai fiók a Tableau online-hoz, a tartozó értékeket **tartomány** és **tartalom URL-címe** kinyerésének URL-címét a felügyelet lapon.
 
-    *   A **tartomány** a Tableau online fiók másolható át ezt az URL-címben: ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
+    * A **tartomány** a Tableau online fiók másolható át ezt az URL-címben:
 
-    *   A **tartalom URL-címe** a Tableau online fiókot lehet másolni az ebben a szakaszban, és a fiók beállítása során egy értéket számít. Ebben a példában az értéke "contoso": ![Tableau Online Provisioning](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
+        ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
+
+    * A **tartalom URL-címe** a Tableau online fiókot lehet másolni az ebben a szakaszban, és a fiók beállítása során egy értéket számít. Ebben a példában az értéke "contoso":
+
+        ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
 
         > [!NOTE]
-        > A **tartomány** eltérhetnek az itt láthatótól. 
-
+        > A **tartomány** eltérhetnek az itt láthatótól.
 
 7. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD a Tableau Online csatlakozhatnak. Ha a kapcsolat hibája esetén, győződjön meg arról, a Tableau Online-fiók rendszergazdai engedélyekkel rendelkezik, és próbálkozzon újra.
 
@@ -132,35 +132,35 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
     ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
-10. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Save** (Mentés) gombra.
 
-11. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a Tableau**.
+10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a Tableau**.
 
     ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/UserMappings.png)
 
-12. Tekintse át a Tableau online az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, a Tableau Online frissítési műveletek. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+11. Tekintse át a Tableau online az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, a Tableau Online frissítési műveletek. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
 
     ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
 
-13. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-csoportokat, Tableau**.
+12. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-csoportokat, Tableau**.
 
     ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/GroupMappings.png)
 
-14. Tekintse át a Tableau online az Azure AD-ből szinkronizált oszlopainál a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, a Tableau Online frissítési műveletek. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+13. Tekintse át a Tableau online az Azure AD-ből szinkronizált oszlopainál a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, a Tableau Online frissítési műveletek. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
 
     ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/GroupAttributeMapping.png)
 
-15. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+14. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-16. Az Azure AD létesítési szolgáltatás Tableau online engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
+15. Az Azure AD létesítési szolgáltatás Tableau online engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
 
     ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/ProvisioningStatus.png)
 
-17. A felhasználók és/vagy a csoportok, adja meg a Tableau Online kiépíteni definiálása válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
+16. A felhasználók és/vagy a csoportok, adja meg a Tableau Online kiépíteni definiálása válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
 
     ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/ScopeSync.png)
 
-18. Ha készen áll rendelkezésre, kattintson a **mentése**.
+17. Ha készen áll rendelkezésre, kattintson a **mentése**.
 
     ![A tableau Online kiépítése](./media/tableau-online-provisioning-tutorial/SaveProvisioning.png)
 
@@ -171,8 +171,7 @@ Az Azure AD létesítési naplók olvasása további információkért lásd: [-
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
+* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 

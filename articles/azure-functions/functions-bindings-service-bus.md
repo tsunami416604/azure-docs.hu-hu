@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 9955068fbc0d6493add83c6c92390413b3975106
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 1f4bf24ef5f96fea7602b38d857f12d950fb0b24
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437171"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057727"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Szolgáltatásbusz-kötések az Azure Functions szolgáltatáshoz
 
@@ -46,7 +46,7 @@ A Service Bus-trigger használatával üzeneteket egy Service Bus-üzenetsor vag
 Tekintse meg az adott nyelvű példa:
 
 * [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
+* [C#-szkript (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [Java](#trigger---java-example)
 * [JavaScript](#trigger---javascript-example)
@@ -278,13 +278,13 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**type** | n/a | Állítsa "serviceBusTrigger". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
-|**direction** | n/a | Meg kell "a". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
-|**name** | n/a | A függvénykódot az üzenetsor vagy témakör üzenet képviselő változó neve. "$Return" hivatkozik a függvény visszaadott értékének beállításával. |
-|**queueName**|**queueName**|Figyelni kívánt üzenetsor neve.  Csak akkor, ha egy üzenetsort, nem a témakör a figyelés beállítása.
+|**irány** | n/a | Meg kell "a". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
+|**név** | n/a | A függvénykódot az üzenetsor vagy témakör üzenet képviselő változó neve. "$Return" hivatkozik a függvény visszaadott értékének beállításával. |
+|**queueName**|**QueueName**|Figyelni kívánt üzenetsor neve.  Csak akkor, ha egy üzenetsort, nem a témakör a figyelés beállítása.
 |**topicName**|**topicName**|Figyelendő üzenettéma nevére. Csak akkor, ha a figyelést egy üzenetsort, nem egy témakör beállítása.|
-|**subscriptionName**|**subscriptionName**|Neve a figyelni kívánt előfizetést. Csak akkor, ha a figyelést egy üzenetsort, nem egy témakör beállítása.|
-|**kapcsolat**|**kapcsolat**|A Service Bus kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a név része is megadhat. Például, ha a beállított `connection` "MyServiceBus", hogy a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyServiceBus." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete alapértelmezett a Service Bus kapcsolati karakterláncát használja a "AzureWebJobsServiceBus" nevű Alkalmazásbeállítás.<br><br>Szerezzen be egy kapcsolati karakterláncot, kövesse a lépéseket, látható [a felügyeleti hitelesítő adatok lekérése](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string). A kapcsolati karakterláncot a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör kell lennie. |
-|**accessRights**|**Access (Hozzáférés)**|A kapcsolati karakterlánc hozzáférési jogosultságokat. Elérhető értékek a következők `manage` és `listen`. Az alapértelmezett érték `manage`, amely azt jelzi, hogy a `connection` rendelkezik a **kezelés** engedéllyel. Használhat, ha egy kapcsolati karakterláncot, amely nem rendelkezik a **kezelés** , engedélyének `accessRights` "figyelésére". Ellenkező esetben a Functions runtime meghiúsulhat igénylő műveletek végrehajtását kezelésére. Az Azure Functions-verzió 2.x, ez a tulajdonság nem érhető el, mert a Storage SDK legújabb verziója nem támogatja a műveletek kezelésére.|
+|**subscriptionName**|**Előfizetés neve**|Neve a figyelni kívánt előfizetést. Csak akkor, ha a figyelést egy üzenetsort, nem egy témakör beállítása.|
+|**kapcsolat**|**Kapcsolat**|A Service Bus kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a név része is megadhat. Például, ha a beállított `connection` "MyServiceBus", hogy a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyServiceBus." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete alapértelmezett a Service Bus kapcsolati karakterláncát használja a "AzureWebJobsServiceBus" nevű Alkalmazásbeállítás.<br><br>Szerezzen be egy kapcsolati karakterláncot, kövesse a lépéseket, látható [a felügyeleti hitelesítő adatok lekérése](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string). A kapcsolati karakterláncot a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör kell lennie. |
+|**accessRights**|**Hozzáférés**|A kapcsolati karakterlánc hozzáférési jogosultságokat. Elérhető értékek a következők `manage` és `listen`. Az alapértelmezett érték `manage`, amely azt jelzi, hogy a `connection` rendelkezik a **kezelés** engedéllyel. Használhat, ha egy kapcsolati karakterláncot, amely nem rendelkezik a **kezelés** , engedélyének `accessRights` "figyelésére". Ellenkező esetben a Functions runtime meghiúsulhat igénylő műveletek végrehajtását kezelésére. Az Azure Functions-verzió 2.x, ez a tulajdonság nem érhető el, mert a Storage SDK legújabb verziója nem támogatja a műveletek kezelésére.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -328,7 +328,6 @@ A Service Bus-trigger biztosít több [metaadat-tulajdonságot](./functions-bind
 |`To`|`string`|A küldési címre.|
 |`Label`|`string`|Az alkalmazásspecifikus címke.|
 |`CorrelationId`|`string`|A korrelációs azonosítót.|
-|`UserProperties`|`IDictionary<String,Object>`|Az alkalmazás adott üzenet tulajdonságai.|
 
 > [!NOTE]
 > Az eseményindító jelenleg csak működik az üzenetsorok és -előfizetések, amelyek nem használják a munkamenetek. Adjon nyomon [funkció elem](https://github.com/Azure/azure-functions-host/issues/563) ábrával további frissítéseit. 
@@ -364,7 +363,7 @@ Azure Service Bus kimeneti kötés használatával üzenetsor vagy témakör üz
 Tekintse meg az adott nyelvű példa:
 
 * [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
+* [C#-szkript (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [Java](#output---java-example)
 * [JavaScript](#output---javascript-example)
@@ -595,12 +594,12 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**type** | n/a | "A serviceBus" kell állítani. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
-|**direction** | n/a | Állítsa "out". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
-|**name** | n/a | Az üzenetsor vagy témakör, a függvény kódját képviselő változó neve. "$Return" hivatkozik a függvény visszaadott értékének beállításával. |
-|**queueName**|**queueName**|Az üzenetsor neve.  Állítsa be, csak akkor, ha üzenetküldésre üzenetsor, témakör esetében nem.
+|**irány** | n/a | Állítsa "out". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
+|**név** | n/a | Az üzenetsor vagy témakör, a függvény kódját képviselő változó neve. "$Return" hivatkozik a függvény visszaadott értékének beállításával. |
+|**queueName**|**QueueName**|Az üzenetsor neve.  Állítsa be, csak akkor, ha üzenetküldésre üzenetsor, témakör esetében nem.
 |**topicName**|**topicName**|Figyelendő üzenettéma nevére. Csak akkor, ha üzenetküldésre témakör, nem a várólista állítsa be.|
-|**kapcsolat**|**kapcsolat**|A Service Bus kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a név része is megadhat. Például, ha a beállított `connection` "MyServiceBus", hogy a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyServiceBus." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete alapértelmezett a Service Bus kapcsolati karakterláncát használja a "AzureWebJobsServiceBus" nevű Alkalmazásbeállítás.<br><br>Szerezzen be egy kapcsolati karakterláncot, kövesse a lépéseket, látható [a felügyeleti hitelesítő adatok lekérése](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string). A kapcsolati karakterláncot a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör kell lennie.|
-|**accessRights**|**Access (Hozzáférés)**|A kapcsolati karakterlánc hozzáférési jogosultságokat. Elérhető értékek a következők `manage` és `listen`. Az alapértelmezett érték `manage`, amely azt jelzi, hogy a `connection` rendelkezik a **kezelés** engedéllyel. Használhat, ha egy kapcsolati karakterláncot, amely nem rendelkezik a **kezelés** , engedélyének `accessRights` "figyelésére". Ellenkező esetben a Functions runtime meghiúsulhat igénylő műveletek végrehajtását kezelésére. Az Azure Functions-verzió 2.x, ez a tulajdonság nem érhető el, mert a Storage SDK legújabb verziója nem támogatja a műveletek kezelésére.|
+|**kapcsolat**|**Kapcsolat**|A Service Bus kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a név része is megadhat. Például, ha a beállított `connection` "MyServiceBus", hogy a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyServiceBus." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete alapértelmezett a Service Bus kapcsolati karakterláncát használja a "AzureWebJobsServiceBus" nevű Alkalmazásbeállítás.<br><br>Szerezzen be egy kapcsolati karakterláncot, kövesse a lépéseket, látható [a felügyeleti hitelesítő adatok lekérése](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#get-the-connection-string). A kapcsolati karakterláncot a Service Bus-névtér, nem kizárólagosan az adott üzenetsor vagy témakör kell lennie.|
+|**accessRights**|**Hozzáférés**|A kapcsolati karakterlánc hozzáférési jogosultságokat. Elérhető értékek a következők `manage` és `listen`. Az alapértelmezett érték `manage`, amely azt jelzi, hogy a `connection` rendelkezik a **kezelés** engedéllyel. Használhat, ha egy kapcsolati karakterláncot, amely nem rendelkezik a **kezelés** , engedélyének `accessRights` "figyelésére". Ellenkező esetben a Functions runtime meghiúsulhat igénylő műveletek végrehajtását kezelésére. Az Azure Functions-verzió 2.x, ez a tulajdonság nem érhető el, mert a Storage SDK legújabb verziója nem támogatja a műveletek kezelésére.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

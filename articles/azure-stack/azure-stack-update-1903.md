@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: a62c4dced78ef75588ef0fcc90e56bd6969c15a9
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.openlocfilehash: 218af82d2385632e7e7a0e77060c5deb758d1e83
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2019
-ms.locfileid: "59048809"
+ms.locfileid: "59057053"
 ---
 # <a name="azure-stack-1903-update"></a>Azure Stack 1903 frissítése
 
@@ -156,6 +156,9 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
    - Egy több-bérlős környezet van beállítva, ha a virtuális gépek üzembe helyezéséhez egy adott előfizetéshez tartozó és a Vendég címtár egy belső hiba miatt meghiúsulhat. A hiba elhárításához kövesse az alábbi lépéseket a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
 
 - Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy az SSH-kulcsokkal való bejelentkezéshez használ. Áthidaló megoldásként használja a Linux-bővítményt a Virtuálisgép-hozzáférés SSH-kulcsok megvalósításához a kiépítés után, vagy jelszóalapú hitelesítés használatára.
+
+- Az Azure Stack már támogatja a Windows Azure Linux-ügynökök verzió 2.2.20 nagyobb. Ez a támogatás 1901 és 1902 gyorsjavítás része volt, és lehetővé teszi az ügyfelek számára, hogy egységes típusú linux-rendszerképeket az Azure és az Azure Stack közötti karbantartása.
+
 
 - Ha egy életciklus állomás (HLH) nem rendelkezik: build 1902, mielőtt kellett állítani csoportházirend **Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Biztonsági beállítások** való **LM- és NTLM – NTLMv2 munkamenet használja, ha az egyeztetett**. Build 1902, mivel azt hagyja **nincs definiálva** vagy - **csak a válasz küldése NTLMv2** (azaz az alapértelmezett érték). Ellenkező esetben nem lehet hozzon létre egy távoli PowerShell-munkamenetet, és megjelenik egy **a hozzáférés megtagadva** hiba:
 

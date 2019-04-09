@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e43c607c2dc67054bde7689d50e495a59e6b659
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: fd3228194ac232cf8fc0efae46454075c5c02314
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540856"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058730"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Egy tároló-lokátor létrehozása az Azure Maps használatával
 
@@ -454,7 +454,7 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
         //Wait until the map resources are ready.
         map.events.add('ready', function() {
 
-        //Add your post-map load functionality.
+            //Add your post-map load functionality.
 
         });
     }
@@ -516,7 +516,7 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
     window.onload = initialize;
     ```
 
-1. A térkép `load` eseményfigyelő, adja hozzá a nagyítási vezérlő és a egy HTML jelölő egy keresési terület megjelenítéséhez.
+1. A térkép `ready` eseményfigyelő, adja hozzá a nagyítási vezérlő és a egy HTML jelölő egy keresési terület megjelenítéséhez.
 
     ```JavaScript
     //Add a zoom control to the map.
@@ -533,7 +533,7 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
     map.markers.add(centerMarker);
     ```
 
-1. A térkép `load` eseményfigyelő, adjon hozzá egy adatforrást. Ezt követően hívás betölteni és elemezni az adatkészletet. Az adatforrás fürtözésének engedélyezésére. A fürtszolgáltatás az adatokat a forrás csoportok egymással átfedésben lévő pontok együtt egy fürtben. A fürtök külön be felhasználóként az egyes pontok közeledik. Ez lehetővé teszi egy több képlékeny felhasználói felülettel, és növeli a teljesítményt.
+1. A térkép `ready` eseményfigyelő, adjon hozzá egy adatforrást. Ezt követően hívás betölteni és elemezni az adatkészletet. Az adatforrás fürtözésének engedélyezésére. A fürtszolgáltatás az adatokat a forrás csoportok egymással átfedésben lévő pontok együtt egy fürtben. A fürtök külön be felhasználóként az egyes pontok közeledik. Ez lehetővé teszi egy több képlékeny felhasználói felülettel, és növeli a teljesítményt.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -548,7 +548,7 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
     loadStoreData();
     ```
 
-1. Miután betöltöttük az adatkészlet, a térkép `load` eseményfigyelő, meghatározhatja egy adott szinten is adatok jelennek meg. Egy buborék réteg fürtözött adatpontok előállítására szolgál. A szimbólum réteg jelennek meg az egyes csoportokban a buborék réteg felett pontok száma szolgál. Szimbólum beállítása egy egyéni ikon az egyes helyeken a térképen jeleníti meg.
+1. Miután betöltöttük az adatkészlet, a térkép `ready` eseményfigyelő, meghatározhatja egy adott szinten is adatok jelennek meg. Egy buborék réteg fürtözött adatpontok előállítására szolgál. A szimbólum réteg jelennek meg az egyes csoportokban a buborék réteg felett pontok száma szolgál. Szimbólum beállítása egy egyéni ikon az egyes helyeken a térképen jeleníti meg.
 
    Adjon hozzá `mouseover` és `mouseout` eseményeket a buborék és ikon rétegek módosítása az egérmutatót, amikor a felhasználó rámutat egy fürt vagy a térképen ikonra. Adjon hozzá egy `click` eseményhez, és a fürt buborék réteget. Ez `click` a térkép alatt két szinttel nagyítása és középpontba a térkép keresztül a fürt, amikor a felhasználó kiválasztja az összes fürt állítása esemény. Adjon hozzá egy `click` esemény a ikon réteghez. Ez `click` esemény megjelenik egy előugró ablak, amely egy kávézóban részleteit jeleníti meg, ha a felhasználó kiválaszt egy adott helyhez ikont. Vegyen fel egy eseményt a térképen, a figyelő észleli, ha a térkép áthelyezése befejeződött. Ha ez az esemény akkor következik be, frissítse az elemeket a lista panelen.  
 
@@ -959,7 +959,7 @@ Az oktatóanyag kódmintáját itt érheti el:
 
 > [Egy tároló-lokátor létrehozása az Azure Maps használatával](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
 
-[A minta megtekintése élőben](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
+[Tekintse meg a mintát itt élő](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
 
 További információ az Azure Maps lefedettségéről és képességeiről:
 

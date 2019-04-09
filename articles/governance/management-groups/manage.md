@@ -3,15 +3,15 @@ title: Módosítása, törlése és a felügyeleti csoportok – Azure Cégirán
 description: Útmutató megtekintése, kezelése, frissítése és a felügyeleti csoport hierarchia törlése.
 author: rthorn17
 ms.service: azure-resource-manager
-ms.date: 02/20/2019
+ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f75686d19a468983a6b0ce68eb4a456e00c90eeb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.openlocfilehash: 58f8b3346ddd250736e09966b7c36e570b62bb10
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881052"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057744"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Az erőforrások kezelése a felügyeleti csoportokkal
 
@@ -34,6 +34,8 @@ A felügyeleti csoport nevét a portal, PowerShell vagy az Azure CLI használat�
 1. Válassza ki **minden szolgáltatás** > **felügyeleti csoportok**.
 
 1. Válassza ki az átnevezni kívánt felügyeleti csoport.
+
+1. Válassza ki **részletek**.
 
 1. Válassza ki a **csoport átnevezése** lehetőséget az oldal tetején.
 
@@ -80,6 +82,8 @@ A felügyeleti csoport törléséhez az alábbi követelményeknek kell teljesü
 1. Válassza ki **minden szolgáltatás** > **felügyeleti csoportok**.
 
 1. Válassza ki a törölni kívánt felügyeleti csoport.
+
+1. Válassza ki **részletek**.
 
 1. Válassza ki **törlése**
 

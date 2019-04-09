@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d35c33a45f2ce23dabfba20bbd902c058e3033d3
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: 42a7eee37d993e5f9245374adbfd133344797eff
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540457"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058169"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Közeli hasznos helyek keresése az Azure Maps használatával
 
@@ -138,8 +138,8 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
 5. A `GetMap` függvényben adja hozzá az alábbi JavaScript-kódot a térkép inicializálása után.
 
     ```JavaScript
-    //Wait until the map resources are loaded.
-    map.events.add('load', function() {
+    //Wait until the map resources are ready.
+    map.events.add('ready', function() {
 
         //Create a data source and add it to the map.
         datasource = new atlas.source.DataSource();
@@ -161,7 +161,7 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
     });
     ```
 
-   Ez kódszegmens egy betöltési esemény kerül a térképen, a amely értesíti, ha már, hogy a térkép-erőforrások teljes betöltéséig. A térkép betöltésiesemény-kezelőjében létrejön egy adatforrás az eredményadatok tárolására. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg az adatforrásban található eredményadatok megjelenítését. Esetünkben ez egy sötétkék, kerek gombostű ikon, amely az eredmény koordinátái fölött jelenik meg, és amelyet más ikonok átfedhetnek. Az eredmény réteget a térkép rétegek kerül.
+   A kód szegmens egy `ready` eseményt vesz fel a térképet, amely értesíti, ha a térkép erőforrások lett betöltve, és a térkép készen áll a érhető el. A térkép `ready` eseménykezelő, egy adatforrás létrehozása eredmény adatok tárolására. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg az adatforrásban található eredményadatok megjelenítését. Esetünkben ez egy sötétkék, kerek gombostű ikon, amely az eredmény koordinátái fölött jelenik meg, és amelyet más ikonok átfedhetnek. Az eredmény réteget a térkép rétegek kerül.
 
 <a id="usesearch"></a>
 
@@ -171,7 +171,7 @@ Ez a szakasz bemutatja, hogyan használható a Maps [Search API](https://docs.mi
 
 ### <a name="service-module"></a>Szolgáltatásmodul
 
-1. A térkép betöltése eseménykezelő, hozza létre a search szolgáltatás URL-CÍMÉT adja hozzá a következő Javascript-kódot.
+1. A térkép `ready` eseménykezelő, hozza létre a search szolgáltatás URL-CÍMÉT adja hozzá a következő Javascript-kódot.
 
     ```JavaScript
    // Use SubscriptionKeyCredential with a subscription key
@@ -229,7 +229,7 @@ Ezen a ponton a MapSearch lap meg tudja jeleníteni az intelligens keresési lek
 
 A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszúsági/szélességi adatait vizsgálja. Ha azonban megtekinti a Maps Search szolgáltatás által visszaadott nyers JSON-fájlt, látni fogja, hogy az további információkat tartalmaz az egyes benzinkutakról, például a nevüket és a címüket. Ezeket az adatokat interaktív felugró ablakokkal beépítheti a térképbe.
 
-1. Adja hozzá a következő kódsort a térkép betöltésiesemény-kezelőjében a fuzzy keresési szolgáltatás lekérdezéséhez. Ez létrehozza a felugró ablak egy példányát, és hozzáad egy rámutatási eseményt a szimbólumréteghez.
+1. Adja hozzá a következő kódsorokat a térképen `ready` eseménykezelőt a kódot az intelligens keresés szolgáltatás lekérdezése után. Ez létrehozza a felugró ablak egy példányát, és hozzáad egy rámutatási eseményt a szimbólumréteghez.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -282,11 +282,11 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 Az oktatóanyag kódmintáját itt érheti el:
 
-> [Helyek keresése az Azure Maps használatával](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
+> [Az Azure Maps hely keresése](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
 
-[A minta megtekintése élőben](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+[Tekintse meg a mintát itt élő](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 A következő oktatóanyag bemutatja, hogyan lehet megjeleníteni egy útvonalat két hely között.
 
 > [!div class="nextstepaction"]
-> [Útvonal egy adott úti célhoz](./tutorial-route-location.md)
+> [Útvonal egy célhelyet](./tutorial-route-location.md)

@@ -1,10 +1,10 @@
 ---
-title: Hozzon létre és kezelhetők rugalmas készletek – Azure SQL database |} A Microsoft Docs
+title: Rugalmas készletek – Azure SQL database kezelése |} A Microsoft Docs
 description: Hozzon létre, és rugalmas Azure SQL-készletek kezelése.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
@@ -12,14 +12,14 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: e3f3a2260ba877c94262c12f5a999c6b7bdf5cd1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: debf91f04cff3cb9705ebc5915e2e665679230a9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892398"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267582"
 ---
-# <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készletek létrehozása és kezelése
+# <a name="manage-elastic-pools-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készletek kezelése
 
 A rugalmas készlet határozza meg a rugalmas készlet-adatbázisa a számítási feladatok kezeléséhez szükséges erőforrások mennyiségét, és minden készletezett adatbázis erőforrás-mennyiséget.
 

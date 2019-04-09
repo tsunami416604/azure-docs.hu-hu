@@ -4,18 +4,21 @@ description: Ismerteti, hogyan értékelheti a helyszíni gépek nagy számú az
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: 8a2ea64d32194ff06378e3227b260c4f10d53175
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: ae84313cd750e3d6c7eb9443ec59095dec9c632e
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116673"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057472"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
-Az Azure Migrate rendelkezik a maximális hossza 1500 gépet projektenként, ez a cikk azt ismerteti, hogyan értékelheti a helyszíni virtuális gépek (VM) nagy számú használatával [Azure Migrate](migrate-overview.md).   
+Az Azure Migrate rendelkezik a maximális hossza 1500 gépet projektenként, ez a cikk azt ismerteti, hogyan értékelheti a helyszíni virtuális gépek (VM) nagy számú használatával [Azure Migrate](migrate-overview.md).
+
+> [!NOTE]
+> Rendelkezünk egy előzetes kiadásban érhető el, amely lehetővé teszi, hogy legfeljebb 10 000 VMware virtuális gépek felderítését egyetlen berendezés használata egyetlen projekt, ha az Önt érdeklő kipróbálni szeretné azt, regisztráljon [itt.](https://aka.ms/migratefuture)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -284,7 +287,7 @@ A gyűjtőberendezés deríti fel a kiválasztott virtuális gépek alábbi konf
 
 A gyűjtőberendezés gyűjti össze a következő teljesítményszámlálókkal minden virtuális géphez az ESXi-gazdagép 20 másodperces időközönként. Ezek a számlálók vCenter teljesítményszámlálók és a terminológia átlagos feliratú, bár a 20 másodperces minták-e a valós idejű számlálókat. A berendezés majd tekercsben mentési egy adatpont 15 percenként válassza ki a maximális érték 20 másodperces minták létrehozása 20 másodperces minták és elküldi azokat az Azure-bA. A teljesítményadatokat a virtuális gépek indítása váljon a portálon elérhető, rendelkezik kezdődjön a felderítés után két órával. A legalább egy napot vár az értékelések teljesítményalapú pontos megfelelő javaslatokat beolvasni létrehozása előtt erősen ajánlott. Ha a keresett azonnali menni, elkészítheti a méretezési feltétel, *helyszíni* nem veszi, amely megfelelő a teljesítményadatokat.
 
-**A számláló** |  **Értékelés gyakorolt hatás**
+**Számláló** |  **Értékelés gyakorolt hatás**
 --- | ---
 cpu.usage.average | Javasolt Virtuálisgép-méretet és költség  
 mem.usage.average | Javasolt Virtuálisgép-méretet és költség  
