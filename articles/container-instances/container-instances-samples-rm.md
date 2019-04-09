@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: danlep
-ms.openlocfilehash: bf9f2be8a0854a6968f3be6bfdaf3a59fc81dc76
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 3d73d05c64f4b4867c69a15089c19ab8c320b9a8
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57728964"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006476"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances szolgáltatásban az Azure Resource Manager-sablonokkal
 
@@ -20,12 +20,12 @@ Az alábbi mintasablonok üzembe különböző konfigurációkban a container In
 
 A központi telepítési lehetőségekről a [üzembe helyezési](#deployment) szakaszban. Ha szeretné-e a saját sablonok, az Azure Container Instances létrehozása [Resource Manager sablonreferenciája] [ ref] részletesen sablon formátuma és a rendelkezésre álló tulajdonságok.
 
-## <a name="sample-templates"></a>Mintasablonok
+## <a name="sample-templates"></a>Példasablonok
 
 | | |
 |-|-|
 | **Alkalmazások** ||
-| [Wordpress][app-wp] | Létrehoz egy tárolópéldányt egy WordPress-webhely létrehozása és a MySQL-adatbázis. A WordPress-webhely tartalmát és a MySQL-adatbázis tárolja az Azure-fájlok megosztása. |
+| [WordPress][app-wp] | WordPress-webhelyek és a MySQL-adatbázis egy tárolócsoportot hoz létre. A WordPress-webhely tartalmát és a MySQL-adatbázis tárolja az Azure-fájlok megosztása. Is létrehoz egy application gateway nyilvános hálózati hozzáférés WordPress elérhetővé. |
 | [Az SQL Server- és IIS MS NAV][app-nav] | Üzembe helyez egy egyetlen Windows-tárolóban egy teljes körű önálló Dynamics NAV vagy Dynamics 365 Business Central-környezetben. |
 | **Kötetek** ||
 | [az emptyDir][vol-emptydir] | Az emptyDir köteten osztozó két Linux-tárolók üzembe helyezése. |

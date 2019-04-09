@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: b7a46fab296fa8d585f1ae70dcf278e6686cca64
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e3b0c0703cb46087db38121055117b50f97ad03f
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520598"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006570"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Gyors útmutató: A vezérlőelem egy eszköz csatlakozik az IoT hub (Android)
 
@@ -35,13 +35,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-
 * Az Android studio https://developer.android.com/studio/. Az Android Studio telepítési kapcsolatos további információkért lásd: [android-telepítés](https://developer.android.com/studio/install).
 
 * Android SDK 27 ebben a cikkben a mintát használja.
 
-* Ez a rövid útmutató két mintaalkalmazások szükségesek: A [eszközoldali SDK Android mintaalkalmazás](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample) és a [Service SDK-t Androidos mintaalkalmazás](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample). Mindkét ezeket a mintákat a Githubon az azure-iot-minták – java adattár részét képezik. Töltse le vagy klónozza a [azure-iot-minták – java](https://github.com/Azure-Samples/azure-iot-samples-java) tárház.
+* Futtassa a következő parancsot a Microsoft Azure IoT-bővítmény hozzáadása a Cloud Shell-példány Azure CLI-hez. Az IOT-bővítmény hozzáadása Azure CLI-vel az IoT Hub, IoT Edge és IoT Device Provisioning Service (DPS) parancsok.
 
+   ```azurecli-interactive
+   az extension add --name azure-cli-iot-ext
+   ```
+
+* Ez a rövid útmutató két mintaalkalmazások szükségesek: A [eszközoldali SDK Android mintaalkalmazás](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample) és a [Service SDK-t Androidos mintaalkalmazás](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample). Mindkét ezeket a mintákat a Githubon az azure-iot-minták – java adattár részét képezik. Töltse le vagy klónozza a [azure-iot-minták – java](https://github.com/Azure-Samples/azure-iot-samples-java) tárház.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -55,14 +59,13 @@ Ha elvégezte az előző [a rövid útmutató: Telemetria küldése egy eszközr
 
 Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a rövid útmutatóban az Azure Cloud Shell használatával regisztrál egy szimulált eszközt.
 
-1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az IoT Hub CLI-bővítmény hozzáadásához és az eszközidentitás létrehozásához.
+1. Futtassa a következő parancsot az Azure Cloud Shellben, hozza létre az eszközidentitást.
 
    **YourIoTHubName**: Alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
 
    **MyAndroidDevice**: Ezt az értéket az eszköz a megadott név. Használjon MyAndroidDevice látható módon. Ha úgy dönt, hogy az eszköz egy másik nevet, szükség lehet során ez a cikk ezt a nevet, és frissíti az eszköz nevére a mintaalkalmazások őket futtatása előtt a.
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create \
       --hub-name YourIoTHubName --device-id MyAndroidDevice
     ```

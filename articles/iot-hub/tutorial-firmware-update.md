@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2019
 ms.custom: mvc
-ms.openlocfilehash: faccebbd00b4ee9c8ecc257722ab87f0494d9466
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116690"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008902"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Oktatóanyag: Egy eszköz belső vezérlőprogram frissítési folyamata megvalósítása
 
@@ -100,7 +100,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ## <a name="start-the-firmware-update"></a>A belsővezérlőprogram-frissítés elindítása
 
-Hozzon létre egy [automatikus eszközkezelési konfigurációt](iot-hub-auto-device-config.md#create-a-configuration) a háttéralkalmazásban, hogy elkezdhesse a belsővezérlőprogram-frissítési folyamatot az összes olyan eszközön, amelynek **devicetype** értéke „chiller”. Ez a szakasz a következőket ismerteti:
+Hozzon létre egy [automatikus eszközkezelési konfigurációt](iot-hub-automatic-device-management.md#create-a-configuration) a háttéralkalmazásban, hogy elkezdhesse a belsővezérlőprogram-frissítési folyamatot az összes olyan eszközön, amelynek **devicetype** értéke „chiller”. Ez a szakasz a következőket ismerteti:
 
 * Konfiguráció létrehozása háttéralkalmazásból.
 * A feladat monitorozása a befejeződéséig.
@@ -115,10 +115,10 @@ A háttéralkalmazás az alábbi konfigurációt hozza létre:
 
 A konfiguráció a következő szakaszokat tartalmazza:
 
-* A `content` megadja a belső vezérlőprogram a kiválasztott eszközöknek küldött, kívánt tulajdonságait.
-* A(z) `metrics` megadja a belsővezérlőprogram-frissítés állapotát jelentő lekérdezéseket.
-* A(z) `targetCondition` kiválasztja a belsővezérlőprogram-frissítést fogadó eszközöket.
-* A(z) `priorty` beállítja a konfiguráció más konfigurációkhoz viszonyított relatív prioritását.
+* `content` Meghatározza a belső vezérlőprogram kívánt tulajdonságait, a kiválasztott eszközökre küldött.
+* `metrics` Adja meg a lekérdezések a belső vezérlőprogram frissítésének állapotát, hogy a jelentés futtatásához.
+* `targetCondition` kiválasztja az eszközök a belső vezérlőprogram frissítésének fogadjanak.
+* `priorty` egyéb konfigurációk állítja be ezt a konfigurációt a relatív prioritását.
 
 A háttéralkalmazás a következő kódot használja a konfiguráció létrehozásához, amellyel megadhatók a kívánt tulajdonságok:
 
@@ -209,4 +209,4 @@ az group delete --name tutorial-iot-hub-rg
 Ez az oktatóanyag bemutatta, hogyan implementálható a csatlakoztatott eszközök belsővezérlőprogram-frissítési folyamata. Folytassa a következő oktatóanyaggal, portal-eszközök Azure IoT Hub és az Azure CLI-parancsok használata az eszköz kapcsolat teszteléséhez.
 
 > [!div class="nextstepaction"]
-> [Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez](tutorial-connectivity.md)
+> [Szimulált eszköz használata az IoT hub-kapcsolat tesztelése](tutorial-connectivity.md)

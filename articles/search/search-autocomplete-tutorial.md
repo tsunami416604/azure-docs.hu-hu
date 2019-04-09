@@ -7,23 +7,23 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 9fb3cdd4b4b809e45180cd95b8fe930cce86826e
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 43d289f2688bbf4927ee244d6ae9992782bf380e
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498808"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009818"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Példa: Az Azure Search-alkalmazás javaslata vagy az automatikus kiegészítés hozzáadása
 
-Ebben a példában megtudhatja, hogyan használható [javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggestions) és [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) hozhat létre egy hatékony keresési mezőbe, amely támogatja a keresési –--beíráskor viselkedéseket.
+Ebből a cikkből megtudhatja, hogyan használható [javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggestions) és [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete) hozhat létre egy hatékony keresési mezőbe, amely támogatja a keresési –--beíráskor viselkedéseket.
 
-+ *Javaslatok* javasolt eredményekből beírása, az indexből, amely megfelel a korábban beírt eddig egyetlen eredmény esetén az összes javaslat listája. 
++ *Javaslatok* beírása, ahol minden javaslat-e az indexből, amely megfelel a korábban beírt eddig egyetlen eredmény létrehozott javasolt eredményeket is. 
 
-+ *Az automatikus kiegészítés*, [előzetes verziójú funkció](search-api-preview.md), "befejezése" szó vagy kifejezés, amely a felhasználó jelenleg éppen gépel. Javaslatok, a befejezett szó vagy kifejezés van való határozza meg a egyezés az indexben. 
++ *Az automatikus kiegészítés*, [előzetes verziójú funkció](search-api-preview.md), "befejezése" szó vagy kifejezés, amely a felhasználó jelenleg éppen gépel. Helyett eredményt adnak vissza, befejezi a lekérdezést, amely majd eredmények hajthat végre. Javaslatok, a befejezett szót vagy kifejezést a lekérdezésben van való határozza meg a egyezés az indexben. A szolgáltatás nem fog biztosítani az indexben nulla eredményt visszaadó lekérdezések.
 
 Töltse le, és futtassa a mintát kódot **DotNetHowToAutocomplete** értékelheti ki ezeket a funkciókat. A mintakód célozza meg benne egy előre elkészített index használatával [NYCJobs bemutató adatok](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). A NYCJobs index tartalmaz egy [javaslattevő szerkezet](index-add-suggesters.md), amelyek esetében a javaslatok vagy az automatikus kiegészítés követelmény. Használhatja az előkészített index egy tesztkörnyezet szolgáltatásban üzemeltetett vagy [saját-index feltöltéséhez](#configure-app) leltáradat-betöltő használatával a NYCJobs minta megoldásban található. 
 
@@ -89,7 +89,7 @@ $(function () {
 });
 ```
 
-A fenti kód futtat a böngészőben a "example1a" beviteli mezőt a jQuery felhasználói felület automatikus kiegészítési funkciójának konfigurálása lap betöltése.  A `minLength: 3` biztosítja, hogy a javaslatok csak akkor legyenek láthatóak, amikor legalább három karakter van a keresőmezőben.  A forrásérték nagyon fontos:
+A fenti kód futtat a böngészőben a "example1a" beviteli mezőt a jQuery felhasználói felület automatikus kiegészítési funkciójának konfigurálása lap betöltése.  `minLength: 3` biztosítja, hogy javaslatok csak látható, amikor nincsenek legalább három karaktert a keresőmezőbe.  A forrásérték nagyon fontos:
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=false&",
@@ -156,7 +156,7 @@ $(function () {
 });
 ```
 
-## <a name="c-version"></a>C#verzió
+## <a name="c-example"></a>C#-példa
 
 Most, hogy áttekintette a JavaScript-kódot a weblap, nézzük meg a C# kiszolgálóoldali vezérlő kódot, amely ténylegesen kérdezi le a javasolt megegyezik az Azure Search .NET SDK használatával.
 
@@ -229,9 +229,11 @@ Az automatikus kiegészítés funkció a keresési kifejezés bemeneti vesz igé
 
 Az oldalon az egyéb példák kövesse az azonos mintával való kiemelése és aspektusokat, az automatikus kiegészítés eredmények ügyféloldali gyorsítótárazás támogatása. Nézze át ezeket, hogy megértse, hogyan működnek, és hogyan használhatók a keresés során.
 
-## <a name="javascript-version-with-rest"></a>JavaScript-verzió a REST segítségével
+## <a name="javascript-example"></a>JavaScript-példa
 
-Nyissa meg a JavaScript megvalósítás **IndexJavaScript.cshtml**. Figyelje meg, hogy a felhasználói felület automatikus kiegészítés funkció jQuery is használja a keresőmezőbe, a keresési kifejezés bemenetek begyűjtésére és beolvasni az Azure Search aszinkron hívás megfelel a javasolt vagy használati befejeződött. 
+Egy Javascript végrehajtása az automatikus kiegészítés és javaslatok meghívja a REST API, mint a forrás URI használatával adja meg az index és a művelet. 
+
+JavaScript végrehajtása áttekintéséhez megnyitása **IndexJavaScript.cshtml**. Figyelje meg, hogy a felhasználói felület automatikus kiegészítés funkció jQuery is használja a keresőmezőbe, a keresési kifejezés bemenetek begyűjtésére és beolvasni az Azure Search aszinkron hívás megfelel a javasolt vagy használati befejeződött. 
 
 Lássuk az első példa JavaScript-kódját:
 

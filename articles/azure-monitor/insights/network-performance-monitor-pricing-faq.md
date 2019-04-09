@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: d2d1ca3e41de36d423de24fdbade8c17507642b5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734300"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005928"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Az Azure Network Performance Monitor a tarifacsomag módosítása
 
 Azt a felhasználói visszajelzések kérésüket és nemrég bevezetett egy [új díjszabás felület](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) különböző figyelési szolgáltatások Azure-ban. Ez a cikk rögzíti a díjszabása Azure-ral kapcsolatos [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) kérdést és választ könnyen olvasható formátumban.
 
 A Network Performance Monitor három összetevőből áll:
-* [A Teljesítményfigyelő](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
+* [Teljesítménymonitorozás](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
 * [Szolgáltatásvégpont-figyelő](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [ExpressRoute Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [ExpressRoute-figyelő](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
 Az alábbi szakaszok ismertetik az NPM-összetevők a díjszabási módosításokat.
 
@@ -38,7 +38,7 @@ Az alábbi szakaszok ismertetik az NPM-összetevők a díjszabási módosításo
 
 A számlázás az npm-et a használat és a fogyasztás két összetevőből alapul:
 * **Csomópontok**: Az összes szintetikus tranzakciók származnak, és a csomópontok fejeződik be. Csomópontok is nevezzük ügynökei vagy a Microsoft felügyeleti ügynökök.
-* **Adatok**: A különböző hálózati tesztek eredményei vannak tárolva az Azure Log Analytics-adattárban.
+* **Adatok**: A különböző hálózati tesztek eredményét a Log Analytics-munkaterületen tárolja.
 
 A régi modellben a csomópontok számát és a létrehozott adatok mennyisége alapján számította ki a számlán. 
 
@@ -63,7 +63,7 @@ Az egész hónapban egy önálló alhálózati hivatkozás figyelési költsége
 
 **Mik azok a Teljesítményfigyelő által létrehozott adatokat kell fizetni?**
 
-A díj támogatunk (adatok feltöltése a Log Analyticsbe, feldolgozása és az indexelés) érhető el a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/log-analytics/) Log Analytics, az adatbetöltés szakaszban. Adatmegőrzés (vagyis az ügyfél választása, az első hónapon túli megőrzött adatok) ingyenesen érhető el is a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/log-analytics/), az adatmegőrzés szakaszban.
+A díj támogatunk (adatok feltöltése a Log Analytics-munkaterületet az Azure monitorban feldolgozása, és az indexelés) érhető el a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/log-analytics/) Log Analytics, az adatbetöltés szakaszban. Adatmegőrzés (vagyis az ügyfél választása, az első hónapon túli megőrzött adatok) ingyenesen érhető el is a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/log-analytics/), az adatmegőrzés szakaszban.
 
 
 ## <a name="expressroute-monitor"></a>ExpressRoute-figyelő

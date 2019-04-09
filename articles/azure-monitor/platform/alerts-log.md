@@ -1,5 +1,5 @@
 ---
-title: Létrehozása, megtekintése és kezelése log riasztások az Azure Monitor használatával
+title: Létrehozása, megtekintése és kezelése napló használatával az Azure Monitor riasztások |} A Microsoft Docs
 description: Az Azure Monitor használatával hozhat létre, megtekintése és kezelése az Azure-beli naplóriasztási szabály.
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: f26c8e670855513995463ffaaf7e49a8e00e35fa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d3285a6b2aa09dd78bbb63c384bd1f65c17034ff
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57873791"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006951"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások
 
@@ -23,10 +23,10 @@ Ez a cikk bemutatja, hogyan állítható be a riasztások felhasználói felüle
 - Feltételek: Adott feltétel, vagy logikai, amely jel látható, ha indíthat el művelet
 - Művelet: Az értesítés - egyetlen külső eseményfogyasztó adott hívás küldött e-mailben, SMS, webhook stb.
 
-Az előfizetési időszak **Naplóriasztások** írja le a riasztásokhoz, ahol jel alapuló egyéni lekérdezés [Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) vagy [Application Insights](../../azure-monitor/app/analytics.md). További információ funkciót, terminológiája és származó típust [Naplóriasztások – áttekintés](../../azure-monitor/platform/alerts-unified-log.md).
+Az előfizetési időszak **Naplóriasztások** írja le a riasztásokhoz, ahol a naplólekérdezés jel egy [Log Analytics-munkaterület](../learn/tutorial-viewdata.md) vagy [Application Insights](../app/analytics.md). További információ funkciót, terminológiája és származó típust [Naplóriasztások – áttekintés](alerts-unified-log.md).
 
 > [!NOTE]
-> Népszerű naplóadatait [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) is már elérhető az Azure monitorban metrika-platformon. A Részletek nézetben [naplók riasztási metrika](../../azure-monitor/platform/alerts-metric-logs.md)
+> Népszerű naplóadatait [Log Analytics-munkaterület](../../azure-monitor/learn/tutorial-viewdata.md) is már elérhető az Azure monitorban metrika-platformon. A Részletek nézetben [naplók riasztási metrika](alerts-metric-logs.md)
 
 ## <a name="managing-log-alerts-from-the-azure-portal"></a>Riasztások kezelése az Azure Portalról
 
@@ -58,7 +58,7 @@ Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felület
 
    > [!NOTE]
    > 
-   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)**, a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [a log analytics naplóbeli keresés használatával](../../azure-monitor/log-query/log-query-overview.md) vagy [megosztott lekérdezést az application insights szolgáltatásban Analytics](../../azure-monitor/log-query/log-query-overview.md).
+   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)**, a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [Azure Monitor log-lekérdezéssel](../log-query/log-query-overview.md) vagy [megosztott application insights-elemzési lekérdezés ](../log-query/log-query-overview.md).
 
 1. *Naplóriasztások*: A kijelölt riasztási lekérdezés is fel kell tüntetni **keresési lekérdezés** mező; Ha a lekérdezés szintaxisa helytelen a mezőben az hiba vörös színnel jelenik meg. Ha a lekérdezés szintaxisa helyes - referenciaként előzményadatok a megadott lekérdezés látható gráfként kapcsolóval, hogy a Teljesítménybeállítások az időtartomány utolsó 6 óra múlt héten.
 
@@ -126,12 +126,12 @@ Felhasználók is fejeződik be, a saját elemzési lekérdezés [log analytics]
 Az Azure Monitor riasztások rendelt erőforrástípus `Microsoft.Insights/scheduledQueryRules/`. Az erőforrástípus további információkért lásd: [Azure Monitor - ütemezett lekérdezési szabály API-referencia](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Naplóriasztások az Application Insights vagy a Log Analytics, hozható létre [ütemezett lekérdezési szabály API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
 > [!NOTE]
-> Riasztások a Log Analytics használatával az örökölt is kezelhetők [Log Analytics Alert API](../../azure-monitor/platform/api-alerts.md) és az örökölt sablonok [Log Analytics mentett keresések és a riasztások](../../azure-monitor/insights/solutions-resources-searches-alerts.md) is. Az új alapértelmezés szerint itt részletes ScheduledQueryRules API segítségével további információkért lásd: [átkapcsolni új API-t a Log Analytics-riasztásokkal](alerts-log-api-switch.md).
+> Riasztások a Log Analytics használatával az örökölt is kezelhetők [Log Analytics Alert API](api-alerts.md) és az örökölt sablonok [Log Analytics mentett keresések és a riasztások](../insights/solutions-resources-searches-alerts.md) is. Az új alapértelmezés szerint itt részletes ScheduledQueryRules API segítségével további információkért lásd: [átkapcsolni új API-t a Log Analytics-riasztásokkal](alerts-log-api-switch.md).
 
 
 ### <a name="sample-log-alert-creation-using-azure-resource-template"></a>Példa Log riasztás létrehozása Azure Resource-sablonnal
 
-Az alábbiakban található az struktúráját [ütemezett lekérdezési szabály létrehozása](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) resource-sablon használatával a szokásos naplóbeli keresési lekérdezés alapú [típusú riasztás eredmények száma](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules), változókként minta adatkészlet.
+Az alábbiakban található az struktúráját [ütemezett lekérdezési szabály létrehozása](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) resource-sablon használatával a szokásos naplóbeli keresési lekérdezés alapú [típusú riasztás eredmények száma](alerts-unified-log.md#number-of-results-alert-rules), változókként minta adatkészlet.
 
 ```json
 {
@@ -316,7 +316,7 @@ Az Azure Monitor - ütemezett lekérdezési szabály API] (https://docs.microsof
 
 
 > [!NOTE]
-> Riasztások a Log Analytics használatával az örökölt is kezelhetők [Log Analytics Alert API](../../azure-monitor/platform/api-alerts.md) és az örökölt sablonok [Log Analytics mentett keresések és a riasztások](../../azure-monitor/insights/solutions-resources-searches-alerts.md) is. Az új alapértelmezés szerint itt részletes ScheduledQueryRules API segítségével további információkért lásd: [átkapcsolni új API-t a Log Analytics-riasztásokkal](alerts-log-api-switch.md).
+> Riasztások a Log Analytics használatával az örökölt is kezelhetők [Log Analytics Alert API](api-alerts.md) és az örökölt sablonok [Log Analytics mentett keresések és a riasztások](../insights/solutions-resources-searches-alerts.md) is. Az új alapértelmezés szerint itt részletes ScheduledQueryRules API segítségével további információkért lásd: [átkapcsolni új API-t a Log Analytics-riasztásokkal](alerts-log-api-switch.md).
 
 Riasztások jelenleg nem rendelkezik dedikált PowerShell vagy parancssori felület parancsai jelenleg; azonban az alábbi képen szemléltetett módon használható az Azure Resource Manager PowerShell-parancsmag használatával a minta a korábban bemutatott erőforrás sablon (sampleScheduledQueryRule.json) az erőforrás-sablon szakaszban:
 
@@ -335,4 +335,4 @@ On successful operation, 201 will be returned to state new alert rule creation o
 * Learn about [Log Alerts in Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md)
 * Understand [Webhook actions for log alerts](../../azure-monitor/platform/alerts-log-webhook.md)
 * Learn more about [Application Insights](../../azure-monitor/app/analytics.md)
-* Learn more about [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+* Learn more about [log queries](../log-query/log-query-overview.md).

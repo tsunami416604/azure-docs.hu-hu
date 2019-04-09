@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: adugar
-ms.openlocfilehash: 640eb8800f9593aef510d99713595bdd0c844263
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684426"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009667"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Oktatóanyag: A csatlakoztatott eszközök tömeges kezelése
 
@@ -57,7 +57,7 @@ A következő szoftvereknek telepítve a helyi gépen lesz szüksége:
 Előkészületek:
 
 * Győződjön meg arról, a [IoT DevKit eszközén a rendszertöltő van verzió 1.4.0-s vagy újabb](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/).
-* Ellenőrizze, hogy az IoT DevKit SDK jelenleg a rendszerbetöltőt verzióval azonos verziójúnak. Az IoT DevKit SDK a VS Code-ban az Azure IoT Workbench használatával frissítheti. A parancskatalógus megnyitásához, és adja meg **Arduino: tábla Manager**. További információkért lásd: [a fejlesztési környezet előkészítését](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
+* Ellenőrizze, hogy az IoT DevKit SDK jelenleg a rendszerbetöltőt verzióval azonos verziójúnak. Az IoT DevKit SDK a VS Code-ban az Azure IoT Workbench használatával frissítheti. A parancskatalógus megnyitásához, és adja meg **Arduino: Üzenőfal Manager**. További információkért lásd: [a fejlesztési környezet előkészítését](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
 
 Emellett szüksége IoT DevKit legalább egy eszköz csatlakozni a távoli figyelési megoldásgyorsító. Ha még nem kapcsolta egy IoT DevKit eszközt, tekintse meg [csatlakozás az MXChip IoT DevKit AZ3166, az IoT távoli figyelési megoldásgyorsító](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md).
 
@@ -89,7 +89,7 @@ A [Azure IoT Workbench](https://marketplace.visualstudio.com/items?itemName=vsci
 
 1. Ellenőrizze, hogy az IoT DevKit nincs csatlakoztatva a számítógéphez. Indítsa el a VS Code, és a fejlesztői készlet csatlakoztatása a számítógéphez.
 
-1. Nyomja meg **F1** nyissa meg a parancskatalógus, írja be és válassza ki a **IoT Workbench: Példák**. Válassza ki **IoT DevKit** , a tábla.
+1. Nyomja meg **F1** a parancskatalógus megnyitásához, írja be, és válassza ki **IoT Workbench: Példák**. Válassza ki **IoT DevKit** , a tábla.
 
 1. Keresés **belső vezérlőprogram OTA** kattintson **nyílt minta**. Egy új VS Code-ablak nyílik meg, és megjeleníti a **firmware_ota** projektmappa:
 
@@ -103,7 +103,7 @@ Az eszköz belső vezérlőprogramjának verziója kezdeti 1.0.0. Az új belső 
 
     ![Változás belső vezérlőprogram verziója](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. Nyissa meg a parancskatalógust, majd írja be, és válassza ki **IoT Workbench: eszköz**. Válassza ki **eszköz összeállításához** a kód fordítása:
+1. Nyissa meg a parancskatalógust, majd írja be, és válassza ki **IoT Workbench: Eszköz**. Válassza ki **eszköz összeállításához** a kód fordítása:
 
     ![Eszköz fordítás](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-compile.png)
 
@@ -111,7 +111,7 @@ Az eszköz belső vezérlőprogramjának verziója kezdeti 1.0.0. Az új belső 
 
 ### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>Hozza létre a CRC érték, és a belső vezérlőprogram méretének kiszámítása
 
-1. Nyissa meg a parancskatalógust, majd írja be, és válassza ki **IoT Workbench: eszköz**. Válassza ki **készítése CRC**:
+1. Nyissa meg a parancskatalógust, majd írja be, és válassza ki **IoT Workbench: Eszköz**. Válassza ki **készítése CRC**:
 
     ![CRC készítése](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-crc.png)
 
@@ -139,19 +139,19 @@ Az Azure storage-fiók használatával az új belső vezérlőprogram-fájl a fe
 
     ![1.0.0-s verziójának](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. Nyissa meg a parancskatalógust, majd írja be, és válassza ki **IoT Workbench: eszköz**. Válassza ki **eszköz feltöltése**:
+1. Nyissa meg a parancskatalógust, majd írja be, és válassza ki **IoT Workbench: Eszköz**. Válassza ki **eszköz feltöltése**:
 
     ![Eszköz feltöltése](media/iot-accelerators-remote-monitoring-bulk-configuration-update/device-upload.png)
 
 1. A VS Code ellenőrzi, és feltölti a kódot az IoT DevKit eszköz.
 
-1. Ha a feltöltés befejezését követően az IoT DevKit eszköz újraindul. Az újraindítás befejeződése után az IoT DevKit képernyőjén látható **Keretrendszer verziója: 1.0.0**, és hogy az új belső vezérlőprogram ellenőrzi, hogy:
+1. Ha a feltöltés befejezését követően az IoT DevKit eszköz újraindul. Az újraindítás befejeződése után az IoT DevKit képernyőjén látható **Keretrendszer verziója: 1.0.0-s**, és hogy az új belső vezérlőprogram ellenőrzi, hogy:
 
     ![OTA-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>Hozzon létre egy eszköz konfigurálása
 
-Egy eszköz konfigurációja meghatározza az eszközök állapotának. Általában egy fejlesztő [hoz létre a konfigurációs](../iot-hub/iot-hub-auto-device-config.md#create-a-configuration) a a **IoT-eszköz konfigurációs** oldal az Azure Portalon. Egy eszköz konfigurációs egy JSON-dokumentum, amely meghatározza az eszközök állapotának és a metrikák.
+Egy eszköz konfigurációja meghatározza az eszközök állapotának. Általában egy fejlesztő [hoz létre a konfigurációs](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration) a a **IoT-eszköz konfigurációs** oldal az Azure Portalon. Egy eszköz konfigurációs egy JSON-dokumentum, amely meghatározza az eszközök állapotának és a metrikák.
 
 A következő konfiguráció mentése nevű fájlként **belső vezérlőprogram-update.json** a helyi gépen. Cserélje le a `YOURSTRORAGEACCOUNTNAME`, `YOURCHECKSUM`, és `YOURPACKAGESIZE` helyőrzőket a korábban végrehajtott jegyezze fel értékekkel:
 
@@ -231,7 +231,7 @@ Ebben a szakaszban létre, és hajtsa végre a központi telepítés, amely az e
     |Name (Név)|Belső vezérlőprogram frissítésének telepítése|
     |Csomag típusa|Eszközkonfiguráció|
     |Konfiguráció típusa|Belső vezérlőprogram|
-    |Csomag|belső vezérlőprogram-update.json|
+    |Csomag|firmware-update.json|
     |Eszközcsoport|IoT DevKit eszközök|
     |Prioritás|10|
 
@@ -260,11 +260,11 @@ Ha az ellenőrzés sikeres, az eszköz újraindul. Látja a visszaszámlálás *
 
 Az újraindítás után a IoT DevKit rendszertöltő az új verzióra frissíti a belső vezérlőprogram. A frissítés eltarthat néhány másodpercig. Ebben a szakaszban az eszközön a RGB LED piros pedig a képernyő üres.
 
-![OTA – 5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
+![ota-5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
 
 Ha az újraindítás befejeződött, az IoT DevKit eszköz most már fut a belső vezérlőprogram 1.0.1-es verziója.
 
-![OTA – 6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
+![ota-6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
 Az a **központi telepítések** lap, kattintson a központi telepítést, frissítheti azok az eszközök állapotának megtekintéséhez. Minden egyes eszköz állapota látható az eszköz csoport és a meghatározott egyéni metrikákat.
 

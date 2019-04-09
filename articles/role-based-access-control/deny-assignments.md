@@ -15,12 +15,12 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: fff213c8d1a408bf96e385f2097a5ef30dcc05d2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 497571a65510f806d7d7994c9dc37f9a00b65a5f
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992093"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006720"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Megismerheti az Azure-erőforrások hozzárendelések megtagadása
 
@@ -59,9 +59,9 @@ Ez a cikk azt ismerteti, hogyan megtagadása a hozzárendelések vannak definiá
 A támogatási hozzárendelések megtagadása a **rendszer általi egyszerű** fejlődéséből. Ez az egyszerű felhasználók, csoportok, a szolgáltatásnevek és az Azure AD-címtár felügyelt identitások jelöli. Ha az egyszerű szolgáltatásnév azonosítója nem nulla GUID `00000000-0000-0000-0000-000000000000` és egyszerű típus `SystemDefined`, az egyszerű jelöli az összes rendszerbiztonsági tag. `SystemDefined` kombinálva `ExcludePrincipals` megtagadni az egyes felhasználók kivételével az összes rendszerbiztonsági tagok. `SystemDefined` a következő korlátozások vonatkoznak:
 
 - Csak a felhasznált `Principals` és nem használható `ExcludePrincipals`.
-- `Principals[i].Type` meg kell `SystemDefined`.
+- `Principals[i].Type` Meg kell `SystemDefined`.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Listában elutasítása a REST API használatával az Azure erőforrás-hozzárendelések](deny-assignments-rest.md)
+* [Megtekintése az Azure portal segítségével Azure-erőforrások hozzárendelések megtagadása](deny-assignments-portal.md)
 * [Megismerheti az Azure-erőforrások szerepkör-definíciók](role-definitions.md)

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a67cbd3bfca478a45e12adeb0bf119b891866718
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: d1e4af6e73c272a7ccc8996b0ccc854be64dd74b
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905239"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006358"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Az Azure Data Box Edge rendszerre vonatkozó követelmények
 
@@ -101,6 +101,37 @@ Azt javasoljuk, hogy beállította-e a tűzfalszabályok liberally fix IP-címei
 ## <a name="internet-bandwidth"></a>Internetes sávszélesség
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
+
+## <a name="compute-sizing-considerations"></a>Méretezési szempontok COMPUTE
+
+Használja az élményt, hogy közben a fejlesztés és tesztelés a megoldás nincs elég kapacitás a Data Box Edge-eszközön, és az optimális teljesítmény érdekében kap az eszközről.
+
+Megfontolandó tényezők a következők:
+
+- **Tároló tulajdonságairól** -gondolja át a következő.
+
+    - Hány tárolót az alkalmazások és szolgáltatások vannak? Néhány erőforrás-igényes rétegében és a kisméretű tárolók rengeteg lehet.
+    - Mik azok az erőforrások és az azok által felhasznált erőforrások Mik ezek a tárolók számára lefoglalt?
+    - Hány rétegek tegye meg a tárolókat?
+    - Vannak-e a fel nem használt tárolók? Egy leállított tároló továbbra is fel lemezterületet vesz igénybe.
+    - Milyen nyelven írták el a tárolókat?
+- **A feldolgozott adatok méretétől** – mennyi adatot a tárolókat fog feldolgozni? Ezeket az adatokat használnak fel lemezterületet, vagy az adatokat a memóriában fog feldolgozni?
+- **Teljesítmény várható** -Mik azok a kívánt teljesítményt nyújt, hogy a megoldás? 
+
+És finomíthatja a megoldás teljesítményére, használhatja:
+
+- A számítási metrikák elérhető az Azure Portalon. Nyissa meg a Data Box Edge erőforrás, és folytassa a **figyelés > metrikák**. Tekintse meg a **Edge compute - memóriahasználat** és **Edge compute - százalékos Processzorhasználat** tudni, hogy a rendelkezésre álló erőforrások és milyen erőforrásokat első felhasznált.
+- A figyelési parancsokat a PowerShell felületen, mint például az eszköz:
+
+    - `dkr` Statistika az élő stream a tároló(k) bérletét erőforrás olyan használati statisztikákat. A parancs támogatja a Processzor, a memóriahasználat, a memória felső korlátja és a hálózati i/o-metrikák.
+    - `dkr system df` a felhasznált lemezterület mennyiségét kapcsolatos információk. 
+    - `dkr image [prune]` a használaton kívüli lemezképeket törölni és szabadítson fel lemezterületet.
+    - `dkr ps --size` hozzávetőleges mérete a futó tároló megtekintéséhez. 
+
+    A használható parancsokkal kapcsolatos további információkért lépjen [figyelése és hibaelhárítása számítási modulok](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
+
+Győződjön meg arról, hogy ellenőrizze a megoldás az adatkészlet, és a teljesítmény, a Data Box Edge éles környezetben üzembe helyezése előtt számszerűsítik végül.
+
 
 ## <a name="next-step"></a>Következő lépés
 

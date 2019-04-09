@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc3a32f9fb2755fc164c33a6759d0130ac7ddad5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: cafb3c97befd64cc6413a2eefa5e5baa9e01bf93
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445762"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009582"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Felügyelt identitások az Azure-erőforrások konfigurálása egy virtuálisgép-méretezési csoportot a REST API-hívások
 
@@ -88,14 +88,14 @@ A rendszer által kiosztott, felügyelt identitás engedélyezve van a virtuáli
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -160,7 +160,7 @@ A rendszer által kiosztott, felügyelt identitás engedélyezve van a virtuáli
     }  
    ```  
 
-### <a name="enable-system-assigned-managed-identity-on-a-existing-virtual-machine-scale-set"></a>Egy meglévő virtuálisgép-méretezési csoportot a felügyelt identitás alapértelmezett engedélyezése
+### <a name="enable-system-assigned-managed-identity-on-an-existing-virtual-machine-scale-set"></a>Egy meglévő virtuálisgép-méretezési csoportot a felügyelt identitás alapértelmezett engedélyezése
 
 Ahhoz, hogy egy meglévő virtuálisgép-méretezési csoportot a felügyelt identitás rendszer által hozzárendelt, meg kell hozzáférési jogkivonat beszerzése és a CURL használatával a Resource Manager REST-végpont frissítése a identitástípus hívja.
 
@@ -183,14 +183,14 @@ Ahhoz, hogy egy meglévő virtuálisgép-méretezési csoportot a felügyelt ide
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -216,14 +216,14 @@ Ahhoz, hogy egy meglévő virtuálisgép-méretezési csoportot a felügyelt ide
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. |
  
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -250,14 +250,14 @@ Ahhoz, hogy egy meglévő virtuálisgép-méretezési csoportot a felügyelt ide
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -294,14 +294,14 @@ Egy rendszer által hozzárendelt identitással egy meglévő virtuálisgép-mé
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -351,14 +351,14 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -438,14 +438,14 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. |
  
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -533,7 +533,7 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
@@ -554,14 +554,14 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -586,14 +586,14 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -622,14 +622,14 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -661,14 +661,14 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-    **Kérelem fejlécei**
+    **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -700,7 +700,7 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
@@ -722,14 +722,14 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -754,14 +754,14 @@ Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhas
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01 HTTP/1.1
    ```
 
-   **Kérelem fejlécei**
+   **Kérelemfejlécek**
 
    |Kérelem fejléce  |Leírás  |
    |---------|---------|
-   |*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+   |*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-   **Kérelem törzse**
+   **A kérés törzse**
 
    ```JSON
     {
@@ -784,14 +784,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Kérelem fejlécei**
+**Kérelemfejlécek**
 
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
-|*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+|*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
 |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-**Kérelem törzse**
+**A kérés törzse**
 
 ```JSON
 {
@@ -811,14 +811,14 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
 ```
 
-**Kérelem fejlécei**
+**Kérelemfejlécek**
 
 |Kérelem fejléce  |Leírás  |
 |---------|---------|
-|*A Content-Type*     | Kötelező. Állítsa be `application/json`.        |
+|*Content-Type*     | Kötelező. Állítsa be `application/json`.        |
 |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot. | 
 
-**Kérelem törzse**
+**A kérés törzse**
 
 ```JSON
 {

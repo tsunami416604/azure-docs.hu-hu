@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5c5465562c1af3dbd3fcaff2031149e510a43cfd
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
-ms.translationtype: MT
+ms.openlocfilehash: 87ad3b8984907b5f5b889c36c2406f07cbeb242b
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540737"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056775"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Útvonal keresése egy hasznos helyhez az Azure Mapsszel
 
@@ -109,8 +109,8 @@ Ebben az oktatóanyagban a program egy egyszerű útvonalat jelenít meg. Az út
 1. A térkép inicializálása, után adja hozzá a következő JavaScript-kódot.
 
     ```JavaScript
-    //Wait until the map resources have fully loaded.
-    map.events.add('load', function() {
+    //Wait until the map resources are ready.
+    map.events.add('ready', function() {
 
         //Create a data source and add it to the map.
         datasource = new atlas.source.DataSource();
@@ -121,8 +121,7 @@ Ebben az oktatóanyagban a program egy egyszerű útvonalat jelenít meg. Az út
             strokeColor: '#2272B9',
             strokeWidth: 5,
             lineJoin: 'round',
-            lineCap: 'round',
-            filter: ['==', '$type', 'LineString']
+            lineCap: 'round'
         }), 'labels');
 
         //Add a layer for rendering point data.
@@ -135,14 +134,14 @@ Ebben az oktatóanyagban a program egy egyszerű útvonalat jelenít meg. Az út
                 textField: ['get', 'title'],
                 offset: [0, 1.2]
             },
-            filter: ['==', '$type', 'Point']
+            filter: ['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']] //Only render Point or MultiPoints in this layer.
         }));
     });
     ```
-
-    A rendszer hozzáad a térképhez egy betöltési eseményt, amely a térkép erőforrásainak teljes betöltését követően aktiválódik. A térkép betöltésiesemény-kezelőjében létrejön egy, az útvonal, illetve az indulási és célpontok tárolására szolgáló adatforrás. Egy sor réteg létrehozása és csatlakoztatása a meghatározásához, hogy az útvonal sor jelenik meg az adatforráshoz. Az útvonal sor jelenik meg a árnyalatának 5 képpont és lekerekített sor illesztések és caps szélességének kék. A rendszer hozzáad egy szűrőt, hogy a réteg csak a GeoJSON LineString típusú adatokat jelenítse meg. A réteg térképhez való hozzáadásakor a rendszer átad egy `'labels'` értékű második paramétert is, amely azt határozza meg, hogy ez a réteg a térképfeliratok alatt jelenjen meg. Ezzel biztosítható, hogy az útvonal ne takarja ki az utakhoz tartozó feliratokat. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg az indulási és célpontok megjelenítését. Itt hozzáadott kifejezések kérik le az ikonképekkel és a szövegfeliratokkal kapcsolatos információkat az egyes pontobjektumok tulajdonságaiból.
-
-2. A jelen oktatóanyag esetében a Microsoft-Kampusz, valamint a végpontot, egy budapesti benzinkutat kezdőpontjának beállítása. A térkép betöltésiesemény-kezelőjében adja hozzá az alábbi kódot.
+    
+    A maps- `ready` eseménykezelő, egy adatforrás jön létre a útvonal sorban, valamint a kezdő és záró pontok tárolásához. A rendszer egy vonalréteget hoz létre, majd csatol az adatforráshoz az útvonal megjelenítési módjának meghatározásához. Az útvonal tetszetős kékes árnyalattal, 5 képpont szélességben jelenik meg, lekerekített csatlakozásokkal és lezárásokkal. A réteg térképhez való hozzáadásakor a rendszer átad egy `'labels'` értékű második paramétert is, amely azt határozza meg, hogy ez a réteg a térképfeliratok alatt jelenjen meg. Ezzel biztosítható, hogy az útvonal ne takarja ki az utakhoz tartozó feliratokat. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg az indulási és célpontok megjelenítését. Itt hozzáadott kifejezések kérik le az ikonképekkel és a szövegfeliratokkal kapcsolatos információkat az egyes pontobjektumok tulajdonságaiból. 
+    
+2. A jelen oktatóanyag esetében a Microsoftot állítsa be indulási pontnak, célpontnak pedig egy seattle-i benzinkutat. A maps- `ready` eseménykezelő, adja hozzá a következő kódot.
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end points of the route.
@@ -175,7 +174,7 @@ Ebben az oktatóanyagban a program egy egyszerű útvonalat jelenít meg. Az út
 
 ## <a name="get-directions"></a>Útvonal keresése
 
-Ez a szakasz bemutatja, hogyan használhatja az Azure Maps route service API-t az útvonal indulási pontról záró megkereséséhez. Az útvonal-szolgáltatás API-kat biztosít a két hely közötti *leggyorsabb*, *legrövidebb*, *leggazdaságosabb* vagy *leglátványosabb* útvonal megtervezéséhez. A felhasználók előre is megtervezhetik az útvonalakat az Azure széles körű forgalmi adatbázisával, amely előre jelzi az útvonalak menetidejét bármely napon és időpontban. További információ: [Útvonal keresése](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Az alábbi funkciók mindegyikét fel kell vennie **a térképbetöltés eventListener elemébe**, hogy a térkép teljes betöltése után betöltődjenek.
+Ez a szakasz bemutatja, hogyan használhatja az Azure Maps route service API-t az útvonal indulási pontról záró megkereséséhez. Az útvonal-szolgáltatás API-kat biztosít a két hely közötti *leggyorsabb*, *legrövidebb*, *leggazdaságosabb* vagy *leglátványosabb* útvonal megtervezéséhez. A felhasználók előre is megtervezhetik az útvonalakat az Azure széles körű forgalmi adatbázisával, amely előre jelzi az útvonalak menetidejét bármely napon és időpontban. További információ: [Útvonal keresése](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). A következő funkciók mindegyikét fel kell venni **belül a térkép készen eventListener** annak érdekében, hogy betöltése után a térkép erőforrások készek érhető el.
 
 1. A függvény a GetMap adja hozzá a következő Javascript-kódot.
 
@@ -221,9 +220,9 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 Az oktatóanyag kódmintáját itt érheti el:
 
-> [Útvonalkeresés az Azure Maps használatával](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)
+> [Keresse meg az Azure Maps-útvonal](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)
 
-[A minta megtekintése élőben](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)
+[Tekintse meg ezt a mintát itt élő](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)
 
 A következő oktatóanyag bemutatja, hogyan hozhat létre egy útvonal-lekérdezést olyan korlátozásokkal, mint az utazás módja vagy a rakomány típusa, majd megjelenít több útvonalat ugyanazon a térképen.
 

@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 45c8f83ce814d5fa8b6d9cde29e59e4628534522
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521993"
 documentType: LandingData
-title: A Video Indexer dokumentációja
+title: Az Azure Media Services Video Indexer dokumentációja
 metadata:
-  document_id: 
-  title: A Video Indexer dokumentációja | Microsoft Docs
+  document_id: null
+  title: Az Azure Media Services Video Indexer dokumentációja | Microsoft Docs
   meta.description: Learn about Video Indexer.
   services: media-services
   author: juliako
@@ -21,38 +15,38 @@ metadata:
   ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: Az Azure Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure Media Analytics, az Azure Search, valamint a Cognitive Services (például a Face API, a Microsoft Translator, a Computer Vision API és a Custom Speech Service) adják. Lehetővé teszi, hogy megállapításokat nyerjen ki a videóiból a Video Indexer hang- és videómodelljeivel.<br/>Ha szeretne többet tudni arról, mikor érdemes a Video Indexer, illetve a Media Services-elemző előzetes beállításait használnia, tekintse meg az <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">összehasonlító dokumentumot</a>.
+  description: 'Az Azure Media Services Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure Media Analytics, az Azure Search, valamint a Cognitive Services (például a Face API, a Microsoft Translator, a Computer Vision API és a Custom Speech Service) adják. Lehetővé teszi, hogy megállapításokat nyerjen ki a videóiból a Video Indexer hang- és videómodelljeivel.<br/>Ha szeretne többet tudni arról, mikor érdemes a Video Indexer, illetve a Media Services-elemző előzetes beállításait használnia, tekintse meg az <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">összehasonlító dokumentumot</a>.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 2
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: video-indexer-overview.md
+            html: <p>A Video Indexer médiakezelő MI-technológiákkal segíti a megállapítások kinyerését a videókból.</p>
+            image:
+              src: media/index/AMSIcons-media_servicesV3.svg
+            title: Mi az az Azure Media Services Video Indexer?
+  - title: 5 perces gyors útmutatók
     items:
-    - href: video-indexer-overview.md
-      html: <p>A Video Indexer médiakezelő AI-technológiákkal segíti a megállapítások kinyerését a videókból.</p>
-      image:
-        src: media/index/AMSIcons-media_servicesV3.svg
-      title: Mi az a Video Indexer?
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Jelentkezzen be a Video Indexer webhelyére, és töltse fel első videóját:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Jelentkezzen be a Video Indexer webhelyére, és töltse fel első videóját:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/AMSIcons-media_analytics.svg
+            text: Megállapítások kinyerése
+            href: /azure/media-services/video-indexer/video-indexer-get-started
+  - title: Részletes útmutatók
     items:
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: Megállapítások kinyerése
-      href: /azure/media-services/video-indexer/video-indexer-get-started
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Ismerje meg, hogyan nyerhet ki megállapításokat a videóiból a Video Indexer API-val:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: Megállapítások kinyerése
-      href: /azure/media-services/video-indexer/video-indexer-use-apis
+      - type: paragraph
+        text: 'Ismerje meg, hogyan nyerhet ki megállapításokat a videóiból a Video Indexer API-val:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/AMSIcons-media_analytics.svg
+            text: Megállapítások kinyerése
+            href: /azure/media-services/video-indexer/video-indexer-use-apis

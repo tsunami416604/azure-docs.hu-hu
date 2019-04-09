@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 71b87f975d856e20bd3934258c50be54e06254ef
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cd2895378f713749b3a1d0ac01986b728ceafd2b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666392"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009003"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Az Azure Service Fabric áttekintése
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások és tárolók csomagolását, üzembe helyezését és kezelését. A Service Fabric emellett választ ad a natív felhőalapú alkalmazások fejlesztésének és felügyeletének jelentős kihívásaira. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak. A Service Fabric egy következő generációs platform az ezen tárolókban futó, nagyvállalati szintű, első rétegbeli, felhőléptékű alkalmazások felépítésére és felügyeletére.
@@ -29,7 +29,7 @@ Ez a rövid videó bemutatja a Service Fabric platformot és a mikroszolgáltat�
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 ## <a name="compliance"></a>Megfelelőség
-Az Azure Service Fabric erőforrás-szolgáltató az összes Azure-régióban érhető el, és kompatibilis az összes megfelelőségi tanúsítványok, amelyek az Azure rendelkezik; Ez az alábbiakat tartalmazza: SOC, ISO, PCI DSS szabványnak, HIPPA és GDRP. Tekintse át a megfelelőségi tanúsítványok teljes listáját a következő: [Megfelelőségi ajánlatok](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
+Az Azure Service Fabric erőforrás-szolgáltató az összes Azure-régióban érhető el, és kompatibilis az összes megfelelőségi tanúsítványok, amelyek az Azure rendelkezik; Ez az alábbiakat tartalmazza: SOC, ISO, PCI DSS, HIPAA, and GDRP. Tekintse át a megfelelőségi tanúsítványok teljes listáját a következő: [Megfelelőségi ajánlatok](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
 
 ## <a name="applications-composed-of-microservices"></a>Mikroszolgáltatásokból álló alkalmazások 
 A Service Fabric lehetővé teszi mikroszolgáltatásokból álló, skálázható és megbízható alkalmazásokat készítését és felügyeletét, amelyek nagy sűrűség mellett futnak számítógépek egy megosztott készletén, vagyis fürtökön. Kifinomult, könnyen használható futtatókörnyezetet biztosít, amelyben elosztott, skálázható, állapot nélküli és állapotalapú, tárolókban futó mikroszolgáltatásokat állíthat össze. Ezenkívül átfogó alkalmazásfelügyeleti képességeket kínál a telepített alkalmazások kiépítéséhez, üzembe helyezéséhez, figyeléséhez, frissítéséhez/javításához és törléséhez, beleértve a tárolóalapú szolgáltatásokat is.
@@ -91,8 +91,8 @@ A Service Fabric használatával a következőket teheti:
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések
 * További információk:
-  * [Miért érdemes a mikroszolgáltatás-alapú megközelítést választani alkalmazások létrehozásához?](service-fabric-overview-microservices.md)
-  * [Terminológiai áttekintés](service-fabric-technical-overview.md)
+  * [Miért érdemes a mikroszolgáltatás-alapú megközelítést választani alkalmazások?](service-fabric-overview-microservices.md)
+  * [A terminológia áttekintése](service-fabric-technical-overview.md)
 * A [Windows fejlesztési környezet](service-fabric-get-started.md) beállítása  
 * A [Linux fejlesztési környezet](service-fabric-get-started-linux.md) beállítása
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése

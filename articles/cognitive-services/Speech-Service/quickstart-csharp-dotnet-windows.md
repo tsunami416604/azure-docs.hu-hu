@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: a3990bfac9199fadeff0573d7547d7e5bc551ece
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2f190ccbead9e6349543d04e2419f458888fba2c
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838612"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008747"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Gyors útmutató: Beszédfelismerést a Speech SDK-val .NET-keretrendszer (Windows)
 
@@ -25,7 +25,7 @@ Ezt az útmutatót követve egy diktálási konzolalkalmazást hozhat létre a W
 
 A gyors bemutató (nélkül létrehozása a Visual Studio-projekt magát az alább látható módon):
 
-A legújabb verzió beszerzéséhez [Cognitive Services beszédfelismerő SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk) a Githubról.
+A legújabb verzió beszerzéséhez [Cognitive Services beszédfelismerő SDK-minták](https://github.com/Azure-Samples/cognitive-services-speech-sdk) a Githubról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

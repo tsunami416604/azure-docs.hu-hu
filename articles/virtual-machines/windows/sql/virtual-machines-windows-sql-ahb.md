@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bc3e2955049188b0794367d5391762f5eb50b1c0
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
-ms.translationtype: MT
+ms.openlocfilehash: c0d659d983e62cd2a85c0d6768c54e5a1d9e9217
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850189"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005792"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Az Azure-beli SQL Server virtuális gép licencelési modelljét módosítása
 Ez a cikk bemutatja, hogyan módosíthatja az Azure-ban az új SQL Server virtuális gép licencelési modelljét SQL virtuális gép erőforrás-szolgáltató – **Microsoft.SqlVirtualMachine**. Kettő licencelési üzemeltető SQL Server – használatalapú fizetés, egy virtuális gépet (VM) modellt és a hozott licences (BYOL). És most már, PowerShell vagy az Azure CLI használatával, módosíthatja licencelési modellt az SQL Server virtuális gép használja. 
@@ -35,12 +35,17 @@ Váltás a két licenc modell között felmerülő **állásidő nélkül**, nem
 
 ## <a name="remarks"></a>Megjegyzések
 
- - A licencmodell konvertálása jelenleg csak használatalapú fizetéses SQL Server virtuálisgép-rendszerképek esetén érhető el. A rendszerképek saját licenccel használható verziói nem konvertálhatóak használatalapú fizetésessé.
  - CSP-ügyfeleknek a AHB juttatás képes használni, először a használatalapú fizetést biztosító virtuális gépek telepítése, majd a bring-your-saját licenc által. 
- - Ez a lehetőség jelenleg csak akkor használható a nyilvános felhőben telepítések.
  - Az erőforrás-szolgáltató az SQL Server rendszerű virtuális gép egyéni rendszerkép regisztráció során adja meg a licenc típusa = "AHUB". Hagyja a licenc adja meg, üres, vagy adja meg a "Használatalapú" okoz a regisztráció sikertelen lesz. 
+ 
+## <a name="limitations"></a>Korlátozások
+
+ - A licencmodell konvertálása jelenleg csak használatalapú fizetéses SQL Server virtuálisgép-rendszerképek esetén érhető el. A rendszerképek saját licenccel használható verziói nem konvertálhatóak használatalapú fizetésessé.
+  - Jelenleg a licencelési modelljének megváltoztatása csak támogatott a Resource Manager modellel üzembe helyezett virtuális gépek számára. A klasszikus modellel üzembe helyezett virtuális gépek nem támogatottak. 
+   - Jelenleg a licencelési modelljének megváltoztatása csak engedélyezve van a nyilvános felhőalapú telepítések.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az SQL virtuális gép erőforrás-szolgáltató használatához az SQL IaaS-bővítményt. Emiatt a okból rendszerbetöltést végrehajtani az SQL virtuális gép erőforrás-szolgáltató folytatja, a következők szükségesek:
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - [Frissítési garanciával rendelkező](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default). 

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 18d8a0e231e8b4dbe33911dd6267966674366904
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6ce27ba699ae766ed4d2428f67d91379464bb9f1
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734489"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006140"
 ---
 # <a name="azure-data-factory-mapping-data-flow-exists-transformation"></a>Az Azure Data Factory, az adatfolyam-leképezés létezik átalakítása
 
@@ -25,3 +25,10 @@ Az Exists átalakítás átalakítást, amely a szolgáltatás leáll vagy az ad
 A második adatforrás az Exists választhatja, hogy az adatfolyam összehasonlításával értékek Stream 1 elleni Stream 2.
 
 1. forrásból származó és a forrás 2 értékük megtekintéséhez elleni Exists vagy nem létezik, válassza ki az oszlopot.
+
+## <a name="multiple-exists-conditions"></a>Több létezik feltételek
+
+Az oszlop feltételeinek Exsits minden egyes sorára, mellett található egy + elérhető bejelentkezési, ha az egérmutatót elérni sor. Ez lehetővé teszi, hogy hozzá több sort a Exists feltételek.
+
+## <a name="next-steps"></a>További lépések
+

@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: raynew
-ms.openlocfilehash: 199f9508b599e2f946404446a23e9608bb969ba7
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 7f24e027edd5de0eecd97e5c7c19126c9ac34301
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649458"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006929"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-támogatási mátrixa
 
@@ -50,7 +50,7 @@ Operációs rendszer  | A Windows Server 2012 R2 vagy Windows Server 2016-ban |
 Operációs rendszer területi beállítása | Angol (en-us)
 PowerCLI | [A PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") verziót a konfigurációs kiszolgáló nem kötelező [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery).
 Windows Server-szerepkörök | Ne legyen engedélyezve: <br/> - Active Directory tartományi szolgáltatások <br/>– Internet Information Services <br/> - Hyper-V |
-Csoportházirendek| Ne legyen engedélyezve: <br/> -Hozzáférés megakadályozása a parancssorba. <br/> -A beállításjegyzék szerkesztőeszközeihez való hozzáférés letiltása. <br/> -Megbízhatósági logika fájlmellékletekhez. <br/> – Kapcsolja be a parancsfájl végrehajtása. <br/> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+Csoportházirendek| Ne legyen engedélyezve: <br/> -Hozzáférés megakadályozása a parancssorba. <br/> -A beállításjegyzék szerkesztőeszközeihez való hozzáférés letiltása. <br/> -Megbízhatósági logika fájlmellékletekhez. <br/> – Kapcsolja be a parancsfájl végrehajtása. <br/> [Részletek](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Győződjön meg arról, hogy:<br/><br/> -Nem rendelkezik egy korábban létező alapértelmezett webhelye <br/> -Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br/> -Nem rendelkezik a már létező webhely vagy alkalmazás 443-as porton<br/>
 Hálózati adapter típusa | VMXNET3 (Ha a VMware virtuális gépként telepített)
 IP-cím típusa | Statikus
@@ -108,7 +108,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.20][9.20 UR] | SP1 3.12.49-1
 **Összetevő** | **Támogatott**
 --- | ---
 Fájlrendszer | ext3, ext4, XFS
-Kötetek kezelése | Mielőtt [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. LVM2 használata támogatott. <br/> 2. LVM csak az adatlemezek használata támogatott. <br/> 3. Az Azure virtuális gépek egyetlen operációsrendszer-lemez rendelkeznek.<br/><br/>A [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) frissítésétől kezdve LVM és LVM2 támogatottak.
+Kötetek kezelése | Mielőtt [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. LVM használata támogatott. <br/> 2. gyökérpartíció LVM köteten nem támogatott. <br/> 3. Több operációsrendszer-lemez nem támogatottak.<br/><br/>A [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) frissítésétől kezdve a LVM gyökérpartíció használata támogatott. Több operációsrendszer-lemez nem támogatottak.
 A Paravirtualizált tárolóeszközök | A paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
 Több üzenetsor blokk i/o-eszközök | Nem támogatott.
 A HP CCISS tárolóvezérlő a fizikai kiszolgálók | Nem támogatott.
@@ -120,7 +120,7 @@ Szabad lemezterület-követelmények |} A/root partíción 2 GB <br/><br/> A tel
 
 ## <a name="vmdisk-management"></a>A felügyeleti Virtuálisgép-lemez
 
-**Művelet** | **Részletek**
+**Műveletek** | **Részletek**
 --- | ---
 A replikált virtuális gép lemez átméretezése | Támogatott.
 Lemez hozzáadása a replikált virtuális Gépen | Tiltsa le a replikációt a virtuális gép, és a lemezt adja hozzá a majd újraengedélyezni replikációs. Lemez hozzáadása egy replikáló gépen jelenleg nem támogatott.
@@ -187,6 +187,7 @@ Vendég-kiszolgáló többutas (MPIO) | Nem
 >
 > - Csak az Azure-bA áttelepítése támogatott. A helyszíni VMware-helyre történő feladat-visszavétel nem támogatott.
 > - A kiszolgáló az operációsrendszer-lemez nem tartalmazhat több mint négy partícióval.
+> - Csak az NTFS fájlrendszer támogatott.
 > - A mobilitási szolgáltatás 9.13 vagy újabb verziójára van szükség.
 
 ## <a name="azure-storage"></a>Azure Storage tárterület
@@ -207,7 +208,7 @@ A cél tárolási illetve gyorsítótárfiók (replikációs adatainak tárolás
 
 ## <a name="azure-compute"></a>Az Azure compute
 
-**Funkció** | **Támogatott**
+**Szolgáltatás** | **Támogatott**
 --- | ---
 Rendelkezésre állási csoportok | Igen
 Rendelkezésre állási zónák | Nem
@@ -236,7 +237,7 @@ a virtuális gép neve | 1 és 63 karakternél.<br/><br/> Csak betűket, számok
 
 Az alábbi táblázat az Azure Site Recovery korlátait tartalmazza. Ezek a korlátok a saját tesztjeinken alapulnak, de nem fedhetik le az alkalmazások minden lehetséges I/O-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változhatnak. A legjobb eredmények érdekében javasoljuk, hogy a [deployment planner eszköz futtatása](site-recovery-deployment-planner.md) és az alkalmazás alapos tesztelése feladatátvételi tesztek történő vizsgálata a kaphat a teljesítményről, az alkalmazás.
 
-**Replikáció tárolási célja** | **Forráslemez átlagos I/O-mérete** |**Forráslemez átlagos adatváltozása** | **Forráslemez teljes napi adatváltozása**
+**Replikáció tárolási célja** | **Forráslemez átlagos i/o-mérete** |**Átlagos lemez adatváltozása** | **Teljes lemez napi adatváltozása**
 ---|---|---|---
 Standard szintű Storage | 8 KB | 2 MB/s | Lemezenként 168 GB
 Prémium szintű P10 vagy P15 lemez | 8 KB  | 2 MB/s | Lemezenként 168 GB
@@ -245,7 +246,7 @@ Prémium szintű P10 vagy P15 lemez | 32 KB vagy több | 8 MB/s | Lemezenként 6
 Prémium szintű P20, P30, P40 vagy P50 lemez | 8 KB    | 5 MB/s | Lemezenként 421 GB
 Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |20 MB/s | Lemezenként 1684 GB
 
-**Forrásadat-változás** | **Felső korlát**
+**Adatváltozása** | **Felső korlát**
 ---|---
 Átlagos adatváltozás virtuális gépenként| 25 MB/s
 Adatváltozás csúcsértéke az összes lemezen virtuális gépenként | 54 MB/s
@@ -255,7 +256,7 @@ Ezek átlagos értékek, amelyek 30 százalékos I/O-átfedést feltételeznek. 
 
 ## <a name="vault-tasks"></a>Tároló-feladatok
 
-**Művelet** | **Támogatott**
+**Műveletek** | **Támogatott**
 --- | ---
 Tároló áthelyezése erőforráscsoportok közt<br/><br/> Belül és azok az előfizetések között | Nem
 Tárolás, hálózat, Azure-beli virtuális gépek erőforráscsoportok közötti áthelyezése<br/><br/> Belül és azok az előfizetések között | Nem

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 6400e3d3fa7f0317ff927f2931e705365a450770
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9e6bc1264e668ba5c6593ce36e721f54e685c391
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520666"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008492"
 ---
 # <a name="what-is-speech-to-text"></a>Mit jelent a hang-szöveg transzformációs?
 
@@ -59,7 +59,7 @@ Egyszerűen mikrofon hangjának rögzítéséhez, olvassa el a streamből vagy h
 | [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-android) | Android | [Tallózás](https://aka.ms/csspeech/javaref) |
 | [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-jre) | Windows, Linux | [Tallózás](https://aka.ms/csspeech/javaref) |
 | [A JavaScript, a böngésző](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-browser) | Böngésző, Windows, Linux, macOS | [Tallózás](https://aka.ms/AA434tv) |
-| [Javascript, Node.js](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-node) | Windows, Linux, macOS | [Tallózás](https://aka.ms/AA434tv) |
+| [JavaScript, Node.js](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-node) | Windows, Linux, macOS | [Tallózás](https://aka.ms/AA434tv) |
 | [Objective-C](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-objectivec-ios) | iOS | [Tallózás](https://aka.ms/csspeech/objectivecref) |
 | [Python](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-python) | Windows, Linux, macOS | [Tallózás](https://aka.ms/AA434tr)  |
 
@@ -84,7 +84,7 @@ A beszéd-szolgáltatások által használt univerzális modell mellett hozhat l
 |-------|-------------|
 | [Akusztikai modell](how-to-customize-acoustic-models.md) | Egy egyéni akusztikai modell létrehozása akkor hasznos, ha az alkalmazást, eszközöket vagy eszközök szerepelnek az adott környezetben, például egy autó vagy a gyári adott felvétel feltételekkel. A példák közé tartozik az akcentussal való beszéd, a meghatározott háttérzajok vagy egy adott mikrofon használata a felvételhez. |
 | [Nyelvi modell](how-to-customize-language-model.md) | Hozzon létre egy egyéni nyelvi modell, iparág-specifikus szóhasználatának és nyelvtani, például terminológiát vagy informatikai szakkifejezéseivel beszédátírási javítása érdekében. |
-| [Kiejtési modell](how-to-customize-pronunciation.md) | Egy egyéni írásmódja modellel meghatározhatja fonetikus formában és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. A kezdéshez szüksége egy írásmódja fájlnevével – egy egyszerű .txt fájlt. |
+| [Pronunciation model](how-to-customize-pronunciation.md) | Egy egyéni írásmódja modellel meghatározhatja fonetikus formában és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. A kezdéshez szüksége egy írásmódja fájlnevével – egy egyszerű .txt fájlt. |
 
 > [!NOTE]
 > Testreszabási lehetőségek minden nyelvi és területi beállítása szerint (lásd: [támogatott nyelvek](supported-languages.md)).
@@ -102,9 +102,9 @@ Ha az alkalmazásokat, eszközöket és termékeket használ, a Bing Speech API-
 ## <a name="reference-docs"></a>Segédanyagok
 
 * [Beszéd SDK](speech-sdk-reference.md)
-* [Speech Devices SDK](speech-devices-sdk.md)
-* [REST API: Speech-to-text](rest-speech-to-text.md)
-* [REST API: Szöveg-hang transzformációs](rest-text-to-speech.md)
+* [Beszédeszközök SDK](speech-devices-sdk.md)
+* [REST API: Diktálás](rest-speech-to-text.md)
+* [REST API: Szövegfelolvasás](rest-text-to-speech.md)
 * [REST API: A Batch beszédátírási és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>További lépések

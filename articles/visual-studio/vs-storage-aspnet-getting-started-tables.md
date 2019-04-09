@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: 1a35d1cbd49a55b0c25f5e2b993358130589c125
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ea50506df53bfd586656d0030be4536d9d3b907d
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444633"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010141"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Ismerkedés az Azure table storage és a Visual Studio csatlakoztatott szolgáltatások (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -537,7 +537,7 @@ A szakaszban ismertetett módon [hozzáadása egy entitás egy táblához](#add-
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Hozza létre a **TableQuery** objektumot adja meg a lekérdezés a **ahol** záradékban. Használatával a **CustomerEntity** osztály- és a szakaszban bemutatott [entitásköteg hozzáadása táblázathoz](#add-a-batch-of-entities-to-a-table), a következő kódrészlet lekérdezi a tábla összes entitáshoz, a  **PartitionKey** (az ügyfél Vezetéknév), a "Smith" értékkel rendelkezik:
+1. Hozza létre a **TableQuery** objektumot adja meg a lekérdezés a **ahol** záradékban. Használatával a **CustomerEntity** osztály- és a szakaszban bemutatott [entitásköteg hozzáadása táblázathoz](#add-a-batch-of-entities-to-a-table), a következő kódrészlet lekérdezi a tábla összes entitáshoz, a **PartitionKey**  (az ügyfél Vezetéknév), a "Smith" értékkel rendelkezik:
 
     ```csharp
     TableQuery<CustomerEntity> query = 

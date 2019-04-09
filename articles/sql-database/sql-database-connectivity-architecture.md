@@ -1,6 +1,6 @@
 ---
 title: Az Azure SQL Database és az SQL Data warehouse-bA az Azure forgalom átirányítása |} A Microsoft Docs
-description: Ez a dokumentum ismerteti az Azure SQL Database és az SQL Data Warehouse kapcsolati architektúra az Azure-ban vagy az Azure-on kívül.
+description: Ez a dokumentum ismerteti a Azcure SQL onnectivity architektúra az adatbázis-kapcsolatok Azure-ban vagy az Azure-on kívül.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,34 +12,16 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/03/2019
-ms.openlocfilehash: 619893ad42664f8d37fff5e61b8560f6c6d83e23
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918603"
+ms.locfileid: "59006777"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Az Azure SQL-kapcsolati architektúra
 
 Ez a cikk ismerteti az Azure SQL Database és az SQL Data Warehouse kapcsolati architektúra, valamint, hogy hogyan a különböző összetevők működéséhez forgalom az Azure SQL-példányra. E kapcsolat összetevők közvetlen hálózati forgalmat az Azure SQL Database vagy az SQL Data warehouse-bA az Azure-ban a csatlakozó ügyfelek és az Azure-on kívül csatlakozó ügyféltől függvény. Ez a cikk a szkriptminták módosításához, hogyan történik a kapcsolat, és az alapértelmezett kapcsolat beállításainak módosításával kapcsolatos szempontokat is biztosít.
-
-> [!IMPORTANT]
-> **[Közelgő változás] Azure SQL-kiszolgáló, végpont kapcsolatok szolgáltatás egy `Default` kapcsolat viselkedés vált `Redirect`.**
-> Ügyfelek javasolja, hogy hozzon létre új kiszolgálók és a kapcsolat típusát a már meglévőket explicit módon állítva átirányítási (előnyösebb) vagy a Proxy kapcsolódási architektúráját függően.
->
-> Ebből a változásból meglévő környezetekben használhatatlanná tévő szolgáltatási végponton keresztüli kapcsolat megakadályozása érdekében használjuk telemetriai hajtsa végre a következő:
->
-> - -Kiszolgálók, hogy a rendszer azt észleli, hogy a módosítás előtt a szolgáltatásvégpontokon keresztül elért, hogy váltson a kapcsolat típusát `Proxy`.
-> - További kiszolgálók, hogy váltson a kapcsolat típusa fognak váltani `Redirect`.
->
-> Szolgáltatási végpont felhasználók továbbra is hatással lehetnek a következő esetekben:
->
-> - Alkalmazás ritkán csatlakozik egy meglévő kiszolgálót, így a telemetria adott alkalmazásokra vonatkozó információk nem rögzítése
-> - Automatizált üzembehelyezési logic létrehoz egy SQL Database-kiszolgálóhoz, feltéve, hogy az alapértelmezett viselkedést, a szolgáltatás végpontja kapcsolatokhoz `Proxy`
->
-> Végpont szolgáltatáskapcsolatokat nem sikerült létrehozni az Azure SQL Serverhez, és meg is feltételezi, hogy ez a változás által érintett, győződjön meg arról, hogy kapcsolattípus explicit módon értéke `Redirect`. Ha ez a helyzet, hogy nyissa meg a virtuális gép tűzfal-szabályok és a hálózati biztonsági csoportok (NSG) régióban minden olyan Azure IP-címekhez tartozó Sql [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) 11000-11999 portokon. Ha ez nem megfelelő megoldás, váltson kiszolgáló explicit módon a `Proxy`.
-> [!NOTE]
-> Ez a témakör önálló adatbázisok és rugalmas készletek, az SQL Data Warehouse adatbázisok, Azure Database for MySQL, Azure Database for MariaDB és üzemeltetésére, Azure Database for PostgreSQL Azure SQL Database-kiszolgálókra vonatkozik. Az egyszerűség kedvéért SQL Database megnevezése SQL Database, az SQL Data Warehouse, Azure Database for MySQL, Azure Database for MariaDB és, Azure Database for PostgreSQL.
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
 

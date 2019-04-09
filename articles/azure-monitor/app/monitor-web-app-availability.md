@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 9b04ca359a0c71a04e762452fa33345201f37e84
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9f48303396d1ecd03fdffd2c6ab1e0c122615a21
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124320"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005740"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -92,7 +92,7 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
     ![A Visual Studio Enterprise kiadásban hozzon létre egy projektet a webes teljesítmény és a terheléstesztelés sablonjából.](./media/monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
-   * *Nem jelenik meg a webes teljesítmény- és terheléstesztelés sablonja?* – Zárja be a Visual Studio Enterprise-t. Nyissa meg a **Visual Studio telepítőjét** a Visual Studio Enterprise-telepítés módosításához. Az **Individual Components** (Egyedi összetevők) területen válassza a **Web Performance and load testing tools** (Webes teljesítmény- és terheléstesztelési eszközök) lehetőséget.
+   * *Nem jelenik meg a webes teljesítmény- és Terheléstesztelés sablonja?* – Zárja be a Visual Studio Enterprise-t. Nyissa meg a **Visual Studio telepítőjét** a Visual Studio Enterprise-telepítés módosításához. Az **Individual Components** (Egyedi összetevők) területen válassza a **Web Performance and load testing tools** (Webes teljesítmény- és terheléstesztelési eszközök) lehetőséget.
 
 2. Nyissa meg a .webtest fájlt, és kezdje meg a rögzítést.
 
@@ -167,7 +167,7 @@ Az eredményeket szűrheti a teszt neve vagy a hely alapján adott tesztek és/v
 
 ## <a name="edit"></a> Tesztek megtekintése és szerkesztése
 
-A részletek lapról egy adott teszt válassza a három pontot, jobb szélen szerkesztéséhez, ideiglenesen letilthatja, törlése vagy webteszt letöltése.
+A részletek lapról egy adott teszt válassza a három pontot, jobb szélen szerkesztéséhez, ideiglenesen letilthatja, törlése vagy webteszt letöltése. Konfigurációs módosítások propagálása akár 20 percig is eltarthat.
 
 Válassza ki **teszt részleteinek megtekintése** látható a pontdiagram és az adott tesztet hely részleteit egy adott tesztelési környezetből.
 
@@ -313,13 +313,13 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 
     Ellenőrizze, hogy az alkalmazás a webhook értesítés érhető el, és sikeresen dolgozza fel a webhook-kérelmeket. Lásd: [ez](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) további információt.
 
-* *Az időszakos teszt meghiúsult egy protokollmegsértési hibával?*
+* *Az időszakos teszt meghiúsult egy protokollmegsértési hiba a?*
 
     A „protokollmegsértés... A CR karakter után LF karakternek kell következnie” hiba a kiszolgáló (vagy a függőségek) problémáját jelzi. Ez akkor történik, amikor hibás formátumú fejlécek vannak beállítva a válaszban. Ezt a terheléselosztók vagy a CDN-ek okozhatják. Előfordulhat, hogy néhány fejléc nem a CRLF-fel jelzi a sor végét, ami nem felel meg a HTTP-specifikációnak, ezért az ellenőrzés meghiúsul a .NET WebRequest szintjén. Vizsgálja meg, hogy nincsenek-e a válaszban nem megfelelő fejlécek.
     
     Megjegyzés: Az URL nem hiúsul meg, amelyek olyan böngészőkön a HTTP-fejléceket. A hiba részletes leírását a következő blogbejegyzésben találja: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
     
-* *Nem látok kapcsolódó kiszolgálóoldali telemetriát a teszthibák diagnosztizálásához*
+* *Nem látom az összes kapcsolódó kiszolgálóoldali telemetriát a teszt hibáinak diagnosztizálása?*
     
     Ha a kiszolgálóoldali alkalmazásához be van állítva az Application Insights, akkor ezt okozhatja az, hogy [mintavételezés](../../azure-monitor/app/sampling.md) van folyamatban. Válasszon ki egy másik rendelkezésre állási eredményt.
 

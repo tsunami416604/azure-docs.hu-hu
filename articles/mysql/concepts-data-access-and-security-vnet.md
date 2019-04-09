@@ -7,12 +7,12 @@ manager: jhubbard
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: aef55660d07c8923a82baf7f8b6320abf3ccdd1d
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 37cc8192cc5934cf967ad9b9c62614d0b4503fb4
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430216"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006606"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata az Azure Database for MySQL-hez
 
@@ -107,6 +107,8 @@ Lehetősége van a [szerepköralapú hozzáférés-vezérlés (RBAC)] [ rbac-wha
 ## <a name="limitations"></a>Korlátozások
 
 Az Azure Database for MySQL a virtuális hálózati szabályok funkció a következő korlátozások vonatkoznak:
+
+- Személyes IP-címet a virtuális hálózat/alhálózat a webes alkalmazás is le lehet képezni. Akkor is, ha a Szolgáltatásvégpontok a megadott virtuális hálózat/alhálózat vannak bekapcsolva, a kiszolgáló és a webes alkalmazás közötti kapcsolatait lesz egy Azure nyilvános IP-forráshoz, nem egy virtuális hálózat/alhálózat forrás. Ahhoz, hogy a kapcsolat webalkalmazás és a egy kiszolgálóra, amelyen a VNet tűzfalszabályai, engedélyezi az Azure-szolgáltatások hozzáférésének a kiszolgálón kell.
 
 - A tűzfal az Azure database for MySQL-hez, az egyes virtuális hálózati szabályt hivatkozik egy alhálózatra. A hivatkozott alhálózatok ugyanabban a földrajzi régióban, amely üzemelteti az Azure Database for MySQL kiszolgálón kell futnia.
 

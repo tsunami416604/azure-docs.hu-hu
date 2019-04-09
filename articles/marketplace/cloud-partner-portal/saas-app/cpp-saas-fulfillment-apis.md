@@ -12,18 +12,22 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 03/26/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 6084687f54be265e88e6755e7d082da7c32eda1b
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: c7da46984d592abc6ed97d7490fde732bf26b0ba
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349518"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009445"
 ---
-# <a name="saas-fulfillment-apis"></a>SaaS-teljesítési API-k
+# <a name="saas-fulfillment-apis"></a>SaaS Fulfillment API-k
 
-Az SaaS teljesítése API lehetővé teszi a független szoftvergyártók (ISV), a SaaS-alkalmazások integrálása az Azure piactéren. Ez az API lehetővé teszi, hogy minden engedélyezett kereskedelmi csatornán részt ISV-alkalmazások: a közvetlen partner által irányított (viszonteladói) és a mező által vezetett.  Az API-t annak listaelem transactable SaaS kínál az Azure Marketplace-en.
+Az SaaS teljesítése API-kkal a független szoftvergyártók (ISV), a SaaS-alkalmazások integrálása az Azure piactéren. Ezen API-k engedélyezése minden engedélyezett kereskedelmi csatornán részt ISV-alkalmazások: a közvetlen partner által irányított (viszonteladói) és a mező által vezetett.  Azok az Azure Marketplace-en transactable SaaS-ajánlatok listázása előfeltétele.
+
+> [!WARNING]
+> Ez az API jelenlegi verziója a 2-es verzió, amely kell használni minden új SaaS kínál.  1. verzióját az API elavult, és támogatja a meglévő ajánlatok fenntartani.
+
 
 ## <a name="business-model-support"></a>Üzleti modell támogatása
 
@@ -37,4 +41,4 @@ Ez az API támogatja a következő üzleti modell képességeket; képes vagy:
 
 ## <a name="next-steps"></a>További lépések
 
-Ezen a felületen fejlesztéshez: [SaaS teljesítése API-Version 2](./cpp-saas-fulfillment-api-v2.md).
+Még nem tette meg, ha regisztrálja az SaaS-alkalmazásnak a a [az Azure portal](https://ms.portal.azure.com) leírtak [az Azure AD alkalmazás regisztrálása](./cpp-saas-registration.md).  Ezt követően a legújabb verzióját használja, ez az interfész fejlesztéshez: [SaaS teljesítése API-Version 2](./cpp-saas-fulfillment-api-v2.md).

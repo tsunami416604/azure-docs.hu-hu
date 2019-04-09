@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2018
+ms.date: 04/02/2019
 ms.author: monhaber
-ms.openlocfilehash: cabd3d58c3b6bf76b294e1edf1cf94aad5d30f2f
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 63ee603f83d0c2de3bc89b8792ada4a61edb7e00
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578951"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006736"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM), a virtual machine scale sets, IaaS-tárolók és nem Azure-beli (pl. helyszíni) számítógépek biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Microsoft Monitoring Agent ügynököt az összeomlási memóriaképeket is átmásolja a munkaterülethez.
@@ -77,7 +77,7 @@ A Security center automatikusan létrehozhat egy alapértelmezett munkaterülete
 A Security Center által létrehozott munkaterület kiválasztása:
 
 1. A **alapértelmezett munkaterület-konfiguráció**, válassza ki a Security center által létrehozott munkaterület(ek) használata.
-   ![Válasszon tarifacsomagot][10] 
+   ![Tarifacsomag kiválasztása][10] 
 
 1. Kattintson a **Save** (Mentés) gombra.<br>
     A Security Center egy új erőforrás és egy alapértelmezett munkaterületet hoz létre, hogy földrajzi hely, és csatlakoztatja az ügynököt a munkaterülethez. A munkaterület és erőforrás-csoport elnevezési van:<br>
@@ -138,7 +138,7 @@ Egy meglévő Log Analytics-munkaterület kiválasztása:
      
     b.  Válassza ki a kívánt munkaterületet, amelyben szeretné az ügynököt csatlakoztatja kattintva **beállításainak szerkesztése** a beállítások oszlop a listában a kívánt előfizetés.
         ![Válassza ki a munkaterület][8] c. Állítsa a tarifacsomagot.
-        ![Válasszon tarifacsomagot][9] 
+        ![Tarifacsomag kiválasztása][9] 
    
    >[!NOTE]
    >Ha már rendelkezik a munkaterület egy **biztonsági** vagy **SecurityCenterFree** a megoldás engedélyezve van, a díjszabás a rendszer automatikusan beállítja. 
@@ -179,7 +179,7 @@ Eseményeket, amelyek nagyon kevés a Rendszeríró a közös állítja be a fő
 | --- | --- |
 | Minimális | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
-| Közös | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,461,4622, |
+| Közös | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,4622, |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
 | | 4700,4702,4704,4705,4716,4717,4718,4719,4720,4722,4723,4724,4725,4726,4727,4728,4729,4733,4732,4735,4737, |
 | | 4738,4739,4740,4742,4744,4745,4746,4750,4751,4752,4754,4755,4756,4757,4760,4761,4762,4764,4767,4768,4771, |
@@ -254,9 +254,9 @@ A Microsoft Monitoring Agent, manuálisan is telepítheti, így a Security Cente
    a.  A Security Center főmenüjében válassza **biztonsági házirend**.
      
    b.  Válassza ki a munkaterületet, ahol csatlakoztassa az ügynököt kíván. Ellenőrizze, hogy a munkaterület ugyanabban az előfizetésben, használhatja a Security Centerben, és hogy van-e olvasási/írási engedéllyel a munkaterületen.
-       ![Válasszon munkaterületet][8]
+       ![Munkaterület kiválasztása][8]
 3. Állítsa a tarifacsomagot.
-   ![Válasszon tarifacsomagot][9] 
+   ![Tarifacsomag kiválasztása][9] 
    >[!NOTE]
    >Ha már rendelkezik a munkaterület egy **biztonsági** vagy **SecurityCenterFree** a megoldás engedélyezve van, a díjszabás a rendszer automatikusan beállítja. 
    > 

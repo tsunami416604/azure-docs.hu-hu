@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0a9ca5f8598e737d82d6a51632e1e89394b24ac0
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: 71e1f7d85d823add804e8ef5dcb6126cffc21902
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487617"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009900"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Oktatóanyag: A Visual Studio használatával másolási tevékenységgel rendelkező folyamat létrehozása
 > [!div class="op_single_selector"]
@@ -347,7 +347,7 @@ Vegye figyelembe a következő szempontokat:
 * Az adat-előállító neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá tehető.
 
 > [!IMPORTANT]
-> Data Factory-példányok létrehozásához az Azure-előfizetés adminisztrátorának/társadminisztrátorának kell lennie
+> A Data Factory-példányok létrehozásához kell lennie egy rendszergazda/társadminisztrátor az Azure-előfizetés
 
 ## <a name="monitor-pipeline"></a>Folyamat figyelése
 Lépjen az adat-előállítója kezdőlapjára:

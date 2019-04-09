@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: fdf2d3aeea32beba0b8e95c1816a80140d7cf6be
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5a4e6819eeff2a2c8efaf3807c38cc06f7c35002
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958915"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006688"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata az Azure Database for MariaDB
 
@@ -105,6 +105,8 @@ Lehetősége van a [szerepköralapú hozzáférés-vezérlés (RBAC)] [ rbac-wha
 ## <a name="limitations"></a>Korlátozások
 
 Az Azure Database for MariaDB a virtuális hálózati szabályok funkció a következő korlátozások vonatkoznak:
+
+- Személyes IP-címet a virtuális hálózat/alhálózat a webes alkalmazás is le lehet képezni. Akkor is, ha a Szolgáltatásvégpontok a megadott virtuális hálózat/alhálózat vannak bekapcsolva, a kiszolgáló és a webes alkalmazás közötti kapcsolatait lesz egy Azure nyilvános IP-forráshoz, nem egy virtuális hálózat/alhálózat forrás. Ahhoz, hogy a kapcsolat webalkalmazás és a egy kiszolgálóra, amelyen a VNet tűzfalszabályai, engedélyezi az Azure-szolgáltatások hozzáférésének a kiszolgálón kell.
 
 - Az Azure Database for MariaDB-tűzfal, az egyes virtuális hálózati szabályt hivatkozik egy alhálózatra. Ezen hivatkozott alhálózatok ugyanabban a földrajzi régióban az Azure Database for MariaDB üzemeltető kiszolgálón kell futnia.
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 04af92f21cecaa832e857a7017b67f815f6ab685
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
-ms.translationtype: MT
+ms.openlocfilehash: 352833b12c00abbefcf7016d27dfb580ee25e450
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417972"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056741"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Felkészülés az Avere vFXT létrehozására
 
@@ -30,23 +30,16 @@ Először hozzon létre egy új Azure-előfizetést. Használjon különálló e
 
 ## <a name="configure-subscription-owner-permissions"></a>Előfizetés tulajdonosi engedélyekkel konfigurálása
 
-Az előfizetés tulajdonosi engedélyekkel rendelkező felhasználók a vFXT fürtöt hozzon létre. Előfizetés tulajdonosi engedélyekkel van szükség az ezeket a műveleteket, többek között:
+Az előfizetés tulajdonosi engedélyekkel rendelkező felhasználók a vFXT fürtöt hozzon létre. Előfizetés tulajdonosi engedélyekkel fogadja el a szoftverlicenc-szolgáltatás, és egyéb műveletekre van szükség. 
 
-* Fogadja el a feltételeket a Avere vFXT szoftver
-* A fürt csomópont hozzáférés szerepkör létrehozása 
+Van néhány megoldás forgatókönyvek, amelyek lehetővé teszik a nem tulajdonosi egy Avere vFTX az Azure-fürt létrehozásához. Ezek a forgatókönyvek erőforrások korlátozása és a további szerepkörök hozzárendelése a létrehozó járnak. Mindkét esetben az előfizetés tulajdonosa is kell [fogadja el a Avere vFXT szoftverlicenc](#accept-software-terms) előre. 
 
-Ha nem szeretné tulajdonosi hozzáférés biztosítása a felhasználók számára a vFXT létrehozása, van két lehetséges megoldások:
-
-* Egy erőforráscsoport-tulajdonosnak hozhat létre egy fürtöt, ha ezek a feltételek teljesülnek:
-
-  * Egy előfizetés tulajdonosának kell [fogadja el a Avere vFXT szoftverlicenc](#accept-software-terms) és [hozza létre a fürt csomópont hozzáférés szerepkört](#create-the-cluster-node-access-role). 
-  * Minden Avere vFXT erőforrásokat kell üzembe helyezni az erőforráscsoportban, többek között:
-    * Fürt-vezérlő
-    * Fürtcsomópontok
-    * Blob Storage
-    * A hálózati elemek
+| Forgatókönyv | Korlátozások | A Avere vFXT fürt létrehozásához szükséges hozzáférési szerepkörök | 
+|----------|--------|-------|
+| Erőforrás-csoport rendszergazdája | A virtuális hálózat, a fürt vezérlő és a fürt csomópontjai az erőforráscsoporton belül kell létrehozni | [Felhasználói hozzáférés rendszergazdája](../role-based-access-control/built-in-roles.md#user-access-administrator) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkörök, mindkettő hatóköre úgy, hogy a céloldali erőforráscsoport | 
+| Külső virtuális hálózat | A fürt vezérlő és a fürt csomópontjai az erőforráscsoporton belül jönnek létre, de a meglévő virtuális hálózat egy másik erőforráscsoportban található használatos | (1) [felhasználói hozzáférés rendszergazdája](../role-based-access-control/built-in-roles.md#user-access-administrator) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) hatóköre az vFXT erőforráscsoport; és (2) szerepkörök [virtuális gépek Közreműködője](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [felhasználói hozzáférés Rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator), és [Avere közreműködői](../role-based-access-control/built-in-roles.md#avere-contributor) szerepkörök hatókörrel rendelkező virtuális hálózatok közötti erőforrás-csoportba. |
  
-* Nincsenek tulajdonosi jogosultságokkal rendelkező felhasználók vFXT fürtök hozhatók szerepköralapú hozzáférés-vezérlés (RBAC) előre a jogosultságok hozzárendelése a felhasználóhoz. Ez a módszer jelentős engedélyt ad a felhasználóknak. [Ez a cikk](avere-vfxt-non-owner.md) nem tulajdonosok-fürtök létrehozásának engedélyezése egy hozzáférési szerepkör létrehozásának módját ismerteti.
+Alternatív az, hogy hozzon létre egy egyéni, szerepköralapú hozzáférés-vezérlés (RBAC) szerepkört előre és jogosultságok hozzárendelése a felhasználóhoz a [Ez a cikk](avere-vfxt-non-owner.md). Ez a módszer jelentős engedélyt ad a felhasználóknak. 
 
 ## <a name="quota-for-the-vfxt-cluster"></a>A vFXT fürt kvóta
 
@@ -83,75 +76,6 @@ A szoftverek előzetes feltételek elfogadásának:
    ```azurecli
    az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-controller:latest
    ```
-
-## <a name="create-access-roles"></a>Access-szerepkörök létrehozása 
-
-[Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) révén a vFXT fürt vezérlő és a fürt csomópontjai engedély szükséges feladatok végrehajtásához.
-
-* A fürt vezérlő létrehozásához és módosításához a virtuális gépek a fürt létrehozásához engedélyre van szüksége. 
-
-* Az egyes vFXT elvégzésére van szükség, olvassa el az Azure erőforrás-tulajdonságok, tárhely kezelése és más csomópontok hálózatiadapter-beállítások felügyelete normál fürt művelet részeként.
-
-A Avere vFXT fürt létrehozása előtt meg kell határoznia egy egyéni szerepkört a fürt csomópontjai használata. 
-
-A fürt vezérlő elfogadhatja az alapértelmezett szerepkör a sablonból. Az alapértelmezett biztosítja a fürt vezérlő erőforrás tulajdonosi jogosultságokkal rendelkeznek. Ha inkább hozzon létre egy egyéni szerepkört, a vezérlő, [testre szabott hozzáférés szerepkört](avere-vfxt-controller-role.md).
-
-> [!NOTE] 
-> Csak egy előfizetés tulajdonosa vagy a tulajdonos vagy a felhasználói hozzáférés adminisztrátora szerepkörrel rendelkező felhasználók szerepköröket hozhat létre. A szerepkörök időben hozhatók létre.  
-
-### <a name="create-the-cluster-node-access-role"></a>A fürt csomópont hozzáférés szerepkör létrehozása
-
-<!-- caution - this header is linked to in the template so don't change it unless you can change that -->
-
-Az Azure-fürtön a Avere vFXT létrehozása előtt létre kell hoznia a fürtszerepkör csomópont.
-
-> [!TIP] 
-> A Microsoft belső felhasználók "Avere fürt-futtatókörnyezet operátor" nevű kísérlet helyett a meglévő szerepkör segítségével hozzon létre egyet. 
-
-1. Másolja ezt a fájlt. Adja hozzá az előfizetés-Azonosítóját az AssignableScopes sorban.
-
-   (Ez a fájl jelenlegi verziója, a github.com/Azure/Avere tárházban tárolt [AvereOperator.txt](https://github.com/Azure/Avere/blob/master/src/vfxt/src/roles/AvereOperator.txt).)  
-
-   ```json
-   {
-      "AssignableScopes": [
-          "/subscriptions/PUT_YOUR_SUBSCRIPTION_ID_HERE"
-      ],
-      "Name": "Avere Operator",
-      "IsCustom": "true",
-      "Description": "Used by the Avere vFXT cluster to manage the cluster",
-      "NotActions": [],
-      "Actions": [
-          "Microsoft.Compute/virtualMachines/read",
-          "Microsoft.Network/networkInterfaces/read",
-          "Microsoft.Network/networkInterfaces/write",
-          "Microsoft.Network/virtualNetworks/read",
-          "Microsoft.Network/virtualNetworks/subnets/read",
-          "Microsoft.Network/virtualNetworks/subnets/join/action",
-          "Microsoft.Network/networkSecurityGroups/join/action",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/delete",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/write"
-      ],
-      "DataActions": [
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
-      ]
-   }
-   ```
-
-1. Mentse a fájlt az ``avere-operator.json`` vagy egy hasonló könnyen megjegyezhető nevét. 
-
-
-1. Nyisson meg egy Azure Cloud shellt, és jelentkezzen be az előfizetés-azonosító (leírt [a jelen dokumentum korábbi](#accept-software-terms)). Ez a parancs használatával hozza létre a szerepkört:
-
-   ```bash
-   az role definition create --role-definition /avere-operator.json
-   ```
-
-A szerepkör neve szolgál a fürt létrehozásakor. Ebben a példában a neve a következő ``avere-operator``.
 
 ## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>Hozzon létre egy tárolási végpontot a virtuális hálózaton (ha szükséges)
 

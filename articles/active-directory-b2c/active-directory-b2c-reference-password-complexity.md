@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2c6f3d88aae99c419b2507f421cc4dfebb2c022b
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 1d7874d7c8d04e3d3565cdfe2e52e49c538b3091
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100203"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009801"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Jelszavak bonyolultsági feltételeknek konfigurálása az Azure Active Directory B2C-vel
 
@@ -23,7 +23,7 @@ Az Azure Active Directory (Azure AD) B2C támogatja a bonyolultsági feltételek
 
 ## <a name="password-rule-enforcement"></a>Jelszó szabály kényszerítése
 
-A regisztrációhoz, vagy a jelszó-visszaállítás, a végfelhasználó, amely megfelel a szabályoknak jelszót kell megadnia. Jelszó-bonyolultsági szabályokat a rendszer egy felhasználói folyamat érvényesíti. A regisztráció ideje alatt egy másik felhasználói folyamat nyolc karakterből álló karakterláncnak szükséges a regisztrációhoz négyjegyű PIN-kódot egy felhasználói folyamat lehetőség. Például használhat egy felhasználói folyamat a különböző jelszavak összetettségére felnőttek, mint a gyermekek számára.
+A regisztrációhoz, vagy a jelszó-visszaállítás, a végfelhasználó, amely megfelel a szabályoknak jelszót kell megadnia. Jelszó-bonyolultsági szabályokat a rendszer egy felhasználói folyamat érvényesíti. A regisztráció ideje alatt egy másik felhasználói folyamat során szüksége van egy nyolc karakterből álló karakterlánc-előfizetési négyjegyű PIN-kódot egy felhasználói folyamat lehetőség. Például használhat egy felhasználói folyamat a különböző jelszavak összetettségére felnőttek, mint a gyermekek számára.
 
 Jelszó bonyolultsága bejelentkezései soha nem lép érvénybe. Felhasználók bejelentkezései soha nem kéri a jelszó módosítására, mert nem felel meg az aktuális bonyolultsági követelményeknek.
 

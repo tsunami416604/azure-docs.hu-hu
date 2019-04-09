@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5e7994ba5fcd3efa061f56d7ee77f796bab16708
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 3482a5516e0a044716ac38e7a60a9a8484f73245
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449304"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056214"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Az Azure Maps segítségével egy interaktív keresés térkép létrehozása
 
@@ -49,7 +49,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Töltse le vagy másolja ki az [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) fájl tartalmát.
 2. Mentse a fájlt helyileg a tartalmát **AzureMapDemo.html**. Nyissa meg egy szövegszerkesztőben.
-3. Keresse meg benne `<insert-key>`. Cserélje le a **elsődleges kulcs** az előző szakaszból származó értékre.
+3. Keresse meg benne `<Your Azure Maps Key>`. Cserélje le a **elsődleges kulcs** az előző szakaszból származó értékre.
 
 ## <a name="open-the-application"></a>Az alkalmazás megnyitása
 
@@ -70,7 +70,7 @@ Az oktatóanyagok bemutatják, hogyan használhatja és konfigurálhatja az Azur
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban az Azure Maps-fiók létrehozása, és létrehozott egy bemutató alkalmazást. Ha a saját alkalmazás létrehozása az Azure Maps API-k használatával, lépjen tovább a következő oktatóanyaggal:
+Ebben a rövid útmutatóban az Azure Maps-fiók létrehozása, és létrehozott egy bemutató alkalmazást. Vessen egy pillantást az alábbi oktatóanyagok az Azure Maps olvashat:
 
 > [!div class="nextstepaction"]
 > [Az Azure Maps használatával közeli hasznos helyek keresése](./tutorial-search-location.md)

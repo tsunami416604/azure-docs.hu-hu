@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: c4b178cc7e0604f38e4da25452a3bad01f8145de
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dde9b71c3615a592f8c08e040c5e9ba7bc756bd6
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57858141"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008838"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Az Azure-ban földrajzi mesterséges intelligenciát használó virtuális gép kiépítése 
 
@@ -87,7 +87,7 @@ Ellenkező esetben regisztráljon új ArcGIS-fiók és licenc vagy beolvasása e
 
 ![Az ArcGIS-Free-Trial](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Miután előfizetési tartozó egy vagy egy fizetős vagy egy ingyenes próbafiókot ArcGIS, engedélyezheti az ArcGIS Pro-fiókja utasításait követve a [ArcGIS Pro dokumentációja – első lépések](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
+A regisztrációt követően az vagy egy fizetős vagy ingyenes ArcGIS próbafiókot, engedélyezheti az ArcGIS Pro fiókja utasításait követve [– első lépések az ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
 
 Bejelentkezés után az ArcGIS Pro asztali az ArcGIS-fiókját, készen áll a beépített adatelemzési eszközzel, amelyek telepítése és konfigurálása a virtuális gépen, a térinformatikai elemzés és a machine learning-projektek használatának megkezdéséhez.
 

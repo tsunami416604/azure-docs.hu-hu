@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cda9f976a7680a1338584e4308426683de82a79
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: c1bac4d2c0f236b8fca611c7391846abdb782796
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802118"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009597"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Hozzáadhat vagy törölhet a felhasználók Azure Active Directory használatával
 Új felhasználók hozzáadása, vagy törölje a meglévő felhasználók a szervezet Azure Active Directory (Azure AD).
@@ -47,7 +47,7 @@ Létrehozhat egy új felhasználót az Azure Active Directory portál használat
 
    - **Csoportok.** Szükség esetén a felhasználót adhat hozzá egy vagy több meglévő csoportot. A felhasználói csoportokhoz egy későbbi időpontban is hozzáadhat. Felhasználói csoportok hozzáadásával kapcsolatos további információkért lásd: [létrehozásához, és tagokat vehet fel](active-directory-groups-create-azure-portal.md).
 
-   - **Címtárbeli szerepkör.** Igény szerint adhat hozzá a felhasználót, hogy az Azure AD-Rendszergazda szerepkörhöz. A felhasználó a globális rendszergazda vagy egy vagy több a korlátozott rendszergazdai szerepkörök az Azure ad-ben rendelhet hozzá. További információ a szerepkörök hozzárendelése: [szerepkörök hozzárendelése a felhasználók](active-directory-users-assign-role-azure-portal.md).
+   - **Címtárbeli szerepkör.** Igény szerint is hozzáadhat a felhasználó Azure AD-Rendszergazda szerepkörhöz. A felhasználó a globális rendszergazda vagy egy vagy több a korlátozott rendszergazdai szerepkörök az Azure ad-ben rendelhet hozzá. További információ a szerepkörök hozzárendelése: [szerepkörök hozzárendelése a felhasználók](active-directory-users-assign-role-azure-portal.md).
 
 4. A megadott automatikusan létrehozott jelszó másolása a **jelszó** mezőbe. Kell megadnia ezt a jelszót a felhasználónak a kezdeti bejelentkezési folyamathoz.
 
@@ -83,7 +83,7 @@ Miután hozzáadta a felhasználókat, a következő alapszintű folyamatok hajt
 
 - [Szerepkörök hozzárendelése felhasználókhoz](active-directory-users-assign-role-azure-portal.md)
 
-- [Hozzon létre egy alapszintű csoportot, és tagokat vehet fel](active-directory-groups-create-azure-portal.md)
+- [Alapszintű csoport létrehozása és tagok hozzáadása](active-directory-groups-create-azure-portal.md)
 
 - [Dinamikus csoportok és felhasználók használata](../users-groups-roles/groups-create-rule.md)
 
