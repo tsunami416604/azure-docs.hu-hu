@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 71f792dd1238b11810abfb6a97ac9e051da2ec45
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 3ee528cc68a2a5637e85dc1d5ef68203916138e7
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274630"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357172"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Eszközcsoport-leképezés függőségi csoport pontosítása
 
@@ -127,14 +127,14 @@ A Kusto-lekérdezések futtatása:
 1. Miután telepítette az ügynököket, nyissa meg a portálon, majd kattintson **áttekintése**.
 2. A **áttekintése**, lépjen a **Essentials** szakaszában a projektet, majd kattintson a munkaterület neve melletti megadva **OMS-munkaterület**.
 3. A Log Analytics munkaterület oldalán kattintson a **általános** > **naplók**.
-4. Az Azure Monitor-naplók használatával információkat gyűjthet dependency lekérdezés írása. Mintalekérdezések információkat gyűjthet dependency érhetők el [Itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+4. Az Azure Monitor-naplók használatával információkat gyűjthet dependency lekérdezés írása. A lekérdezés a következő szakaszban találja.
 5. A lekérdezés futtatásához kattintson a Futtatás. 
 
 [További](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) Kusto-lekérdezések írásával kapcsolatban. 
 
 ## <a name="sample-azure-monitor-logs-queries"></a>Példa az Azure Monitor lekérdezések naplózása
 
-Az alábbiakban mintalekérdezések használhatja a függőségi adatokat nyerhet ki. Módosíthatja a lekérdezéseket az előnyben részesített adatpontok kibontásához. Függőségi adatfelderítési rekordok mezőit teljesnek érhető el [Itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)
+Az alábbiakban mintalekérdezések használhatja a függőségi adatokat nyerhet ki. Módosíthatja a lekérdezéseket az előnyben részesített adatpontok kibontásához. Függőségi adatfelderítési rekordok mezőit teljesnek érhető el [Itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records). Keresse meg a további mintalekérdezések [Itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
 
 ### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Bejövő kapcsolatok gépekről összefoglalója
 

@@ -11,29 +11,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2019
+ms.date: 04/5/2019
 ms.author: banders
-ms.openlocfilehash: 229b5a0948a81c9b5d78dd49f304e7b6891f95ee
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: aa1a218fbf0bc7eacac65b50e4ee1f86791e2b3b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58653095"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281981"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Önkiszolgáló cseréje és a visszatérítéseket Azure lefoglalási
 
 Az Azure-foglalások a változó igényeinek kielégítése érdekében rugalmasságot biztosítanak. Egy másik, azonos típusú foglalás foglalás tudjon cserélni. Egy foglalást, akár 50 000 USD évben is visszatérítés, ha már nincs szüksége.
+
+Önkiszolgáló Exchange-hez és a megszakítási lehetőség nem érhető el, US Government nagyvállalati szerződéssel rendelkező ügyfeleknek. Más US Government előfizetéstípusok, beleértve a használatalapú fizetés és a CSP támogatottak.
 
 ## <a name="exchange-an-existing-reserved-instance"></a>Exchange-meglévő fenntartott példány
 
 A Foglalás három gyors lépésben is cserél az [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
 1. Válassza a foglalások visszatérítés, és kattintson a kívánt **Exchange**.  
-    ![A példában a foglalások való visszatéréshez kép ](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
+    ![A példában a foglalások való visszatéréshez kép](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
 2. Válassza ki a virtuális gép termék, amelyet szeretne vásárolni, és adjon meg egy mennyiséget. Győződjön meg arról, hogy az új vásárlási összes több, mint a visszatérési teljes. [Határozza meg a megfelelő méretű megvásárlása előtt](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
-    ![Példa a virtuális gép terméket egy exchange-beszerzési képe ](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
+    ![Példa a virtuális gép terméket egy exchange-beszerzési képe](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
 3. Tekintse át, és a tranzakció elvégzéséhez.  
-    ![Meg kell vásárolnia egy Exchange-hez, a visszatérési elvégzése a virtuális gép termék például a kép ](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
+    ![Meg kell vásárolnia egy Exchange-hez, a visszatérési elvégzése a virtuális gép termék például a kép](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
 
 Visszatérítés egy foglalást, lépjen a **foglalás részletei** kattintson **visszatérítés**.
 
@@ -84,7 +86,7 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 - Ismerje meg, hogyan kezelheti a foglalást, lásd: [kezelése az Azure-foglalások](billing-manage-reserved-vm-instance.md).
 - Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
-    - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
+    - [Mi az az Azure Reservations?](billing-save-compute-costs-reservations.md)
     - [Az Azure-ban foglalások kezelése](billing-manage-reserved-vm-instance.md)
     - [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](billing-understand-vm-reservation-charges.md)
     - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)

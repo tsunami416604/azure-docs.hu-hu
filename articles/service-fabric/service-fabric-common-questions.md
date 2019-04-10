@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: f75236c826584d742fe3163a2fdac29c4030bf66
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 0bd8a7d403ad1fe0f7abb15356cc9c90ed6b3f02
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045798"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359423"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Gyakori kérdések a Service Fabric
 
@@ -136,7 +136,7 @@ Nem. Alacsony prioritású virtuális gépek nem támogatottak.
 Azt jelenti, hogy az alkalmazás hitelesítéséhez a KeyVault hitelesítő adatok beszerzése a következők:
 
 A. Az alkalmazások létrehozási/csomagolási feladat során kérje le a tanúsítványt az SF alkalmazás adatok csomagba, és használja ezt a KeyVault hitelesítésre.
-B. Virtuálisgép-méretezési csoport beállítása engedélyezve van az MSI-gazdagépek, egy egyszerű PowerShell SetupEntryPoint SF alkalmazásához be is fejleszthet [egy hozzáférési jogkivonatot az MSI-végpontról](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), majd [beolvasni a titkos kulcsokat a KeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzureKeyVaultSecret)
+B. Virtuálisgép-méretezési csoport beállítása engedélyezve van az MSI-gazdagépek, egy egyszerű PowerShell SetupEntryPoint SF alkalmazásához be is fejleszthet [egy hozzáférési jogkivonatot az MSI-végpontból érkező](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), majd [a titkos kódok lekérése a KeyVault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>Alkalmazás-tervezés
 

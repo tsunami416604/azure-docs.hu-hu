@@ -5,46 +5,49 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8bdb711d39f514375362235388943ec42451b312
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e826bd965281d60cb6d73f325fbc5a7a06da234
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315572"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358492"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Azure-erőforrások előkészítése helyszíni gépek vészhelyreállításához
 
- Az [Azure Site Recovery](site-recovery-overview.md) működőképes állapotban tartja az üzleti alkalmazásokat a tervezett és nem tervezett leállások idején, így segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A Site Recovery felügyeli és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vészhelyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
+Ez a cikk azt ismerteti, hogyan készíti elő az Azure-erőforrások és -összetevők, hogy állíthat be vészhelyreállítást helyszíni VMware virtuális gépek, Hyper-V virtuális gépek vagy Windows/Linux fizikai kiszolgálók Azure-ba, használja a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
 
-Ez az oktatóanyag az első rész abban a sorozatban, amely bemutatja, hogyan állíthat be vészhelyreállítást helyszíni virtuális gépekhez. Lényeges szempont, hogy helyszíni VMware virtuális gépek, Hyper-V virtuális gépek vagy fizikai kiszolgálók számára kíván védelmet biztosítani.
+Ez az oktatóanyag az első rész abban a sorozatban, amely bemutatja, hogyan állíthat be vészhelyreállítást helyszíni virtuális gépekhez. 
 
-> [!NOTE]
-> Az oktatóanyagokat úgy terveztük meg, hogy az adott forgatókönyvhöz a legegyszerűbb üzembehelyezési utat mutassák be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes utasításokért lásd a **vonatkozó forgatókönyvet ismertető** szakaszt.
 
-A cikk bemutatja, hogyan készítse elő az Azure-összetevőket, amikor helyszíni virtuális gépeket (Hyper-V vagy VMware) vagy Windows/Linux rendszerű fizikai kiszolgálókat szeretne replikálni az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Ellenőrizze, hogy az Azure-fiók rendelkezik-e replikálási engedélyekkel.
 > * Recovery Services-tároló létrehozása. A tároló virtuális gépek és más replikációs összetevők metaadatait és konfigurációs adatait tárolja.
-> * Azure-hálózat beállítása. Amikor a feladatátvétel után Azure-beli virtuális gépek jönnek létre, ehhez az Azure-hálózathoz csatlakoznak.
+> * Állítsa be egy Azure virtuális hálózaton (VNet). Azure virtuális gépek a feladatátvételt követően létrejönnek, amikor csatlakoznak a hálózathoz.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
+> [!NOTE]
+> Az oktatóanyagok bemutatják a legegyszerűbb telepítési út esetén. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes útmutatásért tekintse át a cikk az útmutató szakaszban a Site Recovery a tartalom.
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+## <a name="before-you-start"></a>Előkészületek
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+- Az architektúra áttekintése a [VMware](vmware-azure-architecture.md), [Hyper-V](hyper-v-azure-architecture.md), és [fizikai kiszolgáló](physical-azure-architecture.md) vész-helyreállítási.
+- Olvassa el a gyakori kérdések a [VMware](vmware-azure-common-questions.md) és Hyper-V(hyper-v-azure-common-questions.md)
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt. Ezután lépjen be a [az Azure portal](https://portal.azure.com).
+
 
 ## <a name="verify-account-permissions"></a>Fiókengedélyek ellenőrzése
 
-Ha most hozta létre az ingyenes Azure-fiókját, akkor Ön az előfizetés rendszergazdája. Ha nem Ön az előfizetés rendszergazdája, akkor a rendszergazdával együttműködve rendelje hozzá a fiókhoz a szükséges engedélyeket. Egy új virtuális gép replikálásának engedélyezéséhez a következő engedélyekkel kell rendelkeznie:
+Ha az imént létrehozott ingyenes Azure-fiókját, Ön az előfizetés rendszergazdája, és rendelkezik a szükséges engedélyekkel. Ha nem Ön az előfizetés rendszergazdája, akkor a rendszergazdával együttműködve rendelje hozzá a fiókhoz a szükséges engedélyeket. Egy új virtuális gép replikálásának engedélyezéséhez a következő engedélyekkel kell rendelkeznie:
 
 - Virtuális gépek létrehozása a kiválasztott erőforráscsoportban.
 - Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
-- Storage-fiók írni.
-- Felügyelt lemezre írni.
+- Írni az Azure storage-fiók.
+- Írni az Azure-beli felügyelt lemezt.
 
 A feladatok végrehajtásához az Ön fiókjának rendelkeznie kell a Virtuális gépek közreműködője beépített szerepkörrel. Emellett a fiókhoz hozzá kell rendelni a Site Recovery-közreműködő beépített szerepkört is, a Site Recovery-műveletek tárolókban való kezeléséhez.
 
@@ -64,30 +67,29 @@ A feladatok végrehajtásához az Ön fiókjának rendelkeznie kell a Virtuális
 
 ## <a name="set-up-an-azure-network"></a>Azure-hálózat beállítása
 
-Ha az Azure virtuális gépek a feladatátvételt követően létrejönnek a felügyelt lemezekről, ehhez a hálózathoz csatlakoznak.
+A helyszíni gépeket az Azure-bA replikálja a rendszer felügyelt lemezeket. Feladatátvétel esetén az Azure virtuális gépek a felügyelt lemezek alapján létrehozott, és adja meg, ha ebben az eljárásban az Azure-hálózathoz csatlakozik.
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Hálózatkezelés** > **Virtuális hálózat** lehetőséget.
 2. Hagyja kiválasztva a **Resource Manager** üzemi modellt.
 3. A **Név** mezőben adjon meg egy hálózatnevet. A névnek egyedinek kell lennie az Azure-erőforráscsoporton belül. Ebben az oktatóanyagban a **ContosoASRnet** nevet használjuk.
 4. Adja meg, melyik erőforráscsoportban hozza létre a hálózatot. A **contosoRG** meglévő erőforráscsoportot használjuk.
-5. A **Címtartomány** mezőben adja meg a hálózat tartományát: **10.0.0.0/24**. Ebben a hálózatban nem használunk alhálózatot.
+5. A **címtartomány**, adja meg a tartományt a hálózaton. Használunk **10.0.0.0/24**, és nem használja az alhálózatot.
 6. Az **Előfizetés** mezőben válassza ki azt az előfizetést, amelyben létre kívánja hozni a hálózatot.
-7. A **Hely** mezőben válassza a **Nyugat-Európa** lehetőséget. A hálózatnak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
+7. A **hely**, válassza az ugyanabban a régióban, amelyre a Recovery Services-tároló létrehozása. A jelen oktatóanyagban rendelkezik **Nyugat-Európa**. A hálózat és a tárolónak ugyanabban a régióban kell lennie.
 8. Meghagyjuk az alapszintű DDoS Protection alapértelmezett beállításait hálózati szolgáltatásvégpont nélkül.
 9. Kattintson a **Create** (Létrehozás) gombra.
 
    ![Virtuális hálózat létrehozása](media/tutorial-prepare-azure/create-network.png)
 
-   A virtuális hálózat néhány másodperc alatt létrejön. A létrehozást követően megjelenik az Azure Portal irányítópultján.
+A virtuális hálózat néhány másodperc alatt létrejön. A létrehozást követően megjelenik az Azure Portal irányítópultján.
 
-## <a name="useful-links"></a>Hasznos hivatkozások
-
-- Az Azure Networks [ismertetése](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
-- [Ismerje meg](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) felügyelt lemezeket.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [A helyszíni VMware-infrastruktúra előkészítése az Azure-ba irányuló vészhelyreállításhoz](tutorial-prepare-on-premises-vmware.md)
+- VMware-vészhelyreállítás [a helyszíni VMware-infrastruktúra előkészítése](tutorial-prepare-on-premises-vmware.md).
+- Hyper-V vész-helyreállítási [a helyszíni Hyper-V-kiszolgálók előkészítése](hyper-v-prepare-on-premises-tutorial.md).
+- Fizikai kiszolgáló vész-helyreállítási [a konfigurációs kiszolgáló és a forrás-környezet beállítása](physical-azure-disaster-recovery.md)
+- Az Azure Networks [ismertetése](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+- [Ismerje meg](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) felügyelt lemezeket.

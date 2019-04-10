@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 53a0645c42255d5f741d31c411ca70e1e009febc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 6faa585f1ad38eb981e0bbffffef603c4aab0bc8
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661582"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360285"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Oktatóanyag: Az IoT Hub üzenet útválasztásának konfigurálása az Azure CLI használatával
 
@@ -147,7 +147,7 @@ Most, hogy az alapvető erőforrások beállítása, beállíthatja az üzenet-�
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-Hozzon létre egy útválasztási végpontot, használja a [az iot hub útválasztás-végpont létrehozása](/cli/azure/iot/hub/routing-endpoint.md?view=azure-cli-latest#az-iot-hub-routing-endpoint-create). Az üzenet útvonalának a végpont létrehozásához használja [az iot hub útvonal létrehozása](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create).
+Hozzon létre egy útválasztási végpontot, használja a [az iot hub útválasztás-végpont létrehozása](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create). Az üzenet útvonalának a végpont létrehozásához használja [az iot hub útvonal létrehozása](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create).
 
 ### <a name="route-to-a-storage-account"></a>Átirányítása a tárfiókba
 

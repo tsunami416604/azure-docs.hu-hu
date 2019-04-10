@@ -9,32 +9,34 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 739f1a9a3a75123c0273dc958b4ba1fd7231f3c3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 1095a80ba05aa3e0ae6dfcd526db7ffd18fb9d4d
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268619"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359366"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításához
 
-Az [Azure Site Recovery](site-recovery-overview.md) működőképes állapotban tartja az üzleti alkalmazásokat a tervezett és nem tervezett leállások idején, így segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A Site Recovery felügyeli és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vészhelyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
+Ez a cikk bemutatja, hogyan készíti elő a helyszíni VMware-kiszolgálók a vész-helyreállítási Azure-bA a [Azure Site Recovery](site-recovery-overview.md) szolgáltatások. 
 
-- Ez az oktatóanyag a második rész abban a sorozatban, amely bemutatja, hogyan állíthat be Azure-ba irányuló vészhelyreállítást helyszíni VMware virtuális gépekhez. Az első oktatóanyagban [konfiguráltuk a VMware vészhelyreállításhoz szükséges Azure-összetevőket](tutorial-prepare-azure.md).
+Ez az oktatóanyag a második rész abban a sorozatban, amely bemutatja, hogyan állíthat be Azure-ba irányuló vészhelyreállítást helyszíni VMware virtuális gépekhez. Az első oktatóanyagban [konfiguráltuk a VMware vészhelyreállításhoz szükséges Azure-összetevőket](tutorial-prepare-azure.md).
 
 
-> [!NOTE]
-> Az oktatóanyagokat úgy terveztük meg, hogy az adott forgatókönyvhöz a legegyszerűbb üzembehelyezési utat mutassák be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes utasításokért lásd a **vonatkozó forgatókönyvet ismertető** szakaszt.
-
-Ebben a cikkben bemutatjuk, hogyan készítse elő a helyszíni VMware-környezetet, ha replikálni szeretné a VMware virtuális gépeket az Azure-ba az Azure Site Recovery segítségével. Az alábbiak végrehajtásának módját ismerheti meg:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Fiók előkészítése a vCenter-kiszolgálón vagy vSphere ESXi-gazdagépen a virtuális gépek felderítésének automatizálásához
-> * Fiók előkészítése a mobilitási szolgáltatás VMware virtuális gépekre való automatikus telepítéséhez
-> * A VMware-kiszolgáló és a virtuális gép követelményeinek áttekintése
-> * Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően
+> * Készítsen elő egy fiók a vCenter-kiszolgáló vagy vSphere ESXi-gazdagép, virtuális gépek felderítésének automatizálásához.
+> * Fiók előkészítése a mobilitási szolgáltatást a VMware virtuális gépek automatikus telepítését.
+> * Tekintse át a VMware-kiszolgáló és a Virtuálisgép-követelmények és a támogatás.
+> * Készítse elő az Azure virtuális géphez való kapcsolódásra a feladatátvételt követően.
 
+> [!NOTE]
+> Az oktatóanyagok bemutatják a legegyszerűbb telepítési út esetén. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes útmutatásért tekintse át a cikk az útmutató szakaszban a Site Recovery a tartalom.
 
+## <a name="before-you-start"></a>Előkészületek
+
+Győződjön meg arról, hogy előkészítette az Azure leírtak szerint a [első oktatóanyag-sorozat](tutorial-prepare-azure.md).
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Fiók előkészítése automatikus felderítéshez
 
@@ -94,7 +96,7 @@ Ha a feladatátvételt követően RDP segítségével szeretne kapcsolódni a Wi
     - Feladatátvétel előtt engedélyezze az RDP-t a helyszíni gépen.
     - Engedélyezze az RDP-t a **Windows tűzfal** -> **Engedélyezett alkalmazások és szolgáltatások** területén a **Tartomány és Privát** hálózatok számára.
     - Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információk](https://support.microsoft.com/kb/3031135).
-- A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, a frissítés befejeződéséig nem fog tudni bejelentkezni a virtuális gépre.
+- A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, nem jelentkezhet be a virtuális géphez a frissítés befejeződéséig.
 - A feladatátvételt követően ellenőrizze a **Rendszerindítási diagnosztika** részt a Windows Azure virtuális gépen a virtuális gép képernyőképének megtekintéséhez. Ha nem sikerül, ellenőrizze, hogy fut-e a virtuális gép, majd tekintse át a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Ha a feladatátvételt követően SSH segítségével szeretne kapcsolódni a Linux virtuális gépekhez, tegye a következőket:
@@ -107,13 +109,13 @@ Ha a feladatátvételt követően SSH segítségével szeretne kapcsolódni a Li
 
 
 ## <a name="failback-requirements"></a>Feladat-visszavételre vonatkozó követelmények
-Ha azt tervezi, a feladat-visszavételhez helyszíni, akkor is kell arról, hogy bizonyos [előfeltételek teljesülése](vmware-azure-reprotect.md##before-you-begin). Ezek azonban a virtuális gépek **vészhelyreállításának engedélyezéséhez még nem szükségesek**, sőt akár az Azure-ra való feladatátvételt követően is teljesíthetők.
+Ha azt tervezi, a feladat-visszavételhez a helyszíni hely, vannak-e számos [feladat-visszavételhez szükséges előfeltételek](vmware-azure-reprotect.md##before-you-begin). Most már előkészíti ezeket, de nem szükséges. Előkészítheti követően átadja a feladatokat az Azure-bA.
 
-## <a name="useful-links"></a>Hasznos hivatkozások
 
-Ha több virtuális gépet replikál, meg kell terveznie kapacitás és a telepítés megkezdése előtt. [További információk](site-recovery-deployment-planner.md).
 
 ## <a name="next-steps"></a>További lépések
 
+Vészhelyreállítás beállítása. Ha több virtuális gépet replikál, a kapacitás megtervezése.
 > [!div class="nextstepaction"]
-> [Vészhelyreállítás az Azure-bA beállítása VMware virtuális gépekhez](vmware-azure-tutorial.md)
+> [Vészhelyreállítás az Azure-bA beállítása VMware virtuális gépek](vmware-azure-tutorial.md)
+> [kapacitástervezés](site-recovery-deployment-planner.md).

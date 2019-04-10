@@ -1,23 +1,17 @@
 ---
 title: Az Azure Application Gateway webalkalmazási tűzfal CRS-szabály, csoportok és szabályok
 description: Ez az oldal nyújt tájékoztatást web application firewall CRS-szabálycsoportjainak és szabályokat.
-documentationcenter: na
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 4/16/2018
+ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: b45e782984f637f1b084ec757000dde9dd3a5777
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 61ab41eed7703c82c2e5ef2a3b5412a9f56389ba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302035"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279703"
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Webes alkalmazás tűzfal CRS-szabálycsoportjainak és szabályok listája érhető el
 
@@ -37,41 +31,23 @@ Az alábbi táblázatok a következők: a csoportok és a szabályokat, amelyek 
 
 |RuleId|Leírás|
 |---|---|
-|911011|A szabály 911011|
-|911012|A szabály 911012|
 |911100|Házirend által nem engedélyezett a metódus|
-|911013|A szabály 911013|
-|911014|A szabály 911014|
-|911015|A szabály 911015|
-|911016|A szabály 911016|
-|911017|A szabály 911017|
-|911018|A szabály 911018|
 
 
 ### <a name="crs913"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
 |RuleId|Leírás|
 |---|---|
-|913011|A szabály 913011|
-|913012|A szabály 913012|
 |913100|Biztonsági ellenőrzőeszköz társított felhasználói ügynök található.|
 |913110|Kérelem fejléce társított biztonsági ellenőrzőeszköz található|
 |913120|Kérelem fájlnév/argumentumnak társított biztonsági ellenőrzőeszköz található|
-|913013|A szabály 913013|
-|913014|A szabály 913014|
 |913101|Parancsfájl-kezelési/általános HTTP-alapú társított felhasználói ügynök található.|
 |913102|Webes webbejáró vagy robot társított felhasználói ügynök található.|
-|913015|A szabály 913015|
-|913016|A szabály 913016|
-|913017|A szabály 913017|
-|913018|A szabály 913018|
 
 ### <a name="crs920"></a> <p x-ms-format-detection="none">KÉRELEM-920-PROTOKOLL-VÉGREHAJTÁS</p>
 
 |RuleId|Leírás|
 |---|---|
-|920011|A szabály 920011|
-|920012|A szabály 920012|
 |920100|Érvénytelen HTTP-kérelem-sor|
 |920130|Nem sikerült elemezni a kérelem törzsében.|
 |920140|Többrészes kérelem törzse nem sikerült a szigorú ellenőrzési PE %@{REQBODY_PROCESSOR_ERROR =} BQ %@{MULTIPART_BOUNDARY_QUOTED} BW %@{MULTIPART_BOUNDARY_WHITESPACE} DB %@{MULTIPART_DATA_BEFORE} DA %@{MULTIPART_DATA_AFTER} NF %@{MULTIPART_HEADER_FOLDING} LF a(z) % @ {MULTIPART_LF_LINE}     FÁJL %@{MULTIPART_FILE_LIMIT_EXCEEDED IH %@{MULTIPART_INVALID_HEADER_FOLDING IQ %@{MULTIPART_INVALID_QUOTING SM %@{MULTIPART_SEMICOLON_MISSING}}}}|
@@ -102,30 +78,22 @@ Az alábbi táblázatok a következők: a csoportok és a szabályokat, amelyek 
 |920430|Házirend által nem engedélyezett a HTTP protokoll verziója|
 |920440|A házirend korlátozza URL-cím fájlkiterjesztés|
 |920450|HTTP-fejléc korlátozza a házirend (%@{MATCHED_VAR})|
-|920013|A szabály 920013|
-|920014|A szabály 920014|
 |920200|Tartomány = túl sok mező (6 vagy több)|
 |920201|Tartomány = túl sok mező pdf-kérelem (35 vagy több)|
 |920230|Több URL-Címének kódolása észlelt|
 |920300|Kérelem hiányzik egy fejléc elfogadása|
 |920271|Érvénytelen karakter a kérelem (nem nyomtatható karakter)|
 |920320|Felhasználói ügynök Záhlaví|
-|920015|A szabály 920015|
-|920016|A szabály 920016|
 |920272|Érvénytelen karakter a kérelem (kívül az alábbi ascii 127 nyomtatható karakter)|
-|920017|A szabály 920017|
-|920018|A szabály 920018|
 |920202|Tartomány = túl sok mező pdf-kérelem (6 vagy több)|
 |920273|Érvénytelen karakter a kérelem (kívül nagyon szigorú set)|
 |920274|Érvénytelen karakter a kérelem fejlécében (kívül nagyon szigorú set)|
-|920460|Rule 920460|
+|920460|Rendellenes escape-karakter|
 
 ### <a name="crs921"></a> <p x-ms-format-detection="none">A KÉRELEM-921-PROTOKOLL-TÁMADÁS</p>
 
 |RuleId|Leírás|
 |---|---|
-|921011|Rule 921011|
-|921012|Rule 921012|
 |921100|HTTP-Kéréscsempészet támadás.|
 |921110|HTTP-kérelem való támadás|
 |921120|HTTP-válasz a felosztás támadás|
@@ -133,75 +101,43 @@ Az alábbi táblázatok a következők: a csoportok és a szabályokat, amelyek 
 |921140|Fejlécek via HTTP fejléc injektálásos támadásokkal szemben|
 |921150|Hasznos adat (CR vagy LF észlelt) keresztül HTTP fejléc injektálásos támadásokkal szemben|
 |921160|Hasznos adat (CR vagy LF Karakterrel és fejléc-nevet észlelt) keresztül HTTP fejléc injektálásos támadásokkal szemben|
-|921013|Rule 921013|
-|921014|Rule 921014|
 |921151|Hasznos adat (CR vagy LF észlelt) keresztül HTTP fejléc injektálásos támadásokkal szemben|
-|921015|Rule 921015|
-|921016|A szabály 921016|
-|921170|A szabály 921170|
+|921170|HTTP-paraméter szennyezés|
 |921180|HTTP-paraméter szennyezés (% @{TX.1})|
-|921017|A szabály 921017|
-|921018|Rule 921018|
 
 ### <a name="crs930"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
 |RuleId|Leírás|
 |---|---|
-|930011|A szabály 930011|
-|930012|A szabály 930012|
 |930100|A bejárási támadási elérési útja (/... /)|
 |930110|A bejárási támadási elérési útja (/... /)|
 |930120|Az operációs rendszer fájl hozzáférési kísérlet|
 |930130|A korlátozott fájl hozzáférési kísérlet|
-|930013|A szabály 930013|
-|930014|A szabály 930014|
-|930015|A szabály 930015|
-|930016|A szabály 930016|
-|930017|A szabály 930017|
-|930018|A szabály 930018|
 
 ### <a name="crs931"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
 |RuleId|Leírás|
 |---|---|
-|931011|A szabály 931011|
-|931012|A szabály 931012|
 |931100|Lehetséges fájl beszúrásos (RFI) támadások = IP-címet használó URL-paraméter|
 |931110|Lehetséges fájl beszúrásos (RFI) támadások = RFI sebezhető paraméter használt név w/URL adattartalom|
 |931120|Lehetséges távoli fájl beszúrásos (RFI) támadások = URL-cím használt hasznos w/záró kérdés Mark karakter (?)|
-|931013|A szabály 931013|
-|931014|A szabály 931014|
 |931130|Lehetséges távoli fájl beszúrásos (RFI) támadások =-Domain hivatkozás|
-|931015|A szabály 931015|
-|931016|A szabály 931016|
-|931017|A szabály 931017|
-|931018|A szabály 931018|
 
 ### <a name="crs932"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
 |RuleId|Leírás|
 |---|---|
-|932011|A szabály 932011|
-|932012|A szabály 932012|
 |932120|Távoli parancs végrehajtása található Windows PowerShell-paranccsal =|
 |932130|Távoli parancs végrehajtása Unix rendszerhéj-kifejezés található =|
 |932140|Távoli parancs végrehajtása Windows = / Ha parancs található|
 |932160|Távoli parancs végrehajtása található Unix rendszerhéj kód =|
 |932170|Távoli parancs végrehajtása Shellshock (CVE – 2014-6271) =|
 |932171|Távoli parancs végrehajtása Shellshock (CVE – 2014-6271) =|
-|932013|A szabály 932013|
-|932014|A szabály 932014|
-|932015|A szabály 932015|
-|932016|A szabály 932016|
-|932017|A szabály 932017|
-|932018|A szabály 932018|
 
 ### <a name="crs933"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
 |RuleId|Leírás|
 |---|---|
-|933011|A szabály 933011|
-|933012|Rule 933012|
 |933100|PHP-injektálási támadások Znak Levé nebo Pravé címke található =|
 |933110|PHP-injektálási támadások = található PHP parancsfájl-fájl feltöltése|
 |933120|PHP Injection Attack = Configuration Directive Found|
@@ -209,58 +145,42 @@ Az alábbi táblázatok a következők: a csoportok és a szabályokat, amelyek 
 |933150|PHP Injection Attack = High-Risk PHP Function Name Found|
 |933160|PHP-injektálási támadások magas kockázatú PHP függvény hívásához szükséges található =|
 |933180|PHP Injection Attack = Variable Function Call Found|
-|933013|A szabály 933013|
-|933014|A szabály 933014|
 |933151|PHP Injection Attack = Medium-Risk PHP Function Name Found|
-|933015|Rule 933015|
-|933016|A szabály 933016|
 |933131|PHP-injektálási támadások = található változók|
 |933161|PHP-injektálási támadások kevés PHP függvény hívásához szükséges található =|
 |933111|PHP-injektálási támadások = található PHP parancsfájl-fájl feltöltése|
-|933017|A szabály 933017|
-|933018|Rule 933018|
 
 ### <a name="crs941"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
 |RuleId|Leírás|
 |---|---|
-|941011|A szabály 941011|
-|941012|A szabály 941012|
 |941100|XSS támadás észlelve libinjection|
 |941110|XSS szűrő - kategória 1 = parancsfájl címke vektor|
 |941130|XSS szűrő - kategória 3 = attribútuma vektor|
 |941140|XSS szűrő - kategória 4 = Javascript URI vektor|
 |941150|XSS szűrő - kategória 5 = nem engedélyezett HTML-attribútumok|
 |941180|Csomópont-érvényesítő Blacklist kulcsszavak|
-|941190|Internet Explorer XSS szűrők - támadás észlelve.|
-|941200|Internet Explorer XSS szűrők - támadás észlelve.|
-|941210|Internet Explorer XSS szűrők - támadás észlelve.|
-|941220|Internet Explorer XSS szűrők - támadás észlelve.|
-|941230|Internet Explorer XSS szűrők - támadás észlelve.|
-|941240|Internet Explorer XSS szűrők - támadás észlelve.|
-|941260|Internet Explorer XSS szűrők - támadás észlelve.|
-|941270|Internet Explorer XSS szűrők - támadás észlelve.|
-|941280|Internet Explorer XSS szűrők - támadás észlelve.|
-|941290|Internet Explorer XSS szűrők - támadás észlelve.|
-|941300|Internet Explorer XSS szűrők - támadás észlelve.|
+|941190|XSS stíluslapok használatával|
+|941200|XSS VML keretek használata|
+|941210|XSS rejtjelezett Javascript használatával|
+|941220|XSS rejtjelezett Visual Basic-parancsfájl használatával|
+|941230|XSS használatával "" címke beágyazása|
+|941240|XSS "import" vagy "végrehajtása" attribútum használatával|
+|941260|XSS "meta" címke használatával|
+|941270|XSS "hivatkozás" href használatával|
+|941280|XSS "base" címke használata|
+|941290|XSS "alkalmazás" címke használata|
+|941300|XSS "objektum" címke használata|
 |941310|US-ASCII hibás kódolás XSS szűrő - támadás észlelve.|
 |941330|Internet Explorer XSS szűrők - támadás észlelve.|
 |941340|Internet Explorer XSS szűrők - támadás észlelve.|
 |941350|UTF-7 kódolási IE XSS - támadás észlelve.|
-|941013|A szabály 941013|
-|941014|A szabály 941014|
 |941320|Lehetséges XSS-támadások észlelt – HTML-címke-kezelő|
-|941015|A szabály 941015|
-|941016|A szabály 941016|
-|941017|A szabály 941017|
-|941018|A szabály 941018|
 
 ### <a name="crs942"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
 |RuleId|Leírás|
 |---|---|
-|942011|A szabály 942011|
-|942012|A szabály 942012|
 |942100|SQL injektálási támadások észlelt libinjection keresztül|
 |942110|SQL-injektálásos támadásokkal szemben: Közös olyan injektálás, a tesztelés észlelt|
 |942130|SQL-injektálásos támadásokkal szemben: SQL Tautology észlelt.|
@@ -280,35 +200,21 @@ Az alábbi táblázatok a következők: a csoportok és a szabályokat, amelyek 
 |942350|Észleli a MySQL UDF injektálással vagy a más adatstruktúra /-manipuláció kísérletek|
 |942360|Észleli összefűzött alapszintű SQL injektálás és SQLLFI kísérletek|
 |942370|Észleli a klasszikus SQL injektálási probings 2/2|
-|942013|A szabály 942013|
-|942014|A szabály 942014|
 |942150|SQL-injektálásos támadásokkal szemben|
 |942410|SQL-injektálásos támadásokkal szemben|
 |942430|Korlátozott SQL karakter rendellenességek észlelése (argumentumok): speciális karakterek száma túllépte a (12)|
 |942440|SQL-megjegyzés feladatütemezési észlelt.|
 |942450|SQL hexadecimális kódolás azonosított|
-|942015|A szabály 942015|
-|942016|A szabály 942016|
 |942251|Észleli a HAVING injektálások|
 |942460|Meta karakter Anomáliadetektálási észleléséről szóló figyelmeztetés - ismétlődő a Word karakter|
-|942017|A szabály 942017|
-|942018|A szabály 942018|
 
 ### <a name="crs943"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
 |RuleId|Leírás|
 |---|---|
-|943011|A szabály 943011|
-|943012|A szabály 943012|
 |943100|Munkamenet-rögzítési támadási = HTML formátumban a cookie-k értékeinek beállítása|
 |943110|Munkamenet-rögzítési támadási = tartományon kívüli hivatkozó a munkamenet-azonosító paraméter neve|
 |943120|Munkamenet-rögzítési támadási = nincs hivatkozó a munkamenet-azonosító paraméter neve|
-|943013|A szabály 943013|
-|943014|A szabály 943014|
-|943015|A szabály 943015|
-|943016|A szabály 943016|
-|943017|A szabály 943017|
-|943018|A szabály 943018|
 
 ## <a name="owasp229"></a> OWASP_2.2.9
 
@@ -569,5 +475,3 @@ Az alábbi táblázatok a következők: a csoportok és a szabályokat, amelyek 
 ## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan tilthatja le a WAF-szabályok funkcionáló: [WAF-szabályok testreszabása](application-gateway-customize-waf-rules-portal.md)
-
-[1]: ./media/application-gateway-integration-security-center/figure1.png

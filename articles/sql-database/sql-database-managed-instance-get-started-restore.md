@@ -9,25 +9,25 @@ ms.devlang: ''
 ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: carlrab, bonova
+ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 12/14/2018
-ms.openlocfilehash: e2aa9edcd53aa3881b07e31fcf2312d5173a3a6e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5cf9046a26edae3e6076ee1effe32930f15f4569
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903501"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59356843"
 ---
-# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Gyors útmutató: Adatbázis visszaállítása felügyelt példányra 
+# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Gyors útmutató: Adatbázis visszaállítása felügyelt példányra
 
-Ez a rövid útmutatóban fogja használni az SQL Server Management Studio (SSMS) (a Wide World Importers – Standard biztonságimásolat-fájl) adatbázis visszaállítása az Azure Blob storage-ból egy Azure SQL Database-be [felügyelt példány](sql-database-managed-instance.md). 
+Ez a rövid útmutatóban fogja használni az SQL Server Management Studio (SSMS) (a Wide World Importers – Standard biztonságimásolat-fájl) adatbázis visszaállítása az Azure Blob storage-ból egy Azure SQL Database-be [felügyelt példány](sql-database-managed-instance.md).
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 > [!NOTE]
-> - Az Azure Database Migration Service (DMS) végzett áttelepítésének további információkért lásd: [DMS használatával felügyelt példány migrálása](../dms/tutorial-sql-server-to-managed-instance.md). 
-> - Különféle migrálási módszerekről további információkért lásd: [SQL Server-példány migrálása az Azure SQL Database felügyelt példányába történő](sql-database-managed-instance-migrate.md).
+> Az Azure Database Migration Service (DMS) végzett áttelepítésének további információkért lásd: [DMS használatával felügyelt példány migrálása](../dms/tutorial-sql-server-to-managed-instance.md).
+> Különféle migrálási módszerekről további információkért lásd: [SQL Server-példány migrálása az Azure SQL Database felügyelt példányába történő](sql-database-managed-instance-migrate.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +36,7 @@ Ez a rövid útmutató:
 - Az erőforrást használ, a [létrehoz egy felügyelt példányt](sql-database-managed-instance-get-started.md) rövid.
 - Rendelkeznie kell a számítógép a legújabb [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) telepítve.
 - SSMS használata a felügyelt példányhoz való kapcsolódáshoz szükséges. Tekintse meg az alábbi gyorsútmutatókkal való csatlakozásról:
-  - [Csatlakozás Azure SQL Database felügyelt példányhoz egy Azure virtuális gépről](sql-database-managed-instance-configure-vm.md)
+  - [Csatlakozás egy Azure SQL Database felügyelt példány az Azure virtuális gépből](sql-database-managed-instance-configure-vm.md)
   - [Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányába való helyszíni](sql-database-managed-instance-configure-p2s.md).
 
 > [!NOTE]
@@ -51,9 +51,9 @@ Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis vi
 3. Futtassa a következő SQL-parancsfájlt, amely egy előre konfigurált tárfiókot és SAS-kulcsot használ [hitelesítő adatok létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) a felügyelt példány található.
 
    ```sql
-   CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases] 
+   CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
    WITH IDENTITY = 'SHARED ACCESS SIGNATURE'
-   , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D' 
+   , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D'
    ```
 
     ![hitelesítő adat létrehozása](./media/sql-database-managed-instance-get-started-restore/credential.png)
@@ -61,7 +61,7 @@ Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis vi
 4. A hitelesítő adatok ellenőrzéséhez futtassa a következő parancsfájlt, amely használja egy [tároló](https://azure.microsoft.com/services/container-instances/) listáját a biztonságimásolat-fájl URL-CÍMÉT.
 
    ```sql
-   RESTORE FILELISTONLY FROM URL = 
+   RESTORE FILELISTONLY FROM URL =
       'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```
 
@@ -80,13 +80,13 @@ Az ssms-ben kövesse az alábbi lépéseket a Wide World Importers-adatbázis vi
 
    ```sql
    SELECT session_id as SPID, command, a.text AS Query, start_time, percent_complete
-      , dateadd(second,estimated_completion_time/1000, getdate()) as estimated_completion_time 
-   FROM sys.dm_exec_requests r 
-   CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) a 
+      , dateadd(second,estimated_completion_time/1000, getdate()) as estimated_completion_time
+   FROM sys.dm_exec_requests r
+   CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) a
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. Ha a visszaállítás elkészült, tekintse meg az Object Explorerben. 
+7. Ha a visszaállítás elkészült, tekintse meg az Object Explorerben.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,19 +8,19 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: bd696a003b54face4f95ae426c11840bb8805bee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: ecfd0cbc3eaaae64a956568a506252fdbeddcac2
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273141"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358339"
 ---
-# <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
+# <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás
 
 Az SQL Database általános célú, felügyelt relációsadatbázis-szolgáltatás a Microsoft Azure-ban, amely egyebek mellett relációs, JSON-, térbeli és XML-struktúrákat is támogat. Az SQL Database két különböző vásárlási modell belül dinamikusan méretezhető teljesítményt nyújt: a Virtuálismag-alapú vásárlási modell és a egy DTU-alapú vásárlási modell. Az SQL Database emellett olyan lehetőségeket kínál, mint az [oszlopcentrikus indexelés](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) a kivételes mélységű elemzéshez és jelentéskészítéshez, illetve a [memóriabeli OLTP](sql-database-in-memory.md) a rendkívül nagy teljesítményű tranzakciófeldolgozáshoz. A Microsoft zökkenőmentesen kezeli az SQL kódbázis karbantartását és frissítését, és teljesen átveszi az alapul szolgáló infrastruktúra kezelését.
 
@@ -102,12 +102,12 @@ Használja a [beépített teljesítménymonitorozási](sql-database-performance.
 ## <a name="availability-capabilities"></a>Rendelkezésre állás
 
 A hagyományos SQL Server-környezet általában kell helyileg állítsa be az adatokat (a szolgáltatások, mint az AlwaysOn rendelkezésre állási csoportok vagy feladatátvételi fürtbeli példányok segítségével) (szinkron karbantartott) pontos másolatát ellen (legalább) 2 gépek egy Hiba történt egy egyetlen gép összetevő.  Ez a magas rendelkezésre állást biztosít, de nem nyújt védelmet az adatközpontot megsemmisítése természeti katasztrófa esetén.
- 
+
 Vész-helyreállítási azt feltételezi, hogy egy katasztrofális esemény földrajzilag lesz a honosított elegendő milyen távolságra van egy másik gép vagy gépek halmazát jelenti az adatok másolatát.  Az SQL Server Always On rendelkezésre állási csoportok aszinkron módban fut. Ez a funkció első használhatja.  A sebessége kisebb problémák általában azt jelenti, hogy személyek nem szeretné megvárni a replikáció előfordulhat, hogy milyen távolságra előtt egy tranzakció véglegesítése, így az adatvesztés Ha így tesz, nem tervezett feladatátvételeket.
 
 A prémium szintű és az üzleti kritikus szolgáltatásban az adatbázisok már rétegezi [nagyon hasonló valamit](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) és a egy rendelkezésre állási csoport szinkronizálása. Adatbázisok alacsonyabb szolgáltatási szinten a storage használatával redundanciát biztosít egy [különböző, de egyenértékű mechanizmus](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability). Nincs logika, amely egy egyetlen gép meghibásodása elleni védelmet biztosít.  Az aktív georeplikációs szolgáltatás révén a katasztrófa elleni védelmét, egy teljes régió megsemmisülésekor.
 
-Azure-beli rendelkezésre állási zónák a magas rendelkezésre állású problémáról a lejátszás.  Megkísérli az üzemkimaradások esetére, egy adott régión belül készítése egyetlen adatközpontba.  Így szeretné power vagy hálózati épület, adatvesztés elleni védelem érdekében. Az SQL Azure, ez fog működni a különböző replikába való elhelyezésével különböző rendelkezésre állási zónák (különböző épületek, hatékonyan) és más módon működik-e mint korábban. 
+Azure-beli rendelkezésre állási zónák a magas rendelkezésre állású problémáról a lejátszás.  Megkísérli az üzemkimaradások esetére, egy adott régión belül készítése egyetlen adatközpontba.  Így szeretné power vagy hálózati épület, adatvesztés elleni védelem érdekében. Az SQL Azure, ez fog működni a különböző replikába való elhelyezésével különböző rendelkezésre állási zónák (különböző épületek, hatékonyan) és más módon működik-e mint korábban.
 
 Sőt, az az Azure iparági vezető 99,99 %-os rendelkezésre állási szolgáltatás szolgáltatásiszint-szerződés [(SLA)](https://azure.microsoft.com/support/legal/sla/), Microsoft által felügyelt adatközpontok globális hálózata működteti, teszi lehetővé, hogy alkalmazása a 24/7. Az Azure platform teljes körű minden adatbázis kezeli, és nincs adatvesztés és a magas százalékos adatok rendelkezésre állását garantálja. Az Azure automatikusan kezeli a javításokat, a biztonsági mentéseket, a replikációt, a hibaészlelést, a háttérben álló lehetséges hardver-, szoftver- vagy hálózati hibákat, a hibajavítások telepítését, a feladatátvételeket, adatbázis-frissítéseket és az egyéb karbantartási műveleteket. A standard szintű rendelkezésre állás a számítási és tárolási rétegek elkülönítését foglalja magában. Prémium szintű rendelkezésre állás integrálása a számítási és tárolási teljesítmény egyetlen csomóponton, és majd megvalósítása az Always On rendelkezésre állási csoportok valójában hasonló technológia érhető el. Teljes az Azure SQL Database magas rendelkezésre állású lehetőségeit, lásd: [SQL adatbázis-elérhetőségi](sql-database-high-availability.md). Az SQL Database ezen felül olyan beépített funkciókkal szolgálja [az üzletmenet folytonosságát és a globális méretezhetőséget](sql-database-business-continuity.md), mint például a következők:
 
@@ -156,7 +156,7 @@ Emellett az [adaptív lekérdezésfeldolgozási](/sql/relational-databases/perfo
 Az SQl Database számos [beépített biztonsági és megfelelőségi szolgáltatást](sql-database-security-overview.md) kínálva járul hozzá, hogy az Ön alkalmazása eleget tegyen a különféle biztonsági és megfelelőségi elvárásoknak.
 
 > [!IMPORTANT]
-> Az Azure SQL Database (az összes központi telepítési beállítások), egy több megfelelőségi szabvány tanúsított módon. További információkért lásd: a [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
+> Az Azure SQL Database (az összes központi telepítési beállítások), egy több megfelelőségi szabvány tanúsított módon. További információkért lásd: a [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
 
 ### <a name="advance-threat-protection"></a>Fejlett fenyegetésvédelem
 
@@ -186,7 +186,7 @@ Az SQL Database az [Azure Active Directory-integráció](sql-database-aad-authen
 
 ### <a name="compliance-certification"></a>Megfelelőségi tanúsítvány
 
-Az SQL Database rendszeres ellenőrzéseken vesz részt és számos megfelelőségi szabványnak tesz eleget tanúsított módon. További információkért lásd: a [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/compliance/) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
+Az SQL Database rendszeres ellenőrzéseken vesz részt és számos megfelelőségi szabványnak tesz eleget tanúsított módon. További információkért lásd: a [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
 
 ## <a name="easy-to-use-tools"></a>Egyszerűen használható eszközök
 
@@ -240,7 +240,6 @@ Az SQL Database ügyfelei az Azure Hybrid benefittel az SQL Server társított a
 |Az SQL Server Enterprise Edition core ügyfeleit, SA|<li>Általános célú vagy üzletileg kritikus fontosságú Termékváltozatoknál alapegysége is kell fizetnie.</li><br><li>helyszíni 1 mag = 4 mag, általános célú termékváltozatban</li><br><li>helyszíni 1 mag = 1 mag az üzletileg kritikus fontosságú Termékváltozatoknál</li>|
 |SQL Server Standard Edition core ügyfeleit, SA|<li>Fizethet a szolgáltatásért alapegysége/az általános célú Termékváltozatban csak</li><br><li>helyszíni 1 mag = 1 mag, általános célú termékváltozatban</li>|
 |||
-
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Kapcsolatfelvétel az SQL Server műszaki csoportjával
 

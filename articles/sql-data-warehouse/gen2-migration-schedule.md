@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 477a74d7bd0275715222a54800b81c2812da9c77
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 1f645a9c9161fb2fd71b2fd9af9ade65bff0be94
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275606"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361147"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Frissítse az adattárház Gen2-re
 
@@ -34,7 +34,7 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 |:--- |:--- |:--- |
 | Kelet-Ausztrália |Elérhető |2019. június 1. |
 | Délkelet-Ausztrália |2019. április 15. |2019. május 1. |
-| Dél-Brazília |2019. május 15. |\* |
+| Dél-Brazília |2019. május 15. |2019. június 1. |
 | Közép-Kanada |Elérhető |2019. június 1. |
 | Kelet-Kanada |\* |\* |
 | USA középső régiója |Elérhető |2019. június 1. |
@@ -44,8 +44,8 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 | Észak-Kína 2 |\* |\* |
 | Kelet-Ázsia |Elérhető |2019. június 1. |
 | USA keleti régiója |Elérhető |2019. június 1. |
-| USA 2. keleti régiója |Elérhető |Június 1-től. 2019 |
-| Közép-Franciaország |\* |\* |
+| USA 2. keleti régiója |Elérhető |2019. június 1. |
+| Közép-Franciaország |\* |2019. június 1. |
 | Közép-Németország |\* |\* |
 | Németország nyugati középső régiója |2019. szeptember 1.|2020. január 2. |
 | Közép-India |Elérhető |2019. június 1. |

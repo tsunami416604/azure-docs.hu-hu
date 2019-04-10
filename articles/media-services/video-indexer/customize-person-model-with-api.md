@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 6fe4f391b5337929efc3f6190a925fd1e967cf1c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e5a34a75c73401c567a0e898a1ce9f85cde96586
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999351"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360540"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>A Video Indexer API személy modell testreszabása
 
@@ -50,11 +50,11 @@ Az alábbi, a kérelmet a Curl.
 curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}"
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-PersonModel?).
+[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
 
 ### <a name="request-parameters"></a>A kérés paraméterei 
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Typo**|**Kötelező**|**Leírás**|
 |---|---|---|---|
 |location|sztring|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|sztring|Igen|A fiók globálisan egyedi azonosító|
@@ -95,11 +95,11 @@ Az alábbi, a kérelmet a Curl.
 curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}"
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-PersonModel?).
+[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?).
 
 ### <a name="request-parameters"></a>A kérés paraméterei
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Typo**|**Kötelező**|**Leírás**|
 |---|---|---|---|
 |location|sztring|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|sztring|Igen|A fiók globálisan egyedi azonosító|
@@ -132,11 +132,11 @@ Az alábbi, a kérelmet a Curl.
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}"
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-PersonModels?).
+[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?).
 
 ### <a name="request-parameters"></a>A kérés paraméterei
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Typo**|**Kötelező**|**Leírás**|
 |---|---|---|---|
 |location|sztring|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|sztring|Igen|A fiók globálisan egyedi azonosító|
@@ -187,11 +187,11 @@ Az alábbi, a kérelmet a Curl.
 curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}"
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-face?).
+[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?).
 
 ### <a name="request-parameters"></a>A kérés paraméterei
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Typo**|**Kötelező**|**Leírás**|
 |---|---|---|---|
 |location|sztring|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|sztring|Igen|A fiók globálisan egyedi azonosító|

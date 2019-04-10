@@ -7,21 +7,21 @@ ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 955f13376ac899f66b0ec4e1ed99166164508fbe
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: c85b967615e866635cb4dd93be5ddeb78a8c7129
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449870"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357010"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>A felügyelt példány létrehozása az Azure SQL Database PowerShell-lel
 
-Ez a PowerShell-példaszkript egy Azure SQL Database felügyelt példány új virtuális hálózaton belüli kijelölt alhálózatot hoz létre. Konfigurál továbbá egy útválasztási táblázatot, és a egy hálózati biztonsági csoportot a virtuális hálózathoz. A szkript sikeres futtatása után a következő felügyelt példányt is elérhetők a virtuális hálózaton belül, vagy egy a helyszíni környezetből. A rövid útmutató bemutatja, hogyan ehhez, lásd: [konfigurálása Azure virtuális gépek csatlakozni egy Azure SQL Database felügyelt példányába](../sql-database-managed-instance-configure-vm.md) és [, egy Azure SQL Database felügyelt példánya a pont – hely kapcsolat konfigurálása a helyszíni](../sql-database-managed-instance-configure-p2s.md).
+Ez a PowerShell-példaszkript egy Azure SQL Database felügyelt példány új virtuális hálózaton belüli kijelölt alhálózatot hoz létre. Konfigurál továbbá egy útválasztási táblázatot, és a egy hálózati biztonsági csoportot a virtuális hálózathoz. A szkript sikeres futtatása után a következő felügyelt példányt is elérhetők a virtuális hálózaton belül, vagy egy a helyszíni környezetből. Lásd: [konfigurálása Azure virtuális gépek csatlakozni egy Azure SQL Database felügyelt példányába](../sql-database-managed-instance-configure-vm.md) és [pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányába való helyszíni](../sql-database-managed-instance-configure-p2s.md).
 
 > [!IMPORTANT]
 > További korlátozások: [támogatott régiók](../sql-database-managed-instance-resource-limits.md#supported-regions) és [támogatott típusú előfizetésessel](../sql-database-managed-instance-resource-limits.md#supported-subscription-types).
@@ -36,7 +36,7 @@ Ha helyi telepítése és használata a PowerShell, az oktatóanyaghoz AZ PowerS
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport és az összes ahhoz kapcsolódó erőforrás.
+A következő paranccsal távolítsa el az erőforráscsoportot és az ahhoz kapcsolódó összes erőforrás.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -48,7 +48,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. 
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja.
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Létrehoz egy virtuális hálózatot |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-AzVirtualNetworkSubnetConfig) | Hozzáad egy alhálózati konfigurációt a virtuális hálózathoz |
 | [Get-AzVirtualNetwork](/powershell/module/az.network/Get-AzVirtualNetwork) | Lekérdezi egy virtuális hálózat egy erőforráscsoportban |

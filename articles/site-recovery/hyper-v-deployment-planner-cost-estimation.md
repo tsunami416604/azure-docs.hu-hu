@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 03f71e4e10b65d9f295e13cdd8bc6881622c523d
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e98ec71f0c21fe640666b9d34e170678ec23c1ff
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320280"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359032"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése 
 
@@ -56,7 +56,7 @@ Az első szakaszban a teljes vészhelyreállítási költség látható összete
 
 **Hálózati**: ExpressRoute- és helyek közötti VPN költségei a Vészhelyreállítási igényekhez szükséges. 
 
-**ASR-licenc**: A Site Recovery-licenc költségei minden kompatibilis virtuális gépek. Ha manuálisan adta meg a virtuális gépet a részletes költségelemzési táblában, akkor a tábla a virtuális gép Site Recovery-licencköltségeit is tartalmazza.
+**Az Azure Site Recovery-licenc**: A Site Recovery-licenc költségei minden kompatibilis virtuális gépek. Ha manuálisan adta meg a virtuális gépet a részletes költségelemzési táblában, akkor a tábla a virtuális gép Site Recovery-licencköltségeit is tartalmazza.
 
 ### <a name="overall-dr-costs-by-states"></a>A vészhelyreállítás teljes költsége állapotonként
 A vészhelyreállítás (DR) teljes költségének kategóriái két különböző állapoton alapulnak – replikáció és a DR működése.
@@ -111,13 +111,13 @@ Virtuális gépek manuális hozzáadása:
 
     b. **IaaS-méret (felhasználó választása)**
 
-    c. **Tárolás típusa (Standard/Prémium)**
+    c. **Standard vagy prémium szintű tárolási típus**
 
     d. **Virtuális gép tárterületének teljes mérete (GB)**
 
     e. **DR működéseinek száma évente**
 
-    f. **DR egyes működéseinek időtartama (nap)**
+    f. **Minden egyes DR működések időtartama (nap)**
 
     g. **Operációs rendszer típusa**
 
@@ -157,7 +157,7 @@ Virtuális gépek manuális hozzáadása:
 
 **Teljes működéseinek költsége (átlag)**: A DR működése során a számítási és tárolási költségeit.
 
-**ASR-licencköltség**: A Site Recovery-licenc költsége.
+**Az Azure Site Recovery-licencköltségeit**: A Site Recovery-licenc költsége.
 
 ## <a name="supported-target-regions"></a>Támogatott célrégiók
 A Site Recovery Deployment Planner a következő Azure-régiókhoz biztosít költségbecslést. Ha a régiója nem található meg ebben a listában, a következő régiók közül használhatja azt, amelynek díjszabása a legközelebb áll az Ön régiójához:

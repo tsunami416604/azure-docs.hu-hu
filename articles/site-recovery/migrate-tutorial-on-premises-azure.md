@@ -5,58 +5,45 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 31d08c0dac63662568bf55a021e85ec414c61e52
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360367"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357980"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
-Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás helyszíni gépek és Azure-beli virtuális gépek vészhelyreállításának az üzleti folytonosság biztosítása és vészhelyreállítás (BCDR) céljából való kezelésére és vezénylésére használható, valamint a helyi gépek az Azure-ba történő áttelepítésének kezelésére.
+
+Ez a cikk ismerteti a helyszíni gépek áttelepítése az Azure-ba, használja a [Azure Site Recovery](site-recovery-overview.md). A Site Recovery általánosan, kezeléséhez és a helyszíni gépek és Azure virtuális gépek vészhelyreállításának szolgál. Azonban azt is használható az áttelepítéshez. Áttelepítési ugyanazokat a lépéseket használja, mint a vész-helyreállítási, egy kivétellel. Az áttelepítés az utolsó lépés gépek feladatátvétele a helyszíni helyről. Vész-helyreállítási eltérően nem visszaadja a feladatokat a helyszíni áttelepítési forgatókönyvekben.
 
 
-Az oktatóanyag bemutatja, hogyan migrálhatja a helyszíni virtuális gépeket és a fizikai kiszolgálókat az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag bemutatja, hogyan migrálhatja a helyszíni virtuális gépeket és a fizikai kiszolgálókat az Azure-ba. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Replikációs cél kiválasztása
-> * Forrás- és célkörnyezet beállítása
+> * Állítsa be a forrás és cél környezetet az áttelepítésre
 > * Replikációs szabályzat beállítása
 > * A replikáció engedélyezése
 > * A várnak megfelelő működés ellenőrzése egy áttelepítési teszt futtatásával
 > * Azure-ba irányuló egyszeri feladatátvételi teszt futtatása
 
-Ez az oktatóanyag egy sorozat harmadik része. Ez az oktatóanyag feltételezi, hogy elvégezte az előző oktatóanyagok feladatait:
-
-1. [Az Azure előkészítése](tutorial-prepare-azure.md)
-2. Helyszíni [VMware](vmware-azure-tutorial-prepare-on-premises.md)- vagy [Hyper-V](hyper-v-prepare-on-premises-tutorial.md)-kiszolgálók előkészítése.
-
-Mielőtt elkezdené, érdemes áttekinteni a [VMware](vmware-azure-architecture.md) vagy a [Hyper-V](hyper-v-azure-architecture.md) architektúrát az esetleges vészhelyreállítás megkönnyítése érdekében.
 
 > [!TIP]
-> Szeretne részt venni a áttelepítése VMware virtuális gépekhez az Azure-bA az új ügynök nélküli kivételfigyelés funkciót? [További](https://aka.ms/migrateVMs-signup).
-
-## <a name="prerequisites"></a>Előfeltételek
-
-A paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
+> Az Azure Migrate szolgáltatás most kipróbálhatják egy új, ügynök nélküli kivételfigyelés élményt áttelepítése VMware virtuális gépekhez az Azure-bA. [További](https://aka.ms/migrateVMs-signup).
 
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
+## <a name="before-you-start"></a>Előkészületek
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **Recovery Services** szolgáltatásba.
-2. Kattintson a **erőforrás létrehozása** > **kezelőeszközök** > **Backup és Site Recovery**.
-3. A **Név** mezőben adja meg a **ContosoVMVault** rövid nevet. Ha egynél több előfizetéssel rendelkezik, válassza ki ezek közül a megfelelőt.
-4. Hozzon létre egy **ContosoRG** nevű erőforráscsoportot.
-5. Válassza ki a kívánt Azure-régiót. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
-6. Ha gyors hozzáférést szeretne a tárolóhoz az irányítópultról, kattintson a **Rögzítés az irányítópulton**, majd a **Létrehozás** gombra.
+Vegye figyelembe, hogy a paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
 
-   ![Új tároló](./media/migrate-tutorial-on-premises-azure/onprem-to-azure-vault.png)
 
-Az új tároló megjelenik az **Irányítópult** **Minden erőforrás** részében, illetve a központi **Recovery Services-tárolók** oldalon.
+## <a name="prepare-azure-and-on-premises"></a>Az Azure és helyszíni előkészítése
+
+1. Az Azure előkészítése leírtak szerint [Ez a cikk](tutorial-prepare-azure.md). Bár ez a cikk ismerteti a vész-helyreállítási előkészítő lépések, a lépések is érvényesek az áttelepítéshez.
+2. Helyszíni [VMware](vmware-azure-tutorial-prepare-on-premises.md)- vagy [Hyper-V](hyper-v-prepare-on-premises-tutorial.md)-kiszolgálók előkészítése. Ha a fizikai gépek migráláshoz, nem kell előkészületeket végeznie. Csak ellenőrizze a [támogatási mátrix](vmware-physical-azure-support-matrix.md).
 
 
 ## <a name="select-a-replication-goal"></a>Replikációs cél kiválasztása
@@ -72,9 +59,11 @@ Válassza ki, hogy mit szeretne replikálni, és hová.
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
-- [Állítsa be](vmware-azure-tutorial.md#set-up-the-source-environment) a forráskörnyezetet a VMware virtuális gépekhez.
-- [Állítsa be](physical-azure-disaster-recovery.md#set-up-the-source-environment) a forráskörnyezetet a fizikai kiszolgálókhoz.
-- [Állítsa be](hyper-v-azure-tutorial.md#set-up-the-source-environment) a forráskörnyezetet a Hyper-V virtuális gépekhez.
+**Forgatókönyv** | **Részletek**
+--- | --- 
+VMware | Állítsa be a [forráskörnyezet](vmware-azure-set-up-source.md), és állítsa be a [konfigurációs kiszolgáló](vmware-azure-deploy-configuration-server.md).
+Fizikai gép | [Állítsa be a](physical-azure-set-up-source.md) a forrás-környezet és a konfigurációs kiszolgálón.
+Hyper-V | Állítsa be a [forráskörnyezet](hyper-v-azure-tutorial.md#set-up-the-source-environment)<br/><br/> Állítsa be a [forráskörnyezet](hyper-v-vmm-azure-tutorial.md#set-up-the-source-environment) a System Center VMM-mel telepített Hyper-V.
 
 ## <a name="set-up-the-target-environment"></a>A célkörnyezet beállítása
 
@@ -82,20 +71,26 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 
 1. Kattintson az **Infrastruktúra előkészítése** > **Cél** elemre, majd válassza ki a használni kívánt Azure-előfizetést.
 2. Adja meg a Resource Manager-alapú üzemi modell beállítást.
-3. A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-tárfiókkal és -hálózattal.
+3. A Site Recovery az Azure-erőforrások ellenőrzi.
+    - Ha VMware virtuális gépek vagy fizikai kiszolgálók migráláshoz, a Site Recovery, amelyben az Azure virtuális gépek kerülnek a feladatátvételt követően felálló Azure-hálózat rendelkezik ellenőrzi.
+    - Hyper-V virtuális gépek migráláshoz, ha a Site Recovery egy kompatibilis Azure storage-fiók és a hálózati ellenőrzi.
+4. Ha a System Center VMM által felügyelt Hyper-V virtuális gépek migráláshoz, állítsa be a [hálózatleképezés](hyper-v-vmm-azure-tutorial.md#configure-network-mapping).
 
 ## <a name="set-up-a-replication-policy"></a>Replikációs szabályzat beállítása
 
-- [Állítsa be a replikációs szabályzatot](vmware-azure-tutorial.md#create-a-replication-policy) a VMware virtuális gépek számára.
-- [Állítsa be a replikációs szabályzatot](physical-azure-disaster-recovery.md#create-a-replication-policy) a fizikai kiszolgálók számára.
-- [Állítsa be a replikációs szabályzatot](hyper-v-azure-tutorial.md#set-up-a-replication-policy) a Hyper-V virtuális gépek számára.
-
+**Forgatókönyv** | **Részletek**
+--- | --- 
+VMware | Állítsa be a [replikációs házirend](vmware-azure-set-up-replication.md) VMware virtuális gépekhez.
+Fizikai gép | Állítsa be a [replikációs házirend](physical-azure-disaster-recovery.md#create-a-replication-policy) fizikai gépek számára.
+Hyper-V | Állítsa be a [replikációs házirendhez](hyper-v-azure-tutorial.md#set-up-a-replication-policy)<br/><br/> Állítsa be a [replikációs házirend](hyper-v-vmm-azure-tutorial.md#set-up-a-replication-policy) a System Center VMM-mel telepített Hyper-V.
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
-- [Engedélyezze a replikációt](vmware-azure-tutorial.md#enable-replication) a VMware virtuális gépek számára.
-- [Engedélyezze a replikációt](physical-azure-disaster-recovery.md#enable-replication) a fizikai kiszolgálók számára.
-- Engedélyezze a Hyper-V virtuális gépek replikációját [VMM-mel](hyper-v-vmm-azure-tutorial.md#enable-replication) vagy [VMM nélkül](hyper-v-azure-tutorial.md#enable-replication).
+**Forgatókönyv** | **Részletek**
+--- | --- 
+VMware | [Engedélyezze a replikációt](vmware-azure-enable-replication.md) a VMware virtuális gépek számára.
+Fizikai gép | [Engedélyezze a replikációt](physical-azure-disaster-recovery.md#enable-replication) fizikai gépek számára.
+Hyper-V | [A replikáció engedélyezése](hyper-v-azure-tutorial.md#enable-replication)<br/><br/> [Engedélyezze a replikációt](hyper-v-vmm-azure-tutorial.md#enable-replication) a System Center VMM-mel telepített Hyper-V.
 
 
 ## <a name="run-a-test-migration"></a>Migrálási teszt futtatása
@@ -160,8 +155,13 @@ Egyes lépések automatikusan is végrehajthatók az áttelepítési folyamat r�
 - Frissítse minden belső dokumentációját az Azure virtuális gépek új helyével és IP-címével.
 
 
+
+
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban helyszíni virtuális gépeket migrált Azure-beli virtuális gépekbe. Most már készen áll az Azure virtuális gépek másodlagos régióba történő [vészhelyreállításának beállítására](azure-to-azure-replicate-after-migration.md).
+Ebben az oktatóanyagban helyszíni virtuális gépeket migrált Azure-beli virtuális gépekbe. Most
+
+> [!div class="nextstepaction"]
+> [Vészhelyreállítás beállítása](azure-to-azure-replicate-after-migration.md) egy másodlagos Azure-régióba az Azure-beli virtuális gépek.
 
   

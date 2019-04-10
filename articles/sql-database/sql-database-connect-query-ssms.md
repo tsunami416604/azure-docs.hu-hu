@@ -8,17 +8,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 2348b4293b8726c406b1f06b2f88c37dfb00e80c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447754"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359980"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: SQL Server Management Studio használatával csatlakozhat, és az Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -31,7 +31,7 @@ Ez a rövid útmutatóban használni kívánt [SQL Server Management Studio] [ s
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
   | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
-  || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurálás | [kiszolgálószintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolat egy virtuális gépről](sql-database-managed-instance-configure-vm.md)|
   |||[Helyszíni kapcsolat](sql-database-managed-instance-configure-p2s.md)
@@ -44,7 +44,7 @@ Ez a rövid útmutatóban használni kívánt [SQL Server Management Studio] [ s
 
 ## <a name="install-the-latest-ssms"></a>Az SSMS legújabb verziójának telepítése
 
-Mielőtt elkezdené, győződjön meg arról, hogy telepítette a legújabb [SSMS][ssms-install-latest-84g]. 
+Mielőtt elkezdené, győződjön meg arról, hogy telepítette a legújabb [SSMS][ssms-install-latest-84g].
 
 ## <a name="get-sql-server-connection-information"></a>Az SQL server-kapcsolati adatok lekéréséhez
 
@@ -58,7 +58,7 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
 
 ## <a name="connect-to-your-database"></a>Csatlakozás az adatbázishoz
 
-Az SMSS csatlakozzon az Azure SQL Database-kiszolgálóhoz. 
+Az SMSS csatlakozzon az Azure SQL Database-kiszolgálóhoz.
 
 > [!IMPORTANT]
 > Egy Azure SQL Database server a 1433-as portot figyeli. A céges tűzfal mögül egy SQL Database-kiszolgálóhoz csatlakozni, a tűzfal nyissa meg ezt a portot kell rendelkeznie.
@@ -68,11 +68,11 @@ Az SMSS csatlakozzon az Azure SQL Database-kiszolgálóhoz.
 
 2. Adja meg a következő információkat:
 
-   | Beállítás      | Ajánlott érték    | Leírás | 
-   | ------------ | ------------------ | ----------- | 
+   | Beállítás      | Ajánlott érték    | Leírás |
+   | ------------ | ------------------ | ----------- |
    | **Kiszolgáló típusa** | Adatbázismotor | Az érték megadása kötelező. |
    | **Kiszolgálónév** | A teljes kiszolgálónév | Hasonló: **mynewserver20170313.database.windows.net**. |
-   | **Hitelesítés** | SQL Server-hitelesítés | Ez az oktatóanyag az SQL-hitelesítést használ. |
+   | **Authentication** | SQL Server-hitelesítés | Ez az oktatóanyag az SQL-hitelesítést használ. |
    | **Bejelentkezés** | Kiszolgálói rendszergazdai fiók felhasználói azonosító | A felhasználói Azonosítót a a kiszolgáló létrehozásához használt kiszolgálói rendszergazdai fiókkal. |
    | **Jelszó** | Kiszolgálói rendszergazdai fiók jelszava | A kiszolgáló létrehozásához használt, a kiszolgálói rendszergazdai fiók jelszavát. |
    ||||
@@ -83,7 +83,7 @@ Az SMSS csatlakozzon az Azure SQL Database-kiszolgálóhoz.
 
    ![csatlakozás kiszolgálón található adatbázishoz](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. Kattintson a **Csatlakozás** gombra. Az Object Explorer ablak nyílik meg. 
+4. Kattintson a **Csatlakozás** gombra. Az Object Explorer ablak nyílik meg.
 
 5. Az adatbázis-objektumok megtekintéséhez bontsa ki a **adatbázisok** majd **mySampleDatabase**.
 
@@ -140,15 +140,14 @@ Futtassa a következő parancsot [BESZÚRÁSA](https://msdn.microsoft.com/librar
 1. Ehhez cserélje le az előző lekérdezést.
 
    ```sql
-   SELECT * FROM [SalesLT].[Product] 
-   WHERE Name='myNewProduct' 
+   SELECT * FROM [SalesLT].[Product]
+   WHERE Name='myNewProduct'
    ```
-   
-2. Válassza a **Végrehajtás** lehetőséget. Az alábbi eredmény jelenik meg. 
+
+2. Válassza a **Végrehajtás** lehetőséget. Az alábbi eredmény jelenik meg.
 
    ![Eredmény](./media/sql-database-connect-query-ssms/result.png)
 
- 
 ## <a name="update-data"></a>Adatok frissítése
 
 Futtassa a következő parancsot [frissítés](https://msdn.microsoft.com/library/ms177523.aspx) módosíthatja az új termék Transact-SQL-kódot.
@@ -188,8 +187,6 @@ Futtassa a következő parancsot [törlése](https://msdn.microsoft.com/library/
 - A Python használatával történő csatlakozásról és lekérdezésről lásd a [Python használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-python.md) szóló témakört.
 - A Ruby használatával történő csatlakozásról és lekérdezésről lásd a [Ruby használatával végzett csatlakozásról és lekérdezésről](sql-database-connect-query-ruby.md) szóló témakört.
 
-
 <!-- Article link references. -->
 
 [ssms-install-latest-84g]: https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms
-

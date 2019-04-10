@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: geetha
-ms.openlocfilehash: 99117c96f79dd7d0da388a0e793908f6ffb8ed27
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 893a22fb9f325625707869c8f6571d572b8f6b33
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266443"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358230"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Biztonsági mentése és visszaállítása titkosított Azure virtuális Gépen
 
@@ -31,7 +31,7 @@ Az Azure Backup támogatja az operációs rendszer/adatlemezek titkosítja az Az
 Azure biztonsági mentés készíthető, illetve Azure virtuális gépek ADE használatával és anélkül az Azure AD-alkalmazás visszaállítása, az alábbi táblázat foglalja össze.
 
 **Virtuális gép lemeztípusa** | **ADE (BEK/dm-crypt)** | **ADE és kek-KEL**
---- | --- | --- 
+--- | --- | ---
 **Nem felügyelt** | Igen | Igen
 **Managed**  | Igen | Igen
 
@@ -95,14 +95,14 @@ Ezenkívül van néhány dolgot, amely a bizonyos körülmények között szüks
 8. Azure Key Vault használatakor a tároló oldalon megjelenik egy üzenet, hogy az Azure Backup kell a kulcsok és titkos kulcsok a Key vaultban a csak olvasási hozzáférést.
 
     - Ha ezt az üzenetet kap, akkor semmit nem kell.
-    
+
         ![Hozzáférés OK](./media/backup-azure-vms-encryption/access-ok.png)
-        
+
     - Ha ez az üzenet-engedélyek beállítására leírtaknak megfelelően kell a [kövesse az alábbi eljárást](#provide-permissions).
-    
+
         ![Hozzáférés figyelmeztetés](./media/backup-azure-vms-encryption/access-warning.png)
 
-9. Kattintson a **biztonsági mentés engedélyezése** a biztonsági mentési házirend a tároló üzembe helyezését és a kiválasztott virtuális gépek biztonsági mentésének engedélyezése. 
+9. Kattintson a **biztonsági mentés engedélyezése** a biztonsági mentési házirend a tároló üzembe helyezését és a kiválasztott virtuális gépek biztonsági mentésének engedélyezése.
 
 
 ## <a name="trigger-a-backup-job"></a>Biztonsági mentési feladat aktiválása
@@ -129,18 +129,18 @@ Engedélyek beállításához:
 1. Az Azure Portalon válassza ki a **minden szolgáltatás**, és keressen rá a **tárolók kulcs**.
 2. Válassza ki a titkosított virtuális gép biztonsági mentését végzi a társított kulcstartót.
 3. Válassza ki **hozzáférési házirendek** > **új hozzáadása**.
-4. Válassza ki **válassza egyszerű**, majd írja be **Backup felügyeleti**. 
+4. Válassza ki **válassza egyszerű**, majd írja be **Backup felügyeleti**.
 5. Válassza ki **biztonsági felügyeleti szolgáltatás** > **kiválasztása**.
 
     ![A biztonsági mentési szolgáltatás kiválasztása](./media/backup-azure-vms-encryption/select-backup-service.png)
 
 6. A **hozzáférési szabályzat hozzáadása** > **konfigurálása (nem kötelező) sablonból**válassza **Azure Backup**.
     - A szükséges engedélyek vannak előre kitöltött a **Kulcsengedélyek** és **titkos kód engedélyei**.
-    - Ha a virtuális gép titkosítása **rendelkeznek BEk-KEL csak**, távolítsa el az adatgyűjtésre vonatkozó felhasználói **Kulcsengedélyek** óta csak engedélyek szükségesek a titkos kulcsok. 
+    - Ha a virtuális gép titkosítása **rendelkeznek BEk-KEL csak**, távolítsa el az adatgyűjtésre vonatkozó felhasználói **Kulcsengedélyek** óta csak engedélyek szükségesek a titkos kulcsok.
 
     ![Az Azure biztonsági mentés kiválasztása](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-6. Kattintson az **OK** gombra. **Biztonsági mentés a felügyeleti szolgáltatás** adnak hozzá **hozzáférési házirendek**. 
+6. Kattintson az **OK** gombra. **Biztonsági mentés a felügyeleti szolgáltatás** adnak hozzá **hozzáférési házirendek**.
 
     ![Hozzáférési szabályzatok](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
@@ -159,6 +159,5 @@ A következő visszaállítása titkosított virtuális gépek:
 
 Ha problémákat tapasztal, tekintse át a következőket:
 
-- [Gyakori hibák](backup-azure-vms-troubleshoot.md#troubleshoot-backup-of-encrypted-vms) amikor biztonsági mentése és visszaállítása titkosított Azure virtuális gépek.
-- [Általános](backup-azure-vms-troubleshoot.md) kiállított Azure virtuális Gépen.
+- [Gyakori hibák](backup-azure-vms-troubleshoot.md) amikor biztonsági mentése és visszaállítása titkosított Azure virtuális gépek.
 - [Az Azure Virtuálisgép-ügynök, illetve biztonsági mentési bővítményt](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) problémákat.

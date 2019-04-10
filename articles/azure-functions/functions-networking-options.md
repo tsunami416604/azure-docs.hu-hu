@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 1/14/2019
 ms.author: alkarche
-ms.openlocfilehash: 8bbc44e7af68f005f30fff143741bc4bfe0adcf2
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 10d7daa6da45c56e20c622fcbca9ee288e737dab
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896457"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358154"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózati beállításai
 
@@ -43,7 +43,8 @@ Függvényalkalmazások számos különböző módon lehet üzemeltetni.
 
 Az IP-korlátozások lehetővé teszik a rendezett lista engedélyezni vagy letiltani az IP-címek, amelyek jogosultak hozzáférni az alkalmazáshoz prioritást határozza meg. Az engedélyezési listán lehetnek IPv4 és IPv6 típusú címek. Ha egy vagy több bejegyzés, nincs, akkor egy implicit összes elutasítása, hogy a lista végén létezik. Az IP-korlátozások funkció minden, a üzemeltetési lehetőségeinek funkció működik.
 
-> ! [FONTOS] Az, hogy az Azure portal szerkesztővel, a portálon közvetlenül elérni a futó függvényalkalmazást képesnek kell lennie, és az Ön által használt eszköz hozzáférhet a portálhoz rendelkeznie kell az IP-engedélyezési listán. A korlátozásait a hálózati helyen, továbbra is hozzáférhet a szolgáltatásokat a a **platformfunkciók** fülre.
+> [!NOTE]
+> Az, hogy az Azure portal szerkesztővel, a portálon közvetlenül elérni a futó függvényalkalmazást képesnek kell lennie, és az Ön által használt eszköz hozzáférhet a portálhoz rendelkeznie kell az IP-engedélyezési listán. A korlátozásait a hálózati helyen, továbbra is hozzáférhet a szolgáltatásokat a a **platformfunkciók** fülre.
 
 [További információk itt](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
 

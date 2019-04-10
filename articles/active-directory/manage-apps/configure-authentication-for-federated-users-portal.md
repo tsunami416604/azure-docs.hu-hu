@@ -1,6 +1,6 @@
 ---
 title: Jelentkezzen be az automatikus-gyorsítás egy alkalmazáshoz egy Kezdőtartomány-felderítés csoportházirend használatával konfigurálja |} A Microsoft Docs
-description: Ismerteti az Azure AD-bérlő fogalmát, és kezelése az Azure, Azure Active Directoryn keresztül.
+description: Ismerje meg az Azure Active Directory-hitelesítést az összevont felhasználók, beleértve az automatikus és a tartomány mutatók Kezdőtartomány-felderítés szabályzat konfigurálása.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -11,19 +11,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2018
+ms.date: 04/08/2019
 ms.author: celested
+ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333258ef9696e6dbe4aab5b10e815bb84428d425
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d82ccf7c2983051597ff634117be81311c4c78a9
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190262"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360932"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Azure Active Directory-bejelentkezés konfigurálása az alkalmazás viselkedésében egy Kezdőtartomány-felderítés házirend segítségével
 
-A következő dokumentum bevezetést nyújt az Azure Active Directory hitelesítési viselkedést az összevont felhasználók konfigurálását.   Ez fedezi a konfiguráció automatikus és a hitelesítési korlátozások az összevont tartományokban lévő felhasználók számára.
+Ez a cikk mutatja be az Azure Active Directory hitelesítési viselkedést az összevont felhasználók konfigurálását. Ez fedezi a konfiguráció automatikus és a hitelesítési korlátozások az összevont tartományokban lévő felhasználók számára.
 
 ## <a name="home-realm-discovery"></a>Kezdőtartomány felderítése
 Otthoni Kezdőtartomány felderítése (HRD) a rendszer, amely lehetővé teszi, hogy az Azure Active Directory (Azure AD) határozza meg, ahol a felhasználó hitelesítenie kell a bejelentkezési időpontban.  Amikor egy felhasználó bejelentkezik az Azure AD-bérlő erőforrások eléréséhez, vagy az Azure AD közös bejelentkezési oldalát, akkor írja be a felhasználónevet (UPN). Az Azure AD használatával, amely Fedezze fel, ahol a felhasználónak kell bejelentkezni. 

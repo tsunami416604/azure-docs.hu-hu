@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 4e79e0a7d05ef70ae9f7ab2cbb2238c42b2a654b
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: aa1858a27d4df413deb562391251a523c28673ad
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847568"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359162"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Az Azure-beli általánosított virtuális gép felügyelt rendszerképének létrehozása
 
@@ -88,7 +88,7 @@ A Windows virtuális gép általánosításához, kövesse az alábbi lépéseke
 
 Lemezkép létrehozása a virtuális gépről közvetlenül biztosítja, hogy a rendszerkép tartalmazza a virtuális Géphez, többek között az operációsrendszer-lemez és bármely adatlemez társított lemezeket. Ez a példa bemutatja, hogyan hozhat létre egy felügyelt rendszerképet, hogy a használt felügyelt lemezek virtuális gépből.
 
-Mielőtt elkezdené, győződjön meg arról, hogy az Azure PowerShell-modul legújabb verzióját. A verzió megkereséséhez futtassa `Get-Module -ListAvailable Az` a PowerShellben. Ha frissíteni szeretne, olvassa el [Azure PowerShell telepítése a Windows a Powershellgettel](/powershell/azure/azurerm/install-az-ps). Ha Ön helyileg futtatja a Powershellt, futtassa `Connect-AzAccount` kapcsolat létrehozása az Azure-ral.
+Mielőtt elkezdené, győződjön meg arról, hogy az Azure PowerShell-modul legújabb verzióját. A verzió megkereséséhez futtassa `Get-Module -ListAvailable Az` a PowerShellben. Ha frissíteni szeretne, olvassa el [Azure PowerShell telepítése a Windows a Powershellgettel](/powershell/azure/install-az-ps). Ha Ön helyileg futtatja a Powershellt, futtassa `Connect-AzAccount` kapcsolat létrehozása az Azure-ral.
 
 
 > [!NOTE]

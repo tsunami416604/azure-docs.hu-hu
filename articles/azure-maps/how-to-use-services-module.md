@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: e614758a91cb3ff02822eeeeb8ae7e80d2123e5d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 3aa39568904cb0acc9b5b76ff7e07729bf99d6b1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578730"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278598"
 ---
 # <a name="using-the-azure-maps-services-module"></a>Az Azure Maps Services modullal
 
@@ -27,7 +27,7 @@ Az Azure Maps Web SDK biztosít egy services modult, amely egy segédkódtárba 
     a. Globálisan üzemeltetett CDN verzióját használja, az Azure Maps services modul egy szkriptreferenciájának hozzáadásával a <head> elem a fájl:
     
     ```html
-    <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
     ```
     
     b. Azt is megteheti, betöltése az Azure Maps Web SDK forráskódját használatával helyben a [azure-térképek – rest](https://www.npmjs.com/package/azure-maps-rest) NPM csomag, és tárolja azt az alkalmazást. Ez a csomag is TypeScript definíciókat tartalmazza.
@@ -189,4 +189,4 @@ Tekintse meg a szolgáltatások a modul további Kódminták az alábbi cikkeket
 > [Koordináta információinak lekérése](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [Útvonal megjelenítése a-b](./map-route.md)
+> [Útvonal megjelenítése A-ból B-be](./map-route.md)

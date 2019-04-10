@@ -10,18 +10,18 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: c37e41bce481fff5e172687907cce527c10ae006
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 3faa3b0a5cd919752f8b7e4969e3affd668c8077
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225008"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360769"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Hurkok, ismételje meg a munkafolyamat-műveletek, vagy az Azure Logic Appsben tömbök feldolgozni létrehozása
 
 A logikai alkalmazás a tömb feldolgozásához, létrehozhat egy ["Foreach" ciklus](#foreach-loop). Ez a ciklus egy vagy több műveletet a a tömb mindegyik elemén ismétlődik. Korlátok, amely a "Foreach" hurkokat tömbelemek száma képes feldolgozni, lásd: [korlátozások és konfiguráció](../logic-apps/logic-apps-limits-and-config.md). 
 
-Ismételje meg a műveletek, amíg egy feltétel teljesül beolvasása, vagy egy állapota megváltozik, létrehozhat egy ["Until" ciklus](#until-loop). A logikai alkalmazás a hurok belüli összes műveletet fut, és ellenőrzi a feltétel, vagy az állapota. Ha a feltétel teljesül, a hurok leáll. Ellenkező esetben a hurok ismétlődik. A logikai alkalmazás futtatását, a hurkokat lásd az "Until" vonatkozó korlátok [korlátozások és konfiguráció](../logic-apps/logic-apps-limits-and-config.md). 
+Ismételje meg a műveletek, amíg egy feltétel teljesül beolvasása, vagy egy állapota megváltozik, létrehozhat egy ["Until" ciklus](#until-loop). A logikai alkalmazás első a hurok belüli összes műveletet fut, és ellenőrzi a feltétel, vagy az állapota. Ha a feltétel teljesül, a hurok leáll. Ellenkező esetben a hurok ismétlődik. A logikai alkalmazás futtatását, a hurkokat lásd az "Until" vonatkozó korlátok [korlátozások és konfiguráció](../logic-apps/logic-apps-limits-and-config.md). 
 
 > [!TIP]
 > Ha rendelkezik egy eseményindítót, amely egy tömböt kap, és szeretne futtatni egy munkafolyamatot a tömb mindegyik elemén, *debatch* a tömböt a [ **SplitOn** tulajdonság-trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
@@ -154,7 +154,9 @@ Ha dolgozik a logikai alkalmazás JSON-definícióját, akkor használhatja a `S
 
 ## <a name="until-loop"></a>"Until" ciklus
   
-Ismétlődő műveletek, amíg egy feltétel teljesül beolvasása, vagy egy állapota megváltozik, helyezze el egy "Csak" hurkot ezeket a műveleteket. Az alábbiakban néhány gyakori forgatókönyvet, ahol használhatja egy "Csak" hurok:
+Futtatásához, és ismételje meg a műveleteket, amíg egy feltétel teljesül beolvasása, vagy egy állapota megváltozik, helyezze el egy "Csak" hurkot ezeket a műveleteket. A logikai alkalmazás első a hurok található minden műveletek fut, és ellenőrzi a feltétel, vagy az állapota. Ha a feltétel teljesül, a hurok leáll. Ellenkező esetben a hurok ismétlődik.
+
+Az alábbiakban néhány gyakori forgatókönyvet, ahol használhatja egy "Csak" hurok:
 
 * A végpont hívja, amíg a kívánt választ kap.
 
@@ -179,7 +181,7 @@ Ismétlődő műveletek, amíg egy feltétel teljesül beolvasása, vagy egy ál
    | -------- | ----- |
    | **Intervallum** | 1 | 
    | **Gyakoriság** | Nap |
-   | **Ezekben az órákban** | 8 |
+   | **Órák** | 8 |
    ||| 
 
 1. Az eseményindító területén válassza a **új lépés**. 
@@ -194,7 +196,7 @@ Ismétlődő műveletek, amíg egy feltétel teljesül beolvasása, vagy egy ál
    | Tulajdonság | Érték | Leírás |
    | -------- | ----- | ----------- |
    | **Name (Név)** | Korlát | A változó neve | 
-   | **Típus** | Egész szám | A változó adattípusa | 
+   | **Typo** | Egész szám | A változó adattípusa | 
    | **Érték** | 0 | A változó értéke a indítása | 
    |||| 
 
@@ -234,7 +236,7 @@ Ismétlődő műveletek, amíg egy feltétel teljesül beolvasása, vagy egy ál
 
       | Tulajdonság | Érték | Leírás |
       | -------- | ----- | ----------- | 
-      | **Címzett** | *<email-address\@domain>* | a címzett e-mail címét. Tesztelésre a saját e-mail cím használható. | 
+      | **Művelet** | *<email-address\@domain>* | a címzett e-mail címét. Tesztelésre a saját e-mail cím használható. | 
       | **Tárgy** | Jelenlegi "Limit" értéke **korlát** | Adja meg az e-mail tárgyát. Ebben a példában győződjön meg arról, hogy tartalmazzák a **korlát** változó. | 
       | **Törzs** | <*email-content*> | Adja meg az e-mail üzenet tartalma is szeretne küldeni. Ebben a példában adja meg bármilyen kívánt szöveg. | 
       |||| 
@@ -251,7 +253,7 @@ Egy "Csak" hurkot rendelkezik alapértelmezett korlátai, állítsa le a végreh
 
 | Tulajdonság | Alapértelmezett érték | Leírás | 
 | -------- | ------------- | ----------- | 
-| **Száma** | 60 | Hurkok, amely előtt a hurok kilépjen számát vesszük figyelembe. Az alapértelmezett érték 60 ciklusokat. | 
+| **Darabszám** | 60 | Hurkok, amely előtt a hurok kilépjen számát vesszük figyelembe. Az alapértelmezett érték 60 ciklusokat. | 
 | **Időtúllépés** | PT1H | A legtöbb mennyi ideig való futtatása előtt a hurok hurkot kilép. Az alapértelmezett érték egy óra és az ISO 8601 formátumban van megadva. <p>Az időtúllépés értéke abban az esetben minden ciklus ciklus. A hurok bármely művelet, mint a megadott időkorláton hosszabb időt vesz igénybe, állítsa le az aktuális ciklus nem. A következő ciklusig az újbóli azonban csak nem indul el, mert a korlát feltétel nem teljesül. | 
 |||| 
 

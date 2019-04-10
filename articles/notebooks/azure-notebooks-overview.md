@@ -6,25 +6,25 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 9cea5a8e-c52d-4bdc-9e4a-cecdc1ad02c1
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 04/05/2019
 ms.author: kraigb
-ms.openlocfilehash: 9916b75a15098acbafc1cb1f6d44d948cf6de851
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4840a9839fe1f2a31470d4a67b3755b82077fd90
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777719"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280111"
 ---
 # <a name="overview-of-azure-notebooks"></a>Az Azure notebookok áttekintése
 
 Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. [Jupyter](https://jupyter.org/) (korábbi nevén IPython-) egy nyílt forráskódú projekt, amely lehetővé teszi egyszerű egyesítése Markdown szöveget, végrehajtható kódok, állandó adatait, képeket és a Vizualizációk egyetlen, a megosztható vászonra, akkor a *notebook* (képe ajánlatának jupyter.org):
 
-[![Példák a Jupyter notebookok](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Ea Jupyter notebookok xamples](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 A kód, a grafikus és magyarázó szöveg hatékony kombinációja, miatt Jupyter számos célra, beleértve a data science utasítás, adatok tisztítása és átalakítása, numerikus szimuláció, statisztikai modellezési és fejlesztését a legnépszerűbb vált Machine learning-modellek.
 
@@ -58,6 +58,8 @@ Röviden az Azure-jegyzetfüzetek segítségével munkája hatékonyabbá és í
 Azure notebookok egy ingyenes szolgáltatás, de minden projekt korlátozódik, 4GB memória, és 1 GB-os adatok visszaélések megelőzése érdekében. Ezeket a korlátokat keretet túllépő legitim felhasználók továbbra is fut a notebookok a Captcha kihívást lásd:.
 
 Minden korlátokat feloldásához jelentkezzen be Azure-jegyzetfüzetek egy olyan fiókkal, az Azure Active Directoryval (például egy vállalati fiók). Ha a fiókhoz társított Azure-előfizetés, csatlakozhat bármely Azure adatelemzési virtuális gép példányok adott előfizetésen belül. További információkért lásd: [kezelése és konfigurálása a projektek - számítási kapacitás](configure-manage-azure-notebooks-projects.md#compute-tier).
+
+Notebook kiszolgálók garantáltan legfeljebb 8 órán át létezik. A legtöbb esetben a tároló nem ez a korlátozás vonatkozik, és továbbra is ezen időpont utáni fut, de hosszú élettartamú munkamenetek előfordulhat, hogy időnként le kell állítani a rendszer stabilitását.
 
 ## <a name="available-kernels-and-environments"></a>Notebookokhoz elérhető kernelek és környezetek
 
@@ -99,22 +101,22 @@ Vitatni a kérdéseket Azure jegyzetfüzetekkel kapcsolatos, jelentse be a probl
 
 - Gyorsútmutatók:
 
-  - [Hozzon létre és osszon meg a notebook](quickstart-create-share-jupyter-notebook.md)
-  - [A notebook klónozása](quickstart-clone-jupyter-notebook.md)
-  - [Helyi Jupyter notebook áttelepítése](quickstart-migrate-local-jupyter-notebook.md)
-  - [Egy egyéni környezet használata](quickstart-create-jupyter-notebook-project-environment.md)
-  - [Jelentkezzen be, és állítsa be a felhasználói azonosító](quickstart-sign-in-azure-notebooks.md)
+  - [Notebook létrehozása és megosztása](quickstart-create-share-jupyter-notebook.md)
+  - [Notebook klónozása](quickstart-clone-jupyter-notebook.md)
+  - [Helyi Jupyter notebook migrálása](quickstart-migrate-local-jupyter-notebook.md)
+  - [Egyéni környezet használata](quickstart-create-jupyter-notebook-project-environment.md)
+  - [Bejelentkezés és felhasználói azonosító beállítása](quickstart-sign-in-azure-notebooks.md)
 
 - Oktatóanyagok:
 
-  - [Hozzon létre és -jegyzetfüzet futtatása](tutorial-create-run-jupyter-notebook.md  )
+  - [Notebook létrehozása és futtatása](tutorial-create-run-jupyter-notebook.md  )
 
 - Útmutatók:
   
-  - [Hozzon létre, és klónozza a projektek](create-clone-jupyter-notebooks.md)
+  - [Projektek létrehozása és klónozása](create-clone-jupyter-notebooks.md)
   - [Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
   - [Egy jegyzetfüzetet a csomagok telepítése](install-packages-jupyter-notebook.md)
-  - [Diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)
+  - [Diavetítés bemutatása](present-jupyter-notebooks-slideshow.md)
   - [Adatfájlok használata](work-with-project-data-files.md)
-  - [Adatok erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
+  - [Adatforrások elérése](access-data-resources-jupyter-notebooks.md)
   - [Az Azure Machine Learning-szolgáltatások használata](use-machine-learning-services-jupyter-notebooks.md)

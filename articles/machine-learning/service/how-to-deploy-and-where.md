@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1528b5e92e1952bf85799afd71bd5dac16aedcf4
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a6ef53d56fa293791658b37b16cbaff94aee6ef3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878298"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280893"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -87,6 +87,8 @@ További információkért lásd: a dokumentáció a a [Model class](https://doc
 
 A **Azure-Tárolópéldányon**, **Azure Kubernetes Service**, és **Azure IoT Edge** telepítések esetén a [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) osztály egy rendszerkép-konfiguráció létrehozására szolgál. A rendszerkép-konfiguráció szolgál majd hozzon létre egy új Docker-rendszerképet.
 
+A rendszerkép-konfiguráció létrehozásakor használhat egy __alapértelmezett lemezkép__ az Azure Machine Learning szolgáltatás által biztosított vagy egy __egyéni rendszerkép__ egészíti ki.
+
 A következő kód bemutatja, hogyan hozhat létre egy új rendszerkép-konfiguráció:
 
 ```python
@@ -112,6 +114,36 @@ Ebben a példában a következő táblázat ismerteti a fontos paramétereket:
 Egy példa egy rendszerkép-konfiguráció létrehozása: [üzembe helyezése egy kép osztályozó](tutorial-deploy-models-with-aml.md).
 
 További információkért lásd: a dokumentáció a [ContainerImage osztályban](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)
+
+### <a id="customimage"></a> Egyéni rendszerkép használata
+
+Egyéni rendszerkép használatával, ha a kép a következő követelményeknek kell megfelelnie:
+
+* Ubuntu 16.04 vagy nagyobb.
+* Conda 4.5. # vagy nagyobb.
+* Python 3.5-ös verzióját. # vagy 3.6. #.
+
+Egyéni rendszerkép használatához állítsa a `base_image` tulajdonság a lemezkép konfigurációját, hogy a cím a kép. Az alábbi példa bemutatja, hogyan mindkét egy nyilvános és privát Azure Container Registry rendszerkép használatához:
+
+```python
+# use an image available in public Container Registry without authentication
+image_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+
+# or, use an image available in a private Container Registry
+image_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
+image_config.base_image_registry.address = "myregistry.azurecr.io"
+image_config.base_image_registry.username = "username"
+image_config.base_image_registry.password = "password"
+```
+
+A képeket tölt fel egy Azure Container Registry további információkért lásd: [az első rendszerkép leküldése egy privát Docker-tárolójegyzék](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli).
+
+Ha a modell tanítása az Azure Machine Learning COMPUTE számítási, a __1.0.22 verzió vagy annál nagyobb__ , az Azure Machine Learning SDK-lemezkép létrehozása betanítás során. A következő példa bemutatja, hogyan használhatja ezt a képet:
+
+```python
+# Use an image built during training with SDK 1.0.22 or greater
+image_config.base_image = run.properties["AzureML.DerivedImageName"]
+```
 
 ### <a id="script"></a> A parancsfájl végrehajtása
 
@@ -396,7 +428,7 @@ A Project Brainwave használatával üzembe helyezéséhez, olvassa az [üzembe 
 
 ## <a name="define-schema"></a>Séma megadása
 
-Egyéni decorator használható [OpenAPI](https://swagger.io/docs/specification/about/) specifikáció. generációs és a bemeneti írja be a fájlkezelési a webszolgáltatás üzembe helyezésekor. Az a `score.py` fájlt, a bemeneti és/vagy a konstruktorban kimeneti mintát biztosít egy meghatározott típusú objektum, és amelyet a típusa és a minta automatikus létrehozása a sémát. Jelenleg a következő típusok támogatottak:
+Egyéni decorator használható [OpenAPI](https://swagger.io/docs/specification/about/) specifikáció. generációs és a bemeneti írja be a fájlkezelési a webszolgáltatás üzembe helyezésekor. Az a `score.py` fájlt, a bemeneti és/vagy a konstruktorban kimeneti mintát biztosít egy meghatározott típusú objektum, és a típus és a minta segítségével automatikusan létre kell hozni a sémát. Jelenleg a következő típusok támogatottak:
 
 * `pandas`
 * `numpy`

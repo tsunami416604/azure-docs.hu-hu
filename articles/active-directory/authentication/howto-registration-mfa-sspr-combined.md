@@ -1,5 +1,5 @@
 ---
-title: Egyesített regisztrációs Ismerkedés az Azure AD SSPR és a többtényezős hitelesítés (előzetes verzió) – az Azure Active Directory
+title: Egyesített regisztrációs Ismerkedés az Azure AD SSPR és a multi-factor Authentication (előzetes verzió) – az Azure Active Directory
 description: Enable kombinált Azure AD multi-factor Authentication és az önkiszolgáló jelszó-átállítási regisztrációk (előzetes verzió)
 services: active-directory
 ms.service: active-directory
@@ -11,41 +11,41 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d7f9623a7594aaa79c4cff187486360b1befc8
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 3baf2690ae07b87bb4d5dba30fcd20f62a1a4506
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369020"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280570"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Kombinált engedélyezése biztonsági információk regisztrációs (előzetes verzió)
 
-Mielőtt engedélyezné az új felhasználói felületre, tekintse át a [biztonsági információk regisztrációs (előzetes verzió) együttes](concept-registration-mfa-sspr-combined.md) hogy biztosan megismerje a működését, és ez a funkció a hatását.
+Mielőtt engedélyezné az új felhasználói felületre, tekintse át a [biztonsági információk regisztrációs (előzetes verzió) együttes](concept-registration-mfa-sspr-combined.md) hogy biztosan megismerje a működését és a funkció hatásait.
 
 ![Egyesített biztonsági információk fokozott alkalmazásregisztrációs folyamatot](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
 
 |     |
 | --- |
-| Egyesített biztonsági információkat regisztráció Azure multi-factor Authentication és az Azure AD önkiszolgáló jelszó-visszaállítás az Azure Active Directory nyilvános előzetes verziójú funkció. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Egyesített biztonsági információk regisztráció az Azure multi-factor Authentication és az Azure Active Directory (Azure AD) önkiszolgáló jelszóátállítás az nyilvános előzetes verziójú funkció az Azure AD. Az előzetes verziókra vonatkozó további információért lásd: [Kiegészítő Használati Feltételek a Microsoft Azure Előzetesekhez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 ## <a name="enable-combined-registration"></a>A kombinált regisztráció engedélyezése
 
-A következő lépéseket kombinált regisztrációs engedélyezése:
+Hajtsa végre ezeket a lépéseket, kombinált regisztrációs engedélyezése:
 
 1. Jelentkezzen be az Azure portal felhasználói rendszergazdája vagy globális rendszergazdaként.
-2. Keresse meg a **Azure Active Directory** > **felhasználói beállítások** > **kezelheti a hozzáférési panel előzetes verziójú funkciók beállításait**.
+2. Lépjen a **Azure Active Directory** > **felhasználói beállítások** > **kezelheti a hozzáférési panel előzetes verziójú funkciók beállításait**.
 3. Alatt **felhasználók előzetes verziójú funkciók regisztrálásához és a biztonsági adatok kezelése – a frissítés**, beállítással engedélyezi egy **kijelölt** csoport, felhasználók vagy a **összes** felhasználók.
 
-![A kombinált biztonsági adatok előzetes felület az összes felhasználó engedélyezése](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+   ![A kombinált biztonsági adatok előzetes felület az összes felhasználó engedélyezése](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
 
 > [!IMPORTANT]
-> A telefonhívási beállítások verzióját 2019. március kezdve nem lesz elérhető ingyenes vagy próbaverziója az Azure AD-bérlők MFA és az SSPR felhasználók számára. SMS-ezni, ez a változás nem érinti. Telefonhívás továbbra is elérhető a felhasználók számára a fizetős Azure AD-bérlőt. Ez a változás csak az Azure AD ingyenes vagy próbaverziója bérlők hatással van.
+> A március a 2019-től kezdődően a telefonhívási beállítások nem lesznek elérhetők a multi-factor Authentication és az ingyenes vagy próbaverziója az Azure AD-bérlő felhasználóinak az SSPR. Ez a változás nem érinti az SMS-üzenetek. A telefonhívási beállítások továbbra is elérhető lesz a felhasználók számára a fizetős Azure AD-bérlőt.
 
 > [!NOTE]
-> Miután engedélyezi kombinált regisztrációs felhasználók, akik regisztrálása vagy megerősítése a telefonszám vagy mobilalkalmazás segítségével az új funkció a segítségükkel az MFA és az SSPR, ha azokat a módszereket engedélyezve vannak a többtényezős hitelesítés és az SSPR-házirendek. Ezután tiltsa le a felhasználói élményt, ha felhasználók, akik nyissa meg az előző SSPR regisztrációs oldalon található `https:/aka.ms/ssprsetup` multi-factor authentication végrehajtása a lap eléréséhez szükséges.
+> Miután engedélyezte a kombinált regisztrációs, felhasználók, akik regisztrálni, illetve erősítse meg a telefonszámát vagy mobilalkalmazás segítségével az új funkció a segítségükkel a multi-factor Authentication és az SSPR, ha azokat a módszereket engedélyezve vannak a multi-factor Authentication és az SSPR házirendek. Ezután tiltsa le a felhasználói élményt, ha felhasználók, akik nyissa meg az előző SSPR regisztrációs oldalon található `https:/aka.ms/ssprsetup` multi-factor authentication végrehajtása a lap eléréséhez szükséges.
 
-Ha konfigurálta a zónákhoz való társításának listája a hely a következő helyek ugyanabban a zónában kell lennie az Internet Explorer:
+Ha konfigurálta a zónákhoz való társításának listája a hely az Internet Explorer, a következő helyek kell lennie az ugyanabban a zónában:
 
 * [https://login.microsoftonline.com](https://login.microsoftonline.com)
 * [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
@@ -53,10 +53,10 @@ Ha konfigurálta a zónákhoz való társításának listája a hely a következ
 
 ## <a name="next-steps"></a>További lépések
 
-[A többtényezős hitelesítés és az SSPR elérhető módszerek](concept-authentication-methods.md)
+[A multi-factor Authentication és az SSPR elérhető módszerek](concept-authentication-methods.md)
 
 [Új jelszó önkiszolgáló kérésének konfigurálása](howto-sspr-deployment.md)
 
-[Az Azure multi-factor Authentication konfigurálása](howto-mfa-getstarted.md)
+[Az Azure Multi-Factor Authentication konfigurálása](howto-mfa-getstarted.md)
 
 [Hibaelhárítási kombinált biztonsági adatok regisztrálása](howto-registration-mfa-sspr-combined-troubleshoot.md)

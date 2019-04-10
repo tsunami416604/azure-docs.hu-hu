@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: f4da0a4672bc50688d0a25bbd2db1f3be984ee8b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 58e360bb355c7faf9608b00dd65b14f27aca4367
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821388"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358042"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Vészhelyreállítás beállítása az Active Directory és DNS
 
@@ -106,7 +106,7 @@ Feladatátvételi teszt után, a tartományvezérlők ne tartalmazza a tesztelé
 Windows Server 2012 verziótól [szabályozzuk Active Directory Domain Services (AD DS) beépített](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Ezen védelmi funkciók segítségével a virtualizált tartományvezérlők USN visszagörgetése elleni védelmére, ha az alapul szolgáló hipervizorkonzol támogatja **virtuális gép Generációazonosítóját**. Az Azure támogatja a **virtuális gép Generációazonosítóját**. Emiatt a tartományvezérlők, melyeken a Windows Server 2012 vagy később az Azure virtual machines ezek szabályozzuk rendelkezik.
 
 
-Amikor **virtuális gép Generációazonosítóját** alaphelyzetbe áll, a **InvocationID** az AD DS-adatbázis értékét is alaphelyzetbe áll. Emellett a rendszer elveti a RID-verem, és a SYSVOL nem mérvadó van megjelölve. További információkért lásd: [az Active Directory Domain Services virtualizálásába bevezető](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) és [DFSR biztonságos virtualizálása](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
+Amikor **virtuális gép Generációazonosítóját** alaphelyzetbe áll, a **InvocationID** az AD DS-adatbázis értékét is alaphelyzetbe áll. Emellett a rendszer elveti a RID-verem, és a sysvol mappa van megjelölve, a nem mérvadó. További információkért lásd: [az Active Directory Domain Services virtualizálásába bevezető](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) és [DFSR biztonságos virtualizálása](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
 
 Előfordulhat, hogy az Azure-ba irányuló feladatátvétel **virtuális gép Generációazonosítóját** alaphelyzetbe állítása. Alaphelyzetbe állítás **virtuális gép Generációazonosítóját** szabályozzuk aktivál, ha a tartomány tartományvezérlő virtuális gép elindul az Azure-ban. Emiatt előfordulhat, hogy egy *jelentős késleltetés* képes arra, hogy jelentkezzen be a tartomány tartományvezérlő virtuális gép található.
 
@@ -128,11 +128,11 @@ A virtualizációvédelmi aktivált tesztelési feladatátvétel után, ha egy v
 
     ![Meghívási azonosító módosítását](./media/site-recovery-active-directory/Event1109.png)
 
-* SYSVOL és NETLOGON-megosztások nem érhetők el.
+* SYSVOL mappa- és NETLOGON megosztások nem érhetők el.
 
-    ![SYSVOL-megosztás](./media/site-recovery-active-directory/sysvolshare.png)
+    ![SYSVOL-megosztás mappa](./media/site-recovery-active-directory/sysvolshare.png)
 
-    ![NtFrs SYSVOL](./media/site-recovery-active-directory/Event13565.png)
+    ![NtFrs sysvol mappa](./media/site-recovery-active-directory/Event13565.png)
 
 * Elosztott fájlrendszer-replikációs adatbázisokat is törli.
 
@@ -146,7 +146,7 @@ A virtualizációvédelmi aktivált tesztelési feladatátvétel után, ha egy v
 >
 >
 
-1. Parancsot a parancssorba a következő parancs futtatásával ellenőrizze e SYSVOL és NETLOGON mappák meg vannak osztva:
+1. A parancssorban a következő parancs futtatásával ellenőrizze e sysvol és NETLOGON-mappa megosztott:
 
     `NET SHARE`
 
@@ -166,7 +166,7 @@ Ha az előző feltételek teljesülnek, akkor valószínű, hogy a tartományvez
     * Bár nem javasoljuk, hogy [fájlreplikációs](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), ha fájlreplikációs, kövesse a lépéseket a mérvadó visszaállítást. Az eljárást a [fájlreplikációs szolgáltatás újrainicializálása a BurFlags beállításkulcs használatával](https://support.microsoft.com/kb/290762).
 
         BurFlags kapcsolatos további információkért lásd a következő blogbejegyzésben: [D2 és D4: Mi az a? ](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
-    * Ha az elosztott fájlrendszer-replikációs replikációt használ, a lépéseket a mérvadó visszaállítást. Az eljárást a [egy mérvadó és nem mérvadó szinkronizálást kényszerítheti az elosztott fájlrendszer replikációs szolgáltatása által replikált SYSVOL (például "D4/D2" beállításaihoz az FRS)](https://support.microsoft.com/kb/2218556).
+    * Ha az elosztott fájlrendszer-replikációs replikációt használ, a lépéseket a mérvadó visszaállítást. Az eljárást a [egy (például "D4/D2" beállításaihoz az FRS) elosztott fájlrendszer replikációs szolgáltatása által replikált sysvol mappa mérvadó és nem mérvadó szinkronizálásának kényszerítése](https://support.microsoft.com/kb/2218556).
 
         A PowerShell-funkciók is használható. További információkért lásd: [DFSR-SYSVOL mappa mérvadó és nem mérvadó visszaállítást PowerShell funkciók](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
 

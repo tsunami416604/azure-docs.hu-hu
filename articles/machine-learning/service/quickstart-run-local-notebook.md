@@ -10,27 +10,22 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bb601ac5c1ed8e9ca6d2027fe1b774a938e1f0a
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: ade0444110dbb23e762a869dc79805872c0f0bf0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58362410"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281131"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: A saját notebook server használata az Azure Machine Learning használatának első lépései
 
-Ez a cikk a saját notebook server futtatásához használt kódot, amely be van jelentkezve a [Azure Machine Learning szolgáltatás munkaterület](concept-azure-machine-learning-architecture.md). A munkaterület az eligazodást blokk, amellyel kísérletezhet, betanítását és a Machine Learning gépi tanulási modellek üzembe helyezése a felhőben.
+Futtassa a kódot, amely bejelentkezik az értékeket a saját notebook server segítségével a [Azure Machine Learning szolgáltatás munkaterület](concept-azure-machine-learning-architecture.md). A munkaterület az eligazodást blokk, amellyel kísérletezhet, betanítását és a Machine Learning gépi tanulási modellek üzembe helyezése a felhőben.
 
-Ez a rövid útmutató a saját Python-környezetet és a Jupyter Notebook Server használ. Ehhez a rövid útmutatóhoz a telepítés nélkül, tekintse meg a [a rövid útmutató: Ismerkedés az Azure Machine Learning felhőalapú notebook server használatával](quickstart-run-cloud-notebook.md) 
+Ez a rövid útmutató a saját Python-környezetet és a Jupyter Notebook Server használ. Ehhez a rövid útmutatóhoz az SDK-telepítés nélkül, tekintse meg a [a rövid útmutató: Ismerkedés az Azure Machine Learning felhőalapú notebook server használatával](quickstart-run-cloud-notebook.md) 
 
 Ebben a rövid videó verziójának megtekintése:
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
-
-Ebben a rövid útmutatóban a következőket hajtja végre:
-
-* Kódot ír a munkaterületen belüli értékek naplózásához.
-* A naplózott értékek megtekintése a munkaterületen.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
@@ -61,7 +56,7 @@ A futtatás végeztével áttekintheti a próbafuttatást az Azure Portalon. Egy
 print(run.get_portal_url())
 ```
 
-A hivatkozás segítségével a böngészőjében megtekintheti a naplózott értékeket a Microsoft Azure Portalon.
+Ezt a kódot adja vissza egy hivatkozást a naplózott értékeinek megtekintése a böngészőben az Azure Portal használatával.
 
 ![Az Azure Portalon naplózott értékek](./media/quickstart-run-local-notebook/logged-values.png)
 

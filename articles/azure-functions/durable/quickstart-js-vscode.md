@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 94906a75d323e3fb6c96f939e4fdcea60877508c
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: eade9f4e2a956a6542b69e93b0102169ddd32ccf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056299"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281233"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>A JavaScript tartós függvény létrehozása
 
@@ -127,11 +127,11 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 
 5. Hasonló eszköz használatával [Postman](https://www.getpostman.com/) vagy [cURL](https://curl.haxx.se/), egy HTTP POST kérést küldhet az URL-végpontot.
 
-    A válasz, a HTTP-függvény, arról a tartós vezénylési kezdeti eredmény sikeresen elindult.  Ez még nem áll a vezénylési végeredményét.  A válasz néhány hasznos URL-címeket tartalmazza.  Most tegyük a vezénylési állapotának lekérdezése.
+   A válasz, a HTTP-függvény, arról a tartós vezénylési kezdeti eredmény sikeresen elindult. Ez még nem áll a vezénylési végeredményét. A válasz néhány hasznos URL-címeket tartalmazza. Most tegyük a vezénylési állapotának lekérdezése.
 
-6. Másolja az URL-cím értéke `statusQueryGetUri`, illessze be a böngésző címsorában, és hajtsa végre a kérést.
+6. Másolja az URL-cím értéke `statusQueryGetUri` , és illessze be a böngésző címsorában, és hajtsa végre a kérést. Másik megoldásként is folytathatja a GET kérés kiadása a Postman használatával.
 
-    A kérelem lekérdezi az orchestration-példány állapota. Az alábbihoz hasonló végleges választ kell kapnia.  Ez megmutatja a példány befejeződött, és tartalmazza a kimenetek vagy a tartós függvény eredményét.
+   A kérelem lekérdezi az orchestration-példány állapota. Végleges választ, amely megmutatja a példány befejeződött, és tartalmazza a kimenetek vagy a tartós függvény eredményét szerezheti be. Hasonlóan néz ki: 
 
     ```json
     {

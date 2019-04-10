@@ -1,23 +1,29 @@
 ---
-title: Azure portal – Azure Search használatával indexelést és lekérdezést a rövid útmutató
-description: Ismerje meg, hogyan hozhat létre, és az első beépített mintaadatok és az adatok importálása varázsló használata az Azure Portalon az Azure Search-index lekérdezése.
+title: 'Gyors útmutató: Hozzon létre, betöltését és az Azure portal – Azure Search-index lekérdezése'
+description: Hozhat létre, és az első beépített mintaadatok és az adatok importálása varázsló használata az Azure Portalon az Azure Search-index lekérdezése.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 85fc8a42f5220aa8f05495aa260d05ce009884f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58137827"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282661"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Gyors útmutató: Az Azure Search-importálási, az indexelés és a lekérdezések beépített portal-eszközök használata
+> [!div class="op_single_selector"]
+> * [Portál](search-get-started-portal.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Postman](search-fiddler.md)
+> * [C#](search-create-index-dotnet.md)
+>*
 
 Egy gyors felkészülési Azure Search-fogalmakról próbálja meg a beépített eszközök az Azure Portalon. Varázslók és a szerkesztők nem kínál a .NET és REST API-k teljes paritás, de Ön is gyorsan használatba a kódmentes bevezető érdekes-lekérdezéseket futtassanak a mintaadatok írása percen belül.
 
@@ -222,7 +228,7 @@ A találatok kiemelése a kulcsszóval megegyező szöveg formázását jelenti,
 
 ### <a name="fuzzy-search"></a> Az intelligens keresés kipróbálása
 
-Alapértelmezés szerint a helytelenül leírt szavak (például a Seattle környékén található Sammamish-fennsíkra a *samamish* sztring használata) nem adnak vissza találatokat az átlagos keresések során. A következő példa nem ad vissza eredményt.
+Alapértelmezés szerint hibás lekérdezési kifejezéseket, például *samamish* a Seattle környékén található Sammamish plafont, az nem adnak vissza egyezések átlagos keresések. A következő példa nem ad vissza eredményt.
 
 #### <a name="example-misspelled-term-unhandled-searchsamamish"></a>Példa (elírt kifejezés, nem kezelve): `search=samamish`
 

@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: fb8c94b1-6d0a-4b77-8d14-ae6efcdd99f4
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 4c933145c54c47b5af083edd593ecb66b089f9c9
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f3effc900b79ddb7beac6a3aaf2eee0a264f7b4d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769148"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280859"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>Gyors útmutató: Bejelentkezés és felhasználói azonosító beállítása
 
@@ -64,4 +64,4 @@ Jelentkezzen ki, válassza ki, az oldal jobb felső sarokban a felhasználónev�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Hozzon létre és osszon meg a notebook](quickstart-create-share-jupyter-notebook.md)
+> [Gyors útmutató: Notebook létrehozása és megosztása](quickstart-create-share-jupyter-notebook.md)

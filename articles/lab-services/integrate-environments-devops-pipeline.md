@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 24391e9e8541f12c434ade837b8f4944711ae375
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58887205"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357403"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Környezetek integrálása az Azure DevOps CI/CD-folyamatok
 Használhatja az Azure DevTest Labs-feladatok-bővítmény, amely könnyen integrálható a folyamatos integrációs (CI) települ az Azure DevOps-szolgáltatásokkal (korábbi nevén Visual Studio Team Services) / folyamatos készregyártás (CD) build kibocsátási folyamat az Azure-ral DevTest Labs szolgáltatásban. Ezek a bővítmények könnyebb gyorsan üzembe helyezhet egy [környezet](devtest-lab-test-env.md) egy adott feladat tesztelése, és törölje a vizsgálat befejezésekor. 
@@ -56,7 +56,7 @@ A következő szintre a központi telepítést, ha a környezet a fejlesztési �
 
 1. Válassza ki a kiadási definíció **tevékenységek hozzáadása a**.
 2. Az a **feladatok** lapon maradva adja hozzá az Azure DevTest Labs környezet létrehozása feladat. A feladat a következőképpen konfigurálja:
-    1. A **Azure RM-előfizetés**, válassza ki a kapcsolat a **elérhető Azure-szolgáltatás kapcsolatok** listában, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](/devops/pipelines/library/service-endpoints).
+    1. A **Azure RM-előfizetés**, válassza ki a kapcsolat a **elérhető Azure-szolgáltatás kapcsolatok** listában, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](/azure/devops/pipelines/library/service-endpoints).
 2. A **labor nevét**, válassza ki a nevét, a korábban létrehozott példány *.
 3. A **adattár neve**, válassza ki a tárházba, ahol a Resource Manager-sablon (201) lett leküldve *.
 4. A **sablonnevet**, válassza ki a környezetet, a forrás kód tárház * mentett nevét. 
@@ -71,7 +71,7 @@ Az utolsó fáziséit, hogy az Azure DevTest Labs-példány az a környezet tör
 Válassza ki a kiadási definíció **tevékenységek hozzáadása a**, majd a a **telepítés** lapon maradva adja hozzá egy **Azure DevTest Labs törlése környezet** feladat. Ez a következőképpen konfigurálja:
 
 1. Törölje a virtuális Gépet, tekintse meg [Azure DevTest Labs-feladatok](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks):
-    1. A **Azure RM-előfizetés**, válassza ki a kapcsolat a **elérhető Azure-szolgáltatás kapcsolatok** listában, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](/devops/pipelines/library/service-endpoints).
+    1. A **Azure RM-előfizetés**, válassza ki a kapcsolat a **elérhető Azure-szolgáltatás kapcsolatok** listában, vagy hozzon létre több korlátozott engedélyek kapcsolat az Azure-előfizetéshez. További információkért lásd: [Azure Resource Manager-szolgáltatásvégpont](/azure/devops/pipelines/library/service-endpoints).
     2. A **labor nevét**, válassza ki a tesztkörnyezetben, ahol a környezet létezik.
     3. A **környezetnevet**, el kell távolítani a környezet nevét adja meg.
 2. Adja meg a kiadási definíció nevét, és mentse azt.
@@ -80,5 +80,5 @@ Válassza ki a kiadási definíció **tevékenységek hozzáadása a**, majd a a
 Lásd az alábbi cikkeket: 
 - [Több virtuális gépes környezet létrehozása a Resource Manager-sablonok](devtest-lab-create-environment-from-arm.md).
 - A DevTest Labs automation rövid útmutató Resource Manager-sablonokkal a [DevTest Labs GitHub-adattár](https://github.com/Azure/azure-quickstart-templates).
-- [VSTS-hibaelhárítás lap](/devops/pipelines/troubleshooting)
+- [VSTS-hibaelhárítás lap](/azure/devops/pipelines/troubleshooting)
 

@@ -9,17 +9,17 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: f08b22f24dfde41646f56dc1ecd9777f267620ee
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 801294241f399097d363dd8dc2682f158c0bf2cc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651312"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358281"
 ---
-# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra 
+# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra
 
 Ez a cikk bemutatja egy Azure SQL Database felügyelt példány a kommunikáció. Kapcsolati architektúra, és hogyan az összetevők irányítani a forgalmat a következő felügyelt példányt is ismerteti.  
 
@@ -117,7 +117,6 @@ A virtuális hálózaton belüli kijelölt alhálózatot a felügyelt példány 
 
 > [!IMPORTANT]
 > Bár a szükséges bejövő biztonsági szabályok érkező adatforgalom engedélyezéséhez _bármely_ portokon forrás 9000, 9003, 1438, 1440 és 1452, ezeket a portokat a beépített tűzfal védi. További információkért lásd: [határozza meg a felügyeleti végpont címe](sql-database-managed-instance-find-management-endpoint-ip-address.md).
-
 > [!NOTE]
 > Tranzakciós replikáció használata a felügyelt példány, és minden olyan példány adatbázis közzétevő vagy forgalmazó használ, nyissa meg az alhálózat biztonsági szabályok a 445-ös (TCP, kimenő) porton. Ez a port lehetővé teszi a hozzáférést az Azure-fájlmegosztást.
 

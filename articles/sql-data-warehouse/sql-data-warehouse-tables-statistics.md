@@ -9,55 +9,65 @@ ms.topic: conceptual
 ms.subservice: implement
 ms.date: 05/09/2018
 ms.author: kevin
-ms.reviewer: igorstan
-ms.openlocfilehash: c11cdd6d1cc24d639d837993e94f3b304228634a
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.reviewer: jrasnick
+ms.custom: seoapril2019
+ms.openlocfilehash: 62007624bdf2b5f1b9c387bcc51d58c020860913
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299554"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279771"
 ---
-# <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Frissíti a statisztikákat a táblák az Azure SQL Data Warehouse létrehozása
+# <a name="table-statistics-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse Táblastatisztika
+
 Javaslatok és példák a lekérdezés-optimalizálási statisztikák azokon a táblákon, az Azure SQL Data Warehouse létrehozása és frissítése.
 
-## <a name="why-use-statistics"></a>Statisztika miért érdemes használni?
-Annál jobban ismeri az Azure SQL Data Warehouse az adatokat, annál gyorsabban hajtsa végre a lekérdezéseket, szemben. Statisztikák gyűjtése az adatokon, és ezután betöltése az SQL Data Warehouse-bA az egyik a legfontosabb műveletet is végezhet a lekérdezések optimalizálásához. Ez azért, mert az SQL Data Warehouse lekérdezésoptimalizáló egy költségalapú optimalizáló. Összehasonlítja különböző lekérdezéstervek költségeit, majd kiválasztja a legalacsonyabb költségű tervet, amely általában a leggyorsabban végrehajtható is egyben. Például az optimalizáló becslése, hogy a dátum, a lekérdezés szűrést végez egy sort ad vissza, ha azt is választhatja, egy másik csomagot, ha azt a választott dátum becslések, amelyek 1 millió sort adja vissza.
+## <a name="why-use-statistics"></a>Miért érdemes használni a statisztikák
 
-## <a name="automatic-creation-of-statistics"></a>A statisztikák automatikus létrehozását
-Az automatikus létrehozásakor statisztikakapcsoló a AUTO_CREATE_STATISTICS, az SQL Data Warehouse elemzi a bejövő, ahol egyoszlopos statisztikát jönnek létre oszlopok hiányoznak a statisztika, amely a felhasználói lekérdezések. A lekérdezésoptimalizáló statisztikát hoz létre egyéni oszlopokat a lekérdezés predikátumon vagy illesztési feltétel a lekérdezésterv Számosság becslései javítása érdekében. A statisztikák automatikus létrehozását jelenleg úgy van kapcsolva, alapértelmezés szerint.
+Annál jobban ismeri az Azure SQL Data Warehouse az adatokat, annál gyorsabban hajtsa végre a lekérdezéseket, szemben. Adatok betöltése az SQL Data Warehouse-ba, után statisztikák gyűjtése az adatokon az egyik a legfontosabb műveletet is végezhet a lekérdezések optimalizálásához. Az SQL Data Warehouse lekérdezésoptimalizálója egy költségalapú optimalizáló. Összehasonlítja a különböző lekérdezési tervek költségét, és úgy dönt, a terv a legalacsonyabb költséget. A legtöbb esetben azt a csomagot, amely végrehajtja a leggyorsabb választja ki. Például az optimalizáló becslése, hogy a dátum, a lekérdezés szűrése egy sort adja vissza. Ha ez egy csomag kiválasztása lesz. Ez becslése, hogy a választott dátum 1 millió sort adja vissza, ha egy másik sémát ad vissza.
 
-Ha az adattárház rendelkezik, ez nincs konfigurálva a következő parancs futtatásával ellenőrizheti:
+## <a name="automatic-creation-of-statistic"></a>Statisztika automatikus létrehozása
+
+Az adatbázis AUTO_CREATE_STATISTICS lehetőség az, ha az SQL Data Warehouse elemzi a hiányzó statisztika bejövő felhasználói lekérdezések. Ha statisztika hiányzik, a lekérdezésoptimalizáló statisztikát hoz létre egyéni oszlopokat a lekérdezés predikátumon vagy illesztési feltétel a lekérdezésterv Számosság becslései javítása érdekében. A statisztikák automatikus létrehozását jelenleg úgy van kapcsolva, alapértelmezés szerint.
+
+Ellenőrizheti, hogy rendelkezik-e az adatraktár AUTO_CREATE_STATISTICS konfigurálva a következő parancs futtatásával:
 
 ```sql
-SELECT name, is_auto_create_stats_on 
+SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
-Ha az adattárház nincs konfigurálva AUTO_CREATE_STATISTICS, javasoljuk, hogy a tulajdonság engedélyezésével a következő parancs futtatásával:
+
+Ha az adattárház nincs konfigurálva AUTO_CREATE_STATISTICS, ajánlott engedélyezi ezt a tulajdonságot a következő parancs futtatásával:
 
 ```sql
-ALTER DATABASE <yourdatawarehousename> 
+ALTER DATABASE <yourdatawarehousename>
 SET AUTO_CREATE_STATISTICS ON
 ```
-A következő utasításokat aktiválják a statisztikák automatikus létrehozását: Válassza ki, INSERT-válassza ki, a CTAS, frissítési, törlési és magyarázat amikor illesztést tartalmazó vagy egy predikátum jelenlétét észleli. 
+
+Ezek az utasítások aktiválják a statisztikák automatikus létrehozását:
+
+- SELECT
+- INSERT-SELECT
+- CTAS
+- UPDATE
+- DELETE
+- Amikor illesztést tartalmazó ISMERTETIK, vagy egy predikátum jelenlétét észleli
 
 > [!NOTE]
 > Ideiglenes vagy külső táblákon nem jönnek létre a statisztikák automatikus létrehozását.
-> 
 
-A statisztikák automatikus létrehozását akkor jön létre szinkron módon történik, így egy kismértékű csökkenését lekérdezési teljesítmény is felszámítunk, ha az oszlopok még nem rendelkezik statisztikai jönnek létre számukra. Statisztikák létrehozása eltarthat néhány másodpercig egyetlen oszlop a tábla méretétől függően. Teljesítménycsökkenés, különösen a teljesítménytesztek teljesítmény, a mérés elkerülése érdekében győződjön meg stats hozták létre, először a javasolt számítási feladatok végrehajtása előtt a rendszer a profilkészítés.
+A statisztikák automatikus létrehozását szinkron módon történik, így is felszámítunk némileg csökkentett teljesítményű lekérdezési teljesítmény, ha az oszlopok hiányoznak a statisztikákat. Egyetlen oszlop statisztikai adatokat hozhat létre az idő attól függ, hogy a tábla méretét. Mérhető teljesítmény romlását, különösen a teljesítmény a teljesítménytesztek, elkerülése érdekében győződjön meg stats hozták létre, először a javasolt számítási feladatok végrehajtása előtt a rendszer a profilkészítés.
 
 > [!NOTE]
-> A statisztikák létrehozása is naplózza a rendszer [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) egy másik felhasználói környezetben.
-> 
+> A statisztikák létrehozása kerülnek naplózásra [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) egy másik felhasználói környezetben.
 
-Az automatikus statisztikákat hoz létre, amikor azok az űrlap végzi el: _WA_Sys_< oszlop azonosító 8 számjegyből álló hexadecimális érték > _ < 8 számjegy táblaazonosító hexadecimális >. Megtekintheti a már futó által létrehozott adatok a [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) parancsot:
+Az automatikus statisztikákat hoz létre, amikor azok az űrlap végzi el: _WA_Sys_< oszlop azonosító 8 számjegyből álló hexadecimális érték > _ < 8 számjegy táblaazonosító hexadecimális >. Statisztikák már létrehozott futtatásával megtekintheti a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) parancsot:
 
 ```sql
-DBCC SHOW_STATISTICS (<tablename>, <targetname>)
+DBCC SHOW_STATISTICS (<table_name>, <target>)
 ```
-Az első argumentum értéke táblát, amely tartalmazza a statisztikai adatok megjelenítéséhez. Ez a külső tábla nem lehet. A második argumentum értéke a célindex, statisztika vagy a statisztikai adatok megjelenítéséhez használandó oszlop neve.
 
-
+A táblanév az a név a tábla, amely tartalmazza a statisztikai adatok megjelenítéséhez. Ez a külső tábla nem lehet. A cél pedig a célindex, statisztika vagy a statisztikai adatok megjelenítéséhez használandó oszlop neve.
 
 ## <a name="updating-statistics"></a>Statisztika frissítése
 
@@ -67,19 +77,17 @@ Frissítse a statisztikai adatokat ajánlások a következők:
 
 |||
 |-|-|
-| **Statisztikák frissítések gyakorisága**  | Konzervatív: Napi <br></br> Miután betöltése vagy az adatok átalakítása |
-| **Mintavételezés** |  Kevesebb mint 1 milliárd sorral, használja az alapértelmezett mintavételi (20 %-os) <br></br> A több mint 1 milliárd sorral 2: %-os különféle statisztikai jó |
+| **Statisztikák frissítések gyakorisága**  | Konzervatív: Napi </br> Miután betöltése vagy az adatok átalakítása |
+| **Mintavételezés** |  Kevesebb mint 1 milliárd sorral, használja az alapértelmezett mintavételi (20 %-os). </br> Több mint 1 milliárd sorral mintavételi két %-os használata. |
 
 Az első kérdéseket tehet fel, ha a lekérdezés még hibaelhárítási egyik, **"Naprakészek a statisztikák?"**
 
 Ez a kérdés nem szerepel, amely által az adatok korát választ. Előfordulhat, hogy egy naprakész statisztika objektum régi, ha ott nem módosult jelentős a mögöttes adatok. Amikor a sorok számát jelentősen megváltozott, vagy az értékek az oszlopban, a elosztása jelentős változás *majd* ideje a statisztikák frissítése.
 
-Mivel nincs dinamikus felügyeleti nézet határozza meg, ha a táblán belül adatok változtak-e, a legutóbbi alkalommal statisztika frissítése, a statisztikákat korát, hogy adja meg a része a képen látható.  A következő lekérdezés segítségével határozza meg az utolsó időpont, a statisztika frissítésének minden táblában.  
+Nincs nem dinamikus felügyeleti nézet meghatározni, ha a táblán belül az adatok a legutóbbi alkalommal statisztika frissítése óta megváltozott-e. Statisztika korát, hogy adja meg a kép része. A következő lekérdezés segítségével határozza meg az utolsó időpont, a statisztika frissítésének minden táblában.
 
 > [!NOTE]
-> Ne feledje, hogy ha egy oszlop értékeit a elosztása jelentős változás, frissítenie kell statisztika frissítve, legutóbb függetlenül.  
-> 
-> 
+> Egy oszlop értékeit a elosztása jelentős változás történik, ha frissítenie kell a statisztikákat, függetlenül azok frissült utoljára.
 
 ```sql
 SELECT
@@ -92,27 +100,28 @@ FROM
     sys.objects ob
     JOIN sys.stats st
         ON  ob.[object_id] = st.[object_id]
-    JOIN sys.stats_columns sc    
+    JOIN sys.stats_columns sc
         ON  st.[stats_id] = sc.[stats_id]
         AND st.[object_id] = sc.[object_id]
-    JOIN sys.columns co    
+    JOIN sys.columns co
         ON  sc.[column_id] = co.[column_id]
         AND sc.[object_id] = co.[object_id]
-    JOIN sys.types  ty    
+    JOIN sys.types  ty
         ON  co.[user_type_id] = ty.[user_type_id]
-    JOIN sys.tables tb    
+    JOIN sys.tables tb
         ON  co.[object_id] = tb.[object_id]
-    JOIN sys.schemas sm    
+    JOIN sys.schemas sm
         ON  tb.[schema_id] = sm.[schema_id]
 WHERE
     st.[user_created] = 1;
 ```
 
-**A dátum oszlop** az adatraktárban, például általában igényelnek gyakori statisztikai adatok frissítése. Minden alkalommal új sorok betöltődnek az adattárházba, új terhelés dátumok vagy a tranzakció dátumok kerülnek. Ezek módosítása az adatok terjesztési, és győződjön meg arról, a statisztikai adatok elavultak.  Ezzel szemben az ügyfél tábla nemek oszlop statisztikai előfordulhat, hogy soha nem kell frissíteni kell. Feltéve, hogy a terjesztés az ügyfelek közötti állandó, új sort ad hozzá a tábla változat nem fogja módosítani az adatok terjesztési. Azonban ha az adattárház csak egy nemek és a egy új követelményt eredményeket több nemek tartalmazza, majd frissíteni szeretné a nemek oszlop statisztikai értéket is.
+**A dátum oszlop** az adatraktárban, például általában igényelnek gyakori statisztikai adatok frissítése. Minden alkalommal új sorok betöltődnek az adattárházba, új terhelés dátumok vagy a tranzakció dátumok kerülnek. Ezek módosítása az adatok terjesztési, és győződjön meg arról, a statisztikai adatok elavultak. Ezzel szemben az ügyfél tábla nemek oszlop statisztikai előfordulhat, hogy soha nem kell frissíteni kell. Feltéve, hogy a terjesztés az ügyfelek közötti állandó, új sort ad hozzá a tábla változat nem fogja módosítani az adatok terjesztési. Azonban ha az adattárház csak egy nemek és a egy új követelményt eredményeket több nemek tartalmazza, majd frissíteni szeretné a nemek oszlop statisztikai értéket is.
 
 További információkért lásd: általános útmutatást [statisztika](/sql/relational-databases/statistics/statistics).
 
 ## <a name="implementing-statistics-management"></a>Végrehajtási statisztika kezelése
+
 Gyakran egy célszerű bővítése az Adatbetöltési folyamat győződjön meg arról, hogy a betöltés végén frissíti statisztikáit. Az adatok betöltése után a táblák leggyakrabban módosíthatja a méretét és/vagy az értékek azok elosztásának. Ezért ez a logikai hely egyes felügyeleti folyamatok megvalósításához.
 
 A statisztikák frissítése a betöltési folyamat során a következő alapelvek áll rendelkezésre:
@@ -126,9 +135,11 @@ A statisztikák frissítése a betöltési folyamat során a következő alapelv
 További információkért lásd: [Számosságbecslés](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
 ## <a name="examples-create-statistics"></a>Példák: Statisztika létrehozása
+
 Ezek a példák bemutatják, hogyan statisztikák létrehozása a különböző beállítások használata. A beállítások, használja az egyes oszlopok adatait, és hogyan oszlop lesz használható a lekérdezésekben jellemzői függ.
 
 ### <a name="create-single-column-statistics-with-default-options"></a>Hozzon létre egyoszlopos statisztikát alapértelmezett beállításokkal
+
 Statisztikák készítése az oszlop, egyszerűen adjon meg a statisztikák objektum nevét, és az oszlop neve.
 
 Ez a szintaxis összes alapértelmezett beállítást használja. Alapértelmezés szerint az SQL Data Warehouse minták szerint **20 %-os** statisztikát hoz létre, ha a tábla.
@@ -144,6 +155,7 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 ```
 
 ### <a name="create-single-column-statistics-by-examining-every-row"></a>Minden sor megvizsgálásával egyoszlopos statisztikát létrehozása
+
 Az alapértelmezett mintavételi ráta 20 %-os kedvezménnyel is megfelel a legtöbb esetben. A mintavételi ráta azonban módosíthatja.
 
 A teljes tábla mintát, használja ezt a szintaxist:
@@ -159,6 +171,7 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
 ```
 
 ### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>A mintanagyság megadásával egyoszlopos statisztikát létrehozása
+
 Azt is megteheti adhatja meg a minta mérete százalékban:
 
 ```sql
@@ -166,6 +179,7 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 ```
 
 ### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>A sor csak egy egyoszlopos statisztikát létrehozása
+
 A tábla a sorokat egy része a is létrehozhat statisztikákat. A szűrt statisztikai ezt nevezik.
 
 Használhatja például szűrt statisztikákat, ha azt tervezi, hogy egy adott partíció egy nagy particionált tábla lekérdezése. Csak a partíció értékek statisztika létrehozásával a statisztikai adatok pontosságát továbbfejlesztjük, és így javíthatja a lekérdezések teljesítményét.
@@ -178,10 +192,9 @@ CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '
 
 > [!NOTE]
 > A lekérdezésoptimalizáló érdemes megfontolnia a szűrt statisztikákat használatát, ha az elosztott lekérdezési terv úgy dönt, akkor az a lekérdezés el kell férnie a statisztikák objektum definíciója. Az előző példát, a lekérdezés ahol záradékban kell megadnia, col1 értékek 2000101 és 20001231 között.
-> 
-> 
 
 ### <a name="create-single-column-statistics-with-all-the-options"></a>Hozzon létre egyoszlopos statisztikát lehetőségekről
+
 A beállítások együtt is kombinálhatók. Az alábbi példa egy szűrt statisztikákat objektumot hoz létre egy egyéni minta mérete:
 
 ```sql
@@ -191,12 +204,11 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 A teljes referenciáért lásd: [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql).
 
 ### <a name="create-multi-column-statistics"></a>Többoszlopos statisztika létrehozása
+
 Több oszlop statisztikai adatainak objektum létrehozásához egyszerűen használja az előző példák, de további oszlopok megadása.
 
 > [!NOTE]
 > A hisztogram, a lekérdezés eredménye a sorok számának becslése szolgál, amely csak az első oszlop szerepel a statisztikák Objektumdefiníció érhető el.
-> 
-> 
 
 Ebben a példában a hisztogram van *termék\_kategória*. Több oszlopos statisztikák kiszámításához az *termék\_kategória* és *termék\_sub_category*:
 
@@ -207,6 +219,7 @@ CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category)
 Mivel nincs között *termék\_kategória* és *termék\_sub\_kategória*, egy több oszlopot statisztika objektum lehet hasznos, ha ezek oszlopok egyszerre érhetők el.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Statisztikák készítése az egy táblázat összes oszlopa
+
 Statisztika létrehozásának egyik módja, hogy a tábla létrehozása után adja ki a CREATE STATISTICS parancsokat:
 
 ```sql
@@ -228,6 +241,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
 ### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Statisztikákat létrehozni minden oszlop egy adatbázisban tárolt eljárás használatával
+
 Az SQL Data Warehouse az SQL Server nem rendelkezik egyenértékű sp_create_stats rendszerszintű tárolt eljárást. Ezt a tárolt eljárást az adatbázis, amely még nem rendelkezik statisztikai minden oszlop egy egyoszlopos statisztikát objektumot hoz létre.
 
 Az alábbi példa segít az adatbázis-tervezésben használatának első lépései. Nyugodtan alkalmazkodni az igényeinek:
@@ -318,32 +332,35 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-Statisztikák készítése az összes oszlopot a táblában az alapértelmezett értékekkel, egyszerűen hívja az eljárást.
+Az alapértelmezett beállítások használatával a táblázat összes oszlopa statisztikákat létrehozni, a tárolt eljárás végrehajtására.
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
 ```
+
 Statisztikák készítése az összes oszlopot a táblában a fullscan használatával, hívja meg ezt az eljárást:
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 2, NULL;
 ```
-A táblázat összes oszlopa a mintavételezett statisztikákat létrehozni, adja meg a 3, és a minta százalékos aránya.  Ezen eljárások egy 20 %-os mintavételi gyakoriság használ.
+
+A táblázat összes oszlopa a mintavételezett statisztikákat létrehozni, adja meg a 3, és a minta százalékos aránya. Ezen eljárások egy 20 %-os mintavételi gyakoriság használ.
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 ```
 
-
-A mintavétel összes oszlopának statisztikáit létrehozása 
+A mintavétel összes oszlopának statisztikáit létrehozása
 
 ## <a name="examples-update-statistics"></a>Példák: Statisztika frissítése
+
 A statisztikák frissítése, a következőket teheti:
 
 - Egy statisztikai objektum módosítása. Adja meg a frissíteni kívánt statisztikát objektum neve.
 - Egy tábla összes statisztika objektumok frissítése. Adja meg a táblázat helyett egy adott statisztika objektum nevét.
 
 ### <a name="update-one-specific-statistics-object"></a>Egy adott statisztika objektum frissítése
+
 Egy adott statisztika objektum frissítéséhez használja a következő szintaxist:
 
 ```sql
@@ -359,7 +376,8 @@ UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 Adott statisztika objektumok frissítésével, minimálisra csökkentheti az időt és a statisztika kezeléséhez szükséges erőforrások. Ehhez úgy Gondoltuk, válassza ki a legjobb statisztika objektumokat frissíteni, néhányat.
 
 ### <a name="update-all-statistics-on-a-table"></a>Egy tábla összes statisztika frissítése
-Ez bemutatja egy egyszerű módszer egy tábla összes statisztika objektumok frissítése:
+
+Egy tábla összes statisztika objektumok frissítése egy egyszerű módszer van:
 
 ```sql
 UPDATE STATISTICS [schema_name].[table_name];
@@ -371,21 +389,21 @@ Példa:
 UPDATE STATISTICS dbo.table1;
 ```
 
-Ez az utasítás használata gyerekjáték. Ne feledje, hogy frissíti *összes* statisztika a táblán, és ezért előfordulhat, hogy végezze el a szükségesnél több munkát. Ha a teljesítmény darabolása nem okoz problémát, akkor a legegyszerűbb és leghatékonyabb módja garantálja, hogy a statisztikákat a naprakész.
+Az UPDATE STATISTICS utasítás használata gyerekjáték. Ne feledje, hogy frissíti *összes* statisztika a táblán, és ezért előfordulhat, hogy végezze el a szükségesnél több munkát. Ha teljesítmény darabolása nem okoz problémát, akkor a legegyszerűbb és leghatékonyabb módja garantálja, hogy a statisztikákat a naprakész.
 
 > [!NOTE]
 > Amikor frissíti egy tábla összes statisztika, az SQL Data Warehouse egy minta a táblázat minden egyes statisztika objektumhoz vizsgálattal hajtja végre. Ha a tábla nagy, és sok oszlop és sok statisztika, hatékonyabb, ha igényei alapján egyéni statisztikai adatainak frissítése lehet.
-> 
-> 
 
 A megvalósítását egy `UPDATE STATISTICS` eljárás, lásd: [ideiglenes táblák](sql-data-warehouse-tables-temporary.md). A megvalósítás módja kissé eltér az előző `CREATE STATISTICS` eljárás, de az eredménye megegyezik.
 
 A teljes szintaxisra, lásd: [Update Statistics](/sql/t-sql/statements/update-statistics-transact-sql).
 
 ## <a name="statistics-metadata"></a>Statisztika metaadatok
+
 Több rendszer nézetek és függvények, amelyek segítségével statisztika további információt is van. Láthatja például, ha a statisztikák objektum lehet elavult a statisztikák – dátum függvény használatával megtekintheti a statisztikákat is utolsó létrehozásakor vagy frissítésekor.
 
 ### <a name="catalog-views-for-statistics"></a>Rendszerkatalógus-nézetek statisztikák
+
 Ezek a nézetek rendszer statisztika kapcsolatos adatok megadása:
 
 | Katalógus megtekintése | Leírás |
@@ -399,6 +417,7 @@ Ezek a nézetek rendszer statisztika kapcsolatos adatok megadása:
 | [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Az egyes adattípusokhoz egy sort. |
 
 ### <a name="system-functions-for-statistics"></a>Rendszer funkciók statisztikák
+
 Ezek a függvények rendszer statisztikákkal kezelésénél hasznosak:
 
 | Rendszer-függvény | Leírás |
@@ -407,6 +426,7 @@ Ezek a függvények rendszer statisztikákkal kezelésénél hasznosak:
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Szint, és részletes kapcsolatos összegző információkat, a statisztikai objektum által ismert értékek eloszlását. |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Statisztika oszlopok és a functions egyesítésével egy nézet
+
 Ebben a nézetben számos lehetőséget kínál a statisztikák kapcsolódik az oszlopok, és az eredmények közül a STATS_DATE() függvény együtt.
 
 ```sql
@@ -446,6 +466,7 @@ AND     st.[user_created] = 1
 ```
 
 ## <a name="dbcc-showstatistics-examples"></a>DBCC SHOW_STATISTICS() példák
+
 DBCC SHOW_STATISTICS() statisztika objektumon belül tárolt adatokat mutatja. Ezek az adatok három részből érhető el:
 
 - Fejléc
@@ -455,6 +476,7 @@ DBCC SHOW_STATISTICS() statisztika objektumon belül tárolt adatokat mutatja. E
 A statisztika fejléc metaadatait. A hisztogram a statisztikák objektum első kulcsoszlopa értékek eloszlását jeleníti meg. A sűrűséget vektor több oszlopos korrelációs méri. Az SQL Data Warehouse a statisztika objektumban az adatokat a számosság becsléseket kiszámítja.
 
 ### <a name="show-header-density-and-histogram"></a>Fejléc, sűrűség és hisztogram megjelenítése
+
 Ebben az egyszerű példában minden három részből statisztika objektum látható:
 
 ```sql
@@ -468,6 +490,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
 ### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>Egy vagy több részeit DBCC SHOW_STATISTICS() megjelenítése
+
 Ha csak adott részére szeretné megtekinteni, a `WITH` záradékot, és adja meg a megtekinteni kívánt részeket:
 
 ```sql
@@ -481,16 +504,17 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
 ## <a name="dbcc-showstatistics-differences"></a>DBCC SHOW_STATISTICS() különbségek
+
 DBCC SHOW_STATISTICS() szigorúbban van megvalósítva, az SQL Data Warehouse az SQL Server képest.
 
 - Nem dokumentált funkciók nem támogatottak.
 - Stats_stream nem használható.
-- Statisztikai adatok bizonyos részhalmazainak eredményei nem tud csatlakozni. Ha például (STAT_HEADER CSATLAKOZZON DENSITY_VECTOR).
+- Statisztikai adatok bizonyos részhalmazainak eredményei nem tud csatlakozni. Ha például STAT_HEADER CSATLAKOZZON DENSITY_VECTOR.
 - NO_INFOMSGS üzenet figyelmen kívül hagyás nem állítható be.
 - Csak akkor használható a statisztika nevét szögletes zárójelek.
 - Oszlopnevek nem használhatja a statisztika objektumok azonosítására.
 - Egyéni hiba 2767 nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
-A további lekérdezési teljesítmény javítása, lásd: [a számítási feladat monitorozása](sql-data-warehouse-manage-monitor.md)
 
+A további lekérdezési teljesítmény javítása, lásd: [a számítási feladat monitorozása](sql-data-warehouse-manage-monitor.md)

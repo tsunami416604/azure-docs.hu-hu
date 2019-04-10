@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/25/2019
+ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1c6e0408145ea76ad93b6dc3803fd56a01dc6d4
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 5bc67551c70b185ad0b5ed993a510ded2229481f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444659"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279618"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -23,6 +23,31 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 + Az Azure Machine Learning [ **fő SDK a Pythonhoz**](https://aka.ms/aml-sdk)
 + Az Azure Machine Learning [ **adat-előkészítési SDK**](https://aka.ms/data-prep-sdk)
 
+## <a name="2019-04-08"></a>2019-04-08
+
+### <a name="azure-machine-learning-sdk-for-python-v1023"></a>Az Azure Machine Learning SDK for Python v1.0.23
+
++ **Új funkciók**
+  + Az Azure Machine Learning SDK már támogatja a Python 3.7-es verzióját.
+
+### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Az Azure Machine Learning adat-előkészítési SDK 1.1.1-es
+
++ **Új funkciók**
+  + Több adattárolója/DataPath/DataReference forrásból read_ * átalakítók használatával olvashatja.
+  + Az oszlopok egy olyan új oszlop létrehozása a következő műveletek elvégzése: osztás, emelet, modulus power, hossza.
+  + Adatelőkészítés most már az Azure ML-diagnosztika csomag része, és alapértelmezés szerint naplózza a diagnosztikai adatokat.
+    + Kikapcsolja ezt a funkciót, állítsa igaz értékre a környezeti változót: DISABLE_DPREP_LOGGER
+
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + Továbbfejlesztett code dokumentáció a gyakran használt osztályok és funkciók.
+  + Kijavítva a hiba, amely nem sikerült beolvasni az Excel-fájlok auto_read_file a.
+  + Ez a beállítás hozzáadott read_pandas_dataframe a mappa felülírásához.
+  + Továbbfejlesztett teljesítmény dotnetcore2 függőség telepítése és a Fedora 27/28- és Ubuntu 1804 támogatása.
+  + Az Azure-Blobok olvasási teljesítményének növelése.
+  + Adattípus észlelése oszlop típusú oszlopok hosszú támogatja.
+  + Kijavítva a hiba, ahol egyes dátumértékeket is jelenik meg időbélyegeket Python datetime objektumok helyett.
+  + Kijavítva a hiba, ahol bizonyos típusú számát is jelenik meg helyett egész számok Double típusú értékekkel.
+  
 ## <a name="2019-03-25"></a>2019-03-25
 
 ### <a name="azure-machine-learning-sdk-for-python-v1021"></a>Az Azure Machine Learning SDK for Python v1.0.21
@@ -32,7 +57,7 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Az Azure Machine Learning adat-előkészítési SDK v1.1.0
 
-+ **Használhatatlanná tévő változásai**
++ **Kompatibilitástörő változások**
   + Az adat-előkészítő csomag fogalma elavult, és már nem támogatott. Ahelyett, hogy egy csomag több adatfolyamot átlátni, megőrizheti a adatfolyamok külön-külön.
     + Útmutató: [Nyitó és mentése adatfolyamok notebook](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
 
@@ -217,7 +242,7 @@ Az Azure Machine Learning Compute a Python, az Azure portal vagy a parancssori f
 > Azt javasoljuk, hogy használata az Azure Machine Learning Compute új munkaterület létrehozása. Nincs távoli előfordulhat, hogy a felhasználók próbál létrehozni egy meglévő munkaterületet az Azure Machine Learning COMPUTE számítási hiba láthatják. A munkaterületen található meglévő számítási továbbra is változatlanul működik.
 
 ### <a name="azure-machine-learning-sdk-for-python-v102"></a>Az Azure Machine Learning SDK for Python v1.0.2
-+ **Használhatatlanná tévő változásai**
++ **Kompatibilitástörő változások**
   + Ettől a kiadástól kezdve megszüntetjük a virtuális gép létrehozása az Azure Machine Learning támogatása. Továbbra is csatolhat a virtuális gép meglévő felhő vagy egy távoli helyszíni kiszolgáló. 
   + Emellett megszüntetjük BatchAI, mindegyike támogatnia kell az Azure Machine Learning Compute révén most támogatása.
 
@@ -237,7 +262,7 @@ Az Azure Machine Learning Compute a Python, az Azure portal vagy a parancssori f
 <!--+ **Bugs fixed**-->
 
 ### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Az Azure Machine Learning adat-előkészítési SDK v0.5.2
-+ **Használhatatlanná tévő változásai** 
++ **Kompatibilitástörő változások** 
   * `SummaryFunction.N` új nevet kapott `SummaryFunction.Count`.
   
 + **Hibajavítások**
@@ -248,7 +273,7 @@ Az Azure Machine Learning Compute a Python, az Azure portal vagy a parancssori f
   * Véletlenszerű Split már nem sikertelen lesz, ha az eredeti adatfolyam nem rendelkezik egy nevet  
 
 + **További információ**
-  * [Azure Machine Learning adat-előkészítési SDK](https://aka.ms/data-prep-sdk)
+  * [Az Azure Machine Learning, Data Prep SDK](https://aka.ms/data-prep-sdk)
 
 ### <a name="docs-and-notebooks"></a>Docs és jegyzetfüzetek
 + Gépi Tanulási folyamatok
@@ -275,7 +300,7 @@ Az Azure Machine Learning Compute a Python, az Azure portal vagy a parancssori f
 
 ### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Az Azure Machine Learning SDK for Python v0.1.80
 
-+ **Használhatatlanná tévő változásai** 
++ **Kompatibilitástörő változások** 
   * *azureml.train.widgets* névtér át lett helyezve *azureml.widgets*.
   * *azureml.core.compute.AmlCompute* a következő osztályok - helyteleníti *azureml.core.compute.BatchAICompute* és *azureml.core.compute.DSVMCompute*. Az utóbbi osztály törlődni fog a következő kiadásokban. A AmlCompute osztály mostantól könnyebben definícióval rendelkezik egyszerűen egy vm_size és a max_nodes van szüksége, és automatikus méretezése a max_nodes 0-tól a fürthöz, amikor a rendszer elküld egy feladatot. A [notebookok minta](https://github.com/Azure/MachineLearningNotebooks/tree/master/training) frissítve lett-e ezzel az információval, és adjon meg használati példák. Reméljük, mint például az egyszerűsítés és a egy későbbi kiadásban lesz több izgalmas funkciók számos!
 
@@ -316,7 +341,7 @@ Az Azure Portalon az Azure Machine Learning szolgáltatás rendelkezik a követk
 
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Az Azure Machine Learning SDK for Python v0.1.74
 
-+ **Használhatatlanná tévő változásai** 
++ **Kompatibilitástörő változások** 
   * * Workspace.compute_targets, adattárolók, kísérletek, képek, modellek és *problémák megoldásához segítséget* tulajdonságok módszer helyett. Helyettesítse be például *Workspace.compute_targets()* a *Workspace.compute_targets*.
   * *Run.get_context* helyteleníti *Run.get_submitted_run*. Az utóbbi módszer a következő kiadásokban törlődni fog.
   * *PipelineData* osztály most vár egy adattár-objektumot datastore_name egy paraméter helyett. Ehhez hasonlóan *folyamat* default_datastore_name helyett default_datastore fogad el.
@@ -366,7 +391,7 @@ Az Azure Portalon az Azure Machine Learning szolgáltatás rendelkezik a követk
 
 Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismert hibák és a lehetséges megoldások megismeréséhez.
 
-+ **Használhatatlanná tévő változásai**
++ **Kompatibilitástörő változások**
   * Workspace.experiments, Workspace.models, Workspace.compute_targets, Workspace.images, Workspace.web_services visszatérési szótár, korábban visszaadott listában. Lásd: [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API dokumentációja.
 
   * Automatizált Machine Learning Normalizált négyzetes hiba eltávolítja az elsődleges metrikákat.

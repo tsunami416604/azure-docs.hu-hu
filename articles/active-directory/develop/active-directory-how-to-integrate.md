@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory integrálása |} A Microsoft Docs
-description: Egy útmutató, amellyel a kedvezményes szolgáltatások és erőforrások az Azure Active Directory-integráció.
+description: Az alkalmazás integrálása az Azure Active Directoryval, előnyeinek megismerése és szolgáltatások, mint az egyszerűsített bejelentkezés, Identitáskezelés, a multi-factor authentication, az erőforrások beszerzése és hozzáférés-vezérlés.
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/04/2019
+ms.date: 04/08/2019
 ms.author: celested
 ms.reviewer: bryanla
-ms.custom: aaddev
+ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 687b2848dc4bcf4e0c8935795eb66e07c3a5a7bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 726d70c46dca712deaf4846c24976cdabcc49be9
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894627"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359898"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Az Azure Active Directory integrálása
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Az Azure Active Directory (Azure AD) biztosít a nagyvállalati szintű Identitáskezelés a felhőalapú alkalmazások a szervezetek számára. Az Azure AD-integráció lehetővé teszi a felhasználók számára zökkenőmentes bejelentkezési élményt, és segít az informatikai szabályzatnak megfelel az alkalmazás.
+Ebben a cikkben megismerheti az előnyeit, az alkalmazás integrálása az Azure Active Directory (Azure AD), és integrációs erőforrások lekérése. Az Azure AD a szervezetek az identity management nagyvállalati szintű felhőalapú alkalmazások biztosít. Az Azure AD-integráció lehetővé teszi a felhasználók számára zökkenőmentes bejelentkezési élményt, és segít az informatikai szabályzatnak megfelel az alkalmazás.
 
 ## <a name="how-to-integrate"></a>Az integrálás menete
 

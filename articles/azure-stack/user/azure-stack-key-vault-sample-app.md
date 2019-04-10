@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 04/08/2019
 ms.author: sethm
-ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 578ca59b3f00bc1f4e876fd2b007c4b45901f86c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 04/08/2019
+ms.openlocfilehash: 7ca02b35cd8f302b856b2d7fcbfb5bac304f1a00
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782377"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358629"
 ---
 # <a name="a-sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>Használja a kulcsok és titkos kulcsok tárolása a key vault-mintaalkalmazás
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Kövesse az ebben a cikkben futtathat egy mintaalkalmazást nevű **HelloKeyVault** , amely lekéri a kulcsok és titkos kulcs-tároló az Azure Stackben.
+Kövesse az ebben a cikkben a mintaalkalmazás futtatása **HelloKeyVault** , amely lekéri a kulcsok és titkos kulcs-tároló az Azure Stackben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az alábbi előfeltételek lehet telepíteni az Azure Stack [Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), vagy egy Windows-alapú külső ügyfél Ha [VPN-kapcsolaton keresztül csatlakozó](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+Telepítheti a következő előfeltételek a [Azure Stack Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), vagy egy Windows-alapú külső ügyfél Ha [VPN-kapcsolaton keresztül csatlakozó](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
 
 * Telepítés [Azure Stack-kompatibilis Azure PowerShell-modulok](azure-stack-powershell-install.md).
 * Töltse le a [az Azure Stack működéséhez szükséges eszközök](azure-stack-powershell-download.md).
@@ -42,10 +42,10 @@ A mintaalkalmazás előkészítése:
 * Kulcstartó létrehozása az Azure Stackben.
 * Alkalmazás regisztrálása az Azure Active Directoryban (Azure AD).
 
-Az Azure portal vagy a PowerShell segítségével készítse elő a mintaalkalmazáshoz. Ez a cikk bemutatja, hogyan hozzon létre egy kulcstartót, és a egy alkalmazás regisztrálása a PowerShell használatával.
+Az Azure portal vagy a PowerShell segítségével készítse elő a mintaalkalmazáshoz. Ez a cikk bemutatja, hogyan hozzon létre egy kulcstartót, és regisztrálni egy alkalmazáshoz a PowerShell használatával.
 
->[!NOTE]
->Alapértelmezés szerint a PowerShell-parancsfájlt az Active Directoryban egy új alkalmazást hoz létre. Azonban regisztrálhat egyet a meglévő alkalmazásokat.
+> [!NOTE]
+> Alapértelmezés szerint a PowerShell-parancsfájlt az Active Directoryban egy új alkalmazást hoz létre. Azonban regisztrálhat egyet a meglévő alkalmazásokat.
 
 A következő szkript futtatása előtt győződjön meg arról, az értékeket ad meg a `aadTenantName` és `applicationPassword` változókat. Ha nem ad meg értéket `applicationPassword`, ez a szkript létrehoz egy véletlenszerű jelszó.
 
@@ -55,7 +55,7 @@ $resourceGroupName   = 'myResourceGroup'
 $applicationName     = 'myApp'
 $location            = 'local'
 
-# Password for the application. If not specified, this script will generate a random password during app creation.
+# Password for the application. If not specified, this script generates a random password during app creation.
 $applicationPassword = ''
 
 # Function to generate a random password for the application.
@@ -141,7 +141,7 @@ Az alábbi képen látható a kulcstároló létrehozásához használt a szkrip
 
 ![Kulcstartó-hozzáférési kulcsok](media/azure-stack-key-vault-sample-app/settingsoutput.png)
 
-Jegyezze fel a **VaultUrl**, **AuthClientId**, és **AuthClientSecret** az előző parancsfájl által visszaadott értékek. Ezeket az értékeket használja a HelloKeyVault alkalmazás futtatásához.
+Jegyezze fel a **VaultUrl**, **AuthClientId**, és **AuthClientSecret** az előző parancsfájl által visszaadott értékek. Ezeket az értékeket használja a futtatásához a **HelloKeyVault** alkalmazás.
 
 ## <a name="download-and-configure-the-sample-application"></a>Töltse le és a mintaalkalmazás konfigurálása
 
@@ -149,30 +149,30 @@ A key vault-minta letöltése az Azure [Key Vault-ügyfélnek minták](https://w
 
 Betölteni a **HelloKeyVault** minta:
 
-* Keresse meg a **Microsoft.Azure.KeyVault.Samples** > **minták** > **HelloKeyVault** mappát.
-* Nyissa meg a **HelloKeyVault** alkalmazáshoz a Visual Studióban.
+1. Keresse meg a **Microsoft.Azure.KeyVault.Samples**, **minták**, **HelloKeyVault** mappát.
+2. Nyissa meg a **HelloKeyVault** alkalmazáshoz a Visual Studióban.
 
 ### <a name="configure-the-sample-application"></a>A mintaalkalmazás konfigurálása
 
 A Visual Studióban:
 
-* Nyissa meg a HelloKeyVault\App.config fájlt, és keresse meg a &lt; **appSettings** &gt; elemet.
-* Frissítés a **VaultUrl**, **AuthClientId**, és **AuthClientSecret** kulcsok a key vault létrehozása használtakon által visszaadott értékekkel. Alapértelmezés szerint az App.config fájl rendelkezik egy helyőrző `AuthCertThumbprint`. Cserélje le a helyőrző a `AuthClientSecret`.
+1. Nyissa meg a HelloKeyVault\App.config fájlt, és keresse meg a `<appSettings>` elemet.
+2. Frissítés a **VaultUrl**, **AuthClientId**, és **AuthClientSecret** kulcsok a key vault létrehozása használtakon által visszaadott értékekkel. Alapértelmezés szerint az App.config fájl rendelkezik egy helyőrző `AuthCertThumbprint`. Cserélje le a helyőrző a `AuthClientSecret`.
 
-  ![Alkalmazásbeállítások](media/azure-stack-key-vault-sample-app/appconfig.png)
+   ![Alkalmazásbeállítások](media/azure-stack-key-vault-sample-app/appconfig.png)
 
-* Építse újra a megoldást.
+3. Építse újra a megoldást.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-HelloKeyVault futtatásakor az alkalmazás jelentkezik be az Azure ad-hez, és ezután a AuthClientSecret jogkivonat használatával hitelesítik magukat a key vault az Azure Stackben.
+Futtatásakor **HelloKeyVault**, az alkalmazás jelentkezik be az Azure ad-hez, és ezután a `AuthClientSecret` jogkivonat a key vault az Azure Stackben történő hitelesítéséhez.
 
-Használhatja a HelloKeyVault mintát:
+Használhatja a **HelloKeyVault** a mintát:
 
 * Hajtsa végre alapszintű műveleteket, például létrehozhat, titkosítása, wrap, és törölje a kulcsok és titkos kulcsok.
-* Például adja át a paramétereket `encrypt` és `decrypt` való HelloKeyVault, és alkalmazza a megadott módosításokat, egy kulcstárolóba.
+* Például adja át a paramétereket `encrypt` és `decrypt` való **HelloKeyVault**, és alkalmazza a megadott módosításokat, egy kulcstárolóba.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Virtuális gép üzembe helyezése Key Vault-jelszóval](azure-stack-key-vault-deploy-vm-with-secret.md)
-- [Virtuális gép létrehozása Key Vault-tanúsítvánnyal](azure-stack-key-vault-push-secret-into-vm.md)
+* [Virtuális gép létrehozása Key Vault-jelszóval](azure-stack-key-vault-deploy-vm-with-secret.md)
+* [Virtuális gép létrehozása Key Vault-tanúsítvánnyal](azure-stack-key-vault-push-secret-into-vm.md)

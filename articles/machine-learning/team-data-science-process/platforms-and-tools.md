@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f733b2c9bcd8dc8ad8c068c465e1beda00b45d28
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 31c6c1258b6d20eb2d2802cf23244cb59df682c0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471011"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281267"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformok és eszközök a adatelemzési projektek
 
@@ -44,7 +44,7 @@ A Windows és a Linux, a Microsoft által kínált az adatelemző virtuális gé
 - A Windows a Power BI desktopban
 - Az SQL Server 2016 Developer Edition verziót a Windows / Linux Postgres
 
-Ezenkívül **gépi Tanulási és AI-eszközök** CNTK (egy nyílt forráskódú Mélytanulási eszközkészlet a Microsoft), illetve xgboost, mxnet és Vowpal Wabbit, például.
+Ezenkívül **gépi Tanulási és AI-eszközök** xgboost, mxnet és Vowpal Wabbit, például.
 
 Dsvm-hez jelenleg elérhető **Windows** és **Linux CentOS** operációs rendszereket. Válassza ki a dsvm-hez (a Processzormagok száma) és a memória mennyiségét, amelyre hajthat végre, az adatelemzési projektek igényeinek megfelelően méretét. 
 

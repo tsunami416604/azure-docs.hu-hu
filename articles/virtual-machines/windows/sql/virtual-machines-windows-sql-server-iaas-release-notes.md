@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: c46e2d4e2aa79d1d62d0361763911660349cfbb0
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 23e072369aa8ac6ca6ada5ec185df1a8d7e03c5b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762317"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282542"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Az SQL Server használata Azure virtuális gép kibocsátási megjegyzései
 
@@ -30,8 +30,9 @@ Az Azure lehetővé teszi, hogy az SQL Server beépített rendszerképpel rendel
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
-| **Egyéni rendszerkép támogatási lehetőségek** | Most már telepítheti a [SQL IaaS-bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) egyéni operációs rendszer és az SQL-rendszerképek, amelyek kínál korlátozott működésének [rugalmas licencelési](virtual-machines-windows-sql-ahb.md). Ha az egyéni rendszerkép Regisztrálás az SQL erőforrás-szolgáltató adja meg a licenc típusa "AHUB" Ellenkező esetben a regisztráció sikertelen lesz. Az Azure Portalon az SQL konfigurációs panelen keresztül kezelhetőségi egyéni rendszerképek esetében nem támogatott.   | 
+| **Egyéni rendszerkép támogatási lehetőségek** | Most már telepítheti a [SQL IaaS-bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) egyéni operációs rendszer és az SQL-rendszerképek, amelyek kínál korlátozott működésének [rugalmas licencelési](virtual-machines-windows-sql-ahb.md). Ha az egyéni rendszerkép Regisztrálás az SQL erőforrás-szolgáltató adja meg a licenc típusa "AHUB" Ellenkező esetben a regisztráció sikertelen lesz.  | 
 | **Nevesített példány támogatási lehetőségek** | Mostantól használhat a [SQL IaaS-bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) nevesített példánnyal, ha az alapértelmezett példány megfelelően el lett távolítva. | 
+| **Portál a fejlesztés** | Az SQL Server virtuális gép üzembe helyezése az Azure portal felületének rendelkezik lett technológiájú, használhatóság javítása érdekében. További információkért lásd: a tájékoztatót [rövid](quickstart-sql-vm-create-portal.md) és alaposabb [útmutató](virtual-machines-windows-portal-sql-server-provision.md) útmutató, amellyel egy SQL Server virtuális gép üzembe helyezése. |
 | &nbsp; | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentáció fejlesztései
@@ -84,5 +85,5 @@ None
 
 * [Linux rendszerű virtuális gép az SQL Server használatának áttekintése](../../linux/sql/sql-server-linux-virtual-machines-overview.md)
 * [Az SQL Server Linux virtuális gép kiépítése](../../linux/sql/provision-sql-server-linux-virtual-machine.md)
-* [Gyakori kérdések (Linux)](../../linux/sql/sql-server-linux-faq.md)
-* [A Linux rendszeren futó SQL Server dokumentációja](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [FAQ (Linux)](../../linux/sql/sql-server-linux-faq.md)
+* [Az SQL Server használata Linux-dokumentáció](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)

@@ -7,17 +7,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: sashan, moslake
+author: stevestein
+ms.author: sstein
+ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: a14912c48f27c4f4d0e54239f8e0523ffa62324f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888502"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357945"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Benefit és migrálása
 
@@ -37,7 +37,7 @@ A Virtuálismag-modell három szolgáltatásszinten, általános célú, nagy ka
 
 Az alábbi táblázat segítséget nyújt a három réteg közötti különbségeket:
 
-||**Általános célú**|**Üzletileg kritikus**|**Nagy kapacitású (előzetes verzió)**|
+||**Általános rendeltetés**|**Üzletileg kritikus**|**Nagy kapacitású (előzetes verzió)**|
 |---|---|---|---|
 |A következőkre alkalmas|A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott és skálázható számítási és tárolási lehetőségek.|Magas I/O-igényű üzleti alkalmazások. Több elkülönített replika használatával ez biztosítja a legmagasabb hibatűrést.|A legtöbb üzleti célú a rugalmasan skálázható a tárolás és olvasási szintű követelmények|
 |Compute|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|
@@ -76,7 +76,7 @@ Az Azure Hybrid benefittel lehet váltani, csak az alapul szolgáló Azure infra
 
 - Állítsa be, vagy frissítse az Azure CLI-vel licenc típusa:
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
+  - [az sql-adatbázis létrehozása](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
   - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
   - [az sql buszpéldány létrehozása](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
   - [az sql-buszpéldány frissítés](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
@@ -107,10 +107,10 @@ A következő táblázat tartalmazza az adott áttelepítési forgatókönyvre v
 |Standard|Általános célú|Oldalirányú|Áttelepítése bármilyen sorrendben is, de kell, hogy a megfelelő virtuális mag méretezési *|
 |Prémium|Üzletileg kritikus|Oldalirányú|Áttelepítése bármilyen sorrendben is, de kell, hogy a megfelelő virtuális mag méretezési *|
 |Standard|Üzletileg kritikus|Frissítés|Át kell telepítenie a másodlagos először|
-|Üzletileg kritikus|Standard|Visszalépés|Át kell telepítenie a elsődleges először|
-|Prémium|Általános célú|Visszalépés|Át kell telepítenie a elsődleges először|
+|Üzletileg kritikus|Standard|Alacsonyabb szintre|Át kell telepítenie a elsődleges először|
+|Prémium|Általános célú|Alacsonyabb szintre|Át kell telepítenie a elsődleges először|
 |Általános célú|Prémium|Frissítés|Át kell telepítenie a másodlagos először|
-|Üzletileg kritikus|Általános célú|Visszalépés|Át kell telepítenie a elsődleges először|
+|Üzletileg kritikus|Általános célú|Alacsonyabb szintre|Át kell telepítenie a elsődleges először|
 |Általános célú|Üzletileg kritikus|Frissítés|Át kell telepítenie a másodlagos először|
 ||||
 

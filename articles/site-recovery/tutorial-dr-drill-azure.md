@@ -6,36 +6,41 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7e85226d15b818dda65600760b3950fab9dd7aaf
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b93fb92c9170f3e0fb7bd6ee754dde5df729e299
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312325"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358186"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Vészhelyreállítási próba végrehajtása az Azure-ba
 
-Ebben a cikkben bemutatjuk, hogyan futtathat egy helyszíni gépről az Azure-ba irányuló vészhelyreállítási próbát egy feladatátvételi teszt segítségével. A próba adatveszteség nélkül ellenőrzi a replikációs stratégiát.
+Ez a cikk bemutatja, hogyan futtathat egy vészhelyreállítási próbát egy a helyszíni gépek Azure-bA a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás. A próba adatveszteség nélkül ellenőrzi a replikációs stratégiát.
 
-Ez az oktatóanyag a negyedik rész abban a sorozatban, amely bemutatja, hogyan állíthat be Azure-ba irányuló vészhelyreállítást helyszíni VMware vagy Hyper-V virtuális gépekhez.
 
-Az oktatóanyag feltételezi, hogy az első három oktatóanyag végére ért:
-- Az [első oktatóanyagban](tutorial-prepare-azure.md) konfiguráltuk a VMware vészhelyreállításhoz szükséges Azure-összetevőket.
-- A [második oktatóanyagban](vmware-azure-tutorial-prepare-on-premises.md) helyszíni összetevőket készítettünk elő egy vészhelyreállításhoz, és áttekintettük az előfeltételeket.
-- A [harmadik oktatóanyagban](vmware-azure-tutorial.md) beállítottuk és engedélyeztük a replikációt a helyszíni VMware virtuális gépünkhöz.
-- Az oktatóanyagokat úgy terveztük meg, hogy **az adott forgatókönyvhöz a legegyszerűbb üzembehelyezési utat** mutassák be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Ha további információt szeretne a feladatátvételi teszt lépéseiről, olvassa el az [útmutatót](site-recovery-test-failover-to-azure.md).
+Ez az a negyedik oktatóanyag egy sorozat, amely bemutatja, hogyan állíthat be vészhelyreállítást az Azure-bA a helyszíni gépek.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Elkülönített hálózat beállítása a feladatátvételi teszthez
 > * Felkészülés az Azure-beli virtuális géphez való kapcsolódásra a feladatátvételt követően
-> * Feladatátvételi teszt futtatása egyetlen gép esetén
+> * Egyetlen gép feladatátvételi teszt futtatása.
 
+> [!NOTE]
+> Az oktatóanyagok bemutatják a legegyszerűbb telepítési út esetén. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Ha szeretne további információ a vész-helyreállítási részletes lépései részletesen, [ebből a cikkből](site-recovery-test-failover-to-azure.md).
 
+## <a name="before-you-start"></a>Előkészületek
+
+Végezze el az előző oktatóanyagok:
+
+1. Győződjön meg arról, hogy [beállítása az Azure](tutorial-prepare-azure.md) vészhelyreállításhoz helyszíni VMware virtuális gépek, Hyper-V virtuális gépek és fizikai gépek az Azure-bA.
+2. Készítse elő a helyi [VMware](vmware-azure-tutorial-prepare-on-premises.md) vagy [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) vész-helyreállítási környezetet. Ha a fizikai kiszolgálók vészhelyreállítása beállítása, tekintse át a [támogatási mátrix](vmware-physical-secondary-support-matrix.md).
+3. Vészhelyreállítás beállítása [VMware virtuális gépek](vmware-azure-tutorial.md), [Hyper-V virtuális gépek](hyper-v-azure-tutorial.md), vagy [fizikai gépek](physical-azure-disaster-recovery.md).
+ 
 
 ## <a name="verify-vm-properties"></a>A virtuális gép tulajdonságainak ellenőrzése
 
@@ -76,14 +81,13 @@ A következőképpen futtassa a feladatátvételi tesztet:
 
 Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szükséges, ami körülbelül nyolc-tíz percet vesz igénybe. Bizonyára észrevette, hogy hosszabb a feladatátvételi teszt ideje a VMware Linux gépeken, a nem DHCP-vel kiosztott IP-című VMware virtuális gépeken, valamint a következő rendszerindító illesztőprogramokkal nem rendelkező VMware virtuális gépeken: storvsc, vmbus, storflt, intelide, atapi.
 
-## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően
+## <a name="connect-after-failover"></a>Csatlakozás a feladatátvétel után
 
-Ha a feladatátvételt követően RDP vagy SSH segítségével szeretne kapcsolódni az Azure-beli virtuális gépekhez, kövesse a táblázatban összefoglalt követelményeket, [itt](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
-
-Kövesse az [itt](site-recovery-failover-to-azure-troubleshoot.md) leírt lépéseket a feladatátvitelt követő csatlakozási problémák megoldása érdekében.
+Ha az Azure virtuális gépek a feladatátvételt követően RDP/SSH segítségével kapcsolódni szeretne [Felkészülés való kapcsolódásra](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Ha a feladatátvételt követően a csatlakozási problémát tapasztal, kövesse a [hibaelhárítási](site-recovery-failover-to-azure-troubleshoot.md) útmutató.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Feladatátvétel és feladat-visszavétel futtatása helyszíni VMware virtuális gépekhez](vmware-azure-tutorial-failover-failback.md).
-> [Feladatátvétel és feladat-visszavétel futtatása helyszíni Hyper-V rendszerű virtuális gépekhez](hyper-v-azure-failover-failback-tutorial.md).
+> [Feladatátvétel és feladat-visszavétel VMware virtuális gépek futtatása](vmware-azure-tutorial-failover-failback.md).
+> [Feladatátvétel és feladat-visszavétel futtatása Hyper-V virtuális gépekhez](hyper-v-azure-failover-failback-tutorial.md).
+> [Feladatátvétel és fizikai gépek feladat-visszavétel futtatása](physical-to-azure-failover-failback.md)

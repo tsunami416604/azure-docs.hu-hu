@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 04/05/2019
 ms.author: sogup
-ms.openlocfilehash: 56c75840ca3114af40a2c843e2107f850bbff51a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 3aceffa719ef8938aa049f126231f8628822566b
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905970"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359964"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentés, és állítsa vissza a teljesítmény az Azure Backup azonnali visszaállítási képesség
 
@@ -23,12 +23,11 @@ ms.locfileid: "58905970"
 Az új modellre azonnali visszaállítása a következő szolgáltatás fejlesztéseket biztosítja:
 
 * Lehetővé teszi a biztonsági mentési feladatot, amely elérhető a helyreállítás befejezéséhez a tárolóban való adatátvitel várakozás nélkül részeként készített pillanatkép használata. Ez csökkenti a várakozási idő a pillanatképek visszaállításának előtt a tárolóba másolja.
-* Csökkenti a biztonsági mentési és helyreállítási idő szerint helyileg, a pillanatképek megőrzik alapértelmezés szerint két napig. Az alapértelmezett tároló nem 1 és 5 nap között bármilyen érték konfigurálható.
-* Támogatja a lemez mérete 4 TB-ig.
+* Csökkenti a biztonsági mentési és helyreállítási idő szerint helyileg, a pillanatképek megőrzik alapértelmezés szerint két napig. Az alapértelmezett pillanatkép adatmegőrzési érték az 1-5 nap között bármilyen érték konfigurálható.
+* Támogatja a lemez mérete 4 TB-ig. Az Azure Backup nem támogatja a csíkozott lemez. Lemez átméretezése az Azure Backup nem ajánlott.
 * Standard SSD-lemezeket Standard HDD és a prémium szintű SSD-lemezek mellett támogatja.
 *   Használhat egy nem felügyelt virtuális gép eredeti tárfiókokban (lemezenként) visszaállítása során. Ez a lehetőség létezik, akkor is, ha a virtuális gép lemezei tárfiókokban vannak elosztva. Ez felgyorsítja a visszaállítási műveletek számos különböző Virtuálisgép-konfigurációk esetében.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-new-in-this-feature"></a>Ez a szolgáltatás újdonságai
 
@@ -75,9 +74,9 @@ Az Azure Portalon, tekintse meg a hozzáadott mező a **virtuális gép biztons�
 > Az PowerShell 1.6.0-s verziójának és újabb verziók frissítheti az azonnali helyreállítás pillanatkép megőrzési időszak házirend PowerShell-lel
 
 ```powershell
-PS C:\> $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=5
-PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 Az alapértelmezett pillanatkép megőrzési minden házirend értéke 2 nap. Felhasználók módosíthatják az érték legalább 1 és legfeljebb 5 napig. Heti házirendek a pillanatkép megőrzési rögzített 5 nap.
 

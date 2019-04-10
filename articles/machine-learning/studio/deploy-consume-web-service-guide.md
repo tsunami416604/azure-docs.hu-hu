@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: ad58b914c22c112a83c18a7c0377b567424e4efd
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 0a29d763ab54ee716e514df23576e9c3b294d792
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046019"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359661"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio Web Services: Telepítés és használat
 
@@ -49,7 +49,7 @@ Az Azure Machine Learning Studio web services-erőforrás-szolgáltató REST API
 
 Az Azure Machine Learning Studio web services-erőforrás-szolgáltató üzembe helyezését és felügyeletét a webes szolgáltatások lehetővé teszi PowerShell-parancsmagok használatával.
 
-A parancsmagok használatához, először jelentkezzen be Azure-fiókjába, a PowerShell környezetben használatával a [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) parancsmagot. Ha ismeri, hogyan hívhat meg alapuló PowerShell-parancsokat a Resource Managerrel, tekintse meg [az Azure PowerShell az Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
+A parancsmagok használatához, először jelentkezzen be Azure-fiókjába, a PowerShell környezetben használatával a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmagot. Ha ismeri, hogyan hívhat meg alapuló PowerShell-parancsokat a Resource Managerrel, tekintse meg [az Azure PowerShell az Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
 
 A prediktív kísérletté exportálásához használja [a mintakód](https://github.com/ritwik20/AzureML-WebServices). Az .exe fájlt hoz létre a kódot, miután írhatja be:
 

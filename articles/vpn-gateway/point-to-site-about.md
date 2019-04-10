@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8f444cebac6ee60fbe65399e3f9c8e05eb033843
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 11fbf14cdeb8d22dbfdf522e1c5838634937f6cb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878213"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282100"
 ---
 # <a name="about-point-to-site-vpn"></a>Tudnivalók a pont – hely VPN
 
@@ -22,7 +22,7 @@ A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsol
 
 Pont – hely VPN a következő protokollok egyikét használhatja:
 
-* OpenVPN, az SSL/TLS-alapú VPN-protokoll. Az SSL VPN-megoldás behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva TCP 443-as portot, amely az SSL. OpenVPN használható csatlakozás Android, iOS-hez (11.0-s verzió vagy újabb verzió), Windows, Linux és Mac-eszközök (OSX verziói 10.13 és újabb).
+* **OpenVPN® protokoll**, az SSL/TLS-alapú VPN-protokoll. Az SSL VPN-megoldás behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva TCP 443-as portot, amely az SSL. OpenVPN használható csatlakozás Android, iOS-hez (11.0-s verzió vagy újabb verzió), Windows, Linux és Mac-eszközök (OSX verziói 10.13 és újabb).
 
 * Secure Socket Tunneling Protocol (SSTP), egy egyéni SSL-alapú VPN-protokollt. Az SSL VPN-megoldás behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva TCP 443-as portot, amely az SSL. Az SSTP csak a Windows-eszközökön támogatott. Az Azure Windows SSTP (Windows 7 és újabb) rendelkező összes verziója támogatja.
 
@@ -54,7 +54,7 @@ A RADIUS-kiszolgáló AD tanúsítványszolgáltatások is integrálható. Ez le
 Egy RADIUS-kiszolgáló is integrálhatók a más külső identitáskezelő rendszerekkel. Megnyílik bőségesen több hitelesítési lehetőség a P2S VPN-t, beleértve a multi-factor Authentication beállításait is.
 
 >[!NOTE]
->OpenVPN protokoll nem támogatott a RADIUS-hitelesítéssel.
+>**OpenVPN® protokoll** RADIUS-hitelesítés használata nem támogatott.
 >
 
 ![point-to-site](./media/point-to-site-about/p2s.png "Point-to-Site")
@@ -109,3 +109,5 @@ P2S konfiguráció még néhány konkrét lépésre van szükség. A következő
 * [P2S-kapcsolat – RADIUS-hitelesítés konfigurálása](point-to-site-how-to-radius-ps.md)
 
 * [P2S-kapcsolat – az Azure natív tanúsítványalapú hitelesítésének konfigurálása](vpn-gateway-howto-point-to-site-rm-ps.md)
+
+**"OpenVPN" a OpenVPN Inc. védjegye.**

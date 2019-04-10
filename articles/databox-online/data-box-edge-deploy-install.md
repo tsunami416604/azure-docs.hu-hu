@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: a1357e92b868f85556fc4d665eb475abd095fece
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 46192d32e70e371325abeafd4da26fa29e491b13
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400009"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278479"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>Oktatóanyag: Az Azure Data Box Edge telepítése
 
@@ -90,7 +90,9 @@ Az eszköz egy standard szintű 19 hüvelyk rack kell telepíteni. Használja az
 
 - Mielőtt elkezdené, olvassa el a biztonsági, környezetvédelmi és szabályozási információk füzet biztonsági utasításait. E könyvből teljesített az eszközzel.
 - A kijelölt területen, az állvány ház alján legközelebb eső a a rails telepítésének megkezdése.
-- A tooled sín csatlakoztatáshoz szükséges konfigurációt, meg kell megadni a nyolc csavart: #10 – 32, #12 – 24, #M5 vagy #M6. A fő átmérője a csavart kevesebb mint 10 mm (0,4") kell lennie.
+- A tooled sín csatlakoztatáshoz szükséges konfiguráció:
+    -  Meg kell adnia a nyolc csavart: #10 – 32, #12 – 24, #M5 vagy #M6. A fő átmérője a csavart kevesebb mint 10 mm (0,4") kell lennie.
+    -  Időrendi Formabontó csavarhúzót van szüksége.
 
 ### <a name="identify-the-rail-kit-contents"></a>A sín csomag tartalma azonosításához
 
@@ -102,6 +104,9 @@ Keresse meg az összetevők telepítésének sín kit sestavení:
 
 ### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>Telepítése és eltávolítása az eszköz nélküli rails (négyzetes watering vagy kör állványt)
 
+> [!TIP]
+> Ez a beállítás akkor eszköz nélküli, mert nem szükséges telepíteni, és távolítsa el a rails összefűzött négyzetét be vagy kerek a állványt az eszközök.
+
 1. Elhelyezése a bal és jobb sín záró darabok feliratú **ELŐTÉR** befelé irányuló, és minden, a függőleges rack fekszenek első oldalán a lyuk felhasználószám záró darab elhelyezés.
 2. Minden egyes teljes adatra a kívánt U tárolóhelyek az alsó és felső lyuk igazítása
 3. Léphet a háttérrendszere a sín amíg teljesen a függőleges állvány nyomkarima a munkaállomások és a Zárolás gombra kattint a helyen. Ismételje meg ezeket a lépéseket, elhelyezése és a kezelőfelület darab, a függőleges állvány nyomkarima a felhasználószám.
@@ -110,6 +115,9 @@ Keresse meg az összetevők telepítésének sín kit sestavení:
 ![Telepítése és eltávolítása az eszköz nélküli rails](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Telepítése és eltávolítása tooled rails (összefűzött watering állványt)
+
+> [!TIP]
+> Ez a beállítás van tooled, mert a szükséges eszköz (_átalánydíjjal Formabontó csavarhúzót_) telepítése és eltávolítása a rails a állványt összefűzött kerek lyukakba.
 
 1. Távolítsa el az első és hátsó zárójelben átalánydíjjal Formabontó csavarhúzót használatával csatlakoztatja a PIN-kódok.
 2. Kérje le, és a sín reteszes félkész, hogy eltávolítsa őket a csatlakoztatáshoz szükséges szögletes a elforgatása.
@@ -152,7 +160,7 @@ MEGJEGYZÉS: A rendszerek nem slam zárolás van életben felszerelt biztonságo
 
 1. Keresse meg a külső CMA szögletes mindkét rack karimával belső oldalára.
 2. A kábelek óvatosan, kötegeli őket lekérése, és a bal oldalon, a rendszer összekötők törlése.
-3. A hozzászóláslánc a hook és loop hevederek tooled tárolóhely a a külső CMA szögletes zárójelek, a rendszer a kábel csomagjaiból biztonságossá minden oldalán keresztül.
+3. A külső CMA szögletes zárójelek, a rendszer a kábel csomagjaiból biztonságossá minden oldalán a tárolóhely keresztül a hook és loop hevederek szál.
 
 
 ![Irányíthatja a kábelek](./media/data-box-edge-deploy-install/routing-cables.png)

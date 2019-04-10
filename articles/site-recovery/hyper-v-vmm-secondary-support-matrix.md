@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2018
+ms.date: 04/08/2019
 ms.author: raynew
-ms.openlocfilehash: 419974138d6f556a2f774e8c1a355729c824fddc
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310608"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360794"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépek vészhelyreállítása egy másodlagos helyre támogatási mátrix
 
@@ -53,7 +53,7 @@ A következő tároló csak Linux rendszerű gépek replikálhatók:
 
 ## <a name="network-configuration---hostguest-vm"></a>Hálózati konfiguráció - gazdagép vagy Vendég virtuális gép
 
-**Konfigurálás** | **Támogatott**  
+**Konfiguráció** | **Támogatott**  
 --- | --- 
 Gazdagép - hálózati adapterek összevonása | Igen 
 Gazdagép - VLAN | Igen 
@@ -79,7 +79,7 @@ Több elérési út (MPIO) | Igen
 
 ### <a name="guest-or-physical-server-storage"></a>Vendég- és fizikai kiszolgáló
 
-**Konfigurálás** | **Támogatott**
+**Konfiguráció** | **Támogatott**
 --- | --- | 
 VMDK |  –
 VHD/VHDX | Igen (legfeljebb 16 lemez)
@@ -99,7 +99,7 @@ Több elérési út (MPIO) | Igen
 
 ## <a name="vaults"></a>Tárolók
 
-**Művelet** | **Támogatott**
+**Műveletek** | **Támogatott**
 --- | --- 
 Helyezze át a tárolók több erőforráscsoportban (belül vagy előfizetések között) |  Nem
 Át a tárterületet, hálózati, Azure-beli virtuális gépek több erőforráscsoportban (belül vagy előfizetések között) | Nem
@@ -108,7 +108,7 @@ Helyezze át a tárolók több erőforráscsoportban (belül vagy előfizetések
 
 A szolgáltató koordinálja a VMM-kiszolgálók közötti kommunikációt. 
 
-**legfrissebb** | **Frissítések**
+**Legutóbbi** | **Frissítések**
 --- | --- 
 5.1.19 ([portálról érhető el](https://aka.ms/downloaddra) | [Legújabb funkciókkal és javításokkal](https://support.microsoft.com/kb/3155002)
 

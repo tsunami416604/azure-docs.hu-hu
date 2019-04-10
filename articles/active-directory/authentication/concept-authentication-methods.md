@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7a2866952d5e66e24770b81e69039d733fdd2a1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894593"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360649"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
-A rendszergazda hitelesítési módszerek kiválasztása az Azure multi-factor Authentication és az önkiszolgáló jelszó-visszaállítást (SSPR), javasoljuk, hogy a felhasználók többféle hitelesítési módszer regisztrálásához szükséges. Hitelesítési módszerként a felhasználó számára nem érhető el, ha azok választhat egy másik módszer a hitelesítéshez.
+A rendszergazdák kiválasztása az Azure multi-factor Authentication és az önkiszolgáló jelszó-visszaállítási (SSPR), javasoljuk, hogy a felhasználók többféle hitelesítési módszer regisztrálásához szükséges hitelesítési módszereket. Hitelesítési módszerként a felhasználó számára nem érhető el, ha azok választhat egy másik módszer a hitelesítéshez.
 
 A házirend milyen hitelesítési módszerek érhetők el az SSPR és az MFA felhasználói rendszergazdák adhatja meg. Bizonyos hitelesítési módszereknél nem lehet elérhető összes szolgáltatáshoz. Konfigurálásával kapcsolatos további információk a szabályzatok: a cikkek [útmutató új jelszó önkiszolgáló kérésének sikeres bevezetése](howto-sspr-deployment.md) és [egy felhőalapú Azure multi-factor Authentication tervezése](howto-mfa-getstarted.md)
 
@@ -141,6 +141,9 @@ A Microsoft Authenticator alkalmazás segítségével a fiókokhoz való illeté
 
 Ha engedélyezi a használatát mindkét értesítés, mobilalkalmazás és az ellenőrző kódot a mobilalkalmazásban, felhasználók, akik regisztrálni a Microsoft Authenticator alkalmazás használatával értesítést értesítés és kód is használhatják az identitásukat.
 
+> [!NOTE]
+> Ha a szervezete személyzet dolgozik vagy utazás, Kína, a **értesítés mobilalkalmazáson keresztül** metódust **Android-eszközök** nem működik az adott országban. Alternatív módszerek ezen felhasználók számára elérhetővé kell tenni.
+
 ### <a name="verification-code-from-mobile-app"></a>Mobilalkalmazás ellenőrzőkódja
 
 A Microsoft Authenticator alkalmazást, vagy más harmadik felek alkalmazásaihoz használható szoftvertokenként OATH-Ellenőrzőkód generálásához. Miután megadta a felhasználónevét és jelszavát, írja be a bejelentkezési képernyőn az alkalmazás által biztosított kódot. Az ellenőrző kódot biztosít egy második hitelesítési mód.
@@ -149,11 +152,11 @@ A Microsoft Authenticator alkalmazást, vagy más harmadik felek alkalmazásaiho
 > A önkiszolgáló jelszó-átállítási mikor csak egy módszert szükség ellenőrző kód alaphelyzetbe állítása az egyetlen lehetőség a felhasználók számára elérhető **annak biztosítása érdekében a legmagasabb szintű biztonság**.
 >
 
-Előfordulhat, hogy a felhasználók legfeljebb 5 hardver OATH-tokenek vagy authenticator alkalmazásokhoz, mint a Microsoft Authenticator alkalmazás bármikor használatra konfigurált kombinációját.
+Előfordulhat, hogy a felhasználók akár öt hardver OATH-tokenek vagy authenticator alkalmazásokhoz, mint a Microsoft Authenticator alkalmazás bármikor használatra konfigurált kombinációját.
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH hardvertokenek (nyilvános előzetes verzió)
 
-A rendszer OATH nyílt szabvány, amely megadja, hogy egyszeri jelszavas (OTP) kódok jönnek létre. Azure ad-ben az OATH-TOTP SHA-1-tokenek a 30 másodperces vagy 60 másodperces fajta használatát támogatja. Ügyfelek is be kell szereznie ezek a jogkivonatok a szállítótól választott eszközükön. Vegye figyelembe, hogy a titkos kulcsok legfeljebb 128 karakter hosszúságú lehet, nem lesz kompatibilis az összes jogkivonat.
+A rendszer OATH nyílt szabvány, amely megadja, hogy egyszeri jelszavas (OTP) kódok jönnek létre. Azure ad-ben az OATH-TOTP SHA-1-tokenek a 30 másodperces vagy 60 másodperces fajta használatát támogatja. Ügyfelek is be kell szereznie ezek a jogkivonatok a szállítótól választott eszközükön. Titkos kulcsai legfeljebb 128 karakter hosszúságú lehet, nem lesz kompatibilis az összes jogkivonat.
 
 ![Az OATH-tokenek tölt fel az MFA-kiszolgáló OATH-tokenek panel](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
@@ -175,7 +178,7 @@ A CSV-fájl méretétől függően eltarthat néhány perc alatt dolgozza fel. K
 
 Hibák elhárítása után a rendszergazda ezután aktiválhatja minden kulcs kattintva **aktiválás** a token aktiválását és belépés az egyszeri Jelszavas jelenik meg a jogkivonatot.
 
-Előfordulhat, hogy a felhasználók legfeljebb 5 hardver OATH-tokenek vagy authenticator alkalmazásokhoz, mint a Microsoft Authenticator alkalmazás bármikor használatra konfigurált kombinációját.
+Előfordulhat, hogy a felhasználók akár öt hardver OATH-tokenek vagy authenticator alkalmazásokhoz, mint a Microsoft Authenticator alkalmazás bármikor használatra konfigurált kombinációját.
 
 ## <a name="mobile-phone"></a>Mobiltelefon
 

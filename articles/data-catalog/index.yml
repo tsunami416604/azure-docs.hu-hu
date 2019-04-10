@@ -1,0 +1,36 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure Data Catalog dokumentációja
+metadata:
+  title: Az Azure Data Catalog dokumentációja – oktatóanyagok és API-referencia
+  meta.description: 'Learn how to set up a data catalog where your organization can find, understand, and consume data sources. Tutorials, API reference, and other documentation.'
+  services: data-catalog
+  author: markingmyname
+  ms.author: maghan
+  ms.service: data-catalog
+  ms.topic: landing-page
+  ms.date: 04/05/2019
+abstract:
+  description: 'Ismerje meg, hogyan használhatja a Data Catalog szolgáltatást arra, hogy a cég és a csapat könnyebben deríthesse fel, ismerhesse meg és használhassa fel az adatforrásokat. Az oktatóanyagok, REST API-leírás és egyéb dokumentáció bemutatják, hogyan tervezheti meg és állíthatja be az adattárat, ahol az adatfelhasználók hozzájuthatnak az elérhető adatforrásokhoz, és szakértők által közzétett tudást sajátíthatnak el.'
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: 'Megtudhatja, hogyan történik az Azure Data Catalog első üzembe helyezése:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/data-catalog.svg
+            text: Azure Portal
+            href: 'https://docs.microsoft.com/azure/data-catalog/data-catalog-get-started'
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: <p><a href="/rest/api/datacatalog/">REST API-referencia</a></p><p><a href="/rest/api/datacatalog/data-catalog-search-syntax-reference">Keresési szintaxis referenciája</a></p>
+          - title: Resource Manager
+            html: <p><a href="/azure/templates/microsoft.datacatalog/catalogs">Resource Manager-sablonok</a></p>

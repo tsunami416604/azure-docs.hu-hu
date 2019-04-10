@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 13038bb7159556b36e82b598732d1f2d497bf314
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c4ff12f0c9adcb9943a6e2426eaf2740ba171e39
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762772"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358846"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példánya a meglévő virtuális hálózat konfigurálása
 
@@ -25,10 +25,9 @@ Az Azure SQL Database felügyelt példányain telepíteni kell egy Azure-ban [vi
 
 Ha valamelyik a következő esetekben érvényes, ellenőrizze, és a hálózat módosítása a leírt parancsfájl használatával:
 
-* Egy új alhálózatot, amely még nincs konfigurálva van.
-* Nem biztos, hogy az alhálózat teljesíti a [követelmények](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
-* Ellenőrizze, hogy az alhálózat továbbra is megfelel az szeretné a [hálózati követelmények](sql-database-managed-instance-connectivity-architecture.md#network-requirements) után végzett módosításokat.
-
+- Egy új alhálózatot, amely még nincs konfigurálva van.
+- Nem biztos, hogy az alhálózat teljesíti a [követelmények](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+- Ellenőrizze, hogy az alhálózat továbbra is megfelel az szeretné a [hálózati követelmények](sql-database-managed-instance-connectivity-architecture.md#network-requirements) után végzett módosításokat.
 
 > [!Note]
 > Felügyelt példány csak az Azure Resource Manager-alapú üzemi modellel létrehozott virtuális hálózatokat hozhat létre. A klasszikus üzemi modellel létrehozott Azure virtuális hálózatok nem támogatottak. Az alábbi az irányelveket, az alhálózat méretének kiszámítása a [alhálózat méretét határozza meg a felügyelt példányok](sql-database-managed-instance-determine-size-vnet-subnet.md) cikk. Az alhálózat nem méretezhetők át, a belső erőforrások üzembe helyezése után.

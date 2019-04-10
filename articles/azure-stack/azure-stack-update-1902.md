@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: 1cb99bba1fa5c762af57a1ad26d034974ff196a6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2005cf4b1929dfe9e520f56308493db7d820226e
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59271832"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361109"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 frissítése
 
@@ -97,13 +97,14 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
   ```  
   
 - A teljes megbízhatóságot és alapvető infrastruktúra-szolgáltatások rendelkezésre állásának javítása a frissítési folyamat során, a natív frissítés erőforrás-szolgáltató, a frissítési művelet terv részeként érzékeli, és igény szerint az automatikus globális szervizelések meghívása. Globális szervizelési "javítás" a munkafolyamatok a következők:
-    - A virtuális gépeket, amelyek nem optimális állapotban van, és próbálja meg őket igény szerint ellenőrzése 
-    - Ellenőrizze az SQL-szolgáltatással kapcsolatos problémák, a vezérlő terv részeként, és próbálja meg őket igény szerint
-    - A szoftveres terheléselosztó (SLB) szolgáltatás állapotának ellenőrzése során, a hálózati vezérlő (NC), és próbálja meg őket igény szerint
-    - Ellenőrizze a hálózati vezérlő (NC) szolgáltatás állapotát, és próbálja meg helyreállítani igény szerint
-    - Ellenőrizze a válságkezelési helyreállítási konzol szolgáltatás (ERCS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint
-    - Ellenőrizze a XRP service fabric-csomópont állapotát, és javítsa ki őket igény szerint
-    - Ellenőrizze az Azure-konzisztens tároló (ACS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint
+
+  - Keresése nem optimális állapotban van, és próbálja meg őket igény szerint virtuális gépeket.
+  - SQL-szolgáltatási problémák keresése a vezérlő terv részeként, és próbálja meg őket igény szerint.
+  - A szoftveres terheléselosztó (SLB) szolgáltatás állapotának ellenőrzése során, a hálózati vezérlő (NC), és próbálja meg őket igény szerint.
+  - Ellenőrizze a hálózati vezérlő (NC) szolgáltatás állapotát, és próbálja meg helyreállítani igény szerint
+  - Ellenőrizze a válságkezelési helyreállítási konzol szolgáltatás (ERCS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint.
+  - Az infrastruktúra-szerepkör állapotának ellenőrzése és javítása, igény szerint.
+  - Ellenőrizze az Azure-konzisztens tároló (ACS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint.
 
 <!-- 
 1426690 [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log   Diagnostics
@@ -258,8 +259,8 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 <!-- #### Marketplace -->
 
 ### <a name="syslog"></a>Rendszernapló 
-- A syslog-konfiguráció nincs megőrizve folyamata alatt tartózkodnak egy frissítést, a syslog-ügyfél elveszíti a annak konfigurációját, és leállítja a továbbított syslog-üzeneteket eredményez. A probléma az Azure Stack minden verziójára vonatkozik, a syslog-ügyfél (1809) a nyilvánosan elérhető verzió óta.
-A megoldás, hogy a syslog-ügyfél újrakonfigurálása az Azure Stack-frissítés telepítését követően.
+
+- A syslog-konfiguráció nincs megőrizve egy frissítés tartózkodnak okoz a syslog-ügyfél elveszíti a konfigurációját, és leállítja a továbbított syslog-üzeneteket. A probléma az Azure Stack minden verziójára vonatkozik, a syslog-ügyfél (1809) a nyilvánosan elérhető verzió óta. A probléma elkerüléséhez konfigurálja újra a syslog-ügyfél az Azure Stack-frissítés telepítését követően.
 
 ## <a name="download-the-update"></a>A frissítés letöltése
 

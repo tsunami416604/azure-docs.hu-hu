@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: b99197f44961bdfa23050e9481e290e6c3d24845
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759085"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282321"
 ---
 # <a name="create-and-clone-projects"></a>Projektek létrehozása és klónozása
 
@@ -30,17 +30,17 @@ Egy projektet is fenntartják, metaadatokat és egyéb konfigurációs beállít
 
 A **saját projektek** : Irányítópult `https://notebooks.azure.com/<userID>/projects` ahol megtekintése, kezelése és hozható létre:
 
-[![Az Azure-jegyzetfüzetekben projektek irányítópult](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[![My projektek irányítópultot az Azure-jegyzetfüzetek](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 Mi mindent az irányítópulton attól függ, hogy jelentkezett be a fiók, amely a felhasználói azonosító tulajdonosa:
 
 | Parancs | Elérhető: | Leírás |
 | --- | --- | --- |
-| **Futtatás** | Tulajdonos | A project server elindul, és a projektmappában nyílik Jupyter. (Leggyakrabban, akkor először lépjen a projektmappára, majd indítsa el egy jegyzetfüzetet innen.) |
+| **Futtassa a következőt:** | Tulajdonos | A project server elindul, és a projektmappában nyílik Jupyter. (Leggyakrabban, akkor először lépjen a projektmappára, majd indítsa el egy jegyzetfüzetet innen.) |
 | **Letöltés** | Mindenki számára | ZIP-fájlként tölti le a kiválasztott projekt egy példányát. |
 | **Megosztás** | Mindenki számára | Megjeleníti a megosztási előugró ablak, amelyen keresztül szerezze be a kiválasztott projekt URL-címe, közösségi megosztás, e-mail küldése az URL-CÍMÉT és szerezze be a HTML- vagy a Markdown kódot "indítási notebook" jelvény különbözteti (lásd: [szerezzen be egy indítási jelvény](#obtain-a-launch-badge)) az URL-címmel. |
 | **Törlés** | Tulajdonos | Törli a kiválasztott projekthez. Ez a művelet nem vonható vissza. |
-| **Terminálszolgáltatások** | Tulajdonos | A project server kezdődik, majd megnyílik egy új böngészőablakot a bash, terminál, hogy a kiszolgáló. |
+| **Terminál** | Tulajdonos | A project server kezdődik, majd megnyílik egy új böngészőablakot a bash, terminál, hogy a kiszolgáló. |
 | **+ Új projekt** | Tulajdonos | Létrehoz egy új projektet. Lásd: [hozzon létre egy új projektet](#create-a-new-project). |
 | **Töltse fel a GitHub-adattár** | Tulajdonos | Importál egy projektet a Githubról. [A projekt importálása a Githubról](#import-a-project-from-github). |
 | **Klónozás** | Mindenki számára | Másolja át a kiválasztott projekt a saját fiókba. Kéri, ha még nem már bejelentkezhet. Lásd: [-projekt klónozása](#clone-a-project). |
@@ -123,7 +123,7 @@ A projekt klónozása:
 - [Ismerkedés a mintafüzetek](azure-notebooks-samples.md)
 - [Útmutató: Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
 - [Útmutató: Egy jegyzetfüzetet a csomagok telepítése](install-packages-jupyter-notebook.md)
-- [Útmutató: Diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)
+- [Útmutató: Diavetítés bemutatása](present-jupyter-notebooks-slideshow.md)
 - [Útmutató: Adatfájlok használata](work-with-project-data-files.md)
-- [Útmutató: Adatok erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
+- [Útmutató: Adatforrások elérése](access-data-resources-jupyter-notebooks.md)
 - [Útmutató: Az Azure Machine Learning-szolgáltatások használata](use-machine-learning-services-jupyter-notebooks.md)

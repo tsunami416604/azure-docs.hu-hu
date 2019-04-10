@@ -4,56 +4,55 @@ description: A functions az Azure Resource Manager-sablon használatával munka 
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/11/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 07221e5d93c004a2542adfc3a5374fd75ca34b31
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621408"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278785"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Karakterlánc-függvények az Azure Resource Manager-sablonok
 
 A Resource Manager az alábbi funkciókat biztosít a karakterláncokkal való munka:
 
-* [base64](#base64)
+* [Base64](#base64)
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
-* [concat](#concat)
-* [tartalmaz](#contains)
+* [Concat](#concat)
+* [tartalmazza a következőt:](#contains)
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
 * [üres](#empty)
 * [endsWith](#endswith)
 * [első](#first)
-* [guid](#guid)
+* [Formátum](#format)
+* [GUID azonosítója](#guid)
 * [indexOf](#indexof)
-* [last](#last)
+* [utolsó](#last)
 * [lastIndexOf](#lastindexof)
 * [Hossza](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
-* [replace](#replace)
-* [skip](#skip)
+* [cserélje le](#replace)
+* [kihagyás](#skip)
 * [felosztás](#split)
 * [startsWith](#startswith)
-* [string](#string)
-* [substring](#substring)
+* [sztring](#string)
+* [karakterláncrészlet](#substring)
 * [hajtsa végre a megfelelő](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
-* [trim](#trim)
+* [Trim](#trim)
 * [uniqueString](#uniquestring)
-* [uri](#uri)
+* [uri azonosító](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
 * [utcNow](#utcnow)
@@ -714,9 +713,66 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | arrayOutput | String | egy |
 | stringOutput | String | O |
 
+## <a name="format"></a>Formátum
+
+`format(formatString, arg1, arg2, ...)`
+
+Bemeneti értékek-formátumú karakterláncot hoz létre.
+
+### <a name="parameters"></a>Paraméterek
+
+| Paraméter | Szükséges | Típus | Leírás |
+|:--- |:--- |:--- |:--- |
+| formatString | Igen | sztring | Összetett formázó karakterlánc. |
+| arg1 | Igen | karakterlánc, egész szám vagy logikai érték | A formázott karakterláncot foglalandó értéke. |
+| További argumentumok | Nem | karakterlánc, egész szám vagy logikai érték | További értékek a formázott karakterláncot. |
+
+### <a name="remarks"></a>Megjegyzések
+
+Ez a függvény egy karakterláncot a sablonban használja. Formázási beállítások szerint használja a [System.String.Format](/dotnet/api/system.string.format) metódus a .NET-ben.
+
+### <a name="examples"></a>Példák
+
+A következő példa sablon a format függvény használatát szemlélteti.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "greeting": {
+            "type": "string",
+            "defaultValue": "Hello"
+        },
+        "name": {
+            "type": "string",
+            "defaultValue": "User"
+        },
+        "numberToFormat": {
+            "type": "int",
+            "defaultValue": 8175133
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "formatTest": {
+            "type": "string",
+            "value": "[format('{0}, {1}. Formatted number: {2:N0}', parameters('greeting'), parameters('name'), parameters('numberToFormat'))]"
+        }
+    }
+}
+```
+
+Az alapértelmezett értékeket az előző példa kimenete a következő:
+
+| Name (Név) | Típus | Érték |
+| ---- | ---- | ----- |
+| formatTest | String | Hello, a felhasználó. Formázott száma: 8,175,133 |
+
 ## <a name="guid"></a>GUID azonosítója
 
-`guid (baseString, ...)`
+`guid(baseString, ...)`
 
 Létrehoz egy értéket a paraméterként megadott értékek alapján globálisan egyedi azonosító formátuma.
 
@@ -731,7 +787,7 @@ Létrehoz egy értéket a paraméterként megadott értékek alapján globálisa
 
 Ez a funkció akkor hasznos, ha szeretne létrehozni egy értéket a globálisan egyedi azonosító formátuma. Azt adja meg a paraméterértékeket, hogy az eredmény az egyediség hatókörének korlátozása. Megadhatja, hogy a név egyediségét lefelé az előfizetés, erőforráscsoport vagy üzembe helyezés.
 
-A visszaadott érték nem véletlenszerű karakterlánc, hanem inkább a paraméterek a kivonatolási függvény eredménye. A visszaadott érték a 36 karakterből áll. Nem globálisan egyedi. Hozzon létre egy új GUID, amely nem alapul, hogy a paraméterek kivonatértéke, használja a [newGuid](#newguid) függvény.
+A visszaadott érték nem egy véletlenszerű karakterlánc, de a paramétereket a kivonatoló függvényt inkább az eredménye. A visszaadott érték a 36 karakterből áll. Globálisan egyedi nem. Hozzon létre egy új GUID Azonosítót, amely a paramétereket a kivonat értékével, használja a [newGuid](#newguid) függvény.
 
 Az alábbi példák bemutatják, hogyan hozzon létre egy egyedi értéket a gyakran használt szintek guid használatával.
 
@@ -1776,7 +1832,7 @@ A paraméterként megadott értékek alapján determinisztikus kivonat karakterl
 
 Ez a funkció akkor hasznos, ha szeretne létrehozni egy egyedi nevet. Azt adja meg a paraméterértékeket, hogy az eredmény az egyediség hatókörének korlátozása. Megadhatja, hogy a név egyediségét lefelé az előfizetés, erőforráscsoport vagy üzembe helyezés. 
 
-A visszaadott érték nem egy véletlenszerű karakterlánc, hanem inkább a kivonatolási függvény eredménye. A visszaadott érték 13 karakterig terjedhet. Nem globálisan egyedi. Érdemes úgy, hogy az érték az elnevezési konvenciókhoz, és hozzon létre egy beszédes nevet a előtaggal. Az alábbi példa bemutatja a visszaadott érték formátuma. A tényleges érték a megadott paraméter alapján változik.
+A visszaadott érték nem egy véletlenszerű karakterlánc, de inkább a kivonatolási függvény eredménye. A visszaadott érték 13 karakterig terjedhet. Globálisan egyedi nem. Érdemes úgy, hogy az érték az elnevezési konvenciókhoz, és hozzon létre egy beszédes nevet a előtaggal. Az alábbi példa bemutatja a visszaadott érték formátuma. A tényleges érték a megadott paraméter alapján változik.
 
     tcvhiyu5h2o5o
 
@@ -1800,7 +1856,7 @@ Egyedi erőforráscsoport üzembe helyezési hatóköre
 "[uniqueString(resourceGroup().id, deployment().name)]"
 ```
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy storage-fiókot az erőforráscsoportban alapján egyedi nevét. Az erőforráscsoportban a név nem egyedi, ha azonos módon.
+Az alábbi példa bemutatja, hogyan hozhat létre egy storage-fiókot az erőforráscsoportban alapján egyedi nevét. Az erőforráscsoportban a név nem egyedi, ugyanúgy, mint ha.
 
 ```json
 "resources": [{ 
@@ -1809,7 +1865,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy storage-fiókot az erőfor
     ...
 ```
 
-Ha szeretne létrehozni egy új egyedi nevet minden alkalommal, amikor a sablon üzembe helyezése, és célja, hogy az erőforrás frissítése nem, akkor használhatja a [utcNow](#utcnow) uniqueString függvényt. Ez a megközelítés egy tesztkörnyezetben használhatja. Egy vonatkozó példáért lásd: [utcNow](#utcnow).
+Ha szeretne létrehozni egy új egyedi nevet minden alkalommal, amikor a sablon üzembe helyezése, és nem kívánja frissíteni az erőforrás, akkor használhatja a [utcNow](#utcnow) uniqueString függvényt. Ez a megközelítés egy tesztkörnyezetben használhatja. Egy vonatkozó példáért lásd: [utcNow](#utcnow).
 
 ### <a name="return-value"></a>Vrácená hodnota
 

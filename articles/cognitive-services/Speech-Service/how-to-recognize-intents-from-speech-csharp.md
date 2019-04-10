@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: a9b3d8a2670a0b4e6bed2d5e9a9b64e597adcb16
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855724"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280536"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Oktatóanyag: Ismeri fel a beszéd, a beszéd SDK-t a szándékC#
 
@@ -131,19 +131,21 @@ A következő lépés egy szándékfelismerő létrehozása a `new IntentRecogni
 
 Most importálja a modellt a LUIS-appból a `LanguageUnderstandingModel.FromAppId()` használatával, majd adja hozzá azokat a LUIS-szándékokat, amelyeket a felismerő `AddIntent()` metódusával fel szeretne ismerni. Ezzel a két lépéssel növelheti a beszédfelismerés pontosságát, ha megadja azokat a szavakat, amelyeket a felhasználó a kérésekben nagy valószínűséggel használni fog. Nem kell az appban szereplő összes szándékot hozzáadnia, ha nem szükséges, hogy az alkalmazás mindegyiket felismerje.
 
-A szándékok hozzáadásához három argumentumra van szükség: a LUIS-modellre (amelyet `model` néven épp most hozott létre), a szándék nevére és a szándék azonosítójára. Az azonosító és a név közötti különbség a következő.
+Leképezések hozzáadása három argumentumot igényel: a LUIS-modellnek (amely létrejött, és nevű `model`), a leképezés neve és a egy leképezési azonosítója. Az azonosító és a név közötti különbség a következő.
 
-|`AddIntent()` argumentum|Cél|
+|`AddIntent()` Argumentum|Cél|
 |--------|-------|
 |intentName |A szándék LUIS-appban meghatározott neve. Pontosan egyeznie kell a LUIS-szándék nevével.|
 |intentID    |A Speech SDK által felismert szándékhoz rendelt azonosító. Tetszés szerint megadható, nem kell megfelelnie a LUIS-appban megadott szándék nevének. Ha például ugyanaz a kód több szándékot is kezel, használhatja hozzájuk ugyanazt az azonosítót.|
 
-Az otthonautomatizálási LUIS-app két szándékot tartalmaz: egyet az eszközök bekapcsolásához, egyet pedig a kikapcsoláshoz. A felismerő az alábbi sorokkal adható hozzá a felismerőhöz. Cserélje le a `RecognizeIntentAsync()` metódus három `AddIntent` sorát erre a kódra.
+A kezdőlap Automation LUIS-alkalmazás a két szándék rendelkezik: egy eszközt, és a egy másik eszköz kikapcsolásával a bekapcsolására. A felismerő az alábbi sorokkal adható hozzá a felismerőhöz. Cserélje le a `RecognizeIntentAsync()` metódus három `AddIntent` sorát erre a kódra.
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
 recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 ```
+
+Egyéni leképezések hozzáadása, helyett használhatja a `AddAllIntents` összes leképezések hozzáadása a felismerő a modellek metódus.
 
 ## <a name="start-recognition"></a>Felismerés indítása
 
@@ -186,4 +188,4 @@ Nézze meg, hogy a cikkben szereplő kód szerepel-e a samples/csharp/sharedcont
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Beszéd felismerése](how-to-recognize-speech-csharp.md)
+> [Hogyan ismerhetik fel a beszédfelismerés](how-to-recognize-speech-csharp.md)

@@ -2,16 +2,16 @@
 title: Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure Site Recovery-hozzáférés kezelése |} A Microsoft Docs
 description: Ez a cikk ismerteti a szerepköralapú hozzáférés-vezérlés (RBAC) az Azure Site Recovery-hozzáférés kezelése a alkalmazni.
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 5a6ef10f03bb5e108c226fe3d68f1dec67e6164a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 33fc2cd19152fb6cbbffb106aa058948d39555f9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218070"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281709"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>A szerepköralapú hozzáférés-vezérléssel (RBAC) a Site Recovery-hozzáférés kezelése
 

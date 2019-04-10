@@ -6,50 +6,44 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 3/18/2019
+ms.date: 4/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 06d18ccd6f14f0a2b31f579b0ed7250b2c4f0c92
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 9e8f450825b7b4ad0402b8976d68bc23c18ce855
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310591"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357880"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
-Az [Azure Site Recovery](site-recovery-overview.md) működőképes állapotban tartja az üzleti alkalmazásokat a tervezett és nem tervezett leállások idején, így segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A Site Recovery felügyeli és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vészhelyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
+Ez a cikk bemutatja, hogyan a helyszíni VMware virtuális gépek Azure-bA vész-helyreállítási replikálásának engedélyezéséhez a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
 
+Ez az a harmadik oktatóanyag egy sorozat, amely bemutatja, hogyan állítható be vészhelyreállítást az Azure-bA a helyszíni VMware virtuális gépekhez. Az előző oktatóanyagban azt [készíteni a helyszíni VMware-környezetről](vmware-azure-tutorial-prepare-on-premises.md) vész-helyreállítási az Azure-bA.
 
-Ez az oktatóanyag bemutatja, hogyan helyezze üzembe a Site Recovery az alapszintű beállítások testreszabása segítségével nélkül. Összetettebb lehetőségeket tekintse át a cikkeket útmutató alapján.
-
-    - A [replikációs forrás](vmware-azure-set-up-source.md) és a [konfigurációs kiszolgáló](vmware-azure-deploy-configuration-server.md) beállítása.
-    - A [replikációs cél](vmware-azure-set-up-target.md) beállítása.
-    - [Replikációs szabályzat](vmware-azure-set-up-replication.md) konfigurálása és a [replikáció engedélyezése](vmware-azure-enable-replication.md).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * A replikációs forrás és cél megadása.
-> * A replikációs forráskörnyezet (többek között a helyszíni Azure Site Recovery-összetevők), valamint a replikálási célkörnyezet beállítása.
+> * Állítsa be a forrás replikálási beállításai, és a egy a helyszíni Site Recovery konfigurációs kiszolgálónak.
+> * A replikációs cél beállítások megadása.
 > * Hozzon létre replikációs szabályzatot.
-> * Engedélyezze egy virtuális gép replikációját.
+> * VMware virtuális gép replikációjának engedélyezéséhez.
+
+> [!NOTE]
+> Az oktatóanyagok bemutatják a legegyszerűbb telepítési út esetén. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes útmutatásért tekintse át a cikk az útmutató szakaszban a Site Recovery a tartalom.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Mielőtt elkezdené, érdemes végrehajtania az alábbiakat:
+Végezze el az előző oktatóanyagok:
+1. Győződjön meg arról, hogy [beállítása az Azure](tutorial-prepare-azure.md) a helyszíni VMware-vészhelyreállításhoz az Azure-bA.
+2. Hajtsa végre a [ezeket a lépéseket](vmware-azure-tutorial-prepare-on-premises.md) , hogy a helyszíni VMware-környezet előkészítése a vészhelyreállítás az Azure-bA.
+3. Ebben az oktatóanyagban bemutatjuk, hogyan replikálható egyetlen virtuális Gépet. Ha több VMware virtuális gépeket helyezi üzembe kell használnia a [Deployment Planner eszköz](https://aka.ms/asr-deployment-planner). [További információ](site-recovery-deployment-planner.md) az eszközről.
+4. Ez az oktatóanyag számos lehetőséget szeretne előtérként érdemes használja:
+    - Az oktatóanyag egy OVA sablont használ, a konfigurációs kiszolgáló VMware virtuális gép létrehozásához. Ha nem ezt teszi valamilyen okból, hajtsa végre a [ezek az utasítások](physical-manage-configuration-server.md) manuális beállítása a konfigurációs kiszolgáló.
+    - Ebben az oktatóanyagban a Site Recovery automatikusan letölti és telepíti a MySQL és a konfigurációs kiszolgáló. Ha szeretné, akkor állíthatja, manuálisan helyette. [További információk](vmware-azure-deploy-configuration-server.md#configure-settings).
 
-- [Tekintse át az architektúrát](vmware-azure-architecture.md), hogy szerepel-e benne ez a vészhelyreállítási forgatókönyv.
-- Ha szeretné részletesebben is megismerni a VMware virtuális gépek vészhelyreállításának beállítását, tekintse át és használja az alábbi forrásanyagokat:
-    - [Gyakori kérdéseket](vmware-azure-common-questions.md) a VMware vészhelyreállításával kapcsolatban.
-    - [Ismerje meg](vmware-physical-azure-support-matrix.md), hogy mit támogatott és mi szükséges a VMware esetén.
-- Ebben az oktatóanyagban bemutatjuk, hogyan replikálható egyetlen virtuális Gépet. Ha több virtuális gépre telepíti, használjon a [Deployment Planner eszköz](https://aka.ms/asr-deployment-planner) érdekében az üzembe helyezésének megtervezése. [További információ](site-recovery-deployment-planner.md) az eszközről.
-
-És tekintse át a következő tippeket:
-- Ez az oktatóanyag egy OVA-sablonnal hozza létre a konfigurációs kiszolgáló VMware virtuális gépét. Ha nem ezt teszi, hajtsa végre a [ezek az utasítások](physical-manage-configuration-server.md) manuális beállítása a konfigurációs kiszolgálón.
-- Ebben az oktatóanyagban a Site Recovery tölti le és telepíti a MySQL-t a konfigurációs kiszolgálóra. Ha szeretné, akkor állíthatja, manuálisan helyette. [További információk](vmware-azure-deploy-configuration-server.md#configure-settings).
-  >A konfigurációs kiszolgálói sablon legújabb verzióját közvetlenül letöltheti a [Microsoft letöltőközpontból](https://aka.ms/asrconfigurationserver).
-  Az OVF-sablon a megadott licenc egy próbalicencre 180 napig érvényes. A virtuális gépen futó Windows aktiválni kell a szükséges licenccel. 
 
 
 
@@ -65,15 +59,18 @@ Mielőtt elkezdené, érdemes végrehajtania az alábbiakat:
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
-A forrás környezetében egyetlen, magas rendelkezésre állású van szüksége, a helyi gép gazdagépre a helyszíni Site Recovery-összetevőit. Ilyen összetevő lehet a konfigurációs kiszolgáló, a folyamatkiszolgáló és a fő célkiszolgáló:
+A forráskörnyezetében szüksége van egy egyetlen, magas rendelkezésre állású helyszíni gépre ezeket a helyszíni Site Recovery-összetevők futtatásához:
 
-- A konfigurációs kiszolgáló koordinálja a helyszíni rendszer és az Azure közötti kommunikációt, és felügyeli az adatreplikációt.
-- A folyamatkiszolgáló replikációs átjáróként üzemel. Ez fogadja a replikált adatokat; gyorsítótárazás, tömörítés és titkosítással optimalizálja őket majd küld, hogy a gyorsítótárban a fiók az Azure-ban. A folyamatkiszolgáló ezenfelül telepíti a mobilitási szolgáltatást a replikálni kívánt virtuális gépekre, és elvégzi a helyszíni VMware virtuális gépek automatikus felderítését.
-- A fő célkiszolgáló az Azure-ból történő feladat-visszavétel során kezeli a replikációs adatokat.
-
-A konfigurációs kiszolgáló magas rendelkezésre állású VMware virtuális gépként való beállításához töltsön le egy előkészített Open Virtualization Application-sablont (OVA, nyílt virtualizációs alkalmazás), és importálja a VMware-be a virtuális gép létrehozásához. Miután beállította a konfigurációs kiszolgálót, regisztrálja a tárolóban. A regisztrációt követően a Site Recovery felderíti a helyszíni VMware virtuális gépeket.
+- **Konfigurációs kiszolgáló**: A konfigurációs kiszolgáló koordinálja a helyszíni rendszer és az Azure közötti kommunikációt, és felügyeli az adatreplikációt.
+- **Folyamatkiszolgáló**: A folyamatkiszolgáló replikációs átjáróként üzemel. Ez fogadja a replikált adatokat; gyorsítótárazás, tömörítés és titkosítás segítségével optimalizálja őket, és elküldi azokat a gyorsítótárfiókot, az Azure-ban. A folyamatkiszolgáló Ezenfelül telepíti a mobilitási szolgáltatás ügynökének szeretne replikálni, virtuális gépeken, és elvégzi a helyszíni VMware virtuális gépek automatikus felderítését.
+- **Fő célkiszolgáló**: A fő célkiszolgáló az Azure-ból történő feladat-visszavétel során kezeli a replikációs adatokat.
 
 
+Ezek az összetevők mindegyikét egyetlen helyszíni gépeken, az úgynevezett együtt települnek a *konfigurációs kiszolgáló*. Alapértelmezés szerint a VMware-vészhelyreállításhoz beállítottuk a konfigurációs kiszolgáló magas rendelkezésre állású VMware virtuális gépként. Ehhez töltse le egy előkészített Open Virtualization alkalmazás (OVA) sablont, és importálja a VMware-be a virtuális gép létrehozásához. 
+
+- A konfigurációs kiszolgáló legújabb verzióját a portálon érhető el. Emellett letöltheti közvetlenül a [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+- Ha valamilyen okból az OVA sablon nem használható egy virtuális gép beállításához, kövesse az [ezek az utasítások](physical-manage-configuration-server.md) manuális beállítása a konfigurációs kiszolgálón.
+- Az OVF-sablon a megadott licenc egy próbalicencre 180 napig érvényes. A virtuális gépen futó Windows aktiválni kell a szükséges licenccel. 
 
 
 ### <a name="download-the-vm-template"></a>A virtuálisgép-sablon letöltése
@@ -105,7 +102,7 @@ A konfigurációs kiszolgáló magas rendelkezésre állású VMware virtuális 
 
 ## <a name="add-an-additional-adapter"></a>További adapter hozzáadása
 
-Ha további hálózati adaptereket szeretne hozzáadni a konfigurációs kiszolgálóhoz, ezt azelőtt tegye meg, hogy regisztrálná a kiszolgálót a tárolóban. A regisztrálást követően további adapterek hozzáadása nem támogatott.
+Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszolgálót, adja hozzá ahhoz regisztrálja a kiszolgálót a tárolóban. A regisztrálást követően további adapterek hozzáadása nem támogatott.
 
 1. A vSphere Client-leltárban kattintson a jobb gombbal a virtuális gépre, és válassza az **Edit Settings** (Beállítások szerkesztése) elemet.
 2. A **Hardware** (Hardver) területen válassza az **Add** > **Ethernet Adapter** (Hozzáadás > Ethernet-adapter) elemet. Ezután kattintson a **Tovább** gombra.
@@ -114,6 +111,8 @@ Ha további hálózati adaptereket szeretne hozzáadni a konfigurációs kiszolg
 
 
 ## <a name="register-the-configuration-server"></a>A konfigurációs kiszolgáló regisztrálása 
+
+Miután a konfigurációs kiszolgáló be van állítva, akkor regisztrálja a tárolóban.
 
 1. A VMWare vSphere Client-konzolon kapcsolja be a virtuális gépet.
 2. A virtuális gép a bekapcsolásakor egy Windows Server 2016 telepítési folyamatot indít el. Fogadja el a licencszerződést, és adjon meg egy rendszergazdai jelszót.
@@ -124,7 +123,11 @@ Ha további hálózati adaptereket szeretne hozzáadni a konfigurációs kiszolg
 7. Az eszköz végrehajt néhány konfigurációs feladatot, majd újraindul.
 8. Jelentkezzen be újra a gépre. A konfigurációs kiszolgáló felügyeleti varázslója néhány másodpercen belül automatikusan elindul.
 
+
 ### <a name="configure-settings-and-add-the-vmware-server"></a>Beállítások konfigurálása és a VMware-kiszolgáló hozzáadása
+
+Befejezés beállítását, és a konfigurációs kiszolgáló regisztrálása. 
+
 
 1. A konfigurációs kiszolgáló felügyeleti varázslójában válassza **kapcsolat beállítása**. A legördülő menük először válassza ki a felderítés és leküldéses forrásgépek futó mobilitási szolgáltatás telepítéséhez használja a beépített folyamatkiszolgáló hálózati Adaptert, és válassza ki a hálózati Adaptert, amely a konfigurációs kiszolgáló használ a kapcsolat az Azure-ral. Ezután válassza a **Save** (Mentés) lehetőséget. Ez a beállítás konfigurálását követően nem módosítható.
 2. A **Helyreállítási tár kiválasztása** területen válassza ki az Azure-előfizetést, valamint a megfelelő erőforráscsoportot és tárolót.
@@ -140,7 +143,7 @@ Ha további hálózati adaptereket szeretne hozzáadni a konfigurációs kiszolg
 10. A regisztráció befejezését követően ellenőrizze az Azure Portalon, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepelnek-e a tároló **Forrás** lapján. Ezután válassza az **OK** gombot a célbeállítások konfigurálásához.
 
 
-A Site Recovery a megadott beállításokkal csatlakozik a VMware-kiszolgálókhoz, és felderíti a virtuális gépeket.
+A konfigurációs kiszolgáló regisztrálása után a Site Recovery a VMware-kiszolgálókhoz a megadott beállításokkal csatlakozik, és felderíti a virtuális gépeket.
 
 > [!NOTE]
 > Akár 15 vagy még több percbe is beletelhet, amíg a fiók neve megjelenik a portálon. Az azonnali frissítéshez válassza a **Konfigurációs kiszolgálók** > ***kiszolgáló neve*** > **Kiszolgáló frissítése** elemet.
@@ -171,7 +174,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
-A replikáció engedélyezése a következő módon történik:
+Virtuális gépek replikálásának engedélyezése a következőképpen:
 
 1. Válassza az **Alkalmazás replikálása** > **Forrás** elemet.
 1. A **Forrás** mezőben válassza a **Helyszíni** lehetőséget, majd a **Forrás helye** mezőben válassza ki a konfigurációs kiszolgálót.
@@ -181,7 +184,7 @@ A replikáció engedélyezése a következő módon történik:
 1. A **Cél** mezőben válassza ki az előfizetést és az erőforráscsoportot, amelyben a feladatátviteli virtuális gépeket létre szeretné hozni. A Resource Manager-alapú üzemi modellt használjuk. 
 1. Válassza ki azt az Azure-hálózatot és alhálózatot, amelyhez a feladatátvétel után létrejövő Azure-beli virtuális gépek csatlakoznak.
 1. Ha a hálózati beállítást minden olyan virtuális gépre alkalmazni szeretné, amelyen engedélyezte a replikációt, válassza a **Beállítás most a kijelölt gépekhez** lehetőséget. Ha az egyes gépeknél külön-külön szeretné beállítani az Azure-hálózatot, kattintson a **Beállítás később** elemre.
-1. A **Virtuális gépek** > **Virtuális gépek kijelölése** menüben válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson az **OK** gombra. Ha nem tudja megtekintése/kiválasztani bármely adott virtuális gép, kattintson a [Itt](https://aka.ms/doc-plugin-VM-not-showing) a probléma megoldásához.
+1. A **Virtuális gépek** > **Virtuális gépek kijelölése** menüben válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson az **OK** gombra. Ha nem tudja megtekintése/kiválasztani bármely adott virtuális gép [további](https://aka.ms/doc-plugin-VM-not-showing) a probléma megoldása.
 1. A **Tulajdonságok** > **Tulajdonságok konfigurálása** mezőben válassza ki a fiókot, amelynek használatával a folyamatkiszolgáló automatikusan telepíti a mobilitási szolgáltatást a gépen.
 1. A **Replikációs beállítások** > **Replikációs beállítások konfigurálása** területen ellenőrizze, hogy a megfelelő replikációs szabályzat van-e kiválasztva.
 1. Válassza ki a **Replikáció engedélyezése** elemet. Amikor engedélyezi a replikációt egy adott virtuális gépen, a Site Recovery telepíti a mobilitási szolgáltatást.
@@ -190,6 +193,6 @@ A replikáció engedélyezése a következő módon történik:
 1. A hozzáadott virtuális gépek monitorozásához ellenőrizze a virtuális gépek legutolsó felderítésének időpontját a **Konfigurációs kiszolgálók** > **Legutóbbi kapcsolat** területen. Ha nem szeretné megvárni az ütemezett felderítést a virtuális gépek hozzáadásához, emelje ki a konfigurációs kiszolgálót (ne válassza ki), majd válassza a **Frissítés** elemet.
 
 ## <a name="next-steps"></a>További lépések
-
+Replikáció engedélyezése után egy próbát győződjön meg arról, hogy minden a várt módon működik.
 > [!div class="nextstepaction"]
-> A replikáció engedélyezése után [vészhelyreállítási próba végrehajtása](site-recovery-test-failover-to-azure.md) , győződjön meg arról, hogy minden a várt módon működik.
+> [Vészhelyreállítási próba végrehajtása](site-recovery-test-failover-to-azure.md)

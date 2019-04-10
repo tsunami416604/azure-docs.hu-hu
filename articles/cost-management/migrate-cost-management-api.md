@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: d9c5d731120f939cf7fb28c718cc4159a3702e44
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518779"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279873"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Áttelepítés a nagyvállalati szerződés a Microsoft ügyfél-megállapodás API-k
 
@@ -81,7 +81,7 @@ Ha bármely meglévő EA API-kat használja, frissítenie őket MCA számlázás
 | Cél | Régi ajánlat | Új ajánlat |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
-| Power BI | [A Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) content pack és összekötő | [A Microsoft Azure Consumption Insights Power BI alkalmazás](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) és [ Azure Consumption Insights-összekötő](/power-bi/desktop-connect-azure-consumption-insights) |
+| Power BI | [A Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) content pack és összekötő | [A Microsoft Azure Consumption Insights Power BI alkalmazás](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) és [Azure Consumption Insights-összekötő](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>API-k egyenlegét és a kreditek
 
@@ -176,7 +176,7 @@ A tulajdonság nevét, amely tartalmazza a használati rekordokból álló tömb
 | AccountNameAccountOwnerId és AccountOwnerEmail | – | Az előfizetés létrehozója nem követi nyomon. InvoiceSectionName (azonos departmentName) használja. |
 | További információk | additionalInfo | &nbsp;  |
 | Külön számlázott díjak | isAzureCreditEligible | Vegye figyelembe, hogy ezek a Tulajdonságok opposites. IsAzureCreditEnabled értéke igaz, ha ChargesBilledSeparately false (hamis) lesz. |
-| Felhasznált mennyiség | Mennyiség | &nbsp; |
+| Felhasznált mennyiség | MENNYISÉG | &nbsp; |
 | Használt szolgáltatás | consumedService | Pontos karakterlánc-értékek eltérőek lehetnek. |
 | Használt szolgáltatás azonosítója | None | &nbsp; |
 | Költséghely | costCenter | &nbsp; |

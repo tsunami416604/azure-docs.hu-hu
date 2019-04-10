@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e078f838620f633743b27d26ba1218e753ff690e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f3f013f2e3090b54846ebba94ef54506275d6311
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259822"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282865"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -144,7 +144,7 @@ Ha a szolgáltató biztosít ExpressRoute mindkét helyen, a szolgáltatónál d
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Használhatok több ExpressRoute-kapcsolatcsoporttal a az azonos metro? Is lehet hivatkozni őket az ugyanazon a virtuális hálózaton?
 
-Igen. Használhat több ExpressRoute-Kapcsolatcsoportok azonos vagy eltérő szolgáltatókkal. Ha a metro rendelkezik több ExpressRoute-társviszony-létesítési helyszínek, és a Kapcsolatcsoportok hozhatók létre, különböző társviszony-létesítési helyszínek, az azonos virtuális hálózatban csatolhatja őket. A Kapcsolatcsoportok társviszony-létesítési ugyanott lehet létrehozni, ha nem kapcsolja a hálózatokat az azonos virtuális hálózatban. Minden hely neve az Azure Portalon vagy a PowerShell vagy a parancssori felületen API társviszony-létesítési helyszínen jelöli. Például válassza ki a társviszony-létesítési helyszínek "Szingapúr" és "Szingapúr2", és a Kapcsolatcsoportok csatlakozzon az egyes ugyanahhoz a virtuális hálózathoz. 
+Igen. Használhat több ExpressRoute-Kapcsolatcsoportok azonos vagy eltérő szolgáltatókkal. Ha a metro rendelkezik több ExpressRoute-társviszony-létesítési helyszínek, és a Kapcsolatcsoportok hozhatók létre, különböző társviszony-létesítési helyszínek, az azonos virtuális hálózatban csatolhatja őket. A Kapcsolatcsoportok társviszony-létesítési ugyanott lehet létrehozni, ha továbbra is kapcsolat őket az azonos virtuális hálózatban, de csak legfeljebb 4 ExpressRoute-Kapcsolatcsoportok mindegyik társviszony-létesítési helyen. Például válassza ki a társviszony-létesítési helyszínek "Szingapúr" és "Szingapúr2", és a Kapcsolatcsoportok csatlakozzon az egyes ugyanahhoz a virtuális hálózathoz. 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Hogyan létesíthetek kapcsolatot a virtuális hálózatok csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz
 

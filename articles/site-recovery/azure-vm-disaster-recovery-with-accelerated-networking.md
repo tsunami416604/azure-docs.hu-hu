@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: ff772d4f53b279d8d048720beaa62cfdeb6401eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c7edc7979636ced8697aa5ad724f9c6600d840bb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850414"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283358"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Vészhelyreállítás Azure virtuális gép gyorsított hálózatkezelés
 
@@ -37,13 +37,13 @@ Az Azure Site Recovery támogatja az engedélyezése a gyorsított hálózatkeze
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 A következő disztribúciók az Azure katalógusából beépített támogatottak:
-* **A Windows Server 2016 Datacenter**
-* **A Windows Server 2012 R2 Datacenter**
+* **Windows Server 2016 Datacenter**
+* **Windows Server 2012 R2 Datacenter**
 
 ### <a name="supported-vm-instances"></a>Támogatott Virtuálisgép-példányok
-Gyorsított hálózatkezelés legtöbb általános célú és a 2 vagy több vcpu-k méretű számításra optimalizált példányok esetén támogatott.  A támogatott sorozat: D/DSv2 és az F/Fs
+Gyorsított hálózatkezelés legtöbb általános célú és a 2 vagy több vcpu-k méretű számításra optimalizált példányok esetén támogatott.  A támogatott sorozat a következők: D/DSv2 és az F/Fs
 
-Hyper-Threading technológia támogató példányokon gyorsított hálózatkezelés támogatott 4 vagy több vcpu-k a Virtuálisgép-példányokon. Támogatott sorozat: a DSv3/D, E/ESv3, Fsv2 és Ms és Mms
+Hyper-Threading technológia támogató példányokon gyorsított hálózatkezelés támogatott 4 vagy több vcpu-k a Virtuálisgép-példányokon. Támogatott sorozat a következők: A DSv3/D, E/ESv3, Fsv2 és Ms és Mms
 
 További információ a Virtuálisgép-példányokon: [Windows Virtuálisgép-méretek](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -62,9 +62,9 @@ A következő disztribúciók az Azure katalógusából beépített támogatotta
 * **Oracle Linux 7.4**
 
 ### <a name="supported-vm-instances"></a>Támogatott Virtuálisgép-példányok
-Gyorsított hálózatkezelés legtöbb általános célú és a 2 vagy több vcpu-k méretű számításra optimalizált példányok esetén támogatott.  A támogatott sorozat: D/DSv2 és az F/Fs
+Gyorsított hálózatkezelés legtöbb általános célú és a 2 vagy több vcpu-k méretű számításra optimalizált példányok esetén támogatott.  A támogatott sorozat a következők: D/DSv2 és az F/Fs
 
-Hyper-Threading technológia támogató példányokon gyorsított hálózatkezelés támogatott 4 vagy több vcpu-k a Virtuálisgép-példányokon. Támogatott sorozat: a DSv3/D, E/ESv3, Fsv2 és Ms és Mms.
+Hyper-Threading technológia támogató példányokon gyorsított hálózatkezelés támogatott 4 vagy több vcpu-k a Virtuálisgép-példányokon. Támogatott sorozat a következők: A DSv3/D, E/ESv3, Fsv2 és Ms és Mms.
 
 További információ a Virtuálisgép-példányokon: [Linux Virtuálisgép-méretek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 

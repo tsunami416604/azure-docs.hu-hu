@@ -1,7 +1,6 @@
 ---
 title: A dinamikus tervezetek létrehozása-paraméterek használata
 description: Ismerje meg a statikus és dinamikus paraméterek, és hogyan használja őket hozza létre a dinamikus tervek.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/12/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 538015f3cd26d451285f1fd66853366f814f3b0a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 9b5b151c62c4294563f704dc9a0cf7daeaca874f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805572"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279975"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Paramétereknek dinamikus tervezetek létrehozása
 
@@ -77,8 +76,8 @@ A paraméter értéke a tervrajz-definícióban meghatározott nevezzük egy **s
 
 Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie saját értékekre:
 
-- `{YourMG}` – Cserélje le a felügyeleti csoport nevére
-- `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
+- `{YourMG}` – Cserélje le a felügyeleti csoport neve
+- `{subscriptionId}` – Cserélje le az előfizetés-azonosító
 
 ##### <a name="blueprint-level-parameter"></a>Tervrajz szint paraméter
 

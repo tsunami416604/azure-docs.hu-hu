@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/27/2019
-ms.openlocfilehash: bf355aec2a76a42986320a74447860a8baa968ef
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: cd07ff5beddf65c9788c9ba94802ba2d37172923
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257400"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360705"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 frissítése
 
@@ -316,9 +316,9 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 <!-- #### Identity -->
 <!-- #### Marketplace -->
 
-### <a name="syslog"></a>Rendszernapló 
-- A syslog-konfiguráció nincs megőrizve folyamata alatt tartózkodnak egy frissítést, a syslog-ügyfél elveszíti a annak konfigurációját, és leállítja a továbbított syslog-üzeneteket eredményez. A probléma az Azure Stack minden verziójára vonatkozik, a syslog-ügyfél (1809) a nyilvánosan elérhető verzió óta.
-A megoldás, hogy a syslog-ügyfél újrakonfigurálása az Azure Stack-frissítés telepítését követően.
+### <a name="syslog"></a>Rendszernapló
+
+- A syslog-konfiguráció nincs megőrizve egy frissítés tartózkodnak okoz a syslog-ügyfél elveszíti a konfigurációját, és leállítja a továbbított syslog-üzeneteket. A probléma az Azure Stack minden verziójára vonatkozik, a syslog-ügyfél (1809) a nyilvánosan elérhető verzió óta. A probléma elkerüléséhez konfigurálja újra a syslog-ügyfél az Azure Stack-frissítés telepítését követően.
 
 ## <a name="download-the-update"></a>A frissítés letöltése
 

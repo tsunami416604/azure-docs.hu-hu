@@ -16,16 +16,16 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: c9f43eb1623ec784bd960fb182dffec48e7b0833
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: 0fe5b055665ef5a770fba71fdefcfd13b9809e37
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481246"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282270"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 frissítése
 
-*Vonatkozik: Az Azure Stack integrált rendszerek*
+*A következőre érvényes Az Azure Stackkel használható integrált rendszerek*
 
 Ez a cikk ismerteti a 1811 csomag tartalmát. A frissítési csomag fejlesztései, javításokat és új funkciók az Azure Stack ezen verziója tartalmazza. Ez a cikk is ebben a kiadásban az ismert problémákat, és tartalmaz egy hivatkozást, így a frissítés letölthető. Ismert problémákkal kapcsolatban közvetlenül a frissítési folyamat, és a build (telepítés utáni) problémái vannak felosztva.
 
@@ -184,15 +184,15 @@ A frissítés tartalmazza a következő új funkciókat és fejlesztéseket az A
 
 Ez a frissítés a következő biztonsági frissítéseket telepíti:  
 
-- [CVE-2018-8256](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8256)
-- [CVE-2018-8407](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8407)
+- [CVE – 2018-8256](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8256)
+- [CVE – 2018-8407](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8407)
 - [CVE-2018-8408](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8408)
-- [CVE-2018-8415](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8415)
-- [CVE-2018-8417](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8417)
+- [CVE – 2018-8415](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8415)
+- [CVE – 2018-8417](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8417)
 - [CVE-2018-8450](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8450)
-- [CVE-2018-8471](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8471)
-- [CVE-2018-8476](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8476)
-- [CVE-2018-8485](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8485)
+- [CVE – 2018-8471](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8471)
+- [CVE – 2018-8476](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8476)
+- [CVE – 2018-8485](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8485)
 - [CVE-2018-8544](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8544)
 - [CVE-2018-8547](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8547)
 - [CVE-2018-8549](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8549)
@@ -202,7 +202,7 @@ Ez a frissítés a következő biztonsági frissítéseket telepíti:
 - [CVE-2018-8562](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8562)
 - [CVE-2018-8565](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8565)
 - [CVE-2018-8566](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8566)
-- [CVE-2018-8584](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8584)
+- [CVE – 2018-8584](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8584)
 
 További információ a biztonsági rések, kattintson a fenti hivatkozásokat a, vagy tekintse meg a Microsoft Tudásbázis cikkei [4478877](https://support.microsoft.com/help/4478877).
 
@@ -270,7 +270,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
     Mindkét riasztás biztonságosan figyelmen kívül hagyhatja. Ezek automatikusan megszűnik idővel.  
 
-### <a name="compute"></a>Számítás
+### <a name="compute"></a>Compute
 
 - Amikor létrehozza az új Windows virtuális gép (VM), a **beállítások** panel megköveteli, hogy a folytatáshoz válassza ki a nyilvános bejövő port. 1811 Ez a beállítás megadása kötelező, de nem lesz hatása. Ennek az oka a funkció működéséhez az Azure-tűzfal, amely az Azure Stackben není implementována. Választhat **nem nyilvános bejövő portok**, vagy az egyéb beállításokat a virtuális gép létrehozásának folytatásához. A beállítás nem lesz hatása.
 
@@ -331,7 +331,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 - Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy jelentkezzen be az SSH-kulcsok használata. Áthidaló megoldásként használja a Linux-bővítményt a Virtuálisgép-hozzáférés SSH-kulcsok megvalósításához a kiépítés után, vagy jelszóalapú hitelesítés használatára.
 
-### <a name="networking"></a>Hálózatkezelés  
+### <a name="networking"></a>Hálózat  
 
 <!-- 1766332 - IS ASDK --> 
 - A **hálózatkezelés**, ha rákattint **VPN-átjáró létrehozása** egy VPN-kapcsolat beállítása **csoportházirend-alapú** jelenik meg a VPN-típust. Válassza ezt a beállítást. Csak a **útválasztó alapú** beállítás támogatott az Azure Stackben.
@@ -375,7 +375,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - Miután engedélyezte az automatikus biztonsági mentést, a Feladatütemező szolgáltatás hiányzóra tiltva váratlanul. A biztonsági mentési hálózativezérlő-szolgáltatás észleli, hogy az automatikus biztonsági mentés le vannak tiltva, és figyelmeztetés a felügyeleti portálon. Ez a figyelmeztetés várható, ha az automatikus biztonsági mentés le vannak tiltva. 
     - OK: A probléma van a szolgáltatásban, amely az ütemezési konfiguráció elvesztését eredményezi egy hiba miatt. Ez a hiba nem változik, a tárolási helyét, a felhasználónevet, a jelszó vagy a titkosítási kulcs.   
     - Szervizelési: A probléma megoldásához nyissa meg a biztonsági mentési infrastruktúra erőforrás-szolgáltató a biztonsági mentés vezérlő beállítások panelre, és válassza **engedélyezze az automatikus biztonsági mentés**. Ellenőrizze, hogy a kívánt gyakoriság és megőrzési időszak beállítása.
-    - Előfordulás: Nem súlyos 
+    - Előfordulás: Alacsony 
 
 <!-- ### SQL and MySQL-->
 
@@ -391,6 +391,9 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 <!-- #### Identity -->
 <!-- #### Marketplace -->
 
+### <a name="syslog"></a>Rendszernapló 
+- A syslog-konfiguráció nincs megőrizve folyamata alatt tartózkodnak egy frissítést, a syslog-ügyfél elveszíti a annak konfigurációját, és leállítja a továbbított syslog-üzeneteket eredményez. A probléma az Azure Stack minden verziójára vonatkozik, a syslog-ügyfél (1809) a nyilvánosan elérhető verzió óta.
+A megoldás, hogy a syslog-ügyfél újrakonfigurálása az Azure Stack-frissítés telepítését követően.
 
 ## <a name="download-the-update"></a>A frissítés letöltése
 

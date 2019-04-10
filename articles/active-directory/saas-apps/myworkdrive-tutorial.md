@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: c0557ccc995e591187aae24dfd7078755fec3e9a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d16aa8442f71845e7b46377c6c290212f9c400a3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885521"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280502"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-myworkdrive"></a>Oktatóanyag: A MyWorkDrive Azure Active Directory-integráció
 
@@ -115,9 +115,9 @@ A MyWorkDrive konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Adjon meg egy saját vállalati MyWorkDrive Server gazdagép name:e.g.
     > 
-    > Válasz URL: `https://yourserver.yourdomain.com/SAML/AssertionConsumerService.aspx`
+    > Válasz URL-címe: `https://yourserver.yourdomain.com/SAML/AssertionConsumerService.aspx`
     > 
-    > Bejelentkezési URL-címe:`https://yourserver.yourdomain.com/Account/Login-saml`
+    > Sign-on URL:`https://yourserver.yourdomain.com/Account/Login-saml`
     > 
     > Kapcsolattartó [MyWorkDrive támogatási csapatának](mailto:support@myworkdrive.com) Ha nem tudja, hogyan állíthatja be a saját állomás nevét és az SSL-tanúsítványt ezeket az értékeket.
 
@@ -207,9 +207,9 @@ Ha a hozzáférési panelen a MyWorkDrive csempére kattint, meg kell lehet auto
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

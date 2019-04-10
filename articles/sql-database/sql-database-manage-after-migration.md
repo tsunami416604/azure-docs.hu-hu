@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: joesackmsft
 ms.author: josack
-ms.reviewer: carlrab
+ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 2b8c35450ab4586f619993aeb9a578c83cafc0c6
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216934"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358420"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database-ben az egyetlen vagy készletezett adatbázisok kezelése
 
@@ -83,7 +83,7 @@ Az SQL Database nagyon komolyan veszi biztonság és adatvédelem. SQL Database 
 
 Nincsenek [két hitelesítési módszerek](sql-database-control-access.md#authentication) SQL Database-ben érhető el:
 
-- [Az Azure Active Directory-hitelesítés](sql-database-aad-authentication.md)
+- [Azure Active Directory-hitelesítés](sql-database-aad-authentication.md)
 - SQL-hitelesítés
 
 A hagyományos windows-hitelesítés nem támogatott. Az Azure Active Directory (AD) egy olyan központi identitás- és hozzáférés a felügyeleti szolgáltatás. Ez nagyon kényelmesen megadhat egy egyszeri bejelentkezéses hozzáférést (SSO), a személyzet összes a szervezetben. Ez azt jelenti, hogy a hitelesítő adatok meg vannak osztva az összes Azure-szolgáltatások egyszerűbb hitelesítéshez. Támogatja az AAD [többtényezős hitelesítés (többtényezős hitelesítést)](sql-database-ssms-mfa-authentication.md) és a egy [néhány kattintással](../active-directory/hybrid/how-to-connect-install-express.md) AAD integrálható a Windows Server Active Directoryval. SQL-hitelesítés már használja egy, az elmúlt ugyanúgy működik. Felhasználónevet/jelszót ad meg, és hitelesítheti a felhasználókat egy adott SQL Database-kiszolgáló bármely olyan adatbázisába. Ez lehetővé teszi az SQL Database és az SQL Data Warehouse kínálta a multi-factor authentication és a Vendég felhasználói fiókok Azure AD-tartomány belül. Ha már rendelkezik egy Active Directory a helyszíni, meg is összevonható a címtár az Azure Active Directoryval, a címtár kiterjesztése az Azure-bA.
@@ -207,7 +207,7 @@ Express Route lehetővé teszi akár 2-a sávszélességre vonatkozó korlátjá
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Az SQL Database minden olyan szabályozási követelményeknek megfeleljenek, és hogyan, amely segít a saját szervezet megfelelőségéről
 
-SQL Database egy széles körű szabályozásoknak megfelelő. Szeretné megtekinteni, hogy teljesül-e megfelelőségre legfrissebb gyűjteményét, látogasson el a [Microsoft Trust Center](https://microsoft.com/trustcenter/compliance/complianceofferings) és a megfelelőségre, megtekintheti, ha az SQL Database tartalmazza a megfelelő Azure-szolgáltatásokat a szervezet számára fontos részletes keresztül. Fontos megjegyezni, hogy bár az SQL Database előfordulhat, hogy minősítéssel kell egy megfelelő szolgáltatás, akkor célszerű a szervezeti szolgáltatás a megfelelőségi, de nem automatikusan garantálja, hogy.
+SQL Database egy széles körű szabályozásoknak megfelelő. Megtekintheti, hogy teljesül-e az SQL Database által megfelelőségre legfrissebb gyűjteményét, látogasson el a [Microsoft Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) és a megfelelőségre, tekintse meg, ha az SQL Database a megfelelő alá tartozik, szervezete számára fontos részletes keresztül Azure-szolgáltatások. Fontos megjegyezni, hogy bár az SQL Database előfordulhat, hogy minősítéssel kell egy megfelelő szolgáltatás, akkor célszerű a szervezeti szolgáltatás a megfelelőségi, de nem automatikusan garantálja, hogy.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Intelligens adatbázis figyelését és karbantartását az áttelepítés után
 
@@ -283,7 +283,7 @@ Az SQL Database a Basic, Standard és prémium szintű különböző szolgáltat
 
 |**Szolgáltatásszint**|**Gyakori használati esetek**|
 |---|---|
-|**Basic**|Alkalmazások egy néhány felhasználók és a egy adatbázis, amely nem rendelkezik magas egyidejűségi, a méretezési csoport és a teljesítményre vonatkozó követelményeknek. |
+|**Alapszintű**|Alkalmazások egy néhány felhasználók és a egy adatbázis, amely nem rendelkezik magas egyidejűségi, a méretezési csoport és a teljesítményre vonatkozó követelményeknek. |
 |**Standard**|Így jelentős feldolgozási, méretezést és teljesítményt követelményekkel rendelkező alkalmazások alacsony és közepes i/o-igényeknek. |
 |**Prémium**|Az igénylést i/o-alkalmazásokat az egyidejű felhasználók, a magas CPU/memória és a magas. A prémium szint nagy feldolgozási, nagy átviteli sebességű és késés bizalmas adatokat kezelő alkalmazásokhoz használhatja. |
 |||

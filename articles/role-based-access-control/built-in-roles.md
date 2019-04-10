@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 4557ce7dea207be0bc6f68a62e3dd7f81ce87911
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.openlocfilehash: f505f922685cd192525814df25cca1a1401d2913
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010668"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281216"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 
@@ -121,7 +121,6 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [Spatial Anchors-fióktulajdonos](#spatial-anchors-account-owner) | Lehetővé teszi a fiókban található térbeli fixpontok kezelését, beleértve azok törlését is |
 | [Spatial Anchors-fiókolvasó](#spatial-anchors-account-reader) | Lehetővé teszi a fiókban található térbeli fixpontok megkeresését és azok tulajdonságainak beolvasását |
 | [SQL-adatbázisok közreműködője](#sql-db-contributor) | Lehetővé teszi az SQL Database-adatbázisok kezelését, ezekhez nem biztosít hozzáférést. Emellett a biztonsággal kapcsolatos házirendjeiket vagy a szülő SQL Server nem tudja kezelni. |
-| [SQL Managed Instance Contributor](#sql-managed-instance-contributor) | SQL felügyelt példányok kezelését teszi lehetővé, de nem adhat hozzáférést másoknak. |
 | [SQL-biztonságkezelő](#sql-security-manager) | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok biztonsági házirendjeinek felügyeletére az azokhoz való hozzáférés nélkül. |
 | [SQL Server közreműködője](#sql-server-contributor) | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok felügyeletére az azokhoz való hozzáférés nélkül. Az adatbázisok biztonsági házirendjeinek felügyeletét nem teszi lehetővé. |
 | [Tárfiók-közreműködő](#storage-account-contributor) | Lehetővé teszi tárfiókok kezelését, de ezekhez nem biztosít hozzáférést. |
@@ -2229,31 +2228,6 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
-> | **Adatműveletek** |  |
-> | *nincs* |  |
-> | **Nem adatműveletek** |  |
-> | *nincs* |  |
-
-## <a name="sql-managed-instance-contributor"></a>SQL Managed Instance Contributor
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **Leírás** | SQL felügyelt példányok kezelését teszi lehetővé, de nem adhat hozzáférést másoknak. |
-> | **Azonosító** | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
-> | **Műveletek** |  |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
-> | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
-> | Microsoft.Network/networkSecurityGroups/write | A hálózati biztonsági csoport létrehozása vagy frissítése egy meglévő hálózati biztonsági csoport |
-> | Microsoft.Network/routeTables/write | Létrehoz egy útvonaltáblát, vagy egy meglévő útvonaltábla frissítése |
-> | Microsoft.Sql/locations/*/read |  |
-> | Microsoft.Sql/managedInstances/* |  |
-> | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
-> | Microsoft.Network/virtualNetworks/subnets/write | Virtuális hálózat alhálózatának létrehozása vagy frissítése egy meglévő virtuális hálózat alhálózatához. |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | Egy virtuális hálózathoz csatlakozik. Nem Alertable. |
-> | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
-> | **Nem műveletek** |  |
-> | *nincs* |  |
 > | **Adatműveletek** |  |
 > | *nincs* |  |
 > | **Nem adatműveletek** |  |

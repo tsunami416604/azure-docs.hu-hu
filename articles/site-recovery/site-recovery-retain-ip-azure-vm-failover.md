@@ -2,16 +2,16 @@
 title: Az Azure Site Recovery az Azure virtuális gép feladatátvételi IP-cím megőrzése |} A Microsoft Docs
 description: Ismerteti, hogyan lehet IP-cím megőrzése, ha katasztrófa utáni helyreállítás egy másodlagos régióba az Azure Site Recovery az Azure virtuális gépek feladatátvétele
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: aefb0684ea065841824ad27d1105ef309418c6b9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 618d60417aa6b582eaef94bf75dcf16c74750f83
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090746"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357881"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>IP-cím megőrzése feladatátvétel során
 
@@ -49,7 +49,7 @@ Ez az architektúra a feladatátvétel előtt.
         - Délkelet-Ázsia rendelkezik egy helyreállítási virtuális hálózat (**helyreállítási virtuális hálózat**) azonos **forrása VNet**.
         - Délkelet-Ázsia rendelkezik egy további virtuális hálózat (**Azure virtuális hálózat**) a cím terület 10.2.0.0/16.
         - **Az Azure virtuális hálózat** tartalmaz egy alhálózat (**alhálózat 4**) a cím terület 10.2.4.0/24.
-        - Az SQL Server Always On replikacsomópontokon tartományvezérlő stb találhatók **alhálózat 4**.
+        - Az SQL Server Always On replikacsomópontokon tartományvezérlő stb. találhatók **alhálózat 4**.
     - **A forrás virtuális hálózat** és **Azure virtuális hálózat** site-to-site VPN-kapcsolattal csatlakoznak.
     - **A helyreállítási virtuális hálózat** nem kapcsolódik semmilyen más virtuális hálózattal.
     - **A vállalati** replikált elemek cél IP-címek kiosztása/ellenőrzi. A cél IP-cím megegyezik a forrás IP-cím az egyes virtuális Gépekhez.
@@ -92,7 +92,7 @@ A feladatátvétel előtt az architektúra a következőképpen történik:
 - (Cél) másodlagos régió Azure Délkelet-Ázsia – Délkelet-Ázsia van egy helyreállítási virtuális hálózatok (**helyreállítási VNet 1** és **helyreállítási virtuális hálózat 2**), amelyek megegyeznek a **forrása VNet 1** és **Vnet2 forrás**.
         - **Helyreállítási VNet 1** és **helyreállítási virtuális hálózat 2** alhálózatai megfelelő két alhálózattal rendelkező **forrása VNet 1** és **forrása VNet 2** – Délkelet-Ázsia rendelkezik egy További virtuális hálózatok (**Azure virtuális hálózat**) cím terület 10.3.0.0/16 együtt.
         - **Az Azure virtuális hálózat** tartalmaz egy alhálózat (**alhálózat 4**) a cím terület 10.3.4.0/24.
-        -Az SQL Server Always On csomópont replika tartományvezérlő stb találhatók **alhálózat 4**.
+        -Az SQL Server Always On csomópont replika tartományvezérlő stb. találhatók **alhálózat 4**.
 - Van egy helyek közötti VPN-kapcsolatok száma: 
     - **A forrás virtuális hálózat 1** és **Azure Vnethez**
     - **A forrás virtuális hálózat 2** és **Azure Vnethez**

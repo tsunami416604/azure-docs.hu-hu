@@ -5,14 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: overview
-ms.date: 03/20/2019
+ms.date: 04/08/2019
 ms.author: alkohli
-ms.openlocfilehash: e7a65a6b49544783ed3f40194e2338540819536b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 340ff99aae9acff49ffdeaa43463521debb16a07
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400959"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282814"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Mi az Azure Data Box átjáró?
 
@@ -29,6 +29,8 @@ A Data Box Gatewayt használhatja felhőbe történő adatátvitelre, például 
 - **Folyamatos adatbetöltés** -folyamatosan betölteni az adatokat az az eszköz másolása a felhőbe, az adatok méretétől függetlenül. Mivel az adatok írása az átjáróeszközhöz, az eszköz feltölti az adatokat az Azure Storage.  
 
 - **A kezdeti növekményes átviteli követ tömeges adatátviteli** -Data Box használatát a tömeges egy kapcsolat nélküli módban (kezdeti kezdőérték) és a Data Box-átjáró a növekményes átvitelt (folyamatban lévő hírcsatorna) a hálózati átvitel.
+
+További információért ugorjon [Azure Data Box Gateway használati esetek](data-box-gateway-use-cases.md).
 
 ## <a name="benefits"></a>Előnyök
 

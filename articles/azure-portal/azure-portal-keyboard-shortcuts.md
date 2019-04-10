@@ -12,39 +12,48 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 04/08/2019
 ms.author: kfollis
 ms.custom: accessibility
-ms.openlocfilehash: d9c9c18fb2c20f1b0740a490316826e488049faf
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: fb0b347228fe82725d5246ae9eacdab8dff01257
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881171"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359722"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Az Azure Portalon használható billentyűparancsok
-Ez a cikk bemutatja a billentyűparancsok, amelyek során az Azure Portalon. Előfordulhat, hogy az egyes szolgáltatások saját billentyűparanccsal.
+
+Ez a cikk felsorolja a billentyűparancsok, amely mindenütt működik az Azure Portalon. Előfordulhat, hogy az egyes szolgáltatások saját billentyűparanccsal.
 
 ## <a name="actions"></a>Műveletek
-|Ehhez |Nyomja meg |
+
+|A művelet végrehajtására |Nyomja meg |
 | --- | --- |
-|Új erőforrás létrehozása|G+N|
-|Nyissa meg a "Minden szolgáltatások" panel|G+B|
-|Erőforrások keresése|G+/| 
+|Erőforrás létrehozása|G+N|
+|Nyissa meg **minden szolgáltatás**|G+B|
+|Erőforrások, szolgáltatások és dokumentumok keresése|G+/|
 |Erőforrás menüben elemek keresése|CTRL+/ |
-|A bal oldali ablaktáblán kijelölt elem mozgatása felfelé |ALT + Shift + fel nyíl|
-|A bal oldali ablaktáblán kijelölt elem mozgatása lefelé |ALT + Shift + le nyíl|
+|A bal oldali oldalsáv kijelölt elem feljebb |ALT + Shift + fel nyíl|
+|A bal oldali oldalsáv kijelölt elem mozgatása lefelé |ALT + Shift + le nyíl|
 
 ## <a name="navigation"></a>Navigáció
-|Ehhez |Nyomja meg |
+
+|Ehhez a navigáció |Nyomja meg |
 | --- | --- |
 |Fókusz áthelyezése a parancssávra |G+, |
-|Fókuszváltás a felső és az oldalsó sáv között | G+. |
+|Fókuszváltás a fejlécet és a bal oldali oldalsáv között | G+. |
 
 ## <a name="go-to"></a>Látogasson el ide
-|Ehhez |Nyomja meg |
+
+|Nyissa meg a helyet |Nyomja meg |
 | --- | --- |
-|Az irányítópult megnyitása |G+D |
-|Minden erőforrás megnyitása|G+A |
-|Erőforráscsoportok megnyitása|G+R |
-|Nyissa meg a bal oldali panelen elem ezen a helyen |G+szám|
+|Lépjen a **irányítópult** |G+D |
+|Lépjen a **minden erőforrás**|G+A |
+|Lépjen a **erőforráscsoportok**|G+R |
+|Nyissa meg a bal oldali oldalsáv elem ezen a helyen |G+szám|
+
+## <a name="next-steps"></a>További lépések
+
+- [Kontrasztos megjelenítés bekapcsolása és téma módosítása](azure-portal-change-theme-high-contrast.md)
+- [Támogatott böngészők és eszközök](../azure-preview-portal-supported-browsers-devices.md)

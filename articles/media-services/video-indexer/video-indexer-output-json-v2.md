@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/07/2019
 ms.author: juliako
-ms.openlocfilehash: 552c3fa81a213d0be32c5498cde5a50fb44291d0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 91cd8ab0565279f88a0949f873d6e44d564427af
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892575"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280213"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Az API által előállított Videóindexelő kimenetének vizsgálata
 
@@ -79,7 +79,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |privacyMode|A részletezése a következő módok egyike lehet: **Privát**, **nyilvános**. **Nyilvános** – a videót a fiókját, és bárki, amely rendelkezik a videóra mutató hivatkozást mindenki számára látható-e. **Privát** – a videót a fiókjában mindenki számára látható-e.|
 |időtartam|Egy időtartam, amely leírja a időpontja egy elemzést tartalmaz. Időtartam másodpercen belül van.|
 |thumbnailVideoId|A videót, amelyből a miniatűr hibaállapota azonosítója.
-|thumbnailId|A videó miniatűrje azonosítóját. A tényleges miniatűr lekéréséhez hívja a Get-miniatűr (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) és thumbnailVideoId és thumbnailId adja át.|
+|thumbnailId|A videó miniatűrje azonosítóját. A tényleges miniatűr lekéréséhez hívja [Get-miniatűr](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) és thumbnailVideoId és thumbnailId adja át.|
 |arcok|Nulla vagy több arcokat is tartalmazhat. Részletesebb információkért lásd: [arcok](#faces).|
 |kulcsszavak|Nulla vagy több kulcsszavak tartalmazhat. Részletesebb információkért lásd: [kulcsszavak](#keywords).|
 |hangulati|Nulla vagy több hangulati tartalmazhat. Részletesebb információkért lásd: [hangulati](#sentiments).|
@@ -106,7 +106,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |metaadatok|A videó külső metaadat (Ha a felhasználó által megadott).|
 |isAdult|Jelzi, hogy manuálisan lett-e felül a videót, és azonosította az eseményt egy felnőtteknek szóló videót.|
 |megállapítások|Az insights objektum. További információkért lásd: [insights](#insights).|
-|thumbnailId|A videó miniatűrje azonosítóját. A tényleges miniatűr hívás Get-miniatűr beolvasásához (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) és adja át azt a videó Azonosítóját és thumbnailId.|
+|thumbnailId|A videó miniatűrje azonosítóját. A tényleges miniatűr hívás beolvasásához [Get-miniatűr](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) és adja át azt a videó Azonosítóját és thumbnailId.|
 |publishedUrl|A Videó-URL-címe.|
 |publishedUrlProxy|(Az Apple-eszközök esetén), a Videó-URL-címe.|
 |viewToken|Egy rövid élettartamú nézet jogkivonatot a videó streameléshez.|

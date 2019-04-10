@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b91af553c402cc1cb241e51e2bb2289bf45b1825
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 6c2c5006eb050b70b783ab8199724e0e98766381
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269027"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358107"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>A felhőalapú Azure multi-factor Authentication tervezése
 
@@ -107,6 +107,9 @@ A rendszergazdák választhatják a [hitelesítési módszerek](../authenticatio
 ### <a name="notification-through-mobile-app"></a>Értesítés mobilalkalmazáson keresztül
 
 Leküldéses értesítés érkezik a Microsoft Authenticator alkalmazást a mobileszközén. A felhasználó megtekinti az értesítést, és kiválasztja **jóváhagyás** ellenőrzés befejezéséhez. Leküldéses értesítések, a mobilalkalmazáson keresztül a felhasználók számára zavaró legalább lehetőséget nyújt. Szerepelnek a legtöbb megbízható és biztonságos beállítás mivel telefonos helyett egy adatkapcsolatot használ.
+
+> [!NOTE]
+> Ha a szervezete személyzet dolgozik vagy utazás, Kína, a **értesítés mobilalkalmazáson keresztül** metódust **Android-eszközök** nem működik az adott országban. Alternatív módszerek ezen felhasználók számára elérhetővé kell tenni.
 
 ### <a name="verification-code-from-mobile-app"></a>Mobilalkalmazás ellenőrzőkódja
 

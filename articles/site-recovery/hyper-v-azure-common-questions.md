@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c4e87e365e11084a7088522f64abef238d04b715
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: ce4a6ab24aaa5ed693f8d64782fb025a2ca9ce30
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59271484"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357993"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Gyakori kérdések – Hyper-V – Azure-beli vészhelyreállításához
 
@@ -29,6 +29,31 @@ A replikáció során az adatok az Azure storage replikációja, és nem kell fi
 
 ## <a name="azure"></a>Azure
 
+### <a name="what-do-i-need-in-hyper-v-to-orchestrate-replication-with-site-recovery"></a>Mit kell a Hyper-V Site Recovery-vel való replikáció vezényléséhez?
+
+A szükséges Hyper-V gazdakiszolgálóra vonatkozó feltételek a telepítési forgatókönyvtől függenek. A Hyper-V-vel kapcsolatos előfeltételekről az alábbi cikkekben olvashat:
+
+* [Hyper-V virtuális gépek replikálása Azure-ba (VMM nélkül)](site-recovery-hyper-v-site-to-azure.md)
+* [Hyper-V virtuális gépek replikálása Azure-ba (VMM-mel)](site-recovery-vmm-to-azure.md)
+* [Hyper-V virtuális gépek replikálása másodlagos adatközpontba](site-recovery-vmm-to-vmm.md)
+* Ha replikál egy másodlagos adatközpontba, olvassa el [támogatott vendég operációs rendszerként a Hyper-V virtuális gépek](https://technet.microsoft.com/library/mt126277.aspx).
+* Ha az Azure-bA replikál, a Site Recovery támogatja az összes a vendég operációs rendszerek, amelyek [Azure által támogatott](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).
+
+### <a name="can-i-protect-vms-when-hyper-v-is-running-on-a-client-operating-system"></a>Képes virtuális gépek védelme, ha Hyper-V egy ügyfél operációs rendszeren fut?
+Nem. A virtuális gépeknek egy támogatott Windows kiszolgáló gépen futó Hyper-V gazdakiszolgálón kell lenniük. Ha egy ügyfélszámítógép védelmére van szüksége, tudta replikálni, mint a fizikai gépek [Azure](site-recovery-vmware-to-azure.md) vagy egy [másodlagos adatközpontba](site-recovery-vmware-to-vmware.md).
+
+### <a name="do-hyper-v-hosts-need-to-be-in-vmm-clouds"></a>A Hyper-V-gazdagépeken szükséges VMM-felhőkben kell?
+Ha replikálni szeretne egy másodlagos adatközpontba, akkor a Hyper-V virtuális gépek kell lennie a Hyper-V gazdagépek a VMM-felhőben található kiszolgálók. Ha az Azure-bA replikálni kívánt, majd virtuális gépeket replikálhatja vagy a VMM-felhőkben nélkül. [További információ](tutorial-hyper-v-to-azure.md) kapcsolatos Hyper-V-replikáció az Azure-bA.
+
+
+### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Replikálható Hyper-V 2. generációs virtuális gép az Azure-ba?
+Igen. A Site Recovery a 2. generációs konvertálja az 1. a feladatátvétel során. Feladat-visszavételt, a gép vissza a 2. generációs alakítja át. [További információ](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
+
+
+### <a name="can-i-deploy-site-recovery-with-vmm-if-i-only-have-one-vmm-server"></a>Üzembe helyezhetem VMM-mel a Site Recovery-t, ha csak egy VMM-kiszolgálóm van?
+
+Igen. Replikálhat a virtuális gépek a Hyper-V kiszolgálók a VMM-felhőben az Azure-ba, vagy ugyanazon a kiszolgálón található VMM-felhők között. A helyszíni és a helyszíni replikálásra azt javasoljuk, hogy rendelkezik-e a VMM-kiszolgáló az elsődleges és másodlagos helyeken. 
+
 ### <a name="what-do-i-need-in-azure"></a>Mi szükséges az Azure-ban?
 Azure-előfizetés, egy Recovery Services-tárolót, egy storage-fiókot és egy virtuális hálózaton van szüksége. A tároló, a storage-fiók és a hálózati ugyanabban a régióban kell lennie.
 
@@ -43,7 +68,7 @@ Nem, a Site Recovery nem intercept a replikált adatokat, és nem rendelkezik se
 
 Site Recovery szolgáltatás ISO 27001:2013, 27018, a HIPAA, DPA hitelesített, és SOC2 és FedRAMP JAB folyamatban van.
 
-### <a name="can-we-keep-on-premises-metadata-within-a-geographic-regions"></a>Is tárolódik a helyi metaadatok földrajzi régiók?
+### <a name="can-we-keep-on-premises-metadata-within-a-geographic-region"></a>Is tárolódik a helyi metaadatok földrajzi régió?
 Igen. Ha olyan régióban hozzon létre egy tárolót, biztosítható, hogy minden metaadat használni a Site Recovery továbbra is adott régióban földrajzi határ belül.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>A Site Recovery titkosítja a replikációt?
@@ -75,7 +100,7 @@ Igen, a Site Recovery támogatja a fürtözött Hyper-V-gazdagépeket. Vegye fig
 - A fürt minden csomópontján ugyanahhoz a tárolóhoz kell regisztrálni.
 - Ha a VMM nem használ, a fürt összes Hyper-V gazdagépeket hozzá kell azonos Hyper-V helyhez.
 - Az Azure Site Recovery Provider és Recovery Services-ügynök telepítése a fürt minden egyes Hyper-V gazdagépen, és adjon hozzá egy Hyper-V helyhez, hogy minden gazdagépen.
-- Adott lépés nem kell tenni a fürtön.
+- Nem adott lépéseket kell végrehajtani a fürtön.
 - Ha futtatta a Deployment Planner eszköz a Hyper-V, az eszköz a profil adatait gyűjti a csomópont, amely fut, és ahol a virtuális gép fut-e. Az eszköz nem gyűjt adatokat a csomópont, amely ki van kapcsolva, de azt fogja követni a csomóponton. Miután a csomópont helyezheti üzembe, az eszköz elindul, VM profil adatok gyűjtése eszközökről (Ha a virtuális gép a profilt Virtuálisgép-lista egy részét, és a csomóponton fut).
 - Ha egy virtuális Gépet egy Hyper-V-gazdagépen, a Site Recovery-tároló ugyanazon fürt egy másik Hyper-V-gazdagépre, vagy egy önálló gazdagépre telepíti át, a virtuális gép nem negatív. A Hyper-V-gazdagépnek teljesítenie kell [Előfeltételek](hyper-v-azure-support-matrix.md#on-premises-servers), és a Site Recovery-tároló lehet beállítani. 
 
@@ -127,7 +152,7 @@ Igen, az ExpressRoute segítségével virtuális gépek replikálása az Azure-b
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Miért nem tudja replikálni VPN-kapcsolaton keresztül?
 
-Az Azure-bA replikálja, amikor replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-fiók, így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és VPN nem működik. 
+Ha az Azure-bA replikálni replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-fiók. Így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és a VPN nem működik. 
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Mik azok a replikált virtuális gépek követelményeinek?
 
@@ -187,7 +212,7 @@ A feladatátvételt követően elérheti az Azure virtuális gépeket biztonság
 Az Azure-t hibatűrőnek terveztük. A Site Recovery a feladatátvétel egy másodlagos Azure adatközpontba, az Azure SLA kategóriában. Feladatátvétel esetén biztosítjuk, hogy a metaadatokat, és a tárolók maradjanak ugyanabban a földrajzi régióban, a tároló számára is választott.
 
 ### <a name="is-failover-automatic"></a>Automatikus a feladatátvétel?
-[Feladatátvétel](site-recovery-failover.md) nem automatikus. A portálon egyetlen kattintással feladatátvételt, vagy használhat [PowerShell](/powershell/module/az.siterecovery) feladatátvétel indításához.
+[Feladatátvétel](site-recovery-failover.md) nem automatikus. A portálon egyetlen kattintással feladatátvételt, vagy használhat [PowerShell](/powershell/module/az.recoveryservices) feladatátvétel indításához.
 
 ### <a name="how-do-i-fail-back"></a>Hogyan do I feladat-visszavételt?
 
@@ -199,7 +224,7 @@ Miután a helyszíni infrastruktúra újra működik, visszaadhatja a. Feladat-v
     - Teljes letöltés: Ez a beállítás az adatok szinkronizálása feladatátvétel során. Ez a beállítás a teljes lemez tölti le. Ez azért gyorsabban nincs ellenőrzőösszegek számítása, de több állásidőt. Használja ezt a beállítást, ha futtatja, a replika Azure virtuális gépek egy kis ideig, vagy ha a helyszíni virtuális gép törölve lett.
 
 2. Választhatja azt, hogy hajtja végre, vissza ugyanazon a virtuális Gépen vagy egy másik virtuális géphez. Megadhatja, hogy a Site Recovery a virtuális Gépet kell létrehoznia, ha még nem létezik.
-3. Miután a kezdeti szinkronizálás befejezését követően válassza ki a feladatátvétel végrehajtásához. Miután ez befejeződik, bejelentkezhetnek a helyszíni virtuális Gépre, és ellenőrizze, hogy minden a várt módon működik. Az Azure Portalon látható, hogy az Azure virtuális gépek lett leállítva.
+3. Miután a kezdeti szinkronizálás befejezését követően válassza ki a feladatátvétel végrehajtásához. Miután ez befejeződik, bejelentkezhet a helyszíni virtuális géphez, ellenőrizze, hogy minden a várt módon működik. Az Azure Portalon látható, hogy az Azure virtuális gépek lett leállítva.
 4. Véglegesíti a feladatátvételt és a Befejezés ismét hozzáférhessen a számítási a helyszíni virtuális gépről.
 5. Követően számítási feladatok biztonsági sikertelenek voltak, engedélyezheti a visszirányú replikálás, hogy a helyszíni virtuális gépek replikálása az Azure-bA újra.
 

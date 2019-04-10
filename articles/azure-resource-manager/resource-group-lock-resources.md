@@ -4,22 +4,20 @@ description: Hogy a felhasználók frissítése vagy törlése a kritikus fontos
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 53c57e8f-741c-4026-80e0-f4c02638c98b
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 83518825c91cdd727b3d4fb9ecc86d51dea8fc26
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 8942ae9a24613f7b7896cf7124b344d9d9315954
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649169"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360442"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében 
 
@@ -36,12 +34,32 @@ Amikor alkalmazza a zárolást, egy szülő hatókörben, a hatókörön belüli
 
 Szerepköralapú hozzáférés-vezérlés, ellentétben a felügyeleti zárolások összes felhasználók és szerepkörök korlátozások alkalmazásához használhat. A felhasználók és szerepkörök engedélyeinek beállításával kapcsolatos tudnivalókért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md).
 
-Erőforrás-kezelő zárolások csak vonatkozik, amelyek a felügyeleti sík, olyan küldött műveleteket tartalmaz, amely egy operations `https://management.azure.com`. A zárolása nem korlátozza, erőforrások hogyan hajthat végre a saját funkciók. Erőforrás-módosítások korlátozva, de az erőforrás-műveletek nem korlátozott. Például egy SQL-adatbázis írásvédett zárolásának meggátolja, hogy általi törlését vagy módosítását az adatbázist, de ez nem akadályozza meg létrehozása, frissítése vagy törlése az adatbázisban található adatok. Adatok tranzakciója engedélyezettek, mert ezek a műveletek nem küldött `https://management.azure.com`.
+Erőforrás-kezelő zárolások csak vonatkozik, amelyek a felügyeleti sík, olyan küldött műveleteket tartalmaz, amely egy operations `https://management.azure.com`. A zárolása nem korlátozza, erőforrások hogyan hajthat végre a saját funkciók. Erőforrás-módosítások korlátozva, de az erőforrás-műveletek nem korlátozott. Például egy SQL-adatbázis írásvédett zárolásának megakadályozza, hogy Ön általi törlését vagy módosítását az adatbázis. Ez nem akadályozza meg a létrehozása, frissítése vagy törlése az adatbázis adatait. Adatok tranzakciója engedélyezettek, mert ezek a műveletek nem küldött `https://management.azure.com`.
 
 Alkalmazása **ReadOnly** váratlan eredményekhez vezethet, mivel bizonyos műveletek, amelyek úgy tűnik, például olvasási műveletekhez ténylegesen szükséges további műveleteket. Például elhelyezése egy **ReadOnly** a storage-fiók zárolása megakadályozza, hogy minden felhasználó a kulcsok listázása. A lista kulcsok művelet POST-kérés történik, mert a visszaadott kulcsok érhetők el írási műveletek. A példában egy másik elhelyezése egy **ReadOnly** egy App Service erőforrás zárolása megakadályozza, hogy a Visual Studio Server Explorer fájl az erőforrás jelenik meg, mert a kapcsolati írási hozzáférésre van szüksége.
 
-## <a name="who-can-create-or-delete-locks-in-your-organization"></a>Akik hozhatók létre, vagy a szervezet zárolások törlése
+## <a name="who-can-create-or-delete-locks"></a>Akik létrehozhatja vagy törölheti a zárolások
 Hozzon létre vagy felügyeleti zárolások törlése, hozzáféréssel kell rendelkeznie `Microsoft.Authorization/*` vagy `Microsoft.Authorization/locks/*` műveleteket. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
+
+## <a name="managed-applications-and-locks"></a>Felügyelt alkalmazások és zárolások
+
+Bizonyos Azure-szolgáltatások, például az Azure Databricks használata [által felügyelt alkalmazások](../managed-applications/overview.md) a szolgáltatás megvalósítása. A szolgáltatás ebben az esetben két erőforráscsoport hoz létre. Egy erőforráscsoport a szolgáltatás áttekintését tartalmazza, és nincs zárolva van. Az erőforráscsoport tartalmazza a szolgáltatás az infrastruktúra és zárolva van.
+
+Az infrastruktúra erőforráscsoportot törölni próbál, ha hibaüzenet jelenik meg, hogy az erőforráscsoport zárolva van. Törölheti a zárolást az infrastruktúra erőforráscsoport meg, ha hibaüzenet jelenik meg, hogy a zárolás nem törölhető, mert a tulajdonában van egy rendszer-alkalmazást.
+
+Próbálja meg törölni a szolgáltatást, amely az infrastruktúra erőforráscsoportot is törli.
+
+Felügyelt alkalmazások esetében válassza ki a telepített szolgáltatás.
+
+![Szolgáltatás kiválasztása](./media/resource-group-lock-resources/select-service.png)
+
+Figyelje meg a szolgáltatás tartalmaz egy hivatkozást egy **felügyelt erőforráscsoport**. Erőforráscsoport tárolja az infrastruktúrát, és zárolva van. Nem lehet közvetlenül törli azt.
+
+![Felügyelt csoport megjelenítése](./media/resource-group-lock-resources/show-managed-group.png)
+
+Minden, az zárolt infrastruktúra erőforráscsoportban, beleértve a szolgáltatás törléséhez válassza ki **törlése** a szolgáltatáshoz.
+
+![Szolgáltatás törlése](./media/resource-group-lock-resources/delete-service.png)
 
 ## <a name="portal"></a>Portál
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]

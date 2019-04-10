@@ -3,17 +3,17 @@ title: Az operátori nézetek testreszabása az Azure IoT Centralban | Microsoft
 description: Szerkesztőként testreszabhatja az operátori nézeteket az Azure IoT Central-alkalmazásban.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 01/29/2018
+ms.date: 03/26/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 86c9a7794146edc4106d8ec30106e1c27556248f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dc3543af0a10c83d8ca212957a6345c8a70cd58b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769676"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279941"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>Oktatóanyag: Az Azure IoT Central operátor nézet (új felhasználói felület tervezése) testreszabása
 
@@ -160,5 +160,5 @@ Ebben az oktatóanyagban megismerte, hogyan szabhatja testre az alkalmazás oper
 
 Most, hogy megismerte, hogyan szabhatja testre az alkalmazás operátori nézetét, az alábbiakban megtalálja a javasolt következő lépéseket:
 
-* [Az eszközök monitorozása (operátorként)](tutorial-monitor-devices.md)
-* [Új eszköz hozzáadása az alkalmazáshoz (operátorként és eszközfejlesztőként)](tutorial-add-device.md)
+* [Az eszközök figyelése (kezelőként)](tutorial-monitor-devices.md)
+* [Új eszköz felvétele az alkalmazásba (a-operátor és a fejlesztői eszközök)](tutorial-add-device.md)

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: a7271aa3faf438b42319f8c2c297c6e39baab92e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 59213c5391b5b652eeead05c4a5af761571fcece
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904151"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360625"
 ---
 # <a name="logs-in-azure-monitor"></a>Naplók az Azure Monitorban
 
@@ -46,7 +46,7 @@ Az alábbi táblázat a különböző módon, hogy használhatja az Azure monito
 | Elemzés | Használat [Log Analytics](../log-query/get-started-portal.md) írni az Azure Portalon [lekérdezések naplózását](../log-query/log-query-overview.md) és interaktív módon elemezheti a naplófájlok adatait az adatkezelő hatékony elemzési motor használatával.<br>Használja a [Application Insights analytics konzoljának](../app/analytics.md) log lekérdezéseket írni, és interaktív módon elemezheti a naplófájlok adatait az Application Insights az Azure Portalon. |
 | Vizualizáció | Lekérdezési eredmények jelenik meg a táblázatokat vagy diagramokat való rögzítése egy [Azure irányítópultján](../../azure-portal/azure-portal-dashboards.md).<br>Hozzon létre egy [munkafüzet](../app/usage-workbooks.md) egy interaktív jelentésben szereplő adatok több példányban egyesítenie. <br>A lekérdezés eredményeinek exportálására [Power BI](powerbi.md) különböző Vizualizációk használata és megosztása Azure-on kívüli felhasználókkal.<br>A lekérdezés eredményeinek exportálására [Grafana](grafana-plugin.md) annak dashboarding használatát, és más adatforrásokkal együtt.|
 | Riasztás | Konfigurálja egy [riasztási szabály](alerts-log.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](action-groups.md) mikor a a lekérdezés eredménye megfelel-e egy adott eredményt.<br>Konfigurálja a [a metrikaalapú riasztási szabály](alerts-metric-logs.md) az egyes log adatnaplók mérőszámokként ki kell olvasni. |
-| Lekérés | A parancssor használatával a lekérdezés eredményeihez elérését [Azure CLI-vel](/azure/ext/log-analytics/monitor/log-analytics).<br>A parancssor használatával a lekérdezés eredményeihez elérését [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Egy egyéni alkalmazást a lekérdezés eredményeihez elérését [REST API-val](https://dev.loganalytics.io/). |
+| Lekérés | A parancssor használatával a lekérdezés eredményeihez elérését [Azure CLI-vel](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>A parancssor használatával a lekérdezés eredményeihez elérését [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Egy egyéni alkalmazást a lekérdezés eredményeihez elérését [REST API-val](https://dev.loganalytics.io/). |
 | Exportálás | Naplóadatok lekérése, és másolja azt egy külső helyre a munkafolyamat létrehozása [Logic Apps](~/articles/logic-apps/index.yml). |
 
 
@@ -105,8 +105,8 @@ Az Azure Monitor naplóadatokat gyűjthet, különböző forrásokból is Azure-
 |:---|:---|
 | Kérések és kivételek | Alkalmazásokra irányuló kérések és kivételek részletes adatait a rendszer a _kérelmek_, _Oldalmegtekintések_, és _kivételek_ táblákat. Hívások [külső összetevők](../app/asp-net-dependencies.md) szerepelnek a _függőségek_ tábla. |
 | Használat és a teljesítmény | Az alkalmazás teljesítmény érhető el a _kérelmek_, _browserTimings_ és _performanceCounters_ táblákat. Az adatok [egyéni metrikákat](../app/api-custom-events-metrics.md#trackevent) szerepel a _customMetrics_ tábla.|
-| A nyomkövetési adatok | Való [elosztott nyomkövetési](/app/distributed-tracing) vannak tárolva a _nyomkövetések_ tábla. |
-| Rendelkezésre állási tesztek | Az összefoglaló adatokat [rendelkezésre állási tesztek](/app/monitor-web-app-availability) tárolja a _availabilityResults_ tábla. Ezek a tesztek részletes adatait külön storage és Application Insights az Azure Portalon elérhető. |
+| A nyomkövetési adatok | Való [elosztott nyomkövetési](../app/distributed-tracing.md) vannak tárolva a _nyomkövetések_ tábla. |
+| Rendelkezésre állási tesztek | Az összefoglaló adatokat [rendelkezésre állási tesztek](../app/monitor-web-app-availability.md) tárolja a _availabilityResults_ tábla. Ezek a tesztek részletes adatait külön storage és Application Insights az Azure Portalon elérhető. |
 
 ### <a name="insights"></a>Insights
 
@@ -127,7 +127,7 @@ Az Azure Monitor naplóadatokat gyűjthet, különböző forrásokból is Azure-
 | Adatok | Leírás |
 |:---|:---|
 | Azure Security Center | [Az Azure Security Center](/azure/security-center/) tárolja az adatokat a Log Analytics-munkaterület, ahol azok elemezhetők más naplózott adatokat összegyűjtő. Lásd: [az adatgyűjtést az Azure Security Centerben](../../security-center/security-center-enable-data-collection.md) munkaterület-konfiguráció részleteiért. |
-| Azure Sentinel | [Az Azure Sentinel](/azure/sentinel/) adatforrásokból származó adatokat a Log Analytics-munkaterületen tárolja. Lásd: [](/sentinel/connect-data-sources.md)  |
+| Azure Sentinel | [Az Azure Sentinel](/azure/sentinel/) adatforrásokból származó adatokat a Log Analytics-munkaterületen tárolja. Lásd: [adatforrások csatlakoztatása](/azure/sentinel/connect-data-sources).  |
 
 
 ## <a name="next-steps"></a>További lépések

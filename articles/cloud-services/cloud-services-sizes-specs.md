@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 5c4ad5c200bd2e49f3c472d82ad030c6a8f2478d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 6f3177c37a2db03b8821e3e4f5b68c8b1315a016
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918263"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358254"
 ---
 # <a name="sizes-for-cloud-services"></a>A Cloud Services méretei
 Ez a témakör ismerteti az elérhető méretek és a Cloud Service-szerepkörpéldányok (webes és feldolgozói szerepkörök) beállításokat. Telepítési szempontok figyelembe ezeket az erőforrásokat használatának tervezésekor is tartalmazza. Minden méretét rendelkezik egy Azonosítót, amely helyezi a [szolgáltatásdefiníciós fájl](cloud-services-model-and-package.md#csdef). Árak méreteire vonatkoztatva érhetők az [Cloud Services díjszabása](https://azure.microsoft.com/pricing/details/cloud-services/) lapot.
@@ -205,7 +205,7 @@ A modell által leírt részeként is megadhat egy szerepkörpéldány virtuáli
 
 ## <a name="changing-the-size-of-an-existing-role"></a>Meglévő szerepkör méretének módosítása
 
-A számítási feladat változását követő vagy az új Virtuálisgép-méretek elérhetővé válnak a jellegét, érdemes a szerepkör méretének módosítása. Ehhez kell üzembe helyezni a, ismételje meg a becsomagolást a Felhőszolgáltatások és módosítsa a Virtuálisgép-méretet a szolgáltatásdefiníciós fájlban (ahogy fent látható) el. Nem alkalmas Virtuálisgép-méretek közvetlenül a portálon vagy a PowerShell módosítani.
+A számítási feladat változását követő vagy az új Virtuálisgép-méretek elérhetővé válnak a jellegét, érdemes a szerepkör méretének módosítása. Ehhez kell üzembe helyezni a, ismételje meg a becsomagolást a Felhőszolgáltatások és módosítsa a Virtuálisgép-méretet a szolgáltatásdefiníciós fájlban (ahogy fent látható) el.
 
 >[!TIP]
 > Érdemes a különböző méretű virtuális gépek használata a szerepkör különböző környezetekben (például) tesztelési és éles környezet). Egyik módszer, tegye ezt, több szolgáltatás definíciós (.csdef)-fájlok létrehozása a projektben, majd hozzon létre különböző felhőalapú környezetenként szolgáltatáscsomagok az automatizált összeállítási a CSPack eszköz használata során. A cloud services csomag, és hogyan hozhat létre, azok elemeivel kapcsolatos további tudnivalókért lásd: [Mi a cloud services-modell, és hogyan tegye Becsomagolhatja azt?](cloud-services-model-and-package.md)
