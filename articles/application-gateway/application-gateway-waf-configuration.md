@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 1/29/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 29c2e53c4fb496e0f12e04f08b0add4273db25a7
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: a814fc6e9a72ba92d915821bd1e1694366844555
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790158"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277416"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Webes alkalmazás tűzfal kérelem méretbeli korlátokat és kizárási listák
 
@@ -54,6 +54,7 @@ A támogatott egyezés feltételek operátorok a következők:
 - **Kezdődik**: Ez az operátor megfelel a megadott választó érték kezdődő összes mezőt.
 - **Végződik**:  Ez az operátor megfelel az összes kérelem mező, amely a megadott választó érték végén.
 - **Tartalmaz**: Ez az operátor megfelel a megadott választó értéket tartalmazó összes kérelem mezők.
+- **Egyenlő bármelyikkel**: Ez az operátor megfelel az összes kérelem mező. * a választó érték lesz.
 
 Minden esetben egyeztetésekor a rendszer megkülönbözteti a kis-és nagybetű nincs megkülönböztetve, és a reguláris kifejezés nem engedélyezett, mert a választók.
 

@@ -8,20 +8,33 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e3d2466f05028a963256dbcc052c46650857836d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 1cb353d22e39447d7aeb723b5506ac0209cf74d8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372713"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59287102"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Prémium szintű teljesítményt blokkblob-tárolás
 
-Prémium szintű teljesítményt block blob storage-fiókban az alkalmazásokat, amelyek kisebb, használja a kilobájtoktól a petabájtokig tartományát, objektumok van optimalizálva. Ideális a rendkívül nagy tranzakciós díjakat biztosítanak vagy konzisztens közel valós idejű tároló igénylő alkalmazásokhoz. Prémium szintű teljesítményt blokkblob típusú tárolás az alkalmazások méretezése a célja. Ha azt tervezi, a kérések száma másodpercenként több ezer vagy több petabájtnyi, a tárolási kapacitást több száz igénylő alkalmazás üzembe helyezése, lépjen kapcsolatba velünk beküld egy támogatási kérést az a [az Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Prémium szintű teljesítményt block blob storage-fiókban az alkalmazásokat, amelyek kisebb, használja a kilobájtoktól a petabájtokig tartományát, objektumok van optimalizálva. Ideális a nagy tranzakciós díjakat biztosítanak vagy konzisztens közel valós idejű tároló igénylő alkalmazásokhoz. Prémium szintű teljesítményt blokkblob típusú tárolás az alkalmazások méretezése a célja. Ha azt tervezi, a kérések száma másodpercenként több ezer vagy több petabájtnyi, a tárolási kapacitást több száz igénylő alkalmazás üzembe helyezése, lépjen kapcsolatba velünk beküld egy támogatási kérést az a [az Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+### <a name="premium-performance-filestorage-preview"></a>Prémium szintű teljesítményt FileStorage (előzetes verzió)
+
+Prémium files használjon egy egyedi nevű tárfiókot **FileStorage (előzetes verzió)**. Az ilyen típusú fiókok számítási feladatokat, és magas IOPS, nagy átviteli sebességhez és egységes közel valós idejű lett tervezve. Prémium szintű file storage a létesített megosztás méretének együtt növekszik.
+
+|Terület  |Cél  |
+|---------|---------|
+|Maximális méret     |5 Tib-ra (nyilvános előzetes verzió), 100 Tib-ra (korlátozott nyilvános előzetes verzió)     |
+|Megosztások   |Korlátlan  |
+|IO     |100 000 (korlátozott nyilvános előzetes verzió)    |
+|Bandwidth|5 GB/s     |
+
+ Prémium szintű fájl megosztása a méretezési célokat, tekintse meg a [prémium files tárolók skálázása](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets) szakaszban.
 
 ### <a name="premium-performance-page-blob-storage"></a>Prémium szintű teljesítményt lap a blob storage
 
-Prémium szintű teljesítményt, általános célú v1 vagy v2-es tárfiókban elérhető a következő teljesítménycélokat:
+Prémium szintű teljesítményt, általános célú v1 vagy v2-tárfiókok rendelkezik a következő teljesítménycélokat:
 
 | Teljes számla kapacitás                            | Helyileg redundáns tárfiókok teljes sávszélesség                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |

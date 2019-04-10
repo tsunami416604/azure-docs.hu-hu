@@ -12,37 +12,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 04/08/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 02ceb6cbcbf824f8bf830c66bc9899c20f6ed822
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 650b868762299725927623134039e87bbee9f4c2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484041"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277510"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Ellenőrizze a sablonokat az Azure Stack a sablon érvényesítése eszközzel
 
-*Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
+*A következőre érvényes Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 A sablon érvényesítése eszköz segítségével ellenőrizze, hogy az Azure Resource Manager [sablonok](azure-stack-arm-templates.md) készen áll az Azure Stack üzembe helyezése. A sablon érvényesítése eszközt az Azure Stack eszközök részeként érhető el. Töltse le az Azure Stack eszközök ismertetett lépések segítségével a [eszközök letöltése a githubról](azure-stack-powershell-download.md) cikk.
 
 ## <a name="overview"></a>Áttekintés
 
-A sablon érvényesítése, hozhat létre a felhő képességeit kell első fájlt, és futtassa az ellenőrzési eszközt. Használja a következő PowerShell-modulok az Azure Stack-eszközök:
+A sablon érvényesítése, először hozhat létre a felhőalapú képességek fájlt, és futtassa a fürtérvényesítési eszköz. Használja a következő PowerShell-modulok az Azure Stack-eszközök:
 
-- Az a **CloudCapabilities** mappa:<br>         `AzureRM.CloudCapabilities.psm1` hozza létre a felhőalapú képességek jelölő JSON-fájlok a szolgáltatások és a egy Azure Stack-felhőben lévő verziók.
-- Az a **TemplateValidator** mappa:<br>
-`AzureRM.TemplateValidator.psm1` központi telepítési sablonok tesztelése az Azure Stack felhő képességeit JSON-fájlt használ.
+- Az a **CloudCapabilities** mappa: `AzureRM.CloudCapabilities.psm1` hoz létre a felhőalapú képességek jelölő JSON-fájlok a szolgáltatások és a egy Azure Stack-felhőben lévő verziók.
+- Az a **TemplateValidator** mappa: `AzureRM.TemplateValidator.psm1` központi telepítési sablonok tesztelése az Azure Stack felhő képességeit JSON-fájlt használ.
 
 ## <a name="build-the-cloud-capabilities-file"></a>A felhőalapú képességek fájl létrehozása
 
 Mielőtt használná a sablon érvényesítési, futtassa a **AzureRM.CloudCapabilities** PowerShell-modult hozhat létre egy JSON-fájlt.
 
 >[!NOTE]
->Ha az integrált rendszer frissítésére, vagy adjon meg új szolgáltatás, vagy virtuális bővítmények, ez a modul újra kell futtatnia.
+> Ha az integrált rendszer frissítésére, vagy adjon meg új szolgáltatás, vagy virtuális bővítmények, ez a modul újra kell futtatnia.
 
 1. Győződjön meg arról, hogy rendelkezik az Azure Stackhez. Az Azure Stack development kit állomás hajthat végre ezeket a lépéseket, vagy használhatja egy [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) való csatlakozáshoz a munkaállomáson.
 2. Importálás a **AzureRM.CloudCapabilities** PowerShell-modult:
@@ -51,7 +50,7 @@ Mielőtt használná a sablon érvényesítési, futtassa a **AzureRM.CloudCapab
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
-3. Használja a `Get-CloudCapabilities` parancsmaggal szolgáltatásverziók lekérni, és hozzon létre egy felhőalapú képességek JSON-fájlt. Ha nem ad meg **- OutputPath**, a fájl AzureCloudCapabilities.Json jön létre az aktuális könyvtárban található. A tényleges helyet használja:
+3. Használja a `Get-CloudCapabilities` parancsmaggal szolgáltatásverziók lekérni, és hozzon létre egy felhőalapú képességek JSON-fájlt. Ha nem ad meg **- OutputPath**, a fájl AzureCloudCapabilities.Json jön létre az aktuális könyvtárban található. Az Azure-helyen használja:
 
     ```powershell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
@@ -76,7 +75,7 @@ Sablonok használatával érvényesítéséhez kövesse az alábbi lépéseket a
     -Verbose
     ```
 
-Sablon érvényesítési figyelmeztetést vagy hibát naplózza a PowerShell-konzol és a egy HTML-fájlt a forráskönyvtárban. A következő képernyőfelvétel egy folyamatérvényesítési jelentés egy példát mutat be:
+A PowerShell-konzolon megjelenő és HTML-fájl a forráskönyvtár írt sablon érvényesítési figyelmeztetést vagy hibát. Az alábbi képernyőfelvételen látható egy példa az ellenőrzési jelentésben:
 
 ![Sablon-ellenőrzési jelentés](./media/azure-stack-validate-templates/image1.png)
 
@@ -86,13 +85,13 @@ A sablon érvényesítési az alábbi paramétereket támogatja.
 
 | Paraméter | Leírás | Szükséges |
 | ----- | -----| ----- |
-| TemplatePath | Megadja a rekurzív módon elérési útját, keresse meg az Azure Resource Manager-sablonok | Igen | 
+| TemplatePath | Itt adhatja meg az elérési út rekurzív keresése az Azure Resource Manager-sablonok. | Igen |
 | TemplatePattern | Meghatározza a megfelelő sablon fájlok nevét. | Nem |
-| CapabilitiesPath | Adja meg a felhőalapú képességek JSON-fájl elérési útja | Igen | 
-| IncludeComputeCapabilities | Tartalmazza a kiértékelés az IaaS-erőforrások, például a Virtuálisgép-méretek és a Virtuálisgép-bővítmények | Nem |
-| IncludeStorageCapabilities | Tartalmazza a kiértékelés tárolási erőforrások, például a Termékváltozat típusa | Nem |
-| Jelentés | Meghatározza a létrehozott HTML-jelentés nevét | Nem |
-| Részletes | Hibák és figyelmeztetések naplózása a konzol | Nem|
+| CapabilitiesPath | A felhőalapú képességek JSON-fájl elérési útját adja meg. | Igen |
+| IncludeComputeCapabilities | Az IaaS-erőforrások, például a Virtuálisgép-méretek és a Virtuálisgép-bővítmények értékelési tartalmazza. | Nem |
+| IncludeStorageCapabilities | Magában foglalja a tárolási erőforrások, például a Termékváltozat-típusok kiértékelése. | Nem |
+| Jelentés | Meghatározza a létrehozott HTML-jelentés nevére. | Nem |
+| Részletes | Hibák és figyelmeztetések naplózza a konzolhoz. | Nem|
 
 ### <a name="examples"></a>Példák
 

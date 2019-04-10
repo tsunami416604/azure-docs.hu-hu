@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c6aa3a1999460b5eb3e62e36883bb4827bd41305
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.openlocfilehash: f17dc61f47dadf4c808467b2158cd9ef034e1ce9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010345"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277119"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>A Windows IaaS virtuális gépek az Azure Disk Encryption engedélyezése
 
@@ -223,8 +223,7 @@ Használja a [az vmss-titkosítás engedélyezése](/cli/azure/vmss/encryption#a
 Titkosítása és visszafejtése Windows virtuálisgép-méretezési csoportok, az Azure Resource Manager-sablonokkal és az alábbi utasításokat:
 
 - [Engedélyezheti a titkosítást egy Windows virtuálisgép-méretezési csoportot](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
-- [Virtuálisgép-méretezési készlet Windows virtuális gépek a jumpbox üzembe, és engedélyezheti a titkosítást a Windows Virtuálisgép-méretezési csoportot](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
-- [Windows Virtuálisgép-méretezési készlet titkosításának letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+- [Windows virtuális gép méretezési titkosításának letiltása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
      1. Kattintson a **Deploy to Azure** (Üzembe helyezés az Azure-ban) elemre.
      2. Töltse ki a kötelező mezőket, majd fogadja el a feltételeket és kikötéseket.

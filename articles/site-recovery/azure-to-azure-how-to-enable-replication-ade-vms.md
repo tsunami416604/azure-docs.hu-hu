@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 27c1481314ba1dd77cdcf229842aeec7de3e4444
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b3e997a37bb5d030d559b6771b2c0e2f74cc62ab
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117455"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277689"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Az Azure disk encryption (ADE) engedélyezve van a virtuális gépek replikálása másik Azure-régióba
 
@@ -148,7 +148,7 @@ Használható [a parancsfájl](#copy-ade-keys-to-dr-region-using-powershell-scri
 Ha egy már létrehozott Keyvault tulajdonképpen kiválasztja a célrégióban helyett hozza létre az Azure Site Recovery segítségével. Ellenőrizze, hogy a Key vault rendelkezik szükséges engedélyekkel, ahogy korábban említettük.</br>
 *Például*: A felhasználó megpróbálja replikálni a virtuális gép, amelynek van key vault forrásrégió például: "ContososourceKeyvault".
 Felhasználó minden a megfelelő jogosultságokkal rendelkezik a forrás key vaultnak régióban, de kiválasztja a védelem során egy már létrehozott key vault "ContosotargetKeyvault", amely nem rendelkezik engedéllyel, akkor védelmi hibát jelez.</br>
-**Hogyan háríthatja el:** Szükség van "Kezdőlap > Keyvaults > ContososourceKeyvault > hozzáférési házirendek" és az engedélyek hozzáadása a fent látható módon. 
+**Hogyan háríthatja el:** Szükség van "Kezdőlap > Keyvaults > ContososourceKeyvault > hozzáférési házirendek" és az engedélyek hozzáadása a fent látható módon.
 
 **2. ok:** Előfordulhat, hogy kiválasztott egy már létrehozott Keyvault a célrégióban, amely nem rendelkezik decry a csendes-óceáni idő – titkosítása engedélyeket.
 Ha egy már létrehozott Keyvault tulajdonképpen kiválasztja a célrégióban helyett hozza létre az Azure Site Recovery segítségével. Győződjön meg arról, hogy a felhasználó rendelkezik visszafejtése-titkosítása engedélyek abban az esetben, ha a kulcs túl a forrásrégióban titkosít.</br>

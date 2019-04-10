@@ -1,23 +1,30 @@
 ---
 title: Keresse meg egy címet az Azure Maps keresési szolgáltatással hogyan |} A Microsoft Docs
 description: Ismerje meg, hogyan keresse meg egy címet az Azure Maps Search szolgáltatással
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/11/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: ba5ea7205a5d0e5fdbadc8a1ba955091ae95b569
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+manager: philmea
+ms.openlocfilehash: 8ab2c73030c0860fc709a774b9fd84d20a6d7c99
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875786"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277323"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Keresse meg egy címet az Azure Maps search szolgáltatással
 
 A Maps keresési szolgáltatás egy RESTful API-k, címek, helyek, érdeklődés, cégjegyzékeket és egyéb földrajzi adatok pontok kereséséhez fejlesztők számára készült. A szolgáltatás a szélességi és hosszúsági koordinátákkal rendel egy adott cím, a közötti utca, a földrajzi funkció vagy a hasznos helyekre vezető útvonalak (KOORDINÁTÁIIG). A keresés által visszaadott szélességi és hosszúsági értékeket más Maps szolgáltatások, például útvonal-és forgalmi paramétereiben használható.
+
+Ebben a cikkben bemutatjuk hogyan lehet:
+
+* Keresse meg egy címet a [intelligens keresési API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
+* Tulajdonságok és a koordináták mellett cím keresése
+* Győződjön meg arról, egy [fordított cím-keresési](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) kereséséhez az utca, házszám
+* Keresse meg a keresztszűrés lekérdezésszerkesztőjének használatával [keresés cím fordított közötti utca API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

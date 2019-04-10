@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: dccc967e7899d8cc9c4bde6829d6fc44f9cba4e0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 2957b45a0a26c590e2db1b402f4956ae9c3b8000
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890974"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59291873"
 ---
 A következő táblázat az Azure Storage alapértelmezett korlátokat ismerteti. A *bejövő* korlát a tárfiókhoz küldött kérések hivatkozik az összes adat. A *kimenő* korlát hivatkozik az összes adat, amely egy storage-fiók érkező válaszok.
 
@@ -22,10 +22,15 @@ A következő táblázat az Azure Storage alapértelmezett korlátokat ismerteti
 | Storage-fiókok régiónként és előfizetésenként, beleértve a standard és prémium szintű fiókok száma | 250 |
 | Maximális tárolókapacitás fiók | 2 PB Egyesült Államok és Európa, az összes többi régió esetében 500 TB, amely tartalmazza az Egyesült Királyság |
 | Blob-tárolók, blobok, fájlmegosztások, táblák, üzenetsorok, entitások vagy tárfiókonként üzenetek maximális száma | Korlátlan |
+| FileStorage (előzetes verzió) tárfiókok maximális mérete | 100 000 giB |
+| Maximális IOPS FileStorage (előzetes verzió) storage-fiókok | 100 000 |
+| Maximális sávszélesség (előzetes verzió) FileStorage storage-fiókok | 5 GB/s |
 | Maximális<sup>1</sup> tárfiókonként | másodpercenként 20 000 kérelem |
 | Maximális bejövő<sup>1</sup> tárfiókonként (Egyesült Államokbeli régiókhoz) | Ha engedélyezve van az RA-GRS/GRS 10 GB/s, 20 GB/s az LRS és zrs esetén<sup>2</sup> |
 | Maximális bejövő<sup>1</sup> tárfiókonként (USA-régió) | Ha engedélyezve van az RA-GRS/GRS 5 GB/s, 10 GB/s az LRS és zrs esetén<sup>2</sup> |
-| Maximális kimenő forgalom, általános célú v2 és Blob storage-fiókok (az összes régióban) | 50 GB/s |
+| Maximális bejövő FileStorage (előzetes verzió) tárfiókonként (Egyesült Államokbeli régiókhoz) | 20 GB/s (csak az LRS esetén) |
+| Maximális bejövő FileStorage (előzetes verzió) tárfiókonként (USA-régió) | 10 GB/s (csak az LRS esetén)|
+| Maximális kimenő forgalom az általános célú v2, FileStorage (előzetes verzió) és a Blob storage-fiókok (az összes régióban) | 50 GB/s |
 | Általános célú v1-tárfiókok (Egyesült Államokbeli régiókhoz) maximális kimenő forgalom | Ha engedélyezve van az RA-GRS/GRS 20 GB/s, 30 GB/s az LRS és zrs esetén<sup>2</sup> |
 | Általános célú v1-tárfiókok (USA-régió) maximális kimenő forgalom | Ha engedélyezve van az RA-GRS/GRS 10 GB/s, 15 GB/s az LRS és zrs esetén<sup>2</sup> |
 

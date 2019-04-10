@@ -2,18 +2,18 @@
 title: Másolja, vagy az Azure Storage-adatok áthelyezése az AzCopy v10 (előzetes verzió) |} A Microsoft Docs
 description: Az AzCopy v10 használata (előzetes verzió) parancssori segédprogram áthelyezése vagy másolhat blob, a data lake és a fájl tartalmát. Adatok másolása az Azure Storage a helyi fájlokból vagy adatmásolás belül vagy tárfiókok között. Egyszerűen migrálhatja az adatokat az Azure Storage.
 services: storage
-author: artemuwka
+author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 02/24/2019
-ms.author: artemuwka
+ms.date: 04/05/2019
+ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: ad3e96af95d952956af02acfd87d6d317bc29ed0
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ffd448db86c8658619da5339cd34eb9dba7e05ce
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574977"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278428"
 ---
 # <a name="transfer-data-with-azcopy-v10-preview"></a>Adatok áthelyezése az AzCopy v10 (előzetes verzió)
 
@@ -24,6 +24,7 @@ Az AzCopy v10 (előzetes verzió) a parancssori segédprogram céljából, vagy 
 - Szinkronizálja a fájlrendszereket az Azure Blob storage- vagy fordítva. Használat `azcopy sync <source> <destination>`. A növekményes másolási forgatókönyvek esetén ideális választás.
 - Az Azure Data Lake Storage Gen2 API-kat támogatja. Használat `myaccount.dfs.core.windows.net` , egy URI-t a Data Lake Storage Gen2 API-k meghívására.
 - Támogatja a teljes fiókra (csak Blob szolgáltatás) másolása egy másik fiókba.
+- Az adatok másolása az Amazon Web Services S3 gyűjtő támogatja.
 - Az új [URL-címről Blokkelraktározási](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) fiók-fiók másolási API-kkal. Az adatátvitel azért gyorsabb, mert az ügyfél az átvitel nem szükséges.
 - Sorolja fel, vagy eltávolítja a fájlok, blobok és a egy adott elérési úton.
 - Támogatja a helyettesítő karakterek mintái egy elérési utat, és – kizárási jelzők.
@@ -79,8 +80,8 @@ Az AzCopy v10 egy önálló dokumentált szintaxissal rendelkezik. Ha bejelentke
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/container"
 
 # Examples if you're using SAS tokens to authenticate:
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container?sastoken" --recursive=true
-.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile?sastoken"
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/container?st=2019-04-05T04%3A10%3A00Z&se=2019-04-13T04%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=Qdihej%2Bsbg4AiuyLVyQZklm9pSuVGzX27qJ508wi6Es%3D" --recursive=true
+.\azcopy cp "C:\local\path\myfile" "https://account.blob.core.windows.net/container/myfile?st=2019-04-05T04%3A10%3A00Z&se=2019-04-13T04%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=Qdihej%2Bsbg4AiuyLVyQZklm9pSuVGzX27qJ508wi6Es%3D"
 ```
 
 Itt látható, hogyan kezdheti az elérhető parancsok listáját:
@@ -135,16 +136,16 @@ A Másolás parancs segítségével adatátvitel a forrásból a célra. A forr�
 .\azcopy cp <source path> <destination path> --<flag-name>=<flag-value>
 ```
 
-A következő parancs a mappában található összes fájlt tölt fel `C:\local\path` rekurzív módon a tároló `mycontainer1`, létrehozásakor `path` könyvtárat a tárolóban:
+A következő parancs a mappában található összes fájlt tölt fel `C:\local\path` rekurzív módon a tároló `mycontainer1`, létrehozásakor `path` könyvtárat a tárolóban. Amikor `--put-md5` jelző van megadva, az AzCopy rendszer kiszámítsa és tárolja az összes fájl md5-kivonat `Content-md5` tulajdonságát a megfelelő blob későbbi használatra.
 
 ```azcopy
-.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
+.\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true --put-md5
 ```
 
 A következő parancs a mappában található összes fájlt tölt fel `C:\local\path` (nélkül recursing alkönyvtárak be), a tároló `mycontainer1`:
 
 ```azcopy
-.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --put-md5
 ```
 
 További példákat talál, használja a következő parancsot:
@@ -153,21 +154,27 @@ További példákat talál, használja a következő parancsot:
 .\azcopy cp -h
 ```
 
-## <a name="copy-data-between-two-storage-accounts"></a>Másolja az adatokat két storage-fiókok között
+## <a name="copy-blob-data-between-two-storage-accounts"></a>Másolja a Blobadatok két storage-fiókok között
 
 Két storage-fiókok közötti másolást használja a [URL blokk Put](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API-t, és nem használja az ügyfél gépének hálózati sávszélességet. Közvetlenül, a két Azure Storage kiszolgálók közötti adatokat másolja az AzCopy egyszerűen hangolja össze a másolási művelet során. Ez a beállítás jelenleg csak a Blob storage számára érhető el.
 
-Két tárfiókok között az adatok másolásához használja a következő parancsot:
+A Blob típusú adatok között két tárfiókot az összes másolásához használja a következő parancsot:
 ```azcopy
 .\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
 
-> [!NOTE]
-> A parancs fogja enumerálni az összes blob-tárolót, és másolja őket a cél-fiók. Jelenleg az AzCopy v10 támogatja között két storage-fiókok csak blokkblobokhoz másolása. Minden más tárolási fiók objektumok (például hozzáfűző blobokat, a lapblobok, fájlok, táblák és üzenetsorok) kihagyja azt.
+Egy Blob-tárolóba másolja egy másik Blob-tárolóba, használja a következő parancsot:
+```azcopy
+.\azcopy cp "https://myaccount.blob.core.windows.net/mycontainer/<sastoken>" "https://myotheraccount.blob.core.windows.net/mycontainer/<sastoken>" --recursive=true
+```
 
 ## <a name="copy-a-vhd-image-to-a-storage-account"></a>Másolja egy VHD-rendszerképet egy tárfiókba
 
-Alapértelmezés szerint az AzCopy v10 adatait feltölti az a blokkblobok használatát támogatják. Azonban ha egy forrásfájl egy `.vhd` bővítmény, az AzCopy v10 alapértelmezés szerint egy lapblob feltöltése. Jelenleg ez a művelet nem konfigurálható.
+Alapértelmezés szerint az AzCopy adatait feltölti az a blokkblobok használatát támogatják. A jelző használható hozzáfűző Blobok és Lapblobok fájlok feltöltéséhez `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
+
+```azcopy
+.\azcopy cp "C:\local\path\mydisk.vhd" "https://myotheraccount.blob.core.windows.net/mycontainer/mydisk.vhd<sastoken>" --blob-type=PageBlob
+```
 
 ## <a name="sync-incremental-copy-and-delete-blob-storage-only"></a>Szinkronizálás: növekményes másolása és törlése (csak Blob storage)
 
@@ -192,6 +199,30 @@ Csak a helyi fájlrendszerben; egy blob-tárolóba is szinkronizálhatók:
 ```
 
 Ez a parancs növekményes szinkronizálja az adatforrás, a cél az utolsó módosítás időbélyegek alapján. Hozzáadásakor, vagy töröljön egy fájlt a forrás, az AzCopy v10 fog végezze el ugyanezt a célhelyen. A törlés előtt meg kell erősítenie az AzCopy fogja kérni.
+
+## <a name="copy-data-from-amazon-web-services-aws-s3"></a>Adatok másolása az Amazon Web Services (AWS) S3-ból
+
+Az AWS S3 gyűjtőt hitelesítéshez, állítsa be az alábbi környezeti változókat:
+
+```
+# For Windows:
+set AWS_ACCESS_KEY_ID=<your AWS access key>
+set AWS_SECRET_ACCESS_KEY=<AWS secret access key>
+# For Linux:
+export AWS_ACCESS_KEY_ID=<your AWS access key>
+export AWS_SECRET_ACCESS_KEY=<AWS secret access key>
+# For MacOS
+export AWS_ACCESS_KEY_ID=<your AWS access key>
+export AWS_SECRET_ACCESS_KEY=<AWS secret access key>
+```
+
+Blob-tárolóba másolja ki a gyűjtőhöz, adja ki a következő parancsot:
+
+```
+.\azcopy cp "https://s3.amazonaws.com/mybucket" "https://myaccount.blob.core.windows.net/mycontainer?<sastoken>" --recursive
+```
+
+További információ az AWS S3, az AzCopy használatával adatait átmásolásához: a lap [Itt](https://github.com/Azure/azure-storage-azcopy/wiki/Copy-from-AWS-S3).
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
@@ -277,10 +308,11 @@ Szűrés állapot szerint átvitelek, használja a következő parancsot:
 .\azcopy jobs show <job-id> --with-status=Failed
 ```
 
-A következő paranccsal egy sikertelen vagy megszakítva feladat folytatása. Ez a parancs a azonosítóját a SAS-jogkivonat együtt használja. Állandó biztonsági okokból nem fut:
+A következő paranccsal egy sikertelen vagy megszakítva feladat folytatása. Állandó biztonsági okokból nem ezt a parancsot használja az azonosítót és a SAS-jogkivonat:
 
 ```azcopy
-.\azcopy jobs resume <jobid> --sourcesastokenhere --destinationsastokenhere
+.\azcopy jobs resume <jobid> --source-sas="<sastokenhere>"
+.\azcopy jobs resume <jobid> --destination-sas="<sastokenhere>"
 ```
 
 ## <a name="next-steps"></a>További lépések

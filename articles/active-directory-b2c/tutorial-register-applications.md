@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/05/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f79ecd96b15ff4ff96a3bb93061f0c9d7598191f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 849bcfe2b5ee177d06b8e4cf62fd29459d2e59ce
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338156"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278394"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Oktatóanyag: Alkalmazás regisztrálása az Azure Active Directory B2C-vel
 
@@ -48,7 +48,7 @@ Ha még nem hozott létre a saját [Azure AD B2C-bérlő](tutorial-create-tenant
 
 ## <a name="create-a-client-secret"></a>Ügyfél titkos kulcs létrehozása
 
-Ha Ön alkalmazást egy jogkivonat-kód cseréje kell, hogy hozzon létre egy.
+Ha az alkalmazás egy jogkivonat-kód cseréje, hozzon létre egy szeretné.
 
 1. Válassza ki **kulcsok** majd **kulcs generálása**.
 2. Válassza ki **mentése** a kulcs megtekintéséhez. Jegyezze fel az **Alkalmazáskulcs** értékét. Ezt az értéket fogja használni az alkalmazás kódjában alkalmazáskulcsként.

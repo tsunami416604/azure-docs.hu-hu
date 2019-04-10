@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dfd91caf67592b349bd16bab673a3e45397ad282
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 311fdb0b0a2e587e7cf8581f967ed0248de85f6d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58807682"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59291683"
 ---
 ## <a name="benefits-of-managed-disks"></a>Felügyelt lemezek előnyei
 
@@ -31,6 +31,10 @@ Felügyelt lemezeket használ, legfeljebb 50 000 virtuális Gépet hozhat létre
 
 Annak érdekében, hogy a lemezek a rendelkezésre állási csoportokkal integrálva vannak a felügyelt lemezek [virtuális gépet egy rendelkezésre állási csoportban](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) egypontos meghibásodás elkerülése érdekében hibapontok. Lemezek automatikusan különböző tárolóskálázási egységekbe (stampek) kerülnek. Ha egy stamp hardver-vagy szoftverhiba miatt meghiúsul, csak azokat a stampek lévő lemezek VM-példányok sikertelen. Például tegyük fel, hogy öt virtuális gépeken futó alkalmazásokhoz, és a virtuális gépek rendelkezésre állási csoportba. A lemezek a virtuális gépeken nem tárolja az azonos blokkba, ezért ha egyetlen stamphez konfiguráljon leáll, az alkalmazás többi példánya tovább futnak.
 
+## <a name="integration-with-availability-zones"></a>Integráció a rendelkezésre állási zónák
+
+Felügyelt lemezek támogatja [rendelkezésre állási zónák](../articles/availability-zones/az-overview.md), azaz egy magas rendelkezésre állású ajánlat, amely az adatközpontok meghibásodásai úgy védi az alkalmazásokat. A rendelkezésre állási zónák egyedi fizikai helyszínek az Azure-régióban. Minden zóna egy vagy több adatközpont független áramellátással, hűtéssel és hálózati található tevődik össze. Rugalmasság biztosítása érdekében legalább három különálló zónát, az összes engedélyezett régióban van. A rendelkezésre állási zónákban az Azure iparági ajánlott 99,99 %-os virtuális gép ÜZEMIDŐT biztosít.
+
 ### <a name="azure-backup-support"></a>Az Azure Backup-támogatás
 
 Regionális katasztrófák elleni védelem érdekében [Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) segítségével hozzon létre egy biztonsági mentési feladat idő-alapú biztonsági mentések és a biztonsági másolatok megőrzési házirendeket. Ez lehetővé teszi, hogy könnyen virtuális gépek visszaállítását, majd hajtsa végre. Jelenleg az Azure Backup támogatja a legfeljebb négy tebibyte (TiB) lemezek. További információkért lásd: [Azure Backup segítségével a felügyelt lemezekkel rendelkező virtuális gépek](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
@@ -41,11 +45,15 @@ Használhat [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](../articles
 
 ## <a name="disk-roles"></a>Lemez szerepkörök
 
-### <a name="data-disks"></a>Adatlemezek
+Nincsenek Azure-ban három fő lemez szerepkörök: az adatlemez, az operációsrendszer-lemez és az ideiglenes lemez. Ezek a szerepkörök hozzárendelése a virtuális géphez csatolt lemezek.
+
+![Lemez szerepkörök működés közben](media/virtual-machines-managed-disks-overview/disk-types.png)
+
+### <a name="data-disk"></a>Adatlemez
 
 Adatlemez egy felügyelt lemezt, amely az alkalmazás vagy egyéb adatok továbbra is szeretné tárolni a virtuális géphez van csatolva. Adatlemezek SCSI-meghajtók, regisztrálva van, és betűvel, Ön által választott vannak ellátva. Az egyes adatlemezek kapacitása maximum, – 32 767 gibibájtban (GiB). A virtuális gép mérete határozza meg, hány adatlemez csatolható, és a tárolás típusát használhatja a lemezek.
 
-### <a name="os-disks"></a>Operációsrendszer-lemezek
+### <a name="os-disk"></a>Operációsrendszer-lemez
 
 Minden virtuális gép rendelkezik egy csatlakoztatott operációsrendszer-lemez. Hogy az operációsrendszer-lemez egy előre telepített operációs rendszer, amely a virtuális gép létrehozásakor kiválasztott rendelkezik.
 
@@ -62,7 +70,7 @@ Felügyelt lemez-pillanatképből alapértelmezés szerint egy standard szintű 
 A pillanatképek létrehozása felügyelt lemezekkel kapcsolatos további információkért lásd a következőket:
 
 * [Pillanatképekkel Windows felügyelt lemezként tárolt VHD másolatának létrehozása](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Felügyelt lemezként tárolt VHD másolatának létrehozása pillanatképekkel Linux alatt](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Pillanatképekkel Linux alatt felügyelt lemezként tárolt VHD másolatának létrehozása](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>Képek
 
@@ -71,7 +79,7 @@ Felügyelt lemezeket is támogatja a felügyelt egyéni lemezképek létrehozás
 Lemezképek létrehozásával kapcsolatos információkért tekintse meg a következő cikkeket:
 
 * [Az Azure-beli általánosított virtuális gép felügyelt rendszerképének rögzítése](../articles/virtual-machines/windows/capture-image-resource.md)
-* [Linux rendszerű virtuális gép általánosítása és rögzítése Azure CLI használatával](../articles/virtual-machines/linux/capture-image.md)
+* [Hogyan generalize és az Azure parancssori felületével Linux rendszerű virtuális gép rögzítése](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>Képek és pillanatképek
 

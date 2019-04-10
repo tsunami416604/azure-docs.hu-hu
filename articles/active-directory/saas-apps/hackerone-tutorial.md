@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52a782831f0f017423faef7610f984b2ea87e445
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6faf023d36ea40e3694161ee0cfc8aac7c5652fa
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898465"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277935"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező HackerOne
 
@@ -145,9 +145,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés HackerOne, hajtsa v�
 
     a. Az a **levelezőtartomány** szövegmezőbe írja be a regisztrált tartomány.
 
-    b. A  **egyszeri bejelentkezési URL-Címként** szövegmezőből, illessze be az értékét **bejelentkezési URL-cím** Azure Portalról másolt.
+    b. A **egyszeri bejelentkezési URL-Címként** szövegmezőből, illessze be az értékét **bejelentkezési URL-cím** Azure Portalról másolt.
 
-    c. Nyissa meg a letöltött **tanúsítványfájl** Jegyzettömbbe Azure Portalról a tartalmát a vágólapra másolja és illessze be azt a **X509 tanúsítvány**  szövegmezőbe.
+    c. Nyissa meg a letöltött **tanúsítványfájl** Jegyzettömbbe Azure Portalról a tartalmát a vágólapra másolja és illessze be azt a **X509 tanúsítvány** szövegmezőbe.
 
     d. Kattintson a **Save** (Mentés) gombra.
 
@@ -224,6 +224,6 @@ Ha a hozzáférési panelen a HackerOne csempére kattint, meg kell lehet automa
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
