@@ -10,12 +10,12 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: mmontwil
-ms.openlocfilehash: 49f3f50cd33d2b3fea1e784fcfc70044c568ba31
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b69a793d1d860bf2f2a4d52a92d4bea5cf903c0c
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842413"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426307"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Azure fejlesztői szóközöket a Java használatának első lépései
 
@@ -26,15 +26,10 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.
 
 > [!Note]
-> **Ha bármikor elakad**, tekintse meg a [Hibaelhárítás](troubleshooting.md) szakaszt, vagy írjon egy hozzászólást erre a lapra.
-
-Most már készen áll a Kubernetes-alapú Dev Spaces-terek Azure-ban történő létrehozására.
+> **Ha elakad,** bármikor, tekintse meg a [hibaelhárítás](troubleshooting.md) szakaszban.
 
 ## <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
 Az Azure Dev Spaces használatához minimális helyi gépbeállítás szükséges. A Dev Spaces-tér konfigurációjának legnagyobb része a felhőben van tárolva, és megosztható más felhasználókkal. Első lépésként töltse le és futtassa az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) parancssori felületet.
-
-> [!IMPORTANT]
-> Ha az Azure CLI már telepítve van, győződjön meg arról, hogy a 2.0.43-as vagy újabb verziót használja.
 
 ### <a name="sign-in-to-azure-cli"></a>Bejelentkezés az Azure CLI-be
 Jelentkezzen be az Azure-ba. Írja be a következő parancsot egy terminálablakba:
@@ -113,7 +108,7 @@ Már rendelkezik egy helyileg futó alapszintű webalkalmazással. Most olyan ob
     ```
 
 Az Azure CLI `azds prep` parancsa alapértelmezett beállításokkal hoz létre Docker- és Kubernetes-objektumokat:
-* A `./Dockerfile` ismerteti az alkalmazás tárolólemezképét, illetve hogy a forráskód hogyan épül fel és hogyan fut a tárolón belül.
+* `./Dockerfile` az alkalmazás tárolórendszerképet, és hogyan forráskódját épül, és a tárolóban fut ismerteti.
 * A `./charts/webfrontend` alatt található [Helm-diagram](https://docs.helm.sh) ismerteti a konténer Kubernetesben történő üzembe helyezését.
 
 Egyelőre még nem fontos a fájlok teljes tartalmát megérteni. Ugyanakkor azt megjegyeznénk, hogy **használhatja ugyanazokat a Docker és a Kubernetes kóddal való konfigurálási objektumokat a fejlesztéstől kezdve egészen az éles környezetig, így jobb konzisztenciát biztosíthat a különböző környezetekben.**
@@ -153,7 +148,7 @@ Nyissa meg ezt az URL-t egy böngészőablakban, és betöltődik a webalkalmaz�
 > Az Azure Dev Spaces nem csupán a Kubernetesben futó kódok lekérésére szolgál – a segítségével gyorsan és iteratívan lehet megtekinteni a kódmódosítások életbe lépését a felhőben lévő Kubernetes-környezetben.
 
 1. A terminálablakban nyomja le a `Ctrl+C` billentyűkombinációt (az `azds up` leállításához).
-1. Nyissa meg a `src/main/java/com/ms/sample/webfrontend/Application.java` nevű kódfájlt, és szerkessze az üdvözlőüzenetet: `return "Hello from webfrontend in Azure!";`
+1. Nyissa meg a kódfájl nevű `src/main/java/com/ms/sample/webfrontend/Application.java`, és az üdvözlő üzenet szerkesztése: `return "Hello from webfrontend in Azure!";`
 1. Mentse a fájlt.
 1. Futtassa az `azds up` parancsot a terminálablakban.
 
@@ -220,7 +215,7 @@ Ahelyett, hogy a kód minden szerkesztése alkalmával újra létrehozna és üz
 
 Frissítse a webalkalmazást a böngészőben. Az egyedi üzenetnek meg kell jelennie a felhasználói felületen.
 
-**Most tehát rendelkezésére áll egy módszer, amellyel gyorsan iterálhatja a kódot, és közvetlenül a Kubernetesben végezheti a hibakeresést.** A következő részből megtudhatja, hogyan hozhat létre és hívhat meg egy második tárolót.
+**Most már gyorsan Léptetés a kódra, és a hibakeresést közvetlenül a Kubernetes metódus!** A következő részből megtudhatja, hogyan hozhat létre és hívhat meg egy második tárolót.
 
 ## <a name="next-steps"></a>További lépések
 

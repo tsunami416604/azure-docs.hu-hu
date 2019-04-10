@@ -11,12 +11,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
-ms.openlocfilehash: 9b5f5d41a35b608ecec5e9ab2161a6c122e7aa82
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e94134a0c7c3b44a2e4734fe1e91a19f3e26851c
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894155"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425763"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Azure fejlesztői szóközöket a .NET Core és a Visual Studio használatának első lépései
 
@@ -28,7 +28,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.
 
 > [!Note]
-> **Ha bármikor elakad**, tekintse meg a [Hibaelhárítás](troubleshooting.md) szakaszt, vagy írjon egy hozzászólást erre a lapra.
+> **Ha elakad,** bármikor, tekintse meg a [hibaelhárítás](troubleshooting.md) szakaszban.
 
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaceshez engedélyezett Kubernetes-fürt létrehozása
@@ -128,7 +128,7 @@ Kattintson az oldal tetején lévő **About** (Információ) hivatkozásra a tö
 Az Azure Dev Spaces nem csupán a Kubernetesben futó kódok lekérésére szolgál – a segítségével gyorsan és iteratívan lehet megtekinteni a kódmódosítások életbe lépését a felhőben lévő Kubernetes-környezetben.
 
 ### <a name="update-a-content-file"></a>Tartalomfájlok frissítése
-1. Keresse meg a `./Views/Home/Index.cshtml` fájlt, és szerkessze a HTML-kódot. Például módosíthatja a 70. sor korábbi szövegét (`<h2>Application uses</h2>`) egy új szövegre (`<h2>Hello k8s in Azure!</h2>`).
+1. Keresse meg a `./Views/Home/Index.cshtml` fájlt, és szerkessze a HTML-kódot. Módosítsa például szövegű sorra 70 `<h2>Application uses</h2>` a következőhöz hasonló: `<h2>Hello k8s in Azure!</h2>`
 1. Mentse a fájlt.
 1. Lépjen a böngészőre, és frissítse az oldalt. A weboldalnak meg kell jelenítenie a frissített HTML-tartalmat.
 
@@ -138,7 +138,7 @@ Mi történt? A tartalomfájlok (például HTML és CSS) módosításait nem sz�
 A kódfájlok frissítése egy kicsit több munkát igényel, mert a .NET Core-alkalmazásnak újra létre kell hoznia és elő kell állítania az alkalmazás frissített bináris fájljait.
 
 1. Állítsa le a hibakeresőt a Visual Studióban.
-1. Nyissa meg a `Controllers/HomeController.cs` nevű kódfájlt, és szerkessze az Információ oldalon megjelenő üzenetet: `ViewData["Message"] = "Your application description page.";`
+1. Nyissa meg a kódfájl nevű `Controllers/HomeController.cs`, és szerkesztheti az üzenetet, amely a névjegy lapján jelennek meg: `ViewData["Message"] = "Your application description page.";`
 1. Mentse a fájlt.
 1. Nyomja le az **F5** billentyűt a hibakeresés újraindításához. 
 

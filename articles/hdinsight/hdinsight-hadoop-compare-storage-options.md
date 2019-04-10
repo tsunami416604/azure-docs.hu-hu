@@ -1,19 +1,18 @@
 ---
 title: Az Azure HDInsight-fürtökhöz való használatra tárolási lehetőségek összehasonlítása
 description: A tárolási típusok és azok működéséről az Azure HDInsight áttekintése.
-services: hdinsight,storage
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/04/2019
-ms.openlocfilehash: fa08d2fb2185bd4b6cd0e2e9d20e1c44a4a35eae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/08/2019
+ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101482"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361777"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtökhöz való használatra tárolási lehetőségek összehasonlítása
 
@@ -120,6 +119,8 @@ Az Azure Storage egy robusztus általános célú tárolómegoldás, amely zökk
 
 Javasoljuk, hogy az alapértelmezett fürttárolóhoz és az üzleti adatokat külön storage tárolók használatával elkülönítheti a HDInsight-naplók és a saját üzleti adatok ideiglenes fájlokat. Emellett ajánlott törölni az alapértelmezett blob tároló, amely tartalmazza az alkalmazás és a rendszer naplóit, tárolási költségek csökkentése érdekében minden használat után. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
 
+Ha úgy dönt, hogy a tárfiók biztonságos a **tűzfalak és virtuális hálózatok** korlátozásai **kiválasztott hálózatok**, ügyeljen arra, hogy a kivétel engedélyezése **engedélyezése a Microsoft megbízható szolgáltatások...**  úgy, hogy a HDInsight képes hozzáférni a tárfiókhoz.
+
 ### <a name="hdinsight-storage-architecture"></a>HDInsight tároló-architektúra
 
 A következő ábra az Azure Storage a HDInsight-architektúra absztrakt nézetét nyújtja:
@@ -210,7 +211,7 @@ Data Lake Storage Gen1 tárolókból adatok olyan lényegében mappák és fájl
 ## <a name="DataLakeStoreSecurity"></a>A Data Lake Storage Gen1 Adatbiztonság
 A Data Lake Storage Gen1 használja az Azure Active Directory hitelesítési és felhasználási hozzáférést listák (ACL) való hozzáférés kezelése szabályozhatja az adatokhoz.
 
-| **Funkció** | **Leírás** |
+| **Szolgáltatás** | **Leírás** |
 | --- | --- |
 | Authentication |Data Lake Storage Gen1 együttműködik az Azure Active Directory (Azure AD) identitás- és hozzáférés-kezelés a Data Lake Storage Gen1 tárolt összes adatot. Az integráció miatt Data Lake Storage Gen1 számos előnyt biztosít, az összes Azure AD-funkciók. Ezek a funkciók közé tartozik a többtényezős hitelesítés, a feltételes hozzáférés, szerepköralapú hozzáférés-vezérlés, Alkalmazáshasználat monitorozását, biztonsági figyelés és riasztások, és így tovább. Data Lake Storage Gen1 támogatja az OAuth 2.0 protokollt a REST-felületen belüli hitelesítéshez. Lásd: [hitelesítés az Azure Data Lake Storage Gen1 belül az Azure Active Directoryval](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)|
 | Hozzáférés-vezérlés |Data Lake Storage Gen1 hozzáférés-vezérlést biztosít a WebHDFS protokoll által elérhetővé tett POSIX-stílusú engedélyek támogatásával. A hozzáférés-vezérlési listák a gyökérkönyvtáron, az alkönyvtárakon és az egyes fájlokon is engedélyezhetők. A hozzáférés-vezérlési listák Data Lake Storage Gen1 kontextusában működéséről további információkért lásd: [hozzáférés-vezérlés a Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md). |

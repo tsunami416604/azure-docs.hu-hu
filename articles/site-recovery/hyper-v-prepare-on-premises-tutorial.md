@@ -5,29 +5,37 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 127e970927e8ac1d0cd9b431c0c0175bdc4f5c0b
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e57b629a0007b06af6e37f96e1466e35afafccc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315775"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361887"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Vészhelyreállítás az Azure-bA a helyszíni Hyper-V kiszolgálók előkészítése
 
-Ez az oktatóanyag bemutatja, hogyan készítse elő a helyszíni Hyper-V infrastruktúra, amikor a Hyper-V virtuális gépek replikálása az Azure-bA a vész-helyreállítási alkalmazásában szeretné. A Hyper-V-gazdagépek a System Center Virtual Machine Manager (VMM) által kezelhető, de ez nem szükséges.  Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ez a cikk azt ismerteti, hogyan készítheti elő a helyszíni Hyper-V infrastruktúra, ha meg szeretné beállítani a Hyper-virtuális gépek vészhelyreállítása az Azure-bA használatával [Azure Site Recovery](site-recovery-overview.md).
+
+
+Ez az, amely bemutatja, hogyan állítható be vészhelyreállítást az Azure-bA a helyszíni Hyper-V virtuális gépek egy sorozat második oktatóanyaga. Első oktatóanyaga hogy [állítsa be az Azure-összetevőket](tutorial-prepare-azure.md) Hyper-V-vészhelyreállításhoz szükséges.
+
+Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Tekintse át a Hyper-V követelményeinek, és a VMM-ben követelmények, ha van ilyen.
-> * Készítse elő a VMM-ben, ha van ilyen
-> * Az Azure-helyen internet-hozzáférés ellenőrzése
-> * Az Azure-bA a feladatátvételt követően érhetik el azokat, hogy a virtuális gépek előkészítése
+> * Tekintse át a Hyper-V követelmények, és a VMM-ben követelmények, ha a Hyper-V-gazdagépek a System Center VMM által felügyelt.
+> * Készítse elő a VMM-ben, ha van ilyen.
+> * Ellenőrizze az internetes hozzáférés az Azure-helyen.
+> * Virtuális gépek előkészítése, hogy az Azure-bA a feladatátvételt követően érhetik el azokat.
 
-Ez a sorozat második oktatóanyaga. Győződjön meg arról, hogy [beállította az Azure-összetevőket](tutorial-prepare-azure.md) az előző oktatóanyagban leírtak szerint.
+> [!NOTE]
+> Az oktatóanyagok bemutatják a legegyszerűbb telepítési út esetén. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes útmutatásért tekintse át a cikk az útmutató szakaszban a Site Recovery a tartalom.
 
+## <a name="before-you-start"></a>Előkészületek
 
+Győződjön meg arról, hogy előkészítette az Azure leírtak szerint a [első oktatóanyag-sorozat](tutorial-prepare-azure.md).
 
 ## <a name="review-requirements-and-prerequisites"></a>Tekintse át a követelmények és Előfeltételek
 
@@ -79,7 +87,7 @@ Windows virtuális géphez való kapcsolódásra a feladatátvételt követően 
 
 1. Ha internetes hozzáférést kíván használni, engedélyezze az RDP-t a helyszíni virtuális gépen a feladatátvétel előtt. Ellenőrizze, hogy a **Nyilvános** résznél felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.
 2. Ha helyek közötti VPN-kapcsolatot kíván használni, engedélyezze az RDP-t a helyszíni gépen. Engedélyezze az RDP-t a **Windows tűzfal** -> **Engedélyezett alkalmazások és szolgáltatások** területén a **Tartomány és Privát** hálózatok számára.
-   Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információk](https://support.microsoft.com/kb/3031135). A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, a frissítés befejeződéséig nem fog tudni bejelentkezni a virtuális gépre.
+   Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információk](https://support.microsoft.com/kb/3031135). A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, nem jelentkezhet be a virtuális géphez a frissítés befejeződéséig.
 3. A feladatátvételt követően ellenőrizze a **Rendszerindítási diagnosztika** részt a Windows Azure virtuális gépen a virtuális gép képernyőképének megtekintéséhez. Ha nem sikerül, ellenőrizze, hogy fut-e a virtuális gép, majd tekintse át a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 A feladatátvételt követően az Azure virtuális gépek ugyanazon IP-címet használja a replikált helyszíni virtuális gép vagy egy másik IP-címmel érheti el. [További](concepts-on-premises-to-azure-networking.md) feladatátvételi IP-címzés beállítása.

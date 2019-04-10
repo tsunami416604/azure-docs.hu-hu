@@ -16,12 +16,12 @@ ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: 2005cf4b1929dfe9e520f56308493db7d820226e
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 93221b8cd30993c4bdfdc84b5d14ac432fa661d3
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361109"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471282"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 frissítése
 
@@ -197,6 +197,14 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 <!-- 1663805 - IS ASDK --> 
 - Engedélyek nem tekintheti meg az Azure Stack portálok használata az előfizetéshez. Áthidaló megoldásként használja [engedélyek ellenőrzése érdekében PowerShell](/powershell/module/azs.subscriptions.admin/get-azssubscriptionplan).
+
+<!-- Daniel 3/28 -->
+- A felhasználói portálon lépjen egy blobba egy tárfiókon belül, és megpróbálja megnyitni **hozzáférési szabályzat** a navigációs fán, az azt követő ablak nem sikerül betölteni. A probléma megkerüléséhez az alábbi PowerShell-parancsmagok létrehozása, beolvasása, beállítást és hozzáférési házirendeket, illetve törlése engedélyezése:
+
+  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
+  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
+  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
+  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
 
 <!-- ### Health and monitoring -->
 

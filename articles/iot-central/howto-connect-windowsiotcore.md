@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 85fba27c856561eb1270e719dcf24b88d2d5a01f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0312e322aea74b3ce9867d09cebc7543da40de5f
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309910"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426239"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>A Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -48,10 +48,7 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Windows
 
 ### <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Windows IoT Core** eszköz sablont, és jegyezze fel az eszköz kapcsolat részleteinek (**hatókör azonosítója, az eszköz azonosítója, az elsődleges kulcs**). További információkért lásd: [valós eszköz hozzáadása az Azure IoT Central alkalmazásnak](tutorial-add-device.md).
-
- > [!NOTE]
-   > Az Azure IoT Central átváltott használatával az Azure IoT Hub Device Provisioning service (DPS) az összes eszköz kapcsolat, ezeket az utasításokat követve [az eszköz kapcsolati karakterláncának lekérése](concepts-connectivity.md#get-a-connection-string) és az oktatóanyag további részeinek folytatásához.
+Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Windows IoT Core** eszköz sablont, és jegyezze fel az eszköz kapcsolat részleteinek (**hatókör azonosítója, az eszköz azonosítója, az elsődleges kulcs**). Ezeket az utasításokat követve [az eszköz kapcsolati karakterláncának létrehozása](howto-generate-connection-string.md) használatával a **hatókör azonosítója**, **Eszközazonosító**, és **elsődleges kulcs** történtek egy korábban vegye figyelembe a.
 
 ## <a name="prepare-the-windows-10-iot-core-device"></a>A Windows 10 IoT Core-eszköz előkészítése
 
@@ -67,7 +64,8 @@ Az ügyfélalkalmazás az előző lépésben a Windows 10 IoT-eszközök annak �
 
 **Győződjön meg arról, az ügyfélalkalmazás használata az eszközön tárolt kapcsolati karakterlánc**
 * Az asztalon mentse a kapcsolati karakterlánc connection.string.iothub nevű szövegfájlba.
-* A szöveges fájlt másolja az eszköz dokumentum mappába: `[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
+* A szöveges fájlt másolja az eszköz dokumentum mappába:
+`[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
 
 Miután ezt megtette, meg kell nyitnia a [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) bármely böngészőben http://[device-IP-address]:8080 beírásával.
 

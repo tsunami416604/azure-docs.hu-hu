@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2019
+ms.date: 04/10/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/09/2019
-ms.openlocfilehash: 79f61f99050748c93ca4bd17d1849f4cbba7a295
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.lastreviewed: 04/10/2019
+ms.openlocfilehash: f07f81562c604913e633a8d93fa9c7db28a7bf55
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360556"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471477"
 ---
 # <a name="azure-stack-1903-update"></a>Azure Stack 1903 frissítése
 
@@ -97,7 +97,8 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 
 - Futtatásakor [Test-AzureStack](azure-stack-diagnostic-test.md), megjelenik egy figyelmeztető üzenet az alaplapi felügyeleti vezérlő (BMC). Biztonságosan figyelmen kívül hagyhatja ezt a figyelmeztetést.
 
-- <!-- 2468613 - IS --> Ez a frissítés telepítése során láthatja a címmel riasztások **hiba – a sablon typu FaultType UserAccounts.New hiányzik.** Ezek a riasztások nyugodtan figyelmen kívül hagyhatja. A riasztás automatikusan bezáródik a frissítés a telepítés befejezése után.
+<!-- 2468613 - IS -->
+- Ez a frissítés telepítése során láthatja a címmel riasztások **hiba – typu FaultType UserAccounts sablont. Új nebyl nalezen.** Ezek a riasztások nyugodtan figyelmen kívül hagyhatja. A riasztás automatikusan bezáródik a frissítés a telepítés befejezése után.
 
 ## <a name="post-update-steps"></a>Frissítés utáni lépések
 
@@ -124,10 +125,15 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - Felhasználói előfizetések eredmények az árva erőforrások törlése. Áthidaló megoldásként először törölje a felhasználó vagy a teljes erőforráscsoportot, és ezután törölje a felhasználói előfizetések.
 
 <!-- 1663805 - IS ASDK --> 
-- Engedélyek nem tekintheti meg az Azure Stack portálok használata az előfizetéshez. Áthidaló megoldásként használja [engedélyek ellenőrzése érdekében PowerShell](/powershell/module/azs.subscriptions.admin/get-azssubscriptionplan).
+- Engedélyek nem tekintheti meg az Azure Stack portálok használata az előfizetéshez. Áthidaló megoldásként használja [engedélyek ellenőrzése érdekében PowerShell](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 <!-- Daniel 3/28 -->
-- A felhasználói portálon lépjen egy blobba egy tárfiókon belül, és megpróbálja megnyitni **hozzáférési szabályzat** a navigációs fán, az azt követő ablak nem sikerül betölteni.
+- A felhasználói portálon lépjen egy blobba egy tárfiókon belül, és megpróbálja megnyitni **hozzáférési szabályzat** a navigációs fán, az azt követő ablak nem sikerül betölteni. A probléma megkerüléséhez az alábbi PowerShell-parancsmagok létrehozása, beolvasása, beállítást és hozzáférési házirendeket, illetve törlése engedélyezése:
+
+  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
+  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
+  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
+  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
 
 <!-- Daniel 3/28 -->
 - A felhasználói portálon, amikor megpróbálja feltölteni egy blob használatával a **OAuth(preview)** beállítást, a feladat egy hibaüzenettel meghiúsul. A probléma megkerüléséhez feltöltése a blob használatával a **SAS** lehetőséget.
@@ -157,17 +163,16 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 - Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy az SSH-kulcsokkal való bejelentkezéshez használ. Áthidaló megoldásként használja a Linux-bővítményt a Virtuálisgép-hozzáférés SSH-kulcsok megvalósításához a kiépítés után, vagy jelszóalapú hitelesítés használatára.
 
-- Az Azure Stack már támogatja a Windows Azure Linux-ügynökök verzió 2.2.20 nagyobb. Ez a támogatás 1901 és 1902 gyorsjavítás része volt, és lehetővé teszi az ügyfelek számára, hogy egységes típusú linux-rendszerképeket az Azure és az Azure Stack közötti karbantartása.
-
+- Az Azure Stack már támogatja a Windows Azure Linux-ügynökök verzió 2.2.20 nagyobb. Ez a támogatás a 1901 és 1902 gyorsjavítások része volt, és lehetővé teszi, hogy az ügyfelek számára egységes Linux-rendszerképeket az Azure és az Azure Stack közötti karbantartása.
 
 - Ha egy életciklus állomás (HLH) nem rendelkezik: build 1902, mielőtt kellett állítani csoportházirend **Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Biztonsági beállítások** való **LM- és NTLM – NTLMv2 munkamenet használja, ha az egyeztetett**. Build 1902, mivel azt hagyja **nincs definiálva** vagy - **csak a válasz küldése NTLMv2** (azaz az alapértelmezett érték). Ellenkező esetben nem lehet hozzon létre egy távoli PowerShell-munkamenetet, és megjelenik egy **a hozzáférés megtagadva** hiba:
 
-   ```shell
+   ```powershell
    PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
    New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
    about_Remote_Troubleshooting Help topic.
    At line:1 char:12
-   + $session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
+   + $Session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
    +            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       + CategoryInfo          : OpenError: (System.Manageme....RemoteRunspace:RemoteRunspace) [New-PSSession], PSRemotingTransportException
       + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed

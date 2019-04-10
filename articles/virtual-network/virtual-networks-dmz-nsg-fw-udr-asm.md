@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 104eae7c8d18c32fd5b9b84147df2bf121345c22
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 668862714b416bd89d3b5f82caf8b0305fccae54
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59277415"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426528"
 ---
 # <a name="example-3-build-a-perimeter-network-to-protect-networks-with-a-firewall-udr-and-nsgs"></a>3. példa: Hozhat létre egy szegélyhálózaton hálózatok egy tűzfal, udr-t és az NSG-k védelme
 
@@ -396,7 +396,7 @@ Az alábbiakban az egyes szabályok ebben a példában a végrehajtásához tula
     > [!TIP]
     > Bár ez a példa szabály `<explicit-dest>` hivatkozást, a tűzfal konfigurálása során minden egy egységes megközelítést kell használnia. Azt javasoljuk, hogy egy nevesített objektum használata a kereslettől és a könnyebb olvashatóság érdekében. A `<explicit-dest>` látható itt van egy alternatív módszer csak megjeleníthető. Nem általánosan ajánlott, különösen a összetett konfigurációkkal.
 
-* **Kimenő internet szabály**: A pass-szabály lehetővé teszi, hogy a kiválasztott cél hálózatok átadása bármely forrás hálózati forgalmát. A Barracuda NextGen tűzfal általában van ez a szabály "on" alapértelmezés szerint, de letiltott állapotban. Ez a szabály eléréséhez kattintson a jobb gombbal a **aktiválása szabály** parancsot. Módosítsa a szabály a hálózati objektumok a háttér- és előtér-alhálózat hozzáadása a forrásattribútum, ez a szabály a képernyőképen látható. Ez a cikk Előfeltételek szakaszában hozott létre ezeket a hálózati objektumok.
+* **Kimenő internet szabály**: A pass-szabály lehetővé teszi, hogy a kiválasztott cél hálózatok átadása bármely forrás hálózati forgalmát. A Barracuda NextGen tűzfal alapértelmezés szerint, de a letiltott állapotú általában van ez a szabály "on". Ez a szabály eléréséhez kattintson a jobb gombbal a **aktiválása szabály** parancsot. Módosítsa a szabály a hálózati objektumok a háttér- és előtér-alhálózat hozzáadása a forrásattribútum, ez a szabály a képernyőképen látható. Ez a cikk Előfeltételek szakaszában hozott létre ezeket a hálózati objektumok.
   
     ![Kimenő tűzfalszabály][14]
 

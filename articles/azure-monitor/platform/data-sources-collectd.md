@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: b6785dc06107424344f0a6af775abe9b1c956f70
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999317"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426137"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Összegyűjtött adatok gyűjtésére a Linux-ügynökök az Azure monitorban
 [Összegyűjtött](https://collectd.org/) van egy nyílt forráskódú Linux-démon rendszeres időközönként által gyűjtött teljesítmény-mérőszámok az alkalmazások és a rendszer szintű adatait. Példa alkalmazások közé tartozik, a Java virtuális gép (JVM), a MySQL-kiszolgáló és az nginx-et. Ez a cikk információkat biztosít az Azure monitorban összegyűjtött teljesítményadatok gyűjtését.
@@ -112,14 +112,14 @@ Egy jól ismert modell között már a Linuxhoz készült Log Analytics-ügynök
 
 | Összegyűjtött metrika mező | Az Azure Monitor mező |
 |:--|:--|
-| gazdagép | Computer |
-| Beépülő modul | None |
-| plugin_instance | Példány neve<br>Ha **plugin_instance** van *null* majd InstanceName = "*_Total*" |
-| type | Objektumnév |
-| type_instance | CounterName<br>Ha **type_instance** van *null* majd CounterName =**üres** |
-| dsnames] | CounterName |
-| dstypes | None |
-| értékek] | CounterValue |
+| `host` | Computer |
+| `plugin` | None |
+| `plugin_instance` | Példány neve<br>Ha **plugin_instance** van *null* majd InstanceName = "*_Total*" |
+| `type` | Objektumnév |
+| `type_instance` | CounterName<br>Ha **type_instance** van *null* majd CounterName =**üres** |
+| `dsnames[]` | CounterName |
+| `dstypes` | None |
+| `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 

@@ -5,14 +5,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 55d6f1393f4f180776557ea9a2651064d61c3e06
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 1cf324887a225ecb9ba2cb40176a1f358e40a8e1
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301501"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361988"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -81,7 +81,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Protocol| (Nem kötelező) „http” vagy „https” protokollt ad meg a vCenterhez való csatlakozáshoz. Az alapértelmezett protokoll a https.|
 | -StorageAccountName | (Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie. |
 | -StorageAccountKey | (Nem kötelező) A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > <*Tárfiók neve*> > Beállítások > Hozzáférési kulcsok > 1. kulcs elemre. |
-| -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha Azure-célrégióként Azure US Government- vagy Azure China-beli felhők vannak megadva. |
+| -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Használja a paramétert, ha a cél Azure-régióban Azure US Government vagy Azure China 21Vianet. |
 
 
 Javasoljuk, hogy legalább 7 napig végezze a virtuális gépek profiljának készítését. Ha az adatváltozási minta egy hónapon belül változik, javasoljuk, hogy a héten akkor készítsen profilt, amikor a maximális változás tapasztalható. A legjobb megoldás, ha 31 nap alatt készít profilt, így jobb javaslatokat kaphat. A profilkészítés időtartama alatt az ASRDeploymentPlanner.exe alkalmazás folyamatosan fut. A profilkészítés időtartama napokban adható meg az eszközben. Az eszköz gyors teszteléséhez vagy megvalósíthatósági próbához néhány óra vagy perc alatt is készíthet profilt. A minimális profilkészítési idő 30 perc.
@@ -95,7 +95,7 @@ Alapértelmezés szerint az eszköz, és legfeljebb 1000 virtuális gépet jelen
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-Az alapértelmezett beállítások mellett ahhoz, hogy a profil 1500 virtuális géppel dolgozzon, két VMList.txt fájlt kell létrehozni. Az egyiken 1000, a másikon pedig 500 virtuális gépnek kell szerepelnie. Futtassa az ASR Deployment Planner két példányát, az egyiket a VMList1.txt, a másikat pedig a VMList2.txt fájllal. Mindkét VMList virtuális gépeinek esetében ugyanazt a könyvtárútvonalat is használhatja a profilkészítési adatok tárolásához.
+Az alapértelmezett beállítások mellett ahhoz, hogy a profil 1500 virtuális géppel dolgozzon, két VMList.txt fájlt kell létrehozni. Az egyiken 1000, a másikon pedig 500 virtuális gépnek kell szerepelnie. Futtassa az Azure Site Recovery Deployment Planner az egyiket a VMList1.txt pedig a VMList2.txt fájllal két példányát. Mindkét VMList virtuális gépeinek esetében ugyanazt a könyvtárútvonalat is használhatja a profilkészítési adatok tárolásához.
 
 Tapasztalatunk szerint a hardverkonfigurációtól, és különösen a jelentést generáló eszközt futtató kiszolgáló RAM-méretétől függően a művelet elegendő memória hiányában megszakadhat. Megfelelő hardveres feltételek mellett a MaxVMsSupported esetében bármilyen nagyobb értéket meg lehet adni.  
 
@@ -214,7 +214,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 ```
 
 ## <a name="percentile-value-used-for-the-calculation"></a>A számításhoz használt százalékérték
-**Alapértelmezés szerint a profilkészítés során összegyűjtött teljesítménymetrikák milyen százalékos arányát használja az eszköz jelentések készítésekor?**
+**Használja az eszköz a profilkészítés során összegyűjtött teljesítménymetrikák milyen alapértelmezett %-os érték nem, a jelentés készítésekor?**
 
 Az eszköz alapértelmezett értéke az írási/olvasási IOPS, az írási IOPS és az adatváltozás esetén a 95. százalékérték az összes virtuális gép profiljának elkészítése során. Ez a metrika biztosítja, hogy a virtuális gépek által az ideiglenes események miatt esetlegesen észlelt 100. százalékértékes kiugrást a rendszer nem használja fel a cél tárfiók és a forrássávszélesség követelményeinek meghatározásakor. Az ideiglenes esemény lehet például egy naponta egyszer futtatott biztonsági mentési feladat, rendszeres időközönként végzett adatbázis-indexelés, elemzésijelentés-készítési tevékenység vagy bármely hasonló, rövid ideig tartó, időpontalapú esemény.
 
@@ -226,7 +226,7 @@ A 95. százalékérték használata valós képet ad a számítási feladatok va
 ```
 
 ## <a name="growth-factor-considerations"></a>A növekedési tényezővel kapcsolatos szempontok
-**Miért kell figyelembe vennem a növekedési tényezővel kapcsolatos szempontokat a környezetek megtervezésekor?**
+**Miért érdemes figyelembe venni a növekedési tényező környezetek megtervezésekor?**
 
 Rendkívül fontos figyelembe venni a növekedést a számítási feladatok jellemzőiben, feltételezve a használat lehetséges növekedését. Ha beállítja a védelmet, és módosulnak a számítási feladatok jellemzői, nincs lehetőség arra, hogy egy másik védett tárfiókra váltson a védelem letiltása és ismételt engedélyezése nélkül.
 
@@ -242,9 +242,9 @@ Az elkészített Microsoft Excel-jelentés a következő információkat tartalm
 
 * [Helyszíni összefoglalás](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
 * [Javaslatok](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [VM&lt;-&gt;Storage Placement](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement) (Virtuálisgép&lt;-&gt;tároló elhelyezése)
-* [Compatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms) (Kompatibilis virtuális gépek)
-* [Incompatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms) (Nem kompatibilis virtuális gépek)
+* [Virtuális gép <> – tároló elhelyezése](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
+* [Kompatibilis virtuális gépek](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
+* [Nem kompatibilis virtuális gépek](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
 * [Költségbecslés](site-recovery-vmware-deployment-planner-cost-estimation.md)
 
 ![Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
@@ -265,7 +265,7 @@ Nyisson meg egy parancssori konzolt, és keresse meg a Site Recovery üzembehely
 | -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie.|
 | -StorageAccountKey | A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > <*Tárfiók neve*> > Beállítások > Hozzáférési kulcsok > 1. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemre. |
 | -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni a felhasznált sávszélesség kiszámításához. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy a vSphere ESXi-gazdagépen szereplő névvel.<br>A „VMList.txt” fájl például az alábbi virtuális gépeket tartalmazza:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
-| -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha Azure-célrégióként Azure US Government- vagy Azure China-beli felhők vannak megadva. |
+| -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Használja a paramétert, ha a cél Azure-régióban Azure US Government vagy Azure China 21Vianet. |
 
 Az eszköz több 64 MB-os „asrchdfile<#>.vhd” nevű fájlt (a „#” a fájlok számát jelöli) is létrehoz a megadott könyvtárban. Az eszköz feltölti a fájlokat a tárfiókba az átviteli sebesség megállapításához. Az átviteli sebesség mérése után az eszköz törli az összes fájlt a tárfiókból és a helyi kiszolgálóról. Ha az eszköz bármilyen oknál fogva leáll az átviteli sebesség kiszámítása közben, akkor nem törli a fájlokat a tárolóból és a helyi kiszolgálóról. Ezeket manuálisan kell törölnie.
 

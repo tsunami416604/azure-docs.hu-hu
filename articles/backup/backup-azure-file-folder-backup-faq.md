@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: trinadhk
-ms.openlocfilehash: acf71ae6f37ab6ea32d9cdd0ac06f297b00fba2e
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: c1690fe6d0ce24bd319b042a3850bbfe487ffcfc
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918569"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426256"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Kérdések az Azure Backup-ügynökkel kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure Backup-ügynök összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -74,8 +74,8 @@ Használja az alábbi listát a gyorsítótár helyének módosításához.
 
 1. Állítsa le a Backup motort úgy, hogy végrehajtja a következő parancsot egy rendszergazdai jogú parancssorban:
 
-    ```PS C:\> Net stop obengine``` 
-  
+    ```PS C:\> Net stop obengine```
+
 2. Ne helyezze át a fájlokat. Ehelyett másolja a gyorsítótár mappáját egy másik, elegendő tárhellyel rendelkező meghajtóra. Miután ellenőrizte, hogy a biztonsági másolatok működnek az új gyorsítótárhelyen, az eredeti gyorsítótárhelyet eltávolíthatja.
 3. Frissítse a következő beállításjegyzékbeli bejegyzéseket az új gyorsítótárhely mappájának elérési útjával.<br/>
 
@@ -111,7 +111,14 @@ Sem a gyorsítótármappa, sem a metaadatok virtuális merevlemez-meghajtója ne
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-by-the-backup-servicebr"></a>Van mód a Backup szolgáltatás által használt sávszélesség nagyságának beállítására?<br/>
   Igen, használhatja a Backup ügynök **Tulajdonságok módosítása** beállítását a sávszélesség módosításához. Beállíthatja a sávszélesség méretét, továbbá az időpontokat, amikor használja ezt a sávszélességet. A részletes útmutatást lásd: **[Hálózatszabályozás engedélyezése](backup-configure-vault.md#enable-network-throttling)**.
 
+## <a name="restore"></a>Visszaállítás
+
+### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Mi történik, ha megszakítom egy folyamatban lévő visszaállítási feladat?
+Ha egy folyamatban lévő visszaállítási feladat meg lett szakítva, a a visszaállítási folyamat leáll, és minden fájl visszaállítva a megszakítás pillanata előtt a konfigurált cél (eredeti helyére vagy máshová) bármely visszagörgetése nélkül maradnak.
+
+
 ## <a name="manage-backups"></a>Biztonsági másolatok kezelése
+
 ### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>Mi történik, ha átnevezek egy Windows-kiszolgálót, amelyről biztonsági adatmentés történik az Azure rendszerbe?<br/>
 Ha átnevez egy kiszolgálót, minden aktuálisan konfigurált biztonsági mentés leáll. Regisztrálja a kiszolgáló új nevét a Backup-tárolóban. Ha regisztrálta az új nevet a tárolóval, az első biztonsági mentési művelet egy *teljes* biztonsági mentés lesz. Ha helyre kell állítania a régi kiszolgálónévvel a tárolóba mentett adatokat, használja az **Adatok helyreállítása** varázsló [**Másik kiszolgáló**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) beállítását.
 
@@ -119,7 +126,7 @@ Ha átnevez egy kiszolgálót, minden aktuálisan konfigurált biztonsági ment�
 Az Azure Backup ügynök az NTFS-re hagyatkozik. A [fájl elérési útvonalának hossz-specifikációját a Windows API korlátozza](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths). Ha a védeni kívánt fájlok hosszabb elérési úttal rendelkeznek, mint a Windows API által engedélyezett korlát, a biztonsági mentést a szülőmappáról vagy a lemezmeghajtóról készítse.  
 
 ### <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent-br"></a>Mely karakterek engedélyezettek az Azure Backup ügynököt használó Azure Backup házirend elérési útjában? <br>
- Az Azure Backup ügynök az NTFS-re hagyatkozik. Ez engedélyezi az [NTFS által támogatott karakterek](/windows/desktop/FileIO/naming-a-file#naming_conventions) használatát a fájl meghatározásának részeként. 
- 
+ Az Azure Backup ügynök az NTFS-re hagyatkozik. Ez engedélyezi az [NTFS által támogatott karakterek](/windows/desktop/FileIO/naming-a-file#naming_conventions) használatát a fájl meghatározásának részeként.
+
 ### <a name="i-receive-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>Továbbra is megjelenik „Az Azure Backup nem lett konfigurálva ezen a kiszolgálón” figyelmeztetés annak ellenére, hogy már konfiguráltam biztonsági mentési szabályzatot <br/>
 Ez a figyelmeztetés akkor jelenik meg, amikor a helyi kiszolgálón tárolt ütemezett biztonsági mentési beállítások nem egyeznek meg a biztonsági mentési tárolóban tárolt beállításokkal. Ha a kiszolgáló vagy a beállítások egy korábbi hibátlan állapotra lettek visszaállítva, a biztonsági mentés ütemezése elveszítheti a szinkronizálást. Ha ilyen figyelmeztetést kap, [konfigurálja újra a biztonsági mentési házirendet](backup-azure-manage-windows-server.md), majd kattintson a **Biztonsági mentés azonnali futtatása** parancsra a helyi kiszolgálónak az Azure szolgáltatással történő újraszinkronizálásához.

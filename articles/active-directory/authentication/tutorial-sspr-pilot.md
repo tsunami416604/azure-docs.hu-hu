@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b85284a5c2c3017e7ccc0a7e06a712e41c2a9561
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: a6e1095cc2c5937fa5de762f91a9830161b8d2a5
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215591"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59362122"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Oktatóanyag: Egy Azure AD önkiszolgáló jelszó-visszaállítás kísérleti a bevezetés befejezése
 
@@ -43,7 +43,7 @@ Fontos, hogy az új jelszó önkiszolgáló kérésének tesztelése kizárólag
    * Kattintson a **Mentés** gombra.
 1. A **Hitelesítési módszerek** lapon:
    * Állítsa be a **új jelszó kéréséhez szükséges módszerek száma** való **1**
-   * A **Felhasználók által választható módszerek** közül válassza azt, amelyet a vállalat engedélyezni szeretne. Ebben az oktatóanyagban jelölje be a engedélyezése **E-mail** és **mobilalkalmazás-kód (előzetes verzió)**.
+   * A **Felhasználók által választható módszerek** közül válassza azt, amelyet a vállalat engedélyezni szeretne. Ebben az oktatóanyagban jelölje be a engedélyezése **E-mail**, **mobiltelefon**, **irodai telefon**, **mobilalkalmazásbeli értesítés (előzetes verzió)** és  **Mobilalkalmazás-kód (előzetes verzió)**.
    * Kattintson a **Mentés** gombra.
 1. A **Regisztráció** lapon:
    * Válassza az **Igen** lehetőséget a **Felhasználói regisztráció megkövetelése bejelentkezéskor** beállításnál.
@@ -60,7 +60,7 @@ Az új jelszó önkiszolgáló kérése konfigurálva lett a tesztcsoportban lé
 
 ## <a name="test-sspr-as-a-user"></a>Az SSPR tesztelése felhasználóként
 
-Az új jelszó önkiszolgáló kérésének teszteléséhez egy nem rendszergazdai jogosultságú tesztfelhasználóra van szükség, aki a tesztcsoport tagja. **Vegye figyelembe, hogy ha az Ön által használt fiókhoz rendszergazdai szerepkörök lettek hozzárendelve, akkor a hitelesítéshez használt módszer és szám eltérhet az eredetileg kiválasztottól, hiszen a rendszergazdai szabályzatot a Microsoft kezeli.**
+Az új jelszó önkiszolgáló kérésének teszteléséhez egy nem rendszergazdai jogosultságú tesztfelhasználóra van szükség, aki a tesztcsoport tagja. **Vegye figyelembe, hogy ha egy fiókot, amely rendelkezik rendszergazdai szerepköröket hozzárendelve a hitelesítési módszerek száma eltérhet kiválasztott, a Microsoft kezeli a rendszergazdai házirend.**
 
 1. Nyisson meg egy új böngészőablakot InPrivate vagy inkognitó módban.
 1. Tesztfelhasználóként regisztráljon új jelszó önkiszolgáló kérésére a következő helyen található regisztrációs portálon: [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup).
@@ -81,4 +81,4 @@ Ha az oktatóanyag keretében konfigurált funkciót a továbbiakban már nem sz
 Ebben az oktatóanyagban új Azure AD-jelszó önkiszolgáló kérését engedélyezte. Továbbléphet a következő oktatóanyagra, amelyből megtudhatja, hogyan integrálható az új jelszó önkiszolgáló kérésére szolgáló felület egy helyszíni Active Directory Domain Services-infrastruktúrába.
 
 > [!div class="nextstepaction"]
-> [Az SSPR helyszíni visszaírás integrációjának engedélyezése](tutorial-enable-writeback.md)
+> [SSPR a helyszíni visszaírási integrációjának engedélyezése](tutorial-enable-writeback.md)

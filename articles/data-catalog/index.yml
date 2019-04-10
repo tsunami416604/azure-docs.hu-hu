@@ -24,6 +24,14 @@ sections:
               src: media/index/data-catalog.svg
             text: Azure Portal
             href: 'https://docs.microsoft.com/azure/data-catalog/data-catalog-get-started'
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'Ismerje meg, hogy miként regisztrálhatók, kereshetők, széljegyzetelhetők, kezelhetők és törölhetők az adategységek az Azure Data Catalogban:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="register-data-assets-tutorial">Adategységek regisztrálása az Azure Data Catalogban</a>
   - title: Referencia
     items:
       - type: list

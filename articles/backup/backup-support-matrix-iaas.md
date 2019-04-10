@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: f4034a3462d7221c16464e6a2cee9aad2105a6cd
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 974e640977fcf4d580575705d7fdf0faf632c31b
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649811"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361459"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
 Használhatja a [Azure Backup szolgáltatás](backup-overview.md) a helyszíni gépek és a számítási feladatok és Azure-beli virtuális gépek (VM) biztonsági mentése. Ez a cikk összegzi a támogatási beállításait és korlátozások biztonsági mentésekor az Azure-beli virtuális gépek az Azure Backup szolgáltatással.
@@ -28,7 +28,7 @@ Egyéb támogatási mátrixok:
 
 Itt látható, hogyan lehet biztonsági másolatot készíteni, és Azure virtuális gépek visszaállítása az Azure Backup szolgáltatással.
 
-**Forgatókönyv** | **Biztonsági mentés** | **Ügynök** |**Visszaállítás**
+**Forgatókönyv** | **Backup** | **Ügynök** |**Visszaállítás**
 --- | --- | --- | ---
 Közvetlen biztonsági mentést Azure-beli virtuális  | Készítsen biztonsági másolatot a teljes virtuális Gépet.  | Nincs ügynök van szükség az Azure virtuális gépen. Az Azure Backup telepíti, és használja a bővítményt a [Azure Virtuálisgép-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) , hogy fut a virtuális gépen. | Állítsa vissza a következőképpen:<br/><br/> - **Alapszintű virtuális gép létrehozása**. Ez akkor hasznos, ha a virtuális gép nem rendelkezik külön konfigurációval például a több IP-címet.<br/><br/> - **A Virtuálisgép-lemez visszaállítása**. Állítsa vissza a lemezt. Ezután csatlakoztassa azt egy meglévő virtuális Gépet, vagy hozzon létre egy új virtuális Gépet a lemezről a PowerShell-lel.<br/><br/> - **Cserélje le a virtuális gép lemezének**. Ha a virtuális gép létezik, és a felügyelt lemezek (titkosítatlanul) használ, lemez visszaállítása, és cserélje le a virtuális gépen meglévő lemez használatával.<br/><br/> - **Meghatározott fájlok és mappák visszaállítása**. Fájlok és mappák visszaállíthatja a teljes virtuális gép helyett virtuális Gépet.
 Közvetlen biztonsági mentést Azure-beli virtuális (csak Windows)  | Készítsen biztonsági másolatot a megadott fájlok/mappák/kötetet. | Telepítse a [Azure Recovery Services agent](backup-azure-file-folder-backup-faq.md).<br/><br/> A MARS-ügynök mellett a biztonsági mentési bővítményt a fájl vagy mappa szintjén a virtuális gép biztonsági másolatának az Azure Virtuálisgép-ügynök futtatásával. | Állítsa vissza az adott mappákat és fájlokat.
@@ -38,7 +38,7 @@ További információ a biztonsági mentés [használatával egy biztonsági men
 
 ## <a name="supported-backup-actions"></a>Támogatott biztonsági mentési műveletek
 
-**Művelet** | **Támogatás**
+**Műveletek** | **Támogatás**
 --- | ---
 Amikor létrehoz egy Windows Azure virtuális gép biztonsági mentésének engedélyezése | Támogatott:  A Windows Server 2019 (Datacenter/Datacenter mag), a Windows Server 2016 (Core adatközpont vagy Datacenter); A Windows Server 2012 R2 Datacenter; A Windows Server 2008 R2 (RTM és SP1)
 Amikor létrehoz egy Linux rendszerű virtuális gép biztonsági mentésének engedélyezése | Támogatott:<br/><br/> - Ubuntu Server: 1710, 1704, 1604 (LTS), 1404 (LTS)<br/><br/> – A Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3<br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> - Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
@@ -69,7 +69,7 @@ Biztonsági mentés a DPM/MABS | Biztonsági mentés a támogatott operációs r
 
 Íme, mi támogatott, ha azt szeretné, Linux rendszerű gépek biztonsági mentéséhez.
 
-**Művelet** | **Támogatás**
+**Műveletek** | **Támogatás**
 --- | ---
 Linux rendszerű Azure virtuális gépek biztonsági mentése Azure-beli Linux rendszerű Virtuálisgép-ügynökkel rendelkező | Alkalmazáskonzisztens biztonsági mentés.<br/><br/> Alkalmazáskonzisztens biztonsági mentés használatával [egyéni parancsfájlok](backup-azure-linux-app-consistent.md).<br/><br/> Visszaállítás alatt hozzon létre egy új virtuális Gépet, visszaállíthatja a lemez és használatával hozzon létre egy virtuális Gépet, vagy a lemez visszaállítása és kicserél egy lemezt egy meglévő virtuális gép használatával. Egyes fájlok és mappák is helyreállíthatja.
 Linux rendszerű Azure virtuális gépek biztonsági mentése a MARS-ügynök | Nem támogatott.<br/><br/> A MARS-ügynök csak Windows-gépeken telepíthető.
@@ -139,9 +139,9 @@ Virtuális gép helyreállítása másik virtuális hálózatban |   Támogatott
 
 ## <a name="vm-compute-support"></a>Virtuális gépek számítási támogatása
 
-**Számítás** | **Támogatás**
+**Compute** | **Támogatás**
 --- | ---
-Virtuális gép mérete |   Minden olyan Azure virtuális gép méretét legalább 2 processzormag és 1 GB RAM.<br/><br/> [Részletek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
+Virtuális gép mérete |   Minden olyan Azure virtuális gép méretét legalább 2 processzormag és 1 GB RAM.<br/><br/> [Részletek.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 A virtuális gépek biztonsági mentése [rendelkezésre állási csoportok](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability#availability-sets) | Támogatott.<br/><br/> A beállítás használatával gyorsan létrehozhat egy virtuális gép nem állítható vissza egy virtuális Gépet egy rendelkezésre álló készletbe. Ehelyett ha visszaállítja a virtuális gép, állítsa vissza a lemezt, és használatával helyezhet üzembe egy virtuális Gépet, vagy a lemez visszaállítása, és cserélje le a meglévő lemez használatával.
 A virtuális gépek biztonsági mentése [rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview) |  Nem támogatott.
 Az üzembe helyezett virtuális gépek biztonsági mentése [hibrid használati Benefit (HUB)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Támogatott.
@@ -157,8 +157,8 @@ Készítsen biztonsági másolatot a virtuális gépek konzisztencia | nem támo
 
 **Összetevő** | **Támogatás**
 --- | ---
-Az Azure virtuális gép adatlemezek | Készítsen biztonsági másolatot egy 16 vagy annál kisebb adatlemezekkel rendelkező virtuális Gépet.
-Adatlemez mérete | Az egyes lemezek legfeljebb 4095 GB is lehet.<br/><br/> Ha a tárolók az Azure Backup (más néven azonnali visszaállítása) legújabb verzióját futtatja, a lemez mérete akár 4 TB-os támogatottak. [További információk](backup-instant-restore-capability.md).
+Az Azure virtuális gép adatlemezek | Készítsen biztonsági másolatot egy 16 vagy annál kisebb adatlemezekkel rendelkező virtuális Gépet. <br/><br/> Támogatja a lemez mérete 4 TB-ig.
+Adatlemez mérete | Az egyes lemezek legfeljebb 4095 GB is lehet.<br/><br/> Ha a tárolók az Azure Backup (más néven azonnali visszaállítása) legújabb verzióját futtatja, a lemez mérete akár 4 TB-os támogatottak. [További információk](backup-instant-restore-capability.md).  
 Tárolási típus | Standard HDD, standard SSD, prémium szintű SSD. <br/><br/> Standard SSD akkor támogatott, ha a tárolók az Azure VM backup (vagyis az azonnali visszaállítása) a legújabb verzióra frissül. [További információk](backup-instant-restore-capability.md).
 Felügyelt lemezek | Támogatott.
 Titkosított lemezek | Támogatott.<br/><br/> Az Azure virtuális gépek engedélyezve van az Azure Disk Encryption (a vagy anélkül, hogy az Azure AD-alkalmazás) is készíthető.<br/><br/> Titkosított virtuális gépek nem állítható helyre, a fájl vagy mappa szintjén. A teljes virtuális Gépet helyre kell állítania.<br/><br/> Engedélyezheti a titkosítást az Azure Backup által már védett virtuális gépeken.
@@ -168,8 +168,11 @@ Lemez hozzáadása a védett virtuális gép | Támogatott.
 A védett virtuális gépek a lemez átméretezése | Támogatott.
 Megosztott tároló| A CSV vagy a Scale-Out File Server virtuális gépek biztonsági mentésének nem ajánlott. Fürt megosztott kötetei szolgáltatás író eséllyel lesz sikertelen.
 
-## <a name="vm-network-support"></a>Virtuálisgép-hálózatok támogatása
+> [!NOTE]
+> Az Azure Backup nem támogatja a csíkozott lemez. Lemez átméretezése az Azure Backup nem ajánlott.
 
+
+## <a name="vm-network-support"></a>Virtuálisgép-hálózatok támogatása
 
 **Összetevő** | **Támogatás**
 --- | ---

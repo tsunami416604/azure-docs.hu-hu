@@ -1,85 +1,78 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d6ae30f73fa16bbd5e3c698e12c54c074f0a0b43
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772735"
 documentType: LandingData
 title: Resource Manager az Azure-ban – dokumentáció
 metadata:
-  title: Resource Manager az Azure-ban – dokumentáció – oktatóanyagok, minták, referenciák és forrásanyagok
-  description: Ismerje meg, hogyan használhatja a Resource Managert a megoldásokkal kapcsolatos forrásanyagok csoportként történő üzembe helyezésére és kezelésére, valamint a sablonok létrehozására az erőforrások egységes és megismételhető üzembe helyezéséhez.
+  title: 'Resource Manager az Azure-ban – dokumentáció – oktatóanyagok, minták, referenciák és forrásanyagok'
+  description: 'Ismerje meg, hogyan használhatja a Resource Managert a megoldásokkal kapcsolatos forrásanyagok csoportként történő üzembe helyezésére és kezelésére, valamint a sablonok létrehozására az erőforrások egységes és megismételhető üzembe helyezéséhez.'
   services: azure-resource-manager
   ms.service: azure-resource-manager
-  keywords: Resource Manager, azure, devops, oktatóanyagok, minták, referenciák, dokumentáció
+  keywords: 'Resource Manager, azure, devops, oktatóanyagok, minták, referenciák, dokumentáció'
   author: mumian
   manager: dougeby
   ms.author: jgao
   ms.topic: landing-page
   ms.date: 12/10/2018
 abstract:
-  description: Ismerje meg, hogyan használhatja a Resource Managert a megoldásokkal kapcsolatos forrásanyagok csoportként történő üzembe helyezésére, felügyeletére és kezelésére. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják az erőforráscsoportok beállítását, valamint a sablonok létrehozását az erőforrások egységes és megismételhető üzembe helyezéséhez.
+  description: 'Ismerje meg, hogyan használhatja a Resource Managert a megoldásokkal kapcsolatos forrásanyagok csoportként történő üzembe helyezésére, felügyeletére és kezelésére. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják az erőforráscsoportok beállítását, valamint a sablonok létrehozását az erőforrások egységes és megismételhető üzembe helyezéséhez.'
 sections:
-- title: Gyors útmutatók
-  items:
-  - type: paragraph
-    text: Különböző eszközökkel Azure Resource Manager-sablonokat hozhat létre az Azure-erőforrások üzembe helyezéséhez.
-  - type: list
-    style: icon48
+  - title: Gyors útmutatók
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Sablon létrehozása az Azure Portalon
-      href: https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_vs-code.svg
-      text: Sablon létrehozása a Visual Studio Code-dal
-      href: https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
-      text: Sablon létrehozása a Visual Studióval
-      href: https://docs.microsoft.com/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Tudnivalók Azure Resource Manager-sablonok létrehozásáról Azure-erőforrások üzembe helyezéséhez.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Különböző eszközökkel Azure Resource Manager-sablonokat hozhat létre az Azure-erőforrások üzembe helyezéséhez.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Sablon létrehozása az Azure Portalon
+            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Sablon létrehozása a Visual Studio Code-dal
+            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+            text: Sablon létrehozása a Visual Studióval
+            href: 'https://docs.microsoft.com/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy'
+  - title: Részletes útmutatók
     items:
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts">A Resource Manager-sablonreferencia használata</a>.
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-multiple-instances">Azure-erőforrások több példányának létrehozása</a>.
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-move-resources">Erőforrások áthelyezése</a>.
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources">Erőforrások üzembehelyezési sorrendjének beállítása</a>.
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-conditions">Feltételek használata</a>.
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-key-vault">Az Azure Key Vault integrálása</a>.
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-linked-templates">Csatolt sablonok létrehozása</a>.
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions">Virtuális gépi bővítmények üzembe helyezése</a>.
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac">SQL-bővítmények üzembe helyezése</a>.
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-secure-artifacts">Sablonösszetevők biztonságossá tétele</a>.
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/deployment-manager-tutorial">Biztonságos üzembehelyezési gyakorlatok</a>.
-    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot">Sablonalapú üzembe helyezés hibaelhárítása</a>.
-- title: Példák
-  items:
-  - type: paragraph
-    text: Példa konfigurációs sablonok általános üzembehelyezési feladatokhoz.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Tudnivalók Azure Resource Manager-sablonok létrehozásáról Azure-erőforrások üzembe helyezéséhez.
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts">A Resource Manager-sablonreferencia használata</a>.'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-multiple-instances">Azure-erőforrások több példányának létrehozása</a>.'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources">Erőforrások üzembehelyezési sorrendjének beállítása</a>.'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-conditions">Feltételek használata</a>.'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-key-vault">Az Azure Key Vault integrálása</a>.'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-linked-templates">Csatolt sablonok létrehozása</a>.'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions">Virtuális gépi bővítmények üzembe helyezése</a>.'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac">SQL-bővítmények üzembe helyezése</a>.'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-secure-artifacts">Sablonösszetevők biztonságossá tétele</a>.'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/deployment-manager-tutorial">Biztonságos üzembehelyezési gyakorlatok</a>.'
+          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot">Sablonalapú üzembe helyezés hibaelhárítása</a>.'
+  - title: Példák
     items:
-    - html: <a href="https://azure.microsoft.com/resources/templates/">Azure-gyorssablonok</a>
-    - html: <a href="https://resources.azure.com/">Azure Erőforrás-kezelő (előzetes verzió)</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Példa konfigurációs sablonok általános üzembehelyezési feladatokhoz.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://azure.microsoft.com/resources/templates/">Azure gyorsindítási sablonok</a>'
+          - html: '<a href="https://resources.azure.com/">Azure Erőforrás-kezelő (előzetes verzió)</a>'
+  - title: Referencia
     items:
-    - title: Sablonok
-      html: <p><a href="/azure/templates/">Sablonreferencia</a></p><p><a href="/azure/resource-group-template-functions">Sablonfüggvények</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Felhasználói felületet definiáló függvények</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Felhasználói felületet definiáló elemek</a></p>
-    - title: Parancssor
-      html: <p><a href="/cli/azure/resource">Azure CLI</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
-    - title: Nyelvek
-      html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/api/overview/azure/resources?view=azure-python">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/resources/">REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Sablonok
+            html: <p><a href="/azure/templates/">Sablonreferencia</a></p><p><a href="/azure/resource-group-template-functions">Sablonfüggvények</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Felhasználói felületet definiáló függvények</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Felhasználói felületet definiáló elemek</a></p>
+          - title: Parancssor
+            html: <p><a href="/cli/azure/resource">Azure CLI</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
+          - title: Nyelvek
+            html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/api/overview/azure/resources?view=azure-python">Python</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/resources/">REST API</a></p>

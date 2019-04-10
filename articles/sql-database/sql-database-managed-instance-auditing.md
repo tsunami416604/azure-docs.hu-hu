@@ -14,19 +14,19 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: fc8b300cea714ee44f826a78ce8c7a10c1443414
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 6ada2a5e505bfe37f4f9a956570d8b6f38f55e55
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282117"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357438"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés az Azure SQL Database felügyelt példány naplózási szolgáltatásával
 
 [Felügyelt példány](sql-database-managed-instance.md) naplózás nyomon követi az adatbázisok eseményeit, és az Azure storage-fiókjában található auditálási naplóba írja őket. A naplózás is:
 
 - Segít a jogszabályoknak való megfelelőség, adatbázis-tevékenység megértésében, valamint betekintést nyerhet az eltéréseket és rendellenességeket, amelyek üzleti aggályokra vagy biztonsági problémákat.
-- Lehetővé teszi, hogy, és megkönnyíti a megfelelőségi szabványok betartásának, bár ez nem garantálja a megfelelőség. Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://azure.microsoft.com/support/trust-center/compliance/) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
+- Lehetővé teszi, hogy, és megkönnyíti a megfelelőségi szabványok betartásának, bár ez nem garantálja a megfelelőség. Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>A kiszolgáló, az Azure storage-naplózás beállítása
 
@@ -242,7 +242,7 @@ A kulcs közötti különbségek a `CREATE AUDIT` vannak a naplózás az Azure B
 ## <a name="next-steps"></a>További lépések
 
 - Auditálási napló felhasználási módszert teljes listájáért tekintse meg a [első lépései az SQL database naplózási szolgáltatásával](sql-database-auditing.md).
-- Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://azure.microsoft.com/support/trust-center/compliance/) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
+- Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
 
 <!--Image references-->
 

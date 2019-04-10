@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: 7252af42ac515f9177b8988e2995e6ce77f4e12f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 4b4ddd765996d8bb936d2abda4015f37d6df9098
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268211"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361542"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
 Ez a cikk ismerteti a Service Fabric-fürtöt, amely testre szabható a különböző fabric beállításait. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. További információkért lásd: [egy Azure-fürtön konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Az önálló fürtök esetén, testre szabható beállítások frissítése a *ClusterConfig.json* fájl- és a egy konfigurálási frissítse a fürtön. További információkért lásd: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -407,11 +407,14 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |AzureStorageMaxWorkerThreads | int, alapértelmezett értéke 25 |Dinamikus|Párhuzamos munkaszálak maximális száma. |
 |AzureStorageOperationTimeout | Idő (másodpercben), alapértelmezett érték a 6000 |Dinamikus|Adja meg az időtartam másodpercben. Időtúllépés xstore művelet elvégzéséhez. |
 |CleanupApplicationPackageOnProvisionSuccess|bool, alapértelmezett érték a hamis |Dinamikus|Ez a konfiguráció engedélyezése vagy letiltása az automatikus törléséhez az alkalmazáscsomagot a sikeres üzembe helyezése. |
+|CleanupUnusedApplicationTypes|bool, alapértelmezett érték a hamis |Dinamikus|Ebben a konfigurációban, ha engedélyezve van, lehetővé teszi, hogy automatikus regisztrációját a nem használt alkalmazástípus-verziók a rendszer kihagyja a legújabb három fel nem használt verziókat, és ezáltal a lemezképtároló által elfoglalt lemezterület-csonkolás. Az automatikus tisztítás sikeres üzembe helyezése, hogy adott alkalmazástípushoz végén indul, és akkor is fut, az alkalmazás összes típusára vonatkozóan naponta egyszer rendszeres időközönként. Hagyja ki a fel nem használt verziók száma nem konfigurálható "MaxUnusedAppTypeVersionsToKeep" paraméter használatával. |
 |DisableChecksumValidation | Bool, alapértelmezett érték a False (hamis) |Statikus| Ez a konfiguráció lehetővé teszi számunkra, hogy engedélyezi vagy letiltja az alkalmazások üzembe helyezése során ellenőrzőösszegének ellenőrzése. |
 |DisableServerSideCopy | Bool, alapértelmezett érték a False (hamis) |Statikus|Ez a konfiguráció engedélyezése vagy letiltása az alkalmazáscsomagot a ImageStore a kiszolgálóoldali másolatát alkalmazások üzembe helyezése során. |
 |ImageCachingEnabled | Bool, alapértelmezett érték az IGAZ |Statikus|Ez a konfiguráció lehetővé teszi számunkra, hogy engedélyezi vagy letiltja a gyorsítótárazás. |
 |ImageStoreConnectionString |SecureString |Statikus|A legfelső szintű ImageStore a kapcsolati karakterlánc. |
 |ImageStoreMinimumTransferBPS | Int, alapértelmezett érték az 1024 |Dinamikus|A minimális átviteli sebesség, a fürt és ImageStore között. Ez az érték szolgál az időkorlátot határozza meg, a külső ImageStore elérésekor. Módosítsa ezt az értéket csak akkor, ha a fürt és a ImageStore között késés nagy ahhoz, hogy a külső ImageStore töltheti le a fürt több időt. |
+|MaxUnusedAppTypeVersionsToKeep | Int, alapértelmezett érték 3 |Dinamikus|Ez a konfiguráció a fel nem használt alkalmazástípus-verziók hagyni a karbantartásához számát határozza meg. Ezt a paramétert akkor csak akkor, ha a paraméter CleanupUnusedApplicationTypes engedélyezve van. |
+
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
 | **Paraméter** | **Megengedett értékek** |**Szabályzat frissítése**| **Útmutató vagy rövid leírása** |

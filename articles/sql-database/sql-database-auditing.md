@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 75c4f531fff02d8dfeed4ca32bbe1da432635765
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 9fac8291799216b4ca4527b482aefee169f7fc59
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261071"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361276"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -25,7 +25,7 @@ Az Azure naplózási [SQL Database](sql-database-technical-overview.md) és [SQL
 
 - Segít a jogszabályoknak való megfelelőség, adatbázis-tevékenység megértésében, valamint betekintést nyerhet az eltéréseket és rendellenességeket, amelyek üzleti aggályokra vagy biztonsági problémákat.
 
-- Lehetővé teszi, hogy, és megkönnyíti a megfelelőségi szabványok betartásának, bár ez nem garantálja a megfelelőség. Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://azure.microsoft.com/support/trust-center/compliance/) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
+- Lehetővé teszi, hogy, és megkönnyíti a megfelelőségi szabványok betartásának, bár ez nem garantálja a megfelelőség. Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) ahol megtalálhatja a legfrissebb listáját az SQL Database megfelelőségi minősítései közül is bemutat.
 
 
 > [!NOTE] 

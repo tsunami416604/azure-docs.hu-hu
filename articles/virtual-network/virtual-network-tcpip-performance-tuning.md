@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 60424edc8e617aca55777d019e6a0f9409f7ca28
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276524"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426443"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Az Azure virtuális gépek TCP/IP-teljesítményhangolása
 
@@ -85,7 +85,7 @@ Vegye figyelembe, hogy a virtuális hálózati verem nem természetüknél fogva
 
 #### <a name="azure-and-fragmentation"></a>Az Azure és a töredezettség
 
-Virtuális hálózati vermet dobja el az "üzemen kívüli töredék,", nem töredezett eredeti sorrendjében érkeznek töredezett csomagokat van beállítva. Ezek a csomagok elsősorban bejelentett November 2018 FragmentStack nevű hálózati biztonsági rés miatt a rendszer elveti.
+Virtuális hálózati vermet dobja el az "üzemen kívüli töredék,", nem töredezett eredeti sorrendjében érkeznek töredezett csomagokat van beállítva. Ezek a csomagok elsősorban bejelentett November 2018 FragmentSmack nevű hálózati biztonsági rés miatt a rendszer elveti.
 
 FragmentSmack a Linux kernel kezelése töredezett IPv4 és IPv6-csomagokat összeállítását hibának. A távoli támadó használhatja ezt a hibát a célrendszeren vezethet nagyobb CPU és a egy szolgáltatásmegtagadás eseményindító költséges töredék újraépítési műveletekhez.
 

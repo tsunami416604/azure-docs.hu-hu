@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2019
+ms.date: 04/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 5a72c0539cabec3bf4168280c85a2afb92569b25
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3261c2389a9706537366bcd60e00517bbcfb5f48
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234000"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426392"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése 
 Az Azure monitorral tárolók segítségével a teljesítmény diagramokat és az állapot az Azure Kubernetes Service (AKS)-fürtök két perspektíva adatai, közvetlenül az AKS-fürt vagy az Azure-ból összes AKS-fürt az előfizetéshez, a számítási feladat figyeléséhez Ez a figyelő. Megtekintése az Azure Container Instances (ACI) esetén is lehetséges egy adott AKS-fürt monitorozására.
@@ -71,7 +71,7 @@ A következő táblázat nyújt információkat a számítás, a figyelt fürt a
 | |Figyelmeztetés |– |
 | |Kritikus |< 100 %-os |
 | |Ismeretlen |Ha az elmúlt 30 percben nem jelentettek |
-|**Node** | | |
+|**Csomópont** | | |
 | |Kifogástalan |> 85 % felett |
 | |Figyelmeztetés |60 - 84 % |
 | |Kritikus |< 60 % |
@@ -100,7 +100,34 @@ A teljesítmény diagramon négy teljesítmény-mérőszámait jeleníti meg:
 
 A balra vagy jobbra nyíl billentyűk használatával válthat a PERCENTILIS vonalak kulcsok a diagram és a felfelé és lefelé mutató nyílra, az az egyes válthat.
 
-Ha úgy vált, hogy **csomópontok**, **tartományvezérlők**, és **tárolók** lap jobb oldalán található az automatikusan megjelennek a tulajdonság panelen.  Azt mutatja, beleértve való Kubernetes-objektumokat rendszerezése címkék, kijelölt elem tulajdonságainak. Kattintson a **>>** összekapcsolása a panelen view\hide a panelen.  
+Az Azure Monitor-tárolókhoz is támogatja az Azure Monitor [metrikaböngésző](../platform/metrics-getting-started.md), ahol hozzon létre saját diagram diagramokat, összevetését és megvizsgálhatja a trendeket, és rögzíthet az irányítópultokon. A metrikaböngésző, is használhatja a feltételeknek, a metrikák megjelenítéséhez alapjául szolgáló meg egy [mérőszám-alapú riasztási szabály](../platform/alerts-metric.md).  
+
+## <a name="view-container-metrics-in-metrics-explorer"></a>Tároló mérőszámainak megtekintése a metrikaböngészőben
+A metrikaböngészőben megtekintheti összesített csomópont és a pod-tárolókhoz az Azure Monitor kihasználtsági mérőszámokat. Az alábbi táblázat foglalja össze a segítségével megismerheti a mérőszám-diagramok használata tárolómetrikák megjelenítése a részletek.
+
+|Névtér | Metrika |
+|----------|--------|
+| insights.container/nodes | |
+| | cpuUsageMillicores |
+| | cpuUsagePercentage |
+| | memoryRssBytes |
+| | memoryRssPercentage |
+| | memoryWorkingSetBytes |
+| | memoryWorkingSetPercentage |
+| | nodesCount |
+| insights.container/pods | |
+| | PodCount |
+
+Alkalmazhat [felosztás](../platform/metrics-charts.md#apply-splitting-to-a-chart) dimenzió tekinti meg, és megjelenítheti a különböző szegmenseinek metrikát, hasonlítsa össze egymással. Egy csomópont a diagram a is szegmentálhatja a *gazdagép* dimenzió, és a egy pod is szegmentálhatja, a következő szempontok alapján:
+
+* Vezérlő
+* Kubernetes-névtér
+* Csomópont
+* Fázis
+
+## <a name="analyze-nodes-controllers-and-container-health"></a>Csomópontok, a tartományvezérlőket és a tároló állapotának elemzése
+
+Ha úgy vált, hogy **csomópontok**, **tartományvezérlők**, és **tárolók** lap jobb oldalán található az automatikusan megjelennek a tulajdonság panelen.  Látható tulajdonságait, az elem kiválasztva, beleértve a Kubernetes-objektumokat rendszerezéséhez határoz meg feliratok. Kattintson a **>>** összekapcsolása a panelen view\hide a panelen.  
 
 ![Példa Kubernetes perspektívák tulajdonságait tartalmazó ablaktáblán](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
@@ -133,7 +160,7 @@ Alapértelmezés szerint a teljesítményadatokat az elmúlt hat órán alapul, 
 
 Amikor egérmutatót alatt az oszlopdiagram a **Trend** oszlop, minden egyes sávon látható, vagy a CPU, vagy a memória kihasználtsága, attól függően, amelyek metrika van kijelölve, 15 percen belül minta. Miután kiválasztotta a trend diagram keresztül billentyűzet, az Alt + Page Up vagy Alt + PAGE DOWN billentyűkkel kulcsok segítségével sávok külön-külön válthat, és az azonos részleteinek beolvasása, mint egy rámutatásra.
 
-![Sáv diagram rámutatáskor példa trend](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
+![Sáv diagram vigye a kurzort a példában trend](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 
 A következő példában, vegye figyelembe a lista – az első node *aks-nodepool1 -*, értéke **tárolók** érték 9, amely egy összegző üzembe helyezett tárolókat teljes száma.
 
@@ -176,10 +203,10 @@ A tartományvezérlők megtekintésekor megjelenő információkat az alábbi t�
 |--------|-------------|
 | Name (Név) | A vezérlő neve.|
 | status | A tárolókat, ha befejeződött, például a futó állapotú, összesítő állapotát *OK*, *kilépett*, *sikertelen* *leállítva*, vagy *Szüneteltetve*. Ha a tároló fut-e, de a állapota volt, vagy nem megfelelően jelenik meg, vagy volt nem dolgozza fel az ügynök és a 30 percnél hosszabb ideig nem válaszolt, az állapot értéke *ismeretlen*. További részletek a állapot ikon az alábbi táblázatban szerepelnek.|
-| Átlagos&nbsp;%, Min&nbsp;% Max&nbsp;%, az 50&nbsp;%, 90&nbsp;% | Minden entitás, a kiválasztott metrika és PERCENTILIS hányada összesítő átlaga. |
-| Avg, Min, Max, 50, 90  | A kiválasztott PERCENTILIS tárolója átlagos CPU millicore vagy memóriát teljesítményének összesítése. Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
+| Átlagos&nbsp;%, Min&nbsp;% Max&nbsp;%, az 50&nbsp;%, 90&nbsp;% | Összesítő átlagos százalékos aránya a kiválasztott metrika és PERCENTILIS minden entitás átlaga. |
+| Avg, Min, Max, 50, 90  | Az átlagos CPU millicore vagy a memória teljesítményét a kiválasztott PERCENTILIS tárolója összesítő. Az átlagos érték podot beállított CPU/memória felső korlátja mérése történik. |
 | Containers | A vezérlő vagy a pod tárolók száma összesen. |
-| Újraindul | A tárolók újraindítás száma összegzése. |
+| Újraindul | Összesítő újraindítás száma, a tárolók. |
 | Hasznos üzemidő | Egy tároló indítása óta idejét jelzi. |
 | Csomópont | Csak a tárolók és a podokat. Melyik, a hozzá tartozó tartományvezérlő jeleníti meg. | 
 | Átlagos trend&nbsp;%, Min&nbsp;% Max&nbsp;%, az 50&nbsp;%, 90&nbsp;%| Oszlopdiagram trend a átlagos PERCENTILIS mérőszám, a vezérlő jelöli. |

@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Gyors, tárolók, mikroszolgáltatások és a Java Azure-beli Kubernetes-fejlesztés
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Java, Helm, szolgáltatás-háló, szolgáltatás háló az Útválasztás, a kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 26f82427ff06608de39381b4ecc45d318212a8a0
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: c1c039ba8696baff11abed3930998983647f4356
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419013"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425746"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Fejlesztés Java nyelven, a Kubernetes Azure fejlesztési tárolóhelyek használatával
 
@@ -31,7 +31,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 
 - Azure-előfizetés. Ha még nincs fiókja, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 - [A Visual Studio Code telepítése](https://code.visualstudio.com/download).
--  A [Azure fejlesztési tárolóhelyek](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) és [Java hibakereső az Azure fejlesztési tárolóhelyek](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) telepítve a Visual Studio Code-bővítmények.
+- A [Azure fejlesztési tárolóhelyek](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) és [Java hibakereső az Azure fejlesztési tárolóhelyek](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) telepítve a Visual Studio Code-bővítmények.
 - [Telepített Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 - [Telepítse és konfigurálja a mavent](https://maven.apache.org).
 
@@ -212,4 +212,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 Ismerje meg, Azure fejlesztési tárolóhelyek segítségével miként több tárolóra kiterjedő összetettebb alkalmazásokat fejleszthet, és egyszerűsítését által biztosított együttműködési környezettel fejlesztési különböző verziói vagy az ágak a kódot a különböző tárolóhelyek segítségével.
 
 > [!div class="nextstepaction"]
-> [Több tároló használata és fejlesztés csapatban](multi-service-java.md)
+> [Tárolók és a csoportos fejlesztése](multi-service-java.md)

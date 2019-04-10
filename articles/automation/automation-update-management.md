@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/02/2019
+ms.date: 04/09/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1af2117b1d12c98182434705181462fd7c9bebf4
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 39e8c06228381143a6f4975e4d6415799ce16d43
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862947"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426489"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -565,7 +565,7 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
-## <a name="using-dynamic-groups"></a>Dinamikus csoportok (előzetes verzió)
+## <a name="using-dynamic-groups"></a>Dinamikus csoportok
 
 Az Update Management lehetővé teszi egy Azure virtuális gépek dinamikus eszközcsoportot frissítési telepítés céljából. Ezek a csoportok lekérdezéshez, amikor megkezdődik egy központi telepítést, a csoport tagjai értékeli ki. Dinamikus csoportok nem működik a klasszikus virtuális gépeket. A lekérdezés meghatározásakor a következő elemek használható együtt a dinamikus csoport feltöltése
 

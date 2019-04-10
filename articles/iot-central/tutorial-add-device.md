@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8e7eee40bed29117d2873393395a852e4b738533
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 201b438601c9929e5ca3d292f9fc3d7b7ff64de8
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793481"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425933"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -41,6 +41,8 @@ Mielőtt elkezdené, a szerkesztőnek el kell végeznie legalább az Azure IoT C
 * [Új eszköztípus definiálása](tutorial-define-device-type.md) (Kötelező)
 * [Az eszközre vonatkozó szabályok és műveletek konfigurálása](tutorial-configure-rules.md) (Nem kötelező)
 * [Operátori nézetek testreszabása](tutorial-customize-operator.md) (Nem kötelező)
+
+Telepítés [Node.js](https://nodejs.org/) 8.0.0 verzió vagy annál újabb verzió a fejlesztői gépére. Futtathat `node --version` a parancssorban a verzió ellenőrzéséhez. A Node.js az operációs rendszerek széles körében elérhető.
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
@@ -92,37 +94,27 @@ A felsorolt cikkek a [lépések](#next-steps) szakasz tartalmazza a teljes mint�
 
 A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https://nodejs.org/) mintát:
 
-1. Telepítse a [Node.js](https://nodejs.org/) 4.0.x vagy újabb verzióját a gépén. A Node.js az operációs rendszerek széles körében elérhető.
-
-1. Hozzon létre egy `connectedairconditioner` nevű mappát a gépén.
-
-1. A parancssori környezetben keresse meg a létrehozott `connectedairconditioner` mappát.
-
-1. A következő paranccsal telepítheti a DPS-kulcskészítőt:
-
-    ```cmd/sh
-    npm i -g dps-keygen
-    ```
-
-   A parancssori eszközről [itt tudhat meg többet](https://www.npmjs.com/package/dps-keygen).
+### <a name="get-the-device-connection-information"></a>Az eszköz kapcsolati adatok lekéréséhez
 
 1. Az alkalmazásban az eszközpéldányok kapcsolati sztringje az IoT Central által megadott eszközinformációkból jön létre.
 
-   Térjen vissza az IoT Central portálra. A valós csatlakoztatott légkondicionáló eszköz képernyőjén válassza a **Csatlakozás** lehetőséget.
+   A valós csatlakoztatott légkondicionáló eszköz képernyőjén válassza a **Csatlakozás** lehetőséget.
 
    ![A kapcsolat információit megjelenítő hivatkozást mutató eszközoldal](media/tutorial-add-device/connectionlink.png)
 
-1. Az Eszközkapcsolat oldalon másolja ki és illessze be a hatókör azonosítóját, az eszköz azonosítóját és az elsődleges kulcsot egy szövegszerkesztőbe, majd mentse a fájlt. Ezeket az értékeket a következő lépésben fogja használni.
+1. Az eszköz kapcsolati oldalon jegyezze fel a **hatókör azonosítója**, **Eszközazonosító** és **elsődleges kulcs** értékeket. Ezeket az értékeket a következő lépésben fogja használni.
 
    ![Kapcsolat adatai](media/tutorial-add-device/device-connect.png)
 
-1. Térjen vissza a parancssori környezetet és a kapcsolati karakterlánc létrehozása végrehajtásával:
+### <a name="generate-the-connection-string"></a>A kapcsolati karakterlánc létrehozása
 
-    ```cmd/sh
-    dps-keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
-    ```
+[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
-   Másolja ki a kimenetet, és mentse egy új fájlba (például a connection.txt fájlba).
+### <a name="prepare-the-nodejs-project"></a>A Node.js-projektet előkészítése
+
+1. Hozzon létre egy nevű `connectedairconditioner` a fejlesztői gépen.
+
+1. A parancssori környezetben keresse meg a létrehozott `connectedairconditioner` mappát.
 
 1. A Node.js projekt elindításához futtassa az alábbi parancsot az összes alapérték elfogadásával:
 
@@ -309,7 +301,7 @@ Ha az ügyfélkódot az Azure IoT Central-alkalmazáshoz való kapcsolódáshoz 
     var connectionString = '{your device connection string}';
     ```
 
-1. A `{your device connection string}` helyére illessze be a valós eszköz kapcsolati sztringjét. Korábban egy szövegszerkesztőbe mentette a kapcsolati sztringet.
+1. A `{your device connection string}` helyére illessze be a valós eszköz kapcsolati sztringjét. A kapcsolati karakterláncot az előző lépésben létrehozott kimásolt.
 
 1. Mentse a **ConnectedAirConditioner.js** fájl módosításait.
 
@@ -360,14 +352,14 @@ Most, hogy az Azure IoT Central alkalmazásnak csatlakozott egy igazi eszközön
 
 Operátorként a következőket sajátítja el:
 
-* [Saját eszközök kezelése](howto-manage-devices.md)
-* [Eszközkészletek használata](howto-use-device-sets.md)
+* [Eszközök kezelése](howto-manage-devices.md)
+* [Használatos eszközök készletei](howto-use-device-sets.md)
 * [Egyéni elemzések létrehozása](howto-use-device-sets.md)
 
 Eszközfejlesztőként a következőket sajátítja el:
 
 * [Készítse elő és (C) eszköz DevKit csatlakoztatása](howto-connect-devkit.md)
-* [Készítse elő, és csatlakozzon a Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
-* [Készítse elő és a Raspberry Pi csatlakoztatása (C#)](howto-connect-raspberry-pi-csharp.md)
+* [Raspberry Pi (Python) előkészítése és csatlakoztatása](howto-connect-raspberry-pi-python.md)
+* [Raspberry Pi (C#) előkészítése és csatlakoztatása](howto-connect-raspberry-pi-csharp.md)
 * [Készítse elő és a egy Windows 10 IoT core-eszköz csatlakoztatása (C#)](howto-connect-windowsiotcore.md)
-* [Általános Node.js-ügyfél csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-nodejs.md)
+* [Egy általános Node.js-ügyfél csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-nodejs.md)

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 210043eaaf09fb601fe01c33cc1a53c9146bf859
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 348979a53bff76c85e6d1531bd16cd695145e21b
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848248"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425985"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Az SQL Server automatikus javítása az Azure Virtual Machines szolgáltatásban (Resource Manager)
 > [!div class="op_single_selector"]
@@ -97,11 +97,6 @@ Ha elkészült, kattintson a **OK** gomb alján a **SQL Server-konfiguráció** 
 
 Ha engedélyezi a automatikus javítás először, akkor az Azure az SQL Server IaaS-ügynök úgy konfigurálja a háttérben. Ebben az időszakban az Azure Portalon nem jelenik meg, hogy konfigurálva van-e az automatikus javítás. Várjon néhány percet az ügynök telepítve van, úgy konfigurálni. Ezt követően az Azure Portalon jeleníti meg az új beállítások.
 
-> [!NOTE]
-> Automatikus javítás sablon használatával is konfigurálhatja. További információkért lásd: [Azure gyorsindítási sablon az automatikus javítás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autopatching-update).
-> 
-> 
-
 ## <a name="configuration-with-powershell"></a>PowerShell-konfiguráció
 Az SQL virtuális gép kiépítése, után a PowerShell segítségével konfigurálhatja az automatikus javítás.
 
@@ -120,7 +115,7 @@ Ebben a példában alapján, a következő táblázat ismerteti a gyakorlati hat
 
 | Paraméter | Következmény |
 | --- | --- |
-| **DayOfWeek** |Javítások telepítése minden csütörtökön tartjuk. |
+| **dayOfWeek** |Javítások telepítése minden csütörtökön tartjuk. |
 | **MaintenanceWindowStartingHour** |11:00 órakor kezdje a frissítések. |
 | **MaintenanceWindowsDuration** |Javítások követő 120 percen belül kell telepíteni. A kezdési időpont alapján, el kell végezniük 1:00 -kor szerint. |
 | **PatchCategory** |Az egyetlen lehetséges beállítása ez a paraméter **fontos**. Ez fontos; megjelölt Windows-frissítés telepítése ebbe a kategóriába nem szerepelnek az SQL Server frissítéseket nem telepít. |

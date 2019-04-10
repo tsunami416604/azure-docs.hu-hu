@@ -4,26 +4,26 @@ titlesuffix: Azure Virtual Network
 description: Adjon nevet a megoldási forgatókönyvek az Azure IaaS, a hibrid megoldások között különböző felhőszolgáltatások, az Active Directory és a saját DNS-kiszolgáló használatával.
 services: virtual-network
 documentationcenter: na
-author: subsarma
+author: rohinkoul
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
-ms.author: subsarma
-ms.openlocfilehash: ea15468722fcf1b9e2649236ef4dd05549d8f460
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.author: rohink
+ms.openlocfilehash: 78c66ac25e9d20d9202236407d42f815879cd3f2
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418737"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426426"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Erőforrások az Azure virtual networkök névfeloldása
 
 Attól függően, hogyan használhatja az Azure IaaS, PaaS és a hibrid megoldások üzemeltetéséhez szükség lehet, hogy a virtuális gépek (VM), és más erőforrásokat helyeztek üzembe egy virtuális hálózaton kommunikálni egymással. IP-címek használatával engedélyezheti a kommunikációt, bár jóval egyszerűbb nevekkel, amelyek egyszerűen veszni, és ne módosítsa. 
 
-Ha a virtuális hálózatokon üzembe helyezett erőforrásokra kell a tartománynevek belső IP-címek, azok két módszer egyikét használhatja:
+A virtuális hálózatokon üzembe helyezett erőforrások két metódust használhatnak tartománynevek belső IP-címekre történő feloldásához:
 
 * [Az Azure által biztosított névfeloldást](#azure-provided-name-resolution)
 * [Névfeloldás saját DNS-kiszolgálót használó](#name-resolution-that-uses-your-own-dns-server) (ami előfordulhat, hogy továbbítsa a az Azure által biztosított DNS-kiszolgálók)
@@ -34,7 +34,7 @@ A névfeloldás használata típusa attól függ, hogyan kell az erőforrások k
 > A forgatókönyvtől függően előfordulhat, hogy szeretné használni az Azure DNS saját zónák funkció, amely jelenleg nyilvános előzetes verzióban érhető el. További információkat az [Azure DNS privát tartományokhoz való használatát](../dns/private-dns-overview.md) ismertető cikkben olvashat.
 >
 
-| **Forgatókönyv** | **Megoldás** | **Suffix** |
+| **Forgatókönyv** | **Megoldás** | **Utótag** |
 | --- | --- | --- |
 | Az azonos virtuális hálózatban, vagy az Azure Cloud Services ugyanazon a felhőszolgáltatáson belül található virtuális gépek közötti névfeloldás. | [Az Azure DNS Private Zones](../dns/private-dns-overview.md) vagy [Azure által biztosított névfeloldást](#azure-provided-name-resolution) |Állomásnév vagy teljes tartománynév |
 | Névfeloldás a különböző virtuális hálózatokban lévő virtuális gépek vagy szerepkörpéldányok a különböző felhőszolgáltatások között. |[Az Azure DNS Private Zones](../dns/private-dns-overview.md) vagy ügyfél által felügyelt DNS-kiszolgálók (DNS-proxy) az Azure által a névfeloldáshoz virtuális hálózatok közötti lekérdezések továbbítása. Lásd: [névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak teljes tartománynév |

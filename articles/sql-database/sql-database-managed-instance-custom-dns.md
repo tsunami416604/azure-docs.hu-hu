@@ -9,36 +9,37 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 12/13/2018
-ms.openlocfilehash: 353df930b5769a585d7372716f33fe724a2a7594
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: bb5890b883b6062d834b928bff28a26a3664fb64
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562147"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361702"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Egy egyéni DNS konfigurálása az Azure SQL Database felügyelt példánya
 
-Kell egy Azure-ban üzembe helyezni egy Azure SQL Database felügyelt példányába [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md). Néhány forgatókönyv (például db mail, csatolt kiszolgálók más SQL-példányok a felhőalapú vagy hibrid környezetben) fel kell oldani a felügyelt példányon a privát állomásnevek igénylő közül választhat. Ebben az esetben, konfigurálnia kell egy egyéni DNS az Azure-on belül. Felügyelt példány az azonos DNS-t használ a belső működésével, mivel a virtuális hálózat DNS-konfigurációt kell lennie a felügyelt példány kompatibilis. 
+Kell egy Azure-ban üzembe helyezni egy Azure SQL Database felügyelt példányába [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md). Néhány forgatókönyv (például db mail, csatolt kiszolgálók más SQL-példányok a felhőalapú vagy hibrid környezetben) fel kell oldani a felügyelt példányon a privát állomásnevek igénylő közül választhat. Ebben az esetben, konfigurálnia kell egy egyéni DNS az Azure-on belül. Felügyelt példány az azonos DNS-t használ a belső működésével, mivel a virtuális hálózat DNS-konfigurációt kell lennie a felügyelt példány kompatibilis.
 
    > [!IMPORTANT]
    > Mindig használja a teljes tartománynevek (FQDN) a levelezési kiszolgáló, SQL Server-kiszolgálók és más szolgáltatások számára, akkor is, ha a saját DNS-zóna belül. Például `smtp.contoso.com` levelezési kiszolgáló mert egyszerű `smtp` nem lesz megfelelően feloldani.
 
-Olyan egyéni DNS-konfigurációs van kompatibilis a felügyelt példány, meg kell: 
-- Egyéni DNS-kiszolgáló konfigurálása, hogy legyen képes feloldani a tartományneveket 
-- Helyezze az Azure rekurzív feloldó DNS IP-cím 168.63.129.16 a virtuális hálózat DNS-lista végén 
- 
+Olyan egyéni DNS-konfigurációs van kompatibilis a felügyelt példány, meg kell:
+
+- Egyéni DNS-kiszolgáló konfigurálása, hogy legyen képes feloldani a tartományneveket
+- Helyezze az Azure rekurzív feloldó DNS IP-cím 168.63.129.16 a virtuális hálózat DNS-lista végén
+
 ## <a name="setting-up-custom-dns-servers-configuration"></a>Egyéni DNS-kiszolgálók konfigurációjának beállítása
 
 1. Az Azure Portalon keresse meg az egyéni DNS-beállítás a virtuális hálózat számára.
 
-   ![egyéni DNS-beállítás](./media/sql-database-managed-instance-custom-dns/custom-dns-option.png) 
+   ![egyéni DNS-beállítás](./media/sql-database-managed-instance-custom-dns/custom-dns-option.png)
 
-2. Egyéni váltson, és adja meg az egyéni DNS-kiszolgáló IP-címét, valamint az Azure rekurzív feloldók IP-cím 168.63.129.16. 
+2. Egyéni váltson, és adja meg az egyéni DNS-kiszolgáló IP-címét, valamint az Azure rekurzív feloldók IP-cím 168.63.129.16.
 
-   ![egyéni DNS-beállítás](./media/sql-database-managed-instance-custom-dns/custom-dns-server-ip-address.png) 
+   ![egyéni DNS-beállítás](./media/sql-database-managed-instance-custom-dns/custom-dns-server-ip-address.png)
 
    > [!IMPORTANT]
    > A DNS-listája nem beállítása az Azure rekurzív feloldó okozhat a felügyelt példány hibás állapotba lép, ha valamilyen okból a egyéni DNS-kiszolgáló nem érhető el. Utáni helyreállítás állapot megkövetelhetik, hogy hozzon létre új példányt a megfelelő hálózati szabályzatok rendelkező virtuális hálózaton, példány szintű adatok létrehozásához, és az adatbázisok visszaállítása. Az Azure rekurzív feloldó beállítást, mivel biztosítja, hogy a legutóbbi bejegyzést a DNS-listában, akkor is, ha az összes egyéni DNS-kiszolgáló meghibásodik, nyilvános nevek továbbra is feloldható.

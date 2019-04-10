@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65badda86fa29dc68f2eef1e9c0883dc8b40107a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 25540d1f26fa6021ef05108f9743e77a6184f3b3
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852892"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426324"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Oktatóanyag: Az Azure Active Directory-integráció a Githubon
 
@@ -67,7 +67,7 @@ Konfigurálhatja az Azure AD integrálása a GitHub, hozzá kell GitHub a galér
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **GitHub**válassza **GitHub** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **GitHub**válassza **GitHub.com** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
      ![Az eredmények listájában a Githubon](common/search-new-app.png)
 
@@ -257,6 +257,6 @@ Ha a hozzáférési panelen a GitHub csempére kattint, meg kell automatikusan m
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

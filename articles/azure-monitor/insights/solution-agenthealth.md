@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 294695cceaed39a66a57dcd3a165ca276b6801c6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757965"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426222"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Ügynökállapot megoldás az Azure monitorban
 Az Azure-ban az Agent Health megoldás segít átlátni, közvetlenül az Azure monitorban Log Analytics-munkaterületnek jelentő ügynökök közül, vagy a System Center Operations Manager felügyeleti csoport csatlakoztatva az Azure Monitor, melyek nem válaszol, és működési adatokat küldjön.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
@@ -76,21 +76,21 @@ Egy **Szívverés** típusú rekord készül.  Ezen rekordok tulajdonságait az 
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Typo | *Szívverés*|
-| Kategória | Az érték lehet *Direct Agent* (Közvetlen ügynök), *SCOM Agent* (SCOM-ügynök) vagy *SCOM Management Server* (SCOM felügyeleti kiszolgáló).|
-| Computer | A számítógép neve.|
-| OSType | Windows vagy Linux operációs rendszer.|
-| OSMajorVersion | Az operációs rendszer főverziója.|
-| OSMinorVersion | Az operációs rendszer alverziója.|
-| Verzió | Log Analytics-ügynök vagy Operations Manager-ügynök verziója.|
-| SCAgentChannel | Az érték *Direct* (Közvetlen) és/vagy *SCManagementServer*.|
-| IsGatewayInstalled | Ha a Log Analytics-átjáró telepítve van, az értéke *igaz*, más esetben *hamis*.|
-| ComputerIP | A számítógép IP-címe.|
-| RemoteIPCountry | A földrajzi hely, ahol a számítógép üzemel.|
-| ManagementGroupName | Az Operations Manager felügyeleti csoportjának neve.|
-| SourceComputerId | A számítógép egyedi azonosítója.|
-| RemoteIPLongitude | A számítógép földrajzi helyének hosszúsági koordinátája.|
-| RemoteIPLatitude | A számítógép fölrajzi helyének szélességi koordinátája.|
+| `Type` | *Szívverés*|
+| `Category` | Az érték lehet *Direct Agent* (Közvetlen ügynök), *SCOM Agent* (SCOM-ügynök) vagy *SCOM Management Server* (SCOM felügyeleti kiszolgáló).|
+| `Computer` | A számítógép neve.|
+| `OSType` | Windows vagy Linux operációs rendszer.|
+| `OSMajorVersion` | Az operációs rendszer főverziója.|
+| `OSMinorVersion` | Az operációs rendszer alverziója.|
+| `Version` | Log Analytics-ügynök vagy Operations Manager-ügynök verziója.|
+| `SCAgentChannel` | Az érték *Direct* (Közvetlen) és/vagy *SCManagementServer*.|
+| `IsGatewayInstalled` | Ha a Log Analytics-átjáró telepítve van, az értéke *igaz*, más esetben *hamis*.|
+| `ComputerIP` | A számítógép IP-címe.|
+| `RemoteIPCountry` | A földrajzi hely, ahol a számítógép üzemel.|
+| `ManagementGroupName` | Az Operations Manager felügyeleti csoportjának neve.|
+| `SourceComputerId` | A számítógép egyedi azonosítója.|
+| `RemoteIPLongitude` | A számítógép földrajzi helyének hosszúsági koordinátája.|
+| `RemoteIPLatitude` | A számítógép fölrajzi helyének szélességi koordinátája.|
 
 Minden egyes Operations Manager felügyeleti kiszolgáló felé jelentő ügynök két szívverést küld, és az SCAgentChannel tulajdonság értéke egyaránt tartalmazza **közvetlen** és **SCManagementServer** attól függően, hogy milyen adatforrások és figyelési megoldások engedélyezte az előfizetésében. Ha már ismert, a megoldások adatait vagy küldi közvetlenül egy Operations Manager felügyeleti kiszolgáló az Azure Monitor, vagy az ügynök összegyűjtött adatok mennyisége miatt az ügynök közvetlenül az Azure Monitor érkeznek. Az **SCManagementServer** értékű szívverések esetében a ComputerIP értéke a felügyeleti kiszolgáló IP-címe, mivel ez tölti fel az adatokat.  Azoknál a szívveréseknél, ahol az SCAgentChannel beállítása **Direct** (Közvetlen), ez az ügynök nyilvános IP-címe.  
 

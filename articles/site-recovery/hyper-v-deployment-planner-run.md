@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 776523bb001848e6ecc153f670a96e3143e2ac0d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6528b683ec9464c2b1982d631455718e6fe6f3b7
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58006351"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361341"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery deployment planner a Hyper-V vészhelyreállítás az Azure-bA
 
@@ -98,7 +98,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Password|(Nem kötelező) A Hyper-V-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg paraméterként, a rendszer a parancs végrehajtásakor el fogja kérni.|
 |-StorageAccountName|(Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie.|
 |-StorageAccountKey|(Nem kötelező) A tárfiók eléréséhez használt kulcs. Nyissa meg az Azure Portalt, és válassza a **Tárfiókok** > *Tárfiók neve* > **Beállítások** > **Hozzáférési kulcsok** > **1. kulcs** (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemet.|
-|-Környezet|(Nem kötelező) Az Azure-tárfiók célkörnyezete. Három érték egyike lehet: AzureCloud, AzureUSGovernment, or AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha célrégióként az Azure US Government vagy az Azure China van megadva.|
+|-Környezet|(Nem kötelező) Az Azure-tárfiók célkörnyezete. Három érték egyike lehet: AzureCloud, AzureUSGovernment, or AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Használja a paramétert, ha az Azure US Government vagy Azure China 21Vianet.|
 
 Javasoljuk, hogy legalább 7 napig végezze a virtuális gépek profiljának készítését. Ha az adatváltozási minta egy hónapon belül változik, javasoljuk, hogy a héten akkor készítsen profilt, amikor a maximális változás tapasztalható. A legjobb megoldás, ha 31 nap alatt készíti el a profilt, így jobb javaslatokat kaphat. 
 
@@ -257,8 +257,8 @@ Az elkészített Microsoft Excel-jelentés a következő információkat tartalm
 * [Helyszíni összefoglalás](hyper-v-deployment-planner-analyze-report.md#on-premises-summary)
 * [Javaslatok](hyper-v-deployment-planner-analyze-report.md#recommendations)
 * [Virtuálisgép-tároló elhelyezése](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)
-* [Compatible VMs](hyper-v-deployment-planner-analyze-report.md#compatible-vms) (Kompatibilis virtuális gépek)
-* [Incompatible VMs](hyper-v-deployment-planner-analyze-report.md#incompatible-vms) (Nem kompatibilis virtuális gépek)
+* [Kompatibilis virtuális gépek](hyper-v-deployment-planner-analyze-report.md#compatible-vms)
+* [Nem kompatibilis virtuális gépek](hyper-v-deployment-planner-analyze-report.md#incompatible-vms)
 * [A helyszíni tárolásra vonatkozó követelmények](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement)
 * [IR-kötegelés](hyper-v-deployment-planner-analyze-report.md#initial-replication-batching)
 * [Költségbecslés](hyper-v-deployment-planner-cost-estimation.md)
@@ -283,7 +283,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 | -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie.|
 | -StorageAccountKey | A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és válassza a **Tárfiókok** > *Tárfiók neve* > **Beállítások** > **Hozzáférési kulcsok** > **1. kulcs** elemet.|
 | -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni a felhasznált sávszélesség kiszámításához. A fájl elérési útja lehet abszolút vagy relatív. A Hyper-V esetében ez a fájl a GetVMList művelet kimeneti fájlja. Ha az előkészületeket manuálisan végzi el, a fájl minden sorában egy kiszolgáló nevének vagy IP-címének kell szerepelnie, amelyet egy virtuális gép neve követ (soronként \ perjellel elválasztva). A fájlban megadott virtuálisgép-névnek meg kell egyeznie a Hyper-V-gazdagépen szereplő névvel.<br><br>**Példa** VMList.txt az alábbi virtuális gépeket tartalmazza:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
-|-Környezet|(Nem kötelező) Az Azure-tárfiók célkörnyezete. Három érték egyike lehet: AzureCloud, AzureUSGovernment, or AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Akkor használja ezt a paramétert, ha Azure-célrégióként az Azure US Government vagy az Azure China van megadva.|
+|-Környezet|(Nem kötelező) Az Azure-tárfiók célkörnyezete. Három érték egyike lehet: AzureCloud, AzureUSGovernment, or AzureChinaCloud. Az alapértelmezett érték az AzureCloud. Használja a paramétert, ha a cél Azure-régióban Azure US Government vagy Azure China 21Vianet.|
 
 ### <a name="example"></a>Példa
 ```

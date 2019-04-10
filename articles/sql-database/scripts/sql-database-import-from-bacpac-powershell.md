@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: cafd327a58a950dde2cf6161a9394ad2026cb7eb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6d6fadc1508df63fdc4062bd45a98e31c1f1674f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837541"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361232"
 ---
 # <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>BACPAC-fájl importálása egy Azure SQL-adatbázisba a PowerShell használatával
 
@@ -35,7 +35,7 @@ Ha helyi telepítése és használata a PowerShell, az oktatóanyaghoz AZ PowerS
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A példaszkript futtatása után a következő paranccsal távolítható el az erőforráscsoport és az összes ahhoz kapcsolódó erőforrás.
+A következő paranccsal távolítsa el az erőforráscsoportot és az ahhoz kapcsolódó összes erőforrás.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname

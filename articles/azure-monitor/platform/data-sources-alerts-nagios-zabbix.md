@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: f0f156568eed5a1e8f3296ff7c37df7f050dbc33
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0ed6747573edf4c059eb29d28107a22706c52856
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540045"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426189"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Nagios-és Zabbix az Azure Monitor riasztások gyűjtése a Linuxhoz készült Log Analytics-ügynök 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -92,15 +92,15 @@ Riasztás Nagios által összegyűjtött rekordokkal rendelkezik egy **típus** 
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*Riasztás* |
-| SourceSystem |*Nagios* |
-| AlertName |A riasztás neve. |
-| AlertDescription | A riasztás leírása. |
-| AlertState | A szolgáltatás vagy a gazdagép állapotát.<br><br>OK<br>FIGYELMEZTETÉS<br>FELFELÉ<br>LEFELÉ |
-| Állomásnév | A gazdagép által létrehozott, a riasztás neve. |
-| PriorityNumber | A riasztás prioritását. |
-| StateType | A riasztás állapotának típusa.<br><br>HELYREÁLLÍTHATÓ - hibát, amely nem elteltével.<br>MEREVLEMEZ - probléma, amely van újra ellenőrizni kell a megadott számú alkalommal.  |
-| TimeGenerated |Dátum és idő a riasztás létrejött. |
+| `Type` |*Riasztás* |
+| `SourceSystem` |*Nagios* |
+| `AlertName` |A riasztás neve. |
+| `AlertDescription` | A riasztás leírása. |
+| `AlertState` | A szolgáltatás vagy a gazdagép állapotát.<br><br>OK<br>FIGYELMEZTETÉS<br>FELFELÉ<br>LEFELÉ |
+| `HostName` | A gazdagép által létrehozott, a riasztás neve. |
+| `PriorityNumber` | A riasztás prioritását. |
+| `StateType` | A riasztás állapotának típusa.<br><br>HELYREÁLLÍTHATÓ - hibát, amely nem elteltével.<br>MEREVLEMEZ - probléma, amely van újra ellenőrizni kell a megadott számú alkalommal.  |
+| `TimeGenerated` |Dátum és idő a riasztás létrejött. |
 
 
 ### <a name="zabbix-alert-records"></a>Zabbix-riasztások rekordok
@@ -108,17 +108,17 @@ Riasztás Zabbix által összegyűjtött rekordokkal rendelkezik egy **típus** 
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*Riasztás* |
-| SourceSystem |*Zabbix* |
-| AlertName | A riasztás neve. |
-| AlertPriority | A riasztás súlyosságát.<br><br>nem besorolt<br>Információ<br>figyelmeztetés<br>átlag<br>Magas<br>vészhelyreállítás  |
-| AlertState | A riasztás állapota.<br><br>0 – állapota naprakész.<br>1 – állapota ismeretlen.  |
-| AlertTypeNumber | Itt adhatja meg, e riasztás hozhat létre több problémát esemény.<br><br>0 – állapota naprakész.<br>1 – állapota ismeretlen.    |
-| Megjegyzések | A riasztás további megjegyzéseket. |
-| Állomásnév | A gazdagép által létrehozott, a riasztás neve. |
-| PriorityNumber | A riasztás súlyosságát jelző érték beolvasása.<br><br>0 – nem besorolt<br>1 – információ<br>2 – figyelmeztetés<br>3 – átlag<br>4 – magas<br>5 – vészhelyreállítás |
-| TimeGenerated |Dátum és idő a riasztás létrejött. |
-| TimeLastModified |Dátum és idő, a riasztás állapotának módosítása. |
+| `Type` |*Riasztás* |
+| `SourceSystem` |*Zabbix* |
+| `AlertName` | A riasztás neve. |
+| `AlertPriority` | A riasztás súlyosságát.<br><br>nem besorolt<br>Információ<br>figyelmeztetés<br>átlag<br>Magas<br>vészhelyreállítás  |
+| `AlertState` | A riasztás állapota.<br><br>0 – állapota naprakész.<br>1 – állapota ismeretlen.  |
+| `AlertTypeNumber` | Itt adhatja meg, e riasztás hozhat létre több problémát esemény.<br><br>0 – állapota naprakész.<br>1 – állapota ismeretlen.    |
+| `Comments` | A riasztás további megjegyzéseket. |
+| `HostName` | A gazdagép által létrehozott, a riasztás neve. |
+| `PriorityNumber` | A riasztás súlyosságát jelző érték beolvasása.<br><br>0 – nem besorolt<br>1 – információ<br>2 – figyelmeztetés<br>3 – átlag<br>4 – magas<br>5 – vészhelyreállítás |
+| `TimeGenerated` |Dátum és idő a riasztás létrejött. |
+| `TimeLastModified` |Dátum és idő, a riasztás állapotának módosítása. |
 
 
 ## <a name="next-steps"></a>További lépések

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 3004f073100b45de25655fc6dee6a96c90612c46
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: f023ab4fe55cf180ac1e3f0634856a528c911746
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905203"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426500"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
@@ -77,7 +77,7 @@ A következő diagnostics telemetriai adatainak gyűjtéséhez állíthat be az 
 > Rugalmas készletek és a felügyelt példány rendelkezik a saját külön diagnostics telemetriai adatainak tartalmaznak adatbázisokból. Ez fontos megjegyezni a diagnostics telemetriai adatainak külön-külön vannak beállítva ezen erőforrások mindegyike módon lentebb.
 
 > [!NOTE]
-> Biztonsági naplózás és SQLSecurityAuditEvents naplók adatbázis diagnosztikai beállítások alapján nem lehet engedélyezni. Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), és [naplózás az Azure Monitor naplóira és az Azure Event Hubs-naplók](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Biztonsági naplózás és SQLSecurityAuditEvents naplók nem lehet engedélyezni az adatbázis diagnosztikai beállítások (bár a képernyőn látható). Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), és [naplózás az Azure Monitor naplóira és az Azure Event Hubs-naplók](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -141,7 +141,7 @@ Az önálló vagy készletezett adatbázisok diagnostics telemetriai adatainak s
 1. Ismételje meg ezeket a lépéseket minden egyes figyelni kívánt adatbázist.
 
 > [!NOTE]
-> Biztonsági naplózás és SQLSecurityAuditEvents naplók adatbázis diagnosztikai beállítások alapján nem lehet engedélyezni. Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), és [naplózás az Azure Monitor naplóira és az Azure Event Hubs-naplók](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Biztonsági naplózás és SQLSecurityAuditEvents naplók nem lehet engedélyezni az adatbázis diagnosztikai beállítások (bár a képernyőn látható). Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), és [naplózás az Azure Monitor naplóira és az Azure Event Hubs-naplók](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 > [!TIP]
 > Ismételje meg ezeket a lépéseket minden egyes Azure SQL Database figyelni szeretné.
 

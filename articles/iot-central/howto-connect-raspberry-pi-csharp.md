@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8137f7d167cc697671de99699c6031014d6a966e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 341b4d23664900cdf1f9a209df663ad4e6e96fe4
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275963"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426358"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#)
 
@@ -269,7 +269,7 @@ A következő lépéseket, használhatja a Visual Studio Code-ot. További infor
 
 ## <a name="run-your-net-application"></a>A .NET-alkalmazás futtatása
 
-Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközspecifikus kapcsolati karakterláncra. Ezeket az utasításokat követve [az eszköz kapcsolati karakterláncának létrehozása](concepts-connectivity.md#get-a-connection-string) használatával a **hatókör azonosítója**, **Eszközazonosító**, és **elsődleges kulcs** történtek egy korábban vegye figyelembe a.
+Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközspecifikus kapcsolati karakterláncra. Ezeket az utasításokat követve [az eszköz kapcsolati karakterláncának létrehozása](howto-generate-connection-string.md) használatával a **hatókör azonosítója**, **Eszközazonosító**, és **elsődleges kulcs** történtek egy korábban vegye figyelembe a.
 
 1. Cserélje le `{your device connection string}` a a **Program.cs** fájl létrehozott kapcsolati karakterlánccal.
 

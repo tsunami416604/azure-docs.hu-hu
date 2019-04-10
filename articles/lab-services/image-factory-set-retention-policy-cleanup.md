@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c1465f31c8b5eb15b6fe63ed61a946e3b32d550
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 8190c2043d7d3daae91c93fd3b66126d0941710b
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439962"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361849"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Egy egyéni rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban
 Ez a cikk ismerteti az adatmegőrzési beállítás, az előállító karbantartása és régi lemezképek kivonása az összes a többi DevTest Labs szolgáltatásban a szervezet. 
@@ -25,9 +25,9 @@ Ez a cikk ismerteti az adatmegőrzési beállítás, az előállító karbantart
 ## <a name="prerequisites"></a>Előfeltételek
 Győződjön meg arról, hogy a folytatás előtt követte ezeket a cikkeket:
 
-- [Lemezkép-előállító létrehozása](image-factory-create.md)
-- [Egy rendszerkép-előállító Futtatás az Azure DevOps](image-factory-set-up-devops-lab.md)
-- [Egyéni rendszerképek mentse, és több labs terjesztéséhez](image-factory-save-distribute-custom-images.md)
+- [Rendszerkép-előállító létrehozása](image-factory-create.md)
+- [Rendszerkép-előállító futtatása az Azure DevOpsból](image-factory-set-up-devops-lab.md)
+- [Egyéni rendszerképek mentése és továbbítása több tesztkörnyezetbe](image-factory-save-distribute-custom-images.md)
 
 A következő elemek már helyén kell lennie:
 
@@ -73,7 +73,7 @@ Most már egy futó lemezkép-előállítót, amely hoz létre, és a tesztkörn
 
 
 ## <a name="next-steps"></a>További lépések
-1. [A build és kiadás ütemezése](/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) a lemezkép factory rendszeres időközönként futtatásához. A gyári által generált képek rendszeres időközönként frissíti azt.
+1. [A build és kiadás ütemezése](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) a lemezkép factory rendszeres időközönként futtatásához. A gyári által generált képek rendszeres időközönként frissíti azt.
 2. Győződjön meg arról, további hamisított Kerberos-lemezképek az előállító. Emellett érdemes [összetevők létrehozása](devtest-lab-artifact-author.md) , további információt a Virtuálisgép-beállítási feladatok létrehozása és a gyári képeken közé tartozik az összetevők.
-4. Hozzon létre egy [build és kiadás külön](/devops/pipelines/overview.md?view=azure-devops-2019) futtatásához a **DistributeImages** parancsfájl külön-külön. Ezt a szkriptet futtathatja is, ha Labs.json módosítja, és másolja a cél tesztkörnyezetekhez nélkül hozza létre újra az összes rendszerkép képek bekérése.
+4. Hozzon létre egy [build és kiadás külön](/azure/devops/pipelines/overview.md?view=azure-devops-2019) futtatásához a **DistributeImages** parancsfájl külön-külön. Ezt a szkriptet futtathatja is, ha Labs.json módosítja, és másolja a cél tesztkörnyezetekhez nélkül hozza létre újra az összes rendszerkép képek bekérése.
 

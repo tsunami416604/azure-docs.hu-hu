@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: cb6826be8f6a9a8caf54a23b0dbc5f3dda7830d6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273974"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361233"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Csatlakozás a Media Services v3 API – .NET
 
@@ -35,7 +35,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat az Azure Media Services v3 .NET SDK has
 1. Az a **fájl** menüben kattintson a **új** > **projekt**. 
 1. Hozzon létre egy **.NET Core** Konzolalkalmazás.
 
-Ez a témakör a mintaalkalmazás célozza `netcoreapp2.0`. A kódot használja "aszinkron fő", azaz kezdődően elérhető C# 7.1-es. Ez [blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) további részletekért.
+Ez a témakör a mintaalkalmazás célozza `netcoreapp2.0`. A kód használja "aszinkron fő", azaz kezdődően elérhető C# 7.1-es. Ez [blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) további részletekért.
 
 ## <a name="add-required-nuget-packages"></a>Adja hozzá a szükséges NuGet-csomagok
 
@@ -223,7 +223,7 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: Feltöltése, kódolása és streamelése videók – .NET](stream-files-tutorial-with-api.md) 
 - [Oktatóanyag: A Media Services v3 - .NET élő Stream](stream-live-tutorial-with-api.md)
@@ -237,6 +237,6 @@ namespace ConsoleApp1
 - [Szűrők létrehozása a Media Services – .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Az Azure Functions v2 a Media Services v3 igény szerinti videó példák speciális](https://aka.ms/ams3functions)
 
-## <a name="next-steps"></a>További lépések
+## <a name="see-also"></a>Lásd még
 
 [.NET-referencia](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)

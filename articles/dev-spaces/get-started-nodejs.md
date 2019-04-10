@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
-ms.openlocfilehash: 063ea2392dcaa705436bfbd7ba5d429bb096651e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dc84844738e501a30f73104a76ff80bf00adff24
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891035"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425821"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Bevezetés az Azure fejlesztési szóközöket a node.js használatával
 
@@ -25,17 +25,10 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.
 
 > [!Note]
-> **Ha bármikor elakad**, tekintse meg a [Hibaelhárítás](troubleshooting.md) szakaszt, vagy írjon egy hozzászólást erre a lapra.
-
-Most már készen áll a Kubernetes-alapú fejlesztői környezetek Azure-ban történő létrehozására.
+> **Ha elakad,** bármikor, tekintse meg a [hibaelhárítás](troubleshooting.md) szakaszban.
 
 ## <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
-Az Azure Dev Spaces használatához minimális helyi gépbeállítás szükséges. A Dev Spaces-tér konfigurációjának legnagyobb része a felhőben van tárolva, és megosztható más felhasználókkal. A helyi gép lehet Windows, Mac vagy Linux rendszerű. Linux esetén a következő disztribúciók támogatottak: Ubuntu (18.04, 16.04 és 14.04-es), a Debian 8 – 9, RHEL 7, Fedora 26 +, CentOS 7, openSUSE 42.2 és SLES 12 rendszert.
-
-Első lépésként töltse le és futtassa az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) parancssori felületet. 
-
-> [!IMPORTANT]
-> Ha az Azure CLI már telepítve van, győződjön meg arról, hogy a 2.0.43-as vagy újabb verziót használja.
+Az Azure Dev Spaces használatához minimális helyi gépbeállítás szükséges. A Dev Spaces-tér konfigurációjának legnagyobb része a felhőben van tárolva, és megosztható más felhasználókkal. Első lépésként töltse le és futtassa az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) parancssori felületet.
 
 ### <a name="sign-in-to-azure-cli"></a>Bejelentkezés az Azure CLI-be
 Jelentkezzen be az Azure-ba. Írja be a következő parancsot egy terminálablakba:
@@ -112,7 +105,7 @@ Már rendelkezik egy helyileg futó alapszintű webalkalmazással. Most olyan ob
     ```
 
 Az Azure CLI `azds prep` parancsa alapértelmezett beállításokkal hoz létre Docker- és Kubernetes-objektumokat:
-* A `./Dockerfile` ismerteti az alkalmazás tárolólemezképét, illetve hogy a forráskód hogyan épül fel és hogyan fut a tárolón belül.
+* `./Dockerfile` az alkalmazás tárolórendszerképet, és hogyan forráskódját épül, és a tárolóban fut ismerteti.
 * A `./charts/webfrontend` alatt található [Helm-diagram](https://docs.helm.sh) ismerteti a konténer Kubernetesben történő üzembe helyezését.
 
 Egyelőre még nem fontos a fájlok teljes tartalmát megérteni. Ugyanakkor azt megjegyeznénk, hogy **használhatja ugyanazokat a Docker és a Kubernetes kóddal való konfigurálási objektumokat a fejlesztéstől kezdve egészen az éles környezetig, így jobb konzisztenciát biztosíthat a különböző környezetekben.**
@@ -167,7 +160,7 @@ Mi történt? A tartalomfájlok (például HTML és CSS) módosításai nem igé
 Nyissa meg a webalkalmazást egy mobileszközön a webfrontend nyilvános URL-címével. Érdemes lehet az URL-címet az asztali gépről kimásolni, majd elküldeni az eszközre, hogy ne kelljen a hosszú címet begépelni. Ha a webalkalmazást egy mobileszközön tölti be, megfigyelheti, hogy a felhasználói felület nem megfelelően jelenik meg a kis méretű eszközökön.
 
 A hiba kiküszöbölésére hozzáadunk egy `viewport` metacímkét:
-1. Nyissa meg a `./public/index.html` fájlt.
+1. Nyissa meg a fájlt `./public/index.html`
 1. Adja hozzá a `viewport` metacímkét a meglévő `head` elemhez:
 
     ```html
@@ -272,7 +265,7 @@ Ebben a konfigurációban a tároló úgy van beállítva, hogy elindítsa a *no
 1. Módosítsa újra az üdvözlőüzenetet a `server.js` fájlban, majd mentse azt.
 1. Frissítse a böngészőt vagy kattintson a *Kimondás újra* gombra, és láthatja, ahogy a módosítások érvénybe lépnek.
 
-**Most tehát rendelkezésére áll egy módszer, amellyel gyorsan iterálhatja a kódot, és közvetlenül a Kubernetesben végezheti a hibakeresést.** A következő részből megtudhatja, hogyan hozhat létre és hívhat meg egy második tárolót.
+**Most már gyorsan Léptetés a kódra, és a hibakeresést közvetlenül a Kubernetes metódus!** A következő részből megtudhatja, hogyan hozhat létre és hívhat meg egy második tárolót.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,17 +3,17 @@ title: Eszköz csatlakoztatása az Azure IoT Central |} A Microsoft Docs
 description: Ez a cikk bemutatja a eszköz csatlakoztatása az Azure IoT Central kapcsolatos alapfogalmak
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/28/2019
+ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: e45960363290879af2e72211f5ef31b825461947
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522094"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425967"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
 
@@ -30,7 +30,7 @@ A DPS használatával a következőket:
 - Az, hogy a saját eszközazonosítókat eszközök regisztrálása az IoT-központ. A saját eszköz azonosítók használata leegyszerűsíti a háttérrendszerhez rendszerekkel való integrációt.
 - Egyetlen, egységes módon csatlakoztatni az eszközöket az IoT-központ.
 
-A cikkben található útmutató ismerteti a következő négy használati esetek:
+Ez a cikk ismerteti a következő négy használati esetek:
 
 1. [Gyorsan kapcsolatba léphet egy adott eszköz SAS használatával](#connect-a-single-device)
 1. [SAS használatával nagy mennyiségű eszköz csatlakoztatása](#connect-devices-at-scale-using-sas)
@@ -39,24 +39,7 @@ A cikkben található útmutató ismerteti a következő négy használati esete
 
 ## <a name="connect-a-single-device"></a>Egyetlen eszköz csatlakoztatása
 
-Ez a megközelítés akkor hasznos, amikor kísérleteztek az IoT-központ vagy a tesztelési eszközök.
-
-Egy adott eszköz csatlakozik az IoT-központ SAS használatával, kövesse az alábbi lépéseket:
-
-1. Valódi eszköz hozzáadásához keresse meg a **Device Explorer**, válasszon egy sablont az eszközt, és válassza ki **+ új > valós**:
-    - Adja meg a saját (, kisbetű) **Eszközazonosító** vagy a javasolt azonosítót.
-    - Adjon meg egy **eszköznév** vagy javasolt nevét használja.
-
-      ![Eszköz hozzáadása](media/concepts-connectivity/add-device.png)
-
-1. Válassza ki az eszköz kapcsolati adatok lekéréséhez, **Connect** az eszköz oldalon. Van szüksége a **hatókör azonosítója**, **Eszközazonosító**, és **elsődleges kulcs** értékeket:
-    - Minden egyes IoT Central alkalmazáshoz tartozik egy egyedi [hatókör azonosítója](../iot-dps/concepts-device.md#id-scope) , amely szerint a DPS jön létre.
-    - [Eszközazonosító](../iot-dps/concepts-device.md#device-id) az eszköz egyedi azonosítója. Az eszköz Azonosítóját tárolja a [eszközidentitás-jegyzék](../iot-hub/iot-hub-devguide-identity-registry.md).
-    - **Elsődleges kulcs** SAS-tokent, akkor az eszköz IoT-központ által generált.
-
-      ![Kapcsolat adatai](media/concepts-connectivity/device-connect.png)
-
-A kód a kapcsolati adatok használatával engedélyezi az eszköz csatlakoztatása és az IoT-adatok küldése az IoT Central alkalmazáshoz. További információ az eszközök csatlakoztatásáról: [további lépések](#next-steps).
+Ez a megközelítés akkor hasznos, amikor kísérleteztek az IoT-központ vagy a tesztelési eszközök. A kapcsolati információkat használhatja az IoT-központ alkalmazás készítése az eszköz kapcsolati karakterláncára. Részletes lépéseiért lásd: [hogyan hozhat létre az eszköz kapcsolati karakterláncának csatlakozhat egy Azure IoT Central alkalmazáshoz](howto-generate-connection-string.md).
 
 ## <a name="connect-devices-at-scale-using-sas"></a>SAS használatával nagy mennyiségű eszköz csatlakoztatása
 
@@ -169,35 +152,15 @@ Ha egy valódi eszköz csatlakozik az IoT Central alkalmazáshoz, a kiépítési
 
 1. Az operátor is letiltja az eszköz. Ha egy eszköz le van tiltva, azt nem küldenek adatokat az IoT Central alkalmazáshoz. Letiltott eszközök rendelkeznek egy kiépítési állapota **letiltott**. Az operátornak kell visszaállítani az eszközt, mielőtt folytathatja az adatok küldésének. Az operátornak feloldja egy eszközt a kiépítési állapotot ad vissza az előző értékre, ha **regisztrált** vagy **kiépített**.
 
-## <a name="get-a-connection-string"></a>Kapcsolati karakterlánc beszerzése
-
-Az alábbi lépések bemutatják, hogyan kezdheti egy kapcsolati karakterláncot egy eszközhöz:
-
-1. Válassza ki **Connect** a a **Device Explorer** oldalra a kapcsolat részletek beszerzéséhez: **Hatókör azonosítója**, **Eszközazonosító**, és **eszköz elsődleges kulcs**:
-
-    ![Kapcsolat adatai](media/concepts-connectivity/device-connect.png)
-
-1. Használja a `dps-keygen` parancssori segédprogram egy kapcsolati karakterláncot létrehozni:  Telepítése a [key generator segédprogram](https://github.com/Azure/dps-keygen), futtassa a következő parancsot:
-
-    ```cmd/sh
-    npm i -g dps-keygen
-    ```
-
-    Hozzon létre egy kapcsolati karakterláncot, futtassa a következő parancsot:
-
-    ```cmd/sh
-    dps-keygen -di:<device_id> -dk:<device_key> -si:<scope_id>
-    ```
-
 ## <a name="sdk-support"></a>SDK-támogatás
 
 Az Azure eszközoldali SDK-k ajánlat legegyszerűbb módja az Ön számára az eszköz kód megvalósítását. A következő eszközoldali SDK-k érhetők el:
 
-- [A c nyelvhez készült Azure IoT-SDK](https://github.com/azure/azure-iot-sdk-c)
-- [Azure IoT SDK for Python](https://github.com/azure/azure-iot-sdk-python)
-- [Az Azure IoT SDK for node.js használatával](https://github.com/azure/azure-iot-sdk-node)
-- [A Javához készült Azure IoT-SDK](https://github.com/azure/azure-iot-sdk-java)
-- [Az Azure IoT SDK for .NET csomaggal](https://github.com/azure/azure-iot-sdk-csharp)
+- [C nyelvhez készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-c)
+- [Pythonhoz készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-python)
+- [Node.js-hez készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-node)
+- [Javához készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-java)
+- [.NET-hez készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-csharp)
 
 Minden egyes eszköz kapcsolódik, amely azonosítja az eszköz egyedi kapcsolati karakterlánc használatával. Egy eszköz csak képes csatlakozni az IoT hub, ha regisztrálva van. Valós eszközöknek az Azure IoT Central-alkalmazást hoz létre, amikor az alkalmazás állít elő, az adatokat, hozhatnak létre egy kapcsolati karakterlánc használatával kell `dps-keygen`.
 
@@ -218,7 +181,7 @@ A következő táblázat összefoglalja, hogyan Azure IoT Central eszközfunkci�
 
 Az eszközoldali SDK-k használatával kapcsolatos további tudnivalókért lásd: egyet az alábbi cikkekben például kód:
 
-- [Általános Node.js-ügyfél csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-nodejs.md)
+- [Egy általános Node.js-ügyfél csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-nodejs.md)
 - [A Raspberry Pi-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-raspberry-pi-python.md)
 - [A DevDiv kit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-devkit.md).
 
@@ -243,6 +206,6 @@ Eszközök és az Azure IoT Central között továbbított összes adat titkosí
 Most, hogy megismerkedett az Azure IoT Central eszközkapcsolat, az alábbiakban a javasolt következő lépések:
 
 - [Készítse elő és DevKit eszköz csatlakoztatása](howto-connect-devkit.md)
-- [Raspberry Pi előkészítése és csatlakoztatása](howto-connect-raspberry-pi-python.md)
-- [Általános Node.js-ügyfél csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-nodejs.md)
+- [Készítse elő és a Raspberry Pi csatlakoztatása](howto-connect-raspberry-pi-python.md)
+- [Egy általános Node.js-ügyfél csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-nodejs.md)
 - [C SDK: Eszköz ügyfél-SDK kiépítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)

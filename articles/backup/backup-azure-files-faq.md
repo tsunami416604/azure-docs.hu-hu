@@ -8,12 +8,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 91a0e1fd66861f8747c6c6da21f2c54ed40bd200
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 139ce3fd81c14f9bf97e45c8aebb83d2fb1bbe10
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492803"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426613"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -38,9 +38,9 @@ Ha biztonsági mentéskor egy Storage-fiókra kattint az abban lévő fájlmegos
 Igen. Azonban [le kell állítania a védelmet](backup-azure-files.md#stop-protecting-an-azure-file-share) a csatlakoztatott tárolóból, [meg kell szüntetnie a Storage-fiók regisztrációját](troubleshoot-azure-files.md#configuring-backup), majd egy másik tárolóból kell védelmet biztosítania számára.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>Milyen földrajzi helyeken készíthetek biztonsági mentést Azure-fájlmegosztásaimról <br/>
-Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban és csak a következő helyeken érhető el: 
-- Kelet-Ausztrália (AE) 
-- Délkelet-Ausztrália (ASE) 
+Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban és csak a következő helyeken érhető el:
+- Kelet-Ausztrália (AE)
+- Délkelet-Ausztrália (ASE)
 - Dél-Brazília (BRS)
 - Közép-Kanada (CNC)
 - Kelet-Kanada (CE)
@@ -50,17 +50,17 @@ Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban é
 - USA 2. keleti régiója (EUS2)
 - Kelet-Japán (JPE)
 - Nyugat-Japán (JPW)
-- Közép-India (INC) 
+- Közép-India (INC)
 - Dél-India (INS)
 - Korea középső régiója (KRC)
 - Korea déli régiója (KRS)
-- USA északi középső régiója (NCUS) 
-- Észak-Európa (NE) 
-- USA déli középső régiója (SCUS) 
+- USA északi középső régiója (NCUS)
+- Észak-Európa (NE)
+- USA déli középső régiója (SCUS)
 - Délkelet-Ázsia (SEA)
-- Egyesült Királyság déli régiója (UKS) 
-- Egyesült Királyság nyugati régiója (UKW) 
-- Nyugat-Európa (WE) 
+- Egyesült Királyság déli régiója (UKS)
+- Egyesült Királyság nyugati régiója (UKW)
+- Nyugat-Európa (WE)
 - USA nyugati régiója (WUS)
 - USA nyugati középső régiója (WCUS)
 - USA 2. nyugati régiója (WUS 2)
@@ -82,7 +82,7 @@ Nem. A Storage-fiókban lévő összes fájlmegosztás számára csak ugyanazzal
 Egy tetszőleges időpontban legfeljebb 200 pillanatkép készíthető fájlmegosztásonként. A korlátba a szabályzatban meghatározottak szerint beletartoznak az Azure Backup által készített pillanatképek is. Ha biztonsági mentései kezdenek meghiúsulni ezen korlát elérése után, akkor töröljön néhány igény szerinti visszaállítási pontot a jövőbeli sikeres biztonsági mentések érdekében.
 
 ### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>A virtuális hálózatok tárfiókomon való engedélyezését követően a fiókban lévő fájlmegosztások biztonsági mentése elkezdett meghiúsulni. Hogy miért?
-Az Azure-fájlmegosztások biztonsági mentése nem támogatja azokat a Storage-fiókokat, amelyeken engedélyezve vannak a virtuális hálózatok. A sikeres biztonsági mentés engedélyezéséhez tiltsa le a virtuális hálózatokat a tárfiókoknál. 
+Az Azure-fájlmegosztások biztonsági mentése nem támogatja azokat a Storage-fiókokat, amelyeken engedélyezve vannak a virtuális hálózatok. A sikeres biztonsági mentés engedélyezéséhez tiltsa le a virtuális hálózatokat a tárfiókoknál.
 
 ## <a name="restore"></a>Visszaállítás
 
@@ -91,6 +91,10 @@ Azure-fájlmegosztás törlésekor egy lista jelenik meg azokról a biztonsági 
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share-br"></a>Vissza tudok állítani biztonsági mentésekből, ha leállítottam az Azure-fájlmegosztás védelmét? <br/>
 Igen. Ha a védelem leállításakor a **Biztonsági másolatok adatainak megőrzése** lehetőséget választotta, akkor minden meglévő visszaállítási pontból vissza tud állítani.
+
+### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Mi történik, ha megszakítom egy folyamatban lévő visszaállítási feladat?
+Ha egy folyamatban lévő visszaállítási feladat meg lett szakítva, a a visszaállítási folyamat leáll, és minden fájl visszaállítva a megszakítás pillanata előtt a konfigurált cél (eredeti helyére vagy máshová) bármely visszagörgetése nélkül maradnak. 
+
 
 ## <a name="manage-backup"></a>Biztonsági mentés kezelése
 
@@ -108,6 +112,6 @@ Amikor új házirendet alkalmaznak a fájlmegosztáso(ko)n, az új szabályzat �
 
 ## <a name="see-also"></a>Lásd még
 Ezek az információk kizárólag az Azure Files biztonsági mentésére vonatkoznak, az Azure Backup más területeinek megismeréséhez tekintse át az alábbi Backup GYIK-fejezeteket:
--  [Helyreállítási tár – GYIK](backup-azure-backup-faq.md)
--  [Azure-beli virtuális gép biztonsági mentése – GYIK](backup-azure-vm-backup-faq.md)
+-  [A Recovery Services-tároló – gyakori kérdések](backup-azure-backup-faq.md)
+-  [Az Azure VM backup – gyakori kérdések](backup-azure-vm-backup-faq.md)
 -  [Az Azure Backup ügynöke – GYIK](backup-azure-file-folder-backup-faq.md)

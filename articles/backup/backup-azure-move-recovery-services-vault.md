@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/08/2019
 ms.author: sogup
-ms.openlocfilehash: 7745f986c6e9ba22258f51f9329444b8232762e1
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: f4ab983fbebe9c0219e70fa7bd5742cf1c3a0491
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905766"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361977"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és erőforráscsoportok (korlátozott nyilvános előzetes verzió)
 
@@ -22,7 +22,9 @@ Ez a cikk bemutatja, hogyan helyezheti át a több Azure-előfizetés, vagy egy 
 > [!NOTE]
 > Recovery Services-tároló és az összes kapcsolódó erőforrás áthelyezése másik erőforráscsoportba, akkor először [a forrás-előfizetés regisztrálása](#register-the-source-subscription-to-move-your-recovery-services-vault).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="supported-geos"></a>Támogatott helyeken
+
+Erőforrás-áthelyezés a Recovery Services-tároló használata támogatott Kelet-Ausztrália, Kelet-Ausztrália Dél-India, közép-Kanada, kelet-Kanada, Délkelet-Ázsia, Kelet-Ázsia, USA középső RÉGIÓJA, USA északi középső Régiója, USA keleti RÉGIÓJA, 2. keleti régiója, USA déli középső USA nyugati középső Régiója, USA nyugati középső régiója 2 régiója, USA nyugati RÉGIÓJA, Közép-India, Dél-India, kelet-japán, Nyugat-japán, Korea középső régiója, Korea déli régiója, Észak-Európa, Nyugat-Európa, Dél-Afrika északi régiója, Dél-Afrika nyugati régiója, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Egyesült Arab Emírségek középső régiója és az Egyesült Arab Emírségek északi.
 
 ## <a name="prerequisites-for-moving-a-vault"></a>Tároló áthelyezése előfeltételei
 
@@ -34,12 +36,12 @@ Ez a cikk bemutatja, hogyan helyezheti át a több Azure-előfizetés, vagy egy 
 - Jelenleg áthelyezheti egy Recovery Services-tárolót, régiónként, egyszerre.
 - Ha egy virtuális gép nem helyezi át a helyreállítási tárban, előfizetések között, vagy egy új erőforráscsoportot, a virtuális gép aktuális helyreállítási pontok változatlanok maradnak a tárolóban amíg le nem járnak.
 - A virtuális gép áthelyezése a tárolóval vagy sem, hogy mindig visszaállíthatja a virtuális gép a megőrzött korábbi biztonsági másolatok a tárolóban.
--   Az Azure Disk Encryption megköveteli, hogy a kulcstartó és a virtuális gépek található az ugyanazon Azure-régióban és az előfizetés.
--   A felügyelt lemezekkel rendelkező virtuális gép áthelyezése: Ez [cikk](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
--   A beállításokat a klasszikus modellben telepített erőforrások áthelyezéséhez eltér attól függően, hogy helyez át az erőforrásokat egy előfizetésen belül, vagy egy új előfizetést. További információkért lásd: Ez [cikk](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#classic-deployment-limitations).
--   A tároló számára meghatározott biztonsági mentési szabályzatok megmaradnak, miután a tároló áthelyezése előfizetések között, vagy egy új erőforráscsoportot.
--   Jelenleg nem helyezhetők át a tárolók az Azure Files, az Azure File Sync vagy az SQL IaaS-beli virtuális gépeken tartalmazó különböző előfizetésekhez és erőforráscsoportokhoz. Ezek a forgatókönyvek támogatása bekerül a jövőbeli kiadások.
--   Ha egy tárolót tartalmazó virtuális gép biztonsági mentési adatokat, előfizetések, helyezze át a virtuális gépek ugyanahhoz az előfizetéshez, és az biztonsági mentések továbbra is az azonos céloldali erőforráscsoport segítségével.<br>
+- Az Azure Disk Encryption megköveteli, hogy a kulcstartó és a virtuális gépek található az ugyanazon Azure-régióban és az előfizetés.
+- A felügyelt lemezekkel rendelkező virtuális gép áthelyezése: Ez [cikk](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
+- A beállításokat a klasszikus modellben telepített erőforrások áthelyezéséhez eltér attól függően, hogy helyez át az erőforrásokat egy előfizetésen belül, vagy egy új előfizetést. További információkért lásd: Ez [cikk](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#classic-deployment-limitations).
+- A tároló számára meghatározott biztonsági mentési szabályzatok megmaradnak, miután a tároló áthelyezése előfizetések között, vagy egy új erőforráscsoportot.
+- Jelenleg nem helyezhetők át a tárolók az Azure Files, az Azure File Sync vagy az SQL IaaS-beli virtuális gépeken tartalmazó különböző előfizetésekhez és erőforráscsoportokhoz.
+- Ha egy tárolót tartalmazó virtuális gép biztonsági mentési adatokat, előfizetések, helyezze át a virtuális gépek ugyanahhoz az előfizetéshez, és az biztonsági mentések továbbra is az azonos céloldali erőforráscsoport segítségével.<br>
 
 > [!NOTE]
 >
@@ -52,24 +54,24 @@ A forrás-előfizetés regisztrálása **áthelyezése** a Recovery Services-tá
 1. Jelentkezzen be az Azure-fiókjába
 
    ```
-   Connect-AzAccount
+   Connect-AzureRmAccount
    ```
 
 2. Válassza ki a regisztrálni kívánt előfizetést
 
    ```
-   Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
+   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
    ```
 3. Ez az előfizetés regisztrálása
 
    ```
-   Register-AzProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
    ```
 
 4. A parancs futtatása
 
    ```
-   Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
    ```
 
 Várjon 30 perc alatt az előfizetést engedélyezési listára kell az áthelyezési művelet az Azure portal vagy a PowerShell használatával az megkezdése előtt.
@@ -139,18 +141,18 @@ Recovery Services-tároló és az összes kapcsolódó erőforrás áthelyezheti
 
 ## <a name="use-powershell-to-move-a-vault"></a>Egy tároló áthelyezéséhez a PowerShell használatával
 
-Recovery Services-tároló áthelyezése másik erőforráscsoportba, használja a `Move-AzResource` parancsmagot. `Move-AzResource` az erőforrás nevét és a felhasznált erőforrás típusa, igényel. A is beszerezheti a `Get-AzRecoveryServicesVault` parancsmagot.
+Recovery Services-tároló áthelyezése másik erőforráscsoportba, használja a `Move-AzureRMResource` parancsmagot. `Move-AzureRMResource` az erőforrás nevét és a felhasznált erőforrás típusa, igényel. A is beszerezheti a `Get-AzureRmRecoveryServicesVault` parancsmagot.
 
 ```
 $destinationRG = "<destinationResourceGroupName>"
-$vault = Get-AzRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
-Move-AzResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+$vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
+Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 Az erőforrások áthelyezése másik előfizetésben, adjon meg a `-DestinationSubscriptionId` paraméter.
 
 ```
-Move-AzResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 A fenti parancsmagok végrehajtása után kell adnia annak ellenőrzéséhez, hogy szeretné-e a megadott erőforrások áthelyezése. Típus **Y** megerősítéséhez. Sikeres ellenőrzést követően az erőforrás áthelyezése.

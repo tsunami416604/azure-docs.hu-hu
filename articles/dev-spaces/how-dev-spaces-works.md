@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Ismerteti a folyamatok, a power Azure fejlesztési területek, és azok miként vannak konfigurálva a azds.yaml konfigurációs fájlban
 keywords: azds.yaml, az Azure fejlesztési tárolóhelyek, fejlesztői, szóközök, Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 622a0780d74618fe694e5b9da0327490e0ec38dd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 0c22a6bbc9b75a14085f24a5be955e3482687965
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500559"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361501"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Hogyan Azure fejlesztési tárolóhelyek működik, és van konfigurálva
 
@@ -85,10 +85,10 @@ Az AKS-fürt előkészítése foglalja magában:
 * Azure fejlesztői tárolóhelyek engedélyezésével a fürt használatával `az aks use-dev-spaces`
 
 Hogyan hozhat létre, és a egy AKS-fürtöt az Azure fejlesztési tárolóhelyek konfigurálása a további információkért tekintse meg az első lépésekhez útmutatókat:
-* [Az Azure Dev tárolóhelyek és a Java együttes használatának első lépései](get-started-java.md)
-* [Az Azure fejlesztési szóközöket a .NET Core és a Visual Studio használatának első lépései](get-started-netcore-visualstudio.md)
-* [Bevezetés az Azure fejlesztési tárolóhelyek .NET Core használatával](get-started-netcore.md)
-* [Bevezetés az Azure fejlesztési szóközöket a node.js használatával](get-started-nodejs.md)
+* [Bevezetés az Azure Dev Spaces Java segítségével történő használatába](get-started-java.md)
+* [Bevezetés az Azure Dev Spaces .NET Core és Visual Studio segítségével történő használatába](get-started-netcore-visualstudio.md)
+* [Bevezetés az Azure Dev Spaces .NET Core segítségével történő használatába](get-started-netcore.md)
+* [Bevezetés az Azure Dev Spaces Node.js segítségével történő használatába](get-started-nodejs.md)
 
 Az AKS-fürt Azure fejlesztési tárolóhelyek engedélyezve van, amikor telepíti a vezérlő a fürt számára. A vezérlő egy külön Azure-erőforrás a fürtön kívüli, és a fürtön, a következőket:
 

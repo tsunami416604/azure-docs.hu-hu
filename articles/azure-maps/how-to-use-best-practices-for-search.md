@@ -2,17 +2,17 @@
 title: Hatékonyan az Azure Maps Search szolgáltatással keresésének módjai |} A Microsoft Docs
 description: Ajánlott eljárások használata az Azure Maps Search szolgáltatással keresés
 ms.author: v-musehg
-ms.date: 04/05/2019
+ms.date: 04/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3a9c5ad92494dd82500c4faee82c119e99346c7a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: f7a14e975a5ca3aee5588f55f43b28081c100074
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59288156"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358143"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Ajánlott eljárások az Azure Maps a Search Service használata
 
@@ -83,7 +83,7 @@ A fordított geocode keresés végrehajtása során [keresés cím fordított AP
 **Minta-kérelem:**
 
 ```HTTP
-https://atlas.microsoft.com/search/address/json?api-version=1.0&subscription-key={subscription-key}&query=MicrosoftWay&entityType=Municipality
+https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
 ```
 
 **Válasz:**
@@ -240,14 +240,20 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="uri-encoding-to-handle-special-characters"></a>Kezeli a különleges karakterek kódolása URI 
 
-Található street közötti címek, azt jelenti, 1. sérülésre & Union utca, Seattle, speciális karaktert ' és ' értéket kódolni kell a kérelem elküldése előtt. Javasoljuk, hogy karakteres adatot egy URI-t, kódolás, ha az összes karaktert kódolt (%) karaktereket használ, és az UTF-8 karakter megfelelő két karakterből álló hexadecimális értékként.
+Speciális karakter közötti címek,: "1. sérülésre & Union utca, Seattle", keresse meg a 'és' igényeinek megfelelően kódolni a kérelem elküldése előtt. Javasoljuk, hogy karakteres adatot egy URI-t, kódolás, ha az összes karaktert kódolt (%) karaktereket használ, és az UTF-8 karakter megfelelő két karakterből álló hexadecimális értékként.
 
 **Használati példák**:
 
 Keresés-címének lekéréséhez:
 
 ```
-query=1st Avenue & E 111th St, New York shall be encoded as query"=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York 
+query=1st Avenue & E 111th St, New York
+```
+
+ kell kódolni, mint:
+
+```
+query"=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
 ```
 
 
@@ -315,7 +321,7 @@ Ellenőrizze, egy [KOORDINÁTÁIIG kategória keresési](https://docs.microsoft.
 **Mintalekérdezés:**
 
 ```HTTP
-https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas station&limit=3&lat=47.6413362&lon=-122.1327968
+https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas%20station&limit=3&lat=47.6413362&lon=-122.1327968
 ```
 
 **Válasz:**
@@ -402,72 +408,7 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
                 }
             ]
         },
-        {
-            "type": "POI",
-            "id": "US/POI/p0/7728133",
-            "score": 5.663,
-            "dist": 1330.1278248163273,
-            "info": "search:ta:840539001100326-US",
-            "poi": {
-                "name": "76",
-                "phone": "+(1)-(425)-7472126",
-                "brands": [
-                    {
-                        "name": "76"
-                    }
-                ],
-                "url": "www.76.com/",
-                "classifications": [
-                    {
-                        "code": "PETROL_STATION",
-                        "names": [
-                            {
-                                "nameLocale": "en-US",
-                                "name": "petrol station"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "address": {
-                "streetNumber": "2421",
-                "streetName": "148th Ave NE",
-                "municipalitySubdivision": "Redmond, Bellevue",
-                "municipality": "Redmond, Bellevue",
-                "countrySecondarySubdivision": "King",
-                "countryTertiarySubdivision": "Seattle East",
-                "countrySubdivision": "WA",
-                "postalCode": "98007",
-                "countryCode": "US",
-                "country": "United States Of America",
-                "countryCodeISO3": "USA",
-                "freeformAddress": "2421 148th Ave NE, Bellevue, WA 98007",
-                "countrySubdivisionName": "Washington"
-            },
-            "position": {
-                "lat": 47.63187,
-                "lon": -122.14365
-            },
-            "viewport": {
-                "topLeftPoint": {
-                    "lat": 47.63277,
-                    "lon": -122.14498
-                },
-                "btmRightPoint": {
-                    "lat": 47.63097,
-                    "lon": -122.14232
-                }
-            },
-            "entryPoints": [
-                {
-                    "type": "main",
-                    "position": {
-                        "lat": 47.63186,
-                        "lon": -122.14313
-                    }
-                }
-            ]
-        },
+        ...,
         {
             "type": "POI",
             "id": "US/POI/p0/7727106",
@@ -559,31 +500,31 @@ Ellenőrizze, hogy az Azure Maps egy cím-keresési kérelem [keresési szolgál
 **Mintalekérdezés:**
 
 ```HTTP
-https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400BroadSt,Seattle,WA&countrySet=US
+https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400%20Broad%20Street%2C%20Seattle%2C%20WA&countrySet=US
 ```
 
-További nézzük meg, a válasz az alábbi struktúrát. A válaszban az eredményobjektumok eredmény típusú eltérőek. Ha megfigyelte gondosan megjelenik az eredményül kapott objektumokat három különböző típusú rendelkezünk, amelyek pont cím, az utca és közötti Street. Figyelje meg, hogy cím a keresés nem ad vissza POIs. A `Score` minden válasz objektum paraméter azt jelzi, a relatív egyező pontszám pontszámok más objektumok ugyanazt a választ. Lásd: [keresés cím első](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) többet megtudni a válasz objektum paramétereket.
+További nézzük meg, a válasz az alábbi struktúrát. A válaszban az eredményobjektumok eredmény típusú eltérőek. Ha megfigyelte gondosan megjelenik az eredményül kapott objektumokat három különböző típusú rendelkezünk, amelyek a "Pont címe", "Street" és "Közötti Street". Figyelje meg, hogy cím a keresés nem ad vissza POIs. A `Score` minden válasz objektum paraméter azt jelzi, a relatív egyező pontszám pontszámok más objektumok ugyanazt a választ. Lásd: [keresés cím első](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) többet megtudni a válasz objektum paramétereket.
 
 **Az eredmény a támogatott típusok:**
 
-**Pont címe:** Az utca nevét és számát az adott cím a térképen pontok. A legmagasabb szintű rendelkezésre álló címek pontossága. 
+* **Pont címe:** Az utca nevét és számát az adott cím a térképen pontok. A legmagasabb szintű rendelkezésre álló címek pontossága. 
 
-**Címtartomány:**  Az egyes utcák cím elején és végén az utca; a rendszer interpolált pontok vannak azokat a pontokat címtartományok helyettesítik. 
+* **Címtartomány:**  Az egyes utcák cím elején és végén az utca; a rendszer interpolált pontok vannak azokat a pontokat címtartományok helyettesítik. 
 
-**Földrajzi hely:** Egy térkép, vagyis a föld közigazgatási képviselő, ország, állam, város területeket. 
+* **Földrajzi hely:** Egy térkép, vagyis a föld közigazgatási képviselő, ország, állam, város területeket. 
 
-**KOORDINÁTÁIIG - (a lényeges pont):** Pontok egy térképen érdemes figyelmet és érdekes lehet.
+* **KOORDINÁTÁIIG - (a lényeges pont):** Pontok egy térképen érdemes figyelmet és érdekes lehet.
 
-**Utca:** A térképen utcák ábrázolása. Címek hozzárendelve az utca, amely tartalmazza a címet a szélességi és hosszúsági koordinátákkal koordinátáját. A házszámát nem dolgozható fel. 
+* **Utca:** A térképen utcák ábrázolása. Címek hozzárendelve az utca, amely tartalmazza a címet a szélességi és hosszúsági koordinátákkal koordinátáját. A házszámát nem dolgozható fel. 
 
-**Utca eltérő:** Metszéspontjait. Csomópontokban; ábrázolása a helyek, az intersect két utcák.
+* **Utca eltérő:** Metszéspontjait. Csomópontokban; ábrázolása a helyek, az intersect két utcák.
 
 **Válasz:**
 
 ```JSON
 {
     "summary": {
-        "query": "400 broad st seattle wa",
+        "query": "400 broad street seattle wa",
         "queryType": "NON_NEAR",
         "queryTime": 129,
         "numResults": 6,

@@ -10,12 +10,12 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
 manager: mmontwil
-ms.openlocfilehash: 3f7a7b5c9a22ba9cb8746cecde56c0a047521ad0
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 29a50a871702985b64c594d5bd3700d4e29f40df
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437637"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361203"
 ---
 [!INCLUDE [](../../includes/devspaces-team-development-1.md)]
 

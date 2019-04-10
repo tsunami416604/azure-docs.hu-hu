@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Gyors fejlesztés a tárolók, mikroszolgáltatások és Node.js az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: jeconnoc
-ms.openlocfilehash: b95090cf59f0ee84e3a81bf87631df54826c050e
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: bc18a06405c0fe620136642a409df576c8e8d8b3
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418567"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361711"
 ---
 # <a name="quickstart-develop-with-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Fejlesztés node.js nyelven, a Kubernetes Azure fejlesztési tárolóhelyek használatával
 
@@ -210,4 +210,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 Ismerje meg, Azure fejlesztési tárolóhelyek segítségével miként több tárolóra kiterjedő összetettebb alkalmazásokat fejleszthet, és egyszerűsítését által biztosított együttműködési környezettel fejlesztési különböző verziói vagy az ágak a kódot a különböző tárolóhelyek segítségével.
 
 > [!div class="nextstepaction"]
-> [Több tároló használata és fejlesztés csapatban](multi-service-nodejs.md)
+> [Tárolók és a csoportos fejlesztése](multi-service-nodejs.md)
