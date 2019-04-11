@@ -5,16 +5,18 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: b55f8d44d12fa503a17218db4a5166819024f1aa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.date: 04/09/2018
+ms.openlocfilehash: 017266fd28fb31b4509957560a042abf74314453
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872896"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469454"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for MySQL tűzfalszabályok az Azure portal használatával
-Kiszolgálószintű tűzfalszabályok lehetővé teszik a rendszergazdák eléréséhez egy Azure Database for MySQL-kiszolgáló megadott IP-cím vagy egy IP-címtartományt. 
+Kiszolgálószintű tűzfalszabályok segítségével hozzáférésének kezelése az Azure Database for MySQL-kiszolgáló megadott IP-cím vagy egy IP-címtartományt. 
+
+Virtuális hálózat (VNet) szabályok is használható a kiszolgálóhoz való hozzáférés biztonsága érdekében. Tudjon meg többet [létrehozása és kezelése a virtuális hálózati szolgáltatás végpontjai és az Azure portal használatával szabályok](howto-manage-vnet-using-portal.md).
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Kiszolgálószintű tűzfalszabály létrehozása az Azure Portalon
 
@@ -57,4 +59,5 @@ Ismételje meg a tűzfalszabályok kezelésére.
 
 ## <a name="next-steps"></a>További lépések
 - Hasonló módon is, a parancsfájl [hozzon létre és kezelhető az Azure Database for MySQL-tűzfalszabályok Azure CLI-vel](howto-manage-firewall-using-cli.md).
-- Egy Azure Database for MySQL-kiszolgáló csatlakozik a kapcsolatos útmutatásért lásd: [adatkapcsolattárak az Azure Database for MySQL-hez](./concepts-connection-libraries.md)
+- További való biztonságos hozzáférést a kiszolgáló által [létrehozása és kezelése a virtuális hálózati szolgáltatás végpontjai és az Azure portal használatával szabályok](howto-manage-vnet-using-portal.md).
+- Egy Azure Database for MySQL-kiszolgáló csatlakozik a kapcsolatos útmutatásért lásd: [adatkapcsolattárak az Azure Database for MySQL](./concepts-connection-libraries.md).

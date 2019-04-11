@@ -1,5 +1,5 @@
 ---
-title: Az Azure Marketplace-en keresőmotor-Optimalizálást közzétételi útmutatóban |} A Microsoft Docs
+title: Az Azure Marketplace-en keresőmotor-Optimalizálást útmutató |} A Microsoft Docs
 description: Keresés keresőmotor-optimalizálás (SEO) jelentős nyújt útmutatást.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,21 +12,23 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: cacc7c0b269e8006903961049caf3cd7e3bee449
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: da7b59400baa4c964dff71fa1f842fede9d68df1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834336"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469658"
 ---
-<a name="azure-marketplace-seo-publisher-guide"></a>Az Azure Marketplace-en keresőmotor-Optimalizálást útmutató Közzétevőknek
-=======================================
+# <a name="azure-marketplace-seo-guidance"></a>Az Azure Marketplace-en keresőmotor-Optimalizálást útmutató
 
-### <a name="general-explanation-of-algorithm"></a>Algoritmus általános magyarázata
+Ez a cikk azt ismerteti, hogyan maximalizálhatja az ajánlat felderíthetőség keresztül a keresési funkciókat a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és [AppSource](https://appsource.microsoft.com). 
 
-A Marketplace-en az Azure Search szolgáltatást a webhely keresési képességekkel működtetésére használja. Az algoritmus alapul kifejezés gyakorisága – inverz dokumentum gyakorisága ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). A standard [Lucene-elemzőt](https://lucene.apache.org/core/) szolgál.
+
+## <a name="general-explanation-of-algorithm"></a>Algoritmus általános magyarázata
+
+A piactér a Microsoft Azure Search szolgáltatást a webhely keresési képességekkel tárolóház használatára. Az algoritmus alapul kifejezés gyakorisága – inverz dokumentum gyakorisága ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). A standard [Lucene-elemzőt](https://lucene.apache.org/core/) szolgál.
 
 Általában a teljes szöveg mezők, kategóriák és iparágak és bekerült a weightage a relevancia. Speciális feltételeket, a ritkán használt alkalmazások azonban gyakran az alkalmazásban való kereséssel egyezés magasabb pontszámot hoz létre. Így többek között például a "Virtuális gép" használati kis benefit járna, mivel a "Az Azure search" speciális sokkal lenne.
 Az alábbiakban a leginkább megfelelő mezőket kell figyelembe venni.
@@ -42,7 +44,7 @@ Az alábbiakban a leginkább megfelelő mezőket kell figyelembe venni.
 |  |  |  |
 
 
-### <a name="other-tips"></a>További tippek
+## <a name="other-tips"></a>További tippek
 
 -   Keresés beolvasása (nagy erőforrásigényű) felhasználói tevékenység javasol. Alkalmazás név vagy közzétevő egyezések értékelésénél azokat. Rövid leírás esetében a Ha a keresett kifejezés nem egyezik pontosan azzal a közzétevő neve/kulcsmező válik.
 -   Letölthető dokumentumok keresési weightage nem szerepelnek.

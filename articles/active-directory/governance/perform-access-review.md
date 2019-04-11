@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02c12a8cc8163fa70008b21995ddb35aec57dfcf
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d42fe972b79ecd9bcee65d0664c5d13da02d2238
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579682"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470610"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Tekintse át a hozzáférési csoportokhoz vagy alkalmazásokhoz az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -44,11 +44,11 @@ Ha nem rendelkezik az e-mailt, Észreveheti, hogy a függőben lévő hozzáfér
 
     ![MyApps portálról](./media/perform-access-review/myapps-access-panel.png)
 
-1. Az oldal jobb felső sarkában kattintson a felhasználói szimbólum, mely megjeleníti a szervezet nevét és az alapértelmezett. Ha egynél több szervezet szerepel a listán, válassza ki a szervezet, amely a hozzáférési felülvizsgálat kért.
+1. Az oldal jobb felső sarkában kattintson a felhasználó szimbólumára. Ekkor megjelenik a neve és az alapértelmezett szervezete. Ha egynél több szervezet szerepel a listán, válassza ki azt a szervezetet, amely a hozzáférési felülvizsgálatot kérte.
 
-1. Kattintson a lap jobb oldalán a **hozzáférési felülvizsgálatokkal** csempére kattintva megjelenítheti a függőben lévő hozzáférési felülvizsgálatok listáját.
+1. Kattintson a **hozzáférési felülvizsgálatokkal** csempére kattintva megjelenítheti a függőben lévő hozzáférési felülvizsgálatok listáját.
 
-    A csempe nem látható, ha nincsenek hozzáférési felülvizsgálatok végrehajtani az adott szervezet lesznek, és nem kell módosítania jelenleg.
+    A csempe nem látható, ha nincsenek végrehajtandó hozzáférési felülvizsgálatok az adott szervezetre vonatkozóan, és ilyenkor semmilyen műveletre nincs szükség.
 
     ![A hozzáférési felülvizsgálatok listája](./media/perform-access-review/access-reviews-list.png)
 
@@ -71,11 +71,13 @@ Két módon, hogy jóváhagyja vagy megtagadja a hozzáférést:
 
 1. Tekintse át a felhasználók számára a jóvá vagy utasítsa el a folyamatos hozzáférési kell-e.
 
-1. Jóváhagyása, vagy minden egyes kérés elutasítása, kattintson a sor az elvégzendő műveletet adja meg az ablak megnyitásához.
+1. Jóváhagyása, vagy minden egyes kérés elutasítása, kattintson a sor megnyílik egy ablak, adja meg az elvégzendő műveletet.
 
 1. Kattintson a **jóváhagyása** vagy **megtagadása**. Ha bizonytalan, rákattinthat **nem tudjuk**. Ez a felhasználó azt a hozzáférés fenntartása azt eredményezi, de a kijelölt fog szerepelni a vizsgálati naplók.
 
     ![Hozzáférési felülvizsgálat végrehajtása](./media/perform-access-review/approve-deny.png)
+
+1. Ha szükséges, adja meg az okot a **OK** mezőbe.
 
     A rendszergazda a hozzáférési felülvizsgálat szükség lehet, hogy Önnek kell letöltenie a folyamatos hozzáférés vagy csoporttagság jóváhagyása okát.
 

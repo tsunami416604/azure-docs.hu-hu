@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 22a95ce506a7f906604cc65d08a04b7f761bb4c2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 704aefd68f35ca20f72a2a0c46bf11912c139e65
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273583"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469488"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Létrehozása és kezelése az Azure költségvetése
 
@@ -63,9 +63,9 @@ Kattintson a **Hozzáadás** parancsra.
 
 ![Az Azure Portalon látható a Cost Management költségvetése](./media/tutorial-acm-create-budgets/budgets01.png)
 
-Az a **létrehozás költségvetés** ablakban adja meg a költségvetés és a költségvetés összege. Ezután válassza ki a havi, negyedéves és éves időtartama<sup>1</sup>. Ezután válassza ki a befejező dátum. Költségvetés legalább egy költséget küszöb (% költségvetés) és a egy megfelelő e-mail-címre van szükség. Szükség esetén belefoglalhatja a legfeljebb öt küszöbértékeket és a egy egyetlen költségvetésben öt e-mail címet. Amikor teljesül a költségvetés küszöbértéket, e-mail-értesítések általában kevesebb mint nyolc óra fogadott. Értesítések kapcsolatos további információkért lásd: [használata költség riasztások](cost-mgt-alerts-monitor-usage-spending.md).
+Az a **létrehozás költségvetés** ablakban adja meg a költségvetés és a költségvetés összege. Ezután válassza ki egy havi, negyedéves, vagy egy éves időtartama. Ezután válassza ki a befejező dátum. Költségvetés legalább egy költséget küszöb (% költségvetés) és a egy megfelelő e-mail-címre van szükség. Szükség esetén belefoglalhatja a legfeljebb öt küszöbértékeket és a egy egyetlen költségvetésben öt e-mail címet. Amikor teljesül a költségvetés küszöbértéket, e-mail-értesítések általában kevesebb mint nyolc óra fogadott. Értesítések kapcsolatos további információkért lásd: [használata költség riasztások](cost-mgt-alerts-monitor-usage-spending.md).
 
-<sup>1</sup> egy használatalapú fizetés, az MSDN vagy a Visual Studio ügyfelei a számla egy előfizetéshez tartozó számlázási időszak eltérhetnek a naptári hónapra. Előfizetések és erőforráscsoportok, melyek a gyűjtőhöz létrehozhat költségvetési igazított a számla vagy naptári hónapban. A számla ellenében igazítva költségvetési létrehozásához jelöljön ki egy számlázási hónapban, a számlázás negyedév vagy a létrehozáskor történik a számlázás év visszaállítási időtartamot. A naptári hónapra igazítva költségvetési létrehozásához válassza a visszaállítási időtartamot havonta, negyedévente vagy évente létrehozáskor.
+Ha egy használatalapú fizetés, az MSDN vagy a Visual Studio-előfizetéssel rendelkezik, a számla elszámolási időszak nem lehet, hogy igazítás a naptári hónap. Az előfizetések és -erőforráscsoportok adott típusú igazított költségvetési hozhat létre, a számlázási időszak vagy naptári hónapban. A számlázási időszak igazodik költségvetési létrehozásához jelöljön ki egy számlázási hónapban, számlázási negyedév vagy év számlázási visszaállítási időtartamot. A naptári hónapra igazítva költségvetési létrehozásához válassza a visszaállítási időtartamot, havi, negyedévente vagy évente.
 
 Íme egy példa egy havi költségvetés hoz létre az $4500. E-mailek beolvasása riasztás 90 %-a költségvetés elérésekor.
 

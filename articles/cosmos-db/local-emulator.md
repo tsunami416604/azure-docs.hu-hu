@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 0adb24458f718511c7134fc3bf36dd0b03173e30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d535c71480693d0424c6697776a1ddbf37b47c5
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011507"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470916"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulatort használja a helyi fejlesztési és tesztelési célra
 
@@ -122,7 +122,7 @@ DocumentClient client = new DocumentClient(
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
 
-Ha használ [Azure Cosmos DB MongoDB-hez](mongodb-introduction.md), használja a következő kapcsolati karakterláncot:
+Ha használ [Azure Cosmos DB MongoDB API-](mongodb-introduction.md), használja a következő kapcsolati karakterláncot:
 
 ```bash
 mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
@@ -153,7 +153,7 @@ Indítsa el az emulátor egy rendszergazdai parancssorból az "/ EnableCassandra
 
 * [Telepítse a Python 2.7-es](https://www.python.org/downloads/release/python-2716/)
 
-* [Cassandra CLI/CQLSH telepítése](http://cassandra.apache.org/download/)
+* [Install Cassandra CLI/CQLSH](http://cassandra.apache.org/download/)
 
 * Egy normál parancssori ablakban futtassa a következő parancsokat:
 
@@ -309,7 +309,7 @@ Itt láthatja az emulátor PowerShellből való vezérlésére szolgáló paranc
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Syntax**
+**Szintaxis**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -319,7 +319,7 @@ Ezek ServiceControllerStatus érték egyikét adja vissza: ServiceControllerStat
 
 ### `Start-CosmosDbEmulator`
 
-**Syntax**
+**Szintaxis**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -329,7 +329,7 @@ Elindítja az emulátort. Alapértelmezés szerint a parancs addig vár, amíg a
 
 ### `Stop-CosmosDbEmulator`
 
-**Syntax**
+**Szintaxis**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -339,7 +339,7 @@ Leállítja az emulátort. Alapértelmezés szerint ez a parancs addig vár, am�
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Syntax**
+**Szintaxis**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 

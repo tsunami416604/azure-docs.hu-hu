@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Ismerteti a folyamatok, a power Azure fejlesztési területek, és azok miként vannak konfigurálva a azds.yaml konfigurációs fájlban
 keywords: azds.yaml, az Azure fejlesztési tárolóhelyek, fejlesztői, szóközök, Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 0c22a6bbc9b75a14085f24a5be955e3482687965
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 0397a52e8cd838aafe44a35508f8a68caba4c94e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361501"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470899"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Hogyan Azure fejlesztési tárolóhelyek működik, és van konfigurálva
 
@@ -96,13 +96,15 @@ Az AKS-fürt Azure fejlesztési tárolóhelyek engedélyezve van, amikor telepí
 * Eltávolítja az összes nevű Kubernetes-névtér *azds*, ha létezik, és létrehoz egy újat.
 * Üzembe helyez egy Kubernetes-inicializáló objektumot.
 
+Használja az ugyanazon egyszerű szolgáltatás, amely az AKS-fürt segítségével szolgáltatáshívásokat az Azure fejlesztési tárolóhelyek összetevőinek is.
+
 ![Az Azure fejlesztési tárolóhelyek fürt előkészítése](media/how-dev-spaces-works/prepare-cluster.svg)
 
 Azure fejlesztői tárolóhelyek használatához legalább egy fejlesztési területet kell lennie. Az Azure fejlesztési tárolóhelyek fejlesztési tárolóhelyek Kubernetes névtereihez az AKS-fürt használja. A tartományvezérlő telepítésekor felszólítja, hogy hozzon létre egy új Kubernetes-névteret, vagy válasszon egy meglévő névtér vagy az első fejlesztési terület adatokként. Ha egy névtér fejlesztési tárhelyként ki van jelölve, a vezérlő hozzáad a *azds.io/space=true* fejlesztési tárhelyként azonosításához névtéren címkét. A kezdeti fejlesztési helyet hoz létre, vagy kijelölése alapértelmezés szerint be van jelölve, a fürt előkészítése után. Amikor egy hely van kiválasztva, használatos Azure fejlesztési szóközökkel új számítási feladatok létrehozásához.
 
 Alapértelmezés szerint a vezérlő hoz létre egy fejlesztési terület nevű *alapértelmezett* frissítse a meglévő *alapértelmezett* Kubernetes-névtér. Az ügyféloldali eszközök segítségével hozzon létre új fejlesztői szóközöket, és távolítsa el a meglévő fejlesztési szóközöket. A Kubernetes, a korlátozás miatt a *alapértelmezett* fejlesztési terület nem távolítható el. A vezérlő eltávolít minden meglévő Kubernetes-névterek nevű *azds* való ütközések elkerülése érdekében a `azds` az ügyféloldali eszközök által használt parancsot.
 
-A Kubernetes inicializáló objektumot Instrumentation központi telepítése során el podok három tárolót használja: devspaces-proxy tároló, a proxy-inicializálás devspaces tároló és a egy devspaces-build tárolót. **Ezek a tárolók mindhárom az AKS-fürt legfelső szintű hozzáféréssel rendelkező futtassa.**
+A Kubernetes inicializáló objektumot Instrumentation központi telepítése során el podok három tárolót használja: devspaces-proxy tároló, a proxy-inicializálás devspaces tároló és a egy devspaces-build tárolót. **Ezek a tárolók mindhárom az AKS-fürt legfelső szintű hozzáféréssel rendelkező futtassa.** Az azonos egyszerű szolgáltatás, amely az AKS-fürt segítségével szolgáltatáshívásokat az Azure fejlesztési tárolóhelyek összetevőinek is használják.
 
 ![Az Azure fejlesztői, szóközök Kubernetes inicializátor](media/how-dev-spaces-works/kubernetes-initializer.svg)
 

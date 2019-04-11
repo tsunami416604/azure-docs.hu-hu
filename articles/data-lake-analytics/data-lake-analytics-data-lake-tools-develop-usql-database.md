@@ -10,18 +10,18 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 1982f974acd1e9d5e8cae91201f6503eb2ae678a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 47235fa5676acd8de8a7cc0d969b813837faf0af
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898797"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469709"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>A U-SQL database-projekt használata az Azure Data Lake U-SQL adatbázis fejlesztéséhez
 
 U-SQL-adatbázist kínál strukturált strukturálatlan adatok és a táblák felügyelt strukturált adatokhoz. Egy általános metaadatok rendszert a rendszerezése a strukturált adatok és az egyéni kódot is tartalmazza. Az adatbázis a fogalom, amely csoportosítja a kapcsolódó objektumokkal együtt.
 
-Tudjon meg többet [U-SQL-adatbázis és az adatok definíciós nyelv (DDL)](https://msdn.microsoft.com/azure/data-lake-analytics/u-sql/data-definition-language-ddl-statements-u-sql). 
+Tudjon meg többet [U-SQL-adatbázis és az adatok definíciós nyelv (DDL)](/u-sql/data-definition-language-ddl-statements). 
 
 A U-SQL database-projekt olyan projektet a Visual Studióban, amellyel a fejlesztők fejlesztése, kezelése és üzembe helyezése a U-SQL-adatbázisok, gyorsan és egyszerűen.
 

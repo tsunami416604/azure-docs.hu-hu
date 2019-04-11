@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc7feb77830fe8312cc2b48ffdb2c1af0abfb4b8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: fcda3e1ee8029bf40a0d7eec2ad440b7b128a650
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263519"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470262"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>A Microsoft identity platform és az OAuth 2.0 hitelesítési kódfolyamat
 
@@ -69,7 +69,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`    | szükséges    | A `{tenant}` szabályozza, ki az alkalmazás be tud jelentkezni az értéket a kérelem elérési használható. Az engedélyezett értékek a következők `common`, `organizations`, `consumers`, és a bérlői azonosító. További részletekért lásd: [protokoll alapvető](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | szükséges    | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt.  |
 | `response_type` | szükséges    | Tartalmaznia kell `code` az engedélyezési kód folyamata.       |
-| `redirect_uri`  | Ajánlott | Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. A natív és mobil alkalmazások esetén az alapértelmezett értéket használjon `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
+| `redirect_uri`  | szükséges | Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. A natív és mobil alkalmazások esetén az alapértelmezett értéket használjon `https://login.microsoftonline.com/common/oauth2/nativeclient`.   |
 | `scope`  | szükséges    | Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md) , hogy szeretné-e a felhasználót, hogy engedélyt adjanak az. |
 | `response_mode`   | Ajánlott | Meghatározza a létrejövő jogkivonat vissza küldhet az alkalmazáshoz használandó módszert. A következők egyike lehet:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` a kódot biztosít az átirányítási URI-t a lekérdezési sztring paramétereként. Ha Ön a kért egy azonosító jogkivonat, használja az implicit folyamatot, nem használhatja `query` meghatározott a [OpenID specifikációja](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Ha csak a kódot kért, `query`, `fragment`, vagy `form_post`. `form_post` az átirányítási URI-t a kódot egy HOZZÁSZÓLÁSRA hajtja végre. További információ: [OpenID Connect protokollal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code).  |
 | `state`                 | Ajánlott | A kérésben is a token válaszban visszaadott érték. Bármilyen tartalmat, akinél karakterlánc lehet. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](https://tools.ietf.org/html/rfc6749#section-10.12). Az érték is az alkalmazás a felhasználói állapot kapcsolatos információkat is kódolása, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet. |
@@ -242,7 +242,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 Access_tokens rövid életűek, és frissítenie kell azokat után folytatja az erőforrások eléréséhez. Ha elküldi egy másik megteheti `POST` kérelmet a `/token` végpont, ezúttal biztosítása a `refresh_token` helyett a `code`.  Frissítési jogkivonatok érvényesek az összes engedélyt, hogy az ügyfél már megkapta-hozzájárulás, a frissítési jogkivonatok kiadott vonatkozó kérés `scope=mail.read` segítségével egy új hozzáférési jogkivonat a kérelem `scope=api://contoso.com/api/UseResource`.  
 
-Frissítési jogkivonatok nem rendelkezik megadott élettartam. A frissítési biztonsági jogkivonat élettartamának jellemzően viszonylag hosszú. Azonban bizonyos esetekben frissítési biztonsági jogkivonat lejár, vissza lenne vonva, vagy nem rendelkezik megfelelő jogosultsággal a kívánt műveletet. Az alkalmazás várható és kezelni kell [a kiállítási végpont által visszaadott hibák](#error-codes-for-token-endpoint-errors) megfelelően.  Vegye figyelembe, hogy frissítési biztonsági jogkivonat nem kerülnek visszavonásra, amikor új hozzáférési jogkivonatok beszerzésére használható. 
+Frissítési jogkivonatok nem rendelkezik megadott élettartam. A frissítési biztonsági jogkivonat élettartamának jellemzően viszonylag hosszú. Azonban bizonyos esetekben frissítési biztonsági jogkivonat lejár, vissza lenne vonva, vagy nem rendelkezik megfelelő jogosultsággal a kívánt műveletet. Az alkalmazás várható és kezelni kell [a kiállítási végpont által visszaadott hibák](#error-codes-for-token-endpoint-errors) megfelelően. 
+
+Bár a frissítési biztonsági jogkivonat nem kerülnek visszavonásra, amikor új hozzáférési jogkivonatok beszerzésére használható, várhatóan vesse el a régi frissítési jogkivonatot. A [OAuth 2.0 specifikációja](https://tools.ietf.org/html/rfc6749#section-6) szerint: "Az engedélyezési kiszolgáló előfordulhat, hogy egy új frissítési jogkivonat, amely esetben az ügyfél elveti kell a régi frissítési jogkivonat kiadása, és cserélje le az új frissítési jogkivonatot. Az engedélyezési kiszolgáló visszavonhatja a régi frissítési jogkivonatot az ügyfélnek egy új frissítési jogkivonat kiadása után."  
 
 ```
 // Line breaks for legibility only
@@ -254,7 +256,6 @@ Content-Type: application/x-www-form-urlencoded
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
-&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=refresh_token
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps
 ```
@@ -271,8 +272,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | szükséges    | Meg kell `refresh_token` esetében ez a hitelesítési kódfolyamat alapját képező. |
 | `scope`         | szükséges    | Hatókörök szóközzel elválasztott listáját. A hatókörök, ez a szakasz a kért megfelelő vagy a hatókörök, az eredeti authorization_code kérelem alapját képező kért egy részét kell lennie. Ha az ebben a kérelemben megadott hatókörök span több erőforrás-kiszolgáló, akkor a v2.0-végpont vissza az első hatókörében megadott erőforrás-jogkivonat. A hatókörök részletes magyarázatát, tekintse meg [engedélyek, beleegyezése és hatókörök](v2-permissions-and-consent.md). |
 | `refresh_token` | szükséges    | A folyamat második szakasz beszerzett refresh_token. |
-| `redirect_uri`  | szükséges    |  A `redirect_uri`ügyfélalkalmazás regisztrált. |
-| `client_secret` | a web apps szükséges | Az alkalmazás titkos, amelyet az alkalmazás az alkalmazás regisztrációs portálon létrehozott. Azt kell nem használható egy natív alkalmazást, mert client_secrets megbízhatóan nem tárolható az eszközökön. Web apps és a webes API-kat, amelynek a titkos ügyfélkódot tárolja biztonságos helyen a kiszolgálói oldalon lehetősége.                                                                                                                                                    |
+| `client_secret` | a web apps szükséges | Az alkalmazás titkos, amelyet az alkalmazás az alkalmazás regisztrációs portálon létrehozott. Azt kell nem használható egy natív alkalmazást, mert client_secrets megbízhatóan nem tárolható az eszközökön. Web apps és a webes API-kat, amelynek a titkos ügyfélkódot tárolja biztonságos helyen a kiszolgálói oldalon lehetősége. |
 
 #### <a name="successful-response"></a>A sikeres válasz
 

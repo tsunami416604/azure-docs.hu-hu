@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: 544de5a3ac48c12d75f05a1c9adb56f48bb540f4
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 48a1c4350b438761aa2e2d8c7e57a872c86ca292
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311559"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470372"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Projekt Akusztika Unreal Bake oktatóanyag
 Ez a dokumentum ismerteti az Unreal szerkesztő bővítményének használatával Akusztika bake be.
@@ -40,6 +40,8 @@ Az objektumok lap jelenik meg az első lapra, amely a Akusztika mód megnyitása
 
 Jelöljön ki egy vagy több objektumot a világ Outliner, vagy használja a **több, tömegesen kijelölt** szakasz segítségével kiválaszthatja egy adott kategória összes objektumához. A kijelölt objektumok használata a **címkézést** című szakaszt a alkalmazni a kívánt címke a kijelölt objektumok.
 
+Ha valami nincs se **AcousticsGeometry** sem **AcousticsNavigation** kódot, figyelmen kívül a szimuláció. Csak a statikus rácsvonalak nav rácsvonalak, és környezetünk támogatottak. Ha bármi más, akkor figyelmen kívül.
+
 ### <a name="for-reference-the-objects-tab-parts"></a>A dokumentáció: Az objektumok lapon részei
 
 ![Unreal lapján Akusztika objektumok képernyőképe](media/unreal-objects-tab-details.png)
@@ -63,9 +65,23 @@ Nem lehet hatással a Akusztika, például láthatatlan ütközési rácsvonalak
 
 A mintavétel számítás időben egy objektum átalakító (mintavételek lapján alább) a bake eredmények rögzített. Áthelyezi a kijelölt objektumok valamelyikének a jelenetben megismétlése a mintavétel számítási és a jelenet rebaking lesz szükség.
 
-## <a name="create-or-tag-a-navigation-mesh"></a>Hozzon létre vagy egy navigációs háló címkézése
+### <a name="create-or-tag-a-navigation-mesh"></a>Hozzon létre vagy egy navigációs háló címkézése
 
-Navigációs rácsvonal helyezze el a mintavétel pontok szimuláció szolgál. Használhatja az Unreal [Nav háló Rozsah kötet](https://api.unrealengine.com/INT/Engine/AI/BehaviorTrees/QuickStart/2/index.html), vagy megadhatja a saját navigációs háló. Legalább egy objektumot használ fel kell címkéznie **Akusztika navigációs**.
+Navigációs rácsvonal helyezze el a mintavétel pontok szimuláció szolgál. Használhatja az Unreal [Nav háló Rozsah kötet](https://api.unrealengine.com/INT/Engine/AI/BehaviorTrees/QuickStart/2/index.html), vagy megadhatja a saját navigációs háló. Legalább egy objektumot használ fel kell címkéznie **Akusztika navigációs**. Ha Unreal a navigációs háló használ, győződjön meg arról, először felépítette.
+
+### <a name="acoustics-volumes"></a>Akusztika kötetek ###
+
+A navigációs területeket teheti további, a speciális testreszabási van **Akusztika kötetek**. **Akusztika kötetek** actors a jelenethez adhat hozzá, amelyek lehetővé teszik, hogy válassza ki a területek tartalmazzák, és a navigációs háló figyelmen kívül vannak. Az aktor tesz elérhetővé, amely bekapcsolható tulajdonság "Include" és "Kihagyja" között. "Include" kötetek győződjön meg arról, a bennük lévő navigációs háló csak területeit minősülnek, és "Kizárása" kötetek megjelölése figyelmen kívül lesz hagyva a fenti területekre. "Kizárása" kötetek mindig "Include" kötetek követően lesznek alkalmazva. Ellenőrizze, hogy a címke **Akusztika kötetek** , **Akusztika navigációs** objektumok lapján a szokásos folyamatát. Ezek az aktorok vannak ***nem*** automatikusan címkézett.
+
+![Az Unreal Akusztika kötet képernyőkép tulajdonságai](media/unreal-acoustics-volume-properties.png)
+
+"Kizárása" kötetek főként van kialakítva, hogy hová mintavételezőket szigorítása erőforrás-használat nem érdemes a minden részletre kiterjedő felügyeleti lehetőséget biztosítanak.
+
+![Képernyőkép az Unreal Akusztika kötethez kizárása](media/unreal-acoustics-volume-exclude.png)
+
+Kötetek "Include" hasznosak létrehozása manuális szakaszok jelenet, például hogy szeretné-e a jelenethez több akusztikai zónában történő részekre. Például ha egy nagy jelenetet, számos kilométerben négyzet, és két típus szerinti Akusztika os a kívánt rendelkezik. Két nagy "Include" kötetek rajzolása a jelenetben, és mindegyikhez ACE fájlok előállításához egyenként. Majd játékban köteteket is használhat az eseményindító tervezet hívások kombinálva betölteni a megfelelő hozzáférés-vezérlő bejegyzések fájlt, amikor a Windows Media player megközelíti a csempéket.
+
+**Akusztika kötetek** csak korlátozhatja a navigációs és ***nem*** a geometriai. Egyes Hálózatfigyelő belül "Include" **Akusztika kötet** továbbra is kéri az összes szükséges geometriai kívül a kötet wave szimulációk végrehajtásakor. Ezért nem lehetnek bármely folytonosság hangelnyelés vagy más, a Windows Media player egy másikra egy szakaszban metsző eredő Akusztika megszakítását.
 
 ## <a name="select-acoustic-materials"></a>Válassza ki a akusztikai anyagok
 
@@ -87,6 +103,7 @@ Egy adott anyag szoba reverberation idején intenzitásfokozatok kapcsolódik, a
 4. Az akusztikai anyag jeleníti meg, hogy a jelenet anyag van rendelve. Kattintson a legördülő lista egy másik akusztikai anyagok jelenet anyag szeretné hozzárendelni.
 5. A kiválasztott az előző oszlop anyag akusztikai elnyelő együttható mutatja. Egy érték nulla azt jelenti tökéletesen reflektív (nincs elnyelő) során egy érték 1, tökéletesen nedvszívó (nincs tükröződés). Ez az érték módosítását frissíteni fogja az Akusztika anyag (#4. lépés) az **egyéni**.
 
+Ha módosítja az anyagokat a jelenet, szüksége lesz a projekt Akusztika beépülő modult, hogy ezek a módosítások megjelennek a Váltás a lapok a **anyagok** fülre.
 
 ## <a name="calculate-and-review-listener-probe-locations"></a>Kiszámíthatja, és tekintse át a figyelő mintavételek helyeit
 
@@ -98,7 +115,7 @@ Miután hozzárendelte a anyagok, váltson át a **mintavételek** fülre.
 
 1. A **mintavételek** ezt oldal megjelenítéséhez használt lap gomb
 2. Mit kell tennie, használatával ezen a lapon rövid leírása
-3. Ezzel egy durva vagy finom szimuláció megoldás kiválasztásához. Elnagyolt gyorsabb, de bizonyos kompromisszumot kínál a rendelkezik. Lásd: [durva vs finom feloldási](#Coarse-vs-Fine-Resolution) alábbi részleteket.
+3. Ezzel egy durva vagy finom szimuláció megoldás kiválasztásához. Elnagyolt gyorsabb, de bizonyos kompromisszumot kínál a rendelkezik. Lásd: [os feloldási](bake-resolution.md) alábbi részleteket.
 4. Válassza ki a helyet, ahol a Akusztika adatfájlok kell elhelyezni, hogy ez a mező használatával. A gombra kattintva a "...", a Mappalista használatára. Adatfájlok kapcsolatos további információkért lásd: [adatfájlok](#Data-Files) alatt.
 5. Az adatfájlokat a helyszín neve lesz a megadott előtag ide használatával. Az alapértelmezett érték "_AcousticsData [szint neve]".
 6. Kattintson a **Calculate** gombra kattintva voxelize a helyszín és a mintavételi pontok helykérelmei kiszámításához. Ez a gépén helyileg történik, és a egy bake végrehajtása előtt kell elvégezni. Miután a mintavételezők kiszámított, a fenti vezérlőelemek le lesz tiltva, és tegyük fel, hogy ez a gomb változik **egyértelmű**. Kattintson a **egyértelmű** a számítások törléséhez, és a vezérlők engedélyezése, hogy az új beállításokkal újraszámítása gombra.
@@ -147,21 +164,7 @@ Fontos ellenőrizni, hogy a mintavétel pontok létezik, bárhol a Windows Media
 
 ![Képernyőkép a Akusztika mintavételek Unreal az előzetes verzió](media/unreal-probes-preview.png)
 
-### <a name="Coarse-vs-Fine-Resolution"></a>Durva vs finom felbontás
-
-Az egyetlen különbség a durva és finom feloldásának beállításai között a gyakoriságot, amellyel a szimuláció történik. Részletes kétszer magas, mint durva gyakoriságot használja.
-Bár ez egyszerűnek tűnhet, az az akusztikai szimuláció rendelkezik következmények számos:
-
-* A legnagyobb a durva kétszer finom lehető leghosszabbak, és ezért a voxels kétszer akkora.
-* A szimuláció idő voxel mérete, ami egy durva bake 16-szor gyorsabban finom bake közvetlenül kapcsolódik.
-* Nem lehet a portálok a (például ajtók vagy windows) kisebb, mint voxel szimulált. Durva beállítás okozhat egyes ezek kisebb portáljára, nem kell szimulált; ezért azok nem felel meg eredményes keresztül futásidőben. Láthatja, ha ez történik a voxels megtekintésével.
-* A szimuláció kisebb gyakorisággal kevesebb diffraction sarkok és élek eredményez.
-* Nem megbízható forrásból csoportdobozban voxels "kitöltött", amely, amely tartalmazza a geometriai voxels – ennek eredményeként nincs hang. Megbízható forrásból helyezi, így azok nem belül a nagyobb voxels durva finom beállítás használata esetén, mint a nagyobb nehézséget jelent.
-* A nagyobb voxels fog végberendezésébe több portálok, az alább látható módon. Az első rendszerkép használatával hoztak durva, míg a második azonos kezdőpanelje finom megoldás használatával. A piros jelöléseket aszinkronitást nincs sokkal kevesebb behatolás kezdőpanelje finom beállítások használatával. A kék vonal kezdőpanelje alapján a geometriai, míg a piros vonalat a hatékony akusztikai portál voxel méretét határozzák meg. Hogyan a behatolás játszik az adott helyzetben függ teljesen hogyan a voxels illeszkedik a geometriai, a portál, amelynek a méretét és az objektumok a jelenetben helyét határozza meg.
-
-![Képernyőkép a durva voxels egy kezdőpanelje, az Unreal kitöltése](media/unreal-coarse-bake.png)
-
-![Az egy kezdőpanelje, az Unreal finom voxels képernyőképe](media/unreal-fine-bake.png)
+Lásd: [os feloldási](bake-resolution.md) durva vs további részleteiért finom megoldás.
 
 ## <a name="bake-your-level-using-azure-batch"></a>Az Azure Batch használatával szintjét os
 

@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 33ec96b3708bc89f3fbd415f892e0810fc468876
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4e67e91e93ef3a2e2acf88a87b97eaab56ca6479
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58889804"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471035"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
@@ -80,7 +80,7 @@ A projekt sablont hoz létre egy C#-projektben, telepíti a `Microsoft.NET.Sdk.F
 
 * **host.json**: A Functions gazdagép konfigurálását teszi lehetővé. Ezek a beállítások is alkalmazható, ha helyileg és az Azure-ban futó is. További információkért lásd: [host.json referencia](functions-host-json.md).
 
-* **local.settings.json**: Kezeli a függvények helyi futtatás során használt beállításokat. Az Azure nem használja ezeket a beállításokat, azokat a [Azure Functions Core Tools](functions-run-local.md). Ez a fájl használatával adja meg a funkciók számára szükséges változókat alkalmazás beállításait. Egy új elem hozzáadása a **értékek** tömb minden egyes kapcsolathoz, a functions-kötéseket a projekt által igényelt. További információkért lásd: [helyi beállításfájl](functions-run-local.md#local-settings-file) az Azure Functions Core Tools cikkben.
+* **local.settings.json**: Kezeli a függvények helyi futtatás során használt beállításokat. Az Azure nem használja ezeket a beállításokat, azokat a [Azure Functions Core Tools](functions-run-local.md). Ez a fájl használatával adja meg az alkalmazás beállításait a függvények szükséges környezeti változókat. Egy új elem hozzáadása a **értékek** tömb minden egyes kapcsolathoz, a functions-kötéseket a projekt által igényelt. További információkért lásd: [helyi beállításfájl](functions-run-local.md#local-settings-file) az Azure Functions Core Tools cikkben.
 
     >[!IMPORTANT]
     >Mivel a local.settings.json fájlban a titkos kulcsokat is tartalmazhatnak, a projekt forrásvezérlőből kell zárni. A **Copy to Output Directory** ezt a fájlt mindig kell beállítása **másolás, ha újabb**. 
@@ -207,15 +207,11 @@ Alkalmazásbeállítások ezeket más módon is kezelhetők:
 
 ## <a name="monitoring-functions"></a>Figyelési funkciók
 
-Az ajánlott módszer a figyelése az Azure-ban a függvény végrehajtásának van integrálja az Azure Application insights segítségével. Ha függvényalkalmazást hoz létre az Azure Portalon, az integráció, készen áll alapértelmezés szerint. Azonban amikor a Visual Studio közzététel során a függvényalkalmazást hoz létre, az integráció az Azure-ban a függvényalkalmazásban nem fejeződött. Ehelyett kap beépített naplózást, amit nem javasolunk.
+Az ajánlott úgy a függvények végrehajtásának figyelése, hogy a függvényalkalmazás integrálása az Azure Application Insights. Ha függvényalkalmazást hoz létre az Azure Portalon, az integráció, készen áll alapértelmezés szerint. Azonban amikor a Visual Studio közzététel során a függvényalkalmazást hoz létre, az integráció az Azure-ban a függvényalkalmazásban nem fejeződött.
 
-Az Application Insights engedélyezése a függvényalkalmazás Azure-ban:
+Az Application Insights engedélyezése a függvényalkalmazás számára:
 
-1. Hozzon létre egy Application Insights-példányt a [az Azure portal](https://portal.azure.com) , és másolja a kialakítási kulcsot. További információ [manuálisan csatlakoztassa az App Insights-erőforrás](functions-monitoring.md#manually-connect-an-app-insights-resource).  
-
-1. Nevű beállításhoz alkalmazás hozzáadása `APPINSIGHTS_INSTRUMENTATIONKEY` a függvényalkalmazás beállításait az Azure-ban leírtak szerint [Alkalmazásbeállítások függvény](#function-app-settings). Ennek az alkalmazásbeállításnak a kialakítási kulcs az előző lépésben létrehozott tartalmazza.
-
-1. Távolítsa el a `AzureWebJobsDashboard` a függvényalkalmazáshoz az Azure-ban, amely letiltja a beépített naplózást alkalmazásbeállításhoz.  
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
 További tudnivalókért lásd: [figyelése az Azure Functions](functions-monitoring.md).
 

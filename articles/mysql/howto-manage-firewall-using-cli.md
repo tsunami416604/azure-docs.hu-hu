@@ -6,16 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 870910654101b4d6689b51464f8a29aef41bf9cb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/09/2018
+ms.openlocfilehash: dca7d09a5358f5e8b4025dc5e35e4465e21d77a2
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103128"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470933"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Hozzon létre és kezelhető az Azure Database for MySQL tűzfalszabályok az Azure CLI-vel
-Kiszolgálószintű tűzfalszabályok lehetővé teszik a rendszergazdák számára, hogy hozzáférésének kezelése az Azure Database for MySQL-kiszolgáló megadott IP-címet vagy egy IP-címtartományt. Kényelmes megoldás az Azure parancssori felület parancsait használva, létrehozhat, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Azure Database for MySQL-tűzfalak áttekintése, lásd: [, Azure Database for MySQL-kiszolgáló tűzfalszabályait](./concepts-firewall-rules.md)
+Kiszolgálószintű tűzfalszabályok segítségével hozzáférésének kezelése az Azure Database for MySQL-kiszolgáló megadott IP-címet vagy egy IP-címtartományt. Kényelmes megoldás az Azure parancssori felület parancsait használva, létrehozhat, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Azure Database for MySQL-tűzfalak áttekintése, lásd: [, Azure Database for MySQL-kiszolgáló tűzfalszabályainak](./concepts-firewall-rules.md).
+
+Virtuális hálózat (VNet) szabályok is használható a kiszolgálóhoz való hozzáférés biztonsága érdekében. Tudjon meg többet [létrehozása és kezelése a virtuális hálózati szolgáltatás végpontjai és az Azure CLI használatával szabályok](howto-manage-vnet-using-cli.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Telepítse az Azure parancssori felületét (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli).
@@ -31,7 +33,7 @@ Parancsok:
 - **Megjelenítés**: Tűzfalszabály létrehozása az Azure-beli MySQL-kiszolgáló részleteinek megjelenítéséhez.
 - **Frissítés**: Frissítse az Azure-beli MySQL-kiszolgálói tűzfalszabályt.
 
-## <a name="log-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Jelentkezzen be az Azure-ba, és listázása az Azure Database for MySQL-kiszolgálók
+## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Jelentkezzen be az Azure-ba, és listázása az Azure Database for MySQL-kiszolgálók
 Biztonságos csatlakozás az Azure CLI az Azure-fiókkal használatával a **az bejelentkezési** parancsot.
 
 1. A parancssorból futtassa a következő parancsot:
@@ -42,7 +44,7 @@ Biztonságos csatlakozás az Azure CLI az Azure-fiókkal használatával a **az 
 
 2. Nyissa meg a webböngésző használata [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin), majd írja be a kódot.
 
-3. Amikor a rendszer felkéri, jelentkezzen be az Azure-beli hitelesítő adataival.
+3. Amikor a rendszer kéri jelentkezzen be Azure hitelesítő adatait.
 
 4. A bejelentkezési azonosító jogosult, miután az előfizetések listája, nyomtatása a konzolon. Másolja ki a kívánt előfizetés azonosítóértékét azonosítója beállítása a jelenlegi használni kívánt előfizetést. Használja a [fiók beállítása az](/cli/azure/account#az-account-set) parancsot.
     ```azurecli-interactive
@@ -119,3 +121,4 @@ Sikeres, Befejezés esetén nem semmilyen kimenet. Hiba esetén a következő hi
 ## <a name="next-steps"></a>További lépések
 - Ismerje meg jobban az kapcsolatos [, Azure Database for MySQL-kiszolgáló tűzfalszabályainak](./concepts-firewall-rules.md).
 - [Hozzon létre és kezelhető az Azure Database for MySQL tűzfalszabályok az Azure portal használatával](./howto-manage-firewall-using-portal.md).
+- További való biztonságos hozzáférést a kiszolgáló által [létrehozása és kezelése a virtuális hálózati szolgáltatás végpontjai és az Azure CLI használatával szabályok](howto-manage-vnet-using-cli.md).

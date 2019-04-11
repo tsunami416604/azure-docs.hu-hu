@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ca64071d068f95bf3de2dc9730629b5f475d92e
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
-ms.translationtype: HT
+ms.openlocfilehash: d4866a6863143d2228c556a64c8e75c9f273076e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426375"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469896"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -320,8 +320,8 @@ Ha a fürt már fut, [hozzon létre egy könyvtárat](https://docs.databricks.co
       
    Továbbá vegye figyelembe:
    + Automl-konfiguráció használata esetén az Azure Databricks adja hozzá a következő paraméterekkel:
-    1. ```max_concurrent_iterations``` a fürt feldolgozó csomópontjainak száma alapján. 
-    2. ```spark_context=sc``` databricks/spark / # alapértelmezett spark környezet. 
+        1. ```max_concurrent_iterations``` a fürt feldolgozó csomópontjainak számát alapul. 
+        2. ```spark_context=sc``` az alapértelmezett a spark környezet alapján történik. 
    + Vagy ha egy régi SDK-verzióval rendelkezik, kapcsolja ki azt a fürt telepített függvénytárak és a Kukába helyezni. Az új SDK-verzió telepítése, és indítsa újra a fürtöt. Ha ezt követően egy problémát, válassza le, és csatlakoztassa újból a fürthöz.
 
 Ha a telepítés sikeres volt, az importált függvénytár például a következők közül kell kinéznie:

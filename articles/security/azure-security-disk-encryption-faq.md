@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 275907eed94f3165853ecf9adcb11fb62460d2e2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 413ed4a56afad5ced221ba957af9ddb007622b6a
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282219"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470049"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -37,7 +37,11 @@ Beleértve a standard szintű virtuális gépeken érhető el az Azure Disk Encr
 
 ## <a name="bkmk_LinuxOSSupport"></a> Milyen Linux-disztribúciók támogatja az Azure Disk Encryption?
 
-Az Azure Disk Encryption támogatott a következő kiszolgáló Linux-disztribúciók és verziók:
+Az Azure Disk Encryption egy része támogatott [Azure által támogatott Linux-disztribúciók](../virtual-machines/linux/endorsed-distros.md), amely saját maga lesz az összes lehetséges disztribúciók egy részét.
+
+ ![Venn-Diagram a Linux rendszerű kiszolgáló disztribúciók, amelyek támogatják az Azure Disk Encryption](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
+
+Az Azure által nem támogatott disztribúciók nem támogatják az Azure Disk Encryption, és ezek támogatott, csak a következő kiszolgáló Linux-disztribúciók és verziók támogatják az Azure Disk Encryption:
 
 | Linux-disztribúció | Verzió | A kötettípus titkosítás támogatott|
 | --- | --- |--- |
@@ -64,7 +68,8 @@ Az Azure Disk Encryption támogatott a következő kiszolgáló Linux-disztribú
 | SLES | 12-SP4 | Adatlemez |
 | SLES | 12-SP3 | Adatlemez |
 
-*__Új ADE végrehajtása RHEL-OS és adatlemez RHEL7 használatalapú lemezképekhez támogatott. ADE a RHEL Bring-Your-saját-előfizetés (saját) lemezképek jelenleg nem támogatott. Emellett tekintse meg a [Linuxhoz készült Azure Disk Encryption](azure-security-disk-encryption-linux.md) cikkben további információt.__
+> [!NOTE]
+> Új ADE végrehajtása RHEL-OS és adatlemez RHEL7 használatalapú lemezképekhez támogatott. ADE a RHEL Bring-Your-saját-előfizetés (saját) lemezképek jelenleg nem támogatott. Emellett tekintse meg a [Linuxhoz készült Azure Disk Encryption](azure-security-disk-encryption-linux.md) cikkben további információt. __
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Hogyan lehet elindítani az Azure Disk Encryption használatával?
 

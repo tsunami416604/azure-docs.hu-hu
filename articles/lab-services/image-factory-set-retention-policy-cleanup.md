@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 8190c2043d7d3daae91c93fd3b66126d0941710b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361849"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469370"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Egy egyéni rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban
 Ez a cikk ismerteti az adatmegőrzési beállítás, az előállító karbantartása és régi lemezképek kivonása az összes a többi DevTest Labs szolgáltatásban a szervezet. 
@@ -75,5 +75,5 @@ Most már egy futó lemezkép-előállítót, amely hoz létre, és a tesztkörn
 ## <a name="next-steps"></a>További lépések
 1. [A build és kiadás ütemezése](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) a lemezkép factory rendszeres időközönként futtatásához. A gyári által generált képek rendszeres időközönként frissíti azt.
 2. Győződjön meg arról, további hamisított Kerberos-lemezképek az előállító. Emellett érdemes [összetevők létrehozása](devtest-lab-artifact-author.md) , további információt a Virtuálisgép-beállítási feladatok létrehozása és a gyári képeken közé tartozik az összetevők.
-4. Hozzon létre egy [build és kiadás külön](/azure/devops/pipelines/overview.md?view=azure-devops-2019) futtatásához a **DistributeImages** parancsfájl külön-külön. Ezt a szkriptet futtathatja is, ha Labs.json módosítja, és másolja a cél tesztkörnyezetekhez nélkül hozza létre újra az összes rendszerkép képek bekérése.
+4. Hozzon létre egy [build és kiadás külön](/azure/devops/pipelines/overview?view=azure-devops-2019) futtatásához a **DistributeImages** parancsfájl külön-külön. Ezt a szkriptet futtathatja is, ha Labs.json módosítja, és másolja a cél tesztkörnyezetekhez nélkül hozza létre újra az összes rendszerkép képek bekérése.
 

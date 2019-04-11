@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: jowargo
-ms.openlocfilehash: a86c3bd85f9d611787a41754f49ee2475ba33a9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c24fcd5f007b641bb594bb07348491f70c03ea41
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58175777"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469131"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Exportálása és importálása az Azure Notification Hubs regisztrációk tömeges
 Vannak olyan forgatókönyvek, amelyben létrehozása vagy módosítása egy értesítési központ regisztrációk nagy számú van szükség. Ezek a forgatókönyvek némelyike címke frissítések kötegelt számításokat a következő, vagy a Notification Hubs használata leküldéses meglévő implementációjával áttelepítés.
@@ -34,7 +34,7 @@ Ez a szakasz feltételezi, hogy a következő entitásokat:
 
 - A kiépített értesítési központban.
 - Egy Azure Storage blob-tárolóba.
-- Az Azure Storage és Azure Service Bus NuGet-csomagok hivatkozik.
+- A hivatkozik a [Azure Storage NuGet-csomagot](https://www.nuget.org/packages/windowsazure.storage/) és [Notification Hubs NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.9).
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>Hozzon létre a bemeneti fájlt, és tárolja a blob
 Egy bemeneti fájlt az XML-ben, egy sor egy szerializált regisztrációk listáját tartalmazza. Az Azure SDK-val, az alábbi példakód bemutatja, hogyan szerializálni a regisztrációkat, és feltölteni őket a blob-tárolóba.
@@ -132,7 +132,7 @@ Ezek a fájlok a batch sikeres és sikertelen műveleteinek listáját tartalmaz
 Az alábbi mintakód egy értesítési központ importálja a regisztrációk.
 
 ```csharp
-using Microsoft.ServiceBus.Notifications;
+using Microsoft.Azure.NotificationHubs;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;

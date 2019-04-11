@@ -9,15 +9,15 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: b70de1e4494bb142da1cad0d0154b5dc7f765983
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233356"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469607"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>U-SQL-lel az Azure Data Lake Analytics használatának első lépései
-U-SQL nyelv, amely ötvözi az deklaratív SQL C-vel imperatív lehetővé teszi, hogy az bármilyen méretű adatok feldolgozása. U-SQL skálázható, elosztott lekérdezési képességek segítségével hatékonyan elemezheti adatok például az Azure SQL Database relációs adattárak között. Az U-SQL strukturált adatok feldolgozására olvasási séma alkalmazásának, és egyéni logikát és felhasználói függvények szúr be. Továbbá a U-SQL tartalmazza, amely felkínálja részletesen szabályozhatja, hogyan hajtható végre, ipari méretekben bővíthetőséget. 
+U-SQL nyelv, amely egyesíti az SQL deklaratív imperatív C# lehetővé teszi, hogy minden olyan nagy mennyiségű adat feldolgozását. U-SQL skálázható, elosztott lekérdezési képességek segítségével hatékonyan elemezheti adatok például az Azure SQL Database relációs adattárak között. Az U-SQL strukturált adatok feldolgozására olvasási séma alkalmazásának, és egyéni logikát és felhasználói függvények szúr be. Továbbá a U-SQL tartalmazza, amely felkínálja részletesen szabályozhatja, hogyan hajtható végre, ipari méretekben bővíthetőséget. 
 
 ## <a name="learning-resources"></a>Tanulási források
 
@@ -27,7 +27,7 @@ U-SQL nyelv, amely ötvözi az deklaratív SQL C-vel imperatív lehetővé teszi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Előtt ebben a dokumentumban a U-SQL-mintákat, olvassa el, és végezze el [oktatóanyag: U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md). Az oktatóanyag azt ismerteti, hogy beállítás esetén a U-SQL az Azure Data Lake Tools for Visual Studio használatával.
+Előtt ebben a dokumentumban a U-SQL-mintákat, olvassa el, és végezze el [oktatóanyag: A Data Lake Tools for Visual Studio használatával U-SQL-parancsfájlok fejlesztése a](data-lake-analytics-data-lake-tools-get-started.md). Az oktatóanyag azt ismerteti, hogy beállítás esetén a U-SQL az Azure Data Lake Tools for Visual Studio használatával.
 
 ## <a name="your-first-u-sql-script"></a>Az első U-SQL-szkript
 
@@ -55,7 +55,7 @@ Ez a szkript nem rendelkezik olyan Adatátalakítási lépéseket. A forrásfáj
 Figyelje meg, hogy a kérdéses adatok mellett írja be a `Duration` mező. Azt jelenti, hogy a `Duration` mező lehet null értékű.
 
 ### <a name="key-concepts"></a>Fő fogalmak
-* **Sorhalmaz változók**: minden lekérdezési kifejezés, amely egy sorhalmaz változóhoz rendelhető. A T-SQL változó elnevezési mintát követi, U-SQL (`@searchlog`, például) a szkriptben.
+* **Sorhalmaz változók**: Minden egyes lekérdezési kifejezés, amely egy sorhalmaz változóhoz rendelhető. A T-SQL változó elnevezési mintát követi, U-SQL (`@searchlog`, például) a szkriptben.
 * A **KINYERÉSE** kulcsszó adatokat olvas be egy fájlt, és határozza meg, a séma olvasása. `Extractors.Tsv` van egy beépített U-SQL-információkinyerő lapon tagolt fájlok. Egyéni információkinyerők fejleszthet.
 * A **kimeneti** sorhalmaz adatokat ír egy fájlba. `Outputters.Csv()` van egy beépített U-SQL outputter, hozzon létre egy vesszővel tagolt fájlt. Egyéni kiírókra fejleszthet.
 
@@ -117,7 +117,7 @@ Használat **kiválasztása** sorkészletek átalakításához:
         TO "/output/SearchLog-transform-rowsets.csv"
         USING Outputters.Csv();
 
-A WHERE záradékban használt egy [C# logikai kifejezés](https://msdn.microsoft.com/library/6a71f45d.aspx). A C# kifejezés nyelve segítségével hajtsa végre a saját kifejezések és függvények. A logikai kötőszavak (Equal) és disjunctions (ORs) kombinálásával összetettebb szűrés még akkor is elvégezheti.
+A WHERE záradékban használt egy [C# logikai kifejezés](/dotnet/csharp/language-reference/operators/index). A C# kifejezés nyelve segítségével hajtsa végre a saját kifejezések és függvények. A logikai kötőszavak (Equal) és disjunctions (ORs) kombinálásával összetettebb szűrés még akkor is elvégezheti.
 
 A következő parancsfájl DateTime.Parse() módszer és a egy együtt használja.
 
@@ -222,7 +222,7 @@ A U-SQL KELLENE záradékot a kimeneti korlátozhatja a csoportokat, amelyek meg
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-Speciális összesítési forgatókönyvek esetén tekintse meg a U-SQL dokumentációja [összesítéséhez, elemzési és hivatkozási függvények](https://msdn.microsoft.com/library/azure/mt621335.aspx)
+Speciális összesítési forgatókönyvek esetén tekintse meg a U-SQL dokumentációja [összesítéséhez, elemzési és hivatkozási függvények](/u-sql/built-in-functions)
 
 ## <a name="next-steps"></a>További lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)

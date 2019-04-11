@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 57bde67ac2259b3847f59f95eaefba9c6fddf13e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 38276757d0472582c3cf5035e1f52d34158a7e38
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316201"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470015"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Projekt Akusztika Unreal/Wwise tervezési oktatóanyag
 Ez az oktatóanyag ismerteti a Tervező telepítő és a projekt Akusztika Unreal és Wwise.
@@ -62,11 +62,18 @@ Ne feledje, hogy a szükséges actor-mixer telepítő felcserélődések a szok�
 ![Képernyőkép a Wwise szerkesztő megjelenítő hangalapú tervezési útmutató a projekt Akusztika](media/voice-design-guidelines.png)
  
 ### <a name="set-up-distance-attenuation-curves"></a>Távolságskála gyengülés görbék beállítása
-Győződjön meg, hogy minden színész vonja használatával által használt gyengülés görbe projekt Akusztika kell elküldeni a "kimeneti bus kötet." értékre van állítva, felhasználó által definiált aux Wwise ezt végzi, az újonnan létrehozott gyengülés görbék alapértelmezés szerint. Ha egy meglévő projekt migráláshoz, ellenőrizze a görbe beállításait. 
+Győződjön meg, hogy minden színész vonja használatával által használt gyengülés görbe projekt Akusztika kell elküldeni a "kimeneti bus kötet." értékre van állítva, felhasználó által definiált aux Wwise ezt végzi, az újonnan létrehozott gyengülés görbék alapértelmezés szerint. Ha egy meglévő projekt migráláshoz, ellenőrizze a görbe beállításait.
 
 Alapértelmezés szerint a projekt Akusztika szimuláció sugara 45 mérőszámok körül player helyét. Általában javasoljuk, hogy a gyengülés görbe-200 dB köré, hogy távolság beállítást. Ez a távolság nem szigorú korlátozás. Néhány fegyverek hangzás érdemes nagyobb radius. Ezekben az esetekben csoportosítani, hogy csak a lejátszó hely 45 m belül geometriai részt vesz. Ha a Windows Media player van a helyiségben, és a egy megbízható forrásból a hely, és azonnal 100m kívül esik, azt fogja kell megfelelően occluded. Ha a forrása a hely és a Windows Media player kívül, és azonnal 100 m, azt nem lehet megfelelően occluded.
 
 ![Képernyőkép a Wwise gyengülés görbévé](media/atten-curve.png)
+
+### <a name="post-mixer-equalization"></a>Mixer-kiegyenlítés közzététele ###
+ Előfordulhat, hogy szeretne tenni egy dolog, adjon hozzá egy bejegyzés a mixer hangszínszabályzó. A projekt Akusztika bus gyökérkönyvtárral egy tipikus visszhang busz (az alapértelmezett visszhang módban), és helyezze teendő a kiegyenlítés egy szűrőt. Ez a minta a projekt Akusztika Wwise Mintaprojektet a látható.
+
+![Képernyőkép a Wwise utáni mixer EQ](media/wwise-post-mixer-eq.png)
+
+Például magas pass szűrő segítségével, a mély a kis hatótávolságú felvételek boomy, sokfélesége visszhang eredményező kezelni. Utáni bake vezérlése az EQ RTPCs, lehetővé téve a színeket, játék-időpontban visszhang keresztül beállításával is megvalósítható.
 
 ## <a name="set-up-scene-wide-project-acoustics-properties"></a>Jelenet kiterjedő projekt Akusztika tulajdonságainak beállítása
 
@@ -80,7 +87,7 @@ A Akusztika terület aktor tesz elérhetővé számos szabályozza, hogy a rends
 * **Gyorsítótár beosztás:** akusztikai lekérdezésekhez a gyorsítótár méretét szabályozza. Egy kisebb méretű gyorsítótár kevesebb RAM használja, de előfordulhat, hogy növelje a CPU-használata az egyes lekérdezések.
 * **Akusztika engedélyezve:** A hibakeresési-vezérlőbe való gyors A / B a Akusztika szimuláció hordozását. Ez a vezérlő rendszer figyelmen kívül hagyja a szállítási konfigurációkat. A vezérlő hasznos keresése, ha egy adott hang hiba származik, a Akusztika számítások vagy valamilyen más típusú problémával a Wwise projektben.
 * **Milyen távolságra frissítése:** Használja ezt a beállítást, ha szeretné távolság lekérdezések az előre létrehozott Akusztika információkat használja. Ezek a lekérdezések ray típuskonverziók hasonló, de voltak előre kiszámított úgy is sokkal kevesebb Processzor. Egy példa a használatra szolgál ki, a figyelő a legközelebbi felület diszkrét fényt. Teljes mértékben kihasználhatja a, kell kód vagy tervek használatával lekérdezés esetén.
-* **Draw Stats:** Miközben UE a `stat Acoustics` , Processzor, a üzenettípusonként információkat tartalmazó jelennek meg a jelenleg betöltött térképen, a RAM-használatot, és a képernyő bal felső egyéb állapotinformáció.
+* **Draw Stats:** Miközben UE a `stat Acoustics` , Processzor, a üzenettípusonként információkat tartalmazó jelennek meg a jelenleg betöltött ACE fájlt, a RAM-használatot, és a képernyő bal felső egyéb állapotinformáció.
 * **Rajzoljon Voxels:** A figyelő a futtatókörnyezet interpolációs során használt voxel rács megjelenítése közel átfedő voxels. Ha egy modul voxel belül kibocsátónak, akusztikai lekérdezések nem fog működni.
 * **Megrajzolja a mintavétel:** A helyszín számára a mintavételezők megjelenítése. A betöltési állapota függően különböző színek lesz.
 * **Milyen távolságra rajzolása:** Ha frissítési Távokat engedélyezve van, ez jeleníti meg a mezőben a legközelebbi felületen kvantált irányban körül a figyelő a figyelővel.
@@ -96,6 +103,7 @@ Ezek a tervezési vezérlők hatóköre az Unreal egyedi hang összetevője.
 * **Outdoorness beállítása:** Azt szabályozza, is hogyan lehet a reverberation van. Értékek közelebb 0-ra több szobában, 1 közelebb van több is lehet. Ez a módosítás additív, így szobában, -1 értékre állítaná kényszeríti + 1 értékre állítaná kényszeríti szabadban.
 * **Átviteli Db:** Egy további keresztül-a-fal hangot a hangerő-vonal az üzemel, kombinálva renderelési távolság gyengülés alapján.
 * **Távolságskála lánc nedves arány:** Itt állíthatja be a forrás reverberation jellemzőit, mintha közelebb/további lapot, anélkül, hogy befolyásolná a közvetlen elérési útja.
+* **Lejátszása a Start menüben:** Váltógomb-e a hangot automatikusan kell lejátszása a jelenet start megadásához. Alapértelmezés szerint engedélyezett.
 * **Akusztikai paraméterek megjelenítése:** Adatok megjelenítése a debug közvetlenül az összetevőt, a játékbeli felett. (csak a nem a szállításhoz konfigurációk)
 
 ## <a name="blueprint-functionality"></a>Tervrajz funkció

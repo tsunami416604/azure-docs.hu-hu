@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b294163a4486ab1db0590f39ca9235ae46ef1dfe
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 2fafa3974eb01b36015254307ba1a52a9bc221da
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286992"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469080"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: Új bérlő létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) portált használva elvégezheti valamennyi felügyeleti feladatát, a szervezet számára új bérlő létrehozását is beleértve. 
@@ -60,7 +60,7 @@ Ha nem fogja használni az alkalmazást, törölheti a bérlőt a következő l�
 
     A bérlő és a hozzá kapcsolódó információk törlődnek.
 
-    ![Directory lap létrehozása a mintául szolgáló adatokkal](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
+    ![Áttekintő oldala, amelyen kiemelt törlés directory gombra.](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
 
 ## <a name="next-steps"></a>További lépések
 - Tartománynevek módosítása és továbbiak felvétele: [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](add-custom-domain.md)

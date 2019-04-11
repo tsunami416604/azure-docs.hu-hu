@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 48cf0f2e219d141a039f508f0ea948aa5c78b882
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c6c552a6605278d8ab31264f5d180206e0badac
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838272"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470695"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption – hibaelhárítási útmutató
 
@@ -49,6 +49,14 @@ Miután a virtuális gép újraindult be az új kernelbe, az új kernelverziój�
 ```
 uname -a
 ```
+
+## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Az Azure-beli virtuálisgép-ügynök és a bővítmény-verzió frissítése
+
+Az Azure Disk Encryption műveletei meghiúsulhatnak a virtuálisgép-lemezképek az Azure virtuálisgép-ügynök nem támogatott verzióját használja. További információkért tekintse meg [minimális verzió támogatása az Azure-beli virtuálisgép-ügynökök](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).  
+
+A Microsoft.Azure.Security.AzureDiskEncryption vagy Microsoft.Azure.Security.AzureDiskEncryptionForLinux Vendég ügynök bővítmény megfelelő verziója is szükség. Bővítmény-verziók kezeli és automatikusan frissítheti a platform az Azure virtuálisgép-ügynök előfeltételek teljesülnek, és a virtuálisgép-ügynök támogatott verzióját használja.
+
+A Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux bővítmény már elavult, és már nem támogatott.  
 
 ## <a name="unable-to-encrypt-linux-disks"></a>Nem sikerült titkosítani a Linux-lemezek
 

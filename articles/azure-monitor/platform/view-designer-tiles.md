@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: c380f0391c51628b0eb71723a0faf982a4399680
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9c0283081bd7245b1b886ed82ba03130a7a3bf2c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887760"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470259"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Nézettervező csempe az Azure monitorban a referencia-útmutató
 Nézettervező az Azure Monitor használatával létrehozhat egyéni nézetek számos az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk egy referencia-útmutató a csempék az egyéni nézetekben elérhető beállításai.
@@ -35,12 +35,15 @@ Nézettervező csempe érhető el az alábbi táblázat ismerteti:
 |:--- |:--- |
 | [Szám](#number-tile) |Egy lekérdezés által rekordok száma. |
 | [Két szám](#two-numbers-tile) |Két különböző lekérdezéseket rekordjainak számát. |
-| [fánkdiagram](#donut-tile) | Egy diagram, amely egy lekérdezést a központban összefoglaló értékkel alapul. |
+| [Gyűrű](#donut-tile) | Egy diagram, amely egy lekérdezést a központban összefoglaló értékkel alapul. |
 | Vonaldiagram és képfelirat | Egy vonaldiagramot, amely egy lekérdezést és a egy összegző értékkel felirat alapján. |
 | [Vonaldiagram](#line-chart-tile) |Egy vonaldiagramot, amely egy lekérdezésen alapul. |
 | [Két idősor](#two-timelines-tile) | A két sorozat oszlopdiagram, minden egyes külön lekérdezés alapján. |
 
 A következő szakaszok ismertetik a csempe típusát és azok tulajdonságait az részletei.
+
+> [!NOTE]
+> Csempék a nézetek alapuló [lekérdezések naplózását](../log-query/log-query-overview.md) a Log Analytics-munkaterület. Jelenleg nem támogatják [adatbázisközi lekérdezések erőforrás](../log-query/cross-workspace-query.md) adatokat lekérni az Application Insights.
 
 ## <a name="number-tile"></a>Számot tartalmazó csempe
 A **szám** csempe mindkét naplófájl lekérdezés és a egy címkét a rekordok számát jeleníti meg.
@@ -51,7 +54,7 @@ A **szám** csempe mindkét naplófájl lekérdezés és a egy címkét a rekord
 |:--- |:--- |
 | Name (Név) |A csempe tetején megjelenő szöveg. |
 | Leírás |A csempe neve alatt megjelenő szöveg. |
-| **csempe** | |
+| **Csempe** | |
 | Jelmagyarázat |A szöveg, amely alatt az érték jelenik meg. |
 | Lekérdezés |A lekérdezés futtatásakor. A lekérdezés által visszaadott rekordok száma jelenik meg. |
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
@@ -90,13 +93,13 @@ A **Fánkdiagram** csempe egyetlen szám, amely összefoglalja a log lekérdezé
 |:--- |:--- |
 | Name (Név) |A csempe tetején megjelenő szöveg. |
 | Leírás |A csempe neve alatt megjelenő szöveg. |
-| **fánkdiagram** | |
+| **Gyűrű** | |
 | Lekérdezés |A lekérdezés, amely a fánkdiagram számára. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. |
-| **fánkdiagram** |**> Center** |
+| **Gyűrű** |**> Center** |
 | Szöveg |A szöveg, amely alatt a fánkdiagram belül az érték jelenik meg. |
 | Művelet |A műveletet, hogy együtt, egyetlen értékként a value tulajdonság.<ul><li>Összeg: Adja hozzá a tulajdonság értéke az összes rekord értékeit.</li><li>Százalékos aránya: A tulajdonság értéke az összes rekord összegzett értékek képest rekordokból az összegzett értékek százalékos értéke.</li></ul> |
 | A fánkdiagram közepén megjelenített eredményértékek |Kiválaszthat egy vagy több érték hozzáadása a plusz jelre (+). A lekérdezés eredményeit rögzíti a megadott tulajdonság értékek korlátozódnak. Nincsenek értékek vesznek fel, ha a lekérdezés szereplő összes rekordok. |
-| **fánkdiagram** |**> További beállítások** |
+| **Gyűrű** |**> További beállítások** |
 | Színek |Minden, a három leggyakoribb tulajdonságainak megjelenő szín. Másodlagos színe tulajdonságértékeket megadásához használja *szín leképezési speciális*. |
 | Speciális színleképezés |Megjeleníti egy adott tulajdonság értéket jelölő szín. Ha a megadott értéket az első három, a másodlagos színt helyett a standard szintű szín jelenik meg. Ha a tulajdonság nem szerepel az első három, a szín nem jelenik meg. |
 | **Speciális** |**> Adatfolyam-ellenőrzés** |

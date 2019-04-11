@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 9751801449eebc5d07ca4bbb9b408d9679fef24e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 122a4b6af78a22f74d5057da75767077f8d9b978
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040990"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469624"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Fejlesztés a U-SQL-felhasználó által definiált operátorok (udo-k)
 Ez a cikk ismerteti, hogyan hozhat létre felhasználó által definiált operátorok az U-SQL-feladatok adatok feldolgozását.
@@ -115,7 +115,7 @@ Ez a cikk ismerteti, hogyan hozhat létre felhasználó által definiált operá
 8. A **Solution Explorer** eszközben kattintson a jobb gombbal a **Script.usql** fájlra, majd kattintson a **Build Script** (Parancsfájl létrehozása) elemre.
 9. A **Solution Explorer** eszközben kattintson a jobb gombbal a **Script.usql** fájlra, majd kattintson a **Submit Script** (Parancsfájl elküldése) lehetőségre.
 10. Ha még nem csatlakozott az Azure-előfizetéshez, az Azure-fiók hitelesítő adatainak megadását kéri.
-11. Kattintson a **elküldése**. Eredmény és a feladatra mutató hivatkozás érhető el a találatokat tartalmazó ablakot, ha a beküldés sikeres volt.
+11. Kattintson a **Submit** (Küldés) gombra. Eredmény és a feladatra mutató hivatkozás érhető el a találatokat tartalmazó ablakot, ha a beküldés sikeres volt.
 12. Kattintson a **frissítése** tekintse meg a feladat legfrissebb állapotának képernyő frissítése gombra.
 
 **A kimenet megtekintéséhez**
@@ -124,5 +124,5 @@ Ez a cikk ismerteti, hogyan hozhat létre felhasználó által definiált operá
 2. Bontsa ki a mintákat, bontsa ki a kimeneteket, és kattintson duplán **Drivers.csv**.
 
 ## <a name="see-also"></a>Lásd még
-* [U-SQL-kifejezések felhasználói kóddal kiterjesztése](https://msdn.microsoft.com/library/azure/mt621316.aspx)
+* [U-SQL-kifejezések felhasználói kóddal kiterjesztése](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
 * [A Data Lake Tools for Visual Studio használata a U-SQL-alkalmazások fejlesztéséhez](data-lake-analytics-data-lake-tools-get-started.md)

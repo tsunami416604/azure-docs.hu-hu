@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 8e41145dd67c61b2e806740265a3f234401aefe1
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 9db84ee23a2b2b19d05e458ff38854076a530e38
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009835"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470840"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -466,6 +466,16 @@ A következő egyéni tároló üzembe helyezési lehetőségek állnak rendelke
 | **`--max`**  | Igény szerint állítja be a függvény alkalmazáspéldány üzembe maximális számát. |
 | **`--min`**  | Igény szerint állítja be a függvény alkalmazáspéldány üzembe minimális számát. |
 | **`--config`** | Beállítja egy nem kötelező telepítési konfigurációs fájlt. |
+
+## <a name="monitoring-functions"></a>Figyelési funkciók
+
+Ajánlott a függvények végrehajtásának figyelése módja az Azure Application Insights integrálásával. Ha függvényalkalmazást hoz létre az Azure Portalon, az integráció, készen áll alapértelmezés szerint. Azonban a függvényalkalmazás létrehozásakor az Azure CLI használatával az integráció az Azure-ban a függvényalkalmazás nem fejeződött.
+
+Az Application Insights engedélyezése a függvényalkalmazás számára:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+További tudnivalókért lásd: [figyelése az Azure Functions](functions-monitoring.md).
 
 ## <a name="next-steps"></a>További lépések
 

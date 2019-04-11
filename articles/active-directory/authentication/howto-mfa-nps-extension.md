@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b36b6e513e382e25f7d7038f49e7467a21686a0f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 87a416b6ff73fd658158276a02796aaae946bc20
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311730"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470355"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -207,6 +207,8 @@ Ha szeretné létrehozni ezt a kulcsot, és állítsa be hamis értékre Bár a 
 
 Keresse meg az önaláírt tanúsítványt hozott létre a telepítő a tanúsítványtár, és ellenőrizze, hogy a titkos kulccsal rendelkezik felhasználónak adott engedélyek **hálózati szolgáltatás**. A tanúsítvány tulajdonosának nevével rendelkezik **CN \<tenantid\>, OU = Microsoft NPS-bővítményének**
 
+Által létrehozott önaláírt tanúsítványokat a *AzureMfaNpsExtnConfigSetup.ps1* parancsfájlt is rendelkezik érvényességi élettartama pedig két év. Annak ellenőrzése, hogy a tanúsítvány telepítve van-e, amikor is ellenőrizze, hogy a tanúsítvány nem járt le.
+
 -------------------------------------------------------------
 
 ### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Hogyan ellenőrizhetem, hogy az ügyféltanúsítvány társítva, és az Azure Active Directory-bérlő?
@@ -262,6 +264,14 @@ Ellenőrizze, hogy az AD Connect fut, valamint, hogy a felhasználó megtalálha
 
 Ellenőrizze, hogy a https://adnotifications.windowsazure.com elérhető-e az NPS-bővítményt futtató kiszolgálóról.
 
+-------------------------------------------------------------
+
+### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Miért hitelesítés nem működik, annak ellenére, hogy megtalálható-e egy érvényes tanúsítványt?
+
+Ha az előző számítógép-tanúsítvány lejárt, és a egy új tanúsítvány lett létrehozva, a lejárt tanúsítványok törölni kell. Lejárt tanúsítványokat problémákat okozhatnak az NPS-bővítmény indítása kellene.
+
+Ha rendelkezik egy érvényes tanúsítványt, ellenőrizze a helyi számítógépfiók tanúsítvány Store MMC használatával, és győződjön meg arról, a tanúsítvány nem ment át annak lejárati dátuma. Újonnan érvényes tanúsítványok létrehozásához futtassa újból a lépéseket a szakaszában "[a PowerShell-parancsprogrammal](#run-the-powershell-script)"
+
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>A TLS/SSL-protokollok és titkosítócsomagok kezelése
 
 Javasoljuk, hogy régebbi és gyengébb titkosítási csomagok letiltása vagy eltávolítása, ha a szervezete által megkövetelt. A tennivalókat az [AD FS által használt SSL/TLS-protokollok és titkosítócsomagok kezelését](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ismertető rész tartalmazza.
@@ -272,4 +282,4 @@ Javasoljuk, hogy régebbi és gyengébb titkosítási csomagok letiltása vagy e
 
 - Ismerje meg, hogyan integrálható a [távoli asztali átjáró](howto-mfa-nps-extension-rdg.md) és [VPN-kiszolgálók](howto-mfa-nps-extension-vpn.md) az NPS-bővítményének használata
 
-- [Hibaüzenetek által jelzett problémák megszüntetése az Azure Multi-Factor Authentication NPS-bővítményéből](howto-mfa-nps-extension-errors.md)
+- [Az Azure multi-factor Authentication az NPS-bővítményének hibaüzenetek feloldása](howto-mfa-nps-extension-errors.md)

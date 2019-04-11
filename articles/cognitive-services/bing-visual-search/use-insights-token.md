@@ -8,21 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 5/16/2018
+ms.date: 4/05/2019
 ms.author: scottwhi
-ms.openlocfilehash: b01b68964600f6162512d4405fddbaf125e7e76d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e42e56e6361b1fde7ab13655d3c57a90d7235938
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082722"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469114"
 ---
-# <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Az insights-jogkivonat használatával kaphat elemzési információkat kép
+# <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Gyors elemzést egy képet az insights-jogkivonat használatával
 
-A Bing Visual Search API információkat ad vissza egy Ön által megadott képről. A kép feltöltéséhez használhatja a kép URL-címét, egy megállapítási jogkivonatot, vagy feltöltheti magát a képet. Ezek a beállítások kapcsolatos információkért lásd: [Mi az a Bing Visual Search API?](overview.md). Ez a cikk bemutatja az insights token használatával. További példák, amelyek bemutatják, hogy elemzéseket, kép feltöltése: a gyors útmutatók ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)).
+A Bing Visual Search API információkat ad vissza egy Ön által megadott képről. A kép feltöltéséhez használhatja a kép URL-címét, egy megállapítási jogkivonatot, vagy feltöltheti magát a képet. Ezek a beállítások kapcsolatos információkért lásd: [Mi az a Bing Visual Search API?](overview.md). Ez a cikk bemutatja az insights token használatával. Példa, amelyek bemutatják, hogyan tölthet fel képeket elemzésekkel, lásd: a gyors útmutatók ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)).
 
-
-Ha képhez tartozó jogkivonatot vagy URL-címet küld a Visual Search szolgáltatásnak, az alábbiakban láthatja a POST törzsében kötelezően szerepeltetendő űrlapadatokat. Az űrlap adatait tartalmaznia kell a tartalom-szabályozó fejléc, az `name` paraméter "knowledgeRequest" értékre kell állítani. További információ a `imageInfo` objektumazonosító, tekintse meg a kérelmet.
+Ha a Bing Visual Search küld egy kép token vagy URL-cím, az alábbiakban látható az űrlapadatok szerepelnie kell a bejegyzés törzse. Az űrlap adatait tartalmaznia kell a `Content-Disposition` fejléc, és be kell annak `name` "knowledgeRequest" paramétert. További információ a `imageInfo` objektumazonosító, tekintse meg a kérelmet:
 
 ```json
 {
@@ -44,7 +43,7 @@ Ha képhez tartozó jogkivonatot vagy URL-címet küld a Visual Search szolgált
 }
 ```
 
-Ebben a cikkben szereplő példák bemutatják, hogyan insights jogkivonat segítségével. Az insights jogkivonat egy kép objektum /images/search API választ kap. További információ a insights token első: [a Bing Image Search API](../Bing-Image-Search/overview.md).
+Ebben a cikkben szereplő példák bemutatják, hogyan insights jogkivonat segítségével. Az insights jogkivonatot kap egy `Image` egy /images objektumának/API válasz keresése. További információ a insights token első: [Mi az a Bing Image Search API?](../Bing-Image-Search/overview.md).
 
 ```
 --boundary_1234-abcd
@@ -59,28 +58,24 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
+Az insights jogkivonatot használó példákért lásd [C#](#use-with-c) | [Java](#use-with-java) | [Node.js](#use-with-nodejs) | [Python](#use-with-python).
 
-Az insights jogkivonatot használó példákért lásd [C#](#using-csharp) | [Java](#using-java) | [Node.js](#using-nodejs) | [Python](#using-python).
+## <a name="use-with-c"></a>HasználataC#
 
-<a name="using-csharp" />
+### <a name="c-prerequisites"></a>C#Előfeltételek
 
-## <a name="using-c"></a>A C# használata
+- Bármely verziójának [Visual Studio 2017](https://www.visualstudio.com/downloads/) lekérni ezt a kódot, a Windows rendszerű.
+- Azure-előfizetés. Ebben a rövid útmutatóban használhatja egy [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetési kulcs vagy egy fizetős kulcsot.
 
-### <a name="prerequisites"></a>Előfeltételek
-
-A kód Windows rendszeren történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.)
-
-Ehhez a rövid útmutatóhoz használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetői azonosítóját, vagy beszerezhet egy fizetős előfizetői azonosítót.
-
-## <a name="running-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy új konzolmegoldást a Visual Studióban.
-1. A `Program.cs` tartalmát cserélje le az ebben a gyors útmutatóban található kódra.
-2. Cserélje le a `accessKey` értéket saját előfizetői azonosítójára.
-2. Cserélje le a `insightsToken` érték/képek/keresési választ az insights-tokenhez.
-3. Futtassa a programot.
+1. Konzol megoldás létrehozása a Visual Studióban.
+2. Cserélje le a Program.cs tartalmát az ebben a rövid útmutatóban látható kódot.
+3. Cserélje le a `accessKey` értéket saját előfizetői azonosítójára.
+4. Cserélje le a `insightsToken` érték/képek/keresési választ az insights-tokenhez.
+5. Futtassa a programot.
 
 ```csharp
 using System;
@@ -238,21 +233,18 @@ namespace VisualSearchInsightsToken
 }
 ```
 
-<a name="using-java" />
+## <a name="use-with-java"></a>A Java használata
 
-## <a name="using-java"></a>A Java használata
+### <a name="java-prerequisites"></a>Java-Előfeltételek
 
-### <a name="prerequisites"></a>Előfeltételek
+- Használjon [JDK 7 vagy 8](https://aka.ms/azure-jdks) fordítsa le és futtassa ezt a kódot. A Java ide Környezethez is használhatja, ha felvétele a Kedvencek közé, de elegendő egy szövegszerkesztőben.
+- Ebben a rövid útmutatóban használhatja egy [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetési kulcs vagy egy fizetős kulcsot.
 
-A kód lefordításához és futtatásához a [JDK 7 vagy 8](https://aka.ms/azure-jdks) telepítése szükséges. Ha van kedvence, használhat Java IDE-t vagy egy szövegszerkesztőt is.
-
-Ehhez a rövid útmutatóhoz használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetői azonosítóját, vagy beszerezhet egy fizetős előfizetői azonosítót.
-
-## <a name="running-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-java-application"></a>A Java-alkalmazás futtatása
 
 Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
-1. Töltse le vagy telepítse a [Gson-kódtárat](https://github.com/google/gson). Ezt beszerezheti a Mavenen keresztül is.
+1. Töltse le és telepítse a [Gson Java-kódtár](https://github.com/google/gson). Szerezze be a Maven használatával Gson is.
 2. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 3. Adja hozzá a megadott kódot egy `VisualSearch.java` nevű fájlban.
 4. Cserélje le a `subscriptionKey` értéket saját előfizetői azonosítójára.
@@ -351,38 +343,35 @@ public class InsightsToken {
         return gson.toJson(json);
     }
 
-    
+
 }
 ```
 
+## <a name="use-with-nodejs"></a>A Node.js használata
 
-<a name="using-nodejs" />
+### <a name="nodejs-prerequisites"></a>NODE.js-Előfeltételek
 
-## <a name="using-nodejs"></a>A Node.js használata
+- Rendelkeznie kell [Node.js 6](https://nodejs.org/en/download/) Ez a kód futtatásához.
+- Ebben a rövid útmutatóban használhatja egy [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetési kulcs vagy egy fizetős kulcsot.
 
-### <a name="prerequisites"></a>Előfeltételek
-
-A kód futtatásához [Node.js 6](https://nodejs.org/en/download/) szükséges.
-
-Ehhez a rövid útmutatóhoz használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetői azonosítóját, vagy beszerezhet egy fizetős előfizetői azonosítót.
-
-## <a name="running-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-javascript-application"></a>A JavaScript-alkalmazás futtatása
 
 Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy új mappát a projekthez (vagy használja kedvenc IDE-környezetét vagy szerkesztőjét).
 2. Egy parancssorban vagy terminálablakban lépjen a létrehozott mappába.
-3. Telepítse a lekérési modulokat:  
-   ```  
+3. Telepítse a lekérési modulokat:
+  
+   ```
    npm install request  
-   ```  
-3. Telepítse az űrlapadatmodulokat:  
-   ```  
+   ```
+1. Telepítse az űrlapadatmodulokat:  
+   ```
    npm install form-data  
-   ```  
-4. Hozzon létre egy GetVisualInsights.js nevű fájlt, és adja hozzá az alábbi kódot.
-5. Cserélje le a `subscriptionKey` értéket saját előfizetői azonosítójára.
-7. Futtassa a programot.  
+   ```
+1. Hozzon létre egy GetVisualInsights.js nevű fájlt, és adja hozzá az alábbi kódot.
+1. Cserélje le a `subscriptionKey` értéket saját előfizetői azonosítójára.
+1. Futtassa a programot.  
    ```
    node GetVisualInsights.js
    ```
@@ -422,19 +411,14 @@ function requestCallback(err, res, body) {
 }
 ```
 
+## <a name="use-with-python"></a>A Python használata
 
-<a name="using-python" />
+### <a name="python-prerequisites"></a>Python-Előfeltételek
 
-## <a name="using-python"></a>A Python használata
+- Rendelkeznie kell [Python 3](https://www.python.org/) Ez a kód futtatásához.
+- Ehhez a rövid útmutatóhoz használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetői azonosítóját, vagy beszerezhet egy fizetős előfizetői azonosítót.
 
-
-### <a name="prerequisites"></a>Előfeltételek
-
-A kód futtatásához [Python 3](https://www.python.org/) szükséges.
-
-Ehhez a rövid útmutatóhoz használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetői azonosítóját, vagy beszerezhet egy fizetős előfizetői azonosítót.
-
-## <a name="running-the-walkthrough"></a>Az útmutató futtatása
+## <a name="run-the-python-application"></a>A Python-alkalmazás futtatása
 
 Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
@@ -442,7 +426,6 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 2. Hozzon létre egy visualsearch.py nevű fájlt, és adja hozzá a jelen rövid útmutatóban szereplő kódot.
 3. Cserélje le a `SUBSCRIPTION_KEY` értéket saját előfizetői azonosítójára.
 4. Futtassa a programot.
-
 
 ```python
 """Bing Visual Search example"""
@@ -492,8 +475,8 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>További lépések
 
-[A Bing Visual Search egyoldalas alkalmazás oktatóanyaga](tutorial-bing-visual-search-single-page-app.md)  
-[Bing Visual Search – áttekintés](overview.md)  
-[Kipróbálás](https://aka.ms/bingvisualsearchtryforfree)  
-[Ingyenes próbaverzióhoz tartozó hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Bing Visual Search API – referencia](https://aka.ms/bingvisualsearchreferencedoc)
+[Hozzon létre egy vizuális keresés egyoldalas webalkalmazást](tutorial-bing-visual-search-single-page-app.md)  
+[Mi az a Bing Visual Search API?](overview.md)  
+[A Cognitive Services kipróbálása](https://aka.ms/bingvisualsearchtryforfree)  
+[Ingyenes próba hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[Képek – vizuális keresés](https://aka.ms/bingvisualsearchreferencedoc)

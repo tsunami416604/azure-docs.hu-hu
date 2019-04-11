@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 04/04/2019
-ms.openlocfilehash: f72923b80751f16ece128ced209679bbc325226c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/09/2019
+ms.openlocfilehash: fbcafb61ecd69f58bb3c14d1b15f36f1b21f2833
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051801"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469777"
 ---
 # <a name="azure-machine-learning-interpretability-sdk"></a>Az Azure Machine Learning-e SDK
 
@@ -34,7 +34,7 @@ Az Azure Machine Learning e SDK technológiák magában foglalja a Microsoft ál
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
-Az Azure Machine Learning-e a modell globális működését és a egy adott előrejelzési megértéséhez alkalmazhatók. Az előbbi neve globális magyarázat, és ez utóbbi nevezzük helyi magyarázata.
+Az Azure Machine Learning-e a modell globális viselkedés vagy adott előrejelzéseket megértéséhez alkalmazhatók. Az előbbi neve globális magyarázat, és ez utóbbi nevezzük helyi magyarázata.
 
 Az Azure Machine Learning-e módszerekkel is csoportosíthatók az módszer e modell független vagy adott modell alapján. Egyes metódusok a céloznia modellek bizonyos típusú. Ha például Alakzatadatok a fa ismertető csak érvényes fa-alapú modell. Egyes metódusok kezeli a modell egy fekete mezőt, például mimic ismertető vagy Alakzatadatok a kernel ismertető. E SDK az Azure Machine Learning modul ezen különböző megközelítések adatkészletek adatmodell-típusokat, és a használati esetek alapján.
 
@@ -42,7 +42,6 @@ Az Azure Machine Learning-e meg, hogyan modell lehetővé teszi az előrejelzés
 
 * Globális vagy helyi relatív funkció fontosság
 * Globális vagy helyi szolgáltatás és az előrejelzési kapcsolat
-* Interaktív vizualizációkat bemutató előrejelzéseket, a szolgáltatás és az előrejelzési kapcsolat, és a relatív funkció fontossági értékek helyileg és globálisan
 
 ## <a name="architecture"></a>Architektúra
 
@@ -70,11 +69,10 @@ __A közvetlen explainers__ integrált kódtárak származnak. Az SDK összes ex
 * **SÁRGÁSZÖLD ismertető**: SÁRGÁSZÖLD alapozva SÁRGÁSZÖLD ismertető a állapota-a-a legújabb helyi interpretable modell-agnosztikus magyarázatokat (SÁRGÁSZÖLD) algoritmust használja helyi helyettes modellek létrehozásának eljárásait. SÁRGÁSZÖLD ellentétben a globális helyettes modellek összpontosít az egyes előrejelzéseket elmagyarázni helyi helyettes modellek betanítása.
 * **HAN szöveg ismertető**: HAN szöveg ismertető szöveges adatok egy adott fekete dobozhoz szöveg modell modell magyarázatok lekérése egy hierarchikus figyelmet hálózatot használ. Az egy adott oktatói modell előre jelzett kimenetek HAN helyettes modell betanításához azt. Globálisan a szöveg forrásgyűjteményébe között képzést, miután egy fine-tune lépést, az adott dokumentum hozzáadtuk a magyarázatokat pontosságának javítása érdekében. HAN egy kétirányú RNN két figyelmet rétegeket, használja a mondat és a word figyelmet. A DNN tanított az oktatói modell, és a egy adott dokumentum finomította, hogy bontsa ki a word importances a figyelmet rétegek. HAN pontosabb, mint SÁRGÁSZÖLD vagy Alakzatadatok szöveges adatok esetében, de költségesebb, a használati idő, valamint képzési is található. Azonban hajtottunk végre a betanítási idő fejlesztései, így a felhasználó kesztyűtartó szóbeágyazásokból, a hálózati inicializálása arra, bár ez továbbra is lassú. A betanítási idő jelentősen javítható, ha egy távoli Azure-GPU virtuális gépen futó HAN. HAN végrehajtásának leírt "Hierarchikus figyelmet hálózatok dokumentum besorolási (Yang et al., 2016)" ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)).
 
-__Meta explainers__ automatikusan válassza ki a megfelelő közvetlen ismertető és az ajánlott magyarázata adatok alapján az adott modell és az adatkészletek létrehozása. A metaadatok explainers összes könyvtár (Alakzatadatok, SÁRGÁSZÖLD, GA2M, előnézet, stb.) a Microsoft integrált vagy fejlesztett használhatja. Az SDK-ban elérhető meta explainers a következők:
+__Meta explainers__ automatikusan válassza ki a megfelelő közvetlen ismertető és az ajánlott magyarázata adatok alapján az adott modell és az adatkészletek létrehozása. A metaadatok explainers összes könyvtár (Alakzatadatok, SÁRGÁSZÖLD, előnézet, stb.) a Microsoft integrált vagy fejlesztett használhatja. Az SDK-ban elérhető meta explainers a következők:
 
 * **Táblázatos ismertető**: A táblázatos adatkészleteket használja.
 * **Szöveg ismertető**: A szöveg adatkészleteket használja.
-* **Kép ismertető** a lemezkép-adatkészleteket használja.
 
 Emellett a meta lehetőségre kattint, a közvetlen explainers, meta explainers felett az alapul szolgáló kódtárak további funkciók fejlesztése és növelheti a sebességet és méretezhetőséget biztosít a közvetlen explainers keresztül.
 
@@ -90,7 +88,6 @@ A beépített intelligencia `TabularExplainer` kifinomultabb fog válni, tovább
 
 * **Az inicializálás adatkészlet összefoglaló**. Olyan esetekben, ahol magyarázata sebességétől legfontosabb hogy összesíteni az inicializálási adatkészlet és létrehozása egy kis készletét reprezentatív mintát, amely felgyorsítja a globális és a helyi magyarázata.
 * **Az értékelés adatkészlet mintavételi**. Ha a felhasználó átadja az értékelés minták nagy készletét, de nem ténylegesen szükséges összes ki kell értékelni őket, a mintavételi paraméterrel állítható az igaz értékre a globális magyarázat felgyorsítása érdekében.
-* **KNN gyors magyarázata**. Abban az esetben, ahol magyarázata kell lennie egy egyetlen pontozási/előrejelzéssel töltött gyorsaságának KNN módszer is használható. Globális ismertetése során az inicializálási minták és a megfelelő legfelső-k szolgáltatások megmaradnak. A magyarázat, minden egyes értékelési minta létrehozásához, a KNN metódus a legtöbb hasonló mintát a inicializálási minták a kereséséhez használt, és a legtöbb hasonló mintát top-k funkciók vissza, a kiértékelési minta a top-k funkciókat.
 
 Az alábbi ábrán látható a két készletnyi közvetlen és meta explainers közötti kapcsolatot.
 
@@ -100,7 +97,7 @@ Az alábbi ábrán látható a két készletnyi közvetlen és meta explainers k
 
 Nagy méretű adatkészletek a Pythonban képzett modellekre `numpy.array`, `pandas.DataFrame`, `iml.datatypes.DenseData`, vagy `scipy.sparse.csr_matrix` a Machine Learning e SDK által támogatott formátumban.
 
-A magyarázat functions fogadja el a modellek és a folyamatok bemenetként. A modell áll rendelkezésre, ha a modell meg kell valósítania az előrejelző függvényben `predict` vagy `predict_proba` , amely megerősíti, a Scikit egyezmény. Egy folyamat (a csővezeték-parancsfájl nevét) áll rendelkezésre, ha a magyarázat függvény azt feltételezi, hogy a futó folyamat parancsfájl előrejelzést.
+A magyarázat functions fogadja el a modellek és a folyamatok bemenetként. A modell áll rendelkezésre, ha a modell meg kell valósítania az előrejelző függvényben `predict` vagy `predict_proba` , amely megfelel a Scikit egyezmény. Egy folyamat (a csővezeték-parancsfájl nevét) áll rendelkezésre, ha a magyarázat függvény azt feltételezi, hogy a futó folyamat parancsfájl előrejelzést.
 
 ### <a name="local-and-remote-compute-target"></a>Helyi és távoli számítási célnak
 
@@ -129,13 +126,12 @@ A Machine Learning e SDK használata mindkét helyi és távoli számítási cé
     ```python
     from azureml.explain.model.tabular_explainer import TabularExplainer
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
-    or
+    ```
+    vagy
+    ```python
     from azureml.explain.model.mimic.mimic_explainer import MimicExplainer
     from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
     explainer = MimicExplainer(model, x_train, LGBMExplainableModel, features=breast_cancer_data.feature_names, classes=classes)
-    or
-    from azureml.contrib.explain.model.lime.lime_explainer import LIMEExplainer
-    explainer = LIMEExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     ```
 
 3. A globális szolgáltatás fontossági értékek beolvasása.
@@ -154,9 +150,16 @@ A Machine Learning e SDK használata mindkét helyi és távoli számítási cé
     ```python
     # explain the first data point in the test set
     local_explanation = explainer.explain_local(x_test[0,:])
-    or
+    
+    # sorted feature importance values and feature names
+    sorted_local_importance_names = local_explanation.get_ranked_local_names()
+    sorted_local_importance_values = local_explanation.get_ranked_local_values()
+    ```
+    vagy
+    ```python
     # explain the first five data points in the test set
     local_explanation = explainer.explain_local(x_test[0:4,:])
+    
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
@@ -172,21 +175,14 @@ Az Azure Machine Learning szolgáltatás támogatja a különböző számítási
     run = Run.get_context()
     client = ExplanationClient.from_run(run)
     
-    breast_cancer_data = load_breast_cancer()
-    X_train, X_test, y_train, y_test = train_test_split(breast_cancer_data.data, breast_cancer_data.target, test_size = 0.2, random_state = 0)
-    data = {
-        "train":{"X": X_train, "y": y_train},        
-        "test":{"X": X_test, "y": y_test}
-    }
-    clf = svm.SVC(gamma=0.001, C=100., probability=True)
-    model = clf.fit(data['train']['X'], data['train']['y'])
-    joblib.dump(value = clf, filename = 'model.pkl')
+    # Train your model here
+
     # explain predictions on your local machine    
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     # explain overall model predictions (global explanation)
-    global_explanation = explainer.explain_global(data["test"]["X"])
+    global_explanation = explainer.explain_global(x_test)
     # explain local data points (individual instances)
-    local_explanation = explainer.explain_local(data["test"]["X"][0,:])
+    local_explanation = explainer.explain_local(x_test[0,:])
     # upload global and local explanation objects to Run History
     upload_model_explanation(run, local_explanation, top_k=2, comment='local explanation: top 2 features')
     # Uploading global model explanation data for storage or visualization in webUX
@@ -200,6 +196,8 @@ Az Azure Machine Learning szolgáltatás támogatja a különböző számítási
 2. Kövesse az [állítsa be a modell betanítása és számítási célnak](how-to-set-up-training-targets.md#amlcompute) hogyan állíthatja be az Azure Machine Learning COMPUTE számítási, a számítási célnak, és küldje el a betanítási Futtatás.
 
 3. Töltse le a helyi Jupyter notebook a magyarázatot. 
+    > [!IMPORTANT]
+    > Contrib is teljes mértékben nem támogatottak. A kísérleti funkciók érett lenni, mivel azokat a fő csomag fokozatosan kerül.
 
     ``` python
     from azureml.contrib.explain.model.explanation.explanation_client import ExplanationClient

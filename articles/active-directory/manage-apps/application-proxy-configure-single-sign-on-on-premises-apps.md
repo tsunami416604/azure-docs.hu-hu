@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 415b33dce42945c40aedd996d4dcfa5c6b987b44
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 2e103604af7aba2a0ef2e3d0e02a721ae4740c40
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336218"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469692"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML egyszeri bejelentkezést az alkalmazásproxy (előzetes verzió) használatával a helyszíni alkalmazások
 
@@ -35,13 +35,13 @@ SAML egyszeri Bejelentkezést az alkalmazásproxy használatával a SAML-jogkivo
 
 Egyszeri bejelentkezés a helyszíni alkalmazások megadhat, előtt győződjön meg arról, az alkalmazásproxy engedélyezve van, és a egy összekötő telepítve van. Lásd: [távelérés alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure ad-ben](application-proxy-add-on-premises-application.md) megtudhatja, hogyan.
 
-Fog az oktatóanyag során vegye figyelembe a következőket:
+Vegye figyelembe a következő fog az oktatóanyag során:
 
 * Tegye közzé alkalmazását az utasításoknak megfelelően a jelen oktatóanyagban. Ügyeljen arra, hogy válassza ki, hogy **Azure Active Directory** , a **előhitelesítés** metódus az alkalmazás (4. lépés: [helyszíni alkalmazás hozzáadása az Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad
 )).
 * Másolás a **külső URL-cím** az alkalmazáshoz.
 * Ajánlott eljárásként használja az egyéni tartományok, amikor csak lehetséges optimalizált felhasználói élményt biztosít. Tudjon meg többet [egyéni tartományok használata az Azure AD-alkalmazásproxy](application-proxy-configure-custom-domain.md).
-* Adjon hozzá legalább egy felhasználót az alkalmazáshoz, és ellenőrizze, hogy a teszt a helyszíni alkalmazás hozzáféréssel rendelkezik.
+* Adjon hozzá legalább egy felhasználót az alkalmazáshoz, és ellenőrizze, hogy a teszt a helyszíni alkalmazás hozzáféréssel rendelkezik. A teszt fiók teszt használatával, ha érheti el az alkalmazás regisztrálásához meg a **külső URL-cím** alkalmazásproxy ellenőrzése helyesen van beállítva. Hibaelhárítási információkat, lásd: [problémák elhárítása az Application Proxy és hibaüzenetek](application-proxy-troubleshoot.md).
 
 ## <a name="set-up-saml-sso"></a>Az SAML egyszeri bejelentkezés beállítása
 
@@ -50,7 +50,8 @@ Fog az oktatóanyag során vegye figyelembe a következőket:
 1. Válassza ki **SAML** egyszeri bejelentkezési módszert.
 1. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a Szerkesztés a **alapszintű SAML-konfigurációja** adatokat, és kövesse a [Enter alapszintű SAML-konfigurációja](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on) SAML-alapú konfigurálása az alkalmazás hitelesítést.
 
-   * Győződjön meg arról, hogy a **válasz URL-cím** legfelső szintű megegyezik, vagy az elérési út alapján a **külső URL-cím** a helyszíni alkalmazás, amely az Azure AD-alkalmazásproxyn keresztül távoli hozzáféréshez hozzáadott.
+   * Győződjön meg arról, hogy a **válasz URL-cím** mellett egy elérési utat, vagy megegyezik a **külső URL-cím** az alkalmazásproxyn keresztül közzétett helyszíni alkalmazás. Ha az alkalmazás egy másik **válasz URL-cím** adja hozzá a SAML-konfigurációja ezt a **első** URL-cím a listában, és tartsa a **külső URL-cím** , egy további URL-cím az első után rendezve.
+   * Győződjön meg arról, hogy az alkalmazás is itt adhatja meg a megfelelő **válasz URL-cím** vagy helyességi feltétel fogyasztói szolgáltatás URL-cím a hitelesítési jogkivonat fogadására használni.
 
      ![Alapszintű SAML-konfigurációs adatok megadása](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
@@ -62,7 +63,7 @@ Fog az oktatóanyag során vegye figyelembe a következőket:
 Ha végrehajtotta ezeket a lépéseket, az alkalmazás működik és kell lennie. Az alkalmazás teszteléséhez:
 
 1. Nyisson meg egy böngészőt, és keresse meg a külső URL-cím, az alkalmazás közzétételekor létrehozott. 
-1. Jelentkezzen be a teszt-fiókkal, amelyet az alkalmazáshoz rendelt.
+1. Jelentkezzen be a teszt-fiókkal, amelyet az alkalmazáshoz rendelt. Tudnia kell betölteni az alkalmazást, és egyszeri bejelentkezés az alkalmazásba.
 
 ## <a name="next-steps"></a>További lépések
 

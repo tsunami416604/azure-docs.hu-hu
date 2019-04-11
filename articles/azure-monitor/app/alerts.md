@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3b6860c9a84384bfade099fb7c8c8c72281c3593
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 8026576478b16b753ba960155c383ffec62c61ce
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257161"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469794"
 ---
 # <a name="set-alerts-in-application-insights"></a>Riasztásokat állíthat be az Application insights szolgáltatásban
 [Az Azure Application Insights] [ start] riasztja Önt, a webalkalmazásban a teljesítmény vagy a használati metrikák változásai. 
@@ -144,6 +144,24 @@ Ebben a szakaszban végigvesszük azokat a lekérdezés alapú kivétel riasztá
 10. Végül adja hozzá a riasztás részleteinek (riasztási szabály nevét, leírását, súlyosság). Amikor elkészült, kattintson a **riasztási szabály létrehozása** alján.
 
     ![A riasztás részletei adja meg a riasztási szabály nevét, egy leírást és egy súlyosság kiválasztása](./media/alerts/9alertdetails.png)
+
+## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Hogyan lehet lemondani a klasszikus riasztási e-mail-értesítések
+
+Vonatkozik ez a szakasz **klasszikus rendelkezésre állási riasztások**, **Application Insights metrikákhoz kapcsolódó riasztások**, és a **klasszikus rendellenességek riasztásokkal**.
+
+Klasszikus riasztásokhoz e-mail értesítést azért küldtük Önnek, ha érvényes a következő:
+
+* Az e-mail cím szerepel az értesítési e-mail címzettjei mezőben a riasztási szabály beállításaiban.
+
+* E-mail-értesítések küldése az előfizetés bizonyos szerepköröket betöltő felhasználók számára a beállítás aktiválva van, és a egy megfelelő szerepkört, hogy adott Azure-előfizetés tartja.
+
+![Riasztási értesítés képernyőképe](./media/alerts/alert-notification.png)
+
+A biztonsági és adatvédelmi általában javasoljuk, hogy Ön kifejezetten megad a az értesítés címzettjeinek a klasszikus riasztások jobban szabályozhatja az **értesítési e-mailek címzettjeinek** mező. Arra, hogy bizonyos szerepköröket betöltő összes felhasználó értesítése az előző verziókkal való kompatibilitás biztosítunk.
+
+Mondja le egy bizonyos riasztási szabály által létrehozott e-mail-értesítések, távolítsa el az e-mail címét a **értesítési e-mailek címzettjeinek** mező.
+
+Ha az e-mail-címét nem explicit módon szerepel, azt javasoljuk, hogy tiltsa le az egyes szerepkörök összes tagja automatikusan értesíti, és ki kell kapniuk a riasztási szabályhoz tartozó értesítések az értesítési e-mailben, az összes felhasználói e-mailek ehelyett listázása címzettek mező.
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Ki kapja a (klasszikus) riasztási értesítések?
 

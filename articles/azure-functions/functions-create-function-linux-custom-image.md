@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 92811110ef44676de487bca1ad2022cb63315c75
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 03e1ec58b0ef3ad50a04f82ced7d20119ab3ef5b
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418057"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470066"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával
 
@@ -65,8 +65,8 @@ A `--docker` paraméter hozzáadása esetén létrejön egy Docker-fájl a proje
 
 Amikor a rendszer kéri, válasszon ki egy feldolgozói futtatókörnyezetet az alábbi nyelvek közül:
 
-* `dotnet`: létrehoz egy .NET osztálytárprojektet (.csproj).
-* `node`: létrehoz egy JavaScript-projektet.
+* `dotnet`: a .NET-osztálytár projektet (.csproj) hoz létre.
+* `node`: egy JavaScript-projektet hoz létre.
 * `python`: egy Python-projektet hoz létre.
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
@@ -256,6 +256,16 @@ Most tesztelheti a Linuxon futó Azure-függvényeit.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 
+## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
+
+Az ajánlott úgy a függvények végrehajtásának figyelése, hogy a függvényalkalmazás integrálása az Azure Application Insights. Ha függvényalkalmazást hoz létre az Azure Portalon, az integráció, készen áll alapértelmezés szerint. Azonban a függvényalkalmazás létrehozásakor az Azure CLI használatával az integráció az Azure-ban a függvényalkalmazás nem fejeződött.
+
+Az Application Insights engedélyezése a függvényalkalmazás számára:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+További tudnivalókért lásd: [figyelése az Azure Functions](functions-monitoring.md).
+
 ## <a name="enable-continuous-deployment"></a>Folyamatos üzembe helyezés engedélyezése
 
 Tárolók használatával járó előnyöket egyik folyamatban van, képes a frissítések automatikus telepítése a tárolók a beállításjegyzékben frissítésekor. A folyamatos üzembe helyezés engedélyezése a [az functionapp deployment adattároló konfigurációját](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) parancsot.
@@ -292,4 +302,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Az alap App Service-platformba beépített folyamatos integrációs funkció engedélyezési módjának elsajátítása. Függvényalkalmazását úgy is konfigurálhatja, hogy a tároló a rendszerkép Docker Hubban történő frissítésekor újra legyen telepítve.
 
 > [!div class="nextstepaction"] 
-> [Folyamatos üzembe helyezés a Web App for Containers használatával](../app-service/containers/app-service-linux-ci-cd.md)
+> [Folyamatos üzembe helyezés a Web App for containers szolgáltatásban](../app-service/containers/app-service-linux-ci-cd.md)

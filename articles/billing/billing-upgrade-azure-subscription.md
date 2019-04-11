@@ -17,16 +17,16 @@ ms.workload: na
 ms.date: 03/14/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e6cb875aa686d9e2d0ba7bf51563d3b51b1572a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d6af7106e991f0306ae2fef69129888219a9c0e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094228"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469522"
 ---
 # <a name="upgrade-your-free-trial-or-azure-for-students-starter-subscription-to-pay-as-you-go"></a>Frissítse az ingyenes kipróbálást vagy az Azure diákoknak kezdő csomag előfizetését használatalapú fizetéses előfizetésre
 
-Ha rendelkezik egy [ingyenes próbaverzió](https://azure.microsoft.com/free/), frissíthet egy [használatalapú](https://azure.microsoft.com/offers/ms-azr-0003p/) előfizetés az Azure Portalon. Ha rendelkezik egy [Azure diákoknak szóló ajánlatához](https://azure.microsoft.com/offers/ms-azr-0144p/) -előfizetéssel, frissíthetők a [utólagos elszámolású](https://azure.microsoft.com/offers/ms-azr-0003p/) az Azure Account Center webhelyen.
+Ha rendelkezik egy [ingyenes próbaverzió](https://azure.microsoft.com/free/) vagy egy [Azure diákoknak szóló ajánlatához](https://azure.microsoft.com/offers/ms-azr-0144p/) -előfizetéssel, frissíthetők a [utólagos elszámolású](https://azure.microsoft.com/offers/ms-azr-0003p/) az Azure Portalon. Ha az Azure diákoknak kezdő csomag előfizetéssel rendelkezik, és jogosult az ingyenes próbaverzióra, frissíthet az ingyenes próbaverzióban.
 
 <a id="freetrial"></a>
 
@@ -35,9 +35,9 @@ Ha rendelkezik egy [ingyenes próbaverzió](https://azure.microsoft.com/free/), 
 Ingyenes próbaverziós előfizetésről való frissítéskor az előfizetés létrehozása után még 30 teljes napig megmarad a fennmaradó kredit. Az ingyenes szolgáltatásokhoz emellett további 12 hónapig lesz hozzáférése.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-1. A Keresés **Cost Management és számlázás.**
+1. A Keresés **előfizetések.**
 
-    ![Keresés bemutató képernyőkép](./media/billing-upgrade-azure-subscription/search.png)
+    ![Keresés bemutató képernyőkép](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
 1. Válassza ki az ingyenes próba-előfizetésre.
 1. Az előfizetés áttekintés panelen kattintson **előfizetés frissítése** a parancssávon.
@@ -63,15 +63,24 @@ Ha azt szeretné, hogy [ruházni az előfizetést](billing-subscription-transfer
 
 ## <a name="upgrade-your-azure-for-students-starter-subscription-to-pay-as-you-go"></a>Az Azure diákoknak szóló ajánlatához-előfizetés frissítése használatalapú fizetésre
 
-1. Jelentkezzen be az [Azure Fiókközpontba](https://account.windowsazure.com/subscriptions).
+Kövesse az alábbi lépéseket, ha azt felkínálja a lehetőséget, ha Ön jogosult az ingyenes próbaverzió frissítése.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
+1. A Keresés **előfizetések.**
+
+    ![Keresés bemutató képernyőkép](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
+
 1. Válassza ki az Azure diákoknak kezdő csomag előfizetését.
-1. A **előfizetés állapota**, kattintson a **Frissítsen most**.
+1. Az előfizetés áttekintés panelen kattintson **előfizetés frissítése** a parancssávon.
 
-    ![Képernyőkép a frissítés diákoknak](./media/billing-upgrade-azure-subscription/student-upgrade-button.png)
+    ![Képernyőkép azt mutatjuk be, frissítés gomb diákoknak](./media/billing-upgrade-azure-subscription/student-upgrade-ibiza.png)
 
-1. Adja meg az előfizetés nevét.
+1. Ha használatalapú fizetéses előfizetésre frissít, és még nem rendelkezik egy fizetési módot az előfizetéshez tartozó, kérni fogja, adjon hozzá egyet.
+1. Előfordulhat, hogy kell beírni a telefonszámot a személyazonosságát.
+1. Írjon be egy nevet az előfizetéshez.
+1. Ha használatalapú fizetéses előfizetésre frissít, az előfizetéshez tartozó támogatási csomag kiválasztása. Támogatási csomagok kapcsolatos további információkért lásd: [Azure-támogatási csomagok](https://azure.microsoft.com/us/support/plans/).
 
-1. Kattintson a **Frissítsen most**.
+1. Kattintson a **frissítése**.
 
 ## <a name="next-steps"></a>További lépések
 

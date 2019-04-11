@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: f44b6f9ed42770fe830346de08058e33ed68a249
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 8875674b0f9c621a573dda591b4dc2b6f018a83c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309640"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470338"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Projekt Akusztika Unity Bake oktatóanyag
 Ez az oktatóanyag azt ismerteti, és a Unity Project Akusztika sütés Akusztika.
@@ -137,7 +137,7 @@ A helyszín neve a jelenet csatlakozhat fájlokhoz a mintavétel pont elhelyezé
 
 1. A **mintavételek** ezt oldal megjelenítéséhez használt lap gomb
 2. Mit kell tennie, használatával ezen a lapon rövid leírása
-3. Válasszon egy durva vagy finom szimuláció feloldási ezeket használni. Elnagyolt gyorsabb, de bizonyos kompromisszumot kínál a rendelkezik. Lásd: [durva vs finom megoldás kiválasztása](#Coarse-vs-Fine-Resolution) alábbi részleteket.
+3. Válasszon egy durva vagy finom szimuláció feloldási ezeket használni. Elnagyolt gyorsabb, de bizonyos kompromisszumot kínál a rendelkezik. Lásd: [os feloldási](bake-resolution.md) alábbi részleteket.
 4. Válassza ki a helyet, ahol a Akusztika adatfájlok kell elhelyezni, hogy ez a mező használatával. A gombra kattintva a "...", a Mappalista használatára. Az alapértelmezett érték **eszközök/AcousticsData**. Egy **szerkesztő** almappa is alatt ezen a helyen jön létre. Adatfájlok kapcsolatos további információkért lásd: [adatfájlok](#Data-Files) alatt.
 5. Az adatfájlokat a helyszín neve lesz a megadott előtag ide használatával. Az alapértelmezett érték "Acoustics_ [helyszín neve]".
 6. A mintavételezők kiszámított, miután a fenti vezérlők letiltásra kerül. Kattintson a **egyértelmű** a számítások törléséhez, és a vezérlők engedélyezése, hogy az új beállításokkal újraszámítása gombra.
@@ -145,21 +145,7 @@ A helyszín neve a jelenet csatlakozhat fájlokhoz a mintavétel pont elhelyezé
 
 Ebben a verzióban a projekt Akusztika mintavételek nem helyezhető el manuálisan, és az automatizált folyamat a megadott keresztül kell helyezni a **mintavételek** fülre.
 
-### <a name="Coarse-vs-Fine-Resolution"></a>Durva és finom megoldás kiválasztása
-
-Az egyetlen különbség a durva és finom feloldásának beállításai között a gyakoriságot, amellyel a szimuláció történik. Részletes kétszer magas, mint durva gyakoriságot használja.
-Bár ez egyszerűnek tűnhet, az az akusztikai szimuláció rendelkezik következmények számos:
-
-* A legnagyobb a durva kétszer finom lehető leghosszabbak, és ezért a voxels kétszer akkora.
-* A szimuláció idő voxel mérete, ami egy durva bake 16-szor gyorsabban finom bake közvetlenül kapcsolódik.
-* Nem lehet a portálok a (például ajtók vagy windows) kisebb, mint voxel szimulált. Durva beállítás okozhat egyes ezek kisebb portáljára, nem kell szimulált; ezért azok nem felel meg eredményes keresztül futásidőben. Láthatja, ha ez történik a voxels megtekintésével.
-* A szimuláció kisebb gyakorisággal kevesebb diffraction sarkok és élek eredményez.
-* Nem megbízható forrásból csoportdobozban voxels "kitöltött", amely, amely tartalmazza a geometriai voxels – ennek eredményeként nincs hang. Keresse meg a megbízható forrásból, így nem belül durva, mint a finom beállítást használ, a nagyobb voxels nagyobb nehézséget jelent.
-* A nagyobb voxels fog végberendezésébe több portálok, az alább látható módon. Az első rendszerkép használatával hoztak durva, míg a második azonos kezdőpanelje finom megoldás használatával. A piros jelöléseket aszinkronitást nincs sokkal kevesebb behatolás kezdőpanelje finom beállítások használatával. A kék vonal kezdőpanelje alapján a geometriai, míg a piros vonalat a hatékony akusztikai portál voxel méretét határozzák meg. Hogyan a behatolás játszik az adott helyzetben függ teljesen hogyan a voxels illeszkedik a geometriai, a portál, amelynek a méretét és az objektumok a jelenetben helyét határozza meg.
-
-![A kezdőpanelje durva voxels képernyőképe](media/coarse-voxel-doorway.png)
-
-![A kezdőpanelje finom voxels képernyőképe](media/fine-voxel-doorway.png)
+Lásd: [os feloldási](bake-resolution.md) durva vs további részleteiért finom megoldás.
 
 ## <a name="bake-your-scene-using-azure-batch"></a>Az Azure Batch használatával jelenet os
 A számítási fürt a felhőben az Azure Batch szolgáltatás használatával jelenetet is os. A projekt Akusztika Unity beépülő modul közvetlenül csatlakozik az Azure Batch számára hozza létre, kezelhet és egy Azure Batch-fürtöt, az egyes bake üzemen. Az a **os** lapra, adja meg Azure hitelesítő adatait, válassza ki a fürt gép típusát és méretét, és kattintson **os**.
@@ -210,7 +196,7 @@ Tegyük fel, a tesztelés egy 8 mag gép a Intel Xeon E5-1660 @ 3 GHz-es és 32 
 Telepítse és konfigurálja a Docker a számítógépen, amely feldolgozza a szimuláció-
 1. Telepítse a [Docker eszközkészlet](https://www.docker.com/products/docker-desktop).
 2. Indítsa el a Docker-beállításait, keresse meg a "Speciális" lehetőség, és legalább 8GB RAM-MAL rendelkezik az erőforrások. A több processzort foglalhat le a Docker, annál gyorsabban bake fog befejeződni. ![Képernyőkép a Docker-példabeállítások](media/docker-settings.png)
-3. Keresse meg "Megosztott meghajtók", és kapcsolja be a feldolgozáshoz használt meghajtó megosztása.![Screnshot a Docker megosztott meghajtót beállításai](media/docker-shared-drives.png)
+3. Keresse meg "Megosztott meghajtók", és kapcsolja be a feldolgozáshoz használt meghajtó megosztása.![Képernyőfelvétel: a Docker megosztott meghajtót beállításai](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>Helyi bake futtatása
 1. Kattintson a "Előkészítése helyi os" gombra a a **os** lapra, és válasszon ki egy mappát, ahol a bemeneti fájlok és parancsfájlok végrehajtása menti a rendszer. Ezután futtathatja a bake bármely gépen mindaddig, amíg megfelel-e a minimális hardverkövetelményeknek, és a Docker telepítve van a mappa, hogy a gép másolásával.

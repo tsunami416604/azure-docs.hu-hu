@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4be3de8de4332e8ffb0e88e612a3041829ccd606
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 734cf09869e5a2df5f9a505a3cb8ccc7bc2338d5
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658572"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470406"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Az Azure Cosmos DB Azure Stream Analytics-kimenet  
 Stream Analytics célként [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) JSON-kimenet, az adatok archiválás és kis késleltetésű lekérdezéseket a strukturálatlan JSON-adatok engedélyezése. Ez a dokumentum áttekint néhány ajánlott eljárást a konfiguráció implementálása a.
@@ -34,12 +34,12 @@ A Stream Analytics az Azure Cosmos DB kimeneti adatfolyam-feldolgozási eredmén
 A Cosmos DB adatgyűjtési beállítások némelyike lásd lent.
 
 ## <a name="tune-consistency-availability-and-latency"></a>Konzisztencia, a rendelkezésre állás és a késleltetés hangolása
-Az alkalmazás követelményeinek megfelelően, az Azure Cosmos DB lehetővé teszi jól adhatja meg az adatbázis és a gyűjtemények, és győződjön meg arról, konzisztencia, a rendelkezésre állás és a késleltetés közti kompromisszummal. Attól függően, hogy milyen szintű olvasás következetes ellen a forgatókönyv igényeinek olvassa el, és írási késés, választhatja a konzisztenciaszint a fiókot a. Is alapértelmezés szerint az Azure Cosmos DB lehetővé teszi, hogy szinkron indexelő egyes CRUD-műveletek a gyűjteményhez. Ez a szabályozhatja az írási/olvasási teljesítmény az Azure Cosmos DB egy másik hasznos lehetőség. További információkért tekintse át a [módosítása az adatbázis és a lekérdezés konzisztenciaszintek](../cosmos-db/consistency-levels.md) cikk.
+Az alkalmazás követelményeinek megfelelően, az Azure Cosmos DB teszi lehetővé az adatbázis és a gyűjtemények és győződjön meg arról, konzisztencia, a rendelkezésre állás és a késleltetés közti kompromisszummal. Attól függően, hogy milyen szintű olvasás következetes ellen a forgatókönyv igényeinek olvassa el, és írási késés, választhatja a konzisztenciaszint a fiókot a. Is alapértelmezés szerint az Azure Cosmos DB lehetővé teszi, hogy szinkron indexelő egyes CRUD-műveletek a gyűjteményhez. Ez a szabályozhatja az írási/olvasási teljesítmény az Azure Cosmos DB egy másik hasznos lehetőség. További információkért tekintse át a [módosítása az adatbázis és a lekérdezés konzisztenciaszintek](../cosmos-db/consistency-levels.md) cikk.
 
 ## <a name="upserts-from-stream-analytics"></a>A Stream Analytics Upserts
 Stream Analytics-integráció az Azure Cosmos DB lehetővé teszi a Beszúrás, vagy frissíthet rekordokat a gyűjtemény adott dokumentumazonosító oszlop alapján. Ez is nevezik egy *Upsert*.
 
-Stream Analytics egy optimista upsert módszert használ, ahol frissítéseit csak végzett insert dokumentumazonosító ütközést tartalmazó meghibásodása esetén. A frissítés történik, így, amely lehetővé teszi a dokumentumban a részleges frissítési javítás, az új tulajdonságok vagy lecseréli a meglévő tulajdonságot Növekményesen történik. A tömb tulajdonságokat a JSON-dokumentum eredményt, a tömb első felülírja, teljes tömb a módosítások azonban nem részeként történik.
+Stream Analytics egy optimista upsert módszert használ, ahol frissítéseit csak végzett insert dokumentumazonosító ütközést tartalmazó meghibásodása esetén. A kompatibilitási szint 1.0 a frissítés történik, PATCH, így részleges frissítéseit a dokumentumot, amely lehetővé teszi, az új tulajdonságok vagy lecseréli a meglévő tulajdonságot Növekményesen történik. A tömb tulajdonságokat a JSON-dokumentum eredményt, a tömb első felülírja, teljes tömb a módosítások azonban nem részeként történik. Az 1.2-es upsert viselkedés úgy módosul, helyezze be vagy cserélje le a dokumentumot. Ez az erről a kompatibilitási szint 1.2 részben olvashatja.
 
 Ha a bejövő JSON-dokumentum egy meglévő azonosító mezőben, hogy a mező automatikusan használja a dokumentumazonosító oszlop Cosmos DB-ben, és bármely érkező későbbi írások kezeli, így az ezekben a helyzetekben egyik vezető rendelkezik:
 - egyedi azonosítók érdeklődő beszúrása
@@ -57,6 +57,24 @@ Rögzített Azure Cosmos DB-gyűjtemények a Stream Analytics lehetővé teszi a
 
 Több állandó tároló való írás hamarosan elavulttá válik, és nem az ajánlott módszer a horizontális felskálázás a Stream Analytics-feladatot. A cikk [particionálás és skálázás az, Cosmos DB](../cosmos-db/sql-api-partition-data.md) további részleteket tartalmaz.
 
+## <a name="improved-throughput-with-compatibility-level-12"></a>Nagyobb átviteli sebességet a kompatibilitási szint 1.2-es verziójával
+-Es kompatibilitási szintű 1.2-es a Stream Analytics támogatja a natív integráció tömeges az Cosmos DB-be írni. Ez lehetővé teszi a írnak hatékonyan a Cosmos DB a lehető legnagyobb átviteli sebességet, és hatékonyan leíró szabályozási kérelmeket. A továbbfejlesztett írása mechanizmus az upsert viselkedése miatt egy új kompatibilitási szint alatt érhető el.  1.2-es, mielőtt az upsert működése beszúrása vagy egyesíteni a dokumentumot. Az 1.2-es upserts viselkedés úgy módosul, helyezze be vagy cserélje le a dokumentumot. 
+
+1.2-es, mielőtt használja Cosmos DB, ahol egy kötegelt írt tranzakcióként történő tömeges upsert dokumentumok partíciókulcson egyéni tárolt eljárás. Akkor is, ha egyetlen rekordot eléri a (szabályozás) átmeneti hiba, az egész batch meg kell ismételni. Ez arról, hogy az még elfogadható viszonylag lassabban szabályozási forgatókönyvek. A következő összehasonlító jeleníti meg, hogyan viselkednek a ilyen feladatok 1.2-es verziójával.
+
+Telepítés alatt látható két azonos Stream Analytics-feladatok ugyanazon bemeneti (eseményközpontból) olvasásakor. Mindkét Stream Analytics-feladatok [teljes particionált](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) továbbító lekérdezés, valamint egy írása azonos cosmos DB-gyűjteményekhez. A bal oldali metrikák a feladat-es kompatibilitási szintű 1.0 konfigurált, és azokat a jobb oldali meg van adva az 1.2-es. A cosmos DB-gyűjtemények partíciókulcs egy egyedi GUID azonosítót a bemeneti eseményt érkező.
+
+![a Stream analytics mérőszámok összehasonlítása](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-3.png)
+
+Eseményközpont bejövő események száma 2 x nagyobb, mint a Cosmos DB-gyűjtemények (20K ru-k) konfigurált kezelni, ezért szabályozás várt Cosmos DB-ben. Az 1.2-es, a feladat azonban egy magasabb átviteli sebesség (kimeneti események/perc), és a egy alacsonyabb átlagos SU százalékos kihasználtsága folyamatosan írja. A környezetben ezt a különbséget függ, néhány további tényező befolyásolja, például a választott esemény formátum, a bemeneti eseményüzenet mérete, a partíciókulcsok, a lekérdezés stb.
+
+![cosmos db mérőszámok összehasonlítása](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
+
+Az 1.2-es a Stream Analytics a 100 %-a szabályozás/sebességkorlátozással nagyon kevés újraküldéseinek a Cosmos DB-ben elérhető átviteli sebesség használó intelligens. Más számítási feladatok, például a lekérdezések a gyűjtemény egy időben futó jobb felhasználói élményt biztosít. Abban az esetben kell próbálja ki, hogyan ASA elvégzi a horizontális felskálázást Cosmos DB-vel, a fogadó 1k – 10k az üzenetek/másodperc, Íme egy [azure-minták projekt](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) , amely lehetővé teszi, hogy.
+Vegye figyelembe, hogy a Cosmos DB kimeneti átviteli sebesség megegyezik 1.0 és 1.1. 1.2 jelenleg nem az alapértelmezett, mivel is [beállítani a kompatibilitási szintet](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) egy Stream Analytics-feladat portálon vagy az a [feladat REST API-hívás létrehozásához](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). Rendelkezik *erősen ajánlott* kompatibilitási szint 1.2 ASA a Cosmos DB-vel használandó. 
+
+
+
 ## <a name="cosmos-db-settings-for-json-output"></a>JSON-kimenet a cosmos DB beállításai
 
 Cosmos DB létrehozása a Stream Analytics kimenetként állít elő, információkat az alább látható módon egy parancssort. Ez a szakasz a Tulajdonságok definíció magyarázattal szolgál.
@@ -66,7 +84,7 @@ Cosmos DB létrehozása a Stream Analytics kimenetként állít elő, informáci
 |Mező           | Leírás|
 |-------------   | -------------|
 |Kimeneti alias    | Tekintse meg ezt az ASA-lekérdezés kimenete egy alias.|
-|Előfizetés    | Válassza ki az Azure-előfizetéséhez.|
+|Előfizetés    | Válassza ki az Azure-előfizetést.|
 |Fiókazonosító      | A neve vagy URI-t az Azure Cosmos DB-fiók végpontját.|
 |Fiókkulcs     | A közös hozzáférési kulcs az Azure Cosmos DB-fiókot.|
 |Adatbázis        | Az Azure Cosmos DB-adatbázis nevét.|

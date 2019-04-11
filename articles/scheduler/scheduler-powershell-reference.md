@@ -9,12 +9,12 @@ ms.reviewer: klam
 ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: daf960bec0fac5f0c96749c219304bc77a4ba905
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 4b179c50af8b1ffc4313a49da978f178915ec9cc
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358548"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470814"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Az Azure Scheduler PowerShell-parancsmagok leírása
 
@@ -23,27 +23,27 @@ ms.locfileid: "59358548"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Hozzon létre-parancsprogramok a Scheduler-feladatok és feladatgyűjtemények létrehozását és kezelését, használhatja a PowerShell-parancsmagokat. Ez a cikk felsorolja a fő [az Azure Scheduler PowerShell-parancsmagok](/powershell/module/azurerm.scheduler) referencia cikkeik mutató hivatkozásokkal. Azure PowerShell telepítése az Azure-előfizetés: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview). További információ [Azure Resource Manager parancsmagjainak](/powershell/azure/overview), lásd: [az Azure PowerShell az Azure Resource Manager](../powershell-azure-resource-manager.md).
+Hozzon létre-parancsprogramok a Scheduler-feladatok és feladatgyűjtemények létrehozását és kezelését, használhatja a PowerShell-parancsmagokat. Ez a cikk a fő PowerShell-parancsmagok felsorolja az Azure Scheduler referencia cikkeik mutató hivatkozásokkal. Azure PowerShell telepítése az Azure-előfizetés: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview). További információ [Azure Resource Manager parancsmagjainak](/powershell/azure/overview), lásd: [az Azure PowerShell az Azure Resource Manager](../powershell-azure-resource-manager.md).
 
 | Parancsmag | Leírás |
 |--------|-------------|
-| [Disable-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/disable-azschedulerjobcollection) |A feladatgyűjtemény letiltása. |
-| [Enable-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/enable-azschedulerjobcollection) |Lehetővé teszi a feladatgyűjteményeket. |
-| [Get-AzSchedulerJob](/powershell/module/azurerm.scheduler/get-azschedulerjob) |Scheduler-feladatok beolvasása. |
-| [Get-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/get-azschedulerjobcollection) |Feladatgyűjtemények beolvasása |
-| [Get-AzSchedulerJobHistory](/powershell/module/azurerm.scheduler/get-azschedulerjobhistory) |A feladatelőzmények beolvasása. |
-| [New-AzSchedulerHttpJob](/powershell/module/azurerm.scheduler/new-azschedulerhttpjob) |Létrehoz egy HTTP-feladatot. |
-| [New-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/new-azschedulerjobcollection) |Egy feladat gyűjteményt hoz létre. |
-| [New-AzSchedulerServiceBusQueueJob](/powershell/module/azurerm.scheduler/new-azschedulerservicebusqueuejob) | Létrehoz egy Service Bus-üzenetsor feladatot. |
-| [New-AzSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/new-azschedulerservicebustopicjob) |Létrehoz egy Service Bus-témakör feladatot. |
-| [New-AzSchedulerStorageQueueJob](/powershell/module/azurerm.scheduler/new-azschedulerstoragequeuejob) |Tárolási üzenetsor feladatot hoz létre. |
-| [Remove-AzSchedulerJob](/powershell/module/azurerm.scheduler/remove-azschedulerjob) |Eltávolít egy Scheduler-feladat. |
-| [Remove-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/remove-azschedulerjobcollection) |A feladatgyűjtemény eltávolítja. |
-| [Set-AzSchedulerHttpJob](/powershell/module/azurerm.scheduler/set-azschedulerhttpjob) |Módosítja egy Scheduler HTTP-feladatot. |
-| [Set-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/set-azschedulerjobcollection) |A feladatgyűjtemény módosítja. |
-| [Set-AzSchedulerServiceBusQueueJob](/powershell/module/azurerm.scheduler/set-azschedulerservicebusqueuejob) |Módosítja egy Service Bus-üzenetsor feladat. |
-| [Set-AzSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/set-azschedulerservicebustopicjob) |Módosítja egy Service Bus-témakör feladatot. |
-| [Set-AzSchedulerStorageQueueJob](/powershell/module/azurerm.scheduler/set-azschedulerstoragequeuejob) |Módosítja a tárolási üzenetsor feladat. |
+| [Disable-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/disable-azurermschedulerjobcollection) |A feladatgyűjtemény letiltása. |
+| [Enable-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/enable-azurermschedulerjobcollection) |Lehetővé teszi a feladatgyűjteményeket. |
+| [Get-AzSchedulerJob](/powershell/module/azurerm.scheduler/get-azurermschedulerjob) |Scheduler-feladatok beolvasása. |
+| [Get-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/get-azurermschedulerjobcollection) |Feladatgyűjtemények beolvasása |
+| [Get-AzSchedulerJobHistory](/powershell/module/azurerm.scheduler/get-azurermschedulerjobhistory) |A feladatelőzmények beolvasása. |
+| [New-AzSchedulerHttpJob](/powershell/module/azurerm.scheduler/new-azurermschedulerhttpjob) |Létrehoz egy HTTP-feladatot. |
+| [New-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/new-azurermschedulerjobcollection) |Egy feladat gyűjteményt hoz létre. |
+| [New-AzSchedulerServiceBusQueueJob](/powershell/module/azurerm.scheduler/new-azurermschedulerservicebusqueuejob) | Létrehoz egy Service Bus-üzenetsor feladatot. |
+| [New-AzSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/new-azurermschedulerservicebustopicjob) |Létrehoz egy Service Bus-témakör feladatot. |
+| [New-AzSchedulerStorageQueueJob](/powershell/module/azurerm.scheduler/new-azurermschedulerstoragequeuejob) |Tárolási üzenetsor feladatot hoz létre. |
+| [Remove-AzSchedulerJob](/powershell/module/azurerm.scheduler/remove-azurermschedulerjob) |Eltávolít egy Scheduler-feladat. |
+| [Remove-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/remove-azurermschedulerjobcollection) |A feladatgyűjtemény eltávolítja. |
+| [Set-AzSchedulerHttpJob](/powershell/module/azurerm.scheduler/set-azurermschedulerhttpjob) |Módosítja egy Scheduler HTTP-feladatot. |
+| [Set-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/set-azurermschedulerjobcollection) |A feladatgyűjtemény módosítja. |
+| [Set-AzSchedulerServiceBusQueueJob](/powershell/module/azurerm.scheduler/set-azurermschedulerservicebusqueuejob) |Módosítja egy Service Bus-üzenetsor feladat. |
+| [Set-AzSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/set-azurermschedulerservicebustopicjob) |Módosítja egy Service Bus-témakör feladatot. |
+| [Set-AzSchedulerStorageQueueJob](/powershell/module/azurerm.scheduler/set-azurermschedulerstoragequeuejob) |Módosítja a tárolási üzenetsor feladat. |
 ||| 
 
 További részletekért futtassa ezeket a parancsmagokat: 

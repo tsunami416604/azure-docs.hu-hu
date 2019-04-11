@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 2e13f1f09fcdfb68a99e705511e3659f1632132e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 93d0f148c1fa3f13e79b28e19527251455a1b65c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895481"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470831"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profil élő Azure Cloud Services az Application insights segítségével
 
 Ezek a szolgáltatások az Application Insights Profiler is telepítheti:
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Az Azure Service Fabric-alkalmazások](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Virtual Machines](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure-alapú virtuális gépek](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler az Azure Diagnostics bővítmény telepítve van. Csak akkor kell Profiler telepítéséhez, és a profilok küldése az Application Insights-erőforrást az Azure Diagnostics konfigurálása.
 
@@ -33,7 +33,7 @@ Application Insights Profiler az Azure Diagnostics bővítmény telepítve van. 
 
 1. Adjon hozzá [az Application Insights SDK-t az Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
 
-   >**A profiler WAD legújabb verziójában a Cloud Services részét képező programhiba van.** Annak érdekében, hogy a profiler használni egy felhőalapú szolgáltatás, csak a támogatott AI SDK 2.7.2 verzióra. Az AI SDK újabb verziója használatakor kell vissza a 2.7.2 annak érdekében, hogy a profiler használja. Ha alacsonyabb szolgáltatásszintre váltásához az App Insights SDK verziója a Visual Studio használ, előfordulhat, hogy hibaüzenetet egy kötés átirányítási futásidőben. Ennek oka az, a "newVersion" Microsoft.ApplicationInsights web.config fájljában "2.7.2.0" értékre kell állítani az AI SDK-t, de alacsonyabb verziójúra változtatása nem frissíti automatikusan után.
+    **A hiba a Profilkészítő a WAD a Cloud Services részét képező megoldották a problémát.** A Cloud Services szolgáltatáshoz (1.12.2.0) WAD legújabb verzióját az App Insights SDK legújabb verzióit együttműködik. Cloud Service gazdagépek WAD automatikusan frissíti, de azt nem azonnal történik meg. Frissítés kényszerítéséhez, telepítse újra a szolgáltatást, vagy újraindíthatja a csomópontot is.
 
 1. Az Application Insights kérések nyomon követése:
 
