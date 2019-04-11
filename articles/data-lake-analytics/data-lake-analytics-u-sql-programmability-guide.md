@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: f0f5a4ee5206201cca20e705011126e6cf472a1a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835452"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471086"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL programozhatósági útmutató
 
@@ -1601,7 +1601,7 @@ CROSS APPLYis used to pass parameters
 new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
-Válassza ki a kifejezésben appliers használatával kapcsolatos további információkért lásd: [U-SQL kiválasztása kiválasztása a CROSS APPLY és OUTER APPLY operátort](https://msdn.microsoft.com/library/azure/mt621307.aspx).
+Válassza ki a kifejezésben appliers használatával kapcsolatos további információkért lásd: [U-SQL kiválasztása kiválasztása a CROSS APPLY és OUTER APPLY operátort](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply).
 
 A felhasználó által definiált applier alaposztály definíciója a következőképpen történik:
 
@@ -1815,7 +1815,7 @@ Combine_Expression :=
     USING_Clause.
 ```
 
-További információkért lásd: [(U-SQL) kifejezés KOMBINÁLÁSA](https://msdn.microsoft.com/library/azure/mt621339.aspx).
+További információkért lásd: [(U-SQL) kifejezés KOMBINÁLÁSA](/u-sql/statements-and-expressions/combine-expression).
 
 Egy felhasználó által definiált egyesítő definiálásához, létre kell hozni a `ICombiner` kommunikáljanak a [`SqlUserDefinedCombiner`] attribútuma, amely egy felhasználó által definiált egyesítő definíció esetén nem kötelező.
 
@@ -1877,7 +1877,7 @@ A bemeneti sorkészletek adhatók be **bal oldali** és **megfelelő** `IRowset`
 
 Gyorsítótárazás célokra, létrehozhatunk egy lista\<T\> memória struktúra típusú eredményeként egy LINQ-lekérdezés végrehajtása, kifejezetten a listában <`IRow`>. A névtelen adattípus felsorolásakor is használható.
 
-Lásd: [Bevezetés a LINQ-lekérdezések (C#)](https://msdn.microsoft.com/library/bb397906.aspx) további információt a LINQ-lekérdezések és [IEnumerable\<T\> felület](https://msdn.microsoft.com/library/9eekhta0(v=vs.110).aspx) IEnumerablebővebben\<T\> felületet.
+Lásd: [Bevezetés a LINQ-lekérdezések (C#)](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) további információt a LINQ-lekérdezések és [IEnumerable\<T\> felület](/dotnet/api/system.collections.generic.ienumerable-1) IEnumerablebővebben\<T\> felületet.
 
 A bejövő adatok tényleges értékének lekéréséhez `IRowset`, Get() módszert használjuk `IRow` felületet.
 

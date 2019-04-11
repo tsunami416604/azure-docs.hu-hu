@@ -9,12 +9,12 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: 7a4aae87cd704cf94c89c308c0c056ae5b9a8b4d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251002"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471409"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL-adatbázis exportálása
 
@@ -37,7 +37,7 @@ Minden Data Lake Analytics-fiók, amely rendelkezik engedélyekkel a Server Expl
 
      Ha a **exportálása** menüpont nem érhető el, újra kell [frissítse az eszközt a legfrissebb kiadás](https://aka.ms/adltoolsvs).
 
-### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>2. lépés: Konfigurálja az exportálandó objektumokat
+### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>2. lépés: Az exportálandó objektumok konfigurálása
 
 Ha nagy méretű adatbázisok csak kis részét kell, konfigurálhatja úgy, hogy az exportálási varázslóban exportálandó objektumok egy részét. 
 
@@ -84,7 +84,7 @@ Jelenleg Ha a **séma és adatok** futtat egy U-SQL-feladatot, amely a táblákb
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információ a U-SQL-adatbázisok](https://msdn.microsoft.com/library/azure/mt621299.aspx) 
-* [U-SQL feladatok tesztelése és hibakeresése helyi futtatással és az Azure Data Lake U-SQL SDK használatával](data-lake-analytics-data-lake-tools-local-run.md)
+* [További információ a U-SQL-adatbázisok](/u-sql/data-definition-language-ddl-statements) 
+* [Tesztelése és hibakeresése a U-SQL-feladatok használatával helyi futtatásához és az Azure Data Lake U-SQL SDK](data-lake-analytics-data-lake-tools-local-run.md)
 
 

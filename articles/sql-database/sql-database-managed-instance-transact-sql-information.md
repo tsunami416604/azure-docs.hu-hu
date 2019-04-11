@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: d84e52878c285ddd66fd799efe8c0f3cd2fc3e31
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 4ceed2fb2b42dc8e09d1a837200652d29838d81b
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358438"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471562"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -217,7 +217,7 @@ További információkért lásd: [ALTER DATABASE SET PARTNER és a SET WITNESS]
 
 - Több naplófájl nem támogatottak.
 - Az általános célú szolgáltatásszinten lévő memórián belüli objektumok nem támogatottak.  
-- Általános célú példányonként legfeljebb 280 fájlt adatbázisonként úgy 280 fájlok korlátozva van. Adat- és naplófájlok fájlok az általános célú réteg felé ezt a korlátot bájtjai számítanak. [Kritikus fontosságú üzleti szint támogatja – 32 767 fájlt adatbázisonként](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+- Általános célú példányonként legfeljebb 280 fájlt adatbázisonként úgy 280 fájlok korlátozva van. Adat- és naplófájlok fájlok az általános célú réteg felé ezt a korlátot bájtjai számítanak. [Kritikus fontosságú üzleti szint támogatja – 32 767 fájlt adatbázisonként](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 - Adatbázis nem tartalmazhatnak filestream-adatokat tartalmazó fájlcsoportokat.  Helyreállítás sikertelen lesz, ha a .bak tartalmaz `FILESTREAM` adatokat.  
 - Minden fájl kerül, az Azure Blob storage-ban. I/o és teljesítmény / fájl egyes fájlok méretét függenek.  
 
@@ -467,7 +467,6 @@ A következő változók, functions és a nézetek különböző eredményeket a
 - `@@SERVICENAME` NULL, értéket ad vissza, mert a fogalom, mert a szolgáltatás az SQL Server nem vonatkozik a felügyelt példány létezik. Lásd: [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
 - `SUSER_ID` támogatott. Ha az Azure AD bejelentkezési sys.syslogins nem NULL értéket ad vissza. Lásd: [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
 - `SUSER_SID` nem támogatott. Értéket ad vissza helytelen adatokat (ideiglenes ismert probléma). Lásd: [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql).
-- `GETDATE()` és más beépített dátum/idő függvények mindig időt adja vissza az UTC időzóna szerint. Lásd: [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).
 
 ## <a name="Issues"></a> Ismert problémák és korlátozások
 
@@ -494,7 +493,7 @@ Ez az ábra bemutatja, hogy bizonyos körülmény miatt a fájlok egy adott terj
 
 Ebben a példában a meglévő adatbázisok továbbra is működni fog, és növelhető bármilyen probléma nélküli mindaddig, amíg az új fájlok nem lettek hozzáadva. Azonban új adatbázisokat nem kell létrehozni, vagy vissza, mert nem áll elég hely az új meghajtók, még akkor is, ha az összes adatbázis teljes mérete nem éri el a példány méretének korlátja. A visszaadott hiba ebben az esetben nem egyértelmű.
 
-Is [hátralévő fájlok számának meghatározása](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) rendszernézetek használatával. Ha az elérni próbált ezt a korlátot próbál [üres, és töröljön néhány, a DBCC SHRINKFILE utasítással kisebb fájlok](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) vagy váltson [fontos üzleti szint, amely nem rendelkezik ezt a korlátot](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+Is [hátralévő fájlok számának meghatározása](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) rendszernézetek használatával. Ha az elérni próbált ezt a korlátot próbál [üres, és töröljön néhány kisebb fájlt a DBCC SHRINKFILE utasítás használatával](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) vagy váltson [fontos üzleti szint, amelyen nincs telepítve Ez a korlátozás](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Adatbázis során SAS-kulcs helytelen konfiguráció visszaállítása
 
@@ -567,11 +566,11 @@ Felügyelt példány és a egy ideig hivatkoznak a jelenlegi példány csatolt k
 
 **Megkerülő megoldás**: Ha lehetséges használata helyi kapcsolatok CLR-beli modulban.
 
-### <a name="tde-encrypted-databases-dont-support-user-initiated-backups"></a>Titkosított TDE adatbázisok nem támogatják a felhasználó által kezdeményezett biztonsági mentés
+### <a name="tde-encrypted-databases-with-service-managed-key-dont-support-user-initiated-backups"></a>Szolgáltatás által felügyelt kulccsal titkosított TDE adatbázisok nem támogatják a felhasználó által létrehozott biztonsági másolatokból
 
-Nem hajtható végre `BACKUP DATABASE ... WITH COPY_ONLY` olyan adatbázisban, amely a transzparens adattitkosítás (TDE) van titkosítva. TDE kényszeríti biztonsági másolatának titkosítását belső TDE-kulcsokkal, és a kulcs nem exportálható, így nem lehet a biztonsági mentés visszaállításához.
+Nem hajtható végre `BACKUP DATABASE ... WITH COPY_ONLY` olyan adatbázisban, amely a szolgáltatás által kezelt transzparens adattitkosítási (TDE) van titkosítva. Szolgáltatás által kezelt TDE kényszeríti biztonsági másolatának titkosítását belső TDE-kulccsal, és a kulcs nem exportálható, így nem lehet a biztonsági mentés visszaállításához.
 
-**Megkerülő megoldás**: Automatikus biztonsági mentések és időponthoz visszaállítás használatához, vagy az adatbázis titkosításának letiltása.
+**Megkerülő megoldás**: Használja az automatikus biztonsági mentések és időponthoz visszaállítási vagy [ügyfél által felügyelt (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) Ehelyett vagy adatbázis titkosításának letiltása.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,16 +6,18 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: f457246b429062625e6542cfdaf00f3526a85209
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/09/2019
+ms.openlocfilehash: 562987b953f0a8a20a917e208f43557bd768c0a0
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083232"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471154"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Hozzon létre és kezelhető az Azure Database for MariaDB tűzfalszabályok az Azure CLI-vel
-Kiszolgálószintű tűzfalszabályok lehetővé teszik a rendszergazdák hozzáférés kezelésére egy Azure Database for MariaDB-kiszolgáló megadott IP-címet vagy egy IP-címtartományt. Kényelmes megoldás az Azure parancssori felület parancsait használva, létrehozhat, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Azure Database for MariaDB tűzfalak áttekintése, lásd: [, Azure Database for MariaDB-kiszolgáló tűzfalszabályait](./concepts-firewall-rules.md)
+Kiszolgálószintű tűzfalszabályok segítségével elérésének kezelése egy Azure Database for MariaDB-kiszolgáló megadott IP-címet vagy egy IP-címtartományt. Kényelmes megoldás az Azure parancssori felület parancsait használva, létrehozhat, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Azure Database for MariaDB tűzfalak áttekintése, lásd: [, Azure Database for MariaDB-kiszolgáló tűzfalszabályainak](./concepts-firewall-rules.md).
+
+Virtuális hálózat (VNet) szabályok is használható a kiszolgálóhoz való hozzáférés biztonsága érdekében. Tudjon meg többet [létrehozása és kezelése a virtuális hálózati szolgáltatás végpontjai és az Azure CLI használatával szabályok](howto-manage-vnet-cli.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Telepítse az Azure parancssori felületét (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli).
@@ -31,7 +33,7 @@ Parancsok:
 - **Megjelenítés**: Tűzfalszabály létrehozása az Azure MariaDB-kiszolgáló részleteinek megjelenítése
 - **Frissítés**: Frissítse az Azure MariaDB tűzfalszabályt a kiszolgálóhoz.
 
-## <a name="log-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Jelentkezzen be az Azure-ba, és listázása az Azure Database for MariaDB-kiszolgálók
+## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Jelentkezzen be az Azure-ba, és listázása az Azure Database for MariaDB-kiszolgálók
 Biztonságos csatlakozás az Azure CLI az Azure-fiókkal használatával a **az bejelentkezési** parancsot.
 
 1. A parancssorból futtassa a következő parancsot:
@@ -42,7 +44,7 @@ Biztonságos csatlakozás az Azure CLI az Azure-fiókkal használatával a **az 
 
 2. Nyissa meg a webböngésző használata [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin), majd írja be a kódot.
 
-3. Amikor a rendszer felkéri, jelentkezzen be az Azure-beli hitelesítő adataival.
+3. Amikor a rendszer kéri jelentkezzen be Azure hitelesítő adatait.
 
 4. A bejelentkezési azonosító jogosult, miután az előfizetések listája, nyomtatása a konzolon. Másolja ki a kívánt előfizetés azonosítóértékét azonosítója beállítása a jelenlegi használni kívánt előfizetést. Használja a [fiók beállítása az](/cli/azure/account#az-account-set) parancsot.
    ```azurecli-interactive
@@ -119,3 +121,4 @@ Sikeres, Befejezés esetén nem semmilyen kimenet. Hiba esetén a következő hi
 ## <a name="next-steps"></a>További lépések
 - Ismerje meg jobban az kapcsolatos [, Azure Database for MariaDB-kiszolgáló tűzfalszabályainak](./concepts-firewall-rules.md).
 - [Hozzon létre és kezelhető az Azure Database for MariaDB tűzfalszabályok az Azure portal használatával](./howto-manage-firewall-portal.md).
+- További való biztonságos hozzáférést a kiszolgáló által [létrehozása és kezelése a virtuális hálózati szolgáltatás végpontjai és az Azure CLI használatával szabályok](howto-manage-vnet-cli.md).

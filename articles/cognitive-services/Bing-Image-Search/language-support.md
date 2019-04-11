@@ -32,7 +32,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 > - en-Ausztrália (angol nyelven, Ausztrália)
 > - zh-CN (kínai, Kína)
 
-## <a name="countries"></a>Országok
+## <a name="countries"></a>Országok/régiók
 
 |Ország/régió|Kód|
 |-------|----|

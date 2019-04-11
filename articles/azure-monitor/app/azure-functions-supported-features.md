@@ -12,34 +12,34 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: dd28bc3925b0f07a441c46a26498ef1a14c3e650
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510323"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471664"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights az Azure Functions támogatott szolgáltatások
 
 Azure Functions-ajánlatok [beépített integráció](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) az Application insights szolgáltatással, amely a ILogger felületen keresztül érhető el. Az alábbi, a jelenleg támogatott funkciók listáját. Tekintse át az Azure Functions útmutatója [bevezetés](https://github.com/Azure/Azure-Functions/wiki/App-Insights).
 
-## <a name="supported-features"></a>Támogatott szolgáltatások
+## <a name="supported-features"></a>Támogatott funkciók
 
 | Azure Functions                       | 1. verzió                | V2 (az Ignite 2018.)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | **2.5.0**       | **2.7.2**         |
+| **Az Application Insights .NET SDK-val**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Automatikus gyűjteménye**        |                 |                   |               
 | &bull; Kérelmek                     | Igen             | Igen               | 
 | &bull; Kivételek                   | Igen             | Igen               | 
-| &bull; Teljesítményszámlálók         | Igen             |                   |
+| &bull; Teljesítményszámlálók         | Igen             | Igen               |
 | &bull; Függőségek                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Igen               | 
 | &nbsp;&nbsp;&nbsp;&mdash; Szolgáltatásbusz|                 | Igen               | 
 | &nbsp;&nbsp;&nbsp;&mdash; az eventHub  |                 | Igen               | 
 | &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Igen               | 
 | | | | 
-| **Támogatott szolgáltatások**                |                   |                   |               
+| **Támogatott funkciók**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Igen             | Igen               | 
 | &nbsp;&nbsp;&nbsp;&mdash; Biztonságos vezérlőcsatorna|                 | Igen               | 
 | &bull; Mintavétel                     | Igen             | Igen               | 
@@ -65,3 +65,30 @@ A megadott egyéni szűrők feltételek lesznek visszaküldve az élő mérősz�
 ## <a name="sampling"></a>Mintavételezés
 
 Az Azure Functions lehetővé teszi a mintavétel a konfigurálásukban alapértelmezés szerint. További információkért lásd: [mintavétel konfigurálása](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
+
+A projekt függőséget vesz fel az Application Insights SDK manuális telemetriai követési tennie, ha rendellenes viselkedés tapasztalhat, ha a mintavételi konfiguráció eltér attól az a funkciók mintavételi konfiguráció. 
+
+Funkciókként ugyanaz a konfiguráció használatát javasoljuk. A **funkciók v2**, kérheti, hogy ugyanazt a konfigurációt a konstruktorban függőségi beszúrást használatával:
+
+```csharp
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+
+public class Function1 
+{
+
+    private readonly TelemetryClient telemetryClient;
+
+    public Function1(TelemetryConfiguration configuration)
+    {
+        this.telemetryClient = new TelemetryClient(configuration);
+    }
+
+    [FunctionName("Function1")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger logger)
+    {
+        this.telemetryClient.TrackTrace("C# HTTP trigger function processed a request.");
+    }
+}
+```

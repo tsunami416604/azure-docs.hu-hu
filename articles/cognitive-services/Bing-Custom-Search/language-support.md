@@ -27,7 +27,7 @@ Megadhatja, hogy egy ország/régió használata a `cc` lekérdezési paraméter
 
 A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást kölcsönösen kizáró – ne adja meg mindkettőt. További információkért lásd: [Accept-nyelv](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage).
 
-## <a name="countries"></a>Országok
+## <a name="countries"></a>Országok/régiók
 
 |Ország/régió|Kód|
 |-------|----|

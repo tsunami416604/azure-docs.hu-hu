@@ -34,7 +34,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 > - Recept, a vásárlás és a lapok – beleértve a insights csak az en-US piacon érhetők el.
 
 
-## <a name="countries"></a>Országok
+## <a name="countries"></a>Országok/régiók
 
 |Ország/régió|Kód|
 |-------|----|

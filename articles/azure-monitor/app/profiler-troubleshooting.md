@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 6c96b7139787a3863b3f7a47949d9cdf20cc5021
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9e6e289fbda3188449ecc71cbc90bed546512e1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855673"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471528"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Engedélyezése és megtekintése az Application Insights Profiler kapcsolatos problémák elhárítása
 
@@ -67,9 +67,15 @@ A portál támogatási jegyet is küldhet. Győződjön meg arról, a korreláci
 A Profiler megfelelő működéséhez:
 * A web app service-csomagot kell lennie az alapszintű csomag vagy újabb verziója.
 * A webalkalmazás rendelkeznie kell Application Insights engedélyezését.
-* A webalkalmazás kell rendelkeznie a **állítani az APPINSIGHTS_INSTRUMENTATIONKEY** alkalmazásbeállítást az azonos kialakítási kulcsot, amelyet az Application Insights SDK konfigurálva.
-* A webalkalmazás kell rendelkeznie a **APPINSIGHTS_PROFILERFEATURE_VERSION** Alkalmazásbeállítás meghatározása, és a 1.0.0.
-* A webalkalmazás kell rendelkeznie a **DiagnosticServices_EXTENSION_VERSION** definiált alkalmazás-beállítás és a ~ 3 értéket.
+* A webes alkalmazás a következő beállításokkal kell rendelkeznie:
+
+    |Alkalmazásbeállítás    | Érték    |
+    |---------------|----------|
+    |ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY         | a Rendszerállapotkulcsot az Application Insights-erőforrást    |
+    |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
+
+
 * A **ApplicationInsightsProfiler3** webjobs-feladat kell futnia. A webjobs-feladat ellenőrzése:
    1. Lépjen a [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/).
    1. Az a **eszközök** menüjében válassza **WebJobs-irányítópulttal**.  
@@ -93,12 +99,13 @@ Profiler konfigurálásakor a webalkalmazás-beállítások végrehajtott friss�
 1. Állítsa be **.NET-keretrendszer verziója** való **v4.6**.
 
 1. Állítsa be **Always On** való **a**.
+1. Ezek a beállítások alkalmazás létrehozása:
 
-1. Adja hozzá a **állítani az APPINSIGHTS_INSTRUMENTATIONKEY** beállítást, és állítsa az értékét a azonos kialakítási kulcsot, az SDK által használt alkalmazás.
-
-1. Adja hozzá a **APPINSIGHTS_PROFILERFEATURE_VERSION** Alkalmazásbeállítás, és állítsa be az 1.0.0-s.
-
-1. Adja hozzá a **DiagnosticServices_EXTENSION_VERSION** Alkalmazásbeállítás, és adja meg kb. 3.
+    |Alkalmazásbeállítás    | Érték    |
+    |---------------|----------|
+    |ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY         | a Rendszerállapotkulcsot az Application Insights-erőforrást    |
+    |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 ### <a name="too-many-active-profiling-sessions"></a>Túl sok aktív profilkészítési munkamenetek
 
@@ -124,7 +131,7 @@ A webalkalmazás a folyamatos webjobs-feladatként futó Profiler. Megnyithatja 
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profiler és az Azure Diagnostics-problémák hibaelhárítása
 
-  >**A profiler WAD legújabb verziójában a Cloud Services részét képező programhiba van.** Annak érdekében, hogy a profiler használni egy felhőalapú szolgáltatás, csak a támogatott AI SDK 2.7.2 verzióra. Az AI SDK újabb verziója használatakor kell vissza a 2.7.2 annak érdekében, hogy a profiler használja. Ha alacsonyabb szolgáltatásszintre váltásához az App Insights SDK verziója a Visual Studio használ, előfordulhat, hogy hibaüzenetet egy kötés átirányítási futásidőben. Ennek oka az, a "newVersion" Microsoft.ApplicationInsights web.config fájljában "2.7.2.0" értékre kell állítani az AI SDK-t, de alacsonyabb verziójúra változtatása nem frissíti automatikusan után.
+>**A hiba a Profilkészítő a WAD a Cloud Services részét képező megoldották a problémát.** A Cloud Services szolgáltatáshoz (1.12.2.0) WAD legújabb verzióját az App Insights SDK legújabb verzióit együttműködik. Cloud Service gazdagépek WAD automatikusan frissíti, de azt nem azonnal történik meg. Frissítés kényszerítéséhez, telepítse újra a szolgáltatást, vagy újraindíthatja a csomópontot is.
 
 Ha szeretné látni, hogy a Profiler megfelelően van-e konfigurálva az Azure Diagnostics által, tegye a következőket három: 
 1. Először ellenőrizze, hogy az Azure Diagnostics konfigurálása a tartalmát, üzembe helyezett vannak-e a vártaknak. 

@@ -93,7 +93,7 @@ Az az alábbi utasítások végrehajtásával, hogy társítja az Key Vault enge
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope 93c27d83-f79b-4cb2-8dd4-4aa716542e74
     ```
     
-    "93c27d83-f79b-4cb2-8dd4-4aa716542e74" a nyilvános felhőben Key Vault-Objektumazonosítója. A-csoportobjektum azonosítója a Key Vault a nemzeti felhőkben megtekinteni a fontos című fenti szakaszban
+    "93c27d83-f79b-4cb2-8dd4-4aa716542e74" a nyilvános felhőben Key Vault-Objektumazonosítója. A-csoportobjektum azonosítója a Key Vault a nemzeti/regionális felhőkben megtekinteni a fontos című fenti szakaszban
     
 3. Key Vault létrehozása felügyelt Tárfiók.     <br /><br />
    Az alábbi azt állítja egy 90 napos regenerációs időszakot. 90 nap után a Key Vault "1. kulcs" újragenerálása és cseréje: key1"a"2. kulcs: az aktív kulcs. Ez lezárásával befejezettként jelöli meg Key1 aktív kulcsként most. 

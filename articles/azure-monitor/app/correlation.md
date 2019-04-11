@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: d3aad8f1b032960786564bbb18f99c260fd72113
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cc2d45aee170517d7e41cbda6d92bc21067732d1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092718"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471715"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetriai korreláció
 
@@ -143,8 +143,8 @@ A [OpenTracing adatmodell-specifikáció](https://opentracing.io/) és Applicati
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `Span` a `span.kind = server`                  |
-| `Dependency`                          | `Span` a `span.kind = client`                  |
+| `Request`;  `PageView`                 | `Span` a következővel: `span.kind = server`                  |
+| `Dependency`                          | `Span` a következővel: `span.kind = client`                  |
 | `Id` a `Request` és `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
 | `Operation_ParentId`                  | `Reference` típusú `ChildOf` (a szülő span)   |
@@ -183,6 +183,11 @@ A [Javához készült Application Insights SDK](../../azure-monitor/app/java-get
 > A korrelációs funkció csak az Apache HTTPClient-n keresztül végzett hívások esetén támogatottak. Spring RestTemplate vagy Feign használja, ha mindkét használható az Apache HTTPClient technikai részletek.
 
 Több üzenetkezelési technológiák (például Kafka, RabbitMQ vagy Azure Service Bus) környezet automatikus propagálás jelenleg nem támogatott. Azonban az ilyen esetekben manuális code használatával lehetőség a `trackDependency` és `trackRequest` API-k. Az API-k egy függőségi telemetria egy üzenet, folyamatban lévő MIF-fájl a gyártó által, és a kérelem egy fogyasztó által feldolgozott üzenet jelenti. Ebben az esetben is `operation_id` és `operation_parentId` kell propagálására, az üzenet tulajdonságai.
+
+### <a name="telemetry-correlation-in-asynchronous-java-application"></a>Aszinkron Java-alkalmazás a telemetriai korreláció
+
+Aszinkron Spring Boot-alkalmazás a telemetriai adatok összefüggéseinek kövesse [ez](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications) részletes cikket. A Spring a rendszerállapot-figyelésére vonatkozó útmutatással [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) , valamint [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html). 
+
 
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>Szerepkörnév
