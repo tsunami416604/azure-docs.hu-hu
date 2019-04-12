@@ -12,33 +12,38 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 9915392f7bb12b31dce6e141383a48b69c6f70a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 55eee839e24db2ad96eb635adc488e9a119c5907
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842770"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501195"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Service Bus-üzenetsorok használata PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Ez az útmutató bemutatja, hogyan használható a Service Bus-üzenetsorok. A PHP és a használati minták írt a [php-hez készült Azure SDK-t](../php-download-sdk.md). Az ismertetett forgatókönyvek között megtalálható **üzenetsorok létrehozása**, **üzenetek küldése és fogadása**, és **üzenetsorok törlése**.
+Ebben az oktatóanyagban megismerheti, hogyan hozhat létre PHP-alkalmazások üzeneteket küldeni, illetve üzeneteket fogadhat a Service Bus-üzenetsorba. 
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Előfeltételek
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Ha nem rendelkezik egy üzenetsorba való együttműködéshez, kövesse lépéseket a [egy Service Bus-üzenetsor létrehozása az Azure portal](service-bus-quickstart-portal.md) várólista létrehozásához a cikkben.
+    1. Olvassa el a gyors **áttekintése** Service Bus **üzenetsorok**. 
+    2. Hozzon létre egy Service Bus **névtér**. 
+    3. Első a **kapcsolati karakterlánc**. 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+        > [!NOTE]
+        > Létrehozhat egy **várólista** a PHP használatával ebben az oktatóanyagban a Service Bus-névteret. 
+3. [Azure SDK a PHP-hoz](../php-download-sdk.md)
 
 ## <a name="create-a-php-application"></a>PHP-alkalmazás létrehozása
 A csak követelmény a PHP-alkalmazás létrehozása, amely hozzáfér az Azure Blob service, az osztályok a hivatkozó a [php-hez készült Azure SDK-t](../php-download-sdk.md) származó a kódon belül. Bármely fejlesztői eszközök segítségével hozzon létre az alkalmazás vagy a Jegyzettömböt.
 
 > [!NOTE]
 > A PHP-telepítés is rendelkeznie kell a [OpenSSL bővítmény](https://php.net/openssl) telepítve és engedélyezve van.
-> 
-> 
 
-Ebben az útmutatóban szolgáltatása, amely a PHP-alkalmazás helyi belül, vagy egy Azure webes szerepkör, feldolgozói szerepkör vagy webhelyén belül futó fogja használni.
+Ebben az útmutatóban service szolgáltatásokat, amelyek nem hívható meg a PHP-alkalmazás helyileg, illetve egy Azure webes szerepkör, feldolgozói szerepkör vagy webhelyén belül futó kód fogja használni.
 
 ## <a name="get-the-azure-client-libraries"></a>Az Azure-ügyfél-kódtárak beszerzése
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
@@ -72,7 +77,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 Ahol `Endpoint` formátuma általában a formátum `[yourNamespace].servicebus.windows.net`.
 
-Bármely kell használni az Azure-szolgáltatásügyfél létrehozásának a `ServicesBuilder` osztály. A következőket teheti:
+Bármely Azure-szolgáltatás ügyfél létrehozásához kell használnia a `ServicesBuilder` osztály. A következőket teheti:
 
 * Adja meg a kapcsolati karakterlánc közvetlenül azt.
 * Használja a **CloudConfigurationManager (CCM)** ellenőrizze a kapcsolati karakterlánc több külső forrás:

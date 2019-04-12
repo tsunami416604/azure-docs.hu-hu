@@ -1,6 +1,6 @@
 ---
-title: Adatgyűjtés Azure Information Protection az Azure-Sentinel-Előzetesében |} A Microsoft Docs
-description: Ismerje meg, hogyan gyűjtheti össze az Azure Information Protection Azure Sentinel-adatokat.
+title: Azure Information Protection-adatok csatlakoztatása Azure-on Előzetesben Sentinel-|} A Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat az Azure Information Protection Azure Sentinel-adatok.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7c5866d3096823f91a70b28c7c5dd1790e1b3bf8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2f970910e19b3c1ed9d262d356c49848f4248b09
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537167"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489828"
 ---
-# <a name="collect-data-from-azure-information-protection"></a>Adatokat gyűjthet az Azure Information Protection
+# <a name="connect-data-from-azure-information-protection"></a>Adatok csatlakoztatása az Azure Information Protection
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
@@ -41,7 +41,7 @@ Ha már rendelkezik Azure Information Protection, győződjön meg arról, hogy 
 Ha Azure Information Protection üzembe van helyezve és fogad adatokat, a riasztási adatok egyszerűen továbbítható Azure Sentinel-be.
 
 
-1. Az Azure-Sentinel, válassza **adatgyűjtés** és kattintson a **Azure Information Protection** csempére.
+1. Az Azure-Sentinel, válassza **adatösszekötők** és kattintson a **Azure Information Protection** csempére.
 
 2. Nyissa meg a [Azure Information Protection-portál](https://portal.azure.com/?ScannerConfiguration=true&EndpointDiscovery=true#blade/Microsoft_Azure_InformationProtection/DataClassGroupEditBlade/quickstartBlade) 
 

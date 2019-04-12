@@ -1,6 +1,6 @@
 ---
-title: Az Azure Security Center adatokat gyűjt a Azure-on Előzetesben Sentinel-|} A Microsoft Docs
-description: Ismerje meg, hogyan gyűjtheti össze az Azure Security Center Azure Sentinel-adatokat.
+title: Csatlakozás az Azure Security Center adatokat Azure Sentinel-előzetes verzió |} A Microsoft Docs
+description: Ismerje meg, hogyan Azure Sentinel-csatlakozás az Azure Security Center adatokat.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: f59c5f6a9f497a6420172996f9f327f16ffd26f9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bd6fe027da8c16157c7fce6c348e49c0a6b73ea3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242272"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490671"
 ---
-# <a name="collect-data-from-azure-security-center"></a>Az Azure Security Center adatokat gyűjteni
+# <a name="connect-data-from-azure-security-center"></a>Adatok csatlakoztatása az Azure Security Centerben
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
@@ -29,7 +29,7 @@ ms.locfileid: "57242272"
 
 
 
-Az Azure Sentinel lehetővé teszi, hogy a riasztások gyűjtése [az Azure Security Center](../security-center/security-center-intro.md) és streamelése őket az Azure-Sentinel. 
+Azure Sentinel lehetővé teszi a kapcsolódást a riasztások [az Azure Security Center](../security-center/security-center-intro.md) és streamelése őket az Azure-Sentinel. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ Az Azure Sentinel lehetővé teszi, hogy a riasztások gyűjtése [az Azure Secu
 
 ## <a name="connect-to-azure-security-center"></a>Csatlakozás az Azure Security centerhez
 
-1. Az Azure-Sentinel, válassza **adatgyűjtés** és kattintson a **az Azure Security Center** csempére.
+1. Az Azure-Sentinel, válassza **adatösszekötők** és kattintson a **az Azure Security Center** csempére.
 1. Kattintson a jobb **Connect** mellett minden egyes előfizetés, amelynek streamelése az Azure-Sentinel kívánt riasztásokat. Ellenőrizze, hogy minden egyes előfizetés frissítése az Azure Security Center Standard csomagja stream a riasztásokra az Azure-Sentinel.
 
 3. Kattintson a **Connect** (Csatlakozás) gombra.

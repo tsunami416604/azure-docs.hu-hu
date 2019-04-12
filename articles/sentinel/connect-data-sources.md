@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: a1c74f0ed9fd9b9abccfb7c2762cadf948c8fce0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ba0f584e8026fe3828ec79c4b6c0ff5a0bb89f5a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884795"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492362"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -34,9 +34,9 @@ A fedélzeti Azure Sentinel először az adatforrásokhoz való kapcsolódáshoz
 
 ![Adatgyűjtők](./media/collect-data/collect-data-page.png)
 
-## <a name="data-collection-methods"></a>Adatgyűjtési módszerek
+## <a name="data-connection-methods"></a>Kapcsolat metody dat
 
-A következő adatgyűjtési módszerek az Azure-Sentinel támogatja:
+Az alábbi adatok kapcsolat módszerek az Azure-Sentinel támogatja:
 
 - **Microsoft-szolgáltatások**:<br> Microsoft-szolgáltatásokhoz kapcsolódó natív módon, kihasználva ki a szolgáltatással az Azure alapja, néhány kattintással csatlakozhat a következő megoldásokat:
     - [Office 365](connect-office-365.md)
@@ -45,21 +45,21 @@ A következő adatgyűjtési módszerek az Azure-Sentinel támogatja:
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Azure Security Center](connect-azure-security-center.md)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Az Azure komplex veszélyforrások elleni védelem](connect-azure-atp.md)
-    - [A cloud App Security](connect-cloud-app-security.md)
-    - [Windows biztonsági események](connect-windows-security-events.md) 
+    - [Azure Komplex veszélyforrások elleni védelem](connect-azure-atp.md)
+    - [Cloud App Security](connect-cloud-app-security.md)
+    - [A Windows biztonsági eseményei](connect-windows-security-events.md) 
     - [Windows tűzfal](connect-windows-firewall.md)
 
 - **API-n keresztül külső megoldások**: Egyes adatforrásokhoz csatlakoznak, a csatlakoztatott adatforrás által biztosított API-k használatával. Általában a legtöbb biztonsági technológiákat biztosítanak egy API-k, amelyen keresztül az eseménynaplókat lehet beolvasni. Az API-k Azure Sentinel-csatlakozhat, és megadott adattípusokat gyűjt, és küldhet nekik az Azure Log Analytics. API-n keresztül csatlakoztatott készülékeket a következők:
     - [Barracuda](connect-barracuda.md)
-    - Symantec
+    - [Symantec](connect-symantec.md)
 - **Külső megoldások ügynökön keresztül**: Minden más adatforrás által végrehajtható műveleteket, valós idejű naplóstreamelés egy ügynökön keresztül, a Syslog protokollt használó Azure Sentinel csatlakoztatható legyen. <br>Legtöbb készülékek a Syslog protokollt használják a naplót tartalmazó eseményt üzenetek küldéséhez, saját maga és a naplózási adatait. A naplók formátuma érték, de a legtöbb berendezések támogatja a Common Event Format (CEF). <br>Az Azure Sentinel-ügynök, amely az OMS-ügynök alapul, konvertálja CEF naplók formázni a olyan formátumra, amely a Log Analytics által olvasódnak. A berendezés típusától függően az ügynök telepítve van a készüléken közvetlenül vagy egy dedikált Linux-kiszolgálón. A Linuxhoz készült ügynök fogad eseményeket a Syslog démon UDP-n keresztül, de azokban az esetekben, ahol nagy mennyiségű, a Syslog-események gyűjtése a Linuxos gépek várható, küldés TCP-n keresztül az ügynöknek a Syslog démonból, és ott a Log Analytics szolgáltatásba.
     - Tűzfalak, proxyk és végpontok:
         - [F5](connect-f5.md)
-        - [A Check Point](connect-checkpoint.md)
+        - [Ellenőrzőpont](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Fortinet](connect-fortinet.md)
-        - [Rendszert futtató Palo Alto](connect-paloalto.md)
+        - [Palo Alto](connect-paloalto.md)
         - [Egyéb CEF-készülékek](connect-common-event-format.md)
         - [Egyéb Syslog készülékek](connect-syslog.md)
     - DLP-megoldásokhoz

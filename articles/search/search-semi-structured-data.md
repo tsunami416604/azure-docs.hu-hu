@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4df64595f83bd7280fa781f27f3030eda3729911
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 146b19716c1d98a4be0cdabd23f224a88e499c62
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471460"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489227"
 ---
 # <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Oktatóanyag: Index, és részben strukturált adatok (JSON-blobok) keresése az Azure Search szolgáltatásban
 
@@ -37,9 +37,9 @@ Ez a rövid útmutató az alábbi szolgáltatások, eszközök és adatok haszn�
 
 [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja. 
 
-[Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok tárolásához használt.
+[Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok tárolásához.
 
-[Postman asztali alkalmazás](https://www.getpostman.com/) az Azure Search kérelmek küldésére szolgál.
+[Postman asztali alkalmazás](https://www.getpostman.com/) a kérelmek küldését az Azure Search.
 
 [Klinikai-kísérletek-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) ebben az oktatóanyagban használt adatokat tartalmaz. Töltse le és csomagolja ki ezt a fájlt a saját mappájába. Adatok származnak [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results), ebben az oktatóanyagban a konvertált JSON-ná.
 
@@ -295,7 +295,7 @@ Az oktatóanyagok után feleslegessé vált elemek az Azure Search szolgáltatá
 
 ## <a name="next-steps"></a>További lépések
 
-Cognitive Services mesterséges Intelligencia által működtetett algoritmusok csatlakoztathat egy indexelő folyamatot. Következő lépésként folytassa az alábbi oktatóanyaggal.
+Számos megközelítés és JSON-blobok indexelése több lehetőségei vannak. A következő lépésben tekintse át, és a különböző lehetőségek mit a legjobban a forgatókönyv teszteléséhez.
 
 > [!div class="nextstepaction"]
-> [AI-indexelő](cognitive-search-tutorial-blob.md)
+> [Az Azure Search Blob indexelőjével JSON-blobok indexelése](search-howto-index-json-blobs.md)

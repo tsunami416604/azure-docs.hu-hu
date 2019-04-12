@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
-ms.openlocfilehash: 0b8b892f02e54c3b0ddb155af97ce63ff115bb1f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6ec43b06ce266b9ceaddb5dd21cbf52f509d6596
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522937"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495908"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-tevékenység az Azure Data Factoryban
 A web hook tevékenység segítségével szabályozhatja a folyamatok végrehajtásának az egyéni kódok segítségével. A webhook tevékenység használja, ügyfelek a végpont hívja, és adja át a visszahívási URL-címet. A folyamat futásának megvárja, amíg a következő tevékenységnek a folytatás előtt meg kell hívni a visszahívás.

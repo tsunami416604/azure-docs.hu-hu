@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 03/27/2019
 ms.author: celested
-ms.reviewer: zawad
+ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86424a7c797dfd7e73ad5f0e56929616d9653b3d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a7de892143e1c69953cc60429ea0d24df194f0df
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170975"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500481"
 ---
-# <a name="understanding-azure-ad-application-consent-experiences"></a>Az Azure AD alkalmazás jóváhagyásának ismertetése során lép fel.
+# <a name="understanding-azure-ad-application-consent-experiences"></a>Az Azure AD-alkalmazások hozzájárulási folyamatának ismertetése
 
 Ismerje meg, további információt az Azure Active Directory (Azure AD-) alkalmazás hozzájárulás megadása a felhasználói élmény. Így intelligensen kezelheti az alkalmazásokat a szervezet számára, illetve a jóváhagyás a zökkenőmentes felhasználói élmény alkalmazások fejlesztéséhez.
 
@@ -85,4 +85,5 @@ Az alábbiakban a hozzájárulási megtapasztalhatják, hogy egy felhasználó j
 
 ## <a name="next-steps"></a>További lépések
 - Részletes áttekintést [hogyan valósítja meg az Azure ad-ben hozzájárulási keretrendszer az hozzájárulási](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Ismerje meg részletesebben olvashat róluk, a [több-bérlős alkalmazás használatát a hozzájárulási keretrendszer](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) megvalósítása a "user" és "rendszergazda" engedélyt, támogató további speciális többrétegű alkalmazásminták.
+- Ismerje meg részletesebben olvashat róluk, a [több-bérlős alkalmazás használatát a hozzájárulási keretrendszer](active-directory-devhowto-multi-tenant-overview.md) megvalósítása a "user" és "rendszergazda" engedélyt, támogató további speciális többrétegű alkalmazásminták.
+- Ismerje meg, [konfigurálása az alkalmazás közzétevőjének tartománya](howto-configure-publisher-domain.md).

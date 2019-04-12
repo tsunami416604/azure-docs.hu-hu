@@ -1,5 +1,5 @@
 ---
-title: Az Azure AD v2.0 ASP.NET Core webes alkalmazás – rövid útmutató |} A Microsoft Docs
+title: A Microsoft identity platform ASP.NET Core webes alkalmazás – rövid útmutató |} Az Azure
 description: Az ASP.NET Core-webalkalmazás OpenID Connect használatával a Microsoft bejelentkezési megvalósítása
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/03/2019
+ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dfa78177974499badc29b7e83556b6a91db7979
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: afcfd8c581ad1707a996ae5bd0c3706179ddb0e4
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005652"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505347"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: Bejelentkezés Microsoft-hozzáadása az ASP.NET Core-webalkalmazás
 
@@ -30,7 +30,7 @@ ms.locfileid: "59005652"
 
 Ebben a rövid útmutatóban megtudhatja, hogyan bejelentkezhet az ASP.NET Core-webalkalmazás a személyes fiókok (hotmail.com, outlook.com, mások) és munkahelyi és iskolai fiókok minden olyan Azure Active Directory (Azure AD)-példányból.
 
-![Ez a rövid útmutató által létrehozott mintaalkalmazás működését mutatja](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro-updated.png)
+![Ez a rövid útmutató által létrehozott mintaalkalmazás működését mutatja](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
@@ -120,7 +120,7 @@ public void ConfigureServices(IServiceCollection services)
 
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
   {
-    options.Authority = options.Authority + "/v2.0/";         // Azure AD v2.0
+    options.Authority = options.Authority + "/v2.0/";         // Microsoft identity platform
 
     options.TokenValidationParameters.ValidateIssuer = false; // accept several tenants (here simplified)
   });
@@ -138,13 +138,17 @@ public void ConfigureServices(IServiceCollection services)
 
 A metódus `AddAuthentication` konfigurálja a szolgáltatást a cookie-alapú hitelesítést, amely a használt böngésző forgatókönyvek, valamint állítsa be a kihívás az OpenID Connect hozzáadásához. 
 
-A sor tartalmazó `.AddAzureAd` az Azure AD-hitelesítés hozzáadása az alkalmazáshoz. Jelentkezzen be az Azure AD v2.0-végpont használatával, majd van konfigurálva.
+A sor tartalmazó `.AddAzureAd` a Microsoft identity platform hitelesítés hozzáadása az alkalmazáshoz. Jelentkezzen be a Microsoft identity platform végpont használatával, majd van konfigurálva.
 
 > |Ahol  |  |
 > |---------|---------|
 > | ClientID  | Az alkalmazás (ügyfél) Alkalmazásazonosítója regisztrálva az Azure Portalon. |
 > | szolgáltató | Az STS végpont a felhasználó hitelesítéséhez. Általában ez a <https://login.microsoftonline.com/{tenant}/v2.0> nyilvános felhő, ahol {tenant}, a bérlő vagy a bérlő Azonosítóját, vagy *közös* a közös végpontot (több-bérlős alkalmazásokhoz használt) mutató hivatkozás |
 > | TokenValidationParameters | A jogkivonatok érvényesítéséhez használatos paraméterek listája. Ebben az esetben `ValidateIssuer` értékre van állítva `false` jelzi, hogy fogadja a semmilyen személyes vagy munkahelyi vagy iskolai fiókkal történő bejelentkezések. |
+
+
+> [!NOTE]
+> Beállítás `ValidateIssuer = false` van ebben a rövid útmutatóban egyszerűsítését. Valós alkalmazások érvényesítenie kell a kibocsátó megtudhatja, hogyan valósítható meg mintáiban találhat.
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Egy vezérlő vagy egy vezérlő metódusának védelme
 
@@ -154,8 +158,7 @@ Egy tartományvezérlő vagy a tartományvezérlő módszerek használatával v�
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a GitHub-adattárat az ASP.NET Core gyorsútmutatóban való hitelesítés hozzáadása egy új ASP.NET Core webes alkalmazás további információk:
+Tekintse meg a GitHub-adattárban való hitelesítés hozzáadása egy új ASP.NET Core webes alkalmazás további információk az ASP.NET Core oktatóanyag meghívása a Microsoft Graph és az egyéb Microsoft APIs, hogyan hívhat meg a saját API-k hozzáadása engedélyezési, hogyan jelentkezzen be a nemzeti felhőkben, vagy a közösségi identitásuk és más felhasználók:
 
 > [!div class="nextstepaction"]
-> [Az ASP.NET Core Web App mintakódot](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
-
+> [ASP.NET Core Web App tutorial](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

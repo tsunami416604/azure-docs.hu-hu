@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: cweining
-ms.openlocfilehash: 5787db7e2b726a10891fcabb0b215399d0d4e0ae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884307"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494748"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Az ASP.NET Core Azure Linux-webalkalmazások Application Insights Profiler-profil
 
@@ -39,21 +39,40 @@ Ez az útmutató befejeztével az alkalmazás például a képen látható a nyo
 
 1. Nyissa meg a parancssor ablakát a gépen. Az alábbi utasításokat az összes Windows, Linux és Mac fejlesztési környezetek esetében működik.
 
-2. Az ASP.NET Core MVC webalkalmazás létrehozásához:
+1. Az ASP.NET Core MVC webalkalmazás létrehozásához:
 
     ```
     dotnet new mvc -n LinuxProfilerTest
     ```
 
-3. A munkakönyvtárban módosítsa a projekt gyökérkönyvtárába.
+1. A munkakönyvtárban módosítsa a projekt gyökérkönyvtárába.
 
-4. Adja hozzá a NuGet-csomagot a Profiler-nyomkövetések gyűjtése:
+1. Adja hozzá a NuGet-csomagot a Profiler-nyomkövetések gyűjtése:
 
-    ```
+    ```shell
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-5. Adjon hozzá egy sort a kód a **HomeController.cs** véletlenszerűen késleltetheti néhány másodpercig szakaszban:
+1. Engedélyezze az Application Insights a program.cs fájlban:
+
+    ```csharp
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .UseApplicationInsights() // Add this line of code to Enable Application Insights
+            .UseStartup<Startup>();
+    ```
+    
+1. A Startup.cs fájlban Profiler engedélyezése:
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddServiceProfiler(); // Add this line of code to Enable Profiler
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+    }
+    ```
+
+1. Adjon hozzá egy sort a kód a **HomeController.cs** véletlenszerűen késleltetheti néhány másodpercig szakaszban:
 
     ```csharp
         using System.Threading;
@@ -68,7 +87,7 @@ Ez az útmutató befejeztével az alkalmazás például a képen látható a nyo
             }
     ```
 
-6. Mentse és véglegesítse a módosításokat a helyi tárházban:
+1. Mentse és véglegesítse a módosításokat a helyi tárházban:
 
     ```
         git init
@@ -143,10 +162,7 @@ Az alábbi példához hasonló kimenetnek kell megjelennie:
 
     ```
     APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
-
-    ![Az Alkalmazásbeállítások konfigurálása](./media/profiler-aspnetcore-linux/set-appsettings.png)
 
     Ha a beállítások módosítják, a hely automatikusan újraindul. Miután az új beállításokat alkalmazzák, a Profiler azonnal két percig fut. A Profiler majd két percig óránként fut.
 
@@ -160,16 +176,8 @@ Az alábbi példához hasonló kimenetnek kell megjelennie:
 
 ## <a name="known-issues"></a>Ismert problémák
 
-### <a name="the-enable-action-in-the-profiler-configuration-pane-doesnt-work"></a>Az engedélyezés műveletre a Profiler konfiguráció panelen nem működik
-
-> [!NOTE]
-> Ha alkalmazását a Linuxon futó App Service használatával, nem kell újra engedélyezni a Profiler az a **teljesítmény** ablaktáblán az Application Insights portálon. Például a NuGet-csomagot a projektben, és állítsa be az Application Insights **Rendszerállapotkulcsot** értéket a webalkalmazás-beállítások a Profiler engedélyezéséhez.
-
-Ha követi a munkafolyamat engedélyezése [Application Insights Profiler az Windows](./profiler.md) válassza **engedélyezése** a a **Profiler konfigurálása** ablaktáblán hibaüzenetet kap. Az engedélyezés műveletet próbál meg telepíteni a Profiler-ügynök Windows verziója a Linux-környezetet.
-
-Dolgozunk a probléma megoldása.
-
-![Ne kísérelje meg újra engedélyezni a Profiler a teljesítmény panelen](./media/profiler-aspnetcore-linux/issue-enable-profiler.png)
+### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>Profil gombra a Linux Profiler nem működik.
+A Linux-verzióját az App Insights profiler még nem támogatja az igény szerinti profilkészítés a profilt használó most gombra.
 
 
 ## <a name="next-steps"></a>További lépések

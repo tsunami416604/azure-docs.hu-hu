@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: e228c49d4ad8e691e59f76a9b6fb9013f7b1bb3a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 68598d4bb7fb9fd928a7b664e6ce0c02220ca4bb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890967"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503084"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>A Microsoft-hitelesítési tár (MSAL) segítségével a felhasználók bejelentkeztetése
 
@@ -124,19 +124,19 @@ if (!isIE) {
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
 
-Miután egy felhasználó rákattint a **bejelentkezés** gomb, először a `signIn` metódust hívja `loginPopup` bejelentkezni a felhasználó. Ez a módszer eredményezi az előugró ablak megnyitása a *Microsoft Azure Active Directory v2.0-végpont* kérni, és a felhasználó hitelesítő adatainak ellenőrzésére. Eredményeként a bejelentkezés sikeres, a felhasználó visszatérhet az eredeti átirányítási *index.html* oldalon, és a egy jogkivonat érkezett, által feldolgozott `msal.js` és a jogkivonatban található az adatbázisban tárolja. Ez a token más néven a *azonosító jogkivonat* és alapvető információkat szeretne a felhasználó, például a felhasználó megjelenítendő nevét tartalmazza. Ha azt tervezi, bármilyen célból a token által biztosított adatokat használja, ellenőrizze, hogy ez a token érvényesíti a háttérkiszolgáló garantálja, hogy a jogkivonat érvényes felhasználónak az alkalmazáshoz kiállított szeretne.
+Miután egy felhasználó rákattint a **bejelentkezés** gomb, először a `signIn` metódust hívja `loginPopup` bejelentkezni a felhasználó. Ez a módszer eredményezi az előugró ablak megnyitása a *a Microsoft identity platform endpoint* kérni, és a felhasználó hitelesítő adatainak ellenőrzésére. Eredményeként a bejelentkezés sikeres, a felhasználó visszatérhet az eredeti átirányítási *index.html* oldalon, és a egy jogkivonat érkezett, által feldolgozott `msal.js` és a jogkivonatban található az adatbázisban tárolja. Ez a token más néven a *azonosító jogkivonat* és alapvető információkat szeretne a felhasználó, például a felhasználó megjelenítendő nevét tartalmazza. Ha azt tervezi, bármilyen célból a token által biztosított adatokat használja, ellenőrizze, hogy ez a token érvényesíti a háttérkiszolgáló garantálja, hogy a jogkivonat érvényes felhasználónak az alkalmazáshoz kiállított szeretne.
 
 Az ez által generált SPA hívások útmutató `acquireTokenSilent` és/vagy `acquireTokenPopup` beszerezni egy *hozzáférési jogkivonat* kérdezhetők le a Microsoft Graph API a felhasználói profil adatait. Ha egy mintát, amely ellenőrzi az azonosító jogkivonat, vessen egy pillantást [ez](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "active-directory-javascript-singlepageapp-dotnet-webapi-v2 GitHub-minta") mintaalkalmazás github – a mintát használja egy ASP .NET webes API a jogkivonat érvényesítésére.
 
 #### <a name="getting-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Az első bejelentkezés után, nem szeretné, hogy kérje meg a felhasználók számára, hogy hitelesítse magát újra, minden alkalommal, amikor szükségük van egy erőforrás – így eléréséhez egy jogkivonat kérelmezéséhez *acquireTokenSilent* használandó a legtöbbször szerzi be a jogkivonatokat. Vannak helyzetek, de ilyen például, hogy szeretne-e kommunikálni az Azure Active Directory v2.0-végpont – a felhasználókat:
+Az első bejelentkezés után, nem szeretné, hogy kérje meg a felhasználók számára, hogy hitelesítse magát újra, minden alkalommal, amikor szükségük van egy erőforrás – így eléréséhez egy jogkivonat kérelmezéséhez *acquireTokenSilent* használandó a legtöbbször szerzi be a jogkivonatokat. Vannak helyzetek, de ilyen például, hogy szeretne-e kommunikálni a Microsoft identity platform végpont – a felhasználókat:
 
 - Lehet, hogy a felhasználóknak újból meg kell adniuk a hitelesítési adataikat, mert a jelszó lejárt
 - Az alkalmazás olyan erőforráshoz kér hozzáférést, amelyhez szükséges a felhasználó hozzájárulása
 - Kétfaktoros hitelesítésre van szükség
 
-Hívása a *acquireTokenPopup(scope)* egy előugró ablak eredményez (vagy *acquireTokenRedirect(scope)* eredményez a felhasználók átirányítása az Azure Active Directory v2.0-végpont), a felhasználóknak kell megerősíti a hitelesítő adataikat, engedélyezi a hogy a szükséges erőforrás vagy a kéttényezős hitelesítés elvégzése kommunikálhatnak egymással.
+Hívása a *acquireTokenPopup(scope)* egy előugró ablak eredményez (vagy *acquireTokenRedirect(scope)* eredményez a felhasználók átirányítása a Microsoft identity platform végpont), a felhasználóknak kell megerősíti a hitelesítő adataikat, engedélyezi a hogy a szükséges erőforrás vagy a kéttényezős hitelesítés elvégzése kommunikálhatnak egymással.
 
 #### <a name="getting-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 

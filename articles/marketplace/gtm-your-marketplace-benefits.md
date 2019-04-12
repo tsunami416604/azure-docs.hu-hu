@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 3fa4fb9fb7accfbe4517e2bf917a3df31ea10fa7
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 896e5a3f3b5c9f7d217340c396707718adf93dbb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887250"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489571"
 ---
 # <a name="your-marketplace-benefits"></a>A piactér előnyeit
 
@@ -73,7 +73,7 @@ Az alábbi táblázat a jogosultsági előírásoknak összefoglalásképpen:
 
 \* Silver vagy gold kompetencia szükséges. <br>
 \*\* Gold kompetencia szükséges. <br>
-\*\*\* Gold kompetenciaszintű és értékesítési listaelem OCP-katalógusban van szükség. <br>
+\*\*\* Gold kompetenciaszintű és közös értékesítési program készen áll a Partner listaelemek van szükség. <br>
 ^ Transact csak alkalmazható az Azure Marketplace-en.
 
 ## <a name="next-steps"></a>További lépések

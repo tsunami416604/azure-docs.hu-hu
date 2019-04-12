@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/21/2019
-ms.author: jdial;anavin
-ms.openlocfilehash: e0a5674d434d997d04bfd42ca0e0863c11046d69
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/01/2019
+ms.author: anavin
+ms.openlocfilehash: fdc3a0030859e97cb81b8b9f6a66de1901b6eb3b
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882903"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491287"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy egy virtuális hálózati társviszony törlése
 
@@ -113,7 +113,7 @@ Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációhoz, de nem 
 - <a name="cross-region"></a>Az ugyanabban a régióban, vagy eltérő régiókban lévő virtuális hálózatok társviszonyt. Különböző régiókban található virtuális hálózatok társviszony-létesítés is nevezik *globális virtuális társhálózatok létesítésének*. 
 - Amikor hoz létre, globális társviszonyt, a társviszonyban álló virtuális hálózatba bármely Azure nyilvános felhő régióban vagy a China cloud régiók vagy a kormányzati felhő-régiók is létezik. Nem lehet a felhők között társviszonyt létesíteni. Azure nyilvános felhő virtuális hálózat például nem létesíthető társviszony az Azure China cloud egy virtuális hálózathoz.
 - Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő alapvető belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. Alapszintű Load Balancer támogatása csak az azonos régión belüli létezik. A Standard Load Balancer támogatását is, a virtuális hálózatok közötti Társviszony és a globális virtuális társhálózatok létesítésének létezik.
-- Távoli átjárók használata, vagy átjárótranzit engedélyezése a globális virtuális társhálózatok előzetes verzióban érhető el. Az előzetes verzió érhető el minden Azure-régió, Kína felhő-régiók és kormányzati felhő-régiók. Nincs engedélyezési nem szükséges. Tesztelheti – parancssori felület, a PowerShell, a sablonok vagy az API előzetes verzióban érhető el. Portál nem támogatott az előzetes verzióban érhető el.
+- Távoli átjárók használata, vagy a globális virtuális társhálózatok és helyileg társviszonyban álló virtuális hálózatba átjárótranzit engedélyezése.
 - A virtuális hálózatok lehetnek azonos vagy eltérő előfizetésekben. Különböző előfizetésekben található virtuális hálózatok társviszonyba állítása akkor, ha mindkét előfizetés társíthatók az azonos vagy eltérő Azure Active Directory-bérlő. Ha még nem rendelkezik az AD-bérlő, [hozzon létre egyet](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). A különböző Azure Active Directory-bérlőkhöz társított előfizetésekben virtuális hálózatok közötti társviszony-létesítés támogatása a portál nem érhető el. Parancssori felület, a PowerShell vagy a sablonok is használhatja.
 - A virtuális hálózat társviszonyt, egymást nem átfedő IP-címtereket kell rendelkeznie.
 - Adja hozzá a címtartományok nem, vagy törlése címtartományokat egy virtuális hálózat címtere egy virtuális hálózatot és egy másik virtuális hálózat társviszonyba. Hozzáadása vagy törlése címtartományokat, a társviszony-létesítés törlése, hozzáadása vagy eltávolítása a címtartományt, majd újra létrehozza a társviszonyt. Adja hozzá a-címtartományokat, vagy távolítsa el a címtartomány a virtuális hálózatok, lásd: [virtuális hálózatok kezelése](manage-virtual-network.md).

@@ -9,19 +9,19 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 36b9e6c97a10f7608a4faaef005ca4eeb1fc09c6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811528"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492719"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Azure Diagnostics 1.0-konfigurációs séma
 > [!NOTE]
 > Az Azure Diagnostics az a komponens, teljesítményszámlálók és más statisztikák gyűjtését az Azure Virtual Machines, Virtual Machine Scale Sets, Service Fabric és Cloud Services segítségével.  Ez a lap csak akkor jelentősége, ha ezek a szolgáltatások valamelyikét használja.
 >
 
-Egyéb Microsoft-diagnosztika termékek, mint az Azure Monitor az Application Insights és a Log Analytics az Azure Diagnostics használnak.
+Egyéb Microsoft-diagnosztikai termékek, mint az Azure Monitor, amely magában foglalja az Application Insights és a Log Analytics az Azure Diagnostics használnak.
 
 Az Azure Diagnostics-konfigurációs fájl határozza meg a diagnosztikai figyelő inicializálása használt értékeket. Ez a fájl inicializálása a diagnosztikai beállításokat a diagnosztikai figyelő indításakor szolgál.  
 
@@ -154,7 +154,7 @@ Attribútumok:
 
 |Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
-|**container**|sztring|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
+|**tároló**|sztring|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
 |**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
 
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs elem  
@@ -166,7 +166,7 @@ Attribútumok:
 
 |Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
-|**container**|sztring|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
+|**tároló**|sztring|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
 |**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
 
 ##  <a name="iislogs-element"></a>IISLogs elem  
@@ -178,7 +178,7 @@ Attribútumok:
 
 |Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
-|**container**|sztring|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
+|**tároló**|sztring|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
 |**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
 
 ## <a name="datasources-element"></a>Adatforrások elem  
@@ -195,7 +195,7 @@ Attribútumok:
 
 |Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
-|**container**|sztring|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
+|**tároló**|sztring|A könyvtár tartalmának esetén át lehet adni a tároló neve.|  
 |**directoryQuotaInMB**|unsignedInt|Választható. Adja meg a könyvtár maximális mérete (MB).<br /><br /> Az alapértelmezett érték a 0.|  
 
 ## <a name="absolute-element"></a>Abszolút elem  
@@ -207,7 +207,7 @@ Attribútumok:
 
 |Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
-|**path**|sztring|Kötelező. Figyelni kívánt könyvtár abszolút elérési útja.|  
+|**elérési út**|sztring|Kötelező. Figyelni kívánt könyvtár abszolút elérési útja.|  
 |**expandEnvironment**|logikai|Kötelező. Ha beállítása **igaz**, az elérési út környezeti változók vannak bontva.|  
 
 ## <a name="localresource-element"></a>LocalResource elem  
@@ -219,7 +219,7 @@ Attribútumok:
 
 |Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
-|**name**|sztring|Kötelező. A helyi erőforrás, amely tartalmazza a figyelni kívánt könyvtár neve.|  
+|**név**|sztring|Kötelező. A helyi erőforrás, amely tartalmazza a figyelni kívánt könyvtár neve.|  
 |**relativePath**|sztring|Kötelező. Az elérési útját a helyi erőforrás monitorozásához viszonyítva.|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters Element  
@@ -269,5 +269,5 @@ Attribútumok:
 
 |Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
-|**name**|sztring|Kötelező. Adja meg a napló gyűjtése XPath kifejezés.|  
+|**név**|sztring|Kötelező. Adja meg a napló gyűjtése XPath kifejezés.|  
 

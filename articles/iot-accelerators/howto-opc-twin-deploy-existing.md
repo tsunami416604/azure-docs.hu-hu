@@ -1,5 +1,5 @@
 ---
-title: Egy meglévő projekt üzembe helyezése az Azure IoT OPC UA-eszköz felügyeleti modul |} A Microsoft Docs
+title: Az OPC-Twin-modul üzembe helyezése meglévő Azure-projekt |} A Microsoft Docs
 description: Hogyan helyezhet üzembe egy meglévő projekt OPC Ikereszköz.
 author: dominicbetts
 ms.author: dobett
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: dcf6acca344fe2a34fdc48fe89c5a1ee62b10b23
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6bdfeefc366734aa10dbaccec69bac8e0b41103f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59255886"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493246"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Az OPC-Ikereszköz egy meglévő projekt üzembe helyezése
 
-Az OPC-Ikereszköz modul az IoT Edge-ben fut, és számos biztonsági szolgáltatások biztosít az OPC-Ikereszköz és beállításjegyzék-szolgáltatásokhoz. 
+Az OPC-Twin-modul az IoT Edge-ben fut, és számos biztonsági szolgáltatások biztosít az OPC-Twin és beállításjegyzék-szolgáltatásokhoz. 
 
-Az OPC-Ikereszköz micro szolgáltatás lehetővé teszi a feldolgozó kezelők és a egy OPC Ikereszköz IoT Edge-modul segítségével a gyárban OPC UA eszközök közötti kommunikáció. A micro szolgáltatás OPC UA szolgáltatások (Tallózás, olvasási, írási és végrehajtási) a REST API-n keresztül tesz elérhetővé. 
+Az OPC-Twin micro szolgáltatás lehetővé teszi a feldolgozó kezelők és a egy OPC Ikereszköz IoT Edge-modul segítségével a gyárban OPC UA eszközök közötti kommunikáció. A micro szolgáltatás OPC UA szolgáltatások (Tallózás, olvasási, írási és végrehajtási) a REST API-n keresztül tesz elérhetővé. 
 
-Az OPC UA-Eszközjegyzék micro szolgáltatás regisztrált OPC UA-alkalmazások és azok végpontjait hozzáférést biztosít. Kezelők és a rendszergazdák regisztrálhat és új OPC UA-alkalmazások regisztrációját és keresse meg a meglévőket, beleértve azok végpontjait. Alkalmazás-és végpont-felügyeleten kívül a beállításjegyzék szolgáltatás regisztrált OPC Device Twin IoT Edge-modulok is összegyűjti. A szolgáltatás API-t biztosít edge modul funkcióinak, például vezérlő elindítása vagy leállítása folyamatban van a kiszolgáló felderítése (keresési szolgáltatások) vagy az OPC-Twin micro szolgáltatással elérhető új végpont a párok aktiválása.
+Az OPC UA-eszköz beállításjegyzék mikroszolgáltatás regisztrált OPC UA-alkalmazások és azok végpontjait hozzáférést biztosít. Kezelők és a rendszergazdák regisztrálhat és új OPC UA-alkalmazások regisztrációját és keresse meg a meglévőket, beleértve azok végpontjait. Alkalmazás-és végpont-felügyeleten kívül a beállításjegyzék szolgáltatás regisztrált OPC Ikereszköz IoT Edge-modulok is összegyűjti. A szolgáltatás API-t biztosít edge modul funkcióinak, például vezérlő elindítása vagy leállítása folyamatban van a kiszolgáló felderítése (keresési szolgáltatások) vagy az OPC-Twin micro szolgáltatással elérhető új végpont a párok aktiválása.
 
-A modul középpontjában a felügyelő identitását. A felügyelő kezeli a végpont ikereszköz, amely megfelel az OPC UA-kiszolgálói végpontot, amelyek akkor aktiválódnak, a megfelelő OPC UA-beállításjegyzék API használatával. Ez a végpont párok OPC UA JSON az OPC UA bináris üzenetekről, amelyeken a felügyelt endpoint állapot-nyilvántartó biztonságos csatornán keresztül érkeznek be a felhőben futó OPC Ikereszköz micro szolgáltatásból származó fordítja le. A felügyelő is felderítési szolgáltatást nyújt, amelyek eszköz felderítési eseményeket küld az OPC UA-eszköz regisztrációs szolgáltatás feldolgozásra, ahol ezek az események eredményez frissítések az OPC UA-beállításjegyzékbe.  Ez a cikk bemutatja, hogyan helyezhet üzembe egy meglévő projekt az OPC-Twin-modul. 
+A modul középpontjában a felügyelő identitását. A felügyelő kezeli a végpont ikereszköz, amely megfelel az OPC UA-kiszolgálói végpontot, amelyek akkor aktiválódnak, a megfelelő OPC UA-beállításjegyzék API használatával. Ez a végpont párok OPC UA JSON az OPC UA bináris üzenetekről, amelyeken a felügyelt endpoint állapot-nyilvántartó biztonságos csatornán keresztül érkeznek be a felhőben futó OPC Ikereszköz micro szolgáltatásból származó fordítja le. A felügyelő is felderítési szolgáltatást nyújt, amelyek eszköz-felderítési eseményeket küldeni az OPC UA eszköz bevezetési szolgáltatásnak feldolgozásra, ahol ezek az események eredményez frissítések az OPC UA-beállításjegyzékbe.  Ez a cikk bemutatja, hogyan helyezhet üzembe egy meglévő projekt az OPC-Twin-modul. 
 
 > [!NOTE]
 > Üzembe helyezés részleteit és az utasítások további információkért lásd: a GitHub [tárház](https://github.com/Azure/azure-iiot-opc-twin-module).
@@ -71,7 +71,7 @@ Az üzembe helyezési parancsfájl megpróbálja két AAD-alkalmazás regisztrá
 2. Azt is megteheti üzembe helyezése saját AAD-bérlő egy másik előfizetésben, indítsa újra a parancsfájlt, és válassza a használatára.
 
 > [!WARNING]
-> Soha ne folytassa a hitelesítés nélkül.  Ha ezt választja, az internetről nem hitelesített bárki is hozzáférhet az OPC-Eszközfelügyelet végpontok.   Mindig választhatják a ["local" üzembe helyezési lehetőség](howto-opc-twin-deploy-dependencies.md) a próbához.
+> Soha ne folytassa a hitelesítés nélkül.  Ha ezt választja, bárki a OPC páros végpontjainak férhet hozzá az internetről nem hitelesített.   Mindig választhatják a ["local" üzembe helyezési lehetőség](howto-opc-twin-deploy-dependencies.md) a próbához.
 
 ## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>Egy teljes körű ipari IoT szolgáltatásokat bemutató üzembe helyezése
 

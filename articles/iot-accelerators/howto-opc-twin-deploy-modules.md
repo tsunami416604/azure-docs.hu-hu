@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT OPC UA eszköz teljesen új modul üzembe helyezése |} A Microsoft Docs
+title: OPC Ikereszköz modul üzembe helyezése az Azure-ban teljesen új |} A Microsoft Docs
 description: Hogyan helyezheti üzembe az OPC-Twin sablon nélkül.
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: fe1b141ecacbd1d96c217322e69709828a3bf36c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f470beb79e69b5a4a3febeb6a433c48490b96cf7
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759477"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491356"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Ikereszköz modul és függőségei előzmények üzembe helyezése
 
-Az OPC-Ikereszköz modul az IoT Edge-ben fut, és számos biztonsági szolgáltatások biztosít az OPC-Ikereszköz és beállításjegyzék-szolgáltatásokhoz. 
+Az OPC-Twin-modul az IoT Edge-ben fut, és számos biztonsági szolgáltatások az OPC-ikereszközön és beállításjegyzék-szolgáltatásokhoz biztosít. 
 
 Több lehetőség-modulok üzembe helyezéséhez a [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) átjárót, többek között
 
@@ -109,7 +109,7 @@ A modulok üzembe helyezése az Azure IoT Edge-átjáróeszköz legegyszerűbben
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. Az OPC UA-eszköz management üzembe helyezése [függőségek](howto-opc-twin-deploy-dependencies.md) és az eredményül kapott `.env` fájlt. Vegye figyelembe az üzembe helyezett `hub name` , a `PCS_IOTHUBREACT_HUB_NAME` változót a létrejövő `.env` fájlt.
+1. Az OPC-Twin üzembe [függőségek](howto-opc-twin-deploy-dependencies.md) és az eredményül kapott `.env` fájlt. Vegye figyelembe az üzembe helyezett `hub name` , a `PCS_IOTHUBREACT_HUB_NAME` változót a létrejövő `.env` fájlt.
 
 2. Regisztráljon, és indítsa el a [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) vagy [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge-átjáró, és jegyezze fel annak `device id`.
 
@@ -205,7 +205,7 @@ Hiba történt a hibaelhárítási és a hibakeresés, akkor hasznos, ha az Edge
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. Az OPC UA-eszköz management üzembe helyezése [függőségek](howto-opc-twin-deploy-dependencies.md).
+1. Az OPC-Twin üzembe [függőségek](howto-opc-twin-deploy-dependencies.md).
 
 2. Telepítés [Docker CE (18.02.0+)](https://www.docker.com/community-edition) a [Windows](https://docs.docker.com/docker-for-windows/install/), [macOS](https://docs.docker.com/docker-for-mac/install/) vagy [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce).
 

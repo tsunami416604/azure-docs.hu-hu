@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/11/2018
+ms.date: 04/10/2019
 ms.author: aljo
-ms.openlocfilehash: 4b4ddd765996d8bb936d2abda4015f37d6df9098
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 97f75438cf6401b4e2d5043038c1ca32b7022e7c
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361542"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501297"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
 Ez a cikk ismerteti a Service Fabric-fürtöt, amely testre szabható a különböző fabric beállításait. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. További információkért lásd: [egy Azure-fürtön konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Az önálló fürtök esetén, testre szabható beállítások frissítése a *ClusterConfig.json* fájl- és a egy konfigurálási frissítse a fürtön. További információkért lásd: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -403,10 +403,11 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 
 | **Paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
+|AutomaticUnprovisionInterval|Időtartam, az alapértelmezett érték Common::TimeSpan::FromMinutes(5)|Dinamikus|Adja meg az időtartam másodpercben. A törlési időközt, az engedélyezett alkalmazás automatikus típus tisztításakor alkalmazástípus regisztrációját.|
 |AzureStorageMaxConnections | Int, alapértelmezett érték az 5000-es |Dinamikus|Az azure storage egyidejű kapcsolatok maximális száma. |
 |AzureStorageMaxWorkerThreads | int, alapértelmezett értéke 25 |Dinamikus|Párhuzamos munkaszálak maximális száma. |
 |AzureStorageOperationTimeout | Idő (másodpercben), alapértelmezett érték a 6000 |Dinamikus|Adja meg az időtartam másodpercben. Időtúllépés xstore művelet elvégzéséhez. |
-|CleanupApplicationPackageOnProvisionSuccess|bool, alapértelmezett érték a hamis |Dinamikus|Ez a konfiguráció engedélyezése vagy letiltása az automatikus törléséhez az alkalmazáscsomagot a sikeres üzembe helyezése. |
+|CleanupApplicationPackageOnProvisionSuccess|bool, alapértelmezett érték a hamis |Dinamikus|Engedélyezi vagy letiltja az automatikus törléséhez az alkalmazáscsomagot a sikeres üzembe helyezése. |
 |CleanupUnusedApplicationTypes|bool, alapértelmezett érték a hamis |Dinamikus|Ebben a konfigurációban, ha engedélyezve van, lehetővé teszi, hogy automatikus regisztrációját a nem használt alkalmazástípus-verziók a rendszer kihagyja a legújabb három fel nem használt verziókat, és ezáltal a lemezképtároló által elfoglalt lemezterület-csonkolás. Az automatikus tisztítás sikeres üzembe helyezése, hogy adott alkalmazástípushoz végén indul, és akkor is fut, az alkalmazás összes típusára vonatkozóan naponta egyszer rendszeres időközönként. Hagyja ki a fel nem használt verziók száma nem konfigurálható "MaxUnusedAppTypeVersionsToKeep" paraméter használatával. |
 |DisableChecksumValidation | Bool, alapértelmezett érték a False (hamis) |Statikus| Ez a konfiguráció lehetővé teszi számunkra, hogy engedélyezi vagy letiltja az alkalmazások üzembe helyezése során ellenőrzőösszegének ellenőrzése. |
 |DisableServerSideCopy | Bool, alapértelmezett érték a False (hamis) |Statikus|Ez a konfiguráció engedélyezése vagy letiltása az alkalmazáscsomagot a ImageStore a kiszolgálóoldali másolatát alkalmazások üzembe helyezése során. |

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 5a1ff10901d10fb274a6fa1418f04e1f20113cb7
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 86113246fab399e8364653198e9a6971317e3f2c
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203599"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505816"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -27,11 +27,11 @@ Ez az útmutató bemutatja, hogyan valósíthatók meg jelentkezzen be a Microso
 
 Ez az útmutató végén az alkalmazás fogja tudni fogadja el a bejelentkezések a személyes fiókok (beleértve az Outlook.com-os, live.com, és mások) valamint a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely integrálva van az Azure Active Directory.
 
-> Ez az útmutató a Visual Studio 2015 Update 3 vagy a Visual Studio 2017 van szükség.  Nincs telepítve?  [Töltse le ingyen a Visual Studio 2017-et](https://www.visualstudio.com/downloads/)
+> Ez az útmutató a Visual Studio 2017-et igényel.  Nincs telepítve?  [Az ingyenes Visual Studio 2017 letöltése](https://www.visualstudio.com/downloads/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Ez az útmutató által létrehozott mintaalkalmazás működése
 
-![Bemutatja, hogyan jöjjön létre a mintaalkalmazás által ezen oktatóanyagok működik](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral-updated.png)
+![Bemutatja, hogyan jöjjön létre a mintaalkalmazás által ezen oktatóanyagok működik](media/active-directory-develop-guidedsetup-aspnetwebapp-intro/aspnetbrowsergeneral.svg)
 
 Ez az útmutató által létrehozott alkalmazás a forgatókönyvet, amelyben egy felhasználó használ kér egy bejelentkezés gombot-on keresztül hitelesítendő felhasználó egy ASP.NET-webhely eléréséhez a böngészőben alapul. A forgatókönyvben a webhely renderelésének nagy része a kiszolgálói oldalon történik.
 

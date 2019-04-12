@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT OPC UA-Eszközfelügyelet |} A Microsoft Docs
+title: Mi az OPC-Ikereszköz – Azure |} A Microsoft Docs
 description: Az OPC-Twin áttekintése
 author: dominicbetts
 ms.author: dobett
@@ -8,15 +8,16 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3bbc20aa61faafb1405fa756b334bae05ec4129b
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759257"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496811"
 ---
 # <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Mi az Azure IoT nyílt Platform kommunikáció (OPC) Eszközfelügyelet?
-Az Azure IoT OPC UA Eszközfelügyelet, más néven a OPC Ikereszköz áll, amelyek az Azure IoT Edge és IoT Hub használata a felhőben és a gyári hálózathoz csatlakozni. Az OPC-Twin felderítési, regisztrációs és távvezérlési ipari eszközök REST API-kon keresztül biztosít. Az OPC-Twin nem szükséges egy OPC egyesített architektúra (OPC UA) SDK-t és a programozási nyelvtől és egy kiszolgáló nélküli munkafolyamatot tartalmazhat. Ez a cikk ismerteti az OPC-Twin több felhasználási eset.
+
+Az OPC-Twin áll, amelyek az Azure IoT Edge és IoT Hub használata a felhőben és a gyári hálózathoz csatlakozni. Az OPC-Twin felderítési, regisztrációs és távvezérlési ipari eszközök REST API-kon keresztül biztosít. Az OPC-Twin nem szükséges egy OPC egyesített architektúra (OPC UA) SDK-t és a programozási nyelvtől és egy kiszolgáló nélküli munkafolyamatot tartalmazhat. Ez a cikk ismerteti az OPC-Twin több felhasználási eset.
 
 ## <a name="discovery-and-control"></a>Észlelés és vezérlés
 Az OPC-Twin felderítési és a nyilvántartási egyszerű is használhat.
@@ -41,4 +42,4 @@ Az OPC-Twin REST API-kon keresztül bármilyen programozási nyelven írt alkalm
 Most, hogy az OPC-Twin és használata ismerkedtünk, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [Mi az OPC-tároló](overview-opc-twin-architecture.md)
+> [Mi az az OPC-tároló?](overview-opc-twin-architecture.md)

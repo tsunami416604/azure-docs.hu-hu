@@ -1,6 +1,6 @@
 ---
-title: Az Azure-Sentinel-előzetes verzióban elérhető Azure AD-adatok gyűjtése |} A Microsoft Docs
-description: Ismerje meg, hogyan gyűjtheti össze az Azure Active Directory Azure Sentinel-adatokat.
+title: Csatlakozás az Azure AD-adatok Azure-on Előzetesben Sentinel-|} A Microsoft Docs
+description: Ismerje meg az Azure Active Directory-adatok csatlakoztatása az Azure-Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/30/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b42fb982abb916503d530d5040641ba1dcce3c92
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f29ae9a8fcaecfc345efae02084f31d133e67b5d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575130"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494884"
 ---
-# <a name="collect-data-from-azure-active-directory"></a>Adatokat gyűjthet az Azure Active Directoryból
+# <a name="connect-data-from-azure-active-directory"></a>Adatok csatlakoztatása az Azure Active Directoryból
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
@@ -38,7 +38,7 @@ Azure Sentinel lehetővé teszi az adatok gyűjtéséhez [Azure Active Directory
 
 ## <a name="connect-to-azure-ad"></a>Csatlakozás az Azure AD szolgáltatáshoz
 
-1. Az Azure-Sentinel, válassza **adatgyűjtés** és kattintson a **Azure Active Directory** csempére.
+1. Az Azure-Sentinel, válassza **adatösszekötők** és kattintson a **Azure Active Directory** csempére.
 
 2. A naplók streamelése az Azure-Sentinel szeretne, mellett kattintson **Connect**.
 

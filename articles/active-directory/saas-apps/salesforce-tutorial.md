@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: d2d7d420-dc91-41b8-a6b3-59579e043b35
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 239298959efa5c17d2f3d0c0aa5c4c30853c076f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 27a61205426cbf43fd3b3b549909ffa13ff07dc7
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902035"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500362"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Oktatóanyag: Az Azure Active Directory-integráció, a Salesforce-szal
 
@@ -57,7 +58,7 @@ Konfigurálhatja az Azure AD integrálása a Salesforce, hozzá kell Salesforce 
 
 **Adja hozzá a Salesforce-hoz a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a  **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen, kattintson a **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
@@ -65,13 +66,13 @@ Konfigurálhatja az Azure AD integrálása a Salesforce, hozzá kell Salesforce 
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson a **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Salesforce**, jelölje be **Salesforce** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Salesforce**, jelölje be **Salesforce** az eredmény panelen, majd kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Az eredmények listájában a Salesforce-ban](common/search-new-app.png)
+    ![Az eredmények listájában a Salesforce-ban](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
@@ -101,7 +102,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés, a Salesforce-szal, hajtsa vé
 
     ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -134,13 +135,13 @@ Konfigurálja az Azure AD egyszeri bejelentkezés, a Salesforce-szal, hajtsa vé
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
 ### <a name="configure-salesforce-single-sign-on"></a>A Salesforce egyszeri bejelentkezés konfigurálása
 
-1. Nyissa meg egy új lapot a böngészőben, és a Salesforce-rendszergazdai fiókjával való bejelentkezéshez.
+1. Nyisson meg egy új lapot a böngészőben, és jelentkezzen be a Salesforce-rendszergazdai fiókjával.
 
 2. Kattintson a a **telepítő** alatt **beállítások ikon** az oldal jobb felső sarkában található.
 
@@ -206,8 +207,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be `brittasimon\@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
@@ -253,8 +253,8 @@ Ha a hozzáférési panel a Salesforce csempére kattint, akkor kell automatikus
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Felhasználók átadásának konfigurálása](salesforce-provisioning-tutorial.md)

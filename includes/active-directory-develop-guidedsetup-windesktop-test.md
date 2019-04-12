@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 6345eca674086801f8bb0f45476009f04a10f2e3
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58214481"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503002"
 ---
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
@@ -39,14 +39,13 @@ Először jelentkezik be az alkalmazás is kéri, adja meg, beleegyezik, hogy az
 
 ### <a name="view-application-results"></a>Kérelem eredményének megtekintése
 
-Miután bejelentkezett, megjelenik a profilok adatainak a Microsoft Graph API-hívás által visszaadott. Az eredmények megjelennek a **API-hívási eredmények** mezőbe. Alapvető információkat szeretne a jogkivonatot, amely a hívást keresztül szerezték be `AcquireTokenAsync` vagy `AcquireTokenSilentAsync` meg fognak jelenni a **Tártoken adatainak** mezőbe. Az eredmények az alábbi tulajdonságokat tartalmazzák:
+Miután bejelentkezett, megjelenik a profilok adatainak a Microsoft Graph API-hívás által visszaadott. Az eredmények megjelennek a **API-hívási eredmények** mezőbe. Alapvető információkat szeretne a jogkivonatot, amely a hívást keresztül szerezték be `AcquireTokenInteractive` vagy `AcquireTokenSilent` meg fognak jelenni a **Tártoken adatainak** mezőbe. Az eredmények az alábbi tulajdonságokat tartalmazzák:
 
 |Tulajdonság  |Formátum  |Leírás |
 |---------|---------|---------|
-|**Name (Név)** |A felhasználó teljes neve |A felhasználó vezetékneve és nevét.|
-|**Felhasználónév** |<span>user@domain.com</span> |A felhasználónév, amely a felhasználó azonosítására szolgál.|
-|**Jogkivonat lejár** |DateTime |Az az időpont, amikor a jogkivonat lejár. Az MSAL szükség szerint a token megújítása kiterjeszti a lejárati dátumot.|
-|**Hozzáférési jogkivonat** |String |A jogkivonat-karakterláncot, amelyet elküld a HTTP-kérelmek, amely esetében egy *engedélyeztetési fejléc*.|
+
+|**Felhasználónév**  | <span> user@domain.com </span> |} A felhasználónév, amelyet a felhasználó azonosítására szolgál. |} | **Jogkivonat lejár** |} Dátum és idő |} Az az időpont, amikor a jogkivonat lejár. Az MSAL kiterjeszti a lejárati dátum szükség szerint a token megújítása. |}
+
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörök és delegált engedélyek

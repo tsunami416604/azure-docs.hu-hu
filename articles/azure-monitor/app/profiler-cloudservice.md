@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 93d0f148c1fa3f13e79b28e19527251455a1b65c
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 8ad472b9c92e3bc2164146191a63985fd26becab
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470831"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492515"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profil élő Azure Cloud Services az Application insights segítségével
 
@@ -41,7 +41,7 @@ Application Insights Profiler az Azure Diagnostics bővítmény telepítve van. 
 
     * A feldolgozói szerepkörök esetében [adja hozzá a kódot a kérések nyomon követésére](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json).
 
-1. Adja meg az Azure Diagnostics bővítmény Profiler engedélyezése az alábbiak szerint:
+1. Adja meg az Azure Diagnostics bővítmény Profiler engedélyezése:
 
     a. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* fájlt az alkalmazás-szerepkörökhöz az itt látható módon:  
 

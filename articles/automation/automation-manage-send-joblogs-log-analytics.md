@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1897ddf328413decdc13cffaab0fb569d8d95665
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521669"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496590"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Feladat állapota és a feladatstreamek továbbítja automatizálást az Azure Monitor naplóira
 
@@ -32,7 +32,7 @@ Automation küldhet a runbook állapota és a feladat feladatstreamek a Log Anal
 
 Az Automation-naplók küldése az Azure Monitor naplóira indításához lesz szüksége:
 
-* A November 2016 vagy újabb kiadását [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0).
+* A legújabb kiadását [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/).
 * Egy Log Analytics-munkaterület. További információkért lásd: [Ismerkedés az Azure Monitor naplóira](../log-analytics/log-analytics-get-started.md). 
 * Az Azure Automation-fiókhoz tartozó erőforrás azonosítója.
 
@@ -40,14 +40,14 @@ Az Azure Automation-fiókban található az erőforrás-azonosító:
 
 ```powershell-interactive
 # Find the ResourceId for the Automation Account
-Get-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts"
+Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
 ```
 
 Az erőforrás-azonosító a Log Analytics-munkaterület, futtassa az alábbi PowerShell-lel:
 
 ```powershell-interactive
 # Find the ResourceId for the Log Analytics workspace
-Get-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
+Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 ```
 
 Ha egynél több Automation-fiókok, vagy a munkaterületeket, a fenti parancsok kimenetének, keresse meg a *neve* kell konfigurálni, és másolja az értéket a *ResourceId*.
@@ -63,19 +63,20 @@ Ha meg kell keresnie a *neve* az Automation-fiók az Azure Portalon válassza ki
    $workspaceId = "[resource id of the log analytics workspace]"
    $automationAccountId = "[resource id of your automation account]"
 
-   Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled 1
+   Set-AzDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled 1
    ```
 
 Ez a szkript futtatása után is igénybe vehet egy óra, az Azure Monitor naplóira új JobLogs vagy ír JobStreams rekordok megtekintése előtt.
 
-A naplók megtekintéséhez futtassa a következő lekérdezést a log analytics naplóbeli keresés: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+A naplók megtekintéséhez futtassa a következő lekérdezést a log analytics naplóbeli keresés:
+`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Konfiguráció ellenőrzése
 
 Győződjön meg arról, hogy az Automation-fiók naplókat küld a Log Analytics-munkaterülethez, ellenőrizze, hogy diagnosztikai helyesen van konfigurálva az Automation-fiókot a következő PowerShell-lel:
 
 ```powershell-interactive
-Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
+Get-AzDiagnosticSetting -ResourceId $automationAccountId
 ```
 
 A kimenetben ellenőrizze, hogy:
@@ -136,7 +137,8 @@ Diagnosztika az Azure Automation két rekordtípust hoz létre az Azure Monitor 
 
 Most, hogy az Automation-feladat naplókat küld az Azure Monitor naplóira kezdi, lássuk, mi mindent az Azure Monitor naplóira belül ezeket a naplókat.
 
-A naplók megtekintéséhez futtassa a következő lekérdezést: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+A naplók megtekintéséhez futtassa a következő lekérdezést:
+`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>E-mail küldése, ha a runbook-feladat meghiúsul, vagy felfüggeszti a
 A kiemelt ügyfeleknek küldtük egyik kéri arra, hogy küldjön egy e-mailt vagy egy szöveges, ha valami probléma merül fel a runbook-feladat van.   
@@ -173,7 +175,7 @@ Az Automation-fiók diagnosztikai beállításának eltávolításához futtassa
 ```powershell-interactive
 $automationAccountId = "[resource id of your automation account]"
 
-Remove-AzureRmDiagnosticSetting -ResourceId $automationAccountId
+Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 ```
 
 ## <a name="summary"></a>Összegzés

@@ -1,6 +1,6 @@
 ---
-title: Az Azure-on Előzetesben Sentinel-CEF-adatok gyűjtése |} A Microsoft Docs
-description: Ismerje meg, hogyan gyűjtheti az Azure-Sentinel a CEF-adatok.
+title: Az Azure-on Előzetesben Sentinel-CEF-adatok csatlakoztatása |} A Microsoft Docs
+description: Ismerje meg, hogyan kell csatlakozni a CEF-adatok az Azure-Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2117a139de52643f7cdbc6d054f46e5fb8ec0a77
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 18eb305beb79913713898b939ef840ca9ffab014
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005604"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489399"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A Common Event formattal külső megoldás csatlakoztatása
 
@@ -29,8 +29,7 @@ ms.locfileid: "59005604"
 
 Az Azure-Sentinel egy külső megoldás, amely lehetővé teszi, hogy mentse a naplófájlokat a Syslog-kapcsolódhat. Ha a készülék lehetővé teszi, hogy mentse naplókat, rendszernapló Common Event Format (CEF), Azure Sentinel-integráció lehetővé teszi elemzések és lekérdezések könnyedén futtathat az adatok között.
 
-> [!NOTE]
-> 
+> [!NOTE] 
 > Adatok tárolódnak a munkaterületet, amely futtatja az Azure-Sentinel földrajzi helye.
 
 ## <a name="how-it-works"></a>Működés
@@ -59,7 +58,7 @@ Azt is megteheti telepítheti az ügynököt manuálisan a meglévő Azure virtu
 ### <a name="deploy-the-agent-in-azure"></a>Telepítse az ügynököt az Azure-ban
 
 
-1. Az Azure-Sentinel-portálon kattintson a **adatgyűjtés** válassza ki a készüléket. 
+1. Az Azure-Sentinel-portálon kattintson a **adatösszekötők** válassza ki a készüléket. 
 
 1. A **Linux Syslog-ügynök konfigurációjának**:
    - Válasszon **automatikus központi telepítési** szeretné-e a fent leírtak szerint, hozzon létre egy új gépet, amely előre telepítve van az Azure Sentinel-ügynökkel, és tartalmazza a konfiguráció szükséges. Válassza ki **automatikus központi telepítési** kattintson **automatikus ügynöktelepítés**. Ekkor megjelenik a Vásárlás lapján dedikált Linux virtuális gép, amely automatikusan csatlakozik a munkaterülethez, a rendszer. A virtuális gép egy **D2s v3-as standard (2 vcpu-k, 8 GB memória)** és a egy nyilvános IP-címmel rendelkezik.
@@ -96,7 +95,7 @@ Azt is megteheti telepítheti az ügynököt manuálisan a meglévő Azure virtu
 Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel futtatása egy dedikált Linux-kiszolgálón.
 
 
-1. Az Azure-Sentinel-portálon kattintson a **adatgyűjtés** válassza ki a készüléket.
+1. Az Azure-Sentinel-portálon kattintson a **adatösszekötők** válassza ki a készüléket.
 1. Egy dedikált Linux rendszerű virtuális gép létrehozása alatt **Linux Syslog-ügynök konfigurációjának** válasszon **manuális üzembe helyezési**.
    1. A **a Syslog-ügynök letöltése és telepítése**válassza **nem Azure-beli Linux rendszerű gép**. 
    1. Az a **közvetlen ügynök** képernyő, amely megnyílik, válassza ki **Linux-ügynök** töltse le az ügynököt, vagy letöltheti a Linux rendszerű számítógépen az alábbi paranccsal:   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`

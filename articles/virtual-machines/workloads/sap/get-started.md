@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/01/2019
+ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40ed06bef45948068e3845e728d9c1d63ed62e71
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 3e07824db683b55cf5827962c1030d6cfd6c9f66
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762803"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490429"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Az Azure használatához és az SAP munkaterhelés-forgatókönyvek
 
@@ -71,16 +71,16 @@ A dokumentáció ezen szakasza az SAP Hana különböző szempontokat ismerteti.
 
 Az Azure-beli HANA adott dokumentációjában cikkek és azok subarticles listája áll:
 
-- [Rövid útmutató: Egypéldányos SAP HANA az Azure virtuális gépek manuális telepítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
+- [Gyors útmutató: Egypéldányos SAP HANA az Azure virtuális gépek manuális telepítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
 - [SAP S/4HANA vagy BW/4hana-t az Azure-ban üzembe helyezése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)
 - [SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 - [SAP HANA magas rendelkezésre állás az Azure-beli virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
 - [SAP HANA rendelkezésre állási egy Azure-régióban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
 - [SAP HANA rendelkezésre állása az Azure-régiók](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)
 - [Azure virtuális gépeken futó SAP Hana magas rendelkezésre állás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
-- [Biztonsági mentési útmutató az SAP Hana az Azure Virtual machines szolgáltatásban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [Útmutató az Azure-beli virtuális gépeken futó SAP HANA biztonsági mentéséhez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
 - [Az SAP HANA az Azure Backup a fájlok szintjén](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
-- [Tárolási pillanatképeken alapuló SAP HANA biztonsági mentés](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
+- [Tárolási pillanatképeken alapuló biztonsági mentés SAP HANA-hoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
 
  
 
@@ -89,7 +89,7 @@ Ebben a szakaszban az SAP NetWeaver és az Azure-ban egy üzleti tervezési és 
 
 - [SAP Business One az Azure Virtual Machinesban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/business-one-azure)
 - [SAP IDES EHP7 SP3 telepítése a SAP ERP 6.0 az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-ides-erp6-erp7-sp3-sql)
-- [A Microsoft Azure SUSE Linux rendszerű virtuális gépeken futó SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)
+- [Az SAP NetWeaver futtatása Microsoft Azure-beli SUSE Linux-alapú virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)
 - [Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
 - [Az SAP NetWeaver számára az Azure virtuális gépek üzembe helyezése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
 - [Egy többrétegű SAP NetWeaver alkalmazás központi telepítésének védeni a Site Recovery használatával](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap)
@@ -98,7 +98,7 @@ Ebben a szakaszban az SAP NetWeaver és az Azure-ban egy üzleti tervezési és 
 SAP számítási feladatok azure-ban nem HANA adatbázisokat kapcsolatban, például a dokumentumok listája:
 
 - [Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-- [SAP NetWeaver az SQL Server Azure virtuális gépek DBMS üzembe helyezése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver)
+- [SQL Server Azure Virtual Machines DBMS deployment for SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver)
 - [Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle)
 - [IBM DB2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)
 - [SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
@@ -126,7 +126,7 @@ Az Azure Active Directory (AAD) és az SAP-szolgáltatások közötti integráci
 A dokumentumok listája az SAP-összetevők integrálása az Azure-szolgáltatások hasonlóan néz ki:
 
 - [Az SAP HANA használata a Power BI Desktopban](https://docs.microsoft.com/power-bi/desktop-sap-hana)
-- [DirectQuery és SAP HANA](https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana)
+- [A DirectQuery és az SAP HANA](https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana)
 - [Az SAP BW Connector használata a Power BI Desktopban](https://docs.microsoft.com/power-bi/desktop-sap-bw-connector) 
 - [Az Azure Data Factory SAP HANA- és Business Warehouse-adatok integrációját nyújtja](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 

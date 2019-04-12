@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 92ae1e31a739486871ebff69740f31a495c7b780
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 29091add5cee0934064224c9cca8644b401bd5e4
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471650"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493314"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Az Azure Diagnostics bővítmény konfigurációs séma verziók és előzményei
 Ezt oldal indexek az Azure Diagnostics bővítmény séma verziója le szállítani, a Microsoft Azure SDK csomag részeként.  
@@ -29,7 +29,7 @@ Ezt oldal indexek az Azure Diagnostics bővítmény séma verziója le szállít
 >
 > Ez a lap csak akkor jelentősége, ha ezek a szolgáltatások valamelyikét használja.
 
-Egyéb Microsoft-diagnosztika termékek, mint az Azure Monitor az Application Insights és a Log Analytics az Azure Diagnostics bővítmény használnak. További információkért lásd: [figyelési eszközök áttekintése a Microsoft](../../azure-monitor/overview.md).
+Egyéb Microsoft-diagnosztikai termékek, mint az Azure Monitor, amely magában foglalja az Application Insights és a Log Analytics az Azure Diagnostics bővítmény használnak. További információkért lásd: [figyelési eszközök áttekintése a Microsoft](../../azure-monitor/overview.md).
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Az Azure SDK-t és a diagnosztika verziók szállítási diagram  
 

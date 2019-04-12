@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 9f80f1a8d02352daa663ee5ea4fa9287e0e8580e
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 79ea9455fec7d31f800b2b5d36df6a2a53f502c3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893792"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490962"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>A Notification Hubs kimeneti kötése az Azure Functions szolgáltatáshoz
 
@@ -25,6 +25,9 @@ Ez a cikk azt ismerteti, hogyan küldhetők leküldéses értesítések használ
 Az Azure Notification Hubs esetében a Platform értesítések szolgáltatástól (PNS) használni kívánt kell konfigurálni. Az ügyfélalkalmazás a leküldéses értesítések küldése a Notification hubs használatával kapcsolatban lásd: [Ismerkedés a Notification Hubs](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) és a cél ügyfélplatform kiválasztása az oldal tetején a legördülő listából.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+> [!IMPORTANT]
+> Google rendelkezik [Google Cloud-Messaging (GCM) értéke Firebase Cloud Messaging (FCM) elavult](https://developers.google.com/cloud-messaging/faq). A kimeneti kötés nem támogatja az FCM. FCM használatával értesítéseket küldeni, használja a [Firebase API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) közvetlenül a a függvény vagy [Sablonértesítők](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
 ## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 
@@ -197,37 +200,6 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="example---gcm-native"></a>Példa – natív GCM
-
-Ez a C#-példaszkript bemutatja, hogyan natív GCM értesítést küldeni. 
-
-```cs
-#r "Microsoft.Azure.NotificationHubs"
-#r "Newtonsoft.Json"
-
-using System;
-using Microsoft.Azure.NotificationHubs;
-using Newtonsoft.Json;
-
-public static async Task Run(string myQueueItem, IAsyncCollector<Notification> notification, TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
-
-    // In this example the queue item is a new user to be processed in the form of a JSON string with 
-    // a "name" value.
-    //
-    // The JSON format for a native GCM notification is ...
-    // { "data": { "message": "notification message" }}  
-
-    log.Info($"Sending GCM notification of a new user");    
-    dynamic user = JsonConvert.DeserializeObject(myQueueItem);    
-    string gcmNotificationPayload = "{\"data\": {\"message\": \"A new user wants to be added (" + 
-                                        user.name + ")\" }}";
-    log.Info($"{gcmNotificationPayload}");
-    await notification.AddAsync(new GcmNotification(gcmNotificationPayload));        
-}
-```
-
 ## <a name="example---wns-native"></a>Példa – natív WNS
 
 Ez a C#-példaszkript bemutatja, hogyan használja a-típusokkal a [a Microsoft Azure Notification Hubs kódtárat](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) natív WNS bejelentési értesítést küldeni. 
@@ -289,7 +261,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**tagExpression** |**TagExpression** | Címke kifejezések lehetővé teszik, hogy az eszközök, amelyek megfelelnek a címkét alkotó kifejezés értesítések fogadására regisztrált értesítések kézbesítendő megadását.  További információkért lásd: [az Útválasztás és címke kifejezések](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**HubName** | **HubName** | Az Azure Portalon az értesítésiközpont-erőforrás neve. |
 |**kapcsolat** | **ConnectionStringSetting** | A Notification Hubs kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve.  A kapcsolati karakterlánc értékre kell állítani a *DefaultFullSharedAccessSignature* értékét az értesítési központban. Lásd: [kapcsolati karakterlánc beállítása](#connection-string-setup) a cikk későbbi részében.|
-|**Platform** | **Platform** | A platform tulajdonság azt jelzi, hogy az ügyfél platformja az értesítési célokat. Alapértelmezés szerint ha a platform tulajdonság nem szerepel a kimeneti kötés Sablonértesítők használható bármilyen platformon, az Azure Notification Hub konfigurált lehetőséget. A sablonok általában használata a platform értesítések az Azure Notification Hub közötti küldése további információkért lásd: [sablonok](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Ha a beállítás, **platform** musí mít jednu z následujících hodnot: <ul><li><code>apns</code>&mdash;Apple Push Notification szolgáltatás. Az értesítési központ konfigurálása az APNS és a egy ügyfélalkalmazás az értesítés fogadása a további információkért lásd: [Sending leküldéses értesítések iOS-re az Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Az értesítési központ konfigurálása az ADM, és az értesítés fogadása a Kindle-alkalmazást a további információkért lásd: [Ismerkedés a Notification Hubs használata Kindle-alkalmazásokhoz](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>gcm</code>&mdash;[A Google Cloud Messaging](https://developers.google.com/cloud-messaging/). Firebase Cloud Messaging, GCM új verziója, amely a használata is támogatott. További információkért lásd: [Sending leküldéses értesítések androidra az Azure Notification Hubs](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md).</li><li><code>wns</code>&mdash;[Windows leküldéses értesítési szolgáltatások](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) Windows platformot célozza. Wns – Windows Phone 8.1 és újabb verziók is támogatja. További információkért lásd: [Ismerkedés a Notification Hubs a Windows univerzális platformon futó](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[A Microsoft leküldéses értesítéseket kezelő szolgáltatása](/previous-versions/windows/apps/ff402558(v=vs.105)). A platform támogatja a Windows Phone 8 és a korábbi Windows Phone-platformokat. További információkért lásd: [Sending leküldéses értesítéseket az Azure Notification Hubs Windows Phone a](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
+|**Platform** | **Platform** | A platform tulajdonság azt jelzi, hogy az ügyfél platformja az értesítési célokat. Alapértelmezés szerint ha a platform tulajdonság nem szerepel a kimeneti kötés Sablonértesítők használható bármilyen platformon, az Azure Notification Hub konfigurált lehetőséget. A sablonok általában használata a platform értesítések az Azure Notification Hub közötti küldése további információkért lásd: [sablonok](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Ha a beállítás, **platform** musí mít jednu z následujících hodnot: <ul><li><code>apns</code>&mdash;Apple Push Notification szolgáltatás. Az értesítési központ konfigurálása az APNS és a egy ügyfélalkalmazás az értesítés fogadása a további információkért lásd: [Sending leküldéses értesítések iOS-re az Azure Notification Hubs](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md).</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging). Az értesítési központ konfigurálása az ADM, és az értesítés fogadása a Kindle-alkalmazást a további információkért lásd: [Ismerkedés a Notification Hubs használata Kindle-alkalmazásokhoz](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md).</li><li><code>wns</code>&mdash;[Windows leküldéses értesítési szolgáltatások](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) Windows platformot célozza. Wns – Windows Phone 8.1 és újabb verziók is támogatja. További információkért lásd: [Ismerkedés a Notification Hubs a Windows univerzális platformon futó](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).</li><li><code>mpns</code>&mdash;[A Microsoft leküldéses értesítéseket kezelő szolgáltatása](/previous-versions/windows/apps/ff402558(v=vs.105)). A platform támogatja a Windows Phone 8 és a korábbi Windows Phone-platformokat. További információkért lásd: [Sending leküldéses értesítéseket az Azure Notification Hubs Windows Phone a](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md).</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -307,7 +279,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
       "tagExpression": "",
       "hubName": "my-notification-hub",
       "connection": "MyHubConnectionString",
-      "platform": "gcm"
+      "platform": "apns"
     }
   ],
   "disabled": false

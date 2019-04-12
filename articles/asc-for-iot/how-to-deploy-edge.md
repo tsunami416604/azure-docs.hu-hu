@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 40f771e97b61c28229b0eff29191247ef2fef695
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: d72980d6e27600cb844d5477d3b9a61d9e1573e4
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862845"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505617"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Az IoT Edge-eszközön a biztonsági modul üzembe helyezése
 
@@ -75,8 +75,25 @@ Hozzon létre egy IoT Edge üzembe helyezése az Azure Security Center az IoT h�
 1. Az a **modulok hozzáadása** lapon **üzembe helyezési modulok** területen kattintson a **AzureSecurityCenterforIoT**. 
    
 1. Módosítsa a **neve** való **azureiotsecurity**.
-1. Módosítsa a nevet **rendszerkép URI** való **mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.1**
-      
+1. Módosítsa a **kép URI** való **mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3**.
+1. Ellenőrizze a **tároló létrehozása beállítások** értékre van állítva:      
+    ``` json
+    {
+        "NetworkingConfig": {
+            "EndpointsConfig": {
+                "host": {}
+            }
+        },
+        "HostConfig": {
+            "Privileged": true,
+            "NetworkMode": "host",
+            "PidMode": "host",
+            "Binds": [
+                "/:/host"
+            ]
+        }
+    }    
+    ```
 1. Ellenőrizze, hogy **Set ikermodul kívánt tulajdonságai** van kiválasztva, és módosítsa a konfigurációs objektum:
       
     ``` json
@@ -89,12 +106,16 @@ Hozzon létre egy IoT Edge üzembe helyezése az Azure Security Center az IoT h�
 1. Kattintson a **Save** (Mentés) gombra.
 1. Alsó részén a lapra, és görgessen **speciális Edge-futtatókörnyezet-beállítások konfigurálása**.
    
-  >[!Note]
-  > Tegye **nem** IoT Edge hub az AMQP-kommunikáció letiltásához.
-  > IoT-modul az Azure Security Center és az IoT Edge Hub az AMQP kommunikációs igényel.
+   >[!Note]
+   > Tegye **nem** IoT Edge hub az AMQP-kommunikáció letiltásához.
+   > IoT-modul az Azure Security Center és az IoT Edge Hub az AMQP kommunikációs igényel.
    
-1. Módosítsa a **kép** alatt **Hub él** való **mcr.microsoft.com/ascforiot/edgehub:1.05-preview**.
-      
+1. Módosítsa a **kép** alatt **Hub él** való **mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview**.
+
+   >[!Note]
+   > Azure Security Center for IoT module requires a forked version of IoT Edge Hub, based on SDK version 1.20.
+   > IoT Edge Hub-rendszerkép módosításával, azzal felhatalmazza cserélje le a legújabb stabil kiadás elágaztatott verziójával, az IoT Edge szolgáltatás által hivatalosan nem támogatott az IoT Edge Hub az IoT Edge-eszköz.
+
 1. Győződjön meg arról **beállítások létrehozása** értékre van állítva: 
          
     ``` json
@@ -137,8 +158,8 @@ Ha problémát tapasztal, a tároló naplóit a legjobb módszer az IoT Edge mod
    
    | Name (Név) | IMAGE |
    | --- | --- |
-   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.1 |
-   | edgeHub | asotcontainerregistry.azurecr.io/edgehub:1.04-preview |
+   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
+   | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    Ha a szükséges minimális tárolók nem találhatók, ellenőrizze, ha az IoT Edge manifest nasazení igazítva van-e az ajánlott beállításokkal. További információkért lásd: [üzembe helyezése IoT Edge-modul](#deployment-using-azure-portal).

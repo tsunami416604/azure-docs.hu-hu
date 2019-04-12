@@ -1,6 +1,6 @@
 ---
-title: Adatgyűjtés Azure AD Identity Protection az Azure-Sentinel-Előzetesében |} A Microsoft Docs
-description: Ismerje meg, hogyan gyűjtheti össze az adatokat az Azure AD Identity Protection az Azure-Sentinel.
+title: Az Azure AD Identity Protection-adatok csatlakoztatása Azure-on Előzetesben Sentinel-|} A Microsoft Docs
+description: 'Útmutató: Azure Sentinel-adatokat az Azure AD Identity Protection csatlakozni.'
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 609aced38b7e30f78d81934867196c568dcc85ca
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d8306056655809c69af2ed39b5bbf8efebe05d3f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57239998"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496163"
 ---
-# <a name="collect-data-from-azure-ad-identity-protection"></a>Adatokat gyűjthet az Azure AD Identity Protection
+# <a name="connect-data-from-azure-ad-identity-protection"></a>Adatok csatlakoztatása az Azure AD Identity Protection
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
@@ -42,7 +42,7 @@ Ha már rendelkezik Azure AD Identity Protection, győződjön meg arról, hogy 
 Ha Azure AD Identity Protection telepítve van, és az adatok beolvasása a riasztási adatok könnyen továbbítható az Azure-Sentinel.
 
 
-1. Az Azure-Sentinel, válassza **adatgyűjtés** és kattintson a **Azure AD Identity Protection** csempére.
+1. Az Azure-Sentinel, válassza **adatösszekötők** és kattintson a **Azure AD Identity Protection** csempére.
 
 2. Kattintson a **Connect** megkezdéséhez az Azure AD Identity Protection-események Azure Sentinel-be.
 

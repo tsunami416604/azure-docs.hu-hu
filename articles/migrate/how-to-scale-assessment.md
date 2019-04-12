@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: ae84313cd750e3d6c7eb9443ec59095dec9c632e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1b03cf648ad65960cce4ffc874cf32ad91ef7dc1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59265249"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490637"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
@@ -39,20 +39,11 @@ Az Azure Migrate hozzá kell férnie a VMware-kiszolgálókhoz a virtuális gép
 - Részletek: A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.
 - A hozzáférés korlátozásához rendelje a Gyermekobjektumba propagálás objektummal rendelkező Nincs hozzáférés szerepkört a gyermekobjektumokhoz (vSphere-gazdagépek, adattárolók, virtuális gépek és hálózatok).
 
-Ha a bérlő környezetben telepíti, a következő beállítására egyik módja:
+Ha egy több-bérlős környezetben végzi, és hatókör mappában található virtuális gépek által egy adott bérlő lenne, ha, nem közvetlenül választhat a virtuális gép mappa hatókörének beállítása az Azure Migrate gyűjtemény. Az alábbiakban útmutatást mappa hatókör eszközészlelésének virtuális gépek:
 
-1. Hozzon létre egy felhasználó / bérlő és a használatával [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), csak olvasási engedélyek hozzárendelése a következőhöz tartozó, egy adott bérlő összes virtuális gép. Ezután használja ezeket a hitelesítő adatokat a felderítéshez. RBAC biztosítja, hogy csak a bérlőspecifikus virtuális gépek a megfelelő vCenter-felhasználó hozzáférhet.
-2. RBAC beállítását másik bérlőben felhasználók felhasználói 1 és 2. felhasználói esetében az alábbi példában ismertetett módon:
-
-    - A **felhasználónév** és **jelszó**, adja meg a csak olvasható fiók hitelesítő adatait, amelynek használatával a gyűjtő a virtuális gépek felderítése
-    - Datacenter1 - felhasználó 1 és 2. felhasználói írásvédett engedélyeket biztosíthat. Ilyen engedéllyel, hogy az összes gyermekobjektum nem propagálása, mert az egyes virtuális gépekhez engedélyek értékre állítjuk.
-
-      - A VM1 (bérlő #1) (csak olvasási engedély a felhasználó 1)
-      - VM2 (bérlő #1) (csak olvasási engedély a felhasználó 1)
-      - Vm3 virtuális gép (bérlő #2) (csak olvasási engedély felhasználói 2)
-      - VM4 (bérlő #2) (csak olvasási engedély felhasználói 2)
-
-   - Ha 1 felhasználói hitelesítő adatok használatával felderítést hajt végre, majd csak a VM1 és a VM2 lesz felderítve.
+1. Hozzon létre egy felhasználót bérlőnként, és csak olvasási engedélyek hozzárendelése a következőhöz tartozó, egy adott bérlő összes virtuális gép. 
+2. A virtuális gépeket üzemeltető összes szülőobjektum a felhasználó csak olvasási hozzáférési jogot. Minden szülőobjektumok - gazdagép, a gazdagépek, a fürtben, fürtök mappa – a hierarchiában, akár az adatközpontban is használni fog. Nem kell az engedélyek az összes gyermekobjektum propagálása.
+3. A hitelesítő adatok használata az adatközpont, kiválasztása felderítéshez *gyűjtés hatóköre*. Állítsa be az RBAC biztosítja, hogy csak a bérlőspecifikus virtuális gépek a megfelelő vCenter-felhasználó hozzáférhet.
 
 ## <a name="plan-your-migration-projects-and-discoveries"></a>A migrálási projektek és a felderítések megtervezése
 
@@ -97,7 +88,7 @@ Ha több vCenter-kiszolgálók a vCenter-kiszolgáló legfeljebb 1500 virtuális
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Több mint 1500 gépek egyetlen vCenter-kiszolgáló
 
-Ha egy vCenter-kiszolgáló 1500-nál több virtuális gép is van, a felderítés felosztása több áttelepítési projektet szeretné. Osztott felderítések, használja ki a készüléket a hatókör mezőt, és adja meg a gazdagép, fürt, mappa vagy adatközpontot, amelyben szeretné felderíteni. Például, ha a vCenter-kiszolgáló, egy 1000 két mappa (mappa1) virtuális gépek és a másik a 800 virtuális gép (mappa2), a hatókör mező használható felosztása a felderítéseket, ezek a mappák között.
+Ha egy vCenter-kiszolgáló 1500-nál több virtuális gép is van, a felderítés felosztása több áttelepítési projektet szeretné. Felderítések szétválasztásához használja ki a készüléket a hatókör mezőt, és adja meg a gazdagép, fürt, mappa gazdagépek, a fürtök vagy adatközpontot, amelyben szeretné felderíteni mappa. Például, ha a vCenter-kiszolgáló, egy 1000 két mappa (mappa1) virtuális gépek és a másik a 800 virtuális gép (mappa2), a hatókör mező használható felosztása a felderítéseket, ezek a mappák között.
 
 **Folyamatos felderítési:** Ebben az esetben kell az első gyűjtő hozzon létre két collector berendezést, adja meg a hatókör mappa1, és csatlakoztassa az első migrálási projektet. A párhuzamos mappa2 felderítéséhez a második gyűjtőberendezés segítségével, és csatlakoztassa a második migrálási projektet.
 

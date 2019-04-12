@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 37e2dcc13ed41911c8117dc1841a389c14e5867f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: edd7a397598bcb5941f3ac1b29d385d6eac40f8d
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848572"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501637"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény Service Bus-üzenetkezelés használatával
 
@@ -127,6 +127,19 @@ A teljes átviteli sebesség az üzenetsor vagy előfizetés üzeneteket prefetc
 Az üzenet a time-to-live (Élettartam TTL) tulajdonság be van jelölve a kiszolgáló által a kiszolgáló elküldi az ügyfélnek az üzenet időpontjában. Az ügyfél nem ellenőrzi az üzenet TTL tulajdonsága az üzenet fogadásakor. Ehelyett az is lehet üzenet akkor is, ha az üzenet Élettartama lejárt, amíg az üzenet volt az ügyfél gyorsítótárába.
 
 Prefetching nem befolyásolja a üzenetkezelési számlázandó műveletek száma, és csak a Service Bus-ügyfél protokoll érhető el. A HTTP-protokoll nem támogatja a prefetching. Prefetching áll rendelkezésre, mind a szinkron és aszinkron műveletek kapni.
+
+## <a name="prefetching-and-receivebatch"></a>Prefetching és ReceiveBatch
+
+A fogalmakat, több üzenetet prefetching együtt egy kötegbe (ReceiveBatch) üzenetek feldolgozására hasonló szemantikával rendelkezik, amíg nincsenek néhány kisebb eltérés, amelyeket figyelembe tárolni kell, ha ezek együtt.
+
+Előzetes betöltési configuration (vagy mód) az ügyfélen (QueueClient és SubscriptionClient) pedig ReceiveBatch egy műveletet (amely a kérés-válasz szemantikával rendelkezik).
+
+Használatakor ezek együtt, fontolja meg a következő esetekben-
+
+* Előzetes betöltési nagyobb, mint vagy úgy, hogy fogadjon ReceiveBatch várt üzenetek számának egyenlőnek kell lennie.
+* Előzetes betöltési akár n/3, ahol n az az alapértelmezett Zárolás időtartama, a másodpercenként feldolgozott üzenetek száma időpontokban is lehet.
+
+Vannak bizonyos problémák bevezetés alapja egy mohó megközelítést (azaz tartja a lehívott nagyon nagy szám), mert azt jelenti, hogy az üzenet az adott egyetlen külső eseményfogyasztó zárolva van. A javaslat, hogy próbálja ki előzetes betöltése az értékeket a fent említett küszöbérték között, és tapasztalati az adatfeldolgozással azonosítása.
 
 ## <a name="multiple-queues"></a>Több üzenetsort
 

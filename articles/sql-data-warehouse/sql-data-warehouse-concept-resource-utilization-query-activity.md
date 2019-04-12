@@ -10,21 +10,18 @@ ms.subservice: manage
 ms.date: 03/21/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 69b33b9629863702d576eac39fb4097a2bff2e57
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: de5d8a3cd329e023b57d887a22db5459f13c7486
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337570"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492787"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse erőforrás kihasználtságát és a lekérdezés tevékenység figyelése
 Az Azure SQL Data warehouse-bA az Azure Portalon, a surface elemzéseket nyújt az adatraktár-számítási feladat gazdag figyelési élményt nyújt. Az Azure Portalon az ajánlott eszköz esetén az adattárház figyelését, konfigurálható adatmegőrzési pontokat, riasztások, javaslatok, és testre szabható diagramokat és irányítópultokat a metrikák és naplók biztosít. A portál lehetővé teszi, hogy az egyéb Azure figyelő szolgáltatási, például az Operations Management Suite (OMS) és az Azure Monitor (naplók) egy átfogó figyelési élményt nyújt a nem csupán az adattárház, hanem a teljes Azure analytics is integrálhatja Platform integrált figyelési megoldást. Ez a dokumentáció ismerteti, milyen monitorozási funkciók érhetők el optimalizálása és az elemzési platform az SQL Data Warehouse segítségével kezelheti. 
 
 ## <a name="resource-utilization"></a>Erőforrás-használat 
 A következő metrikák érhetők el az SQL Data warehouse-hoz az Azure Portalon. Ezek a metrikák végzetesnek [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
-
-> [!NOTE]
-> 2018. November a mérnöki csapathoz hibát okoz a Processzor- és adat IO százalékos underreport foglalkozik. Ennek hatására a DWU használt, és százalékos aránya, valamint underreport. 
 
 | Metrika neve                           | Leírás     | Aggregáció típusa |
 | --------------------------------------- | ---------------- | --------------------------------------- |

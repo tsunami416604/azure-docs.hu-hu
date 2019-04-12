@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: f776bdba88902c0b4eaa9f27ef8ed3a4700765cc
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: de31ceea4faeecabd54c0d23e9263cbb4090925d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620819"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491338"
 ---
 # <a name="support-for-the-marketplace"></a>A Marketplace-en támogatása  
 Íme a Marketplace-en támogatási lehetőségek listája.  
@@ -40,7 +40,6 @@ Hozzon létre egy jegyet a Microsoft [marketplace publisher támogatási](https:
 
 | Támogatási csatornán keresztül | Leírás |  
 |:--- |:--- |  
-| Slack: [join.marketplace.azure.com](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Slack környezet támogatja a partnerek technikai problémák megoldásában. Itt kapcsolatos 350 + partnerek ebben a környezetben jelenleg működik. |  
 | MSDN fórumok: Marketplace-en található [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | A Microsoft Developer Network fórum. |  
 | A stack Overflow: Azure található [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow környezet megoldásokat, és az Azure Marketplace-en kapcsolódó összes elemet kapcsolatos kérdések feltevése.<ul> <li>A stack Overflow: Az Azure Marketplace-en található [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>A stack Overflow: Az Azure Resource Manager található [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>A stack Overflow: Az Azure Virtual Machines található [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>A stack Overflow: Tárolók az Azure-ban található [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 | Appsource-ban támogatása: [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Támogatás a Dynamics-alkalmazások közzététele |

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: d8e249a788d80108d46a61f316b795ab04e541a2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: e72c4b0cf8f77a057ff07f8bce7acae4e834e28d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203515"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502689"
 ---
 ## <a name="setting-up-your-ios-application"></a>Az iOS-alkalmazás beállítása
 
@@ -61,7 +61,7 @@ Másolja és illessze be az alábbi. Ez a parancs lekéri a függőségek egy Ca
 carthage update
 ```
 
-> A fenti folyamat segítségével töltse le és a Microsoft-hitelesítési tár (MSAL) hozhat létre. Az MSAL beszerzéséhez, gyorsítótárazási és védi az Azure Active Directory 2.0-s verziójú API-k elérésére használt felhasználói jogkivonatok frissítése kezeli.
+> A fenti folyamat segítségével töltse le és a Microsoft-hitelesítési tár (MSAL) hozhat létre. Az MSAL beszerzéséhez, gyorsítótárazási és frissítése a Microsoft identity platform által védett API-k elérésére használt felhasználói jogkivonatok kezeli.
 
 ## <a name="add-the-msal-framework-to-your-application"></a>A MSAL keretrendszer hozzáadása az alkalmazáshoz
 

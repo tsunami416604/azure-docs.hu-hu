@@ -1,6 +1,6 @@
 ---
-title: A Cloud App Security az Azure-on Előzetesben Sentinel-adatgyűjtés |} A Microsoft Docs
-description: Ismerje meg, a Cloud App Security az Azure-Sentinel gyűjtéséről.
+title: A Cloud App Security-adatok csatlakozhat az Azure-on Előzetesben Sentinel-|} A Microsoft Docs
+description: Ismerje meg, hogyan kell csatlakozni a Cloud App Security-adatok Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b0033f5f8636053f88825541b8b2cfcbf2fc9f8b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5a7dfeed7b52453b38720c21c7d213679b8d2854
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245488"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496369"
 ---
-# <a name="collect-data-from-microsoft-cloud-app-security"></a>Adatokat gyűjthet a Microsoft Cloud App Security szolgáltatásból 
+# <a name="connect-data-from-microsoft-cloud-app-security"></a>Adatok csatlakoztatása a Microsoft Cloud App Security szolgáltatásból 
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
@@ -39,7 +39,7 @@ Ha már rendelkezik a Cloud App Security, győződjön meg arról, hogy [engedé
 Ha a Cloud App Security van telepítve, és az adatok feldolgozására, a riasztási adatok könnyen továbbítható az Azure-Sentinel.
 
 
-1. Az Azure-Sentinel, válassza **adatgyűjtés** és kattintson a **a Cloud App Security** csempére.
+1. Az Azure-Sentinel, válassza **adatösszekötők** és kattintson a **a Cloud App Security** csempére.
 
 2. Kattintson a **Connect** (Csatlakozás) gombra.
 

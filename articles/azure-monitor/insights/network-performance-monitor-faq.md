@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 5186c11259a03717f83db675cbfe7c90f3ecb7cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 285f29055d0ac9ba656ec828972ef15f4c0d36c7
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734555"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496964"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -25,7 +25,7 @@ ms.locfileid: "55734555"
 
 Ez a cikk rögzíti a gyakori kérdések (GYIK) kapcsolatos Network Performance monitort (NPM) az Azure-ban
 
-[Network Performance Monitor](/azure/networking/network-monitoring-overview) egy felhőalapú [hibrid hálózatfigyelés](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) megoldás, amely segítséget nyújt a hálózati infrastruktúrában különböző pont közötti hálózati teljesítmény figyelése. Emellett segítséget nyújt a hálózati kapcsolat figyeléséhez [szolgáltatások és alkalmazások végpontok](../../azure-monitor/insights/network-performance-monitor-service-endpoint.md) és [Azure ExpressRoute teljesítményének megfigyelése](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
+[Network Performance Monitor](/azure/networking/network-monitoring-overview) egy felhőalapú [hibrid hálózatfigyelés](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) megoldás, amely segítséget nyújt a hálózati infrastruktúrában különböző pont közötti hálózati teljesítmény figyelése. Emellett segítséget nyújt a hálózati kapcsolat figyeléséhez [szolgáltatások és alkalmazások végpontok](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) és [Azure ExpressRoute teljesítményének megfigyelése](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
 
 A Network Performance Monitor észleli a hálózati problémák, például az adatforgalom blackholing, útválasztási hibák és problémák, amelyek a hagyományos hálózati figyelési módszerek nem képes észlelni. A megoldás riasztásokat készít, és értesíti, amikor egy hálózati kapcsolat meghaladja a küszöbértéket. Emellett biztosítja a hálózat teljesítményével kapcsolatos problémák időbeni észlelését és leszűkíti a hiba forrásának helyszínét egy hálózati szegmensre vagy eszközre. 
 

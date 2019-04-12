@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 839f77df88314c95df1056b60c3612de27421ca0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a9e12171a8596bc9caba3bf9065bbb943139ccde
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886131"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501331"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
 
@@ -779,8 +779,6 @@ Az Azure Portalon az Azure virtuális gép központi telepítések felügyeleté
 
 ![A Microsoft Azure portal – a virtuális gépek – áttekintés][planning-guide-figure-800]
 
-[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-networks-create-vnet-arm-pportal/>)
-[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/>)
 
 Virtuálisgép-példány a felügyeleti és konfigurálási feladatokon is lehetséges a az Azure Portalon.
 
@@ -791,9 +789,6 @@ Az Azure Portalon üzembe helyezése és konfigurálása a virtuális gépek és
 * VHD feltöltése az Azure-bA
 * Virtuális gép másolása
 
-[comment]: <> (MShermannd TODO Mi a teendő az automation szolgáltatás SAP-beli virtuális gépek? )
-[comment]: <> (MSSedusch több perbe telik, mire lehetővé virtuális gépek operációs rendszer telepítése)
-[comment]: <> (MSSedusch is bármely Automation vonatkozó központi telepítési típus nem lehetséges az Azure portal használatával. Feladatokat, köztük a parancsfájlokkal történő üzembe helyezését több virtuális gép nem áll az Azure Portalon keresztül lehetséges.)
 
 ### <a name="management-via-microsoft-azure-powershell-cmdlets"></a>Felügyelet az Azure PowerShell-parancsmagok
 
@@ -808,9 +803,8 @@ Felhasználói élmény eddig lett, hogy PowerShell (PS) természetesen-e a virt
 Példa itt talál:
 <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
-[comment]: <> (MShermannd TODO új CLI-paranccsal tesztelésekor leírása )
-Az SAP az Azure Monitoring bővítmény telepítését (című [Azure Monitoring megoldás az SAP] [ planning-guide-9.1] ebben a dokumentumban) csak akkor lehetséges, PowerShell vagy parancssori felület használatával. Ezért azt kötelező való telepítése és konfigurálása a PowerShell vagy parancssori felület üzembe helyezésekor és a egy Azure-beli SAP NetWeaver rendszer felügyelete.
-  
+
+Az SAP az Azure Monitoring bővítmény telepítését (című [Azure Monitoring megoldás az SAP] [ planning-guide-9.1] ebben a dokumentumban) csak akkor lehetséges, PowerShell vagy parancssori felület használatával. Ezért azt kötelező való telepítése és konfigurálása a PowerShell vagy parancssori felület üzembe helyezésekor és a egy Azure-beli SAP NetWeaver rendszer felügyelete.  
 
 Az Azure további funkciókat biztosít, új PS-parancsmagok fog hozzáadni, amely megköveteli, hogy a parancsmagok frissítése. Ezért logikus ellenőrizze az Azure letöltési hely a hónap során legalább egyszer <https://azure.microsoft.com/downloads/> parancsmag egy új verzióért. Az új verzió telepítve van a régebbi verziót felett.
 
@@ -1587,7 +1581,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 ##### <a name="template"></a>Sablon
 
-A mintasablonokat használhatja az azure-gyorssablonok tárházban a githubon.
+A mintasablonokat használhatja az azure-gyorssablonok tárházban a Githubon.
 
 * [Egyszerű Linux rendszerű virtuális gép](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
 * [Egyszerű Windows virtuális gép](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
@@ -1632,13 +1626,13 @@ A létesítmények közötti és hibrid forgatókönyv is nagyjából leírásá
 
 ![Hely – hely kapcsolat a helyszíni és Azure-objektumok között][planning-guide-figure-2100]
 
-A fenti forgatókönyvben egy forgatókönyvet, a helyszíni AD/OpenLDAP és DNS bővítve lettek az Azure-bA. A helyszíni oldalon a Azure-előfizetésenként egy adott IP-címtartomány van fenntartva. Az IP-címtartományt rendel egy Azure virtuális hálózat az Azure részéről.
-
-#### <a name="security-considerations"></a>Biztonsági szempontok
+A fenti forgatókönyvben egy forgatókönyvet, a helyszíni
 
 A minimális követelmény, a biztonságos kommunikációs protokollok, mint például az SSL/TLS használatát a böngésző-hozzáférés vagy VPN-alapú kapcsolatot az Azure-szolgáltatások rendszer-hozzáférést. Feltételezzük, hogy vállalatok másképp kezeli-e a VPN-kapcsolat a vállalati hálózat és az Azure között. Egyes vállalatok blankly előfordulhat, hogy minden a portok megnyitásához. Néhány más vállalatok érdemes lehet pontos milyen portokat kell megnyitni, stb.
 
 A tipikus SAP az alábbi táblázatban a kommunikációs portok vannak felsorolva. Alapvetően azt is használhatók a SAP-átjáró port megnyitásához.
+
+<!-- sapms is prefix of a SAP service name and not a spelling error -->
 
 | Szolgáltatás | Port neve | Példa `<nn`> = 01 | Alapértelmezett tartomány (min-max) | Megjegyzés |
 | --- | --- | --- | --- | --- |
@@ -1834,7 +1828,7 @@ A telepítő egy SAP-portál egy Azure virtuális gép nem különböznek a hely
 
 Egy speciális üzembe helyezési forgatókönyv szerint egyes ügyfelek, az SAP Enterprise Portal közvetlen elérését az internethez, viszont a virtuálisgép-gazdán site-to-site VPN-alagúton vagy ExpressRoute-n keresztül a vállalati hálózathoz csatlakozik. Ilyen esetben győződjön meg arról, hogy adott portok nyitva és nem blokkolja tűzfal vagy a hálózati biztonsági csoport rendelkezik. 
 
-A kezdeti portál URI-t nem HTTP (s):`<Portalserver`>: 5XX00/irj, a port képződik 50000 plusz (Systemnumber?? 100). Az alapértelmezett portál URI-t az SAP rendszer 00 `<dns name`>.`<azure region` >.Cloudapp.azure.com:PublicPort/irj. További részletekért tekintse meg rendelkezik <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>.
+A kezdeti portál URI-t nem HTTP (s):`<Portalserver`>: ahol lett létrehozva a port, az SAP által ismertetett 5XX00/irj <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>.
 
 ![Végpont-konfiguráció][planning-guide-figure-2800]
 

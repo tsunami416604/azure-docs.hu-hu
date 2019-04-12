@@ -3,18 +3,18 @@ title: Ez a rövid útmutató egy szimulált X.509-eszköz kiépítését mutatj
 description: Ez a rövid útmutató egyéni regisztrációkat használ. Ebben a rövid útmutatóban egy szimulált X.509-eszközt hoz létre és épít ki az Azure IoT Hub Device Provisioning Service-hez készült C eszközoldali SDK-val.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 07/16/2018
+ms.date: 04/10/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f60cce99606b1a92cba62847b060c49cb0c2c0d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 2a27ec63ea4ae25823c604612bd3bcf3a057da61
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485255"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500583"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Gyors útmutató: Szimulált X.509-eszköz használata az Azure IoT C SDK kiépítése
 
@@ -45,23 +45,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
 Ebben a szakaszban egy fejlesztői környezetet készítünk elő az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) buildeléséhez, amely tartalmazza az X.509 rendszerindítási mintakódot.
 
-1. Töltse le a [CMake buildelési rendszert](https://cmake.org/download/). Ellenőrizze a letöltött bináris fájlt, amely megfelel a verzió letöltése kriptográfiai kivonatokat értékének használatával. A kriptográfiai kivonatokat értékei is az adott CMake letöltési hivatkozás található.
-
-    Az alábbi példa a kriptográfiai kivonatokat a x64 3.13.4 verziójának ellenőrzéséhez használja a Windows PowerShell MSI terjesztési:
-
-    ```powershell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
-    True
-    ```
-
-    A következő kivonatértékeket verzió 3.13.4 írásának időpontjában a CMake webhelyen felsorolt:
-
-    ```
-    563a39e0a7c7368f81bfa1c3aff8b590a0617cdfe51177ddc808f66cc0866c76  cmake-3.13.4-Linux-x86_64.tar.gz
-    7c37235ece6ce85aab2ce169106e0e729504ad64707d56e4dbfc982cb4263847  cmake-3.13.4-win32-x86.msi
-    64ac7dd5411b48c2717e15738b83ea0d4347cd51b940487dff7f99a870656c09  cmake-3.13.4-win64-x64.msi
-    ```
+1. Töltse le a [CMake buildelési rendszert](https://cmake.org/download/).
 
     Fontos, hogy a Visual Studio előfeltételei (Visual Studio és az „Asztali fejlesztés C++ használatával” számítási feladat) telepítve legyenek a gépen, **mielőtt** megkezdené a `CMake` telepítését. Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
 
@@ -70,7 +54,7 @@ Ebben a szakaszban egy fejlesztői környezetet készítünk elő az [Azure IoT 
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
-    Az adattár mérete jelenleg körülbelül 220 MB. Ez a művelet várhatóan több percig is eltarthat.
+    Ez a művelet várhatóan több percig is eltarthat.
 
 
 3. Hozzon létre egy `cmake` alkönyvtárat a Git-adattár gyökérkönyvtárában, és lépjen erre a mappára. 
@@ -143,7 +127,7 @@ Az Azure IoT C SDK mintakódját használja majd a szimulált eszköz egyéni re
     - **Elsődleges tanúsítvány .pem or .cer fájlja:** Kattintson a **válasszon ki egy fájlt** a tanúsítványfájlt, X509testcert.pem, válassza ki a korábban létrehozott.
     - **IoT Hub-Eszközazonosító:** Adja meg **test-docs-cert-device** biztosíthat az eszköz azonosítója.
 
-      [![Egyéni regisztráció hozzáadása X.509-igazoláshoz a portálon](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
+      [![AX.509-igazoláshoz a portálon nn egyéni regisztráció](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
       Sikeres beléptetés esetén az X.509-eszköz **riot-device-cert** azonosítóval megjelenik a *Regisztrációs azonosító* oszlopban az *Egyéni beléptetések* lapon. 
 
@@ -214,4 +198,4 @@ Ha azt tervezi, hogy folytatja az eszközügyfél minta használatát és megism
 Ebben a rövid útmutatóban egy szimulált X.509-eszközt hozott létre a Windows rendszerű gépén, amelyet aztán kiépített az IoT Hubon a portál Azure IoT Hub Device Provisioning Service szolgáltatásával. Ha szeretné megismerni az X.509-eszköz programozott regisztrációjának folyamatát, lépjen tovább az X.509-eszközök programozott regisztrációjának rövid útmutatójára. 
 
 > [!div class="nextstepaction"]
-> [Azure rövid útmutató – X.509-eszközök regisztrációja az Azure IoT Hub Device Provisioning Service-be](quick-enroll-device-x509-java.md)
+> [Azure rövid útmutató – X.509-eszközök regisztrációja az Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)

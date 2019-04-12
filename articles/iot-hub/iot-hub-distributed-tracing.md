@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc6db4d02898ea0e8eed3cdf3d0b1a9788d943e9
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439296"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501366"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Elosztott nyomkövetést (előzetes verzió) az Azure IoT eszköz – felhő üzenetek nyomon követése
 
@@ -36,7 +36,7 @@ Ebben a cikkben fogja használni a [Azure IoT eszközoldali SDK-t a c nyelvhez k
 
   - **Észak-Európa**
   - **Délkelet-Ázsia**
-  - **2. nyugati RÉGIÓJA**
+  - **USA nyugati régiója, 2.**
 
 - Ez a cikk feltételezi, hogy ismeri a telemetriai üzeneteket küld az IoT hubnak. Győződjön meg arról, hogy befejezte a [Telemetriát C rövid](./quickstart-send-telemetry-c.md).
 
@@ -98,7 +98,7 @@ Ezeket az utasításokat, amellyel a minta a Windows rendszer. Más környezetek
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
     ```
 
-    Az adattár mérete jelenleg körülbelül 220 MB. Ez a művelet várhatóan több percig is eltarthat.
+    Ez a művelet várhatóan több percig is eltarthat.
 
 1. Hozzon létre egy `cmake` alkönyvtárat a Git-adattár gyökérkönyvtárában, és lépjen erre a mappára.
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 00ec813aec37697526233532b75ba6c55bf852c2
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 850fce4e04ce07a323e830d2daf74ea1a324f1a0
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58906072"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489382"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Virtuális gép biztonsági mentése az Azure-ban a PowerShell használatával
 
@@ -29,7 +29,7 @@ Ebben a rövid útmutatóhoz az Azure PowerShell modul 1.0.0-ás AZ vagy újabb.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-and-register"></a>Bejelentkezés és regisztráció
+## <a name="sign-in-and-register"></a>Bejelentkezés és regisztráció
 
 1. Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
 
@@ -53,10 +53,10 @@ A tároló létrehozásakor:
 - Ha ez [mintaparancsfájl](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) a virtuális gép létrehozásához, az erőforráscsoport van **myResourceGroup**, a virtuális gép ***myVM**, az erőforrások pedig a **WestEurope**  régióban.
 - Az Azure Backup automatikusan kezeli a biztonsági másolat adatainak tárolására. Alapértelmezés szerint a tárolót használja [Georedundáns tárolást (GRS)](../storage/common/storage-redundancy-grs.md). Georedundáns tárolás biztosítja, hogy a biztonsági másolatba mentett adatok replikációja egy másodlagos Azure-régióban, több száz mérföld a forrásadatok elsődleges.
 
-Most hozzon létre egy tárolót.
+Most hozzon létre egy tárolót:
 
 
-1. Használja a [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault)a tároló létrehozásához:
+1. Használja a [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) a tároló létrehozásához:
 
     ```powershell
     New-AzRecoveryServicesVault `
@@ -114,7 +114,7 @@ Biztonsági másolatok a biztonsági mentési szabályzatban meghatározott üte
 - A kezdeti biztonsági mentés után biztonsági mentési feladatok növekményes helyreállítási pontokat hoz létre.
 - A növekményes helyreállítási pontok hatékonyan használják a tárhelyet és az időt, mivel csak az utolsó biztonsági mentés óta végzett módosításokat viszik át.
 
-Egy ad-hoc biztonsági mentés végrehajtásához használja a[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem). 
+Egy ad-hoc biztonsági mentés végrehajtásához használja a [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem). 
 - Egy tárolót határozhat meg a tároló, amely a biztonsági másolat adatait a [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer).
 - A rendszer minden olyan virtuális gépet, amelyről biztonsági másolat készül, egy elemként kezeli. Indítsa el a biztonsági mentési feladat, szerezze be a virtuális Gépet a információit [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
@@ -162,7 +162,7 @@ Ha már nincs szüksége a biztonsági másolatot készíteni a virtuális Gépe
 - Ha azt szeretné, és próbálja ki a virtuális gép visszaállítása, hagyja ki a tiszta fel.
 - Ha egy meglévő virtuális Gépet használt, eltekinthet a végső [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) megtarthatja az erőforráscsoportot és a virtuális gép helyen.
 
-Tiltsa le a védelmet, távolítsa el a helyreállítási pontokat és a tárolót. Ezután a következőképpen törölje az erőforráscsoportot és a társított virtuális gép erőforrásait:
+Tiltsa le a védelmet, távolítsa el a helyreállítási pontokat és a tárolót. Törölje az erőforráscsoportot és a társított virtuális gép erőforrásait, a következő:
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints

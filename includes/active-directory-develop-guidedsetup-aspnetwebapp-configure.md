@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2018
+ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: cce0bb9d1a9317396d197d182a424a45c8448f1b
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 123a2ece06cb58ce6dbb35a914a87eb45fbcf5be
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203608"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505801"
 ---
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
@@ -29,24 +29,28 @@ Regisztrálja az alkalmazást, és adja hozzá az alkalmazás regisztrációs ad
 
 Az alkalmazás gyorsan regisztrálhatja az alábbiak szerint:
 
-1. Regisztrálja az alkalmazást a [Microsoft alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/portal/register-app?appType=serverSideWebApp&appTech=aspNetWebAppOwin&step=configure).
-2. Adjon meg egy nevet az alkalmazás és az e-maileket.
-3. Győződjön meg arról, hogy az interaktív telepítés esetén alkalmazott beállítás be van jelölve.
-4. Kövesse az utasításokat egy átirányítási URL-cím hozzáadása az alkalmazáshoz.
+1. Nyissa meg az új [az Azure portal - alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) ablaktáblán.
+1. Adja meg az alkalmazás nevét, és kattintson a **Regisztráció** elemre.
+1. Kövesse az új alkalmazás egy kattintással való letöltésére és automatikus konfigurálására vonatkozó utasításokat.
 
 ### <a name="option-2-advanced-mode"></a>Option 2: Speciális mód
 
-Az alkalmazása regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való hozzáadásához tegye a következőket:
+Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 
-1. Az alkalmazás regisztrálásához lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app).
-2. Adjon meg egy nevet az alkalmazás és az e-maileket.
-3. Ellenőrizze, hogy az interaktív telepítés a beállítás nincs bejelölve
-4. Válassza ki `Add Platform`, majd válassza ki `Web`.
-5. Lépjen vissza a Visual Studio és a Megoldáskezelőben, válassza ki a projektet, és tekintse meg a Tulajdonságok ablak (Ha nem látja a Tulajdonságok ablakban, az F4)
-6. Az SSL engedélyezve van módosítsa `True`.
-7. Kattintson a jobb gombbal a projektre a Visual Studióban, majd kattintson a **tulajdonságok**, és a **webes** fülre. Az a *kiszolgálók* szakaszban módosítsa a *projekt URL-címe* kell az SSL URL-címet.
-8. Másolja az SSL URL-címet, és adja hozzá az URL-cím átirányítási URL-címeket a regisztrációs portál listájában átirányítási URL-címek listájához:<br/><br/>![Projekt tulajdonságai](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-9. Adja hozzá a következő a `web.config` a legfelső szintű mappában található a szakasz `configuration\appSettings`:
+1. Nyissa meg a Visual Studio és:
+   - a Megoldáskezelőben válassza ki a projektet, és tekintse meg a Tulajdonságok ablak (Ha nem látja a Tulajdonságok ablakban, az F4)
+   - Az SSL engedélyezve van módosítsa `True`.
+   - Kattintson a jobb gombbal a projektre a Visual Studióban, majd kattintson a **tulajdonságok**, és a **webes** fülre. Az a *kiszolgálók* szakaszban módosítsa a *projekt URL-címe* kell az SSL URL-címet.
+   - Másolja az SSL URL-címet. Az URL-cím átirányítási URL-címek listáját a következő lépésben a regisztrációs portál átirányítási URL-címek listájában fel fog venni:<br/><br/>![Projekt tulajdonságai](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
+1. Keresse meg a fejlesztők a Microsoft identity platform [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapot.
+1. Válassza ki **új regisztrációs**.
+1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
+   - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `ASPNET-Tutorial`).
+   - A SSL volna a Visual Studióból az 1. lépésben másolt URL-címet (például `https://localhost:44368/`) a **válasz URL-cím**, és kattintson a **regisztrálása**.
+1. Válassza a **Hitelesítés** menüt, állítsa be az **Azonosító jogkivonatok** értékét az **Implicit engedélyezés** területen, majd válassza a **Mentés** elemet.
+1. Adja hozzá a következő a `web.config` a legfelső szintű mappában található a szakasz `configuration\appSettings`:
 
     ```xml
     <add key="ClientId" value="Enter_the_Application_Id_here" />
@@ -55,5 +59,5 @@ Az alkalmazása regisztrálásához és az alkalmazás regisztrációs informác
     <add key="Authority" value="https://login.microsoftonline.com/{0}/v2.0" />
     ```
 
-10. Cserélje le `ClientId` az imént regisztrált alkalmazás azonosítójával.
-11. Cserélje le `redirectUri` a projekt SSL URL-címével.
+1. Cserélje le `ClientId` az imént regisztrált alkalmazás azonosítójával.
+1. Cserélje le `redirectUri` a projekt SSL URL-címével.

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 401ad90f1ae4ffb4915a0b51aea41430e7045aa9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: c2fc406fa864fe2f67ded4ea98ad14475944671a
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270462"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500345"
 ---
 # <a name="tutorial-in-c-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Az oktatóanyag C#: Feltérképezi az Azure SQL-adatbázisok Azure Search-indexelők használatával
 
@@ -56,7 +56,7 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/), és a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1.. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
+1. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
 
 ![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
 
@@ -87,7 +87,7 @@ Ebben a lépésben egy olyan külső adatforrást fog létrehozni, amelyet az in
 
 Az alábbi gyakorlat azzal a feltételezéssel él, hogy Ön nem rendelkezik sem meglévő kiszolgálóval, sem adatbázissal. Mindkettőt a 2. lépésben kell létrehozni. Ha esetleg már rendelkezik meglévő erőforrással, a 4. lépéstől kezdődően hozzáadhatja a „hotels” táblát.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
+1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/). 
 
 2. Keresse meg, vagy hozzon létre egy **Azure SQL Database** , egy adatbázis, kiszolgáló és erőforráscsoport létrehozásához. Használhatja az alapértelmezett beállításokat és a legalacsonyabb szintű tarifacsomagot. A kiszolgáló létrehozásának egyik előnye, hogy megadhat egy rendszergazdai felhasználónevet és jelszót, amelyekre egy későbbi lépésben lesz szüksége a táblák létrehozásához és betöltéséhez.
 
@@ -99,7 +99,7 @@ Az alábbi gyakorlat azzal a feltételezéssel él, hogy Ön nem rendelkezik sem
 
    ![SQL-adatbázis oldal](./media/search-indexer-tutorial/hotels-db.png)
 
-4. A parancssávon kattintson az **Eszközök** > **Lekérdezésszerkesztő** lehetőségre.
+4. A navigációs panelen kattintson **Lekérdezésszerkesztő (előzetes verzió)**.
 
 5. Kattintson a **Bejelentkezés** lehetőségre, és adja meg a kiszolgálói rendszergazda felhasználónevét és jelszavát.
 
@@ -137,7 +137,7 @@ Az alábbi gyakorlat azzal a feltételezéssel él, hogy Ön nem rendelkezik sem
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-A kód most már készen áll az előállításra és a futtatásra. De előbb még szánjunk egy percet a jelen mintában szereplő index és indexelő meghatározásainak tanulmányozására. A megfelelő kód a következő két fájlban található meg:
+Miután az adatok és a konfigurációs beállítások vannak érvényben, a minta a program **DotNetHowToIndexers.sln** készen áll a létrehozásához és futtatásához. De előbb még szánjunk egy percet a jelen mintában szereplő index és indexelő meghatározásainak tanulmányozására. A megfelelő kód a következő két fájlban található meg:
 
   + **hotel.cs**, amely az indexet meghatározó sémát tartalmazza
   + **Program.cs**, amely a szolgáltatási struktúrák létrehozásának és felügyeletének funkcióit tartalmazza
@@ -155,45 +155,65 @@ public string HotelName { get; set; }
 
 A sémák tartalmazhatnak egyéb elemeket is, például keresési pontszámok növelésére használt pontozási profilokat, egyéni elemzőket és egyéb szerkezeteket. Jelenlegi céljainknak megfelelően azonban a sémát kevés elem határozza meg, így csak a minta adatkészletekben lévő mezők találhatók meg benne.
 
-Ebben az oktatóanyagban az indexelő egyetlen adatforrásból kér le adatokat. A gyakorlati alkalmazás során több indexelőt is hozzákapcsolhat ugyanahhoz az indexhez, több adatforrásból és indexelőből álló, konszolidált, kereshető indexet hozva létre. Használhatja ugyanazt az index-indexelő párt, miközben csak az adatforrásokat változtatja, vagy ugyanazt az indexet különböző indexelőkkel és adatforrásokkal együtt, attól függően, hogy melyik esetében van szüksége rugalmasságra.
+Ebben az oktatóanyagban az indexelő egyetlen adatforrásból kér le adatokat. A gyakorlatban is csatlakoztatható több indexelők ugyanahhoz az indexhez, több adatforrásból egy konszolidált, kereshető indexet létrehozása. Használhatja ugyanazt az index-indexelő párt, miközben csak az adatforrásokat változtatja, vagy ugyanazt az indexet különböző indexelőkkel és adatforrásokkal együtt, attól függően, hogy melyik esetében van szüksége rugalmasságra.
 
 ### <a name="in-programcs"></a>A Program.cs fájlban
 
-A fő program mindhárom jellemző adatforrás függvényeit tartalmazza. Ha csak az Azure SQL Database-t tekintjük, a következő objektumok bírnak kiemelt jelentőséggel:
+A fő program létrehozásához, egy ügyfél, az index, egy adatforrás és az indexelő logikát tartalmaz. A kód észleli és törli az azonos nevű meglévő erőforrásokat, azt feltételezve, hogy többször is futtatja ezt a programot.
+
+Az adatforrás-objektum az Azure SQL adatbázis-erőforrások, például adott beállításokkal konfigurált [növekményes indexelő](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) való használatához a beépített [észlelési funkciók módosítása](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) Azure AZ SQL. Az Azure SQL-mintaadatbázist hotels rendelkezik "helyreállítható törlés" nevű oszlop **IsDeleted**. Ha ebben az oszlopban távolítja el az adatbázisban, az indexelő igaz értékre van állítva a megfelelő dokumentálja a az Azure Search-index.
 
   ```csharp
-  private const string IndexName = "hotels";
-  private const string AzureSqlHighWaterMarkColumnName = "RowVersion";
-  private const string AzureSqlDataSourceName = "azure-sql";
-  private const string AzureSqlIndexerName = "azure-sql-indexer";
+  Console.WriteLine("Creating data source...");
+
+  DataSource dataSource = DataSource.AzureSql(
+      name: "azure-sql",
+      sqlConnectionString: configuration["AzureSQLConnectionString"],
+      tableOrViewName: "hotels",
+      deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
+          softDeleteColumnName: "IsDeleted",
+          softDeleteMarkerValue: "true"));
+  dataSource.DataChangeDetectionPolicy = new SqlIntegratedChangeTrackingPolicy();
+
+  searchService.DataSources.CreateOrUpdateAsync(dataSource).Wait();
   ```
 
-Egymástól függetlenül megtekinthető, konfigurálható vagy törölhető Azure Search-objektumok, például indexek, indexelők és adatforrások (sorrendben a *hotels*, az *azure-sql-indexer* és az *azure-sql*). 
-
-Az *AzureSqlHighWaterMarkColumnName* oszlop külön említést érdemel, mivel ez tartalmazza azokat a módosításészlelési információkat, amelyek segítségével az indexelő megállapítja, hogy történt-e módosítás az adott sorban a legutóbbi indexelési számítási feladat óta. A [módosításészlelési szabályzatokat](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) csak az indexelők támogatják, és adatforrásonként változnak. Az Azure SQL Database esetében – az adatbázis követelményei szerint – kétféle szabályzat közül lehet választani.
-
-Az alábbi kód a Program.cs fájlban alkalmazott adatforrás- és indexelő-létrehozási módszereket mutatja be. A kód észleli és törli az azonos nevű meglévő erőforrásokat, azt feltételezve, hogy többször is futtatja ezt a programot.
+Egy indexelő objektum a platform-agnosztikus, konfigurációs, ütemezés, amelyeknél és a meghívási függetlenül zdrojem ugyanaz. Ebben a példában az indexelő alaphelyzetbe állítási lehetőség, hogy törli a indexelő előzményeit, és a egy metódust hozhat létre, és azonnal futtathatja az indexelőt ütemezve tartalmazza.
 
   ```csharp
-  private static string SetupAzureSqlIndexer(SearchServiceClient serviceClient, IConfigurationRoot configuration)
+  Console.WriteLine("Creating Azure SQL indexer...");
+  Indexer indexer = new Indexer(
+      name: "azure-sql-indexer",
+      dataSourceName: dataSource.Name,
+      targetIndexName: index.Name,
+      schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
+  // Indexers contain metadata about how much they have already indexed
+  // If we already ran the sample, the indexer will remember that it already
+  // indexed the sample data and not run again
+  // To avoid this, reset the indexer if it exists
+  exists = await searchService.Indexers.ExistsAsync(indexer.Name);
+  if (exists)
   {
-    Console.WriteLine("Deleting Azure SQL data source if it exists...");
-    DeleteDataSourceIfExists(serviceClient, AzureSqlDataSourceName);
+      await searchService.Indexers.ResetAsync(indexer.Name);
+  }
 
-    Console.WriteLine("Creating Azure SQL data source...");
-    DataSource azureSqlDataSource = CreateAzureSqlDataSource(serviceClient, configuration);
+  await searchService.Indexers.CreateOrUpdateAsync(indexer);
 
-    Console.WriteLine("Deleting Azure SQL indexer if it exists...");
-    DeleteIndexerIfExists(serviceClient, AzureSqlIndexerName);
+  // We created the indexer with a schedule, but we also
+  // want to run it immediately
+  Console.WriteLine("Running Azure SQL indexer...");
 
-    Console.WriteLine("Creating Azure SQL indexer...");
-    Indexer azureSqlIndexer = CreateIndexer(serviceClient, AzureSqlDataSourceName, AzureSqlIndexerName);
-
-    return azureSqlIndexer.Name;
+  try
+  {
+      await searchService.Indexers.RunAsync(indexer.Name);
+  }
+  catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
+  {
+      Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
   }
   ```
 
-Figyelje meg, hogy az indexelő API-meghívásai platformfüggetlenek, kivéve a [DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet), amely a meghívni kívánt webbejáró típusát adja meg.
+
 
 ## <a name="run-the-indexer"></a>Az indexelő futtatása
 
@@ -236,12 +256,10 @@ Az Azure Portalon, a keresési szolgáltatás Áttekintés oldalán kattintson a
 
 A portálon fel van sorolva az összes indexelő, így az imént programozott módon létrehozott indexelő is. Megnyithatja az indexelő meghatározását, és megtekintheti annak adatforrását, vagy konfigurálhat frissítési ütemezést az új és a módosított sorok érvényesítéséhez.
 
-1. Nyissa meg az Azure Search-szolgáltatás Áttekintés oldalát.
-2. Görgessen lefelé az **indexelők** és az **adatforrások** csempéinek megkereséséhez.
-3. Kattintson egy csempére az egyes erőforrások listájának megnyitásához. Kiválaszthat egyedi indexelőket vagy adatforrásokat a konfigurációs beállítások megtekintéséhez vagy módosításához.
+1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/), és a search szolgáltatás **áttekintése** lap, kattintson a hivatkozások **indexek**, **indexelők**, és **adatok Források**.
+3. Válassza ki az egyes objektumok konfigurációs beállítások megtekintéséhez vagy módosításához.
 
    ![Indexelők és adatforrások csempéi](./media/search-indexer-tutorial/tiles-portal.png)
-
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

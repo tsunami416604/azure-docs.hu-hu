@@ -5,20 +5,20 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 04/08/2019
 ms.author: iainfou
-ms.openlocfilehash: a20dfcd9e2ef12252235b74455964d115d9aef9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29180d6c1bb5f0991a4f33c3b7c9418f84d8260c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181486"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494765"
 ---
 # <a name="preview---secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Előnézet - podok hálózati házirendek segítségével az Azure Kubernetes Service (AKS) közötti adatforgalom védelme
 
 A modern, mikroszolgáltatás-alapú alkalmazások a Kubernetesben való futtatásakor gyakran érdemes szabályozhatja, hogy mely összetevők kommunikálhatnak egymással. Hogyan forgalom is az Azure Kubernetes Service (AKS)-fürt podok áramlanak a legalacsonyabb jogosultsági szint elvének kell alkalmazni. Tegyük fel, valószínűleg szeretné tiltani a forgalom közvetlenül a háttér-alkalmazásokhoz. A *hálózati házirend* a Kubernetes szolgáltatás lehetővé teszi egy fürt podok közötti bejövő és kimenő forgalomra vonatkozó szabályok meghatározásához.
 
-Calico, egy nyílt forráskódú hálózatkezeléssel és a hálózati biztonsági megoldás Tigera, által megalkotott kínál egy hálózati házirend motor, amely a Kubernetes hálózati házirend-szabályok valósíthat meg. Ez a cikk bemutatja, hogyan telepíti az Calico hálózati házirend-motort, és hozhat létre Kubernetes hálózati szabályzatokat, amelyekkel szabályozható a podok az aks-ben közötti forgalmat.
+Ez a cikk bemutatja, hogyan telepíti a hálózati házirend-motort, és hozhat létre Kubernetes hálózati szabályzatokat, amelyekkel szabályozható a podok az aks-ben közötti forgalmat. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
 > [!IMPORTANT]
 > Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
@@ -27,7 +27,7 @@ Calico, egy nyílt forráskódú hálózatkezeléssel és a hálózati biztonsá
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az Azure CLI 2.0.56 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
+Az Azure CLI 2.0.61 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
 Hozzon létre egy AKS-fürtöt, amelyekkel a hálózati házirend, először engedélyeznie kell az előfizetés szolgáltatásjelzőre. Regisztrálja a *EnableNetworkPolicy* jelző funkciót, használja a [az a funkció regisztrálása] [ az-feature-register] parancsot az alábbi példában látható módon:
 
@@ -51,7 +51,35 @@ az provider register --namespace Microsoft.ContainerService
 
 AKS-fürt összes podok küldhet és fogadhat, korlátozás nélkül forgalom alapértelmezés szerint. A biztonság növelése érdekében megadhatja a szabályokat, amelyek a forgalom szabályozására. Háttér-alkalmazások gyakran csak jelennek meg a szükséges előtér-szolgáltatások, például. Vagy adatbázis-összetevői csak elérhetők az alkalmazásrétegek, amely csatlakozni hozzájuk.
 
-Hálózati házirendek olyan Kubernetes-erőforrásokat, amelyekkel podok közötti adatforgalom szabályozásához. Kiválaszthatja, hogy engedélyezik vagy megtagadják a forgalmat a beállítások, például a hozzárendelt címkék, névtérre vagy forgalmat port alapján. Hálózati házirendek YAML jegyzékfájlok lettek definiálva. Ezek a szabályzatok a szélesebb körű jegyzékfájl, amely is létrehoz egy központi telepítés vagy a szolgáltatás része lehet.
+A hálózati házirend egy Kubernetes-specifikációt, amely meghatározza a hozzáférési szabályzatok Podok közötti kommunikációhoz. A hálózati szabályzatokkal megadhat egy rendezett sorozata a Küldés és a forgalom fogadására, és alkalmazza őket egy gyűjteménye, amelyek megfelelnek egy vagy több címke választók podok szabályok.
+
+Hálózati házirend-szabályokban YAML jegyzékfájlok lettek definiálva. Lehet, hogy a hálózati házirendeket a szélesebb körű jegyzékfájl, amely is létrehoz egy központi telepítés vagy a szolgáltatás része.
+
+### <a name="network-policy-options-in-aks"></a>Hálózati házirend-beállítások az aks-ben
+
+Azure hálózati házirend megvalósítása kétféle módszert biztosít. AKS-fürt létrehozásakor válassza a hálózati házirend-beállításként. A házirend-beállítás nem módosítható, miután a fürt létrehozása:
+
+* Azure-implementáció, nevű *Azure hálózati házirendek*.
+* *Calico hálózati házirendek*, egy nyílt forráskódú hálózati és a hálózati biztonsági megoldás által megalkotott [Tigera][tigera].
+
+Mindkét megvalósításokban Linux *engedélyezze az IPTables* a megadott házirendeknek az érvényesítését. Házirendek beállítása az engedélyezett és letiltott IP párok fordítja. A párok majd programozott IPTable Állapotszűrő szabályok szerint.
+
+A hálózati házirend csak együttműködik az Azure CNI (speciális) lehetőséget. Megvalósítás nem egyezik meg a két lehetőség közül választhat:
+
+* *Az Azure hálózati házirendek* – az Azure CNI állít be egy hídról a hitelesítést a csomóponton belüli hálózatkezelés Virtuálisgép-gazdán. A szűrési szabályokat akkor lépnek fel, amikor a híd továbbítja a csomagokat.
+* *Calico hálózati házirendek* – az Azure CNI állítja be a hitelesítést a csomóponton belüli forgalom helyi kernel útvonalakat. A szabályzatok érvénybe lépnek a pod hálózati adapteren.
+
+### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Azure-ban és Calico házirendeket és azok képességeinek közötti különbségek
+
+| Képesség                               | Azure                      | Calico                      |
+|------------------------------------------|----------------------------|-----------------------------|
+| Támogatott platformok                      | Linux                      | Linux                       |
+| Támogatott hálózati beállítások             | Azure CNI                  | Azure CNI                   |
+| Kubernetes-specifikáció való megfelelés | Minden házirendtípus támogatott |  Minden házirendtípus támogatott |
+| További funkciók                      | None                       | Kiterjesztett házirend modell globális hálózati házirend, a globális hálózati beállítása és a Gazdagéppel. További tájékoztatást a `calicoctl` kezelheti ezeket a funkciókat, kiterjesztett CLI lásd [calicoctl felhasználói referencia][calicoctl]. |
+| Támogatás                                  | Az Azure-támogatás és a mérnöki csapat által támogatott | Calico közösségi támogatás. További fizetős támogatási további információkért lásd: [projekt Calico támogatási lehetőségek][calico-support]. |
+
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AKS-fürt létrehozása és a hálózati házirend engedélyezése
 
 Nézzük megtekintéséhez működés közben, a hálózati házirendeket hozzon létre, és bontsa ki a forgalom áramlását szabályzatban:
 
@@ -59,9 +87,7 @@ Nézzük megtekintéséhez működés közben, a hálózati házirendeket hozzon
 * Engedélyezi a forgalmat a pod címkék alapján.
 * Engedélyezi a forgalmat a névtér alapján.
 
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AKS-fürt létrehozása és a hálózati házirend engedélyezése
-
-A hálózati házirend csak a fürt létrehozásakor engedélyezhető. Nem engedélyezhető a hálózati házirend egy meglévő AKS-fürtre. 
+Először is hozzunk létre egy AKS-fürtöt, amely támogatja a hálózati házirend. A hálózati házirend-szolgáltatás csak a fürt létrehozásakor engedélyezhető. Nem engedélyezhető a hálózati házirend egy meglévő AKS-fürtre.
 
 A hálózati házirend-val való használatához egy AKS-fürtöt kell használnia a [beépülő modul Azure CNI] [ azure-cni] és a saját virtuális hálózat és alhálózatok megadása. Részletesebb információk tervezze meg a szükséges alhálózati tartományokat, lásd: [speciális hálózatkezelés konfigurálását][use-advanced-networking].
 
@@ -71,6 +97,7 @@ Az alábbi példa parancsfájl:
 * Létrehoz egy Azure Active Directory (Azure AD) használja az egyszerű szolgáltatást az AKS-fürtöt.
 * Hozzárendeli *közreműködői* engedélyeit az AKS-fürt egyszerű szolgáltatás a virtuális hálózati.
 * A megadott virtuális hálózat egy AKS-fürtöt hoz létre, és lehetővé teszi, hogy a hálózati házirend.
+    * A *azure* hálózati házirend-beállítás szolgál. Helyette használja Calico a hálózati házirend-beállítást, használja a `--network-policy calico` paraméter.
 
 Adja meg a saját biztonságos *SP_PASSWORD*. Lecserélheti a *RESOURCE_GROUP_NAME* és *fürtnév* változókat:
 
@@ -122,7 +149,7 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --network-policy calico
+    --network-policy azure
 ```
 
 A fürt létrehozása néhány percet vesz igénybe. Ha a fürt elkészült, konfigurálja `kubectl` használatával csatlakozni a Kubernetes-fürtöt a [az aks get-credentials] [ az-aks-get-credentials] parancsot. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes parancssori Felületét azok használatára:
@@ -454,6 +481,9 @@ Szabályzatokkal kapcsolatos további tudnivalókért lásd: [Kubernetes hálóz
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues]
+[tigera]: https://www.tigera.io/
+[calicoctl]: https://docs.projectcalico.org/v3.5/reference/calicoctl/
+[calico-support]: https://www.projectcalico.org/support
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

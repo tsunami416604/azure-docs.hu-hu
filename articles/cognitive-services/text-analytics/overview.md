@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/01/2019
+ms.date: 04/03/2019
 ms.author: aahi
-ms.openlocfilehash: 59763b1146986b9920b87152101fd1dcdb00fece
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 054f0cf91904497b77fd08165808f9b4c381ecca
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904763"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500379"
 ---
 # <a name="what-is-text-analytics-api"></a>Mit jelent a szövegelemzési API-t?
 
@@ -58,6 +58,18 @@ A munkafolyamat egyszerű: benyújtjuk az adatokat elemzésre és a kódban keze
 A kimenetet a rendszer egyetlen JSON-dokumentumban adja vissza, amely tartalmazza az összes elküldött szöveges dokumentum eredményeit, azok azonosítói alapján. Az eredmények ezt követően elemezhetők, vizualizálhatók vagy kategorizálhatók a gyakorlatban használható megállapításokká.
 
 Az adatok nem lesznek tárolva a fiókjában. A Text Analytics API által végrehajtott műveletek állapot nélküliek, ami azt jelenti, hogy a szöveg feldolgozása és az eredmények visszaadása azonnal megtörténik.
+
+## <a name="text-analytics-for-multiple-programming-experience-levels"></a>Több programozási Szövegelemzés élmény szintek
+
+Megkezdheti a Text Analytics API a folyamatokban, még akkor is, ha sok tapasztalattal a programozás nem rendelkezik. Ezek az oktatóanyagok segítségével megismerheti, hogyan használhatja az API-t a felhasználói élményt szint megfelelően többféle szöveg elemzése. 
+
+* Minimális programozási szükséges:
+    * [A Text Analytics API-t használja, és azonosíthatja a megjegyzéseket a Yammer-csoport jelöli az MS Flow](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Power BI integrálható a szövegelemzési API ügyfélvisszajelzések elemzése](tutorials/tutorial-power-bi-key-phrases.md)
+* Ajánlott programozási feladatok:
+    * [Streamelési adatok hangulatelemzése az Azure Databricks használatával](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Szöveg fordítása, vélemények elemzése és a speech szintetizálásához Flask alkalmazás készítése](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+
 
 <a name="supported-languages"></a>
 

@@ -3,19 +3,19 @@ title: X.509-eszközök regisztrációja az Azure Device Provisioning Service-be
 description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban X.509-eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service-be a Python használatával
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/25/2018
+ms.date: 04/10/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: aad21bd4003f789a0a315d6514bf428a4ef3f9f5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d9ed0cb82f8ad1c19f95299b3dd651fc099368b8
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187348"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500770"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>Gyors útmutató: A Device Provisioning Service-be a Python X.509-eszközök regisztrálása
 
@@ -52,7 +52,7 @@ A teszteszköz segítségével a következő lépésekkel állíthat elő tanús
    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
    ```
 
-   Az adattár mérete jelenleg körülbelül 220 MB. Ez a művelet várhatóan több percig is eltarthat.
+   Ez a művelet várhatóan több percig is eltarthat.
 
    A teszteszköz a klónozott adattár *azure-iot-sdk-c/tools/CACertificates* mappájában található.    
 
@@ -148,4 +148,4 @@ Ha azt tervezi, hogy részletesebben is áttekinti a Java-szolgáltatásmintát,
 Ebben a rövid útmutatóban X.509-eszközök egy szimulált csoportját regisztrálta az eszközkiépítési szolgáltatásba. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
 
 > [!div class="nextstepaction"]
-> [Azure IoT Hub eszközkiépítési szolgáltatás oktatóanyagai](./tutorial-set-up-cloud.md)
+> [Azure IoT Hub Device Provisioning Service-oktatóanyagok](./tutorial-set-up-cloud.md)

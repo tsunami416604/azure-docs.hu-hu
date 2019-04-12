@@ -14,14 +14,15 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce76fa7fecb8a82f76d40827bfa868061a0ed584
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4db6554e86cef61f2fc8e7a466919d2ce723f0e5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204899"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492702"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Az Azure Active Directory felhasználói jelszó alaphelyzetbe állítása
+
 A rendszergazdák, ha elfelejti a jelszavát, ha a felhasználó-eszköz lekérdezi kizárva, vagy ha a felhasználó soha nem kapott jelszót alaphelyzetbe állíthatja a felhasználó jelszavát.
 
 >[!Note]
@@ -32,7 +33,7 @@ A rendszergazdák, ha elfelejti a jelszavát, ha a felhasználó-eszköz lekérd
 
 ## <a name="to-reset-a-password"></a>Jelszó alaphelyzetbe állítása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) egy globális rendszergazdai, a felhasználó rendszergazda vagy a jelszókezelő. Az elérhető szerepkörök kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) vagy jelszókezelő felhasználó rendszergazda. Az elérhető szerepkörök kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
 
 2. Válassza ki **Azure Active Directory**válassza **felhasználók**, keresse meg és válassza ki az alaphelyzetbe állítás szükséges, és válassza **jelszó alaphelyzetbe állítása**.
 
@@ -50,6 +51,7 @@ A rendszergazdák, ha elfelejti a jelszavát, ha a felhasználó-eszköz lekérd
     >Az ideiglenes jelszó sohasem jár le. Amikor legközelebb a felhasználó bejelentkezik, a jelszó továbbra is működni fog, függetlenül hogyan sok idő telt, mivel az ideiglenes jelszó lett létrehozva.
 
 ## <a name="next-steps"></a>További lépések
+
 Miután a felhasználó jelszavát is alaphelyzetbe állítja, az alábbi alapszintű folyamatok hajthatja végre:
 
 - [Adja hozzá, vagy a felhasználók törlése](add-users-azure-active-directory.md)
@@ -58,6 +60,6 @@ Miután a felhasználó jelszavát is alaphelyzetbe állítja, az alábbi alapsz
 
 - [Profil adatok hozzáadása vagy módosítása](active-directory-users-profile-azure-portal.md)
 
-- [Hozzon létre egy alapszintű csoportot, és tagokat vehet fel](active-directory-groups-create-azure-portal.md)
+- [Alapszintű csoport létrehozása és tagok hozzáadása](active-directory-groups-create-azure-portal.md)
 
 Vagy a felhasználó az összetettebb esetekhez, például delegáltak hozzárendelése, házirendekkel és megosztása, felhasználói fiókok is végezhet. Egyéb elérhető műveletekkel kapcsolatos további információkért lásd: [Azure Active Directory felhasználói felügyeleti dokumentáció](../users-groups-roles/index.yml).

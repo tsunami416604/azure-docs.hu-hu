@@ -4,228 +4,201 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azu
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: b60c955e-8fa3-4872-a897-c4e81fd7beac
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/14/2017
+ms.topic: tutorial
+ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb6f0645f1a12566f05b5f44688e4f86ab1b9725
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4ef3c9d1fdbf030a820f2a3a1724bd18a4b0cedb
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178260"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501161"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Oktatóanyag: A 10 000 szerint tervek az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan 10 000 szerint tervek integrálása az Azure Active Directory (Azure AD).
-
 10 000 szerint tervek integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, hogy ki férhet hozzá a 10 000 szerint tervek az Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett 10 000 szerint tervekhez (egyszeri bejelentkezés) az Azure AD-fiókjukat
-- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
+* Szabályozhatja, ki férhet hozzá a 10 000 szerint tervek az Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett 10 000 szerint tervekhez (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása a tervek szerint 10 000, a következőkre van szükség:
 
-- Azure AD-előfizetés
-- A 10 000 szerint tervek egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a ide-egy havi próbalehetőség [próbaverziós ajánlat](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
+* 10 000 szerint tervek egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. 10 000 szerint hozzáadása a katalógusból csomagok
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+
+* 10 000 szerint tervek támogatási **SP** által kezdeményezett egyszeri bejelentkezés
+* 10 000 szerint tervek támogatási **igény szerinti** felhasználók átadása
 
 ## <a name="adding-10000ft-plans-from-the-gallery"></a>10 000 szerint hozzáadása a katalógusból csomagok
+
 Adja meg az Azure AD integrálása a tervek szerint 10 000, szüksége 10 000 szerint csomagok hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
 
 **10 000 szerint csomagok hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a  **[az Azure portal](https://portal.azure.com)**, a bal oldali navigációs panelen, kattintson a **Azure Active Directory** ikonra.
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![Alkalmazások][2]
-    
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Alkalmazások][3]
+3. Új alkalmazás hozzáadásához kattintson a **új alkalmazás** gombra a párbeszédpanel tetején.
 
-4. A Keresés mezőbe írja be a **10 000 szerint tervek**.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/10000ftplans-tutorial/tutorial_10,000ftplans_search.png)
+4. A Keresés mezőbe írja be a **10 000 szerint tervek**, jelölje be **10 000 szerint tervek** az eredmény panelen, majd kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-5. Az eredmények panelen válassza ki a **10 000 szerint tervek**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+    ![10 000 szerint tervek a találatok listájában](common/search-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/10000ftplans-tutorial/tutorial_10,000ftplans_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az 10 000 szerint a "Britta Simon." nevű tesztelési felhasználó tervek
-
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó a tervek szerint 10 000 mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó 10 000 szerint a hivatkozás kapcsolata tervek kell létrehozni.
-
-10 000 szerint tervek, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az 10 000 szerint nevű tesztfelhasználó alapján tervek **Britta Simon**.
+Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó 10 000 szerint a hivatkozás kapcsolata tervek kell hozható létre.
 
 Az Azure AD egyszeri bejelentkezés a tervek szerint 10 000 tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[10 000 szerint létrehozása tervek tesztfelhasználó](#creating-a-10000ft-plans-test-user)**  – szeretné, hogy egy felhasználó Azure ad-ben reprezentációja kapcsolódó 10 000 tervek szerint a Britta Simon megfelelője.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Konfigurálja a 10000 szerint csomagok egyszeri bejelentkezés](#configure-10000ft-plans-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre 10000 szerint tervek tesztfelhasználót](#create-10000ft-plans-test-user)**  – szeretné, hogy egy felhasználó Azure ad-ben reprezentációja kapcsolódó 10 000 tervek szerint a Britta Simon megfelelője.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és 10 000 szerint a csomagok alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Az Azure AD egyszeri bejelentkezés konfigurálásához 10 000 szerint csomagokkal, hajtsa végre az alábbi lépéseket:**
+Az Azure AD egyszeri bejelentkezés konfigurálásához 10 000 szerint csomagokkal, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **10 000 szerint tervek** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezés**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **10 000 szerint tervek** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/10000ftplans-tutorial/tutorial_10,000ftplans_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-3. Az a **10 000 szerint csomagok tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/10000ftplans-tutorial/tutorial_10,000ftplans_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be az URL-cím: `https://app.10000ft.com`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **azonosító** szövegmezőbe írja be az URL-cím: `https://app.10000ft.com/saml/metadata`
+4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    > [!NOTE] 
-    > Az érték **azonosító** eltérő, ha rendelkezik egyéni tartománnyal. Kapcsolattartó [10 000 szerint tervek támogatási csapatának](https://www.10000ft.com/plans/support) lekérni ezt az értéket. 
- 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Raw)** , és mentse a tanúsítványfájlt, a számítógépen.
+    ![10 000 szerint csomagok tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/10000ftplans-tutorial/tutorial_10,000ftplans_certificate.png) 
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be az URL-cím: `https://app.10000ft.com`
 
-5. Kattintson a **mentése** gombra.
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be az URL-cím: `https://app.10000ft.com/saml/metadata`
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/10000ftplans-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Az érték **azonosító** eltérő, ha rendelkezik egyéni tartománnyal. Kapcsolattartó [10 000 szerint csomagok ügyfél-támogatási csapatával](https://www.10000ft.com/plans/support) lekérni ezt az értéket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-6. Az a **10 000 szerint csomagok konfigurációs** területén kattintson **10 000 szerint csomagok konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **(Raw)tanúsítvány** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/10000ftplans-tutorial/tutorial_10,000ftplans_configure.png) 
+    ![A tanúsítvány letöltési hivatkozás](common/certificateraw.png)
 
-7. Az egyszeri bejelentkezés konfigurálása **10 000 szerint tervek** oldalon kell küldenie a letöltött **Certificate(Raw), kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [10 000 szerint Csomagok támogatási csoportjának](https://www.10000ft.com/plans/support).
+6. Az a **10 000 szerint tervek beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-10000ft-plans-single-sign-on"></a>10000 szerint tervek egyszeri bejelentkezés konfigurálása
+
+Az egyszeri bejelentkezés konfigurálása **10 000 szerint tervek** oldalon kell küldenie a letöltött **tanúsítvány (Raw)** és az Azure Portalról másolt URL-címek megfelelő [10 000 szerint tervek támogatási csoport ](https://www.10000ft.com/plans/support). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-![Az Azure AD-felhasználó létrehozása][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/10000ftplans-tutorial/create_aaduser_01.png) 
+    ![Új felhasználó gomb](common/new-user.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/10000ftplans-tutorial/create_aaduser_02.png) 
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-3. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/10000ftplans-tutorial/create_aaduser_03.png) 
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/10000ftplans-tutorial/create_aaduser_04.png) 
+    a. Az a **neve** írja be a következőt **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőbe írja be a `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
 
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="creating-a-10000ft-plans-test-user"></a>10 000 szerint létrehozása tervek tesztfelhasználó
 
-Ez a szakasz célja a tervek szerint 10 000 Britta Simon nevű felhasználó létrehozásához. 10 000 szerint tervek támogatja a just-in-time-kiépítés engedélyezve alapértelmezés szerint ez. Nincs meg ebben a szakaszban a művelet elem. 10 000 ft-csomagok eléréséhez, ha még nem létezik tett kísérlet során jön létre egy új felhasználót. 
-
-> [!NOTE]
-> Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [10 000 szerint tervek támogatási csapatának](https://www.10000ft.com/plans/support).
-
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával 10 000 szerint tervekhez Azure egyszeri bejelentkezés használatára.
 
-![Felhasználó hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **10 000 szerint tervek**.
 
-**10 000 szerint tervek Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201] 
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 2. Az alkalmazások listájában jelölje ki a **10 000 szerint tervek**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/10000ftplans-tutorial/tutorial_10,000ftplans_app.png) 
+    ![Az alkalmazások listáját a 10 000 szerint tervek hivatkozás](common/all-applications.png)
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202] 
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Felhasználó hozzárendelése][203]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+5. Az a **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-Ez a szakasz célja tesztelése az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.  
-Ha a hozzáférési panelen, a 10 000 szerint tervek csempére kattint, akkor kell lekérése automatikusan bejelentkezett, 10 000 szerint a csomagok alkalmazását.
- 
+### <a name="create-10000ft-plans-test-user"></a>10000 szerint tervek tesztfelhasználó létrehozása
+
+Ebben a szakaszban egy Britta Simon nevű felhasználó a tervek szerint 10 000 jön létre. 10 000 szerint csomagokat támogatja-igény a felhasználók átadása, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik a tervek szerint 10 000, a hitelesítés után egy új jön létre.
+
+> [!NOTE]
+> Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [10 000 szerint csomagok ügyfél-támogatási csapatával](https://www.10000ft.com/plans/support).
+
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+
+Ha a hozzáférési panelen, a 10 000 szerint tervek csempére kattint, meg kell automatikusan megtörténik a 10 000 szerint tervekkel, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/10000ftplans-tutorial/tutorial_general_01.png
-[2]: ./media/10000ftplans-tutorial/tutorial_general_02.png
-[3]: ./media/10000ftplans-tutorial/tutorial_general_03.png
-[4]: ./media/10000ftplans-tutorial/tutorial_general_04.png
-
-[100]: ./media/10000ftplans-tutorial/tutorial_general_100.png
-
-[200]: ./media/10000ftplans-tutorial/tutorial_general_200.png
-[201]: ./media/10000ftplans-tutorial/tutorial_general_201.png
-[202]: ./media/10000ftplans-tutorial/tutorial_general_202.png
-[203]: ./media/10000ftplans-tutorial/tutorial_general_203.png
-
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

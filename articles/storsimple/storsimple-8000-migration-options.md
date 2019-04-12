@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/31/2019
+ms.date: 04/10/2019
 ms.author: alkohli
-ms.openlocfilehash: ea8a6d604187a25e5186d7200feba6aaab1f676a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e8a5ae4a4ee9cfd5c39e8e399784ec65f2ee2660
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339453"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500906"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Adatok áttelepítése az a StorSimple 5000-7000-es sorozat beállításai 
 
@@ -49,15 +49,28 @@ Adatok áttelepítése az Azure File Sync további információkért látogasson
 
 #### <a name="migrate-to-panzura-freedom-nas"></a>Panzura szabadon NAS áttelepítése
 
-A StorSimple 5000-7000-es ügyfelek kiválaszthatják a Panzura szabadon NAS tárolni az adatokat az Azure-ban való áttelepítéséhez. Panzura szabadon megoldás egy NAS-megoldás, adatközpontok, iroda, nyilvános és magánfelhőkben is biztosít. A megoldás lehetővé teszi a helyi, hibrid és a felhőbeli adatok munkafolyamatok NFS, SMB és mobilos ügyfeleket. Ez az áttelepítés Panzura által támogatott és Kezdésként igénylésével az áttelepítés támogatása a [Panzura webhely](https://panzura.com/storsimple-migration/).
+A StorSimple 5000-7000-es ügyfelek kiválaszthatják a Panzura szabadon NAS tárolni az adatokat az Azure-ban való áttelepítéséhez. Panzura szabadon megoldás egy NAS-megoldás, adatközpontok, iroda, nyilvános és magánfelhőkben is biztosít. A megoldás lehetővé teszi a helyi, hibrid és a felhőbeli adatok munkafolyamatok NFS, SMB és mobilos ügyfeleket. 
+
+Ez az áttelepítés Panzura által támogatott és Kezdésként igénylésével az áttelepítés támogatása a [Panzura webhely](https://panzura.com/storsimple-migration/).
 
 #### <a name="migrate-to-cohesity"></a>A Cohesity áttelepítése
 
-Cohesity lehetővé teszi, hogy a jelenlegi storsimple 5000 – 7000-es adatok áttelepítését a Cohesity Data Platform az Azure-ban. A Cohesity Adatplatform, amely egyesíti a fájlokat, a biztonsági mentések, a objektumok és a virtuális gépek egyetlen natív felhőalapú megoldás alakzatot szoftveresen definiált webes méretű megoldás is. A Data platform az áttelepítés után kezelése, védelme és kiépítése az adatokhoz és alkalmazásokhoz a felhőből egy egyetlen tekinthesse keresztül maghoz. Indítsa el a Cohesity, mindössze három csomóponttal. További információ a [áttelepítés, a Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
+Cohesity lehetővé teszi, hogy a jelenlegi storsimple 5000 – 7000-es adatok áttelepítését a Cohesity Data Platform az Azure-ban. A Cohesity Adatplatform, amely egyesíti a fájlokat, a biztonsági mentések, a objektumok és a virtuális gépek egyetlen natív felhőalapú megoldás alakzatot szoftveresen definiált webes méretű megoldás is. A Data platform az áttelepítés után kezelése, védelme és kiépítése az adatokhoz és alkalmazásokhoz a felhőből egy egyetlen tekinthesse keresztül maghoz. Indítsa el a Cohesity, mindössze három csomóponttal. 
+
+További információ a [a Cohesity Data Platform az áttelepítés](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
 
 #### <a name="migrate-to-nasuni"></a>A Nasuni áttelepítése
 
-A Nasuni megkönnyíti a StorSimple 5000-7000-es ügyfelek migrálása és tárolni az adatokat az Azure-ban.  A Nasuni vezető NAS Azure-alapú tárolási megoldás, így a vevők a teljesítmény és a biztonság feláldozása a helyszíni megoldások, a felhőbeli adatvédelemmel és a méretezési csoport.  Mellett a file storage nagy teljesítményű, és az Azure a Nasuni leíró biztonsági mentés és Vészhelyreállítás, miközben lehetővé teszi, hogy a megosztás és együttműködés az adatokon a központosított fájl storage management a világ minden pontján. A Nasuni a működés, győződjön meg arról, a migrálás egyszerű – kezdje el már ma rendelkezik: https://info.nasuni.com/nasuni-storsimple-migration
+A Nasuni megkönnyíti a StorSimple 5000-7000-es ügyfelek migrálása és tárolni az adatokat az Azure-ban.  A Nasuni vezető NAS Azure-alapú tárolási megoldás, így a vevők a teljesítmény és a biztonság feláldozása a helyszíni megoldások, a felhőbeli adatvédelemmel és a méretezési csoport.  Mellett a file storage nagy teljesítményű, és az Azure a Nasuni leíró biztonsági mentés és Vészhelyreállítás, miközben lehetővé teszi, hogy a megosztás és együttműködés az adatokon a központosított fájl storage management a világ minden pontján. 
+
+A Nasuni a működés, győződjön meg arról, a migrálás egyszerű – kezdje el már ma rendelkezik: https://info.nasuni.com/nasuni-storsimple-migration
+
+#### <a name="migrate-to-talon-fast"></a>A Talon FAST áttelepítése
+
+Talon megkönnyíti a StorSimple 5000-7000-es ügyfeleinek, hogy azok értékű sokféle a StorSimple-platform (kis méretű helyszíni erőforrás-igényű korlátlan felhőalapú erőforrások által támogatott) előnyeit kihasználva még nagyobb függvénnyel.  A Talon gyors megoldás révén ügyfeleink telepíthet át, és tartsa adataikat az Azure-ban, most már egy csak szoftveres helyszíni még kisebb üzembe helyezésének előkészítése kapcsolatban, és további előnyöket, például a globális fájl hozzáadása közben zárolása, globális névtér és az együttműködést a többhelyes.  Talon a vezető Azure-ökoszisztéma megoldás, globális ügyfelekkel együttműködve egy konszolidált, az Azure-alapú erőforrás-igényű megalkuvás felhasználói munkafolyamat vagy tapasztalatok nélkül be azok a helyszíni fájlkiszolgálók server számítási feladatok migrálása.  
+
+Ismerje meg, hogyan fejlesztheti tovább egy felhőbeli konszolidált Enterprise, https://www.talonstorage.com/alliances/microsoft-storsimple.
+
 
 ## <a name="migration---frequently-asked-questions"></a>Migrálás – gyakori kérdések
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7ef3cfe1df792721db3fe3657c08f58ca82e3c91
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 41797caa89108448f0eaa27309046c01d7432823
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652314"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494627"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Napló metrikák betanítás során fut az Azure Machine Learningben
 
@@ -217,37 +217,9 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
    run = experiment.submit(src)
    ```
 
-## <a name="cancel-a-run"></a>A Futtatás megszakítása
+## <a name="manage-a-run"></a>Futtatás kezelése
 
-Futtatás ALTER elküldését lemondhatja a szolgáltatásokat, akkor is, ha elvesztette az objektumhivatkozás mindaddig, amíg a kísérlet neve ismeri, és futtassa az azonosítót. 
-
-
-```python
-from azureml.core import Experiment
-exp = Experiment(ws, "my-experiment-name")
-
-# if you don't know the run id, you can list all runs under an experiment
-for r in exp.get_runs():  
-    print(r.id, r.get_status())
-
-# if you know the run id, you can "rehydrate" the run
-from azureml.core import get_run
-r = get_run(experiment=exp, run_id="my_run_id", rehydrate=True)
-  
-# check the returned run type and status
-print(type(r), r.get_status())
-
-# you can cancel a run if it hasn't completed or failed
-if r.get_status() not in ['Complete', 'Failed']:
-    r.cancel()
-```
-Jelenleg csak ScriptRun és PipelineRun típusokat támogatja a megszakítási műveletet.
-
-Ezenkívül lemondhatja a szolgáltatásokat egy Futtatás a következő parancsot a CLI-n keresztül:
-```shell
-az ml run cancel -r <run_id> -p <project_path>
-```
-
+A [kezdő, figyelő és a betanítási futtatások megszakítása](how-to-manage-runs.md) cikk konkrét Azure Machine Learning munkafolyamatainak kezelése a kísérletek emeli ki.
 
 ## <a name="view-run-details"></a>Futtatás részletei nézet
 
@@ -417,7 +389,7 @@ Hitelesítési rajzot a prediktív modellek magabiztosan megjelenítésére szol
 
 ### <a name="regression"></a>Regresszió
 Minden regressziós modell az automatizált gépi tanulási funkciókat az Azure Machine Learning segítségével létrehozhat, a következő diagram látható: 
-+ [Előre jelzett vs. Igaz](#pvt)
++ [Előre jelzett vs. True (Igaz)](#pvt)
 + [Például hisztogramja](#histo)
 
 <a name="pvt"></a>
@@ -450,9 +422,9 @@ Funkció fontosság biztosít, amely jelzi, hogy milyen értékes alapdokumentá
 
 ## <a name="example-notebooks"></a>Példa notebookok
 A következő notebookok a jelen cikk fogalmait bemutatása:
-* [How-to-use-azureml/Training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
-* [How-to-use-azureml/Training/train-on-Local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
+* [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
+* [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+* [how-to-use-azureml/training/logging-api/logging-api.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

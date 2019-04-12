@@ -9,16 +9,16 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: c616b2578f7606ce7df19fdbef16bec8a24428d3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 25f620cb36c2bfb548ecf08c33dc04b37118a256
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262499"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489622"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
-Figyelés .NET és .NET Core alapú webalkalmazások futtatása az Azure App Servicesben engedélyezése mostantól egyszerűbb, mint valaha. Mivel korábban szükséges webhelybővítmény manuális telepítéséhez, a legújabb bővítési ügynök most már be van építve az app service lemezkép alapértelmezés szerint. Ez a cikk fog végigvezetik Application insights általi figyelés engedélyezése, valamint a nagyobb méretű környezetek esetében a folyamat automatizálásának előzetes útmutatást nyújtanak.
+Engedélyezni a figyelést a .NET és .NET Core-alapú futó webalkalmazásoknál [Azure App Services](https://docs.microsoft.com/azure/app-service/) , minden eddiginél egyszerűbbé teszi. Mivel korábban szükséges webhelybővítmény manuális telepítéséhez, a legújabb bővítési ügynök most már be van építve az app service lemezkép alapértelmezés szerint. Ez a cikk fog végigvezetik Application insights általi figyelés engedélyezése, valamint a nagyobb méretű környezetek esetében a folyamat automatizálásának előzetes útmutatást nyújtanak.
 
 > [!NOTE]
 > Manuálisan hozzáadni egy Application Insights-webhelybővítményt keresztül **Fejlesztőeszközök** > **bővítmények** elavult. Ezzel a módszerrel telepíteni a bővítményt minden egyes új verzió frissítései manuális függött. A bővítmény legújabb stabil kiadása már [előtelepített](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) az App Service-kép részeként. A fájlok találhatók `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` és automatikusan frissülnek minden stabil kiadással. Ha az ügynök utasítások figyelés engedélyezése az alábbiakban, automatikusan eltávolítja az elavult bővítmény az Ön számára.

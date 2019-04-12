@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur, dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f3f041fa3b594b4b680d794c1c013e55b97da4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0de9b3e3535253724d068f806b219736f6889477
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235189"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501589"
 ---
 # <a name="support-and-help-options-for-developers"></a>Fejlesztői támogatás és súgó lehetőségei
 
@@ -55,8 +55,7 @@ Ahol *{Your keresőkifejezéseket}* felel meg a keresési kulcsszavakat.
 | Eszköz  | Leírás  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | Illessze be az Azonosítót, vagy a hozzáférési tokent való dekódolandó jogcímek neveket és értékeket. |
-| [Hiba történt a kód elemző](https://apps.dev.microsoft.com/portal/tools/errors)| Illessze be a bejelentkezés során kapott hibakódot vagy hozzájárulás megadása a lapok megjelenítéséhez a lehetséges okokért és megoldásokért. |
-| [A Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Eszköz, amely lehetővé teszi a kérelmeket, és tekintse meg a válaszok a Microsoft Graph API ellen. |
+| [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Eszköz, amely lehetővé teszi a kérelmeket, és tekintse meg a válaszok a Microsoft Graph API ellen. |
 
 ## <a name="post-a-question-to-stack-overflow"></a>Új kérdést tenne fel a Stack overflow-n
 
@@ -67,11 +66,11 @@ Ha nem találja a választ a kérdésére keresési keresztül, küldje el a Sta
 |Összetevő/terület  | Címkék |
 |---------|---------|
 | ADAL-könyvtár | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
-| Az MSAL könyvtár     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
+| Az MSAL könyvtár     | [[az msal]](https://stackoverflow.com/questions/tagged/msal) |
 | OWIN közbenső szoftvert  | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 | [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
 | [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[a microsoft graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
 | A hitelesítési vagy engedélyezési kapcsolatos más területeken kapcsolatos témakörök | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
 A Stack overflow-n a következő bejegyzések kérdéseket tehet fel és hozzáadása a forráskódja tippeket tartalmaz. Kövesse ezeket az irányelveket növelheti annak esélyét segítségével mérheti fel, és gyorsan válaszolni a Közösség tagjai:

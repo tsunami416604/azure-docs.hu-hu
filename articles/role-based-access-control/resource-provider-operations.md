@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2cceaf61129c6c756fadb3d41e825264fa23331f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3eed2bbb03334fed41bf0c74b1c287d9ca3f53eb
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278870"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501467"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -1107,7 +1107,7 @@ Arcok persistedFaceId és a egy megadott nagy face listában felhasználói adat
 Egy megadott arc felhasználói adatok mező egy nagy face listában annak persistedFaceId frissítéséhez. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/read | Nagy face listáját largeFaceListId, a neve, a felhasználói adatok beolvasása.
 Nagy face listák információk largeFaceListId, neve és felhasználói adatok listája. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/train/action | Nagy face lista betanítási feladat elküldéséhez. Képzési rendkívül fontos, hogy csak egy betanított nagy face lista segítségével |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/train/action | Nagy face lista betanítási feladat elküldéséhez. Képzés, amellyel csak egy betanított nagy face lista kiemelten fontos. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/training/read | A állapotának nagy face lista képzési befejeződött vagy még mindig folyamatban. LargeFaceList képzési lehetőségek a lehetséges aszinkron művelet |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/write | Hozzon létre egy üres nagy face lista largeFaceListId felhasználó által megadott, a nevét és a egy nem kötelező felhasználói adatok.
 Információk a nagyméretű face listáját, beleértve nevét és a felhasználói adatok frissítése. |
@@ -1123,7 +1123,7 @@ A megadott nagy személy csoportban, beleértve a personId, a neve, a felhaszná
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/write | Frissítés neve vagy a felhasználói adatok személy. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/read | Lekéri az információkat, beleértve annak nevét és a felhasználói adatok nagy személy csoport. Az API-t adja vissza nagy személy csoport adatait
 Az összes meglévő nagy Személycsoportok a largePesonGroupId, neve és felhasználói adatok listája. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/train/action | Nagy személy csoport betanítási feladat elküldéséhez. Képzési rendkívül fontos, hogy csak egy betanított nagy embercsoportok használhatók. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/train/action | Nagy személy csoport betanítási feladat elküldéséhez. Képzési csak betanított nagy embercsoportok használó kiemelten fontos. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/training/read | Állapotának nagy személy csoport képzési befejeződött vagy még mindig folyamatban. LargePersonGroup képzési lehetőségek a lehetséges aszinkron művelet |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/write | Nagy személy új csoport létrehozása a felhasználó által megadott largePersonGroupId, nevét és opcionális felhasználói adatok.
 Egy meglévő csoportot nagy személy neve és felhasználói adatok frissítése. A Tulajdonságok folyamatosan változatlan marad, ha azok nem a kérelem törzsében. |
@@ -1139,7 +1139,7 @@ Minden személy foglalja magában a megadott embercsoportok personId, a neve, a 
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/write | Frissítés neve vagy a felhasználói adatok személy. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/read | Személy neve és felhasználói adatok beolvasása. Személy információk mellett az is lehet personGroup használja
 Személy csoportok pesonGroupId, neve és felhasználói adatok listája. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/train/action | Egy személy csoport betanítási feladat elküldéséhez. Képzési rendkívül fontos, hogy csak egy betanított személy csoport is lehet |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/train/action | Egy személy csoport betanítási feladat elküldéséhez. Képzési rendkívül fontos, hogy csak egy betanított embercsoportok használhatja. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/training/read | Állapotának személy csoport képzési befejeződött vagy még mindig folyamatban. Is lehet PersonGroup képzési egy aszinkron művelet elindítva |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/write | Hozzon létre egy új embercsoportok megadott personGroupId, nevét és a felhasználó által megadott felhasználói adatok.
 Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A Tulajdonságok folyamatosan változatlan marad, ha azok nem a kérelem törzsében. |

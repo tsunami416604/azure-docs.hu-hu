@@ -10,15 +10,15 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/09/2019
-ms.openlocfilehash: c9be129624c87ca0bff1e85a5d1c71425ef06b89
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.date: 04/10/2019
+ms.openlocfilehash: 23314e97051da95ab164baeab6e9d089f486351a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471881"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489690"
 ---
-# <a name="time-zone-in-azure-sql-database-managed-instance"></a>Az Azure SQL Database felügyelt példány időzóna
+# <a name="time-zone-in-azure-sql-database-managed-instance-preview"></a>Az Azure SQL Database felügyelt példány (előzetes verzió) időzóna
 
 Noha az egyezményes világidő (UTC) használatával felhőalapú megoldások az adatréteg számára ajánlott gyakorlat, az Azure SQL Database felügyelt példányain kínál időzóna többféle, ha a meglévő alkalmazásokat, amelyek dátum és idő értékét tárolja, és hívás dátuma és egy adott időzóna implicit kontextusában idő együttműködik.
 
@@ -72,7 +72,7 @@ Ha nincs megadva, a rendszer időzóna UTC-re állítja.
 
 ## <a name="checking-the-time-zone-of-instance"></a>Az időzóna-példány ellenőrzése
 
-[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timestamp-transact-sql) függvény az időzóna-példány egy megjelenített nevét adja vissza.
+[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) függvény az időzóna-példány egy megjelenített nevét adja vissza.
 
 ## <a name="cross-feature-considerations"></a>Kereszt-funkciók kapcsolatos megfontolások
 

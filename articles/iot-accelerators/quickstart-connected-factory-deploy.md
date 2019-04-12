@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 2d759dbfc9b38aae00dd8c3a51a6c0ee2dbe523f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6338403818259c7263fe66af7d8c8840d98efbcd
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176565"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491270"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Gyors útmutató: Próbálja ki a felhőalapú megoldást ipari IoT-eszközök kezelése
 
@@ -64,7 +64,7 @@ Kattintson az **Elfogadás** gombra az engedélykérések elfogadásához. Ekkor
 
 Az alapértelmezett nézet az *irányítópult*. A portál más területeire az oldal bal oldali menüjével navigálhat:
 
-[![A megoldás irányítópultja](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
+[![Solution irányítópult](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
 
 Az ipari IoT-eszközöket az irányítópulton keresztül kezelheti. A csatlakoztatott gyár hierarchiaként mutatja be a globális gyárkonfigurációt. A hierarchia legfelső szintjén található az egy vagy több gyárat tartalmazó vállalat. Minden gyár tartalmaz gyártósorokat, az egyes gyártósorok pedig állomásokból állnak. Minden szinten megtekintheti az OEE-ket és KPI-ket, új csomópontokat tehet közzé a telemetriához, és válaszolhat a riasztásokra.
 
@@ -74,13 +74,13 @@ Az irányítópulton a következőket tekintheti meg:
 
 A **Teljes eszközhatékonyság** panel a teljes vállalat vagy a megtekintett gyár/gyártósor/állomás OEE-értékeit jeleníti meg. Az érték az állomásnézettől a vállalati szintig összesítve van. Az OEE értéke és annak összetevői részletesebben is elemezhetők.
 
-[![A teljes eszközhatékonyság](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
+[![Overall eszközhatékonyság](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
 
 Az OEE a gyártási folyamat hatékonyságát osztályozza a gyártáshoz kapcsolódó működési paraméterek alapján. OEE egy iparági szabvány mérőszám szorzata a rendelkezésre állás, teljesítmény és minőség besorolásainak: OEE = rendelkezésre állás x teljesítmény x minőség.
 
 A hierarchiaadatok bármely szintjén részletesebben elemezheti az OEE-t. Kattintson az OEE, a rendelkezésre állás, a teljesítmény vagy a minőség százalékos értékének tárcsájára. Megjelenik egy helyi panel, amely vizualizációkat jelenít meg az adatokról különböző időskálákon:
 
-[![A teljes eszközhatékonyság – részletes nézet](./media/quickstart-connected-factory-deploy/oeedetail-inline.png)](./media/quickstart-connected-factory-deploy/oeedetail-expanded.png#lightbox)
+[![Overall berendezések hatékonyságát részletes](./media/quickstart-connected-factory-deploy/oeedetail-inline.png)](./media/quickstart-connected-factory-deploy/oeedetail-expanded.png#lightbox)
 
 A diagramokra kattintva megtekintheti az adatok részletes elemzését.
 
@@ -88,11 +88,11 @@ A diagramokra kattintva megtekintheti az adatok részletes elemzését.
 
 A **Fő teljesítménymutatók** panel a teljes vállalat vagy a megtekintett gyár/gyártósor/állomás által óránként előállított egységeket és felhasznált energiát (kWh) mutatja. Az értékek az állomásnézettől a vállalati szintig összesítve vannak.
 
-[![Fő teljesítménymutatók](./media/quickstart-connected-factory-deploy/kpis-inline.png)](./media/quickstart-connected-factory-deploy/kpis-expanded.png#lightbox)
+[![KEY teljesítménymutatók](./media/quickstart-connected-factory-deploy/kpis-inline.png)](./media/quickstart-connected-factory-deploy/kpis-expanded.png#lightbox)
 
 A hierarchiaadatok bármely szintjén részletesebben elemezheti a KPI-ket. Kattintson az OEE, a rendelkezésre állás, a teljesítmény vagy a minőség százalékos értékének tárcsájára. Megjelenik egy helyi panel, amely vizualizációkat jelenít meg az adatokról különböző időskálákon:
 
-[![KPI részletei](./media/quickstart-connected-factory-deploy/kpidetail-inline.png)](./media/quickstart-connected-factory-deploy/kpidetail-expanded.png#lightbox)
+[![KA PI részletes](./media/quickstart-connected-factory-deploy/kpidetail-inline.png)](./media/quickstart-connected-factory-deploy/kpidetail-expanded.png#lightbox)
 
 A diagramokra kattintva megtekintheti az adatok részletes elemzését.
 
@@ -100,7 +100,7 @@ A diagramokra kattintva megtekintheti az adatok részletes elemzését.
 
 A **Gyári telephelyek** panelt, amelyen ellenőrizhető a megoldás állapota, helye és aktuális termelési konfigurációja. A megoldásgyorsító első futtatásakor az irányítópulton a szimulált gyárak láthatók. Minden gyártósor-szimuláció három valós OPC UA-kiszolgálót tartalmaz, amelyek szimulált feladatokat futtatnak és adatokat osztanak meg. Az OPC UA architektúráról a [Csatlakoztatott gyár – GYIK](iot-accelerators-faq-cf.md) fejezetben talál további információt:
 
-[![Gyári telephelyek](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
+[![Factory helyek](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
 
 A megoldáshierarchiában navigálva az egyes szinteken megtekintheti az OEE-értékeket és KPI-ket:
 
@@ -112,19 +112,19 @@ A megoldáshierarchiában navigálva az egyes szinteken megtekintheti az OEE-ér
 
 1. Kattintson az **EnergyConsumption** (Energiafogyasztás) elemre. Több diagram jelenik meg, amelyek különböző időskálákra vetítve ábrázolják az értékeket. A diagramokra kattintva megtekintheti az adatok részletes elemzését.
 
-[![Energiafogyasztás megtekintése](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
+[![VRészletek megtekintése energiafogyasztás](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
 
 ### <a name="map"></a>Térkép
 
 Ha előfizetésével hozzá tud férni a [Bing Térképek API](iot-accelerators-faq-cf.md)-hoz, a *Factories* (Gyárak) térkép a megoldás részét képező összes üzem földrajzi helyét és állapotát megjeleníti. Az adott hely részleteit a térképen megjelenített helyekre kattintva tárhatja fel.
 
-[![Térkép](./media/quickstart-connected-factory-deploy/map-inline.png)](./media/quickstart-connected-factory-deploy/map-expanded.png#lightbox)
+[![Map](./media/quickstart-connected-factory-deploy/map-inline.png)](./media/quickstart-connected-factory-deploy/map-expanded.png#lightbox)
 
 ### <a name="alarms"></a>Riasztások
 
 A **Riasztások** panel olyan riasztásokat jelenít meg, amelyek arra figyelmeztetnek, ha egy jelentett érték vagy egy kiszámított OEE/KPI meghalad egy küszöbértéket. A panel a hierarchia összes szintjére vonatkozó riasztásokat megjeleníti, az állomásszinttől egészen a vállalati szintig. Az összes riasztás tartalmazza a riasztás leírását, dátumát, időpontját, helyszínét és az előfordulásainak számát:
 
-[![Riasztások](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
+[![Alarms](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
 
 Az irányítópulton elemezheti a riasztást kiváltó adatokat. Ha Ön rendszergazda, a riasztásokon a következő alapértelmezett műveleteket hajthatja végre:
 
@@ -133,11 +133,11 @@ Az irányítópulton elemezheti a riasztást kiváltó adatokat. Ha Ön rendszer
 
 Kattintson az egyik riasztásra, majd a **Művelet kiválasztása** legördülő listából válassza a **Riasztás nyugtázása** lehetőséget, majd kattintson az **Alkalmaz** gombra:
 
-[![Riasztás nyugtázása](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
+[![Ariasztás cknowledge](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
 
 A riasztás adatainak további elemzéséhez kattintson a diagramra a riasztások panelén.
 
-Ezek a riasztások a megoldásgyorsító egy konfigurációs fájljában megadott szabályok alapján jönnek létre. Ezek a szabályok riasztásokat hoznak létre, ha az OEE- vagy KPI-értékek, vagy az OPC UA-csomópont értékei meghaladnak egy küszöbértéket. Beállíthatja ezt a küszöbértéket.
+Ezek a riasztások a megoldásgyorsító egy konfigurációs fájljában megadott szabályok alapján jönnek létre. Ezek a szabályok riasztásokat hoznak létre, ha az OEE- vagy KPI-értékek, vagy az OPC UA-csomópont értékei nyissa meg a küszöbérték feletti. Beállíthatja ezt a küszöbértéket.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -154,4 +154,4 @@ Ebben a rövid útmutatóban üzembe helyezett egy megoldásgyorsítót a csatla
 A következő útmutató azt mutatja be, hogyan kezelheti ipari IoT-eszközeit az irányítópult további funkciói segítségével:
 
 > [!div class="nextstepaction"]
-> [A csatlakoztatott gyár irányítópultjának használata](iot-accelerators-connected-factory-dashboard.md)
+> [A csatlakoztatott gyári irányítópultot használata](iot-accelerators-connected-factory-dashboard.md)

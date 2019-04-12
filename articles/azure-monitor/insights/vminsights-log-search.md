@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2019
+ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 12f8b3d9dd461dc5d09d76245aa02f0e1cefc343
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188968"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492088"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
 A virtuális gépek az Azure Monitor teljesítmény és a kapcsolati metrika, a számítógép és a folyamat leltáradatok és a állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics-munkaterületet az Azure monitorban.  Ezek az adatok érhető el [lekérdezés](../../azure-monitor/log-query/log-query-overview.md) az Azure monitorban. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
@@ -125,7 +125,12 @@ Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek ös
 ### <a name="ports"></a>Portok 
 Egy gép azon portjait, aktívan bejövő forgalmat fogadja el vagy potenciálisan fogadja el a forgalmat, de a jelentéskészítési időszakban üresjáratban a VMBoundPort táblában írja.  
 
-Alapértelmezés szerint adatok nem szerepel ebben a táblában. Ahhoz, hogy ez a táblázat az írt adatok, küldjön egy e-mailek vminsights@microsoft.com munkaterület-Azonosítót és -munkaterület régiója együtt.   
+>[!NOTE]
+>Az Azure Monitor-beli virtuális gépek nem támogatja, összegyűjtése és port adatok rögzítése a Log Analytics-munkaterület az alábbi régiókban:  
+>- USA keleti régiója  
+>- Nyugat-Európa
+>
+> Az adatgyűjtés engedélyezve van a többi [támogatott régiók](vminsights-onboard.md#log-analytics) Azure Monitor-beli virtuális gépek számára. 
 
 Minden rekord VMBoundPort azonosíthatók a következő mezőket: 
 

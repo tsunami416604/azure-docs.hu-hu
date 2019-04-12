@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 188cb21688ee092db426e51c6ae327def3ff02d0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: e8fe694cc757f5bcb9cf470f17306e8aa0028744
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58919247"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502854"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ ms.locfileid: "58919247"
 | DNS-kiszolgálók száma előfizetésenként |9 |100 |
 | Fenntartott IP-címek száma előfizetésenként |20 |100 |
 | [Affinitáscsoportok](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) előfizetésenként |256 |256 |
-
+| Előfizetés nevének hossza (karakter) | 64 | 64 |
 
 <sup>1</sup>felé a vCPU-korlátot annak ellenére, hogy egy részleges CPU-magot használ egy vCPU nagyon kis méretű példányok számát.
 

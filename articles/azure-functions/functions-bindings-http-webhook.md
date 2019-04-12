@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: c92bb8e7441e9701d11f3223fa6ebde7869d6233
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a1d66cf4506e3b8f58572576db908812f4e2be07
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895726"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490410"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Az Azure Functions – HTTP-eseményindítók és kötések
 
@@ -53,7 +53,7 @@ Alapértelmezés szerint HTTP-trigger adja vissza HTTP 200 OK az funkciók egy �
 Tekintse meg az adott nyelvű példa:
 
 * [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
+* [C#-szkript (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [Java](#trigger---java-examples)
 * [JavaScript](#trigger---javascript-example)
@@ -117,6 +117,8 @@ A [konfigurációs](#trigger---configuration) szakasz mutatja be ezeket a tulajd
 Íme a C#-szkriptkódot kötődő `HttpRequest`:
 
 ```cs
+#r "Newtonsoft.Json"
+
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
@@ -558,11 +560,11 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 | **type** | n/a| Kötelező – kell állítani `httpTrigger`. |
-| **direction** | n/a| Kötelező – kell állítani `in`. |
-| **name** | n/a| Kötelező – a a függvény kódját a kérelem vagy a kérelem törzsében használt változó neve. |
+| **irány** | n/a| Kötelező – kell állítani `in`. |
+| **név** | n/a| Kötelező – a a függvény kódját a kérelem vagy a kérelem törzsében használt változó neve. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Meghatározza, hogy milyen kulcsok, az esetleges kell jelen lennie ahhoz, hogy a függvény hívása a kérésre. A jogosultsági szinteket a következő értékek egyike lehet: <ul><li><code>anonymous</code>&mdash;Egyetlen API-kulcs nem szükséges.</li><li><code>function</code>&mdash;Egy adott API-kulcs megadása kötelező. Ez az az alapértelmezett érték, ha egyiket sem.</li><li><code>admin</code>&mdash;A fő kulcsot kötelező megadni.</li></ul> További információkért lásd a szakasz [engedélyezési kulcsok](#authorization-keys). |
-| **Módszerek** |**Módszerek** | A HTTP-metódusok, amelyre a függvény válasza tömbje. Ha nincs megadva, a függvény az összes HTTP-metódusok válaszol. Lásd: [testre szabhatja a http-végpontot](#customize-the-http-endpoint). |
-| **útvonal** | **útvonal** | Meghatározza az útvonalsablonhoz, szabályozásával, amelyhez a kérés URL-címeket, a függvény válasza. Az alapértelmezett érték, ha egyiket sem `<functionname>`. További információkért lásd: [testre szabhatja a http-végpontot](#customize-the-http-endpoint). |
+| **Módszerek** |**Metódusok** | A HTTP-metódusok, amelyre a függvény válasza tömbje. Ha nincs megadva, a függvény az összes HTTP-metódusok válaszol. Lásd: [testre szabhatja a http-végpontot](#customize-the-http-endpoint). |
+| **útvonal** | **Útválasztás** | Meghatározza az útvonalsablonhoz, szabályozásával, amelyhez a kérés URL-címeket, a függvény válasza. Az alapértelmezett érték, ha egyiket sem `<functionname>`. További információkért lásd: [testre szabhatja a http-végpontot](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** | _Csak az a verzió 1.x futásidejű támogatott._<br/><br/>A HTTP-eseményindítóval, hogy működjön, konfigurálja a [webhook](https://en.wikipedia.org/wiki/Webhook) fogadót a megadott szolgáltatón. Nincs beállítva a `methods` tulajdonságot, ha ezzel a tulajdonsággal. A webhook típusa a következő értékek egyike lehet:<ul><li><code>genericJson</code>&mdash;Egy általános célú webhook-végpontot egy szolgáltató logika nélkül. Ez a beállítás korlátozza a kérelmek Ha csak a HTTP-n keresztül, közzététel és az a `application/json` tartalom típusa.</li><li><code>github</code>&mdash;A függvény válaszol [GitHub-webhookok](https://developer.github.com/webhooks/). Ne használja a _authLevel_ tulajdonság GitHub-webhookok használatával. További információkért tekintse meg a GitHub-webhookok szakaszban Ez a cikk későbbi részében.</li><li><code>slack</code>&mdash;A függvény válaszol [webhookok Slack](https://api.slack.com/outgoing-webhooks). Ne használja a _authLevel_ tulajdonság Slack webhookok használatával. További információkért tekintse meg a Slack webhookok szakaszt, a cikk későbbi részében.</li></ul>|
 
 ## <a name="trigger---usage"></a>Eseményindító - használat
@@ -801,8 +803,8 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |Tulajdonság  |Leírás  |
 |---------|---------|
 | **type** |Meg kell `http`. |
-| **direction** | Meg kell `out`. |
-|**name** | A függvény kódját a a választ, a használt változó neve vagy `$return` a visszatérési érték használatát. |
+| **irány** | Meg kell `out`. |
+|**név** | A függvény kódját a a választ, a használt változó neve vagy `$return` a visszatérési érték használatát. |
 
 ## <a name="output---usage"></a>Kimenet – használat
 

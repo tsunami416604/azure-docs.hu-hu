@@ -1,6 +1,6 @@
 ---
-title: Windows tűzfal adatgyűjtést az Azure-Sentinel-Előzetesében |} A Microsoft Docs
-description: Ismerje meg az Azure Sentinel-a Windows tűzfal adatainak gyűjtéséről.
+title: Windows tűzfal adatok csatlakozhat az Azure-on Előzetesben Sentinel-|} A Microsoft Docs
+description: Ismerje meg, hogyan kell csatlakozni a Windows tűzfal adatok Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3839d81f70b8bc6dcb1da3c4dd77f52443294707
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 27a82545f77fe15541ac598abadbfc8ffb6d3405
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574840"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494209"
 ---
 # <a name="connect-windows-firewall"></a>A Windows tűzfal csatlakoztatása
 
@@ -31,12 +31,11 @@ A Windows tűzfal-összekötő lehetővé teszi, hogy könnyedén csatlakoztatha
 
 
 > [!NOTE]
-> 
-> - Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
+> Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
 
 ## <a name="enable-the-connector"></a>Az összekötő engedélyezése 
 
-1. Az Azure-Sentinel-portálon válassza **adatgyűjtés** majd kattintson a a **Windows tűzfal** csempére. 
+1. Az Azure-Sentinel-portálon válassza **adatösszekötők** majd kattintson a a **Windows tűzfal** csempére. 
 1. Válassza ki a kívánt adatfolyam adattípusokat.
 1. Kattintson az **Install** (Telepítés) gombra.
 6. A megfelelő sémát a Log Analytics használata a Windows tűzfal, keresse meg **SecurityEvent**.

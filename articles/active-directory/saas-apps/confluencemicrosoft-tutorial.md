@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1ad1cf90-52bc-4b71-ab2b-9a5a1280fb2d
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c0a7ff6d06325a6e6f631b92335f9a41c2c8c06
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 44f0c99a66088aeb54ba061308fefb111610d4dc
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854806"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501229"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Az Azure Active Directory-integráció a Microsoft által való összefolyás felett SAML SSO-val
 
@@ -36,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="description"></a>Leírás:
 
-A Microsoft Azure Active Directory-fiók használata Atlassian való összefolyás felett kiszolgáló egyszeri bejelentkezés engedélyezéséhez. Ezzel a módszerrel a munkahely összes felhasználója számára a bejelentkezés alkalmazásba való összefolyás felett használhatja az Azure AD hitelesítő adatait. Ez a beépülő modul SAML 2.0 összevonási használ.
+A Microsoft Azure Active Directory-fiók használata Atlassian való összefolyás felett kiszolgáló egyszeri bejelentkezés engedélyezéséhez. Ezzel a módszerrel a munkahely összes felhasználója számára való összefolyás felett alkalmazás használható az Azure AD bejelentkezési hitelesítő adatokat. Ez a beépülő modul SAML 2.0 összevonási használ.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -78,6 +79,9 @@ Jelen pillanatban való összefolyás felett következő verziói támogatottak:
 - Való összefolyás felett: 6.11.0
 - Való összefolyás felett: 6.12.0
 
+> [!NOTE]
+> Vegye figyelembe, hogy való összefolyás felett is támogatja a Linux Ubuntu 16.04 verzió
+
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
@@ -104,7 +108,7 @@ Az Azure AD-be való összefolyás felett SAML SSO a Microsoft-integráció konf
 
 4. A Keresés mezőbe írja be a **való összefolyás felett SAML egyszeri bejelentkezés a Microsoft**, jelölje be **való összefolyás felett SAML egyszeri bejelentkezés a Microsoft** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![A Microsoft a találatok listájában való összefolyás felett SAML egyszeri bejelentkezés](common/search-new-app.png)
+    ![A Microsoft a találatok listájában való összefolyás felett SAML egyszeri bejelentkezés](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
@@ -184,7 +188,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a Microsoft által való ös
 
     c. A **bejelentkezési gomb neve** írja be a szervezet azt szeretné, tekintse meg a bejelentkezési képernyőn a felhasználók gomb felirata.
 
-    d. A **SAML felhasználói azonosító helyek**, válassza **felhasználói Azonosítóját a tulajdonos utasítás NameIdentifier elemében van** vagy **felhasználói azonosító szerepel egy attribútumelem**.  Ez az azonosító nem lehet való összefolyás felett felhasználói azonosító. Ha a felhasználói azonosító nem egyezik, majd rendszer nem engedélyezi felhasználók bejelentkezésének. 
+    d. A **SAML felhasználói azonosító helyek**, válassza **felhasználói Azonosítóját a tulajdonos utasítás NameIdentifier elemében van** vagy **felhasználói azonosító szerepel egy attribútumelem**.  Ez az azonosító azt kell az való összefolyás felett felhasználói azonosítóját. Ha a felhasználói azonosító nem egyezik, majd rendszer nem engedélyezi felhasználók jelentkezhetnek be. 
 
     > [!Note]
     > Alapértelmezett SAML Felhasználóazonosító helye alkalmazásnév-azonosító. Egy attribútum beállítást módosíthatja, és adja meg a megfelelő attribútum nevét.
@@ -195,7 +199,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a Microsoft által való ös
     
     g. A **tartománynév** írja be a tartomány nevét itt az AD FS-alapú bejelentkezés esetén.
 
-    h. Ellenőrizze **meg az egyszeri bejelentkezés engedélyezése** való jelentkezzen ki, amikor egy felhasználó bejelentkezik való összefolyás felett az Azure AD-ből szeretné. 
+    h. Ellenőrizze **meg az egyszeri bejelentkezés engedélyezése** való jelentkezzen ki, amikor egy felhasználó kijelentkezik való összefolyás felett az Azure AD-ből szeretné. 
 
     i. Kattintson a **mentése** gombra kattintva mentse a beállításokat.
 
@@ -220,8 +224,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be `brittasimon\@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
@@ -259,7 +262,7 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a helyi kiszolgálóra va
 
 **Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a való összefolyás felett a helyszíni kiszolgálón rendszergazdaként.
+1. Jelentkezzen be a való összefolyás felett a helyi kiszolgálóra rendszergazdaként.
 
 2. Vigye a mutatót a fogaskerék alakú ikonjára, majd kattintson a **felhasználókezelés**.
 
@@ -291,7 +294,7 @@ A való összefolyás felett SAML SSO által a hozzáférési panelen Microsoft 
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

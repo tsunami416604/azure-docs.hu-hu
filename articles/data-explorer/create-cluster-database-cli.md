@@ -6,13 +6,13 @@ ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: b1cc7d2966572da23a64e4555a0e94b440efa005
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/10/2019
+ms.openlocfilehash: 451eeaf6b30c85371728968d834aa6e34092dbc3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59043972"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491253"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Egy Azure Data Explorer fürt és adatbázis létrehozása az Azure CLI-vel
 
@@ -79,7 +79,7 @@ Ha az eredmény tartalmazza `provisioningState` együtt a `Succeeded` érték, a
 1. Az adatbázis létrehozása a következő paranccsal:
 
     ```azurecli-interactive
-    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period 3650:00:00:00 --hot-cache-period 3650:00:00:00
+    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period P365D --hot-cache-period P31D
     ```
 
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
@@ -87,8 +87,8 @@ Ha az eredmény tartalmazza `provisioningState` együtt a `Succeeded` érték, a
    | cluster-name | *azureclitest* | A fürt, ahol létrejön az adatbázis neve.|
    | név | *clidatabase* | Az adatbázis neve.|
    | resource-group | *testrg* | Az erőforrás csoport neve, ahol a fürt létrejön. |
-   | soft-delete-period | *3650:00:00:00* | Mennyi ideig megtartott adatok lekérdezhetők. |
-   | hot-cache-period | *3650:00:00:00* | Mennyi ideig megtartott adatok a gyorsítótárban. |
+   | soft-delete-period | *P365D* | Azt jelzi, hogy mennyi ideig megtartott adatok lekérdezéséhez érhető el. Lásd: [adatmegőrzési](/azure/kusto/concepts/retentionpolicy) további információt. |
+   | hot-cache-period | *P31D* | Azt jelzi, hogy mennyi ideig megtartott adatok a gyorsítótárban. Lásd: [házirend gyorsítótár](/azure/kusto/concepts/cachepolicy) további információt. |
 
 1. A következő paranccsal tekintse meg az Ön által létrehozott adatbázist:
 

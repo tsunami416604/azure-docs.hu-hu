@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 28f04f5ab3cf8310a6ee3828405910d34b31591b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 9631e4b82ceb14a98740491b98288d75dd23f9a3
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227619"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501008"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatikus skálázása az Azure HDInsight-fürtök (előnézet)
 
@@ -83,7 +83,7 @@ A Resource Manager-sablonok-fürtök létrehozásával kapcsolatos további info
 
 ### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Engedélyezheti vagy letilthatja az automatikus skálázási futó fürt
 
-Engedélyezheti vagy az Azure Portalon keresztül 2019. január 1. után létrehozott HDInsight-fürtök automatikus skálázás letiltása.
+Csak engedélyezése vagy letiltása az új HDInsight-fürtök automatikus méretezés.
 
 ## <a name="monitoring"></a>Figyelés
 
@@ -108,8 +108,8 @@ A fenti metrikák 60 másodpercenként ellenőrzi. Automatikus skálázási rend
 
 A következő feltételek észlelése esetén, az automatikus méretezés a vertikális felskálázás kérelem állít ki:
 
-* Függőben lévő CPU összesen mérete nagyobb teljes szabad CPU-nál több mint 1 perc.
-* Függőben lévő memória összesített érték nagyobb, mint a teljes szabad memória a több mint 1 perce.
+* Függőben van a Processzor teljes mérete nagyobb teljes szabad CPU-nál több mint 3 perc.
+* Függőben lévő memória teljes mérete nagyobb teljes szabad memória-nál több mint 3 perc.
 
 Mi számít, hogy egy bizonyos számú munkavégző csomópontok az aktuális Processzor- és követelményeinek, és hogyan adhat ki, amely hozzáadja a munkavégző csomópontok számát felfelé kérelem van szükség.
 
@@ -120,7 +120,7 @@ A következő feltételek észlelése esetén, automatikus skálázási kérelem
 * Függőben lévő CPU összesen 10 percnél hosszabb ideig nem éri el a teljes szabad CPU.
 * Függőben lévő memória összesen 10 percnél hosszabb ideig nem éri el a teljes szabad memória.
 
-/ Csomópont és a jelenlegi CPU és a memóriaigény AM tárolók száma alapján, az automatikus méretezés ki távolítsa el a csomópontokon, bizonyos számú kérelem adja meg, melyik csomópontokon lehetséges eltávolítása a deduplikációra. Alapértelmezés szerint két csomópont egy ciklus fog szerepelni.
+/ Csomópont és a jelenlegi CPU és a memóriaigény AM tárolók száma alapján, az automatikus méretezés ki távolítsa el a csomópontokon, bizonyos számú kérelem adja meg, melyik csomópontokon lehetséges eltávolítása a deduplikációra. A vertikális leskálázási aktiválják a csomópontok leszerelése, és miután a csomópontok teljesen leszerelt, akkor azok törlődnek.
 
 ## <a name="next-steps"></a>További lépések
 

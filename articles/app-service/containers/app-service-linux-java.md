@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 71632b3846a5dac39d7827c874367bd9802574f8
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: bab6510af98b153ecb61db8fc49b5124aae04598
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803525"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500464"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -69,9 +69,13 @@ További információkért lásd: [folyamatos átviteli naplók az Azure CLI-vel
 
 ### <a name="app-logging"></a>Alkalmazás-naplózás
 
-Engedélyezése [alkalmazásnaplózás](/azure/app-service/troubleshoot-diagnostic-logs#enablediag) az Azure Portalon keresztül vagy [Azure CLI-vel](/cli/azure/webapp/log#az-webapp-log-config) App Service-ben az alkalmazás normál konzolkimenet és standard szintű konzol hibaadatfolyamok írni a helyi konfigurálása fájlrendszer- vagy Azure Blob Storage. Az App Service helyi fájlrendszer naplózása példány le van tiltva 12 óra után van konfigurálva. Ha hosszabb adatmegőrzés megadásához, az alkalmazás kiírhatja a kimenetet egy Blob storage-tároló konfigurálása.
+Engedélyezése [alkalmazásnaplózás](/azure/app-service/troubleshoot-diagnostic-logs#enablediag) az Azure Portalon keresztül vagy [Azure CLI-vel](/cli/azure/webapp/log#az-webapp-log-config) App Service-ben az alkalmazás normál konzolkimenet és standard szintű konzol hibaadatfolyamok írni a helyi konfigurálása fájlrendszer- vagy Azure Blob Storage. Az App Service helyi fájlrendszer naplózása példány le van tiltva 12 óra után van konfigurálva. Ha hosszabb adatmegőrzés megadásához, az alkalmazás kiírhatja a kimenetet egy Blob storage-tároló konfigurálása. A Java- és Tomcat alkalmazásnaplókat megtalálható a `/home/LogFiles/Application/` könyvtár.
 
 Ha az alkalmazás [Logback](https://logback.qos.ch/) vagy [Log4j](https://logging.apache.org/log4j) nyomkövetés, is továbbíthatja, tekintse át az Azure Application Insights a nyomkövetések utasításai a naplózási keretrendszer konfigurációs [Ismerkedés a Java-nyomkövetési naplókat az Application Insights](/azure/application-insights/app-insights-java-trace-logs).
+
+### <a name="troubleshooting-tools"></a>Hibaelhárítási eszközök
+
+A beépített Java-rendszerképeket alapulnak a [Alpine Linux](https://alpine-linux.readthedocs.io/en/latest/getting_started.html) operációs rendszert. Használja a `apk` Csomagkezelő telepítéséhez bármely hibaelhárítási eszközei, és parancsokat.
 
 ## <a name="customization-and-tuning"></a>Testreszabás és hangolás
 
@@ -79,33 +83,36 @@ A box finomhangolásához és testreszabása az Azure Portal és CLI támogatja 
 
 - [App Service szolgáltatás beállításainak konfigurálása](/azure/app-service/web-sites-configure?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Egyéni tartomány beállítása](/azure/app-service/app-service-web-tutorial-custom-domain?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [Enable SSL](/azure/app-service/app-service-web-tutorial-custom-ssl?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [SSL engedélyezése](/azure/app-service/app-service-web-tutorial-custom-ssl?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [CDN hozzáadása](/azure/cdn/cdn-add-to-web-app?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [A Kudu-webhely konfigurálása](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
 ### <a name="set-java-runtime-options"></a>Java-futtatókörnyezet beállításainak megadása
 
-A Tomcat és a Java használata környezetben állítsa a lefoglalt memória vagy más JVM futásidejű beállítások, állítsa be a JAVA_OPTS, mint az alább látható módon egy [Alkalmazásbeállítás](/azure/app-service/web-sites-configure#app-settings). Az App Service Linux továbbítja ezt a beállítást környezeti változóban a Java-futtatókörnyezet indításakor.
+A Tomcat és a Java használata környezetben állítsa a lefoglalt memória vagy más JVM futásidejű beállításokat, hozzon létre egy [Alkalmazásbeállítás](/azure/app-service/web-sites-configure#app-settings) nevű `JAVA_OPTS` a beállításokkal. Az App Service Linux továbbítja ezt a beállítást környezeti változóban a Java-futtatókörnyezet indításakor.
 
-Az Azure Portalon alatt **Alkalmazásbeállítások** a webalkalmazást, hozzon létre egy új alkalmazásbeállítást nevű `JAVA_OPTS` , amely tartalmazza a további beállításokat, például `$JAVA_OPTS -Xms512m -Xmx1204m`.
+Az Azure Portalon alatt **Alkalmazásbeállítások** a webalkalmazást, hozzon létre egy új alkalmazásbeállítást nevű `JAVA_OPTS` , amely tartalmazza a további beállításokat, például `-Xms512m -Xmx1204m`.
 
-A alkalmazás beállításai az Azure App Service Linux Maven beépülő modul konfigurálásához beállításérték/címkéket adhat hozzá, az Azure beépülő modul szakaszban. Az alábbi példa egy adott minimális és maximális Java heapsize állítja be:
+A Maven bővítménnyel az Alkalmazásbeállítás konfigurálásához beállításérték/címkéket adhat hozzá, az Azure beépülő modul szakaszban. Az alábbi példa egy adott minimális és maximális Java heapsize állítja be:
 
 ```xml
 <appSettings>
     <property>
         <name>JAVA_OPTS</name>
-        <value>$JAVA_OPTS -Xms512m -Xmx1204m</value>
+        <value>-Xms512m -Xmx1204m</value>
     </property>
 </appSettings>
 ```
 
 Az egyetlen alkalmazást futtató és egy üzembe helyezési pont az App Service-csomag a fejlesztők használhatják a következő beállításokat:
 
-- B1 és S1-példányok:-Xms1024m-Xmx1024m
-- B2 és S2-példányok:-Xms3072m-Xmx3072m
-- B3 és S3-példányok:-Xms6144m-Xmx6144m
+- B1 és S1 szintű példány: `-Xms1024m -Xmx1024m`
+- B2 és S2 szintű példány: `-Xms3072m -Xmx3072m`
+- B3 és S3 szintű példány: `-Xms6144m -Xmx6144m`
 
 Amikor alkalmazás halommemória finomhangolásának beállításai, tekintse át az App Service-csomag részletei, és több alkalmazás és üzembe helyezési pont figyelembe kell keresnie a optimális lefoglalt memória.
+
+Ha helyez üzembe egy JAR-alkalmazást, azt kell elnevezni `app.jar` , hogy a beépített rendszerképpel helyesen azonosítani tudja az alkalmazás. (A Maven bővítménnyel nem, automatikusan az Átnevezés.) Ha nem szeretné, a JAR átnevezése `app.jar`, feltöltheti azt a héjparancsfájlt, a parancs futtatása a JAR. Illessze be a parancsfájl teljes elérési útja a [indítási fájl](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-faq#startup-file) szövegmezőben, hogy a portál konfigurációs szakaszban.
 
 ### <a name="turn-on-web-sockets"></a>Kapcsolja be a web sockets
 
@@ -126,7 +133,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 ### <a name="set-default-character-encoding"></a>Állítsa be alapértelmezett forráskarakter-kódolás
 
-Az Azure Portalon alatt **Alkalmazásbeállítások** a webalkalmazást, hozzon létre egy új alkalmazásbeállítást nevű `JAVA_OPTS` értékkel `$JAVA_OPTS -Dfile.encoding=UTF-8`.
+Az Azure Portalon alatt **Alkalmazásbeállítások** a webalkalmazást, hozzon létre egy új alkalmazásbeállítást nevű `JAVA_OPTS` értékkel `-Dfile.encoding=UTF-8`.
 
 Másik lehetőségként konfigurálnia az alkalmazásbeállítást, az App Service-Maven bővítménnyel. A beállítás nevét és értékét címkék hozzáadása a beépülő modul konfiguráció:
 
@@ -134,10 +141,14 @@ Másik lehetőségként konfigurálnia az alkalmazásbeállítást, az App Servi
 <appSettings>
     <property>
         <name>JAVA_OPTS</name>
-        <value>$JAVA_OPTS -Dfile.encoding=UTF-8</value>
+        <value>-Dfile.encoding=UTF-8</value>
     </property>
 </appSettings>
 ```
+
+### <a name="adjust-startup-timeout"></a>Állítsa be indítási időkorlát
+
+Ha a Java-alkalmazás különösen nagy, növelje az indítási időkorlátot. Ehhez hozzon létre egy Alkalmazásbeállítás `WEBSITES_CONTAINER_START_TIME_LIMIT` , és állítsa be az App Service-ben várnia kell, hogy másodpercek számát. A maximális érték pedig `1800` másodperc.
 
 ## <a name="secure-applications"></a>Alkalmazások védelme
 

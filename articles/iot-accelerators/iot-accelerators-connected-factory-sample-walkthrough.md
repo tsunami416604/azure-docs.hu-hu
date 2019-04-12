@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: be9bde90684b46adef509532eb7b0cc236c5efb1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 950d248d2525f053981c8642ee2d39021b9a0494
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180602"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490359"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>A csatlakoztatottgyár-alapú megoldásgyorsító bemutatója
 
@@ -73,7 +73,7 @@ Az OPC kiadói modul az állomás OPC UA-kiszolgálóihoz csatlakozik és felira
 
 1. A csomópont adatokat JSON formátumba alakítja át.
 1. A JSON titkosítja.
-1. A JSON az IoT Hub küldi OPC UA Pub/Sub üzenetekként.
+1. Elküldi a JSON az IoT Hub, az OPC UA pub/sub üzenetekként.
 
 Az OPC kiadói modulnak csak kimenő https-portra (443) van szüksége, és képes együttműködni a meglévő vállalati infrastruktúrával.
 
@@ -230,7 +230,7 @@ A megoldásgyorsító részeként üzembe helyezett webalkalmazás integrált OP
 Folytassa az IoT-megoldásgyorsítók megismerését az alábbi cikkek elolvasásával:
 
 * [Engedélyek az azureiotsolutions.com webhelyen][lnk-permissions]
-* [Átjáró üzembe helyezése Windows vagy Linux rendszeren a csatlakoztatottgyár-alapú megoldásgyorsítóhoz](iot-accelerators-connected-factory-gateway-deployment.md)
+* [Átjáró üzembe helyezése Windows vagy Linux rendszeren az az Okosgyár-megoldásgyorsító](iot-accelerators-connected-factory-gateway-deployment.md)
 * [OPC-közzétevő referenciamegvalósítása](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md).
 
 [connected-factory-logical]:media/iot-accelerators-connected-factory-sample-walkthrough/cf-logical-architecture.png

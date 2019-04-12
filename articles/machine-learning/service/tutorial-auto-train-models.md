@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 990991eb1ceb5d74c042b42cfa265c75a073e5ef
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 8eb569e628e598dbfd890c11656a23007f915b45
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670897"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491159"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Automatizált gépi tanulás a regressziós modell létrehozása
 
@@ -103,7 +103,7 @@ import os
 
 Hozzon létre egy munkaterület-objektumot a meglévő munkaterületről. A [munkaterület](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) egy osztály, amely fogadja a az Azure-előfizetésben és erőforráscsoportban információkat. Is létrehoz egy felhőalapú erőforrás figyeléséhez és nyomon követéséhez a modell futtatások.
 
-A `Workspace.from_config()` beolvassa az **aml_config/config.json** fájlt, és betölti a részleteket a `ws` nevű objektumba.  A `ws` a kód további részében használható ebben az oktatóanyagban.
+`Workspace.from_config()` beolvassa a fájlt **aml_config/config.json** és betölti a részletek nevű objektum `ws`.  `ws` a kód többi részében szerepel ebben az oktatóanyagban.
 
 Miután egy munkaterület-objektumot, nevezze el a kísérletben. Létrehozhat és regisztrálhat egy helyi könyvtárban a munkaterülethez. Minden Futtatás előzményeit rögzíti a megadott kísérlet keretében és a a [az Azure portal](https://portal.azure.com).
 
@@ -136,8 +136,7 @@ import azureml.dataprep as dprep
 
 file_path = os.path.join(os.getcwd(), "dflows.dprep")
 
-package_saved = dprep.Package.open(file_path)
-dflow_prepared = package_saved.dataflows[0]
+dflow_prepared = dprep.Dataflow.open(file_path)
 dflow_prepared.get_profile()
 ```
 
@@ -654,9 +653,9 @@ Adja meg a kísérlet paramétert, és a modell a személyfelismerési és a han
 |Tulajdonság| Az oktatóanyagban szereplő érték |Leírás|
 |----|----|---|
 |**iteration_timeout_minutes**|10|Minden egyes ismétléskor percben időkorlát. Ezt az értéket a teljes futásidő csökkentéséhez csökkentse.|
-|**iterations**|30|Iterációk száma. Minden egyes ismétléskor egy új gépi tanulási modell tanítása az adatok. Ez az elsődleges, amely befolyásolja a teljes futási idő értéke.|
+|**Az ismétlések**|30|Iterációk száma. Minden egyes ismétléskor egy új gépi tanulási modell tanítása az adatok. Ez az elsődleges, amely befolyásolja a teljes futási idő értéke.|
 |**primary_metric**| spearman_correlation | Az optimalizálni kívánt metrika. A regressziós modell Ez a metrika alapján fogja kiválasztani.|
-|**preprocess**| True (Igaz) | Használatával **igaz**, a kísérlet is előfeldolgozása a bemeneti adatok (kezelése az adatok hiányoznak, szöveg konvertálása a numerikus, stb.)|
+|**előfeldolgozása**| True (Igaz) | Használatával **igaz**, a kísérlet is előfeldolgozása a bemeneti adatok (kezelése az adatok hiányoznak, szöveg konvertálása a numerikus, stb.)|
 |**Részletességi**| logging.INFO | A naplózási szint szabályozza.|
 |**n_cross_validations**|5|Kereszt-ellenőrzési elágazást végrehajtani, ha nincs megadva érvényesítési adatok száma.|
 
@@ -775,7 +774,8 @@ rundata
 ```
 
 <div>
-<style scoped> .dataframe pedig tbody tr th: csak a-típusú {függőleges igazítás: középre;}
+<style scoped>
+.dataframe pedig tbody tr th: csak a-típusú {függőleges igazítás: középre;}
 
     .dataframe tbody tr th {
         vertical-align: top;

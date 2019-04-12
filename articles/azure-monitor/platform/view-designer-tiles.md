@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.openlocfilehash: 9c0283081bd7245b1b886ed82ba03130a7a3bf2c
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470259"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495328"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Nézettervező csempe az Azure monitorban a referencia-útmutató
 Nézettervező az Azure Monitor használatával létrehozhat egyéni nézetek számos az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk egy referencia-útmutató a csempék az egyéni nézetekben elérhető beállításai.

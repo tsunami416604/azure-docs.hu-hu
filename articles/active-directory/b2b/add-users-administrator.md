@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 2/6/2019
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celested
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e43123e77a5c1cfb37f51c472420d3d7f2d440c9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ef0a4e4a05427b1ed83b017b7a49862596aaf50a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173368"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490911"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure Portalon
 
-Globális rendszergazda, vagy egy felhasználót, aki a korlátozott rendszergazda címtárbeli szerepkörök van hozzárendelve, mint az Azure portal segítségével meghívása a B2B-együttműködés felhasználók. Meghívhat vendégfelhasználókat arra a könyvtárra, csoporthoz vagy alkalmazáshoz. Miután a felhasználó meghívása a keresztül az alábbi módszereket, a meghívott felhasználó fiókot hozzáadnak a Azure Active Directory (Azure AD), felhasználói típusú *vendég*. A vendégfelhasználó majd be kell váltaniuk erőforrások eléréséhez a meghívót.
+Egy felhasználó hozzá van rendelve a korlátozott rendszergazda címtárbeli szerepkörök valamelyikét, mint az Azure portal segítségével meghívása a B2B-együttműködés felhasználók. Meghívhat vendégfelhasználókat arra a könyvtárra, csoporthoz vagy alkalmazáshoz. Miután a felhasználó meghívása a keresztül az alábbi módszereket, a meghívott felhasználó fiókot hozzáadnak a Azure Active Directory (Azure AD), felhasználói típusú *vendég*. A vendégfelhasználó majd be kell váltaniuk erőforrások eléréséhez a meghívót.
 
 Vendégfelhasználó felvétele a címtárban, vagy elküldheti a vendégfelhasználó közvetlen hivatkozás egy megosztott alkalmazás, vagy a vendégfelhasználó kattintson a meghívó e-mailben a beváltási URL-CÍMÉT. Az érvényesítési folyamattal kapcsolatos további információkért lásd: [B2B együttműködés vendégmeghívás beváltása](redemption-experience.md).
 
@@ -31,7 +31,7 @@ Vendégfelhasználó felvétele a címtárban, vagy elküldheti a vendégfelhasz
 
 B2B-együttműködés felhasználók hozzáadása a címtárhoz, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com) Azure AD rendszergazdaként.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy felhasználó, aki a hozzárendelt bármelyik a korlátozott rendszergazda címtárbeli szerepkörök.
 2. A navigációs panelen válassza ki **Azure Active Directory**.
 3. A **Kezelés** alatt válassza a **Felhasználókat**.
 4. Válassza az **Új vendégfelhasználót**.

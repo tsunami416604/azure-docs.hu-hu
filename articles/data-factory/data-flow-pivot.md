@@ -1,21 +1,19 @@
 ---
 title: Az Azure Data Factory-folyamat Pivot adatátalakítás leképezése
-description: Az Azure Data Factory-folyamat Pivot adatátalakítás leképezése
+description: A kimutatás adatainak sorok oszlopok használata Azure Data Factory leképezési Flow Pivot adatátalakítás
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 5548a62218aaac2e4da3853e8e5d43a584922bc0
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: e16cac281b77f3ca93d9ef358ae806203bc8b663
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569892"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490187"
 ---
-# <a name="azure-data-factory-mapping-data-flow-pivot-transformation"></a>Az Azure Data Factory-folyamat Pivot adatátalakítás leképezése
-
+# <a name="azure-data-factory-pivot-transformation"></a>Az Azure data factory pivot átalakítása
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 Használható Pivot ADF adatfolyam összegzésként ahol egy vagy több csoportosítási oszlopok rendelkezik-e az egyes oszlopokra alakítja át különböző sor értékeit. Alapvetően Sorértékek is forgáspont (alakítsa adatait metaadatai) új oszlopba.
@@ -32,7 +30,7 @@ Először állítsa be a pivot összesítés szerint csoportosítani kívánt os
 
 ![Forgáspont beállítások](media/data-flow/pivot3.png "forgáspont 3")
 
-A Pivot kulcsa az oszlopot, amely az ADF sor lesz kimutatás az oszlopot. Alapértelmezés szerint minden egyes egyedi érték, a mező adatkészlet lesz forgáspont tartalmazó oszlop. Ugyanakkor igény szerint értékeket adhat meg a kimutatás az oszlopértékeket kívánt az adatkészletből.
+A Pivot kulcsa az oszlopot, amely az ADF sor lesz kimutatás az oszlopot. Alapértelmezés szerint minden egyes egyedi érték, a mező adatkészlet lesz forgáspont tartalmazó oszlop. Ugyanakkor igény szerint értékeket adhat meg a kimutatás az oszlopértékeket kívánt az adatkészletből. Ez az az oszlop, amelyek meghatározzák a létrehozandó új oszlopokat.
 
 ## <a name="pivoted-columns"></a>Elforgatott oszlopok
 
@@ -54,9 +52,20 @@ Ilyenkor az összesítést, inkább a pivot értékek beállításához kattints
 
 Az ADF Data Flow kifejezés nyelve segítségével ismertetik a Kifejezésszerkesztőben oszlop elforgatva átalakítások: https://aka.ms/dataflowexpressions.
 
+## <a name="pivot-metadata"></a>Pivot metaadatok
+
+A Pivot átalakítás új oszlopnevek, amelyek dinamikus a beérkező adatok alapján állítja elő. A Pivot kulcsot hoz létre minden egyes új oszlop neve értékeit. Ha nem adja meg az egyes értékeket, és nem kíván létrehozni minden egyedi értékére vonatkozóan dinamikus oszlopnevek a Pivot kulcs, a felhasználói felületen nem jelennek meg a metaadatok a vizsgálat, és nem lesznek nincs oszlop-propagálás, a fogadó átalakításában. A Pivot kulcs értéket állítja be, majd az ADF megadhatja, hogy az új oszlopnevek, és oszlop nevére lesz a vizsgálat az Ön számára, és a hozzárendelés fogadó.
+
+### <a name="landing-new-columns-in-sink"></a>Új oszlopok üzenetsorokra a fogadó
+
+Még a Pivot dinamikus oszlopnevek meg is továbbra is fogadó az új oszlopnevek és értékeket a cél-tárolóhoz. Csak "A séma eltéréseket engedélyezése" értékre állítva a fogadó között. Az oszlop metaadatai nem látják az új dinamikus nevek, de azt a sémabeállítást eltéréseket lehetővé teszi, hogy megnyitja az adatokat.
+
+### <a name="view-metadata-in-design-mode"></a>Tervező módban metaadatainak megtekintése
+
+Ha meg szeretné tekinteni az új oszlopnevek vizsgálat a metaadatokat, és szeretne látni a oszlopok explicit módon a fogadó átalakítási való propagálása, majd állítsa be explicit érték a Pivot kulcs fülre.
+
 ### <a name="how-to-rejoin-original-fields"></a>Hogyan kell csatlakozni az eredeti mezők
-> [!NOTE]
-> A Pivot átalakítási csak fog projekt a összesítését, a csoportosítás és a pivot műveletet a használt oszlopok. Kíván foglalni a többi oszlopot az előző lépésben a folyamatban, ha az előző lépésből származó új ágat használja, és a folyamat összekapcsolása metaadatait az önillesztés minta használatával.
+A Pivot átalakítási csak fog projekt a összesítését, a csoportosítás és a pivot műveletet a használt oszlopok. Kíván foglalni a többi oszlopot az előző lépésben a folyamatban, ha az előző lépésből származó új ágat használja, és a folyamat összekapcsolása metaadatait az önillesztés minta használatával.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Cognitive Services API-k egy indexelési folyamat – Azure Search-hívás'
-description: '. Lépés: adatok kinyerése, természetes nyelvi és image AI példán keresztül az Azure Search szolgáltatásban az adatok kinyerése és átalakítására JSON-blobok indexelése feldolgozási.'
+title: 'Oktatóanyag: Cognitive Services – REST API-k egy indexelési folyamat – Azure Search-hívás'
+description: '. Lépés: adatok kinyerése, természetes nyelvi és image AI példán keresztül az adatok kinyerése és adatátalakításhoz Postman és a REST API használatával JSON-blobok indexelése az Azure Search feldolgozási.'
 manager: pablocas
 author: luiscabrer
 services: search
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5fbcef1d8bc19df251a4d33cafa2fa7b5a7d9431
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 088dcd366d526d08f236fb48340c6bbe18fe267c
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261921"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501212"
 ---
 # <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Oktatóanyag: Cognitive Services API-k hívja meg az Azure Search folyamat (előzetes verzió) indexelése
 
@@ -43,31 +43,37 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+Ebben az oktatóanyagban a következő szolgáltatások, eszközök és adatok szerepelnek. 
+
 [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja.
+
+[Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok tárolásához.
 
 [Postman asztali alkalmazás](https://www.getpostman.com/) szolgál az Azure Search REST-hívások.
 
-### <a name="get-an-azure-search-api-key-and-endpoint"></a>Első Azure Search api-kulcsát és -végpont
+[Mintaadatok](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) lemezkészletből egy kis fájlt különböző típusú. 
+
+## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
 
 A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. Mindkettőhöz létrejön egy keresési szolgáltatás, így ha hozzáadta az előfizetéséhez az Azure Searchöt, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
 
-1. Az Azure Portalon, a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://my-service-name.search.windows.net`.
+1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/), és a search szolgáltatás **áttekintése** lapon, az URL-cím lekéréséhez. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-2. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
+1. A **beállítások** > **kulcsok**, a szolgáltatás a teljes körű rendszergazdai kulcs beszerzése. Nincsenek két felcserélhetők adminisztrációs kulcsot, az üzletmenet folytonosságának megadott abban az esetben egy vihető kell. Használható vagy az elsődleges vagy másodlagos kulcsot a kérések hozzáadása, módosítása és törlése objektumokat.
 
 ![Egy HTTP-végpontját és hozzáférési kulcs lekérése](media/search-fiddler/get-url-key.png "HTTP végpontját és hozzáférési kulcs beszerzése")
 
 Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásnak küldött api-kulcsát. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Az Azure Blob szolgáltatás beállítása és a mintaadatok betöltése
+## <a name="prepare-sample-data"></a>Mintaadatok létrehozása
 
 A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forrásadatoknak egy [Azure Search-indexelő](search-indexer-overview.md) által támogatott adatforrástípusból kell származniuk. Vegye figyelembe, hogy az Azure Table Storage a kognitív keresés nem támogatott. Ebben a gyakorlatban a blobtárolót használjuk több tartalomtípus bemutatásához.
 
-1. [Töltsön le mintaadatokat](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), amelyek különböző típusú fájlok kis készletéből állnak. 
+1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com)lépjen az Azure storage-fiókot, kattintson a **Blobok**, és kattintson a **+ tároló**.
 
-1. [Iratkozzon fel az Azure Blob storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal), hozzon létre egy tárfiókot, nyissa meg a Blob szolgáltatás oldalt, és hozzon létre egy tárolót. A storage-fiók létrehozása az Azure Search és ugyanabban a régióban.
+1. [Hozzon létre egy blobtárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) mintaadatok tárolásához. A nyilvános hozzáférés szintje beállíthatja az érvényes értékek bármelyikére.
 
-1. Kattintson a létrehozott tárolót, **feltöltése** az előző lépésben letöltött minta fájlok feltöltéséhez.
+1. A tároló létrehozása után nyissa meg és jelölje ki **feltöltése** a parancssávon az előző lépésben letöltött minta fájlok feltöltéséhez.
 
    ![Forrásfájlok az Azure Blob Storage-ban](./media/cognitive-search-quickstart-blob/sample-data.png)
 
@@ -81,11 +87,22 @@ A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forr�
 
 A kapcsolati karakterlánc megadásának egyéb módjai is vannak, például egy közös hozzáférésű jogosultságkód biztosítása. Az adatforrások hitelesítő adataival kapcsolatos további információért lásd: [Indexelés az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md#Credentials).
 
+## <a name="set-up-postman"></a>A Postman beállítása
+
+Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha ismeri ezt az eszközt, tekintse meg [Ismerkedés az Azure Search REST API-k a postmannel](search-fiddler.md).
+
+A kérelem módszerek a jelen oktatóanyagban használt **POST**, **PUT**, és **első**. A fejléckulcsok "Content-type" beállítása "application/json" és a egy "api-key" beállítása az Azure Search szolgáltatás rendszergazdai kulcsot. A törzs az a hely, ahol elhelyezi a hívás tényleges tartalmát. 
+
+  ![Részben strukturált keresés](media/search-semi-structured-data/postmanoverview.png)
+
+A postmannel annak érdekében, hogy hozzon létre egy adatforrást, a képességek alkalmazási lehetőségét, index és indexelő négy API-hívásokat a keresési szolgáltatás. Az adatforrás tartalmaz egy, a tárfiókjára irányuló mutatót és a JSON-adatait. A keresési szolgáltatás az adatok betöltésekor hozza létre a kapcsolatot.
+
+
 ## <a name="create-a-data-source"></a>Adatforrás létrehozása
 
 Most, hogy előkészítette a szolgáltatásokat és a forrásfájlokat, hozzáláthat az indexelőfolyamat komponenseinek összeállításához. Kezdje egy [adatforrás-objektummal](https://docs.microsoft.com/rest/api/searchservice/create-data-source), amely meghatározza az Azure Search számára a külső forrásadatok lekérésének módját.
 
-A jelen oktatóanyag esetében használja a REST API-t, valamint egy olyan eszközt, amely képes HTTP-kérések összeállítására és elküldésére (például: PowerShell, Postman vagy Fiddler). A kérés fejlécében adja meg az Azure Search szolgáltatás létrehozásakor használt szolgáltatásnevet és a keresési szolgáltatáshoz létrehozott api-kulcsot. A kéréstörzsben adja meg a blobtároló nevét és a kapcsolati karakterláncot.
+A kérés fejlécében adja meg az Azure Search szolgáltatás létrehozásakor használt szolgáltatásnevet és a keresési szolgáltatáshoz létrehozott api-kulcsot. A kéréstörzsben adja meg a blobtároló nevét és a kapcsolati karakterláncot.
 
 ### <a name="sample-request"></a>Kérésminta
 ```http
@@ -108,7 +125,7 @@ api-key: [admin key]
 ```
 Küldje el a kérést. A webes tesztelőeszköznek a 201-es, sikerességet jelző állapotkódot kell visszaadnia. 
 
-Mivel ez az első kérése, az Azure Portalon ellenőrizze, hogy létrejött-e az adatforrás az Azure Searchhöz. A keresési szolgáltatás Irányítópult lapján ellenőrizze, hogy az Adatforrások csempén megjelent-e az új elem. Lehet, hogy várnia kell néhány percet, amíg a portáloldal frissül. 
+Mivel ez az első kérése, az Azure Portalon ellenőrizze, hogy létrejött-e az adatforrás az Azure Searchhöz. A search service irányítópult-oldalon ellenőrizze az adatforrások listája tartalmaz egy új elemet. Lehet, hogy várnia kell néhány percet, amíg a portáloldal frissül. 
 
   ![Adatforrások csempe a portálon](./media/cognitive-search-tutorial-blob/data-source-tile.png "Adatforrások csempe a portálon")
 
@@ -116,13 +133,13 @@ Ha a 403-as vagy 404-es hibát kapja, ellenőrizze a kérés szerkezetét: az `a
 
 ## <a name="create-a-skillset"></a>Képességcsoport létrehozása
 
-Ebben a lépésben bővítési lépések egy olyan készletét fogja megadni, amelyet alkalmazni szeretne az adatain. Minden bővítési lépés egy *képesség*, a bővítési lépések készlete pedig a *képességcsoport*. Ez az oktatóanyag [előre meghatározott kognitív képességeket](cognitive-search-predefined-skills.md) használ a képességcsoporthoz:
+Ebben a lépésben bővítési lépések egy olyan készletét fogja megadni, amelyet alkalmazni szeretne az adatain. Minden bővítési lépés egy *képesség*, a bővítési lépések készlete pedig a *képességcsoport*. Ebben az oktatóanyagban [beépített kognitív képességeket](cognitive-search-predefined-skills.md) készségeitől számára:
 
 + [Nyelvfelismeréssel](cognitive-search-skill-language-detection.md) azonosítja a tartalom nyelvét.
 
 + A [szöveg felosztásával](cognitive-search-skill-textsplit.md) a nagyméretű tartalmakat kisebb darabokra bontja, mielőtt meghívná a kulcskifejezések kinyerését. A kulcskifejezések kinyerése legfeljebb 50 000 karakter méterű bemeneteket fogad el. A mintafájlok közül néhányat fel kell osztani ahhoz, hogy beleférjen a korlátozásba.
 
-+ A [Megnevezett entitások felismerése](cognitive-search-skill-named-entity-recognition.md) kinyeri a szervezetek nevét a blobtároló tartalmából.
++ [Entitások felismerése](cognitive-search-skill-entity-recognition.md) szervezetek nevei kinyerését tartalom blob-tárolóban.
 
 + A [Kulcskifejezések kinyerése](cognitive-search-skill-keyphrases.md) lehívja a leggyakoribb kulcskifejezéseket. 
 
@@ -144,7 +161,7 @@ Content-Type: application/json
   "skills":
   [
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
       "inputs": [
@@ -217,7 +234,7 @@ Content-Type: application/json
 
 Küldje el a kérést. A webes tesztelőeszköznek a 201-es, sikerességet jelző állapotkódot kell visszaadnia. 
 
-#### <a name="about-the-request"></a>Tudnivalók a kérésről
+#### <a name="explore-the-request-body"></a>Ismerkedés a kéréstörzzsel
 
 Figyelje meg a kulcskifejezések kinyerési képességének alkalmazását az egyes oldalakon. A ```"document/pages/*"``` kontextus beállításával a bővítőt a dokumentum- vagy oldaltömb minden egyes tagján (azaz a dokumentum minden oldalán) futtatja.
 
@@ -306,11 +323,13 @@ További információk az indexek meghatározásáról: [Index létrehozása (Az
 
 ## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>Indexelő létrehozása, mezők leképezése és átalakítások elvégzése
 
-Eddig létrehozott egy adatforrást, egy képességcsoportot és egy indexet. Ez a három összetevő egy olyan [indexelő](search-indexer-overview.md) része lesz, amely az egyes részeket egyetlen többszakaszos műveletben egyesíti. A három rész egy indexelőben való egyesítéséhez mezőleképezéseket kell meghatároznia. A mezőleképezések az indexelő definíciójának részét képezik, és a kérés elküldésekor átalakításokat hajtanak végre.
+Eddig létrehozott egy adatforrást, egy képességcsoportot és egy indexet. Ez a három összetevő egy olyan [indexelő](search-indexer-overview.md) része lesz, amely az egyes részeket egyetlen többszakaszos műveletben egyesíti. A három rész egy indexelőben való egyesítéséhez mezőleképezéseket kell meghatároznia. 
 
-Nem bővített indexelés esetén az indexelő definíciója egy nem kötelező *fieldMappings* (Mezőleképezések) nevű szakaszt is tartalmaz, ha a mezők neve vagy adattípusa nem pontosan egyezik, vagy ha függvényt szeretne használni.
++ A fieldMappings dolgozza fel előbb a képességek alkalmazási lehetőségét, az adatforrásból származó mezők forrás az indexben lévő cél mezők leképezése. Ha a mező nevét és típusát azonosak mindkét végén, nincs leképezés nem szükséges.
 
-Bővítési folyamattal rendelkező kognitív keresési számítási feladatok estén az indexelő egy *outputFieldMappings* (Kimeneti-mezőleképezések) nevű szakaszt is igényel. Ezek a leképezéseket a rendszer akkor használja, ha egy belső folyamat (a bővítési folyamat) szerepel a mezők értékeinek forrásaként. Az *outputFieldMappings* egyedi jellemzői közé tartozik a bővítés részeként (a formázó képességgel) létrehozott komplex típusok kezelésének képessége. Emellett dokumentumonként még számos elem előfordulhat (például több szervezet egy dokumentumon belül). Az *outputFieldMappings* szerkezet utasíthatja a rendszert arra, hogy az elemek gyűjteményét „összesimítsa” egyetlen rekordba.
++ A outputFieldMappings feldolgozása után hivatkozik, amely még nem léteznek, amíg dokumentumfeltörést sourceFieldNames készségeitől vagy Adatbővítés létrehozza őket. A targetFieldName egy mezőt az indexben.
+
+Bemenetek, kimenetek csatlakoztatása, mellett is használhatja Mezőleképezések datové struktury simítják. További információkért lásd: [képi elemekben gazdag mezők leképezése egy kereshető indexet](cognitive-search-output-field-mapping.md).
 
 ### <a name="sample-request"></a>Kérésminta
 
@@ -378,7 +397,7 @@ A lépés utasításainak végrehajtása több percig is eltarthat. Annak ellen�
 > [!TIP]
 > Az indexelő létrehozása elindítja a folyamatot. Ha probléma lép fel az adatok elérésével, a bemenetek és kimenetek leképezésével vagy a műveletek sorrendjével kapcsolatban, az ebben a szakaszban jelenik meg. Ha kód- vagy szkriptmódosításokkal szeretné újra futtatni a folyamatot, lehetséges, hogy először el kell távolítania az objektumokat. További információk: [Alaphelyzetbe állítás és ismételt futtatás](#reset).
 
-### <a name="explore-the-request-body"></a>Ismerkedés a kéréstörzzsel
+#### <a name="explore-the-request-body"></a>Ismerkedés a kéréstörzzsel
 
 A szkript -1 értéket állít be a ```"maxFailedItems"``` paraméterhez, amely utasítja az indexelőmotort, hogy hagyja figyelmen kívül az adatimportálás közben felmerülő hibákat. Ez azért hasznos, mert az adatforrás kevés dokumentumot tartalmaz. Nagyobb méretű adatforrás esetén 0-nál nagyobb értéket kell megadnia.
 

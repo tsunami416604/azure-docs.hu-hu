@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: f00c816f34978ee2f14f16ee9882860750d0e658
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 7e90e42f768ceb333ac90f56249457ffa46ae461
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051886"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490996"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -173,15 +173,16 @@ New-AzStorageAccount `
 Válassza ki a következő beállításokat, amint a képen látható:
 
 1. Válassza ki *a* a **állapota**
-2. Válasszon ki egy meglévő tárfiókot a folyamat-naplók tárolására. Ha tartja az adatokat tárolni szeretné, állítsa az értékét *0*. Azure Storage-díjak a tárfiók díjak.
-3. Állítsa be **megőrzési** adatait tárolni kívánt napok száma.
-4. Válassza ki *a* a **Traffic Analytics állapota**.
-5. Válasszon egy meglévő Log Analytics-munkaterületet, vagy válasszon **új munkaterület létrehozása** hozzon létre egy újat. Log Analytics-munkaterületet a Traffic Analytics használják majd létrehozására szolgál az analytics összesített és indexelt adatok tárolására. Ha egy meglévő munkaterületet, a támogatott régiók egyikében léteznie kell, és frissítettek az új lekérdezési nyelvre. Ha nem szeretne frissíteni egy meglévő munkaterületet, vagy nem rendelkezik egy munkaterületet egy támogatott régióban, hozzon létre egy újat. Lekérdezési nyelvet kapcsolatos további információkért lásd: [Azure Monitor-naplók frissítése új naplókeresésre](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+2. Válassza ki *2-es verzió* a **Flow naplók verzió**. 2-es verzió tartalmazza a flow-munkamenet statisztika (bájtok és csomagok)
+3. Válasszon ki egy meglévő tárfiókot a folyamat-naplók tárolására. Ha tartja az adatokat tárolni szeretné, állítsa az értékét *0*. Azure Storage-díjak a tárfiók díjak.
+4. Állítsa be **megőrzési** adatait tárolni kívánt napok száma.
+5. Válassza ki *a* a **Traffic Analytics állapota**.
+6. Válasszon ki egy meglévő Log Analytics (OMS) munkaterületet, vagy válasszon **új munkaterület létrehozása** hozzon létre egy újat. Log Analytics-munkaterületet a Traffic Analytics használják majd létrehozására szolgál az analytics összesített és indexelt adatok tárolására. Ha egy meglévő munkaterületet, kell-e találhatók, amelyek a [támogatott régiók](#supported-regions) és frissítettek az új lekérdezési nyelvre. Ha nem szeretne frissíteni egy meglévő munkaterületet, vagy nem rendelkezik egy munkaterületet egy támogatott régióban, hozzon létre egy újat. Lekérdezési nyelvet kapcsolatos további információkért lásd: [Azure Log Analytics új naplókeresésre frissítési](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-    A traffic analytics megoldás és az NSG-t üzemeltető Log Analytics-munkaterületnek nem kell ugyanabban a régióban. Például előfordulhat, a traffic analytics-munkaterületen a Nyugat-európai régióban bár előfordulhat, hogy az NSG-ket az USA keleti RÉGIÓJA és USA nyugati RÉGIÓJA. Több NSG-k ugyanazon a munkaterületen konfigurálhatók.
-6. Kattintson a **Mentés** gombra.
+    A log analytics-munkaterületet a traffic analytics megoldás és az NSG-t üzemeltető nem kell ugyanabban a régióban. Például előfordulhat, a traffic analytics-munkaterületen a Nyugat-európai régióban bár előfordulhat, hogy az NSG-ket az USA keleti RÉGIÓJA és USA nyugati RÉGIÓJA. Több NSG-k ugyanazon a munkaterületen konfigurálhatók.
+7. Kattintson a **Mentés** gombra.
 
-    ![Kijelölés tárfiókba, Log Analytics-munkaterület és a Traffic Analytics engedélyezése](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)
+    ![Kijelölés tárfiókba, Log Analytics-munkaterület és a Traffic Analytics engedélyezése](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
 
 Ismételje meg az előző lépéseket bármely más NSG-k, amelyhez hozzá szeretné a traffic analytics engedélyezéséhez. A folyamat-naplók továbbítja a munkaterület, ezért győződjön meg arról, hogy a helyi jogszabályoknak és előírásoknak, az Ön országában lehetővé teszik az adattárolás a régióban, ahol a munkaterület létezik.
 
@@ -300,7 +301,7 @@ Az insights után a Traffic Analytics teljes körűen konfigurálva van, így é
     ![Irányítópult, amely a virtuális hálózatok eloszlása](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - A virtuális hálózati topológia látható a felső szalagon kiválasztása hasonlóan a virtuális hálózat (belső virtuális hálózati kapcsolatok/Active/Inactive) paraméterek, a külső kapcsolatokat, aktív forgalommal és rosszindulatú forgalmat a virtuális hálózat.
-- A virtuális hálózati topológiát, előfizetések, munkaterületek, erőforráscsoportok és időintervallum alapján szűrhetők. További szűrőket, amelyek segítenek megérteni, a folyamat vannak: Flow típusa (virtuális hálózatok közötti, IntraVNET stb.), a Flow irányát (bejövő, kimenő), a folyamat állapota (engedélyezett, letiltva) virtuális hálózatok (a megcélzott és a csatlakoztatott), a (társviszony-létesítés vagy átjáró - P2S és S2S) kapcsolat típusa és NSG-t. Ezek a szűrők használatával részletesen vizsgálni kívánt virtuális hálózatok összpontosíthat.
+- A virtuális hálózati topológiát, előfizetések, munkaterületek, erőforráscsoportok és időintervallum alapján szűrhetők. További szűrőket, amelyek segítenek megérteni, a folyamat vannak: Flow típusa (virtuális hálózatok közötti IntraVNET és így tovább), a folyamat iránya (a bejövő, kimenő), a folyamat állapota (engedélyezett, a blokkolt), virtuális hálózatok (a megcélzott és a csatlakoztatott), kapcsolattípus (társviszony-létesítés vagy átjáró - P2S és S2S), és NSG-t. Ezek a szűrők használatával részletesen vizsgálni kívánt virtuális hálózatok összpontosíthat.
 - A virtuális hálózati topológia például egy virtuális hálózathoz (engedélyezett/letiltott/bejövő/kimenő/Benign/kártékony) folyamatokat, protokoll és hálózati biztonsági csoportok, érdemes forgalom elosztását mutatja:
 
     ![Virtuális hálózati topológiától, amely a forgalom terjesztési és a folyamat részletei](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)

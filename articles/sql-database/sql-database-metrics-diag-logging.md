@@ -1,10 +1,10 @@
 ---
 title: Az Azure SQL Database-metrikák és diagnosztikai naplózás |} A Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja az Azure SQL Database erőforrás-használat és a lekérdezés végrehajtási statisztika tárolásához.
+description: Ismerje meg, hogyan engedélyezze a diagnosztikát az Azure SQL Database erőforrás-használat és a lekérdezés-végrehajtási statisztikák kapcsolatos információk tárolására.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
@@ -12,14 +12,16 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: f023ab4fe55cf180ac1e3f0634856a528c911746
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: a2bd25f6dac4e73c0d8e3e951981f45e669b226a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426500"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490068"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
+
+Ebben a témakörben, megtudhatja, hogyan naplózási diagnostics telemetriai adatainak az Azure SQL Database az Azure portal, PowerShell, az Azure CLI, Azure Monitor REST API és az Azure Resource Manager-sablon használatával. Ezek a diagnosztikai erőforrás-használat és a lekérdezés-végrehajtási statisztikák méréséhez használható. 
 
 Önálló adatbázisok, rugalmas készletek a készletezett adatbázisok és példányok adatbázisai a felügyelt példány is könnyebben alkalmazásteljesítmény-figyelés a metrikák és diagnosztikai naplók streamelése. Az adatbázis erőforrás-használat, a dolgozók és a munkamenetek és a egy, a következő Azure-erőforrások kapcsolat továbbítására konfigurálhatja:
 

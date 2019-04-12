@@ -1,6 +1,6 @@
 ---
-title: Barracuda adatgyűjtést az Azure-Sentinel-Előzetesében |} A Microsoft Docs
-description: Ismerje meg, hogyan gyűjtheti össze az Azure-Sentinel Barracuda adatokat.
+title: Csatlakozás Azure-on Előzetesben Sentinel-Barracuda adatok |} A Microsoft Docs
+description: Ismerje meg, hogyan kell csatlakozni a Barracuda adatokat az Azure-Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b4d1830e705e1813c8448787e587d720eaf5ddbd
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d8e92fd3918230b48449926dcbb7528d919fd96f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574718"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492838"
 ---
 # <a name="connect-your-barracuda-appliance"></a>A Barracuda berendezés csatlakoztatása 
 
@@ -31,11 +31,10 @@ Barracuda webalkalmazási tűzfal (WAF) összekötő segítségével kapcsolódh
 
 
 > [!NOTE]
-> 
-> - Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
+> Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
 
 ## <a name="configure-and-connect-barracuda-waf"></a>Beállítása és csatlakozása a Barracuda WAF
-Barracuda Web Application Firewall integráció és Azure OMS-kiszolgálón keresztül közvetlenül a [ASI] naplók exportálása.
+Barracuda Web Application Firewall integráció és naplók exportálása közvetlenül az Azure Sentinel-Azure OMS-kiszolgálón keresztül.
 1. Lépjen a [Barracuda WAF a konfigurációs folyamat](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/), és kövesse az utasításokat a kapcsolatot, ezek a paraméterek használatával:
     - **Munkaterület-Azonosítót**: másolja ki a munkaterület-azonosító értékét az Azure-Sentinel-Barracuda összekötő oldalról.
     - **Elsődleges kulcs**: másolja az elsődleges kulcs értékét az Azure-Sentinel-Barracuda összekötő oldalról.

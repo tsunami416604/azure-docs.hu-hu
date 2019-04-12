@@ -1,5 +1,5 @@
 ---
-title: Azure AD v2 iOS – rövid útmutató | Microsoft Docs
+title: A Microsoft identity platform IOS-es rövid útmutató |} Az Azure
 description: Ismerje meg, hogyan jelentkeztethet be felhasználókat és kérdezheti le a Microsoft Graph-ot egy natív iOS-alkalmazásból.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57aabb25b960c1135704c62c30b5724026078b08
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e6340e0f349d66ecf6baaca481722396a6d786c5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439262"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496129"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Gyors útmutató: A felhasználók és a natív iOS-alkalmazások a Microsoft Graph API meghívása
 
@@ -30,7 +30,7 @@ ms.locfileid: "58439262"
 
 A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud egy natív iOS-alkalmazás bejelentkezni személyes, munkahelyi vagy iskolai fiókokba, lekérni egy hozzáférési jogkivonatot, és meghívni a Microsoft Graph API-t.
 
-![Ez a rövid útmutató által létrehozott mintaalkalmazás működését mutatja](media/quickstart-v2-ios/ios-intro-updated.png)
+![Ez a rövid útmutató által létrehozott mintaalkalmazás működését mutatja](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>Regisztráció és letöltés
@@ -46,14 +46,14 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
 > Az ebben a rövid működéséhez kódminta található, a válasz URL-cím hozzá kell `msal<AppId>://auth` (ahol az msal\<AppId > az alkalmazás azonosítója).
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [A módosítás alkalmazása]()
+> > [A módosítás végrehajtása nekem]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Már konfigurált](media/quickstart-v2-ios/green-check.png) Az alkalmazása már konfigurálva van ezzel az attribútummal
+> > ![Már be van állítva](media/quickstart-v2-ios/green-check.png) az alkalmazás ezzel az attribútummal van konfigurálva.
 
 #### <a name="step-2-download-your-web-server-or-project"></a>2. lépés: Töltse le a webes vagy projekt
 
-- [Az XCode-projekt letöltése](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+- [Töltse le az XCode-projektben](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-project"></a>3. lépés: A projekt konfigurálása
 
@@ -147,7 +147,7 @@ self.applicationContext = try MSALPublicClientApplication(clientId: kClientID, a
 > |Az elemek magyarázata: ||
 > |---------|---------|
 > | `clientId` | A *portal.azure.com* webhelyen regisztrált alkalmazásból származó alkalmazásazonosító |
-> | `authority` | Az Azure AD v2.0-végpont. Ez a legtöbb esetben *https<span/>://login.microsoftonline.com/common* |
+> | `authority` | A Microsoft identity platform végpontot. Ez a legtöbb esetben *https<span/>://login.microsoftonline.com/common* |
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 
@@ -155,7 +155,7 @@ Az MSAL a következő két metódust használja a jogkivonatok beszerzéséhez: 
 
 #### <a name="getting-an-access-token-interactively"></a>Hozzáférési jogkivonat interaktív lekérése
 
-Bizonyos helyzetekben elkerülhetetlen, hogy a felhasználók kommunikáljanak az Azure Active Directory (Azure AD) 2.0-s végponttal. Ekkor megnyílik a böngésző, ahol érvényesíteni kell a felhasználók hitelesítő adatait, vagy hozzájárulást kell adni. Néhány példa:
+Bizonyos helyzetekben szükséges együttműködhet a Microsoft identity platform végpont, amely egy helyi kapcsoló azt eredményezi, a rendszer böngészőben vagy a felhasználók a fiók hitelesítő adatainak érvényesítéséhez, vagy beleegyezést a felhasználók. Néhány példa:
 
 * Az első alkalommal, amikor felhasználók bejelentkeznek az alkalmazásba
 * Ha a felhasználóknak újból meg kell adniuk a hitelesítési adataikat, mert lejárt a jelszó
@@ -190,6 +190,6 @@ Próbálja ki az iOS-hez készült oktatóanyagot, amelyben teljes körű, rész
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>A jelen rövid útmutatóban használt alkalmazás létrehozási lépéseinek ismertetése
 
 > [!div class="nextstepaction"]
-> [A Graph API meghívása – iOS-oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
+> [IOS-oktatóanyag Graph API meghívása](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

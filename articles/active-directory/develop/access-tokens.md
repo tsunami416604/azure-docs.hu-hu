@@ -17,25 +17,26 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b94004aa4b4834be80c13a044fcf7eb0023b6f7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 88c47e1090673eb0a56f12c2eaf790a0ac851c6b
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259864"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501144"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Az Azure Active Directory hozzáférési jogkivonatok
 
 Hozzáférési jogkivonatok engedélyezése az ügyfelek számára védi az Azure API-k biztonságos hívása. Az Azure Active Directory (Azure AD) hozzáférési jogkivonatok vannak [JWTs](https://tools.ietf.org/html/rfc7519), Base64 kódolású JSON-objektumok az Azure által aláírt. Az ügyfelek csak az erőforrás hozzáférési jogkivonat tartalma, nem átlátszó beállításhalmazokkal tokenek elsődlegesen kell kezelnie. Érvényesítési és hibakeresési célra, a fejlesztők dekódolása is JWTs egy helyet, például [jwt.ms](https://jwt.ms). Az ügyfél is szükséges hozzáférési jogkivonat beszerzése vagy végpontról (1.0 vagy 2.0-s verzió) számos protokollt használ.
 
-Egy hozzáférési jogkivonatot kér, amikor az Azure AD, az is kínál az alkalmazás a hozzáférési jogkivonat bizonyos metaadatait adja vissza. Ezen információk közé tartozik a hozzáférési jogkivonatot, és a hatóköröket, amelyek esetében érvényes lejárati idejét. Ezek az adatok lehetővé teszi az alkalmazás intelligens gyorsítótárazás hozzáférési jogkivonatokat elemezni a hozzáférési jogkivonat maga nélkül.
+Amikor az ügyfél kérése egy hozzáférési jogkivonatot az Azure AD is adja vissza a hozzáférési jogkivonat kínál az alkalmazás egyes metaadatait. Ezen információk közé tartozik a hozzáférési jogkivonatot, és a hatóköröket, amelyek esetében érvényes lejárati idejét. Ezek az adatok lehetővé teszi az alkalmazás intelligens gyorsítótárazás hozzáférési jogkivonatokat elemezni a hozzáférési jogkivonat maga nélkül.
 
 Ha az alkalmazás egy erőforrást (webes API-t), amely az ügyfelek lekérdezhetik-e a hozzáférést, a hozzáférési jogkivonatok használható hitelesítésre és engedélyezésre, például a felhasználó, ügyfél, kibocsátó, engedélyek és további hasznos információkat adja meg. 
 
 Az alábbi részekből megtudhatja, hogyan erőforrás ellenőrzése és belül egy hozzáférési jogkivonatot a jogcímek használata.
 
-> [!NOTE]
-> Az ügyfélalkalmazás (például hotmail.com vagy outlook.com) személyes fiókkal történő tesztelés során azt tapasztalhatja, hogy a hozzáférési jogkivonatot az ügyfél által fogadott egy olyan átlátszatlan karakterlánc. Ennek az oka az elért erőforrás kért örökölt MSA (Microsoft-fiók) jegyek vannak titkosítva, és az ügyfél nem tudja értelmezni.
+> [!Important]
+> Hozzáférési jogkivonatok alapján hozzák létre a *célközönség* jogkivonat, ami azt jelenti, amely a hatóköröket a jogkivonat tulajdonosa.  Ez a módja az erőforrás-beállítás `accessTokenAcceptedVersion` a a [manifest aplikace](reference-app-manifest.md#manifest-reference) való `2` segítségével kap a v2.0-hozzáférési tokent az 1.0-s verzió-végpontot hív-e az ügyfél.  Ehhez hasonlóan ez, ezért a hozzáférési jogkivonat módosítása [választható jogcímek](active-directory-optional-claims.md) az ügyfél do módosítani a hozzáférési jogkivonat érkezett, ha nem egy token kérik a `user.read`, amelynek a tulajdonosa az MS Graph-erőforrás.  
+> Ugyanezen okból az ügyfélalkalmazás (például hotmail.com vagy outlook.com), személyes fiókkal történő tesztelése során azt tapasztalhatja, hogy a hozzáférési jogkivonatot az ügyfél által fogadott egy olyan átlátszatlan karakterlánc. Ennek az oka az elért erőforrás kért örökölt MSA (Microsoft-fiók) jegyek vannak titkosítva, és az ügyfél nem tudja értelmezni.
 
 ## <a name="sample-tokens"></a>Minta jogkivonatok
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: aa97e60fe296190f3478d29bc80c70ea487e8955
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 15bb64917fa58ba2d13c6f372640957508ab29c1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258581"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494559"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Az Azure Monitor használatával nagy mennyiségű figyelése
 
@@ -109,7 +109,7 @@ A fontos szempontja a riasztást kiváltó feltétel, a riasztás. Kattintson a 
 
 ![LAAzureBackupAlertCondition](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertlogic.png)
 
-A Kusto-lekérdezés szerkesztése, ha szükséges, válassza ki a megfelelő küszöbértéket (amely fog döntse el, ha a riasztás el lesz indítva), a jobb oldali időszak (időablak, amelynek a lekérdezés futtatása), és a gyakoriság. A példa: A példa: Ha a küszöb értéke nagyobb, mint 0, az időszak érték 5 perc és gyakoriság 5 perc, majd a szabály lefordított "A lekérdezés futtatásához az utolsó 5 percen át 5 percenként, és ha az eredmények száma 0-nál nagyobbnak, értesítés küldése a kiválasztott műveletcsoport"
+A Kusto-lekérdezés szerkesztése, ha szükséges, válassza ki a megfelelő küszöbértéket (amely fog döntse el, ha a riasztás el lesz indítva), a jobb oldali időszak (időablak, amelynek a lekérdezés futtatása), és a gyakoriság. A példa: Ha a küszöb értéke nagyobb, mint 0, az időszak érték 5 perc és gyakoriság 5 perc, majd a szabály lefordított "A lekérdezés futtatásához az utolsó 5 percen át 5 percenként, és ha az eredmények száma 0-nál nagyobbnak, értesítés küldése a kiválasztott műveletcsoport"
 
 #### <a name="action-group-integration"></a>Műveleti csoport integrálása
 

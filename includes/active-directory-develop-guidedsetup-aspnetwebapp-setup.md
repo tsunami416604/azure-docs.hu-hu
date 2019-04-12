@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 701b08cafd2e6d38a68252ea5919c8f4cd7de9b4
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: dcfc341b89a3cfebcb5538f88481fd2fbb2936a7
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203627"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505817"
 ---
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
@@ -51,12 +51,13 @@ Ez a szakasz bemutatja a lépéseket, telepítése és konfigurálása a hiteles
 <!--end-collapse-->
 
 ## <a name="configure-the-authentication-pipeline"></a>A hitelesítési folyamat konfigurálásához
+
 Az alábbi lépések segítségével hozzon létre egy OWIN indítási osztályt OpenID Connect-hitelesítés konfigurálása közbenső szoftvert. Ez az osztály a lesz automatikusan végrehajtva, amikor az IIS-folyamat elindul.
 
 > [!TIP]
 > Ha a projekt gyökérmappája nem tartalmazza a `Startup.cs` fájlt:
 > 1. Kattintson a jobb gombbal a projektmappa gyökérkönyvtárába a: > `Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. Adja neki a `Startup.cs` nevet.
+> 2. Nevezze el `Startup.cs`
 >
 >> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztály, és nem egy szabványos C#-osztály. Ehhez ellenőrizze, hogy látja-e a következőt a névtér fölött: `[assembly: OwinStartup(typeof({NameSpace}.Startup))]`.
 
@@ -113,10 +114,10 @@ Az alábbi lépések segítségével hozzon létre egy OWIN indítási osztályt
                     ResponseType = OpenIdConnectResponseType.IdToken,
                     // ValidateIssuer set to false to allow personal and work accounts from any organization to sign in to your application
                     // To only allow users from a single organizations, set ValidateIssuer to true and 'tenant' setting in web.config to the tenant name
-                    // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter 
+                    // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter
                     TokenValidationParameters = new TokenValidationParameters()
                     {
-                        ValidateIssuer = false
+                        ValidateIssuer = false // This is a simplification
                     },
                     // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
                     Notifications = new OpenIdConnectAuthenticationNotifications
@@ -140,6 +141,9 @@ Az alábbi lépések segítségével hozzon létre egy OWIN indítási osztályt
         }
     }
     ```
+
+> [!NOTE]
+> Beállítás `ValidateIssuer = false` van ebben a rövid útmutatóban egyszerűsítését. Valós alkalmazások érvényesítenie kell a kibocsátó megtudhatja, hogyan valósítható meg mintáiban találhat.
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>További információ

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c7d8414fdc1070204ef02cf6d88b238575d0817a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a91c4d9f5dcdcee436f2dbf012eb5485b7a92192
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472422"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495617"
 ---
 # <a name="heading"></a>Azure Blobadatok feldolgozása bővített analitikával
 Ez a dokumentum ismerteti a megismerését adatok és az Azure Blob storage-ban tárolt adatok alapján előállító szolgáltatások. 
@@ -75,11 +75,12 @@ Most már készen áll az adatok, és hozzon létre ehhez az adatkészlethez fun
         print miss_num
 7. Ha egy adott oszlop a hiányzó értékek az adatokban, akkor is el kell dobni ezeket a következő:
    
-     dataframe_blobdata_noNA dataframe_blobdata.dropna() dataframe_blobdata_noNA.shape =
+        dataframe_blobdata_noNA = dataframe_blobdata.dropna()
+        dataframe_blobdata_noNA.shape
    
    Cserélje le a hiányzó értékek másik módja, a függvény a mód:
    
-     dataframe_blobdata_mode = dataframe_blobdata.fillna ({< oszlopnév >: ['< oszlopnév >'] dataframe_blobdata .mode()[0]})        
+        dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
 8. Dobozok száma változó segítségével jeleníti meg a változó terjesztési hisztogram rajzot létrehozása    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')

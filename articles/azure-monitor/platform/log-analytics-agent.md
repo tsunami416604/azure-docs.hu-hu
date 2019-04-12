@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e9df83ef81c2656bf94002feb79d7e4d99ed7954
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5f9a225e8a256dd55feadf97f0a7b9f922487a6f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57841106"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492804"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Az Azure Log Analytics-ügynököket a naplóadatok gyűjtése
 
@@ -41,8 +41,9 @@ A Linux és Windows-ügynököt nem csak a Log Analyticshez való kapcsolódás,
 ## <a name="supported-windows-operating-systems"></a>A támogatott Windows operációs rendszerek
 A Windows-ügynök hivatalosan támogatott a Windows operációs rendszer következő verziói:
 
-* A Windows Server 2008 R2 vagy újabb
-* Windows 7 SP1 és újabb verziók.
+* A Windows Server 2019
+* A Windows Server 2008 R2, 2012, 2012 R2, 2016 1709-es és 1803-as verzióban
+* Windows 7 SP1 és újabb verziók
 
 ## <a name="supported-linux-operating-systems"></a>Támogatott Linux operációs rendszerek
 Ez a szakasz ismerteti a támogatott Linux-disztribúciók részleteit.    
@@ -104,7 +105,8 @@ A Linux-ügynök a proxykiszolgáló van megadva a telepítés során vagy [a te
 |proxyhost | Cím vagy teljes Tartománynevét a proxy server/Log Analytics-átjáró |
 |port | A proxy server/Log Analytics-átjáró opcionális port száma |
 
-Például:`https://user01:password@proxy01.contoso.com:30443`
+Példa:
+`https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
 > Ha például a speciális karakterek használata "\@" meg a jelszót, egy proxy kapcsolat hibaüzenetet kapja, mert az érték nem megfelelően elemzi.  A probléma megkerüléséhez kódolása a jelszót az URL-címet, például egy eszközzel [URLDecode](https://www.urldecoder.org/).  

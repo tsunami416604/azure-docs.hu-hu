@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4de33bb02a008d6b394055c64119ac2a4fbc4d9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d0c7c29bf3094c3d5fc99b9906ee4469a6643317
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276048"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501595"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>A Microsoft identity platform és az OAuth 2.0-alapú meghatalmazásos folyamat
 
@@ -33,7 +33,7 @@ Az OAuth 2.0-alapú meghatalmazásos folyamat (OBO) használati eset ahol egy al
 
 > [!NOTE]
 >
-> - A Microsoft identity platform végpont nem támogatja az összes forgatókönyvek és funkciók. Annak megállapításához, hogy a Microsoft identity platform végpontot kell használnia, olvassa el [a Microsoft identity platform korlátozásai](active-directory-v2-limitations.md). Ismert ügyfélalkalmazások, Microsoft-fiókkal (MSA) és az Azure ad-ben célközönséggel rendelkező alkalmazások nem támogatottak. Egy általános hozzájárulási mintája OBO, nem fog működni azon ügyfeleknél, amelyek mind személyes és munkahelyi vagy iskolai fiókkal jelentkezzen be. Ez a lépés a folyamat kezelése kapcsolatos további információkért lásd: [hozd a középső rétegbeli alkalmazás jóváhagyási](#gaining-consent-for-the-middle-tier-application).
+> - A Microsoft identity platform végpont nem támogatja az összes forgatókönyvek és funkciók. Annak megállapításához, hogy a Microsoft identity platform végpontot kell használnia, olvassa el [a Microsoft identity platform korlátozásai](active-directory-v2-limitations.md). Alkalmazások Microsoft-fiókkal (MSA) és az Azure ad-ben célközönségek számára kifejezetten, ismert ügyfélalkalmazások nem támogatottak. Egy általános hozzájárulási mintája OBO, nem fog működni azon ügyfeleknél, amelyek mind személyes és munkahelyi vagy iskolai fiókkal jelentkezzen be. Ez a lépés a folyamat kezelése kapcsolatos további információkért lásd: [hozd a középső rétegbeli alkalmazás jóváhagyási](#gaining-consent-for-the-middle-tier-application).
 > - 2018 május, néhány implicit folyamat származtatott `id_token` OBO folyamat nem használható. Egylapos alkalmazások (gyógyfürdők) kell átadnia egy **hozzáférés** tokent egy középső rétegű bizalmas ügyfél számára, hogy OBO folyamatok helyette. További információ arról, hogy mely ügyfelek OBO hívásokat hajthat végre: [korlátozások](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
@@ -55,7 +55,7 @@ A következő lépések a OBO folyamatot jelent, és segítségével. a követke
 
 ## <a name="service-to-service-access-token-request"></a>Szolgáltatások közötti hozzáférési jogkivonat kérése
 
-A hozzáférési jogkivonatot kér, végezze el egy HTTP POST a bérlő-specifikus v2.0 jogkivonat-végpont a következő paraméterekkel.
+A hozzáférési jogkivonatot kér, végezze el egy HTTP POST a bérlő-specifikus a Microsoft identity platform jogkivonat-végpont a következő paraméterekkel.
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
@@ -191,13 +191,13 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>A középső rétegbeli alkalmazás jóváhagyási ellenőrzés
 
-Attól függően, a felhasználók, akik az alkalmazást akkor fontolja meg annak biztosítása, hogy a OBO folyamat sikeres különböző stratégiák. Minden esetben végső célja annak biztosítása érdekében a megfelelő hozzájárulás van megadva. Hogyan történik, azonban attól függ, hogy mely felhasználók az alkalmazás támogatja-e. 
+Attól függően, a felhasználók, akik az alkalmazást akkor fontolja meg annak biztosítása, hogy a OBO folyamat sikeres különböző stratégiák. Minden esetben végső célja annak biztosítása érdekében a megfelelő hozzájárulás van megadva. Hogyan történik, azonban attól függ, hogy mely felhasználók az alkalmazás támogatja-e.
 
 ### <a name="consent-for-azure-ad-only-applications"></a>Hozzájárulás megadása az Azure csak az AD-alkalmazásokhoz
 
 #### <a name="default-and-combined-consent"></a>/.default és kombinált jóváhagyás
 
-Jelentkezzen be munkahelyi vagy iskolai fiókok csak igénylő alkalmazásokhoz a hagyományos "Néven ismert ügyfélalkalmazások" megközelítés is megfelel. A középső rétegbeli alkalmazás hozzáadja az ügyfél az ismert ügyfél alkalmazások listáját a jegyzékfájlban, és ezután az ügyfél is indíthat egyesített jóváhagyási folyamatot a saját maga és a középső réteg alkalmazása. A v2.0-végpont, ehhez használja a [ `/.default` hatókör](v2-permissions-and-consent.md#the-default-scope). Amikor egy ismert ügyfélalkalmazások használatával beleegyezést kérő oldalon elindítása és `/.default`, a jóváhagyást kérő képernyőt a középső réteg API-t mind az ügyfél engedélyek megjelenítése, és kérheti az engedélyek szükségesek a középső rétegbeli API-t. A felhasználó megadja a beleegyezését, mindkét alkalmazás számára, és ezután a OBO folyamat működik-e.
+Jelentkezzen be munkahelyi vagy iskolai fiókok csak igénylő alkalmazásokhoz a hagyományos "Néven ismert ügyfélalkalmazások" megközelítés is megfelel. A középső rétegbeli alkalmazás hozzáadja az ügyfél az ismert ügyfél alkalmazások listáját a jegyzékfájlban, és ezután az ügyfél is indíthat egyesített jóváhagyási folyamatot a saját maga és a középső réteg alkalmazása. A Microsoft identity platform végponton, ehhez használja a [ `/.default` hatókör](v2-permissions-and-consent.md#the-default-scope). Amikor egy ismert ügyfélalkalmazások használatával beleegyezést kérő oldalon elindítása és `/.default`, a jóváhagyást kérő képernyőt a középső réteg API-t mind az ügyfél engedélyek megjelenítése, és kérheti az engedélyek szükségesek a középső rétegbeli API-t. A felhasználó megadja a beleegyezését, mindkét alkalmazás számára, és ezután a OBO folyamat működik-e.
 
 Jelenleg a személyes Microsoft-fiókrendszer nepodporuje kombinált jóváhagyás, és ezért ez a módszer nem használható a alkalmazásoknál, amelyeket kifejezetten jelentkezzen be a személyes fiókokat kíván. Személyes Microsoft-fiókok a Vendég fiók a bérlő kezelése az Azure AD-rendszert használ, és egyesített jóváhagyási végigveheti használja.
 

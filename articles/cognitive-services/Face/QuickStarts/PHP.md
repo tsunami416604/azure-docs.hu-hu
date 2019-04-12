@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 0c48b85e48153eb70400fc6da4822271f49b7fbe
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 280143d54e516fb626bb2d5afd01653e03d8a82c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630181"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490446"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Gyors útmutató: Arcfelismerés a képet a REST API-t és a PHP használatával
 
@@ -26,6 +26,7 @@ Ebben a rövid, használatával az Azure Face REST API a PHP emberi arcok észle
 - A Face API előfizetési kulcs. Megjelenik a származó ingyenes próba-előfizetését kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face API szolgáltatás és a kulcs beszerzése.
 - Például egy Kódszerkesztő [Visual Studio Code](https://code.visualstudio.com/download).
 - A PHP [http_request2 típusú](https://pear.php.net/package/HTTP_Request2) csomagot.
+- PHP-kompatibilis webböngészővel. Ha nem állított ez be, akkor ehhez telepítéséhez és beállításához [XAMPP](https://www.apachefriends.org/) a gépen.
 
 ## <a name="initialize-the-html-file"></a>A HTML-fájl inicializálása
 

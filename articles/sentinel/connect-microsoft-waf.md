@@ -1,6 +1,6 @@
 ---
-title: Adatgyűjtés a Microsoft webes alkalmazás tűzfal az Azure-Sentinel-Előzetesében |} A Microsoft Docs
-description: Tudnivalók a Microsoft webes alkalmazás tűzfal adatainak Azure Sentinel-gyűjtéséről.
+title: Webalkalmazás tűzfal adatainak a Microsoft Azure-on Előzetesben Sentinel-csatlakozás |} A Microsoft Docs
+description: Ismerje meg, hogyan kell csatlakozni a webalkalmazás tűzfal adatainak a Microsoft Azure-Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2238060acb60b1be0d06b81f62fb45a7f1c7a9b6
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5316fa7e3aa4465349b762b99bec9171f821062f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580598"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491030"
 ---
-# <a name="collect-data-from-microsoft-web-application-firewall"></a>Adatokat gyűjteni a Microsoft webalkalmazási tűzfal
+# <a name="connect-data-from-microsoft-web-application-firewall"></a>Adatok csatlakoztatása a Microsoft webalkalmazási tűzfal
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
@@ -39,15 +39,15 @@ Az Azure Application Gateway a Microsoft webalkalmazási tűzfal (WAF) naplóina
 Ha már rendelkezik a Microsoft webalkalmazási tűzfal, ellenőrizze, hogy egy meglévő átjáró-erőforrást.
 A Microsoft webalkalmazási tűzfal van telepítve, és a fogad adatokat, a riasztási adatok könnyen továbbítható Azure Sentinel-be.
     
-5. Az Azure-Sentinel-portálon válassza **adatösszekötők**.
-5. Az összekötők lapon, válassza ki a **WAF** csempére.
+1. Az Azure-Sentinel-portálon válassza **adatösszekötők**.
+1. Az összekötők lapon, válassza ki a **WAF** csempére.
 1. Lépjen a [Application Gateway-erőforrásának](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) , és válassza a WAF.
     1. Válassza ki **diagnosztikai beállítások**.
     1. Válassza ki **+ diagnosztikai beállítás hozzáadása** a táblázat alatt.
     1. Az a **diagnosztikai beállítások** írja be egy **neve** válassza **Küldés a Log Analyticsnek**.
     1. A **Log Analytics-munkaterület** válassza ki az Azure Sentinel-munkaterületet.
     1. Válassza ki az elemezni kívánt napló típusait. Azt javasoljuk: ApplicationGatewayAccessLog és ApplicationGatewayFirewallLog.
-6. A megfelelő sémát használ a Log Analytics a Microsoft web application tűzfal riasztásokat, keresse meg **AzureDiagnostics**.
+1. A megfelelő sémát használ a Log Analytics a Microsoft web application tűzfal riasztásokat, keresse meg **AzureDiagnostics**.
 
 ## <a name="next-steps"></a>További lépések
 Ebben a dokumentumban megtudhatta, hogyan szeretne csatlakozni a Microsoft webalkalmazási tűzfal Azure Sentinel. Azure-Sentinel kapcsolatos további információkért tekintse meg a következő cikkeket:

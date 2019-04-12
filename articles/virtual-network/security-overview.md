@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: efce606f9c48668f569b0fb4fc45745adc6652c4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6b100846ec08ca1bdda49d0d7bce9eb78ecf019b
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262142"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501127"
 ---
 # <a name="security-groups"></a>Biztonsági csoportok
 <a name="network-security-groups"></a>
@@ -80,6 +80,7 @@ A kibővített biztonsági szabályok megkönnyítik a virtuális hálózatok bi
 * **AzureMonitor** (csak Resource Manager): Ez a címke a AzureMonitor szolgáltatás címelőtagjait. Ha megad *AzureMonitor* értékénél, engedélyezett vagy tiltott forgalmat a AzureMonitor. 
 * **ServiceFabric** (csak Resource Manager): Ez a címke a ServiceFabric-szolgáltatás címelőtagjait. Ha megad *ServiceFabric* értékénél, engedélyezett vagy tiltott forgalmat ServiceFabric való. 
 * **AzureMachineLearning** (csak Resource Manager): Ez a címke a AzureMachineLearning szolgáltatás címelőtagjait. Ha megad *AzureMachineLearning* értékénél, engedélyezett vagy tiltott forgalmat a AzureMachineLearning. 
+* **BatchNodeManagement** (csak Resource Manager): Ez a címke az Azure BatchNodeManagement szolgáltatás címelőtagjait. Ha megad *BatchNodeManagement* értékénél, engedélyezett vagy tiltott forgalmat a Batch szolgáltatás a számítási csomópontokra.
 
 > [!NOTE]
 > Az Azure-szolgáltatások szolgáltatáscímkék címelőtagjait használja a megadott felhőből. 

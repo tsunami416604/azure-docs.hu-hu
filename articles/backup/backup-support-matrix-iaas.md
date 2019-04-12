@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 974e640977fcf4d580575705d7fdf0faf632c31b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361459"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496095"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
 Használhatja a [Azure Backup szolgáltatás](backup-overview.md) a helyszíni gépek és a számítási feladatok és Azure-beli virtuális gépek (VM) biztonsági mentése. Ez a cikk összegzi a támogatási beállításait és korlátozások biztonsági mentésekor az Azure-beli virtuális gépek az Azure Backup szolgáltatással.
@@ -41,8 +41,8 @@ További információ a biztonsági mentés [használatával egy biztonsági men
 **Műveletek** | **Támogatás**
 --- | ---
 Amikor létrehoz egy Windows Azure virtuális gép biztonsági mentésének engedélyezése | Támogatott:  A Windows Server 2019 (Datacenter/Datacenter mag), a Windows Server 2016 (Core adatközpont vagy Datacenter); A Windows Server 2012 R2 Datacenter; A Windows Server 2008 R2 (RTM és SP1)
-Amikor létrehoz egy Linux rendszerű virtuális gép biztonsági mentésének engedélyezése | Támogatott:<br/><br/> - Ubuntu Server: 1710, 1704, 1604 (LTS), 1404 (LTS)<br/><br/> – A Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3<br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> - Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
-A virtuális gép biztonsági másolatának hogy leállítás/kapcsolat/kérő VM | Támogatott.<br/><br/> Pillanatkép az összeomlás-konzisztens csak, nem alkalmazáskonzisztens.
+Amikor létrehoz egy Linux rendszerű virtuális gép biztonsági mentésének engedélyezése | Támogatott:<br/><br/> - Ubuntu Server: 1710, 1704, 1604 (LTS), 1404 (LTS)<br/><br/> – A Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> - Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
+Készítsen biztonsági másolatot egy virtuális gép leállítása vagy offline állapotú virtuális gép | Támogatott.<br/><br/> Pillanatkép az összeomlás-konzisztens csak, nem alkalmazáskonzisztens.
 Lemezek biztonsági mentése a managed disks-ba való migrálás után | Támogatott.<br/><br/> Biztonsági mentés továbbra is működni fog. Nincs szükség műveletre.
 Lemezek biztonsági mentése a felügyelt erőforrászárat csoport engedélyezése után | Nem támogatott.<br/><br/> Az Azure Backup nem lehet törölni a régebbi erőforrás pontokat, és a biztonsági mentések elkezdi sikertelen lehet, ha a visszaállítási pontok maximális korlátot.
 Virtuális gép biztonsági mentési szabályzat módosítása | Támogatott.<br/><br/> A virtuális gép fog készíteni az új szabályzat ütemezése és megőrzése beállításainak használatával. Adatmegőrzési beállítások vannak bővítve, ha a meglévő helyreállítási pontok megjelölve és tartani. Ha Ön csökkenti a meglévő helyreállítási pontok törli a következő tisztítási feladat, és végül törli.
@@ -149,8 +149,7 @@ Az üzembe helyezett virtuális gépek biztonsági mentése egy [méretezési cs
 Az üzembe helyezett virtuális gépek biztonsági mentése a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Microsoft vagy harmadik fél által közzétett) |  Támogatott.<br/><br/> A virtuális gép támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gép fájljait helyreállításakor visszaállíthatja csak egy kompatibilis operációs rendszer (nem egy korábbi vagy későbbi operációs rendszer).
 Virtuális gépek biztonsági mentése telepített egyéni rendszerképből (külső) |   Támogatott.<br/><br/> A virtuális gép támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gép fájljait helyreállításakor visszaállíthatja csak egy kompatibilis operációs rendszer (nem egy korábbi vagy későbbi operációs rendszer).
 Az Azure-bA áttelepített virtuális gépek biztonsági mentése  | Támogatott.<br/><br/> Biztonsági mentése a virtuális Gépet, a Virtuálisgép-ügynök a migrált gépen telepítve van.
-Készítsen biztonsági másolatot a virtuális gépek konzisztencia | nem támogatott. <br/><br/>Az Azure Backup nem támogatja a több virtuális gépre kiterjedő konzisztencia.
-
+Készítsen biztonsági másolatot a virtuális gépre kiterjedő konzisztencia | Az Azure Backup nem biztosít az adatok és alkalmazások konzisztencia több virtuális gép között.
 
 
 ## <a name="vm-storage-support"></a>Virtuálisgép-tároló támogatása
@@ -166,7 +165,7 @@ Az engedélyezett Írásgyorsító lemezek | Nem támogatott.<br/><br/> Ha futta
 A deduplikált lemezek biztonsági mentése | Nem támogatott.
 Lemez hozzáadása a védett virtuális gép | Támogatott.
 A védett virtuális gépek a lemez átméretezése | Támogatott.
-Megosztott tároló| A CSV vagy a Scale-Out File Server virtuális gépek biztonsági mentésének nem ajánlott. Fürt megosztott kötetei szolgáltatás író eséllyel lesz sikertelen.
+Megosztott tároló| A fürt megosztott kötete (CSV) vagy a Scale-Out File Server virtuális gépek biztonsági mentésének nem ajánlott. Fürt megosztott kötetei szolgáltatás írók várhatóan sikertelen biztonsági mentés során. A visszaállítás tartalmazó CSV-köteteket lemezek előfordulhat, hogy nem érkeznek felfelé.
 
 > [!NOTE]
 > Az Azure Backup nem támogatja a csíkozott lemez. Lemez átméretezése az Azure Backup nem ajánlott.

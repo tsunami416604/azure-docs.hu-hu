@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 99c6e7dc589a94880976a9c7abcde12377e4e5d3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dcb38d839017d1c4ea5b6714f7c900c476ddcd6b
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101533"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494661"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -174,9 +174,9 @@ Saját tanúsítványának feltöltéséhez és a hozzáférés teszteléséhez 
 
     b. A webtelepítés közzétételének teszteléséhez vagy a haladó konzol eléréséhez hozzon létre egy rekordot a _mytestapp.scm.ilbase.com_ tartományban.
 
-5. A virtuális gép böngészőt használ, és nyissa meg https://mytestapp.ilbase.com. (Vagy bármilyen az alkalmazás nevére, a saját tartománnyal.)
+5. A virtuális gép böngészőjével keresse fel a következő oldalt: https://mytestapp.ilbase.com. (Vagy bármilyen az alkalmazás nevére, a saját tartománnyal.)
 
-6. A virtuális gép böngészőt használ, és nyissa meg https://mytestapp.ilbase.com. Ha önaláírt tanúsítványt használ, fogadja el a biztonsági hiányosságot.
+6. A virtuális gép böngészőjével keresse fel a következő oldalt: https://mytestapp.ilbase.com. Ha önaláírt tanúsítványt használ, fogadja el a biztonsági hiányosságot.
 
     Az ILB IP-címe az **IP-címek** területen látható. Ez a lista tartalmazza a külső virtuális IP-címet és a bejövő felügyeleti forgalmak IP-címeit is.
 

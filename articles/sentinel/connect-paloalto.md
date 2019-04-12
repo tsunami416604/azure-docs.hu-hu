@@ -1,6 +1,6 @@
 ---
-title: Az Azure-on Előzetesben Sentinel-Palo Alto Networks-adatok gyűjtése |} A Microsoft Docs
-description: Ismerje meg az Azure-Sentinel a Palo Alto Networks adatainak gyűjtéséről.
+title: Csatlakozás Azure-on Előzetesben Sentinel-Palo Alto Networks-adatok |} A Microsoft Docs
+description: Ismerje meg, hogyan kell csatlakozni a Palo Alto Networks-adatokat az Azure-Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 130982dc6adadd22037f395635a9525bf28bcedd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 0e811fb8d084f90410d48124f488843daa31a5a5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877091"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489416"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Csatlakozás a Palo Alto Networks-berendezés
 
@@ -43,7 +43,7 @@ A hálózati diagram mindkét lehetőség előnyeivel, olvassa el [adatforrások
 
 ### <a name="deploy-the-agent-in-azure"></a>Telepítse az ügynököt az Azure-ban
 
-1. Az Azure-Sentinel-portálon kattintson a **adatgyűjtés** válassza ki a készüléket. 
+1. Az Azure-Sentinel-portálon kattintson a **adatösszekötők** válassza ki a készüléket. 
 
 1. A **Linux Syslog-ügynök konfigurációjának**:
    - Válasszon **automatikus központi telepítési** szeretné-e a fent leírtak szerint, hozzon létre egy új gépet, amely előre telepítve van az Azure Sentinel-ügynökkel, és tartalmazza a konfiguráció szükséges. Válassza ki **automatikus központi telepítési** kattintson **automatikus ügynöktelepítés**. Ekkor megjelenik a vásárlás lap, amely automatikusan csatlakozik a munkaterülethez, a dedikált virtuális gépek. A virtuális gép egy **D2s v3-as standard (2 vcpu-k, 8 GB memória)** és a egy nyilvános IP-címmel rendelkezik.
@@ -80,7 +80,7 @@ A hálózati diagram mindkét lehetőség előnyeivel, olvassa el [adatforrások
 Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel futtatása egy dedikált Linux-kiszolgálón.
 
 
-1. Az Azure-Sentinel-portálon kattintson a **adatgyűjtés** válassza ki a készüléket.
+1. Az Azure-Sentinel-portálon kattintson a **adatösszekötők** válassza ki a készüléket.
 1. Egy dedikált Linux rendszerű virtuális gép létrehozása alatt **Linux Syslog-ügynök konfigurációjának** válasszon **manuális üzembe helyezési**.
    1. A **a Syslog-ügynök letöltése és telepítése**válassza **nem Azure-beli Linux rendszerű gép**. 
    1. Az a **közvetlen ügynök** képernyő, amely megnyílik, válassza ki **Linux-ügynök** töltse le az ügynököt, vagy letöltheti a Linux rendszerű számítógépen az alábbi paranccsal:   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`

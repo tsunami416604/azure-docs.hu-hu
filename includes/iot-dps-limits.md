@@ -4,20 +4,20 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 1ae6c6ee59b66e6c61714c0ece9f306f1a885096
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 65c89730e7d3d492b91daa8aba50e5606ca700a1
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553505"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503079"
 ---
 Az alábbi táblázat a vonatkozó korlátokat tartalmazza az Azure IoT Hub Device Provisioning Service-erőforrások.
 
 | Erőforrás | Korlát |
 | --- | --- |
 | Maximális eszközregisztrációs szolgáltatások Azure-előfizetésenként | 10 |
-| Regisztrációk maximális száma | 500,000 |
-| A regisztrációk maximális száma | 500,000 |
+| Regisztrációk maximális száma | 1,000,000 |
+| A regisztrációk maximális száma | 1,000,000 |
 | Regisztrációs csoportok maximális száma | 100 |
 | Hitelesítésszolgáltatók maximális száma | 25 |
 

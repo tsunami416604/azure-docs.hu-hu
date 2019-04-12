@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 78efcefa7df99dfa3386dcdf19aafa47d7b9fab1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 7cbd21ce9f8e5d9d3c03eb7c626ab41b8d28498d
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884507"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505668"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>A virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az adatok itt az Azure-beli virtuális hálózatok kezdő: [Az Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -59,7 +59,7 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
 
    * **Belső**: az API Management-átjáró és fejlesztői portálon érhetők el, csak a belső terheléselosztót a virtuális hálózaton belül. Az átjáró a virtuális hálózatban lévő erőforrások eléréséhez.
 
-     ![Magánhálózati társviszony-létesítés][api-management-vnet-private]`
+     ![Magánhálózati társviszony-létesítés][api-management-vnet-private]
 
      Megjelenik az összes olyan régióban, ahol az API Management szolgáltatás ki van építve listáját. Válasszon egy VNETET és alhálózatot minden régióhoz. A lista elkészült, a klasszikus és a Resource Manager virtuális hálózatot az Azure-előfizetésekre, amelyek a telepítő konfigurálja a régióban érhető el.
 
@@ -154,7 +154,7 @@ Az API Management-szolgáltatáspéldány egy virtuális hálózaton jöhet szó
     
     > 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32
 
-  * Az egyéb, az API Management szolgáltatás függőséggel, amelyek a kényszerített bújtatással kerül, azok az állomásnév feloldása, és keresse fel a végpontnak kell lennie. Ezek közé tartozik a
+  * A többi API Management szolgáltatás függőséggel, amelyek kényszerített bújtatással kerül az állomásnév feloldása, és keresse fel a végpontot kell lennie. Ezek közé tartozik a
       - Metrikák és állapotfigyelés
       - Az Azure portal diagnosztikai
       - SMTP-továbbítás használata

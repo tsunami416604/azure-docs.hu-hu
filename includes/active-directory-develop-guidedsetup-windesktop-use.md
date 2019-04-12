@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 0b00597deff5a498d54ffcfd9978a68e5b60c5f8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 13497c8be578990b58cd6d6524eb0e945f8619c2
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203222"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59498394"
 ---
 ## <a name="use-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Használható az MSAL egy token beszerzése a Microsoft Graph API-hoz
 
@@ -37,41 +37,47 @@ Ebben a szakaszban Ön használható az MSAL egy token beszerzése a Microsoft G
     public partial class MainWindow : Window
     {
         //Set the API Endpoint to Graph 'me' endpoint
-        string _graphAPIEndpoint = "https://graph.microsoft.com/v1.0/me";
+        string graphAPIEndpoint = "https://graph.microsoft.com/v1.0/me";
 
         //Set the scope for API call to user.read
-        string[] _scopes = new string[] { "user.read" };
+        string[] scopes = new string[] { "user.read" };
+
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Call AcquireTokenAsync - to acquire a token requiring user to sign-in
+      /// <summary>
+        /// Call AcquireToken - to acquire a token requiring user to sign-in
         /// </summary>
         private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
             AuthenticationResult authResult = null;
-
             var app = App.PublicClientApp;
             ResultText.Text = string.Empty;
             TokenInfoText.Text = string.Empty;
 
             var accounts = await app.GetAccountsAsync();
+            var firstAccount = accounts.FirstOrDefault();
 
             try
             {
-                authResult = await app.AcquireTokenSilentAsync(_scopes, accounts.FirstOrDefault());
+                authResult = await app.AcquireTokenSilent(scopes, firstAccount)
+                    .ExecuteAsync();
             }
             catch (MsalUiRequiredException ex)
             {
-                // A MsalUiRequiredException happened on AcquireTokenSilentAsync. This indicates you need to call AcquireTokenAsync to acquire a token
+                // A MsalUiRequiredException happened on AcquireTokenSilent.
+                // This indicates you need to call AcquireTokenInteractive to acquire a token
                 System.Diagnostics.Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
 
                 try
                 {
-                    authResult = await App.PublicClientApp.AcquireTokenAsync(_scopes);
+                    authResult = await app.AcquireTokenInteractive(scopes, this)
+                        .WithAccount(accounts.FirstOrDefault())
+                        .WithPrompt(Prompt.SelectAccount)
+                        .ExecuteAsync();
                 }
                 catch (MsalException msalex)
                 {
@@ -86,12 +92,11 @@ Ebben a szakaszban Ön használható az MSAL egy token beszerzése a Microsoft G
 
             if (authResult != null)
             {
-                ResultText.Text = await GetHttpContentWithToken(_graphAPIEndpoint, authResult.AccessToken);
+                ResultText.Text = await GetHttpContentWithToken(graphAPIEndpoint, authResult.AccessToken);
                 DisplayBasicTokenInfo(authResult);
                 this.SignOutButton.Visibility = Visibility.Visible;
             }
         }
-    }
     ```
 
 <!--start-collapse-->
@@ -99,21 +104,21 @@ Ebben a szakaszban Ön használható az MSAL egy token beszerzése a Microsoft G
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Hívása a `AcquireTokenAsync` módszer eredményezi egy ablak, amely felkéri a felhasználót, hogy jelentkezzen be. Alkalmazások általában felhasználóktól interaktívan jelentkezik be először egy védett erőforrás eléréséhez szükséges. Akkor is előfordulhat, hogy kell bejelentkezni, amikor egy token beszerzéséhez a beavatkozás nélküli művelet sikertelen (például, ha a felhasználó jelszava lejárt).
+Hívása a `AcquireTokenInteractive` módszer eredményezi egy ablak, amely felkéri a felhasználót, hogy jelentkezzen be. Alkalmazások általában felhasználóktól interaktívan jelentkezik be először egy védett erőforrás eléréséhez szükséges. Akkor is előfordulhat, hogy kell bejelentkezni, amikor egy token beszerzéséhez a beavatkozás nélküli művelet sikertelen (például, ha a felhasználó jelszava lejárt).
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
-A `AcquireTokenSilentAsync` metódus kezeli a token beszerzését és a megújítások felhasználói beavatkozás nélkül. Miután `AcquireTokenAsync` hajtja végre az első alkalommal `AcquireTokenSilentAsync` a szokásos módszer használatával szerezze be a jogkivonatokat, amelyeket a későbbi hívások, védett erőforrások eléréséhez, mert kérelem vagy token megújítása hívások beavatkozás nélkül.
+A `AcquireTokenSilent` metódus kezeli a token beszerzését és a megújítások felhasználói beavatkozás nélkül. Miután `AcquireTokenInteractive` hajtja végre az első alkalommal `AcquireTokenSilent` a szokásos módszer használatával szerezze be a jogkivonatokat, amelyeket a későbbi hívások, védett erőforrások eléréséhez, mert kérelem vagy token megújítása hívások beavatkozás nélkül.
 
-Végül a `AcquireTokenSilentAsync` metódus sikertelen lesz. A hiba oka lehet, hogy a felhasználó kijelentkeztetése vagy módosítani a jelszavát egy másik eszközön. Ha az MSAL észleli, hogy a probléma megoldhatók egy interaktív intézkedést kér, akkor aktiválódik egy `MsalUiRequiredException` kivétel. Az alkalmazás ehhez a kivételhez, két módon tudják kezelni:
+Végül a `AcquireTokenSilent` metódus sikertelen lesz. A hiba oka lehet, hogy a felhasználó kijelentkeztetése vagy módosítani a jelszavát egy másik eszközön. Ha az MSAL észleli, hogy a probléma megoldhatók egy interaktív intézkedést kér, akkor aktiválódik egy `MsalUiRequiredException` kivétel. Az alkalmazás ehhez a kivételhez, két módon tudják kezelni:
 
-* Azt is ellenőrizze, egy hívást kell végrehajtanunk `AcquireTokenAsync` azonnal. Ez a hívás eredménye kéri a felhasználót, hogy jelentkezzen be. Az online alkalmazások általában használják ezt a mintát, ha a felhasználó nem érhető el kapcsolat nélküli tartalom. A minta az interaktív telepítés által létrehozott követi, ebben a mintában a művelet az első alkalommal végre, a minta az is látható. 
+* Azt is ellenőrizze, egy hívást kell végrehajtanunk `AcquireTokenInteractive` azonnal. Ez a hívás eredménye kéri a felhasználót, hogy jelentkezzen be. Az online alkalmazások általában használják ezt a mintát, ha a felhasználó nem érhető el kapcsolat nélküli tartalom. A minta az interaktív telepítés által létrehozott követi, ebben a mintában a művelet az első alkalommal végre, a minta az is látható. 
 
 * Mivel a felhasználó nem használta az alkalmazás `PublicClientApp.Users.FirstOrDefault()` obsahuje hodnotu null, és a egy `MsalUiRequiredException` kivétel történt. 
 
-* A kód a minta ezután kezeli a kivételt meghívásával `AcquireTokenAsync`, aminek eredményeképpen kéri a felhasználót, hogy jelentkezzen be.
+* A kód a minta ezután kezeli a kivételt meghívásával `AcquireTokenInteractive`, aminek eredményeképpen kéri a felhasználót, hogy jelentkezzen be.
 
-* Azt is inkább jelenthet egy vizuális jelzés a felhasználók számára, amely egy interaktív bejelentkezési szükség, úgy, hogy és kiválaszthatja a megfelelő időben való bejelentkezéshez. Vagy az alkalmazás megpróbálhatja `AcquireTokenSilentAsync` később. Ezt a mintát gyakran használják, amikor a felhasználók használhatják más színvonalának – az alkalmazás funkciói például, ha offline tartalom érhető el az alkalmazást. Ebben az esetben felhasználók megadhatja, hogy szeretne hozzáférni a védett erőforrásokhoz, vagy frissítse az elavult adatokat. Másik lehetőségként az alkalmazás dönt, hogy újra `AcquireTokenSilentAsync` Ha visszaállítja a hálózat elvégzése után átmenetileg nem érhető el.
+* Azt is inkább jelenthet egy vizuális jelzés a felhasználók számára, amely egy interaktív bejelentkezési szükség, úgy, hogy és kiválaszthatja a megfelelő időben való bejelentkezéshez. Vagy az alkalmazás megpróbálhatja `AcquireTokenSilent` később. Ezt a mintát gyakran használják, amikor a felhasználók használhatják más színvonalának – az alkalmazás funkciói például, ha offline tartalom érhető el az alkalmazást. Ebben az esetben felhasználók megadhatja, hogy szeretne hozzáférni a védett erőforrásokhoz, vagy frissítse az elavult adatokat. Másik lehetőségként az alkalmazás dönt, hogy újra `AcquireTokenSilent` Ha visszaállítja a hálózat elvégzése után átmenetileg nem érhető el.
 <!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>A Microsoft Graph API meghívása éppen megszerzett jogkivonattal használatával
@@ -205,7 +210,6 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
     {
         TokenInfoText.Text += $"Username: {authResult.Account.Username}" + Environment.NewLine;
         TokenInfoText.Text += $"Token Expires: {authResult.ExpiresOn.ToLocalTime()}" + Environment.NewLine;
-        TokenInfoText.Text += $"Access Token: {authResult.AccessToken}" + Environment.NewLine;
     }
 }
 ```

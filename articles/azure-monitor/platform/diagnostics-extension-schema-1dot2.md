@@ -9,19 +9,19 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 1ffeab91933bfcba9f3ffa0b557e849a1e6890f5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: dae74e730d6e175fa3e447150adce4caecd3d7a3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486155"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496488"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Az Azure Diagnostics 1.2-es konfigurációs séma
 > [!NOTE]
 > Az Azure Diagnostics az a komponens, teljesítményszámlálók és más statisztikák gyűjtését az Azure Virtual Machines, Virtual Machine Scale Sets, Service Fabric és Cloud Services segítségével.  Ez a lap csak akkor jelentősége, ha ezek a szolgáltatások valamelyikét használja.
 >
 
-Egyéb Microsoft-diagnosztika termékek, mint az Azure Monitor az Application Insights és a Log Analytics az Azure Diagnostics használnak.
+Egyéb Microsoft-diagnosztikai termékek, mint az Azure Monitor, amely magában foglalja az Application Insights és a Log Analytics az Azure Diagnostics használnak.
 
 Ebben a sémában a lehetséges értékek inicializálása a diagnosztikai beállításokat a diagnosztikai figyelő indításakor segítségével határozza meg.  
 
@@ -99,7 +99,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Elem neve|Leírás|  
 |------------------|-----------------|  
 |**WadCfg**|Kötelező. Konfigurációs beállításait a telemetriai adatokat gyűjteni.|  
-|**StorageAccount**|Az adatok tárolásához Azure Storage-fiók neve. Ez is megadható paramétert a Set-AzureServiceDiagnosticsExtension parancsmag végrehajtása közben.|  
+|**Tárfiók**|Az adatok tárolásához Azure Storage-fiók neve. Ez is megadható paramétert a Set-AzureServiceDiagnosticsExtension parancsmag végrehajtása közben.|  
 |**LocalResourceDirectory**|A könyvtár a virtuális gép által a Monitoring Agent eseményadatok tárolására használható. Ha nem, az alapértelmezett címtár használatos:<br /><br /> Feldolgozói/webes szerepkör: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Egy virtuális géphez: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Szükséges attribútumok a következők:<br /><br /> -                      **elérési út** – a rendszer az Azure Diagnostics által használandó könyvtárába.<br /><br /> -                      **expandEnvironment** – azt szabályozza, hogy környezeti változókat az elérési útban bontva.|  
 
 ## <a name="wadcfg-element"></a>WadCFG Element  
@@ -110,9 +110,9 @@ A telemetriai adatokat gyűjteni konfigurációs beállításait határozza meg.
 |**DiagnosticMonitorConfiguration**|Kötelező. Nem kötelező attribútumok a következők:<br /><br /> -                     **overallQuotaInMB** – Azure Diagnostics által gyűjtött lehet használni a diagnosztikai adatok különböző típusú helyi lemezterület maximális mennyisége. Az alapértelmezett érték 5120MB.<br /><br /> -                     **useProxyServer** – a proxykiszolgáló beállításait használatára beállított, az Internet Explorer beállításainak konfigurálása az Azure Diagnostics.|  
 |**CrashDumps**|Összeomlási memóriaképek gyűjtésének engedélyezéséhez. Nem kötelező attribútumok a következők:<br /><br /> -                     **containerName** – az összeomlási memóriaképek tárolásához használt Azure Storage-fiókját a blobtároló nevét.<br /><br /> -                     **crashDumpType** – Azure Diagnostics konfigurálja a gyűjtendő Mini vagy teljes összeomlási memóriaképek.<br /><br /> -                     **directoryQuotaPercentage**– konfigurálja a százalékos arányát **overallQuotaInMB** kell lefoglalni, az összeomlási memóriaképek a virtuális gépen.|  
 |**DiagnosticInfrastructureLogs**|Azure Diagnostics által létrehozott naplók gyűjtésének engedélyezéséhez. A diagnosztikai infrastruktúra naplói hasznosak hibáinak elhárítása a diagnosztikai rendszer magát. Nem kötelező attribútumok a következők:<br /><br /> -                     **scheduledTransferLogLevelFilter** – konfigurálja a gyűjtött naplók minimális súlyossági szintje.<br /><br /> -                     **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
-|**Címtárak**|Lehetővé teszi a tartalmát egy könyvtárat, az IIS nem sikerült hozzáférést kérelmekről készült naplók és/vagy IIS-naplók gyűjtését. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**Könyvtárak**|Lehetővé teszi a tartalmát egy könyvtárat, az IIS nem sikerült hozzáférést kérelmekről készült naplók és/vagy IIS-naplók gyűjtését. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**EtwProviders**|Konfigurálja az ETW-események az eseményforrás gyűjteménye, illetve az ETW-jegyzékfájl-alapú szolgáltatók.|  
-|**Metrikák**|Ez az elem lehetővé teszi, hogy hozzon létre egy számláló teljesítménytáblája, amely gyors lekérdezéseket van optimalizálva. Minden egyes megadott teljesítményszámláló a **PerformanceCounters** elem a metrikák tábla mellett a teljesítményszámláló tábla tárolja. Kötelező attribútum:<br /><br /> **erőforrás-azonosító** – Ez az erőforrás-Azonosítóját a virtuális gép az Azure Diagnostics telepítésekor. Első a **resourceID** származó a [az Azure portal](https://portal.azure.com). Válassza ki **Tallózás** -> **erőforráscsoportok** -> **< név\>**. Kattintson a **tulajdonságok** csempére, és másolja az értéket a **azonosító** mező.|  
+|**Mérőszámok**|Ez az elem lehetővé teszi, hogy hozzon létre egy számláló teljesítménytáblája, amely gyors lekérdezéseket van optimalizálva. Minden egyes megadott teljesítményszámláló a **PerformanceCounters** elem a metrikák tábla mellett a teljesítményszámláló tábla tárolja. Kötelező attribútum:<br /><br /> **erőforrás-azonosító** – Ez az erőforrás-Azonosítóját a virtuális gép az Azure Diagnostics telepítésekor. Első a **resourceID** származó a [az Azure portal](https://portal.azure.com). Válassza ki **Tallózás** -> **erőforráscsoportok** -> **< név\>**. Kattintson a **tulajdonságok** csempére, és másolja az értéket a **azonosító** mező.|  
 |**PerformanceCounters**|Lehetővé teszi a teljesítményszámláló-gyűjtemény. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus".](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**WindowsEventLog**|Lehetővé teszi, hogy a gyűjtemény Windows eseménynaplók. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus".](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 
@@ -192,7 +192,7 @@ A telemetriai adatokat gyűjteni konfigurációs beállításait határozza meg.
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**annotation**|Kötelező attribútum:<br /><br /> **displayName** – Ez a számláló megjelenített neve<br /><br /> Nem kötelező attribútum:<br /><br /> **területi beállítás** – a területi beállítása során használatos évformátum meghatározása a számláló neve|  
+|**Jegyzet**|Kötelező attribútum:<br /><br /> **displayName** – Ez a számláló megjelenített neve<br /><br /> Nem kötelező attribútum:<br /><br /> **területi beállítás** – a területi beállítása során használatos évformátum meghatározása a számláló neve|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element  
  A következő táblázat ismerteti a gyermekelemek:  

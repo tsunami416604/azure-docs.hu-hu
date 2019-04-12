@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: d6c46d6ebfa8ae44c9bfac4929d3478f6701758a
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497839"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500141"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Üzenet-munkamenetek: az első, először ki (FIFO) 
 
@@ -51,7 +51,7 @@ Munkamenetek biztosítanak egyidejű megszüntetéséhez multiplexálási kihagy
 
 A [lehívása](/dotnet/api/microsoft.servicebus.messaging.messagesession) fogadó által az ügyfél elfogadja a munkamenet jön létre. Az ügyfél hívásai [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) vagy [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) C#-ban. A munkamenet-kezelő regisztrálja a reaktív jellegű visszahívási modellben.
 
-Ha a [lehívása](/dotnet/api/microsoft.servicebus.messaging.messagesession) objektum elfogadása és a egy ügyfél birtokában van, amíg, hogy az ügyfél rendelkezik-e az adott munkamenet összes üzenetet a kizárólagos zárolást [SessionId](/en-us/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) , amely létezik, az üzenetsorban vagy előfizetésben, és Emellett az összes üzenet az adott **SessionId** , amely továbbra is érkeznek, míg tartott.
+Ha a [lehívása](/dotnet/api/microsoft.servicebus.messaging.messagesession) objektum elfogadása és a egy ügyfél birtokában van, amíg, hogy az ügyfél rendelkezik-e az adott munkamenet összes üzenetet a kizárólagos zárolást [SessionId](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) , amely létezik, az üzenetsorban vagy előfizetésben, és Emellett az összes üzenet az adott **SessionId** , amely továbbra is érkeznek, míg tartott.
 
 Akkor szabadul fel, a zárolás amikor **bezárásához** vagy **CloseAsync** nevezzük, vagy a zárolás lejáratának azokban az esetekben, ahol az alkalmazás nem tudja, zárja be a művelet végrehajtásához. A munkamenet zárolást például kizárólagos zárolást egy fájlon, ami azt jelenti, hogy az alkalmazás zárja be a a munkamenet, amint azt már nem kell azt és/vagy nem vár semmilyen további üzenetek kell kezelni.
 
@@ -84,7 +84,7 @@ A munkamenet-állapot tartott egy üzenetsorban vagy az előfizetés felé szám
 
 További információ a Service Bus-üzenetkezelés, tekintse meg a következő témaköröket:
 
-* [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)
+* [Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)](service-bus-queues-topics-subscriptions.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
 * [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 

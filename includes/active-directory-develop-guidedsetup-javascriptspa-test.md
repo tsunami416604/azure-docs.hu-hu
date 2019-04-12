@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: bb73f58c5dca5e49cdb075b046f883ffeb77c95c
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: c13c9ece54d512adf271532a4ac17876a88d733e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203319"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503043"
 ---
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
@@ -35,7 +35,7 @@ Ha nem használ a Visual Studióban, győződjön meg arról, a webalkalmazás-k
     ```
 1. Nyissa meg a böngészőt, és írja be a http://<span></span>localhost:30662 vagy a http://<span></span>localhost: {port} ahol **port** a kiszolgáló figyel a portot. Megjelenik az index.html fájlt, és a **bejelentkezés** gombra.
 
-<p/><!-- -->
+<p><!-- -->
 
 ### <a name="test-with-visual-studio"></a>A Visual Studióval tesztelése
 
@@ -43,7 +43,7 @@ Ha a Visual Studio használata esetén ügyeljen arra, hogy válassza ki a proje
 
 ## <a name="test-your-application"></a>Az alkalmazás tesztelése
 
-Kattintson a böngésző az index.html fájlt betölt, miután **bejelentkezés**. A rendszer felkéri jelentkezzen be a Microsoft Azure Active Directory (Azure AD) v2.0-végpont:
+Kattintson a böngésző az index.html fájlt betölt, miután **bejelentkezés**. Jelentkezzen be a Microsoft identity platform végpont kéri:
 
 ![Jelentkezzen be a JavaScript SPA-fiók](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

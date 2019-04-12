@@ -1,6 +1,6 @@
 ---
-title: Az Azure-on Előzetesben Sentinel-Office 365-adatok gyűjtése |} A Microsoft Docs
-description: Ismerje meg, hogyan gyűjtheti az Office 365-adatokat az Azure-Sentinel.
+title: Office 365-adatokhoz csatlakozhat az Azure-on Előzetesben Sentinel-|} A Microsoft Docs
+description: Ismerje meg, hogyan Azure Sentinel-Office 365-adatokhoz csatlakozhat.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: ad501958a5f88c821e48a3e21f69a960160b3c8e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 77587b0b7506ef0ccadbeb6d1f010f5b6a72d93e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574858"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495190"
 ---
-# <a name="collect-data-from-office-365-logs"></a>Adatokat gyűjteni az Office 365-naplók
+# <a name="connect-data-from-office-365-logs"></a>Adatok csatlakoztatása az Office 365-naplók
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
@@ -33,11 +33,11 @@ A vizsgálati naplók streamelheti [Office 365](https://docs.microsoft.com/offic
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A bérlő kell lennie egy globális rendszergazdai vagy biztonsági rendszergazda
-- A számítógépen, amelyről jelentkezett be a kapcsolat létrehozása az Azure Sentinel-gyártmányú suretha port 4433 a webes forgalom nyitva.
+- A számítógépen, amelyről jelentkezett be Azure Sentinel-hozhat létre a kapcsolatot, győződjön meg arról, hogy port 4433 nyissa meg a webes forgalom.
 
 ## <a name="connect-to-office-365"></a>Csatlakozás az Office 365-höz
 
-1. Az Azure-Sentinel, válassza **adatgyűjtés** és kattintson a **Office 365** csempére.
+1. Az Azure-Sentinel, válassza **adatösszekötők** és kattintson a **Office 365** csempére.
 
 2. Ha Ön még nem engedélyezte, a **kapcsolat** használja a **engedélyezése** gomb az Office 365-megoldások engedélyezéséhez való. Ha már engedélyezve lett, akkor azonosítja, a kapcsolat képernyő szerint már engedélyezve van.
 1. Az Office 365 lehetővé teszi adatok streamelése az Azure-Sentinel több bérlő. Minden bérlő, amelyhez csatlakozni kíván, adja hozzá a bérlő **bérlők kapcsolódni az Azure-Sentinel**. 

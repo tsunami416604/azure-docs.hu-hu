@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: 801294241f399097d363dd8dc2682f158c0bf2cc
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 82b533f7293e00469a5b92b02e8d58967379a585
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358281"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59497066"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra
 
@@ -40,9 +40,9 @@ Felügyelt példány az platform szolgáltatásajánlatként (PaaS). A Microsoft
 
 Bizonyos felhasználók vagy alkalmazások által indított tevékenységek szükség lehet az SQL Server-példányt a identitásplatformmal felügyelt. Egy eset létrehozása egy felügyelt példány adatbázisa. Ezt az erőforrást az Azure portal, PowerShell, az Azure CLI és a REST API használatával van közzétéve.
 
-Felügyelt példányok Azure-szolgáltatások például a biztonsági másolatokat az Azure Storage, Azure Service Bus telemetriához, Azure Active Directory hitelesítést és az Azure Key Vault függ a transzparens adattitkosítás (TDE). A felügyelt példányok kapcsolat ezeket a szolgáltatásokat.
+Felügyelt példány függ, például az Azure Storage biztonsági mentésekhez, telemetriai adatokat az Azure Event Hubs, Azure Active Directory-hitelesítéshez, az Azure Key Vault transzparens adattitkosítási (TDE) az Azure-szolgáltatások, valamint néhány biztosító Azure platformszolgáltatások kereslettől és a biztonsági funkciók. A felügyelt példányok lehetővé teszi, hogy ezek a szolgáltatások kapcsolatokat.
 
-Minden kommunikáció titkosítási és aláírási tanúsítványokat használja. Ellenőrizze a megbízhatósága kommunikáció feleket, felügyelt példányok folyamatosan ellenőrizze ezeket a tanúsítványokat kapcsolatba lép a hitelesítésszolgáltató. Ha a tanúsítványok visszavonódnak, vagy nem lehet ellenőrizni, a következő felügyelt példányt bezárja a kapcsolatokat, az adatok védelme érdekében.
+Minden kommunikáció titkosított, és a regisztrált tanúsítványok használatával. Ellenőrizze a megbízhatósága kommunikáció feleket, felügyelt példányok folyamatosan ellenőrizze-e tanúsítvány-visszavonási listák révén ezek a tanúsítványok. Ha a tanúsítványok visszavonódnak, a következő felügyelt példányt bezárja a kapcsolatokat, az adatok védelme érdekében.
 
 ## <a name="high-level-connectivity-architecture"></a>Magas szintű kapcsolati architektúra
 
@@ -50,7 +50,7 @@ Magas szinten a felügyelt példány egy szolgáltatás-összetevők. Ezek az ö
 
 Virtuális fürt több felügyelt példányt is üzemeltethet. Szükség esetén a fürt automatikusan bontja ki, vagy csökken, amikor az ügyfél megváltoztatja az alhálózat üzembe helyezett példányok száma.
 
-Ügyfélalkalmazások csatlakozhat a felügyelt példány, és lekérdezheti, és a frissítés adatbázisok csak akkor, ha a virtuális hálózaton belül futnak társviszonyban álló virtuális hálózati vagy VPN- vagy Azure ExpressRoute által csatlakoztatott hálózat. Ezt a hálózatot a végpont és a egy magánhálózati IP-címet kell használnia.  
+Ügyfélalkalmazások csatlakozhat a felügyelt példányok és is lekérdezése és a virtuális hálózat társviszonyban lévő virtuális hálózaton belüli adatbázisok frissítése vagy VPN- vagy Azure ExpressRoute által csatlakoztatott hálózat. Ezt a hálózatot a végpont és a egy magánhálózati IP-címet kell használnia.  
 
 ![kapcsolati architektúra ábrája](./media/managed-instance-connectivity-architecture/connectivityarch002.png)
 
@@ -80,14 +80,14 @@ A Microsoft egy felügyeleti végpont használatával kezeli a következő felü
 Ha a kapcsolatok indítsa el a következő felügyelt példányt belül (a biztonsági mentések és a vizsgálati naplók), forgalom jelenik meg, a felügyeleti végponthoz nyilvános IP-címről indított el. Hozzáférés korlátozható nyilvános szolgáltatásokhoz a felügyelt példány csak a felügyelt példány IP-cím tűzfalszabályokban beállításával. További információkért lásd: [beépített tűzfal a felügyelt példány ellenőrzése](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
 
 > [!NOTE]
-> Ellentétben a tűzfalon belül a felügyelt példány induló kapcsolatok az Azure-szolgáltatások, amelyek a felügyelt példány-régión belül van egy tűzfal, amely a forgalmat, amely a szolgáltatás közötti van optimalizálva.
+> Traffice, amely az Azure-szolgáltatások, amelyek a felügyelt példány-régión belül van optimalizálva, és ehhez az okból nem gelt manged példány felügyeleti végpont nyilvános IP-címre. Éppen ezért, ha szeretné használni az IP-alapú tűzfalszabályokat, leggyakrabban a storage, service kell lennie a felügyelt példány egy másik régióban.
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
 A virtuális hálózaton belüli kijelölt alhálózatot a felügyelt példány üzembe helyezése. Az alhálózat a következő jellemzőkkel kell rendelkeznie:
 
 - **Kijelölt alhálózatot:** A felügyelt példány alhálózatára bármely más felhőalapú szolgáltatás, amely rendelkezik társított nem tartalmazhat, és nem lehet egy átjáró-alhálózatot. Az alhálózat nem tartalmazhat bármilyen erőforrás, de a következő felügyelt példányt, és később az alhálózat nem adható hozzá erőforrásokat.
-- **Hálózati biztonsági csoport (NSG):** A virtuális hálózathoz társított NSG-t meg kell határoznia [bejövő biztonsági szabályok](#mandatory-inbound-security-rules) és [kimenő biztonsági szabályok](#mandatory-outbound-security-rules) előtt egyéb szabályok. Az NSG-KET segítségével férhet hozzá a felügyelt példány adatok végpont 1433-as porton a kimenő forgalmának szűrésével.
+- **Hálózati biztonsági csoport (NSG):** A virtuális hálózathoz társított NSG-t meg kell határoznia [bejövő biztonsági szabályok](#mandatory-inbound-security-rules) és [kimenő biztonsági szabályok](#mandatory-outbound-security-rules) előtt egyéb szabályok. Az NSG-KET segítségével férhet hozzá a felügyelt példány adatok végpont 1433-as porton a kimenő forgalmának szűrésével, és portok 11000-11999, ha a felügyelt példány van konfigurálva átirányítja a kapcsolatokat.
 - **Felhasználó által megadott útvonal (UDR) tábla:** Adott tartalmaznia kell a virtuális hálózathoz társított UDR tábla [bejegyzések](#user-defined-routes).
 - **Nincsenek Szolgáltatásvégpontok:** Nem service-végpont a felügyelt példány alhálózatára társítva kell lennie. Győződjön meg arról, hogy a szolgáltatás-végpontok lehetőség le van tiltva a virtuális hálózat létrehozásakor.
 - **Elegendő IP-címek:** A felügyelt példány alhálózatára rendelkeznie kell legalább 16 IP-címet. Az ajánlott minimális érték 32 IP-címeket. További információkért lásd: [határozza meg a felügyelt példányok alhálózat méretét](sql-database-managed-instance-determine-size-vnet-subnet.md). Telepíthet a felügyelt példányok [a meglévő hálózat](sql-database-managed-instance-configure-vnet-subnet.md) után konfigurálja, hogy eleget [a hálózati követelmények a felügyelt példányokhoz](#network-requirements). Máskülönben hozzon létre egy [új hálózatot és alhálózatot](sql-database-managed-instance-create-vnet-subnet.md).
@@ -99,19 +99,19 @@ A virtuális hálózaton belüli kijelölt alhálózatot a felügyelt példány 
 
 | Name (Név)       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |Bármelyik        |Engedélyezés |
-|mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |Bármelyik        |Engedélyezés |
-|health_probe|Bármelyik                         |Bármelyik     |AzureLoadBalancer|Bármelyik        |Engedélyezés |
+|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
+|mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
+|health_probe|Bármelyik                         |Bármelyik     |AzureLoadBalancer|MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok
 
 | Name (Név)       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
-|felügyelet  |80, 443, 12000|TCP     |Bármelyik              |AzureCloud  |Engedélyezés |
-|mi_subnet   |Bármelyik           |Bármelyik     |Bármelyik              |MI ALHÁLÓZATI *  |Engedélyezés |
+|felügyelet  |80, 443, 12000|TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
+|mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 
 > [!IMPORTANT]
-> Győződjön meg arról, 9003, csak egy bejövő szabály a portok 9000, nincs 1438, 1440, 1452 és a egy kimenő szabály, a 80-as, 443-as, 12000 portokat. Felügyelt példány üzembe helyezés ARM üzemelő példányok sikertelen lesz, ha a bemeneti és kimeneti szabályok a az egyes portok külön-külön vannak konfigurálva. Ha ezek a portok külön szabályokat, a telepítés meghiúsul, hibakód: `VnetSubnetConflictWithIntendedPolicy`
+> Győződjön meg arról, 9003, csak egy bejövő szabály a portok 9000, nincs 1438, 1440, 1452 és a egy kimenő szabály, a 80-as, 443-as, 12000 portokat. A felügyelt példány kiépítése az Azure Resource Manager üzembe helyezések meghiúsulnak, ha a bemeneti és kimeneti szabályok a az egyes portok külön-külön vannak konfigurálva. Ha ezek a portok külön szabályokat, a telepítés meghiúsul, hibakód: `VnetSubnetConflictWithIntendedPolicy`
 
 \* MI ALHÁLÓZAT az IP-címtartományt az űrlap 10.x.x.x/y alhálózat hivatkozik. Ezt az információt találja az Azure Portalon, az alhálózat tulajdonságait.
 
@@ -124,43 +124,111 @@ A virtuális hálózaton belüli kijelölt alhálózatot a felügyelt példány 
 
 |Name (Név)|Címelőtag|Következő ugrás|
 |----|--------------|-------|
-|subnet_to_vnetlocal|[mi_subnet]|Virtuális hálózat|
-|mi-0-5-next-hop-internet|0.0.0.0/5|Internet|
-|mi-11-8-nexthop-internet|11.0.0.0/8|Internet|
-|mi-12-6-nexthop-internet|12.0.0.0/6|Internet|
-|mi-128-3-nexthop-internet|128.0.0.0/3|Internet|
-|mi-16-4-nexthop-internet|16.0.0.0/4|Internet|
-|mi-160-5-nexthop-internet|160.0.0.0/5|Internet|
-|mi-168-6-nexthop-internet|168.0.0.0/6|Internet|
-|mi-172-12-nexthop-internet|172.0.0.0/12|Internet|
-|mi-172-128-9-nexthop-internet|172.128.0.0/9|Internet|
-|mi-172-32-11-nexthop-internet|172.32.0.0/11|Internet|
-|mi-172-64-10-nexthop-internet|172.64.0.0/10|Internet|
-|mi-173-8-nexthop-internet|173.0.0.0/8|Internet|
-|mi-174-7-nexthop-internet|174.0.0.0/7|Internet|
-|mi-176-4-nexthop-internet|176.0.0.0/4|Internet|
-|mi-192-128-11-nexthop-internet|192.128.0.0/11|Internet|
-|mi-192-160-13-nexthop-internet|192.160.0.0/13|Internet|
-|mi-192-169-16-nexthop-internet|192.169.0.0/16|Internet|
-|mi-192-170-15-nexthop-internet|192.170.0.0/15|Internet|
-|mi-192-172-14-nexthop-internet|192.172.0.0/14|Internet|
-|mi-192-176-12-nexthop-internet|192.176.0.0/12|Internet|
-|mi-192-192-10-nexthop-internet|192.192.0.0/10|Internet|
-|mi-192-9-nexthop-internet|192.0.0.0/9|Internet|
-|mi-193-8-nexthop-internet|193.0.0.0/8|Internet|
-|mi-194-7-nexthop-internet|194.0.0.0/7|Internet|
-|mi-196-6-nexthop-internet|196.0.0.0/6|Internet|
-|mi-200-5-nexthop-internet|200.0.0.0/5|Internet|
-|mi-208-4-nexthop-internet|208.0.0.0/4|Internet|
-|mi-224-3-nexthop-internet|224.0.0.0/3|Internet|
-|mi-32-3-nexthop-internet|32.0.0.0/3|Internet|
-|mi-64-2-nexthop-internet|64.0.0.0/2|Internet|
-|mi-8-7-nexthop-internet|8.0.0.0/7|Internet|
+|subnet_to_vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
+|mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
+|mi-13-96-13-nexthop-internet|13.96.0.0/13|Internet|
+|mi-13-104-14-nexthop-internet|13.104.0.0/14|Internet|
+|mi-20-8-nexthop-internet|20.0.0.0/8|Internet|
+|mi-23-96-13-nexthop-internet|23.96.0.0/13|Internet|
+|mi-40-64-10-nexthop-internet|40.64.0.0/10|Internet|
+|mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
+|mi-51-8-nexthop-internet|51.0.0.0/8|Internet|
+|mi-52-8-nexthop-internet|52.0.0.0/8|Internet|
+|mi-64-4-18-nexthop-internet|64.4.0.0/18|Internet|
+|mi-65-52-14-nexthop-internet|65.52.0.0/14|Internet|
+|mi-66-119-144-20-nexthop-internet|66.119.144.0/20|Internet|
+|mi-70-37-17-nexthop-internet|70.37.0.0/17|Internet|
+|mi-70-37-128-18-nexthop-internet|70.37.128.0/18|Internet|
+|mi-91-190-216-21-nexthop-internet|91.190.216.0/21|Internet|
+|mi-94-245-64-18-nexthop-internet|94.245.64.0/18|Internet|
+|mi-103-9-8-22-nexthop-internet|103.9.8.0/22|Internet|
+|mi-103-25-156-22-nexthop-internet|103.25.156.0/22|Internet|
+|mi-103-36-96-22-nexthop-internet|103.36.96.0/22|Internet|
+|mi-103-255-140-22-nexthop-internet|103.255.140.0/22|Internet|
+|mi-104-40-13-nexthop-internet|104.40.0.0/13|Internet|
+|mi-104-146-15-nexthop-internet|104.146.0.0/15|Internet|
+|mi-104-208-13-nexthop-internet|104.208.0.0/13|Internet|
+|mi-111-221-16-20-nexthop-internet|111.221.16.0/20|Internet|
+|mi-111-221-64-18-nexthop-internet|111.221.64.0/18|Internet|
+|mi-129-75-16-nexthop-internet|129.75.0.0/16|Internet|
+|mi-131-253-16-nexthop-internet|131.253.0.0/16|Internet|
+|mi-132-245-16-nexthop-internet|132.245.0.0/16|Internet|
+|mi-134-170-16-nexthop-internet|134.170.0.0/16|Internet|
+|mi-134-177-16-nexthop-internet|134.177.0.0/16|Internet|
+|mi-137-116-15-nexthop-internet|137.116.0.0/15|Internet|
+|mi-137-135-16-nexthop-internet|137.135.0.0/16|Internet|
+|mi-138-91-16-nexthop-internet|138.91.0.0/16|Internet|
+|mi-138-196-16-nexthop-internet|138.196.0.0/16|Internet|
+|mi-139-217-16-nexthop-internet|139.217.0.0/16|Internet|
+|mi-139-219-16-nexthop-internet|139.219.0.0/16|Internet|
+|mi-141-251-16-nexthop-internet|141.251.0.0/16|Internet|
+|mi-146-147-16-nexthop-internet|146.147.0.0/16|Internet|
+|mi-147-243-16-nexthop-internet|147.243.0.0/16|Internet|
+|mi-150-171-16-nexthop-internet|150.171.0.0/16|Internet|
+|mi-150-242-48-22-nexthop-internet|150.242.48.0/22|Internet|
+|mi-157-54-15-nexthop-internet|157.54.0.0/15|Internet|
+|mi-157-56-14-nexthop-internet|157.56.0.0/14|Internet|
+|mi-157-60-16-nexthop-internet|157.60.0.0/16|Internet|
+|mi-167-220-16-nexthop-internet|167.220.0.0/16|Internet|
+|mi-168-61-16-nexthop-internet|168.61.0.0/16|Internet|
+|mi-168-62-15-nexthop-internet|168.62.0.0/15|Internet|
+|mi-191-232-13-nexthop-internet|191.232.0.0/13|Internet|
+|mi-192-32-16-nexthop-internet|192.32.0.0/16|Internet|
+|mi-192-48-225-24-nexthop-internet|192.48.225.0/24|Internet|
+|mi-192-84-159-24-nexthop-internet|192.84.159.0/24|Internet|
+|mi-192-84-160-23-nexthop-internet|192.84.160.0/23|Internet|
+|mi-192-100-102-24-nexthop-internet|192.100.102.0/24|Internet|
+|mi-192-100-103-24-nexthop-internet|192.100.103.0/24|Internet|
+|mi-192-197-157-24-nexthop-internet|192.197.157.0/24|Internet|
+|mi-193-149-64-19-nexthop-internet|193.149.64.0/19|Internet|
+|mi-193-221-113-24-nexthop-internet|193.221.113.0/24|Internet|
+|mi-194-69-96-19-nexthop-internet|194.69.96.0/19|Internet|
+|mi-194-110-197-24-nexthop-internet|194.110.197.0/24|Internet|
+|mi-198-105-232-22-nexthop-internet|198.105.232.0/22|Internet|
+|mi-198-200-130-24-nexthop-internet|198.200.130.0/24|Internet|
+|mi-198-206-164-24-nexthop-internet|198.206.164.0/24|Internet|
+|mi-199-60-28-24-nexthop-internet|199.60.28.0/24|Internet|
+|mi-199-74-210-24-nexthop-internet|199.74.210.0/24|Internet|
+|mi-199-103-90-23-nexthop-internet|199.103.90.0/23|Internet|
+|mi-199-103-122-24-nexthop-internet|199.103.122.0/24|Internet|
+|mi-199-242-32-20-nexthop-internet|199.242.32.0/20|Internet|
+|mi-199-242-48-21-nexthop-internet|199.242.48.0/21|Internet|
+|mi-202-89-224-20-nexthop-internet|202.89.224.0/20|Internet|
+|mi-204-13-120-21-nexthop-internet|204.13.120.0/21|Internet|
+|mi-204-14-180-22-nexthop-internet|204.14.180.0/22|Internet|
+|mi-204-79-135-24-nexthop-internet|204.79.135.0/24|Internet|
+|mi-204-79-179-24-nexthop-internet|204.79.179.0/24|Internet|
+|mi-204-79-181-24-nexthop-internet|204.79.181.0/24|Internet|
+|mi-204-79-188-24-nexthop-internet|204.79.188.0/24|Internet|
+|mi-204-79-195-24-nexthop-internet|204.79.195.0/24|Internet|
+|mi-204-79-196-23-nexthop-internet|204.79.196.0/23|Internet|
+|mi-204-79-252-24-nexthop-internet|204.79.252.0/24|Internet|
+|mi-204-152-18-23-nexthop-internet|204.152.18.0/23|Internet|
+|mi-204-152-140-23-nexthop-internet|204.152.140.0/23|Internet|
+|mi-204-231-192-24-nexthop-internet|204.231.192.0/24|Internet|
+|mi-204-231-194-23-nexthop-internet|204.231.194.0/23|Internet|
+|mi-204-231-197-24-nexthop-internet|204.231.197.0/24|Internet|
+|mi-204-231-198-23-nexthop-internet|204.231.198.0/23|Internet|
+|mi-204-231-200-21-nexthop-internet|204.231.200.0/21|Internet|
+|mi-204-231-208-20-nexthop-internet|204.231.208.0/20|Internet|
+|mi-204-231-236-24-nexthop-internet|204.231.236.0/24|Internet|
+|mi-205-174-224-20-nexthop-internet|205.174.224.0/20|Internet|
+|mi-206-138-168-21-nexthop-internet|206.138.168.0/21|Internet|
+|mi-206-191-224-19-nexthop-internet|206.191.224.0/19|Internet|
+|mi-207-46-16-nexthop-internet|207.46.0.0/16|Internet|
+|mi-207-68-128-18-nexthop-internet|207.68.128.0/18|Internet|
+|mi-208-68-136-21-nexthop-internet|208.68.136.0/21|Internet|
+|mi-208-76-44-22-nexthop-internet|208.76.44.0/22|Internet|
+|mi-208-84-21-nexthop-internet|208.84.0.0/21|Internet|
+|mi-209-240-192-19-nexthop-internet|209.240.192.0/19|Internet|
+|mi-213-199-128-18-nexthop-internet|213.199.128.0/18|Internet|
+|mi-216-32-180-22-nexthop-internet|216.32.180.0/22|Internet|
+|mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
 ||||
 
 Emellett bejegyzést adhat hozzá az útvonaltáblát irányíthatja a forgalmat, amely rendelkezik a helyszíni privát IP-címtartományok a célhelyet a virtuális hálózati átjáró vagy a virtuális hálózati berendezésre (NVA) keresztül.
 
-Ha a virtuális hálózat egy egyéni DNS tartalmaz, adja hozzá az Azure rekurzív feloldó IP-címet (például a 168.63.129.16) egy bejegyzés. További információkért lásd: [beállítása egy egyéni DNS](sql-database-managed-instance-custom-dns.md). Az egyéni DNS-kiszolgáló a gazdagépnevekhez ezekből a tartományokból és azok altartományok képesnek kell lennie: *microsoft.com*, *windows.net*, *windows.com*,  *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, és *microsoftonline-p.com*.
+Ha a virtuális hálózat egy egyéni DNS tartalmaz, az egyéni DNS-kiszolgáló kell tudni oldania az állomásneveket \*. core.windows.net zóna. További funkciók használatával, mint az Azure AD-hitelesítés lehet szükség további teljes tartománynevek feloldását. További információkért lásd: [beállítása egy egyéni DNS](sql-database-managed-instance-custom-dns.md).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -171,4 +239,4 @@ Ha a virtuális hálózat egy egyéni DNS tartalmaz, adja hozzá az Azure rekurz
   - Az a [az Azure portal](sql-database-managed-instance-get-started.md).
   - Használatával [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md).
   - Használatával [Azure Resource Manager-sablon](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
-  - Használatával [egy Azure Resource Manager-sablon (használatával a jumpboxba, vagyis az ssms-ben szereplő)](https://portal.azure.com/).
+  - Használatával [egy Azure Resource Manager-sablon (használatával a jumpboxba, vagyis az ssms-ben szereplő)](https://portal.azure.com/). 

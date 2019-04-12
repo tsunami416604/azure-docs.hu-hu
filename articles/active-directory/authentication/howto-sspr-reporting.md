@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53140c7b02dd657036b76db0dd137bd770d97f4d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 49b247338bbb1f20082fdef2a2bc291fb6183b10
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369530"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493059"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Jelentéskészítési lehetőségek az Azure AD-jelszókezelés
 
@@ -118,7 +118,7 @@ Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 
 * **A tevékenység leírása**: Azt jelzi, hogy a rendszergazda végzett jelszó-visszaállításra, az Azure Portalról egy felhasználó nevében.
-* **Tevékenység aktor**: A rendszergazda, aki a jelszó-visszaállítást egy másik felhasználó vagy rendszergazda nevében végrehajtani. Kell lennie, vagy egy globális rendszergazdai, jelszókezelő, felhasználói rendszergazdája vagy ügyfélszolgálati adminisztrátor.
+* **Tevékenység aktor**: A rendszergazda, aki a jelszó-visszaállítást egy másik felhasználó vagy rendszergazda nevében végrehajtani. A jelszókezelő, a felhasználó rendszergazda vagy a ügyfélszolgálati adminisztrátor kell lennie.
 * **Tevékenység cél**: A felhasználó, akinek jelszó átállítása. A felhasználó lehet a felhasználó vagy egy másik rendszergazda.
 * **Tevékenység állapota**:
   * _Success_: Azt jelzi, hogy egy rendszergazda felhasználó új jelszavának kérése sikerült.
@@ -179,13 +179,13 @@ Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
 * [Új jelszó kérése vagy jelszó módosítása](../user-help/active-directory-passwords-update-your-own-password.md).
 * [Regisztráció új jelszó önkiszolgáló kérésére](../user-help/active-directory-passwords-reset-register.md).
-* [Kérdése van a licenceléssel kapcsolatban?](concept-sspr-licensing.md)
+* [Licencelési kérdése van?](concept-sspr-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](concept-sspr-howitworks.md#authentication-methods)
 * [Mik az SSPR szabályzatbeállításai?](concept-sspr-policy.md)
-* [Mi a jelszóvisszaíró, és miért fontos?](howto-sspr-writeback.md)
-* [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
-* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
-* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
+* [Mi a jelszóvisszaíró, és miért fontos információk?](howto-sspr-writeback.md)
+* [Mik azok az összes beállítás az SSPR-ben, és mire azok mean?](concept-sspr-howitworks.md)
+* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR?](active-directory-passwords-troubleshoot.md)
+* [Szeretnék feltenni egy kérdést, amely máshol nem szerepelt más](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Példa az SSPR aktivitásának vizsgálata naplózza az Azure ad-ben"

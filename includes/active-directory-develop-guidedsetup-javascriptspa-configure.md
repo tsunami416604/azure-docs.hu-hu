@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: ec9eba4766da1afbbee568374de1ce06dc92ab2b
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 1eaae979f030d3044b44c46bedee2bd9e3346784
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203324"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503046"
 ---
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
@@ -39,7 +39,7 @@ ms.locfileid: "58203324"
 > A node.js-ben, beállíthatja a webes kiszolgálóport a *server.js* fájlt. Ebben az oktatóanyagban a port 30662 referenciaként, de bármilyen más szabad portot is használhat. Kövesse az alábbi utasításokat egy átirányítási URL-címet az alkalmazás regisztrációs adatainak beállításához:<br/>
 > - Váltson vissza a *Alkalmazásregisztráció* és állítsa be `http://localhost:30662/` , egy `Redirect URL`, vagy használjon `http://localhost:[port]/` Ha egy egyéni TCP-portot használja (ahol *[port]* a egyéni TCP-port száma).
 
-<p/>
+<p>
 
 > #### <a name="visual-studio-instructions-for-obtaining-the-redirect-url"></a>A Visual Studio utasításokat az átirányítási URL-cím beszerzése
 > Kövesse az alábbi lépéseket az átirányítási URL-cím:
@@ -54,14 +54,15 @@ ms.locfileid: "58203324"
     ```javascript
     var applicationConfig = {
         clientID: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/common",
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
         graphScopes: ["user.read"],
         graphEndpoint: "https://graph.microsoft.com/v1.0/me"
     };
     ```
 
-<ol start="2">
-<li>
-Cserélje le <code>Enter the application Id here</code> az imént regisztrált alkalmazás azonosítójával.
-</li>
-</ol>
+    Az elemek magyarázata:
+    - `Enter_the_Application_Id_here` -a a **Alkalmazásazonosítót (ügyfél)** a regisztrált alkalmazás.
+    - `Enter_the_Tenant_Info_Here` -értéke a következők egyikét:
+       - Ha az alkalmazás **az adott szervezeti címtárban lévő fiókokat** támogatja, ezt az értéket a **Bérlőazonosítóra** vagy a **Bérlő nevére** cserélje le (például contoso.microsoft.com)
+       - Ha az alkalmazás támogatja a **bármely szervezeti directory fiókok**, cserélje le ezt az értéket `organizations`
+       - Ha az alkalmazás támogatja a **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**, cserélje le ezt az értéket `common`

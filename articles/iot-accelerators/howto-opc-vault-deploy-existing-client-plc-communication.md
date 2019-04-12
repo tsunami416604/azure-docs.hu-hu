@@ -1,5 +1,5 @@
 ---
-title: Az OPC-ügyfél és a tanúsítványok kezelése az Azure IoT OPC UA segítségével OPC PLC kommunikáció védelméhez |} A Microsoft Docs
+title: Biztonságossá a kommunikációt az OPC-ügyfél és az OPC-PLC az OPC-tároló – Azure |} A Microsoft Docs
 description: Az OPC-ügyfél és az OPC-PLC kommunikáció biztonságát biztosító tanúsítványaikat OPC tároló hitelesítésszolgáltató aláírásával.
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c437f6db21956d1be5e4f6d3512f325f37ca7308
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759575"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493997"
 ---
 # <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>Biztonságossá a kommunikációt az OPC-ügyfél és az OPC-PLC
 
-Az Azure IoT OPC UA tanúsítványkezelés, is tudja, és az OPC-tárolónak micro szolgáltatás, amely konfigurálható, regisztrálása, és az OPC UA-kiszolgáló és ügyfél alkalmazásokat a felhőben a tanúsítvány-életciklus kezelése. Ez a cikk bemutatja, hogyan teheti biztonságossá a kommunikációt az OPC-ügyfél és az OPC-PLC tanúsítványaikat OPC tároló hitelesítésszolgáltató aláírásával.
+Az OPC-tároló, konfigurálása, regisztrálja, és az OPC UA-kiszolgáló és az ügyfélalkalmazások számára a felhőben a tanúsítvány-életciklus kezelése mikroszolgáltatások. Ez a cikk bemutatja, hogyan teheti biztonságossá a kommunikációt az OPC-ügyfél és az OPC-PLC tanúsítványaikat OPC tároló hitelesítésszolgáltató aláírásával.
 
 Az OPC-ügyfél a következő beállítás teszteli, az OPC-PLC kapcsolódni. Alapértelmezés szerint a kapcsolat nem áll lehetséges mivel mind az összetevők nincsenek kiépítve a megfelelő tanúsítványokat. Ha egy OPC UA-összetevő nem lett még kiépítve a tanúsítvánnyal, azt hoz létre egy önaláírt tanúsítványt az indításakor. Azonban a tanúsítvány aláírhatók által a hitelesítésszolgáltató (CA) és az OPC UA-összetevő telepítve van. Miután ez elkészült, az OPC-ügyfél és az OPC-PLC, a kapcsolat engedélyezve van. Az alábbi munkafolyamat a folyamatát ismerteti. Néhány háttér-információkat az OPC UA biztonsági található [ebben a dokumentumban](https://opcfoundation.org/wp-content/uploads/2014/05/OPC-UA_Security_Model_for_Administrators_V1.00.pdf) tanulmányt. A teljes körű információkat az OPC UA-specifikáció található.
 
@@ -39,7 +39,7 @@ Az OPC-tároló parancsprogramokat:
 
 - Győződjön meg arról, nincsenek docker kötetek `opcclient` vagy `opcplc`. Egyeztessen `docker volume ls` , és távolítsa el azokat a `docker volume rm <volumename>`. Szükség lehet az is eltávolítja a tárolók `docker rm <containerid>` , ha a kötetek továbbra is egy tároló által használt.
 
-**Gyors útmutató**
+**Első lépések**
 
 Futtassa a következő PowerShell-parancsot a tárház gyökérkönyvtárában található:
 
@@ -59,7 +59,7 @@ opcplc-123456 | [20:51:32 INF] Rejected certificate store contains 0 certs
 ```
 Ha jelentett tanúsítványok jelenik meg, kövesse a fenti előkészítési lépéseket, és a docker-kötet törlése.
 
-Győződjön meg arról, hogy a kapcsolat az OPC-PLC sikertelen. A következő kimenet az OPC-ügyfélben jelentkezzen kimeneti kell megjelennie:
+Győződjön meg arról, hogy a kapcsolat az OPC-PLC sikertelen. Az OPC ügyfél log kimenetben a következő kimenetnek kell megjelennie:
 
 ```
 opcclient-123456 | [20:51:35 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
@@ -92,7 +92,7 @@ A hiba oka, hogy a tanúsítvány, nem megbízható. Ez azt jelenti, hogy `opc-c
     
 1. Nyissa meg a [OPC tároló webhely](https://opcvault.azurewebsites.net/).
 
-1. A következők szerint válasszon: `Register New`
+1. Válassza ezt: `Register New`
 
 1. Adja meg az OPC-PLC adatokat a log kimenetek `CreateSigningRequest information` terület a szövegbeviteli mezőkbe a `Register New OPC UA Application` lapon jelölje be `Server` ApplicationType.
 
@@ -130,7 +130,7 @@ Ismételje meg a teljes folyamatot kezdve `Register New` (a fenti 3. lépés) az
 > [!NOTE]
 > A jelen forgatókönyvben használatakor, előfordulhat, hogy rendelkezik felismerte, hogy a `<addissuercertbase64-string>` és `<updatecrlbase64-string>` értékek megegyeznek a `opcplc` és `opcclient`. Ez igaz, a használati esetekhez és takaríthat meg időt a lépések végrehajtása közben.
 
-**Gyors útmutató**
+**Első lépések**
 
 Futtassa a következő PowerShell-parancsot a tárház gyökérkönyvtárában található:
 
@@ -175,7 +175,7 @@ opcplc-123456 | [20:54:39 INF] Rejected certificate store contains 0 certs
 Az alkalmazás tanúsítványának kibocsátója a hitelesítésszolgáltató `CN=Azure IoT OPC Vault CA, O=Microsoft Corp.` és az OPC-PLC megbízhatósági is minden, a hitelesítésszolgáltató által aláírt tanúsítvány.
 
 
-Győződjön meg arról, hogy a kapcsolat az OPC-PLC sikeresen létrejött, és az OPC-ügyfél képes adatokat olvasni az OPC-PLC. A következő kimenet az OPC-ügyfélben jelentkezzen kimeneti kell megjelennie:
+Győződjön meg arról, hogy a kapcsolat az OPC-PLC sikeresen létrejött, és az OPC-ügyfél képes adatokat olvasni az OPC-PLC. Az OPC ügyfél log kimenetben a következő kimenetnek kell megjelennie:
 ```
 opcclient-123456 | [20:54:42 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
 opcclient-123456 | [20:54:42 INF] Session successfully created with Id ns=3;i=1085867946.
@@ -189,7 +189,7 @@ opcclient-123456 | [20:54:42 INF] Execute 'OpcClient.OpcTestAction' action on no
 opcclient-123456 | [20:54:42 INF] Action (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258') completed successfully
 opcclient-123456 | [20:54:42 INF] Value (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258'): 10/20/2018 20:54:42
 ```
-Ha ez a kimenet jelenik meg, majd az OPC-PLC jelenleg a megbízó OPC-ügyfél, és fordítva, mivel is rendelkezik most egy hitelesítésszolgáltató által aláírt tanúsítványokat, és mindkét megbízható tanúsítványok, mely where a hitelesítésszolgáltató által aláírt.
+Ha ez a kimenet jelenik meg, majd az OPC-PLC jelenleg a megbízó OPC ügyfél futtatását, mivel is rendelkezik, most már a hitelesítésszolgáltató által aláírt tanúsítványokat, és mindkettő megbízható tanúsítványok, mely helyét a hitelesítésszolgáltató által aláírt.
 
 > [!NOTE] 
 > Bár az első két ellenőrzési lépések csak az OPC-PLC megmutattuk, azok kell OPC-ügyfél is ellenőrizhető.

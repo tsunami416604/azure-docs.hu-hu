@@ -1,6 +1,6 @@
 ---
 title: Az Azure SQL Database önálló vagy készletezett adatbázis védelme |} A Microsoft Docs
-description: Ismerje meg a módszerek és szolgáltatások biztonságossá egy önálló vagy készletezett adatbázis az Azure SQL Database-ben.
+description: Ez az oktatóanyag azzal foglalkozunk, az információk módszerek és szolgáltatások biztonságossá egy önálló vagy készletezett adatbázis az Azure SQL Database-ben.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,14 +10,23 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d6f14a7cdcb77c1ca47d0f79f587e0bf3606b5d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: seoapril2019
+ms.openlocfilehash: d09af0a4c2d09004d5c1bbf3261a14850eef7714
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893271"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496437"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Oktatóanyag: Egyetlen vagy készletezett adatbázis védelme
+
+Ezen oktatóanyag segítségével megtanulhatja a következőket:
+
+> [!div class="checklist"]
+> - Kiszolgálószintű és adatbázisszintű tűzfalszabályok létrehozása
+> - Az Azure Active Directory (AD) rendszergazda konfigurálása
+> - Felhasználói hozzáférés felügyelete az SQL-hitelesítés, az Azure AD-hitelesítés és a biztonságos kapcsolati karakterláncok
+> - Biztonsági funkciók, például a speciális biztonsági, naplózási adatmaszkolási, és a titkosítás engedélyezése
 
 Az Azure SQL Database egy önálló vagy készletezett adatbázis adatait azáltal, hogy védelemmel látja el:
 
@@ -28,14 +37,6 @@ Az Azure SQL Database egy önálló vagy készletezett adatbázis adatait azált
 
 > [!NOTE]
 > Az Azure SQL database felügyelt példány használatával lett biztonságossá téve hálózati biztonsági szabályok és a privát végpontok leírtak szerint [Azure SQL database felügyelt példány](sql-database-managed-instance-index.yml) és [kapcsolati architektúra](sql-database-managed-instance-connectivity-architecture.md).
-
-Mindössze néhány lépés végrehajtásával az adatbázis-biztonság javítása érdekében. Ezen oktatóanyag segítségével megtanulhatja a következőket:
-
-> [!div class="checklist"]
-> - Kiszolgálószintű és adatbázisszintű tűzfalszabályok létrehozása
-> - Az Azure Active Directory (AD) rendszergazda konfigurálása
-> - Felhasználói hozzáférés felügyelete az SQL-hitelesítés, az Azure AD-hitelesítés és a biztonságos kapcsolati karakterláncok
-> - Biztonsági funkciók, például a speciális biztonsági, naplózási adatmaszkolási, és a titkosítás engedélyezése
 
 További tudnivalókért tekintse meg a [Azure SQL Database biztonsági áttekintése](/azure/sql-database/sql-database-security-index) és [képességek](sql-database-security-overview.md) cikkeket.
 

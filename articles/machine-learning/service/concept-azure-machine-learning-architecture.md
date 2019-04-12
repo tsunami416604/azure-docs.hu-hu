@@ -1,29 +1,31 @@
 ---
-title: 'A Machine learning-a felhőben: Feltételek és architektúra'
+title: Architektúra és alapfogalmak
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg az architektúra, a terminológiáról és az Azure Machine Learning szolgáltatás alkotó fogalmak. Emellett megismerjük a szolgáltatást, és az Azure-szolgáltatások, Azure Machine Learning szolgáltatás által használt általános munkafolyamata kapcsolatos.
+description: Ismerje meg az architektúra, használati, fogalmak és Azure Machine Learning szolgáltatás alkotó munkafolyamat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1cc1b1584fdeb24aaba07f33cc260532c75249a2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269129"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489947"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
-Ez a cikk ismerteti az architektúra és az Azure Machine Learning szolgáltatás fogalmak. A szolgáltatás és az általános munkafolyamat a szolgáltatás fő összetevőit az alábbi ábrán láthatók:
+Ismerje meg az architektúra, fogalmak és a munkafolyamat az Azure Machine Learning szolgáltatás. A szolgáltatás és az általános munkafolyamat a szolgáltatás fő összetevőit az alábbi ábrán láthatók:
 
 [![Azure Machine Learning szolgáltatás architektúrája és a munkafolyamat](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
-A munkafolyamat általában ez a sorozat következő:
+## <a name="workflow"></a>Munkafolyamat
+
+A machine learning munkafolyamat általában ez a sorozat a következőképpen:
 
 1. Fejlesztés a gépi tanulási parancsfájlok képzési **Python**.
 1. Létrehozhat és konfigurálhat egy **számítási célt**.

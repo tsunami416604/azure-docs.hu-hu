@@ -1,5 +1,5 @@
 ---
-title: Üzembe helyezése az Azure IoT OPC UA eszközök felügyeleti felhőalapú függőségei |} A Microsoft Docs
+title: Az OPC-Twin felhőalapú függőségek az Azure-beli üzembe helyezése |} A Microsoft Docs
 description: Hogyan helyezheti üzembe az OPC-Twin Azure függőségek.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: cdd89293328da47c8e338bb6fca8c7b93dd84f97
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: ae9f2b05bfc6ea6315022d04c8d267d916cf282e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759552"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491986"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Helyi telepítéshez tartozó függőségek telepítése
 
@@ -52,7 +52,7 @@ Az üzembe helyezési parancsfájl megpróbálja regisztrálni az AAD-alkalmazá
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy egy meglévő projektjébe sikeresen telepítette az OPC-Eszközfelügyeleti szolgáltatások, Íme a javasolt következő lépésre:
+Most, hogy sikeresen telepítette az OPC-Twin-szolgáltatások egy meglévő projektjébe, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [Ismerje meg az OPC-Eszközfelügyelet modulok telepítése](howto-opc-twin-deploy-modules.md)
+> [Ismerje meg az OPC-Twin-modulok telepítése](howto-opc-twin-deploy-modules.md)

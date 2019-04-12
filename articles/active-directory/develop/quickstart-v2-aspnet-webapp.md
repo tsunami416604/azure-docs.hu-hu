@@ -1,5 +1,5 @@
 ---
-title: Azure AD v2.0 ASP.NET-webkiszolgáló – rövid útmutató | Microsoft Docs
+title: A Microsoft identity platform az ASP.NET web server gyors üzembe helyezése |} Az Azure
 description: Megismerheti, hogyan valósíthatja meg a Microsoft-bejelentkezéseket egy ASP.NET-webalkalmazásban az OpenID Connect segítségével.
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae388798716565c1fdeeb10b274c2a168ca86ea
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 44b11f49d788dd3c16c0cb8dd47cc59848b607ed
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200259"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505398"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Gyors útmutató: Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -29,7 +29,7 @@ ms.locfileid: "58200259"
 
 Ebben a rövid útmutatóban megtudhatja, hogyan használhatók egy ASP.NET-webalkalmazásba való bejelentkezéshez személyes fiókok (hotmail.com, outlook.com stb.) és munkahelyi és iskolai fiókok bármilyen Azure Active Directory- (Azure AD-) példányból.
 
-![Ez a rövid útmutató által létrehozott mintaalkalmazás működését mutatja](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro-updated.png)
+![Ez a rövid útmutató által létrehozott mintaalkalmazás működését mutatja](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
@@ -39,7 +39,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan használhatók egy ASP.NET-weba
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Regisztráció és az automatikus állítsa be alkalmazását, és töltse le a kódminta
 >
-> 1. Nyissa meg az [Azure Portal – Alkalmazásregisztráció (előzetes verzió)](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) szakaszt.
+> 1. Nyissa meg az új [az Azure portal - alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) ablaktáblán.
 > 1. Adja meg az alkalmazás nevét, és kattintson a **Regisztráció** elemre.
 > 1. Kövesse az új alkalmazás egy kattintással való letöltésére és automatikus konfigurálására vonatkozó utasításokat.
 >
@@ -50,8 +50,9 @@ Ebben a rövid útmutatóban megtudhatja, hogyan használhatók egy ASP.NET-weba
 >
 > 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-> 1. A bal oldali navigációs panelen válassza az **Azure Active Directory** szolgáltatást, majd válassza az **Alkalmazásregisztrációk (előzetes verzió)** > **Új regisztráció** lehetőséget.
-> 1. Amikor megjelenik az **Alkalmazás regisztrálása lap**, adja meg az alkalmazás regisztrációs adatait:
+> 1. Keresse meg a fejlesztők a Microsoft identity platform [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapot.
+> 1. Válassza ki **új regisztrációs**.
+> 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `ASPNET-Quickstart`).
 >      - Adja hozzá a `https://localhost:44368/` címet a **Válasz URL-cím** mezőben, és kattintson a **Regisztráció** elemre.
 Válassza a **Hitelesítés** menüt, állítsa be az **Azonosító jogkivonatok** értékét az **Implicit engedélyezés** területen, majd válassza a **Mentés** elemet.
@@ -60,14 +61,14 @@ Válassza a **Hitelesítés** menüt, állítsa be az **Azonosító jogkivonatok
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
 > Ahhoz, hogy a rövid útmutatóhoz tartozó kódminta működjön, hozzá kell adnia egy válasz URL-t a következő formában: `https://localhost:44368/`.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [A módosítás alkalmazása]()
+> > [A módosítás végrehajtása nekem]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Már konfigurált](media/quickstart-v2-aspnet-webapp/green-check.png) Az alkalmazása már konfigurálva van ezzel az attribútummal
+> > ![Már be van állítva](media/quickstart-v2-aspnet-webapp/green-check.png) az alkalmazás ezzel az attribútummal van konfigurálva.
 
 #### <a name="step-2-download-your-project"></a>2. lépés: Töltse le a projekthez
 
-[A Visual Studio 2017-megoldás letöltése](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+[Töltse le a Visual Studio 2017-megoldás](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
 
@@ -82,11 +83,11 @@ Válassza a **Hitelesítés** menüt, állítsa be az **Azonosító jogkivonatok
 
 > [!div renderon="docs"]
 > Az elemek magyarázata:
-> - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
-> - `Enter_the_Tenant_Info_Here` – ez az alábbi lehetőségek egyike:
+> - `Enter_the_Application_Id_here` – a regisztrált alkalmazás alkalmazásazonosítója.
+> - `Enter_the_Tenant_Info_Here` – az alábbi lehetőségek közül:
 >   - Ha az alkalmazás **csak a saját szervezetet** támogatja, ezt az értéket a **Bérlőazonosítóra** vagy a **Bérlő nevére** cserélje le (például contoso.microsoft.com)
->   - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot** támogat, ezt az értéket az `organizations` értékre cserélje le
->   - Ha az alkalmazás **minden Microsoft-fiókfelhasználót** támogat, ezt az értéket a `common` értékre cserélje le
+>   - Ha az alkalmazás támogatja a **bármely szervezeti directory fiókok**, cserélje le ezt az értéket `organizations`
+>   - Ha az alkalmazás támogatja a **minden Microsoft-fiókok felhasználóinak**, cserélje le ezt az értéket `common`
 >
 > > [!TIP]
 > > Az *alkalmazásazonosító*, a *címtár (bérlő) azonosítója* és a *támogatott fióktípusok* értékét az **Áttekintés** oldalon találja
@@ -132,7 +133,7 @@ public void Configuration(IAppBuilder app)
             // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter
             TokenValidationParameters = new TokenValidationParameters()
             {
-                ValidateIssuer = false
+                ValidateIssuer = false // Simplification (see note below)
             },
             // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
             Notifications = new OpenIdConnectAuthenticationNotifications
@@ -148,12 +149,16 @@ public void Configuration(IAppBuilder app)
 > |---------|---------|
 > | `ClientId`     | Az Azure Portalon regisztrált alkalmazás azonosítója |
 > | `Authority`    | A felhasználó által hitelesítendő STS-végpont. Általában <https://login.microsoftonline.com/{tenant}/v2.0> a nyilvános felhőknél, ahol a {tenant} a bérlő neve, a bérlő azonosítója, vagy *common* a közös végpontra való hivatkozáskor (több-bérlős alkalmazások esetében) |
-> | `RedirectUri`  | Az URL-cím, ahova a rendszer átirányítja a felhasználókat az Azure AD v2.0-végponton való hitelesítés után |
+> | `RedirectUri`  | URL-címet, ahol a Microsoft identity platform végponton hitelesítés után felhasználóknak legyenek elküldve |
 > | `PostLogoutRedirectUri`     | Az URL-cím, ahová a rendszer átirányítja a felhasználókat kijelentkezés után |
 > | `Scope`     | A kért hatókörök felsorolása, szóközökkel elválasztva |
 > | `ResponseType`     | Arra vonatkozó kérés, hogy a hitelesítés válasza tartalmazzon egy azonosító jogkivonatot |
 > | `TokenValidationParameters`     | A jogkivonatok érvényesítéséhez használatos paraméterek listája. Ebben az esetben a `ValidateIssuer` értéke `false`, ami azt jelzi, hogy a bejelentkezés bármilyen személyes, illetve munkahelyi vagy iskolai típusú fiókkal elfogadott. |
 > | `Notifications`     | A különböző *OpenIdConnect* üzenetek esetében végrehajtható delegáltak listája |
+
+
+> [!NOTE]
+> Beállítás `ValidateIssuer = false` van ebben a rövid útmutatóban egyszerűsítését. Valós alkalmazások érvényesítenie kell a kibocsátó megtudhatja, hogyan valósítható meg mintáiban találhat.
 
 ### <a name="initiate-an-authentication-challenge"></a>Hitelesítő kérdés kezdeményezése
 
@@ -185,6 +190,6 @@ Próbálja ki az ASP.NET-hez készült oktatóanyagot, amelyben teljes körű, r
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>A jelen rövid útmutatóban használt alkalmazás létrehozási lépéseinek ismertetése
 
 > [!div class="nextstepaction"]
-> [Bejelentkezési útmutató](./tutorial-v2-asp-webapp.md)
+> [Jelentkezzen be az oktatóanyag](./tutorial-v2-asp-webapp.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

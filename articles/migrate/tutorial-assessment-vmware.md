@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cdd852e56cf966371cda62f89cee62956551f5c0
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 9eab8a29db40118f2a15064c52419ecebcd4aecb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313107"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490319"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -56,7 +56,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 4. Hozzon létre egy új erőforráscsoportot.
 5. Adja meg a földrajzi helyet a projekt létrehozásához, majd kattintson a **Létrehozás** gombra. Azure Migrate-projektet csak az alábbi földrajzi területeken hozhat létre. Azonban továbbra is bármely Azure-beli célhelyre tervezheti a migrálást. A projekthez megadott földrajzi hely csak a helyszíni virtuális gépekről gyűjtött metaadatok tárolására szolgál.
 
-**Régiócsoport** | **Tárolási hely**
+**Földrajzi hely** | **Tárolási hely**
 --- | ---
 Azure Government | USA-beli államigazgatás – Virginia
 Ázsia | Délkelet-Ázsia
@@ -195,6 +195,9 @@ Importálja a letöltött fájlt a vCenter Serverre.
     - A **User name** (Felhasználónév) és a **Password** (Jelszó) mezőben adja meg a csak olvasási jogokkal rendelkező fiók hitelesítő adatait, amelyet a gyűjtő a virtuális gépek felderítéséhez használ majd a vCenter-kiszolgálón.
     - A **Collection scope** (Gyűjtés hatóköre) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő csak a megadott hatókörön belül deríti fel a virtuális gépeket. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Nem tartalmazhat 1500-nál több virtuális gépet. [Itt tekinthet meg további információkat](how-to-scale-assessment.md) azzal kapcsolatban, hogyan fedezheti fel a nagyméretű környezeteket.
 
+       > [!NOTE]
+       > **Gyűjtés hatóköre** csak a gazdagépek és fürtök mappák sorolja fel. Virtuális gépek mappák közvetlenül nem jelölhető gyűjtemény hatóköreként. Azonban egy vCenter-fiókkal, amely hozzáfér az egyes virtuális gépeket is Felderíthet. [További](https://docs.microsoft.com/azure/migrate/how-to-scale-assessment#set-up-permissions) hatókör mappába, a virtuális gépek használatáról.
+
 7. A **Specify migration project** (Migrálási projekt megadása) területen adja meg az Azure Migrate projekt a portálról kimásolt azonosítóját és kulcsát. Ha nem másolta ki őket, nyissa meg az Azure Portalt a gyűjtő virtuális gépről. A projekt **Áttekintés** lapján kattintson a **Gépek felderítése** elemre, és másolja ki az értékeket.  
 8. Az **Adatgyűjtési folyamat megtekintése** részen monitorozhatja a felderítés állapotát. [Itt tekinthet meg további információkat](https://docs.microsoft.com/azure/migrate/concepts-collector) az Azure Migrate-gyűjtő által gyűjtött adatokról.
 
@@ -267,7 +270,7 @@ Az Azure Migrate minden teljesítményalapú értékelése olyan megbízhatósá
 
 A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virtuális gép processzorának és memóriájának kihasználtsági adataira. Emellett szükség van a lemez IOPS-értékére és az adatátviteli teljesítményre is a virtuális géphez csatlakoztatott minden lemezre vonatkozóan. Ugyanígy az Azure Migrate-nek a virtuális géphez csatlakoztatott összes hálózati adapterre vonatkozóan szüksége van a bejövő és kimenő hálózati forgalom adataira a teljesítményalapú méretezés elvégzéséhez. Ha a fenti kihasználtsági számok valamelyike nem érhető el a vCenter Serveren, lehet, hogy az Azure Migrate által adott méretjavaslat nem megbízható. Az elérhető adatpontok százalékától függően meg van adva a megbízhatósági minősítés az értékeléshez az alábbiak szerint:
 
-   **Az adatpontok rendelkezésre állása** | **Megbízhatósági minősítés**
+   **Adatpontok rendelkezésre állása** | **Megbízhatósági minősítés**
    --- | ---
    0%–20% | 1 csillag
    21%–40% | 2 csillag

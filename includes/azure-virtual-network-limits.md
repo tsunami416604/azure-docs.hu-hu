@@ -2,18 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: networking
-author: jimdial
+author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 02/07/2019
-ms.author: jdial
+ms.date: 04/10/2019
+ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: c6c57390e0a2fba0c79d3198df0f5577eb813f88
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ff6e08929d5ede86ba0632e7cfb38d81d21ca7ec
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553572"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503112"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
@@ -44,7 +44,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | --- | --- |
 | Virtuális hálózatok |1,000 |
 | Alhálózatok száma virtuális hálózatonként |3,000 |
-| Virtuális hálózati társviszony-létesítések száma virtuális hálózatonként |100 |
+| Virtuális hálózati társviszony-létesítések száma virtuális hálózatonként |500 |
 | DNS-kiszolgálók száma virtuális hálózatonként |20 |
 | Magánhálózati IP-címek száma virtuális hálózatonként |65,536 |
 | Magánhálózati IP-címek száma hálózati adapterenként |256 |
@@ -68,7 +68,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
 | Nyilvános IP-címek – dinamikus | Alapszintű 1000. |Forduljon a támogatási szolgálathoz. |
-| Nyilvános IP-címek – statikus | Alapszintű 200. |Forduljon a támogatási szolgálathoz. |
+| Nyilvános IP-címek – statikus | Alapszintű 1000. |Forduljon a támogatási szolgálathoz. |
 | Nyilvános IP-címek – statikus | a standard szintű 200.|Forduljon a támogatási szolgálathoz. |
 | Nyilvános IP-előtag méretét (előzetes verzió) | /28 | /28 |
 

@@ -1,6 +1,6 @@
 ---
-title: Azure ATP adatgyűjtést az Azure-Sentinel-Előzetesében |} A Microsoft Docs
-description: Ismerje meg, hogyan gyűjtheti össze az Azure ATP Azure Sentinel-adatokat.
+title: Csatlakozás az Azure ATP-adatok Azure-on Előzetesben Sentinel-|} A Microsoft Docs
+description: 'Útmutató: Azure ATP adatok csatlakozni az Azure-Sentinel.'
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5254e60b9b7c38e5f4534e90f8aabe938aef99b2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 153b6cb44cbcf5ecca9a4941c6bef7a8721dc56c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574943"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492651"
 ---
-# <a name="collect-data-from-azure-advanced-threat-protection-atp"></a>Adatok gyűjtése az Azure komplex veszélyforrások elleni védelem (ATP)
+# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Adatok csatlakoztatása az Azure komplex veszélyforrások elleni védelem (ATP)
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
@@ -42,7 +42,7 @@ Ha az Azure ATP telepíti, és az adatok feldolgozására, a gyanús riasztások
 
 
 
-1. Az Azure-Sentinel, válassza **adatgyűjtés** és kattintson a **Azure ATP** csempére.
+1. Az Azure-Sentinel, válassza **adatösszekötők** és kattintson a **Azure ATP** csempére.
 
 2. Kattintson a **Connect** (Csatlakozás) gombra.
 

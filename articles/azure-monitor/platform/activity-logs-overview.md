@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 94465e95dbf5f2eb381c124349bf8fda6622a6c2
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: b84238e8a659358f2c065eb1533f0d21a5335d43
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650291"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496879"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
@@ -95,19 +95,11 @@ A **Naplóprofil** a tevékenységnapló exportálása hogyan szabályozza. Napl
 * Melyik eseménykategóriák (írás, törlés, a művelet) küldendő adattípusokat. *A "category" Naplóprofilok és tevékenységnapló eseményei jelentése nem egyezik. A napló-profilban a "Category" a művelet típusa (írás, törlés, a művelet) jelöli. Egy tevékenységnapló-esemény a "category" tulajdonság jelöli a forrás- vagy típusú eseményeket (például felügyeleti ServiceHealth, riasztást és több).*
 * Mely régiókban (helyeken) exportálja. Ügyeljen arra, hogy tartalmaznak "globális", mivel a tevékenységnaplóban sok eseményt globális események.
 * Mennyi ideig a tevékenységnapló fenn kell tartani a Storage-fiókban.
-    - Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték lehet minden olyan 1 és 2147483647 között eltelt napok számát.
+    - Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték lehet minden olyan 1 és 365 közötti napok számát.
     - Ha a megőrzési házirend-beállításokat, de a naplók tárolása a Storage-fiók le van tiltva, (például, ha csak az Event Hubs és a Log Analytics lehetőség be van jelölve), az adatmegőrzési szabályzatok nem befolyásolják.
     - Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén törli a házirendet. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének. A törlési folyamat kezdődik UTC szerint éjfélig, de vegye figyelembe, hogy a naplók a tárfiókból a törlendő akár 24 órát is igénybe vehet.
 
 Egy tároló vagy egy eseményközpontba eseményközpont-névtér, amely nem ugyanabban az előfizetésben, mint a naplókat kibocsátó is használhatja. A beállítást konfiguráló felhasználónak rendelkeznie kell a megfelelő RBAC-hozzáférés mindkét előfizetéshez.
-
-> [!NOTE]
->  Jelenleg nem archiválhatja egy tárfiókot, amelyet mögött egy biztonságos virtuális hálózaton található adatokat.
-
-> [!WARNING]
-> A naplóadatok JSON sorok 2018. november 1-től változik a tárfiókban formátumát. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
->
->
 
 Ezek a beállítások az "Export" lehetőséget a tevékenységnapló panel a portálon keresztül konfigurálható. Akkor is konfigurálható programozott módon [az Azure Monitor REST API használatával](https://msdn.microsoft.com/library/azure/dn931927.aspx), PowerShell-parancsmagok vagy a parancssori felület. Egy előfizetéshez csak egy naplóprofil rendelkezhet.
 
@@ -151,7 +143,7 @@ Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resour
 | Name (Név) |Igen |A napló-profil neve. |
 | StorageAccountId |Nem |Erőforrás-azonosító, amelyhez a tevékenységnapló menteni a tárfiók. |
 | serviceBusRuleId |Nem |Service Bus Szabályazonosító a Service Bus-névtér szeretné, hogy a létrehozott event hubs. Egy karakterlánc, a következő formátumban: `{service bus resource ID}/authorizationrules/{key name}`. |
-| Hely |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. |
+| Földrajzi egység |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. |
 | RetentionInDays |Igen |Mely eseményeket meg kell őrizni, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplók (végtelen). |
 | Kategória |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet. |
 

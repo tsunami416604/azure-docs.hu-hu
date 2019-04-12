@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: genli
-ms.openlocfilehash: 7990a98e0e2d688456db054e3cdfa447e1ed1043
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630473"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492379"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítás: Az Azure pont – hely kapcsolati problémák
 
@@ -45,7 +45,7 @@ A probléma megoldásához kövesse az alábbi lépéseket:
 
 2. Győződjön meg arról, hogy a megfelelő helyen vannak a következő tanúsítványok:
 
-    | Tanúsítvány | Hely |
+    | Tanúsítvány | Földrajzi egység |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuális felhasználó\személyes\tanúsítványok útvonalon |
     | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
@@ -57,6 +57,35 @@ Az ügyféltanúsítvány telepítésével kapcsolatos további információkér
 
 > [!NOTE]
 > Amikor importálja az ügyféltanúsítványt, ne jelölje be a **titkos kulcs erős védelmének engedélyezése** lehetőséget.
+
+## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>Nem sikerült létrehozni a számítógép és a VPN-kiszolgáló közötti hálózati kapcsolat, mert a távoli kiszolgáló nem válaszol
+
+### <a name="symptom"></a>Jelenség
+
+Próbálja ki, és egy Azure virtuális hálózat gteway Windows az IKEv2 használatával csatlakozhat, a következő hibaüzenetet kap:
+
+**Nem sikerült létrehozni a számítógép és a VPN-kiszolgáló közötti hálózati kapcsolat, mert a távoli kiszolgáló nem válaszol**
+
+### <a name="cause"></a>Ok
+ 
+ A probléma akkor fordul elő, ha a Windows verziója nem rendelkezik internetes KULCSCSERE töredezettség támogatása
+ 
+### <a name="solution"></a>Megoldás
+
+Az IKEv2 Windows 10 és Server 2016 rendszeren támogatott. Ahhoz azonban, hogy használni tudja az IKEv2-t, helyileg telepítenie kell a frissítéseket, és meg kell adnia a beállításkulcs értékét. A Windows 10 előtti operációsrendszer-verziók nem támogatottak, és csak SSTP-t tudnak használni.
+
+A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
+
+1. Telepítse a frissítést.
+
+   | Operációs rendszer verziója | Dátum | Szám/hivatkozás |
+   |---|---|---|---|
+   | Windows Server 2016<br>Windows 10, 1607-es verzió | 2018. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10, 1703-as verzió | 2018. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | A Windows 10 1709-es verzió | 2018. március 22. | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   |  |  |  |  |
+
+2. Adja meg a beállításkulcs értékét. Hozza létre a „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload” REG_DWORD kulcsot a beállításjegyzékben, vagy állítsa az értékét 1-re.
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN-ügyfél hiba: A kapott üzenetet nem várt vagy rosszul formázott
 
@@ -93,7 +122,7 @@ Ha a VPN-ügyfél használatával Azure-beli virtuális hálózathoz csatlakozni
 
 1. Győződjön meg arról, hogy a megfelelő helyen vannak a következő tanúsítványok:
 
-    | Tanúsítvány | Hely |
+    | Tanúsítvány | Földrajzi egység |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuális felhasználó\személyes\tanúsítványok útvonalon |
     | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
@@ -107,7 +136,7 @@ Ha a VPN-ügyfél használatával Azure-beli virtuális hálózathoz csatlakozni
 
 A következő hibaüzenet jelenhet meg:
 
-**Fájlletöltési hiba. Nincs megadva a cél URI azonosítója.**
+**Fájlletöltési hiba. Nincs megadva a célhely URI azonosítója.**
 
 ### <a name="cause"></a>Ok 
 
@@ -123,7 +152,7 @@ A VPN gateway típusúnak kell lennie **VPN**, és a VPN-típust kell **RouteBas
 
 Ha a VPN-ügyfél használatával Azure-beli virtuális hálózathoz csatlakozni próbál, a következő hibaüzenet jelenhet meg:
 
-**Egyéni parancsfájl (frissítés az útválasztási táblázat) nem sikerült. (Error 8007026f)**
+**Egyéni parancsfájl (frissítés az útválasztási táblázat) nem sikerült. (8007026f hiba)**
 
 ### <a name="cause"></a>Ok
 

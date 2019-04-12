@@ -12,28 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: f226b9b802bca47cc6fd7b9cdec550b23c7c88d6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 958dc02ecc744f89badee851467f2e78190287cd
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890815"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501025"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Service Bus-üzenetsorok használata javával
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-
-Ez a cikk a Service Bus-üzenetsorok használatát ismerteti. Java- és használati minták íródnak a [Javához készült Azure SDK][Azure SDK for Java]. Az ismertetett forgatókönyvek között megtalálható **üzenetsorok létrehozása**, **üzenetek küldése és fogadása**, és **üzenetsorok törlése**.
+Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre Java-alkalmazások üzeneteket küldeni, illetve üzeneteket fogadhat a Service Bus-üzenetsorba. 
 
 > [!NOTE]
 > Java-példák a githubon találja a [azure szolgáltatásbusz-tárház](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Előfeltételek
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Ha nem rendelkezik egy üzenetsorba való együttműködéshez, kövesse lépéseket a [egy Service Bus-üzenetsor létrehozása az Azure portal](service-bus-quickstart-portal.md) várólista létrehozásához a cikkben.
+    1. Olvassa el a gyors **áttekintése** Service Bus **üzenetsorok**. 
+    2. Hozzon létre egy Service Bus **névtér**. 
+    3. Első a **kapcsolati karakterlánc**.
+    4. Hozzon létre egy Service Bus **várólista**.
+3. Telepítés [Javához készült Azure SDK][Azure SDK for Java]. 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-[!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
 ## <a name="configure-your-application-to-use-service-bus"></a>A Service Bus-alkalmazás konfigurálása
 Győződjön meg arról, hogy telepítette a [Javához készült Azure SDK] [ Azure SDK for Java] Ez a minta létrehozása előtt. Ha az Eclipse használja, telepítheti a [Azure Toolkit for Eclipse] [ Azure Toolkit for Eclipse] , amely tartalmazza a Javához készült Azure SDK. Ezután hozzáadhatja a **Javához készült Azure-könyvtárak Microsoft** a projekthez:

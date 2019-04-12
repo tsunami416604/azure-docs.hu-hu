@@ -3,18 +3,18 @@ title: Eszköz beállítása az Azure IoT Hub Device Provisioning Service szolg�
 description: Az IoT Hub Device Provisioning Service általi eszközregisztráció beállítása az eszközgyártási folyamat során
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/02/2018
+ms.date: 04/10/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: eae674693b647eed5bce0a38236d44d457c1c2ae
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 344cc3b8ba3f7698f5124d464f3c277b6cb5cdde
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486920"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500974"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Az eszközregisztráció beállítása az Azure IoT Hub Device Provisioning Service használatával
 
@@ -45,23 +45,7 @@ Amennyiben nem ismeri az automatikus regisztrálás folyamatát, a folytatás el
 
 A Device Provisioning Service ügyfél-SDK az eszközregisztrációs szoftver implementálását segíti. Az SDK használata előtt azonban ki kell építenie annak fejlesztésiügyfél-platformjához tartozó verzióját, illetve az igazolási eljárást. Az oktatóanyagot követve kiépít egy támogatott igazolástípussal rendelkező SDK-t, amely egy fejlesztési Windows-platformon használja a Visual Studio 2017-et:
 
-1. Töltse le a [CMake buildelési rendszert](https://cmake.org/download/). Ellenőrizze a letöltött bináris fájlt, amely megfelel a verzió letöltése kriptográfiai kivonatokat értékének használatával. A kriptográfiai kivonatokat értékei is az adott CMake letöltési hivatkozás található.
-
-    Az alábbi példa a kriptográfiai kivonatokat a x64 3.13.4 verziójának ellenőrzéséhez használja a Windows PowerShell MSI terjesztési:
-
-    ```powershell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
-    True
-    ```
-
-    A következő kivonatértékeket verzió 3.13.4 írásának időpontjában a CMake webhelyen felsorolt:
-
-    ```
-    563a39e0a7c7368f81bfa1c3aff8b590a0617cdfe51177ddc808f66cc0866c76  cmake-3.13.4-Linux-x86_64.tar.gz
-    7c37235ece6ce85aab2ce169106e0e729504ad64707d56e4dbfc982cb4263847  cmake-3.13.4-win32-x86.msi
-    64ac7dd5411b48c2717e15738b83ea0d4347cd51b940487dff7f99a870656c09  cmake-3.13.4-win64-x64.msi
-    ```
+1. Töltse le a [CMake buildelési rendszert](https://cmake.org/download/).
 
     Fontos, hogy a Visual Studio előfeltételei (Visual Studio és az „Asztali fejlesztés C++ használatával” számítási feladat) telepítve legyenek a gépen, **mielőtt** megkezdené a `CMake` telepítését. Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
 
@@ -70,7 +54,7 @@ A Device Provisioning Service ügyfél-SDK az eszközregisztrációs szoftver im
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
-    Az adattár mérete jelenleg körülbelül 220 MB. Ez a művelet várhatóan több percig is eltarthat.
+    Ez a művelet várhatóan több percig is eltarthat.
 
 
 1. Hozzon létre egy `cmake` alkönyvtárat a Git-adattár gyökérkönyvtárában, és lépjen erre a mappára. 
@@ -227,5 +211,5 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 A következő oktatóanyagra lépve megtudhatja, hogyan regisztrálhatja az eszközt az IoT Hubban az automatikus regisztrációt elvégző Azure IoT Hub Device Provisioning Service szolgáltatásba való regisztrálással.
 
 > [!div class="nextstepaction"]
-> [Az eszköz regisztrálása az IoT Hubban](tutorial-provision-device-to-hub.md)
+> [Az az IoT hub-eszköz kiépítése](tutorial-provision-device-to-hub.md)
 

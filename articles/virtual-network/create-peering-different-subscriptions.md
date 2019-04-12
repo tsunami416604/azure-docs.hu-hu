@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Ismerje meg, hogyan hozhat létre egy virtuális hálózatot a Resource Managerben létrehozott, amely a különböző Azure-előfizetésekben található virtuális hálózatok közötti társviszony.
 services: virtual-network
 documentationcenter: ''
-author: jimdial
+author: anavinahar
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
-ms.author: jdial;anavin
-ms.openlocfilehash: 2965f72a1f0532cd9e13d5fa03750cf4ed8bab99
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.date: 04/09/2019
+ms.author: anavin
+ms.openlocfilehash: ff8c866f62e8d795f04491cf249b7dae26c8269c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403461"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492294"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Egy virtuális hálózati társviszony-létesítés létrehozása – Resource Manager, a különböző előfizetések
 
@@ -39,7 +39,9 @@ Használhatja a [az Azure portal](#portal), az Azure [parancssori felület](#cli
 
 ## <a name="portal"></a>Társviszony - létrehozása az Azure Portalon
 
-Különböző Azure Active Directory-bérlőkhöz társított előfizetésekben található virtuális hálózatok társviszonyba állítása kívánt esetén kövesse a cikk a CLI és PowerShell című szakaszának lépéseit. Portál nincs támogatási eltérő Active Directory-bérlők, előfizetések régiókba tartozó virtuális hálózatok társviszonyba állítása.
+Különböző Azure Active Directory-bérlőkhöz társított előfizetésekben található virtuális hálózatok társviszonyba állítása kívánt esetén kövesse a cikk a CLI és PowerShell című szakaszának lépéseit. Portál nincs támogatási eltérő Active Directory-bérlők, előfizetések régiókba tartozó virtuális hálózatok társviszonyba állítása. 
+
+Vegye figyelembe, hogy a Cloud Shell vált előfizetéseket és a bérlők számára, ami vagy a globális virtuális társhálózatok létesítésének különböző Azure Active Directory-bérlők-előfizetések alá tartozó virtuális hálózatok közötti virtuális hálózatok közötti Társviszony nem fog működni a korlátozások vonatkoznak. Használjon PowerShell vagy parancssori felület.
 
 Az alábbi lépéseket az egyes előfizetésekhez más fiókokat kell használni. Mindkét előfizetés engedéllyel rendelkező fiók használata, használja ugyanazt a fiókot az összes lépést, a naplózáshoz a portálról a lépés kihagyható és egy másik felhasználói engedélyek hozzárendelése a virtuális hálózatok számára a lépés kihagyható.
 

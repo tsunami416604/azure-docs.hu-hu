@@ -1,5 +1,5 @@
 ---
-title: Az Azure AD-alkalmazásokhoz és az adatvédelmi nyilatkozat feltételeit |} A Microsoft Docs
+title: Az alkalmazások és az adatvédelmi nyilatkozat feltételeit |} Az Azure
 description: Ismerje meg, hogy hogyan konfigurálhat a regisztrált Azure AD használata az alkalmazások és az adatvédelmi nyilatkozat feltételeit.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +17,14 @@ ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3687d0b50add3301fb8e15b9c70569554b91c04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97728fa70f0c5f58510e0e68d27a379b20887703
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193509"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500297"
 ---
-# <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>A regisztrált az Azure Active Directory-alkalmazások és az adatvédelmi nyilatkozat feltételeit
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Útmutató: Az alkalmazás és az adatvédelmi nyilatkozat feltételeit konfigurálása
 
 Fejlesztők számára, akik alkalmazásokat, amelyekbe beépül az Azure Active Directory (Azure AD) és a Microsoft-fiókok kezelése tartalmaznia kell az alkalmazás használati és az adatvédelmi nyilatkozat mutató hivatkozásokat. A felhasználók számára a felhasználói jóváhagyási felületen keresztül illesztett és az adatvédelmi nyilatkozat feltételeit. Ezek segítenek a felhasználókkal, hogy nyugodtan megbízhatják az alkalmazást. A feltételeket és adatvédelmi nyilatkozata különösen létfontosságúak a felhasználók felé néző több-bérlős alkalmazások – alkalmazásokat, amelyek több címtárat használ vagy bármilyen Microsoft-fiókkal érhetők el.
 
@@ -47,7 +47,7 @@ Mielőtt hivatkozásokat ad hozzá az alkalmazás használati és az adatvédelm
 | Irányelv     | Leírás                           |
 |---------------|---------------------------------------|
 | Formátum        | Érvényes URL-cím                             |
-| Érvényes sémák | HTTP és HTTPS</br>Azt javasoljuk, hogy HTTPS |
+| Érvényes sémák | HTTP és HTTPS<br/>Azt javasoljuk, hogy HTTPS |
 | Maximális hossz    | 2048 karakternél                       |
 
 Példák: `https://myapp.com/terms-of-service` és `https://myapp.com/privacy-statement`

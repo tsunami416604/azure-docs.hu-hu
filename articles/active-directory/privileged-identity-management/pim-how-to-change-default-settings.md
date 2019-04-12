@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/30/2018
+ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b14cf76ec7b8b905c41792f4dc9a56e97dc0f7ba
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 3cb8944578caf00fac5ca430e411f044a875f6af
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576862"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492277"
 ---
 # <a name="configure-azure-ad-role-settings-in-pim"></a>A PIM az Azure AD szerepkör-beállítások konfigurálása
 
@@ -75,19 +75,19 @@ Használja a **multi-factor Authentication** kapcsolót, hogy adja meg a felhasz
   * Számlázási adminisztrátor
   * Felhőalkalmazás-rendszergazda
   * Szabályozási ügyintéző
-  * Feltételes hozzáférésű rendszergazda
-  * CRM-szolgáltatásadminisztrátor
-  * Ügyfélszéf hozzáférés-jóváhagyója
+  * Feltételes hozzáférési rendszergazda
+  * CRM-szolgáltatásgazda
+  * Ügyfélszéf-hozzáférési jóváhagyó
   * Címtárírók
   * Exchange-rendszergazda
   * Globális rendszergazda
   * Information Protection-rendszergazda
   * Intune szolgáltatás rendszergazdája
-  * Power BI-szolgáltatásadminisztrátor
+  * Power BI-szolgáltatásgazda
   * Kiemelt szerepkörű rendszergazda
   * Biztonsági rendszergazda
   * SharePoint szolgáltatás-rendszergazda
-  * Skype Vállalati verzió-rendszergazda
+  * Skype Vállalati verzió rendszergazdája
   * Felhasználói rendszergazda
 
 További információkért lásd: [multi-factor authentication (MFA) és a PIM](pim-how-to-require-mfa.md).

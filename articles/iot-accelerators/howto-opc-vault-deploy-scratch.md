@@ -1,5 +1,5 @@
 ---
-title: Az Azure IoT OPC UA tanúsítvány teljesen új modul üzembe helyezése |} A Microsoft Docs
+title: Előzmények – Azure OPC Vault modul üzembe helyezése |} A Microsoft Docs
 description: Hogyan helyezheti üzembe az OPC-tároló sablon nélkül.
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a3a9d21b70f16482f05d27aa0df8d8865459aeb4
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759507"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496896"
 ---
-# <a name="deploy-opc-vault-from-scratch"></a>Az OPC-tároló üzembe helyezése a előzmények
+# <a name="deploy-opc-vault-from-scratch"></a>OPC-tároló létrehozása az alapoktól
 
-Az Azure IoT OPC UA tanúsítványkezelés, is tudja, és az OPC-tárolónak, mikroszolgáltatások, amelyek konfigurálni, regisztrálása, és az OPC UA-kiszolgáló és ügyfél alkalmazásokat a felhőben a tanúsítvány életciklusának kezelése. Ez a cikk bemutatja, hogyan telepítheti az OPC-tároló teljesen új.
+Az OPC-tároló, konfigurálása, regisztrálja, és az OPC UA-kiszolgáló és az ügyfélalkalmazások számára a felhőben a tanúsítvány életciklusának kezelése mikroszolgáltatások. Ez a cikk bemutatja, hogyan telepítheti az OPC-tároló teljesen új.
 
 ## <a name="configuration-and-environment-variables"></a>Konfigurációs és környezeti változók
 
@@ -106,7 +106,7 @@ A mikroszolgáltatások használatához állítsa be az Azure IoT Hub tesztek fe
 
 A projekt tartalmaz néhány Bash-szkriptek, ezzel a telepítőprogrammal segítséget:
 
-- Új IoT Hub létrehozása: `./scripts/iothub/create-hub.sh`
+- Create new IoT Hub: `./scripts/iothub/create-hub.sh`
 
 - Meglévő hubs listázza: `./scripts/iothub/list-hubs.sh`
 

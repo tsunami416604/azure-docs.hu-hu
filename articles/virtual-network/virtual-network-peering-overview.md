@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Tudnivalók az Azure-beli virtuális hálózatok közötti társviszony-létesítésről
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: anavinahar
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/21/2019
-ms.author: jdial
-ms.openlocfilehash: 3488e8501b0b9bea83bfcce5085d42b6476d3ed2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/01/2019
+ms.author: anavin
+ms.openlocfilehash: e6c5a9aa3e4e173ecfc79f4072d091493677afed
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880423"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489981"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -80,7 +80,6 @@ Megpróbálhatja a [virtuális hálózati társviszony-létesítési hibák elh�
 
 A következő korlátozások vonatkoznak, csak ha virtuális hálózatok globálisan társviszonyban állnak:
 - Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő alapvető belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. Alapszintű Load Balancer támogatása csak az azonos régión belüli létezik. A Standard Load Balancer támogatja a globális virtuális társhálózatok létesítésének létezik.
-- Távoli átjárók használata, vagy átjárótranzit engedélyezése a globális virtuális társhálózatok előzetes verzióban érhető el. Az előzetes verzió érhető el minden Azure-régió, Kína felhő-régiók és kormányzati felhő-régiók. Nincs engedélyezési nem szükséges. Tesztelheti – parancssori felület, a PowerShell, a sablonok vagy az API előzetes verzióban érhető el. Portál nem támogatott az előzetes verzióban érhető el.
 
 További információ a követelményekről és a korlátozásokról: [A virtuális hálózatok közötti társviszony követelményei és korlátozásai](virtual-network-manage-peering.md#requirements-and-constraints). A virtuális hálózatok közötti társviszonyok számának korlátozásairól az [Azure hálózati korlátait](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) ismertető szakaszban talál további információt. 
 

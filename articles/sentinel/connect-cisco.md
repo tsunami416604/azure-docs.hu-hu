@@ -1,6 +1,6 @@
 ---
-title: Cisco adatgyűjtést az Azure-Sentinel-Előzetesében |} A Microsoft Docs
-description: Ismerje meg, hogyan gyűjtheti össze az Azure-Sentinel Cisco adatokat.
+title: Cisco adatok csatlakozhat az Azure-on Előzetesben Sentinel-|} A Microsoft Docs
+description: Ismerje meg, hogyan kell csatlakozni a Cisco adatokat az Azure-Sentinel.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 37dcd1dd7052db864797407897851d57e91d43e5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 5bc57d448b8aa04b8cb6fb16000205fda8964150
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883910"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495702"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Csatlakozás a Cisco ASA-berendezés 
 
@@ -30,7 +30,7 @@ ms.locfileid: "58883910"
 Csatlakozhat az Azure-Sentinel bármely Cisco ASA-berendezés. Cisco ASA natív módon integrálva van az Azure-Sentinel Adatbetöltési, úgy, hogy annak ellenére, hogy a Cisco berendezés naplókat CEF nem ment, az Azure-Sentinel, a CEF-naplók kezelési ugyanúgy őket fogadnak. Az Azure Sentinel-integráció segítségével könnyedén futtathat elemzések és lekérdezések a naplófájl adatai között a Cisco ASA. 
 
 > [!NOTE]
-> - Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
+> Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
 
 ## <a name="step-1-connect-your-cisco-asa-appliance-using-an-agent"></a>1. lépés: A Cisco ASA-berendezés használatával egy ügynök csatlakoztatása
 
@@ -42,7 +42,7 @@ A hálózati diagram mindkét lehetőség előnyeivel, olvassa el [adatforrások
 
 ### <a name="deploy-the-agent-in-azure"></a>Telepítse az ügynököt az Azure-ban
 
-1. Az Azure-Sentinel-portálon kattintson a **adatgyűjtés** válassza ki a készüléket. 
+1. Az Azure-Sentinel-portálon kattintson a **adatösszekötők** válassza ki a készüléket. 
 
 1. A **Linux Syslog-ügynök konfigurációjának**:
    - Válasszon **automatikus központi telepítési** szeretné-e a fent leírtak szerint, hozzon létre egy új gépet, amely előre telepítve van az Azure Sentinel-ügynökkel, és tartalmazza a konfiguráció szükséges. Válassza ki **automatikus központi telepítési** kattintson **automatikus ügynöktelepítés**. Ekkor megjelenik a vásárlás lap, amely automatikusan csatlakozik a munkaterülethez, a dedikált virtuális gépek. A virtuális gép egy **D2s v3-as standard (2 vcpu-k, 8 GB memória)** és a egy nyilvános IP-címmel rendelkezik.
@@ -79,7 +79,7 @@ A hálózati diagram mindkét lehetőség előnyeivel, olvassa el [adatforrások
 Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel futtatása egy dedikált Linux-kiszolgálón.
 
 
-1. Az Azure-Sentinel-portálon kattintson a **adatgyűjtés** válassza ki a készüléket.
+1. Az Azure-Sentinel-portálon kattintson a **adatösszekötők** válassza ki a készüléket.
 1. Egy dedikált Linux rendszerű virtuális gép létrehozása alatt **Linux Syslog-ügynök konfigurációjának** válasszon **manuális üzembe helyezési**.
    1. A **a Syslog-ügynök letöltése és telepítése**válassza **nem Azure-beli Linux rendszerű gép**. 
    1. Az a **közvetlen ügynök** képernyő, amely megnyílik, válassza ki **Linux-ügynök** töltse le az ügynököt, vagy letöltheti a Linux rendszerű számítógépen az alábbi paranccsal:   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`

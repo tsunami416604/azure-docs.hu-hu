@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2750de16c71e7d678810316f281e28ca8c40553d
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 0e07e371afaa239ca423f4266557cd2f55aa3a55
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403153"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495258"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Az Azure Active Directory-manifest aplikace
 
@@ -50,7 +50,7 @@ Az alkalmazásjegyzék konfigurálása:
 
 | Kulcs  | Érték típusa | Leírás  | Példaérték |
 |---------|---------|---------|---------|
-| `accessTokenAcceptedVersion` | Nullázható Int32 | Adja meg a hozzáférési jogkivonat verziót az erőforrás által várt. A verzió változik, és a JWT formátumát előállítása független a végpontot, illetve a hozzáférési jogkivonat kéréséhez használt ügyfél.<br/><br/>A használt végpont, 1.0-s verzió vagy 2.0-s verziójú, az ügyfél által van kiválasztva, és csak hatással van a id_tokens verzióját. Erőforrásokhoz kell explicit módon konfigurálása `accesstokenAcceptedVersion` jelzi a támogatott hozzáférési jogkivonat formátuma.<br/><br/>Lehetséges értékei `accesstokenAcceptedVersion` : 1, 2 vagy null értékű. Ha az érték null, ez alapértelmezett értéke 1, amely megfelel az 1.0-s verziójú végpont. | `2` |
+| `accessTokenAcceptedVersion` | Nullázható Int32 | Adja meg a hozzáférési jogkivonat verziót az erőforrás által várt. A verzió változik, és a JWT formátumát előállítása független a végpontot, illetve a hozzáférési jogkivonat kéréséhez használt ügyfél.<br/><br/>A használt végpont, 1.0-s verzió vagy 2.0-s verziójú, az ügyfél által van kiválasztva, és csak hatással van a id_tokens verzióját. Erőforrásokhoz kell explicit módon konfigurálása `accesstokenAcceptedVersion` jelzi a támogatott hozzáférési jogkivonat formátuma.<br/><br/>Lehetséges értékei `accesstokenAcceptedVersion` : 1, 2 vagy null értékű. Ha az érték null, ez alapértelmezett értéke 1, amely megfelel az 1.0-s verziójú végpont. <br/><br/>Ha `signInAudience` van `AzureADandPersonalMicrosoftAccount`, az értéknek kell lennie `2` | `2` |
 | `allowPublicClient` | logikai | A tartalék alkalmazás típusát határozza meg. Az Azure AD alapértelmezés szerint az alkalmazás típusát, a replyUrlsWithType kikövetkezteti. Vannak bizonyos helyzetekben, ahol az Azure AD nem tudja megállapítani az ügyféloldali alkalmazás típusa (pl. [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) HTTP-kérelem egy URL-átirányítás nélkül történik, ahol a folyamat). Ezekben az esetekben az Azure AD fog értelmezni az alkalmazás típusát, ez a tulajdonság értéke alapján. Ha ezt az értéket a tartalék alkalmazástípus igaz értékre van beállítva, például mobileszközön futó telepített alkalmazás nyilvános ügyfél van beállítva. Az alapértelmezett érték: false ami azt jelenti, hogy a tartalék alkalmazástípus bizalmas ügyfél, például webes alkalmazás. | `false` |
 | `appId` | Azonosító karakterlánc | Itt adhatja meg az alkalmazás-alkalmazásokba az Azure AD által hozzárendelt egyedi azonosítója. | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
 | `appRoles` | A tömb típusa | Itt adhatja meg, hogy egy alkalmazás deklarálhat szerepkörök gyűjteménye. Ezeket a szerepköröket rendelhet felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokat. További példákat és info [alkalmazás-szerepkörök hozzáadása az alkalmazásban, és fogadhatók a jogkivonat](howto-add-app-roles-in-azure-ad-apps.md) | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |

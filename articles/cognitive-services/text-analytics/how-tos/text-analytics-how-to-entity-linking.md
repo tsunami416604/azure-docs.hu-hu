@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: d1f4c72ec0a67baa6f523c1ab632903b0580f3a7
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: dfbb31ce9f61ee28fef046120474a6a170906512
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339380"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505575"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Megnevezett entitások felismerése használata a Text Analytics (előzetes verzió)
 
@@ -44,7 +44,7 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 | Typo  | SubType | Példa |
 |:-----------   |:------------- |:---------|
 | Személy        | N/A\*         | "Jeff", "Bill Gates"     |
-| Hely      | N/A\*         | "Redmond, Washington", "Párizs"  |
+| Földrajzi egység      | N/A\*         | "Redmond, Washington", "Párizs"  |
 | Szervezet  | N/A\*         | "Microsoft"   |
 | Mennyiség      | Szám        | "6", "hat"     | 
 | Mennyiség      | Százalék    | "50 %", "ötven százalék"| 
@@ -56,7 +56,7 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 | Mennyiség      | Hőmérséklet   | "32 fokos"    |
 | DateTime      | N/A\*         | "6:30 = 1997031213 2012. február 4."      | 
 | DateTime      | Dátum          | "2., 2017 május", "05/02/2017"   | 
-| Dátum és idő     | Time          | "8 am", "8:00"  | 
+| DateTime      | Time          | "8 am", "8:00"  | 
 | DateTime      | DateRange     | "Május 2. május 5-én a"    | 
 | DateTime      | timeRange     | "du. 6, 7 pm"     | 
 | DateTime      | Időtartam      | "1 perc 45 másodpercig"   | 
@@ -96,7 +96,7 @@ A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytic
 
 + Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentáció: [Entitáskapcsolási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Állítsa be a HTTP-végpontot entitások kinyeréséhez. Tartalmaznia kell a `/entities` erőforrást: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ Állítsa be a HTTP-végpontot entitások kinyeréséhez. Tartalmaznia kell a `/entities` erőforrás: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 + A kérés fejlécet állítsa be úgy, hogy tartalmazza a Text Analytics műveletekhez a hozzáférési kulcsot. További információkért lásd: [Végpontok és hozzáférési kulcsok megkeresése](text-analytics-how-to-access-key.md).
 
@@ -287,11 +287,11 @@ Ebben a cikkben megtanulta, fogalmak és a Cognitive Services Text Analytics has
 
 ## <a name="see-also"></a>Lásd még 
 
- [A Text Analytics áttekintése](../overview.md)  
+ [Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
  [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712) 
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Text Analytics API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)
+> [Szövegelemzések API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)

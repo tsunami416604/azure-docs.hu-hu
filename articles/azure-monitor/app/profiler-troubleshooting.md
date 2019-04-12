@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c9e6e289fbda3188449ecc71cbc90bed546512e1
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471528"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495396"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Engedélyezése és megtekintése az Application Insights Profiler kapcsolatos problémák elhárítása
 
@@ -71,7 +71,7 @@ A Profiler megfelelő működéséhez:
 
     |Alkalmazásbeállítás    | Érték    |
     |---------------|----------|
-    |ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY         | a Rendszerállapotkulcsot az Application Insights-erőforrást    |
+    |ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY         | a Rendszerállapotkulcsot az Application Insights-erőforrás    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
     |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
@@ -83,7 +83,7 @@ A Profiler megfelelő működéséhez:
    
       ![profiler-webjob]   
    
-   1. A webjobs-feladatot a naplóhoz, beleértve a részletek megtekintéséhez válassza ki a **ApplicationInsightsProfiler2** hivatkozásra.  
+   1. A webjobs-feladatot a naplóhoz, beleértve a részletek megtekintéséhez válassza ki a **ApplicationInsightsProfiler3** hivatkozásra.  
      A **folyamatos webjobs-feladat részletei** panel nyílik meg.
 
       ![profiler-webjob-log]
@@ -92,7 +92,7 @@ Nem számítható ki, miért Profiler nem működik, ha a napló letöltése, é
     
 ### <a name="manual-installation"></a>Manuális telepítés
 
-Profiler konfigurálásakor a webalkalmazás-beállítások végrehajtott frissítéseket. Ha a környezet számára szükséges, manuálisan alkalmazhatja a frissítéseket. Például lehet, hogy az alkalmazás a Web Apps környezetben fut a powerapps szolgáltatásra. Frissítések manuális alkalmazásához, tegye a következőket:
+Profiler konfigurálásakor a webalkalmazás-beállítások végrehajtott frissítéseket. Ha a környezet számára szükséges, manuálisan alkalmazhatja a frissítéseket. Például lehet, hogy az alkalmazás a Web Apps környezetben fut a powerapps szolgáltatásra. Frissítések manuális alkalmazásához:
 
 1. Az a **webes alkalmazás-vezérlő** ablaktáblán nyissa meg **beállítások**.
 
@@ -103,7 +103,7 @@ Profiler konfigurálásakor a webalkalmazás-beállítások végrehajtott friss�
 
     |Alkalmazásbeállítás    | Érték    |
     |---------------|----------|
-    |ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY         | a Rendszerállapotkulcsot az Application Insights-erőforrást    |
+    |ÁLLÍTANI AZ APPINSIGHTS_INSTRUMENTATIONKEY         | a Rendszerállapotkulcsot az Application Insights-erőforrás    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
     |DiagnosticServices_EXTENSION_VERSION | ~3 |
 

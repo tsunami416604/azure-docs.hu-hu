@@ -1,5 +1,5 @@
 ---
-title: Az Azure-on Előzetesben Sentinel-fenyegetésfelderítési adatok gyűjtése |} A Microsoft Docs
+title: Csatlakozás Azure-on Előzetesben Sentinel-fenyegetésfelderítési adatok |} A Microsoft Docs
 description: Ismerje meg a fenyegetésfelderítési adatok kapcsolódás Azure Sentinel.
 documentationcenter: na
 author: rkarlin
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: bc8a644f99d9a84e1f2c177a87e2668ae9a57868
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: a33b00e4e553824f1f719be2c8518487241f0a11
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400627"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494833"
 ---
-# <a name="collect-data-from-threat-intelligence-providers"></a>Fenyegetésfelderítési szolgáltatóktól vásárolja történő adatgyűjtést 
+# <a name="connect-data-from-threat-intelligence-providers"></a>Csatlakozás a data-fenyegetésfelderítési szolgáltatóktól vásárolja 
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
@@ -44,7 +44,7 @@ Fenyegetésfelderítési szolgáltatóktól vásárolja származó naplók is st
 
 1. Ha már használja egy threat intelligence szolgáltató, mindenképpen keresse meg a TIP-alkalmazást, és engedélyezi a mutatók küldeni a Microsoftnak, és adja meg a szolgáltatás az Azure-Sentinel.  
 
-2. Az Azure-Sentinel, válassza **adatgyűjtés** és kattintson a **Fenyegetésészlelési intelligencia** csempére.
+2. Az Azure-Sentinel, válassza **adatösszekötők** és kattintson a **Fenyegetésészlelési intelligencia** csempére.
 
 3. Kattintson a **Connect** (Csatlakozás) gombra. 
 

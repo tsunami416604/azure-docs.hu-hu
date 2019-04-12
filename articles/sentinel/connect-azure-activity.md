@@ -1,6 +1,6 @@
 ---
-title: Az Azure az Azure-on Előzetesben Sentinel-adatok gyűjtése |} A Microsoft Docs
-description: Ismerje meg, hogyan gyűjtheti az Azure az Azure Sentinel-adatok.
+title: Csatlakozás Azure-tevékenységi adatait Azure Sentinel-előzetes verzió |} A Microsoft Docs
+description: Ismerje meg, hogyan Azure Sentinel-csatlakozás az Azure-tevékenységi adatait.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 42ce8d06489cfacf7ba9bb3de1425224b5df95e7
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d0cc13227bfe02594a57a7fb0ba8ee1cb3383d56
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240575"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494678"
 ---
-# <a name="collect-data-from-azure-activity-log"></a>Adatok gyűjtését az Azure-tevékenységnapló
+# <a name="connect-data-from-azure-activity-log"></a>Adatok csatlakoztatása az Azure-tevékenységnapló
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
@@ -37,7 +37,7 @@ Naplóinak streamelheti [Azure tevékenységnapló](../azure-monitor/platform/ac
 
 ## <a name="connect-to-azure-activity-log"></a>Csatlakozás Azure-tevékenységnapló
 
-1. Az Azure-Sentinel, válassza **adatgyűjtés** és kattintson a **Azure tevékenységnapló** csempére.
+1. Az Azure-Sentinel, válassza **adatösszekötők** és kattintson a **Azure tevékenységnapló** csempére.
 
 2. A tevékenység az Azure log ablaktáblán jelölje ki a kívánt streamelése az Azure Sentinel-előfizetések. 
 

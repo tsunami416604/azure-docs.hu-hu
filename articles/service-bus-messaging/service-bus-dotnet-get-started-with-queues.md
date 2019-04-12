@@ -12,38 +12,29 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: dfdea9f8d50c467bf0e4317c8d95135afefa765f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 22996b277aba96cbbfedbb3e9cc67644d1a535ca
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778008"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500685"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Bevezetés a Service Bus által kezelt üzenetsorok használatába
-
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-
-Ez az oktatóanyag a következő lépéseken vezet végig:
-
-1. Service Bus-névtér létrehozása az Azure Portal használatával.
-2. Service Bus-üzenetsor létrehozása az Azure Portal használatával.
-3. Írjon egy .NET Core-konzolalkalmazást, hogy elküldjön egy üzenetkészletet az üzenetsorba.
-4. Írjon egy .NET Core-konzolalkalmazást, hogy üzeneteket tudjon fogadni az üzenetsorból.
+Ebben az oktatóanyagban üzeneteket küldeni, illetve üzeneteket fogadhat a Service Bus-üzenetsorba, .NET Core-konzolalkalmazást hoz létre. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 1. [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb.
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
-2. Azure-előfizetés.
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-[!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
-
+2. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+3. Ha nem rendelkezik egy üzenetsorba való együttműködéshez, kövesse lépéseket a [egy Service Bus-üzenetsor létrehozása az Azure portal](service-bus-quickstart-portal.md) várólista létrehozásához a cikkben.
+    1. Olvassa el a gyors **áttekintése** Service Bus **üzenetsorok**. 
+    2. Hozzon létre egy Service Bus **névtér**. 
+    3. Első a **kapcsolati karakterlánc**. 
+    4. Hozzon létre egy Service Bus **várólista**. 
 
 ## <a name="send-messages-to-the-queue"></a>Üzenetek küldése az üzenetsorba
 
@@ -206,7 +197,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
 
 ## <a name="receive-messages-from-the-queue"></a>Üzenet fogadása az üzenetsorból
 
-Az imént elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzolalkalmazást, majd telepítse a **Microsoft.Azure.ServiceBus** NuGet-csomagot, az előző küldő alkalmazáshoz hasonlóan.
+Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzolalkalmazást, és telepítse a **Microsoft.Azure.ServiceBus** NuGet-csomagjára, hasonlóan az előző küldő alkalmazáshoz.
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Kód írása az üzenetek üzenetsorból történő fogadásához
 

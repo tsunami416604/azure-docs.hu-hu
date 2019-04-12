@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 4d090740b75acbe2629ae4f1e13cde8947f190bb
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: ae89ab811015fca9bcb50fcc149534754533c25f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286431"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491514"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -51,7 +51,7 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 **Hibakód:**: UserErrorRpCollectionLimitReached <br>
 **Chybová zpráva**: Elérte a Visszaállításipont-gyűjtemény maximális korlátját. <br>
 * A probléma akkor fordulhat elő, ha a helyreállítási pont erőforráscsoport megakadályozza az automatikus tisztítás helyreállítási pont található egy zárolás.
-* A probléma is előfordulhat, ha naponta több biztonsági mentése esetén. Jelenleg javasoljuk, hogy csak egy biztonsági mentés azonnali RPs 7 napig maradnak, naponta, és csak 18 azonnali RPs társítható egy virtuális Gépet egy adott időpontban. <br>
+* A probléma is előfordulhat, ha naponta több biztonsági mentése esetén. Jelenleg javasoljuk, hogy csak egy biztonsági mentés naponta, 1 – 5 napig megfelelően konfigurált pillanatkép megőrzési az azonnali helyreállítás pontok marad, és csak 18 azonnali RPs társítható egy virtuális Gépet egy adott időpontban. <br>
 
 Javasolt művelet:<br>
 A probléma megoldásához távolítsa el a zárolást a az erőforráscsoport, a virtuális gép, és próbálja megismételni a műveletet kiváltó karbantartási.
@@ -59,7 +59,7 @@ A probléma megoldásához távolítsa el a zárolást a az erőforráscsoport, 
 > A biztonsági mentési szolgáltatás létrehoz egy külön erőforráscsoportot, mint az erőforráscsoport, a virtuális gép visszaállításipont-gyűjtemény tárolásához. Ügyfelek, a Backup szolgáltatás használni létrehozott erőforráscsoportot zárolása nem végigvitelével. A Backup szolgáltatás által létrehozott erőforráscsoport elnevezési formátuma: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
 
 **1. lépés: [Távolítsa el a zárolást a visszaállítási pont erőforráscsoportból](#remove_lock_from_the_recovery_point_resource_group)** <br>
-**2. lépés: [Visszaállításipont-gyűjtemény törlése](#clean_up_restore_point_collection)**<br>
+**2. lépés: [Visszaállításipont-gyűjtemény törlése](#clean_up_restore_point_collection)**<br>
 
 ## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured – a biztonsági mentés nem rendelkezik megfelelő engedélyekkel a titkosított virtuális gépek biztonsági mentése a key vault
 

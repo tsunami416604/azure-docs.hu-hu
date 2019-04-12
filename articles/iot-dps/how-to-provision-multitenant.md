@@ -3,17 +3,17 @@ title: Eszközök kiépítése több-bérlős módhoz az Azure IoT Hub Device Pr
 description: Eszközök kiépítése több-bérlős módhoz az a device provisioning service-példány
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/15/2018
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: ea071b704c58383ce52615bb1dfd88df8017ef7f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+manager: philmea
+ms.openlocfilehash: 84e1f57175d772ad281c18b67fa1be484c0cac69
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544443"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500736"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Hogyan helyezhet üzembe több-bérlős módhoz 
 
@@ -208,7 +208,7 @@ Ebben a szakaszban az egyes virtuális Gépeken az Azure IoT C SDK fogja klónoz
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
 
-    Az adattár mérete jelenleg körülbelül 220 MB. Ez a művelet várhatóan több percig is eltarthat.
+    Ez a művelet várhatóan több percig is eltarthat.
 
 1. Mindkét virtuális gépekhez, hozzon létre egy új **cmake** belüli a tárházat és a módosítás ahhoz a mappához.
 
@@ -420,7 +420,7 @@ Az erőforráscsoport törlése a név alapján:
 
 ## <a name="next-steps"></a>További lépések
 
-- További Reprovisioning kapcsolatban lásd: [IoT Hub Device reprovisoning fogalmak](concepts-device-reprovision.md) 
+- További Reprovisioning kapcsolatban lásd: [IoT Hub Device reprovisioning fogalmak](concepts-device-reprovision.md) 
 - Megszüntetés további tudnivalókért lásd: [hogyan eszközöket, amelyek korábban automatikus – kiépített megszüntetése](how-to-unprovision-devices.md) 
 
 

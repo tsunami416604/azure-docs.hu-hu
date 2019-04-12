@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 6a9b4fc5479dda58dd024cdf93cbdf4853f9c965
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 38cbd32be30885837d2f98a9e1dd5d967b4938b4
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055113"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489811"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Eszközhitelesítés X.509 Hitelesítésszolgáltatói tanúsítványok használatával
 
@@ -40,7 +40,7 @@ Az x.509-es Hitelesítésszolgáltatói tanúsítvány van, minden eszközhöz t
 
 A lezárt IoT-hálózatok is létrehozhat egy önaláírt x.509-es Hitelesítésszolgáltatói Kísérletezési vagy használatra.
 
-Függetlenül attól, hogy, hogyan szerezze be az x.509-es Hitelesítésszolgáltatói tanúsítvány, győződjön meg arról, hogy azt a megfelelő titkos kulcs titkos kulcsot, és védett mindig legyen.  Ez a megbízhatósági kapcsolatban az x.509-es Hitelesítésszolgáltatói hitelesítést a megbízhatósági kapcsolat létrehozásához szükséges. 
+Függetlenül attól, hogy, hogyan szerezze be az x.509-es Hitelesítésszolgáltatói tanúsítvány, győződjön meg arról, hogy azt a megfelelő titkos kulcs titkos kulcsot, és védett mindig legyen.  Ez a megbízhatósági kapcsolatban az x.509-es Hitelesítésszolgáltatói hitelesítést a megbízhatósági kapcsolat létrehozásához szükséges.
 
 Ismerje meg, hogyan [hozzon létre egy önaláírt tanúsítványa](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), amellyel kísérletezéssel során ez a funkció leírása.
 
@@ -48,7 +48,9 @@ Ismerje meg, hogyan [hozzon létre egy önaláírt tanúsítványa](https://gith
 
 X.509 Hitelesítésszolgáltatói tanúsítvány tulajdonosának egy közbenső hitelesítésszolgáltató, akik viszont be tud jelentkezni egy másik közbenső hitelesítésszolgáltató titkosítási szempontból be tud jelentkezni, és így tovább, amíg a legutóbbi köztes Hitelesítésszolgáltatói leállítja ezt a folyamatot egy eszköz regisztrálásával. Ez kaszkádolt lánc, más néven a tanúsítvány megbízhatósági láncában. A valós életben ez tölt azokra az eszközökre aláíró megbízhatósági delegálását. A delegálás fontos, mert azt a felügyeleti lánc titkosítási szempontból változó láncot hoz létre, és elkerülhető az aláírókulcs megosztását.
 
-![img-Generic-CERT-CHAIN-of-Trust](./media/generic-cert-chain-of-trust.png)
+![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
+
+Az eszköz tanúsítványát (más néven a levéltanúsítvány) kell rendelkeznie a *tulajdonosnévvel* beállítása a **Eszközazonosító** az IoT-eszköz regisztrálása az Azure IoT hubban, amely során használt. Ez a beállítás megadása kötelező a hitelesítéshez.
 
 Itt megtudhatja, hogyan [tanúsítványláncolat](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) ahogyan az eszközök bejelentkezéskor.
 

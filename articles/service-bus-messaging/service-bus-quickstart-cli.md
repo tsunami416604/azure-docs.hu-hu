@@ -7,36 +7,32 @@ manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 02/25/2019
+ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: b40cd130039f7d55b69198b4be4af908dedbe8b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb19833251fc9ee08a12aaf6ffcef55d59cea5d6
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076887"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500634"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Gyors útmutató: Az Azure CLI használatával hozzon létre egy Service Bus-üzenetsorba
-
-A Microsoft Azure Service Bus egy vállalati integrációs üzenetközvetítő, amely biztonságos üzenetküldést és megbízható szolgáltatást nyújt. Egy jellemző Service Bus-forgatókönyv általában két vagy több alkalmazás, szolgáltatás vagy folyamat egymástól való szétválasztását (az alkalmazásoknak nem kell egyidejűleg online állapotban lenniük), az állapot- vagy adatváltozások továbbítását, valamint az alkalmazások közötti üzenetküldést foglalja magában. 
-
-Például egy kereskedelmi vállalat elküldheti az értékesítési pontokra vonatkozó adatait egy háttérrendszernek vagy egy regionális terjesztőközpontnak feltöltés vagy leltárfrissítés céljából. Ebben az esetben az ügyfélalkalmazás üzeneteket küld és fogad egy Service Bus-üzenetsorból:
-
-![üzenetsor](./media/service-bus-quickstart-cli/quick-start-queue.png)
-
 Ebben a rövid útmutató üzenetek küldése és fogadása Service Bus szolgáltatással az Azure CLI és a Service Bus-Java-kódtár használatával. Ha további technikai részletekre kíváncsi, olvassa el a mintakód fő elemeihez tartozó [magyarázatot](#understand-the-sample-code).
 
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+
+## <a name="prerequisites"></a>Előfeltételek
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy [ingyenes fiókot][].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+Ha használja a **Kipróbálom** gombra kattintva indítsa el a Cloud Shellt, jelentkezzen be Azure hitelesítő adataival. 
 
-Az Azure Portal jobb felső sarkában található menüben kattintson a Cloud Shell gombra, majd a **Környezet kiválasztása** legördülő menüben válassza a **Bash** lehetőséget. 
+Ha a böngészőben, vagy közvetlenül, vagy az Azure Portalon, váltson át a Cloud Shellben elindította **Bash** Ha **PowerShell** a Cloud Shellben bal felső sarkában. 
 
 ## <a name="use-the-azure-cli-to-create-resources"></a>Erőforrások létrehozása az Azure CLI használatával
-
-A Cloud Shellben a Bash parancssorból indítsa el az alábbi parancsokat a Service Bus-erőforrások kiépítéséhez. Ne felejtse el lecserélni az összes helyőrzőt a megfelelő értékre: A Java-sample program vár BasicQueue, így nem módosítani kell az üzenetsor neve. 
+A Cloud Shellben a Bash parancssorból indítsa el az alábbi parancsokat a Service Bus-erőforrások kiépítéséhez. Ne felejtse el lecserélni az összes helyőrzőt a megfelelő értékre: A Java-sample program vár BasicQueue, így nem módosítani kell az üzenetsor neve. Érdemes másolási/beillesztési egyesével-parancsokat, hogy az értékek lecserélheti őket futtatása előtt. 
 
 ```azurecli-interactive
 # Create a resource group
@@ -373,12 +369,12 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Ha többet szeretne megtudni az üzenetfogadásra és -küldésre szolgáló kódok írásáról, lépjen tovább a Service Busról szóló oktatóanyagra:
+Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Üzenetek küldése és fogadása, kódírás kapcsolatos további információkért folytassa szereplő oktatóanyagok a **üzenetek küldése és fogadása** szakaszban. 
 
 > [!div class="nextstepaction"]
-> [Leltár frissítése az Azure CLI-vel és a Java használatával](./service-bus-tutorial-topics-subscriptions-cli.md)
+> [Üzenetek küldése és fogadása](service-bus-dotnet-get-started-with-queues.md)
 
-[ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[ingyenes fiók]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

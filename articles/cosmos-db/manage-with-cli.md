@@ -4,20 +4,18 @@ description: Az Azure Cosmos DB fiókot, adatbázist és tárolók kezelése az 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 4/8/2019
 ms.author: mjbrown
-ms.openlocfilehash: c3028fd18bd9afefaa18f7f515a43a852ddef78a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1d19e58b2d1381725de490b68d9e4d00a2ca4cb6
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464398"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495481"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLI-vel az Azure Cosmos-erőforrások kezelése
 
-Ez az útmutató azt ismerteti, automatizált felügyelete az Azure Cosmos DB-fiókok, adatbázisok és tárolók az Azure CLI-vel a parancsokat. A tároló átviteli teljesítményének skálázása parancsokat is tartalmaz. Az Azure Cosmos DB CLI-parancsainak egyes referenciaoldalait az [Azure CLI referenciái](https://docs.microsoft.com/cli/azure/cosmosdb) között érheti el. A további példákat is talál [Azure CLI-minták az Azure Cosmos DB](cli-samples.md), beleértve, hogyan hozhat létre, és a MongoDB, a Gremlin, a Cassandra és a Table API Cosmos DB-fiókok, adatbázisok és tárolók kezelése.
-
-Ez a CLI-példaszkript létrehoz egy Azure Cosmos DB SQL API-fiókot, -adatbázist és -tárolót.  
+Ez az útmutató azt ismerteti, automatizált felügyelete az Azure Cosmos DB-fiókok, adatbázisok és tárolók az Azure CLI-vel a gyakori parancsok. Az Azure Cosmos DB CLI-parancsainak egyes referenciaoldalait az [Azure CLI referenciái](https://docs.microsoft.com/cli/azure/cosmosdb) között érheti el. A további példákat is talál [Azure CLI-minták az Azure Cosmos DB](cli-samples.md), beleértve, hogyan hozhat létre, és a MongoDB, a Gremlin, a Cassandra és a Table API Cosmos DB-fiókok, adatbázisok és tárolók kezelése.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -25,89 +23,92 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 
-Azure Cosmos DB-fiók létrehozása az SQL API-munkamenet-konzisztencia, az USA keleti RÉGIÓJA és USA nyugati RÉGIÓJA, több főkiszolgálós nyissa meg az Azure CLI vagy a cloud shell, és futtassa a következő parancsot:
+SQL API és a munkamenet-konzisztencia az USA keleti RÉGIÓJA és USA nyugati régiójában, az Azure Cosmos DB-fiók létrehozásához futtassa a következő parancsot:
 
 ```azurecli-interactive
 az cosmosdb create \
-   –-name "myCosmosDbAccount" \
-   --resource-group "myResourceGroup" \
+   --name mycosmosdbaccount \
+   --resource-group myResourceGroup \
    --kind GlobalDocumentDB \
-   --default-consistency-level "Session" \
-   --locations "EastUS=0" "WestUS=1" \
-   --enable-multiple-write-locations true \
+   --default-consistency-level Session \
+   --locations EastUS=0 WestUS=1 \
+   --enable-multiple-write-locations false
 ```
+
+> [!IMPORTANT]
+> Az Azure Cosmos-fiók neve csak kisbetűket tartalmazhatnak.
 
 ## <a name="create-a-database"></a>Adatbázis létrehozása
 
-Hozzon létre egy Cosmos DB-adatbázisban, nyissa meg az Azure CLI vagy a cloud shell, és futtassa a következő parancsot:
+Cosmos DB-adatbázis létrehozásához futtassa a következő parancsot:
 
 ```azurecli-interactive
 az cosmosdb database create \
-   --name "myCosmosDbAccount" \
-   --db-name "myDatabase" \
-   --resource-group "myResourceGroup"
+   --name mycosmosdbaccount \
+   --db-name myDatabase \
+   --resource-group myResourceGroup
 ```
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Hozzon létre egy Cosmos DB-tárolón az 1000 RU/s és a egy partíciókulcsot, nyissa meg az Azure CLI vagy a cloud shell, és futtassa a következő parancsot:
+Hozzon létre egy Cosmos DB-tárolón az RU/s 400-as és a egy partíciókulcsot, futtassa a következő parancsot:
 
 ```azurecli-interactive
 # Create a container
 az cosmosdb collection create \
-   --collection-name "myContainer" \
-   --name "myCosmosDbAccount" \
-   --db-name "myDatabase" \
-   --resource-group "myResourceGroup" \
-   --partition-key-path = "/myPartitionKey" \
-   --throughput 1000
+   --collection-name myContainer \
+   --name mycosmosdbaccount \
+   --db-name myDatabase \
+   --resource-group myResourceGroup \
+   --partition-key-path /myPartitionKey \
+   --throughput 400
 ```
 
 ## <a name="change-the-throughput-of-a-container"></a>Az átviteli sebességet egy adott tároló módosítása
 
-Egy Cosmos DB-tároló átviteli kapacitást 400 RU/s módosításához nyissa meg az Azure CLI vagy a cloud shellben, és futtassa a következő parancsot:
+Az átviteli sebességet egy Cosmos DB-tárolón, 1000 RU/s módosításához futtassa a következő parancsot:
 
 ```azurecli-interactive
 # Update container throughput
 az cosmosdb collection update \
-   --collection-name "myContainer" \
-   --name "myCosmosDbAccount" \
-   --db-name "myDatabase" \
-   --resource-group "myResourceGroup" \
-   --throughput 400
+   --collection-name myContainer \
+   --name mycosmosdbaccount \
+   --db-name myDatabase \
+   --resource-group myResourceGroup \
+   --throughput 1000
 ```
 
 ## <a name="list-account-keys"></a>Fiók kulcsainak listázása
 
-Az Azure Cosmos DB-fiók létrehozásakor a szolgáltatás két fő kulcsot, amely az Azure Cosmos DB-fiók elérésekor hitelesítéshez használt állít elő. Azáltal, hogy a két hozzáférési kulcsot, az Azure Cosmos DB lehetővé teszi a kulcsok az Azure Cosmos DB-fiók megszakítás nélkül. Írásvédett kulcsok hitelesítéséhez a csak olvasható műveletekhez is elérhetők. Nincsenek két írható és olvasható kulcsok (elsődleges és másodlagos) és a két csak olvasható kulcsok (elsődleges és másodlagos). A fiók a kulcsok beszerezheti a következő parancs futtatásával:
+Cosmos-fiókja a kulcsok lekéréséhez futtassa a következő parancsot:
 
 ```azurecli-interactive
 # List account keys
 az cosmosdb list-keys \
-   --name "myCosmosDbAccount"\
-   --resource-group "myResourceGroup"
+   --name  mycosmosdbaccount \
+   --resource-group myResourceGroup
 ```
 
 ## <a name="list-connection-strings"></a>Kapcsolati karakterláncok listája
 
-Csatlakozás a Cosmos DB-fiókot az alkalmazás a kapcsolati karakterláncot a következő paranccsal lehet beolvasni.
+A kapcsolati karakterláncok Cosmos-fiókja lekéréséhez futtassa a következő parancsot:
 
 ```azurecli-interactive
 # List connection strings
 az cosmosdb list-connection-strings \
-   --name "myCosmosDbAccount"\
-   --resource-group "myResourceGroup"
+   --name mycosmosdbaccount \
+   --resource-group myResourceGroup
 ```
 
 ## <a name="regenerate-account-key"></a>Fiókkulcs újragenerálása
 
-Az Azure Cosmos DB-fiókot, és rendszeres időközönként biztonságosabb fenntarthatja a kapcsolatokat, módosítania kell a hozzáférési kulcsokat. Lehetővé teszi az Azure Cosmos DB-fiók az egyik kulcs, míg más hozzáférési kulcs kapcsolatok fenntartásához két kulcsot vannak hozzárendelve.
+Cosmos-fiókja egy új elsődleges kulcs újragenerálása, futtassa a következő parancsot:
 
 ```azurecli-interactive
 # Regenerate account key
 az cosmosdb regenerate-key \
-   --name "myCosmosDbAccount"\
-   --resource-group "myResourceGroup" \
+   --name mycosmosdbaccount \
+   --resource-group myResourceGroup \
    --key-kind primary
 ```
 
@@ -115,6 +116,6 @@ az cosmosdb regenerate-key \
 
 Az Azure CLI-vel kapcsolatban lásd:
 
-- [Az Azure parancssori felület telepítése](/cli/azure/install-azure-cli)
-- [Azure parancssori felület referenciája](https://docs.microsoft.com/cli/azure/cosmosdb)
+- [Telepítse az Azure CLI-t](/cli/azure/install-azure-cli)
+- [Az Azure parancssori Felületével – referencia](https://docs.microsoft.com/cli/azure/cosmosdb)
 - [További Azure CLI-minták az Azure Cosmos DB-hez](cli-samples.md)

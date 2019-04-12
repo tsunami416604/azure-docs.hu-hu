@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 04/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 48fb09b73a6169da392443f5fbf4f005e9640c3e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 4476bb0a5a343fd43ce5ed70cf0e493d0ccae0e9
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905987"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505634"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Összegyűjtheti és elemezheti a Log Analytics-munkaterületet az Azure monitorban az Azure-Tevékenységnaplók
 
 ![Azure Tevékenységnaplók szimbólum](./media/collect-activity-logs/activity-log-analytics.png)
 
-Az Activity Log Analytics megoldás segítségével elemezheti és keresse a [Azure tevékenységnapló](../../azure-monitor/platform/activity-logs-overview.md) az összes Azure-előfizetés. Az Azure-tevékenységnapló egy naplóban, amely az előfizetésekben erőforrásokon végrehajtott műveletekkel kapcsolatos információkat biztosít. A tevékenységnapló korábbi nevén *Auditnaplók* vagy *műveleti naplók* óta jelentést készít az előfizetés eseményeire.
+Az Activity Log Analytics megoldás segítségével elemezheti és keresse a [Azure tevékenységnapló](activity-logs-overview.md) az összes Azure-előfizetés. Az Azure-tevékenységnapló egy naplóban, amely az előfizetésekben erőforrásokon végrehajtott műveletekkel kapcsolatos információkat biztosít. A tevékenységnapló korábbi nevén *Auditnaplók* vagy *műveleti naplók* óta jelentést készít az előfizetés eseményeire.
 
 A tevékenységnapló használatával megadhatja, hogy a *mi*, *akik*, és *amikor* írási műveletek (PUT, POST, DELETE) arról, hogy az erőforrást az előfizetésében. A műveletek és az egyéb releváns tulajdonságok állapotát is ismernie is. A tevékenységnapló nem tartalmaz olvasási (GET) műveleteket, illetve az erőforrások a klasszikus üzemi modellt használó műveleteket.
 
@@ -52,28 +52,39 @@ Ellentétben a legtöbb Azure Monitor megoldások adatok nem lesznek gyűjtve te
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
-| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
-| [Az SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Nem | A megoldás az ügynökök a csatlakoztatott SCOM felügyeleti csoport nem gyűjt adatokat. |
+| [Windows-ügynökök](agent-windows.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
+| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
+| [System Center Operations Manage felügyeleti csoport](om-agents.md) | Nem | A megoldás egy Operations Manager felügyeleti csoportnak jelentő ügynököktől származó nem gyűjt adatokat. |
 | [Azure Storage-fiók](collect-azure-metrics-logs.md) | Nem | A megoldás nem gyűjt adatokat az Azure storage-ból. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Szeretné elérni az Azure-Tevékenységnaplók adatait, Azure-előfizetéssel kell rendelkeznie.
+Szeretné elérni az Azure-Tevékenységnaplók adatait, Azure-előfizetéssel kell rendelkeznie.
+
+A megoldás is szükséges, hogy a következő két erőforrás-szolgáltató regisztrálva van az előfizetés:
+
+1. Microsoft.OperationalInsights
+2. Microsoft.OperationsManagement
+
+Ismerje meg, hogyan regisztrálhatók, vagy ellenőrizze, hogy regisztrálva vannak, tekintse meg [Azure-erőforrás-szolgáltatók és típusaik](../../azure-resource-manager/resource-manager-supported-services.md)
 
 ## <a name="configuration"></a>Konfiguráció
 
 A következő lépésekkel konfigurálja az Activity Log Analytics megoldást, a munkaterületek.
 
-1. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](../../azure-monitor/insights/solutions.md) című témakörben leírt eljárást követve.
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+
+2. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](../insights/solutions.md) című témakörben leírt eljárást követve.
+
 2. Tevékenységnaplók az Ugrás a Log Analytics-munkaterület konfigurálása.
     1. Az Azure Portalon válassza ki a munkaterületet, és kattintson a **Azure tevékenységnapló**.
     2. Az egyes előfizetésekhez kattintson az előfizetés nevét.  
+        
         ![Előfizetés hozzáadása](./media/collect-activity-logs/add-subscription.png)
+    
     3. Az a *SubscriptionName* panelen kattintson a **Connect**.  
+    
         ![Előfizetés csatlakoztatása](./media/collect-activity-logs/subscription-connect.png)
-
-Az Azure Portalra való csatlakozáshoz jelentkezzen be egy Azure-előfizetést a munkaterületre.  
 
 ## <a name="using-the-solution"></a>A megoldás használata
 
@@ -98,5 +109,5 @@ Tevékenységnapló adatainak csak akkor jelenik meg *után* konfigurálta a viz
 
 ## <a name="next-steps"></a>További lépések
 
-- Hozzon létre egy [riasztás](../../azure-monitor/platform/alerts-metric.md) mikor történik, egy adott tevékenységet.
-- Használat [naplóbeli keresés](../../azure-monitor/log-query/log-query-overview.md) a tevékenységnaplókból részletes információk megtekintéséhez.
+- Hozzon létre egy [riasztás](../platform/alerts-metric.md) mikor történik, egy adott tevékenységet.
+- Használat [naplóbeli keresés](../log-query/log-query-overview.md) a tevékenységnaplókból részletes információk megtekintéséhez.

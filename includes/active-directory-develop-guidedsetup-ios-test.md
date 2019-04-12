@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 918e4016f638555bfe2dbaeaa849e963e352c78e
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: e48aaa03463bb968ec366b27308ca908aab30d99
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203480"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503113"
 ---
 ## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>Tesztelje az iOS-alkalmazásból, a Microsoft Graph API lekérdezése
 
@@ -36,7 +36,8 @@ Első alkalommal jelentkezik be az alkalmazás kéri, hogy Ön hozzájárul ahho
 ![Adja meg az Ön hozzájárul az alkalmazás-hozzáférés](media/active-directory-develop-guidedsetup-ios-test/iosconsentscreen.png)
 
 ### <a name="view-application-results"></a>Kérelem eredményének megtekintése
-Miután bejelentkezett, megjelenik a profilok adatainak a a Microsoft Graph API-hívás által visszaadott a **naplózás** szakaszban. 
+
+Miután bejelentkezett, megjelenik a profilok adatainak a a Microsoft Graph API-hívás által visszaadott a **naplózás** szakaszban.
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörök és delegált engedélyek

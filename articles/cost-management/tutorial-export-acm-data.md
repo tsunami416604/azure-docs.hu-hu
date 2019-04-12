@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 04/10/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a0b50b86ca164199ca723354e39e194c6cd7423f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: df893683c387f8d694500ae1ace93a5a146ea352
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014126"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496794"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Hozzon létre, és az exportált adatok kezelése
 
@@ -75,6 +75,10 @@ Exportálási beállítások három típusa van:
 
 **Egyéni** – lehetővé teszi, hogy az ütemezés hetente és havonta exportálja hét és a hónap elejétől számított összetevőkkel. *A kezdeti exportálási azonnal fog futni.*
 
+Ha egy használatalapú fizetés, az MSDN vagy a Visual Studio-előfizetéssel rendelkezik, a számla elszámolási időszak nem lehet, hogy igazítás a naptári hónap. Az előfizetések és -erőforráscsoportok adott típusú igazított exportálása hozhat létre, a számlázási időszak vagy naptári hónapban. Szeretne létrehozni a Számlázási hónap igazodik az exportálást, váltson **egyéni**, majd **számlázási időszak-dátumig**.  A naptári hónapra igazítva exportálását létrehozásához válassza **hónap elejétől számított**.
+>
+>
+
 ![Új Exportálás – egyéni heti-hét kijelölés alapismeretek lap](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
 ## <a name="verify-that-data-is-collected"></a>Az adatgyűjtés sikerességének ellenőrzése
@@ -93,6 +97,7 @@ A fájl abban a programban vagy alkalmazásban nyílik meg, amelyik a CSV kiterj
 
 ![Példa az exportált CSV-adatok az Excel programban látható](./media/tutorial-export-acm-data/example-export-data.png)
 
+
 ## <a name="access-exported-data-from-other-systems"></a>Exportált adatokhoz való hozzáférés más rendszerekből
 
 A Cost Management-adatok exportálásának egyik célja az adatok külső rendszerekből való elérése. Használhat például valamilyen irányítópultot vagy egyéb pénzügyi rendszert. Az ilyen rendszerek nagyban eltérnek egymástól, ezért ebben az esetben nem lenne praktikus példával szolgálni.  Az adatok alkalmazásokból való elérését [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md) című cikkel is elkezdheti.
@@ -108,4 +113,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Folytassa a következő oktatóanyaggal, ha optimalizálni és javítani szeretné a hatékonyságot a tétlen és kihasználatlan erőforrások azonosításával.
 
 > [!div class="nextstepaction"]
-> [Optimalizálási javaslatok áttekintése és végrehajtása](tutorial-acm-opt-recommendations.md)
+> [Tekintse át és optimalizálási ajánlásoknak](tutorial-acm-opt-recommendations.md)

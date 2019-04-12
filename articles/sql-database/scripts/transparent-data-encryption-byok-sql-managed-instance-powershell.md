@@ -11,23 +11,31 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 03/27/2019
-ms.openlocfilehash: 6181183b1455d5ca38ab9bbd37102cb3bc091b3c
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.date: 04/09/2019
+ms.openlocfilehash: c08b5559fd599fb297f294a54aed67c65676aee4
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622093"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496233"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Transzparens adattitkosítás a felügyelt példány az Azure Key vaultból saját kulcs használata kezelheti
 
 A PowerShell-példaszkript Bring Your Own Key-forgatókönyvben transzparens adattitkosítási (TDE) konfigurálja az Azure SQL felügyelt példány az Azure Key Vaultban lévő kulcsot használ. A TDE Bring Your Own Key (BYOK) támogatásával kapcsolatos további információkért lásd: [TDE Bring Your Own Key az Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
 
+## <a name="prerequisites"></a>Előfeltételek
+
+- Meglévő felügyelt példányt. Lásd: [PowerShell-lel történő létrehozása az Azure SQL Database felügyelt példány](sql-database-create-configure-managed-instance-powershell.md).
+
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Ha helyi telepítése és használata a PowerShell, az oktatóanyaghoz AZ PowerShell 1.4.0-s vagy újabb. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Mindkét PowerShell segítségével helyileg vagy az Azure Cloud Shellt használja AZ PowerShell 1.1.1-preview vagy újabb verziója előzetes verzió szükséges. Ha frissíteni szeretne, olvassa el [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps), vagy futtassa az alábbi minta parancsfájl a modul telepítése.
+
+`Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease -Force`
+
+Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="sample-scripts"></a>Mintaszkriptek
 

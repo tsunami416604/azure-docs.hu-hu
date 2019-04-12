@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 04/10/2019
 ms.author: carlrab
-ms.openlocfilehash: c63ce51f442c8d7552c382f0e103be443afb9c75
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 9b961436c81282381f963d16c6c6dd5f289d1259
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360089"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495105"
 ---
 # <a name="sql-database-release-notes"></a>Az SQL Database kibocsátási megjegyzései
 
@@ -42,6 +42,8 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 |(A kompatibilitási szint 150) Sortárindex kötegelt mód|További információ: [Sortárindex kötegelt mód](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)|
 |A visszajelzés memóriabeli ideiglenes (sor mód) (a kompatibilitási szint 150)|További információ: [Memóriaengedély visszajelzését (sor mód)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)|
 |Tábla változó a Funkciófrissítéseket fordítási (a kompatibilitási szint 150)|További információ: [tábla változó a Funkciófrissítéseket fordítás](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)|
+|SQL Analytics|További információ: [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)|
+| Felügyelt példányok időzóna támogatása|További információkért lásd: [időzóna az Azure SQL Database felügyelt példánya](sql-database-managed-instance-timezone.md)|
 |||
 
 ## <a name="march-2019"></a>2019. március
@@ -57,6 +59,7 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 
 | Dokumentáció fejlesztései | Részletek |
 | --- | --- |
+| Felügyelt példányok időzóna támogatása|További információkért lásd: [időzóna az Azure SQL Database felügyelt példánya](sql-database-managed-instance-timezone.md)|
 | A hozzáadott log egyetlen adatbázisok korlátai|További információkért lásd: [egyetlen adatbázis virtuális mag erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md).|
 | Hozzáadott log rugalmas készletek és a készletezett adatbázisok korlátai|További információkért lásd: [rugalmas adatbáziskészletekhez virtuális mag erőforráskorlátok](sql-database-vcore-resource-limits-elastic-pools.md).|
 | A hozzáadott tranzakciós napló arány cégirányítási| Hozzáadott új tartalmak [tranzakciós napló arány cégirányítási](sql-database-resource-limits-database-server.md#transaction-log-rate-governance).|

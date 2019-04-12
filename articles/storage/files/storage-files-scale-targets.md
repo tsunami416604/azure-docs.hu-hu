@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 9cbb44fed8a9cc9e30e70e58f33fb943ee43b412
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 630ad1e0558fc089d79eee50175e497b771a0a8a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269163"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494969"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 
@@ -76,9 +76,9 @@ Segítséget az egyes szakaszok üzembe helyezésének megtervezése, az alábbi
 
 | Kezdeti egyszeri kiépítése  |  |
 |-|-|
-| Objektumok száma | 10 millió objektumok |
-| Adatkészlet mérete| ~ 4 Tib-ra |
-| Átlagos mérete | ~500 KiB (Largest File: 100 GiB) |
+| Objektumok száma | 25 millió objektumok |
+| Adatkészlet mérete| ~4.7 Tib-ra |
+| Átlagos mérete | Közel 200 KiB (legnagyobb fájlt: 100 GiB) |
 | Töltse fel az átviteli sebesség | másodpercenként 20 objektumok |
 | Namespace letöltési átviteli * | másodpercenként 400 objektumok |
 

@@ -1,6 +1,6 @@
 ---
-title: Azure-on Előzetesben Sentinel-adatok gyűjtése a Check Point |} A Microsoft Docs
-description: Ismerje meg az Azure-Sentinel a Check Point adatainak gyűjtéséről.
+title: A Check Point adatok csatlakozhat az Azure-on Előzetesben Sentinel-|} A Microsoft Docs
+description: Ismerje meg, hogyan Azure Sentinel-adatok a Check Point csatlakozhat.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1fb4f9165be03a7fc3cd055ef616dcfadb58ac9d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 664b09a8ad0cb7d06019281869e390a465637c00
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58876496"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489176"
 ---
 # <a name="connect-your-check-point-appliance"></a>A Check Point berendezés csatlakoztatása
 
@@ -30,7 +30,7 @@ ms.locfileid: "58876496"
 Csatlakozhat az Azure-Sentinel bármely a Check Point készülék Syslog CEF, a naplófájlokat menti. Az Azure Sentinel-integráció segítségével könnyedén futtathat elemzések és lekérdezések a naplófájl adatai között a Check Point. Hogyan Azure Sentinel-fogadnak CEF-adatok a további információkért lásd: [csatlakoztatása CEF berendezések](connect-common-event-format.md).
 
 > [!NOTE]
-> - Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
+> Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
 
 ## <a name="step-1-connect-your-check-point-appliance-using-an-agent"></a>1. lépés: A Check Point berendezés használatával egy ügynök csatlakoztatása
 
@@ -42,7 +42,7 @@ A hálózati diagram mindkét lehetőség előnyeivel, olvassa el [adatforrások
 
 ### <a name="deploy-the-agent-in-azure"></a>Telepítse az ügynököt az Azure-ban
 
-1. Az Azure-Sentinel-portálon kattintson a **adatgyűjtés** válassza ki a készüléket. 
+1. Az Azure-Sentinel-portálon kattintson a **adatösszekötők** válassza ki a készüléket. 
 
 1. A **Linux Syslog-ügynök konfigurációjának**:
    - Válasszon **automatikus központi telepítési** szeretné-e a fent leírtak szerint, hozzon létre egy új gépet, amely előre telepítve van az Azure Sentinel-ügynökkel, és tartalmazza a konfiguráció szükséges. Válassza ki **automatikus központi telepítési** kattintson **automatikus ügynöktelepítés**. Ekkor megjelenik a vásárlás lap, amely automatikusan csatlakozik a munkaterület dedikált virtuális gép számára. A virtuális gép egy **D2s v3-as standard (2 vcpu-k, 8 GB memória)** és a egy nyilvános IP-címmel rendelkezik.

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 2d65d51ae8148e2e55d57d39e306ded0f75da687
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652586"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494169"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Virtuális hálózati szolgáltatásvégpont-szabályzatok (előzetes verzió)
 
@@ -24,7 +24,7 @@ A virtuális hálózati (VNet) szolgáltatásvégpont-szabályzatok lehetővé t
 
 Ez a szolgáltatás __előzetes kiadásban__ érhető el a következő Azure-szolgáltatásokhoz és -régiókhoz:
 
-__Az Azure Storage__: WestCentralUS, WestUS2.
+__Az Azure Storage__: WestCentralUS, WestUS2, NorthCentralUS, SouthCentralUS, CentralUS, EastUS2.
 
 Az előzetes verzióval kapcsolatos legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózati frissítésekkel kapcsolatos](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 
@@ -35,13 +35,13 @@ Az előzetes verzióval kapcsolatos legfrissebb értesítésekért tekintse meg 
 
 A virtuális hálózati szolgáltatásvégpont-szabályzatok a következő előnyöket biztosítják:
 
-- __Nagyobb biztonság az Azure-szolgáltatásokba irányuló virtuális hálózati adatforgalomnak__
+- __Megnövelt biztonság Azure-szolgáltatások a virtuális hálózat felé irányuló forgalom__
 
   [A hálózati biztonság csoportokhoz elérhető Azure-szolgáltatáscímkék](https://aka.ms/servicetags) lehetővé teszik, hogy a virtuális hálózatok kimenő forgalmát egyes Azure-szolgáltatásokra korlátozza, ez a forgalom azonban egy adott Azure-szolgáltatás bármely erőforrására irányulhat. 
   
   A szolgáltatásvégpont-szabályzatokkal most megteheti, hogy a virtuális hálózat kimenő forgalmának hozzáférését egyes Azure-erőforrásokra korlátozza. Így sokkal inkább a kezében tarthatja a virtuális hálózatban elért adatok védelmét. 
 
-- __Méretezhető, magas rendelkezésre állású szabályzatok az Azure-szolgáltatások adatforgalmának szűréséhez__
+- __Méretezhető, magas rendelkezésre állású szabályzatok Azure-szolgáltatások forgalmára szűrése__
 
    A végpontszabályzatok horizontálisan skálázható, magas rendelkezésre állású megoldásokat biztosítanak a virtuális hálózatokból a szolgáltatásvégpontokon keresztül az Azure-szolgáltatásokba érkező forgalom szűrésére. Nincs szükség további erőforrásokra, hogy központi hálózati berendezéseket kelljen fenntartani a virtuális hálózat ezen forgalmához.
 

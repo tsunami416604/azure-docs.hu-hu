@@ -8,36 +8,34 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/12/2019
+ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: ef510ca88f1b305125c7840932641c8a2359d8c9
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 31b1b852c92ad671564fd54520af3f3a23b3e3c2
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045241"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499801"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Gyors útmutató: Az Azure PowerShell használatával hozzon létre egy Service Bus-üzenetsorba
-A Microsoft Azure Service Bus egy vállalati integrációs üzenetközvetítő, amely biztonságos üzenetküldést és teljes mértékben megbízható szolgáltatást nyújt. Egy jellemző Service Bus-forgatókönyv általában két vagy több alkalmazás, szolgáltatás vagy folyamat egymástól való szétválasztását, továbbá az állapot- vagy adatváltozások továbbítását foglalja magában. Ilyen esetekben előfordulhat, hogy több kötegelt feladatokat kell üzemeznie más alkalmazásokban vagy szolgáltatásokban, vagy pedig ki kell váltani a megrendelések teljesítését. Például egy kereskedelmi vállalat elküldheti az értékesítési pontokra vonatkozó adatait egy háttérrendszernek vagy egy regionális terjesztőközpontnak feltöltés vagy leltárfrissítés céljából. Ebben a forgatókönyvben az ügyfélalkalmazás üzeneteket küld és fogad egy Service Bus-üzenetsorból.
-
-![üzenetsor](./media/service-bus-quickstart-powershell/quick-start-queue.png)
-
 Ebből a rövid útmutatóból megismerheti, hogyan küldhet és fogadhat üzeneteket egy Service Bus-üzenetsorból a PowerShell használatával egy üzenetküldési névtér és egy azon belüli üzenetsor létrehozásához, valamint az adott névtér hitelesítő adatainak lekéréséhez. Az eljárás ezután bemutatja, hogyan küldhet és fogadhat üzeneteket az üzenetsorból a [.NET Standard-kódtárral](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][] a feladatok megkezdése előtt.
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következőket:
 
-- [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb.
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][] a virtuális gép létrehozásának megkezdése előtt. 
+- [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb. A Visual Studio használatával hozhat létre, amely üzeneteket küld, és üzenetet fogad egy mintát. A minta az tesztelése a portálon létrehozott üzenetsorba. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
 
-Ehhez a rövid útmutatóhoz az Azure PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása][].
+Ehhez a rövid útmutatóhoz az Azure PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása][]. Ha ismeri az Azure Cloud Shell segítségével, használhatja a gépen Azure PowerShell telepítése nélkül. További információk az Azure Cloud Shell: [áttekintése az Azure Cloud Shell](../cloud-shell/overview.md)
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 1. Ha még nem tette meg, először telepítse a Service Bus PowerShell-modult:
 
@@ -130,7 +128,7 @@ Ez a szakasz a mintakód működésének további részleteit ismerteti.
 
 ### <a name="get-connection-string-and-queue"></a>A kapcsolati sztring és az üzenetsor lekérése
 
-A rendszer parancssori argumentumként adja át a kapcsolati sztringet és az üzenetsor nevét a `Main()` metódusnak. `Main()` deklarálja a két karakterlánc típusú változót az értékek tárolásához:
+A kapcsolati karakterlánc és a várólista nevét lesznek átadva a `Main()` parancssori argumentumok módját. `Main()` deklarálja a két karakterlánc típusú változót az értékek tárolásához:
 
 ```csharp
 static void Main(string[] args)
@@ -167,7 +165,7 @@ A `Main()` metódus ezután elindítja a `MainAsync()` aszinkron üzenethurkot.
 
 ### <a name="message-loop"></a>Üzenethurok
 
-A MainAsync() metódus a parancssori argumentumokkal létrehoz egy üzenetsorügyfelet, meghív egy `RegisterOnMessageHandlerAndReceiveMessages()` nevű fogadó üzenetkezelőt, és elküldi az üzenetek készletét:
+A MainAsync() metódus várólista ügyfél hoz létre a parancssori argumentumokat, meghívja a nevű fogadó üzenetkezelőként `RegisterOnMessageHandlerAndReceiveMessages()`, és a üzenetkészletet küld:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -259,10 +257,10 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Ha többet szeretne megtudni az üzenetfogadásra és -küldésre szolgáló kódok írásáról, lépjen tovább a Service Busról szóló oktatóanyagra:
+Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Üzenetek küldése és fogadása, kódírás kapcsolatos további információkért folytassa szereplő oktatóanyagok a **üzenetek küldése és fogadása** szakaszban. 
 
 > [!div class="nextstepaction"]
-> [Készlet frissítése az Azure PowerShell-lel](./service-bus-tutorial-topics-subscriptions-powershell.md)
+> [Üzenetek küldése és fogadása](service-bus-dotnet-get-started-with-queues.md)
 
 [ingyenes fiók]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Az Azure PowerShell telepítése és konfigurálása]: /powershell/azure/install-Az-ps

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: c7163667ec370abf468b289cea231e86a4b5753f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 92680a453d93c8dc0189c6ae376449a8e7a22076
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046837"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499852"
 ---
 # <a name="how-to-reprovision-devices"></a>Hogyan kell építenie az eszközök
 
@@ -27,7 +27,7 @@ IoT-megoldás élettartama során szokás az eszközök IoT-központok között.
 
 * **Karantén**: Hasonló a megoldás módosítása. Egy IoT hubra, ahol teheti meg, csak frissítse, majd az megfelelőségi hibás, sérült vagy elavult eszköz rendelésekor lehet. Miután az eszköz megfelelően működik-e, majd át térjen vissza a fő hub.
 
-További részletes áttekintést reprovisioning, lásd: [IoT Hub Device reprovisoning fogalmak](concepts-device-reprovision.md).
+További részletes áttekintést reprovisioning, lásd: [IoT Hub Device fogalmak reprovisioning](concepts-device-reprovision.md).
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>A regisztrációs kiosztási szabályzat konfigurálása
@@ -93,7 +93,7 @@ Például a kód küldése kiépítési kérelmeket az eszközről a rendszerind
 
 ## <a name="next-steps"></a>További lépések
 
-- További Reprovisioning kapcsolatban lásd: [IoT Hub Device reprovisoning fogalmak](concepts-device-reprovision.md) 
+- További Reprovisioning kapcsolatban lásd: [IoT Hub Device reprovisioning fogalmak](concepts-device-reprovision.md) 
 - Megszüntetés további tudnivalókért lásd: [hogyan eszközöket, amelyek korábban automatikus – kiépített megszüntetése](how-to-unprovision-devices.md) 
 
 

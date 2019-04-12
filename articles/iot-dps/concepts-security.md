@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 7835553dafd66830b7a483c58bc2c7b7cf8c93f8
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: e35330874c647eba2cddde694563c8a1d9e83df5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046897"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490272"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service biztonsággal kapcsolatos fogalmait 
 
@@ -77,7 +77,11 @@ Egy közbenső tanúsítvány egy X.509 tanúsítvány, amely a főtanúsítván
 
 ### <a name="end-entity-leaf-certificate"></a>Végfelhasználói "levél" tanúsítvány
 
-A levél tanúsítványt, vagy a végfelhasználói tanúsítványt, azonosítja a tanúsítvány tulajdonosa. Rendelkezik a legfelső szintű tanúsítványt a tanúsítványlánc, valamint nulla vagy több köztes tanúsítványok. A levéltanúsítvány nem használatos bármely egyéb tanúsítványok aláírásához. Egyedileg azonosítja az eszközt a kiépítési szolgáltatáshoz, és az eszköz-tanúsítványt is hívják. A hitelesítés során az eszköz használja a ennek a tanúsítványnak társított titkos kulcs birtokában challenge megvalósíthatósági válaszolni a szolgáltatásból. További tudnivalókért lásd: [eszközök hitelesítése aláírt x.509-es Hitelesítésszolgáltatói tanúsítványok](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+A levél tanúsítványt, vagy a végfelhasználói tanúsítványt, azonosítja a tanúsítvány tulajdonosa. Rendelkezik a legfelső szintű tanúsítványt a tanúsítványlánc, valamint nulla vagy több köztes tanúsítványok. A levéltanúsítvány nem használatos bármely egyéb tanúsítványok aláírásához. Egyedileg azonosítja az eszközt a kiépítési szolgáltatáshoz, és az eszköz-tanúsítványt is hívják. A hitelesítés során az eszköz használja a ennek a tanúsítványnak társított titkos kulcs birtokában challenge megvalósíthatósági válaszolni a szolgáltatásból.
+
+A használt tanúsítványok levél- [egyéni regisztráció](./concepts-service.md#individual-enrollment) bejegyzés korlátozza, amely a **tulajdonos neve** állítson be az egyéni regisztrációs bejegyzés regisztrációs azonosítójaként. A használt tanúsítványok levél egy [regisztrációs csoportot](./concepts-service.md#enrollment-group) bejegyzést kell rendelkeznie a **tulajdonos neve** állítsa be a kívánt eszköz azonosítója, amely jelenik meg, a **regisztrációs rekord** a a hitelesített eszköz beléptetési csoportnak.
+
+További tudnivalókért lásd: [eszközök hitelesítése aláírt x.509-es Hitelesítésszolgáltatói tanúsítványok](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Eszköz X.509-tanúsítványokat az eszközkiépítési szolgáltatás hozzáférés szabályozása
 

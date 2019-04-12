@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 598df72bf9c37b8687e2122813609e165ae8c2fa
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 28fef394ee400949f9911983bdbca41d6bfcb458
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260663"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505685"
 ---
 # <a name="define-and-assign-a-blueprint-in-the-portal"></a>Definiálása és hozzárendelése egy tervezet a portálon
 
@@ -41,116 +41,117 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    ![Tervrajz létrehozása a tervezet definíciók oldaláról](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Adjon meg egy **tervrajznév** például **MyBlueprint**. (Legfeljebb 48 betűket használja, és számokat, de nem szóközöket és speciális karaktereket). Hagyja **leírás tervezetet** üresen. 
-   
+1. Adjon meg egy **tervrajznév** például **MyBlueprint**. (Legfeljebb 48 betűket használja, és számokat, de nem szóközöket és speciális karaktereket). Hagyja **leírás tervezetet** üresen.
+
 1. Az a **definíció helye** mezőben kattintson a jobb oldalon a három pontra, válassza ki a [felügyeleti csoport](../management-groups/overview.md) vagy előfizetést, ahol szeretné menteni a tervezet, és válassza a **válassza ki a**.
 
 1. Győződjön meg arról, hogy az adatok helyességéről. A **tervrajznév** és **definíció helye** mezők később már nem módosítható. Válassza ki **tovább: Összetevők** a lap alján, vagy a **összetevők** fülre az oldal tetején.
 
-1. Az előfizetés szintjén a szerepkör-hozzárendelés hozzáadása: 
+1. Az előfizetés szintjén a szerepkör-hozzárendelés hozzáadása:
 
-   a. Válassza ki a **+ Hozzáadás összetevő** sor alatt **előfizetés**. A **Hozzáadás összetevő** ablak jobb oldalán található a böngészőben nyílik meg. 
-   
-   b. Válassza ki **szerepkör-hozzárendelés** a **összetevőtípussal**. 
-   
-   c. A **szerepkör**válassza **közreműködői**. Hagyja a **felhasználó, alkalmazás vagy csoport hozzáadása** , amely azt jelzi, hogy a dinamikus paraméterek jelölőnégyzet jelölését. 
-   
-   d. Válassza ki **Hozzáadás** az összetevő hozzáadása a tervezethez.
+   1. Válassza ki a **+ Hozzáadás összetevő** sor alatt **előfizetés**. A **Hozzáadás összetevő** ablak jobb oldalán található a böngészőben nyílik meg.
+
+   1. Válassza ki **szerepkör-hozzárendelés** a **összetevőtípussal**.
+
+   1. A **szerepkör**válassza **közreműködői**. Hagyja a **felhasználó, alkalmazás vagy csoport hozzáadása** , amely azt jelzi, hogy a dinamikus paraméterek jelölőnégyzet jelölését.
+
+   1. Válassza ki **Hozzáadás** az összetevő hozzáadása a tervezethez.
 
    ![A tervezet összetevő szerepkör-hozzárendelés](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
    > A legtöbb összetevők paramétereket támogatja. Egy paraméter, amelyhez hozzá rendelve egy érték tervrajz létrehozása során egy *statikus paraméter*. Ha a paraméter van hozzárendelve a tervezet-hozzárendelés során van egy *dinamikus paraméterek*. További információkat a [tervparamétereket](./concepts/parameters.md) ismertető cikkben talál.
 
-1. Az előfizetés szintjén adja hozzá a szabályzat-hozzárendelés: 
+1. Az előfizetés szintjén adja hozzá a szabályzat-hozzárendelés:
 
-   a. Válassza ki a **+ Hozzáadás összetevő** sor alatt a szerepkör-hozzárendelési összetevője. 
-   
-   b. Válassza ki **szabályzat-hozzárendelés** a **összetevőtípussal**. 
-   
-   c. Változás **típus** való **beépített**. A **keresési**, adja meg **címke**. 
-   
-   d. A szűrés végrehajtásához kattintson a **Keresésen** kívülre. Válassza ki **címke és címke alapértelmezett értékének alkalmazása erőforráscsoportok**. 
-   
-   e. Válassza ki **Hozzáadás** az összetevő hozzáadása a tervezethez.
+   1. Válassza ki a **+ Hozzáadás összetevő** sor alatt a szerepkör-hozzárendelési összetevője.
 
-1. Jelölje ki a szabályzat-hozzárendelés sort **címke és címke alapértelmezett értékének alkalmazása erőforráscsoportok**. 
+   1. Válassza ki **szabályzat-hozzárendelés** a **összetevőtípussal**.
+
+   1. Változás **típus** való **beépített**. A **keresési**, adja meg **címke**.
+
+   1. A szűrés végrehajtásához kattintson a **Keresésen** kívülre. Válassza ki **címke és címke alapértelmezett értékének alkalmazása erőforráscsoportok**.
+
+   1. Válassza ki **Hozzáadás** az összetevő hozzáadása a tervezethez.
+
+1. Jelölje ki a szabályzat-hozzárendelés sort **címke és címke alapértelmezett értékének alkalmazása erőforráscsoportok**.
 
 1. A lehívandó összetevő paramétereket biztosít a tervezetdefiníciót részeként az ablak megnyílik, és lehetővé teszi, hogy az összes hozzárendelés (statikus paraméterek) paraméterek alapján állítja be a tervezet helyett hozzárendelés (dinamikus paraméterek) alatt. Ebben a példában a tervezet-hozzárendelés során dinamikus paramétereket használja, így hagyja az alapértelmezett beállításokat, és válassza ki **Mégse**.
 
-1. Adjon hozzá egy erőforráscsoportot az előfizetés szintjén: 
+1. Adjon hozzá egy erőforráscsoportot az előfizetés szintjén:
 
-   a. Válassza ki a **+ Hozzáadás összetevő** sor alatt **előfizetés**. 
-   
-   b. Válassza ki **erőforráscsoport** a **összetevőtípussal**. 
-   
-   c. Hagyja a **összetevő megjelenített neve**, **erőforráscsoport-név**, és **hely** mezőbe üres, de győződjön meg arról, hogy a jelölőnégyzet be van-e jelölve, hogy minden paraméter tulajdonság dinamikus paraméterek. 
-   
-   d. Válassza ki **Hozzáadás** az összetevő hozzáadása a tervezethez.
+   1. Válassza ki a **+ Hozzáadás összetevő** sor alatt **előfizetés**.
 
-1. Adja hozzá az erőforráscsoporthoz tartozó sablon: 
+   1. Válassza ki **erőforráscsoport** a **összetevőtípussal**.
 
-   a. Válassza ki a **+ Hozzáadás összetevő** sor alatt a **ResourceGroup** bejegyzés. 
-   
-   b. Válassza ki **Azure Resource Manager-sablon** a **összetevő típusa**állítsa be **összetevő megjelenített neve** való **StorageAccount**, és hagyja  **Leírás** üres. 
-   
-   c. A szerkesztőmező **Sablon** lapján illessze be az alábbi Resource Manager-sablont. Miután, illessze be a sablont, válassza ki a **paraméterek** lapra, és vegye figyelembe, hogy a sablon paramétereit **Tárfióktípus** és **hely** észlelt. Minden paraméter lett automatikusan észlelt, és kitölti a rendszer, de konfigurálni dinamikus paramétert. 
-   
-   > [!IMPORTANT]
-   > Ha a sablont importál, győződjön meg arról, hogy a fájl csak a JSON, és nem tartalmaz HTML. Egy URL-címet a Githubon használt mutat, biztosíthatja, hogy kiválasztott **RAW** beolvasni a nyers JSON-fájlt, és nem a HTML-megjelenítés a Githubon burkolt be. Ha az importált sablon nem tiszta JSON, hiba történik.
+   1. Hagyja a **összetevő megjelenített neve**, **erőforráscsoport-név**, és **hely** mezőbe üres, de győződjön meg arról, hogy a jelölőnégyzet be van-e jelölve, hogy minden paraméter tulajdonság dinamikus paraméterek.
 
-   ```json
-   {
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-           "storageAccountType": {
-               "type": "string",
-               "defaultValue": "Standard_LRS",
-               "allowedValues": [
-                   "Standard_LRS",
-                   "Standard_GRS",
-                   "Standard_ZRS",
-                   "Premium_LRS"
-               ],
-               "metadata": {
-                   "description": "Storage Account type"
-               }
-           },
-           "location": {
-               "type": "string",
-               "defaultValue": "[resourceGroups('ResourceGroup').location]",
-               "metadata": {
-                   "description": "Location for all resources."
-               }
-           }
-       },
-       "variables": {
-           "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
-       },
-       "resources": [{
-           "type": "Microsoft.Storage/storageAccounts",
-           "name": "[variables('storageAccountName')]",
-           "location": "[parameters('location')]",
-           "apiVersion": "2018-07-01",
-           "sku": {
-               "name": "[parameters('storageAccountType')]"
-           },
-           "kind": "StorageV2",
-           "properties": {}
-       }],
-       "outputs": {
-           "storageAccountName": {
-               "type": "string",
-               "value": "[variables('storageAccountName')]"
-           }
-       }
-   }
-   ```
+   1. Válassza ki **Hozzáadás** az összetevő hozzáadása a tervezethez.
 
-   d. Törölje a **Tárfióktípus** jelölőnégyzetet, és figyelje meg, hogy a legördülő listában csak a Resource Manager-sablon alapján szereplő értékeket tartalmazza-e **allowedValues**. Jelölje be a állítsa vissza egy dinamikus paraméterét. 
-   
-   e. Válassza ki **Hozzáadás** az összetevő hozzáadása a tervezethez.
+1. Adja hozzá az erőforráscsoporthoz tartozó sablon:
+
+   1. Válassza ki a **+ Hozzáadás összetevő** sor alatt a **ResourceGroup** bejegyzés.
+
+   1. Válassza ki **Azure Resource Manager-sablon** a **összetevő típusa**állítsa be **összetevő megjelenített neve** való **StorageAccount**, és hagyja  **Leírás** üres.
+
+   1. A szerkesztőmező **Sablon** lapján illessze be az alábbi Resource Manager-sablont.
+      Miután, illessze be a sablont, válassza ki a **paraméterek** lapra, és vegye figyelembe, hogy a sablon paramétereit **Tárfióktípus** és **hely** észlelt. Minden paraméter lett automatikusan észlelt, és kitölti a rendszer, de konfigurálni dinamikus paramétert.
+
+      > [!IMPORTANT]
+      > Ha a sablont importál, győződjön meg arról, hogy a fájl csak a JSON, és nem tartalmaz HTML. Egy URL-címet a Githubon használt mutat, biztosíthatja, hogy kiválasztott **RAW** beolvasni a nyers JSON-fájlt, és nem a HTML-megjelenítés a Githubon burkolt be. Ha az importált sablon nem tiszta JSON, hiba történik.
+
+      ```json
+      {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+              "storageAccountType": {
+                  "type": "string",
+                  "defaultValue": "Standard_LRS",
+                  "allowedValues": [
+                      "Standard_LRS",
+                      "Standard_GRS",
+                      "Standard_ZRS",
+                      "Premium_LRS"
+                  ],
+                  "metadata": {
+                      "description": "Storage Account type"
+                  }
+              },
+              "location": {
+                  "type": "string",
+                  "defaultValue": "[resourceGroup().location]",
+                  "metadata": {
+                      "description": "Location for all resources."
+                  }
+              }
+          },
+          "variables": {
+              "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
+          },
+          "resources": [{
+              "type": "Microsoft.Storage/storageAccounts",
+              "name": "[variables('storageAccountName')]",
+              "location": "[parameters('location')]",
+              "apiVersion": "2018-07-01",
+              "sku": {
+                  "name": "[parameters('storageAccountType')]"
+              },
+              "kind": "StorageV2",
+              "properties": {}
+          }],
+          "outputs": {
+              "storageAccountName": {
+                  "type": "string",
+                  "value": "[variables('storageAccountName')]"
+              }
+          }
+      }
+      ```
+
+   1. Törölje a **Tárfióktípus** jelölőnégyzetet, és figyelje meg, hogy a legördülő listában csak a Resource Manager-sablon alapján szereplő értékeket tartalmazza-e **allowedValues**. Jelölje be a állítsa vissza egy dinamikus paraméterét.
+
+   1. Válassza ki **Hozzáadás** az összetevő hozzáadása a tervezethez.
 
    ![Tervrajz összetevőre Resource Manager-sablon](./media/create-blueprint-portal/add-resource-manager-template.png)
 
@@ -172,16 +173,16 @@ A [tervrajz létrehozása](#create-a-blueprint), nem adjon meg egy leírást, va
 
 1. Válassza ki **tovább: Összetevők** a lap alján, vagy a **összetevők** fülre az oldal tetején.
 
-1. Adja hozzá az erőforráscsoporthoz tartozó szerepkör-hozzárendelés: 
+1. Adja hozzá az erőforráscsoporthoz tartozó szerepkör-hozzárendelés:
 
-   a. Válassza ki a **+ Hozzáadás összetevő** közvetlenül a sor a **ResourceGroup** bejegyzés. 
-   
-   b. Válassza ki **szerepkör-hozzárendelés** a **összetevőtípussal**. 
-   
-   c. Alatt **szerepkör**válassza **tulajdonosa**, és törölje a jelölőnégyzet jelölését a a **felhasználó, alkalmazás vagy csoport hozzáadása** mezőbe. 
-   
-   d. Keresse meg és válassza ki a felhasználó, alkalmazás vagy csoport hozzáadása. Az összetevő használ statikus paraméterkészlet ugyanaz a tervezet minden hozzárendelés. 
-   
+   1. Válassza ki a **+ Hozzáadás összetevő** közvetlenül a sor a **ResourceGroup** bejegyzés.
+
+   1. Válassza ki **szerepkör-hozzárendelés** a **összetevőtípussal**.
+
+   1. Alatt **szerepkör**válassza **tulajdonosa**, és törölje a jelölőnégyzet jelölését a a **felhasználó, alkalmazás vagy csoport hozzáadása** mezőbe.
+
+   1. Keresse meg és válassza ki a felhasználó, alkalmazás vagy csoport hozzáadása. Az összetevő használ statikus paraméterkészlet ugyanaz a tervezet minden hozzárendelés.
+
    e. Válassza ki **Hozzáadás** az összetevő hozzáadása a tervezethez.
 
    ![Tervrajz összetevőre második szerepkör-hozzárendelés](./media/create-blueprint-portal/add-role-assignment-2.png)
@@ -217,15 +218,15 @@ Tervrajz közzététele után egy előfizetéshez rendelhető. Az Ön által lé
 
    Ha vannak elérhető támogatott Enterprise ajánlatok [Azure Billing](../../billing/index.md), amely egy **új létrehozása** hivatkozás alatt aktiválódik a **előfizetés** mezőbe. Kövesse az alábbi lépéseket:
 
-   a. Válassza ki a **új létrehozása** hivatkozásra kattintva hozzon létre egy új előfizetést, ne pedig a már meglévőket.
+   1. Válassza ki a **új létrehozása** hivatkozásra kattintva hozzon létre egy új előfizetést, ne pedig a már meglévőket.
 
-   b. Adjon meg egy **megjelenítendő név** az új előfizetés.
+   1. Adjon meg egy **megjelenítendő név** az új előfizetés.
 
-   c. Válassza ki az elérhető **ajánlat** a legördülő listából.
+   1. Válassza ki az elérhető **ajánlat** a legördülő listából.
 
-   d. A három pontra segítségével válassza ki a [felügyeleti csoport](../management-groups/index.md) , hogy az előfizetés lesz gyermeke.
+   1. A három pontra segítségével válassza ki a [felügyeleti csoport](../management-groups/index.md) , hogy az előfizetés lesz gyermeke.
 
-   e. Válassza ki **létrehozás** az oldal alján.
+   1. Válassza ki **létrehozás** az oldal alján.
 
    ![Tervezet-hozzárendelés előfizetéshez tartozó előfizetés létrehozása](./media/create-blueprint-portal/assignment-create-subscription.png)
 
@@ -254,7 +255,8 @@ Tervrajz közzététele után egy előfizetéshez rendelhető. Az Ön által lé
 1. A **ResourceGroup**, adjon meg egy **neve** , **StorageAccount** és a egy **hely** , **USA keleti RÉGIÓJA 2** a a legördülő listából.
 
    > [!NOTE]
-   > Minden egyes összetevő, amely során tervezetdefiníció hozzá az erőforráscsoporthoz tartozó, az adott összetevő behúzása összhangba kerüljenek az erőforráscsoportra vagy az objektum, amely azt fogja telepíteni. Összetevők nem fogad paramétereket, vagy nem lehetnek paraméterei hozzárendelés kell definiálni, csak a környezeti információk jelennek meg.
+   > Minden egyes összetevő, amely során tervezetdefiníció hozzá az erőforráscsoporthoz tartozó, az adott összetevő behúzása összhangba kerüljenek az erőforráscsoportra vagy az objektum, amely azt fogja telepíteni.
+   > Összetevők nem fogad paramétereket, vagy nem lehetnek paraméterei hozzárendelés kell definiálni, csak a környezeti információk jelennek meg.
 
 1. Az Azure Resource Manager-sablon **StorageAccount**válassza **Standard_GRS** számára a **Tárfióktípus** paraméter.
 
@@ -294,7 +296,8 @@ Ha már nincs szüksége a tervezet-hozzárendelést, távolítsa el az előfize
 1. Kattintson a jobb gombbal a tervezet törlése, és válassza ki a kívánt **Delete tervezet**. Válassza ki **Igen** a megerősítő párbeszédpanelen.
 
 > [!NOTE]
-> Is ennél a módszernél a tervezet törlése törli a kijelölt tervezet összes közzétett verzióját. Egyetlen verziót törléséhez nyissa meg a tervezet, válassza ki a **közzétett verzió** lapra, válassza ki a törölni, és válassza ki a kívánt verzió **verzió törlése**. Tervrajz is, amíg az összes tervezet-hozzárendelést a tervrajz-definíció törölt nem törölhető.
+> Is ennél a módszernél a tervezet törlése törli a kijelölt tervezet összes közzétett verzióját.
+> Egyetlen verziót törléséhez nyissa meg a tervezet, válassza ki a **közzétett verzió** lapra, válassza ki a törölni, és válassza ki a kívánt verzió **verzió törlése**. Tervrajz is, amíg az összes tervezet-hozzárendelést a tervrajz-definíció törölt nem törölhető.
 
 ## <a name="next-steps"></a>További lépések
 

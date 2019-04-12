@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 04/02/2019
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f81edcfa2a9daf5162ff1c7e23025b405092b8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d361a40e2efa80a677255c02c7e9cf155af09ffb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260391"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496301"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Az Azure Active Directory B2B-együttműködés – gyakori kérdések
 
@@ -54,7 +54,7 @@ Igen. Vendég objektumok nem látható a szervezet globális címlista (GAL) ala
 Abszolút. További információkért lásd: [vendég felhasználók hozzáadása szerepkörökhöz](add-guest-to-role.md).
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Azure AD B2B együttműködés lehetővé teszi a B2B-felhasználók az Azure portal eléréséhez?
-Hacsak egy felhasználó a korlátozott rendszergazda vagy a globális rendszergazdai szerepkör van hozzárendelve, B2B együttműködési felhasználókat az Azure Portalon való hozzáférés nem szükséges. Azonban a B2B együttműködés a felhasználók, akik a korlátozott rendszergazda vagy a globális rendszergazdai szerepkörhöz vannak hozzárendelve a portálon hozzáférhetnek. Ezenkívül ha vendégfelhasználó, aki nincs hozzárendelve egyik rendszergazdai szerepkör hozzáfér a portálon, a felhasználó lehet érhessék el az egyes részeit a felhasználói élményt. A Vendég felhasználói szerep néhány engedélyt a címtárban.
+Hacsak egy felhasználó a korlátozott rendszergazdai szerepkör van hozzárendelve, B2B együttműködési felhasználókat az Azure Portalon való hozzáférés nem szükséges. Azonban a B2B együttműködés korlátozott rendszergazda szerepe hozzárendelt felhasználók hozzáférhessenek a portálhoz. Ezenkívül ha vendégfelhasználó, aki nincs hozzárendelve egyik rendszergazdai szerepkör hozzáfér a portálon, a felhasználó lehet érhessék el az egyes részeit a felhasználói élményt. A Vendég felhasználói szerep néhány engedélyt a címtárban.
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Letilthatom az Azure Portalon a vendégfelhasználók számára a hozzáférést?
 Igen! Ez a szabályzat konfigurálásakor kell arra, hogy elkerülje a tagjának és rendszergazdájának véletlenül letiltja a hozzáférést.
