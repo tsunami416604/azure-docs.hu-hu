@@ -12,30 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 2c28ae3bf05a994293a8bf2af0675280d818fdde
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 622b1f6f6a852251c07c5576ed10cd76adbf5231
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242598"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500498"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Service Bus-üzenetsorok használata pythonnal
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Ez a cikk a Service Bus-üzenetsorok használatát ismerteti. A minták a Python és -felhasználási nyelven írták az [Python Azure Service Bus-csomag][Python Azure Service Bus package]. Az ismertetett forgatókönyvek között megtalálható **várólisták, üzenetek küldése és fogadása létrehozása**, és **üzenetsorok törlése**.
+Ebben az oktatóanyagban megismerheti, hogyan hozhat létre a Python-alkalmazások üzeneteket küldeni, illetve üzeneteket fogadhat a Service Bus-üzenetsorba. 
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Előfeltételek
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Kövesse lépéseket a [egy Service Bus-üzenetsor létrehozása az Azure portal](service-bus-quickstart-portal.md) cikk.
+    1. Olvassa el a gyors **áttekintése** Service Bus **üzenetsorok**. 
+    2. Hozzon létre egy Service Bus **névtér**. 
+    3. Első a **kapcsolati karakterlánc**. 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-> [!IMPORTANT]
-> Telepítse a Python, vagy a [Python Azure Service Bus-csomag][Python Azure Service Bus package], tekintse meg a [Python-telepítési útmutató](../python-how-to-install.md).
-> 
-> Tekintse meg a Service Bus Python SDK teljes dokumentációját [Itt](/python/api/overview/azure/servicebus?view=azure-python)
-
+        > [!NOTE]
+        > Létrehozhat egy **várólista** a Service Bus névterében ebben az oktatóanyagban a Python használatával. 
+1. Telepítse a Pythont vagy a [Python Azure Service Bus-csomag][Python Azure Service Bus package], tekintse meg a [Python-telepítési útmutató](../python-how-to-install.md). Tekintse meg a Service Bus Python SDK teljes dokumentációját [Itt](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 A **ServiceBusClient** objektum lehetővé teszi, hogy az üzenetsorok. Adja hozzá a következő kódot bármely Python-fájlt, amelyben a kívánt programozott módon érheti el a Service Bus tetején:

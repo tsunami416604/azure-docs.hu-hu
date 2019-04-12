@@ -286,11 +286,11 @@ items:
         href: quickstart-v2-uwp.md
       - name: Windows asztali .NET
         href: quickstart-v2-windows-desktop.md
+    - name: Démonalkalmazások
+      items:
       - name: .NET Core-konzol (démon)
         href: quickstart-v2-netcore-daemon.md
-    - name: Szolgáltatások közötti
-      items:
-      - name: ASP .NET
+      - name: ASP.NET démon-webalkalmazása
         href: https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2
   - name: Oktatóanyagok
     items:
@@ -326,19 +326,20 @@ items:
         href: authentication-scenarios.md
       - name: Az OAuth 2.0 és az OpenID Connect protokoll
         href: active-directory-v2-protocols.md
-        items:
-        - name: OpenID Connect
-          href: v2-protocols-oidc.md
-        - name: OAuth 2.0 implicit engedélyezési folyamat
-          href: v2-oauth2-implicit-grant-flow.md
-        - name: Oauth 2.0 hitelesítésikód-engedélyezés
-          href: v2-oauth2-auth-code-flow.md
-        - name: OAuth 2.0-alapú meghatalmazásos folyamat
-          href: v2-oauth2-on-behalf-of-flow.md
-        - name: OAuth 2.0-ügyfél hitelesítő adatainak megadása
-          href: v2-oauth2-client-creds-grant-flow.md
-        - name: Oauth 2.0-erőforrástulajdonos jelszavas hitelesítési adatainak megadása
-          href: v2-oauth-ropc.md
+      - name: OpenID Connect
+        href: v2-protocols-oidc.md
+      - name: OAuth 2.0 implicit engedélyezési folyamat
+        href: v2-oauth2-implicit-grant-flow.md
+      - name: Oauth 2.0 hitelesítésikód-engedélyezés
+        href: v2-oauth2-auth-code-flow.md
+      - name: OAuth 2.0-alapú meghatalmazásos folyamat
+        href: v2-oauth2-on-behalf-of-flow.md
+      - name: OAuth 2.0-ügyfél hitelesítő adatainak megadása
+        href: v2-oauth2-client-creds-grant-flow.md
+      - name: OAuth 2.0 eszközkódfolyamat
+        href: v2-oauth2-device-code.md
+      - name: Oauth 2.0-erőforrástulajdonos jelszavas hitelesítési adatainak megadása
+        href: v2-oauth-ropc.md
       - name: Aláírókulcs-váltás
         href: active-directory-signing-key-rollover.md
       - name: Azonosító jogkivonatok
@@ -394,12 +395,10 @@ items:
         href: howto-add-app-roles-in-azure-ad-apps.md
       - name: Védjegyzési útmutató
         href: howto-add-branding-in-azure-ad-apps.md
+      - name: Közzétevő tartomány
+        href: howto-configure-publisher-domain.md
       - name: Szolgáltatási feltételek és adatvédelmi nyilatkozat
         href: howto-add-terms-of-service-privacy-statement.md
-      - name: Java
-        items:
-        - name: Java-webalkalmazás védelme
-          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?toc=/java/azure/toc.json&bc=/java/azure/breadcrumb/toc.json
     - name: A Visual Studio használata
       items:
       - name: Az Active Directory csatlakoztatott szolgáltatás használata
@@ -419,8 +418,8 @@ items:
     - name: Hitelesítési tárak
       displayName: MSAL
       href: reference-v2-libraries.md
-    - name: Az Azure AD API-k használata a Microsoft Graph-ban
-      href: https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview
+    - name: A Microsoft Graph identitási és hozzáférési API-jai
+      href: https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta
     - name: Alkalmazásjegyzék
       href: reference-app-manifest.md
     - name: Hitelesítés és hitelesítési hibakódok
@@ -436,6 +435,8 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=security-identity
   - name: Azure AD blog
     href: https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory
+  - name: A Microsoft Identitásplatform fejlesztői blogja
+    href: https://developer.microsoft.com/en-us/identity/blogs/
   - name: Próbálja ki a Microsofttal való bejelentkezést
     href: https://azure.microsoft.com/develop/identity/signin/
   - name: Segítség kérése
@@ -443,9 +444,9 @@ items:
     href: developer-support-help-options.md
   - name: Azure-erőforrások felügyelt identitásai
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 974758ddcaa4d855b395e982b6bc9a3b0b72e130
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9283d643717d4c516fb615a9ff5ec132a11e754c
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886607"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500430"

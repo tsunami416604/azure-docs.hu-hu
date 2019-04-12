@@ -12,26 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 074976ea1f889893b5daa21cea5c186ec77145c4
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 6c42fbffd0b4569a9b04dede94061e716c48ecf1
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588347"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501110"
 ---
 # <a name="how-to-use-service-bus-queues-with-ruby"></a>Service Bus-üzenetsorok használata a Ruby használatával
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Ez az útmutató a Service Bus-üzenetsorok használatát ismerteti. A Kódminták Ruby nyelven íródtak, és használja az Azure gem. Az ismertetett forgatókönyvek között megtalálható **várólisták, üzenetek küldése és fogadása létrehozása**, és **üzenetsorok törlése**. A Service Bus-üzenetsorokkal kapcsolatos további információkért tekintse meg a [lépések](#next-steps) szakaszban.
+Ebben az oktatóanyagban megismerheti, hogyan hozhat létre Ruby-alkalmazások üzeneteket küld és fogad üzeneteket egy Service Bus-üzenetsorba. A Kódminták Ruby nyelven íródtak, és használja az Azure gem.
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Előfeltételek
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Kövesse lépéseket a [egy Service Bus-üzenetsor létrehozása az Azure portal](service-bus-quickstart-portal.md) cikk.
+    1. Olvassa el a gyors **áttekintése** Service Bus **üzenetsorok**. 
+    2. Hozzon létre egy Service Bus **névtér**. 
+    3. Első a **kapcsolati karakterlánc**. 
 
-## <a name="create-a-service-bus-namespace"></a>Service Bus-névtér létrehozása
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-   
+        > [!NOTE]
+        > Létrehozhat egy **várólista** a Ruby használatával ebben az oktatóanyagban a Service Bus-névteret. 
+
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="how-to-create-a-queue"></a>Várólista létrehozása
@@ -74,7 +79,7 @@ Egy üzenetsor használatával fogadása a `receive_queue_message()` metódust a
 
 Az alapértelmezett viselkedés lehetővé teszi az olvasási és a egy kétszakaszos művelet, amely is lehetővé teszi alkalmazások, amelyek működését zavarják a hiányzó üzenetek támogatása törlése. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. A fogadási folyamat második fázisa meghívásával befejezése után az alkalmazás befejezi az üzenet feldolgozását (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), `delete_queue_message()` metódust, és a paramétert a törlendő üzenet megadása. A `delete_queue_message()` módszert fog jelölje meg az üzenetet, és távolítsa el az üzenetsorból.
 
-Ha a `:peek_lock` paraméter értéke **hamis**, Olvasás, és az üzenet törlése válik, a legegyszerűbb modell, és leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet egy hiba esetén. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. A Service Bus az üzenetet, a rendszer, elérheti, ha az alkalmazás újraindításakor és megkezdésekor üzenetek van megjelölve, mert ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
+Ha a `:peek_lock` paraméter értéke **hamis**olvasása és törlése az üzenet válik, a legegyszerűbb modell, és leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet egy hiba esetén. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. A Service Bus az üzenetet, a rendszer, elérheti, ha az alkalmazás újraindításakor és megkezdésekor üzenetek van megjelölve, mert ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
 
 Az alábbi példa bemutatja, hogyan használatával üzenetek fogadásához és feldolgozásához `receive_queue_message()`. A példában először kap, és törli az üzenetet a `:peek_lock` beállítása **hamis**, majd egy másik üzenetet kap, és végül törli a üzenet használatával `delete_queue_message()`:
 

@@ -12,18 +12,24 @@ items:
     href: unreal-quickstart.md
 - name: Oktatóanyagok
   items:
-  - name: Unity – tervezési munkafolyamat
-    href: unity-workflow.md
-  - name: Unity/Wwise – tervezési munkafolyamat
-    href: unreal-workflow.md
-  - name: Bake Acoustics a Unityvel
-    href: unity-baking.md
-  - name: Bake Acoustics az Unreallel/Wwise-zal
-    href: unreal-baking.md
+  - name: Unity
+    items:
+    - name: Bake Acoustics a Unityvel
+      href: unity-baking.md
+    - name: Unity – tervezési munkafolyamat
+      href: unity-workflow.md
+  - name: Unreal/Wwise
+    items:
+    - name: Bake Acoustics az Unreallel/Wwise-zal
+      href: unreal-baking.md
+    - name: Unity/Wwise – tervezési munkafolyamat
+      href: unreal-workflow.md
 - name: Alapelvek
   items:
   - name: Tervezési alapelvek az Acoustics Simulationnel
     href: design-process.md
+  - name: Hangszimuláció felbontása
+    href: bake-resolution.md
 - name: Használati útmutatók
   items:
   - name: Azure Batch-fiók létrehozása
@@ -38,9 +44,9 @@ items:
     href: faq.md
   - name: Ismert problémák
     href: known-issues.md
-ms.openlocfilehash: 37514a3f8c149c1e34b4e0faa8a7109290a80feb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a445890369e48f61dfa545d7107f46e3d0675a1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58138219"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495634"

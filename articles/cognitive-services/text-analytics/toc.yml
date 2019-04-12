@@ -5,6 +5,8 @@ items:
   items:
   - name: Mi a Text Analytics API?
     href: overview.md
+  - name: Példa felhasználói forgatókönyvek
+    href: text-analytics-user-scenarios.md
   expanded: true
 - name: Gyors útmutatók
   items:
@@ -24,13 +26,16 @@ items:
     href: quickstarts/ruby.md
 - name: Oktatóanyagok
   items:
-  - name: Streamelési adatok hangulatelemzése az Azure Databricks használatával
-    href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
-    maintainContext: true
-  - name: Szövegelemzés a Power BI-jal
+  - name: A Power BI integrálása ügyfelektől származó visszajelzések elemzéséhez
     href: Tutorials/tutorial-power-bi-key-phrases.md
   - name: Szövegelemzés a Power Appsben
     href: https://powerapps.microsoft.com/tutorials/cognitive-services-api/
+  - name: Streamelési adatok hangulatelemzése az Azure Databricks használatával
+    href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
+    maintainContext: true
+  - name: Szövegfordítás, hangulatelemzés és beszédszintézis a Flask segítségével
+    href: https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis
+    maintainContext: true
 - name: Útmutatók
   items:
   - name: Regisztráció
@@ -79,6 +84,8 @@ items:
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/textanalytics
 - name: További források
   items:
+  - name: Hozzászólások hangulatának felismerése egy Yammer-csoportban az MS Flow használatával
+    href: https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure
   - name: Külső és közösségi tartalom
     href: text-analytics-resource-external-community.md
   - name: GYIK
@@ -97,9 +104,9 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/555922-text-analytics
-ms.openlocfilehash: 1759bee73caeb18ac96a228bb3a81e697aa62089
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6c25fe6b6fa10c592cb9462e9fb712575f61bdd1
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475628"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500821"

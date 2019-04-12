@@ -1,18 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0d4968c0cfbc49f990eebbd84c8bd4d8ecac5fe7
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434738"
 documentType: LandingData
 title: Azure Notification Hubs – dokumentáció
 metadata:
   title: Az Azure Notification Hubs dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: Ismerje meg, hogyan küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre a Notification Hubs használatával. Oktatóanyagok, API-referenciák, és egyéb dokumentációk.
+  description: 'Ismerje meg, hogyan küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre a Notification Hubs használatával. Oktatóanyagok, API-referenciák, és egyéb dokumentációk.'
   services: notification-hubs
   author: spelluru
-  manager: 
+  manager: null
   ms.service: notification-hubs
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -20,46 +14,47 @@ metadata:
   ms.date: 03/01/2017
   ms.author: spelluru
 abstract:
-  description: Ismerje meg, hogyan küldhet gyorsan akár több millió üzenetet a Notification Hubs többplatformos, méretezhető, leküldéses értesítési motor használatával különböző típusú eszközökön (Android, iOS, Windows, Windows Phone, Baidu, Kindle) futó alkalmazásoknak. <p>Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan állíthat be és küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre.</p>
+  description: 'Ismerje meg, hogyan küldhet gyorsan akár több millió üzenetet a Notification Hubs többplatformos, méretezhető, leküldéses értesítési motor használatával különböző típusú eszközökön (Android, iOS, Windows, Windows Phone, Baidu, Kindle) futó alkalmazásoknak. <p>Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan állíthat be és küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre.</p>'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
     title: Leküldéses értesítések Android-alkalmazások számára
-    href: https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application
+    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application'
     width: 250
 sections:
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Ismerje meg, hogyan küldhet leküldéses értesítéseket a Notification Hubs használatával:'
-  - type: list
-    style: ordered
+  - title: Részletes útmutatók
     items:
-    - html: Leküldéses értesítések küldése az összes regisztrált eszközre – <a href="/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started">Android</a> | <a href="/azure/notification-hubs/notification-hubs-baidu-china-android-notifications-get-started">Baidu</a> | <a href="/azure/notification-hubs/notification-hubs-chrome-push-notifications-get-started">Chrome</a> | <a href="/azure/notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-kindle-amazon-adm-push-notification">Kindle</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns">Windows Phone</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm">Xamarin.Android</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started">Xamarin.iOS</a>
-    - html: Leküldéses értesítések küldése megadott eszközökre – <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-xplat-segmented-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-phone-push-xplat-segmented-mpns-notification">Windows Phone</a>
-    - html: Leküldéses értesítések küldése megadott felhasználóknak – <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification">Windows</a>
-    - html: Helyalapú leküldéses értesítések küldése – <a href="/azure/notification-hubs/notification-hubs-push-bing-spatial-data-geofencing-notification">Windows</a>
-    - html: Személyre szabott és honosított leküldéses értesítések küldése – <a href="/azure/notification-hubs/notification-hubs-ios-xplat-localized-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification">Windows</a>
-- title: Példák
-  items:
-  - type: paragraph
-    text: Az Azure Notification Hubs-mintaalkalmazások több helyen is elérhetőek. A platformspecifikus minták az egyéni SDK-k csomagjában találhatóak meg (a hivatkozásokat lásd lentebb), a többi platformhoz pedig az önálló mintaadattárban találhat mintákat.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Ismerje meg, hogyan küldhet leküldéses értesítéseket a Notification Hubs használatával:'
+      - type: list
+        style: ordered
+        items:
+          - html: Leküldéses értesítések küldése az összes regisztrált eszközre – <a href="/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started">Android</a> | <a href="/azure/notification-hubs/notification-hubs-baidu-china-android-notifications-get-started">Baidu</a> | <a href="/azure/notification-hubs/notification-hubs-chrome-push-notifications-get-started">Chrome</a> | <a href="/azure/notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-kindle-amazon-adm-push-notification">Kindle</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns">Windows Phone</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm">Xamarin.Android</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started">Xamarin.iOS</a>
+          - html: Leküldéses értesítések küldése megadott eszközökre – <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-xplat-segmented-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-phone-push-xplat-segmented-mpns-notification">Windows Phone</a>
+          - html: Leküldéses értesítések küldése megadott felhasználóknak – <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification">Windows</a>
+          - html: Helyalapú leküldéses értesítések küldése – <a href="/azure/notification-hubs/notification-hubs-push-bing-spatial-data-geofencing-notification">Windows</a>
+          - html: Személyre szabott és honosított leküldéses értesítések küldése – <a href="/azure/notification-hubs/notification-hubs-ios-xplat-localized-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification">Windows</a>
+  - title: Példák
     items:
-    - html: <a href="https://github.com/Azure/azure-notificationhubs-android">Android SDK</a>
-    - html: <a href="https://github.com/Azure/azure-notificationhubs-ios">iOS SDK</a>
-    - html: <a href="https://github.com/Azure/azure-notificationhubs-dotnet">.NET SDK</a>
-    - html: <a href="https://github.com/Azure/azure-notificationhubs-samples">Mintaadattár (más platformok)</a>
-    - html: <a href="/azure/notification-hubs/samples-powershell">PowerShell</a>
-- title: Referencia
-  items:
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Az Azure Notification Hubs-mintaalkalmazások több helyen is elérhetőek. A platformspecifikus minták az egyéni SDK-k csomagjában találhatóak meg (a hivatkozásokat lásd lentebb), a többi platformhoz pedig az önálló mintaadattárban találhat mintákat.'
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://github.com/Azure/azure-notificationhubs-android">Android SDK</a>'
+          - html: '<a href="https://github.com/Azure/azure-notificationhubs-ios">iOS SDK</a>'
+          - html: '<a href="https://github.com/Azure/azure-notificationhubs-dotnet">.NET SDK</a>'
+          - html: '<a href="https://github.com/Azure/azure-notificationhubs-samples">Mintaadattár (más platformok)</a>'
+          - html: <a href="/azure/notification-hubs/samples-powershell">PowerShell</a>
+  - title: Referencia
     items:
-    - html: <a href="https://docs.microsoft.com/powershell/module/az.notificationhubs">Azure PowerShell</a>
-    - html: <a href="/dotnet/api/microsoft.azure.notificationhubs">.NET SDK</a>
-    - html: <a href="/rest/api/notificationhubs">REST API</a>
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://docs.microsoft.com/powershell/module/az.notificationhubs">Azure PowerShell</a>'
+          - html: <a href="/dotnet/api/microsoft.azure.notificationhubs">.NET SDK</a>
+          - html: <a href="/rest/api/notificationhubs">Kezelési REST API</a>
+          - html: '<a href="https://docs.microsoft.com/previous-versions/azure/reference/dn223264(v%3dazure.100)">A Notification Hubs szolgáltatás REST API-ja</a>'
