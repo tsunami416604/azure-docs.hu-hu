@@ -16,7 +16,7 @@ ms.date: 01/14/2019
 ms.author: TomSh
 ms.openlocfilehash: eb2f42b690099002f2f14aa4e782906a76c01d4c
 ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/02/2019
 ms.locfileid: "57241510"
@@ -328,7 +328,7 @@ Többféleképpen négy [gyűjtése a naplók és mérőszámok az Azure-szolgá
 
 * Parancsfájlok, összegyűjtése és majd ezeket az adatokat az Azure Monitor naplóira (üres cellákat az alábbi táblázatban és -szolgáltatásokhoz, amelyek nem szerepelnek a listán)
 
-| Szolgáltatás | Erőforrás típusa | Logs | Mérőszámok | Megoldás |
+| Szolgáltatás | Erőforrás típusa | Naplók | Mérőszámok | Megoldás |
 | :------ | :------------ | :--- | :------ | :------- |
 |Azure Application Gateway| Microsoft.Network/<br>applicationGateways|  Diagnosztika|Diagnosztika|    [Az Azure Application](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [Alkalmazásátjáró-elemzési](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
 |Application Insights||     Összekötő|  Összekötő|  [Az Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [összekötő (előzetes verzió)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|

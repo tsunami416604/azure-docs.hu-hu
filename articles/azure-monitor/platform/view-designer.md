@@ -58,7 +58,7 @@ A beállítások a következő táblázat ismerteti:
 | Beállítás | Leírás |
 |:--|:--|
 | Frissítés   | Frissíti a nézetet a legújabb adatokkal. | 
-| Logs      | Megnyílik a [Log Analytics](../log-query/portals.md) naplólekérdezések az adatok elemzéséhez. |
+| Naplók      | Megnyílik a [Log Analytics](../log-query/portals.md) naplólekérdezések az adatok elemzéséhez. |
 | Szerkesztés       | A nézet megnyitása az adatforrásnézet-tervezőből tartalmának és konfigurációs szerkesztéséhez.  |
 | Klónozás      | Létrehoz egy új nézetet, és megnyílik a adatforrásnézet-tervezőből. Az új nézet neve ugyanaz, mint az eredeti nevén, de nem *másolási* rá hozzáfűzve. |
 | Dátumtartomány | A dátum és idő dátumtartomány-szűrő, amely megtalálható a nézet az adatok megadása A dátumtartomány bármely dátumtartományokat lekérdezést a nézetben beállítása előtt a rendszer alkalmazza.  |

@@ -157,7 +157,7 @@ Ha bármikor ki szeretné kapcsolni az adatgyűjtést, ezt a biztonsági szabál
 
 A munkaterület egy adattárolóként szolgáló Azure-erőforrás. Ön vagy a szervezet más tagjai több munkaterületet is használhatnak az informatikai infrastruktúra egészéből vagy egyes részeiből begyűjtött különböző adatkészletek kezeléséhez.
 
-A Microsoft Monitoring Agentből (az Azure Security Center nevében) gyűjtött adatok az Azure-előfizetésével társított meglévő Log Analytics munkaterületen tárolódnak, vagy egy új munkaterületen, a virtuális gép földrajzi helyét is figyelembe véve.
+A Microsoft Monitoring Agentből (az Azure Security Center nevében) gyűjtött adatok az Azure-előfizetésével társított meglévő Log Analytics-munkaterületen tárolódnak, vagy egy új munkaterületen, a virtuális gép földrajzi helyét is figyelembe véve.
 
 Az Azure Portalon megkeresheti a Log Analytics munkaterületeinek listáját, beleértve azokat is, amelyeket az Azure Security Center hozott létre. Egy kapcsolódó erőforráscsoport jön létre az új munkaterületek számára. Mindkettő ezt az elnevezési konvenciót követi:
 

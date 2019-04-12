@@ -32,7 +32,7 @@ Az Azure Diagnostics bővítmény gyűjthet adatokat a következő típusú:
 | IIS-naplók |IIS-webhelyek kapcsolatos információk |
 | [Jegyzékfájl alapú ETW-naplók](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Esemény-nyomkövetés a Windows események a folyamatok által generált. (1) |
 | Összeomlási memóriaképek (naplók) |Ha egy alkalmazás összeomlik a folyamat állapotával kapcsolatos információk |
-| egyéni hibanaplók, |Az alkalmazás vagy szolgáltatás által létrehozott naplók |
+| Egyéni hibanaplók |Az alkalmazás vagy szolgáltatás által létrehozott naplók |
 | Az Azure diagnosztikai infrastruktúra naplói |Maga az Azure diagnosztikai információk |
 
 (1) az ETW-szolgáltatók listájának lekéréséhez futtassa `c:\Windows\System32\logman.exe query providers` a konzolablakban a gépen, amelyet szeretne adatainak összegyűjtése.

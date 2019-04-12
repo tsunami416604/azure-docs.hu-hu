@@ -197,4 +197,4 @@ az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-fr
 
 * A Data Lake Analytics az Azure CLI-referenciadokumentum megtekintéséhez lásd: [Data Lake Analytics](/cli/azure/dla).
 * A Data Lake Store az Azure CLI-referenciadokumentum megtekintéséhez lásd: [Data Lake Store](/cli/azure/dls).
-* Egy összetettebb lekérdezés megtekintéséhez lásd: [Analyze Website logs using Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) (Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával).
+* Egy összetettebb lekérdezés megtekintéséhez lásd: [Webhelynaplók elemzése az Azure Data Lake Analytics használatával](data-lake-analytics-analyze-weblogs.md).

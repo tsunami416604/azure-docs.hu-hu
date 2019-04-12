@@ -18,7 +18,7 @@ ms.date: 05/02/2018
 ms.author: robreed
 ms.openlocfilehash: 1448c72e87d51c0bb88c9ee521a7a3112060473b
 ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58483829"
@@ -200,7 +200,7 @@ A portál a következő bemeneti gyűjti:
 
 - **Automatikus frissítési alverzió**: Képez le ezt a mezőt a **AutoUpdate** a parancsmagok váltson, és lehetővé teszi, hogy a bővítmény automatikus frissítése a legújabb verzióra a telepítés során. **Igen** fel fog szólítania a kiterjesztés kezelő a legújabb elérhető verzió használata és **nem** kényszeríti a **verzió** megadott kell telepíteni. Egyik sem kiválasztása **Igen** sem **nem** ugyanaz, mint kiválasztania **nem**.
 
-## <a name="logs"></a>Logs
+## <a name="logs"></a>Naplók
 
 A bővítmény naplók a következő helyen találhatók: `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 

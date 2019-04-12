@@ -1,83 +1,77 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 34de58f7a3f9307714ccc4594d9ac92523c55f69
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482217"
 documentType: LandingData
 title: Az Azure Adatkezelő dokumentációja
 metadata:
-  title: Az Azure Data Explorer dokumentációja – Rövid útmutatók, oktatóanyagok, valamint nyelvi és API-referenciák
-  description: Az Azure Adatkezelő egy felhőalapú Log Analytics-platform, amely az alkalmi big data-lekérdezésekre van optimalizálva.
+  title: 'Az Azure Data Explorer dokumentációja – Rövid útmutatók, oktatóanyagok, valamint nyelvi és API-referenciák'
+  description: 'Az Azure Data Explorer egy felhőalapú naplóelemzési platform, amely az alkalmi big data-lekérdezésekre van optimalizálva.'
   author: orspod
   ms.author: orspodek
   ms.service: data-explorer
   ms.topic: landing-page
   ms.date: 03/24/2019
 abstract:
-  description: <p>Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatával különféle típusú adatokat gyűjthet, tárolhat és elemezhet, javíthatja az ügyfélélményt, gondoskodhat az eszközök figyeléséről és felgyorsíthatja a műveleteket.</p><p>Rövid útmutatóink, oktatóanyagaink és a referenciatartalmak segítségével megismerkedhet az Azure Adatkezelő használatával.</p>
+  description: '<p>Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatával különféle típusú adatokat gyűjthet, tárolhat és elemezhet, javíthatja az ügyfélélményt, gondoskodhat az eszközök figyeléséről és felgyorsíthatja a műveleteket.</p><p>Rövid útmutatóink, oktatóanyagaink és a referenciatartalmak segítségével megismerkedhet az Azure Adatkezelő használatával.</p>'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: Mi az az Azure Data Explorer? (19:47)
-    href: https://youtu.be/D_AJk2lAepw
+    title: 'Mi az az Azure Data Explorer? (19:47)'
+    href: 'https://youtu.be/D_AJk2lAepw'
     width: 250
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Útmutató az Azure Adatkezelő kiépítéséhez és használatához:'
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: Fürt és adatbázis létrehozása
-      href: /azure/data-explorer/create-cluster-database-portal
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: Streamelési adatok betöltése az Event Hubsból
-      href: /azure/data-explorer/ingest-data-event-hub
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: Adatok lekérése a webes felülettel
-      href: /azure/data-explorer/web-query-data
-    - image:
-        src: /azure/data-explorer/media/index/logo-python.svg
-      text: Üzenetsorba küldött adatok betöltése a Python használatával
-      href: /azure/data-explorer/python-ingest-data
-    - image:
-        src: /azure/data-explorer/media/index/logo-python.svg
-      text: Adatok lekérdezése a Python használatával
-      href: /azure/data-explorer/python-query-data
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Ismerje meg, hogyan építhet ki végpontok közötti megoldásokat:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Útmutató az Azure Adatkezelő kiépítéséhez és használatához:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: Fürt és adatbázis létrehozása
+            href: /azure/data-explorer/create-cluster-database-portal
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: Streamelési adatok betöltése az Event Hubsból
+            href: /azure/data-explorer/ingest-data-event-hub
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: Adatok lekérése a webes felülettel
+            href: /azure/data-explorer/web-query-data
+          - image:
+              src: /azure/data-explorer/media/index/logo-python.svg
+            text: Üzenetsorba küldött adatok betöltése a Python használatával
+            href: /azure/data-explorer/python-ingest-data
+          - image:
+              src: /azure/data-explorer/media/index/logo-python.svg
+            text: Adatok lekérdezése a Python használatával
+            href: /azure/data-explorer/python-query-data
+  - title: Részletes útmutatók
     items:
-    - html: <a href="/azure/data-explorer/visualize-power-bi">Az Azure Adatkezelőből származó adatok megjelenítése a Power BI használatával</a>
-- title: Ingyenes Pluralsight videós képzés
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Ismerje meg, hogyan építhet ki végpontok közötti megoldásokat:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/data-explorer/visualize-power-bi">Az Azure Adatkezelőből származó adatok megjelenítése a Power BI használatával</a>
+  - title: Ingyenes Pluralsight videós képzés
     items:
-    - title: Az Azure Adatkezelő lekérdezési nyelve
-      href: https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch
-      image:
-        src: /azure/data-explorer/media/index/logo-pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Az Azure Adatkezelő lekérdezési nyelve
+            href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
+            image:
+              src: /azure/data-explorer/media/index/logo-pluralsight.svg
+              href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
+  - title: Referencia
     items:
-    - title: Nyelvek és API
-      html: <p><a href="https://aka.ms/kustolangref">Lekérdezési nyelv, felügyeleti parancsok és API-k</a>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Nyelvek és API
+            html: '<p><a href="https://aka.ms/kustolangref">Lekérdezési nyelv, felügyeleti parancsok és API-k</a>'

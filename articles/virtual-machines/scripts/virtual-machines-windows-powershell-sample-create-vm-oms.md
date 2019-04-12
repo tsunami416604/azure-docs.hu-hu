@@ -25,7 +25,7 @@ ms.locfileid: "57541519"
 ---
 # <a name="create-an-azure-monitor-vm-with-powershell"></a>Az Azure Monitor virtuális gép létrehozása a PowerShell használatával 
 
-Ez a szkript egy Azure-beli virtuális gépet hoz létre, telepíti a Log Analytics-ügynököt, és regisztrálja a rendszert egy Log Analytics-munkaterületen. A szkript futtatását követően a virtuális gép megjelenik az Azure Monitorban. Emellett frissítenie kell a Log Analytics munkaterület-azonosítóját és munkaterületkulcsát.
+Ez a szkript egy Azure-beli virtuális gépet hoz létre, telepíti a Log Analytics-ügynököt, és regisztrálja a rendszert egy Log Analytics-munkaterületen. A szkript futtatását követően a virtuális gép megjelenik az Azure Monitorban. Emellett frissítenie kell a Log Analytics-munkaterület azonosítóját és kulcsát.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

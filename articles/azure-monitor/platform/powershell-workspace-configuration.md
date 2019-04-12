@@ -197,7 +197,7 @@ A fenti példában regexDelimiter van definiálva "\\n" az új sor. A napló elv
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Az Azure diagnostics küldése a Log Analytics konfigurálása
 Az ügynök nélküli figyelés az Azure-erőforrások, az erőforrásokat az Azure diagnostics engedélyezni és konfigurálni a Log Analytics-munkaterület írni rendelkeznie kell. Ez a megközelítés küld adatokat közvetlenül a munkaterületet, és nem szükséges egy tárfiókba írható adat. Támogatott erőforrások közé tartoznak:
 
-| Erőforrás típusa | Logs | Mérőszámok |
+| Erőforrás típusa | Naplók | Mérőszámok |
 | --- | --- | --- |
 | Application Gateway-átjárók    | Igen | Igen |
 | Automation-fiókok     | Igen | |

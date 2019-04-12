@@ -237,9 +237,9 @@ A feladatgrafikon kiválaszthatja **feladat-végrehajtás részletei** beolvasni
 
 
 ### <a name="view-hive-jobs"></a>Hive-feladatok megtekintése
-Megtekintheti a Hive-feladatok feladatlekérdezéseit, feladatkiemenetét, feladatnaplóit és Yarn naplóit.
+Megtekintheti a Hive-feladatok feladatlekérdezéseit, feladatkimenetét, feladatnaplóit és Yarn naplóit.
 
-Az eszköz legújabb kiadásával láthatja, mi van a Hive-feladatokban, ha begyűjti és felszínre hozza a Yarn-naplókat. A YARN-naplók segíthetnek a teljesítménnyel kapcsolatos problémák vizsgálatában. További információ arról, hogy a HDInsight hogyan gyűjti be a YARN-naplókat: [HDInsight alkalmazásnaplók elérése programozási környezetből](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
+Az eszköz legújabb kiadásával láthatja, mi van a Hive-feladatokban, ha begyűjti és felszínre hozza a Yarn-naplókat. A YARN-naplók segíthetnek a teljesítménnyel kapcsolatos problémák vizsgálatában. További információ arról, hogy a HDInsight hogyan gyűjti be a YARN-naplókat: [HDInsight alkalmazásnaplók szoftveres elérése](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
 Hive-feladatok megtekintése:
 

@@ -11,7 +11,7 @@ ms.topic: article
 ms.date: 10/01/2018
 ms.openlocfilehash: 91d1369b9197f6ef941d981aa9cf7539b4554d0c
 ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/07/2019
 ms.locfileid: "54065800"
@@ -406,7 +406,7 @@ Előfordulhat, hogy megjelenik a hibaüzenet, ha az átjáró telepítésekor a 
 
 <a name="logs"></a>
 
-### <a name="logs"></a>Logs
+### <a name="logs"></a>Naplók
 
 Könnyebben háríthatja el a, mindig először összegyűjtése és az átjáró naplók áttekintése. A naplók gyűjtésére szolgáló több módszert is rendelkezik, de a legegyszerűbb lehetőség az átjáró telepítése után az átjáró telepítőjének felhasználói felületen keresztül. 
 

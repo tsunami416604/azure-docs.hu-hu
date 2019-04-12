@@ -78,7 +78,7 @@ Az Azure-ban biztonságos tárolóként a Key Vault rendelkezik egyszerűsítés
 -  A [mindig titkosított]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkció az SQL server és az Azure SQL Database
 - [Az Azure App Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). 
 
-A Key Vault integrálható tárfiókokkal, eseményközpontokkal és a Log Analyticsszel.
+A Key Vault integrálható tárfiókokkal, eseményközpontokkal és a naplóelemzéssel.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -44,7 +44,7 @@ Az Azure Monitor által gyűjtött naplóadatok elemezhetők a [lekérdezések](
 
 Az Azure Monitor-verzióját használja, a [Kusto-lekérdezés nyelvi](/azure/kusto/query/) használják az Azure az adatkezelőt, amely lehetővé teszi egyszerű napló kérdezi le, de tartoznak az olyan speciális funkciókat, például összesítés, illesztés és intelligens elemzés. Segítségével gyorsan megismerkedhet a lekérdezési nyelv használatával [több leckék](log-query/get-started-queries.md).  Azon felhasználók számára, akik már ismerik az [SQL](log-query/sql-cheatsheet.md) és [Splunk](log-query/splunk-cheatsheet.md) használatát, külön útmutató áll rendelkezésére.
 
-![Logs](media/overview/logs.png)
+![Naplók](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Milyen adatokat gyűjt az Azure Monitor?
 Az Azure Monitor tud adatokat gyűjteni a különböző forrásokból. Az alkalmazások és az alkalmazás, a bármely operációs rendszer és a szolgáltatások támaszkodik, lefelé a platform saját maga a csomagban az figyelési felfoghatók. Az Azure Monitor gyűjti az adatokat az alábbi szinteken mindegyike:

@@ -31,7 +31,7 @@ Alapértelmezés szerint a threat intelligence szerinti szűrés riasztási mód
 
 ![Fenyegetések felderítése-alapú szűrési felületén](media/threat-intel/threat-intel-ui.png)
 
-## <a name="logs"></a>Logs
+## <a name="logs"></a>Naplók
 
 A következő cikkből napló szerint jeleníti meg egy aktivált szabályhoz:
 

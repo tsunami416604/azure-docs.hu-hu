@@ -51,6 +51,6 @@ Az alsó középső ablaktáblán minden csúcspont vonatkozó információkat t
 * Létrehozás kezdési idő/folyamat várólistán idő/folyamat kezdési idő/folyamat Complete feldolgozni idő: a vertex-folyamat indulásakor létrehozása; a csúcspont folyamat indításakor várólistára; az egyes csúcspont folyamat indításakor; Amikor az egyes csúcspont befejeződött.
 
 ## <a name="next-steps"></a>További lépések
-* A diagnosztikai információk naplózása: [Accessing diagnostics logs for Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md) (Az Azure Data Lake Analytics diagnosztikai naplóinak elérése).
-* Egy összetettebb lekérdezés megtekintéséhez lásd: [Analyze Website logs using Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md) (Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával).
+* A diagnosztikai információk naplózása: [Az Azure Data Lake Analytics diagnosztikai naplóinak elérése](data-lake-analytics-diagnostic-logs.md).
+* Egy összetettebb lekérdezés megtekintéséhez lásd: [Webhelynaplók elemzése az Azure Data Lake Analytics használatával](data-lake-analytics-analyze-weblogs.md).
 * Feladatok részleteinek megtekintéséhez: [Feladatböngésző és használata Azure Data lake Analytics-feladatok feladat megtekintése](data-lake-analytics-data-lake-tools-view-jobs.md)

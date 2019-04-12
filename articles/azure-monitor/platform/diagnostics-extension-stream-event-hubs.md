@@ -23,9 +23,9 @@ Támogatott adattípusok a következők:
 
 * A Windows esemény-nyomkövetés (ETW) eseményei
 * Teljesítményszámlálók
-* Windows-eseménynaplók,
+* Windows-eseménynaplók
 * Alkalmazásnaplók
-* Azure Diagnostics-infrastruktúranaplók,
+* Azure Diagnostics-infrastruktúranaplók
 
 Ez a cikk bemutatja, hogyan Azure Diagnostics konfigurálása az Event Hubs teljes körű. Emellett útmutatást a következő gyakori helyzetek:
 

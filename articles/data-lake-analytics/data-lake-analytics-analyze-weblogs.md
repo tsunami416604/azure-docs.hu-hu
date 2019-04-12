@@ -1,5 +1,5 @@
 ---
-title: Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával
+title: Webhelynaplók elemzése az Azure Data Lake Analytics használatával
 description: Ismerje meg, hogyan használja a Data Lake Analytics webhelyek naplóinak elemzése.
 services: data-lake-analytics
 author: saveenr
@@ -16,7 +16,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 01/18/2019
 ms.locfileid: "54402285"
 ---
-# <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával
+# <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Webhelynaplók elemzése az Azure Data Lake Analytics használatával
 Ismerje meg, hogyan használja a Data Lake Analytics különösen tudni, mely hivatkozók hibába ütközött a hibákat, a webhelyén való hozzáféréskor webhelynaplók elemzése.
 
 ## <a name="prerequisites"></a>Előfeltételek

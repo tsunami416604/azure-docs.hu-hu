@@ -34,9 +34,9 @@ items:
   expanded: true
 - name: Oktatóanyagok
   items:
-  - name: Adatok elemzése a Log Analyticsben
+  - name: Adatok elemzése a naplóelemzésben
     href: learn/tutorial-viewdata.md
-  - name: Adatok vizualizációja a Log Analyticsben
+  - name: Adatok vizualizációja a naplóelemzésben
     href: learn/tutorial-logs-dashboards.md
   - name: Platformmetrikák és naplóadatok archiválása
     href: learn/tutorial-archive-data.md
@@ -70,7 +70,7 @@ items:
       href: platform/data-platform.md
     - name: Mérőszámok
       href: platform/data-platform-metrics.md
-    - name: Logs
+    - name: Naplók
       href: platform/data-platform-logs.md
   - name: Adatforrások
     items:
@@ -686,7 +686,7 @@ items:
         href: platform/metrics-charts.md
       - name: Példák metrikadiagramokra
         href: platform/metric-chart-samples.md
-    - name: Logs
+    - name: Naplók
       items:
       - name: Naplólekérdezések
         href: log-query/log-query-overview.md
@@ -994,19 +994,19 @@ items:
     items:
     - name: Figyelés
       href: /powershell/module/az.applicationinsights
-    - name: Logs
+    - name: Naplók
       href: /powershell/module/az.operationalinsights
   - name: REST API
     items:
     - name: Figyelés
       href: /rest/api/monitor/
-    - name: Logs
+    - name: Naplók
       href: /rest/api/loganalytics
   - name: Resource Manager-sablon
     items:
     - name: Figyelés
       href: /azure/templates/microsoft.insights/allversions
-    - name: Logs
+    - name: Naplók
       href: /azure/templates/microsoft.operationalinsights/allversions
   - name: Mérőszámok
     items:

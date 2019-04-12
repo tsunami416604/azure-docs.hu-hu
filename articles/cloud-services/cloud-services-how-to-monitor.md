@@ -46,7 +46,7 @@ Egyes szerepkörök létrehozása a Visual Studio hozzáadja az Azure Diagnostic
 
 * Egyéni teljesítményszámlálók
 * Alkalmazásnaplók
-* Windows-eseménynaplók,
+* Windows-eseménynaplók
 * .NET-esemény forrása
 * IIS-naplók
 * Jegyzékalapú ETW

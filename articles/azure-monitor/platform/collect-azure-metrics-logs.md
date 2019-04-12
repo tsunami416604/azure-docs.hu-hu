@@ -30,7 +30,7 @@ Naplók és mérőszámok az Azure-szolgáltatásokhoz gyűjt négy különböz�
 4. Parancsfájlok, összegyűjtése és majd ezeket az adatokat az Azure Monitor (üres az alábbi táblázatban és -szolgáltatásokhoz, amelyek nem szerepelnek a listán) Log Analytics-munkaterületen
 
 
-| Szolgáltatás                 | Erőforrás típusa                           | Logs        | Mérőszámok     | Megoldás |
+| Szolgáltatás                 | Erőforrás típusa                           | Naplók        | Mérőszámok     | Megoldás |
 | --- | --- | --- | --- | --- |
 | Alkalmazásátjárók    | Microsoft.Network/applicationGateways   | Diagnosztika | Diagnosztika | [Azure Application Gateway Analytics](../insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) |
 | Az Application insights    |                                         | Összekötő   | Összekötő   | [Application Insights-összekötő](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (előzetes verzió) |
@@ -129,7 +129,7 @@ Bizonyos erőforrások belül naplóinak gyűjtéséhez is lehet a naplók küld
 
 Az Azure Monitor használatával Ez a megközelítés a következő erőforrások és a naplók az Azure storage-ból a diagnosztikai adatok gyűjtéséhez:
 
-| Erőforrás | Logs |
+| Erőforrás | Naplók |
 | --- | --- |
 | Service Fabric |ETWEvent <br> Működési események <br> Reliable Actors-események <br> Reliable Services-esemény |
 | Virtuális gépek |Linux Syslog <br> Windows-esemény <br> IIS-napló <br> Windows ETWEvent |

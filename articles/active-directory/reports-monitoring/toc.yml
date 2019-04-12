@@ -76,7 +76,7 @@ items:
       href: howto-integrate-activity-logs-with-log-analytics.md
     - name: Tevékenységnaplók elemzése az Azure Monitor-naplókban
       href: howto-analyze-activity-logs-log-analytics.md
-    - name: Log Analytics-nézetek telepítése és használata az Azure AD-ben
+    - name: Naplóelemzési nézetek telepítése és használata az Azure AD-ben
       href: howto-install-use-log-analytics-views.md
     - name: Tevékenységnaplók integrálása a SumoLogickal
       href: howto-integrate-activity-logs-with-sumologic.md

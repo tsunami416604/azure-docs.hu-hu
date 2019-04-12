@@ -42,7 +42,7 @@ Metrikák érhetők el az Azure Portalon, az interaktív elemzés céljából [M
 
 További információt az Azure Monitor metrikák többek között azok az adatok forrásai [metrikák az Azure monitorban](data-platform-metrics.md).
 
-### <a name="logs"></a>Logs
+### <a name="logs"></a>Naplók
 [Naplók](data-platform-logs.md) olyan események, amelyek a rendszeren belül történt. Ezeket tartalmazhat különböző típusú adatokkal, és előfordulhat, hogy strukturálni vagy szabad formátumú szöveges időbélyegzővel ellátott. Esemény a környezetben hoz létre a naplóbejegyzéseket, és a rendszer nagy terhelés alatt általában generál további naplózási kötet azok csak időnként lehet létrehozni.
 
 Az Azure Monitor-naplók vannak tárolva a Log Analytics-munkaterület alapján [Azure adatkezelő](/azure/data-explorer/) biztosítja a hatékony elemzési motor és [részletes lekérdezési nyelvet](/azure/kusto/query/). Naplók általában teljes kontextusba azonosítják a probléma elegendő információt tartalmaznak, és értékes legfelső szintű kis-és a problémák azonosításához.
@@ -67,7 +67,7 @@ Tudjon meg többet a nyomkövetés elosztott [elosztott nyomkövetést mi?](../a
 
 Az alábbi táblázat összehasonlítja a metrikák és naplók az Azure monitorban.
 
-| Attribútum  | Mérőszámok | Logs |
+| Attribútum  | Mérőszámok | Naplók |
 |:---|:---|:---|
 | Előnyök | Könnyen használható, és közel valós idejű forgatókönyveket, például a riasztás képes. Ideális megoldás a problémák gyors felismerése. | Elemezheti a gazdag lekérdezési nyelv. Ideális megoldás a részletes elemzés és gyökerének azonosítása. |
 | Adatok | Csak a numerikus értékek | Szöveg- vagy numerikus adatok |

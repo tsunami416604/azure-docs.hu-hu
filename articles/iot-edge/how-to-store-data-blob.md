@@ -345,7 +345,7 @@ Ez a modul a kívánt tulajdonságok, például: ![azureblobstorageoniotedge –
     }
 
    ```
-## <a name="logs"></a>Logs
+## <a name="logs"></a>Naplók
 
 Kövesse a lépéseket a [konfigurálása az IoT Edge-modulok a docker-naplók](production-checklist.md#set-up-logs-and-diagnostics)
 

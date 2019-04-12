@@ -222,7 +222,7 @@ items:
     - name: Network security groups (Hálózati biztonsági csoportok)
       href: manage-network-security-group.md
       items:
-      - name: Logs
+      - name: Naplók
         href: virtual-network-nsg-manage-log.md
     - name: Útvonaltáblák
       href: manage-route-table.md

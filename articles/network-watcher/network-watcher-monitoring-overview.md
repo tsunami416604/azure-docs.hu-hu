@@ -85,7 +85,7 @@ Az egy Azure-előfizetésen és -régión belül létrehozható hálózati erőf
 
 Ez az információ hasznosnak bizonyulhat a későbbi erőforrások üzembe helyezésének tervezése során.
 
-## <a name="logs"></a>Logs
+## <a name="logs"></a>Naplók
 
 ### <a name="analyze-traffic-to-or-from-a-network-security-group"></a>Egy hálózati biztonsági csoport be- és kimenő forgalmának elemzése
 

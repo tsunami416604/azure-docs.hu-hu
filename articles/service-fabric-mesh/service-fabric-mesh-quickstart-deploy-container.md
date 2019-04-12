@@ -87,7 +87,7 @@ A rövid útmutatóban az alkalmazás neve `helloWorldApp`. Az alkalmazás rész
 az mesh app show --resource-group myResourceGroup --name helloWorldApp
 ```
 
-## <a name="see-the-application-logs"></a>Az alkalmazásnaplók megtekintése
+## <a name="see-the-application-logs"></a>Alkalmazásnaplók megtekintése
 
 Vizsgálja meg az üzembe helyezett alkalmazás naplóit az `az mesh code-package-log get` paranccsal:
 

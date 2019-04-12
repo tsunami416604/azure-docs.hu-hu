@@ -199,7 +199,7 @@ items:
         href: reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md
       - name: Tevékenységnaplók integrálása a SumoLogickal az Azure Monitor használatával
         href: reports-monitoring/howto-integrate-activity-logs-with-sumologic.md
-      - name: Tevékenységnaplók integrálása a Log Analytics rendszerbe az Azure Monitor segítségével
+      - name: Tevékenységnaplók integrálása a Log Analyticsbe az Azure Monitor segítségével
         href: reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md
     - name: Referencia
       items:

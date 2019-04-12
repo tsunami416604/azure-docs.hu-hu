@@ -17,7 +17,7 @@ ms.locfileid: "52284562"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Oktatóanyag: Riasztás kiváltó okainak elemzése
 
-Ez az oktatóanyag a távoli figyelési megoldásgyorsító riasztások kiváló okainak elemzésére való használatát ismerteti. A távoli figyelési megoldás irányítópultján láthatja, ha egy riasztás aktiválva lett, majd az Azure Time Series Insights Explorerrel kivizsgálhatja annak kiváltó okát.
+Ez az oktatóanyag a távoli monitorozási megoldásgyorsító riasztások kiváló okainak elemzésére való használatát ismerteti. A távoli monitorozási megoldás irányítópultján láthatja, ha egy riasztás aktiválva lett, majd az Azure Time Series Insights Explorerrel kivizsgálhatja annak kiváltó okát.
 
 Az oktatóanyag két szimulált, teherautóban működő eszközt használ, amelyek helyre, magasságra, sebességre és rakomány-hőmérsékletre vonatkozó telemetriát küldenek. A teherautókat egy Contoso nevű cég kezeli, és kapcsolódnak a távoli monitorozási megoldásgyorsítóhoz. A Contoso üzemeltetési munkatársaként tisztáznia kell, hogy miért rögzített a teherautók egyike (delivery-truck-02) alacsony hőmérsékletet jelző riasztást.
 
@@ -98,7 +98,7 @@ A szabályok létrehozását és módosítását az [Eszközökkel kapcsolatos p
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag azt mutatta be, hogyan használható a Time Series Insights Explorer a távoli figyelési megoldásgyorsítóval riasztások kiváltó okainak elemzésére. A következő oktatóanyagból azt tudhatja meg, hogyan használhatja a megoldásgyorsítót a csatlakoztatott eszközök problémáinak azonosítására és javítására.
+Ez az oktatóanyag azt mutatta be, hogyan használható a Time Series Insights Explorer a távoli monitorozási megoldásgyorsítóval riasztások kiváltó okainak elemzésére. A következő oktatóanyagból azt tudhatja meg, hogyan használhatja a megoldásgyorsítót a csatlakoztatott eszközök problémáinak azonosítására és javítására.
 
 > [!div class="nextstepaction"]
 > [Eszközriasztások használata a monitorozási megoldáshoz csatlakoztatott eszközök problémáinak azonosítására és javítására](iot-accelerators-remote-monitoring-maintain.md)

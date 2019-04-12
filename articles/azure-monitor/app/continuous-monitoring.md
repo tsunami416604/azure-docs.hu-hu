@@ -86,7 +86,7 @@ Miután hozzáadta a központi telepítési kapuk, az Application insights szolg
 
 Tekintse meg ezt a viselkedést, jelölje be **kiadásokban** > kattintson a jobb gombbal kiadás neve **nyissa meg a** > **naplókat.**
 
-![Logs](media/continuous-monitoring/006.png)
+![Naplók](media/continuous-monitoring/006.png)
 
 ## <a name="next-steps"></a>További lépések
 

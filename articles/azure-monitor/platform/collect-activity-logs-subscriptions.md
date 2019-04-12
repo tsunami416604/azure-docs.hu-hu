@@ -291,11 +291,11 @@ A [Azure Log Analytics Data Collector](https://docs.microsoft.com/connectors/azu
 1. Kattintson az **Új lépés** > **Művelet hozzáadása** elemre
 2. Írja be szűrőként a *log analytics* kifejezést, majd válassza ki az **Azure Log Analytics Data Collector – Adatküldés** műveletet.
 
-   ![Log Analytics adatküldési művelet hozzáadása a Logic Appsben](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
+   ![Naplóelemzési adatküldési művelet hozzáadása a Logic Appsben](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
 3. Írja be a kapcsolat nevét, majd illessze be a Log Analytics-munkaterülethez tartozó **munkaterület-azonosítót** és **munkaterületkulcsot**.  Kattintson a **Create** (Létrehozás) gombra.
 
-   ![Log Analytics-kapcsolat hozzáadása a Logic Appsben](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
+   ![naplóelemzési kapcsolat hozzáadása a Logic Appsben](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 
 4. Miután létrehozta a kapcsolatot, szerkessze az alábbi táblázatban szereplő beállításokat. 
 

@@ -63,9 +63,9 @@ Emellett szüksége IoT DevKit legalább egy eszköz csatlakozni a távoli figye
 
 ## <a name="navigate-to-the-dashboard"></a>Lépjen az irányítópultra
 
-A távoli figyelési megoldás irányítópultjának megtekintéséhez először lépjen a [Microsoft Azure IoT-megoldásgyorsítók](https://www.azureiotsolutions.com/Accelerators#dashboard) területre. A rendszer arra kérheti, hogy lépjen be Azure-előfizetésének hitelesítő adataival.
+A távoli monitorozási megoldás irányítópultjának megtekintéséhez először lépjen a [Microsoft Azure IoT-megoldásgyorsítók](https://www.azureiotsolutions.com/Accelerators#dashboard) területre. A rendszer arra kérheti, hogy lépjen be Azure-előfizetésének hitelesítő adataival.
 
-Ezután kattintson az **Indítás** elemre a [rövid útmutató](quickstart-remote-monitoring-deploy.md) során üzembe helyezett távoli figyelési megoldásgyorsító csempéjén.
+Ezután kattintson az **Indítás** elemre a [rövid útmutató](quickstart-remote-monitoring-deploy.md) során üzembe helyezett távoli monitorozási megoldásgyorsító csempéjén.
 
 ## <a name="create-a-device-group"></a>Eszközcsoport létrehozása
 

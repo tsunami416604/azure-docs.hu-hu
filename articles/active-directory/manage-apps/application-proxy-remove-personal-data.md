@@ -31,7 +31,7 @@ Az Azure Active Directory Application Proxy kell telepíteni az összekötők az
 Az Application Proxy személyes adatokat írni a következő naplófájl-típusok lehetőség:
 
 - Összekötő-eseménynaplók
-- Windows-eseménynaplók,
+- Windows-eseménynaplók
 
 ## <a name="remove-personal-data-from-windows-event-logs"></a>Személyes adatok eltávolítása a Windows-eseménynaplók
 

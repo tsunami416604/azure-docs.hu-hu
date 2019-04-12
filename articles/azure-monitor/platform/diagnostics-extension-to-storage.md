@@ -35,12 +35,12 @@ Gyűjtött diagnosztikai adatok típusától függően az Azure Diagnostics hasz
 | --- | --- |
 | Az Azure-naplók |Tábla |
 | Az IIS 7.0-naplók |Blob |
-| Azure Diagnostics-infrastruktúranaplók, |Tábla |
+| Azure Diagnostics-infrastruktúranaplók |Tábla |
 | Sikertelen kérelmek nyomkövetési naplók |Blob |
 | Windows-eseménynaplók |Tábla |
 | Teljesítményszámlálók |Tábla |
 | összeomlási memóriaképek, |Blob |
-| egyéni hibanaplók, |Blob |
+| Egyéni hibanaplók |Blob |
 
 ## <a name="transfer-diagnostic-data"></a>Diagnosztikai adatok átvitele
 SDK 2.5-ös és újabb a diagnosztikai adatok átadására irányuló kérelmet fordulhat elő, a konfigurációs fájl segítségével. Diagnosztikai adatok átadhatja a konfigurációban megadott időközönként.

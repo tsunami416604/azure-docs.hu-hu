@@ -65,7 +65,7 @@ Alkalmazások futtathatók az operációs rendszer egy virtuális gép futtatja 
 A mértékek típusai a következők:
  - Teljesítményszámlálók
  - Alkalmazásnaplók
- - Windows-eseménynaplók,
+ - Windows-eseménynaplók
  - .NET-esemény forrása
  - IIS-naplók
  - jegyzékalapú ETW.
