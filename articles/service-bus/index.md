@@ -2,22 +2,22 @@
 title: Az Azure Service Bus dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
 description: Ismerje meg, hogyan vezethet be olyan üzenetküldési megoldásokat, amelyek alkalmazásokat és szolgáltatásokat kötnek össze helyszíni és felhőalapú környezetekben.  Oktatóanyagok, videók, API-referenciák és egyéb anyagok.
 services: service-bus
-author: czeumault
-manager: carolz
+author: spelluru
+manager: carmonm
 layout: LandingPage
 ms.assetid: ''
 ms.service: service-bus
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 03/14/2017
-ms.author: carolz
-ms.openlocfilehash: 7ce116da6fe3651a4ed50805660ced2c2e5ac61d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 04/11/2019
+ms.author: spelluru
+ms.openlocfilehash: 32cdfabc894213c6c0d05f4b0ed7fdc31e5dc282
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178222"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549286"
 ---
 # <a name="service-bus-documentation"></a>Service Bus-dokumentáció
 
