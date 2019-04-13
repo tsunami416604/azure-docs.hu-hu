@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 6e37466145af58a52a86a08a2a873e406c99b9e5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 59a05e7a20f6b229b37977a75d22611c0d5c31d9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895545"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528033"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Entitástípusok és a LUIS felhasználási célját
 
@@ -24,7 +24,15 @@ Entitások adatok kinyerése az utterance (kifejezés). Entitástípusok teszik 
 
 ## <a name="entity-compared-to-intent"></a>Beszédszándék képest entitás
 
-Az entitás egy szót vagy kifejezést az utterance (kifejezés), amelyeket szeretne kinyert belül jelöli. Az utterance (kifejezés) is tartalmazhat számos entitás vagy nincs minden. Egy entitás egy osztályt, beleértve a hasonló objektumok (helyek, dolog, személyek, események vagy fogalmak) gyűjteményét jelképezi. Entitások ismertetik a leképezés kapcsolódó információk, és néha nélkülözhetetlenek az alkalmazás a feladat végrehajtásához. Például egy News Search alkalmazás tartalmazhat például a "témakör", "forrás", "kulcsszó" és "közzétételi dátuma", amelyek hírkeresés a fontos adatokat. A foglalási utazási alkalmazás, a "hely", "dátum", "légitársaság" "utazási class" és "jegyek" repülési foglalási (a "Címjegyzék repülési" beszédszándék releváns) adatainak.
+Az entitás egy szót vagy kifejezést az utterance (kifejezés), amelyeket szeretne kinyert belül jelöli. Az utterance (kifejezés) is tartalmazhat számos entitás vagy nincs minden. Egy ügyfélalkalmazás szükség lehet az entitás a feladat végrehajtására, vagy elérhető, hogy a felhasználó több választási lehetőségek segítségképp használja. 
+
+Egy entitás:
+
+* Egy osztály, beleértve a hasonló objektumok (helyek, dolog, személyek, események vagy fogalmak) gyűjteményét képviseli. 
+* A leképezés vonatkozó információkat ismerteti
+
+
+Például egy News Search alkalmazás tartalmazhat például a "témakör", "forrás", "kulcsszó" és "közzétételi dátuma", amelyek hírkeresés a fontos adatokat. A foglalási utazási alkalmazás, a "hely", "dátum", "légitársaság" "utazási class" és "jegyek" repülési foglalási (a "Címjegyzék repülési" beszédszándék releváns) adatainak.
 
 Ezzel a célja a teljes utterance (kifejezés) előrejelzését jelöli. 
 
@@ -89,14 +97,14 @@ Az entitás ki kell olvasni, miután az Entitásadatok információ egyetlen egy
 |Machine-learned|Jelölheti meg|Oktatóanyag|Példa<br>Válasz|Entitástípus|Cél|
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Összetett**](#composite-entity)|A csoportosítási entitások, függetlenül attól, entitás típusa.|
-|✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchikus**](#hierarchical-entity)|Egyszerű entitások csoportja.|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Lista**](#list-entity)|Elemek listáját és a szinonimákat a pontos egyezés egyeztetése ki kell olvasni.|
+|✔|✔|-|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchikus**](#hierarchical-entity)|Egyszerű entitások csoportja.|
+|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**lista**](#list-entity)|Elemek listáját és a szinonimákat a pontos egyezés egyeztetése ki kell olvasni.|
 |Vegyes||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Az entitás ahol entitás végén tekintve nehéz lenne meghatározni.|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Előre összeállított**](#prebuilt-entity)|Már betanított különböző típusú adatok kinyeréséhez.|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Reguláris kifejezés**](#regular-expression-entity)|Reguláris kifejezés használatával összevetheti a szöveget.|
-|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Egyszerű**](#simple-entity)|Egyetlen fogalma az szót vagy kifejezést tartalmaz.|
+|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Simple**](#simple-entity)|Egyetlen fogalma az szót vagy kifejezést tartalmaz.|
 
-Egyetlen gép megismert entitások kell példa megcímkézzen számára minden szándékot kell megjelölni. Gép-megismert entitások működnek a legjobban keresztül tesztelésekor [végpont lekérdezések](luis-concept-test.md#endpoint-testing) és [végpont kimondott szöveg felülvizsgálata](luis-how-to-review-endpoint-utterances.md). 
+Egyetlen gép megismert entitások kell példa megcímkézzen kell megjelölni. Gép-megismert entitások működnek a legjobban keresztül tesztelésekor [végpont lekérdezések](luis-concept-test.md#endpoint-testing) és [végpont kimondott szöveg felülvizsgálata](luis-how-to-review-endoint-utt.md). 
 
 Pattern.any entitások kell kell megjelölni a [minta](luis-how-to-model-intent-pattern.md) sablon példákat, nem a felhasználó szándékának példák. 
 
@@ -121,29 +129,15 @@ Ehhez az entitáshoz egy jó fér el, ha az adatokat:
 
 ## <a name="hierarchical-entity"></a>Hierarchikus entitás
 
+**Hierarchikus entitások idővel elavulttá válik. Használat [entitás szerepkörök](luis-concept-roles.md) meghatározására, entitás altípus hierarchikus entitások helyett.**
+
 Egy hierarchikus entitás a gyermekek nevű kontextusban megismert egyszerű entitások egy kategóriát.
-
-Ehhez az entitáshoz egy jó fér el, ha az adatokat:
-
-* Egyszerű entitás.
-* Kapcsolódik egymáshoz a kimondott szövegkörnyezetben.
-* Adott szó választott használatával minden egyes gyermek entitásnak jelzi. Ilyen szavak például: innen/oda, elhagyja/felé tart, távolodik/közeledik.
-* Gyermekek gyakran az azonos utterance (kifejezés) találhatók. 
-* Csoportosítását és feldolgozását az ügyfélalkalmazásoknak egy információegységként kell végezniük.
-
-Ne használjon, ha:
-
-* Szüksége lesz egy entitás, amely rendelkezik a pontos szöveg egyezések függetlenül környezet számára. Használja a [entitás listában](#list-entity) helyette. 
-* Egy entitás egy szülő-gyermek kapcsolat más entitás típusokkal kell rendelkeznie. Használja a [összetett entitást](#composite-entity).
 
 ![a hierarchikus](./media/luis-concept-entities/hierarchical-entity.png)
 
-[Oktatóanyag](luis-quickstart-intent-and-hier-entity.md)<br>
-[Entitás példa JSON-válasz](luis-concept-data-extraction.md#hierarchical-entity-data)<br>
-
 ### <a name="roles-versus-hierarchical-entities"></a>Szerepkörök és a hierarchikus entitások
 
-[Szerepkörök](luis-concept-roles.md#roles-versus-hierarchical-entities) a minta megoldása ugyanez a probléma, hierarchikus entitások viszont összes entitástípusra vonatkozik. Szerepkörök jelenleg csak az minták érhetőek el. A leképezések Példa utterances szerepkörök nem érhetők el.  
+[Szerepkörök](luis-concept-roles.md) ugyanez a probléma megoldásához, hierarchikus entitások viszont összes entitástípusra vonatkozik.  
 
 ## <a name="list-entity"></a>Listaentitás
 
@@ -262,24 +256,15 @@ Az entitás az a jó, mikor igazítása:
 
 Felülvizsgálat [korlátok](luis-boundaries.md#model-boundaries) megértéséhez, hogy hány különböző típusú entitás is hozzáadhat egy modellt.
 
-## <a name="composite-vs-hierarchical-entities"></a>Hierarchikus entitások összetett vs
-
-Összetett hierarchikus alá tartozó alanyokra és egyaránt rendelkezik szülő-gyermek típusú kapcsolatokat és megtanult gép. A machine learning lehetővé teszi, hogy a LUIS tudni, hogy az entitások különböző környezetekben (szavak elrendezésének) alapján. Összetett entitások olyan rugalmasabb, mivel lehetővé teszik különböző entitástípusok gyermekeként. Egy hierarchikus entitás gyermekek csak egyszerű entitásokat is. 
-
-|Típus|Cél|Példa|
-|--|--|--|
-|Hierarchikus|Szülő-gyermek típusú, egyszerű entitások|Location.Origin=New York<br>Location.Destination=London|
-|Összetett|Szülő-gyermek típusú entitások: előre elkészített, list, egyszerű, hierarchikus| szám = 3<br>lista első osztályú =<br>prebuilt.datetimeV2=March 5|
-
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Ha több, mint az entitások maximális száma 
 
-Előfordulhat, hogy szeretné használni a hierarchikus és összetett entitásokat. Hierarchikus entitások tükrözik, amely jellemzőkkel rendelkeznek, vagy egy kategória tagja entitások közötti kapcsolat. A gyermekentitások tagjai az összes, a szülő kategória. Ha például egy hierarchikus PlaneTicketClass nevű előfordulhat, hogy entitásnak EconomyClass és FirstClass gyermekentitások. A hierarchia mélységét csak egy szintjének átnyúlik.  
+Előfordulhat, hogy összetett entitások használata az entitás szerepköröket kell.
 
-Összetett entitások egész részét jelölik. Ha például egy összetett PlaneTicketOrder nevű előfordulhat, hogy entitásnak gyermekentitások légitársaság, cél, DepartureCity, DepartureDate és PlaneTicketClass. Létrehozhat egy összetett entitást a már meglévő egyszerű entitások, hierarchikus entitásokat, vagy előre összeállított entitások gyermekei.  
+Összetett entitások egész részét jelölik. Ha például egy összetett PlaneTicketOrder nevű előfordulhat, hogy entitásnak gyermekentitások légitársaság, cél, DepartureCity, DepartureDate és PlaneTicketClass.
 
 A LUIS is biztosít a lista entitás típusa, amely nem a gép megtudhatta, de lehetővé teszi, hogy a rögzített értékek listáját adja meg a LUIS-alkalmazás. Lásd: [LUIS határok](luis-boundaries.md) tekintse át a listában entitástípus korlátait mutató hivatkozás. 
 
-Ha már tekinthető hierarchikus, összetett, és az entitások listája, és továbbra is több, mint a korlát, forduljon az ügyfélszolgálathoz. Ehhez gyűjtsön a rendszer részletes adatait, lépjen a [LUIS](luis-reference-regions.md#luis-website) webhelyet, és válassza ki **támogatási**. Ha az Azure-előfizetés tartalmazza a támogatási szolgálathoz, lépjen kapcsolatba [technikai Azure-támogatás](https://azure.microsoft.com/support/options/). 
+Ha már tekinteni ezeket az entitásokat, és továbbra is több, mint a korlátot, forduljon az ügyfélszolgálathoz. Ehhez gyűjtsön a rendszer részletes adatait, lépjen a [LUIS](luis-reference-regions.md#luis-website) webhelyet, és válassza ki **támogatási**. Ha az Azure-előfizetés tartalmazza a támogatási szolgálathoz, lépjen kapcsolatba [technikai Azure-támogatás](https://azure.microsoft.com/support/options/). 
 
 ## <a name="next-steps"></a>További lépések
 

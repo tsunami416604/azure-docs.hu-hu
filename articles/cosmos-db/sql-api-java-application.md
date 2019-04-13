@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: 4d6d26bd142a62d57b55caa290a2a94a3988737d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a915792ad5cd1352c666f8224345c54e278ab899
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008707"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526877"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Java-webalkalmazás létrehozása az Azure Cosmos DB és az SQL API használatával
 
@@ -71,7 +71,7 @@ JSP-alkalmazás létrehozása:
    
     ![Új JSP-fájl létrehozása – Java-alkalmazásokra vonatkozó oktatóanyag](./media/sql-api-java-application/image11.png)
 5. A **Select JSP Template** (JSP-sablon kiválasztása) párbeszédablakban, a jelen oktatóanyag céljából válassza a **New JSP File (html)** (Új JSP-fájl (html)) lehetőséget, majd kattintson a **Finish** (Befejezés) lehetőségre.
-6. Miután megnyílt az index.jsp fájl az Eclipse-ben, adja hozzá a **Hello World!** szöveget a már meglévő <body> elemhez. A frissített <body> tartalomnak az alábbi kódhoz kell hasonlítania:
+6. Miután megnyílt az index.jsp fájl az Eclipse-ben, adja hozzá a **Hello World!** szöveget a már meglévő `<body>` elemhez. A frissített `<body>` tartalomnak az alábbi kódhoz kell hasonlítania:
    
         <body>
             <% out.println("Hello World!"); %>
@@ -99,8 +99,13 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
    ![Az SQL Java Application SDK telepítése](./media/sql-api-java-application/image13.png)
      
    * Vagy adja hozzá a függőség XML-fájljának Group Id (Csoportazonosító) és Artifact Id (Összetevő-azonosító) szakaszát közvetlenül a pom.xml fájlhoz egy szövegszerkesztő segítségével:
-     
-        <dependency> <groupId>com.microsoft.azure</groupId> <artifactId>azure-documentdb</artifactId> <version>1.9.1</version> </dependency>
+        ```xml
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>azure-documentdb</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+        ```
 6. Az **OK** gombra való kattintás után a Maven telepíti a SQL Java SDK-t.
 7. Mentse a pom.xml fájlt.
 

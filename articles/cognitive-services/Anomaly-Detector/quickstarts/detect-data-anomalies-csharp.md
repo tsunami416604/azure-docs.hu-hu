@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 7aa171a49ea03769c3ecbb5d35ae31ac6fae052e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 772f15f54819f31d92411df747fc10d54b3e96cd
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473190"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544112"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Gyors útmutató: Rendellenességek észlelése az Anomáliadetektálási detector használatával REST API használatával az idősoros adatokat, ésC# 
 
@@ -81,24 +81,19 @@ Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelé
 1. Hozzon létre egy új aszinkron függvényt nevű `Request` átkerül a fent létrehozott változókat.
 
 2. Állítsa be az ügyfél biztonsági protokoll és fejléc-információk használata egy `HttpClient` objektum. Az előfizetési kulcs, adja hozzá a `Ocp-Apim-Subscription-Key` fejléc. Ezután hozzon létre egy `StringContent` objektum a kéréshez.
- 
-3. A kérelem küldése `PostAsync()`. Ha a kérelem sikeres, a választ adja vissza.  
+
+3. A kérelem küldése `PostAsync()`, és visszaadja a választ.
 
 ```csharp
-static async Task<string> Request(string baseAddress, string endpoint, string subscriptionKey, string requestData){
-    using (HttpClient client = new HttpClient { BaseAddress = new Uri(baseAddress) }){
+static async Task<string> Request(string apiAddress, string endpoint, string subscriptionKey, string requestData){
+    using (HttpClient client = new HttpClient { BaseAddress = new Uri(apiAddress) }){
         System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
         var content = new StringContent(requestData, Encoding.UTF8, "application/json");
         var res = await client.PostAsync(endpoint, content);
-        if (res.IsSuccessStatusCode){
-            return await res.Content.ReadAsStringAsync();
-        }
-        else{
-            return $"ErrorCode: {res.StatusCode}";
-        }
+        return await res.Content.ReadAsStringAsync();
     }
 }
 ```
@@ -109,9 +104,9 @@ static async Task<string> Request(string baseAddress, string endpoint, string su
 
 2. A JSON-objektum deszerializálása, és jegyezze fel a konzolhoz.
 
-3. A rendellenességek észlelését a pozíciók található adatkészlet. A válasz `isAnomaly` mezőt tartalmaz, amelyek azt jelzi, hogy egy adatpont anomáliát logikai értékek tömbje. Konvertálja az egy karakterlánc-tömbben, a válasz objektummal `ToObject<bool[]>()` függvény.
+3. Ha a válasz tartalmaz `code` mezőben nyomtassa ki a hibakódot és a hibaüzenet jelenik meg. 
 
-4. Iteráció a tömbben, és nyomtassa ki az index minden `true` értékeket. Ha találhatók esetleges rendellenes adatpontok index ezeket az értékeket felelnek meg.
+4. Ellenkező esetben találja az adatkészlet a pozíciók a rendellenességek észlelését. A válasz `isAnomaly` mezőt tartalmaz, amelyek azt jelzi, hogy egy adatpont anomáliát logikai értékek tömbje. Konvertálja az egy karakterlánc-tömbben, a válasz objektummal `ToObject<bool[]>()` függvény. Iteráció a tömbben, és nyomtassa ki az index minden `true` értékeket. Ha találhatók esetleges rendellenes adatpontok index ezeket az értékeket felelnek meg.
 
 ```csharp
 static void detectAnomaliesBatch(string requestData){
@@ -126,11 +121,17 @@ static void detectAnomaliesBatch(string requestData){
     dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(result);
     System.Console.WriteLine(jsonObj);
 
-    bool[] anomalies = jsonObj["isAnomaly"].ToObject<bool[]>();
-    System.Console.WriteLine("\n Anomalies detected in the following data positions:");
-    for (var i = 0; i < anomalies.Length; i++) {
-        if (anomalies[i]) {
-            System.Console.Write(i + ", ");
+    if (jsonObj["code"] != null){
+        System.Console.WriteLine($"Detection failed. ErrorCode:{jsonObj["code"]}, ErrorMessage:{jsonObj["message"]}");
+    }
+    else{
+        bool[] anomalies = jsonObj["isAnomaly"].ToObject<bool[]>();
+        System.Console.WriteLine("\nAnomalies detected in the following data positions:");
+        for (var i = 0; i < anomalies.Length; i++){
+            if (anomalies[i])
+            {
+                System.Console.Write(i + ", ");
+            }
         }
     }
 }
@@ -140,11 +141,11 @@ static void detectAnomaliesBatch(string requestData){
 
 1. Hozzon létre egy új függvényt nevű `detectAnomaliesLatest()`. A kérelem hozhatnak létre, és küldje el meghívásával a `Request()` függvényt a végponthoz, előfizetési kulcsot, a legújabb pont anomáliadetektálás URL-CÍMÉT és az idősorozat-adatok.
 
-2. A JSON-objektum deszerializálása, és jegyezze fel a konzolhoz. 
+2. A JSON-objektum deszerializálása, és jegyezze fel a konzolhoz.
 
 ```csharp
 static void detectAnomaliesLatest(string requestData){
-    System.Console.WriteLine("\n\n Determining if latest data point is an anomaly");
+    System.Console.WriteLine("\n\nDetermining if latest data point is an anomaly");
     var result = Request(
         endpoint,
         latestPointDetectionUrl,

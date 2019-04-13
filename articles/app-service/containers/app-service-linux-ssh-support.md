@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: a56c4b0bac61bd2039138ffed554130c6e520821
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2d84a4dd0b69ce9ca7fc594dffce3238c620c426
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58167133"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543973"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-támogatás a Linuxon futó Azure App Service
 
@@ -35,71 +35,11 @@ Is csatlakozhat a tároló közvetlenül a helyi fejlesztői gépen SSH és az S
 
 ## <a name="open-ssh-session-in-browser"></a>Nyissa meg böngészőben SSH-munkamenet
 
-Ahhoz, hogy a tároló SSH-ügyfél kapcsolatot, az alkalmazás kell futtatnia.
-
-Illessze be a következő URL-címet a böngészőben, és cserélje le \<app_name > az alkalmazás nevére:
-
-```
-https://<app_name>.scm.azurewebsites.net/webssh/host
-```
-
-Ha Ön nem már hitelesített, hitelesítéséhez az Azure-előfizetésében való csatlakozáshoz szükségesek. A hitelesítést követően látni egy böngészőben rendszerhéj, ahol futtathat parancsokat a tárolóban.
-
-![SSH-kapcsolatot](./media/app-service-linux-ssh-support/app-service-linux-ssh-connection.png)
+[!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-no-h.md)]
 
 ## <a name="use-ssh-support-with-custom-docker-images"></a>SSH-támogatás használata egyéni Docker-rendszerképek
 
-Ahhoz, hogy egy egyéni Docker-rendszerkép SSH-kommunikációt a tároló és az ügyfél közötti támogatása az Azure Portalon hajtsa végre az alábbi lépéseket a Docker-rendszerképet a.
-
-Ezeket a lépéseket jelennek meg az Azure App Service-tárházban, [például](https://github.com/Azure-App-Service/node/blob/master/6.9.3/).
-
-1. Tartalmazza a `openssh-server` telepítés [ `RUN` utasítás](https://docs.docker.com/engine/reference/builder/#run) a docker-fájlban, a lemezkép és a fiók jelszavát a legfelső szintű set `"Docker!"`.
-
-    > [!NOTE]
-    > Ez a konfiguráció nem tesz elérhetővé külső kapcsolatokat a tárolóhoz. Az SSH csak a Kudu-n keresztül érhetők el / SCM webhely, amely a közzétételi hitelesítő adatokkal van hitelesítve.
-
-    ```Dockerfile
-    # ------------------------
-    # SSH Server support
-    # ------------------------
-    RUN apt-get update \
-        && apt-get install -y --no-install-recommends openssh-server \
-        && echo "root:Docker!" | chpasswd
-    ```
-
-2. Adjon hozzá egy [ `COPY` utasítás](https://docs.docker.com/engine/reference/builder/#copy) , a docker-fájl másolása egy [sshd_config](https://man.openbsd.org/sshd_config) fájlt a */etc/ssh/* könyvtár. A konfigurációs fájlban kell alapozni az sshd_config fájlban, az Azure-App-Service GitHub-adattárában [Itt](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config).
-
-    > [!NOTE]
-    > A *sshd_config* fájlnak tartalmaznia kell a következő vagy a kapcsolat hibája esetén: 
-    > * `Ciphers` tartalmaznia kell legalább a következők egyikét: `aes128-cbc,3des-cbc,aes256-cbc`.
-    > * `MACs` tartalmaznia kell legalább a következők egyikét: `hmac-sha1,hmac-sha1-96`.
-
-    ```Dockerfile
-    COPY sshd_config /etc/ssh/
-    ```
-
-3. Tartalmazza a 2222-es port a [ `EXPOSE` utasítás](https://docs.docker.com/engine/reference/builder/#expose) a docker-fájl számára. Bár a rendszergazdai szintű jelszó ismert, a 2222-es port nem érhető el az internet irányából. Egy belső egyetlen port elérhető csak egy privát virtuális hálózat hálózati hidas kapcsolatán belüli tárolók által.
-
-    ```Dockerfile
-    EXPOSE 2222 80
-    ```
-
-4. Ügyeljen arra, hogy indítsa el a héjparancsfájl használatával SSH szolgáltatást (Példa: [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)).
-
-    ```bash
-    #!/bin/bash
-    service ssh start
-    ```
-
-A docker-fájlt használ a [ `ENTRYPOINT` utasítás](https://docs.docker.com/engine/reference/builder/#entrypoint) a parancsfájl futtatásához.
-
-    ```Dockerfile
-    COPY init_container.sh /opt/startup
-    ...
-    RUN chmod 755 /opt/startup/init_container.sh
-    ...
-    ENTRYPOINT ["/opt/startup/init_container.sh"]
-    ```
+Lásd: [konfigurálása SSH egyéni tárolóban](configure-custom-container.md#enable-ssh).
 
 ## <a name="open-ssh-session-from-remote-shell"></a>Nyissa meg az SSH-munkamenetet a távoli rendszerhéj
 
@@ -111,10 +51,10 @@ Bújtatás, a TCP használatával hozhat létre egy hitelesített WebSocket kapc
 
 Első lépésként telepítenie kell [Azure CLI-vel](/cli/azure/install-azure-cli?view=azure-cli-latest). Hogyan működik az Azure parancssori felület telepítése nélkül megtekintéséhez nyissa meg a [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Távoli kapcsolatot létesíteni az alkalmazás használatával az [az webapp távoli-kapcsolat létrehozása](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) parancsot. Adja meg  _\<előfizetés\_azonosítója >_,  _\<csoport\_neve >_ és \_< alkalmazás\_neve > _ az alkalmazáshoz.
+Távoli kapcsolatot létesíteni az alkalmazás használatával az [az webapp távoli-kapcsolat létrehozása](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) parancsot. Adja meg  _\<előfizetés-azonosítója >_,  _\<csoport-neve >_ és \_< alkalmazás neve > _ az alkalmazáshoz.
 
 ```azurecli-interactive
-az webapp remote-connection create --subscription <subscription_id> --resource-group <group_name> -n <app_name> &
+az webapp remote-connection create --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]

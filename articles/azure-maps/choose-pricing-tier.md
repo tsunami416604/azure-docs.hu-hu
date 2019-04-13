@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ac88bc95ac9ffe4c2f32307b0bee427829242add
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1bf60014b20f4cec29d661db4deb029fea4ab1d5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234679"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547343"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>A jobb oldalon, az Azure Maps-tarifacsomag kiválasztása
 
@@ -29,7 +29,7 @@ Az S0 és S1 szintű tarifacsomagban is kapható különböző mennyiségű adat
 
 | Képesség                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
-| Keresés                                  |        ✓           |     ✓    |
+| Keresés (fwd/Ford geokódolás, hasznos helyek)  |        ✓           |     ✓    |
 | A Batch geokódolás (előzetes verzió)              |                   |     ✓    |
 | Keresés a sokszög          |                   |     ✓    |
 | Útválasztás                                 |        ✓           |     ✓    |

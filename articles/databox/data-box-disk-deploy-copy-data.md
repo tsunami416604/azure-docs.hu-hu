@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 47c14379a01da86f547ac917472260a041b67f99
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5b5404f19a9b692b3984dafd6f029729822284dc
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106899"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548746"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Oktatóanyag: Adatok másolása az Azure Data Box-lemezek és ellenőrzése
 
@@ -44,14 +44,15 @@ Mielőtt a lemezeket, másolja az adatokat, tekintse át az alábbiakat:
 - Adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure Storage és a Data Box Disk korlátaival](data-box-disk-limits.md) foglalkozó cikkben ismertetett méretkorlátoknak.
 - Ha a Data Box Disk által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Box Disken kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
 
-Ha a felügyelt lemezek megadott sorrendben, tekintse át a következő további szempontok:
+   > [!IMPORTANT]
+   >  Ha a felügyelt lemezek a tárolási célhely egyik rendelés létrehozása során, a következő szakaszban kell alkalmazni.
 
 - A megadott nevű egy felügyelt lemezt egy erőforráscsoportba tartozó legfeljebb a precreated mappákat és az összes a Data Box-lemezek között. Ez azt jelenti, hogy egyedi nevük legyen a VHD-k a precreated mappák feltöltött kell. Győződjön meg arról, hogy a megadott név nem egyezik meg a olyan már meglévő felügyelt lemezről egy erőforráscsoportban. Ha virtuális merevlemezek ugyanazokat a neveket, csak egy virtuális merevlemez konvertálva van ilyen nevű felügyelt lemez. A virtuális merevlemezeket lapblobként lesz töltve a az előkészítési tárfiókból.
 - Minden esetben másolja a VHD-k egyik precreated mappát. Másolja a VHD-ken kívüli ezeket a mappákat vagy egy mappában, amelyet Ön hozott létre, ha a virtuális merevlemezeket lapblobként töltődnek fel az Azure Storage-fiókot, és nem felügyelt lemezek.
 - Csak a rögzített méretű virtuális merevlemezeket is feltölthetők a felügyelt lemez gyors létrehozásához. Dinamikus VHD-k különbséglemez VHD-k vagy VHDX-fájlok nem támogatottak.
 
 
-Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az adatokat a Data Box Diskre.
+## <a name="perform-the-following-steps-to-connect-and-copy-data-from-your-computer-to-the-data-box-disk"></a>Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az adatokat a Data Box Diskre.
 
 1. Tekintse meg a zárolásfeloldás után a meghajtó tartalmát. A lista precreated mappát és a meghajtó belső eltér attól függően, hogy a Data Box-lemezrendelését elhelyezésekor megadott beállítások.
 
@@ -91,12 +92,12 @@ Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az 
     |Cél       | Megadja a célkönyvtár elérési útját.        |
     |/E                  | Átmásolja az alkönyvtárakat, az üres könyvtárakkal együtt. |
     |/MT[:N]             | Többszálas másolatokat hoz létre N szállal, ahol az N egy 1 és 128 közötti egész szám. <br>Az N alapértelmezett értéke 8.        |
-    |/R: <N>             | A meghiúsult másolások esetén indított újrapróbálkozások számát határozza meg. Az N alapértelmezett értéke 1 000 000 (egymillió újrapróbálkozás).        |
-    |/W: <N>             | Az újrapróbálkozások közötti várakozási időt határozza meg másodpercben. Az N alapértelmezett értéke 30 (30 másodperc várakozási idő).        |
+    |/ R: \<N &GT;             | A meghiúsult másolások esetén indított újrapróbálkozások számát határozza meg. Az N alapértelmezett értéke 1 000 000 (egymillió újrapróbálkozás).        |
+    |/W: \<N &GT;             | Az újrapróbálkozások közötti várakozási időt határozza meg másodpercben. Az N alapértelmezett értéke 30 (30 másodperc várakozási idő).        |
     |/NFL                | Azt adja meg, hogy a fájlnevek ne legyenek naplózva.        |
     |/NDL                | Azt adja meg, hogy a könyvtárnevek ne legyenek naplózva.        |
     |/FFT                | FAT-fájlidőket feltételez (két másodperces pontosság).        |
-    |/Log:<Log File>     | Beírja az állapotkimenetet a naplófájlba (felülírja a már létező naplófájlt).         |
+    |/ Log:\<naplófájl >     | Beírja az állapotkimenetet a naplófájlba (felülírja a már létező naplófájlt).         |
 
     Több lemez is használható párhuzamosan, és minden lemezen egyszerre több feladat futtatható.
 

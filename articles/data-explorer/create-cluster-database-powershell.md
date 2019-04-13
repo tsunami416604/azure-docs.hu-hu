@@ -7,24 +7,24 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: 84b0cbfd7e8ec6709b79328220aac7c9ae904bdb
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 553564be494b4175cba937b583d49ad84a8d0e66
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047160"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526520"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Az Azure Data Explorer fürt és adatbázis létrehozása PowerShell használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](create-cluster-database-portal.md)
-> * [parancssori felület](create-cluster-database-cli.md)
+> * [Parancssori felület](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 >  
 
-Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürtöt, és a egy adatbázis Powershell használatával. PowerShell-parancsmagok és parancsfájlok is futtathatja a Windows, Linux, vagy a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) a [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) létrehozása és konfigurálása az Azure Data Explorer fürtök és az adatbázisok.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Data Explorer használatához, először hozzon létre egy fürtöt, és az adott fürt egy vagy több adatbázis létrehozása. Ezután (betöltés) adatokat az adatbázisba fogadására, így vonatkozóan, lekérdezéseket futtathat. Ebben a rövid útmutatóban létrehozhat egy fürtöt, és a egy adatbázis Powershell használatával. PowerShell-parancsmagok és parancsfájlok is futtathatja a Windows, Linux, vagy a [Azure Cloud Shell](../cloud-shell/overview.md) a [Az.Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) létrehozása és konfigurálása az Azure Data Explorer fürtök és az adatbázisok.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha helyi telepítése és használata az Azure CLI, az ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb. Futtassa az `az --version` parancsot a verzió ellenőrzéséhez. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket.
+Ha helyi telepítése és használata az Azure CLI, az ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb. Futtassa az `az --version` parancsot a verzió ellenőrzéséhez. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket.
 
 ## <a name="configure-parameters"></a>Paraméterek konfigurálása
 
@@ -116,5 +116,5 @@ Most már egy fürt és a egy adatbázist.
 
 ## <a name="next-steps"></a>További lépések
 
-* [További Az.Kusto parancsok](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto)
-* [Gyors útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)](net-standard-ingest-data.md)
+* [További Az.Kusto parancsok](/powershell/module/az.kusto/?view=azps-1.7.0#kusto)
+* [Rövid útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)](net-standard-ingest-data.md)

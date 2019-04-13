@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 78c66ac25e9d20d9202236407d42f815879cd3f2
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426426"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527183"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Erőforrások az Azure virtual networkök névfeloldása
 
@@ -34,7 +34,7 @@ A névfeloldás használata típusa attól függ, hogyan kell az erőforrások k
 > A forgatókönyvtől függően előfordulhat, hogy szeretné használni az Azure DNS saját zónák funkció, amely jelenleg nyilvános előzetes verzióban érhető el. További információkat az [Azure DNS privát tartományokhoz való használatát](../dns/private-dns-overview.md) ismertető cikkben olvashat.
 >
 
-| **Forgatókönyv** | **Megoldás** | **Utótag** |
+| **Forgatókönyv** | **Megoldás** | **Suffix** |
 | --- | --- | --- |
 | Az azonos virtuális hálózatban, vagy az Azure Cloud Services ugyanazon a felhőszolgáltatáson belül található virtuális gépek közötti névfeloldás. | [Az Azure DNS Private Zones](../dns/private-dns-overview.md) vagy [Azure által biztosított névfeloldást](#azure-provided-name-resolution) |Állomásnév vagy teljes tartománynév |
 | Névfeloldás a különböző virtuális hálózatokban lévő virtuális gépek vagy szerepkörpéldányok a különböző felhőszolgáltatások között. |[Az Azure DNS Private Zones](../dns/private-dns-overview.md) vagy ügyfél által felügyelt DNS-kiszolgálók (DNS-proxy) az Azure által a névfeloldáshoz virtuális hálózatok közötti lekérdezések továbbítása. Lásd: [névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak teljes tartománynév |
@@ -147,7 +147,7 @@ DNS-továbbítást is lehetővé teszi a DNS-feloldási virtuális hálózatok k
 
 > [!NOTE]
 > Szerepkörpéldányok névfeloldása a virtuális gépek az adott virtuális hálózaton belül hajthat végre. A teljes tartománynév, amely tartalmazza a virtuális gép állomásnevét használatával hajtja végre, és **internal.cloudapp.net** DNS-utótagot. Azonban ebben az esetben névfeloldás csak akkor sikeres, ha a szerepkörpéldány rendelkezik a megadott virtuális gép nevét a [szerepkör sémáját (.cscfg fájl)](https://msdn.microsoft.com/library/azure/jj156212.aspx).
-> <Role name="<role-name>" vmName="<vm-name>">
+> `<Role name="<role-name>" vmName="<vm-name>">`
 >
 > Szeretne végrehajtani a névfeloldást a virtuális gépek egy másik virtuális hálózatban lévő szerepkörpéldányok (teljes tartománynév használatával a **internal.cloudapp.net** utótag) van ehhez a (egyéni DNS-kiszolgálók közötti továbbítás ebben a szakaszban leírt módszer használatával a két virtuális hálózat).
 >

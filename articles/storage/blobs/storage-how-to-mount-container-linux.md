@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 2/1/2019
 ms.author: seguler
-ms.openlocfilehash: 1e26eb213ad2613877c46758299c2e962894d358
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: eadf52afd115eb1cb642082cea4b9f338bd44914
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698002"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521653"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Blob-tároló csatlakoztatása fájlrendszerként blobfuse az útmutató
 
@@ -29,7 +29,7 @@ Ez az útmutató bemutatja, hogyan blobfuse használja, és a Linux és a hozzá
 ## <a name="install-blobfuse-on-linux"></a>Blobfuse telepítése Linux rendszeren
 Blobfuse bináris fájlok elérhetők a [Linux a Microsoft szoftverek tárolóhelyekkel](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) Ubuntun és RHEL disztribúciókat. Blobfuse telepíteni azokat a disztribúciókat, konfigurálja a listából a tárházak egyikét. A bináris fájlokat a forrás-kódblokkot is létrehozható a [Azure Storage telepítési lépéseket](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) Ha nincsenek elérhető a disztribúció nem bináris fájlokat.
 
-Ubuntu 14.04 és 16.04 Blobfuse történő telepítést támogatja. Győződjön meg arról, hogy rendelkezik a telepített verziókat valamelyikével, a következő parancs futtatásával:
+Ubuntu 14.04, 16.04 és 18.04 Blobfuse történő telepítést támogatja. Győződjön meg arról, hogy rendelkezik a telepített verziókat valamelyikével, a következő parancs futtatásával:
 ```
 lsb_release -a
 ```
@@ -51,11 +51,11 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-Hasonlóképpen, módosítsa az URL-címe `.../ubuntu/16.04/...` egy Ubuntu 16.04 terjesztési ponthoz.
+Hasonlóképpen, módosítsa az URL-címe `.../ubuntu/16.04/...` vagy `.../ubuntu/18.04/...` való hivatkozáshoz egy másik Ubuntu-verzió.
 
 ### <a name="install-blobfuse"></a>Blobfuse telepítése
 
-Egy Ubuntu/Debian terjesztési:
+Az Ubuntu vagy a Debian terjesztési:
 ```bash
 sudo apt-get install blobfuse
 ```
@@ -85,7 +85,7 @@ Az Azure-ban rendelkezésre álló ideiglenes lemezek (SSD) használhat a virtu�
 
 Győződjön meg arról, hogy a felhasználó férhet hozzá az ideiglenes elérési út:
 ```bash
-sudo mkdir /mnt/resource/blobfusetmp
+sudo mkdir /mnt/resource/blobfusetmp -p
 sudo chown <youruser> /mnt/resource/blobfusetmp
 ```
 
@@ -97,8 +97,15 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
+A `accountName` a tárfiók - nem a teljes URL-cím előtagja.
 
-Miután létrehozta ezt a fájlt, ügyeljen arra, hogy korlátozza a hozzáférést, így a többi felhasználó nem tudja olvasni azt.
+Hozza létre a fájl használatával:
+
+```
+touch ~/fuse_connection.cfg
+```
+
+Miután létrehozott és szerkesztett ezt a fájlt, ügyeljen arra, hogy korlátozza a hozzáférést, így más felhasználók nem tudják elolvasni.
 ```bash
 chmod 600 fuse_connection.cfg
 ```

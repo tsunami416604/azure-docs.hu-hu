@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 29091add5cee0934064224c9cca8644b401bd5e4
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493314"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526340"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Az Azure Diagnostics bővítmény konfigurációs séma verziók és előzményei
 Ezt oldal indexek az Azure Diagnostics bővítmény séma verziója le szállítani, a Microsoft Azure SDK csomag részeként.  
@@ -187,7 +187,7 @@ Nincsenek hogyan működött a kapcsolati karakterláncot, az Azure SDK 2.4 és 
 
 * Azure SDK 2.4 és korábbi a kapcsolati karakterlánc lett megadva futásidőben a diagnosztikai beépülő modul a tárolási fiók adatok átvitelére a diagnosztikai naplók.
 * Azure SDK 2.6-os vagy újabb a Visual Studio diagnosztikai kapcsolati karakterláncát használja a diagnosztikai bővítmény konfigurálása a megfelelő tárfiókadatok közzététele során. A kapcsolati karakterláncot adja meg a különböző storage-fiókot használó Visual Studio közzététel során különböző szolgáltatáskonfiguráció teszi lehetővé. Azonban a diagnosztikai beépülő modul (az Azure SDK 2.5-ös) után már nem érhető el, mert a .cscfg fájlban önmagában nem engedélyezhető a diagnosztikai bővítményt. A bővítmény eszközök, például a Visual Studio vagy a PowerShell segítségével külön engedélyeznie kell.
-* A diagnosztikai bővítmény konfigurálása a PowerShell-lel, a folyamat leegyszerűsítése a Visual Studio csomag kimenetét a nyilvános konfigurációs XML-t a diagnosztikai bővítményt, az egyes szerepkörökhöz is tartalmaz. A Visual Studio diagnosztikai kapcsolati karakterláncát használja a tárfiók-információ található a nyilvános konfigurációban feltöltéséhez. A nyilvános konfigurációs fájlok jönnek létre a kiterjesztéseket tartalmazó mappájába, és az alábbi mintát PaaSDiagnostics. <RoleName>. PubConfig.xml. A PowerShell-alapú telepítések Ez a minta használatával minden egyes konfiguráció leképezése egy szerepkört.
+* A diagnosztikai bővítmény konfigurálása a PowerShell-lel, a folyamat leegyszerűsítése a Visual Studio csomag kimenetét a nyilvános konfigurációs XML-t a diagnosztikai bővítményt, az egyes szerepkörökhöz is tartalmaz. A Visual Studio diagnosztikai kapcsolati karakterláncát használja a tárfiók-információ található a nyilvános konfigurációban feltöltéséhez. A nyilvános konfigurációs fájlok jönnek létre a kiterjesztéseket tartalmazó mappájába, és az alábbi mintát `PaaSDiagnostics.<RoleName>.PubConfig.xml`. A PowerShell-alapú telepítések Ez a minta használatával minden egyes konfiguráció leképezése egy szerepkört.
 * A kapcsolati karakterláncot a .cscfg fájlban is használják az Azure Portalon a diagnosztikai adatok eléréséhez, így is megjelennek a **figyelés** fülre. A kapcsolati karakterlánc monitorozási adatok részletes megjelenítéséhez a portálon a szolgáltatás konfigurálására van szükség.
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Azure SDK 2.6-os vagy újabb áttelepítése projektek

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65515566e5bd0701d218d993f4fe97cae08e1a75
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 2f4a7f2a4fe0e1ca455b1140e83f31f6b30a7511
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501178"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523460"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>A Microsoft identity platform és az OpenID Connect protokollal
 
@@ -215,7 +215,7 @@ Számos webes alkalmazás kell nem csak a felhasználó, de még a felhasználó
 
 A következő diagram a teljes OpenID Connect bejelentkezést és a jogkivonat beszerzéséhez folyamat hasonlít. A cikk a következő szakaszokban részletesen lépéseinek ismertetünk.
 
-![OpenID Connect protokoll: Token beszerzése](./media/v2-protocols-oidc/convergence_scenarios_webapp_webapi.png)
+![OpenID Connect protokoll: Token beszerzése](./media/v2-protocols-oidc/convergence-scenarios-webapp-webapi.svg)
 
 ## <a name="get-access-tokens"></a>Hozzáférési jogkivonat beszerzése
 Hozzáférési jogkivonatok beszerzésére, módosítsa a bejelentkezési kérelem:

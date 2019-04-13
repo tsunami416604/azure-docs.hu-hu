@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 06cb4d32359014f3cbc67ed1f75988c794e6599e
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 1c8ce91a0fd8805b307e1e21bc08f9050b8a47d4
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619511"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547039"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>Gyors útmutató: Rendellenességek észlelése az idősoros adatokat az Anomáliadetektálási detector használatával REST API-t és a Java használatával
 
@@ -82,7 +82,7 @@ Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelé
 3. Olvassa el a JSON-adatok fájlban
 
     ```java
-    String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "UTF-8");
+    String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "utf-8");
     ```
 
 ## <a name="create-a-function-to-send-requests"></a>Kérelmek küldése függvény létrehozása
@@ -93,9 +93,9 @@ Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelé
 
 3. Használja a kérelem `setHeader()` függvény beállítása a `Content-Type` fejlécet `application/json`, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
 
-4. A kérelem használata `setEntity()` függvényt, hogy az adatok küldésének.   
+4. A kérelem használata `setEntity()` függvényt, hogy az adatok küldésének.
 
-5. Az ügyfél használata `execute()` függvényt a kérelem elküldéséhez, és mentse azt egy `CloseableHttpResponse` objektum. 
+5. Az ügyfél használata `execute()` függvényt a kérelem elküldéséhez, és mentse azt egy `CloseableHttpResponse` objektum.
 
 6. Hozzon létre egy `HttpEntity` objektum a válasz tartalom tárolásához. A tartalom lekérése `getEntity()`. Ha a válasz nem üres, adja vissza.
 
@@ -127,16 +127,20 @@ static String sendRequest(String apiAddress, String endpoint, String subscriptio
 
 1. Hozzon létre egy meghívott metódus `detectAnomaliesBatch()` során az adatokat egy kötegelt rendellenességek észlelése. Hívja a `sendRequest()` metódus a végpont URL-címe, előfizetési kulcs és json-adatok a fent létrehozott. Az eredményt kapja, és nyomtassa ki a konzolhoz.
 
-2. A rendellenességek észlelését a pozíciók található adatkészlet. A válasz `isAnomaly` mező arra, hogy egy adott adatpontot anomáliát vonatkozó logikai értéket tartalmaz. A JSON-tömböt beszerzése és végigléptetni, az index bármelyik nyomtatási `true` értékeket. Ha találhatók esetleges rendellenes adatpontok index ezeket az értékeket felelnek meg.
+2. Ha a válasz tartalmaz `code` mezőben nyomtassa ki a hibakódot és a hibaüzenet jelenik meg.
 
-    
-    ```java
-    static void detectAnomaliesBatch(String requestData) {
-        System.out.println("Detecting anomalies as a batch");
-        String result = sendRequest(batchDetectionUrl, endpoint, subscriptionKey, requestData);
-        if (result != null) {
-            System.out.println(result);
-            JSONObject jsonObj = new JSONObject(result);
+3. Ellenkező esetben találja az adatkészlet a pozíciók a rendellenességek észlelését. A válasz `isAnomaly` mező arra, hogy egy adott adatpontot anomáliát vonatkozó logikai értéket tartalmaz. A JSON-tömböt beszerzése és végigléptetni, az index bármelyik nyomtatási `true` értékeket. Ha találhatók esetleges rendellenes adatpontok index ezeket az értékeket felelnek meg.
+
+```java
+static void detectAnomaliesBatch(String requestData) {
+    System.out.println("Detecting anomalies as a batch");
+    String result = sendRequest(batchDetectionUrl, endpoint, subscriptionKey, requestData);
+    if (result != null) {
+        System.out.println(result);
+        JSONObject jsonObj = new JSONObject(result);
+        if (jsonObj.has("code")) {
+            System.out.println(String.format("Detection failed. ErrorCode:%s, ErrorMessage:%s", jsonObj.getString("code"), jsonObj.getString("message")));
+        } else {
             JSONArray jsonArray = jsonObj.getJSONArray("isAnomaly");
             System.out.println("Anomalies found in the following data positions:");
             for (int i = 0; i < jsonArray.length(); ++i) {
@@ -146,7 +150,8 @@ static String sendRequest(String apiAddress, String endpoint, String subscriptio
             System.out.println();
         }
     }
-    ```
+}
+```
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>A legújabb adatpont anomáliadetektálási állapotának észlelése
 
@@ -165,14 +170,14 @@ static void detectAnomaliesLatest(String requestData) {
 1. A fő metódus az alkalmazás olvassa el a kérelmeket a hozzáadni kívánt adatokat tartalmazó JSON-fájlt.
 
 2. Hívja meg a fent létrehozott két anomáliadetektálási észlelési funkciók.
-    
-    ```java
-    public static void main(String[] args) throws Exception {
-        String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "UTF-8");
-        detectAnomaliesBatch(requestData);
-        detectAnomaliesLatest(requestData);
-    }
-    ```
+
+```java
+public static void main(String[] args) throws Exception {
+    String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "utf-8");
+    detectAnomaliesBatch(requestData);
+    detectAnomaliesLatest(requestData);
+}
+```
 
 ### <a name="example-response"></a>Példaválasz
 

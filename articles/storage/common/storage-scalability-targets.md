@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 96322c730300e360ed03f4b623db2a7f18825f55
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: e3e0e9ae4a1939aad9ab2ae42a1b51b1b00e2462
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267701"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521716"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Az Azure Storage méretezhetőségi és teljesítménycéljai storage-fiókok
 
@@ -58,13 +58,13 @@ Példa: Egyetlen megosztása 100 000 IOPS érhető el, és egyetlen fájl akár 
 
 |Terület  |Cél  |
 |---------|---------|
-|Min. méret                        |100 GiB      |
-|Maximális méret                        |100 TiB      |
+|Üzembe helyezett min. méret                        |100 GiB      |
+|Maximális méret kiépítve                        |100 TiB      |
 |Minimális méret növelése vagy csökkentése    |1 GiB      |
 |Alapkonfiguráció IOPS    |1 GIB-ra legfeljebb 100 000 IOPS|
 |Tartalékkapacitás IOPS    |3 x IOPS száma legfeljebb 100 000 GiB|
-|Minimális sávszélesség                     |100        |
-|Bandwidth |0,1 akár 5 GB/s GiB gépenként MB/s     |
+|Kilépő üzenetek gyakorisága         |60 MiB/s + 0,06 * kiosztott GiB        |
+|Bejövő forgalom| 40 MiB/s + 0,04 * kiosztott GiB |
 |A pillanatképek maximális száma        |200       |
 
 #### <a name="premium-file-limits"></a>Prémium szintű fájlokra vonatkozó korlátok
@@ -89,9 +89,9 @@ Az Azure File Sync a cél az korlátlan használat úgy lett kialakítva, de a k
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
-- [A Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/)
+- [A Storage szolgáltatás díjszabását.](https://azure.microsoft.com/pricing/details/storage/)
 - [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../../azure-subscription-service-limits.md)
 - [Az Azure Storage replikáció](../storage-redundancy.md)
-- [A Microsoft Azure Storage teljesítmény- és méretezhetőségi ellenőrzőlistája](../storage-performance-checklist.md)
+- [A Microsoft Azure Storage teljesítmény- és skálázhatósági ellenőrzőlistája](../storage-performance-checklist.md)

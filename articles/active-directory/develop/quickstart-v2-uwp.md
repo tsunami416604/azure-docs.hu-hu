@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
+ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c61da6a55b1f4502deee056b29fdbc22ef33514
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: e7ed2830b704d379e2ecc5a5e548f831800af56d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490618"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526384"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Gyors útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
@@ -65,10 +65,10 @@ A jelen rövid útmutatóban szereplő kódmintán azt mutatjuk be, hogyan tud e
 > #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
 > Ahhoz, hogy a rövid útmutató kódmintája működjön, hozzá kell adnia egy átirányítási URI-t a következő formában: **urn:ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [A módosítás végrehajtása nekem]()
+> > [A módosítás alkalmazása]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Már be van állítva](media/quickstart-v2-uwp/green-check.png) az alkalmazás ezekkel az attribútumokkal van konfigurálva.
+> > ![Már konfigurált](media/quickstart-v2-uwp/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
 #### <a name="step-2-download-your-visual-studio-project"></a>2. lépés: A Visual Studio-projekt letöltése
 
@@ -86,7 +86,7 @@ A jelen rövid útmutatóban szereplő kódmintán azt mutatjuk be, hogyan tud e
 
 > [!div renderon="docs"]
 > Az elemek magyarázata:
-> - `Enter_the_Application_Id_here` – a regisztrált alkalmazás alkalmazásazonosítója.
+> - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 >
 > > [!TIP]
 > > Az értékek azonosításához *Alkalmazásazonosító*, lépjen a a **áttekintése** lap
@@ -108,7 +108,7 @@ Ez a szakasz a rövid útmutatóról nyújt további információkat.
 Az MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) segítségével a felhasználók, és biztonsági jogkivonatokat kérhetnek a könyvtár. A biztonsági jogkivonatokat a fejlesztők a Microsoft Identity platform által védett API-k elérésére szolgálnak. Az MSAL telepítéséhez futtassa a következő parancsot a Visual Studio *Package Manager konzolján*:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client -IncludePrerelease
 ```
 
 ### <a name="msal-initialization"></a>Az MSAL inicializálása
@@ -145,14 +145,13 @@ Bizonyos helyzetekben szükséges a Microsoft identity platform végpont egy fel
 - Ha kétfaktoros hitelesítésre van szükség
 
 ```csharp
-authResult = await App.PublicClientApp.AcquireToken(scopes, this)
-                       .ExecuteAsync();
+authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
+                      .ExecuteAsync();
 ```
 
 > |Az elemek magyarázata:||
 > |---------|---------|
 > | `scopes` | Tartalmazza a kért hatóköröket (például `{ "user.read" }` a Microsoft Graph és `{ "api://<Application ID>/access_as_user" }` az egyéni webes API-k esetében). |
-> | `this`| A WPF ablakot, amely a bejelentkezési párbeszédpanel center történik jelöli
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
@@ -177,4 +176,4 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 Próbálja ki az asztali Windowshoz készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 
 > [!div class="nextstepaction"]
-> [UWP - hívás Graph API-oktatóanyag](tutorial-v2-windows-uwp.md)
+> [UWP: A Graph API meghívása – oktatóanyag](tutorial-v2-windows-uwp.md)

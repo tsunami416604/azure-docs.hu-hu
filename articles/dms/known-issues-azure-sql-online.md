@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 04/09/2019
-ms.openlocfilehash: a822e540db87c36358f1a0e34d75e05ed866868d
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 1a8f46c74693b00fd8e30b1e1a78d90111dea08b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491390"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520745"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Ismert problémák és a migrálás korlátozások az online migrálást az Azure SQL DB
 
@@ -27,15 +27,17 @@ Ismert problémák és korlátozások online migrálást SQL Serverről az Azure
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Áttelepítés nem támogatott a historikus táblák
 
-**Jelenség**
+**Tünet**
 
 Ha a forrásadatbázis egy vagy több historikus táblát tartalmaz, az adatbázis-migrálást az "adatok teljes betöltése" művelet során nem sikerül, és a következő üzenet jelenhet meg:
 
-{"erőforrás-azonosító": "/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType": "Adatbázis-migrálási hiba", "errorEvents": "[" rögzítési funkciói nem állítható be. RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 üzenetet: [Microsoft] [SQL Server natív ügyfél 11.0] [SQL Server] a replikáció nem támogatott a rendszerverzióval ellátott historikus tábla a(z) [alkalmazás. Város] "sort: 1 oszlop: -1 "]"}
- 
+```
+{ "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"Database migration error", "errorEvents":"["Capture functionalities could not be set. RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line: 1 Column: -1 "]" }
+```
+
  ![A historikus tábla hibák példa](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
-**Áthidaló megoldás**
+**Megkerülő megoldás**
 
 1. Keresse meg az időbeli verziózású táblák a forrás-séma használatával az alábbi lekérdezést.
      ``` 
@@ -45,19 +47,19 @@ Ha a forrásadatbázis egy vagy több historikus táblát tartalmaz, az adatbáz
 
 3. Futtassa újra a migrálási tevékenységet.
 
-**További források**
+**Erőforrások**
 
 További információkért tekintse meg a cikket [időbeli Verziózású táblák](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017).
  
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>A táblák áttelepítési tartalmaz egy vagy több oszlop a hierarchyid adattípusú
 
-**Jelenség**
+**Tünet**
 
 Láthatja, hogy egy SQL-kivétel javasolásával "ntext nem kompatibilis a hierarchyid" a "adatok teljes betöltése" művelet során:
      
 ![hierarchyid hibák példa](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
-**Áthidaló megoldás**
+**Megkerülő megoldás**
 
 1. A felhasználói táblák használatával az alábbi lekérdezést a hierarchyid adattípusú oszlopokat tartalmazó találja.
 
@@ -71,7 +73,7 @@ Láthatja, hogy egy SQL-kivétel javasolásával "ntext nem kompatibilis a hiera
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>Az "adatok teljes betöltése" vagy "adatok növekményes szinkronizálása" során a sémában aktív eseményindítókat használó különböző integritás szabálysértések áttelepítési hibák
 
-**Áthidaló megoldás**
+**Megkerülő megoldás**
 
 1. Keresse meg az eseményindítókat, amelyek a jelenleg aktív, a forrásadatbázis, használja az alábbi lekérdezést:
 
@@ -85,7 +87,7 @@ Láthatja, hogy egy SQL-kivétel javasolásával "ntext nem kompatibilis a hiera
 
 ### <a name="support-for-lob-data-types"></a>A LOB adattípus támogatása
 
-**Jelenség**
+**Tünet**
 
 Ha nagyméretű objektum (LOB) oszlop hossza 32 KB-nál nagyobb méretű, adatok előfordulhat, hogy első csonkolva, a cél. Az alábbi lekérdezés használatával LOB oszlop hossza ellenőrizheti: 
 
@@ -93,29 +95,29 @@ Ha nagyméretű objektum (LOB) oszlop hossza 32 KB-nál nagyobb méretű, adatok
 SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 ```
 
-**Áthidaló megoldás**
+**Megkerülő megoldás**
 
 Ha egy LOB oszlop, amely 32 KB-nál nagyobb méretű, lépjen kapcsolatba a mérnöki csapathoz, [kérje meg az Azure adatbázis-Migrálási](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 ### <a name="issues-with-timestamp-columns"></a>Időbélyegző-oszlopok problémái
 
-**Jelenség**
+**Tünet**
 
 A DMS nem áttelepíteni a forrás timestamp értéket; Ehelyett a DMS a céloldali tábla hoz létre egy új időbélyegző-érték.
 
-**Áthidaló megoldás**
+**Megkerülő megoldás**
 
 Ha DMS áttelepíteni a forrástábla tárolt időbélyeg pontos érték van szüksége, forduljon a mérnöki csapathoz, [kérje meg az Azure adatbázis-Migrálási](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Adatok áttelepítési hibák ne adjon meg további részleteket az adatbázis részletes állapota panel.
 
-**Jelenség**
+**Tünet**
 
 Ha áttelepítési hiba az adatbázisok részletek állapot nézetben, válassza a **adatok áttelepítési hibák** hivatkozást a felső szalagon nem rendelkezhetnek a migrálási hibák további adatait.
 
 ![adatok áttelepítési hibák semmilyen részleteinek példa](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
-**Áthidaló megoldás**
+**Megkerülő megoldás**
 
 Az adott hiba részletei lekéréséhez kövesse az alábbi lépéseket.
 

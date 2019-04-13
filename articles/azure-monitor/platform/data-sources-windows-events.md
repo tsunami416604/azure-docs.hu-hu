@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 1f55e03d9a925bf939d627f376d29edf27461e74
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001119"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522710"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Windows Eseménynapló-adatforrások az Azure monitorban
 Windows-eseménynaplók közé tartoznak a leggyakoribb [adatforrások](agent-data-sources.md) Windows-ügynökök használata, mivel számos alkalmazásban a Windows eseménynaplójába írhatja az adatok gyűjtéséhez.  Események, például a rendszer- és standard szintű naplók is összegyűjtheti a bármely kell figyelnie alkalmazások által létrehozott egyéni naplók megadása mellett.
@@ -54,7 +54,7 @@ Windows eseményrekordok rendelkezik olyan típusú **esemény** , és a tulajdo
 | EventLevelName |A szöveges formátumú esemény súlyosságát. |
 | Eseménynapló |Az összegyűjtött az eseményt az Eseménynapló neve. |
 | ParameterXml |Esemény paraméterértékek XML formátumban. |
-| ManagementGroupName |A System Center Operations Manager-ügynököket a felügyeleti csoport neve.  Más ügynökök esetén ez az érték AOI-<workspace ID> |
+| ManagementGroupName |A System Center Operations Manager-ügynököket a felügyeleti csoport neve.  Más ügynökök esetén ez az érték van. `AOI-<workspace ID>` |
 | RenderedDescription |A paraméterértékek esemény leírása |
 | Forrás |Az esemény forrását. |
 | SourceSystem |Az esemény gyűjtötte a program az ügynök típusa. <br> Csatlakozás OpsManager – Windows-ügynök, közvetlenül vagy Operations Manager által felügyelt <br> Linux – az összes Linux-ügynökök  <br> AzureStorage – az Azure Diagnostics |

@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 4f4032551efbf517ab47a64afc393cc57ace6bc1
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621498"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523766"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
 
@@ -193,7 +193,7 @@ A következő példában létrehozunk egy új feladatot, amely több adatbázisb
 Alapértelmezés szerint a feladat ügynök fognak kinézni, a visszaadott eredményeket tárolja a tábla létrehozásához. Ennek eredményeképpen a bejelentkezés, a kimeneti hitelesítő adat számára használt hitelesítő adatokat társított kell végezni a megfelelő engedélyekkel. Ha szeretné manuálisan létrehozni a tábla kelljen majd annak rendelkeznie kell a következő tulajdonságokkal:
 1. A megfelelő nevű és típusú adatokkal az eredményhalmaz oszlopok.
 2. További internal_execution_id UniqueIdentifier adattípusú oszlop.
-3. Egy nem fürtözött index nevű "amelynek neve IX_<TableName>_Internal_Execution_ID" internal_execution_id oszlopában.
+3. Egy nem fürtözött index nevű `IX_<TableName>_Internal_Execution_ID` internal_execution_id oszlopában.
 
 Csatlakozás a [ *feladat adatbázis* ](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsokat:
 

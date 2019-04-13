@@ -8,14 +8,14 @@ ms.assetid: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: ca65b6a1691a870054682b36109f2bdc10d4ad98
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: d327146c4a1fa61e55bb904308038c1ce717123d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918705"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543744"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Az Azure Functions prémium szintű csomag (előzetes verzió)
 
@@ -42,7 +42,7 @@ A következő funkciók érhetők el a függvényalkalmazásokat üzembe helyeze
 
 Ha nincsenek események és a végrehajtás még ma a Használatalapú csomag fel, a rendszer az alkalmazás lehetséges, hogy méretezhető nulla-példányokhoz. Amikor új események származnak, egy új példányt kell lehet kifejezetten az azon futó alkalmazását.  Specializace új példányokat az alkalmazástól függően hosszabb időt is igénybe vehet.  Erre a további késésre első hívásakor alkalmazás hidegindítási gyakran nevezik.
 
-A prémium szintű csomag az alkalmazás a megadott számú példányok előmelegíteni is rendelkezhet.  Példányok előre fűtéssel is lehetővé teszi az előre egy alkalmazást, mielőtt nagy terhelés. Az alkalmazás elvégzi a horizontális felskálázást, azt először arányban a előre fűtéssel példányok be. További példányok horizontális fel- és azonnal a következő skálázási művelet előkészítésekor a meleg puffer továbbra is. Előre fűtéssel példányok puffer sablonkonfigurációkat hatékonyan elkerülheti a hidegindítás késéseket.  Előre fűtéssel példányok csak a prémium szintű csomag, a és továbbra is szeretné legalább egy példánya fut és elérhető minden alkalommal a terv aktív.
+A prémium szintű csomag az alkalmazás a megadott számú példányok, a csomag minimális méretét akár előmelegíteni is rendelkezhet.  Példányok előre fűtéssel is lehetővé teszi az előre egy alkalmazást, mielőtt nagy terhelés. Az alkalmazás elvégzi a horizontális felskálázást, azt először arányban a előre fűtéssel példányok be. További példányok horizontális fel- és azonnal a következő skálázási művelet előkészítésekor a meleg puffer továbbra is. Előre fűtéssel példányok puffer sablonkonfigurációkat hatékonyan elkerülheti a hidegindítás késéseket.  Előre fűtéssel példányok csak a prémium szintű csomag, a és továbbra is szeretné legalább egy példánya fut és elérhető minden alkalommal a terv aktív.
 
 Konfigurálhatja előzetesen fűtéssel példányok az Azure Portalon kiválasztásával **horizontális Felskálázás** a a **Platformfunkciók** fülre.
 
@@ -69,6 +69,8 @@ További számítási példányokat a rendszer automatikusan hozzáadja az alkal
 ### <a name="unbounded-run-duration"></a>Futtatás időtartama unbounded
 
 Az Azure Functions használatalapú korlátozva, egy egyetlen végrehajtási 10 perc.  A prémium csomag a Futási időtartam alapértelmezés szerint 30 percre sorozatos végrehajtások elkerülése érdekében. Azonban továbbra is [host.json konfigurációjának módosítása](./functions-host-json.md#functiontimeout) , hogy a korlátlan streameken működő, a prémium szintű csomag alkalmazások.
+
+Előzetes verzióban elérhető az időtartam nem garantált, elmúlt 12 perc és 30 perc eltelte után fut, ha az alkalmazás nem átméretezi a minimális feldolgozók száma meghaladja a legjobb esélyét fog rendelkezni.
 
 ## <a name="plan-and-sku-settings"></a>Csomag és a Termékváltozat-beállítások
 
@@ -104,9 +106,8 @@ Az alábbiakban a jelenleg támogatott régiókat a nyilvános előzetes verzió
 |Régió|
 |--|
 |Kelet-Ausztrália|
-|Ausztrália Souteast|
+|Délkelet-Ausztrália|
 |Közép-Kanada|
-|Közép-India|
 |USA középső régiója|
 |Kelet-Ázsia|
 |USA 2. keleti régiója|

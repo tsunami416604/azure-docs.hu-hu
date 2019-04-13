@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: prashanthyv
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 5ec5109aa8079b37015f66443b8ebac905ad2fcb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 99b37a9b12c4b66e9b254156dfe4b59c7ab6594c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370559"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526272"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Az Azure Key Vaultban felügyelt tárfiók – CLI
 
@@ -93,7 +93,7 @@ Az az alábbi utasítások végrehajtásával, hogy társítja az Key Vault enge
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope 93c27d83-f79b-4cb2-8dd4-4aa716542e74
     ```
     
-    "93c27d83-f79b-4cb2-8dd4-4aa716542e74" a nyilvános felhőben Key Vault-Objektumazonosítója. A-csoportobjektum azonosítója a Key Vault a nemzeti/regionális felhőkben megtekinteni a fontos című fenti szakaszban
+    "93c27d83-f79b-4cb2-8dd4-4aa716542e74" a nyilvános felhőben Key Vault-Objektumazonosítója. A-csoportobjektum azonosítója a Key Vault a nemzeti felhőkben megtekinteni a fontos című fenti szakaszban
     
 3. Key Vault létrehozása felügyelt Tárfiók.     <br /><br />
    Az alábbi azt állítja egy 90 napos regenerációs időszakot. 90 nap után a Key Vault "1. kulcs" újragenerálása és cseréje: key1"a"2. kulcs: az aktív kulcs. Ez lezárásával befejezettként jelöli meg Key1 aktív kulcsként most. 
@@ -109,7 +109,7 @@ Is megkérheti a Key Vault SAS (közös hozzáférésű Jogosultságkód) jogkiv
 Miután végzett a fent felsorolt lépéseket futtathatja kérje meg a Key Vault-, SAS-jogkivonatokat hoz létre a következő parancsokat. 
 
 A lista azokról a dolgokról, amelyek a azok megvalósítására az alábbi lépéseket is
-- Beállítja egy SAS-definíciója nevű fiók "<YourSASDefinitionName>"a "KeyVault által felügyelt storage-fiók<YourStorageAccountName>"a a tár'<VaultName>". 
+- Beállítja egy fiók SAS-definíciója nevű `<YourSASDefinitionName>` a KeyVault által felügyelt storage-fiók `<YourStorageAccountName>` a tárolóba `<VaultName>`. 
 - Létrehoz egy SAS-jogkivonata szolgáltatások Blob, fájl, tábla és üzenetsor, erőforrástípusok Service, a tároló és az objektum, minden engedélyt https-kapcsolaton keresztül és a megadott kezdő és záró dátuma
 - A KeyVault által felügyelt tárolási SAS-definíciója beállítja a tárolóban, a sablon URI-N napig fent, SAS típusa "account", és érvényes létrehozott SAS-token
 - A tényleges hozzáférési jogkivonat lekéri a KeyVault titkos kulcsnak megfelelő az SAS-definíciója

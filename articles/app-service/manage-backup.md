@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 18fc86e8d9b9622f11faad0f11dc57a83124a857
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417508"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549488"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A biztonsági mentési és visszaállítási funkciójának [Azure App Service](overview.md) könnyedén hozhat létre alkalmazást biztonsági mentések manuális vagy ütemezett teszi lehetővé. Az alkalmazás írja felül a meglévő alkalmazás vagy egy másik alkalmazásba való visszaállítása visszaállíthatja egy korábbi állapotáról pillanatképet. 
@@ -121,6 +121,9 @@ Néha nem szeretne biztonsági mentést mindent az alkalmazást. Íme, néhány 
 * Nem szeretne biztonsági másolatot készíteni a rendszernapló fájljaiban.
 
 Részleges biztonsági mentések engedélyezése úgy dönt, hogy pontosan mely fájlokat szeretné készíteni.
+
+> [!NOTE]
+> A biztonsági mentés az egyes adatbázisok maximális 4GB is lehet, de a teljes maximális a biztonsági mentés mérete 10GB
 
 ### <a name="exclude-files-from-your-backup"></a>Fájlok kizárása a biztonsági mentés
 Tegyük fel, hogy egy alkalmazás, amely tartalmazza a naplófájlok és a biztonsági mentés után és a módosítása nem fog statikus képeket. Ezekben az esetekben kizárhatja azokat a fájlokat és mappákat való tárolása a későbbi biztonsági mentések. Fájlok és mappák kizárása a biztonsági mentések, hozzon létre egy `_backup.filter` fájlt a `D:\home\site\wwwroot` az alkalmazás mappájában. Az ebben a fájlban kizárni kívánt mappák és fájlok listájának megadása. 

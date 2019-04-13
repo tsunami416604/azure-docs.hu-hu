@@ -9,19 +9,48 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 04/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 18b72ceaee0ca0747a0bf2144d5f9ffddbee8b8c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 9d1fa5786dcde70d42363dbb9af7221ca5383e64
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492141"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546398"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-k
 
 Ez a cikk ismerteti a szabályokat, amelyek a alkalmazni az entitások és API-k, a Media Services v3 fejlesztése során.
+
+## <a name="accessing-the-azure-media-services-api"></a>Az Azure Media Services API elérése
+
+Az Azure Media Services-erőforrások eléréséhez, használjon az Azure Active Directory (AD) egyszerű szolgáltatásnév hitelesítésével. Az Azure Media Services API megköveteli, hogy a felhasználó vagy alkalmazás, amely lehetővé teszi a REST API-kérelmek az Azure Media Services-fiók erőforrás hozzáférése (általában vagy a **közreműködői** vagy **tulajdonosa** szerepkör). További információkért lásd: [szerepköralapú hozzáférés-vezérlés a Media Services-fiókok](rbac-overview.md).
+
+Egyszerű szolgáltatás létrehozása helyett érdemes lehet felügyelt identitások az Azure-erőforrások eléréséhez a Media Services API Azure Resource Manageren keresztül. Az Azure-erőforrások felügyelt identitások kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md).
+
+### <a name="azure-ad-service-principal"></a>Az Azure AD-szolgáltatásnév 
+
+Hoz létre egy Azure AD-alkalmazás és szolgáltatás egyszerű, ha az alkalmazásnak a saját bérlőben legyen. Miután létrehozta az alkalmazást, adjon az alkalmazásnak **közreműködői** vagy **tulajdonos** a Media Services-fiók eléréséhez. 
+
+Ha nem biztos abban, hogy rendelkezik-e engedélyekkel hozzon létre egy Azure AD-alkalmazást, lásd: [szükséges engedélyek](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+
+Az alábbi ábrán a számok jelölik a folyamatot a kérelmek időrendi sorrendben:
+
+![Középső rétegbeli alkalmazásokhoz](../previous/media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+
+1. A középső rétegű alkalmazás, amely a következő paraméterekkel rendelkezik az Azure AD hozzáférési jogkivonatot kér:  
+
+   * Az Azure AD-bérlő végpont.
+   * Media Services-erőforrás URI-t.
+   * Erőforrás-URI REST Media Services.
+   * Az Azure AD-alkalmazás értékeire: az ügyfél-Azonosítóját és ügyfélkulcsát.
+   
+   A szükséges értékek lekéréséhez lásd: [hozzáférés az Azure Media Services API az Azure CLI-vel](access-api-cli-how-to.md)
+
+2. Az Azure AD hozzáférési jogkivonatot a középső réteg küld.
+4. A középső réteg kérést küld az Azure Media REST API az Azure AD-jogkivonattal.
+5. A középső réteg vissza az adatok lekérése a Media Services.
 
 ## <a name="naming-conventions"></a>Elnevezési konvenciók
 
@@ -30,17 +59,6 @@ Az Azure Media Services v3 erőforrásneveire is (pl. Adategység, Feladatok, Á
 A Media Services-erőforrás neve nem tartalmazhatja a következőket: "<", ">", "%", "&", ': ','&#92;','?', '/', "*", "+",".", szimpla idézőjel vagy bármely egyéb vezérlőkarakter. Minden egyéb karakter engedélyezett. Az erőforrásnév maximális hossza 260 karakter. 
 
 Azure Resource Manager elnevezésével kapcsolatos további információkért lásd: [Elnevezési követelményeknek](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) és [elnevezési konvenciók](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
-
-## <a name="v3-api-design-principles-and-rbac"></a>V3 API-tervezési alapelvek és RBAC
-
-A v3 API egyik fő tervezési alapelve az API biztonságosabbá tétele. V3 API-k nem adnak vissza titkos kulcsok és hitelesítő adatok a **első** vagy **lista** műveleteket. A kulcsok mindig null értékűek, üresek vagy törölve vannak a válaszból. A felhasználónak kell beolvasni a titkos kulcsok és hitelesítő adatok külön műveletet metódusának meghívása. A **olvasó** szerepkör nelze volat operations, műveletek, mint a Asset.ListContainerSas, StreamingLocator.ListContentKeys, ContentKeyPolicies.GetPolicyPropertiesWithSecrets, nelze volat. Önálló műveletek kellene lehetővé teszi a részletesebb RBAC biztonsági engedélyeinek beállítása egy egyéni szerepkör, ha szükséges.
-
-További információkért lásd:
-
-- [Beépített szerepkör-definíciók](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
-- [Az RBAC használatával hozzáférés kezelése](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [Szerepköralapú hozzáférés-vezérlés a Media Services-fiókok](rbac-overview.md)
-- [Tartalom fő házirend - lekérése a .NET](get-content-key-policy-dotnet-howto.md).
 
 ## <a name="long-running-operations"></a>Hosszú ideig futó műveletek
 

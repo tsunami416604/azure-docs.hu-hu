@@ -1,5 +1,5 @@
 ---
-title: 'Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport: Azure CLI-vel |} A Microsoft Docs'
+title: 'Hozzon létre, és az ExpressRoute-Kapcsolatcsoportok módosítása: Az Azure CLI |} A Microsoft Docs'
 description: Ez a cikk bemutatja, hogyan hozhat létre, üzembe helyezése, győződjön meg arról, frissítése, törlése és parancssori felület használatával egy ExpressRoute-kapcsolatcsoport megszüntetése.
 services: expressroute
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: 2013b3b96fddd32f01245655c1feb600bc426e2a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084141"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524888"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport parancssori felület használatával
 
@@ -56,7 +56,7 @@ az account set --subscription "<subscription ID>"
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. A támogatott szolgáltatók, a helyek és a sávszélesség-lista lekérése
 
-ExpressRoute-kapcsolatcsoport létrehozása, birtokában támogatott kapcsolatszolgáltatók, helyek és sávszélesség-lehetőségek listája. A CLI parancs "az network express-route lista szolgáltatók" értéket ad vissza, ezt az információt fogja használni a későbbi lépésekben:
+ExpressRoute-kapcsolatcsoport létrehozása, birtokában támogatott kapcsolatszolgáltatók, helyek és sávszélesség-lehetőségek listája. A CLI-paranccsal `az network express-route list-service-providers` adja vissza ezt az információt fogja használni a későbbi lépésekben:
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -154,7 +154,7 @@ A válasz tartalmazza a kulcsot.
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. Minden ExpressRoute-kapcsolatcsoport listázása
 
-Az összes Ön által létrehozott ExpressRoute-Kapcsolatcsoportok listájának lekéréséhez futtassa a "az network express-route list" parancsot. Bármikor ezt az információt a következő paranccsal kérheti le. Minden kapcsolatcsoportra listázásához, a hívást nélkül.
+Az összes Ön által létrehozott ExpressRoute-Kapcsolatcsoportok listájának lekéréséhez futtassa a `az network express-route list` parancsot. Bármikor ezt az információt a következő paranccsal kérheti le. Minden kapcsolatcsoportra listázásához, a hívást nélkül.
 
 ```azurecli-interactive
 az network express-route list

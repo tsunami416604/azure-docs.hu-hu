@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/06/2017
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 1cbf08cc903069f5b1cf81f57b7daa16f24c0216
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cf280dfb806399a8c09838d965d71e7b18cb905f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043855"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521390"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java-, Python- és Node.js-környezethez használható Azure Cosmos DB Emulator-tanúsítványok exportálása
 
@@ -70,7 +70,7 @@ Mindkét tanúsítvány újragenerálható a Windows-tálcán futó Azure Cosmos
 
 ## <a name="how-to-use-the-certificate-in-java"></a>A tanúsítvány használata a Javában
 
-Java-alkalmazások vagy a Java-ügyfelet használó MongoDB-alkalmazások futtatásakor egyszerűbb a tanúsítványt a Java alapértelmezett tanúsítványtárolójába telepíteni, mint átadni a "-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>" jelölőket. A mellékelt [Java bemutatóalkalmazás](https://localhost:8081/_explorer/index.html) például az alapértelmezett tanúsítványtárolóra épül.
+Java-alkalmazások vagy a mongodb-hez az alkalmazásokat, amelyek a Java-ügyfél használata esetén könnyebb a tanúsítvány telepítése a tanúsítványtárolójába Java alapértelmezett megadásának, mint a `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` jelzők. A mellékelt [Java bemutatóalkalmazás](https://localhost:8081/_explorer/index.html) például az alapértelmezett tanúsítványtárolóra épül.
 
 A [Tanúsítvány hozzáadása a Java CA tanúsítványtárolójához](https://docs.microsoft.com/azure/java-add-certificate-ca-store) című cikk utasításai alapján importálja az X.509-tanúsítványt az alapértelmezett Java-tanúsítványtárolóba. Tartsa szem előtt, hogy a keytool parancs futtatásakor a %JAVA_HOME% könyvtárban fog dolgozni.
 

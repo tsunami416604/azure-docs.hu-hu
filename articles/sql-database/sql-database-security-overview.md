@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 04/08/2019
-ms.openlocfilehash: f9387d68139119c13d57ebb135e0c0f5b7bba8ec
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.date: 04/11/2019
+ms.openlocfilehash: de9eb8ff33dc6d99c386ee92118a2d737ba1e476
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359048"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523698"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database biztonsági lehetőségeinek áttekintése
 
@@ -107,7 +107,7 @@ Ajánlott eljárásként javasoljuk, hogy az alkalmazás kapcsolati karakterlán
 Például amikor az ADO.NET-illesztő használatával ez történik keresztül **Encrypt = True** és **TrustServerCertificate = False**. A kapcsolati karakterlánc lekérését az Azure Portalról, ha a helyes beállításokat fog rendelkezni.
 
 > [!IMPORTANT]
-> Vegye figyelembe, hogy bizonyos nem Microsoft-illesztőprogramok nem alapértelmezés szerint használja a TLS vagy TLS egy régebbi verzióját használja (< 2.0) ahhoz, hogy működni. Ebben az esetben az SQL Server továbbra is lehetővé teszi, hogy csatlakozzon az adatbázishoz. Azonban azt javasoljuk, hogy értékeli, hogy az ilyen illesztőprogramok és -alkalmazás csatlakoztatása SQL Database-adatbázishoz, különösen akkor, ha a bizalmas adatokat tárolni a biztonsági kockázatokat. 
+> Vegye figyelembe, hogy bizonyos nem Microsoft-illesztőprogramok nem alapértelmezés szerint használja a TLS vagy TLS egy régebbi verzióját használja (< 1.2) ahhoz, hogy működni. Ebben az esetben az SQL Server továbbra is lehetővé teszi, hogy csatlakozzon az adatbázishoz. Azonban azt javasoljuk, hogy értékeli, hogy az ilyen illesztőprogramok és -alkalmazás csatlakoztatása SQL Database-adatbázishoz, különösen akkor, ha a bizalmas adatokat tárolni a biztonsági kockázatokat. 
 >
 > A TLS és a kapcsolat kapcsolatos további információkért lásd: [TLS kapcsolatos szempontok](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 

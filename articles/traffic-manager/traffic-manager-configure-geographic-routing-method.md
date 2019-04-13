@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 64e3cbd082f2d18668dff87fbec098add73ffda6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 30c4a6817272f7b5f1810873a93280b234ff6cc9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010078"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524310"
 ---
 # <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>A földrajzi forgalom-útválasztási módszer használatával a Traffic Manager konfigurálása
 
@@ -26,7 +26,7 @@ A földrajzi forgalom-útválasztási módszer lehetővé teszi, hogy a forgalma
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/).
 2. Kattintson az **Erőforrás létrehozása** > **Hálózat** > **Traffic Manager-profil** > **Létrehozás** lehetőségre.
 4. Az a **Traffic Manager-profil létrehozása**:
-    1. Adja meg a profil nevét. Ez a név egyedinek kell lennie a trafficmanager.net zónában. A Traffic Manager-profil eléréséhez használja a DNS-név <profilename>. trafficmanager.net.
+    1. Adja meg a profil nevét. Ez a név egyedinek kell lennie a trafficmanager.net zónában. A Traffic Manager-profil eléréséhez használja a DNS-név `<profilename>.trafficmanager.net`.
     2. Válassza ki a **Geographic** esetén használt útválasztási módszer.
     3. Ez a profil a létrehozni kívánt előfizetés kiválasztásához.
     4. Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot, ahová a profil alapján. Ha egy új erőforráscsoportot létrehozni, használja a **erőforráscsoport helye** legördülő listában adja meg az erőforráscsoport helyét. Ez a beállítás az erőforráscsoport helyére vonatkozik, és nem befolyásolja a Traffic Manager-profilt, amely globálisan üzembe van helyezve.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ffd2afd66c108f9eef690d641d9c4cbc85e9d609
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 9e3a442a3d6c420c548979327c193628efbee5aa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256090"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549218"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Az Azure Maps térkép vezérlőelem használata
 
@@ -166,8 +166,7 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
 
 8. A böngészőben nyissa meg a fájlt, és megtekintheti a megjelenített térképen. A következő kódhoz hasonlóan kell kinéznie:
 
-    <iframe height="700" style="width: 100%;" scrolling="no" title="A térkép vezérlőelem használata" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>a térkép vezérlőelem használata</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+    <iframe height="700" style="width: 100%;" scrolling="no" title="A térkép vezérlőelem használata" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>a térkép vezérlőelem használata</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
     </iframe>
 
 ## <a name="next-steps"></a>További lépések
@@ -180,4 +179,4 @@ Ismerje meg, hogyan hozhat létre, és a egy térkép interakcióba:
 Ismerje meg, hogyan térkép stílus:
 
 > [!div class="nextstepaction"]
-> [Térképstílus kiválasztása](choose-map-style.md)
+> [Térkép stílus kiválasztása](choose-map-style.md)

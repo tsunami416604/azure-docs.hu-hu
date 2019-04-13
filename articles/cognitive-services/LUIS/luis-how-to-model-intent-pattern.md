@@ -1,7 +1,7 @@
 ---
 title: Minták hozzáadása pontossága
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Ismerje meg, a minta-sablonok hozzáadása a Language Understanding (LUIS) alkalmazások növelve előrejelzés pontosságát.
+description: A minta sablonok növelve előrejelzés pontosságát a Language Understanding (LUIS) alkalmazások hozzáadása.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 132f6eab86c02e28fe562a0c7d3357175e5813b8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 202b9632b7a7faaf955874a0300edbe5134b7fa1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195047"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521254"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Az előrejelzési pontosság növeléséhez minták hozzáadása
-Miután a LUIS-alkalmazásokon végpont utterances megkapja, egy [minta](luis-concept-patterns.md) növelve előrejelzés pontosságát, hogy egy mintát szórendjét és a word választási lehetőség felfedéséhez megcímkézzen számára. Minták használata adott [szintaxis](luis-concept-patterns.md#pattern-syntax) helyét jelzi: [entitások](luis-concept-entity-types.md), entitás szerepköröket, és nem kötelező szöveg.
+Miután a LUIS-alkalmazásokon végpont utterances megkapja, egy [minta](luis-concept-patterns.md) növelve előrejelzés pontosságát, hogy egy mintát szórendjét és a word választási lehetőség felfedéséhez megcímkézzen számára. Minták használata adott [szintaxis](luis-concept-patterns.md#pattern-syntax) helyét jelzi: [entitások](luis-concept-entity-types.md), entitás [szerepkörök](luis-concept-roles.md), és nem kötelező szöveg.
 
 ## <a name="add-template-utterance-to-create-pattern"></a>Adja hozzá a minta létrehozása sablon utterance (kifejezés)
 1. Nyissa meg az alkalmazás nevére kattintva a **saját alkalmazások** oldalra, és kattintson **minták** a bal oldali panelen, a **megnövelheti az alkalmazások teljesítményét**.
@@ -34,7 +34,7 @@ Miután a LUIS-alkalmazásokon végpont utterances megkapja, egy [minta](luis-co
 
     ![Képernyőkép a minta entitás](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Ha az entitás tartalmaz egy szerepkörhöz, jelezze a szerepkör egyetlen kettősponttal, `:`, miután az entitás nevével, például `{Location:Origin}`. A szerepkörök az entitások listájának listáját jeleníti meg. Válassza ki a szerepkört, és válassza le az ENTER billentyűt. 
+    Ha az entitás tartalmaz egy [szerepkör](luis-concept-roles.md), jelezze a szerepkör egyetlen kettősponttal `:`, miután az entitás nevével, például `{Location:Origin}`. A szerepkörök az entitások listájának listáját jeleníti meg. Válassza ki a szerepkört, és válassza le az ENTER billentyűt. 
 
     ![Képernyőkép a szerepkörrel rendelkező entitás](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 

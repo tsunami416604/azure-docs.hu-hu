@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: e95006c6448bf1179d33bcd00c16d6e4246db148
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1cf46fd5ec55f0b240f6bb4adbe49c1344a4663b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887318"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547679"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a Python használatával
 
@@ -26,7 +26,6 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
 * Python [3.x](https://www.python.org)
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
-
 
 ## <a name="initialize-the-application"></a>Az alkalmazás inicializálása
 
@@ -40,7 +39,7 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
 2. Hozzon létre változókat a helyesírás-ellenőrzést, az előfizetési kulcs és a Bing helyesírás-ellenőrzési végpontra kívánt szöveg.
 
     ```python
-    api_key = "enter-your-key-here"
+    api_key = "<ENTER-KEY-HERE>"
     example_text = "Hollo, wrld" # the text to be spell-checked
     endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/SpellCheck"
     ```
@@ -53,7 +52,7 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
     data = {'text': example_text}
     ```
 
-2. Adja hozzá a kérelem paramétereit. Állítsa be a `mkt` paraméter a piacra, és `mode` való `proof`. 
+2. Adja hozzá a kérelem paramétereit. Fűzze hozzá a piaci kód után `mkt=`. A piaci kódja az ország, a kérést. Ezenkívül hozzáfűzéssel a helyesírás-ellenőrzése után `&mode=`. Módban, vagy `proof` (a legtöbb helyesírási vagy nyelvtani hibát kivételekkel) vagy `spell` (a legtöbb helyesírási, de nem annyi nyelvtani hibát kivételekkel).
 
     ```python
     params = {
@@ -80,7 +79,7 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
     ```
 
 2. A JSON-válasz lekérése, és nyomtassa ki.
-    
+
     ```python
     json_response = response.json()
     print(json.dumps(json_response, indent=4))
@@ -88,7 +87,7 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
 
 ## <a name="example-json-response"></a>Példa JSON-válasz
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
 ```json
 {

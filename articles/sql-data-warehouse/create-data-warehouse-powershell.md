@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: manage
-ms.date: 11/16/2018
+ms.date: 4/11/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 01a1c1fef5dd2dabf99677d59126caf41e1f6885
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d76f7ac6c8b60e2dec7d7d95cf419e1352b97f15
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900607"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545128"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Gyors útmutató: Létrehozása és lekérdezése az Azure SQL data warehouse az Azure PowerShell használatával
 
@@ -103,8 +103,8 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 >
 
 
-## <a name="create-a-data-warehouse-with-sample-data"></a>Adattárház létrehozása mintaadatok használatával
-Ez a példa létrehoz egy data warehouse használatával a korábban definiált változókat.  Azt határozza meg a szolgáltatási cél DW400, amely egy alacsonyabb költségű kiindulási pont, a data warehouse-hoz. 
+## <a name="create-a-data-warehouse"></a>Adattárház létrehozása
+Ez a példa létrehoz egy data warehouse használatával a korábban definiált változókat.  Azt határozza meg a szolgáltatási cél DW100c, amely egy alacsonyabb költségű kiindulási pont, a data warehouse-hoz. 
 
 ```Powershell
 New-AzSqlDatabase `
@@ -112,7 +112,7 @@ New-AzSqlDatabase `
     -ServerName $servername `
     -DatabaseName $databasename `
     -Edition "DataWarehouse" `
-    -RequestedServiceObjectiveName "DW400" `
+    -RequestedServiceObjectiveName "DW100c" `
     -CollationName "SQL_Latin1_General_CP1_CI_AS" `
     -MaxSizeBytes 10995116277760
 ```
@@ -128,7 +128,7 @@ A szükséges paraméterek a következők:
 A választható paraméterek a következők:
 
 - **CollationName**: Ha nincs megadva alapértelmezett rendezése az sql_latin1_general_cp1_ci_as rendezést alkalmazza. Rendezés nem módosítható az adatbázisok.
-- **MaxSizeBytes**: Egy adatbázis alapértelmezett maximális mérete 10 GB-os.
+- **MaxSizeBytes**: Egy adatbázis alapértelmezett maximális mérete 240TB. A maximális méret sortárindex adatok korlátozza. Nincs korlátlan Oszlopalapú tárolás.
 
 A paraméterbeállításokkal további információkért lásd: [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase).
 

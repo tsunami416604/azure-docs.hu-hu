@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Ismerteti a folyamatok, a power Azure fejlesztési területek, és azok miként vannak konfigurálva a azds.yaml konfigurációs fájlban
 keywords: azds.yaml, az Azure fejlesztési tárolóhelyek, fejlesztői, szóközök, Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 0397a52e8cd838aafe44a35508f8a68caba4c94e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489588"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544923"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Hogyan Azure fejlesztési tárolóhelyek működik, és van konfigurálva
 
@@ -85,16 +85,18 @@ Az AKS-fürt előkészítése foglalja magában:
 * Azure fejlesztői tárolóhelyek engedélyezésével a fürt használatával `az aks use-dev-spaces`
 
 Hogyan hozhat létre, és a egy AKS-fürtöt az Azure fejlesztési tárolóhelyek konfigurálása a további információkért tekintse meg az első lépésekhez útmutatókat:
-* [Bevezetés az Azure Dev Spaces Java segítségével történő használatába](get-started-java.md)
-* [Bevezetés az Azure Dev Spaces .NET Core és Visual Studio segítségével történő használatába](get-started-netcore-visualstudio.md)
-* [Bevezetés az Azure Dev Spaces .NET Core segítségével történő használatába](get-started-netcore.md)
-* [Bevezetés az Azure Dev Spaces Node.js segítségével történő használatába](get-started-nodejs.md)
+* [Az Azure Dev tárolóhelyek és a Java együttes használatának első lépései](get-started-java.md)
+* [Az Azure fejlesztési szóközöket a .NET Core és a Visual Studio használatának első lépései](get-started-netcore-visualstudio.md)
+* [Bevezetés az Azure fejlesztési tárolóhelyek .NET Core használatával](get-started-netcore.md)
+* [Bevezetés az Azure fejlesztési szóközöket a node.js használatával](get-started-nodejs.md)
 
 Az AKS-fürt Azure fejlesztési tárolóhelyek engedélyezve van, amikor telepíti a vezérlő a fürt számára. A vezérlő egy külön Azure-erőforrás a fürtön kívüli, és a fürtön, a következőket:
 
 * Létrehozza vagy egy Kubernetes-névtér adatokként fejlesztési szóközzel jelöli meg.
 * Eltávolítja az összes nevű Kubernetes-névtér *azds*, ha létezik, és létrehoz egy újat.
-* Üzembe helyez egy Kubernetes-inicializáló objektumot.
+* Üzembe helyez egy Kubernetes-webhook konfigurációját.
+* Üzembe helyez egy webhook már a betegfelvétel kiszolgálót.
+    
 
 Használja az ugyanazon egyszerű szolgáltatás, amely az AKS-fürt segítségével szolgáltatáshívásokat az Azure fejlesztési tárolóhelyek összetevőinek is.
 
@@ -104,9 +106,9 @@ Azure fejlesztői tárolóhelyek használatához legalább egy fejlesztési ter�
 
 Alapértelmezés szerint a vezérlő hoz létre egy fejlesztési terület nevű *alapértelmezett* frissítse a meglévő *alapértelmezett* Kubernetes-névtér. Az ügyféloldali eszközök segítségével hozzon létre új fejlesztői szóközöket, és távolítsa el a meglévő fejlesztési szóközöket. A Kubernetes, a korlátozás miatt a *alapértelmezett* fejlesztési terület nem távolítható el. A vezérlő eltávolít minden meglévő Kubernetes-névterek nevű *azds* való ütközések elkerülése érdekében a `azds` az ügyféloldali eszközök által használt parancsot.
 
-A Kubernetes inicializáló objektumot Instrumentation központi telepítése során el podok három tárolót használja: devspaces-proxy tároló, a proxy-inicializálás devspaces tároló és a egy devspaces-build tárolót. **Ezek a tárolók mindhárom az AKS-fürt legfelső szintű hozzáféréssel rendelkező futtassa.** Az azonos egyszerű szolgáltatás, amely az AKS-fürt segítségével szolgáltatáshívásokat az Azure fejlesztési tárolóhelyek összetevőinek is használják.
+A Kubernetes webhook már a betegfelvétel kiszolgáló podok el három tárolót Instrumentation üzembe helyezés során használatos: devspaces-proxy tároló, a proxy-inicializálás devspaces tároló és a egy devspaces-build tárolót. **Ezek a tárolók mindhárom az AKS-fürt legfelső szintű hozzáféréssel rendelkező futtassa.** Az azonos egyszerű szolgáltatás, amely az AKS-fürt segítségével szolgáltatáshívásokat az Azure fejlesztési tárolóhelyek összetevőinek is használják.
 
-![Az Azure fejlesztői, szóközök Kubernetes inicializátor](media/how-dev-spaces-works/kubernetes-initializer.svg)
+![Az Azure fejlesztői, szóközök Kubernetes webhook már a betegfelvétel server](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
 A devspaces proxy tároló egy oldalkocsi tároló, amely az összes TCP-forgalmat kezeli, és az alkalmazástárolók kimenő, és segít végre útválasztást. A devspaces proxy tároló reroutes HTTP-üzenetek, ha bizonyos szóközök vannak használatban. Például segíthet irányíthatja a HTTP-üzenetek a szülő és gyermek tárolóhelyek alkalmazások között. Az összes-HTTP adatforgalom áthalad devspaces proxy kívánja módosítani. A devspaces proxy tárolót is naplózza az összes bejövő és kimenő HTTP-üzenetek, és elküldi őket az ügyféloldali eszközök nyomkövetésként. A nyomkövetések megtekinthető a fejlesztő vizsgálhatja meg az alkalmazás viselkedését.
 
@@ -117,7 +119,7 @@ A devspaces-build-tárolót egy init tároló és a projekt forráskód és a Do
 > [!NOTE]
 > Az Azure fejlesztési tárolóhelyek az alkalmazás-tároló létrehozása és futtatása, ugyanazon a csomóponton használ. Ennek eredményeképpen az Azure fejlesztési tárolóhelyek nem kell kialakításához és futtatásához az alkalmazás egy külső container registry.
 
-A Kubernetes-inicializáló objektum figyeli a bármely új pod, amely jön létre az AKS-fürtöt. Ha a pod telepítve van minden olyan névtér a *azds.io/space=true* címke, azt, hogy a pod kódtárba a további tárolókkal. Ha az alkalmazás tárolóban fut, az ügyféloldali eszközök használata csak szúrhatja be a devspaces-build-tárolót.
+A Kubernetes webhook már a betegfelvétel figyeli a bármely új pod, amely jön létre az AKS-fürtöt. Ha a pod telepítve van minden olyan névtér a *azds.io/space=true* címke, azt, hogy a pod kódtárba a további tárolókkal. Ha az alkalmazás tárolóban fut, az ügyféloldali eszközök használata csak szúrhatja be a devspaces-build-tárolót.
 
 Miután előkészítette az AKS-fürt, az ügyféloldali eszközök segítségével készítheti elő, és futtathatja a kódot a fejlesztési tárhely.
 
@@ -221,7 +223,7 @@ A részletes szintű, ez történik futtatásakor `azds up`:
 1. Szinkronizálják a felhasználó gépről egy AKS-fürtöt a felhasználó egyedi az Azure file Storage. A forráskód, a Helm-diagramot és a konfigurációs fájlok lesznek feltöltve. További részleteket a szinkronizálási folyamat a következő szakaszban érhetők el.
 1. A vezérlő új munkamenet indításához kérést hoz létre. A kérelem több tulajdonságát, beleértve az egyedi azonosító, a címtér neve, a forráskód elérési útja és a hibakeresési jelző tartalmazza.
 1. A vezérlő lecseréli a *$(tag)* egyedi munkamenet-azonosító és a Helm-diagram a szolgáltatás telepíti a Helm-diagramot a helyőrző. Az egyedi munkamenet-azonosító, a Helm-diagramot a hivatkozás lehetővé teszi, hogy a tároló hozzáadása az AKS-fürtöt, illetve a munkamenet-kérelmet vissza a meghatározott munkamenet központi telepítése, és a kapcsolódó adatokat.
-1. A Helm-diagramot a telepítés során a Kubernetes inicializátor objektu további tárolókat ad hozzá az alkalmazáspodot rendszerállapot és a projekt forráskód elérését. Adja meg a HTTP-nyomkövetés és a hely útválasztás a devspaces-proxy és a proxy-inicializálás devspaces tárolók kerülnek. A pod, amellyel az alkalmazás-tárolót a Docker-példány és a projekt forráskód hozzáférést biztosíthat a devspaces-build tároló kerül.
+1. A Helm-diagramot a telepítés során a Kubernetes webhook már a betegfelvétel kiszolgáló további tárolókat hozzáadja az alkalmazáspodot rendszerállapot és a projekt forráskód elérését. Adja meg a HTTP-nyomkövetés és a hely útválasztás a devspaces-proxy és a proxy-inicializálás devspaces tárolók kerülnek. A pod, amellyel az alkalmazás-tárolót a Docker-példány és a projekt forráskód hozzáférést biztosíthat a devspaces-build tároló kerül.
 1. Az alkalmazáspodot indításakor a devspaces-build-tároló és a proxy-inicializálás devspaces tároló szolgálnak az alkalmazástárolók hozhat létre. Az alkalmazástárolók és devspaces-proxy tárolók majd el lesz indítva.
 1. Miután elindult az alkalmazástárolók, az ügyféloldali funkciókat használja a Kubernetes *port-továbbító* keresztül biztosít a HTTP-hozzáférését az alkalmazásához, http://localhost. Ez porttovábbítást a fejlesztői gépén csatlakozik a szolgáltatás a fejlesztési tárhelyre.
 1. Amikor megkezdte a pod az összes tárolót, a szolgáltatás fut-e. Az ügyféloldali funkció ezen a ponton a HTTP nyomkövetési stdout és stderr streamelésére kezdődik. Ez az információ az ügyféloldali funkciók szerint jelenik meg a fejlesztők számára.

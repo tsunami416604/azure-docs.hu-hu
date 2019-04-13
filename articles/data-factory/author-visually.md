@@ -12,12 +12,12 @@ author: sharonlo101
 ms.author: shlo
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 77eb109b8826bcb6136e91ac610235f74551cecb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d2e51551643e154714b9d2368e63d7af9ebfa204
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853086"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526911"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
 Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
@@ -61,12 +61,12 @@ A panelen látható a következő Azure-Adattárakkal kód adattár beállítás
 | Beállítás | Leírás | Érték |
 |:--- |:--- |:--- |
 | **Adattár típusa** | Az Azure-Adattárakkal kódtár típusa.<br/>**Megjegyzés**: GitHub jelenleg nem támogatott. | Az Azure-Adattárakkal Git |
-| **Azure Active Directory** | Az Azure AD-bérlő neve. | <your tenant name> |
-| **Az Azure-Adattárakkal szervezet** | Az Azure-Adattárakkal szervezet neve. : Az Azure-Adattárakkal szervezet nevének megkereséséhez `https://{organization name}.visualstudio.com`. Is [jelentkezzen be a szervezet Azure-Adattárakkal](https://www.visualstudio.com/team-services/git/) érhető el a Visual Studio-profil, és az adattárak és a projekteket. | <your organization name> |
-| **ProjectName** | Az Azure-Adattárakkal projekt nevét. Megkeresheti az Azure-Adattárakkal projekt nevét `https://{organization name}.visualstudio.com/{project name}`. | <your Azure Repos project name> |
-| **RepositoryName** | Az Azure-Adattárakkal kód adattár nevét. Az Azure Adattárakkal-projektek kezeléséhez a forráskód növekedésével a projekt Git-tárházak tartalmaznak. Hozzon létre egy új adattár, vagy használjon egy meglévő adattárhoz, amely a projektben már van. | <your Azure Repos code repository name> |
-| **Együttműködés ág** | Az Azure-Adattárakkal együttműködés ágban közzétételéhez használt. Alapértelmezés szerint a `master`. Ezen beállítás módosításához, abban az esetben, ha szeretne közzétenni egy másik ágban származó erőforrásokat. | <your collaboration branch name> |
-| **Gyökérmappa** | A legfelső szintű mappát a saját Azure-Adattárakkal együttműködés ágban. | <your root folder name> |
+| **Azure Active Directory** | Az Azure AD-bérlő neve. | `<your tenant name>` |
+| **Az Azure-Adattárakkal szervezet** | Az Azure-Adattárakkal szervezet neve. : Az Azure-Adattárakkal szervezet nevének megkereséséhez `https://{organization name}.visualstudio.com`. Is [jelentkezzen be a szervezet Azure-Adattárakkal](https://www.visualstudio.com/team-services/git/) érhető el a Visual Studio-profil, és az adattárak és a projekteket. | `<your organization name>` |
+| **ProjectName** | Az Azure-Adattárakkal projekt nevét. Megkeresheti az Azure-Adattárakkal projekt nevét `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
+| **RepositoryName** | Az Azure-Adattárakkal kód adattár nevét. Az Azure Adattárakkal-projektek kezeléséhez a forráskód növekedésével a projekt Git-tárházak tartalmaznak. Hozzon létre egy új adattár, vagy használjon egy meglévő adattárhoz, amely a projektben már van. | `<your Azure Repos code repository name>` |
+| **Együttműködés ág** | Az Azure-Adattárakkal együttműködés ágban közzétételéhez használt. Alapértelmezés szerint a `master`. Ezen beállítás módosításához, abban az esetben, ha szeretne közzétenni egy másik ágban származó erőforrásokat. | `<your collaboration branch name>` |
+| **Gyökérmappa** | A legfelső szintű mappát a saját Azure-Adattárakkal együttműködés ágban. | `<your root folder name>` |
 | **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy Azure-Adattárakkal Git-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
 
 #### <a name="configuration-method-2-azure-repos-git-repo-ux-authoring-canvas"></a>Konfigurálása (Azure-Adattárakkal Git-tárház) 2. módszer: Szerzői vászon UX

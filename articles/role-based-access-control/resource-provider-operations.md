@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3eed2bbb03334fed41bf0c74b1c287d9ca3f53eb
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 6c3accdd74ce3277181f6cdfc890de0d8c55bf07
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501467"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549539"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -1092,57 +1092,43 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/delete | Törölje a megadott face listáját. A face lista a kapcsolódó face képeket is törölve lesznek. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/persistedfaces/delete | A face listából törléséhez egy ARC megadott faceListId és persisitedFaceId. A kapcsolódó arcképét is törölve lesznek. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/persistedfaces/write | Adja hozzá a face megadott face listáját, legfeljebb 1000 arc. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/read | FaceListId, a nevét, a felhasználói adatok és a arcok a face listában face listájának beolvasása.
-Face listák faceListId, neve és felhasználói adatok listája. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/write | Hozzon létre egy üres oldallal lista faceListId felhasználó által megadott, a nevét és a egy nem kötelező felhasználói adatok. Legfeljebb 64 face listák használata engedélyezett
-Információk a face listáját, beleértve nevét és a felhasználói adatok frissítése. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/read | FaceListId, a nevét, a felhasználói adatok és a arcok a face listában face listájának beolvasása. Face listák faceListId, neve és felhasználói adatok listája. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/write | Hozzon létre egy üres oldallal lista faceListId felhasználó által megadott, a nevét és a egy nem kötelező felhasználói adatok. Legfeljebb 64 face listák face listáját, beleértve nevét és a felhasználói adatok, a frissítési információk használata engedélyezett. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/findsimilars/action | A megadott lekérdezési arc faceId faceId tömbből, a face vagy egy nagy face listájából hasonló megjelenésű arcokat kereshet. faceId |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/group/action | Jelölt arcok osztása face vizuális hasonlóság alapján. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/identify/action | a legközelebbi egyezések a megadott lekérdezés személy felületen található egy személy vagy csoport nagy személy a 1-a-többhöz azonosítója. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/delete | Törölje a megadott nagy face listáját. A kapcsolódó face lemezképek nagy méretű face listájában is törölve lesznek. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/delete | Egy nagy face listából törléséhez egy ARC megadott largeFaceListId és persisitedFaceId. A kapcsolódó arcképét is törölve lesznek. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/read | A nagy face listában megőrzött arcok largeFaceListId és persistedFaceId lekéréséhez.
-Arcok persistedFaceId és a egy megadott nagy face listában felhasználói adatok listája. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/write | Adja hozzá a face megadott nagy face listáját, arcok legfeljebb 1 000 000.
-Egy megadott arc felhasználói adatok mező egy nagy face listában annak persistedFaceId frissítéséhez. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/read | Nagy face listáját largeFaceListId, a neve, a felhasználói adatok beolvasása.
-Nagy face listák információk largeFaceListId, neve és felhasználói adatok listája. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/read | A nagy face listában megőrzött arcok largeFaceListId és persistedFaceId lekéréséhez. Arcok persistedFaceId és a egy megadott nagy face listában felhasználói adatok listája. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/write | Adja hozzá a face megadott nagy face listáját, arcok legfeljebb 1 000 000. Egy megadott arc felhasználói adatok mező egy nagy face listában annak persistedFaceId frissítéséhez. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/read | Nagy face listáját largeFaceListId, a neve, a felhasználói adatok beolvasása. Nagy face listák információk largeFaceListId, neve és felhasználói adatok listája. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/train/action | Nagy face lista betanítási feladat elküldéséhez. Képzés, amellyel csak egy betanított nagy face lista kiemelten fontos. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/training/read | A állapotának nagy face lista képzési befejeződött vagy még mindig folyamatban. LargeFaceList képzési lehetőségek a lehetséges aszinkron művelet |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/write | Hozzon létre egy üres nagy face lista largeFaceListId felhasználó által megadott, a nevét és a egy nem kötelező felhasználói adatok.
-Információk a nagyméretű face listáját, beleértve nevét és a felhasználói adatok frissítése. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/write | Hozzon létre egy üres nagy face lista largeFaceListId felhasználó által megadott, a nevét és a egy nem kötelező felhasználói adatok. Információk a nagyméretű face listáját, beleértve nevét és a felhasználói adatok frissítése. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/delete | A megadott personGroupId meglévő nagy személy csoport törlése. A nagy személy csoport megőrzött adatok törlődnek. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/action | Hozzon létre egy új személynek egy megadott nagy személy csoportban. Ennek a személynek face hozzáadásához hívja a |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/delete | Egy meglévő személy egy nagy személy csoport törlésére. Összes személy adatokat tárolja, és a személy bejegyzésben face lemezképeket törölni fogjuk. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/delete | Törölje a face nagy embercsoportok az a személy. Arcfelismerési adatokat és a face bejegyzéshez kapcsolódó rendszerképet is törlődni fog. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/read | Személy face információt lekérni. A megőrzött személy face largePersonGroupId, personId és persistedFaceId által van megadva. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/write | Adjon hozzá egy arcképét személynek egy nagy embercsoportok az arcfelismerést vagy az ellenőrzés. Kezelése érdekében tett ábrázoló kép
-Frissítés egy személy megőrzött arcok a felhasználói adatok mező. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/read | Egy személy neve és felhasználói adatok és a megőrzött faceIds a regisztrált személy arcképét jelző beolvasása.
-A megadott nagy személy csoportban, beleértve a personId, a neve, a felhasználói adatok és a persistedFaceIds minden személy információk listázása. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/write | Adjon hozzá egy arcképét személynek egy nagy embercsoportok az arcfelismerést vagy az ellenőrzés. Foglalkozni a lemezkép frissítése egy személy megőrzött arcok a felhasználói adatok mező. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/read | Egy személy neve és felhasználói adatok és a megőrzött faceIds a regisztrált személy arcképét jelző beolvasása. A megadott nagy személy csoportban, beleértve a personId, a neve, a felhasználói adatok és a persistedFaceIds minden személy információk listázása. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/write | Frissítés neve vagy a felhasználói adatok személy. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/read | Lekéri az információkat, beleértve annak nevét és a felhasználói adatok nagy személy csoport. Az API-t adja vissza nagy személy csoport adatait
-Az összes meglévő nagy Személycsoportok a largePesonGroupId, neve és felhasználói adatok listája. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/read | Lekéri az információkat, beleértve annak nevét és a felhasználói adatok nagy személy csoport. Az API-t adja vissza nagy személy csoport adatait listáját jeleníti meg a meglévő nagy Személycsoportok largePesonGroupId, neve és felhasználói adatok. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/train/action | Nagy személy csoport betanítási feladat elküldéséhez. Képzési csak betanított nagy embercsoportok használó kiemelten fontos. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/training/read | Állapotának nagy személy csoport képzési befejeződött vagy még mindig folyamatban. LargePersonGroup képzési lehetőségek a lehetséges aszinkron művelet |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/write | Nagy személy új csoport létrehozása a felhasználó által megadott largePersonGroupId, nevét és opcionális felhasználói adatok.
-Egy meglévő csoportot nagy személy neve és felhasználói adatok frissítése. A Tulajdonságok folyamatosan változatlan marad, ha azok nem a kérelem törzsében. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/write | Nagy személy új csoport létrehozása a felhasználó által megadott largePersonGroupId, nevét és opcionális felhasználói adatok. Egy meglévő csoportot nagy személy neve és felhasználói adatok frissítése. A Tulajdonságok folyamatosan változatlan marad, ha azok nem a kérelem törzsében. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/delete | A megadott personGroupId létező személy csoport törlése. A személy csoport megőrzött adatok törlődnek. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/action | Hozzon létre egy új személynek egy megadott személy csoportban. Ennek a személynek face hozzáadásához hívja a |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/delete | Egy létező személy törölje a személy csoportból. Összes személy adatokat tárolja, és a személy bejegyzésben face lemezképeket törölni fogjuk. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/delete | Törölje a face egy személy egy személy csoportban. Arcfelismerési adatokat és a face bejegyzéshez kapcsolódó rendszerképet is törlődni fog. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/read | Személy face információt lekérni. A megőrzött személy face personGroupId, personId és persistedFaceId által van megadva. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/write | Adjon hozzá egy arcképét személynek egy személy csoportot arcfelismerés vagy ellenőrzése. A kép több kezelésére
-Frissítés egy személy megőrzött arcok a felhasználói adatok mező. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/read | Egy személy neve és felhasználói adatok és a megőrzött faceIds a regisztrált személy arcképét jelző beolvasása.
-Minden személy foglalja magában a megadott embercsoportok personId, a neve, a felhasználói adatok és a persistedFaceIds, beleértve a regisztrált. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/write | Adjon hozzá egy arcképét személynek egy személy csoportot arcfelismerés vagy ellenőrzése. Több frissítés egy személy képe kezelésére megőrzött arcok a felhasználói adatok mező. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/read | Egy személy neve és felhasználói adatok és a megőrzött faceIds a regisztrált személy arcképét jelző beolvasása. Minden személy foglalja magában a megadott embercsoportok personId, a neve, a felhasználói adatok és a persistedFaceIds, beleértve a regisztrált. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/write | Frissítés neve vagy a felhasználói adatok személy. |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/read | Személy neve és felhasználói adatok beolvasása. Személy információk mellett az is lehet personGroup használja
-Személy csoportok pesonGroupId, neve és felhasználói adatok listája. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/read | Személy neve és felhasználói adatok beolvasása. Személy információk mellett az is lehet personGroup lekéréséhez használja a lista személy csoportok pesonGroupId, neve és felhasználói adatok. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/train/action | Egy személy csoport betanítási feladat elküldéséhez. Képzési rendkívül fontos, hogy csak egy betanított embercsoportok használhatja. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/training/read | Állapotának személy csoport képzési befejeződött vagy még mindig folyamatban. Is lehet PersonGroup képzési egy aszinkron művelet elindítva |
-> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/write | Hozzon létre egy új embercsoportok megadott personGroupId, nevét és a felhasználó által megadott felhasználói adatok.
-Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A Tulajdonságok folyamatosan változatlan marad, ha azok nem a kérelem törzsében. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/write | Hozzon létre egy új embercsoportok megadott personGroupId, nevét és a felhasználó által megadott felhasználói adatok. Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A Tulajdonságok folyamatosan változatlan marad, ha azok nem a kérelem törzsében. |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/verify/action | Győződjön meg arról, hogy két arc ugyanazt az embert, vagy hogy egy személy egy ARC kihez tartozik. |
 > | Műveletek | Microsoft.CognitiveServices/accounts/listKeys/action | Kulcsok listázása |
 > | DataAction | Microsoft.CognitiveServices/accounts/LUIS/predict/action | A megadott lekérdezéshez a közzétett végpont előrejelzés beolvasása. |
@@ -5901,5 +5887,5 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md)
-- [Az Azure-erőforrások beépített szerepkörök](built-in-roles.md)
+- [Egyéni szerepkörök Azure-erőforrásokhoz](custom-roles.md)
+- [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md)

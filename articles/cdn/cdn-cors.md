@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 635b4e71c09a2e8b3901af5580f221bc4716831d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917770"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547591"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Cors-támogatással rendelkező Azure CDN szolgáltatás használata
 ## <a name="what-is-cors"></a>Mit jelent a CORS?
@@ -32,7 +32,7 @@ CORS-kérések két típusa van *egyszerű kérelmek* és *összetett kérelmeke
 
 1. A böngésző elküldi a CORS-kérést és a egy további **forrás** HTTP-kérelem fejléce. Ez a fejléc értéke a forrás, amely a szülő oldal, amely kombinációja típusúként van definiálva kiszolgált *protokoll* *tartomány,* és *port.*  Ha egy lapot https://www.contoso.com megpróbál hozzáférni egy felhasználói adatokat a fabrikam.com forrás, a következő kérés fejlécében a fabrikam.com küldi el:
 
-   `Origin: https://www.contoso.com`
+   `Origin: https:\//www.contoso.com`
 
 2. A kiszolgáló a következő jelenhetnek meg:
 

@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 03/28/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d0c51f5d4757c35319cc3f80d09c9fb1a0e1cf69
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a386924be2f82aadafeaccbeadc68e5e27404855
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56314122"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546331"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Egy Python-alkalmazás létrehozása az Azure App Service Linux (előzetes verzió)
 
@@ -168,13 +168,10 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 A Linuxon futó App Service beépített Python rendszerképe jelenleg előzetes verzióban érhető el, és lehetőség van az alkalmazásindítási parancs testreszabására. Éles Python-alkalmazásokat egyéni tároló használatával is létrehozhat.
 
 > [!div class="nextstepaction"]
-> [Python és PostgreSQL](tutorial-python-postgresql-app.md)
+> [Oktatóanyag: Python-alkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Egyéni indítóparancs konfigurálása](how-to-configure-python.md#customize-startup-command)
+> [Python-alkalmazás konfigurálása](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [hibaelhárítással](how-to-configure-python.md#troubleshooting)
-
-> [!div class="nextstepaction"]
-> [Egyéni rendszerképek használata](tutorial-custom-docker-image.md)
+> [Oktatóanyag: Üzembe helyezés a privát tárház](tutorial-custom-docker-image.md)

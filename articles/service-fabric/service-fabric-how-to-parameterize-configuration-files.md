@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: 0ab6e3f189d4a2e7e8f3bc96108d7979c99fffa8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d03ca5cec2cef67862c2678b3b0a8f17b413787
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102669"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524514"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Hogyan lehet paraméterezni a konfigurációs fájlokat a Service Fabricben
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan paraméterezni a Service Fabric egy konfigurációs 
 
 Ebben a példában a paraméterek használatával az alkalmazások központi telepítésének a konfigurációs érték felülírása.
 
-1. Nyissa meg a  *<MyService>\PackageRoot\Config\Settings.xml* fájlt a projektet.
+1. Nyissa meg a  *\<MyService > \PackageRoot\Config\Settings.xml* fájlt a projektet.
 1. Állítsa be a konfigurációs paraméter nevének és értékének, például gyorsítótár méretének 25-én egyenlő adja hozzá a következő XML-kódot:
 
    ```xml
@@ -37,7 +37,7 @@ Ebben a példában a paraméterek használatával az alkalmazások központi tel
    ```
 
 1. Mentse és zárja be a fájlt.
-1. Nyissa meg a  *<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* fájlt.
+1. Nyissa meg a  *\<MyApplication > \ApplicationPackageRoot\ApplicationManifest.xml* fájlt.
 1. Az ApplicationManifest.xml fájl deklaráljon egy paraméter és az alapértelmezett érték a `Parameters` elemet.  Javasoljuk, hogy a paraméter neve tartalmazza a szolgáltatás (például "MyService") nevét.
 
    ```xml

@@ -1,5 +1,5 @@
 ---
-title: 'Microsoft - társviszony-létesítés útvonalszűrőinek konfigurálása ExpressRoute: Azure CLI-vel |} A Microsoft Docs'
+title: 'Microsoft - társviszony-létesítés útvonalszűrőinek konfigurálása ExpressRoute: Az Azure CLI |} A Microsoft Docs'
 description: Ez a cikk ismerteti az Azure parancssori felület használatával a Microsoft Peering útvonalszűrők konfigurálása
 services: expressroute
 author: anzaman
@@ -7,14 +7,14 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
-ms.openlocfilehash: 94bdd4819d750f4c26c93a88cc6982a60583171c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cfd9f4c52d3ddddd944186a833cba48e6ca76182
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079296"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527965"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása: Azure CLI-vel
+# <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása: Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
@@ -90,7 +90,7 @@ Válassza ki az előfizetést, amelynek meg szeretné ExpressRoute-kapcsolatcsop
 az account set --subscription "<subscription ID>"
 ```
 
-## <a name="prefixes"></a>1. lépés: Az előtagok és BGP-Közösség értékét listájának lekérése
+## <a name="prefixes"></a>1. lépés: Előtagok és BGP-Közösség értékét listájának lekérése
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. A BGP-Közösség értékét tartalmazó lista beolvasása
 
@@ -109,7 +109,7 @@ Egy útvonalszűrőhöz lehet csak egy szabályt, és a szabály "Engedélyezés
 
 ### <a name="1-create-a-route-filter"></a>1. Hozzon létre egy útvonalszűrőhöz
 
-Először hozza létre az útvonalszűrőt. Az 'az network route-filter create' parancs csak egy útvonal szűrő erőforrást hoz létre. Az erőforrás létrehozása után kell majd hozzon létre egy szabályt és csatlakoztassa azt az útvonalat szűrő objektum. Futtassa a következő parancsot egy útvonal-szűrő erőforrás létrehozásához:
+Először hozza létre az útvonalszűrőt. A parancs `az network route-filter create` csak az útvonal szűrő erőforrást hoz létre. Az erőforrás létrehozása után kell majd hozzon létre egy szabályt és csatlakoztassa azt az útvonalat szűrő objektum. Futtassa a következő parancsot egy útvonal-szűrő erőforrás létrehozásához:
 
 ```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup

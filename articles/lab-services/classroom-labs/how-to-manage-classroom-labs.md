@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: c6ae28e076d14faa7c2173f3a23d92daad4bd59e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 332f899f3502f34e46b4f158a6980dc96248140e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651123"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544024"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Az Azure Lab Services osztályterem-tesztkörnyezetek kezelése 
 Ez a cikk azt ismerteti, hogyan hozhat létre, és törölje az osztályterem-tesztkörnyezet. Bemutatja azt is, az osztályterem-tesztkörnyezetek megtekintése a lab-fiókokban. 
@@ -28,7 +28,7 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
 
 ## <a name="create-a-classroom-lab"></a>Osztályterem-tesztkörnyezet létrehozása
 
-1. Lépjen az [Azure Lab Services weboldalára](https://labs.azure.com). 
+1. Lépjen az [Azure Lab Services weboldalára](https://labs.azure.com). Vegye figyelembe, hogy az Internet Explorer 11 még nem támogatott. 
 2. Válassza ki **jelentkezzen be a**. Válasszon vagy adjon meg egy **felhasználói azonosító** , amely tagja a **tesztkörnyezet létrehozója** a laborkörnyezetben található szerepkör-fiókja, majd adja meg a jelszót. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
 3. Az **Új tesztkörnyezet** ablakban tegye a következőket: 
     1. Adjon egy **nevet** a tesztkörnyezetnek. 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0445643d3aae0e4e072e7fa8e3a73dc8973e84a5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 38dd4d13aa45b69fc846ef9b6b2e1b56f56de573
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268500"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544755"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -46,7 +46,7 @@ Az Azure Automation Runbookjai futhat bármelyiken védőfal mögött az Azure-b
 |Telepítő igénylő modul telepítése|hibrid runbook-feldolgozó|A védőfal modulok copiable kell lennie.|
 |A runbookok vagy a .NET-keretrendszer 4.7.2 eltérő igénylő modulok|hibrid runbook-feldolgozó|Automation próbakörnyezetbe lefordítja a .NET-keretrendszer 4.7.2 rendelkezik, és azt nem lehet|
 |Magasabb jogosultsági szintet igénylő parancsfájlok|hibrid runbook-feldolgozó|Próbakörnyezetbe lefordítja a jogosultságszint-emelés nem engedélyezett. Oldja meg ezt, használja a hibrid Runbook-feldolgozók és kikapcsolhatja a felhasználói fiókok felügyelete és használata `Invoke-Command` mikor igényel, amely a következő parancs futtatásával jogosultságszint-emelés|
-|WMI-hozzáférést igénylő parancsfájlok|hibrid runbook-feldolgozó|A felhő próbakörnyezetbe lefordítja a futó feladatok [nem rendelkeznek hozzáféréssel a WMI](#device-and-application-characteristics)|
+|WMI-hozzáférést igénylő parancsfájlok|hibrid runbook-feldolgozó|A próbakörnyezetbe lefordítja a felhőben futó feladatok [nem rendelkeznek hozzáféréssel a WMI](#device-and-application-characteristics)|
 
 ## <a name="runbook-behavior"></a>A Runbook viselkedése
 
@@ -192,7 +192,7 @@ Runbookok futtatása az Azure próbakörnyezetbe lefordítja a hívó folyamatok
 
 ### <a name="device-and-application-characteristics"></a>Eszköz- és az jellemzői
 
-Runbook-feladatok futtatása Azure próbakörnyezetbe lefordítja a nincs hozzáférése bármely eszköz vagy alkalmazás jellemzőit. A leggyakrabban használt API-val a lekérdezési teljesítmény-mérőszámokat a Windows WMI. Gyakori metrikák néhány memória és CPU-használat. Azonban nem számít, milyen API-t használja. A felhőben futó feladatok nem rendelkezik megfelelő jogosultsággal a Microsoft általi implementációja webes alapján Enterprise Management (WBEM), amely a Common Information Model (CIM) be van építve, amelyeket az iparági normák, eszközök és az alkalmazások jellemzőinek definiálása.
+Runbook-feladatok futtatása Azure próbakörnyezetbe lefordítja a nincs hozzáférése bármely eszköz vagy alkalmazás jellemzőit. A leggyakrabban használt API-val a lekérdezési teljesítmény-mérőszámokat a Windows WMI. Gyakori metrikák néhány memória és CPU-használat. Azonban nem számít, milyen API-t használja. A felhőben futó feladatok nincs hozzáférése a Microsoft általi megvalósítása a webes alapú Enterprise Management (WBEM), amely a Common Information Model (CIM) be van építve, amelyeket az iparági normák, eszközök és az alkalmazások jellemzőinek definiálása.
 
 ## <a name="job-statuses"></a>Feladatállapotok
 

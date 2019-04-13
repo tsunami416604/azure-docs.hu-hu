@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: 0a29e453c723ecc9ac378ee337365525587aaef2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c2babb5a86d69881b6a76c6dceae80a24a891f6c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444123"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549303"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Az Azure monitorban számítógépcsoportok lekérdezések naplózását.
 Az Azure monitorban számítógépcsoportok lehetővé teszi a hatókör [lekérdezések naplózását](../log-query/log-query-overview.md) a számítógépek egy adott készletét.  Minden csoport fel van töltve, vagy az Ön által meghatározott lekérdezés segítségével számítógépek vagy csoportok különböző forrásokból származó importálásával.  A csoport szerepel egy naplólekérdezés, amikor az eredmények korlátozódnak, amelyek megfelelnek a számítógépek a csoportban lévő rekordok.
@@ -127,15 +127,15 @@ Egy rekord jön létre minden egyes létrehozott Active Directory vagy a WSUS sz
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*ComputerGroup* |
-| SourceSystem |*SourceSystem* |
-| Computer |A számítógép neve. |
-| Csoport |A csoport nevét. |
-| GroupFullName |Teljes elérési útja a csoporthoz, többek között a forrás- és adatforrás neve. |
-| GroupSource |Forrás-csoporthoz való gyűjtése történt. <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
-| GroupSourceName |A forrás, az összegyűjtött a csoport nevére.  Az Active Directory Ez a tartománynév. |
-| ManagementGroupName |A felügyeleti csoport neve SCOM-ügynökök esetén.  Más ügynökök esetén ez AOI -\<munkaterület azonosítója\> |
-| TimeGenerated |Dátum és időpont a számítógép (csoport) létrehozott vagy frissített. |
+| `Type` |*ComputerGroup* |
+| `SourceSystem` |*SourceSystem* |
+| `Computer` |A számítógép neve. |
+| `Group` |A csoport nevét. |
+| `GroupFullName` |Teljes elérési útja a csoporthoz, többek között a forrás- és adatforrás neve. |
+| `GroupSource` |Forrás-csoporthoz való gyűjtése történt. <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
+| `GroupSourceName` |A forrás, az összegyűjtött a csoport nevére.  Az Active Directory Ez a tartománynév. |
+| `ManagementGroupName` |A felügyeleti csoport neve SCOM-ügynökök esetén.  Más ügynökök esetén ez AOI -\<munkaterület azonosítója\> |
+| `TimeGenerated` |Dátum és időpont a számítógép (csoport) létrehozott vagy frissített. |
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  

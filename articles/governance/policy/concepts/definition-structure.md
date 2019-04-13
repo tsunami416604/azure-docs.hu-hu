@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 4d7ecdcff356f27e17eca95a0d42290037d6b570
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426460"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549354"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -487,36 +487,7 @@ Az aliasok rendelkezésre álló számos rendelkezik egy olyanra, amely egy "nor
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
-A "normál" alias egyetlen értékként a mezőt jelöl. Ez a mező esetén pontosan egyezik összehasonlítást forgatókönyveket értékek teljes készletét kell lenniük pontosan a meghatározott, nincs több nem. Használatával **ipRules**, például szeretné ellenőrzése, hogy létezik-e egy pontos szabálykészletet többek között a szabályok számának és az egyes szabályok makeup. Ez a minta-szabály pontosan mindkét ellenőrzi **192.168.1.1** és **10.0.4.1** a _művelet_ , **engedélyezése** a **ipRules** a alkalmazni a **effectType**:
-
-```json
-"policyRule": {
-    "if": {
-        "allOf": [
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "exists": "true"
-            },
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "Equals": [
-                    {
-                        "action": "Allow",
-                        "value": "192.168.1.1"
-                    },
-                    {
-                        "action": "Allow",
-                        "value": "10.0.4.1"
-                    }
-                ]
-            }
-        ]
-    },
-    "then": {
-        "effect": "[parameters('effectType')]"
-    }
-}
-```
+A "normál" alias egyetlen értékként a mezőt jelöl. Ez a mező esetén pontosan egyezik összehasonlítást forgatókönyveket értékek teljes készletét kell lenniük pontosan a meghatározott, nincs több nem.
 
 A **[\*]** alias-szal a tömb egyes elemei értékét, és minden eleme megadott tulajdonságainak képest. Ez a megközelítés lehetővé teszi a hasonlítsa össze az elem tulajdonságainak "Ha egyik sem", "Ha", vagy a "Ha az összes," forgatókönyveket. Használatával **ipRules [\*]**, például szeretné érvényesítése, amely minden _művelet_ van _Megtagadás_, azonban nem aggódniuk hány szabályok vagy milyen IP-_érték_ van. A minta a szabály ellenőrzi, minden egyezések **ipRules [\*] .value** való **10.0.4.1** , és alkalmazza a **effectType** csak akkor, ha nem, legalább egy egyezést talál:
 

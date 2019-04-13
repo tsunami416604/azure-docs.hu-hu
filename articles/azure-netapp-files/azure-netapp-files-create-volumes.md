@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: conceptual
 ms.date: 3/17/2019
 ms.author: b-juche
-ms.openlocfilehash: c2dd8b636223e0484e36eed9fcc616dc6f19cf3a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 3c59fb6abe9c26e6886706dae360ff40787e8faa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877975"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549184"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Kötet létrehozása az Azure NetApp Files számára
 
@@ -27,9 +27,9 @@ Minden kapacitás készlet legfeljebb 500 kötetek. A kötet kapacitásfogyaszt�
 
 ## <a name="before-you-begin"></a>Előkészületek 
 A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet.   
-[Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)   
+[Kapacitás készlet beállítása](azure-netapp-files-set-up-capacity-pool.md)   
 Egy alhálózatot az Azure Files-NetApp delegálni.  
-[Alhálózat delegálása az Azure NetApp Fileshoz](azure-netapp-files-delegate-subnet.md)
+[Az Azure Files-NetApp alhálózat delegálása](azure-netapp-files-delegate-subnet.md)
 
 ## <a name="create-an-nfs-volume"></a>Az NFS-kötet létrehozása
 
@@ -46,7 +46,7 @@ Egy alhálózatot az Azure Files-NetApp delegálni.
 
         A névnek egyedinek kell lennie az erőforráscsoporton belül. Legalább három karakter hosszúságúnak kell lennie.  Minden olyan alfanumerikus karaktert használhat.
 
-    * **Kapacitáskészlet**  
+    * **A kapacitás a készlet**  
         Adja meg a kapacitás-készletet, hol szeretné létrehozni a kötetet.
 
     * **Kvóta**  
@@ -98,9 +98,9 @@ NetApp Azure Files SMBv3 köteteket támogatja. Az Active Directory-kapcsolatok 
 
     * **Elsődleges DNS**   
         Ez a tartomány tartományvezérlő IP-címét az előnyben részesített Active Directory Domain Services használata az Azure NetApp fájlokkal. 
-    * **Másodlagos DNS**  
+    * **Secondary DNS**  
         Ez a tartomány tartományvezérlő IP-címét a másodlagos Active Directory Domain Services használata az Azure NetApp fájlokkal. 
-    * **Domain**  
+    * **Tartomány**  
         Ez a tartomány nevét az Active Directory Domain Services, amely csatlakozni szeretne.
     * **SMB-kiszolgáló (számítógép-fiók) előtag**  
         Ez az Active Directoryban, amely Azure NetApp fájlokat fogja használni kívánt új fiókok a számítógépfiók névelőtagjának.
@@ -136,12 +136,12 @@ NetApp Azure Files SMBv3 köteteket támogatja. Az Active Directory-kapcsolatok 
 
         A névnek egyedinek kell lennie az erőforráscsoporton belül. Legalább három karakter hosszúságúnak kell lennie.  Minden olyan alfanumerikus karaktert használhat.
 
-    * **Fájl elérési útja**  
+    * **Elérési út**  
         Adja meg az új kötet exportálási útvonalának létrehozásához használni kívánt fájlelérési utat. A rendszer az exportálási útvonal használatával csatlakoztatja és éri el a kötetet.   
      
         Az elérési út neve csak betűket, számokat és kötőjeleket („-”) tartalmazhat. A név 16–40 karakter hosszú lehet.  
 
-    * **Kapacitáskészlet**  
+    * **A kapacitás a készlet**  
         Adja meg a kapacitás-készletet, hol szeretné létrehozni a kötetet.
 
     * **Kvóta**  
@@ -179,6 +179,6 @@ NetApp Azure Files SMBv3 köteteket támogatja. Az Active Directory-kapcsolatok 
 
 ## <a name="next-steps"></a>További lépések  
 
-* [Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [Exportálási szabályzat konfigurálása NFS-kötethez](azure-netapp-files-configure-export-policy.md)
+* [Csatlakoztatni vagy leválasztani egy kötet a Windows vagy Linux rendszerű virtuális gépekhez](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [Az NFS-kötet exportálási vonatkozó házirend konfigurálása](azure-netapp-files-configure-export-policy.md)
 * [Virtuális hálózat integrációja Azure-szolgáltatások ismertetése](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

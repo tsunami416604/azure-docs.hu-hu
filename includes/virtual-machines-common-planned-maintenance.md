@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 34723a6ee37e54ea2d81e6d1143672e3ccb30d1e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c26c037455b6d14a906894ec39bf46630826950b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53805709"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551613"
 ---
 Az Azure platform a megbízhatóságának, teljesítményének és a gazda-infrastruktúrát, a virtuális gépek biztonságának javítása érdekében rendszeres időközönként frissíti. Ezen frissítések köre, a javítás szoftverösszetevőket hardver leszerelésének hálózati összetevők frissítése, a üzemeltetési környezetben. Ezek a frissítések a legtöbb nincs hatással a futtatott virtuális gépek tartalmaz. Előfordulhatnak azonban olyan esetekben, amikor a frissítések hatással vannak, és az Azure úgy dönt, a frissítések legalább hatásos módszer:
 
@@ -27,9 +27,9 @@ Az ütemezett események a közeledő karbantartással kapcsolatban a virtuális
 
 "Útmutató" információ a tervezett karbantartás kezelése: "Tervezett karbantartásával kapcsolatos értesítések kezelése" a [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) vagy [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
-## <a name="memory-preserving-maintenance"></a>Karbantartás megőrzése memória
+## <a name="maintenance-not-requiring-a-reboot"></a>Karbantartási nem igényli a számítógép újraindítása
 
-A legtöbb nem rebootful frissítések célja a virtuális gép felfüggesztése kevesebb mint 10 másodperc. Bizonyos esetekben memóriában karbantartás megőrzése mechanizmust használ, amely legfeljebb 30 másodpercig a virtuális gép felfüggesztése, és megőrzi a memóriát RAM-ban. A virtuális gép majd helyreáll, és a virtuális gép órája a rendszer automatikusan szinkronizálja. Az Azure egyre inkább az élő áttelepítés technológiák használatával, és millióiról karbantartási mechanizmus, amellyel csökkentheti a szünet időtartama memória javítása.
+A legtöbb karbantartási, nincs szükség újraindításra célja a virtuális gép felfüggesztése kevesebb mint 10 másodperc. Bizonyos esetekben memóriában karbantartás megőrzése mechanizmust használ, amely legfeljebb 30 másodpercig a virtuális gép felfüggesztése, és megőrzi a memóriát RAM-ban. A virtuális gép majd helyreáll, és a virtuális gép órája a rendszer automatikusan szinkronizálja. Az Azure egyre inkább az élő áttelepítés technológiák használatával, és millióiról karbantartási mechanizmus, amellyel csökkentheti a szünet időtartama memória javítása.
 
 Ezek nem rebootful karbantartási műveleteket tartalék tartomány által alkalmazott tartalék tartományt, és folyamatban le van állítva, ha bármilyen figyelmeztetés állapot jelek. 
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 8e20f612bc54433091036377d51a7e59e3abec51
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: bc5c12d4bb92edaafcc9808da8c48106a6e0cbd5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402150"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548035"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Hozzáférés osztályterem-tesztkörnyezethez az Azure Lab Servicesben
 Ez a cikk bemutatja, hogyan férhet hozzá az osztályterem-tesztkörnyezetekhez, hogyan csatlakozhat a tesztkörnyezetben található virtuális gépekhez, és hogyan állíthatja le a virtuális gépeket. 
@@ -36,7 +36,7 @@ Ez a cikk bemutatja, hogyan férhet hozzá az osztályterem-tesztkörnyezetekhez
 ## <a name="view-all-the-classroom-labs"></a>Az összes osztályterem-tesztkörnyezet megtekintése
 Miután regisztrálta a labs, az osztályterem-tesztkörnyezetek tekintheti meg a következő lépések végrehajtásával: 
 
-1. Navigáljon a [ https://labs.azure.com ](https://labs.azure.com). 
+1. Navigáljon a [ https://labs.azure.com ](https://labs.azure.com). Vegye figyelembe, hogy az Internet Explorer 11 még nem támogatott. 
 2. Jelentkezzen be a szolgáltatásba a tesztkörnyezetben való regisztrálásához használt felhasználói fiókkal. 
 3. Győződjön meg arról, hogy megjelenik-e hozzáféréssel rendelkezik az összes labs. 
 

@@ -13,24 +13,26 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 4f9911259cc4da02429971ef6bddfa62080a9fe6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: d97682de6c8eb7dd36e25cbd4b8d66d328745748
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044406"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543630"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>A Media Services v3 API SDK-k és eszközök használata a fejlesztés megkezdése
 
 A fejlesztők is használhatja a Media Services [REST API-val](https://aka.ms/ams-v3-rest-ref) vagy klienskódtárak, amelyek lehetővé teszik a REST API használatával hozhat létre egyszerűen, kezelésére és karbantartására használható egyéni multimédiás munkafolyamatokat. A [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API az OpenAPI-specifikáció (korábbi nevén Swagger) alapul.
 
-Ez a témakör hivatkozásokat tartalmaz az SDK-k, eszközök, dokumentáció. A különböző fejlesztési env hasznos információkat is tartalmaz.
+Fejlesztés megkezdése előtt tekintse át a [fejlesztés a Media Services v3 API-k](media-services-apis-overview.md).
 
 > [!NOTE]
 > Az Azure Media Services v3 SDK-k nem szálbiztos garantáltan. Ha több szálon futó alkalmazás fejlesztése, hozzá kell adnia a saját szál szinkronizálási logika az ügyfél védelméről, vagy használjon egy új AzureMediaServicesClient objektum szálanként. Is kell óvatos, ha az ügyfél (például egy HttpClient-példányt .NET) kódját által biztosított választható objektumok által bevezetett többszálas problémákat.
+
+Ez a témakör hivatkozásokat az SDK-kkal, eszközökkel, más documentaion.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +42,7 @@ Indítsa el a fejlesztését a Media Services, az alábbiak szükségesek:
 - [Alapvető fogalmak ismertetése](concepts-overview.md)
 - [Egy Media Services-fiók létrehozása – CLI](create-account-cli-how-to.md)
 
-## <a name="start-developing-with-sdks"></a>A fejlesztés megkezdése az SDK-k
+## <a name="start-developing-with-sdks"></a>A fejlesztés megkezdése az SDK használatával
 
 ### <a name="net"></a>.NET
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: fdc7aec703fdb5b6bb9744fad226b51769e73385
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 547b6a629677830b6f37883a4be835c12a62e599
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650478"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524047"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat az Azure AI útmutatója
 
@@ -227,7 +227,7 @@ A berendezés előállítása, a modell számának, a helyre, például a dátum
 
 Az adatok előkészítési erőfeszítéseket eddig tárgyalt folyamatban vannak rendezve, ahogy az alábbi adatokat kell vezethet. Képzés, tesztelési és érvényesítési adatok rendelkeznie kell a logikai séma (Ez a példa bemutatja idő nap egységben).
 
-| Eszközazonosító | Time | <Feature Columns> | Címke |
+| Eszközazonosító | Time | \<Oszlopok funkció > | Címke |
 | ---- | ---- | --- | --- |
 | A123 |1. napi | . . . | . |
 | A123 |2. napon | . . . | . |

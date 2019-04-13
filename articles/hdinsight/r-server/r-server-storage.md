@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ffde6f3e94cab94fca5a815db28478790a2a4221
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309117"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523392"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-megoldások Machine Learning-szolgáltatások az Azure HDInsight
 
@@ -95,7 +95,7 @@ Az R-kód, a pont a csomópont hivatkozás a **storage2** storage-fiókot.
 
 Összes fájl és könyvtár hivatkozása mostantól a tárfiókba pont `wasb://container2@storage2.blob.core.windows.net`. Ez a **neve csomópont** megadott.
 
-A/User/RevoShare/konfigurálására<SSH username> könyvtárába **storage2** módon:
+Konfigurálnia kell a `/user/RevoShare/<SSH username>` könyvtárába **storage2** módon:
 
 
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 465d59ff13982eee8432d7ef97e2f522b0d7125b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: ac10f1f1c6336098afc2abd2b8f720cedfb6f579
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489724"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548935"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -151,9 +151,9 @@ A telepített ügynökkel rendelkező csomópontok közt a **csomópontok** fül
 
 Adja meg a kívánt képességek:
 
-- [Teljesítménymonitorozás](network-performance-monitor-performance-monitor.md#configuration)
-- [Szolgáltatás-összekapcsolhatósági monitor](network-performance-monitor-performance-monitor.md#configuration)
-- [ExpressRoute-figyelő](network-performance-monitor-expressroute.md#configuration)
+- [A Teljesítményfigyelő](network-performance-monitor-performance-monitor.md#configuration)
+- [Szolgáltatás Kapcsolatfigyelő](network-performance-monitor-performance-monitor.md#configuration)
+- [ExpressRoute Monitor](network-performance-monitor-expressroute.md#configuration)
 
  
 
@@ -251,7 +251,7 @@ A Network Performance Monitor riasztási képességeit használja [Azure Monitor
 
 Ez azt jelenti, hogy minden értesítés, amely segítségével kezelt [Műveletcsoportok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
 
-Ha Ön egy NPM-felhasználó keresztül LAzure figyelő riasztás létrehozása: 
+Ha Ön egy NPM felhasználó hoz létre riasztást, a Log Analytics-n keresztül: 
 1. Megjelenik egy hivatkozás, amely átirányítja Önt az Azure Portalon. Kattintson rá a portál eléréséhez.
 2. Kattintson a Network Performance Monitor megoldás csempére. 
 3. Keresse meg a konfigurálása.  

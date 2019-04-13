@@ -4,22 +4,24 @@ description: Ez az oldal nyújt tájékoztatást web application firewall CRS-sz
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 4/8/2019
+ms.date: 4/11/2019
 ms.author: victorh
-ms.openlocfilehash: 61ab41eed7703c82c2e5ef2a3b5412a9f56389ba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 0ad5cc76c0f4631fd60eea7d0a57e4740b6a9db3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279703"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523919"
 ---
-# <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Webes alkalmazás tűzfal CRS-szabálycsoportjainak és szabályok listája érhető el
+# <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Webes alkalmazás tűzfal CRS-szabálycsoportjainak és szabályok
 
-Application Gateway webalkalmazási tűzfal (WAF) megvédi a webalkalmazásokat a gyakori biztonsági rések és az azokat kihasználó támadások ellen. Ez a alapvető OWASP-szabálykészletek 2.2.9-es vagy 3.0 alapján meghatározott szabályok segítségével történik. Ezek a szabályok egy szabály által szabály alapján lehet letiltani. Ez a cikk tartalmazza az aktuális szabályok és a szabálykészletek érhető el.
+Application Gateway webalkalmazási tűzfal (WAF) megvédi a webalkalmazásokat a gyakori biztonsági rések és az azokat kihasználó támadások ellen. Ez a alapvető OWASP-szabálykészletek 3.0-s vagy 2.2.9-es verzióinak alapján meghatározott szabályok segítségével történik. Ezek a szabályok egy szabály által szabály alapján lehet letiltani. Ez a cikk tartalmazza az aktuális szabályok és a szabálykészletek érhető el.
 
-Az alábbi táblázatok a következők: a csoportok és a szabályokat, amelyek webalkalmazási tűzfallal rendelkező Application Gateway használata esetén érhetők el.  Mindegyik táblázatban található a meghatározott CRS verziójához szabálycsoport szabályok jelöli.
+A következő szabály csoportokat és a szabályok érhetők el webalkalmazási tűzfallal rendelkező Application Gateway használata esetén.
 
-## <a name="owasp30"></a> OWASP_3.0
+# <a name="owasp-30tabowasp3"></a>[OWASP 3.0](#tab/owasp3)
+
+## <a name="owasp30"></a> Szabálykészletek
 
 ### <a name="General"></a> <p x-ms-format-detection="none">Általános kérdések</p>
 
@@ -50,7 +52,7 @@ Az alábbi táblázatok a következők: a csoportok és a szabályokat, amelyek 
 |---|---|
 |920100|Érvénytelen HTTP-kérelem-sor|
 |920130|Nem sikerült elemezni a kérelem törzsében.|
-|920140|Többrészes kérelem törzse nem sikerült a szigorú ellenőrzési PE %@{REQBODY_PROCESSOR_ERROR =} BQ %@{MULTIPART_BOUNDARY_QUOTED} BW %@{MULTIPART_BOUNDARY_WHITESPACE} DB %@{MULTIPART_DATA_BEFORE} DA %@{MULTIPART_DATA_AFTER} NF %@{MULTIPART_HEADER_FOLDING} LF a(z) % @ {MULTIPART_LF_LINE}     FÁJL %@{MULTIPART_FILE_LIMIT_EXCEEDED IH %@{MULTIPART_INVALID_HEADER_FOLDING IQ %@{MULTIPART_INVALID_QUOTING SM %@{MULTIPART_SEMICOLON_MISSING}}}}|
+|920140|Kéréstörzs többrészes szigorú érvényesítése sikertelen|
 |920160|Content-Length HTTP-fejléc nem numerikus.|
 |920170|GET vagy HEAD-kérést szövegtörzse.|
 |920180|POST-kérés Content-Length fejléc hiányzik.|
@@ -216,7 +218,9 @@ Az alábbi táblázatok a következők: a csoportok és a szabályokat, amelyek 
 |943110|Munkamenet-rögzítési támadási = tartományon kívüli hivatkozó a munkamenet-azonosító paraméter neve|
 |943120|Munkamenet-rögzítési támadási = nincs hivatkozó a munkamenet-azonosító paraméter neve|
 
-## <a name="owasp229"></a> OWASP_2.2.9
+# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9-ES](#tab/owasp2)
+
+## <a name="owasp229"></a> Szabálykészletek
 
 ### <a name="crs20"></a> crs_20_protocol_violations
 
@@ -225,7 +229,7 @@ Az alábbi táblázatok a következők: a csoportok és a szabályokat, amelyek 
 |960911|Érvénytelen HTTP-kérelem-sor|
 |981227|Az Apache hiba = a kérelem URI érvénytelen.|
 |960912|Nem sikerült elemezni a kérelem törzsében.|
-|960914|Többrészes kérelem törzse nem sikerült a szigorú ellenőrzési PE %@{REQBODY_PROCESSOR_ERROR =} BQ %@{MULTIPART_BOUNDARY_QUOTED} BW %@{MULTIPART_BOUNDARY_WHITESPACE} DB %@{MULTIPART_DATA_BEFORE} DA %@{MULTIPART_DATA_AFTER} NF %@{MULTIPART_HEADER_FOLDING} LF a(z) % @ {MULTIPART_LF_LINE}     FÁJL %@{MULTIPART_FILE_LIMIT_EXCEEDED IH %@{MULTIPART_INVALID_HEADER_FOLDING IQ %@{MULTIPART_INVALID_QUOTING SM %@{MULTIPART_SEMICOLON_MISSING}}}}|
+|960914|Kéréstörzs többrészes szigorú érvényesítése sikertelen|
 |960915|Többrészes elemző észlelt egy lehetséges páratlan határt.|
 |960016|Content-Length HTTP-fejléc nem numerikus.|
 |960011|GET vagy HEAD-kérést szövegtörzse.|
@@ -472,6 +476,8 @@ Az alábbi táblázatok a következők: a csoportok és a szabályokat, amelyek 
 |950921|Hátsó kapus hozzáférést|
 |950922|Hátsó kapus hozzáférést|
 
+---
+
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan tilthatja le a WAF-szabályok funkcionáló: [WAF-szabályok testreszabása](application-gateway-customize-waf-rules-portal.md)
+Ismerje meg, hogyan tilthatja le a WAF-szabályok: [WAF-szabályok testreszabása](application-gateway-customize-waf-rules-portal.md)

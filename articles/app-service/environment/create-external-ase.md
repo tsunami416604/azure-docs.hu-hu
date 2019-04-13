@@ -14,30 +14,32 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4a2c90accaafea0c17456f8e6c5eae41199b17ed
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105165"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545416"
 ---
-> [!NOTE]
-> Minden App Service-környezeti rendelkezik egy virtuális IP-(VIP), amely használható az App Service Environment kapcsolatba.
-> 
-> # <a name="create-an-external-app-service-environment"></a>Külső App Service environment létrehozása #
+# <a name="create-an-external-app-service-environment"></a>Külső App Service environment létrehozása
 
-Az Azure App Service Environment az Azure App Service egy olyan példánya, amelyet egy Azure virtuális hálózat alhálózatában helyeztek üzembe. Az App Service Environment (ASE) üzembe helyezésének két módja van:
+Az Azure App Service Environment az Azure App Service egy olyan példánya, amelyet egy Azure virtuális hálózat alhálózatában helyeztek üzembe.
+
+> [!NOTE]
+> Minden App Service Environment-környezet rendelkezik egy virtuális IP-(VIP), amely használható az App Service Environment kapcsolatba.
+
+Az App Service Environment (ASE) üzembe helyezésének két módja van:
 
 - Egy virtuális IP-cím vagy külső IP-cím, azaz külső ASE használatával.
 - A VIP-nek a belső IP-cím, az gyakran nevezik ILB ASE mert a belső végpont egy belső Load Balancer (ILB).
 
 Ez a cikk bemutatja, hogyan hozhat létre a külső ASE környezetben. Az ASE áttekintését lásd: [az App Service Environment bemutatása][Intro]. Az ILB ASE létrehozásával kapcsolatos információkért lásd: [létrehozása és használata az ILB ASE][MakeILBASE].
 
-## <a name="before-you-create-your-ase"></a>Az ASE létrehozása előtt ##
+## <a name="before-you-create-your-ase"></a>Az ASE létrehozása előtt
 
 Az ASE létrehozását követően nem módosítható a következő:
 
-- Hely
+- Földrajzi egység
 - Előfizetés
 - Erőforráscsoport
 - Használt virtuális hálózat
@@ -48,7 +50,7 @@ Az ASE létrehozását követően nem módosítható a következő:
 > Válassza ki a virtuális hálózathoz, és adjon meg egy alhálózatot, győződjön meg arról, hogy elég nagy a későbbi növekedéshez és skálázási igényeihez. Azt javasoljuk, hogy egy méretű `/24` 256-címekkel.
 >
 
-## <a name="three-ways-to-create-an-ase"></a>Háromféle lehetőség az azonnali ASE létrehozása ##
+## <a name="three-ways-to-create-an-ase"></a>Háromféle lehetőség az azonnali ASE létrehozása
 
 ASE létrehozása három módja van:
 
@@ -58,7 +60,7 @@ ASE létrehozása három módja van:
 
 Külső ASE rendelkezik egy nyilvános virtuális IP-CÍMEK, ami azt jelenti, hogy az alkalmazások az ASE minden HTTP/HTTPS-forgalmat eléri-e az internetről elérhető IP-címet. Az ilb ASE rendelkezik az alhálózatról, az ASE által használt IP-címet. Az ILB ASE környezetben üzemeltetett alkalmazások nem csatlakoznak közvetlenül az internethez.
 
-## <a name="create-an-ase-and-an-app-service-plan-together"></a>Az ASE és a egy App Service-csomag létrehozása együtt ##
+## <a name="create-an-ase-and-an-app-service-plan-together"></a>Az ASE és a egy App Service-csomag létrehozása együtt
 
 Az App Service-csomag egy olyan tároló, az alkalmazásokat. Ha létrehozott egy alkalmazást az App Service-ben, válasszon, vagy hozzon létre egy App Service-csomagot. App Service Environment-környezetek tartsa App Service-csomagok, és az App Service-csomagok az alkalmazások tárolására.
 
@@ -142,7 +144,7 @@ ASE létrehozása egy App Service-csomag létrehozása közben:
 1. Válassza ki **létrehozás** az ASE létrehozása. Ez a folyamat is hoz létre az App Service-csomag és az alkalmazás. Az ASE App Service-csomagot és alkalmazást is ugyanabban az előfizetésben és ugyanazt az erőforráscsoportot is. Ha az ASE környezetnek szüksége van egy külön erőforráscsoportot, vagy ha az ILB ASE környezetben van szüksége, kövesse az ASE létrehozása saját maga.
 
 
-## <a name="create-an-ase-by-itself"></a>Önmagában az ASE létrehozása ##
+## <a name="create-an-ase-by-itself"></a>Önmagában az ASE létrehozása
 
 Ha egy ASE önálló hoz létre, azt nem szerepel. Az üres ASE továbbra is havi díjfizetési kötelezettséggel az infrastruktúra. Kövesse az alábbi lépéseket az ILB ASE létrehozása, vagy ASE létrehozása a saját erőforráscsoport. Miután létrehozta az ASE-t, létrehozhat alkalmazásokat, a szokásos folyamat használatával. Válassza az új ASE Környezetet helyként.
 
@@ -170,7 +172,7 @@ Ha egy ASE önálló hoz létre, azt nem szerepel. Az üres ASE továbbra is hav
     
     * Ha egy meglévő Vnetet, egy új alhálózatot az ASE létrehozásakor jön létre. *A portálon egy előre létrehozott alhálózat nem használható. Létrehozhat egy ASE meglévő-alhálózattal, ha a Resource Manager-sablont használ.* Az ASE létrehozása sablonból: [App Service-környezet létrehozása sablonból][MakeASEfromTemplate].
 
-## <a name="app-service-environment-v1"></a>App Service-környezet v1 ##
+## <a name="app-service-environment-v1"></a>App Service-környezet v1
 
 Az App Service Environment (az ASEv1) első verziója példánya továbbra is létrehozhat. A folyamat elindításához, keressen a piactéren **App Service Environment-környezet v1**. Az ASE-t ugyanúgy, ahogy a különálló ASE létrehozása hoz létre. Amikor elkészült, az asev1-ben van két előtérrendszerekből és két. Az asev1-ben a előtérrendszerekből és kell kezelni. A rendszer automatikusan hozzáadja az App Service-csomagok létrehozásakor. Az előtérrendszerek a HTTP/HTTPS-végpontként viselkednek, és küldeni a forgalmat a feldolgozók. A munkavállalók a szerepköröket, amelyek az alkalmazások üzemeltetéséhez. Az ASE létrehozását követően módosíthatja a előtérrendszerekből és mennyisége. 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/08/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ae07c29e9fcc7e498e1e39b3d4dc1d93de64e883
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: b4e255f35761924f46714f1844d8fbe1b2e70956
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58763302"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551591"
 ---
 Általános célú virtuális gépek méreteit adja meg a kiegyensúlyozott Processzor-memória arány. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint az ennél a csoportosításnál méretek esetében a tárterületek átviteli sebességének számát. 
 
@@ -29,7 +29,6 @@ ms.locfileid: "58763302"
 
   A D-sorozat használati Példák többek között a nagyvállalati alkalmazások, relációs adatbázisok, memórián belüli gyorsítótárazás és elemzés. 
   
-
 ## <a name="b-series"></a>B sorozat
 
 Prémium szintű Storage:  Támogatott
@@ -41,7 +40,7 @@ A B sorozat – adatlöket-kezelés virtuális gépek ideálisak a nagy számít
 Használati Példák többek között a fejlesztési és tesztelési kiszolgálók, alacsony adatforgalmú webkiszolgálók, kis méretű adatbázisokhoz, mikroszolgáltatásokhoz, kiszolgálók megvalósíthatósági próbamegoldásokhoz, lemezképfájl-kiszolgálókhoz.
 
 
-| Méret             | vCPU  | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Kiinduló virtuális gép CPU-teljesítmény | Virtuális gép maximális CPU Teljesítményoptimalizált | A kreditek banki / óra | Maximális banki kreditek | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS / MBps | Nem gyorsítótárazott lemezek max. teljesítménye: IOPS / MBps | Hálózati adapterek maximális száma |          
+| Méret             | vCPU  | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Kiinduló virtuális gép CPU-teljesítmény | Virtuális gép maximális CPU Teljesítményoptimalizált | A kreditek banki / óra | Maximális banki kreditek | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS / MBps | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek maximális száma |          
 |---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
 | Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5%                   | 100%                   | 3                  | 72            | 2                                      | 200 / 10                                  | 160 / 10                                  | 2  |
 | Standard_B1s  | 1           | 1              | 4                          | 10%                   | 100%                   | 6                  | 144            | 2                                      | 400 / 10                                  | 320 / 10                                  | 2  |
@@ -64,7 +63,7 @@ Prémium szintű Storage gyorsítótárazást:  Támogatott
 A Dsv3 sorozatú méretek alapulnak a 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) processzor- és a legújabb 2,3 GHz-es Intel XEON® E5-2673 v4 (Broadwell) processzoron, amely az Intel Turbo Boost Technology 2.0 3,5 GHz- és prémium szintű storage használata. A Dsv3-sorozat méretei vCPU, memória és ideiglenes tárterület kombinációját nyújtják a legtöbb éles számítási feladathoz.
 
 
-| Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS / MBps (gyorsítótár mérete GiB-ban) | Nem gyorsítótárazott lemezek max. teljesítménye: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS / MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
 | Standard_D2s_v3  | 2      | 8           | 16             | 4              | 4,000 / 32 (50)                                                       | 3,200 / 48                                | 2 / 1,000                                   |
 | Standard_D4s_v3  | 4      | 16          | 32             | 8              | 8,000 / 64 (100)                                                      | 6,400 / 96                                | 2 / 2,000                                   |
@@ -99,7 +98,6 @@ Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Pr
 
 <sup>1</sup> Dv3-sorozat virtuális gép a Intel® Hiperszálkezelési technológiát funkció
 
-
 ## <a name="dsv2-series"></a>DSv2-sorozat
 
 ACU: 210-250
@@ -108,15 +106,13 @@ Prémium szintű Storage:  Támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Támogatott
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS / MBps (gyorsítótár mérete GiB-ban) | Nem gyorsítótárazott lemezek max. teljesítménye: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS / MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1_v2 |1 |3.5 |7 |4 |4,000 / 32 (43) |3,200 / 48 |2 / 750 |
 | Standard_DS2_v2 |2 |7 |14 |8 |8,000 / 64 (86) |6,400 / 96 |2 / 1500 |
 | Standard_DS3_v2 |4 |14 |28 |16 |16,000 / 128 (172) |12,800 / 192 |4 / 3000 |
 | Standard_DS4_v2 |8 |28 |56 |32 |32,000 / 256 (344) |25,600 / 384 |8 / 6000 |
 | Standard_DS5_v2 |16 |56 |112 |64 |64,000 / 512 (688) |51,200 / 768 |8 / 12000 |
-
-
 
 ## <a name="dv2-series"></a>Dv2-sorozat
 
@@ -133,7 +129,6 @@ Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 | Standard_D3_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 16             | 16x500           | 4 / 3000                                       |
 | Standard_D4_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 32             | 32x500           | 8 / 6000                                       |
 | Standard_D5_v2 | 16   | 56          | 800                    | 48000 / 750 / 375                                          | 64             | 64x500           | 8 / 12000                                    |
-
 
 ## <a name="av2-series"></a>Av2-sorozat
 
@@ -154,9 +149,6 @@ Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 | Standard_A4m_v2 | 4         | 32          | 40             | 4000 / 80 / 40                                           | 8 / 8x500               | 4 / 1000                     |
 | Standard_A8m_v2 | 8         | 64          | 80             | 8000 / 160 / 80                                          | 16 / 16x500             | 8 / 2000                     |
 
-<br>
-
-
 ## <a name="dc-series"></a>DC sorozat
 
 Prémium szintű Storage: Támogatott
@@ -165,7 +157,7 @@ Prémium szintű Storage gyorsítótárazást: Támogatott
 
 
 
-| Méret          | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS / MBps (gyorsítótár mérete GiB-ban) | Nem gyorsítótárazott lemezek max. teljesítménye: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret          | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS / MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC2s | 2    | 8           | 100                    | 2              | 4000 / 32 (43)                                                          | 3200 /48                                  | 2 / 1500                                     |
 | Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400 /96                                  | 2 / 3000                                     |

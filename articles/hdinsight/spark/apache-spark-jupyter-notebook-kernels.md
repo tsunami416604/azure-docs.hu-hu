@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 92ffa02959f020789d14b3bea71763f3f5b9bb47
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 68581c957e2835aa8841e3ce490c9a7898ed4ff5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084098"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527472"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>-Kernelek Jupyter notebook az Azure HDInsight az Apache Spark-fürtök 
 
@@ -69,7 +69,7 @@ Az alábbiakban néhány előnyei az új kernelekkel a Jupyter notebookot HDInsi
    
     Ehelyett közvetlenül használhatja az előre beállított környezetekről az alkalmazásban.
 
-- **Cella magics**. A PySpark kernel tartalmaz néhány előre meghatározott "magics", amelyek különleges parancsok, amelyek segítségével meghívhatja a `%%` (például `%%MAGIC` <args>). A varázsparancs kell lennie az első szótól egy kódcellába, és lehetővé teszik a tartalom több sornyi. Magic szót kell lennie az első szótól a cellában. Hozzáadása a Magic Quadrant, még akkor is, a megjegyzéseket, mielőtt bármi hibát okoz.     Magics további információkért lásd: [Itt](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
+- **Cella magics**. A PySpark kernel tartalmaz néhány előre meghatározott "magics", amelyek különleges parancsok, amelyek segítségével meghívhatja a `%%` (például `%%MAGIC` `<args>`). A varázsparancs kell lennie az első szótól egy kódcellába, és lehetővé teszik a tartalom több sornyi. Magic szót kell lennie az első szótól a cellában. Hozzáadása a Magic Quadrant, még akkor is, a megjegyzéseket, mielőtt bármi hibát okoz.     Magics további információkért lásd: [Itt](https://ipython.readthedocs.org/en/stable/interactive/magics.html).
    
     Az alábbi táblázat a különböző magics a kernelekkel keresztül érhető el.
 

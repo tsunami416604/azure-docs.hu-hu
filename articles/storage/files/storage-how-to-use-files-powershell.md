@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 59d8b9ffa8c0cbeaaa354f2497d279ac8c285ae1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f353c9952d9ccec0f279d6bd98bf5db215758559
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437122"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524544"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Gyors útmutató: Létrehozása és kezelése az Azure-fájlmegosztások az Azure PowerShell használatával 
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) PowerShell-lel való használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
@@ -40,7 +40,7 @@ New-AzResourceGroup `
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 A tárfiókok az Azure-fájlmegosztások vagy más tárolási erőforrások, például blobok vagy üzenetsorok üzembe helyezéséhez használható tárolók közös készletei. Egy tárfiók korlátlan számú megosztást tartalmazhat, egy megosztás pedig korlátlan számú fájl tárolására használható, egészen a tárfiók kapacitásának korlátjáig.
 
-Ez a példa létrehoz egy tárfiók tárfiókkulcsait a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) parancsmagot. A tárfiók neve *mystorageaccount<random number>*, a tárfiókra mutató hivatkozást pedig a **$storageAcct** változó tárolja. A tárfiókok névnek egyedinek kell lenniük, ezért a `Get-Random` paranccsal fűzzön számot a névhez. 
+Ez a példa létrehoz egy tárfiók tárfiókkulcsait a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) parancsmagot. A tárfiók neve *mystorageaccount\<véletlenszerű szám >* és a egy hivatkozást a tárfiókra a változó tárolja **$storageAcct**. A tárfiókok névnek egyedinek kell lenniük, ezért a `Get-Random` paranccsal fűzzön számot a névhez. 
 
 ```azurepowershell-interactive 
 $storageAcct = New-AzStorageAccount `

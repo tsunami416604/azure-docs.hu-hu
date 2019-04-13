@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 5a25d0cb8fe1dffbc0a12f6ef88e2adc037a2393
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 60afd8128224050d456699e798d814a259e106ae
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56982980"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543821"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel a big data-elemzés az Azure Cosmos DB-összekötő az Apache Spark használatával
 
 Futtathat [Spark](https://spark.apache.org/) feladatok a Cosmos DB Spark-összekötő segítségével Azure Cosmos DB-ben tárolt adatokat. Cosmos használható a batch- és adatfolyam-feldolgozó és a egy kiszolgálórétegbe, a közel valós idejű hozzáféréshez.
 
-Használhatja az összekötőnél a [Azure Databricks](https://azure.microsoft.com/services/databricks) vagy az [Azure HDInsight, amelyekben felügyelt Spark-fürtök az Azure-ban. Az alábbi táblázat a Spark támogatott verzió.
+Használhatja az összekötőnél a [Azure Databricks](https://azure.microsoft.com/services/databricks) vagy [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/), biztosító felügyelt Spark-fürtök az Azure-ban. Az alábbi táblázat a Spark támogatott verzió.
 
 | Összetevő | Verzió |
 |---------|-------|
@@ -129,7 +129,7 @@ Az összekötők a Github forrás, vagy töltse le az uber JAR-fájlok kivétel�
 
 ### <a name="using-databricks-notebooks"></a>Databricks-jegyzetfüzetek használata
 
-Hozzon létre egy könyvtár a Databricks-munkaterület belül belül az Azure Databricks útmutató útmutatása alapján > [az Azure Cosmos DB Spark-összekötő használatára](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)
+Hozzon létre egy könyvtárat a Databricks-munkaterület használata az Azure Databricks útmutató található útmutatást követve > [az Azure Cosmos DB Spark-összekötő használatára](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)
 
 > [!NOTE]
 > Vegye figyelembe, hogy a **használata az Azure Cosmos DB Spark-összekötő** lap jelenleg nem naprakész. Hanem a hat különálló JAR-fájlok kivételével, hat különböző szalagtárat, letöltheti az uber jar a mavenben https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.5/jar) és a egy jar kódtár telepítését.
@@ -186,7 +186,7 @@ További információt van a `azure-cosmosdb-spark` [wiki](https://github.com/Az
 * [Az Azure Cosmos DB Spark-összekötő felhasználói útmutató](https://github.com/Azure/azure-documentdb-spark/wiki/Azure-Cosmos-DB-Spark-Connector-User-Guide)
 * [Összesítések példák](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)
 
-### <a name="configuration-and-setup"></a>Konfiguráció és beállítás
+### <a name="configuration-and-setup"></a>Konfigurálás és beállítás
 
 * [Spark-összekötő konfigurálása](https://github.com/Azure/azure-cosmosdb-spark/wiki/Configuration-references)
 * [Apache Spark a Cosmos DB-összekötő telepítése](https://github.com/Azure/azure-documentdb-spark/wiki/Spark-to-Cosmos-DB-Connector-Setup) (folyamatban)

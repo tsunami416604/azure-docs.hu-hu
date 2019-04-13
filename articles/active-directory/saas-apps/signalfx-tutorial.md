@@ -4,184 +4,185 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 6d5ab4b0-29bc-4b20-8536-d64db7530f32
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/16/2018
+ms.topic: tutorial
+ms.date: 03/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a73fbfe96382437c3cf605a5b042e7ddccaad92d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0a5a117dfe2858aee68552127291d2c97cd33c36
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217921"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547233"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SignalFx
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan SignalFx integrálása az Azure Active Directory (Azure AD).
-
 SignalFx integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, ki férhet hozzá SignalFx Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett SignalFx (egyszeri bejelentkezés), az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja, ki férhet hozzá SignalFx Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve SignalFx (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 SignalFx az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy SignalFx egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
+* SignalFx egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. SignalFx hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+
+* Támogatja a SignalFx **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* Támogatja a SignalFx **igény szerinti** felhasználók átadása
 
 ## <a name="adding-signalfx-from-the-gallery"></a>SignalFx hozzáadása a katalógusból
+
 Az Azure AD integrálása a SignalFx konfigurálásához hozzá kell SignalFx a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
 **SignalFx hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Az új alkalmazás gomb][3]
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. A Keresés mezőbe írja be a **SignalFx**válassza **SignalFx** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az eredmények listájában SignalFx](./media/signalfx-tutorial/tutorial_signalfx_addfromgallery.png)
+4. A Keresés mezőbe írja be a **SignalFx**válassza **SignalFx** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+
+     ![Az eredmények listájában SignalFx](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés SignalFx a teszt "Britta Simon" nevű felhasználó.
-
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó SignalFx mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó SignalFx hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az SignalFx nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó SignalFx hivatkozás kapcsolata kell létrehozni.
 
 Az Azure AD egyszeri bejelentkezés az SignalFx tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy SignalFx tesztfelhasználót](#create-a-signalfx-test-user)**  – egy megfelelője a Britta Simon SignalFx, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+2. **[SignalFx egyszeri bejelentkezés konfigurálása](#configure-signalfx-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre SignalFx tesztfelhasználót](#create-signalfx-test-user)**  – egy megfelelője a Britta Simon SignalFx, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és SignalFx alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SignalFx, hajtsa végre az alábbi lépéseket:**
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés SignalFx, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **SignalFx** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **SignalFx** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezési párbeszédpanel](./media/signalfx-tutorial/tutorial_signalfx_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-1. Az a **SignalFx tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![SignalFx tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/signalfx-tutorial/tutorial_signalfx_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+
+4. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a következő lépésekkel:
+
+    ![SignalFx tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
 
     a. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `https://api.signalfx.com/v1/saml/metadata`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://api.signalfx.com/v1/saml/acs/<integration ID>`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://api.signalfx.com/v1/saml/acs/<integration ID>`
 
-    > [!NOTE] 
+    > [!NOTE]
     > Az előző érték nem valódi értéket. A tényleges válasz URL-cím, az oktatóanyag későbbi részében ismertetett, frissítse az értéket.
 
-1. SignalFx alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az alábbi képernyőfelvételen látható erre egy példa látható.   
+5. SignalFx alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/signalfx-tutorial/tutorial_signalfx_attribute.png)
+    ![image](common/edit-attribute.png)
 
-1. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre az alábbi lépéseket:
-    
-    | Attribútum neve | Attribútum értéke |
-    | ------------------- | -------------------- |    
-    | User.FirstName          | user.givenname |
+6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket: 
+
+    | Name (Név) |  Adatforrás-attribútum|
+    | ------------------- | -------------------- |
+    | User.FirstName     | user.givenname |
     | User.email          | user.mail |
     | PersonImmutableID       | user.userprincipalname    |
     | User.LastName       | user.surname    |
 
-    a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása hozzáadása](./media/signalfx-tutorial/tutorial_attribute_04.png)
+    ![image](common/new-save-attribute.png)
 
-    ![Egyszeri bejelentkezés Addattb konfigurálása](./media/signalfx-tutorial/tutorial_attribute_05.png)
+    ![image](common/new-attribute-details.png)
 
     b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
-    c. Az a **érték** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    c. Hagyja a **Namespace** üres.
 
-    d. Hagyja a **Namespace** üres.
-    
-    e. Kattintson az **OK** gombra.
- 
-1. Az a **SAML-aláíró tanúsítvány** szakaszban, hajtsa végre az alábbi lépéseket: 
+    d. Válassza ki a forrás, **attribútum**.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/signalfx-tutorial/tutorial_signalfx_certificate.png)
+    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
 
-    a. Kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+    f. Kattintson a **Ok**
 
-    b. Kattintson a **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+    g. Kattintson a **Save** (Mentés) gombra.
 
-1. Kattintson a **mentése** gombra.
+7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/signalfx-tutorial/tutorial_general_400.png)
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-1. Az a **SignalFx konfigurációs** területén kattintson **konfigurálása SignalFx** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító** származó a **gyors útmutató szakaszban.**
+8. Az a **SignalFx beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
-    ![SignalFx konfiguráció](./media/signalfx-tutorial/tutorial_signalfx_configure.png) 
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-1. Bejelentkezés a SignalFx vállalati webhelyre rendszergazdaként.
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-signalfx-single-sign-on"></a>SignalFx egyszeri bejelentkezés konfigurálása
+
+1. Jelentkezzen be rendszergazdaként a SignalFx vállalati webhely.
 
 1. A SignalFx, kattintson a felső a **Integrációk** Integrációk lap megnyitásához.
 
     ![SignalFx integráció](./media/signalfx-tutorial/tutorial_signalfx_intg.png)
 
 1. Kattintson a **Azure Active Directory** alatt csempe **bejelentkezési szolgáltatások** szakaszban.
- 
+
     ![SignalFx saml](./media/signalfx-tutorial/tutorial_signalfx_saml.png)
 
 1. Kattintson a **új integrációs** és a **telepítése** lapon tegye a következőket:
- 
+
     ![SignalFx samlintgpage](./media/signalfx-tutorial/tutorial_signalfx_azure.png)
 
     a. Az a **neve** szövegmezőbe írja be, egy új integrációs nevet, például **OurOrgName SAML SSO**.
 
-    b. Másolás a **integrációs azonosítója** értékét, és a hozzáfűző a **válasz URL-cím** például `https://api.signalfx.com/v1/saml/acs/<integration ID>` a a **válasz URL-cím** szövegmezőben, hogy a **SignalFx tartomány és URL-címek** szakaszban az Azure Portalon.
+    b. Másolás a **integrációs azonosítója** értékét, és a hozzáfűző a **válasz URL-cím** helyett, `<integration ID>` a a **válasz URL-cím** szövegmezőben, hogy a **alapszintű SAML-konfigurációja**  szakaszban az Azure Portalon.
 
     c. Kattintson a **fájl feltöltése** feltölteni a **Base64-kódolású tanúsítványt** az Azure Portalról letöltött a **tanúsítvány** szövegmezőbe.
 
-    d. A a **kiállítójának URL-címe** szövegmezőjébe illessze be az értéket, **SAML Entitásazonosító**, az Azure Portalról másolt.
+    d. A a **kiállítójának URL-címe** szövegmezőjébe illessze be az értéket, **az Azure AD-azonosító**, az Azure Portalról másolt.
 
-    e. Az a **metaadatok URL-címe** szövegmezőjébe illessze be a **alkalmazás összevonási metaadatainak URL-címe** az Azure Portalról másolt.
+    e. Az a **metaadatok URL-címe** szövegmezőjébe illessze be a **bejelentkezési URL-cím** az Azure Portalról másolt.
 
     f. Kattintson a **Save** (Mentés) gombra.
 
@@ -189,98 +190,73 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure Active Directory gomb](./media/signalfx-tutorial/create_aaduser_01.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/signalfx-tutorial/create_aaduser_02.png)
-
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
-
-    ![A Hozzáadás gombra.](./media/signalfx-tutorial/create_aaduser_03.png)
-
-1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/signalfx-tutorial/create_aaduser_04.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus `brittasimon@yourcompanydomain.extension`  
+    Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
-
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
-  
-### <a name="create-a-signalfx-test-user"></a>SignalFx tesztfelhasználó létrehozása
-
-Ez a szakasz célja SignalFx Britta Simon nevű felhasználó létrehozásához. SignalFx támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az SignalFx elérésére, ha még nem létezik tett kísérlet során.
-
-Amikor egy felhasználó bejelentkezik SignalFx a SAML SSO az első alkalommal [SignalFx támogatási csapatának](mailto:kmazzola@signalfx.com) őket, hogy azok kattintással kell hitelesíteni hivatkozást tartalmazó e-mailt küld. Ez csak akkor történik, a felhasználó bejelentkezésekor; az első alkalommal további bejelentkezési kísérletek nem követeli meg az e-mail-ellenőrzést.
-
->[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [SignalFx támogatási csoport](mailto:kmazzola@signalfx.com)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés SignalFx Azure egyszeri bejelentkezés használatára.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **SignalFx**.
 
-**Britta Simon rendel SignalFx, hajtsa végre az alábbi lépéseket:**
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+2. Az alkalmazások listájában jelölje ki a **SignalFx**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Az alkalmazások listáját a SignalFx hivatkozásra](common/all-applications.png)
 
-1. Az alkalmazások listájában jelölje ki a **SignalFx**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![Az alkalmazások listáját a SignalFx hivatkozásra](./media/signalfx-tutorial/tutorial_signalfx_app.png)  
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A "Felhasználók és csoportok" hivatkozásra][202]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-    ![A hozzárendelés hozzáadása panel][203]
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+### <a name="create-signalfx-test-user"></a>SignalFx tesztfelhasználó létrehozása
 
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
+Ez a szakasz célja SignalFx Britta Simon nevű felhasználó létrehozásához. SignalFx támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az SignalFx elérésére, ha még nem létezik tett kísérlet során.
+
+Amikor egy felhasználó bejelentkezik SignalFx a SAML SSO az első alkalommal [SignalFx támogatási csapatának](mailto:kmazzola@signalfx.com) őket, hogy azok kattintással kell hitelesíteni hivatkozást tartalmazó e-mailt küld. Ez csak akkor történik, a felhasználó bejelentkezésekor; az első alkalommal további bejelentkezési kísérletek nem követeli meg az e-mail-ellenőrzést.
+
+> [!Note]
+> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [SignalFx támogatási csoport](mailto:kmazzola@signalfx.com)
+
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a SignalFx csempére kattint, meg kell lekérése automatikusan bejelentkezett az SignalFx alkalmazáshoz.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a SignalFx csempére kattint, meg kell lehet automatikusan bejelentkezett a SignalFx, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/signalfx-tutorial/tutorial_general_01.png
-[2]: ./media/signalfx-tutorial/tutorial_general_02.png
-[3]: ./media/signalfx-tutorial/tutorial_general_03.png
-[4]: ./media/signalfx-tutorial/tutorial_general_04.png
-
-[100]: ./media/signalfx-tutorial/tutorial_general_100.png
-
-[200]: ./media/signalfx-tutorial/tutorial_general_200.png
-[201]: ./media/signalfx-tutorial/tutorial_general_201.png
-[202]: ./media/signalfx-tutorial/tutorial_general_202.png
-[203]: ./media/signalfx-tutorial/tutorial_general_203.png
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

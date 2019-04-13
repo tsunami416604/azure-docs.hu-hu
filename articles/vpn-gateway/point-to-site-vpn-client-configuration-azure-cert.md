@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: fdf5f07f9b27a17eb4c15495c4ac9776d77f525c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b590dabbe4b2c6526f2c602aeed64667348eefa9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313940"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525167"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Hozzon létre és telepítse a VPN-ügyfélkonfigurációs fájlok az Azure natív Tanúsítványalapú hitelesítés P2S konfiguráció
 
@@ -174,7 +174,7 @@ A következő CLI-parancsokat használhatja, vagy strongSwan szereplő lépések
 2. Bontsa ki a fájlt.
 3. Az a **általános** mappát, másolja vagy helyezze át a VpnServerRoot.cer /etc/ipsec.d/cacerts.
 4. Másolja, vagy helyezze át cp client.p12 /etc/ipsec.d/private/. Ez a fájl az Azure VPN-átjáró ügyfél-tanúsítványa.
-5. Nyissa meg a VpnSettings.xml fájlt, és másolja a <VpnServer> értéket. Ez az érték a következő lépésben fogja használni.
+5. Nyissa meg a VpnSettings.xml fájlt, és másolja a `<VpnServer>` értéket. Ez az érték a következő lépésben fogja használni.
 6. Az alábbi példában szereplő értékeket módosítsa, majd adja hozzá a példában a /etc/ipsec.conf konfigurációhoz.
   
    ```

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 62cb8222b592660f2e7ab32d438fd4073246ee50
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 5a3d6e51a71f6aab742fe042d6e6e281192319a4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439912"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523018"
 ---
-# <a name="run-an-image-factory-from-azure-devops"></a>Egy rendszerkép-előállító Futtatás az Azure DevOps
+# <a name="run-an-image-factory-from-azure-devops"></a>Rendszerkép-előállító futtatása az Azure DevOpsból
 Ez a cikk ismerteti az Azure DevOps (korábbi nevén Visual Studio Team Services) a rendszerkép gyári futtatásához szükséges összes előkészített.
 
 > [!NOTE]
@@ -44,12 +44,12 @@ Az Azure DevOps segítségével tárolja a forráskódot, és futtassa az Azure 
 
 Ha rendelkezik egy meglévő DevOps-fiók vagy a projekthez használni kívánt, kihagyhatja ezt a lépést.
 
-Első lépésként hozzon létre egy ingyenes fiókot az Azure DevOps. Látogasson el https://www.visualstudio.com/ válassza **kezdje meg ingyenesen** jobb alatt **Azure DevOps** (korábbi nevén vsts-ben). Szüksége lesz, válasszon egy egyedi fióknevet, és ellenőrizze, hogy úgy dönteni, hogy a kód Git használata kezelheti. Miután ez elkészült, mentse az URL-cím a csoportprojektet. Íme egy minta URL-címet: https://<accountname>.visualstudio.com/MyFirstProject.
+Első lépésként hozzon létre egy ingyenes fiókot az Azure DevOps. Látogasson el https://www.visualstudio.com/ válassza **kezdje meg ingyenesen** jobb alatt **Azure DevOps** (korábbi nevén vsts-ben). Szüksége lesz, válasszon egy egyedi fióknevet, és ellenőrizze, hogy úgy dönteni, hogy a kód Git használata kezelheti. Miután ez elkészült, mentse az URL-cím a csoportprojektet. Íme egy minta URL-cím: `https://<accountname>.visualstudio.com/MyFirstProject`.
 
 ## <a name="check-in-the-image-factory-to-git"></a>A Git-előállító lemezkép ellenőrzése
 A PowerShell, sablonok és konfiguráció a lemezkép Factory találhatók a [nyilvános DevTest Labs GitHub-adattárat](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory). A leggyorsabb módja a kód az új csoportprojektet kerülnek a rendszer importálja a tárházban. Ez lekéri a teljes DevTest Labs-tárházban, (tehát kap további docs és példáink segítségével). 
 
-1. Látogasson el az Azure DevOps-projekt, amely az előző lépésben létrehozott (URL-címe a következőhöz hasonló **https://<accountname>.visualstudio.com/MyFirstProject**).
+1. Látogasson el az Azure DevOps-projekt, amely az előző lépésben létrehozott (URL-címe a következőhöz hasonló **https:\//\<accountname >.visualstudio.com/MyFirstProject**).
 2. Válassza ki **importálása egy tárház**.
 3. Adja meg a **clone URL-cím** a DevTest Labs adattárban: `https://github.com/Azure/azure-devtestlab`.
 4. Válassza ki **importálás**.

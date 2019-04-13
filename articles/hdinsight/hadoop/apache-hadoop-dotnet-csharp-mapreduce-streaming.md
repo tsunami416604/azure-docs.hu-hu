@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 09b652b236e1fbe68d93298f0f8793854e411aad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0c3525b73560d3edee5bffa7a391fcedeaaa1e48
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095670"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545094"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# streamelési HDInsight az Apache hadoop MapReduce-
 
@@ -27,7 +27,7 @@ Az Apache Hadoop streamelési egy segédprogram, amely lehetővé teszi, hogy eg
 
 ## <a name="net-on-hdinsight"></a>.NET on HDInsight
 
-__Linux-alapú HDInsight__ -fürtök használata [Mono (https://mono-project.com) ](https://mono-project.com) .NET-alkalmazások futtatására. Monó verzió 4.2.1 megtalálható a HDInsight 3.6-os verzióját. További információ a Mono HDInsight mellékelt verzióját, lásd: [HDInsight összetevő verziók](../hdinsight-component-versioning.md). Mono egy adott verzióját használja, tekintse meg a [telepítés vagy frissítés Mono](../hdinsight-hadoop-install-mono.md) dokumentumot.
+__Linux-alapú HDInsight__ -fürtök használata [Mono (https://mono-project.com) ](https://mono-project.com) .NET-alkalmazások futtatására. Monó verzió 4.2.1 megtalálható a HDInsight 3.6-os verzióját. További információ a Mono HDInsight mellékelt verzióját, lásd: [HDInsight összetevő verziók](../hdinsight-component-versioning.md). 
 
 A .NET-keretrendszer-verziókat monó kompatibilitást további információkért lásd: [monó kompatibilitási](https://www.mono-project.com/docs/about-mono/compatibility/).
 
@@ -143,7 +143,7 @@ namespace reducer
 
 Miután létrehozta az alkalmazást, építhet ki, hogy a `/bin/Debug/reducer.exe` fájlt a projekt könyvtárában.
 
-## <a name="upload-to-storage"></a>A storage feltöltése
+## <a name="upload-to-storage"></a>Feltöltés tárolóba
 
 1. A Visual Studióban nyissa meg a **Server Explorer**.
 

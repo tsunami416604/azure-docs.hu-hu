@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 3/26/2019
+ms.date: 4/12/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 695a2ff827fc5514c3a32364026bc9d47c8a2121
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 3d06024b7fa4356d4ad0e8b52c45c2ead62ef784
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500311"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549661"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -90,7 +90,7 @@ Előfordulhat, hogy e-mailes műveletek csak korlátozott számú tartalmaz műv
 
 **Beszédfelismerési** -Voice-műveletek csak korlátozott számú műveletcsoport lehet. Tekintse meg a [sebessége korlátozza az információk](./../../azure-monitor/platform/alerts-rate-limiting.md) cikk.
 
-**Webhook** -Webhook-műveletek csak korlátozott számú műveletcsoport lehet. Webhookok a rendszer újra próbálkozik a következő szabályok alkalmazásával. A webhook hívása rendszer legfeljebb 2 idők esetén a következő HTTP-állapotkódok adja vissza: 408, 429-es, 503-as, 504 vagy a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második újrapróbálkozási 100 másodperc múlva történik. Két hiba után nincs műveletcsoport meghívja a végpont 30 percig. 
+**Webhook** -Webhook-műveletek csak korlátozott számú műveletcsoport lehet. Webhookok a rendszer újra próbálkozik a következő szabályok alkalmazásával. A webhook hívása rendszer legfeljebb 2 idők esetén a következő HTTP-állapotkódok adja vissza: 408, 429, 503, 504, illetve ha a HTTP-végpont nem válaszol. Az első újrapróbálkozás 10 másodperc után történik. A második újrapróbálkozási 100 másodperc múlva történik. Két hiba után nincs műveletcsoport meghívja a végpont 30 percig. 
 
 Forrás IP-címtartományok
  - 13.72.19.232
@@ -103,6 +103,7 @@ Forrás IP-címtartományok
  - 52.244.68.117
  - 51.4.138.199
  - 51.5.148.86
+ - 51.5.149.19
 
 Fogadni ezen IP-címek, azt javasoljuk, hogy a változásokat frissítések konfigurálása [Service állapotriasztás, amely figyeli a Műveletcsoportok szolgáltatással kapcsolatos tájékoztató értesítések.
 

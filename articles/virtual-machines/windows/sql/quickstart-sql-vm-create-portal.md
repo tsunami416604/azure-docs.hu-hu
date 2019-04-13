@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bd535aeb034a17f1844c1d19379c1811b43d27e5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: c9e62cf3dfc259d7064be9fd6b80cad0140336eb
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260237"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549269"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Gyors útmutató: SQL Server 2017-et futtató, Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -29,11 +29,10 @@ ms.locfileid: "59260237"
 
 Ez a rövid útmutató részletesen bemutatja egy SQL Servert futtató virtuális gép létrehozását az Azure Portalon.
 
-> [!TIP]
-> Ez a rövid útmutató bemutatja az SQL virtuális gépek gyors kiépítését és az azokhoz való csatlakozást. Az SQL virtuális gépek többi kiépítési lehetőségéről további információért tekintse meg a [Windows SQL Server virtuális gépek Azure Portalon való kiépítésének útmutatóját](virtual-machines-windows-portal-sql-server-provision.md).
 
-> [!TIP]
-> Ha kérdése van az SQL Servert futtató virtuális gépek használatával kapcsolatban, tekintse meg a [gyakori kérdéseket](virtual-machines-windows-sql-server-iaas-faq.md).
+  > [!TIP]
+  > - Ez a rövid útmutató bemutatja az SQL virtuális gépek gyors kiépítését és az azokhoz való csatlakozást. Az SQL virtuális gépek többi kiépítési lehetőségéről további információért tekintse meg a [Windows SQL Server virtuális gépek Azure Portalon való kiépítésének útmutatóját](virtual-machines-windows-portal-sql-server-provision.md).
+  > - Ha kérdése van az SQL Servert futtató virtuális gépek használatával kapcsolatban, tekintse meg a [gyakori kérdéseket](virtual-machines-windows-sql-server-iaas-faq.md).
 
 ## <a id="subscription"></a> Azure-előfizetés beszerzése
 
@@ -47,12 +46,10 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. A keresőmezőbe írja be a `SQL Server 2017 Developer on Windows Server 2016`, és nyomja le az ENTER billentyűt.
 
-1. Válassza ki a **ingyenes SQL Server-licenc: Az SQL Server 2017 Developer Windows Server 2016 rendszeren** kép.
+1. Válassza ki a **ingyenes SQL Server-licenc: Az SQL Server 2017 Developer Windows Server 2016 rendszeren** kép. Ez az oktatóanyag azért a Developer kiadást alkalmazza, mert az az SQL Server teljes körű verziója, amely fejlesztési-tesztelési célokra ingyenesen használható. Csak a virtuális gép futtatásával járó költségeket kell kifizetni. A díjszabással kapcsolatos teljes körű információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
 
    ![Új keresési ablak](./media/quickstart-sql-vm-create-portal/newsearch.png)
 
-   > [!TIP]
-   > Ez az oktatóanyag azért a Developer kiadást alkalmazza, mert az az SQL Server teljes körű verziója, amely fejlesztési-tesztelési célokra ingyenesen használható. Csak a virtuális gép futtatásával járó költségeket kell kifizetni. A díjszabással kapcsolatos teljes körű információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -99,19 +96,14 @@ Az a **SQL Server-beállítások** lapra, konfigurálja a következő beállít�
 
 Az a **tekintse át + létrehozása** lapon tekintse át az összefoglalást, és válassza ki **létrehozás** hozhat létre SQL Server, erőforráscsoport és erőforrások virtuális Géphez megadott.
 
-Az üzemelő példány az Azure Portalról monitorozható. A képernyő felső részén látható **Értesítések** gomb megjeleníti az üzemelő példány állapotának alapvető információit.
-
-> [!TIP]
-> A Windows SQL Servert futtató virtuális gép üzembe helyezése percekig is eltarthat.
+Az üzemelő példány az Azure Portalról monitorozható. A képernyő felső részén látható **Értesítések** gomb megjeleníti az üzemelő példány állapotának alapvető információit. Üzembe helyezés több percet is igénybe vehet. 
 
 ## <a name="connect-to-sql-server"></a>Csatlakozás az SQL Serverhez
 
 1. A portálon keresse meg a **nyilvános IP-cím** az SQL Server virtuálisgép-a **áttekintése** a virtuális gép tulajdonságok szakaszában.
 
-1. Nyissa meg az SQL Server Management Studio (SSMS) alkalmazást egy másik, az internethez csatlakozó számítógépen.
+1. Nyissa meg egy másik számítógépre, csatlakozik az internethez, [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
 
-   > [!TIP]
-   > Ha nem rendelkezik az SQL Server Management Studióval, letöltheti azt [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
 1. A **Kapcsolódás a kiszolgálóhoz** vagy a **Kapcsolódás az adatbázismotorhoz** párbeszédpanelen szerkessze a **Kiszolgáló neve** értéket. Adja meg a virtuális gép nyilvános IP-címét. A név után írjon egy vesszőt, és adja meg az egyéni portot (**1401**), amelyet korábban az új virtuális gép konfigurálásakor beállítottunk. Például: `11.22.33.444,1401`.
 
@@ -145,4 +137,4 @@ Ha nem szükséges, hogy az SQL virtuális gép folyamatosan fusson, a szükség
 Ebben a rövid útmutatóban létrehozott egy SQL Server 2017 virtuális gépet az Azure Portalon. Az adatok az új SQL Serverre való migrálásával kapcsolatos további információkért lásd a következő cikket.
 
 > [!div class="nextstepaction"]
-> [Adatbázisok migrálása SQL virtuális géphez](virtual-machines-windows-migrate-sql.md)
+> [Adatbázisok migrálása SQL virtuális gépekre](virtual-machines-windows-migrate-sql.md)

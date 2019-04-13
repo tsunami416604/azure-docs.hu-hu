@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5548e7a5f60d9882fdfb4fb6eb777ab993e121
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: bede53ef2bc05750be21f831fc0cb790a001c6c5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916001"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549337"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Speciális tanúsítvány-aláírási beállítások katalógusbeli alkalmazásokat az Azure Active Directory a SAML-jogkivonat
 
@@ -49,7 +49,7 @@ Az Azure AD két aláíró algoritmust, vagy a biztonságos kivonatoló algoritm
 
 * **AZ SHA-1**. Ez az algoritmus régebbi, és akkor számít kisebb biztonságos, mint az SHA-256 algoritmust. Ha egy alkalmazás támogatja az aláíró algoritmus, ezt a lehetőséget is válassza ki a **aláírási algoritmus** legördülő listából. Ezután az Azure AD SAML-válasz az SHA-1 algoritmussal jelentkezik.
 
-## <a name="change-the-certificate-signing-options-and-certificate-signing-algorithm"></a>Tanúsítvány-aláírási algoritmus és tanúsítvány-aláírási beállítások módosítása
+## <a name="change-certificate-signing-options-and-signing-algorithm"></a>Tanúsítvány-aláírási beállítások és az aláírási algoritmus módosítása
 
 A tanúsítvány-aláírási algoritmus és a egy alkalmazás SAML-tanúsítvány aláírási beállítások módosításához válassza ki a kérdéses alkalmazás:
 

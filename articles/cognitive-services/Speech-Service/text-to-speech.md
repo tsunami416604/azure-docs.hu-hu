@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 597932ae9ad4dba76428fa6a4882c50f6ff98754
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 85c51320d2be1eac540f1d14910927c0fdccef64
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263111"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549505"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az szöveg-hang transzformációs?
 
@@ -56,7 +56,7 @@ Ez a táblázat felsorolja a szöveg-hang transzformációs alapvető funkciói:
 \* *Ezek a szolgáltatások érhetők el a cris.ai végpont használatával. Lásd: [referencia Swagger](https://westus.cris.ai/swagger/ui/index).*
 
 > [!NOTE]
-> A szöveg-hang transzformációs végpont valósítja meg, amely korlátozza a kérelmek 25, 5 másodpercenként szabályozás. Szabályozás akkor fordul elő, ha értesítést is üzenetfejlécekben keresztül.
+> Az egyéni beszédfelismerési végpontokat szabályozást alkalmaznak, amely korlátozza a kérelmek 25, 5 másodpercenként. Szabályozás akkor fordul elő, ha értesítést is üzenetfejlécekben keresztül.
 
 ## <a name="get-started-with-text-to-speech"></a>Szöveg-beszéd átalakítás használatának első lépései
 
@@ -88,9 +88,9 @@ A szöveg-hang transzformációs mintakód a Githubon érhető el. Ezek a mintá
 ## <a name="reference-docs"></a>Segédanyagok
 
 * [Beszéd SDK](speech-sdk-reference.md)
-* [Beszédeszközök SDK](speech-devices-sdk.md)
-* [REST API: Diktálás](rest-speech-to-text.md)
-* [REST API: Szövegfelolvasás](rest-text-to-speech.md)
+* [Speech Devices SDK](speech-devices-sdk.md)
+* [REST API: Speech-to-text](rest-speech-to-text.md)
+* [REST API: Szöveg-hang transzformációs](rest-text-to-speech.md)
 * [REST API: A Batch beszédátírási és testreszabás](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>További lépések

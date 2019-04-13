@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a5ddc17f6200ba2d43d67fcd2e4bcc35c224e6cb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9ae7795381f036bb819ce24554d8cea94ceb5552
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004055"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548545"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>PyTorch modellek Azure Machine Learning szolgáltatással
 
@@ -46,7 +46,7 @@ Itt hogy adja meg az alábbi paramétereket a PyTorch konstruktor:
 Paraméter | Leírás
 --|--
 `source_directory` |  Helyi könyvtár, amely tartalmazza az összes a betanítási feladathoz szükséges kódot. Ez a mappa a távoli számítási átmásolódnak a helyi gépen
-`script_params` |  A parancssori paraméterek, a tanítási szkriptet megadása szótárban `entry_script`, < parancssori argumentum, érték > formájában párok
+`script_params` |  A parancssori paraméterek, a tanítási szkriptet megadása szótárban `entry_script`, < parancssori argumentum, érték > formájában párokat.  Adja meg a részletes azt a jelzőt, `script_params`, használjon `<command-line argument, "">`.
 `compute_target` |  Arról, hogy az a tanítási szkriptet, ebben az esetben az Azure Machine Learning Compute távoli számítási célnak ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) fürt
 `entry_script` |  Fájl elérési útja (viszonyítva a `source_directory`), a tanítási szkriptet futtatandó távoli számítási. Ezt a fájlt, és a további fájlokat attól függ, ebben a mappában kell elhelyezni.
 `conda_packages` |  Szükség szerint a tanítási szkriptet conda-n keresztül kell telepíteni a Python-csomagok listáját. A konstruktor rendelkezik egy másik nevű paramétert `pip_packages` használható az esetleges pip csomagokat szükséges

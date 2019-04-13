@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: a71b09ba8b3e7fa7299c34c3cdc64503ae4e9857
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 31d8f54cb05bdbba7fe05249527db3dd50385087
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736549"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523409"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A Microsoft Azure Traffic Manager használatával kezelheti a végpont kvóta kulcsok
 Language Understanding (LUIS) lehetővé teszi, hogy a végpont kérelmi kvótát egy kulcs kvóta túl kínál. További kulcsokat hoz létre a LUIS, és hozzáadni azokat a LUIS-alkalmazás az ehhez a **közzététel** lapját a **erőforrások és a kulcsok** szakaszban. 
@@ -86,7 +86,7 @@ Az USA keleti Régiójában Traffic Manager-profil létrehozásához több lép�
     |-RelativeDnsName|a Luis-dns-USA keleti régiója|Ez a szolgáltatás az altartomány: a luis-dns-eastus.trafficmanager.net|
     |-Élettartam|30|Lekérdezési időköz, 30 másodperc|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port és a LUIS protokollja HTTPS/443-as|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-east`|Cserélje le <appIdLuis> és <subscriptionKeyLuis> a saját értékeire.|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-east`|Cserélje le `<appIdLuis>` és `<subscriptionKeyLuis>` a saját értékeire.|
     
     A kérelem sikeres válasz rendelkezik.
 
@@ -154,7 +154,7 @@ Az USA nyugati RÉGIÓJA Traffic Manager-profil létrehozásához kövesse az al
     |-RelativeDnsName|a Luis-dns-westus|Ez a szolgáltatás az altartomány: a luis-dns-westus.trafficmanager.net|
     |-Élettartam|30|Lekérdezési időköz, 30 másodperc|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port és a LUIS protokollja HTTPS/443-as|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Cserélje le <appId> és <subscriptionKey> a saját értékeire. Ne feledje, ez a végpont kulcs nem egyezik a kelet-végpont kulcs|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Cserélje le `<appId>` és `<subscriptionKey>` a saját értékeire. Ne feledje, ez a végpont kulcs nem egyezik a kelet-végpont kulcs|
     
     A kérelem sikeres válasz rendelkezik.
 

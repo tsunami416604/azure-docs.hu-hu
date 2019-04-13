@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 1f7c2bde631e42ac94ce4c0394d13e369f6ea23f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6f577530c42952c6340a15110bcd37383a5fca57
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049758"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526588"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Az Azure API Management-előfizetések
 
@@ -50,9 +50,6 @@ Hagyományosan, mindig lettek társítva egyetlen előfizetés az API Management
 > Bizonyos forgatókönyvek alapján API-kiadók érdemes API-termék közzétételét a nyilvános előfizetések anélkül. Törölje azokat a **előfizetés szükséges** beállítást a **beállítások** az Azure Portalon a termék oldalán. Ennek eredményeképpen a termék minden API-k is elérhető API-kulcs nélkül.
 
 ### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Minden API-k vagy egyéni API-előfizetések
-
-> [!NOTE]
-> Ez a funkció jelenleg csak az API Management Használatalapú tarifacsomagban érhető el.
 
 Amikor bevezettük a [fogyasztás](https://aka.ms/apimconsumptionblog) szint az API Management, végeztünk néhány változtatást, hogy korszerűsítheti a kulcskezelést:
 - Először két több előfizetés hatókört bővítettük: az összes API-k és a egy egyetlen API-t. Előfizetések hatókörének már nem korlátozódik API-termék. Már lehetséges, hogy hozzáférést biztosítani az API-k, vagy minden API-k az API Management példányok belül anélkül, hogy hozzon létre egy terméket, és hozzá tud adni az API-k először kulcsok létrehozásához. API Management minden példányához is, most már tartalmaz egy nem módosítható, minden-API-k előfizetés keretében. Ez az előfizetés megkönnyíti és egyszerűbb, tesztelése és hibakeresése az API-k a test-konzolon.

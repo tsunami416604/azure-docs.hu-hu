@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/27/2019
+ms.date: 04/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 8e07678604797e7e2090f5fefcdb3f3adff40161
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cd4d84d6698ddeda2fb00a8452fbe8cd02771e4b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521771"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544568"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Mi az Azure Data Box Edge? 
 
@@ -93,7 +93,7 @@ A Data Box Edge fizikai eszköznek, az Azure-erőforrásnak és a céloldali tá
     - **Európai Unió** – Nyugat-Európa
     - **Ázsia és a Csendes-óceáni térség** – Délkelet-Ázsia
     
-    Az Azure Government cloud Data Box-átjáró is telepíthető. További információkért lásd: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+    Az Azure Government cloud Data Box Edge is telepíthető. További információkért lásd: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
     
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. 
 

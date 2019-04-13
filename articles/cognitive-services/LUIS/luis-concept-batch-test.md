@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: 084f347c688c6b255ecbb58c16d8463d06cc2347
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870911"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528152"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>A LUIS-portál 1000 utterances tesztelésével Batch
 
@@ -75,6 +75,8 @@ Az alábbi sablon használatával indítsa el a parancsfájlba:
 ```
 
 A szkript a **startPos** és **endPos** megjegyezni elején és végén egy entitás tulajdonságai. Az értékek nulláról induló és kell nem kezdődik vagy fejeződjön be egy szóközt. Ez különbözik a lekérdezés naplókat, amelyek startIndex és endIndex tulajdonságokkal. 
+
+[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
 ## <a name="batch-syntax-template-for-intents-without-entities"></a>A Batch szintaxis sablon nélkül entitások leképezések
 

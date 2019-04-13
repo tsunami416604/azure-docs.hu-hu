@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: b65182cac91f6ed3dc653d6d9e77f80e99346bb7
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 961dd277034db7e5406e671233f26b4fd8fe5f26
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918008"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527285"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
@@ -45,7 +45,7 @@ Ha el szeretné kerülni, a fordítás, függetlenül a forrás szövegben cenz�
 |ProfanityAction    |Műveletek |Példa forrás (japán)  |Példa fordítási (angol nyelven)  |
 |:--|:--|:--|:--|
 |NoAction   |Default (Alapértelmezett): Ugyanaz, mint a beállítás nem található. Káromkodás cél forrásból fogja továbbítani.        |彼はジャッカスです。     |Egy Pápaszemes áll.   |
-|Megjelölve     |Profán szavak XML-címkéket kell lennie.%n <profanity> és </profanity>.     |彼はジャッカスです。 |Ő egy <profanity>Pápaszemes</profanity>.    |
+|Megjelölve     |Profán szavak XML-címkéket kell lennie.%n \<cenzúrázása > és \</profanity >.       |彼はジャッカスです。 |Ő egy \<cenzúrázása > Pápaszemes\</profanity >.  |
 |Törölve    |Profán szavakat a kimenet nélküli helyettesítő törlődni fog.     |彼はジャッカスです。 |Ő egy.   |
 
     

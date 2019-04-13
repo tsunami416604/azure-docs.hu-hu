@@ -11,18 +11,18 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: a4bf2ef252b5a948f2e3614e3e7cf64a4cb19277
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 472ff85adaf72f91948c4072b12cca3ff8e59f37
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772058"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545350"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Oktatóanyag: A Java EE-alapú és a Postgres-webalkalmazás létrehozása az Azure-ban
 
-Ez az oktatóanyag bemutatja, hogyan lehet a Java Enterprise Edition (EE) webalkalmazás létrehozása az Azure App Service-ben, és csatlakoztassa a Postgres-adatbázis. Amikor kész, hogy egy [WildFly](https://www.wildfly.org/about/) adattárolásra alkalmazás [, Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/) Azure-on futó [Linuxon futó App Service](app-service-linux-intro.md).
+Az oktatóanyag bemutatja, hogyan lehet a Java Enterprise Edition (EE) webalkalmazás létrehozása az Azure App Service-ben, és csatlakoztassa a Postgres-adatbázis. Amikor kész, hogy egy [WildFly](https://www.wildfly.org/about/) adattárolásra alkalmazás [, Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/) Azure-on futó [Linuxon futó App Service](app-service-linux-intro.md).
 
-Az oktatóanyag során a következőket fogja elsajátítani:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Java EE-alapú alkalmazás üzembe helyezése a Maven használatával Azure-bA
 > * Postgres-adatbázis létrehozása az Azure-ban
@@ -158,7 +158,9 @@ Következő lépésként a Java tranzakció API (JPA) konfiguráció szerkeszté
 
 ## <a name="configure-the-wildfly-application-server"></a>A WildFly-kiszolgáló konfigurálása
 
-Biztosíthatók az újrakonfigurált alkalmazás üzembe helyezése előtt a WildFly alkalmazáskiszolgáló kell frissítjük a Postgres-modult és annak függőségeit. Konfigurálja a kiszolgálót, szükségünk lesz a négy fájlt a `wildfly_config/` könyvtár:
+Biztosíthatók az újrakonfigurált alkalmazás üzembe helyezése előtt a WildFly alkalmazáskiszolgáló kell frissítjük a Postgres-modult és annak függőségeit. További konfigurációs információkat tekinthet meg [WildFly konfigurálása server](configure-language-java.md#configure-wildfly-server).
+
+Konfigurálja a kiszolgálót, szükségünk lesz a négy fájlt a `wildfly_config/` könyvtár:
 
 - **postgresql-42.2.5.jar**: A JAR-fájlt a Postgres készült JDBC-illesztőprogram. További információkért lásd: a [hivatalos webhely](https://jdbc.postgresql.org/index.html).
 - **postgres-module.xml**: Az XML-fájl deklarálja a Postgres-modul (org.postgres) nevét. Az erőforrások és a használt modul szükséges függőségeket is meghatározza.
@@ -172,7 +174,6 @@ Erősen javasoljuk, hogy a fájlok tartalmának olvasása különösen _jboss_cl
 FTP-tartalmát kell `wildfly_config/` az App Service-példányhoz. Az FTP-hitelesítő adatok lekéréséhez kattintson a **közzétételi profil lekérése** gomb az App Service panel az Azure Portalon. Az FTP-felhasználónév és jelszó lesz a letöltött XML-dokumentumban. A közzétételi profil további információkért lásd: [ebben a dokumentumban](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
 A négy fájlokat átvinni egy FTP-eszközzel a választott `wildfly_config/` való `/home/site/deployments/tools/`. (Vegye figyelembe, hogy nem kell átvinni a címtárban, csak maguknak a fájlokat.)
-
 
 ### <a name="finalize-app-service"></a>App Service-ben véglegesítése
 
@@ -195,9 +196,26 @@ Gratulálunk! Az alkalmazás már használja egy Postgres-adatbázis, és azokat
 Ha ezek az erőforrásokra már nincs szüksége más oktatóanyagokhoz (lásd a következő lépésekkel), a következő parancs futtatásával törölheti azokat:
 
 ```bash
-az group delete --name <your_resource_group> 
+az group delete --name <your-resource-group>
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy egy App Service-ben üzembe helyezett Java EE-alapú alkalmazások, tekintse át a [Java Enterprise fejlesztői útmutató](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-java) szolgáltatások beállítása, a hibaelhárítás és a méretezés az alkalmazás további tájékoztatást.
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
+
+> [!div class="checklist"]
+> * Java EE-alapú alkalmazás üzembe helyezése a Maven használatával Azure-bA
+> * Postgres-adatbázis létrehozása az Azure-ban
+> * A Postgres használandó WildFly kiszolgáló konfigurálása
+> * Az alkalmazás frissítése és ismételt üzembe helyezése
+> * A WildFly futtatni az egységteszteket
+
+Folytassa a következő oktatóanyaggal, megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazáshoz.
+
+> [!div class="nextstepaction"]
+> [Oktatóanyag: Egyéni DNS-név leképezése az alkalmazás](../app-service-web-tutorial-custom-domain.md)
+
+Vagy tekintse meg az egyéb erőforrások:
+
+> [!div class="nextstepaction"]
+> [Java-alkalmazás konfigurálása](configure-language-java.md)

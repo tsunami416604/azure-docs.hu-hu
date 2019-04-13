@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4bef785a08d7482468630bc690d6c19b05bdf770
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 0d56d901ca932f044ef71ef2bc24933bcf18c24a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202962"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544585"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájlművelet-alapú fejlesztés a HDInsight
 
@@ -333,7 +333,6 @@ A Microsoft biztosít mintaszkriptek összetevők telepítéséhez egy HDInsight
 
 * [Telepítse, és a Hue használata a HDInsight-fürtökön](hdinsight-hadoop-hue-linux.md)
 * [Telepítse, és az Apache Giraph használata a HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md)
-* [Telepítené vagy frissítené a Mono a HDInsight-fürtökön](hdinsight-hadoop-install-mono.md)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

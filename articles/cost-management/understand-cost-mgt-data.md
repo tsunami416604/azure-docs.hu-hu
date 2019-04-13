@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/08/2019
+ms.date: 04/11/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 1fc04ee953ea53f96adfd1e85c9a616c62268ade
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 5c8f70ff76da458fcc1433226a51012fb7ccd18e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282984"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544636"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -27,21 +27,21 @@ Az alábbi információkat jeleníti meg a jelenleg támogatott [Microsoft Azure
 
 | Kategória  | **Ajánlat neve** | **Kvóta azonosítója** | **Csomag száma** |
 | --- | --- | --- | --- |
-| **Azure Germany** | [Azure Germany – használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
+| **Azure Germany** | [Azure Germany Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
 | **Nagyvállalati Szerződés (EA)** | Enterprise Dev/Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P |
 | **Nagyvállalati Szerződés (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P |
-| **Microsoft Ügyfélszerződés** | [Microsoft Azure-csomag](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | – |
-| **Microsoft Ügyfélszerződés** | [Microsoft Azure-csomag fejlesztéshez/teszteléshez](https://azure.microsoft.com/offers/ms-azr-0148g)  | MSDNDevTest_2014-09-01 | – |
+| **A Microsoft ügyfél-szerződés** | [Microsoft Azure Plan](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | – |
+| **A Microsoft ügyfél-szerződés** | [Microsoft Azure-csomag fejlesztéshez és teszteléshez](https://azure.microsoft.com/offers/ms-azr-0148g)  | MSDNDevTest_2014-09-01 | – |
 | **A Microsoft Developer Network (MSDN)** | [MSDN-platformok](https://azure.microsoft.com/offers/ms-azr-0062p) | MSDN_2014-09-01 | MS-AZR-0062P |
-| **Utólagos, használatalapú fizetés** | [Utólagos, használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p)                       | PayAsYouGo_2014-09-01 | MS-AZR-0003P |
-| **Utólagos, használatalapú fizetés** | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p)              | MSDNDevTest_2014-09-01 | MS-AZR-0023P |
-| **Utólagos, használatalapú fizetés** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)           | MPN_2014-09-01 | MS-AZR-0025P |
-| **Utólagos, használatalapú fizetés** | [Free Trial (Ingyenes próba)](https://azure.microsoft.com/offers/ms-azr-0044p)                          | FreeTrial_2014-09-01 | MS-AZR-0044P |
-| **Utólagos, használatalapú fizetés** | [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p)                       | AzureInOpen_2014-09-01 | MS-AZR-0111P |
-| **Utólagos, használatalapú fizetés** | [Az Azure diákoknak szóló ajánlata](https://azure.microsoft.com/offers/ms-azr-0170p)                  | AzureForStudents_2018-01-01 | MS-AZR-0170P |
-| **Utólagos, használatalapú fizetés** | Azure Pass                                                                             | AzurePass_2014-09-01 | MS-AZR-0120P, MS-AZR-0122P - MS-AZR-0125P, MS-AZR-0128P - MS-AZR-0130P |
-| **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)      | MPN_2014-09-01 | MS-AZR-0029P |
+| **Pay-As-You-Go** | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p)                       | PayAsYouGo_2014-09-01 | MS-AZR-0003P |
+| **Pay-As-You-Go** | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p)              | MSDNDevTest_2014-09-01 | MS-AZR-0023P |
+| **Pay-As-You-Go** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)           | MPN_2014-09-01 | MS-AZR-0025P |
+| **Pay-As-You-Go** | [Ingyenes próbaverzió](https://azure.microsoft.com/offers/ms-azr-0044p)                          | FreeTrial_2014-09-01 | MS-AZR-0044P |
+| **Pay-As-You-Go** | [Azure in Open licencprogram](https://azure.microsoft.com/offers/ms-azr-0111p)                       | AzureInOpen_2014-09-01 | MS-AZR-0111P |
+| **Pay-As-You-Go** | [Az Azure diákoknak](https://azure.microsoft.com/offers/ms-azr-0170p)                  | AzureForStudents_2018-01-01 | MS-AZR-0170P |
+| **Pay-As-You-Go** | Azure Pass                                                                             | AzurePass_2014-09-01 | MS-AZR-0120P, MS-AZR-0122P - MS-AZR-0125P, MS-AZR-0128P - MS-AZR-0130P |
+| **Visual Studio** | [A Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)      | MPN_2014-09-01 | MS-AZR-0029P |
 | **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)          | MSDN_2014-09-01 | MS-AZR-0059P |
 | **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)     | MSDNDevTest_2014-09-01 | MS-AZR-0060P |
 | **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)            | MSDN_2014-09-01 | MS-AZR-0063P |
@@ -51,11 +51,11 @@ Az alábbi táblázat az ajánlatok nem támogatott.
 
 | Kategória  | **Ajánlat neve** | **Kvóta azonosítója** | **Csomag száma** |
 | --- | --- | --- | --- |
-| **Cloud Solution Provider (Felhőszolgáltató)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
-| **Cloud Solution Provider (Felhőszolgáltató)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
-| **Cloud Solution Provider (Felhőszolgáltató)** | Azure Germany a Microsoft Cloud Germany felhőszolgáltató programjában   | CSP_2015-05-01 | MS-AZR-DE-0145P |
-| **Utólagos, használatalapú fizetés**                 | Azure for Students Starter | DreamSpark_2015-02-01 | MS-AZR-0144P |
-| **Utólagos, használatalapú fizetés**                 | [A Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
+| **Cloud Solution Provider (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
+| **Cloud Solution Provider (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
+| **Cloud Solution Provider (CSP)** | Azure Germany a Microsoft Cloud Germany felhőszolgáltató programjában   | CSP_2015-05-01 | MS-AZR-DE-0145P |
+| **Pay-As-You-Go**                 | Azure for Students Starter | DreamSpark_2015-02-01 | MS-AZR-0144P |
+| **Pay-As-You-Go**                 | [A Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
 | **Támogatási csomagok** | Standard szintű támogatás                    | Default_2014-09-01 | MS-AZR-0041P |
 | **Támogatási csomagok** | A közvetlen professzionális támogatás         | Default_2014-09-01 | MS-AZR-0042P |
 | **Támogatási csomagok** | A fejlesztői támogatás                   | Default_2014-09-01 | MS-AZR-0043P |
@@ -77,7 +77,7 @@ Az alábbi táblázatokban foglalt, vagy nem Költségkezelés az adatokat. Mind
 
 **Költség- és használati adatok**
 
-| **Tartalmazza** | **Nem tartalmazza** |
+| **Foglalt** | **Nem tartalmazza** |
 | --- | --- |
 | Azure-szolgáltatás használati<sup>1</sup> | Foglalás vásárlások – további információkért lásd: [API-k a foglalást az Azure automation](../billing/billing-reservation-apis.md). |
 | Marketplace-ajánlat használati<sup>2</sup> | Piactér-beli vásárlásokra – további információkért lásd: [külső szolgáltatási díjakkal](../billing/billing-understand-your-azure-marketplace-charges.md). |
@@ -88,9 +88,9 @@ Az alábbi táblázatokban foglalt, vagy nem Költségkezelés az adatokat. Mind
 <sup>1</sup> azure-szolgáltatás használati foglalás alapul, és egyeztetett árak.
 <sup>2</sup> marketplace-ajánlat használati nem érhető el a használatalapú fizetés, MSDN-Előfizetők, és Visual Studio jelenleg kínál.
 
-**Metaadatok**
+**Metadata**
 
-| **Tartalmazza** | **Nem tartalmazza** |
+| **Foglalt** | **Nem tartalmazza** |
 | --- | --- |
 | Erőforráscímkék<sup>3</sup> | erőforráscímkék csoport |
 
@@ -123,6 +123,25 @@ A Cost Management felmerült használati adatok rendelkezésre állását több 
 - A használati adatok feldolgozása a minősítés motoron keresztül, és a költségek kezelése a folyamatok az idő.
 
 Egyes szolgáltatások gyakoribb a többinél generuje használat. Tehát hamarabb más szolgáltatásokkal, amelyek gyakran küldik az adatokat kevesebb, mint láthatja a Cost Management adatokat az egyes szolgáltatások. Általában a szolgáltatások használati megjelennek a Cost Management 8 – 24 óra alatt. Vegye figyelembe az adatok esetében, mert az összegző frissítésekről további használati díjak egy nyílt hónap frissül.
+
+## <a name="historical-data-might-not-match-invoice"></a>Korábbi adatok nem egyeznek meg a számlán
+
+Előzményadatok kredit-alapú, és előre fizetési ajánlat esetén előfordulhat, hogy nem egyezik a számlán. Néhány Azure használatalapú fizetés, az MSDN és a Visual Studio ajánlat az Azure-kreditek és a speciális kiállítása óta befizetett összegek a számla is rendelkezhetnek. A Cost Management látható előzményadatok azonban csak a becsült használati díjak alapján. A Cost Management előzményadatok nagyságú befizetések és jóváírások nem tartalmazza. Ennek eredményeképpen a korábbi adatok jelennek meg az alábbi ajánlatok nem felel meg pontosan az a számla.
+
+-   MS-AZR-0029P
+-   MS-AZR-0064P
+-   MS-AZR-0170P
+-   MS-AZR-0062P
+-   MS-AZR-0123P
+-   MS-AZR-0129P
+-   MS-AZR-0044P
+-   MS-AZR-0128P
+-   MS-AZR-0120P
+-   MS-AZR-0125P
+-   MS-AZR-0059P
+-   MS-AZR-0063P
+-   MS-AZR-0060P
+-   MS-AZR-0111P
 
 ## <a name="see-also"></a>Lásd még
 

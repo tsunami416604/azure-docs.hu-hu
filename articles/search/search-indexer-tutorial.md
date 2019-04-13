@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 04/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c2fc406fa864fe2f67ded4ea98ad14475944671a
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 8550e220a2c87823fc337154ea33dd3c4ec81ed0
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500345"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528050"
 ---
-# <a name="tutorial-in-c-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Az oktatóanyag C#: Feltérképezi az Azure SQL-adatbázisok Azure Search-indexelők használatával
+# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Oktatóanyag: Feltérképezi az Azure SQL-adatbázisok Azure Search-indexelők használatával
 
 Ismerje meg, hogyan konfigurálhatja az indexelőket kereshető adatok kinyeréséhez egy minta Azure SQL database. Az [indexelők](search-indexer-overview.md) olyan Azure Search-összetevők, amelyek feltérképezik a külső adatforrásokat, és tartalommal töltenek fel egy [keresési indexet](search-what-is-an-index.md). Mind az indexelő az Azure SQL Database a leggyakrabban használt. 
 
@@ -116,7 +116,7 @@ Az alábbi gyakorlat azzal a feltételezéssel él, hogy Ön nem rendelkezik sem
     ```sql
     SELECT HotelId, HotelName, Tags FROM Hotels
     ```
-    A prototípusos lekérdezés (`SELECT * FROM Hotels`) nem működik a Lekérdezésszerkesztőben. A mintaadatok olyan földrajzi koordinátákat is tartalmaznak a Hely mezőben, amelyeket a szerkesztő jelenleg nem kezel. Más oszlopok listáját a jelen nyilatkozat hajthat végre: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
+    A prototípusos lekérdezés (`SELECT * FROM Hotels`) nem működik a Lekérdezésszerkesztőben. A mintaadatok olyan földrajzi koordinátákat is tartalmaznak a Hely mezőben, amelyeket a szerkesztő jelenleg nem kezel. A további lekérdezhető oszlopok listájának megtekintéséhez futtassa a következő utasítást: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
 
 10. Most, hogy már rendelkezik külső adatkészlettel, másolja ki az adatbázishoz tartozó ADO.NET kapcsolati sztringet. Az adatbázis SQL Database oldalának **Beállítások** > **Kapcsolati sztringek** területéről másolja az ADO.NET kapcsolati sztringet.
  
@@ -270,4 +270,4 @@ Az oktatóanyagok után feleslegessé vált elemek az Azure Search szolgáltatá
 Mesterséges intelligencia által vezérelt algoritmusokat csatolhat egy indexelőfolyamathoz. Következő lépésként folytassa az alábbi oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Dokumentumok indexelése az Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
+> [Dokumentumok indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md)

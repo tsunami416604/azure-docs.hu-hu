@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: ff8c866f62e8d795f04491cf249b7dae26c8269c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 3294eda4d9330332bf23c3a8f1804f067373bf7a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492294"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528256"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Egy virtuális hálózati társviszony-létesítés létrehozása – Resource Manager, a különböző előfizetések
 
@@ -61,7 +61,7 @@ Az alábbi lépéseket az egyes előfizetésekhez más fiókokat kell használni
 7. Válassza ki **hálózati közreműködő** a a **szerepkör** mezőbe.
 8. Az a **kiválasztása** jelölje ki *Felhasználób*, vagy írja be a Felhasználób e-mail-címet a keresési funkciót.
 9. Kattintson a **Mentés** gombra.
-10. Alatt **myVnetA - hozzáférés-vezérlés (IAM)** válassza **tulajdonságok** a bal oldali beállítások függőleges listájából. Másolás a **erőforrás-azonosító**, amely egy későbbi lépésben szolgál. Az erőforrás-azonosítója a következő példához hasonlít: /subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA.
+10. Alatt **myVnetA - hozzáférés-vezérlés (IAM)** válassza **tulajdonságok** a bal oldali beállítások függőleges listájából. Másolás a **erőforrás-azonosító**, amely egy későbbi lépésben szolgál. Az erőforrás-azonosítója a következő példához hasonlít: `/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA`.
 11. Jelentkezzen ki a portálra a Felhasználóa felhasználóként, majd jelentkezzen be Felhasználób felhasználóként.
 12. 2-3, megadásával vagy a 3. lépésben a következő értékeket kiválasztásával lépések végrehajtásával:
 
@@ -74,7 +74,7 @@ Az alábbi lépéseket az egyes előfizetésekhez más fiókokat kell használni
     - **Hely**: *USA keleti RÉGIÓJA*
 
 13. Az a **erőforrások keresése** mezőbe írja be a portál tetején lévő *myVnetB*. Válassza ki **myVnetB** amikor megjelenik a keresési eredmények között.
-14. Alatt **myVnetB**válassza **tulajdonságok** a bal oldali beállítások függőleges listájából. Másolás a **erőforrás-azonosító**, amely egy későbbi lépésben szolgál. Az erőforrás-azonosítója a következő példához hasonlít: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
+14. Alatt **myVnetB**válassza **tulajdonságok** a bal oldali beállítások függőleges listájából. Másolás a **erőforrás-azonosító**, amely egy későbbi lépésben szolgál. Az erőforrás-azonosítója a következő példához hasonlít: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`.
 15. Válassza ki **hozzáférés-vezérlés (IAM)** alatt **myVnetB**, majd hajtsa végre az 5 – 10. lépéseket myVnetB, írja be a **Felhasználóa** 8. lépés.
 16. Jelentkezzen ki a Felhasználób portált, és jelentkezzen be a Felhasználóa felhasználóként.
 17. Az a **erőforrások keresése** mezőbe írja be a portál tetején lévő *myVnetA*. Válassza ki **myVnetA** amikor megjelenik a keresési eredmények között.
@@ -111,7 +111,7 @@ Az alábbi parancsfájlok:
 Telepítése a parancssori felület és annak függőségeit, helyett használhatja az Azure Cloud Shellt. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Válassza ki a **kipróbálás** gombra a szkript a következő, amely meghív egy Cloud Shell, amely az Azure-fiókjával bejelentkezhet.
 
 1. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be az Azure-bA Felhasználóa használatával a `azure login` parancsot. A bejelentkezés a következővel fiók jogosult arra, hogy a virtuális hálózati társviszony-létesítés kell rendelkeznie. Engedélyek listáját lásd: [virtuális hálózatok közötti társviszonyra vonatkozó engedélyek](virtual-network-manage-peering.md#permissions).
-2. Másolja a következő parancsfájl egy szövegszerkesztőbe, a számítógépen, cserélje le `<SubscriptionA-Id>` a hozzárendelhető azonosítója, majd másolja a módosított szkripttel, illessze be a CLI-munkamenetet, majd nyomja le a `Enter`. Ha az előfizetés-azonosító nem ismeri, adja meg a "az account show" parancsot. Az érték **azonosító** kimenet az előfizetés azonosítóját.
+2. Másolja a következő parancsfájl egy szövegszerkesztőbe, a számítógépen, cserélje le `<SubscriptionA-Id>` a hozzárendelhető azonosítója, majd másolja a módosított szkripttel, illessze be a CLI-munkamenetet, majd nyomja le a `Enter`. Ha az előfizetés-azonosító nem ismeri, adja meg a `az account show` parancsot. Az érték **azonosító** kimenet az előfizetés azonosítóját.
 
     ```azurecli-interactive
     # Create a resource group.

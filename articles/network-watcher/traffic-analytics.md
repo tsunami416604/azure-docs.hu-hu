@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 7e90e42f768ceb333ac90f56249457ffa46ae461
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: cb61366a672a48cdc84e14f40d889e646e0e23b8
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490996"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545399"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -369,3 +369,8 @@ Rendelkezik a rosszindulatú adatforgalom a környezetében? Hol van, a származ
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 Válaszok a gyakori kérdésekre, lásd: [Traffic analytics – gyakori kérdések](traffic-analytics-faq.md).
+
+## <a name="next-steps"></a>További lépések
+
+- A folyamat-naplók engedélyezésére, lásd: [engedélyezése NSG csoportforgalom naplózása](network-watcher-nsg-flow-logging-portal.md).
+- A séma- és a Traffic Analytics-adatok feldolgozása ismertetése: [Traffic analytics séma](traffic-analytics-schema.md).

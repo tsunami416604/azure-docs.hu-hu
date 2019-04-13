@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 9229a583dac526d09d7c5046c4bb81d30c9d4c3f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 34ae47723762215fdea99362419c3875dc2e5942
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873563"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522745"
 ---
 # <a name="collaborating-with-other-authors"></a>A többi szerzőjének közreműködő
 
-A LUIS biztosít az együttműködést, hogy a csoport, hozzon létre egy alkalmazást.
+A LUIS-alkalmazások egyetlen tulajdonosnak és a választható közreműködők, így egyetlen alkalmazást hozzon létre több személy van szükség.
 
 ## <a name="luis-account"></a>A LUIS-fiók
 A LUIS-fiókhoz társítva egyetlen [Microsoft Live](https://login.live.com/) fiókot. Minden egyes LUIS fiókot kap egy ingyenes [kulcs létrehozási](luis-concept-keys.md#authoring-key) való használatra a LUIS-alkalmazások készítése a fiók hozzáféréssel rendelkezik. 
@@ -30,7 +30,8 @@ A LUIS-fiók számos LUIS alkalmazás lehet.
 Lásd: [Azure Active Directory-bérlő felhasználói](luis-how-to-collaborate.md#azure-active-directory-tenant-user) további információ az Active Directory felhasználói fiókokat. 
 
 ## <a name="luis-app-owner"></a>A LUIS alkalmazás tulajdonosa
-A fiók, amely létrehoz egy alkalmazást a tulajdonosa. Minden alkalmazás rendelkezik egy egyetlen tulajdonosa. A tulajdonos szerepel az alkalmazás  **[beállítások](luis-how-to-collaborate.md)**. Ez az a fiók, amely az alkalmazás törlése. Ez akkor is a fiókot, amely e-mailt kap, ha a végpont kvóta eléri 75 %-a havi korlátot. 
+
+A fiók, amely létrehoz egy alkalmazást a tulajdonosa, és minden alkalmazás rendelkezik egy egyetlen tulajdonosa. Az alkalmazás megjelenik a tulajdonos **[beállítások](luis-how-to-collaborate.md)** lapot. A tulajdonos törölheti az alkalmazást e-maileket kapni, amikor a végpont kvóta eléri 75 %-a havi korlátot. 
 
 ## <a name="authorization-roles"></a>Engedély szerepkörök
 A LUIS tulajdonosok és a egy kivétellel közreműködők nem támogatja a különböző szerepköröket. Az egyetlen fiók, amely törölheti az alkalmazás tulajdonosa.
@@ -61,6 +62,10 @@ Ez a módszer lehetővé teszi, hogy egy aktív verzióját, egy szakasz és egy
 [Exportálás](luis-how-to-manage-versions.md#export-version) Alapverzió. Mindegyik Szerző importálja a verziót. A személy, amely az alkalmazás importál a verzió tulajdonosa. Amikor végzett a verzió módosítása az alkalmazás exportálása. 
 
 Exportált alkalmazások olyan JSON-formátumú fájlokat, amelyek a módosítások az alap exportálás összehasonlíthatók. A fájlokat, és hozzon létre egy egyetlen JSON-fájlt az új verzió össze. Módosítsa a **versionId** tulajdonság a JSON az új, egyesített verzió jelölésére. Importálja azt a verziót az eredeti alkalmazásba.
+
+## <a name="collaborator-roles-vs-entity-roles"></a>A közreműködő szerepkört vs entitás szerepkörök
+
+[Entitás szerepkörök](luis-concept-roles.md) a alkalmazni az adatmodellbe, a LUIS alkalmazás. A közreműködő szerepkört authoring hozzáférés szintjei érvényesek. 
 
 ## <a name="next-steps"></a>További lépések
 

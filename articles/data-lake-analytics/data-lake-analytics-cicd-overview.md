@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: b6c5df1ef0c93508595e27cbda315281aa3461b5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124286"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544818"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics egy CI/CD-folyamat beállítása  
 
@@ -66,7 +66,7 @@ Előfordulhat, hogy az U-SQL projekt U-SQL-parancsfájlok lekérdezési utasít�
 Tudjon meg többet [U-SQL database-projekt](data-lake-analytics-data-lake-tools-develop-usql-database.md).
 
 >[!NOTE]
->U-SQL database-projekt jelenleg nyilvános előzetes verzióban érhető el. Ha DROP utasítást a projekt, a build sikertelen lesz. A DROP utasítást hamarosan engedélyezve lesz.
+>DROP utasítást objektuma tárolótörlési hiba okozhatja. Ahhoz, hogy a DROP utasítást, explicit módon adja meg az MSBuild-argumentumok kell. **AllowDropStatement** lehetővé teszi a-data kapcsolódó ELDOBÁSI művelet, például a drop assembly és a drop táblázat értékű függvény. **AllowDataDropStatement** lehetővé teszi a kapcsolódó adatok ELDOBÁSI művelet, például a drop table és a drop schema. Mielőtt AllowDataDropStatement AllowDropStatement engedélyeznie kell.
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>Az MSBuild parancssorral a U-SQL projekt létrehozása
@@ -79,11 +79,11 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 Az argumentumok definíció- és értékek a következők:
 
-* **USQLSDKPath = < U-SQL Nuget-csomag > \build\runtime**. Ezt a paramétert a telepítési útvonalat a NuGet-csomag az U-SQL nyelvi szolgáltatás hivatkozik.
+* **USQLSDKPath =\<U-SQL Nuget-csomag > \build\runtime**. Ezt a paramétert a telepítési útvonalat a NuGet-csomag az U-SQL nyelvi szolgáltatás hivatkozik.
 * **USQLTargetType = egyesítési vagy SyntaxCheck**:
     * **Egyesítse**. Egyesítéssel lefordítja a háttérkód-fájlokat. Példa **.cs**, **.py**, és **.r** fájlokat. Ez a U-SQL-parancsfájlt az eredményül kapott felhasználói kód kódtár inlines. Példák: egy dll bináris, Python vagy R kódot.
     * **SyntaxCheck**. SyntaxCheck mód a U-SQL parancsfájl először egyesít háttérkód-fájlokat. Majd azt állítja össze a kódot a U-SQL parancsfájl.
-* **DataRoot =<DataRoot path>**. DataRoot csak SyntaxCheck mód van szükség. Ha, létrehozta a parancsfájl SyntaxCheck móddal, MSBuild ellenőrzi, adatbázis-objektumok a szkriptben mutató hivatkozásokat. Épület, mielőtt a U-SQL-adatbázis a build gép DataRoot mappában található a hivatkozott objektumokat tartalmazó egyező helyi környezet beállítása. Is kezelheti a adatbázis függőségek szerint [hivatkozik egy U-SQL database-projekt](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). MSBuild csak adatbázis-objektum hivatkozik rá, fájlok nem ellenőrzi.
+* **DataRoot =\<DataRoot elérési út >**. DataRoot csak SyntaxCheck mód van szükség. Ha, létrehozta a parancsfájl SyntaxCheck móddal, MSBuild ellenőrzi, adatbázis-objektumok a szkriptben mutató hivatkozásokat. Épület, mielőtt a U-SQL-adatbázis a build gép DataRoot mappában található a hivatkozott objektumokat tartalmazó egyező helyi környezet beállítása. Is kezelheti a adatbázis függőségek szerint [hivatkozik egy U-SQL database-projekt](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). MSBuild csak adatbázis-objektum hivatkozik rá, fájlok nem ellenőrzi.
 * **EnableDeployment = true** vagy **hamis**. EnableDeployment azt jelzi, ha engedélyezett üzembe helyezése a hivatkozott U-SQL-adatbázisok az összeállítási folyamat során. Hivatkozhat egy U-SQL database-projektet, és az adatbázis-objektumok használata a U-SQL-szkript, ha a paraméter értéke **igaz**.
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Folyamatos integráció révén az Azure-folyamatok

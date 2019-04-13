@@ -4,7 +4,7 @@ description: Ezzel a rövid útmutatóval percek alatt üzembe helyezheti első 
 services: app-service\web
 documentationcenter: ''
 author: msangapu
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 12/10/2018
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 4b95c75b863cdc86dd8a1ebe8347b77b637b110c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: af1256b4432e42f91209b622239ca55901929a1b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999106"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544738"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Gyors útmutató: Egy Java-alkalmazás létrehozása Linuxon futó App Service-ben
 
@@ -99,17 +99,15 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 
 **Gratulálunk!** Üzembe helyezte az első Java-webalkalmazását a Linuxon futó App Service-ben.
 
-
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
-
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a rövid útmutatóban használt Maven konfigurált Java-alkalmazás létrehozása a [Azure Web Appshez készült maven bővítmény](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), majd üzembe helyezi a linuxon futó App Service web archive csomagolt Java-alkalmazás. Tekintse meg az alábbi oktatóanyagok és útmutatók további információk az App Service Linux rendszeren Java-alkalmazások futtatására.
+> [!div class="nextstepaction"]
+> [Oktatóanyag: Java-vállalati alkalmazás és PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
 
-- [Oktatóanyag: Üzembe helyezése egy Java vállalati alkalmazás-és PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
-- [A Tomcat-adatforrás konfigurálása](app-service-linux-java.md#tomcat)
-- [CI/CD a jenkins-szel](/azure/jenkins/deploy-jenkins-app-service-plugin)
-- [Alkalmazásteljesítmény-figyelési eszközök beállítása](how-to-java-apm-monitoring.md)
-- [A linuxon futó App Service-hez Java fejlesztői útmutatója](app-service-linux-java.md)
+> [!div class="nextstepaction"]
+> [Java-alkalmazás konfigurálása](configure-custom-container.md)
 
+> [!div class="nextstepaction"]
+> [CI/CD a jenkins-szel](/azure/jenkins/deploy-jenkins-app-service-plugin)

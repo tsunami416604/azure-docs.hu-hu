@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 11587d5a0520d42d554c13a525c3b57db82326aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5417f66696191cebadc2af9c6d634419a0eb8e5b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229475"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526452"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felhasználó által definiált C#-kód hibaelhárítása U-SQL-feladatok sikertelen
 
@@ -28,7 +28,7 @@ A következő videó bemutatja a csúcspont Debug nem sikerült az Azure Data La
 >
 
 > [!IMPORTANT]
-> A Visual Studio a következő két frissítést igényel a funkció használatát: [Microsoft Visual C++ 2015 újraterjeszthető Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) és a [Universal C futásidejű for Windows](https://www.microsoft.com/download/details.aspx?id=50410).
+> A Visual Studio a szolgáltatást a következő két frissítések szükségesek: [A Microsoft Visual C++ újraterjeszthető csomag 2015 Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) és a [for Windows Universal C futásidejű](https://www.microsoft.com/download/details.aspx?id=50410).
 >
 
 ## <a name="download-failed-vertex-to-local-machine"></a>Nem sikerült letölteni a csúcspont helyi számítógépre
@@ -68,7 +68,7 @@ A forráskód importálva lett-e a megoldás, ha a Visual Studio hibakereső esz
 
 2. Nyissa meg a forráskód fájlja, és állítson be töréspontokat, majd nyomja le az **F5** hibakeresése a kód lépésről lépésre.
 
-    ![Az Azure Data Lake Analytics U-SQL-hibakeresési kivétel](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-exception.png)
+    ![Azure Data Lake Analytics U-SQL debug exception](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-exception.png)
 
 ### <a name="source-code-is-not-included-in-debugging-solution"></a>Forráskód nem érhető el a megoldás hibakeresés
 
@@ -80,9 +80,9 @@ Ha a felhasználói kód nem szerepel a háttérkód-fájl, vagy fürtszerepkör
 
 2. A projekt mappa elérési útját **FailedVertexDebugHost** projekt. 
 
-3. Kattintson a jobb gombbal **a szerelvény hozzáadása forráskód Projekt > Tulajdonságok**, jelölje be a **hozhat létre** lapra a bal oldalon, és illessze be a másolt elérési útja, \bin\debug végződő **kimeneti > kimeneti elérési út**. A végeredmény elérési út, például "<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\".
+3. Kattintson a jobb gombbal **a szerelvény hozzáadása forráskód Projekt > Tulajdonságok**, jelölje be a **hozhat létre** lapra a bal oldalon, és illessze be a másolt elérési útja, \bin\debug végződő **kimeneti > kimeneti elérési út**. A végső kimenet elérési útja például `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`.
 
-    ![Az Azure Data Lake Analytics U-SQL-hibakeresési pdb elérési útjának beállítása](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
+    ![Azure Data Lake Analytics U-SQL debug set pdb path](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
 Ezek a beállítások után a hibakeresés indítása **F5** és töréspontokat a kiválasztott. A Visual Studio hibakereső eszközöket, (tekintse meg, változókat, stb.) a probléma elhárításához is használhatja.
 

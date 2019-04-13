@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 84ab433f5de8a62f33aca01e60bc2dbd1d8e68f8
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d7eb73c8fb4573084ba0a213282fdb71e14ff5fa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761429"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546740"
 ---
 # <a name="introduction-to-azure-netapp-files"></a>Bevezetés az Azure NetApp Files használatába
 Az Azure NetApp Files szolgáltatás egy nagyvállalati szintű, nagy teljesítményű, forgalmi díjas fájltárolási szolgáltatás. Az Azure NetApp Files minden típusú számítási feladatot támogat, és alapértelmezés szerint magas rendelkezésre állást biztosít. Kiválaszthatja a garantált szolgáltatási és teljesítményszintet, illetve beállíthat pillanatképeket a szolgáltatáson keresztül. 

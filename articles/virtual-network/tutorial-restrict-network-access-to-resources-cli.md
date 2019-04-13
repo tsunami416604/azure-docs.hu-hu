@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 35f2c1bcc3db82f5fbca5f0458d534bf73d9067a
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 4d93cfe78159fdf4ef3c34e8f80732603b701538
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010498"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521682"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása a virtuális hálózati Szolgáltatásvégpontok az Azure CLI használatával
 
@@ -272,7 +272,7 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. A létrehoz�
 
 ## <a name="confirm-access-to-storage-account"></a>Tárfiókhoz való hozzáférés ellenőrzése
 
-SSH-t a *myVmPrivate* virtuális Gépet. Cserélje le *<publicIpAddress>* a nyilvános IP-címét a *myVmPrivate* virtuális Gépet.
+SSH-t a *myVmPrivate* virtuális Gépet. Cserélje le  *\<publicIpAddress >* a nyilvános IP-címét a *myVmPrivate* virtuális Gépet.
 
 ```bash 
 ssh <publicIpAddress>

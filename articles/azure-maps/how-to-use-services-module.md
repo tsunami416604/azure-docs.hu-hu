@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 3aa39568904cb0acc9b5b76ff7e07729bf99d6b1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: e89a4675f867e53c499bb82b239ddb9bec1aed6f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278598"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521199"
 ---
 # <a name="using-the-azure-maps-services-module"></a>Az Azure Maps Services modullal
 
@@ -24,7 +24,7 @@ Az Azure Maps Web SDK biztosít egy services modult, amely egy segédkódtárba 
 1. Hozzon létre egy új HTML-fájlt.
 2. Töltse be az Azure Maps Services modulban. Ezt megteheti egy két lehetőség közül választhat;
 
-    a. Globálisan üzemeltetett CDN verzióját használja, az Azure Maps services modul egy szkriptreferenciájának hozzáadásával a <head> elem a fájl:
+    a. Globálisan üzemeltetett CDN verzióját használja, az Azure Maps services modul egy szkriptreferenciájának hozzáadásával a `<head>` elem a fájl:
     
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
@@ -189,4 +189,4 @@ Tekintse meg a szolgáltatások a modul további Kódminták az alábbi cikkeket
 > [Koordináta információinak lekérése](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [Útvonal megjelenítése A-ból B-be](./map-route.md)
+> [Útvonal megjelenítése a-b](./map-route.md)

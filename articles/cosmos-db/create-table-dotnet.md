@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/11/2019
 ms.author: sngun
-ms.openlocfilehash: 7ca51b176c17f33b4779a0129c5dc57b220c0097
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 25f8a88c1b488b9272ed1254aaca79a79bc7e871
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877632"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544194"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Table API-alkalmazás a .NET SDK-t és az Azure Cosmos DB létrehozása 
 
@@ -65,9 +65,6 @@ Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcso
    ```bash
    git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
    ```
-   > [!NOTE]
-   > A .NET standard minta ebben a dokumentumban ismertetett Azure Cosmos DB Table API és az Azure Table Storage is működik. Ha érdekli, amely a minta futtatása a .NET-keretrendszer 4.5 együttműködik, tekintse meg a [storage-table-dotnet-getting-started](https://github.com/Azure-Samples/storage-table-dotnet-getting-started) minta. 
-
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>A mintaalkalmazás megnyitása a Visual Studióban
 
@@ -94,7 +91,6 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
       "StorageConnectionString": "<Primary connection string from Azure portal>"
    }
    ```
-   Ha használja a [.NET-keretrendszer](https://github.com/Azure-Samples/storage-table-dotnet-getting-started) mintát, frissítse a kapcsolati karakterlánc található a **App.config** fájlt.
 
 4. Nyomja le a CTRL + S menteni a **Settings.json** fájlt.
 
@@ -107,9 +103,6 @@ Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosm
    ![NuGet-csomagok kezelése](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
 
 2. A nuget **Tallózás** mezőbe írja be a Microsoft.Azure.Cosmos.Table. Ezzel a Cosmos DB Table API-ügyfélkódtárát keresi meg. Vegye figyelembe, hogy a könyvtár a .NET-keretrendszer és a .NET Standard jelenleg elérhető. 
-
-   > [!NOTE]
-   > Ha a .NET-keretrendszer használó mintákat használ, telepítenie kell a *Microsoft.Azure.CosmosDB.Table*, NuGet-csomagot. Ha az Azure Table Storage a .NET-keretrendszer mintát használja, a Cosmos DB adott NuGet-csomag mellett is szüksége van a *Microsoft.Azure.Storage.Common* NuGet-csomagot. 
    
    ![A NuGet Tallózás lapja](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 

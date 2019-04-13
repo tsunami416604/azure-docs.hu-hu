@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 60307d51439b4474c8be4f040792c03a6f83b0fd
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 6b4ddcadfe63f74d115c155354a276e45c6b53f9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473196"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544500"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Gyors útmutató: Rendellenességek észlelése az idősoros adatokat az Anomáliadetektálási detector használatával REST API-t és a Python használatával
 
@@ -65,7 +65,7 @@ Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelé
     data_location = "[PATH_TO_TIME_SERIES_DATA]"
     ```
 
-3. Olvassa el a JSON-adatok fájlt megnyitni, és használatával `json.load()`. 
+3. Olvassa el a JSON-adatok fájlt megnyitni, és használatával `json.load()`.
 
     ```python
     file_handler = open(data_location)
@@ -78,28 +78,24 @@ Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelé
 
 2. Hozzon létre egy szótár, a kérelem fejlécében. Állítsa be a `Content-Type` való `application/json`, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
 
-3. A kérelmet az küldése `requests.post()`. Kombinálhatja a végpont és a rendellenességek észlelése URL-CÍMÉT a kérelem teljes URL-címéhez, és közé tartoznak a fejlécek és json-kérelem adatai. 
+3. A kérelmet az küldése `requests.post()`. Kombinálhatja a végpont és a rendellenességek észlelése URL-CÍMÉT a kérelem teljes URL-címéhez, és közé tartoznak a fejlécek és json-kérelem adatai. És választ, majd adja meg.
 
-4. Ha a kérelem sikeres, a választ adja vissza.  
-    
-    ```python
-    def send_request(endpoint, url, subscription_key, request_data):
-        headers = {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': subscription_key}
-        response = requests.post(endpoint+url, data=json.dumps(request_data), headers=headers)
-        if response.status_code == 200:
-            return json.loads(response.content.decode("utf-8"))
-        else:
-            print(response.status_code)
-            raise Exception(response.text)
-    ```
+```python
+def send_request(endpoint, url, subscription_key, request_data):
+    headers = {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': subscription_key}
+    response = requests.post(endpoint+url, data=json.dumps(request_data), headers=headers)
+    return json.loads(response.content.decode("utf-8"))
+```
 
 ## <a name="detect-anomalies-as-a-batch"></a>Kötegelt feladatként rendellenességek észlelése
 
-1. Hozzon létre egy meghívott metódus `detect_batch()` során az adatokat egy kötegelt rendellenességek észlelése. Hívja a `send_request()` metódus a végpont URL-címe, előfizetési kulcs és json-adatok a fent létrehozott. 
+1. Hozzon létre egy meghívott metódus `detect_batch()` során az adatokat egy kötegelt rendellenességek észlelése. Hívja a `send_request()` metódus a végpont URL-címe, előfizetési kulcs és json-adatok a fent létrehozott.
 
 2. Hívás `json.dumps()` formázza azt, és nyomtassa ki a konzol eredményétől.
 
-3. A rendellenességek észlelését a pozíciók található adatkészlet. A válasz `isAnomaly` mező arra, hogy egy adott adatpontot anomáliát vonatkozó logikai értéket tartalmaz. Iterál végig a listát, és nyomtassa ki az index minden `True` értékeket. Ha találhatók esetleges rendellenes adatpontok index ezeket az értékeket felelnek meg.
+3. Ha a válasz tartalmaz `code` mezőben nyomtassa ki a hibakódot és a hibaüzenet jelenik meg.
+
+4. Ellenkező esetben találja az adatkészlet a pozíciók a rendellenességek észlelését. A válasz `isAnomaly` mező arra, hogy egy adott adatpontot anomáliát vonatkozó logikai értéket tartalmaz. Iterál végig a listát, és nyomtassa ki az index minden `True` értékeket. Ha találhatók esetleges rendellenes adatpontok index ezeket az értékeket felelnek meg.
 
 ```python
 def detect_batch(request_data):
@@ -107,12 +103,15 @@ def detect_batch(request_data):
     result = send_request(endpoint, batch_detection_url, subscription_key, request_data)
     print(json.dumps(result, indent=4))
 
-    # Find and display the positions of anomalies in the data set
-    anomalies = result["isAnomaly"]
-    print("Anomalies detected in the following data positions:")
-    for x in range(len(anomalies)):
-        if anomalies[x] == True:
-            print (x)
+    if result.get('code') != None:
+        print("Detection failed. ErrorCode:{}, ErrorMessage:{}".format(result['code'], result['message']))
+    else:
+        # Find and display the positions of anomalies in the data set
+        anomalies = result["isAnomaly"]
+        print("Anomalies detected in the following data positions:")
+        for x in range(len(anomalies)):
+            if anomalies[x] == True:
+                print (x)
 ```
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>A legújabb adatpont anomáliadetektálási állapotának észlelése
@@ -132,14 +131,14 @@ def detect_latest(request_data):
 ## <a name="load-your-time-series-data-and-send-the-request"></a>Az idősorozat-adatok betöltése, és a kérés küldése
 
 1. A JSON idősorozat-adatok a fájlleíró megnyitásával, és használatával betöltése `json.load()` rajta. Észlelési módszerek fent létrehozott majd hívja meg az anomáliadetektáló.
-    
-    ```python
-    file_handler = open (data_location)
-    json_data = json.load(file_handler)
-    
-    detect_batch(json_data)
-    detect_latest(json_data)
-    ```
+
+```python
+file_handler = open(data_location)
+json_data = json.load(file_handler)
+
+detect_batch(json_data)
+detect_latest(json_data)
+```
 
 ### <a name="example-response"></a>Példaválasz
 

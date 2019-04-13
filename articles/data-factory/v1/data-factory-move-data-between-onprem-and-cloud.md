@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 72e93b99783441bda97c52ff295a89b0fcf4e629
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4eb881992b7e40e0a9d67bd2cee94f1f09958e9e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995893"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524106"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatok áthelyezése egy helyszíni forrásra, és a felhő között az adatkezelési átjáróval
 > [!NOTE]
@@ -280,7 +280,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
    * **folderPath** értékre van állítva **adftutorial/outfromonpremdf** ahol outfromonpremdf-e a mappát az adftutorial tárolóban. Hozzon létre a **adftutorial** tárolót, ha azt nem létezik.
    * Az **availability** (rendelkezésre állás) paraméter **hourly** (óránként) értékre van állítva (a **frequency** (gyakoriság) paraméter **hour** (óra), az **interval** (időköz) paraméter pedig **1** értékre).  A Data Factory szolgáltatás létrehoz egy kimeneti adatszeletet az óránként a **emp** táblát az Azure SQL Database-ben.
 
-   Ha nem ad meg egy **fileName** a egy **eredménytábla**, az előállított fájlok a **folderPath** a következő formátumban lesznek elnevezve: Adatok. <Guid>.txt (például:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
+   Ha nem ad meg egy **fileName** a egy **eredménytábla**, az előállított fájlok a **folderPath** a következő formátumban lesznek elnevezve: `Data.<Guid>.txt` (például:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    Beállítása **folderPath** és **fileName** dinamikusan alapján a **SliceStart** idő, a "partitionedBy" tulajdonsággal. A következő példában a folderPath tulajdonság a SliceStart (a feldolgozás alatt álló szelet kezdő időpontja) változó Év, Hónap és Nap értékeit, a fileName tulajdonság pedig a SliceStart változó Óra értékét használja. Ha például a szelet előállítása a 2014-10-20T08:00:00 időpontban kezdődik, a folderName tulajdonság beállítása wikidatagateway/wikisampledataout/2014/10/20, a fileName beállítása pedig 08.csv lesz.
 

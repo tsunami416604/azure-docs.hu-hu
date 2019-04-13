@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: ade0444110dbb23e762a869dc79805872c0f0bf0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3afea20fe02eafbf14b5162eef3a198d27140b9e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59281131"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549135"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: A saját notebook server használata az Azure Machine Learning használatának első lépései
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot meg
 
 * A Python 3.6-os notebook server, az Azure Machine Learning SDK
 * Az Azure Machine Learning szolgáltatás munkaterület
-* A munkaterület konfigurációs fájl (**aml_config/config.json** ).
+* A munkaterület konfigurációs fájl (**.azureml/config.json** ).
 
 Ezek az összes előfeltétel beolvasása [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](setup-create-workspace.md#portal).
 

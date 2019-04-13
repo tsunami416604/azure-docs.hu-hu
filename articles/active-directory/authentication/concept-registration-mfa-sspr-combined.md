@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f3eec1f846f1b74ab3e19bca022d4e009540d1a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7cf8d5cb13b39d58920555ff9d99a4949e1bfc20
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59280009"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521433"
 ---
 # <a name="combined-security-information-registration-preview"></a>Egyesített biztonsági információk regisztrációs (előzetes verzió)
 
@@ -25,6 +25,8 @@ Mielőtt kombinált regisztrációs regisztrált felhasználók hitelesítési m
 ![Saját profil ábrázoló regisztrálva a felhasználó biztonsági adatai](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
 Mielőtt engedélyezné az új felhasználói felületre, tekintse át a rendszergazda témájú dokumentáció és a felhasználó témájú dokumentációját, hogy biztosan megismerje az a funkciók és a hatását, hogy ez a funkció. A felhasználói dokumentációra készítheti elő a felhasználók az új felhasználói felületre, és annak biztosítása érdekében a sikeres bevezetése érdekében a képzési alapjául.
+
+Az Azure AD biztonsági információk regisztrációs jelenleg nem áll rendelkezésre az országos felhők, mint például az Azure US Government, Azure Germany és Azure China 21Vianet együtt.
 
 |     |
 | --- |
@@ -139,4 +141,4 @@ A felhasználók, akik korábban már beállított legalább egy olyan módszer,
 
 [Új jelszó önkiszolgáló kérésének konfigurálása](howto-sspr-deployment.md)
 
-[Az Azure Multi-Factor Authentication konfigurálása](howto-mfa-getstarted.md)
+[Az Azure multi-factor Authentication konfigurálása](howto-mfa-getstarted.md)

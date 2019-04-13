@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0044cbc9e6142989a57e79de5fd1e78e999bb5e1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106933"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522350"
 ---
 # <a name="create-entities-without-utterances"></a>Beszédmódok nélkül entitások létrehozása
 
@@ -135,7 +135,7 @@ Az utterance (kifejezés) a `Where is Request relocation from employee new to th
 
 ## <a name="add-a-role-to-distinguish-different-contexts"></a>Adja hozzá a szerepkört megkülönböztetni a különböző környezetekben
 
-A szerepkör az entitásokban környezet alapján elnevezett altípusa. Azt az hasonlítható egy [hierarchikus](#add-hierarchical-entities) egység, de a szerepkörök csak használt [minták](luis-how-to-model-intent-pattern.md). 
+A szerepkör az a környezet alapján elnevezett altípusa. Minden entitás, beleértve az előre elkészített, és nem gép megismert entitások érhető el. 
 
 Ugyanebben a példában a forrás és cél városok, a különbség a hierarchikus entitásként használata, hogy a szerepkör neve helyett egy hierarchikus gyermek forrása. 
 

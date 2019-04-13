@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: fdc3a0030859e97cb81b8b9f6a66de1901b6eb3b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 6bccb1e75dc999bcb0e8c6d909abe7bffffcec8c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491287"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524044"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy egy virtuális hálózati társviszony törlése
 
@@ -50,7 +50,7 @@ Mielőtt létrehozná a társviszonyt, ismerkedjen meg a követelményeket és k
 5. <a name="add-peering"></a>Adja meg vagy válassza ki a következő beállítások értékeit:
     - **név:** A társviszony-létesítés neve a virtuális hálózaton belül egyedinek kell lennie.
     - **Virtuális hálózat üzemelőpéldány-modellje:** Válassza ki, melyik üzembe helyezési modellben a virtuális hálózati társviszonyt szeretne segítségével telepítve lett.
-    - **Tudom, hogy az erőforrás-Azonosítómat:** Ha a virtuális hálózati társviszonyt szeretne olvasási hozzáféréssel rendelkezik, ne jelölje be ezt a jelölőnégyzetet. Ha nem rendelkezik olvasási hozzáférés a virtuális hálózathoz vagy előfizetéshez szeretne társviszonyt, ezt a jelölőnégyzetet. Adja meg a virtuális hálózat a társviszonyt szeretne teljes erőforrás-Azonosítóját a **erőforrás-azonosító** dobozra, amelyik jelent meg, ha a mezőben be van jelölve. Az erőforrás-Azonosítóját meg kell lennie egy virtuális hálózat, amely azonos, vagy [támogatott különböző](#requirements-and-constraints) Azure [régió](https://azure.microsoft.com/regions) a virtuális hálózattal. Teljes erőforrás-Azonosítóját: /subscriptions/ hasonlít<Id>< virtuális hálózat neve > /resourceGroups/ < erőforráscsoport--neve > /providers/Microsoft.Network/virtualNetworks/. Az erőforrás-azonosítója egy virtuális hálózat egy virtuális hálózat tulajdonságainak megtekintésével beolvasása. Virtuális hálózat tulajdonságainak megtekintése kapcsolatban lásd: [virtuális hálózatok kezelése](manage-virtual-network.md#view-virtual-networks-and-settings). Ha az előfizetés tartozik, mint a virtuális hálózattal a társviszonyt próbál létrehozni az előfizetést egy másik Azure Active Directory-bérlő, először adja hozzá a felhasználó minden bérlő, egy [vendégfelhasználó](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) ellentétes a bérlőben.
+    - **Tudom, hogy az erőforrás-Azonosítómat:** Ha a virtuális hálózati társviszonyt szeretne olvasási hozzáféréssel rendelkezik, ne jelölje be ezt a jelölőnégyzetet. Ha nem rendelkezik olvasási hozzáférés a virtuális hálózathoz vagy előfizetéshez szeretne társviszonyt, ezt a jelölőnégyzetet. Adja meg a virtuális hálózat a társviszonyt szeretne teljes erőforrás-Azonosítóját a **erőforrás-azonosító** dobozra, amelyik jelent meg, ha a mezőben be van jelölve. Az erőforrás-Azonosítóját meg kell lennie egy virtuális hálózat, amely azonos, vagy [támogatott különböző](#requirements-and-constraints) Azure [régió](https://azure.microsoft.com/regions) a virtuális hálózattal. A teljes erőforrás-azonosító hasonlít `/subscriptions/<Id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>`. Az erőforrás-azonosítója egy virtuális hálózat egy virtuális hálózat tulajdonságainak megtekintésével beolvasása. Virtuális hálózat tulajdonságainak megtekintése kapcsolatban lásd: [virtuális hálózatok kezelése](manage-virtual-network.md#view-virtual-networks-and-settings). Ha az előfizetés tartozik, mint a virtuális hálózattal a társviszonyt próbál létrehozni az előfizetést egy másik Azure Active Directory-bérlő, először adja hozzá a felhasználó minden bérlő, egy [vendégfelhasználó](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) ellentétes a bérlőben.
     - **Előfizetés:** Válassza ki a [előfizetés](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) a virtuális hálózat társviszonyt szeretne. Egy vagy több előfizetés jelennek meg, attól függően, hány előfizetés az olvasási hozzáféréssel rendelkezik. Ha bejelölte a **erőforrás-azonosító** jelölőnégyzetét, ez a beállítás nem érhető el.
     - **Virtuális hálózat:** Válassza ki a virtuális hálózati társviszonyt szeretne. Vagy az Azure üzemi modellel létrehozott virtuális hálózatban választhat. Ha szeretne egy másik régióban lévő virtuális hálózat kiválasztása, jelöljön ki egy virtuális hálózat egy [támogatott régió](#cross-region). Ahhoz, hogy a listában látható a virtuális hálózat olvasási hozzáféréssel kell rendelkeznie. Ha egy virtuális hálózat szerepel, de szürkén jelenik meg, lehet, mert a virtuális hálózatok átfedésben a virtuális hálózat címterét. Ha a virtuális hálózati cím tárolóhelyek között átfedés van, akkor nem létesíthető társviszony. Ha bejelölte a **erőforrás-azonosító** jelölőnégyzetét, ez a beállítás nem érhető el.
     - **Virtuális hálózati hozzáférés engedélyezése:** Válassza ki **engedélyezve** (alapértelmezett), ha azt szeretné, a két virtuális hálózat közötti kommunikáció engedélyezése. Virtuális hálózatok közötti kommunikáció lehetővé teszi, hogy bármelyik virtuális hálózatban kommunikálnak egymással sávszélességgel és a késés, mintha ugyanahhoz a virtuális hálózathoz kapcsolódnak kapcsolódó erőforrásokhoz. A két virtuális hálózat-erőforrások közötti minden kommunikáció van az Azure privát hálózaton keresztül. A **VirtualNetwork** szolgáltatáscímke hálózati biztonsági csoportok magában foglalja a virtuális hálózat és a virtuális társhálózatban működő. Hálózati biztonsági csoport szolgáltatáscímkék kapcsolatos további információkért lásd: [hálózati biztonsági csoportok áttekintése](security-overview.md#service-tags). Válassza ki **letiltott** Ha nem szeretné, hogy a virtuális társhálózatba tartozó virtuális hálózat bejövő forgalmat. Választhat **letiltott** Ha egy virtuális hálózatot és egy másik virtuális hálózat már társviszonyban álló, de alkalmanként le kívánja tiltani a virtuális hálózatok közötti adatforgalmat. Azt tapasztalhatja, engedélyezése vagy letiltása sokkal kényelmesebb, mint törlésével és ismételt létrehozásával a társviszony-létesítéseket. Ha ez a beállítás le van tiltva, adatforgalom ugyanis nem a virtuális társhálózatok között.
@@ -156,10 +156,10 @@ Ha a fiókjához nincs hozzárendelve egy előző szerepköröket, akkor hozzá 
 
   |Azure üzembehelyezési modell             | Előfizetés  |
   |---------                          |---------|
-  |Mindkét Resource Manager              |[Azonos](tutorial-connect-virtual-networks-portal.md)|
-  |                                   |[Eltérő](create-peering-different-subscriptions.md)|
-  |Egy Resource Manager, egy klasszikus  |[Azonos](create-peering-different-deployment-models.md)|
-  |                                   |[Eltérő](create-peering-different-deployment-models-subscriptions.md)|
+  |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
+  |                                   |[Különböző](create-peering-different-subscriptions.md)|
+  |Egy Resource Manager, egy klasszikus  |[Ugyanaz](create-peering-different-deployment-models.md)|
+  |                                   |[Különböző](create-peering-different-deployment-models-subscriptions.md)|
 
 - További információ a [küllős hálózati topológiák](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json) létrehozásáról
 - Hozzon létre egy virtuális hálózati társviszony segítségével [PowerShell](powershell-samples.md) vagy [Azure CLI-vel](cli-samples.md) parancsfájlokat, vagy az Azure-minta [Resource Manager-sablonok](template-samples.md)

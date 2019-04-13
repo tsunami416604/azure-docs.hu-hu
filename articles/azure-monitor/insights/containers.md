@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: fbc9e0f8e7dfda86b5c53e28aa3aa3b733bb9600
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 0a45c84b01cace7e14bd1a945617598c6295631e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905752"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524276"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Figyelés megoldásra az Azure monitorban
 
@@ -236,7 +236,7 @@ Ez a szakasz ismerteti a Log Analytics-ügynököket telepítse az OpenShift dé
 Ha azt szeretné, titkos kulcsok használatával védeni kell a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcsot, amikor a Log Analytics ügynök démon-set yaml-fájllal, hajtsa végre az alábbi lépéseket.
 
 1. Jelentkezzen be az OpenShift fő csomóponttal, és másolja a yaml-fájlt [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) és titkos kulcs parancsfájljának [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) a Githubról.  Ez a szkript a titkos kulcsok yaml-fájlt a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcs biztonságos hoz létre a secrete információkat.  
-2. Futtassa az alábbi parancsokat a projekt létrehozása az Azure Monitor, és állítsa be a felhasználói fiókot. A Log Analytics-munkaterület Azonosítójára kéri a titkos kulcs parancsfájljának <WSID> és az elsődleges kulcs <KEY> és a befejezéskor az ocp-secret.yaml fájlt hoz létre.  
+2. Futtassa az alábbi parancsokat a projekt létrehozása az Azure Monitor, és állítsa be a felhasználói fiókot. A Log Analytics-munkaterület Azonosítójára kéri a titkos kulcs parancsfájljának `<WSID>` és az elsődleges kulcs `<KEY>` és a befejezéskor az ocp-secret.yaml fájlt hoz létre.  
 
     ```
     oadm new-project omslogging --node-selector='zone=default'  

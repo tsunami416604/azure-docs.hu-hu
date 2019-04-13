@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 08189522f4f73e996ed98f3996f87da8d93b5d2a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: e3106a792f486a62986734e562c96b41dd8a75dc
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895635"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524123"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Hálózati forgalom továbbítása az Azure CLI használatával útválasztási táblázat
 
@@ -208,7 +208,7 @@ Jegyezze fel a **publicIpAddress** értékét. Ezzel a címmel eléri a virtuál
 
 ## <a name="route-traffic-through-an-nva"></a>Forgalom irányítása NVA-n keresztül
 
-A következő paranccsal hozhat létre az SSH-munkamenetből a *myVmPrivate* virtuális Gépet. Cserélje le *<publicIpAddress>* a virtuális gép nyilvános IP-címét. A fenti példában az IP-cím van *13.90.242.231*.
+A következő paranccsal hozhat létre az SSH-munkamenetből a *myVmPrivate* virtuális Gépet. Cserélje le  *\<publicIpAddress >* a virtuális gép nyilvános IP-címét. A fenti példában az IP-cím van *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>

@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: bf010e33a5ef77fcfde2506bfef9760a09667a9d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 620dbd22613df37fdc3c20e34906684446b2251f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867252"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546003"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -51,27 +51,14 @@ Betanítás, során az Azure Machine Learning szolgáltatás számos különböz
 
 A naplózott futtatási információk, amely tartalmazza a futtatás során gyűjtött metrikák vizsgálhatja meg. A betanítási Futtatás is hoz létre egy Python-szerializált objektumot (`.pkl` fájl), amely tartalmazza a modell és az adatok előfeldolgozása.
 
-## <a name="model-explainability"></a>Modell explainability
-
-Az automatikus machine learning egy közös adatelemekkel tekintse meg a teljes körű folyamatot, hogy nem tud. Az Azure Machine Learning lehetővé teszi a modellek átlátható képet adnak a háttér-futó növelése kapcsolatos részletes információk megtekintése. Egyes modellek, például lineáris regresszió, viszonylag egyértelmű, ezért könnyen érthető lehet minősülnek. Azonban, hogy a további funkciók hozzáadása, és használja a bonyolultabb gépi tanulási modelleket, nehezebb azok ismertetése beolvasása. Két fontos szempontot jegyében a machine Learning szolgáltatásban:
-
-1. Ismertségét, a gépi tanulási folyamat és az összes lépést vesz részt, beleértve az adatok előfeldolgozása/featurization, és a hiperparaméter értékeket.
-1. Tudnivalók a bemeneti változók (más néven "szolgáltatások") és a modell kimeneti közötti kapcsolat.  A magnitude és az ütközésnek az előre jelzett érték az egyes szolgáltatások ismerete segít jobb megismerésében és a modell ismertetik. Ez az úgynevezett funkció fontosságát.
-
-Engedélyezheti a globális szolgáltatás fontosság post igény szerinti képzés a folyamat a kiválasztott, vagy automatikus machine learning képzési részét képező összes folyamatok esetében engedélyezi azt. Az erősen szabályozott iparágakban, mint például az egészségügyi és banki ez fontos való megfelelés a szabályozásoknak és ajánlott eljárásait.  Az alábbiakban néhány valós forgatókönyv mutatja be:
-
-1. Egy gyártóvállalat cég használatával a gépi tanulás segítségével megkönnyíti a későbbi eszköz hiba, így proaktív módon végrehajtható karbantartási tevékenységről. Ha már tudja, hogy egy eszköz arra készül, hogy nem sikerül, a legvalószínűbb oka az eseményeit, hogy megelőző jellegű karbantartási gyorsan elvégezhető?
-1. Pénzügyi intézmény, machine learning folyamat kölcsön vagy hitelkártya-alkalmazások használatával. Hogyan tudja, ha a modell a megfelelő dolgokat teszi állapotát, és ha egy ügyfél kéri a további részleteket a ezért a kérelem el lett utasítva, hogyan fog Ön reagálni őket?
-1. Egy online kereskedő vagy egy független szolgáltató használatával a gépi tanulás segítségével megkönnyíti az ügyfelek lemorzsolódását. Mik azok az ügyfél a fő közreműködők churn, és hogyan, megakadályozhatja ügyfelek megfordul?
-
-Ez az előzetes verziójú funkció, és továbbra is beruházni a segítségével jobban megismerheti a gépi tanulási modellek részletesebb információkat biztosít. Kövesse ezt [minta notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb) modell találja az Azure Machine Learning kísérletezhet.
 
 ## <a name="next-steps"></a>További lépések
 
 Példák, és ismerje meg, hogyan hozhat létre automatizált Machine Learning használatával:
-+ [Példák: A Jupyter notebookok használata az Azure Machine Learning szolgáltatás megismeréséhez](samples-notebooks.md#automated-ml-setup)
 
 + [Oktatóanyag: Az Azure automatikus Machine Learning egy osztályozási modell automatikusan betanítása](tutorial-auto-train-models.md)
+
++ [A jegyzetfüzet-minták](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
 
 + [A távoli erőforrás automatikus képzési használata](how-to-auto-train-remote.md)
 

@@ -1,19 +1,18 @@
 ---
-title: Az Azure Stream Analytics-feladatot az Azure Data Lake Storage Gen1 kimeneti hitelesítés
+title: Az Azure Stream Analytics-feladat az Azure Data Lake Storage Gen1 kimeneti hitelesítés
 description: Ez a cikk ismerteti a Azure Stream Analytics-feladat az Azure Data Lake Storage Gen1 kimeneti hitelesítéséhez felügyelt identitások használatával.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/8/2019
+ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9eb66a9000c9add0718c6edf6674a26ce8e479b3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 695591fedfacb34742335a6e9d6ca32a9c77eb7e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257977"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522061"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Hitelesítés a Stream Analytics használatával az Azure Data Lake Storage Gen1 felügyelt identitások használatával
 
@@ -100,33 +99,37 @@ Ez a cikk bemutatja, háromféleképpen engedélyezni az Azure Stream Analytics-
    Ez a tulajdonság arra utasítja az Azure Resource Manager létrehozása és kezelése az Azure Stream Analytics-feladat az identitás.
 
    **Mintafeladat**
-
-    ```json
-    {
-      "Name": "AsaJobWithIdentity",
-      "Type": "Microsoft.StreamAnalytics/streamingjobs",
-      "Location": "West US",
-      "Identity": {
-        "Type": "SystemAssigned",
-      },
-      "properties": {
-        "sku": {
-          "name": "standard"
-        },
-        "outputs": [
-          {
-            "name": "string",
-            "properties":{
-              "datasource": {
-                "type": "Microsoft.DataLake/Accounts",
-                "properties": {
-                  "accountName": "myDataLakeAccountName",
-                  "filePathPrefix": "cluster1/logs/{date}/{time}",
-                  "dateFormat": "YYYY/MM/DD",
-                  "timeFormat": "HH",
-                  "authenticationMode": "Msi"
-                }
-              }
+   
+   ```json
+   {
+     "Name": "AsaJobWithIdentity",
+     "Type": "Microsoft.StreamAnalytics/streamingjobs",
+     "Location": "West US",
+     "Identity": {
+       "Type": "SystemAssigned",
+     },
+     "properties": {
+       "sku": {
+         "name": "standard"
+       },
+       "outputs": [
+         {
+           "name": "string",
+           "properties":{
+             "datasource": {
+               "type": "Microsoft.DataLake/Accounts",
+               "properties": {
+                 "accountName": "myDataLakeAccountName",
+                 "filePathPrefix": "cluster1/logs/{date}/{time}",
+                 "dateFormat": "YYYY/MM/DD",
+                 "timeFormat": "HH",
+                 "authenticationMode": "Msi"
+             }
+           }
+         }
+       }
+     }
+   }
    ```
   
    **Feladat mintaválasz**
@@ -145,7 +148,8 @@ Ez a cikk bemutatja, háromféleképpen engedélyezni az Azure Stream Analytics-
         "sku": {
           "name": "standard"
         },
-      }
+     }
+   }
    ```
 
    Jegyezze fel a résztvevő-azonosító a feladat válaszból hozzáférést biztosítani a szükséges ADLS-erőforráshoz.
@@ -169,15 +173,14 @@ Ez a cikk bemutatja, háromféleképpen engedélyezni az Azure Stream Analytics-
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   A fenti PowerShell-paranccsal kapcsolatos további információkért tekintse meg a [Set-AzDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) dokumentációját.
+   A fenti PowerShell-paranccsal kapcsolatos további információkért tekintse meg a [Set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) dokumentációját.
 
 ## <a name="limitations"></a>Korlátozások
 Ez a funkció nem támogatja a következőket:
 
-1.  **Több-bérlős hozzáférés**: Az egyszerű szolgáltatás egy adott Stream Analytics-feladat létrehozása az Azure Active Directory-bérlővel, amelyen a feladat lett létrehozva, és nem használható olyan erőforrások, amelyek egy másik Azure Active Directory-bérlőben található találhatók. Ezért csak használhatja MSI ADLS általános 1 erőforrást, amely az Azure Stream Analytics-feladat, ugyanazon az Azure Active Directory a bérlőn belül. 
+1. **Több-bérlős hozzáférés**: Az egyszerű szolgáltatás egy adott Stream Analytics-feladat létrehozása az Azure Active Directory-bérlővel, amelyen a feladat lett létrehozva, és nem használható olyan erőforrások, amelyek egy másik Azure Active Directory-bérlőben található találhatók. Ezért csak használhatja MSI ADLS általános 1 erőforrást, amely az Azure Stream Analytics-feladat, ugyanazon az Azure Active Directory a bérlőn belül. 
 
-2.  **[Felhasználói hozzárendelt identitás](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**: nem támogatott ez azt jelenti, hogy a felhasználó nem sikerül a saját a Stream Analytics-feladat által használt egyszerű szolgáltatásának megadása. Az egyszerű szolgáltatás Azure Stream Analytics hozza létre. 
-
+2. **[Felhasználói hozzárendelt identitás](../active-directory/managed-identities-azure-resources/overview.md)**: nem támogatott. Ez azt jelenti, hogy a felhasználó nem sikerül a saját a Stream Analytics-feladat által használt egyszerű szolgáltatásának megadása. Az egyszerű szolgáltatás Azure Stream Analytics hozza létre.
 
 ## <a name="next-steps"></a>További lépések
 

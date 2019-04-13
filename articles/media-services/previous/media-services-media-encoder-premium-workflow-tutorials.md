@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 3d51f5328aec66eee0d8382026e8795db45a6a2c
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: d227e3618c138e6661cc4be7caa2b9a3ba1af3f1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189784"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523834"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Media Encoder Premium munkafolyamat speciális oktatóanyagok
 ## <a name="overview"></a>Áttekintés
@@ -760,7 +760,7 @@ Ez azért volt szükség keresztül normál karakterlánc fájlkezelési művele
 
 *Az eredményül kapott klip listát naplózása*
 
-Hajtsa végre a megtekintéséhez, hogyan lett a videó- és audio-adatfolyamokat levágva vizsgálat. Egynél több teszt futtatása a tisztítás pontok eltérő értékek teheti meg, ahogy azt láthatja, hogy a rendszer nem figyelembe kell venni azonban! Ennek oka az, hogy a Tervező, eltérően az Azure-futtatókörnyezetben nem bírálja felül az cliplist XML-fájl minden egyes futtatáskor. Ez azt jelenti, hogy csak az első alkalommal állította a is és pontokon, ki okoz az XML-átalakítás, minden más esetben az alkalmazásőr záradék (Ha (clipListXML.indexOf ("<trim>") == -1)) megakadályozza, hogy a munkafolyamat egy másik vágás elem felvétele esetén már egy.
+Hajtsa végre a megtekintéséhez, hogyan lett a videó- és audio-adatfolyamokat levágva vizsgálat. Egynél több teszt futtatása a tisztítás pontok eltérő értékek teheti meg, ahogy azt láthatja, hogy a rendszer nem figyelembe kell venni azonban! Ennek oka az, hogy a Tervező, eltérően az Azure-futtatókörnyezetben nem bírálja felül az cliplist XML-fájl minden egyes futtatáskor. Ez azt jelenti, hogy csak az első alkalommal állította a is és pontokon, ki okoz az XML-átalakítás, minden más esetben az alkalmazásőr záradék (Ha (`clipListXML.indexOf("<trim>") == -1`)) megakadályozza, hogy a munkafolyamat egy másik vágás elem hozzáadása, ha már van egy.
 
 Ahhoz, hogy a munkafolyamat tesztelése helyileg kényelmes, ajánlott hozzáadunk néhány vezetése ház kódot, amely megvizsgálja, ha a vágás elem már jelen volt. Ha igen, törölhetjük az XML-fájl az új értékekkel módosításával a folytatás előtt. Ahelyett, hogy használja az egyszerű karakterlánc-feldolgozás, az valószínűleg biztonságosabb ehhez keresztül valós xml-elemzés hálózatiobjektum-modellt.
 
@@ -949,7 +949,7 @@ Az az alábbi egyszerű guard záradék esetében lehet ellenőrizze, hogy a tis
 
 [Minta munkafolyamat-fájlok](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
 
-[Az Azure Media Services Explorer eszköz](https://aka.ms/amse)
+[Azure Media Services Explorer eszköz](https://aka.ms/amse)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e21058d47f554ca4a057ab90433895800fb17dd9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 85a1dad9feb15550cf27cf032802af5055fdf155
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886723"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525636"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Az Azure Cosmos DB – csatorna módosítása – áttekintés
 
@@ -58,7 +58,7 @@ Ha egy élettartam (idő élettartama) tulajdonsága egy elemet a -1, módosít�
 
 ### <a name="change-feed-and-etag-lsn-or-ts"></a>Csatorna módosítása és _etag, _lsn vagy _ts
 
-A belső _etag formátuma, és nem megtétele függőségi rajta, mivel bármikor módosíthatja. _ts módosítását vagy a létrehozás időbélyegzője. Időrendi összehasonlító _ts is használhat. _lsn egy hozzáadott a változáscsatorna csak; kötegazonosító azt jelöli, hogy a tranzakcióazonosító található. Előfordulhat, hogy hány elemet azonos _lsn. A FeedResponse ETag eltér a _etag akkor jelenik meg a cikket. _etag belső azonosítója, és ez használatos egyidejűségi vezérlő a verziójának használatát a cikk arról tájékoztatja, mivel az ETag használt műveleti sorrend a hírcsatorna.
+A belső _etag formátuma, és nem megtétele függőségi rajta, mivel bármikor módosíthatja. _ts módosítását vagy a létrehozás időbélyegzője. Időrendi összehasonlító _ts is használhat. _lsn egy hozzáadott a változáscsatorna csak; Kötegazonosító Ez azt jelenti, hogy a tranzakció azonosítója. Előfordulhat, hogy hány elemet azonos _lsn. A FeedResponse ETag eltér a _etag akkor jelenik meg a cikket. _etag belső azonosítója, és ez használatos egyidejűségi vezérlő a verziójának használatát a cikk arról tájékoztatja, mivel az ETag használt műveleti sorrend a hírcsatorna.
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>Csatorna használati esetekre és forgatókönyvekre módosítása
 
@@ -84,7 +84,7 @@ Például a csatorna módosítása a következő feladatokat végezheti hatékon
 
 Az alábbiakban a forgatókönyvek is egyszerűen implementálni a módosítás adatcsatornával:
 
-* Belül a [kiszolgáló nélküli](https://azure.microsoft.com/en-us/solutions/serverless/) webes és mobilalkalmazásokat, nyomon követheti az eseményeket, mint például az összes módosítást a felhasználói profilt, beállítások vagy azok helyétől, és aktiválja a bizonyos műveletek, például az eszközök leküldéses értesítések küldése használatával [Azure Functions](change-feed-functions.md).
+* Belül a [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) webes és mobilalkalmazásokat, nyomon követheti az eseményeket, mint például az összes módosítást a felhasználói profilt, beállítások vagy azok helyétől, és aktiválja a bizonyos műveletek, például az eszközök leküldéses értesítések küldése használatával [Azure Functions](change-feed-functions.md).
 
 * Készítsen játékot használata Azure Cosmos DB, akkor is, például használata módosításcsatornáját befejezett játékok a pontszámok alapján a valós idejű ranglisták megvalósításához.
 

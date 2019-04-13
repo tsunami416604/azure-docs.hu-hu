@@ -115,7 +115,7 @@ sections:
             values:
               - href: /azure/sql-database/sql-database-managed-instance-get-started
               - href: null
-              - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/'
+              - href: null
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment'
           - title: Időponthoz kötött visszaállítás
             values:
@@ -127,7 +127,7 @@ sections:
             values:
               - href: null
               - href: null
-              - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance/'
+              - href: 'https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Recreate-dropped-database-on-Azure-SQL-Managed-Instance/ba-p/386285'
               - href: null
   - title: Lépésről lépésre haladó oktatóanyagok és oktatási anyagainak
     items:
@@ -140,11 +140,11 @@ sections:
           - html: 'Ismerje meg <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">hardverjellemzők és korlátozások</a>, <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL nyelv különbségek</a>, és <a href="/azure/sql-database/sql-database-managed-instance-create-manage">Transact-SQL, PowerShell, az Azure CLI API konfigurálása a felügyelt példány<a/>.'
           - html: '<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurálása</a> Azure virtuális hálózat, ahol a felügyelt példány üzembe helyezve.'
           - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Érvényesítése</a> , hogy a a meglévő Azure virtuális hálózat üzembe helyezéséhez használható felügyelt példányok.'
-          - html: 'Csatlakozzon a példány <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure virtuális gép</a> vagy <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">pont – hely kapcsolat</a>, vagy <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">alkalmazások</a>.'
+          - html: 'Csatlakozzon a példány <a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-easiest-way-to-create-Azure-VM-that-can-access-your-Azure/ba-p/386247">Azure virtuális gép</a> vagy <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">pont – hely kapcsolat</a>, vagy <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">alkalmazások</a>.'
           - html: 'Győződjön meg arról, hogy az adatbázis áttelepíthető-e használatával <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Assistant</a> vagy <a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">adatbázis Kísérletezési Segéd</a>.'
           - html: Felügyelt példány használatával az adatbázisok életre <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natív visszaállítási</a> vagy <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Data Migration Service</a>.
           - html: 'Helyezze át az SSIS-csomagokat a <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a>, SSAS táblázatos modellek <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a>, és a jelentéseket az SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power bi Premium</a>.'
-          - html: 'További információ a tárolási réteg <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">általános célú csomagban</a> és a alkalmazni <a href="https://blogs.msdn.microsoft.com/sqlcat/20../../storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">tárolási teljesítmény ajánlott eljárást és szempontot, általános célú szolgáltatási szinten</a>.'
+          - html: 'További információ a tárolási réteg <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">általános célú csomagban</a> és a alkalmazni <a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">tárolási teljesítmény ajánlott eljárást és szempontot, általános célú szolgáltatási szinten</a>.'
           - html: 'Keresse meg az ajánlott eljárásokat és javaslatokat <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">biztonságossá tétele a-példány</a>.'
           - html: 'További információ <a href="sql-database-howto-managed-instance.md">útmutató végigvezeti a</a> , amelyek segítségével a felügyelt példány konfigurálását.'
   - title: Leírások
@@ -154,8 +154,10 @@ sections:
         className: cardsD
         items:
           - title: Blogok
-            html: '<p><a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/tag/managed-instance/">MSDN</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Közepes</a></p>'
+            html: '<p><a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/bg-p/Azure-SQL-Database/label-name/SQLServerStorageEngine">Techcommunity</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Közepes</a></p>'
           - title: Gyakori kérdések
             html: '<p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">Stack Overflow</a></p>'
+          - title: Közösségi csatornák
+            html: '<p><a href="https://sqlcommunity.slack.com/messages/CH854GD7D/">SQL-Közösség (felügyelt példány)</a></p>'
           - title: Oktatási anyagok
             html: '<p><a href="https://www.microsoft.com/handsonlabs/selfpacedlabs">Laborgyakorlatok</a></p><p><a href="https://www.microsoft.com/handsonlabs/instructorledlabs">Az utasítás vezetett laborgyakorlatok</a></p>'

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 04/11/2019
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b11c71f7f5a329a836d379a16afe66c08572ccde
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8d710a86bb63765ea8a1a777818ca5f99e38d3a7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177988"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548041"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Hozzáadása vagy frissítése egy felhasználói profil adatait az Azure Active Directoryval
 Adja hozzá a felhasználói profil információit, beleértve a profilképét, feladat-specifikus információkat és bizonyos beállítások, az Azure Active Directory (Azure AD) használatával. Új felhasználók hozzáadásáról szóló további információkért lásd: [hozzáadása vagy törlése az Azure Active Directory felhasználók](add-users-azure-active-directory.md).
@@ -26,7 +26,7 @@ Adja hozzá a felhasználói profil információit, beleértve a profilképét, 
 Látni fogja, ahogy érhető további információt a felhasználói profil, mint amit Ön a felhasználó létrehozása során adhat hozzá. Minden további információként ez nem kötelező, és a szervezet által igény szerint adhatók hozzá.
 
 ## <a name="to-add-or-change-profile-information"></a>Hozzáadásához vagy módosításához a profil adatait
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) globális rendszergazdai vagy a címtár felhasználói rendszergazdaként.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a felhasználó rendszergazdájaként a szervezet számára.
 
 2. Válassza ki **Azure Active Directory**válassza **felhasználók**, majd válassza ki a felhasználó. Ha például _Alain Charon_.
 
@@ -40,7 +40,7 @@ Látni fogja, ahogy érhető további információt a felhasználói profil, min
 
     - **Profil kép.** Válasszon ki egy miniatűrképet, a felhasználói fiók. Ezt a képet az Azure Active Directoryban, és a felhasználó személyes oldalain, például a myapps.microsoft.com lap jelenik meg.
 
-    - **Identitás.** Adjon hozzá bármilyen fiók-kapcsolatos információkat, például egy házas Vezetéknév vagy egy módosított felhasználónevet. 
+    - **Identitás.** Adjon hozzá, vagy módosítsa a felhasználó, például a házas vezetéknevet egy további identitás. Ez a név egymástól függetlenül között megadható Keresztnév és Vezetéknév értékeit. Például használhatja azt monogramja, a vállalat nevét, például vagy módosítsa a megjelenített nevek sorozata. Egy másik példa két olyan felhasználó, akinek nevek a következők: Deák Gábor"a használhatja az identitás-karakterlánc a nevek: b Deák Gábor": R. Deák Gábor (Contoso)."
 
     - **Munkakör adatai.** Adjon hozzá bármilyen feladat kapcsolatos információkat, például a felhasználó beosztása, részleg vagy kezelő.
 

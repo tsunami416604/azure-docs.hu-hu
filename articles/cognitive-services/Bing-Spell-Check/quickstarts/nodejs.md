@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
-ms.author: aahi
-ms.openlocfilehash: 8e3379a086eb09745142f4e3997ed195eb4d1de5
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 04/02/2019
+ms.author: aahill
+ms.openlocfilehash: 0a1260de6428f6ebc70757261cdcc3002820ec7b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56885907"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547764"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API-és Node.js
 
-Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívását. Ez egyszerű pythonhoz készült alkalmazás egy kérést küld az API-t, és nem ismerte fel, szavak listáját adja vissza a javasolt javítások követ. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. Az alkalmazás forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
+Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívását. Az alkalmazás egy kérést küld az API-t, és nem ismerte fel, szavak listáját adja vissza egyszerű csomópont javasolt javítások követ. Az alkalmazás Node.js-ben írt, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis. Az alkalmazás forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,18 +30,18 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új JavaScript-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével. Állítsa be a szigorúsága, és a HTTPS protokollt használjon. Ezután hozzon létre változókat az API-végpont állomás, elérési út és az előfizetési kulcs.
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével. Állítsa be a szigorúsága, és a szükséges `https`. Ezután hozzon létre változókat az API-végpont állomás, elérési út és az előfizetési kulcs.
 
     ```javascript
     'use strict';
     let https = require ('https');
-    
+
     let host = 'api.cognitive.microsoft.com';
     let path = '/bing/v7.0/spellcheck';
-    let key = 'ENTER KEY HERE';
+    let key = '<ENTER-KEY-HERE>';
     ```
 
-2. Hozzon létre változókat a piacon, helyesírás-ellenőrzésének mód és az ellenőrizni kívánt szöveg. Ezután hozzon létre egy karakterlánc, amely hozzáfűzi a `?mkt=` paraméter a piacra, és `&mode=` a módra.
+2. Változók létrehozása a keresési paraméterek és az ellenőrizni kívánt szöveg. Fűzze hozzá a piaci kód után `mkt=`. A piaci kódja az ország, a kérést. Ezenkívül hozzáfűzéssel a helyesírás-ellenőrzése után `&mode=`. Módban, vagy `proof` (a legtöbb helyesírási vagy nyelvtani hibát kivételekkel) vagy `spell` (a legtöbb helyesírási, de nem annyi nyelvtani hibát kivételekkel).
 
     ```javascript
     let mkt = "en-US";
@@ -78,7 +78,8 @@ let response_handler = function (response) {
         body += d;
     });
     response.on ('end', function () {
-        console.log (body);
+        let body_ = JSON.parse (body);
+        console.log (body_);
     });
     response.on ('error', function (e) {
         console.log ('Error: ' + e.message);
@@ -98,7 +99,7 @@ req.end ();
 
 ## <a name="example-json-response"></a>Példa JSON-válasz
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
 ```json
 {

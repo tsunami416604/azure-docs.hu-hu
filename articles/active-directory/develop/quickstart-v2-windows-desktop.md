@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95e5124d466c4294d83bbfa0b7ca15ff6f98e9ec
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: b6d3d98c91b2a373e4ed8b1ae556d402cb29d0dd
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505381"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520757"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Gyors útmutató: Egy token beszerzéséhez és a Microsoft Graph API hívása Windows asztali alkalmazások
 
@@ -64,10 +64,10 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
 > Ahhoz, hogy a rövid útmutató kódmintája működjön, hozzá kell adnia egy válasz URL-t a következő formában: **urn:ietf:wg:oauth:2.0:oob**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [A módosítás végrehajtása nekem]()
+> > [A módosítás alkalmazása]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Már be van állítva](media/quickstart-v2-windows-desktop/green-check.png) az alkalmazás ezekkel az attribútumokkal van konfigurálva.
+> > ![Már konfigurált](media/quickstart-v2-windows-desktop/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
 #### <a name="step-2-download-your-visual-studio-project"></a>2. lépés: A Visual Studio-projekt letöltése
 
@@ -86,11 +86,11 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
 
 > [!div renderon="docs"]
 > Az elemek magyarázata:
-> - `Enter_the_Application_Id_here` -a a **Alkalmazásazonosítót (ügyfél)** a regisztrált alkalmazás.
-> - `Enter_the_Tenant_Info_Here` -értéke a következők egyikét:
+> - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
+> - `Enter_the_Tenant_Info_Here` – az alábbi lehetőségek egyike lesz:
 >   - Ha az alkalmazás **az adott szervezeti címtárban lévő fiókokat** támogatja, ezt az értéket a **Bérlőazonosítóra** vagy a **Bérlő nevére** cserélje le (például contoso.microsoft.com)
->   - Ha az alkalmazás támogatja a **bármely szervezeti directory fiókok**, cserélje le ezt az értéket `organizations`
->   - Ha az alkalmazás támogatja a **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**, cserélje le ezt az értéket `common`
+>   - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot** támogat, ezt az értéket az `organizations` értékre cserélje le
+>   - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot és a személyes Microsoft-fiókokat** támogatja, ezt az értéket a `common` értékre cserélje le
 >
 > > [!TIP]
 > > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
@@ -128,7 +128,7 @@ PublicClientApplicationBuilder.Create(ClientId)
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 
-Az MSAL a következő két metódust használja a jogkivonatok beszerzéséhez: `AcquireToken` és `AcquireTokenSilent`.
+Az MSAL a következő két metódust használja a jogkivonatok beszerzéséhez: `AcquireTokenInteractive` és `AcquireTokenSilent`.
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
@@ -140,7 +140,7 @@ Bizonyos helyzetekben szükséges a Microsoft identity platform végpont egy fel
 - Ha kétfaktoros hitelesítésre van szükség
 
 ```csharp
-authResult = await App.PublicClientApp.AcquireToken(_scopes)
+authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
@@ -150,7 +150,7 @@ authResult = await App.PublicClientApp.AcquireToken(_scopes)
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
-Nem ajánlott minden egyes alkalommal megkövetelni a felhasználóktól a hitelesítő adatok érvényesítését, amikor hozzá kell férniük egy erőforráshoz. Általában szerencsésebb, ha a jogkivonatok beszerzéséhez és megújításához nincs szükség felhasználói beavatkozásra. Kezdetben használja az `AcquireTokenAsync` metódust, majd a védett erőforrásokhoz való hozzáféréshez szükséges jogkivonatok beszerzéséhez az `AcquireTokenSilentAsync` metódust használhatja:
+Nem ajánlott minden egyes alkalommal megkövetelni a felhasználóktól a hitelesítő adatok érvényesítését, amikor hozzá kell férniük egy erőforráshoz. Általában szerencsésebb, ha a jogkivonatok beszerzéséhez és megújításához nincs szükség felhasználói beavatkozásra. Kezdetben használja az `AcquireTokenInteractive` metódust, majd a védett erőforrásokhoz való hozzáféréshez szükséges jogkivonatok beszerzéséhez az `AcquireTokenSilentAsync` metódust használhatja:
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -171,5 +171,5 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 Próbálja ki az asztali Windowshoz készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 
 > [!div class="nextstepaction"]
-> [Hívja a Graph API-oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
+> [A Graph API meghívása – oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
 

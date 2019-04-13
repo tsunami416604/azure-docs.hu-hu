@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8516035705ad9dfb2ff37592f9381c4f905bb67f
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 6f76d6aed8dc5eed3dbf673b265c404f27b0536d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802830"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526826"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128, a dinamikus titkosítás és a kulcstovábbítást használata
 > [!div class="op_single_selector"]
@@ -141,7 +141,7 @@ A stream kipróbálásához használja az [Azure Media Services-lejátszót](htt
 Az előző lépésben kialakítani a jegyzékfájlt mutató URL-CÍMÉT. Az ügyfélnek kell a szükséges információk kinyerése a streamelési jegyzékfájlok használatával indítson egy a kulcstovábbítást.
 
 ### <a name="manifest-files"></a>Jegyzékfájlok
-Bontsa ki az URL-címet az ügyfélnek kell (tartalom is tartalmazó kulcs azonosítója [gyerek]) értéket a jegyzékfájl. Az ügyfél megpróbálja majd a titkosítási kulcs lekérése a kulcstovábbítást. Az ügyfél is IV értékének kinyerése és felhasználhatják a stream dekódolására kell. A következő kódrészlet azt mutatja be a <Protection> elem a Smooth Streaming jegyzékfájl:
+Bontsa ki az URL-címet az ügyfélnek kell (tartalom is tartalmazó kulcs azonosítója [gyerek]) értéket a jegyzékfájl. Az ügyfél megpróbálja majd a titkosítási kulcs lekérése a kulcstovábbítást. Az ügyfél is IV értékének kinyerése és felhasználhatják a stream dekódolására kell. A következő kódrészlet azt mutatja be a `<Protection>` elem a Smooth Streaming jegyzékfájl:
 
 ```xml
     <Protection>

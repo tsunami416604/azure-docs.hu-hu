@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 42fd28f2a18ecf81c7846abdc7b3159a275a9cd7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8d4fc5fbdc3185c46f00d94537b197ec03f66755
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013556"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528169"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotorral HTTP változói
 HTTP-változók adja meg az eszközöket, amelyekkel HTTP kérés- és metaadatok lehet lekérdezni. A metaadatok majd dinamikusan a kérelem vagy válasz módosításához használható. HTTP-változók használata a következő szabályok adatbázismotor-funkciók korlátozva:
@@ -38,7 +38,7 @@ A következő táblázat ismerteti a támogatott HTTP-változókat. Üres érté
 | ---- | -------- | ----------- | ------------ |
 | Az ASN (kérelmező) | %{geo_asnum} | Azt jelzi, hogy a kérelmező AS-szám. <br /><br />**Elavult:** a(z) % {virt_dst_asnum}. <br />Ez a változó értéke: % {geo_asnum} érvénytelenítve lett. Bár ez a változó elavult használó szabály továbbra is működni fog, frissítenie kell, hogy az új változót használja. | AS15133 |
 | Város (kérelmező) | %{geo_city} | Azt jelzi, hogy a kérelmező város. | Los Angeles |
-| Kontinens (kérelmező) | %{geo_continent} | Azt jelzi, hogy a kérelmező kontinens keresztül annak rövidítése. <br />Érvényes értékek a következők: <br />AF: Afrika<br />AS: Ázsia<br />EU: Európa<br />NA: Észak-Amerika<br />C: Óceánia<br />SA: Dél-Amerika<br /><br />**Elavult:** a(z) % {virt_dst_continent}. <ber />Ez a változó értéke: % {geo_continent} érvénytelenítve lett. <br />Bár ez a változó elavult használó szabály továbbra is működni fog, frissítenie kell, hogy az új változót használja.| – |
+| Kontinens (kérelmező) | %{geo_continent} | Azt jelzi, hogy a kérelmező kontinens keresztül annak rövidítése. <br />Érvényes értékek a következők: <br />AF: Afrika<br />AS: Ázsia<br />EU: Európa<br />NA: Észak-Amerika<br />C: Óceánia<br />SA: Dél-Amerika<br /><br />**Elavult:** a(z) % {virt_dst_continent}. <br />Ez a változó értéke: % {geo_continent} érvénytelenítve lett. <br />Bár ez a változó elavult használó szabály továbbra is működni fog, frissítenie kell, hogy az új változót használja.| – |
 | Cookie-értéket | %{cookie_Cookie} | A cookie-kulcs a cookie-k kifejezés által azonosított megfelelő értéket adja vissza. | Példa: <br />%{cookie__utma}<br /><br />Mintaérték:<br />111662281.2.10.1222100123 |
 | Ország (kérelmező) | a(z) % {geo_country} | Azt jelzi, hogy a kérelmező származási keresztül az országkódot. <br />**Elavult:** a(z) % {virt_dst_country}. <br /><br />Ez a változó értéke: % {geo_country} érvénytelenítve lett. Bár ez a változó elavult használó szabály továbbra is működni fog, frissítenie kell, hogy az új változót használja. | USA |
 | Kijelölt piaci területen (kérelmező) | %{geo_dma_code} |Azt jelzi, hogy a kérelmező media piac által a régiókód. <br /><br />Ez a mező csak akkor érvényes, a kérelmekre, amely az Egyesült Államokból származnak.| 745 |

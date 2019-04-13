@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: ee28bfebb6732c7bb3b689cf08b9b876adb74b1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104675"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521920"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Gyors útmutató: Linux rendszerű számítógépek felvétele az Azure Security Centerben
 Az Azure-előfizetései felvétele után a Linux-ügynök kiépítésével engedélyezheti a Security Centert az Azure-on kívül, például a helyszínen vagy más felhőkben futó Linux-erőforrások számára.
@@ -57,7 +57,7 @@ A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Stand
 
    ![Az ügynök telepítése][5]
 
-A Linuxhoz készült Security Center-ügynök naplói a következő helyen találhatók: */var/opt/microsoft/omsagent/<workspace id>/log/*
+A naplók a Security Center-ügynök Linux rendszeren található: */var/opt/microsoft/omsagent/\<munkaterület-azonosító > /log/*
 
   ![Az ügynök naplói][6]
 

@@ -1,7 +1,7 @@
 ---
 title: A minta-szerepkörök
 titleSuffix: Azure Cognitive Services
-description: Egy minta segítségével adatokat nyerhet ki a helyesen formázott kimondottszöveg-sablonokból. A kimondottszöveg-sablonok egy egyszerű entitás és szerepkörök segítségével nyernek ki olyan kapcsolódó adatokat, mint például a kiindulási hely és a célhely.
+description: Minták adatok kinyerése a helyes formátumú sablon kimondott szöveg. A kimondottszöveg-sablonok egy egyszerű entitás és szerepkörök segítségével nyernek ki olyan kapcsolódó adatokat, mint például a kiindulási hely és a célhely.
 ms.custom: seodec18
 services: cognitive-services
 author: diberry
@@ -9,18 +9,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: dc1be0d1d00ae64f38690f019580119b03debedf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d6a2c9d92d79bed3f0e9a9976a64f6e11debba88
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106593"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523274"
 ---
 # <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Oktatóanyag: Bontsa ki a szerepkörök használatával kontextusban kapcsolódó minták
 
-Ebben az oktatóanyagban egy minta segítségével adatokat nyerhet ki a helyesen formázott kimondottszöveg-sablonokból. A kimondottszöveg-sablonok egy egyszerű entitás és szerepkörök segítségével nyernek ki olyan kapcsolódó adatokat, mint például a kiindulási hely és a célhely.  A minták használatakor kevesebb kimondottszöveg-példára van szükség egy adott szándékhoz.
+Ebben az oktatóanyagban egy minta segítségével adatokat nyerhet ki a helyesen formázott kimondottszöveg-sablonokból. A sablon utterance (kifejezés) használ a [egyszerű entitás](luis-concept-entity-types.md#simple-entity) és [szerepkörök](luis-concept-roles.md) például a feladás helyét és a célhely kapcsolódó adatokat szeretne kinyerni.  A minták használatakor kevesebb kimondottszöveg-példára van szükség egy adott szándékhoz.
 
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
@@ -40,7 +40,7 @@ Ebben az oktatóanyagban egy minta segítségével adatokat nyerhet ki a helyese
 
 ## <a name="using-roles-in-patterns"></a>A minták szerepkörök használata
 
-A szerepkörök célja az, hogy szövegkörnyezethez kapcsolódó entitásokat nyerjenek ki a kimondott szövegből. A `Move new employee Robert Williams from Sacramento and San Francisco` kimondott szövegben a kiindulási város és a célváros értékek kapcsolódnak egymáshoz, és köznyelven jelölik az egyes helyeket. 
+A szerepkörök célja, hogy az utterance (kifejezés) kontextusban kapcsolódó entitások kinyeréséhez. A `Move new employee Robert Williams from Sacramento and San Francisco` kimondott szövegben a kiindulási város és a célváros értékek kapcsolódnak egymáshoz, és köznyelven jelölik az egyes helyeket. 
 
 
 Az új alkalmazott, Billy Patterson neve egyelőre nem része az **Alkalmazott** listaentitásnak. Először az új alkalmazott nevét kell kinyerni, hogy aztán elküldjük egy külső rendszerre a vállalati hitelesítő adatok létrehozásához. A vállalati hitelesítő adatok létrehozása után az alkalmazott hitelesítő adatai bekerülnek az **Alkalmazott** listaentitásba.
@@ -373,19 +373,6 @@ A városok nevei a személyek neveihez hasonlóan összetettek lehetnek abból a
     ```
 
 A szándék pontszáma most már sokkal magasabb, a szerepkörök nevei pedig az entitás válaszának részét képezik.
-
-## <a name="hierarchical-entities-versus-roles"></a>A hierarchikus entitások és a szerepkörök
-
-A [hierarchiai oktatóanyagban](luis-quickstart-intent-and-hier-entity.md) a **MoveEmployee** szándék észlelte, mikor kell áthelyezni egy meglévő alkalmazottat egy épületből és irodából egy másikba. A kimondottszöveg-példák tartalmazták a kiindulási és célhelyeket, de nem használtak szerepköröket. Ehelyett a kiindulási és a célhelyek alá voltak rendelve a hierarchikus entitásnak. 
-
-Ebben az oktatóanyagban az Emberi erőforrások alkalmazás észleli azokat a kimondott szövegeket, amelyek egy új alkalmazott egyik városból a másikba való áthelyezéséről szólnak. Ez a kétféle kimondott szöveg azonos, de a LUIS különböző módokon ismeri fel őket.
-
-|Oktatóanyag|Példa kimondott szöveg|Kiindulási és célhelyek|
-|--|--|--|
-|[Hierarchikus (nincsenek szerepkörök)](luis-quickstart-intent-and-hier-entity.md)|Jill Jones áthelyezése innen: **a-2349**, ide: **b-1298**|a-2349, b-1298|
-|Ez az oktatóanyag (szerepkörökkel)|Billy Patterson áthelyezése **Yumából** **Denverbe**.|Yuma, Denver|
-
-További információt a [szerepköröket és a hierarchikus entitásokat](luis-concept-roles.md#roles-versus-hierarchical-entities) ismertető cikkben talál.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

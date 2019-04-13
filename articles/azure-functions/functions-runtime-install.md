@@ -10,14 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 1ad1d2c74be97afcb62f3f8e8161111f4938f645
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: aae6bc41f3c2fc2c5f8cf63d07f6b4d79bb3564a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093668"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547548"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Az Azure Functions Runtime előzetes 2 telepítése
+
+[!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
 Ha szeretné telepíteni az Azure Functions Runtime előzetes 2, kövesse az alábbi lépéseket:
 
@@ -49,7 +51,7 @@ A Azure Functions Runtime előzetes telepítő végigvezeti Önt az Azure Functi
 
     ![Az Azure Functions Runtime előzetes telepítő][1]
 
-1. Kattintson a **Tovább** gombra.
+1. Kattintson a **tovább**.
 1. Miután elolvasta a feltételeket, a **EULA**, **jelölje be a jelölőnégyzetet** fogadja el a feltételeket, és kattintson a **tovább** , azt mutatja be.
 1. Válassza ki a szerepköröket, telepítse a gépen szeretné **funkciók felügyeleti szerepkör** és/vagy **funkciók feldolgozói szerepkör** kattintson **tovább**.
 
@@ -102,36 +104,37 @@ Az Azure Functions Runtime telepítésének befejezéséhez el kell végeznie a 
 
 Az Azure Functions Runtime előzetes verzióban érhető el az első függvény létrehozása
 
-1. Keresse meg a **az Azure Functions Runtime portál** , https://<machinename>.<domain> Például https://mycomputer.mydomain.com
+1. Keresse meg a **Azure Functions Runtime portálon** , `https://<machinename>.<domain>` például `https://mycomputer.mydomain.com`.
+
 1. Kéri **bejelentkezés**, ha a tartományt használja a tartományi fiók felhasználónevét és jelszavát, egyéb módon használja a helyi fiók felhasználónevét és jelszavát jelentkezzen be a portálra telepített.
 
-![Az Azure Functions Runtime előzetes portál bejelentkezési][14]
+    ![Az Azure Functions Runtime előzetes portál bejelentkezési][14]
 
-1. Függvényalkalmazás létrehozásához, létre kell hoznia egy előfizetést.  A portál bal felső sarkában kattintson a **+** mellett az előfizetések lehetőséget
+1. Függvényalkalmazás létrehozásához, létre kell hoznia egy előfizetést.  A portál bal felső sarkában kattintson a **+** mellett az előfizetések lehetőséget.
 
-![Az Azure Functions Runtime előzetes portál előfizetések][15]
+    ![Az Azure Functions Runtime előzetes portál előfizetések][15]
 
 1. Válasszon **DefaultPlan**, adja meg az előfizetés nevét, majd kattintson **létrehozás**.
 
-![Az Azure Functions Runtime előzetes portál előfizetési csomagot és neve][16]
+    ![Az Azure Functions Runtime előzetes portál előfizetési csomagot és neve][16]
 
 1. Minden függvény a portál bal oldali ablaktáblájában láthatók.  Hozzon létre egy új Függvényalkalmazást, kattintson a fejléc **Függvényalkalmazások** , és kattintson a **+** lehetőséget.
 
 1. Adja meg a függvényalkalmazás nevét, válassza ki a megfelelő előfizetést, válassza ki az Azure Functions futtatókörnyezettel programozni, és kattintson a kívánt melyik verzióját **létrehozása**
 
-![Az Azure Functions Runtime előzetes portál új függvényalkalmazás][17]
+    ![Az Azure Functions Runtime előzetes portál új függvényalkalmazás][17]
 
 1. Az új függvényalkalmazást szerepel a portál bal oldali ablaktáblájában.  Válassza ki a Funkciók, és kattintson a **új függvény** a középső ablaktáblán a portál tetején.
 
-![Az Azure Functions Runtime előzetes sablonok][18]
+    ![Az Azure Functions Runtime előzetes sablonok][18]
 
 1. Válassza ki az időzítő eseményindító függvényt, a függvény neve a jobb oldali úszó menü, és módosítsa az ütemezést, hogy `*/5 * * * * *` (Ez cron-kifejezés okoz az időzítő függvény végrehajtására öt másodpercenként), és kattintson a **létrehozása**
 
-![Az Azure Functions Runtime előzetes új időzítő függvény konfigurálása][19]
+    ![Az Azure Functions Runtime előzetes új időzítő függvény konfigurálása][19]
 
 1. A függvény létrehozása megtörtént.  Megtekintheti a végrehajtási naplóból a függvényalkalmazás által bővítése a **log** panelen a portál alján.
 
-![Az Azure Functions Runtime előzetes függvény végrehajtása][20]
+    ![Az Azure Functions Runtime előzetes függvény végrehajtása][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png

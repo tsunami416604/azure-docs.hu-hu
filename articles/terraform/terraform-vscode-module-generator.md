@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 8405624831c572f194fa0afaad2f0caa40bcf9ba
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7e66f374a1f5f4fb050f366fdad0e787292101f8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001279"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526741"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>A Terraform alap sablon létrehozása az Azure-ban Yeoman használatával
 
@@ -73,8 +73,8 @@ Egy parancssorban hajtsa végre az alábbiakat:
 1. Lépjen a létrehozni kívánt új, üres könyvtár tartalmazására szánt szülőkönyvtárba.
 1. Írja be a `mkdir <new-directory-name>` (igen) kifejezést.
 
-    >[!NOTE]
-    >Az <új könyvtár neve> részt írja át az új könyvtár nevére. Ebben a példában az új könyvtárnak a `GeneratorDocSample` nevet adtuk.
+    > [!NOTE]
+    > Cserélje le `<new-directory-name>` az új címtár nevét. Ebben a példában az új könyvtárnak a `GeneratorDocSample` nevet adtuk.
 
     ![mkdir](media/terraform-vscode-module-generator/ymg-mkdir-GeneratorDocSample.png)
 
@@ -250,7 +250,7 @@ Ezek az elemek összes előre telepített, a Cloud Shellben.
 
 1. Ha egy nem létezik, hozzon létre a $GOPATH mappa: Írja be a `mkdir ~/go` (igen) kifejezést.
 
-1. Hozzon létre egy mappát a $GOPATH mappában található: Írja be a `mkdir ~/go/src` (igen) kifejezést. Ez a mappa, amely tárolja, és rendezheti is létrehozhat, például a < az modul neve-> mappát hozunk létre a következő lépéssel más projekthez mappák használható.
+1. Hozzon létre egy mappát a $GOPATH mappában található: Írja be a `mkdir ~/go/src` (igen) kifejezést. Ez a mappa használható, amely tárolja, és más projekthez mappákat is létrehozhat, például rendezheti a `<your-module-name>` mappában a következő lépésben hozunk létre.
 
 1. Hozzon létre egy mappát, amely tárolja a Terraform modul: Írja be a `mkdir ~/go/src/<your-module-name>` (igen) kifejezést.
 

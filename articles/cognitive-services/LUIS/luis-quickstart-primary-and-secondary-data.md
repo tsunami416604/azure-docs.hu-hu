@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: b9ddd82d18b7f67f61e5c1589511ea6db4fa18a3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100292"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526565"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Oktatóanyag: Az egyszerű entitás és egy kifejezés lista nevének kinyerése
 
@@ -48,7 +48,7 @@ Az egyszerű entitás megfelelő választás az ilyen típusú adatok esetén, a
 * Az adatok nincsenek helyesen formázva, mint a reguláris kifejezések.
 * Az adatok nem általánosak, mint a telefonszámok vagy adatok előre összeállított entitásai.
 * Az adatok nem kapcsolódnak ismert szavak listájához, mint a listaentitások.
-* Az adatok nem tartalmaznak más adatelemeket, mint az összetett vagy a hierarchikus entitások.
+* Adatok nem tartalmaz más adatelemeket, például egy összetett entitást vagy a környezeti szerepköröket.
 
 Vegyük például egy csevegőrobot által kimondott következő szövegeket:
 

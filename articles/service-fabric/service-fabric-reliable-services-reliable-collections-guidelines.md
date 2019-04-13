@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
 ms.author: aljo
-ms.openlocfilehash: d4d0145ef07a6a89cbae1fe18d2cb7df88cdd113
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 810427c394c3912142e0a21cf1b5c29b81620afb
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667106"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549020"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure Service Fabric megbízható gyűjteményeihez
 Ez a szakasz útmutatást nyújt a a Reliable State Manager és a Reliable Collections használata. A célja segítség a felhasználóknak a közös alkalmazásmegoldásokra elkerülése érdekében.
@@ -32,6 +32,7 @@ Az irányelvek előtaggal van ellátva a használati egyszerű ajánlásként va
 * Ne használjon egy tranzakciót, miután ez befejeződött, megszakított, vagy eldobva.
 * Ne használjon egy enumerálás kívül lett létrehozva a tranzakció-hatókörben.
 * Ne hozzon létre egy tranzakció egy másik tranzakción belül `using` utasítás mert holtpontok okozhat.
+* Ne hozzon létre megbízható állapot `IReliableStateManager.GetOrAddAsync` , és használja a megbízható állapot ugyanabban a tranzakcióban. Az eredmény egy InvalidOperationException.
 * Győződjön meg arról, hogy a `IComparable<TKey>` megvalósítási helyességéről. A rendszer felveszi a függőségi `IComparable<TKey>` a sorok és az ellenőrzőpontok egyesítését.
 * Frissítési zárolás funkció használata egy elemet a szándéka olvasásakor frissítse úgy, hogy egy adott osztály holtpontok megakadályozása.
 * Érdemes lehet megtartja az 1000-nél kisebb lehet partíciónként megbízható gyűjtemények száma. A további elemek a Reliable Collections előnyben részesítése kevesebb elemet tartalmazó további megbízható gyűjtemények.

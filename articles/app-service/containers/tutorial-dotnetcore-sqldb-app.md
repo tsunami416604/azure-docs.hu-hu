@@ -1,10 +1,10 @@
 ---
-title: Hozhat létre a .NET Core-alkalmazás és SQL Database linuxon – az Azure App Service |} A Microsoft Docs
-description: Megismerheti, hogyan tehet szert egy olyan, a Linuxon futó Azure App Service-ben működő .NET Core-alkalmazásra, amely csatlakozik az SQL Database-hez.
+title: Az ASP.NET Core és SQL Database linuxon – az Azure App Service |} A Microsoft Docs
+description: Ismerje meg, hogyan tehet szert az ASP.NET Core-alkalmazás SQL-hez az Azure App Service Linux rendszeren dolgozik.
 services: app-service\web
 documentationcenter: dotnet
 author: cephalin
-manager: syntaxc4
+manager: jeconnoc
 editor: ''
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.service: app-service-web
@@ -12,17 +12,17 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 01/31/2019
+ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9d4aee884e91c52be48c8a44f185f188b0c93ab5
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: c90d0d2596eb6b8650e2d9809b23bb0e184d97c0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511139"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547827"
 ---
-# <a name="build-a-net-core-and-sql-database-app-in-azure-app-service-on-linux"></a>A linuxon futó Azure App Service-ben a .NET Core és SQL Database alkalmazás készítése
+# <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>A linuxon futó Azure App Service-ben az ASP.NET Core és SQL Database alkalmazás készítése
 
 > [!NOTE]
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. Az App Service-ben üzembe _Windows_, lásd: [hozhat létre egy .NET Core és SQL Database az Azure App Service-alkalmazást](../app-service-web-tutorial-dotnetcore-sqldb.md).
@@ -32,7 +32,7 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 
 ![Linux App Service-ben futó alkalmazás](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-Az alábbiak végrehajtásának módját ismerheti meg:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * SQL Database-adatbázis létrehozása az Azure-ban
@@ -100,11 +100,11 @@ Ez az oktatóanyag az SQL Database-hez az [Azure SQL Database-t](/azure/sql-data
 
 A Cloud Shellben hozzon létre egy SQL Database logikai kiszolgálót az [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) paranccsal.
 
-Cserélje le a *\<server_name>* helyőrzőt az SQL Database-adatbázis egyedi nevére. Ezt a nevet a rendszer SQL Database-végpontként (`<server_name>.database.windows.net`) fogja használni, így annak egyedinek kell lennie az összes Azure-beli logikai kiszolgálóban. A név csak kisbetűket, számokat és kötőjel (-) karaktert tartalmazhat, és 3–50 karakter hosszúságú lehet. Valamint cserélje le a *\<db_username>* és a *\<db_password>* helyőrzőket a választott felhasználónévre és jelszóra. 
+Cserélje le a  *\<-kiszolgálónév >* helyőrzőt egy egyedi SQL-adatbázis neve. Ezt a nevet a rendszer SQL Database-végpontként (`<server-name>.database.windows.net`) fogja használni, így annak egyedinek kell lennie az összes Azure-beli logikai kiszolgálóban. A név csak kisbetűket, számokat és kötőjel (-) karaktert tartalmazhat, és 3–50 karakter hosszúságú lehet. Továbbá cserélje le  *\<db-username >* és  *\<db-password >* felhasználónévvel és a választott jelszó. 
 
 
 ```azurecli-interactive
-az sql server create --name <server_name> --resource-group myResourceGroup --location "West Europe" --admin-user <db_username> --admin-password <db_password>
+az sql server create --name <server-name> --resource-group myResourceGroup --location "West Europe" --admin-user <db-username> --admin-password <db-password>
 ```
 
 Az SQL Database logikai kiszolgáló létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg:
@@ -113,12 +113,12 @@ Az SQL Database logikai kiszolgáló létrehozása után az Azure CLI az alábbi
 {
   "administratorLogin": "sqladmin",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "<server_name>.database.windows.net",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/<server_name>",
+  "fullyQualifiedDomainName": "<server-name>.database.windows.net",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/<server-name>",
   "identity": null,
   "kind": "v12.0",
   "location": "westeurope",
-  "name": "<server_name>",
+  "name": "<server-name>",
   "resourceGroup": "myResourceGroup",
   "state": "Ready",
   "tags": null,
@@ -132,7 +132,7 @@ Az SQL Database logikai kiszolgáló létrehozása után az Azure CLI az alábbi
 Hozzon létre egy [Azure SQL Database kiszolgálószintű tűzfalszabályt](../../sql-database/sql-database-firewall-configure.md) az [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) parancs használatával. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. 
 
 ```azurecli-interactive
-az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
 ### <a name="create-a-database"></a>Adatbázis létrehozása
@@ -140,15 +140,15 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 Hozzon létre egy [S0 teljesítményszintű](../../sql-database/sql-database-service-tiers-dtu.md) adatbázist a kiszolgálón az [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) parancs használatával.
 
 ```azurecli-interactive
-az sql db create --resource-group myResourceGroup --server <server_name> --name coreDB --service-objective S0
+az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
 ```
 
 ### <a name="create-connection-string"></a>Kapcsolati sztring létrehozása
 
-Cserélje le a következő sztringet a korábban használt *\<server_name&gt;*, *\<db_username&gt;* és *\<db_password&gt;* értékre.
+Cserélje le a következő karakterláncot a  *\<-kiszolgálónév >*,  *\<db-username >*, és  *\<db-password >* , korábban használt.
 
 ```
-Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_username>;Password=<db_password>;Encrypt=true;Connection Timeout=30;
+Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
 ```
 
 Ez a .NET Core-alkalmazás kapcsolati sztringje. Másolja későbbi felhasználás céljára.
@@ -171,18 +171,18 @@ Ebben a lépésben az SQL Database-hez csatlakoztatott .NET Core-alkalmazást he
 
 ### <a name="configure-an-environment-variable"></a>Környezeti változó konfigurálása
 
-Kapcsolati sztringek az Azure-alkalmazáshoz való beállításához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. A következő parancsban cserélje az *\<app name&gt;*, valamint a *\<connections_string&gt;* paramétert a korábban beállított kapcsolati sztringre.
+Kapcsolati sztringek az Azure-alkalmazáshoz való beállításához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. A következő parancsban cserélje le a  *\<alkalmazás-neve >*, valamint a  *\<kapcsolati karakterlánc >* paraméter a korábban létrehozott kapcsolati karakterlánccal.
 
 ```azurecli-interactive
-az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
+az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
 ```
 
 Következő lépésként állítsa az `ASPNETCORE_ENVIRONMENT` alkalmazásbeállítást _Éles_ értékre. Ez a beállítás jelzi, hogy a szolgáltatás az Azure-ban fut-e, mert az SQLite-ot használja a helyi fejlesztési környezethez és az SQL Database-t az Azure-környezethez.
 
-Ez a példa konfigurálja egy `ASPNETCORE_ENVIRONMENT` alkalmazásbeállítást az Azure-alkalmazáshoz. Cserélje le az *\<app_name>* helyőrzőt.
+Ez a példa konfigurálja egy `ASPNETCORE_ENVIRONMENT` alkalmazásbeállítást az Azure-alkalmazáshoz. Cserélje le a  *\<alkalmazás-neve >* helyőrző.
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
 ```
 
 ### <a name="connect-to-sql-database-in-production"></a>Csatlakozás SQL Database-hez éles környezetben
@@ -209,11 +209,11 @@ else
 services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
 ```
 
-Ha ez a kód azt észleli, hogy éles üzemben fut (ami Azure-környezetet jelez), az SQL Database-hez való csatlakozáshoz beállított kapcsolati sztringet használja.
+Ha ez a kód azt észleli, hogy éles üzemben fut (ami Azure-környezetet jelez), az SQL Database-hez való csatlakozáshoz beállított kapcsolati sztringet használja. Hogyan érhetők el az alkalmazásbeállítások az App Service-ben a további információkért lásd: [hozzáférés a környezeti változókhoz](configure-language-dotnetcore.md#access-environment-variables).
 
-Ha az Azure-ban fut, a `Database.Migrate()` hívás segítséget nyújt, mert automatikusan létrehozza a .NET Core-alkalmazáshoz szükséges adatbázisokat a migrálási konfiguráció alapján. 
+Ha az Azure-ban fut, a `Database.Migrate()` hívás segítséget nyújt, mert automatikusan létrehozza a .NET Core-alkalmazáshoz szükséges adatbázisokat a migrálási konfiguráció alapján.
 
-Mentse a módosításokat, majd véglegesítse őket a Git adattárban. 
+Mentse a módosításokat, majd véglegesítse őket a Git adattárban.
 
 ```bash
 git add .
@@ -246,7 +246,7 @@ remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
 remote: App container will begin restart within 10 seconds.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+To https://<app-name>.scm.azurewebsites.net/<app-name>.git
  * [new branch]      master -> master
 ```
 
@@ -255,7 +255,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 Keresse meg a telepített alkalmazást, a webböngésző használatával.
 
 ```bash
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 Adjon hozzá néhány teendőt.
@@ -369,23 +369,9 @@ A mintaprojekt már követi az útmutatóban talál: [ASP.NET Core naplózás az
 
 > [!NOTE]
 > A projekt naplózási szint beállítása `Information` a *appsettings.json*.
-> 
+>
 
-A Linuxon futó App Service apps futnak a tárolókon belül egy alapértelmezett Docker-rendszerképet. A konzolnaplófájlokban a tárolón belül létrehozott is elérheti. A naplók lekérése, először kapcsolja be a tároló naplózása futtatásával a [ `az webapp log config` ](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) parancsot a Cloud Shellben.
-
-```azurecli-interactive
-az webapp log config --name <app_name> --resource-group myResourceGroup --docker-container-logging filesystem
-```
-
-Miután a tároló naplózása be van kapcsolva, tekintse meg a naplózási adatfolyam futtatásával a [ `az webapp log tail` ](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) parancsot a Cloud Shellben.
-
-```azurecli-interactive
-az webapp log tail --name <app_name> --resource-group myResourceGroup
-```
-
-A naplóstreamelés megkezdése után frissítse az Azure-alkalmazást a böngészőben némi webes forgalom. Ekkor láthatja, hogy a rendszer átadja a konzolnaplófájlokat a terminálnak. Ha nem jelennek meg azonnal a konzolnaplófájlok, ellenőrizze ismét 30 másodperc múlva.
-
-A naplóstreamelés leállításához írja be a `Ctrl`+`C` billentyűparancsot.
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
 Az ASP.NET Core-naplók testreszabásáról további információkért lásd: [az ASP.NET Core-naplózás](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
 
@@ -419,4 +405,9 @@ Az alábbiak elvégzését ismerte meg:
 Folytassa a következő oktatóanyaggal, megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni DNS-név leképezése az Azure App Service-ben](../app-service-web-tutorial-custom-domain.md)
+> [Oktatóanyag: Egyéni DNS-név leképezése az alkalmazás](../app-service-web-tutorial-custom-domain.md)
+
+Vagy tekintse meg az egyéb erőforrások:
+
+> [!div class="nextstepaction"]
+> [Az ASP.NET Core-alkalmazás konfigurálása](configure-language-dotnetcore.md)

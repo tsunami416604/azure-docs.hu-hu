@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4ddcd2429ce1b7e44670b52a0a7b7494d0400af7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: acc701431afa458efd0768fb3d6898fd1920e333
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860975"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528084"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Adatáttekintés és modellezés a Spark segítségével
 
@@ -129,7 +129,7 @@ A PySpark-kernelek Jupyter notebookok a kell egy előre beállított környezete
 A PySpark kernel tartalmaz néhány előre meghatározott "magics", amelyek különleges parancsok, amelyek segítségével meghívhatja a %%. Nincsenek két ilyen parancsot a kód a példákon használt.
 
 * **%% helyi** határozza meg, amely a kódot a további sorokban helyileg kell végrehajtani. Kód érvényes a Python-kód kell lennie.
-* **%% sql -o <variable name>**  ellen a kontext sqlContext Hive-lekérdezést hajt végre. Az -o paramétert, ha a lekérdezés eredménye a rendszer megőrzi a %% Pandas DataFrame helyi Python-környezetben.
+* **%% sql -o \<változó neve >** ellen a kontext sqlContext Hive-lekérdezést hajt végre. Az -o paramétert, ha a lekérdezés eredménye a rendszer megőrzi a %% Pandas DataFrame helyi Python-környezetben.
 
 További információk a-kernelek Jupyter-notebookok és az előre meghatározott "magics", amely számára biztosítanak, lásd: [notebookokhoz elérhető kernelek Jupyter notebookok a HDInsight Spark Linux-fürtök HDInsight az](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 

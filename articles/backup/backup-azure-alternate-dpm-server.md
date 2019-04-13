@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: kasinh
-ms.openlocfilehash: a0960cba58817a6d340998933fe315d6fca887e4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d1fb3434f0d3954a07980963866bcd7cce004379
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488444"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528101"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Adatok helyreállítása az Azure Backup Serverről
 Az Azure Backup Server használatával készített biztonsági a Recovery Services-tárolót az adat-helyreállítást. Ennek a folyamat tehát az Azure Backup Server felügyeleti konzol integrálva van, és a helyreállítási munkafolyamat más az Azure Backup-összetevők hasonló.
@@ -85,7 +85,7 @@ Adatok helyreállítása az Azure Backup Server:
 | 1. |Ez a kiszolgáló nincs regisztrálva a tároló hitelesítő adataiban megadott tárolóban. |**OK:** Ez a hiba akkor jelenik meg, ha a kiválasztott tároló hitelesítőadat-fájlja nem tartozik a Recovery Services-tároló, amelyen a helyreállítás kísérlet történik az Azure Backup Server társított. <br> **Megoldás:** A Recovery Services-tároló, amely az Azure Backup-kiszolgáló regisztrálva van, töltse le a tároló hitelesítőadat-fájlja. |
 | 2. |Vagy nem érhető el a helyreállítható adatok vagy a kiválasztott kiszolgáló nem DPM-kiszolgáló. |**OK:** Vannak más az Azure Backup kiszolgálók regisztrálva a Recovery Services-tárolót, vagy a kiszolgálók van még nem töltött fel a metaadatokat a kiválasztott kiszolgáló nem áll az Azure Backup Server (más néven a Windows Server vagy Windows-ügyfél). <br> **Megoldás:** Ha más Azure biztonságimásolat-kiszolgálók regisztrálva a Recovery Services-tároló, győződjön meg arról, hogy a legújabb Azure Backup-ügynök telepítve van-e. <br>Ha más Azure biztonságimásolat-kiszolgálók regisztrálva a Recovery Services-tároló, várja meg a helyreállítási folyamat elindításához a telepítést követően naponta. A feladat feltölti a metaadatokat az összes védett biztonsági mentés a felhőbe. Az adatok a helyreállításhoz elérhető lesz. |
 | 3. |Másik DPM-kiszolgáló regisztrálva van ebben a tárban. |**OK:** Nem találhatók más az Azure Backup kiszolgálók, amelyek a tárolóban, amelyről a helyreállítási kísérlet történt.<br>**Megoldás:** Ha más Azure biztonságimásolat-kiszolgálók regisztrálva a Recovery Services-tároló, győződjön meg arról, hogy a legújabb Azure Backup-ügynök telepítve van-e.<br>Ha más Azure biztonságimásolat-kiszolgálók regisztrálva a Recovery Services-tároló, várja meg a helyreállítási folyamat elindításához a telepítést követően naponta. A feladat összes védett, a felhőalapú biztonsági mentés metaadatainak tölt fel. Az adatok a helyreállításhoz elérhető lesz. |
-| 4. |A megadott titkosítási jelszó nem felel meg a következő kiszolgálóhoz társított jelszóval: **<server name>** |**OK:** A folyamatban, az Azure Backup Server adatokból, amelyik a helyreállítandó adatok titkosításához használt titkosítási jelszó nem felel meg a megadott titkosítási jelszó. Az ügynök nem tudja visszafejteni az adatokat. Ezért a helyreállítás sikertelen lesz.<br>**Megoldás:** Adja meg az Azure Backup Server, amelynek az adatok helyreállítása folyik társított pontos ugyanolyan titkosítási jelszava. |
+| 4. |A megadott titkosítási jelszó nem felel meg a következő kiszolgálóhoz társított jelszóval:  **\<kiszolgáló neve >** |**OK:** A folyamatban, az Azure Backup Server adatokból, amelyik a helyreállítandó adatok titkosításához használt titkosítási jelszó nem felel meg a megadott titkosítási jelszó. Az ügynök nem tudja visszafejteni az adatokat. Ezért a helyreállítás sikertelen lesz.<br>**Megoldás:** Adja meg az Azure Backup Server, amelynek az adatok helyreállítása folyik társított pontos ugyanolyan titkosítási jelszava. |
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

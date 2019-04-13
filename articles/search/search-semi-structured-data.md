@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: A JSON-blobok – Azure Search félig-strutured adatok indexelése'
-description: Ismerje meg az Azure Search és a Postman használatával félig strukturált Azure JSON-blobok indexelése és.
+description: Ismerje meg az index és részben strukturált Azure JSON-blobok, az Azure Search REST API-k és a Postman használatával.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 146b19716c1d98a4be0cdabd23f224a88e499c62
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 147f67f40a060f3e274fe1f3fa368ebfd01711b6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489227"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525347"
 ---
-# <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Oktatóanyag: Index, és részben strukturált adatok (JSON-blobok) keresése az Azure Search szolgáltatásban
+# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST-Útmutató: Index, és részben strukturált adatok (JSON-blobok) keresése az Azure Search szolgáltatásban
 
 Az Azure Search indexelheti a JSON-dokumentumok és az Azure blob storage-tömbök egy [indexelő](search-indexer-overview.md) , amely meg tudja részben strukturált adatokat olvasni. A részben strukturált adatok címkéket és jelölőket tartalmaznak, amelyek a tartalmakat választják el az adatokon belül. A különbség a között a strukturálatlan adatok, amelyek teljes mértékben indexelendő, és a formálisan strukturált adatok egy adatmodellt, például egy relációsadatbázis-sémát, mező alapon is indexelhető osztja.
 
@@ -59,9 +59,7 @@ Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásn
 
 1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com)lépjen az Azure storage-fiókot, kattintson a **Blobok**, és kattintson a **+ tároló**.
 
-1. [Hozzon létre egy blobtárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) mintaadatok tárolásához. Mivel a kapcsolat kulcs és a tárolási fiók nevét fogja használni, ellenőrizze, hogy a tároló nyilvános hozzáférés szintje "Tároló (névtelen olvasási hozzáférés tárolók)".
-
-   ![Állítsa be a nyilvános hozzáférés szintje](media/search-semi-structured-data/container-public-access-level.png "állítsa be a nyilvános hozzáférés szintje")
+1. [Hozzon létre egy blobtárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) mintaadatok tárolásához. A nyilvános hozzáférés szintje beállíthatja az érvényes értékek bármelyikére.
 
 1. A tároló létrehozása után nyissa meg és jelölje ki **feltöltése** a parancssávon.
 

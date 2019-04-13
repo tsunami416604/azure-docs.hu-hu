@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 65948b1de3a972687e738b011acf3542073db277
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 3938427c23993f0546e7df62da88dadaf3353118
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046987"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549371"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC Analytics – gyakori kérdések
 
@@ -239,12 +239,27 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 ```
 
 
-
 ## <a name="how-is-traffic-analytics-priced"></a>Hogyan van a Traffic Analytics díjszabása?
 
 A TRAFFIC Analytics forgalmi díjas. A mérési alapján flow naplózási adatok feldolgozása a szolgáltatás által, és a Log Analytics-munkaterület-naplók tárolásához, a létrejövő fokozott. 
 
 Ha például forgalomért a [tarifacsomagjának](https://azure.microsoft.com/pricing/details/network-watcher/), USA nyugati középső régiójában, figyelembe véve, ha a Folyamatnaplók a Traffic Analytics által feldolgozott storage-fiókban tárolt adatok 10 GB-ot pedig a Log Analytics-munkaterület betöltött továbbfejlesztett naplók 1 GB-os, majd a alkalmazható díjak a következők: 10 x 2.3$ + 1 x 2.76$ = 25.76$
+
+## <a name="how-frequently-does-traffic-analytics-process-data"></a>Milyen gyakran a Traffic Analytics adatok feldolgozása?
+
+Tekintse meg a [összesítési adatszakasz](https://docs.microsoft.com/en-us/azure/network-watcher/traffic-analytics-schema#data-aggregation) a Traffic Analytics séma és adatok összesítési dokumentum
+
+## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Hogyan nem a Traffic Analytics eldönteni, hogy egy IP-cím rosszindulatú? 
+
+A TRAFFIC Analytics a Microsoft belső fenyegetés intelligencia rendszerek fogadniuk, kártékony IP-címet használ. Ezek a rendszerek kihasználni a különféle telemetriai forrásra, például egy Microsoft-termékek és szolgáltatások, a Microsoft Digital Crimes Unit (DCU), a Microsoft Security Response Center (MSRC), és külső hírcsatornák, és állítsa össze a megkönnyítése intelligencia rengeteg. Ezen adatok némelyike történik Mircosoft. Ha egy ismert IP-címet az első megjelölt malicios, hozzon létre egy támogatási jegyet a részleteket.
+
+## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Hogyan állíthatok be riasztások a Traffic Analytics-adatok?
+
+A TRAFFIC Analytics nincs beépített támogatás riasztásokat. Azonban mivel a Traffic Analytics-adatok a Log Analytics rendszer is egyéni lekérdezéseket írni, és riasztásokat állíthat be őket. Lépések:
+- A Traffic Analytics Log Analytics is használhat a rövid hivatkozás. 
+- Használja a [séma itt dokumentált](traffic-analytics-schema.md) a lekérdezések írása 
+- Kattintson az "Új riasztási szabály" a riasztás létrehozása
+- Tekintse meg [log riasztások dokumentáció](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log) a riasztás létrehozása
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Hogyan navigálhat a földrajzi nézet a billentyűzet használatával?
 

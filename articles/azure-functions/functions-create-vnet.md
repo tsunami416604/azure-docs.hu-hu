@@ -6,14 +6,14 @@ author: alexkarcher-msft
 manager: jehollan
 ms.service: azure-functions
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 4f27bbeb43bbf373b621d151d68583f0041378b3
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: f8ddcbcb25dc45ee71304ffa1bc5c0c4d3751b61
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894206"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523732"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>Függvényalkalmazás integrálása az Azure-beli virtuális hálózathoz
 
@@ -111,13 +111,14 @@ A Függvényalkalmazás az internetről és a virtuális hálózat is kapcsolód
 
 ## <a name="next-steps"></a>További lépések
 
-A prémium szintű csomagot futó függvények, Web Apps ugyanazon az alapul szolgáló App Service-ben infrastruktúrán osztozzon. Ez azt jelenti, hogy minden, a Web Apps-dokumentáció a prémium szintű csomag függvények vonatkozik.
+Prémium szintű csomagot futó függvények ossza meg ugyanazt a mögöttes App Service-infrastruktúrát PV2 a Web Apps-csomagok. Ez azt jelenti, hogy minden, a Web Apps-dokumentáció a prémium szintű csomag függvények vonatkozik.
 
-1. [További tudnivalók a VNET-integráció az App Service szolgáltatással / ide-függvények](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
-1. [További információ az Azure-beli virtuális hálózatok](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/)
-1. [A hálózati funkciók engedélyezése és az App Service Environment-környezetekkel vezérelheti](https://docs.microsoft.com/azure/app-service/environment/intro)
-1. [Hibrid kapcsolatok használatával tűzfal módosítása nélkül az egyes helyszíni erőforrások eléréséhez](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
-1. [További tudnivalók a Függvényproxykat](https://review.docs.microsoft.com/azure/azure-functions/functions-proxies)
+1. [További információ a hálózatkezelési funkciók itt beállításait](./functions-networking-options.md)
+1. [Olvassa el a függvények itt hálózat – gyakori kérdések](./functions-networking-faq.md)
+1. [További információ az Azure-beli virtuális hálózatok](../virtual-network/virtual-networks-overview.md)
+1. [További hálózati funkciókat és hozzáférés-vezérlés az App Service Environment-környezetek engedélyezése](../app-service/environment/intro.md)
+1. [Hibrid kapcsolatok használatával tűzfal módosítása nélkül az egyes helyszíni erőforrások eléréséhez](../app-service/app-service-hybrid-connections.md)
+1. [További tudnivalók a Függvényproxykat](./functions-proxies.md)
 
 <!--Image references-->
 [1]: ./media/functions-create-vnet/topology.png

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5293c44a3e4494593e069ab45fbc38806c6999ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57976776"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523936"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Az Azure Data Factory - függvények és rendszerváltozók
 > [!NOTE]
@@ -59,7 +59,7 @@ Használhatja függvények és rendszerváltozók adat-előállítóban az aláb
 
 1. Adja meg az adatkijelölési lekérdezésekben (által hivatkozott összekötő cikkekben talál a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) cikk.
    
-   A data factory függvény hívása szintaxisa a következő: **$$ <function>** adatkijelölési lekérdezésekben és egyéb tulajdonságok a tevékenységről, és adatkészletek.  
+   A data factory függvény hívása szintaxisa a következő:  **$$ \<függvény >** adatkijelölési lekérdezésekben és egyéb tulajdonságok a tevékenységről, és adatkészletek.  
 2. A bemeneti függőségek megadása a data factory függvények a tevékenység bemeneti gyűjteményében.
    
     $$ bemeneti függőségi kifejezés megadása nem szükséges.     

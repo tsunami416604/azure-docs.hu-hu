@@ -1,7 +1,7 @@
 ---
 title: Adatok kinyerése
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Ismerje meg, milyen típusú adatok kinyerhetők a Language Understanding (LUIS)
+description: Adatok kinyerése az utterance (kifejezés) SMS-t szándékokat és entitásokat. Ismerje meg, milyen típusú adatok kinyerhetők a Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 76f8fed8d185598d62eef5a412fda2c3fd1317bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 35f1521884de3a4a0971b6e1c00f92a9094a8550
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893979"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526289"
 ---
-# <a name="data-extraction-from-intents-and-entities"></a>Adatok kinyerése a szándékok és entitások felismerésére
+# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Adatok kinyerése az utterance (kifejezés) SMS-t a szándékok és entitások felismerésére
 A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni. A következő szakaszban megtudhatja, milyen adatokat küld vissza, a szándékok és entitások példákkal a JSON.
 
 Kinyerni kívánt nagyon nehéz adatok a gép megtanult adatok, mert ez nem egy pontos egyezés egyeztetése. Adatok kinyerése, a gép megtanult [entitások](luis-concept-entity-types.md) részét kell a [ciklus szerzői](luis-concept-app-iteration.md) amíg nem biztos benne, hogy a várt adatokat kap.
@@ -170,9 +170,11 @@ A végpont által visszaadott szerepel az entitás nevét, a felderített szöve
 
 |Objektum|Entitás neve|Érték|
 |--|--|--|
-|Egyszerű entitás|"Ügyfél"|"Belinszky jones"|
+|Egyszerű entitás|`Customer`|`bob jones`|
 
 ## <a name="hierarchical-entity-data"></a>A hierarchikus adatok
+
+**Hierarchikus entitások idővel elavulttá válik. Használat [entitás szerepkörök](luis-concept-roles.md) meghatározására, entitás altípus hierarchikus entitások helyett.**
 
 [Hierarchikus](luis-concept-entity-types.md) entitások gép megtudhatta, és tartalmazhat egy szót vagy kifejezést. Gyermekek környezet azonosítja. Ha egy szülő-gyermek kapcsolat a pontos egyezés egyeztetése keres, használja egy [lista](#list-entity-data) entitás.
 
@@ -432,13 +434,18 @@ Nevének lekérése az utterance (kifejezés) azért nehéz, mert a neve betűke
 [PersonName](luis-reference-prebuilt-person.md) és [GeographyV2](luis-reference-prebuilt-geographyV2.md) entitások érhetők el az egyes [nyelvi kulturális környezetek](luis-reference-prebuilt-entities.md). 
 
 ### <a name="names-of-people"></a>Személyek nevét
-Emberek neve nem lehet néhány kisebb formátum nyelvi és kulturális környezet függően. Vezetéknév és utónév gyermekeként vagy egy hierarchikus entitás használata, vagy egy egyszerű entitás a szerepkörök az utónév és Vezetéknév. Ügyeljen arra, hogy példákkal szemlélteti, hogy az első és utolsó az utterance (kifejezés), a különböző hosszúságú kimondott szöveg és a kimondott szöveg különböző részein nevét használja az összes szándék fog vonatkozni, akár a egy sem szándék. [Felülvizsgálat](luis-how-to-review-endpoint-utterances.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
+
+Emberek neve nem lehet néhány kisebb formátum nyelvi és kulturális környezet függően. Használata vagy egy előre elkészített **[personName](luis-reference-prebuilt-person.md)** entitáshoz vagy egy **[egyszerű entitás](luis-concept-entity-types.md#simple-entity)** a [szerepkörök](luis-concept-roles.md) : az első és utolsó neve. 
+
+Ha az egyszerű entitás használja, ügyeljen arra, hogy példákkal szemlélteti, hogy az első és utolsó az utterance (kifejezés), a különböző hosszúságú kimondott szöveg és a kimondott szöveg különböző részein nevét használja az összes szándék fog vonatkozni, akár a egy sem szándék. [Felülvizsgálat](luis-how-to-review-endoint-utt.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
 
 ### <a name="names-of-places"></a>Helyek nevei
-Hely neve beállítása és ismert, például a város, megyék, államok, megyék és országok. Ha az alkalmazás egy helyen tudja készletét használja, fontolja meg egy lista entitást. Ha meg kell keresnie az összes helyezze el a neveket, hozzon létre egy egyszerű entitás, és adja meg a különböző példákat. Adja hozzá a hely nevének megerősítése milyen helyen nevek néz ki az alkalmazásban kifejezés listáját. [Felülvizsgálat](luis-how-to-review-endpoint-utterances.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
+
+Hely neve beállítása és ismert, például a város, megyék, államok, megyék és országok. Az előre összeállított entitások használata **[geographyV2](luis-reference-prebuilt-geographyv2.md)** kibontani a helyre vonatkozó adatokat.
 
 ### <a name="new-and-emerging-names"></a>Új és újonnan megjelenő neve
-Bizonyos alkalmazásokhoz kell tudni új és újonnan felbukkanó nevek, például a termékek vagy cégek keresése. Az ilyen típusú nevek az adatok kinyerése a legbonyolultabb típusa. Egy egyszerű entitás előtaggal kell kezdődnie, és adja hozzá a kifejezések listáját. [Felülvizsgálat](luis-how-to-review-endpoint-utterances.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
+
+Bizonyos alkalmazásokhoz kell tudni új és újonnan felbukkanó nevek, például a termékek vagy cégek keresése. Az ilyen típusú nevek adatok kinyerése a legbonyolultabb típusát. Kezdődik a **[egyszerű entitás](luis-concept-entity-types.md#simple-entity)** , és adja hozzá a [kifejezéslista](luis-concept-feature.md). [Felülvizsgálat](luis-how-to-review-endoint-utt.md) végpont utterances rendszeresen bármely címkenevek nem jelzett megfelelően.
 
 ## <a name="pattern-roles-data"></a>A minta szerepkörök adatok
 Szerepkörök az entitások környezetfüggő különbségek.

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8072d72dbb164d5012ad42d5cba66c8b425e99a1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 023fd8267a557fa57e98a6a57785fb9ebfcb12ab
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787903"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523970"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Az Azure HDInsight az Apache Spark-fürt erőforrásainak kezelése 
 
@@ -45,7 +45,7 @@ Spark-Előzménykiszolgáló a webes felhasználói felület a befejezett és fu
     https://<ClusterName>.azurehdinsight.net/sparkhistory
     ```
 
-    Cserélje le <ClusterName> az a Spark-fürt neve.
+    Cserélje le `<ClusterName>` az a Spark-fürt neve.
 
 A Spark-Előzménykiszolgáló webes felhasználói felület hasonlóan néz ki:
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8a910f35bf25f889150ea3e89f4fa653f3a9ac14
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 825f667029aeb1d75bfdaf52b1084ff5133b5774
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336320"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527336"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Oktatóanyag: Alkalmazás üzembe helyezése a Service Fabric Meshben sablon használatával
 
@@ -351,8 +351,8 @@ A paraméterfájlban frissítse a következő paraméterértékeket:
 |registryPassword|A [Regisztrációs adatbázis hitelesítő adatainak lekérése](#retrieve-credentials-for-the-registry) szakaszban lekért jelszó. A sablon ezen paramétere egy biztonságos sztring, amely nem jelenik meg az üzembe helyezési állapot képernyőjén és az `az mesh service show` típusú parancsokban.|
 |registryUserName|A [Regisztrációs adatbázis hitelesítő adatainak lekérése](#retrieve-credentials-for-the-registry) szakaszban lekért felhasználónév.|
 |registryServer|A [Regisztrációs adatbázis hitelesítő adatainak lekérése](#retrieve-credentials-for-the-registry) szakaszban lekért regisztrációs adatbázis kiszolgálóneve.|
-|frontEndImage|A kezelőfelületi szolgáltatás tárolólemezképe.  Például: „<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709”.|
-|serviceImage|A háttérszolgáltatás tárolólemezképe.  Például: „<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709".|
+|frontEndImage|A kezelőfelületi szolgáltatás tárolólemezképe.  Például: `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`.|
+|serviceImage|A háttérszolgáltatás tárolólemezképe.  Például: `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`.|
 
 Az alkalmazás üzembe helyezéséhez futtassa a következő parancsot:
 

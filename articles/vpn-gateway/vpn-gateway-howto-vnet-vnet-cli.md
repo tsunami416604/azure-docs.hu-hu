@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 24e12184070909943c5660d94d8e19ce9df1de30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111123"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526146"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása az Azure CLI használatával
 
@@ -299,7 +299,7 @@ A további kapcsolatok létrehozásakor fontos ellenőrizni, hogy az új virtuá
 
 ### <a name="TestVNet5"></a>7. lépés – A TestVNet5 létrehozása és konfigurálása
 
-Ezt a lépést az új előfizetés (5. előfizetés) környezetében kell elvégezni. Ezt a részt azon másik szervezet rendszergazdájának kell elvégeznie, amely az előfizetés tulajdonosa. Ha váltani szeretne az előfizetések között, használja az „az account list --all” parancsot a fiókban elérhető előfizetések listájának megjelenítéséhez, majd az „az account set --subscription <subscriptionID>” parancsot a használni kívánt előfizetésre váltáshoz.
+Ezt a lépést az új előfizetés (5. előfizetés) környezetében kell elvégezni. Ezt a részt azon másik szervezet rendszergazdájának kell elvégeznie, amely az előfizetés tulajdonosa. Között, használja a `az account list --all` szeretné, hogy a fiókban elérhető előfizetések listájának `az account set --subscription <subscriptionID>` váltson át az előfizetést, amelyet használni szeretne.
 
 1. Győződjön meg róla, hogy az 5. előfizetéshez csatlakozik, majd hozzon létre egy erőforráscsoportot.
 
@@ -338,7 +338,7 @@ Ezt a lépést az új előfizetés (5. előfizetés) környezetében kell elvég
 
 ### <a name="connections5"></a>8. lépés – A kapcsolatok létrehozása
 
-Ez a lépés két CLI-munkamenetre van felosztva, amelyek jelölése **[1. előfizetés]** és **[5. előfizetés]**, mivel az átjárók eltérő előfizetésekben találhatók. Ha váltani szeretne az előfizetések között, használja az „az account list --all” parancsot a fiókban elérhető előfizetések listájának megjelenítéséhez, majd az „az account set --subscription <subscriptionID>” parancsot a használni kívánt előfizetésre váltáshoz.
+Ez a lépés két CLI-munkamenetre van felosztva, amelyek jelölése **[1. előfizetés]** és **[5. előfizetés]**, mivel az átjárók eltérő előfizetésekben találhatók. Között, használja a `az account list --all` szeretné, hogy a fiókban elérhető előfizetések listájának `az account set --subscription <subscriptionID>` váltson át az előfizetést, amelyet használni szeretne.
 
 1. **[1. előfizetés]** Jelentkezzen be, és csatlakozzon az 1. előfizetéshez. Az alábbi parancs kimenetéből olvassa le az átjáró nevét és azonosítóját:
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/18/2019
 ms.author: victorh
-ms.openlocfilehash: 78496dbc7891fe911ab0affd81f8a7d887e5d76e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5c098c6c22b079d586c0bd808df9af4a737c17a8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111412"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521852"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Adja meg az egyéni tartomány beállításait az Azure-szolgáltatások az Azure DNS használatával
 
@@ -69,7 +69,7 @@ Keresse meg a DNS-zónát, és kattintson a **+ rekordhalmaz**. Adja meg az alá
 |Typo     | A        | Egy A rekordot, hogy az erőforrás IP-cím használata        |
 |Élettartam     | 1        | 1 1 órán keresztül van használatban        |
 |Élettartam mértékegysége     | Óra        | Óra van megadva, az idő mérése         |
-|IP-cím     | <your ip address>       | A nyilvános IP-cím.|
+|IP-cím     | `<your ip address>`       | A nyilvános IP-cím.|
 
 ![a rekord létrehozása](./media/dns-custom-domain/arecord.png)
 

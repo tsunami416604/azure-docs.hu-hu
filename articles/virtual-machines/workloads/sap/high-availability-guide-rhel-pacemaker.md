@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 1a8e5fd82b44577aa1915d59fc7c29900a1f14ea
-ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
+ms.openlocfilehash: b844c93a1f3e83d682b51db6f9854f11b24d82e7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319516"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543735"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A Red Hat Enterprise Linux az Azure-ban támasztja beállítása
 
@@ -37,7 +37,7 @@ ms.locfileid: "58319516"
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#memory-preserving-maintenance
+[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-not-requiring-a-reboot
 
 > [!NOTE]
 > Red Hat Enterprise Linux-alapú támasztja az Azure-időkorlát ügynök használatával fence egy fürt csomópontja, ha szükséges. Feladatátvétel akár 15 percig is eltarthat, ha egy erőforrás leállítása sikertelen, vagy a fürt csomópontjai nem tud kommunikálni amely egymáshoz többé. További információkért olvassa el [RHEL magas rendelkezésre állású fürt tagként futtató Azure virtuális gép lehet az elkülönített nagyon hosszú időt igénybe, vagy az elkerítés sikertelen / időtúllépés következik be a virtuális gép leállítása előtt](https://access.redhat.com/solutions/3408711)

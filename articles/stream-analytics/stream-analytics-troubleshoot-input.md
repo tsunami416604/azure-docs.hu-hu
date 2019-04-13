@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6694865909a165842f994501befa404e1bc0a447
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b5ed614fdd378b36d8f95fc90ce7ff98d63ef31a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164381"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526404"
 ---
 # <a name="troubleshoot-input-connections"></a>A bemeneti kapcsolatok hibaelhárítása
 
@@ -39,7 +39,9 @@ Ha egy Stream Analytics-feladat bemenete egy helytelenül formázott üzenetet k
 ![Az Azure Stream Analytics-bemenetek csempe](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 Engedélyezze a diagnosztikai naplók a figyelmeztetést részleteinek megtekintéséhez. Helytelen formátumú bemeneti események a feladatvégrehajtási naplók tartalmaznak egy bejegyzést a következőhöz hasonló üzenetet: 
-<code>Could not deserialize the input event(s) from resource <blob URI> as json.</code>
+```
+Could not deserialize the input event(s) from resource <blob URI> as json.
+```
 
 ### <a name="what-caused-the-deserialization-error"></a>Mi okozta a Deszerializálási hiba
 Az alábbi lépéseket a bemeneti események beolvasni a Deszerializálási hiba okáról egyértelművé részletes elemzését is igénybe vehet. Megoldhatja az eseményforrás eseményeket létrehozásához megakadályozhatja, hogy szerezze meg a probléma újra a megfelelő formátumban.
@@ -92,7 +94,7 @@ Forgatókönyvek, amelyekben az olvasók partíciónként az Event Hubs legfelje
 
 * Több SELECT utasítás: Ha több SELECT utasítás hivatkozó **ugyanazon** event hub bemeneti, minden egyes SELECT utasítás hatására létrejön egy új fogadó.
 * UNION: Használja a UNION, esetén előfordulhat, hogy több bemenet, amely hivatkozik a **ugyanazon** event hub és a fogyasztói csoportot.
-* ÖNÁLLÓAN CSATLAKOZNI: Ha egy ÖNKISZOLGÁLÓ JOIN műveletet használ, akkor lehet tekintse meg a **ugyanazon** eseményközpont többször.
+* SELF JOIN: Ha egy ÖNKISZOLGÁLÓ JOIN műveletet használ, akkor lehet tekintse meg a **ugyanazon** eseményközpont többször.
 
 A következő gyakorlati tanácsok segíthet csökkenteni az forgatókönyvek, amelyekben az olvasók partíciónként meghaladja az Event Hubs legfeljebb öt.
 

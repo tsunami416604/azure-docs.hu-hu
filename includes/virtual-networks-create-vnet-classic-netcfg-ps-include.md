@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 4ae4c3100ae13fdb05e17974b433b247128c1a50
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: bda289e73b9a782cd56c0c94b8f53e8002b1ccf4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805060"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59532632"
 ---
-## <a name="how-to-create-a-virtual-network-using-a-network-config-file-from-powershell"></a>PowerShell a hálózati konfigurációs fájl használatával egy virtuális hálózat létrehozása
-Azure előfizetés az összes rendelkezésre álló virtuális hálózatok megadása egy XML-fájlt használja. Letölteni a fájlt, módosítása vagy törlése a meglévő virtuális hálózatok szerkesztheti, majd hozzon létre új virtuális hálózatok. Ebből az oktatóanyagból megtudhatja, hogyan letölteni a fájlt, a hálózati konfiguráció (vagy netcfg) fájl, a továbbiakban, és új virtuális hálózat létrehozása szerkesztésére. A hálózati konfigurációs fájl kapcsolatos további tudnivalókért tekintse meg a [Azure-beli virtuális hálózat konfigurációs séma](https://msdn.microsoft.com/library/azure/jj157100.aspx).
+## <a name="how-to-create-a-virtual-network-using-a-network-config-file-from-powershell"></a>Hogyan hozhat létre virtuális hálózatot egy hálózati konfigurációs fájlt a PowerShell használatával
+Az Azure egy xml-fájlt használ az összes rendelkezésre álló virtuális hálózatok meghatározására előfizetésre. Töltse le ezt a fájlt, szerkesztése vagy törlése a meglévő virtuális hálózatok, és hozzon létre új virtuális hálózatot. Ebből az oktatóanyagból megtudhatja, hogyan letölteni a fájlt, a hálózati konfiguráció (vagy a netcfg) fájl, nevezik, és szerkesztéssel hozzon létre egy új virtuális hálózatot. A hálózati konfigurációs fájlt kapcsolatos további információkért tekintse meg a [az Azure virtual network konfigurációs séma](https://msdn.microsoft.com/library/azure/jj157100.aspx).
 
-Virtuális hálózat létrehozása a PowerShell használatával netcfg fájllal, végezze el a következő lépéseket:
+Virtuális hálózat létrehozása a PowerShell használatával a netcfg fájl, hajtsa végre az alábbi lépéseket:
 
-1. Ha még sosem használta az Azure PowerShell, hajtsa végre a a [telepítése és konfigurálása az Azure PowerShell](/powershell/azureps-cmdlets-docs) cikk, majd jelentkezzen be az Azure-ba, és jelölje ki az előfizetését.
-2. Az Azure PowerShell-konzolon, használja a **Get-AzureVnetConfig** parancsmag használatával töltheti le a hálózati konfigurációs fájlt a számítógépen egy könyvtár a következő parancs futtatásával: 
+1. Ha még sosem használta az Azure PowerShell-lel, hajtsa végre a a [telepítése és konfigurálása az Azure PowerShell](/powershell/azureps-cmdlets-docs) cikkre, majd jelentkezzen be az Azure-ba, és válassza ki az előfizetését.
+2. Az Azure PowerShell-konzolt használja a **Get-AzureVnetConfig** parancsmaggal letöltheti a hálózati konfigurációs fájlt a számítógép könyvtárba, a következő parancs futtatásával: 
    
    ```powershell
    Get-AzureVNetConfig -ExportToFile c:\azure\NetworkConfig.xml
@@ -35,8 +35,8 @@ Virtuális hálózat létrehozása a PowerShell használatával netcfg fájllal,
       <?xml version="1.0" encoding="utf-8"?>...
       ```
 
-3. Nyissa meg a bármely XML vagy szöveges szerkesztő alkalmazással 2. lépésben mentett fájlt, és keresse meg a **<VirtualNetworkSites>** elemet. Ha olyan hálózatra, már létrehozott, minden egyes hálózati jelenik meg a saját **<VirtualNetworkSite>** elemet.
-4. Ebben a forgatókönyvben a virtuális hálózat létrehozásához adja hozzá a következő XML alatt csak a **<VirtualNetworkSites>** elem:
+3. Nyissa meg a minden olyan XML- vagy szöveges szerkesztő alkalmazással 2. lépésben mentett fájlt, és keresse meg a  **\<VirtualNetworkSites >** elemet. Ha már létrehozott hálózatokban, minden egyes hálózati megjelent a saját  **\<VirtualNetworkSite >** elemet.
+4. Ebben a forgatókönyvben leírtak a virtuális hálózat létrehozásához adja hozzá a következő XML formátumú majdnem a  **\<VirtualNetworkSites >** elem:
 
    ```xml
          <?xml version="1.0" encoding="utf-8"?>
@@ -62,13 +62,13 @@ Virtuális hálózat létrehozása a PowerShell használatával netcfg fájllal,
    ```
    
 5. Mentse a hálózati konfigurációs fájlt.
-6. Az Azure PowerShell-konzolon, használja a **Set-AzureVnetConfig** parancsmaggal töltse fel a hálózati konfigurációs fájlt a következő parancs futtatásával: 
+6. Az Azure PowerShell-konzolt használja a **Set-AzureVnetConfig** parancsmaggal töltse fel a hálózati konfigurációs fájlt a következő parancs futtatásával: 
    
    ```powershell
    Set-AzureVNetConfig -ConfigurationPath c:\azure\NetworkConfig.xml
    ```
    
-   Kimeneti adott vissza:
+   Kimeneti adta vissza:
    
       ```
       OperationDescription OperationId                          OperationStatus
@@ -76,15 +76,15 @@ Virtuális hálózat létrehozása a PowerShell használatával netcfg fájllal,
       Set-AzureVNetConfig  <Id>                                 Succeeded 
       ```
    
-   Ha **OperationStatus** nem *sikeres* visszaadott kimenet, ellenőrizze az XML-fájl, a hibák és a Kész lépés 6 újra.
+   Ha **OperationStatus** nem *sikeres* a visszaadott kimenetet, ellenőrizze az xml-fájlt a hibák és a 6. lépés kész újra.
 
-7. Az Azure PowerShell-konzolon, használja a **Get-AzureVnetSite** parancsmag segítségével győződjön meg arról, hogy az új hálózati lett-e hozzáadva a következő parancs futtatásával: 
+7. Az Azure PowerShell-konzolt használja a **Get-AzureVnetSite** parancsmagot, hogy az új hálózati hozzáadásának ellenőrzéséhez a következő parancs futtatásával: 
 
    ```powershell
    Get-AzureVNetSite -VNetName TestVNet
    ```
    
-   A visszaadott (rövidített) parancs kimenete a következő szöveget:
+   A visszaadott (melynek rövidítése) kimenete tartalmazza a következő szöveget:
   
       ```
       AddressSpacePrefixes : {192.168.0.0/16}

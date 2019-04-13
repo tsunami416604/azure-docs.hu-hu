@@ -7,21 +7,24 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: de5d8a3cd329e023b57d887a22db5459f13c7486
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: f80c1817d5c0ce79f2dc53f40a2cc4e00dd5c72b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492787"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545556"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse erőforrás kihasználtságát és a lekérdezés tevékenység figyelése
 Az Azure SQL Data warehouse-bA az Azure Portalon, a surface elemzéseket nyújt az adatraktár-számítási feladat gazdag figyelési élményt nyújt. Az Azure Portalon az ajánlott eszköz esetén az adattárház figyelését, konfigurálható adatmegőrzési pontokat, riasztások, javaslatok, és testre szabható diagramokat és irányítópultokat a metrikák és naplók biztosít. A portál lehetővé teszi, hogy az egyéb Azure figyelő szolgáltatási, például az Operations Management Suite (OMS) és az Azure Monitor (naplók) egy átfogó figyelési élményt nyújt a nem csupán az adattárház, hanem a teljes Azure analytics is integrálhatja Platform integrált figyelési megoldást. Ez a dokumentáció ismerteti, milyen monitorozási funkciók érhetők el optimalizálása és az elemzési platform az SQL Data Warehouse segítségével kezelheti. 
 
 ## <a name="resource-utilization"></a>Erőforrás-használat 
 A következő metrikák érhetők el az SQL Data warehouse-hoz az Azure Portalon. Ezek a metrikák végzetesnek [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
+
+> [!NOTE]
+> Jelenleg csomópont szintjén CPU és i/o-metrikák nem tükrözik megfelelően data warehouse használatának. Ezeket a metrikákat a közeljövőben törlődnek, mivel a csapat javítja a figyelés és a hibaelhárítással kapcsolatos élményt javító SQL Data warehouse-hoz. 
 
 | Metrika neve                           | Leírás     | Aggregáció típusa |
 | --------------------------------------- | ---------------- | --------------------------------------- |

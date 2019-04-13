@@ -5,59 +5,25 @@ services: virtual-machines-windows, virtual-machines-linux
 author: cynthn
 ms.service: multiple
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 04/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: c16483f4b8ef160c78ff95582faf54c9a9d24a04
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d0802cfcf05874044b6e116ba194c16a79f9d309
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57964176"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59550138"
 ---
-Ez a cikk előző generációs szoftvereknél jobban virtuálisgép-méretek információkat biztosít. Ezeket a méreteket továbbra is használható, de nincsenek elérhető újabb generáció esetében.
+Ez a szakasz előző generációs szoftvereknél jobban virtuálisgép-méretek információkat biztosít. Ezeket a méreteket továbbra is használható, de nincsenek elérhető újabb generáció esetében. 
 
+## <a name="f-series"></a>F-sorozat
 
-## <a name="ds-series"></a>DS-sorozat
+Az F-sorozat a legújabb generációs 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) processzoron alapul, amelynek az órajele akár 3,1 GHz-re is növelhető az Intel Turbo Boost Technology 2.0 alkalmazásával. Ez ugyanakkora teljesítményt jelent, mint a Dv2-sorozat virtuális gépei esetében.  
 
-ACU: 160-250 <sup>1</sup>
+Az F-sorozat virtuális gépei remek választásnak bizonyulnak az olyan számítási feladatokhoz, amelyekhez gyorsabb processzor szükséges, azonban kisebb a vCPU-nkénti memória- vagy ideiglenes tárterületigényük.  Az analitikai alkalmazások, játékkiszolgálók, webkiszolgálók vagy kötegelt feldolgozások számítási feladatai számára előnyös az F-sorozat használata.
 
-Prémium szintű Storage:  Támogatott
-
-Prémium szintű Storage gyorsítótárazást:  Támogatott
-
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS / MBps (gyorsítótár mérete GiB-ban) | Nem gyorsítótárazott lemezek max. teljesítménye: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1 |1 |3.5 |7 |4 |4,000 / 32 (43) |3,200 / 32 |2 / 500 |
-| Standard_DS2 |2 |7 |14 |8 |8,000 / 64 (86) |6,400 / 64 |2 / 1000 |
-| Standard_DS3 |4 |14 |28 |16 |16,000 / 128 (172) |12,800 / 128 |4 / 2000 |
-| Standard_DS4 |8 |28 |56 |32 |32,000 / 256 (344) |25,600 / 256 |8 / 4000 |
-
-<sup>1</sup> Virtuálisgép-család is futtathatja a következő Processzor egyikét: 2.2-es GHz-es Intel E5-2660 Xeon®, v2 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) vagy XEON® 2,3 GHz-es Intel E5-2673 v4 (Broadwell)
-<br>
-
-## <a name="ds-series---memory-optimized"></a>DS-sorozat – memóriahasználatra optimalizált
-
-ACU: 160-250 <sup>1,2</sup>
-
-Prémium szintű Storage:  Támogatott
-
-Prémium szintű Storage gyorsítótárazást:  Támogatott
-
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS / MBps (gyorsítótár mérete GiB-ban) | Nem gyorsítótárazott lemezek max. teljesítménye: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS11 |2 |14 |28 |8 |8,000 / 64 (72) |6,400 / 64 |2 / 1000 |
-| Standard_DS12 |4 |28 |56 |16 |16,000 / 128 (144) |12,800 / 128 |4 / 2000 |
-| Standard_DS13 |8 |56 |112 |32 |32,000 / 256 (288) |25,600 / 256 |8 / 4000 |
-| Standard_DS14 |16 |112 |224 |64 |64,000 / 512 (576) |51,200 / 512 |8 / 8000 |
-
-<sup>1</sup> a maximális lemezteljesítményét (IOPS vagy MBps) a DS sorozat virtuális gép is lehet a száma, mérete és szétosztottsága befolyásolhatja a csatolt lemezek mennyisége.  További információkért lásd: [magas teljesítmény-központú tervezés](../articles/virtual-machines/windows/premium-storage-performance.md).
-
-<sup>2</sup> Virtuálisgép-család is futtathatja a következő Processzor egyikét: 2.2-es GHz-es Intel E5-2660 Xeon®, v2 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) vagy XEON® 2,3 GHz-es Intel E5-2673 v4 (Broadwell)
-
-## <a name="d-series"></a>D-sorozat 
-
-ACU: 160-250 <sup>1</sup>
+ACU: 210 - 250
 
 Prémium szintű Storage:  Nem támogatott
 
@@ -65,101 +31,63 @@ Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
 | Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IO | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1  | 1         | 3.5         | 50             | 3000 / 46 / 23                                           | 4 / 4x500                         | 2 / 500                 |
-| Standard_D2  | 2         | 7           | 100            | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1000                     |
-| Standard_D3  | 4         | 14          | 200            | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 2000                     |
-| Standard_D4  | 8         | 28          | 400            | 24000 / 375 / 187                                        | 32 / 32x500                       | 8 / 4000                     |
+| Standard_F1  | 1         | 2           | 16             | 3000 / 46 / 23                                           | 4 / 4x500                         | 2 / 750                 |
+| Standard_F2  | 2         | 4           | 32             | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1500                     |
+| Standard_F4  | 4         | 8           | 64             | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 3000                     |
+| Standard_F8  | 8         | 16          | 128            | 24000 / 375 / 187                                        | 32 / 32x500                       | 8 / 6000                     |
+| Standard_F16 | 16        | 32          | 256            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 12000           |
 
-<sup>1</sup> Virtuálisgép-család is futtathatja a következő Processzor egyikét: 2.2-es GHz-es Intel E5-2660 Xeon®, v2 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) vagy XEON® 2,3 GHz-es Intel E5-2673 v4 (Broadwell)
-<br>
+## <a name="fs-series-sup1sup"></a>FS sorozatú <sup>1</sup>
 
-## <a name="d-series---memory-optimized"></a>A D sorozat – memóriahasználatra optimalizált
+Az Fs-sorozat az F-sorozat összes előnyét biztosítja a prémium szintű tárterület mellett.
 
-ACU: 160-250 <sup>1</sup>
+ACU: 210 - 250
 
-Prémium szintű Storage:  Nem támogatott
+Prémium szintű Storage:  Támogatott
 
-Prémium szintű Storage gyorsítótárazást:  Nem támogatott
+Prémium szintű Storage gyorsítótárazást:  Támogatott
 
-| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IO | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D11 | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1000                     |
-| Standard_D12 | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 2000                     |
-| Standard_D13 | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32x500                       | 8 / 4000                     |
-| Standard_D14 | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 8000                |
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótárazott és ideiglenes tárolás max. átviteli sebessége IOPS / MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS / MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_F1s |1 |2 |4 |4 |4,000 / 32 (12) |3,200 / 48 |2 / 750 |
+| Standard_F2s |2 |4 |8 |8 |8,000 / 64 (24) |6,400 / 96 |2 / 1500 |
+| Standard_F4s |4 |8 |16 |16 |16,000 / 128 (48) |12,800 / 192 |4 / 3000 |
+| Standard_F8s |8 |16 |32 |32 |32,000 / 256 (96) |25,600 / 384 |8 / 6000 |
+| Standard_F16s |16 |32 |64 |64 |64,000 / 512 (192) |51,200 / 768 |8 / 12000 |
 
-<sup>1</sup> Virtuálisgép-család is futtathatja a következő Processzor egyikét: 2.2-es GHz-es Intel E5-2660 Xeon®, v2 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) vagy XEON® 2,3 GHz-es Intel E5-2673 v4 (Broadwell)
-<br>
+MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 
-## <a name="a-series---compute-intensive-instances"></a>A-sorozat – nagy számítási igényű példányok
+<sup>1</sup> a maximális lemezteljesítményét (IOPS vagy MBps) használhatóságát egy Fs sorozatú virtuális gépek előfordulhat, hogy a a száma, mérete és szétosztottsága befolyásolhatja a csatolt lemezek mennyisége.  További információkért lásd: [magas teljesítmény-központú tervezés](../articles/virtual-machines/windows/premium-storage-performance.md).  
 
-ACU: 225
+## <a name="ls-series"></a>Ls-sorozat
 
-Prémium szintű Storage:  Nem támogatott
+Az Ls-sorozat akár 32 virtuális processzort (vCPU) is biztosíthat az [Intel® Xeon® E5 v3 processzorcsalád](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html) használatával. Az Ls-sorozat ugyanakkora teljesítményt kínál, mint a G/GS-sorozat esetében, és vCPU-nként 8 GiB memóriát biztosít.
 
-Prémium szintű Storage gyorsítótárazást:  Nem támogatott
+Az Ls-sorozat nem támogatja a helyi gyorsítótárral a növeli az iops-érték elérhető tartós adatlemezek létrehozását. A magas teljesítmény és a helyi lemez IOPS teszi NoSQL-tárolókat, mint például az Apache Cassandra- és MongoDB replikálhatja adatait, így több virtuális gép folyamataik megőrzésére a meghiúsulása esetén egyetlen virtuális Gépet, amely ideális Ls-sorozat virtuális gépei.
 
-Az A8–A11- és a H-sorozat méretei más néven *nagy számítási igényű példányokként* ismertek. Az ezeket a méreteket futtató hardver a nagy számítási és hálózatigényű alkalmazások futtatására lett kialakítva és optimalizálva, ide értve a nagy teljesítményű feldolgozási (HPC) fürtalkalmazásokat, a modellezést és a szimulációkat. Az A8–A11-sorozat Intel Xeon E5-2670 @ 2,6 GHz-es, a H-sorozat pedig Intel Xeon E5-2667 v3 @ 3,2 GHz-es processzorokat használ.  
+ACU: 180-240
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (HDD): GiB | Adatlemezek max. száma | Adatlemezek max. teljesítménye: IO | Hálózati adapterek maximális száma|
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_A8 <sup>1</sup> |8 |56 |382 |32 |32x500 |2 |
-| Standard_A9 <sup>1</sup> |16 |112 |382 |64 |64x500 |4 |
-| Standard_A10 |8 |56 |382 |32 |32x500 |2  |
-| Standard_A11 |16 |112 |382 |64 |64x500 |4 |
-
-<sup>1</sup>MPI-alkalmazások, a dedikált RDMA-háttérhálózatot engedélyezve van FDR InfiniBand hálózat, amely ultra rendkívül alacsony késést és magas sávszélességet kínál.
-
-<br>
-
-## <a name="a-series"></a>A-sorozat
-
-ACU: 50-100
-
-Prémium szintű Storage:  Nem támogatott
+Prémium szintű Storage:  Támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Nem támogatott
+ 
+| Méret          | vCPU | Memória (GiB) | Ideiglenes tárhely (GB) | Adatlemezek max. száma | Ideiglenes tárterület maximális teljesítménye (IOPS vagy MBps) | Maximális lemezteljesítmény (IOPS vagy MBps) | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) | 
+|----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
+| Standard_L4s   | 4  | 32  | 678   | 16 | 20,000 / 200 | 5,000 / 125  | 2 / 4,000  | 
+| Standard_L8s   | 8  | 64  | 1,388 | 32 | 40,000 / 400 | 10,000 / 250 | 4 / 8,000  | 
+| Standard_L16s  | 16 | 128 | 2,807 | 64 | 80,000 / 800 | 20,000 / 500 | 8 / 16,000 | 
+| Standard_L32s&nbsp;<sup>1</sup> | 32   | 256  | 5,630 | 64   | 160,000 / 1,600   | 40,000 / 1,000     | 8 / 20,000 | 
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (HDD): GiB | Adatlemezek max. száma | Adatlemezek max. teljesítménye: IO | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps)  |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0 <sup>1</sup> |1 |0.768 |20 |1 |1x500 |2 / 100 |
-| Standard_A1 |1 |1.75 |70 |2 |2x500 |2 / 500  |
-| Standard_A2 |2 |3.5 |135 |4 |4x500 |2 / 500 |
-| Standard_A3 |4 |7 |285 |8 |8x500 |2 / 1000 |
-| Standard_A4 |8 |14 |605 |16 |16x500 |4 / 2000 |
-| Standard_A5 |2 |14 |135 |4 |4x500 |2 / 500 |
-| Standard_A6 |4 |28 |285 |8 |8x500 |2 / 1000 |
-| Standard_A7 |8 |56 |605 |16 |16x500 |4 / 2000 |
+Az Ls-sorozat virtuális gépei lehetséges maximális lemezteljesítményét lehet, hogy korlátozzák a száma, mérete és szétosztottsága csatlakoztatott lemezeket. További információkért lásd: [magas teljesítmény-központú tervezés](../articles/virtual-machines/windows/premium-storage-performance.md).
 
-<br>
-
-<sup>1</sup> az A0 méret esetében ideálisnál a fizikai hardveren. Ennek az egy méretnek az esetében a többi felhasználói üzemelő példány befolyásolhatja a futó számítási feladat teljesítményét. A relatív teljesítmény várható alapértéke az alábbiak szerint alakul, hozzávetőleg 15 százalékos varianciával.
+<sup>1</sup> példány elkülönítve egyetlen ügyfél számára dedikált hardveren üzemel.
 
 ### <a name="standard-a0---a4-using-cli-and-powershell"></a>Standard A0–A4, CLI és PowerShell használatával
 
 A klasszikus üzemi modellben egyes virtuálisgép-méretek neve eltérő a CLI-ben és a PowerShellben:
 
-* A Standard_A0 neve ExtraSmall 
+* A Standard_A0 neve ExtraSmall
 * A Standard_A1 neve Small
 * A Standard_A2 neve Medium
 * A Standard_A3 neve Large
 * A Standard_A4 neve ExtraLarge
-
-## <a name="basic-a"></a>Alapszintű A
-
-Prémium szintű Storage:  Nem támogatott
-
-Prémium szintű Storage gyorsítótárazást:  Nem támogatott
-
-Az alapszintű rétegméretek elsődlegesen a fejlesztési számítási feladatokhoz és olyan egyéb alkalmazásokhoz valók, amelyekhez nincs szükség terheléselosztásra, automatikus skálázásra vagy memóriaigényes virtuális gépekre.
-
-|Méret – Méret\név | vCPU |Memory (Memória)|Hálózati adapterek (max)|Ideiglenes lemez max. mérete |Legfeljebb az adatlemezeket (egyenként 1023 GB)|Legfeljebb IOPS (300 lemezenként)|
-|---|---|---|---|---|---|---|
-|A0\Basic_A0|1|768 MB|2| 20 GB|1|1x300|
-|A1\Basic_A1|1|1,75 GB|2| 40 GB |2|2x300|
-|A2\Basic_A2|2|3,5 GB|2| 60 GB|4|4x300|
-|A3\Basic_A3|4|7 GB|2| 120 GB |8|8x300|
-|A4\Basic_A4|8|14 GB|2| 240 GB |16|16x300|
- 
-
-

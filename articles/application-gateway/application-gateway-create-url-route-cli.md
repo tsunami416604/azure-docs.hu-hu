@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 9c628b02961ee289833e669a4c77de0bf824de22
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 061156a455664a5a3f0b4c4497d24f4e8ff6eea7
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999990"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527251"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Hozzon létre egy application gateway URL-cím-alapú útválasztási szabályok az Azure CLI használatával
 
@@ -232,11 +232,11 @@ az network public-ip show \
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
 
-A kiindulási URL-cím végéhez http://<ip-address>:8080/video/test.html módosítsa az URL-címet, és hiba a következő példához hasonlóan kell megjelennie:
+Módosítsa az URL-címet `http://<ip-address>:8080/video/test.html` végére az alap URL-címet, és alábbihoz az alábbi példához hasonlóan:
 
 ![Képek URL-címének tesztelése az alkalmazásátjáróban](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
 
-Módosítsa az URL-cím http://<ip-address>:8080/video/test.html és valami, az alábbi példához hasonlóan kell megjelennie.
+Módosítsa az URL-címet `http://<ip-address>:8080/video/test.html` és a egy, az alábbi példához hasonlóan kell megjelennie.
 
 ![Videók URL-címének tesztelése az alkalmazásátjáróban](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
 

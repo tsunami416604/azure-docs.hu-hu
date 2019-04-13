@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5cca0d866442583c87665b3a1db8c65c66d12f0a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 8621ebf474591c253dbd9ca24b36a36287ca8cf7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285377"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547708"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Egy Python-alkalmazás létrehozása az Azure App Service Linux (előzetes verzió)
 
@@ -109,7 +109,7 @@ Checking connectivity... done.
 
 Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot.
 
-A következő példában cserélje le egy egyedi alkalmazásnévvel < alkalmazásnév >.
+A következő példában cserélje le a `<app-name>` egy egyedi névre.
 
 ```bash
 cd python-docs-hello-world
@@ -205,13 +205,10 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 A Linuxon futó App Service beépített Python rendszerképe jelenleg előzetes verzióban érhető el, és lehetőség van az alkalmazásindítási parancs testreszabására. Éles Python-alkalmazásokat egyéni tároló használatával is létrehozhat.
 
 > [!div class="nextstepaction"]
-> [Python és PostgreSQL](tutorial-python-postgresql-app.md)
+> [Oktatóanyag: Python-alkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Egyéni indítóparancs konfigurálása](how-to-configure-python.md#customize-startup-command)
+> [Python-alkalmazás konfigurálása](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [hibaelhárítással](how-to-configure-python.md#troubleshooting)
-
-> [!div class="nextstepaction"]
-> [Egyéni rendszerképek használata](tutorial-custom-docker-image.md)
+> [Oktatóanyag: Az egyéni tároló Python-alkalmazás futtatása](tutorial-custom-docker-image.md)

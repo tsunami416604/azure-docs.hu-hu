@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 62b526950367987e26c1c67394bc0720ae895fa6
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 6e15149dec9fdbb7413745d36b3f6a158113b586
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983795"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547022"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Bevezetés a hálózati biztonsági csoportok csoportforgalom naplózása
 
@@ -92,6 +92,8 @@ A következő szöveget, amelyek egy folyamat napló. Amint láthatja, nincsenek
 **NSG-t Flow minden NSG-erőforrás csatlakoztatva naplózás engedélyezése**: Flow-naplózás az Azure-ban az NSG-erőforrás van konfigurálva. A folyamat csak hozzá lesz rendelve egy NSG-szabályt. Olyan esetekben, ahol több NSG-t használ, azt javasoljuk, hogy az NSG-t csoportforgalom naplózása engedélyezve van-e az összes NSG-ket egy erőforrás alhálózathoz vagy hálózati adapterhez győződjön meg arról, hogy minden forgalmat a rendszer rögzíti a alkalmazni. Lásd: [hogyan értékeli ki a forgalom](../virtual-network/security-overview.md#how-traffic-is-evaluated) bővebben a hálózati biztonsági csoportok. 
 
 **Flow naplózási költségek**: NSG csoportforgalom naplózása történik a létrehozott naplók a köteten. Nagy forgalmat kötet nagy flow naplózási kötet és a kapcsolódó költségeket eredményezhet. Hálózati biztonsági csoportok naplózási díjszabás nem tartalmazza az alapul szolgáló tárolási költség. A megőrzési házirend funkció használatát az NSG-t a Flow naplózási tárolási műveletek nagy mennyiségű és a kapcsolódó költségeket eredményezhet. Ha nincs szüksége a megőrzési házirend-szolgáltatás, azt javasoljuk, hogy ezt az értéket 0 értékre állítja. Lásd: [Network Watcher díjszabása](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) és [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/en-us/pricing/details/storage/) további részleteket.
+
+**Bejövő internetes IP-cím nyilvános IP-címek nem rendelkező virtuális gépeket naplózza folyamatok**: A példányszintű nyilvános IP-hálózati Adapterhez társított nyilvános IP-cím hozzárendelve nyilvános IP-címet, amely nem rendelkezik, vagy egy alapszintű load balancer háttérkészlethez, használja részét képező virtuális gépek [SNAT alapértelmezett](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) és által kiosztott IP-címe Az Azure kimenő kapcsolat elősegítésének érdekében. Ennek eredményeképpen láthatja a flow-folyamatok bejegyzései internetes IP-címek, ha a folyamat van hozzárendelve az SNAT porttartományt port felé irányuló. Azure nem engedi, hogy ezek a folyamatok a virtuális géphez, amíg a kísérletet a rendszer naplózza, és a Network Watcher NSG-folyamat log azért jelenik meg. Azt javasoljuk, hogy kéretlen bejövő internetes forgalom kifejezetten blokkolva az NSG-t.
 
 ## <a name="sample-log-records"></a>Minta rekordok naplózása
 

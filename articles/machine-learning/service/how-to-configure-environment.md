@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4866a6863143d2228c556a64c8e75c9f273076e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 720f984feb5675281510962d4ebee63f638d696d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489501"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548886"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -350,7 +350,7 @@ A munkaterület konfigurációs fájl nem egy JSON-fájlt, amely arra utasítja 
 }
 ```
 
-A JSON-fájlt, amely tartalmazza a Python-szkriptek vagy Jupyter notebookok a könyvtárstruktúra kell lennie. Azt is lehet ugyanabban a könyvtárban, nevű alkönyvtárban *aml_config*, vagy egy szülő könyvtárban.
+A JSON-fájlt, amely tartalmazza a Python-szkriptek vagy Jupyter notebookok a könyvtárstruktúra kell lennie. Azt is lehet ugyanabban a könyvtárban, nevű alkönyvtárban *.azureml*, vagy egy szülő könyvtárban.
 
 Ezt a fájlt a kód használatához `ws=Workspace.from_config()`. Ez a kód az adatokat tölt be a fájlt, és a munkaterülethez csatlakozik.
 
@@ -379,7 +379,7 @@ Háromféleképpen hozhat létre a konfigurációs fájlban:
         print('Workspace not found')
     ```
 
-    Ez a kód írása a konfigurációs fájlt a *aml_config/config.json* fájlt.
+    Ez a kód írása a konfigurációs fájlt a *.azureml/config.json* fájlt.
 
 
 ## <a name="next-steps"></a>További lépések

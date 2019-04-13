@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/04/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: fa0a8c4baa9458a3784babe1e342d768748f8a4d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7889f223b607912fd88c798b31ec028f97dfbbd6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882454"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522853"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>A LUIS-alkalmazás a kifejezés szolgáltatásai
 
@@ -46,7 +46,7 @@ Kifejezés lista létrehozása, ha az alkalmazás szavak vagy kifejezések, amel
 
 Miután megadta az néhány szavakat vagy kifejezéseket, a **javasoljuk** kapcsolódó értékek keresése a szolgáltatás. A kifejezés listaértékek való felvétele előtt tekintse át a kapcsolódó értékeket.
 
-|Lista típusa|Cél|
+|Listatípus|Cél|
 |--|--|
 |Cserélhető|A szinonimák vagy szavak, amikor a listában egy másik szóban változik, rendelkezik az azonos szándékot, és az entitások kinyeréséhez.|
 |Nem cserélhető|Az alkalmazás több, mint általában más szavakat azon a nyelven jellemző alkalmazás szakszavakat.|
@@ -93,7 +93,7 @@ Kifejezések listáját és a lista entitások hatással lehet a kimondott szöv
 ### <a name="use-a-phrase-list"></a>Egy kifejezés helyett szerepel a listában
 Kifejezés listáját a LUIS továbbra is figyelembe kell venni a környezet, és általánosítsa a géphez való azonosításához az elemek, amelyek hasonló, de nem pontos egyezést, egy listán szereplő elemeket. Ha a LUIS-alkalmazás lehessen generalize és az új elemeket egy kategória van szüksége, használja a kifejezés listáját. 
 
-Ha képesek felismerni az entitások, például egy értekezlet scheduler, amely felismeri az új ügyfelekhez, vagy egy szoftverleltár-alkalmazást, amely felismeri az új termékek nevét új példányokat szeretne használni a gép megtanult entitás, például egy egyszerű más típusú vagy hierarchikus entitás. Ezután hozzon létre egy kifejezést szavak és kifejezések, amellyel a LUIS hasonló az entitás keresése más szavakat. Ez a lista végigvezeti a LUIS példák az entitás felismerje a további többszörösére hozzáadja azokat a szavakat értékét. 
+Ha képesek felismerni az entitások, például egy értekezlet scheduler, amely felismeri az új ügyfelekhez, vagy egy szoftverleltár-alkalmazást, amely felismeri az új termékek nevét új példányokat szeretne használni a gép megtanult entitás, például egy egyszerű entitás más típusú. Ezután hozzon létre egy kifejezést szavak és kifejezések, amellyel a LUIS hasonló az entitás keresése más szavakat. Ez a lista végigvezeti a LUIS példák az entitás felismerje a további többszörösére hozzáadja azokat a szavakat értékét. 
 
 Kifejezés listák hasonlóak a tartomány-specifikus szöveg szóhasználati, amely a szándékok és entitások ismertetése minőségének javítása érdekében. Egy kifejezés listáját közös használata tulajdonnevek, például a város nevét. Egy város nevét több szóból kötőjeleket vagy aposztrófot többek között lehet.
  

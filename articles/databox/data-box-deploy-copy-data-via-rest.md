@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 412bf66902f156c6c8720a720973f97d1d7b1d8f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 79854c71410c7e796961f23c8c31a4d0809cd69c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751616"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527982"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: Adatok másolása az Azure Data Box Blob storage REST API-kon keresztül  
 
@@ -79,7 +79,7 @@ Az Azure portal használatával töltse le a tanúsítványt.
 
 1. Jelentkezzen be az Azure Portalon.
 2. Nyissa meg a Data Box-rendelés, és navigáljon a **általános > eszközadatok**.
-3. A **hitelesítő adatai**, lépjen a **API-hozzáférés** eszközre. Kattintson a **Letöltés** gombra. Ez a művelet letölt egy  **<your order name>.cer** tanúsítványfájlt. **Mentés** ezt a fájlt. Ez a tanúsítvány a számítógépen az ügyfélszámítógépre vagy gazdagépre, amelyekkel fog csatlakozni az eszközhöz telepíti.
+3. A **hitelesítő adatai**, lépjen a **API-hozzáférés** eszközre. Kattintson a **Letöltés** gombra. Ez a művelet letölt egy  **\<a rendelés nevét > .cer** tanúsítványfájlt. **Mentés** ezt a fájlt. Ez a tanúsítvány a számítógépen az ügyfélszámítógépre vagy gazdagépre, amelyekkel fog csatlakozni az eszközhöz telepíti.
 
     ![Töltse le a tanúsítványt az Azure Portalon](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  

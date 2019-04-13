@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: d802fade0ff9c5b4bc329c7451144d8c782f8d3c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 261b55f722fdc3c1e8f4b45debc664f49db3f898
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097940"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523545"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>A Stream Analytics-szel telefonhívás-adatok elemzése és megjelenítése a Power BI-irányítópulton eredmények
 
@@ -96,7 +96,7 @@ A TelcoGenerator alkalmazást úgy kell beállítania az indítása előtt, hogy
 1. Bontsa ki a [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) fájl tartalmát.
 2. Nyissa meg a `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` fájlt egy tetszőleges szövegszerkesztőben (Több .config fájl található, ezért győződjön meg róla, hogy a megfelelőt nyitja meg.)
 
-3. Frissítse a konfigurációs fájl <appSettings> elemét az alábbi részletekkel:
+3. Frissítse a konfigurációs fájl `<appSettings>` elemét az alábbi részletekkel:
 
    * Állítsa az *EventHubName* kulcsot a kapcsolati sztringben található EntityPath értékére.
    * A *Microsoft.ServiceBus.ConnectionString* kulcs értékét állítsa a kapcsolati sztring értékére az EntityPath értéke nélkül.

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: 6e17b110cbfc293e19714399d5b2cdb753aa1ac4
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: c21ae227d74442be5701dd906180392b1e0fdf8b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917957"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525670"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Az Azure CDN a webes tartalmak elévülésének kezelése
 > [!div class="op_single_selector"]
@@ -106,7 +106,7 @@ A következő XML-konfigurációs fájl példa bemutatja, hogyan állíthatja be
 </configuration>
 ```
 
-Használatához a **cacheControlMaxAge** attribútum, be kell értékét a **cacheControlMode** attribútumot `UseMaxAge`. Ez a beállítás miatt a HTTP-fejléc és irányelv `Cache-Control: max-age=<nnn>`, a választ adni. Az időtartam értéke formátumát a **cacheControlMaxAge** attribútum `<days>.<hours>:<min>:<sec>`. Az érték másodperc alakítja át, és értéket használja a `Cache-Control` `max-age` irányelv. További információ a `<clientCache>` elem, lásd: [Ügyfélgyorsítótár <clientCache> ](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
+Használatához a **cacheControlMaxAge** attribútum, be kell értékét a **cacheControlMode** attribútumot `UseMaxAge`. Ez a beállítás miatt a HTTP-fejléc és irányelv `Cache-Control: max-age=<nnn>`, a választ adni. Az időtartam értéke formátumát a **cacheControlMaxAge** attribútum `<days>.<hours>:<min>:<sec>`. Az érték másodperc alakítja át, és értéket használja a `Cache-Control` `max-age` irányelv. További információ a `<clientCache>` elem, lásd: [Ügyfélgyorsítótár \<clientCache >](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>Programozott módon a Cache-Control fejléc beállítása
 Az ASP.NET-alkalmazások, a CDN gyorsítótárazási viselkedésének programozott módon beállításával szabályozhatja a **HttpResponse.Cache** .NET API-tulajdonság. További információ a **HttpResponse.Cache** tulajdonságot használja, lásd: [HttpResponse.Cache tulajdonság](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) és [HttpCachePolicy osztály](/dotnet/api/system.web.httpcachepolicy).  

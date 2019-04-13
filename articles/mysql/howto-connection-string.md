@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 721950160974ef21f88791e64a41cfe0dd2b23ba
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 503b7764ba7958a5448903b217b00e204ffcbf61
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546759"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527404"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Kapcsolódás az alkalmazások az Azure Database for MySQL-hez
 Ez a témakör felsorolja a kapcsolati karakterlánc típusú által támogatott Azure Database for MySQL, példák és sablonok. Lehetséges, hogy különböző paraméterek és beállítások a kapcsolati karakterláncban.
 
 - A tanúsítvány beszerzéséről [SSL konfigurálása](./howto-configure-ssl.md).
-- {your_host} = <servername>.mysql.database.azure.com
+- {your_host} = \<servername>.mysql.database.azure.com
 - {your_user}@{servername} = megfelelően a felhasználói azonosító formátuma a hitelesítéshez.  Ha csak a felhasználói azonosítót használja, a hitelesítés sikertelen lesz.
 
 ## <a name="adonet"></a>ADO.NET

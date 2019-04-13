@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 630eddc8494b32d93035913bcb2b55f00153b1be
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 2c24634a42fd420eae204437418b82479869bbe5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755509"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525544"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Hálózati forgalom szűrése hálózati biztonsági csoport az Azure CLI használatával
 
@@ -196,7 +196,7 @@ A virtuális gép üzembe helyezése néhány percet vesz igénybe. A virtuális
 
 ## <a name="test-traffic-filters"></a>Forgalomszűrők tesztelése
 
-Használja az SSH-munkamenet létrehozásához a következő parancs a *myVmMgmt* virtuális Gépet. Cserélje le *<publicIpAddress>* a virtuális gép nyilvános IP-címét. A fenti példában az IP-cím van *13.90.242.231*.
+Használja az SSH-munkamenet létrehozásához a következő parancs a *myVmMgmt* virtuális Gépet. Cserélje le  *\<publicIpAddress >* a virtuális gép nyilvános IP-címét. A fenti példában az IP-cím van *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>

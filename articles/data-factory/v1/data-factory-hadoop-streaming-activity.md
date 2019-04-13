@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f4bdeee08e81c16dfdd03620eb1fc61251f90400
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: dd00c0a2998009ce6c39ca19abb25a2548682cee
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025173"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523222"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Adatok átalakítása Hadoop Streamelési tevékenységben használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -99,7 +99,7 @@ Vegye figyelembe a következő szempontokat:
 2. Állítsa a tevékenység típusát **HDInsightStreaming**.
 3. Az a **eseményleképező** tulajdonság, adja meg a teljesítményleképező végrehajtható fájl nevét. A példában cat.exe végrehajtható eseményleképező.
 4. Az a **nyomáscsökkentő** tulajdonság, adja meg a nyomáscsökkentő végrehajtható fájl nevét. A példában wc.exe végrehajtható nyomáscsökkentő.
-5. Az a **bemeneti** type tulajdonság, a teljesítményleképező adja meg a bemeneti fájlt (beleértve a helyet). A példában: "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt": adfsample blob-tárolóban, például/data/Gutenberg az a mappa, és davinci.txt a blobot.
+5. Az a **bemeneti** type tulajdonság, a teljesítményleképező adja meg a bemeneti fájlt (beleértve a helyet). A példában: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample blob-tárolóban, például/data/Gutenberg az a mappa, és davinci.txt a blobot.
 6. Az a **kimeneti** type tulajdonság, a nyomáscsökkentő adja meg a kimeneti fájl (beleértve a helyet). A Hadoop Streamelési feladat kimenetének írt ehhez a tulajdonsághoz megadott helyen.
 7. Az a **filePaths** területén adja meg a hozzárendelést és nyomáscsökkentő végrehajtható fájlok elérési útjait. A példában: "adfsample/example/apps/wc.exe", adfsample a blob-tároló, például/alkalmazások pedig a mappa, és wc.exe a végrehajtható fájlt.
 8. Az a **fileLinkedService** tulajdonság, adja meg az Azure Storage társított szolgáltatás, amely az Azure storage filePaths szakaszában megadott fájlt tartalmazó jelöli.
@@ -175,7 +175,7 @@ Ebben a példában a folyamat nem használ bemenetet. A HDInsight Streaming-tev�
 ```
 
 ### <a name="pipeline"></a>Folyamat
-Ebben a példában szereplő folyamat egyetlen tevékenységgel rendelkezik, amely típusa: **A HDInsightStreaming**. 
+Ebben a példában szereplő folyamat egyetlen tevékenységgel rendelkezik, amely típusa: **HDInsightStreaming**. 
 
 A HDInsight-fürt automatikusan kitölti a rendszer például programok (wc.exe és cat.exe) és az adatokat (davinci.txt). Alapértelmezés szerint a tároló a HDInsight-fürt által használt név magának a fürtnek a nevét. Például ha a fürt neve myhdicluster, a társított blob-tároló neve lenne myhdicluster.  
 

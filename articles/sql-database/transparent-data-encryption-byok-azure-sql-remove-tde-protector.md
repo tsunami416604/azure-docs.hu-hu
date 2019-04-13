@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 73fcb2753fa7eb15f34b04ddc5bb0b55c4636623
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 51cdd43e62bd511da55978bbac3215200c3a8e01
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847811"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528266"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Távolítsa el a transzparens adattitkosítás (TDE) védőelem a PowerShell használatával
 
@@ -40,6 +40,12 @@ Az alábbi eljárások csak szélsőséges esetben vagy tesztelési környezetbe
 Ha egy kulcsot minden eddiginél gyanús legyen feltörni, úgy, hogy egy szolgáltatás vagy a felhasználó nem volt engedélyezett a kulcs eléréséhez, célszerű kulcs törlése.
 
 Ne feledje, hogy egyszer a TDE-védőhöz törlődik a Key vaultban **titkosított adatbázis a kiszolgáló felé irányuló összes kapcsolatot le vannak tiltva, és ezeknek az adatbázisoknak kapcsolat nélküli üzemmódban vannak, és 24 órán belül első eldobott**. A feltört kulccsal titkosított régi biztonsági másolatok már nem érhetőek el.
+
+Hogyan ellenőrizheti a TDE-Védőhöz ujjlenyomatok még használatban által virtuális Log fájlok (VLF) egy adott adatbázis lépései. Az adatbázis és az adatbázis-azonosító a jelenlegi TDE-védőhöz ujjlenyomatát található futtatásával: Válassza ki a [database_id],       [encryption_state], [encryptor_type], vagy*aszimmetrikus kulcs azt jelenti, hogy AKV, tanúsítvány: a szolgáltatás által kezelt kulcsok*/ [encryptor_thumbprint], a [sys]. [ dm_database_encryption_keys] 
+ 
+A következő lekérdezés adja vissza a VLFs és a jelszótitkosító futtatásához megfelelő ujjlenyomatok használja. Minden egyes másik ujjlenyomatot hivatkozik másik kulcsot az Azure Key Vault (AKV): SELECT * FROM sys.dm_db_log_info (database_id) 
+
+A PowerShell-parancsot: Get-AzureRmSqlServerKeyVaultKey az ujjlenyomatot, a TDE-Védőhöz használva a lekérdezésben, így láthatja, melyik tartani és törölheti az AKV melyik kulcsokat biztosít. Csak a már nem az adatbázis által használt kulcsok Azure Key vault nyugodtan törölhetők.
 
 Ez az útmutató két módszer attól függően, a kívánt eredményt keresztül haladnak, az incidensek megoldásához után:
 

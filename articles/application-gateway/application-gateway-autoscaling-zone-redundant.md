@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: 4410dd9e61fe5b585ca5b245dbf33dbf8c38e701
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 95b14a0028134e522206f3595bc3b9ebf9aaf396
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010226"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548714"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatikus skálázás és zónaredundáns az Application Gateway (nyilvános előzetes verzió)
 
@@ -31,7 +31,7 @@ Az Application Gateway és a webalkalmazási tűzfal (WAF) egy új v2 szintű Te
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 > [!NOTE]
-> Az automatikus skálázás és zónaredundáns az application gateway mostantól támogatja-e Termékváltozat [alapértelmezett állapotadat-mintavétel](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe) automatikusan a háttér-készletben található összes erőforrás állapotának figyelésére, és távolítsa el a készletből sérültnek minden olyan erőforrást. Az alapértelmezett állapot mintavételi még a összes-e, amelyhez nem állított be egyéni mintavétel konfigurációra háttérrendszerek automatikusan megtörténik. További tudnivalókért lásd: [állapotadat-mintavételek az application gatewayben](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
+> Az automatikus skálázás és zónaredundáns az application gateway mostantól támogatja-e Termékváltozat [alapértelmezett állapotadat-mintavétel](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe) automatikusan a háttér-készletben található összes erőforrás állapotának figyelésére, és jelölje ki a háttérrendszer a tagokkal szolgálnak nem megfelelő állapotú. Az alapértelmezett állapot mintavételi még a összes-e, amelyhez nem állított be egyéni mintavétel konfigurációra háttérrendszerek automatikusan megtörténik. További tudnivalókért lásd: [állapotadat-mintavételek az application gatewayben](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Termékváltozat v1 és v2 szintű Termékváltozatot közötti funkcióinak összehasonlítása
 

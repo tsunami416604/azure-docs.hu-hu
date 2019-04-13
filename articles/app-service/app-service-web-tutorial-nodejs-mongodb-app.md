@@ -1,6 +1,6 @@
 ---
-title: Node.js alkalmazás létrehozása a MongoDB - az Azure App Service |} A Microsoft Docs
-description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő Node.js-alkalmazásra, amely MongoDB kapcsolati sztringgel rendelkező Cosmos DB-hez csatlakozik.
+title: (MEAN.js) node.js és MongoDB - az Azure App Service |} A Microsoft Docs
+description: Megismerheti, hogyan tehet szert egy olyan, az Azure-ban működő Node.js-alkalmazásra, amely MongoDB kapcsolati sztringgel rendelkező Cosmos DB-hez csatlakozik. Az oktatóanyag MEAN.js használatban van.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f123a443d9a00aa7f1b35bd8ed540f90d66de97f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 361e921af65b33ac0a7a8d12e28db1cb305b0fa1
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891824"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548121"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Oktatóanyag: Hozhat létre egy Node.js és MongoDB-alkalmazások az Azure-ban
 

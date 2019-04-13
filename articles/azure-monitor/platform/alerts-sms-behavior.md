@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 225c86ee1a7f764f60b2da0b8e3be02aa5dd22e7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 74666149824627308b6c5b026e0c9ba7a7750ada
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123300"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523613"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>SMS-riasztás Műveletcsoportok viselkedés
 ## <a name="overview"></a>Áttekintés ##
@@ -32,8 +32,8 @@ Az SMS-fogadó műveletcsoport tagja SMS kap, amikor a riasztás aktiválódik. 
 
 | VÁLASZ | Leírás |
 | ----- | ----------- |
-| DISABLE <Action Group Short name> | Letiltja a további SMS-a műveletcsoport |
-| ENGEDÉLYEZÉSE <Action Group Short name> | Újra lehetővé teszi, hogy a műveleti csoporthoz SMS |
+| DISABLE `<Action Group Short name>` | Letiltja a további SMS-a műveletcsoport |
+| ENGEDÉLYEZÉSE `<Action Group Short name>` | Újra lehetővé teszi, hogy a műveleti csoporthoz SMS |
 | ÁLLJ | Letiltja a további SMS-minden Műveletcsoportok |
 | INDÍTSA EL | Újból engedélyezi az SMS-minden Műveletcsoportok |
 | SEGÍTSÉG | Ez a cikk mutató hivatkozást tartalmazó válasz a felhasználó érkezik. |

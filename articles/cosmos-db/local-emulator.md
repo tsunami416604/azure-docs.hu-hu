@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 3d535c71480693d0424c6697776a1ddbf37b47c5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 1db103fe46db292e2aa41b648c0ace16fd450d90
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493212"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525422"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulatort használja a helyi fejlesztési és tesztelési célra
 
@@ -153,7 +153,7 @@ Indítsa el az emulátor egy rendszergazdai parancssorból az "/ EnableCassandra
 
 * [Telepítse a Python 2.7-es](https://www.python.org/downloads/release/python-2716/)
 
-* [Install Cassandra CLI/CQLSH](http://cassandra.apache.org/download/)
+* [Cassandra CLI/CQLSH telepítése](http://cassandra.apache.org/download/)
 
 * Egy normál parancssori ablakban futtassa a következő parancsokat:
 
@@ -252,7 +252,7 @@ A beállítások listájának megtekintéséhez írja be a `CosmosDB.Emulator.ex
 | GremlinPort | A Gremlin-végpont használni kívánt portszámot. Alapértelmezett érték: 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<Port\>: Egyetlen port száma |
 |TablePort | Az Azure Table-végpont esetében használni kívánt portszámot. Alapértelmezett érték: 8902. | CosmosDB.Emulator.exe /TablePort=\<port\> | \<Port\>: Egyetlen port száma|
 | KeyFile | Engedélyezési kulcsot a megadott fájl olvasásakor. Hozzon létre egy keyfile /GenKeyFile lehetőség használatával | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<Fájlnév\>: A fájl elérési útja |
-| ResetDataPath | Rekurzív módon eltávolítja a megadott elérési út összes fájlt. Ha nem ad meg elérési utat, alapértelmezés szerint az %LOCALAPPDATA%\CosmosDbEmulator | CosmosDB.Emulator.exe /ResetDataPath[=<path>] | \<Elérési út\>: Fájl elérési útja  |
+| ResetDataPath | Rekurzív módon eltávolítja a megadott elérési út összes fájlt. Ha nem ad meg elérési utat, alapértelmezés szerint az %LOCALAPPDATA%\CosmosDbEmulator | CosmosDB.Emulator.exe /ResetDataPath[=\<path>] | \<Elérési út\>: Fájl elérési útja  |
 | StartTraces  |  A kezdő hibakeresési nyomkövetési naplók gyűjtésére. | CosmosDB.Emulator.exe /StartTraces | |
 | StopTraces     | Állítsa le a hibakeresési nyomkövetési naplók gyűjtésére. | CosmosDB.Emulator.exe /StopTraces  | |
 |EnableTableEndpoint | Lehetővé teszi, hogy az Azure Table API | CosmosDB.Emulator.exe /EnableTableEndpoint | |
@@ -309,7 +309,7 @@ Itt láthatja az emulátor PowerShellből való vezérlésére szolgáló paranc
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Szintaxis**
+**Syntax**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -319,7 +319,7 @@ Ezek ServiceControllerStatus érték egyikét adja vissza: ServiceControllerStat
 
 ### `Start-CosmosDbEmulator`
 
-**Szintaxis**
+**Syntax**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -329,7 +329,7 @@ Elindítja az emulátort. Alapértelmezés szerint a parancs addig vár, amíg a
 
 ### `Stop-CosmosDbEmulator`
 
-**Szintaxis**
+**Syntax**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -339,7 +339,7 @@ Leállítja az emulátort. Alapértelmezés szerint ez a parancs addig vár, am�
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Szintaxis**
+**Syntax**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 

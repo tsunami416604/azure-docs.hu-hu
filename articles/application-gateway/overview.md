@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/20/2019
 ms.author: victorh
-ms.openlocfilehash: bb849e80e83edc4a25ad2f891d2c6c433ba0d106
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 447c5b1e94b848e9e560db1188a767f2040740c0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225535"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546850"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -118,9 +118,12 @@ További információkért lásd: [WebSocket-támogatás](https://docs.microsoft
 
 ## <a name="rewrite-http-headers-public-preview"></a>Újraírási HTTP-fejléceket (nyilvános előzetes verzió)
 
-HTTP-fejlécek engedélyezése az ügyfél és a kiszolgáló át a kérelem vagy válasz további információkat. Ezek HTTP fejlécek segít, például a biztonsági fejléc számos fontos forgatókönyv újraírását mezők, például HSTS / X-XSS-védelmet, vagy válaszfejléc eltávolítása mezők, amelyek felfedhet bizalmas adatokat, például a háttér-kiszolgáló nevét. 
+HTTP-fejlécek engedélyezése az ügyfél és kiszolgáló át a kérelem vagy válasz további információkat. Ezek a HTTP-fejlécek újraírását segítségével számos fontos forgatókönyv megvalósítását, például elvégezni:
+- Biztonsági fejléc mezők hozzáadásával például HSTS / X-XSS-védelmet.
+- Válasz üzenetfejlécének mezői, amelyek hozzáférhetnek a bizalmas adatok eltávolítása.
+- Ezért az X-továbbított – a fejlécek portra vonatkozó adatait.
 
-Az Application Gateway mostantól támogatja a bejövő HTTP-kéréseket, valamint a kimenő HTTP-válaszok fejlécek újraírási képessége. Lesz hozzá, távolíthatja el vagy frissítse a HTTP-kérelmek és válaszfejlécek, amíg a kérelem/válasz-csomagok áthelyezése az ügyfél és a háttérkiszolgáló készletek között. Módosíthatja is a standard (meghatározott [RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)) valamint a nem szabványos üzenetfejlécének mezői.  
+Az Application Gateway támogatja a funkció hozzáadása, eltávolítása vagy HTTP-kérelmek és válaszfejlécek, frissítés, amíg az ügyfél és a háttérkészlet közötti áthelyezése a kérések és válaszok csomagokat. Azt is nyújt teszi, hogy adja meg annak érdekében, hogy a megadott fejlécek a rendszer újraírja csak bizonyos feltételek teljesülése esetén feltételeket.
 
 Az nyilvános előzetes funkcióval kapcsolatos további információkért lásd: [Újraírási HTTP-fejlécek](rewrite-http-headers.md).
 

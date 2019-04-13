@@ -1,7 +1,7 @@
 ---
 title: JSON-blobok indexelése az Azure Blob-indexelő az Azure Search – a teljes szöveges keresés
 description: Feltérképezi az Azure JSON-blobok az Azure Search Blob indexelőjével szöveges tartalommal. Az indexelők automatizálni adatbetöltés a kijelölt adatforrásokhoz, például az Azure Blob storage.
-ms.date: 02/28/2019
+ms.date: 04/11/2019
 author: HeidiSteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6db86d3e5aba1a2e43e69e71df8cc516fb14581f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518745"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527353"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Az Azure Search Blob indexelőjével JSON-blobok indexelése
 Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Search blob [indexelő](search-indexer-overview.md) nyerje strukturált JSON-dokumentumokat az Azure Blob storage-ban, és lehetővé teszi az Azure Search kereshető. Ezt a munkafolyamatot hoz létre az Azure Search-index, és betölti azt a meglévő, a JSON-blobok kinyert szöveget. 
@@ -40,14 +40,15 @@ Azure Search és az Azure storage, lehetőség szerint ugyanabban a régióban t
 
 ### <a name="1---prepare-source-data"></a>1 – forrásadatok előkészítése
 
-Azure storage-fiókkal, a Blob storage és a egy JSON-dokumentumokat tároló kell rendelkeznie. Ha ismeri ezeket a követelményeket bármelyikével, tekintse át "Azure Blob service és a terhelés a Mintaadatok beállítása" az a [cognitive search-quickstart](cognitive-search-quickstart-blob.md#set-up-azure-blob-service-and-load-sample-data).
+1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com/).
 
-> [!Important]
-> A tárolóban, ügyeljen arra, hogy **nyilvános hozzáférés szintje** "Tároló (névtelen olvasási hozzáférés tárolók és blobok)" értékre van állítva. Az Azure storage és az Azure Search egy előfizetésen belül, és ha lehetséges, ugyanabban a régióban kell lennie. 
+1. [Hozzon létre egy blobtárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) adatait tartalmazza. A nyilvános hozzáférés szintje az érvényes értékek bármelyikére beállítható.
+
+Szüksége lesz a tárfiók nevét, tároló neve és az adatok a hozzáférési kulcs a **adatimportálás** varázsló.
 
 ### <a name="2---start-import-data-wizard"></a>2 – adatok importálása varázsló indítása
 
-Is [varázsló elindításához](search-import-data-portal.md) az Azure Search szolgáltatás lapján, vagy kattintson a parancssávon **Azure Search hozzáadása** a a **Blob service** szakasz a storage-fiók bal oldali navigációs ablaktáblán.
+Az Azure Search szolgáltatás áttekintés oldalán a [varázsló elindításához](search-import-data-portal.md) a parancssávon, vagy kattintson **Azure Search hozzáadása** a a **Blob service** szakaszában a Storage-fiók bal oldali navigációs ablaktáblán.
 
    ![Adatok importálása parancs portálon](./media/search-import-data-portal/import-data-cmd2.png "indítsa el az adatok importálása varázsló")
 

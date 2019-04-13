@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 743b078eac783365ae83e540a7dc05aba0ae8754
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517595"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547056"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>kézikönyv: Kockázatos felhasználók és bejelentkezések vizsgálata 
 
@@ -151,7 +151,7 @@ A **állapot** szűrővel kiválasztása:
 
 ### <a name="download-risky-users-data"></a>Kockázatos felhasználók adatok letöltése
 
-Ha azt szeretné, hogy az Azure Portalon kívül, a használata a kockázatos felhasználók adatait töltheti le. Letöltés gombra kattintva létrehoz egy CSV-fájlt a legutóbbi 5 KB rekordok. 
+Ha azt szeretné használni az Azure Portalon kívül tölthet le a kockázatos felhasználók adatokat. Letöltés gombra kattintva létrehoz egy CSV-fájlt a legutóbbi 2500 rekordok. 
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/07.png)
 
@@ -320,7 +320,7 @@ Lehetséges értékek:
 
 ### <a name="download-risky-sign-ins-data"></a>Kockázatos bejelentkezések adatok letöltése
 
-Ha azt szeretné, hogy az Azure Portalon kívül, a használata a kockázatos bejelentkezések adatok töltheti le. Letöltés gombra kattintva létrehoz egy CSV-fájlt a legutóbbi 5 KB rekordok. 
+Ha azt szeretné használni az Azure Portalon kívül tölthet le a kockázatos bejelentkezések adatokat. Letöltés gombra kattintva létrehoz egy CSV-fájlt a legutóbbi 2500 rekordok. 
 
 ![Kockázatos felhasználók jelentés](./media/howto-investigate-risky-users-signins/15.png)
 

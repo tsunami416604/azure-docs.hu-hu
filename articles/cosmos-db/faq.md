@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e734ebb2032a5354e8701129b6a8ad913837bb52
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 8e8b3e647d6ef91d69a7b81ca6fdf36fc9d0f9c8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010617"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523953"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Az Azure Cosmos DB API kapcsolatos gyakori kérdések
 
@@ -266,7 +266,7 @@ A REST API tekintetében számos végpontok és lekérdezési lehetőségeket, a
 | REST-metódus | REST-végpont/lekérdezési beállítás | Dokumentum URL-címek | Magyarázat |
 | ------------| ------------- | ---------- | ----------- |
 | GET, PUT | /? restype =service@comp= tulajdonságai| [Állítsa be a Table Service tulajdonságok](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) és [Table Service tulajdonságainak lekérése](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Ez a végpont segítségével állítsa be a CORS-szabályok, storage analytics konfigurációs és naplózási beállítások. CORS jelenleg nem támogatott, és az analytics és a naplózás az Azure Cosmos DB, mint az Azure Storage-táblák másképp kezeli |
-| BEÁLLÍTÁSOK | / < table-resource-name > | [Üzem előtti repülési CORS tábla kérelem](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Ez az Azure Cosmos DB jelenleg nem támogatja a CORS részét képezi. |
+| BEÁLLÍTÁSOK | /\<table-resource-name> | [Üzem előtti repülési CORS tábla kérelem](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Ez az Azure Cosmos DB jelenleg nem támogatja a CORS részét képezi. |
 | GET | /? restype =service@comp= stats | [Táblastatisztika szolgáltatás beolvasása](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Milyen gyorsan adat áll replikálás alatt, elsődleges és másodlagos adatbázisok közötti információkat tartalmaz. A replikáció része írások, ez nem szükséges Cosmos DB-ben. |
 | GET, PUT | /mytable? comp = acl | [ACL-tábla](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) és [tábla ACL beállítása](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) | Ez lekérdezi és beállítja a tárolt hozzáférési szabályzatok kezelése közös hozzáférésű Jogosultságkódok (SAS) használt. SAS támogatják, állítsa be, és másképp kezeli. |
 
@@ -293,7 +293,7 @@ Ha ezek a különbségek bármelyike a projekt probléma, forduljon a [ askcosmo
 
 Az alábbi módokon is ossza meg velünk véleményét:
 
-* [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
+* [Felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). A stack Overflow a legjobb a programozási kérdéseit. Ellenőrizze, hogy a kérdés [témához illeszkedő](https://stackoverflow.com/help/on-topic) és [adja meg a legtöbb adatot lehet, így a kérdést, egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 1cf324887a225ecb9ba2cb40176a1f358e40a8e1
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: a3aef06e6ee0d3989a4da8fdd93d27d28f2eede4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361988"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527679"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -136,7 +136,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>Jelentés létrehozása
-Az eszköz egy makróbarát Microsoft Excel-fájlt (XLSM-fájlt) hoz létre a jelentés kimeneteként, amely összefoglalja az üzembehelyezési javaslatokat. A jelentés neve DeploymentPlannerReport_<unique numeric identifier>.xlsm, és a megadott könyvtárban lesz elérhető.
+Az eszköz egy makróbarát Microsoft Excel-fájlt (XLSM-fájlt) hoz létre a jelentés kimeneteként, amely összefoglalja az üzembehelyezési javaslatokat. A jelentés neve `DeploymentPlannerReport_<unique numeric identifier>.xlsm` és a megadott könyvtárban.
 
 >[!NOTE]
 >A jelentés szükséges konfigurált tizedesjel "." a kiszolgálón, amelyen futtatja a deployment planner költségbecslési előállításához. Esetben rendelkezik beállítása "," tizedesjelként egy Windows-gépen,. Nyissa meg "Change dátum, idő vagy számformátum" a Vezérlőpult és lépjen a "További beállítások" módosítása a tizedesjel,".".
@@ -214,7 +214,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 ```
 
 ## <a name="percentile-value-used-for-the-calculation"></a>A számításhoz használt százalékérték
-**Használja az eszköz a profilkészítés során összegyűjtött teljesítménymetrikák milyen alapértelmezett %-os érték nem, a jelentés készítésekor?**
+**Alapértelmezés szerint a profilkészítés során összegyűjtött teljesítménymetrikák milyen százalékos arányát használja az eszköz jelentések készítésekor?**
 
 Az eszköz alapértelmezett értéke az írási/olvasási IOPS, az írási IOPS és az adatváltozás esetén a 95. százalékérték az összes virtuális gép profiljának elkészítése során. Ez a metrika biztosítja, hogy a virtuális gépek által az ideiglenes események miatt esetlegesen észlelt 100. százalékértékes kiugrást a rendszer nem használja fel a cél tárfiók és a forrássávszélesség követelményeinek meghatározásakor. Az ideiglenes esemény lehet például egy naponta egyszer futtatott biztonsági mentési feladat, rendszeres időközönként végzett adatbázis-indexelés, elemzésijelentés-készítési tevékenység vagy bármely hasonló, rövid ideig tartó, időpontalapú esemény.
 
@@ -226,7 +226,7 @@ A 95. százalékérték használata valós képet ad a számítási feladatok va
 ```
 
 ## <a name="growth-factor-considerations"></a>A növekedési tényezővel kapcsolatos szempontok
-**Miért érdemes figyelembe venni a növekedési tényező környezetek megtervezésekor?**
+**Miért kell figyelembe vennem a növekedési tényezővel kapcsolatos szempontokat a környezetek megtervezésekor?**
 
 Rendkívül fontos figyelembe venni a növekedést a számítási feladatok jellemzőiben, feltételezve a használat lehetséges növekedését. Ha beállítja a védelmet, és módosulnak a számítási feladatok jellemzői, nincs lehetőség arra, hogy egy másik védett tárfiókra váltson a védelem letiltása és ismételt engedélyezése nélkül.
 
@@ -242,9 +242,9 @@ Az elkészített Microsoft Excel-jelentés a következő információkat tartalm
 
 * [Helyszíni összefoglalás](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
 * [Javaslatok](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [Virtuális gép <> – tároló elhelyezése](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
-* [Kompatibilis virtuális gépek](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
-* [Nem kompatibilis virtuális gépek](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
+* [VM&lt;-&gt;Storage Placement](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement) (Virtuálisgép&lt;-&gt;tároló elhelyezése)
+* [Compatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms) (Kompatibilis virtuális gépek)
+* [Incompatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms) (Nem kompatibilis virtuális gépek)
 * [Költségbecslés](site-recovery-vmware-deployment-planner-cost-estimation.md)
 
 ![Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)

@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 23120e45a1070f46ae4e1927a29bdab4c990d96f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 51a812762659bcc67762b82e9c120772065aab53
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860711"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549681"
 ---
 # <a name="schema-format"></a>Sémaformátum
 
@@ -43,14 +43,14 @@ Alább felsoroljuk a attribútum támogatott adattípusok:
 
 | Typo | Leírás | Műveletek | Példa |
 |------|-------------|------------|---------|
-| String | Karakterlánc (1 és 1024 karakter) | egyenlő, starts_with | "hello world" |
-| Int32 | 32 bites, előjeles egész | egyenlő, starts_with, is_between | 2016 |
-| Int64 | 64 bites, előjeles egész | egyenlő, starts_with, is_between | 9876543210 |
-| Double | Kétszeres pontosságú lebegőpontos értéket | egyenlő, starts_with, is_between | 1.602e-19 |
-| Dátum | (1400-01-01-9999-12-31) dátum | egyenlő, is_between | '2016-03-14' |
-| Guid | Globálisan egyedi azonosító | egyenlő | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
-| Blob | Belsőleg tömörített nem indexelt adatok | *Nincsenek* | "Minden ember és minden szervezet tett kötelezettségvállalásai biztosítson hatékony eszközöket" |
-| Összetett | Összeállítás több alárendelt attribútumok| *N/A* | {"Name": "harry shum", "Kapcsolat": "microsoft"} |
+| `String` | Karakterlánc (1 és 1024 karakter) | egyenlő, starts_with | "hello world" |
+| `Int32` | 32 bites, előjeles egész | egyenlő, starts_with, is_between | 2016 |
+| `Int64` | 64 bites, előjeles egész | egyenlő, starts_with, is_between | 9876543210 |
+| `Double` | Kétszeres pontosságú lebegőpontos értéket | egyenlő, starts_with, is_between | 1.602e-19 |
+| `Date` | (1400-01-01-9999-12-31) dátum | egyenlő, is_between | '2016-03-14' |
+| `Guid` | Globálisan egyedi azonosító | egyenlő | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
+| `Blob` | Belsőleg tömörített nem indexelt adatok | *Nincsenek* | "Minden ember és minden szervezet tett kötelezettségvállalásai biztosítson hatékony eszközöket" |
+| `Composite` | Összeállítás több alárendelt attribútumok| *N/A* | {"Name": "harry shum", "Kapcsolat": "microsoft"} |
 
 Karakterlánc-attribútumok segítségével a felhasználó lekérdezése során megjelenő karakterlánc-értékek jelölik.  Támogatják-e a pontos egyezést *egyenlő* művelet, valamint a *starts_with* lekérdezés befejezési forgatókönyvek, például a megfelelő "micros" a "microsoft" művelet.  Helyesírás-ellenőrzés hibáinak kezelése a megfelelő kis-és nagybetűket, és intelligens egy későbbi kiadásban lesz támogatott.
 

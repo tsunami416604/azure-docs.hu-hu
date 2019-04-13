@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
 ms.author: jeconnoc
-ms.openlocfilehash: f0724fd6e5f08f3e09bcb147c12d1657235dc704
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: f597bc760a3f3825416912642ee66a53dfb91696
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916886"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525561"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>A folyamat egy Cloud Services-alkalmazás az Azure Diagnostics segítségével nyomon követése
 Nyomkövetés módja, hogy az alkalmazás végrehajtását a figyelése, futás közben. Használhatja a [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace), [System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug), és [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) hibák adatainak rögzítésére osztályok és alkalmazás végrehajtása a naplókat, szöveges fájlok vagy más eszközök későbbi elemzés céljából. Nyomkövetés kapcsolatos további információkért lásd: [nyomkövetés és alkalmazásokhoz való Műszerezéséről](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications).
@@ -69,7 +69,7 @@ Figyelők kapcsolatos további információkért lásd: [nyomkövetési figyelő
 Miután végrehajtotta a lépéseket adja hozzá a figyelőt, a kód nyomkövetési utasításokat is hozzáadhat.
 
 ### <a name="to-add-trace-statement-to-your-code"></a>A kód híváslánc-utasítás hozzáadása
-1. Nyissa meg az alkalmazás egy forrásfájl. Ha például a <RoleName>.cs fájlt a feldolgozói szerepkör, illetve a webes szerepkör.
+1. Nyissa meg az alkalmazás egy forrásfájl. Ha például a \<RoleName > .cs fájlt a feldolgozói szerepkör, illetve a webes szerepkör.
 2. Adja hozzá a következő using utasítást, ha már nincs hozzáadva:
     ```
         using System.Diagnostics;

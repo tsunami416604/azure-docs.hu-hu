@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: c7bf6a22da89f0bf1e3897ec8fc30238b86b7b75
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9aa7c4a5464230abe9ac7e75854a7422534f40f6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882750"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522304"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Gyors útmutató: Állítsa be, és a egy Node-webalkalmazást az Azure Key Vault titkos kulcs lekérése 
 
@@ -150,7 +150,7 @@ Keresse meg az újonnan létrehozott webalkalmazáshoz, és megtekintheti, hogy 
     ```
     http://<app name>.azurewebsites.net
     ```
-Az előző parancs is létrehoz egy Git-kompatibilis alkalmazást, amely lehetővé teszi, hogy az üzembe helyezés az Azure-ba, hogy a helyi Git-adattárban. A helyi Git-tárház meg van adva az az URL-címet: https://<username>@< app_name >.scm.azurewebsites.net/ < app_name > .git.
+Az előző parancs is létrehoz egy Git-kompatibilis alkalmazást, amely lehetővé teszi, hogy az üzembe helyezés az Azure-ba, hogy a helyi Git-adattárban. A helyi Git-adattár az URL-cím van beállítva: `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`.
 
 Miután elvégezte az előző parancs, a helyi Git-tárház egy távoli Azure is hozzáadhat. Cserélje le `<url>` a Git-adattár URL-címével.
 
@@ -194,9 +194,9 @@ Futtassa a következő parancsot az alkalmazás telepítése az Azure-bA:
 git push azure master
 ```
 
-Ezt követően amikor https://<app_name>.azurewebsites.net, keresse meg a titkos érték látható. Győződjön meg arról, hogy lecseréli-e a neve, <YourKeyVaultName> a tároló nevére.
+Ezt követően Ha `https://<app_name>.azurewebsites.net`, láthatja, hogy a titkos érték. Győződjön meg arról, hogy lecseréli-e a neve, `<YourKeyVaultName>` a tároló nevére.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Azure SDK a Node-hoz](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+> [Az Azure SDK a Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: yegu
-ms.openlocfilehash: 838fc1da3e167d1df04fbb36a2fea33b8ac248a4
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 66361871d365068a90a2eeab70d92adb6b246a83
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482606"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527166"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Hogyan háríthatók el az Azure Cache redis
 
@@ -250,6 +250,7 @@ Ez a hibaüzenet, amely segíthet a pont, a probléma okát és lehetséges mego
 1. Több kis méretű kérések megelőző a gyorsítótárhoz, amely lejárt az idő nagy kérés történt? A paraméter `qs` a hibás üzenet közli Önnel, hogy hány kérésnek az ügyfélről a kiszolgálónak küldött, de még nem feldolgozott választ. Ezt az értéket is folyamatosan növekvő, mert StackExchange.Redis egyetlen TCP-kapcsolatot használ, és egyszerre csak egy választ csak olvasható. Annak ellenére, hogy az első művelet túllépte az időkorlátot, akkor több adatot küld vagy a kiszolgáló nem leállítása. Más kérelmek le lesz tiltva, amíg a nagy kérés befejezése, és időtúllépéssel okozhat. Egy megoldás, hogy időtúllépések esélyét annak biztosítása, hogy a gyorsítótár mérete elegendő a számítási feladatok és a nagy értékek felosztása szeletekre. Egy másik lehetséges megoldás az, hogy a készlet használata `ConnectionMultiplexer` az ügyfél az objektumok, és válassza a legkevésbé betöltött `ConnectionMultiplexer` új kérelem küldése során. Több kapcsolat objektumra betöltése akadályozhatja meg egyetlen időtúllépés küldött egyéb kérések számára is időtúllépés miatt.
 1. Ha használ `RedisSessionStateProvider`, ellenőrizze az újrapróbálkozási időkorlátnak az újrapróbálkozási megfelelően. `retryTimeoutInMilliseconds` érdemes lehet magasabb, mint `operationTimeoutInMilliseconds`, ellenkező esetben fordulhat elő, nem az újrapróbálkozásokat. Az alábbi példában `retryTimeoutInMilliseconds` 3000 értékre van állítva. További információkért lásd: [ASP.NET munkamenetállapot-szolgáltatóját Azure Cache redis](cache-aspnet-session-state-provider.md) és [munkamenetállapot-szolgáltató és a kimeneti gyorsítótár-szolgáltatóját a konfigurációs paraméterek használata](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
 
+    ```xml
     <add
       name="AFRedisCacheSessionStateProvider"
       type="Microsoft.Web.Redis.RedisSessionStateProvider"
@@ -262,6 +263,7 @@ Ez a hibaüzenet, amely segíthet a pont, a probléma okát és lehetséges mego
       connectionTimeoutInMilliseconds = "5000"
       operationTimeoutInMilliseconds = "1000"
       retryTimeoutInMilliseconds="3000" />
+    ```
 
 1. Ellenőrizze az Azure Cache a Redis-kiszolgáló által a memóriahasználat [figyelési](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` és `Used Memory`. Ha egy kiürítési szabályzatot van beállítva, a Redis elindul kizárásának kulcsokat mikor `Used_Memory` eléri a gyorsítótár méretét. Ideális esetben `Used Memory RSS` kell lennie csak valamivel nagyobb `Used memory`. A nagy különbség az jelenti, hogy a memória töredezettségét (belső vagy külső). Amikor `Used Memory RSS` van kevesebb, mint `Used Memory`, azt jelenti, hogy a gyorsítótár-memória része a felcserélés van lett az operációs rendszer által. A csere történik, ha várhatóan néhány jelentős késéseket. Mivel a Redis nem szabályozhatják, hogyan vannak leképezve a hozzárendelések memórialapok, magas `Used Memory RSS` Ez gyakran a memóriahasználat ugrásszerű eredménye. Ha a Redis-kiszolgáló felszabadítja a memória, a foglaló vesz igénybe, a memória, de előfordulhat, hogy vagy előfordulhat, hogy nem biztosít a memória vissza a rendszer. Előfordulhat, hogy egy között eltérés van a `Used Memory` érték és a memória-felhasználás az operációs rendszer által jelentett módon. Előfordulhat, hogy memória használt és a Redis által, de nem adott vissza a rendszer. Memóriahiba csökkentése érdekében a következőket teheti:
 

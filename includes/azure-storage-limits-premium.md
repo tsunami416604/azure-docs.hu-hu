@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1cb353d22e39447d7aeb723b5506ac0209cf74d8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: da796f8eeb6b24dfbbe8418cc728f09b424228cf
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59287102"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528492"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Prémium szintű teljesítményt blokkblob-tárolás
 
@@ -25,10 +25,11 @@ Prémium files használjon egy egyedi nevű tárfiókot **FileStorage (előzetes
 
 |Terület  |Cél  |
 |---------|---------|
-|Maximális méret     |5 Tib-ra (nyilvános előzetes verzió), 100 Tib-ra (korlátozott nyilvános előzetes verzió)     |
+|Maximális méret kiépítve     |5 Tib-ra (nyilvános előzetes verzió), 100 Tib-ra (korlátozott nyilvános előzetes verzió)     |
 |Megosztások   |Korlátlan  |
 |IO     |100 000 (korlátozott nyilvános előzetes verzió)    |
-|Bandwidth|5 GB/s     |
+|Bejövő forgalom|4,136 MiB/s     |
+|Kimenő forgalom|6,204 MiB/s |
 
  Prémium szintű fájl megosztása a méretezési célokat, tekintse meg a [prémium files tárolók skálázása](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets) szakaszban.
 

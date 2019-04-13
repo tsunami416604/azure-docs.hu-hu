@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 65023fbf96dc3e1276413f8c40ecb262d60c1454
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b6a5712c617ab1e16b5341d9727b840fe8ea2213
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57863355"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524021"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Tömeges végrehajtó Java-kódtár használatával tömeges műveletek végrehajtása az Azure Cosmos DB-adatai
 
@@ -118,8 +118,8 @@ A klónozott adattár tartalmazza a két minta "bulkimport" és "bulkupdate" a "
    |int getNumberOfDocumentsImported()  |   Sikeresen importálva lettek a tömeges megadott dokumentumból dokumentumok száma importálja az API-hívás.      |
    |dupla getTotalRequestUnitsConsumed()   |  A tömeges által felhasznált teljes kérelemegység (RU) importálni az API-hívás.       |
    |Időtartam getTotalTimeTaken()   |    Teljes idő a tömeges importálás API-hívás végrehajtása befejeződik.     |
-   |Lista<Exception> getErrors() |  Hibák listáját olvassa be, ha néhány dokumentumot a köteg megadott tömeges importálása nem sikerült beszúrni első API-hívás.       |
-   |Lista<Object> getBadInputDocuments()  |    A lista rossz formátumú dokumentumok importálása nem sikerült a tömeges importálása API-hívás. Felhasználó kell hárítsa el a dokumentumokat ad vissza, és próbálkozzon újra az importálással. Hibás formátumú dokumentumok tartalmazzák a dokumentumok, amelynek azonosító értéke nem egy karakterláncot (NULL értékű vagy bármely más adattípus érvénytelen akkor tekinthető).     |
+   |Lista\<kivétel > getErrors() |  Hibák listáját olvassa be, ha néhány dokumentumot a köteg megadott tömeges importálása nem sikerült beszúrni első API-hívás.       |
+   |Lista\<objektum > getBadInputDocuments()  |    A lista rossz formátumú dokumentumok importálása nem sikerült a tömeges importálása API-hívás. Felhasználó kell hárítsa el a dokumentumokat ad vissza, és próbálkozzon újra az importálással. Hibás formátumú dokumentumok tartalmazzák a dokumentumok, amelynek azonosító értéke nem egy karakterláncot (NULL értékű vagy bármely más adattípus érvénytelen akkor tekinthető).     |
 
 5. Miután a tömeges importálása alkalmazást kész, a 'tiszta csomag mvn' parancs használatával hozhat létre a parancssori eszköz forrásból. Ez a parancs létrehoz egy jar-fájlt a cél mappában:  
 
@@ -182,7 +182,7 @@ Meglévő dokumentumok frissítheti a BulkUpdateAsync API-val. Ebben a példába
    |int getNumberOfDocumentsUpdated()  |   A sikeresen frissített a dokumentumból dokumentumok teljes számát a tömeges frissítés megadott API-hívás.      |
    |dupla getTotalRequestUnitsConsumed() |  A teljes kérelemegység (RU) a tömeges frissítés által használt API-hívás.       |
    |Időtartam getTotalTimeTaken()  |   A tömeges teljes idő frissítés API-hívás végrehajtása befejeződik.      |
-   |Lista<Exception> getErrors()   |     Hibák listáját olvassa be, ha olyan néhány dokumentumot a batch a tömeges frissítés API-hívás nem sikerült beszúrni beolvasása.      |
+   |Lista\<kivétel > getErrors()   |    Hibák listáját olvassa be, ha olyan néhány dokumentumot a batch a tömeges frissítés API-hívás nem sikerült beszúrni beolvasása.      |
 
 3. Miután a tömeges frissítése alkalmazást kész, a 'tiszta csomag mvn' parancs használatával hozhat létre forrásból a parancssori eszköz. Ez a parancs létrehoz egy jar-fájlt a cél mappában:  
 

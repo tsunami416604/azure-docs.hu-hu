@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 47516f06f212dd0541da5f177401d479eb760cc0
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: e4dd7299907168bb50ac8ebdf90b381c0bac01f2
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758255"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527370"
 ---
 # <a name="create-video-reviews-using-net"></a>Hozzon létre videót felülvizsgálatok .NET használatával
 
@@ -166,7 +166,7 @@ Létrehoz egy videó- **ContentModeratorClient.Reviews.CreateVideoReviews**. Tov
 **CreateVideoReviews** a következő szükséges paraméterek:
 1. Egy karakterlánc, amely tartalmazza a MIME-típust, amely elvileg "application/json." 
 1. A Content Moderator csoport neve.
-1. Egy **IList<CreateVideoReviewsBodyItem>**  objektum. Minden egyes **CreateVideoReviewsBodyItem** objektum videót felülvizsgálatok jelöli. Ebben a rövid útmutatóban létrehoz egy felülvizsgálati egyszerre.
+1. Egy **IList\<CreateVideoReviewsBodyItem >** objektum. Minden egyes **CreateVideoReviewsBodyItem** objektum videót felülvizsgálatok jelöli. Ebben a rövid útmutatóban létrehoz egy felülvizsgálati egyszerre.
 
 **CreateVideoReviewsBodyItem** néhány olyan tulajdonság tartozik. Minimális állítsa be a következő tulajdonságokat:
 - **Tartalom**. A Videó URL-címét a programtulajdonos.
@@ -224,18 +224,18 @@ Hozzáadhat egy videó tekintse át a videókban **ContentModeratorClient.Review
 1. Egy karakterlánc, amely tartalmazza a MIME-típust, amely elvileg "application/json."
 1. A Content Moderator csoport neve.
 1. A videó felülvizsgálat azonosítója által visszaadott **CreateVideoReviews**.
-1. Egy **IList<VideoFrameBodyItem>**  objektum. Minden egyes **VideoFrameBodyItem** objektum képviseli egy videó keretet.
+1. Egy **IList\<VideoFrameBodyItem >** objektum. Minden egyes **VideoFrameBodyItem** objektum képviseli egy videó keretet.
 
 **VideoFrameBodyItem** tulajdonságai a következők:
 - **Időbélyeg**. Egy karakterlánc, amely tartalmaz, a videót, amelyből a képkocka kerül az idő másodpercben.
 - **FrameImage**. A videó keret URL-címe
-- **Metaadatok**. IList<VideoFrameBodyItemMetadataItem>. **VideoFrameBodyItemMetadataItem** egyszerűen egy kulcs/érték pár. Érvényes kulcsok a következők:
+- **Metaadatok**. IList\<VideoFrameBodyItemMetadataItem >. **VideoFrameBodyItemMetadataItem** egyszerűen egy kulcs/érték pár. Érvényes kulcsok a következők:
 - **reviewRecommended**. IGAZ, ha a videó keret elbírálni használata javasolt.
 - **adultScore**. A 0 érték 1, felnőtt tartalom súlyosságát értékeli a videó keretbe.
 - **a**. IGAZ, ha a videó felnőtt tartalom található.
 - **racyScore**. A 0 érték 1, amely a képkocka fajgyűlölő tartalom súlyosságát aránya.
 - **r**. IGAZ, ha a képkocka fajgyűlölő tartalom található.
-- **ReviewerResultTags**. IList<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** egyszerűen egy kulcs/érték pár. Egy alkalmazás használhatja a címkéket videókban rendszerezéséhez.
+- **ReviewerResultTags**. An IList\<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** egyszerűen egy kulcs/érték pár. Egy alkalmazás használhatja a címkéket videókban rendszerezéséhez.
 
 > [!NOTE]
 > Ebben a rövid útmutatóban a véletlenszerű értéket állít elő a **adultScore** és **racyScore** tulajdonságait. Egy éles alkalmazásban, akkor szerezze be ezeket az értékeket a a [videomoderálás szolgáltatás](video-moderation-api.md)üzembe helyezett, mint az Azure Media Services.

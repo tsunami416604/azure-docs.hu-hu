@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 12a21f4fdfb279df154b4995b6191aa0ed54ab43
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c187d104334fe75ec9e0ce41a3fdc14b508dfb2
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894478"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521725"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>A Microsoft Azure Storage Explorer használatával tesztkörnyezet tárfiók VHD-fájl feltöltése
 
@@ -55,7 +55,7 @@ A következő lépések végigvezetik egy VHD-fájl feltöltése a DevTest Labs 
     
     1. A **Nahrát image pomocí PowerShell** panel megjeleníti a hívást a **Add-AzureVhd** parancsmagot. Az első paraméterrel (*cél*) tartalmazza a tárfiók nevét a tesztkörnyezethez a következő formátumban:
     
-        https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/... 
+        `https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...`
 
     1. Jegyezze fel a tárfiók nevét, a későbbi lépésekben szolgál.
     

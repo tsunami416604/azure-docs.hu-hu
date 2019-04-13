@@ -2,20 +2,20 @@
 title: ETL-helyett tervezése az Azure SQL Data Warehouse ELT |} A Microsoft Docs
 description: ETL-helyett betöltésére, adatok vagy az Azure SQL Data Warehouse egy kinyerési, betöltési és átalakítási (ELT) folyamat tervezése.
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 04/12/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 96f6da7e081430768b5a6f8fd874e289b8256271
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2e65c1a33a60e19538a26e0f47f205235dd1695c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308482"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548663"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse PolyBase-adatbetöltés stratégia tervezése
 
@@ -99,7 +99,7 @@ Adatok betöltése a PolyBase, ezek a betöltési beállítások bármelyikét h
 - [A PolyBase T-SQL](load-data-from-azure-blob-storage-using-polybase.md) jól működik, ha az adatait az Azure Blob storage vagy az Azure Data Lake Store van. A legtöbb szabályozhatja a betöltési folyamat biztosítja, de is kell megadni a külső adatok objektumokat. A többi módszer meghatározása a ezeket az objektumokat a háttérben, leképezheti a forrástábla céltáblákba.  A T-SQL-terhelések vezényli, használhatja az Azure Data Factory, az SSIS vagy az Azure functions. 
 - [PolyBase az SSIS használatával](/sql/integration-services/load-data-to-sql-data-warehouse) jól működik, ha a forrásadatok van az SQL Server, SQL Server a helyszínen vagy a felhőben. SSIS határozza meg a forrás, cél táblaleképezések, és a terhelés is koordinálja. Ha már rendelkezik SSIS-csomagok, módosíthatja a csomagokat az új data warehouse cél dolgozhat. 
 - [PolyBase az Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) egy másik üzletifolyamat-tervező eszköz.  Azt határozza meg a folyamatot, és ütemezi a feladatok. 
-- [Az Azure DataBricks PolyBase](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) átviszi az adatokat egy SQL Data Warehouse-táblából Databricks dataframe és/vagy írja az adatokat egy Databricks-adathalmaz egy SQL Data Warehouse-tábla.
+- [Az Azure DataBricks PolyBase](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) átviszi az adatokat egy SQL Data Warehouse-táblából Databricks dataframe és/vagy a PolyBase az SQL Data Warehouse táblába írja az adatokat a Databricks dataframe.
 
 ### <a name="non-polybase-loading-options"></a>A PolyBase nem betöltési beállítások
 

@@ -8,12 +8,12 @@ ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: a9baf36221c99ece0703e2caa3f3e6c3b9364480
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: fe8b6113646589e30ff839c8bd47968138d98b03
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312206"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521428"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Oktatóanyag: Azure Time Series Insights egyoldalas webalkalmazás létrehozása
 
@@ -179,7 +179,7 @@ Mielőtt létrehozna egy alkalmazást, regisztrálnia kell azt az Azure AD-ben. 
 Hibakód/állapot | Leírás
 ---------------------| -----------
 *AADSTS50011: A válaszcím nem az alkalmazás regisztrálva van.* | Az Azure AD-regisztrációból hiányzik a „Válasz-URL” tulajdonság. Lépjen az Azure AD-alkalmazásregisztráció **Beállítások** / **Válasz URL-címek** oldalára. Ellenőrizze, hogy meg van-e adva az a **bejelentkezési** URL-cím, amelyet [Az alkalmazás regisztrálása az Azure AD-ben](#register-the-application-with-azure-ad) 3. lépésében megadott. 
-*AADSTS50011: A válasz URL-címe a kérelemben megadott nem egyezik az alkalmazáshoz konfigurált válasz URL: "<Application ID GUID>".* | A [Webalkalmazás létrehozása és közzététele](#build-and-publish-the-web-application) 4.b lépésében megadott `postLogoutRedirectUri` értéknek ugyanannak kell lennie, mint az Azure AD-alkalmazásregisztráció **Beállítások** / **Válasz URL-címek** tulajdonságánál megadott érték. Módosítsa a **Cél URL-címet** `https` használatára, a [Webalkalmazás létrehozása és közzététele](#build-and-publish-the-web-application) 5.e lépésében leírtak szerint.
+*AADSTS50011: A kérésben megadott URL-címet a válasz nem felel meg a válasz URL-címek az alkalmazáshoz konfigurált: '\<Application ID GUID>'.* | A [Webalkalmazás létrehozása és közzététele](#build-and-publish-the-web-application) 4.b lépésében megadott `postLogoutRedirectUri` értéknek ugyanannak kell lennie, mint az Azure AD-alkalmazásregisztráció **Beállítások** / **Válasz URL-címek** tulajdonságánál megadott érték. Módosítsa a **Cél URL-címet** `https` használatára, a [Webalkalmazás létrehozása és közzététele](#build-and-publish-the-web-application) 5.e lépésében leírtak szerint.
 A webalkalmazás betöltődik, de egy stílus nélküli, csak szöveges bejelentkezési oldalt jelenít meg fehér háttérrel. | Ellenőrizze, hogy a [Webalkalmazás létrehozása és közzététele](#build-and-publish-the-web-application) 4.a lépésében megadott elérési utak helyesek-e. Ha a webalkalmazás nem találja a .css fájlokat, akkor a lapok nem a megfelelő stílussal jelennek meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2ba6b2d33c3fb5d9fda6821718ac61513a958b7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: dfd38e775ba418fbe31cafa8df5f37b45c3b0643
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369139"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524368"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>A munkahelyi eszköz csatlakoztatása a vállalati hálózaton
 A munkahelyi tulajdonú Windows 10 rendszerű eszköz csatlakoztatása a vállalati hálózaton potenciálisan korlátozott erőforrások eléréséhez.
@@ -62,7 +62,7 @@ Biztos lehet benne, hogy csatlakoznak-megnézzük a beállításokat.
 
     ![Fiókok, a beállítások képernyőn](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Válassza ki **hozzáférés munkahelyi vagy iskolai**, és ellenőrizze, hogy arról, hogy a következőhöz hasonló, szöveges **csatlakozik *< Saját_szervezet elemre >* Azure ad-ben**.
+2. Válassza ki **hozzáférés munkahelyi vagy iskolai**, és ellenőrizze, hogy arról, hogy a következőhöz hasonló, szöveges **csatlakozik  *\<Saját_szervezet elemre >* Azure ad-ben**.
 
     ![Hozzáférés munkahelyi vagy iskolai képernyő és csatlakoztatott contoso-fiók](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -107,7 +107,7 @@ Biztos lehet benne, hogy csatlakoznak-megnézzük a beállításokat.
 
     ![Fiókok, a beállítások képernyőn](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Válassza ki **hozzáférés munkahelyi vagy iskolai**, és ellenőrizze, hogy arról, hogy a következőhöz hasonló, szöveges **csatlakozik *< Saját_szervezet elemre >* Azure ad-ben**.
+2. Válassza ki **hozzáférés munkahelyi vagy iskolai**, és ellenőrizze, hogy arról, hogy a következőhöz hasonló, szöveges **csatlakozik  *\<Saját_szervezet elemre >* Azure ad-ben**.
 
     ![Hozzáférés munkahelyi vagy iskolai képernyő és csatlakoztatott contoso-fiók](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

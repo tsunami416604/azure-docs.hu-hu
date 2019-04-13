@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: e2b82c8a7bcdc1982ed4489e9422a4a0efd64f3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf5215ff5acaf08125cf280103ba8ff0123dc116
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58175099"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523817"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Ismert problémák és a migrálás korlátozások az online migrálást az Azure-adatbázis MySQL-hez
 
@@ -30,7 +30,7 @@ Ismert problémák és korlátozások online migrálást a MySQL az Azure Databa
 - Azonos verziójú áttelepítés. Azure database for MySQL 5.7-es áttelepítése MySQL 5.6 nem támogatott.
 - Bináris naplózás engedélyezése a my.ini (Windows) vagy my.cnf (Unix)
     - Állítsa be a Server_id akárhány nagyobb vagy egyenlő 1, például a Server_id = 1 (csak a MySQL 5.6-os)
-    - Állítsa be a log-bin = <path> (csak a MySQL 5.6-os)
+    - Állítsa be a log-bin = \<elérési útja > (csak a MySQL 5.6-os)
     - Állítsa be a binlog_format = sor
     - Expire_logs_days = 5 (ajánlott – csak a MySQL 5.6-os)
 - Felhasználónak a ReplicationAdmin szerepkörrel kell rendelkeznie.

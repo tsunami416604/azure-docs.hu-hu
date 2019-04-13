@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 079bfae19a4960ef5ab95c9d48d5603423407a9e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c8a700bcd2780ef7b0c7ad1fbb513d4b4febffcb
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772874"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549320"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>Egyéni rendszerkép, többtárolós vagy beépített platformlemezkép?
 
 [A linuxon futó App Service](app-service-linux-intro.md) kínál a közzétett webes alkalmazásai három különböző elérési utak:
 
 - **Egyéni lemezkép telepítésének**: "Dockerize" az alkalmazás be egy Docker-rendszerképet, amely az összes, a fájlok és a egy futtatásra kész csomag függőségeit tartalmazza.
-- **Több tároló üzembe helyezési**: "Dockerize" az alkalmazást egy Docker-Compose- vagy Kubernetes konfigurációs fájl használatával több tárolón. További információkért lásd: [többtárolós alkalmazás](#multi-container-apps-supportability).
+- **Több tároló üzembe helyezési**: "Dockerize" az alkalmazást egy Docker-Compose- vagy Kubernetes konfigurációs fájl használatával több tárolón.
 - **Az alkalmazás üzembe helyezése a platform beépített rendszerképpel rendelkező**: A beépített platform általános webes alkalmazás futtatókörnyezetek és függőségei, mint például a Node és a PHP tartalmazzák. Használjon a [Azure App Service-alapú üzembe helyezési módszer](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) helyezze üzembe az alkalmazást a webalkalmazás-tárolóba, és beépített platformlemezkép használatával futtassa.
 
 ## <a name="which-method-is-right-for-your-app"></a>Módszer a legmegfelelőbb az alkalmazást? 
@@ -43,38 +43,3 @@ Megfontolandó legfontosabb tényezők a következők:
 - **Lemez írási/olvasási követelmények**: Web Apps-alkalmazások az összes webes tartalmak vannak lefoglalva a tárolási köteten. Az Azure-tárhely, a kötet csatlakoztatva van `/home` a fájlrendszer az alkalmazást. Ellentétben a fájlok a tároló fájlrendszer a tartalom köteten lévő fájlok elérhetők egy alkalmazás összes méretezési csoport példánya között, és módosítások megmaradnak az alkalmazás-újraindítások között. Azonban a tartalom kötet a lemez késése értéke magasabb, és további változó, mint a helyi tároló fájlrendszer és a hozzáférés a késés is hatással lehet ügyfélfelügyeletiplatform-frissítésekre, a nem tervezett üzemkimaradások, és a hálózati problémák léptek fel. Tartalomfájlok (nagy erőforrásigényű) csak olvasható hozzáférést igénylő alkalmazások előnyösebb lehet egyéni rendszerképet a központi telepítési fájljait elhelyezi az lemezkép fájlrendszer helyett a tartalom köteten található.
 - **Erőforrás-használat Build**: Ha egy alkalmazást a forrásból, a központi telepítési parancsfájlok futtatása Kudu használatával az azonos App Service-csomag számítási és tárolási erőforrások a futó alkalmazás. Nagy méretű alkalmazások telepítésének felhasználható további erőforrásokat, vagy a kívánt időt. Különösen számos üzembe helyezési munkafolyamatok létrehozása (nagy erőforrásigényű) lemez tevékenység a alkalmazás tartalom köteten, amely nincs optimalizálva az ilyen tevékenység. Egyéni rendszerkép kínál az alkalmazás fájljait és függőségek összes az Azure-bA és nincs szükség további fájlátvitel vagy a telepítési műveletek egyetlen csomagban.
 - **Gyors ismétlését szükséges**: Alkalmazás dockerizing build további lépéseket igényel. A módosítások érvénybe léptetéséhez, meg kell az új rendszerkép leküldése egy adattár az egyes frissítések. Ezek a frissítések majd lekért vannak az Azure-környezethez. Ha az alkalmazás igényeinek megfelel egy beépített tárolót, üzembe helyezése a forrás kínálhatják gyorsabb fejlesztést munkafolyamat.
-
-## <a name="multi-container-apps-supportability"></a>Többtárolós alkalmazások támogatási lehetőségek
-
-### <a name="supported-docker-compose-configuration-options"></a>Támogatott a Docker Compose konfigurációs beállítások
-- command
-- entrypoint
-- environment
-- image
-- ports
-- restart
-- services
-- volumes
-
-### <a name="unsupported-docker-compose-configuration-options"></a>Nem támogatott a Docker Compose konfigurációs lehetőségek
-- build (nem engedélyezett)
-- depends_on (figyelmen kívül hagyva)
-- networks (figyelmen kívül hagyva)
-- secrets (figyelmen kívül hagyva)
-- 80-as és 8080-as (azaz a rendszer figyelmen kívül hagyja)-astól különböző portok
-
-> [!NOTE]
-> A nyilvános előzetes verziót minden egyéb, itt fel nem tüntetett beállítást szintén figyelmen kívül hagy.
-
-### <a name="supported-kubernetes-configuration-options"></a>Támogatott Kubernetes konfigurációs beállítások
-- args
-- command
-- tárolók
-- image
-- név
-- ports
-- spec
-
-> [!NOTE]
->A nyilvános előzetes verzió semmilyen egyéb, itt fel nem tüntetett Kubernetes-beállítást nem támogat.
->

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 285f29055d0ac9ba656ec828972ef15f4c0d36c7
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: d216a26dc01ae3a6946c57138bb124b41f50a151
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496964"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546238"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -40,7 +40,7 @@ Az alábbiakban az adott platformok követelményeit, az NPM képességek:
 - NPM ExpressRoute-figyelő funkció támogatja a csak a Windows server (2008 SP1 vagy újabb) operációs rendszert.
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Linux rendszerű gépek használják az NPM csomópontok figyelése?
-Képes figyelni a Linux-alapú csomópontokat használó hálózatok jelenleg privát előzetes verzióban érhető el. Keresse fel a Ügyfélmenedzserével többet. Miután megadta a munkaterület Azonosítóját, hogy lesz lépjen tovább, és a funkció engedélyezéséhez. Linux-ügynökök adja meg a figyelési funkció csak az NPM Teljesítményfigyelő képesség, és nem érhetők el a szolgáltatás Kapcsolatfigyelő és ExpressRoute-figyelő képességei
+Linux-alapú csomópontokat használó hálózatok figyelése a funkció jelenleg előzetes verzióban érhető el. Keresse fel a Ügyfélmenedzserével többet. Miután megadta a munkaterület Azonosítóját, hogy lesz lépjen tovább, és a funkció engedélyezéséhez. Linux-ügynökök adja meg a figyelési funkció csak az NPM Teljesítményfigyelő képesség, és nem érhetők el a szolgáltatás Kapcsolatfigyelő és ExpressRoute-figyelő képességei
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Mik a méretét a csomópontok figyeléshez az NPM által használandó?
 A csomópont virtuális gépek, hálózatok figyelése az NPM-megoldást futtatja, a csomópontok legalább 500 MB memória és a egy magot kell rendelkeznie. Nem kell különálló csomópontok használata futtatásához npm-et. A megoldás, amely rendelkezik a rajta futó számítási feladatoktól csomópontján futtathatja. A megoldás a teszi, hogy a monitorozási folyamat leállítása, abban az esetben azt használja, amely több, mint 5 %-ot tartalmaz.

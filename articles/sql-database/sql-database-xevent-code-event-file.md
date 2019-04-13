@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 0a9472dec9b76dfbde1690e11f13836746b0dfaa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 983a090942a77c2f40e0136b00acdc0a3d49c571
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57862896"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528339"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Eseményfájl célkódja az SQL Database bővített események
 
@@ -463,9 +463,9 @@ GO
 
 ## <a name="output"></a>Kimenet
 
-A Transact-SQL parancsfájl befejezése után kattintson a cellára a **event_data_XML** oszlop fejlécére. Egy **<event>** elem jelenik meg, amely egy UPDATE utasítás jeleníti meg.
+A Transact-SQL parancsfájl befejezése után kattintson a cellára a **event_data_XML** oszlop fejlécére. Egy  **\<esemény >** elem jelenik meg, amely egy UPDATE utasítás jeleníti meg.
 
-Egy **<event>** elem, amely a tesztelés során jött létre:
+Egy  **\<esemény >** elem, amely a tesztelés során jött létre:
 
 
 ```xml

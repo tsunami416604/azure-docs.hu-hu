@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24956dd51ef4c2544ce28005fa3bff31113e5959
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29f2aeee53e07adfeafb8017c489c0b830f24b36
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848925"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521594"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Váltás nyilvános hitelesítésszolgáltatói átjárótanúsítványra a P2S-kapcsolatok esetében
 
@@ -56,7 +56,7 @@ Ez a változás által érintett csak a régebbi átjárók. Ha az átjáró tan
 
 ### <a name="classic"></a>Klasszikus
 
-1. Egy ügyfélszámítógépen, keresse meg elérési utat %appdata%/Microsoft/Network/Connections/Cm/<gatewayID>. Átjáróazonosító mappában megtekintheti a tanúsítványt.
+1. Egy ügyfélszámítógépen navigáljon a elérési utat `%appdata%/Microsoft/Network/Connections/Cm/<gatewayID>`. Átjáróazonosító mappában megtekintheti a tanúsítványt.
 2. Az Általános lapon a tanúsítványt ellenőrizze, hogy a kibocsátó hatóság "DigiCert globális legfelső szintű hitelesítésszolgáltató". Ha a kiállító szervezet nem rendelkezik, az átjáró tanúsítványa a frissítés részeként, és lép érvénybe.
 
 ## <a name="2-check-certificate-transition-schedule"></a>2. Tanúsítvány átmenet ütemezés ellenőrzése

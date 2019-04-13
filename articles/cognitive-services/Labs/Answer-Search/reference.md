@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 766ceb0bc6f1eb3da9129f2359f6e2be7363dd23
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531130"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527319"
 ---
 # <a name="project-answer-search-v7-reference"></a>Projekt válaszkeresés v7-referencia
 
@@ -35,7 +35,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 ```
 
 A kérelem kell a HTTPS protokollt használja, és tartalmazza a lekérdezési paraméter a következő:
--  a q =<URL> – a lekérdezést, amely azonosítja az objektumot a keresés
+-  `q=<URL>` -A lekérdezést, amely azonosítja az objektumot a keresés
 
 Példák azt mutatják be, hogyan kéréseit: [C# gyorsútmutató](c-sharp-quickstart.md) vagy [Java rövid](java-quickstart.md). 
 
@@ -56,7 +56,7 @@ Engedélyezett használatát és a megjelenített eredmények kapcsolatos inform
 > - Direktiva pragma – a hívó nem rendelkezik URL-cím előnézete használ-e gyorsítótár felett
 > - Gyorsítótár-vezérlő esetében – a hívó nem rendelkezik URL-cím előnézete használ-e gyorsítótár felett
 > - User-Agent
-
+> 
 > Is néhány paraméter nem jelenleg jelentéssel bíró URL-cím előzetes API-hoz, de a jövőben a továbbfejlesztett globalizációs használhatók. 
  
 ## <a name="headers"></a>Fejlécek  
@@ -217,18 +217,21 @@ Meghatározza a Bing a kéréshez használt lekérdezési környezet.
 |originalQuery|A kérésben megadott lekérdezési karakterlánc.|String|  
 
 ### <a name="identifiable"></a>Azonosításra alkalmas
+
 |Name (Név)|Érték|Typo|  
 |-------------|-----------------|----------|
 |id|Egy erőforrás-azonosítója|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Határozza meg a keresési eredmények csoport, mint például mainline.
+
 |Name (Név)|Érték|Typo|  
 |-------------|-----------------|----------|
 |elem|Keresési eredmények megjelennek a csoport listája.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Határozza meg a keresési eredmény elemek megjelenítéséhez.
+
 |Name (Név)|Érték|Typo|  
 |-------------|-----------------|----------|
 |resultIndex|A cikk a válasz megjelenítéséhez a nulla alapú indexét. A cikk nem tartalmazza ezt a mezőt, a válasz jelennek meg az összes elemet. Például megjelenítik az összes hírek a hírek választ.|Egész szám|

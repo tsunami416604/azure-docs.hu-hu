@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a7aa5401cbba9fafda9f995a882934ef0edfa481
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d26bc6044ca106b0f081cee5a39405b4b78ce7ac
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881146"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524004"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: Az Azure HDInsight Hadoop-fürtök használata
 Ez az útmutató használjuk a [csoportos adatelemzési folyamat (TDSP)](overview.md) egy teljes körű forgatókönyvben. Használjuk egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) tárolását, ismerje meg, és a nyilvánosan elérhető a szolgáltatás-mérnök adatainak [NYC Taxi lelassítja](https://www.andresmh.com/nyctaxitrips/) adatkészlet, és való az adatokat. Bináris és többosztályos besorolási és regressziós prediktív feladatok kezelésére, hogy ki, hogy az adatok az Azure Machine Learning modellek. 
@@ -88,11 +88,11 @@ Másolása a [NYC Taxi lelassítja](https://www.andresmh.com/nyctaxitrips/) adat
 
 Itt azt ismertetjük, hogyan vihetők át az adatokat tartalmazó fájlok AzCopy használatával. Töltse le és telepítse az AzCopy, utasításai [Bevezetés az AzCopy parancssori segédprogram](../../storage/common/storage-use-azcopy.md).
 
-1. Egy parancssori ablakban futtassa a következő AzCopy-parancsokat, és cserélje le *< path_to_data_folder >* a kívánt cél:
+1. Egy parancssori ablakban futtassa a következő AzCopy-parancsokat, és cserélje le  *\<path_to_data_folder >* a kívánt cél:
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. A másolás befejeződése után megjelenik a kiválasztott data 24 tömörített fájlok összesen. Csomagolja ki a letöltött fájlok ugyanabban a könyvtárban, a helyi gépen. Jegyezze fel a mappa, ahol a kibontott fájlok találhatók. Ez a mappa a neve a *< elérési út\_való\_unzipped_data\_fájlok\>*  a következőkben.
+1. A másolás befejeződése után megjelenik a kiválasztott data 24 tömörített fájlok összesen. Csomagolja ki a letöltött fájlok ugyanabban a könyvtárban, a helyi gépen. Jegyezze fel a mappa, ahol a kibontott fájlok találhatók. Ez a mappa a neve a *\<elérési\_való\_unzipped_data\_fájlok\>* a következőkben.
 
 ## <a name="upload"></a>Az adatok feltöltése a a HDInsight Hadoop-fürt alapértelmezett tárolója
 > [!NOTE]
@@ -102,10 +102,10 @@ Itt azt ismertetjük, hogyan vihetők át az adatokat tartalmazó fájlok AzCopy
 
 A következő AzCopy-parancsokat, cserélje le az alábbi paramétereket a tényleges értékek, amelyek a Hadoop-fürt létrehozásakor megadott, és az adatfájlokat kicsomagolta.
 
-* ***< Path_to_data_folder >*** a könyvtár (együtt az elérési utat) a gépen, amely a kicsomagolt adatokat fájlokat tartalmazza.  
-* ***<storage account name of Hadoop cluster>*** A HDInsight-fürthöz társított storage-fiók.
-* ***<default container of Hadoop cluster>*** Az a fürt által használt alapértelmezett tároló. Vegye figyelembe, hogy az alapértelmezett tároló neve általában magának a fürtnek azonos néven. Például ha a fürt neve a "abc123.azurehdinsight.net", az alapértelmezett tároló abc123.
-* ***<storage account key>*** A fürt által használt tárfiók kulcsa.
+* ***\<path_to_data_folder >*** a könyvtár (együtt az elérési utat) a gépen, amely a kicsomagolt adatokat fájlokat tartalmazza.  
+* ***\<Hadoop-fürtöt a tárfiók neve >*** a HDInsight-fürthöz társított storage-fiókot.
+* ***\<Hadoop-fürt alapértelmezett tárolója >*** az a fürt által használt alapértelmezett tároló. Vegye figyelembe, hogy az alapértelmezett tároló neve általában magának a fürtnek azonos néven. Például ha a fürt neve a "abc123.azurehdinsight.net", az alapértelmezett tároló abc123.
+* ***\<tárfiók kulcsa >*** a a fürt által használt tárfiók kulcsa.
 
 A parancssorba vagy egy Windows PowerShell-ablakot futtassa a következő két AzCopy-parancsot.
 

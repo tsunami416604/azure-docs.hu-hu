@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 4ece2dc1df3d29a3024c7efe15dd8cecfd9666db
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4322fd60bb30b9eb6ac18c72e75127006acf5149
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663859"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528186"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Azure Service Fabric-összetevőket meg rendszerállapot-jelentéseket a lehetőségeiből közvetlenül a fürtön lévő összes entitáshoz. A [health Store adatbázisban](service-fabric-health-introduction.md#health-store) hoz létre, és törli az entitásokat a rendszer jelentések alapján. Azt is rendezi őket a hierarchiában, amely entitás interakciót rögzíti.
@@ -640,7 +640,7 @@ A rendszer más API-hívás, amely képes elakadnak a **IReplicator** felületet
 
 - **IReplicator.CatchupReplicaSet**: Ez a figyelmeztetés azt jelzi, hogy két dolog egyikét. Nincsenek replikák mentése elégtelen. Ha szeretné látni, ha ez a helyzet, tekintse meg a replika állapota a partíció vagy az System.FM állapotjelentés egy az újrakonfigurálás elakadt a replikán. Vagy a replikák nem vannak bosszankodnak műveleteket. A PowerShell-parancsmag `Get-ServiceFabricDeployedReplicaDetail` minden replika állapotának meghatározásához használható. A probléma van replikák azon `LastAppliedReplicationSequenceNumber` értéke az elsődleges mögött `CommittedSequenceNumber` értéket.
 
-- **IReplicator.BuildReplica(<Remote ReplicaId>)**: Ez a figyelmeztetés az összeállítási folyamat kapcsolatos problémát jelez. További információkért lásd: [replika életciklus](service-fabric-concepts-replica-lifecycle.md). Érdemes lehet egy replikáló címének helytelen konfiguráció miatt. További információkért lásd: [állapotalapú Reliable Services konfigurálása](service-fabric-reliable-services-configuration.md) és [erőforrások meghatározása szolgáltatásjegyzékben](service-fabric-service-manifest-resources.md). A távoli csomóponton hiba is lehet.
+- **IReplicator.BuildReplica (\<távoli ReplicaId >)**: Ez a figyelmeztetés az összeállítási folyamat kapcsolatos problémát jelez. További információkért lásd: [replika életciklus](service-fabric-concepts-replica-lifecycle.md). Érdemes lehet egy replikáló címének helytelen konfiguráció miatt. További információkért lásd: [állapotalapú Reliable Services konfigurálása](service-fabric-reliable-services-configuration.md) és [erőforrások meghatározása szolgáltatásjegyzékben](service-fabric-service-manifest-resources.md). A távoli csomóponton hiba is lehet.
 
 ### <a name="replicator-system-health-reports"></a>A replikáló rendszerállapot-jelentések
 **Replikációs várólistája megtelt:**

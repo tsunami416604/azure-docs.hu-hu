@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: a0405e6c699192839f72b290d0466ab5062ac584
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f977a48338f784562ec84355aabb212e5a3dade4
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670128"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543668"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>A Service Fabric a Visual Studio Code
 
@@ -120,7 +120,7 @@ A **Service Fabric: Alkalmazás eltávolítása** parancs eltávolítja a fürt�
 2.  Tekintse meg a fürthöz a Service Fabric Explorerrel ellenőrizze, hogy a kérelem el lett távolítva. Ez eltarthat némi ideig legyen a kis türelmet.
 
 ### <a name="service-fabric-build-application"></a>A Service Fabric: Alkalmazás létrehozása
-A **Service Fabric: Alkalmazás eltávolítása** parancsot hozhat létre vagy a Java vagy C# Service Fabric-alkalmazásokat. 
+A **Service Fabric: Alkalmazás létrehozása** parancsot hozhat létre vagy a Java vagy C# Service Fabric-alkalmazásokat. 
 
 1.  Győződjön meg róla, hogy az alkalmazás gyökérmappájában lévő mappának a parancs végrehajtása előtt. A parancs azonosítja az alkalmazás (C# vagy Java), és ennek megfelelően létrehozza az alkalmazást.
 2.  Válassza ki a **Service Fabric: Alkalmazás létrehozása** parancsot.

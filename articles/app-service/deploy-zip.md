@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 1bc8dc822622ee7b16b3e0a31e7b0b66ed7556e6
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: a48a72fe36b7925936758e844d959968ea921c65
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59488405"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544058"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Alkalmazás üzembe helyezése az Azure App Service egy ZIP- vagy WAR-fájlt
 
@@ -73,13 +73,23 @@ Győződjön meg arról, hogy az Azure CLI-verzió 2.0.21-es vagy újabb verzió
 
 A feltöltött ZIP-fájlt a webalkalmazás segítségével telepítheti a [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) parancsot.  
 
-A következő példa telepíti a feltöltött ZIP-fájlt. Az Azure parancssori felület helyi telepítését használja, amikor adja meg a helyi, a ZIP-fájl elérési útját `--src`.   
+A következő példa telepíti a feltöltött ZIP-fájlt. Az Azure parancssori felület helyi telepítését használja, amikor adja meg a helyi, a ZIP-fájl elérési útját `--src`.
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
 ```
 
-Ez a parancs üzembe helyezi a ZIP-fájlban szereplő fájlokat és könyvtárakat az alapértelmezett App Service-alkalmazásmappában (`\home\site\wwwroot`), majd újraindítja az alkalmazást. Ha további egyéni kiépítési folyamatok vannak megadva, azokat is futtatja. További információkért lásd: [Kudu dokumentáció](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
+Ez a parancs üzembe helyezi a ZIP-fájlban szereplő fájlokat és könyvtárakat az alapértelmezett App Service-alkalmazásmappában (`\home\site\wwwroot`), majd újraindítja az alkalmazást.
+
+Alapértelmezés szerint az üzembe helyezési motorban feltételezi, hogy egy ZIP-fájlba történő futtatásra kész –, és bármely buildelési automation nem fut le. Ahhoz, hogy azonos hozhat létre az automation egy [Git üzemelő példánnyal](deploy-local-git.md)állítsa be a `SCM_DO_BUILD_DURING_DEPLOYMENT` Alkalmazásbeállítás a következő parancs futtatásával a [Cloud Shell](https://shell.azure.com):
+
+```azurecli-interactive
+az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
+```
+
+
+
+További információkért lásd: [Kudu dokumentáció](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
 [!INCLUDE [app-service-deploy-zip-push-rest](../../includes/app-service-deploy-zip-push-rest.md)]  
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 04/11/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: beb0c1f9d6b54c029af48684fd81b38699dd2720
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 0ffbffc788baaffd4a0532c3918ed82cc3eaf5c3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630648"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527812"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Analysis Services erőforrás- és objektum korlátozásai
 
@@ -67,8 +67,8 @@ Ezek a korlátok elméleti. Teljesítmény fog csökkenteni kell a alacsonyabb s
 |A hierarchia szintek|15,999|  
 |Kapcsolatok|8,000|  
 |Az összes tábla oszlopainak kulcs|15,999|  
-|Mértékek a táblák|2 ^ 31 – 1 = 2 147 483 647|  
-|Egy lekérdezés által visszaadott cellák|2 ^ 31 – 1 = 2 147 483 647|  
+|Mértékek a táblák|2^31-1 = 2,147,483,647|  
+|Egy lekérdezés által visszaadott cellák|2^31-1 = 2,147,483,647|  
 |Az adatforrás-lekérdezés rögzítése mérete|64 K|  
 |Objektum nevének hossza|512 karakter|  
 

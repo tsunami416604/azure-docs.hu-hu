@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: jdial;annahar
-ms.openlocfilehash: bded6c76aa209a718929c891bd2443f8517ec44a
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 70dac62e3e19ad0e9b33ea7b376a8fe479bf3131
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649636"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522984"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Több IP-cím hozzárendelése a virtuális gépek PowerShell-lel
 
@@ -96,7 +96,7 @@ A következő lépések azt ismertetik, hogyan hozzon létre próbaképpen egy v
 
 6. Adja meg az elsődleges IP-konfigurációt a hálózati adaptert. 10.0.0.4 váltson érvényes cím az alhálózat hozta létre, ha nem használja a korábban meghatározott érték. Statikus IP-cím hozzárendelése, előtt javasoljuk, hogy először meggyőződött még nincs használatban. Adja meg a parancsot `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`. Ha a cím érhető el, a kimenetet ad vissza *igaz*. Ha nem érhető el, a kimenetet ad vissza *hamis* és a rendelkezésre álló címek listáját. 
 
-    Az alábbi parancsokban **< csere-az-az egyedi neve-> cserélje le az egyedi DNS-név használatához.** A név az összes nyilvános IP-címek Azure régiókon belül egyedinek kell lennie. Ez egy nem kötelező paraméter. Ha csak szeretné csatlakoztatni a virtuális gép nyilvános IP-cím használatával el kell távolítani.
+    Az alábbi parancsokban **cseréje \<csere-az-az egyedi neve-> használandó egyedi DNS-névvel.** A név az összes nyilvános IP-címek Azure régiókon belül egyedinek kell lennie. Ez egy nem kötelező paraméter. Ha csak szeretné csatlakoztatni a virtuális gép nyilvános IP-cím használatával el kell távolítani.
 
     ```powershell
     

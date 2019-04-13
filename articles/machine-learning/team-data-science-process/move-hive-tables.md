@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d67bd26dcb2ac0b3bf909e1ef3d5ca75a0882eb3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28e399eaf62731d7c38cea5f5a8cb8ebf876e686
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840647"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522503"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage-ból
 
@@ -112,7 +112,7 @@ A Hadoop-fürt Azure Storage Explorer használatával az alapértelmezett tárol
 ![A Hive-lekérdezés kimenete bemutató az Azure Storage Explorerrel](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2. A Hive szerkesztőben a Hive-lekérdezések elküldéséhez
-A Lekérdezéskonzol (Hive szerkesztő) is használhatja az űrlap egy URL-cím megadásával *https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* kifejezés webböngészőbe. Kell lennie a lásd: Ez a konzol bejelentkezett, és ezért szüksége a Hadoop fürt hitelesítő adatait.
+A Lekérdezéskonzol (Hive szerkesztő) is használhatja az űrlap egy URL-cím megadásával *https:\//\<Hadoop-fürt neve >.azurehdinsight.net/Home/HiveEditor* kifejezés webböngészőbe. Kell lennie a lásd: Ez a konzol bejelentkezett, és ezért szüksége a Hadoop fürt hitelesítő adatait.
 
 ### <a name="ps"></a> 3. Azure PowerShell-parancsokkal Hive-lekérdezések elküldéséhez
 PowerShell használatával Hive-lekérdezések elküldéséhez. Útmutatásért lásd: [elküldése Hive-feladatok PowerShell-lel](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md).
@@ -149,7 +149,7 @@ Itt van a Hive-lekérdezést, amely adatokat tölt be egy Hive-táblába.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<adatok a blob elérési útja\>**: Az alapértelmezett tárolóban a HDInsight Hadoop-fürt, a Hive-táblában való feltöltésre blob fájl esetén a *\<blob adatok elérési útja\>* formátumúnak kell lennie *"wasb: / / /<directory in this container> /<blob file name>'*. A blob-fájlt egy további tárolóban a HDInsight Hadoop-fürt is lehet. Ebben az esetben *\<blob adatok elérési útja\>* formátumúnak kell lennie *"wasb: / /<container name><storage account name>.blob.core.windows.net/<blob file name>"*.
+* **\<adatok a blob elérési útja\>**: Az alapértelmezett tárolóban a HDInsight Hadoop-fürt, a Hive-táblában való feltöltésre blob fájl esetén a *\<blob adatok elérési útja\>* formátumúnak kell lennie *"wasb: / /\< az ezen tároló könyvtár > /\<blob fájlneve > "*. A blob-fájlt egy további tárolóban a HDInsight Hadoop-fürt is lehet. Ebben az esetben *\<blob adatok elérési útja\>* formátumúnak kell lennie *"wasb: / /\<tároló neve >\<tárfiók neve >.blob.core.windows.net/\<blob fájlneve > "*.
 
   > [!NOTE]
   > A Hive-táblába való feltöltésre Blobadatok nem az alapértelmezett vagy a storage-fiók, a Hadoop-fürt kiegészítő tároló lehet. Ellenkező esetben a *adatok betöltése* lekérdezés nem sikerült panaszkodik, hogy az adatok nem férhet hozzá.

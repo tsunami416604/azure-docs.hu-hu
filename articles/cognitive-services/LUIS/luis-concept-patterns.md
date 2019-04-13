@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 42ac75b6ed0d4489ccae014b9cfe3b08269c1218
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547418"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523103"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
 Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva.  Egy minta segítségével megjelölésű a nagyobb pontosság számos további kimondott szöveg megadása nélkül. 
@@ -41,7 +41,7 @@ Minták oldja meg a következő helyzetekben:
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Minták amelyek nem garantálja az leképezés
 Minták előrejelzési technológiák kombinációját használja. Egy leképezésének egy sablon utterance (kifejezés) a mintát, nem garantálja a szándék előrejelzési de erős védelem. 
 
-<a name="patterns-do-not-improve-entity-detection"/>
+<a name="patterns-do-not-improve-entity-detection"/></a>
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Minták növelhető az entitás gép megtanult észlelése
 
@@ -50,7 +50,7 @@ A minta elsősorban az adott leképezések és szerepkörök előrejelzését se
 Továbbfejlesztett entitás előrejelzési megtekintéséhez be egyetlen mintát több utterances összecsukása után nem számít. Egyszerű entitások üzenetszám meg kell beszédmódok hozzáadása, vagy használjon lista entitásokat más a minta nem indulnak el.
 
 ## <a name="patterns-use-entity-roles"></a>Minták entitás szerepkörök használata
-Ha két vagy több entitások egy minta kontextusban kapcsolódó, mintákat használják az entitást [szerepkörök](luis-concept-roles.md) entitásokról környezeti információk kinyeréséhez. Ez a hierarchikus gyermekek egyenértékűek, de **csak** minták érhető el. 
+Ha két vagy több entitások egy minta kontextusban kapcsolódó, mintákat használják az entitást [szerepkörök](luis-concept-roles.md) entitásokról környezeti információk kinyeréséhez.  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Előrejelzési pontszámok rendelkező és anélküli minták
 Adott elegendő példa utterances, LUIS elvileg látnia kell növelni az előrejelzés megbízhatósági minták nélkül. Minták növelheti a megbízhatósági pontszám annyi kimondott szöveg megadása nélkül.  
@@ -83,7 +83,7 @@ A **választható** szintaxist, a szögletes zárójelek között, beágyazott k
 |Új űrlap|külső nem kötelező a word és minta – nem kötelező szavak megfelelő|
 |Új űrlap|csak a szükséges egyezések szavakat|
 
-A **csoportosítási** szintaxis, és zárójelek között, beágyazott két szinten is lehet. Például: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Ez lehetővé teszi bármely illeszkednie kell a három entitásokat. 
+A **csoportosítási** szintaxis, és zárójelek között, beágyazott két szinten is lehet. Például: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Ez a funkció lehetővé teszi, hogy azokat az entitásokat három egyezést kell keresni. 
 
 Ha Entity1 szerepköröket, például a (Budapesten) forrás és cél (Cairo) egy olyan helyre, és entitás 2 lista entitásból (RedWest-C) building ismert nevét, a következő kimondott szöveg ezt a mintát lenne leképezése:
 
@@ -170,7 +170,7 @@ A reguláris kifejezés szögletes zárójel szintaxis használatával az uttera
 |Nem kötelező szöveg minta|Jelentés|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find` és `from {person}` megadása nem kötelező|
-|"Lehet, segítséget kérek a [?]|Nem kötelező, az írásjelek|
+|"Lehet, segítséget kérek a [?] |} Nem kötelező, az írásjelek|
 
 Írásjelek (`?`, `!`, `.`) figyelmen kívül lesz hagyva, és ezek a minták a szögletes zárójelet szintaxis használatával figyelmen kívül kell. 
 

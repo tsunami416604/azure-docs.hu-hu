@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1973d7e360f77aed028d8a93a625f0f6cb7e1ab8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1e4feaed9f4e8f6dd3275da25e33e57197731572
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731234"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523443"
 ---
 # <a name="security-in-azure-app-service"></a>Biztonság az Azure App Service-ben
 
@@ -58,7 +58,7 @@ App Service-ben FTP és a FTPS támogatja a fájlok telepítéséhez. Azonban FT
 
 Alapértelmezés szerint az App Service-alkalmazás fogadja az internetről érkező összes IP-cím kéréseit, de a férjenek hozzá az IP-címek részhalmazát. App Service-ben Windows férhessenek hozzá az alkalmazás IP-címek listájának definiálását teszi lehetővé. Az engedélyezett listára egyedi IP-címek hozzáadhatja, vagy egy IP-címtartomány határozzák meg egy alhálózati maszkot. További információkért lásd: [Azure App Service statikus IP-korlátozások](app-service-ip-restrictions.md).
 
-A Windows App Service, az korlátozhatja is IP-címeket dinamikusan konfigurálásával a _web.config_. További információkért lásd: [dinamikus IP-biztonság <dynamicIpSecurity> ](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+A Windows App Service, az korlátozhatja is IP-címeket dinamikusan konfigurálásával a _web.config_. További információkért lásd: [dinamikus IP-biztonság \<dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Ügyfél-hitelesítés és engedélyezés
 

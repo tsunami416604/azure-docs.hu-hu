@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: da27c772a0650a923068b3c519ef39494573f96a
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 738dd451ca44801c799d793e6501c547655bd0e0
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793118"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524143"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózathoz az Azure API Management szolgáltatás használatával
 Azure virtuális hálózatokkal az Azure API Management API-k nem érhető el az interneten is kezelheti. Számos VPN technológia érhetők el a kapcsolatot. Az API Management egy virtuális hálózaton belül két fő módban telepíthető:
@@ -45,6 +45,7 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 + **Az Azure API Management-példány**. További információkért lásd: [Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
++ Ha egy API Management szolgáltatás üzembe helyezése egy virtuális hálózatban, egy [portok listája](./api-management-using-with-vnet.md#required-ports) használják, és meg kell nyitni. 
 
 ## <a name="enable-vpn"> </a>Az API Management létrehozása a belső virtuális hálózathoz
 Az API Management szolgáltatás egy belső virtuális hálózatban lévő üzemeltetett mögött egy [belső terheléselosztó (klasszikus)](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Ez az egyetlen lehetőség érhető el, és nem módosítható.

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 42fde2804c04b2449068d649e1c660d02e72edb1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729355"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547144"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Data Flow séma eltéréseket leképezése
 
@@ -26,7 +26,7 @@ Annak érdekében, hogy a séma eltéréseket ellen védelmet biztosító, fonto
 * Változtatható mezők és értékek helyett adatmintákhoz szűrősablonokat együttműködő átalakító paraméterek megadása
 * Adja meg a kifejezések, amelyek a bejövő mezők helyett mezők nevű-minták megismerése
 
-Az Azure Data Factory adatfolyam ezekben a létesítményekben végzetesnek ezt a munkafolyamatot:
+## <a name="how-to-implement-schema-drift"></a>Séma eltéréseket megvalósítása
 
 * Válassza a "Séma eltéréseket engedélyezése" az a forrás átalakítást
 
@@ -67,3 +67,10 @@ Tesztelheti a felskálázás az Azure Data Factory adatfolyam minta "Taxi bemuta
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
+## <a name="access-new-columns-downstream"></a>Hozzáférés aktiválásához az új oszlopok
+
+Oszlop-minták az új oszlopok generál, ha későbbi részében a flow adatátalakítások "byName" kifejezés funkció használatával érheti el a új oszlopokat.
+
+## <a name="next-steps"></a>További lépések
+
+Az a [Data Flow Kifejezésnyelveket](data-flow-expression-functions.md) oszlop minták és séma eltéréseket, beleértve a "byName" és "byPosition" a további lehetőségeket talál.

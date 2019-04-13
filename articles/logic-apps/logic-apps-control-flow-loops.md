@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 3faa3b0a5cd919752f8b7e4969e3affd668c8077
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360769"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523001"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Hurkok, ismételje meg a munkafolyamat-műveletek, vagy az Azure Logic Appsben tömbök feldolgozni létrehozása
 
@@ -181,7 +181,7 @@ Az alábbiakban néhány gyakori forgatókönyvet, ahol használhatja egy "Csak"
    | -------- | ----- |
    | **Intervallum** | 1 | 
    | **Gyakoriság** | Nap |
-   | **Órák** | 8 |
+   | **Ezekben az órákban** | 8 |
    ||| 
 
 1. Az eseményindító területén válassza a **új lépés**. 
@@ -196,7 +196,7 @@ Az alábbiakban néhány gyakori forgatókönyvet, ahol használhatja egy "Csak"
    | Tulajdonság | Érték | Leírás |
    | -------- | ----- | ----------- |
    | **Name (Név)** | Korlát | A változó neve | 
-   | **Typo** | Egész szám | A változó adattípusa | 
+   | **Típus** | Egész szám | A változó adattípusa | 
    | **Érték** | 0 | A változó értéke a indítása | 
    |||| 
 
@@ -236,7 +236,7 @@ Az alábbiakban néhány gyakori forgatókönyvet, ahol használhatja egy "Csak"
 
       | Tulajdonság | Érték | Leírás |
       | -------- | ----- | ----------- | 
-      | **Művelet** | *<email-address\@domain>* | a címzett e-mail címét. Tesztelésre a saját e-mail cím használható. | 
+      | **Címzett** | *\<email-address\@domain>* | a címzett e-mail címét. Tesztelésre a saját e-mail cím használható. | 
       | **Tárgy** | Jelenlegi "Limit" értéke **korlát** | Adja meg az e-mail tárgyát. Ebben a példában győződjön meg arról, hogy tartalmazzák a **korlát** változó. | 
       | **Törzs** | <*email-content*> | Adja meg az e-mail üzenet tartalma is szeretne küldeni. Ebben a példában adja meg bármilyen kívánt szöveg. | 
       |||| 
@@ -253,7 +253,7 @@ Egy "Csak" hurkot rendelkezik alapértelmezett korlátai, állítsa le a végreh
 
 | Tulajdonság | Alapértelmezett érték | Leírás | 
 | -------- | ------------- | ----------- | 
-| **Darabszám** | 60 | Hurkok, amely előtt a hurok kilépjen számát vesszük figyelembe. Az alapértelmezett érték 60 ciklusokat. | 
+| **Száma** | 60 | Hurkok, amely előtt a hurok kilépjen számát vesszük figyelembe. Az alapértelmezett érték 60 ciklusokat. | 
 | **Időtúllépés** | PT1H | A legtöbb mennyi ideig való futtatása előtt a hurok hurkot kilép. Az alapértelmezett érték egy óra és az ISO 8601 formátumban van megadva. <p>Az időtúllépés értéke abban az esetben minden ciklus ciklus. A hurok bármely művelet, mint a megadott időkorláton hosszabb időt vesz igénybe, állítsa le az aktuális ciklus nem. A következő ciklusig az újbóli azonban csak nem indul el, mert a korlát feltétel nem teljesül. | 
 |||| 
 

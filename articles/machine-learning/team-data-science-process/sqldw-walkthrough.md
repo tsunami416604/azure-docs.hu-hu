@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: adbf3e4fbc0f9d49458dadaebcdd2a090030654e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e27c4462e7137145917d1284bfb6f8838e8a090b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838884"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523596"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>A csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse használatával
 Ez az oktatóanyag azt mutatja be létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Data Warehouse (az SQL DW) egy nyilvánosan elérhető adatkészlethez – a [NYC Taxi lelassítja](https://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított előrejelzi e tipp fizetős útnak és többosztályos osztályozási és regressziós modellek is taglalja, hogy a terjesztési előre fizetett összegek tipp.
@@ -77,7 +77,7 @@ Az Azure Data Science környezet beállításához, kövesse az alábbi lépése
 **Üzembe helyezhető az Azure SQL DW-példányt.**
 Kövesse a dokumentációban a [hozzon létre egy SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) kiépítéséhez egy SQL Data Warehouse-példányhoz. Győződjön meg arról, hogy az a következő SQL Data Warehouse hitelesítő adatok a későbbi lépésekben fogja használni, hogy jelölések.
 
-* **Kiszolgálónév**: <server Name>. database.windows.net
+* **Kiszolgálónév**: \<kiszolgáló neve >. database.windows.net
 * **SQLDW (adatbázis) neve**
 * **Felhasználónév**
 * **Jelszó**

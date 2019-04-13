@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 58b0039980f448c9bd953e9d59289c511ce95517
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d7b8c0685cf92341241575d3e67c09a759f5c190
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663026"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543748"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Oktatóanyag: IoT Hub üzenet-útválasztása konfigurálása Azure Resource Manager-sablon használatával
 
@@ -54,7 +54,7 @@ Ezek a paraméterek többsége az alapértelmezett értékek találhatók. A kap
 
 **Hely**: Ez a mező, amelybe helyez üzembe, mint például a "westus" az Azure-régióban.
 
-**consumer_group**: Ezt a mezőt kötelező a fogyasztói csoportot beállítani a útválasztási végpont beérkező üzeneteket. Az Azure Steam elemzési eredmények szűréséhez használatos. Például van a teljes stream mindaz megtalálható, illetve ha consumer_group beállítása a beérkező adatokat **Contoso**, majd beállíthat egy Azure Stream Analytics stream (és a Power BI-jelentés) bejegyzésekre megjelenítéséhez. A 2. rész a jelen oktatóanyag használja ezt a mezőt.
+**consumer_group**: Ezt a mezőt kötelező a fogyasztói csoportot beállítani a útválasztási végpont beérkező üzeneteket. Az Azure Stream Analytics az eredmények szűréséhez használatos. Például van a teljes stream mindaz megtalálható, illetve ha consumer_group beállítása a beérkező adatokat **Contoso**, majd beállíthat egy Azure Stream Analytics stream (és a Power BI-jelentés) bejegyzésekre megjelenítéséhez. A 2. rész a jelen oktatóanyag használja ezt a mezőt.
 
 **sku_name**: Ez a mező az IoT hub méretezés. Ennek az értéknek kell lennie az S1 vagy újabb; ingyenes nem működik Ebben az oktatóanyagban, mert nem teszi lehetővé több végpontot.
 

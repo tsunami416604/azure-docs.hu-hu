@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 1e550002948fc1320b8645bf1af635536d524fe6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f61c7a939902ee5d02b2e9ba896c7555968f9d0d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282389"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547985"
 ---
 # <a name="add-a-shape-to-a-map"></a>Alakzat hozzáadása a térkép
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan jelennek meg a térképen, vonal- és sokszög réte
 
 `LineString` és `MultiLineString` hamisításszűrési funkcióit használják, amelyek elérési utak és ismerteti a térképen.
 
-## <a name="use-a-line"></a>Egy sor használata
+### <a name="add-a-line"></a>Adjon hozzá egy sort
 
 <iframe height='500' scrolling='no' title='Adjon hozzá egy sort egy térképre' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/qomaKv/'>adjon hozzá egy sort egy térképhez</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -53,7 +53,7 @@ Nem csak a alkalmazni egy sort egy egyetlen körvonal színe is kitöltheti egy 
 
 <br/>
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="A körvonal színátmenetes vonal" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=265&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="A körvonal színátmenetes vonal" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>a körvonal színátmenetes vonal</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -171,7 +171,7 @@ A harmadik kódblokk létrehoz egy függvényt, amely a HTML-tartomány csúszka
 
 A negyedik kódblokkot, egy adatforrás-objektum létrejött, használja a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) osztály. A pont adatforráshoz kerül.
 
-A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) csomagolni adatok rendereli a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) a térképen. A harmadik kódblokkot egy sokszögréteg hoz létre. Megtekintheti a tulajdonságait, polygon réteg [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Az adatforrás, a kattintson esemény hanlder és a sokszögréteg létrehoz és a térkép belül hozzáadja a [eseménykezelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) annak érdekében, hogy a pont után teljes betölti a térkép jelenik meg.
+A [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) csomagolni adatok rendereli a [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) a térképen. A harmadik kódblokkot egy sokszögréteg hoz létre. Megtekintheti a tulajdonságait, polygon réteg [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Az adatforrás, a kattintson eseménykezelő és a sokszögréteg létrehoz és a térkép belül hozzáadja a [eseménykezelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) annak érdekében, hogy a pont után teljes betölti a térkép jelenik meg.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2412bd5b4b4f05cdeb1638aa3d9ef1676e7b8315
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8db9e60e9ce99eaf2621821825620966b8b8b4ae
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293073"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521628"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Adategység kódolása a Media Encoder Standard használatával hogyan
 > [!div class="op_single_selector"]
@@ -94,14 +94,14 @@ Az alábbi példa bemutatja, hogyan assetName attribútum:
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 * TaskBody tulajdonságai szövegkonstans XML segítségével meghatározhatja a beviteli számát, vagy a tevékenység által használt eszközök kimeneti. A feladat a cikk az XML-séma definíció az XML-fájl tartalmazza.
-* A TaskBody definíciójában minden egyes belső értékét <inputAsset> és <outputAsset> JobInputAsset(value) vagy JobOutputAsset(value) kell beállítani.
+* A TaskBody definíciójában minden egyes belső értékét `<inputAsset>` és `<outputAsset>` JobInputAsset(value) vagy JobOutputAsset(value) kell beállítani.
 * Több kimeneti objektumok feladatonként. Egy JobOutputAsset(x) csak egyszer használhatók fel a feladat a feladat kimeneteként.
 * Megadhatja a feladat bemeneti adategység JobInputAsset vagy JobOutputAsset.
 * Feladatok kell nem alkotnak kört.
 * A paraméter, amely JobInputAsset vagy JobOutputAsset adja át az adott eszköz számára index értékét jelöli. A tényleges eszközöket a feladat definícióját a InputMediaAssets és OutputMediaAssets navigációs tulajdonságok vannak meghatározva.
 * A Media Services OData v3 épül, mert az egyes eszközöket a InputMediaAssets és OutputMediaAssets navigációs tulajdonság gyűjteményeket a hivatkozott keresztül egy "__metadata: uri" név-érték pár.
 * Egy vagy több eszközt, amely a Media Services szolgáltatásban létrehozott InputMediaAssets rendeli hozzá. A rendszer OutputMediaAssets hoznak létre. Ezek nem hivatkozhat egy meglévő eszköz.
-* OutputMediaAssets elnevezheti az assetName attribútum használatával. Ha ez az attribútum nem szerepel, akkor a OutputMediaAsset neve, függetlenül a belső szöveges értéket a <outputAsset> elem van, a feladat név-érték, vagy a feladat azonosítóérték (abban az esetben, ha a Name tulajdonság nincs definiálva) utótaggal. Például, ha a "Mintaként" assetName értékét, majd a OutputMediaAsset neve tulajdonság értéke "Sample." Azonban ha assetName értékét nem állította be, de adta meg az "NewJob" a feladat nevét, majd a OutputMediaAsset neve lenne "_NewJob JobOutputAsset (érték)."
+* OutputMediaAssets elnevezheti az assetName attribútum használatával. Ha ez az attribútum nem szerepel, akkor a OutputMediaAsset neve, függetlenül a belső szöveges értéket a `<outputAsset>` elem van, a feladat név-érték, vagy a feladat azonosítóérték (abban az esetben, ha a Name tulajdonság nincs definiálva) utótaggal. Például, ha a "Mintaként" assetName értékét, majd a OutputMediaAsset neve tulajdonság értéke "Sample." Azonban ha assetName értékét nem állította be, de adta meg az "NewJob" a feladat nevét, majd a OutputMediaAsset neve lenne "_NewJob JobOutputAsset (érték)."
 
 ## <a name="create-a-job-with-chained-tasks"></a>Hozzon létre egy feladatot a kapcsolt műveletek
 A sok alkalmazás-forgatókönyvek fejlesztőknek létrehozni kívánt feldolgozási feladatok sorozatát. A Media Services szolgáltatásban hozzon létre egy kapcsolt műveletek sorát. Minden tevékenység eltérő feldolgozási lépést hajt végre, és különböző médiafeldolgozók szolgál. A kapcsolt műveletek is kiosztják az eszköz egy feladatot a másikra, lineáris sorozatát feladatokat végez az eszköz. Egy feladat végrehajtott feladatok azonban nem szükségesek sorrendben kell. Amikor hoz létre egy kapcsolt feladat, a kapcsolt **ITask** objektumok jönnek létre egyetlen **IJob** objektum.

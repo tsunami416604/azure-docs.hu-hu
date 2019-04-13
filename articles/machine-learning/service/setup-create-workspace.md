@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: f417aef1fd1cc48a37399ff7a157a0e658bbbb02
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e2304f45cef2db720adf4430868205c00714034f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879284"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547948"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Az Azure Machine Learning szolgáltatás munkaterület létrehozása
 
@@ -37,7 +37,7 @@ A munkaterület létrehozásakor a következő Azure-erőforrások lettek hozzá
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
 >[!Note]
->Csakúgy, mint más Azure-szolgáltatások, bizonyos korlátok és kvóták társítva a Machine Learning. [Ismerje meg a kvóták és arról, hogyan kérhető több.](how-to-manage-quotas.md)
+>Csakúgy, mint más Azure-szolgáltatások, bizonyos korlátok és kvóták társítva a Machine Learning. [Ismerje meg a kvótákat és azt, hogyan kérhet belőlük többet.](how-to-manage-quotas.md)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -160,7 +160,7 @@ Hozza létre a munkaterületet egy Jupyter Notebookot, a Python SDK használatá
 
 ### <a name="write-a-configuration-file"></a>Konfigurációs fájl írása
 
-Mentse a munkaterület adatait egy konfigurációs fájlt az aktuális könyvtár. A fájl neve *aml_config/config.json*.  
+Mentse a munkaterület adatait egy konfigurációs fájlt az aktuális könyvtár. A fájl neve *.azureml/config.json*.  
 
 A munkaterület konfigurációs fájl egyszerűen később betöltése ugyanazon a munkaterületen. Más notebookok és ugyanabban a címtárban, vagy a kóddal alkönyvtárban található parancsfájlok is betölthet `ws=Workspace.from_config()` . 
 
@@ -177,13 +177,14 @@ Ez `write_config()` API-hívás létrehoz a konfigurációs fájlt az aktuális 
 ```
 
 > [!TIP]
-> A munkaterület a Python-szkriptek vagy más címtárakban lévő Jupyter notebookok használata, a fájl másolása a könyvtárhoz. A fájl ugyanabban a könyvtárban, nevű alkönyvtárban lehet *aml_config*, vagy egy szülő könyvtárban.
+> A munkaterület a Python-szkriptek vagy más címtárakban lévő Jupyter notebookok használata, a fájl másolása a könyvtárhoz. A fájl ugyanabban a könyvtárban, nevű alkönyvtárban lehet *.azureml*, vagy egy szülő könyvtárban.
 
 ## <a name="resource-manager-template"></a>Resource manager-sablon
 
 Munkaterület létrehozása egy sablonból: [egy Azure Machine Learning szolgáltatás munkaterület létrehozása sablon használatával](how-to-create-workspace-template.md)
 
-## <a name="cli"></a>parancssori felület
+<a name="cli"></a>
+## <a name="command-line-interface"></a>Parancssori felület
 
 Egy munkaterület létrehozása a CLI-vel: [a CLI-bővítmény használata az Azure Machine Learning szolgáltatás](reference-azure-machine-learning-cli.md).
 

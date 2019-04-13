@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 9b905a81751ce5f4de4a4efbb9ff4c328269fe34
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 288ad14110bd446955d6cec7439bfa40a750276c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904848"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521645"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Oktatóanyag – üzembe helyezés HSM-EK virtuális hálózatban a meglévő PowerShell-lel
 
@@ -217,7 +217,7 @@ Az ssh eszköz segítségével csatlakozzon a virtuális géphez. A parancs a k�
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 A jelszó használata pedig a paraméter-fájlból.
-Miután bejelentkezett a Linux rendszerű virtuális gép a HSM-be a magánhálózati IP-cím található az erőforrás a portál használatával jelentkezzen be <prefix>hsm_vnic.
+Miután bejelentkezett a Linux rendszerű virtuális gép a HSM-be a magánhálózati IP-cím található az erőforrás a portál használatával jelentkezzen be \<előtag > hsm_vnic.
 
 ```powershell
 
@@ -279,5 +279,5 @@ Az oktatóanyagban a lépések elvégzése után a dedikált HSM erőforrások �
 * [Magas rendelkezésre állás](high-availability.md)
 * [Fizikai biztonság](physical-security.md)
 * [Hálózat](networking.md)
-* [Figyelés](monitoring.md)
+* [Monitorozás](monitoring.md)
 * [Támogatási lehetőségek](supportability.md)

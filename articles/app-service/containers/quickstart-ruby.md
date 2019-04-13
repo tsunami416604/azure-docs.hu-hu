@@ -4,8 +4,8 @@ description: Ismerje meg egy Ruby on Rails-alkalmazás létrehozásának meneté
 keywords: azure app service, linux, oss, ruby, rails
 services: app-service
 documentationcenter: ''
-author: SyntaxC4
-manager: cfowler
+author: cephalin
+manager: jeconnoc
 editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.service: app-service
@@ -13,22 +13,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/23/2019
-ms.author: cfowler
+ms.date: 03/27/2019
+ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c5858aaf09cd832a5d60d32bb33aeeb51795b406
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 29126171a2d808153c7578d911e0725641ec39ff
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870435"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545145"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Ruby on Rails-alkalmazás létrehozása a Linuxon futó App Service-ben
 
 A [Linuxon futó Azure App Service](app-service-linux-intro.md) hatékonyan skálázható, önjavító webes üzemeltetési szolgáltatást nyújt. Az alábbi gyors útmutató megmutatja, hogyan készíthet alapszintű [Ruby on Rails](https://rubyonrails.org/) alkalmazást, amelyet aztán Web App on Linux alkalmazásként telepíthet az Azure-ba.
 
 > [!NOTE]
-> A Ruby fejlesztői verem jelenleg csak a Ruby on Railst támogatja. Ha egy másik platformot, Sinatra, például a használni kívánt, vagy ha a használni kívánt egy [Ruby-verzió nem támogatott](app-service-linux-intro.md), tekintse át a gyors útmutató: [Web App for Containers](https://docs.microsoft.com/azure/app-service/containers/).
+> A Ruby fejlesztői verem jelenleg csak a Ruby on Railst támogatja. Ha egy másik platformot, Sinatra, például a használni kívánt, vagy ha a használni kívánt egy [Ruby-verzió nem támogatott](app-service-linux-intro.md), kell [futtassa azt egy egyéni tároló](quickstart-docker-go.md).
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -139,4 +139,7 @@ http://<app name>.azurewebsites.net
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Ruby on Rails és Postgres](tutorial-ruby-postgres-app.md)
+> [Oktatóanyag: Ruby on Rails és Postgres](tutorial-ruby-postgres-app.md)
+
+> [!div class="nextstepaction"]
+> [Ruby-alkalmazás konfigurálása](configure-language-ruby.md)

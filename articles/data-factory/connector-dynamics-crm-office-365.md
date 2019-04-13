@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: f40be655481481946929c4d79210cb360797f174
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 772b9b191a2e6464ff481ff6661308e00ef6033a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017157"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545433"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása (Common Data Service) Dynamics 365 vagy Dynamics CRM-hez és az Azure Data Factory használatával
 
@@ -29,10 +29,10 @@ Adatokat másolhat a Dynamics 365 (Common Data Service) vagy a Dynamics CRM bár
 
 A Dynamics-összekötő a következő Dynamics-verziók és a hitelesítési típusokat támogatja. (Internetes Elérésű az internetre irányuló rövid a telepítés.)
 
-| Dynamics-verziók | Hitelesítéstípusok | A kapcsolódószolgáltatás-minták |
+| Dynamics-verziók | Hitelesítési típusok | A kapcsolódószolgáltatás-minták |
 |:--- |:--- |:--- |
 | Dynamics 365 online <br> Dynamics CRM Online | Office365 | [Dynamics online- és Office 365-hitelesítés](#dynamics-365-and-dynamics-crm-online) |
-| Dynamics 365 a helyszínen az internetes Elérésű <br> A Dynamics CRM 2016 helyszíni internetes Elérésű <br> A Dynamics CRM 2015 a helyszínen az internetes Elérésű | INTERNETES ELÉRÉSŰ | [Dynamics helyszíni az internetes Elérésű + internetes Elérésű hitelesítés](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
+| Dynamics 365 a helyszínen az internetes Elérésű <br> A Dynamics CRM 2016 helyszíni internetes Elérésű <br> A Dynamics CRM 2015 a helyszínen az internetes Elérésű | IFD | [Dynamics helyszíni az internetes Elérésű + internetes Elérésű hitelesítés](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
 A Dynamics 365, a következő alkalmazástípusokat támogatja:
 
@@ -70,7 +70,7 @@ A Dynamics-társított szolgáltatást a következő tulajdonságok támogatotta
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, Igen a fogadó Ha a forrás-beli társított szolgáltatás nem rendelkezik egy saját üzemeltetésű integrációs |
 
 >[!IMPORTANT]
->Adatok másolása a Dynamics-be, amikor az alapértelmezett Azure integrációs modul másolás végrehajtásához nem használható. Más szóval, ha a forrás-beli társított szolgáltatás nem rendelkezik a megadott integration Runtime-nak explicit módon [Azure integrációs modul létrehozása](create-azure-integration-runtime.md#create-azure-ir) és a egy Önhöz közeli helyszínt a Dynamics-példány. Társítsa azt a Dynamics társított szolgáltatás az alábbi példában látható módon.
+>Adatok másolása a Dynamics-be, amikor az alapértelmezett Azure integrációs modul másolás végrehajtásához nem használható. Más szóval, ha a forrás-beli társított szolgáltatás nem rendelkezik a megadott integration Runtime-nak explicit módon [Azure integrációs modul létrehozása](create-azure-integration-runtime.md#create-azure-ir) és a egy Önhöz közeli helyszínt a Dynamics-példány. Keresse meg, hol található a Dynamics-példány lére a [régió lista a Dynamics 365](https://docs.microsoft.com/dynamics365/customer-engagement/admin/datacenter/new-datacenter-regions). Társítsa azt a Dynamics társított szolgáltatás az alábbi példában látható módon.
 
 >[!NOTE]
 >A Dynamics-összekötő segítségével "szervezetnév" tulajdonság csak akkor használható a Dynamics CRM/365 Online példányát azonosítja. Tartja működik, amíg a használata javasolt a jobb teljesítmény érdekében például felderítési próbál a jeggyel Ehelyett adja meg az új "serviceUri" tulajdonság.
@@ -157,7 +157,7 @@ Adatok másolása a kezdő és a Dynamics, állítsa be a type tulajdonság, az 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani **DynamicsEntity**. |Igen |
-| EntityName | Az entitást lekérdezni a logikai neve. | Nincs forrás (Ha a tevékenység forrása az "query" van megadva), a fogadó Igen |
+| entityName | Az entitást lekérdezni a logikai neve. | Nincs forrás (Ha a tevékenység forrása az "query" van megadva), a fogadó Igen |
 
 > [!IMPORTANT]
 >- Adatok másolása a Dynamics, a "struktúra" szakaszban esetén nem kötelező, de recommanded Dynamics adatkészlet determinisztikus másolási eredmény biztosítása érdekében. Azt határozza meg a Dynamics-adatok, másolja át kívánt oszlop nevét és adattípusát. További tudnivalókért lásd: [adatkészlet-szerkezetekben](concepts-datasets-linked-services.md#dataset-structure) és [adattípus-leképezés Dynamics](#data-type-mapping-for-dynamics).
@@ -248,7 +248,7 @@ Adatok másolása a Dynamics, állítsa be a forrás típusaként a másolási t
 ]
 ```
 
-### <a name="sample-fetchxml-query"></a>Minta FetchXML-lekérdezés
+### <a name="sample-fetchxml-query"></a>Sample FetchXML query
 
 ```xml
 <fetch>
@@ -330,20 +330,20 @@ A Data Factory megfelelő adattípusokat konfigurálja a forrás Dynamics adatt�
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Hosszú | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Logikai | ✓ | ✓ |
-| AttributeType.Customer | GUID | ✓ | | 
+| AttributeType.Customer | Guid | ✓ | | 
 | AttributeType.DateTime | Dátum és idő | ✓ | ✓ |
-| AttributeType.Decimal | Tizedes tört | ✓ | ✓ |
-| AttributeType.Double | Dupla | ✓ | ✓ |
-| AttributeType.EntityName | Karakterlánc | ✓ | ✓ |
+| AttributeType.Decimal | Decimal | ✓ | ✓ |
+| AttributeType.Double | Double | ✓ | ✓ |
+| AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
-| AttributeType.Lookup | GUID | ✓ | ✓ (a kapcsolódó egyetlen cél) |
+| AttributeType.Lookup | Guid | ✓ | ✓ (a kapcsolódó egyetlen cél) |
 | AttributeType.ManagedProperty | Logikai | ✓ | |
-| AttributeType.Memo | Karakterlánc | ✓ | ✓ |
-| AttributeType.Money | Tizedes tört | ✓ | ✓ |
-| AttributeType.Owner | GUID | ✓ | |
+| AttributeType.Memo | String | ✓ | ✓ |
+| AttributeType.Money | Decimal | ✓ | ✓ |
+| AttributeType.Owner | Guid | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
-| AttributeType.Uniqueidentifier | GUID | ✓ | ✓ |
-| AttributeType.String | Karakterlánc | ✓ | ✓ |
+| AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
+| AttributeType.String | String | ✓ | ✓ |
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 

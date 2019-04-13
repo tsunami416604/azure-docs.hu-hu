@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 3615bd88cfadf2f59942fab7678d36d4d20d8c9f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c6fc363a7ab9de215647e371a9d3c846f8688bd5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992738"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548704"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine-licencsablon áttekintése 
 
@@ -64,7 +64,7 @@ A Widevine-licenc kérelem egy JSON-ként van formázva.
 | --- | --- | --- |
 | hasznos adat |Base64-kódolású karakterlánc |Az ügyfelek által küldött licenc kérelem. |
 | content_id |Base64-kódolású karakterlánc |A kulcs azonosítója és a tartalom létrehozására használt azonosító minden content_key_specs.track_type kulcsával. |
-| Szolgáltató |sztring |Tartalom kulcsok és szabályzatok keresésére használt. A Microsoft kulcskézbesítési használata a Widevine-licenckézbesítés, a rendszer figyelmen kívül hagyja ezt a paramétert. |
+| szolgáltató |sztring |Tartalom kulcsok és szabályzatok keresésére használt. A Microsoft kulcskézbesítési használata a Widevine-licenckézbesítés, a rendszer figyelmen kívül hagyja ezt a paramétert. |
 | policy_name |sztring |Egy korábban regisztrált házirend nevét. Választható. |
 | allowed_track_types |Enum |SD_ONLY vagy SD_HD. Kulcsok tartalmakat vezérlők licenc szerepelnek. |
 | content_key_specs |JSON-tömb struktúrák, tekintse meg a következő szakaszt: "Content key specifikációihoz."  |Részletesebben vezérlő a melyik tartalomkulcs való visszatéréshez. További információkért lásd: a szakasz "Content key specifikációihoz." Csak a allowed_track_types és content_key_specs értékek egyike adható meg. |
@@ -118,12 +118,12 @@ A sablon konfigurálásához a következőket teheti:
 
 Előfordulhat, hogy ez a módszer hibalehetőséget magában rejtő. Javasoljuk, hogy más módszert használja, ismertetett [definiálása szükséges osztályokat és szerializálni a JSON-ná](#classes).
 
-    ```csharp
-    ContentKeyPolicyWidevineConfiguration objContentKeyPolicyWidevineConfiguration = new ContentKeyPolicyWidevineConfiguration
-    {
-        WidevineTemplate = @"{""allowed_track_types"":""SD_HD"",""content_key_specs"":[{""track_type"":""SD"",""security_level"":1,""required_output_protection"":{""hdcp"":""HDCP_V2""}}],""policy_overrides"":{""can_play"":true,""can_persist"":true,""can_renew"":false}}"
-    };
-    ```
+```csharp
+ContentKeyPolicyWidevineConfiguration objContentKeyPolicyWidevineConfiguration = new ContentKeyPolicyWidevineConfiguration
+{
+    WidevineTemplate = @"{""allowed_track_types"":""SD_HD"",""content_key_specs"":[{""track_type"":""SD"",""security_level"":1,""required_output_protection"":{""hdcp"":""HDCP_V2""}}],""policy_overrides"":{""can_play"":true,""can_persist"":true,""can_renew"":false}}"
+};
+```
 
 ### <a id="classes"></a> Adja meg a szükséges osztályokat és szerializálható JSON-ná
 
@@ -131,36 +131,36 @@ Előfordulhat, hogy ez a módszer hibalehetőséget magában rejtő. Javasoljuk,
 
 Az alábbi példa bemutatja a definíciók, amelyet a Widevine JSON-sémájában leképezése egy példát. Az osztályok példányosítható mielőtt azokat a JSON-karakterláncot.  
 
-    ```csharp
-    public class PolicyOverrides
-    {
-        public bool CanPlay { get; set; }
-        public bool CanPersist { get; set; }
-        public bool CanRenew { get; set; }
-        public int RentalDurationSeconds { get; set; }    //Indicates the time window while playback is permitted. A value of 0 indicates that there is no limit to the duration. Default is 0.
-        public int PlaybackDurationSeconds { get; set; }  //The viewing window of time after playback starts within the license duration. A value of 0 indicates that there is no limit to the duration. Default is 0.
-        public int LicenseDurationSeconds { get; set; }   //Indicates the time window for this specific license. A value of 0 indicates that there is no limit to the duration. Default is 0.
-    }
+```csharp
+public class PolicyOverrides
+{
+    public bool CanPlay { get; set; }
+    public bool CanPersist { get; set; }
+    public bool CanRenew { get; set; }
+    public int RentalDurationSeconds { get; set; }    //Indicates the time window while playback is permitted. A value of 0 indicates that there is no limit to the duration. Default is 0.
+    public int PlaybackDurationSeconds { get; set; }  //The viewing window of time after playback starts within the license duration. A value of 0 indicates that there is no limit to the duration. Default is 0.
+    public int LicenseDurationSeconds { get; set; }   //Indicates the time window for this specific license. A value of 0 indicates that there is no limit to the duration. Default is 0.
+}
 
-    public class ContentKeySpec
-    {
-        public string TrackType { get; set; }
-        public int SecurityLevel { get; set; }
-        public OutputProtection RequiredOutputProtection { get; set; }
-    }
+public class ContentKeySpec
+{
+    public string TrackType { get; set; }
+    public int SecurityLevel { get; set; }
+    public OutputProtection RequiredOutputProtection { get; set; }
+}
 
-    public class OutputProtection
-    {
-        public string HDCP { get; set; }
-    }
+public class OutputProtection
+{
+    public string HDCP { get; set; }
+}
 
-    public class WidevineTemplate
-    {
-        public string AllowedTrackTypes { get; set; }
-        public ContentKeySpec[] ContentKeySpecs { get; set; }
-        public PolicyOverrides PolicyOverrides { get; set; }
-    }
-    ```
+public class WidevineTemplate
+{
+    public string AllowedTrackTypes { get; set; }
+    public ContentKeySpec[] ContentKeySpecs { get; set; }
+    public PolicyOverrides PolicyOverrides { get; set; }
+}
+```
 
 #### <a name="configure-the-license"></a>A licenc konfigurálása
 

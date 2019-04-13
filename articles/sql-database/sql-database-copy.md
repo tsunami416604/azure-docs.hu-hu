@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: CarlRabeler
-ms.author: carlrab
+ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 2aeb756bda50597bf3e43c0c84391e0750bd8acb
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 04/11/2019
+ms.openlocfilehash: 47aa88040b6010aeca4aeed696310505d1e17df9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486818"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549687"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Az Azure SQL database tranzakciós szempontból konzisztens másolatot másolása
 
@@ -90,10 +90,16 @@ Ezzel a paranccsal az 1. kiszolgálón Adatbázis1 egy új adatbázisra, 2. adat
     -- Execute on the master database of the target server (server2)
     -- Start copying from Server1 to Server2
     CREATE DATABASE Database2 AS COPY OF server1.Database1;
+    
+> [!IMPORTANT]
+> Mindkét kiszolgálók tűzfalak bejövő kapcsolat engedélyezéséhez a parancsot a T-SQL-PÉLDÁNYT az ügyfél az IP-címről kell konfigurálni.
 
-## <a name="to-move-a-database-between-subscriptions"></a>-Adatbázis áthelyezése előfizetések között
+### <a name="copy-a-sql-database-to-a-different-subscription"></a>SQL-adatbázis másolása egy másik előfizetésbe
 
-Az a [az Azure portal](https://portal.azure.com), kattintson a **SQL Server-kiszolgálók** , és válassza ki azt a kiszolgálót a listából az adatbázist tároló. Kattintson a **áthelyezése**, majd válasszon az áthelyezni kívánt erőforrásokat és az előfizetés áthelyezése.
+A lépések descrbed használhatja az előző szakaszban az adatbázis másolása egy SQL Database-kiszolgáló egy másik előfizetésben található. Ellenőrizze, hogy használjon olyan bejelentkezési azonosítót, amely rendelkezik a forrásadatbázis adatbázis tulajdonosa ugyanazt a nevet és jelszót, és azt a dbmanager szerepkör tagjának, vagy a kiszolgálószintű fő bejelentkezéssel. 
+
+> [!NOTE]
+> A [az Azure portal](https://portal.azure.com) nem támogatja másik előfizetésbe való másolás, mert a portál meghívja az ARM API-t, és az előfizetés-tanúsítványok használatával mindkét georeplikációs részt vevő kiszolgálók eléréséhez.  
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>A másolási művelet állapotának figyelése
 

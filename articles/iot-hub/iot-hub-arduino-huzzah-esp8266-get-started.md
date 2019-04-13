@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: 928860cd9b6493200ed8a14b7654f6a6f32c45d5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 293901aca3fa1a94c9c6340d2e04f47914db0e07
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259388"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524463"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather HUZZAH ESP8266 csatlakoztatása Azure IoT hubhoz a felhőben
 
@@ -220,7 +220,7 @@ A mintaalkalmazás abban az esetben nem kell valódi érzékelő DHT22 szimulál
 
 ### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>A mintaalkalmazás Feather HUZZAH ESP8266 üzembe helyezése
 
-1. A Visual Studio Code-ban kattintson **<Select Serial Port>** állapotát, és majd kattintson a soros port Feather HUZZAH ESP8266 a.
+1. A Visual Studio Code-ban kattintson  **\<válassza ki a soros Port >** állapotát, és majd kattintson a soros port Feather HUZZAH ESP8266 a.
 
 2. Adja meg `F1`, majd írja be a **Arduino** válassza **Arduino: Töltse fel** készíthet és helyezhet üzembe a mintaalkalmazás Feather HUZZAH ESP8266.
 

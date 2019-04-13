@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a90a6811b1c59538db98b85d950906dba2969d57
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 33ca6c36cd11d53a3c50a8374181c511fd2f8c3e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338243"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549084"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) a verziókezelés
 
@@ -140,7 +140,7 @@ Minden Azure Storage-entitás alapján vannak elnevezve a `HubName` konfiguráci
 Azt javasoljuk, hogy egy új verzióját, a függvényalkalmazás üzembe [üzembe helyezési pont](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/). Üzembe helyezési pontok lehetővé teszik több másolatot a függvény alkalmazás – párhuzamos Futtatás csak az egyiket az aktív *éles* tárolóhely. Elérhetővé az új vezénylési logika, a meglévő infrastruktúra készen áll, amikor az új verzió érvényesítheti az üzemelési egyszerűen lehet.
 
 > [!NOTE]
-> Ez a stratégia akkor működik a legjobban, ha HTTP- és webhook eseményindítók használata az orchestrator-funkciók. A-HTTP eseményindítók, például üzenetsorokat vagy az Event Hubs az eseményindító definíciójában Alkalmazásbeállítás, amely frissül, és a felcserélési művelet részeként típusból kell származtatni.
+> Ez a stratégia akkor működik a legjobban, ha HTTP- és webhook eseményindítók használata az orchestrator-funkciók. A-HTTP eseményindítók, például üzenetsorokat vagy az Event Hubs, az eseményindító definíciójában kell [alkalmazásbeállítást származtatást](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) , frissül a felcserélési művelet részeként.
 
 ## <a name="next-steps"></a>További lépések
 

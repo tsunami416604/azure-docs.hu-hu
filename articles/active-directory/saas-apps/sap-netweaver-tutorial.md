@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5a1034a55bc4d516244e11d035f17fcc3b94929
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b648b8458c7f91cae6edb079fbd2ac78553dd969
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855639"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523783"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP netweaver megoldással
 
@@ -135,7 +135,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az SAP netweaver megoldással,
 6. Cserélje le **szolgáltatónevet** T01122, a `http://T01122` , majd kattintson a **mentése**.
 
     > [!NOTE]
-    > Alapértelmezett szolgáltató neve szerint jár <sid> <client> formátumban, de az Azure AD nevet vár az formátumban <protocol>://<name>, szolgáltató neve megegyezik a https:// fenntartásához ajánló<sid> <client> , hogy több SAP NetWeaver ABAP motorok konfigurálása az Azure ad-ben.
+    > Alapértelmezett szolgáltató neve szerint jár `<sid><client>` formátumban, de az Azure AD nevet vár az formátumban `<protocol>://<name>`ajánló fenntartásához szolgáltató neve megegyezik, `https://<sid><client>` , hogy több SAP NetWeaver ABAP-motor konfigurálása az Azure ad-ben.
 
     ![A tanúsítvány letöltési hivatkozás](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 

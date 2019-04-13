@@ -3,19 +3,19 @@ title: Az Azure Functions hálózati beállításai
 description: Az Azure Functions szolgáltatásban elérhető összes hálózati lehetőségeinek áttekintése
 services: functions
 author: alexkarcher-msft
-manager: jehollan
+manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 1/14/2019
+ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 10d7daa6da45c56e20c622fcbca9ee288e737dab
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: a4ae2d8bad50a4103da6afaa0bee5cbb75c877aa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358154"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545505"
 ---
-# <a name="azure-functions-networking-options"></a>Az Azure Functions hálózati beállításai
+# <a name="azure-functions-networking-options"></a>Érvényes hálózati beállításairól az Azure Functions
 
 Ez a dokumentum ismerteti a csomag hálózatkezelési funkcióit az Azure Functions, szolgáltatási beállítások között. Minden, a következő hálózati beállításokat adja meg a bizonyos erőforrások eléréséhez az internetes irányítható címek használata nélkül, vagy internet-hozzáférés korlátozása egy függvényalkalmazáshoz lehetősége. Az összes, a üzemeltetési modellek rendelkezik különböző szintű hálózati elkülönítés érhető el, és megfelelő kiválasztása lehetővé teszi, hogy a hálózati elkülönítés követelményeinek.
 
@@ -32,10 +32,10 @@ Függvényalkalmazások számos különböző módon lehet üzemeltetni.
 |                |[Használatalapú csomag](functions-scale.md#consumption-plan)|⚠ [Premium Plan](functions-scale.md##premium-plan-public-preview)|[App Service-csomag](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[**Bejövő IP-korlátozások**](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
-|[**Virtuálishálózat-integráció**](#vnet-integration)|❌No|⚠ igen|✅Yes|✅Yes|
-|[**Előzetes verzió VNET-integráció (Express Route & Szolgáltatásvégpontok)**](#preview-vnet-integration)|❌No|⚠ igen|⚠ igen|✅Yes|
+|[**VNET-integráció**](#vnet-integration)|❌No|❌No|✅Yes|✅Yes|
+|[**Előzetes verzió VNET-integráció (Express Route & Szolgáltatásvégpontok)**](#preview-vnet-integration)|❌No|⚠igen|⚠igen|✅Yes|
 |[**Hibrid kapcsolatok**](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
-|[**Private Site Access**](#private-site-access)|❌No| ❌No|❌No|✅Yes|
+|[**Privát Webhelyelérés**](#private-site-access)|❌No| ❌No|❌No|✅Yes|
 
 ⚠ Előzetes verziójú funkció, nem éles környezetben való használatra
 
@@ -48,7 +48,7 @@ Az IP-korlátozások lehetővé teszik a rendezett lista engedélyezni vagy leti
 
 [További információk itt](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
 
-## <a name="vnet-integration"></a>Virtuálishálózat-integráció
+## <a name="vnet-integration"></a>VNet-integráció
 
 VNET-integráció lehetővé teszi, hogy a függvényalkalmazás, egy virtuális hálózaton belül erőforrások eléréséhez. VNET-integráció az prémium szintű csomag és az App Service-csomagban érhető el. Ha az alkalmazás az App Service-környezet, már van egy virtuális hálózathoz, és nincs szükség a VNet-integráció funkció az azonos virtuális hálózatban található erőforrások eléréséhez.
 
@@ -84,8 +84,18 @@ A függvények használ, egyetlen TCP-állomás és port kombinációja utal. mi
 
 További tudnivalókért lásd a [App Service – dokumentáció a hibrid kapcsolatokhoz](../app-service/app-service-hybrid-connections.md), amely támogatja a funkciók és a Web Apps.
 
-## <a name="private-site-access"></a>Private Site Access
+## <a name="private-site-access"></a>Hozzáférés személyes oldalakhoz
 
 Privát hozzáférést utal, hogy az alkalmazás csak elérhetőnek magánhálózaton például az Azure virtuális hálózatban. Privát hozzáférést csak akkor használható a konfigurált egy belső Load Balancer (ILB) rendelkező ASE. Az ILB ASE használatával kapcsolatos részletekért lásd: [létrehozása és a egy ILB ASE használatával](../app-service/environment/create-ilb-ase.md).
 
 Számos módon más üzemeltetési lehetőségek a VNET-erőforrások eléréséhez, de az ASE az egyetlen módja, hogy az eseményindítók a egy függvényt, amely egy VNET-en keresztül történik.
+
+## <a name="next-steps"></a>További lépések
+További információ a hálózatkezelés és funkciók: 
+
+* [Hajtsa végre a virtuális hálózatok közötti integráció oktatóanyagban](./functions-create-vnet.md)
+* [Olvassa el a függvények itt hálózat – gyakori kérdések](./functions-networking-faq.md)
+* [További tudnivalók a VNET-integráció az App Service szolgáltatással / ide-függvények](../app-service/web-sites-integrate-with-vnet.md)
+* [További információ az Azure-beli virtuális hálózatok](../virtual-network/virtual-networks-overview.md)
+* [További hálózati funkciókat és hozzáférés-vezérlés az App Service Environment-környezetek engedélyezése](../app-service/environment/intro.md)
+* [Hibrid kapcsolatok használatával tűzfal módosítása nélkül az egyes helyszíni erőforrások eléréséhez](../app-service/app-service-hybrid-connections.md)

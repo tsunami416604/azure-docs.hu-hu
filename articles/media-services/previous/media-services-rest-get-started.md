@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d1453a558032e458e89c724e30472cc06f9cf33c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: fea9bae9fadc20622a6ca3d2e08db9cd3a92c800
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295130"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523987"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Tartalmak továbbítása igény szerint REST használatával  
 
@@ -560,7 +560,7 @@ Ha ez sikeres, a következő választ adja vissza:
 Van néhány fontos szempont, bármely feladathoz kérelem vegye figyelembe:
 
 * TaskBody tulajdonságai szövegkonstans XML segítségével meghatározhatja a beviteli számát, vagy a tevékenység által használt eszközök kimeneti. A feladat a cikk az XML-séma definíció az XML-fájl tartalmazza.
-* A TaskBody definíciójában minden egyes belső értékét <inputAsset> és <outputAsset> JobInputAsset(value) vagy JobOutputAsset(value) kell beállítani.
+* A TaskBody definíciójában minden egyes belső értékét `<inputAsset>` és `<outputAsset>` JobInputAsset(value) vagy JobOutputAsset(value) kell beállítani.
 * Több kimeneti objektumok feladatonként. Egy JobOutputAsset(x) csak egyszer használhatók fel a feladat a feladat kimeneteként.
 * Megadhatja a feladat bemeneti adategység JobInputAsset vagy JobOutputAsset.
 * Feladatok kell nem alkotnak kört.
@@ -572,7 +572,7 @@ Van néhány fontos szempont, bármely feladathoz kérelem vegye figyelembe:
 >
 
 * A Media Services szolgáltatásban létrehozott egy vagy több eszköz InputMediaAssets rendeli hozzá. A rendszer OutputMediaAssets hoznak létre. Egy meglévő eszköz akkor nem hivatkoznak.
-* OutputMediaAssets elnevezheti a assetName attribútum használatával. Ha ez az attribútum nem szerepel, akkor a OutputMediaAsset neve, függetlenül a belső szöveges értéket a <outputAsset> elem van, a feladat név-érték, vagy a feladat azonosítóérték (abban az esetben, ha a Name tulajdonság nincs definiálva) utótaggal. Például ha assetName "Mintát" értéket, majd a OutputMediaAsset Name tulajdonság akkor állítható be "Mintaként". Azonban ha assetName értékét nem állította be, de adta meg az "NewJob" a feladat nevét, majd a OutputMediaAsset neve lesz "JobOutputAsset (érték) _NewJob".
+* OutputMediaAssets elnevezheti a assetName attribútum használatával. Ha ez az attribútum nem szerepel, akkor a OutputMediaAsset neve, függetlenül a belső szöveges értéket a `<outputAsset>` elem van, a feladat név-érték, vagy a feladat azonosítóérték (abban az esetben, ha a Name tulajdonság nincs definiálva) utótaggal. Például ha assetName "Mintát" értéket, majd a OutputMediaAsset Name tulajdonság akkor állítható be "Mintaként". Azonban ha assetName értékét nem állította be, de adta meg az "NewJob" a feladat nevét, majd a OutputMediaAsset neve lesz "JobOutputAsset (érték) _NewJob".
 
     Az alábbi példa bemutatja, hogyan assetName attribútum:
 

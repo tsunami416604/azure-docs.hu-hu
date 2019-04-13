@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.openlocfilehash: 31d9e2170461b9c4023bfe6b3e01fb1d7dda7fee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bee64909c7f3b295691ef1cb1840424aa7e3fe49
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895889"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549712"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Hozzon létre, és a Log Analytics REST API-val riasztási szabályok kezelése
 A Log Analytics Alert REST API lehetővé teszi, hogy hozhat létre, és a Log Analytics-riasztások kezelése.  Ez a cikk részletesen az API-val és néhány példa a különféle műveletek végezhetők.
@@ -94,9 +94,9 @@ Minden művelet a következő táblázatban tárolja a tulajdonságokat.  Riaszt
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |A művelet típusa.  Jelenleg a lehetséges értékek: riasztás és a Webhook. |
-| Name (Név) |A riasztás megjelenítendő neve. |
-| Verzió |A használt API-verzió.  Jelenleg ez mindig meg kell 1-re. |
+| `Type` |A művelet típusa.  Jelenleg a lehetséges értékek: riasztás és a Webhook. |
+| `Name` |A riasztás megjelenítendő neve. |
+| `Version` |A használt API-verzió.  Jelenleg ez mindig meg kell 1-re. |
 
 ### <a name="retrieving-actions"></a>Műveletek beolvasása
 
@@ -154,8 +154,8 @@ Küszöbértékek a tulajdonságokkal rendelkeznek, az alábbi táblázatban.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Művelet |A küszöbérték-összehasonlítás operátort. <br> gt = nagyobb, mint <br> lt = kisebb, mint |
-| Érték |Értéke a küszöbérték. |
+| `Operator` |A küszöbérték-összehasonlítás operátort. <br> gt = nagyobb, mint <br> lt = kisebb, mint |
+| `Value` |Értéke a küszöbérték. |
 
 Vegyük példaként egy esemény lekérdezés 15 perc, 30 perces Timespan és egy küszöbértéket, a 10-nél nagyobb időközzel. Ebben az esetben a lekérdezés 15 percenként fogja futtatni, és a riasztás akkor aktiválódik, ha a 10 események 30 perces időtartam létrehozott adott vissza.
 
@@ -187,9 +187,9 @@ A log Analytics lehetővé teszi, hogy a könnyebb felügyeletet és osztályoz�
 
 |Log Analytics súlyossági szint  |Azure-riasztások súlyossági szint  |
 |---------|---------|
-|kritikus |SEV 0|
-|figyelmeztetés |Sev 1|
-|Tájékoztató | Sev 2|
+|`critical` |SEV 0|
+|`warning` |Sev 1|
+|`informational` | Sev 2|
 
 Következő csak egy küszöbét és súlyosságát a művelet egy mintaválasz. 
 
@@ -284,7 +284,7 @@ Műveletcsoport hozzárendelt ütemezés módosításához használja a Put met�
 Alapértelmezett műveletek kövesse a Normál sablon és az értesítések formátuma. De a felhasználó szabhatja bizonyos műveleteket, még akkor is, ha azok Műveletcsoportok által vezérelt. Testreszabás jelenleg az E-mail tárgyát és a Webhook hasznos adatai.
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>Testre szabhatja az E-Mail tárgyát műveletcsoport
-Alapértelmezés szerint a riasztások e-mailek tárgyához van: Figyelmeztető értesítés <AlertName> a <WorkspaceName>. Azonban ez testre szabható, így is szó vagy címkék –, hogy könnyedén alkalmazni az Állapotszűrő szabályok a Beérkezett üzenetek mappában. A Testreszabás e-mail részletei kell küldenie az alábbi példa a ActionGroup részleteivel együtt.
+Alapértelmezés szerint a riasztások e-mailek tárgyához van: Figyelmeztető értesítés `<AlertName>` a `<WorkspaceName>`. Azonban ez testre szabható, így is szó vagy címkék –, hogy könnyedén alkalmazni az Állapotszűrő szabályok a Beérkezett üzenetek mappában. A Testreszabás e-mail részletei kell küldenie az alábbi példa a ActionGroup részleteivel együtt.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {

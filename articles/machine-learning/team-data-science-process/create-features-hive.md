@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4d74b122f3b5567e8291ec5f3ff4e1dda7ff68f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a491f923d7755513d84adfe765d595a3a7a80715
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835016"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524905"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Funkciók létrehozása az adatokhoz a Hive-lekérdezések segítségével Hadoop-fürt
 Ez a dokumentum bemutatja, hogyan funkciók létrehozása az Azure HDInsight Hadoop-fürtben Hive-lekérdezések segítségével tárolt adatokat. A Hive-lekérdezések használata beágyazott Hive User-Defined funkciókat (UDF), a parancsfájlok, amelynek biztosított.
@@ -89,14 +89,14 @@ Hive tartalmaz egy UDF-EK a datetime mezők feldolgozás céljából. A Hive, az
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-A Hive-lekérdezést feltételezi, hogy a *<datetime field>* alapértelmezett dátum és idő formátumban.
+A Hive-lekérdezést feltételezi, hogy a  *\<datetime mező >* alapértelmezett dátum és idő formátumban.
 
 Ha egy dátum/idő mezőt nem az alapértelmezett formátumban, először a datetime mező átalakítása Unix-időbélyegző, és majd a Unix-időbélyeg konvertálása dátum/idő karakterlánc, amely az alapértelmezett formátuma szüksége. Ha a dátumot/időt, az alapértelmezett formátum felhasználók alkalmazhat UDF szolgáltatások kinyerése beágyazott dátuma és időpontja.
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-Ebben a lekérdezésben Ha a *<datetime field>* a következő mintának például *03-26-2015 12:04:39*, a  *<pattern of the datetime field>"* kell lennie `'MM/dd/yyyy HH:mm:ss'`. Tesztelje, hogy a felhasználók futtathatja
+Ebben a lekérdezésben Ha a  *\<datetime mező >* a következő mintának például *03-26-2015 12:04:39*, a  *\<minta a datetime mező > "* legyen `'MM/dd/yyyy HH:mm:ss'`. Tesztelje, hogy a felhasználók futtathatja
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: c9247b37e1e475892a1561c5667dc25275f67327
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1a066e6b75d527dcdf1b211c0ebb76a2d4520eb7
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104114"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528206"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - másik üzembe helyezési modellek és -előfizetések
 
@@ -71,7 +71,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
     - **Hely**: *USA keleti RÉGIÓJA*
 
 14. Az a **erőforrások keresése** mezőbe írja be a portál tetején lévő *myVnetB*. Kattintson a **myVnetB** amikor megjelenik a keresési eredmények között. Megjelenik egy panel az **myVnetB** virtuális hálózatot.
-15. Az a **myVnetB** panel, amelyen megjelenik, kattintson a **tulajdonságok** a panel bal oldali beállítások függőleges listájából. Másolás a **erőforrás-azonosító**, amely egy későbbi lépésben szolgál. Az erőforrás-azonosítója a következő példához hasonlít: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
+15. Az a **myVnetB** panel, amelyen megjelenik, kattintson a **tulajdonságok** a panel bal oldali beállítások függőleges listájából. Másolás a **erőforrás-azonosító**, amely egy későbbi lépésben szolgál. Az erőforrás-azonosítója a következő példához hasonlít: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
 16. Végezze el az 5 – 9 lépéseket myVnetB, írja be a **Felhasználóa** 8. lépés.
 17. Jelentkezzen ki a Felhasználób portált, és jelentkezzen be a Felhasználóa felhasználóként.
 18. Az a **erőforrások keresése** mezőbe írja be a portál tetején lévő *myVnetA*. Kattintson a **myVnetA** amikor megjelenik a keresési eredmények között. Megjelenik egy panel az **myVnet** virtuális hálózatot.

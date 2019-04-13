@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: f2ea9f784064a926a391ba0eadebd9fa5224a36d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 513836257a292069da709ad7a71e480f2b4d069d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875186"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549729"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Az Azure SQL Database és az SQL Data Warehouse IP tűzfalszabályok
 
@@ -249,6 +249,7 @@ A következő szempontokat vegye figyelembe, ha a Microsoft Azure SQL Database s
 
 ## <a name="next-steps"></a>További lépések
 
+- Győződjön meg róla a vállalati hálózati környezet lehetővé teszi, hogy a Microsoft Azure-adatközpontok által használt számítási IP-címtartományokat (beleértve az SQL-tartományok) érkező bejövő forgalom. Az engedélyezési listára szükség lehet lásd ezen IP-címek [a Microsoft Azure adatközpont IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653)  
 - Gyors üzembe helyezési IP-kiszolgálószintű tűzfalszabály létrehozásához, lásd: [hozzon létre egy Azure SQL database](sql-database-single-database-get-started.md).
 - Ha nyílt forráskódú vagy külső alkalmazásokból szeretne kapcsolódni az Azure SQL Database-hez, lásd az [SQL Database gyors üzembe helyezési ügyfélkódmintáival](https://msdn.microsoft.com/library/azure/ee336282.aspx) foglalkozó cikket.
 - A további portok megnyitásához szükséges információkért lásd: a **SQL-adatbázis: Portjaival** szakaszában [az ADO.NET 4.5 és az SQL Database 1433-Ason túli](sql-database-develop-direct-route-ports-adonet-v12.md)

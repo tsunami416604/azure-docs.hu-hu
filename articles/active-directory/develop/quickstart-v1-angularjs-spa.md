@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c508c402707663489fc383dccd958559df6b217f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6596d1d8251bafd1ff013961555b20475e3a06d3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194682"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544940"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Gyors útmutató: Jelentkezzen be, és jelentkezzen ki az Azure Active Directoryval AngularJS egyoldalas alkalmazás készítése
 
@@ -45,6 +45,9 @@ Egy teljes körű, működő alkalmazás létrehozásához az alábbiakat kell t
 1. Az alkalmazás regisztrálása az Azure AD-ben.
 2. Az ADAL telepítése, és az egyoldalas alkalmazás konfigurálása.
 3. Az ADAL használata az egyoldalas alkalmazás oldalainak védelemmel való ellátásához.
+
+> [!NOTE]
+> Ha engedélyezi a munkahelyi és iskolai fiókok mellett személyes fiókok bejelentkezések van szüksége, használhatja a  *[a Microsoft identity platform endpoint](azure-ad-endpoint-comparison.md)*. További információ: [JavaScript SPA-oktatóanyag](tutorial-v2-javascript-spa.md) , valamint [Ez a cikk](active-directory-v2-limitations.md) elmagyarázza a *a Microsoft identity platform endpoint*. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

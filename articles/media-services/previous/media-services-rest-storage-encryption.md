@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ca7f749a04b569d183589fba8c788ce48f29358b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: a26388de85ff6293985fe23adac8ca4d04d0de61
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295555"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525789"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>A storage encryption tartalom titkosítása 
 
@@ -111,7 +111,7 @@ A következőkben általános lépéseket: az eszközök csak titkosítás kív�
 
     Kérelem törzse tulajdonság    | Leírás
     ---|---
-    Azonosító | A ContentKey azonosító jön létre a következő formátumban "nb:kid:UUID:<NEW GUID>".
+    Azonosító | A ContentKey azonosító jön létre a következő formátumban "nb:kid:UUID:\<új GUID >".
     ContentKeyType | A tartalom írja be a kulcsot meghatározó egész szám. A tárolási titkosítás formátumot az érték az 1.
     EncryptedContentKey | Létrehozunk egy új content key értéket, hogy egy 256 bites (32 bájt) érték. A kulcs titkosítva van, a tárolási titkosítás X.509 tanúsítványt használ, amely a Microsoft Azure Media Services által egy HTTP GET kérés végrehajtása a GetProtectionKeyId és GetProtectionKey módszerek beolvassuk. Tegyük fel, tekintse meg a következő .NET-kód: a **EncryptSymmetricKeyData** meghatározott metódus [Itt](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
     ProtectionKeyId | Ez a védelem a tárolási titkosítás X.509-tanúsítvány, amely a tartalom kulcs titkosításához használt kulcs azonosítója.

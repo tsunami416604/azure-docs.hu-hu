@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d762e5bb358964b439d1dc6027abc01332da21
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6119baf79b9323a5c1ad06d75e1410f632015f0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007614"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548551"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Gyors útmutató: Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -32,7 +32,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan valósíthat meg Microsoft-bejele
 A rövid útmutató végén az alkalmazása el fogja fogadni a bejelentkezéseket az Azure Active Directoryval (Azure AD) integrált szervezetek munkahelyi és iskolai fiókjairól.
 
 > [!NOTE]
-> Ha a munkahelyi és iskolai fiókok mellett személyes fiókok számára is engedélyeznie kell a bejelentkezést, használhatja a [2.0-s verziójú végpontot](azure-ad-endpoint-comparison.md). További információért tekintse meg [ezt a 2.0-s verziójú végponthoz készült ASP.NET-oktatóanyagot](tutorial-v2-asp-webapp.md), valamint [ezt a cikket](active-directory-v2-limitations.md), amely a 2.0-s verziójú végpont jelenlegi korlátozásait ismerteti.
+> Ha engedélyezi a munkahelyi és iskolai fiókok mellett személyes fiókok bejelentkezések van szüksége, használhatja a  *[a Microsoft identity platform endpoint](azure-ad-endpoint-comparison.md)*. További információ: [Ez az oktatóanyag ASP.NET](tutorial-v2-asp-webapp.md) , valamint [Ez a cikk](active-directory-v2-limitations.md) elmagyarázza a *a Microsoft identity platform endpoint*.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

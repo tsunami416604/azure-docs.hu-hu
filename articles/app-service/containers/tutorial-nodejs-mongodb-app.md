@@ -1,10 +1,10 @@
 ---
-title: Mongodb-hez a Node.js-alkalmazás létrehozása a linuxon – az Azure App Service |} A Microsoft Docs
-description: Megismerheti, hogyan tehet szert egy olyan, a Linuxon futó Azure App Service-ben működő Node.js-alkalmazásra, amely MongoDB-kapcsolati sztringgel rendelkező Cosmos DB-hez csatlakozik.
+title: NODE.js (MEAN.js) és a mongodb-hez linuxon – az Azure App Service |} A Microsoft Docs
+description: Megismerheti, hogyan tehet szert egy olyan, a Linuxon futó Azure App Service-ben működő Node.js-alkalmazásra, amely MongoDB-kapcsolati sztringgel rendelkező Cosmos DB-hez csatlakozik. Az oktatóanyag MEAN.js használatban van.
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
-manager: syntaxc4
+manager: jeconnoc
 editor: ''
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 10/10/2017
+ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 73f810072fce9345208593342df597b72c522a73
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3a5f6b5b1f66542a534c9016c5d9d60a1273975f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894512"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544801"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>A Node.js és MongoDB-alkalmazások az Azure App Service létrehozása a linuxon
 
@@ -32,7 +32,7 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 
 ![Az Azure App Service-ben futó MEAN.js alkalmazás](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
-Az alábbiak végrehajtásának módját ismerheti meg:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Azure Cosmos DB API használatával a MongoDB-adatbázis létrehozása
@@ -131,10 +131,10 @@ Ebben a lépésben hozzon létre egy adatbázis-fiók mongodb-hez készült Azur
 
 A Cloud Shellben hozzon létre egy Cosmos DB-fiókot az [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) paranccsal.
 
-Az alábbi parancsban a *\<cosmosdb_name>* helyőrző helyére írjon be egy egyedi Cosmos DB-nevet. Ezt a nevet a rendszer a Cosmos DB-végpont (`https://<cosmosdb_name>.documents.azure.com/`) részeként fogja használni, így a névnek egyedinek kell lennie az Azure-ban található összes Cosmos DB-fiókban. A név csak kisbetűket, számokat és kötőjel (-) karaktert tartalmazhat, és 3–50 karakter hosszúságú lehet.
+A következő parancsban helyettesítse be egy egyedi Cosmos DB-nevet a  *\<cosmos DB-name >* helyőrző. Ezt a nevet a rendszer a Cosmos DB-végpont (`https://<cosmosdb-name>.documents.azure.com/`) részeként fogja használni, így a névnek egyedinek kell lennie az Azure-ban található összes Cosmos DB-fiókban. A név csak kisbetűket, számokat és kötőjel (-) karaktert tartalmazhat, és 3–50 karakter hosszúságú lehet.
 
 ```azurecli-interactive
-az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kind MongoDB
+az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
 ```
 
 A *--kind MongoDB* paraméter lehetővé teszi a MongoDB-ügyfélkapcsolatok használatát.
@@ -150,7 +150,7 @@ A Cosmos DB-fiók létrehozása után az Azure CLI az alábbi példához hasonl�
     "maxStalenessPrefix": 100
   },
   "databaseAccountOfferType": "Standard",
-  "documentEndpoint": "https://<cosmosdb_name>.documents.azure.com:443/",
+  "documentEndpoint": "https://<cosmosdb-name>.documents.azure.com:443/",
   "failoverPolicies":
   ...
   < Output truncated for readability >
@@ -166,7 +166,7 @@ Ebben a lépésben a MEAN.js-mintaalkalmazást a MongoDB-kapcsolati sztring hasz
 A Cosmos DB-adatbázishoz való csatlakozáshoz adatbáziskulcs szükséges. A Cloud Shellben használja az [`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-keys) parancsot az elsődleges kulcs lekéréséhez.
 
 ```azurecli-interactive
-az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
+az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup
 ```
 
 Az Azure CLI az alábbi példához hasonló formában jeleníti meg az adatokat:
@@ -188,12 +188,12 @@ Másolja a `primaryMasterKey` értékét. A következő lépés során szükség
 
 A helyi MEAN.js-adattár _config/env/_ mappájában hozzon létre egy _local-production.js_ nevű fájlt. A _.gitignore_ a fájlnak az adattáron kívül való tartására lett konfigurálva.
 
-Másolja az alábbi kódot a fájlba. Ügyeljen arra, hogy cserélje le a két *\<cosmosdb_name>* helyőrzőt a Cosmos DB-adatbázis nevére, illetve cserélje le a *\<primary_master_key>* helyőrzőt az előző lépésben másolt kulcsra.
+Másolja az alábbi kódot a fájlba. Ügyeljen arra, hogy cserélje le a két  *\<cosmos DB-name >* helyőrzőt a Cosmos DB-adatbázis neve, és cserélje le a  *\<elsődleges főkulcs >* helyőrzőt a kulcsot, az előző lépésben másolt.
 
 ```javascript
 module.exports = {
   db: {
-    uri: 'mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false'
+    uri: 'mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false'
   }
 };
 ```
@@ -226,7 +226,7 @@ MEAN.JS
 
 Environment:     production
 Server:          http://0.0.0.0:8443
-Database:        mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false
+Database:        mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false
 App version:     0.5.0
 MEAN.JS version: 0.5.0
 ```
@@ -259,13 +259,13 @@ Alapértelmezés szerint a MEAN.js-projekt a Git-adattáron kívül tartja a _co
 
 Az alkalmazásbeállítások megadásához használja az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben.
 
-Ez a példa konfigurálja egy `MONGODB_URI` alkalmazásbeállítást az Azure-alkalmazáshoz. Cserélje le az *\<app_name>*, a *\<cosmosdb_name>* és a *\<primary_master_key>* helyőrzőt.
+Ez a példa konfigurálja egy `MONGODB_URI` alkalmazásbeállítást az Azure-alkalmazáshoz. Cserélje le a  *\<alkalmazás-neve >*,  *\<cosmos DB-name >*, és  *\<elsődleges főkulcs >* helyőrzőket.
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
 ```
 
-A Node.js-kódban a `process.env.MONGODB_URI` használatával érheti el ezt az alkalmazásbeállítást, mint ahogy bármelyik környezeti változót is. 
+A Node.js-kódot akkor [hozzáférni ennek az alkalmazásbeállításnak](configure-language-nodejs.md#access-environment-variables) a `process.env.MONGODB_URI`, mint ahogy bármelyik környezeti változót elérésére.
 
 A helyi MEAN.js-adattárban nyissa meg a _config/env/production.js_ fájlt (ne a _config/env/local-production.js_ fájlt), amely az éles környezetre vonatkozó konfigurációval rendelkezik. Az alapértelmezett MEAN.js-alkalmazás már a létrehozott `MONGODB_URI` környezeti változó használatára lett konfigurálva.
 
@@ -296,7 +296,7 @@ remote: Handling node.js deployment.
 .
 .
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+To https://<app-name>.scm.azurewebsites.net/<app-name>.git
  * [new branch]      master -> master
 ```
 
@@ -305,14 +305,14 @@ Azt tapasztalhatja, hogy az üzembehelyezési folyamat az `npm install` után ke
 - _.deployment_ – Ez a fájl utasítja az App Service-t, hogy a `bash deploy.sh` fájlt futtassa egyéni üzembehelyezési szkriptként.
 - _deploy.sh_ – Az egyéni üzembehelyezési szkript. Ha áttekinti a fájlt, láthatja, hogy az `npm install` és a `bower install` után futtatja a `gulp prod` parancsot.
 
-Ezzel a módszerrel adhat hozzá további lépéseket a Git-alapú üzemelő példányhoz. Ha újraindítja az Azure-alkalmazás bármely pontján, az App Service nem futtatja újra ezeket az automatizálási feladatokat.
+Ezzel a módszerrel adhat hozzá további lépéseket a Git-alapú üzemelő példányhoz. Ha újraindítja az Azure-alkalmazás bármely pontján, az App Service nem futtatja újra ezeket az automatizálási feladatokat. További információkért lásd: [futtatása Grunt/Bower/Gulp](configure-language-nodejs.md#run-gruntbowergulp).
 
 ### <a name="browse-to-the-azure-app"></a>Az Azure alkalmazás megkeresése tallózással
 
 Keresse meg a telepített alkalmazást, a webböngésző használatával.
 
 ```bash
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 A felső menüben kattintson a **Regisztráció** lehetőségre, és hozzon létre egy tesztfelhasználót.
@@ -451,6 +451,10 @@ Miután a `git push` befejeződött, lépjen az Azure alkalmazásba, és próbá
 
 Ha korábban hozzáadott cikkeket, továbbra is láthatja őket. A Cosmos DB-ben meglévő adatok nem vesztek el. Emellett az adatséma frissítései is érintetlenül hagyják a meglévő adatokat.
 
+## <a name="stream-diagnostic-logs"></a>Diagnosztikai naplók streamelése
+
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+
 ## <a name="manage-your-azure-app"></a>Az Azure-alkalmazás kezelése
 
 Nyissa meg a [az Azure portal](https://portal.azure.com) szeretné megtekinteni a létrehozott alkalmazást.
@@ -482,4 +486,9 @@ Az alábbiak elvégzését ismerte meg:
 Folytassa a következő oktatóanyaggal, megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni DNS-név leképezése az Azure App Service-ben](../app-service-web-tutorial-custom-domain.md)
+> [Oktatóanyag: Egyéni DNS-név leképezése az alkalmazás](../app-service-web-tutorial-custom-domain.md)
+
+Vagy tekintse meg az egyéb erőforrások:
+
+> [!div class="nextstepaction"]
+> [Node.js-alkalmazás konfigurálása](configure-language-nodejs.md)

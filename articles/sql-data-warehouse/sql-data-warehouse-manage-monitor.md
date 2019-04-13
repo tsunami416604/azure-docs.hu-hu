@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/18/2019
+ms.date: 04/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e2360b5587d204ec87fe82c029391c7252d27914
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: ff1f613dfdfb5c43b727bcc9c7f7a1f0afca0975
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189546"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546896"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 Ez a cikk ismerteti, hogyan lehet a számítási feladat monitorozása dinamikus felügyeleti nézetekkel (DMV-kkel) segítségével. Ez magában foglalja, vizsgálja meg a lekérdezés végrehajtása az Azure SQL Data warehouse-bA.
@@ -170,33 +170,10 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 Ha a lekérdezés aktívan vár az erőforrásokat, egy másik lekérdezést, majd állapota lesz **AcquireResources**.  Ha a lekérdezésben található az összes szükséges erőforrást, majd állapota lesz **engedélyezve**.
 
 ## <a name="monitor-tempdb"></a>A figyelő a tempdb
-A tempdb magas kihasználtság lehet a hiba okát a lassú teljesítmény és az memóriahiba-ból. Vegye figyelembe, hogy az adattárház méretezése, ha úgy találja, hogy a tempdb kapacitásukkal elérése a lekérdezés végrehajtása során. A következő információkat ismerteti, hogyan lehet azonosíthatja a tempdb használatot biztosít a lekérdezés minden egyes csomóponton. 
+A TempDB szolgál, amely tárolja a köztes eredményeket a lekérdezés végrehajtása során. A tempdb-adatbázis magas kihasználtság lekérdezési teljesítmény lassú vezethet. Az Azure SQL Data Warehouse minden fürtcsomópont körülbelül 1 TB nyers tempdb-terület. Az alábbiakban a tempdb-használat monitorozásával és a tempdb-használat, a lekérdezések a csökkenő tippeket. 
 
-Hozzon létre a következő nézetet a megfelelő csomópont Azonosítóját sys.dm_pdw_sql_requests társításához. A csomópont-azonosító kellene lehetővé teszi más csatlakoztatott DMV-kkel és sys.dm_pdw_sql_requests a vonatkozó táblák.
-
-```sql
--- sys.dm_pdw_sql_requests with the correct node id
-CREATE VIEW sql_requests AS
-(SELECT
-       sr.request_id,
-       sr.step_index,
-       (CASE 
-              WHEN (sr.distribution_id = -1 ) THEN 
-              (SELECT pdw_node_id FROM sys.dm_pdw_nodes WHERE type = 'CONTROL') 
-              ELSE d.pdw_node_id END) AS pdw_node_id,
-       sr.distribution_id,
-       sr.status,
-       sr.error_id,
-       sr.start_time,
-       sr.end_time,
-       sr.total_elapsed_time,
-       sr.row_count,
-       sr.spid,
-       sr.command
-FROM sys.pdw_distributions AS d
-RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
-```
-A tempdb figyeléséről a következő lekérdezés futtatásával:
+### <a name="monitoring-tempdb-with-views"></a>A nézetek a tempdb figyelése
+A tempdb-használat figyeléséhez, először telepítse a [microsoft.vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) nézet első eleme a [az SQL Data Warehouse a Microsoft Toolkit](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring). A következő lekérdezést a tempdb használati minden végrehajtott lekérdezések csomópontonként, majd futtathatja:
 
 ```sql
 -- Monitor tempdb
@@ -221,12 +198,17 @@ SELECT
 FROM sys.dm_pdw_nodes_db_session_space_usage AS ssu
     INNER JOIN sys.dm_pdw_nodes_exec_sessions AS es ON ssu.session_id = es.session_id AND ssu.pdw_node_id = es.pdw_node_id
     INNER JOIN sys.dm_pdw_nodes_exec_connections AS er ON ssu.session_id = er.session_id AND ssu.pdw_node_id = er.pdw_node_id
-    INNER JOIN sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
+    INNER JOIN microsoft.vw_sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
 WHERE DB_NAME(ssu.database_id) = 'tempdb'
     AND es.session_id <> @@SPID
     AND es.login_name <> 'sa' 
 ORDER BY sr.request_id;
 ```
+
+Ha egy lekérdezést, amely jelentős mennyiségű memóriát is használja, vagy a TempDB adatbázis foglalási kapcsolatos hibaüzenetet kapott, ez a legtöbbször miatt egy nagyon nagy [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) vagy [INSERT SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql) az utasítás fut, amely végső soron az adatok mozgását művelet sikertelen. Ez általában ellenőrizhető, ShuffleMove műveletként az elosztott lekérdezési terv közvetlenül a végső INSERT SELECT előtt.
+
+A leggyakoribb megoldás, hogy a CTAS vagy INSERT SELECT utasítás felosztása több betöltési utasításokat, így az adatmennyiség nem haladhatja meg az 1 TB-os csomópont tempdb-korlát. A fürt egy nagyobb méretű, ami lesz a TempDB adatbázis mérete elosztva csökkenti a tempdb minden egyes csomóponton több csomópont is méretezheti. 
+
 ## <a name="monitor-memory"></a>A figyelő memória
 
 Memória lehet a hiba okát a lassú teljesítmény és az memóriahiba-ból. Vegye figyelembe, hogy az adattárház méretezése, ha SQL Server memóriahasználatának kapacitásukkal elérése a lekérdezés végrehajtása során.

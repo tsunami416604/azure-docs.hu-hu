@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dd2ba0ec3427cd99da3321b50fb43f4c00f2d1a9
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: da746d80e3ae1fa5cc02683a8bb0ff0402722b8e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822821"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524939"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation konfiguráló áttekintése
 
@@ -49,7 +49,7 @@ Azure Automation állapot Configuration (DSC) használata esetén fontolja meg a
 
 A Windows rendszert futtató csomópontot a következő verziók támogatottak:
 
-- Windows Server 2019
+- A Windows Server 2019
 - Windows Server 2016
 - Windows Server 2012R2
 - Windows Server 2012
@@ -117,7 +117,7 @@ Inkább néz videót olvasás helyett? Tekintse meg a következő videó a 2015 
 > [!NOTE]
 > A fogalmakat és a videóban tárgyalt életciklusának helyesek, amíg a konfiguráció az Azure Automation sokat fejlődött a videó rögzítése óta. Azt már általánosan elérhető, van egy sokkal felhasználói felülete az Azure Portalon, és számos további képességeket is támogat.
 
-<iframe src="https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>További lépések
 

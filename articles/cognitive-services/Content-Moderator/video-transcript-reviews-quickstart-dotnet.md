@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 56cd608d337d817b849a0902569e9aeddeca80ab
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a3d362f08765cc80b65659b406a2fac3af71f167
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758579"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524497"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Hozzon létre videóátiratot felülvizsgálatok .NET használatával
 
@@ -154,7 +154,7 @@ Létrehoz egy videó- **ContentModeratorClient.Reviews.CreateVideoReviews**. Tov
 **CreateVideoReviews** a következő szükséges paraméterek:
 1. Egy karakterlánc, amely tartalmazza a MIME-típust, amely elvileg "application/json." 
 1. A Content Moderator csoport neve.
-1. Egy **IList<CreateVideoReviewsBodyItem>**  objektum. Minden egyes **CreateVideoReviewsBodyItem** objektum videót felülvizsgálatok jelöli. Ebben a rövid útmutatóban létrehoz egy felülvizsgálati egyszerre.
+1. Egy **IList\<CreateVideoReviewsBodyItem >** objektum. Minden egyes **CreateVideoReviewsBodyItem** objektum videót felülvizsgálatok jelöli. Ebben a rövid útmutatóban létrehoz egy felülvizsgálati egyszerre.
 
 **CreateVideoReviewsBodyItem** néhány olyan tulajdonság tartozik. Minimális állítsa be a következő tulajdonságokat:
 - **Tartalom**. A Videó URL-címét a programtulajdonos.
@@ -244,15 +244,15 @@ Egy szöveges videót felülvizsgálatok hozzáadásán is hozzáadhat moderál�
 1. Egy karakterlánc, amely tartalmazza a MIME-típust, amely elvileg "application/json." 
 1. A Content Moderator csoport neve.
 1. A videó felülvizsgálat azonosítója által visszaadott **CreateVideoReviews**.
-1. IList<TranscriptModerationBodyItem>. A **TranscriptModerationBodyItem** tulajdonságai a következők:
-1. **Feltételek**. IList<TranscriptModerationBodyItemTermsItem>. A **TranscriptModerationBodyItemTermsItem** tulajdonságai a következők:
+1. An IList\<TranscriptModerationBodyItem>. A **TranscriptModerationBodyItem** tulajdonságai a következők:
+1. **Feltételek**. An IList\<TranscriptModerationBodyItemTermsItem>. A **TranscriptModerationBodyItemTermsItem** tulajdonságai a következők:
 1. **Index**. A kifejezés a nulla alapú indexét.
 1. **Kifejezés**. Az előfizetési időszak tartalmazó karakterlánc.
 1. **Időbélyeg**. Tartalmazó, (másodpercben), az idő, amikor a használati találhatók a szöveges karakterláncot.
 
 Az átirat WebVTT formátumban kell lennie. További információkért lásd: [WebVTT: A webes videó szöveg nyomon követi a formátum](https://www.w3.org/TR/webvtt1/).
 
-Adja hozzá a következő definice metody névtér VideoTranscriptReviews, osztály Program. Ez a módszer egy, átirat elküldi a **ContentModeratorClient.TextModeration.ScreenText** metódust. Azt is fordítja le az eredmény IList<TranscriptModerationBodyItem>, és a helyrendszerekre **AddVideoTranscriptModerationResult**.
+Adja hozzá a következő definice metody névtér VideoTranscriptReviews, osztály Program. Ez a módszer egy, átirat elküldi a **ContentModeratorClient.TextModeration.ScreenText** metódust. Azt is fordítja le az eredmény IList\<TranscriptModerationBodyItem >, és a helyrendszerekre **AddVideoTranscriptModerationResult**.
 
 ```csharp
 /// <summary>

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8026576478b16b753ba960155c383ffec62c61ce
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: eb8e98f66d000290ce7eb07d3d73e82fbc43514a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491542"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548707"
 ---
 # <a name="set-alerts-in-application-insights"></a>Riasztásokat állíthat be az Application insights szolgáltatásban
 [Az Azure Application Insights] [ start] riasztja Önt, a webalkalmazásban a teljesítmény vagy a használati metrikák változásai. 
@@ -147,7 +147,7 @@ Ebben a szakaszban végigvesszük azokat a lekérdezés alapú kivétel riasztá
 
 ## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Hogyan lehet lemondani a klasszikus riasztási e-mail-értesítések
 
-Vonatkozik ez a szakasz **klasszikus rendelkezésre állási riasztások**, **Application Insights metrikákhoz kapcsolódó riasztások**, és a **klasszikus rendellenességek riasztásokkal**.
+Vonatkozik ez a szakasz **klasszikus rendelkezésre állási riasztások**, **Application Insights klasszikus metrikariasztásokat**, és a **klasszikus rendellenességek riasztásokkal**.
 
 Klasszikus riasztásokhoz e-mail értesítést azért küldtük Önnek, ha érvényes a következő:
 

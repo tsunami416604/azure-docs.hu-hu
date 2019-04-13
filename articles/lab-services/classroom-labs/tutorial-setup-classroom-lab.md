@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 00c32d1aaace765a1b46d5b25e82bab6e937d2ed
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 66293d6d6d0e15af7d879e6784d85f9e85457aad
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649708"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544330"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -39,7 +39,7 @@ A lab tulajdonosa adhat hozzá más felhasználók számára a **tesztkörnyezet
 
 ## <a name="create-a-classroom-lab"></a>Osztályterem-tesztkörnyezet létrehozása
 
-1. Lépjen az [Azure Lab Services weboldalára](https://labs.azure.com). 
+1. Lépjen az [Azure Lab Services weboldalára](https://labs.azure.com). Vegye figyelembe, hogy az Internet Explorer 11 még nem támogatott. 
 2. Válassza a **Bejelentkezés** lehetőséget, és adja meg a hitelesítő adatait. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
 3. Az **Új tesztkörnyezet** ablakban tegye a következőket: 
     1. Adjon egy **nevet** a tesztkörnyezetnek. 

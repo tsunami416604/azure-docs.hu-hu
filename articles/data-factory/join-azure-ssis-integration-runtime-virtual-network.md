@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 6c01232c9bdb685fbc54e5ebe1e1f9fa83073dc2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e528b70e257c41f771a1bd3e5ec811c61eb512cc
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107797"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526673"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
 Csatlakozás az Azure-SSIS integrációs modulját (IR) az Azure virtual Networkhöz a következő esetekben: 
@@ -135,9 +135,9 @@ Lásd: [a PowerShell-szkript](https://gallery.technet.microsoft.com/scriptcenter
 
 ### <a name="resource-group"></a> Erőforráscsoport-követelményei
 -   Az Azure-SSIS integrációs Modult hozhat létre bizonyos hálózati erőforrásokat a virtuális hálózatnak ugyanabban az erőforráscsoportban kell. Ilyen erőforrások többek között a következőket:
-    -   Az Azure load balancer nevű  *<Guid>- azurebatch-cloudserviceloadbalancer*.
-    -   Az Azure nyilvános IP-címet, a név  *<Guid>- azurebatch-cloudservicepublicip*.
-    -   Egy hálózati munkahelyi biztonsági csoport nevű  *<Guid>- azurebatch-cloudservicenetworksecuritygroup*. 
+    -   Az Azure load balancer nevű  *\<GUID azonosítója > - azurebatch - cloudserviceloadbalancer*.
+    -   Az Azure nyilvános IP-címet, a név  *\<GUID azonosítója > - azurebatch - cloudservicepublicip*.
+    -   Egy hálózati munkahelyi biztonsági csoport nevű  *\<GUID azonosítója > - azurebatch - cloudservicenetworksecuritygroup*. 
 
 -   Győződjön meg arról, hogy nem kell minden olyan erőforrás-zárolás használata az erőforráscsoportot vagy előfizetést, amelyhez a virtuális hálózat tartozik. Ha konfigurál egy írásvédettségi zárolása vagy törlési zárolás, indítása és leállítása az integrációs modul előfordulhat, hogy nem sikerül vagy lefagy. 
 

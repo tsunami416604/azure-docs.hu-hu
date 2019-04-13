@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5aa9a60c624e1bfaa1570d02bfd1a421fcab3301
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 87e1e57a969fc5e65302dcce44231773f7e74b3a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358305"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548825"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Automatizált machine learning-példakísérleteket konfigurálása
 
@@ -46,7 +46,7 @@ Besorolás | Regresszió | Idősor-előrejelzési
 [Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#regression)
 [Döntési fa](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#regression)|[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#regression)
 [A legközelebbi szomszédok K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[A legközelebbi szomszédok K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[A legközelebbi szomszédok K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Lineáris SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Lineáris SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[Szabadkézi LARS](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[Szabadkézi LARS](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
 [C-támogatás vektor besorolás (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Sztochasztikus gradiens módszeres (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Sztochasztikus gradiens módszeres (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
 [Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [Rendkívül véletlenszerű fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Rendkívül véletlenszerű fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Rendkívül véletlenszerű fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
@@ -173,7 +173,7 @@ Ezután határozza meg, hol kell betanítani a modellt. Egy automatizált machin
 *   A helyi gépen, például a helyi számítógépen vagy laptopon – általában amikor rendelkezik kisméretű adatkészlet, és továbbra is a feltárás fázisban.
 *   Egy távoli gépen a felhőben – [Azure Machine Learning-felügyelt számítási](concept-azure-machine-learning-architecture.md#managed-and-unmanaged-compute-targets) egy felügyelt szolgáltatás, amely lehetővé teszi a Azure-beli virtuális gépek fürtjein gépi tanulási modelleket taníthat be.
 
-Tekintse meg a [a GitHub-webhelyről](https://github.com/Azure/MachineLearningNotebooks/tree/master/automl) például a helyi és távoli notebookok számítási céljainak.
+Tekintse meg a [a GitHub-webhelyről](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) például a helyi és távoli notebookok számítási céljainak.
 
 <a name='configure-experiment'></a>
 
@@ -238,6 +238,9 @@ Ha `preprocess=True`, a következő adatok előfeldolgozása lépések végrehaj
     * Numerikus nagyon kevés egyedi értékkel kategorikus funkciók alakítja át a funkciókat.
     * Függően Számosság kategorikus funkcióját hajtsa végre a kódolás vagy (ujjlenyomat) egy gyakori kódolási címke.
 
+## <a name="ensemble-models"></a>Ensemble modellek
+Ensemble learning machine learning eredményeket és prediktív teljesítménye növelhető a weboldalak százmilliárdjainak biztosítják a szolgáltatás egyetlen modellek használatával számos modellt. Machine learning használatával automatikus, ensemble modellek segítségével betaníthatja az [Caruana ensemble kijelölés algoritmust rendezett Ensemble inicializálási](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf). A Futtatás utolsó ismétlése ensemble ismétléseinek jelenik meg.
+
 ## <a name="time-series-forecasting"></a>Idősor-előrejelzési
 A time series előrejelzési feladattípus van további paraméterek meghatározására.
 1. time_column_name – Ez az egyik kötelező paraméter, amely meghatározza az oszlop neve, a tanítási adatokat tartalmazó dátum/idő sorozat. 
@@ -270,7 +273,6 @@ automl_config = AutoMLConfig(task='forecasting',
                              X=X_train,
                              y=y_train,
                              n_cross_validations=5,
-                             enable_ensembling=False,
                              path=project_folder,
                              verbosity=logging.INFO,
                              **time_series_settings)

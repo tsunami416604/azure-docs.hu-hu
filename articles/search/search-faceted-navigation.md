@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b5c7050ac006ea2500854f8f41b134895e5e0061
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3b31e796b07bea8c11bccb3f2bb306a4279f2ca3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541213"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523715"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
 Jellemzőalapú navigáció egy szűrési mechanizmus, amely alkalmazások keresése az önállóan irányított drilldown navigációs biztosít. A kifejezés "jellemzőalapú navigáció" ismeretlen, de valószínűleg felhasználta előtt. Ahogy az alábbi példa bemutatja, a jellemzőalapú navigáció má hodnotu nothing több, mint az eredmények szűréséhez használt kategóriák.
@@ -321,7 +321,7 @@ Bizonyos körülmények között, előfordulhat, hogy értékkorlátozás száma
 
 Értékkorlátozás száma miatt a horizontális skálázás architektúra pontatlan lehet. Minden keresési index több szegmenst tartalmaz, és minden egyes szegmens a felső N értékkorlátozással jelentések szerint dokumentumok száma, amelyek egyetlen eredmény, majd összesítve. Ha egyes szegmensek több egyező értékek, míg mások kisebb, előfordulhat, hogy néhány értékkorlátozás érték hiányzik, vagy alatt-tranzakciónak az eredmények között.
 
-Bár ez a viselkedés bármikor módosulhatnak, ha ezt a viselkedést tapasztal még ma, megkerüléséhez azt a számát mesterségesen fúvódnia:<number> kényszeríteni a teljes jelentés az egyes szegmensek nagy számú. Ha a számláló értéke: nagyobb vagy a mezőben egyedi értékek számának egyenlőnek, garantáltan pontos eredményeket. Azonban ha nagy dokumentumok számát, a teljesítményét van, ezért ezt a beállítást megfontoltan.
+Bár ez a viselkedés bármikor módosulhatnak, ha ezt a viselkedést tapasztal még ma, megkerüléséhez azt a számát mesterségesen fúvódnia:\<szám > kényszeríteni a teljes jelentés az egyes szegmensek nagy számú. Ha a számláló értéke: nagyobb vagy a mezőben egyedi értékek számának egyenlőnek, garantáltan pontos eredményeket. Azonban ha nagy dokumentumok számát, a teljesítményét van, ezért ezt a beállítást megfontoltan.
 
 ### <a name="user-interface-tips"></a>Felhasználói felület tippek
 **Adja hozzá a címkéket az egyes mezőkhöz tartozó értékkorlátozó navigációs**

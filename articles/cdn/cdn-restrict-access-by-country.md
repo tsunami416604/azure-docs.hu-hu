@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: f6efec64b4e6659b822b76e0fd7f9cc71a164094
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 248a51da76cdee06e55438a706c543c70dcf141e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917753"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526181"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Az Azure CDN-tartalom országonként korlátozása
 
@@ -59,8 +59,8 @@ Az a **művelet** listáról válassza ki **engedélyezése** vagy **blokk**:
 - **Blokk**: A megadott országokból hozzáférés nem engedélyezett a rekurzív elérési úton található a kért eszközökhöz. Ha nincs más ország szűrési beállítások vannak konfigurálva, az adott hely, majd a többi felhasználó hozzáférése engedélyezett lesz.
 
 Például a földrajzi szűrés szabály blokkolja-e az elérési út */fényképek/Strasbourgban/* szűri a következő fájlokat:     
-*http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
-*http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
+*http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
+*http:\//\<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countries"></a>Az ország megadása
 Az a **ORSZÁGKÓDOK** listájához, válassza ki, hogy az elérési út engedélyezni vagy letiltani kívánt országok. 

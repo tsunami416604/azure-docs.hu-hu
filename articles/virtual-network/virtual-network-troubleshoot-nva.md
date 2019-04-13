@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 40e034a563074e10a2dfbee36b6792a095022057
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b7ac96d3588923727a71cf6152ba36481ef44545
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649629"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526656"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Hálózati virtuális berendezés problémák az Azure-ban
 
@@ -67,7 +67,9 @@ A PowerShell használata
 1. Nyissa meg a Powershellt, és jelentkezzen be Azure-fiókjába.
 2. Az alábbi parancsot (a zárójeles értékeket cserélje le az adatokat):
 
-   Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>  
+   ```powershell
+   Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
+   ```
 
 3. Ellenőrizze a **EnableIPForwarding** tulajdonság.
 4. Ha IP-továbbítás nem engedélyezett, a következő parancsokat az engedélyezéshez:

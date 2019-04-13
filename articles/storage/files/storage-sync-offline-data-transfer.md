@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 3b286bbe2c246345bf6acd84a4fc0c400451c706
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 04b13c1e511f54c1fcf7b632d3a368fde16bf319
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445347"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549017"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Adatok kötegelt migrálása az Azure File Sync
 Adatok kötegelt is áttelepíthet Azure File Sync két módon:
@@ -36,13 +36,13 @@ Az alábbiakban egy fájlátviteli eszköz használatával például a Data Box 
 - Data Box és az Azure File Sync szükséges állásidő nélkül. Data Box adatok átviteléhez az Azure-ba való használatakor, hatékonyan használhatják a hálózati sávszélességet, és őrizze meg a fájl forrásanyagot. Akkor is naprakészen a névtér csak a módosítása után helyezze át az adatokat az Azure-bA fájlok feltöltésével.
 
 ## <a name="prerequisites-for-the-offline-data-transfer"></a>A kapcsolat nélküli adatátvitel előfeltételei
-Mielőtt elkezdené a kapcsolat nélküli adatátvitel:
+Ne engedélyezze a kiszolgálón, a kapcsolat nélküli adatátvitel végrehajtása előtt áttelepítésekor szinkronizálási. További tevékenység következik, érdemes figyelembe venni, mielőtt megkezdené a következők:
 
-- A tömeges adatok át egy vagy több Azure-fájlmegosztások az Azure File Sync használatával a szinkronizálás engedélyezése előtt.
-- Ha azt tervezi, használja a Data Boxot tömeges migrálásához, tekintse át a [üzembe helyezési Előfeltételek Data Box](../../databox/data-box-deploy-ordered.md#prerequisites).
-- Tervezze meg az Azure File Sync végső topológiát. További információkért lásd: [Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md).
-- Válassza ki az Azure Storage-fiók vagy a fiók, amely tartalmazza majd a szinkronizálni kívánt fájlmegosztások. A tömeges adatok át, amelyek az ugyanabban a tárfiókban, vagy a fiókok átmeneti előkészítési megosztások. Csak a végső megosztás és a egy átmeneti megosztás ugyanabban a tárfiókban lévő is használhatja.
-- Hozzon létre egy új szinkronizálási kapcsolat a kiszolgáló helye. A tömeges adatok áttelepítését egy meglévő szinkronizálási kapcsolat nem használható.
+- Ha azt tervezi, használja a Data Boxot a tömeges az áttelepítéshez: Tekintse át a [üzembe helyezési Előfeltételek Data Box](../../databox/data-box-deploy-ordered.md#prerequisites).
+- Az Azure File Sync végső topológiájának megtervezése: [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
+- Válassza ki az Azure storage (ok), amely tartalmazza majd a szinkronizálni kívánt fájlmegosztások. Győződjön meg arról, hogy a kötegelt migrálás történik, az azonos tárfiók(ok) az ideiglenes előkészítési megosztásokhoz. Tömeges áttelepítése csak akkor engedélyezhető, a végső - és a egy átmeneti-share ugyanabban a tárfiókban található.
+- A tömeges áttelepítése csak ha kiszolgálóról egy új szinkronizálási kapcsolat létrehozásához használhatók fel. A tömeges áttelepítése a meglévő szinkronizálási kapcsolat nem engedélyezhető.
+
 
 ## <a name="process-for-offline-data-transfer"></a>Offline adatok átvitele folyamatban
 Az Azure File Sync beállítása úgy, hogy a kompatibilis tömeges áttelepítési eszközök például az Azure Data Box az itt látható:
@@ -51,7 +51,7 @@ Az Azure File Sync beállítása úgy, hogy a kompatibilis tömeges áttelepít�
 
 | Lépés | Részlet |
 |---|---------------------------------------------------------------------------------------|
-| ![1. lépés](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [A Data Box ORDER](../../databox/data-box-deploy-ordered.md). A Data Box-családba tartozó ajánlatok [több termék](https://azure.microsoft.com/services/storage/databox/data) az igényeinek. Amikor megjelenik a Data Box, kövesse a [dokumentáció adatok másolása az](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) az UNC elérési útra a a Data Box: *\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>*. Itt *megosztásnév* az átmeneti tárolási fájlmegosztás neve. A Data Box küld vissza az Azure-bA. |
+| ![1. lépés](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [A Data Box ORDER](../../databox/data-box-deploy-ordered.md). A Data Box-családba tartozó ajánlatok [több termék](https://azure.microsoft.com/services/storage/databox/data) az igényeinek. Amikor megjelenik a Data Box, kövesse a [dokumentáció adatok másolása az](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) az UNC elérési útra a a Data Box:  *\\< DeviceIPAddres\>\<StorageAccountName_AzFile\> \<Megosztásnév\>*. Itt *megosztásnév* az átmeneti tárolási fájlmegosztás neve. A Data Box küld vissza az Azure-bA. |
 | ![2. lépés](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Várjon, amíg az Azure-fájlmegosztások választott ideiglenes előkészítési megosztások, megjelennek a fájlokat. *Ne engedélyezze ezeket a megosztásokat történő szinkronizálásának engedélyezése.* |
 | ![3. lépés](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Hozzon létre egy új üres megosztás minden az Ön számára létrehozott Data Box fájlmegosztáshoz. Erre az új megosztásra ugyanazt a tárfiókot, a Data Box-megosztáson kell lennie. [Egy új Azure-fájlmegosztás létrehozása](storage-how-to-create-file-share.md). |
 | ![4. lépés](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Szinkronizálási csoport létrehozása a](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) a társzinkronizálási szolgáltatás. A felhőbeli végpont üres megosztás hivatkozás. Ismételje meg ezt a lépést minden Data Box-fájlmegosztást. [Állítsa be az Azure File Sync](storage-sync-files-deployment-guide.md). |

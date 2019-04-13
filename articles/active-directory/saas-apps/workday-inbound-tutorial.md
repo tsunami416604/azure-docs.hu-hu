@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d34bd9d7f80f72b3c6c0821ad48e6be1fd260be9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897622"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524633"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása a Workday konfigurálása
 
@@ -50,7 +50,7 @@ A Workday felhasználói kiépítési munkafolyamatokat az Azure AD-felhasznál�
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Akik esetén a felhasználó kiépítési megoldás ajánlott használhatók?
 
-Ez a megoldás kiépítése Workday felhasználó jelenleg nyilvános előzetes verzióban érhető el, és ideális:
+A Workday felhasználókiépítés megoldás az ideális megoldást:
 
 * Szervezetek számára, amelyek egy előre elkészített, felhőalapú megoldást Workday felhasználókiépítés igényel
 
@@ -460,7 +460,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 
 2. Az a **Forrásobjektum hatóköre** mezőhöz, kiválaszthatja, hogy mely felhasználók WORKDAY részhalmazához Attribútumalapú szűrőkészlet definiálásával AD, a kiépítés hatókörébe kell lennie. Az alapértelmezett hatóköre a "WORKDAY minden felhasználó". Példa szűrők:
 
-   * Példa: Hatókör 1000000 és 2000000 közötti feldolgozó azonosítókkal rendelkező felhasználók számára
+   * Példa: Hatókör 1000000 és 2000000 (kivéve a 2000000) közötti feldolgozó azonosítókkal rendelkező felhasználók számára
 
       * Attribútum: WorkerID
 
@@ -1165,7 +1165,7 @@ Ez a szakasz ismerteti a Workday-felhasználók létrehozásának és a megoldá
 |--|---|---|---|
 |1.| Hiba történt a kiépítési ügynök telepítése, hibaüzenet:  *"A Microsoft Azure AD Connect-kiépítés Agent" szolgáltatást (AADConnectProvisioningAgent) nem sikerült elindítani. Győződjön meg arról, hogy van-e megfelelő jogosultságokkal indítsa el a rendszer.* | Ez a hiba általában látható, ha a kiépítési ügynök telepítése tartományvezérlőn kívánt, és csoportházirend megakadályozza, hogy a szolgáltatás indítása.  Ha az ügynököt futtató korábbi verziójával rendelkezik, és a egy új telepítésének megkezdése előtt nem távolította is látható.| Telepítse a kiépítési ügynök egy nem tartományvezérlő kiszolgálón. Győződjön meg arról, hogy az ügynök korábbi verzióinak eltávolítása van-e az új ügynök telepítése előtt.|
 |2.| "A Microsoft Azure AD Connect kiépítési ügynök" Windows szolgáltatás *kezdő* állapotát, és nem vált *futó* állapota. | A telepítés részeként az ügynök varázsló létrehoz egy helyi fiókot (**NT-szolgáltatás\\AADConnectProvisioningAgent**) van a kiszolgálón, és ez a **bejelentkezés** indításához használt fiók a a szolgáltatás. Ha a biztonsági házirend a Windows server a helyi fiókok megakadályozza a szolgáltatások futtatását, ez a hiba fog történni. | Nyissa meg a *szolgáltatások konzol*. A Windows-szolgáltatás "Microsoft Azure AD Connect kiépítési ügynök" kattintson a jobb gombbal, és a bejelentkezési lapon adja meg a szolgáltatás futtatásához egy tartományi rendszergazda fiókja. Indítsa újra a szolgáltatást. |
-|3.| A kiépítési ügynök konfigurálásakor az Active Directory-tartománynak a lépésben a *Connect Active Directory*, a varázsló az AD-séma betöltése hosszabb ideig tart, és végül túllépi az időkorlátot. | Ez a hiba általában megjelenik-e a varázsló-e nem lehet csatlakozni az AD domain controller-kiszolgáló tűzfal problémák miatt. | A a *Connect Active Directory* lépésében adja meg az Active Directory-tartománynak a hitelesítő adatokat, miközben lehetősége van nevű *válassza ki a tartományt vezérlő prioritású*. Használja ezt a beállítást válassza ki egy olyan tartományvezérlőre, amely az ügynök kiszolgáló ugyanazon a helyen, és győződjön meg arról, hogy nincsenek-e a kommunikációt blokkoló tűzfal szabályok. |
+|3.| A kiépítési ügynök konfigurálásakor az Active Directory-tartománynak a lépésben a *Connect Active Directory*, a varázsló az AD-séma betöltése hosszabb ideig tart, és végül túllépi az időkorlátot. | Ez a hiba általában akkor jelentkezik, ha a varázsló tűzfalproblémák miatt nem tud csatlakozni az AD tartományvezérlői kiszolgálóhoz. | A a *Connect Active Directory* lépésében adja meg az Active Directory-tartománynak a hitelesítő adatokat, miközben lehetősége van nevű *válassza ki a tartományt vezérlő prioritású*. Használja ezt a beállítást válassza ki egy olyan tartományvezérlőre, amely az ügynök kiszolgáló ugyanazon a helyen, és győződjön meg arról, hogy nincsenek-e a kommunikációt blokkoló tűzfal szabályok. |
 
 #### <a name="connectivity-errors"></a>Kapcsolódási hibák
 
@@ -1174,14 +1174,14 @@ Ha a kiépítési szolgáltatás nem tud csatlakozni a Workday vagy az Active Di
 |#|Hiba történt a forgatókönyv |Lehetséges okok|Ajánlott felbontás|
 |--|---|---|---|
 |1.| Amikor rákattint a **kapcsolat tesztelése**, a hibaüzenet jelenik meg: *Hiba történt az Active Directoryhoz. Győződjön meg arról, hogy a helyszíni kiépítési ügynök fut-e, és a megfelelő Active Directory-tartományhoz van konfigurálva.* | Ez a hiba általában megjelenik-e if a kiépítési ügynök nem fut, vagy az Azure AD közötti kommunikációt blokkoló tűzfal és a kiépítési ügynök. Ez a hiba, ha a tartomány nincs konfigurálva az ügynök varázslóban is megjelenhetnek. | Nyissa meg a *szolgáltatások* konzolon ellenőrizze, hogy fut-e az ügynököt a Windows-kiszolgálón. Nyissa meg a kiépítési ügynök varázslót, és győződjön meg arról, hogy a megfelelő tartomány regisztrálva van az ügynök.  |
-|2.| A hétvégék (Fri-Sat) keresztül karantén állapotba kerül a létesítési feladat, és kapunk, hogy nincs-e hiba a szinkronizálás az e-mailben értesítést. | A hiba gyakori okai egyik, a Workday tervezett állásidőt. Workday megvalósítási bérlőt használ, ha vegye figyelembe, hogy a Workday ütemezte állásidő a megvalósítás bérlők szabadnapok (általában a szombat reggel, Friday este) keresztül, és ebben az időszakban a Workday alkalmazások kiépítése előfordulhat, hogy lépjen be állapot karanténba helyezése, mert nem tud csatlakozni a Workday. Kap vissza szokásos állapotába után a Workday megvalósítási bérlő újra online állapotba kerül. Ritka esetekben előfordulhat, hogy is ezt a hibaüzenetet, ha az integrációs rendszer felhasználó jelszavának bérlői frissítés miatt megváltozott, vagy ha a fiók zárolva van, vagy lejárt állapotban. | Ellenőrizze a Workday-rendszergazdaként vagy integrációs partneréhez megtekintéséhez, amikor a Workday figyelmen kívül hagyja a figyelmeztető üzenetek a leállás ideje alatt és után a Workday-példány újra online állapotba kerül, győződjön meg arról, hogy rendelkezésre állási üzemszünet ütemezi.  |
+|2.| A hétvégék (Fri-Sat) keresztül karantén állapotba kerül a létesítési feladat, és kapunk, hogy nincs-e hiba a szinkronizálás az e-mailben értesítést. | A hiba egyik gyakori oka a Workday tervezett állásideje. Ha Ön Workday megvalósítási bérlőt használ, vegye figyelembe, hogy a Workday megvalósítási bérlőihez állásidő van ütemezve hétvégére (általában péntek estétől szombat reggelig), és ebben az időszakban a Workday kiépítési alkalmazások karanténba helyezett állapotba léphetnek, mivel nem tudnak csatlakozni a Workdayhez. Amint a Workday megvalósítási bérlője újra elérhetővé válik, visszaállnak normál állapotba. Ritka esetekben ez a hibaüzenet akkor is megjelenhet, ha az integrációs rendszer felhasználójának jelszava megváltozott a bérlő frissítése miatt, vagy ha a fiók zárolva lett, illetve lejárt. | Beszéljen Workday-rendszergazdájával vagy integrációs partnerével, hogy megtudja, mikorra van ütemezve a Workday állásideje, így figyelmen kívül hagyhatja a figyelmeztető üzeneteket a leállás ideje alatt, és meggyőződhet a rendelkezésre állásról, amint a Workday-példány újra elérhető.  |
 
 
 #### <a name="ad-user-account-creation-errors"></a>AD felhasználói fiók létrehozási hibák
 
 |#|Hiba történt a forgatókönyv |Lehetséges okok|Ajánlott felbontás|
 |--|---|---|---|
-|1.| Exportálja a felügyeleti napló üzenettel művelet sikertelen *hiba: OperationsError-SvcErr: Művelet hiba történt. A címtárszolgáltatás nem felettes hivatkozás van konfigurálva. A címtárszolgáltatás probléma átirányítások az erdőn kívüli objektumok, ezért nem.* | Ez a hiba általában Ha megjelenik a *Active Directory-tároló* szervezeti egység nem megfelelően van beállítva, vagy ha probléma adódik a kifejezés leképezése használja a *parentDistinguishedName*. | Ellenőrizze a *Active Directory-tároló* elgépelések OU paramétere. Ha használ *parentDistinguishedName* a attribútumleképezés győződjön meg arról, hogy mindig értékeli egy ismert tárolóba a AD-tartományban. Ellenőrizze a *exportálása* a naplózási eseményt naplózza, tekintse meg a létrehozott értéket. |
+|1.| Exportálja a felügyeleti napló üzenettel művelet sikertelen *hiba: OperationsError-SvcErr: Műveleti hiba történt. Ehhez a címtárszolgáltatáshoz nincs főhivatkozás beállítva, A címtárszolgáltatás probléma átirányítások az erdőn kívüli objektumok, ezért nem.* | Ez a hiba általában Ha megjelenik a *Active Directory-tároló* szervezeti egység nem megfelelően van beállítva, vagy ha probléma adódik a kifejezés leképezése használja a *parentDistinguishedName*. | Ellenőrizze a *Active Directory-tároló* elgépelések OU paramétere. Ha a *parentDistinguishedName* elemet használja az attribútumleképezésben, győződjön meg arról, hogy mindig egy AD-tartományon belüli ismert tárolóba adja vissza az értékeket. Ellenőrizze a *exportálása* a naplózási eseményt naplózza, tekintse meg a létrehozott értéket. |
 |2.| Exportálja a művelet sikertelen a naplófájlban a következő hibakóddal: *SystemForCrossDomainIdentityManagementBadResponse* és az üzenet *hiba: ConstraintViolation-AtrErr: A kérelemben szereplő érték érvénytelen. Az attribútum értékét nem volt elfogadható értékek tartományán. \nError részletei: CONSTRAINT_ATT_TYPE - vállalati*. | Amíg ez a hiba csak a *vállalati* attribútum, előfordulhat, hogy ezt a hibaüzenetet a többi-attribútumok *CN* is. Ez a hiba jelenik meg a kényszerített AD séma megkötés miatt. Alapértelmezés szerint az attribútumokat, például *vállalati* és *CN* rendelkezik az ad-ben a felső korlátja 64 karakternél. Ha a Workday-ből érkező értéke legfeljebb 64 karakter, majd látni fogja ezt a hibaüzenetet. | Ellenőrizze a *exportálása* a hibaüzenetben jelentett esemény a naplók megtekintéséhez az attribútum értékét. Fontolja meg a Workday használatával származó érték csonkolására a [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) függvény vagy módosítja a leképezéseket AD attribútuma, amely nem rendelkezik hasonló megkötés hossz alapján.  |
 
 #### <a name="ad-user-account-update-errors"></a>AD felhasználói fiók frissítési hibáinak száma

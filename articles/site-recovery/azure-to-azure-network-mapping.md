@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: ecaabe0cf2e9e55bf02f8e12244d55fc2bef830b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: d08715b1b3e0db4dfcf31bb4c020ab44ed3916e1
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359814"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549026"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>A hálózatleképezés és virtuális hálózatok IP-címzés beállítása
 
@@ -86,7 +86,7 @@ Különböző címtér<br/><br/> A célként megadott alhálózat következő el
 **Célhálózat** | **Részletek**
 --- | ---
 Célhálózat a feladatátvételi virtuális hálózat | -Cél IP-címet a statikus, de nem megegyező IP-címre a feladatátvételhez fenntartott.<br/><br/>  -A hozzárendelt cím az alhálózati címtartomány vége a következő elérhető címe.<br/><br/> Példa: Ha a forrás IP-cím 10.0.0.19 és feladatátvételi hálózat a 10.0.0.0/24 címtartományt használja, a következő IP-címe, a cél virtuális gép rendelt 10.0.0.254.
-Célhálózat nincs a virtuális hálózatok közötti feladatátvétel | -Cél IP-cím statikus foglalva feladatátvételhez azonos IP-címére lesz.<br/><br/>  – Ha az azonos IP-cím már hozzá van rendelve, az IP-cím elérhető minden, az alhálózati címtartományt a következő parancsot.<br/><br/> Példa: Ha a statikus IP-forráscím 10.0.0.19 és feladatátvétel nem hálózatban található, amely nem a feladatátvételi hálózat, a tartomány 10.0.0.0/24, akkor a célként megadott statikus IP-cím lesz 10.0.0.0.19, ha elérhető, és egyéb 10.0.0.254 lesz.
+Célhálózat nincs a virtuális hálózatok közötti feladatátvétel | -Cél IP-cím statikus foglalva feladatátvételhez azonos IP-címére lesz.<br/><br/>  – Ha az azonos IP-cím már hozzá van rendelve, IP-cím áll rendelkezésre az alhálózati címtartomány végén található a következő parancsot.<br/><br/> Példa: Ha a statikus IP-forráscím 10.0.0.19 és feladatátvétel nem hálózatban található, amely nem a feladatátvételi hálózat, a tartomány 10.0.0.0/24, akkor a célként megadott statikus IP-cím lesz 10.0.0.0.19, ha elérhető, és egyéb 10.0.0.254 lesz.
 
 - A feladatátvételi virtuális hálózaton a célhálózat vész-helyreállítási beállításakor kiválasztott.
 - Azt javasoljuk, hogy Ön mindig használja a nem éles hálózati környezetben a feladatátvételi teszthez.

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d89886e7cc5fe47013902b281c490b79a07e7641
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888110"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524582"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>A Spark használatával összeállított gépi tanulási modellek üzembe helyezése
 
@@ -112,7 +112,7 @@ A PySpark-kernelek Jupyter notebookok a kell egy előre beállított környezete
 A PySpark kernel tartalmaz néhány előre meghatározott "magics", amelyek különleges parancsok, amelyek segítségével meghívhatja a %%. Nincsenek két ilyen parancsot a kód a példákon használt.
 
 * **%% helyi** megadott helyileg hajtja végre a következő sorokat a kódot. Kód érvényes a Python-kód kell lennie.
-* **%% sql -o <variable name>** 
+* **%% sql -o \<változó neve >** 
 * Futtatják a Hive-lekérdezést a kontext sqlContext ellen. Az -o paramétert, ha a lekérdezés eredménye a rendszer megőrzi a %% Pandas dataframe helyi Python-környezetben.
 
 További információk a-kernelek Jupyter-notebookok és az előre meghatározott "magics", amely számára biztosítanak, lásd: [notebookokhoz elérhető kernelek Jupyter notebookok a HDInsight Spark Linux-fürtök HDInsight az](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).

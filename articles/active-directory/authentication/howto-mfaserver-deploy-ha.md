@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b7784d054f279dfccdb3a2424fd427789ca658
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2ddf0885ce7615e06b78eccbd6424e63cc6103c2
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370074"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547005"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Azure multi-factor Authentication-kiszolgáló magas rendelkezésre állás konfigurálása
 
@@ -36,7 +36,7 @@ MFA fő és a többtényezős hitelesítés az alárendelt kiszolgálók kommuni
 
 Az ad-vel a sikeres hitelesítés után az MFA-kiszolgáló az MFA szolgáltatással kommunikál. Az MFA-kiszolgáló megvárja, amíg az MFA szolgáltatás engedélyezéséhez vagy letiltásához az alkalmazás eléréséhez a felhasználó értesítést.
 
-A fő MFA-kiszolgáló offline állapotba kerül, ha hitelesítések továbbra is választhatók, de a módosítások szükségesek, hogy az MFA-adatbázis-műveletek nem dolgozható fel. (Példák: a felhasználók, önkiszolgáló PIN-kód módosításokat, és felhasználói adatok módosítása)
+A fő MFA-kiszolgáló offline állapotba kerül, ha hitelesítések továbbra is választhatók, de a módosítások szükségesek, hogy az MFA-adatbázis-műveletek nem dolgozható fel. (Példák: felhasználók, önkiszolgáló PIN-kód módosításokat, változó felhasználói adatok vagy a felhasználói portálra való hozzáférés is)
 
 ## <a name="deployment"></a>Környezet
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 38d403be1dc35b8ab4cd1b15fa259b5e6917197c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c3be0cdf2ef33c26dfa9d177e9b34f808b1b862a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314450"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525528"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével a StorSimple-riasztások megtekintése és kezelése
 
@@ -160,7 +160,7 @@ Ha felhőkapcsolatra meghiúsul üzemi a StorSimple-eszköz, majd az eszköz ál
 | Az eszköz feladatátvételére <*eszköznév*>. |Ismeretlen/egyéb ok. |Ha nagy számú ilyen riasztást lát, forduljon a Microsoft Support. Miután a probléma megoldódott, törölje a riasztást a riasztások oldaláról. |
 | Egy kritikus fontosságú szolgáltatás sikertelenként állapotjelentést. |DataPath szolgáltatás hibája. |Segítségért forduljon a Microsoft Support. |
 | Virtuális hálózati adapter IP-címet <*DATA #*> állapotjelentést, mert nem sikerült. |Ismeretlen/egyéb ok. |Néha átmeneti körülmények okozhatják ezek a riasztások. Ha ez a helyzet, majd ezt a riasztást automatikusan törlődik egy kis idő múlva. Ha nem szűnik meg a probléma, forduljon a Microsoft támogatási szolgálatához. |
-| Virtuális hálózati adapter IP-címet <*DATA #*> állapotjelentést, mert nem sikerült. |Kapcsolat neve: <*DATA #*> IP-cím <IP address> nem hozható online állapotba, mert ismétlődő IP-címet észlelt a hálózaton. |Győződjön meg arról, hogy az ismétlődő IP-cím van-e távolítani a hálózatról, vagy konfigurálja újra a felület másik IP-címmel. |
+| Virtuális hálózati adapter IP-címet <*DATA #*> állapotjelentést, mert nem sikerült. |Kapcsolat neve: <*DATA #*> IP-cím `<IP address>` nem hozható online állapotba, mert ismétlődő IP-címet észlelt a hálózaton. |Győződjön meg arról, hogy az ismétlődő IP-cím van-e távolítani a hálózatról, vagy konfigurálja újra a felület másik IP-címmel. |
 
 ### <a name="disaster-recovery-alerts"></a>Vész-helyreállítási riasztások
 
@@ -200,8 +200,8 @@ Ha felhőkapcsolatra meghiúsul üzemi a StorSimple-eszköz, majd az eszköz ál
 | Riasztás szövege | Esemény | További információ / ajánlott műveletek |
 |:--- |:--- |:--- |
 | Nem lehetett elindítani a StorSimple szolgáltatás(oka)t. |DataPath hiba |Ha a probléma nem szűnik meg, forduljon a Microsoft ügyfélszolgálatához. |
-| Ismétlődő IP-cím észlelve a "Data0". | |A rendszer "10.0.0.1" IP-cím ütközést észlelt. Az eszköz a hálózati erőforrás "Data0" *<device1>* offline állapotban. Győződjön meg arról, hogy az IP-címet nem használja egyetlen más entitás sem ezen a hálózaton. Hálózati probléma elhárításához nyissa meg [hibaelhárítás a Get-NetAdapter parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). A probléma megoldásához forduljon a hálózati rendszergazdához. Ha a probléma nem szűnik meg, forduljon a Microsoft ügyfélszolgálatához. |
-| IPv4-(vagy IPv6) 'Data0' címe offline állapotban. | |A hálózati erőforrás "Data0" IP-cím "10.0.0.1". előtag hossza "22" az eszközön, és *<device1>* offline állapotban. Győződjön meg arról, hogy a kapcsoló portjaihoz, amelyhez ez az interfész csatlakozik működési. Hálózati probléma elhárításához nyissa meg [hibaelhárítás a Get-NetAdapter parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+| Ismétlődő IP-cím észlelve a "Data0". | |A rendszer "10.0.0.1" IP-cím ütközést észlelt. Az eszköz a hálózati erőforrás "Data0"  *\<device1 >* offline állapotban. Győződjön meg arról, hogy az IP-címet nem használja egyetlen más entitás sem ezen a hálózaton. Hálózati probléma elhárításához nyissa meg [hibaelhárítás a Get-NetAdapter parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). A probléma megoldásához forduljon a hálózati rendszergazdához. Ha a probléma nem szűnik meg, forduljon a Microsoft ügyfélszolgálatához. |
+| IPv4-(vagy IPv6) 'Data0' címe offline állapotban. | |A hálózati erőforrás "Data0" IP-cím "10.0.0.1". előtag hossza "22" az eszközön, és  *\<device1 >* offline állapotban. Győződjön meg arról, hogy a kapcsoló portjaihoz, amelyhez ez az interfész csatlakozik működési. Hálózati probléma elhárításához nyissa meg [hibaelhárítás a Get-NetAdapter parancsmaggal](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
 | Nem sikerült csatlakozni a hitelesítési szolgáltatást. |DataPath hiba |A URLthat használatos a hitelesítés nem érhető el. Győződjön meg arról, hogy a tűzfalszabályokban szerepel-e a StorSimple eszközhöz megadott URL-mintával. További információ az URL-cím-minták az Azure Portalon lépjen a https:\//aka.ms/ss-8000-network-reqs. Azure Government Cloud használata esetén nyissa meg az URL-mintákra, a https:\//aka.ms/ss8000-gov-network-reqs.|
 
 ### <a name="performance-alerts"></a>Az alkalmazásteljesítmény miatti riasztások

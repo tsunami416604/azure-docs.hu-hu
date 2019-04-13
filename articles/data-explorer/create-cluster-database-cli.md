@@ -7,18 +7,18 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 04/10/2019
-ms.openlocfilehash: 451eeaf6b30c85371728968d834aa6e34092dbc3
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 1fb9027ab3301bb860d260aed737ab7674039d9b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491253"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524718"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Egy Azure Data Explorer fürt és adatbázis létrehozása az Azure CLI-vel
 
 > [!div class="op_single_selector"]
 > * [Portál](create-cluster-database-portal.md)
-> * [parancssori felület](create-cluster-database-cli.md)
+> * [Parancssori felület](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
@@ -32,7 +32,7 @@ A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha helyi telepítése és használata az Azure CLI, az ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb. Futtassa az `az --version` parancsot a verzió ellenőrzéséhez. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket.
+Ha helyi telepítése és használata az Azure CLI, az ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb. Futtassa az `az --version` parancsot a verzió ellenőrzéséhez. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket.
 
 ## <a name="configure-the-cli-parameters"></a>A CLI paramétereinek konfigurálása
 
@@ -110,4 +110,4 @@ Most már egy fürt és a egy adatbázist.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése](python-ingest-data.md)
+> [Rövid útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése](python-ingest-data.md)

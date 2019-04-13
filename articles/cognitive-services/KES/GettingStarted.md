@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: e2678200e2f8c55111e53ab0a341804fd17623a3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 00c5ed3e3ea5c083f727d06c2ed305fe35ed03db
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994955"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523324"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Első lépések a Knowledge Exploration Service szolgáltatással
 
@@ -252,7 +252,7 @@ Miután létrehozta a felhőszolgáltatást, a [`kes.exe deploy_service`](Comman
 
 [Cserélje](../../../articles/cloud-services/cloud-services-nodejs-stage-application.md) fel az előkészítési és üzemelési pontok tartalmát, hogy az élő forgalom most már az újonnan üzembe helyezett szolgáltatásra menjen. Ugyanezt az eljárást ismételje meg, amikor a szolgáltatást új adatokkal frissített verzióját telepíti. Ahogy minden más Azure-felhőszolgáltatásnál, igény szerint itt is használhatja az Azure portálon az [automatikus skálázás](../../../articles/cloud-services/cloud-services-how-to-scale-portal.md) konfigurálását.
 
-Ebben a példában az *Academic* indexet egy már meglévő felhőszolgáltatás előkészítési pontján helyezzük üzembe a *<vm_size>* virtuális gépekkel. Használja az alábbi parancsot:
+Ebben a példában üzembe helyezése a *Academic* index egy már meglévő felhőszolgáltatás ugyanezen az előkészítési ponton történő  *\<vm_size >* virtuális gépeket. Használja az alábbi parancsot:
 
 `kes.exe deploy_service http://<account>.blob.core.windows.net/<container>/Academic.grammar http://<account>.blob.core.windows.net/<container>/Academic.index <serviceName> <vm_size> --slot Staging`
 
