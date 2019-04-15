@@ -59,10 +59,10 @@ Egy Azure SQL Data Warehouse társított szolgáltatást a következő tulajdons
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot állítsa **AzureSqlDW**. | Igen |
-| kapcsolati Sztringje | Adja meg a az Azure SQL Data Warehouse-példányhoz való csatlakozáshoz szükséges információkat a **connectionString** tulajdonság. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó szolgáltatásnév kulcsát/is helyezheti az Azure Key Vaultban, és ha az SQL-hitelesítés lekéréses a `password` konfigurációs ki a kapcsolati karakterláncot. A táblázat alatti a JSON-példa és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. | Igen |
+| connectionString | Adja meg a az Azure SQL Data Warehouse-példányhoz való csatlakozáshoz szükséges információkat a **connectionString** tulajdonság. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó szolgáltatásnév kulcsát/is helyezheti az Azure Key Vaultban, és ha az SQL-hitelesítés lekéréses a `password` konfigurációs ki a kapcsolati karakterláncot. A táblázat alatti a JSON-példa és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. | Igen |
 | servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
 | servicePrincipalKey | Adja meg az alkalmazáskulcsot. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
-| bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Kérheti a viszi az egérmutatót az Azure portal jobb felső sarkában. | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
+| tenant | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Kérheti a viszi az egérmutatót az Azure portal jobb felső sarkában. | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a saját üzemeltetésű integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem |
 
 Különböző hitelesítési típus tekintse meg a következő szakaszok az Előfeltételek és a JSON-minták, illetve:
@@ -386,7 +386,7 @@ Adatok másolása az Azure SQL Data Warehouse, állítsa a fogadó típusa máso
 | rejectType | Megadja, hogy a **rejectValue** akkor Szövegkonstansérték vagy százalékos.<br/><br/>Engedélyezett értékek a következők **érték** (alapértelmezett), és **százalékos**. | Nem |
 | rejectSampleValue | Mielőtt PolyBase újraszámítja a visszautasított sorok aránya beolvasandó sorok számát határozza meg.<br/><br/>Megengedett értékek: 1, 2, stb. | Igen, ha a **rejectType** van **százalékos**. |
 | useTypeDefault | Itt adhatja meg, hogyan szeretné kezelni a PolyBase kér le adatokat a szövegfájl elválasztójellel tagolt szöveges fájlok a hiányzó értékeket.<br/><br/>További tudnivalók a ezt a tulajdonságot a következő argumentumok szakaszában [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Engedélyezett értékek a következők **igaz** és **hamis** (alapértelmezett). | Nem |
-| WriteBatchSize | Adatok beszúrása SQL-táblát, amikor a puffer mérete eléri a **writeBatchSize**. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **egész** (sorok száma). | Nem. Az alapértelmezett érték a 10000. |
+| writeBatchSize | Adatok beszúrása SQL-táblát, amikor a puffer mérete eléri a **writeBatchSize**. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **egész** (sorok száma). | Nem. Az alapértelmezett érték a 10000. |
 | writeBatchTimeout | Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **timespan**. Példa: "00: 30:00" (30 perc). | Nem |
 | preCopyScript | Adja meg a másolási tevékenység futtatása előtt az adatok Azure SQL Data Warehouse-bA írt minden egyes futtatásához egy SQL-lekérdezést. Ez a tulajdonság használatával az előre betöltött adatokat. | Nem |
 
@@ -552,9 +552,9 @@ Az alábbi táblázat példákat mutat be, hogyan adhat meg a **tableName** JSON
 
 | Adatbázis-séma | Tábla neve | **Táblanév** JSON-tulajdonság |
 | --- | --- | --- |
-| dbo | Táblanév | Táblanév vagy a dbo. Táblanév vagy [dbo]. [Táblanév] |
-| dbo1 | Táblanév | dbo1. Táblanév vagy [dbo1]. [Táblanév] |
-| dbo | My.Table | [My.Table] vagy [dbo]. [My.Table] |
+| dbo | MyTable | MyTable vagy dbo.MyTable vagy [dbo].[MyTable] |
+| dbo1 | MyTable | dbo1.MyTable vagy [dbo1].[MyTable] |
+| dbo | My.Table | [My.Table] vagy [dbo].[My.Table] |
 | dbo1 | My.Table | [dbo1].[My.Table] |
 
 A következő hibát látja, ha a probléma lehet, hogy a megadott érték a **tableName** tulajdonság. Lásd az előző táblázatban adja meg az értékeket a megfelelő módszer az **tableName** JSON-tulajdonságot.
@@ -580,36 +580,36 @@ Másolt adatok vagy az Azure SQL Data Warehouse, a következő hozzárendelések
 | Az Azure SQL Data Warehouse-adattípus | Data Factory közbenső adattípus |
 |:--- |:--- |
 | bigint | Int64 |
-| Bináris | Byte] |
-| bit | Logikai |
-| CHAR | Karakterlánc, Char] |
-| dátum | DateTime |
-| Dátum és idő | DateTime |
+| binary | Byte[] |
+| bit | Boolean |
+| char | String, Char[] |
+| date | DateTime |
+| Datetime | DateTime |
 | datetime2 | DateTime |
 | Datetimeoffset | DateTimeOffset |
-| tizedes tört | tizedes tört |
-| A FILESTREAM attribútum (varbinary(max)) | Byte] |
-| Lebegőpontos | Dupla |
-| image | Byte] |
+| Decimal | Decimal |
+| FILESTREAM attribute (varbinary(max)) | Byte[] |
+| Float | Double |
+| image | Byte[] |
 | int | Int32 |
-| költséget takaríthat meg | tizedes tört |
-| nchar | Karakterlánc, Char] |
-| ntext | Karakterlánc, Char] |
-| numerikus | tizedes tört |
-| nvarchar | Karakterlánc, Char] |
-| valódi | Önálló |
-| ROWVERSION | Byte] |
+| money | Decimal |
+| nchar | String, Char[] |
+| ntext | String, Char[] |
+| numeric | Decimal |
+| nvarchar | String, Char[] |
+| real | Single |
+| rowversion | Byte[] |
 | smalldatetime | DateTime |
 | smallint | Int16 |
-| pénz | tizedes tört |
-| sql_variant | Objektum |
-| szöveg | Karakterlánc, Char] |
-| time | Időtartam |
-| időbélyeg | Byte] |
-| tinyint | Bájt |
-| UniqueIdentifier | GUID |
-| varbinary | Byte] |
-| varchar | Karakterlánc, Char] |
+| smallmoney | Decimal |
+| sql_variant | Object |
+| text | String, Char[] |
+| time | TimeSpan |
+| timestamp | Byte[] |
+| tinyint | Byte |
+| uniqueidentifier | Guid |
+| varbinary | Byte[] |
+| varchar | String, Char[] |
 | xml | Xml |
 
 ## <a name="next-steps"></a>További lépések
