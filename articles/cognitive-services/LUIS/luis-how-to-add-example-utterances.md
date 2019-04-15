@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 1dac87ae07fac6a997cfd8e83c1e47ff39a91a83
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d3123b1e0238a1907b5ad3d487b92a7919ff181
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096690"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524259"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Entitás hozzáadása a példa kimondott szöveg 
 
@@ -91,6 +91,8 @@ Az utterance (kifejezés), feltéve, hogy `Does John Smith work in Seattle?`, eg
 
 ## <a name="add-hierarchical-entity"></a>Hierarchikus entitás hozzáadása
 
+**Hierarchikus entitások idővel elavulttá válik. Használat [entitás szerepkörök](luis-concept-roles.md) meghatározására, entitás altípus hierarchikus entitások helyett.**
+
 Egy hierarchikus entitás, de megismert és elméletben kapcsolódó entitások egy kategóriát. A következő példában az entitás tartalmazza a forrás-és célhelynek. 
 
 Az utterance (kifejezés) a `Move John Smith from Seattle to Cairo`, Seattle a feladás helyét pedig Cairo a célhelyen. Minden egyes helye kontextusban különböző és megismert szórendjét és a word választott az utterance (kifejezés).
@@ -105,6 +107,12 @@ Az utterance (kifejezés) a `Move John Smith from Seattle to Cairo`, Seattle a f
 
     >[!CAUTION]
     >Gyermek entitásnévnek egyedinek kell lennie minden entitás egyetlen alkalmazásban. Két különböző hierarchikus entitások nem tartalmazhat gyermekentitások ugyanazzal a névvel. 
+
+## <a name="add-entitys-role-to-utterance"></a>Entitás az szerepkör hozzáadása az utterance (kifejezés)
+
+A szerepkör az elnevezett altípus az entitások határozzák meg az utterance (kifejezés) kontextusában. Megjelölés belül az utterance (kifejezés), mint az entitás egy entitás, vagy válasszon egy szerepkört az entitáson belül. Minden entitás rendelkezhet szerepköröket, beleértve az egyéni entitások, amelyek a gép megtanult (egyszerű entitások és összetett entitások), nem gép megtanult (előre összeállított entitások, reguláris kifejezés entitásokat, lista entitások). 
+
+Ismerje meg, [való megjelöléséhez az utterance (kifejezés) entitás szerepkörökkel hogyan](tutorial-entity-roles.md) gyakorlati oktatóanyagot. 
 
 ## <a name="entity-status-predictions"></a>Entitás állapota előrejelzések
 
@@ -151,11 +159,11 @@ Egy entitás gép megtanult címke eltávolítása az utterance (kifejezés), v�
 
 ### <a name="add-prebuilt-entity-label"></a>Előre összeállított entitások címke hozzáadása
 
-Ha az előre összeállított entitások ad hozzá a LUIS-alkalmazás, nem kell címke utterances az entitásokhoz. Adja hozzá őket, illetve előre összeállított entitások kapcsolatos további tudnivalókért lásd: [entitások hozzáadása](luis-how-to-add-entities.md#add-prebuilt-entity).
+Ha az előre összeállított entitások ad hozzá a LUIS-alkalmazás, nem kell címke utterances az entitásokhoz. Adja hozzá őket, illetve előre összeállított entitások kapcsolatos további tudnivalókért lásd: [entitások hozzáadása](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
 ### <a name="add-regular-expression-entity-label"></a>Reguláris kifejezés entitás címke hozzáadása
 
-Ha a reguláris kifejezés entitásokat ad hozzá a LUIS-alkalmazás, nem kell címke utterances az entitásokhoz. Reguláris kifejezés entitásokat, és hogyan adja hozzá őket kapcsolatos további információkért lásd: [entitások hozzáadása](luis-how-to-add-entities.md#add-regular-expression-entities).
+Ha a reguláris kifejezés entitásokat ad hozzá a LUIS-alkalmazás, nem kell címke utterances az entitásokhoz. Reguláris kifejezés entitásokat, és hogyan adja hozzá őket kapcsolatos további információkért lásd: [entitások hozzáadása](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts).
 
 
 ### <a name="create-a-pattern-from-an-utterance"></a>Hozzon létre egy minta az utterance (kifejezés)

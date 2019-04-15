@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dcb38d839017d1c4ea5b6714f7c900c476ddcd6b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 01d982d91d772ccfd468ccdac6391f971be4f43b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494661"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546542"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -170,7 +170,7 @@ Saját tanúsítványának feltöltéséhez és a hozzáférés teszteléséhez 
 
 4. Állítsa be az ASE tartomány DNS-ét. A DNS-ben helyettesítő karaktert is használhat tartományhoz. Pár egyszerű teszt végrehajtásához állítsa be az alkalmazás nevét, a virtuális IP-címére a virtuális gép hosts fájljának szerkesztésével:
 
-    a. Ha az ASE tartománynév _. ilbase.com_ hoz létre az alkalmazás neve és _mytestapp_, akkor _mytestapp.ilbase.com_. Ezután állítsa be, hogy a _mytestapp.ilbase.com_ tartománynév az ILB-címre mutasson. (Windows rendszeren a hosts fájl a _C:\Windows\System32\drivers\etc\_ elérési úton található.)
+    a. Ha az ASE tartománynév _. ilbase.com_ hoz létre az alkalmazás neve és _mytestapp_, akkor _mytestapp.ilbase.com_. Ezután állítsa be, hogy a _mytestapp.ilbase.com_ tartománynév az ILB-címre mutasson. (A Windows, a gazdagépek fájl a _c _C:\Windows\System32\drivers\etc\\_.)
 
     b. A webtelepítés közzétételének teszteléséhez vagy a haladó konzol eléréséhez hozzon létre egy rekordot a _mytestapp.scm.ilbase.com_ tartományban.
 

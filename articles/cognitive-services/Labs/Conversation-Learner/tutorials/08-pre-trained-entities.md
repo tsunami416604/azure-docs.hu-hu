@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f5b3234c45a9ee80bc5a2c2afe67046896270802
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dade442cb04f79ef75e65d6eb29128b105e72b40
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58163786"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565410"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>Pre-trained entitások hozzáadása
 Ez az oktatóanyag bemutatja, hogyan Pre-Trained entitásokat ad hozzá a beszélgetés Learner modell.
@@ -62,7 +62,7 @@ Indítsa el a kezdőlapon a webes felhasználói felületen.
 
 1. Válassza ki **műveletek** a bal oldali panelen, majd **új művelet**.
 2. Adja meg **Mi az a dátum?** a **robot a válasz...** . Előre betanított entitások nem lehet **szükséges entitások** , azok minden utterances alapértelmezett felismeri.
-3. Adja meg **beépített-datetimev2** a **kizárásának feljogosítja a**.
+3. Adja meg **beépített-datetimev2** a **kizárásának entitások**.
 4. Kattintson a **Létrehozás** gombra.
 
 ![](../media/T08_action_create_2.png)

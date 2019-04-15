@@ -1,7 +1,7 @@
 ---
 title: Docker Compose - az Azure App Service használatával többtárolós alkalmazás létrehozása
 description: Néhány perc alatt telepítheti az első többtárolós alkalmazását az Azure Web App for Containersben
-keywords: azure app service, webalkalmazás, linux, docker, összeállítás, többtárolós, több tárolós, webalkalmazás tárolókhoz, több tároló, tároló, kubernetes, wordpress, mysql-hez készült azure db, éles adatbázis tárolókkal
+keywords: az Azure app service, webalkalmazás, linux, docker compose, multicontainer, a többtárolós, a web app for containers szolgáltatásban, több tárolók, tároló, wordpress, mysql-hez készült azure db, a tárolók éles adatbázis
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 404be7a064e0e4b09178830b7802192e8775e121
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 543ba3ee4e72c5d31708e9b4983e7889421940ca
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316580"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546232"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>A Docker Compose-konfigurációját (előzetes verzió) többtárolós alkalmazás létrehozása
 
-A [Web App for Containers](app-service-linux-intro.md) segítségével rugalmasan használhatók a Docker-rendszerképek. Ez a rövid útmutató a többtárolós alkalmazásoknak a Web App for Containersben történő üzembe helyezésén vezeti végig a [Cloud Shellben](https://docs.microsoft.com/azure/cloud-shell/overview) egy Docker Compose-konfiguráció használatával. A Kuberneteshez és a MySQL-hez készült Azure DB teljes körű megoldásához kövesse a [többtárolós alkalmazásokról szóló oktatóanyag lépéseit](tutorial-multi-container-app.md).
+A [Web App for Containers](app-service-linux-intro.md) segítségével rugalmasan használhatók a Docker-rendszerképek. Ez a rövid útmutató a többtárolós alkalmazásoknak a Web App for Containersben történő üzembe helyezésén vezeti végig a [Cloud Shellben](https://docs.microsoft.com/azure/cloud-shell/overview) egy Docker Compose-konfiguráció használatával.
 
 Ezt a rövid útmutatót a Cloud Shellben követjük végig, a parancsok azonban helyileg is futtathatók az [Azure CLI](/cli/azure/install-azure-cli) (2.0.32-es vagy újabb verzió) használatával. 
 
@@ -138,7 +138,10 @@ Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Többtárolós WordPress-alkalmazás létrehozása a Web App for Containersben](tutorial-multi-container-app.md)
+> [Oktatóanyag: Többtárolós WordPress-alkalmazás](tutorial-multi-container-app.md)
+
+> [!div class="nextstepaction"]
+> [Egy egyéni tároló konfigurálása](configure-custom-container.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-multi-container-app/azure-multi-container-wordpress-install.png

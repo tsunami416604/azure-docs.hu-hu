@@ -23,7 +23,7 @@ items:
     href: quickstart-python.md
   - name: Ruby-alkalmazás létrehozása
     href: quickstart-ruby.md
-  - name: Docker-/Go-alkalmazás létrehozása
+  - name: Egyéni tároló futtatása
     href: quickstart-docker-go.md
   - name: Többtárolós alkalmazás létrehozása
     href: quickstart-multi-container.md
@@ -48,7 +48,7 @@ items:
       href: tutorial-java-enterprise-postgresql-app.md
   - name: Többtárolós alkalmazás
     href: tutorial-multi-container-app.md
-  - name: Egyéni Docker-rendszerkép
+  - name: Tároló futtatása az ACR-ből
     href: tutorial-custom-docker-image.md
   - name: Egyéni tartomány leképezése
     href: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
@@ -72,10 +72,6 @@ items:
     href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: App Service-környezet
     href: ../environment/intro.md
-  - name: Java-fejlesztői útmutató
-    href: app-service-linux-java.md
-  - name: Java Enterprise-útmutató
-    href: app-service-java-enterprise.md
   - name: Bemeneti és kimeneti IP-címek
     href: ../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Hitelesítés és engedélyezés
@@ -88,10 +84,22 @@ items:
   items:
   - name: Alkalmazás konfigurálása
     items:
-    - name: Python-rendszerkép
-      href: how-to-configure-python.md
     - name: Alkalmazásbeállítások használata
       href: ../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Az ASP.NET Core konfigurálása
+      href: configure-language-dotnetcore.md
+    - name: A Node.js konfigurálása
+      href: configure-language-nodejs.md
+    - name: A PHP konfigurálása
+      href: configure-language-php.md
+    - name: A Java konfigurálása
+      href: configure-language-java.md
+    - name: A Python konfigurálása
+      href: how-to-configure-python.md
+    - name: A Ruby konfigurálása
+      href: configure-language-ruby.md
+    - name: Egyéni tároló konfigurálása
+      href: configure-custom-container.md
     - name: Tartalom mentése a Storage szolgáltatással
       href: how-to-serve-content-from-azure-storage.md
   - name: Üzembe helyezés az Azure-ban
@@ -158,8 +166,6 @@ items:
       href: ../web-sites-monitor.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Naplók engedélyezése
       href: ../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Java APM-integrációk
-      href: how-to-java-apm-monitoring.md
   - name: Alkalmazás kezelése
     items:
     - name: Alkalmazás biztonsági mentése
@@ -222,9 +228,9 @@ items:
         href: ../faq-open-source-technologies.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Konfigurálással és felügyelettel kapcsolatos gyakori kérdések
         href: ../faq-configuration-and-management.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: f29fa4901e2eb8e3a6bcabcc72e4dba37041186a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 250501832c3daaeee9935c2796e6da9df3483e35
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719523"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544872"

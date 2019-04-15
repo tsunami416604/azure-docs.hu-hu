@@ -93,8 +93,8 @@ sections:
       - type: paragraph
         text: 'További információ a Translator Text API-t használó alkalmazások fejlesztéséről:'
       - type: paragraph
-        text: '<a href="tutorial-wpf-translation-csharp.md">Translator Textet használó WPF-alkalmazás írása C# nyelven</a>'
+        text: '<li><a href="tutorial-wpf-translation-csharp.md">Translator Textet használó WPF-alkalmazás létrehozása (C#)</a></li><li><a href="tutorial-build-flask-app-translation-synthesis.md">Flask-fordítóalkalmazás létrehozása (Python)</a></li>'
   - title: Referencia
     items:
       - type: paragraph
-        text: <p><a href="reference/v3-0-reference.md">API-hivatkozás</a></p>
+        text: <p><a href="reference/v3-0-reference.md">API-referencia</a></p>

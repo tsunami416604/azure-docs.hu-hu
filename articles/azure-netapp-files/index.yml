@@ -1,0 +1,35 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure NetApp Files dokumentációja
+metadata:
+  title: Az Azure NetApp Files dokumentációja
+  description: 'Ismerje meg, hogyan állíthat be, érhet el és kezelhet köteteket az Azure NetApp Files használatával.'
+  author: b-juche
+  ms.author: b-juche
+  ms.service: azure-netapp-files
+  ms.topic: landing-page
+  ms.date: 04/10/2019
+abstract:
+  description: 'Ez az oktatóanyag bemutatja, hogyan használja az Azure NetApp Files szolgáltatást NetApp-fiókok, kapacitáskészletek és kötetek létrehozására és kezelésére, exportálási szabályzat konfigurálására, kötet virtuális géphez való csatlakoztatására és pillanatképek kezelésére. <p>Az Azure NetApp Files használatához csatlakoznia kell a nyilvános előzetes verzió programjához. Továbbá szerepelnie kell a Microsoft.NetApp Azure erőforrás-szolgáltató engedélyezési listáján. Ha csatlakozni szeretne a nyilvános előzetes verzió programjához, lásd az <a href="azure-netapp-files-register">Azure NetApp Filesra történő regisztrációval</a> foglalkozó témakört.</p>'
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: 'Az Azure NetApp Files beállítása, és egy kötet létrehozása a következő használatával:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/azure-netapp-files/media/index/get-started.svg'
+            text: Azure Portal
+            href: /azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/netapp/">REST API</a></p>'
+          - title: Azure Resource Manager
+            html: '<p><a href="https://docs.microsoft.com/azure/templates/microsoft.netapp/allversions">Resource Manager-sablonok</a></p>'

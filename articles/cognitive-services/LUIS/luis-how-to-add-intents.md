@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 0d6813c11b5b9ed4aef666f5eb3dc75d8c9de770
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: ed180563ea6138b3b4bab6092b39eeacf9dbf840
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593422"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521742"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések meghatározni a felhasználó szándékának beszédmódok hozzáadása
 
@@ -69,7 +69,7 @@ A szöveg kék színnel, egy entitás jelző van kiemelve.
 
 ## <a name="add-a-prebuilt-entity"></a>Egy előre létrehozott entitás hozzáadása
 
-További információ: [előre összeállított entitások](luis-how-to-add-entities.md#add-prebuilt-entity).
+További információ: [előre összeállított entitások](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
 ## <a name="using-the-contextual-toolbar"></a>A környezetfüggő eszköztár
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: df8196389ecb92229ff9495002c4bce394d7c048
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: ac2edb4c12e95a915790c1fadfb2dcdcce554aad
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202707"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545573"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# az Apache Hive és a HDInsight az Apache hadoop streamelési Apache Pig, felhasználó által definiált függvények
 
@@ -46,8 +46,6 @@ Mind a Hive és Pig adhat át adatokat a feldolgozáshoz külső alkalmazások. 
 * __Linux-alapú HDInsight__ -fürtök használatával [Mono (https://mono-project.com) ](https://mono-project.com) .NET-alkalmazások futtatására. Monó verzió 4.2.1 megtalálható a HDInsight 3.6-os verzióját.
 
     A .NET-keretrendszer-verziókat monó kompatibilitást további információkért lásd: [monó kompatibilitási](https://www.mono-project.com/docs/about-mono/compatibility/).
-
-    Mono egy adott verzióját használja, tekintse meg a [telepítés vagy frissítés Mono](../hdinsight-hadoop-install-mono.md) dokumentumot.
 
 * __Windows-alapú HDInsight__ fürtök használata a Microsoft .NET CLR-beli .NET-alkalmazások futtatására.
 
@@ -154,7 +152,7 @@ A verzió a .NET-keretrendszer és a HDInsight-verziók mellékelt Mono további
 
 3. Mentés **Program.cs**, és ezután hozza létre a projektet.
 
-## <a name="upload-to-storage"></a>A storage feltöltése
+## <a name="upload-to-storage"></a>Feltöltés tárolóba
 
 1. A Visual Studióban nyissa meg a **Server Explorer**.
 

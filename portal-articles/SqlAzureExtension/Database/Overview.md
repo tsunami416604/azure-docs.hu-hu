@@ -6,24 +6,24 @@ author: sewatson
 manager: lwelicki
 ms.service: sql-database
 ms.topic: article
-ms.date: 04/27/2017
-ms.author: sewatson
-ms.openlocfilehash: b41b4b7d302b0f3c528fa424627b4446a5e2c0ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/09/2019
+ms.author: ninarn
+ms.openlocfilehash: 99f19971eafaa1ddad1f96b187e18b79810560a2
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073928"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545882"
 ---
 # <a name="sql-database-documentation"></a>SQL Database-dokumentáció
 
-Az Azure SQL Database a Microsoft SQL Server motoron alapuló, szolgáltatásként nyújtott relációs adatbázis. Az SQL Database egy nagy teljesítményű, megbízható és biztonságos adatbázis, amely segítségével adatvezérelt alkalmazásokat és webhelyeket hozhat létre egy tetszőleges programozási nyelven, infrastruktúrakezelés nélkül. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
+Az Azure SQL Database a Microsoft SQL Server-adatbázismotor legújabb, stabil verzióján alapuló, általános célú, szolgáltatásként nyújtott (DBaaS) relációs adatbázis. Az SQL Database egy nagy teljesítményű, megbízható és biztonságos felhőalapú adatbázis, amely segítségével adatvezérelt alkalmazásokat és webhelyeket hozhat létre egy tetszőleges programozási nyelven, infrastruktúrakezelés nélkül. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
 
 ## <a name="5-minute-quickstarts"></a>5 perces gyors útmutatók
 
-Megtudhatja, hogyan hozhat létre SQL-adatbázist, illetve hogyan kezelheti azt az SQL Management Studio segítségével, és hogyan fejlesztheti C#, Java, Python, Node.js és Ruby használatával:
+Az Azure SQL Database lehetővé teszi alapszintű felügyeleti feladatok egyszerű ellátását az Azure Portal, az Azure CLI és az Azure PowerShell segítségével. Az alábbi rövid útmutatókból megtudhatja, hogyan végezhetők el különböző alapszintű felügyeleti feladatok:
 
-- [Azure Portal](/azure/sql-database/sql-database-get-started-portal)
+- [Azure Portal](/azure/sql-database/sql-database-single-database-get-started)
 - [Azure PowerShell](/azure/sql-database/sql-database-get-started-powershell)
 - [Azure CLI](/azure/sql-database/sql-database-get-started-cli)
 
@@ -31,8 +31,9 @@ Megtudhatja, hogyan hozhat létre SQL-adatbázist, illetve hogyan kezelheti azt 
 
 Megtudhatja, hogyan hozhat létre, kezelhet és migrálhat adatbázisokat az SQL DB használatával.
 
-- [Egy új SQL-adatbázis sémájának létrehozása és megtervezése](/azure/sql-database/sql-database-design-first-database)
-- [Egy meglévő SQL Server-adatbázis áttelepítése az Azure SQL Database szolgáltatásba](/azure/sql-database/sql-database-migrate-your-sql-server-database)
+- Első lépésként ismerkedjen meg az [önálló adatbázisok](/azure/sql-database/sql-database-single-database-quickstart-guide) használatával a rövid útmutatónk alapján
+- Új önálló adatbázis sémájának létrehozása és megtervezése az [SSMS](/azure/sql-database/sql-database-design-first-database) vagy a [.NET](/azure/sql-database/sql-database-design-first-database-csharp) használatával
+- Létező adatbázis migrálása az Azure-ba egy a [Database Migration Assistant](/azure/dms/tutorial-sql-server-to-azure-sql) használatával, illetve egy [BACPAC-fájl importálásával](/azure/sql-database/sql-database-import)
 - [Az SQL Database adatbázis védelme](/azure/sql-database/sql-database-security-tutorial)
 - [Az SQL Database teljesítményének növelése](/azure/sql-database/sql-database-performance-tutorial)
 - [Több-bérlős SaaS-alkalmazás megvalósítása SQL DB használatával](/azure/sql-database/sql-database-multi-tenant-application)
@@ -41,7 +42,7 @@ Megtudhatja, hogyan hozhat létre, kezelhet és migrálhat adatbázisokat az SQL
 
 - [Fejlesztés a .NET használatával](https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
 
-## <a name="samples"></a>Példák 
+## <a name="samples"></a>Példák
 
 Szkriptek keresése a gyakori feladatok kezeléséhez.
 

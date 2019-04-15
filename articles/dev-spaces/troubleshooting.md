@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: b205f7782dc14c9108032d2b4a274f884194874e
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 16b33203099765633d6bc5992fdc266aa1f28a26
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357860"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548780"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -325,3 +325,35 @@ A pod a hibakeresőt a csatlakoztatni kívánt Node.js-alkalmazással futó a cs
 
 ### <a name="try"></a>Kipróbálás
 A probléma ideiglenes megoldás az, hogy az értékét növelje *fs.inotify.max_user_watches* a fürt minden csomópontján és a csomópont újraindításához, a módosítások érvénybe léptetéséhez.
+
+## <a name="new-pods-are-not-starting"></a>Új podok nem kezdi.
+
+### <a name="reason"></a>Ok
+
+A Kubernetes-inicializáló a PodSpec az új podok RBAC-engedély módosításai miatt nem tudja alkalmazni a *fürt rendszergazdai* szerepkört a fürtben. Az új podok is előfordulhat, hogy rendelkezik egy érvénytelen PodSpec, például a pod társított szolgáltatás fiók már nem létezik. Megtekintheti, hogy a rendszer a podokat egy *függőben lévő* állapot az inicializáló nem látható probléma miatt, használja a `kubectl get pods` parancsot:
+
+```bash
+kubectl get pods --all-namespaces --include-uninitialized
+```
+
+A probléma hatással lehet a podok *összes névtér* a fürtben, beleértve a névterek, ahol az Azure fejlesztési tárolóhelyek nincs engedélyezve.
+
+### <a name="try"></a>Kipróbálás
+
+[A fejlesztési tárolóhelyek parancssori felület frissítése a legújabb verzióra](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) majd törli a *azds InitializerConfiguration* az Azure fejlesztési tárolóhelyek vezérlőről:
+
+```bash
+az aks get-credentials --resource-group <resource group name> --name <cluster name>
+kubectl delete InitializerConfiguration azds
+```
+
+Miután eltávolította a *azds InitializerConfiguration* használata az Azure fejlesztési tárolóhelyek vezérlőről `kubectl delete` bármely podok eltávolítása egy *függőben lévő* állapota. Amikor az összes függőben lévő podok el lettek távolítva, ismételt üzembe helyezése a podok.
+
+Ha új podok ragadnak továbbra is egy *függőben lévő* állapot egy újratelepítés használata után `kubectl delete` bármely podok eltávolítása egy *függőben lévő* állapota. Amikor az összes függőben van a podok el lettek távolítva, törölje a vezérlő a fürt, és újra kell telepíteni:
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
+```
+
+A tartományvezérlő újratelepítése után telepítse újra a podokat.

@@ -62,11 +62,14 @@ items:
       href: luis-quickstart-intents-regex-entity.md
     - name: Pontos szövegegyezések lekérése listákkal
       href: luis-quickstart-intent-and-list-entity.md
-    - name: Szövegkörnyezet szerint kapcsolódó adatok lekérése hierarchikus entitásokkal
-      href: luis-quickstart-intent-and-hier-entity.md
+    - name: Kapcsolódó adatok lekérése entitásszerepkörökkel
+      displayName: roles, geographyV2, context
+      href: tutorial-entity-roles.md
     - name: Kapcsolódó adatok csoportosítása és kinyerése összetett entitásokkal
+      displayName: roles
       href: luis-tutorial-composite-entity.md
     - name: Nevek lekérése egyszerű entitásokkal
+      displayName: roles
       href: luis-quickstart-primary-and-secondary-data.md
   - name: Az alkalmazás továbbfejlesztése
     items:
@@ -77,6 +80,7 @@ items:
     - name: Gyakori kimondottszöveg-formátumok hozzáadása
       href: luis-tutorial-pattern.md
     - name: Szövegkörnyezet szerint kapcsolódó minták kinyerése
+      displayName: roles
       href: luis-tutorial-pattern-roles.md
     - name: Szabad formátumú adatok kinyerése
       href: luis-tutorial-pattern-any.md
@@ -113,7 +117,7 @@ items:
     - name: Leképezések
       href: luis-concept-intent.md
     - name: Entitások
-      displayName: prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, hierarchical, machine-learn, exact, mixed
+      displayName: prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, hierarchical, machine-learn, exact, mixed, roles
       href: luis-concept-entity-types.md
     - name: Beszédmódok
       href: luis-concept-utterance.md
@@ -130,6 +134,7 @@ items:
     - name: Kifejezéslisták
       href: luis-concept-feature.md
     - name: Minták
+      displayName: roles
       href: luis-concept-patterns.md
   - name: Adatkezelés
     items:
@@ -138,6 +143,7 @@ items:
     - name: Adatok átalakítása
       href: luis-concept-data-conversion.md
     - name: Adatok kinyerése
+      displayName: roles
       href: luis-concept-data-extraction.md
     - name: Adattárolás
       href: luis-concept-data-storage.md
@@ -171,7 +177,7 @@ items:
     - name: Entitás hozzáadása kimondott szöveghez
       href: luis-how-to-add-example-utterances.md
     - name: Entitás hozzáadása kimondott szöveg nélkül
-      displayName: import
+      displayName: roles, import
       href: luis-how-to-add-entities.md
     - name: Előre összeállított modellek használata
       items:
@@ -220,7 +226,7 @@ items:
       displayName: synonym, interchange
       href: luis-how-to-add-features.md
     - name: Minták hozzáadása
-      displayName: syntax, template
+      displayName: syntax, template, roles
       href: luis-how-to-model-intent-pattern.md
   - name: Betanítás
     href: luis-how-to-train.md
@@ -410,9 +416,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: Tudásbázis
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: db4e3cf9cad70556b057645dec52c9705fb29079
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 1a35c8befbffae02a169e87390677c547aec833c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896108"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523681"

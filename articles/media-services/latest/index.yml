@@ -12,7 +12,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/20/2019
+  ms.date: 04/12/2019
   ms.author: juliako
 abstract:
   description: 'Ismerje meg, hogyan kódolhat és csomagolhat be tartalmakat, streamelhet videókat igény szerint, közvetíthet élőben, illetve hogyan elemezheti videóit a Media Services 3-as verziójával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is. <br/> Az SDK-k alapját a <a href="https://aka.ms/ams-v3-rest-sdk">Media Services v3 OpenAPI specifikáció (Swagger)</a> képezi.'
@@ -26,7 +26,7 @@ sections:
           - title: Az alapvető fogalmak
             html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Felhőbe történő feltöltés és tárolás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Kódolás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">Monitorozás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Media analytics (Médiaelemzés)</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Csomagolás</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Védelem</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Live streaming (Élő adatfolyam)</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Lejátszóügyfelek</a></p>'
           - title: Fejlesztés a v3 API-val
-            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">A fejlesztés megkezdése az SDK használatával</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Fejlesztés a REST használatával</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-java-howto">Kapcsolódás Javával</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-dotnet-howto">Kapcsolódás .NET-tel</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-nodejs-howto">Kapcsolódás Node.js-sel</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Fejlesztés a REST használatával</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">Fejlesztés SDK-kkal</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-java-howto">Kapcsolódás Javával</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-dotnet-howto">Kapcsolódás .NET-tel</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-nodejs-howto">Kapcsolódás Node.js-sel</a></p>'
   - title: 5 perces gyors útmutatók
     items:
       - type: paragraph

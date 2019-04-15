@@ -1,6 +1,6 @@
 ---
-title: A PostgreSQL Python-alkalmazás létrehozása a linuxon – az Azure App Service |} A Microsoft Docs
-description: Ismerje meg, hogyan futtathat egy PostgreSQL-adatbáziskapcsolattal rendelkező, adatvezérelt Python-alkalmazást az Azure-ban.
+title: Python (a Django) és a Linux - az Azure App Service PostgreSQL |} A Microsoft Docs
+description: Ismerje meg, hogyan futtathat egy PostgreSQL-adatbáziskapcsolattal rendelkező, adatvezérelt Python-alkalmazást az Azure-ban. Django szerepel az oktatóanyagot.
 services: app-service\web
 documentationcenter: python
 author: cephalin
@@ -9,15 +9,15 @@ ms.service: app-service-web
 ms.workload: web
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 11/29/2018
+ms.date: 03/27/2019
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 00fc92ebe8b43f16791adce1f1cb9a1d6da7fbde
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f82cccb66c0aae93afe19259393f094d0627c801
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534140"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546421"
 ---
 # <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Az Azure App Service a Python és PostgreSQL alkalmazás készítése
 
@@ -166,21 +166,21 @@ Ebben a lépésben egy PostgreSQL-adatbázist hozunk létre az Azure-ban. Miutá
 
 Hozzon létre egy PostgreSQL-kiszolgálót a Cloud Shellben az [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) paranccsal.
 
-Az alábbi példaparancsban a *\<postgresql_name>* helyett írjon be egy egyedi kiszolgálónevet, az *\<admin_username>* és az *\<admin_password>* helyett pedig a kívánt felhasználói hitelesítő adatokat. A felhasználói hitelesítő adatokra az adatbázis rendszergazdai fiókjához van szükség. A kiszolgálónév a postgreSQL-végpont (`https://<postgresql_name>.postgres.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban.
+Cserélje le a következő példaparancs  *\<postgresql-name >* egy egyedi kiszolgálónevet, és cserélje le a  *\<admin-username >* és  *\<rendszergazdai jelszó->* a kívánt felhasználói hitelesítő adatokkal. A felhasználói hitelesítő adatokra az adatbázis rendszergazdai fiókjához van szükség. A kiszolgálónév a postgreSQL-végpont (`https://<postgresql-name>.postgres.database.azure.com`) részét képezi majd, így egyedi kiszolgálónévnek kell lennie a teljes Azure-ban.
 
 ```azurecli-interactive
-az postgres server create --resource-group myResourceGroup --name <postgresql_name> --location "West Europe" --admin-user <admin_username> --admin-password <admin_password> --sku-name B_Gen4_1
+az postgres server create --resource-group myResourceGroup --name <postgresql-name> --location "West Europe" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
 ```
 
 Az Azure Database for PostgreSQL-kiszolgáló létrehozását követően az Azure CLI az alábbi példához hasonló információkat jelenít meg:
 
 ```json
 {
-  "administratorLogin": "<admin_username>",
-  "fullyQualifiedDomainName": "<postgresql_name>.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>",
+  "administratorLogin": "<admin-username>",
+  "fullyQualifiedDomainName": "<postgresql-name>.postgres.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql-name>",
   "location": "westus",
-  "name": "<postgresql_name>",
+  "name": "<postgresql-name>",
   "resourceGroup": "myResourceGroup",
   "sku": {
     "capacity": 1,
@@ -194,24 +194,23 @@ Az Azure Database for PostgreSQL-kiszolgáló létrehozását követően az Azur
 ```
 
 > [!NOTE]
-> Jegyezze fel az \<admin_username > és \<admin_password > adatokat későbbi használat céljából. Szüksége lesz rájuk a Postgres-kiszolgálóra és annak adatbázisaiba való bejelentkezéshez.
-
+> Ne feledje \<admin-username > és \<rendszergazdai jelszó-> későbbi használatra. Szüksége lesz rájuk a Postgres-kiszolgálóra és annak adatbázisaiba való bejelentkezéshez.
 
 ### <a name="create-firewall-rules-for-the-postgresql-server"></a>Tűzfalszabályok létrehozása a PostgreSQL-kiszolgálóhoz
 
 A Cloud Shellben futtassa a következő Azure CLI-parancsokat, hogy engedélyezze az adatbázishoz való hozzáférést az Azure-erőforrásokról.
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAllAzureIPs
+az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=0.0.0.0 --end-ip-address=0.0.0.0 --name AllowAllAzureIPs
 ```
 
 > [!NOTE]
 > Ez a beállítás lehetővé teszi a hálózati kapcsolatok létesítését az Azure hálózatán belül található minden IP-címről. Éles környezetben próbálja meg a lehető legszigorúbb tűzfalszabályokat konfigurálni úgy, hogy [kizárólag az alkalmazása által használt kimenő IP-címeket használja](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
-Ahhoz, hogy engedélyezze a helyi számítógépről történő hozzáférést, futtassa újra a parancsot a Cloud Shellben, és a *\<your_ip_address>* helyére írja be a [helyi IPv4 IP-címet](https://www.whatsmyip.org/).
+A Cloud shellben futtassa a parancsot újból engedélyezi a hozzáférést a helyi számítógépről történő lecserélésével  *\<az ip-cím >* a [a helyi IPv4 IP-cím](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address> --name AllowLocalClient
+az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql-name> --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address> --name AllowLocalClient
 ```
 
 ## <a name="connect-python-app-to-production-database"></a>Python-alkalmazás csatlakoztatása éles adatbázishoz
@@ -223,7 +222,7 @@ Ebben a lépésben csatlakoztatja a Django-mintaalkalmazást, az Azure Database 
 A Cloud shellben csatlakozzon az adatbázishoz az alábbi parancs futtatásával. Ha a rendszer a rendszergazdai jelszó megadására kéri, használja az [Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz](#create-an-azure-database-for-postgresql-server) részben megadott jelszót.
 
 ```bash
-psql -h <postgresql_name>.postgres.database.azure.com -U <my_admin_username>@<postgresql_name> postgres
+psql -h <postgresql-name>.postgres.database.azure.com -U <admin-username>@<postgresql-name> postgres
 ```
 
 Csakúgy, mint a helyi Postgres-kiszolgáló esetében, az adatbázist és a felhasználót itt is az Azure Postgres-kiszolgálón hozza létre.
@@ -245,14 +244,14 @@ A helyi terminálablakban, módosítsa az adatbázis-környezeti változók (ame
 
 ```bash
 # Bash
-export DBHOST="<postgresql_name>.postgres.database.azure.com"
-export DBUSER="manager@<postgresql_name>"
+export DBHOST="<postgresql-name>.postgres.database.azure.com"
+export DBUSER="manager@<postgresql-name>"
 export DBNAME="pollsdb"
 export DBPASS="supersecretpass"
 
 # PowerShell
-$Env:DBHOST = "<postgresql_name>.postgres.database.azure.com"
-$Env:DBUSER = "manager@<postgresql_name>"
+$Env:DBHOST = "<postgresql-name>.postgres.database.azure.com"
+$Env:DBUSER = "manager@<postgresql-name>"
 $Env:DBNAME = "pollsdb"
 $Env:DBPASS = "supersecretpass"
 ```
@@ -315,22 +314,21 @@ WhiteNoise konfigurálásával kapcsolatos további információkért lásd: a [
 > [!IMPORTANT]
 > Az adatbázis-beállítások szakaszban már követi a biztonsági szempontból ajánlott a környezeti változók használatával. A teljes üzembe helyezés javaslatokért lásd: [a Django dokumentációja: telepítési ellenőrzőlista](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/).
 
-
 Véglegesítse a módosításokat a tárházba.
 
 ```bash
 git commit -am "configure for App Service"
 ```
 
-### <a name="configure-a-deployment-user"></a>Üzembe helyező felhasználó konfigurálása
+### <a name="configure-deployment-user"></a>Üzembe helyező felhasználó konfigurálása
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user-no-h.md)]
 
-### <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása 
+### <a name="create-app-service-plan"></a>App Service-csomag létrehozása
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Webalkalmazás létrehozása 
+### <a name="create-web-app"></a>Webalkalmazás létrehozása
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 
@@ -343,8 +341,10 @@ Az App Service-ben a környezeti változókat _alkalmazásbeállításként_ leh
 Az alábbi példa az adatbázis kapcsolati adatait alkalmazásbeállításokként adja meg. 
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DBHOST="<postgresql_name>.postgres.database.azure.com" DBUSER="manager@<postgresql_name>" DBPASS="supersecretpass" DBNAME="pollsdb"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DBHOST="<postgresql-name>.postgres.database.azure.com" DBUSER="manager@<postgresql-name>" DBPASS="supersecretpass" DBNAME="pollsdb"
 ```
+
+Hogyan érhetők el ezeket az alkalmazásbeállításokat a kódban kapcsolatos információkért lásd: [hozzáférés a környezeti változókhoz](how-to-configure-python.md#access-environment-variables).
 
 ### <a name="push-to-azure-from-git"></a>Leküldéses üzenet küldése a Gitből az Azure-ra
 
@@ -368,7 +368,7 @@ remote: Kudu sync from: '/home/site/repository' to: '/home/site/wwwroot'
 . 
 remote: Deployment successful.
 remote: App container will begin restart within 10 seconds.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git 
+To https://<app-name>.scm.azurewebsites.net/<app-name>.git 
    06b6df4..6520eea  master -> master
 ```  
 
@@ -379,32 +379,22 @@ Az App Service-ben rendszerbe állítási kiszolgáló látja _requirements.txt_
 Az üzembe helyezett alkalmazás megkeresése tallózással. Az elindítása hosszabb időt vesz igénybe, mivel a tárolót le kell tölteni és el kell indítani az alkalmazás első igénylésekor. Ha a lapon túllépi az időkorlátot vagy egy hibaüzenet jelenik meg, várjon néhány percet, és frissítse az oldalt.
 
 ```bash
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 A korábban létrehozott lekérdezési kérdést kell megjelennie. 
 
 App Service-ben a tárház projekt Django észleli az olyan _wsgi.py_ egyes alkönyvtárában található cikkre hivatkozik, amely által létrehozott `manage.py startproject` alapértelmezés szerint. Ha a fájlt talál, betölti a Django-alkalmazás. Hogyan betölti az App Service a Python-alkalmazások további információkért lásd: [konfigurálása beépített Python-rendszerkép](how-to-configure-python.md).
 
-Navigáljon a `<app_name>.azurewebsites.net` , és jelentkezzen be a ugyanaz a rendszergazda felhasználó hozott létre. Ha szeretné próbálja meg néhány további lekérdezési kérdések létrehozása.
+Navigáljon a `<app-name>.azurewebsites.net` , és jelentkezzen be a ugyanaz a rendszergazda felhasználó hozott létre. Ha szeretné próbálja meg néhány további lekérdezési kérdések létrehozása.
 
 ![Helyileg futó Python Django-alkalmazás](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
 **Gratulálunk!** Egy Python-alkalmazást futtat a Linux rendszerhez készült App Service-ben.
 
-## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
+## <a name="stream-diagnostic-logs"></a>Diagnosztikai naplók streamelése
 
-A Linuxon futó App Service apps futnak a tárolókon belül egy alapértelmezett Docker-rendszerképet. A konzolnaplófájlokban a tárolón belül létrehozott is elérheti. A naplók eléréséhez először kapcsolja be a tároló naplózása a következő parancsot a Cloud shellben való futtatásával:
-
-```azurecli-interactive
-az webapp log config --name <app_name> --resource-group myResourceGroup --docker-container-logging filesystem
-```
-
-Miután a tároló naplózása be van kapcsolva, a következő parancsot a naplófolyam lásd:
-
-```azurecli-interactive
-az webapp log tail --name <app_name> --resource-group myResourceGroup
-```
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
 ## <a name="manage-your-app-in-the-azure-portal"></a>Az Azure Portalon az alkalmazás kezelése
 
@@ -434,8 +424,9 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Folytassa a következő oktatóanyaggal, megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni DNS-név leképezése az Azure App Service-ben](../app-service-web-tutorial-custom-domain.md)
+> [Oktatóanyag: Egyéni DNS-név leképezése az alkalmazás](../app-service-web-tutorial-custom-domain.md)
+
+Vagy tekintse meg az egyéb erőforrások:
 
 > [!div class="nextstepaction"]
-> [Konfigurálja a beépített Python kép és hibáinak elhárítása](how-to-configure-python.md)
-
+> [Python-alkalmazás konfigurálása](how-to-configure-python.md)

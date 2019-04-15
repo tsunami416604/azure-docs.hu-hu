@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1390d68a93dd3d80b5977bab6665553ea3f8b398
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f521fd11a2053cf8cf1ea0f9f91667fe475f0eee
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403074"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522435"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Egy MPEG-DASH adaptív Streamelt videók beágyazása dash.js-sel rendelkező HTML5-alkalmazásba  
 
@@ -86,7 +86,7 @@ Következő lépésként hozza létre az elsődleges osztály az dash.js-sel ker
 
 Annak érdekében, hogy a Windows Media player készen áll a videó lejátszása a Media Player osztály startup() függvény nevezzük. Többek között a funkció biztosítja, hogy a szükséges osztályokat (a környezet által meghatározott) lettek betöltve. Ha készen áll a lejátszó, a attachView() függvény használatával csatolhat a videóelemet. Az indítási függvényben lehetővé teszi a Media Player a video-adatfolyamot behelyezése elem, és szükség szerint lejátszási mennyiségét is szabályozhatja.
 
-A Media Player URL-címét a MPD fájl adja meg, hogy azt ismer a videó lejátszásához várható. Az imént létrehozott setupVideo() függvény kell hajtható végre, miután az oldal teljes mértékben be van töltve. Ehhez használja a szervezet elem betöltésre. Módosítsa a <body> elem:
+A Media Player URL-címét a MPD fájl adja meg, hogy azt ismer a videó lejátszásához várható. Az imént létrehozott setupVideo() függvény kell hajtható végre, miután az oldal teljes mértékben be van töltve. Ehhez használja a szervezet elem betöltésre. Módosítsa a `<body>` elem:
 
 ```html
     <body onload="setupVideo()">
