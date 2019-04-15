@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: 269a66441529efee358cea22bb4f98b81a4b2f23
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: b257c1dbbed225bee9adfdb427bd036f0230ea47
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586324"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565061"
 ---
 # <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Az Azure Cosmos DB: Azure Cosmos DB SQL API-fiók használatával Python-alkalmazás létrehozása
 
@@ -26,7 +26,7 @@ ms.locfileid: "56586324"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Gyors létrehozása és lekérdezése a dokumentum, kulcs/érték és gráf típusú adatbázisokat. Mindezen műveleteket kihasználhatják a terjesztési és az Azure Cosmos DB méretezése.
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Cosmos DB [SQL API](sql-api-introduction.md)-fiókot, dokumentum-adatbázist és tárolót az Azure Portal segítségével. Ezután megtudhatja, hogyan hozhat létre és futtathat egy, a Python SDK for [SQL API](sql-api-sdk-python.md)-val létrehozott konzolalkalmazást. Ez a rövid útmutató a [Python SDK] 3.0-s verzióját használja.(https://pypi.org/project/azure-cosmos)
 
@@ -34,7 +34,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Cosmos DB
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Python 3.6](https://www.python.org/downloads/), a PATH környezeti változóhoz hozzáadott \<telepítési hely\>\Python36 és \<telepítési hely>\Python36\Scripts útvonallal. 
+* [Python 3.6-os](https://www.python.org/downloads/), az a `python` végrehajtható fájl elérhető a `PATH`.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Python-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
@@ -98,7 +98,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. 
+Ez a lépés nem kötelező. Ismerje meg az adatbázis-erőforrások létrehozása a code-ban, vagy folytassa a [a kapcsolati karakterlánc frissítése](#update-your-connection-string).
 
 Megjegyzés: Ha már ismeri a Python SDK korábbi verzióját, ismerősek lehetnek a „gyűjtemény” és a „dokumentum” kifejezések. Mivel az Azure Cosmos DB több API-modellt támogat, a Python SDK 3.0-s vagy újabb verziói az általános „tároló” (gyűjtemény, gráf vagy tábla) és az „elem” (a tárolók elemei) kifejezést használják.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: ee638e34a2db2c397b7f536dfe80c6ea08d7738c
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: dc1d7032f80babf8686397ae4dcf0043f456acbd
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543636"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565171"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Oktatóanyag: FirmPlay – a személyzeti osztályon dolgozók Ügyfélképviseletben és az Azure Active Directory-integráció
 
@@ -190,9 +190,9 @@ FirmPlay – a hozzáférési panelen, a személyzeti osztályon csempe alkalmaz
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

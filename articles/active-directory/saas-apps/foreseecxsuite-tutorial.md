@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 9ead44ae25ca2d45d517557ee90ef8459308bd31
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 14732b02e56d56baa032b8a3728ca892f4ad7d2f
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547363"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563585"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Oktatóanyag: A CX Suite bizonyulhat az Azure Active Directory-integráció
 
@@ -204,9 +204,9 @@ Ha a hozzáférési panelen a CX Suite fája csempére kattint, akkor kell autom
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 77be9d80d535cced48a39c47695257d4868f698c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257433"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59566005"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL Database-be.    
@@ -491,11 +491,12 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 1. Váltson a **Sink** (Fogadó) lapra, és válassza a **SinkDataset** lehetőséget a **Sink Dataset** (Fogadó adatkészlet) mezőnél. 
         
     ![Másolási tevékenység – fogadóbeállítások](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
-1. Váltson a **Parameters** (Paraméterek) lapra, és hajtsa végre a következő lépéseket:
+1. Kövesse az alábbi lépéseket:
 
-    1. A **Sink Stored Procedure Name** (Fogadó tárolt eljárás neve) tulajdonsághoz írja be a következőt: `@{item().StoredProcedureNameForMergeOperation}`.
-    1. A **Sink Table Type** (Fogadó táblatípusa) tulajdonsághoz írja be a következőt: `@{item().TableType}`.
-    1. A **Sink Dataset** (Fogadó adatkészlet) szakasz **SinkTableName** paraméteréhez írja be a következőt: `@{item().TABLE_NAME}`.
+    1. Az a **adatkészlet** tulajdonság, a **SinkTableName** paramétert, adja meg `@{item().TABLE_NAME}`.
+    1. A **tárolt eljárás neve** tulajdonság, adja meg `@{item().StoredProcedureNameForMergeOperation}`.
+    1. A **táblatípus** tulajdonság, adja meg `@{item().TableType}`.
+
 
         ![Másolási tevékenység – paraméterek](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Húzza át a **Tárolt eljárás** tevékenységet a **tevékenységek** eszközkészletéből a folyamat tervezőfelületére. Kapcsolja a **Copy** (Másolás) tevékenységet a **Stored Procedure** (Tárolt eljárás) tevékenységhez. 
@@ -743,6 +744,6 @@ Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 Folytassa a következő oktatóanyaggal, amelyben az adatok Azure Spark-fürtök használatával való átalakítását ismerheti meg:
 
 > [!div class="nextstepaction"]
->[Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob storage-változáskövetési technológia használatával](tutorial-incremental-copy-change-tracking-feature-portal.md)
+>[Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba a változáskövetési technológia használatával](tutorial-incremental-copy-change-tracking-feature-portal.md)
 
 

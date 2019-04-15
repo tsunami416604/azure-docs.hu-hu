@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory fejlesztői szószedet |} A Microsoft Docs
-description: A gyakran használt Azure Active Directory fejlesztői alapfogalmait és jellemzőit neveinek listáját.
+title: A Microsoft identity platform fejlesztői szószedet |} Az Azure
+description: A gyakran használt Microsoft identity platform fejlesztői alapfogalmait és jellemzőit neveinek listáját.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/16/2017
+ms.date: 04/13/2019
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: elisol
+ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma, dadobali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec06b25954d25c27cd7606f2f47aa93ef6d54244
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 968da9212b52c1e7ea09d1472b312671c7a73449
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650393"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565527"
 ---
-# <a name="azure-active-directory-developer-glossary"></a>Az Azure Active Directory fejlesztői szószedet
+# <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft identity platform fejlesztői szószedet
 
-Ez a cikk az Azure Active Directory (AD) fejlesztői alapfogalmakat, amelynek hasznosak a megismerése alkalmazások fejlesztését az Azure ad bizonyos kapcsolatos definíciókat tartalmazza.
+Ez a cikk néhány a fejlesztői alapfogalmait és terminológiát, amelynek hasznosak a tanulási fejlesztése a Microsoft identity platform használatával kapcsolatos definíciókat tartalmazza.
 
 ## <a name="access-token"></a>hozzáférési jogkivonat
 
@@ -38,11 +38,11 @@ Hozzáférési jogkivonatok vannak más néven "Felhasználó + alkalmazás" vag
 * ["Engedélyezés" engedélyezési kódmegadásának](#authorization-grant), a végfelhasználó az erőforrás tulajdonosa, az erőforrás eléréséhez az ügyfélnek engedély delegálása, először hitelesíti magát. Ezt követően hitelesíti az ügyfelet, a hozzáférési jogkivonat beszerzése során. A jogkivonat is lehet néven pontosabban "Felhasználó + alkalmazás" jogkivonatot, mivel mind a felhasználó engedélyezett az ügyfélalkalmazásban, és az alkalmazás.
 * ["Ügyfél-hitelesítő adatok" engedélyezést](#authorization-grant), az ügyfél az egyedüli hitelesítést nyújt, működik-e nélkül az erőforrás tulajdonosa hitelesítés/engedélyezés, így a jogkivonat is lehet néven a "Csak az alkalmazásra vonatkozó" tokent.
 
-Lásd: [Azure AD-jogkivonatok Referenciájából] [ AAD-Tokens-Claims] további részletekért.
+Lásd: [Microsoft identitásplatformja jogkivonat-referencia] [ AAD-Tokens-Claims] további részletekért.
 
 ## <a name="application-id-client-id"></a>alkalmazás azonosítója (ügyfél-azonosító)
 
-A egyedi azonosítója az Azure AD-alkalmazás regisztrációja, amelyek egy adott alkalmazás és a kapcsolódó konfigurációk problémákat. Ezt az alkalmazásazonosítót ([ügyfél-azonosító](https://tools.ietf.org/html/rfc6749#page-15)) használatos, amikor végez hitelesítést kér, és van megadva a hitelesítési könyvtárak a fejlesztésre szánt időt. Az alkalmazásazonosítót (ügyfél-azonosító) nem egy titkos kulcsot.
+A egyedi azonosítója az Azure AD-alkalmazás regisztrációja, amelyek egy adott alkalmazás és a kapcsolódó konfigurációk problémákat. Ezt az Alkalmazásazonosítót ([ügyfél-azonosító](https://tools.ietf.org/html/rfc6749#page-15)) használatos, amikor végez hitelesítést kér, és van megadva a hitelesítési könyvtárak a fejlesztésre szánt időt. Az Alkalmazásazonosítót (ügyfél-azonosító) nem egy titkos kulcsot.
 
 ## <a name="application-manifest"></a>Alkalmazásjegyzék
 
@@ -59,7 +59,7 @@ További információkért lásd: [alkalmazás és egyszerű szolgáltatási obj
 Annak érdekében, hogy egy alkalmazás integrálható, és delegálása az Azure AD identitáskezelési és hozzáférés-kezelési funkciók, regisztrálni kell egy Azure AD-vel [bérlői](#tenant). Ha regisztrálja az alkalmazás Azure AD-vel, meg van adva egy identitás-konfigurációt az alkalmazásnak, lehetővé téve, hogy az Azure AD integrálása és funkciók használata, mint például:
 
 * Az egyszeri bejelentkezés használata az Azure AD Identity Management erőteljes felügyeleti és [OpenID Connect] [ OpenIDConnect] protokollmegvalósítás
-* Felügyelt hozzáférést [védett erőforrások](#resource-server) által [ügyfélalkalmazások](#client-application), az Azure AD OAuth 2.0-n keresztül [az engedélyezési kiszolgáló](#authorization-server) végrehajtása
+* Felügyelt hozzáférést [védett erőforrások](#resource-server) által [ügyfélalkalmazások](#client-application), az OAuth 2.0-n keresztül [az engedélyezési kiszolgáló](#authorization-server)
 * [Hozzájárulási keretrendszer](#consent) a védett erőforrások erőforrás-tulajdonos engedélyezési ügyfélelérésének kezelése.
 
 Lásd: [alkalmazások integrálása az Azure Active Directory] [ AAD-Integrating-Apps] további részletekért.
@@ -93,13 +93,13 @@ A hitelesítő adatok jelölő a [erőforrás tulajdonosa](#resource-owner) [eng
 
 Által meghatározott a [OAuth2 engedélyezési keretrendszer][OAuth2-Role-Def], a kiszolgáló-hozzáférés kiadására jogkivonatok a [ügyfél](#client-application) a asikereshitelesítésután[erőforrás tulajdonosa](#resource-owner) és szerezhetők be az engedélyt. A [ügyfélalkalmazás](#client-application) az engedélyezési kiszolgáló futásidőben keresztül kommunikál a [engedélyezési](#authorization-endpoint) és [token](#token-endpoint) végpontok, összhangban az OAuth2 definiált [engedélyezések](#authorization-grant).
 
-Esetén az Azure AD alkalmazás-integráció, az Azure AD valósítja meg az engedélyezési kiszolgálói szerepkör az Azure AD-alkalmazások és a Microsoft-szolgáltatás API-k, például [Microsoft Graph API-k][Microsoft-Graph].
+Esetén a Microsoft identity platform alkalmazásközi integrációt, a Microsoft identity platform valósítja meg az engedélyezési kiszolgálói szerepkör az Azure AD-alkalmazások és a Microsoft-szolgáltatás API-k, például [Microsoft Graph API-k] [Microsoft-Graph].
 
 ## <a name="claim"></a>igénylés
 
 A [biztonsági jogkivonat](#security-token) jogcímeket, adja meg a helyességi feltételek egy entitás tartalmaz (például egy [ügyfélalkalmazás](#client-application) vagy [erőforrás tulajdonosa](#resource-owner)) (például a egymásikentitáshoz[erőforrás-kiszolgáló](#resource-server)). Jogcímek olyan név/érték párok, amelyek a jogkivonat tárgyában kapcsolatos továbbítási (például a hitelesített rendszerbiztonsági tagot a [az engedélyezési kiszolgáló](#authorization-server)). A jogcímeket egy adott jogkivonat értékkel a változókat, például a típusuk jogkivonatot, tárgyát, az alkalmazás konfigurációja és egyéb hitelesítéséhez használandó hitelesítő adatok típusától függenek.
 
-Lásd: [az Azure AD-jogkivonatok referenciájából] [ AAD-Tokens-Claims] további részletekért.
+Lásd: [a Microsoft identity platform jogkivonatok referenciájából] [ AAD-Tokens-Claims] további részletekért.
 
 ## <a name="client-application"></a>Ügyfélalkalmazás
 
@@ -117,7 +117,7 @@ Lásd: [hozzájárulási keretrendszer](consent-framework.md) további informác
 
 Egy [OpenID Connect] [ OpenIDConnect-ID-Token] [biztonsági jogkivonat](#security-token) által biztosított egy [az engedélyezési kiszolgáló](#authorization-server) [engedélyezésivégpont](#authorization-endpoint), tartalmazó [jogcímek](#claim) a felhasználó hitelesítésére vonatkozó [erőforrás tulajdonosa](#resource-owner). Például a hozzáférési tokent, azonosító-jogkivonatokat is szerepelnek, a digitálisan aláírt [JSON webes jogkivonat (JWT)][JWT]. Ellentétben a hozzáférési jogkivonatot, egy azonosító jogkivonat jogcímek nem használ a kapcsolódó erőforrások elérése céljából és külön hozzáférés-vezérlés.
 
-Lásd: [az Azure AD-jogkivonatok referenciájából] [ AAD-Tokens-Claims] további részletekért.
+Lásd: [a Microsoft identity platform jogkivonatok referenciájából] [ AAD-Tokens-Claims] további részletekért.
 
 ## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
@@ -220,14 +220,14 @@ Olyan típusú [ügyfélalkalmazás](#client-application) , amely végrehajtja a
 
 ## <a name="next-steps"></a>További lépések
 
-A [Azure AD fejlesztői útmutató] [ AAD-Dev-Guide] összes az Azure AD fejlesztői kapcsolódó témaköreit, beleértve az áttekintést használandó kezdőlapja [alkalmazásintegráció] [ AAD-How-To-Integrate] és alapjait [az Azure AD-hitelesítés és a támogatott hitelesítési forgatókönyvekről][AAD-Auth-Scenarios]. Is megtalálhatja Kódminták és oktatóanyagok a gyors megkezdésében beszerzésének módját [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+A [a Microsoft identity platform – fejlesztői útmutató] [ AAD-Dev-Guide] minden Microsoft identity platform fejlesztési kapcsolatos témaköreit, beleértve az áttekintést használandó kezdőlapja [alkalmazás integráció] [ AAD-How-To-Integrate] és alapjait [Microsoft identity platform hitelesítés és a támogatott hitelesítési forgatókönyvekről][AAD-Auth-Scenarios]. Is megtalálhatja Kódminták és oktatóanyagok a gyors megkezdésében beszerzésének módját [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Használja a következő megjegyzéseket visszajelzést és pontosíthatja vagy formázhatja a tartalmat, beleértve az új definíciók kérések vagy a meglévőket frissítése érdekében!
 
 <!--Image references-->
 
 <!--Reference style links -->
-[AAD-App-Manifest]:reference-azure-ad-app-manifest.md
+[AAD-App-Manifest]:reference-app-manifest.md
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md

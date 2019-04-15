@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 0e4c308e745cbf2ffbc18f64101043aff3ddde35
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495685"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565963"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -99,10 +99,10 @@ A következő területeken az Application Insights hasznos lehet a viselkedést,
 
 | Tab | Leírás |
 | ---- | ----------- |
-| **[Hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Hozzon létre a diagramok és értesítések függvény hibák és kivételek alapján. A **műveletnév** függvény neve. Hibák a függőségek nem jelennek meg, kivéve, ha a függőségekhez egyéni telemetriát megvalósítása. |
-| **[Teljesítmény](../azure-monitor/app/performance-counters.md)** | Teljesítménnyel kapcsolatos problémák elemzéséhez. |
+| **[hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Hozzon létre a diagramok és értesítések függvény hibák és kivételek alapján. A **műveletnév** függvény neve. Hibák a függőségek nem jelennek meg, kivéve, ha a függőségekhez egyéni telemetriát megvalósítása. |
+| **[Performance](../azure-monitor/app/performance-counters.md)** | Teljesítménnyel kapcsolatos problémák elemzéséhez. |
 | **Kiszolgálók** | Erőforrás-használat és a kiszolgáló sebességet megtekintése. Ezek az adatok hibakeresési forgatókönyvek, ahol funkciók vannak bogging le a mögöttes erőforrások hasznos lehet. Kiszolgálók nevezzük **Felhőbeli a szerepkörpéldányt**. |
-| **[Mérőszámok](../azure-monitor/app/metrics-explorer.md)** | Hozzon létre diagramokat és metrikák alapuló riasztások. Mérőszámok közé tartozik a függvény meghívásához, a végrehajtási idő és a sikerességi arányokat számát. |
+| **[Metrikák](../azure-monitor/app/metrics-explorer.md)** | Hozzon létre diagramokat és metrikák alapuló riasztások. Mérőszámok közé tartozik a függvény meghívásához, a végrehajtási idő és a sikerességi arányokat számát. |
 | **[Élő metrikastream](../azure-monitor/app/live-stream.md)** | A mérőszámadatok megtekintése, valós idejű létrehozás. |
 
 ## <a name="query-telemetry-data"></a>Telemetriai adatok lekérdezése
@@ -127,11 +127,11 @@ A rendelkezésre álló táblák jelennek meg a **séma** lapra a bal oldalon. A
 | Tábla | Leírás |
 | ----- | ----------- |
 | **nyomok** | Függvénykódot és a modul által létrehozott naplókat. |
-| **kérés** | Minden függvény meghívási egy kérelem. |
-| **kivétel** | A modul által okozott kivételek. |
+| **Kérelmek** | Minden függvény meghívási egy kérelem. |
+| **Kivételek** | A modul által okozott kivételek. |
 | **customMetrics** | A sikeres és sikertelen meghívásához, a sikerességi arányról és az időtartam száma. |
 | **customEvents** | Események nyomon követett futásidőben, például: Aktiválja a függvényt egy HTTP-kérelmekre. |
-| **PerformanceCounters** | Információ arról, hogy a függvények futnak a kiszolgáló teljesítményét. |
+| **performanceCounters** | Információ arról, hogy a függvények futnak a kiszolgáló teljesítményét. |
 
 A más táblák rendelkezésre állási tesztek, és az ügyfél és a böngésző telemetriai vonatkoznak. Egyéni telemetriai adatok hozzáadása valósítható meg.
 
@@ -595,7 +595,9 @@ A `tagOverrides` paraméterkészlettel a `operation_Id` a függvény meghívási
 
 ## <a name="dependencies"></a>Függőségek
 
-Függőségek, a függvény rendelkező más szolgáltatások nem jelennek meg automatikusan. A függőségek megjelenítéséhez egyéni kódot is írhat. Példák: szereplő mintakódban a [ C# egyéni telemetriát szakasz](#log-custom-telemetry-in-c-functions). A mintakód eredményez olyan *alkalmazástérkép* az Application insights szolgáltatásban az alábbi képen láthatóhoz hasonló:
+Függvények v2 automatikus műveletekkel gyűjti a HTTP-kérelmek, a ServiceBus és SQL függőségek.
+
+A függőségek megjelenítéséhez egyéni kódot is írhat. Példák: szereplő mintakódban a [ C# egyéni telemetriát szakasz](#log-custom-telemetry-in-c-functions). A mintakód eredményez olyan *alkalmazástérkép* az Application insights szolgáltatásban az alábbi képen láthatóhoz hasonló:
 
 ![Alkalmazástérkép](./media/functions-monitoring/app-map.png)
 

@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 04/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87a416b6ff73fd658158276a02796aaae946bc20
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 95d19068e482722bf6cd01e44d27c2719bc419a3
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491491"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564531"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -78,6 +78,12 @@ A hálózati házirend-kiszolgálónak képesnek kell lennie kommunikálni a kö
 
 * https://adnotifications.windowsazure.com  
 * https://login.microsoftonline.com
+
+Ezenkívül a következő URL-kapcsolat végrehajtásához szükséges a [beállítása a PowerShell parancsfájl használatával adapter](#run-the-powershell-script)
+
+- https://login.microsoftonline.com
+- https://provisioningapi.microsoftonline.com
+- https://aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
@@ -142,6 +148,14 @@ A felhasználók emellett kövesse az alábbi lépéseket, mielőtt NPS-bővítm
 1. [Töltse le az NPS-bővítményének](https://aka.ms/npsmfa) a Microsoft letöltőközpontból.
 2. A bináris fájlt másolja a konfigurálni kívánt hálózati házirend-kiszolgáló.
 3. Futtatás *setup.exe* , és kövesse a telepítési utasításokat. Ha hibákat észlel, ellenőrizze, hogy az Előfeltételek szakaszban a két kódtárak telepítése sikeresen befejeződött.
+
+#### <a name="upgrade-the-nps-extension"></a>Az NPS-bővítményének frissítése
+
+Amikor frissíti egy meglévő NPS-bővítményének telepítéséhez elkerülése érdekében az alapjául szolgáló kiszolgáló újraindítását a következő lépéseket:
+
+1. Távolítsa el a meglévő verziót
+1. Az új telepítő futtatása
+1. A hálózati házirend-kiszolgáló (IAS) szolgáltatás újraindítása
 
 ### <a name="run-the-powershell-script"></a>A PowerShell-parancsprogram futtatása
 
@@ -239,7 +253,7 @@ Ez a parancs futtatása után nyissa meg a C meghajtóhoz, keresse meg a fájlt,
 
 ### <a name="why-cant-i-sign-in"></a>Miért tud tudok bejelentkezni?
 
-Ellenőrizze, hogy a jelszó még nem járt le. Az NPS-bővítményének jelszavak módosítását nem támogatja a bejelentkezési munkafolyamat részeként. További segítségért lépjen kapcsolatba a szervezet informatikai személyzetet tart fenn.
+Ellenőrizze, hogy a jelszó még nem járt le. Az NPS-bővítményének jelszavak módosítását nem támogatja a bejelentkezési munkafolyamat részeként. További segítségért forduljon a szervezet informatikai személyzetet tart fenn.
 
 -------------------------------------------------------------
 
@@ -270,7 +284,7 @@ Ellenőrizze, hogy a https://adnotifications.windowsazure.com elérhető-e az NP
 
 Ha az előző számítógép-tanúsítvány lejárt, és a egy új tanúsítvány lett létrehozva, a lejárt tanúsítványok törölni kell. Lejárt tanúsítványokat problémákat okozhatnak az NPS-bővítmény indítása kellene.
 
-Ha rendelkezik egy érvényes tanúsítványt, ellenőrizze a helyi számítógépfiók tanúsítvány Store MMC használatával, és győződjön meg arról, a tanúsítvány nem ment át annak lejárati dátuma. Újonnan érvényes tanúsítványok létrehozásához futtassa újból a lépéseket a szakaszában "[a PowerShell-parancsprogrammal](#run-the-powershell-script)"
+Ha rendelkezik egy érvényes tanúsítványt, ellenőrizze a helyi számítógépfiók tanúsítvány Store MMC használatával, és győződjön meg arról, a tanúsítvány nem ment át annak lejárati dátuma. Újonnan érvényes tanúsítványok létrehozásához futtassa újra a lépéseket a szakaszában "[a PowerShell-parancsprogrammal](#run-the-powershell-script)"
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>A TLS/SSL-protokollok és titkosítócsomagok kezelése
 
@@ -282,4 +296,4 @@ Javasoljuk, hogy régebbi és gyengébb titkosítási csomagok letiltása vagy e
 
 - Ismerje meg, hogyan integrálható a [távoli asztali átjáró](howto-mfa-nps-extension-rdg.md) és [VPN-kiszolgálók](howto-mfa-nps-extension-vpn.md) az NPS-bővítményének használata
 
-- [Az Azure multi-factor Authentication az NPS-bővítményének hibaüzenetek feloldása](howto-mfa-nps-extension-errors.md)
+- [Hibaüzenetek által jelzett problémák megszüntetése az Azure Multi-Factor Authentication NPS-bővítményéből](howto-mfa-nps-extension-errors.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: d47c64fb8b148e39eab09a33c3241ac7dd3ea537
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 3c1d0e252b5c658ab6da2b3932918f05ba651d52
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502128"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565801"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
@@ -538,7 +538,7 @@ Az eredeti állapotát egy SAP-rendszerrel dokumentálva tranzakciós DBACOCKPIT
 
 
 > [!IMPORTANT] 
-> A teszt a Kezdés előtt győződjön meg arról, támasztja nem rendelkezik a sikertelen műveleteket (crm-állapot), és nincsenek megkötések nélkül helye (felesleg létrejöttének migrálási teszt kizárását), és az IBM Db2 HADR szinkronizálás működik. A felhasználó db2 egyeztessen\<sid > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> A teszt a Kezdés előtt győződjön meg arról, támasztja nem rendelkezik a sikertelen műveleteket (crm-állapot), és nincsenek megkötések nélkül helye (felesleg létrejöttének migrálási teszt kizárását), és az IBM Db2 HADR szinkronizálás működik. Ellenőrizze a felhasználó db2\<sid > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Áttelepítés a csomópont az elsődleges Db2-adatbázis futtatása a következő parancs végrehajtásával:

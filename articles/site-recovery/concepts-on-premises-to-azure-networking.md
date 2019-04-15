@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 7f5d3ff6759cebca2f592e1cd4822ee85959ecb9
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 2e1cbb2446501d0afda29eba179e388b5a22e6a8
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361315"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565682"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Az IP-címkezelés Azure virtuális géphez való kapcsolódásra a feladatátvételt követően
 
@@ -62,7 +62,7 @@ A Woodgrove lehessen a virtuális gépek replikálásához az Azure-ban milyen I
 
 1. Hozzon létre, amelyben az Azure virtuális gépek létrehozása után feladatátvétele a helyszíni gépek az Azure virtual network. A helyszíni hálózat kiterjesztése, hogy az alkalmazások átveheti zökkenőmentesen kell.
 2. A Site Recovery a feladatátvétel előtt hozzá az azonos IP-cím a gép tulajdonságai. A feladatátvételt követően a Site Recovery hozzárendeli ezt a címet az Azure virtuális Gépen.
-3. Miután feladatátvételi fut, és az Azure virtuális gépek jönnek létre ugyanazon az IP-címmel, csatlakoznak-e a hálózaton történő egy [virtuális hálózatok közötti kapcsolat](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md). Ez a művelet parancsfájlalapú lehet.
+3. Miután feladatátvételi fut, és az Azure virtuális gépek jönnek létre ugyanazon az IP-címmel, csatlakoznak-e a hálózaton történő egy [virtuális hálózatok közötti kapcsolat](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md). Ez a művelet parancsfájlalapú lehet.
 4. Akkor kell módosítania az útvonalakat, hogy tükrözze a 192.168.1.0/24 most már át lett helyezve az Azure-bA.
 
 

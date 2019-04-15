@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2019
+ms.date: 04/13/2019
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b7ab4007a94efbc48bfea67c6b954c02de0b2ba
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9cee05b1ff6c63aae07b9c04435e4ff3ae4d07ee
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887437"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565886"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban
 
@@ -52,7 +52,7 @@ Amikor regisztrál az Azure AD-alkalmazást a [az Azure portal][AZURE-Portal], k
 
 ### <a name="application-object"></a>alkalmazásobjektum
 
-Azure AD-alkalmazást határozza meg az egyik, és csak alkalmazás objektum, amely található az Azure AD-bérlővel, ahol az alkalmazás regisztrálva lett, más néven az alkalmazás "saját" bérlőjén. Az Azure AD Graph [alkalmazás entitás] [ AAD-Graph-App-Entity] határozza meg a sémában az alkalmazás objektum tulajdonságait.
+Azure AD-alkalmazást határozza meg az egyik, és csak alkalmazás objektum, amely található az Azure AD-bérlővel, ahol az alkalmazás regisztrálva lett, más néven az alkalmazás "saját" bérlőjén. A Microsoft Graph [alkalmazás entitás] [ MS-Graph-App-Entity] határozza meg a sémában az alkalmazás objektum tulajdonságait.
 
 ### <a name="service-principal-object"></a>szolgáltatásnév-objektum
 
@@ -60,7 +60,7 @@ Az Azure AD-bérlő által védett erőforrások eléréséhez az entitás hozz�
 
 Az Azure AD-bérlőben a rendszerbiztonsági tag határozza meg a hozzáférési szabályzat és a felhasználó vagy alkalmazás engedélyeit. Ez a alapvető funkcióit, például a felhasználó vagy alkalmazás hitelesítése során be- és erőforrás-hozzáférés során engedélyezési lehetővé teszi.
 
-Ha egy alkalmazás engedélyt kap hozzáférését az erőforrásokhoz a bérlő (regisztráláskor vagy [hozzájárulás](developer-glossary.md#consent)), egy szolgáltatásnév-objektum létrejön. Az Azure AD Graph [ServicePrincipal entitás] [ AAD-Graph-Sp-Entity] határozza meg a sémában a szolgáltatás egyszerű objektum tulajdonságait.
+Ha egy alkalmazás engedélyt kap hozzáférését az erőforrásokhoz a bérlő (regisztráláskor vagy [hozzájárulás](developer-glossary.md#consent)), egy szolgáltatásnév-objektum létrejön. A Microsoft Graph [ServicePrincipal entitás] [ MS-Graph-Sp-Entity] határozza meg a sémában a szolgáltatás egyszerű objektum tulajdonságait.
 
 ### <a name="application-and-service-principal-relationship"></a>Alkalmazás és szolgáltatás egyszerű kapcsolat
 
@@ -68,7 +68,7 @@ Fontolja meg az alkalmazás-objektumot, a *globális* ábrázolása az alkalmaz�
 
 Az alkalmazás objektum adattárat biztosít, mely közös a sablon és az alapértelmezett tulajdonságokat, amelyek *származtatott* a megfelelő egyszerű szolgáltatási objektumok létrehozásához. Egy alkalmazás ezért objektumnak az alkalmazás 1:1 kapcsolatot, és a egy annak megfelelő szolgáltatás egyszerű objektumok 1:many kapcsolatokkal.
 
-Egy egyszerű szolgáltatást kell létrehozni az egyes bérlők, ahol az alkalmazás használja, lehetővé teszi a bejelentkezési és/vagy a bérlő által védett erőforrásokhoz való hozzáférés identitást létrehozni. Egy egybérlős alkalmazást csak egy egyszerű szolgáltatással (a saját bérlőjén), létrehozott, és használja az alkalmazás regisztrációja során által jóváhagyott rendelkezik. Egy több-bérlős webes alkalmazás és az API is rendelkezik az egyes bérlők létrehozott egyszerű szolgáltatás ahol a bérlőt a felhasználó hozzájárult annak használatára. 
+Egy egyszerű szolgáltatást kell létrehozni az egyes bérlők, ahol az alkalmazás használja, lehetővé teszi a bejelentkezési és/vagy a bérlő által védett erőforrásokhoz való hozzáférés identitást létrehozni. Egy egybérlős alkalmazást csak egy egyszerű szolgáltatással (a saját bérlőjén), létrehozott, és használja az alkalmazás regisztrációja során által jóváhagyott rendelkezik. Egy több-bérlős webes alkalmazás és az API is rendelkezik az egyes bérlők létrehozott egyszerű szolgáltatás ahol a bérlőt a felhasználó hozzájárult annak használatára.
 
 > [!NOTE]
 > Az alkalmazásobjektum végrehajtott módosítások is megjelennek a szolgáltatásnév-objektumot a az alkalmazás saját bérlőjén csak (a bérlő, ahol regisztrálva lett). Több-bérlős alkalmazások, az alkalmazás az objektumot nem tükröződnek az minden olyan fogyasztói bérlők egyszerű Szolgáltatásobjektumok, keresztül eltávolítását a hozzáférést a [alkalmazás-hozzáférési Panel](https://myapps.microsoft.com) , és újra.
@@ -83,7 +83,7 @@ A következő ábra szemlélteti egy alkalmazás alkalmazásobjektum és egyszer
 - **Contoso** – a bérlő, a Contoso szervezet által használt egy fogyasztói, azaz a **HR alkalmazás**
 - **A Fabrikam** – a bérlő használja a Fabrikam szervezet, amely is felhasználja a **HR alkalmazás**
 
-![Az alkalmazás objektum és a egy szolgáltatásnév-objektum közötti kapcsolat](./media/app-objects-and-service-principals/application-objects-relationship.png)
+![Az alkalmazás objektum és a egy szolgáltatásnév-objektum közötti kapcsolat](./media/app-objects-and-service-principals/application-objects-relationship.svg)
 
 A példában:
 
@@ -95,13 +95,13 @@ A példában:
 
 ## <a name="next-steps"></a>További lépések
 
-- Használhatja a [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) mind az alkalmazás és egyszerű szolgáltatási objektumok lekérdezéséhez.
-- Egy alkalmazás application objektumot az Azure AD Graph API használatával is elérheti a [az Azure portal] [ AZURE-Portal] alkalmazásjegyzék-szerkesztőben, vagy [Azure AD PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), Az OData jelölt [alkalmazás entitás][AAD-Graph-App-Entity].
-- Egy alkalmazás egyszerű szolgáltatási objektumot az Azure AD Graph API keresztül érheti el, vagy [Azure AD PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), határozzák meg az OData [ServicePrincipal entitás] [ AAD-Graph-Sp-Entity].
+- Használhatja a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) mind az alkalmazás és egyszerű szolgáltatási objektumok lekérdezéséhez.
+- Egy alkalmazás alkalmazásobjektum a Microsoft Graph API használatával is elérheti a [az Azure portal] [ AZURE-Portal] alkalmazásjegyzék-szerkesztőben, vagy [Azure AD PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) , az OData jelölt [alkalmazás entitás][MS-Graph-App-Entity].
+- A Microsoft Graph API-alkalmazás szolgáltatásnév-objektum érheti el, vagy [Azure AD PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0), határozzák meg az OData [ServicePrincipal entitás] [ MS-Graph-Sp-Entity].
 
 <!--Image references-->
 
 <!--Reference style links -->
-[AAD-Graph-App-Entity]: https://docs.microsoft.com/graph/api/resources/application
-[AAD-Graph-Sp-Entity]: https://docs.microsoft.com/graph/api/resources/serviceprincipal
+[MS-Graph-App-Entity]: https://docs.microsoft.com/graph/api/resources/application
+[MS-Graph-Sp-Entity]: https://docs.microsoft.com/graph/api/resources/serviceprincipal
 [AZURE-Portal]: https://portal.azure.com

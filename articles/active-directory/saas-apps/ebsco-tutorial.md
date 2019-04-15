@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 5f5f83aa7885db4bb0d2f33f45fdf6a057b7673b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 2753daf225016d3bd8e07383193a1260b40a36d5
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547893"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564975"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező EBSCO
 
@@ -124,7 +124,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés EBSCO, hajtsa végre
 
     o **profil** = ügyfelek testre szabhatnak a hivatkozásra kattintva a felhasználó egy adott profilhoz (attól függően, mire azok vásárolhatnak EBSCO). Megadhatják, hogy egy adott profil. A fő azonosítók a következők: eds (EBSCO Discovery szolgáltatás) és ehost (EBSOCOhost adatbázisok). Utasítások a [Itt](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile).
 
-6. EBSCO alkalmazások a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+6. EBSCO alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 
@@ -253,9 +253,9 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 
 ## <a name="additional-sesources"></a>További sesources
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

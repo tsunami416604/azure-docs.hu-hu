@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4d9ec05b2495ec54657405c00e7dd42ee10911b1
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: e6ebd4ff465565be49d98162cd9ca67c194593a4
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350912"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563370"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Példa: A Computer Vision API meghívása
 
@@ -167,13 +167,13 @@ Például:
 
 Mező | Typo | Tartalom
 ------|------|------|
-Címkék  | objektum | Felső szintű objektum a címkék tömbjének
-tags[].Name | sztring    | Kulcsszó a címke osztályozótól
-tags[].Score    | szám    | Megbízhatósági pontszám, 0 és 1 között.
-leírás  | objektum   | Felső szintű objektum a leírásnak.
-description.tags[] |    sztring  | Címkék listája.  Ha a felirat létrehozásához nincs elegendően nagy megbízhatóság, akkor a hívó számára egyedül a címkék adnak elérhető információt.
-description.captions[].text | sztring    | A képet leíró kifejezés.
-description.captions[].confidence   | szám    | A kifejezéshez tartozó megbízhatóság.
+Címkék  | `object` | Felső szintű objektum a címkék tömbjének
+tags[].Name | `string`  | Kulcsszó a címke osztályozótól
+tags[].Score    | `number`  | Megbízhatósági pontszám, 0 és 1 között.
+leírás  | `object` | Felső szintű objektum a leírásnak.
+description.tags[] |    `string`    | Címkék listája.  Ha a felirat létrehozásához nincs elegendően nagy megbízhatóság, akkor a hívó számára egyedül a címkék adnak elérhető információt.
+description.captions[].text | `string`  | A képet leíró kifejezés.
+description.captions[].confidence   | `number`  | A kifejezéshez tartozó megbízhatóság.
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Lekéréséhez és a tartomány-specifikus modelleket JSON-kimenetét ismertetése
 
@@ -229,10 +229,10 @@ A kategóriák mező egy vagy több lista az eredeti [86-kategóriás](../Catego
 
 Mező   | Typo  | Tartalom
 ------|------|------|
-kategóriák | objektum | Legfelső szintű objektum
-categories[].name    | sztring   | Neve a 86-kategóriás rendszerben
-categories[].score  | szám    | Megbízhatósági pontszám, 0 és 1 között
-categories[].detail  | objektum?      | Nem kötelező részletes objektum
+kategóriák | `object`   | Legfelső szintű objektum
+categories[].name    | `string` | Neve a 86-kategóriás rendszerben
+categories[].score  | `number`  | Megbízhatósági pontszám, 0 és 1 között
+categories[].detail  | `object?`      | Nem kötelező részletes objektum
 
 Vegye figyelembe, hogy ha több kategória is megfelel (például a 86-kategóriás osztályozó ad eredményt a people_ és a people_young esetében is ha model=hírességek), az adatokat az általánosabb szintű megfeleléshez illeszti (a példában people_.)
 

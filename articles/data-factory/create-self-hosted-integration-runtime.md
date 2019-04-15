@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 7fd4fd65b48c199527d9172b7cea89010c962f5b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: aaa72d3a29fee28ede336a2be350015bf3cbc9b4
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261037"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565528"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -255,7 +255,7 @@ Ha a vállalati hálózati környezet az egy proxykiszolgálón keresztül csatl
 
 ![Adja meg a proxy](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
-A saját üzemeltetésű integrációs modul csatlakozni a felhőszolgáltatáshoz a proxykiszolgálót használ. Válassza ki **módosítás hivatkozásra** kezdeti beállítás során. A proxy-beállítás párbeszédpanel jelenik meg.
+Konfigurálásakor a saját üzemeltetésű integrációs modult használja-e a proxykiszolgáló csatlakozik a felhőszolgáltatáshoz, a forrás-/ cél (azokat, használja a HTTP / HTTPS protokollt). Ez a kijelölés **módosítás hivatkozásra** kezdeti beállítás során. A proxy-beállítás párbeszédpanel jelenik meg.
 
 ![Proxy beállítása](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 

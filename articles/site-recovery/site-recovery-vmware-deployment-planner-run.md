@@ -1,25 +1,25 @@
 ---
 title: Futtassa az Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA |} A Microsoft Docs
 description: Ez a cikk ismerteti, hogyan futtathat Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA.
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: a3aef06e6ee0d3989a4da8fdd93d27d28f2eede4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 3a6c9e50804db573395984b8ba38838eb15b0792
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527679"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565427"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
 
 
 ## <a name="modes-of-running-deployment-planner"></a>A Deployment Planner futtatásának módjai
-A parancssori eszköz (ASRDeploymentPlanner.exe) a következő négy mód bármelyikében futtatható:
+A parancssori eszköz (ASRDeploymentPlanner.exe) a következő három mód bármelyikében futtatható:
 
 1.  [Profilkészítés](#profile-vmware-vms)
 2.  [Jelentéskészítés](#generate-report)
@@ -139,7 +139,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 Az eszköz egy makróbarát Microsoft Excel-fájlt (XLSM-fájlt) hoz létre a jelentés kimeneteként, amely összefoglalja az üzembehelyezési javaslatokat. A jelentés neve `DeploymentPlannerReport_<unique numeric identifier>.xlsm` és a megadott könyvtárban.
 
 >[!NOTE]
->A jelentés szükséges konfigurált tizedesjel "." a kiszolgálón, amelyen futtatja a deployment planner költségbecslési előállításához. Esetben rendelkezik beállítása "," tizedesjelként egy Windows-gépen,. Nyissa meg "Change dátum, idő vagy számformátum" a Vezérlőpult és lépjen a "További beállítások" módosítása a tizedesjel,".".
+>A jelentés létrehozásához egy Windows PC vagy Windows Server, az Excel 2013 vagy újabb verzió szükséges. Ezen a gépen a tizedesjel kell beállítani, mint "." a költségbecslések előállításához. Abban az esetben a telepítő rendelkezik "," tizedesjelként, nyissa meg a "Change dátum, idő vagy számformátum" a Vezérlőpulton, és módosíthatja a tizedesjel, "További beállítások" Ugrás".".
 
 A profilkészítés befejezése után futtathatja az eszközt jelentéskészítési módban. A következő táblázat a jelentéskészítési módban futtatandó kötelező és nem kötelező eszközparaméterek listáját tartalmazza.
 

@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/15/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6e826bd965281d60cb6d73f325fbc5a7a06da234
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 412dfd690ea4ab33f249af78d4ef94c5ae5ccad2
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358492"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565835"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Azure-erőforrások előkészítése helyszíni gépek vészhelyreállításához
 
@@ -70,10 +70,10 @@ A feladatok végrehajtásához az Ön fiókjának rendelkeznie kell a Virtuális
 A helyszíni gépeket az Azure-bA replikálja a rendszer felügyelt lemezeket. Feladatátvétel esetén az Azure virtuális gépek a felügyelt lemezek alapján létrehozott, és adja meg, ha ebben az eljárásban az Azure-hálózathoz csatlakozik.
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Hálózatkezelés** > **Virtuális hálózat** lehetőséget.
-2. Hagyja kiválasztva a **Resource Manager** üzemi modellt.
+2. Tartsa **Resource Manager** kiválasztott lehetőséget üzemi modellként.
 3. A **Név** mezőben adjon meg egy hálózatnevet. A névnek egyedinek kell lennie az Azure-erőforráscsoporton belül. Ebben az oktatóanyagban a **ContosoASRnet** nevet használjuk.
 4. Adja meg, melyik erőforráscsoportban hozza létre a hálózatot. A **contosoRG** meglévő erőforráscsoportot használjuk.
-5. A **címtartomány**, adja meg a tartományt a hálózaton. Használunk **10.0.0.0/24**, és nem használja az alhálózatot.
+5. A **címtartomány**, adja meg a tartományt a hálózaton. Használunk **10.1.0.0/24**, és nem használja az alhálózatot.
 6. Az **Előfizetés** mezőben válassza ki azt az előfizetést, amelyben létre kívánja hozni a hálózatot.
 7. A **hely**, válassza az ugyanabban a régióban, amelyre a Recovery Services-tároló létrehozása. A jelen oktatóanyagban rendelkezik **Nyugat-Európa**. A hálózat és a tárolónak ugyanabban a régióban kell lennie.
 8. Meghagyjuk az alapszintű DDoS Protection alapértelmezett beállításait hálózati szolgáltatásvégpont nélkül.

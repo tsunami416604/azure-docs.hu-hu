@@ -3,7 +3,7 @@ title: Az Azure Security Center rövid útmutató – felvétele a Security Cent
 description: Ez a rövid útmutató bemutatja, hogyan építheti ki az Azure Monitor, az Update és a konfigurációkezelés virtuálisgép-bővítmény egy Azure Stack virtuális gépeken.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: pipposera
 manager: dsavage
 editor: ''
 ms.assetid: 8982348a-0624-40c7-8a1e-642a523c7f6b
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 9efd6514b722168f8ecb1235159e7463ce318118
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.author: fiseraci
+ms.openlocfilehash: 7a630acee079301b95e7e05f5c5333dd116abb68
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904015"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563794"
 ---
 # <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>Gyors útmutató:  Felvétele a Security Center az Azure Stack virtuális gépek
 Miután felvétele az Azure-előfizetéssel, engedélyezheti a hozzáadásával az Azure Stacken futó virtuális gépek védelme a Security Center a **Azure Monitor, az Update és a konfigurációkezelés** virtuálisgép-bővítményét a Az Azure Stack piactéren.
@@ -32,7 +32,7 @@ A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkez
 
 A Security Center Standard szintű Azure-előfizetéssel kell rendelkeznie a rövid útmutató elindítása előtt. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Security Center Standard csomagja az ingyenesen kipróbálhatja 30 napig. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="add-an-azure-stack-virtual-machine"></a>Az Azure Stack-virtuális gép hozzáadása
+## <a name="select-your-workspace-in-azure-security-center"></a>Válassza ki a munkaterületet az Azure Security Centerben
 
 1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
 2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő. 
@@ -65,8 +65,12 @@ Most fel kell vennie a **Azure Monitor, az Update és a konfigurációkezelés**
 3. Kattintson az **Extensions** (Bővítmények) gombra. A virtuális gépen telepített virtuális gépi bővítmények listája látható.
 4. Kattintson a **Hozzáadás** fülre. A **új erőforrás** menü panel megnyitja és megjeleníti az elérhető virtuálisgép-bővítmények listája. 
 5. Válassza ki a **Azure Monitor, az Update és a konfigurációkezelés** bővítményt, és kattintson **létrehozás**. A **bővítmény telepítése** konfigurálása panel megnyílik.
+
+>[!NOTE]
+> Ha nem látja a **Azure Monitor, az Update és a konfigurációkezelés** bővítmény megjelenjen a piactéren, vegye fel a kapcsolatot az Azure Stack-operátorokról elérhető legyen.
+
 6. Az a **bővítmény telepítése** konfigurációs panelen illessze be a **munkaterület-Azonosítót** és **Munkaterületkulcsot (elsődleges kulcs)** az előző eljárás során a Jegyzettömbbe másolt.
-7.  Kattintson a Befejezés gombra a szükséges konfigurációs beállítások megadása, ha **OK**.
+7.  Ha elkészült, kattintson a szükséges konfigurációs beállítások biztosítása **OK**.
 8. A bővítmény a telepítés befejezése után az állapot jelenik meg: **sikeres telepítés**. A virtuális gép megjelenik a Security Center portálon akár egy óráig is eltarthat.
 
 A telepítése és konfigurálása a Windows-ügynököt további információkért lásd: [csatlakozás Windows-számítógépek](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).

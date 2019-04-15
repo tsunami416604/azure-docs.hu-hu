@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: be86287f8341b6b86064e51f8a26a8c7f97e867e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eaeb2b4decc7da4caa75cb2af68829b4bf7ce64d
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100802"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563846"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programozott módon létrehozhat egy Stream Analytics-feladat figyelése
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan engedélyezze a monitorozást az egy Stream Analytic
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a folyamat elkezdéséhez az alábbiakkal kell rendelkeznie:
+Ez a folyamat megkezdése előtt kell rendelkeznie a következő előfeltételek vonatkoznak:
 
 * A Visual Studio 2017 vagy 2015
 * [Az Azure .NET SDK](https://azure.microsoft.com/downloads/) letöltése és telepítése
@@ -75,50 +75,47 @@ Ez a folyamat elkezdéséhez az alábbiakkal kell rendelkeznie:
    ```
 5. Adjon hozzá egy hitelesítési segédmetódus.
 
-```csharp   
-     public static string GetAuthorizationHeader()
-   
+   ```csharp   
+   public static string GetAuthorizationHeader()
+   {
+      AuthenticationResult result = null;
+      var thread = new Thread(() =>
+      {
+         try
          {
-             AuthenticationResult result = null;
-             var thread = new Thread(() =>
-             {
-                 try
-                 {
-                     var context = new AuthenticationContext(
-                         ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
-                         ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+             var context = new AuthenticationContext(
+                ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"] +
+                ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+             result = context.AcquireToken(
+                 resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
+                 clientId: ConfigurationManager.AppSettings["AsaClientId"],
+                 redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
+                 promptBehavior: PromptBehavior.Always);
+         }
+         catch (Exception threadEx)
+         {
+             Console.WriteLine(threadEx.Message);
+         }
+     });
+
+     thread.SetApartmentState(ApartmentState.STA);
+     thread.Name = "AcquireTokenThread";
+     thread.Start();
+     thread.Join();
    
-                     result = context.AcquireToken(
-                         resource: ConfigurationManager.AppSettings["WindowsManagementUri"],
-                         clientId: ConfigurationManager.AppSettings["AsaClientId"],
-                         redirectUri: new Uri(ConfigurationManager.AppSettings["RedirectUri"]),
-                         promptBehavior: PromptBehavior.Always);
-                 }
-                 catch (Exception threadEx)
-                 {
-                     Console.WriteLine(threadEx.Message);
-                 }
-             });
-   
-             thread.SetApartmentState(ApartmentState.STA);
-             thread.Name = "AcquireTokenThread";
-             thread.Start();
-             thread.Join();
-   
-             if (result != null)
-             {
-                 return result.AccessToken;
-             }
-   
-             throw new InvalidOperationException("Failed to acquire token");
+     if (result != null)
+     {
+         return result.AccessToken;
      }
-```
+         throw new InvalidOperationException("Failed to acquire token");
+   }
+   ```
 
 ## <a name="create-management-clients"></a>Hozzon létre a felügyeleti ügyfeleket
 
 A következő kódot a szükséges változók és a felügyeleti ügyfeleket állítja be.
 
-```csharp
+   ```csharp
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
     string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
 
@@ -136,7 +133,7 @@ A következő kódot a szükséges változók és a felügyeleti ügyfeleket ál
     StreamAnalyticsManagementClient(aadTokenCredentials, resourceManagerUri);
     InsightsManagementClient insightsClient = new
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
-```
+   ```
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Engedélyezze a monitorozást az egy meglévő Stream Analytics-feladat
 
@@ -152,35 +149,34 @@ A következő kód lehetővé teszi a figyelést egy **meglévő** Stream Analyt
 > A tárfiók nevét, amellyel cseréje `<YOUR STORAGE ACCOUNT NAME>` az alábbi kódot a storage-fiók, amely a Stream Analytics-feladat, amely engedélyezi a figyelést az azonos előfizetésben kell lennie.
 > 
 > 
-> ```csharp
->     // Get an existing Stream Analytics job
+>    ```csharp
+>    // Get an existing Stream Analytics job
 >     JobGetParameters jobGetParameters = new JobGetParameters()
 >     {
 >         PropertiesToExpand = "inputs,transformation,outputs"
 >     };
 >     JobGetResponse jobGetResponse = streamAnalyticsClient.StreamingJobs.Get(resourceGroupName, streamAnalyticsJobName, jobGetParameters);
+>
+>    // Enable monitoring
+>    ServiceDiagnosticSettingsPutParameters insightPutParameters = new ServiceDiagnosticSettingsPutParameters()
+>    {
+>            Properties = new ServiceDiagnosticSettings()
+>           {
+>               StorageAccountName = "<YOUR STORAGE ACCOUNT NAME>"
+>           }
+>    };
+>   insightsClient.ServiceDiagnosticSettingsOperations.Put(jobGetResponse.Job.Id, insightPutParameters);
+>   ```
 
-    // Enable monitoring
-    ServiceDiagnosticSettingsPutParameters insightPutParameters = new ServiceDiagnosticSettingsPutParameters()
-    {
-            Properties = new ServiceDiagnosticSettings()
-            {
-                StorageAccountName = "<YOUR STORAGE ACCOUNT NAME>"
-            }
-    };
-    insightsClient.ServiceDiagnosticSettingsOperations.Put(jobGetResponse.Job.Id, insightPutParameters);
-```
 
+## <a name="get-support"></a>Támogatás kérése
 
-## Get support
+További segítségre van szüksége, próbálja meg [Azure Stream Analytics-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-For further assistance, try our [Azure Stream Analytics forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+## <a name="next-steps"></a>További lépések
 
-## Next steps
-
-* [Introduction to Azure Stream Analytics](stream-analytics-introduction.md)
-* [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics Management REST API Reference](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
+* [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
+* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
+* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
+* [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

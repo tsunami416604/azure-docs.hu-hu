@@ -15,15 +15,15 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d5b0ff70baaba0b409cbd91ec2c68c77b98ba085
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 0a29c15be6cfb73bb768e74cd9141e660b598f06
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548066"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565665"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Az Azure-beli SQL Server virtuális gép licencelési modelljét módosítása
-Ez a cikk bemutatja, hogyan módosíthatja az Azure-ban az új SQL Server virtuális gép licencelési modelljét SQL virtuális gép erőforrás-szolgáltató – **Microsoft.SqlVirtualMachine**. Kettő licencelési üzemeltető SQL Server – használatalapú fizetés, egy virtuális gépet (VM) modellt és a hozott licences (BYOL). És most az Azure Portalon vagy az Azure CLI használatával, módosíthatja licencelési modellt az SQL Server virtuális gép használja. 
+Ez a cikk bemutatja, hogyan módosíthatja az Azure-ban az új SQL Server virtuális gép licencelési modelljét SQL virtuális gép erőforrás-szolgáltató – **Microsoft.SqlVirtualMachine**. Kettő licencelési üzemeltető SQL Server – használatalapú fizetés, egy virtuális gépet (VM) modellt és a hozott licences (BYOL). És most az Azure portal, az Azure parancssori felület vagy PowerShell használatával módosíthatja licencelési modellt az SQL Server virtuális gép használja. 
 
 A **utólagos elszámolású** (PAYG) modell azt jelenti, hogy az a másodpercenkénti költség, az Azure virtuális Gépen futó tartalmazza-e az SQL Server-licenc költsége.
 
@@ -36,10 +36,7 @@ Váltás a két licenc modell között felmerülő **állásidő nélkül**, nem
  - CSP-ügyfeleknek a AHB juttatás képes használni, először a használatalapú fizetést biztosító virtuális gépek telepítése, majd a bring-your-saját licenc által. 
  - Az erőforrás-szolgáltató az SQL Server rendszerű virtuális gép egyéni rendszerkép regisztráció során adja meg a licenc típusa = "AHUB". Hagyja a licenc adja meg, üres, vagy adja meg a "Használatalapú" okoz a regisztráció sikertelen lesz. 
  - Törölte-e az SQL Server VM-erőforrás, állítja vissza a kódolt licenc beállításait, a kép. 
- - Megváltoztathatja a licencelési modell funkciója az SQL virtuális gép erőforrás-szolgáltató. Az SQL Server virtuális gép kezelésére szolgáló SQL Server virtuális gép a portálon belül automatikusan regisztrálja az erőforrás-szolgáltató. Azonban _néhány_ ügyfeleknek manuálisan is kell [regisztrálja az SQL Server rendszerű virtuális gép](#register-sql-server-vm-with-the-sql-vm-resource-provider) az erőforrás-szolgáltatónál, például:
-     - Az SQL Server virtuális gép a PowerShell vagy az Azure CLI használatával üzembe helyezett felhasználók. 
-     - Saját telepített SQL Server egy nem SQL Server-rendszerképet a felhasználóknak. 
-     - A virtuális gép egyéni VHD-k használatával üzembe helyezett felhasználók. 
+ - Megváltoztathatja a licencelési modell funkciója az SQL virtuális gép erőforrás-szolgáltató. Az erőforrás-szolgáltató SQL Server virtuális gép üzembe helyezése az Azure Portalon keresztül Piactéri lemezképet automatikusan regisztrálja. Azonban ügyfelek, akik saját telepíti az SQL Server rendszer manuálisan kell [regisztrálja az SQL Server rendszerű virtuális gép](#register-sql-server-vm-with-the-sql-vm-resource-provider). 
 
  
 ## <a name="limitations"></a>Korlátozások
@@ -90,6 +87,37 @@ A következő kódrészletet a bring-your-saját licenc modell használatalapú 
 
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
+## <a name="with-powershell"></a>A PowerShell-lel
+Licencelési modelljének módosítása a PowerShell használatával is.
+
+A következő kódrészletet a használatalapú licencelési modell átvált BYOL (vagy az Azure Hybrid Benefit használatával):
+
+```powershell
+# Switch your SQL Server VM license from pay-as-you-go to bring-your-own
+#example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
+$SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
+$SqlVm.Properties.sqlServerLicenseType="AHUB"
+<# the following code snippet is only necessary if using Azure Powershell version > 4
+$SqlVm.Kind= "LicenseChange"
+$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
+$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
+$SqlVm | Set-AzResource -Force 
+```
+
+A következő kódrészletet a BYOL modell használatalapú fizetéses előfizetésre vált:
+
+```powershell
+# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
+#example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
+$SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
+$SqlVm.Properties.sqlServerLicenseType="PAYG"
+<# the following code snippet is only necessary if using Azure Powershell version > 4
+$SqlVm.Kind= "LicenseChange"
+$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
+$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
+$SqlVm | Set-AzResource -Force 
+```
+
 
 ## <a name="register-sql-server-vm-with-the-sql-vm-resource-provider"></a>Az SQL virtuális gép erőforrás-szolgáltató az SQL Server rendszerű virtuális gép regisztrálása
 Bizonyos esetekben szükség lehet manuálisan kell regisztrálni az SQL Server virtuális gép az SQL virtuális gép erőforrás-szolgáltatónál. Ehhez szükség lehet manuálisan kell regisztrálni az erőforrás-szolgáltató az előfizetéséhez. 
@@ -118,16 +146,35 @@ Az alábbi kódrészlet regisztrálja az SQL virtuális gép erőforrás-szolgá
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
 
+#### <a name="with-powershell"></a>A PowerShell-lel
+
+Az alábbi kódrészlet regisztrálja az SQL erőforrás-szolgáltató az Azure-előfizetéshez.
+
+```powershell
+# Register the new SQL resource provider to your subscription
+Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
+```
 
 ### <a name="register-sql-server-vm-with-sql-resource-provider"></a>Az erőforrás-szolgáltató SQL az SQL Server rendszerű virtuális gép regisztrálása
 Miután az SQL virtuális gép erőforrás-szolgáltató regisztrálva lett az előfizetéshez, majd regisztrálhatja az SQL Server virtuális gép az Azure CLI-vel az erőforrás-szolgáltató. 
 
+#### <a name="with-azure-cli"></a>Az Azure CLI-vel
 Regisztrálja az SQL Server rendszerű virtuális gép a következő kódrészletet az Azure CLI használatával: 
 
 ```azurecli
 # Register your existing SQL Server VM with the new resource provider
 az sql vm create -n <VMName> -g <ResourceGroupName> -l <VMLocation>
 ```
+#### <a name="with-powershell"></a>A PowerShell-lel
+Regisztrálja az SQL Server rendszerű virtuális gép PowerShell használata a következő kódrészletet:
+
+```powershell
+# Register your existing SQL Server VM with the new resource provider
+# example: $vm=Get-AzVm -ResourceGroupName AHBTest -Name AHBTest
+$vm=Get-AzVm -ResourceGroupName <ResourceGroupName> -Name <VMName>
+New-AzResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Proper
+```
+
 
 
 ## <a name="known-errors"></a>Ismert hibák
@@ -145,6 +192,23 @@ A probléma megoldásához telepítse az SQL IaaS-bővítményt az SQL Server vi
 
 ### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found-the-property-sqlserverlicensetype-cannot-be-found-on-this-object-verify-that-the-property-exists-and-can-be-set"></a>A "Microsoft.SqlVirtualMachine/SqlVirtualMachines/ < erőforráscsoport >' '< erőforráscsoport >' erőforráscsoportba tartozó erőforrás nem található. A "sqlServerLicenseType" tulajdonság nem található ehhez az objektumhoz. Győződjön meg arról, hogy a tulajdonság létezik-e, és akkor állítható be.
 Ez a hiba akkor fordul elő, amikor próbál módosítani a licencelési modellt, amely nincs regisztrálva az erőforrás-szolgáltató SQL az SQL Server virtuális gépen. Az erőforrás-szolgáltatót regisztrálnia kell az [előfizetés](#register-sql-vm-resource-provider-with-subscription), majd regisztrálja az SQL Server virtuális gép az SQL-lel [erőforrás-szolgáltató](#register-sql-server-vm-with-sql-resource-provider). 
+
+### <a name="cannot-validate-argument-on-parameter-sku"></a>"Sku" paraméter nem lehet érvényesíteni.
+Ez a hiba jelentkezhetnek, ha próbál módosítani az SQL Server rendszerű virtuális gép licencelési modellt, ha az Azure PowerShell > 4.0: Set-AzResource : "Sku" paraméter nem lehet érvényesíteni. Az argumentum null értékű vagy üres. Adjon meg egy argumentum, amely nem null értékű vagy üres, és próbálkozzon újra a parancsot.
+Ez a hiba elhárításához távolítsa el ezeket a sorokat a korábban említett PowerShell kódrészletet licencelési modelljének váltáskor:
+
+```powershell
+# the following code snippet is necessary if using Azure Powershell version > 4
+$SqlVm.Kind= "LicenseChange"
+$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
+$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new()
+```
+
+Az Azure PowerShell-verzió ellenőrzéséhez használja a következő kódot:
+
+```powershell
+Get-Module -ListAvailable -Name Azure -Refresh
+```
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: e0a0bd0e630281d2218c74050e810fe73361c6be
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: c211d479efe086bb739b91034c6d9e349358b2d7
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578543"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565903"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -212,12 +212,12 @@ Az ingyenes szinten csak felderítő forgatókönyvek esetén nem termelési for
 | Összetevő | Korlát | Megjegyzések |
 |----------|-------|-------|
 | Szerelvények | 50 | |
-| Kötegkonfigurációk | 5 |
-| Tanúsítványok | 50 | |
+| Kötegkonfigurációk | 50 |
+| Tanúsítványok | 500 | |
 | Kereskedelmi EDI-szerződést | 500 | |
 | Kereskedelmi EDI-partnerek | 500 | |
-| Maps | 500 | |
-| Sémák | 500 |
+| Maps | 1,000 | |
+| Sémák | 1,000 |
 ||||
 
 <a name="artifact-capacity-limits"></a>

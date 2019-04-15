@@ -16,13 +16,17 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2bb6237e53f945b645f1ee757a53ef67270e2416
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: ae59f54de9c02bfc4e538dd10c809ba398d599ee
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268379"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565958"
 ---
+> [!NOTE]
+> Néhány az alábbi irányelvek csak működnek a Windows vagy Linux App Services. Ha például Linux App Services alapértelmezés szerint 64 bites módban fusson.
+>
+
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Alkalmazások teljesítményének – gyakori kérdések az Azure Web Apps esetében
 
 Ez a cikk rendelkezik adott válaszok a gyakori kérdések (GYIK) kapcsolatos alkalmazásteljesítménnyel kapcsolatos problémák esetében a [Azure App Service Web Apps funkciójával](https://azure.microsoft.com/services/app-service/web/).
