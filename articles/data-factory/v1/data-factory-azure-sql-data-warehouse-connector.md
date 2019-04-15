@@ -72,7 +72,7 @@ Az alábbi táblázatban az adott Azure SQL Data Warehouse társított szolgált
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A type tulajdonságot kell beállítani: **AzureSqlDW** |Igen |
-| kapcsolati Sztringje |Adja meg a connectionString tulajdonság az Azure SQL Data Warehouse-példányhoz való kapcsolódáshoz szükséges adatokat. Csak az alapszintű hitelesítést is támogatja. |Igen |
+| connectionString |Adja meg a connectionString tulajdonság az Azure SQL Data Warehouse-példányhoz való kapcsolódáshoz szükséges adatokat. Csak az alapszintű hitelesítést is támogatja. |Igen |
 
 > [!IMPORTANT]
 > Konfigurálása [Azure SQL Database-tűzfal](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) és a kiszolgáló [a kiszolgálóhoz való hozzáféréshez Azure-szolgáltatások engedélyezése](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Emellett az adatokat az Azure SQL Data Warehouse kívül az Azure például a data factory-átjáró a helyszíni adatforrásokból származó másolása, beállítható, megfelelő IP-címtartományt, a gép, amely adatokat küld az Azure SQL Data Warehouse.
@@ -152,7 +152,7 @@ GO
 | rejectType |Itt adhatja meg, e a rejectValue kapcsoló Szövegkonstansérték vagy százalékban megadva. |Érték (alapértelmezett), százalékos aránya |Nem |
 | rejectSampleValue |Mielőtt a PolyBase újraszámítja a visszautasított sorok aránya beolvasandó sorok számát határozza meg. |1, 2, … |Igen, ha **rejectType** van **százalékos aránya** |
 | useTypeDefault |Itt adhatja meg, hogyan szeretné kezelni a PolyBase kér le adatokat a szövegfájl elválasztójellel tagolt szöveges fájlok a hiányzó értékeket.<br/><br/>További tudnivalók a ezt a tulajdonságot a következő argumentumok szakaszában [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |TRUE, False (alapértelmezett) |Nem |
-| WriteBatchSize |Adatok beszúrása SQL-táblát, amikor a puffer mérete eléri a writeBatchSize |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
+| writeBatchSize |Adatok beszúrása SQL-táblát, amikor a puffer mérete eléri a writeBatchSize |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | writeBatchTimeout |Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot. |Időtartam<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink példa
@@ -276,9 +276,9 @@ Az alábbi táblázat példákkal szolgál, adja meg a **tableName** az adatkés
 
 | Adatbázis-séma | Tábla neve | Táblanév JSON-tulajdonság |
 | --- | --- | --- |
-| dbo |Táblanév |Táblanév vagy a dbo. Táblanév vagy [dbo]. [Táblanév] |
-| dbo1 |Táblanév |dbo1. Táblanév vagy [dbo1]. [Táblanév] |
-| dbo |My.Table |[My.Table] vagy [dbo]. [My.Table] |
+| dbo |MyTable |MyTable vagy dbo.MyTable vagy [dbo].[MyTable] |
+| dbo1 |MyTable |dbo1.MyTable vagy [dbo1].[MyTable] |
+| dbo |My.Table |[My.Table] vagy [dbo].[My.Table] |
 | dbo1 |My.Table |[dbo1].[My.Table] |
 
 Ha a következő hibát látja, annak oka az lehet a tableName tulajdonsághoz megadott érték problémáját. Tekintse meg a táblázat tartalmazza a megfelelő módszer az adja meg az értékeket a tableName JSON-tulajdonságot.
@@ -306,30 +306,30 @@ A Data Factory a tábla a ugyanazon tábla neve a source data Store céltár hoz
 | BigInt | BigInt |
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
-| bit | bit |
+| Bit | Bit |
 | Decimal | Decimal |
-| Numerikus | Decimal |
-| Lebegőpontos | Lebegőpontos |
-| költséget takaríthat meg | költséget takaríthat meg |
+| Numeric | Decimal |
+| Float | Float |
+| Money | Money |
 | Real | Real |
 | SmallMoney | SmallMoney |
-| Bináris | Bináris |
-| varbinary | Varbinary (legfeljebb 8000-es) |
-| Dátum | Dátum |
+| Binary | Binary |
+| Varbinary | Varbinary (legfeljebb 8000-es) |
+| Date | Date |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | Time | Time |
 | DateTimeOffset | DateTimeOffset |
 | SmallDateTime | SmallDateTime |
-| Szöveg | Varchar (legfeljebb 8000-es) |
+| Text | Varchar (legfeljebb 8000-es) |
 | NText | NVarChar (legfeljebb 4000-es) |
-| Kép | VarBinary (legfeljebb 8000-es) |
+| Image | VarBinary (legfeljebb 8000-es) |
 | UniqueIdentifier | UniqueIdentifier |
-| CHAR | CHAR |
+| Char | Char |
 | NChar | NChar |
 | VarChar | VarChar (legfeljebb 8000-es) |
 | NVarChar | NVarChar (legfeljebb 4000-es) |
-| XML | Varchar (legfeljebb 8000-es) |
+| Xml | Varchar (legfeljebb 8000-es) |
 
 [!INCLUDE [data-factory-type-repeatability-for-sql-sources](../../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
@@ -346,37 +346,37 @@ A leképezés megegyezik a [SQL Server adattípus-leképezés az ADO.NET](https:
 | SQL Server adatbázismotor típusa | .NET-keretrendszer típusa |
 | --- | --- |
 | bigint |Int64 |
-| Bináris |Byte] |
-| bit |Logikai |
-| CHAR |Karakterlánc, Char] |
-| dátum |DateTime |
-| Dátum és idő |DateTime |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
+| date |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| tizedes tört |tizedes tört |
-| A FILESTREAM attribútum (varbinary(max)) |Byte] |
-| Lebegőpontos |Dupla |
-| image |Byte] |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Double |
+| image |Byte[] |
 | int |Int32 |
-| költséget takaríthat meg |tizedes tört |
-| nchar |Karakterlánc, Char] |
-| ntext |Karakterlánc, Char] |
-| numerikus |tizedes tört |
-| nvarchar |Karakterlánc, Char] |
-| valódi |Önálló |
-| ROWVERSION |Byte] |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| pénz |tizedes tört |
-| sql_variant |Objektum * |
-| szöveg |Karakterlánc, Char] |
-| time |Időtartam |
-| időbélyeg |Byte] |
-| tinyint |Bájt |
-| UniqueIdentifier |GUID |
-| varbinary |Byte] |
-| varchar |Karakterlánc, Char] |
-| xml |XML |
+| smallmoney |Decimal |
+| sql_variant |Object * |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
+| tinyint |Byte |
+| uniqueidentifier |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 A másolási tevékenységhez tartozó definíció a fogadó-adatkészlet-oszlop a forrásadatkészlet oszlopok is leképezheti. További információkért lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).
 
