@@ -34,9 +34,9 @@ Mentett keresés egy vagy több ütemezés is rendelkezhet. Az ütemezés határ
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Intervallum |Milyen gyakran fut a keresés. Mért percek alatt. |
+| Interval |Milyen gyakran fut a keresés. Mért percek alatt. |
 | QueryTimeSpan |Az időintervallum, amelyen a feltétel értékeli ki. Intervallum nagyobbnak vagy azzal egyenlőnek kell. Mért percek alatt. |
-| Verzió |A használt API-verzió.  Jelenleg ez mindig meg kell 1-re. |
+| Version |A használt API-verzió.  Jelenleg ez mindig meg kell 1-re. |
 
 Vegyük példaként egy esemény-lekérdezést a 15 perces időközt, és a egy 30 perces időtartam. Ebben az esetben a lekérdezés 15 percenként fogja futtatni, és a riasztás akkor aktiválódik, ha a kritériumok továbbra is igaz over feloldani egy 30 perces időtartam.
 
@@ -359,9 +359,9 @@ E-mail-értesítések küldése egy vagy több címzett e-mail.  Azok a különf
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Címzettek |E-mail címek listáját. |
-| Tárgy |Az e-mail tárgya. |
-| Melléklet |A mellékletek jelenleg nem támogatottak, így ez mindig lesz a egy értéke "None." |
+| Recipients |E-mail címek listáját. |
+| Subject |Az e-mail tárgya. |
+| Attachment |A mellékletek jelenleg nem támogatottak, így ez mindig lesz a egy értéke "None." |
 
 Következő egy e-mail-értesítési művelet egy küszöbértékkel mintaválaszt.  
 
@@ -406,7 +406,7 @@ Szervizelések tulajdonságait az alábbi táblázat tartalmazza.
 |:--- |:--- |
 | RunbookName |A runbook neve. Ennek egyeznie kell egy közzétett runbook az automation-fiókban az Automation-megoldás, az a Log Analytics-munkaterületen konfigurált. |
 | WebhookUri |A webhook URI Azonosítóját. |
-| Lejárat |A lejárati dátum és idő, a webhook.  Ha a webhook nem rendelkezik egy lejárati, majd ez lehet bármely érvényes jövőbeli dátum. |
+| Expiry |A lejárati dátum és idő, a webhook.  Ha a webhook nem rendelkezik egy lejárati, majd ez lehet bármely érvényes jövőbeli dátum. |
 
 Következő egy mintaválasz egy küszöbértékkel szervizelési művelethez.
 
