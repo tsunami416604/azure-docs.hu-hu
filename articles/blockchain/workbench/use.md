@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/08/2019
+ms.date: 04/15/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 55207e1eb8fe1b88df7f9bfb84a1da505d0e0252
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 89c83ed6d02a60978bd54fb97d37063e34f6c0c7
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332217"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578850"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Oktatóanyag: Alkalmazások használata az Azure Blockchain Workbench használatával
 
@@ -40,9 +40,9 @@ A következőket fogja megtanulni:
 
 Jelentkezzen be a Blockchain Workbenchet tagjaként kell. Ha nincsenek a felsorolt alkalmazások, Ön tagja Blockchain Workbenchet, de nem tagja olyan alkalmazást. A Blockchain Workbenchet rendszergazda rendelhet a tagok alkalmazások.
 
-## <a name="create-new-contract"></a>Hozzon létre új szerződést 
+## <a name="create-new-contract"></a>Hozzon létre új szerződést
 
-Hozzon létre egy új szerződést, meg kell lennie egy szerződés, a megadott tag **kezdeményező**. Alkalmazás-szerepkörök és a szerződés kezdeményezők információkért lásd: [munkafolyamatok a konfigurálása – áttekintés](configuration.md#workflows). A tagok hozzárendelése alkalmazás-szerepkörök további információkért lásd: [alkalmazást adhat hozzá olyan tagot](manage-users.md#add-member-to-application).
+Hozzon létre egy új szerződést, hogy a szerződés, a megadott tag szüksége **kezdeményező**. Alkalmazás-szerepkörök és a szerződés kezdeményezők információkért lásd: [munkafolyamatok a konfigurálása – áttekintés](configuration.md#workflows). A tagok hozzárendelése alkalmazás-szerepkörök további információkért lásd: [alkalmazást adhat hozzá olyan tagot](manage-users.md#add-member-to-application).
 
 1. A Blockchain Workbench alkalmazás szakaszban válassza ki az alkalmazás csempe, amely tartalmazza a létrehozandó szerződést. Aktív szerződések listája jelenik meg.
 

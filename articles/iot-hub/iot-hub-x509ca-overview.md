@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 38cbd32be30885837d2f98a9e1dd5d967b4938b4
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: b7464e5cc052ecade4a10102de947d37a63c962a
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489811"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571154"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Eszközhitelesítés X.509 Hitelesítésszolgáltatói tanúsítványok használatával
 
@@ -62,13 +62,15 @@ A feltöltési folyamat magában foglalja a tanúsítványt tartalmazó fájlt f
 
 A koncepció igazolása birtokában lépés magában foglalja egy titkosítási kérdés és válasz folyamat, és az IoT Hub között.  Tekintve, hogy digitális tanúsítvány tartalma nyilvános, és ezért ki van téve a lehallgatást, az IoT Hub szeretné megállapítani, hogy valóban saját a Hitelesítésszolgáltatói tanúsítvány.  Erre a létrehoz egy véletlenszerű kihívás, akkor be kell jelentkeznie a Hitelesítésszolgáltatói tanúsítvány megfelelő titkos kulccsal.  Ha meghagyta a titkos kulcs titkos és védett, korábban értesítette, akkor csak akkor fog ismeretekkel a lépés végrehajtásához. Titkos kulcsok sérülés utáni titkosságvédelmi az ezzel a módszerrel megbízhatósági forrása.  Miután a kihívás, e lépés elvégzése után, az eredményeket tartalmazó fájl feltöltésével.
 
-Itt megtudhatja, hogyan [a Hitelesítésszolgáltatói tanúsítvány regisztrálása](iot-hub-security-x509-get-started.md#registercerts).
+Itt megtudhatja, hogyan [a Hitelesítésszolgáltatói tanúsítvány regisztrálása](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>Az IoT hub-eszköz létrehozása
 
 Zárja ki az eszköz megszemélyesítést, az IoT Hub kell biztosítani, hogy tudja, milyen eszközöket várható.  Ehhez eszközbejegyzés létrehozása az IoT Hub eszközjegyzékében.  Az IoT Hub használata esetén ez a folyamat automatizált [Device Provisioning Service](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/). 
 
-Itt megtudhatja, hogyan [manuálisan hozzon létre egy eszközt az IoT Hub](iot-hub-security-x509-get-started.md#createdevice).
+Itt megtudhatja, hogyan [manuálisan hozzon létre egy eszközt az IoT Hub](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub).
+
+X.509-eszközt az IoT hub létrehozása
 
 ## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>Hitelesítő eszközök aláírt x.509-es Hitelesítésszolgáltatói tanúsítványokkal
 
@@ -76,7 +78,7 @@ A regisztrált X.509 Hitelesítésszolgáltatói tanúsítvány és a egy tanús
 
 Az IoT Hub sikeres csatlakozás a hitelesítési folyamat befejeződött, és is, a megfelelő telepítőt.
 
-Itt megtudhatja, hogyan [ennek eszköz végrehajtásáról](iot-hub-security-x509-get-started.md#authenticatedevice).
+Itt megtudhatja, hogyan [ennek eszköz végrehajtásáról](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates).
 
 ## <a name="next-steps"></a>További lépések
 

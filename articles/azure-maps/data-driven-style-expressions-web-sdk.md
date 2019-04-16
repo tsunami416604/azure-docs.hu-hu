@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 0f63ed7d00f1ae3e30cdac76606559a4e9f49f04
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59288096"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579495"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Az adatvezérelt stílusa kifejezés (Web SDK-t)
 
@@ -43,9 +43,9 @@ Az Azure Maps Web SDK támogatja a számos különböző típusú kifejezés, am
 
 | A kifejezések típusa | Leírás |
 |---------------------|-------------|
-| [Logikai kifejezések](#boolean-expressions) | Logikai kifejezésen logikai operátorokkal kifejezések kiértékelése logikai összehasonlítások tárházát biztosítja. |
+| [A logikai kifejezéseket](#boolean-expressions) | Logikai kifejezésen logikai operátorokkal kifejezések kiértékelése logikai összehasonlítások tárházát biztosítja. |
 | [Színe kifejezés](#color-expressions) | Szín kifejezés könnyebben hozhat létre és kezelheti a színértékek. |
-| [Feltételes kifejezések](#conditional-expressions) | A feltételes kifejezések biztosít logic, ha-utasítások hasonlóak. |
+| [A feltételes kifejezések](#conditional-expressions) | A feltételes kifejezések biztosít logic, ha-utasítások hasonlóak. |
 | [Adatok kifejezések](#data-expressions) | Egy szolgáltatás tulajdonság adataihoz hozzáférést biztosít. |
 | [Interpolálja és kifejezések. lépés:](#interpolate-and-step-expressions) | Interpolálja és lépés kifejezések mentén interpolált görbe vagy lépés függvény értékek kiszámításához használható. |
 | [Réteg megadott kifejezések](#layer-specific-expressions) | Speciális kifejezések, amelyek csak egy rétegben alkalmazható. |
@@ -296,7 +296,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 A `coalesce` kifejezés kifejezések készletével lépések, amíg az első nem üres érték kapunk, és ezt az értéket adja vissza. 
 
-A következő pseudocode struktúráját határozza meg a ` coalesce` kifejezés. 
+A következő pseudocode struktúráját határozza meg a `coalesce` kifejezés. 
 
 ```javascript
 [
@@ -789,16 +789,16 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 A kifejezések megvalósító további Kódminták a következő cikkekben talál:
 
 > [!div class="nextstepaction"] 
-> [Szimbólumréteg hozzáadása](map-add-pin.md)
+> [Egy szimbólum réteg hozzáadása](map-add-pin.md)
 
 > [!div class="nextstepaction"] 
-> [Buborékréteg hozzáadása](map-add-bubble-layer.md)
+> [Egy buborék réteg hozzáadása](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"] 
-> [Alakzatok hozzáadása](map-add-shape.md)
+> [Alakzat hozzáadása](map-add-shape.md)
 
 > [!div class="nextstepaction"] 
-> [Hőtérképréteg hozzáadása](map-add-heat-map-layer.md)
+> [Egy megadott hőtérképrészlet térképréteg hozzáadása](map-add-heat-map-layer.md)
 
 További információ a réteg beállításait, amelyek támogatják a kifejezések:
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: c5eb69ddd9c621024799b940ef58c34e7caaa3ff
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: b80cb0d68e6875881f2a9fc97fa52531525c1cdc
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294025"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579189"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Oktatóanyag: Egyéni tartomány hozzáadása az Azure CDN-végponthoz
 Ez az útmutató megmutatja, hogyan adható hozzá egyéni tartomány egy Azure Content Delivery Network- (CDN-) végponthoz. Amikor CDN-végpontot használ a tartalom továbbítására, és azt szeretné, hogy a saját tartományneve jelenjen meg a CDN URL-címében, egyéni tartományt kell létrehoznia. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is. 
@@ -50,7 +50,7 @@ Mielőtt használhatna egy egyéni tartományt egy Azure CDN-végponttal, a tart
 Egy egyéni tartománynév és annak altartománya egyszerre csak egy végponttal társítható. Azonban lehetséges egy egyéni tartomány több altartományának használata különböző Azure-szolgáltatásvégpontokhoz. Ezt több CNAME rekord használatával teheti meg. Emellett leképezhet egy több altartománnyal rendelkező egyéni tartományt is ugyanarra a CDN-végpontra.
 
 > [!NOTE]
-> Bármely alias rekordtípus használható egyéni tartományok használata az Azure DNS a tartomány-szolgáltatóként. Ez az útmutató a CNAME rekordtípust használja. Ha használ A vagy AAAA típusú rekord típust csak ugyanabban az alábbi lépések során CNAME cserélje le a kiválasztott rekord típusát. Ha szeretné engedélyezni az SSL-aliasrekordot gyökértartomány hozzáadása egy egyéni tartományt használ, manuális érvényesítésre leírtak szerint kell használnia [Itt](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)
+> Bármely alias rekordtípus használható egyéni tartományok használata az Azure DNS a tartomány-szolgáltatóként. Ez az útmutató a CNAME rekordtípust használja. A vagy AAAA-rekord típust használja, kövesse az alábbi lépéseket, és a CNAME cserélje le a kiválasztott rekord típusát. Ha szeretné engedélyezni az SSL-aliasrekordot gyökértartomány hozzáadása egy egyéni tartományt használ, manuális érvényesítésre leírtak szerint kell használnia [Ez a cikk](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint). További információkért lásd: [pont zóna felső pontja az Azure CDN-végpontok](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints).
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>Az ideiglenes cdnverify altartomány leképezése
 

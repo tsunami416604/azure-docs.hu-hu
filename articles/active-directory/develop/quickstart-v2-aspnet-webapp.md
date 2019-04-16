@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b11f49d788dd3c16c0cb8dd47cc59848b607ed
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: 4b83f5e6735f5b2554af2f5e6c74a7c9095d23fd
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505398"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579478"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Gyors útmutató: Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -54,21 +54,21 @@ Ebben a rövid útmutatóban megtudhatja, hogyan használhatók egy ASP.NET-weba
 > 1. Válassza ki **új regisztrációs**.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `ASPNET-Quickstart`).
->      - Adja hozzá a `https://localhost:44368/` címet a **Válasz URL-cím** mezőben, és kattintson a **Regisztráció** elemre.
+>      - Adjon hozzá `https://localhost:44368/` a **átirányítási URI-t**, és kattintson a **regisztrálása**.
 Válassza a **Hitelesítés** menüt, állítsa be az **Azonosító jogkivonatok** értékét az **Implicit engedélyezés** területen, majd válassza a **Mentés** elemet.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
 > Ahhoz, hogy a rövid útmutatóhoz tartozó kódminta működjön, hozzá kell adnia egy válasz URL-t a következő formában: `https://localhost:44368/`.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [A módosítás végrehajtása nekem]()
+> > [A módosítás alkalmazása]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Már be van állítva](media/quickstart-v2-aspnet-webapp/green-check.png) az alkalmazás ezzel az attribútummal van konfigurálva.
+> > ![Már konfigurált](media/quickstart-v2-aspnet-webapp/green-check.png) Az alkalmazása már konfigurálva van ezzel az attribútummal
 
 #### <a name="step-2-download-your-project"></a>2. lépés: Töltse le a projekthez
 
-[Töltse le a Visual Studio 2017-megoldás](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+[A Visual Studio 2017-megoldás letöltése](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
 
@@ -83,11 +83,11 @@ Válassza a **Hitelesítés** menüt, állítsa be az **Azonosító jogkivonatok
 
 > [!div renderon="docs"]
 > Az elemek magyarázata:
-> - `Enter_the_Application_Id_here` – a regisztrált alkalmazás alkalmazásazonosítója.
-> - `Enter_the_Tenant_Info_Here` – az alábbi lehetőségek közül:
+> - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
+> - `Enter_the_Tenant_Info_Here` – ez az alábbi lehetőségek egyike:
 >   - Ha az alkalmazás **csak a saját szervezetet** támogatja, ezt az értéket a **Bérlőazonosítóra** vagy a **Bérlő nevére** cserélje le (például contoso.microsoft.com)
->   - Ha az alkalmazás támogatja a **bármely szervezeti directory fiókok**, cserélje le ezt az értéket `organizations`
->   - Ha az alkalmazás támogatja a **minden Microsoft-fiókok felhasználóinak**, cserélje le ezt az értéket `common`
+>   - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot** támogat, ezt az értéket az `organizations` értékre cserélje le
+>   - Ha az alkalmazás **minden Microsoft-fiókfelhasználót** támogat, ezt az értéket a `common` értékre cserélje le
 >
 > > [!TIP]
 > > Az *alkalmazásazonosító*, a *címtár (bérlő) azonosítója* és a *támogatott fióktípusok* értékét az **Áttekintés** oldalon találja
@@ -158,7 +158,8 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> Beállítás `ValidateIssuer = false` van ebben a rövid útmutatóban egyszerűsítését. Valós alkalmazások érvényesítenie kell a kibocsátó megtudhatja, hogyan valósítható meg mintáiban találhat.
+> Beállítás `ValidateIssuer = false` van ebben a rövid útmutatóban egyszerűsítését. A valódi alkalmazások a kibocsátó ellenőrizni kell.
+> Tekintse meg a mintákat, megtudhatja, hogyan valósítható meg.
 
 ### <a name="initiate-an-authentication-challenge"></a>Hitelesítő kérdés kezdeményezése
 
@@ -190,6 +191,6 @@ Próbálja ki az ASP.NET-hez készült oktatóanyagot, amelyben teljes körű, r
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>A jelen rövid útmutatóban használt alkalmazás létrehozási lépéseinek ismertetése
 
 > [!div class="nextstepaction"]
-> [Jelentkezzen be az oktatóanyag](./tutorial-v2-asp-webapp.md)
+> [Bejelentkezési útmutató](./tutorial-v2-asp-webapp.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

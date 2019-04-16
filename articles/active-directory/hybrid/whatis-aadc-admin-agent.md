@@ -11,12 +11,12 @@ ms.date: 04/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49234472481e30cf74efa3e72ac0e4f31466fada
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e33143626e136523b4af086e841b92e9ad30fa86
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884890"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577609"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Mi az az Azure AD Connect felügyeleti ügynök? 
 Az Azure AD Connect felügyeleti ügynök része egy új Azure Active Directory Connect, amely egy Azure Active Directory Connect-kiszolgálón telepítve van. Adott adatok gyűjtését az Active Directory-környezetet, amelynek segítségével a Microsoft támogatási szakértője hibák elhárításához, ha a támogatási eset nyitása szolgál.
@@ -41,16 +41,18 @@ A Microsoft támogatási szakembere nem módosítják az adatokat a rendszer, é
  
 Ha nem szeretné, hogy a Microsoft-szolgáltatás mérnök, egy támogatási hívás az adatok eléréséhez a szolgáltatás konfigurációs fájl módosításával, az alább ismertetett letilthatja ezt: 
 
-  1.    Nyissa meg **C:\Program Files\Microsoft Azure AD Connect felügyeleti Agent\AzureADConnectAdministrationAgentService.exe.config** a Jegyzettömbben.
-  2.    Tiltsa le **UserDataEnabled** beállítása a lent látható módon. Ha **UserDataEnabled** beállítás létezik, és igaz értékre, majd állítsa be hamis értékre van állítva. Ha a beállítás nem létezik, majd adja hozzá a beállítást alább látható módon.    
-  `
- <appSettings>
-   <add key="TraceFilename" value="ADAdministrationAgent.log" />
-   <add key="UserDataEnabled" value="false" />
-  </appSettings>
-  `
-  3.    Mentse a konfigurációs fájlt.
-  4.    Azure AD Connect felügyeleti ügynök szolgáltatás újraindításához, ahogy az alábbi
+1.  Nyissa meg **C:\Program Files\Microsoft Azure AD Connect felügyeleti Agent\AzureADConnectAdministrationAgentService.exe.config** a Jegyzettömbben.
+2.  Tiltsa le **UserDataEnabled** beállítása a lent látható módon. Ha **UserDataEnabled** beállítás létezik, és igaz értékre, majd állítsa be hamis értékre van állítva. Ha a beállítás nem létezik, majd adja hozzá a beállítást alább látható módon.    
+
+    ```xml
+    <appSettings>
+      <add key="TraceFilename" value="ADAdministrationAgent.log" />
+      <add key="UserDataEnabled" value="false" />
+    </appSettings>
+    ```
+
+3.  Mentse a konfigurációs fájlt.
+4.  Azure AD Connect felügyeleti ügynök szolgáltatás újraindításához, ahogy az alábbi
 
 ![felügyeleti ügynök](media/whatis-aadc-admin-agent/adminagent2.png)
 

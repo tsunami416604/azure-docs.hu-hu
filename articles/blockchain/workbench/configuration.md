@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/08/2019
+ms.date: 04/15/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: b45cd84322279d7f81cc3f047f72a75a6d898bc6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452691"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578747"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Az Azure Blockchain Workbench konfiguráció leírása
 
- Az Azure Blockchain Workbench-alkalmazások olyan konfigurációs metaadatok és az intelligens szerződés kód által meghatározott több résztvevős munkafolyamatok. Konfigurációs metaadatok határozza meg, a magas szintű munkafolyamatok és a blockchain-application interakció típusát. Az intelligens szerződések adja meg a blockchain-application üzleti logikáját. Workbench konfigurációs és intelligens szerződés kód használatával hozzon létre a blockchain-application felhasználói élményt.
+Az Azure Blockchain Workbench-alkalmazások olyan konfigurációs metaadatok és az intelligens szerződés kód által meghatározott több résztvevős munkafolyamatok. Konfigurációs metaadatok határozza meg, a magas szintű munkafolyamatok és a blockchain-application interakció típusát. Az intelligens szerződések adja meg a blockchain-application üzleti logikáját. Workbench konfigurációs és intelligens szerződés kód használatával hozzon létre a blockchain-application felhasználói élményt.
 
 Konfigurációs metaadatok megadja a blockchain-alkalmazások mindegyike a következő információkat:
 
@@ -83,7 +83,7 @@ Támogatott adattípusok.
 | state    | A munkafolyamat állapota. |
 | sztring  | String adattípusú. engedélyezett a 4000 karakter. Lásd: [konfiguráció például](#example-configuration-of-type-string). |
 | Felhasználó     | Írja be a felhasználó címe. |
-| time     | Idő adattípust. |
+| idő-     | Idő adattípust. |
 |`[ Application Role Name ]`| Bármely alkalmazás-szerepkör a megadott név. Korlátozza a felhasználók számára az adott szerepkör típusú lehet. |
 
 ### <a name="example-configuration-of-type-array"></a>Példa konfigurációs tömb típusú

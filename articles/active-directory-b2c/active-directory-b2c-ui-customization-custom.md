@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4cf7c0cdd066879edccf7869ae3c8de0191f1d2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7463a61945524672c5124966db2464c036559db7
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818872"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571328"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás egyéni szabályzat használata az Azure Active Directory B2C a felhasználói felület testreszabása
 
@@ -97,7 +97,7 @@ Blob storage-ban hozzon létre egy nyilvános tárolóban, tegye a következőke
 A Blob storage konfigurálhatja az eltérő eredetű erőforrások megosztása az alábbiak szerint:
 
 1. Válassza a menüben **CORS**.
-2. A **engedélyezett eredetek**, adja meg `your-tenant-name.b2clogin.com`. Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével. Például: `fabrikam.b2clogin.com`. Csak kisbetűk használata a bérlő nevének megadásakor kell.
+2. A **engedélyezett eredetek**, adja meg `https://your-tenant-name.b2clogin.com`. Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével. Például: `https://fabrikam.b2clogin.com`. Csak kisbetűk használata a bérlő nevének megadásakor kell.
 3. A **engedélyezett metódusok**, válassza ki mindkét `GET` és `OPTIONS`.
 4. A **engedélyezett fejlécek**, írjon be egy csillagot (*).
 5. A **közzétett fejlécek**, írjon be egy csillagot (*).

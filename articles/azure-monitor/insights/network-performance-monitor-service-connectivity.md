@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9f881071559eaba0f6b1c86e8827993d52470baf
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 0c4b8d1646ba851acc6a0e2d9a3b920634098846
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501963"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571171"
 ---
-# <a name="service-connectivity-monitor"></a>Szolgáltatás-összekapcsolhatósági monitor
+# <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
 
 A szolgáltatás Kapcsolatfigyelő funkciót is használhatja [Network Performance Monitor](network-performance-monitor.md) bármely végpont, amely egy nyitott TCP-port van hálózati kapcsolat figyeléséhez. Ilyen végpontok közé tartoznak a websites, a SaaS-alkalmazások, a PaaS-alkalmazások és az SQL-adatbázisok. 
 
@@ -33,7 +33,7 @@ A következő függvényeket, a szolgáltatás Kapcsolatfigyelő végezheti el:
 - A hotspotok a hálózaton, amelyek gyenge teljesítményt okozza az egyes ugrások meg topológia százalékaránya késés megtekintésével azonosíthatja.
 
 
-![Szolgáltatás-összekapcsolhatósági monitor](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
+![Szolgáltatáskapcsolati monitor](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfiguráció 
@@ -68,7 +68,7 @@ A tesztek a szolgáltatásvégpontokra irányuló hálózati kapcsolat figyelés
 5. A **cél**, adja meg, amelyhez a hálózati kapcsolat figyelni kívánt URL-cím vagy teljes Tartománynevét vagy IP-címet.
 6. A **portszám**, adja meg a célként megadott szolgáltatás portszámát. 
 7. A **vizsgálati gyakoriság**, adjon meg egy értéket, hogy milyen gyakran kívánja futtatni a vizsgálatot. 
-8. Válassza ki a csomópontokat, ahonnan a szolgáltatás a hálózati kapcsolat figyeléséhez. 
+8. Válassza ki a csomópontokat, ahonnan a szolgáltatás a hálózati kapcsolat figyeléséhez. Győződjön meg arról, hogy hozzá ügynökök száma kisebb, mint 150. Minden olyan ügynökre legfeljebb 150 végpontok/ügynökök tesztelheti.
 
     >[!NOTE]
     > A Windows server-alapú csomópontok esetében a funkció használatával a TCP-alapú kérelmeket a hálózati mérések végrehajtása. A Windows ügyfélalapú csomópontok esetében a funkció segítségével az ICMP-alapú kérelmeket a hálózati mérések végrehajtása. Bizonyos esetekben a célalkalmazás bejövő ICMP-alapú kérelmeket blokkol, amikor a csomópontok Windows ügyfél-alapú. A megoldás nem képes hálózati mérések végrehajtása. Azt javasoljuk, hogy ilyen esetekben használhatja a Windows server-alapú csomópontokat. 

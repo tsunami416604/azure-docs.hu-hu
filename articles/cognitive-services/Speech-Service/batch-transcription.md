@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 3b403eb80bae01efe730b69b7e6a5ddaea81355a
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: b389d86fe4d23e3f4ee1c66e4270a74351098129
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447650"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579359"
 ---
 # <a name="why-use-batch-transcription"></a>Miért érdemes használni a Batch beszédátírási?
 
@@ -88,6 +88,16 @@ Konfigurációs paraméterek JSON-fájlként áll rendelkezésre:
 | `PunctuationMode` | Adja meg a felismerési eredményeket írásjelek kezelése. Elfogadott értékek a következők `none` ami letiltja az absztrakt, `dictated` explicit írásjelek, amiből `automatic` , amellyel a dekóder írásjelek, kezelése vagy `dictatedandautomatic` írásjelek vagy automatikus azt jelenti, amely során. | Optional |
  | `AddWordLevelTimestamps` | Itt adhatja meg, ha word szintű időbélyeggel kell adni a kimenetet. Elfogadott értékek a következők `true` lehetővé teszi a word szintű időbélyegeket és `false` (az alapértelmezett érték) letiltja azt. | Optional |
 
+### <a name="storage"></a>Storage
+
+Batch-átírási támogatja [Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) hang- és Storage írása beszédátírás olvasásához.
+
+## <a name="webhooks"></a>Webhookok 
+
+A beszédátírási állapotának lekérdezése nem, a legtöbb nagy teljesítményű, vagy a legjobb felhasználói élményt. A állapotának lekérdezéséhez, regisztrálhat visszahívást, amelyet az ügyfél értesíti, amikor a hosszú ideig futó beszédátírási tevékenységei befejeződtek.
+
+További részletekért lásd: [Webhookok](webhooks.md).
+
 ## <a name="sample-code"></a>Mintakód
 
 A teljes minta megtalálható a [GitHub-mintaadattárból](https://aka.ms/csspeech/samples) belül a `samples/batch` alkönyvtárat.
@@ -108,10 +118,6 @@ A jelenlegi mintakód nem adja meg egy egyéni modell. A szolgáltatás használ
 
 > [!NOTE]
 > Alapkonfiguráció beszédátírás nem kell deklarálja a kiindulási modelleket alkalmazhatnak azonosítója. Ha csak megadja a nyelvi modell (és nem akusztikai modell-azonosító), egy megfelelő akusztikai modell automatikusan ki van jelölve. Ha csak egy akusztikai modell Azonosítóját adja meg, akkor a megfelelő nyelvi modell automatikusan ki van jelölve.
-
-### <a name="supported-storage"></a>Tároló
-
-Jelenleg csak az Azure Blob storage használata támogatott.
 
 ## <a name="download-the-sample"></a>A minta letöltése
 

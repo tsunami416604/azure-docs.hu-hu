@@ -1,6 +1,6 @@
 ---
 title: Az Azure Monitor riasztások hibaelhárítása |} A Microsoft Docs
-description: Gyakori problémák, a hibák és a megoldás a log riasztási szabályok az Azure-ban.
+description: Gyakori problémák, hibák, és az Azure-beli naplóriasztási szabály megoldására.
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: aa42e8975432de8ca489cf9b1b6dd509c9fb01c1
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 0c7189f1d43a114532b30b0c1aabe6f7cd4402d8
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005306"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578713"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Az Azure Monitor riasztások hibaelhárítása  
 
@@ -25,7 +25,6 @@ Az előfizetési időszak **Naplóriasztások** ismerteti, hogy a napló lekérd
 
 > [!NOTE]
 > Ez a cikk nem tekinti esetekben, amikor az Azure Portalon látható és a szabály által aktivált riasztás és a egy társított művelet (ok) ban által végrehajtott értesítést. Ezekben az esetekben, olvassa el a részleteket a cikkben a [Műveletcsoportok](../platform/action-groups.md).
-
 
 ## <a name="log-alert-didnt-fire"></a>Riasztás nem aktiválódik.
 
@@ -92,9 +91,94 @@ Például, ha a riasztási szabály úgy van beállítva, ha analytics-lekérdez
 
 ### <a name="alert-query-output-misunderstood"></a>Böngésző riasztási lekérdezés kimenete
 
-A logic a log analytics-lekérdezések riasztásokhoz adja meg. Az elemzési lekérdezés big data- és matematikai függvények használhatja.  A riasztási szolgáltatás megadott időszakra vonatkozó adatokat tartalmazó megadott időközönként hajtja végre a lekérdezést. A riasztási szolgáltatás lehetővé teszi, hogy a megadott lekérdezés változás is történt a kiválasztott riasztási típus alapján. Ez látható a "Lekérdezés futtatandó" szakaszában *jellogika konfigurálása* képernyőn, ahogy az alábbi: ![Végrehajtandó lekérdezés](media/alert-log-troubleshoot/LogAlertPreview.png)
+A logic a log analytics-lekérdezések riasztásokhoz adja meg. Az elemzési lekérdezés big data- és matematikai függvények használhatja.  A riasztási szolgáltatás megadott időszakra vonatkozó adatokat tartalmazó megadott időközönként hajtja végre a lekérdezést. A riasztási szolgáltatás lehetővé teszi, hogy a megadott lekérdezés változás is történt a kiválasztott riasztási típus alapján. Ez a változás a "Lekérdezés futtatandó" szakaszában tekinthet meg *jellogika konfigurálása* képernyőn, ahogy az alábbi: ![Végrehajtandó lekérdezés](media/alert-log-troubleshoot/LogAlertPreview.png)
 
 Mi látható az **végrehajtandó lekérdezés** mező el a napló riasztási szolgáltatás futtatható. A megadott lekérdezés, valamint a timespan keresztül futtathatja [Analytics-portál](../log-query/portals.md) vagy a [szövegelemzési API](https://docs.microsoft.com/rest/api/loganalytics/) Ha szeretné-e megismerni, mi a riasztási lekérdezés kimeneti lehet, mielőtt ténylegesen a riasztás létrehozásához.
+
+## <a name="log-alert-was-disabled"></a>Riasztás le lett tiltva.
+
+Az alábbiakban néhány ok, ami [riasztási szabály az Azure monitorban](../platform/alerts-log.md) Azure Monitor letilthatja.
+
+### <a name="resource-on-which-alert-was-created-no-longer-exists"></a>Erőforrás, amelyen a riasztás létrehozása már nem létezik
+
+Az Azure monitorban létrehozott naplóriasztási szabályok a céloznia egy adott erőforrás, például egy Azure Log Analytics-munkaterületet, az Azure Application Insights alkalmazást és Azure-erőforrás. És a naplózási riasztási szolgáltatás futtassa a megadott cél a szabályban megadott elemzési lekérdezés. Azonban a szabály létrehozása után a felhasználók folytassa az Azure-ból törlésére vagy áthelyezésére az Azure-ban – a riasztási szabály célját belül. A riasztási szabály célját már nem érvényes, mert a szabály végrehajtása sikertelen lesz.
+
+Ezekben az esetekben az Azure Monitor a riasztás letiltásához, és győződjön meg, hogy az ügyfelek nem lesznek számlázva szükségtelen, ha a szabály maga nem hajtható végre, folyamatosan jelentős ideig például hetente. A pontos idő, amikor a riasztási szabály letiltotta az Azure Monitor segítségével a felhasználók talál [Azure-tevékenységnapló](../../azure-resource-manager/resource-group-audit.md). Az Azure-tevékenységnapló a riasztási szabály le van tiltva, az Azure-ban, ha új esemény kerül az Azure-tevékenységnapló.
+
+A riasztási szabály letiltása miatt a folyamatos; az Azure-tevékenységnapló minta-esemény Az alábbiakban látható.
+
+```json
+{
+    "caller": "Microsoft.Insights/ScheduledQueryRules",
+    "channels": "Operation",
+    "claims": {
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn": "Microsoft.Insights/ScheduledQueryRules"
+    },
+    "correlationId": "abcdefg-4d12-1234-4256-21233554aff",
+    "description": "Alert: test-bad-alerts is disabled by the System due to : Alert has been failing consistently with the same exception for the past week",
+    "eventDataId": "f123e07-bf45-1234-4565-123a123455b",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "Administrative",
+        "localizedValue": "Administrative"
+    },
+    "eventTimestamp": "2019-03-22T04:18:22.8569543Z",
+    "id": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<ResourceGroup>/PROVIDERS/MICROSOFT.INSIGHTS/SCHEDULEDQUERYRULES/TEST-BAD-ALERTS",
+    "level": "Informational",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Insights/ScheduledQueryRules/disable/action",
+        "localizedValue": "Microsoft.Insights/ScheduledQueryRules/disable/action"
+    },
+    "resourceGroupName": "<Resource Group>",
+    "resourceProviderName": {
+        "value": "MICROSOFT.INSIGHTS",
+        "localizedValue": "Microsoft Insights"
+    },
+    "resourceType": {
+        "value": "MICROSOFT.INSIGHTS/scheduledqueryrules",
+        "localizedValue": "MICROSOFT.INSIGHTS/scheduledqueryrules"
+    },
+    "resourceId": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<ResourceGroup>/PROVIDERS/MICROSOFT.INSIGHTS/SCHEDULEDQUERYRULES/TEST-BAD-ALERTS",
+    "status": {
+        "value": "Succeeded",
+        "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2019-03-22T04:18:22.8569543Z",
+    "subscriptionId": "<SubscriptionId>",
+    "properties": {
+        "resourceId": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<ResourceGroup>/PROVIDERS/MICROSOFT.INSIGHTS/SCHEDULEDQUERYRULES/TEST-BAD-ALERTS",
+        "subscriptionId": "<SubscriptionId>",
+        "resourceGroup": "<ResourceGroup>",
+        "eventDataId": "12e12345-12dd-1234-8e3e-12345b7a1234",
+        "eventTimeStamp": "03/22/2019 04:18:22",
+        "issueStartTime": "03/22/2019 04:18:22",
+        "operationName": "Microsoft.Insights/ScheduledQueryRules/disable/action",
+        "status": "Succeeded",
+        "reason": "Alert has been failing consistently with the same exception for the past week"
+    },
+    "relatedEvents": []
+}
+```
+
+### <a name="query-used-in-log-alert-is-not-valid"></a>A napló riasztási használt lekérdezés nem érvényes
+
+Minden egyes létrehozott a konfigurálás részeként az Azure Monitor riasztási szabály adjon meg egy analytics-lekérdezés a riasztási szolgáltatás rendszeres időközönként hajtja végre. Míg az elemzési lekérdezés előfordulhat, hogy helyes szintaxis a szabály létrehozásakor vagy frissítésekor idején. Néhány eset egy időszakon belül, a lekérdezés adja meg a naplóban lévő riasztási szabály szintaxishibát fejlesztheti és hatására a szabály végrehajtásának indítása sikertelen. Néhány miért egy riasztási szabály megadott analytics lekérdezési nyelven fejleszthet hibák leggyakoribb okai a következők:
+
+- Lekérdezés írt [több erőforrást futtathatja](../log-query/cross-workspace-query.md) és a egy vagy több, a megadott erőforrás már nem létezik.
+- Nincs az adatfolyam az analytics platform, amely miatt már nem a [lekérdezés-végrehajtás biztosít hiba](https://dev.loganalytics.io/documentation/Using-the-API/Errors) , nem szerepel megjeleníthető adat a megadott lekérdezés.
+- Változások a [lekérdezési nyelv](https://docs.microsoft.com/azure/kusto/query/) rendelkezik a következő parancsokat, és funkciók módosított formában. Ezért a korábban megadott lekérdezés a riasztási szabály már nem érvényes.
+
+A kell lennie figyelmezteti a felhasználót a ezt a viselkedést először keresztül [az Azure Advisor](../../advisor/advisor-overview.md). Egy javaslat a konkrét naplófájlokból riasztási szabály az Azure Advisor, a közepes hatású és leírás szerint "A napló riasztási szabályt, hogy a figyelés javításnak" magas rendelkezésre állású kategóriában lesz hozzáadva. Ha az Azure Advisor biztosító ajánlott érték hét nap után a megadott riasztási szabály a riasztási lekérdezés nem javítani. Ezután az Azure Monitor a riasztás letiltásához, és győződjön meg, hogy az ügyfelek nem lesznek számlázva szükségtelen, ha a szabály maga nem hajtható végre, folyamatosan jelentős ideig például hetente.
+
+A pontos idő, amikor a riasztási szabály letiltotta az Azure Monitor segítségével a felhasználók talál [Azure-tevékenységnapló](../../azure-resource-manager/resource-group-audit.md). Az Azure-tevékenységnapló Ha a riasztási szabály le van tiltva, az Azure - esemény kerül be a Azure-tevékenységnapló.
 
 ## <a name="next-steps"></a>További lépések
 

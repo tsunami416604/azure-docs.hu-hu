@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/18/2019
+ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 45224b1b0ec4a4b3c93393c178f1f03baa58e10b
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: ff5c8c4d3f6a0c87afae67404a5a39d4fe3757d9
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189138"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571084"
 ---
 # <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 
@@ -36,17 +36,18 @@ Az Azure virtuális hálózati TAP (Terminálszolgáltatások hozzáférési pon
 - [Big Data típusú kapcsoló big Data típusú a Fabric figyelése](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
 - [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
+- [Nubeva Prizmákkal](https://www.nubeva.com/azurevtap)
 
 ### <a name="security-analytics-networkapplication-performance-management"></a>Biztonsági elemzés, hálózati és alkalmazásteljesítmény-felügyelet
 
 - [Biztonsági ébren](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Cisco Stealthwatch felhő](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
+- [Darktrace](https://www.darktrace.com/en/azure/)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
 - [Fidelis Kiberbiztonsági](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
-- [Nubeva Prizmákkal](https://www.nubeva.com/azurevtap)
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
@@ -56,7 +57,7 @@ A következő kép bemutatja hogyan virtuális hálózati TAP működik. Egy KOP
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt létrehozna egy virtuális hálózati TAP, kell érkezett, hogy regisztrált az előzetes verzióban érhető el, és a egy vagy több virtuális gép használatával létrehozott megerősítést kérő e [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) üzembe helyezési modell és a egy partner a megoldás a KOPPINTSON forgalom WestCentralUS régió összesítéséhez szükséges tartományt. Ha a virtuális hálózat nem rendelkezik egy partneri megoldás, [partneri megoldások](#virtual-network-tap-partner-solutions) üzembe helyez egyet. Az azonos virtuális hálózatban a forgalom összesítéséhez erőforrás KOPPINTSON az azonos vagy eltérő előfizetésekben lévő több hálózati adapterrel is használhatja. Ha a figyelt hálózati adapterek különböző előfizetésekhez tartoznak, az előfizetések ugyanahhoz az Azure Active Directory-bérlőhöz társított kell lennie. Ezenkívül a figyelt hálózati adapterek és a cél-végpont, KOPPINTSON a forgalom összesítéséhez szükséges lehet az ugyanazon régióban lévő virtuális társhálózaton belüli. Az üzemi modell használatakor győződjön meg arról, hogy a [virtuális hálózatok közötti társviszony](virtual-network-peering-overview.md) engedélyezve van a virtuális hálózati TAP konfigurálása előtt.
+Mielőtt létrehozna egy virtuális hálózati TAP, kell érkezett, hogy regisztrált az előzetes verzióban érhető el, és a egy vagy több virtuális gép használatával létrehozott megerősítést kérő e [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) üzembe helyezési modell és a egy partner ugyanazon azure-régióban a KOPPINTSON a forgalom összesítéséhez szükséges megoldás. Ha a virtuális hálózat nem rendelkezik egy partneri megoldás, [partneri megoldások](#virtual-network-tap-partner-solutions) üzembe helyez egyet. Az azonos virtuális hálózatban a forgalom összesítéséhez erőforrás KOPPINTSON az azonos vagy eltérő előfizetésekben lévő több hálózati adapterrel is használhatja. Ha a figyelt hálózati adapterek különböző előfizetésekhez tartoznak, az előfizetések ugyanahhoz az Azure Active Directory-bérlőhöz társított kell lennie. Ezenkívül a figyelt hálózati adapterek és a cél-végpont, KOPPINTSON a forgalom összesítéséhez szükséges lehet az ugyanazon régióban lévő virtuális társhálózaton belüli. Az üzemi modell használatakor győződjön meg arról, hogy a [virtuális hálózatok közötti társviszony](virtual-network-peering-overview.md) engedélyezve van a virtuális hálózati TAP konfigurálása előtt.
 
 ## <a name="permissions"></a>Engedélyek
 

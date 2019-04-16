@@ -10,18 +10,25 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1abf3fd5ca678f878e36e3df3f8da0c0e0b5f852
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: e58205e847dbfdae8a114221f9bd56102555eeef
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528135"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579155"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.  Az SDK teljes leírását látogasson el a referenciadokumentumai:
 + Az Azure Machine Learning [ **fő SDK a Pythonhoz**](https://aka.ms/aml-sdk)
 + Az Azure Machine Learning [ **adat-előkészítési SDK**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-04-15"></a>2019-04-15
+
+### <a name="azure-portal"></a>Azure Portal
+  + Egy meglévő parancsfájl futtatása egy meglévő távoli számítási fürtön most küldje el újra. 
+  + A folyamatok lapon új paraméterekkel most már futtathatja egy közzétett folyamatot. 
+  + Futtatás részletei mostantól támogatja az egy új fájl pillanatfelvételt. A könyvtár pillanatképet egy adott Futtatás elküldésekor tekintheti meg. A notebook, indítsa el a futtató el lett küldve is letöltheti.
 
 ## <a name="2019-04-08"></a>2019-04-08
 
@@ -49,6 +56,7 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
   + Adattípus észlelése oszlop típusú oszlopok hosszú támogatja.
   + Kijavítva a hiba, ahol egyes dátumértékeket is jelenik meg időbélyegeket Python datetime objektumok helyett.
   + Kijavítva a hiba, ahol bizonyos típusú számát is jelenik meg helyett egész számok Double típusú értékekkel.
+
   
 ## <a name="2019-03-25"></a>2019-03-25
 

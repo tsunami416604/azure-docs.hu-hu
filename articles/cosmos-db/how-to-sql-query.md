@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8e5c281a8a8b6c0b48f18bf247b451bf61a7e9dc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 04a88558e3aea33c6d99bd0e4f1354c4316f5529
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263043"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579215"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL lekérdezési példák
 
@@ -484,15 +484,15 @@ Használhatja a tulajdonság hivatkozások a lekérdezésekben. Ha például `SE
 
 Az alábbi táblázat egyenlőségi összehasonlítás eredménye minden két JSON-típusok között az SQL API-ban.
 
-| **Op** | **Nem definiált** | **Null** | **Logikai** | **Szám** | **String** | **Objektum** | **Tömb** |
+| **Op** | **Nincs definiálva** | **NULL** | **Logikai érték** | **Szám** | **Karakterlánc** | **Object** | **Pole** |
 |---|---|---|---|---|---|---|---|
-| **Nem definiált** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Nem definiált |
-| **Null** | Nem definiált | **OK** | Nem definiált | Meghatározatlan | Meghatározatlan | Meghatározatlan | Nem definiált |
-| **Logikai** | Nem definiált | Nem definiált | **OK** | Nem definiált | Meghatározatlan | Meghatározatlan | Nem definiált |
-| **Szám** | Nem definiált | Meghatározatlan | Nem definiált | **OK** | Nem definiált | Meghatározatlan | Nem definiált |
-| **String** | Nem definiált | Meghatározatlan | Meghatározatlan | Nem definiált | **OK** | Nem definiált | Nem definiált |
-| **Objektum** | Nem definiált | Meghatározatlan | Meghatározatlan | Meghatározatlan | Nem definiált | **OK** | Nem definiált |
-| **Tömb** | Nem definiált | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Nem definiált | **OK** |
+| **Nincs definiálva** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan |
+| **NULL** | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan |
+| **Logikai érték** | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan |
+| **Szám** | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan | Meghatározatlan |
+| **Karakterlánc** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan | Meghatározatlan |
+| **Object** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** | Meghatározatlan |
+| **Pole** | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | Meghatározatlan | **oké** |
 
 Az összehasonlító operátorok például `>`, `>=`, `!=`, `<`, és `<=`, típusában vagy a kettő közötti összehasonlítás objektumok vagy észszerűek Tárolótömböket `Undefined`.  
 
@@ -508,7 +508,7 @@ Logikai operátorok a logikai értékek művelethez. Az alábbi táblázatokban 
 | --- | --- | --- | --- |
 | True (Igaz) |True (Igaz) |True (Igaz) |True (Igaz) |
 | False (Hamis) |True (Igaz) |False (Hamis) |Meghatározatlan |
-| Meghatározatlan |True (Igaz) |Meghatározatlan |Nem definiált |
+| Meghatározatlan |True (Igaz) |Meghatározatlan |Meghatározatlan |
 
 **ÉS operátor**
 
@@ -516,7 +516,7 @@ Logikai operátorok a logikai értékek művelethez. Az alábbi táblázatokban 
 | --- | --- | --- | --- |
 | True (Igaz) |True (Igaz) |False (Hamis) |Meghatározatlan |
 | False (Hamis) |False (Hamis) |False (Hamis) |False (Hamis) |
-| Meghatározatlan |Meghatározatlan |False (Hamis) |Nem definiált |
+| Meghatározatlan |Meghatározatlan |False (Hamis) |Meghatározatlan |
 
 **NOT operátor**
 
@@ -1247,7 +1247,7 @@ A típus ellenőrzése függvények ellenőrizheti egy SQL-lekérdezésben lév�
 | [IS_OBJECT (kifejezés)](sql-api-query-reference.md#bk_is_object) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy JSON-objektumot ad vissza. |
 | [IS_STRING (kifejezés)](sql-api-query-reference.md#bk_is_string) | Egy logikai érték, amely azt jelzi, ha az érték típusa egy karakterláncot ad vissza. |
 | [IS_DEFINED (kifejezés)](sql-api-query-reference.md#bk_is_defined) | Jelzi, ha a tulajdonság hozzá lett rendelve egy érték logikai érték beolvasása. |
-| [IS_PRIMITIVE (expr)](sql-api-query-reference.md#bk_is_primitive) | Adja vissza egy logikai érték, amely azt jelzi, ha az érték típusa egy karakterlánc, szám, logikai vagy null. |
+| [IS_PRIMITIVE (kifejezés)](sql-api-query-reference.md#bk_is_primitive) | Adja vissza egy logikai érték, amely azt jelzi, ha az érték típusa egy karakterlánc, szám, logikai vagy null. |
 
 Ezek a függvények használatával, az alábbi példához hasonlóan lekérdezéseket is futtathat:
 
@@ -1267,7 +1267,7 @@ A következő skaláris függvények végrehajtania egy műveletet a bemeneti ka
 
 | Használat | Leírás |
 | --- | --- |
-| [A hossz (str_expr)](sql-api-query-reference.md#bk_length) | A megadott karakterlánc-kifejezés karakterek számát adja vissza. |
+| [LENGTH (str_expr)](sql-api-query-reference.md#bk_length) | A megadott karakterlánc-kifejezés karakterek számát adja vissza. |
 | [CONCAT (str_expr, str_expr [, str_expr])](sql-api-query-reference.md#bk_concat) | Legalább két karakterlánc-értékek összetűzésének eredménye karakterláncként adja vissza. |
 | [KARAKTERLÁNCRÉSZLET (str_expr, num_expr, num_expr)](sql-api-query-reference.md#bk_substring) | Egy karakterlánc-kifejezés részét adja vissza. |
 | [STARTSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_startswith) | Adja vissza egy logikai jelzi-e az első karakterlánc-kifejezés második kezdődik. |
@@ -1281,7 +1281,7 @@ A következő skaláris függvények végrehajtania egy műveletet a bemeneti ka
 | [ALSÓ (str_expr)](sql-api-query-reference.md#bk_lower) | Egy karakterlánc-kifejezés nagybetűt adatok átalakítása kisbetűvé után adja vissza. |
 | [FELSŐ (str_expr)](sql-api-query-reference.md#bk_upper) | Egy karakterlánc-kifejezés után kisbetűt adatok nagybetűssé alakításával adja vissza. |
 | [Cserélje le a (str_expr, str_expr, str_expr)](sql-api-query-reference.md#bk_replace) | A megadott karakterlánc értéket az összes előfordulását lecseréli egy másik karakterláncérték. |
-| [REPLICATE (str_expr, num_expr)](sql-api-query-reference.md#bk_replicate) | Egy karakterláncértéket a megadott számú alkalommal ismétlődik. |
+| [REPLIKÁLÁS (str_expr, num_expr)](sql-api-query-reference.md#bk_replicate) | Egy karakterláncértéket a megadott számú alkalommal ismétlődik. |
 | [FORDÍTOTT (str_expr)](sql-api-query-reference.md#bk_reverse) | A karakterlánc-érték megfelelő sorrendben adja vissza. |
 
 Ezek a függvények használatával, például a következőképpen, amely visszaadja a család lekérdezéseket is futtathat `id` nagybetűs:
@@ -1714,7 +1714,7 @@ A következő példa bemutatja az illesztések, LINQ keresztül `SelectMany`.
 
 A .NET-ügyfél automatikusan végighalad a lekérdezési eredményeket minden oldalát a `foreach` blokkolja, az előző példában látható módon. A lekérdezési beállítások rendszerben bevezetett a [REST API-val](#RestAPI) szakaszban is rendelkezésre állnak a .NET SDK használatával a `FeedOptions` és `FeedResponse` osztályoknak a `CreateDocumentQuery` metódus. A lapok száma segítségével szabályozhatja a `MaxItemCount` beállítás.
 
-Explicit módon is szabályozhatja, lapozási létrehozásával `IDocumentQueryable` használatával a `IQueryable` objektumot, majd olvassa el a` ResponseContinuationToken` értékeket, és átadja azokat a biztonsági másolatot `RequestContinuationToken` a `FeedOptions`. Beállíthat `EnableScanInQuery` vizsgálatok engedélyezéséhez, ha a lekérdezés a konfigurált indexelési szabályzat által nem támogatott. A particionált tárolók használhatja `PartitionKey` a lekérdezés futtatásához egy olyan partíciót, bár az Azure Cosmos DB automatikusan kinyerheti az Ez a lekérdezés szövege a. Használhat `EnableCrossPartitionQuery` több partíciót irányuló lekérdezések futtatása.
+Explicit módon is szabályozhatja, lapozási létrehozásával `IDocumentQueryable` használatával a `IQueryable` objektumot, majd olvassa el a `ResponseContinuationToken` értékeket, és átadja azokat a biztonsági másolatot `RequestContinuationToken` a `FeedOptions`. Beállíthat `EnableScanInQuery` vizsgálatok engedélyezéséhez, ha a lekérdezés a konfigurált indexelési szabályzat által nem támogatott. A particionált tárolók használhatja `PartitionKey` a lekérdezés futtatásához egy olyan partíciót, bár az Azure Cosmos DB automatikusan kinyerheti az Ez a lekérdezés szövege a. Használhat `EnableCrossPartitionQuery` több partíciót irányuló lekérdezések futtatása.
 
 .NET minták további lekérdezésekkel, tekintse meg a [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet) a Githubon.
 
@@ -2101,7 +2101,7 @@ A szintaxis `input.SelectMany(x=>x.Q())` ahol `Q` van egy `Select`, `SelectMany`
 
 Egy beágyazott lekérdezésen egyes elemei a külső tároló a belső lekérdezés vonatkozik. A rendszer egyik fontos szolgáltatása, hogy a belső lekérdezés a külső tárolóban, például a önillesztés elem mezőire hivatkozhat.
 
-**Nesting, example 1:**
+**A beágyazási, 1. példa:**
 
 - **LINQ lambda kifejezés**
   
@@ -2118,7 +2118,7 @@ Egy beágyazott lekérdezésen egyes elemei a külső tároló a belső lekérde
       JOIN p IN f.parents
   ```
 
-**Nesting, example 2:**
+**A beágyazási, 2. példa:**
 
 - **LINQ lambda kifejezés**
   
@@ -2136,7 +2136,7 @@ Egy beágyazott lekérdezésen egyes elemei a külső tároló a belső lekérde
       WHERE c.familyName = "Jeff"
   ```
 
-**Nesting, example 3:**
+**A beágyazási, 3. példa:**
 
 - **LINQ lambda kifejezés**
   
@@ -2169,7 +2169,7 @@ Egy beágyazott lekérdezésen egyes elemei a külső tároló a belső lekérde
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure Cosmos DB bemutatása][introduction]
-- [Azure Cosmos DB .NET samples](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmosdb-dotnet)
 - [Az Azure Cosmos DB konzisztenciaszintjeinek][consistency-levels]
 
 [1]: ./media/how-to-sql-query/sql-query1.png

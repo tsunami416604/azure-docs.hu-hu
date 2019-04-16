@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afcfd8c581ad1707a996ae5bd0c3706179ddb0e4
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.openlocfilehash: 1150e68167ad4e932acce744cdd5eba88e49a8c4
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505347"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579461"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: Bejelentkezés Microsoft-hozzáadása az ASP.NET Core-webalkalmazás
 
@@ -55,9 +55,9 @@ Ebben a rövid útmutatóban megtudhatja, hogyan bejelentkezhet az ASP.NET Core-
 > 1. Válassza ki **új regisztrációs**.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `AspNetCore-Quickstart`).
->    - A **válasz URL-cím**, adjon hozzá `https://localhost:44321/`, és válassza ki **regisztrálása**.
+>    - A **átirányítási URI-t**, adjon hozzá `https://localhost:44321/`, és válassza ki **regisztrálása**.
 > 1. Válassza ki a **hitelesítési** menüben, majd adja hozzá a következő információkat:
->    - A **válasz URL-cím**, adjon hozzá `https://localhost:44321/signin-oidc`, és válassza ki **regisztrálása**.
+>    - A **átirányítási URI-k**, adjon hozzá `https://localhost:44321/signin-oidc`, és válassza ki **mentése**.
 >    - Az a **speciális beállítások** szakaszában **kijelentkezési URL-címe** való `https://localhost:44321/signout-oidc`.
 >    - A **típusú Implicit engedélyezés**, ellenőrizze **azonosító-jogkivonatokat**.
 >    - Kattintson a **Mentés** gombra.
@@ -66,14 +66,14 @@ Ebben a rövid útmutatóban megtudhatja, hogyan bejelentkezhet az ASP.NET Core-
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
 > A kódminta működjön ez a rövid útmutató, a válasz URL-címek, hozzá kell `https://localhost:44321/` és `https://localhost:44321/signin-oidc`, adja hozzá a kijelentkezési URL-cím `https://localhost:44321/signout-oidc`, és a kérelem azonosító-jogkivonatokat állít ki, az engedélyezési végponton.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [A módosítás végrehajtása nekem]()
+> > [A módosítás alkalmazása]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Már be van állítva](media/quickstart-v2-aspnet-webapp/green-check.png) az alkalmazás ezekkel az attribútumokkal van konfigurálva.
+> > ![Már konfigurált](media/quickstart-v2-aspnet-webapp/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>2. lépés: Az ASP.NET Core-projekt letöltése
 
-- [Töltse le a Visual Studio 2017-megoldás](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+- [A Visual Studio 2017-megoldás letöltése](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
 
@@ -91,8 +91,8 @@ Ebben a rövid útmutatóban megtudhatja, hogyan bejelentkezhet az ASP.NET Core-
 > - `Enter_the_Application_Id_here` -a a **Alkalmazásazonosítót (ügyfél)** az alkalmazás az Azure Portalon regisztrálta. Annak **Alkalmazásazonosítót (ügyfél)** az alkalmazás **áttekintése** lapot.
 > - `Enter_the_Tenant_Info_Here` -a következő lehetőségek egyike:
 >   - Ha az alkalmazás támogatja a **fiókok csak a szervezeti könyvtárban található**, cserélje le ezt az értéket a **Bérlőazonosító** vagy **bérlőnevet** (például contoso.microsoft.com)
->   - Ha az alkalmazás támogatja a **bármely szervezeti directory fiókok**, cserélje le ezt az értéket `organizations`
->   - Ha az alkalmazás támogatja a **minden Microsoft-fiókok felhasználóinak**, cserélje le ezt az értéket `common`
+>   - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot** támogat, ezt az értéket az `organizations` értékre cserélje le
+>   - Ha az alkalmazás **minden Microsoft-fiókfelhasználót** támogat, ezt az értéket a `common` értékre cserélje le
 >
 > > [!TIP]
 > > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
@@ -148,7 +148,8 @@ A sor tartalmazó `.AddAzureAd` a Microsoft identity platform hitelesítés hozz
 
 
 > [!NOTE]
-> Beállítás `ValidateIssuer = false` van ebben a rövid útmutatóban egyszerűsítését. Valós alkalmazások érvényesítenie kell a kibocsátó megtudhatja, hogyan valósítható meg mintáiban találhat.
+> Beállítás `ValidateIssuer = false` van ebben a rövid útmutatóban egyszerűsítését. A valódi alkalmazások a kibocsátó ellenőrizni kell.
+> Tekintse meg a mintákat, megtudhatja, hogyan valósítható meg.
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Egy vezérlő vagy egy vezérlő metódusának védelme
 

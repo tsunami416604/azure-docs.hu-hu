@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 85c51320d2be1eac540f1d14910927c0fdccef64
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 2c5c2bc2b8dd1930efef9833bd442fcad5566e2a
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549505"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578781"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az szöveg-hang transzformációs?
 
@@ -53,10 +53,7 @@ Ez a táblázat felsorolja a szöveg-hang transzformációs alapvető funkciói:
 | Létrehozhat és kezelhet hangalapú betűtípus teszteket. | Nem | igen\* |
 | Előfizetések kezelése. | Nem | igen\* |
 
-\* *Ezek a szolgáltatások érhetők el a cris.ai végpont használatával. Lásd: [referencia Swagger](https://westus.cris.ai/swagger/ui/index).*
-
-> [!NOTE]
-> Az egyéni beszédfelismerési végpontokat szabályozást alkalmaznak, amely korlátozza a kérelmek 25, 5 másodpercenként. Szabályozás akkor fordul elő, ha értesítést is üzenetfejlécekben keresztül.
+\* *Ezek a szolgáltatások érhetők el a cris.ai végpont használatával. Lásd: [referencia Swagger](https://westus.cris.ai/swagger/ui/index). Ezek egyéni beszédfelismerési képzés és a felügyeleti API-k szabályozást alkalmaznak, hogy korlátok kérelmek 25, 5 másodpercenként, amíg a beszédszintézishez magát API valósítja meg, szabályozás, amely lehetővé teszi, hogy 200 kérelmek / másodperc, a legmagasabb. Szabályozás akkor fordul elő, ha értesítést is üzenetfejlécekben keresztül.*
 
 ## <a name="get-started-with-text-to-speech"></a>Szöveg-beszéd átalakítás használatának első lépései
 

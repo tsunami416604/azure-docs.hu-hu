@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b247338bbb1f20082fdef2a2bc291fb6183b10
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 8bc2acaa24637c3297af8e91f01b67e5d30f2931
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493059"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577967"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Jelentéskészítési lehetőségek az Azure AD-jelszókezelés
 
@@ -50,15 +50,14 @@ Az Azure portal felületének a továbbfejlesztettük, hogy megtekintheti a jels
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 2. Válassza ki **minden szolgáltatás** a bal oldali panelen.
 3. Keresse meg **Azure Active Directory** a szolgáltatások listájában, és jelölje ki.
-4. Válassza a **Felhasználók és csoportok** elemet.
-5. Válassza ki **Auditnaplók** származó a **felhasználók és csoportok** menü. Ez bemutatja, az összes naplózási esemény történt a címtárban szereplő összes felhasználó ellen. Ez a nézet a jelszóval kapcsolatos események megtekintéséhez szűrheti.
-6. Ez a nézet megtekintéséhez, csak a jelszó alaphelyzetbe állítása kapcsolatos események szűréséhez válassza a **szűrő** gombra a panel tetején.
-7. Az a **szűrő** menüben válassza a **kategória** legördülő listában, és módosítsa a **önkiszolgáló jelszókezelés** kategória típusa.
-8. Szükség esetén a lista további szűréséhez válassza ki az adott **tevékenység** érdekli.
+4. Válassza ki **felhasználók** , a kezelés szakaszhoz.
+5. Válassza ki **Auditnaplók** származó a **felhasználók** panelen. Ez bemutatja, az összes naplózási esemény történt a címtárban szereplő összes felhasználó ellen. Ez a nézet a jelszóval kapcsolatos események megtekintéséhez szűrheti.
+6. Az a **szűrő** menü felső részén a panelt, válassza a **szolgáltatás** legördülő listában, és módosítsa a **önkiszolgáló jelszókezelés** szolgáltatás típusa.
+7. Szükség esetén a lista további szűréséhez válassza ki az adott **tevékenység** érdekli.
 
 ### <a name="converged-registration-preview"></a>Konvergens regisztrációs (előzetes verzió)
 
-Ha részvételével konvergens regisztráció a nyilvános előzetes verzióban, felhasználói tevékenységet a naplók kapcsolatos információkat fogja találni a kategóriához tartozó **hitelesítési módszerek**.
+Ha részvételével konvergens regisztráció a nyilvános előzetes verzióban, felhasználói tevékenységet a naplók kapcsolatos információkat a szolgáltatás alatt találhatók **hitelesítési módszerek**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Az Azure Portalon a jelentési oszlopok leírása
 
@@ -179,13 +178,13 @@ Az alábbi lista ismerteti ezt a tevékenységet, részletesen:
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
 * [Új jelszó kérése vagy jelszó módosítása](../user-help/active-directory-passwords-update-your-own-password.md).
 * [Regisztráció új jelszó önkiszolgáló kérésére](../user-help/active-directory-passwords-reset-register.md).
-* [Licencelési kérdése van?](concept-sspr-licensing.md)
+* [Kérdése van a licenceléssel kapcsolatban?](concept-sspr-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](concept-sspr-howitworks.md#authentication-methods)
 * [Mik az SSPR szabályzatbeállításai?](concept-sspr-policy.md)
-* [Mi a jelszóvisszaíró, és miért fontos információk?](howto-sspr-writeback.md)
-* [Mik azok az összes beállítás az SSPR-ben, és mire azok mean?](concept-sspr-howitworks.md)
-* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR?](active-directory-passwords-troubleshoot.md)
-* [Szeretnék feltenni egy kérdést, amely máshol nem szerepelt más](active-directory-passwords-faq.md)
+* [Mi a jelszóvisszaíró, és miért fontos?](howto-sspr-writeback.md)
+* [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
+* [Azt hiszem, hogy valami nem működik. Hogyan háríthatom el az SSPR hibáit?](active-directory-passwords-troubleshoot.md)
+* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Példa az SSPR aktivitásának vizsgálata naplózza az Azure ad-ben"

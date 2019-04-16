@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 9809584a3abe1d0cdde2cd6ccf90b48432d27c11
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 90ec7cf4964440d39b3f69eb9ae9708eaafe3748
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007846"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579036"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure virtuális gépeken SAP-alkalmazások
 
@@ -95,7 +95,8 @@ The NFS server, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and th
   * (A) részének kell lennie az összes virtuális gépek elsődleges hálózati adaptere csatlakozik SCS/SSZON fürt
 * Mintavételi Port
   * Port 620<strong>&lt;nr&gt;</strong>
-* Terheléselosztás szabályok
+* Betöltés 
+* terheléselosztási szabályok
   * 32<strong>&lt;nr&gt;</strong> TCP
   * 36<strong>&lt;nr&gt;</strong> TCP
   * 39<strong>&lt;nr&gt;</strong> TCP
@@ -112,7 +113,7 @@ The NFS server, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and th
   * (A) részének kell lennie az összes virtuális gépek elsődleges hálózati adaptere csatlakozik SCS/SSZON fürt
 * Mintavételi Port
   * Port 621<strong>&lt;nr&gt;</strong>
-* Terheléselosztás szabályok
+* Terheléselosztási szabályok
   * 33<strong>&lt;nr&gt;</strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
@@ -132,7 +133,8 @@ Az Azure Marketplace-en SUSE Linux Enterprise Server SAP alkalmazások 12, amely
 
 Használhatja a gyorsindítási sablonok egyikét a Githubon üzembe helyezéséhez szükséges összes erőforrást. A sablon üzembe helyezi a virtuális gépek, a terheléselosztó, a rendelkezésre állási csoport stb. Kövesse az alábbi lépéseket a sablon üzembe helyezéséhez:
 
-1. Nyissa meg a [ASCS/SCS több SID sablon] [ template-multisid-xscs] vagy a [sablon összevont] [ template-converged] csak az ASC/SCS-sablont hoz létre az Azure Portalon a terheléselosztási szabályok az SAP NetWeaver ASCS/SCS és SSZON példányok (csak Linux), mivel a konvergens sablon is létrehoz a terheléselosztási szabályok (például a Microsoft SQL Server vagy az SAP HANA) adatbázis. Ha azt tervezi, hogy az SAP NetWeaver-alapú rendszert telepíti, és az adatbázis telepítésével az azonos gépeken is érdemes a [sablon összevont][template-converged].
+1. Nyissa meg a [ASCS/SCS több SID sablon] [ template-multisid-xscs] vagy a [sablon összevont] [ template-converged] az Azure Portalon. 
+   Az ASCS/SCS-sablon a terheléselosztási szabályok csak az SAP NetWeaver ASCS/SCS és SSZON (csak Linux) hoz létre, mivel a konvergens sablon is létrehoz a terheléselosztási szabályok (például a Microsoft SQL Server vagy az SAP HANA) adatbázishoz. Ha azt tervezi, hogy az SAP NetWeaver-alapú rendszert telepíti, és az adatbázis telepítésével az azonos gépeken is érdemes a [sablon összevont][template-converged].
 1. Adja meg a következő paraméterek
    1. Erőforrás-előtag (csak a sablon ASCS/SCS több SID)  
       Adja meg a használni kívánt előtagot. Az érték előtagjaként is szolgál az üzembe helyezett erőforrásokat.
@@ -144,7 +146,7 @@ Használhatja a gyorsindítási sablonok egyikét a Githubon üzembe helyezésé
       Válasszon ki egy Linux-disztribúció. Ebben a példában válassza ki a SLES 12 saját
    6. Adatbázis típusa  
       Válassza ki a HANA
-   7. Az SAP-rendszer mérete  
+   7. Az SAP-rendszer mérete.  
       Az új rendszer biztosít SAP mennyisége. Ha nem, hogy a rendszer hány SAP, kérje meg, a SAP technológiai partnerek vagy a rendszerintegrátor
    8. Rendszer rendelkezésre állását  
       Válassza ki a magas rendelkezésre ÁLLÁS
@@ -198,7 +200,7 @@ Először a virtuális gépek az NFS-fürt létrehozásához. Ezt követően hoz
          1. Kattintson az OK gombra
       1. Port 621**02** ASCS SSZON számára
          * Ismételje meg a fenti lépéseket, és hozzon létre egy állapotmintát az on-felhasználók számára (például 621**02** és **a hp aers nw1**)
-   1. Terheléselosztás szabályok
+   1. Terheléselosztási szabályok
       1. 32**00** TCP ASCS használata
          1. Nyissa meg a terheléselosztó, terheléselosztási szabályok kiválasztása, és kattintson a Hozzáadás gombra
          1. Adja meg az új terheléselosztó-szabályt nevét (például **nw1-lb-3200**)
@@ -530,6 +532,8 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 1. **[1]**  Az SAP-fürt erőforrásainak létrehozása
 
+Ha sorba 1 kiszolgáló architektúra (ENSA1) használ, erőforrásokat határozzák meg a következő:
+
    <pre><code>sudo crm configure property maintenance-mode="true"
    
    sudo crm configure primitive rsc_sap_<b>NW1</b>_ASCS<b>00</b> SAPInstance \
@@ -556,7 +560,37 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
+  Sorba server 2, beleértve a replikációs állapot SAP északnyugati része 7.52 jelent meg az SAP támogatása. ABAP Platform 1809 kezdődő, 2. sorba kiszolgáló alapértelmezés szerint telepítve van. Tekintse meg az SAP Megjegyzés [2630416](https://launchpad.support.sap.com/#/notes/2630416) sorba 2 kiszolgáló támogatására.
+Ha sorba 2 kiszolgáló architektúra használatával ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), erőforrásokat határozzák meg a következő:
+
+<pre><code>sudo crm configure property maintenance-mode="true"
+   
+   sudo crm configure primitive rsc_sap_<b>NW1</b>_ASCS<b>00</b> SAPInstance \
+    operations \$id=rsc_sap_<b>NW1</b>_ASCS<b>00</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>NW1</b>_ASCS<b>00</b>_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS<b>00</b>_<b>nw1-ascs</b>" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000
+   
+   sudo crm configure primitive rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
+    operations \$id=rsc_sap_<b>NW1</b>_ERS<b>02</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b>" AUTOMATIC_RECOVER=false IS_ERS=true 
+   
+   sudo crm configure modgroup g-<b>NW1</b>_ASCS add rsc_sap_<b>NW1</b>_ASCS<b>00</b>
+   sudo crm configure modgroup g-<b>NW1</b>_ERS add rsc_sap_<b>NW1</b>_ERS<b>02</b>
+   
+   sudo crm configure colocation col_sap_<b>NW1</b>_no_both -5000: g-<b>NW1</b>_ERS g-<b>NW1</b>_ASCS
+   sudo crm configure order ord_sap_<b>NW1</b>_first_start_ascs Optional: rsc_sap_<b>NW1</b>_ASCS<b>00</b>:start rsc_sap_<b>NW1</b>_ERS<b>02</b>:stop symmetrical=false
+   
+   sudo crm node online <b>nw1-cl-0</b>
+   sudo crm configure property maintenance-mode="false"
+   </code></pre>
+
+  Ha Ön egy régebbi verzióból frissítése és sorba server 2 vált, tekintse meg az sap-jegyzetnek [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
+
    Győződjön meg arról, hogy a fürt állapota rendben, és elindulnak, hogy az összes erőforrás. Nem számít mely erőforrásokat futtató csomóponton.
+
 
    <pre><code>sudo crm_mon -r
    
@@ -958,7 +992,7 @@ A következő tesztek elvégzése a SUSE, az ajánlott eljárások útmutatók e
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Hozzon létre egy sorba zárolási szerint, például egy felhasználó a tranzakció su01 szerkesztésre. Futtassa a következő parancsokat, \<sapsid > adm a csomóponton, hol futnak az ASCS-példány. A parancsok a ASCS példány leáll, és indítsa el újra. A sorba zárolást várhatóan ebben a tesztben elvész.
+   Hozzon létre egy sorba zárolási szerint, például egy felhasználó a tranzakció su01 szerkesztésre. Futtassa a következő parancsokat, \<sapsid > adm a csomóponton, hol futnak az ASCS-példány. A parancsok a ASCS példány leáll, és indítsa el újra. Sorba 1 kiszolgáló architektúra használatával, ha a sorba zárolást várhatóan ebben a tesztben elvész. Ha sorba 2 kiszolgáló architektúra használatával, a sorba lesznek megőrizve. 
 
    <pre><code>nw1-cl-1:nw1adm 54> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>

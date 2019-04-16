@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
-ms.date: 08/08/2018
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 234d59f9d625af6d0309b2995cc734fad6028b1e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 60cd2d21167739e824489e30ebd187a5fc0cc12d
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767039"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579274"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Ismerkedés az Azure Automation Állapotkonfiguráció
 
@@ -27,7 +27,7 @@ Ez a cikk részletesen ismerteti az Azure Automation State Configuration haszná
 Ebben a cikkben szereplő példák elvégzéséhez a következőkre szükség:
 
 - Egy Azure Automation-fiókra. Azure Automation futtató fiók létrehozásával kapcsolatos információkért tekintse meg az [Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) kapcsolatos részt.
-- Egy Azure Resource Manager virtuális gép (nem klasszikus) futó Windows Server 2008 R2 vagy újabb. A virtuális gépek létrehozásával kapcsolatos információkért tekintse meg a [Windows virtuális gép létrehozása az Azure Portallal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) című cikket.
+- Egy Azure Resource Manager virtuális gép (nem klasszikus) fut egy [támogatott operációs rendszert](automation-dsc-overview.md#operating-system-requirements). A virtuális gépek létrehozásával kapcsolatos információkért tekintse meg a [Windows virtuális gép létrehozása az Azure Portallal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) című cikket.
 
 ## <a name="creating-a-dsc-configuration"></a>DSC-konfiguráció létrehozása
 
@@ -149,9 +149,9 @@ Használhatja az Azure Automation Állapotkonfiguráció kezelése az Azure virt
 1. Az a **virtuális gép** Részletek lap, kattintson a **+ Connect**.
 
    > [!IMPORTANT]
-   > Ez lehet egy Azure Resource Manager virtuális Gépen futó Windows Server 2008 R2 vagy újabb.
+   > Az Azure Resource Manager virtuális Gépet kell lennie egy [támogatott operációs rendszert](automation-dsc-overview.md#operating-system-requirements).
 
-1. Az a **regisztrációs** lapra, jelölje be a virtuális géphez a alkalmazni szeretné a csomópont-konfiguráció nevét a **csomópont-konfiguráció neve** mezőbe. Ezen a ponton nyújtó nevét nem kötelező. A hozzárendelt csomópont-konfigurációt a csomópont előkészítése után módosíthatja.
+2. Az a **regisztrációs** lapra, jelölje be a virtuális géphez a alkalmazni szeretné a csomópont-konfiguráció nevét a **csomópont-konfiguráció neve** mezőbe. Ezen a ponton nyújtó nevét nem kötelező. A hozzárendelt csomópont-konfigurációt a csomópont előkészítése után módosíthatja.
    Ellenőrizze **szükség esetén újraindítás csomópont**, majd kattintson a **OK**.
 
    ![A regisztrációs panelen – képernyőfelvétel](./media/automation-dsc-getting-started/RegisterVM.png)

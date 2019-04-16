@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: mihauss
 ms.subservice: blobs
-ms.openlocfilehash: 1166f98dcd39362ef5e28be12ff9e2f561ab5b1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 90ddb58f3499180e17df559a98ac8a46b53fb824
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238212"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579012"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>Az Azure CDN használatával HTTPS-kapcsolaton keresztül egyéni tartománnyal rendelkező blobok elérése
 
@@ -67,4 +67,4 @@ Az a [Azure CDN-díjszabást ismertető oldalon](https://azure.microsoft.com/pri
 ## <a name="next-steps"></a>További lépések
 
 * [A Blob storage-végpont egyéni tartománynév konfigurálása](storage-custom-domain-name.md)
-* [Statikus webhely üzemeltetése az Azure Storage (előzetes verzió)](storage-blob-static-website.md)
+* [Statikus webhely üzemeltetése az Azure Storage-ban](storage-blob-static-website.md)

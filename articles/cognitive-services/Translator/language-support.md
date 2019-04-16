@@ -10,18 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 5c41456f1cf661fd372a565885c9196593c894ee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3b938f07ef5b1feb9d5859f27423eaa79c2937cc
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267906"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577591"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
 A Translator Text API a következő nyelveket támogatja a szöveg a fordítás. Neurális gépi fordítás (NMT) magas színvonalú mesterséges Intelligenciával rendelkező gép fordítások új szabványa, és használja, a Translator Text API v3-as, akkor egy Neurális rendszeren érhető el az alapértelmezett érhető el.
 
 [További információ arról, hogyan működik a gépi fordítás](https://www.microsoft.com/translator/mt.aspx)
+
+## <a name="translation"></a>Fordítás
 
 **V2 Translator API**
 
@@ -121,15 +123,15 @@ A Transliterate módszer a következő nyelveket támogatja. A "/", a "<> –" a
 | héber | `he` | héber `Hebr` | <--> | Latin `Latn` |
 | hindi | `hi` | Devanagári `Deva` | <--> | Latin `Latn` |
 | japán | `ja` | japán `Jpan` | <--> | Latin `Latn` |
-| kannada | `kn` | kannada `Knda` | --> | Latin `Latn` |
+| kannada | `kn` | Kannada `Knda` | --> | Latin `Latn` |
 | malajálam | `ml` | malajálam `Mlym` | --> | Latin `Latn` |
 | maráthi | `mr` | Devanagári `Deva` | --> | Latin `Latn` |
-| orija | `or` | orija `Orya` | <--> | Latin `Latn` |
+| orija | `or` | Orija `Orya` | <--> | Latin `Latn` |
 | pandzsábi | `pa` | Gurmukhi `Guru`  | <--> | Latin `Latn`  |
 | szerb (cirill betűs) | `sr-Cyrl` | Cyrilice `Cyrl`  | --> | Latin `Latn` |
 | szerb (latin betűs) | `sr-Latn` | Latin `Latn` | --> | Cyrilice `Cyrl`|
 | tamil | `ta` | tamil `Taml` | --> | Latin `Latn` |
-| telugu | `te` | telugu `Telu` | --> | Latin `Latn` |
+| telugu | `te` | Telugu `Telu` | --> | Latin `Latn` |
 | thai | `th` | thai `Thai` | <--> | Latin `Latn` |
 
 ## <a name="dictionary"></a>Szótár
@@ -191,77 +193,8 @@ A szótár, vagy a Keresés és a példák módszerekkel angol a következő nye
 
 ## <a name="detect"></a>Detect
 
-Az észlelési módszer a következő nyelveket támogatja. Észleli a május azonosítani azokat a nyelveket, amelyek a Microsoft Translator nem fordítható le.
+A Translator Text API észleli az összes elérhető fordítás és átbetűzésű nyelvek.
 
-| Nyelv    |
-|:----------- |
-| afrikaans |
-| albán |
-| arab |
-| baszk |
-| belorusz |
-| bolgár |
-| katalán |
-| kínai |
-| kínai (egyszerűsített) |
-| kínai (hagyományos) |
-| horvát |
-| cseh |
-| dán |
-| holland |
-| Angol |
-| Esperanto |
-| észt |
-| finn |
-| francia |
-| galíciai |
-| német |
-| görög |
-| Haitian Creole |
-| héber |
-| hindi |
-| magyar |
-| izlandi |
-| indonéz |
-| ír |
-| olasz |
-| japán |
-| koreai |
-| Ázsiai Kurd (arab) |
-| Ázsiai Kurd (latin betűs) |
-| Latin |
-| lett |
-| litván |
-| macedón |
-| maláj |
-| máltai |
-| norvég |
-| norvég (nynorsk) |
-| pasto |
-| perzsa |
-| lengyel |
-| portugál |
-| román |
-| orosz |
-| szerb (cirill betűs) |
-| szerb (latin betűs) |
-| szlovák |
-| szlovén |
-| Szomáli |
-| spanyol |
-| szuahéli |
-| svéd |
-| Tagalog |
-| telugu |
-| thai |
-| török |
-| ukrán |
-| urdu |
-| üzbég (cirill betűs) |
-| üzbég (latin betűs) |
-| vietnami |
-| walesi |
-| Jiddis |
 
 ## <a name="access-the-translator-text-api-language-list-programmatically"></a>A Translator Text API nyelvek listája programozott elérése
 
@@ -294,6 +227,7 @@ Az alábbi nyelveken érhetők el, vagy az angol nyelvű testreszabási [egyéni
 | hindi      | `hi`          |
 | magyar      | `hu`          |
 | izlandi | `is` |
+| indonéz|   `id`    |
 | olasz      | `it`          |
 | japán      | `ja`          |
 | koreai      | `ko`          |

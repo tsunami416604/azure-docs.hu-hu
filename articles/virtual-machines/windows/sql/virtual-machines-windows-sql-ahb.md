@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0a29c15be6cfb73bb768e74cd9141e660b598f06
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: c68bae87440bddf704d18b575aeb1f4ba4760bbb
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565665"
+ms.locfileid: "59578243"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Az Azure-beli SQL Server virtuális gép licencelési modelljét módosítása
 Ez a cikk bemutatja, hogyan módosíthatja az Azure-ban az új SQL Server virtuális gép licencelési modelljét SQL virtuális gép erőforrás-szolgáltató – **Microsoft.SqlVirtualMachine**. Kettő licencelési üzemeltető SQL Server – használatalapú fizetés, egy virtuális gépet (VM) modellt és a hozott licences (BYOL). És most az Azure portal, az Azure parancssori felület vagy PowerShell használatával módosíthatja licencelési modellt az SQL Server virtuális gép használja. 
@@ -44,7 +44,7 @@ Váltás a két licenc modell között felmerülő **állásidő nélkül**, nem
  - A licencmodell konvertálása jelenleg csak használatalapú fizetéses SQL Server virtuálisgép-rendszerképek esetén érhető el. A rendszerképek saját licenccel használható verziói nem konvertálhatóak használatalapú fizetésessé.
  - Licencelési modelljének megváltoztatása csak a Resource Manager modellel üzembe helyezett virtuális gépek esetén támogatott. A klasszikus modellel üzembe helyezett virtuális gépek nem támogatottak. 
  - Licencelési modelljének megváltoztatása csak engedélyezve van a nyilvános felhőalapú telepítések.
- - Licencelési modelljének megváltoztatása csak virtuális gépek, amelyek egyetlen hálózati adapter (hálózati adapter) támogatott. Az egynél több hálózati Adapterrel rendelkező virtuális gépek, el kell távolítani egy hálózati adapter (az Azure portal használatával) mielőtt elkezdené az eljárást. Ellenkező esetben hiba történt az alábbihoz hasonlóan fog futtatni: ` The virtual machine '\<vmname\>' has more than one NIC associated.` Bár előfordulhat, hogy térjen vissza a virtuális gép hozzáadása a hálózati adapter, a licencelési módot módosítása után, az automatikus javítás és a biztonsági mentés, például az SQL konfigurációs panelen keresztül végzett műveletek már nem tekinthető támogatott.
+ - Licencelési modelljének megváltoztatása csak virtuális gépek, amelyek egyetlen hálózati adapter (hálózati adapter) támogatott. Az egynél több hálózati Adapterrel rendelkező virtuális gépek, el kell távolítani egy hálózati adapter (az Azure portal használatával) mielőtt elkezdené az eljárást. Ellenkező esetben hiba történt az alábbihoz hasonlóan fog futtatni: `The virtual machine '\<vmname\>' has more than one NIC associated.` Bár előfordulhat, hogy térjen vissza a virtuális gép hozzáadása a hálózati adapter, a licencelési módot módosítása után, az automatikus javítás és a biztonsági mentés, például az SQL konfigurációs panelen keresztül végzett műveletek már nem tekinthető támogatott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

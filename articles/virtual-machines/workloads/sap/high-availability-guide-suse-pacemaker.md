@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: f1b993cf45d987cb51f64359b331f3862d054774
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 62356ee35631373b5a5d38ed356bbb2fb489807b
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549899"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577795"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -84,7 +84,7 @@ Futtassa az alábbi parancsokat az összes **iSCSI cél virtuális gépek**.
 
 Futtassa az alábbi parancsokat az összes **iSCSI cél virtuális gépek** a fürtök, az SAP-rendszerek által használt iSCSI-lemezek létrehozásához. A következő példában több fürt SBD eszközök jönnek létre. Ez bemutatja, hogyan szeretné használni egy iSCSI-tárolókiszolgáló több fürthöz. Az operációsrendszer-lemez a SBD eszközök kerülnek. Győződjön meg arról, hogy rendelkezik-e elegendő lemezterület.
 
-**` nfs`** az NFS-fürt azonosítására használt **ascsnw1** azonosítja az ASCS fürt **NW1**, **dbnw1** azonosítja az adatbázis fürt **NW1** , **nfs-0** és **nfs-1** NFS fürtcsomópont a gazdanevek vannak **nw1-xscs-0** és **nw1-xscs-1**, a gazdanevek vannak a **NW1** ASCS fürt csomópontjai, és **nw1-db-0** és **nw1-db-1** a gazdanevek, az adatbázis-fürtcsomópontok vannak. Cserélje le őket a fürtcsomópontok állomásnevét, és az SAP-rendszerhez biztonsági azonosítója.
+**`nfs`** az NFS-fürt azonosítására használt **ascsnw1** azonosítja az ASCS fürt **NW1**, **dbnw1** azonosítja az adatbázis fürt **NW1** , **nfs-0** és **nfs-1** NFS fürtcsomópont a gazdanevek vannak **nw1-xscs-0** és **nw1-xscs-1**, a gazdanevek vannak a **NW1** ASCS fürt csomópontjai, és **nw1-db-0** és **nw1-db-1** a gazdanevek, az adatbázis-fürtcsomópontok vannak. Cserélje le őket a fürtcsomópontok állomásnevét, és az SAP-rendszerhez biztonsági azonosítója.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   Hozzon létre a ` softdog` konfigurációs fájl
+   Hozzon létre a `softdog` konfigurációs fájl
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>

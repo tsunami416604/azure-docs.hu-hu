@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/04/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 7f501bf8496d1293a45c15908d4f2b21b6ed01d2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 8ceb3d2d97c63bd19333336314beb6c7444288e9
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045405"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578407"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -22,7 +22,7 @@ Az Azure Event Griddel könnyen létrehozhat eseményalapú architektúrával re
 
 Szűrők segítségével adott eseményeket irányíthat át különböző végpontokra, csoportos küldést végezhet több végpontra, és meggyőződhet róla, hogy az események megbízhatóan célba érnek.
 
-Az Azure Event Grid jelenleg minden nyilvános régióban elérhető. Ez még nem érhető el az Azure Germany, az Azure China vagy az Azure Government-felhőben.
+Az Azure Event Grid jelenleg minden nyilvános régióban elérhető. Még nem érhető el az Azure Germany, Azure China 21Vianet vagy az Azure Government felhőben.
 
 Ez a cikk az Azure Event Gridről nyújt áttekintést. Az Event Grid használatának első lépései: [Egyéni események létrehozása és átirányítása az Azure Event Griddel](custom-event-quickstart.md). 
 
@@ -34,30 +34,29 @@ Ez a kép bemutatja, hogyan Event Grid források és a kezelők csatlakozik, és
 
 Az egyes források képességeire és a kapcsolódó cikkekre vonatkozó részletekért tekintse meg az [eseményforrásokat](event-sources.md). Jelenleg az alábbi Azure-szolgáltatások támogatják az események Event Gridbe való küldését:
 
-* Azure-előfizetések (kezelési műveletek)
-* Container Registry
-* Egyéni témakörök
-* Event Hubs
-* IoT Hub
-* Media Services
-* Erőforráscsoportok (kezelési műveletek)
-* Service Bus
-* Storage Blob
-* Általános célú v2- (GPv2-) tároló
-* Azure Maps
+* [Az Azure-előfizetések (műveletek)](event-sources.md#azure-subscriptions)
+* [Container Registry](event-sources.md#container-registry)
+* [Egyéni témakörök](event-sources.md#custom-topics)
+* [Event Hubs](event-sources.md#event-hubs)
+* [IoT Hub](event-sources.md#iot-hub)
+* [Médiaszolgáltatások](event-sources.md#media-services)
+* [Erőforráscsoportok (műveletek)](event-sources.md#resource-groups)
+* [Szolgáltatásbusz](event-sources.md#service-bus)
+* [Storage Blob](event-sources.md#storage)
+* [Azure Maps](event-sources.md#maps)
 
 ## <a name="event-handlers"></a>Eseménykezelők
 
 Az egyes kezelők képességeire és a kapcsolódó cikkekre vonatkozó részletekért tekintse meg az [eseménykezelőket](event-handlers.md). Jelenleg az alábbi Azure-szolgáltatások támogatják az Event Gridből származó események kezelését: 
 
-* Azure Automation
-* Azure Functions
-* Event Hubs
-* Hibrid kapcsolatok
-* Logic Apps
-* Microsoft Flow
-* Queue Storage
-* Webhookok
+* [Azure Automation](event-handlers.md#azure-automation)
+* [Azure Functions](event-handlers.md#azure-functions)
+* [Event Hubs](event-handlers.md#event-hubs)
+* [Hibrid kapcsolatok](event-handlers.md#hybrid-connections)
+* [Logic Apps](event-handlers.md#logic-apps)
+* [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
+* [Queue Storage](event-handlers.md#queue-storage)
+* [Webhookok](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Alapelvek
 
@@ -114,13 +113,13 @@ Az Azure Event Grid árképzése eseményenkénti fizetésen alapul, tehát a fi
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Blob Storage-események irányítása](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
+* [Storage Blob-események útválasztása](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   Az Event Grid használatával válaszolhat a Storage Blob-eseményekre.
-* [Hozzon létre, és fizessen elő az egyéni események](custom-event-quickstart.md)  
+* [Egyéni események: létrehozás és előfizetés](custom-event-quickstart.md)  
   Lásson azonnal munkához, és küldje el saját egyéni eseményeit egy végpontra az Azure Event Grid rövid útmutatója alapján.
-* [Egy eseménykezelőt a Logic Apps használatával](monitor-virtual-machine-changes-event-grid-logic-app.md)  
+* [A Logic Apps használata eseménykezelőként](monitor-virtual-machine-changes-event-grid-logic-app.md)  
   Ez az oktatóanyag bemutatja egy olyan alkalmazás létrehozását a Logic Appsszel, amely az Event Grid által leküldött eseményekre reagál.
 * [Big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md)  
   Ez az oktatóanyag az Azure Functions használatával streameli az adatokat az Event Hubsból az SQL Data Warehouse-ba.
-* [Event Grid – REST API-referencia](/rest/api/eventgrid)  
+* [Event Grid REST API-referencia](/rest/api/eventgrid)  
   Segédanyagok biztosít esemény-előfizetések kezeléséhez útválasztást és a szűrést.
