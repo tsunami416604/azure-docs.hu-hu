@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eafc379a65fda1ed64c6afee1427e704558b1ee6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 11d4d319fa31dd2493810dc7293d415554f79d94
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261537"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571120"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Az Azure Active Directory-beli feltételes hozzáférésre vonatkozó ajánlott eljárások
 
@@ -50,7 +50,7 @@ Ahhoz, hogy a szabályzat működik, konfigurálnia kell:
 | :--            | :--                                  | :-- |
 | **Felhőalkalmazások** |Válassza ki egy vagy több alkalmazást.  | A feltételes hozzáférési szabályzat célja, hogy szabályozhatja, hogy jogosult felhasználók érhetik el az alkalmazásokat a felhőben.|
 | **Felhasználók és csoportok** | Válasszon legalább egy felhasználót vagy csoportot, amely a kiválasztott felhőalapú alkalmazások elérésére jogosult. | Feltételes hozzáférési szabályzatot, amely nem rendelkezik felhasználók és csoportok hozzárendelve, soha nem aktiválódott. |
-| **Hozzáférés-szabályozás** | Válasszon legalább egy hozzáférés-vezérlés. | Ha a feltételek teljesülnek, a házirend processzor tudnia kell, mi a teendő. |
+| **Hozzáférés-vezérlés** | Válasszon legalább egy hozzáférés-vezérlés. | Ha a feltételek teljesülnek, a házirend processzor tudnia kell, mi a teendő. |
 
 
 
@@ -109,7 +109,7 @@ Minden bejelentkezéshez az Azure Active Directory kiértékeli az összes szab�
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Feltételes hozzáférés az Exchange ActiveSync szolgáltatással működik?
 
-Igen, használhatja az Exchange ActiveSync feltételes hozzáférési szabályzat.
+Igen, használhatja az Exchange ActiveSync feltételes hozzáférési szabályzat egyes [korlátozások](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo#exchange-activesync). 
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Hogyan kell konfigurálnia a feltételes hozzáférés az Office 365-alkalmazások?
 
