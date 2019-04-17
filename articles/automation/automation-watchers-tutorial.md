@@ -8,12 +8,12 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 7d7ebc7493ff8e272e35abafeedd8fbc52b986ab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bee414ada61e2cfcf7609b02ef1da7323a0fe0e3
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002159"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606922"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Az Azure Automation figyelőjét fájl változásainak követése a helyi számítógép-feladatok létrehozása
 
@@ -36,6 +36,9 @@ Az oktatóanyag elvégzésének a következők a feltételei:
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Automation-fiók](automation-offering-get-started.md) a megfigyelő és műveleti runbookok, valamint a Figyelőfeladat tárolásához.
 * A [hibrid runbook-feldolgozó](automation-hybrid-runbook-worker.md) ahol a figyelőfeladat fut-e.
+
+> [!NOTE]
+> Figyelőfeladatok nem támogatottak az Azure China.
 
 ## <a name="import-a-watcher-runbook"></a>Megfigyelő runbook importálása
 

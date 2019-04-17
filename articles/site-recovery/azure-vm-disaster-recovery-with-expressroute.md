@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 895b53d4091f04f324b28a148c7937159997fa84
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272767"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618086"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Vészhelyreállítás az Azure virtuális gépek Azure ExpressRoute integrálása
 
@@ -93,7 +93,7 @@ Nagyvállalati környezetben általában a számítási feladatok elosztja a tö
 - **Agyi virtuális hálózat**. Van egy agyi virtuális hálózat **forrás agyi virtuális hálózat**: 10.10.10.0/24.
   - Az agyi virtuális hálózat a forgalomirányító szerepét.
   - Alhálózatok közötti minden kommunikáció próbálja ki a hub.
-    - Hub Vnetet alhálózatokra **. Az agyi virtuális hálózat két alhálózattal rendelkezik:
+    - **VNet-alhálózatok hub**. Az agyi virtuális hálózat két alhálózattal rendelkezik:
     - **NVA-alhálózat**: 10.10.10.0/25. Ez az alhálózat egy nva-t (10.10.10.10) tartalmazza.
     - **Átjáró-alhálózat**: 10.10.10.128/25. Ezt az alhálózatot tartalmaz, amely a helyszíni hely egy privát társviszony-létesítési útválasztási tartomány segítségével irányítja egy ExpressRoute-kapcsolattal csatlakozik egy ExpressRoute-átjárót.
 - A helyszíni adatközponthoz egy ExpressRoute-kapcsolatcsoport kapcsolaton keresztül egy partner edge Hongkong (KKT) rendelkezik.
@@ -104,7 +104,7 @@ Nagyvállalati környezetben általában a számítási feladatok elosztja a tö
 
 #### <a name="spoke-to-hub"></a>A küllőt a központtal
 
-**Irány** | **Beállítás** | **Állapot**
+**Direction (Irány)** | **Beállítás** | **állapot**
 --- | --- | ---
 A küllőt a központtal | Lehetővé teszi a virtuális hálózati cím | Engedélyezve
 A küllőt a központtal | Továbbított forgalom engedélyezése | Engedélyezve
@@ -115,7 +115,7 @@ A küllőt a központtal | Remove-átjárók használata | Engedélyezve
 
 #### <a name="hub-to-spoke"></a>A központot a küllővel
 
-**Irány** | **Beállítás** | **Állapot**
+**Direction (Irány)** | **Beállítás** | **állapot**
 --- | --- | ---
 A központot a küllővel | Lehetővé teszi a virtuális hálózati cím | Engedélyezve
 A központot a küllővel | Továbbított forgalom engedélyezése | Engedélyezve

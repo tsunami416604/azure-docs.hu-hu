@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 2e63c44db2391f63078f0945caa69a43c0c464cf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8bada96c648881a9943176c45115627a829fcc58
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001366"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608605"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Aktív georeplikáció konfigurálása az Azure SQL Database az Azure portal és a feladatátvétel kezdeményezése
 
@@ -73,7 +73,7 @@ A másodlagos adatbázist elsődlegessé mostantól átválthat.
     ![feladatátvétel](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Kattintson a **Igen** , a feladatátvételi művelet elindításához.
 
-A parancs azonnal átvált a másodlagos adatbázis, az elsődleges szerepre.
+A parancs azonnal átvált a másodlagos adatbázis, az elsődleges szerepre. Ez a folyamat megfelelően be kell fejeződnie belül 30 másodperc vagy annál kisebb.
 
 Egy rövid ideig, mely során nem érhető el (0 – 25 másodpercig) sorrendje lesz, amíg a szerepkörök bekapcsolt állapotban van. Ha az elsődleges adatbázis több másodlagos adatbázis, a parancs automatikusan újrakonfigurálja a többi másodlagos példány hozható létre az új elsődleges csatlakozni. A teljes művelet végrehajtásához a normál körülmények között kevesebb mint egy percet vesz igénybe.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 92fc63ed45b6f1ea377138744d19137645c916e7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 910c593c9277efeaf72dadc52740b1c918381e19
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57882726"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524769"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming-Windows Store-alkalmazás létrehozása  
 
@@ -60,41 +60,42 @@ További információ a Windows Store-alkalmazás fejlesztése: [fejleszthet nag
 3. Módosítsa a fájl mögötti kódban
 4. Fordítsa le és az alkalmazás tesztelése
 
-**A Windows Store-projekt létrehozása**
+### <a name="to-create-a-windows-store-project"></a>A Windows Store-projekt létrehozása
 
 1. Futtassa a Visual Studio; 2012 keresztül 2015-verziókat támogatja.
-2. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
-3. Új projekt párbeszédpanelen írja be vagy válassza ki a következő értékeket:
+1. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
+1. Új projekt párbeszédpanelen írja be vagy válassza ki a következő értékeket:
 
-| Name (Név) | Érték |
-| --- | --- |
-| Sablon csoport |Telepített/sablonok/Visual C#Windows Store |
-| Sablon |Blank App (XAML) |
-| Name (Név) |SSPlayer |
-| Hely |C:\SSTutorials |
-| Megoldás neve |SSPlayer |
-| Könyvtár létrehozása a megoldáshoz |(kiválasztva) |
+    | Name (Név) | Érték |
+    | --- | --- |
+    | Sablon csoport |Telepített/sablonok/Visual C#Windows Store |
+    | Sablon |Blank App (XAML) |
+    | Name (Név) |SSPlayer |
+    | Földrajzi egység |C:\SSTutorials |
+    | Megoldás neve |SSPlayer |
+    | Könyvtár létrehozása a megoldáshoz |(kiválasztva) |
 
 1. Kattintson az **OK** gombra.
 
-**A Smooth Streaming Client SDK hivatkozás hozzáadása**
+### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>A Smooth Streaming Client SDK hivatkozás hozzáadása
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **SSPlayer**, és kattintson a **hivatkozás hozzáadása**.
-2. Írja be vagy válassza ki az alábbi értékeket:
+1. Írja be vagy válassza ki az alábbi értékeket:
 
-| Name (Név) | Érték |
-| --- | --- |
-| Referencia-csoport |Windows/Extensions |
-| Leírások |Válassza ki a Microsoft Smooth Streaming Client SDK Windows 8 és a Microsoft Visual C++ futásidejű csomag |
+    | Name (Név) | Érték |
+    | --- | --- |
+    | Referencia-csoport |Windows/Extensions |
+    | Leírások |Válassza ki a Microsoft Smooth Streaming Client SDK Windows 8 és a Microsoft Visual C++ futásidejű csomag |
 
 1. Kattintson az **OK** gombra. 
 
 Miután hozzáadta a hivatkozásokat, ki kell választania a megcélzott platform (x64 vagy x86), hivatkozások hozzáadása nem fog működni bármilyen Processzor platform konfiguráció.  A megoldáskezelőben látni fogja, sárga figyelmeztető meg ezek hozzá hivatkozásokat.
 
-**A player felhasználói felület tervezéséhez**
+### <a name="to-design-the-player-user-interface"></a>A player felhasználói felület tervezéséhez
 
 1. A Megoldáskezelőben kattintson duplán **MainPage.xaml** a tervezési nézetében való megnyitásához.
 2. Keresse meg a **&lt;rács&gt;** és **&lt;/Grid&gt;** címkék az XAML-fájlt, és illessze be a két címke között az alábbi kódot:
+
    ```xml
          <Grid.RowDefinitions>
 
@@ -146,7 +147,7 @@ A prvku MediaElement vezérlő nem támogatja a Smooth Streaming tartalom out-of
 
 A XAML fájlban néhány eseménykezelők kapcsolódnak a vezérlőkkel.  Meg kell adnia ezeket eseménykezelők.
 
-**Módosíthatja a fájl mögötti kódban**
+### <a name="to-modify-the-code-behind-file"></a>Módosíthatja a fájl mögötti kódban
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. A fájl elejéhez adja hozzá a következő using utasítást:
@@ -210,7 +211,7 @@ A kész fájl mögötti kódban kell kinéznie:
 
 ![A Visual Studio, Smooth Streaming Windows Store alkalmazás Codeview][CodeViewPic]
 
-**Fordítsa le és az alkalmazás tesztelése**
+### <a name="to-compile-and-test-the-application"></a>Fordítsa le és az alkalmazás tesztelése
 
 1. Az a **hozhat létre** menüben kattintson a **Configuration Manager**.
 2. Változás **aktív megoldás platformját** megfelelően a fejlesztési platform.
@@ -238,7 +239,7 @@ Ebben a leckében az alábbi eljárásokat tartalmazza:
 5. Csúszka kapcsolódó kód hozzáadása
 6. Fordítsa le és az alkalmazás tesztelése
 
-**A Smooth Streaming bájt-adatfolyam-kezelő regisztrálása, majd továbbítja a propertyset**
+### <a name="to-register-the-smooth-streaming-byte-stream-handler-and-pass-the-propertyset"></a>A Smooth Streaming bájt-adatfolyam-kezelő regisztrálása, majd továbbítja a propertyset
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. A fájl elején adja hozzá a következő using utasítást:
@@ -283,7 +284,7 @@ Ebben a leckében az alábbi eljárásokat tartalmazza:
    ```
 6. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
-**Az adaptív forrás manager szintű eseménykezelő**
+### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>Az adaptív forrás manager szintű eseménykezelő
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. Belül a **MainPage** osztályban adja hozzá a következő adatelem:
@@ -311,7 +312,7 @@ Ebben a leckében az alábbi eljárásokat tartalmazza:
    ```
 5. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
-**Az adaptív forrás szintű eseménykezelők hozzáadása**
+### <a name="to-add-adaptive-source-level-event-handlers"></a>Az adaptív forrás szintű eseménykezelők hozzáadása
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. Belül a **MainPage** osztályban adja hozzá a következő adatelem:
@@ -362,7 +363,7 @@ Ebben a leckében az alábbi eljárásokat tartalmazza:
 
 Ugyanazokat az eseményeket adaptív forrás Manager szinten is, amely az alkalmazás összes médiaelemek közös funkciók kezeléséhez használható érhetők el. Minden egyes AdaptiveSource magában foglalja a saját eseményeket, és minden AdaptiveSource események átkerül AdaptiveSourceManager alatt.
 
-**Médiaelem eseménykezelők hozzáadása**
+### <a name="to-add-media-element-event-handlers"></a>Médiaelem eseménykezelők hozzáadása
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. A végén a **MainPage** osztályban adja hozzá a következő esemény-kezelők:
@@ -398,7 +399,7 @@ Ugyanazokat az eseményeket adaptív forrás Manager szinten is, amely az alkalm
    ```
 4. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
-**Adja hozzá a csúszka sávjának kapcsolódó kód**
+### <a name="to-add-slider-bar-related-code"></a>Adja hozzá a csúszka sávjának kapcsolódó kód
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. A fájl elején adja hozzá a következő using utasítást:
@@ -531,7 +532,7 @@ Ugyanazokat az eseményeket adaptív forrás Manager szinten is, amely az alkalm
    ```
 8. Nyomja meg **CTRL + S** szeretné menteni a fájlt.
 
-**Fordítsa le és az alkalmazás tesztelése**
+### <a name="to-compile-and-test-the-application"></a>Fordítsa le és az alkalmazás tesztelése
 
 1. Nyomja meg **F6** összeállítása a projekt. 
 2. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
@@ -548,7 +549,7 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
 2. Módosítsa a fájl mögötti kódban
 3. Fordítsa le és az alkalmazás tesztelése
 
-**Az XAML-fájl módosítása**
+### <a name="to-modify-the-xaml-file"></a>Az XAML-fájl módosítása
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **adatforrásnézet-tervezőből**.
 2. Keresse meg &lt;Grid.RowDefinitions&gt;, módosítsa a RowDefinitions, úgy hogy néz ki:
@@ -591,7 +592,7 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
    ```
 4. Nyomja meg **CTRL + S** menti a módosításokat.
 
-**Módosíthatja a fájl mögötti kódban**
+### <a name="to-modify-the-code-behind-file"></a>Módosíthatja a fájl mögötti kódban
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. Az SSPlayer névtéren belül adjon hozzá egy új osztályt:
@@ -807,7 +808,8 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
             changeStreams(selectedStreams);
         }
    ```
-   **Fordítsa le és az alkalmazás tesztelése**
+
+### <a name="to-compile-and-test-the-application"></a>Fordítsa le és az alkalmazás tesztelése
 
 1. Nyomja meg **F6** összeállítása a projekt. 
 2. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
@@ -818,13 +820,14 @@ Smooth Streaming stream tartalom több nyelven hangsáv, amelyek a nézők álta
 3. lecke befejeződött.  Ebben a leckében a Streamek kiválasztása funkciókat adhat meg.
 
 ## <a name="lesson-4-select-smooth-streaming-tracks"></a>4. lecke: Válassza ki a Smooth Streaming nyomon követi
+
 Smooth Streaming bemutató különböző minőségi szintet (átviteli sebességek) és a megoldásuk kódolású, több videó fájlokat tartalmazza. Ebben a leckében, lehetővé teszi a felhasználóknak, hogy nyomon követi. Ebben a leckében az alábbi eljárásokat tartalmazza:
 
 1. Az XAML-fájl módosítása
 2. Módosítsa a fájl mögötti kódban
 3. Fordítsa le és az alkalmazás tesztelése
 
-**Az XAML-fájl módosítása**
+### <a name="to-modify-the-xaml-file"></a>Az XAML-fájl módosítása
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **adatforrásnézet-tervezőből**.
 2. Keresse meg a &lt;rács&gt; nevű címke **gridStreamAndBitrateSelection**, fűzze hozzá a következő kódot a címke végén:
@@ -846,7 +849,7 @@ Smooth Streaming bemutató különböző minőségi szintet (átviteli sebesség
    ```
 3. Nyomja meg **CTRL + S** he módosítások mentése
 
-**Módosíthatja a fájl mögötti kódban**
+### <a name="to-modify-the-code-behind-file"></a>Módosíthatja a fájl mögötti kódban
 
 1. A Megoldáskezelőben kattintson a jobb gombbal **MainPage.xaml**, és kattintson a **nézet kód**.
 2. Az SSPlayer névtéren belül adjon hozzá egy új osztályt:
@@ -1009,7 +1012,8 @@ Smooth Streaming bemutató különböző minőségi szintet (átviteli sebesség
             changeStreams(selectedStreams);
          }
    ```
-   **Fordítsa le és az alkalmazás tesztelése**
+   
+### <a name="to-compile-and-test-the-application"></a>Fordítsa le és az alkalmazás tesztelése
 
 1. Nyomja meg **F6** összeállítása a projekt. 
 2. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
@@ -1020,6 +1024,7 @@ Smooth Streaming bemutató különböző minőségi szintet (átviteli sebesség
 4. lecke befejeződött.  Ebben a leckében kiválasztása nyomon követi a funkciókat adhat meg.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

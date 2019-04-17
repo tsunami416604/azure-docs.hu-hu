@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22615d07e69d707c90e3ff9bda83bfa6f0852996
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 217eecfe8f380718361c2f1b56965e4af85d54c9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360284"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526707"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -76,7 +76,7 @@ Követheti [ebben az oktatóanyagban](tutorial-data-prep.md) tudhat meg többet 
 
 Nem fog elveszni sem kód, sem munka. A régebbi verzióban, a projektek helyi könyvtárral rendelkező felhőbeli entitások. A legújabb verzió csatolása helyi címtárak az Azure Machine Learning szolgáltatáshoz munkaterület a helyi konfigurációs fájl használatával. Tekintse meg a [a legújabb architektúra diagramja](concept-azure-machine-learning-architecture.md).
 
-A projekt tartalmának nagy részét már a helyi gépen. Így egyszerűen hozzon létre egy konfigurációs fájl ebben a könyvtárban, és hivatkozzon arra a kód a munkaterülethez való kapcsolódáshoz. A helyi könyvtárban, amely tartalmazza a fájlok és parancsfájlok használatával. a folytatáshoz adja meg a könyvtár neve a a ["experiment.submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python-parancsot, vagy a parancssori felület az ml-projekt csatlakoztatása parancsot.  Példa:
+A projekt tartalmának nagy részét már a helyi gépen. Így egyszerűen hozzon létre egy konfigurációs fájl ebben a könyvtárban, és hivatkozzon arra a kód a munkaterülethez való kapcsolódáshoz. A helyi könyvtárban, amely tartalmazza a fájlok és parancsfájlok használatával. a folytatáshoz adja meg a könyvtár neve a a ["experiment.submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python-parancsot, vagy használja a `az ml project attach` CLI-parancsot.  Példa:
 ```python
 run = exp.submit(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
 ```
