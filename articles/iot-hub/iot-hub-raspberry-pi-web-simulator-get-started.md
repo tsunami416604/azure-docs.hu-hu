@@ -10,37 +10,40 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: 58e05ba4fb2e362147f7ca28d83440ddabb6ef38
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 42c2c0d1a015baf4b846c86ed22e8383e21028b6
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267735"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607569"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Online szimulátor Raspberry Pi csatlakoztatása Azure IoT hubhoz (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-Ez az oktatóanyag első lépésként, tanulás a Raspberry Pi online szimulátor való használatának alapjait. Ezután megismerheti, hogyan zökkenőmentes csatlakozás használatával a felhőbe a Pi szimulátor [Azure IoT Hub](about-iot-hub.md). 
+Ez az oktatóanyag első lépésként, tanulás a Raspberry Pi online szimulátor való használatának alapjait. Ezután megismerheti, hogyan zökkenőmentes csatlakozás használatával a felhőbe a Pi szimulátor [Azure IoT Hub](about-iot-hub.md).
 
-Ha a fizikai eszközökön, látogasson el a [Raspberry Pi csatlakoztatása Azure IoT Hub](iot-hub-raspberry-pi-kit-node-get-started.md) a kezdéshez. 
+Ha a fizikai eszközökön, látogasson el a [Raspberry Pi csatlakoztatása Azure IoT Hub](iot-hub-raspberry-pi-kit-node-get-started.md) a kezdéshez.
 
 <p>
 <div id="diag" style="width:100%; text-align:center">
 <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#getstarted" target="_blank">
-<img src="media/iot-hub-raspberry-pi-web-simulator/3_banner.png" alt="Connect Raspberry Pi web simulator to Azure IoT Hub" width="400">
+<img src="media/iot-hub-raspberry-pi-web-simulator/3-banner.png" alt="Connect Raspberry Pi web simulator to Azure IoT Hub" width="400">
 </div>
 <p>
 <div id="button" style="width:100%; text-align:center">
 <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted" target="_blank">
-<img src="media/iot-hub-raspberry-pi-web-simulator/6_button_default.png" alt="Start Raspberry Pi simulator" width="400" onmouseover="this.src='media/iot-hub-raspberry-pi-web-simulator/5_button_click.png';" onmouseout="this.src='media/iot-hub-raspberry-pi-web-simulator/6_button_default.png';">
+<img src="media/iot-hub-raspberry-pi-web-simulator/6-button-default.png" alt="Start Raspberry Pi simulator" width="400" onmouseover="this.src='media/iot-hub-raspberry-pi-web-simulator/5-button-click.png';" onmouseout="this.src='media/iot-hub-raspberry-pi-web-simulator/6-button-default.png';">
 </div>
 
 ## <a name="what-you-do"></a>TEENDŐ
 
 * Ismerje meg, a Raspberry Pi online szimulátor alapjait.
+
 * Hozzon létre egy IoT hubot.
+
 * Eszköz regisztrálása az IoT hub pi.
+
 * A mintaalkalmazás futtatása az IoT hubra szimulált érzékelői adatokat küldhet Pi-on.
 
 Szimulált Raspberry Pi csatlakozni az IoT hub által létrehozott. Ezután meg egy mintaalkalmazást a szimulátor érzékelőktől kapott adatok létrehozásához futtassa. Végül az érzékelő adatokat küld az IoT hubnak.
@@ -48,7 +51,9 @@ Szimulált Raspberry Pi csatlakozni az IoT hub által létrehozott. Ezután meg 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
 * Útmutató az Azure IoT hub létrehozása és az új eszköz kapcsolati karakterláncának beszerzése. Ha nem rendelkezik Azure-fiók [hozzon létre egy ingyenes Azure próbafiókot](https://azure.microsoft.com/free/) mindössze néhány perc múlva.
+
 * Raspberry Pi online szimulátor használatának módját.
+
 * Hogyan küldhet az IoT hub érzékelői adatokat.
 
 ## <a name="overview-of-raspberry-pi-web-simulator"></a>Raspberry Pi-webszimulátor áttekintése
@@ -67,13 +72,15 @@ Három olyan terület a webalkalmazás-szimulátorban történő.
 3. Integrált konzol ablakának - kódját kimenetét mutatja. Ez az ablak tetején lévő nincsenek három gombbal.
 
    * **Futtatás** – az alkalmazás futtatásához a kódolási területen.
+
    * **Alaphelyzetbe** – a kódolási terület visszaállítása az alapértelmezett mintaalkalmazáshoz.
+
    * **Modellrészek/Kibontás** – a jobb oldalon van egy gombot, hogy a konzolablakban modellrészek/bontsa ki.
 
 > [!NOTE]
 > A Raspberry Pi-webszimulátor jelenleg előzetes verzióban érhető el. A Hangminta hallani szeretnénk a [Gitter Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator). A forráskódja a nyilvános [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator).
 
-![Online szimulátor Pi áttekintése](media/iot-hub-raspberry-pi-web-simulator/0_overview.png)
+![Online szimulátor Pi áttekintése](media/iot-hub-raspberry-pi-web-simulator/0-overview.png)
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -90,11 +97,12 @@ Három olyan terület a webalkalmazás-szimulátorban történő.
 ## <a name="run-a-sample-application-on-pi-web-simulator"></a>A mintaalkalmazás futtatása a Pi-webszimulátor
 
 1. Kódolási terület, győződjön meg arról, az alapértelmezett mintaalkalmazás dolgozik. A sor 15 a helyőrzőt cserélje le az Azure IoT hub eszköz kapcsolati karakterláncát.
-   ![Cserélje le az eszköz kapcsolati karakterláncának](media/iot-hub-raspberry-pi-web-simulator/1_connectionstring.png)
+1. 
+   ![Cserélje le az eszköz kapcsolati karakterláncának](media/iot-hub-raspberry-pi-web-simulator/1-connectionstring.png)
 
-2. Kattintson a **futtatása** vagy típus `npm start` az alkalmazás futtatásához.
+2. Válassza ki **futtatása** vagy típus `npm start` az alkalmazás futtatásához.
 
-Amely az érzékelőktől kapott adatok és az IoT hubnak küldött üzeneteket jeleníti meg a következő kimenetnek kell megjelennie ![kimeneti - Raspberry Pi az IoT hubnak küldött érzékelőktől kapott adatok](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
+Amely az érzékelőktől kapott adatok és az IoT hubnak küldött üzeneteket jeleníti meg a következő kimenetnek kell megjelennie ![kimeneti - Raspberry Pi az IoT hubnak küldött érzékelőktől kapott adatok](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Olvassa el a hub által fogadott üzeneteket
 

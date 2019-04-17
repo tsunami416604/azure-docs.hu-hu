@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4b83917a76cb4b3e24ca4f5961d3a00c4d2c9cb0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/15/2019
+ms.openlocfilehash: c618a4035e9ec9b1ca1986e898ea1060ac05712d
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077258"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615948"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Hogyan lehet a kiszolgáló paramétereinek konfigurálása az Azure Database for MariaDB az Azure portal használatával
 
@@ -46,10 +46,12 @@ InnoDB Pufferkészletben és kapcsolatok maximális száma nem konfigurálható 
 |Általános rendeltetés| 8| 15360| 1250|
 |Általános rendeltetés| 16| 31232| 2500|
 |Általános rendeltetés| 32| 62976| 5000|
+|Általános rendeltetés| 64| 125952| 10000|
 |Memóriára optimalizált| 2| 7168| 600|
 |Memóriára optimalizált| 4| 15360| 1250|
 |Memóriára optimalizált| 8| 30720| 2500|
 |Memóriára optimalizált| 16| 62464| 5000|
+|Memóriára optimalizált| 32| 125952| 10000|
 
 Ezeket a további kiszolgáló paramétereket, amelyek nem konfigurálhatók, a rendszer:
 

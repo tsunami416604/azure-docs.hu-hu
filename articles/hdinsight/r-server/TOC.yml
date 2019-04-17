@@ -115,27 +115,33 @@ items:
       maintainContext: true
   - name: Kezelés
     items:
-    - name: Linux-fürtök létrehozása
+    - name: HDInsight-fürtök létrehozása
       href: ../hdinsight-hadoop-provision-linux-clusters.md
       items:
-      - name: Azure PowerShell használatával
-        href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
-        maintainContext: true
-      - name: A cURL és az Azure REST API használata
-        href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
-        maintainContext: true
-      - name: A .NET SDK használata
-        href: ../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        maintainContext: true
-      - name: Az Azure klasszikus parancssori felületének használata
-        href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
-        maintainContext: true
       - name: Az Azure Portal használata
         href: ../hdinsight-hadoop-create-linux-clusters-portal.md
         maintainContext: true
       - name: Használjon Azure Resource Manager-sablonokat
         displayName: resource manager template, arm template, resource manager group
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
+        maintainContext: true
+      - name: A .NET-hez készült SDK használata
+        href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster
+      - name: A Pythonhoz készült SDK használata
+        href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python#create-a-cluster
+      - name: A Javához készült SDK használata
+        href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster
+      - name: Azure PowerShell használatával
+        href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+        maintainContext: true
+      - name: A cURL és az Azure REST API használata
+        href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
+        maintainContext: true
+      - name: Az Azure klasszikus parancssori felületének használata
+        href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
+        maintainContext: true
+      - name: Igény szerinti fürtök létrehozása
+        href: ../hdinsight-hadoop-create-linux-clusters-adf.md
         maintainContext: true
       maintainContext: true
     - name: Igény szerinti fürtök létrehozása
@@ -144,9 +150,14 @@ items:
     - name: HDInsight-fürtök kezelése
       href: ../hdinsight-administer-use-portal-linux.md
       items:
-      - name: A .NET SDK használata
-        href: ../hdinsight-administer-use-dotnet-sdk.md
-        maintainContext: true
+      - name: A .NET-hez készült SDK használata
+        href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management
+      - name: A Pythonhoz készült SDK használata
+        href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
+      - name: A Javához készült SDK használata
+        href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable
+      - name: A Góhoz készült SDK (előzetes verzió) használata
+        href: https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview
       - name: Azure PowerShell használatával
         href: ../hdinsight-administer-use-powershell.md
         maintainContext: true
@@ -183,7 +194,7 @@ items:
         href: ../hadoop/apache-hadoop-use-sqoop-mac-linux.md
       - name: Futtatás a cURL használatával
         href: ../hadoop/apache-hadoop-use-sqoop-curl.md
-      - name: Futtatás a .NET SDK használatával
+      - name: Futtatás a .NET-hez készült SDK használatával
         href: ../hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md
       - name: Futtatás az Azure PowerShell használatával
         href: ../hadoop/apache-hadoop-use-sqoop-powershell.md
@@ -243,6 +254,8 @@ items:
       - name: Apache Hive-lekérdezések optimalizálása
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
+      - name: A fürtkonfiguráció elérését érintő változások
+        href: ../hdinsight-migrate-granular-access-cluster-configurations.md
     maintainContext: true
 - name: Alkalmasság vállalati használatra
   items:
@@ -274,13 +287,13 @@ items:
     href: https://azure.microsoft.com/resources/samples/?service=hdinsight
   - name: Azure PowerShell
     href: /powershell/module/az.hdinsight
-  - name: .NET SDK
+  - name: .NET-hez készült SDK
     href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
-  - name: Python SDK
+  - name: Pythonhoz készült SDK
     href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
-  - name: Java SDK
-    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
-  - name: Go SDK
+  - name: Javához készült SDK
+    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable
+  - name: Góhoz készült SDK
     href: ../hdinsight-go-sdk-overview.md
   - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
@@ -296,28 +309,29 @@ items:
   - name: R fejlesztői útmutató
     href: ../../machine-learning/r-developers-guide.md
   - name: Kibocsátási megjegyzések
-    href: ../hdinsight-release-notes.md
     items:
+    - name: Aktuális kibocsátási megjegyzések
+      href: ../hdinsight-release-notes.md
+      maintainContext: true
     - name: Archivált kibocsátási megjegyzések
       href: ../hdinsight-release-notes-archive.md
       maintainContext: true
-    maintainContext: true
   - name: Azure-ütemterv
     href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
   - name: Segítség kérése a fórumokon
-    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight
+    href: https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight
   - name: Képzési terv
     href: https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/
   - name: Microsoft Professional Program big data-megoldásokhoz
-    href: https://academy.microsoft.com/en-us/professional-program/big-data/
+    href: https://academy.microsoft.com/en-us/professional-program/tracks/big-data/
   - name: Díjkalkulátor
     href: https://azure.microsoft.com/pricing/calculator/
   - name: A HDInsight Windows-eszközei
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: b5260477414509222194bebb6543e093b6e5974c
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 918489a8dbac91078af6114ae4942d8411460a21
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544784"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615744"

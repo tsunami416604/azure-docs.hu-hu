@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5eb3c08792b760bf66e443f79762d91210706c92
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: cda08d44cba9e59af853b1705f538ec199ec4d3a
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435112"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59630506"
 ---
 Az első esetben hozzáadhat egy új telemetriatípus contoso meglévő **hűtő** típusú eszközt.
 
@@ -72,7 +72,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Ez az útmutató követéséhez lesz szüksége:
 
 * Visual Studio Code. Is [Visual Studio Code letöltése Windows, Mac és Linux](https://code.visualstudio.com/download).
-* A .NET core. Letöltheti a [.NET Core for Mac, Linux és Windows](https://www.microsoft.com/net/download).
+* .NET Core. Letöltheti a [.NET Core for Mac, Linux és Windows](https://www.microsoft.com/net/download).
 * [C# a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * Postman. Letöltheti a [Mac, Windows vagy Linux rendszerű Postman](https://www.getpostman.com/apps).
 * Egy [üzembe helyezve az Azure-előfizetéshez az IoT hub](../articles/iot-hub/iot-hub-create-through-portal.md). A jelen útmutató lépéseit az IoT hub kapcsolati karakterláncra van szüksége. A kapcsolati karakterlánc kaphat az Azure Portalról.
@@ -98,13 +98,11 @@ Töltse le és csomagolja ki a [eszköz szimulálása mikroszolgáltatás](https
 
 Nyissa meg a **remote-monitoring-services-dotnet-master\storage-adapter** mappát a Visual Studio Code-ban. Kattintson bármelyik **visszaállítása** kijavításához gombok feloldatlan függőségek.
 
-Nyissa meg a **.vscode/launch.json** fájlt, és rendelje hozzá a Cosmos DB kapcsolati karakterláncot a **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** környezeti változót.
-
-<!-- Open the **WebService/appsettings.ini** file and assign your Cosmos DB connection string to the **documentdb_connstring** configuration setting.-->
+Nyissa meg a **storage-adapter/WebService/appsettings.ini** fájlt, és rendelje hozzá a Cosmos DB kapcsolati karakterláncot a **documentDBConnectionString** változó.
 
 A mikroszolgáltatások helyi futtatásához kattintson **Debug > Start Debugging**.
 
-A **terminálon** ablak a Visual Studio Code többek között a webalkalmazás állapot-ellenőrzése egy URL-címet a futó mikroszolgáltatási kimenetét mutatja: [ http://127.0.0.1:9022/v1/status ](http://127.0.0.1:9022/v1/status). Erre a címre lépve, a kell lennie az állapot "OK: tartási és jól".
+A **terminálon** ablak a Visual Studio Code többek között a webalkalmazás állapot-ellenőrzése egy URL-címet a futó mikroszolgáltatási kimenetét mutatja: [ http://127.0.0.1:9022/v1/status ](http://127.0.0.1:9022/v1/status). Erre a címre lépve, a kell lennie az állapot "OK: Tartási és jól".
 
 Hagyja meg a tárolási adapter mikroszolgáltatás jelen példánya a Visual Studio Code-ban futó a következő lépések végrehajtása.
 
@@ -118,12 +116,12 @@ Ebben a szakaszban, vegyen fel egy új **belső hőmérséklet** telemetriai ada
 
     | Forrás | Cél |
     | ------ | ----------- |
-    | Services\data\devicemodels\chiller-01.JSON | C:\temp\devicemodels\chiller-01.JSON |
-    | Services\data\devicemodels\scripts\chiller-01-State.js | C:\temp\devicemodels\scripts\chiller-01-State.js |
+    | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
+    | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
     | Services\data\devicemodels\scripts\Reboot-Method.js | C:\temp\devicemodels\scripts\Reboot-Method.js |
-    | Services\data\devicemodels\scripts\FirmwareUpdate-Method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-Method.js |
-    | Services\data\devicemodels\scripts\EmergencyValveRelease-Method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-Method.js |
-    | Services\data\devicemodels\scripts\IncreasePressure-Method.js | C:\temp\devicemodels\scripts\IncreasePressure-Method.js |
+    | Services\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
+    | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
+    | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
 1. Nyissa meg a **C:\temp\devicemodels\chiller-01.json** fájlt.
 
@@ -417,11 +415,7 @@ Ebben a szakaszban tesztelni az eszköztípusok helyileg a korábbi szakaszokban
 
 Nyissa meg a **eszköz-szimuláció-dotnet-master** mappát a Visual Studio Code egy új példányát a Githubról letöltötte. Kattintson bármelyik **visszaállítása** kijavításához gombok feloldatlan függőségek.
 
-Nyissa meg a **.vscode/launch.json** fájlt, és rendelje hozzá az IoT Hub kapcsolati karakterláncot a **PCS_IOTHUB_CONNSTRING** környezeti változót. Ugyanebben a fájlban adja hozzá a **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** környezeti változót, majd rendelje a Cosmos DB-adatbázis kapcsolati karakterláncát.
-
-Nyissa meg a **WebService/Properties/launchSettings.json** fájlt, és rendelje hozzá az IoT Hub kapcsolati karakterláncot a **PCS_IOTHUB_CONNSTRING** környezeti változót.
-
-Nyissa meg a **WebService/appsettings.ini** fájlt, és módosítsa a beállításokat az alábbiak szerint:
+Nyissa meg a **WebService/appsettings.ini** fájlt, és rendelje hozzá a Cosmos DB kapcsolati karakterláncot a **documentdb_connstring** változó és is módosíthatja a beállításokat az alábbiak szerint:
 
 ```ini
 device_models_folder = C:\temp\devicemodels\

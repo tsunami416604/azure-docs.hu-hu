@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ccf978ab33226dc029d534a343a87a796ab69e8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 563668780c42ca23a1904757f886581f3ad0c5e8
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278105"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Oktatóanyag: A Tableau Online az Azure Active Directory-integráció
 
@@ -144,7 +144,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés, a Tableau Online, hajtsa vég
   
     a. Az Azure Portalon lépjen a **Tableau Online** alkalmazás integráció lapján.
 
-    b. Az a ** felhasználói attribútumok & jogcímek x szakaszban kattintson a Szerkesztés ikonra.
+    b. Az a **felhasználói attribútumok & jogcímek** területén kattintson a Szerkesztés ikonra.
 
    ![Egyszeri bejelentkezés konfigurálása](./media/tableauonline-tutorial/attributesection.png)
 
@@ -189,7 +189,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
     b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    Ha például BrittaSimon\@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
@@ -245,6 +245,6 @@ Ha a hozzáférési panelen, a Tableau Online csempére kattint, akkor kell auto
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

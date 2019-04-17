@@ -8,19 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 04/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 5b4c9e24bdcb6aaf4efde24d747e77d6014b2539
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8104497a1808aa4e92d62f45e37525dba2f47742
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439468"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607167"
 ---
 # <a name="frequently-asked-questions-for-qna-maker"></a>QnA Maker eszközzel kapcsolatos gyakori kérdések
 
 A összeállított lista a QnA Maker szolgáltatással kapcsolatban leggyakrabban feltett kérdések segítségével fogad el a szolgáltatást, gyorsabb és jobb eredményeket.
+
+## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>A Súgó robot a QnA Maker Portal használata
+
+A QnA Maker biztosít egy **súgó** bot segítséget nyújtanak a QnA Maker portálon. A Súgó robot minden webhelyen érhető el. A robot használ a QnA Maker válaszokat, és biztosítja a [ C# Bot Framework code projekt](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot) , a robot, így gyorsan és a saját válaszok robotsablont. 
+
+![! [A QnA Maker biztosít egy ** segítséget nyújtanak a QnA Maker portálon bot súgó **.] (. / media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>A Tudásbázis kezelése
 
