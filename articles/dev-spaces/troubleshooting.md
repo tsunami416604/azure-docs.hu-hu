@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: 16b33203099765633d6bc5992fdc266aa1f28a26
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 4617e878f2af446608ede4e0aed644848564a074
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548780"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609075"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -357,3 +357,25 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 ```
 
 A tartományvezérlő újratelepítése után telepítse újra a podokat.
+
+## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Fejlesztői, szóközök vezérlő és API-k hívása a megfelelő RBAC-engedélyek
+
+### <a name="reason"></a>Ok
+Az Azure fejlesztési tárolóhelyek vezérlő hozzáférő felhasználó rendelkeznie kell olvasási engedélyt a rendszergazdának *kubeconfig* az AKS-fürtön. Például ez az engedély érhető el a [beépített Azure Kubernetes Service fürt rendszergazdai szerepkör](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Az Azure fejlesztési tárolóhelyek vezérlő hozzáférő felhasználó is rendelkeznie kell a *közreműködői* vagy *tulajdonosa* RBAC szerepkör a vezérlő.
+
+### <a name="try"></a>Kipróbálás
+A felhasználók engedélyeit az AKS-fürt frissítésével kapcsolatos további részleteket [Itt](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user).
+
+A felhasználó RBAC szerepkör a vezérlő frissítése:
+
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+1. Keresse meg a vezérlő, amely általában ugyanaz, mint az AKS-fürt tartalmazó erőforráscsoportot.
+1. Engedélyezze a *rejtett típusok megjelenítése* jelölőnégyzetet.
+1. Kattintson a vezérlő.
+1. Nyissa meg a *hozzáférés-vezérlés (IAM)* ablaktáblán.
+1. Kattintson a *szerepkör-hozzárendelések* fülre.
+1. Kattintson a *Hozzáadás* majd *szerepkör-hozzárendelés hozzáadása*.
+    * A *szerepkör* válassza *közreműködői* vagy *tulajdonosa*.
+    * A *rendelhet hozzáféréseket* kiválasztása *az Azure AD-felhasználó, csoport vagy szolgáltatásnév*.
+    * A *kiválasztása* keresse meg a felhasználót, engedélyeket szeretne.
+1. Kattintson a *Save* (Mentés) gombra.

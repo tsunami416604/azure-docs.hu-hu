@@ -8,29 +8,29 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3a5e8d15d9a705892fe54c50e9b79e6d42af78d9
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: f302cbfa7152ae30be434f560c0c39056d40f9f4
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426705"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615761"
 ---
 # <a name="generate-a-device-connection-string-to-connect-to-an-azure-iot-central-application"></a>Csatlakozhat egy Azure IoT Central alkalmazáshoz eszköz kapcsolati karakterláncának létrehozása
 
-Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők, eszköz, amelyet szeretne csatlakozni az IoT Central alkalmazáshoz tartozó kapcsolati karakterláncot létrehozni. Az ebben a cikkben leírt eljárás bemutatják, hogyan gyorsan csatlakozhat egy közös hozzáférésű jogosultságkód (SAS) használatával egyetlen eszközhöz. Ez a megközelítés akkor hasznos, amikor kísérleteztek az IoT-központ vagy a tesztelési eszközök. Alternatív módszerek az éles környezetben használni, lásd: [eszköz csatlakoztatása az Azure IoT Central](concepts-connectivity.md).
+Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők, eszköz, amelyet szeretne csatlakozni az IoT Central alkalmazáshoz tartozó kapcsolati karakterláncot létrehozni. Az ebben a cikkben leírt eljárás bemutatja, hogyan gyorsan csatlakozhat egy közös hozzáférésű jogosultságkód (SAS) használatával egyetlen eszközhöz. Ez a megközelítés akkor hasznos, amikor kísérleteztek az IoT-központ vagy a tesztelési eszközök. Alternatív módszerek az éles környezetben használni, lásd: [eszköz csatlakoztatása az Azure IoT Central](concepts-connectivity.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-1. Azure IoT Central alkalmazáshoz. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
-1. A fejlesztői gépen való [Node.js](https://nodejs.org/) 8.0.0 verzió vagy újabb verziója szükséges. Futtathat `node --version` a parancssorban a verzió ellenőrzéséhez. A Node.js az operációs rendszerek széles körében elérhető.
+- Azure IoT Central alkalmazáshoz. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+- A fejlesztői gépen való [Node.js](https://nodejs.org/) 8.0.0 verzió vagy újabb verziója szükséges. Futtathat `node --version` a parancssorban a verzió ellenőrzéséhez. A Node.js az operációs rendszerek széles körében elérhető.
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
 Az alábbi lépések bemutatják, hogyan tehet szert az adatokat, létre kell hoznia egy SAS-kapcsolati karakterláncot egy eszközhöz:
 
-1. Az a **Explorer**, keresse meg az igazi eszközön, amelyhez csatlakozni szeretne az alkalmazáshoz:
+1. Az a **Device Explorer**, keresse meg az igazi eszközön, amelyhez csatlakozni szeretne az alkalmazáshoz:
 
     ![Valós eszközök kiválasztása](media/howto-generate-connection-string/real-devices.png)
 
@@ -53,7 +53,7 @@ Az alábbi lépések bemutatják, hogyan tehet szert az adatokat, létre kell ho
 Most, hogy már létrehozott egy valós eszköz csatlakozhat az Azure IoT Central alkalmazáshoz tartozó kapcsolati karakterláncot, Íme a javasolt következő lépések:
 
 * [Készítse elő és (C) eszköz DevKit csatlakoztatása](howto-connect-devkit.md)
-* [Raspberry Pi (Python) előkészítése és csatlakoztatása](howto-connect-raspberry-pi-python.md)
-* [Raspberry Pi (C#) előkészítése és csatlakoztatása](howto-connect-raspberry-pi-csharp.md)
+* [Készítse elő, és csatlakozzon a Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
+* [Készítse elő és a Raspberry Pi csatlakoztatása (C#)](howto-connect-raspberry-pi-csharp.md)
 * [Készítse elő és a egy Windows 10 IoT core-eszköz csatlakoztatása (C#)](howto-connect-windowsiotcore.md)
-* [Egy általános Node.js-ügyfél csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-nodejs.md)
+* [Általános Node.js-ügyfél csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-nodejs.md)

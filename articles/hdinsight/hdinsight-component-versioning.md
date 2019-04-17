@@ -9,20 +9,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 03/26/2019
-ms.openlocfilehash: 1c8977090fe0ea0dfd5822c7bb448d313de7cf14
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: a061c2705a5c0155b54dd2fa1e89f19223409a12
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917923"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609440"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?
 
-További információ a [Apache Hadoop](https://hadoop.apache.org/) ökoszisztéma összetevői és verziói a Microsoft Azure HDInsight, valamint a vállalati biztonsági csomag. Emellett ismerje meg a HDInsight Hadoop-összetevők verziók ellenőrzéséhez. 
+További információ a [Apache Hadoop](https://hadoop.apache.org/) ökoszisztéma összetevői és verziói a Microsoft Azure HDInsight, valamint a vállalati biztonsági csomag. Emellett ismerje meg a HDInsight Hadoop-összetevők verziók ellenőrzéséhez.
 
 Minden egyes HDInsight felhőalapú terjesztése egy verziójának megfelelő Hortonworks Data Platform (HDP) verziószáma.
 
 ## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>A különböző HDInsight-verziók az Apache Hadoop-összetevők
+
 Az Azure HDInsight Hadoop fürt több verzió telepítését követően bármikor támogatja. Minden verzió tetszőleges meghatározott verziójához a HDP telepítési és összetevők, hogy a terjesztés belüli lemezképcsomagban hoz létre. 2017. április 4, az Azure HDInsight által használt alapértelmezett fürtverzió 3.6-os és a HDP 2.6 alapul.
 
 A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthatók: 
@@ -30,7 +31,7 @@ A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthat�
 > [!NOTE]  
 > A HDInsight szolgáltatás az alapértelmezett verziójának előzetes értesítés nélkül változhatnak. Ha egy függőségi, adja meg a HDInsight-verzió a .NET SDK használatával az Azure PowerShell és a klasszikus Azure CLI-fürtök létrehozásakor.
 
-| Összetevő | HDInsight 4.0-s (előzetes verzió) | A HDInsight 3.6-os (alapértelmezett) | HDInsight 3.5-ös verzióját. | HDInsight 3.4 | HDInsight 3.3. | HDInsight 3.2-es verzióját | HDInsight 3.1 | HDInsight 3.0 |
+| Összetevő | HDInsight 4.0 | A HDInsight 3.6-os (alapértelmezett) | HDInsight 3.5-ös verzióját. | HDInsight 3.4 | HDInsight 3.3. | HDInsight 3.2-es verzióját | HDInsight 3.1 | HDInsight 3.0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |--- |
 | Hortonworks Data Platform |3.0 |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
 | Az Apache Hadoop és YARN |3.1.1 |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
@@ -44,12 +45,12 @@ A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthat�
 | Apache Sqoop |1.4.7 |1.4.6 |1.4.6 |1.4.6 |1.4.6 |1.4.5 |1.4.4 |1.4.4 |
 | Az Apache Oozie |4.3.1 |4.2.0 |4.2.0 |4.2.0 |4.2.0 |4.1.0 |4.0.0 |4.0.0 |
 | Az Apache Zookeeper |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.6 |3.4.5 |3.4.5 |
-| Apache Storm |1.2.1 |1.1.0 |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
+| Apache Storm |- |1.1.0 |1.0.1 |0.10.0 |0.10.0 |0.9.3 |0.9.1 |-|
 | Az Apache mahout használatával |-|0.9.0+ |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
-| Apache Spark |2.3.1 |2.3.0, 2.2.0, 2.1.0 |1.6.2, 2.0 |1.6.0 |1.5.2 |1.3.1 (csak Windows) |-|-|
+| Apache Spark |2.3.2 |2.3.0, 2.2.0, 2.1.0 |1.6.2, 2.0 |1.6.0 |1.5.2 |1.3.1 (csak Windows) |-|-|
 | Apache Livy |0,5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
-| Apache Kafka | 1.1 |1.1, 1.0-s * (lásd az alábbi megjegyzést) | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1.1 |1.1, 1.0-s * (lásd az alábbi megjegyzést) | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
@@ -70,6 +71,7 @@ Társított fürtverziók HDInsight Hadoop-ökoszisztéma összetevő verziók a
 Lásd: [HDInsight kibocsátási megjegyzései](hdinsight-release-notes.md) további kibocsátási megjegyzések a HDInsight a legfrissebb verzióit.
 
 ## <a name="supported-hdinsight-versions"></a>Támogatott HDInsight-verziók
+
 Az alábbi táblázatok sorolják fel a HDInsight verzióit. Az egyes HDInsight verziószámnak HDP verziók a termék kiadási dátum együtt jelennek meg. A támogatás lejárati és kivezetési dátum is biztosít, ha azok már ismert.
 
 ### <a name="available-versions"></a>Elérhető verzió
@@ -78,9 +80,8 @@ Az alábbi táblázat az Azure Portalon, valamint egyéb telepítési módszerek
 
 | HDInsight-verzió | HDP verzió | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Visszavonás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás az Azure Portalon | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 <br> (Előzetes verzió) |HDP 3.0 |Ubuntu 16.0.4 LTS |2018. szeptember 24. | | |Igen |Igen |
+| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |2018. szeptember 24. | | |Igen |Igen |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017. április 4. | | |Igen |Igen |
-| HDInsight 3.5-ös verzióját. <br> (Spark)\* |HDP 2.6 |Ubuntu 16.0.4 LTS |2016. szeptember 30. |2019. márciusi 13. |2019. márciusi 13. |Igen |Igen |
 
 *&ast; HDInsight 3.5-ös támogatási ki lett terjesztve, csak a Spark-fürt típusa*
 
@@ -146,9 +147,11 @@ Jelenleg csak a következő fürttípus támogatja a vállalati biztonsági csom
 A vállalati biztonsági csomag támogatja az Azure Data Lake Storage használata az elsődleges tárolási és a kiegészítő tárterület is.
 
 ### <a name="pricing-and-sla"></a>Díjszabás és SLA
+
 A vállalati biztonsági csomag díjszabással és a szolgáltatásiszint-szerződés kapcsolatos információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="hdinsight-windows-retirement"></a>A windowsos HDInsight kivonása
+
 A Microsoft Azure HDInsight 3.3-as verziója lett a HDInsight, a Windows előző verzióját. A kivezetési dátum, a HDInsight, a Windows rendszer 2018. július 31-ig. Ha minden HDInsight-fürtök a Windows 3.3-as vagy korábbi, át kell telepítenie a Linux (HDInsight 3.5-ös vagy újabb verziójú) HDInsight előtt 2018. július 31-ig. A Linux OS-ba való migrálás lehetővé teszi lehetővé a létrehozása vagy a HDInsight-fürtök méretezése megőrzése. A HDInsight 3.3-as, a Windows verzió támogatása 2016. június 27-én lejárt.
 
 A HDInsight 3.4-es verziójú verziótól kezdődően a Microsoft közzétette a Linux operációs rendszer csak a HDInsight. Ennek eredményeképpen a HDInsight-összetevőinek néhány érhető el Linux rendszeren csak. Ezek közé tartozik a [Apache Ranger](https://ranger.apache.org/), [Apache Kafka](https://kafka.apache.org/), interaktív lekérdezés [Apache Spark](https://spark.apache.org/), HDInsight alkalmazásokat és az Azure Data Lake Storage elsődleges fájlrendszer. A Linux operációs rendszer csak a HDInsight későbbi kiadásaiban érhetők el. Nem HDInsight, a Windows későbbi verzióiban lesz. 
@@ -156,41 +159,53 @@ A HDInsight 3.4-es verziójú verziótól kezdődően a Microsoft közzétette a
 ## <a name="faqs"></a>Gyakori kérdések
 
 ### <a name="what-is-the-timeline-for-retiring-hdinsight-on-windows"></a>Mi a HDInsight eltávolítása Windows ütemtervét?
+
 2018. július 31-ig lesz a HDInsight, a Windows kivezetési dátuma. Ha a tervezett kivezetési dátum nem ez az Ön régiójában, külön-külön értesítést. 
 
 ### <a name="what-is-the-impact-of-retiring-hdinsight-on-windows-for-existing-customers"></a>Mi a HDInsight Windows eltávolítása a meglévő ügyfeleknek hatását?
+
 A Windows HDInsight kivonják a forgalomból, miután nem HDInsight Windows-fürtöt létrehozni, vagy egy meglévő HDInsight Windows-fürt méretezése. A HDInsight 3.3-as verzió támogatása 2016. június 27-én lejárt. Ezért nincs támogatási vagy hibajavítások a HDInsight 3.3-as vagy régebbi verziójú. A Linux operációs rendszer csak a HDInsight későbbi kiadásaiban érhetők el. Nem HDInsight, a Windows későbbi verzióiban lesz.
  
 ### <a name="which-versions-of-hdinsight-on-windows-are-affected"></a>HDInsight a Windows mely verziói vannak hatással?
+
 Az Azure HDInsight 3.3-as verziója az HDInsight a Windows előző verziója. A Windows HDInsight kivonják a forgalomból, mielőtt az összes Windows HDInsight fürtök 3.3-as verziójának vagy korábbi verzióját a HDInsight 3.5-ös vagy újabb verzió Linux rendszeren kell áttelepíteni. HDInsight Linux rendszeren, a fürtök áttelepítése lehetővé teszi új fürtök létrehozása vagy meglévő fürtök méretezése megőrzése. 
 
 ### <a name="what-do-i-need-to-do"></a>Mi a teendőm?
+
 Egy támogatott HDInsight Linux-fürt a HDInsight Windows-fürtök áttelepítése előtt 2018. július 31-ig. További információ: a [HDInsight dokumentu migrace](hdinsight-migrate-from-windows-to-linux.md). Az Azure HDInsight-verziókkal kapcsolatos részletekért lásd: listájának [támogatott verziók](hdinsight-component-versioning.md#supported-hdinsight-versions). 
 
 ### <a name="where-do-i-find-the-cluster-os-type"></a>Hol találom meg a fürt operációs rendszer típusa?
+
 Az Azure Portalon nyissa meg a HDInsight-fürt – áttekintés oldalra, és keresse meg **fürt típusa** alatt **Essentials**. A fürt operációs rendszer típusa az adott oldalon láthatók. 
 
 ### <a name="i-cant-migrate-to-an-hdinsight-linux-cluster-by-july-31-2018-what-is-the-impact-to-my-hdinsight-windows-cluster"></a>E nem telepíthető át HDInsight Linux-fürt által 2018. július 31-ig. Mi a HDInsight Windows-fürtbe gyakorolt?
+
 A HDInsight Windows-fürt fut,-van, de nem hozható létre egy új HDInsight Windows-fürt, vagy egy meglévő HDInsight Windows-fürt méretezése. 
 
 ### <a name="my-cluster-has-a-net-dependency-how-do-i-resolve-this-dependency-on-linux"></a>Fürt rendelkezik egy .NET-függőséget. Hogyan oldhatom fel ezt a függőséget Linux rendszeren?
+
 A Linux-fürt függőségi használatával oldható meg a [monó projekt](https://www.mono-project.com/). Ezen .NET nyílt forráskódú megvalósítása a HDInsight Linux-fürtök esetén érhető el. További információ: a [HDInsight dokumentu migrace](hdinsight-migrate-from-windows-to-linux.md). 
 
 ### <a name="im-a-new-customer-for-hdinsight-on-windows-how-can-i-create-an-hdinsight-windows-cluster"></a>A HDInsight, a Windows egy új ügyfél vagyok. Hogyan hozható létre egy HDInsight Windows-fürtöt?
+
 2017. július 3, meglévő HDInsight Windows ügyfelek hozhat létre új HDInsight Windows fürtök. Új ügyfeleket nem hozható létre egy HDInsight Windows-fürtön az Azure Portalon PowerShell vagy az SDK használatával. Azt javasoljuk, hogy az új ügyfelek hozzon létre egy Linux rendszerű HDInsight-fürtöt. Meglévő ügyfeleinknek létrehozhatnak új HDInsight Windows fürtök a kivezetési dátum Windows a HDInsight-ig. 
 
 ### <a name="is-there-a-pricing-impact-associated-with-moving-from-hdinsight-on-windows-to-hdinsight-on-linux"></a>A számlázott díjra társított áthelyezését a HDInsight Windows a HDInsight Linux rendszeren van?
+
 Nem, a díjszabása megegyezik a HDInsight vagy operációs rendszereken. 
 
 ### <a name="what-are-the-customer-advantages-associated-with-the-move-to-only-using-hdinsight-on-linux"></a>Mik a csak a HDInsight linuxon való társított ügyfél előnyei?
+
 * Gyorsabb-piacra nyílt forráskódú big data-technológiák a HDInsight szolgáltatással
 * Egy nagy közösségi és támogatási ökoszisztéma
 * Azon képessége, hogy a Hadoop és más big data-technológiák a nyílt forráskódú Közösség aktív fejlesztés
 
 ### <a name="does-hdinsight-on-linux-provide-additional-functionality-beyond-what-is-available-in-hdinsight-on-windows"></a>Biztosítja a HDInsight Linux rendszeren érhető el az Windows a HDInsight további funkciókat?
+
 A HDInsight 3.4-es verziójú verziótól kezdődően a Microsoft közzétette a Linux operációs rendszer csak a HDInsight. Ennek eredményeképpen a HDInsight-összetevőinek néhány érhető el Linux rendszeren csak. Ezek közé tartozik az Apache Ranger, Kafka, interaktív lekérdezés, Spark, a HDInsight-alkalmazások, és az Azure Data Lake Storage elsődleges fájlrendszer. 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight-fürt verziók szolgáltatásiszint-szerződés
+
 A szolgáltatásiszint-szerződés (SLA) van meghatározva, hogy egy _támogatási ablak_. A támogatási időszak az az időtartam, a Microsoft ügyfélszolgálata és a egy HDInsight-fürt verziója támogatott. A verzió-e egy _támogatja a lejárati dátum_ , amely megfelelt, a HDInsight-fürt a támogatási időszakon kívül. További információ a támogatott verziók listájának megtekintéséhez [támogatott HDInsight-fürt verziók](hdinsight-migrate-from-windows-to-linux.md). A megadott verzió (miután elérhetővé vált egy újabb X + 1) X HDInsight támogatás lejárati dátuma számítjuk ki, hogy a későbbi a:  
 
 * 1. képlet: 180 nap hozzáadása a dátum, amikor a HDInsight-fürt verziója X fel lett oldva.
@@ -220,9 +235,8 @@ A szakasz a kibocsátási megjegyzések a Hortonworks Data Platform disztribúci
 * HDInsight fürt 2.1-es verzió használ egy Hadoop-változat alapján [Hortonworks Data Platform 1.3][hdp-1-3-0].
 * HDInsight-fürt verziója 1.6-os használ egy Hadoop-változat alapján [Hortonworks Data Platform 1.1][hdp-1-1-0].
 
-
-
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Alapértelmezett csomópont konfigurációs és virtuális gépek méretei fürtök
+
 Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapértelmezett virtuális gép (VM) méretek.  Ez a diagram szükség a HDInsight-fürtök üzembe helyezése a PowerShell vagy az Azure CLI parancsfájlok létrehozásakor a virtuális gépek méreteinek ismertetése.
 
 > [!IMPORTANT]  

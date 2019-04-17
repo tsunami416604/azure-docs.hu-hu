@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/27/2019
+ms.date: 4/15/2019
 ms.author: barclayn
-ms.openlocfilehash: 19e2fb7736457884d29a142e997338e3c7ef72e7
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d432dc25a1995a2f0348c7626a051f46ffbf418b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540822"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608861"
 ---
 # <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -155,6 +155,10 @@ Igen. Minden egyes HSM készülék teljes egy egyetlen ügyfél számára fennta
 
 A Microsoft nem rendelkezik minden olyan felügyeleti és titkosítási szabályozhatja a hardveres biztonsági MODULT. A Microsoft rendelkezik alapszintű telemetriai adatokat, például a hőmérséklet és az összetevő állapotának lekéréséhez sorosport-kapcsolaton keresztül a szintű hozzáférés figyelése. Ez lehetővé teszi a Microsoft health-problémák proaktív értesítésben. Ha szükséges, az ügyfél letilthatja ezt a fiókot.
 
+### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>K: Mi az a "tenantadmin" fiókot a Microsoft használ, a rendszergazdai felhasználó, "admin" SafeNet HSM-EK éppen hozzászoktam?
+
+A HSM eszközt tartalmaz egy alapértelmezett felhasználói rendszergazda a szokásos alapértelmezett jelszóval. A Microsoft fejeződött jelszavai alapértelmezett használja a Várakozás az ügyfél által üzembe helyezhető készlet bármilyen eszközön pedig nem szeretne. Ez nem felel meg a szigorú biztonsági követelmények. Ebből kifolyólag tudjuk beállítani egy erős jelszót, amelyet a rendszer elveti kiépítés ideje. Is a kiépítés ideje hozunk létre egy új felhasználót a rendszergazda szerepkör "tenantadmin" nevű. Ez a felhasználó rendelkezik az alapértelmezett jelszót, és ügyfelek módosíthatja az első művelet keretében, amikor először jelentkezik be az újonnan kiépített eszköz. Ez a folyamat biztosítja a magas fokú biztonsági és tart fenn a kizárólagos rendszergazdai felügyelet ígérete ügyfeleink számára. Megjegyzendő, hogy használható-e a "tenantadmin" felhasználó a rendszergazdai jelszó alaphelyzetbe állítása, ha egy ügyfél szeretnék használni ezt a fiókot. 
+
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>K: A Microsoft vagy a Microsoft tárelérési kulcsok saját dedikált HSM-ben is?
 
 Nem. A Microsoft nem rendelkezik az ügyfél lefoglalt dedikált HSM tárolt kulcsok elérését.
@@ -181,7 +185,7 @@ Igen. Naplók küldésével HSM a készülék a syslog-kiszolgálónak
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 
-### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>K: A lehetséges ugyanabban a régióban, illetve több régióban a magas rendelkezésre állású konfigurálásához?
+### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>K: Is lehet ugyanabban a régióban, vagy több régióban a magas rendelkezésre állás konfigurálása?
 
 Igen. Magas rendelkezésre állású konfiguráció és beállítás a HSM-ügyfélszoftver Gemalto által biztosított hajtott végre. HSM-EK a helyszíni HSM-EK ugyanazon a VNETEN vagy más virtuális hálózatok ugyanabban a régióban vagy régiók között, vagy helyek közötti virtuális hálózat csatlakozik, vagy pont-pont típusú VPN azonos magas rendelkezésre állású konfiguráció lehet hozzáadni. Megjegyzendő, hogy ez szinkronizálja a megosztottkulcs-anyag csak, és nem meghatározott konfigurációs elemekben, például a szerepköröket.
 
@@ -201,7 +205,7 @@ egy magas rendelkezésre ÁLLÁSÚ csoport tagjai 16 rendelkezik, a kiváló ere
 
 ### <a name="q-what-is-the-sla-for-dedicated-hsm-service"></a>K: Mit jelent a dedikált HSM szolgáltatás SLA?
 
-Nincs megadva a dedikált HSM-szolgáltatás adott üzemidő laboratóriumokban van. A Microsoft biztosítja a hálózati szintű hozzáférés az eszközön, és ezért alkalmazni a standard szintű Azure szolgáltatói szerződésekkel.
+Nincs megadva a dedikált HSM szolgáltatás adott üzemidő garancia arra. A Microsoft biztosítja a hálózati szintű hozzáférés az eszközön, és ezért alkalmazni a standard szintű Azure szolgáltatói szerződésekkel.
 
 ### <a name="q-how-are-the-hsms-used-in-azure-dedicated-hsm-protected"></a>K: A hardveres biztonsági modulok használata az Azure dedikált HSM által védett?
 
@@ -217,7 +221,7 @@ Erősen ajánlott egy helyszíni HSM biztonsági mentési eszköz használata a 
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>K: Hogyan dedikált HSM-támogatást kérni?
 
-A Microsoft és a Gemalto biztosítunk támogatást.  Ha a hardver probléma vagy hálózati hozzáférés, emelni a Microsoft támogatási kérelmet, és rasie kérjük, ha a HSM configuration-, szoftver és az fejlesztési probléma van egy támogatási kérést Gemalto. Ha bizonytalan problémát, egy támogatási kérést withg Microsoft előléptetése és majd Gemalto is bevonhat, mint a szükséges. 
+A Microsoft és a Gemalto biztosítunk támogatást.  Ha a hardver- vagy hálózati hozzáférési hibát, hoz létre egy támogatási kérést a Microsoft, és ha probléma szoftver a HSM konfigurációval rendelkezik, és alkalmazásfejlesztés hozzon létre egy támogatási kérést az Gemalto. Ha bizonytalan problémát, emelje a Microsoft támogatási kérelmet, és majd Gemalto is bevonhat, mint a szükséges. 
 
 ### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>K: Hogyan szerezhetem be az ügyfél szoftver, dokumentáció és integrációs útmutató az SafeNet Luna 7 HSM-be való hozzáférést?
 

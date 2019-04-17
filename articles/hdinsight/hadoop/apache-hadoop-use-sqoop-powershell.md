@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: hrasheed
-ms.openlocfilehash: c3d12224c0eaeafe0559cafdfa0d7c292ded9cee
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: fb15a6389577e8d132b9c5a895a9995a9f7da208
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564491"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607361"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Az Apache Sqoop-feladatok futtatása HDInsight az Apache Hadoophoz készült Azure PowerShell használatával
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Útmutató egy HDInsight-fürt és a egy Azure SQL database vagy SQL Server-adatbázis közötti adatok importálása és exportálása az Azure HDInsight az Apache sqoop használatával feladatok futtatása az Azure PowerShell használatával. Ebben a példában adatokat exportál `/tutorials/usesqoop/data/sample.log` az alapértelmezett tárfiókot, és importálja, hogy a tábla nevű `log4jlogs` SQL Server-adatbázisban.
+Útmutató egy HDInsight-fürt és a egy Azure SQL database vagy SQL Server-adatbázis közötti adatok importálása és exportálása az Azure HDInsight az Apache sqoop használatával feladatok futtatása az Azure PowerShell használatával. Ebben a példában adatokat exportál `/tutorials/usesqoop/data/sample.log` az alapértelmezett tárfiókot, és importálja, hogy a tábla nevű `log4jlogs` SQL Server-adatbázisban. Ez a cikk a fenntartása [használata Apache sqoop használatával a HDInsight Hadoop-keretrendszerrel](./hdinsight-use-sqoop.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,7 +27,8 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * Egy munkaállomás Azure PowerShell-lel [AZ modul](https://docs.microsoft.com/powershell/azure/overview) telepítve.
 
-* HDInsight-fürt, az Azure SQL Server és a meghatározott adatbázis [létrehozása a fürt és az SQL database](./hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+* Megvalósításának [tesztkörnyezet beállítása](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) a [használata Apache sqoop használatával a HDInsight Hadoop-keretrendszerrel](./hdinsight-use-sqoop.md).
+
 
 ## <a name="run-apache-sqoop-by-using-powershell"></a>Az Apache sqoop használatával futtassa a PowerShell használatával
 A következő PowerShell-parancsfájl előzetesen feldolgozza a forrásfájl és majd exportálja azt egy Azure SQL database tábla `log4jlogs`. Cserélje le `CLUSTERNAME`, `CLUSTERPASSWORD`, és `SQLPASSWORD` azokra az értékekre, az előfeltételként szükséges használták.

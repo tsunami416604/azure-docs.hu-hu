@@ -4,18 +4,18 @@ description: Felügyelt identitások Azure-erőforrások és az Azure AD-hiteles
 services: active-directory
 author: MarkusVi
 ms.author: priyamo
-ms.date: 11/28/2018
+ms.date: 04/15/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d524f5f58e7381dd89f36c5d2821e6911ed9ec15
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 79c3f8ae183c78b19f7f520f8154bf9484a1f795
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045457"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607993"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitást támogató szolgáltatások
 
@@ -40,7 +40,7 @@ Tekintse meg az alábbi lista a felügyelt identitás konfigurálása az Azure V
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
+- [Az Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Az Azure Virtual Machine Scale Sets
@@ -55,7 +55,7 @@ Tekintse meg az alábbi lista a felügyelt identitás konfigurálása az Azure V
 - [Azure Portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
+- [Az Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
@@ -213,7 +213,7 @@ Tekintse meg az alábbi lista az Azure Resource Manager-hozzáférés konfigurá
 | Azure Germany |   | Nincs |
 | Azure China 21Vianet |  | Nincs |
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage-blobs-and-queues"></a>Az Azure Storage-blobok és üzenetsorok
 
 | Felhő | Erőforrás-azonosító | status |
 |--------|------------|--------|

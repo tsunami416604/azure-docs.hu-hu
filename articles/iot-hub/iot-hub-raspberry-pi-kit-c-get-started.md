@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
-ms.openlocfilehash: 3b09d9d484c6f17ee591dee9b7202a62502462ef
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6a895d7978f1af3914bbb9dee3594dbfffd9f317
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268413"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607901"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Hub (C)
 
@@ -26,8 +26,11 @@ Még nem rendelkezik egy csomagot? Próbálja ki [Raspberry Pi online szimuláto
 ## <a name="what-you-do"></a>TEENDŐ
 
 * Hozzon létre egy IoT hubot.
+
 * Eszköz regisztrálása az IoT hub pi.
+
 * A telepítő Raspberry Pi.
+
 * A mintaalkalmazás futtatása az IoT hub érzékelői adatokat küldendő Pi-on.
 
 Raspberry Pi csatlakozni az IoT hub által létrehozott. Ezután futtassa a mintaalkalmazás hőmérséklettel és páratartalommal kapcsolatos adatok gyűjtését BME280 érzékelő Pi-on. Végül az érzékelő adatokat küld az IoT hubnak.
@@ -35,32 +38,45 @@ Raspberry Pi csatlakozni az IoT hub által létrehozott. Ezután futtassa a mint
 ## <a name="what-you-learn"></a>Ismertetett témák
 
 * Útmutató az Azure IoT hub létrehozása és az új eszköz kapcsolati karakterláncának beszerzése.
+
 * Hogyan BME280 érzékelő Pi kapcsolódni.
+
 * Hogyan gyűjtheti az érzékelőktől kapott adatok egy mintaalkalmazás Pi-on való futtatásával.
+
 * Hogyan küldhet az IoT hub érzékelői adatokat.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-![Mi szükséges](./media/iot-hub-raspberry-pi-kit-c-get-started/0_starter_kit.jpg)
+![Mi szükséges](./media/iot-hub-raspberry-pi-kit-c-get-started/0-starter-kit.png)
 
 * A Raspberry Pi 2 vagy a Raspberry Pi 3 tábla.
+
 * Aktív Azure-előfizetés. Ha nem rendelkezik Azure-fiók [hozzon létre egy ingyenes Azure próbafiókot](https://azure.microsoft.com/free/) mindössze néhány perc múlva.
+
 * Egy figyelő, egy USB billentyűzetből és egérből Pi csatlakozó.
+
 * Mac vagy Windows vagy Linux rendszert futtató számítógép.
+
 * Internetkapcsolat.
+
 * 16 GB-os vagy újabb microSD-kártyán.
+
 * USB-SD adapter vagy microSD kártya írása a microSD-kártyán operációsrendszer-képet.
+
 * 5 voltos 2-és a egy power adja meg a 6-ragadós micro USB-kábellel.
 
 A következő elemek nem kötelező:
 
 * Az összeállított Adafruit BME280 páratartalom, hőmérséklet és nyomás érzékelő.
+
 * Egy breadboard.
+
 * 6-F/M átkötés fenyegetéseknek.
+
 * Szórt 10 mm LED.
 
-> [!NOTE] 
-> Ezek az elemek nem kötelező, mivel a kód minta támogatási szimulált érzékelői adatokat.
+> [!NOTE]
+> Ezek az elemek nem kötelező, mivel a kódminta szimulált érzékelői adatokat támogatja.
 >
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
@@ -75,35 +91,47 @@ A következő elemek nem kötelező:
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="setup-raspberry-pi"></a>Raspberry Pi beállítása
+## <a name="set-up-raspberry-pi"></a>Raspberry Pi beállítása
+
+Most állítsa be a Raspberry Pi.
 
 ### <a name="install-the-raspbian-operating-system-for-pi"></a>Pi a Raspbian operációs rendszer telepítése
 
 Készítse elő a Raspbian lemezkép telepítésének microSD-kártyán.
 
 1. Töltse le a Raspbian.
+
    1. [Töltse le a Desktopban Raspbian Stretch](https://www.raspberrypi.org/downloads/raspbian/) (a .zip-fájlt).
-   1. Bontsa ki a Raspbian lemezképet a számítógép egyik mappájába.
-1. Telepítse a Raspbian a microSD-kártyán.
+
+   2. Bontsa ki a Raspbian lemezképet a számítógép egyik mappájába.
+
+2. Telepítse a Raspbian a microSD-kártyán.
+
    1. [Töltse le és telepítse a Etcher SD-kártya író segédprogram](https://etcher.io/).
-   1. Etcher futtassa, és jelölje ki a kibontott Raspbian lemezképét az 1. lépésben.
-   1. Válassza ki a microSD-kártyán meghajtót. Vegye figyelembe, hogy Etcher előfordulhat, hogy már ki van választva a megfelelő meghajtót.
-   1. Kattintson a Flash Raspbian telepíteni a microSD-kártyán.
-   1. Eltávolítja a számítógépről a microSD-kártyán, amikor a telepítés befejeződött. Biztonságos-e a microSD-kártyán közvetlenül eltávolítani, mert Etcher automatikusan kiadása, vagy a befejezéskor microSD-kártyán leválasztja.
-   1. A Pi szúrhat be a microSD-kártyán.
+
+   2. Etcher futtassa, és jelölje ki a kibontott Raspbian lemezképét az 1. lépésben.
+
+   3. Válassza ki a microSD-kártyán meghajtót. Vegye figyelembe, hogy Etcher előfordulhat, hogy már ki van választva a megfelelő meghajtót.
+
+   4. Kattintson a Flash Raspbian telepíteni a microSD-kártyán.
+
+   5. Eltávolítja a számítógépről a microSD-kártyán, amikor a telepítés befejeződött. Biztonságos-e a microSD-kártyán közvetlenül eltávolítani, mert Etcher automatikusan kiadása, vagy a befejezéskor microSD-kártyán leválasztja.
+
+   6. A Pi szúrhat be a microSD-kártyán.
 
 ### <a name="enable-ssh-and-spi"></a>Az SSH és ÜTI engedélyezése
 
 1. Pi csatlakozni a monitorból, billentyűzetből és egérből. Indítsa el a Pi, majd jelentkezzen be Raspbian használatával `pi` felhasználónevet és a `raspberry` jelszóként.
-1. A Raspberry ikonra > **beállítások** > **Raspberry Pi konfigurációs**.
+ 
+2. A Raspberry ikonra > **beállítások** > **Raspberry Pi konfigurációs**.
 
-   ![A Raspbian beállítások menü](./media/iot-hub-raspberry-pi-kit-c-get-started/1_raspbian-preferences-menu.png)
+   ![A Raspbian beállítások menü](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-1. Az a **felületek** lapra, és állítsa **ÜTI** és **SSH** való **engedélyezése**, és kattintson a **OK**. Ha nem rendelkezik fizikai érzékelők, és szeretné használni a szimulált érzékelői adatokat, ez a lépés nem kötelező.
+3. Az a **felületek** lapra, és állítsa **ÜTI** és **SSH** való **engedélyezése**, és kattintson a **OK**. Ha nem rendelkezik fizikai érzékelők, és szeretné használni a szimulált érzékelői adatokat, ez a lépés nem kötelező.
 
-   ![ÜTI és a Raspberry Pi-on SSH engedélyezése](./media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
+   ![ÜTI és a Raspberry Pi-on SSH engedélyezése](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 
-> [!NOTE] 
+> [!NOTE]
 > Az SSH és ÜTI engedélyezéséhez találhat további segédanyagok [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) és [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
 >
 
@@ -111,9 +139,9 @@ Készítse elő a Raspbian lemezkép telepítésének microSD-kártyán.
 
 Csatlakozhat a breadboard és átkötés fenyegetéseknek LED és a egy BME280 Pi módon. Ha nem rendelkezik az érzékelő [kihagyhatja ezt a szakaszt](#connect-pi-to-the-network).
 
-![A Raspberry Pi és érzékelő kapcsolat](./media/iot-hub-raspberry-pi-kit-c-get-started/3_raspberry-pi-sensor-connection.png)
+![A Raspberry Pi és érzékelő kapcsolat](./media/iot-hub-raspberry-pi-kit-c-get-started/3-raspberry-pi-sensor-connection.png)
 
-A BME280 érzékelő hőmérséklettel és páratartalommal kapcsolatos adatokat gyűjthet. És a LED fog villogni, ha egy eszköz és a felhő közötti kommunikációt. 
+A BME280 érzékelő hőmérséklettel és páratartalommal kapcsolatos adatokat gyűjthet. És a LED fog villogni, ha egy eszköz és a felhő közötti kommunikációt.
 
 Érzékelő PIN-kód használja a következő kábelezés:
 
@@ -132,18 +160,17 @@ Kattintson ide a megtekintéshez [Raspberry Pi-2 és 3 PIN-kód-leképezések](h
 
 Miután sikeresen csatlakozott a Raspberry Pi BME280, kell tenni, például a kép alatt.
 
-![Csatlakoztatott Pi és BME280](./media/iot-hub-raspberry-pi-kit-c-get-started/4_connected-pi.jpg)
+![Csatlakoztatott Pi és BME280](./media/iot-hub-raspberry-pi-kit-c-get-started/4-connected-pi.png)
 
 ### <a name="connect-pi-to-the-network"></a>A Pi csatlakoztatása a hálózathoz
 
 A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet-kábel használatával Pi csatlakoztatása a vezetékes hálózathoz, vagy kövesse a [utasításait a Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/) Pi a vezeték nélküli hálózathoz való kapcsolódáshoz. Miután a Pi sikeresen csatlakozott a hálózathoz, jegyezze fel az kell a [IP-címét a Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
 
-![Vezetékes hálózathoz csatlakozik](./media/iot-hub-raspberry-pi-kit-c-get-started/5_power-on-pi.jpg)
-
+![Vezetékes hálózathoz csatlakozik](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
 
 ## <a name="run-a-sample-application-on-pi"></a>A mintaalkalmazás futtatása Pi-on
 
-### <a name="login-to-your-raspberry-pi"></a>Jelentkezzen be a Raspberry Pi
+### <a name="sign-into-your-raspberry-pi"></a>Jelentkezzen be a Raspberry Pi
 
 1. A következő SSH-ügyfelet a gazdagép számítógépről szeretne csatlakozni a Raspberry Pi valamelyikét használja.
    
@@ -151,10 +178,10 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
    1. Töltse le és telepítse [PuTTY](https://www.putty.org/) Windows számára. 
    1. Másolja ki a gazdagép nevét (vagy IP-cím), a Pi szakasz IP-címét, és válassza ki az SSH a kapcsolat típusaként.
    
-   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
-   
+   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7-putty-windows.png)
+
    **Mac- és Ubuntu-felhasználók**
-   
+
    A beépített SSH-ügyfél használata Ubuntu vagy macOS rendszeren. Előfordulhat, hogy kell futtatnia `ssh pi@<ip address of pi>` Pi SSH-n keresztül kapcsolódni.
    > [!NOTE]
    > Az alapértelmezett felhasználónév az `pi` , és a jelszó `raspberry`.
@@ -189,7 +216,7 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
    cmake . && make
    ```
    
-   ![Kimeneti létrehozása](./media/iot-hub-raspberry-pi-kit-c-get-started/7_build-output.png)
+   ![Kimeneti létrehozása](./media/iot-hub-raspberry-pi-kit-c-get-started/7-build-output.png)
 
 1. A mintaalkalmazás futtatása a következő parancs futtatásával:
 
@@ -203,7 +230,7 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
 
 Amely az érzékelőktől kapott adatok és az IoT hubnak küldött üzeneteket jeleníti meg a következő kimenetnek kell megjelennie.
 
-![Kimenet – Raspberry Pi az IoT hubnak küldött érzékelőktől kapott adatok](./media/iot-hub-raspberry-pi-kit-c-get-started/8_run-output.png)
+![Kimenet – Raspberry Pi az IoT hubnak küldött érzékelőktől kapott adatok](./media/iot-hub-raspberry-pi-kit-c-get-started/8-run-output.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Olvassa el a hub által fogadott üzeneteket
 

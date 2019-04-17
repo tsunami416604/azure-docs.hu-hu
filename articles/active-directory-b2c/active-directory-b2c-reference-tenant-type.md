@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 67f87729dbfb792b88f28a772f15e233f0fa60dc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 928c6316ea964472faadc82213c4c1ff81c3e038
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452113"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608242"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Régiónkénti elérhetőség és az adatok tárolási helye
 Régiónkénti elérhetőség és az adattárolási két különböző fogalmak eltérően az Azure AD B2C a többi Azure. Ez a cikk a két módszer közötti különbségeket ismertetik, és a ezek hogyan vonatkoznak az Azure és az Azure AD B2C összehasonlítása.
@@ -45,7 +45,7 @@ A következő országban és régióban az Egyesült Államokban található ada
 
 Adatok Európában találhatók, a következő országok és régiók:
 
-> Algéria, Ausztria, Azerbajdzsán, Bahreini Királyság, Fehéroroszországból, Belgium, bolgár, horvát, Ciprus, Cseh Köztársaság, Dánia, Egyiptom, észt, Finnország, Franciaország, Németország, Görögország, Magyarország, Izland, Írországban, izraeli, Olaszország, Jordánia, Kazahsztán, Kenya, kuvaiti, Lativa, Libanon, Liechtenstein, Lituania, Luxembourgban, Macedónia VJK, Málta, Montenegró, Marokkó, holland, Nigéria, Norvégia, Omán, pakisztáni, Lengyelország, Portugália, Katar, román, orosz, Szaúd-Arábia, szerb, Szlovákia, szlovén, Dél-afrikai, Spanyolország, Svédország, Svájc, Tunézia, Törökország, ukrán, Egyesült Arab emírségekbeli és Egyesült Királyság.
+> Algéria, Ausztria, Azerbajdzsán, Bahrein, Belarusz, Belgium, Bulgária, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Egyiptom, Észtország, Finnország, Franciaország, Németország, Görögország, Hollandia, Izland, Írország, Izrael, Olaszország, Jordánia, Kazahsztán, Kenya, Kuvait, Lativa, Libanon, Liechtenstein, Litvánia, Luxemburg, Macedónia Észak, Málta, Montenegró, Marokkó, Hollandia, Nigéria, Norvégia, Omán, Pakisztán, Olaszország, Portugália, Katar, Románia, orosz, Szaúd-Arábia, Szerbia, Szlovákia, Szlovénia, Dél-Afrika, Spanyolország, Svédország, Svájc, Tunézia, Törökország, Ukrajna, Egyesült Arab Emírségek és egyesült királyságbeli.
 
 A fennmaradó országban és régióban vannak hozzáadva a listához.  Most a kiválasztásával a fenti országok vagy régiók bármelyike továbbra is használhatja az Azure AD B2C-t.
 

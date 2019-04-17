@@ -12,24 +12,33 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 4862377a8441d5ec920d6b52dbed8ad405144227
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1ce9c5ddb08f3e81a0f0050048a8afef24e4c625
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57857963"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607534"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Service Bus-üzenettémák és előfizetések használata PHP
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Ez a cikk bemutatja, hogyan használható a Service Bus-üzenettémák és előfizetések. A PHP és a használati minták írt a [php-hez készült Azure SDK-t](../php-download-sdk.md). Az ismertetett forgatókönyvek között megtalálható **üzenettémák és előfizetések létrehozása**, **előfizetés-szűrők létrehozása**, **üzenetek küldése egy üzenettémakörbe**, **fogadása előfizetés üzeneteit**, és **üzenettémák és előfizetések törlése**.
+Ez a cikk bemutatja, hogyan használható a Service Bus-üzenettémák és előfizetések. A PHP és a használati minták írt a [php-hez készült Azure SDK-t](../php-download-sdk.md). Az ismertetett forgatókönyvek a következők:
 
-[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+- Üzenettémák és előfizetések létrehozása 
+- Előfizetés-szűrők létrehozása 
+- Üzenetek küldése egy üzenettémakörbe 
+- Üzenetek fogadása egy előfizetésből
+- Üzenettémák és előfizetések törlése
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+## <a name="prerequisites"></a>Előfeltételek
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [Visual Studio vagy az MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Kövesse lépéseket a [a rövid útmutató: Az Azure portal használatával hozzon létre egy Service Bus-témakörbe, és a témakörbe az előfizetések](service-bus-quickstart-topics-subscriptions-portal.md) hozhat létre egy Service Bus **névtér** , és a **kapcsolati karakterlánc**.
+
+    > [!NOTE]
+    > Létrehozhat egy **témakör** és a egy **előfizetés** használatával a témakörbe **PHP** ebben a rövid útmutatóban. 
 
 ## <a name="create-a-php-application"></a>PHP-alkalmazás létrehozása
 A PHP-alkalmazás létrehozása, amely hozzáfér az Azure Blob service egyetlen követelménye, hogy az osztályok hivatkozhat a [php-hez készült Azure SDK-t](../php-download-sdk.md) származó a kódon belül. Bármely fejlesztői eszközök segítségével hozzon létre az alkalmazás vagy a Jegyzettömböt.
@@ -131,7 +140,7 @@ catch(ServiceException $e){
 Üzenettémakör-előfizetéseket is jönnek létre az a `ServiceBusRestProxy->createSubscription` metódust. Az előfizetések el vannak nevezve, és rendelkezhetnek olyan szűrőkkel, amelyek korlátozzák az előfizetés virtuális üzenetsorának átadott üzenetek készletét.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
-Ha nincs meghatározva szűrő egy új előfizetés létrehozásakor, a **MatchAll** szűrő (alapértelmezett) használatos. Ha a **MatchAll** szűrőt használ, a témakörbe közzétett összes üzenetet az előfizetés virtuális üzenetsorának vannak elhelyezve. Az alábbi példa egy "mysubscription" nevű előfizetést hoz létre, és használja az alapértelmezett **MatchAll** szűrőt.
+Ha nincs meghatározva szűrő egy új előfizetés létrehozásakor, a **MatchAll** szűrő (alapértelmezett) használatos. Ha a **MatchAll** szűrőt használ, a témakörbe közzétett összes üzenetet az előfizetés virtuális üzenetsorának vannak elhelyezve. Az alábbi példa egy nevű előfizetést hoz létre `mysubscription` , és használja az alapértelmezett **MatchAll** szűrőt.
 
 ```php
 require_once 'vendor/autoload.php';

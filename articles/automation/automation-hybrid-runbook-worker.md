@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 785cf5159615b4a81740e853f2b513f0e6d74aec
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 55dff6cf073612e3e5473da3a5f1bf722b2ccdbd
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545841"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608554"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizálhatja az erőforrások az adatközpontban vagy a felhőben a hibrid Runbook-feldolgozó
 
@@ -27,6 +27,9 @@ Az alábbi ábrán ez a funkció:
 Minden egyes hibrid Runbook-feldolgozó, amely az ügynök telepítésekor adja meg egy hibrid Runbook-feldolgozó csoport tagja. Egy csoport egy adott ügynök is tartalmazhat, de több ügynök is telepíthető egy csoportot a magas rendelkezésre állás érdekében.
 
 Amikor elindít egy runbookot a hibrid Runbook-feldolgozón, adja meg a csoportot, amely a futtatott. A csoport minden egyes feldolgozóhoz kérdezze le az Azure Automation-feladat elérhető megtekintéséhez. Ha egy feladat érhető el, az első worker a feladatot veszi. A feldolgozási idő, a feladatok várólista attól függ, a hibrid feldolgozói hardverprofil és a terhelés. Egy adott feldolgozó nem adható meg. Hibrid Runbook-feldolgozók ne ossza meg, amelyek az Azure próbakörnyezetbe lefordítja a korlátokat számos. A hely a lemezen, a memória vagy a hálózati szoftvercsatorna nem kell ugyanazon korlátait. Hibrid Runbook-feldolgozók kizárólag az erőforrásokat a hibrid Runbook-feldolgozón maga is jelent. Emellett a hibrid Runbook-feldolgozók ne ossza meg a 180 perc [igazságos elosztás](automation-runbook-execution.md#fair-share) , amelyeket az Azure próbakörnyezetbe lefordítja a határidő. A szolgáltatásra vonatkozó korlátozások az Azure próbakörnyezetbe lefordítja a és a hibrid Runbook-feldolgozók kapcsolatos további információkért tekintse meg a feladat [korlátok](../azure-subscription-service-limits.md#automation-limits) lapot.
+
+> [!NOTE]
+> Hibrid Runbook-feldolgozók nem támogatottak az Azure China.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>A hibrid Runbook Worker telepítése
 

@@ -1,18 +1,18 @@
 ---
 title: WebSocket-támogatás az Azure Application Gatewayjel |} A Microsoft Docs
 description: Ez az oldal az Application Gateway WebSocket-támogatás áttekintése.
-author: amsriva
+author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/18/2019
-ms.openlocfilehash: bae4b3d955076679a5640717ac6f5446e3951fb9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168119"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606905"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>WebSocket-támogatás az Application Gateway áttekintése
 
@@ -32,7 +32,7 @@ WebSocket kapcsolatot létesíteni, egy adott HTTP-alapú kézfogás cseréje az
 
 ### <a name="listener-configuration-element"></a>Figyelő konfigurációs elem
 
-Egy meglévő HTTP-figyelő használható támogatják a WebSocket-forgalmat. Az alábbiakban látható egy egy sablon mintafájl származó httpListeners-elem kódrészlete. A HTTP és HTTPS figyelői WebSocket támogatja, és tegye biztonságossá a WebSocket-forgalmat kell lennie. Hasonló módon használhatja a [portál](application-gateway-create-gateway-portal.md) vagy [PowerShell](application-gateway-create-gateway-arm.md) egy application gateway létrehozása a figyelők a port a 80-as/443-as támogatják a WebSocket-forgalmat.
+Egy meglévő HTTP-figyelő használható támogatják a WebSocket-forgalmat. Az alábbiakban látható egy egy sablon mintafájl származó httpListeners-elem kódrészlete. A HTTP és HTTPS figyelői WebSocket támogatja, és tegye biztonságossá a WebSocket-forgalmat kell lennie. Hasonlóképpen segítségével a portálon vagy az Azure PowerShell figyelők az application gateway létrehozása a port a 80-as/443-as támogatják a WebSocket-forgalmat.
 
 ```json
 "httpListeners": [
@@ -123,5 +123,4 @@ Egy másik ennek oka, hogy application gateway háttérrendszer állapotadat-min
 
 ## <a name="next-steps"></a>További lépések
 
-Miután megismerkedett a WebSocket-támogatás, látogasson el [hozzon létre egy application gateway](application-gateway-create-gateway.md) a WebSocket – első lépések engedélyezve a webalkalmazáshoz.
-
+Miután megismerkedett a WebSocket-támogatás, látogasson el [hozzon létre egy application gateway](quick-create-powershell.md) a WebSocket – első lépések engedélyezve a webalkalmazáshoz.

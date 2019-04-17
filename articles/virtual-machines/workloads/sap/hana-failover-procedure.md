@@ -14,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48bea302f2f8e878275e6a7c222d703e0f31f239
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ca4d5912d75dd7b33737f61737a209284b7a5a47
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44392244"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616152"
 ---
-# <a name="disaster-recovery-failover-procedure"></a>Vészhelyreállítási feladatátvétel eljárást
+# <a name="disaster-recovery-failover-procedure"></a>Vészhelyreállítási feladatátvételi eljárás
 
 
 >[!IMPORTANT]
@@ -87,7 +87,7 @@ A következő feladatütemezési lépéseket foglalja magában, helyreállítás
 1. A biztonsági mentési helyének módosításához **/hana/logbackups** SAP HANA Studio használatával.
    ![Módosítsa a biztonsági mentési DR-helyreállítás helyének megadása](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
 
-1. SAP HANA megvizsgálja a biztonságimásolat-fájl helyeken keresztül, és a legutóbbi tranzakciónapló biztonsági mentését való visszaállításához javasol. Az ellenőrzés eltarthat néhány percig, amíg egy képernyő, például a következő jelenik meg: ![tranzakciónaplók biztonsági mentését a DR-helyreállítás listája](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
+1. SAP HANA megvizsgálja a biztonságimásolat-fájl helyeken keresztül, és a legutóbbi tranzakciónapló biztonsági mentését való visszaállításához javasol. A vizsgálat is igénybe vehet néhány percet, amíg egy képernyő, például a következő jelenik meg: ![Tranzakciónapló biztonsági mentései DR-helyreállítás listája](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
 
 1. Módosítsa az alapértelmezett beállításokat:
 
@@ -104,7 +104,7 @@ Egy folyamat ablakban is látható itt, például meg kell jelennie. Ne feledje,
 
 ![Visszaállítási állapota](./media/hana-overview-high-availability-disaster-recovery/restore_progress_dr5.PNG)
 
-Ha a visszaállítás úgy tűnik, hogy időnként a **Befejezés** képernyőn, és nem a folyamat képernyő megjelenítése, győződjön meg arról, hogy a feldolgozó csomópontokon futó SAP HANA-példányok futnak. Ha szükséges, indítsa el manuálisan a SAP HANA-példányokhoz.
+Ha a visszaállítás úgy tűnik, hogy nem válaszol a **Befejezés** képernyőn, és nem a folyamat képernyő megjelenítése, győződjön meg arról, hogy a feldolgozó csomópontokon futó SAP HANA-példányok futnak. Ha szükséges, indítsa el manuálisan a SAP HANA-példányokhoz.
 
 
 ## <a name="failback-from-a-dr-to-a-production-site"></a>A Vészhelyreállítás a feladat-visszavétel éles helyhez

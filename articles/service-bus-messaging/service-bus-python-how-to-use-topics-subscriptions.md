@@ -12,27 +12,34 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: a12288de2f9a7682fb433dd0d5c7905cc76c12b9
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 102fe85916194648501be3d2cb39d8bcda9e9f5c
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351660"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607075"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Service Bus-üzenettémák és előfizetések használata pythonnal
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Ez a cikk a Service Bus-üzenettémakörök és -előfizetések használatát ismerteti. A minták a Python és -felhasználási nyelven írták az [Azure Python SDK-csomagot][Azure Python package]. Az ismertetett forgatókönyvek között megtalálható **üzenettémák és előfizetések létrehozása**, **előfizetés-szűrők létrehozása**, **üzenetek küldése egy üzenettémakörbe**, **fogadása előfizetés üzeneteit**, és **üzenettémák és előfizetések törlése**. Üzenettémakörökkel és előfizetésekkel kapcsolatos további információkért lásd: a [lépések](#next-steps) szakaszban.
+Ez a cikk a Service Bus-üzenettémakörök és -előfizetések használatát ismerteti. A minták a Python és -felhasználási nyelven írták az [Azure Python SDK-csomagot][Azure Python package]. Az ismertetett forgatókönyvek a következők:
 
-[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+- Üzenettémák és előfizetések létrehozása 
+- Előfizetés-szűrők létrehozása 
+- Üzenetek küldése egy üzenettémakörbe 
+- Üzenetek fogadása egy előfizetésből
+- Üzenettémák és előfizetések törlése
 
-> [!NOTE] 
-> Ha Python telepítenie kell, vagy a [Azure Python-csomag][Azure Python package], tekintse meg a [Python-telepítési útmutató](../python-how-to-install.md).
+## <a name="prerequisites"></a>Előfeltételek
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [Visual Studio vagy az MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Kövesse lépéseket a [a rövid útmutató: Az Azure portal használatával hozzon létre egy Service Bus-témakörbe, és a témakörbe az előfizetések](service-bus-quickstart-topics-subscriptions-portal.md) hozhat létre egy Service Bus **névtér** , és a **kapcsolati karakterlánc**.
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+    > [!NOTE]
+    > Létrehozhat egy **témakör** és a egy **előfizetés** használatával a témakörbe **Python** ebben a rövid útmutatóban. 
+3. Telepítés [Azure Python-csomag][Azure Python package]. Tekintse meg a [Python-telepítési útmutató](../python-how-to-install.md).
 
 ## <a name="create-a-topic"></a>Üzenettémakör létrehozása
 

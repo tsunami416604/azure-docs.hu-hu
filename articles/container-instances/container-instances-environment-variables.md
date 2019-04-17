@@ -5,18 +5,20 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 2ea85b2b04600708381423e16408ba34b1e27566
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c311eea80c604366196a0725e4f9982bb43f8b5d
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904899"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606888"
 ---
-# <a name="set-environment-variables"></a>Környezeti változók beállítása
+# <a name="set-environment-variables-in-container-instances"></a>Környezeti változók beállítása a container Instances szolgáltatásban
 
-A környezeti változók beállítása a container Instances szolgáltatásban az lehetővé teszi, hogy az alkalmazás vagy a tároló által futtatott parancsfájl dinamikus konfiguráció. A környezeti változók beállítása egy tárolóban, adja meg őket, amikor létrehoz egy tárolópéldányt. Beállíthatja a környezeti változók egy tárolóhoz, az indításakor a [Azure CLI-vel](#azure-cli-example), [Azure PowerShell-lel](#azure-powershell-example), és a [az Azure portal](#azure-portal-example).
+A környezeti változók beállítása a container Instances szolgáltatásban az lehetővé teszi, hogy az alkalmazás vagy a tároló által futtatott parancsfájl dinamikus konfiguráció. Ez hasonlít a `--env` parancssori argumentumot `docker run`. 
+
+A környezeti változók beállítása egy tárolóban, adja meg őket, amikor létrehoz egy tárolópéldányt. Ez a cikk példákat mutat a környezeti változók beállítása, ha a tároló indítása a [Azure CLI-vel](#azure-cli-example), [Azure PowerShell-lel](#azure-powershell-example), és a [az Azure portal](#azure-portal-example). 
 
 Például, ha futtatja a Microsoft [aci-wordcount] [ aci-wordcount] tárolórendszerképet, és módosíthatja annak viselkedését adja meg az alábbi környezeti változókat:
 
@@ -241,7 +243,7 @@ my-secret-value
 
 ## <a name="next-steps"></a>További lépések
 
-Feladatalapú forgatókönyvek, például a kötegelt feldolgozási egy nagy méretű adathalmazt a különböző tárolók esetében is kihasználhatják a futásidőben egyéni környezeti változókat. Futó tárolók feladataival kapcsolatos további információkért lásd: [tárolóalapú feladatok futtatása az Azure Container Instances szolgáltatásban](container-instances-restart-policy.md).
+Feladatalapú forgatókönyvek, például a kötegelt feldolgozási egy nagy méretű adathalmazt a különböző tárolók esetében is kihasználhatják a futásidőben egyéni környezeti változókat. Futó tárolók feladataival kapcsolatos további információkért lásd: [tárolóalapú feladatok futtatása az újraindítási házirendek](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-env-vars-01]: ./media/container-instances-environment-variables/portal-env-vars-01.png

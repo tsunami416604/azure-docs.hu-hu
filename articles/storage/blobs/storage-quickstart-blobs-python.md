@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: tamram
-ms.openlocfilehash: 95b960245e00a353bb165e1f1d38db56bce62a8f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a1a931573967f12eb7abc791bd951dc6e1e9e60b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996724"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607398"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Gyors útmutató: Feltöltése, letöltése és a blobok listázása a Python használatával
 
-A rövid útmutató azt ismerteti, hogyan használható a Python blokkblobok feltöltésére, letöltésére és listázására egy, az Azure Blob Storage-ban található tárolóban. 
+Ez a rövid útmutatóban bemutatjuk, hogyan használhatja a Pythont feltöltése, letöltése és listázása az Azure Blob storage tárolóban a blokkblobok használatát támogatják. Blobok egyszerűen objektumokat képes tárolni bármilyen szöveget vagy bináris adatok (például képek, dokumentumok, adatfolyamok, adatok archiválása, stb.) mennyiségét, és nem fájlmegosztások séma nélküli táblák és üzenetsorok az Azure Storage-ban azonosak legyenek. (További információkért lásd: [Azure Storage bemutatása](/azure/storage/common/storage-introduction.md).)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: f0540ff1fc1844c133e238267770b971992f61e6
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 0c2ca8c17abd6ac5e540beec1bde715931e022a4
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905001"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609404"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Azure virtuális gépek replikálása egyik régióból a másikba-támogatási mátrixa
 
@@ -22,12 +22,12 @@ Ez a cikk összefoglalja támogatott konfigurációk és összetevők replikál�
 
 ## <a name="deployment-method-support"></a>Üzembe helyezési módszer támogatása
 
-**Környezet** |  **Támogatás**
+**Üzembe helyezés** |  **Támogatás**
 --- | ---
 **Azure Portal** | Támogatott.
-**PowerShell** | Támogatott. [Részletek](azure-to-azure-powershell.md)
+**PowerShell** | Támogatott. [További információ](azure-to-azure-powershell.md)
 **REST API** | Támogatott.
-**parancssori felület** | Jelenleg nem támogatott
+**Parancssori felület** | Jelenleg nem támogatott
 
 
 ## <a name="resource-support"></a>Erőforrások támogatása
@@ -83,7 +83,7 @@ A Site Recovery támogatja a a jelen szakaszban felsorolt operációs rendszert 
 
 **Operációs rendszer** | **Részletek**
 --- | ---
-Windows Server 2019 |
+A Windows Server 2019 |
 Windows Server 2016  | A Server Core, kiszolgáló asztali kezelőfelülettel
 Windows Server 2012 R2 |
 Windows Server 2012 |
@@ -99,7 +99,7 @@ Ubuntu 14.04 LTS Server | [Támogatott kernel-verzióknál](#supported-ubuntu-ke
 Ubuntu 16.04 LTS Server | [Támogatott kernel verziója](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Előfordulhat, hogy Ubuntu-kiszolgálók jelszó alapú hitelesítési és bejelentkezési és a cloud-init-csomag konfigurálása a cloud-beli virtuális gépek jelszóalapú bejelentkezés le van tiltva, a feladatátvétel (függően a cloudinit konfigurálása). Jelszóalapú bejelentkezés újból engedélyezhető a virtuális gépen az ügyfélszolgálattól a jelszó alaphelyzetbe állításával > Hibaelhárítás > Beállítások menüjében (a feladatátvételen átesett virtuális gép az Azure Portalon.
 Debian 7 | [Támogatott kernel-verzióknál](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [Támogatott kernel-verzióknál](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1, SP2 SP3 VERZIÓT KELL HASZNÁLNIA. [(Támogatott kernel-verzióknál)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 12 | SP1, SP2-T AZ SP3 SP4. [(Támogatott kernel-verzióknál)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> A gépek replikálásához SP3 SP4 való frissítés nem támogatott. Ha a replikált gépek frissítve lett, tiltsa le a replikációt, és engedélyezze újra a frissítés után a replikáció szüksége.
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 <br/><br/> A Red Hat-kompatibilis kernel vagy a szoros vállalati Kernel Release-3 (UEK3) fut.
@@ -132,7 +132,7 @@ Debian 8 | 9.19 | 3.16.0-4-amd64 to 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.23 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.101-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.79-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server (SP1, SP2, SP3, SP4) 12 | 9.23 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.101-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.79-default SP3 4.4.73-5-default</br></br>SP4 4.12.14-94.41-default 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.22 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.72-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.21 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.72-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.20 | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.69-default SP3 4.4.73-5-default |
@@ -162,7 +162,7 @@ Az RBAC-szabályzatok | Nem támogatott | A szerepköralapú hozzáférés-vezé
 
 ## <a name="replicated-machines---disk-actions"></a>Replikált gépek - lemez műveletek
 
-**Műveletek** | **Részletek**
+**Művelet** | **Részletek**
 -- | ---
 A replikált virtuális gép lemez átméretezése | Támogatott
 Adjon hozzá egy lemezt egy replikált virtuális gép | Nem támogatott.<br/><br/> Meg kell letiltani a virtuális gép adja hozzá a lemezt, és majd újból engedélyezze a replikációt.
@@ -217,7 +217,7 @@ Az alábbi táblázat foglalja össze a Site Recovery korlátait.
 - Lemezenként adatokat a forgalom és a egy virtuális gép adatainak churn figyelembe venni két korlátozva van.
 - Például ha egy prémium szintű P20 lemez használjuk, az alábbi táblázatban leírtak szerint a Site Recovery kezelni tud lemez, adatforgalom az 5 MB, legfeljebb öt ilyen lemezek virtuális gépenkénti, a 25 MB/s összes adatforgalom virtuális gépenként miatt.
 
-**Tárolási célja** | **Forráslemez átlagos i/o** |**Átlagos lemez adatváltozása** | **Teljes lemez napi adatváltozása**
+**Tárolási célja** | **Forráslemez átlagos i/o** |**Forráslemez átlagos adatváltozása** | **Forráslemez teljes napi adatváltozása**
 ---|---|---|---
 Standard szintű Storage | 8 KB | 2 MB/s | Lemezenként 168 GB
 Prémium szintű P10 vagy P15 lemez | 8 KB  | 2 MB/s | Lemezenként 168 GB
@@ -241,8 +241,8 @@ Azure DNS | Támogatott |
 Egyéni DNS  | Támogatott |
 Hitelesített proxykiszolgálói | Támogatott | [Learn more].(site-recovery-azure-to-azure-networking-guidance.md)   
 Authenticated Proxy | Nem támogatott | Ha a virtuális gép egy hitelesített proxyt használ a kimenő hálózati kapcsolatot, azt nem lehet replikálni az Azure Site Recovery használatával.    
-A helyszíni VPN-helyek közötti kapcsolat<br/><br/>(a vagy ExpressRoute nélkül)| Támogatott | Győződjön meg arról, hogy úgy, hogy a Site recovery nem adatforgalmat helyszíni az udr-EK és NSG-k vannak konfigurálva. [Részletek](site-recovery-azure-to-azure-networking-guidance.md)    
-Virtuális hálózatok közötti kapcsolat | Támogatott | [Részletek](site-recovery-azure-to-azure-networking-guidance.md)  
+A helyszíni VPN-helyek közötti kapcsolat<br/><br/>(a vagy ExpressRoute nélkül)| Támogatott | Győződjön meg arról, hogy úgy, hogy a Site recovery nem adatforgalmat helyszíni az udr-EK és NSG-k vannak konfigurálva. [További információ](site-recovery-azure-to-azure-networking-guidance.md)    
+Virtuális hálózatok közötti kapcsolat | Támogatott | [További információ](site-recovery-azure-to-azure-networking-guidance.md)  
 Virtuális hálózati szolgáltatásvégpontok | Támogatott | Ha a tárfiókok vannak, a virtuális hálózati hozzáférés korlátozása, győződjön meg arról, hogy a megbízható Microsoft-szolgáltatások engedélyezettek-e a tárfiókhoz való hozzáférést.
 Gyorsított hálózatkezelés | Támogatott | A forrásoldali virtuális gép gyorsított hálózatkezelés engedélyezni kell. [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
 

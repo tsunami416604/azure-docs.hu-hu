@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 04/10/2019
+ms.date: 04/15/2019
 ms.author: curtand
 ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b859c64c61264f43a88c158dc10ba6f2b2e56ce
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: e90c4e1f39deffea8a7dd7b2c0dbfdcf5e0b3555
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495122"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609506"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Termékek neveit és szolgáltatási csomag azonosítók licencelése
 
@@ -34,7 +34,7 @@ Ha-licencek kezelése [az Azure Portalon](https://portal.azure.com/#blade/Micros
 - **Szolgáltatási csomagok része (rövid nevek)**: Service-csomagok (rövid név) a termék, amely megegyezik a karakterlánc-azonosító és a GUID listája
 
 >[!NOTE]
->Ezek az információk helyességét 2018. augusztus 17.
+>Ezek az információk helyességét 2019. április 15-től.
 
 | Terméknév | Karakterlánc-azonosító | GUID | Szolgáltatási csomagokat tartalmaz | Service-csomagot tartalmazza (rövid név) |
 | --- | --- | --- |--- |
@@ -214,10 +214,10 @@ A következő szolgáltatáscsomagok nem rendelhetők hozzá együtt:
 
 A licenc-kezelő csoportokon keresztül beállítása szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következőket:
 
-* [Mi az Azure Active Directory-beli csoportalapú licencelés?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Licencek hozzárendelése egy csoporthoz az Azure Active Directory](licensing-groups-assign.md)
-* [Az Azure Active Directory csoport kapcsolatos problémák észleléséhez és a](licensing-groups-resolve-problems.md)
-* [Hogyan kell egyéni licenccel rendelkező felhasználók migrálása Csoportalapú licencelésre, az Azure Active Directoryban](licensing-groups-migrate-users.md)
+* [Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
+* [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
+* [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
 * [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](licensing-groups-change-licenses.md)
-* [Csoportalapú licencelés további forgatókönyvek az Azure Active Directory](licensing-group-advanced.md)
+* [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](licensing-group-advanced.md)
 * [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure ad-ben](licensing-ps-examples.md)

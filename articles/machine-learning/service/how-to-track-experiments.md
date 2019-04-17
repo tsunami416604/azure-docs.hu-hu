@@ -1,7 +1,7 @@
 ---
 title: A betanítási futtatások során log-metrikák
 titleSuffix: Azure Machine Learning service
-description: Nyomon követheti a kísérletek, és figyelheti a mérőszámokat javíthatják a modell létrehozását. További naplózás hozzáadása a tanítási szkriptet, hogyan lehet elküldeni a kísérletet, hogyan ellenőrizheti egy futó feladat állapotát és megtekintése a Futtatás eredményeit.
+description: További naplózás hozzáadása a tanítási szkriptet, hogyan lehet elküldeni a kísérletet, hogyan ellenőrizheti egy futó feladat állapotát és megtekintése a Futtatás eredményeit. Nyomon követheti a kísérletek, és figyelheti a mérőszámokat javíthatják a modell létrehozását.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 41797caa89108448f0eaa27309046c01d7432823
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 59a801fd149a0f647298d94522f9eefc1ea6eb9f
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494627"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609467"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Napló metrikák betanítás során fut az Azure Machine Learningben
 
-Az Azure Machine Learning szolgáltatásban a kísérletek nyomon, és figyelheti a mérőszámokat javíthatják a modell létrehozását. Ebből a cikkből megtudhatja, hogyan naplózás hozzáadása a tanítási szkriptet, küldje el egy kísérlet futtatása, figyelheti a futtató és egy Futtatás eredményeinek megtekintéséhez.
+Ebből a cikkből megtudhatja, hogyan naplózás hozzáadása a tanítási szkriptet, elküldése egy kísérlet futtatása, a Futtatás figyelése és az eredmények Futtatás megtekintése az Azure Machine Learning szolgáltatás. A modell létrehozását, fokozva a kísérletek nyomon követése és a mérőszámok figyelését. 
 
 ## <a name="list-of-training-metrics"></a>Képzési mérőszámok listája 
 
@@ -389,7 +389,7 @@ Hitelesítési rajzot a prediktív modellek magabiztosan megjelenítésére szol
 
 ### <a name="regression"></a>Regresszió
 Minden regressziós modell az automatizált gépi tanulási funkciókat az Azure Machine Learning segítségével létrehozhat, a következő diagram látható: 
-+ [Előre jelzett vs. True (Igaz)](#pvt)
++ [Előre jelzett vs. Igaz](#pvt)
 + [Például hisztogramja](#histo)
 
 <a name="pvt"></a>
@@ -422,9 +422,9 @@ Funkció fontosság biztosít, amely jelzi, hogy milyen értékes alapdokumentá
 
 ## <a name="example-notebooks"></a>Példa notebookok
 A következő notebookok a jelen cikk fogalmait bemutatása:
-* [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
-* [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [how-to-use-azureml/training/logging-api/logging-api.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
+* [How-to-use-azureml/Training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
+* [How-to-use-azureml/Training/train-on-Local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+* [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

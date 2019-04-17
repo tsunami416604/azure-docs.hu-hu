@@ -15,22 +15,18 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8621ebf474591c253dbd9ca24b36a36287ca8cf7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 04f08965d161e35a9ae4423ad5d3cf80cb407b8a
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547708"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607772"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Egy Python-alkalmazás létrehozása az Azure App Service Linux (előzetes verzió)
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. A jelen rövid útmutató bemutatja az App Service-ben a beépített Python-rendszerképre (előzetes verzió) épülő Python-alkalmazás üzembe helyezését Linux rendszerben az [Azure CLI](/cli/azure/install-azure-cli) használatával.
-
-A cikk lépéseit Mac, Windows vagy Linux rendszert futtató gépen is követheti.
+Ebben a rövid útmutatóban üzembe helyezi egy egyszerű Python-alkalmazást a [Linuxon futó App Service](app-service-linux-intro.md), amely egy rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Az Azure parancssori felületének használata (a [Azure CLI-vel](/cli/azure/install-azure-cli)) keresztül az interaktív, böngészőalapú Azure Cloud Shellt, ezért kövesse a lépéseket Mac, Linux vagy Windows számítógépet használni.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-python/hello-world-in-browser.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,6 +34,7 @@ A gyorsútmutató elvégzéséhez:
 
 * <a href="https://www.python.org/downloads/" target="_blank">A Python 3.7 telepítése</a>
 * <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
+* Azure-előfizetés. Ha Ön nem rendelkezik ilyennel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) megkezdése előtt.
 
 ## <a name="download-the-sample-locally"></a>Minta helyi letöltése
 
@@ -174,10 +171,10 @@ return "Hello Azure!"
 
 Mentse a módosításokat, és zárja be a szerkesztőt. A mentéshez a `^S`, a kilépéshez a `^Q` parancsot használja.
 
-Most újra üzembe helyezzük az alkalmazást. A helyettesítő `<app-name>` az alkalmazással.
+Telepítse újra az alkalmazás használatával az [ `az webapp up` ](/cli/azure/ext/webapp/webapp?view=azure-cli-latest.md#ext-webapp-az-webapp-up) parancsot. Az alkalmazás nevét `<app-name>`, és adjon meg egy helyet `<location-name>` (látható értékek egyikével a [ `az account list-locations` ](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) parancsot).
 
 ```bash
-az webapp up -n <app-name>
+az webapp up -n <app-name> -l <location-name>
 ```
 
 Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás megkeresése tallózással** lépésben megnyitott böngészőablakra, és frissítse az oldalt.

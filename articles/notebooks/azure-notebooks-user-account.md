@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: b8e5c5b14ecdbc63daf200b7d11e755822cd063b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 311f4d612c9deab23e7537b0c53ff3932c312cd4
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257008"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608010"
 ---
 # <a name="your-user-account-for-azure-notebooks"></a>A felhasználói fiók Azure-notebookokhoz
 
@@ -41,6 +41,9 @@ Jelentkezzen be Microsoft-termékek és szolgáltatások, például Windows, Azu
 Ha Ön nem tudja biztosan, válassza ki a **hozzon létre egy** parancsot a fiók használatával. Létrehozhat egy új Microsoft-fiók összes e-mail-címmel a bármely szolgáltatónál.
 
 ![A parancs egy új Microsoft-fiók létrehozása](media/accounts/create-new-microsoft-account.png)
+
+> [!Note]
+> Hozzon létre egy új fiókot, amely már rendelkezik fiókkal társított e-mail-címmel próbál jelenhet meg az üzenetet, a "nem itt jelentkezzen be munkahelyi vagy iskolai e-mail-címét. Egy személyes e-mail, például a Gmailes vagy Yahoo!-s, vagy szerezze be egy új Outlook e-mailt." Ebben az esetben próbáljon meg azzal bejelentkezni a munkahelyi e-mail címét, egy új fiók létrehozása nélkül.
 
 Gyermek-fiókok esetében a hozzáférést az Azure-jegyzetfüzetek alapértelmezés szerint le van tiltva. A gyermek fiókkal történő bejelentkezés alább látható hibaüzenetet jeleníti meg:
 

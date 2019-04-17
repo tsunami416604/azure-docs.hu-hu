@@ -2,7 +2,7 @@
 title: Időtúllépés a Durable Functions – Azure és az emberi beavatkozás
 description: Megtudhatja, hogyan képes kezelni az emberi beavatkozás időtúllépések a Durable Functions bővítmény az Azure Functions.
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 136b819f6bbbc1b546b66f54e771dbec8c71202c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cf43e29e967ee6f920eb38feb9c73d70f9621ea4
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548149"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609336"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions - Phone minta az emberi beavatkozást igényel
 

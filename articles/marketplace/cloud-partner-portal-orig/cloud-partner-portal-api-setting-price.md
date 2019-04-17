@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c78a54d5002972339994d9590c0a3e23b5c69bd9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a029477dfd8046863ebfe34cd839562a0b1f3d87
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810532"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607794"
 ---
-<a name="pricing-for-virtual-machine-offers"></a>A virtuálisgép-ajánlatok díjszabása
+<a name="pricing-for-virtual-machine-offers"></a>Virtuálisgép-ajánlatok díjszabása
 ==================================
 
 Adja meg a virtuális gép ajánlatok díjszabásával kapcsolatos három módja van: testre szabott core díjszabás, magonként díjszabás és díjszabási táblázat.
@@ -106,71 +106,71 @@ Az alábbi táblázat a különböző régiókban is megadható a testre szabott
 |------------|----------------------|-------------------|
 | DZ         | Algéria              | DZD               |
 | AR         | Argentína            | ARS               |
-| AUSZTRÁLIA         | Ausztrália            | AUD               |
+| AU         | Ausztrália            | AUD               |
 | AT         | Ausztria              | EUR               |
 | BH         | Bahrein              | BHD               |
-| SZERINT         | Belarusz              | RUB               |
-| LEHET         | Belgium              | EUR               |
+| BY         | Belarusz              | RUB               |
+| BE         | Belgium              | EUR               |
 | BR         | Brazília               | USD               |
 | BG         | Bulgária             | BGN               |
 | CA         | Kanada               | CAD               |
 | CL         | Chile                | CLP               |
-| CO         | Kolumbia             | MÁ               |
-| A CR         | Costa Rica           | CRC               |
+| CO         | Kolumbia             | COP               |
+| CR         | Costa Rica           | CRC               |
 | HR         | Horvátország              | HRK               |
 | CY         | Ciprus               | EUR               |
-| CZ         | Csehország       | (CZK)               |
+| CZ         | Cseh Köztársaság       | CZK               |
 | DK         | Dánia              | DKK               |
-| HAJTSA VÉGRE         | Dominikai Köztársaság   | USD               |
-| EK         | Ecuador              | USD               |
+| DO         | Dominikai Köztársaság   | USD               |
+| EC         | Ecuador              | USD               |
 | EG         | Egyiptom                | EGP               |
 | SV         | Salvador          | USD               |
 | EE         | Észtország              | EUR               |
 | FI         | Finnország              | EUR               |
 | JK         | Franciaország               | EUR               |
-| NÉMETORSZÁG         | Németország              | EUR               |
+| DE         | Németország              | EUR               |
 | GR         | Görögország               | EUR               |
 | GT         | Guatemala            | GTQ               |
 | HK         | Hongkong (KKT)        | HKD               |
 | HU         | Magyarország              | FORINTBAN               |
-| VAN         | Izland              | EMEZFOGLALÁS               |
-| INDIA         | India                | INR               |
+| IS         | Izland              | EMEZFOGLALÁS               |
+| IN         | India                | INR               |
 | ID (Azonosító)         | Indonézia            | IDR               |
-| INTERNET EXPLORER         | Írország              | EUR               |
+| IE         | Írország              | EUR               |
 | IL         | Izrael               | ILS               |
 | IT         | Olaszország                | EUR               |
 | JP         | Japán                | JPY               |
 | JO         | Jordánia               | JOD               |
 | KZ         | Kazahsztán           | KZT               |
-| KULCSCSERE         | Kenya                | KES               |
-| KOREA         | Korea                | KRW               |
+| KE         | Kenya                | KES               |
+| KR         | Korea                | KRW               |
 | KW         | Kuvait               | KWD               |
 | LV         | Lettország               | EUR               |
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litvánia            | EUR               |
 | LU         | Luxemburg           | EUR               |
-| MK         | Macedónia V.J.K.       | MKD               |
-| SAJÁT         | Malajzia             | MYR               |
-| FŐ CÉLKISZOLGÁLÓ         | Málta                | EUR               |
+| MK         | Észak-Macedónia      | MKD               |
+| MY         | Malajzia             | MYR               |
+| MT         | Málta                | EUR               |
 | MX         | Mexikó               | MXN               |
-| NEKEM         | Montenegró           | EUR               |
+| ME         | Montenegró           | EUR               |
 | MA         | Marokkó              | MAD               |
 | NL         | Hollandia          | EUR               |
 | NZ         | Új-Zéland          | NZD               |
 | NG         | Nigéria              | NGN               |
-| NEM         | Norvégia               | NOK               |
-| AZ OM         | Omán                 | OMR               |
+| NO         | Norvégia               | NOK               |
+| OM         | Omán                 | OMR               |
 | PK         | Pakisztán             | PKR               |
 | PA         | Panama               | USD               |
 | PY         | Paraguay             | PYG               |
-| ELŐTELEPÍTÉSI KÖRNYEZET         | Peru                 | TOLLAL               |
+| PE         | Peru                 | TOLLAL               |
 | PH         | Fülöp-szigetek          | PHP               |
 | PL         | Lengyelország               | PLN               |
-| CSENDES-ÓCEÁNI IDŐ         | Portugália             | EUR               |
-| PULL-KÉRELEM         | Puerto Rico          | USD               |
+| PT         | Portugália             | EUR               |
+| PR         | Puerto Rico          | USD               |
 | QA         | Katar                | KÁR               |
 | RO         | Románia              | RON               |
-| KÉRELEMEGYSÉG         | Oroszország               | RUB               |
+| RU         | Oroszország               | RUB               |
 | SA         | Szaúd-Arábia         | SAR               |
 | RS         | Szerbia               | RSD               |
 | SG         | Szingapúr            | SGD               |
@@ -179,11 +179,11 @@ Az alábbi táblázat a különböző régiókban is megadható a testre szabott
 | ZA         | Dél-Afrika         | ZAR               |
 | ES         | Spanyolország                | EUR               |
 | LK         | Srí Lanka            | USD               |
-| HASZNÁLATA         | Svédország               | SEK               |
+| SE         | Svédország               | SEK               |
 | CH         | Svájc          | CHF               |
 | TW         | Tajvan               | TWD               |
 | TH         | Thaiföld             | THB               |
-| TT         | Trinidad és Tobago  | KOMOLY               |
+| TT         | Trinidad és Tobago  | TTD               |
 | TN         | Tunézia              | TND               |
 | TR         | Törökország               | TRY               |
 | UA         | Ukrajna              | UAH               |

@@ -304,8 +304,6 @@ items:
             href: app/snapshot-debugger-troubleshoot.md
         - name: Diagnosztika
           href: ../application-insights/app-insights-azure-diagnostics.md
-        - name: Előnézetek
-          href: app/previews.md
       - name: ASP.NET-alkalmazások
         items:
         - name: Webalkalmazások
@@ -349,8 +347,6 @@ items:
         items:
         - name: Webalkalmazások
           href: app/java-get-started.md
-        - name: Webalkalmazások – futtatókörnyezet
-          href: app/java-live.md
         - name: Docker-alkalmazások
           href: app/docker.md
         - name: Nyomkövetési naplók
@@ -1072,9 +1068,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Kódminták
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 7605179d1d1129587114f1462639ad06dde6fcef
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 3b5ce979ac9643001aa18d7e41d005e03fabc057
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491100"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609115"

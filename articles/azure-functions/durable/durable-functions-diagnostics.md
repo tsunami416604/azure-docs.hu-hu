@@ -2,7 +2,7 @@
 title: Durable Functions - Azure-diagnosztika
 description: Ismerje meg, hogyan diagnosztizálhatja a problémákat a Durable Functions bővítmény az Azure Functions szolgáltatáshoz.
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ac9abaaea7f33627332a9bc7563745b5efdf3d12
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 167f697d4928d88114a30739a1d39a576c87ac84
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436241"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608486"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Az Azure-ban Durable Functions-diagnosztika
 
