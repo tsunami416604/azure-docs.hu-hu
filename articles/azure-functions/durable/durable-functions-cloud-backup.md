@@ -2,7 +2,7 @@
 title: Fan-kimenő/fan-alatt található forgatókönyvek Durable Functions – Azure
 description: Megtudhatja, hogyan fan-kimenő ventilátor-be a forgatókönyv megvalósításához a Durable Functions bővítmény az Azure Functions.
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7bb2a68209e657b1e3ff8c3a61730d42f04a3b8a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0bef5f1b64ec9f322070ba5c36cab138c7327da2
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727377"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608503"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-kimenő/fan-alatt forgatókönyv Durable Functions – felhőalapú biztonsági mentési példa
 

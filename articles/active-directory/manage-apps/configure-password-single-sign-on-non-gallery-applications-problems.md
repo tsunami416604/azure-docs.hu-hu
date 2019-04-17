@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c769d241f54d5d86ef4954609eec555d8aab947a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f8787008b396c2dd8ce1c006a40fee1e32e8100d
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857997"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617378"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Jelszavas egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurálása során
 
@@ -142,7 +142,7 @@ Ellenőrizze az alábbiakat, ha ezeket a problémákat észlel:
 
 -   Próbálja ki a manuális rögzítési folyamat ismét, biztosítva a piros jelölők esnek-e a megfelelő mezőket.
 
--   Ha a manuális rögzítési folyamat úgy tűnik, hogy lefagy, vagy a bejelentkezési oldal nem csinál semmit (a fenti 3. eset), próbálkozzon a manuális rögzítési folyamat újra. De ezúttal a folyamat befejezése után nyomja le az **F12** gombra kattintva nyissa meg a böngésző fejlesztői konzolján. Egyszer, nyissa meg a **konzol** , és írja be **window.location= "&lt;adja meg a bejelentkezési URL-címet az alkalmazás konfigurálásakor megadott&gt;"** , és nyomja le az **Enter** . Ez kényszeríti, hogy a rögzítési folyamat befejeződik, és tárolja a mezőket, amelyek rendelkeznek rögzített lap átirányítási.
+-   Ha a manuális rögzítési folyamat úgy tűnik, hogy nem válaszol, vagy a bejelentkezési oldal nem csinál semmit (3. eset fent), próbálkozzon a manuális rögzítési folyamat újra. De ezúttal a folyamat befejezése után nyomja le az **F12** gombra kattintva nyissa meg a böngésző fejlesztői konzolján. Egyszer, nyissa meg a **konzol** , és írja be **window.location= "&lt;adja meg a bejelentkezési URL-címet az alkalmazás konfigurálásakor megadott&gt;"** , és nyomja le az **Enter** . Ez kényszeríti, hogy a rögzítési folyamat befejeződik, és tárolja a mezőket, amelyek rendelkeznek rögzített lap átirányítási.
 
 Ezek a módszerek egyike sem működik, ha a támogatási segítségével. Nyisson meg egy támogatási esetet mit próbált meg, valamint összegyűjtött információk részleteit a [a portál értesítései részleteinek megtekintése](#i-cannot-manually-detect-sign-in-fields-for-my-application) és [segítség kérése, ha a támogatási szakember küld értesítés részletei ](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) szakaszok (ha van).
 

@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 4e5a785d219e1b776a1d512512d0a2a74532c550
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 94fd70dccf367d43b1caaa9f3a11ed934f9950ea
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282729"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618056"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-támogatási mátrixa
 
@@ -21,12 +21,12 @@ Ez a cikk összefoglalja a támogatott összetevők és a VMware virtuális gép
 
 A legegyszerűbb környezet az Azure Site Recovery használatának megkezdéséhez látogasson el a [oktatóanyagok](tutorial-prepare-azure.md). További információ az Azure Site Recovery architektúrájáról [Itt](vmware-azure-architecture.md).
 
-## <a name="replication-scenario"></a>Replikációs forgatókönyv
+## <a name="deployment-scenario"></a>Üzembe helyezési forgatókönyv
 
 **Forgatókönyv** | **Részletek**
 --- | ---
-VMware virtuális gépek | Az Azure-bA a helyszíni VMware virtuális gépek replikálása. Ebben a forgatókönyvben az Azure Portalon vagy a használatával telepíthet [PowerShell](vmware-azure-disaster-recovery-powershell.md).
-Fizikai kiszolgálók | A helyszíni Windows/Linux fizikai kiszolgálók Azure-bA replikálását. Ebben a forgatókönyvben az Azure Portalon is telepítheti.
+VMware virtuális gépek vészhelyreállítása | Az Azure-bA a helyszíni VMware virtuális gépek replikálása. Ebben a forgatókönyvben az Azure Portalon vagy a használatával telepíthet [PowerShell](vmware-azure-disaster-recovery-powershell.md).
+Fizikai kiszolgálók vészhelyreállítása | A helyszíni Windows/Linux fizikai kiszolgálók Azure-bA replikálását. Ebben a forgatókönyvben az Azure Portalon is telepítheti.
 
 ## <a name="on-premises-virtualization-servers"></a>A helyszíni virtualizálási kiszolgálók
 
@@ -50,7 +50,7 @@ Operációs rendszer  | A Windows Server 2012 R2 vagy Windows Server 2016-ban |
 Operációs rendszer területi beállítása | Angol (en-us)
 PowerCLI | [A PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") verziót a konfigurációs kiszolgáló nem kötelező [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery).
 Windows Server-szerepkörök | Ne legyen engedélyezve: <br/> - Active Directory tartományi szolgáltatások <br/>– Internet Information Services <br/> - Hyper-V |
-Csoportházirendek| Ne legyen engedélyezve: <br/> -Hozzáférés megakadályozása a parancssorba. <br/> -A beállításjegyzék szerkesztőeszközeihez való hozzáférés letiltása. <br/> -Megbízhatósági logika fájlmellékletekhez. <br/> – Kapcsolja be a parancsfájl végrehajtása. <br/> [Részletek](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+Csoportházirendek| Ne legyen engedélyezve: <br/> -Hozzáférés megakadályozása a parancssorba. <br/> -A beállításjegyzék szerkesztőeszközeihez való hozzáférés letiltása. <br/> -Megbízhatósági logika fájlmellékletekhez. <br/> – Kapcsolja be a parancsfájl végrehajtása. <br/> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Győződjön meg arról, hogy:<br/><br/> -Nem rendelkezik egy korábban létező alapértelmezett webhelye <br/> -Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br/> -Nem rendelkezik a már létező webhely vagy alkalmazás 443-as porton<br/>
 Hálózati adapter típusa | VMXNET3 (Ha a VMware virtuális gépként telepített)
 IP-cím típusa | Statikus
@@ -98,7 +98,7 @@ Debian 8 | [9.20][9.20 UR],[9.21][9.21 UR],[9.22][9.22 UR],[9.23][9.23 UR] | 3.1
 
 **Kiadás** | **Mobilitási szolgáltatás verziójának** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.23][9.23 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.101-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.79-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server (SP1, SP2, SP3, SP4) 12 | [9.23][9.23 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.101-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.79-default SP3 4.4.73-5-default</br></br>SP4 4.12.14-94.41-default 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.22][9.22 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.162-94.72-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.21][9.21 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.156-94.72-default SP3 4.4.73-5-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | [9.20][9.20 UR] | SP1 3.12.49-11-default 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 4.4.120-92.70-default</br></br>A 4.4.121-92.98-default SP2(LTSS) 4.4.121-92.73-default</br></br>A 4.4.156-94.64-default SP3 4.4.73-5-default |
@@ -120,7 +120,7 @@ Szabad lemezterület-követelmények |} A/root partíción 2 GB <br/><br/> A tel
 
 ## <a name="vmdisk-management"></a>A felügyeleti Virtuálisgép-lemez
 
-**Műveletek** | **Részletek**
+**Művelet** | **Részletek**
 --- | ---
 A replikált virtuális gép lemez átméretezése | Támogatott.
 Lemez hozzáadása a replikált virtuális Gépen | Tiltsa le a replikációt a virtuális gép, és a lemezt adja hozzá a majd újraengedélyezni replikációs. Lemez hozzáadása egy replikáló gépen jelenleg nem támogatott.
@@ -167,7 +167,6 @@ Gazdagép vsan-hoz | Igen: VMware-ről<br/><br/> N/A fizikai kiszolgálókhoz
 Gazdagép többutas (MPIO) | Igen, teszteltük Microsoft DSM EMC PowerPath 5.7 SP4 EMC PowerPath DSM CLARiiON számára
 Gazdagép virtuális kötetek (VVols) | Igen: VMware-ről<br/><br/> N/A fizikai kiszolgálókhoz
 Vendég-kiszolgáló VMDK | Igen
-Vendég/server EFI/UEFI| Részlegesen (áttelepítés Azure for Windows Server 2012 és újabb verziók) <br/><br/> Tekintse meg az eljárás végén található a táblában
 Vendég-kiszolgáló megosztott fürtlemezen | Nem
 Vendég-kiszolgáló titkosított lemez | Nem
 Vendég-kiszolgáló NFS | Nem
@@ -181,14 +180,8 @@ Vendég-kiszolgáló – tárolóhelyek | Nem
 Vendég/server gyakran használt adatok hozzáadása/eltávolítása lemez | Nem
 Vendég-kiszolgáló – zárható ki lemez | Igen
 Vendég-kiszolgáló többutas (MPIO) | Nem
+Vendég/server EFI/UEFI-rendszerindítás | VMware virtuális gépek vagy a Windows Server 2012 rendszert futtató fizikai kiszolgálók áttelepítéséhez vagy újabb rendszeren támogatott Azure-bA.<br/><br/> Az áttelepítéshez csak virtuális gépeket lehet replikálni. A helyszíni feladat-visszavétel nem támogatott.<br/><br/> A kiszolgáló az operációsrendszer-lemez nem tartalmazhat több mint négy partícióval.<br/><br/> A mobilitási szolgáltatás 9.13 vagy újabb verziójára van szükség.<br/><br/> Csak az NTFS fájlrendszer támogatott.
 
-> [!NOTE]
-> UEFI rendszerindítási VMware virtuális gépek Windows Server 2012 rendszert futtató, vagy később telepíthetők át az Azure-bA. A következő korlátozások vonatkoznak:
->
-> - Csak az Azure-bA áttelepítése támogatott. A helyszíni VMware-helyre történő feladat-visszavétel nem támogatott.
-> - A kiszolgáló az operációsrendszer-lemez nem tartalmazhat több mint négy partícióval.
-> - Csak az NTFS fájlrendszer támogatott.
-> - A mobilitási szolgáltatás 9.13 vagy újabb verziójára van szükség.
 
 ## <a name="azure-storage"></a>Azure Storage tárterület
 
@@ -208,7 +201,7 @@ A cél tárolási illetve gyorsítótárfiók (replikációs adatainak tárolás
 
 ## <a name="azure-compute"></a>Az Azure compute
 
-**Szolgáltatás** | **Támogatott**
+**Funkció** | **Támogatott**
 --- | ---
 Rendelkezésre állási csoportok | Igen
 Rendelkezésre állási zónák | Nem
@@ -237,7 +230,7 @@ a virtuális gép neve | 1 és 63 karakternél.<br/><br/> Csak betűket, számok
 
 Az alábbi táblázat az Azure Site Recovery korlátait tartalmazza. Ezek a korlátok a saját tesztjeinken alapulnak, de nem fedhetik le az alkalmazások minden lehetséges I/O-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változhatnak. A legjobb eredmények érdekében javasoljuk, hogy a [deployment planner eszköz futtatása](site-recovery-deployment-planner.md) és az alkalmazás alapos tesztelése feladatátvételi tesztek történő vizsgálata a kaphat a teljesítményről, az alkalmazás.
 
-**Replikáció tárolási célja** | **Forráslemez átlagos i/o-mérete** |**Átlagos lemez adatváltozása** | **Teljes lemez napi adatváltozása**
+**Replikáció tárolási célja** | **Forráslemez átlagos I/O-mérete** |**Forráslemez átlagos adatváltozása** | **Forráslemez teljes napi adatváltozása**
 ---|---|---|---
 Standard szintű Storage | 8 KB | 2 MB/s | Lemezenként 168 GB
 Prémium szintű P10 vagy P15 lemez | 8 KB  | 2 MB/s | Lemezenként 168 GB
@@ -246,7 +239,7 @@ Prémium szintű P10 vagy P15 lemez | 32 KB vagy több | 8 MB/s | Lemezenként 6
 Prémium szintű P20, P30, P40 vagy P50 lemez | 8 KB    | 5 MB/s | Lemezenként 421 GB
 Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |20 MB/s | Lemezenként 1684 GB
 
-**Adatváltozása** | **Felső korlát**
+**Forrásadat-változás** | **Felső korlát**
 ---|---
 Átlagos adatváltozás virtuális gépenként| 25 MB/s
 Adatváltozás csúcsértéke az összes lemezen virtuális gépenként | 54 MB/s
@@ -256,7 +249,7 @@ Ezek átlagos értékek, amelyek 30 százalékos I/O-átfedést feltételeznek. 
 
 ## <a name="vault-tasks"></a>Tároló-feladatok
 
-**Műveletek** | **Támogatott**
+**Művelet** | **Támogatott**
 --- | ---
 Tároló áthelyezése erőforráscsoportok közt<br/><br/> Belül és azok az előfizetések között | Nem
 Tárolás, hálózat, Azure-beli virtuális gépek erőforráscsoportok közötti áthelyezése<br/><br/> Belül és azok az előfizetések között | Nem

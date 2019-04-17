@@ -12,12 +12,12 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0357b7f421da753f102d2f05eaf8021cfc74aa2c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 75aa0f4755fe3d124094ace3c3e6b8e6ea3b65e0
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261615"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618175"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
 
@@ -45,7 +45,7 @@ Az alábbi táblázat foglalja össze az egyszeri bejelentkezési módszereket, 
 | [OpenID Connect és az OAuth révén](#openid-connect-and-oauth) | Csak a felhőben | OpenID Connect és az OAuth használata egy új alkalmazások fejlesztése során. Ez a protokoll egyszerűbbé teszi az alkalmazás konfigurációja, egyszerűen használható SDK-kkal rendelkezik, és lehetővé teszi, hogy az alkalmazás használhatja az MS Graph.
 | [SAML](#saml-sso) | felhőbeli és helyszíni | Válassza ki a SAML, amikor csak lehetséges, a meglévő alkalmazásokat, amelyek nem használnak az OpenID Connect vagy az OAuth szolgáltatástól. Az SAML az alkalmazásokat, amelyek hitelesítést végezni a SAML-protokoll esetében működik.|
 | [Jelszóalapú](#password-based-sso) | felhőbeli és helyszíni | Válassza a jelszóalapú, amikor az alkalmazás hitelesíti a felhasználónevet és jelszót. Jelszavas egyszeri bejelentkezés lehetővé teszi a biztonságos tárolását és ismétlését egy webböngésző-bővítmény vagy mobilalkalmazás segítségével. Ezt a módszert használja a meglévő bejelentkezési folyamat az alkalmazás által biztosított, de lehetővé teszi, hogy egy rendszergazda kezelje a jelszavakat. |
-| [Csatolt](#linked-sso) | felhőbeli és helyszíni | Válassza ki társított egyszeri bejelentkezést, amikor az alkalmazás úgy van konfigurálva, az egyszeri bejelentkezés egy másik identitás szolgáltató szolgáltatásban. Ez a beállítás nem adja hozzá egyszeri bejelentkezés az alkalmazáshoz. Az alkalmazás azonban már előfordulhat, hogy rendelkezik az egyszeri bejelentkezés egy másik szolgáltatás, például az Active Directory összevonási szolgáltatások használatával implementált.|
+| [A csatolt](#linked-sso) | felhőbeli és helyszíni | Válassza ki társított egyszeri bejelentkezést, amikor az alkalmazás úgy van konfigurálva, az egyszeri bejelentkezés egy másik identitás szolgáltató szolgáltatásban. Ez a beállítás nem adja hozzá egyszeri bejelentkezés az alkalmazáshoz. Az alkalmazás azonban már előfordulhat, hogy rendelkezik az egyszeri bejelentkezés egy másik szolgáltatás, például az Active Directory összevonási szolgáltatások használatával implementált.|
 | [Letiltva](#disabled-sso) | felhőbeli és helyszíni | Válassza a letiltott egyszeri bejelentkezés, ha az alkalmazás nem áll készen az egyszeri bejelentkezéshez konfigurálandó. Adja meg a felhasználónevüket és jelszavukat minden alkalommal, amikor az alkalmazás indításakor kell felhasználók.|
 | [Integrált Windows-hitelesítés (IWA)](#integrated-windows-authentication-iwa-sso) | csak helyszíni | IWA egyszeri bejelentkezést használó alkalmazások esetében válassza [integrált Windows-hitelesítés (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication), vagy jogcímeket használó alkalmazásokat. IWA az alkalmazásproxy-összekötők használatával a Kerberos által korlátozott delegálás (KCD) hitelesítheti a felhasználókat az alkalmazáshoz. | 
 | [Fejlécalapú](#header-based-sso) | csak helyszíni | Használja fejléc-alapú egyszeri bejelentkezés, ha az alkalmazás fejléceket használja a hitelesítéshez. Fejléc-alapú egyszeri bejelentkezés szükséges a PingAccess Azure AD-hez. Az alkalmazásproxy az Azure AD segítségével hitelesíti a felhasználót, és ezután továbbítja a forgalmat az összekötő szolgáltatást.  | 
@@ -70,9 +70,11 @@ SAML-alapú egyszeri bejelentkezés bármely ezeket a protokollokat használó a
 - SAML 2.0
 - WS-Federation
 
-Egy alkalmazás az SAML-alapú egyszeri bejelentkezés beállítása: [konfigurálása SAML-alapú egyszeri bejelentkezés](configure-single-sign-on-portal.md). Is, mint a szoftverszolgáltatások (SaaS) alkalmazások számos szoftver rendelkezik egy [alkalmazásspecifikus oktatóanyag](../saas-apps/tutorial-list.md) , amely végigvezeti az SAML-alapú egyszeri bejelentkezés konfigurációja.
+Egy SaaS-alkalmazáshoz tartozó SAML-alapú egyszeri bejelentkezés beállítása: [konfigurálása SAML-alapú egyszeri bejelentkezés](configure-single-sign-on-portal.md). Is, mint a szoftverszolgáltatások (SaaS) alkalmazások számos szoftver rendelkezik egy [alkalmazásspecifikus oktatóanyag](../saas-apps/tutorial-list.md) , amely végigvezeti az SAML-alapú egyszeri bejelentkezés konfigurációja.
 
 Alkalmazás konfigurálása a WS-Federation, SAML-alapú egyszeri bejelentkezés az alkalmazás konfigurálása, lásd: az azonos útmutatót követve [konfigurálása SAML-alapú egyszeri bejelentkezés](configure-single-sign-on-portal.md). Az Azure AD használata az alkalmazás konfigurálása lépésben kell cserélje le az Azure AD bejelentkezési URL-címet a WS-Federation végpontot `https://login.microsoftonline.com/<tenant-ID>/wsfed`.
+
+SAML-alapú egyszeri bejelentkezést a helyszíni alkalmazás beállítása: [SAML egyszeri bejelentkezést a helyszíni alkalmazások az alkalmazásproxy használatával](application-proxy-configure-single-sign-on-on-premises-apps.md).
 
 Az SAML-protokoll kapcsolatos további információkért lásd: [egyszeri bejelentkezéses SAML-protokoll](../develop/single-sign-on-saml-protocol.md).
 

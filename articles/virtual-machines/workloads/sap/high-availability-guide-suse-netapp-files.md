@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 02a97852a8dc659071c3484126b921d6f7106562
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662370"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617767"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure NetApp Files SAP alkalmazások az Azure virtuális gépeken
 
@@ -166,14 +166,11 @@ Az SAP Netweaver SUSE magas rendelkezésre állású architektúra az Azure NetA
 
 - A kapacitásérték-minimumot készlet használata 4 Tib-ra. A kapacitás a készlet méretét 4 Tib-ra többszörösének kell lennie.
 - A minimális kötet 100 GiB
-- NetApp Azure Files és az összes virtuális gép, amelyen az Azure Files-NetApp kötetek csatlakoztatva van az azonos Azure virtuális hálózatban kell lennie. [Virtuális hálózatok közötti társviszony](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) Azure NetApp fájlok még nem támogatott.
+- NetApp Azure Files és az összes virtuális gép, ahol az Azure Files-NetApp kötetek lesz csatlakoztatva, kell lennie, az azonos Azure virtuális hálózatban vagy a [társviszonyban álló virtuális hálózatok](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) ugyanabban a régióban. Keresztül a virtuális hálózatok közötti társviszony az azonos régióban található Azure NetApp fájlok hozzáférés mostantól támogatott. Az Azure a NetApp hozzáférés globális társviszony-létesítésen keresztül még nem támogatott.
 - A kiválasztott virtuális hálózat egy alhálózat Azure NetApp Files, meghatalmazott kell rendelkeznie.
 - NetApp Azure Files jelenleg csak NFSv3 támogatja 
 - Biztosít a NetApp Azure Files [házirend exportálása](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): szabályozhatja az engedélyezett ügyfelektől, a hozzáférés típusa (Olvasás és írás, csak olvasható, stb.). 
 - Azure NetApp fájlok funkció még nem ismeri a zóna. Azure NetApp fájlok szolgáltatás jelenleg nem telepített minden rendelkezésre állási zónák egy Azure-régióban. Vegye figyelembe a lehetséges késés hatással az egyes Azure-régióban. 
-
-   > [!NOTE]
-   > Vegye figyelembe, hogy az Azure Files-NetApp virtuális hálózati társviszony-létesítés még nem támogatja. Telepítse a virtuális gépek és az Azure NetApp fájlok ugyanabban a virtuális hálózatban.
 
 ## <a name="deploy-linux-vms-manually-via-azure-portal"></a>Manuálisan üzembe helyezése Linux rendszerű virtuális gépek Azure-portálon
 
@@ -574,6 +571,8 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 9. **[1]**  Az SAP-fürt erőforrásainak létrehozása
 
+Ha sorba 1 kiszolgáló architektúra (ENSA1) használ, erőforrásokat határozzák meg a következő:
+
    <pre><code>sudo crm configure property maintenance-mode="true"
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
@@ -599,6 +598,35 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    sudo crm node online <b>anftstsapcl1</b>
    sudo crm configure property maintenance-mode="false"
    </code></pre>
+
+   Sorba server 2, beleértve a replikációs állapot SAP északnyugati része 7.52 jelent meg az SAP támogatása. ABAP Platform 1809 kezdődő, 2. sorba kiszolgáló alapértelmezés szerint telepítve van. Tekintse meg az SAP Megjegyzés [2630416](https://launchpad.support.sap.com/#/notes/2630416) sorba 2 kiszolgáló támogatására.
+Ha sorba 2 kiszolgáló architektúra használatával ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)), erőforrásokat határozzák meg a következő:
+
+   <pre><code>sudo crm configure property maintenance-mode="true"
+   
+   sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
+    operations \$id=rsc_sap_<b>QAS</b>_ASCS<b>00</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b>" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000
+   
+   sudo crm configure primitive rsc_sap_<b>QAS</b>_ERS<b>01</b> SAPInstance \
+    operations \$id=rsc_sap_<b>QAS</b>_ERS<b>01</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b>" AUTOMATIC_RECOVER=false IS_ERS=true
+   
+   sudo crm configure modgroup g-<b>QAS</b>_ASCS add rsc_sap_<b>QAS</b>_ASCS<b>00</b>
+   sudo crm configure modgroup g-<b>QAS</b>_ERS add rsc_sap_<b>QAS</b>_ERS<b>01</b>
+   
+   sudo crm configure colocation col_sap_<b>QAS</b>_no_both -5000: g-<b>QAS</b>_ERS g-<b>QAS</b>_ASCS
+   sudo crm configure order ord_sap_<b>QAS</b>_first_start_ascs Optional: rsc_sap_<b>QAS</b>_ASCS<b>00</b>:start rsc_sap_<b>QAS</b>_ERS<b>01</b>:stop symmetrical=false
+   
+   sudo crm node online <b>anftstsapcl1</b>
+   sudo crm configure property maintenance-mode="false"
+   </code></pre>
+
+   Ha Ön egy régebbi verzióból frissítése és sorba server 2 vált, tekintse meg az sap-jegyzetnek [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
    Győződjön meg arról, hogy a fürt állapota rendben, és elindulnak, hogy az összes erőforrás. Nem számít mely erőforrásokat futtató csomóponton.
 
@@ -1051,7 +1079,7 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Hozzon létre egy sorba zárolási szerint, például egy felhasználó a tranzakció su01 szerkesztésre. Futtassa a következő parancsokat, < sapsid\>adm a csomóponton, hol futnak az ASCS-példány. A parancsok a ASCS példány leáll, és indítsa el újra. A sorba zárolást várhatóan ebben a tesztben elvész.
+   Hozzon létre egy sorba zárolási szerint, például egy felhasználó a tranzakció su01 szerkesztésre. Futtassa a következő parancsokat, < sapsid\>adm a csomóponton, hol futnak az ASCS-példány. A parancsok a ASCS példány leáll, és indítsa el újra. Sorba 1 kiszolgáló architektúra használatával, ha a sorba zárolást várhatóan ebben a tesztben elvész. Ha sorba 2 kiszolgáló architektúra használatával, a sorba lesznek megőrizve. 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1066,7 +1094,7 @@ A következő tesztek elvégzése a vizsgálati esetek másolatát a [ajánlott 
    <pre><code>anftstsapcl2:qasadm 52> sapcontrol -nr 00 -function StartWait 600 2
    </code></pre>
 
-   A sorba zárolási tranzakció su01 az elveszett eszköz kell lennie, és a háttér-kell vissza lett állítva. Erőforrás állapotának a vizsgálat után:
+   A sorba zárolási tranzakció su01 az elveszett, kell, ha sorba kiszolgáló replikációs 1 architektúra használatával, és a háttér-kell vissza lett állítva. Erőforrás állapotának a vizsgálat után:
 
    <pre><code>
     Resource Group: g-QAS_ASCS

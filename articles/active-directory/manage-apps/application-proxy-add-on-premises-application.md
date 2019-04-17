@@ -12,12 +12,12 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd494ffe6bc48495c882ed84062503bdc00ae9f4
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: fc454fdba6ec875c3d3b572a7aba91bb9d389845
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917838"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617216"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 
@@ -114,7 +114,7 @@ Az összekötő telepítéséhez:
 
 ### <a name="general-remarks"></a>Általános megjegyzéseket
 
-Ha korábban telepítette egy összekötőt, akkor telepítse újra a legújabb verzió beszerzéséhez.
+Ha korábban telepítette egy összekötőt, akkor telepítse újra a legújabb verzió beszerzéséhez. Korábban kiadott verziók és milyen módosítások azok kapcsolatos információkat tartalmazza, lásd: [Application Proxy - Verziókiadások](application-proxy-release-version-history.md).
 
 Ha egynél több Windows kiszolgálót a helyszíni alkalmazások számára, szüksége telepítéséhez, és mindegyik kiszolgálón az összekötő regisztrálására. Az összekötők összekötő csoportokba rendezhetők. További információkért lásd: [összekötőcsoportok](application-proxy-connector-groups.md). 
 
@@ -122,7 +122,6 @@ Ha a szervezete proxykiszolgálóval csatlakozik az internethez, kell őket az A
 
 Összekötők, a kapacitástervezés és hogyan naprakész információk kapcsolatos információkért lásd: [megismerheti az Azure AD-alkalmazásproxy összekötőit](application-proxy-connectors.md). 
 
-Ha a Qlik Sense alkalmazás használja, telepítheti a legújabb-összekötőt. Qlik Sense használja a websockets protokoll, amely csak a 1.5.612.0 összekötő verzió vagy újabb.
 
 ## <a name="verify-the-connector-installed-and-registered-correctly"></a>Ellenőrizze az összekötő telepítve van és megfelelően regisztrálva
 
@@ -182,10 +181,10 @@ Most, hogy a környezet előkészítése és egy összekötőt, készen áll a h
 
     | Mező | Leírás |
     | :---- | :---------- |
-    | **A háttéralkalmazás túllépte az időkorlátot** | Ez az érték **hosszú** csak akkor, ha az alkalmazás lassú hitelesítéshez és csatlakozáshoz. |
-    | **Csak HTTP-cookie használata** | Ez az érték **Igen** kell Application Proxy cookie-kat a HTTPOnly jelző bevonni a HTTP-válaszfejléc. Ha a távoli asztali szolgáltatásokat, állítsa be ezt az értéket **nem**.|
-    | **Biztonságos cookie használata**| Ez az érték **Igen** cookie-k egy biztonságos csatornán, például egy titkosított HTTPS-kérést küldött.
-    | **Állandó cookie használata**| Tartsa ezt az értéket állítsa **nem**. Ez a beállítás csak az alkalmazásokat, amelyek nem lehet megosztani a folyamatok közötti cookie-kat kell használható. Cookie-k beállításairól további információ: [cookie-k beállításairól a helyszíni alkalmazások az Azure Active Directory eléréséhez](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)
+    | **Háttéralkalmazás túllépte az időkorlátot** | Ez az érték **hosszú** csak akkor, ha az alkalmazás lassú hitelesítéshez és csatlakozáshoz. |
+    | **Csak HTTP cookie-k használata** | Ez az érték **Igen** kell Application Proxy cookie-kat a HTTPOnly jelző bevonni a HTTP-válaszfejléc. Ha a távoli asztali szolgáltatásokat, állítsa be ezt az értéket **nem**.|
+    | **Biztonságos cookie-k használata**| Ez az érték **Igen** cookie-k egy biztonságos csatornán, például egy titkosított HTTPS-kérést küldött.
+    | **Állandó cookie-k használata**| Tartsa ezt az értéket állítsa **nem**. Ez a beállítás csak az alkalmazásokat, amelyek nem lehet megosztani a folyamatok közötti cookie-kat kell használható. Cookie-k beállításairól további információ: [cookie-k beállításairól a helyszíni alkalmazások az Azure Active Directory eléréséhez](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)
     | **A fejlécek URL-címek lefordítása** | Tartsa ezt az értéket **Igen** , kivéve, ha az alkalmazás által igényelt az eredeti állomásfejlécet a hitelesítési kérelmet. |
     | **A kérelem törzsében URL-címek lefordítása** | Tartsa ezt az értéket **nem** , ha rendelkezik szoftveresen kötött HTML-hivatkozások más helyszíni alkalmazásokhoz, és ne használja az egyéni tartományok. További információkért lásd: [hivatkozásra a proxyval fordítási](application-proxy-configure-hard-coded-link-translation.md).<br><br>Ez az érték **Igen** Ha azt tervezi, hogy az alkalmazás a Microsoft Cloud App Security (MCAS) figyelésére. További információkért lásd: [valós idejű hozzáférés az alkalmazásfigyelés konfigurálása a Microsoft Cloud App Security és az Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md) |
    

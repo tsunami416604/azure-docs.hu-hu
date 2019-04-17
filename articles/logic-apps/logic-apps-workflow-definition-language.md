@@ -1,29 +1,28 @@
 ---
-title: Munkafolyamat-definíciós nyelv – Azure Logic Apps séma referenciája |} A Microsoft Docs
-description: A munkafolyamat-definíciós nyelv az Azure Logic Apps egyéni munkafolyamat-definíciókhoz írása
+title: A munkafolyamat-definíciós nyelv – Azure Logic Apps adatbázisséma hivatkozása
+description: Az útmutatót az Azure Logic Apps munkafolyamat-definíciós nyelv séma
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 04/30/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d2de2a25d67da230d539156c851cca34335a01c2
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: d80ffa862546f56e93a338a7a1db031e2cb55990
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620836"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616798"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv séma referenciája
 
-Amikor létrehoz egy logikaialkalmazás-munkafolyamat a [Azure Logic Apps](../logic-apps/logic-apps-overview.md), alapul szolgáló a munkafolyamat-definíció a tényleges logika, amely a logikai alkalmazás ismerteti. Ez a leírás meghatározott és érvényesített struktúrát követi a munkafolyamat-definíciós nyelv séma, amely használja [JavaScript Object Notation (JSON)](https://www.json.org/).
+A Logic Apps-alkalmazás létrehozásakor [Azure Logic Apps](../logic-apps/logic-apps-overview.md), a logikai alkalmazás, amely leírja a tényleges logika, amely futtatja a logikai alkalmazás az alapul szolgáló munkafolyamat definícióval rendelkezik. A munkafolyamat-definíció használ [JSON](https://www.json.org/) , és érvényesíti a munkafolyamat-definíciós nyelvséma struktúrát követi. Ezt a hivatkozást nyújt áttekintést, ez a struktúra, és hogyan a séma meghatározza a munkafolyamat-definíció az elemeket.
 
 ## <a name="workflow-definition-structure"></a>A munkafolyamat szabályzatdefiníciók struktúrája
 
-Egy munkafolyamat-definíció van legalább egy triggert, amely a logikai alkalmazás példányosítja, valamint egy vagy több műveletet, amely a logikai alkalmazást.
+Munkafolyamat-definíció mindig tartalmaz egy eseményindítót a logikai alkalmazás, valamint egy vagy több műveletet, amely az eseményindító elindulása után hárítható el.
 
 A magas szintű munkafolyamat-definíció struktúráját a következő:
 
@@ -51,7 +50,7 @@ A magas szintű munkafolyamat-definíció struktúráját a következő:
 
 ## <a name="parameters"></a>Paraméterek
 
-Az a `parameters` szakaszban, a logikai alkalmazás üzembe helyezési bemenetek fogadásához használ az összes munkafolyamat-paraméterek megadása. Paraméter deklarációinak és a paraméterértékek szükségesek üzembe helyezéskor. Ezeket a paramétereket a többi munkafolyamat szakasz használata előtt győződjön meg arról, hogy, hogy a ezekben a szakaszokban a paramétereket. 
+Az a `parameters` területén adja meg a központi telepítési bemenetek fogadásához használ a munkafolyamat-definíció az összes munkafolyamat-paraméterek. Paraméter deklarációinak és a paraméterértékek szükségesek üzembe helyezéskor. Ezeket a paramétereket a többi munkafolyamat szakasz használata előtt győződjön meg arról, hogy, hogy a ezekben a szakaszokban a paramétereket. 
 
 Íme egy paraméterdefinícióhoz általános struktúrát:
 
@@ -75,7 +74,7 @@ Az a `parameters` szakaszban, a logikai alkalmazás üzembe helyezési bemenetek
 | type | Igen | int, lebegőpontos, string, securestring, bool, tömböt, JSON-objektum, secureobject <p><p>**Megjegyzés**: Az összes jelszavak, kulcsok és titkos kulcsokat, használja a `securestring` és `secureobject` típusokat, mert a `GET` művelet nem ad vissza ezeket a típusokat. Paraméterek védelmével kapcsolatos további információkért lásd: [a logikai alkalmazás védelme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | A paraméter típusa |
 | DefaultValue érték | Igen | Ugyanaz, mint `type` | Az alapértelmezett paraméter értéke, ha nem ad meg értéket, ha a munkafolyamat példányosítja |
 | allowedValues | Nem | Ugyanaz, mint `type` | Egy tömb, amely a paraméter elfogadhat értékekkel |
-| metaadatok | Nem | JSON-objektum | Bármely más paraméter részleteit, például a nevét vagy a logikai alkalmazás vagy a Visual Studio vagy más eszközök által használt tervezési idejű adatok olvasható leírása |
+| metaadatok | Nem | JSON-objektum | Bármely más paraméter részleteit, például a nevét vagy a logikai alkalmazás vagy folyamat, vagy a Visual Studio vagy más eszközök által használt tervezési idejű adatok olvasható leírását |
 ||||
 
 ## <a name="triggers-and-actions"></a>Triggerek és műveletek
@@ -216,7 +215,7 @@ A [kifejezések](#expressions) és [funkciók](#functions), operátorok elvégze
 
 ## <a name="functions"></a>Functions
 
-Némely kifejezés le, előfordulhat, hogy még nem léteznek, amikor a Logic Apps-alkalmazás futni kezd futásidejű műveletek azok értékeit. Hivatkozhat, illetve ezekkel az értékekkel a kifejezésekben dolgozhat, használhatja a [ *funkciók* ](../logic-apps/workflow-definition-language-functions-reference.md) , amely a munkafolyamat-definíciós nyelv biztosít.
+Némely kifejezés le futásidejű előfordulhat, hogy még nem léteznek futtatásához a munkafolyamat-definíció indításakor végrehajtandó azok értékeit. Hivatkozhat, illetve ezekkel az értékekkel a kifejezésekben dolgozhat, használhatja a [ *funkciók* ](../logic-apps/workflow-definition-language-functions-reference.md) , amely a munkafolyamat-definíciós nyelv biztosít.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,19 +10,19 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8ae9ad4d1101c3b42c46c51546ac82e5b4a134c8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 198faf6791a4a2caa2cefee2181a13ed8185310e
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519850"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617337"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql-preview"></a>Gyors útmutató: T-SQL (előzetes verzió) használatával munkaterhelés besorolás létrehozása
 
 Ebben a rövid gyorsan létrehozhat egy számítási feladat osztályozó az ügyvezető Igazgatótól a szervezet számára nagyon fontosként megjelölve. A számítási feladatok osztályozó lehetővé teszi a Vezérigazgató lekérdezéseket elsőbbséget élveznek a más lekérdezések az alacsonyabb fontossági az üzenetsorban.
 
 > [!Note]
-> Az SQL Data Warehouse Gen2 munkaterhelés besorolási érhető el.
+> Számítási feladatok besorolás az SQL Data Warehouse Gen2 előzetes verzióban érhető el. Számítási feladat felügyeleti besorolást és a fontosság preview buildek 2019. április 9 vagy újabb kiadás dátummal rendelkező szól.  Felhasználók ne buildek ennél a dátumnál korábban munkaterhelés-kezelés teszteléshez.  Határozza meg, ha a build megadása nem képes a számítási feladatok kezeléséhez, futtassa a select @@version az SQL Data Warehouse-példányhoz való csatlakozáskor.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 

@@ -12,25 +12,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 56f1f04ea300ae628abb1200203873ee4ffb1af1
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: a2ffc344f51c45007eb982a02b14cb2d481d752e
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294178"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616781"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Statikus csomagolás feladatok elvégzéséhez az Azure Media Packager használata  
+
 > [!NOTE]
-> 2017. március 1-most már elérhető a Microsoft Azure Media Packager és a Microsoft Azure Media Encryptor életre dátum végén. Ezen időpont előtt a processzorokat funkciói bekerül a Media Encoder Standard (MES) állnak. Ügyfelek rendelkezésre álló feladatokat küldhet a MES használatával történő áttelepítés munkafolyamataikhoz utasításokat. Formátum konverziós és titkosítási funkciókat a dinamikus csomagolás és a dinamikus titkosítás keresztül érhető el.
-> 
-> 
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+
 
 ## <a name="overview"></a>Áttekintés
+
 Annak érdekében, hogy digitális videót továbbíthasson az interneten keresztül, akkor kell tömörítését. Digitális videofájlok nagyok, és előfordulhat, hogy az interneten keresztül vagy az ügyfelek eszközök jelennek meg megfelelően túl nagy. Kódolás az a folyamat tömöríti az audio- és videofájlokat, így az ügyfelek tekintheti meg az adathordozó. Miután egy videót kódolású, azt is elhelyezhetők más tárolók. A folyamat egy tárolóba forgalomba hozatalára kódolt adathordozó csomagolási nevezzük. Például MP4-fájlokat is, és konvertálhatja Smooth Streaming és HLS tartalmakat az Azure Media Packager használatával. 
 
-A Media Services támogatja a dinamikus és statikus csomagolás. Statikus csomagolás használatakor a tartalom egy példányával egyes formátumban, az ügyfelek által igényelt létrehozásához szükséges. A dinamikus csomagolás az összes, az kell, hogy hozzon létre egy objektumot, amely tartalmazza az adaptív sávszélességű MP4 vagy Smooth Streaming-fájlokat. Ezt követően a jegyzék vagy töredékrész kérelem, az Igényalapú Streamelési megadott formátumnak megfelelően kiszolgáló biztosítja, hogy a felhasználók az adatfolyamhoz a protokoll választotta. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
+A Media Services támogatja a dinamikus és statikus csomagolás. Statikus csomagolás használatakor a tartalom egy példányával egyes formátumban, az ügyfelek által igényelt létrehozásához szükséges. A dinamikus csomagolás használatával szüksége, hozzon létre egy objektumot, amely tartalmazza az adaptív sávszélességű MP4 vagy Smooth Streaming-fájlokat. Ezt követően a jegyzék vagy töredékrész kérelem, az Igényalapú Streamelési megadott formátumnak megfelelően kiszolgáló biztosítja, hogy a felhasználók az adatfolyamhoz a protokoll választotta. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
 
 > [!NOTE]
 > Javasoljuk, hogy használjon [dinamikus csomagolási](media-services-dynamic-packaging-overview.md).
@@ -80,7 +81,7 @@ Az MP4-fájlokat, a Media Services Packager ellenőrzése, hozzon létre saját 
     </smil>
 ```
 
-Után az adaptív sávszélességű MP4 típusú beállításkészlettel, a dinamikus csomagolás előnyeinek életbe. A dinamikus csomagolás lehetővé teszi, hogy a megadott protokollon lévő adatfolyamok további csomagolására nélkül. További információkért lásd: [dinamikus csomagolási](media-services-dynamic-packaging-overview.md).
+Miután az adaptív sávszélességű MP4-csoportot, dinamikus csomagolás is igénybe vehet. A dinamikus csomagolás lehetővé teszi, hogy a megadott protokollon lévő adatfolyamok további csomagolására nélkül. További információkért lásd: [dinamikus csomagolási](media-services-dynamic-packaging-overview.md).
 
 A következő mintakód az Azure Media Services .NET SDK-bővítményeket használ.  Ellenőrizze, hogy a kódot, hogy a mappára, ahol a bemeneti MP4-fájlokhoz és .ism fájlt találhatók. És azt is, ahol a MediaPackager_ValidateTask.xml fájl megtalálható-e. Az XML-fájl definiálva van [feladat készletet az Azure Media Packager](https://msdn.microsoft.com/library/azure/hh973635.aspx) cikk.
 
@@ -114,20 +115,27 @@ A következő mintakód az Azure Media Services .NET SDK-bővítményeket haszn�
             private static MediaServicesCredentials _cachedCredentials = null;
             private static CloudMediaContext _context = null;
 
-            // Media Services account information.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServicesAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServicesAccountKey"];
+            // Read values from the App.config file.
+
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Use the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                AzureAdTokenCredentials tokenCredentials =
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
                 // Ingest a set of multibitrate MP4s.
                 //
@@ -295,25 +303,27 @@ A példában a UpdatePlayReadyConfigurationXMLFile módszer, amellyel dinamikusa
 
             // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
-
-
-            private static MediaServicesCredentials _cachedCredentials = null;
-            private static CloudMediaContext _context = null;
-
-            // Media Services account information.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServiceAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServiceAccountKey"];
+          
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Use the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                AzureAdTokenCredentials tokenCredentials =
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
                 // Encoding and encrypting assets //////////////////////
                 // Load a single MP4 file.
@@ -665,7 +675,6 @@ A példában a UpdatePlayReadyConfigurationXMLFile módszer, amellyel dinamikusa
                             CreateAsync("Deliver Common Content Key with no restrictions").
                             Result;
 
-
                 contentKeyAuthorizationPolicy.Options.Add(policyOption);
 
                 // Associate the content key authorization policy with the content key.
@@ -708,7 +717,7 @@ Ha szeretné titkosítani a HLS, az AES-128, megválaszthatja, hogyan lehet a di
 > [!NOTE]
 > Annak érdekében, hogy a tartalom átalakítása HLS, meg kell először convert/kódolandó a tartalom Smooth Streaming.
 > Emellett a AES titkosítását, a HLS Protokollhoz ügyeljen arra, hogy állítsa be a következő tulajdonságokat a MediaPackager_SmoothToHLS.xml fájlban: a titkosítás tulajdonsága igaz értékre, a kulcs értékét, és mutasson a authentication\authorization server keyuri értéket állítsa be.
-> A Media Services hozzon létre egy fő fájlt, és helyezze az eszközintelligencia-tárolóban. Másolja a /asset-containerguid/*.key fájlt a kiszolgálóra kell (vagy a saját kulcsfájl létrehozása), és törölje a *.key fájlt az eszközintelligencia-tárolóból.
+> A Media Services egy kulcsfájlt hoz létre, és elhelyezi az eszközintelligencia-tárolóban. Másolja a /asset-containerguid/*.key fájlt a kiszolgálóra kell (vagy a saját kulcsfájl létrehozása), és törölje a *.key fájlt az eszközintelligencia-tárolóból.
 > 
 > 
 
@@ -743,23 +752,26 @@ A jelen szakaszban ismertetett példa kódolja több MP4-fájlok és Smooth Stre
             // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
 
-            private static MediaServicesCredentials _cachedCredentials = null;
-            private static CloudMediaContext _context = null;
-
-            // Media Services account information.
-            private static readonly string _mediaServicesAccountName = 
-                ConfigurationManager.AppSettings["MediaServiceAccountName"];
-            private static readonly string _mediaServicesAccountKey = 
-                ConfigurationManager.AppSettings["MediaServiceAccountKey"];
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName, 
-                                _mediaServicesAccountKey);
-                // Use the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                AzureAdTokenCredentials tokenCredentials =
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
                 // Encoding and encrypting assets //////////////////////
 
@@ -1030,24 +1042,27 @@ Ellenőrizze, hogy frissítse az alábbi kódot, hogy a mappát, ahol a bemeneti
             // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
 
-
-            private static MediaServicesCredentials _cachedCredentials = null;
-            private static CloudMediaContext _context = null;
-
-            // Media Services account information.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServiceAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServiceAccountKey"];
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Used the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                AzureAdTokenCredentials tokenCredentials =
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+
 
                 // Load an MP4 file.
                 IAsset asset = IngestSingleMP4File(_singleMP4File, AssetCreationOptions.None);

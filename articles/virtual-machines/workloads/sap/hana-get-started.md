@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 635f519239ad00df8672472bcb6c54e6b8a59927
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7d46e2047debe5546c6d36f245ae076cec6f73a3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001704"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618124"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Gyors útmutató: Egypéldányos SAP HANA az Azure virtuális gépek manuális telepítése
 ## <a name="introduction"></a>Bevezetés
@@ -269,7 +269,7 @@ Mielőtt elkezdené telepíteni az SAP, győződjön meg arról, szerepeltetni k
 
 ### <a name="the-etcfstab-file"></a>A/etc/fstab fájl
 
-Hasznos lehet hozzáadni a **nofail** paramétert az fstab fájlt. Így ha probléma merül fel a lemezeket, a virtuális gép nem lefagy a rendszerindítási folyamat során. De ne feledje, hogy további lemezterület nem feltétlenül érhető el, és a folyamatok előfordulhat, hogy töltse fel a legfelső szintű fájlrendszer. Ha /hana hiányzik, a SAP HANA nem indul el.
+Hasznos lehet hozzáadni a **nofail** paramétert az fstab fájlt. Így ha probléma merül fel a lemezeket, a virtuális gép nem válaszol a rendszerindítási folyamat során. De ne feledje, hogy további lemezterület nem feltétlenül érhető el, és a folyamatok előfordulhat, hogy töltse fel a legfelső szintű fájlrendszer. Ha /hana hiányzik, a SAP HANA nem indul el.
 
 ![Adja hozzá a nofail paramétert az fstab fájlt](./media/hana-get-started/image000c.jpg)
 

@@ -1,42 +1,24 @@
 ---
-title: Az Azure Application Gateway - létrehozása az Azure klasszikus parancssori felület |} A Microsoft Docs
+title: Az Azure Application Gateway - létrehozása az Azure klasszikus parancssori felület
 description: Ismerje meg, hogyan hozhat létre egy Application Gateway az Azure klasszikus parancssori felület használatával a Resource Managerben
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c2f6516e-3805-49ac-826e-776b909a9104
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.topic: conceptual
+ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: e834b1633f17ecec74ae17e962de445ad8d6dccd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974425"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608461"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Application gateway létrehozása az Azure CLI-vel
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-gateway-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
-> * [Klasszikus Azure PowerShell](application-gateway-create-gateway.md)
-> * [Azure Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
-> * [Az Azure klasszikus parancssori felület](application-gateway-create-gateway-cli.md)
-> * [Azure CLI](application-gateway-create-gateway-cli.md)
-> 
-> 
+Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak. Az Application gateway az alábbi alkalmazáskézbesítési funkciókkal rendelkezik: HTTP-terheléselosztást, cookie-alapú munkamenet-affinitás és Secure Sockets Layer (SSL) alapú kiszervezés, egyéni állapotmintákat, és a többhelyes támogatást.
 
-Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak. Az Application gateway az alábbi alkalmazáskézbesítési funkciókkal rendelkezik: HTTP-terheléselosztást, cookie-alapú munkamenet-affinitás és Secure Sockets Layer (SSL) alapú kiszervezés, egyéni állapotmintákat betölteni, és támogatja a többhelyes.
-
-## <a name="prerequisite-install-the-azure-cli"></a>Előfeltétel: Az Azure CLI telepítése
+## <a name="prerequisite-install-the-azure-cli"></a>Előfeltétel: Telepítse az Azure CLI-t
 
 Ebben a cikkben szereplő lépések végrehajtásához kell [az Azure CLI telepítése](../xplat-cli-install.md) és kell [jelentkezzen be Azure](/cli/azure/authenticate-azure-cli). 
 
@@ -60,15 +42,15 @@ Ebben a forgatókönyvben lesz:
 
 Az Azure Application Gateway a saját alhálózatában van szükség. Ha egy virtuális hálózatot hoz létre, győződjön meg arról, hogy hagyja-e elég hely a cím több alhálózattal rendelkezik. Miután telepít egy alhálózatot az application gateway, csak további az application Gateway átjárók tudnak lesz hozzáadva az alhálózathoz.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Nyissa meg a **a Microsoft Azure-parancssort**, és jelentkezzen be. 
+Nyissa meg a **a Microsoft Azure-parancssort**, és jelentkezzen be.
 
 ```azurecli-interactive
-azure login
+az login
 ```
 
-Miután beírta a fenti példa, egy kódot biztosítunk. Navigáljon a https://aka.ms/devicelogin egy böngészőben a bejelentkezési folyamat folytatásához.
+Miután beírta a fenti példa, egy kódot biztosítunk. Navigáljon a https://aka.ms/devicelogin egy böngészőben a bejelentkezési folyamat folytatása.
 
 ![bejelentkezés az cmd megjelenítő eszközön][1]
 
@@ -122,7 +104,7 @@ azure network vnet subnet create \
 
 ## <a name="create-the-application-gateway"></a>Application Gateway létrehozása
 
-A virtuális hálózat és alhálózat létrehozása után az application gateway számára az előfeltételek teljesülnek. Emellett a korábban exportált .pfx tanúsítvány és a jelszót a tanúsítványhoz szükség, a következő lépés: a háttérrendszer használni az IP-címek a háttérkiszolgáló az IP-címek. Ezek az értékek lehetnek magánhálózati IP-címek a virtuális hálózatban, nyilvános IP-címek vagy teljesen minősített tartománynevet a háttérkiszolgálókhoz.
+A virtuális hálózat és alhálózat létrehozása után az application gateway számára az előfeltételek teljesülnek. Emellett a korábban exportált .pfx tanúsítvány és a jelszót a tanúsítványhoz szükség, a következő lépés: A használt biztosítani a háttérbeli IP-címek a háttérkiszolgáló az IP-címek. Ezek az értékek lehetnek magánhálózati IP-címek a virtuális hálózatban, nyilvános IP-címek vagy teljesen minősített tartománynevet a háttérkiszolgálókhoz.
 
 ```azurecli-interactive
 azure network application-gateway create \

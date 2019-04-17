@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: e528b70e257c41f771a1bd3e5ec811c61eb512cc
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 6978b83e66f58e468d9f98394904861c8a4d8bd0
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526673"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618141"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
 Csatlakozás az Azure-SSIS integrációs modulját (IR) az Azure virtual Networkhöz a következő esetekben: 
@@ -139,7 +139,7 @@ Lásd: [a PowerShell-szkript](https://gallery.technet.microsoft.com/scriptcenter
     -   Az Azure nyilvános IP-címet, a név  *\<GUID azonosítója > - azurebatch - cloudservicepublicip*.
     -   Egy hálózati munkahelyi biztonsági csoport nevű  *\<GUID azonosítója > - azurebatch - cloudservicenetworksecuritygroup*. 
 
--   Győződjön meg arról, hogy nem kell minden olyan erőforrás-zárolás használata az erőforráscsoportot vagy előfizetést, amelyhez a virtuális hálózat tartozik. Ha konfigurál egy írásvédettségi zárolása vagy törlési zárolás, indítása és leállítása az integrációs modul előfordulhat, hogy nem sikerül vagy lefagy. 
+-   Győződjön meg arról, hogy nem kell minden olyan erőforrás-zárolás használata az erőforráscsoportot vagy előfizetést, amelyhez a virtuális hálózat tartozik. Ha konfigurál egy írásvédettségi zárolása vagy törlési zárolás, elindítása és leállítása az integrációs modul előfordulhat, hogy nem sikerül vagy nem válaszol. 
 
 -   Győződjön meg arról, hogy nem rendelkezik egy Azure-házirendet, amely megakadályozza, hogy a következő erőforrások létrehozott erőforráscsoportot vagy előfizetést, amelyhez a virtuális hálózat tartozik alá: 
     -   Microsoft.Network/LoadBalancers 

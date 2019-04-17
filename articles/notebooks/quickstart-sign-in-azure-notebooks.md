@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: f3effc900b79ddb7beac6a3aaf2eee0a264f7b4d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: eb8ba7f23de99d333693430d806a8d887c55a678
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59280859"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608175"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>Gyors útmutató: Bejelentkezés és felhasználói azonosító beállítása
 
@@ -33,6 +33,9 @@ Bár az Azure-jegyzetfüzetek mindig bejelentkezés nélkül is megtekintheti, j
 1. Amikor a rendszer kéri, adja meg annak a Microsoft-Account vagy egy munkahelyi vagy iskolai fiókkal és válassza ki az e-mail címét **tovább**. Fióktípus esetében leírása [a felhasználói fiók Azure notebookokhoz](azure-notebooks-user-account.md). Ha nem rendelkezik Microsoft-Account, vagy nem szeretne tenni egy kifejezetten az Azure-jegyzetfüzetek való használatra, válassza ki a **hozzon létre egyet**:
 
     ![Hozzon létre új Microsoft-fiók parancs bejelentkezési kérések jelenhetnek](media/accounts/create-new-microsoft-account.png)
+
+    > [!Tip]
+    > Hozzon létre egy új fiókot, amely már rendelkezik fiókkal társított e-mail-címmel próbál jelenhet meg az üzenetet, a "nem itt jelentkezzen be munkahelyi vagy iskolai e-mail-címét. Egy személyes e-mail, például a Gmailes vagy Yahoo!-s, vagy szerezze be egy új Outlook e-mailt." Ebben az esetben próbáljon meg azzal bejelentkezni a munkahelyi e-mail címét, egy új fiók létrehozása nélkül.
 
 1. Adja meg a jelszót, amikor a rendszer kéri.
 
@@ -64,4 +67,4 @@ Jelentkezzen ki, válassza ki, az oldal jobb felső sarokban a felhasználónev�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Notebook létrehozása és megosztása](quickstart-create-share-jupyter-notebook.md)
+> [Rövid útmutató: Hozzon létre és osszon meg a notebook](quickstart-create-share-jupyter-notebook.md)

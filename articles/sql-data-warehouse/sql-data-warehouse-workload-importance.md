@@ -10,19 +10,19 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: e53a6fcefb0f5370f6e24cc50fad2ad4ad4c64e3
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 12e7d9bc22eff14bbf302aed50080412d04a40d3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57864066"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616628"
 ---
 # <a name="sql-data-warehouse-workload-importance-preview"></a>Az SQL Data Warehouse számítási feladatok fontossági (előzetes verzió)
 
 Ez a cikk bemutatja, hogyan befolyásolhatja a számítási feladatok fontossági a SQL Data Warehouse-kérelmek esetén a végrehajtás sorrendje.
 
 > [!Note]
-> Az SQL Data Warehouse Gen2 számítási feladatok fontossági érhető el.
+> Számítási feladatok besorolás az SQL Data Warehouse Gen2 előzetes verzióban érhető el. Számítási feladat felügyeleti besorolást és a fontosság preview buildek 2019. április 9 vagy újabb kiadás dátummal rendelkező szól.  Felhasználók ne buildek ennél a dátumnál korábban munkaterhelés-kezelés teszteléshez.  Határozza meg, ha a build megadása nem képes a számítási feladatok kezeléséhez, futtassa a select @@version az SQL Data Warehouse-példányhoz való csatlakozáskor.
 
 ## <a name="importance"></a>Fontosság
 

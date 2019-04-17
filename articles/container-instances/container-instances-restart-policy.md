@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: ef34985e7897aa751275231a28c6031d6c9747b0
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369964"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606837"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Tárolóalapú feladatok futtatása az újraindítási házirendek
 
@@ -93,98 +93,9 @@ Kimenet:
 
 Ez a példa bemutatja a kimenete a STDOUT küldött a parancsfájlt. A tárolóalapú feladatok, azonban előfordulhat, hogy inkább írni a kimeneti újabb lekérés-tároláshoz. Például, hogy egy [Azure-fájlmegosztás](container-instances-mounting-azure-files-volume.md).
 
-## <a name="manually-stop-and-start-a-container-group"></a>Manuálisan állítsa le és indítsa el a tárolócsoport
-
-Függetlenül az újraindítási házirend konfigurált egy [tárolócsoport](container-instances-container-groups.md), érdemes manuális indítása vagy leállítása egy tárolócsoportot.
-
-* **Állítsa le** - manuálisan állítsa le egy futó tárolócsoportra bármikor – például használatával a [az tároló stop] [ az-container-stop] parancsot. Az egyes tárolókhoz kapcsolódó számítási feladatok, érdemes leállítani egy tárolócsoport menteni a költségeket a meghatározott időszak után. 
-
-  Leállítása folyamatban van egy tárolócsoport leállítja és újraindítja a tárolók a csoport; nem őrzi meg a tároló állapota. 
-
-* **Indítsa el** – Ha egy tárolócsoport le van állítva – vagy mert a tárolók saját leállt, vagy manuálisan leállították a csoport – használhatja a [tároló indítása API](/rest/api/container-instances/containergroups/start) vagy manuálisan elindítani a tárolók Azure Portalon a csoport. Bármely tárolóra a tárolórendszerkép frissül, ha egy új rendszerképet kéri le. 
-
-  Új központi telepítést azonos konfigurációjú tároló indítása egy tárolócsoport kezdődik. Ez a művelet segítségével gyorsan felhasználhatja egy ismert tároló a portcsoportok, amely a várt módon működik. Nem kell ugyanazt a számítási feladatot futtatni egy új tárolócsoport létrehozásához.
-
-* **Indítsa újra a** -újraindíthatja a tárolócsoport működés közben – például használja a [az tároló újraindítási] [ az-container-restart] parancsot. Ez a művelet újraindítja az összes tároló tárolócsoportban. Bármely tárolóra a tárolórendszerkép frissül, ha egy új rendszerképet kéri le. 
-
-  A tárolócsoport újraindítása akkor hasznos, ha a kívánt központi telepítési hiba elhárítása. Például ha egy ideiglenes erőforrás-korlátozás meggátolja, hogy a tárolók sikeresen fut, a csoport újraindítása megoldhatja a problémát.
-
-Manuálisan indítsa el, vagy indítsa újra egy tárolócsoportot, miután a tároló csoport fut a beállított megfelelően újraindítási házirend.
-
-## <a name="configure-containers-at-runtime"></a>Tárolók konfigurálása a futási időben
-
-Amikor létrehoz egy tárolópéldányt, beállíthatja a **környezeti változók**, illetve adja meg az egyéni **parancssori** végrehajtani, amikor a tároló elindult. Ezek a beállítások a kötegelt feladatok használatával készítse elő az egyes tárolók feladatspecifikus konfigurációval.
-
-## <a name="environment-variables"></a>Környezeti változók
-
-Környezeti változók értékét az alkalmazás vagy a tároló által futtatott parancsfájl dinamikus konfiguráció a tárolóban. Ez hasonlít a `--env` parancssori argumentumot `docker run`.
-
-Például a parancsfájl a példa tárolóban működése módosítható a tárolópéldány létrehozásakor az alábbi környezeti változókat megadásával:
-
-*NumWords*: A STDOUT küldött szavak számát.
-
-*A MinLength*: Ahhoz, hogy a megszámlálandó szó karaktereinek minimális száma. Ha nagyobb figyelmen kívül hagyja a gyakori szavakat, például a "," és "a."
-
-```azurecli-interactive
-az container create \
-    --resource-group myResourceGroup \
-    --name mycontainer2 \
-    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
-    --restart-policy OnFailure \
-    --environment-variables NumWords=5 MinLength=8
-```
-
-Megadásával `NumWords=5` és `MinLength=8` a tároló naplóit a tároló környezeti változók esetében eltérő kimeneti kell megjelenítenie. Miután a tároló állapota *kilépett* (használata `az container show` ellenőrizheti annak állapotát), a naplók megtekintéséhez az új kimenet megjelenítéséhez:
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name mycontainer2
-```
-
-Kimenet:
-
-```bash
-[('CLAUDIUS', 120),
- ('POLONIUS', 113),
- ('GERTRUDE', 82),
- ('ROSENCRANTZ', 69),
- ('GUILDENSTERN', 54)]
-```
-
-
-
-## <a name="command-line-override"></a>Parancssor felülbírálása
-
-Adja meg egy parancssort, amikor létrehoz egy tárolópéldányt, felülbírálhatja a tárolórendszerképbe beépített parancssori. Ez hasonlít a `--entrypoint` parancssori argumentumot `docker run`.
-
-Például rendelkezhet a példa tárolót más, a szöveg elemzése *apró település* egy másik parancssori megadásával. A tároló által futtatott Python-szkript *wordcount.py*, argumentumként egy URL-cím fogadja és dolgozza fel a lapon alapértelmezett letöltője helyett.
-
-Például határozza meg a 3 leggyakoribb öt levelek szavak *Romeo és Juliet*:
-
-```azurecli-interactive
-az container create \
-    --resource-group myResourceGroup \
-    --name mycontainer3 \
-    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
-    --restart-policy OnFailure \
-    --environment-variables NumWords=3 MinLength=5 \
-    --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
-```
-
-Újra Ha a tároló *kilépett*, a kimenet megtekintéséhez a tároló naplóinak megjelenítése:
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name mycontainer3
-```
-
-Kimenet:
-
-```bash
-[('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
-```
-
 ## <a name="next-steps"></a>További lépések
 
-### <a name="persist-task-output"></a>A feladat kimenetének megőrzése
+A feladat-alapú forgatókönyvek, például a kötegelt feldolgozási egy nagy méretű adathalmazt a több tárolókkal, igénybe veheti az egyéni [környezeti változók](container-instances-environment-variables.md) vagy [parancssorok](container-instances-start-command.md) futásidőben.
 
 Hogyan kell a tárolókat, amelyek befejezését kimenetének megőrzése a részletekért lásd: [csatlakoztatása egy Azure-fájlmegosztás az Azure Container Instances](container-instances-mounting-azure-files-volume.md).
 
@@ -194,7 +105,5 @@ Hogyan kell a tárolókat, amelyek befejezését kimenetének megőrzése a rés
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
-[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
 [azure-cli-install]: /cli/azure/install-azure-cli

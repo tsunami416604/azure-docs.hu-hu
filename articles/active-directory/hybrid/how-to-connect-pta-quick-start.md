@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51fc93f9508bada40885e41b39e8a87cf4e0bf3c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ba5455680647b90b113d31c55816a2e0b0131b33
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101006"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617801"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Az Azure Active Directory átmenő hitelesítés: Első lépések
 
@@ -111,7 +111,15 @@ Ha azt tervezi, éles környezetben üzembe helyezése az átmenő hitelesítés
 >[!IMPORTANT]
 >Éles környezetben azt javasoljuk, hogy rendelkezik-e legalább 3 hitelesítési ügynökök futtassa a bérlő. 40 hitelesítési ügynökök bérlőnként rendszer korlátozva van. Ajánlott eljárásként kezeljük az összes olyan kiszolgálóalkalmazást futtató hitelesítési ügynökök, a Tier 0 rendszerek és (lásd: [referencia](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
-Kövesse az alábbi utasításokat a hitelesítési ügynök szoftver letöltéséhez:
+Több átmenő hitelesítési ügynökök telepítésével biztosítható a magas rendelkezésre állást, de nem determinisztikus terheléselosztási a hitelesítési ügynökök között. Annak meghatározásához, hány hitelesítési ügynökök a bérlő van szüksége, fontolja meg a maximális és átlagos terhelés bejelentkezési kérések a bérlő látja a keresett. Alapként egy egyetlen hitelesítési ügynök képes kezelni másodpercenként egy standard 4 magos processzor, 16 GB RAM-MAL kiszolgáló 300, 400 hitelesítések.
+
+Hálózati forgalom becslése, használja a következő olvasható méretezési Útmutató:
+- Minden egyes kérés esetében a payload mappaméret (0,5 KB + 1 K * num_of_agents) bájt. azaz a adatok az Azure ad-ből a hitelesítési ügynök. Itt "num_of_agents" azt jelzi, hogy a bérlő regisztrált a hitelesítési ügynökök száma.
+- Minden válasz van egy 1 KB; hasznos adat mérete azaz a származó adatok a hitelesítési ügynök az Azure ad-hez.
+
+A legtöbb ügyfél számára három hitelesítési ügynökök összesen elegendőek a magas rendelkezésre állás és a kapacitás. Hitelesítési ügynökök közeli bejelentkezési késés javítása érdekében a tartományvezérlőket kell telepítenie.
+
+A kezdéshez kövesse ezeket az utasításokat a hitelesítési ügynök szoftvereket tölthet le:
 
 1. A hitelesítési ügynök legújabb verziójának letöltése (1.5.193.0 verzió vagy újabb), jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő globális rendszergazdai hitelesítő adataival.
 2. Válassza ki **Azure Active Directory** a bal oldali panelen.
@@ -141,6 +149,13 @@ A második hozzon létre, és a egy felügyelet nélküli telepítési parancsf�
 3. Lépjen a **C:\Program Files\Microsoft Azure AD Connect hitelesítési ügynökének** , és futtassa az alábbi szkriptet az a `$cred` létrehozott objektum:
 
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+
+>[!IMPORTANT]
+>Ha hitelesítési ügynök telepítve van a virtuális gépen, a virtuális gép beállítása egy másik hitelesítési ügynök nem tudja klónozni. Ez a módszer **nem támogatott**.
+
+## <a name="step-5-configure-smart-lockout-capability"></a>5. lépés: Intelligens zárolás funkciót konfigurálása
+
+Intelligens zárolás zárolásának kártékony elemek számára próbál kitalálni a felhasználók jelszavát, vagy úgy szerezheti be a találgatásos módszerrel segíti. Intelligens zárolás az Azure ad-ben és / vagy a megfelelő zárolási beállításait konfigurálja a helyszíni Active Directoryban, támadások is kiszűrte az Active Directory elérése előtti. Olvasási [Ez a cikk](../authentication/howto-password-smart-lockout.md) további az intelligens zárolás beállítások konfigurálása a felhasználói fiókok védelmét a bérlő.
 
 ## <a name="next-steps"></a>További lépések
 - [Az AD FS át az átmenő hitelesítés](https://aka.ms/adfstoptadp) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).

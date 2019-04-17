@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 02/07/2019
-ms.openlocfilehash: 79d6e185b64fdaf332f877718487809ba6273441
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 04/15/2019
+ms.openlocfilehash: e191c656c5485377f62073f52dec0b3dbee7537b
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895788"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616271"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB korlátozásai
 A következő szakaszok ismertetik a kapacitást, motor támogatása, jogosultság támogatja, adatok adatkezelési utasítást, és az adatbázis-szolgáltatás működési korlátai.
@@ -28,10 +28,12 @@ Tarifacsomag és virtuális magok száma kapcsolatok maximális száma a követk
 |Általános rendeltetés| 8| 1250|
 |Általános rendeltetés| 16| 2500|
 |Általános rendeltetés| 32| 5000|
+|Általános rendeltetés| 64| 10000|
 |Memóriára optimalizált| 2| 600|
 |Memóriára optimalizált| 4| 1250|
 |Memóriára optimalizált| 8| 2500|
 |Memóriára optimalizált| 16| 5000|
+|Memóriára optimalizált| 32| 10000|
 
 Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 > ERROR 1040 (08004): Túl sok kapcsolat

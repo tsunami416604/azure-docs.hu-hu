@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 19949b555a5be21c06c3acfbbd5fb9be08dc9f23
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 892d485fb5cdaa08107870e9ab5b2b7ad9bcba5b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766943"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608894"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Bevezetés a Service Bus-üzenettémák használatába
 
@@ -27,24 +27,20 @@ ms.locfileid: "57766943"
 
 Ez az oktatóanyag a következő lépéseken vezet végig:
 
-1. Service Bus-névtér létrehozása az Azure Portal használatával.
-2. Service Bus-üzenettéma létrehozása az Azure Portal használatával.
-3. Service Bus-előfizetés létrehozása az üzenettémához az Azure Portal használatával.
-4. Írjon egy .NET Core-konzolalkalmazást, hogy elküldjön egy üzenetkészletet az üzenettémához.
-5. Írjon egy .NET Core-konzolalkalmazást, hogy üzeneteket tudjon fogadni az előfizetésből.
+1. Írjon egy .NET Core-konzolalkalmazást, hogy elküldjön egy üzenetkészletet az üzenettémához.
+2. Írjon egy .NET Core-konzolalkalmazást, hogy üzeneteket tudjon fogadni az előfizetésből.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb.
-2. [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
-2. Azure-előfizetés.
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-[!INCLUDE [service-bus-create-topics-subscriptions-portal](../../includes/service-bus-create-topics-subscriptions-portal.md)]
-
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [Visual Studio vagy az MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Kövesse lépéseket a [a rövid útmutató: Az Azure portal használatával hozzon létre egy Service Bus-témakörbe, és a témakörbe az előfizetések](service-bus-quickstart-topics-subscriptions-portal.md) a következő feladatokat végezheti el:
+    1. Hozzon létre egy Service Bus **névtér**.
+    2. Első a **kapcsolati karakterlánc**.
+    3. Hozzon létre egy **témakör** a névtérben.
+    4. Hozzon létre **egy előfizetés** névtér a témakörbe.
+3. [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb.
+4. [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
+ 
 ## <a name="send-messages-to-the-topic"></a>Üzenet küldése az üzenettémához
 
 A Visual Studio használatával írjon C# konzolalkalmazást az üzenetek üzenettémához való elküldéséhez.
@@ -204,7 +200,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
 
 ## <a name="receive-messages-from-the-subscription"></a>Üzenet fogadása az előfizetéstől
 
-Az imént elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzolalkalmazást, majd telepítse a **Microsoft.Azure.ServiceBus** NuGet-csomagot, az előző küldő alkalmazáshoz hasonlóan.
+Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzolalkalmazást, és telepítse a **Microsoft.Azure.ServiceBus** NuGet-csomagjára, hasonlóan az előző küldő alkalmazáshoz.
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>Kód írása az üzenetek előfizetéstől történő fogadásához
 

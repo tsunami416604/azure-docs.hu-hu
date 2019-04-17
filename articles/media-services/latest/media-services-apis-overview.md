@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9d1fa5786dcde70d42363dbb9af7221ca5383e64
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ed10354047060825b4368e02160d4655e33bc8f6
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546398"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617396"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-k
 
@@ -25,7 +25,8 @@ Ez a cikk ismerteti a szabályokat, amelyek a alkalmazni az entitások és API-k
 
 ## <a name="accessing-the-azure-media-services-api"></a>Az Azure Media Services API elérése
 
-Az Azure Media Services-erőforrások eléréséhez, használjon az Azure Active Directory (AD) egyszerű szolgáltatásnév hitelesítésével. Az Azure Media Services API megköveteli, hogy a felhasználó vagy alkalmazás, amely lehetővé teszi a REST API-kérelmek az Azure Media Services-fiók erőforrás hozzáférése (általában vagy a **közreműködői** vagy **tulajdonosa** szerepkör). További információkért lásd: [szerepköralapú hozzáférés-vezérlés a Media Services-fiókok](rbac-overview.md).
+Az Azure Media Services-erőforrások eléréséhez, használhatja az Azure Active Directory (AD) egyszerű szolgáltatásnév hitelesítésével.
+A Media Services API megköveteli, hogy a felhasználó vagy alkalmazás a REST API-t kér a Media Services-fiók erőforrás hozzáférése, és használja a **közreműködői** vagy **tulajdonosa** szerepkör. Az API az elérhető lesz a **olvasó** azonban csak a szerepkör **első** vagy **lista**   művelet elérhető lesz. További információkért lásd: [szerepköralapú hozzáférés-vezérlés a Media Services-fiókok](rbac-overview.md).
 
 Egyszerű szolgáltatás létrehozása helyett érdemes lehet felügyelt identitások az Azure-erőforrások eléréséhez a Media Services API Azure Resource Manageren keresztül. Az Azure-erőforrások felügyelt identitások kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md).
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: d399e83dbd1324827cc395cbf7834672baffa791
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2110b1ec7d5d6b317341855ff19acf7975733e71
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275844"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617869"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Oktatóanyag: Szűrjön át az Azure Active Directory-integráció
 
@@ -101,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Szűrjön át, hajtsa végre
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett módban a felhasználónak nincs bármely lépése végrehajtani, mert az alkalmazás már előre integrált az Azure-ral.
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett módban a felhasználónak nincs bármely lépése végrehajtani, mert az alkalmazás már előre integrált, az Azure-ral.
 
     ![Szűrjön a tartomány és URL-címeket egyetlen bejelentkezési adatait át](common/preintegrated.png)
 
@@ -141,7 +141,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Szűrjön át, hajtsa végre
 
     b. A a **Entitásazonosító** szövegmezőjébe illessze be az értéket, **az Azure AD-azonosító** Azure Portalról másolt.
 
-    c. A Jegyzettömbben, nyissa meg az Azure Portalról letöltött base-64 kódolású tanúsítványt, másolja a tartalmat, és illessze be azt a **x509 tanúsítványok** mezőbe.
+    c. A Jegyzettömbben, nyissa meg az Azure Portalról letöltött base-64 kódolású tanúsítványt, másolja a tartalmat, és illessze be azt a **x509 tanúsítványok** mezőbe.
 
     d. Az a **E-mail attribútum** szövegmezőbe írja be **emailaddress**.
 
@@ -219,9 +219,9 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Szűrjön át, akkor ki
 
     ![Egyszeri bejelentkezés konfigurálása](./media/percolate-tutorial/configure04.png)
 
-    a. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó brittasimon@contoso.com.
+    a. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó brittasimon@contoso.com.
 
-    b. A **Fullname** szöveget adja meg például a felhasználó nevét **Brittasimon**.
+    b. A **Fullname** szöveget adja meg például a felhasználó nevét **Brittasimon**.
 
     c. Kattintson a **felhasználók létrehozása**.
 
@@ -235,7 +235,7 @@ Ha a hozzáférési panelen Szűrjön át csempére kattint, meg kell lehet auto
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

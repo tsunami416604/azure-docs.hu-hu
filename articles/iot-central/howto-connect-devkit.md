@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3055bf4be024065bcd8db9cf523de93a5ab6b22b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 8558168b7eb35743c0fd590ded17ef13446533c4
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905936"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617818"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -246,8 +246,8 @@ A beállítások ki-/ bekapcsolása
 | Megjelenített név | Mező neve | Visszatérési típusa | A beviteli mező megjelenített neve | A beviteli mező neve | A beviteli mező típusa |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | echo         | echo       | szöveg        | érték megjelenítése         | displayedValue   | szöveg             |
-| Visszaszámlálás    | visszaszámlálás  | szám      | A darabszám               | countFrom        | szám           |
+| Visszaszámlálás    | Visszaszámlálás  | szám      | A darabszám               | countFrom        | szám           |
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy már DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz, a javasolt következő lépésre, hogy [előkészítése és a Raspberry Pi csatlakoztatása](howto-connect-raspberry-pi-python.md).
+Most, hogy megismerte a Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz, a javasolt következő lépésre megtudhatja, hogyan [állítson be egy egyéni sablont](howto-set-up-template.md) a saját IoT-eszköz.

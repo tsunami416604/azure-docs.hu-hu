@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: d2905d05dce48b705de44780425ed2b55b02555c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: a139d0558565114725c6198f64e139e5a5019c75
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888984"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616695"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a Java
 
@@ -23,18 +23,20 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Java fejlesztési Kit(JDK), 7 vagy újabb.
+* A Java fejlesztési Kit(JDK), 7 vagy újabb.
+
+* Importálás a [gson-2.8.5.jar](https://libraries.io/maven/com.google.code.gson%3Agson) vagy legfrissebb [Gson](https://github.com/google/gson) verzió. Parancssori végrehajtási, vegye fel a `.jar` a Java-mappába, a fő osztállyal.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-
 ## <a name="create-and-initialize-an-application"></a>Hozzon létre, és a egy alkalmazás inicializálása
 
-1. Hozzon létre egy új Java-projektet a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és a következő csomagok importálásához.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE- vagy egy osztálynév tetszőleges szerkesztőben, és importálja a következő csomagok.
 
     ```java
     import java.io.*;
     import java.net.*;
+    import com.google.gson.*;
     import javax.net.ssl.HttpsURLConnection;
     ```
 
@@ -44,7 +46,7 @@ A Java fejlesztési Kit(JDK), 7 vagy újabb.
     static String host = "https://api.cognitive.microsoft.com";
     static String path = "/bing/v7.0/spellcheck";
 
-    static String key = "ENTER YOUR KEY HERE";
+    static String key = "<ENTER-KEY-HERE>";
 
     static String mkt = "en-US";
     static String mode = "proof";
@@ -58,21 +60,20 @@ A Java fejlesztési Kit(JDK), 7 vagy újabb.
    ```java
    public static void check () throws Exception {
        String params = "?mkt=" + mkt + "&mode=" + mode;
-   //...
+      // add the rest of the code snippets here (except prettify() and main())...
    }
    ```
 
-2. Hozzon létre egy URL-címet a végponti gazdagép elérési útvonalát, és a paraméterek karakterlánc kombinálásával. Hozzon létre egy új `HttpsURLConnection` obejct.
+2. Hozzon létre egy URL-címet a végponti gazdagép elérési útvonalát, és a paraméterek karakterlánc kombinálásával. Hozzon létre egy új `HttpsURLConnection` objektum.
 
     ```java
     URL url = new URL(host + path + params);
-    HttpsURLConnection connection = (HttpsURLConnection) 
+    HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. Nyissa meg az URL-kapcsolatot. A kérelem módszert állítja be `POST`. Adja hozzá a kérelem paramétereit. Ne felejtse el hozzáadni az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc. 
+3. Nyissa meg az URL-kapcsolatot. A kérelem módszert állítja be `POST`. Adja hozzá a kérelem paramétereit. Ne felejtse el hozzáadni az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
 
     ```java
-    url.openConnection();
     connection.setRequestMethod("POST");
     connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
     connection.setRequestProperty("Ocp-Apim-Subscription-Key", key);
@@ -88,21 +89,34 @@ A Java fejlesztési Kit(JDK), 7 vagy újabb.
         wr.close();
     ```
 
-## <a name="read-the-response"></a>A válasz olvasása
+## <a name="format-and-read-the-api-response"></a>Formázhatja és az API-válasz olvasása
 
-1. Hozzon létre egy `BufferedReader` és olvassa el a választ az API-ból. Nyomtassa ki a konzolhoz.
+1. Adja hozzá ezt a módszert az osztályhoz. A JSON-t egy olvashatóbb kimeneti formázza azt.
+
+    ``` java
+    // This function prettifies the json response.
+    public static String prettify(String json_text) {
+        JsonParser parser = new JsonParser();
+        JsonElement json = parser.parse(json_text);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(json);
+    }
+
+1. Create a `BufferedReader` and read the response from the API. Print it to the console.
     
     ```java
     BufferedReader in = new BufferedReader(
     new InputStreamReader(connection.getInputStream()));
     String line;
     while ((line = in.readLine()) != null) {
-        System.out.println(line);
+        System.out.println(prettify(line);
     }
     in.close();
     ```
 
-2. Az alkalmazás fő függvényét hívja meg a fent létrehozott függvényt. 
+## <a name="call-the-api"></a>Az API meghívása
+
+Az alkalmazás fő függvényét a fent létrehozott check() metódust hívja.
 
     ```java
     public static void main(String[] args) {
@@ -114,10 +128,26 @@ A Java fejlesztési Kit(JDK), 7 vagy újabb.
         }
     }
     ```
-    
+
+## <a name="run-the-application"></a>Az alkalmazás futtatása
+
+Hozhat létre, és futtassa a projektet.
+
+Ha a parancssor használata esetén használatával a következő parancsokat az alkalmazás fordításához és futtatásához.
+
+**Hozhat létre:**
+```bash
+javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
+```
+
+**Futtassa:**
+```bash
+java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
+```
+
 ## <a name="example-json-response"></a>Példa JSON-válasz
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
 ```json
 {

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b8db3bb2e7a21011508f30492bf99c7ecca583
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096860"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617212"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Az Azure Active Directory átmenő hitelesítés a biztonság részletes bemutatása
 
@@ -136,7 +136,7 @@ Az átmenő hitelesítés módon kezeli a felhasználói bejelentkezési kérele
 4. A felhasználó nem ír be a felhasználónevet a **felhasználói bejelentkezés** lapot, majd kiválasztja a **tovább** gombra.
 5. A felhasználó beírja a jelszavát, a **felhasználói bejelentkezés** lapot, majd kiválasztja a **bejelentkezési** gombra.
 6. A felhasználónév és jelszó egy HTTPS-POST-kérelmet az Azure AD STS elküldi.
-7. Azure AD STS kérdezi le a nyilvános kulcsok az Azure SQL database-ből a bérlő regisztrált hitelesítési ügynökök, és a jelszó titkosítja őket használatával. 
+7. Azure AD STS kérdezi le a nyilvános kulcsok az Azure SQL database-ből a bérlő regisztrált hitelesítési ügynökök, és a jelszó titkosítja őket használatával.
     - A bérlő regisztrált "N" hitelesítési ügynökök titkosított "N" jelszó értékeinek küld.
 8. Az Azure AD STS helyezi el a jelszó-érvényesítési kérése, amely a felhasználónév és a titkosított jelszót értékek, a Service Bus-üzenetsorba a bérlőjéhez tartozik az alakzatot áll.
 9. Az inicializált hitelesítési ügynökök tartósan csatlakozott a Service Bus-üzenetsorba, mert a rendelkezésre álló hitelesítési ügynökök egyike a jelszó-érvényesítési kérése kérdezi le.
@@ -145,6 +145,9 @@ Az átmenő hitelesítés módon kezeli a felhasználói bejelentkezési kérele
     - Az API-t az azonos API-t, amelyet az Active Directory összevonási szolgáltatások (AD FS) a felhasználók az összevont bejelentkezési forgatókönyvek esetében.
     - Az API-t a keresse meg a tartományvezérlő Windows Server standard névfeloldási folyamat támaszkodik.
 12. A hitelesítési ügynök az eredményt kap az Active Directory, például a sikeres, a felhasználónév vagy jelszó helytelen, vagy a jelszó lejárt.
+
+   > [!NOTE]
+   > Ha a hitelesítési ügynök nem sikerül, a bejelentkezési folyamat során, a bejelentkezési teljes kérelem eseményértesítése eldobva. Nincs az aktuális ki a bejelentkezési kérelmek egy hitelesítési ügynök egy másik hitelesítési ügynök a helyi van. Ezeket az ügynököket csak kommunikálhat a felhőben, és nem állnak egymással.
 13. A hitelesítési ügynök továbbítja az eredmény vissza az Azure ad-ben STS egy kölcsönösen hitelesített kimenő HTTPS-csatornán keresztül 443-as porton keresztül. Kölcsönös hitelesítést a regisztráció során a hitelesítési ügynök korábban kiadott tanúsítványt használ.
 14. Az Azure AD STS ellenőrzi, hogy ez az eredmény az adott bejelentkezési kérés a bérlő utal.
 15. Az Azure AD STS továbbra is a bejelentkezési művelet konfigurálva. Például, ha a jelszó érvényesítése sikeres volt, a felhasználó előfordulhat, hogy lehet merül fel a multi-factor Authentication vagy átirányítódik az alkalmazásba.
@@ -181,7 +184,7 @@ Az Azure AD-hitelesítési ügynök megbízhatósági megújítása:
 
 ## <a name="auto-update-of-the-authentication-agents"></a>A hitelesítési ügynökök automatikus frissítése
 
-A frissítési kérelem automatikusan frissíti a hitelesítési ügynök, amikor egy új verziója. Az alkalmazás nem kezeli a jelszó érvényesítése kérések a bérlő számára. 
+A frissítési kérelem automatikusan frissíti a hitelesítési ügynök, amikor egy új (a hibajavításokat és teljesítményt érintő továbbfejlesztés) verziója. A frissítési kérelem nem kezeli a jelszó érvényesítése kérések a bérlő számára.
 
 Azure ad-ben üzemelteti az új verziót, a szoftver egy aláírt **Windows Installer-csomagot (MSI)**. Az MSI használatával legyen aláírva [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) az SHA256 titkosítást, kivonatoló algoritmus. 
 
@@ -203,7 +206,7 @@ Az automatikus frissítés hitelesítési ügynök:
     - A hitelesítési ügynök szolgáltatás újraindítása
 
 >[!NOTE]
->Ha a bérlő regisztrált több hitelesítési ügynök, az Azure AD nem megújítani tanúsítványaikat, és egyszerre frissíteni őket. Ehelyett az Azure AD nem így fokozatosan bejelentkezési kérelmek magas rendelkezésre állásának biztosításához.
+>Ha a bérlő regisztrált több hitelesítési ügynök, az Azure AD nem megújítani tanúsítványaikat, és egyszerre frissíteni őket. Ehelyett az Azure AD végzi, egyenként a bejelentkezési kérelmek magas rendelkezésre állásának biztosításához.
 >
 
 

@@ -1,27 +1,29 @@
 ---
-title: A munkafolyamat-definíciós nyelv – Azure Logic Apps-hivatkozási függvények |} A Microsoft Docs
-description: Ismerje meg az Azure Logic Apps munkafolyamat-definíciós nyelv függvényei
+title: Referencia a functionshöz a munkafolyamat-definíciós nyelv – Azure Logic Apps és Microsoft Flow
+description: Az útmutatót kifejezéseket az Azure Logic Appshez és a Microsoft Flow létrehozott munkafolyamat-definíciós nyelv függvényei
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: e58d534811fc6d6ed2bb24486c149f217a7a28a3
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: d7ea62c51065cbe85a905b4ff78743fdc11c1e10
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189903"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618209"
 ---
-# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv-funkciók dokumentációja
+# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Az Azure Logic Apps és Microsoft Flow munkafolyamat-definíciós nyelv-funkciók dokumentációja
 
-Néhány [kifejezések](../logic-apps/logic-apps-workflow-definition-language.md#expressions) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) értékekre kérhet, előfordulhat, hogy még nem létezik a logikai alkalmazás munkafolyamat-definíció indításakor futtatandó futásidejű műveletek.
-Hivatkozhat, illetve ezekkel az értékekkel a kifejezésekben dolgozhat, használhatja a *funkciók* által biztosított a [munkafolyamat-definíciós nyelv](../logic-apps/logic-apps-workflow-definition-language.md).
-Például használhatja a matematikai függvények számítások, például a [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) függvény, amely az egész számoknak vagy úszó összegét adja vissza. Az alábbiakban néhány további példa feladatokat hajthat végre a függvények:
+A munkafolyamat-definíció [Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [Microsoft Flow](https://docs.microsoft.com/flow/getting-started), néhány [kifejezések](../logic-apps/logic-apps-workflow-definition-language.md#expressions) értékekre kérhet futásidejű műveletek, amelyek esetleg még nem létezik amikor a munkafolyamat elkezd futni. Ezekkel az értékekkel, vagy ezek a kifejezések értékei feldolgozni, használhatja a *funkciók* által biztosított a [munkafolyamat-definíciós nyelv](../logic-apps/logic-apps-workflow-definition-language.md). 
+
+> [!NOTE]
+> A referencia-lap Azure Logic Apps és a Microsoft Flow vonatkozik, de jelenik meg az Azure Logic Apps dokumentációjában. Bár ezen a lapon kifejezetten a logic apps vonatkozik, ezek a függvények a folyamatok és a logic apps. Függvények és -kifejezések a Microsoft Flow kapcsolatos további információkért lásd: [kifejezések használata feltételekkel](https://docs.microsoft.com/flow/use-expressions-in-conditions).
+
+Például, kiszámíthatja az értékek matematikai függvények, mint például az a [add() függvény](../logic-apps/workflow-definition-language-functions-reference.md#add), ha azt szeretné, hogy az egész számoknak vagy úszó összege. Az alábbiakban néhány egyéb példa feladatokat hajthat végre a functions:
 
 | Tevékenység | Függvény-szintaxis | Eredmény |
 | ---- | --------------- | ------ |
@@ -29,8 +31,7 @@ Például használhatja a matematikai függvények számítások, például a [a
 | Egy globálisan egyedi azonosítóját (GUID) adja vissza. | GUID() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
 ||||
 
-Ez a cikk ismerteti a függvényeket a logikai alkalmazás definícióiról létrehozásakor használható.
-Függvények keresése [általános céljuk](#ordered-by-purpose), folytassa a következő táblák. Vagy minden függvény kapcsolatos részletes információkért tekintse meg a [betűrend szerinti lista](#alphabetical-list).
+Függvények keresése [általános céljuk](#ordered-by-purpose), tekintse át az alábbi táblázatokban. Vagy minden függvény kapcsolatos részletes információkért tekintse meg a [betűrend szerinti lista](#alphabetical-list).
 
 > [!NOTE]
 > A szintaxist a paraméter-definíciók egy kérdőjelet (?), amely akkor jelenik meg, miután egy paraméter azt jelenti, hogy a paraméter nem kötelező megadni.
@@ -142,7 +143,7 @@ Kapcsolatos minden funkció teljes körű referenciáért lásd: a [betűrend sz
 
 Ha módosítani szeretné egy érték típus vagy formátum, használhatja a konverziós függvények.
 Például módosíthatja egy érték logikai érték beolvasása, egész.
-Ha szeretné megtudni, hogyan Logic Apps kezelje az átalakítás során tartalomtípusokat, lásd: [tartalomtípusok](../logic-apps/logic-apps-content-type.md).
+További információ a Logic Apps kezelésének tartalomtípusok átalakítás során: [tartalomtípusok](../logic-apps/logic-apps-content-type.md).
 Kapcsolatos minden funkció teljes körű referenciáért lásd: a [betűrend szerinti lista](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
 | Konverziós függvény | Tevékenység |
@@ -229,7 +230,7 @@ Kapcsolatos minden funkció teljes körű referenciáért lásd: a [betűrend sz
 Ezek a munkafolyamat-függvények segítségével:
 
 * Egy munkafolyamat-példány adatainak beolvasása futási időben.
-* A bemeneti adatok hárítható el, a logic apps használt működnek.
+* A bemeneti adatok hárítható el a logikai alkalmazásokhoz vagy folyamatokhoz használt működnek.
 * A használatával hivatkozik a kimenetek triggereket és műveleteket.
 
 Például a használatával hivatkozik a kimeneteket egyetlen művelet, és az adatokat későbbi művelettel.
@@ -248,7 +249,7 @@ Kapcsolatos minden funkció teljes körű referenciáért lásd: a [betűrend sz
 | [elemek](../logic-apps/workflow-definition-language-functions-reference.md#items) | Belül a for-each vagy do-until-hurok, lépjen vissza az aktuális elemet a megadott ciklus a.|
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | A "visszahívási URL-címe", amely meghívja az eseményindítók vagy műveletek visszaadása. |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Egy adott rész törzsét visszaadása egy művelet kimenete, amely több részből áll. |
-| [paraméterek](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | A logikai alkalmazás definíciójában leírt paraméter értékének visszaadása. |
+| [paraméterek](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | A munkafolyamat-definíció leírt paraméter értékének visszaadása. |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Futásidőben, vagy más JSON-név-érték párok egy eseményindítót a hibaüzenettel reagál. Lásd még: [triggerOutputs](#triggerOutputs) és [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Egy eseményindító vissza `body` kimeneti futásidőben. Lásd: [eseményindító](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | A kulcs nevét egy olyan értéket ad vissza *űrlapadatokból* vagy *űrlapként* kimenetek aktiválásához. |
@@ -1812,7 +1813,7 @@ first(createArray(0, 1, 2))
 ### <a name="float"></a>lebegőpontos
 
 Egy karakterlánc verziót lebegőpontos szám átalakítása egy tényleges lebegőpontos számot.
-Ez a funkció csak akkor, ha egyéni paraméterek átadása egy alkalmazáshoz, például a logikai alkalmazás használható.
+E funkció használatához csak akkor, ha egyéni paraméterek átadása egy alkalmazáshoz, például egy logikai alkalmazásban vagy folyamatban.
 
 ```
 float('<value>')
@@ -2766,7 +2767,7 @@ multipartBody('<actionName>', <index>)
 Ellenőrizze, hogy egy kifejezés false (hamis).
 Igaz értéket ad vissza, ha a kifejezés értéke HAMIS, vagy visszatérhet a hamis értéket, ha az értéke igaz.
 
-```
+```json
 not(<expression>)
 ```
 
@@ -2784,7 +2785,7 @@ not(<expression>)
 
 Ezekben a példákban ellenőrzése, hogy a megadott kifejezés false (hamis):
 
-```
+```json
 not(false)
 not(true)
 ```
@@ -2798,7 +2799,7 @@ not(true)
 
 Ezekben a példákban ellenőrzése, hogy a megadott kifejezés false (hamis):
 
-```
+```json
 not(equals(1, 2))
 not(equals(1, 1))
 ```
@@ -2833,7 +2834,7 @@ or(<expression1>, <expression2>, ...)
 
 Ezekben a példákban ellenőrizze, hogy legalább egy kifejezés igaz:
 
-```
+```json
 or(true, false)
 or(false, false)
 ```
@@ -2847,7 +2848,7 @@ or(false, false)
 
 Ezekben a példákban ellenőrizze, hogy legalább egy kifejezés igaz:
 
-```
+```json
 or(equals(1, 1), equals(1, 2))
 or(equals(1, 2), equals(1, 3))
 ```
@@ -2861,7 +2862,7 @@ or(equals(1, 2), equals(1, 3))
 
 ### <a name="parameters"></a>paraméterek
 
-A logikai alkalmazás definíciójában leírt paraméter értékének visszaadása.
+A munkafolyamat-definíció leírt paraméter értékének visszaadása.
 
 ```
 parameters('<parameterName>')

@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: pafarley
-ms.openlocfilehash: fbdc6ca8a9d93c090c1cfda9dec41b948d95c6af
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: c9b30eb89080137e17042feb4458f2601bf48a05
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495345"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617971"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Az Azure Cognitive Services számítógépes Látástechnológiai SDK a Pythonhoz
 
 A Computer Vision szolgáltatás a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Számítógép Látástechnológiai algoritmus kép tartalma érdekli visual funkcióktól függően különböző módokon elemezheti.
 
-* [Rendszerkép elemzése](#analyze-an-image)
+* [Kép elemzése](#analyze-an-image)
 * [Tulajdonos tartomány listájának lekérése](#get-subject-domain-list)
 * [Tartomány szerint kép elemzése](#analyze-an-image-by-domain)
 * [A kép leírását beolvasása](#get-text-description-of-an-image)
@@ -47,7 +47,7 @@ A 7 napig érvényes ingyenes kulcs létrehozása a **[Kipróbálom] [ computerv
 Tartsa a következő, a kulcs létrehozása után:
 
 * Kulcs értékét: egy 32 karakter hosszúságú karakterlánc formátumban `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
-* Fő végponthoz: bázisvégpont URL-címe https://westcentralus.api.cognitive.microsoft.com
+* Fő végponthoz: a bázisvégpont URL-címe, https\://westcentralus.api.cognitive.microsoft.com
 
 ### <a name="if-you-have-an-azure-subscription"></a>Ha rendelkezik Azure-előfizetéssel
 

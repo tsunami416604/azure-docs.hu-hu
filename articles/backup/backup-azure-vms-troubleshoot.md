@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: srinathv
-ms.openlocfilehash: e8b739c7b4dee67273e2f5c500c6d3b05190b3a5
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 6f10d8bc7f813245a66296988e4bb3792d898e08
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361518"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618192"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása
 Észlelt, miközben az adatokat az Azure Backup segítségével a következő táblázatban felsorolt hibák elhárítását:
@@ -170,7 +170,7 @@ Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljen
 | A Virtuálisgép-ügynök nem található a virtuális gépen: <br>Bármely előfeltétel és a Virtuálisgép-ügynök telepítése. Ezután indítsa újra a műveletet. |Tudjon meg többet [Virtuálisgép-ügynök telepítésének és a Virtuálisgép-ügynök telepítésének ellenőrzése](#vm-agent). |
 | Biztonsági mentés nem sikerült befagyasztani a virtuális gép egy rendszer alkalmazáskonzisztens pillanatképet egy vagy több csatlakoztatási pontot. | A következő lépésekkel: <ul><li>Ellenőrizze a fájlrendszer állapota az összes csatlakoztatott eszközök használatával a **"tune2fs"** parancsot. Például **tune2fs -l/dev/sdb1 \\** .\| grep **fájlrendszer állapota**. <li>Az eszközök, amelynek a fájlrendszer állapota nem tiszta használatával válassza le a **"umount"** parancsot. <li> Egy fájl rendszer konzisztencia-ellenőrzést az eszközök használatával futtassa a **"fsck"** parancsot. <li> Újra csatlakoztatni az eszközöket, és próbálja meg a biztonsági mentés.</ol> |
 | A pillanatkép-készítési művelet nem sikerült létrehozni egy biztonságos hálózati kommunikációs csatorna hiba miatt. | <ol><li> Nyissa meg a Beállításszerkesztőt futtatásával **regedit.exe** egy emelt jogosultságszintű módban. <li> Azonosítsa a rendszerben található a .NET-keretrendszer összes verziójához. Azok a hierarchia beállításkulcs alatt található **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft**. <li> Minden .NET-keretrendszer a beállításkulcs megtalálható adja hozzá a következő kulcsot: <br> **SchUseStrongCrypto "= dword: 00000001**. </ol>|
-| A pillanatkép-készítési művelet nem sikerült telepíteni a Visual C++ terjeszthető csomag Visual Studio 2012 miatt nem sikerült. | Navigáljon a C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion, és telepítse a vcredist2012_x64. Győződjön meg arról, hogy a beállításkulcs-érték, amely lehetővé teszi, hogy a szolgáltatás telepítése a helyes értékre van állítva. A beállításkulcs értékét, **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** értékre van állítva **3** , és nem **4**. <br><br>Ha továbbra is problémákba ütközik, indítsa újra a telepítést szolgáltatást futtatásával **MSIEXEC /UNREGISTER** követ **MSIEXEC /REGISTER** egy rendszergazda jogú parancssorból.  |
+| A pillanatkép-készítési művelet nem sikerült telepíteni a Visual C++ terjeszthető csomag Visual Studio 2012 miatt nem sikerült. | Navigáljon a C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion, és telepítse a vcredist2012_x64.<br/>Győződjön meg arról, hogy a beállításkulcs-érték, amely lehetővé teszi, hogy a szolgáltatás telepítése a helyes értékre van állítva. Állítsa be a **Start** értékét **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** való **3** , és nem **4**. <br><br>Ha továbbra is problémákba ütközik, indítsa újra a telepítést szolgáltatást futtatásával **MSIEXEC /UNREGISTER** követ **MSIEXEC /REGISTER** egy rendszergazda jogú parancssorból.  |
 
 
 ## <a name="jobs"></a>Feladatok

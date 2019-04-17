@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f927d1deb3da6269159e1f3f24a17c4675dc7568
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184890"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616208"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítés hibaelhárítása
 
@@ -71,6 +71,9 @@ Navigáljon a **Azure Active Directory** -> **bejelentkezések** a a [Azure Acti
 | 80007 | A hitelesítési ügynök nem tudott csatlakozni az Active Directory-hoz. | Ellenőrizze, hogy elérhető legyen a hitelesítési ügynök-e az Active Directoryban.
 | 80010 | A hitelesítési ügynök nem tudta visszafejteni a jelszót. | Ha a probléma rendszeresen reprodukálható, telepítse, és regisztráljon egy új hitelesítési ügynök. És távolítsa el a jelenlegivel. 
 | 80011 | A hitelesítési ügynök nem tudta lekérni a visszafejtési kulcsot. | Ha a probléma rendszeresen reprodukálható, telepítse, és regisztráljon egy új hitelesítési ügynök. És távolítsa el a jelenlegivel.
+
+>[!IMPORTANT]
+>Átmenő hitelesítés ügynökök hitelesítéséhez az Azure AD-felhasználók érvényesítésével azonosítsa a felhasználónevek és jelszavak Active Directorybeli meghívásával a [Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx). Ennek eredményeképpen munkaállomás bejelentkezési korlátozni az Active Directory állított be a "bejelentkezés" beállítást, ha akkor adhat hozzá kiszolgálókat üzemeltető átmenő hitelesítési ügynökök engedélyezése, valamint a "Bejelentkezés a" kiszolgálók listájához. Ennek hiányában letiltja a felhasználók az Azure AD-ba történő bejelentkezéskor.
 
 ## <a name="authentication-agent-installation-issues"></a>Hitelesítési ügynök telepítésével kapcsolatos problémák
 

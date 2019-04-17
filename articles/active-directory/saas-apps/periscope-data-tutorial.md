@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 593948c9646304da73fd25e4975e65fa71aed6e2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 878d9b40172313ac6c3d816cbf0da6aba5e18542
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275538"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617886"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Oktatóanyag: Az Azure Active Directory-integráció Periscope adatokkal
 
@@ -136,7 +136,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Periscope adatokkal, h
 
     d. Keresse meg a címke **SingleLogoutService** , és illessze be a **hely** értékét a **SLO URL-cím** szövegmezőbe.
 
-    e. Másolás a **azonosító** a példány értékét, és illessze be a **azonosító (entityid)** szövegmezőben, hogy a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    e. Másolás a **azonosító** a példány értékét, és illessze be a **azonosító (entityid)** szövegmezőben, hogy a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
     f. Az első címke XML-fájl található, másolja az értéket a **entityID** , és illessze be a a **kibocsátó** szövegmezőbe.
 
@@ -233,7 +233,7 @@ Ha a hozzáférési panelen a Periscope-adatok csempére kattint, akkor kell aut
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

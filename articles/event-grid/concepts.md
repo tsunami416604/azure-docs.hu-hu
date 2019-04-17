@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 40c749adee08e66319bed88f26c3c898428a41ad
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1c77d0ea9e67c8d69f3f632cace164d8a0c4d921
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474353"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617597"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Az Azure Event Griddel kapcsolatos fogalmak
 
@@ -40,7 +40,7 @@ A támogatott Event Grid forrásokban megvalósításával kapcsolatos további 
 
 Az event grid-témakör tartalmaz egy végpontot, ahol a forrás küldi az eseményeket. A közzétevő az event grid-témakör hoz létre, és úgy dönt, hogy eseményforrás kell-e egynél több vagy egy témakört. A témakör a kapcsolódó események gyűjteménye szolgál. Bizonyos típusú eseményekről válaszolni előfizetők döntse el, melyik témakörök előfizetni.
 
-Rendszer témakörök Azure-szolgáltatások által biztosított beépített témakörök szolgálnak. Rendszer témakörök nem jelenik meg az Azure-előfizetésben, mert a közzétevő a témakörök tulajdonában van, de feliratkozhat rájuk. Előfizetés, adja meg az erőforrással kapcsolatos információkat szeretne kapni az eseményeket. Mindaddig, amíg az erőforrás hozzáférése, előfizethet az eseményeket.
+Rendszer témakörök Azure-szolgáltatások által biztosított beépített témakörök szolgálnak. Rendszer témakörök nem jelenik meg az Azure-előfizetésben, mert a közzétevő a témakörök tulajdonában van, de feliratkozhat rájuk. Előfizetés, adja meg az erőforrással kapcsolatos információkat szeretne kapni az eseményeket. Mindaddig, amíg hozzáférhet az erőforráshoz, az események fizethet.
 
 Egyéni témakörök olyan alkalmazás és a külső témaköröket. Amikor hoz létre, vagy egy egyéni témakörre hozzáféréssel rendelkező, láthatja, hogy egyéni témakör az előfizetésében.
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 9476713bdca185fd84289fca3cf7aa304ad3f9fb
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 99aec3be893693e523dffefbb3c422222ac19a2e
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311424"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616866"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fizikai kiszolgáló Azure vész-helyreállítási architektúra
 
@@ -25,7 +25,7 @@ A következő táblázat és grafikus adja meg az Azure-bA fizikai kiszolgáló 
 
 **Összetevő** | **Követelmény** | **Részletek**
 --- | --- | ---
-**Azure** | Egy Azure-előfizetéssel, az Azure storage-fiók és Azure-hálózatra. | A tárfiókot a replikált adatokat a helyszíni virtuális gépek tárolódik. Azure virtuális gépek létrejönnek a replikált adatokkal futtatásakor feladatátvétel a helyszínről az Azure-bA. Az Azure virtuális gépek a létrejöttükkor csatlakoznak az Azure virtuális hálózathoz.
+**Azure** | Azure-előfizetéssel, és a egy Azure-hálózatra. | A felügyelt lemezek a helyszíni fizikai gépeket az Azure-ban tárolt replikált adatokat. Azure virtuális gépek létrejönnek a replikált adatokkal futtatásakor feladatátvétel a helyszínről az Azure-bA. Az Azure virtuális gépek a létrejöttükkor csatlakoznak az Azure virtuális hálózathoz.
 **Konfigurációs kiszolgáló** | Egy a helyszíni fizikai gép vagy a VMware virtuális gép üzemel, a futtatásához a helyszíni Site Recovery-összetevőit. A virtuális gép fut, a konfigurációs kiszolgáló, folyamatkiszolgáló és fő célkiszolgáló. | A konfigurációs kiszolgáló koordinálja a helyszíni rendszer és az Azure közötti kommunikációt, és felügyeli az adatreplikációt.
  **Folyamatkiszolgáló**:  | A konfigurációs kiszolgáló együtt alapértelmezés szerint telepítve. | Replikációs átjáróként üzemel. Fogadja a replikációs adatokat, gyorsítótárazással, tömörítéssel és titkosítással optimalizálja őket, majd továbbítja az Azure Storage-nak.<br/><br/> A folyamatkiszolgáló Ezenfelül telepíti a mobilitási szolgáltatást a replikálni kívánt kiszolgálókon.<br/><br/> Az üzembe helyezés növekedésével további, külön folyamatkiszolgálók nagyobb mértékű replikációs forgalom kezelésére is hozzáadhat.
  **Fő célkiszolgáló** | A konfigurációs kiszolgáló együtt alapértelmezés szerint telepítve. | Az Azure-ból történő feladat-visszavétel során kezeli a replikációs adatokat.<br/><br/> Nagyméretű környezetekben hozzáadhat egy további, különálló fő célkiszolgálót a feladat-visszavételhez.
