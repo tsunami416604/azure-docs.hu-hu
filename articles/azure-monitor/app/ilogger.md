@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: 9d5e25e0fd00f9c0635009f684e79336d58b7b4a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 615eaa3df7cabad72ac321978eb01d93a7bfa988
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263759"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608285"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>A .NET Core ILogger naplókhoz ApplicationInsightsLoggerProvider
 
@@ -414,16 +414,39 @@ Az alábbi kód kódtöredék úgy konfigurálja naplók `Warning` és a fenti a
 
 * Application Insights rögzíti és küld `ILogger` naplók azonos `TelemetryConfiguration` használt minden egyéb telemetriai adatokat. Nincs-e szabály alól. Az alapértelmezett `TelemetryConfiguration` nem teljes mértékben állítsa be, mikor naplózza a `Program.cs` vagy `Startup.cs` magát, így ezek a helyek naplóinak nem fog az alapértelmezett konfiguráció, és ezért nem fut az összes a `TelemetryInitializer`s és `TelemetryProcessor`s.
 
-*5. Az Application Insights telemetria típusa előállított `ILogger` naplók? vagy ahol látható `ILogger` naplók az Application Insights?*
+*5. A különálló csomag Microsoft.Extensions.Logging.ApplicationInsights használok, és szeretném manuálisan bejelentkezni néhány további egyéni telemetriai adatokat. Hogyan kell megtenni?*
+
+* A különálló csomag használata esetén `TelemetryClient` nem szúrhatja be DI-tárolóhoz, így a felhasználók várható hozzon létre egy új példányát `TelemetryClient` ugyanazt a konfigurációt használják, mint a naplózó szolgáltató által használt alább látható módon. Ez biztosítja, hogy ugyanazt a konfigurációt a egyéni telemetriát, valamint azok származó ILogger szolgál.
+
+```csharp
+public class MyController : ApiController
+{
+   // This telemtryclient can be used to track additional telemetry using TrackXXX() api.
+   private readonly TelemetryClient _telemetryClient;
+   private readonly ILogger _logger;
+
+   public MyController(IOptions<TelemetryConfiguration> options, ILogger<MyController> logger)
+   {
+        _telemetryClient = new TelemetryClient(options.Value);
+        _logger = logger;
+   }  
+}
+```
+
+> [!NOTE]
+> Vegye figyelembe, hogy ha a csomag Microsoft.ApplicationInsights.AspNetCore csomag segítségével az Application Insights engedélyezése, majd a fenti példában kell módosítani, hogy első `TelemetryClient` közvetlenül a konstruktor. Lásd: [ez](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core-no-visualstudio#frequently-asked-questions) teljes példa.
+
+
+*6. Az Application Insights telemetria típusa előállított `ILogger` naplók? vagy ahol látható `ILogger` naplók az Application Insights?*
 
 * ApplicationInsightsLoggerProvider rögzíti `ILogger` naplózza, és létrehoz `TraceTelemetry` eszközökről. Ha egy kivétel objektum van a Log() metódusnak átadott a ILogger, majd helyett `TraceTelemetry`, egy `ExceptionTelemetry` jön létre. Ezek az elemek telemetriai bármely más, ugyanazon a helyen található `TraceTelemetry` vagy `ExceptionTelemetry` az Application Insights, beleértve a portal, az elemzésekhez, vagy a Visual Studio ladicího.
 Ha inkább elküldése mindig `TraceTelemetry`, majd használja a kódrészlet ```builder.AddApplicationInsights((opt) => opt.TrackExceptionsAsExceptionTelemetry = false);```.
 
-*5. Nem rendelkezem az SDK-t, és az Azure webalkalmazás-bővítmény használatával saját Asp.Net Core-alkalmazásokhoz az Application Insights engedélyezése. Hogyan használhatom az új szolgáltató?*
+*7. Nem rendelkezem az SDK-t, és az Azure webalkalmazás-bővítmény használatával saját Asp.Net Core-alkalmazásokhoz az Application Insights engedélyezése. Hogyan használhatom az új szolgáltató?*
 
 * Application Insights-bővítmény használata az Azure Web App a régi szolgáltatót használja. A szűrési szabályok módosítható `appsettings.json` az alkalmazáshoz. Ha azt szeretné, hogy igénybe vehesse az új szolgáltató használatához buildelés instrumentation nuget függőségi véve a SDK-val. Ez a dokumentum frissül, ha a bővítmény átvált az új szolgáltató használatára.
 
-*6. A különálló csomag Microsoft.Extensions.Logging.ApplicationInsights használatával vagyok, és Application Insights-szolgáltató által hívó builder engedélyezése. AddApplicationInsights("ikey"). Kialakítási kulcs lekérése konfigurációs lehetőség van?*
+*8. A különálló csomag Microsoft.Extensions.Logging.ApplicationInsights használatával vagyok, és Application Insights-szolgáltató által hívó builder engedélyezése. AddApplicationInsights("ikey"). Kialakítási kulcs lekérése konfigurációs lehetőség van?*
 
 
 * Módosítsa `Program.cs` és `appsettings.json` alább látható módon.
