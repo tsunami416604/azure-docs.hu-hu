@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
 ms.openlocfilehash: 01387d0c219c86f33762b9c3fbf9f81cf04b4455
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880814"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure Files-NetApp használatával
@@ -53,7 +53,7 @@ Visszaállíthatja a pillanatkép jelenleg csak az új kötetet.
     ![Új kötetre pillanatkép visszaállítása](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
 4. Az új ablakában adja meg az új kötet adatait:  
-    * **Name (Név)**   
+    * **Név**   
         Adja meg a létrehozni kívánt kötet nevét.  
         
         A névnek egyedinek kell lennie az erőforráscsoporton belül. Legalább három karakter hosszúságúnak kell lennie.  Bármilyen alfanumerikus karakter használható.
@@ -86,4 +86,4 @@ Visszaállíthatja a pillanatkép jelenleg csak az új kötetet.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md)
+[Megismerheti a NetApp Azure-fájlok hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)

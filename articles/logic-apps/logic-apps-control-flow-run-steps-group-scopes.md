@@ -11,10 +11,10 @@ ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882412"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Az Azure Logic Appsben hatókörökkel csoport állapota alapján műveletek futtatása
@@ -65,7 +65,7 @@ A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
 
    1. Ha még nem rendelkezik Bing térképek-kapcsolattal, kéri, hogy hozzon létre egy kapcsolatot.
 
-      | Beállítás | Érték | Leírás |
+      | Beállítás | Value (Díj) | Leírás |
       | ------- | ----- | ----------- |
       | **Kapcsolat neve** | BingMapsConnection | Adja meg a kapcsolat nevét. | 
       | **API-kulcs** | <*saját-Bing-Térképek-kulcsa*> | Adja meg a korábban kapott Bing Térképek-kulcsot. | 
@@ -77,11 +77,11 @@ A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
 
       További információk ezekről a paraméterekről: [Útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx).
 
-      | Beállítás | Érték | Leírás |
+      | Beállítás | Value (Díj) | Leírás |
       | ------- | ----- | ----------- |
-      | **Waypoint 1** | <*Indítsa el*> | Adja meg az útvonal kiindulópontja. | 
-      | **Waypoint 2** | <*vége*> | Adja meg az útvonal célállomása. | 
-      | **Avoid** | None | Adja meg az elemek elkerülése érdekében az útvonal, például autópályák, útdíjak, és így tovább. A lehetséges értékek megtekintéséhez [útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **1. útvonalpont** | <*Indítsa el*> | Adja meg az útvonal kiindulópontja. | 
+      | **2. útvonalpont** | <*vége*> | Adja meg az útvonal célállomása. | 
+      | **Elkerülés** | None | Adja meg az elemek elkerülése érdekében az útvonal, például autópályák, útdíjak, és így tovább. A lehetséges értékek megtekintéséhez [útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optimalizálás** | timeWithTraffic | Válassza ki például távolság, időt a jelenlegi forgalom adatait, és így tovább, az útvonal optimalizálására szolgáló paraméter. Ebben a példában ez az érték: "timeWithTraffic" | 
       | **Távolság mértékegysége** | <*igény-szerint*> | Adja meg az irányítása kiszámítására távolság egysége. Ebben a példában ez az érték: "Mérföld" | 
       | **Közlekedési mód** | Vezetés | Adja meg az utazási mód a útvonal. Ebben a példában ez az érték "Vezetői" | 

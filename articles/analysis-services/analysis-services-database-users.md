@@ -9,10 +9,10 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58891684"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és a felhasználók kezelése
@@ -45,10 +45,10 @@ Táblázatosmodell-projekt létrehozásakor, hozhat létre szerepköröket, és 
   
     |Engedély|Leírás|  
     |----------------|-----------------|  
-    |**None**|A tagok nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
+    |**Nincsenek**|A tagok nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
     |**Olvasás**|A tagok lekérdezheti az adatokat (Sorszűrők alapján), de nem módosíthatja a modellsémát.|  
     |**Olvasás és feldolgozás**|Tagok (alapján sorszintű szűrők) adatok és a futtatási folyamat és a folyamat minden műveletek lekérdezheti, de nem módosítható a modellsémát.|  
-    |**Feldolgozás**|Tagok folyamat és a folyamat minden műveleteket is futtathat. Nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
+    |**Folyamat**|Tagok folyamat és a folyamat minden műveleteket is futtathat. Nem módosítható, ha a, és adatokat nem lehet lekérdezni.|  
     |**Rendszergazda**|A tagok modellsémát módosíthatja, és minden adat lekérdezése.|   
   
 5.  Ha a szerepkör létrehozása rendelkezik-e olvasási vagy olvasás és feldolgozás engedélyt adhat hozzá Sorszűrők DAX-képlet használatával. Kattintson a **Sorszűrők** lapra, majd válasszon ki egy táblát, majd kattintson a **DAX-szűrő** mezőben, majd írja be egy DAX-képletet.
@@ -124,7 +124,7 @@ A [SqlServer](/sql/analysis-services/powershell/analysis-services-powershell-ref
   
 |Parancsmag|Leírás|
 |------------|-----------------| 
-|[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Egy tag hozzáadása egy adatbázis-szerepkörhöz.| 
+|[Adjon hozzá RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Egy tag hozzáadása egy adatbázis-szerepkörhöz.| 
 |[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Tag eltávolítása egy adatbázis-szerepkörhöz.|   
 |[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Hajtsa végre a TMSL-parancsfájlt.|
 

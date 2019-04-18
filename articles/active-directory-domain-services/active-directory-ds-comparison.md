@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
 ms.openlocfilehash: fbd876ad46342dec7e2e73b92d3aafbd37cc205b
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892296"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Döntse el, ha az Azure AD Domain Services hogyan ideális a használati eset
@@ -34,7 +34,7 @@ Az Azure AD tartományi szolgáltatásokat használó kell-e a következő anyag
 ## <a name="compare-azure-ad-domain-services-to-diy-ad-domain-in-azure"></a>Hasonlítsa össze az Azure AD tartományi szolgáltatások házi KÉSZÍTÉSŰ AD tartományhoz az Azure-ban
 Az alábbi táblázat segítségével eldöntheti, hogy Azure AD tartományi szolgáltatások használata és kezelése az Azure-ban a saját AD infrastruktúra között.
 
-| **Szolgáltatás** | **Azure AD Domain Services** | **"Saját munka" AD az Azure-beli virtuális gépeken** |
+| **Funkció** | **Az Azure AD tartományi szolgáltatások** | **"Saját munka" AD az Azure-beli virtuális gépeken** |
 | --- |:---:|:---:|
 | [**Felügyelt szolgáltatás**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**Biztonságos üzembe helyezését**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |A rendszergazdának az üzemelő példány biztonságossá tételéhez. |
@@ -44,7 +44,7 @@ Az alábbi táblázat segítségével eldöntheti, hogy Azure AD tartományi szo
 | [**Tartomány hitelesítése NTLM és Kerberos használatával**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
 | [**Kerberos által korlátozott delegálás**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|resource-based|erőforrás-alapú & fiók-alapú|
 | [**Egyéni Szervezetiegység-struktúrája**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
-| [**Sémabővítmények**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
+| [**Sémakiterjesztések**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
 | [**AD-tartomány vagy erdő megbízhatónak tekinti**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&#x2715;** |**&#x2713;** |
 | [**LDAP olvasása**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
 | [**Biztonságos LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |

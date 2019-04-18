@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 6f2d71abeacee531b21a8276f621367dd39a39d9
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58891667"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>A felhőalapú automatikus machine learning-modellek
@@ -237,8 +237,8 @@ RunDetails(remote_run).show()
 ```
 Itt látható a vezérlő statikus képe.  A notebook kattintva megtekintheti a Futtatás tulajdonságait, és kimeneti naplók futtató a táblázatban minden olyan sorban.   A legördülő listában, a diagram felett segítségével is megtekintheti minden elérhető minden egyes ismétléskor metrikát.
 
-![widget tábla](./media/how-to-auto-train-remote/table.png)
-![widget diagram](./media/how-to-auto-train-remote/plot.png)
+![vezérlő táblázata](./media/how-to-auto-train-remote/table.png)
+![vezérlő ábrázolása](./media/how-to-auto-train-remote/plot.png)
 
 A widget használatával tekintse meg, és ismerje meg a Futtatás részletei az egyes URL-címet jeleníti meg.
  

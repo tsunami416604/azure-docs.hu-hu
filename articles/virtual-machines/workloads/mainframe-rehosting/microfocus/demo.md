@@ -6,10 +6,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: be94cf0367f93f14249239fce5e09c8635a01136
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892483"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Állítsa be Micro fókusz CICS BankDemo Micro fókusz vállalati fejlesztői 4.0 az Azure-ban
@@ -77,7 +77,7 @@ Miután telepítette a vállalati fejlesztői 4.0-s verzióját a virtuális gé
 9. A Windows szolgáltatások után lépjen a **Vezérlőpult \> rendszer és biztonság \> felügyeleti eszközök**, válassza ki **szolgáltatások**. Görgessen lefelé, és ellenőrizze, hogy a következő szolgáltatások futnak, és állítsa **automatikus**:
 
     - **NetTcpPortSharing**
-    - **Net.Pipe Listener Adapter**
+    - **Adaptér Naslouchání Net.Pipe**
     - **Adaptér Naslouchání NET.TCP**
 
 10. Konfigurálja az IIS és a Service, WAS támogatás, a menüben keresse meg **Micro fókusz vállalati fejlesztői parancssort (64 bites)** és a Futtatás mint **rendszergazda**.
@@ -271,5 +271,5 @@ Gratulálunk! Most egy CICS alkalmazást futtat az Azure-ban Micro fókusz váll
 - [A Docker-tárolók, Azure-on futtatott vállalati kiszolgáló](run-enterprise-server-container.md)
 - [Nagyszámítógépek Migrálása – portál](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [Virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [Hibaelhárítás](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [Nagyszámítógépek migrálása az Azure-ba egyszerűen](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)
+- [hibaelhárítással](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Az Azure-migrálás nagyszámítógépes nyelvszakértőinkből](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

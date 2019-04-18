@@ -15,10 +15,10 @@ ms.date: 01/31/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 252c84bce2b70f6931593fe9410abe6cc146b5bb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880695"
 ---
 # <a name="onboarding-requirements"></a>Előkészítési követelmények
@@ -83,5 +83,5 @@ Tekintse meg a kompatibilitási mátrix az operációs rendszer és a belső vez
 - Az elvárás, hogy már az SAP-ügyfelek és a támogató SAP-szerződés.
 - A HANA nagyméretű példány termékváltozatok II. típusú osztályát megvalósítását, különösen a tekintse meg az SAP az SAP HANA és a végleges konfigurációk nagy méretű vertikális felskálázás hardveren verzióit.
 
-**További lépések**
+**Következő lépések**
 - Tekintse meg [Azure-beli SAP HANA (nagyméretű példányok) architektúra](hana-architecture.md)

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
 ms.openlocfilehash: 254269ccedc92b9dfc164cc4665a8a8513682773
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882014"
 ---
 # <a name="create-human-reviews-rest"></a>Hozzon létre az emberi ellenőrzések (REST)
@@ -186,7 +186,7 @@ Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **válasz állapota**
 
 Jegyezze fel a válasz a következő mezőket:
 
-- **status**
+- **Állapot**
 - **reviewerResultTags**: Ez jelenik meg, ha bármely címke manuálisan lettek hozzáadva az emberi ellenőrző csapat (látható a **createdBy** mezőben).
 - **metaadatok**: Ez azt mutatja, hogy kezdetben a felülvizsgálatot, az emberi ellenőrző csapat végzett módosítások előtti verzióban lettek hozzáadva a címkék.
 

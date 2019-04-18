@@ -12,10 +12,10 @@ ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 4990b5f42291856c3695b4bf0eb6ec4084e9214e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58886403"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: A távoli asztali szolgáltatások SQL Server migrálása az Azure SQL Database vagy Azure SQL Database felügyelt példány online DMS használatával
@@ -237,7 +237,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
     | ------------- | ------------- |
     | **Táblák párhuzamos betöltése maximális száma** | Itt adható meg, amely az áttelepítés során a DMS végrehajtja a párhuzamos táblák száma. Az alapértelmezett érték 5, de beállítható optimális érték alapján minden POC áttelepítések adott áttelepítési igényeinek. |
     | **Ha a forrástábla csonkítja** | Itt adhatja meg, hogy DMS a céltábla csonkolja a migrálás során. Ez a beállítás akkor lehet hasznos, ha egy vagy több tábla csonkolva lesznek az áttelepítési folyamat részeként. |
-    | **A nagy méretű objektum (LOB) típusú adatok beállításainak konfigurálása** | Megadja, hogy a DMS áttelepíti a korlátlan LOB-adatok, vagy a LOB-adatok korlátok át egy adott méretet.  Korlátozva van üzleti adatokat áttelepíteni, minden LOB-adatok gyűjthessen, hogy a rendszer csonkolja. Az éles környezetbeli migrálások, azt javasoljuk, hogy válasszon **LOB korlátlan méretű engedélyezése** adatvesztés megelőzése érdekében. Adjon meg, hogy a LOB korlátlan méretű, válassza ki a **áttelepítése LOB-adatok egyetlen blokkot LOB mérete kisebb, mint (KB) Ha a megadott** melletti jelölőnégyzetet, hogy a teljesítmény javítása. |
+    | **Nagyméretű objektumok (LOB) adatok beállításainak konfigurálása** | Megadja, hogy a DMS áttelepíti a korlátlan LOB-adatok, vagy a LOB-adatok korlátok át egy adott méretet.  Korlátozva van üzleti adatokat áttelepíteni, minden LOB-adatok gyűjthessen, hogy a rendszer csonkolja. Az éles környezetbeli migrálások, azt javasoljuk, hogy válasszon **LOB korlátlan méretű engedélyezése** adatvesztés megelőzése érdekében. Adjon meg, hogy a LOB korlátlan méretű, válassza ki a **áttelepítése LOB-adatok egyetlen blokkot LOB mérete kisebb, mint (KB) Ha a megadott** melletti jelölőnégyzetet, hogy a teljesítmény javítása. |
     
     ![Online migrálás speciális beállításainak megadása](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
 

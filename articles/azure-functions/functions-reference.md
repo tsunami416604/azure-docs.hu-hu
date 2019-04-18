@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
 ms.openlocfilehash: 5b2b7f3cd6bfa219b794edc63d6bf8b2784b713c
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58891889"
 ---
 # <a name="azure-functions-developers-guide"></a>Az Azure Functions fejlesztői útmutatója
@@ -85,7 +85,7 @@ Konfigurálhatja a Functions runtime használatával verziója a `FUNCTIONS_EXTE
 Azure Functions a kód nyílt forráskódú és GitHub-adattárak tárolja:
 
 * [Azure Functions](https://github.com/Azure/Azure-Functions)
-* [Azure Functions host](https://github.com/Azure/azure-functions-host/)
+* [Az Azure Functions-gazdagép](https://github.com/Azure/azure-functions-host/)
 * [Az Azure Functions portálon](https://github.com/azure/azure-functions-ux)
 * [Az Azure Functions-sablonjairól](https://github.com/azure/azure-functions-templates)
 * [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
@@ -105,7 +105,7 @@ A kötések érkező hibákkal problémái vannak? Tekintse át a [Azure Functio
 További információkért lásd a következőket:
 
 * [Az Azure Functions eseményindítók és kötések](functions-triggers-bindings.md)
-* [Kódolás és tesztelés az Azure Functions helyi](./functions-develop-local.md)
-* [Az Azure Functions – ajánlott eljárások](functions-best-practices.md)
+* [Az Azure Functions helyi kódolása és tesztelése](./functions-develop-local.md)
+* [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 * [Az Azure Functions C# – fejlesztői referencia](functions-reference-csharp.md)
 * [Az Azure Functions NodeJS fejlesztői segédanyagai](functions-reference-node.md)

@@ -12,10 +12,10 @@ ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58886080"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Hozzon létre egy rugalmas hozzáférés-vezérlési felügyeleti stratégia az Azure Active Directoryval
@@ -261,12 +261,12 @@ Ha a szervezet az felhasználónkénti MFA örökölt házirendek, akkor érdeme
 
 ## <a name="learn-more"></a>Részletek
 
-* [Az Azure AD-hitelesítés dokumentációja](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
+* [Az Azure AD Authentication – dokumentáció](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [A válságkezelési-hozzáférési rendszergazdai fiókok kezelése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [Nevesített helyek konfigurálása az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-* [Windows Hello for Business üzembe helyezési útmutató](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
+* [Vállalati Windows Hello – Üzembehelyezési útmutató](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Tájékoztató a jelszavakról – a Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Mik azok a feltételek az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

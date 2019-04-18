@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: ergreenl
 ms.openlocfilehash: 48831767f72dd1b978fad5b0a9a8f2c7a11ec89d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893112"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Az Azure AD tartományi szolgáltatások – hibaelhárítási útmutató
@@ -30,17 +30,17 @@ Ez a szakasz segítséget nyújt a hibák elhárítása Azure AD tartományi szo
 
 Válassza ki a hibaelhárítási lépéseket, amelyek megfelelnek a hibaüzenetet tapasztal.
 
-| **Hibaüzenet** | **Megoldás:** |
+| **Hibaüzenet** | **Felbontás** |
 | --- |:--- |
-| *A contoso100.com név már használatban a hálózaton. Adjon meg egy nevet, amely nem használja.* |[Tartomány névütközés a virtuális hálózatban](active-directory-ds-troubleshooting.md#domain-name-conflict) |
-| *Nem sikerült engedélyezni a domain Services az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel az „Azure AD Domain Services Sync” alkalmazáshoz. Törölje az "Azure AD Domain Services Sync" nevű alkalmazást, és ezután próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlővel.* |[Domain Services nem rendelkezik megfelelő engedélyekkel az Azure AD Domain Services Sync alkalmazás](active-directory-ds-troubleshooting.md#inadequate-permissions) |
-| *Nem sikerült engedélyezni a domain Services az Azure AD-bérlőben. Az Azure AD-bérlőjében található Domain Services alkalmazás nem rendelkezik a tartományi szolgáltatások engedélyezéséhez szükséges engedélyekkel. Törölje az alkalmazást az alkalmazás azonosítója d87dcbc6-a371-462e-88e3-28ad15ec4e64, és ezután próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlővel.* |[A bérlő a Domain Services alkalmazás nem megfelelően van konfigurálva](active-directory-ds-troubleshooting.md#invalid-configuration) |
-| *Nem sikerült engedélyezni a domain Services az Azure AD-bérlőben. A Microsoft Azure AD alkalmazás le van tiltva az Ön Azure AD-bérlőjében. Engedélyezze a 00000002-0000-0000-c000-000000000000 az alkalmazást, és ezután próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlővel.* |[A Microsoft Graph-alkalmazás le van tiltva, az Azure AD-bérlőben](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
+| *A contoso100.com név már használatban van ezen a hálózaton. Adjon meg olyan nevet, amely még nincs használatban.* |[Tartomány névütközés a virtuális hálózatban](active-directory-ds-troubleshooting.md#domain-name-conflict) |
+| *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel az „Azure AD Domain Services Sync” alkalmazáshoz. Törölje az „Azure AD Domain Services Sync” alkalmazást, és próbálja meg ezután engedélyezni a tartományi szolgáltatásokat az Azure AD-bérlője számára.* |[Domain Services nem rendelkezik megfelelő engedélyekkel az Azure AD Domain Services Sync alkalmazás](active-directory-ds-troubleshooting.md#inadequate-permissions) |
+| *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. Az Azure AD-bérlőjében található Domain Services alkalmazás nem rendelkezik a tartományi szolgáltatások engedélyezéséhez szükséges engedélyekkel. Törölje a d87dcbc6-a371-462e-88e3-28ad15ec4e64 alkalmazásazonosítójú alkalmazást, majd próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlője számára.* |[A bérlő a Domain Services alkalmazás nem megfelelően van konfigurálva](active-directory-ds-troubleshooting.md#invalid-configuration) |
+| *A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. A Microsoft Azure AD alkalmazás le van tiltva az Ön Azure AD-bérlőjében. Engedélyezze a 00000002-0000-0000-c000-000000000000 alkalmazásazonosítójú alkalmazást, majd próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlője számára.* |[A Microsoft Graph-alkalmazás le van tiltva, az Azure AD-bérlőben](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
 
 ### <a name="domain-name-conflict"></a>Tartomány névütközés
-**Hibaüzenet:**
+**Hibaüzenet jelenik meg:**
 
-*A contoso100.com név már használatban a hálózaton. Adjon meg egy nevet, amely nem használja.*
+*A contoso100.com név már használatban van ezen a hálózaton. Adjon meg olyan nevet, amely még nincs használatban.*
 
 **Szervizelési:**
 
@@ -49,9 +49,9 @@ Győződjön meg arról, hogy nem kell ugyanazon a néven érhető el, hogy a vi
 Ez a hiba a tartomány nevét, hogy a virtuális hálózatban tapasztalható névütközés okozza. Ebben az esetben az Azure AD tartományi szolgáltatások által kezelt tartomány beállításához másik nevet kell használnia. A másik lehetséges megoldás az, hogy leépíti a meglévő tartományt, majd ezután folytatja a Azure AD tartományi szolgáltatások engedélyezését.
 
 ### <a name="inadequate-permissions"></a>Nincsenek megfelelő engedélyei
-**Hibaüzenet:**
+**Hibaüzenet jelenik meg:**
 
-*Nem sikerült engedélyezni a domain Services az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel az „Azure AD Domain Services Sync” alkalmazáshoz. Törölje az "Azure AD Domain Services Sync" nevű alkalmazást, és ezután próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlővel.*
+*A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. A szolgáltatás nem rendelkezik megfelelő engedélyekkel az „Azure AD Domain Services Sync” alkalmazáshoz. Törölje az „Azure AD Domain Services Sync” alkalmazást, és próbálja meg ezután engedélyezni a tartományi szolgáltatásokat az Azure AD-bérlője számára.*
 
 **Szervizelési:**
 
@@ -65,9 +65,9 @@ A következő lépésekkel az alkalmazás jelenlétének az ellenőrzéséhez é
 4. Miután az alkalmazás törölt, próbálja meg ismét az Azure AD tartományi szolgáltatások engedélyezése.
 
 ### <a name="invalid-configuration"></a>Érvénytelen konfiguráció
-**Hibaüzenet:**
+**Hibaüzenet jelenik meg:**
 
-*Nem sikerült engedélyezni a domain Services az Azure AD-bérlőben. Az Azure AD-bérlőjében található Domain Services alkalmazás nem rendelkezik a tartományi szolgáltatások engedélyezéséhez szükséges engedélyekkel. Törölje az alkalmazást az alkalmazás azonosítója d87dcbc6-a371-462e-88e3-28ad15ec4e64, és ezután próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlővel.*
+*A tartományi szolgáltatások nem engedélyezhetők ebben az Azure AD-bérlőben. Az Azure AD-bérlőjében található Domain Services alkalmazás nem rendelkezik a tartományi szolgáltatások engedélyezéséhez szükséges engedélyekkel. Törölje a d87dcbc6-a371-462e-88e3-28ad15ec4e64 alkalmazásazonosítójú alkalmazást, majd próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlője számára.*
 
 **Szervizelési:**
 
@@ -114,7 +114,7 @@ if ($sp -ne $null)
 <br>
 
 ### <a name="microsoft-graph-disabled"></a>A Microsoft Graph le van tiltva
-**Hibaüzenet:**
+**Hibaüzenet jelenik meg:**
 
 Nem sikerült engedélyezni a domain Services az Azure AD-bérlőben. A Microsoft Azure AD alkalmazás le van tiltva az Ön Azure AD-bérlőjében. Engedélyezze a 00000002-0000-0000-c000-000000000000 az alkalmazást, és ezután próbálja meg engedélyezni a Domain Servicest az Azure AD-bérlővel.
 

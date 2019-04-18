@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881018"
 ---
 # <a name="streaming-endpoints"></a>Streamvégpontok
@@ -42,7 +42,7 @@ A táblázat a típusokat írja le:
 |Typo|Skálázási egységek|Leírás|
 |--------|--------|--------|  
 |**Standard streamvégpont** (ajánlott)|0|Az alapértelmezett streamvégpont egy **Standard** írja be, de a prémium szintű típusa módosítható.<br/> Standard típus gyakorlatilag az összes streamelési forgatókönyvekhez és bármilyen méretű közönségre a javasolt megoldás. A **Standard** típus automatikusan skálázza a kimenő sávszélességet. Az átviteli sebesség az ilyen típusú Streamvégpont legfeljebb 600 MB/s. A CDN gyorsítótárazza videó töredék ne használja a folyamatos átviteli végponton sávszélességet.<br/>A rendkívül nagy követelményeket támasztó ügyfelek számára a Media Services **Prémium** streamvégpontokat biztosít, amelyekkel a kapacitás még a legnagyobb internetes közönségekre is felskálázható. Ha várhatóan széles és egyidejű megtekintők, lépjen kapcsolatba velünk, amsstreaming\@útmutatást, hogy át kell helyeznie a Microsoft.com webhelyen a **prémium** típusa. |
-|**Prémium szintű Streamvégpont**|>0|A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. Helyez át egy **prémium** típusának a módosításával `scaleUnits`. `scaleUnits` Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. A **Prémium** típus használatakor mindegyik engedélyezett egység további sávszélesség-kapacitást nyújt az alkalmazásnak. |
+|**Prémium streamvégpont**|>0|A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. Helyez át egy **prémium** típusának a módosításával `scaleUnits`. `scaleUnits` Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. A **Prémium** típus használatakor mindegyik engedélyezett egység további sávszélesség-kapacitást nyújt az alkalmazásnak. |
  
 ## <a name="comparing-streaming-types"></a>Streamelési típusok összehasonlítása
 

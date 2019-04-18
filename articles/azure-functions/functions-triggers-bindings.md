@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 3865f748a9ca2fe09660d6454542d64f73a8e3c1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58889838"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
@@ -33,10 +33,10 @@ Vegye figyelembe a következő példák a különböző funkciók hogyan impleme
 
 | Példaforgatókönyv | Eseményindító | Bemeneti kötést | Kimeneti kötés |
 |-------------|---------|---------------|----------------|
-| Üzenetsor új üzenet érkezik, amely fut egy függvényt, amely egy másik üzenetsornak írni. | Queue<sup>*</sup> | *None* | Queue<sup>*</sup> |
+| Üzenetsor új üzenet érkezik, amely fut egy függvényt, amely egy másik üzenetsornak írni. | Queue<sup>*</sup> | *Nincsenek* | Queue<sup>*</sup> |
 |Ütemezett feladat beolvassa a Blob Storage tartalmát, és létrehoz egy új Cosmos DB-dokumentumban. | Időzítő | Blob Storage | Cosmos DB |
 |Olvassa el a képet a Blob Storage és a Cosmos DB-ből egy dokumentumot egy e-mail küldése az Event Grid szolgál. | Event Grid | A BLOB Storage és a Cosmos DB használatával | SendGrid |
-| Egy webhookot, amely a Microsoft Graph segítségével frissítése egy Excel-munkalapon. | HTTP | *None* | Microsoft Graph |
+| Egy webhookot, amely a Microsoft Graph segítségével frissítése egy Excel-munkalapon. | HTTP | *Nincsenek* | Microsoft Graph |
 
 <sup>\*</sup> Külön üzenetsorokra jelöli
 
@@ -90,7 +90,7 @@ Információ arról, hogy mely kötések előzetes verzióként érhetők el, va
 - [Hogyan kell regisztrálni egy kötés kifejezés](./functions-bindings-register.md)
 - Tesztelés:
   - [A kódot tesztelés az Azure Functions stratégiák](functions-test-a-function.md)
-  - [Nem HTTP által aktivált függvény manuális futtatása](functions-manually-run-non-http.md)
+  - [Egy nem HTTP által aktivált függvény manuális futtatása](functions-manually-run-non-http.md)
 - [Kötési hibák kezelése](./functions-bindings-errors.md)
 
 ## <a name="next-steps"></a>További lépések

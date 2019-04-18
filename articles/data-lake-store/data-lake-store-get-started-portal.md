@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: e021d8c056028c03ac71d2a27c9128272f374da6
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883581"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Az Azure Data Lake Storage Gen1 használatának első lépései az Azure portal használatával
@@ -124,7 +124,7 @@ A Data Lake Storage Gen1 panelen egy Data Lake Storage Gen1 fiók törléséhez 
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Data Lake Storage Gen1 használata big data-követelményekhez](data-lake-store-data-scenarios.md) 
-* [Biztonságos adattárolás a Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 * [Az Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Az Azure HDInsight használata a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 

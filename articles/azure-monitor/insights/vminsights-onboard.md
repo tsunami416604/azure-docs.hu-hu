@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/13/2019
 ms.author: magoedte
 ms.openlocfilehash: 1a4bfae22477e345176971bd40b0afa91c8867fb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885825"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Üzembe helyezése az Azure Monitor-beli virtuális gépek (előzetes verzió)
@@ -57,7 +57,7 @@ A virtuális gépek az Azure Monitor Log Analytics-munkaterület az alábbi rég
 Ha nem rendelkezik egy munkaterületet, létrehozhat egyet az alábbi módszerek egyikével:
 * [Az Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
-* [Az Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
+* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
 Ha engedélyezi az Azure Portalon egy Azure virtuális gép figyelése, létrehozhat egy munkaterületet, a folyamat során.
@@ -75,7 +75,7 @@ Az alábbi táblázat a virtuális gépek az Azure monitorban támogatott Window
 
 |Operációs rendszer verziója |Teljesítmény |Maps |Állapot |
 |-----------|------------|-----|-------|
-|Windows Server 2019 | X | X | |
+|A Windows Server 2019 | X | X | |
 |A Windows Server 2016 1803 | X | X | X |
 |Windows Server 2016 | X | X | X |
 |Windows Server 2012 R2 | X | X | |

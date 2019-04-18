@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882072"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Az Azure monitorban Wire Data 2.0 (előzetes verzió) megoldás
@@ -93,7 +93,7 @@ Az alábbi táblázat a függőségi ügynök által támogatott operációs ren
 
 #### <a name="windows-server"></a>Windows Server
 
-- Windows Server 2019
+- A Windows Server 2019
 - A Windows Server 2016 1803
 - Windows Server 2016
 - Windows Server 2012 R2
@@ -187,7 +187,7 @@ A függőségi ügynök a Windows rendszerű számítógépekre az InstallDepend
 A függőségi ügynököt az alábbi lépésekkel telepítheti minden Windows rendszerű számítógépre:
 
 1. A Log Analytics-ügynököket leírt lépések végrehajtásával telepítse [adatok gyűjtése saját környezetben futtatott Windows-számítógépekről](../../azure-monitor/platform/agent-windows.md).
-2. A Windows a függőségi ügynök az előző szakaszban található hivatkozás segítségével töltse le és futtassa a következő paranccsal: `InstallDependencyAgent-Windows.exe`
+2. Töltse le a Windows függőségi ügynököt az előző szakaszban található hivatkozás használatával, majd futtassa a következő paranccsal: `InstallDependencyAgent-Windows.exe`
 3. Az ügynök telepítéséhez kövesse a varázslót.
 4. Ha a függőségi ügynök nem indul el, tekintse meg a naplókat a hibával kapcsolatos részletes információért. Windows-ügynökök esetén a naplózási könyvtár a következő: %Programfiles%\Microsoft Dependency Agent\logs.
 

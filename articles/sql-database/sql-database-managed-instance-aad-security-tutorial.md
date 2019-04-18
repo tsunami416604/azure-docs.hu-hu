@@ -11,10 +11,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
 ms.openlocfilehash: 5d168264cbc392e1ba426707429f47dea70d1ea8
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882055"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Oktatóanyag: Az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) használata Azure SQL Database felügyelt példány biztonsági
@@ -65,8 +65,8 @@ Felügyelt példányok csak egy magánhálózati IP-címen keresztül érhető e
 
 Az első Azure AD-kiszolgálói tag (bejelentkezés) kell létrehozni a szokásos SQL Server fiók (nem azure AD), amely egy `sysadmin`. Példák a felügyelt példány kapcsolódni a következő cikkekben talál:
 
-- [Gyors útmutató: A felügyelt példányhoz való csatlakozáshoz Azure virtuális gép konfigurálása](sql-database-managed-instance-configure-vm.md)
-- [Gyors útmutató: Pont – hely kapcsolat konfigurálása egy felügyelt példányra a helyszíni](sql-database-managed-instance-configure-p2s.md)
+- [Rövid útmutató: A felügyelt példányhoz való csatlakozáshoz Azure virtuális gép konfigurálása](sql-database-managed-instance-configure-vm.md)
+- [Rövid útmutató: Pont – hely kapcsolat konfigurálása egy felügyelt példányra a helyszíni](sql-database-managed-instance-configure-p2s.md)
 
 > [!IMPORTANT]
 > A felügyelt példány beállítására szolgáló Azure AD-rendszergazda hozhat létre az Azure AD-kiszolgálót egyszerű (bejelentkezés) belül a felügyelt példány nem használható. Az első Azure AD kiszolgálói tag (bejelentkezés), amely az SQL Server fiók használatával kell létrehoznia egy `sysadmin`. Ez egy átmeneti korlátozás, amely a rendszer eltávolítja, miután az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) válnak általánosan elérhető a Ha megpróbálja használni az Azure AD rendszergazdai fiókot létrehozni a bejelentkezési adatait a következő hiba jelenik meg: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
@@ -442,7 +442,7 @@ Adatbázisközi lekérdezések az Azure AD-fiókok az Azure AD-kiszolgáló rend
 A következő [felügyelt példány képességek biztonsági funkciók](sql-database-managed-instance.md#azure-sql-database-security-features) módon adatbázis biztonságossá tétele a cikk átfogó listája. A következő biztonsági szolgáltatásokat tárgyalja:
 
 - [Felügyelt példány naplózása](sql-database-managed-instance-auditing.md) 
-- [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
+- [Mindig titkosított](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 - [Fenyegetések észlelése](sql-database-managed-instance-threat-detection.md) 
 - [Dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking)
 - [Sorszintű biztonság](/sql/relational-databases/security/row-level-security) 
@@ -453,4 +453,4 @@ A következő [felügyelt példány képességek biztonsági funkciók](sql-data
 A felügyelt példány képességek teljes körű áttekintést lásd:
 
 > [!div class="nextstepaction"]
-> [Felügyelt példány képességei](sql-database-managed-instance.md)
+> [Felügyelt példány képességek](sql-database-managed-instance.md)

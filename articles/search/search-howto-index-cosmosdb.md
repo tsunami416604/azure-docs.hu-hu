@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 019945c48342238a1caa7611bdff6d06fd1e2bd9
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883394"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Az Azure Search-indexelők használatával a Cosmos DB indexelése
@@ -25,7 +25,7 @@ Terminológiai zavaró lehet, mert fontos megjegyezni, hogy [Azure Cosmos DB-ind
 
 Használhatja a [portál](#cosmos-indexer-portal), REST API-k, vagy a .NET SDK Cosmos tartalmának. A Cosmos DB-indexelő az Azure Search szolgáltatás be tud járni [Azure Cosmos-elemek](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) ezeket a protokollokat keresztül érhetők el:
 
-* [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
+* [SQL API-HOZ](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
 * [MongoDB API-val](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) (Azure Search támogatását az API-t a nyilvános előzetes verzióban érhető el)  
 
 > [!Note]
@@ -171,10 +171,10 @@ A kérés törzse tartalmazza az adatforrás-definíciót, amely a következő m
 
 | Mező   | Leírás |
 |---------|-------------|
-| **név** | Kötelező. Válassza ki az egyik nevére, és az adatforrás-objektum képviseli. |
+| **name** | Kötelező. Válassza ki az egyik nevére, és az adatforrás-objektum képviseli. |
 |**type**| Kötelező. Meg kell `documentdb`. |
-|**hitelesítő adatok** | Kötelező. Cosmos DB kapcsolati karakterláncnak kell lennie.<br/>SQL-gyűjteményeket, a kapcsolati karakterláncok vannak, a következő formátumban: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>MongoDB-gyűjtemény, vegye fel az **ApiKind = MongoDb** kapcsolati karakterláncot:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Kerülje a végpont URL-címben portszámokat. Ha a port számát adja meg, az Azure Search nem tudja indexelése az Azure Cosmos DB-adatbázist.|
-| **tároló** | A következő elemeket tartalmazza: <br/>**Név**: Kötelező. Adja meg az adatbázis-gyűjtemény azonosítója indexelése.<br/>**lekérdezés**: Választható. Megadhat egy lekérdezést egy tetszőleges JSON-dokumentumok egybesimítására indexelésére használhatja az Azure Search egybesimított sémába.<br/>A MongoDB-gyűjtemények lekérdezések nem támogatottak. |
+|**Hitelesítő adatok** | Kötelező. Cosmos DB kapcsolati karakterláncnak kell lennie.<br/>SQL-gyűjteményeket, a kapcsolati karakterláncok vannak, a következő formátumban: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>MongoDB-gyűjtemény, vegye fel az **ApiKind = MongoDb** kapcsolati karakterláncot:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Kerülje a végpont URL-címben portszámokat. Ha a port számát adja meg, az Azure Search nem tudja indexelése az Azure Cosmos DB-adatbázist.|
+| **container** | A következő elemeket tartalmazza: <br/>**Név**: Kötelező. Adja meg az adatbázis-gyűjtemény azonosítója indexelése.<br/>**lekérdezés**: Választható. Megadhat egy lekérdezést egy tetszőleges JSON-dokumentumok egybesimítására indexelésére használhatja az Azure Search egybesimított sémába.<br/>A MongoDB-gyűjtemények lekérdezések nem támogatottak. |
 | **dataChangeDetectionPolicy** | Ajánlott. Lásd: [módosított dokumentumok indexelése](#DataChangeDetectionPolicy) szakaszban.|
 |**dataDeletionDetectionPolicy** | Választható. Lásd: [törölt dokumentumok indexelése](#DataDeletionDetectionPolicy) szakaszban.|
 

@@ -11,10 +11,10 @@ ms.date: 05/07/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: b33b76175558c71720c15a2a4e206e26a60f1f95
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880644"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Az Azure AD B2C-vel egyéni szabályzatok és az identitás-kezelőfelületi keretrendszer hibaelhárítása
@@ -44,7 +44,7 @@ Hasznos lehet az XML-szabályok áttekintése. Az Azure AD B2C formázási hibá
 Kódrészlet. hiba: `... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
 * A ClaimType érték lehet, hogy rosszul írta be, vagy a séma nem létezik.
 * Takar értékeket kell definiálni legalább egy fájlt a házirendben. 
-    Példa: `<ClaimType Id="socialIdpUserId">`
+    Például:`<ClaimType Id="socialIdpUserId">`
 * Ha takar a bővítmények fájlban van definiálva, de az alapszintű fájlban TechnicalProfile értékét is szolgál, az alap-fájl feltöltése hibát eredményez.
 
 Kódrészlet. hiba: `...makes a reference to a ClaimsTransformation with id...`

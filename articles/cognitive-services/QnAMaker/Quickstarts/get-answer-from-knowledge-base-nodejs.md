@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
 ms.openlocfilehash: a1caec1cd0c05fbc306b1a19c88fbe469be7fa6d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881749"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Válaszok a kérdést a Tudásbázis a node.js használatával
@@ -85,4 +85,4 @@ Tudjon meg többet a [kérelem](../how-to/metadata-generateanswer-usage.md#gener
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

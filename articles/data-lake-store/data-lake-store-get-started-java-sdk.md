@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883547"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Fájlrendszerműveletek az Azure Data Lake Storage Gen1 Java SDK használatával
@@ -209,7 +209,7 @@ A következő kódrészlet törli a megadott fájlokat és mappákat egy Data La
 2. Parancssorból futtatható, különálló jar-fájlt az összes függőség és a [Maven Assembly Plugin](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html) használatával hozhat létre. Az a pom.xml fájlhoz a [Githubon található mintaforráskód](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) egy példa látható.
 
 ## <a name="next-steps"></a>További lépések
-* [Fedezze fel a JavaDoc a Java SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/)
-* [Biztonságos adattárolás a Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [A Java SDK JavaDoc-dokumentációjának áttekintése](https://azure.github.io/azure-data-lake-store-java/javadoc/)
+* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 
 

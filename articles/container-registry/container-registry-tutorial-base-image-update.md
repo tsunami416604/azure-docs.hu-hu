@@ -9,10 +9,10 @@ ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: a5d89051ef479cf9d87ca8f921e05c6d0be12b8c
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892177"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: Tároló rendszerképek létrehozásának automatizálása az Azure container registry alapképet frissítésekor 
@@ -45,9 +45,9 @@ Ez az oktatóanyag feltételezi, hogy elvégezte a sorozat első két oktatóany
 
 Ha még nem tette meg, végezze el az első két oktatóanyagot, mielőtt továbblépne:
 
-[Az Azure Container Registry feladatokat a felhőben tárolórendszerképek létrehozása](container-registry-tutorial-quick-task.md)
+[Tárolórendszerképek összeállítása a felhőben az Azure Container Registry Tasks használatával](container-registry-tutorial-quick-task.md)
 
-[Az Azure Container Registry feladatok tároló rendszerképek létrehozásának automatizálása](container-registry-tutorial-build-task.md)
+[Tárolórendszerképek összeállításának automatizálása az Azure Container Registry Tasks használatával](container-registry-tutorial-build-task.md)
 
 ### <a name="configure-the-environment"></a>A környezet konfigurálása
 

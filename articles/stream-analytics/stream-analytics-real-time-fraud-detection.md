@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883717"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Első lépések az Azure Stream Analytics használatával: Csalások valós idejű észlelése
@@ -147,7 +147,7 @@ A TelcoGenerator alkalmazást a Kezdés előtt konfigurálnia kell azt, hogy a h
 
 Néhány, a csalások valós idejű észlelése alkalmazás által használt kulcs mezőt a következők:
 
-|**Record**|**Meghatározás**|
+|**Rekord**|**Definíció**|
 |----------|--------------|
 |`CallrecTime`|A hívási kezdési idejét jelölő időbélyegző. |
 |`SwitchNum`|A hívás csatlakozásához használt telefonkapcsoló. Ebben a példában a kapcsolók olyan sztringek, amelyek a származási országot jelölik (USA, Kína, Egyesült királyság, Németország vagy Ausztrália). |
@@ -415,7 +415,7 @@ Ez az oktatóanyag a következő cikkel továbbra is:
 
 További információ a Stream Analytics általában tanulmányozza a következő cikkeket:
 
-* [Bevezetés az Azure Stream Analytics használatába](stream-analytics-introduction.md)
-* [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)
+* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
+* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

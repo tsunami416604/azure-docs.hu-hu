@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7153a6ed4a91e59eea936f1e17d827a40bb99371
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883241"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Vészhelyreállítás az Azure Service Fabricben
@@ -139,7 +139,7 @@ A Service Fabric Magcsomópontok fogalma rendelkezik. Ezek a csomópontok, melye
 ## <a name="next-steps"></a>További lépések
 - Ismerje meg, hogyan különféle hibák szimulálása a [testability keretrendszer](service-fabric-testability-overview.md)
 - Olvassa el a vészhelyreállítás és magas rendelkezésre állású erőforrását. A Microsoft az alábbi témakörök útmutatást nagy mennyiségű tett közzé. Míg néhány ezeket a dokumentumokat más termékekkel való használathoz adott technikák hivatkozunk, számos általánosan ajánlott eljárást a Service Fabric környezetben is alkalmazhat tartalmaznak:
-  - [Rendelkezésre állási ellenőrzőlisták](../best-practices-availability-checklist.md)
+  - [Rendelkezésre állási ellenőrzőlista](../best-practices-availability-checklist.md)
   - [Vészhelyreállítási próba végrehajtása](../sql-database/sql-database-disaster-recovery-drills.md)
   - [Vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások][dr-ha-guide]
 - A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése

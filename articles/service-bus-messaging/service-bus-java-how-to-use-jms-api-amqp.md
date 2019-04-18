@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
 ms.openlocfilehash: a7e4282a176794fe885049173ba56ce2461cd6fa
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885553"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>A Service Bus és az AMQP 1.0-t a Java Message Service (JMS) API használata
@@ -381,9 +381,9 @@ Ez az útmutató bemutatta, hogyan használható a Service Bus által felügyelt
 Használhatja a Service Bus AMQP 1.0-t a többi nyelvet – például a .NET, C, Python és PHP. Eltérő nyelvek használatával létrehozott összetevők is megbízhatóan váltanak üzeneteket, és teljes visszaadása az AMQP 1.0 használatával támogatja a Service Bus.
 
 ## <a name="next-steps"></a>További lépések
-* [Az AMQP 1.0-s verziójának támogatása az Azure Service Busban](service-bus-amqp-overview.md)
+* [Az Azure Service Bus AMQP 1.0-támogatás](service-bus-amqp-overview.md)
 * [Az AMQP 1.0 használata a Service Bus .NET API](service-bus-dotnet-advanced-message-queuing.md)
 * [Service Bus AMQP 1.0-s – fejlesztői útmutató](service-bus-amqp-dotnet.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
-* [Java fejlesztői központban](https://azure.microsoft.com/develop/java/)
+* [Java fejlesztői központ](https://azure.microsoft.com/develop/java/)
 

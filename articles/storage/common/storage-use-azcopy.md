@@ -9,10 +9,10 @@ ms.date: 01/03/2019
 ms.author: seguler
 ms.subservice: common
 ms.openlocfilehash: 6ae3ec566c05d2460747439d61c87c995a90b19c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881732"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Adatok áthelyezése az AzCopy az Windows rendszeren
@@ -993,7 +993,7 @@ További, az Azure Storage szolgáltatással és az AzCopyval kapcsolatos adatok
 * [File storage a .NET használatával](../storage-dotnet-how-to-use-files.md)
 * [A Table storage a .NET használatával](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [Hogyan létrehozása, kezelése vagy törlése](../storage-create-storage-account.md)
-* [Adatok áthelyezése az Azcopyval Linux rendszeren](storage-use-azcopy-linux.md)
+* [Adatok áthelyezése az AzCopyval Linux rendszeren](storage-use-azcopy-linux.md)
 
 ### <a name="azure-storage-blog-posts"></a>Az Azure Storage-blogbejegyzések:
 * [Introducing Azure Storage adatátviteli könyvtár Adatelőnézet](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)

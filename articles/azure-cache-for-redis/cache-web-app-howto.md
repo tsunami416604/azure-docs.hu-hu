@@ -16,10 +16,10 @@ ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
 ms.openlocfilehash: 0c267b2fbe639d08396d8773e077483b41b9747e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58886369"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Gyors útmutató: ASP.NET-webapp létrehozása 
@@ -116,7 +116,7 @@ Mivel a *CacheSecrets.config* fájl nem lesz üzembe helyezve az Azure-on az alk
 2. A *web.config* fájlban keresse meg az `<appSetting>` elemet. Ezután adja hozzá a következő `file` attribútumot. Ha más fájlnevet vagy helyet használ, cserélje le a példában látható értékeket.
 
 * Előtte: `<appSettings>`
-* Utána:  `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* Után:  `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
 Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSettings>` elem kódjával. Ha a megadott fájl nem található, a futtatási környezet figyelmen kívül hagyja a fájlattribútumot. A titkos kulcsok (a gyorsítótárhoz tartozó kapcsolati sztringek) nem képezik részét az alkalmazás forráskódjának. Ha a webes alkalmazás üzembe helyezése az Azure-bA a *CacheSecrets.config* fájl nincs telepítve.
 
@@ -276,7 +276,7 @@ Az alkalmazás sikeres helyi tesztelése után az Azure-beli üzembe helyezés �
 
     | Beállítás | Javasolt érték | Leírás |
     | ------- | :---------------: | ----------- |
-    | **App neve** | Használja az alapértelmezettet. | Az alkalmazásnév lesz az alkalmazás gazdagépneve, amikor üzembe helyezi az Azure-ban. Ha a név egyediségéhez ez szükséges, a rendszer időbélyeg-utótagot fűzhet hozzá. |
+    | **Alkalmazás neve** | Használja az alapértelmezettet. | Az alkalmazásnév lesz az alkalmazás gazdagépneve, amikor üzembe helyezi az Azure-ban. Ha a név egyediségéhez ez szükséges, a rendszer időbélyeg-utótagot fűzhet hozzá. |
     | **Előfizetés** | Válassza ki az Azure-előfizetését. | A kapcsolódó üzemeltetési költségek ennél az előfizetésnél lesznek felszámítva. Ha több Azure-előfizetéssel is rendelkezik, ellenőrizze, hogy a kívánt előfizetés van-e kiválasztva.|
     | **Erőforráscsoport** | Használja ugyanazt az erőforráscsoportot, mint amelyben a gyorsítótárat létrehozta (pl.: *TestResourceGroup*). | Az erőforráscsoport segítségével az összes erőforrást egy csoportként kezelheti. Később, amikor törölni kívánja az alkalmazást, elég csak a csoportot törölnie. |
     | **App Service-csomag** | Válassza az **Új** elemet, és hozzon létre egy *TestingPlan* nevű új App Service-csomagot. <br />Használja ugyanazt a **Helyet**, mint amelyet a gyorsítótár létrehozásakor használt. <br />A méretnél válassza az **Ingyenes** lehetőséget. | Az App Service-csomag meghatároz egy futtatáshoz használható számításierőforrás-készletet a webalkalmazás számára. |
@@ -337,4 +337,4 @@ A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak e
 A következő oktatóanyaggal használhatja az Azure Cache redis valószerűbb forgatókönyvet szeretne az alkalmazás teljesítményének növelése. Frissíti az alkalmazást, hogy gyorsítótárazza egy ranglista eredményeit a gyorsítótár-feltöltési minta, az ASP.NET és egy adatbázis együttes használatával.
 
 > [!div class="nextstepaction"]
-> [Az ASP.NET egy gyorsítótár-feltöltési ranglista létrehozása](cache-web-app-cache-aside-leaderboard.md)
+> [Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en](cache-web-app-cache-aside-leaderboard.md)

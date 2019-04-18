@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 4/2/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892228"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics az IoT Edge segítségével
@@ -210,7 +210,7 @@ További segítségre van szüksége, próbálja meg a [Azure Stream Analytics-f
 ## <a name="next-steps"></a>További lépések
 
 * [További információ az Azure Iot Edge-ben](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
-* [ASA on IoT Edge tutorial](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [Az IoT Edge-oktatóanyag ASA](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
 * [A Visual Studio-eszközökkel Stream Analytics Edge-feladatok fejlesztése](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
 * [CI/CD megvalósításához a Stream Analytics API-k használatával](stream-analytics-cicd-api.md)
 

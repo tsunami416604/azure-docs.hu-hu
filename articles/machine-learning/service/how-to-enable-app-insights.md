@@ -12,10 +12,10 @@ author: marthalc
 ms.date: 04/02/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885499"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Az Application insights szolgáltatással az Azure Machine Learning-modellek figyelése
@@ -85,15 +85,15 @@ Engedélyezheti és letilthatja az Application Insights az Azure Portalon.
 
 1. Az a **központi telepítések** lapra, válassza ki a szolgáltatást, ha szeretné engedélyezni, az Application Insights.
 
-   [![LIzraeli normál idő szerint a szolgáltatás a központi telepítések lapon](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![A központi telepítések lapon szolgáltatások listája](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. Válassza a **Szerkesztés** elemet.
 
-   [![Edit gomb](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Szerkesztés gomb](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. A **speciális beállítások**, jelölje be a **engedélyezni az AppInsights-diagnosztika** jelölőnégyzetet.
 
-   [![Sdiagnosztika engedélyezése a kijelölt jelölőnégyzet](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![Diagnosztika engedélyezése a bejelölt jelölőnégyzet](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. Válassza ki **frissítés** alkalmazza a módosításokat a képernyő alján. 
 
@@ -101,11 +101,11 @@ Engedélyezheti és letilthatja az Application Insights az Azure Portalon.
 1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a munkaterületet.
 1. Válassza ki **központi telepítések**, válassza ki a szolgáltatást, és válassza ki **szerkesztése**.
 
-   [![Ua Szerkesztés gombra se](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Szerkesztés gomb](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. A **speciális beállítások**, törölje a **engedélyezni az AppInsights-diagnosztika** jelölőnégyzetet. 
 
-   [![Ca diagnosztika engedélyezése jelölőnégyzet leared](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [![Diagnosztika engedélyezése az üres jelölőnégyzet](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Válassza ki **frissítés** alkalmazza a módosításokat a képernyő alján. 
  
@@ -119,12 +119,12 @@ A megtekintéséhez:
 
 1. Válassza ki a **áttekintése** lapján megtekintheti a metrikákat a szolgáltatás egy alapvető házirendcsoport.
 
-   [![Ottelepítés áttekintése](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
+   [![– Áttekintés](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
 3. Az egyéni nyomkövetési megvizsgáljuk, jelölje be **Analytics**.
 4. A séma területen válassza ki a **nyomkövetések**. Válassza ki **futtatása** futtatni a lekérdezést. Adatok táblázatos formában kell megjelennie, és hozzá kell rendelnie a egyéni hívás a pontozás fájlban. 
 
-   [![Cegyéni nyomkövetési](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
+   [![Egyéni nyomkövetési](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
 Az Application Insights használatával kapcsolatos további tudnivalókért lásd: [Mi az Application Insights?](../../azure-monitor/app/app-insights-overview.md).
     
