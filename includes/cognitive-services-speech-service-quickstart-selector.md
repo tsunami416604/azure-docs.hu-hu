@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.openlocfilehash: d1750f89b2cf2be071f3474a27297759084cf86e
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59011254"
 ---
 > [!div class="op_single_selector"]
@@ -24,5 +24,5 @@ ms.locfileid: "59011254"
 > - [JavaScript: Böngésző](~/articles/cognitive-services/speech-service/quickstart-js-browser.md)
 > - [JavaScript: Node.js](~/articles/cognitive-services/speech-service/quickstart-js-node.md)
 > - [Objective-C: iOS](~/articles/cognitive-services/speech-service/quickstart-objectivec-ios.md)
-> - [Objective-c macOS](~/articles/cognitive-services/speech-service/quickstart-objective-c-macos.md)
+> - [Objective-C: macOS](~/articles/cognitive-services/speech-service/quickstart-objective-c-macos.md)
 > - [Python](~/articles/cognitive-services/speech-service/quickstart-python.md)

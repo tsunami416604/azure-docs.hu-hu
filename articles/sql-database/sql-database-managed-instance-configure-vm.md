@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab, srbozovi, bonova
 manager: craigg
 ms.date: 02/18/2019
 ms.openlocfilehash: 59088ad53e923f1303c0e800df9c25f70e63812f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360496"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Azure-beli virtuális gép csatlakozni egy Azure SQL Database felügyelt példányába konfigurálása
@@ -50,9 +50,9 @@ Az alábbi lépéseket hozzon létre egy új alhálózatot a felügyelt példán
    | **Name (Név)** | Bármely érvényes név|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
    | **Címtartomány (CIDR-blokk)** | Érvénytelen tartomány | Az alapértelmezett érték: jó az ebben a rövid útmutatóban.|
    | **Hálózati biztonsági csoport** | None | Az alapértelmezett érték: jó az ebben a rövid útmutatóban.|
-   | **Útválasztási táblázat** | None | Az alapértelmezett érték: jó az ebben a rövid útmutatóban.|
+   | **Útvonaltábla** | None | Az alapértelmezett érték: jó az ebben a rövid útmutatóban.|
    | **Szolgáltatásvégpontok** | 0 kijelölt | Az alapértelmezett érték: jó az ebben a rövid útmutatóban.|
-   | **Alhálózat delegálása** | None | Az alapértelmezett érték: jó az ebben a rövid útmutatóban.|
+   | **Alhálózat delegálás** | None | Az alapértelmezett érték: jó az ebben a rövid útmutatóban.|
 
    ![Az ügyfél virtuális gép új felügyelt példány alhálózatára](./media/sql-database-managed-instance-configure-vm/new-subnet.png)
 
@@ -79,10 +79,10 @@ Az ügyfél virtuális gép létrehozása az összes szükséges eszközökkel l
    | **Előfizetés** | Egy érvényes előfizetést | Kell egy olyan előfizetést, amelyben új erőforrások létrehozásához szükséges engedéllyel rendelkezik. |
    | **Erőforráscsoport** |A megadott erőforráscsoport az [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid.|Ez az erőforráscsoport, amelyben a virtuális hálózat létezik egy kell lennie.|
    | **Hely** | Az erőforráscsoport helyét | Ezt az értéket a kiválasztott erőforráscsoportba tartozó alapján van feltöltve. |
-   | **Virtuális gép neve**  | Bármely érvényes név | Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
+   | **A virtuális gép neve**  | Bármely érvényes név | Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
    |**Rendszergazdai felhasználónév**|Bármely érvényes felhasználónév|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. Ne használja a "serveradmin", mivel ez egy fenntartott kiszolgálói szintű szerepkört.<br>Ezt a felhasználónevet használ, tetszőleges időpontban [csatlakozzon a virtuális Géphez](#connect-to-virtual-machine).|
    |**Jelszó**|Bármely érvényes jelszó|A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>Használja ezt a jelszót, tetszőleges időpontban [csatlakozzon a virtuális Géphez](#connect-to-virtual-machine).|
-   | **Virtuálisgép-méret** | Bármely érvényes mérete | Ez a sablon az alapértelmezett **Standard_B2s** elegendő ehhez a gyors útmutatóhoz. |
+   | **Virtuális gép mérete** | Bármely érvényes mérete | Ez a sablon az alapértelmezett **Standard_B2s** elegendő ehhez a gyors útmutatóhoz. |
    | **Hely**|[resourceGroup () .location].| Ez az érték nem módosítható. |
    | **Virtuális hálózat neve**|A virtuális hálózat, amelyben létrehozta a felügyelt példányhoz.|
    | **Alhálózat neve**|Az alhálózatot, amelyet az előző eljárásban létrehozott neve| Ne válassza ki az alhálózatot, amelyben létrehozta a felügyelt példányhoz.|

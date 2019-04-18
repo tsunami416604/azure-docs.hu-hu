@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: 274b77644326cbf73696aae77b48afcbc63aa4c2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049972"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importálása és exportálása az IoT Hub-eszközidentitásokat tömeges
@@ -260,7 +260,7 @@ A választható **amelyben a importMode** tulajdonság a szerializálási adatok
 | **update** |Ha egy eszköz már létezik a megadott **azonosító**, felülírja a meglévő adatokat a megadott bemeneti adatok nélkül tekintettel a következőkre a **ETag** értéket. <br/>Ha az eszköz nem létezik, hibát a naplófájlba írt. |
 | **updateIfMatchETag** |Ha egy eszköz már létezik a megadott **azonosító**, meglévő információt felülírja a megadott bemeneti adatok csak akkor, ha van egy **ETag** felel meg. <br/>Ha az eszköz nem létezik, hibát a naplófájlba írt. <br/>Ha egy **ETag** eltérés, hiba van a naplófájlba írt. |
 | **createOrUpdateIfMatchETag** |Ha egy eszköz nem létezik a megadott **azonosító**, újonnan regisztrálva van. <br/>Ha az eszköz már létezik, meglévő információt felülírja a megadott bemeneti adatok csak akkor, ha van egy **ETag** felel meg. <br/>Ha egy **ETag** eltérés, hiba van a naplófájlba írt. <br> A felhasználó igény szerint megadhatja az ikereszköz adatokat és az eszközön lévő adatokat. Az ikereszköz ETag címke, ha meg van adva, a feldolgozása egymástól függetlenül, az eszköz etag. A meglévő ikereszköz etag-eltérés van, ha hiba történt a naplófájlba írt. |
-| **delete** |Ha egy eszköz már létezik a megadott **azonosító**, nélkül tekintettel a következőkre törölné a rendszer a **ETag** értéket. <br/>Ha az eszköz nem létezik, hibát a naplófájlba írt. |
+| **törlés** |Ha egy eszköz már létezik a megadott **azonosító**, nélkül tekintettel a következőkre törölné a rendszer a **ETag** értéket. <br/>Ha az eszköz nem létezik, hibát a naplófájlba írt. |
 | **deleteIfMatchETag** |Ha egy eszköz már létezik a megadott **azonosító**, törölné a rendszer csak akkor, ha van egy **ETag** felel meg. Ha az eszköz nem létezik, hibát a naplófájlba írt. <br/>Ha az ETag nem egyezik, a naplófájlba írt hiba. |
 
 > [!NOTE]
@@ -419,7 +419,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 Ebben a cikkben megtanulta, hogyan az IoT hub szemben az eszközidentitás-jegyzék tömeges műveletek végrehajtásához. Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
 
-* [IoT Hub metrics](iot-hub-metrics.md)
+* [Az IoT Hub-metrikák](iot-hub-metrics.md)
 * [Műveletek figyelése](iot-hub-operations-monitoring.md)
 
 Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
@@ -429,4 +429,4 @@ Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
 
 Böngészhet a beavatkozás nélküli, just-in-time kiépítését lehetővé tevő, olvassa el az IoT Hub Device Provisioning Service használatával: 
 
-* [Azure IoT Hub Device Provisioning szolgáltatás](/azure/iot-dps)
+* [Azure IoT Hub Device Provisioning Service](/azure/iot-dps)

@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496811"
 ---
 # <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Mi az Azure IoT nyílt Platform kommunikáció (OPC) Eszközfelügyelet?
@@ -42,4 +42,4 @@ Az OPC-Twin REST API-kon keresztül bármilyen programozási nyelven írt alkalm
 Most, hogy az OPC-Twin és használata ismerkedtünk, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [Mi az az OPC-tároló?](overview-opc-twin-architecture.md)
+> [Mi az OPC-tároló](overview-opc-twin-architecture.md)

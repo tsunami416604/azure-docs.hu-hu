@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 7db9c6400ac7d235153a59965e34e30d9b809a81
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359688"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Azure SQL Database használatával
@@ -26,28 +26,28 @@ Ebben a szakaszban található különböző útmutatók, parancsfájlok és le�
 ## <a name="load-data"></a>Adatok betöltése
 
 - [Önálló adatbázis vagy Azure-ban készletezett adatbázis másolása](sql-database-copy.md)
-- [Adatbázis importálása BACPAC-ból](sql-database-import.md)
-- [Adatbázis exportálása BACPAC-ba](sql-database-export.md)
+- [Adatbázis importálása BACPAC](sql-database-import.md)
+- [Adatbázis exportálása BACPAC](sql-database-export.md)
 - [Adatok betöltése a BCP használatával](sql-database-load-from-csv-with-bcp.md)
 - [Adatok betöltése az ADF használatával](../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json)
 
 ### <a name="data-sync"></a>Adatszinkronizálás
 
-- [SQL-adatszinkronizálás](sql-database-sync-data.md)
-- [Adatszinkronizálási ügynök](sql-database-data-sync-agent.md)
+- [SQL Data Sync](sql-database-sync-data.md)
+- [Adatok szinkronizációs ügynök](sql-database-data-sync-agent.md)
 - [Sémaváltozások replikálása](sql-database-update-sync-schema.md)
-- [Monitorozás az OMS-szel](sql-database-sync-monitor-oms.md)
-- [Ajánlott eljárások az adatszinkronizáláshoz](sql-database-best-practices-data-sync.md)
-- [Az adatszinkronizálás hibaelhárítása](sql-database-troubleshoot-data-sync.md)
+- [Figyelés az OMS-szel](sql-database-sync-monitor-oms.md)
+- [Ajánlott eljárások az adatok szinkronizálása](sql-database-best-practices-data-sync.md)
+- [Adatszinkronizálás hibaelhárítása](sql-database-troubleshoot-data-sync.md)
 
 ## <a name="monitoring-and-tuning"></a>Monitorozás és finomhangolás
 
 - [Manuális hangolás](sql-database-performance-guidance.md)
-- [A teljesítmény monitorozása DMV-kkel](sql-database-monitoring-with-dmvs.md)
-- [A teljesítmény monitorozása a lekérdezéstár használatával](sql-database-operate-query-store.md)
-- [Teljesítményproblémák elhárítása az Intelligent Insights segítségével](sql-database-intelligent-insights-troubleshoot-performance.md)
-- [Az Intelligent Insights diagnosztikai naplójának használata](sql-database-intelligent-insights-use-diagnostics-log.md)
-- [Memóriabeli OLTP területének monitorozása](sql-database-in-memory-oltp-monitoring.md)
+- [Teljesítmény figyelése dinamikus felügyeleti nézetek használata](sql-database-monitoring-with-dmvs.md)
+- [Teljesítmény figyelése a lekérdezéstár használatával](sql-database-operate-query-store.md)
+- [Az Intelligent Insights-teljesítményi hibák elhárítása](sql-database-intelligent-insights-troubleshoot-performance.md)
+- [Intelligens elemzési diagnosztikai naplót használja](sql-database-intelligent-insights-use-diagnostics-log.md)
+- [Memóriabeli OLTP lemezterület figyelése](sql-database-in-memory-oltp-monitoring.md)
 
 ### <a name="extended-events"></a>Bővített események
 
@@ -57,14 +57,14 @@ Ebben a szakaszban található különböző útmutatók, parancsfájlok és le�
 
 ## <a name="configure-features"></a>Funkciók konfigurálása
 
-- [Azure AD-hitelesítés konfigurálása](sql-database-aad-authentication-configure.md)
+- [Az Azure AD-hitelesítés konfigurálása](sql-database-aad-authentication-configure.md)
 - [Feltételes hozzáférés konfigurálása](sql-database-conditional-access.md)
-- [Többtényezős AAD-hitelesítés](sql-database-ssms-mfa-authentication.md)
+- [Multi-factor Authentication AAD-hitelesítés](sql-database-ssms-mfa-authentication.md)
 - [Többtényezős hitelesítés konfigurálása](sql-database-ssms-mfa-authentication-configure.md)
-- [Ideiglenes adatmegőrzési szabály konfigurálása](sql-database-temporal-tables-retention-policy.md)
-- [A TDE konfigurálása BYOK megoldással](transparent-data-encryption-byok-azure-sql-configure.md)
-- [TDE BYOK-kulcsok váltása](transparent-data-encryption-byok-azure-sql-key-rotation.md)
-- [A TDE-védő eltávolítása](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
+- [Időalapú adatmegőrzési szabály konfigurálása](sql-database-temporal-tables-retention-policy.md)
+- [A BYOK TDE konfigurálása](transparent-data-encryption-byok-azure-sql-configure.md)
+- [TDE BYOK kulcsainak rotálása](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- [Távolítsa el a TDE-védőhöz](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
 - [Memóriabeli OLTP konfigurálása](sql-database-in-memory-oltp-migration.md)
 - [Az Azure Automation konfigurálása](sql-database-manage-automation.md)
 
@@ -84,9 +84,9 @@ Ebben a szakaszban található különböző útmutatók, parancsfájlok és le�
 
 ## <a name="design-applications"></a>Alkalmazások tervezése
 
-- [Tervezés vészhelyreállításra](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [Tervezés rugalmas készletekhez](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
-- [Tervezés alkalmazásfrissítésekhez](sql-database-manage-application-rolling-upgrade.md)
+- [Vészhelyreállítási terv](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [Rugalmas kialakítás](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+- [Alkalmazásfrissítések tervezése](sql-database-manage-application-rolling-upgrade.md)
 
 ### <a name="design-multi-tenant-saas-applications"></a>Több-bérlős SaaS-alkalmazások tervezése
 

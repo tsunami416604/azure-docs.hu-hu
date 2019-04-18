@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 126eee1664d810850f63e702abe78b241649d665
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: f1423fddc13a6912e90b6a239921cf2a4d2662ec
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438818"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683733"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Az Azure Active Directory-jelentés adatmegőrzési szabályai
 
@@ -68,9 +68,9 @@ A biztonsági jelek, az adatgyűjtési folyamat akkor kezdődik, amikor, jóváh
 
 | Jelentés                 | Azure AD Free | Azure AD Basic | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
-| Címtárnaplózás        | 7 nap        |  7 nap        | 30 nap             | 30 nap             |
-| Bejelentkezési tevékenységek       | –           |  –           | 30 nap             | 30 nap             |
-| Azure MFA Usage        | 30 nap       |  30 nap       | 30 nap             | 30 nap             |
+| Naplók             | 7 nap        |  7 nap        | 30 nap             | 30 nap             |
+| Bejelentkezések               | –           |  –           | 30 nap             | 30 nap             |
+| Az Azure MFA-használat        | 30 nap       |  30 nap       | 30 nap             | 30 nap             |
 
 A naplózási és a bejelentkezési tevékenységre vonatkozó adatok által átirányítására egy Azure storage-fiókot az Azure Monitor használatával a fent vázolt alapértelmezett megőrzési idejénél hosszabb őrizheti meg. További információkért lásd: [archiválása az Azure AD-naplók az Azure storage-fiókba](quickstart-azure-monitor-route-logs-to-storage-account.md).
 

@@ -19,10 +19,10 @@ ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 726d70c46dca712deaf4846c24976cdabcc49be9
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359898"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Az Azure Active Directory integrálása
@@ -77,7 +77,7 @@ Az Azure AD-integrációs származnak, olyan előnyöket kínál, nincs szüksé
 
 ### <a name="advanced-security-features"></a>Speciális biztonsági funkciók
 
-**Többtényezős hitelesítés**  Az Azure AD natív multi-factor Authentication hitelesítést biztosít. A rendszergazdák kötelezhetik a multi-factor authentication szolgáltatást az alkalmazás eléréséhez, így nem kell a támogatás kódolásával. Tudjon meg többet [multi-factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
+**A multi-factor authentication.**  Az Azure AD natív multi-factor Authentication hitelesítést biztosít. A rendszergazdák kötelezhetik a multi-factor authentication szolgáltatást az alkalmazás eléréséhez, így nem kell a támogatás kódolásával. Tudjon meg többet [multi-factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
 **Rendellenes bejelentkezési észlelése.**  Azure ad-ben több mint egymilliárd bejelentkezések a gépi tanulási algoritmusok használata a gyanús tevékenységek észlelése és a lehetséges problémákat a rendszergazdák értesítése során a naponta dolgozza fel. Támogatásával az Azure AD-be, az alkalmazás lekéri az előnye, hogy ez a védelem. Tudjon meg többet [Azure Active Directory hozzáférési jelentést megtekintő](../active-directory-view-access-usage-reports.md).
 

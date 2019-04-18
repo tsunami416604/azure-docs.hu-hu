@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
 ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045764"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Összes bérlőre vonatkozó információk megjelenítése az Azure Security Centerben
@@ -58,7 +58,7 @@ Előfizetések felügyeleti csoportokba való rendszerezése és a alkalmazni a 
 2. Felügyeleti csoportok megtekintéséhez jelölje ki **minden szolgáltatás** az Azure főmenüjében.
 3. A **általános**válassza **felügyeleti csoportok**.
 
-    ![A felügyeleti csoport létrehozása](./media/security-center-management-groups/all-services.png)
+    ![Felügyeleti csoport létrehozása](./media/security-center-management-groups/all-services.png)
 
 ## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>Adja meg a bérlői szintű láthatóság, és lehetővé teszi szabályzatok hozzárendelése
 
@@ -191,7 +191,7 @@ A felügyeleti csoport létrehozott előfizetések adhat hozzá. Ezeket a lépé
 Ebben a cikkben megtanulta, hogyan figyelheti az Azure Security Center a bérlői szintű. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:
 
 > [!div class="nextstepaction"]
-> [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md)
+> [Biztonsági állapot monitorozása az Azure Security Centerben](security-center-monitoring.md)
 
 > [!div class="nextstepaction"]
 > [Kezelése és válaszadás a biztonsági riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)

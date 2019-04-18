@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.openlocfilehash: a9c9f4d827d21c374bebba9d39e33b0bcad8a83e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050614"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Azure Data Explorer Teljesítményfigyelő, egészségügyi és használati metrikákkal
@@ -40,7 +40,7 @@ A metrikák panelen:
 
 1. Metrika diagram létrehozásához válassza **metrika** nevét és a megfelelő **összesítési** metrikánként leírtaknak megfelelően az alábbi. A **erőforrás** és **metrika Namespace** színválasztó előre kiválasztott az Azure Data Explorer fürthöz.
 
-    **Metrika** | **Unit (Egység)** | **Összesítés** | **Metrika leírása**
+    **Metrika** | **Egység** | **Összesítés** | **Metrika leírása**
     |---|---|---|---|
     | Gyorsítótár-kihasználtság | Százalék | Avg, Max, Min | A fürt által használt lefoglalt gyorsítótár erőforrások százaléka. Gyorsítótár felhasználói tevékenységet a megadott gyorsítótár-szabályzatnak megfelelően számára lefoglalt SSD méretét jelenti. Egy gyorsítótár átlagos kihasználtsága 80 %-os vagy még kevesebb csak egy fürt fenntartható állapot. Ha a gyorsítótár átlagos kihasználtság meghaladja a 80 %-os, a fürt kell [vertikálisan](manage-cluster-scale-up.md) egy Storage-tarifacsomag optimalizált vagy [horizontálisan felskálázott](manage-cluster-scale-out.md) több példányra. Másik lehetőségként alkalmazkodik a gyorsítótár-szabályzat (kevesebb napig a gyorsítótárban). Ha több mint 100 %-os gyorsítótár-kihasználtság, az adatok gyorsítótárazását, a gyorsítótárazási házirend szerint mérete nagyobb, amelyek a fürtön a gyorsítótár teljes mérete. |
     | CPU | Százalék | Avg, Max, Min | Jelenleg a gépek a fürt által használt lefoglalt számítási erőforrások százaléka. Az átlagos Processzorhasználat 80 %-os vagy még kevesebb fenntartható egy fürthöz. CPU maximális értéke 100 %, ami azt jelenti, hogy nincsenek további számítási erőforrások fel adatokat. Amikor a fürt nem teljesít jól, ellenőrizze a CPU-határozza meg, hogy vannak-e le vannak tiltva adott processzorok maximális értéke. |
@@ -68,4 +68,4 @@ További tájékoztatást a [Metrikaböngésző](/azure/azure-monitor/platform/m
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)

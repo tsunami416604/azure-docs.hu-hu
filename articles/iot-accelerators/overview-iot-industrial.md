@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: bda40470e3ccf3a5d7b23dca38b21090e864b16a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491748"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Mi az ipari IoT (IIoT)
@@ -50,4 +50,4 @@ Az OPC-tároló az OPC UA globális felderítési kiszolgáló (GDS), konfigurá
 Most, hogy a bemutató ipari IoT és annak összetevői már rendelkezett, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [Mi az az OPC-iker?](overview-opc-twin.md)
+> [Mi az OPC-Twin](overview-opc-twin.md)

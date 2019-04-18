@@ -10,17 +10,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: dfa41dc695cf6ab357a9cd4cdbd32454b6dd107d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896409"
 ---
-# <a name="scenes-shots-and-keyframes"></a>Jelenetek helyességének és kulcsképek
+# <a name="scenes-shots-and-keyframes"></a>Jelenetek, felvételek és kulcsképkockák
 
 A video Indexer szegmentálásával videók szerkezeti és Szemantikus tulajdonságok alapján historikus egységekbe támogatja. Ez a funkció használatát teszi lehetővé egyszerűen, kezelése, és szerkessze a videó tartalom alapján különböző granularitással. Például alapján jelenetek helyességének és kulcsképek, a jelen témakörben. A **jelenet észlelési** a szolgáltatás jelenleg előzetes verzióban érhető el.   
 
-![Jelenetek helyességének és kulcsképek](./media/scenes-shots-keyframes/scenes-shots-keyframes.png)
+![Jelenetek, felvételek és kulcsképkockák](./media/scenes-shots-keyframes/scenes-shots-keyframes.png)
 
 ## <a name="scene-detection-preview"></a>Jelenet észlelése (előzetes verzió)
 

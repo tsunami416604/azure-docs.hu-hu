@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 01/14/2019
 ms.openlocfilehash: e0d81454e6036d09bb74af6f522063a1aed5fffe
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046410"
 ---
 # <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>Gyors útmutató: Betöltési adat a Logstashből az Adatkezelőbe az Azure
@@ -108,11 +108,11 @@ output {
 
 | Paraméter neve | Leírás |
 | --- | --- |
-| **elérési út** | A Logstash beépülő modul írja az eseményeket ideiglenes fájlok, mielőtt a rendszer elküldi őket az Adatkezelőbe az Azure. Ez a paraméter egy elérési utat, ahová fájlokat kell írni és a egy fájl kulcsverzióra történő aktiválása egy feltöltése az Azure Data Explorer szolgáltatásba idő kifejezést tartalmaz.|
+| **path** | A Logstash beépülő modul írja az eseményeket ideiglenes fájlok, mielőtt a rendszer elküldi őket az Adatkezelőbe az Azure. Ez a paraméter egy elérési utat, ahová fájlokat kell írni és a egy fájl kulcsverzióra történő aktiválása egy feltöltése az Azure Data Explorer szolgáltatásba idő kifejezést tartalmaz.|
 | **ingest_url** | Az Adatbetöltési kapcsolatos kommunikáció Kusto-végpont.|
 | **app_id**, **app_key**, és **app_tenant**| Azure adatkezelő való kapcsolódáshoz szükséges hitelesítő adatokat. Győződjön meg arról, betöltés jogosultsággal rendelkező alkalmazások használatára. |
-| **adatbázis**| Adatbázis neve események helyezi el. |
-| **tábla** | Cél táblanév események helyezi el. |
+| **database**| Adatbázis neve események helyezi el. |
+| **Tábla** | Cél táblanév események helyezi el. |
 | **Leképezés** | Képezze le a bejövő események json-karakterláncot a megfelelő sor (határozza meg, melyik tulajdonság hiányzóra melyik oszlop) formátumra leképezése szolgál. |
 
 ## <a name="run-logstash"></a>Futtassa a Logstash

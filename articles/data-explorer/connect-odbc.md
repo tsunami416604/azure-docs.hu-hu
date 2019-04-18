@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.openlocfilehash: d01c825e50e30e3545a0d47e432835c658d677af
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59043881"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>Csatlakozás az Azure Data Explorer ODBC
@@ -100,6 +100,6 @@ Most végzett ODBC konfigurálása, a mintaadatokat, Tableau is tenné.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure Data Explorer lekérdezéseket írni](write-queries.md)
+[Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
 
 [Oktatóanyag: A Power bi-ban az Azure Data Explorer adatainak megjelenítése](visualize-power-bi.md)

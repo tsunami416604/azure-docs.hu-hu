@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/18/2018
 ms.openlocfilehash: 6a068c45a13bd45a09ed51fd154b5842938e0c5e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044668"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Gyors útmutató: Adatokat az Azure SDK-val Data Explorer .NET Standard (előzetes verzió)
@@ -22,7 +22,7 @@ Az Azure Data Explorer (ADX) az adatok gyors és hatékonyan méretezhető explo
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-* [Egy teszt fürt és adatbázis](create-cluster-database-portal.md)
+* [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
 
 ## <a name="install-the-ingest-library"></a>A betöltés erőforrástár telepítése
 

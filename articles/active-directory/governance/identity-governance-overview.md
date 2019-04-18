@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4e2f564de254c2aea779b30286183d0a4e17db6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045484"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure ad-ben identitáskezelést?
@@ -69,14 +69,14 @@ Az Azure AD Privileged Identity Management (PIM) szabott több eszközt biztosí
 Nem áll fenn tökéletes megoldás vagy javaslat, minden ügyfél számára, miközben a következő konfigurációk biztosítanak egy útmutató, amellyel a Microsoft azt javasolja, annak biztosítására, egy további biztonságosan és hatékonyan munkaerő alapkonfiguráció szabályzatokat.
 
 - [Identitás- és eszköz-hozzáférési konfigurációk](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Emelt szintű hozzáférés biztonságossá tétele](../users-groups-roles/directory-admin-roles-secure.md)
+- [Emelt szintű hozzáférés biztonsága](../users-groups-roles/directory-admin-roles-secure.md)
 
 
 ### <a name="access-reviews"></a>Hozzáférési felülvizsgálatok
 
 - [Mi az a hozzáférési felülvizsgálat?](access-reviews-overview.md)
-- [A hozzáférési felülvizsgálatok felhasználói hozzáférés felügyelete](manage-user-access-with-access-reviews.md)
-- [Vendéghozzáférés hozzáférési felülvizsgálatokkal kezelése](manage-guest-access-with-access-reviews.md)
+- [Felhasználói hozzáférés kezelése hozzáférési felülvizsgálatokkal](manage-user-access-with-access-reviews.md)
+- [Vendéghozzáférés kezelése hozzáférési felülvizsgálatokkal](manage-guest-access-with-access-reviews.md)
 - [Az Azure AD-szerepkörök hozzáférési felülvizsgálat indítása](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>Használati feltételek

@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
 ms.openlocfilehash: 03e1ec58b0ef3ad50a04f82ced7d20119ab3ef5b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491457"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával
@@ -65,8 +65,8 @@ A `--docker` paraméter hozzáadása esetén létrejön egy Docker-fájl a proje
 
 Amikor a rendszer kéri, válasszon ki egy feldolgozói futtatókörnyezetet az alábbi nyelvek közül:
 
-* `dotnet`: a .NET-osztálytár projektet (.csproj) hoz létre.
-* `node`: egy JavaScript-projektet hoz létre.
+* `dotnet`: létrehoz egy .NET osztálytárprojektet (.csproj).
+* `node`: létrehoz egy JavaScript-projektet.
 * `python`: egy Python-projektet hoz létre.
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
@@ -302,4 +302,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Az alap App Service-platformba beépített folyamatos integrációs funkció engedélyezési módjának elsajátítása. Függvényalkalmazását úgy is konfigurálhatja, hogy a tároló a rendszerkép Docker Hubban történő frissítésekor újra legyen telepítve.
 
 > [!div class="nextstepaction"] 
-> [Folyamatos üzembe helyezés a Web App for containers szolgáltatásban](../app-service/containers/app-service-linux-ci-cd.md)
+> [Folyamatos üzembe helyezés a Web App for Containers használatával](../app-service/containers/app-service-linux-ci-cd.md)

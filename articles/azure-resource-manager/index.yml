@@ -60,7 +60,7 @@ sections:
         style: unordered
         className: spaced noBullet
         items:
-          - html: '<a href="https://azure.microsoft.com/resources/templates/">Azure gyorsindítási sablonok</a>'
+          - html: '<a href="https://azure.microsoft.com/resources/templates/">Azure-gyorssablonok</a>'
           - html: '<a href="https://resources.azure.com/">Azure Erőforrás-kezelő (előzetes verzió)</a>'
   - title: Referencia
     items:

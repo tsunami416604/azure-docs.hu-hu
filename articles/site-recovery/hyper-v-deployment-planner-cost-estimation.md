@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: e98ec71f0c21fe640666b9d34e170678ec23c1ff
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359032"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése 
@@ -111,13 +111,13 @@ Virtuális gépek manuális hozzáadása:
 
     b. **IaaS-méret (felhasználó választása)**
 
-    c. **Standard vagy prémium szintű tárolási típus**
+    c. **Tárolás típusa (Standard/Prémium)**
 
     d. **Virtuális gép tárterületének teljes mérete (GB)**
 
     e. **DR működéseinek száma évente**
 
-    f. **Minden egyes DR működések időtartama (nap)**
+    f. **DR egyes működéseinek időtartama (nap)**
 
     g. **Operációs rendszer típusa**
 

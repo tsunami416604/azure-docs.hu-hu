@@ -9,10 +9,10 @@ ms.date: 10/23/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049149"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Oktatóanyag: Windows-fájlkiszolgálók kiterjesztése az Azure File Sync használatával
@@ -265,7 +265,7 @@ A kiszolgáló regisztrációs felhasználói felület automatikusan meg kell az
    | | |
    | ----- | ----- |
    | Érték | Leírás |
-   | **Azure-előfizetés** | Az előfizetés, amely tartalmazza a Társzinkronizálási szolgáltatást ehhez az oktatóanyaghoz. |
+   | **Azure előfizetés** | Az előfizetés, amely tartalmazza a Társzinkronizálási szolgáltatást ehhez az oktatóanyaghoz. |
    | **Erőforráscsoport** | A Storage Sync Service tartalmazó erőforráscsoportot. Használat _afsresgroup101918_ ehhez az oktatóanyaghoz. |
    | **Társzinkronizálási szolgáltatás** | A Társzinkronizálási szolgáltatás neve. Használat _afssyncservice02_ ehhez az oktatóanyaghoz. |
 
@@ -287,7 +287,7 @@ A szinkronizálási csoport határozza meg fájlok egy halmazára a szinkronizá
    | ----- | ----- |
    | **Szinkronizálási csoport neve** | A Társzinkronizálási szolgáltatáson belül egyedinek kell lennie a névnek, de lehet bármilyen Ön számára logikus név. Használat *afssyncgroup* ehhez az oktatóanyaghoz.|
    | **Előfizetés** | Az előfizetés, ahova a Társzinkronizálási szolgáltatást telepítette ehhez az oktatóanyaghoz. |
-   | **Tárfiók** | Válasszon **válassza ki a tárfiókot**. A megjelenő panelen válassza ki a tárfiókot, amely rendelkezik a létrehozott Azure-fájlmegosztást. Használat *afsstoracct101918* ehhez az oktatóanyaghoz. |
+   | **Storage-fiók** | Válasszon **válassza ki a tárfiókot**. A megjelenő panelen válassza ki a tárfiókot, amely rendelkezik a létrehozott Azure-fájlmegosztást. Használat *afsstoracct101918* ehhez az oktatóanyaghoz. |
    | **Azure-fájlmegosztás** | A létrehozott Azure-fájlmegosztás neve. Használat *afsfileshare* ehhez az oktatóanyaghoz. |
 
 1. Kattintson a **Létrehozás** gombra.
@@ -308,8 +308,8 @@ Kiszolgálói végpont egy adott helyen, egy regisztrált kiszolgálón jelöli.
    | ----- | ----- |
    | Érték | Leírás |
    | **Regisztrált kiszolgáló** | A létrehozott kiszolgáló nevét. Használat *afsvm101918* ehhez az oktatóanyaghoz. |
-   | **Útvonal** | A Windows Server meghajtó elérési útját a létrehozott. Használat *f:\filestosync* ebben az oktatóanyagban. |
-   | **Felhőbeli rétegezés** | Hagyja letiltott állapotban az oktatóanyaghoz. |
+   | **Elérési út** | A Windows Server meghajtó elérési útját a létrehozott. Használat *f:\filestosync* ebben az oktatóanyagban. |
+   | **Felhőbeli rétegzés** | Hagyja letiltott állapotban az oktatóanyaghoz. |
    | **Szabad terület a köteten** | Ebben az oktatóanyagban üresen hagyjuk. |
 
 1. Kattintson a **Létrehozás** gombra.
@@ -327,4 +327,4 @@ A fájlok az Azure-fájlmegosztások és a Windows Server között most már szi
 Ebben az oktatóanyagban megtudhatta, az alapvető lépéseken, a tárolási kapacitás, a Windows Server kiterjesztése az Azure File Sync használatával. Alaposan tekintse meg az Azure File Sync üzembe helyezésének megtervezése lásd:
 
 > [!div class="nextstepaction"]
-> [Az Azure File Sync üzembe helyezésének tervezése](./storage-sync-files-planning.md)
+> [Azure File Sync üzembe helyezésének megtervezése](./storage-sync-files-planning.md)

@@ -13,10 +13,10 @@ ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
 ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496061"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights az Azure Functions támogatott szolgáltatások
@@ -27,7 +27,7 @@ Azure Functions-ajánlatok [beépített integráció](https://docs.microsoft.com
 
 | Azure Functions                       | 1. verzió                | V2 (az Ignite 2018.)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Az Application Insights .NET SDK-val**   | **2.5.0**       | **2.9.1**         |
+| **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Automatikus gyűjteménye**        |                 |                   |               
 | &bull; Kérelmek                     | Igen             | Igen               | 
@@ -39,7 +39,7 @@ Azure Functions-ajánlatok [beépített integráció](https://docs.microsoft.com
 | &nbsp;&nbsp;&nbsp;&mdash; az eventHub  |                 | Igen               | 
 | &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Igen               | 
 | | | | 
-| **Támogatott funkciók**                |                   |                   |               
+| **Támogatott szolgáltatások**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Igen             | Igen               | 
 | &nbsp;&nbsp;&nbsp;&mdash; Biztonságos vezérlőcsatorna|                 | Igen               | 
 | &bull; Mintavétel                     | Igen             | Igen               | 

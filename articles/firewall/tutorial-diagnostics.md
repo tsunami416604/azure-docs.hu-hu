@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: 393441e7ff620f3795e42c2cb376f99f8763f25b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044861"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Oktatóanyag: Azure tűzfal-naplók és metrikák figyelése
@@ -60,7 +60,7 @@ A diagnosztikai naplózás bekapcsolása után eltarthat néhány percig, amíg 
 9. A **Log Analytics-munkaterület** lapon az új **Log Analytics-munkaterület** nevének írja be a **firewall-oms** nevet.
 10. Válassza ki az előfizetést, használja a meglévő tűzfal erőforráscsoportot (**Test-FW-RG**), válassza az **USA keleti régiója** helyet, majd válassza az **Ingyenes** tarifacsomagot.
 11. Kattintson az **OK** gombra.
-   ![A konfigurációs folyamat indítása][1] OMS-munkaterülete mostantól nevezzük Log Analytics-munkaterületeket.  
+   ![A konfigurációs folyamat indítása][1] Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.  
 12. A **Naplók** területen kattintson az **AzureFirewallApplicationRule** és az **AzureFirewallNetworkRule** elemre az alkalmazásszabályok és hálózati szabályok naplóinak gyűjtéséhez.
    ![Diagnosztikai beállítások mentése][2]
 13. Kattintson a **Save** (Mentés) gombra.

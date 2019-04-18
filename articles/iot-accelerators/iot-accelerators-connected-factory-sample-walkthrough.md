@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 950d248d2525f053981c8642ee2d39021b9a0494
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490359"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>A csatlakoztatottgyár-alapú megoldásgyorsító bemutatója
@@ -230,7 +230,7 @@ A megoldásgyorsító részeként üzembe helyezett webalkalmazás integrált OP
 Folytassa az IoT-megoldásgyorsítók megismerését az alábbi cikkek elolvasásával:
 
 * [Engedélyek az azureiotsolutions.com webhelyen][lnk-permissions]
-* [Átjáró üzembe helyezése Windows vagy Linux rendszeren az az Okosgyár-megoldásgyorsító](iot-accelerators-connected-factory-gateway-deployment.md)
+* [Átjáró üzembe helyezése Windows vagy Linux rendszeren a csatlakoztatottgyár-alapú megoldásgyorsítóhoz](iot-accelerators-connected-factory-gateway-deployment.md)
 * [OPC-közzétevő referenciamegvalósítása](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md).
 
 [connected-factory-logical]:media/iot-accelerators-connected-factory-sample-walkthrough/cf-logical-architecture.png

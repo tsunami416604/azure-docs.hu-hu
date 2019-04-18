@@ -9,10 +9,10 @@ ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
 ms.openlocfilehash: c15242b0c480e2da39897b850ab7b2a2fd05bf11
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59489283"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Az Azure Storage analytics metrics (klasszikus)
@@ -139,7 +139,7 @@ Ha azt szeretné, töltse le a metrikákat, hosszú távú tárolás céljából
 
 ||||  
 |-|-|-|  
-|**Mérőszámok**|**Táblanevek**|**Megjegyzések**|  
+|**Metrikák**|**Táblanevek**|**Megjegyzések**|  
 |Óránkénti metrikák|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|A 2013-08-15 előtti verziókban a táblák néven is ismert:<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> A szolgáltatás metrikáinak elérhető elején 2015-04-05-verzióval.|  
 |Perc típusú metrikák|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Csak akkor engedélyezhető, PowerShell-lel vagy programozott módon.<br /><br /> A szolgáltatás metrikáinak elérhető elején 2015-04-05-verzióval.|  
 |Kapacitás|$MetricsCapacityBlob|Csak a BLOB szolgáltatás.|  
@@ -148,7 +148,7 @@ Részletes információk a séma találhat meg ezen táblák [Storage Analytics 
 
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**PartitionKey**|**RowKey**|**Időbélyeg**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Rendelkezésre állás**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
+|**PartitionKey**|**Rowkey tulajdonságok esetén**|**Időbélyeg**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Rendelkezésre állás**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
 |20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
 |20140522T1100|felhasználói; QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
 |20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  

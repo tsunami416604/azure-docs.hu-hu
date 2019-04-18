@@ -18,10 +18,10 @@ ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6340e0f349d66ecf6baaca481722396a6d786c5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496129"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Gyors útmutató: A felhasználók és a natív iOS-alkalmazások a Microsoft Graph API meghívása
@@ -46,14 +46,14 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
 > Az ebben a rövid működéséhez kódminta található, a válasz URL-cím hozzá kell `msal<AppId>://auth` (ahol az msal\<AppId > az alkalmazás azonosítója).
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [A módosítás végrehajtása nekem]()
+> > [A módosítás alkalmazása]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Már be van állítva](media/quickstart-v2-ios/green-check.png) az alkalmazás ezzel az attribútummal van konfigurálva.
+> > ![Már konfigurált](media/quickstart-v2-ios/green-check.png) Az alkalmazása már konfigurálva van ezzel az attribútummal
 
 #### <a name="step-2-download-your-web-server-or-project"></a>2. lépés: Töltse le a webes vagy projekt
 
-- [Töltse le az XCode-projektben](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+- [Az XCode-projekt letöltése](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-project"></a>3. lépés: A projekt konfigurálása
 
@@ -190,6 +190,6 @@ Próbálja ki az iOS-hez készült oktatóanyagot, amelyben teljes körű, rész
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>A jelen rövid útmutatóban használt alkalmazás létrehozási lépéseinek ismertetése
 
 > [!div class="nextstepaction"]
-> [IOS-oktatóanyag Graph API meghívása](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
+> [A Graph API meghívása – iOS-oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

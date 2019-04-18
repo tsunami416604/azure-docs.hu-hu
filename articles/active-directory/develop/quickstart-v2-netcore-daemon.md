@@ -18,10 +18,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0a40c9ee06751edfb7b218cf15275019c142545
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491321"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Gyors útmutató: Egy token beszerzéséhez és a Microsoft Graph API hívása egy konzolalkalmazás használatával az alkalmazás-identitást
@@ -78,7 +78,7 @@ Ez a rövid útmutatóhoz [.NET Core 2.2](https://www.microsoft.com/net/download
 > > [Ezt a módosítást a számomra]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Már be van állítva](media/quickstart-v2-windows-desktop/green-check.png) az alkalmazás ezekkel az attribútumokkal van konfigurálva.
+> > ![Már konfigurált](media/quickstart-v2-windows-desktop/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
 #### <a name="step-2-download-your-visual-studio-project"></a>2. lépés: A Visual Studio-projekt letöltése
 
@@ -100,7 +100,7 @@ Ez a rövid útmutatóhoz [.NET Core 2.2](https://www.microsoft.com/net/download
     
     > [!div renderon="docs"]
     >> Az elemek magyarázata:
-    >> * `Enter_the_Application_Id_Here` -a a **Alkalmazásazonosítót (ügyfél)** a regisztrált alkalmazás.
+    >> * `Enter_the_Application_Id_Here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
     >> * `Enter_the_Tenant_Id_Here` – Ezt az értéket cserélje le a **Bérlőazonosító** vagy **bérlő neve** (például contoso.microsoft.com)
     >> * `Enter_the_Client_Secret_Here` – Ezt az értéket cserélje le az 1. lépésben létrehozott, az ügyfél titkos kulcsát.
 
@@ -133,7 +133,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 >> Az elemek magyarázata:
 >> * `Enter_the_Tenant_Id_Here` – Ezt az értéket cserélje le a **Bérlőazonosító** vagy **bérlő neve** (például contoso.microsoft.com)
->> * `Enter_the_Application_Id_Here` -a a **Alkalmazásazonosítót (ügyfél)** a regisztrált alkalmazás.
+>> * `Enter_the_Application_Id_Here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
 
 > [!NOTE]
 > A hiba jelenhet *"AADSTS50011: A válaszcím nem az alkalmazás regisztrálva van a(z)* után hozzájárulás az alkalmazáshoz, a fenti URL-cím használatával. Ez történik, mert ez az alkalmazás és az URL-cím nem kell átirányítási URI - hagyja figyelmen kívül a hibát.

@@ -9,10 +9,10 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: fd8eecbd20446bfde8d3a7467e2982398c3b8c19
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044963"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Storage-fiók feladatátvétel (előzetes verzió)
@@ -107,5 +107,5 @@ az storage account failover \ --name accountName
 ## <a name="next-steps"></a>További lépések
 
 - [Katasztrófa utáni helyreállítás és a fiók feladatátvétel (előzetes verzió) az Azure Storage-ban](storage-disaster-recovery-guidance.md)
-- [RA-GRS használatával magas rendelkezésre állású alkalmazások tervezése](storage-designing-ha-apps-with-ragrs.md)
+- [Magas rendelkezésre állású alkalmazások tervezése az RA-GRS használatával](storage-designing-ha-apps-with-ragrs.md)
 - [Oktatóanyag: A Blob storage magas rendelkezésre állású alkalmazás létrehozása](../blobs/storage-create-geo-redundant-storage.md) 

@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: cgronlun
 ms.date: 04/04/2019
 ms.openlocfilehash: f5d43794ba80e4791c8bf24ad404069a8329518e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051223"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Gyors útmutató: Machine Learning-szolgáltatások (az r nyelv) használata az Azure SQL Database (előzetes verzió)
@@ -104,7 +104,7 @@ A következő gyakorlat az első használati modellre fókuszál: R-kód tovább
 
 2. Ha mindent megfelelően állított be, a rendszer a helyes eredményt számítja ki, az R `print` függvénye pedig a **Messages** (Üzenetek) ablakban adja vissza az eredményeket.
 
-    **Results (Eredmények)**
+    **Results**
 
     ```text
     STDOUT message(s) from external script: 
@@ -139,7 +139,7 @@ Egyelőre foglalkozzunk csak az sp_execute_external_script alapértelmezett beme
     SELECT * FROM RTestData
     ```
 
-    **Results (Eredmények)**
+    **Results**
 
     ![Az RTestData tábla tartalma](./media/sql-database-connect-query-r/select-rtestdata.png)
 
@@ -155,7 +155,7 @@ Egyelőre foglalkozzunk csak az sp_execute_external_script alapértelmezett beme
     WITH RESULT SETS (([NewColName] INT NOT NULL));
     ```
 
-    **Results (Eredmények)**
+    **Results**
 
     ![Egy R-szkript kimenete, amely adatokat ad vissza egy táblából](./media/sql-database-connect-query-r/r-output-rtestdata.png)
 
@@ -192,7 +192,7 @@ Egyelőre foglalkozzunk csak az sp_execute_external_script alapértelmezett beme
     WITH RESULT SETS (([Col1] CHAR(20) NOT NULL));
     ```
 
-    **Results (Eredmények)**
+    **Results**
 
     ![Eredmények lekérdezése az @script bemenetként való használatával](./media/sql-database-connect-query-r/r-data-generated-output.png)
 
@@ -211,7 +211,7 @@ Ha kíváncsi, hogy az R melyik verziója van telepítve a SQL-adatbázisban, te
 
 2. Az R `print` funkciója a **Messages** (Üzenetek) ablakban adja vissza a verziót. Az alábbi példakimenetben látható, hogy az SQL Database-ben az R 3.4.4-es verziója van telepítve.
 
-    **Results (Eredmények)**
+    **Results**
 
     ```text
     STDOUT message(s) from external script:
@@ -248,7 +248,7 @@ A Microsoft számos előre telepített R-csomagot biztosít a Machine Learning S
 
 2. A kimenet az R `installed.packages()` függvényéből származik, és a rendszer eredményhalmazként adja vissza.
 
-    **Results (Eredmények)**
+    **Results**
 
     ![Telepített csomagok az R-ben](./media/sql-database-connect-query-r/r-installed-packages.png)
 
@@ -359,7 +359,7 @@ Betaníthat egy modellt az R használatával, és mentheti egy SQL-adatbázisban
     VALUES ('latest model', @model)
     ```
 
-    **Results (Eredmények)**
+    **Results**
 
     ![Betanított modell további kimenettel](./media/sql-database-connect-query-r/r-train-model-with-additional-output.png)
 
@@ -414,7 +414,7 @@ Az előző szakaszban létrehozott modell használatával pontozhatja az új ada
 
    + Az R-szkriptben használt oszlopneveket a rendszer nem feltétlenül továbbítja a tárolt eljárás kimenetébe. Ebben az esetben a WITH RESULTS záradékot használtuk új oszlopnevek meghatározásához.
 
-     **Results (Eredmények)**
+     **Results**
 
      ![Eredményhalmaz a fékezési távolság előrejelzéséhez](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
 
@@ -473,7 +473,7 @@ Ha olyan csomagot szeretne használni, amely még nincs telepítve az SQL-adatb�
     View(r)
     ```
 
-    **Results (Eredmények)**
+    **Results**
 
     ![Az RTestData tábla tartalma](./media/sql-database-connect-query-r/r-verify-package-install.png)
 
@@ -497,7 +497,7 @@ Ha olyan csomagot szeretne használni, amely még nincs telepítve az SQL-adatb�
 
     A következő eredmény látható az Üzenetek lapon.
 
-    **Results (Eredmények)**
+    **Results**
 
     ```text
     STDOUT message(s) from external script:
@@ -523,5 +523,5 @@ A Machine Learning-szolgáltatások további információkért lásd az alábbi 
 - [Az Azure SQL Database Machine Learning-szolgáltatások (az R)](sql-database-machine-learning-services-overview.md)
 - [SQL Server Machine Learning-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
 - [Oktatóanyag: Ismerje meg, az r nyelv használatát az SQL Server adatbázis-elemzés](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [R-és SQL Server az adatok végpontok közötti adatelemzési útmutató](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
+- [Teljes körű adatelemzési útmutató az R-hez és az SQL Serverhez](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
 - [Oktatóanyag: RevoScaleR R-függvények használata az SQL Server-adatok](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)

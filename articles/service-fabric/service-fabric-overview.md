@@ -16,10 +16,10 @@ ms.date: 09/20/2017
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: cd2895378f713749b3a1d0ac01986b728ceafd2b
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009003"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Az Azure Service Fabric áttekintése
@@ -91,8 +91,8 @@ A Service Fabric használatával a következőket teheti:
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések
 * További információk:
-  * [Miért érdemes a mikroszolgáltatás-alapú megközelítést választani alkalmazások?](service-fabric-overview-microservices.md)
-  * [A terminológia áttekintése](service-fabric-technical-overview.md)
+  * [Miért érdemes a mikroszolgáltatás-alapú megközelítést választani alkalmazások létrehozásához?](service-fabric-overview-microservices.md)
+  * [Terminológiai áttekintés](service-fabric-technical-overview.md)
 * A [Windows fejlesztési környezet](service-fabric-get-started.md) beállítása  
 * A [Linux fejlesztési környezet](service-fabric-get-started-linux.md) beállítása
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: c7edc7979636ced8697aa5ad724f9c6600d840bb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283358"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Vészhelyreállítás Azure virtuális gép gyorsított hálózatkezelés
@@ -37,8 +37,8 @@ Az Azure Site Recovery támogatja az engedélyezése a gyorsított hálózatkeze
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 A következő disztribúciók az Azure katalógusából beépített támogatottak:
-* **Windows Server 2016 Datacenter**
-* **Windows Server 2012 R2 Datacenter**
+* **A Windows Server 2016 Datacenter**
+* **A Windows Server 2012 R2 Datacenter**
 
 ### <a name="supported-vm-instances"></a>Támogatott Virtuálisgép-példányok
 Gyorsított hálózatkezelés legtöbb általános célú és a 2 vagy több vcpu-k méretű számításra optimalizált példányok esetén támogatott.  A támogatott sorozat a következők: D/DSv2 és az F/Fs
@@ -55,7 +55,7 @@ Az Azure Site Recovery támogatja az engedélyezése a gyorsított hálózatkeze
 A következő disztribúciók az Azure katalógusából beépített támogatottak:
 * **Ubuntu 16.04**
 * **SLES 12 SP3**
-* **7.4 RHEL**
+* **RHEL 7.4**
 * **CentOS 7.4**
 * **CoreOS Linux**
 * **Debian "kiterjeszthető" portolások kernel**

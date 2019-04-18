@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 07a488556bc899efa80d67ceb984b60f461b9742
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 56a31770c374cdccaec4dbee751925a6da00fa59
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541027"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683953"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések
 
@@ -29,13 +29,13 @@ Válaszok a virtual machine scale sets – gyakori kérdések az Azure-ban.
 
 ## <a name="top-frequently-asked-questions-for-scale-sets"></a>Felső a méretezési csoportokkal kapcsolatos gyakori kérdések
 
-**K.** Hány virtuális gépet tartalmazhat egy méretezési csoport?
+### <a name="how-many-vms-can-i-have-in-a-scale-set"></a>Hány virtuális gépet tartalmazhat egy méretezési csoport?
 
-**V.** Egy méretezési csoportot a 0 – 1000 virtuális platformrendszerképen alapuló, vagy 0 és 600 virtuális gépeket, egyéni rendszerképen alapuló is rendelkezhet.
+Egy méretezési csoportot a 0 – 1000 virtuális platformrendszerképen alapuló, vagy 0 és 600 virtuális gépeket, egyéni rendszerképen alapuló is rendelkezhet.
 
-**K.** Támogatott az adatlemezek használata a méretezési csoportokon belül?
+### <a name="are-data-disks-supported-within-scale-sets"></a>Támogatott az adatlemezek használata a méretezési csoportokon belül?
 
-**V.** Igen. A méretezési csoportok meghatározhatnak egy csatlakoztatott adatlemezekből álló konfigurációt, amely a csoport összes virtuális gépére érvényes. További információ: [Azure-beli méretezési csoportok és csatlakoztatott adatlemezek](virtual-machine-scale-sets-attached-disks.md). Egyéb adattárolási lehetőségek:
+Igen. A méretezési csoportok meghatározhatnak egy csatlakoztatott adatlemezekből álló konfigurációt, amely a csoport összes virtuális gépére érvényes. További információ: [Azure-beli méretezési csoportok és csatlakoztatott adatlemezek](virtual-machine-scale-sets-attached-disks.md). Egyéb adattárolási lehetőségek:
 
 * Azure Files (SMB-megosztásos meghajtók)
 * Operációs rendszer meghajtója
@@ -43,33 +43,33 @@ Válaszok a virtual machine scale sets – gyakori kérdések az Azure-ban.
 * Azure-adatszolgáltatás (például Azure-táblák, Azure-blobok)
 * Külső adatszolgáltatás (például távoli adatbázis)
 
-**K.** Mely Azure-régiók támogatják a méretezési csoportokat?
+### <a name="which-azure-regions-support-scale-sets"></a>Mely Azure-régiók támogatják a méretezési csoportokat?
 
-**V.** Mindegyik régió támogatja a méretezési csoportokat.
+Mindegyik régió támogatja a méretezési csoportokat.
 
-**K.** Hogyan lehet egyéni rendszerképekből méretezési csoportot létrehozni?
+### <a name="how-do-i-create-a-scale-set-by-using-a-custom-image"></a>Hogyan lehet egyéni rendszerképekből méretezési csoportot létrehozni?
 
-**V.** Hozzon létre egy Virtuálisgép-lemezkép rögzítése, majd forrásaként, amely a méretezési csoporthoz használni. Hogyan hozhat létre és használhat egyéni Virtuálisgép-rendszerképet oktatóanyagot, használhatja a [Azure CLI-vel](tutorial-use-custom-image-cli.md) vagy [Azure PowerShell-lel](tutorial-use-custom-image-powershell.md)
+Hozzon létre egy Virtuálisgép-lemezkép rögzítése, majd forrásaként, amely a méretezési csoporthoz használni. Hogyan hozhat létre és használhat egyéni Virtuálisgép-rendszerképet oktatóanyagot, használhatja a [Azure CLI-vel](tutorial-use-custom-image-cli.md) vagy [Azure PowerShell-lel](tutorial-use-custom-image-powershell.md)
 
-**K.** Ha a méretezési csoportom kapacitását 20-ról 15-re csökkentem, mely virtuális gépek lesznek eltávolítva?
+### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>Ha a méretezési csoportom kapacitását 20-ról 15-re csökkentem, mely virtuális gépek lesznek eltávolítva?
 
-**V.** A rendszer egyenlő arányban távolítja el a virtuális gépeket a méretezési csoportból a frissítési és tartalék tartományok egészében, a rendelkezésre állás maximalizálása érdekében. A rendszer a legmagasabb azonosítóval rendelkező virtuális gépeket távolítja el először.
+A rendszer egyenlő arányban távolítja el a virtuális gépeket a méretezési csoportból a frissítési és tartalék tartományok egészében, a rendelkezésre állás maximalizálása érdekében. A rendszer a legmagasabb azonosítóval rendelkező virtuális gépeket távolítja el először.
 
-**K.** Mi történik, ha ezután 15-ről 18-ra növelem a kapacitást?
+### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>Mi történik, ha ezután 15-ről 18-ra növelem a kapacitást?
 
-**V.** Ha 18-ra növeli a kapacitást, akkor a rendszer 3 új virtuális gépet hoz létre. A rendszer minden alkalommal a legmagasabb előző értéktől növeli a virtuálisgép-példány azonosítóját (például: 20, 21, 22). A virtuális gépek a tartalék és frissítési tartományok között oszlanak el.
+Ha 18-ra növeli a kapacitást, akkor a rendszer 3 új virtuális gépet hoz létre. A rendszer minden alkalommal a legmagasabb előző értéktől növeli a virtuálisgép-példány azonosítóját (például: 20, 21, 22). A virtuális gépek a tartalék és frissítési tartományok között oszlanak el.
 
-**K.** Ha több bővítményt használok egy méretezési csoportban, van lehetőség végrehajtási sorrend kényszerítésére?
+### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Ha több bővítményt használok egy méretezési csoportban, van lehetőség végrehajtási sorrend kényszerítésére?
 
-**V.** Igen, használhatja a méretezési csoport [sorrendről](virtual-machine-scale-sets-extension-sequencing.md).
+Igen, használhatja a méretezési csoport [sorrendről](virtual-machine-scale-sets-extension-sequencing.md).
 
-**K.** Használhatok virtuálisgép-méretezési csoportokat Azure rendelkezésre állási csoportokkal?
+### <a name="do-scale-sets-work-with-azure-availability-sets"></a>Használhatok virtuálisgép-méretezési csoportokat Azure rendelkezésre állási csoportokkal?
 
-**V.** A regionális (nem zónaszintű) méretezési használ *elhelyezési csoportra*, amely üzemelő egy implicit rendelkezésre állási csoportot az öt tartalék tartományok és öt frissítési tartománnyal. Több mint 100 virtuális gépet tartalmazó méretezési csoportok több elhelyezési csoportra is kiterjednek. További információ az elhelyezési csoportokról: [Nagyméretű virtuálisgép-méretezési csoportok használata](virtual-machine-scale-sets-placement-groups.md). A virtuális gépek rendelkezésre állási csoportja létrejöhet ugyanabban a virtuális hálózatban, mint a virtuálisgép-méretezési csoport. Az egyik gyakran alkalmazott konfiguráció egy rendelkezésre állási csoportba helyezi a vezérlő csomópont virtuális gépeit (ezek gyakran igényelnek egyéni konfigurálást), és a méretezési csoportba helyezi az adatcsomópontokat.
+A regionális (nem zónaszintű) méretezési használ *elhelyezési csoportra*, amely üzemelő egy implicit rendelkezésre állási csoportot az öt tartalék tartományok és öt frissítési tartománnyal. Több mint 100 virtuális gépet tartalmazó méretezési csoportok több elhelyezési csoportra is kiterjednek. További információ az elhelyezési csoportokról: [Nagyméretű virtuálisgép-méretezési csoportok használata](virtual-machine-scale-sets-placement-groups.md). A virtuális gépek rendelkezésre állási csoportja létrejöhet ugyanabban a virtuális hálózatban, mint a virtuálisgép-méretezési csoport. Az egyik gyakran alkalmazott konfiguráció egy rendelkezésre állási csoportba helyezi a vezérlő csomópont virtuális gépeit (ezek gyakran igényelnek egyéni konfigurálást), és a méretezési csoportba helyezi az adatcsomópontokat.
 
-**K.** Használhatok virtuálisgép-méretezési csoportok használata az Azure rendelkezésre állási zónák?
+### <a name="do-scale-sets-work-with-azure-availability-zones"></a>Használhatok virtuálisgép-méretezési csoportok használata az Azure rendelkezésre állási zónák?
 
-**V.** Igen! További információkért lásd: a [méretezési zóna doc](./virtual-machine-scale-sets-use-availability-zones.md).
+Igen! További információkért lásd: a [méretezési zóna doc](./virtual-machine-scale-sets-use-availability-zones.md).
 
 
 ## <a name="autoscale"></a>Automatikus méretezés

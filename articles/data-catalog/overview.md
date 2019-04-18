@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: overview
 ms.date: 04/05/2019
 ms.openlocfilehash: cd20fc6ae71a0dd96a0006de8c81050bb0646905
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59287433"
 ---
 # <a name="what-is-azure-data-catalog"></a>Mi az az Azure Data Catalog?
@@ -72,5 +72,5 @@ A Data Catalog képességeinek bővebb megismeréséhez lásd a következő tém
 
 A Data Catalog használatába:
 
-* [Gyors útmutató: Hozzon létre egy Azure Data Catalog](data-catalog-get-started.md)
+* [Rövid útmutató: Hozzon létre egy Azure Data Catalog](data-catalog-get-started.md)
 * [Nyissa meg az Azure Data Catalog](https://www.azuredatacatalog.com)

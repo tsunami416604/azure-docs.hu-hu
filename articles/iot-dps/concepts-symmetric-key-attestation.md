@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050944"
 ---
 # <a name="symmetric-key-attestation"></a>Szimmetrikus kulcsú igazolás
@@ -114,6 +114,6 @@ Ha az eszköz kulcsok nincsenek telepítve az előállító egy [hardveres bizto
 
 Most, hogy a szimmetrikus kulcs állapotigazolási megismerése, tekintse meg a következő cikkekben további információ:
 
-* [Gyors útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok](quick-create-simulated-device-symm-key.md)
+* [Rövid útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok](quick-create-simulated-device-symm-key.md)
 * [További információ az Automatikus kiépítés fogalmak](./concepts-auto-provisioning.md)
 * [Automatikus kiépítés használatának első lépései](./quick-setup-auto-provision.md) 

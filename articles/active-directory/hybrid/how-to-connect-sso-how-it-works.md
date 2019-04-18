@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 788b03bb55abdc3040df8c5317f1f55738ebb023
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 907abe3b09f9999b30703281f7e4ff286e2bae14
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268356"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677884"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Részletes technikai bemutatása
 
@@ -44,7 +44,7 @@ Közvetlen egyszeri bejelentkezés engedélyezve van az Azure AD Connect haszná
 - A számítógépfiók Kerberos visszafejtési kulcs biztonságosan megosztott Azure AD-val. Ha több AD-erdőkkel, minden egyes számítógépfiók lesz a saját egyedi Kerberos visszafejtési kulcsot.
 
 >[!IMPORTANT]
-> A `AZUREADSSOACC` számítógépfiók biztonsági okokból erősen védeni kell. Csak a tartományi rendszergazdák kezelése a számítógépfiók képesnek kell lennie. Győződjön meg arról, hogy a Kerberos-delegálás, a számítógép fiók le van tiltva. Store a számítógépfiókot a egy szervezeti egység (OU), ha azok véletlen törlések biztonságáról, és csak tartományi rendszergazdák hozzáférhetnek. A Kerberos visszafejtési kulcs a számítógépfiók is olyan érzékeny kell kezelni. Kifejezetten ajánljuk, hogy Ön [vihetők át a Kerberos-visszafejtési kulcs](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) , a `AZUREADSSOACC` számítógépfiók legalább 30 nap.
+> A `AZUREADSSOACC` számítógépfiók biztonsági okokból erősen védeni kell. Csak a tartományi rendszergazdák kezelése a számítógépfiók képesnek kell lennie. Győződjön meg arról, hogy a Kerberos-delegálás, a számítógép fiók le van tiltva, és az Active Directoryban nincs más fiók rendelkezik a delegálási engedélyeit a `AZUREADSSOACC` számítógépfiók... Store a számítógépfiókot a egy szervezeti egység (OU), ha azok véletlen törlések biztonságáról, és csak tartományi rendszergazdák hozzáférhetnek. A Kerberos visszafejtési kulcs a számítógépfiók is olyan érzékeny kell kezelni. Kifejezetten ajánljuk, hogy Ön [vihetők át a Kerberos-visszafejtési kulcs](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) , a `AZUREADSSOACC` számítógépfiók legalább 30 nap.
 
 A beállítás befejezése után a közvetlen egyszeri bejelentkezés működik ugyanúgy, mint bármely más jelentkezzen be, amely integrált Windows-hitelesítés (IWA) használja.
 

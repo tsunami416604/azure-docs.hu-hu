@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: c7bfd36bb4e36b10487edbbaa40421f067c9ed3e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048758"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Proaktív hálózatmonitorozás riasztások és az Azure Functions használata a csomagrögzítést
@@ -77,7 +77,7 @@ Az első lépés, ha a riasztás feldolgozása és csomagrögzítés hozzon lét
 
     |**Beállítás** | **Érték** | **Részletek** |
     |---|---|---|
-    |**App neve**|PacketCaptureExample|A függvényalkalmazás nevére.|
+    |**Alkalmazás neve**|PacketCaptureExample|A függvényalkalmazás nevére.|
     |**Előfizetés**|[Az Ön előfizetése] Az előfizetés, amelynek a függvényalkalmazás létrehozásához.||
     |**Erőforráscsoport**|PacketCaptureRG|Az erőforráscsoport tartalmazza a függvényalkalmazást.|
     |**Szolgáltatási csomag**|Használatalapú csomag| A típusú tervezze meg a függvény alkalmazást használ. Lehetőségek a következők használat vagy az Azure App Service-csomag. |
@@ -92,7 +92,7 @@ Az első lépés, ha a riasztás feldolgozása és csomagrögzítés hozzon lét
     |---|---|---|
     |**Forgatókönyv**|Kísérleti|Forgatókönyv típusa|
     |**A függvény neve**|AlertPacketCapturePowerShell|A függvény neve|
-    |**Authorization level (Engedélyszint)**|Függvény|A függvény a jogosultsági szint|
+    |**Engedélyszint**|Függvény|A függvény a jogosultsági szint|
 
 ![Functions-példa][functions1]
 
@@ -349,7 +349,7 @@ Ugrás a meglévő virtuális gépet, és adja hozzá a riasztási szabályt. É
   |**Name (Név)**|TCP_Segments_Sent_Exceeded|A riasztási szabály neve.|
   |**Leírás**|TCP-szegmens küldött túllépte a határértéket|A riasztási szabály leírását.|
   |**Metrika**|Elküldött TCP-szegmens| A metrika a riasztást kiváltó használatára. |
-  |**Állapot**|Nagyobb, mint| A feltétel a metrika értékeléséhez.|
+  |**a feltétel**|Nagyobb, mint| A feltétel a metrika értékeléséhez.|
   |**Küszöbérték**|100| A riasztást kiváltó a mérőszám értéke. Ez az érték a környezetnek érvényes értékre kell állítani.|
   |**Időszak**|Az elmúlt öt percben| Meghatározza, hogy az időszak, amelyben a küszöbértéket, a metrika a keresett.|
   |**Webhook**|[a webhook URL-cím függvényalkalmazásból]| A webhook URL-CÍMÉT az előző lépésekben létrehozott függvényalkalmazás.|

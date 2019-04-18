@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
 ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496095"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
@@ -28,7 +28,7 @@ Egyéb támogatási mátrixok:
 
 Itt látható, hogyan lehet biztonsági másolatot készíteni, és Azure virtuális gépek visszaállítása az Azure Backup szolgáltatással.
 
-**Forgatókönyv** | **Backup** | **Ügynök** |**Visszaállítás**
+**Forgatókönyv** | **Biztonsági mentés** | **Ügynök** |**Visszaállítás**
 --- | --- | --- | ---
 Közvetlen biztonsági mentést Azure-beli virtuális  | Készítsen biztonsági másolatot a teljes virtuális Gépet.  | Nincs ügynök van szükség az Azure virtuális gépen. Az Azure Backup telepíti, és használja a bővítményt a [Azure Virtuálisgép-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) , hogy fut a virtuális gépen. | Állítsa vissza a következőképpen:<br/><br/> - **Alapszintű virtuális gép létrehozása**. Ez akkor hasznos, ha a virtuális gép nem rendelkezik külön konfigurációval például a több IP-címet.<br/><br/> - **A Virtuálisgép-lemez visszaállítása**. Állítsa vissza a lemezt. Ezután csatlakoztassa azt egy meglévő virtuális Gépet, vagy hozzon létre egy új virtuális Gépet a lemezről a PowerShell-lel.<br/><br/> - **Cserélje le a virtuális gép lemezének**. Ha a virtuális gép létezik, és a felügyelt lemezek (titkosítatlanul) használ, lemez visszaállítása, és cserélje le a virtuális gépen meglévő lemez használatával.<br/><br/> - **Meghatározott fájlok és mappák visszaállítása**. Fájlok és mappák visszaállíthatja a teljes virtuális gép helyett virtuális Gépet.
 Közvetlen biztonsági mentést Azure-beli virtuális (csak Windows)  | Készítsen biztonsági másolatot a megadott fájlok/mappák/kötetet. | Telepítse a [Azure Recovery Services agent](backup-azure-file-folder-backup-faq.md).<br/><br/> A MARS-ügynök mellett a biztonsági mentési bővítményt a fájl vagy mappa szintjén a virtuális gép biztonsági másolatának az Azure Virtuálisgép-ügynök futtatásával. | Állítsa vissza az adott mappákat és fájlokat.
@@ -38,7 +38,7 @@ További információ a biztonsági mentés [használatával egy biztonsági men
 
 ## <a name="supported-backup-actions"></a>Támogatott biztonsági mentési műveletek
 
-**Műveletek** | **Támogatás**
+**Művelet** | **Támogatás**
 --- | ---
 Amikor létrehoz egy Windows Azure virtuális gép biztonsági mentésének engedélyezése | Támogatott:  A Windows Server 2019 (Datacenter/Datacenter mag), a Windows Server 2016 (Core adatközpont vagy Datacenter); A Windows Server 2012 R2 Datacenter; A Windows Server 2008 R2 (RTM és SP1)
 Amikor létrehoz egy Linux rendszerű virtuális gép biztonsági mentésének engedélyezése | Támogatott:<br/><br/> - Ubuntu Server: 1710, 1704, 1604 (LTS), 1404 (LTS)<br/><br/> – A Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> - Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
@@ -69,7 +69,7 @@ Biztonsági mentés a DPM/MABS | Biztonsági mentés a támogatott operációs r
 
 Íme, mi támogatott, ha azt szeretné, Linux rendszerű gépek biztonsági mentéséhez.
 
-**Műveletek** | **Támogatás**
+**Művelet** | **Támogatás**
 --- | ---
 Linux rendszerű Azure virtuális gépek biztonsági mentése Azure-beli Linux rendszerű Virtuálisgép-ügynökkel rendelkező | Alkalmazáskonzisztens biztonsági mentés.<br/><br/> Alkalmazáskonzisztens biztonsági mentés használatával [egyéni parancsfájlok](backup-azure-linux-app-consistent.md).<br/><br/> Visszaállítás alatt hozzon létre egy új virtuális Gépet, visszaállíthatja a lemez és használatával hozzon létre egy virtuális Gépet, vagy a lemez visszaállítása és kicserél egy lemezt egy meglévő virtuális gép használatával. Egyes fájlok és mappák is helyreállíthatja.
 Linux rendszerű Azure virtuális gépek biztonsági mentése a MARS-ügynök | Nem támogatott.<br/><br/> A MARS-ügynök csak Windows-gépeken telepíthető.
@@ -139,9 +139,9 @@ Virtuális gép helyreállítása másik virtuális hálózatban |   Támogatott
 
 ## <a name="vm-compute-support"></a>Virtuális gépek számítási támogatása
 
-**Compute** | **Támogatás**
+**Számítás** | **Támogatás**
 --- | ---
-Virtuális gép mérete |   Minden olyan Azure virtuális gép méretét legalább 2 processzormag és 1 GB RAM.<br/><br/> [Részletek.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
+Virtuális gép mérete |   Minden olyan Azure virtuális gép méretét legalább 2 processzormag és 1 GB RAM.<br/><br/> [Részletek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 A virtuális gépek biztonsági mentése [rendelkezésre állási csoportok](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability#availability-sets) | Támogatott.<br/><br/> A beállítás használatával gyorsan létrehozhat egy virtuális gép nem állítható vissza egy virtuális Gépet egy rendelkezésre álló készletbe. Ehelyett ha visszaállítja a virtuális gép, állítsa vissza a lemezt, és használatával helyezhet üzembe egy virtuális Gépet, vagy a lemez visszaállítása, és cserélje le a meglévő lemez használatával.
 A virtuális gépek biztonsági mentése [rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview) |  Nem támogatott.
 Az üzembe helyezett virtuális gépek biztonsági mentése [hibrid használati Benefit (HUB)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Támogatott.

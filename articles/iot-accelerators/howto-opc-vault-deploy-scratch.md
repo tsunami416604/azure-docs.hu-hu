@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496896"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>OPC-tároló létrehozása az alapoktól
@@ -106,7 +106,7 @@ A mikroszolgáltatások használatához állítsa be az Azure IoT Hub tesztek fe
 
 A projekt tartalmaz néhány Bash-szkriptek, ezzel a telepítőprogrammal segítséget:
 
-- Create new IoT Hub: `./scripts/iothub/create-hub.sh`
+- Új IoT Hub létrehozása: `./scripts/iothub/create-hub.sh`
 
 - Meglévő hubs listázza: `./scripts/iothub/list-hubs.sh`
 

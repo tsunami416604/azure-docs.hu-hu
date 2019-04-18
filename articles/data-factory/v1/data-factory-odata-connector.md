@@ -14,16 +14,16 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b2c665de94750c4c6f41bda47960fdb9ba17e819
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905630"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Helyezze át az adatok Azure Data Factory használatával az OData-Adatcsatornából forrás
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](data-factory-odata-connector.md)
-> * [Version 2 (aktuális verzió)](../connector-odata.md)
+> * [2-es verzió (aktuális verzió)](../connector-odata.md)
 
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [OData-összekötő a v2-ben](../connector-odata.md).

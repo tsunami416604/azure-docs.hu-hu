@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 601a3f273a8da9100d24dfdbd13bd598b0e48884
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051563"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Az Azure Network Watcher-példány létrehozása
@@ -111,7 +111,7 @@ Most, hogy a Network Watcher-példány, elérhető szolgáltatások megismerése
 * [Csomagrögzítés](network-watcher-packet-capture-overview.md)
 * [IP-forgalom ellenőrzése](network-watcher-ip-flow-verify-overview.md)
 * [Következő ugrás](network-watcher-next-hop-overview.md)
-* [Biztonságicsoport-nézet](network-watcher-security-group-view-overview.md)
+* [Biztonsági csoport nézet](network-watcher-security-group-view-overview.md)
 * [NSG-t csoportforgalom naplózása](network-watcher-nsg-flow-logging-overview.md)
 * [Virtuális hálózati átjáró hibáinak elhárítása](network-watcher-troubleshoot-overview.md)
 

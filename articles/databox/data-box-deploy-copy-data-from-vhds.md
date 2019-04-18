@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: alkohli
 ms.openlocfilehash: ec2013a793f766221a66912d6de9d8da8b8106dd
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282559"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Oktatóanyag: Ezen adatok mezőbe az adatok importálása a felügyelt lemezek az Azure-ban
@@ -142,8 +142,8 @@ Mielőtt elkezdené az adatok másolását, tekintse át az alábbiakat:
 
 Attól függően, hogy csatlakozik az SMB vagy NFS-n keresztül használhatja:
 
-- [Adatok másolása SMB-n keresztül](data-box-deploy-copy-data.md#copy-data-to-data-box)
-- [Adatok másolása NFS-en keresztül](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
+- [Adatok másolása az SMB-n keresztül](data-box-deploy-copy-data.md#copy-data-to-data-box)
+- [Adatok másolása az NFS-n keresztül](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
 
 Várjon, amíg befejeződik a másolási feladatokat. Győződjön meg arról, hogy a másolási feladatokat végzett hiba nélkül, mielőtt továbblép a következő lépéssel.
 
@@ -179,5 +179,5 @@ Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a köv
 Folytassa a következő oktatóanyaggal, megtudhatja, hogyan tehetnek a Data Box elküldje a Microsoftnak.
 
 > [!div class="nextstepaction"]
-> [A Microsoft Azure Data Box szállításra](./data-box-deploy-picked-up.md)
+> [Azure Data Box elküldése a Microsoftnak](./data-box-deploy-picked-up.md)
 

@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 4fea787e7fe20d60de91761811e1b69bebf3a010
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896349"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>A nagyszámítógépes tár áthelyezése az Azure-bA
@@ -104,7 +104,7 @@ A BLOB storage tárolási legnagyobb mennyisége biztosít az Azure-ban. Azure s
 
 ## <a name="next-steps"></a>További lépések
 
-- [Nagyszámítógép migrálása](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
+- [Nagyszámítógépek migrálása](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [A nagyszámítógépes újratárolása az Azure Virtual machines szolgáltatásban](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
 - [A nagyszámítógépes számítási áthelyezése az Azure-bA](mainframe-compute-Azure.md)
 - [Annak eldöntése, mikor érdemes használni az Azure-Blobok, az Azure Files és az Azure-lemezek](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)

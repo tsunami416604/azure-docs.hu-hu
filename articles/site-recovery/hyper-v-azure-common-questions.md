@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: raynew
 ms.openlocfilehash: ce4a6ab24aaa5ed693f8d64782fb025a2ca9ce30
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357993"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Gyakori kérdések – Hyper-V – Azure-beli vészhelyreállításához
@@ -33,8 +33,8 @@ A replikáció során az adatok az Azure storage replikációja, és nem kell fi
 
 A szükséges Hyper-V gazdakiszolgálóra vonatkozó feltételek a telepítési forgatókönyvtől függenek. A Hyper-V-vel kapcsolatos előfeltételekről az alábbi cikkekben olvashat:
 
-* [Hyper-V virtuális gépek replikálása Azure-ba (VMM nélkül)](site-recovery-hyper-v-site-to-azure.md)
-* [Hyper-V virtuális gépek replikálása Azure-ba (VMM-mel)](site-recovery-vmm-to-azure.md)
+* [Azure-ba történő Hyper-V virtuális gépek (VMM nélkül)](site-recovery-hyper-v-site-to-azure.md)
+* [Azure-ba történő Hyper-V virtuális gépek (VMM-mel)](site-recovery-vmm-to-azure.md)
 * [Hyper-V virtuális gépek replikálása másodlagos adatközpontba](site-recovery-vmm-to-vmm.md)
 * Ha replikál egy másodlagos adatközpontba, olvassa el [támogatott vendég operációs rendszerként a Hyper-V virtuális gépek](https://technet.microsoft.com/library/mt126277.aspx).
 * Ha az Azure-bA replikál, a Site Recovery támogatja az összes a vendég operációs rendszerek, amelyek [Azure által támogatott](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).
@@ -206,7 +206,7 @@ A helyszíni Hyper-V virtuális gépek tervezett vagy nem tervezett feladatátv�
    
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Hogyan érhetem el az Azure virtuális gépek a feladatátvételt követően
-A feladatátvételt követően elérheti az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, egy helyek közötti VPN-kapcsolaton keresztül, vagy Azure expressroute-on keresztül. Készítse elő a számos dolgot, hogy csatlakozni kell. [Részletek](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
+A feladatátvételt követően elérheti az Azure virtuális gépeket biztonságos internetkapcsolaton keresztül, egy helyek közötti VPN-kapcsolaton keresztül, vagy Azure expressroute-on keresztül. Készítse elő a számos dolgot, hogy csatlakozni kell. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 
 ### <a name="is-failed-over-data-resilient"></a>Nem sikerült rugalmas adatokon?
 Az Azure-t hibatűrőnek terveztük. A Site Recovery a feladatátvétel egy másodlagos Azure adatközpontba, az Azure SLA kategóriában. Feladatátvétel esetén biztosítjuk, hogy a metaadatokat, és a tárolók maradjanak ugyanabban a földrajzi régióban, a tároló számára is választott.

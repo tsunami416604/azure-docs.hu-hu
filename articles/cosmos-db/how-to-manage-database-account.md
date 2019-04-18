@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 04/08/2019
 ms.author: rimman
 ms.openlocfilehash: b2b5e58ca480aa3abaa0766319977b8d1160ebeb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283001"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Egy Azure Cosmos-fiók kezelése
@@ -289,5 +289,5 @@ Olvassa el a következő cikkeket:
 * [Az alkalmazások több főkiszolgálós konfigurálása](how-to-multi-master.md)
 * [Ügynökönkénti ügyfelek konfigurálása](how-to-manage-database-account.md#configure-clients-for-multi-homing)
 * [Régiók hozzáadása vagy eltávolítása az Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Egyéni ütközésfeloldási szabályzat létrehozása](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
+* [Hozzon létre egy egyéni ütközésfeloldási házirend](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
 

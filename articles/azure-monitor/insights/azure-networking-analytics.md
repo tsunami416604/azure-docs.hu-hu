@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
 ms.openlocfilehash: 0a5d886558e72ef24b03a49750ed75cf7130bf08
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006386"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Az Azure Monitor megoldások monitorozása az Azure-hálózatok
@@ -31,7 +31,7 @@ Az Azure Monitor a hálózatok figyelése a következő megoldásokat kínál:
     * Az Azure Application Gateway-naplók
     * Az Azure Application Gateway-metrikák
 * Megoldások monitorozása és naplózása a felhő-hálózatban hálózati
-    * [Forgalmi elemzések](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+    * [A TRAFFIC Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
     * Azure Network Security Group Analytics
 
 ## <a name="network-performance-monitor-npm"></a>Network Performance Monitor (NPM)

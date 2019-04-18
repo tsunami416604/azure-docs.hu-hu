@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: e80322cda671e2145cf3e65aa1457f1fa1827737
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050628"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Mintaadatok betöltése az Azure Data Explorer
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan az Adatkezelőbe az Azure database-be (betöltés) m
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Egy teszt fürt és adatbázis](create-cluster-database-portal.md)
+[Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
 
 ## <a name="ingest-data"></a>Adatok betöltése
 
@@ -57,7 +57,7 @@ A **StormEvents** mintaadatkészlet a [környezeti adatok nemzeti központjaibó
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
 
 > [!div class="nextstepaction"]
 > [Lekérdezések írása](write-queries.md)

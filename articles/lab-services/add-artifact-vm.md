@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 19a7d6052091f8889a88c61793186b7bf7d9d869
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59047024"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>Az összetevő hozzáadása egy virtuális géphez
@@ -168,5 +168,5 @@ Az összetevők a következő cikkekben talál:
 
 - [Adja meg a kötelező összetevők a tesztkörnyezethez](devtest-lab-mandatory-artifacts.md)
 - [Egyéni összetevők létrehozása](devtest-lab-artifact-author.md)
-- [Összetevő-adattár hozzáadása egy laborhoz](devtest-lab-artifact-author.md)
+- [Az összetevőtárban hozzáadása egy laborhoz](devtest-lab-artifact-author.md)
 - [Az összetevők hibáinak diagnosztizálása](devtest-lab-troubleshoot-artifact-failure.md)

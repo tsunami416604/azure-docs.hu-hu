@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: magoedte
 ms.openlocfilehash: 4476bb0a5a343fd43ce5ed70cf0e493d0ccae0e9
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59505634"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Összegyűjtheti és elemezheti a Log Analytics-munkaterületet az Azure monitorban az Azure-Tevékenységnaplók
@@ -54,7 +54,7 @@ Ellentétben a legtöbb Azure Monitor megoldások adatok nem lesznek gyűjtve te
 | --- | --- | --- |
 | [Windows-ügynökök](agent-windows.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
 | [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
-| [System Center Operations Manage felügyeleti csoport](om-agents.md) | Nem | A megoldás egy Operations Manager felügyeleti csoportnak jelentő ügynököktől származó nem gyűjt adatokat. |
+| [System Center Operations Manager felügyeleti csoport](om-agents.md) | Nem | A megoldás egy Operations Manager felügyeleti csoportnak jelentő ügynököktől származó nem gyűjt adatokat. |
 | [Azure Storage-fiók](collect-azure-metrics-logs.md) | Nem | A megoldás nem gyűjt adatokat az Azure storage-ból. |
 
 ## <a name="prerequisites"></a>Előfeltételek

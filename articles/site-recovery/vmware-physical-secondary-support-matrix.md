@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: raynew
 ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360158"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre támogatási mátrix
@@ -55,7 +55,7 @@ A következő tároló csak Linux rendszerű gépek replikálhatók:
 
 ## <a name="network-configuration---hostguest-vm"></a>Hálózati konfiguráció - gazdagép vagy Vendég virtuális gép
 
-**Konfiguráció** | **Támogatott**  
+**Konfigurálás** | **Támogatott**  
 --- | --- 
 Gazdagép - hálózati adapterek összevonása | Igen 
 Gazdagép - VLAN | Igen 
@@ -81,7 +81,7 @@ Több elérési út (MPIO) | Igen
 
 ### <a name="guest-or-physical-server-storage"></a>Vendég- és fizikai kiszolgáló
 
-**Konfiguráció** | **Támogatott** 
+**Konfigurálás** | **Támogatott** 
 --- | --- 
 VMDK | Igen 
 VHD/VHDX | – 
@@ -101,7 +101,7 @@ Több elérési út (MPIO) | –
 
 ## <a name="vaults"></a>Tárolók
 
-**Műveletek** | **Támogatott** 
+**Művelet** | **Támogatott** 
 --- | --- 
 Helyezze át a tárolók több erőforráscsoportban (belül vagy előfizetések között) | Nem 
 Át a tárterületet, hálózati, Azure-beli virtuális gépek több erőforráscsoportban (belül vagy előfizetések között) | Nem 
@@ -110,7 +110,7 @@ Helyezze át a tárolók több erőforráscsoportban (belül vagy előfizetések
 
 A mobilitási szolgáltatás koordinálja a helyszíni VMware-kiszolgálók vagy fizikai kiszolgálók és a másodlagos hely közötti replikációt. Replikációs beállításakor győződjön meg arról, hogy a mobilitási szolgáltatást, és más összetevők a legújabb verzióval rendelkezik.
 
-| **Frissítés** | **Részletek** |
+| **Update** | **Részletek** |
 | --- | --- |
 |Scout frissítések | Scout frissítések összesítettek. <br/><br/> [Ismerje meg, és töltse le](vmware-physical-secondary-disaster-recovery.md#updates) Scout legújabb frissítései |
 |Összetevő-frissítései | Scout frissítések összetevők, például a RX server, konfigurációs kiszolgáló, folyamat és a fő célkiszolgálókat, vContinuum-kiszolgáló, és védeni kívánt adatforrás-kiszolgálók frissítést is tartalmaznak.<br/><br/> [További információk](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|

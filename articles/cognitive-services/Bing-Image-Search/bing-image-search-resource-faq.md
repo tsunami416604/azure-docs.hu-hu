@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 20b8dbcae36555baf3913ab160575a631e204dd9
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049423"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>A Bing Image Search API kapcsolatos gyakori kérdések (GYIK)
@@ -65,4 +65,4 @@ Egy hiányzó szolgáltatás vagy funkció a kérdése van? Kérő vagy szavaz, 
 
 ## <a name="see-also"></a>Lásd még
 
- [A stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)
+ [A stack Overflow: A cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

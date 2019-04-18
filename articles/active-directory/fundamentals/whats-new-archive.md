@@ -14,10 +14,10 @@ ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f6fe7b2cefdd29f0497bbc18e969a77ac295ba42
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051954"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Újdonságok archívuma? az Azure Active Directoryban
@@ -727,7 +727,7 @@ Egyszeri bejelentkezési SAML-alapú alkalmazások konfigurálása, ha már tudj
 További információkért lásd:
 
 - [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
-- [Az alkalmazásokba való SAML-alapú egyszeri bejelentkezés hibaelhárítása az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+- [SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazások hibakeresése](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 
 ---
  
@@ -884,7 +884,7 @@ Egyes felhasználók nem kapják meg a vállalati alkalmazásokhoz SAML-alapú e
 További információkért lásd:
 
 - [Tanúsítványok kezelése az összevont egyszeri bejelentkezés az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
-- [Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
+- [Naplózási tevékenységre vonatkozó jelentések az Azure Active Directory portálon](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
  
 ---
  
@@ -1215,7 +1215,7 @@ Az Azure AD Connect az az előnyben részesített eszköz szinkronizálhatja az 
 
 Ebben a kiadásban a következő frissítéseket és a változások rendelkezik:
 
-**Hibák kijavítva:**
+**Rögzített kapcsolatos problémák**
 
 - Javítsa ki a időzítési háttérfeladatok laphoz Partíciószűrés a következő lapra történő váltáskor.
 
@@ -1568,7 +1568,7 @@ További információkért lásd: [feltételes hozzáférés az Azure ad-ben](ht
 
 A következő alkalmazások olyan listájában [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
 
-- [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
+- [A Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
 További információkért lásd:
@@ -1665,7 +1665,7 @@ Most már belefoglalhat (vagy kizárása) MacOS rendszerű eszköz platform felt
 
 További információkért lásd:
 
-- [A macOS-eszközök eszközmegfelelőségi szabályzatának létrehozása Intune-nal](https://aka.ms/macoscompliancepolicy)
+- [Megfelelőségi szabályzat létrehozása MacOS-eszközökhöz az Intune-nal](https://aka.ms/macoscompliancepolicy)
 - [Az Azure AD feltételes hozzáférés](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
  
 ---

@@ -9,10 +9,10 @@ ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492311"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
@@ -108,7 +108,7 @@ Most hozza létre a helyettesítő és a számítási feladatokat futtató virtu
    |Virtuális gép neve     |**SRV-Jump**|
    |Régió     |Ugyanaz, mint a korábbi|
    |Rendszergazdai felhasználónév     |**azureuser**|
-   |Jelszó     |**Azure123456!**|
+   |Jelszó     |A jelszó **Azure123456!**|
 
 4. Alatt **bejövőport-szabályok**, a **nyilvános bejövő portok**válassza **lehetővé teszi a kiválasztott portok**.
 5. A **bejövő portok kiválasztása**válassza **RDP (3389-es)**.
@@ -125,9 +125,9 @@ Az alábbi táblázat az információk segítségével állítsa be egy másik v
 
 |Beállítás  |Érték  |
 |---------|---------|
-|Alhálózat|**Workload-SN**|
-|Nyilvános IP-cím|**None**|
-|Nyilvános bejövő portok|**None**|
+|Alhálózat|**Munkaterhelés-SN**|
+|Nyilvános IP-cím|**Nincsenek**|
+|Nyilvános bejövő portok|**Nincsenek**|
 
 ## <a name="deploy-the-firewall"></a>A tűzfal üzembe helyezése
 

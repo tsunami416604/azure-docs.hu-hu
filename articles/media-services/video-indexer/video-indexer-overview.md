@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: juliako
 ms.openlocfilehash: a182b9ec0fb945b4c2ffddd7a977df8ad9a8d250
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895968"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
@@ -80,5 +80,5 @@ Az alábbiakban bemutatunk néhány olyan forgatókönyvet, amelyek során a Vid
 Készen áll a Video Indexer használatának megkezdésére. További információkért tekintse át a következő cikkeket:
 
 - [A Video Indexer webhely használatának első lépései](video-indexer-get-started.md)
-- [Video Indexer – REST API-val feldolgozása tartalom](video-indexer-use-apis.md)
-- [Vizuális widgetek beágyazása az alkalmazásba](video-indexer-embed-widgets.md)
+- [Tartalomfeldolgozás a Video Indexer REST API-val](video-indexer-use-apis.md)
+- [Vizuális widgetek beágyazása egy saját alkalmazásba](video-indexer-embed-widgets.md)

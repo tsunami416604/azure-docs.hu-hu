@@ -16,10 +16,10 @@ ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6ecbac8af86c3c2c76b7710eb61f71481b86291b
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009869"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Felügyelt identitások az Azure-erőforrások konfigurálása az Azure virtuálisgép-méretezési csoport, egy sablon használatával
@@ -123,11 +123,11 @@ Ha egy virtuális gép méretezési csoportot, amely egy rendszer által hozzár
 
 2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachineScaleSets` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális Gépet, amely csak a felügyelt identitás alapértelmezett rendelkezik, letilthatja az identitás típusúra `None`.
 
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
+   **API-verzió a 2018-06-01 Microsoft.Compute/virtualMachineScaleSets**
 
    Ha az API-verzió `2018-06-01` és a virtuális gép rendelkezik a rendszer mind a felügyelt identitásokból felhasználó által hozzárendelt, távolítsa el `SystemAssigned` identitástípus és tarthatja `UserAssigned` és a userAssignedIdentities szótár értékeket.
 
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
+   **API-verzió a 2018-06-01 Microsoft.Compute/virtualMachineScaleSets**
 
    Ha az API-verzió `2017-12-01` és rendszer mind a felügyelt identitásokból felhasználó által hozzárendelt, távolítsa el a virtuálisgép-méretezési `SystemAssigned` identitástípus és tarthatja `UserAssigned` az a `identityIds` a felhasználó által hozzárendelt felügyelt tömbje identitások. 
    
@@ -158,7 +158,7 @@ Ebben a szakaszban egy virtuálisgép-méretezési csoport Azure Resource Manage
 
 1. Alatt a `resources` elemben adja hozzá a következő bejegyzés egy felhasználó által hozzárendelt felügyelt identitás hozzárendelése a virtuális gép méretezési csoportját.  Ne felejtse el `<USERASSIGNEDIDENTITY>` a felhasználó által hozzárendelt nevű felügyelt identitás hozott létre.
    
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
+   **API-verzió a 2018-06-01 Microsoft.Compute/virtualMachineScaleSets**
 
    Az API-verzió esetén `2018-06-01`, a felügyelt felhasználó által hozzárendelt identitások vannak tárolva a `userAssignedIdentities` szótár formátum és a `<USERASSIGNEDIDENTITYNAME>` egy változóban meghatározott értéket kell tárolni a `variables` szakasz a sablon.
 
@@ -177,7 +177,7 @@ Ebben a szakaszban egy virtuálisgép-méretezési csoport Azure Resource Manage
    }
    ```   
 
-   **Microsoft.Compute/virtualMachineScaleSets API version 2017-12-01**
+   **Microsoft.Compute/virtualMachineScaleSets API 2017-12-01-es verzió**
     
    Ha a `apiVersion` van `2017-12-01` vagy a korábban, a felügyelt felhasználó által hozzárendelt identitások vannak tárolva a `identityIds` tömböt, és a `<USERASSIGNEDIDENTITYNAME>` értékét a sablon a változók szakaszban definiált egy változót kell tárolni.
 
@@ -200,7 +200,7 @@ Ebben a szakaszban egy virtuálisgép-méretezési csoport Azure Resource Manage
 
 3. Amikor elkészült, a sablon az alábbihoz hasonlóan kell kinéznie:
    
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**   
+   **API-verzió a 2018-06-01 Microsoft.Compute/virtualMachineScaleSets**   
 
    ```json
    "resources": [
@@ -306,13 +306,13 @@ Ha egy virtuális gép méretezési csoportot, amely a felhasználó által hozz
    }
    ```
    
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
+   **API-verzió a 2018-06-01 Microsoft.Compute/virtualMachineScaleSets**
     
    Egy virtuálisgép-méretezési csoportot egy egyetlen felhasználó által hozzárendelt felügyelt identitás eltávolításához távolítsa el a `userAssignedIdentities` szótárban.
 
    Ha egy rendszer által hozzárendelt identitással, tárolja a a a `type` értékét a `identity` értéket.
 
-   **Microsoft.Compute/virtualMachineScaleSets API version 2017-12-01**
+   **Microsoft.Compute/virtualMachineScaleSets API 2017-12-01-es verzió**
 
    Egy virtuálisgép-méretezési csoportot egy egyetlen felhasználó által hozzárendelt felügyelt identitás eltávolításához távolítsa el a `identityIds` tömb.
 

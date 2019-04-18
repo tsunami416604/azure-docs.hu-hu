@@ -16,12 +16,12 @@ ms.date: 12/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd3aac6a7fb0904089f135c9af7b136eda73701f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2746775c72976159cdcdb6bdd86e39a5dbe3a4fc
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835469"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683667"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -49,6 +49,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 
 ### <a name="azure-ad-connect-server"></a>Az Azure AD Connect-kiszolgáló
 * Az Azure AD Connect nem telepíthető Small Business Server vagy Windows Server Essentials 2019 előtt (a Windows Server Essentials 2019 támogatott). A kiszolgáló Windows Server standard vagy jobb kell használnia.
+* Az Azure AD Connect telepítése tartományvezérlőn nem ajánlott, mert ajánlott biztonsági eljárások és megakadályozhatja, hogy az Azure AD Connect telepítése megfelelően szigorúbb beállításokat
 * Az Azure AD Connect-kiszolgáló egy teljes grafikus felhasználói Felülettel telepítve kell rendelkeznie. Ez **nem támogatott** telepítése server core-on.
 * Az Azure AD Connect telepíteni kell a Windows Server 2008 R2 vagy újabb. Ez a kiszolgáló tartományhoz csatlakoztatott és a tartományvezérlő vagy tagkiszolgáló kell lennie.
 * Ha az Azure AD Connect telepíti a Windows Server 2008 R2 rendszeren, majd győződjön meg arról, a alkalmazni a legújabb gyorsjavítások a Windows Update webhelyről. A telepítés nem sikerül veszéllyel kiszolgálóról indítsa el.
@@ -60,6 +61,19 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 * Ha az Active Directory összevonási szolgáltatások üzembe helyezéséhez, szüksége [SSL-tanúsítványok](#ssl-certificate-requirements).
 * Ha az Active Directory összevonási szolgáltatások lesz üzembe helyezve, akkor konfigurálnia kell [névfeloldás](#name-resolution-for-federation-servers).
 * Ha a globális rendszergazdák rendelkeznek MFA engedélyezve van, majd az URL-cím **https://secure.aadcdn.microsoftonline-p.com** kell lennie a megbízható helyek listájához. A hely hozzáadása a megbízható helyek listájához, ha az MFA-hitelesítést kér, és nem vett előtt kéri. Az Internet Explorer segítségével adja hozzá a megbízható helyekhez.
+* A Microsoft azt javasolja, csökkentheti a biztonsági támadási felületet a kritikus összetevője az informatikai környezet az Azure AD Connect kiszolgáló korlátozására.  Az alábbi javaslatok csökkenti a biztonsági kockázatokat, a szervezet számára.
+
+* Üzembe helyezése az Azure AD Connect egy tartományhoz csatlakoztatott kiszolgálón, és felügyeleti hozzáférés korlátozása a tartományi rendszergazdák, vagy egyéb szigorúan ellenőrzött biztonsági csoportot.
+
+További tudnivalókért lásd: 
+
+* [Biztonságossá tétele a Rendszergazdák csoport](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+
+* [Beépített rendszergazdai fiókok védelme](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+
+* [Támadási felület csökkentésével sustainment és biztonsági javítása](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+
+* [Az Active Directory támadási felületének csökkentése](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Az Azure AD Connect által használt SQL Server
 * Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Alapértelmezés szerint telepítve van egy SQL Server 2012 Express LocalDB (egy világos verziója az SQL Server Express). Az SQL Server Express rendelkezik, amelyek segítségével kezelheti a körülbelül 100 000 objektumra 10 GB-os méretkorlátot. Ha szeretne egy nagyobb adatmennyiségek directory-objektumok kezelése, át kell irányítania a telepítési varázsló egy másik telepített SQL Server.
@@ -146,7 +160,7 @@ Az Azure AD Connect a Microsoft PowerShell és a .NET-keretrendszer 4.5.1-es fü
 4. Ha is engedélyezni szeretné a TLS 1.2 a szinkronizálási motor kiszolgáló és a egy távoli SQL Server között, akkor ellenőrizze, hogy rendelkezik a szükséges verziók telepítve [a TLS 1.2 támogatása a Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 
 ## <a name="prerequisites-for-federation-installation-and-configuration"></a>Összevonási telepítésének és konfigurálásának előfeltételei
-### <a name="windows-remote-management"></a>Windows-távfelügyelet
+### <a name="windows-remote-management"></a>Rendszerfelügyeleti webszolgáltatások
 Active Directory összevonási szolgáltatások vagy a webalkalmazás-Proxy üzembe helyezése az Azure AD Connect használatával, ha ezek a követelmények ellenőrzése:
 
 * Ha a célkiszolgálót a tartományhoz, majd győződjön meg arról, hogy engedélyezve van-e a Windows távoli kezelése

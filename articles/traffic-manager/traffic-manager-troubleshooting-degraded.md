@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
 ms.openlocfilehash: f01dfe78d5d5e322258b0ee98cec314f9afe33c0
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050645"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Csökkentett hibaelhárítása az Azure Traffic Manager
@@ -42,7 +42,7 @@ Ha a Traffic Manager állapotát jeleníti meg egy **inaktív** állapot, akkor 
 A mintavételi hiba elhárításához szüksége van egy eszköz, amely a HTTP-állapotkód: visszatérési bemutatja a mintavétel URL-címről. Nincsenek számos eszközt biztosít, amelyek bemutatják a nyers HTTP-válasz.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [A curl](https://curl.haxx.se/)
+* [curl](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
 Emellett használhatja a hálózat lapot az F12 hibakeresés eszközök az Internet Explorer HTTP-válaszok megtekintéséhez.
@@ -84,11 +84,11 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Mi a Traffic Manager](traffic-manager-overview.md)
 
-[Cloud Services](https://go.microsoft.com/fwlink/?LinkId=314074)
+[Felhőszolgáltatások](https://go.microsoft.com/fwlink/?LinkId=314074)
 
 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
 
-[Operations on Traffic Manager (A Traffic Managerrel végezhető műveletek) (REST API-referencia)](https://go.microsoft.com/fwlink/?LinkId=313584)
+[A Traffic Manager műveletei (REST API-referencia)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
 [Az Azure Traffic Manager parancsmagjai][1]
 

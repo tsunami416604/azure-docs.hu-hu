@@ -16,10 +16,10 @@ ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894918"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Az Azure App Service-alkalmazások diagnosztikai célú naplózásának engedélyezése
@@ -58,10 +58,10 @@ Amikor engedélyezi a **az application diagnostics**, azt is választhatja a **s
 | Szint| Belefoglalt naplókategóriák |
 |-|-|
 |**Letiltva** | None |
-|**Hiba** | Kritikus hiba |
+|**Hiba történt** | Kritikus hiba |
 |**Figyelmeztetés** | Figyelmeztetés, kritikus hiba|
 |**Információ** | Info, figyelmeztetés, kritikus hiba|
-|**Részletes** | Nyomkövetési, hibakeresési, adatok, figyelmeztetés, hiba, kritikus (az összes kategória) |
+|**részletes** | Nyomkövetési, hibakeresési, adatok, figyelmeztetés, hiba, kritikus (az összes kategória) |
 |-|-|
 
 A **alkalmazásnaplózás**, bekapcsolhatja a hibakeresési célokra az ideiglenes fájl helyrendszer-beállítást. 12 óra múlva automatikusan kikapcsolja ezt a beállítást. A blob beállítást válassza ki a naplók írhat egy blob-tárolóba is bekapcsolhatja.
@@ -126,11 +126,11 @@ Ez a parancs menti a naplókat az alkalmazás neve a "appname" nevű **webapp_lo
 A Visual Studio Application Insights a szűréshez és a naplók keresése, és a kérésekkel és más eseményekkel való korreláláshoz a naplók eszközöket biztosít.
 
 1. Az Application Insights SDK hozzáadása a projekthez a Visual Studióban.
-   * A Megoldáskezelőben kattintson jobb gombbal a projektre, és válassza ki az Application Insights hozzáadása. Az interface végigvezeti lépéseket, amelyek tartalmazzák az Application Insights-erőforrás létrehozása. [Részletek](../azure-monitor/app/asp-net.md)
+   * A Megoldáskezelőben kattintson jobb gombbal a projektre, és válassza ki az Application Insights hozzáadása. Az interface végigvezeti lépéseket, amelyek tartalmazzák az Application Insights-erőforrás létrehozása. [További információ](../azure-monitor/app/asp-net.md)
 2. A nyomkövetés-figyelő csomag hozzáadása a projekthez.
    * Kattintson jobb gombbal a projektre, és válassza a NuGet-csomagok kezelése. Válassza ki `Microsoft.ApplicationInsights.TraceListener` [további](../azure-monitor/app/asp-net-trace-logs.md)
 3. Töltse fel a projektet, majd futtassa készítése a naplózási adatokat.
-4. Az a [az Azure portal](https://portal.azure.com/), keresse meg az új Application Insights-erőforrást, és nyissa meg a **keresési**. A naplózási adatokat, és a kérést, használatának és egyéb telemetriát kell megjelennie. Valamennyi telemetria is igénybe vehet néhány percet késik: a frissítés parancsra. [Részletek](../azure-monitor/app/diagnostic-search.md)
+4. Az a [az Azure portal](https://portal.azure.com/), keresse meg az új Application Insights-erőforrást, és nyissa meg a **keresési**. A naplózási adatokat, és a kérést, használatának és egyéb telemetriát kell megjelennie. Valamennyi telemetria is igénybe vehet néhány percet késik: a frissítés parancsra. [További információ](../azure-monitor/app/diagnostic-search.md)
 
 [További tudnivalók a teljesítmény nyomon követése az Application insights segítségével](../azure-monitor/app/azure-web-apps.md)
 

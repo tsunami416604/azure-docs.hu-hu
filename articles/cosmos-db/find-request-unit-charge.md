@@ -4,20 +4,20 @@ description: Ismerje meg, hogyan keresse meg a kérelem egységek használata ut
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: thweiss
-ms.openlocfilehash: e3175ee136057c695ceef3cd1976b447a529c803
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 833f815f0c84584f084e4d4637c0318f7c2daec0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59053166"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683834"
 ---
 # <a name="find-the-request-unit-ru-charge-in-azure-cosmos-db"></a>Keresés a kérelemegység (RU) ingyenesen az Azure Cosmos DB
 
 Ez a cikk bemutatja a különböző módokon található a [kérelemegység](request-units.md) minden olyan művelet egy Azure Cosmos-tárolóhoz elvégezni. A használat mérésére, vagy az Azure portal használatával, vagy vizsgálatával szerezheti be a választ küldött vissza az Azure Cosmos DB az SDK-k egyikével jelenleg lehetőség.
 
-## <a name="core-api"></a>Core API
+## <a name="sql-core-api"></a>SQL (Core) API
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
@@ -25,7 +25,7 @@ Az Azure portal jelenleg lehetővé teszi a kérelem díja keresése egy SQL-lek
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. [Hozzon létre egy új Azure Cosmos DB-fiókot](create-sql-api-dotnet.md#create-account) és hírcsatorna, adatok, vagy kiválaszthat egy meglévő fiókot, amely már tartalmaz adatokat.
+1. [Hozzon létre egy új Azure Cosmos-fiókot](create-sql-api-dotnet.md#create-account) és hírcsatorna, adatok, vagy válasszon egy meglévő Azure Cosmos-fiókot, amely már tartalmaz adatokat.
 
 1. Nyissa meg a **adatkezelő** ablaktáblán, és válassza ki a tárolót, hogy a használni kívánt.
 
@@ -147,7 +147,7 @@ request_charge = client.last_response_headers['x-ms-request-charge']
 
 ## <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
 
-Kérelem egység díjat tesz elérhetővé egyéni [adatbázis-parancs](https://docs.mongodb.com/manual/reference/command/) nevű `getLastRequestStatistics`. Ez a parancs visszaadja a legutóbbi művelet végrehajtása a nevére, a kérelem díj és időtartama tartalmazó dokumentumot.
+Kérelem egység díjat tesz elérhetővé egyéni [adatbázis-parancs](https://docs.mongodb.com/manual/reference/command/) nevű `getLastRequestStatistics.` Ez a parancs visszaadja a legutóbbi művelet végrehajtása a nevére, a kérelem díj és időtartama tartalmazó dokumentumot.
 
 ### <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
@@ -155,7 +155,7 @@ Az Azure portal jelenleg lehetővé teszi a kérelem díja keresése csak egy le
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. [Hozzon létre egy új Azure Cosmos DB-fiókot](create-mongodb-dotnet.md#create-a-database-account) és hírcsatorna, adatok, vagy kiválaszthat egy meglévő fiókot, amely már tartalmaz adatokat.
+1. [Hozzon létre egy új Azure Cosmos-fiókot](create-mongodb-dotnet.md#create-a-database-account) és hírcsatorna, adatok, vagy kiválaszthat egy meglévő fiókot, amely már tartalmaz adatokat.
 
 1. Nyissa meg a **adatkezelő** ablaktáblán, és válassza ki a gyűjteményt, amely a használni kívánt.
 
@@ -195,7 +195,7 @@ Double requestCharge = stats.getDouble("RequestCharge");
 
 ### <a name="use-the-mongodb-nodejs-driver"></a>A MongoDB Node.js illesztőprogram
 
-Használatakor a [hivatalos MongoDB Node.js illesztőprogram](https://mongodb.github.io/node-mongodb-native/) (lásd: [ebben a rövid útmutatóban](create-mongodb-nodejs.md) a használattal kapcsolatos), parancsok meghívásával hajtható a `command` metódust egy `Db` objektum.
+Használatakor a [hivatalos MongoDB Node.js illesztőprogram](https://mongodb.github.io/node-mongodb-native/) (lásd: [ebben a rövid útmutatóban](create-mongodb-nodejs.md) a használattal kapcsolatos), parancsok meghívásával hajtható a `command` metódust egy `db` objektum.
 
 ```javascript
 db.command({ getLastRequestStatistics: 1 }, function(err, result) {
@@ -267,5 +267,9 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 
 További információ a kérelem-egységek felhasználását optimalizálása a következő cikkekben talál:
 
+* [Kérelemegységek és átviteli sebesség az Azure Cosmos DB-ben](request-units.md)
 * [Az Azure Cosmos DB kiosztott átviteli sebesség költségek optimalizálása](optimize-cost-throughput.md)
 * [Az Azure Cosmos DB lekérdezési költségek optimalizálása](optimize-cost-queries.md)
+* [Globális skálázása a kiosztott átviteli sebesség](scaling-throughput.md)
+* [A tárolók és adatbázisok kiépítése átviteli](set-throughput.md)
+* [Átviteli sebesség kiosztása tárolókhoz](how-to-provision-container-throughput.md)

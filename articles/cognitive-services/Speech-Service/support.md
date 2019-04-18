@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
 ms.openlocfilehash: bf0916f197ff5bf1a9531fde98fe8cefc8d7727f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358068"
 ---
 # <a name="support-and-help-options"></a>Támogatás és Súgó
@@ -82,7 +82,7 @@ Ha nem talál választ a problémára felvétellel, küldje el a Stack Overflow 
 A minták gyakran feladja a nyílt forráskódú. Kérdések és problémák, hozzon létre egy *probléma* a megfelelő GitHub-adattárában. A lekéréses kérelem túl is nyújt. Az alábbi lista tartalmazza a minta tárház mutató hivatkozásokat:
 
 * [Beszéd SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Eszközoldali SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
 Hozzon létre egy hibajelentéseit funkcióra vonatkozó kérést, vagy kérje meg egy általános kérdés és megoszthatók az ajánlott eljárások. Hibajelentéseire kövesse a megadott sablon:
 
@@ -121,4 +121,4 @@ Az SDK melyik verzióját használja.
 
 Ossza meg ötleteit, hogy a Cognitive Services és a hozzájuk tartozó API-k egyre jobban működnek az alkalmazások fejlesztése. Gyakori kérdésekre adott válaszok a növekvő Tudásbázisunkhoz használatával:
 
-[UserVoice](https://cognitive.uservoice.com/)
+[UserVoice-on](https://cognitive.uservoice.com/)

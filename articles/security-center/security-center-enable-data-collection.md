@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/02/2019
 ms.author: monhaber
 ms.openlocfilehash: 63ee603f83d0c2de3bc89b8792ada4a61edb7e00
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006736"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
@@ -77,7 +77,7 @@ A Security center automatikusan létrehozhat egy alapértelmezett munkaterülete
 A Security Center által létrehozott munkaterület kiválasztása:
 
 1. A **alapértelmezett munkaterület-konfiguráció**, válassza ki a Security center által létrehozott munkaterület(ek) használata.
-   ![Tarifacsomag kiválasztása][10] 
+   ![Válasszon tarifacsomagot][10] 
 
 1. Kattintson a **Save** (Mentés) gombra.<br>
     A Security Center egy új erőforrás és egy alapértelmezett munkaterületet hoz létre, hogy földrajzi hely, és csatlakoztatja az ügynököt a munkaterülethez. A munkaterület és erőforrás-csoport elnevezési van:<br>
@@ -138,7 +138,7 @@ Egy meglévő Log Analytics-munkaterület kiválasztása:
      
     b.  Válassza ki a kívánt munkaterületet, amelyben szeretné az ügynököt csatlakoztatja kattintva **beállításainak szerkesztése** a beállítások oszlop a listában a kívánt előfizetés.
         ![Válassza ki a munkaterület][8] c. Állítsa a tarifacsomagot.
-        ![Tarifacsomag kiválasztása][9] 
+        ![Válasszon tarifacsomagot][9] 
    
    >[!NOTE]
    >Ha már rendelkezik a munkaterület egy **biztonsági** vagy **SecurityCenterFree** a megoldás engedélyezve van, a díjszabás a rendszer automatikusan beállítja. 
@@ -254,9 +254,9 @@ A Microsoft Monitoring Agent, manuálisan is telepítheti, így a Security Cente
    a.  A Security Center főmenüjében válassza **biztonsági házirend**.
      
    b.  Válassza ki a munkaterületet, ahol csatlakoztassa az ügynököt kíván. Ellenőrizze, hogy a munkaterület ugyanabban az előfizetésben, használhatja a Security Centerben, és hogy van-e olvasási/írási engedéllyel a munkaterületen.
-       ![Munkaterület kiválasztása][8]
+       ![Válasszon munkaterületet][8]
 3. Állítsa a tarifacsomagot.
-   ![Tarifacsomag kiválasztása][9] 
+   ![Válasszon tarifacsomagot][9] 
    >[!NOTE]
    >Ha már rendelkezik a munkaterület egy **biztonsági** vagy **SecurityCenterFree** a megoldás engedélyezve van, a díjszabás a rendszer automatikusan beállítja. 
    > 

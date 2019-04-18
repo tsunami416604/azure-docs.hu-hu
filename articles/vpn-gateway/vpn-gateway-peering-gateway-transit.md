@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
 ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492345"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>VPN-átjáróval történő adatátvitel konfigurálása virtuális hálózatok közötti társviszony létesítéséhez
@@ -50,9 +50,9 @@ A dokumentumban szereplő példához az alábbi erőforrásokat kell létrehozni
 
 Útmutatásért lásd a következő dokumentumokat:
 
-1. [A virtuális hálózat VPN-átjáró létrehozása](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-2. [Hozzon létre virtuális hálózatok közötti társviszony az azonos üzemi modellel](../virtual-network/tutorial-connect-virtual-networks-portal.md)
-3. [Hozzon létre virtuális hálózatok közötti társviszony különböző üzembe helyezési modellel](../virtual-network/create-peering-different-deployment-models.md)
+1. [VPN-átjáró létrehozása egy virtuális hálózatban](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+2. [Ugyanazon üzemi modellel működő virtuális hálózatok közötti társviszony-létesítés](../virtual-network/tutorial-connect-virtual-networks-portal.md)
+3. [Eltérő üzemi modellel működő virtuális hálózatok közötti társviszony-létesítés](../virtual-network/create-peering-different-deployment-models.md)
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -61,9 +61,9 @@ A virtuális hálózatok közötti társviszony létrehozásához használt fió
 |Virtuális hálózat|Üzemi modell|Szerepkör|Engedélyek|
 |---|---|---|---|
 |Hub-RM|Resource Manager|[Hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |Klasszikus|[Virtuális hálózatok hagyományos közreműködője](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|–|
+| |Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|–|
 |Spoke-Classic|Resource Manager|[Hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
-||Klasszikus|[Virtuális hálózatok hagyományos közreműködője](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
+||Klasszikus|[Klasszikus hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
 További információ a [beépített szerepkörökről](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) és a bizonyos engedélyek [egyéni szerepkörökhöz](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) való hozzárendeléséről (csak Resource Manager esetében).
 

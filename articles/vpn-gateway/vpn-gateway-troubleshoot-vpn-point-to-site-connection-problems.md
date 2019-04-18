@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2018
 ms.author: genli
 ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492379"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítás: Az Azure pont – hely kapcsolati problémák
@@ -136,7 +136,7 @@ Ha a VPN-ügyfél használatával Azure-beli virtuális hálózathoz csatlakozni
 
 A következő hibaüzenet jelenhet meg:
 
-**Fájlletöltési hiba. Nincs megadva a célhely URI azonosítója.**
+**Fájlletöltési hiba. Nincs megadva a cél URI azonosítója.**
 
 ### <a name="cause"></a>Ok 
 
@@ -152,7 +152,7 @@ A VPN gateway típusúnak kell lennie **VPN**, és a VPN-típust kell **RouteBas
 
 Ha a VPN-ügyfél használatával Azure-beli virtuális hálózathoz csatlakozni próbál, a következő hibaüzenet jelenhet meg:
 
-**Egyéni parancsfájl (frissítés az útválasztási táblázat) nem sikerült. (8007026f hiba)**
+**Egyéni parancsfájl (frissítés az útválasztási táblázat) nem sikerült. (Error 8007026f)**
 
 ### <a name="cause"></a>Ok
 

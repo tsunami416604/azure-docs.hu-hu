@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 9c9f7dfd9ecbf085da19fc010e497caef8c18629
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917311"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Mi a Cloud Service-modell, és hogyan tegye Becsomagolhatja azt?
@@ -92,7 +92,7 @@ A **ServiceDefinition.csdef** fájl adja meg a felhőszolgáltatás konfigurál�
 
 Olvassa el a [szolgáltatásdefiníciós sémában](/previous-versions/azure/reference/ee758711(v=azure.100)) jobban megérteni az itt használt XML-séma, azonban a következő néhány elemét rövid leírását:
 
-**Webhelyek**  
+**Helyek**  
 Az IIS7 szolgáltatásban üzemeltetett webhelyek vagy webalkalmazások számára vonatkozó definíciókat tartalmazza.
 
 **InputEndpoints**  
@@ -110,7 +110,7 @@ A tanúsítványok, a szerepkör szükséges definíciókat tartalmazza. Az elő
 **LocalResources**  
 Helyi tároló-erőforrások vonatkozó definíciókat tartalmazza. Helyi tároló egyik erőforrásához az egy fenntartott könyvtár a virtuális gép szerepkör-példány fut, amelyben a fájlrendszerben.
 
-**Importálások**  
+**Import**  
 Importált modulok vonatkozó definíciókat tartalmazza. Az előző példakód bemutatja a modulok a távoli asztali kapcsolat, és csatlakozzon az Azure.
 
 **Indítás**  
@@ -143,7 +143,7 @@ A szolgáltatás konfigurációs fájlja nem az alkalmazás együtt van csomagol
 
 Olvassa el a [szolgáltatás konfigurációs sémáját](/previous-versions/azure/reference/ee758710(v=azure.100)) jobb megértéséhez, az itt használt XML-séma, azonban itt van egy rövid magyarázatot elemek:
 
-**Példányok**  
+**példányok**  
 Konfigurálja a futó a szerepkör példányainak számát. Megakadályozni a felhőszolgáltatás frissítések során esetleg elérhetetlenné válik, javasoljuk, hogy telepít-e a webalkalmazás felé néző szerepkörök több példánya. Több példány telepítésével tartja vannak az irányelveket a [Azure számítási szolgáltatás szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/), amely garantálja, hogy a 99,95 %-os külső kapcsolatokat az Internet felé néző szerepkörök, amikor két vagy több szerepkör példányai üzembe helyezett szolgáltatáshoz.
 
 **ConfigurationSettings**  

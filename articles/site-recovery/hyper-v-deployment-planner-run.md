@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 6528b683ec9464c2b1982d631455718e6fe6f3b7
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361341"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery deployment planner a Hyper-V vészhelyreállítás az Azure-bA
@@ -257,8 +257,8 @@ Az elkészített Microsoft Excel-jelentés a következő információkat tartalm
 * [Helyszíni összefoglalás](hyper-v-deployment-planner-analyze-report.md#on-premises-summary)
 * [Javaslatok](hyper-v-deployment-planner-analyze-report.md#recommendations)
 * [Virtuálisgép-tároló elhelyezése](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)
-* [Kompatibilis virtuális gépek](hyper-v-deployment-planner-analyze-report.md#compatible-vms)
-* [Nem kompatibilis virtuális gépek](hyper-v-deployment-planner-analyze-report.md#incompatible-vms)
+* [Compatible VMs](hyper-v-deployment-planner-analyze-report.md#compatible-vms) (Kompatibilis virtuális gépek)
+* [Incompatible VMs](hyper-v-deployment-planner-analyze-report.md#incompatible-vms) (Nem kompatibilis virtuális gépek)
 * [A helyszíni tárolásra vonatkozó követelmények](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement)
 * [IR-kötegelés](hyper-v-deployment-planner-analyze-report.md#initial-replication-batching)
 * [Költségbecslés](hyper-v-deployment-planner-cost-estimation.md)

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: 10bec01a3b90776c8dd8c32a74ba7754264da131
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050135"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
@@ -35,7 +35,7 @@ A táblázat összefoglalja a helyszíni konfigurációs kiszolgáló gép telep
 | Operációs rendszer területi beállítása | Angol (Egyesült Államok)|
 | VMware vSphere PowerCLI verziója | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
 | Windows Server-szerepkörök | Ezek a szerepkörök nem engedélyezi: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V |
-| Csoportházirendek| Ezek a szabályzatok csoport nem engedélyezi: <br> – Való hozzáférés letiltása a parancssor használatával <br> – Való hozzáférés letiltása a beállításjegyzék szerkesztőeszközeihez <br> -Megbízhatósági logika fájlmellékletekhez <br> – Kapcsolja be a parancsfájl végrehajtása <br> [Részletek](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+| Csoportházirendek| Ezek a szabályzatok csoport nem engedélyezi: <br> – Való hozzáférés letiltása a parancssor használatával <br> – Való hozzáférés letiltása a beállításjegyzék szerkesztőeszközeihez <br> -Megbízhatósági logika fájlmellékletekhez <br> – Kapcsolja be a parancsfájl végrehajtása <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 | IIS | – Nincs már meglévő alapértelmezett webhelye <br> -Engedélyezése [a névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br> – Nincs már meglévő webhely vagy alkalmazás 443-as porton<br>|
 | Hálózati adapter típusa | VMXNET3 (Ha a VMware virtuális gépként telepített) |
 | IP-cím típusa | Statikus |

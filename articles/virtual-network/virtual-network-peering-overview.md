@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: e6c5a9aa3e4e173ecfc79f4072d091493677afed
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: b65bad57a300d941774f5d3e5d01967f0c13d684
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489981"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678479"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -63,8 +63,7 @@ Ha két virtuális hálózat között társhálózati viszony van, a virtuális 
 
 ![virtuális társhálózatok közötti átvitel](./media/virtual-networks-peering-overview/figure04.png)
 
-Átjárói átvitel virtuális hálózatok közötti Társviszony és a globális virtuális társhálózatok létesítésének (előzetes verzió) is támogatott. Távoli átjárók használata, vagy átjárótranzit engedélyezése a globális virtuális társhálózatok előzetes verzióban érhető el. Az előzetes verzió érhető el minden Azure-régió, Kína felhő-régiók és kormányzati felhő-régiók. Nincs engedélyezési nem szükséges. Tesztelheti – parancssori felület, a PowerShell, a sablonok vagy az API előzetes verzióban érhető el. Portál nem támogatott az előzetes verzióban érhető el.
-Átjárói átvitel (Resource Manager és Klasszikus modell) különböző üzembehelyezési modellel létrehozott virtuális hálózatok között csak akkor, ha az átjáró a virtuális hálózatban (Resource Manager) nem támogatott. További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Átjárói átvitel virtuális hálózatok közötti Társviszony és a globális virtuális társhálózatok létesítésének is támogatott. Átjárói átvitel (Resource Manager és Klasszikus modell) különböző üzembehelyezési modellel létrehozott virtuális hálózatok között csak akkor, ha az átjáró a virtuális hálózatban (Resource Manager) nem támogatott. További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Ha két, ugyanazon az Azure ExpressRoute-kapcsolaton osztozó virtuális hálózatot állítanak társviszonyba, akkor a társhálózaton (vagyis az Azure gerinchálózatán) keresztül áramlik közöttük a forgalom. Az egyes virtuális hálózatok helyi átjárói ennek ellenére használhatók arra, hogy kapcsolatot létesítsenek a helyszíni kapcsolatcsoporttal. Közös átjárót is használhat, és átvitel konfigurálásával létesíthet kapcsolatot a helyszíni rendszerrel.
 
@@ -99,10 +98,10 @@ Az átjáróval történő átvitel olyan társviszony-létesítési tulajdonsá
 
     |Azure üzembehelyezési modell             | Előfizetés  |
     |---------                          |---------|
-    |Mindkét Resource Manager              |[Azonos](tutorial-connect-virtual-networks-portal.md)|
-    |                                   |[Eltérő](create-peering-different-subscriptions.md)|
-    |Egy Resource Manager, egy klasszikus  |[Azonos](create-peering-different-deployment-models.md)|
-    |                                   |[Eltérő](create-peering-different-deployment-models-subscriptions.md)|
+    |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
+    |                                   |[Különböző](create-peering-different-subscriptions.md)|
+    |Egy Resource Manager, egy klasszikus  |[Ugyanaz](create-peering-different-deployment-models.md)|
+    |                                   |[Különböző](create-peering-different-deployment-models-subscriptions.md)|
 
 * További információ a [küllős hálózati topológiák létrehozásáról](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * További tudnivalók a [virtuális társhálózatok beállításairól és azok megváltoztatásáról](virtual-network-manage-peering.md).

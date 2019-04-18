@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 02/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008902"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Oktatóanyag: Egy eszköz belső vezérlőprogram frissítési folyamata megvalósítása
@@ -115,10 +115,10 @@ A háttéralkalmazás az alábbi konfigurációt hozza létre:
 
 A konfiguráció a következő szakaszokat tartalmazza:
 
-* `content` Meghatározza a belső vezérlőprogram kívánt tulajdonságait, a kiválasztott eszközökre küldött.
-* `metrics` Adja meg a lekérdezések a belső vezérlőprogram frissítésének állapotát, hogy a jelentés futtatásához.
-* `targetCondition` kiválasztja az eszközök a belső vezérlőprogram frissítésének fogadjanak.
-* `priorty` egyéb konfigurációk állítja be ezt a konfigurációt a relatív prioritását.
+* A `content` megadja a belső vezérlőprogram a kiválasztott eszközöknek küldött, kívánt tulajdonságait.
+* A(z) `metrics` megadja a belsővezérlőprogram-frissítés állapotát jelentő lekérdezéseket.
+* A(z) `targetCondition` kiválasztja a belsővezérlőprogram-frissítést fogadó eszközöket.
+* A(z) `priorty` beállítja a konfiguráció más konfigurációkhoz viszonyított relatív prioritását.
 
 A háttéralkalmazás a következő kódot használja a konfiguráció létrehozásához, amellyel megadhatók a kívánt tulajdonságok:
 
@@ -209,4 +209,4 @@ az group delete --name tutorial-iot-hub-rg
 Ez az oktatóanyag bemutatta, hogyan implementálható a csatlakoztatott eszközök belsővezérlőprogram-frissítési folyamata. Folytassa a következő oktatóanyaggal, portal-eszközök Azure IoT Hub és az Azure CLI-parancsok használata az eszköz kapcsolat teszteléséhez.
 
 > [!div class="nextstepaction"]
-> [Szimulált eszköz használata az IoT hub-kapcsolat tesztelése](tutorial-connectivity.md)
+> [Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez](tutorial-connectivity.md)

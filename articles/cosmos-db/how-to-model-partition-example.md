@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 3/27/2019
 ms.author: thweiss
 ms.openlocfilehash: ac1b94de4b439aab202d53b23b0d0da616a9f851
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58919615"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modell és a partíció adatainak az Azure Cosmos DB használatával egy való életből vett példa
@@ -574,5 +574,5 @@ A módosítási hírcsatorna, hogy használjuk-e frissítéseket más tárolók 
 Után ez a bevezető gyakorlati adatok modellezése és particionálás érdemes áttekinteni azokat a fogalmakat, hogy a következő cikkekben ellenőrzéséhez:
 
 - [Adatbázisok, tárolók és elemek használata](databases-containers-items.md)
-- [Az Azure Cosmos DB particionálási](partitioning-overview.md)
+- [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 - [Az Azure Cosmos DB csatorna módosítása](change-feed.md)

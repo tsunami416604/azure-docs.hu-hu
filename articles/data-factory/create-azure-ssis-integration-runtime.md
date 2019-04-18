@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: d30ec0765627ec173f0027e49f44cb77f6b26ac6
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361486"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure-SSIS integrációs modul létrehozása az Azure Data Factoryban
@@ -69,7 +69,7 @@ A következő táblázat összehasonlítja a bizonyos funkciók az Azure SQL Dat
 | Szolgáltatás | önálló adatbázis és rugalmas készlet| Felügyelt példány |
 |---------|--------------|------------------|
 | **Ütemezés** | SQL Server-ügynök nem érhető el.<br/><br/>Lásd: [ADF folyamat egy csomag végrehajtásának ütemezése](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| Felügyelt példány az ügynök nem érhető el. |
-| **Authentication** | SSISDB egy tartalmazottadatbázis-felhasználó jelölő az ADF azokat a felügyelt identitáshoz bármely AAD csoport tagjaként hozhatja létre a **db_owner** szerepkör.<br/><br/>Lásd: [SSISDB létrehozása az Azure SQL Database-kiszolgálóhoz történő hitelesítés engedélyezése az Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Az ADF-felügyelt identitásnak jelölő tartalmazottadatbázis-felhasználó az SSISDB hozhat létre. <br/><br/>Lásd: [SSISDB létrehozása az Azure SQL Database felügyelt példányába történő hitelesítés engedélyezése az Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
+| **Hitelesítés** | SSISDB egy tartalmazottadatbázis-felhasználó jelölő az ADF azokat a felügyelt identitáshoz bármely AAD csoport tagjaként hozhatja létre a **db_owner** szerepkör.<br/><br/>Lásd: [SSISDB létrehozása az Azure SQL Database-kiszolgálóhoz történő hitelesítés engedélyezése az Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Az ADF-felügyelt identitásnak jelölő tartalmazottadatbázis-felhasználó az SSISDB hozhat létre. <br/><br/>Lásd: [SSISDB létrehozása az Azure SQL Database felügyelt példányába történő hitelesítés engedélyezése az Azure AD](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
 | **Szolgáltatásszint** | Az Azure-SSIS integrációs modul az Azure SQL Database-kiszolgálóval való létrehozásakor kiválaszthatja a szolgáltatási rétegben az SSISDB. Nincsenek több szolgáltatásszinttel. | A felügyelt példány az Azure-SSIS integrációs modul létrehozásakor, a szolgáltatási rétegben SSISDB nem lehet kiválasztani. A felügyelt példány összes adatbázisának ossza meg ehhez a példányhoz lefoglalt ugyanarra az erőforrásra. |
 | **Virtuális hálózat** | Csak az Azure Resource Manager virtuális hálózatot az Azure-SSIS integrációs csatlakozni, ha a virtuális hálózati Szolgáltatásvégpontok Azure SQL Database-kiszolgáló használata, vagy hozzáférést igényelnek a helyszíni adattárak támogatja. | Támogatja a csak az Azure Resource Managerbeli virtuális hálózat számára az Azure-SSIS integrációs modul csatlakozni. A virtuális hálózat mindig szükség.<br/><br/>Ha az Azure-SSIS integrációs modul csatlakoztatása a felügyelt példány ugyanazon a virtuális hálózaton, ellenőrizze, hogy az Azure-SSIS integrációs modul egy másik alhálózatot, mint a felügyelt példányhoz. Ha egy másik virtuális hálózatot az Azure-SSIS integrációs modul csatlakoztatása, mint a felügyelt példány, ajánlott egy virtuális hálózati társviszony-létesítés vagy egy virtuális hálózat virtuális hálózati kapcsolat. Lásd: [alkalmazását az Azure SQL Database felügyelt példányába való csatlakozás](../sql-database/sql-database-managed-instance-connect-app.md). |
 | **Elosztott tranzakciók** | Rugalmas tranzakciók keresztül támogatja. A Microsoft elosztott tranzakciók koordinátora (MSDTC) tranzakciók nem támogatottak. Ha az SSIS-csomagok az elosztott tranzakciók koordinálására MSDTC használja, fontolja meg az Azure SQL Database rugalmas tranzakciók-ba való migrálás. További információ: [elosztott tranzakciók több felhőalapú adatbázisban](../sql-database/sql-database-elastic-transactions-overview.md). | Nem támogatott. |

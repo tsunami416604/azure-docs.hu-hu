@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/05/2019
 ms.author: magoedte
 ms.openlocfilehash: 90c236347380bb5d5e51db56d0f431d2659a7258
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59288711"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Interaktív jelentések létrehozása az Azure Monitor-munkafüzetekkel
@@ -121,7 +121,7 @@ Minden szakasz rendelkezik a saját speciális beállítások, amelyek elérhet�
 | **Feltételesen láthatóvá** | Adja meg, amely olvasási módban egy paraméter alapján rejthet el lépéseket. |
 | **Paraméter exportálása**| Lehetővé teszi a rács vagy diagram okozhat a későbbi lépésekben értékek módosításához, és láthatóvá válnak a kijelölt sorhoz.  |
 | **Lekérdezés megjelenítése nem szerkesztési módban** | Megjeleníti a lekérdezés felett a diagramra vagy a táblázatra, még akkor is, ha olvasási módban.
-| **Az elemzésben való megnyitásra szolgáló gomb megjelenítése nem szerkesztési üzemmódban** | Az egykattintásos hozzáférést a diagram jobb sarkában ad hozzá a kék Analytics ikonra.|
+| **Megnyitás az elemzés gomb megjelenítése nem szerkesztési módban** | Az egykattintásos hozzáférést a diagram jobb sarkában ad hozzá a kék Analytics ikonra.|
 
 Ezen beállítások többsége viszonylag könnyen használható, de megértéséhez **paraméter exportálása** vizsgálja meg a munkafüzet jobb használó ezt a funkciót.
 

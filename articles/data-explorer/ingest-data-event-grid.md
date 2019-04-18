@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 01/30/2019
 ms.openlocfilehash: 19db47610449ced45fa61610bbe964042e815c7a
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051852"
 ---
 # <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Gyors útmutató: Blobok tölti be az adatkezelőt az Azure Event Grid értesítések való feliratkozással
@@ -40,11 +40,11 @@ Ebben a rövid útmutató beállítani egy [Azure Event Grid](/azure/event-grid/
     |---|---|---|
     | Name (Név) | *test-grid-connection* | Az event griddel, hogy a létrehozni kívánt nevére.|
     | Eseményséma | *Event Grid-séma* | A séma, amely az event grid kell használni. |
-    | Témakörtípus | *Tárfiók* | Az event grid-témakör típusa. |
+    | Témakörtípus | *Storage-fiók* | Az event grid-témakör típusa. |
     | Témakörerőforrás | *gridteststorage* | A tárfiók neve. |
-    | Előfizetés az összes eseménytípusra | *törlés* | Nem minden eseményt a értesítést kaphat. |
-    | Definiált eseménytípusok | *Létrehozott blob* | Értesítés küldése a meghatározott események. |
-    | Végpont típusa | *Event Hubs* | A végpont, amelyhez az események küldése típusa. |
+    | Előfizetés az összes eseménytípusra | *clear* | Nem minden eseményt a értesítést kaphat. |
+    | Definiált eseménytípusok | *Létrehozott BLOB* | Értesítés küldése a meghatározott események. |
+    | Végpont típusa | *Az Event hubs* | A végpont, amelyhez az események küldése típusa. |
     | Végpont | *test-hub* | A létrehozott eseményközpont. |
     | | |
 
@@ -197,4 +197,4 @@ Ha nem szeretné újra használni az event griddel, tisztítása **test-hub-rg**
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+> [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
 ms.openlocfilehash: b3660901c86dd644369e6d1913e825cbd5ea316b
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918467"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Kezelés az Azure Cloud Services, Azure Automation használatával
@@ -42,6 +42,6 @@ Az Azure Cloud Services kezelése az Azure Automation néhány példa használat
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte az alapokat, az Azure Automationben, és hogyan használható az Azure cloud services kezelése, az alábbi hivatkozásokból tudhat meg többet az Azure Automationben.
 
-* [Az Azure Automation áttekintése](../automation/automation-intro.md)
+* [Azure Automation áttekintése](../automation/automation-intro.md)
 * [Az első runbookom](../automation/automation-first-runbook-graphical.md)
 * [Az Azure Automation tanulási térkép](https://azure.microsoft.com/documentation/learning-paths/automation/)

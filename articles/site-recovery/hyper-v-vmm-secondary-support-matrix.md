@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: raynew
 ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360794"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépek vészhelyreállítása egy másodlagos helyre támogatási mátrix
@@ -53,7 +53,7 @@ A következő tároló csak Linux rendszerű gépek replikálhatók:
 
 ## <a name="network-configuration---hostguest-vm"></a>Hálózati konfiguráció - gazdagép vagy Vendég virtuális gép
 
-**Konfiguráció** | **Támogatott**  
+**Konfigurálás** | **Támogatott**  
 --- | --- 
 Gazdagép - hálózati adapterek összevonása | Igen 
 Gazdagép - VLAN | Igen 
@@ -79,7 +79,7 @@ Több elérési út (MPIO) | Igen
 
 ### <a name="guest-or-physical-server-storage"></a>Vendég- és fizikai kiszolgáló
 
-**Konfiguráció** | **Támogatott**
+**Konfigurálás** | **Támogatott**
 --- | --- | 
 VMDK |  –
 VHD/VHDX | Igen (legfeljebb 16 lemez)
@@ -99,7 +99,7 @@ Több elérési út (MPIO) | Igen
 
 ## <a name="vaults"></a>Tárolók
 
-**Műveletek** | **Támogatott**
+**Művelet** | **Támogatott**
 --- | --- 
 Helyezze át a tárolók több erőforráscsoportban (belül vagy előfizetések között) |  Nem
 Át a tárterületet, hálózati, Azure-beli virtuális gépek több erőforráscsoportban (belül vagy előfizetések között) | Nem
@@ -108,7 +108,7 @@ Helyezze át a tárolók több erőforráscsoportban (belül vagy előfizetések
 
 A szolgáltató koordinálja a VMM-kiszolgálók közötti kommunikációt. 
 
-**Legutóbbi** | **Frissítések**
+**legfrissebb** | **Frissítések**
 --- | --- 
 5.1.19 ([portálról érhető el](https://aka.ms/downloaddra) | [Legújabb funkciókkal és javításokkal](https://support.microsoft.com/kb/3155002)
 

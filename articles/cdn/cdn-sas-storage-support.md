@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918552"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS használatával Azure CDN szolgáltatás használata
@@ -89,8 +89,7 @@ Ez a beállítás csak érhető el **verizon Azure CDN Premium** profilok. Ezzel
    ![A CDN URL-újraíró szabály – bal](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
    ![CDN URL-újraíró szabály – jobbra](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
-2. Miután az új szabály aktiválódásakor, bárki hozzáférhet a CDN-végpont, függetlenül attól, hogy használatát egy SAS-token az URL-címben lévő fájlok a megadott tároló. A következő formátumban:
-   `https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. Miután az új szabály aktiválódásakor, bárki hozzáférhet a CDN-végpont, függetlenül attól, hogy használatát egy SAS-token az URL-címben lévő fájlok a megadott tároló. A következő formátumban: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Példa:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`

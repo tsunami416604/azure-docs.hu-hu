@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pbutlerm
 ms.openlocfilehash: fbc542ea2ed76d99d551d668b00bad1fb3719a9f
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012935"
 ---
 # <a name="register-a-saas-application"></a>Egy SaaS-alkalmazás regisztrálása
@@ -83,7 +83,7 @@ HTTP-metódus
 
 *URI-paraméter*
 
-|  **Paraméter neve**  | **Szükséges**  | **Leírás**                               |
+|  **Paraméter neve**  | **Kötelező**  | **Leírás**                               |
 |  ------------------  | ------------- | --------------------------------------------- |
 | tenantId             | True (Igaz)          | A regisztrált AAD-alkalmazás Bérlőazonosítója   |
 |  |  |  |
@@ -91,15 +91,15 @@ HTTP-metódus
 
 *Kérelem fejléce*
 
-|  **Fejléc neve**  | **Szükséges** |  **Leírás**                                   |
+|  **Fejléc neve**  | **Kötelező** |  **Leírás**                                   |
 |  --------------   | ------------ |  ------------------------------------------------- |
 |  Content-Type     | True (Igaz)         | A kéréshez társított tartalom típusa. Az alapértelmezett érték `application/x-www-form-urlencoded`.  |
 |  |  |  |
 
 
-*A kérés törzse*
+*Kérelem törzse*
 
-| **Tulajdonság neve**   | **Szükséges** |  **Leírás**                                                          |
+| **Tulajdonság neve**   | **Kötelező** |  **Leírás**                                                          |
 | -----------------   | -----------  | ------------------------------------------------------------------------- |
 |  Grant_type         | True (Igaz)         | Engedélyezési típus. Az alapértelmezett érték `client_credentials`.                    |
 |  Client_id          | True (Igaz)         |  Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás azonosítója.                  |

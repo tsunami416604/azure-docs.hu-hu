@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 0885b187c4b9e9636144a3ab2a94b941008bec20
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046735"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Egy Azure virtuális gép VHD-t felhasználói üzembe helyezése
@@ -31,14 +31,14 @@ Ez a cikk bemutatja, hogyan hozhat létre egy új Azure-beli Virtuálisgép-erő
 
 Másolja ki az Azure Resource Manager-sablonja [VHD-t üzembe helyezési](cpp-deploy-json-template.md) nevű helyi fájlba `VHDtoImage.json`.  Módosítsa ezt a fájlt a következő paraméterek értékének megadására. 
 
-|  **Paraméter**             |   **Leírás**                                                              |
+|  **A paraméter**             |   **Leírás**                                                              |
 |  -------------             |   ---------------                                                              |
 | ResourceGroupName          | Meglévő Azure-erőforrás neve.  Általában az ugyanahhoz az Entitáshoz társított kulcstartó használata  |
 | TemplateFile               | A fájl teljes elérési útja `VHDtoImage.json`                                    |
 | userStorageAccountName     | A tárfiók neve                                                    |
 | sNameForPublicIP           | A nyilvános IP-cím DNS-neve. Kisbetűnek kell lennie                                  |
 | subscriptionId             | Az Azure előfizetés-azonosító                                                  |
-| Hely                   | Standard szintű Azure földrajzi helye az erőforráscsoport                       |
+| Földrajzi egység                   | Standard szintű Azure földrajzi helye az erőforráscsoport                       |
 | vmName                     | A virtuális gép neve                                                    |
 | VaultName                  | A kulcstároló nevét                                                          |
 | vaultResourceGroup         | A kulcstároló erőforráscsoport

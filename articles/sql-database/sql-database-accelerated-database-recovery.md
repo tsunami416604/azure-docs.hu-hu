@@ -11,12 +11,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6d962a40fe0e1a7658c0d5ac30c7fd04bfb7fb0f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb88da48f8961969176fd67bf6e5fa346655aeac
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475448"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677816"
 ---
 # <a name="accelerated-database-recovery-preview"></a>Gyorsított adatbázis-helyreállítás (előzetes verzió)
 
@@ -42,11 +42,11 @@ Az SQL Server adatbázis-helyreállítás követi a [ARIES](https://people.eecs.
 
 - **Elemzési fázis**
 
-  Vizsgálat a tranzakciós napló továbbíthatja az utolsó sikeres ellenőrzőpont (vagy a legrégebbi lap: LSN) lejáratáig, minden egyes tranzakció jelenleg az SQL Server leállítja az állapot meghatározásához kezdetétől fogva.
+  Vizsgálat a tranzakciós napló továbbíthatja az utolsó sikeres ellenőrzőpont (vagy a legrégebbi inkonzisztencia lap Naplósorszám) lejáratáig, minden egyes tranzakció jelenleg az SQL Server leállítja az állapot meghatározásához kezdetétől fogva.
 
 - **Fázis visszaállítása**
 
-  Vizsgálat a tranzakciós napló továbbításához lejáratáig, ahhoz, hogy az állapot szerint minden művelet megismétlése az összeomlás időpontjában volt az adatbázis legrégebbi nem véglegesített tranzakció.
+  Vizsgálat a tranzakciós napló továbbításához lejáratáig, ahhoz, hogy az állapot szerint minden véglegesített művelet megismétlése az összeomlás időpontjában volt az adatbázis legrégebbi nem véglegesített tranzakció.
 
 - **Fázis visszavonása**
 
@@ -56,13 +56,13 @@ Ez a kialakítás alapján, az SQL-adatbázismotor váratlan újraindítást hel
 
 Ezenkívül megszakítása vagy egy nagy tranzakció visszaállítása alapján ez a kialakítás is is időbe telik használja az ugyanazon a visszavonás helyreállítási fázist a fent leírtak szerint.
 
-Emellett az SQL-adatbázismotor nem tudja csonkolni a tranzakciós napló Ha hosszú tranzakciók fut, mert a megfelelő rekordok naplózása szükséges ahhoz, hogy a helyreállítási és a folyamatokat. Ezzel a kialakítással az SQL-adatbázismotor eredményeként egyes ügyfeleknek szembe a problémát, hogy a tranzakciós napló méretétől nagyon nagy növekedésével, illetve a hatalmas mennyiségű naplózási helyet használ fel.
+Emellett az SQL-adatbázismotor nem tudja csonkolni a tranzakciós napló Ha hosszú tranzakciók fut, mert a megfelelő rekordok naplózása szükséges ahhoz, hogy a helyreállítási és a folyamatokat. Miatt ez a kialakítás a SQL database Engine egyes ügyfeleknek szembe a problémát, hogy a tranzakciós napló méretétől nagyon nagy növekedésével, illetve a hatalmas mennyiségű lemezterületet használ fel.
 
 ## <a name="the-accelerated-database-recovery-process"></a>A gyorsított adatbázis helyreállítási folyamat
 
 Automatikus központi telepítési szabály által teljesen újratervezése az SQL database motor helyreállítást, a fenti problémák címek:
 
-- Győződjön meg arról, hogy állandó idő/azonnali lehetőleg ne kelljen vizsgálata a log-ből vagy a legrégebbi aktív tranzakció kezdete. Az automatikus központi telepítési szabály a tranzakciós napló csak feldolgozása az utolsó sikeres ellenőrzőpont (vagy a legrégebbi inkonzisztencia lap Log feladatütemezési Number(LSN). Ennek eredményeképpen a helyreállítási idő nem befolyásolják hosszú ideig futó tranzakció.
+- Győződjön meg arról, hogy állandó idő/azonnali lehetőleg ne kelljen vizsgálata a log-ből vagy a legrégebbi aktív tranzakció kezdete. Az automatikus központi telepítési szabály a tranzakciós napló csak az utolsó sikeres ellenőrzőpont (vagy a legrégebbi inkonzisztencia lap Log feladatütemezési száma (LSN)) feldolgozása. Ennek eredményeképpen a helyreállítási idő nem befolyásolják hosszú ideig futó tranzakció.
 - Minimalizálja a szükséges területét, mivel már nem szükséges a napló a teljes tranzakció feldolgozását. Ennek eredményeképpen a tranzakciós napló agresszív, ellenőrzőpontok levágása, és készüljön biztonsági másolat.
 
 Magas szinten automatikus központi telepítési szabály éri el a gyors helyreállítás versioning által minden fizikai adatbázis módosítását, és csak visszavonása logikai műveletek, amelyek korlátozott, és szinte azonnal lehet visszavonni. Megszakított bármely az összeomlás időpontjában aktív tranzakció jelöli meg, és ezért ezek a tranzakciók által generált az összes olyan verzió figyelmen kívül hagyható az egyidejű felhasználói lekérdezések.
@@ -73,16 +73,19 @@ Az automatikus központi telepítési szabály helyreállítást ugyanazon mindh
 
 - **Elemzési fázis**
 
-  A folyamat továbbra is ugyanaz, mint a mai sLog helyreállítás, valamint másolására az OPS verzióval ellátott rekordok naplózása igény szerinti hozzáadásával.
+  A folyamat továbbra is ugyanaz, mint a mai sLog helyreállítás, valamint másolására naplórekordok fájlkivonatát műveletek hozzáadásával.
+  
 - **Mégis** fázis
 
   Hibás két fázisra (P)
   - 1. fázis
 
       Ismételje meg a sLog (legrégebbi nem véglegesített tranzakció utolsó ellenőrzési pont legfeljebb). Ismétlés egy gyors művelet, csak a sLog néhány rekordjainak feldolgozása igényeinek megfelelően.
+      
   - 2. fázis
 
      Ismételje meg a tranzakciós napló kezdődik (helyett a legrégebbi nem véglegesített tranzakció) az utolsó ellenőrzőponttól
+     
 - **Fázis visszavonása**
 
    A visszavonási fázis az automatikus központi telepítési szabály szinte azonnal fájlkivonatát műveletek visszavonásához sLog használatával befejeződött, és a megőrzött verzió Store (PVS) rendelkező logikai visszaállítás elvégzéséhez szintű verzió-alapú visszavonási sor.
@@ -97,7 +100,7 @@ Automatikus központi telepítési szabály négy fő összetevői a következő
 
 - **Logikai visszaállítása**
 
-  A logikai visszaállítás felelős az aszinkron folyamat visszavonás – azonnali tranzakció visszaállítása és a visszavonás megadása minden rendszerverzióval ellátott műveletek végrehajtása a sor-szintű verziója alapján.
+  A logikai visszaállítás felelős az aszinkron folyamat végrehajtása sorszintű verzió-alapú visszavonása – azonnali tranzakció visszaállítása és a visszavonás biztosít a művelet rendszerverzióval ellátott.
 
   - Nyomon követi az összes megszakított tranzakciók száma
   - Hajt végre PVS használatával az összes felhasználói tranzakció visszaállítása

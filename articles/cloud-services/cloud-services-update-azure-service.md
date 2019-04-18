@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917226"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Egy felhőalapú szolgáltatás frissítése
@@ -187,6 +187,6 @@ A következő ábra szemlélteti, hogyan rendszer terjessze a szolgáltatás ké
 >
 
 ## <a name="next-steps"></a>További lépések
-[A Cloud Services kezelése](cloud-services-how-to-manage-portal.md)  
-[A Cloud Services monitorozása](cloud-services-how-to-monitor.md)  
-[A Cloud Services konfigurálása](cloud-services-how-to-configure-portal.md)  
+[A Cloud Services felügyelete](cloud-services-how-to-manage-portal.md)  
+[Cloud Services monitorozása](cloud-services-how-to-monitor.md)  
+[A Cloud Services Konfigurálása](cloud-services-how-to-configure-portal.md)  

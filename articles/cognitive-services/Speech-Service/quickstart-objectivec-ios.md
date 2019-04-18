@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
 ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009271"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK használatával iOS rendszeren beszédfelismerést Objective-C nyelven
@@ -61,7 +61,7 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
         ![A hozzáadott keretrendszer](media/sdk/qs-objectivec-framework.png)
         1. Lépjen a **Build Settings** lapra, és engedélyezze az **összes** beállítást.
         1. Vegye fel a könyvtárat `$(SRCROOT)/..` a keretrendszer-keresési útvonalak közé (*Framework Search Paths* a **Search Paths** részben).
-        ![Keretrendszer keresési útvonalat beállítás](media/sdk/qs-objectivec-framework-search-paths.png)
+        ![Keretrendszer-keresési útvonal beállítása](media/sdk/qs-objectivec-framework-search-paths.png)
 
 ## <a name="set-up-the-ui"></a>A felhasználói felület beállítása
 
@@ -102,5 +102,5 @@ Cserélje le az automatikusan létrehozott nevet XML ezt a kódot:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Objective-C-minták megtekintése a Githubon](https://aka.ms/csspeech/samples)
+> [Explore Objective-C samples on GitHub](https://aka.ms/csspeech/samples)
 

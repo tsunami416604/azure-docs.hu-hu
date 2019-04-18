@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 43431c401f13117af1f60d3affd284fc125be7eb
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360275"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Tudnivalók az Azure Site Recovery Deployment Planner a Hyper-V vész-helyreállítási az Azure-bA
@@ -30,7 +30,7 @@ Az eszköz a következő részleteket biztosítja:
 
 * A virtuális gép jogosultságfelmérése a lemezszám, a lemezméretek, az IOPS, a változás és néhány virtuálisgép-jellemző alapján.
 
-**Hálózatisávszélesség-igény és RPO-elemzés**
+**A hálózatisávszélesség-igény és RPO-elemzés**
 
 * A változásreplikáláshoz szükséges becsült hálózati sávszélesség
 * Átviteli sebesség az Azure Site Recovery számára a helyszíni rendszerek és az Azure között
@@ -38,7 +38,7 @@ Az eszköz a következő részleteket biztosítja:
 * A kívánt RPO-ra gyakorolt hatás kisebb sávszélesség kiosztása esetén.
 
     
-**Az Azure infrastruktúra-követelmények**
+**Azure infrastruktúra-követelmények**
 
 * A tárolótípus (standard vagy prémium szintű tárfiók) követelménye az egyes virtuális gépekhez
 * A replikáláshoz beállítandó standard és prémium szintű tárfiókok teljes száma
@@ -47,17 +47,17 @@ Az eszköz a következő részleteket biztosítja:
 * A feladatátvételi teszt vagy feladatátvétel előtt beállítandó Azure magok száma az előfizetésen
 * Az Azure virtuális gépek javasolt mérete az egyes helyszíni virtuális gépeknél
 
-**A helyszíni infrastruktúrával kapcsolatos követelmények**
+**Helyszíni infrastruktúra-követelmények**
 * A Hyper-V-tároló egyes kötetein a sikeres kezdeti replikációhoz és a változásreplikációhoz szükséges szabad tárterület, amelynek megléte esetén a virtuális gépek replikációja semmiképpen nem okozza a termelési alkalmazások nem kívánt leállását
 * A Hyper-V-replikáció számára beállítható maximális másolási gyakoriság
 
-**A kezdeti replikáció kötegeléséhez útmutató** 
+**Útmutató a kezdeti replikáció kötegeléséhez** 
 * A védelemhez használni kívánt virtuálisgép-kötegek száma
 * Az egyes kötegekben lévő virtuális gépek listája
 * A kötegek védelmének sorrendje
 * Az egyes kötegek kezdeti replikációja végrehajtásának várható időtartama
 
-**Becsült Vészhelyreállítási költségek az Azure-bA**
+**Becsült vészhelyreállítási költségek az Azure-hoz**
 * A becsült teljes vészhelyreállítási költség Azure-hoz: számítás, tárolás, hálózat és az Azure Site Recovery licencköltsége
 * Részletes költségelemzés virtuális gépenként
 
@@ -84,7 +84,7 @@ Az eszköz Hyper-V esetén három fő fázisból áll: virtuálisgép-lista lek�
 
 | Kiszolgálókövetelmények | Leírás |
 |---|---|
-|Virtuálisgép-lista lekérésre, profilkészítés és az átviteli sebesség mérése |<ul><li>Operációs rendszer: A Microsoft Windows Server 2016-ban vagy a Microsoft Windows Server 2012 R2 rendszerben </li><li>Gépkonfiguráció: 8 Vcpu, 16 GB RAM, 300 GB HDD</li><li>[A Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Microsoft Visual C++ terjeszthető csomag Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A virtuális gépet, ahol az Azure Site Recovery Deployment Planner fut, hozzá kell adni az összes Hyper-V-kiszolgáló TrustedHosts listájához.</li><li>Ellátni kívánt összes Hyper-V kiszolgálók kell adni az ügyfél virtuális gép TrustedHosts listájához, ahol az eszközt futtatja. [További információ kiszolgálók a TrustedHosts listához való hozzáadásáról](#steps-to-add-servers-into-trustedhosts-list). </li><li> Az eszközt rendszergazdai jogosultságokkal kell futtatni a PowerShellből vagy az ügyfél parancssori konzoljáról.</ul></ul>|
+|Virtuálisgép-lista lekérésre, profilkészítés és az átviteli sebesség mérése |<ul><li>Operációs rendszer: A Microsoft Windows Server 2016-ban vagy a Microsoft Windows Server 2012 R2 rendszerben </li><li>Gépkonfiguráció: 8 Vcpu, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Microsoft Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-szolgáltatáshoz erről a kiszolgálóról</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A virtuális gépet, ahol az Azure Site Recovery Deployment Planner fut, hozzá kell adni az összes Hyper-V-kiszolgáló TrustedHosts listájához.</li><li>Ellátni kívánt összes Hyper-V kiszolgálók kell adni az ügyfél virtuális gép TrustedHosts listájához, ahol az eszközt futtatja. [További információ kiszolgálók a TrustedHosts listához való hozzáadásáról](#steps-to-add-servers-into-trustedhosts-list). </li><li> Az eszközt rendszergazdai jogosultságokkal kell futtatni a PowerShellből vagy az ügyfél parancssori konzoljáról.</ul></ul>|
 | Jelentéskészítés | 2013-as vagy újabb Microsoft Excellel rendelkező Windows PC vagy Windows Server |
 | Felhasználói engedélyek | Rendszergazdai fiók, amely hozzáférhet a Hyper-V-fürthöz/Hyper-V-gazdagéphez a virtuálisgép-lista lekérése és a profilkészítési műveletek során.<br>Az összes profillal ellátni kívánt gazdagépnek rendelkeznie kell egy tartományi rendszergazdai fiókkal, amelynek hitelesítő adatai, vagyis felhasználóneve és jelszava megegyezik
  |

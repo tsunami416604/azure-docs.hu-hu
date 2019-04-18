@@ -13,10 +13,10 @@ ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: ea99c7fe9bc7fd8d6e4e26baa0afe45505949098
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895647"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Mik azok a Microsoft Flow, Logic Apps, Functions és webjobs-feladatok?
@@ -61,7 +61,7 @@ Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozás�
 | --- | --- | --- |
 | Fejlesztés | Kódközpontú (imperatív) | Tervezőközpontú (deklaratív) |
 | Kapcsolatok | [Számos beépített kötési típus](functions-triggers-bindings.md#supported-bindings), egyéni kötések létrehozása kód írásával | [Nagyszámú beépített összekötők](../connectors/apis-list.md), [Enterprise Integration Pack csomag B2B-forgatókönyvekhez](../logic-apps/logic-apps-enterprise-integration-overview.md), [egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) |
-| Műveletek | Minden tevékenység egy Azure-függvény; kód írásával hozhat létre tevékenységfüggvényeket |[Nagyszámú kész műveletek széles választéka](../logic-apps/logic-apps-workflow-actions-triggers.md)|
+| Műveletek | Minden tevékenység egy Azure-függvény; kód írásával hozhat létre tevékenységfüggvényeket |[Használatra kész műveletek széles választéka](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | Figyelés | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Az Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure Monitor-naplók](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
 | Kezelés | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | Végrehajtási környezet | Futtatható [helyileg](functions-runtime-overview.md) vagy a felhőben | Csak a felhőben|
@@ -85,10 +85,10 @@ Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatáso
 |  | Functions | WebJobs WebJobs SDK-val |
 | --- | --- | --- |
 |[Kiszolgáló nélküli alkalmazásmodell](https://azure.microsoft.com/solutions/serverless/) [automatikus skálázással](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
-|[Fejlesztés és tesztelés böngészőben](functions-create-first-azure-function.md) |✔||
-|[Használatalapú fizetés díjszabása](functions-scale.md#consumption-plan)|✔||
-|[Integráció a Logic Apps használatával](functions-twitter-email.md)|✔||
-| Kiváltó események |[Időzítő](functions-bindings-timer.md)<br>[Az Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md)<br>[Az Azure Service Bus-üzenetsorok és témakörök](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Időzítő](functions-bindings-timer.md)<br>[Az Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md)<br>[Az Azure Service Bus-üzenetsorok és témakörök](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Fájlrendszer](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
+|[Fejlesztése és tesztelés böngészőben](functions-create-first-azure-function.md) |✔||
+|[Használatalapú fizetés](functions-scale.md#consumption-plan)|✔||
+|[Integráció a Logic Apps szolgáltatással](functions-twitter-email.md)|✔||
+| Kiváltó események |[Időzítő](functions-bindings-timer.md)<br>[Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md)<br>[Azure Service Bus – üzenetsorok és témakörök](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Időzítő](functions-bindings-timer.md)<br>[Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md)<br>[Azure Service Bus – üzenetsorok és témakörök](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Fájlrendszer](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
 | Támogatott nyelvek  |C#<br>F#<br>JavaScript<br>Java (előzetes verzió) |C#<sup>1</sup>|
 |Csomagkezelők|NPM és NuGet|NuGet<sup>2</sup>|
 
@@ -119,8 +119,8 @@ A Microsoft Flow, Logic Apps és Functions közötti integráció továbbra is j
 
 Az integrációs szolgáltatások további információkat szerezhet a a következő hivatkozásokra:
 
-* [Leveraging Azure Functions & Azure App Service integrációs forgatókönyvek szerint Christopher Anderson vezet.](http://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
-* [Integrations Made Simple Charles lamanna](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
+* [Christopher Anderson: Leveraging Azure Functions & Azure App Service for integration scenarios](http://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/) (Az Azure Functions és az Azure App Service használata integrációs forgatókönyvekhez)
+* [Charles Lamanna: Integrations Made Simple](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/) (Integráció egyszerűen)
 * [Logic Apps élő internetes adás](https://aka.ms/logicappslive)
 * [Gyakori kérdések a Microsoft Flow](https://flow.microsoft.com/documentation/frequently-asked-questions/)
 
@@ -128,6 +128,6 @@ Az integrációs szolgáltatások további információkat szerezhet a a követk
 
 Első lépésként hozza létre az első folyamatát, logikai alkalmazását vagy függvényalkalmazását. Válassza ki a következő hivatkozások bármelyikére:
 
-* [Máris használatba veheti a Microsoft Flow-t!](https://flow.microsoft.com/en-us/documentation/getting-started/)
+* [A Microsoft Flow használatának első lépései](https://flow.microsoft.com/en-us/documentation/getting-started/)
 * [Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Az első Azure-függvény létrehozása](functions-create-first-azure-function.md)

@@ -11,10 +11,10 @@ ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918790"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
@@ -214,7 +214,7 @@ Az alábbi táblázatok bemutatják a virtuális gépek előkészítése a Chang
 
 ### <a name="onboarding-from-a-virtual-machine"></a>Bevezetés a virtuális gépről
 
-|**Műveletek**  |**Engedély**  |**Minimális hatókör**  |
+|**Művelet**  |**Engedély**  |**Minimális hatókör**  |
 |---------|---------|---------|
 |Új központi telepítés írása      | Microsoft.Resources/deployments/*          |Előfizetés          |
 |Új erőforráscsoport írása      | Microsoft.Resources/subscriptions/resourceGroups/write        | Előfizetés          |
@@ -237,7 +237,7 @@ Az alábbi táblázatok bemutatják a virtuális gépek előkészítése a Chang
 
 ### <a name="onboarding-from-automation-account"></a>Előkészítés Automation-fiók
 
-|**Műveletek**  |**Engedély** |**Minimális hatókör**  |
+|**Művelet**  |**Engedély** |**Minimális hatókör**  |
 |---------|---------|---------|
 |Új üzemelő példány létrehozása     | Microsoft.Resources/deployments/*        | Előfizetés         |
 |Új erőforráscsoport létrehozása     | Microsoft.Resources/subscriptions/resourceGroups/write         | Előfizetés        |

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
 ms.openlocfilehash: 4471c9d5b6c09bcf4d9100cccfa725f36cf9a3f8
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045082"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Hozzon létre egy Azure Resource Manager-sablon használatával a Service Bus-névtér
@@ -40,7 +40,7 @@ Ebben a rövid útmutatóban létrehozhat egy Azure Resource Manager-sablon, ame
 ## <a name="quick-deployment"></a>Gyors üzembe helyezés
 Bármely JSON írása, és a PowerShell vagy a parancssori felületen parancs futtatása nélkül a minta futtatásához válasszon az alábbi gombra:
 
-[![Daz Azure-bA eploy](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
+[![Üzembe helyezés az Azure-ban](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
 
 Hozhat létre és helyezheti üzembe a sablont manuálisan, nyissa meg a következő szakaszok ebben a cikkben.
 
@@ -203,7 +203,7 @@ Az Azure CLI-vel erőforrások üzembe helyezéséhez a JSON-fájlok váltson ar
 Ebben a cikkben létrehozott Service Bus-névtér. A többi rövid útmutató megtudhatja, hogyan hozhat létre az üzenetsorok, üzenettémák, előfizetések, tekintse meg, és használja őket: 
 
 - [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
-- [Bevezetés a Service Bus-üzenettémák használatába](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [Ismerkedés a Service Bus-témakörök](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Service Bus namespace template]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/

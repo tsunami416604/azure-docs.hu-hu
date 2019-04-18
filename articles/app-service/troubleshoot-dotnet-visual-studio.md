@@ -16,10 +16,10 @@ ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895013"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibaelhárítása az Azure App Service használatával a Visual Studio-
@@ -259,7 +259,7 @@ ASP.NET-alkalmazás, amely futtatja az App Service-alkalmazások a következő t
 
 * **Alkalmazás nyomkövetési naplók**<br/>
   Az alkalmazás a metódusok meghívásával hozza létre ezeket a naplókat a [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) osztály.
-* **Webkiszolgáló naplói**<br/>
+* **Webkiszolgáló-naplókkal**<br/>
   A webkiszolgáló az alkalmazás minden HTTP-kérelem naplóbejegyzés hoz létre.
 * **Részletes hibanaplókat üzenet**<br/>
   A webkiszolgáló egy HTML-oldalt hoz létre a sikertelen HTTP-kérelmek (állapotkód: 400 vagy nagyobb eredményező kérelmek) további információkat.
@@ -650,7 +650,7 @@ Nincsenek nem naprakész, és alapos tudnivalókra az ASP.NET nyomkövetési el�
 
 * [Monitoring és Telemetria (valós felhőalapú alkalmazások létrehozása az Azure-ral)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
   E-könyv fejezet ajánlásokkal nyomkövetés az Azure felhőalapú alkalmazásokat.
-* [ASP.NET Tracing](/previous-versions/dotnet/articles/ms972204(v=msdn.10))<br/>
+* [Az ASP.NET nyomkövetési](/previous-versions/dotnet/articles/ms972204(v=msdn.10))<br/>
   Régi azonban továbbra is a leghasznosabb, az alapszintű bevezetést a tulajdonosnak.
 * [Nyomkövetési figyelők](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
   Információ a nyomkövetési figyelői nem említik, de a [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).

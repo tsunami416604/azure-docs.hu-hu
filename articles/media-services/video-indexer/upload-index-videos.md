@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
 ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893452"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
@@ -85,9 +85,9 @@ Egy URL-címet, amellyel az ügyfél (a POST-kérés használatával) a követke
 
 Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttérzajt tartalmaznak. Ez a paraméter az indexelési folyamat konfigurálására szolgál. A következő értékeket adhatja meg:
 
-- `Default` – Index és az elemzések hang és videó együttes használatával
-- `AudioOnly` – Index és az elemzések használatával hang csak (figyelmen kívül hagyja a videó)
-- `DefaultWithNoiseReduction` – Indexelése és elemzési adatokat nyerhet a hang és videó, hang streamu zaj csökkentésére algoritmusok alkalmazása közben
+- `Default` – Indexelés és elemzések kinyerése audio- és videotartalmak használatával
+- `AudioOnly` – Indexelés és elemzések kinyerése csak audiotartalmak használatával (videotartalmak figyelmen kívül hagyása)
+- `DefaultWithNoiseReduction` – Indexelés és elemzések kinyerése audio- és videotartalmakból, és zajcsökkentő algoritmusok alkalmazása az audiostreamen
 
 Az árat a kiválasztott indexelési lehetőség határozza meg.  
 

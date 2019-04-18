@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: anroth
 ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046070"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>A modell használata az előrejelzési API
@@ -137,7 +137,7 @@ Az alkalmazás futtatásakor kéri a konzol képfájlra mutató elérési utat m
 Ebben az útmutatóban megtanulta, hogyan lehet elküldeni az egyéni lemezképek lemezkép osztályozó/detector használatával, és programozott módon választ kapnak a C# SDK-t. Ezután megtudhatja, hogyan végezze el a végpontok közötti forgatókönyvek C#, vagy egy másik nyelvet SDK használatának első lépései.
 
 * [Gyors útmutató: .NET SDK-val](csharp-tutorial.md)
-* [Gyors útmutató: Python SDK](python-tutorial.md)
-* [Gyors útmutató: Java SDK](java-tutorial.md)
-* [Gyors útmutató: Node SDK](node-tutorial.md)
-* [Gyors útmutató: Go SDK](go-tutorial.md)
+* [Rövid útmutató: Python SDK](python-tutorial.md)
+* [Rövid útmutató: Java SDK](java-tutorial.md)
+* [Rövid útmutató: Node SDK](node-tutorial.md)
+* [Rövid útmutató: Go SDK](go-tutorial.md)

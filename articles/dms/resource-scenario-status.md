@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 04/04/2019
 ms.openlocfilehash: f25bc9bc3a958b2fa97ae4d5ab3715b602110393
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915475"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota
@@ -47,12 +47,12 @@ Az alábbi táblázat az Azure Database Migration Service támogatja az offline 
 | **Azure SQL DB MI** | SQL Server | ✔ | FE |
 |   | RDS SQL |  |  |
 |   | Oracle |  |   |
-| **Azure SQL virtuális gép** | SQL Server | ✔ | FE |
+| **Az Azure SQL virtuális gép** | SQL Server | ✔ | FE |
 |   | Oracle |   |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | Nyilvános előzetes verzió |
 | **MySQL-hez készült Azure DB** | MySQL |   |   |
 |   | RDS MySQL |   |   |
-| **Azure DB for PostgreSQL** | PostgreSQL |  |
+| **PostgreSQL-hez készült Azure DB** | PostgreSQL |  |
 |  | RDS PostgreSQL |   |   |
 
 ### <a name="online-continuous-sync-migration-support"></a>Online (folyamatos szinkronizálása) áttelepítés támogatása
@@ -66,12 +66,12 @@ Az alábbi táblázat az Azure Database Migration Service támogatása online á
 | **Azure SQL DB MI** | SQL Server | ✔ | FE |
 |   | RDS SQL | ✔ | FE |
 |   | Oracle | ✔ | Privát előzetes verzió |
-| **Azure SQL virtuális gép** | SQL Server |   |   |
+| **Az Azure SQL virtuális gép** | SQL Server |   |   |
 |   | Oracle  |  |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | Nyilvános előzetes verzió |
 | **MySQL-hez készült Azure DB** | MySQL | ✔ | FE |
 |   | RDS MySQL | ✔ | FE |
-| **Azure DB for PostgreSQL** | PostgreSQL | ✔ | FE |
+| **PostgreSQL-hez készült Azure DB** | PostgreSQL | ✔ | FE |
 |   | RDS PostgreSQL | ✔ | FE |
 |   | Oracle | ✔ | Privát előzetes verzió |
 

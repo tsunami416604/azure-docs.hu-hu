@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/17/2019
 ms.author: monhaber
 ms.openlocfilehash: 27acda2496adea39321e498868aebcc2f824df3c
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905290"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>A Security Center Standard csomagra váltásával fokozott biztonságot érhet
@@ -46,7 +46,7 @@ A standard szintű csomag lekéréséhez:
 4. Válassza ki **Standard** frissítése.
 5. Kattintson a **Save** (Mentés) gombra.
 
-(A képen árak például csak célokat.) ![A Security Center díjszabása](./media/security-center-pricing/get-standard.png)
+(A képen árak például csak célokat.) ![Security Center Pricing](./media/security-center-pricing/get-standard.png)
 
 > [!NOTE]
 > Ahhoz, hogy az összes Security Center-szolgáltatásokat, telepítenie kell a Standard díjcsomag a alkalmazni virtual machines gépet tartalmazó előfizetéshez. Csak a time VM access, az adaptív alkalmazásvezérlők és hálózati észlelések az Azure-erőforrások nem engedélyezi a munkaterülethez tartozó díjszabás konfigurálása.

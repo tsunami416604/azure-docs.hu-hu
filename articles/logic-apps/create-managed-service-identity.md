@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
 ms.openlocfilehash: 8445b67fa049116d93f3710ff108f904ca7ecd77
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010549"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Felügyelt identitások Azure Logic Apps-erőforrások eléréséhez és hitelesítéséhez
@@ -38,7 +38,7 @@ A többi Azure Active Directory (Azure AD) bérlő erőforrásaihoz, és a szem�
 Felügyelt identitások rendszer által hozzárendelt nem kell manuálisan létrehozni az identitásukat. A rendszer által hozzárendelt felügyelt identitást a logikai alkalmazás állíthat be, használhatja az alábbi módszerek: 
 
 * [Azure Portal](#azure-portal) 
-* [Azure Resource Manager-sablonok](#template) 
+* [Az Azure Resource Manager-sablonok](#template) 
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md) 
 
 <a name="azure-portal"></a>
@@ -61,7 +61,7 @@ Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás a logikai alka
 
    | Tulajdonság | Érték | Leírás | 
    |----------|-------|-------------| 
-   | **Objektumazonosító** | <*identity-resource-ID*> | Egy globálisan egyedi azonosítóját (GUID), amely jelöli, a rendszer által hozzárendelt felügyelt identitás a logikai alkalmazás az Azure AD-bérlő | 
+   | **Objektumazonosító:** | <*identity-resource-ID*> | Egy globálisan egyedi azonosítóját (GUID), amely jelöli, a rendszer által hozzárendelt felügyelt identitás a logikai alkalmazás az Azure AD-bérlő | 
    ||| 
 
 <a name="template"></a>

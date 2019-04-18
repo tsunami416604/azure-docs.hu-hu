@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
 ms.openlocfilehash: 59c8effb4c5feae99755b7937f4796e8f11fde46
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895883"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
@@ -34,8 +34,8 @@ Az összekötők beépített triggereket és műveleteket vagy felügyelt össze
   |   |   |
   |---|---|
   | [**A felügyelt API-összekötők**](#managed-api-connectors) | Például az Azure Blob Storage, Office 365, Dynamics, a Power BI, onedrive vállalati verzió, Salesforce, a SharePoint online-hoz és sok más szolgáltatásokat használó logikai alkalmazásokat hozhat létre. | 
-  | [**Helyszíni összekötők**](#on-premises-connectors) | Miután telepítette, és állítsa be a [a helyszíni adatátjáró][gateway-doc], ezek az összekötők segítenek a logic apps hozzáférést a helyszíni rendszerek például az SQL Server, SharePoint Server, Oracle DB, fájlmegosztásokat és mások. | 
-  | [**Integrációs fiókok összekötői**](#integration-account-connectors) | Rendelkezésre álló létrehozásakor és a egy integrációs fiókban, ezek az összekötők átalakító kell fizetnie, és XML érvényességének ellenőrzése, kódolása és dekódolandó egybesimított fájlok, és vállalatok – feldolgozni (B2B) rendelkező üzenetek AS2, EDIFACT és X12 protokollok. | 
+  | [**A helyszíni összekötők**](#on-premises-connectors) | Miután telepítette, és állítsa be a [a helyszíni adatátjáró][gateway-doc], ezek az összekötők segítenek a logic apps hozzáférést a helyszíni rendszerek például az SQL Server, SharePoint Server, Oracle DB, fájlmegosztásokat és mások. | 
+  | [**Integrációsfiók-összekötők**](#integration-account-connectors) | Rendelkezésre álló létrehozásakor és a egy integrációs fiókban, ezek az összekötők átalakító kell fizetnie, és XML érvényességének ellenőrzése, kódolása és dekódolandó egybesimított fájlok, és vállalatok – feldolgozni (B2B) rendelkező üzenetek AS2, EDIFACT és X12 protokollok. | 
   | [**Vállalati összekötők**](#enterprise-connectors) | Biztosít hozzáférést a vállalati rendszerek például az SAP- és IBM MQ-val díjfizetés mellett. |
   ||| 
 
@@ -77,7 +77,7 @@ Az alábbiakban a beépített műveleteket a kimeneti adatok és a formátumok h
 |   |   | 
 |---|---| 
 | [![Beépített ikon][data-operations-icon]<br/>**Adatműveletek**][data-operations-doc] | Hajtsa végre az adatokkal műveleteket: <p>- **Compose**: Hozzon létre egy egyetlen kimeneti több bemenet a különféle fenyegetési típusokat. <br>- **CSV-táblázat létrehozása**: Hozzon létre egy vesszővel tagolt (CSV) tábla JSON-objektumok egy tömb. <br>- **HTML-táblázat létrehozása**: Hozzon létre egy HTML-táblázat egy tömb JSON-objektumokkal. <br>- **Tömb szűrése**: Hozzon létre egy tömb a megadott feltételeket teljesítő egy másik tömb elemeinek. <br>- **Csatlakozás**: Hozzon létre egy karakterláncot egy tömb összes eleme, és azok az elemek elválasztás a megadott elválasztó. <br>- **JSON elemzése**: A tulajdonságok és azok értékei JSON-tartalom felhasználóbarát-jogkivonat készítése esetleges felhasználhassa azokat a tulajdonságokat a munkafolyamatban. <br>- **Válassza ki**: Hozzon létre egy tömb JSON-objektumok elemet vagy egy másik tömbben lévő értékek átalakítása és azok az elemek megadott tulajdonságokkal. | 
-| ![Beépített ikon][date-time-icon]<br/>**Dátum és idő** | Időbélyeggel rendelkező műveletek végrehajtása: <p>- **Hozzáadás időhöz**: Adja hozzá a megadott számú egységet egy időbélyegző. <br>- **Időzóna konvertálása**: A forrásidőzóna időbélyeg konvertálása időzónában. <br>- **Aktuális idő**: Az aktuális timestamp vissza karakterláncként. <br>- **Jövőbeli időpont beolvasása**: Vissza az aktuális timestamp plusz a megadott időegység. <br>- **Múltbeli időpont beolvasása**: A megadott időegység mínusz az aktuális időbélyeget adja vissza. <br>- **Kivonás időből**: Az időbélyeg mértékegységét számos kivonása. |
+| ![Built-in Icon][date-time-icon]<br/>**Dátum-idő** | Időbélyeggel rendelkező műveletek végrehajtása: <p>- **Hozzáadás időhöz**: Adja hozzá a megadott számú egységet egy időbélyegző. <br>- **Időzóna konvertálása**: A forrásidőzóna időbélyeg konvertálása időzónában. <br>- **Aktuális idő**: Az aktuális timestamp vissza karakterláncként. <br>- **Jövőbeli időpont beolvasása**: Vissza az aktuális timestamp plusz a megadott időegység. <br>- **Múltbeli időpont beolvasása**: A megadott időegység mínusz az aktuális időbélyeget adja vissza. <br>- **Kivonás időből**: Az időbélyeg mértékegységét számos kivonása. |
 | [![Beépített ikon][variables-icon]<br/>**változók**][variables-doc] | Hajtsa végre a műveleti változókkal: <p>- **Hozzáfűzés tömbváltozóhoz**: INSERT egy értéket, az utolsó elem a tömbben egy változó tárolja. <br>- **Hozzáfűzni kívánt karakterlánc-változóhoz**: INSERT egy értéket egy változó tárolja karakterlánc utolsó karaktereként. <br>- **Változó értékének csökkentése**: Csökkentse egy változót egy állandó értékkel. <br>- **Változó értékének növelése**: Növelje egy változót egy állandó értékkel. <br>- **Változó inicializálása**: Hozzon létre egy változót, és az adattípus és a kezdeti érték deklarálja. <br>- **Változó beállítása**: Rendeljen egy másik értéket a meglévő változókat. |
 |  |  | 
 

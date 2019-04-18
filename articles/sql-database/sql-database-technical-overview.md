@@ -14,10 +14,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: ecfd0cbc3eaaae64a956568a506252fdbeddcac2
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358339"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás
@@ -254,10 +254,10 @@ Az SQL Database ügyfelei az Azure Hybrid benefittel az SQL Server társított a
 - Tekintse meg az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/sql-database/) az önálló adatbázisok és a rugalmas készletek költségeinek összehasonlításáért és árkalkulációjáért.
 - Tekintse meg ezeket a rövid útmutatókat a kezdéshez:
 
-  - [SQL-adatbázis létrehozása az Azure Portalon](sql-database-single-database-get-started.md)  
-  - [SQL-adatbázis létrehozása az Azure CLI-vel](sql-database-get-started-cli.md)
-  - [Hozzon létre egy SQL database PowerShell-lel](sql-database-get-started-powershell.md)
+  - [SQL Database létrehozása az Azure Portalon](sql-database-single-database-get-started.md)  
+  - [SQL Database létrehozása az Azure CLI-vel](sql-database-get-started-cli.md)
+  - [SQL Database létrehozása PowerShell használatával](sql-database-get-started-powershell.md)
 
 - Több Azure CLI és PowerShell-mintát talál itt:
-  - [Az Azure CLI-minták az SQL-adatbázis](sql-database-cli-samples.md)
-  - [Az Azure PowerShell-minták az SQL-adatbázis](sql-database-powershell-samples.md)
+  - [Azure CLI-minták az SQL Database-hez](sql-database-cli-samples.md)
+  - [Azure PowerShell-minták az SQL Database-hez](sql-database-powershell-samples.md)

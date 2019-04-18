@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044174"
 ---
 # <a name="what-is-azure-data-explorer"></a>Mi az az Azure Data Explorer?
@@ -44,11 +44,11 @@ Az alábbi diagram az Azure Data Explorerrel történő munkavégzés különbö
 
 Az Azure Data Explorerben történő munkavégzés általában a következő folyamatot követi:
 
-1. **Hozzon létre adatbázist:** Hozzon létre egy *fürt* majd hozzon létre egy vagy több *adatbázisok* az adott fürtben található. [Gyors útmutató: Az Azure Data Explorer fürt és adatbázis létrehozása](create-cluster-database-portal.md)
+1. **Hozzon létre adatbázist:** Hozzon létre egy *fürt* majd hozzon létre egy vagy több *adatbázisok* az adott fürtben található. [Rövid útmutató: Az Azure Data Explorer fürt és adatbázis létrehozása](create-cluster-database-portal.md)
 
-1. **Gyűjthet adatokat:** Adatok betöltése az adatbázistáblák, hogy a védelemhez lekérdezéseket is futtathat. [Gyors útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md)
+1. **Gyűjthet adatokat:** Adatok betöltése az adatbázistáblák, hogy a védelemhez lekérdezéseket is futtathat. [Rövid útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md)
 
-1. **Adatbázis lekérdezése:** Használja a webalkalmazás futtatásához, tekintse át, és megoszthatja a lekérdezések és az eredmények. A webalkalmazás elérhető az Azure Portalon és különálló alkalmazásként is. Ráadásul küldhet lekérdezéseket programozott módon (SDK használatával) vagy REST API-végpontra. [Gyors útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+1. **Adatbázis lekérdezése:** Használja a webalkalmazás futtatásához, tekintse át, és megoszthatja a lekérdezések és az eredmények. A webalkalmazás elérhető az Azure Portalon és különálló alkalmazásként is. Ráadásul küldhet lekérdezéseket programozott módon (SDK használatával) vagy REST API-végpontra. [Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
 
 ## <a name="query-experience"></a>A lekérdezések használata
 
@@ -66,12 +66,12 @@ Az Azure Data Explorer a képességek kiterjeszthetők a hatékony lekérdezési
   - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-explorer)
   - [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
   - [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto)
-- [A User Voice Termékjavaslatok](https://aka.ms/AzureDataExplorer.UserVoice)
+- [Tegyen javaslatokat a User Voice-on](https://aka.ms/AzureDataExplorer.UserVoice)
 
 ## <a name="next-steps"></a>További lépések
 
-[Gyors útmutató: Az Azure Data Explorer fürt és adatbázis létrehozása](create-cluster-database-portal.md)
+[Rövid útmutató: Az Azure Data Explorer fürt és adatbázis létrehozása](create-cluster-database-portal.md)
 
-[Gyors útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md)
+[Rövid útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md)
 
-[Gyors útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)
+[Rövid útmutató: Az Azure Data Explorer adatok lekérdezése](web-query-data.md)

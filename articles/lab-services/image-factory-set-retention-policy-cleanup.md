@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490739"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Egy egyéni rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban
@@ -25,9 +25,9 @@ Ez a cikk ismerteti az adatmegőrzési beállítás, az előállító karbantart
 ## <a name="prerequisites"></a>Előfeltételek
 Győződjön meg arról, hogy a folytatás előtt követte ezeket a cikkeket:
 
-- [Rendszerkép-előállító létrehozása](image-factory-create.md)
-- [Rendszerkép-előállító futtatása az Azure DevOpsból](image-factory-set-up-devops-lab.md)
-- [Egyéni rendszerképek mentése és továbbítása több tesztkörnyezetbe](image-factory-save-distribute-custom-images.md)
+- [Lemezkép-előállító létrehozása](image-factory-create.md)
+- [Egy rendszerkép-előállító Futtatás az Azure DevOps](image-factory-set-up-devops-lab.md)
+- [Egyéni rendszerképek mentse, és több labs terjesztéséhez](image-factory-save-distribute-custom-images.md)
 
 A következő elemek már helyén kell lennie:
 

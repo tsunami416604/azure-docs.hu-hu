@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 966a8bd5990f955a3ec66ae465d14a0369d0cdf9
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915308"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>Hogyan hozhat létre, és keresse meg a C + Azure térbeli horgonyok használatával horgonyok +/ WinRT
@@ -25,7 +25,7 @@ ms.locfileid: "58915308"
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti megosztását teszi lehetővé. Támogatja a több különböző fejlesztési környezet. Ebben a cikkben azt részletesen ismerteti, hogyan használhatja az Azure térbeli horgonyok SDK-t, a C + +/ WinRT, cél:
+Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti megosztását teszi lehetővé. Támogatja a több különböző fejlesztési környezet. Ebben a cikkben azt részletesen ismerteti, hogyan használható az Azure térbeli horgonyok SDK, az C++/WinRT, cél:
 
 - Helyes beállítása és kezelése az Azure térbeli horgonyok munkamenet.
 - Hozzon létre, és állítsa be a helyi kapcsolatok alapjainak tulajdonságait.

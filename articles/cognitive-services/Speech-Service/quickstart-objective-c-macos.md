@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: chlandsi
 ms.openlocfilehash: 55fc671d926880375b0420e0eafb6dc63f170ba6
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012198"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK-val macOS rendszeren beszédfelismerést Objective-C nyelven
@@ -92,5 +92,5 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Objective-C-minták megtekintése a Githubon](https://aka.ms/csspeech/samples)
+> [Explore Objective-C samples on GitHub](https://aka.ms/csspeech/samples)
 

@@ -10,10 +10,10 @@ ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008973"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>Példa: Szinonimák felvétele az Azure SearchC#
@@ -36,9 +36,9 @@ Több szinonimatérképet is létrehozhat, közzéteheti őket bármely index sz
 Az oktatóanyag az alábbi követelményekkel rendelkezik:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
-* [Az Azure Search-szolgáltatás](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET library](https://aka.ms/search-sdk)
-* [Az Azure Search .NET-alkalmazás használata](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Azure Search szolgáltatás](search-create-service-portal.md)
+* [Microsoft.Azure.Search .NET-könyvtár](https://aka.ms/search-sdk)
+* [Az Azure Search szolgáltatás használata .NET-alkalmazásból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -175,4 +175,4 @@ A leggyorsabban például után törli az erőforráscsoportot, amely tartalmazz
 Ebben a példában bemutatott a [szinonimák REST API-val](https://aka.ms/rgm6rq) a C# létrehozása és közzététele a leképezési szabályokat, és ezután hívja meg a lekérdezés a szinonimatérkép kódot. További információt a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referencia-dokumentációjában találhat.
 
 > [!div class="nextstepaction"]
-> [Az Azure Search szolgáltatásban a szinonimák használata](search-synonyms.md)
+> [Szinonimák használata az Azure Searchben](search-synonyms.md)

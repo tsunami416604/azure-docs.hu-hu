@@ -16,10 +16,10 @@ ms.date: 04/03/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1f03cd518a15d08971968e04fa69954951c77e0
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59052357"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
@@ -123,8 +123,8 @@ A használati feltételek dokumentum véglegesítése után a hozzáadáshoz kö
 
     | Sablon | Leírás |
     | --- | --- |
-    | **Felhőalkalmazások elérése minden vendég esetén** | Feltételes hozzáférési szabályzat jön létre minden Vendég és az összes felhőalapú alkalmazásokba. Ez a szabályzat milyen hatással van az Azure Portalon. Miután ez elkészült, akkor szükség lehet kijelentkezés és bejelentkezés. |
-    | **Felhőalkalmazások elérése minden felhasználó esetén** | Feltételes hozzáférési szabályzat jön létre minden felhasználó és az összes felhőalapú alkalmazásokba. Ez a szabályzat milyen hatással van az Azure Portalon. Ennek létrehozása után kijelentkezés és bejelentkezés szükséges fogjuk. |
+    | **Az összes vendégek felhőalkalmazások elérése** | Feltételes hozzáférési szabályzat jön létre minden Vendég és az összes felhőalapú alkalmazásokba. Ez a szabályzat milyen hatással van az Azure Portalon. Miután ez elkészült, akkor szükség lehet kijelentkezés és bejelentkezés. |
+    | **Az összes felhasználó számára a felhőalkalmazások elérése** | Feltételes hozzáférési szabályzat jön létre minden felhasználó és az összes felhőalapú alkalmazásokba. Ez a szabályzat milyen hatással van az Azure Portalon. Ennek létrehozása után kijelentkezés és bejelentkezés szükséges fogjuk. |
     | **Egyéni szabályzat** | Jelölje ki azon felhasználókat, csoportokat és alkalmazásokat, amelyekre a használati feltételek alkalmazandók lesznek. |
     | **Feltételes hozzáférési szabályzat létrehozása később** | A használati feltételek az engedélyezési vezérlői listában fognak szerepelni a feltételes hozzáférési szabályzat létrehozásakor. |
 
@@ -264,7 +264,7 @@ A **kérése a felhasználóktól minden eszközön jóváhagyást** beállítá
 > | --- | --- | --- | --- | --- |
 > | **Natív alkalmazás** | Igen | Igen | Igen |  |
 > | **Microsoft Edge** | Igen | Igen | Igen |  |
-> | **Internet Explorer** | Igen | Igen | Igen |  |
+> | **Az Internet Explorer** | Igen | Igen | Igen |  |
 > | **Chrome (kiterjesztésű)** | Igen | Igen | Igen |  |
 
 Az eszközönkénti használati feltételeket tartalmazó fájl a következő korlátozások vonatkoznak:
@@ -386,5 +386,5 @@ V: Ha konfigurálta is az Azure AD használati feltételek és [Intune használa
 
 ## <a name="next-steps"></a>További lépések
 
-- [Gyors útmutató: Felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl megkövetelése](require-tou.md)
-- [Az Azure Active Directory-beli feltételes hozzáférésre vonatkozó ajánlott eljárások](best-practices.md)
+- [Rövid útmutató: Felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl megkövetelése](require-tou.md)
+- [A feltételes hozzáféréssel kapcsolatos ajánlott eljárások az Azure Active Directoryban](best-practices.md)

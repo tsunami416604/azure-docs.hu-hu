@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
 ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283477"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Az Azure CDN szabálymotorral feltételeknek megfelelő 
@@ -45,7 +45,7 @@ Az eszköz az egyezési feltétellel kérelmek egy mobileszközzel a tulajdonsá
 
 Name (Név) | Cél
 -----|--------
-[Eszköz](#device) | A kérelmek egy mobileszközzel a tulajdonságok alapján azonosítja.
+[Device](#device) | A kérelmek egy mobileszközzel a tulajdonságok alapján azonosítja.
 
 ## <a name="location-match-conditions"></a>Hely egyezési feltételei
 
@@ -92,7 +92,7 @@ Name (Név) | Cél
 [URL-cím elérési út bővítmény](#url-path-extension) | A fájlnév-kiterjesztésük alapján azonosítja a kérelmeket.
 [URL-cím elérési_út fájlnév](#url-path-filename) | A fájl neve azonosítja a kérelmeket.
 [URL-cím elérési út szövegkonstans](#url-path-literal) | A kérelem relatív elérési út és a megadott érték hasonlítja össze.
-[URL-cím elérési út reguláris kifejezés](#url-path-regex) | A kérelem relatív elérési útja a megadott reguláris kifejezés hasonlítja össze.
+[URL Path Regex](#url-path-regex) | A kérelem relatív elérési útja a megadott reguláris kifejezés hasonlítja össze.
 [URL-cím elérési út helyettesítő karakter](#url-path-wildcard) | A kérelem relatív elérési útja a megadott minta hasonlítja össze.
 [URL-cím lekérdezési szövegkonstans](#url-query-literal) | A kérelem lekérdezési karakterláncát a megadott érték hasonlítja össze.
 [URL-cím lekérdezési paraméter](#url-query-parameter) | A megadott lekérdezési karakterlánc-paraméter értéke, amely egy megadott mintának megfelelő tartalmazó kérelmek azonosítja.

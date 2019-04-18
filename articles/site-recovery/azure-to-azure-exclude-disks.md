@@ -1,6 +1,6 @@
 ---
-title: Az Azure Site Recovery – Azure PowerShell-lel az Azure virtuális gépek replikálása során zárható ki lemez |} A Microsoft Docs
-description: Ismerje meg, hogyan zárhat ki lemez Azure-beli virtuális gépek az Azure Site Recovery az Azure PowerShell használatával.
+title: Az Azure Site Recovery – Azure PowerShell-lel az Azure virtuális gépek replikálása során lemezek kizárásának |} A Microsoft Docs
+description: Ismerje meg, hogyan zárhat ki lemezeket az Azure-beli virtuális gépek Azure Site Recovery során Azure PowerShell használatával.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 1c278d810df7e5ba8701529a59987c9bb16fa40c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 54a32d7f7aa4bcab73f5828da3e7eba9d25276be
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044120"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678275"
 ---
-# <a name="exclude-disks-from-replication-of-azure-vms-to-azure-using-azure-powershell"></a>Lemezek kizárása a replikációból Azure virtuális gépek az Azure-bA az Azure PowerShell-lel
+# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Lemezek kizárása a PowerShell Azure virtuális gépek replikálása
 
-Ez a cikk azt ismerteti, hogyan zárhat ki lemezeket, amikor az Azure virtuális gépek replikálása. A kizárás segítségével optimalizálható a felhasznált replikációs sávszélesség, valamint optimalizálhatók a lemezek által felhasznált céloldali erőforrások. Ez a funkció jelenleg csak az Azure PowerShell használatával van közzétéve.
+Ez a cikk azt ismerteti, hogyan zárhat ki lemezeket az Azure virtuális gépek replikálásakor. A felhasznált replikációs sávszélességet vagy ezeket a lemezeket használó a céloldali erőforrások optimalizálása lemezek előfordulhat, hogy kizárja. Ez a funkció jelenleg csak az Azure Powershellen keresztül érhető el.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -26,26 +26,25 @@ Ez a cikk azt ismerteti, hogyan zárhat ki lemezeket, amikor az Azure virtuális
 
 Előkészületek:
 
-- Ismernie kell a [forgatókönyv-architektúrát és az összetevőket](azure-to-azure-architecture.md).
+- Győződjön meg arról, hogy megértette a [vész-helyreállítási architektúra és összetevők](azure-to-azure-architecture.md).
 - Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](azure-to-azure-support-matrix.md).
-- Azure PowerShell-lel rendelkezik `Az` modul. Ha telepíteni vagy frissíteni az Azure PowerShell-lel van szüksége, kövesse ezt [útmutató az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-az-ps).
-- Már létrehozott Recovery services-tárolót, és még meg a virtuális gépek legalább egyszer védelméről. Ha nem, majd megteheti az említett dokumentációnk segítségével [Itt](azure-to-azure-powershell.md).
+- Győződjön meg arról, hogy "Az" AzureRm PowerShell modult. Telepítse vagy frissítse a PowerShell, lásd: [Azure PowerShell-modul telepítéséhez](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Győződjön meg arról, hogy létrehozott egy recovery services-tárolót, és legalább egy védett virtuális gépet. Ha ezeket nem tette, hajtsa végre az eljárást [vészhelyreállítás Azure virtuális gépek Azure PowerShell-lel beállítása](azure-to-azure-powershell.md).
 
-## <a name="why-exclude-disks-from-replication"></a>Miért érdemes lemezeket kizárni a replikációból?
-A lemezek kizárása a replikációból az alábbiak miatt lehet szükséges:
+## <a name="why-exclude-disks-from-replication"></a>Miért érdemes lemezeket kizárni a replikációból
+A lemezek kizárása a replikációból, mert lehet szükség:
 
-- Elérte a virtuális gép [rátáról Azure Site Recovery-korlátok az adatok replikálása](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)
+- Elérte a virtuális gép [az adatok replikálása Azure Site Recovery-korlátok rátáról](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix).
 
-- A kizárt lemezen előforduló adatváltozások nem fontosak, vagy nincs szükség azok replikálására.
+- A a kizárt lemezen előforduló adatváltozások nem fontos, vagy nincs szükség azok replikálására.
 
-- Tárterületet és hálózati erőforrásokat szeretne megtakarítani az adatváltozások replikálásának kihagyásával.
+- Az adatok replikálásának tárolási és hálózati erőforrások menteni szeretné.
 
+## <a name="how-to-exclude-disks-from-replication"></a>Hogyan zárhat ki lemezeket a replikációból
 
-## <a name="how-to-exclude-disks-from-replication"></a>Hogyan zárhatók ki lemezek a replikációból?
+Ebben a példában azt replikálni egy virtuális gépet, amely egy operációs rendszer és az USA 2. nyugati régió az USA keleti régiójában lévő három adatlemezeket. A virtuális gép neve *AzureDemoVM*. 1. lemezének kizárása, és amelyet tartsa lemezeket 2. és 3.
 
-A példában ez a cikk egy virtuális gépet, amely 1 rendelkezik az operációs rendszer és az USA keleti régiójában, 3 adatlemezek replikálja az USA 2. nyugati régió. A virtuális gép, a példában használt név AzureDemoVM. majd ki fogja zárni a lemez 1 fogja megőrizni a lemezen, 2. és 3
-
-## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>Részletek a replikálni kívánt virtuális gép(ek)
+## <a name="get-details-of-the-virtual-machines-to-replicate"></a>Részletek a virtuális gépek replikálásához
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -70,27 +69,25 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-
-Szerezze be a virtuális gép lemezei lemez adatai. Lemez adatai fogja használni, amikor később kezdve a virtuális gép replikációját.
+Ismerje meg a virtuális gép lemezeivel kapcsolatos részleteket. Ez az információ később lesz, replikáció a virtuális gép indításakor.
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
 $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 ```
 
-## <a name="replicate-azure-virtual-machine"></a>Azure virtuális gépek replikálása
+## <a name="replicate-an-azure-virtual-machine"></a>Az Azure virtuális gépek replikálása
 
-Az az alábbi példában a Microsoft rendelkezik feltételezi, hogy már rendelkezik egy gyorsítótárfiókot, a replikációs házirend és a leképezések. Ha nem, majd megteheti az említett dokumentációnk segítségével [Itt](azure-to-azure-powershell.md) 
+A következő példában feltételezzük, hogy már rendelkezik egy gyorsítótárfiókot, replikációs szabályzatot és leképezéseket. Ha nem rendelkezik ezekről a dolgokról, hajtsa végre az eljárást [vészhelyreállítás Azure virtuális gépek Azure PowerShell-lel beállítása](azure-to-azure-powershell.md).
 
-
-Az Azure-beli virtuális gép replikálása **felügyelt lemezek**.
+Egy Azure-beli virtuális gép replikálása *felügyelt lemezek*.
 
 ```azurepowershell
 
 #Get the resource group that the virtual machine must be created in when failed over.
 $RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 
-#Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
+#Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration).
 
 #OsDisk
 $OSdiskId =  $vm.StorageProfile.OsDisk.ManagedDisk.Id
@@ -101,7 +98,7 @@ $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationC
          -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
-# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded so we will provide it during the time of replication 
+# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded, so we will provide it during the time of replication. 
 
 # Data disk 2
 $datadiskId2  = $vm.StorageProfile.DataDisks[1].ManagedDisk.id
@@ -127,17 +124,18 @@ $diskconfigs = @()
 $diskconfigs += $OSDiskReplicationConfig, $DataDisk2ReplicationConfig, $DataDisk3ReplicationConfig
 
 
-#Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
+#Start replication by creating a replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
 $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 ```
 
-A kezdő replikációs művelet sikeres, ha a rendszer a helyreállítási régióba replikálja a virtuális gépek adatainak.
+A start-replikálási művelet sikeres, ha a rendszer a helyreállítási régióba replikálja a virtuális gép adatait.
 
-Az Azure Portalra léphet, és a replikált elemek felületen tekintse meg a virtuális gép kezdeti replikálása.
-A replikálási folyamat elindítja a kezdeti beültetés egy példányát a replikáló lemez a virtuális gép a helyreállítási régióban. Ebben a fázisban a kezdeti replikáció fázis neve.
+Az Azure Portalon, és tekintse meg a replikált virtuális gépek, a "replikált elemek."
 
-Kezdeti replikálás befejezése után a különbözeti szinkronizálási fázis replikációs helyezi át. Ezen a ponton a virtuális gép védelméhez. A védett virtuális gépen kattintson > lemezek, hogy ha a lemez ki van zárva, vagy sem.
+A replikálási folyamat egy másolatát a replikáló lemez a virtuális gép a helyreállítási régióban beültetés indítja el. Ebben a fázisban a kezdeti replikációs fázis neve.
+
+Kezdeti replikálás befejezése után replikációs áthelyezi a különbségi-szinkronizálási fázis. Ezen a ponton a virtuális gép védelméhez. Válassza ki a védett virtuális gépen, hogy ha kizárt lemezeket.
 
 ## <a name="next-steps"></a>További lépések
 
-[További](site-recovery-test-failover-to-azure.md) feladatátvételi teszt futtatásáról.
+Ismerje meg [feladatátvételi teszt futtatása](site-recovery-test-failover-to-azure.md).

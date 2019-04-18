@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be8b9fe027a023cec6c816fa641beb41e5849741
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496078"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
@@ -87,7 +87,7 @@ Azure-erőforrások szerepköreihez, csak egy előfizetés-rendszergazda, az er�
 
 A PIM használatát támogatja a következő esetekben:
 
-**A kiemelt szerepkörű rendszergazda, a következőket teheti:**
+**Kiemelt szerepkörű rendszergazdaként a következőkre jogosult:**
 
 - Jóváhagyás engedélyezése speciális szerepkörökhöz
 - Kérelmek jóváhagyására jogosult felhasználók és/vagy csoportok meghatározása
@@ -108,5 +108,5 @@ A PIM használatát támogatja a következő esetekben:
 ## <a name="next-steps"></a>További lépések
 
 - [Licenckövetelmények vonatkoznak, miközben a PIM használata](subscription-requirements.md)
-- [Az Azure AD felhőalapú és hibrid telepítések emelt szintű hozzáférés biztonságossá tétele](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-- [PIM üzembe helyezése](pim-deployment-plan.md)
+- [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [A PIM telepítése](pim-deployment-plan.md)

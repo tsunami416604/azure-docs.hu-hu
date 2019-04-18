@@ -1,44 +1,42 @@
 ---
-title: Egy application gateway konfigurálása SSL-lezárást – Azure portal |} A Microsoft Docs
-description: Ismerje meg, hogyan kell application gateway konfigurálása és a egy tanúsítványt az SSL-lezárást az Azure portal használatával.
+title: Oktatóanyag – az application gateway konfigurálása SSL-lezárást – Azure portal
+description: Ebben az oktatóanyagban megismerheti, hogyan application gateway konfigurálása és a egy tanúsítványt az SSL-lezárást az Azure portal használatával.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.date: 5/15/2018
+ms.topic: tutorial
+ms.date: 4/17/2019
 ms.author: victorh
-ms.openlocfilehash: 92db27aa486936d53c2e2e1c92db7d728b7d99c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f3ba3eb12dc85a72c4e49c374e62209b83400d33
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091834"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677850"
 ---
-# <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Egy application gateway konfigurálása SSL-lezárást az Azure portal használatával
+# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Oktatóanyag: Egy application gateway konfigurálása SSL-lezárást az Azure portal használatával
 
 Az Azure portal segítségével konfigurálhatja egy [az application gateway](overview.md) az SSL-lezárást használó virtuális gépek háttérkiszolgálókhoz tanúsítvánnyal.
 
-Ebben a cikkben az alábbiakkal ismerkedhet meg:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Önaláírt tanúsítvány létrehozása
 > * Alkalmazásátjáró létrehozása a tanúsítvánnyal
 > * A háttér-kiszolgálóként használt virtuális gépek létrehozása
+> * Az alkalmazásátjáró tesztelése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
 
-Ebben a szakaszban használhatja [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) hozhat létre, amely feltölti az Azure Portalon a figyelő az application gateway számára létrehozott önaláírt tanúsítványt.
+Ebben a szakaszban használhatja [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) önaláírt tanúsítvány létrehozása. A tanúsítvány feltöltése az Azure Portalra a figyelő az application Gateway létrehozásakor.
 
 A helyi számítógépen nyisson meg egy Windows PowerShell-ablakot rendszergazdaként. Futtassa a következő parancsot a tanúsítvány létrehozásához:
 
@@ -72,11 +70,11 @@ Export-PfxCertificate \
 
 Az Ön által létrehozott erőforrások közti kommunikációt egy virtuális hálózaton van szükség. Ebben a példában két alhálózatot hozunk létre: egyet az alkalmazásátjáróhoz, egy másikat pedig a háttérkiszolgálókhoz. Virtuális hálózatot az alkalmazásátjáróval együtt is létrehozhat.
 
-1. Kattintson a **új** az Azure portal bal felső sarkában található.
+1. Válassza ki **új** az Azure portal bal felső sarkában található.
 2. Válassza a **Hálózatkezelés**, majd az **Application Gateway** elemet a Kiemeltek listából.
 3. Adja meg *myAppGateway* az application gateway neve és *myResourceGroupAG* az új erőforráscsoportnak.
-4. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
-5. Kattintson a **virtuális hálózat választása**, kattintson a **új létrehozása**, majd adja meg ezeket az értékeket a virtuális hálózat:
+4. Az alapértelmezett értékeket a többi beállítás esetében fogadja el, majd **OK**.
+5. Válassza ki **virtuális hálózat választása**válassza **új létrehozása**, majd adja meg ezeket az értékeket a virtuális hálózat:
 
    - A virtuális hálózat neve *myVNet*.
    - A virtuális hálózat címtere *10.0.0.0/16*.
@@ -85,33 +83,33 @@ Az Ön által létrehozott erőforrások közti kommunikációt egy virtuális h
 
      ![Virtuális hálózat létrehozása](./media/create-ssl-portal/application-gateway-vnet.png)
 
-6. A virtuális hálózat és az alhálózat létrehozásához kattintson az **OK** gombra.
-7. Kattintson a **egy nyilvános IP-cím választása**, kattintson a **új létrehozása**, majd adja meg a nyilvános IP-cím nevére. Ebben a példában a nyilvános IP-cím neve *myAGPublicIPAddress*. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
-8. Kattintson a **HTTPS** a protokoll, a figyelőt, és győződjön meg arról, hogy a port számít, ha **443-as**.
-9. A mappa ikonra, és keresse meg a *appgwcert.pfx* tanúsítványt, amelyet korábban létrehozott töltse fel.
-10. Adja meg *mycert1* a tanúsítvány neve és *Azure123456!* a jelszót, és kattintson a **OK**.
+6. Válassza ki **OK** hozhat létre a virtuális hálózatot és alhálózatot.
+7. Válassza ki **egy nyilvános IP-cím választása**, jelölje be **új létrehozása**, majd adja meg a nyilvános IP-cím nevére. Ebben a példában a nyilvános IP-cím neve *myAGPublicIPAddress*. Az alapértelmezett értékeket a többi beállítás esetében fogadja el, majd **OK**.
+8. Válassza ki **HTTPS** a protokoll, a figyelőt, és győződjön meg arról, hogy a port számít, ha **443-as**.
+9. Válassza ki a mappa ikont, és keresse meg a *appgwcert.pfx* tanúsítványt, amelyet korábban létrehozott töltse fel.
+10. Adja meg *mycert1* a tanúsítvány neve és *Azure123456!* a jelszót, és válassza ki a **OK**.
 
     ![Új alkalmazásátjáró létrehozása](./media/create-ssl-portal/application-gateway-create.png)
 
-11. Tekintse át a beállításokat az Összegzés lapon, és kattintson **OK** a hálózati erőforrások és az application gateway létrehozásához. Az application gateway hozhatók létre, várjon, amíg az üzembe helyezés sikeresen befejeződik, mielőtt továbblép a következő szakaszban több percig is eltarthat.
+11. Tekintse át a beállításokat az Összegzés lapon, és válassza ki **OK** a hálózati erőforrások és az application gateway létrehozásához. Az application gateway hozhatók létre, várjon, amíg az üzembe helyezés sikeresen befejeződik, mielőtt továbblép a következő szakaszban több percig is eltarthat.
 
 ### <a name="add-a-subnet"></a>Alhálózat hozzáadása
 
-1. Kattintson a **Minden erőforrás** elemre a bal oldali menüben, majd kattintson a **myVNet** lehetőségre az erőforráslistában.
-2. Kattintson a **alhálózatok**, és kattintson a **alhálózati**.
+1. Válassza ki **összes erőforrás** a bal oldali menüben, és válassza ki a **myVNet** az erőforrások listájában.
+2. Válassza ki **alhálózatok**, majd válassza ki **alhálózati**.
 
     ![Alhálózat létrehozása](./media/create-ssl-portal/application-gateway-subnet.png)
 
-3. Adja meg a *myBackendSubnet* nevet az alhálózat neveként, majd kattintson az **OK** gombra.
+3. Adja meg *myBackendSubnet* nevét az alhálózat és válassza ki a **OK**.
 
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
-Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazásátjáró háttérkiszolgálóiként fogunk használni. A virtuális gépeken emellett telepíti az IIS-t annak ellenőrzéséhez, hogy az alkalmazásátjáró sikeresen létrejött-e.
+Ebben a példában az application gateway háttérkiszolgálóiként használt két virtuális gépet hoz létre. Az IIS-et is telepíti az application gateway sikeres létrehozásának ellenőrzéséhez a virtuális gépeket.
 
 ### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-1. Kattintson az **Új** lehetőségre.
-2. Kattintson a **számítási** majd **Windows Server 2016 Datacenter** a kiemelt lista.
+1. Válassza az **Új** lehetőséget.
+2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet a Kiemeltek listából.
 3. Adja meg a következő értékeket a virtuális gép számára:
 
     - A virtuális gép neve *myVM*.
@@ -120,14 +118,14 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
     - Válassza a **Meglévő használata**, majd a *myResourceGroupAG* lehetőséget.
 
 4. Kattintson az **OK** gombra.
-5. A virtuális gép méreténél válassza a **DS1_V2** lehetőséget, majd kattintson a **Kiválasztás** gombra.
+5. Válassza ki **DS1_V2** méretét, a virtuális gépet, és válassza **kiválasztása**.
 6. Győződjön meg róla, hogy virtuális hálózatként a **myVNet**, alhálózatként pedig a **myBackendSubnet** van kiválasztva. 
 7. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
 8. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
 
 ### <a name="install-iis"></a>Az IIS telepítése
 
-1. Nyissa meg az interaktív felületet, és győződjön meg róla, hogy a **PowerShell** van beállítva.
+1. Nyissa meg az interaktív shell, és győződjön meg arról, hogy van-e állítva **PowerShell**.
 
     ![Egyéni bővítmény telepítése](./media/create-ssl-portal/application-gateway-extension.png)
 
@@ -149,17 +147,17 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
 
 ### <a name="add-backend-servers"></a>Háttérkiszolgálók hozzáadása
 
-1. Kattintson a **összes erőforrás**, és kattintson a **myAppGateway**.
-1. Kattintson a **Háttérkészletek** lehetőségre. Az alapértelmezett készlet automatikusan létrejött az alkalmazásátjáróval együtt. Kattintson az **appGatewayBackendPool** lehetőségre.
-1. Kattintson a **Hozzáadás cél** minden Ön által létrehozott virtuális gép hozzáadásához a háttérkészlethez.
+1. Válassza ki **összes erőforrás**, majd válassza ki **myAppGateway**.
+1. Válassza ki **háttérkészletek**. Az alapértelmezett készlet automatikusan létrejött az alkalmazásátjáróval együtt. Válassza ki **appGatewayBackendPool**.
+1. Válassza ki **Hozzáadás cél** minden Ön által létrehozott virtuális gép hozzáadásához a háttérkészlethez.
 
     ![Háttérkiszolgálók hozzáadása](./media/create-ssl-portal/application-gateway-backend.png)
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-1. Kattintson a **összes erőforrás**, és kattintson a **myAGPublicIPAddress**.
+1. Válassza ki **összes erőforrás**, majd válassza ki **myAGPublicIPAddress**.
 
     ![Alkalmazásátjáró nyilvános IP-címének rögzítése](./media/create-ssl-portal/application-gateway-ag-address.png)
 
@@ -173,11 +171,5 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * Önaláírt tanúsítvány létrehozása
-> * Alkalmazásátjáró létrehozása a tanúsítvánnyal
-> * A háttér-kiszolgálóként használt virtuális gépek létrehozása
-
-Az application Gateway átjárók és a kapcsolódó erőforrásokkal kapcsolatos további információkért folytassa az útmutató cikkekre.
+> [!div class="nextstepaction"]
+> [További tudnivalók a mi mindent az Azure Application Gateway segítségével](application-gateway-introduction.md)

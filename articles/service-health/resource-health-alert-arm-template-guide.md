@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
 ms.openlocfilehash: afa89fc90552c7ccba1fcea0945ee223d0096be4
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59047517"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager-sablonok használatával a resource health-riasztások konfigurálása
@@ -164,7 +164,7 @@ Egy erőforrás-csoport szintű hatókörhöz a hatókörök szakasz hasonlóan 
 ],
 ```
 
-Példa: `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
+Például:`"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
 > Nyissa meg az Azure Portalon, és tekintse meg az URL-címe, ez a karakterlánc lekérése az Azure-erőforrás megtekintésekor.
 
@@ -429,7 +429,7 @@ Azonban meg fogja tudja, milyen konfigurációk érvényesek az Ön számára le
 
 További információ a Resource Health:
 -  [Az Azure Resource Health áttekintése](Resource-health-overview.md)
--  [Az Azure Resource Health segítségével elérhető erőforrástípusok és állapotellenőrzések](resource-health-checks-resource-types.md)
+-  [Az Azure Resource Health segítségével elérhető erőforrástípusok és állapot-ellenőrzések](resource-health-checks-resource-types.md)
 
 Hozza létre a Service Health-riasztások:
 -  [Service Health-riasztások beállítása](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 

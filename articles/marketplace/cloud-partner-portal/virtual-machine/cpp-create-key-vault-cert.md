@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
 ms.openlocfilehash: a25418f30225184424011527def468d0d3909563
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045696"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Tanúsítványok létrehozása az Azure Key Vault
@@ -39,7 +39,7 @@ Ezt a munkát használhatja az új vagy meglévő Azure-erőforráscsoportban.  
 
 Szerkessze és futtassa a következő Azure Powershell-parancsprogram létrehozásához a tanúsítványfájlt (.pfx) a helyi mappában.  Cserélje le a következő paraméterek értékeit kell:
 
-|  **Paraméter**        |   **Leírás**                                                               |
+|  **A paraméter**        |   **Leírás**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$certroopath` | A .pfx fájlt a helyi mappa  |
 | `$location`    | Az Azure standard földrajzi helyek egyikén  |
@@ -85,7 +85,7 @@ Szerkessze és futtassa a következő Azure Powershell-parancsprogram létrehoz�
 
 Másolja ki a tartalmát a [központi telepítési sablont a key vault](./cpp-key-vault-deploy-template.md) egy fájl a helyi gépen. (az alábbi példa parancsprogram, ehhez az erőforráshoz van `C:\certLocation\keyvault.json`.)  Szerkessze és futtassa a következő Azure Powershell-parancsfájlt hozhat létre egy Azure Key Vault-példány és a társított erőforráscsoportokhoz.  Cserélje le a következő paraméterek értékeit kell:
 
-|  **Paraméter**        |   **Leírás**                                                               |
+|  **A paraméter**        |   **Leírás**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$postfix`            | Üzembe helyezés azonosítók hozzáfűzi tetszőleges numerikus karakterlánc                     |
 | `$rgName`             | Hozhat létre Azure-erőforrás (RG) csoport neve                                        |

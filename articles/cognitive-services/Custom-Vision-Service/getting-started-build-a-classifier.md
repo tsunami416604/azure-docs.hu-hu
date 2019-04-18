@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
 ms.openlocfilehash: d0f0f3b120187a7538989f219876a8c10569a98e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051472"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>A Custom Vision besorolás létrehozása
@@ -55,7 +55,7 @@ A böngészőben navigáljon a [Custom Vision weblap](https://customvision.ai) v
     |__Általános__| Optimalizált széles kép fájlosztályozási feladatokhoz. Ha más tartományok sem megfelelő, vagy Ön nem tudja biztosan, melyik tartománya, válassza ki, válassza ki a általános tartományt. |
     |__Élelmiszer__|Optimalizált csészék fényképeket, látnák őket egy étterem menüben. Ha szeretné besorolni különálló vagy zöldségek fényképek, használja az élelmiszer-tartomány.|
     |__Arcrész__|Könnyen felismerhető névre arcrész természetes és mesterséges optimalizálva. Ez a tartomány akkor működik a legjobban, ha a környezet a fénykép fókuszjelzőknek jól láthatóknak. Ez a tartomány működik, akkor is, ha a környezet némileg fedhetik személyek takarja.|
-    |__Kiskereskedelem__|Optimalizált rendszerképeket, amelyeket egy vásárlási katalógus vagy a vásárlási webhelyén találhatók. Ha azt szeretné, hogy nagy pontosságú Írisz ruha pants és ing között, használja ezt a tartományt.|
+    |__Kereskedelmi__|Optimalizált rendszerképeket, amelyeket egy vásárlási katalógus vagy a vásárlási webhelyén találhatók. Ha azt szeretné, hogy nagy pontosságú Írisz ruha pants és ing között, használja ezt a tartományt.|
     |__Kompakt tartományok__| A korlátozások a mobileszközökön a valós idejű besorolás optimalizálva. A modellek kompakt tartományok által létrehozott helyi futtatásához exportálhatók.|
 
 1. Végül válassza __Create project__.
@@ -130,5 +130,5 @@ Minden alkalommal, amikor Ön betaníthatja az, hozzon létre egy új _iteráci�
 
 Ebben az útmutatóban útmutatóból megtudhatta, hogyan hozhat létre, és a egy kép osztályozási modell a Custom Vision webhelyen betanításához. Ezután kérdezze le a további tájékoztatást a modell javításának az iteratív folyamat.
 
-[Tesztelje, és a modellek újratanítása](test-your-model.md)
+[Modell tesztelése és újratanítása](test-your-model.md)
 

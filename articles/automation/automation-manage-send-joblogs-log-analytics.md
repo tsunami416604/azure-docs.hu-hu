@@ -10,10 +10,10 @@ ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496590"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Feladat állapota és a feladatstreamek továbbítja automatizálást az Azure Monitor naplóira
@@ -68,8 +68,7 @@ Ha meg kell keresnie a *neve* az Automation-fiók az Azure Portalon válassza ki
 
 Ez a szkript futtatása után is igénybe vehet egy óra, az Azure Monitor naplóira új JobLogs vagy ír JobStreams rekordok megtekintése előtt.
 
-A naplók megtekintéséhez futtassa a következő lekérdezést a log analytics naplóbeli keresés:
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+A naplók megtekintéséhez futtassa a következő lekérdezést a log analytics naplóbeli keresés: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Konfiguráció ellenőrzése
 
@@ -137,8 +136,7 @@ Diagnosztika az Azure Automation két rekordtípust hoz létre az Azure Monitor 
 
 Most, hogy az Automation-feladat naplókat küld az Azure Monitor naplóira kezdi, lássuk, mi mindent az Azure Monitor naplóira belül ezeket a naplókat.
 
-A naplók megtekintéséhez futtassa a következő lekérdezést:
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+A naplók megtekintéséhez futtassa a következő lekérdezést: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>E-mail küldése, ha a runbook-feladat meghiúsul, vagy felfüggeszti a
 A kiemelt ügyfeleknek küldtük egyik kéri arra, hogy küldjön egy e-mailt vagy egy szöveges, ha valami probléma merül fel a runbook-feladat van.   

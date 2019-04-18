@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 196b00f1268eada20d0e35473dc6eb43c9e48df6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045269"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Hozzon létre a Service Bus-erőforrások Azure Resource Manager-sablonok használatával
@@ -258,7 +258,7 @@ Most láthatta az alapvető munkafolyamat és a parancsok az Azure Resource Mana
 * [Az Azure Resource Manager áttekintése][Azure Resource Manager overview]
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel][Deploy resources with Azure Resource Manager templates]
 * [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Microsoft.ServiceBus resource types](/azure/templates/microsoft.servicebus/allversions)
+* [Microsoft.ServiceBus erőforrástípusok](/azure/templates/microsoft.servicebus/allversions)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/resource-group-overview.md
 [Deploy resources with Azure Resource Manager templates]: ../azure-resource-manager/resource-group-template-deploy.md

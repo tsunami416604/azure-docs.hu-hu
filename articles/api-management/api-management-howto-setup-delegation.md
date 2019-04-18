@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 796bea3c64ef7fc03367707461d13e0ea2514b8b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051756"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Annak a felhasználói és termékelőfizetés delegálása
@@ -69,10 +69,10 @@ Most szeretne létrehozni a **delegálási végpont**. Számos művelet végreha
    * Hasonlítsa össze a fenti kiszámított kivonat értékéhez a **sig** lekérdezési paraméter. Ha a két kivonatok megegyeznek, léphet tovább a következő lépéssel, ellenkező esetben visszautasítja a kérelmüket.
 3. Győződjön meg arról, hogy a bejelentkezési kérelem azért küldtük Önnek, / regisztrációs: a **művelet** értékre lesz beállítva a lekérdezési paraméter "**bejelentkezési**".
 4. Jelentkezzen be vagy Regisztráljon a felhasználói felületének a felhasználók bemutatásához
-5. Ha a felhasználó regisztrál akkor hozzon létre egy megfelelő fiókot a számukra az API Management szolgáltatásban. [Hozzon létre egy felhasználót] az API Management REST API-val. Ha ezt arról, hogy ugyanazt az értéket, ahogy a felhasználókhoz tartozó tárolóban vagy egy Azonosítót, amely akkor is nyomon követheti, beállítva a felhasználói azonosító.
+5. Ha a felhasználó regisztrál akkor hozzon létre egy megfelelő fiókot a számukra az API Management szolgáltatásban. [Felhasználó létrehozása] az API Management REST API-val. Ha ezt arról, hogy ugyanazt az értéket, ahogy a felhasználókhoz tartozó tárolóban vagy egy Azonosítót, amely akkor is nyomon követheti, beállítva a felhasználói azonosító.
 6. Amikor a felhasználó sikeres hitelesítése:
    
-   * [egy egyszeri bejelentkezéses (SSO) jogkivonat kérelmezéséhez] az API Management REST API-val
+   * [egyszeri bejelentkezéses (SSO) jogkivonat kérése] az API Management REST API-val
    * lekérdezés returnUrl paraméter hozzáfűzése a fent az API-hívás kapott egyszeri bejelentkezési URL-címe:
      
      > Ha például https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
@@ -130,7 +130,7 @@ Ezután győződjön meg, hogy a delegálási végpont does a következő művel
      > 
    * Hasonlítsa össze a fenti kiszámított kivonat értékéhez a **sig** lekérdezési paraméter. Ha a két kivonatok megegyeznek, léphet tovább a következő lépéssel, ellenkező esetben visszautasítja a kérelmüket.
 3. A kért művelet típusa alapján termék-előfizetés feldolgozását **művelet** – például számlázás, további kérdéseket, és így tovább.
-4. Sikeresen megtörtént a felhasználó feliratkoztatása a saját rendszerében a termék, a Feliratkozás a felhasználó által az API Management-termékhez [termék-előfizetés a REST API hívásának].
+4. Sikeresen megtörtént a felhasználó feliratkoztatása a saját rendszerében a termék, a Feliratkozás a felhasználó által az API Management-termékhez [a REST API hívásának a termék-előfizetés].
 
 ## <a name="delegate-example-code"> </a> Példakód
 
@@ -188,6 +188,6 @@ A delegálás további információkért tekintse meg a következő videót:
 [Felhasználó létrehozása]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
 [a REST API hívásának a termék-előfizetés]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
 [Next steps]: #next-steps
-[alább példakód]: #delegate-example-code
+[alábbi példakód]: #delegate-example-code
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 

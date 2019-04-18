@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
 ms.openlocfilehash: 732816ce10836d5828e7f325a3eb3fe31627d4f4
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012240"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Gyors útmutató: Beszéd, a C++, a Windows szintetizálásához a Speech SDK-val
@@ -68,5 +68,5 @@ További példákat, például a következőkkel speech hangfájl, mentse a Gith
 
 ## <a name="see-also"></a>Lásd még
 
-- [Hangtípusok testreszabása](how-to-customize-voice-font.md)
-- [Hangminták felvétele](record-custom-voice-samples.md)
+- [Hangtípust testreszabása](how-to-customize-voice-font.md)
+- [Rekord voice-minták](record-custom-voice-samples.md)

@@ -8,10 +8,10 @@ ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 8839d7ea93bcb205b1900e63d3ab98394e72cd75
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904865"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnosztikai naplózás az Azure Cosmos DB-ben 
@@ -440,20 +440,20 @@ A következő táblázat ismerteti a tartalom minden eseménynapló-bejegyzés.
 
 | Az Azure Storage mezőjével vagy tulajdonságával | Az Azure Monitor-naplók tulajdonság | Leírás |
 | --- | --- | --- |
-| **time** | **TimeGenerated** | Dátuma és időpontja (UTC), ha a művelet történt. |
+| **idő** | **TimeGenerated** | Dátuma és időpontja (UTC), ha a művelet történt. |
 | **resourceId** | **Erőforrás** | Az Azure Cosmos DB-fiókot, amelynek a naplói engedélyezve vannak.|
-| **category** | **Kategória** | Az Azure Cosmos DB-naplók **DataPlaneRequests** az egyetlen elérhető érték. |
-| **operationName** | **OperationName** | A művelet neve. Ez az érték a következő műveletek bármelyike lehet: Hozzon létre, frissítés, olvasási, ReadFeed, törlés, csere, SQL-lekérdezés, lekérdezés, JSQuery, Head, HeadFeed vagy Upsert hajtható végre.   |
-| **properties** | n/a | Ez a mező tartalma kövesse azokat a sorokat ismerteti. |
-| **Tevékenységazonosító** | **activityId_g** | A naplózott műveletnek egyedi GUID azonosítója. |
-| **UserAgent** | **userAgent_s** | Egy karakterlánc, amely meghatározza a kérést végrehajtó felhasználó ügyfélügynök. A formátum a következő {felhasználói ügynök neve} / {version}.|
+| **kategória** | **Kategória** | Az Azure Cosmos DB-naplók **DataPlaneRequests** az egyetlen elérhető érték. |
+| **OperationName** | **OperationName** | A művelet neve. Ez az érték a következő műveletek bármelyike lehet: Hozzon létre, frissítés, olvasási, ReadFeed, törlés, csere, SQL-lekérdezés, lekérdezés, JSQuery, Head, HeadFeed vagy Upsert hajtható végre.   |
+| **Tulajdonságok** | n/a | Ez a mező tartalma kövesse azokat a sorokat ismerteti. |
+| **activityId** | **activityId_g** | A naplózott műveletnek egyedi GUID azonosítója. |
+| **userAgent** | **userAgent_s** | Egy karakterlánc, amely meghatározza a kérést végrehajtó felhasználó ügyfélügynök. A formátum a következő {felhasználói ügynök neve} / {version}.|
 | **requestResourceType** | **requestResourceType_s** | Elért erőforrás típusa. Ez az érték a következő erőforrás-típusok egyike lehet: Adatbázis, tároló, a dokumentum, melléklet, felhasználói, engedélyt, StoredProcedure, eseményindító, UserDefinedFunction vagy ajánlat. |
 | **statusCode** | **statusCode_s** | A válasz állapota a műveletet. |
 | **requestResourceId** | **ResourceId** | Az erőforrás-azonosító, amely a kérelem vonatkozik. Az érték databaseRid, collectionRid vagy documentRid végrehajtott művelettől függően előfordulhat, hogy mutasson.|
 | **clientIpAddress** | **clientIpAddress_s** | Az ügyfél IP-cím. |
 | **requestCharge** | **requestCharge_s** | A művelet által használt fenntartott egységek száma |
 | **collectionRid** | **collectionId_s** | A gyűjtemény egyedi azonosítója.|
-| **időtartam** | **duration_s** | A művelet az órajelben időtartama. |
+| **Időtartam** | **duration_s** | A művelet az órajelben időtartama. |
 | **requestLength** | **requestLength_s** | A kérelem bájtban hossza. |
 | **responseLength** | **responseLength_s** | A válasz bájtban hossza.|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Ezt az értéket kötelező nem üres Ha [erőforrás-jogkivonatokat](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) hitelesítéshez használhatók. Az érték a felhasználó erőforrás-Azonosítójára mutat. |

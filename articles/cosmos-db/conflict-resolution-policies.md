@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/24/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 24201cfd657d4f23eb962b7407ed20262d780cf7
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: ebea55f769ca16bfa344d0a100fe16cec6d784d0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407419"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684225"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Ütközéstípusok és -feloldási szabályzatok
 
@@ -37,11 +37,11 @@ Az Azure Cosmos DB írási ütközések feloldása egy rugalmas házirendekkel v
   > [!NOTE]
   > Az alapértelmezett ütközésfeloldási házirend utolsó írás Wins. Érhető el a következő API-kat: Az SQL, MongoDB, Cassandra, Gremlin és táblában.
 
-  További tudnivalókért lásd: [példák LWW használó megoldás házirendek ütköznek](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy).
+  További tudnivalókért lásd: [példák LWW használó megoldás házirendek ütköznek](how-to-manage-conflicts.md).
 
 - **Egyéni**: A névfeloldási házirend készült alkalmazás által meghatározott szemantika ütközések egyeztetéséhez. Ha ezt a szabályzatot állít be az Azure Cosmos-tároló, is regisztrálnia kell egy *tárolt eljárás egyesítése*. Ez az eljárás automatikusan megnyílik, ha ütközést észlel a kiszolgálón az adatbázis-tranzakciók alapján. A rendszer biztosít pontosan egyszer garantálja a kötelezettségvállalás protokoll részeként egy merge eljárás végrehajtására.  
 
-  Ha a egyéni feloldási lehetőséggel konfigurálja a tároló és a egy merge eljárás a tároló regisztrálása nem sikerült, vagy az egyesítési eljárás kivételt jelez, futtatás közben, az ütközések írt a *hírcsatorna ütközések*. Az alkalmazás ezután kell manuálisan oldja fel az ütközést a hírcsatorna-ütközéseket. További tudnivalókért lásd: [példák az egyéni házirend használatával, és hogyan használható a hírcsatorna-ütközések](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy).
+  Ha a egyéni feloldási lehetőséggel konfigurálja a tároló és a egy merge eljárás a tároló regisztrálása nem sikerült, vagy az egyesítési eljárás kivételt jelez, futtatás közben, az ütközések írt a *hírcsatorna ütközések*. Az alkalmazás ezután kell manuálisan oldja fel az ütközést a hírcsatorna-ütközéseket. További tudnivalókért lásd: [példák az egyéni házirend használatával, és hogyan használható a hírcsatorna-ütközések](how-to-manage-conflicts.md).
 
   > [!NOTE]
   > Egyéni ütközésfeloldási házirend csak az SQL API-fiókok esetében érhető el.
@@ -51,6 +51,5 @@ Az Azure Cosmos DB írási ütközések feloldása egy rugalmas házirendekkel v
 Megtudhatja, hogyan ütközés feloldása szabályzatok konfigurálására:
 
 * [Az alkalmazások több főkiszolgálós konfigurálása](how-to-multi-master.md)
-* [A LWW ütközésfeloldási házirend használata](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
-* [Az egyéni ütközésfeloldási házirend használata](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
+* [Ütközés feloldása házirendek kezelése](how-to-manage-conflicts.md)
 * [Az ütközések csatorna beolvasása](how-to-manage-conflicts.md#read-from-conflict-feed)

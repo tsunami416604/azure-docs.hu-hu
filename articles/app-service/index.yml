@@ -106,7 +106,7 @@ sections:
         style: ordered
         items:
           - html: Hozzon létre egy alkalmazást a <a href="/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase">.NET és az Azure SQL Database</a> vagy a <a href="/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app">Node.js és a MongoDB</a> használatával
-          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Meglévő egyéni tartomány leképezése az alkalmazásra </a>
+          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Meglévő egyéni tartomány kapcsolása az alkalmazáshoz </a>
           - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">Meglévő SSL-tanúsítvány kötése az alkalmazáshoz</a>
           - html: <a href="/azure/app-service/app-service-web-tutorial-content-delivery-network">CDN hozzáadása az alkalmazáshoz</a>
   - title: Fejlessze a készségeit a Microsoft Learnnel

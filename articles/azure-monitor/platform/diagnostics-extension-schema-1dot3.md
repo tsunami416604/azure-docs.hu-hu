@@ -10,10 +10,10 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59497083"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Az Azure Diagnostics 1.3 és újabb konfigurációs séma
@@ -422,7 +422,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**PublicConfig**|Kötelező. Lásd: leírás máshol ezen az oldalon.|  
 |**PrivateConfig**|Választható. Lásd: leírás máshol ezen az oldalon.|  
-|**IsEnabled**|Logikai érték. Lásd: leírás máshol ezen az oldalon.|  
+|**isEnabled**|Logikai érték. Lásd: leírás máshol ezen az oldalon.|  
 
 ## <a name="publicconfig-element"></a>PublicConfig elem  
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig*
@@ -432,7 +432,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Gyermekelemek|Leírás|  
 |--------------------|-----------------|  
 |**WadCfg**|Kötelező. Lásd: leírás máshol ezen az oldalon.|  
-|**Tárfiók**|Az adatok tárolásához Azure Storage-fiók neve. Előfordulhat, hogy is adható meg paraméterként a Set-AzureServiceDiagnosticsExtension parancsmag végrehajtása közben.|  
+|**StorageAccount**|Az adatok tárolásához Azure Storage-fiók neve. Előfordulhat, hogy is adható meg paraméterként a Set-AzureServiceDiagnosticsExtension parancsmag végrehajtása közben.|  
 |**StorageType**|Lehet *tábla*, *Blob*, vagy *TableAndBlob*. Alapértelmezett érték a táblában. TableAndBlob akkor kell kiválasztani, amikor diagnosztikai adatokat írt kétszer – egyszer minden típusa.|  
 |**LocalResourceDirectory**|A könyvtár a virtuális gépen, amelyen a Monitoring Agent tárolja az eseményadatokat. Ha nem, állítsa be, az alapértelmezett könyvtárat használja:<br /><br /> Feldolgozói/webes szerepkör: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Egy virtuális géphez: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Szükséges attribútumok a következők:<br /><br /> - **elérési út** – a rendszer az Azure Diagnostics által használandó könyvtárába.<br /><br /> - **expandEnvironment** – azt szabályozza, hogy környezeti változókat az elérési útban bontva.|  
 
@@ -460,9 +460,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**CrashDumps**|Lásd: leírás máshol ezen az oldalon.|  
 |**DiagnosticInfrastructureLogs**|Azure Diagnostics által létrehozott naplók gyűjtésének engedélyezéséhez. A diagnosztikai infrastruktúra naplói hasznosak hibáinak elhárítása a diagnosztikai rendszer magát. Nem kötelező attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – konfigurálja a gyűjtött naplók minimális súlyossági szintje.<br /><br /> - **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
-|**Könyvtárak**|Lásd: leírás máshol ezen az oldalon.|  
+|**Címtárak**|Lásd: leírás máshol ezen az oldalon.|  
 |**EtwProviders**|Lásd: leírás máshol ezen az oldalon.|  
-|**Mérőszámok**|Lásd: leírás máshol ezen az oldalon.|  
+|**Metrikák**|Lásd: leírás máshol ezen az oldalon.|  
 |**PerformanceCounters**|Lásd: leírás máshol ezen az oldalon.|  
 |**WindowsEventLog**|Lásd: leírás máshol ezen az oldalon.|
 |**DockerSources**|Lásd: leírás máshol ezen az oldalon. |
@@ -485,7 +485,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**CrashDumpConfiguration**|Kötelező. Minden folyamathoz konfigurációs értékeket határozza meg.<br /><br /> A következő attribútumot is szükség:<br /><br /> **processName** – a nevét, a folyamat egy összeomlási memóriakép a gyűjtendő Azure Diagnostics szeretne.|  
 
 ## <a name="directories-element"></a>Könyvtárak elem
- *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration -  Directories*
+ *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - könyvtárak*
 
  Lehetővé teszi a tartalmát egy könyvtárat, az IIS nem sikerült hozzáférést kérelmekről készült naplók és/vagy IIS-naplók gyűjtését.  
 
@@ -501,7 +501,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="datasources-element"></a>Adatforrások elem  
- *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories - DataSources*
+ *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - könyvtárak - adatforrások*
 
  Figyelendő könyvtárainak listáját.  
 
@@ -526,7 +526,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="etwproviders-element"></a>EtwProviders elem  
- *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders*
+ *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders*
 
  Konfigurálja az ETW-események az eseményforrás gyűjteménye, illetve az ETW-jegyzékfájl-alapú szolgáltatók.  
 
@@ -560,7 +560,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="metrics-element"></a>Metrikák elem  
- *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Metrics*
+ *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - metrikák*
 
  Lehetővé teszi, hogy hozzon létre egy számláló teljesítménytáblája, amely gyors lekérdezéseket van optimalizálva. Minden egyes megadott teljesítményszámláló a **PerformanceCounters** elem a metrikák tábla mellett a teljesítményszámláló tábla tárolja.  
 
@@ -613,9 +613,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Választható. Meghatározza a maximális fájlrendszer-tárhely, amelyet a megadott adatokat.<br /><br /> Az alapértelmezett érték a 0.|  
-|**scheduledTransferLogLevelFilter**|**sztring**|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**, az összes napló adatforgalmi. Egyéb (a legerősebbtől a legnagyobb legalább információkat) lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **Kritikus**.|  
-|**scheduledTransferPeriod**|**időtartam**|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
-|**fogadóként** |**sztring**| 1.5-ös hozzá. Választható. A fogadó hely is a diagnosztikai adatok küldése mutat. Ha például az Application Insights vagy az Event Hubs.|  
+|**scheduledTransferLogLevelFilter**|**string**|Választható. Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**, az összes napló adatforgalmi. Egyéb (a legerősebbtől a legnagyobb legalább információkat) lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **Kritikus**.|  
+|**scheduledTransferPeriod**|**Időtartam**|Választható. Ütemezett átvitel az adatokat, a legközelebbi egész percre kerekítve közötti időköz.<br /><br /> Az alapértelmezett érték PT0S.|  
+|**fogadóként** |**string**| 1.5-ös hozzá. Választható. A fogadó hely is a diagnosztikai adatok küldése mutat. Ha például az Application Insights vagy az Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
@@ -624,7 +624,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**Statisztikák**|Arra utasítja a rendszert, hogy a Docker-tárolók statisztikák gyűjtése|  
+|**Stats**|Arra utasítja a rendszert, hogy a Docker-tárolók statisztikák gyűjtése|  
 
 ## <a name="sinksconfig-element"></a>SinksConfig Element  
  *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig*
@@ -633,7 +633,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**Sink (Fogadó)**|Lásd: leírás máshol ezen az oldalon.|  
+|**Sink**|Lásd: leírás máshol ezen az oldalon.|  
 
 ## <a name="sink-element"></a>Fogadó-elem
  *Fa: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink*
@@ -644,12 +644,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
-|**név**|sztring|A sinkname azonosító karakterlánc.|  
+|**name**|sztring|A sinkname azonosító karakterlánc.|  
 
 |Elem|Typo|Leírás|  
 |-------------|----------|-----------------|  
 |**Application Insights**|sztring|Csak akkor, amikor adatokat küld az Application Insights használja. Egy olyan aktív az Application Insights-fiók, amely hozzáfér a kialakítási kulcsot tartalmaz.|  
-|**Csatornák**|sztring|Minden további szűréshez, amely a stream, amikor az egyik|  
+|**csatornák**|sztring|Minden további szűréshez, amely a stream, amikor az egyik|  
 
 ## <a name="channels-element"></a>Csatornák elem  
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - fogadó - csatornák*
@@ -660,7 +660,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elem|Typo|Leírás|  
 |-------------|----------|-----------------|  
-|**Csatorna**|sztring|Lásd: leírás máshol ezen az oldalon.|  
+|**Channel**|sztring|Lásd: leírás máshol ezen az oldalon.|  
 
 ## <a name="channel-element"></a>Csatorna elem
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - fogadó - csatornák - csatorna*
@@ -671,8 +671,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Attribútumok|Typo|Leírás|  
 |----------------|----------|-----------------|  
-|**logLevel**|**sztring**|Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**, az összes napló adatforgalmi. Egyéb (a legerősebbtől a legnagyobb legalább információkat) lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **Kritikus**.|  
-|**név**|**sztring**|Tekintse meg a csatorna egyedi nevet|  
+|**logLevel**|**string**|Meghatározza a naplóbejegyzéseket, amelyeket a minimális súlyossági szintet. Az alapértelmezett érték **Undefined**, az összes napló adatforgalmi. Egyéb (a legerősebbtől a legnagyobb legalább információkat) lehetséges értékek a következők **részletes**, **információk**, **figyelmeztetés**, **hiba**, és **Kritikus**.|  
+|**name**|**string**|Tekintse meg a csatorna egyedi nevet|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig Element
@@ -686,7 +686,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Gyermekelemek|Leírás|  
 |--------------------|-----------------|  
-|**Tárfiók**|A storage-fiók használata. A következő attribútumok szükségesek.<br /><br /> - **név** – a tárfiók nevére.<br /><br /> - **kulcs** – a tárfiók kulcsa.<br /><br /> - **végpont** – a végpontot, hogy a tárfiók eléréséhez. <br /><br /> -**sasToken** (megadhat egy tárfiókkulcs helyett SAS-tokent a privát config 1.8.1)-hozzá. Ha meg van adva, a tárfiók-kulcsot a rendszer figyelmen kívül hagyja. <br />A SAS-jogkivonat vonatkozó követelmények: <br />– Támogatja a fiók SAS-token <br />- *b*, *t* szolgáltatástípusok szükség. <br /> - *egy*, *c*, *u*, *w* engedélyekre szükség. <br /> - *c*, *o* erőforrástípusok szükség. <br /> – Csak a HTTPS-protokollt támogatja <br /> -Elindítása és a lejárati idő érvényesnek kell lennie.|  
+|**StorageAccount**|A storage-fiók használata. A következő attribútumok szükségesek.<br /><br /> - **név** – a tárfiók nevére.<br /><br /> - **kulcs** – a tárfiók kulcsa.<br /><br /> - **végpont** – a végpontot, hogy a tárfiók eléréséhez. <br /><br /> -**sasToken** (megadhat egy tárfiókkulcs helyett SAS-tokent a privát config 1.8.1)-hozzá. Ha meg van adva, a tárfiók-kulcsot a rendszer figyelmen kívül hagyja. <br />A SAS-jogkivonat vonatkozó követelmények: <br />– Támogatja a fiók SAS-token <br />- *b*, *t* szolgáltatástípusok szükség. <br /> - *egy*, *c*, *u*, *w* engedélyekre szükség. <br /> - *c*, *o* erőforrástípusok szükség. <br /> – Csak a HTTPS-protokollt támogatja <br /> -Elindítása és a lejárati idő érvényesnek kell lennie.|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled Element  

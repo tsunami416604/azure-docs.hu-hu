@@ -9,10 +9,10 @@ ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896023"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz a helyszíni adatátjáróval
@@ -203,5 +203,5 @@ Telemetria használható figyeléséhez és hibaelhárításához. Alapértelmez
 
 ## <a name="next-steps"></a>További lépések
 * [Telepítse és konfigurálja a helyszíni adatátjáró](analysis-services-gateway-install.md).   
-* [Manage Analysis Services](analysis-services-manage.md)
+* [Analysis Services kezelése](analysis-services-manage.md)
 * [Adatok lekérése az Azure Analysis Services](analysis-services-connect.md)

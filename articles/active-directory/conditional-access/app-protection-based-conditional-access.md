@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2250449c0ef342332945b80cb10cb9a02885b259
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496930"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Alkalmazásvédelmi szabályzat szükséges a cloud app hozzáféréshez a feltételes hozzáférés (előzetes verzió)
@@ -126,7 +126,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
     ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/05.png)
  
 
-**2. lépés: Az Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange online-hoz az ActiveSync (EAS)**
+**2. lépés: Az Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange online-hoz az ActiveSync (EAS)**
 
 Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi összetevőket:
 
@@ -206,17 +206,17 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
 5. A **hozzáférés-vezérlés**, válassza ki a következő beállításokat:
 
-   - **Eszköz megfelelőként való megjelölésének megkövetelése**
+   - **Megfelelőként megjelölt eszköz megkövetelése**
 
-   - **Alkalmazásvédelmi szabályzat megkövetelése (előzetes verzió)**
+   - **Megkövetelése alkalmazásvédelmi szabályzat (előzetes verzió)**
 
-   - **Az egyik kijelölt vezérlő megkövetelése**   
+   - **A kijelölt feltételek egyikének megkövetelése**   
  
      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/11.png)
 
 
 
-**2. lépés: Egy Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online, az ActiveSync szolgáltatással**
+**2. lépés: Egy Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online, az ActiveSync szolgáltatással**
 
 Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi összetevőket:
 
@@ -238,11 +238,11 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
 5. A **hozzáférés-vezérlés**, válassza ki a következő beállításokat:
 
-   - **Eszköz megfelelőként való megjelölésének megkövetelése**
+   - **Megfelelőként megjelölt eszköz megkövetelése**
 
-   - **Alkalmazásvédelmi szabályzat megkövetelése (előzetes verzió)**
+   - **Megkövetelése alkalmazásvédelmi szabályzat (előzetes verzió)**
 
-   - **Az egyik kijelölt vezérlő megkövetelése**
+   - **A kijelölt feltételek egyikének megkövetelése**
 
      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/11.png)
 
@@ -308,9 +308,9 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
 5. A **hozzáférés-vezérlés**, válassza ki a következő beállításokat:
 
-   - **Eszköz megfelelőként való megjelölésének megkövetelése**
+   - **Megfelelőként megjelölt eszköz megkövetelése**
 
-   - **Alkalmazásvédelmi szabályzat megkövetelése (előzetes verzió)**
+   - **Megkövetelése alkalmazásvédelmi szabályzat (előzetes verzió)**
 
    - **Az összes kijelölt vezérlő megkövetelése**   
  
@@ -318,7 +318,7 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
 
 
-**2. lépés: Egy Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online, az ActiveSync szolgáltatással**
+**2. lépés: Egy Azure AD feltételes hozzáférési szabályzat konfigurálása az Exchange Online, az ActiveSync szolgáltatással**
 
 Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi összetevőket:
 
@@ -340,9 +340,9 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
 5. A **hozzáférés-vezérlés**, válassza ki a következő beállításokat:
 
-   - **Eszköz megfelelőként való megjelölésének megkövetelése**
+   - **Megfelelőként megjelölt eszköz megkövetelése**
 
-   - **Alkalmazásvédelmi szabályzat megkövetelése (előzetes verzió)**
+   - **Megkövetelése alkalmazásvédelmi szabályzat (előzetes verzió)**
 
    - **Az összes kijelölt vezérlő megkövetelése**   
  
@@ -417,14 +417,14 @@ Ebben a lépésben a feltételes hozzáférési szabályzat adja meg az alábbi 
 
    - **Jóváhagyott ügyfélalkalmazás megkövetelése**
 
-   - **Alkalmazásvédelmi szabályzat megkövetelése (előzetes verzió)**
+   - **Megkövetelése alkalmazásvédelmi szabályzat (előzetes verzió)**
 
-   - **Az egyik kijelölt vezérlő megkövetelése**
+   - **A kijelölt feltételek egyikének megkövetelése**
  
      ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/12.png)
 
 
-**2. lépés: Az Intune alkalmazásvédelmi szabályzatot az iOS és Android ügyfélalkalmazások konfigurálása**
+**2. lépés: Az Intune alkalmazásvédelmi szabályzatot az iOS és Android ügyfélalkalmazások konfigurálása**
 
 
 ![Feltételes hozzáférés](./media/app-protection-based-conditional-access/09.png)
