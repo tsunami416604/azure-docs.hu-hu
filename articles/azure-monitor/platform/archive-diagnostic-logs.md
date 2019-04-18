@@ -78,8 +78,8 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-89012
 | --- | --- | --- |
 | ResourceId |Igen |Erőforrás-Azonosítóját, amelyen a diagnosztikai beállítás kívánt erőforrás. |
 | StorageAccountId |Nem |Erőforrás-Azonosítóját a Tárfiókot a diagnosztikai naplók mentéséhez. |
-| Kategóriák |Nem |Naplókategóriák engedélyezéséhez vesszővel tagolt listája. |
-| Engedélyezve |Igen |Logikai érték, amely azt jelzi, hogy diagnosztika engedélyezve van vagy le van tiltva az adott erőforráshoz. |
+| Categories |Nem |Naplókategóriák engedélyezéséhez vesszővel tagolt listája. |
+| Enabled |Igen |Logikai érték, amely azt jelzi, hogy diagnosztika engedélyezve van vagy le van tiltva az adott erőforráshoz. |
 | RetentionEnabled |Nem |Logikai érték, amely azt jelzi, hogy engedélyezve vannak-e adatmegőrzési az erőforráson. |
 | RetentionInDays |Nem |Ennyi nap, amelynek eseményeket a rendszer megőrizze-1 és 2147483647 között. A nulla érték határozatlan ideig tárolja a naplókat. |
 
