@@ -19,10 +19,10 @@ ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6fe74852824c10d24729f785e5e33a17b793161
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878570"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: Vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása
@@ -62,7 +62,7 @@ Az a **válasszon azonosító formátuma** legördülő listában, az alábbi le
 | NameID-formátum | Leírás |
 |---------------|-------------|
 | **Alapértelmezett** | Az Azure AD fog használni az alapértelmezett adatforrás-formátum. |
-| **Tartós** | Az Azure AD állandó használja, a NameID-formátum. |
+| **Állandó** | Az Azure AD állandó használja, a NameID-formátum. |
 | **E-mail cím** | Az Azure AD EmailAddress használja, a NameID-formátum. |
 | **Nincs megadva** | Az Azure AD nem meghatározott használja, a NameID-formátum. |
 | **Átmeneti** | Az Azure AD átmeneti használja, a NameID-formátum. |
@@ -122,8 +122,8 @@ A jogcímek átalakítások funkciók is használható.
 | **Extract() - kapcsolódó között** | A karakterláncrészt adja vissza, amíg meg nem találja a megadott értéket.<br/>Például ha a bemeneti érték "Finance_BSimon_US", az első egyező értéke "Finance_", a második egyező érték "_US", akkor a kimenete a jogcím "BSimon". |
 | **ExtractAlpha() - Prefix** | A karakterlánc a előtag betűrend szerinti rendezés részét adja vissza.<br/>Például ha a bemeneti érték "BSimon_123", majd visszaküldi "BSimon". |
 | **ExtractAlpha() - Suffix** | A karakterlánc utótagja betűrend szerinti rendezés részét adja vissza.<br/>Például ha a bemeneti érték "123_Simon", majd visszaküldi "BSimon". |
-| **ExtractNumeric() - előtag** | A karakterlánc a előtag numerikus részét adja vissza.<br/>Például ha a bemeneti érték "123_BSimon", majd visszaküldi "123". |
-| **ExtractNumeric() - utótag** | A karakterlánc numerikus utótagot részét adja vissza.<br/>Például ha a bemeneti érték "BSimon_123", majd visszaküldi "123". |
+| **ExtractNumeric() - Prefix** | A karakterlánc a előtag numerikus részét adja vissza.<br/>Például ha a bemeneti érték "123_BSimon", majd visszaküldi "123". |
+| **ExtractNumeric() - Suffix** | A karakterlánc numerikus utótagot részét adja vissza.<br/>Például ha a bemeneti érték "BSimon_123", majd visszaküldi "123". |
 | **IfEmpty()** | Ha a bemeneti adat null értékű vagy üres jelenít meg egy attribútum vagy konstans.<br/>Például, ha azt szeretné, a kimenetben egy extensionattribute tárolva, ha az adott felhasználó számára az employeeid üres attribútum. Ehhez a következő értékek állíthatók be:<br/>A paraméter 1(input): user.employeeid<br/>(Kimenet) 2. paraméter: user.extensionattribute1<br/>(Ha nem egyezik meg a kimenet) 3. paraméter: user.employeeid |
 | **IfNotEmpty()** | Ha a bemenet nem null értékű vagy üres jelenít meg egy attribútum vagy konstans.<br/>Például, ha azt szeretné, a kimenetben egy attribútum egy extensionattribute tárolva, ha az adott felhasználó számára az employeeid nem üres. Ehhez a következő értékek állíthatók be:<br/>A paraméter 1(input): user.employeeid<br/>(Kimenet) 2. paraméter: user.extensionattribute1 |
 

@@ -9,10 +9,10 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: a0d2927024dff78021d433b965bb6c0149236ddd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876817"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Adatok migrálása az Azure Cosmos DB Table API-fiókba
@@ -39,7 +39,7 @@ Az Azure Cosmos DB parancssori adatmigrálási eszközének (dt.exe) segítség�
 Egy tábla adatainak migrálásához hajtsa végre az alábbi feladatokat:
 
 1. Töltse le a migrálási eszközt a [GitHubról](https://github.com/azure/azure-documentdb-datamigrationtool).
-2. Futtassa a `dt.exe` fájlt a forgatókönyvnek megfelelő parancssori argumentumokkal. `dt.exe` a következő formátumban veszi a parancsot:
+2. Futtassa a `dt.exe` fájlt a forgatókönyvnek megfelelő parancssori argumentumokkal. A `dt.exe` a következő formátumban fogad el parancsokat:
 
    ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
@@ -74,9 +74,9 @@ Az Azure Cosmos DB Table API (előzetes verzió) szolgáltatásban létrehozott 
 
 ![Képernyőkép a HBase forrásbeállításairól](./media/table-import/cosmos-connection-string.png)
 
-[Azure Table Storage mintaparancs](#azure-table-storage)
+[Példaparancs az Azure Table Storage esetén](#azure-table-storage)
 
-[Mintául szolgáló Azure Cosmos DB Table API (előzetes verzió) parancs](#table-api-preview)
+[Példaparancs az Azure Cosmos DB Table API (előzetes verzió) esetén](#table-api-preview)
 
 ### <a name="command-line-target-settings"></a>Parancssori célbeállítások
 
@@ -147,4 +147,4 @@ Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 Továbbléphet a következő oktatóanyagra, amelyben megtudhatja, hogyan kérdezhet le adatokat az Azure Cosmos DB Table API használatával. 
 
 > [!div class="nextstepaction"]
->[Hogyan kérdezhet le adatokat?](../cosmos-db/tutorial-query-table.md)
+>[Hogyan kérdezhetők le adatok?](../cosmos-db/tutorial-query-table.md)

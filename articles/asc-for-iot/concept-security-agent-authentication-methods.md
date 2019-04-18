@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: d1f9d77d1f87e8d201e2cb034401bb3cae14f41b
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862913"
 ---
 # <a name="security-agent-authentication-methods"></a>Biztonsági ügynök hitelesítési módszerek 
@@ -63,7 +63,7 @@ Ezek az argumentumok az alábbi táblázatban szerepelnek.
 
 |Paraméter|Leírás|Beállítások|
 |---------|---------------|---------------|
-|**identity**|Hitelesítési módszer| **A modul** vagy **eszköz**|
+|**Identitás**|Hitelesítési módszer| **A modul** vagy **eszköz**|
 |**type**|Hitelesítés típusa|**SymmetricKey** vagy **SelfSignedCertificate**|
 |**filePath**|A tanúsítvány és szimmetrikus kulcsot tartalmazó fájl abszolút teljes elérési útja| |
 |**gatewayHostname**|Az IoT Hub teljes Tartományneve|Példa: ContosoIotHub.azure-devices.net|
@@ -114,4 +114,4 @@ Szerkesztés _LocalConfiguration.json_ a következő paraméterekkel:
 ## <a name="see-also"></a>Lásd még
 - [Biztonsági ügynökök áttekintése](security-agent-architecture.md)
 - [Biztonsági ügynök telepítése](how-to-deploy-agent.md)
-- [Hozzáférés a nyers biztonsági adatokhoz](how-to-security-data-access.md)
+- [Hozzáférés nyers biztonsági adatok](how-to-security-data-access.md)

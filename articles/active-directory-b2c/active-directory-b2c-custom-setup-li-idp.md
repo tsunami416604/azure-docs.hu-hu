@@ -11,10 +11,10 @@ ms.date: 04/01/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 5dad12596dde13cfa7e0c2031d58f605061b0e20
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862794"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezést a LinkedIn-fiók az Azure Active Directory B2C-vel egyéni szabályzatok használatával
@@ -220,7 +220,7 @@ Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozo
 
 1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárban, és nevezze át. Például nevezze át, hogy *SignUpSignInLinkedIn.xml*.
 2. Nyissa meg az új fájlt, és frissítse az értéket, a **PolicyId** az attribútum **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInLinkedIn`.
-3. Frissítse az értéket a **PublicPolicyUri** URI-a szabályzat. Például:`http://contoso.com/B2C_1A_signup_signin_linkedin`
+3. Frissítse az értéket a **PublicPolicyUri** URI-a szabályzat. Ha például`http://contoso.com/B2C_1A_signup_signin_linkedin`
 4. Frissítse az értéket, a **hivatkozásazonosító** attribútum **DefaultUserJourney** megfelelően (SignUpSignLinkedIn) létrehozott új felhasználói interakciósorozat azonosítója.
 5. A módosítások mentéséhez, feltöltheti a fájlt, és válassza ki az új házirendet a listában.
 6. Győződjön meg arról, hogy a létrehozott Azure AD B2C-alkalmazást az van kiválasztva, a **válassza ki az alkalmazás** mezőben, majd tesztelje kattintva **Futtatás most**.
@@ -280,7 +280,7 @@ Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozo
 
 1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárban, és nevezze át. Például nevezze át, hogy *SignUpSignInLinkedIn.xml*.
 2. Nyissa meg az új fájlt, és frissítse az értéket, a **PolicyId** az attribútum **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInLinkedIn`.
-3. Frissítse az értéket a **PublicPolicyUri** URI-a szabályzat. Például:`http://contoso.com/B2C_1A_signup_signin_linkedin`
+3. Frissítse az értéket a **PublicPolicyUri** URI-a szabályzat. Ha például`http://contoso.com/B2C_1A_signup_signin_linkedin`
 4. Frissítse az értéket, a **hivatkozásazonosító** attribútum **DefaultUserJourney** megfelelően (SignUpSignLinkedIn) létrehozott új felhasználói interakciósorozat azonosítója.
 5. A módosítások mentéséhez, feltöltheti a fájlt, és válassza ki az új házirendet a listában.
 6. Győződjön meg arról, hogy a létrehozott Azure AD B2C-alkalmazást az van kiválasztva, a **válassza ki az alkalmazás** mezőben, majd tesztelje kattintva **Futtatás most**.

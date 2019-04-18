@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876888"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-bővítmény parancsai használatával a mongodb-hez az Azure Cosmos DB API-ban tárolt adatok kezelése 
@@ -43,7 +43,7 @@ A create database bővítmény parancs létrehoz egy új MongoDB-adatbázist. Az
 
 A következő táblázat ismerteti a paraméterek belül a parancsot:
 
-|**Mező**|**Typo** |**Leírás** |
+|**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
 | CustomAction   |  sztring  |   Neve az egyéni parancs "CreateDatabase" kell lennie.      |
 | offerThroughput | int  | Kiosztott átviteli sebesség, amelyet az adatbázis. Ez a paraméter nem kötelező. |
@@ -85,7 +85,7 @@ A frissítés adatbázis adatkiterjesztési parancs frissíti a megadott adatbá
 
 A következő táblázat ismerteti a paraméterek belül a parancsot:
 
-|**Mező**|**Typo** |**Leírás** |
+|**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
 | CustomAction    |    sztring     |   Az egyéni parancs neve. "UpdateDatabase" kell lennie.      |
 |  offerThroughput   |  int       |     Új kiosztott átviteli sebesség, amely beállítja az adatbázison.    |
@@ -118,7 +118,7 @@ A get-adatbázis adatkiterjesztési parancs az adatbázis-objektumot ad vissza. 
 A következő táblázat ismerteti a paraméterek belül a parancsot:
 
 
-|**Mező**|**Typo** |**Leírás** |
+|**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
 |  CustomAction   |   sztring      |   Az egyéni parancs neve. "GetDatabase" kell lennie.|
         
@@ -126,7 +126,7 @@ A következő táblázat ismerteti a paraméterek belül a parancsot:
 
 Ha a parancs sikeres, a válasz tartalmazza a dokumentum a következő mezőket:
 
-|**Mező**|**Typo** |**Leírás** |
+|**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
 |  `ok`   |   `int`     |   Válasz állapota. 1 == sikeres. 0 sikertelen ==.      |
 | `database`    |    `string`        |   Az adatbázis nevét.      |
@@ -160,7 +160,7 @@ A létrehozás gyűjtemény bővítmény parancs létrehoz egy új MongoDB-gyűj
 
 A következő táblázat ismerteti a paraméterek belül a parancsot:
 
-|**Mező**|**Typo** |**Leírás** |
+|**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
 | CustomAction    | sztring | Az egyéni parancs neve. "CreateDatabase" kell lennie.     |
 | gyűjtemény      | sztring | A gyűjtemény neve                                   |
@@ -205,7 +205,7 @@ A frissítés gyűjtemény bővítmény parancs frissíti a megadott gyűjtemén
 
 A következő táblázat ismerteti a paraméterek belül a parancsot:
 
-|**Mező**|**Typo** |**Leírás** |
+|**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
 |  CustomAction   |   sztring      |   Az egyéni parancs neve. "UpdateCollection" kell lennie.      |
 |  gyűjtemény   |   sztring      |   A gyűjtemény neve.       |
@@ -240,7 +240,7 @@ A get-gyűjtemény egyéni parancs visszaadja a gyűjtemény objektumra vonatkoz
 A következő táblázat ismerteti a paraméterek belül a parancsot:
 
 
-|**Mező**|**Typo** |**Leírás** |
+|**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
 | CustomAction    |   sztring      |   Az egyéni parancs neve. "GetCollection" kell lennie.      |
 | gyűjtemény    |    sztring     |    A gyűjtemény neve.     |
@@ -250,7 +250,7 @@ A következő táblázat ismerteti a paraméterek belül a parancsot:
 Ha a parancs sikeres, a válasz a következő mezőkkel dokumentumot tartalmaz
 
 
-|**Mező**|**Typo** |**Leírás** |
+|**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   Válasz állapota. 1 == sikeres. 0 sikertelen ==.      |
 | `database`    |    `string`     |   Az adatbázis nevét.      |
@@ -275,7 +275,7 @@ db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 
 Ha nincs megadva, az egyéni válasz egy dokumentumot, a következő mezőket tartalmazza:
 
-|**Mező**|**Typo** |**Leírás** |
+|**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   Válasz állapota. 1 == sikeres. 0 sikertelen ==.      |
 | `code`    |   `int`      |   Csak adja vissza, ha a parancs végrehajtása sikertelen volt (azaz ok == 0). A MongoDB-hibakódot tartalmazza. Ez az egy válasz nem kötelező paraméter.      |

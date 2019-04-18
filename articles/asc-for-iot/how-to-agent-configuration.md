@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 1e212e752309fd8347836d462a3394da2fca4a15
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862777"
 ---
 # <a name="tutorial-configure-security-agents"></a>Oktatóanyag: Biztonsági ügynökök konfigurálása
@@ -140,4 +140,4 @@ Alapértelmezett értékek érhetők el a megfelelő sémát [Github](https://ak
 
 - [ASC megismerheti az IoT-javaslatok](concept-recommendations.md)
 - [Fedezze fel az ASC IoT-riasztások](concept-security-alerts.md)
-- [Hozzáférés a nyers biztonsági adatokhoz](how-to-security-data-access.md)
+- [Hozzáférés nyers biztonsági adatok](how-to-security-data-access.md)

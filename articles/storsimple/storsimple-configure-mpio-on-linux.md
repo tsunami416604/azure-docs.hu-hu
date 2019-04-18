@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bc1e8a5abc85af95448570497177030f17649d87
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877584"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS rendszerű gazdagépen a StorSimple az MPIO konfigurálása
@@ -35,7 +35,7 @@ A többutas funkció lehetővé teszi, hogy több i/o-elérési út gazdakiszolg
 
 A többutas célja két lépésből:
 
-* **Magas rendelkezésre állású**: Ha bármely elem, az i/o-útvonal (például a kábel, kapcsoló, hálózati adapter vagy tartományvezérlő) nem biztosít egy alternatív elérési utat.
+* **Magas rendelkezésre állás**: Ha bármely elem, az i/o-útvonal (például a kábel, kapcsoló, hálózati adapter vagy tartományvezérlő) nem biztosít egy alternatív elérési utat.
 * **Terheléselosztás**: A konfiguráció a tárolóeszköz, attól függően, a jobb teljesítmény érdekében az i/o-elérési terhelésének észlelése és dinamikusan a ezeket a terhelés kiegyenlítése.
 
 ### <a name="about-multipathing-components"></a>Azokról az összetevőkről a többutas működés

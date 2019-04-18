@@ -18,10 +18,10 @@ ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f9fd062d445fb738842667cab0c24332c0e4cc8
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58879256"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: Migrálás az Azure Access Control Service-ből
@@ -211,7 +211,7 @@ Magas szinten *Azure Active Directory oka valószínűleg az áttelepítéshez a
 | Testre szabható kezdőtartomány felderítése/fiók-kiadási felhasználói felület | Letölthető kódot, amely integrálható az alkalmazásokba | Nem támogatott |
 | Egyéni jogkivonat-aláíró tanúsítványok feltöltése | Támogatott | Támogatott |
 | A jogkivonatok jogcímek testreszabása |– Identitás-szolgáltatóktól származó bemeneti jogcímek továbbítása<br />-Hozzáférési jogkivonat beszerzése az identitásszolgáltató jogcímként<br />– A bemeneti jogcím értékei alapján kimenő jogcímeket kiadni<br />-Kimeneti jogcímeket kiadni az állandó értékek |-A nem összevont identitás-szolgáltatóktól származó jogcímek továbbítása<br />– Nem szükséges hozzáférési jogkivonat beszerzése az identitásszolgáltató jogcímként<br />– Nem adható ki a kimeneti jogcímek bemeneti jogcím értékei alapján<br />-Adhat ki a kimeneti jogcímek az állandó értékek<br />-Adhat ki a kimeneti jogcímek a felhasználók szinkronizálása az Azure AD-tulajdonságok alapján |
-| **Automation** | | |
+| **Automatizálás** | | |
 | Konfigurációs és felügyeleti feladatok automatizálása | Access Control Management szolgáltatáson keresztül támogatott | A Microsoft Graph és az Azure AD Graph API-n keresztül támogatott |
 
 Ha úgy dönt, hogy Azure ad-ben-e a legjobb áttelepítési útvonal az alkalmazások és szolgáltatások, az alkalmazás integrálása az Azure ad-ben kétféle módon tisztában kell lennie.
@@ -262,7 +262,7 @@ Az alábbi táblázat a hozzáférés-vezérlés, amely a webes alkalmazásokhoz
 | Testre szabható kezdőtartomány felderítése/fiók-kiadási felhasználói felület | Letölthető kódot, amely integrálható az alkalmazásokba | Egyéni CSS-n keresztül teljes mértékben testre szabható felhasználói felület |
 | Egyéni jogkivonat-aláíró tanúsítványok feltöltése | Támogatott | Egyéni aláírási kulcsokat, nem a tanúsítványok, egyéni szabályzatok keresztül támogatott |
 | A jogkivonatok jogcímek testreszabása |– Identitás-szolgáltatóktól származó bemeneti jogcímek továbbítása<br />-Hozzáférési jogkivonat beszerzése az identitásszolgáltató jogcímként<br />– A bemeneti jogcím értékei alapján kimenő jogcímeket kiadni<br />-Kimeneti jogcímeket kiadni az állandó értékek |-Tevékenységeken keresztül; identitás-szolgáltatóktól származó jogcímek egyéni szabályzatok egyes jogcímek megadása kötelező<br />– Nem szükséges hozzáférési jogkivonat beszerzése az identitásszolgáltató jogcímként<br />-Adhat ki a kimeneti jogcímek egyéni szabályzatok segítségével a bemeneti jogcím értékei alapján<br />-Adhat ki a kimeneti jogcímek az állandó értékek egyéni szabályzatok használatával |
-| **Automation** | | |
+| **Automatizálás** | | |
 | Konfigurációs és felügyeleti feladatok automatizálása | Access Control Management szolgáltatáson keresztül támogatott |-Felhasználók Azure AD Graph API-n keresztül engedélyezett létrehozása<br />– Nem hozható létre B2C bérlő, alkalmazásokat és szabályzatokat programozott módon |
 
 Ha úgy dönt, hogy az Azure AD B2C-vel-e a legjobb áttelepítési útvonal az alkalmazások és szolgáltatások, a következő erőforrások kezdődik:

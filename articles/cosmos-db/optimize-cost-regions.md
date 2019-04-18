@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.openlocfilehash: 012eacb172acfdeb0b82343c484c664a3f75310e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876739"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB többrégiós költségek optimalizálása
@@ -31,13 +31,13 @@ Több főkiszolgálós rendszerekben, a nettó elérhető RUs írási műveletek
 
 Fontolja meg egy tárolót az USA nyugati RÉGIÓJA van 10 ezer Kérelemegység/s kiosztott átviteli sebesség és 1 TB-nyi adatot tárol ebben a hónapban. Tegyük fel, akkor adjon hozzá három régiókban – USA keleti RÉGIÓJA, Észak-Európa és Kelet-Ázsia, mindegyike ugyanazt a tárhelyet és átviteli sebességet, és szeretné, hogy a globálisan elosztott alkalmazás ahhoz, hogy az összes négy régióban írni. Havi számlájának végösszege (31 napos feltételezve) az adott hónapban a következőképpen történik:
 
-|**Elem**|**Használat (havonta)**|**Rate (Egységár)**|**Havi költség**|
+|**Elem**|**Használat (havonta)**|**Arány**|**Havi költség**|
 |----|----|----|----|
 |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (több írási régió) lévő tároló esetén |10 ezer Kérelemegység/s * 24 * 31. |0.016 $ / 100 Kérelemegység/másodperc óránként |$1,190.40 |
 |Átviteli sebességre vonatkozó számla 3 további régió – USA keleti RÉGIÓJA, Észak-Európa és Kelet-Ázsia (több írási régió) esetén |(3 + 1) * 10 ezer Kérelemegység/s * 24 * 31. |0.016 $ / 100 Kérelemegység/másodperc óránként |$4,761.60 |
 |Adattárolásra vonatkozó számla az USA nyugati régiójában lévő tároló esetén |100 GB |$ 0,25/GB |$25 |
 |Adattárolásra vonatozó számla 3 további régió esetén – az USA keleti régiója, Észak-Európa, Kelet-Ázsia |3 * 1 TB |$ 0,25/GB |$75 |
-|**Összes**|||**$6,052** |
+|**Összesen**|||**$6,052** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Átvitel kihasználtsága javíthatja a egy régió-alapon történik
 

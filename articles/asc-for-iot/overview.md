@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
 ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58863032"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Az IoT Azure Security Center bemutatása
@@ -56,8 +56,8 @@ Bővített analitika és a Microsoft Intelligent Security Graph segítségével 
 Ez az Áttekintés megismerkedett a funkciók és -szolgáltatások az ASC az IoT. További információ az ASC a IoT-architektúra, előfeltételeket, és ismerje meg, hogyan kezdheti el, tekintse meg a következő cikkeket:
 
 - [Architektúra](architecture.md)
-- [A szolgáltatás előfeltételei](service-prerequisites.md)
-- [Első lépések](getting-started.md)
+- [Szolgáltatás előfeltételei](service-prerequisites.md)
+- [Bevezetés](getting-started.md)
 - [A megoldás meghatározása](quickstart-configure-your-solution.md)
 - [ASC IOT – gyakori kérdések](resources-frequently-asked-questions.md)
 - [ASC IoT-riasztások](concept-security-alerts.md)

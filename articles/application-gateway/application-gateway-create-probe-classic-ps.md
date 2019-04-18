@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: 01c1768f60da98206f0dfd041745428256f545fc
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58861879"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Egyéni mintavétel létrehozása az Azure Application Gateway (klasszikus) PowerShell-lel
@@ -151,7 +151,7 @@ A konfigurációs paraméterek a következők:
 |Paraméter|Leírás|
 |---|---|
 |**Name (Név)** |Egyéni mintavétel hivatkozás neve. |
-| **Protokoll** | Használt protokoll (a lehetséges értékek: HTTP vagy HTTPS).|
+| **Protocol (Protokoll)** | Használt protokoll (a lehetséges értékek: HTTP vagy HTTPS).|
 | **Gazdagép** és **elérési útja** | Teljes URL-cím, amelyeket az application gateway-példány állapotának hívnak. Például, ha egy webhely http:\//contoso.com/, majd az egyéni mintát is konfigurálható a "http:\//contoso.com/path/custompath.htm" a mintavétel ellenőrzi, hogy rendelkezik egy sikeres HTTP-választ.|
 | **Intervallum** | Konfigurálja a mintavételező időköz másodpercben.|
 | **Időtúllépés** | Határozza meg a mintavétel időkorlátja egy HTTP-válasz ellenőrzés.|

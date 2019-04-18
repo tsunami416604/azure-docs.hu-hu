@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877958"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 diagnosztikai naplóinak elérése
@@ -115,7 +115,7 @@ A naplózási és a kérés naplók JSON formátumban vannak. Ebben a szakaszban
 #### <a name="request-log-schema"></a>Kérelem séma
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| time |String |A napló időbélyegzője (az UTC) |
+| idő- |String |A napló időbélyegzője (az UTC) |
 | resourceId |String |Helyezze a művelet igénybe vett erőforrás azonosítója |
 | category |String |A naplózási kategóriát. Ha például **kérelmek**. |
 | operationName |String |A művelet, amelyet a rendszer neve. Ha például getfilestatus. |
@@ -162,7 +162,7 @@ A naplózási és a kérés naplók JSON formátumban vannak. Ebben a szakaszban
 #### <a name="audit-log-schema"></a>Auditnapló sémája
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| time |String |A napló időbélyegzője (az UTC) |
+| idő- |String |A napló időbélyegzője (az UTC) |
 | resourceId |String |Helyezze a művelet igénybe vett erőforrás azonosítója |
 | category |String |A naplózási kategóriát. Ha például **naplózási**. |
 | operationName |String |A művelet, amelyet a rendszer neve. Ha például getfilestatus. |
@@ -191,5 +191,5 @@ Az Azure Data Lake Storage Gen1 nyújt egy minta a naplózási adatok feldolgoz�
 
 ## <a name="see-also"></a>Lásd még
 * [Az Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
-* [Biztonságos adattárolás a Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 

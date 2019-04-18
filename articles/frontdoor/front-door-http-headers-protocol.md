@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 92e8435e4336c68982e4becc2a95f99b2c776c0e
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58861842"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Az Azure bejárati ajtajának Service HTTP-fejlécek protokoll támogatása
@@ -54,7 +54,7 @@ A háttérrendszer a bejárati ajtajának küldött fejlécek is továbbítja a 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Bejárati ajtó létrehozása](quickstart-create-front-door.md)
+- [Hozzon létre egy bejárati ajtó](quickstart-create-front-door.md)
 - [Hogyan működik a bejárati ajtó](front-door-routing-architecture.md)
 
 <!--Image references-->

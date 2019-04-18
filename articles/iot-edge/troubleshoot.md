@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58847539"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
@@ -361,7 +361,7 @@ A fenti példában a DNS-kiszolgáló egy nyilvánosan elérhető-e DNS-szolgál
 
 Hely `daemon.json` a platformnak megfelelő helyen: 
 
-| Platform | Hely |
+| Platform | Földrajzi egység |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | Windows-gazdagépen a Windows-tárolókkal | `C:\ProgramData\iotedge-moby-data\config` |

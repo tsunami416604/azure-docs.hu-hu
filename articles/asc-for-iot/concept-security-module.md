@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: c5814b188c73ea03094d7dae565e40ca09e705c2
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862437"
 ---
 # <a name="security-module"></a>Biztonsági modul
@@ -48,5 +48,5 @@ Lásd: [létrehozás biztonsági ikermodul](quickstart-create-security-twin.md) 
 
 ## <a name="see-also"></a>Lásd még
 - [ASC for IoT-előzetes verzió](overview.md)
-- [Biztonsági ügynökök üzembe helyezése](how-to-deploy-agent.md)
+- [Biztonsági ügynökök telepítése](how-to-deploy-agent.md)
 - [Biztonsági ügynök hitelesítési módszerek](concept-security-agent-authentication-methods.md)

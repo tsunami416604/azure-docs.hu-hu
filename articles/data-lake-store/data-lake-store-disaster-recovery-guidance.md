@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
 ms.openlocfilehash: b3f1888a73baf2b7f9efa9f5e7cdb3305aa9f90d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878111"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 adatok vészhelyreállítási útmutató
@@ -25,8 +25,8 @@ Az Azure Data Lake Storage Gen1 nyújt a helyileg redundáns tárolás (LRS). Ez
 ## <a name="disaster-recovery-guidance"></a>Vészhelyreállítási útmutató
 Minden ügyfél számára kritikus fontosságú, hogy előkészítse a saját vészhelyreállítási tervét. Ebben a cikkben a vészhelyreállítási tervet hozhat létre az információk elolvasásához. Itt talál néhány forrásanyagot, amelyek segítenek a saját terve létrehozásában.
 
-* [Vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
-* [Technikai útmutató az Azure rugalmassága](../resiliency/resiliency-technical-guidance.md)
+* [Vészhelyreállítás és magas szintű rendelkezésre állás az Azure-alkalmazásokhoz](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
+* [Műszaki útmutató az Azure rugalmasságáról](../resiliency/resiliency-technical-guidance.md)
 
 ### <a name="best-practices"></a>Ajánlott eljárások
 Azt javasoljuk, hogy a kritikus fontosságú adatokat másol egy másik Data Lake Storage Gen1 fiókot egy másik régióban található a Vészhelyreállítási terv igényeihez igazodó gyakorisággal. Különböző módszerekkel másolhatja az adatokat, többek között az [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) és [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) használatával. Az Azure Data Factory hasznos szolgáltatás az adatáthelyezési folyamatok rendszeres létrehozásához és üzembe helyezéséhez.
@@ -43,5 +43,5 @@ Engedélyezheti a szervezetek [diagnosztikai naplózás](data-lake-store-diagnos
 
 ## <a name="next-steps"></a>További lépések
 * [Ismerkedés az Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* [Biztonságos adattárolás a Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 

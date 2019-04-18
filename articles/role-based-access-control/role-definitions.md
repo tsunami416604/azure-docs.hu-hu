@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 7855c2bd45ba35ecb0ede5c60268e6446f37ed5a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58804530"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Megismerheti az Azure-erőforrások szerepkör-definíciók
@@ -232,5 +232,5 @@ További információ `AssignableScopes` tekintse meg az egyéni szerepkörökh�
 ## <a name="next-steps"></a>További lépések
 
 * [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md)
-* [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md)
+* [Egyéni szerepkörök Azure-erőforrásokhoz](custom-roles.md)
 * [Az Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md)
