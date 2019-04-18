@@ -7,10 +7,10 @@ ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
 ms.openlocfilehash: e47ce094cd690cba4ef398bc5d5d443f7ed647e9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272478"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Az erőforrások kezelése a felügyeleti csoportokkal
@@ -349,8 +349,8 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 
-- [Az Azure-erőforrások rendszerezése felügyeleti csoportok létrehozása](create.md)
-- [Módosítása, törlése és a felügyeleti csoportok kezelése](manage.md)
-- [Tekintse át a felügyeleti csoportok az Azure PowerShell modul](/powershell/module/az.resources#resources)
-- [Tekintse át a felügyeleti csoportok REST API-ban](/rest/api/resources/managementgroups)
-- [Tekintse át a felügyeleti csoportok az Azure CLI-vel](/cli/azure/account/management-group)
+- [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](create.md)
+- [Felügyeleti csoportok módosítása, törlése és kezelése](manage.md)
+- [Felügyeleti csoportok áttekintése az Azure PowerShell Erőforrások moduljában](/powershell/module/az.resources#resources)
+- [Felügyeleti csoportok áttekintése a REST API-ban](/rest/api/resources/managementgroups)
+- [Felügyeleti csoportok áttekintése az Azure CLI-ben](/cli/azure/account/management-group)

@@ -16,10 +16,10 @@ ms.date: 10/23/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261462"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Mit kell tudni az Azure-erőforrások felügyelt identitásairól?
@@ -119,16 +119,16 @@ A különféle Azure-erőforrások felügyelt identitással való elérésének 
 * [Az Azure Resource Manager elérése](tutorial-windows-vm-access-arm.md)
 * [Az Azure SQL elérése](tutorial-windows-vm-access-sql.md)
 * [Az Azure Storage elérése hozzáférési kulcs használatával](tutorial-windows-vm-access-storage.md)
-* [Az Azure Storage elérése a közös hozzáférésű jogosultságkódok használatával](tutorial-windows-vm-access-storage-sas.md)
-* [Az Azure Key Vault nem Azure-beli AD erőforrások eléréséhez](tutorial-windows-vm-access-nonaad.md)
+* [Az Azure Storage elérése közös hozzáférésű jogosultságkódok használatával](tutorial-windows-vm-access-storage-sas.md)
+* [Nem Azure AD-erőforrások elérése az Azure Key Vaulttal](tutorial-windows-vm-access-nonaad.md)
 
 Útmutató a felügyelt identitások használatához Linux rendszerű virtuális gépeken:
 
 * [Az Azure Data Lake Store elérése](tutorial-linux-vm-access-datalake.md)
 * [Az Azure Resource Manager elérése](tutorial-linux-vm-access-arm.md)
 * [Az Azure Storage elérése hozzáférési kulcs használatával](tutorial-linux-vm-access-storage.md)
-* [Az Azure Storage elérése a közös hozzáférésű jogosultságkódok használatával](tutorial-linux-vm-access-storage-sas.md)
-* [Az Azure Key Vault nem Azure-beli AD erőforrások eléréséhez](tutorial-linux-vm-access-nonaad.md)
+* [Az Azure Storage elérése közös hozzáférésű jogosultságkódok használatával](tutorial-linux-vm-access-storage-sas.md)
+* [Nem Azure AD-erőforrások elérése az Azure Key Vaulttal](tutorial-linux-vm-access-nonaad.md)
 
 Útmutató a felügyelt identitások használatához egyéb Azure-szolgáltatásokban:
 
@@ -149,4 +149,4 @@ Az Azure-erőforrások felügyelt identitásai használatával hitelesítést v�
 Ismerkedjen meg az Azure-erőforrások felügyelt identitásai szolgáltatással a következő rövid útmutatók segítségével:
 
 * [Hozzáférés a Resource Managerhez egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással](tutorial-windows-vm-access-arm.md)
-* [Egy Linux rendszerű virtuális gép alapértelmezett felügyelt identitás használata a Resource Manager eléréséhez](tutorial-linux-vm-access-arm.md)
+* [Hozzáférés a Resource Managerhez egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással](tutorial-linux-vm-access-arm.md)

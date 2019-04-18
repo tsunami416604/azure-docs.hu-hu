@@ -9,10 +9,10 @@ ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 2ba48e2a21bdee0c5698bdfa314dd3bf462c1c7e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267769"
 ---
 # <a name="starter-resource-graph-queries"></a>Alapszintű Resource Graph-lekérdezések
@@ -22,16 +22,16 @@ Az Azure Resource Graph-fal végzett lekérdezések megértéséhez először a 
 A következő alapszintű lekérdezéseken vezetjük végig:
 
 > [!div class="checklist"]
-> - [Száma Azure-erőforrások](#count-resources)
-> - [Az erőforrások listázására név szerint rendezve](#list-resources)
-> - [Csökkenő sorrendben név szerint rendezett összes virtuális gép megjelenítése](#show-vms)
-> - [Megjelenítés az első öt virtuális gépek nevét és az operációs rendszer típusa](#show-sorted)
-> - [Az operációs rendszer típus szerint a virtuális gépek száma](#count-os)
-> - [Amelyek tartalmazzák a tárolási erőforrások megjelenítése](#show-storage)
-> - [Az összes nyilvános IP-címek listája](#list-publicip)
-> - [Erőforrások, amelyek rendelkeznek az előfizetés által konfigurált IP-címek száma](#count-resources-by-ip)
-> - [Egy adott címkeértékkel erőforrások listája](#list-tag)
-> - [Adott címkeértékkel rendelkező összes storage-fiókok listázása](#list-specific-tag)
+> - [Az Azure-erőforrások száma](#count-resources)
+> - [Az erőforrások listája név szerint rendezve](#list-resources)
+> - [Az összes virtuális gép megjelenítése név szerint rendezve, csökkenő sorrendben](#show-vms)
+> - [Az első öt virtuális gép megjelenítése a nevük és az operációs rendszerük típusa szerint](#show-sorted)
+> - [A virtuális gépek száma az operációs rendszer típusa szerint](#count-os)
+> - [A tárolót tartalmazó erőforrások megjelenítése](#show-storage)
+> - [Az összes nyilvános IP-cím listázása](#list-publicip)
+> - [A konfigurált IP-címekkel rendelkező erőforrások száma előfizetés szerint](#count-resources-by-ip)
+> - [Az adott címkeértékkel rendelkező erőforrások listázása](#list-tag)
+> - [Az összes, adott címkeértékkel rendelkező tárfiók listázása](#list-specific-tag)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -94,7 +94,7 @@ Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Co
 
 ## <a name="show-sorted"></a>Az első öt virtuális gép megjelenítése a nevük és az operációs rendszerük típusa szerint
 
-Ez a lekérdezés a `limit` paramétert használja ahhoz, hogy a feltételeknek megfelelőkből csak öt rekordot kérjen le, amelyek név szerint vannak rendezve. Az Azure-erőforrás típusa `Microsoft.Compute/virtualMachines`. `project` arra utasítja az Azure Erőforrás-grafikon mely tulajdonságokat tartalmazza.
+Ez a lekérdezés a `limit` paramétert használja ahhoz, hogy a feltételeknek megfelelőkből csak öt rekordot kérjen le, amelyek név szerint vannak rendezve. Az Azure-erőforrás típusa `Microsoft.Compute/virtualMachines`. A `project` adja meg az Azure Resource Graph-nak, hogy a lekérdezés mely tulajdonságokat tartalmazza.
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -166,8 +166,8 @@ Search-AzGraph -Query "where type contains 'storage' | distinct type"
 ## <a name="list-publicip"></a>Az összes nyilvános IP-cím listázása
 
 Az előző lekérdezéshez hasonlóan minden olyan elemet megtalál, amelynek a típusa tartalmazza a **publicIPAddresses** sztringet.
-Csak az eredmények belefoglalása a minta kibővíti ezt a lekérdezést, **properties.ipAddress**
-`isnotempty`, csak a **properties.ipAddress**, és a `limit` az eredményeket a felső szerint
+Ez a lekérdezés csak az eredmények belefoglalása a minta kibővíti ahol **properties.ipAddress**
+`isnotempty`, csak a **properties.ipAddress**, és a `limit` a a felső eredmények
 100. A kiválasztott parancshéjtól függően szükség lehet az idézőjelek escape-elésére.
 
 ```Query
@@ -251,7 +251,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 ```
 
 > [!NOTE]
-> Ez példa az egyező találatok kereséséhez az `==` paramétert használja az `=~` feltételes helyett. `==` van egy kis-és nagybetűk megkülönböztetése.
+> Ez példa az egyező találatok kereséséhez az `==` paramétert használja az `=~` feltételes helyett. Az `==` kis- és nagybetűket megkülönböztető találatot ad.
 
 ## <a name="next-steps"></a>További lépések
 

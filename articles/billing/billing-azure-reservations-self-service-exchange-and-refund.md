@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/5/2019
 ms.author: banders
 ms.openlocfilehash: aa1a218fbf0bc7eacac65b50e4ee1f86791e2b3b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281981"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Önkiszolgáló cseréje és a visszatérítéseket Azure lefoglalási
@@ -86,7 +86,7 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 - Ismerje meg, hogyan kezelheti a foglalást, lásd: [kezelése az Azure-foglalások](billing-manage-reserved-vm-instance.md).
 - Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
-    - [Mi az az Azure Reservations?](billing-save-compute-costs-reservations.md)
+    - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
     - [Az Azure-ban foglalások kezelése](billing-manage-reserved-vm-instance.md)
     - [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](billing-understand-vm-reservation-charges.md)
     - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b4cb571653cbe69939a1cbdc92338663e4e7125f
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d71e08a548809ef0de47c4a865af531732a88a4b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576072"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59697277"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET keretrendszerre épülő alkalmazás az Azure-alkalmazás konfigurációja
 
@@ -106,4 +106,4 @@ Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://v
 Ez a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs adattároló, és a .NET-keretrendszer konzolalkalmazást használta. Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
 
 > [!div class="nextstepaction"]
-> [Az Azure-erőforrások integráció felügyelt identitásokból](./integrate-azure-managed-service-identity.md)
+> [Az Azure-erőforrások integráció felügyelt identitásokból](./howto-integrate-azure-managed-service-identity.md)

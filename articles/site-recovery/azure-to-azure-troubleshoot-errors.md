@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
 ms.openlocfilehash: c7c91a2cf9a25d0a5a4aeed6621e89f9c7cc18f0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269622"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
@@ -27,7 +27,7 @@ Ez a cikk az Azure Site Recoveryben replikálása és helyreállítása Azure-be
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Azure-erőforrás kvótával kapcsolatos problémák (hibakód: 150097)
 Az előfizetés engedélyezni kell a célrégióban a vészhelyreállítási régióban használni kívánt Azure-beli virtuális gépek létrehozásához. Emellett az előfizetés meghatározott méretű virtuális gépek létrehozásához engedélyezett kvóta elegendő kell rendelkeznie. Alapértelmezés szerint a Site Recovery a forrásoldali virtuális Géppel megegyező méretű a cél virtuális gép választja ki. Ha a megfelelő méret nem érhető el, a legközelebbi lehetséges mérete automatikusan követi. Ha nincs megfelelő mérete, amely támogatja a forrás virtuális gép konfigurációs van, ez a hibaüzenet jelenik meg:
 
-**Hibakód** | **A lehetséges okok** | **Ajánlás**
+**Hibakód:** | **Lehetséges okok** | **Az ajánlás**
 --- | --- | ---
 150097<br></br>**Üzenet**: Replikáció nem sikerült engedélyezni a virtuális gép VmName. | – Az előfizetés-azonosító nem engedélyezhetők olyan virtuális gépek létrehozása a célhelyen régióban.</br></br>– Az előfizetési azonosító nincs engedélyezve, vagy nem rendelkezik elegendő kvótával a célhelyen régió adott Virtuálisgép-méretek létrehozására.</br></br>-A megfelelő cél virtuális gép méretét, amely megegyezik a forrás virtuális gép hálózati adapter száma (2) az előfizetés-azonosító nem található a célhelyen régióban.| Kapcsolattartó [Azure számlázási ügyfélszolgálatát](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) a szükséges Virtuálisgép-méretek a célhelyen az előfizetéshez tartozó virtuális gépek létrehozásának engedélyezéséhez. Miután engedélyezte, próbálkozzon újra a sikertelen műveletet.
 
@@ -40,7 +40,7 @@ Ha a célhelyen kapacitás korlátozást tartalmaz, tiltsa le a replikációt, �
 
 Ha a legújabb megbízható főtanúsítványok nem találhatók megtalálható a virtuális Gépen, a "replikáció engedélyezése" feladat meghiúsulhat. A tanúsítványok nélkül Ha hitelesítését és engedélyezését a virtuális gép Site Recovery szolgáltatás hívás sikertelen. A sikertelen "replikáció engedélyezése" Site Recovery feladat a hibaüzenet jelenik meg:
 
-**Hibakód** | **Lehetséges ok** | **Javaslatok**
+**Hibakód:** | **Lehetséges ok** | **Javaslatok**
 --- | --- | ---
 151066<br></br>**Üzenet**: Nem sikerült konfigurálni a Site Recoveryt. | A szükséges megbízható főtanúsítványok engedélyezési és a hitelesítés nem található a gépen. | – A Windows operációs rendszert futtató virtuális gép, győződjön meg arról, hogy a megbízható főtanúsítványok megtalálhatók-e a gépen. További információ: [konfigurálása a megbízható főtanúsítványok és a nem engedélyezett tanúsítványok](https://technet.microsoft.com/library/dn265983.aspx).<br></br>– A Linux operációs rendszert futtató virtuális gép esetén kövesse a Linux operációs rendszer verzió terjesztője által közzétett megbízható főtanúsítványok útmutatóját.
 
@@ -157,9 +157,9 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
 ### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>1. hiba: Nem sikerült regisztrálni az Azure virtuális gépet a Site Recovery (151195) </br>
 - **Lehetséges ok** </br>
   - A site recovery végpontok DNS-feloldási hiba miatt nem létesíthető kapcsolat.
-  - Ez gyakrabban fordul elő ismételt védelem esetén, amikor feladatátvételt végzett a virtuális gépen, de a DNS-kiszolgáló nem érhető el a vészhelyreállítási régióból.
+  - Ez gyakran látható ismételt védelem során a virtuális gép feladatátadása, de a DNS-kiszolgáló nem érhető el a DR régióban.
 
-- **Megoldás:**
+- **Felbontás**
    - Ha egyéni DNS használ, akkor ügyeljen arra, hogy a DNS-kiszolgáló érhető el a vész-helyreállítási régióban. Ha egy egyéni DNS nyissa meg a virtuális gép rendelkezik-e > vész-helyreállítási hálózat > DNS-kiszolgálók. Próbálja ki a virtuális gépről a DNS-kiszolgáló eléréséhez. Ha nem érhető el ezt követően testre is elérhető-e a DNS-kiszolgáló feladatátvétele vagy a sor közötti DR hálózati és a DNS-hely létrehozása.
 
     ![COM-hiba](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
@@ -169,7 +169,7 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
 - **Lehetséges ok** </br>
   - Az Office 365 portál és identitás IP4 végpontok nem létesíthető kapcsolat.
 
-- **Megoldás:**
+- **Felbontás**
   - Az Azure Site Recovery-hitelesítéshez szükséges hozzáférés az Office 365 IP-címek tartományát.
     Ha az Azure hálózati biztonsági csoport (NSG) szabályai, illetve a tűzfal proxy segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, Office 365 IP-tartományokkal való kommunikáció engedélyezése. Hozzon létre egy [Azure Active Directory (AAD) szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) alapú Hálózatibiztonságicsoport-szabály engedélyezi a hozzáférést az aad-hez tartozó összes IP-címek számára
       - Hozzáadja az új címeket az Azure Active Directory (AAD) a jövőben, ha szeretne létrehozni új NSG-szabályokat.
@@ -181,7 +181,7 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
 - **Lehetséges ok** </br>
   - Nem lehet kapcsolatot az Azure Site Recovery szolgáltatási végpontjait.
 
-- **Megoldás:**
+- **Felbontás**
   - Az Azure Site Recovery szükséges hozzáférést [Site Recovery IP-címtartományok](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) a régiójától függően. Győződjön meg arról, hogy a szükséges ip-címtartományok érhetők el a virtuális gép.
 
 
@@ -190,15 +190,15 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
   - Érvénytelenek az egyéni proxy beállításait, és az ASR a mobilitási szolgáltatás ügynökének fejeződött nincs automatikus észlelés a proxybeállításokat az Internet Explorer
 
 
-- **Megoldás:**
+- **Felbontás**
   1. A mobilitási szolgáltatás ügynökének a proxybeállításokat az Internet Explorer a Windows és Linux rendszeren /etc/environment észleli.
   2. Ha inkább a állítsa be a proxy csak az automatikus rendszer-Helyreállítás a mobilitási szolgáltatást, majd megadhatja a proxy adatait a ProxyInfo.conf helyen található:</br>
      - ``/usr/local/InMage/config/`` a ***Linux***
      - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` a ***Windows***
   3. A ProxyInfo.conf kell a proxybeállításokat a következő INI-formátumban.</br>
                 *[proxy]*</br>
-                *Address=http://1.2.3.4*</br>
-                *Port=567*</br>
+                *Cím =http://1.2.3.4*</br>
+                *Port = 567*</br>
   4. Csak támogatja az automatikus rendszer-Helyreállítás a mobilitási szolgáltatás ügynökének ***nem hitelesített proxyk***.
 
 
@@ -209,7 +209,7 @@ Az engedélyezési listára [a szükséges URL-címek](azure-to-azure-about-netw
 
 Egy új lemezt a virtuális Géphez csatolt inicializálni kell.
 
-**Hibakód** | **A lehetséges okok** | **Javaslatok**
+**Hibakód:** | **Lehetséges okok** | **Javaslatok**
 --- | --- | ---
 150039<br></br>**Üzenet**: Az Azure data lemezt (DiskName) (DiskURI) rendelkező logikai egységen (LUN) (LUNValue) nem egy megfelelő lemezt a virtuális gép, amely azonos LUN-értékkel rendelkezik által jelentett megfeleltetni. | – Egy új adatlemezt a virtuális géphez lett csatolva, de azt nem lett inicializálva.</br></br>-Az adatlemezt a virtuális gép megfelelően nem jelent meg a LUN-értékkel, amelyen a lemez a virtuális géphez lett csatolva.| Győződjön meg arról, hogy az adatlemezek inicializálása, és próbálkozzon újra a művelettel.</br></br>Windows esetén: [Csatolja, és a egy új lemez inicializálása](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).</br></br>Linux esetén: [A Linux új adatlemez inicializálása](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
@@ -282,7 +282,7 @@ Ahhoz, hogy a gép replikációját, a kiépítési állapotot kell **sikeres**.
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM +/ hiba a kötet árnyékmásolata szolgáltatás (hibakód: 151025)
 
-**Hibakód** | **A lehetséges okok** | **Javaslatok**
+**Hibakód:** | **Lehetséges okok** | **Javaslatok**
 --- | --- | ---
 151025<br></br>**Üzenet**: Nem sikerült telepíteni a Site recovery-bővítmény | – "A COM + System Application" szolgáltatás le van tiltva.</br></br>– "A kötet árnyékmásolata" szolgáltatás le van tiltva.| Állítsa a "COM + System Application" és "Kötet árnyékmásolata" szolgáltatásokat, automatikus vagy kézi indításúra.
 
@@ -294,7 +294,7 @@ Nyissa meg a "Szolgáltatások" konzolt, és győződjön meg, hogy a "COM + Sys
 ## <a name="unsupported-managed-disk-size-error-code-150172"></a>Nem támogatott felügyelt lemez mérete (hibakód: 150172)
 
 
-**Hibakód** | **A lehetséges okok** | **Javaslatok**
+**Hibakód:** | **Lehetséges okok** | **Javaslatok**
 --- | --- | ---
 150172<br></br>**Üzenet**: Nem sikerült engedélyezni a védelmet, az a virtuális gép, mert (DiskName) méretű (DiskSize), amely kisebb, mint a támogatott minimális méret 1024 MB-ra. | – A lemez kisebb, mint 1024 MB-os támogatott méretet| Győződjön meg arról, hogy a lemezméretek a támogatott tartományon belül, és próbálja megismételni a műveletet.
 

@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: fc02e830953f8612a077fb219c7fef4e86bc3827
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263833"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Adatok exportálása az Azure Blob storage-ból az Azure Import/Export szolgáltatás használata
@@ -143,7 +143,7 @@ Ez *választható* . lépés: azt határozza meg, hány meghajtót az exportál�
     |--------------------------|-----------------|  
     |**/logdir:**|Választható. A naplózási könyvtár. Ez a könyvtár részletes naplófájlok kerüljenek. Ha nincs megadva, az aktuális könyvtár a naplózási könyvtár része lesz.|  
     |**/sn:**|Kötelező. A storage-fiók neve az exportálási feladatot.|  
-    |**/sk:**|Csak akkor szükséges, ha nincs megadva egy SAS-tárolót. A fiókkulcs a storage-fiókját az exportálási feladatot.|  
+    |**/SK:**|Csak akkor szükséges, ha nincs megadva egy SAS-tárolót. A fiókkulcs a storage-fiókját az exportálási feladatot.|  
     |**/csas:**|Csak akkor szükséges, ha nincs megadva a tárfiók kulcsára. A tároló SAS az exportálási feladatot exportálandó blobok listázásához.|  
     |**/ExportBlobListFile:**|Kötelező. Az XML-fájl elérési útja blob elérési útjának listáját tartalmazó fájl, vagy a blob elérési útja előtagok exportálható a blobok számára. A használt fájlformátum a `BlobListBlobPath` eleme a [Put feladat](/rest/api/storageimportexport/jobs) az Import/Export szolgáltatás REST API-művelet.|  
     |**/DriveSize:**|Kötelező. Exportálási feladatokhoz használható meghajtók méretének *például*, 500 GB, 1,5 TB.|  

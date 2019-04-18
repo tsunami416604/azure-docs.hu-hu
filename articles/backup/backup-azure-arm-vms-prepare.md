@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: raynew
 ms.openlocfilehash: 142ffdadf4adb1ee07f3592624cbdddfb310b580
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264556"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure virtuális gépek biztonsági mentése Recovery Services-tárolóban
@@ -175,7 +175,7 @@ A biztonsági mentési bővítményt a virtuális gépen az Azure nyilvános IP-
 - Ha nehézségek rendelkező virtuális gépek csatlakoztatása, vagy ha a hibát látja **ExtensionSnapshotFailedNoNetwork** próbál csatlakozni, amikor érdemes explicit módon engedélyezi a hozzáférést, a biztonsági mentési bővítményt kommunikálhatnak az Azure nyilvános IP-címhez biztonsági mentési forgalom címeit. Hozzáférési módszer a következő táblázat foglalja össze.
 
 
-**Beállítás** | **Műveletek** | **Részletek** 
+**Beállítás** | **Művelet** | **Részletek** 
 --- | --- | --- 
 **Az NSG-szabályok beállítása** | Lehetővé teszi a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/> Lehetővé teszi, és minden címtartományt kezelése, helyett hozzáadhat egy szabályt, amely engedélyezi a hozzáférést az Azure Backup szolgáltatás használata egy [szolgáltatáscímke](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure). | [További](../virtual-network/security-overview.md#service-tags) szolgáltatáscímkék kapcsolatban.<br/><br/> Szolgáltatások címkék hozzáférés-kezelés egyszerűsítése és többletköltséggel nem.
 **A proxy üzembe helyezése** | A forgalom útválasztási HTTP-proxy kiszolgáló telepítése. | Az Azure és a tároló nem csak a teljes hozzáférést biztosít.<br/><br/> Szabályozható a tároló URL-címek használata engedélyezett.<br/><br/> A virtuális gépek internet egyetlen pont hozzáférést.<br/><br/> Proxy további költségekkel.

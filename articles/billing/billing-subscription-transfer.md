@@ -14,15 +14,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 04/16/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d8baa5f10aeba179ef141cfea86fded8cf44dfc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d9af3b1b9c267bc09b370717913722a6c53ad5a1
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878210"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678819"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés tulajdonjogának átruházása másik fiókra
 
@@ -30,7 +30,7 @@ Az előfizetés egy másik felhasználó módosíthatja a Fiókadminisztrátor �
 
 > [!IMPORTANT]
 > 
-> Új Azure AD-előfizetés átvitele esetén a bérlőben, az összes szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) véglegesen törlődnek a forrás-bérlőből, és nem lesznek áttelepítve a cél-bérlőhöz.
+> Új Azure AD-előfizetés átvitele esetén a bérlőben, az összes szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) véglegesen törlődnek a forrás-bérlőből, és nem lesznek áttelepítve a cél-bérlőhöz. Akkor is, manuálisan újra létrehozni a felügyelt identitások az Azure-erőforrásokhoz. További információkért lásd: [– gyakori kérdések és ismert problémái felügyelt identitások](../active-directory/managed-identities-azure-resources/known-issues.md).
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Azure-előfizetés tulajdonjogának átruházása
 
@@ -52,7 +52,7 @@ Az előfizetés egy másik felhasználó módosíthatja a Fiókadminisztrátor �
 
    > [!IMPORTANT]
    > 
-   > Új Azure AD-előfizetés átvitele esetén a bérlőben, az összes szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) véglegesen törlődnek a forrás-bérlőből, és nem lesznek áttelepítve a cél-bérlőhöz.
+   > Új Azure AD-előfizetés átvitele esetén a bérlőben, az összes szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) véglegesen törlődnek a forrás-bérlőből, és nem lesznek áttelepítve a cél-bérlőhöz. Akkor is, manuálisan újra létrehozni a felügyelt identitások az Azure-erőforrásokhoz. További információkért lásd: [– gyakori kérdések és ismert problémái felügyelt identitások](../active-directory/managed-identities-azure-resources/known-issues.md).
 
    ![Átviteli előfizetés párbeszédpanel](./media/billing-subscription-transfer/image2.PNG)
 

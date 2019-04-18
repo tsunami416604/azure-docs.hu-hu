@@ -14,10 +14,10 @@ ms.topic: overview
 ms.date: 07/13/2018
 ms.author: spelluru
 ms.openlocfilehash: a4ca5cba924a3269f279469f26e68acdb0ad0659
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257620"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Az Azure Lab Services bemutatása
@@ -120,5 +120,5 @@ Az alábbi táblázat az Azure Lab Services által támogatott tesztkörnyezetek
 
 Lásd az alábbi cikkeket: 
 
-- [Az osztályterem-tesztkörnyezetek ismertetése](./classroom-labs/classroom-labs-overview.md)
-- [A DevTest Labs ismertetése](devtest-lab-overview.md)
+- [Osztályterem-tesztkörnyezetek kapcsolatban](./classroom-labs/classroom-labs-overview.md)
+- [Tudnivalók a DevTest Labs szolgáltatásban](devtest-lab-overview.md)

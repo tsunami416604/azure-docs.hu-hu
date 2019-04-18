@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257280"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Az Azure Machine Learning-függvényekkel a Stream Analytics-feladatok méretezése
@@ -112,7 +112,7 @@ Egy teljes körűen particionált Stream Analytics lekérdezési példa lett meg
 ## <a name="next-steps"></a>További lépések
 A Stream Analytics kapcsolatos további információkért lásd:
 
-* [Get started using Azure Stream Analytics (Bevezetés az Azure Stream Analytics használatába)](stream-analytics-real-time-fraud-detection.md)
-* [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
+* [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md) (Azure Stream Analytics-feladatok méretezése)
+* [Azure Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referencia az Azure Stream Analytics lekérdezési nyelvhez)
 * [Az Azure Stream Analytics felügyeleti REST API referenciája](https://msdn.microsoft.com/library/azure/dn835031.aspx)

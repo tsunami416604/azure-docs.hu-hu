@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 11f7bb69ed408adf87d62a4af1aa4bd87e70bd6d
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 89aa5006882680205816e7e5d1e7e55b9c4b2ab0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009195"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678539"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: Az elosztott alkalmazások osztályozása
 
@@ -90,9 +90,9 @@ Az aktív riasztások és az alapul szolgáló szabályok aktiválását a riasz
 
 ![Képernyőkép a analytics élmény](media/app-map/alerts-view.png)
 
-## <a name="set-cloudrolename"></a>Set cloud_RoleName
+## <a name="set-cloud-role-name"></a>Felhőalapú szerepkör neve
 
-Alkalmazás-hozzárendelés használja a `cloud_RoleName` tulajdonság a térképen az összetevők azonosításához. Az Application Insights SDK automatikusan hozzáadja a `cloud_RoleName` tulajdonság összetevők által kibocsátott telemetriai adatokat. Például az SDK hozzáad egy webhely neve vagy a szerepkör nevét a `cloud_RoleName` tulajdonság. Azonban előfordulhatnak olyan esetek, ahol lehetséges, hogy szeretné felülbírálni az alapértelmezett érték. Cloud_RoleName bírálja felül, és mi megjelenik a az alkalmazás-hozzárendelés módosítása:
+Alkalmazás-hozzárendelés használja a **felhőalapú szerepkör neve** tulajdonság a térképen az összetevők azonosításához. Az Application Insights SDK automatikusan hozzáadja a felhőalapú szerepkör neve tulajdonság összetevők által kibocsátott telemetriai adatokat. Például az SDK adnak hozzá egy webhely vagy szolgáltatás szerepkör nevében az felhőalapú szerepkör neve tulajdonság. Azonban előfordulhatnak olyan esetek, ahol lehetséges, hogy szeretné felülbírálni az alapértelmezett érték. Felhőalapú szerepkör neve és milyen megjelenik a az alkalmazás-hozzárendelés módosítása:
 
 ### <a name="net"></a>.NET
 
@@ -171,9 +171,9 @@ Spring Boot az Application Insights Spring Boot starter használja, az egyetlen 
 
 `spring.application.name=<name-of-app>`
 
-A Spring Boot starter cloudRoleName automatikusan hozzárendeli a spring.application.name tulajdonság mezőben.
+A Spring Boot starter felhőalapú szerepkör neve automatikusan hozzárendeli a spring.application.name tulajdonság mezőben.
 
-További információk Java korrelációs és konfigurálása cloudRoleName nem SpringBoot alkalmazások kivételt ez [szakasz](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name) a korrelációs.
+További információk a Java összefüggések keresésére és felhőalapú szerepkör konfigurálása nevét nem SpringBoot alkalmazások kivételt ez [szakasz](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name) a korrelációs.
 
 ### <a name="clientbrowser-side-javascript"></a>/ Böngésző ügyféloldali JavaScript
 
@@ -186,15 +186,15 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 });
 ```
 
-### <a name="understanding-cloudrolename-within-the-context-of-the-application-map"></a>Az Alkalmazástérkép kontextusában Cloud.RoleName ismertetése
+### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Felhőalapú szerepkör neve az Alkalmazástérkép kontextusában ismertetése
 
-Csakúgy, hogy hogyan Cloud.RoleName gondolja át, és tekintse meg az alkalmazás-hozzárendelés hasznos lehet, amely rendelkezik több Cloud.RoleNames található:
+Hogyan kell vennie, amennyire **felhőalapú szerepkör neve**, és tekintse meg az alkalmazás-hozzárendelés, amely több felhőalapú szerepkörök nevében található rendelkezik hasznos lehet:
 
 ![Képernyőkép az alkalmazásról térkép](media/app-map/cloud-rolename.png)
 
-A fenti zöld mezőben szereplő nevek mindegyike Alkalmazástérkép vannak az adott elosztott alkalmazás különböző aspektusainak Cloud.RoleName/role értékeit. Így az alkalmazás a szerepkörök állnak: `Authentication`, `acmefrontend`, `Inventory Management`, amely egy `Payment Processing Worker Role`. 
+A fenti zöld mezőben szereplő nevek mindegyike Alkalmazástérkép értékek felhőalapú szerepkör neve az adott elosztott alkalmazás különböző aspektusainak a. Így az alkalmazás a szerepkörök állnak: `Authentication`, `acmefrontend`, `Inventory Management`, amely egy `Payment Processing Worker Role`. 
 
-Az alkalmazás minden egyes ezek esetén `Cloud.RoleNames` is jelenti a saját kialakítási kulcs egy másik egyedi Application Insights-erőforrást. Mivel ez az alkalmazás tulajdonosa e négy különböző Application Insights-erőforrások mindegyike hozzáféréssel rendelkezik, alkalmazás-hozzárendelés el tudja összefűzheti a térképet az alapul szolgáló kapcsolatot.
+Esetén az alkalmazás egyes adott felhőalapú szerepkörök nevében is jelenti egy másik egyedi Application Insights-erőforrást a saját kialakítási kulcs. Mivel ez az alkalmazás tulajdonosa e négy különböző Application Insights-erőforrások mindegyike hozzáféréssel rendelkezik, alkalmazás-hozzárendelés el tudja összefűzheti a térképet az alapul szolgáló kapcsolatot.
 
 Az a [hivatalos definíciók](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93):
 
@@ -208,15 +208,17 @@ Az a [hivatalos definíciók](https://github.com/Microsoft/ApplicationInsights-d
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-Azt is megteheti Cloud.RoleInstance akkor lehet hasznos, ahol Cloud.RoleName jelzi, hogy a probléma valahol az előtér-webkiszolgáló van, de, előfordulhat, hogy fut a webes előtér kiegyenlített terhelésű több kiszolgáló között, így képes arra, hogy a mélyebb rétegben részletes forgatókönyvek Kusto-lekérdezések és, hogy ha a probléma negatív hatással van minden webes előtér-kiszolgálók/példány, vagy csak az egyik lehet rendkívül fontos.
+Azt is megteheti **felhőalapú szerepkörpéldány** esetekben hasznos lehet, ahol **felhőalapú szerepkör neve** jelzi, hogy a probléma valahol a webes előtér-, de előfordulhat, hogy a webes előtér-között fut több elosztott terhelésű kiszolgálókat úgy tudnak részletes Kusto-lekérdezések útján mélyebb rétegben, és ha a probléma van negatív hatással az összes webes előtér-kiszolgálók/példány, vagy csak egy rendkívül fontos lehet.
 
-Egy olyan forgatókönyvet, ahol előfordulhat, hogy szeretné felülbírálni az értéket a Cloud.RoleInstance lehet, hogy az alkalmazás fut-e a tárolóalapú környezetben, csak az adott kiszolgálóhoz, hogy nem feltétlenül elegendő információt egy adott probléma keresse meg.
+Egy olyan forgatókönyvet, ahol előfordulhat, hogy szeretné felülbírálni felhőalapú szerepkörpéldány értéke lehet, hogy az alkalmazás fut-e a tárolóalapú környezetben, csak az adott kiszolgálóhoz, hogy nem feltétlenül elegendő információt egy adott probléma keresse meg.
 
-A telemetriai adatok inicializálók cloud_RoleName tulajdonság felülbírálása kapcsolatos további információkért lásd: [tulajdonságok hozzáadása: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
+A felhőalapú szerepkör neve tulajdonság felülbírálása a telemetriai adatok inicializálók kapcsolatos további információkért lásd: [tulajdonságok hozzáadása: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha problémába ütközik az első alkalmazás-hozzárendelés a várt módon működik, próbálja ki ezeket a lépéseket:
+
+### <a name="general"></a>Általános kérdések
 
 1. Győződjön meg róla, hogy hivatalosan támogatott SDK-t használ. Előfordulhat, hogy a nem támogatott/közösségi SDK-k nem támogatják a korrelációt.
 
@@ -226,9 +228,23 @@ Ha problémába ütközik az első alkalmazás-hozzárendelés a várt módon m�
 
 3. Az Azure Functions használata C#frissítsen a [funkciók V2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
-4. Győződjön meg róla [cloud_RoleName](#set-cloud_rolename) megfelelően van konfigurálva.
+4. Győződjön meg róla [felhőalapú szerepkör neve](#set-cloud-role-name) megfelelően van konfigurálva.
 
 5. Ha valamelyik függőség hiányzik, ellenőrizze, hogy az [automatikusan gyűjtött függőségek](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) listájában szerepel-e. Ha nem, manuálisan úgy is nyomon követheti egy [függőségek nyomon követése hívással](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+
+### <a name="too-many-nodes-on-the-map"></a>Túl sok csomópontot a térképen
+
+Alkalmazás-hozzárendelés minden egyedi felhőalapú szerepkör neve szerepel a kérelmek telemetriai adatai egy alkalmazás csomópont és a egy függőségi csomópont típusa, a cél és a függőségek telemetriáját a felhőalapú szerepkör neve minden egyes egyedi kombináció hoz létre. Ha több mint 10 000 csomópontok szerepelnek a telemetriai adatok, alkalmazás-hozzárendelés nem sikerült beolvasni a csomópontok és a hivatkozásokat, így a térkép nem lesz teljes. Ha ez történik, egy figyelmeztető üzenet jelenik meg a térkép megtekintésekor.
+
+Emellett Alkalmazástérkép csak a megjelenített egyszerre legfeljebb 1000 külön nem csoportosított csomópontok támogatja. Alkalmazástérkép csökkenti, amelyek azonos típusú és hívóit függőségek csoportosításával vizuális összetettségének, de ha túl sok egyedi felhőalapú szerepkör neve vagy túl sok függőségi típusnál a telemetriai adatok, a csoportosítás nem elegendők a, és a leképezés nem tudja jelennek meg.
+
+A probléma megoldásához lesz szüksége a kialakítási megfelelően beállítani a felhőalapú szerepkör neve, függőség típusa és a függőségi cél mezők módosításához.
+
+* Függőségi cél felel a logikai neve, a függőség. Sok esetben megegyezik a kiszolgáló vagy a függőség, erőforrás neve. Például a HTTP-függőségek esetén Időintervallumként az állomásnevet. Nem tartalmazhat egyedi azonosítóját vagy a paraméterek, amelyeket egy kérelem egy másikra módosítani.
+
+* Függőség típusa függőséget logikai típusú felel. Például a HTTP-, SQL- vagy Azure Blob olyan jellemző függőségi típusnál. Egyedi azonosítók nem kell tartalmaznia.
+
+* Felhőalapú szerepkör neve célját ismerteti a [fenti szakasz](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name).
 
 ## <a name="portal-feedback"></a>Portál visszajelzés
 

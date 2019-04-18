@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: c5d4299d2d391a25bfab579f5f78da3718afc24c
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6b1029c5532e106c269b47e6e184b9c93faf8d09
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043006"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681420"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Azure CLI az Azure IoT Hub-Eszközfelügyelet az IoT-bővítmény használata
 
@@ -49,7 +49,7 @@ Azure CLI és az IoT-bővítmény futtatása Azure CLI-hez a különböző felü
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-* Az oktatóanyag elvégzéséhez [beállítani eszközét](iot-hub-raspberry-pi-kit-node-get-started.md) mely kiterjed a következő követelményeknek:
+* Végezze el a [Raspberry Pi online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyag vagy az eszköz oktatóanyagokban; például [Raspberry Pi és node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ez érvényes a következő követelményeknek:
 
   - Aktív Azure-előfizetés.
   - Az Azure IoT hub az előfizetéséhez.

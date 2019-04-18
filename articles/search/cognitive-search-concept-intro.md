@@ -11,10 +11,10 @@ ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c421d99f1071c7a38cfe315cc3054136f81598e0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265968"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Mi az Azure Search "cognitive search"?
@@ -94,7 +94,7 @@ Indexek jönnek létre az index sémájából, amely meghatározza a mezők és 
 
 **1. lépés: [Az Azure Search-erőforrás létrehozásához](search-create-service-portal.md)** 
 
-**2. lépés: Próbálja meg néhány gyorsútmutatókat és gyakorlati tapasztalatokat példáit**
+**2. lépés: Próbálja meg néhány gyorsútmutatókat és gyakorlati tapasztalatokat példáit**
 
 + [Rövid útmutató (portál)](cognitive-search-quickstart-blob.md)
 + [Az oktatóanyag (HTTP-kérések)](cognitive-search-tutorial-blob.md)
@@ -138,5 +138,5 @@ További információ a konkrét kérdések és problémák: [hibaelhárítási 
 ## <a name="next-steps"></a>További lépések
 
 + [A kognitív keresés dokumentációja](cognitive-search-resources-documentation.md)
-+ [Gyors útmutató: A portál az útmutató a kognitív keresés kipróbálása](cognitive-search-quickstart-blob.md)
++ [Rövid útmutató: A portál az útmutató a kognitív keresés kipróbálása](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag: Ismerje meg, a cognitive search API-k](cognitive-search-tutorial-blob.md)

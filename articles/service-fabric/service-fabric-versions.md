@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/24/2018
 ms.author: aljo
-ms.openlocfilehash: de5522e68d1329ce2b80a4d3c7045d38c13169e5
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: d99000e1682b662f4bceb28096395243c894282f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191647"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681607"
 ---
 # <a name="supported-service-fabric-versions"></a>A Service Fabric támogatott verziói
 
@@ -30,7 +30,9 @@ Tekintse meg a következő dokumentumokban talál útmutatást, hogy a fürt Ser
 - [Az Azure-fürtön a Service Fabric-verzió frissítése](service-fabric-cluster-upgrade.md)
 - [A Service Fabric verziója egy önálló windows server-fürt frissítése](service-fabric-cluster-upgrade-windows-server.md)
 
-Íme a Service Fabric-verziók támogatott listája és azok támogatás záró dátumát.
+## <a name="supported-versions"></a>Támogatott verziók
+
+A következő táblázat felsorolja a Service Fabric-verziók által támogatott és a támogatás záró dátumát.
 
 | **A fürt Service Fabric-futtatókörnyezet** | **Közvetlenül a fürt verziója frissíthető** |**Kompatibilis SDK / NuGet-csomag verziója** | **Támogatásának vége** |
 | --- | --- |--- | --- |
@@ -45,3 +47,18 @@ Tekintse meg a következő dokumentumokban talál útmutatást, hogy a fürt Ser
 | 6.2.* | 6.0.232.* |Kisebb vagy egyenlő, mint 3.1-es verzióját |Október 26,2018   |
 | 6.3.* | 6.1.480.* |Kisebb vagy egyenlő 3.2-es verziója |31,2019. március  |
 | 6.4.* | 6.2.301.* |Kisebb vagy egyenlő 3.3-as verziója |Aktuális verzióját, és ezért nincs befejezési dátum |
+
+## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
+
+ Az alábbi táblázat a támogatott operációs rendszerek támogatott a Service Fabric-verzió.
+
+| **Operációs rendszer** | **Legkorábbi támogatott Service Fabric verziója** |
+| --- | --- |
+| Windows Server 2012 R2 | Az összes verzió |
+| Windows Server 2016 | Az összes verzió |
+| Windows Server 1709 | 6.0 |
+| A Windows Server 1803-as verzióban | 6.4 |
+| A Windows Server 1809 | 6.4.654.9590 |
+| A Windows Server 2019 | 6.4.654.9590 |
+| Linux Ubuntu 16.04 | 6.0 |
+

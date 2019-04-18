@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 7cca9d9c91f35c30bbd71ae82b9f02447051078d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e7cb9f4750fc26d4e03d255c8614e42a42944fd0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983168"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678105"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Egyesített riasztások és -monitorozás az Azure monitorban váltja fel a klasszikus riasztások és -monitorozás
 
@@ -23,7 +23,7 @@ Az új Azure monitorozási és riasztási platform helyben, az azt fogja kell ki
 
  ![Az Azure Portalon a klasszikus riasztás](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
-Javasoljuk, hogy első lépéseket, és hozza létre újra a riasztásokat az új platformon. Nagy számú riasztást rendelkező ügyfelek hogy folyamatban van az új riasztások rendszerre, hogy megszakítás nélkül helyezze át a létező klasszikus riasztások automatikus módot biztosítanak a, vagy hozzáadhatja költségek.
+Javasoljuk, hogy első lépéseket, és hozza létre újra a riasztásokat az új platformon. Nagy számú riasztást rendelkező ügyfelek, tudjuk [fázisai a működés közbeni](alerts-understand-migration.md#roll-out-phases), amely egy [önkéntes áttelepítési eszköz](alerts-using-migration-tool.md) meglévő klasszikus riasztások áthelyezése az új riasztások rendszer megszakadása és a hozzáadott költségek nélkül.
 
 > [!IMPORTANT]
 > Tevékenységnapló létrehozott klasszikus riasztási szabályok nem lehet elavult vagy át. Összes klasszikus riasztási szabályt létrehozni a tevékenységnapló érheti el és használt-a az új Azure Monitor - riasztásokat. További információkért lásd: [létrehozása, megtekintése és használata az Azure Monitor tevékenységnapló-riasztások kezelése](../../azure-monitor/platform/alerts-activity-log.md). Ehhez hasonlóan a Service Health riasztások érheti el és használt – az új Service Health szakaszban van. További információkért lásd: [riasztások a szolgáltatás állapotával kapcsolatos értesítésekre](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
@@ -62,11 +62,12 @@ Június 2019, az Azure monitorban végén:
 
 - Klasszikus figyelés és riasztások szolgáltatás elavult, és már nem elérhető Új riasztási szabályok létrehozását lesz.
 - Riasztási szabályt, amely továbbra is megtalálhatók a riasztások (klasszikus) túli június 2019 végrehajtása és a értesítések továbbra is, de nem áll rendelkezésre, a módosítás.
-- Július a 2019-től kezdődően naplóriasztási szabályok a klasszikus monitorozás és riasztások automatikusan átkerülnek a Microsoft által az megfelelőikre az új Azure monitor-platformon. A folyamat zökkenőmentes állásidő nélkül, és ügyfelek lefedettség figyelési adatvesztés nélkül fog rendelkezni.
-- Riasztási szabályok áttelepítve az új riasztások platformra figyelési lefedettség mint korábban biztosít, de tartalmazó is észleltünk adattartalmakat. új értesítést fog aktiválódni. Bármilyen e-mail címet, a webhook-végponttal vagy a klasszikus riasztási szabályhoz társított logikai alkalmazásra mutató hivatkozás fog vihető át, ha telepít át, de nem fog megfelelően működni, riasztás hasznos az új platformon eltérő lesz
+- Július 2019, klasszikus monitorozás és riasztások, amely telepíthető át, a riasztási szabályok indítása automatikusan átkerül a Microsoft megfelelőikre az új Azure monitor-platformon. A folyamat zökkenőmentes állásidő nélkül, és ügyfelek lefedettség figyelési adatvesztés nélkül fog rendelkezni.
+- Riasztási szabályok áttelepítve az új riasztások platformra figyelési lefedettség mint korábban biztosít, de tartalmazó is észleltünk adattartalmakat. új értesítést fog aktiválódni. Bármilyen e-mail címet, a webhook-végponttal vagy a klasszikus riasztási szabályhoz társított logikai alkalmazásra mutató hivatkozás fog vihető át, ha telepít át, de nem fog megfelelően működni, riasztás hasznos az új platformon eltérő lesz.
+- Néhány [klasszikus riasztási szabályok, amelyek nem telepíthetők át automatikusan](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated) és felhasználói manuális műveleteket továbbra is június 2020 mai napig tartó futtatásához szükséges.
 
 > [!IMPORTANT]
-> A Microsoft Azure Monitor automatikus áttelepítése hamarosan a klasszikus riasztási szabályok az új platformra be, hogy az ügyfelek eszközök biztosít. És futtassa az összes klasszikus riasztási szabályt, amely továbbra is létezik, a júliusi 2019 indítása kényszeríti. Győződjön meg, hogy a fogyasztó klasszikus riasztási szabály hasznos igazodó kezelni az új tartalom az automation-ügyfeleknek kell [egyesített metrikákkal és riasztásokkal az Application Insights](#unified-metrics-and-alerts-in-application-insights) vagy [egyesített metrikákkal és riasztásokkal az egyéb Azure-hoz erőforrások](#unified-metrics-and-alerts-for-other-azure-resources), a klasszikus riasztási szabályok az áttelepítés után. 
+> A Microsoft Azure Monitor lett állítva, a fázisokban [eszközt, amellyel önkéntesen](alerts-using-migration-tool.md) be az új platformra hamarosan a klasszikus riasztási szabályok. És futtassa az összes klasszikus riasztási szabályt, amely továbbra is létezik, és az áttelepíthető július 2019 indítása kényszeríti. Győződjön meg, hogy a fogyasztó klasszikus riasztási szabály hasznos igazodó kezelni az új tartalom az automation-ügyfeleknek kell [egyesített metrikákkal és riasztásokkal az Application Insights](#unified-metrics-and-alerts-in-application-insights) vagy [egyesített metrikákkal és riasztásokkal az egyéb Azure-hoz erőforrások](#unified-metrics-and-alerts-for-other-azure-resources), a klasszikus riasztási szabályok az áttelepítés után. További részletekért lásd: [klasszikus riasztási szabály migrálásának előkészítése](alerts-prepare-migration.md)
 
 Hamarosan biztosítjuk, hogy önkéntesen áttelepítése a riasztásokat az eszközök [riasztások (klasszikus) szakasz](../../azure-monitor/platform/alerts-classic.overview.md) Azure Portal az új Azure-riasztások. A riasztások (klasszikus), amely lesznek áttelepítve az új Azure monitornak konfigurált összes szabályok ingyenes lesz, és nem számítunk fel. Az áttelepített klasszikus riasztási szabályok is nem szerepelhet értesítések elküldése e-mailben, a webhook vagy LogicApp valamilyen díja. Az újabb értesítés és a művelet típusú (például SMS, hanghívás, ITSM-integrációról stb.) használatát azonban felszámítható, hogy hozzáadott egy áttelepített vagy egy új riasztás lesz. További információkért lásd: [Azure Monitor szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
 
@@ -84,4 +85,3 @@ Ez a cikk a hivatkozások & részletei az új Azure monitorozás és riasztások
 
 * További információ a [új, egységes Azure Monitor](../../azure-monitor/overview.md).
 * További információ az új [Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
-

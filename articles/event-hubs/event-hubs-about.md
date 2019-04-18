@@ -10,14 +10,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 43f8af4f2afc0f7210e49dc5b483a8d2757e6aba
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 80c98bea08018780ba1d439e369ab42343d1e615
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215354"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680327"
 ---
-# <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Az Azure Event Hubs – Egy big Data típusú adatstreamelési platform és eseményfeldolgozó szolgáltatás
+# <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – Big data streamelési platform és eseménybetöltő szolgáltatás
 Az Azure Event Hubs szolgáltatás a big Data típusú adatstreamelési platform és eseményfeldolgozó szolgáltatás. Képes fogadni és feldolgozni másodpercenként több millió. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
 
 A következő esetekben a forgatókönyveket, melyekben használhatja az Event Hubs néhány:
@@ -77,11 +77,16 @@ A következő ábrán az Event Hubs streamfeldolgozási architektúrája láthat
 
 ## <a name="next-steps"></a>További lépések
 
-Az Event Hubs használatának első lépéseit a következő cikkek ismertetik:
+Event Hubs használatának első lépései, tekintse meg a **események küldéséhez és fogadásához** oktatóanyagok: 
 
-1. **Létrehoz egy eseményközpontot**: [Az Azure portal](event-hubs-create.md), [Azure CLI-vel](event-hubs-quickstart-cli.md), [Azure PowerShell-lel](event-hubs-quickstart-powershell.md), [Azure Resource Manager-sablon](event-hubs-resource-manager-namespace-event-hub.md)
-2. **Események küldése eseményközpontba**: [.NET Core](event-hubs-dotnet-standard-getstarted-send.md), [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [Node.js](event-hubs-node-get-started-send.md), [Go](event-hubs-go-get-started-send.md), [C](event-hubs-c-getstarted-send.md)
-3. **Események fogadása az event hub**: [.NET Core](event-hubs-dotnet-standard-getstarted-receive-eph.md), [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-receive-eph.md), [Java](event-hubs-java-get-started-receive-eph.md), [Python](event-hubs-python-get-started-receive.md), [Node.js ](event-hubs-node-get-started-receive.md), [Go](event-hubs-go-get-started-receive-eph.md), [Apache Storm](event-hubs-storm-getstarted-receive.md)   
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+- [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md)
+- [Java](event-hubs-java-get-started-send.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [Node.js](event-hubs-node-get-started-send.md)
+- [Go](event-hubs-go-get-started-send.md)
+- [C (csak küldése)](event-hubs-c-getstarted-send.md)
+- [Az Apache Storm (csak reecive)](event-hubs-storm-getstarted-receive.md)
 
 Az Event Hubsszal kapcsolatos további információkért olvassa el a következő cikkeket:
 

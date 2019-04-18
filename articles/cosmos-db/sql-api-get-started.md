@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: a8d144b2cb8ee18c69dc4c4768b09422d44bade2
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 64aef17663fdc28a467172bbe8954fc06fdb7ff0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617320"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680390"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Adatkezelés az Azure Cosmos DB SQL API-fiók egy .NET-Konzolalkalmazás létrehozása
 
@@ -91,7 +91,10 @@ Kövesse ezeket az utasításokat az Azure Cosmos DB-fiók létrehozása az Azur
 1. Keresse meg és válassza **Microsoft.Azure.DocumentDB**, és válassza ki **telepítése** ha van még nem telepítette.
    
    Az Azure Cosmos DB SQL API ügyfélkódtárának csomagazonosítója a következő: [Microsoft Azure Cosmos DB Client Library](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/).
-   
+
+   > [!NOTE]
+   > Ha a .NET Core keretrendszert használ, tekintse meg [a .NET Core-docs](./sql-api-dotnetcore-get-started.md).
+
    ![Képernyőfelvétel a NuGet menüről az Azure Cosmos DB ügyféloldali SDK megkereséséhez menü](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
    
    Ha a megoldás módosításainak előnézet szóló üzenetet kap, válassza ki a **OK**. Ha a licenc elfogadásáról szóló üzenetet kap, válassza ki a **elfogadom**.

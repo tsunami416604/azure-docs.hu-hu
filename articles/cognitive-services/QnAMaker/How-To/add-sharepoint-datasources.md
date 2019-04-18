@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: tulasim
 ms.openlocfilehash: 671d76b6c0a5a2cdac5797668fb0e5651b5823e0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281743"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>A Tudásbázis egy védett Sharepoint-adatforrás hozzáadása
@@ -103,11 +103,11 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. Keresse meg `QnAMakerPortalSharepoint` válassza ki a QnA Maker alkalmazást. 
 
-    [![SVállalati alkalmazások listájában QnAMakerPortalSharepoint számára eresés](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
+    [![Vállalati alkalmazások listájában QnAMakerPortalSharepoint keresése](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
 1. A **biztonsági**, lépjen a **engedélyek**. Válassza ki **biztosítson rendszergazdai jóváhagyás szervezet**. 
 
-    [![Saz Active Directory-rendszergazda dönthet a hitelesített felhasználó](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
+    [![Válassza ki a hitelesített felhasználó az Active Directory-rendszergazda](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 
 1. Válassza ki a jogosult engedélyeket az Active Directory bejelentkezési fiókot. 
 

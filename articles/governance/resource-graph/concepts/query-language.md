@@ -9,10 +9,10 @@ ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 08e4f09665a3501073f55b7f5b82bf51cf508ea9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276677"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure-erőforrás Graph lekérdezési nyelv ismertetése
@@ -27,15 +27,15 @@ A következő erőforrás Graph támogatott táblázatos szereplők listáját:
 
 - [count](/azure/kusto/query/countoperator)
 - [distinct](/azure/kusto/query/distinctoperator)
-- [Kiterjesztése](/azure/kusto/query/extendoperator)
-- [Korlát](/azure/kusto/query/limitoperator)
+- [extend](/azure/kusto/query/extendoperator)
+- [limit](/azure/kusto/query/limitoperator)
 - [rendezési](/azure/kusto/query/orderoperator)
-- [Projekt](/azure/kusto/query/projectoperator)
+- [project](/azure/kusto/query/projectoperator)
 - [project-away](/azure/kusto/query/projectawayoperator)
 - [Minta](/azure/kusto/query/sampleoperator)
 - [sample-distinct](/azure/kusto/query/sampledistinctoperator)
-- [rendezés szempontja](/azure/kusto/query/sortoperator)
-- [Összegzés](/azure/kusto/query/summarizeoperator)
+- [Rendezés](/azure/kusto/query/sortoperator)
+- [summarize](/azure/kusto/query/summarizeoperator)
 - [hajtsa végre a megfelelő](/azure/kusto/query/takeoperator)
 - [felső](/azure/kusto/query/topoperator)
 - [top-nested](/azure/kusto/query/topnestedoperator)

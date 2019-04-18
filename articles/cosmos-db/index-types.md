@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: rimman
 ms.openlocfilehash: 5e7ee7c0bdfd0cff6be182e6d087cc264910e440
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271560"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Az Azure Cosmos DB index típusa
@@ -64,6 +64,6 @@ Az Azure Cosmos DB hibát ad vissza, ha a lekérdezés ORDER BY használja, de n
 Az Azure Cosmos DB indexelése kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Az indexelő áttekintése](index-overview.md)
-- [Indexelési szabályzat](indexing-policies.md)
-- [Indexek elérési útjai](index-paths.md)
+- [Indexelési házirend](indexing-policies.md)
+- [Index elérési utak](index-paths.md)
 

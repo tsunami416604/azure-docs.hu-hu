@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 9b0c48b3a3fb3a1b4e4fbe94a368297823a86778
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 7d38120c530b89230893b85829d201c14a8cba04
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579580"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59697294"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Gyors útmutató: Alkalmazások konfigurálása az Azure-függvény létrehozása
 
@@ -114,4 +114,4 @@ Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://v
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs adattároló, és az egy Azure-függvényt használta azt. Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
 
 > [!div class="nextstepaction"]
-> [Az Azure-erőforrások integráció felügyelt identitásokból](./integrate-azure-managed-service-identity.md)
+> [Az Azure-erőforrások integráció felügyelt identitásokból](./howto-integrate-azure-managed-service-identity.md)

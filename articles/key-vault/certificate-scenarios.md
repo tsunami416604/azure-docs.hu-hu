@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 20c05bddddce4c7748e29551fe78d3e5609b2fa5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275895"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok
@@ -132,4 +132,4 @@ Jelenleg nem támogatjuk EK kulcsok PEM formátumban.
 
 ## <a name="see-also"></a>Lásd még:
 
-- [Tudnivalók a kulcsok, titkos kódok és tanúsítványok](about-keys-secrets-and-certificates.md)
+- [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)

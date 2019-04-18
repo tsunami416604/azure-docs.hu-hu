@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: tomfitz
 ms.openlocfilehash: 93df0c196d78a4685ff82108354b82a07d67695d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59256923"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programozott módon létrehozhat az Azure Enterprise-előfizetések (előzetes verzió)
@@ -40,7 +40,7 @@ A regisztrációs fiók-előfizetések létrehoz egy tulajdonosi szerepkör kell
 
 Az alábbi parancsok futtatásához, meg kell bejelentkeznie a fiók tulajdonosának *kezdőkönyvtár*, azaz a címtár előfizetések alapértelmezés szerint létrehozott.
 
-# [<a name="rest"></a>REST](#tab/rest)
+# <a name="resttabrest"></a>[REST](#tab/rest)
 
 A kérelem az összes regisztrációs fiókok listáját:
 
@@ -73,7 +73,7 @@ Azure válaszol az hozzáfér az összes regisztrációs fiókok listáját:
 }
 ```
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Használja a [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) parancsmag használatával listázhatja az összes regisztrációs fiókok hozzáfér.
 
@@ -89,7 +89,7 @@ ObjectId                               | PrincipalName
 4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
 ```
 
-# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Használja a [az számlázási regisztrációs-fióklista](https://aka.ms/EASubCreationPublicPreviewCLI) paranccsal listát készíthet az összes regisztrációs fiókok hozzáfér.
 
@@ -130,7 +130,7 @@ Használja a `principalName` azonosítani a fiókot, amelyet az előfizetések k
 
 A következő példában létrehozunk egy kérelem nevű előfizetés létrehozása *fejlesztői csapat előfizetés* előfizetési ajánlatok között pedig *MS-AZR - 0017P* (normál nagyvállalati szerződéssel rendelkező). A regisztrációs fiók `747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (helyőrző értékét, ez az érték a GUID), amely az, hogy a regisztrációs fiók a SignUpEngineering@contoso.com. Azt is két felhasználót ad RBAC tulajdonosként az előfizetés.
 
-# [<a name="rest"></a>REST](#tab/rest)
+# <a name="resttabrest"></a>[REST](#tab/rest)
 
 Használja a `id` , a `enrollmentAccount` az előfizetés létrehozására vonatkozó kérelem elérési útját.
 
@@ -159,7 +159,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 A válaszban szerezheti vissza egy `subscriptionOperation` figyelés objektumot. Ha az előfizetés létrehozása befejeződött, a `subscriptionOperation` objektum esetén ad vissza egy `subscriptionLink` objektum, amely rendelkezik az előfizetés azonosítóját.
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Ez a modul előzetes verziójának használatához futtatásával telepítse `Install-Module Az.Subscription -AllowPrerelease` első. Győződjön meg arról, hogy `-AllowPrerelease` működik, a PowerShellGet legújabb verziójának telepítése [a PowerShellGet modul beolvasása](/powershell/gallery/installing-psget).
 
@@ -180,7 +180,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 Összes paraméter teljes listáját lásd: [New-AzSubscription](/powershell/module/az.subscription.preview).
 
-# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Ez a minta bővítmény használatához futtatásával telepítse `az extension add --name subscription` első.
 

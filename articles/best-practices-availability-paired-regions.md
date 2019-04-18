@@ -2,16 +2,17 @@
 title: 'Üzleti folytonosság és vészhelyreállítás recovery (BCDR): Azure – párosított régiók |} A Microsoft Docs'
 description: További információ az Azure régiónkénti párosítás, annak érdekében, hogy alkalmazásokat rugalmas adatközpontok meghibásodásának során.
 author: rayne-wiselman
+manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 12/23/2018
+ms.date: 04/17/2019
 ms.author: raynew
-ms.openlocfilehash: d27db03977b84002b59d58327af7d14fbdc713c2
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: ecbe73e02631e3c3601bd929282d467cb05b41e4
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792319"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678870"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzleti folytonosság és vészhelyreállítás recovery (BCDR): Azure – párosított régiók
 
@@ -37,6 +38,7 @@ Minden egyes Azure-régió párban áll egy regionális párokból érdemes egy�
 | Európa |Észak-Európa |Nyugat-Európa |
 | Franciaország |Közép-Franciaország|Dél-Franciaország|
 | Németország |Közép-Németország |Északkelet-Németország |
+| Németország |Észak-Németország | Németország nyugati középső régiója
 | India |Közép-India |Dél-India |
 | India |Nyugat-India |Dél-India |
 | Japán |Kelet-Japán |Nyugat-Japán |
@@ -45,7 +47,14 @@ Minden egyes Azure-régió párban áll egy regionális párokból érdemes egy�
 | Észak-Amerika |USA 2. keleti régiója |USA középső régiója |
 | Észak-Amerika |USA északi középső régiója |USA déli középső régiója |
 | Észak-Amerika |USA nyugati régiója, 2. |USA nyugati középső régiója 
+| Észak-Amerika |USA nyugati Régiójában, 3 |USA keleti régiója
+| Norvégia |Norvégia keleti régiója |Norvégia nyugati régiója
+| Dél-Afrika | Dél-Afrika északi régiója | Dél-Afrika nyugati régiója
+| Svédország |Svéd közép-India |Svéd Dél-India
+| Svájc | Svájc északi régiója | Svájc nyugati régiója
 | Egyesült Királyság |Az Egyesült Királyság nyugati régiója |Az Egyesült Királyság déli régiója |
+| Egyesült Királyság |Egyesült Királyság északi régiója |Egyesült Királyság 2. déli régiója
+| Egyesült Arab Emírségek | Az Egyesült Arab Emírségek északi régiója | UAE Center
 | Védelmi Minisztérium, USA |US DoD – Kelet |US DoD – Középső régió |
 | Az USA kormányzata |USA-beli államigazgatás – Arizona |USA-beli államigazgatás – Texas |
 | Az USA kormányzata |US Gov Iowa |USA-beli államigazgatás – Virginia |
@@ -53,10 +62,11 @@ Minden egyes Azure-régió párban áll egy regionális párokból érdemes egy�
 
 1. táblázat – Azure regionális párok leképezése
 
-- Nyugat-India eltér, mivel csak egy irányban egy másik régió párban áll. Nyugat-Indiát, a másodlagos régióba Dél-India, Dél-India másodlagos régióba azonban közép-India.
-- Dél-brazíliai régióban egy egyedülálló megoldás, mert kívül a saját földrajzi régió párban áll. Dél-Brazília másodlagos régió az USA déli középső Régiójában, de USA déli középső Régiójában a másodlagos régió nem Dél-brazíliai régióban.
-- Másodlagos USA beli államigazgatás – Iowa régióban US Gov – Virginia, de US Gov Virginia másodlagos régió nem US Gov – Iowa.
-- US Gov Virginia másodlagos régióba US Gov Texas, de US Gov Texas másodlagos régió nem US Gov Virginia.
+- Nyugat-Indiát, csak egy irányban párosítva van. Nyugat-Indiát, a másodlagos régióba Dél-India, Dél-India másodlagos régióba azonban közép-India.
+- Dél-brazíliai régióban egy egyedülálló megoldás, mert kívül a saját földrajzi régió párban áll. Dél-Brazília másodlagos régió az USA déli középső Régiójában. USA déli középső Régiójában a másodlagos régió nem Dél-brazíliai régióban.
+- Másodlagos USA beli államigazgatás – Iowa régióban US Gov Virginia.
+- US Gov Virginia másodlagos régióba US Gov Texas.
+- US Gov Texas másodlagos régió az USA Arizona állam.
 
 
 Javasoljuk, hogy úgy beállítani, hogy üzleti folytonossági vészhelyreállítás (BCDR) számára, hogy az Azure-elkülönítési és rendelkezésre állás házirendek regionális párok között. Több aktív régiók támogató alkalmazások esetében azt javasoljuk használatával régió párban mindkét régióban, ahol csak lehetséges. Ez biztosítja az optimális rendelkezésre állását, alkalmazások és a egy esetleges vészhelyzet esetén kis méretben helyreállítási idő. 

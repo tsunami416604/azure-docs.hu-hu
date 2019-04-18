@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258742"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?
@@ -76,9 +76,9 @@ Konfigurálhatja, amelyek a eszközalapú feltételes hozzáférési szabályzat
 
 Az eszköz regisztrálva kell lennie az Azure AD, mielőtt azt is megfelelőként megjelölt. Három lehetősége van az eszköz regisztrálása: 
 
-- [Azure AD-ben regisztrált eszközök](../devices/overview.md#azure-ad-registered-devices)
-- [Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#azure-ad-joined-devices)  
-- [Hibrid Azure AD-csatlakoztatott eszközök](../devices/overview.md#hybrid-azure-ad-joined-devices)
+- [Az Azure ad-ben regisztrált eszközök](../devices/overview.md#azure-ad-registered-devices)
+- [Az Azure AD-csatlakoztatott eszközök](../devices/overview.md#azure-ad-joined-devices)  
+- [Hibrid Azure AD-hez csatlakoztatott eszközök](../devices/overview.md#hybrid-azure-ad-joined-devices)
 
 További információkért lásd: [a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés igénylése a felügyelt eszközök](require-managed-devices.md).
 

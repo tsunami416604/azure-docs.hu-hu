@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 043b67d4b4c708f2d243f9be04fb2a706591947b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273158"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Azure Blueprints-tervek definiálása és hozzárendelése a REST API használatával
@@ -71,7 +71,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie saját értékekre:
 
 - `{YourMG}` – Cserélje le a felügyeleti csoport azonosítója
-- `{subscriptionId}` – Cserélje le az előfizetés-azonosító
+- `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
 
 > [!NOTE]
 > Tervezetek is lehet létrehozni az előfizetés szintjén. Példaként lásd: [tervrajz létrehozása előfizetés példát](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
@@ -338,7 +338,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
 
 - `{tenantId}` – Cserélje le a bérlő azonosítója
 - `{YourMG}` – Cserélje le a felügyeleti csoport azonosítója
-- `{subscriptionId}` – Cserélje le az előfizetés-azonosító
+- `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
 
 1. Adja az Azure Blueprints-szolgáltatásnévnek a **Tulajdonos** szerepkört a célelőfizetésen. Az AppId je statická. (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), de bérlői eltérő a szolgáltatásnév-Azonosítót. A bérlőre vonatkozó adatok a következő REST API használatával kérhetők le. Az [Azure Active Directory Graph API-t](../../active-directory/develop/active-directory-graph-api.md) használja, amely más engedélyekkel rendelkezik.
 

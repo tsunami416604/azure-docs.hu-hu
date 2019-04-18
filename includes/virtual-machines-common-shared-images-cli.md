@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/13/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 547e0b08b2a57b4b9192f11907f77160142d4466
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 36c4757feb367fd39ae94640cb8e8a0f1714a0d3
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192125"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737115"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
@@ -66,7 +66,7 @@ az sig image-definition create \
 
 ## <a name="create-an-image-version"></a>Hozzon létre egy lemezkép verziója 
  
-Hozzon létre a lemezkép verzió használatával szükség szerint [az image katalógus létrehozása-lemezkép-verzió](/cli/azure/sig/image-version#az-sig-image-version-create). Szüksége lesz a felügyelt lemezkép létrehozásához a rendszerkép verziószámát összegyűjtéséhez használt Azonosítóját adja át. Használhat [az képlista](/cli/azure/image?view#az-image-list) lemezképeket, amelyek egy erőforráscsoportba tartozó információt szeretne kapni. Ebben a példában a lemezkép-verzió nem *1.0.0-s* fogjuk 5 teljes replika létrehozása és a *USA nyugati középső Régiója*, *USA déli középső Régiójában* és az USA keleti RÉGIÓJA 2 * régió.
+Hozzon létre a lemezkép verzió használatával szükség szerint [az image katalógus létrehozása-lemezkép-verzió](/cli/azure/sig/image-version#az-sig-image-version-create). Szüksége lesz a felügyelt lemezkép létrehozásához a rendszerkép verziószámát összegyűjtéséhez használt Azonosítóját adja át. Használhat [az képlista](/cli/azure/image?view#az-image-list) lemezképeket, amelyek egy erőforráscsoportba tartozó információt szeretne kapni. Ebben a példában a lemezkép-verzió nem *1.0.0-s* fogjuk 5 replikák létrehozása, és a *USA nyugati középső Régiója* régió, 1, a replika a *USA déli középső Régiójában* régió és 1 a replika a *USA keleti RÉGIÓJA 2* régióban.
 
 ```azurecli-interactive 
 az sig image-version create \

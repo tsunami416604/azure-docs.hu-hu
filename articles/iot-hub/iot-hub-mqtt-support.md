@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
 ms.openlocfilehash: 5c879b050fad0ac8c6467ffa29d9aee398f57aa2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276848"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Az IoT hubhoz az MQTT protokoll használatával kommunikálnak.
@@ -338,8 +338,8 @@ Az IoT Hub üzembe helyezés tervezésével kapcsolatos további tudnivalókért
 
 * [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsolutions.com/)
 * [További protokollok támogatása](iot-hub-protocol-gateway.md)
-* [Összehasonlítás az Event Hubs-zal](iot-hub-compare-event-hubs.md)
-* [Méretezés, magas rendelkezésre állás és vészhelyreállítás](iot-hub-scaling.md)
+* [Az Event Hubs összehasonlítása](iot-hub-compare-event-hubs.md)
+* [Méretezés, magas rendelkezésre ÁLLÁS és Vészhelyreállítás](iot-hub-scaling.md)
 
 Részletesebb megismerése az IoT Hub képességeit, tekintse meg:
 

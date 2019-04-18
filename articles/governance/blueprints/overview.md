@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: 960b8145e5f53c6c37820604fd634ccf5fd77c6b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259422"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Az Azure-tervek szolgáltatás áttekintése
@@ -85,9 +85,9 @@ A tervek minden **közzétett** **verziója** hozzárendelhető a meglévő elő
 
 A tervek használatához [szerepköralapú hozzáférés-vezérlésen (RBAC)](../../role-based-access-control/overview.md) kell megadni az engedélyeket. Tervek létrehozásához a fióknak a következő engedélyekkel kell rendelkeznie:
 
-- `Microsoft.Blueprint/blueprints/write` – Egy tervezetdefiníció létrehozása
-- `Microsoft.Blueprint/blueprints/artifacts/write` -A-összetevők létrehozása a tervezetdefiníciót
-- `Microsoft.Blueprint/blueprints/versions/write` -A tervrajz közzététele
+- `Microsoft.Blueprint/blueprints/write` – Tervdefiníció létrehozása
+- `Microsoft.Blueprint/blueprints/artifacts/write` – Tervelemek létrehozása tervdefiníció alapján
+- `Microsoft.Blueprint/blueprints/versions/write` – Terv közzététele
 
 Tervek törléséhez a fióknak a következő engedélyekkel kell rendelkeznie:
 
@@ -100,8 +100,8 @@ Tervek törléséhez a fióknak a következő engedélyekkel kell rendelkeznie:
 
 Tervek hozzárendeléséhez vagy a hozzárendelés megszüntetéséhez a fióknak a következő engedélyekkel kell rendelkeznie:
 
-- `Microsoft.Blueprint/blueprintAssignments/write` -A tervezet hozzárendelése
-- `Microsoft.Blueprint/blueprintAssignments/delete` -Tervrajz hozzárendelésének megszüntetése egy
+- `Microsoft.Blueprint/blueprintAssignments/write` – Terv hozzárendelése
+- `Microsoft.Blueprint/blueprintAssignments/delete` – Terv hozzárendelésének megszüntetése
 
 > [!NOTE]
 > Mivel a tervhozzárendelések létrehozása előfizetésenként történik, a terv hozzárendelési és hozzárendelés-megszüntetési engedélyeit az előfizetés hatókörében kell megadni, vagy örökléssel kell biztosítani az előfizetési hatókörben.
@@ -119,5 +119,5 @@ A következő Azure tervek áttekintése az Azure fridays-re. Videó letöltése
 
 ## <a name="next-steps"></a>További lépések
 
-- [Terv létrehozása – Portal](create-blueprint-portal.md)
+- [Terv létrehozása – Portál](create-blueprint-portal.md)
 - [Terv létrehozása – REST API](create-blueprint-rest-api.md)

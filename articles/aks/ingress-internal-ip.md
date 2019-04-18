@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 03/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 56e7f9a7760fc270df40dd4524f70b5ddce57198
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 4a648bd2704e93abedeefae14aee66ae8bfeecef
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847441"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678122"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Hozzon létre egy bejövőforgalom-vezérlőt, a belső virtuális hálózathoz az Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ További lehetőségek:
 
 Ez a cikk a Helm használatával az NGINX bejövőforgalom-vezérlőt, a tanúsítvány-kezelő és a egy mintául szolgáló webalkalmazás telepítése. Szüksége lesz a Helm belül az AKS-fürt inicializálva, és a tiller valóban szolgáltatásfiók használatával. Konfigurálása és a Helm használatával további információkért lásd: [telepíthet alkalmazásokat a Helm használatával az Azure Kubernetes Service (AKS)][use-helm].
 
-Ez a cikk is szükséges, hogy futnak-e az Azure CLI 2.0.41 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+Ez a cikk is szükséges, hogy futnak-e az Azure CLI 2.0.61 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="create-an-ingress-controller"></a>Hozzon létre egy bejövőforgalom-vezérlőt
 
@@ -50,11 +50,15 @@ controller:
 Már üzembe helyezheti a *nginx-belépő* Helm-diagramot. Az előző lépésben létrehozott jegyzékfájlt használ, adja hozzá a `-f internal-ingress.yaml` paraméter. Hozzáadott redundancia céljából két replika az NGINX bejövő vezérlők telepítik a `--set controller.replicaCount` paraméter. Teljes körűen kihasználhatják a bejövőforgalom-vezérlőjéhez replikáin fut, ellenőrizze, egynél több csomópont szerepel az AKS-fürt.
 
 > [!TIP]
-> A következő példa telepíti a bejövőforgalom-vezérlőt az `kube-system` névtér. Megadhat egy másik névtér a saját környezetben, ha szükséges. Ha az AKS-fürt nem RBAC engedélyezve, vegye fel `--set rbac.create=false` parancsok.
+> Az alábbi példa létrehoz egy Kubernetes-névtér nevű bejövő erőforrások *bejövő – alapszintű*. Adjon meg egy névteret a saját környezetben, igény szerint. Ha az AKS-fürt nem RBAC engedélyezve, vegye fel `--set rbac.create=false` a Helm parancsokhoz.
 
 ```console
+# Create a namespace for your ingress resources
+kubectl create namespace ingress-basic
+
+# Use Helm to deploy an NGINX ingress controller
 helm install stable/nginx-ingress \
-    --namespace kube-system \
+    --namespace ingress-basic \
     -f internal-ingress.yaml \
     --set controller.replicaCount=2
 ```
@@ -62,7 +66,7 @@ helm install stable/nginx-ingress \
 A terheléselosztó Kubernetes szolgáltatás az NGINX bejövőforgalom-vezérlőjéhez hoz létre, ha a belső IP-cím van hozzárendelve, az alábbi példa kimenetében látható módon:
 
 ```
-$ kubectl get service -l app=nginx-ingress --namespace kube-system
+$ kubectl get service -l app=nginx-ingress --namespace ingress-basic
 
 NAME                                              TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)                      AGE
 alternating-coral-nginx-ingress-controller        LoadBalancer   10.0.97.109   10.240.0.42   80:31507/TCP,443:30707/TCP   1m
@@ -84,13 +88,16 @@ helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 Az első bemutató alkalmazás létrehozása egy Helm-diagramot a következő paranccsal:
 
 ```console
-helm install azure-samples/aks-helloworld
+helm install azure-samples/aks-helloworld --namespace ingress-basic
 ```
 
 Egy második példányt a bemutató alkalmazás telepítése. A második példány, adja meg az új címet, hogy a két alkalmazás vizuálisan elkülönülnek. Is adjon meg egy egyedi szolgáltatásnevet:
 
 ```console
-helm install azure-samples/aks-helloworld --set title="AKS Ingress Demo" --set serviceName="ingress-demo"
+helm install azure-samples/aks-helloworld \
+    --namespace ingress-basic \
+    --set title="AKS Ingress Demo" \
+    --set serviceName="ingress-demo"
 ```
 
 ## <a name="create-an-ingress-route"></a>Bejövő útvonal létrehozása
@@ -106,6 +113,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
+  namespace: ingress-basic
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
@@ -137,7 +145,7 @@ ingress.extensions/hello-world-ingress created
 Tesztelheti a útvonalait a bejövőforgalom-vezérlőt, keresse meg a két alkalmazás egy webes ügyféllel. Szükség esetén gyorsan tesztelheti az csak belső funkciói az AKS-fürtöt podján. Hozzon létre egy teszt pod, és egy terminál-munkamenetben csatlakoztatása:
 
 ```console
-kubectl run -it --rm aks-ingress-test --image=debian
+kubectl run -it --rm aks-ingress-test --image=debian --namespace ingress-basic
 ```
 
 Telepítés `curl` be a pod `apt-get`:
@@ -180,7 +188,25 @@ $ curl -L -k http://10.240.0.42/hello-world-two
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ez a cikk a bejövő forgalom összetevők és a mintaalkalmazások telepítése Helm használja. Amikor telepít egy Helm-diagram, egy Kubernetes-erőforrások száma jönnek létre. Ezeket az erőforrásokat podok, központi telepítések és szolgáltatásokat tartalmazza. Ezek az erőforrások törléséhez először listázása a Helm-kiadások, az a `helm list` parancsot. Keresse meg a diagramok nevű *nginx-bejövő* és *aks-helloworld*, ahogy az alábbi példa kimenetében látható:
+Ez a cikk a bejövő forgalom összetevők és a mintaalkalmazások telepítése Helm használja. Amikor telepít egy Helm-diagram, egy Kubernetes-erőforrások száma jönnek létre. Ezeket az erőforrásokat podok, központi telepítések és szolgáltatásokat tartalmazza. Ezek az erőforrások törléséhez törölheti vagy a teljes minta névteret, vagy egyes erőforrásokat.
+
+### <a name="delete-the-sample-namespace-and-all-resources"></a>A minta-névtér és az összes erőforrás törlése
+
+A teljes minta névtér törléséhez használja a `kubectl delete` parancsot, majd írja be a névtér nevét. A névtér összes erőforrása törlődik.
+
+```console
+kubectl delete namespace ingress-basic
+```
+
+Ezt követően távolítsa el az AKS hello world alkalmazás a Helm-adattárat:
+
+```console
+helm repo remove azure-samples
+```
+
+### <a name="delete-resources-individually"></a>Külön-külön törölje az erőforrást
+
+Azt is megteheti a részletesebb megközelítést, ami törli az egyes létrehozott erőforrásokat. A Helm-kiadások listája a `helm list` parancsot. Keresse meg a diagramok nevű *nginx-bejövő* és *aks-helloworld*, ahogy az alábbi példa kimenetében látható:
 
 ```
 $ helm list
@@ -207,10 +233,16 @@ Ezután távolítsa el az AKS hello world alkalmazás a Helm-adattárat:
 helm repo remove azure-samples
 ```
 
-Végezetül távolítsa el a bejövő útvonal, amely átirányítja a forgalmat a mintaalkalmazások:
+A bejövő útvonal, amely átirányítja a forgalmat a mintaalkalmazások eltávolítása:
 
 ```console
 kubectl delete -f hello-world-ingress.yaml
+```
+
+Végül törölheti a maga névtér. Használja a `kubectl delete` parancsot, majd írja be a névtér nevét:
+
+```console
+kubectl delete namespace ingress-basic
 ```
 
 ## <a name="next-steps"></a>További lépések

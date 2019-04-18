@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/21/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d5120b7569acbe9735ea1a70fcb609d322d60793
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c719bcaca91f9a6e77d79735283cf2c68404ef16
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154371"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680536"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy SAML-alapú technikai profilban meghatározása
 
@@ -81,21 +81,6 @@ Az alábbi példa bemutatja az Azure AD B2C-vel technikai profil encryption szak
   </KeyInfo>
 </KeyDescriptor>
 ```
-
-## <a name="identity-provider-initiated-flow"></a>Identitás-szolgáltató által kezdeményezett folyamat
-
-Egyszeri bejelentkezés munkamenetben (kéretlen kérelem) az Identitásszolgáltató által kezdeményezett kéretlen SAML-válasz érkezik a szolgáltató ebben az esetben egy Azure AD B2C-vel technikai profil. Ezt a folyamatot a felhasználó nem halad át a webalkalmazás első, de az identitásszolgáltató van irányítva. A kérelem elküldésekor egy hitelesítési oldalra a felhasználó által biztosított az identitásszolgáltató. A felhasználó elvégzi a bejelentkezés, és majd a kérést a rendszer átirányítja az Azure AD B2C-vel és a egy SAML-válasz, amely tartalmazza a helyességi feltételek. Az Azure AD B2C olvassa be a helyességi feltételek és egy új SAML-jogkivonatot, és ezután átirányítja a felhasználót a függő entitás alkalmazásnak. Az átirányítások kell elvégeznie a **AssertionConsumerService** elem **hely** tulajdonság.
-
-
-![Által kezdeményezett SAML-Identitásszolgáltató](media/saml-technical-profile/technical-profile-idp-saml-idp-initiated.png) 
-
-Vegye figyelembe a következő házirend követelményeinek, amikor a folyamat létrehozása egy identitásszolgáltató által kezdeményezett:
-
-- Az első vezénylési lépés kell lennie egy jogcím-exchange mutató egy SAML-alapú technikai profilban.
-- A technikai profil rendelkeznie kell egy elem nevű metaadat **IdpInitiatedProfileEnabled** beállítása `true`.
-- A függő entitás házirendet kell lennie egy függő entitás SAML.
-- A függő entitás házirendnek rendelkeznie kell nevű metaadat **IdpInitiatedProfileEnabled** beállítása `true`.
-- A kéretlen választ kell kell küldeni a `/your-tenant/your-policy/samlp/sso/assertionconsumer` végpont. Bármely továbbítási állapot, a válasz tartalmazza a függő entitás van továbbítani. Cserélje le a következő értékeket: **a bérlő** a bérlő neve. **a szabályzat** a függő entitás házirend neve.
     
 ## <a name="protocol"></a>Protokoll
 

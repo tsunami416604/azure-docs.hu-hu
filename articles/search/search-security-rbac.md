@@ -10,10 +10,10 @@ ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59277783"
 ---
 # <a name="set-rbac-roles-for-administrative-access"></a>Állítsa be a rendszergazdai hozzáférés RBAC-szerepkörök
@@ -38,6 +38,6 @@ Szerepkörök nem hozzáférési jogosultságokat biztosíthat a a szolgáltatá
 
 ## <a name="see-also"></a>Lásd még
 
-+ [Kezelés a PowerShell-lel](search-manage-powershell.md) 
++ [Kezelés a PowerShell használatával](search-manage-powershell.md) 
 + [Teljesítmény és optimalizálás az Azure Search szolgáltatásban](search-performance-optimization.md)
 + [Ismerkedés a szerepköralapú hozzáférés-vezérlés az Azure Portalon](../role-based-access-control/overview.md).

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: diberry
 ms.openlocfilehash: 96157511c0255774a64c0f64a333fe88a37f80d6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261424"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitás / kulturális környezetet a LUIS-modell
@@ -29,7 +29,7 @@ Language Understanding (LUIS) biztosít az előre összeállított entitások. H
 |Angol|[en-US (amerikai)](#english-american-entity-support)||
 |francia|[FR-hitelesítésszolgáltató (Kanada)](#french-canadian-entity-support), [fr-FR (Franciaország)](#french-france-entity-support), ||
 |német|[de-DE](#german-entity-support)||
-|olasz|[it-IT](#italian-entity-support)||
+|olasz|[It-IT](#italian-entity-support)||
 |japán|[ja-JP](#japanese-entity-support)||
 |koreai|[ko-KR](#korean-entity-support)||
 |portugál|[pt-BR (Brazília)](#portuguese-brazil-entity-support)||
@@ -51,7 +51,7 @@ Támogatottak a következő entitásokat:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   | 
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
-[Százalék](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    ✔   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
@@ -72,7 +72,7 @@ Támogatottak a következő entitásokat:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
-[Százalék](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
@@ -93,7 +93,7 @@ Támogatottak a következő entitásokat:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
-[Százalék](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    ✔   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
@@ -114,7 +114,7 @@ Támogatottak a következő entitásokat:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
-[Százalék](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |   -   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
@@ -135,7 +135,7 @@ Támogatottak a következő entitásokat:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
-[Százalék](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
@@ -156,7 +156,7 @@ Támogatottak a következő entitásokat:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
-[Százalék](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
@@ -177,7 +177,7 @@ Támogatottak a következő entitásokat:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
-[Százalék](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
@@ -198,7 +198,7 @@ Támogatottak a következő entitásokat:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
-[Százalék](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
@@ -219,7 +219,7 @@ Támogatottak a következő entitásokat:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Szám](luis-reference-prebuilt-number.md)   |    -   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    -   |  
-[Százalék](luis-reference-prebuilt-percentage.md)   |    -   | 
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    -   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    -   | 
@@ -240,7 +240,7 @@ Támogatottak a következő entitásokat:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
-[Százalék](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
@@ -261,7 +261,7 @@ Támogatottak a következő entitásokat:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
-[Százalék](luis-reference-prebuilt-percentage.md)   |    ✔   | 
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    ✔   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    ✔   | 
@@ -282,7 +282,7 @@ Támogatottak a következő entitásokat:
 [KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    ✔   | 
 [Szám](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Sorszám](luis-reference-prebuilt-ordinal.md)   |    -   |  
-[Százalék](luis-reference-prebuilt-percentage.md)   |    -   | 
+[Százalékos aránya](luis-reference-prebuilt-percentage.md)   |    -   | 
 [PersonName](luis-reference-prebuilt-person.md)   |    -   | 
 [Telefonszám](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Hőmérséklet](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>Rankine<br>delisle<br>Celsius   |    -   | 

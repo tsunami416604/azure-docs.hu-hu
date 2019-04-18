@@ -9,10 +9,10 @@ ms.date: 04/03/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 8c73c55b059b4d3ca7136889122c11ab332b3f76
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270506"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Egy CSP-hez hozzon létre, és az ügyfél nevében egy Azure IoT központi alkalmazás kezelése 
@@ -95,4 +95,4 @@ A rendelkezésre álló sablonok közül választhat az új Azure IoT Central al
 Most, hogy megtanulhatta, hogyan hozhat létre egy Azure IoT Central alkalmazáshoz, mint egy CSP-hez, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [Alkalmazás felügyelése](howto-administer.md)
+> [Az alkalmazás felügyelete](howto-administer.md)

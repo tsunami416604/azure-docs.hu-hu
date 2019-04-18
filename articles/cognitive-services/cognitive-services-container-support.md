@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: c6cf3f188309891b0456b034e3809a0f0209c124
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: d84ebcdbd557a56c4c20600be67f26a084d43ed2
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489433"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681811"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Az Azure Cognitive Servicesben tároló támogatása
 
@@ -25,7 +25,7 @@ Bontás, amelyben egy alkalmazás vagy szolgáltatás, beleértve a függősége
 
 A következő videó bemutatja a Cognitive Services-tároló használatával.
 
-[![CCognitive Services bemutató Tárolóstílusok](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
+[![Cognitive Services tároló bemutató](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
 
 A [Computer Vision](Computer-vision/Home.md), [Face](Face/Overview.md), [Szövegelemzés](text-analytics/overview.md), és [Language Understanding (LUIS)](LUIS/what-is-luis.md) szolgáltatások elérhetők a [Microsoft Azure](https://azure.microsoft.com). Jelentkezzen be a [az Azure portal](https://portal.azure.com/) hozhat létre, és Fedezze fel az Azure-szolgáltatások erőforrásait.
 
@@ -43,7 +43,7 @@ Az Azure Cognitive Services-tárolók meg azt az alábbi Docker-tárolókat, ame
 
 | Szolgáltatás | Támogatott Tarifacsomag kiválasztása | Tároló | Leírás |
 |---------|----------|----------|-------------|
-|[Számítógépes látástechnológia](Computer-vision/computer-vision-how-to-install-containers.md) |F0, S1|**Szövegének felismerése** |Kivonatok nyomtatott szöveg különféle objektumokat a különféle felületekkel és hátterek, például a visszaigazolások és poszterek vagy tájékoztató névjegykártyák-rendszerképeket.<br/><br/>**Fontos:** A szöveg felismerése tároló jelenleg csak angol nyelven használható.<br>[Hozzáférés kérése](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[Computer Vision](Computer-vision/computer-vision-how-to-install-containers.md) |F0, S1|**Szövegének felismerése** |Kivonatok nyomtatott szöveg különféle objektumokat a különféle felületekkel és hátterek, például a visszaigazolások és poszterek vagy tájékoztató névjegykártyák-rendszerképeket.<br/><br/>**Fontos:** A szöveg felismerése tároló jelenleg csak angol nyelven használható.<br>[Hozzáférés kérése](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Arcfelismerés](Face/face-how-to-install-containers.md) |F0, S0|**Arcfelismerés** |Észleli az emberi arcok a képeken, és azonosítja az attribútumokat, (például noses és szemek) arcrészek, nemek, életkor és egyéb gép – előre meghatározott arcjellemzőket sorolják fel. Észlelési, mellett Face is ellenőrizze, hogy két arc ugyanazt a lemezképet vagy különböző képek egy megbízhatósági pontszám használatával azonosak, vagy olyan adatbázison annak ellenőrzéséhez, hogy a hasonló megjelenésű arcokat összehasonlítása vagy azonos face már létezik. Azt is is csoportokba rendezheti a hasonló arcokat keres, közös visual tulajdonságok használatával.<br>[Hozzáférés kérése](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[LUIS](LUIS/luis-container-howto.md) |F0, S0|**A LUIS** ([kép](https://go.microsoft.com/fwlink/?linkid=2043204))|Betanított vagy közzétett Language Understanding modell, más néven LUIS-alkalmazásokon, tölt be egy docker-tárolót, és hozzáférést biztosít az API-végpontokat a tárolót a lekérdezés előrejelzéseket. Lekérdezés naplók összegyűjtése a tárolóból, és töltse fel ezeket a vissza a [LUIS portál](https://www.luis.ai) való az alkalmazás előrejelzési pontosság növeléséhez.|
 |[Szövegelemzés](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0, S|**Kulcs kulcsszókeresés** ([kép](https://go.microsoft.com/fwlink/?linkid=2018757)) |Kiolvassa a fő pontokat azonosíthatja a kulcskifejezéseket. Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”. |

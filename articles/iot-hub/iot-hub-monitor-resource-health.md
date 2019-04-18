@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: kgremban
 ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274042"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának monitorozásához és a problémák gyorsan diagnosztizálása
@@ -412,7 +412,7 @@ Az a `properties` szakaszban Ez a napló üzenet bejövő kapcsolatos további i
 | Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **endpointName** | String | Az útválasztási végpont neve |
-| **endpointType** | String | Az útválasztási végpont típusa |
+| **EndpointType** | String | Az útválasztási végpont típusa |
 | **parentSpanId** | String | A [span-id](https://w3c.github.io/trace-context/#parent-id) a szülő üzenet, amely ebben az esetben lenne az IoT Hub bejövő üzenet nyomkövetési |
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Az Azure Event Hubs naplóinak olvasása
@@ -502,5 +502,5 @@ Egészségügyi adatok értelmezése kapcsolatos további információkért lás
 
 ## <a name="next-steps"></a>További lépések
 
-* [Understand IoT Hub metrics](iot-hub-metrics.md)
+* [Megismerheti az IoT Hub-metrikák](iot-hub-metrics.md)
 * [IoT távoli figyelés és értesítések az Azure Logic Apps csatlakoztatása az IoT hub és a postaláda](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

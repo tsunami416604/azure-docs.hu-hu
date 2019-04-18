@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 3a0c675ac9c8a782b94d127e877646bf37af1371
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 6860746a1b20fe06de2dafa6035ae560bde24a29
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621481"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678666"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Az SQL Data warehouse-bA üzleti intelligencia partnerek
 A teljes körű adattárház-megoldást létrehozni, számos különböző iparágvezető eszközök közül választhat.  Ez a cikk a Microsoft partnervállalatokban hivatalos üzleti intelligenciára épülő (BI) megoldások támogatása az Azure SQL Data Warehouse emeli ki.
@@ -26,7 +26,7 @@ A teljes körű adattárház-megoldást létrehozni, számos különböző ipar�
 | ![Birst][1] |**Birst**<br>Birst az egész munkahelyen mintás virtualizált BI példányok a-TOP egy közös megosztott analitikai háló hálózaton keresztül kapcsolódik.|[Termék oldalát][birst_website]<br>[Az Azure Marketplace-en][birst_marketplace]<br> |
 | ![ClearStory adatok][2] |**ClearStory adatok (folyamatos üzleti elemzések)**<br>ClearStory adatok fast-ciklus elemzése lehetővé teszi a különböző adattárolókból adatokat az SQL Data Warehouse tárolja. A clearStory integrált Spark-alapú platform és az analytics alkalmazás sebességének adathozzáféréssel és -összehangolását, különálló készleteket. Gyors, együttműködő feltárása, amellyel a felhasználók számára szükséges információk feltárásához független kell lehetővé teszik. |[Termék oldalát][clearstory_website]<br> |
 | ![Dundas][4] |**Dundas BI**<br>Dundas Adatvizualizáció egy vezető, globális szolgáltató, üzleti intelligencia és az Adatvizualizációról szoftver.  Dundas irányítópultokat, jelentéseket és adatelemzési visual adja meg az üzleti alkalmazásokat, így megalapozottabb döntéseket hozhat, és gyorsabban való zökkenőmentes integráció.|[Termék oldalát][dundas_bi_website]<br>[Az Azure Marketplace-en][dundas_bi_marketplace]<br> |
-| ![IBM Cognos][3] |**IBM Cognos Analytics**< brCognos Analytics tartalmazza, amelyek megkönnyítik az egyszerű, egyértelmű és könnyen használható attól függetlenül, hogy egy tapasztalt üzleti elemző, vizsgálata folyamatban van egy hatalmas ellátási lánc vagy a forgalmazók optimalizálása a kinks intelligens önkiszolgáló képességek egy egyetlen kampány. Cognos Analytics használnak mesterséges Intelligencia és egyéb intelligens funkciókat és a adatfeltárás megkönnyítheti a felhasználók számára az adott válaszok szükségük van a munkából|[Termék oldalát][cognosanalytics_website]<br>|
+| ![IBM Cognos][3] |**IBM Cognos Analytics**<br>Cognos Analytics tartalmaz, amelyek megkönnyítik az egyszerű, egyértelmű és könnyen használható attól függetlenül, hogy egy tapasztalt üzleti elemző, vizsgálata folyamatban van egy hatalmas ellátási lánc vagy a forgalmazók egyetlen kampány optimalizálása a kinks intelligens önkiszolgáló képességek. Cognos Analytics használnak mesterséges Intelligencia és egyéb intelligens funkciókat és a adatfeltárás megkönnyítheti a felhasználók számára az adott válaszok szükségük van a munkából|[Termék oldalát][cognosanalytics_website]<br>|
 | ![Információ kapcsolat építői][13] |**Információk létrehozói (WebFOCUS)**<br>WebFOCUS üzleti intelligencia révén a vállalatok további stratégiai között és az azt a vállalati adatok használata. Lehetővé teszi a felhasználók és a rendszergazdák gyorsan képes létrehozni, amely kombinálja a több adatforrással és formátumok tartalmát, és biztosítja a hatékony biztonsági és átfogó cégirányítási, amely lehetővé teszi a zökkenőmentes, az irányítópultok biztonságos diverly és bármilyen BI és elemzések megosztása tartalom|[Termék oldalát][informationbuilders_website]<br> |
 ![Jinfonet][5] |**Jinfonet JReport**<br>JReport egy beágyazható, vállalati BI-megoldását. A megoldás lehetővé teszi a felhasználók számára, hogy a felhőalapú, big Data jellegű adatok és a tranzakciós adatforrások jelentésekkel, irányítópultokkal és adatelemzés. Adatok vizualizációjával Agilis és a működés közbeni döntéshozatal a saját reporting és felderítése hajtható végre. |[Termék oldalát][jinfonet_website]<br> |
 | ![LogiAnalytics][6] |**Logi Analytics**<br>Együttesen Logi Analytics és Azure SQL Data Warehouse lehetővé teszi, hogy a szervezet összegyűjtésére, elemzése, és azonnal reagálhat rájuk a világ legnagyobb és leginkább különféle adatkészletek. |[Termék oldalát][logianalytics_website]<br>|

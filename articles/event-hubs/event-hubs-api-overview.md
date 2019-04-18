@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: dcfc2480cd9a62b57255163132373998db328034
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 80566b0246179064d2a479b8c9bf3c79a2a93aac
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075799"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681284"
 ---
 # <a name="available-event-hubs-apis"></a>Elérhető Event Hubs API-k
 
@@ -36,7 +36,7 @@ Minden egyes futásidejű kódtár az aktuális állapotával kapcsolatos továb
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHubon](https://github.com/azure/azure-event-hubs-dotnet) |
 | .NET-keretrendszer | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | – |
 | Java | [Maven 3](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) | [Maven 3](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) | [GitHubon](https://github.com/Azure/azure-event-hubs-java) |
-| Csomópont | [NPM](https://www.npmjs.com/package/azure-event-hubs) | – | [GitHubon](https://github.com/Azure/azure-event-hubs-node) |
+| Csomópont | [NPM](https://www.npmjs.com/package/azure-event-hubs) | – | [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
 | C | – | – | [GitHubon](https://github.com/Azure/azure-event-hubs-c) |
 
 ### <a name="additional-information"></a>További információ
@@ -47,7 +47,7 @@ A .NET-ökoszisztéma több modulok rendelkezik, így több, az Event Hubs .NET-
 
 #### <a name="node"></a>Csomópont
 
-A [Node.js kódtár](https://github.com/Azure/azure-event-hubs-node) jelenleg előzetes verzióban, és a egy ügyféloldali projektként a Microsoft alkalmazottai és külső közreműködők által karbantartott. Az összes közreműködések többek között a forráskód üdvözlő és felül kell vizsgálni.
+A [Node.js kódtár](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) jelenleg előzetes verzióban, és a egy ügyféloldali projektként a Microsoft alkalmazottai és külső közreműködők által karbantartott. Az összes közreműködések többek között a forráskód üdvözlő és felül kell vizsgálni.
 
 ## <a name="management-apis"></a>Felügyeleti API-k
 

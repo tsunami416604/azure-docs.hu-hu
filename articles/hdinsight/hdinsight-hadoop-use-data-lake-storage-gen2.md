@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 186a9bafe70ab9644666868f11d5ddd865a66b8d
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 7e21d4c6705213cb57f058c062fff0ff4957a52a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802541"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681862"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök
 
@@ -139,6 +139,5 @@ Felhasználók engedélyeinek használatával adatokat lekérdezni, használja a
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Data Lake Storage Gen2 előzetes verzió használata Azure HDInsight-fürtök](../storage/blobs/data-lake-storage-use-hdi-cluster.md)
 * [Az Azure HDInsight-integrációja az Data Lake Storage Gen2 előzetes verzió – hozzáférés-szabályozási és biztonsági frissítése](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
 * [Bevezetés az Azure Data Lake Storage Gen2 előzetes verzió](../storage/blobs/data-lake-storage-introduction.md)

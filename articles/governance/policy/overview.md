@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.openlocfilehash: 0e66327a04d1390061580d82716b44b25139bf67
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259456"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Az Azure Policy szolgáltatás áttekintése
@@ -21,7 +21,7 @@ Cégirányítási ellenőrzi, hogy a szervezet a célokat egy leghatékonyabb ha
 A cégben jelentős mennyiségű, láthatóan megoldhatatlan informatikai probléma jelentkezik?
 A hatékony informatikai szabályozás stratégiai szinten kezeli a kezdeményezések tervezését és a prioritások meghatározását a problémák kezelése és megelőzése érdekében. A stratégiai szükség, ahol az Azure Policy pedig kifejezetten.
 
-Az Azure Policy egy olyan szolgáltatás, amellyel létrehozása, hozzárendelése és szabályzatok kezelése Azure-ban. A szabályzatok különböző szabályokat és hatásokat kényszerítenek ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek. Az Azure Policy megfelel ennek az igénynek az erőforrások megfelel-e a hozzárendelt szabályzatok kiértékelik. Például rendelkezhet egy olyan szabályzattal, amely csak bizonyos méretű virtuálisgép-termékváltozatot engedélyez a környezetben. Ez a házirend megvalósítása, miután új és meglévő erőforrások megfelelőségi értékeli ki. A megfelelő szabályzat típusát, a meglévő erőforrások megfelelőségének tehető meg. Később a jelen dokumentációban azt átjövünk további részleteket a létrehozása és az Azure Policyvel házirendek megvalósítása.
+Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatokat hozhat létre, rendelhet hozzá és kezelhet. A szabályzatok különböző szabályokat és hatásokat kényszerítenek ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek. Az Azure Policy megfelel ennek az igénynek az erőforrások megfelel-e a hozzárendelt szabályzatok kiértékelik. Például rendelkezhet egy olyan szabályzattal, amely csak bizonyos méretű virtuálisgép-termékváltozatot engedélyez a környezetben. Ez a házirend megvalósítása, miután új és meglévő erőforrások megfelelőségi értékeli ki. A megfelelő szabályzat típusát, a meglévő erőforrások megfelelőségének tehető meg. Később a jelen dokumentációban azt átjövünk további részleteket a létrehozása és az Azure Policyvel házirendek megvalósítása.
 
 > [!IMPORTANT]
 > Az Azure Policy megfelelőségértékelése mostantól tarifacsomagtól függetlenül minden hozzárendeléshez elérhető. Ha a hozzárendeléseknél nem láthatók a megfelelőségi adatok, győződjön meg róla, hogy az előfizetés regisztrálva van a Microsoft.PolicyInsights erőforrás-szolgáltatón.
@@ -144,8 +144,8 @@ Az Azure Policy alábbi áttekintése a 2018-as buildből származik. Diák vagy
 
 Most, hogy áttekintette az Azure Policy tudnivalóit és néhány fontosabb fogalmat, folytatásként a következő témaköröket javasoljuk:
 
-- [A portál használatával szabályzatdefiníció hozzárendelése](assign-policy-portal.md)
-- [Az Azure CLI-vel szabályzatdefiníció hozzárendelése](assign-policy-azurecli.md)
-- [PowerShell-lel szabályzatdefiníció hozzárendelése](assign-policy-powershell.md)
+- [Szabályzatdefiníció hozzárendelése a portállal](assign-policy-portal.md)
+- [Szabályzatdefiníció hozzárendelése az Azure CLI-vel](assign-policy-azurecli.md)
+- [Szabályzatdefiníció hozzárendelése a PowerShell-lel](assign-policy-powershell.md)
 - A felügyeleti csoportok áttekintéséért lásd [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](..//management-groups/overview.md) ismertető részt.
 - A Channel 9 blog [Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) (Az Azure-környezet szabályozása az Azure Policy használatával) című témakörének megtekintése

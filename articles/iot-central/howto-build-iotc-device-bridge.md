@@ -9,10 +9,10 @@ ms.date: 03/26/2019
 ms.topic: conceptual
 manager: peterpr
 ms.openlocfilehash: 246c9ad8ab3083c1b847c1c25230a7193a8192e3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263570"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Az IoT-központ eszköz híd egyéb IoT-felhők csatlakozni az IoT-központ létrehozása
@@ -45,4 +45,4 @@ Az Azure-erőforrások üzemeltetett Azure-előfizetésében. További informác
 Most, hogy megismerte, hogyan hozhat létre az IoT-központ eszköz híd, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [Eszközök kezelése](howto-manage-devices.md)
+> [Saját eszközök kezelése](howto-manage-devices.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
 ms.openlocfilehash: 537450dbc386a94fa5c2e0d9334435dce041a32f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266137"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>A Linux operációs rendszer a Service Fabric-fürtben
@@ -127,7 +127,7 @@ Alkalmazás sfpkg formátumban letölthető [sfpkg hivatkozás](https://aka.ms/P
 
 A patch orchestration app viselkedését konfigurálhatja az igényeinek. Alkalmazás létrehozása vagy módosítása során az alkalmazás paraméter megadásával bírálja felül az alapértelmezett értékeket. Alkalmazás paraméterek megadásával adható meg `ApplicationParameter` , a `Start-ServiceFabricApplicationUpgrade` vagy `New-ServiceFabricApplication` parancsmagok.
 
-|**Paraméter**        |**Typo**                          | **Részletek**|
+|**A paraméter**        |**Típus**                          | **Részletek**|
 |:-|-|-|
 |MaxResultsToCache    |Hosszú                              | Frissítés eredményeket, amely a gyorsítótárba kerüljenek maximális számát. <br>Alapértelmezett érték 3000 feltéve, hogy a: <br> -Csomópontok száma, 20. <br> -Történik a havi csomópont frissítések száma, öt. <br> -Művelet eredmények száma 10 lehet. <br> -Az elmúlt három havi eredmény kell tárolni. |
 |TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a szabályzatot, amely a frissítések telepítése a Service Fabric-fürt csomópontjain a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. A frissítések olyan telepített egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. Frissítések egyszerre több frissítési tartományt telepített állnak. (A maximumot, a frissítési tartományokhoz tartozó összes csomópontját meg frissítés.)
@@ -173,8 +173,7 @@ Az Ön kényelme érdekében a powershell (Undeploy.ps1) és (Undeploy.sh) bash-
 
 ## <a name="view-the-update-results"></a>A frissítési eredmények megtekintése
 
-A patch orchestration app közzététele a REST API-k, a felhasználó korábbi eredményeinek megjelenítésére. Következő egy minta eredmény:
-```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
+A patch orchestration app közzététele a REST API-k, a felhasználó korábbi eredményeinek megjelenítésére. Következő egy minta eredmény: ```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
 ```json
 [ 
   { 

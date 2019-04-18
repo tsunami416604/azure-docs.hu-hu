@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: b8e1958947ced5ea2d0bd8b34667210bf935072d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 36d01a9e6e55ae54377ba3f983f779dbc692c49a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662907"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681522"
 ---
 # <a name="eventstore-service-overview"></a>Az EventStore szolgáltatás áttekintése
 
@@ -72,7 +72,7 @@ A [a fürtben fabricSettings.json](service-fabric-cluster-fabric-settings.md), E
 
 ### <a name="azure-cluster"></a>Azure-fürtben
 
-A fürt Azure Resource Manager-sablonban, bekapcsolhatja a EventStore szolgáltatás végrehajtásával egy [fürt konfiguráció frissítése](service-fabric-cluster-config-upgrade-azure.md) , és adja hozzá az alábbi kódot. A `upgradeDescription` szakaszban konfigurálja a config frissítés, kezdeményezzen újraindítást a csomópontokon. A szakasz egy másik frissítés távolíthatja el.
+A fürt Azure Resource Manager-sablonban, bekapcsolhatja a EventStore szolgáltatás végrehajtásával egy [fürt konfiguráció frissítése](service-fabric-cluster-config-upgrade-azure.md) és adja hozzá az alábbi kódot, segítségével PlacementConstraints helyezze az EventStore replikák egy adott NodeType például egy NodeType, a rendszer szolgáltatások dedikált szolgáltatás. A `upgradeDescription` szakaszban konfigurálja a config frissítés, kezdeményezzen újraindítást a csomópontokon. A szakasz egy másik frissítés távolíthatja el.
 
 ```json
     "fabricSettings": [
@@ -89,6 +89,10 @@ A fürt Azure Resource Manager-sablonban, bekapcsolhatja a EventStore szolgálta
               {
                 "name": "MinReplicaSetSize",
                 "value": "1"
+              }
+              {
+                "name": "PlacementConstraints",
+                "value": "(NodeType==<node_type_name_here>)"
               }
             ]
           }

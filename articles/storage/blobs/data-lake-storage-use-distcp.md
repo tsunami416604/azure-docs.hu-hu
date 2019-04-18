@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: seguler
-ms.openlocfilehash: 8328ea5afb66bbecdafbb06dcbf6700194d62f9e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3b58dc8dabc55ba428ce6e35091a6947e5f4a824
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864060"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678380"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Adatok másolása az Azure Storage-blobokat és az Azure Data Lake Storage Gen2 között a DistCp használatával
 
@@ -27,7 +27,7 @@ A DistCp biztosít különböző parancssori paraméterek, és Határozottan jav
 * **Egy meglévő Azure Storage-fiók nélkül a Data Lake Storage Gen2 képességeket (hierarchikus névtér) engedélyezve**.
 * **Data Lake Storage Gen2 szolgáltatás engedélyezve van az Azure Storage-fiók**. Létrehozásával kapcsolatos utasításokért lásd: [Azure Data Lake Storage Gen2-storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)
 * **A fájlrendszer** , hogy létre lett hozva a tárfiókban lévő hierarchikus névtér engedélyezve van.
-* **Az Azure HDInsight-fürt** együtt egy Data Lake Storage Gen2 engedélyezve van a tárfiókhoz való hozzáférést. Lásd: [használata Azure Data Lake Storage Gen2 Azure HDInsight-fürtök](data-lake-storage-use-hdi-cluster.md). Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt.
+* **Az Azure HDInsight-fürt** együtt egy Data Lake Storage Gen2 engedélyezve van a tárfiókhoz való hozzáférést. Lásd: [használata Azure Data Lake Storage Gen2 Azure HDInsight-fürtök](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>A DistCp használata a HDInsight Linux-fürt
 
@@ -41,7 +41,7 @@ A DistCp segédprogram, amely segítségével különböző forrásokból szárm
 
     A kimenet kell biztosítania a tároló tartalmának listáját.
 
-3. Ehhez hasonlóan ellenőrizze e képes-e a tárfiók eléréséhez hierarchikus névtér esetében engedélyezve van a fürtből. Futtassa a következő parancsot:
+3. Ehhez hasonlóan ellenőrizze e képes-e a tárfiók eléréséhez hierarchikus névtér esetében engedélyezve van a fürtből. Futtassa az alábbi parancsot:
 
         hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
 

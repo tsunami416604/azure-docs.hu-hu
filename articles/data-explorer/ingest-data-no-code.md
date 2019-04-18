@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 04/07/2019
 ms.openlocfilehash: 9f4b7ee0dcc87ca03fd051be0dacedf0912b5320
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262907"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Oktatóanyag: Az Azure Data Explorer adatokat egyetlen sor kód nélkül
@@ -268,7 +268,7 @@ Az Azure diagnosztikai naplók engedélyezése egy tárfiókba vagy egy esemény
 
 1. Event hub létrehozása az Azure Portalon egy Azure Resource Manager-sablon használatával. Kövesse a cikkben ismertetett lépések a többi, kattintson a jobb gombbal a **üzembe helyezés az Azure** gombra, és válassza ki **Megnyitás új ablakban**. A **üzembe helyezés az Azure** gombra, akkor megnyílik az Azure Portalra.
 
-    [![Daz Azure-ban gombra eploy](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Deploy to Azure gombbal](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
 1. Hozzon létre egy Event Hubs-névtér és a egy eseményközpontot, a diagnosztikai naplókhoz.
 
@@ -281,8 +281,8 @@ Az Azure diagnosztikai naplók engedélyezése egy tárfiókba vagy egy esemény
     | **Előfizetés** | *Az Ön előfizetése* | Válassza ki az eseményközponthoz használni kívánt Azure-előfizetést.|
     | **Erőforráscsoport** | *test-resource-group* | Hozzon létre egy új erőforráscsoportot. |
     | **Hely** | Válassza ki a régiót, amely a legjobban az igényeinek. | Az Event Hubs-névtér létrehozása az egyéb erőforrások ugyanazon a helyen.
-    | **Névtér neve** | *AzureMonitoringData* | Válasszon egy egyedi nevet a névtér azonosításához.
-    | **Event Hubs neve** | *DiagnosticLogsData* | Az eseményközpont a névtéren belül helyezkedik el, ami egy egyedi hatókörkezelési tárolóként szolgál. |
+    | **Namespace neve** | *AzureMonitoringData* | Válasszon egy egyedi nevet a névtér azonosításához.
+    | **Eseményközpont neve** | *DiagnosticLogsData* | Az eseményközpont a névtéren belül helyezkedik el, ami egy egyedi hatókörkezelési tárolóként szolgál. |
     | **Fogyasztói csoport neve** | *adxpipeline* | Hozzon létre egy fogyasztói csoport neve. A fogyasztói csoportokkal több fogyasztói alkalmazás is rendelkezhet az eseménystream külön nézetével. |
     | | |
 
@@ -366,9 +366,9 @@ Most meg kell a adatkapcsolatokat, a diagnosztikai naplók és a vizsgálati nap
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | **Adatkapcsolat neve** | *DiagnosticsLogsConnection* | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.|
+    | **Adatok kapcsolat neve** | *DiagnosticsLogsConnection* | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.|
     | **Eseményközpont-névtér** | *AzureMonitoringData* | A korábban a névtér azonosításához választott név. |
-    | **Eseményközpont** | *diagnosticlogsdata* | A létrehozott eseményközpont. |
+    | **Event hub** | *diagnosticlogsdata* | A létrehozott eseményközpont. |
     | **Fogyasztói csoport** | *adxpipeline* | A létrehozott eseményközponton definiált fogyasztói csoport. |
     | | |
 
@@ -395,10 +395,10 @@ Ismételje meg a tevékenység naplók az adatkapcsolat létrehozása a diagnosz
 
     **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | **Adatkapcsolat neve** | *ActivityLogsConnection* | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.|
+    | **Adatok kapcsolat neve** | *ActivityLogsConnection* | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.|
     | **Eseményközpont-névtér** | *AzureMonitoringData* | A korábban a névtér azonosításához választott név. |
-    | **Eseményközpont** | *insights-operational-logs* | A létrehozott eseményközpont. |
-    | **Fogyasztói csoport** | *$Alapértelmezett* | Az alapértelmezett felhasználói csoport. Ha szükséges, létrehozhat egy másik fogyasztói csoportot. |
+    | **Event hub** | *insights-operational-logs* | A létrehozott eseményközpont. |
+    | **Fogyasztói csoport** | *$Default* | Az alapértelmezett felhasználói csoport. Ha szükséges, létrehozhat egy másik fogyasztói csoportot. |
     | | |
 
     Céloldali tábla:
@@ -460,4 +460,4 @@ Lekérdezés eredményei:
 Ismerje meg, számos további lekérdezések írása a következő cikk az Azure Data Explorer kinyert adatok:
 
 > [!div class="nextstepaction"]
-> [Az Azure Data Explorer lekérdezéseket írni](write-queries.md)
+> [Lekérdezések írása az Azure Data Explorerhez](write-queries.md)

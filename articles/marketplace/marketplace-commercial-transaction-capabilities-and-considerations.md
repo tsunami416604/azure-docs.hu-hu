@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: dba2582b29d1fc81a39387f5297852245233b708
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3c07f7ac2b6407a3edf53fd5d3a4b402714fefbb
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731089"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678904"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Az Azure Marketplace-en kereskedelmi ügylet képességek és szempontok
 
@@ -44,7 +44,7 @@ A lista és próba közzétételi beállítások mellett a transact-közzététe
 
 ## <a name="transact-general-overview"></a>Általános áttekintés Transact
 
-A transact-közzétételi lehetőség használatakor a Microsoft lehetővé teszi az értékesítés és az ügyfél Azure-előfizetést a harmadik fél szoftver központi telepítése. A közzétevő figyelembe kell vennie a számlázás az Azure-infrastruktúra-díjak, és a közzétevő a saját szoftverfrissítési licencelési díjakat, amikor kiválasztja a számlázási modell, és ajánlattípus Azure Marketplace-en. 
+A transact-közzétételi lehetőség használatakor a Microsoft lehetővé teszi a harmadik féltől származó szoftverek értékesítésére, és bizonyos típusú Azure-előfizetéshez az ügyfél telepítését. A közzétevő figyelembe kell vennie a számlázás az Azure-infrastruktúra-díjak, és a közzétevő a saját szoftverfrissítési licencelési díjakat, amikor kiválasztja a számlázási modell, és ajánlattípus Azure Marketplace-en.
 
 A Transact-közzétételi lehetőség az Azure piactéren jelenleg a következő típusú támogatja: Virtuális gépek, az Azure-alkalmazások vagy SaaS-alkalmazásokhoz.
 
@@ -58,7 +58,7 @@ A virtuális gépek és Azure-alkalmazások az ügyfél Azure-előfizetéshez az
 
 **Az SaaS-alkalmazásokhoz**
 
-Az SaaS-alkalmazásokhoz a közzétevő kell vennie az Azure-infrastruktúra használati díjak és szoftver-licencelési díjak egyetlen költség elemként.  Akkor jelenik meg az ügyfél havi fix keretösszegek előtt. Az Azure-infrastruktúra használati felügyelt, és közvetlenül a partnernek számlázzuk.  Az ügyfél nem fogja látni a tényleges infrastruktúra használati díjak.  A kiadók általában a szoftver licenc díjszabása Azure-infrastruktúra használati díjak kötegeléséhez tilthatók le.  Szoftver-licencelési díjak nem díjköteles, vagy használatalapú.
+Az SaaS-alkalmazásokhoz a közzétevő kell vennie az Azure-infrastruktúra használati díjak és szoftver-licencelési díjak egyetlen költség elemként.  Azt jelzi, az ügyfél kezdeti. Az Azure-infrastruktúra használati felügyelt, és közvetlenül a partnernek számlázzuk.  Az ügyfél nem fogja látni a tényleges infrastruktúra használati díjak.  A kiadók általában a szoftver licenc díjszabása Azure-infrastruktúra használati díjak kötegeléséhez tilthatók le.  Szoftver-licencelési díjak nem díjköteles, vagy használatalapú.
 
 ## <a name="transact-billing-models"></a>A Transact-számlázási modellek
 

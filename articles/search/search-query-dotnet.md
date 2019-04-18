@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.openlocfilehash: 1194407122123797c2564c96ac452b9582b017a4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264947"
 ---
 # <a name="quickstart-3---query-an-azure-search-index-in-c"></a>Gyors útmutató: 3 – az Azure Search-index lekérdezéseC#
@@ -34,7 +34,7 @@ Dokumentumok a csak olvasható hozzáférést használt lekérdezési kulcs besz
 ## <a name="create-a-client"></a>-Ügyfél létrehozása
 Hozzon létre egy példányt a `SearchIndexClient` osztályhoz, hogy a csak olvasási hozzáférés egy lekérdezési kulcsot is biztosítanak (ruházott jogok írási hozzáféréssel ellentétben a `SearchServiceClient` az előző leckében használt).
 
-Ez az osztály több konstruktorral rendelkezik. A amelyikre Önnek szüksége van a keresőszolgáltatás nevének, az Indexnevet és a egy [ `SearchCredentials` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials?view=azure-dotnet) objektumot használ paraméterként. `SearchCredentials` becsomagolja az API-kulcsot.
+Ez az osztály több konstruktorral rendelkezik. A amelyikre Önnek szüksége van a keresőszolgáltatás nevének, az Indexnevet és a egy [ `SearchCredentials` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials?view=azure-dotnet) objektumot használ paraméterként. A `SearchCredentials` becsomagolja az API-kulcsot.
 
 Az alábbi kód létrehoz egy új `SearchIndexClient` a search-szolgáltatásnév és api-kulcsot, az alkalmazás konfigurációs fájljában tárolt értékekkel "hotels" index számára (`appsettings.json` abban az esetben, a [mintaalkalmazás](https://aka.ms/search-dotnet-howto)):
 

@@ -5,29 +5,29 @@ services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.author: davidmu
-ms.date: 02/04/2019
+ms.date: 04/16/2019
 ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: cae9d51bbe1d67734e9c2163140ec3b969122bc2
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: c1c640fa2c03f584aa9be62ae6ad123377ef53cd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671488"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680757"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>A webes API-alkalmazás az Azure Active Directory B2C-bérlő hozzáadása
 
-Webes API-erőforrásokhoz regisztrálni kell a bérlőn belüli előtt fogadja el, és védett erőforrás-kérelmek megválaszolásához ügyfélalkalmazások, amelyek egy hozzáférési jogkivonatot.
+ Webes API-erőforrásokhoz regisztrálja a bérlőben, hogy fogadni és válaszolni a kérelmekre ügyfélalkalmazások, amelyek egy hozzáférési jogkivonatot. Ez a cikk bemutatja, hogyan kell regisztrálni az alkalmazást az Azure Active Directory (Azure AD) B2C-ben.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő tartalmazó könyvtárba. Válassza ki a **címtár és előfizetés-szűrő** a felső menüben, és válassza ki a bérlő tartalmazó könyvtárra.
 3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
 4. Válassza ki **alkalmazások**, majd válassza ki **Hozzáadás**.
 5. Adjon meg egy nevet az alkalmazásnak. Ha például *webapi1*.
 6. A **közé tartozik a webalkalmazás vagy webes API** és **implicit engedélyezési folyamat engedélyezése**válassza **Igen**.
-7. A **válasz URL-cím**, adja meg a végpont, ahol az Azure AD B2C-t adja vissza az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut, és figyeli a `https://localhost:44332`.
+7. A **válasz URL-cím**, adja meg a végpont, ahol az Azure AD B2C-t adja vissza az alkalmazás által kért jogkivonatokat. Az éles alkalmazásban, akkor előfordulhat, hogy a válasz URL-cím értékre állítva például `https://localhost:44332`. Tesztelési célokra, a válasz URL-Címének beállítása `https://jwt.ms`.
 8. A **Alkalmazásazonosító URI-t**, adja meg a webes API-hoz használt azonosító. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
 9. Kattintson a **Create** (Létrehozás) gombra.
 10. A Tulajdonságok lapon jegyezze fel az Alkalmazásazonosítót, amelyek a webalkalmazás konfigurálásakor fogja használni.

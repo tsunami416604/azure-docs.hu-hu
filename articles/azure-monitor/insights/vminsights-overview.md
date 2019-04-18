@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2019
 ms.author: magoedte
-ms.openlocfilehash: f7a0300619d82f760c0e307601efbd3987eb6067
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a60413ee6614b638db58748ee2c0aea5d7ea32ea
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004585"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59697889"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Mi az Azure Monitor-beli virtuális gépek (előzetes verzió)?
 
-A virtuális gépek az Azure Monitor figyeli az Azure-beli virtuális gépek (VM), és a virtuálisgép-méretezési csoportok ipari méretekben. Az eszköz elemzi a teljesítmény és a Windows és Linux rendszerű virtuális gépek állapotát, és a folyamatok és az egyéb erőforrások és a külső folyamatok függőségeit figyeli. 
+A virtuális gépek az Azure Monitor figyeli az Azure-beli virtuális gépek (VM), és a virtuálisgép-méretezési csoportok ipari méretekben. A szolgáltatás elemzi a Windows és Linux rendszerű virtuális gépek teljesítményét és állapotát, valamint figyeli folyamataikat és a más erőforrásokkal és külső folyamatokkal kapcsolatos függőségeiket. 
 
 Az Azure Monitor-beli virtuális gépek a megoldás, a teljesítmény- és alkalmazásfüggőségek figyelés, a virtuális gépek, amelyek üzemeltethető a helyszínen vagy egy másik felhőszolgáltatóval támogatását is tartalmazza. Három főbb funkcióiról részletes betekintést biztosít:
 
@@ -39,7 +39,7 @@ Az funkciók vannak szervezve három szempontok:
 * Térkép
 
 >[!NOTE]
->Jelenleg az állapotfigyelő szolgáltatás kínáljuk csak Azure-beli virtuális gépek és virtuálisgép-méretezési csoportok. Teljesítményt és térkép funkciókat támogatja az Azure virtuális gépek és a futó virtuális gépekről a környezet vagy más felhőszolgáltatónál.
+>Az állapotfigyelő szolgáltatás jelenleg csak az Azure-beli virtuális gépek kínáljuk. Teljesítmény és a térkép szolgáltatások támogatja a futó virtuális gépekről, Azure virtuális gépek és Azure Virtuálisgép-méretezési csoportok a környezet vagy más felhőszolgáltatónál.
 
 Integráció az Azure Monitor naplóira biztosít hatékony összesítő és a szűrés, és idővel elemezheti adatait trendeket. Az ilyen az átfogó munkaterhelés-figyelés nem érhető el az Azure Monitor vagy a Service Map önmagában.  
 

@@ -4,15 +4,15 @@ description: Ez a cikk bemutatja, hogyan hozhat létre és használhat az Azure 
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 04/17/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: f3bec1b279c07e62e246ebfa933b3942e38406de
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 8eaca83b7ea89737a63fe56a18505c8df7e93fdc
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762905"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678794"
 ---
 # <a name="work-with-databases-containers-and-items"></a>Adatbázisok, tárolók és elemek használata
 
@@ -61,7 +61,7 @@ Beállíthat [élettartam (TTL)](time-to-live.md) a kijelölt elemek egy Azure C
 
 Használatával [módosítási hírcsatorna](change-feed.md), előfizethet a műveleti napló minden a tároló logikai partíció felügyelt. A módosítási hírcsatorna biztosít az összes tartományvezérlőn végrehajtott frissítések összevonása a tároló és a napló a előtti és utáni képek elem. Lásd: [hogyan hozhat létre alkalmazásokat reaktív módosítási hírcsatorna](serverless-computing-database.md). Beállíthatja a megőrzési időtartam a hírcsatorna módosítsa a házirendet a tárolón a változáscsatorna használatával. 
 
-Regisztrálhatja [tárolt eljárások, eseményindítók, felhasználó által definiált függvények (UDF)](stored-procedures-triggers-udfs.md) és [eljárások egyesítése](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy-with-a-stored-procedure) az Azure Cosmos-tárolóval. 
+Regisztrálhatja [tárolt eljárások, eseményindítók, felhasználó által definiált függvények (UDF)](stored-procedures-triggers-udfs.md) és [eljárások egyesítése](how-to-manage-conflicts.md) az Azure Cosmos-tárolóval. 
 
 Megadhat egy [egyedi kulcsmegkötés](unique-keys.md) az Azure Cosmos-tárolón. Hozzon létre egyedi, a logikai partíciókulcs egy vagy több értéket, a egyediségének biztosítása. Miután a tároló egyedi létre lett hozva, nem kell létrehozni az új vagy frissített elemek által az egyedi kulcsmegkötés megadott értékek ismétlődő értékekkel. További tudnivalókért lásd: [egyedi kulcsra vonatkozó megkötések](unique-keys.md).
 

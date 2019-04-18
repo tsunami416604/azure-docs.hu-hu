@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/07/2019
 ms.author: juliako
 ms.openlocfilehash: 2c98f6d12f4868e5f90874fe3210fe5368f7ca2d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270336"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Hasonlítsa össze az Azure Media Services v3 készletek és a Video Indexer 
@@ -39,6 +39,6 @@ Jelenleg nincs által nyújtott szolgáltatások között átfedés a [Video Ind
 
 ## <a name="next-steps"></a>További lépések
 
-[Video Indexer – áttekintés](video-indexer-overview.md)
+[A Video Indexer áttekintése](video-indexer-overview.md)
 
 [Media Services v3 áttekintése](../latest/media-services-overview.md)

@@ -11,13 +11,13 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/08/2019
-ms.openlocfilehash: 9fac8291799216b4ca4527b482aefee169f7fc59
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.date: 04/16/2019
+ms.openlocfilehash: add3521a3961f230188e04ff23dda5aac537571a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361276"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680371"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -88,6 +88,9 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
     ![Navigációs ablaktábla][3]
 
 5. **Új** – most már több lehetőség áll rendelkezésére konfigurálásához ahol auditnaplók lesz írva. Naplók az Azure storage-fiók, egy Log Analytics-munkaterületet a memóriafogyasztást úgy, hogy az Azure Monitor naplóira vagy kínál az event hubs az eseményközpont írhat. Az alábbi lehetőségek közül bármelyiket is beállíthat, és minden egyes auditnaplók lesz írva.
+
+   > [!WARNING]
+   > Engedélyezve van a naplózás a Log Analytics Adatbetöltési díjait számoljuk fel alapján számítunk fel. Vegye figyelembe, ez a járulékos költsége [beállítás](https://azure.microsoft.com/en-us/pricing/details/monitor/), vagy fontolja meg a naplózási tároló Azure storage-fiókkal bejelentkezik.
 
     ![tárolási lehetőségek](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -229,8 +232,8 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
 
 **PowerShell-parancsmagok (beleértve a WHERE záradék támogatási további szűréshez)**:
 
-- [Create or Update Database Auditing Policy (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [Create or Update Server Auditing Policy (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
+- [Naplózási házirend (Set-AzSqlDatabaseAuditing) adatbázis frissítése](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [Létrehozni vagy frissíteni a kiszolgáló naplózási házirend (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
 - [Get Database Auditing Policy (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
 - [Get Server Auditing Policy (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 

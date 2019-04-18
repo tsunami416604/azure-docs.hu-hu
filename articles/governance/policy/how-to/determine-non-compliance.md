@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.openlocfilehash: 8a593e92d7f24885c35043b874528e881d2e021e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276099"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
@@ -19,7 +19,7 @@ ms.locfileid: "59276099"
 Ha egy Azure-erőforrás nem kompatibilis a szabály a házirend, hasznos lehet tudni, mely az erőforrás nem felelnek meg a szabály részét. Emellett hasznos megérteni, milyen módosítása módosítani egy korábban megfelelő erőforrással, hogy nem megfelelő. Ezen adatok két módja van:
 
 > [!div class="checklist"]
-> - [Megfelelőségi részletek](#compliance-details)
+> - [Megfelelőségi részletei](#compliance-details)
 > - [Változások nyomon követése (előzetes verzió)](#change-history-preview)
 
 ## <a name="compliance-details"></a>Megfelelőségi részletek

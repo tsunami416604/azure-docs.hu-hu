@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: ade5d55833f1d63a8d70b6eedb3c3e4bdffe590b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276490"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
@@ -252,4 +252,4 @@ Tekintse át a parancsok és lekérdezések ebben a cikkben további informáci�
 - [Az Azure PowerShell-modulok](/powershell/module/az.resources/#policies)
 - [A házirend-parancsok az Azure CLI](/cli/azure/policy?view=azure-cli-latest)
 - [A házirend Insights erőforrás-szolgáltató REST API-referencia](/rest/api/policy-insights)
-- [Erőforrások rendszerezése az Azure Management Groups segítségével](../../management-groups/overview.md)
+- [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/overview.md)

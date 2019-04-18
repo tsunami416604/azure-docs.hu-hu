@@ -14,10 +14,10 @@ ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: ce882ecee25f9570082a978b72a76ca903bfc12f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279381"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Oktatóanyag: Több erőforráspéldány létrehozásával létrehozása a Resource Manager-sablonokkal
@@ -64,7 +64,7 @@ A Visual Studio Code-ban végezze el az alábbi négy módosítást:
 ![Az Azure Resource Manager több példányt hoz létre](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
 1. Adjon hozzá egy `copy` elemet a tárfiók erőforrás-definíciójához. A másolási elemben adja meg az iterációk számát, és egy változót a ciklushoz. Az értéknek egy 801-nél kisebb pozitív egész számnak kell lennie.
-2. A `copyIndex()` függvény a ciklus aktuális iterációját adja vissza. Ezt az indexet fogja a név előtagjaként használni. `copyIndex()` a nulla alapú. Az indexérték eltolásához megadhat egy értéket a copyIndex() függvényben. Például *copyIndex(1)*.
+2. A `copyIndex()` függvény a ciklus aktuális iterációját adja vissza. Ezt az indexet fogja a név előtagjaként használni. A `copyIndex()` nulla alapú. Az indexérték eltolásához megadhat egy értéket a copyIndex() függvényben. Például *copyIndex(1)*.
 3. Törölje a **változók** elemet, mivel már nincs rá szükség.
 4. Törölje a **kimenetek** elemet. A továbbiakban nincs rá szükség.
 
@@ -126,14 +126,14 @@ A Visual Studio Code üzembehelyezési eljárásról szóló rövid útmutatój�
 
 Ha mindhárom tárfiókot listázni szeretné, hagyja ki a --name paramétert:
 
-# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az storage account list --resource-group $resourceGroupName
 ```
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"

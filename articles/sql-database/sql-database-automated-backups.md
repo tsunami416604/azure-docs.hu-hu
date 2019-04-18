@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/12/2019
-ms.openlocfilehash: 8a2a61e821ad41265dc9262064a79a5c44abbc7f
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: f0cff30f246bfeec528f440b507da9248ebbea9f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545824"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678598"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
-Az SQL Database automatikusan létrehozza, melyek folyamatosan 7 – 35 nap közötti, és Azure írásvédett georedundáns tárolás (RA-GRS) használ, győződjön meg arról, hogy azok megmaradnak akkor is, ha nem érhető el az adatközpontot. Ezek a biztonsági másolatok jönnek létre automatikusan, és külön díj nélkül. Nem kell semmit, így fordulhat elő, és meg is [módosítsa a biztonsági mentések megőrzési időszaka](#how-to-change-the-pitr-backup-retention-period). Adatbázisok biztonsági mentése bármely üzleti folytonossági és vészhelyreállítási stratégia alapvető részét képezik, mert azok megvédheti adatait a véletlen adatsérülések vagy -törlések. Ha a biztonsági szabályokat, hogy a biztonsági másolatok elérhetők hosszabb időt (akár 10 év), konfigurálhat egy [hosszú távú megőrzés](sql-database-long-term-retention.md).
+Az SQL Database automatikusan hoz létre, melyek folyamatosan 7 – 35 nap közötti adatbázisok biztonsági mentése, és Azure írásvédett georedundáns tárolás (RA-GRS) használ, győződjön meg arról, hogy azok megmaradnak, még akkor is, ha nem érhető el az adatközpontot. Ezek a biztonsági másolatok jönnek létre automatikusan, és külön díj nélkül. Nem kell semmit, így fordulhat elő, és meg is [módosítsa a biztonsági mentések megőrzési időszaka](#how-to-change-the-pitr-backup-retention-period). Adatbázisok biztonsági mentése bármely üzleti folytonossági és vészhelyreállítási stratégia alapvető részét képezik, mert azok megvédheti adatait a véletlen adatsérülések vagy -törlések. Ha a biztonsági szabályokat, hogy a biztonsági másolatok elérhetők hosszabb időt (akár 10 év), konfigurálhat egy [hosszú távú megőrzés](sql-database-long-term-retention.md).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 

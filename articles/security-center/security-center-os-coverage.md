@@ -3,7 +3,7 @@ title: Funkciók és az Azure Security Center által támogatott platformok |} A
 description: Ez a dokumentum az a funkciók és az Azure Security Center által támogatott platformok listáját tartalmazza.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/9/2019
-ms.author: rkarlin
-ms.openlocfilehash: 5422ba1b29ac48a7255f25ac0beb43e3481d256a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 4/17/2019
+ms.author: monhaber
+ms.openlocfilehash: b5eafd15344156965d0a191688f602ffe1b5a498
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105892"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678309"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformok és az Azure Security Center által támogatott funkciók
 
@@ -37,11 +37,12 @@ Ez a szakasz felsorolja a platformokat, amelyeken az Azure Security Center-ügyn
 ### <a name="supported-platforms-for-windows-computers-and-vms"></a>Windows-számítógépek és virtuális gépek által támogatott platformok
 Az alábbi Windows operációs rendszerek támogatottak:
 
-* Windows Server 2008
-* Windows Server 2008 R2
-* Windows Server 2012
-* Windows Server 2012 R2
+* A Windows Server 2019
 * Windows Server 2016
+* Windows Server 2012 R2
+* Windows Server 2012
+* Windows Server 2008 R2
+* Windows Server 2008
 
 > [!NOTE]
 > A Windows Defender ATP-integráció csak a Windows Server 2012 R2 és Windows Server 2016 támogatja.

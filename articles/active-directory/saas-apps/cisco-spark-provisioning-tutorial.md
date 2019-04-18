@@ -17,10 +17,10 @@ ms.date: 03/27/2019
 ms.author: v-wingf
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 77dab6ad0480bc1565c219766d17211995dcfc20
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278412"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Oktatóanyag: Cisco Spark konfigurálása a felhasználók automatikus átadása
@@ -180,7 +180,7 @@ Az Azure AD létesítési naplók olvasása további információkért lásd: [-
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 

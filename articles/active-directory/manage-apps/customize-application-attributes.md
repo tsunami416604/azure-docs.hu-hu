@@ -16,10 +16,10 @@ ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a2965fecd3aca17d6c4df7e49ad466377de9762
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267208"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Az SaaS-alkalmazásokhoz az Azure Active Directory-attribútumleképezések testreszabása Felhasználókiépítés
@@ -126,7 +126,7 @@ Támogatott attribútumok listáját szerkesztésekor a következő tulajdonság
 * **Elsődleges kulcs?** -Az attribútum e a célobjektum sémában található elsődleges kulcs mezőként van definiálva.
 * **Kötelező?** -Az attribútum e a cél alkalmazás- vagy kitöltve szükség.
 * **Többértékű?** -Az attribútum e több értékeket támogatja.
-* **Kis- és nagybetűk megkülönböztetése?** -Az attribútumok értékek e a kis-és nagybetűket módon értékeli ki.
+* **Megkülönböztetése?** -Az attribútumok értékek e a kis-és nagybetűket módon értékeli ki.
 * **API-kifejezés** – ne használja, kivéve, ha kifejezetten a dokumentáció (például a Workday) egy adott kiépítési összekötőre kéri.
 * **Hivatkozott objektumattribútum** – Ha a hivatkozási attribútum, amelyek ezután ebből a menüből válassza ki a táblát és az attribútum a célalkalmazásban, amely tartalmazza az attribútum társított értéket. Például ha egy attribútumot, amelynek tárolt érték egy külön táblázatban "Részleg" objektumra hivatkozik, az "részleg" nevű, kiválasztott "Departments.Name". A referencia-táblák és a egy adott alkalmazás támogatott elsődleges azonosító mezők előre konfigurált, és jelenleg nem szerkeszthető, az Azure portal használatával, de használatával szerkesztheti a [Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
 

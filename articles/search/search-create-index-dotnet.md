@@ -11,10 +11,10 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/08/2019
 ms.openlocfilehash: 83842893e0ffc6bb954832cd65b6312b59bbcaa3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269044"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Gyors útmutató: 1 – az Azure Search-index létrehozásaC#
@@ -78,7 +78,7 @@ Azt is megteheti, olvassa el [használata az Azure Search .NET-alkalmazásból](
 
 ## <a name="2---create-a-client"></a>2 – az ügyfél létrehozása
 
-Az Azure Search .NET SDK használatának megkezdéséhez hozzon létre egy példányt a `SearchServiceClient` osztály. Ez az osztály több konstruktorral rendelkezik. Az, amelyiket Ön szeretne, a keresőszolgáltatása nevét és egy `SearchCredentials` objektumot használ paraméterként. `SearchCredentials` becsomagolja az API-kulcsot.
+Az Azure Search .NET SDK használatának megkezdéséhez hozzon létre egy példányt a `SearchServiceClient` osztály. Ez az osztály több konstruktorral rendelkezik. Az, amelyiket Ön szeretne, a keresőszolgáltatása nevét és egy `SearchCredentials` objektumot használ paraméterként. A `SearchCredentials` becsomagolja az API-kulcsot.
 
 A következő kódot a Program.cs fájlban található. Létrehoz egy új `SearchServiceClient` a search-szolgáltatásnév és api-kulcsot, az alkalmazás konfigurációs fájljában (appsettings.json) tárolt értékekkel.
 
@@ -93,7 +93,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 }
 ```
 
-`SearchServiceClient` `Indexes` tulajdonsággal rendelkezik. Ez a tulajdonság az Azure Search-indexek létrehozásához, listázásához, frissítéséhez vagy törléséhez szükséges összes módszert biztosítja.
+`SearchServiceClient``Indexes`tulajdonsággal rendelkezik. Ez a tulajdonság az Azure Search-indexek létrehozásához, listázásához, frissítéséhez vagy törléséhez szükséges összes módszert biztosítja.
 
 > [!NOTE]
 > A `SearchServiceClient` osztály kezeli a keresőszolgáltatása kapcsolatait. A túl sok kapcsolat megnyitásának elkerülése érdekében, ha lehetséges, próbálja meg a `SearchServiceClient` egyetlen példányát megosztani az alkalmazásban. A módszerei szálbiztosak az ilyen megosztás engedélyezéséhez.

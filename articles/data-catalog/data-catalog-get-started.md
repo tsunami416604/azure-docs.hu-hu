@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy Azure Data Catalog
+title: Azure Data Catalog létrehozása
 description: A rövid útmutató az Azure Data Catalog létrehozásához.
 author: markingmyname
 ms.author: maghan
@@ -7,13 +7,13 @@ ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 04/05/2019
 ms.openlocfilehash: 66d178497f3403579990340b88a1153905b2a2bf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271033"
 ---
-# <a name="quickstart-create-an-azure-data-catalog"></a>Gyors útmutató: Hozzon létre egy Azure Data Catalog
+# <a name="quickstart-create-an-azure-data-catalog"></a>Gyors útmutató: Azure Data Catalog létrehozása
 
 Az Azure Data Catalog teljes körűen felügyelt felhőszolgáltatás, amely vállalati adategységek regisztrációs és felderítőrendszereként szolgál. A szolgáltatás részletes bemutatásáért olvassa el a [Mi az az Azure Data Catalog?](overview.md) című cikket.
 

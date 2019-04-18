@@ -9,10 +9,10 @@ ms.date: 04/03/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ba75d196bdb53fab104ab6c01391e762b4a3841b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270523"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Az Azure-beli privát Docker-tárolójegyzékek bemutatása
@@ -44,9 +44,9 @@ Az Azure biztosítja az eszközöket, beleértve az Azure parancssori felület, 
 
 * **Tárház** -beállításjegyzék tartalmaz egy vagy több tárat, amely virtuális azonos nevű, de eltérő címkéket vagy emésztett tárolórendszerképek csoportjai. Az Azure Container Registry támogatja a többszintű adattárnévtereket. A többszintű névterekkel csoportba rendezheti egy adott alkalmazáshoz vagy alkalmazások gyűjteményéhez kapcsolódó rendszerképek gyűjteményeit az egyes fejlesztői és üzemeltetői csoportok számára. Példa:
 
-  * `myregistry.azurecr.io/aspnetcore:1.0.1` a vállalatban elérhető rendszerképet jelöl
-  * `myregistry.azurecr.io/warrantydept/dotnet-build` egy .NET-alkalmazások, amely a jótállási részlegen megosztott felépítéséhez használt rendszerképet jelöl
-  * `myregistry.azurecr.io/warrantydept/customersubmissions/web` egy webes rendszerképet jelöl, alkalmazásban csoportosított az ügyfél a jelentkezés a jótállási részleg tulajdona
+  * A(z) `myregistry.azurecr.io/aspnetcore:1.0.1` egy, a teljes vállalatban elérhető rendszerképet jelöl
+  * A(z) `myregistry.azurecr.io/warrantydept/dotnet-build` egy .NET-alkalmazások felépítéséhez használt rendszerképet jelöl, amely a jótállási részlegen van megosztva
+  * A(z) `myregistry.azurecr.io/warrantydept/customersubmissions/web` egy, az ügyfélbeadványok alkalmazásban csoportosított webes rendszerképet jelöl, amely a jótállási részleg tulajdona
 
 * **Kép** – az adattárakban tárolt egyes rendszerképek egy Docker-kompatibilis tároló csak olvasható pillanatkép. Az Azure tároló-beállításjegyzékek Windows- és Linux-rendszerképeket is tartalmazhatnak. A rendszerképek neveit Ön határozza meg mindegyik tárolókörnyezetben. A rendszerképek szabványos [Docker-parancsokkal](https://docs.docker.com/engine/reference/commandline/) küldhetők le egy adattárba, vagy hívhatók elő onnan. Tárolórendszerképek mellett az Azure Container Registry tárolja [kapcsolódó tartalom formátumok](container-registry-image-formats.md) például [Helm-diagramok](container-registry-helm-repos.md)szolgál Kubernetes-alkalmazások központi telepítése.
 
@@ -61,5 +61,5 @@ Az [Azure Container Registry Tasks](container-registry-tasks-overview.md) (ACR T
 ## <a name="next-steps"></a>További lépések
 
 * [Tároló-beállításjegyzék létrehozása az Azure Portalon](container-registry-get-started-portal.md)
-* [Tároló-beállításjegyzék létrehozása az Azure CLI-vel](container-registry-get-started-azure-cli.md)
-* [Az operációs rendszer és a keretrendszer javítás ACR feladatok automatizálása](container-registry-tasks-overview.md)
+* [Tároló beállításjegyzék létrehozása az Azure CLI-vel](container-registry-get-started-azure-cli.md)
+* [Operációs rendszer és keretrendszer javításának automatizálása az ACR Tasksszal](container-registry-tasks-overview.md)

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: b43532ade35e4e01573abbd3f47d009beadd9c60
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267718"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Adatok másolása vagy az Azure File Storage az Azure Data Factory használatával
@@ -54,7 +54,7 @@ Az Azure File Storage társított szolgáltatás a következő tulajdonságok t�
 >[!TIP]
 >ADF felhasználói felületén történő tartalomkészítéshez használatakor a társított szolgáltatás létrehozásához, mely alatta látható állít elő, írja be a meghatározott bejegyzés "Az Azure File Storage" talál `FileServer` objektum.
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -99,7 +99,7 @@ Adatok másolása Azure blobból vagy az Azure File Storage, állítsa be a type
 >[!NOTE]
 >Ha fájlt szűrő "fileFilter" tulajdonságot használja, továbbra is támogatott-van, miközben Ön a "fájlnevet" a jövőben hozzáadott új szűrő funkció használata javasolt.
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -142,7 +142,7 @@ Adatok másolása az Azure File Storage, állítsa be a forrás típusaként a m
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **FileSystemSource** |Igen |
 | a rekurzív | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákban vagy csak a megadott mappába. Megjegyzés: Ha a rekurzív értéke igaz, és a fogadó fájlalapú tároló, üres mappa/alárendelt-folder nem lesz másolva vagy hozható létre, a fogadó.<br/>Engedélyezett értékek a következők: **igaz** (alapértelmezett), **false (hamis)** | Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -183,7 +183,7 @@ Adatok másolása az Azure File Storage, állítsa a fogadó típusa a másolás
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **FileSystemSink** |Igen |
 | a copyBehavior | A másolási viselkedés határozza meg, ha a forrás fájlok fájlalapú adattárból.<br/><br/>Engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a hierarchiája a célmappában. A forrásmappa forrás-fájl elérési útja megegyezik a célmappában a célfájl elérési útja.<br/><b>-FlattenHierarchy</b>: a forrásmappából a fájlok a célmappában az első szintjét is. A cél fájlok automatikusan létrehozott nevet adni. <br/><b>-MergeFiles</b>: egyesíti a forrásmappából egy fájl összes fájlt. Ha a fájl/Blob neve van megadva, az egyesített fájl neve lesz a megadott név; Ellenkező esetben lenne automatikusan létrehozott fájl nevét. | Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

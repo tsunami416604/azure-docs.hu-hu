@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 62efee57f3663f1dad0446da659de16d2800bf75
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264420"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Létrehozása, konfigurálása és kezelése rugalmas feladatokkal
@@ -98,5 +98,5 @@ Ehhez hasonlóan a szkriptnek sikeresen végrehajthatónak kell lennie az észle
 
 ## <a name="next-steps"></a>További lépések
 
-- [PowerShell-lel a rugalmas feladatok létrehozása és kezelése](elastic-jobs-powershell.md)
-- [Transact-SQL (T-SQL) használatával a rugalmas feladatok létrehozása és kezelése](elastic-jobs-tsql.md)
+- [Rugalmas feladatok létrehozása és kezelése a PowerShell használatával](elastic-jobs-powershell.md)
+- [Rugalmas feladatok létrehozása és kezelése a Transact-SQL (T-SQL) használatával](elastic-jobs-tsql.md)

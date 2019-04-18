@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 54511ac4dfdc05ec1880695b1ae2360f0b5e8162
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 8b19c0fd8af2792a4ffb877e5c6a7fc6b3f94511
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328367"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699253"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -49,73 +49,79 @@ ms.locfileid: "56328367"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Ez az útmutató a végrehajtási és a Microsoft Azure az SAP-szoftverek üzembe helyezésére dokumentáció részét képezi. Ez az útmutató elolvasása, előtt olvassa el a [tervezési és megvalósítási útmutató][planning-guide]. Ez a dokumentum ismerteti az általános üzembe helyezési szempontok kapcsolatos SAP DBMS-rendszerek a Microsoft Azure-beli virtuális gépeken (VM) használatával az Azure infrastruktúra-szolgáltatás (IaaS) képességeket.
+Ez az útmutató megvalósításához és központi telepítése a Microsoft Azure-on SAP software módjáról a dokumentációban részét képezi. Az útmutató olvasása előtt olvassa el a [tervezési és megvalósítási útmutató][planning-guide]. Ez a dokumentum az Azure-infrastruktúrát használják, mint a szolgáltatás (IaaS) képességeket a Microsoft Azure virtuális gépeken (VM) kapcsolatos SAP DBMS-rendszerek általános központi telepítés szempontjait ismerteti.
 
 A tanulmány az SAP-telepítési dokumentációt és SAP-megjegyzések, amelyek tartalmazzák a telepítések és SAP-szoftverek központi telepítései az elsődleges erőforrásokat a megadott platformok egészíti ki.
 
 Ebben a dokumentumban megfontolásokkal kapcsolatos SAP DBMS-rendszerek Azure-beli virtuális gépeken futó jelennek meg. Ez a fejezet az adott DBMS-rendszerekre való néhány hivatkozások találhatók. Ehelyett az adott DBMS-rendszerek kezelése a tanulmány után ez a dokumentum.
 
-## <a name="definitions-upfront"></a>Előre definíciók
-A dokumentumban a következő kifejezéseket használjuk:
+## <a name="definitions"></a>Meghatározások
+A dokumentumban a kifejezések használata:
 
-* IaaS: Infrastruktúra-szolgáltatás.
-* PaaS: Szolgáltatásként nyújtott platformon.
-* SaaS: Szolgáltatott szoftver.
-* SAP Component: Például az ECC, a BW, a megoldás Manager vagy a EP egyedi SAP alkalmazások Az SAP-összetevők hagyományos ABAP és Java-technológiák vagy egy nem NetWeaver-alapú alkalmazás, például az üzleti objektumok alapulhat.
-* Az SAP-környezet: egy vagy több SAP összetevő logikusan például fejlesztési, QAS, képzés, DR vagy éles üzleti függvény végrehajtásához.
-* SAP Landscape: Ez a kifejezés hivatkozik a teljes SAP-eszközök az ügyfél informatikai környezetét. Az SAP-rendszeren, tartalmazza az összes éles környezetben, és nem éles környezetekben.
-* SAP-rendszerhez: Az adatbázis-kezelő réteget és az alkalmazás réteget, például egy fejlesztőrendszerrel SAP ERP, SAP BW tesztgépen, SAP CRM-előállítási rendszerek stb kombinációja. Az Azure-környezetek nem támogatott ezen két réteg között a helyszíni és az Azure osztani. Ennek eredményeképpen az SAP-rendszer-e üzembe helyezett helyszíni vagy az Azure-ban központilag telepítették. Azonban telepíthet egy Azure-ban vagy a helyszíni SAP-rendszeren, a különböző rendszerek. Például sikerült telepíteni az SAP CRM fejlesztési és rendszerek tesztelése az Azure azonban az SAP CRM rendszert a helyi környezetben.
-* Létesítmények közötti: Ismerteti egy olyan forgatókönyvet, ahol a virtuális gépek Azure-előfizetéssel, amely rendelkezik a site-to-site, többhelyes vagy az ExpressRoute-kapcsolat a helyszíni kommunikálhassanak és az Azure közötti üzembe. A gyakori Azure dokumentációjában, az ilyen típusú központi telepítések is rendelkezésre állnak, létesítmények közötti forgatókönyvek leírtak szerint. A kapcsolat az az oka, hogy kiterjesztése a helyszíni tartományokra, a helyszíni Active Directory és a helyszíni DNS az Azure-bA. Az Azure-előfizetés objektumok kiterjed a helyszíni környezet változásaihoz. Ez a bővítmény kapcsolatban, a virtuális gépek a helyszíni tartomány része lehet. Tartományi felhasználókat a helyszíni tartomány férhet hozzá a kiszolgálókat, és futtathatja a szolgáltatások a virtuális gépeken (például adatbázis-kezelő szolgáltatások). Virtuális gépek közötti kommunikációt és a névfeloldás üzembe helyezte a helyszínen és az Azure-ban üzembe helyezett virtuális gépek lehetséges. Ebben a forgatókönyvben az a leggyakoribb forgatókönyv üzembe helyezéséhez SAP-eszközök az Azure-ban. További információkért lásd: [tervezéssel és kialakítással VPN-átjáró](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
+* **IaaS**: Infrastruktúra-szolgáltatás.
+* **PaaS**: Szolgáltatásként nyújtott platformon.
+* **SaaS**: Szolgáltatott szoftver.
+* **Az SAP-összetevő**: Egy különálló SAP alkalmazások például ERP központi összetevő (ECC), a Business Warehouse (BW), a megoldás Manager vagy a vállalati portál (EP). SAP-összetevők a hagyományos ABAP és Java-technológiák, illetve egy nem NetWeaver-alapú alkalmazás, például az üzleti objektumok is alapulhatnak.
+* **Az SAP-környezet**: Egy vagy több SAP összetevő logikusan, például fejlesztési, minőségbiztosítási, képzés, vész-helyreállítási vagy éles üzleti függvény végrehajtásához.
+* **SAP-rendszeren**: Ez a kifejezés hivatkozik a teljes SAP-eszközök az ügyfél informatikai környezetét. Az SAP-rendszeren, tartalmazza az összes éles és éles környezetekben.
+* **SAP-rendszerhez**: Egy adatbázis-kezelő réteg és a egy alkalmazás réteget, például az SAP ERP fejlesztési rendszer együttes használata az SAP Business Warehouse teszt rendszer, vagy az SAP CRM éles rendszer. Az Azure-környezetek e két réteget a helyszíni és az Azure közötti elosztásával nem támogatott. Ennek eredményeképpen az SAP-rendszerhez, üzembe helyezett helyszíni vagy annak az Azure-ban üzembe helyezett. Telepíthet egy Azure-ban vagy a helyszíni SAP-rendszeren, a különböző rendszerek. Például, sikerült központi telepítése a SAP CRM fejlesztési és rendszerek tesztelése az Azure-ban, de helyszíni üzembe helyezése az SAP CRM éles rendszer.
+* **Létesítmények közötti**: Egy forgatókönyv, ahol a virtuális gépek Azure-előfizetéssel, amely rendelkezik a site-to-site, többhelyes üzembe, vagy Azure ExpressRoute-kapcsolat a helyszíni adatok között központok és az Azure ismerteti. A gyakori Azure dokumentációjában, az ilyen típusú központi telepítések is rendelkezésre állnak, létesítmények közötti forgatókönyvek leírtak szerint. 
+
+    A kapcsolat az az oka, hogy kiterjesztése a helyszíni tartományokra, a helyszíni Active Directory és a helyszíni DNS az Azure-bA. Az Azure-előfizetés objektumok kiterjed a helyszíni környezet változásaihoz. Ez a bővítmény a virtuális gépeket a helyszíni tartomány része lehet. Tartományi felhasználókat a helyszíni tartomány elérheti a kiszolgálók és szolgáltatások a virtuális gépeken, például adatbázis-kezelő szolgáltatások futtatásához. Virtuális gépek közötti kommunikációt és a névfeloldás üzembe helyezte a helyszínen és az Azure-ban üzembe helyezett virtuális gépek lehetséges. Ebben a forgatókönyvben a leggyakoribb forgatókönyv üzembe helyezéséhez az Azure-beli SAP-eszközök használatban. További információkért lásd: [tervezéssel és kialakítással VPN-átjáró](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
 
 > [!NOTE]
-> Létesítmények közötti SAP-rendszereit, amelyeknél a helyszíni tartomány tagjai az Azure Virtual machines gépeken futó SAP-rendszerek központi telepítései éles SAP-rendszerek támogatottak. Létesítmények közötti konfigurációkat üzembe helyezésének részek támogatottak, vagy hajtsa végre az SAP-környezetünk az Azure-bA. Akár az Azure-ban futó a teljes SAP-rendszeren, ezeket a virtuális gépek is tagja a helyszíni tartomány és az AD/LDAP igényel. A-dokumentáció korábbi verziói a hibrid-informatikai alkalmazási helyzetek is említettük, ahol az előfizetési időszak *hibrid* rootolva van, az a tény, hogy nincs-e a létesítmények közötti kapcsolatok a helyszíni és az Azure között. Ebben az esetben *hibrid* azt is jelenti, hogy a virtuális gépek az Azure-ban a helyszíni Active Directory részét képezik.
+> Létesítmények közötti üzemelő példányok, SAP-rendszereit, hol találhatók az SAP-rendszereit futtató Azure virtuális gépeket a helyszíni tartomány tagjai és éles SAP-rendszerek esetén támogatottak. Létesítmények közötti konfigurációkat üzembe helyezésének részek támogatottak, vagy hajtsa végre az SAP-környezetünk az Azure-bA. A teljes SAP-rendszeren az Azure-ban futó részét képezi, a helyszíni tartomány virtuális gépek és a Active Directory LDAP szükséges. 
+>
+> A dokumentáció korábbi verziói, a hibrid-informatikai alkalmazási helyzetek vannak megemlítve. Az előfizetési időszak *hibrid* rootolva van, az a tény, hogy nincs-e a létesítmények közötti kapcsolatok a helyszíni és az Azure között. Ebben az esetben a hibrid is jelenti, hogy a virtuális gépek az Azure-ban a helyszíni Active Directory részét képezik.
 >
 >
 
-Bizonyos Microsoft-dokumentációt létesítmények közötti forgatókönyv különösen az adatbázis-kezelő magas rendelkezésre ÁLLÁS konfigurációk esetén egy kicsit másképp ismerteti. Az SAP-kapcsolatos dokumentumok esetében a létesítmények közötti forgatókönyv forrni kezd, hogy a magán- vagy site-to-site [ExpressRoute](https://azure.microsoft.com/services/expressroute/) kapcsolat, és azt a tényt, hogy az SAP-rendszeren oszlik el a helyszíni és az Azure között.
+Bizonyos Microsoft-dokumentációt létesítmények közötti forgatókönyv különösen az adatbázis-kezelő magas rendelkezésre állású konfigurációk esetén egy kicsit másképp ismerteti. Az SAP-kapcsolatos dokumentumok esetében a létesítmények közötti forgatókönyv forrni kezd a site-to-site, vagy privát [ExpressRoute](https://azure.microsoft.com/services/expressroute/) kapcsolatot és a egy SAP-rendszeren, amely a helyszíni és az Azure között.
 
 ## <a name="resources"></a>További források
-Az SAP számítási feladatok Azure-ban található különböző cikkek nyilvánosan is. Javasoljuk, hogy start [SAP számítási feladatok Azure-ban – első lépések a](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) majd válasszon a terület az érdeklődési kör
+Érhetők el további cikkek az SAP számítási feladatok Azure-ban. Kezdje [SAP számítási feladatok Azure-ban: Első lépések](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) majd érdeklődési körét.
 
-Az alábbi SAP-megjegyzések kapcsolódó Azure-beli SAP kapcsolatban a dokumentumban leírt terület:
+Az alábbi SAP-megjegyzések tekintetében a dokumentumban leírt terület kapcsolódó Azure-beli SAP.
 
 | Megjegyzés száma | Cím |
 | --- | --- |
-| [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure virtuális gépek típusai |
+| [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és Azure-beli Virtuálisgép-típusok |
 | [2015553] |A Microsoft Azure-beli SAP: Támogatás előfeltételei |
-| [1999351] |Továbbfejlesztett Azure Monitoring for SAP hibaelhárítási |
-| [2178632] |Metrikák figyelése a Microsoft Azure-beli SAP-kulcs |
+| [1999351] |Továbbfejlesztett Azure monitoring for SAP hibaelhárítási |
+| [2178632] |Főbb figyelési metrikákat az SAP a Microsoft Azure |
 | [1409604] |A Windows-virtualizálás: Speciális figyelés |
 | [2191498] |SAP használata Linux az Azure-ral: Speciális figyelés |
 | [2039619] |SAP-alkalmazások a Microsoft Azure-ban, az Oracle-adatbázishoz: Támogatott termékek és termékverziók |
-| [2233094] |DB6: SAP-alkalmazások Azure-ban, IBM DB2-höz használatával Linux, UNIX és a Windows - további információ |
+| [2233094] |DB6: SAP-alkalmazások az IBM DB2-höz használatával Linux, UNIX és a Windows Azure-ban: További információ |
 | [2243692] |A Microsoft Azure (IaaS) virtuális gép Linux: Az SAP-licenccel kapcsolatos problémák |
 | [1984787] |SUSE LINUX Enterprise Server 12: Telepítési jegyzetek |
 | [2002167] |Red Hat Enterprise Linux 7.x: Telepítés és frissítés |
 | [2069760] |Oracle Linux 7.x SAP telepítése és frissítése |
 | [1597355] |Linux-lapozóterület javaslat |
-| [2171857] |Oracle Database 12c - fájlrendszer Linux-támogatás |
-| [1114181] |Oracle Database 11g - fájlrendszer Linux-támogatás |
+| [2171857] |Oracle Database 12c: Fájlrendszer-támogatás Linux rendszeren |
+| [1114181] |Oracle Database 11g: Fájlrendszer-támogatás Linux rendszeren |
 
 
-Emellett olvassa el a [Állapotváltozás Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) minden SAP-megjegyzések, amely tartalmazza a Linuxhoz készült.
+Információ az SAP-megjegyzések Linux: a [az SAP közösségi wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes).
 
-Rendelkeznie kell a Microsoft Azure-architektúra és a Microsoft Azure Virtual Machines telepített és üzemeltetett hogyan ismeretét. További információt talál [Azure-dokumentáció](https://docs.microsoft.com/azure/).
+Szüksége lesz egy Microsoft Azure-architektúra és a Microsoft Azure virtuális gépeken telepített és üzemeltetett hogyan gyakorlati ismerete. További információkért lásd: [Azure dokumentációja](https://docs.microsoft.com/azure/).
 
-Témák megvitatásához IaaS, bár általában a Windows, Linux- és adatbázis-kezelő rendszer telepítési és konfigurációs lényegében ugyanaz, mint a virtuális gépekhez vagy telepítenie a helyi operációs rendszer nélküli gépen. Azonban néhány architektúra és a rendszer felügyeleti megvalósítási döntést kell meghoznia, amelyek különböző Azure IaaS használatakor. A jelen dokumentum célja, hogy a specifikus architekturális és a rendszer felügyeleti különbségeket, hogy fel kell készülnie az Azure IaaS használata esetén.
+Általánosságban véve a Windows, Linux- és adatbázis-kezelő rendszer telepítési és konfigurációs lényegében ugyanaz, mint a virtuális gépekhez vagy helyszíni telepítése operációs rendszer nélküli gépen. Néhány architektúra és a rendszer felügyeleti megvalósítási döntést kell meghoznia, amelyek eltérnek az Azure IaaS használata esetén. Ez a dokumentum ismerteti a specifikus architekturális és a rendszer felügyeleti különbségek a elő kell készíteni az Azure IaaS használata esetén.
 
 
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>A virtuális gépek RDBMS központi telepítésekhez tárolószerkezet
-Annak érdekében, hogy kövesse az ebben a fejezetben, érdekében fontos megérteni, milyen a bemutatott [ez] [ deployment-guide-3] fejezete az [üzembe helyezési útmutató][deployment-guide]. Kapcsolatos tudnivalók a különböző Virtuálisgép-sorozat, és azok és különbségek standard storage és a prémium szintű storage kell értelmezni, és ez a fejezet elolvasása előtt ismert. Készült a következő alkalmazáshoz:
+Kövesse az ebben a fejezetben, olvassa el, és megismerheti a megjelenő információk [ebben a fejezetben] [ deployment-guide-3] , a [üzembe helyezési útmutató][deployment-guide]. Ismerik az információ a különböző Virtuálisgép-sorozat és a standard és prémium szintű storage, ez a fejezet elolvasása előtt közötti különbségeket kell. 
 
-Azure Storage az Azure virtuális gépek tekintetében, ismerkedjen meg a cikkek:
+Az Azure Storage-ról Azure-beli virtuális gépek című témakörben talál:
 
-- [Bevezetés a managed Disks szolgáltatásba az Azure Windows virtuális gépek](../../windows/managed-disks-overview.md)
-- [Bevezetés a managed Disks szolgáltatásba az Azure Linux virtuális gépek](../../linux/managed-disks-overview.md)
+- [Bevezetés a managed Disks szolgáltatásba az Azure Windows virtuális gépek](../../windows/managed-disks-overview.md).
+- [Bevezetés a managed Disks szolgáltatásba az Azure Linux virtuális gépek](../../linux/managed-disks-overview.md).
 
-Alapszintű konfiguráció esetén általában javasoljuk, hogy a struktúra a központi telepítés, ahol az operációs rendszer, az adatbázis-kezelő és végleges SAP bináris fájlokat nem azonosak az adatbázisfájlokat. Ezért azt javasoljuk, az Azure Virtual Machines telepítve az operációs rendszer, adatbázis-kezelési rendszer futtatható fájljainak és SAP végrehajtható fájlok alap virtuális merevlemez (vagy lemez) futó SAP-rendszereinket. Az adatbázis-kezelő adathoz és naplófájlhoz a különálló lemezek (Standard vagy prémium szintű tároló) Azure Storage-ban tárolt és az eredeti Azure operációs rendszer lemezképének virtuális gép logikai lemezként csatolt. Linux-környezetek, különösen a dokumentált különböző javaslatokat is lehet. Különös tekintettel az SAP HANA.
+Alapszintű konfiguráció esetén általában javasoljuk, hogy egy üzembe helyezési struktúrája, ahol az operációs rendszer, az adatbázis-kezelő és végleges SAP bináris fájlokat nem azonosak az adatbázisfájlokat. Azt javasoljuk, hogy Azure-beli virtuális gépeken futó SAP-rendszerek rendelkezik-e az alap VHD-t, vagy lemezt, az operációs rendszer, az adatbázis felügyeleti rendszer futtatható fájljainak és a SAP végrehajtható fájlok telepítése. 
 
-A lemez elrendezése megtervezésekor a következő elemek között egyensúlyba kell:
+Az adatbázis-kezelő adathoz és naplófájlhoz standard storage vagy prémium szintű storage vannak tárolva. Ezek különböző lemezen tárolt és az eredeti Azure operációs rendszer lemezképének virtuális gép logikai lemezként csatolt. A Linux-környezetek különböző javaslatok vannak dokumentálva, különösen az SAP Hana-hoz.
+
+Ha azt tervezi, hogy a lemez elrendezése, egyensúlyba ezek az elemek között:
 
 * Az adatfájlok számát.
 * A lemezek, amelyek tartalmazzák a fájlok számát.
@@ -124,34 +130,36 @@ A lemez elrendezése megtervezésekor a következő elemek között egyensúlyba
 * A lehetséges Virtuálisgép-méret szerint további adatlemezek száma.
 * A teljes tárterületek átviteli sebességének egy virtuális Gépet biztosít.
 * A késést tud biztosítani a különféle Azure Storage.
-* Virtuális gép SLA-k
+* Virtuális gép SLA-k.
 
-Azure-adatlemez IOPS kvóta kényszeríti. Az Azure Standard Storage és a Premium Storage üzemeltetett lemezeket kvóta eltérőek. I/o-késés is eltér a két tárolási típusok között. Tényezők biztosítása a Premium Storage a jobb i/o várakozási ideje. A virtuális gépek különböző típusairól mindegyike rendelkezik egy korlátozott számú adatlemezeket, amelynek a csatolni. Egy másik korlátozás, hogy csak bizonyos virtuális gépek típusai kihasználhatják az Azure Premium Storage. Ennek eredményeképpen a döntést Virtuálisgép bizonyos típusú előfordulhat, hogy nem csak alapján vezeti a Processzor- és követelményeket, hanem által az IOPS, késés és a lemez, amely általában vannak méretezve, a lemezek számát vagy a prémium szintű tárolólemezeket típusát az átviteli sebességet megkövetelő. Kifejezetten a Premium Storage a lemez mérete is valószínűleg szabja IOPS és átviteli sebesség érhető el, hogy az egyes lemezek szükséges számát.
+Azure-adatlemez IOPS kvóta kényszeríti. Kvóta eltérőek a standard storage és a premium storage üzemeltetett lemezeket. I/o-késés is eltér a két tárolási típusok között. A Premium storage a jobb i/o-késés tesz lehetővé. 
 
-> [!NOTE]
-> A Premium Storage használatát az minden olyan adatok, a tranzakciós napló és a ismétlés fájlokat a DBMS üzembe helyezési erősen ajánlott. Így nem számít, hogy éles vagy nem éles rendszerek üzembe szeretné.
-
-> [!NOTE]
-> Annak érdekében, hogy az Azure előnyeit a egyedi [egyetlen virtuális gép SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) csatolt összes lemezt kell lennie az Azure Premium Storage, beleértve az alap virtuális merevlemez típusú.
+A virtuális gépek különböző típusairól mindegyike rendelkezik egy korlátozott számú adatlemez csatolható. Egy másik korlátozás, hogy csak bizonyos virtuális gépek típusai prémium szintű storage is használható. Általában úgy dönt, hogy-Virtuálisgép bizonyos típusú a CPU és memória-követelmények alapján. Emellett érdemes lehet az IOPS, késés és lemez átviteli sebességet megkövetelő, amely általában vannak méretezve, a lemezek számát vagy a prémium szintű tárolólemezeket típusát. A lemez mérete, különösen a premium storage függhet, IOPS és az átviteli sebesség érhető el, hogy az egyes lemezek számát.
 
 > [!NOTE]
-> A gazdagép fő adatbázis fájlok (adat- és naplófájlok) SAP-adatbázisok az Azure-adatközpontokhoz szomszédos közös elhelyezésű harmadik féltől származó adatközpontokban található tárolóhardveres nem támogatott. Az SAP számítási feladatok csak tárolási natív Azure jelölt szolgáltatás az adatok és a tranzakciós naplófájlok az SAP-adatbázisok esetében támogatott.
+> A DBMS üzembe helyezési bármilyen adatokat, a tranzakciós napló, prémium szintű tárolás használatát javasoljuk vagy fájlok visszaállítása. Nem számít, hogy éles, akár az éles rendszerek üzembe szeretné.
 
-Az elhelyezési az adatbázisfájlokat és a napló vagy visszaállíthatja a fájlokat és a használt, az Azure Storage IOPS, késés és a teljesítménybeli követelmények lehet definiálni. Annak érdekében, hogy van elég iops-t, előfordulhat, hogy kényszerített több lemez használhatja, vagy használjon nagyobb prémium szintű Storage-lemez. Esetén több lemezt használ, a lemezeken, amelyeket az adatfájlokat tartalmaz, vagy a napló vagy visszaállíthatja a fájlokat szoftver teríti volna létre. Ezekben az esetekben az IOPS és az adatátviteli sebességet SLA-k az alapul szolgáló Premium Storage-lemez vagy a maximális elérhető iops-t az Azure standard szintű Storage-lemezeket is halmozódnak az eredményül kapott stripe-készlet.
+> [!NOTE]
+> Kihasználhatja az Azure-ból a egyedi [egyetlen virtuális gép SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/), csatolt összes lemezt kell lennie a prémium szintű tárolási típust, amely tartalmazza az alap VHD-t.
 
-Mint már említettük Ha az IOPS követelmény nagyobb, mint ami egy virtuális Merevlemezzel is szerepel, akkor kell egy VHD-k száma közötti az adatbázisfájlok számára szükséges IOPS számát egyensúlyba hozni. Az IOPS osszák szét a lemezeket a legegyszerűbb módja, hogy különböző lemezek a szoftver paritásos build. Ezután elhelyezheti egy számot, az SAP DBMS-adatfájlok ki a szoftver stripe faragottnak LUN-okra. a stripe a lemezek számát a növekvő igények szerint határozzák meg az IOPs a növekvő igények szerint, a lemez átviteli igényeknek és a kötet.
+> [!NOTE]
+> Fő adatbázis-fájlokat tartalmazó, például az adathoz és naplófájlhoz tárolási hardverhez, amely csak az Azure-beli adatközpontok szomszédos közös elhelyezésű külső adatközpontok található SAP adatbázisai nem támogatott. Az SAP-feladatokat csak tárolási jelölt natív Azure-szolgáltatás, az adatok és a tranzakciós naplófájlok az SAP-adatbázisok esetében támogatott.
+
+Az elhelyezési az adatbázisfájlokat és a napló- és ismét: fájlok és a típus használata az Azure Storage IOPS, késés és a teljesítménybeli követelmények határozza meg. Ahhoz, hogy elegendő iops-t, előfordulhat, hogy kényszerített több lemezt, vagy egy nagyobb prémium szintű tárolólemez használatával. Ha használ több lemez, hozhat létre egy szoftverfrissítési stripe a lemezeket, az adatfájlok, illetve a napló tartalmaz, és ismételje meg a fájlok között. Ezekben az esetekben, az IOPS és az adatátviteli sebességet SLA-k az alapul szolgáló prémium szintű Storage lemezek vagy a standard szintű storage-lemez elérhető maximális iops értéke a következők halmozódnak az eredményül kapott stripe-készlet.
+
+Mint már említettük Ha az IOPS követelmény nagyobb, mint egy virtuális Merevlemezzel biztosíthat, egyenleg iops-érték szükséges ahhoz, hogy az adatbázisfájlok több VHD-k számát. Az IOPS osszák szét a lemezeket a legegyszerűbb módja, hogy a build szoftver paritásos különböző lemezek. Ezután elhelyezheti egy számot, az SAP DBMS-adatfájlok ki a szoftver stripe faragottnak LUN-okra. a stripe a lemezek számát a növekvő igények szerint határozzák meg az IOPs a növekvő igények szerint, a lemez átviteli igényeknek és a kötet.
 
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Azt javasoljuk, hogy a Windows tárolóhelyek használatával hozhat létre ilyen stripe között több Azure virtuális merevlemezeket. Javasoljuk, hogy legalább Windows Server 2012 R2 vagy Windows Server 2016-ban.
+> Azt javasoljuk, hogy használja-e Windows tárolóhelyek paritásos létrehozása több Azure virtuális merevlemezek között. Legalább Windows Server 2012 R2 vagy Windows Server 2016-ban.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Csak a MDADM és az LVM (a Logical Volume Manager) hozhat létre egy szoftveres RAID Linux rendszeren támogatott. További információkért olvassa el a következő cikkeket:
+> Csak a MDADM és a logikai kötet-kezelő (LVM) hozhat létre egy szoftveres RAID Linux rendszeren támogatott. További információkért lásd:
 >
-> - [A linuxon futó szoftver RAID konfigurálása](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid) MDADM használatával
+> - [Szoftveres RAID linuxon konfigurálása](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid) MDADM használatával
 > - [LVM konfigurálása az Azure-beli Linuxos virtuális gépre](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm) LVM használatával
 >
 >
@@ -159,75 +167,77 @@ Mint már említettük Ha az IOPS követelmény nagyobb, mint ami egy virtuális
 - - -
 
 > [!NOTE]
-> Mivel az Azure Storage három rendszerkép virtuális merevlemezhez viselkedéssel, azt nem értelmezhető szétosztott konfigurálása a redundancia. Csak akkor kell konfigurálni szétosztott, tehát, hogy az i/o vannak első elosztva a különböző virtuális merevlemezeket.
+> Azure Storage úgy biztosítja a VHD-ket három képét, mert konfigurálása a redundancia stripe-e, amikor nincs értelme. Csak csíkozást konfigurálása, hogy az i/o vannak elosztva a különböző virtuális merevlemezeket kell.
 >
 
-### <a name="managed-or-non-managed-disks"></a>Felügyelt vagy nem felügyelt lemezek
-Egy Azure Storage-fiók nem, nem csak egy felügyeleti szerkezet, de korlátozások tárgya is. A korlátozások a standard szintű Azure Storage-fiókot és az Azure Premium Storage-fiókok különböznek. A cikkben felsorolt pontos lehetőségeit és korlátait [Azure Storage méretezhetőségi és Teljesítménycéljai](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)
+### <a name="managed-or-nonmanaged-disks"></a>Felügyelt vagy nem felügyelt lemezek
+Az Azure storage-fiók egy felügyeleti szerkezet, és korlátozásokat a tárgyat. Korlátozások a standard szintű tárfiókok és a premium storage-fiókok eltérő. Információk a képességei és korlátozásai: [Azure Storage méretezhetőségi és teljesítménycéljai](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
 
-Az Azure standard szintű Storage esetében fontos, hogy nincs-e korlátozni az iops-értékkel tárfiókonként visszahívása (sor **teljes kérelmek gyakorisága** cikkben [Azure Storage méretezhetőségi és Teljesítménycéljai](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)). Emellett van egy kezdeti maximális számát, a Tárfiókok és Azure-előfizetésenként. Ezért kell VHD-k egyenleg nagyobb SAP-rendszeren, ezeket a tárfiókok korlátairól elkerülje a különböző tárfiókok között. Egy fárasztó munka, ha néhány száz virtuális gépekről több ezer virtuális merevlemezzel rendelkező kiindulásként.
+Standard szintű tárolóra vonatkozó ne feledje, hogy nincs-e korlátozni az iops-értékkel / storage-fiókot. Tekintse meg a tartalmazó sort **teljes kérelmek gyakorisága** cikkben [Azure Storage méretezhetőségi és teljesítménycéljai](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets). Emellett van egy kezdeti, a storage-fiókok Azure-előfizetésenként számára vonatkozó határértéket. Egyenleg virtuális merevlemezek a különböző tárfiókok között nagyobb SAP-rendszeren elkerülje a tárfiókok korlátairól. Ez akkor fárasztó munka, ha a több száz virtuális gépeket, amelyek több mint Kaliforniában VHD-k beszélünk.
 
-Mivel az Azure standard szintű tárolást olyan adatbázis-kezelő telepítésekhez SAP számítási feladatok együtt nem ajánlott, referenciák és az Azure Standard tárolási javaslatok korlátozva, ebben a rövid [cikk](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)
+Standard szintű storage használatával egy SAP számítási feladatok együtt DBMS-környezetekben nem ajánlott, mert a hivatkozásokat, és a standard szintű tárolóba javaslatok korlátozva, ebben a rövid [cikk](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)
 
-Annak érdekében, hogy a tervezési és üzembe helyezése a VHD-k különböző Azure-tárfiókok között az adminisztratív munka, a Microsoft bevezette úgynevezett [Managed Disks](https://azure.microsoft.com/services/managed-disks/) 2017-ben. A felügyelt lemezek az Azure standard szintű Storage, valamint az Azure Premium Storage érhetők el. Nem felügyelt lemezek listája például a főbb előnyei a Managed Disks képest:
+A tervezési és üzembe helyezése a VHD-k különböző Azure storage-fiókok teljes adminisztratív munka elkerülése érdekében a Microsoft bevezette [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) 2017-ben. A felügyelt lemezek a standard storage és a premium storage érhetők el. A felügyelt lemezek nem felügyelt lemezek képest főbb előnyei a következők:
 
-- Az Azure Managed Disks esetében elosztja a különböző virtuális merevlemezeket különböző storage-fiókok automatikus üzembe helyezéskor, és ezáltal elkerülhető az adatmennyiség, i/o-teljesítményt és IOPS tekintetében az Azure Storage-fiók korlátairól lenyomásával.
-- Felügyelt lemezek használatával Azure Storage van teljesítésére az Azure rendelkezésre állási csoportok a fogalmait, és az adott helyez üzembe a virtuális alaplemez és a egy virtuális gép csatlakoztatott lemez különböző hibatűrési és frissítési tartományokban, ha a virtuális gép Azure rendelkezésre állási csoport része.
+- Felügyelt lemezek Azure elosztja a különböző virtuális merevlemezeket különböző storage-fiókok automatikus üzembe helyezéskor. Ily módon a tárfiók korlátozza az adatmennyiség, i/o-teljesítményt, és iops-érték nem találati.
+- Felügyelt lemezeket használ, az Azure Storage figyelembe veszi az Azure rendelkezésre állási készlet fogalmakat. Ha a virtuális gép az Azure rendelkezésre állási csoport része, a virtuális alaplemez és a egy virtuális gép csatlakoztatott lemez a rendszer üzembe helyezi a különböző hibatűrési és frissítési tartományokban.
 
 
 > [!IMPORTANT]
-> Adja meg az Azure Managed Disks előnyeit, erősen ajánlott az Azure Managed Disks használata az adatbázis-kezelő központi telepítések és SAP üzemelő példányok az általános.
+> Adja meg az Azure Managed Disks előnyét, javasoljuk, hogy az Azure Managed Disks szolgáltatást az adatbázis-kezelő központi telepítések és az SAP-környezetekhez általában.
 >
 
-Konvertálás nem felügyeltről felügyelt lemezzé, tekintse meg a cikkeket:
+Konvertálás nem felügyeltről felügyelt lemezzé, tekintse meg:
 
-- [Windows rendszerű virtuális gép átállítása nem felügyelt lemezekről felügyelt lemezekre](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks)
-- [Linux rendszerű virtuális gép átalakítása nem felügyeltről felügyelt a managed Disks szolgáltatásba](https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks)
+- [Windows virtuális gép átalakítása nem felügyeltről felügyelt felügyelt lemezekre](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks).
+- [Nem felügyelt lemezek Linux rendszerű virtuális gép konvertálása a felügyelt lemezek](https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks).
 
 
 ### <a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>Virtuális gépek és az adatlemezek gyorsítótárazás
-Ha csatlakoztatja a virtuális lemezek, kiválaszthatja a i/o-forgalom a virtuális gép és az Azure storage-ban található lemezek közötti gyorsítótárba kerüljenek-e. Az Azure Standard és prémium szintű Storage két különböző technológiák használata az ilyen típusú gyorsítótár.
+Ha csatlakoztatja a virtuális lemezek, kiválaszthatja a i/o-forgalom a virtuális gép és az Azure storage-ban található lemezek között van gyorsítótárba kerüljenek-e. Standard és prémium szintű storage két különböző technológiák használata, az ilyen típusú gyorsítótár.
 
-Az alábbi javaslatok a standard szintű adatbázis-kezelő feltételezzük következő i/o-jellemzőkkel:
+Az alábbi javaslatok a standard szintű adatbázis-kezelő azt feltételezik következő i/o-jellemzőkkel:
 
-- Többnyire az adatfájlokat az adatbázis elleni munkaterhelés írásvédett. Ezek olvasási teljesítmény kritikus fontosságú az adatbázis-kezelő rendszer
-- Az ellenőrzőpontok vagy állandó adatfolyam alapú adatlöketekkel bekövetkezik szemben az adatfájlok írása. Mindazonáltal átlagolva a nap, az írási műveletek olyan kisebb, mint az olvasások. Olvasott adatok fájlokból leváló ezek írási műveletek aszinkron, és be minden felhasználói tranzakció nem tárolnak.
-- A tranzakcióból alig minden olvasási naplózás vagy a visszaállítási fájlok vannak. Kivételek nagyméretű i/o akkor, ha a tranzakciós napló biztonsági mentések végrehajtásához.
-- A tranzakció vagy ismétlés naplófájlok fő terhelés írások. Számítási feladat jellegétől függ rendelkezhet i 4 KB-os vagy más esetben i/o-méret 1 MB vagy annál kisebb.
-- A rendszer megőrzi a lemezen egy megbízható módon kell az összes írási művelet
+- Többnyire az adatfájlokat az adatbázis elleni olvasási munkaterhelés. Ezek olvasási teljesítmény kritikus fontosságú az adatbázis-kezelő rendszer is.
+- Ellenőrzőpontokat vagy állandó adatfolyam alapú adatlöketekkel szemben az adatfájlok írása történik. Naponta átlagolva, olvasási-nál kevesebb írások vannak. Leváló olvasási adatokat fájlokból e írási műveletek aszinkron, és tartsa be a felhasználói tranzakciókat.
+- A tranzakcióból alig minden olvasási naplózás vagy a visszaállítási fájlok vannak. Kivétel a nagy i/o tranzakciónapló biztonsági mentései végrehajtásakor.
+- A tranzakció vagy ismétlés naplófájlok fő terhelés írások. A számítási feladat jellegétől függ rendelkezhet i 4 KB-os, vagy a más esetekben, az i/o-méret 1 MB vagy annál kisebb.
+- Az összes írási művelet a lemezen egy megbízható módon kell őrizhető meg.
 
-Az Azure standard szintű Storage a lehetséges gyorsítótár-típusok a következők:
+A standard szintű storage a lehetséges gyorsítótár típusok a következők:
 
 * None
 * Olvasás
 * Olvasás/Írás
 
-Annak érdekében, hogy egységes és determinisztikus teljesítmény eléréséhez, állítsa be a gyorsítótárazás az Azure standard szintű tárolást tartalmazó összes lemezek **DBMS kapcsolódó adatok fájlokat napló vagy visszaállíthatja a fájlokat, és hely a tábla "NONE"**. A gyorsítótárazás az alap VHD-t az alapértelmezett maradhat.
+Egységes és determinisztikus teljesítmény eléréséhez, állítsa be, a gyorsítótárazás a standard szintű storage esetében a fájlokat az adatbázis-kezelő kapcsolatos adatokat tartalmazó összes lemez jelentkezik, és vonja vissza a fájlok és a hely a tábla **NONE**. A gyorsítótárazás az alap VHD-t az alapértelmezett maradhat.
 
-Az Azure Premium Storage esetében a következő gyorsítótárazási lehetőségek érhetők el:
+A premium storage a következő gyorsítótárazási lehetőségek érhetők el:
 
 * None
 * Olvasás
 * Olvasás/írás
-* Nincs + Írásgyorsító (csak az Azure M sorozatú virtuális gépek esetén)
-* Olvasás + Írásgyorsító (csak az Azure M sorozatú virtuális gépek esetén)
+* Nincs + Írásgyorsító, amely csak az Azure M sorozatú virtuális gépek
+* Olvasás + Írásgyorsító, amely csak az Azure M sorozatú virtuális gépek
 
-Az Azure Premium Storage esetében javasoljuk, hogy kihasználhatja **olvasási gyorsítótárazás az adatfájlok** az SAP adatbázis és a kiválasztott **naplófájlokhoz, a lemezek gyorsítótárazása**.
+A premium storage, javasoljuk, hogy használjon **olvasási gyorsítótárazás az adatfájlok** az SAP adatbázis-, és válassza a **naplófájlokhoz, a lemezek gyorsítótárazása**.
 
-M-sorozat üzemelő példánya esetében javasoljuk a DBMS üzembe helyezési Azure Write Accelerator használandó. Részletekért, korlátozások és központi telepítését az Azure Írásgyorsító tekintse meg a dokumentum [Írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
+M-sorozat üzemelő példánya esetében javasoljuk, hogy a DBMS üzembe helyezési Azure Write Accelerator használjon. Tekintse meg a részleteket, korlátozások és központi telepítését az Azure Írásgyorsító, [Írásgyorsító engedélyezése](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
 
 
-### <a name="azure-non-persistent-disks"></a>Az Azure nem állandó lemezek
-Azure virtuális gépek nem állandó lemezt is kínálnak, egy virtuális gép üzembe helyezése után. Esetén a virtuális gép újraindítását az adott meghajtókat minden tartalom törlődik. Ennélfogva a tekintve, hogy az adatfájlok és az adatbázisok napló vagy visszaállíthatja a fájlokat semmilyen körülmények között találhatók, ezek nem megőrzött meghajtókon. Van néhány adatbázist, a kivételek, ezek a meghajtók nem megőrzött tempdb és ideiglenes táblahelyeket alkalmas lehet. Azonban ne az adott meghajtókat használja A-sorozatú virtuális gépek, mivel ezek nem megőrzött meghajtók korlátozott, hogy a Virtuálisgép-család átviteli. További részletekért olvassa el a cikket [ismertetése az ideiglenes meghajtó Windows-beli virtuális gépeken az Azure-ban](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+### <a name="azure-nonpersistent-disks"></a>Az Azure nonpersistent lemezek
+Az Azure virtuális gépek ajánlat nonpersistent lemezek, virtuális gép üzembe helyezése után. A virtuális gép újraindítása esetén az adott meghajtókat minden tartalom törli. Ez egy tekintve, hogy az adatfájlok és az adatbázisok napló- és ismét: fájlok semmilyen körülmények között találhatók, ezek típusoszlopok meghajtókon. Előfordulhat, kivételek bizonyos adatbázisok esetén, ahol ezek a típusoszlopok meghajtók tempdb és ideiglenes táblahelyeket alkalmas lehet. Ne használja A-sorozatú virtuális gépek adott meghajtókat, mivel ezek állandó meghajtók korlátozott, hogy a Virtuálisgép-család átviteli. 
+
+További információkért lásd: [megismerheti az Azure-beli Windows virtuális gépeken az ideiglenes meghajtó](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/).
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Egy Azure virtuális Gépen a D:\ meghajtón egy nem megőrzött meghajtót, az Azure-beli számítási csomópont által az egyes helyi lemezek biztonsági mentése. Mivel a szolgáltatás nem megőrzött, akkor ez azt jelenti, hogy a tartalom a D:\ meghajtóra végzett módosítások elvész, amikor a virtuális gép újraindul. "Végrehajtott módosítások", például a tárolt fájlok, hozta létre, könyvtárak, telepített alkalmazások stb.
+> Egy Azure-beli virtuális gépen a D meghajtón a típusoszlopok meghajtó, az Azure-beli számítási csomópont által az egyes helyi lemezek biztonsági mentése. Mert az állandó, a tartalmat a D meghajtón végzett módosítások elvesznek, ha a virtuális gép újraindul. A változások a következők voltak tárolt fájlok létrehozott címtárakat és a telepített alkalmazások.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Linux rendszerű Azure virtuális gépek automatikusan, amely az Azure számítási csomópont helyi lemezek által támogatott nem megőrzött meghajtó /mnt/resource meghajtót csatlakoztatni. Mivel a szolgáltatás nem megőrzött, akkor ez azt jelenti, hogy /mnt/resource tartalom végzett módosítások elvesznek, ha a virtuális gép újraindul. Végrehajtott módosítások, például a tárolt fájlok, hozta létre, könyvtárak, telepített alkalmazások stb.
+> Linux rendszerű Azure virtuális gépek automatikusan, amely az Azure számítási csomópont helyi lemezek által támogatott típusoszlopok meghajtó /mnt/resource meghajtót csatlakoztatni. Mert az állandó, a/mnt/resource tartalmak végzett módosítások elvesznek, ha a virtuális gép újraindul. A változások a következők voltak tárolt fájlok létrehozott címtárakat és a telepített alkalmazások.
 >
 >
 
@@ -236,108 +246,125 @@ Azure virtuális gépek nem állandó lemezt is kínálnak, egy virtuális gép 
 
 
 ### <a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>A Microsoft Azure Storage rugalmasságot
-A Microsoft Azure Storage tárolja az alap virtuális merevlemez (az operációs rendszer) és a csatlakoztatott lemezek vagy a Blobok legalább három külön tárolócsomópontok. Ez a tény helyi redundáns tárolást (LRS) nevezzük. LRS a alapértelmezett minden típusú tároló az Azure-ban.
+Legalább három külön tárolócsomópontok az alap VHD-OS és a csatlakoztatott lemezek és a blobok, a Microsoft Azure Storage tárolja. A tárolás típusát a helyileg redundáns tárolás (LRS) nevezzük. LRS az alapértelmezett érték az Azure-on minden alkalmazástípus esetében.
 
-Többféleképpen is további redundancia, olyan minden cikk [Azure Storage replikáció](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
-
-> [!NOTE]
->Kezdődően az Azure Premium Storage, amely az adatbázis-kezelő virtuális gépek és lemezek, adatbázis és a napló vagy visszaállíthatja a fájlokat tároló tárolási ajánlott típus, az egyetlen elérhető módszer esetén az LRS. Ennek eredményeképpen kell konfigurálása az adatbázis módszerek, például az SQL Server Always On, Oracle Data Guard vagy HANA Rendszerreplikáció adatbázis replikálása egy másik Azure-régióban, vagy egy másik Azure rendelkezésre állási zónában engedélyezéséhez.
-
+Nincsenek más redundancia módszereket. További információkért lásd: [Azure Storage replikáció](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
 
 > [!NOTE]
-> A DBMS üzembe helyezési elérhető az Azure standard szintű Storage, Georedundáns tárolás használata nem ajánlott, mert teljesítményt, és nem fogadja el az írási sorrend között különböző virtuális merevlemezek, virtuális géphez csatolt. A tény nem teljesítésére az írási sorrend között különböző virtuális merevlemezek, a magas lehetséges, ha az adatbázis és a napló vagy visszaállíthatja a fájlokat a forrás virtuális gép oldalán (adott esetben többnyire) több virtuális merevlemezek vannak elosztva a replikációs cél oldalon inkonzisztens adatbázisok végül viseli.
+>A Premium storage szolgáltatás adatbázis-kezelő virtuális gépek és a lemezeken, amelyeket az adatbázis és a naplófájlok tárolásához, majd ismételje meg a fájlok tárolási ajánlott típusát. A premium storage csak akkor érhető el a redundancia metódus LRS. Ennek eredményeképpen kell adatbázis replikálása egy másik Azure régióban vagy a rendelkezésre állási zónában történő engedélyezéséhez adatbázis módszerek konfigurálása. SQL Server Always On Oracle Data Guard és HANA-Rendszerreplikálást adatbázis módszerekre.
+
+
+> [!NOTE]
+> A DBMS üzembe helyezési a standard szintű tárolóra vonatkozó georedundáns tárolás (GRS) használata nem ajánlott. GRS jelentősen befolyásolja a teljesítményt, és nem fogadja el az írási sorrend különböző virtuális merevlemezek, virtuális géphez csatolt között. A replikációs cél oldalon nem érvényesítenie a az írási sorrend között különböző virtuális merevlemezek potenciálisan inkonzisztens adatbázisok vezet. Ebben a helyzetben következik be, ha adatbázis és a napló és a visszaállítási vannak elosztva több VHD-k, mint általában a helyzet, a forrás virtuális gép oldalán.
 
 
 
 ## <a name="vm-node-resiliency"></a>A virtuális gép csomópont rugalmasságát
-Az Azure Platform számos különböző SLA-kat kínál a virtuális gépek. A pontos részleteit a legújabb kiadásával található [virtuális gépekre vonatkozó SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Mivel az adatbázis-kezelő réteg része általában egy rendelkezésre állási kritikus fontosságú SAP-rendszerhez, hogy saját maga az rendelkezésre állási csoportok, a rendelkezésre állási zónák és a karbantartási események ismernie kell. Ezek a fogalmak a cikkek van [Azure-beli Windows virtuális gépek rendelkezésre állásának kezelése](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) és [az Azure-ban Linux rendszerű virtuális gépek rendelkezésre állásának kezelése](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability).
+Az Azure-beli virtuális gépek több különböző SLA-kat kínál. További információkért tekintse meg a legújabb kiadásával [virtuális gépekre vonatkozó SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). Az adatbázis-kezelő réteg fontos általában rendelkezésre állás az SAP-rendszerhez, mert a rendelkezésre állási csoportok, a rendelkezésre állási zónák és a karbantartási események kell. További információ ezekről a fogalmakról: [Azure-beli Windows virtuális gépek rendelkezésre állásának kezelése](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) és [az Azure-ban Linux rendszerű virtuális gépek rendelkezésre állásának kezelése](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability).
 
-Éles adatbázis-kezelő forgatókönyvek esetén az SAP számítási feladatok minimális javasoljuk, hogy:
+Az SAP számítási feladatok az éles adatbázis-kezelő forgatókönyvek esetén a minimális javaslat, hogy:
 
-- Egy külön rendelkezésre állási csoportot az azonos Azure-régióban található virtuális gépek üzembe helyezése.
-- E két virtuális gépet az azonos Azure virtuális hálózat futtatná, és lenne hálózati adapterek kapcsolt kívül ugyanannyi alhálózatot.
+- Két virtuális gépek üzembe helyezése egy külön rendelkezésre állási ugyanazon Azure-régióban.
+- E két virtuális gép futtatása az azonos Azure virtuális hálózatban és hálózati adapterrel kívül ugyanannyi alhálózatot kapcsolt.
 - Adatbázis módszerekkel tartsa a készenléti a második virtuális géppel. Módszerek az SQL Server Always On, a Oracle Data Guard vagy a HANA-Rendszerreplikálást lehet.
 
-Emellett egy harmadik egy másik Azure-régióban található virtuális gép üzembe helyezése és az azonos adatbázis módszerek használatával adjon meg egy aszinkron replika egy másik Azure-régióban.
+Is telepíthet egy külső virtuális Gépet egy másik Azure-régióban és az azonos adatbázis módszerek használatával adjon meg egy aszinkron replika egy másik Azure-régióban.
 
-Azure rendelkezésre állási csoportok beállításához módon mutatják be, ez [oktatóanyag](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets).
+Az Azure rendelkezésre állási csoportok beállítása a további információkért lásd: [ebben az oktatóanyagban](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets).
 
 
 
-## <a name="azure-network-considerations"></a>Az Azure a hálózatokkal kapcsolatos szempontok
-A nagyméretű SAP üzemelő példánya esetében javasoljuk, hogy használja a tervezet-, [Azure Virtual Datacenter](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) virtuális hálózatok közötti konfigurációs és az engedélyek és a szerepkör a hozzárendelések a szervezet különböző részeit.
+## <a name="azure-network-considerations"></a>Azure-beli hálózati megfontolások
+A nagyméretű SAP üzemelő példánya esetében használja a tervezet- [Azure Virtual Datacenter](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter). Ezzel a virtuális hálózati konfiguráció és az engedélyek és a szerepkör-hozzárendelések a szervezet különböző részeit.
 
-Nincsenek kívül rendszereit több száz szabványosította többféle ajánlott:
+Ajánlott eljárások rendszereit több száz eredménye:
 
-- Az SAP-alkalmazás (ok) hoz van üzembe helyezve, nem rendelkezik hozzáféréssel az internethez.
-- Az adatbázis, virtuális gépek futnak az alkalmazásrétegre megegyező virtuális hálózatba.
-- A virtuális gépek a virtuális hálózaton belül egy privát IP-cím statikus foglalási rendelkezik. Tekintse meg a cikket [IP-címtípusokat és foglalási módszereket az Azure-ban](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) hivatkozásként van listázva.
-- Az adatbázis-kezelő virtuális gépek útválasztási korlátozások **nem** rendelkező tűzfal van telepítve a helyi adatbázis-kezelő virtuális gépeken. Ehelyett forgalom-útválasztást van definiálva a [Azure hálózati biztonsági csoportok (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview)
-- Megadhat, és az adatbázis-kezelő virtuális gép forgalom elkülönítése, a virtuális gép rendeljen hozzá különböző hálózati adapterein. Ha minden hálózati adapter egy másik IP-címmel rendelkezik, és minden hálózati adapter egy hozzárendelt egy másik VNet-alhálózathoz, amely különböző NSG-szabályok újra rendelkezik. Ne feledje, hogy az elkülönítés vagy a hálózati forgalom-útválasztás csak egy mérték, és nem teszi lehetővé a hálózati átviteli sebességet a kvóták beállítását.
+- Az SAP-alkalmazást helyezünk üzembe a virtuális hálózat nem rendelkezik internet-hozzáférés.
+- Az adatbázis, virtuális gépek futtatása az alkalmazásrétegre ugyanazon a virtuális hálózaton.
+- A virtuális gépek a virtuális hálózaton belül egy privát IP-cím statikus foglalási rendelkezik. További információkért lásd: [IP-címtípusokat és foglalási módszereket az Azure-ban](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm).
+- Az adatbázis-kezelő virtuális gépek útválasztási korlátozások *nem* rendelkező tűzfal van telepítve a helyi adatbázis-kezelő virtuális gépeken. Ehelyett forgalom-útválasztást van definiálva [hálózati biztonsági csoportok (NSG-k)](https://docs.microsoft.com/azure/virtual-network/security-overview).
+- Külön, és az adatbázis-kezelő virtuális gép forgalom elkülönítése, rendelje hozzá a virtuális gép különböző hálózati adapterein. Minden hálózati adapter egy másik IP-címet kap, és minden hálózati adapter van rendelve egy másik virtuális hálózat alhálózatához. Minden alhálózati rendelkezik a különböző NSG-szabályokat. Az elkülönítés vagy a hálózati forgalom elkülönítése mérőszáma útválasztás. A hálózati átviteli sebesség kvóták beállítása nem használatos.
 
 > [!NOTE]
-> Segítségével Azure azt jelenti, hogy statikus IP-címeket kell rendel az egyes Vnic. A vendég operációs rendszeren belül a statikus IP-címek nem egy virtuális hálózati adaptert kell hozzárendelése. Egyes Azure-szolgáltatásokhoz hasonlóan az Azure Backup szolgáltatás támaszkodhat, hogy legalább az elsődleges virtuális hálózati adapter van beállítva, a DHCP és a statikus IP-címeket. Lásd még a dokumentum [elhárítása Azure virtuális gépek biztonsági mentésének](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Ha több statikus IP-cím hozzárendelése virtuális Géphez van szüksége, több virtuális hálózati adapter hozzárendelése virtuális Géphez szeretné.
+> Azure-on keresztül statikus IP-címet rendelni azt jelenti, hogy hozzárendelhetők a virtuális hálózati adapterekhez. Statikus IP-címek belül a vendég operációs rendszer nem rendel hozzá egy virtuális hálózati adapterhez. Egyes Azure-szolgáltatásokhoz hasonlóan az Azure Backup támaszkodhat, hogy legalább az elsődleges virtuális hálózati adapter van beállítva, a DHCP és a statikus IP-címeket. További információkért lásd: [elhárítása Azure virtuális gépek biztonsági mentésének](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Több statikus IP-cím hozzárendelése virtuális Géphez, több virtuális hálózati adapterrel kell rendelni egy virtuális Gépet.
 >
 
 
 > [!IMPORTANT]
-> Kívül funkciókat, de további fontos kívül teljesítménybeli megfontolások miatt nem támogatott konfigurálása [Azure hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) a az SAP-alkalmazás és a egy SAP NetWeaver DBMS rétege közötti kommunikációs útvonal Hybris vagy S/4HANA-alapú SAP-rendszerhez. A SAP alkalmazás réteget és az adatbázis-kezelő réteg közötti kommunikáció egy közvetlen van szükség. A korlátozás nem tartalmaz [Azure Alkalmazásbiztonsági és NSG-szabályok](https://docs.microsoft.com/azure/virtual-network/security-overview) mindaddig, amíg ezek Alkalmazásbiztonsági és NSG-t szabályok engedélyezik a közvetlen kommunikáció. További forgatókönyvek, ahol az nva-k nem támogatottak, amelyek Linux támasztja fürtcsomópontokat és SBD eszközök leírtak szerint az Azure virtuális gépek közötti kommunikációs útvonalak vannak [magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure virtuális gépeken az SAP-alkalmazások](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Vagy a kommunikációs elérési utak között az Azure virtuális gépek és a Windows Server SOFS akár leírtak szerint [egy SAP ASCS/SCS példányhoz Windows feladatátvevő fürtre a fürt az Azure-beli fájlmegosztás használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Kommunikációs útvonalak is nva-t egyszerűen duplán két kommunikációs partnerek között a hálózati késést, korlátozhatja a kritikus útvonalakat az SAP alkalmazásrétegre és az adatbázis-kezelő réteg közötti átviteli sebesség. Bizonyos esetekben megfigyelhető az ügyfelekkel az nva-k okozhat azokban az esetekben, ahol a Linux támasztja fürtcsomópontok közti kommunikációra kell kommunikálniuk nva-n keresztül SBD eszközére sikertelen támasztja Linux-fürtöket.
+> Konfigurálás [hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) az SAP-alkalmazás és az adatbázis-kezelő réteg az olyan SAP NetWeaver - közötti kommunikációs útvonal, a Hybris-, vagy az SAP S/4HANA-alapú rendszer nem támogatott. Ez a korlátozás a teljesítmény és okból is. A SAP alkalmazás réteget és az adatbázis-kezelő réteg közötti kommunikációs útvonal egy közvetlen kell lennie. A korlátozás nem tartalmazza a [alkalmazásbiztonsági csoport (Alkalmazásbiztonsági) és NSG-szabályok](https://docs.microsoft.com/azure/virtual-network/security-overview) Ha ezen Alkalmazásbiztonsági és NSG-t szabályok lehetővé teszik a közvetlen kommunikációt elérési útja. 
+>
+> Más esetekben, ahol nem támogatottak a hálózati virtuális berendezések szerepelnek:
+>
+> * Azure virtuális gépek, amelyek Linux támasztja közötti kommunikációs útvonalak fürt csomópontjai és SBD eszközök leírtak szerint [magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server, SAP-alkalmazások az Azure Virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse).
+> * Azure virtuális gépek és a Windows Server kibővített fájlkiszolgáló (SOFS) közötti kommunikációs útvonalak beállítása akár leírtak szerint [egy SAP ASCS/SCS példányhoz Windows feladatátvevő fürtre a fürt az Azure-beli fájlmegosztás használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). 
+>
+> Hálózati virtuális készülékekre történő irányításához kommunikációs útvonalak is könnyen double két kommunikációs partnerek között a hálózati késést. Akkor is korlátozhatja a kritikus útvonalakat az SAP alkalmazásrétegre és az adatbázis-kezelő réteg közötti átviteli sebesség. Néhány forgatókönyvet hálózati virtuális berendezések okozhat sikertelen támasztja Linux-fürtöket. Ezek olyan esetekben, ahol a Linux támasztja fürtcsomópontok közti kommunikációra kommunikációhoz SBD eszközére egy hálózati virtuális készüléken keresztül.
 >
 
 > [!IMPORTANT]
-> Egy másik Tervező, amely **nem** az SAP alkalmazásrétegre és az adatbázis-kezelő réteg elkülönítése különböző Azure virtuális hálózatokra, amelyek nem támogatott a [társviszonyba](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) egymással. Javasoljuk, hogy elkülönítse a SAP alkalmazás réteg és a egy Azure virtuális hálózatban lévő alhálózat használatával más Azure virtuális hálózatok használata helyett az adatbázis-kezelő réteg. Ha nem kívánja a javasolt, és ehelyett elkülönítse a két réteg más virtuális hálózatban, a két virtuális hálózat kell lennie [társviszonyba](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Vegye figyelembe, hogy a hálózati forgalmat két közötti [társviszonyban](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) Azure virtuális hálózatok az adatátviteli költségek tartoznak. Több terabájt, a SAP alkalmazás réteg és a DBMS réteg között cserélődő található jelentős adatmennyiség az jelentős költségekkel jár is összegyűjthetők meg, ha az SAP alkalmazásréteg és adatbázis-kezelő réteg van elkülönített két Azure virtuális társhálózatok között.
+> Egy másik Tervező, amely a *nem* az SAP alkalmazásrétegre és az adatbázis-kezelő réteg elkülönítése különböző Azure virtuális hálózatokra, amely nem támogatott a [társviszonyba](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) egymással. Azt javasoljuk, hogy Ön elkülönítse az SAP alkalmazásréteg és adatbázis-kezelő réteg helyett az Azure virtuális hálózatban lévő alhálózat használatával más Azure virtuális hálózatok használatával. 
+>
+> Ha nem kívánja a javasolt, és ehelyett elkülöníthető a két réteg eltérő virtuális hálózatokra, a két virtuális hálózat lehet [társviszonyba](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). 
+>
+> Vegye figyelembe, hogy a hálózati forgalmat két közötti [társviszonyba](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) adatátvitel költségeit az Azure virtuális hálózatok. A SAP alkalmazás réteget és az adatbázis-kezelő réteg között cseréje hatalmas adatmennyiséget, amely több terabájt áll. Ha az SAP alkalmazásréteg és adatbázis-kezelő réteg két Azure virtuális társhálózatok között elkülönülnek, felhalmozhat jelentős költségekkel jár.
 
-Két virtuális gépet az éles üzemben futó DBMS üzembe helyezési belüli Azure rendelkezésre állási csoport és a egy külön útválasztási az SAP-alkalmazási rétegre és a felügyeleti és a műveletek forgalmat a két adatbázis-kezelő virtuális gépekhez használja, a nyers diagram jelenne meg:
+Két virtuális gépet az éles üzemben futó DBMS üzembe helyezési belüli Azure rendelkezésre állási beállítása. Az SAP-alkalmazási rétegre és a felügyeleti és műveletek forgalmat a két adatbázis-kezelő virtuális gép külön útválasztási is használhatja. Lásd a következő képet:
 
 ![Két virtuális gépet, a két alhálózat ábrája](./media/virtual-machines-shared-sap-deployment-guide/general_two_dbms_two_subnets.PNG)
 
 
-### <a name="azure-load-balancer-for-redirecting-traffic"></a>Forgalom átirányítása az Azure load balancerben
-A Funkciók, például SQL Server Always On vagy a HANA System replikációs használt privát virtuális IP-címek használatát egy Azure Load Balancer konfigurálása szükséges. Az Azure Load Balancer is képes meghatározni az adatbázis-kezelő aktív csomópontra, és átirányítja a forgalmat, kizárólag az aktív adatbázisba csomópont a mintavételi portokon keresztül. Az adatbázis-csomópont feladatátvétel esetén nincs szükség a SAP alkalmazás újrakonfigurálása. Ehelyett a leggyakrabban használt SAP-alkalmazások architektúrák újracsatlakozik a privát virtuális IP-cím alapján. Az Azure load balancer csapattagok pedig nyugodtabban aludhatnak a csomópont feladatátvételi reagált, a második csomópont a magánhálózati virtuális IP-cím alapján a forgalom átirányításával.
+### <a name="use-azure-load-balancer-to-redirect-traffic"></a>Forgalom átirányítása az Azure Load Balancer használatával
+Az a Funkciók, például az SQL Server Always On vagy a HANA-Rendszerreplikálást használt privát virtuális IP-címek használatához az Azure load balancer konfigurálása. A load balancer mintavételi portokat határozza meg az adatbázis-kezelő aktív csomópontját, és átirányítja a forgalmat, kizárólag az aktív adatbázisba csomópont használ. 
 
-Az Azure két különböző kínál [betölteni a terheléselosztó termékváltozatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). Egy alapszintű vagy standard Termékvátozatú. Hacsak nem szeretné üzembe helyezés több Azure-beli rendelkezésre állási zónák, részletes hajtja végre az alapszintű load balancer Termékváltozat.
+Az adatbázis-csomópont feladatátvitel történik, ha nincs az SAP alkalmazás újrakonfigurálása szükség. Ehelyett a leggyakrabban használt SAP architektúrák újból a privát virtuális IP-cím alapján. A load balancer, a csomópont feladatátvételhez reagál, a második csomópont a magánhálózati virtuális IP-cím alapján a forgalom átirányításával.
 
-Az adatbázis-kezelő virtuális gépek és az SAP alkalmazásrétegre mindig keresztül irányítja át az Azure load balancer mindig közötti adatforgalom? A válasz attól függ, hogyan konfigurálja a terheléselosztó. Ezen a ponton az időben a bejövő forgalom az adatbázis-kezelő virtuális gép mindig keresztül lesznek irányítva az Azure load balancert. A kimenő forgalmat útvonal az adatbázis-kezelő virtuális gép virtuális gép az Azure load Balancer konfigurációjától függ az alkalmazásrétegre. A terheléselosztó lehetővé teszi egy, a DirectServerReturn. Ha ez a lehetőség van konfigurálva, az adatbázis-kezelő virtuális gépről az SAP alkalmazásrétegre irányított forgalom lesz **nem** átirányíthatók az Azure load balanceren keresztül. Ehelyett azt közvetlenül halad át az alkalmazásrétegre. Ha DirectServerReturn nincs konfigurálva, a visszatérő forgalom, a SAP alkalmazás réteghez áthalad az Azure load balancer
+Az Azure két különböző kínál [betölteni a terheléselosztó termékváltozatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview): egy alapszintű vagy standard Termékvátozatú. Hacsak nem szeretné telepíteni az Azure rendelkezésre állási zónák között, pontosan hajtja végre az alapszintű load balancer Termékváltozat.
 
-Ajánlott, hogy az SAP-alkalmazási rétegre és a két réteg között a hálózati késés csökkentése érdekében az adatbázis-kezelő réteg között elhelyezett Azure load Balancer terheléselosztók együtt DirectServerReturn konfigurálása
+Az adatbázis-kezelő virtuális gépek és az SAP alkalmazásrétegre mindig a terheléselosztón keresztül irányítja folyamatosan közötti adatforgalom? A válasz attól függ, hogyan konfigurálja a terheléselosztó. 
 
-Ilyen konfiguráció beállítása például közzé van téve az SQL server mindig a körül [Ez a cikk](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener).
+Jelenleg a bejövő forgalom az adatbázis-kezelő virtuális gép mindig irányítja a terheléselosztón keresztül. A kimenő forgalmat útvonal az adatbázis-kezelő virtuális gép virtuális Gépet a terheléselosztó a konfiguráció függ az alkalmazásrétegre. 
 
-Ha közzétett GitHub JSON-sablonok használata az Azure-ban az SAP-infrastruktúra környezetekhez hivatkozásként van listázva, kell-e tanulmánya ez [sablon egy SAP 3 szintű rendszer](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md). Ez a sablon akkor is is vizsgálja a megfelelő beállításokat az Azure load Balancer.
+A terheléselosztó lehetővé teszi egy, a DirectServerReturn. Ha ez a lehetőség van konfigurálva, van-e az adatbázis-kezelő virtuális gépről az SAP alkalmazásrétegre irányított forgalom *nem* a terheléselosztón keresztül irányítja. Ehelyett azt közvetlenül kerül az alkalmazásrétegre. Ha DirectServerReturn nincs konfigurálva, a visszatérő forgalom, a SAP alkalmazás réteghez továbbítódik a terheléselosztón keresztül.
+
+Azt javasoljuk, hogy DirectServerReturn konfigurál, hogy legyenek elhelyezve a SAP alkalmazás réteget és az adatbázis-kezelő réteg között terheléselosztókhoz együtt. Ez a konfiguráció csökkenti a hálózati késést a két réteg között.
+
+Egy példa bemutatja, hogyan állítsa be ezt a konfigurációt az SQL Server Always On: [Always On rendelkezésre állási csoportokra vonatkozó ILB figyelő konfigurálása az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener).
+
+Ha közzétett GitHub JSON-sablonok referenciaként az SAP az Azure-beli infrastruktúra-megoldásokat használ, ez tanulmánya [sablon egy SAP 3 szintű rendszer](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md). Ez a sablon is megjelenik a megfelelő beállításokat a terheléselosztóhoz.
 
 ### <a name="azure-accelerated-networking"></a>Az Azure gyorsított hálózatkezelés
-Annak érdekében, hogy további csökkentése érdekében az Azure virtuális gépek közötti hálózati késés, erősen javasoljuk, hogy válassza ki a lehetőséget a [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) SAP számítási feladatok Azure virtuális gépek telepítésekor. Különösen a az SAP alkalmazásrétegre és az SAP DBMS réteg.
+További csökkentése érdekében az Azure virtuális gépek közötti hálózati késés, azt javasoljuk, hogy a kiválasztott [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Azure virtuális gépeken futó SAP számítási feladat, különösen az SAP alkalmazásrétegre és az SAP DBMS-réteget a központi telepítésekor, használja azt.
 
 > [!NOTE]
-> Nem minden Virtuálisgép-típusokat támogatja a gyorsított hálózatkezelés. A hivatkozott cikk a virtuális gépek típusai, amely támogatja a gyorsított hálózatkezelés van listázása.
+> Nem minden Virtuálisgép-típusokat támogatja a gyorsított hálózatkezelés. Az előző cikkben, amely támogatja a gyorsított hálózatkezelés virtuális gép típusok listája.
 >
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> A Windows tekintse meg [hozzon létre egy Windows virtuális gép gyorsított hálózatkezelésű](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) fogalmakat és a módot a gyorsított hálózatkezelésű virtuális gépek üzembe helyezése
+> A gyorsított hálózatkezelés a Windows virtuális gépek üzembe helyezése kapcsolatban lásd: [hozzon létre egy Windows virtuális gép gyorsított hálózatkezelésű](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
 >
 > ![Linux][Logo_Linux] Linux
 >
-> A Linux, olvassa el a cikket [hozzon létre egy Linux rendszerű virtuális gép gyorsított hálózatkezelésű](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) annak érdekében, hogy a Linux-disztribúció részletekért.
+> További információ a Linux-disztribúció: [hozzon létre egy Linux rendszerű virtuális gép gyorsított hálózatkezelésű](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).
 >
 >
 
 - - -
 
 > [!NOTE]
-> SUSE, a Red Hat és az Oracle Linux esetében a gyorsított hálózatkezelés az újabb verziókban is támogatja. Korábbi kiadások, mint az SLES 12 SP2 vagy RHEL 7.2 nem támogatnak az Azure gyorsított hálózatkezelés
+> SUSE, a Red Hat és az Oracle Linux esetében a gyorsított hálózatkezelés az újabb verziókban is támogatja. Korábbi kiadások, mint az SLES 12 SP2 vagy RHEL 7.2 nem támogatják az Azure gyorsított hálózatkezelés.
 >
 
 
-## <a name="deployment-of-host-monitoring"></a>Host Monitoring telepítése
-Az éles használathoz az SAP alkalmazások az Azure Virtual machines szolgáltatásban az SAP képes monitorozási adatai az Azure Virtual machines szolgáltatásban futó fizikai gazdagép-gazda lekérése használatához. Egy adott gazdagép-ügynök SAP javítási szintje szükség, amely lehetővé teszi, hogy ez a funkció a SAPOSCOL és SAP-gazdagép-ügynök. A pontos javítási szintet leírása itt található SAP-Jegyzetnek [1409604].
+## <a name="deployment-of-host-monitoring"></a>Host monitoring telepítése
+Üzemi használatra, SAP-alkalmazások Azure-beli virtuális gépeken SAP használatához az lehessen monitorozási adatai a fizikai gazdagépeket, az Azure virtuális gépeket futtató gazdagép. Egy adott gazdagép-ügynök SAP javítási szintje szükség, amely lehetővé teszi, hogy ez a funkció a SAPOSCOL és SAP-gazdagép-ügynök. A pontos javítási szintet leírása itt található SAP-Jegyzetnek [1409604].
 
-Összetevőket, amelyek a gazdagép adatok SAPOSCOL és SAP-gazdagép-ügynök telepítése és életciklus-felügyeletét, ezen összetevők kapcsolatos részletekért tekintse meg a [üzembe helyezési útmutató][deployment-guide]
+Az összetevők telepítési állapotát, hogy a gazdagép adatok SAPOSCOL és SAP-gazdagép-ügynök és életciklus-felügyeletét, ezen összetevők további információkért lásd: a [üzembe helyezési útmutató][deployment-guide].
 
 
 ## <a name="next-steps"></a>További lépések
-Az adott DBMS-dokumentáció tekintse meg a következő cikkeket:
+Egy adott DBMS további információkért lásd:
 
 - [SQL Server Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sqlserver.md)
 - [Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_oracle.md)
@@ -346,5 +373,5 @@ Az adott DBMS-dokumentáció tekintse meg a következő cikkeket:
 - [SAP maxDB, a gyorsítótár Live és a webtartalom-kiszolgáló üzembe helyezés az Azure-ban](dbms_guide_maxdb.md)
 - [SAP HANA az Azure-műveletek útmutatójában](hana-vm-operations.md)
 - [SAP HANA magas rendelkezésre állás az Azure-beli virtuális gépek](sap-hana-availability-overview.md)
-- [Biztonsági mentési útmutató az SAP Hana az Azure Virtual machines szolgáltatásban](sap-hana-backup-guide.md)
+- [Azure virtuális gépeken futó SAP Hana biztonsági mentési útmutató](sap-hana-backup-guide.md)
 

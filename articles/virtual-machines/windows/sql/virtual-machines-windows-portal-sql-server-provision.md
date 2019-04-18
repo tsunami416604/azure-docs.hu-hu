@@ -16,10 +16,10 @@ ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: bb051d37f3a1dd82d7d46bfe8b22c2ba1251be85
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259201"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Az Azure Portalon Windows SQL Server virtuális gép kiépítése
@@ -73,9 +73,9 @@ Nincsenek SQL Server virtuális gép konfigurálásához több lapra. Ez az útm
 | Lépés | Leírás |
 | --- | --- |
 | **Alapvető beállítások** |[Az alapvető beállítások konfigurálása](#1-configure-basic-settings) |
-| **Optional Features (Választható szolgáltatások)** |[Választható funkciók konfigurálása](#2-configure-optional-features) |
-| **SQL Server beállításai** |[Az SQL Server beállításainak konfigurálása](#3-configure-sql-server-settings) |
-| **Áttekintés + létrehozás** | [Összegzés áttekintése](#4-review--create) |
+| **Választható funkciók** |[Választható funkciók konfigurálása](#2-configure-optional-features) |
+| **Az SQL Server beállításai** |[Az SQL Server beállításainak konfigurálása](#3-configure-sql-server-settings) |
+| **Felülvizsgálat + létrehozás** | [Az összefoglalás áttekintése](#4-review--create) |
 
 ## <a name="1-configure-basic-settings"></a>1. Az alapvető beállítások konfigurálása
 
@@ -158,7 +158,7 @@ Az a **SQL Server-beállítások** fülre, adott beállításait és optimalizá
 | Beállítás |
 | --- |
 | [Kapcsolatok](#connectivity) |
-| [Authentication](#authentication) |
+| [Hitelesítés](#authentication) |
 | [Azure Key Vault-integráció](#azure-key-vault-integration) |
 | [Tároló konfigurálása](#storage-configuration) |
 | [Automatikus javítás](#automated-patching) |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 6c9b257ab88b3564253b0f48d953094f84a1d71d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 5a985e43c097dbea2861a5eb9fa10c526cbf089a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051439"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59697868"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurációja
 
@@ -191,4 +191,4 @@ Adja hozzá a [Secret Manager eszköz](https://docs.microsoft.com/aspnet/core/se
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs adattároló, és használta az ASP.NET Core-webalkalmazás-n keresztül a [alkalmazás konfigurációszolgáltató](https://go.microsoft.com/fwlink/?linkid=2074664). Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
 
 > [!div class="nextstepaction"]
-> [Az Azure-erőforrások integráció felügyelt identitásokból](./integrate-azure-managed-service-identity.md)
+> [Az Azure-erőforrások integráció felügyelt identitásokból](./howto-integrate-azure-managed-service-identity.md)

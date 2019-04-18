@@ -18,10 +18,10 @@ ms.author: asmalser
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a763b2516f88e8c92efc321db50dc15881f54c9b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265635"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Asana konfigurálása
@@ -103,5 +103,5 @@ Az Azure AD létesítési naplók olvasása további információkért lásd: [a
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók kiépítése a vállalati alkalmazások kezelése](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](asana-tutorial.md)

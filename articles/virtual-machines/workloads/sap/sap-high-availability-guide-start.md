@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7de46a534ea7920bcae4a5b2a3316117f090a7bf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265066"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Az Azure virtuális gépek magas rendelkezésre állás az SAP NetWeaver
@@ -196,7 +196,7 @@ A cikksorozat mutatja be:
     > Javasoljuk, hogy az SAP-telepítések az Azure Resource Manager üzemi modell használata. Ez lehetővé teszi számos előnnyel jár, amelyek nem érhetők el a klasszikus üzemi modellben. További tudnivalók az Azure [üzembe helyezési modellek][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
     >
 * SAP magas rendelkezésre állás:
-  * ![Windows][Logo_Windows]**Windows**révén **Windows Server feladatátvételi fürt (WSFC)** 
+  * ![Windows][Logo_Windows]**Windows**révén **Windows Server feladatátvételi fürt (WSFC)**
   * ![Linux][Logo_Linux] **Linux**révén **Linux-fürt keretrendszer**
 
 Ezekben a cikkekben, megtudhatja, hogyan védelme sikertelen (SPOF) összetevők, például az SAP Central Services (ASCS/SCS) és az adatbázis-kezelő rendszerek (DBMS) hibaérzékeny pont. Emellett ismerje redundáns összetevők, például SAP-alkalmazáskiszolgáló az Azure-ban.

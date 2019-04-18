@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: bab6510af98b153ecb61db8fc49b5124aae04598
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 5c9f70650f518c72a75d9a7826e7cbc30a95a00c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500464"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680876"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -28,9 +28,9 @@ Ez az útmutató a főbb fogalmakat és a Linux App Service-ben használata Java
 
 ## <a name="deploying-your-app"></a>Az alkalmazás üzembe helyezése
 
-A Maven beépülő modul segítségével telepítheti a .jar és a .war-fájlok. Lásd: [ebben a dokumentációban](https://docs.microsoft.com/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable) bővebben a Maven bővítménnyel.
+Használhat [Azure App Service-ben készült maven bővítmény](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) a .jar- és .war fájlok telepítéséhez. Népszerű ide-telepítés használata is támogatott [IntelliJ-hez készült Azure-eszközkészlet](/java/azure/intellij/azure-toolkit-for-intellij) vagy [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
 
-Ha nem használ Mavent, a telepítési módszertől függ az archív típusát:
+Ellenkező esetben a telepítési módszertől függ az archív típusát:
 
 - Tomcat .war-fájlt telepíteni, használja a `/api/wardeploy/` az archív fájl közzé végpontot. Ez az API további információkért tekintse meg [ebben a dokumentációban](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
 - A Java használata képek a .jar fájlokat üzembe helyezéséhez használja a `/api/zipdeploy/` végpont a Kudu-webhely. Ez az API további információkért tekintse meg [ebben a dokumentációban](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
@@ -79,11 +79,11 @@ A beépített Java-rendszerképeket alapulnak a [Alpine Linux](https://alpine-li
 
 ## <a name="customization-and-tuning"></a>Testreszabás és hangolás
 
-A box finomhangolásához és testreszabása az Azure Portal és CLI támogatja az Azure App Service Linux rendszeren. Tekintse át a Java meghatározott webes alkalmazások konfigurálása az alábbi cikkeket:
+Az Azure App Service Linux rendszeren a box finomhangolásához és testreszabása az Azure portal és CLI keresztül támogatja. Tekintse át a Java meghatározott webes alkalmazások konfigurálása az alábbi cikkeket:
 
 - [App Service szolgáltatás beállításainak konfigurálása](/azure/app-service/web-sites-configure?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Egyéni tartomány beállítása](/azure/app-service/app-service-web-tutorial-custom-domain?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [SSL engedélyezése](/azure/app-service/app-service-web-tutorial-custom-ssl?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Enable SSL](/azure/app-service/app-service-web-tutorial-custom-ssl?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [CDN hozzáadása](/azure/cdn/cdn-add-to-web-app?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [A Kudu-webhely konfigurálása](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
@@ -93,7 +93,7 @@ A Tomcat és a Java használata környezetben állítsa a lefoglalt memória vag
 
 Az Azure Portalon alatt **Alkalmazásbeállítások** a webalkalmazást, hozzon létre egy új alkalmazásbeállítást nevű `JAVA_OPTS` , amely tartalmazza a további beállításokat, például `-Xms512m -Xmx1204m`.
 
-A Maven bővítménnyel az Alkalmazásbeállítás konfigurálásához beállításérték/címkéket adhat hozzá, az Azure beépülő modul szakaszban. Az alábbi példa egy adott minimális és maximális Java heapsize állítja be:
+A Maven bővítménnyel az Alkalmazásbeállítás konfigurálásához beállításérték/címkéket adhat hozzá, az Azure beépülő modul szakaszban. Az alábbi mintakód egy adott minimális és maximális Java halommemória mérete:
 
 ```xml
 <appSettings>
@@ -297,7 +297,7 @@ Csatlakozás adatforrásokhoz a Spring Boot-alkalmazások, javasoljuk, hogy kapc
 
     Ez a kapcsolati karakterlánc érhető el az alkalmazás nevű környezeti változóban `CUSTOMCONNSTR_<your-string-name>`. A fentiekben létrehozott kapcsolati karakterlánc neve például `CUSTOMCONNSTR_exampledb`.
 
-2. Az a `application.properties` fájlt, hivatkozhat a kapcslat karakterláncot a környezeti változó neve. A jelen példában a következő lenne használjuk.
+2. Az a `application.properties` fájlt, hivatkozhat a környezeti változó neve a kapcsolati karakterláncot. A jelen példában a következő lenne használjuk.
 
     ```yml
     app.datasource.url=${CUSTOMCONNSTR_exampledb}

@@ -41,4 +41,4 @@ sections:
           - title: Nyelvek
             html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure SDK for .NET</a></p>
           - title: REST
-            html: <p><a href="/rest/api/blueprints/">API-hivatkozás</a></p>
+            html: <p><a href="/rest/api/blueprints/">API-referencia</a></p>

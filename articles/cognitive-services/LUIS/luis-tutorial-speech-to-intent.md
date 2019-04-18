@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2018
 ms.author: diberry
 ms.openlocfilehash: 9d6173ee25f28aa884513d126c06a8a7c722098d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273838"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Beszédszolgáltatás integráció a Language Understanding alkalmazással
@@ -66,7 +66,7 @@ Ebben a cikkben a számítógép audioeszközét használjuk. Ez lehet egy mikro
 
 A projekt már tartalmazza referenciaként a Speech SDK-t. 
 
-[![Sa Megjelenítés Microsoft.CognitiveServices.Speech NuGet-csomagot a Visual Studio 2017 creenshot](./media/luis-tutorial-speech-to-intent/nuget-package.png "képernyőfelvétel a Visual Studio 2017 megjelenítésének Microsoft.CognitiveServices.Speech NuGet-csomag")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![Képernyőfelvétel a Visual Studio 2017 megjelenítésének Microsoft.CognitiveServices.Speech NuGet-csomag](./media/luis-tutorial-speech-to-intent/nuget-package.png "képernyőfelvétel a Visual Studio 2017 megjelenítésének Microsoft.CognitiveServices.Speech NuGet-csomag")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>A C#-kód módosítása
 Nyissa meg a `Program.cs` fájlt, és módosítsa a következő változókat:
@@ -74,7 +74,7 @@ Nyissa meg a `Program.cs` fájlt, és módosítsa a következő változókat:
 |Változó neve|Cél|
 |--|--|
 |LUIS_assigned_endpoint_key|A végponti URL-hez hozzárendelt előfizetői azonosító értékét adja meg a Közzététel oldalról|
-|LUIS_endpoint_key_region|A végpont URL-cím első együtt, például felel meg `westus`|
+|LUIS_endpoint_key_region|A végponti URL-cím első altartományát adja meg, például `westus`.|
 |LUIS_app_ID|A végponti URL-cím útvonalát adja meg az **apps/** előtag után|
 
 A `Program.cs` fájlban az emberierőforrás- (HR-) szándékok már le vannak képezve.
@@ -98,6 +98,6 @@ Ne felejtse el, törölje a könyvtárat, ha elkészült, azzal a mintakóddal.
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A ROBOT a LUIS integrálása](luis-csharp-tutorial-build-bot-framework-sample.md)
+> [A LUIS integrálása robotokkal](luis-csharp-tutorial-build-bot-framework-sample.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -12,10 +12,10 @@ ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 26248616c6b490de00028d8ecc8a0e225da0c0a6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257110"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
@@ -32,7 +32,7 @@ A gépi tanulás által biztosított előrejelzéseket felhasználva intelligens
 
 Az Azure Machine Learning szolgáltatás segítségével előkészítheti az adatokat, betanítását, teszteléséhez, üzembe helyezése, kezelése és nyomon követheti a machine learning-modellek felhőalapú környezetet biztosít.
 
-[![AMachine Learning szolgáltatás munkafolyamata zure](./media/overview-what-is-azure-ml/aml.png)](./media/overview-what-is-azure-ml/aml.png#lightbox)
+[![Az Azure Machine Learning szolgáltatás munkafolyamata](./media/overview-what-is-azure-ml/aml.png)](./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Az Azure Machine Learning szolgáltatás teljes körűen támogatja a nyílt forráskódú technológiákat. Így a machine learning-összetevők tízezer nyílt forráskódú Python-csomagokat is használhatja. Példák a PyTorch, a tensorflow-hoz és a scikit-megtudhatja.
 Támogatja a gazdag egyszerűen interaktív módon ismerje meg, és előkészíti az adatokat, és majd fejlesztéséhez és teszteléséhez modellek. Példa [Jupyter notebookok](https://jupyter.org) vagy a [a Visual Studio Code az Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview) bővítmény.
@@ -52,7 +52,7 @@ Miután telepítették, a modell lépjen vissza az előrejelzések [valós idej�
 Használatával a <a href="https://aka.ms/aml-sdk" target="_blank">fő Python SDK</a> és a <a href="https://aka.ms/data-prep-sdk" target="_blank">Data Prep SDK</a> az Azure Machine Learning, valamint nyílt forráskódú Python-csomagokat, létrehozhat és rendkívül pontos gépi tanulási és deep-learning modellek betanításához Saját munkaterület az Azure Machine Learning-szolgáltatások.
 Számos machine learning-elérhető, nyílt forráskódú Python-csomagok, például az alábbi példák az összetevők közül választhat:
 
-- <a href="https://scikit-learn.org/stable/" target="_blank">scikit-tudnivalók</a>
+- <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
 - <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>
 - <a href="https://pytorch.org" target="_blank">PyTorch</a>
 - <a href="https://mxnet.io" target="_blank">MXNet</a>

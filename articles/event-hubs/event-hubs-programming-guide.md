@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e96abfbdbd9394d27fbffbcb64aa9cbfabbbcb69
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29814cb8aef09a8ead30d6daa615554dd55135dd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835435"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678581"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Az Azure Event Hubs programozási útmutatója
 Ez a cikk ismerteti az Azure Event Hubs használatával kód írása néhány gyakori forgatókönyvet. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md).
@@ -110,7 +110,7 @@ Az [EventProcessorHost][] osztály használatához megvalósítható az [IEventP
 Az események feldolgozásának indításához példányosítható [EventProcessorHost][], így a megfelelő paramétereket az eseményközpont. Példa:
 
 > [!NOTE]
-> EventProcessorHost és a kapcsolódó osztályok szerepelnek a **Microsoft.Azure.EventHubs.Processor** csomagot. Adja hozzá a csomagot a Visual Studio-projektben található utasításokat követve [Ez a cikk](event-hubs-dotnet-framework-getstarted-receive-eph.md#add-the-event-hubs-nuget-package) vagy a következő parancsot a a [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablak:`Install-Package Microsoft.Azure.EventHubs.Processor`.
+> EventProcessorHost és a kapcsolódó osztályok szerepelnek a **Microsoft.Azure.EventHubs.Processor** csomagot. Adja hozzá a csomagot a Visual Studio-projektben található utasításokat követve [Ez a cikk](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) vagy a következő parancsot a a [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablak:`Install-Package Microsoft.Azure.EventHubs.Processor`.
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(

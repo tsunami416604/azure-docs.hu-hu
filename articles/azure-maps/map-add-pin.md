@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 2580f1177bf9e6e3a92934f88a5d8ab51894e8d9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269486"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Vegyen fel egy szimbólum réteget a térkép
@@ -76,7 +76,7 @@ További információ az osztályok és módszerek a cikk ezt használja:
 Tekintse meg a további Kódminták a maps hozzá az alábbi cikkeket:
 
 > [!div class="nextstepaction"]
-> [Előugró ablak hozzáadása](map-add-popup.md)
+> [Egy előugró ablak hozzáadása](map-add-popup.md)
 
 > [!div class="nextstepaction"]
 > [Az adatvezérelt stílus kifejezések használata](data-driven-style-expressions-web-sdk.md)
@@ -85,7 +85,7 @@ Tekintse meg a további Kódminták a maps hozzá az alábbi cikkeket:
 > [Alakzat hozzáadása](map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [Buborékréteg hozzáadása](map-add-bubble-layer.md)
+> [Egy buborék réteg hozzáadása](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
 > [Adja hozzá a HTML-számára](map-add-bubble-layer.md)

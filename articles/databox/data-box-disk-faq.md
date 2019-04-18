@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258776"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
@@ -129,8 +129,8 @@ A. A Data Box-lemezek érhető el az eszközkészlet három eszközöket tartalm
  - **Data Box lemez felosztása Fájlmásoló eszközt**: Használja ezt az eszközt, ha több lemezeket használ, és a egy nagy méretű adathalmazt, amelyek felosztása és lemez minden másolt kell rendelkeznie. Ez az eszköz Windows jelenleg érhető el. Ez az eszköz nem felügyelt lemezekkel rendelkező támogatott. Ez az eszköz azt is ellenőrzi, mivel átmásolja az adatokat, így az ellenőrzési lépést kihagyhatja az eszköz használatakor.
 
 Az eszközkészlet Windows és Linux egyaránt érhető el. Az eszközkészlet Itt töltheti le:
-- [A Windows Data Box-lemezek eszközkészlet letöltése](https://aka.ms/databoxdisktoolswin) 
-- [Töltse le a Data Box-lemezek eszközkészlet linuxhoz](https://aka.ms/databoxdisktoolslinux)
+- [Data Box Disk eszközkészlet letöltése Windowsra](https://aka.ms/databoxdisktoolswin) 
+- [Data Box Disk eszközkészlet letöltése Linuxra](https://aka.ms/databoxdisktoolslinux)
  
 ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>K. Használható az Azure Files adatátvitelt, majd az adatokat az Azure File Sync Data Box-lemezek? 
 A. Az Azure Files Data Box-lemezek használata támogatott, de nem működnek jól az Azure File Sync használatával. Metaadatok nem marad meg, ha a fájl adatait használja az Azure File Sync használatával.

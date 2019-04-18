@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 9cb3c028c14e6c47d47eafcf6279a918c0917442
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272206"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Adatok másolása és az Azure SQL Database felügyelt példány az Azure Data Factory használatával
@@ -83,7 +83,7 @@ Az Azure SQL Database felügyelt példányába társított szolgáltatás a köv
 }
 ```
 
-**2. példa SQL-hitelesítés használata az Azure Key Vaultban jelszó**
+**2. példa: SQL-hitelesítés használata az Azure Key Vaultban jelszó**
 
 ```json
 {
@@ -324,7 +324,7 @@ Adatok másolása az Azure SQL Database felügyelt példányába, állítsa a fo
 ]
 ```
 
-**2. példa Tárolt eljárás meghívása során az upsert másolása**
+**2. példa: Tárolt eljárás meghívása során az upsert másolása**
 
 További részletek a [a egy SQL-fogadó tárolt eljárás meghívása](#invoke-a-stored-procedure-from-a-sql-sink).
 

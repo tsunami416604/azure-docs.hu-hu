@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e4c5942dfba62a2c869e4eeceb9018fc926d9de9
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 884381cc3b9aaeec29f5697485cd90c28b2bd97e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259541"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681250"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-new-ui-design"></a>Oktatóanyag: Egy új eszköz típusának megadása az Azure IoT Central alkalmazásban (új felhasználói felület tervezése)
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Az Azure IoT Central alkalmazásban egy új eszköztípus definiálása
 
 Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan definiálhat új eszköztípust egy eszközsablon használatával a Microsoft Azure IoT Central alkalmazásban. Az eszközsablon határozza meg az eszköztípus telemetriáját, állapotát, tulajdonságait és beállításait.
 
@@ -287,7 +287,7 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
 
     | Mező                | Érték                |
     | -------------------- | -------------------- |
-    | Megjelenítendő név         | Hely             |
+    | Megjelenítendő név         | Földrajzi egység             |
     | Mezőnév           | location             |
     | Kezdeti érték        | Seattle, WA          |
     | Leírás          | Eszközhely      |

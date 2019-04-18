@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
 ms.openlocfilehash: c77b5810164aef7508f717a0f75d90cf6cba2089
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273107"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights beállítása: Függőségi nyomkövetés
@@ -167,5 +167,5 @@ Tekintse meg az alábbi táblázat, és úgy döntött, hogy a helyes konfigurá
 
 ## <a name="next-steps"></a>További lépések
 * [Kivételek](../../azure-monitor/app/asp-net-exceptions.md)
-* [Felhasználók és lapadatok](../../azure-monitor/app/javascript.md)
+* [Felhasználók és Lapadatok](../../azure-monitor/app/javascript.md)
 * [Rendelkezésre állás](../../azure-monitor/app/monitor-web-app-availability.md)

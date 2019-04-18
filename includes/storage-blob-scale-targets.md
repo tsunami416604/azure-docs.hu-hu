@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 3/23/2019
+ms.date: 4/11/2019
 ms.author: tamram
-ms.openlocfilehash: c4c62876ac2483851a1f60835eeee17b4ae47f13
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: b3e2f018a3f1ba2563ba8cf2df6dfd4959be592e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395578"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737114"
 ---
 | Erőforrás | Cél        |
 |----------|---------------|
@@ -21,3 +21,6 @@ ms.locfileid: "58395578"
 | A hozzáfűző blob maximális mérete | 50 000 x 4 MiB (KB. 195 GB) |
 | Egy lapblob maximális mérete | 8 TiB |
 | Egy blob-tárolóban tárolt hozzáférési szabályzatok maximális számát | 5 |
+|Cél átviteli egyetlen BLOB |Tároló bejövő/kimenő forgalom korlátai legfeljebb<sup>1</sup> |
+
+<sup>1</sup> számos tényező befolyásolja, többek között, de nem kizárólagosan függ, hogy egyetlen objektum átviteli sebesség: egyidejűségi, a művelet mérete, a teljesítményszint, a feltöltéshez forrás és cél letöltések sebessége.

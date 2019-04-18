@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.openlocfilehash: df1b2cdd265b9cf48801174d1f0cd9936eae5f8b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264993"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Gyors útmutató: Csevegőszoba létrehozása az Azure Functions és a SignalR szolgáltatáshoz C használatával\#
@@ -76,4 +76,4 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 Ebben a rövid útmutatóban létrehozott, és futtatta egy valós idejű kiszolgáló nélküli alkalmazást a Visual Studióban. A következő lépésként tudjon meg többet az Azure-függvények Visual Studióval való fejlesztéséről és üzembe helyezéséről.
 
 > [!div class="nextstepaction"]
-> [Fejlesztés az Azure Functions Visual Studio használatával](../azure-functions/functions-develop-vs.md)
+> [Azure-függvények fejlesztése a Visual Studióval](../azure-functions/functions-develop-vs.md)

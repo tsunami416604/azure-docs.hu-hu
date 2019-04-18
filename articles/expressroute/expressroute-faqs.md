@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/16/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: f3f013f2e3090b54846ebba94ef54506275d6311
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3c8a068e2f68dcd53ad7ee6cdf3a1f39524c0fa4
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282865"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680485"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -116,6 +116,14 @@ Igen. Mindegyik ExpressRoute-kapcsolatcsoport redundáns párjai közötti kapcs
 ### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>Elveszítek kapcsolat, ha az egyik saját ExpressRoute-kapcsolatok nem?
 
 Ha egyik közötti kapcsolat nem sikerül nem megszakad a kapcsolat. Redundáns kapcsolat támogatja a terhelés, a hálózat és a magas rendelkezésre állás az ExpressRoute-kapcsolatcsoport érhető el. Emellett egy másik társviszony-létesítési helyszínen kapcsolatcsoport-szintű rugalmasság elérése érdekében a kapcsolatcsoport hozhat létre.
+
+### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Hogyan implementálhatom redundancia a privát társviszony-létesítés?
+
+Több ExpressRoute-Kapcsolatcsoportok társviszony-létesítési különböző helyekről csatlakoztatható ugyanahhoz a virtuális hálózathoz, magas rendelkezésre állású abban az esetben adja meg, hogy egyetlen kapcsolatcsoport elérhetetlenné válik. Ezután [nagyobb súly hozzárendelése](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) az alkalmazást a helyi kapcsolathoz inkább adott expressroute-kapcsolatcsoporthoz. Erősen ajánlott, hogy az ügyfelek beállítása kritikus hibapontok elkerülése érdekében legalább két ExpressRoute-Kapcsolatcsoportok. 
+
+### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Hogyan tudok megvalósítása a redundanciát a Microsoft társviszony-létesítés?
+
+Erősen ajánlott, ha használják az ügyfelek a Microsoft társviszony-létesítést úgy, mint például az Azure Storage vagy Azure SQL, valamint a Microsoft Office 365-höz, hogy a másik társviszony-létesítés megvalósítása során több Kapcsolatcsoportok társviszony-létesítést használó ügyfelek számára az Azure nyilvános szolgáltatások eléréséhez helyek faiure annak elkerülése érdekében. Ügyfelek vagy meghirdeti mindkét Kapcsolatcsoportok az ugyanazon előtaggal, és használjon [AS PATH előtag-Beillesztés](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) vagy határozza meg a helyi elérési útja eltérő előtagokat hirdet meg.
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hogyan biztosítja a magas rendelkezésre állás az expressroute-hoz csatlakoztatott virtuális hálózaton?
 

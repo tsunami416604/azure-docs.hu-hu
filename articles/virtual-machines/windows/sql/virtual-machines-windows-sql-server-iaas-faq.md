@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 0688235d928584df223a3a6a6ca2821282e4cb92
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 5299437dea18510fa5f85ee27240c8afc434d125
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762684"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680804"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Gyakori kérdések az Azure-beli Windows virtuális gépeken futó SQL Serverhez
 
@@ -56,7 +56,7 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
 1. **Lehetséges egy VHD-lemezképet készíteni egy SQL Server virtuális Gépet?**
 
-   Igen, de van néhány szempontot. Ha a virtuális merevlemez telepít egy új virtuális géphez az Azure-ban, ezt megteheti ge nem az SQL Server-konfigurációs szakasz a portálon. Ezután a Powershellen keresztül az SQL Server-konfigurációs beállításokat kell kezelni. Emellett meg kell fizetni a díj az SQL virtuális gép a lemezkép eredetileg alapján. Ez igaz, akkor is, ha eltávolítja az SQL Server virtuális merevlemez üzembe helyezése előtt. 
+   Igen, de van néhány szempontot. Ha a virtuális merevlemez telepít egy új virtuális géphez az Azure-ban, az SQL Server-konfigurációs szakasz a portálon nem kap. Ezután a Powershellen keresztül az SQL Server-konfigurációs beállításokat kell kezelni. Emellett meg kell fizetni a díj az SQL virtuális gép a lemezkép eredetileg alapján. Ez igaz, akkor is, ha eltávolítja az SQL Server virtuális merevlemez üzembe helyezése előtt. 
 
 1. **Az állítható be a virtuálisgép-katalógus (a + az SQL Server 2012 például Windows 2008 R2) nem látható konfigurációk?**
 

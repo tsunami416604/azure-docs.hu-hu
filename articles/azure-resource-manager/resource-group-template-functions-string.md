@@ -13,46 +13,46 @@ ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
 ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278785"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Karakterlánc-függvények az Azure Resource Manager-sablonok
 
 A Resource Manager az alábbi funkciókat biztosít a karakterláncokkal való munka:
 
-* [Base64](#base64)
+* [base64](#base64)
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
-* [Concat](#concat)
-* [tartalmazza a következőt:](#contains)
+* [concat](#concat)
+* [tartalmaz](#contains)
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
 * [üres](#empty)
 * [endsWith](#endswith)
 * [első](#first)
 * [Formátum](#format)
-* [GUID azonosítója](#guid)
+* [guid](#guid)
 * [indexOf](#indexof)
-* [utolsó](#last)
+* [last](#last)
 * [lastIndexOf](#lastindexof)
 * [Hossza](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
-* [cserélje le](#replace)
-* [kihagyás](#skip)
+* [replace](#replace)
+* [skip](#skip)
 * [felosztás](#split)
 * [startsWith](#startswith)
-* [sztring](#string)
-* [karakterláncrészlet](#substring)
+* [string](#string)
+* [substring](#substring)
 * [hajtsa végre a megfelelő](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
-* [Trim](#trim)
+* [trim](#trim)
 * [uniqueString](#uniquestring)
-* [uri azonosító](#uri)
+* [uri](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
 * [utcNow](#utcnow)

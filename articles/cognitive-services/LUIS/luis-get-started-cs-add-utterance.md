@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 04/08/2019
 ms.author: diberry
 ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273464"
 ---
 # <a name="quickstart-change-model-using-c"></a>Gyors útmutató: Módosítsa a modell használatávalC#
@@ -140,4 +140,4 @@ Miután végzett a rövid útmutatóval, távolítsa el a rövid útmutatóban l
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
-> [Programozott módon a LUIS-alkalmazások felépítése](luis-tutorial-node-import-utterances-csv.md) 
+> [LUIS-alkalmazások felépítése programozott módon](luis-tutorial-node-import-utterances-csv.md) 

@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: b78fb7d697f8a72b3c2f99c4509ea6ac5c5e5566
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281182"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Töltse le, vagy az Azure számlázási számlázási és napi használati adatok megtekintése
@@ -42,7 +42,7 @@ A legtöbb előfizetés esetén töltse le a számla az Azure Portalról. Ha a M
 
 1. Válassza ki az előfizetését a [előfizetések lapon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) , az Azure Portalon [számlákat hozzáféréssel rendelkező felhasználó](billing-manage-access.md).
 
-2. Válassza ki **számlákat**.
+2. Válassza ki a **Számlák** elemet.
 
     ![A számlázás- és használati beállítás bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
@@ -58,9 +58,9 @@ A számla kapcsolatos további információkért lásd: [Microsoft Azure-hoz kap
 
 Számlák jönnek létre az egyes [profil számlázási](billing-mca-overview.md#understand-billing-profiles) a Microsoft ügyfél-szerződés. Számlázási profil tulajdonos, közreműködő, olvasó, vagy a számlához manager számlákat letölteni az Azure Portalról.
 
-1. A Keresés **Cost Management és számlázás**.
+1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 2. Válassza ki a számlázási profilt.
-3. Válassza ki **számlákat**.
+3. Válassza ki a **Számlák** elemet.
 4. A számla rács megkeresi a letölteni kívánt számla.
 5. Kattintson a három (`...`) a sor végén található.
 6. A letöltési helyi menüben válassza ki a **számla**.
@@ -108,7 +108,7 @@ Kikapcsolja a számla első e-mail gombra kattintva és a fenti lépések elvég
 
 Ha egy Microsoft Ügyfélszerződéséhez, kérheti a, a számla kapni egy e-mailben. Számlázási profil tulajdonosoknak, közreműködőknek, olvasó és számla ellenében kezelők a számlát fog kapni e-mailben. Olvasói az e-mailek számla szabályozó nem lehet frissíteni.
 
-1. A Keresés **Cost Management és számlázás**.
+1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 1. Válassza ki a számlázási profilt.
 1. A **beállítások**válassza **tulajdonságok**.
 1. Alatt **E-mail számla**válassza **Update e-mail számla beállítás**.
@@ -169,9 +169,9 @@ Megtekintéséhez és a egy számlázási profil használati adatok letöltése,
 
 #### <a name="download-usage-for-billed-charges"></a>Számlázott díjak a használati adatok letöltése
 
-1. A Keresés **Cost Management és számlázás**.
+1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 2. Válassza ki a számlázási profilt.
-3. Válassza ki **számlákat**.
+3. Válassza ki a **Számlák** elemet.
 4. A számla rács megkeresi a letölteni kívánt használati tartozó számla.
 5. Kattintson a három (`...`) a sor végén található.
 6. A letöltési helyi menüben válassza ki a **Azure-használat és költségek**.
@@ -180,7 +180,7 @@ Megtekintéséhez és a egy számlázási profil használati adatok letöltése,
 
 Is letöltheti hónap elejétől számított használati az aktuális elszámolási időszakban, ami azt jelenti, a költségek még nem lett számlázzuk.
 
-1. A Keresés **Cost Management és számlázás**.
+1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 2. Válassza ki a számlázási profilt.
 3. Az a **áttekintése** panelen kattintson a **töltse le az Azure-használat és költségek**.
 

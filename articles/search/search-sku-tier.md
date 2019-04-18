@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: da8c8adacfead598a8dec6280cf3518fb7b31f49
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b50d0c0ca9a4000cc0c725453a3ef04b4bed9275
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270952"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681565"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
@@ -64,35 +64,36 @@ Az Azure Search szolgáltatásban az Azure Search szolgáltatásban a személy k
 
 ### <a name="1-core-service-costs-fixed-and-variable"></a>1. Core szolgáltatási költségei (rögzített és változó)
 
-A szolgáltatás magát a minimális díj megfizetése alól az első keresési egység (1 replika x 1 partíció), és ez a mennyiség állandó, a szolgáltatás teljes élettartama, mert a szolgáltatás bármit kevesebb, mint ez a konfiguráció nem futtatható. 
+A szolgáltatás magát a minimális díj megfizetése alól az első keresési egység (1 replika x 1 partíció), és ez a mennyiség a szolgáltatás teljes élettartama fix, mivel a szolgáltatás bármit kevesebb, mint ez a konfiguráció nem futtatható. 
 
-Az alábbi képernyőképen / alapegység jelzi a Basic, S1 és az ingyenes (S2, S3, L1 és L2 nem jelennek meg). Ha létrehozott egy **alapszintű**, **Standard**, vagy **tárolásra optimalizált** service, a havi költségek lenne átlagos az érték, amely megjelenik az *ár-1*és *ár-2* jelölik. Egység költségek lépjen az egyes szintek mert a számítási teljesítmény és tárterület-kapacitás nagyobb egyes egymást követő rétegben.
+A minimális túl is hozzáadhat replikák és partíciók egymástól függetlenül. Ha például csak a replikákat és a csak a partíciókat is hozzáadhat. A replikák és partíciók kapacitás növekményes növekedése a változó költség összetevő jelent. 
+
+Alapján számoljuk el egy [képlet (replikák partíciók x x mértéke)](#search-units). A sebesség számítunk fel díjat, válassza ki a tarifacsomagot függ.
+
+Az alábbi képernyőképen / alapegység jelzi a Basic, S1 és az ingyenes (S2, S3, L1 és L2 nem jelennek meg). Ha létrehozott egy **alapszintű**, **Standard**, vagy **tárolásra optimalizált** service, a havi költségek lenne átlagos az érték, amely megjelenik az *ár-1*és *ár-2* jelölik. Egység költségek lépjen az egyes szintek mert a számítási teljesítmény és tárterület-kapacitás nagyobb egyes egymást követő rétegben. Az Azure Search díjszabása a közzétett a [díjszabását ismertető oldalt az Azure Search](https://azure.microsoft.com/pricing/details/search/).
 
 ![/ Alapegység](./media/search-sku-tier/per-unit-pricing.png "/ alapegység")
 
-További replikák és partíciók olyan bővítménye, a kezdeti díja. Egy keresési szolgáltatás, a minimális konfigurációs egy replika és a partíció szükséges. A minimális túli hozzáadhat replikák és partíciók egymástól függetlenül. Például hozzáadhat csak a replikákat és a csak a partíciókat. 
+Költségszámítás ki egy keresési megoldás, megfigyelheti, díjszabás, és a kapacitás a rendszer nem lineáris (kétszeresére matematikában költsége nagyobb kapacitás). Példa bemutatja, hogyan a képlet működését, lásd: ["Útmutató a replikák és partíciók lefoglalni"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
-További replikák és partíciók alapján lesznek kiszámlázva egy [képlet](#search-units). A költségek, amelyek nem lineáris (kétszeresére matematikában költsége nagyobb kapacitás). Példa bemutatja, hogyan a képlet működését, lásd: ["Útmutató a replikák és partíciók lefoglalni"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
 ### <a name="2-data-egress-charges-during-indexing"></a>2. Kimenő adatforgalom díját az indexelés során
 
-Felhasználása [Azure Search-indexelők](search-indexer-overview.md) hatása attól függően, hol találhatók a szolgáltatások számlázási eredményezhet. Kimenő adatforgalom díját kiküszöbölheti az teljes mértékben, ha az Azure Search szolgáltatás hoz létre ugyanabban a régióban, mint az adatokat.
+Felhasználása [Azure Search-indexelők](search-indexer-overview.md) attól függően, hol találhatók a szolgáltatások számlázási hatás eredményezhet. Kimenő adatforgalom díját kiküszöbölheti az teljes mértékben, ha az Azure Search szolgáltatás hoz létre ugyanabban a régióban, mint az adatokat. A rendszer a következő szempontokat a [díjszabását ismertető lapon sávszélesség](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-+ A díjfizetés nélkül használhatók az Azure-ban bármely szolgáltatás a bejövő adatokat.
++ A Microsoft nem számolunk fel a bejövő adatokat bármely szolgáltatás az Azure-ban vagy a kimenő adatok az Azure Search.
 
-+ A díjfizetés nélkül használhatók az Azure Search kimenő adatokat.
++ Az olyan megoldások több szolgáltatást nem számítunk fel díjat az adatokat a hálózaton áthaladó ugyanabban a régióban összes szolgáltatások esetén.
 
-+ Nem számítunk fel díjat, az adatok és az SQL DB, Cosmos, Blob storage a kimenő fájlok (bejövő az Azure Search) mindaddig, amíg az összes szolgáltatás ugyanabban a régióban vannak.
-
-+ A kimenő adatok vagy fájlok díjakat számítjuk Ha storage és az Azure Search különböző régiókban találhatók.
-
-Útválasztás az adatok Azure-régióban, látni fogja a sávszélesség díjai a számlán, az erőforrásokhoz. Ezek a díjak nem részei az Azure Search számla, de itt azok szerepelnek, mert ha indexelők használatával kérje le az adatok vagy fájlok a hálózaton keresztül, látni fogja, hogy a díj a a teljes számlája összegét.
-
-Ha az indexelők nem használ, nem számítunk sávszélesség fel díjat. 
+Díjak terhelik kimenő különböző régiókban lévő szolgáltatások esetén. Az ilyen díjait nem része az Azure Search számla önmagában, de itt azok szerepelnek, mert ha adatok és AI-bővített indexelők használatával adatok el más régiókból, azok megjelennek a teljes számlája összegét a költségek jelenik meg. 
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. AI-bővített indexelés kognitív szolgáltatások használata
 
-A [mesterséges indexeléshez a Cognitive Services](cognitive-search-concept-intro.md) csak, kép kibontása során dokumentumfeltörést alapján számítjuk fel a dokumentumok kinyert képek számát. Szövegkinyerés jelenleg díjmentes. Más végrehajtott információbeolvasás, természetes nyelvi feldolgozás, például a alapuló [beépített kognitív képességeket](cognitive-search-predefined-skills.md) Cognitive Services-erőforrás terhelve van. Végrehajtott információbeolvasás számlázása megegyező módon, ha végrehajtotta a Cognitive Services használatával közvetlenül a feladatot.
+A [mesterséges indexeléshez a Cognitive Services](cognitive-search-concept-intro.md), meg kell terveznie csatolására számlázható Cognitive Services-erőforrás, az S0 tarifacsomag utólagos feldolgozás céljából. Díjmentes "rögzített" társított csatolása a Cognitive Services. Csak kell fizetnie kell a feldolgozása.
+
+Kép kinyerési dokumentumfeltörést során egy Azure Search számolunk fel, a számlázás a dokumentumok kinyert lemezképek száma alapján. Szövegkinyerés jelenleg díjmentes. 
+
+Más végrehajtott információbeolvasás, természetes nyelvi feldolgozás, például a alapuló [beépített kognitív képességeket](cognitive-search-predefined-skills.md) Cognitive Services-erőforrás, megegyező vannak terhelve, mint ha végrehajtotta a Cognitive Services használatával közvetlenül a feladat. További információkért lásd: [a képességek alkalmazási lehetőségét a Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md).
 
 <a name="search-units"></a>
 

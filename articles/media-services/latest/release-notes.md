@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
 ms.openlocfilehash: de5432c4e04fb0cfaf0517426fe9ee9da2a57b37
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266987"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
@@ -69,12 +69,12 @@ A CLI 2.0 modul már elérhető a [Azure Media Services v3 GA](https://docs.micr
 
 ### <a name="new-commands"></a>Új parancsok
 
-- [az ams account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
+- [az ams-fiók](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
 - [az ams-fiók-szűrő](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
 - [az ams-adategység](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
 - [az ams az eszközintelligencia-szűrő](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
 - [az ams tartalom-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az ams-feladat](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
 - [élő az ams-esemény](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
 - [az ams élő kimenet](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)

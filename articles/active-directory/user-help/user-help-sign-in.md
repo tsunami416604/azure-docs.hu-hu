@@ -14,10 +14,10 @@ ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60e4d9a4cb555dfbc9f05961487a8f794d19e1bf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268354"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Jelentkezzen be a kétlépéses ellenőrzés vagy a biztonsági adatok
@@ -26,7 +26,7 @@ Miután beállította a kétlépéses ellenőrzés vagy a biztonsági adatok fog
 > [!Note]
 > Ha továbbra is használja a kétlépéses ellenőrzés élményt, kell állítsa be a hitelesítési módszereket a utasításait a [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md) cikk.
 > 
-> Ha a rendszergazda a biztonsági adatok élmény van kapcsolva, meg kell beállítani a hitelesítési módszerek használatával a következő részletes cikkeket:<ul><li>[Hitelesítési alkalmazást használhat a biztonsági adatok beállítása](security-info-setup-auth-app.md)</li><li>[Állítsa be a biztonsági adatok használatára, szöveges üzenetküldés](security-info-setup-text-msg.md)</li><li>[Telefonhívás használandó biztonsági adatainak beállítása](security-info-setup-phone-number.md)</li></ul>
+> Ha a rendszergazda a biztonsági adatok élmény van kapcsolva, meg kell beállítani a hitelesítési módszerek használatával a következő részletes cikkeket:<ul><li>[Hitelesítési alkalmazást használhat a biztonsági adatok beállítása](security-info-setup-auth-app.md)</li><li>[A biztonsági adatok szöveges üzenetben történő hitelesítésének beállítása](security-info-setup-text-msg.md)</li><li>[Telefonhívás használandó biztonsági adatainak beállítása](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Jelentkezzen be az authenticator alkalmazás értesítés a mobileszközén
 

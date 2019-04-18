@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 5c6dfa359a85b5330e70a2618d59ffab15cf24f4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276643"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>A helyi Azure Sentinel előzetes verzió
@@ -49,7 +49,7 @@ Miután csatlakozott az adatforrásokat, egy katalógus, amely az adatok alapjá
 1. Lépjen be az Azure Portalra.
 2. Győződjön meg arról, hogy az előfizetés, amelyben az Azure-Sentinel létrehozta, van-e kiválasztva. 
 3. Keresse meg az Azure Sentinel. 
-   ![keresés](./media/quickstart-onboard/search-product.png)
+   ![Keresés](./media/quickstart-onboard/search-product.png)
 
 1. Kattintson a **+ Hozzáadás**.
 1. Válassza ki szeretné használni, vagy hozzon létre egy új munkaterületet. Egynél több munkaterület Azure Sentinel-futtatható, de az adatok el különítve egy munkaterülethez.

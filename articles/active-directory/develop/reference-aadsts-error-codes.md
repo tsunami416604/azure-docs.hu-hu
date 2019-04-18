@@ -18,10 +18,10 @@ ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69440fb99439231cdc046ef48bddfa852c17924c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271798"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Hitelesítés és hitelesítési hibakódok
@@ -153,7 +153,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS70007 | UnsupportedResponseMode – az alkalmazás a nem támogatott értéket adott vissza `response_mode` jogkivonat kérése során.  |
 | AADSTS70008 | ExpiredOrRevokedGrant – a frissítési jogkivonat inaktivitás miatt lejárt. A jogkivonat XXX lett kiadva, és a egy bizonyos ideig inaktív volt. |
 | AADSTS70011 | Az alkalmazás által kért hatókörrel InvalidScope – érvénytelen. |
-| AADSTS70012 | MsaServerError – A kiszolgáló hitelesítése során hiba történt az MSA (felhasználói) felhasználó. Próbálja meg újra. Ha a hiba továbbra is fennáll, [küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError – A kiszolgáló hitelesítése során hiba történt az MSA (felhasználói) felhasználó. Próbálja meg újra. Ha továbbra sem sikerül, [hozzon létre egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending – az OAuth 2.0 eszköz folyamat hiba. Engedélyezési függőben. Az eszköz ismét megkísérli a kérelem lekérdezési. |
 | AADSTS70018 | BadVerificationCode – a felhasználó beírja a helytelen felhasználói kódban az eszköz kódfolyamat miatt érvénytelen ellenőrző kódot. Engedélyezési nem engedélyezett. |
 | AADSTS70019 | CodeExpired - ellenőrző kód lejárt. Ismételje meg a bejelentkezéskor a felhasználó rendelkezik. |

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
 ms.openlocfilehash: e94fe3156677a507eab91eee339ed29bf7b4ad2e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257637"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP Fiori
@@ -135,7 +135,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az SAP Fiori, hajtsa végre az
 6. Cserélje le **szolgáltatónevet** T01122, a `http://T01122` , majd kattintson a **mentése**.
 
     > [!NOTE]
-    > Alapértelmezett szolgáltató neve szerint jár <sid><client> formátumban, de az Azure AD nevet vár az formátumban <protocol>://<name>, szolgáltató neve megegyezik a https:// fenntartásához ajánló<sid><client> , hogy több SAP Fiori ABAP-motor konfigurálása az Azure ad-ben .
+    > Alapértelmezett szolgáltató neve szerint jár <sid> <client> formátumban, de az Azure AD nevet vár az formátumban <protocol>://<name>, szolgáltató neve megegyezik a https:// fenntartásához ajánló<sid> <client> , hogy több SAP Fiori ABAP motorok konfigurálása az Azure ad-ben.
 
     ![A tanúsítvány letöltési hivatkozás](./media/sapfiori-tutorial/tutorial-sapnetweaver-providername.png)
 
@@ -175,8 +175,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés az SAP Fiori, hajtsa végre az
 
     ![Az SAP Fiori-tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier-reply.png)
 
-    d. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:
-    `https://<your company instance of SAP Fiori>`
+    d. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<your company instance of SAP Fiori>`
 
     > [!NOTE]
     > Tapasztalataink szerint valamilyen hiba helytelen válasz URL-cím az áttelepített példány konfigurált jelentéskészítési néhány ügyfélnek. Ha bármely ilyen hibaüzenetet kapja, segítségével a következő PowerShell-parancsfájl, munkahelyi körülbelül állítsa be a helyes válasz URL-cím a példány.:
@@ -378,6 +377,6 @@ Ebben a szakaszban egy Britta Simon nevű SAP Fiori-a felhasználó hoz létre. 
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

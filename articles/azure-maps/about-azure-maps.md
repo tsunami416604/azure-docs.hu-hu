@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 944a111ac0c31e755b3991f9ea101ba652c676d3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268767"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
@@ -139,9 +139,9 @@ Győződjön meg arról, hogy az aktuális IP-címe helye nem a fenti nem támog
 További információk az Azure Maps új szolgáltatásairól:
 
 > [!div class="nextstepaction"]
-> [Útvonal mátrix, Izokrón, IP-keresés, és további](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/)
+> [Útvonalmátrix, izokrón térképek, IP-keresés és további szolgáltatások](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/)
 
 Próbálja ki az Azure Maps kipróbálunk egy mintaalkalmazást:
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Webalkalmazás létrehozása](quick-demo-map-app.md)
+> [Rövid útmutató: Webes alkalmazás létrehozása](quick-demo-map-app.md)

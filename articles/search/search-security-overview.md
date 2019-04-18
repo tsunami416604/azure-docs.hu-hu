@@ -10,10 +10,10 @@ ms.date: 04/06/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269554"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Biztonsági és az adatvédelem az Azure Search szolgáltatásban
@@ -31,7 +31,7 @@ Az Azure Search minősítéssel az alábbi előírásoknak, mint [2018 június b
 + [Health Insurance Portability and Accountability Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
 + [GxP (21 CFR Part 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
-+ [PCI DSS 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [1. szintű PCI DSS](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
 + [Ausztrál IRAP nem besorolt DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 Általánosan elérhető szolgáltatásainak szabványoknak való megfelelés vonatkozik. Előzetes verziójú funkciók az általánosan elérhető az átmenet, és nem használható az olyan megoldások szigorú szabványokat követelményekkel rendelkező hitelesített. Megfelelőségi tanúsítvány leírása itt található [áttekintése a Microsoft Azure-megfelelőségi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) és a [biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trustcenter). 

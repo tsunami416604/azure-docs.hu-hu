@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c332b20650bef2e341a935dacae835403dc56c9b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a9a6c7c47a6ea81f682f453a85ee6f8e214a09a7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630665"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678088"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata #
 
@@ -131,13 +131,13 @@ Csakúgy, mint a több-bérlős App Service-ben, az ASE környezetben teheti kö
 - FTP.
 - Folyamatos integráció.
 - Oszlopmezők áthúzása a Kudu konzol.
-- Az integrált fejlesztői Környezetig, például a Visual Studio, az Eclipse és IntelliJ IDEA.
+- An IDE, such as Visual Studio, Eclipse, or IntelliJ IDEA.
 
 A külső ASE környezetben ezek a közzétételi beállítások minden úgy viselkedik. További információkért lásd: [üzembe helyezése az Azure App Service][AppDeploy]. 
 
 A fő közzétételi különbség garanciát az ILB ASE környezetben. ILB ASE környezetben a közzétételi végpontjai érhetők el az összes csak az ILB keresztül. Az ILB személyes IP-címet a virtuális hálózatban az ASE alhálózat be van kapcsolva. Nem kell hálózati hozzáféréssel az ILB ASE olyan alkalmazások nem tehető közzé. Amint [létrehozása és használata az ILB ASE][MakeILBASE], kell konfigurálnia a DNS a-alkalmazások a rendszerben. Az SCM-végpontot, amely tartalmazza. Ha ezek még nincs megfelelően definiálva, nem tehető közzé. Az ide-ket is kell rendelkeznie az ILB való hálózati hozzáférés közvetlenül történő közzétételhez.
 
-Internetes alapú CI rendszerek, például a GitHub és az Azure DevOps, nem működnek az ILB ASE környezetben, mert a közzététel végpontja nem elérhető az internetről. Ehelyett egy lekérési modellt használó CI-rendszert kell használnia, ilyen például a Dropbox.
+Beépített internetes alapú CI rendszerek, például a GitHub és az Azure DevOps, nem működnek az ILB ASE mivel a közzététel végpontja nem elérhető az internetről. Az Azure fejlesztési és üzemeltetési oldható meg ez a belső hálózat, ahol elérheti az ILB egy saját üzemeltetésű kiadási ügynök telepítésével. Másik megoldásként is használhatja, például a Dropbox egy lekérési modellt használó CI-rendszert.
 
 Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Az alkalmazás közzétételi profilján és az alkalmazás portálpanelén láthatja (a **áttekintése** > **Essentials** és a **tulajdonságok**). 
 

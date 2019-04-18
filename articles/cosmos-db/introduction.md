@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 04/08/2019
 ms.author: rimman
 ms.openlocfilehash: a965db4334e88d032f767bd7b855dea6f3ff174f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280944"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
@@ -22,7 +22,7 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-s
 Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül.
 
 > [!div class="nextstepaction"]
-> [Próbálja ki ingyen az Azure Cosmos DB-t](https://azure.microsoft.com/try/cosmosdb/)
+> [Az Azure Cosmos DB ingyenes kipróbálása](https://azure.microsoft.com/try/cosmosdb/)
 
 ![Az Azure Cosmos DB a Microsoft globálisan elosztott adatbázis-szolgáltatása rugalmas horizontális felskálázási képességgel, garantáltan alacsony késéssel, öt konzisztenciamodellel, valamint átfogó garantált SLA-kkal.](./media/introduction/azure-cosmos-db.png)
 
@@ -97,11 +97,11 @@ Tudjon meg többet a Cosmos DB alapvető fogalmak [kulcsrakész globális disztr
 
 Az alábbi rövid útmutatókkal könnyedén elkezdheti az Azure Cosmos DB használatát:
 
-* [Azure Cosmos DB SQL API használatának első lépései](create-sql-api-dotnet.md)
+* [Bevezetés az Azure Cosmos DB SQL API használatába](create-sql-api-dotnet.md)
 * [Ismerkedés az Azure Cosmos DB API a mongodb-hez](create-mongodb-nodejs.md)
-* [Azure Cosmos DB Cassandra API használatának első lépései](create-cassandra-dotnet.md)
-* [Azure Cosmos DB Gremlin API használatának első lépései](create-graph-dotnet.md)
-* [Az Azure Cosmos DB Table API használatának első lépései](create-table-dotnet.md)
+* [Bevezetés az Azure Cosmos DB Cassandra API használatába](create-cassandra-dotnet.md)
+* [Bevezetés az Azure Cosmos DB Gremlin API használatába](create-graph-dotnet.md)
+* [Bevezetés az Azure Cosmos DB Table API használatába](create-table-dotnet.md)
 
 > [!div class="nextstepaction"]
 > [Az Azure Cosmos DB ingyenes kipróbálása](https://azure.microsoft.com/try/cosmosdb/)

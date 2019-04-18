@@ -12,10 +12,10 @@ author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
 ms.openlocfilehash: 33a93aa01499beb978f616f633588ba75e4b62a3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259184"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: Hozzon létre és együttműködésre AI-modellek üzembe helyezése
@@ -37,7 +37,7 @@ Jelenítenek meg, és felgyorsítja az ONNX-modellekkel eszközök ökoszisztém
 
 [ONNX-modellekkel is üzembe helyezhetők](#deploy) a felhőbe az Azure Machine Learning és ONNX-futtatókörnyezet. A Windows 10-eszközökön is telepíthető [Windows ML](https://docs.microsoft.com/windows/ai/). Akkor is telepíthetők legyenek más platformokon elérhető az ONNX-Közösségből származó átalakítók használatával. 
 
-[![ONNX folyamatábrája képzési, a feldolgozók és a központi telepítés](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
+[![Képzés, a feldolgozók és a központi telepítési ONNX folyamatábrája](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>ONNX-modellekkel beolvasása
 
@@ -53,12 +53,12 @@ Meglévő modellek átalakíthatók ONNX, vagy a tanítási végén ONNX menthet
 
 |Modell-keretrendszer|Átalakítás például vagy eszköz|
 |-----|-------|
-|PyTorch|[Jupyter Notebook](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)|
+|PyTorch|[Jupyter notebook](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)|
 |TensorFlow|[tensorflow-onnx-átalakító](https://github.com/onnx/tensorflow-onnx)|
-|Chainer|[Jupyter Notebook](https://github.com/onnx/tutorials/blob/master/tutorials/ChainerOnnxExport.ipynb)|
-|MXNet|[Jupyter Notebook](https://github.com/onnx/tutorials/blob/master/tutorials/MXNetONNXExport.ipynb)|
+|Chainer|[Jupyter notebook](https://github.com/onnx/tutorials/blob/master/tutorials/ChainerOnnxExport.ipynb)|
+|MXNet|[Jupyter notebook](https://github.com/onnx/tutorials/blob/master/tutorials/MXNetONNXExport.ipynb)|
 |Keras, ScitKit további CoreML<br/>XGBoost és libSVM|[WinMLTools](https://docs.microsoft.com/windows/ai/convert-model-winmltools)|
-|A Microsoft&nbsp;Cognitive&nbsp;eszközkészlet|[Jupyter Notebook](https://github.com/onnx/tutorials/blob/master/tutorials/CntkOnnxExport.ipynb)|
+|A Microsoft&nbsp;Cognitive&nbsp;eszközkészlet|[Jupyter notebook](https://github.com/onnx/tutorials/blob/master/tutorials/CntkOnnxExport.ipynb)|
 
 A támogatott keretrendszerek és található konverterek legújabb listáját megtalálhatja az [ONNX-oktatóanyagok hely](https://github.com/onnx/tutorials).
 

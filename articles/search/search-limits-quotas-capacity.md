@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c52ac6128ad00d9bb772816d6130f3aedc480138
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ff2b843e00ffdf005d952cf62eab6b93c9434913
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273396"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699166"
 ---
 # <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatási korlátai
 Maximális korlátozza a storage, a számítási feladatok és az indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [üzembe helyezése az Azure Search](search-create-service-portal.md) , **ingyenes**, **alapszintű**,  **Standard szintű**, vagy **tárolásra optimalizált** díjcsomagok árából.
@@ -55,7 +55,7 @@ Maximális korlátozza a storage, a számítási feladatok és az indexek, dokum
 | Maximális [pontozási profilok](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) indexenkénti |100 |100 |100 |100 |100 |100 |100 |100 |
 | Profil maximális függvények |8 |8 |8 |8 |8 |8 |8 |8 |
 
-<sup>1</sup> késői 2017 Miután megnövekedett legfeljebb 15 indexeket, adatforrásból és indexelőből létrehozott alapvető szolgáltatások. Korábban létrehozott szolgáltatások 5 rendelkeznek. Alapszintű csomag egyetlen Termékváltozat és a egy alacsonyabb korlátja 100 mezők indexenkénti.
+<sup>1</sup> alapvető szolgáltatások 2017 December létrehozott indexek alacsonyabb korlátokkal (5 helyett 15) rendelkezik. Alapszintű csomag egyetlen Termékváltozat és a egy alacsonyabb korlátja 100 mezők indexenkénti.
 
 <a name="document-limits"></a>
 
@@ -81,7 +81,7 @@ A dokumentum korlátai szolgáltatások esetében a következő korlátozásokat
 
 |  Ingyenes | Alapszintű | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10,000 |1 millió |15 millió partíciónként vagy 180 millió szolgáltatásonként |60 millió partíciónként vagy 720 millió szolgáltatásonként |120 millió partíciónként vagy 1,4 milliárd szolgáltatásonként |1 millió indexenként vagy 200 millió partíciónként |
+|  10,000 |1&nbsp;millió |15 millió partíciónként vagy 180 millió szolgáltatásonként |60 millió partíciónként vagy 720 millió szolgáltatásonként |120 millió partíciónként vagy 1,4 milliárd szolgáltatásonként |1 millió indexenként vagy 200 millió partíciónként |
 
 Ha a szolgáltatás, amely a rendszer blokkolja, korlátai, hozzon létre egy új szolgáltatást, és majd újbóli az adott szolgáltatás teljes tartalmát. Nincs új hardverre a színfalak mögött a szolgáltatást zökkenőmentesen reprovisioning mód.
 
@@ -99,9 +99,8 @@ Ne feledje alacsonyan tartani a dokumentumok méretétől, a kérelem nem lekér
 
 ## <a name="indexer-limits"></a>Az indexelő korlátok
 
-Késedelmes 2017 után létrehozott alapvető szolgáltatások megnövekedett legfeljebb 15 indexeket, adatforrások, szakértelmével és indexelők rendelkezik.
+Maximális futó alkalommal egyenleg és stabilitását a szolgáltatás egészére léteznek, de nagyobb méretű adatkészletek igényelhet a maximálisan engedélyezettnél több indexelési idő. Ha egy indexelési feladat a maximális rendelkezésre álló időn belül nem tudja végrehajtani, próbálja meg egy ütemezés szerint fut. Az ütemező nyomon követi az indexelés állapotát. Ha egy ütemezett indexelési feladat bármilyen okból megszakad, az indexelő folytathatja a munkát, ahol utolsó abbahagyta a következő ütemezett futáskor.
 
-Erőforrás-igényes művelet, például képelemzés, az Azure blob-indexelés vagy a természetes nyelvi feldolgozás, a kognitív keresés rövidebb maximális futó idővel rendelkezik, úgy, hogy más indexelési feladatokat is elhelyezkedhetnek. Ha egy indexelési feladat a maximális rendelkezésre álló időn belül nem tudja végrehajtani, próbálja meg egy ütemezés szerint fut. Az ütemező nyomon követi az indexelés állapotát. Ha egy ütemezett indexelési feladat bármilyen okból megszakad, az indexelő folytathatja a munkát, ahol utolsó abbahagyta a következő ütemezett futáskor.
 
 | Erőforrás | Ingyenes&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |2. |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
@@ -109,14 +108,15 @@ Erőforrás-igényes művelet, például képelemzés, az Azure blob-indexelés 
 | Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |
 | Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |
 | Maximális indexelési terhelés száma indításonként |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozott |Csak a dokumentumok maximális száma korlátozott |Csak a dokumentumok maximális száma korlátozott |Csak a dokumentumok maximális száma korlátozott |– |Korlátlan |Korlátlan |
+| Minimális ütemezése | 5 perc |5 perc |5 perc |5 perc |5 perc |5 perc |5 perc | 5 perc |
 | Maximális futási idejét <sup>5</sup> | 1 – 3 perc alatt |24 óra |24 óra |24 óra |24 óra |–  |24 óra |24 óra |
 | Maximális futási idejét, a kognitív keresés szakértelmével vagy a blob-indexelés a képelemzés <sup>5</sup> | 3 – 10 perc |2 óra |2 óra |2 óra |2 óra |–  |2 óra |2 óra |
 | BLOB indexelőjével: blob maximális mérete, MB |16 |16 |128 |256 |256 |–  |256 |256 |
-| BLOB indexelőjével: blob kinyert tartalom maximális karakter |32,000 |64,000 |4 millió |4 millió |4 millió |– |4 millió |4 millió |
+| BLOB indexelőjével: blob kinyert tartalom maximális karakter |32,000 |64,000 |4&nbsp;millió |4&nbsp;millió |4&nbsp;millió |– |4&nbsp;millió |4&nbsp;millió |
 
 <sup>1</sup> ingyenes szolgáltatások indexelő maximális végrehajtási ideje 3 perc alatt van, a blob-forrásoknak és minden más adatforrás esetében 1 perc. A mesterséges indexeléshez, hogy meghívja a Cognitive Services ingyenes szolgáltatások korlátozva, 20 ingyenes tranzakció naponta, ahol egy tranzakció egy dokumentumot, amelyek sikeresen átmegy az Adatbővítés folyamat nevezünk.
 
-<sup>2</sup> késői 2017 Miután megnövekedett legfeljebb 15 indexeket, adatforrásból és indexelőből létrehozott alapvető szolgáltatások. Korábban létrehozott szolgáltatások 5 rendelkeznek.
+<sup>2</sup> 2017 December létrehozott alapvető szolgáltatások ismereteket, indexelők és adatforrások alacsonyabb korlátokkal (5 helyett 15) rendelkezik.
 
 <sup>3</sup> S3 HD szolgáltatások nem támogatják az indexelő.
 
@@ -136,7 +136,7 @@ Tárolásra optimalizált szint esetében egy alacsonyabb lekérdezések átvite
 
 A [cognitive search folyamat](cognitive-search-concept-intro.md) , amely a Text Analytics erőforrás-hívást hajt végre [entitások felismerése](cognitive-search-skill-entity-recognition.md), [kulcsfontosságú kifejezések kinyerése](cognitive-search-skill-keyphrases.md), [hangulatelemzés ](cognitive-search-skill-sentiment.md), és [nyelvfelismerés](cognitive-search-skill-language-detection.md) data korlátai hatálya alá tartozik. Egy rekord maximális mérete 50 000 karakter által mért kell lennie `String.Length`. Ha szeretné feloszthatja az adatokat, mielőtt elküldené a róluk szóló véleményeket elemző, használja a [szöveg felosztása szakértelem](cognitive-search-skill-textsplit.md).
 
-## <a name="api-request-limits"></a>API-kérelmekre vonatkozó korlátok
+## <a name="api-request-limits"></a>API kérelmekre vonatkozó korlátok
 * Legfeljebb 16 MB-os kérelmenként <sup>1</sup>
 * 8 KB-os URL-cím maximális hossza
 * Index kötegenként legfeljebb 1000 dokumentumok tölt fel, egyesítése vagy törlése
@@ -149,7 +149,7 @@ A [cognitive search folyamat](cognitive-search-concept-intro.md) , amely a Text 
 * Legfeljebb 1000 dokumentumot adja vissza a keresési eredmények oldalanként
 * Javaslat API kérelmenként visszaadott legfeljebb 100 javaslatok
 
-## <a name="api-key-limits"></a>API-kulcs korlátok
+## <a name="api-key-limits"></a>API-korlátok
 API-kulcsok szolgáltatás hitelesítéshez használhatók. Két típusukat különböztetjük meg. Az adminisztrációs kulcsok a kérelem fejlécében megadott, és a szolgáltatás teljes olvasási és írási hozzáférést. Lekérdezési kulcsok a csak olvasható, az URL-cím a megadott, és az ügyfélalkalmazások általában elosztott rendszer.
 
 * Legfeljebb 2 az adminisztrációs kulcsok szolgáltatásonként

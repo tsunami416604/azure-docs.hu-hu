@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: b8c21b908ca9162a7e44c7af1e222babc6ee1eb7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265610"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>A profil és a felhasználói azonosító az Azure-notebookokhoz
 
 Azure notebookok hatékony, együttműködő címtéren belüli a felhasználói profil megadja a nyilvános kép mások számára:
 
-[![Aaz Azure-jegyzetfüzetek profillapján n](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
+[![Egy Azure-jegyzetfüzetek profillapján](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
 A felhasználói azonosító az URL-címeket, projektek és jegyzetfüzetek megosztási részét képezi. Az alábbi lista ismerteti a különböző URL-cím-minták:
 

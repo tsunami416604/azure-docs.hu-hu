@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 81005c2c95c9cccb32796d1afca4208f5ff8b919
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: b0b221a9fe6c6482e8759664c297dbd25d0ee776
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437339"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699270"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internetelérés nélküli számítógépek csatlakoztatása a Log Analytics-átjáró használatával az Azure monitorban
 
@@ -124,9 +124,9 @@ vagy
 1. A munkaterület panel alatt **beállítások**válassza **speciális beállítások**.
 1. Lépjen a **csatlakoztatott források** > **Windows kiszolgálók** válassza **töltse le a Log Analytics-átjáró**.
 
-## <a name="install-the-log-analytics-gateway"></a>A Log Analytics-átjáró telepítése
+## <a name="install-log-analytics-gateway-using-setup-wizard"></a>A telepítő varázsló segítségével a Log Analytics-átjáró telepítése
 
-Az átjáró telepítéséhez kövesse az alábbi lépéseket.  (Ha nevű Log Analytics-továbbító egy korábbi verzióját telepítette, akkor frissül erre a kiadásra.)
+A telepítővarázslóval átjáró telepítéséhez kövesse az alábbi lépéseket. 
 
 1. Kattintson duplán a célmappa **Log Analytics gateway.msi**.
 1. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
@@ -152,6 +152,40 @@ Az átjáró telepítéséhez kövesse az alábbi lépéseket.  (Ha nevű Log An
 
    ![Képernyőfelvétel a helyi szolgáltatások, hogy az OMS-átjáró fut.](./media/gateway/gateway-service.png)
 
+## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>A parancssor használatával Log Analytics-átjáró telepítése
+Az átjáró a letöltött fájl egy Windows Installer-csomag, amely támogatja a beavatkozás nélküli telepítés a parancssorból vagy más automatizált módon. Ha nem ismeri a Windows Installer standard parancssori kapcsolók, lásd: [parancssori kapcsolók](https://docs.microsoft.com/windows/desktop/Msi/command-line-options).   
+
+Az alábbi táblázat a telepítő által támogatott paraméterek emeli ki.
+
+|Paraméterek| Megjegyzések|
+|----------|------| 
+|PORTSZÁM | TCP-port száma átjáró figyelésére |
+|PROXY | Proxy-kiszolgáló IP-címe |
+|INSTALLDIR | Adja meg a szoftverfrissítési fájlok átjáró telepítési könyvtár teljes elérési útja |
+|FELHASZNÁLÓNÉV | A proxykiszolgáló hitelesítéséhez a felhasználói azonosító |
+|JELSZÓ | A felhasználó azonosító proxy hitelesítése |
+|LicenseAccepted | Adjon meg egy értéket a **1** , győződjön meg arról, hogy fogadja el a licencszerződést |
+|HASAUTH | Adjon meg egy értéket a **1** amikor megadott felhasználónév/jelszó paramétereit |
+|HASPROXY | Adjon meg egy értéket a **1** IP-cím megadásakor **PROXY** paraméter |
+
+Csendes telepítse az átjárót, és konfigurálja azt a megadott proxycím, portszám, írja be a következőt:
+
+```dos
+Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+```
+
+A telepítő a /qn parancssori kapcsolóval elrejtése, /qb beavatkozás nélküli telepítés során a telepítő jeleníti meg.  
+
+Ha a hitelesítő adatok a proxy-hitelesítésre van szüksége, írja be a következőt:
+
+```dos
+Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+```
+
+A telepítés után ellenőrizheti a beállítások elfogadva (kivételével a felhasználónév és jelszó) a következő PowerShell-parancsmagok használatával:
+
+- **Get-OMSGatewayConfig** – az átjáró a konfigurációja szerint a TCP-portot adja vissza.
+- **Get-OMSGatewayRelayProxy** – be vannak állítva ezek kommunikálni a proxykiszolgáló IP-címét adja vissza.
 
 ## <a name="configure-network-load-balancing"></a>Hálózati terheléselosztás beállítása 
 Az átjáró magas rendelkezésre álláshoz használatával a hálózati terheléselosztás (NLB) vagy a Microsoft segítségével konfigurálhatja [hálózati terheléselosztás (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), [Azure Load Balancer](../../load-balancer/load-balancer-overview.md), vagy a hardveres terheléselosztók. A terheléselosztó forgalmat kezeli a csomópontok között a Log Analytics-ügynökök kért kapcsolatot, vagy az Operations Manager felügyeleti kiszolgálók átirányításával. Egy átjáró kiszolgáló leáll, ha más csomópontokhoz átirányítja a forgalmat.

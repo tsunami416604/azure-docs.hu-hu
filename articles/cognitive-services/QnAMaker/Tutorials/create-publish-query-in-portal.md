@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: diberry
 ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266953"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Oktatóanyag: A QnA Maker Portalról Tudásbázis létrehozása
@@ -67,7 +67,7 @@ Ehhez az oktatóanyaghoz egy meglévő [QnA Maker-szolgáltatásra](../How-To/se
     |Beállítás neve|Beállítás értéke|Cél|
     |--|--|--|
     |URL-cím|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |A megadott URL-címen található GYIK tartalma kérdés-válasz formátumú. A QnA Maker ebből a formátumból tudja kinyerni a kérdéseket és az azokhoz tartozó válaszokat.|
-    |Fájl |_Ebben az oktatóanyagban nincs használatban_|Itt tölthetők fel a kérdéseket és válaszokat tartalmazó fájlok. |
+    |Fájl |_ebben az oktatóanyagban nincs használatban_|Itt tölthetők fel a kérdéseket és válaszokat tartalmazó fájlok. |
     |Chit-chat personality (Csevegő személyisége)|The friend (A barát)|Ezzel barátságos, laza stílust kölcsönözhet a gyakori kérdéseknek és válaszoknak. A kérdéseket és válaszokat később szerkesztheti. |
 
     ![A tudásbázis létrehozásának 4. lépése](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)

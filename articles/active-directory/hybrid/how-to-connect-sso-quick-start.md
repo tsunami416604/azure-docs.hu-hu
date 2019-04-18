@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f8483eb0ce8f5ea890e453828d36afda61ef86f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 06566ab81b6af847a7eb174731105b7f43a7197f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256889"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680900"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Első lépések
 
@@ -93,7 +93,7 @@ Kövesse az alábbi utasításokat, győződjön meg arról, hogy engedélyezte 
 ![Az Azure Portalon: Az Azure AD Connect panel](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Közvetlen egyszeri bejelentkezés nevű számítógép-fiókot hoz létre `AZUREADSSOACC` a helyszíni Active Directory (AD) minden olyan AD-erdőben. A `AZUREADSSOACC` számítógépfiók biztonsági okokból erősen védeni kell. Csak a tartományi rendszergazdák kezelése a számítógépfiók képesnek kell lennie. Győződjön meg arról, hogy a Kerberos-delegálás, a számítógép fiók le van tiltva. Store a számítógépfiókot a egy szervezeti egység (OU), ha azok véletlen törlések biztonságáról, és csak tartományi rendszergazdák hozzáférhetnek.
+> Közvetlen egyszeri bejelentkezés nevű számítógép-fiókot hoz létre `AZUREADSSOACC` a helyszíni Active Directory (AD) minden olyan AD-erdőben. A `AZUREADSSOACC` számítógépfiók biztonsági okokból erősen védeni kell. Csak a tartományi rendszergazdák kezelése a számítógépfiók képesnek kell lennie. Győződjön meg arról, hogy a Kerberos-delegálás, a számítógép fiók le van tiltva, és az Active Directoryban nincs más fiók rendelkezik a delegálási engedélyeit a `AZUREADSSOACC` számítógépfiókot. Store a számítógépfiókot a egy szervezeti egység (OU), ha azok véletlen törlések biztonságáról, és csak tartományi rendszergazdák hozzáférhetnek.
 
 >[!NOTE]
 > Annak érdekében, hogy ha a Pass-the-Hash és a hitelesítő adatok ellopásának kockázatcsökkentési architektúrák használ a helyszíni környezetben, megfelelő módosításokat a `AZUREADSSOACC` számítógépfiók végül nem a a karanténba helyezett tárolóra. 

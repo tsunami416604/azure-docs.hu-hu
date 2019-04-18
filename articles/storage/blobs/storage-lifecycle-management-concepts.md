@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: e6f4f1feb5c1c78e78ff5d71b08a0e8a40537d13
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 2de194e501c05ba0bdb9971ca6045e67a42b0fd9
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803260"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681726"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob storage, életciklus kezelése
 
@@ -45,7 +45,7 @@ Az életciklus szolgáltatást minden nyilvános Azure-régióban érhető el.
 Hozzáadása, szerkesztése vagy eltávolítani egy házirendet az Azure portal használatával [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases), az Azure CLI- [REST API-k](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies), vagy az ügyféleszközökben. Ez a cikk bemutatja, hogyan házirend kezelése a portálon és a PowerShell-módszer használatával.  
 
 > [!NOTE]
-> Ha engedélyezi a tűzfalszabályok a tárfiók, lifecycle management kérelmek blokkolhatja. Ezek a kérelmek azáltal, hogy kivételek blokkolásának feloldásához. További információkért tekintse meg a kivételek szakaszában [tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+> Ha engedélyezi a tűzfalszabályok a tárfiók, lifecycle management kérelmek blokkolhatja. Ezek a kérelmek azáltal, hogy kivételek blokkolásának feloldásához. A szükséges Mellőzés vannak: `Logging,  Metrics,  AzureServices`. További információkért tekintse meg a kivételek szakaszában [tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ### <a name="azure-portal"></a>Azure Portal
 

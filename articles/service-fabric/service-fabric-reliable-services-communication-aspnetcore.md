@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
 ms.openlocfilehash: 5a4b7514005da9e9a998dba014fa0ea6c014397a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268517"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core a Service Fabric Reliable Services
@@ -511,7 +511,7 @@ Ha több kívülről elérhetővé tett szolgáltatások ugyanazokat a csomópon
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Dinamikus portok hozzárendelés Ez a beállítás megakadályozza, hogy a korábban ismertetett garanciafeltételeknek identitás probléma. |
 
 ## <a name="next-steps"></a>További lépések
-[A Service Fabric-alkalmazás hibakeresése a Visual Studio használatával](service-fabric-debugging-your-application.md)
+[Service Fabric-alkalmazás hibakeresése a Visual Studióval](service-fabric-debugging-your-application.md)
 
 <!--Image references-->
 [0]:./media/service-fabric-reliable-services-communication-aspnetcore/webhost-standalone.png

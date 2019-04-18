@@ -11,10 +11,10 @@ ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 0e14131ce45d20b99c1b5d5885cb1eb24c975d03
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269112"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Gyors útmutató: Ismerkedés az Azure Search REST API-k Postman
@@ -228,7 +228,7 @@ Ez a lekérdezés a „motel” kifejezést keresi, és a találatokban szerepl�
 
 
 ## <a name="get-index-properties"></a>Index tulajdonságainak lekérése
-Rendszer-információk beolvasása a dokumentumok számát és a tárhelyhasználatot is lekérdezheti: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
+A rendszer-információk lekérdezésével a dokumentumok számát és a tárhelyhasználatot is lekérheti: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
 
 A Postmanben a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szerepleni fog a dokumentumok száma és a felhasznált lemezterület mérete bájtban megadva.
 
@@ -270,11 +270,11 @@ Cserélje a parancsot a **POST** parancsra. Módosítsa az URL-címet, hogy tart
 
 A következő példalekérdezés az [A keresési index működése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) cikkből származik. A cikkben szereplő számos példalekérdezés szóközt is tartalmaz, amely a Fiddler esetében nem engedélyezett. Minden szóközt cseréljen le + karakterre, mielőtt beillesztené a lekérdezési sztringet a lekérdezés Fiddler használatával történő megkísérléséhez.
 
-**Szóközök cseréje előtt (a lastRenovationDate desc):**
+**A szóközök cseréje előtt (a „lastRenovationDate desc” részben):**
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
 
-**Miután a szóközök cseréje a + (a lastRenovationDate + desc):**
+**A szóközök + jelre cserélése után (a „lastRenovationDate+desc” részben):**
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
 
@@ -286,8 +286,8 @@ A Fiddlerben kattintson az **Inspectors** (Vizsgálók), majd a **Headers** (Fej
 
 A REST-ügyfelek rendkívül hasznosak a rögtönzött vizsgálatokhoz, most azonban, hogy már ismeri a REST API-k működését, folytathatja a kódolást. A következő lépésekért lásd az alábbi hivatkozásokat:
 
-+ [Gyors útmutató: -Index létrehozása .NET SDK használatával](search-create-index-dotnet.md)
-+ [Gyors útmutató: Hozzon létre az indexekben (REST) PowerShell-lel](search-create-index-rest-api.md)
++ [Rövid útmutató: -Index létrehozása .NET SDK használatával](search-create-index-dotnet.md)
++ [Rövid útmutató: Hozzon létre az indexekben (REST) PowerShell-lel](search-create-index-rest-api.md)
 
 <!--Image References-->
 [1]: ./media/search-fiddler/fiddler-url.png

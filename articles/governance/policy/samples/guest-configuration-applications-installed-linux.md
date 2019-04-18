@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 03/18/2019
 ms.author: dacoulte
 ms.openlocfilehash: b432d8557c4244d58c23e7b068874dd747f6249f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59256464"
 ---
 # <a name="sample---audit-if-specified-applications-are-not-installed-inside-linux-vms"></a>Minta - naplózási, ha a megadott alkalmazások nem települnek a Linux rendszerű virtuális gépeken belül
@@ -33,9 +33,9 @@ Ez a minta használatával rendelheti hozzá:
 Ez [Vendég konfigurációs](../concepts/guest-configuration.md) kezdeményezés a következő házirendek épül fel:
 
 - [naplózási](#audit-definition) –, hogy az alkalmazás telepítve van-e belül Linux rendszerű virtuális gépek naplózása
-  - Azonosító: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
+  - ID: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
 - [deployIfNotExists](#deployIfNotExists-definition) -üzembe helyezése Virtuálisgép-bővítményt, hogy az alkalmazás telepítve van-e belül Linux rendszerű virtuális gépek naplózása
-  - Azonosító: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
+  - ID: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
 
 ### <a name="initiative-definition"></a>Kezdeményezési definíció
 

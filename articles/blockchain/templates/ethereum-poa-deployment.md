@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
 ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274790"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>A koncepció jogosultság consortium Ethereum
@@ -218,7 +218,7 @@ Jelszó (hitelesítési típus = jelszó)|Az egyes üzembe helyezett virtuális 
 SSH-kulcs (hitelesítési típus = a nyilvános kulcs)|A secure shell-kulcsot a távoli bejelentkezéshez használt.||NA
 Előfizetés|Az előfizetés, melyben szeretné üzembe helyezni a consortium network||NA
 Erőforráscsoport|Az erőforráscsoport, melyben szeretné üzembe helyezni a consortium network.||NA
-Hely|Az Azure-régió erőforráscsoport.||NA
+Földrajzi egység|Az Azure-régió erőforráscsoport.||NA
 
 Üzembe helyezési minta az alább látható: ![alapszintű panel](./media/ethereum-poa-deployment/basic-blade.png)
 
@@ -252,7 +252,7 @@ Egyes paraméterek részletes leírását a következő:
   Érvényesítési csomópont tároló-teljesítményre|A telepített érvényesítő csomópontok biztonsági felügyelt lemez típusa.|Standard SSD- vagy prémium|Standard SSD
   Érvényesítési csomópont virtuális gépének mérete|Az érvényesítő csomópontok használt virtuálisgép-méretet.|Standard A, Standard D, Standard D-v2, Standard F sorozat, Standard DS és a Standard FS|Standard D1 v2
 
-[A Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)
+[A Storage szolgáltatás díjszabását.](https://azure.microsoft.com/pricing/details/managed-disks/)
 
 [Virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
 

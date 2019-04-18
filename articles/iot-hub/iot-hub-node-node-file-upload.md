@@ -10,10 +10,10 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.openlocfilehash: 7ad2c9dd89843a36a786eeefee8403d32027e11c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274518"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Töltse fel a fájlokat az eszközről a felhőbe, az IoT hubbal
@@ -216,6 +216,6 @@ A portál használatával beállított storage-tárolót a feltöltött fájl me
 
 Ebben az oktatóanyagban megtudhatta, hogyan egyszerűsítheti a fájlok feltöltése eszközökről a fájl feltöltése képességeit az IoT Hub használatával. Folytathatja az IoT hub szolgáltatásainak, és az ezekben a cikkekben forgatókönyvek megismerése:
 
-*  [IoT hub létrehozása programokon keresztül](iot-hub-rm-template-powershell.md)
-*  [Alapvető ismeretek az C SDK-ról](iot-hub-device-sdk-c-intro.md)
+*  [IoT hub létrehozása programozott módon](iot-hub-rm-template-powershell.md)
+*  [Bevezetés a C SDK-t](iot-hub-device-sdk-c-intro.md)
 *  [Azure IoT SDK-k](iot-hub-devguide-sdks.md)

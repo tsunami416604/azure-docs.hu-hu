@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: rimman
 ms.openlocfilehash: ecf53251020ce1b639a5bf8da65f5d31ff699db9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265695"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Az Azure Cosmos DB - indexelő áttekintése
@@ -58,7 +58,7 @@ Az egy sortartomány-lekérdezés *GermanTax* van egy [felhasználó által defi
 
 További információ az indexelő az alábbi cikkeket:
 
-- [Indexelési szabályzat](index-policy.md)
-- [Indextípusok](index-types.md)
-- [Indexek elérési útjai](index-paths.md)
+- [Indexelési házirend](index-policy.md)
+- [Index típusa](index-types.md)
+- [Index elérési utak](index-paths.md)
 - [Indexelési házirend kezelése](how-to-manage-indexing-policy.md)

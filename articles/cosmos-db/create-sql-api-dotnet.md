@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/05/2019
 ms.openlocfilehash: 7ecb2269243ae96b629a20a26956e6220a2e616c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280842"
 ---
 # <a name="quickstart-build-a-net-web-app-using-sql-api-account-in-azure-cosmos-db"></a>Gyors útmutató: Egy .NET-webalkalmazás létrehozása az Azure Cosmos DB SQL API-fiók használatával
@@ -62,10 +62,10 @@ Az Azure Portalon az adatkezelő segítségével hozzon létre egy adatbázist �
     
     |Beállítás|Ajánlott érték|Leírás
     |---|---|---|
-    |**Adatbázis azonosítója**|Teendők|Adja meg *ToDoList* az új adatbázis számára. Adatbázis neve 1 és 255 karakter között kell tartalmaznia, és nem tartalmazhat `/, \\, #, ?`, vagy záró szóközt.|
-    |**Katalógus azonosítója**|Elemek|Az új gyűjteménynek adja az *Elemek* nevet. A gyűjteményazonosítók ugyanazok a Karakterkorlátozások vonatkoznak, mint az adatbázis neve.|
+    |**Adatbázis-azonosító**|Teendők|Adja meg *ToDoList* az új adatbázis számára. Adatbázis neve 1 és 255 karakter között kell tartalmaznia, és nem tartalmazhat `/, \\, #, ?`, vagy záró szóközt.|
+    |**Gyűjtemény azonosítója**|Elemek|Az új gyűjteménynek adja az *Elemek* nevet. A gyűjteményazonosítók ugyanazok a Karakterkorlátozások vonatkoznak, mint az adatbázis neve.|
     |**Partíciókulcs**| /kategória| A cikkben bemutatott példa */category* partíciókulcsként.|
-    |**Teljesítmény**|400|Hagyja meg az átviteli sebesség 400 kérelemegység / másodperc (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.| 
+    |**Átviteli sebesség**|400|Hagyja meg az átviteli sebesség 400 kérelemegység / másodperc (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.| 
     
     Ne adjon **egyedi kulcsok** ebben a példában. Egyedi kulcsok segítségével adhat hozzá egy adatintegritási réteget az adatbázis úgy, hogy egy vagy több értéket partíció kulcsonként egyediségét. További információkért lásd: [Azure Cosmos DB-ben egyedi kulcsaival](unique-keys.md).
     

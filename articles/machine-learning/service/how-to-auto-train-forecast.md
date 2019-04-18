@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: e1b584d38c4583e37b7c47535c836d1fa7d428f1
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: c4f94dd2730dd302951b4476a292b006041b7ee8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357248"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680859"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatikus – train idősorozat-előrejelzési modell
 
@@ -34,27 +34,27 @@ Ebből a cikkből elsajátíthatja egy idősorozat-előrejelzési regressziós m
 
 A legfontosabb különbség a között egy előrejelzési regressziós feladattípus és regressziós feladattípus belüli automatikus gépi tanulási közé a következők tartoznak egyik funkciója, amely érvényes az idősor lépésközi jelöli az adatok. Rendszeres idősorozat tartalmaz egy jól definiált és konzisztens gyakoriság és egy értéket egy folyamatos azt az időtartományt a minta pontjára. Fontolja meg egy fájl a következő pillanatkép `sample.csv`.
 
-    week_starting,store,sales_quantity,week_of_year
+    day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
     9/3/2018,B,600,36
-    9/10/2018,A,2300,37
-    9/10/2018,B,550,37
-    9/17/2018,A,2100,38
-    9/17/2018,B,650,38
-    9/24/2018,A,2400,39
-    9/24/2018,B,700,39
-    10/1/2018,A,2450,40
-    10/1/2018,B,650,40
+    9/4/2018,A,2300,36
+    9/4/2018,B,550,36
+    9/5/2018,A,2100,36
+    9/5/2018,B,650,36
+    9/6/2018,A,2400,36
+    9/6/2018,B,700,36
+    9/7/2018,A,2450,36
+    9/7/2018,B,650,36
 
-Ez az adatkészlet egy vállalat, amely rendelkezik a és B. emellett két különböző áruházakban heti értékesítési adatok egy egyszerű példa, van egy funkciót `week_of_year` , amely lehetővé teszi a modell heti szezonalitás észleléséhez. A mező `week_starting` jelenti egy tiszta idősorozat heti gyakorisággal, és a mező `sales_quantity` a futó előrejelzések a céloszlop van. Az adatok olvasása a Pandas dataframe-be, majd használja a `to_datetime` függvényt, hogy az idősorozat-e, egy `datetime` típusa.
+Ez az adatkészlet napi értékesítési adatok egy vállalat, amely rendelkezik a és B. emellett két különböző tárolók egyszerű példát, van egy funkció `week_of_year` , amely lehetővé teszi a modell heti szezonalitás észleléséhez. A mező `day_datetime` jelenti egy tiszta idősorozat napi gyakorisággal, és a mező `sales_quantity` a futó előrejelzések a céloszlop van. Az adatok olvasása a Pandas dataframe-be, majd használja a `to_datetime` függvényt, hogy az idősorozat-e, egy `datetime` típusa.
 
 ```python
 import pandas as pd
 data = pd.read_csv("sample.csv")
-data["week_starting"] = pd.to_datetime(data["week_starting"])
+data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-Ebben az esetben az adatok lett rendezve az idő mező szerint növekvő `week_starting`. Ugyanakkor kísérlet beállításakor biztosítják a kívánt időre oszlop növekvő sorrendben hozhat létre egy érvényes idősorozat van rendezve. Feltételezik, hogy az adatok 1000 rekordot tartalmaz, és adja meg a determinisztikus felosztása a képzés és az adatkészletek az adatokat. A célmező majd külön `sales_quantity` hozhat létre, az előrejelzési tanítási és tesztelési állítja be.
+Ebben az esetben az adatok lett rendezve az idő mező szerint növekvő `day_datetime`. Ugyanakkor kísérlet beállításakor biztosítják a kívánt időre oszlop növekvő sorrendben hozhat létre egy érvényes idősorozat van rendezve. Feltételezik, hogy az adatok 1000 rekordot tartalmaz, és adja meg a determinisztikus felosztása a képzés és az adatkészletek az adatokat. A célmező majd külön `sales_quantity` hozhat létre, az előrejelzési tanítási és tesztelési állítja be.
 
 ```python
 X_train = data.iloc[:950]
@@ -84,14 +84,18 @@ A `AutoMLConfig` objektuma határozza meg a beállításokat és a egy automatiz
 |`time_column_name`|Itt adhatja meg a dátum/idő oszlop a bemeneti adatok az idősor és annak gyakoriságát adatcsatornához.|✓|
 |`grain_column_names`|Az egyes adatsorozat-csoportok meghatározása a bemeneti adatok neve. Időfelbontási szint nincs definiálva, ha az adatkészlet adatforrásmérete egy idősorozat.||
 |`max_horizon`|Maximálisan keresett előrejelzési horizon idősorozat-gyakoriság egysége.|✓|
+|`target_lags`|*n* előre eltolódást időszakok célértéket modell betanítása előtt.||
+|`target_rolling_window_size`|*n* előre jelzett értékek generálásához használt korábbi időszakok < = képzési mérete. Ha nincs megadva, *n* értéke a teljes képzési méretét.||
 
-Hozzon létre egy szótárobjektum az idősorozat-beállításokat. Állítsa be a `time_column_name` , a `week_starting` mezőt az adatkészlet. Adja meg a `grain_column_names` annak érdekében, hogy a paraméter **két különálló idősorozat-csoportok** jönnek létre az adatok; az egyik az áruházban A, b végül beállítása a `max_horizon` 50 annak érdekében, hogy előre jelezni a teljes vizsgálat beállítása.
+Hozzon létre egy szótárobjektum az idősorozat-beállításokat. Állítsa be a `time_column_name` , a `day_datetime` mezőt az adatkészlet. Adja meg a `grain_column_names` annak érdekében, hogy a paraméter **két különálló idősorozat-csoportok** jönnek létre az adatok; az egyik az áruházban A, b végül beállítása a `max_horizon` 50 annak érdekében, hogy előre jelezni a teljes vizsgálat beállítása. Előrejelzési időszak megadása az 10 időszakokra `target_rolling_window_size`, és a célként megadott értékek 2 időszak sikerét lag a `target_lags` paraméter.
 
 ```python
 time_series_settings = {
-    "time_column_name": "week_starting",
+    "time_column_name": "day_datetime",
     "grain_column_names": ["store"],
-    "max_horizon": 50
+    "max_horizon": 50,
+    "target_lags": 2,
+    "target_rolling_window_size": 10
 }
 ```
 
@@ -141,11 +145,11 @@ rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-Most, hogy a teljes modellpontosságból meghatározása, a legtöbb valósághű következő lépés az, hogy a modell használatával előrejelzést ismeretlen jövőbeli értékek. Egyszerűen adja meg a teszt beállított ugyanebben a formátumban adatkészlet `X_test` , de a jövőbeli időpontok és az eredményül kapott előrejelzési beállítása az előre jelzett értékek mindegyik idősorozat-lépéshez. Tegyük fel, a hét indítása volt az adatkészlet utolsó idősorozat-rekordjai 12/31/2018. A következő hét iránti kereslet előrejelzése (vagy az előrejelzéshez az igény szerint annyi időt, < = `max_horizon`), hozzon létre egy sorozat rekord időt az egyes üzletek a hét indítása 01/07/2019.
+Most, hogy a teljes modellpontosságból meghatározása, a legtöbb valósághű következő lépés az, hogy a modell használatával előrejelzést ismeretlen jövőbeli értékek. Egyszerűen adja meg a teszt beállított ugyanebben a formátumban adatkészlet `X_test` , de a jövőbeli időpontok és az eredményül kapott előrejelzési beállítása az előre jelzett értékek mindegyik idősorozat-lépéshez. Tegyük fel, a az adatkészlet utolsó idősorozat-rekordokat is 12/31/2018. A következő nap iránti kereslet előrejelzése (vagy az előrejelzéshez az igény szerint annyi időt, < = `max_horizon`), hozzon létre egy sorozat rekord időt az egyes üzletek 01/01/2019 esetében.
 
-    week_starting,store,week_of_year
-    01/07/2019,A,2
-    01/07/2019,A,2
+    day_datetime,store,week_of_year
+    01/01/2019,A,1
+    01/01/2019,A,1
 
 Ismételje meg a szükséges lépéseket, majd futtassa a jövőbeli adatok betöltése az dataframe `best_run.predict(X_test)` előre jelezni a jövőbeli értékeket.
 

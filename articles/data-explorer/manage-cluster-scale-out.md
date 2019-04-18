@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261598"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Fürt horizontális felskálázás változó igényeket elégíthet kezelése
@@ -47,17 +47,17 @@ A következő ábrán látható a folyamat a következő néhány lépést. Tov�
     | **Idő összesítése** | Válassza ki például egy összesítő feltételek **átlagos**. |
     | **Metrika neve** | Válassza ki a kívánt kell alapulnia, például a skálázási művelet **gyorsítótár-kihasználtság**. |
     | **Időfelbontási szint statisztikája** | Választhat **átlagos**, **minimális**, **maximális**, és **Sum**. |
-    | **Művelet** | Válassza ki a megfelelő beállítást, például **nagyobb vagy egyenlő**. |
+    | **Operátor** | Válassza ki a megfelelő beállítást, például **nagyobb vagy egyenlő**. |
     | **Küszöbérték** | Válasszon egy megfelelő értéket. Gyorsítótár-kihasználtság, például a 80 %-a egy jó kiindulási pont. |
     | **Időtartam (perc)** | Válassza ki a megfelelő összeget, és tekintse meg a vissza mérőszámok kiszámításakor a rendszer. Indítsa el az alapértelmezett 10 perc. |
     |  |  |
 
-    **Műveletek**
+    **Művelet**
 
     | Beállítás | Leírás és érték |
     | --- | --- |
     | **Művelet** | Válassza ki a megfelelő beállítást a vertikális vagy horizontális felskálázás. |
-    | **Példányszám** | Válassza ki a csomópontok vagy hozzáadása vagy eltávolítása metrikai feltétel teljesülésekor kívánt példányok számát. |
+    | **Példányok száma** | Válassza ki a csomópontok vagy hozzáadása vagy eltávolítása metrikai feltétel teljesülésekor kívánt példányok számát. |
     | **Lehűlés (percben)** | Válasszon egy megfelelő várakozási időköz a skálázási műveletek között. Indítsa el az alapértelmezett öt perc alatt. |
     |  |  |
 
@@ -67,7 +67,7 @@ A következő ábrán látható a folyamat a következő néhány lépést. Tov�
 
     | Beállítás | Leírás és érték |
     | --- | --- |
-    | **Minimális** | A fürt nem méretezhető alább függetlenül kihasználtsági példányok száma. |
+    | **Minimum** | A fürt nem méretezhető alább függetlenül kihasználtsági példányok száma. |
     | **Maximum** | A fürt nem méretezhető felett, függetlenül a kihasználtság példányok száma. |
     | **Alapértelmezett** | Példányok alapértelmezett száma. Ezt a beállítást használja, ha problémák adódnak az erőforrás-metrikák olvasása. |
     |  |  |

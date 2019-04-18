@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271628"
 ---
 # <a name="table-design-patterns"></a>Táblatervezési minták
@@ -197,7 +197,7 @@ Vezetéknév keresési engedélyezése a fenti entitás struktúrával, meg kell
 * Hozzon létre index entitások az alkalmazottak entitásokként ugyanazon a partíción.  
 * Index entitások létrehozása egy külön partíciót vagy tábla.  
 
-<u>#1. lehetőség: Blob Storage használata</u>  
+<u>#1. lehetőség: Blob storage használata</u>  
 
 Az első lehetőség, akkor hozzon létre minden egyedi Vezetéknév, és minden egyes blob-tárolóban lévő blobok listáját a **PartitionKey** (részleg) és **RowKey** (alkalmazott azonosítója) értékét az alkalmazottak a múlt nevet. Hozzáadásakor, vagy egy alkalmazott törlése biztosítania kell, hogy idővel konzisztenssé váljanak az alkalmazott entitások-e a megfelelő blob tartalmát.  
 
@@ -1108,7 +1108,7 @@ Az ügyfélalkalmazás több aszinkron metódusok ehhez hasonló meghívhatja, �
 
 ## <a name="next-steps"></a>További lépések
 
-- [Kapcsolatok modellezése](table-storage-design-modeling.md)
-- [Tervezés lekérdezéshez](table-storage-design-for-query.md)
-- [Táblaadatok titkosítása](table-storage-design-encrypt-data.md)
-- [Tervezés adatmódosításhoz](table-storage-design-for-modification.md)
+- [Kapcsolatok modellezését](table-storage-design-modeling.md)
+- [Lekérdezés tervezése](table-storage-design-for-query.md)
+- [Táblák adatainak titkosítása](table-storage-design-encrypt-data.md)
+- [Adatmódosítás tervezése](table-storage-design-for-modification.md)

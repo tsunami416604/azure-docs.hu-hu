@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: e93a81f2c081daa58a37b1e2823d7bf0cc5a6361
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e05998f74223ead6bb4e94b86469e51791e0263f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883113"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678564"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker-tárolók konfigurálása 
 
@@ -30,23 +30,23 @@ Ez a tároló a következő konfigurációs beállításokkal rendelkezik:
 |--|--|--|
 |Igen|[ApiKey](#apikey-setting)|Számlázási adatok nyomon követésére szolgál.|
 |Nem|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi, hogy [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetriai támogatása a tárolóba.|
-|Igen|[Számlázás](#billing-setting)|Az Azure-ban található szolgáltatás-erőforrás végponti URI-ját adja meg.|
+|Igen|[Billing](#billing-setting)|Az Azure-ban található szolgáltatás-erőforrás végponti URI-ját adja meg.|
 |Igen|[Eula](#eula-setting)| Azt jelzi, hogy Ön már elfogadta a tároló licencét.|
 |Nem|[Fluentd](#fluentd-settings)|Napló írási és opcionálisan metrikaadatok Fluentd kiszolgálóhoz.|
 |Nem|[Http Proxy](#http-proxy-credentials-settings)|Egy HTTP-proxy konfigurálása, hogy a kimenő kérelmek.|
-|Nem|[Naplózás](#logging-settings)|Biztosítja a naplózás a tároló támogatása ASP.NET Core. |
-|Igen|[Csatlakoztatja](#mount-settings)|Napló- és opcionálisan metrikaadatok írása egy Fluentd-kiszolgálóra.|
+|Nem|[Logging](#logging-settings)|Biztosítja a naplózás a tároló támogatása ASP.NET Core. |
+|Ige|[Fluentd](#mount-settings)|Napló- és opcionálisan metrikaadatok írása egy Fluentd-kiszolgálóra.|
 
 > [!IMPORTANT]
 > A [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), és [ `Eula` ](#eula-setting) beállítások együtt használja, és meg kell adnia az érvényes értékek mindhárom azokat; egyéb a tároló nem indul el. Egy tároló példányosítása a konfigurációs beállítások használatával kapcsolatos további információkért lásd: [számlázási](luis-container-howto.md#billing).
 
 ## <a name="apikey-setting"></a>A beállítás apikey tulajdonsággal végzett tesztelése
 
-A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a apikey tulajdonsággal végzett tesztelése és az értéknek kell lennie egy érvényes kulcsot a _Language Understanding_ megadott erőforrás a [ `Billing` ](#billing-setting) konfigurációs beállítás.
+A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a apikey tulajdonsággal végzett tesztelése és az értéknek kell lennie egy érvényes kulcsot a _Cognitive Services_ megadott erőforrás a [ `Billing` ](#billing-setting) konfigurációs beállítás.
 
 Ez a beállítás a következő helyen található:
 
-* Az Azure Portalon: **Language Understanding** erőforrás-kezelés alatt **kulcsok**
+* Az Azure Portalon: **A cognitive Services** erőforrás-kezelés alatt **kulcsok**
 * A LUIS-portálon: **Kulcsok és végpontbeállítások** lapot. 
 
 Ne használja az alapszintű vagy a szerzői műveletekhez részben billentyűt. 
@@ -57,12 +57,15 @@ Ne használja az alapszintű vagy a szerzői műveletekhez részben billentyűt.
 
 ## <a name="billing-setting"></a>Számlázás beállítása
 
-A `Billing` beállítás határozza meg a végpont URI-t, a _Language Understanding_ erőforrást az Azure-ban használt mérni a tároló számlázási adatokat. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie egy érvényes végpont URI-t a egy _Language Understanding_ erőforrást az Azure-ban. A tároló használati jelentések kapcsolatos 10 – 15 percenként.
+A `Billing` beállítás határozza meg a végpont URI-t, a _Cognitive Services_ erőforrást az Azure-ban használt mérni a tároló számlázási adatokat. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie egy érvényes végpont URI-t a egy _Cognitive Services_ erőforrást az Azure-ban. A tároló használati jelentések kapcsolatos 10 – 15 percenként.
 
 Ez a beállítás a következő helyen található:
 
-* Az Azure Portalon: **Language Understanding** áttekintése, címkével `Endpoint`
+* Az Azure Portalon: **A cognitive Services** áttekintése, címkével `Endpoint`
 * A LUIS-portálon: **Kulcsok és végpontbeállítások** lap, a végpont URI részeként.
+
+Ne felejtse el bevenni a `luis/v2.0` útválasztási az URL-cím, az alábbi táblázatban látható módon:
+
 
 |Szükséges| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
@@ -109,16 +112,18 @@ Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs
 * **Vonal-folytatási karakter**: Az alábbi szakaszok a docker-parancsokat használhatja a fordított perjel `\`, egy sor folytatási karaktert. Cserélje le, vagy távolítsa el ezt a gazdagép operációs rendszerre vonatkozó követelmények alapján. 
 * **Argument sorrend**: Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
 
+Ne felejtse el bevenni a `luis/v2.0` útválasztási az URL-cím, az alábbi táblázatban látható módon.
+
 Cserélje le a(z)_argument_name_} a saját értékeire:
 
 | Helyőrző | Érték | Formátum vagy példa |
 |-------------|-------|---|
 |{ENDPOINT_KEY} | A végpont kulcs a betanított LUIS-alkalmazás. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT} | A számlázási végpont értékét az Azure Portalon Language Understanding áttekintése oldalon érhető el.|https://westus.api.cognitive.microsoft.com/luis/v2.0|
+|{BILLING_ENDPOINT} | Az Azure-ban érhető el a számlázási végpontértéknek `Cognitive Services` – áttekintés oldalra. |https://westus.api.cognitive.microsoft.com/luis/v2.0|
 
 > [!IMPORTANT]
 > A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](luis-container-howto.md#billing).
-> Apikey tulajdonsággal végzett tesztelése értéke a **kulcs** a kulcsok és a végpontok lapon a LUIS-portálon, és érhető el az Azure Language Understanding Resource kulcsok oldalon is. 
+> Apikey tulajdonsággal végzett tesztelése értéke a **kulcs** a kulcsok és a végpontok lapon a LUIS-portálon, és is elérhető az Azure a `Cognitive Services` erőforráslapján kulcsok. 
 
 ### <a name="basic-example"></a>Alapszintű példa
 
