@@ -45,7 +45,7 @@ Társított Azure Search szolgáltatás az alábbi tulajdonságok támogatottak:
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **AzureSearch** | Igen |
 | url | Az Azure Search szolgáltatás URL-címe. | Igen |
-| kulcs | Az Azure Search szolgáltatás rendszergazdai kulcsa. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| key | Az Azure Search szolgáltatás rendszergazdai kulcsa. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 > [!IMPORTANT]
@@ -113,8 +113,8 @@ Az adatok másolása az Azure Search szolgáltatásba, állítsa be a forrás t�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **AzureSearchIndexSink** | Igen |
-| WriteBehavior | Megadja, hogy egyesítéséhez, vagy cserélje le, amikor a dokumentum az indexben már létezik. Tekintse meg a [WriteBehavior tulajdonság](#writebehavior-property).<br/><br/>Engedélyezett értékek a következők: **Egyesítse** (alapértelmezett), és **feltöltése**. | Nem |
-| WriteBatchSize | Amikor a puffer mérete eléri a writeBatchSize feltölti az adatokat az Azure Search-indexbe. Tekintse meg a [WriteBatchSize tulajdonság](#writebatchsize-property) részleteiről.<br/><br/>Engedélyezett értékek a következők: egész szám 1, 1000; alapértelmezett érték 1000. | Nem |
+| writeBehavior | Megadja, hogy egyesítéséhez, vagy cserélje le, amikor a dokumentum az indexben már létezik. Tekintse meg a [WriteBehavior tulajdonság](#writebehavior-property).<br/><br/>Engedélyezett értékek a következők: **Egyesítse** (alapértelmezett), és **feltöltése**. | Nem |
+| writeBatchSize | Amikor a puffer mérete eléri a writeBatchSize feltölti az adatokat az Azure Search-indexbe. Tekintse meg a [WriteBatchSize tulajdonság](#writebatchsize-property) részleteiről.<br/><br/>Engedélyezett értékek a következők: egész szám 1, 1000; alapértelmezett érték 1000. | Nem |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
 
@@ -173,9 +173,9 @@ Az alábbi tábla meghatározza, hogy egy Azure Search adattípus támogatott-e,
 | Int32 | I |
 | Int64 | I |
 | Double | I |
-| Logikai | I |
+| Boolean | I |
 | DataTimeOffset | I |
-| Karakterlánc-tömbben | N |
+| String Array | N |
 | GeographyPoint | N |
 
 ## <a name="next-steps"></a>További lépések
