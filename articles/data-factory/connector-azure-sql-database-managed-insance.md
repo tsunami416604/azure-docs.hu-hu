@@ -54,9 +54,9 @@ Az Azure SQL Database felügyelt példányába társított szolgáltatás a köv
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot állítsa **SqlServer**. | Igen. |
-| kapcsolati Sztringje |Ez a tulajdonság határozza meg a connectionString információkat, amelyeket a példányhoz való csatlakozáshoz a felügyelt SQL-hitelesítés vagy a Windows-hitelesítés használatával. További információkért lásd az alábbi példákat. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó is helyezheti az Azure Key Vaultban, és ha az SQL-hitelesítés lekéréses a `password` konfigurációs ki a kapcsolati karakterláncot. A táblázat alatti a JSON-példa és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. |Igen. |
-| Felhasználónév |Ez a tulajdonság egy felhasználónevét határozza meg, ha a Windows-hitelesítést használ. Például **domainname\\felhasználónév**. |Nem. |
-| jelszó |Ez a tulajdonság határozza meg a felhasználói fiók a megadott felhasználónévhez tartozó jelszót. Válassza ki **SecureString** a connectionString információkat tárolja biztonságos helyen a Data Factoryban való vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Nem. |
+| connectionString |Ez a tulajdonság határozza meg a connectionString információkat, amelyeket a példányhoz való csatlakozáshoz a felügyelt SQL-hitelesítés vagy a Windows-hitelesítés használatával. További információkért lásd az alábbi példákat. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó is helyezheti az Azure Key Vaultban, és ha az SQL-hitelesítés lekéréses a `password` konfigurációs ki a kapcsolati karakterláncot. A táblázat alatti a JSON-példa és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. |Igen. |
+| userName |Ez a tulajdonság egy felhasználónevét határozza meg, ha a Windows-hitelesítést használ. Például **domainname\\felhasználónév**. |Nem. |
+| password |Ez a tulajdonság határozza meg a felhasználói fiók a megadott felhasználónévhez tartozó jelszót. Válassza ki **SecureString** a connectionString információkat tárolja biztonságos helyen a Data Factoryban való vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Nem. |
 | connectVia | Ez [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódásra szolgál. A felügyelt példányt az azonos virtuális hálózatba a saját üzemeltetésű integrációs modul üzembe helyezése. |Igen. |
 
 >[!TIP]
@@ -282,7 +282,7 @@ Adatok másolása az Azure SQL Database felügyelt példányába, állítsa a fo
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó típusa tulajdonságát állítsa **SqlSink**. | Igen. |
-| WriteBatchSize |Az SQL-táblába beilleszti sorok száma **kötegenként**.<br/>Megengedett értékek: sorok számának egész számok. |Nem (alapértelmezett: 10,000). |
+| writeBatchSize |Az SQL-táblába beilleszti sorok száma **kötegenként**.<br/>Megengedett értékek: sorok számának egész számok. |Nem (alapértelmezett: 10,000). |
 | writeBatchTimeout |Ez a tulajdonság határozza meg a várakozási idő a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot.<br/>Megengedett értékek: az időtartam. Például "00: 30:00," vagyis 30 perc. |Nem. |
 | preCopyScript |Ez a tulajdonság határozza meg, hogy a másolási tevékenység végrehajtása előtt az adatok írása a következő felügyelt példányt az SQL-lekérdezést. Indítva csak egyszer futtatni példányonkénti. Ez a tulajdonság használatával előre betöltött adatok törlése. |Nem. |
 | sqlWriterStoredProcedureName |Ez a név a tárolt eljárás, amely meghatározza, hogyan alkalmazhatja a forrásadatok a célként megadott táblába. Eljárások példák upserts vagy átalakítások ehhez használatával saját üzleti logikája szerint. <br/><br/>A tárolt eljárás *kötegenként meghívása*. Egy műveletet, amely csak egyszer fut le, és nem tartalmazó adatforrásból, például törlés vagy csonkolása teheti a `preCopyScript` tulajdonság. |Nem. |
@@ -510,37 +510,37 @@ Ha és az Azure SQL Database felügyelt példánya a rendszer az adatokat másol
 | Az Azure SQL Database felügyelt példányain adattípus | Az Azure Data Factory köztes adatok típusa |
 |:--- |:--- |
 | bigint |Int64 |
-| Bináris |Byte] |
-| bit |Logikai |
-| CHAR |Karakterlánc, Char] |
-| dátum |DateTime |
-| Dátum és idő |DateTime |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
+| date |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| tizedes tört |tizedes tört |
-| A FILESTREAM attribútum (varbinary(max)) |Byte] |
-| Lebegőpontos |Dupla |
-| image |Byte] |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Double |
+| image |Byte[] |
 | int |Int32 |
-| költséget takaríthat meg |tizedes tört |
-| nchar |Karakterlánc, Char] |
-| ntext |Karakterlánc, Char] |
-| numerikus |tizedes tört |
-| nvarchar |Karakterlánc, Char] |
-| valódi |Önálló |
-| ROWVERSION |Byte] |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| pénz |tizedes tört |
-| sql_variant |Objektum |
-| szöveg |Karakterlánc, Char] |
-| time |Időtartam |
-| időbélyeg |Byte] |
+| smallmoney |Decimal |
+| sql_variant |Object |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
 | tinyint |Int16 |
-| UniqueIdentifier |GUID |
-| varbinary |Byte] |
-| varchar |Karakterlánc, Char] |
-| xml |XML |
+| uniqueidentifier |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 >[!NOTE]
 > Az adattípusok alapján, amelyek ideiglenes tizedes típusra jelenleg Azure Data Factory támogatja a legfeljebb 28 pontosság. Ha 28-nál nagyobb pontosságú igénylő adatait, fontolja meg egy karakterláncot egy SQL-lekérdezést az átalakítás.
