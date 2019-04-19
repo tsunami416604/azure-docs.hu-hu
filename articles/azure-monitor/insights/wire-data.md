@@ -397,7 +397,7 @@ A bemeneti adatok minden típusához létrejön egy _WireData_ típusú rekord. 
 | ReceivedBytes | A fogadott bájtok mennyisége |
 | ProtocolName | A használt hálózati protokoll neve |
 | IPVersion | IP-cím verziója |
-| Irány | Bemeneti vagy kimeneti |
+| Direction | Bemeneti vagy kimeneti |
 | MaliciousIP | Ismert kártevő forrás IP-címe |
 | Severity | Gyanús kártevő súlyossága |
 | RemoteIPCountry | Az ország, ahol a távoli IP-cím található |
