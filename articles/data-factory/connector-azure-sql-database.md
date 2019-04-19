@@ -55,10 +55,10 @@ Ezek a Tulajdonságok támogatottak egy Azure SQL Database-beli társított szol
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** tulajdonságot állítsa **AzureSqlDatabase**. | Igen |
-| kapcsolati Sztringje | Adja meg a az Azure SQL Database-példányhoz való kapcsolódáshoz szükséges adatokat a **connectionString** tulajdonság. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó szolgáltatásnév kulcsát/is helyezheti az Azure Key Vaultban, és ha az SQL-hitelesítés lekéréses a `password` konfigurációs ki a kapcsolati karakterláncot. A táblázat alatti a JSON-példa és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. | Igen |
+| connectionString | Adja meg a az Azure SQL Database-példányhoz való kapcsolódáshoz szükséges adatokat a **connectionString** tulajdonság. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó szolgáltatásnév kulcsát/is helyezheti az Azure Key Vaultban, és ha az SQL-hitelesítés lekéréses a `password` konfigurációs ki a kapcsolati karakterláncot. A táblázat alatti a JSON-példa és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. | Igen |
 | servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
 | servicePrincipalKey | Adja meg az alkalmazáskulcsot. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
-| bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
+| tenant | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen, egy egyszerű szolgáltatást az Azure AD-hitelesítés használata esetén. |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Azure integrációs modul és a egy saját üzemeltetésű integrációs modult is használhatja, ha az adattár egy magánhálózaton található. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem |
 
 Különböző hitelesítési típus tekintse meg a következő szakaszok az Előfeltételek és a JSON-minták, illetve:
@@ -373,7 +373,7 @@ Adatok másolása az Azure SQL Database, állítsa be a **típus** tulajdonságo
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység fogadó tulajdonságát **SqlSink**. | Igen |
-| WriteBatchSize | Az SQL-táblába beilleszti sorok száma **kötegenként**.<br/> Az engedélyezett érték **egész** (sorok száma). | Nem. Az alapértelmezett érték a 10000. |
+| writeBatchSize | Az SQL-táblába beilleszti sorok száma **kötegenként**.<br/> Az engedélyezett érték **egész** (sorok száma). | Nem. Az alapértelmezett érték a 10000. |
 | writeBatchTimeout | A várakozási idő a köteg beszúrási művelet befejezését, mielőtt azt az időkorlátot.<br/> Az engedélyezett érték **timespan**. Példa: "00: 30:00" (30 perc). | Nem |
 | preCopyScript | Adjon meg egy SQL-lekérdezést a másolási tevékenység futtatása előtt írja az adatokat az Azure SQL Database-be. Csak indítva egyszer futtatni példányonkénti. Ez a tulajdonság használatával az előre betöltött adatokat. | Nem |
 | sqlWriterStoredProcedureName | A tárolt eljárást, amely meghatározza, hogyan alkalmazhatja a forrásadatok egy cél táblába neve. Például akkor upserts, vagy átalakíthatja a saját üzleti logikája használatával. <br/><br/>A tárolt eljárás **kötegenként meghívása**. Csak egyszer futnak le, és nincs köze forrásadatokkal rendelkező műveletek, használja a `preCopyScript` tulajdonság. Példa műveleti delete és csonkolja. | Nem |
@@ -605,37 +605,37 @@ Másolt adatok vagy az Azure SQL Database, a következő hozzárendeléseket has
 | Az Azure SQL Database-adattípus | Data Factory közbenső adattípus |
 |:--- |:--- |
 | bigint |Int64 |
-| Bináris |Byte] |
-| bit |Logikai |
-| CHAR |Karakterlánc, Char] |
-| dátum |DateTime |
-| Dátum és idő |DateTime |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
+| date |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| tizedes tört |tizedes tört |
-| A FILESTREAM attribútum (varbinary(max)) |Byte] |
-| Lebegőpontos |Dupla |
-| image |Byte] |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| Float |Double |
+| image |Byte[] |
 | int |Int32 |
-| költséget takaríthat meg |tizedes tört |
-| nchar |Karakterlánc, Char] |
-| ntext |Karakterlánc, Char] |
-| numerikus |tizedes tört |
-| nvarchar |Karakterlánc, Char] |
-| valódi |Önálló |
-| ROWVERSION |Byte] |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| pénz |tizedes tört |
-| sql_variant |Objektum |
-| szöveg |Karakterlánc, Char] |
-| time |Időtartam |
-| időbélyeg |Byte] |
-| tinyint |Bájt |
-| UniqueIdentifier |GUID |
-| varbinary |Byte] |
-| varchar |Karakterlánc, Char] |
-| xml |XML |
+| smallmoney |Decimal |
+| sql_variant |Object |
+| text |String, Char[] |
+| time |TimeSpan |
+| timestamp |Byte[] |
+| tinyint |Byte |
+| uniqueidentifier |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 >[!NOTE]
 > A típusok képezi le közbenső tizedes tört szám típus jelenleg ADF támogatja a pontosság 28 legfeljebb. Ha adatok 28-nál nagyobb pontossággal rendelkezik, érdemes lehet alakítandó karakterláncot az SQL-lekérdezésben.
