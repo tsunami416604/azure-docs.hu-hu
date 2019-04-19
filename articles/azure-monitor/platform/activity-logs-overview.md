@@ -143,9 +143,9 @@ Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resour
 | Name (Név) |Igen |A napló-profil neve. |
 | StorageAccountId |Nem |Erőforrás-azonosító, amelyhez a tevékenységnapló menteni a tárfiók. |
 | serviceBusRuleId |Nem |Service Bus Szabályazonosító a Service Bus-névtér szeretné, hogy a létrehozott event hubs. Egy karakterlánc, a következő formátumban: `{service bus resource ID}/authorizationrules/{key name}`. |
-| Földrajzi egység |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. |
+| Location egység |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. |
 | RetentionInDays |Igen |Mely eseményeket meg kell őrizni, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplók (végtelen). |
-| Kategória |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet. |
+| Category |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet. |
 
 #### <a name="remove-a-log-profile"></a>Napló profil eltávolítása
 
