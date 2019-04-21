@@ -80,7 +80,7 @@ Runbookok tulajdonságai a következő táblázat ismerteti.
 | runbookType |Adja meg a runbook típusú. <br><br> -Szkript – PowerShell-parancsfájl <br>PowerShell – PowerShell-munkafolyamat <br> GraphPowerShell - grafikus PowerShell-parancsprogram-forgatókönyv <br> GraphPowerShellWorkflow - grafikus PowerShell-munkafolyamati forgatókönyv |
 | logProgress |Megadja, hogy [rekordok halad](../../automation/automation-runbook-output-and-messages.md) elő kell állítani a runbook. |
 | logVerbose |Megadja, hogy [részletes rekordok](../../automation/automation-runbook-output-and-messages.md) elő kell állítani a forgatókönyvet. |
-| leírás |A runbook kívánja – leírását. |
+| description |A runbook kívánja – leírását. |
 | publishContentLink |Adja meg a runbook tartalmát. <br><br>URI - URI-t a runbook tartalmát.  Ez lesz egy .ps1 fájlt a PowerShell és a parancsfájl runbookok és a egy Graph runbook exportált grafikus runbook fájl.  <br> verzió - verzió a runbook a saját nyomon követésére. |
 
 
@@ -113,7 +113,7 @@ Automatizálási feladatok tulajdonságainak a következő táblázat ismerteti.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Runbook |A runbook elindításához nevű entitás egyetlen nevet. |
+| runbook |A runbook elindításához nevű entitás egyetlen nevet. |
 | paraméterek |Az entitás minden egyes paraméterérték a runbook által igényelt. |
 
 A feladat a runbook nevét és a runbook küldendő paraméterértékeket tartalmaz.  A feladat kell [függenek]( solutions-solution-file.md#resources) , amely azt indítása óta a runbookot a runbook a feladat előtt kell létrehozni.  Ha több runbook, el kell meghatározhatja a sorrendjük létesíteni egy feladat, bármilyen más feladatokat, amelyeket futtatni első függenek.
@@ -145,7 +145,7 @@ A tanúsítványok erőforrás tulajdonságait az alábbi táblázatban ismertet
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | base64Value |A tanúsítvány Base 64 értéke. |
-| ujjlenyomat |A tanúsítvány ujjlenyomatát. |
+| thumbprint |A tanúsítvány ujjlenyomatát. |
 
 
 
@@ -171,8 +171,8 @@ Az alábbi táblázatban ismertetett hitelesítőadat-erőforrások tulajdonság
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Felhasználónév |A hitelesítő felhasználó neve. |
-| jelszó |A hitelesítő adatainak jelszava. |
+| userName |A hitelesítő felhasználó neve. |
+| password |A hitelesítő adatainak jelszava. |
 
 
 ## <a name="schedules"></a>Ütemezések
@@ -199,7 +199,7 @@ Az alábbi táblázatban ismertetett ütemezés erőforrások tulajdonságait.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| leírás |Az ütemezés kívánja – leírását. |
+| description |Az ütemezés kívánja – leírását. |
 | startTime |Egy DateTime típusú objektumot egy ütemezés kezdési idejét határozza meg. Ha egy érvényes DateTime átalakítható karakterlánc adható meg. |
 | isEnabled |Itt adhatja meg, hogy engedélyezve van-e az ütemezés. |
 | interval |Az ütemezés intervallumát típusa.<br><br>nap<br>óra |
@@ -242,8 +242,8 @@ Az alábbi táblázatban ismertetett feladatok ütemezésének tulajdonságai.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Ütemezés neve |Egyetlen **neve** entitás az ütemezés nevét. |
-| runbook neve  |Egyetlen **neve** a runbook nevére entitáshoz.  |
+| schedule name |Egyetlen **neve** entitás az ütemezés nevét. |
+| runbook name |Egyetlen **neve** a runbook nevére entitáshoz.  |
 
 
 
@@ -269,10 +269,10 @@ Változó erőforrások tulajdonságait a következő táblázat ismerteti.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| leírás | A változó kívánja – leírását. |
+| description | A változó kívánja – leírását. |
 | isEncrypted | Határozza meg, hogy a változó rendszer titkosítsa. |
 | type | Ez a tulajdonság jelenleg nem befolyásolja.  A változó adattípusa fog határozza meg a kezdeti érték. |
-| érték | A változó értékét. |
+| value | A változó értékét. |
 
 > [!NOTE]
 > A **típus** tulajdonság jelenleg nem érinti a változó létrehozása folyamatban.  Az adattípus a változó értéke határozza meg.  
@@ -281,10 +281,10 @@ Ha a változó kezdeti értéke, hogy kell konfigurálni a megfelelő adattípus
 
 | Adattípus | Leírás | Példa | Oldja fel |
 |:--|:--|:--|:--|
-| sztring   | Tegye idézőjelek értéket.  | "\"Helló, világ\"" | "Hello world" |
-| numerikus  | A numerikus értékek a szimpla idézőjelek között.| "64" | 64 |
-| logikai  | **Igaz** vagy **hamis** idézőjelben.  Vegye figyelembe, hogy ez az érték csak kisbetűket tartalmazhatnak. | "true" | true |
-| dátum/idő | A szerializált dátumérték.<br>A PowerShellben a ConvertTo-Json-parancsmag segítségével hozza létre ezt az értéket egy adott dátumot.<br>Példa: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| string   | Tegye idézőjelek értéket.  | "\"Helló, világ\"" | "Hello world" |
+| numeric  | A numerikus értékek a szimpla idézőjelek között.| "64" | 64 |
+| boolean  | **Igaz** vagy **hamis** idézőjelben.  Vegye figyelembe, hogy ez az érték csak kisbetűket tartalmazhatnak. | "true" | true |
+| datetime | A szerializált dátumérték.<br>A PowerShellben a ConvertTo-Json-parancsmag segítségével hozza létre ezt az értéket egy adott dátumot.<br>Példa: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modulok
 A felügyeleti megoldás nem kell meghatároznia [globális modulok](../../automation/automation-integration-modules.md) a runbookok által használt, mert ezek mindig elérhető lesz az Automation-fiók.  Között szerepelnek olyan erőforrások esetében a runbookok által használt bármely egyéb modult kell.
