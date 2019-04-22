@@ -8,10 +8,10 @@ ms.date: 04/08/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 568f47aacf39793d4c2da46798682abc002ca33b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279508"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Tranzakciók és optimista egyidejűség vezérlése
@@ -20,7 +20,7 @@ Adatbázis-tranzakciók adjon meg egy biztonságos és kiszámítható programoz
 
 Az adatbázismotor, az Azure Cosmos DB támogatja a teljes ACID (atomitást, konzisztencia, elkülönítés, tartósság) megfelelő tranzakciót a pillanatkép-elkülönítés. Minden az adatbázis-műveletek a hatókörön belül egy adott tároló [logikai partíció](partition-data.md) tranzakciós szempontból tevékenységében az adatbázismotor által a partícióhoz tartozó replika futtatott. Ezek a műveletek is tartalmazza (a logikai partíció található egy vagy több elem frissítése) írási és olvasási műveletek. Az alábbi táblázatban látható, különböző műveleteket és transcation típusok:
 
-| **Művelet**  | **Művelettípus** | **Egyetlen vagy több elem tranzakció** |
+| **Művelet**  | **Művelet típusa** | **Egyetlen vagy több elem tranzakció** |
 |---------|---------|---------|
 | (Nélkül előkészítő/utólagos eseményindító) beszúrása | Írás | Egyetlen elem tranzakció |
 | (Egy eseményindítóval előkészítő/utólagos) beszúrása | Írási és olvasási | Több elem tranzakció |
@@ -62,6 +62,6 @@ Az elem `_etag` érték változik, minden alkalommal, amikor az elem frissítés
 További információ adatbázis-tranzakciók és az optimista egyidejűség-vezérléssel az alábbi cikkeket:
 
 - [Az Azure Cosmos-adatbázisok, tárolók és elemek használata](databases-containers-items.md)
-- [Konzisztenciaszintek](consistency-levels.md)
-- [Ütközéstípusok és -feloldási szabályzatok](conflict-resolution-policies.md)
+- [Konzisztenciaszint](consistency-levels.md)
+- [Ütközés típusa és a névfeloldási házirend](conflict-resolution-policies.md)
 - [Tárolt eljárások, eseményindítók és felhasználó által definiált függvények](stored-procedures-triggers-udfs.md)

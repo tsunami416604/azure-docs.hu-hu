@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 2255004ae8cd92473b5fe71b44cccb79021a8bf7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267144"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Az Azure cloud Services számára egyéni tartománynév konfigurálása
@@ -64,7 +64,7 @@ Hozzon létre egy CNAME rekordot, hogy hozzá kell adnia egy új bejegyzést a D
 
 1. Kereséséhez használja az alábbi módszerek egyikét a **. cloudapp.net** tartománynevet a felhőalapú szolgáltatáshoz rendelt.
 
-   * Jelentkezzen be a [az Azure portal], válassza ki a felhőszolgáltatást, tekintse meg a **áttekintése** szakaszt, és keresse meg a **webhely URL-címe** bejegyzés.
+   * Jelentkezzen be a [Azure Portal], válassza ki a felhőszolgáltatást, tekintse meg a **áttekintése** szakaszt, és keresse meg a **webhely URL-címe** bejegyzés.
 
        ![gyors áttekintés szakaszban a webhely URL-Címének megjelenítése][csurl]
 
@@ -97,7 +97,7 @@ Hozzon létre egy rekordot, először keresse meg a felhőszolgáltatás virtuá
 
 1. A felhőszolgáltatás IP-címének lekéréséhez használja az alábbi módszerek egyikét.
 
-   * Jelentkezzen be a [az Azure portal], válassza ki a felhőszolgáltatást, tekintse meg a **áttekintése** szakaszt, és keresse meg a **nyilvános IP-címek** bejegyzés.
+   * Jelentkezzen be a [Azure Portal], válassza ki a felhőszolgáltatást, tekintse meg a **áttekintése** szakaszt, és keresse meg a **nyilvános IP-címek** bejegyzés.
 
        ![gyors áttekintés szakaszban a virtuális IP-cím megjelenítése][vip]
 
@@ -130,7 +130,7 @@ Ez a példa bemutatja egy A rekordot a gyökértartomány létrehozása. Ha szer
 > 
 
 ## <a name="next-steps"></a>További lépések
-* [A Cloud Services kezelése](cloud-services-how-to-manage-portal.md)
+* [A Cloud Services felügyelete](cloud-services-how-to-manage-portal.md)
 * [CDN-tartalom leképezése egyéni tartományra](../cdn/cdn-map-content-to-custom-domain.md)
 * [A felhőszolgáltatás általános konfigurációs](cloud-services-how-to-configure-portal.md).
 * Ismerje meg, hogyan [egy felhőalapú szolgáltatás üzembe helyezése](cloud-services-how-to-create-deploy-portal.md).

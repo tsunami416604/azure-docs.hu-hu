@@ -8,10 +8,10 @@ ms.date: 04/04/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: e0249535813c6b8d652775f68a696d8c25ead5a1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275453"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
@@ -37,7 +37,7 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
 -  Azure Migrate-projektet csak az alábbi földrajzi területeken hozhat létre. Azonban ez nem korlátozza az értékelések más létrehozásának lehetősége cél Azure-helyen.
 
-    **Földrajzi hely** | **Tárolási hely**
+    **Régiócsoport** | **Tárolási hely**
     --- | ---
     Azure Government | USA-beli államigazgatás – Virginia
     Ázsia | Délkelet-Ázsia és Kelet-Ázsia
@@ -60,13 +60,13 @@ Az értékelési beállítások az adott igényekhez szabhatók. Az értékelés
 **Tulajdonság** | **Részletek**
 --- | ---
 **Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni.<br/><br/>Az Azure Migrate jelenleg támogatja 33 régióban áttelepítési célhelyeket. [Régiók megtekintése](https://azure.microsoft.com/global-infrastructure/services/). Alapértelmezés szerint a célrégióban az USA keleti RÉGIÓJA van beállítva.
-**Tárolási típus** | A felügyelt lemezeket szeretne lefoglalni az értékelés részét képező összes virtuális gép típusát. Ha a méretezési feltétel teljesítményalapú *helyszíni méretezési* is megadhat a céllemez típusa vagy a prémium szintű lemezek (alapértelmezett), standard SSD-lemez vagy HDD a standard szintű lemezek. A *teljesítményalapú*, a fenti lehetőségek, valamint akkor is választhatja, amely biztosítja, hogy a méretezési javaslat lemezt automatikusan történik a virtuális gépek teljesítményadatait alapján automatikus. Ha például szeretne elérni egy [egypéldányos virtuális gép SLA 99,9 %-os](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/), előfordulhat, hogy szeretne megadni a tárolási típust, amely biztosítja, hogy azok a lemezek az értékelés rendszer azt javasolja, prémium szintű felügyelt lemezek prémium szintű felügyelt lemezek. Vegye figyelembe, hogy az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
+**Tárolás típusa** | A felügyelt lemezeket szeretne lefoglalni az értékelés részét képező összes virtuális gép típusát. Ha a méretezési feltétel teljesítményalapú *helyszíni méretezési* is megadhat a céllemez típusa vagy a prémium szintű lemezek (alapértelmezett), standard SSD-lemez vagy HDD a standard szintű lemezek. A *teljesítményalapú*, a fenti lehetőségek, valamint akkor is választhatja, amely biztosítja, hogy a méretezési javaslat lemezt automatikusan történik a virtuális gépek teljesítményadatait alapján automatikus. Ha például szeretne elérni egy [egypéldányos virtuális gép SLA 99,9 %-os](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/), előfordulhat, hogy szeretne megadni a tárolási típust, amely biztosítja, hogy azok a lemezek az értékelés rendszer azt javasolja, prémium szintű felügyelt lemezek prémium szintű felügyelt lemezek. Vegye figyelembe, hogy az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
 **Fenntartott példányok** |  Az értékelés figyelembe veszi, hogy vannak-e [fenntartott példányai](https://azure.microsoft.com/pricing/reserved-vm-instances/) az Azure-ban. Az Azure Migrate ez alapján becsüli meg a költségeket.
 **Méretezési feltétel** | Méretezési alapulhat **teljesítményelőzmények** a helyszíni virtuális gépek (alapértelmezett), vagy **helyszíni**, teljesítményelőzmények figyelembe vétele nélkül.
 **Teljesítményelőzmények** | Alapértelmezés szerint az Azure Migrate a helyszíni gépek teljesítményét az utolsó nap teljesítményelőzményei alapján, 95%-os százalékértékkel értékeli ki.
-**Kompatibilitási faktor** | Az Azure Migrate az értékelés során figyelembe veszi a puffert (kényelmi faktor). Ezt a puffert a rendszer a virtuális gépek gépkihasználtsági adatai (CPU, memória, lemez és hálózat) mellett alkalmazza. A kényelmi faktor áll az olyan problémák mögött, mint a szezonális használat, a rövid teljesítményelőzmények és a jövőbeli használat várható növekedése.<br/><br/> Például egy 10 magos virtuális gép 20%-os kihasználtsággal normál esetben egy 2 magos virtuális gépnek felel meg. 2.0x-es kényelmi faktorral azonban az eredmény ehelyett egy 4 magos virtuális gép. Az alapértelmezett kényelmi beállítás 1.3x.
+**Kényelmi faktor** | Az Azure Migrate az értékelés során figyelembe veszi a puffert (kényelmi faktor). Ezt a puffert a rendszer a virtuális gépek gépkihasználtsági adatai (CPU, memória, lemez és hálózat) mellett alkalmazza. A kényelmi faktor áll az olyan problémák mögött, mint a szezonális használat, a rövid teljesítményelőzmények és a jövőbeli használat várható növekedése.<br/><br/> Például egy 10 magos virtuális gép 20%-os kihasználtsággal normál esetben egy 2 magos virtuális gépnek felel meg. 2.0x-es kényelmi faktorral azonban az eredmény ehelyett egy 4 magos virtuális gép. Az alapértelmezett kényelmi beállítás 1.3x.
 **Virtuálisgép-sorozatok** | Méretbecslésekhez használt virtuálisgép-sorozatok. Például egy olyan éles környezetben, amelyet nem szeretne A-sorozatú virtuális gépekre migrálni az Azure-ban, kizárhatja a listából vagy sorozatból az A-sorozatot. Ilyenkor a méretezés csak a kiválasztott sorozatokat veszi figyelembe.   
-**Currency (Pénznem)** | A számlázás pénzneme. Az alapértelmezett érték az amerikai dollár.
+**Pénznem** | A számlázás pénzneme. Az alapértelmezett érték az amerikai dollár.
 **Kedvezmény (%)** | Az Azure-ajánlaton felül kapott, az előfizetéshez tartozó kedvezmények. Az alapértelmezett beállítás 0%.
 **Virtuális gép üzemideje** | Ha nem tervezi a virtuális gépek 24 x 7 fut az Azure-ban, amely azok kellene futnia adhat meg az időtartamot (havonta napok száma) és napi óraszám, és a költségbecslések elkészítését ennek megfelelően történik. Az alapértelmezett értéke 31 nap / hó és napi 24 órában.
 **Azure-ajánlat** | Az [Azure-ajánlat](https://azure.microsoft.com/support/legal/offer-details/), amelyre regisztrált. Az Azure Migrate ez alapján becsüli meg a költségeket.

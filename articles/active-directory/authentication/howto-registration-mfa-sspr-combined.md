@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3baf2690ae07b87bb4d5dba30fcd20f62a1a4506
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280570"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Kombinált engedélyezése biztonsági információk regisztrációs (előzetes verzió)
@@ -57,6 +57,6 @@ Ha konfigurálta a zónákhoz való társításának listája a hely az Internet
 
 [Új jelszó önkiszolgáló kérésének konfigurálása](howto-sspr-deployment.md)
 
-[Az Azure Multi-Factor Authentication konfigurálása](howto-mfa-getstarted.md)
+[Az Azure multi-factor Authentication konfigurálása](howto-mfa-getstarted.md)
 
 [Hibaelhárítási kombinált biztonsági adatok regisztrálása](howto-registration-mfa-sspr-combined-troubleshoot.md)

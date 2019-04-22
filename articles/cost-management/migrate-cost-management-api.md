@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279873"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Áttelepítés a nagyvállalati szerződés a Microsoft ügyfél-megállapodás API-k
@@ -187,7 +187,7 @@ A tulajdonság nevét, amely tartalmazza a használati rekordokból álló tömb
 | ExtendedCost és költség | costInBillingCurrency | &nbsp;  |
 | Példány azonosítója | resourceId | &nbsp;  |
 | Ismétlődő költség | None | &nbsp;  |
-| Hely | location | &nbsp;  |
+| Földrajzi egység | location | &nbsp;  |
 | Fogyasztásmérő kategóriája | meterCategory | Pontos karakterlánc-értékek eltérőek lehetnek. |
 | Fogyasztásmérő azonosítója | meterId | Pontos karakterlánc-értékek eltérnek. |
 | Fogyasztásmérő neve | meterName | Pontos karakterlánc-értékek eltérőek lehetnek. |
@@ -373,10 +373,10 @@ Az alábbi táblázat a régebbi vállalati első ár lap API mezőket mutatja. 
 | meterId  | meterId | &nbsp;  |
 | unitOfMeasure  | unitOfMeasure | Pontos karakterlánc-értékek eltérőek lehetnek. |
 | includedQuantity  | includedQuantity | A szolgáltatás a Microsoft ügyfél-szerződés nem alkalmazható. |
-| PartNumber  | _Nem alkalmazható_ | Ehelyett használjon productOrderName (azonos offerId) és meterid kombinációja. |
-| Egységár  | Egységár | Egységár a Microsoft vevői szerződés keretében igénybe vett vonatkozik. |
+| cikkszám  | _Nem alkalmazható_ | Ehelyett használjon productOrderName (azonos offerId) és meterid kombinációja. |
+| egységár  | egységár | Egységár a Microsoft vevői szerződés keretében igénybe vett vonatkozik. |
 | Pénznemkód  | pricingCurrency | A Microsoft ügyfél-szerződések díjszabása és számlázási pénznemben az ár reprezentációinak rendelkezik. A Microsoft ügyfél-szerződés pricingCurrency felel meg a pénznemkód. |
-| offerId | productOrderName | Helyett OfferId productOrderName is használhat, de nem ugyanaz, mint OfferId. Azonban productOrderName és az érték határozza meg örökölt regisztrációk meterId és Offerid kapcsolódó díjszabás a Microsoft ügyfél-szerződés. |
+| ajánlatazonosító | productOrderName | Helyett OfferId productOrderName is használhat, de nem ugyanaz, mint OfferId. Azonban productOrderName és az érték határozza meg örökölt regisztrációk meterId és Offerid kapcsolódó díjszabás a Microsoft ügyfél-szerződés. |
 
 ## <a name="consumption-price-sheet-api-operations"></a>Fogyasztási ár lap API-műveletek
 
@@ -438,7 +438,7 @@ A régebbi tulajdonságokat [Azure Resource Manager ár árlista API-k](/rest/ap
 | Unit (Egység) | _Nem alkalmazható_ | A unitOfMeasure elemezhető. |
 | Mértékegység | unitOfMeasure | &nbsp;  |
 | Cikkszám | _Nem alkalmazható_ | PartNumber, helyett használja a productOrderName és MeterId díja a számlázási profil egyedi azonosításához. Mezők helyett a partNumber MCA számlák MCA számlán jelennek meg. |
-| Egységár | Egységár | A Microsoft Ügyfélszerződéséhez egységár. |
+| Egységár | egységár | A Microsoft Ügyfélszerződéséhez egységár. |
 | Pénznemkód | pricingCurrency | A Microsoft ügyfél-szerződések díjai pénznem árak és számlázás pénzneme az képviseli. Pénznemkód megegyezik a pricingCurrency a Microsoft ügyfél-szerződés. |
 | Included quantity (Bennefoglalt mennyiség) | includedQuantity | A Microsoft ügyfél-szerződés szolgáltatások nem alkalmazható. A nulla értékeket tartalmazó megjelenítése. |
 |  Ajánlat azonosítója  | productOrderName | Helyett OfferId productOrderName használja. Nem ugyanaz, mint OfferId, azonban a productOrderName és az érték határozza meg, a Microsoft ügyfél-szerződés díjszabása. Örökölt regisztrációk meterId és Offerid kapcsolatban. |
@@ -460,7 +460,7 @@ A következő mezőket is, vagy nem érhető el a Microsoft vevői szerződés �
 |Kivont mező| Leírás|
 |---|---|
 | billingPeriodId | Nem alkalmazható. InvoiceId MCA a felel meg. |
-| offerId | Nem alkalmazható. A MCA productOrderName felel meg. |
+| ajánlatazonosító | Nem alkalmazható. A MCA productOrderName felel meg. |
 | meterCategory  | Nem alkalmazható. Szolgáltatás a MCA felel meg. |
 | egység | Nem alkalmazható. A unitOfMeasure elemezhető. |
 | Pénznemkód | Ugyanaz, mint a pricingCurrency MCA a. |

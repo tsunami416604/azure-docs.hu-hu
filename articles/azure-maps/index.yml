@@ -37,7 +37,7 @@ sections:
           - html: <a href="/azure/azure-maps/tutorial-search-location">Hasznos helyek keresése</a>
           - html: <a href="/azure/azure-maps/tutorial-route-location">Útvonal egy hasznos helyhez</a>
           - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">Útvonalak utazási mód alapján</a>
-          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">Tárolólokátor létrehozása</a>
+          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">Áruházkereső létrehozása</a>
       - html: <b>REST API – oktatóanyagok</b>
       - type: paragraph
         text: Az Azure Maps REST-szolgáltatásaiba meghívásokat intéző térinformatikai alkalmazásokat hozhat létre.
@@ -54,4 +54,4 @@ sections:
           - title: JavaScript
             html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Térképvezérlő</a></p>'
           - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">Adatszolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Földrajzi hely szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Megjelenítő szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Útvonal szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Keresési szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Térbeli szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Időzóna szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Forgalom szolgáltatás</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">Adatszolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Földrajzi hely szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Megjelenítő szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Útvonal szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Keresési szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Téradat-szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Időzóna szolgáltatás</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Forgalom szolgáltatás</a></p>'

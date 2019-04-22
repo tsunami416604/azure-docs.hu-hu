@@ -11,10 +11,10 @@ ms.custom: ''
 manager: mtillman
 ms.author: kfollis
 ms.openlocfilehash: fde7ffbaa3ef4d47eea48302a99948932aeb4f00
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361951"
 ---
 # <a name="export-or-delete-user-settings"></a>Felhasználói beállítások exportálása vagy törlése
@@ -56,4 +56,4 @@ Célszerű exportálhatja, és tekintse át a beállításokat, mielőtt töröl
 ## <a name="next-steps"></a>További lépések
 
 * [Azure-irányítópultok létrehozása és megosztása](azure-portal-dashboard-share-access.md)
-* [Kedvencek hozzáadása, eltávolítása és rendezése](azure-portal-add-remove-sort-favorites.md)
+* [Hozzáadása, eltávolítása és rendezése a Kedvencek](azure-portal-add-remove-sort-favorites.md)

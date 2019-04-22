@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
 ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051170"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Ismerkedés az Azure-operátorok
@@ -277,7 +277,7 @@ Resource Manager-sablonnal négy részből áll:
 
 - **Változók**: Ezek használhatók a központi telepítés során használt értékek tárolásához. Ellentétben a paramétereket egy változó értéke nincs megadva üzembe helyezéskor. Ehelyett meglehetősen nehéz kódolt vagy dinamikusan hozzuk létre.
 
-- **erőforrások**: Ez a szakasz a sablon határozza meg a szükséges erőforrásokat kell telepíteni, mint például a virtuális gépek, tárfiókok és a virtuális hálózatok.
+- **Erőforrások**: Ez a szakasz a sablon határozza meg a szükséges erőforrásokat kell telepíteni, mint például a virtuális gépek, tárfiókok és a virtuális hálózatok.
 
 - **Kimeneti**: Miután a telepítés véget ért, a Resource Manager adhatnak vissza adatokat például dinamikusan létrehozott kapcsolati karakterláncokat.
 
@@ -491,5 +491,5 @@ Segíthet az Azure virtuális hálózatok biztonságos hálózati biztonsági cs
 
 ## <a name="next-steps"></a>További lépések
 
-- [Windows rendszerű virtuális gép létrehozása](../../virtual-machines/windows/quick-create-portal.md)
+- [Egy Windows virtuális gép létrehozása](../../virtual-machines/windows/quick-create-portal.md)
 - [Linux rendszerű virtuális gép létrehozása](../../virtual-machines/linux/quick-create-portal.md)

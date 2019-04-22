@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 4af86025e714c65d0ae225b271a2d0970bb96ee8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281641"
 ---
 # <a name="azure-notification-hubs---diagnose-dropped-notifications"></a>Diagnosztika az Azure Notification Hubs – elvetett értesítések
@@ -49,7 +49,7 @@ Ez a folyamat befejezéséhez részletes utasításokért lásd: [Azure Notifica
 
 Az alábbiakban néhány gyakori konfigurációs hibáinak kereséséhez:
 
-**Általános kérdések**
+**Általános**
 
 Győződjön meg arról, hogy az értesítési központ nevére (nélkül elgépelések) megegyezik az egyes helyek:
    * Ha regisztrálja az ügyfélről.
@@ -111,7 +111,7 @@ Mivel a platformértesítési szolgáltatásoknak robusztus, értesítések ált
 
 Ha leküldéses értesítést küldő szolgáltatás megkísérli az értesítések kézbesítésére, de az eszköz offline állapotban, az értesítést a leküldéses értesítési szolgáltatás egy korlátozott ideig tárolja. Amikor elérhetővé válik az eszköz az értesítés érkezik az eszközön.
 
-Minden alkalmazáshoz csak egy újabb értesítés tárolódik. Ha több értesítések lesznek küldve, amikor egy eszköz offline állapotban van, minden egyes új értesítés hatására elvet előzetes értesítés. Csak a legújabb értesítés tartja nevezzük *összevonási értesítések* az APN, és *dimenziógranularitását* az FCM (összecsukás kulcsot használó). Az eszköz hosszú ideje offline állapotban marad, ha folyamatban van az eszköz eltárolt értesítések elvesznek. További információkért lásd: [APN áttekintése] és [FCM kapcsolatos üzenetek].
+Minden alkalmazáshoz csak egy újabb értesítés tárolódik. Ha több értesítések lesznek küldve, amikor egy eszköz offline állapotban van, minden egyes új értesítés hatására elvet előzetes értesítés. Csak a legújabb értesítés tartja nevezzük *összevonási értesítések* az APN, és *dimenziógranularitását* az FCM (összecsukás kulcsot használó). Az eszköz hosszú ideje offline állapotban marad, ha folyamatban van az eszköz eltárolt értesítések elvesznek. További információkért lásd: [APN áttekintése] és [FCM-üzenetek].
 
 Az Azure Notification Hubs adhat át egy összevonási kulcs használatával egy HTTP-fejlécet az általános SendNotification API-val. Ha például a .NET SDK-hoz, használja `SendNotificationAsync`. A SendNotification API veszi adhatók be HTTP-fejléceket is –, hogy a megfelelő leküldéses értesítési szolgáltatás.
 
@@ -227,7 +227,7 @@ Ezután használhatja a `EnableTestSend` logikai tulajdonság. Használja a `Ena
     }
 ```
 
-**Példa kimenet**
+**Kimeneti példa**
 
 ```text
 DetailedStateAvailable
@@ -261,7 +261,7 @@ A portálon az összes tevékenység gyors áttekintést kaphat az értesítési
 
 **Szoftveres hozzáférés**
 
-Programozott hozzáféréssel kapcsolatos további információkért lásd: [telemetriai programozott hozzáférés].
+Programozott hozzáféréssel kapcsolatos további információkért lásd: [Telemetria programozott hozzáférés].
 
 > [!NOTE]
 > Számos telemetriát funkcióiról, exportálása, például és importálása a regisztrációk és API-k, telemetriai adatok elérését csak a Standard szintű szolgáltatáscsomagban elérhető. Próbálja meg használni, ha ezeket a funkciókat az ingyenes vagy alapszintű szolgáltatásszintet, olyan kivétel üzenetet kap, ha használja az SDK-t, és a egy HTTP 403 (tiltott) hiba közvetlenül a REST API-k az a funkciók használatakor.

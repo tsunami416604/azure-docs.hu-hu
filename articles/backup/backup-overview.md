@@ -10,10 +10,10 @@ ms.date: 04/05/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 5408f920a16860972dca6450d5e51152048bbf82
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361804"
 ---
 # <a name="what-is-azure-backup"></a>Mi az az Azure Backup?
@@ -58,11 +58,11 @@ Mindkét szolgáltatás különböző, de egymást kiegészítő funkciót kín�
 
 A tábla pontok használatával segít azonosítani a BCDR-igényeinek.
 
-**Cél** | **Részletek** | **Összehasonlítás**
+**Objective** | **Részletek** | **Összehasonlítás**
 --- | --- | ---
 **Adatok biztonsági mentése és megőrzése** | Biztonsági mentési adatok őrződnek meg, illetve tárolt napig, hónapok vagy évek még ha a megfelelőség szempontjából szükséges. | Például az Azure Backup biztonsági mentési megoldások lehetővé teszik, hogy válasszon a készíteni kívánt adatokat, és hogy a biztonsági mentési és adatmegőrzési szabályzatok hangolása céljából.<br/><br/> A Site Recovery nem teszi lehetővé az azonos való elősegítésével.
 **Helyreállítási időkorlát (RPO)** | Az elfogadható adatveszteség mennyisége, ha helyreállítást kell végezni. | Biztonsági másolatok több változó RPO rendelkezik.<br/><br/> Virtuális gép biztonsági mentéseinek általában rendelkeznek egy nap az RPO, míg adatbázisok biztonsági mentései rpo-k akár 15 percet is.<br/><br/> A Site recoveryben alacsony RPO-e a replikáció folyamatos vagy gyakori, úgy, hogy a különbözeti között a forrás és a replika másolás kis óta.
-**Helyreállítási időre vonatkozó célkitűzés (RTO)** |A helyreállítás vagy visszaállítás elvégzéséhez szükséges idő. | A nagyobb RPO miatt a biztonsági mentési megoldások által feldolgozandó adatmennyiség általában sokkal nagyobb, ami hosszabb RTO-khoz vezet. Napokba telhet például az adatok szalagokról való visszaállítása attól függően, hogy mennyi ideig tart a szalag szállítása egy külső helyről.
+**A helyreállítási időre vonatkozó célkitűzés (RTO)** |A helyreállítás vagy visszaállítás elvégzéséhez szükséges idő. | A nagyobb RPO miatt a biztonsági mentési megoldások által feldolgozandó adatmennyiség általában sokkal nagyobb, ami hosszabb RTO-khoz vezet. Napokba telhet például az adatok szalagokról való visszaállítása attól függően, hogy mennyi ideig tart a szalag szállítása egy külső helyről.
 
 ## <a name="what-backup-scenarios-are-supported"></a>Milyen biztonsági mentési forgatókönyvek támogatottak?
 
@@ -71,7 +71,7 @@ Az Azure Backup a helyszíni gépek és Azure virtuális gépek készíthető.
 **Gép** | **Készítsen biztonsági másolatot a forgatókönyv**
 --- | ---
 **A helyszíni biztonsági mentés** |  1.) futtassa az Azure Backup a Microsoft Azure Recovery Services (MARS) ügynök a helyi Windows-gépek egyedi fájlokat és a rendszerállapot biztonsági mentése. <br/><br/>2.) biztonsági mentése a helyszíni gépek biztonsági mentési kiszolgálóra (a System Center Data Protection Manager (DPM) vagy a Microsoft Azure Backup Server (MABS)), és konfigurálja a biztonsági mentési kiszolgálóra történő biztonsági mentése az Azure biztonsági mentés a Recovery Services tárolóba az Azure-ban.
-**Azure-beli virtuális gépek** | 1.) a biztonsági mentés engedélyezése az egyes Azure virtuális gépek. Ha engedélyezi a biztonsági mentés, az Azure Backup egy kiterjesztést telepít az Azure-beli Virtuálisgép-ügynök, amely a virtuális gép fut-e. Az ügynök teljes virtuális gép biztonsági mentését.<br/><br/> 2.) futtassa a MARS-ügynök egy Azure virtuális Gépen. Ez akkor hasznos, ha egyes fájlok és mappák biztonsági mentése a virtuális gépen.<br/><br/> 3.) biztonsági mentése Azure virtuális gép egy DPM-kiszolgáló vagy az Azure-ban futó MABS. Használja az Azure Backup-tárolóba, majd biztonsági mentése a DPM-kiszolgáló/MABS.
+**Az Azure virtuális gépek** | 1.) a biztonsági mentés engedélyezése az egyes Azure virtuális gépek. Ha engedélyezi a biztonsági mentés, az Azure Backup egy kiterjesztést telepít az Azure-beli Virtuálisgép-ügynök, amely a virtuális gép fut-e. Az ügynök teljes virtuális gép biztonsági mentését.<br/><br/> 2.) futtassa a MARS-ügynök egy Azure virtuális Gépen. Ez akkor hasznos, ha egyes fájlok és mappák biztonsági mentése a virtuális gépen.<br/><br/> 3.) biztonsági mentése Azure virtuális gép egy DPM-kiszolgáló vagy az Azure-ban futó MABS. Használja az Azure Backup-tárolóba, majd biztonsági mentése a DPM-kiszolgáló/MABS.
 
 
 ## <a name="why-use-a-backup-server"></a>Miért érdemes használni a biztonsági mentési kiszolgálóra?
@@ -90,9 +90,9 @@ Tudjon meg többet [hogyan biztonsági mentési works](backup-architecture.md#ar
 --- | --- | ---
 **A helyszíni Windows virtuális gépek** | Futtassa a MARS-ügynök | Készítsen biztonsági másolatot a fájlok, mappák, a rendszer állapotát.<br/><br/> Linux rendszerű gépek nem támogatott.
 **A helyszíni gépek** | Biztonsági mentés a DPM/MABS | Készítsen biztonsági mentést, amelyeket által védett [DPM](backup-support-matrix-mabs-dpm.md#supported-backups-to-dpm) vagy [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs), például fájlok/mappák és megosztások vagy kötetek és alkalmazás-specifikus adatait.
-**Azure-beli virtuális gépek** | Tartalék mellék futtatási Azure VM agent | Készítsen biztonsági másolatot a teljes virtuális gép
-**Azure-beli virtuális gépek** | Futtassa a MARS-ügynök | Készítsen biztonsági másolatot a fájlok, mappák, a rendszer állapotát.<br/><br/> Linux rendszerű gépek nem támogatott.
-**Azure-beli virtuális gépek** | Az Azure-ban futó MABS/DPM biztonsági mentése | Készítsen biztonsági mentést, amelyeket által védett [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs) vagy [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807) fájlok/mappák és megosztások vagy kötetek és alkalmazás-specifikus adatokat is beleértve.
+**Az Azure virtuális gépek** | Tartalék mellék futtatási Azure VM agent | Készítsen biztonsági másolatot a teljes virtuális gép
+**Az Azure virtuális gépek** | Futtassa a MARS-ügynök | Készítsen biztonsági másolatot a fájlok, mappák, a rendszer állapotát.<br/><br/> Linux rendszerű gépek nem támogatott.
+**Az Azure virtuális gépek** | Az Azure-ban futó MABS/DPM biztonsági mentése | Készítsen biztonsági mentést, amelyeket által védett [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs) vagy [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807) fájlok/mappák és megosztások vagy kötetek és alkalmazás-specifikus adatokat is beleértve.
 
 ## <a name="what-backup-agents-do-i-need"></a>Milyen backup-ügynököket kell?
 
@@ -105,7 +105,7 @@ Tudjon meg többet [hogyan biztonsági mentési works](backup-architecture.md#ar
 
 ## <a name="which-backup-agent-should-i-use"></a>Mely biztonságimásolat-készítő ügynök használjam?
 
-**Backup** | **Megoldás** | **Korlátozás**
+**Biztonsági mentés** | **Megoldás** | **Korlátozás**
 --- | --- | ---
 **Biztonsági mentése Azure virtuális gép teljes szeretnék** | A virtuális gép biztonsági mentésének engedélyezése. A biztonsági mentési bővítményt automatikusan konfigurálják a Windows vagy Linux rendszerű Azure virtuális Gépen. | Teljes virtuális gép biztonsági mentése <br/><br/> Windows virtuális gépek alkalmazáskonzisztens a biztonsági mentés. Linux esetén a biztonsági mentés: fájlkonzisztens. Ha alkalmazás-kompatibilis kell Linux rendszerű virtuális gépek konfigurálhatja ezt az egyéni parancsfájlokkal rendelkezik.
 **Tudok biztonsági másolatot kíván adott fájlok és mappák Azure virtuális gépen** | A MARS-ügynököt a virtuális gép üzembe helyezése.

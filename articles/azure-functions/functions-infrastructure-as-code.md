@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
 ms.openlocfilehash: 5d028768c062ef7df74d48f83ccc4e27a506f1ac
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270903"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A függvényalkalmazás az Azure Functions erőforrások üzembe helyezésének automatizálása
@@ -187,7 +187,7 @@ Ezek a tulajdonságok vannak megadva a `appSettings` gyűjteményt a `siteConfig
 
 A Használatalapú csomag automatikusan foglalja le a számítási teljesítményt, amikor a kód fut, elvégzi a horizontális felskálázást a terhelés kezelése érdekében szükség szerint, és ezután méretezhető, amikor a kód nem fut. Nem kell fizetnie a tétlen virtuális gépeket, és nem kell foglalhat le előre a kapacitás. További tudnivalókért lásd: [Azure Functions méretezése és üzemeltetése](functions-scale.md#consumption-plan).
 
-Egy minta Azure Resource Manager-sablon, lásd: [függvényalkalmazást a Használatalapú csomag].
+Egy minta Azure Resource Manager-sablon, lásd: [A függvényalkalmazást a Használatalapú csomag].
 
 ### <a name="create-a-consumption-plan"></a>Hozzon létre egy Használatalapú csomag
 
@@ -384,7 +384,7 @@ Rendelkeznie kell egy prémium szintű csomag a függvényalkalmazás a `serverF
 
 Az App Service-csomag esetében a függvényalkalmazás alap, Standard és prémium szintű termékváltozatok, webes alkalmazásokhoz hasonlóan a dedikált virtuális gépeken futtatja. Az App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service díjcsomagjainak részletes áttekintése](../app-service/overview-hosting-plans.md).
 
-Egy minta Azure Resource Manager-sablon, lásd: [függvényalkalmazást az Azure App Service-csomag].
+Egy minta Azure Resource Manager-sablon, lásd: [Az Azure App Service-csomag függvényalkalmazás].
 
 ### <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 

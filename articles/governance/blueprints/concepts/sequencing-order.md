@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 5552e44fcca056bd4fd5b4fd19559adfbd005444
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266188"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Az Azure-tervek telepítési sorrendjét ismertetése
@@ -25,7 +25,7 @@ Azure tervek az egy **alkalmazás-előkészítés rendelés** az erőforrás-lé
 
 A JSON-példák, amelyek a saját értékeire cserélni kell változók vannak:
 
-- `{YourMG}` – Cserélje le a felügyeleti csoport neve
+- `{YourMG}` – Cserélje le a felügyeleti csoport nevére
 
 ## <a name="default-sequencing-order"></a>Alapértelmezett alkalmazás-előkészítés sorrend
 

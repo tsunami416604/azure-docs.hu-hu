@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 02/04/2019
 ms.openlocfilehash: 1e2f55d334d432544ffc185e5c68dfe4325b2b09
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59356817"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Az Azure SQL Database az Azure Resource Manager-sablonok
@@ -33,7 +33,7 @@ A következő táblázat az Azure SQL Database az Azure Resource Manager-sablono
 | [A logikai kiszolgáló](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Az Azure Resource Manager-sablon az Azure SQL Database létrehoz egy logikai kiszolgálót. |
 | [Rugalmas készlet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | Ez a sablon lehetővé teszi az új társított SQL-kiszolgáló és az új SQL-adatbázisok, rendelje hozzá egy új rugalmas készlet üzembe helyezését. |
 | [Feladatátvételi csoportok](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | Ez a sablon létrehoz két Azure SQL logikai kiszolgálók, az SQL-adatbázis és a egy feladatátvételi csoportot.|
-| [Fejlett fenyegetésvédelem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-advanced-threat-protection-server-policy) | Ez a sablon üzembe helyezése az Azure SQL logikai kiszolgáló komplex veszélyforrások elleni védelem engedélyezve van, és a egy nem kötelező az Azure SQL Database lehetővé teszi. Az SQL Advanced Threat Protection fejlett SQL-biztonsági funkciókat tartalmazó egyesített biztonsági csomag.|
+| [Advanced Threat Protection](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-advanced-threat-protection-server-policy) | Ez a sablon üzembe helyezése az Azure SQL logikai kiszolgáló komplex veszélyforrások elleni védelem engedélyezve van, és a egy nem kötelező az Azure SQL Database lehetővé teszi. Az SQL Advanced Threat Protection fejlett SQL-biztonsági funkciókat tartalmazó egyesített biztonsági csomag.|
 | [Fenyegetések észlelése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | Ez a sablon üzembe helyezése az Azure SQL logikai kiszolgáló és a Fenyegetésészlelés engedélyezve van, a riasztásokat az egyes adatbázisok egy e-mail címet az Azure SQL Database számos teszi lehetővé. Fenyegetésészlelés az SQL komplex veszélyforrások elleni védelem (ATP) ajánlat része, és reagáljon a lehetséges fenyegetések SQL Server-kiszolgálók és adatbázisok biztonsági réteget biztosít.|
 | [Az Azure Blob Storage-naplózás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | Ez a sablon lehetővé teszi, hogy üzembe helyezés az Azure SQL logikai kiszolgáló a naplózás engedélyezve van a vizsgálati naplók írni egy blob storage-bA. Azure SQL Database Auditing szolgáltatása nyomon követi az adatbázisok eseményeit, és az Azure storage-fiókot, OMS-munkaterület vagy az Event Hubs helyezhető auditálási naplóba írja őket.|
 | [Naplózás az Azure Event Hubs segítségével](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | Ez a sablon üzembe helyezése egy Azure SQL server-naplózás engedélyezve van a vizsgálati naplók írni egy létező Eseményközpont teszi lehetővé. Annak érdekében, hogy a naplózási események küldése eseményközpontba, állítsa be a naplózási beállítások a `Enabled` `State` és `IsAzureMonitorTargetEnabled` , `true`. A diagnosztikai beállítások konfigurálása is, `SQLSecurityAuditEvents` diagnosztikai naplók kategóriában található a `master` adatbázis (az szolgálnak szintű naplózás). Az Azure SQL Database és az SQL Data Warehouse naplózás nyomon követi az adatbázisok eseményeit, és az Azure storage-fiókot, OMS-munkaterület vagy az Event Hubs helyezhető auditálási naplóba írja őket.|

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
 ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280536"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Oktatóanyag: Ismeri fel a beszéd, a beszéd SDK-t a szándékC#
@@ -133,7 +133,7 @@ Most importálja a modellt a LUIS-appból a `LanguageUnderstandingModel.FromAppI
 
 Leképezések hozzáadása három argumentumot igényel: a LUIS-modellnek (amely létrejött, és nevű `model`), a leképezés neve és a egy leképezési azonosítója. Az azonosító és a név közötti különbség a következő.
 
-|`AddIntent()` Argumentum|Cél|
+|`AddIntent()` argumentum|Cél|
 |--------|-------|
 |intentName |A szándék LUIS-appban meghatározott neve. Pontosan egyeznie kell a LUIS-szándék nevével.|
 |intentID    |A Speech SDK által felismert szándékhoz rendelt azonosító. Tetszés szerint megadható, nem kell megfelelnie a LUIS-appban megadott szándék nevének. Ha például ugyanaz a kód több szándékot is kezel, használhatja hozzájuk ugyanazt az azonosítót.|
@@ -188,4 +188,4 @@ Nézze meg, hogy a cikkben szereplő kód szerepel-e a samples/csharp/sharedcont
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hogyan ismerhetik fel a beszédfelismerés](how-to-recognize-speech-csharp.md)
+> [Beszéd felismerése](how-to-recognize-speech-csharp.md)

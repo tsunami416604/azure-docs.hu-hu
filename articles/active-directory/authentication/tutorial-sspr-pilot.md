@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6e1095cc2c5937fa5de762f91a9830161b8d2a5
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59362122"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Oktatóanyag: Egy Azure AD önkiszolgáló jelszó-visszaállítás kísérleti a bevezetés befejezése
@@ -60,7 +60,7 @@ Az új jelszó önkiszolgáló kérése konfigurálva lett a tesztcsoportban lé
 
 ## <a name="test-sspr-as-a-user"></a>Az SSPR tesztelése felhasználóként
 
-Az új jelszó önkiszolgáló kérésének teszteléséhez egy nem rendszergazdai jogosultságú tesztfelhasználóra van szükség, aki a tesztcsoport tagja. **Vegye figyelembe, hogy ha egy fiókot, amely rendelkezik rendszergazdai szerepköröket hozzárendelve a hitelesítési módszerek száma eltérhet kiválasztott, a Microsoft kezeli a rendszergazdai házirend.**
+Az új jelszó önkiszolgáló kérésének teszteléséhez egy nem rendszergazdai jogosultságú tesztfelhasználóra van szükség, aki a tesztcsoport tagja. **Vegye figyelembe, hogy ha az Ön által használt fiókhoz rendszergazdai szerepkörök lettek hozzárendelve, akkor a hitelesítéshez használt módszer és szám eltérhet az eredetileg kiválasztottól, hiszen a rendszergazdai szabályzatot a Microsoft kezeli.**
 
 1. Nyisson meg egy új böngészőablakot InPrivate vagy inkognitó módban.
 1. Tesztfelhasználóként regisztráljon új jelszó önkiszolgáló kérésére a következő helyen található regisztrációs portálon: [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup).
@@ -81,4 +81,4 @@ Ha az oktatóanyag keretében konfigurált funkciót a továbbiakban már nem sz
 Ebben az oktatóanyagban új Azure AD-jelszó önkiszolgáló kérését engedélyezte. Továbbléphet a következő oktatóanyagra, amelyből megtudhatja, hogyan integrálható az új jelszó önkiszolgáló kérésére szolgáló felület egy helyszíni Active Directory Domain Services-infrastruktúrába.
 
 > [!div class="nextstepaction"]
-> [SSPR a helyszíni visszaírási integrációjának engedélyezése](tutorial-enable-writeback.md)
+> [Az SSPR helyszíni visszaírás integrációjának engedélyezése](tutorial-enable-writeback.md)

@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/25/2019
 ms.openlocfilehash: 05164985c7851ed828e22f4eeafde64a1940ebc0
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357601"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Szolgáltatási szinten a DTU-alapú vásárlási modell
@@ -62,7 +62,7 @@ A számítási méret az önálló adatbázisok adatbázis-tranzakciós egysége
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Rugalmas készlet edtu-k, a storage és a készletezett adatbázis korlátok
 
-| | **Alapszintű** | **Standard** | **Prémium** |
+| | **Basic** | **Standard** | **Prémium** |
 | :-- | --: | --: | --: |
 | Az adatbázisonkénti maximális mérete  | 2 GB | 1 TB | 1 TB |
 | Készletenkénti maximális mérete | 156 GB | 4 TB | 4 TB |

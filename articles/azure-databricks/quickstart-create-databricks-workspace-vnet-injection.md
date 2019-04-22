@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 295b64b10f9f78ca6224d60fb84c6d1310aaa42e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59288201"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Gyors útmutató: Azure Databricks-munkaterület létrehozása egy virtuális hálózaton belül
@@ -37,7 +37,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
     |Címtér|10.1.0.0/16|A virtuális hálózat címtartománya CIDR formátumban.|
     |Előfizetés|\<Az Ön előfizetése\>|Válassza ki a használni kívánt Azure-előfizetést.|
     |Erőforráscsoport|databricks-quickstart|Válassza ki **hozzon létre új** , és adja meg egy új erőforráscsoport neve a fiókjához.|
-    |Hely|\<Válassza ki a felhasználóihoz legközelebb eső régiót\>|Válasszon egy földrajzi hely, ahol a virtuális hálózat is üzemeltethet. A felhasználókhoz legközelebb eső helyet használja.|
+    |Földrajzi egység|\<Válassza ki a felhasználóihoz legközelebb eső régiót\>|Válasszon egy földrajzi hely, ahol a virtuális hálózat is üzemeltethet. A felhasználókhoz legközelebb eső helyet használja.|
     |Alhálózat neve|alapértelmezett|Válassza ki az alapértelmezett alhálózat nevét, a virtuális hálózaton.|
     |Alhálózat címtartománya|10.1.0.0/24|Az alhálózat címtartománya a CIDR-jelölésrendszerben. A virtuális hálózat címteréhez kell tartoznia. Használatban lévő alhálózatok címtartománya nem szerkeszthető.|
 
@@ -58,7 +58,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
     |Munkaterület neve|databricks-quickstart|Válassza ki az Azure Databricks-munkaterület nevét.|
     |Előfizetés|\<Az Ön előfizetése\>|Válassza ki a használni kívánt Azure-előfizetést.|
     |Erőforráscsoport|databricks-quickstart|Válassza ki a virtuális hálózat esetében használt ugyanabban az erőforráscsoportban.|
-    |Hely|\<Válassza ki a felhasználóihoz legközelebb eső régiót\>|Válassza ki a virtuális hálózattal megegyező helyen.|
+    |Földrajzi egység|\<Válassza ki a felhasználóihoz legközelebb eső régiót\>|Válassza ki a virtuális hálózattal megegyező helyen.|
     |Tarifacsomag|Válassza a Standard vagy prémium szint között.|A tarifacsomagokkal kapcsolatos további információkért lásd: a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).|
     |A virtuális hálózat az Azure Databricks-munkaterület üzembe helyezése|Igen|Ezzel a beállítással telepítheti a virtuális hálózat az Azure Databricks-munkaterületet.|
     |Virtual Network|databricks-quickstart|Válassza ki a virtuális hálózat az előző szakaszban létrehozott.|

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Data Catalogban az adategységek regisztrálása
+title: Adategységek regisztrálása az Azure Data Catalogban
 description: Adategységek regisztrálása az Azure Data Catalog
 author: markingmyname
 ms.author: maghan
@@ -7,13 +7,13 @@ ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 04/08/2019
 ms.openlocfilehash: e89bd4806e2bb2369c100e948be51dcf32f2e123
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59362423"
 ---
-# <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Oktatóanyag: Az Azure Data Catalogban az adategységek regisztrálása
+# <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Oktatóanyag: Adategységek regisztrálása az Azure Data Catalogban
 
 Ebben az oktatóanyagban a frissítésregisztráló eszköz regisztrálása az Azure SQL database mintául szolgáló származó adategységeket a katalógusban használja. A regisztráció az a folyamat, amelynek során az adatforrásból és a benne található adategységekből kinyert fő szerkezeti metaadatok (például nevek, típusok és helyek) hozzáadódnak a katalógushoz. Az adatforrás és az adategységek az eredeti helyükön maradnak, de a metaadatok használatával a katalógus könnyebben feltárhatóvá és értelmezhetővé teszi őket.
 
