@@ -18,10 +18,10 @@ ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 253a5e247dbbea5fc7e0e556d8619328b43bff58
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501059"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás
@@ -247,5 +247,5 @@ Több lehetőség van egy alkalmazás identitás konfiguráció engedélyezése 
 
 További információ az Azure AD által támogatott szabványos jogcímeket.
 
-- [Azonosító jogkivonatok](id-tokens.md)
+- [Azonosító-jogkivonatokat](id-tokens.md)
 - [Hozzáférési jogkivonatok](access-tokens.md)

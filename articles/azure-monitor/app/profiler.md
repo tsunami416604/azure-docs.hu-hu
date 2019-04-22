@@ -13,10 +13,10 @@ ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
 ms.openlocfilehash: b8f6a2d12e1a9920421e6491432b516520ae110b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493739"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profil élő Azure App Service-alkalmazások az Application insights segítségével
@@ -25,7 +25,7 @@ Futtathatja a Profiler az ASP.NET- és ASP.NET Core futó alkalmazások az Azure
 
 ## <a id="installation"></a> Profiler engedélyezése az alkalmazáshoz
 Profiler engedélyezése az alkalmazáshoz, hajtsa végre az alábbi utasításokat. Ha más típusú Azure-szolgáltatások rendszert használ, az alábbiakban útmutatást Profiler engedélyezése az egyéb támogatott platformon:
-* [Cloud Services](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Felhőszolgáltatások](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric-alkalmazások](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtuális gépek](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
@@ -72,7 +72,7 @@ A Profiler fájlok törölhetők, WebDeploy használatakor, hogy a módosításo
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Application Insights használata a Visual Studióban](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
+* [Az Application Insights a Visual Studio használata](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
 
 [Enablement UI]: ./media/profiler/Enablement_UI.png
 [profiler-app-setting]:./media/profiler/profiler-app-setting.png

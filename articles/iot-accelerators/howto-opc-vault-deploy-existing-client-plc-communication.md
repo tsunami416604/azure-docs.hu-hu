@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493997"
 ---
 # <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>Biztonságossá a kommunikációt az OPC-ügyfél és az OPC-PLC
@@ -39,7 +39,7 @@ Az OPC-tároló parancsprogramokat:
 
 - Győződjön meg arról, nincsenek docker kötetek `opcclient` vagy `opcplc`. Egyeztessen `docker volume ls` , és távolítsa el azokat a `docker volume rm <volumename>`. Szükség lehet az is eltávolítja a tárolók `docker rm <containerid>` , ha a kötetek továbbra is egy tároló által használt.
 
-**Első lépések**
+**Gyors útmutató**
 
 Futtassa a következő PowerShell-parancsot a tárház gyökérkönyvtárában található:
 
@@ -92,7 +92,7 @@ A hiba oka, hogy a tanúsítvány, nem megbízható. Ez azt jelenti, hogy `opc-c
     
 1. Nyissa meg a [OPC tároló webhely](https://opcvault.azurewebsites.net/).
 
-1. Válassza ezt: `Register New`
+1. A következők szerint válasszon: `Register New`
 
 1. Adja meg az OPC-PLC adatokat a log kimenetek `CreateSigningRequest information` terület a szövegbeviteli mezőkbe a `Register New OPC UA Application` lapon jelölje be `Server` ApplicationType.
 
@@ -130,7 +130,7 @@ Ismételje meg a teljes folyamatot kezdve `Register New` (a fenti 3. lépés) az
 > [!NOTE]
 > A jelen forgatókönyvben használatakor, előfordulhat, hogy rendelkezik felismerte, hogy a `<addissuercertbase64-string>` és `<updatecrlbase64-string>` értékek megegyeznek a `opcplc` és `opcclient`. Ez igaz, a használati esetekhez és takaríthat meg időt a lépések végrehajtása közben.
 
-**Első lépések**
+**Gyors útmutató**
 
 Futtassa a következő PowerShell-parancsot a tárház gyökérkönyvtárában található:
 

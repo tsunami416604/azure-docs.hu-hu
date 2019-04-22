@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 4/05/2019
 ms.author: scottwhi
 ms.openlocfilehash: e42e56e6361b1fde7ab13655d3c57a90d7235938
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493875"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Gyors elemzést egy képet az insights-jogkivonat használatával
@@ -478,5 +478,5 @@ if __name__ == '__main__':
 [Hozzon létre egy vizuális keresés egyoldalas webalkalmazást](tutorial-bing-visual-search-single-page-app.md)  
 [Mi az a Bing Visual Search API?](overview.md)  
 [A Cognitive Services kipróbálása](https://aka.ms/bingvisualsearchtryforfree)  
-[Ingyenes próba hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[Ingyenes próbaverzióhoz tartozó hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
 [Képek – vizuális keresés](https://aka.ms/bingvisualsearchreferencedoc)

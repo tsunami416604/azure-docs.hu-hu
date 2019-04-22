@@ -1,21 +1,21 @@
 ---
 title: Megismerheti, hogyan kezelhetők a régiók közötti ütközések az Azure Cosmos DB-ben.
 description: Megismerheti, hogyan kezelhetők az ütközések az Azure Cosmos DB-ben.
-author: christopheranderson
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/17/2018
-ms.author: chrande
-ms.openlocfilehash: c7edc9bd20b42725903201fae6349a37a8c0d9eb
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.date: 04/15/2019
+ms.author: rimman
+ms.openlocfilehash: 6f4e6fce88815490ceffd7456cde045b38e32b29
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548819"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680213"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben ütközés feloldása szabályzatok kezelése
 
-Ha adatütközés lép fel többrégiós írások esetében, az ütközés különböző ütközésfeloldási szabályzatok segítségével oldható fel. Ez a cikk bemutatja, hogyan ütközés feloldása házirendek kezelése a platformok eltérő nyelv használatával.
+A többrégiós írási több kliens írna ugyanazon az elemen, ha ütközés fordulhat elő. Ütközés esetén a különböző ütközés feloldása házirendek segítségével tudja feloldani az ütközést. Ez a cikk ismerteti az ütközés feloldása házirendek kezelése.
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Egyéni ütközésfeloldási szabályzat létrehozása
 
@@ -82,9 +82,9 @@ manual_collection = {
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-with-a-stored-procedure"></a>Hozzon létre egy egyéni ütközésfeloldási házirend a tárolt eljárás
+## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Hozzon létre egy tárolt eljárás használatával egyéni ütközésfeloldási házirend
 
-Ezek a minták bemutatják, hogy az ütközések feloldásához hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz tárolt eljárás használatával. Az ütközések nem jelennek meg az ütközést, kivéve, ha hiba van a tárolt eljárás hírcsatorna.
+Ezek a minták bemutatják, hogyan állítsa be a tároló egy egyéni ütközésfeloldási házirend tárolt eljárás használatával szeretné feloldani az ütközést. Az ütközések nem jelennek meg az ütközést, kivéve, ha hiba van a tárolt eljárás hírcsatorna.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
 
@@ -162,7 +162,7 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
 
-## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>A wins-utolsó-író ütközésfeloldási házirend létrehozása
+## <a name="create-a-last-writer-wins-lww-conflict-resolution-policy"></a>A Wins-utolsó-írója (LWW) ütközésfeloldási házirend létrehozása
 
 Ezek a minták ismertetik, hogyan állítható be a tároló egy wins-utolsó-író ütközésfeloldási házirend. Ha az elérési útja nincs beállítva, vagy érvénytelen, a rendszer alapértelmezés szerint a `_ts` tulajdonság. Ez a tulajdonság az időbélyegmezőt. Az ütközések a ütközés hírcsatorna nem jelennek meg.
 
@@ -233,7 +233,7 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 ## <a name="read-from-conflict-feed"></a>Olvasás az ütközéscsatornából
 
-Ezek a minták bemutatják, hogyan lehet olvasni egy tároló ütközéscsatornájából. Ütközések jelennek meg az adatcsatorna csak akkor, ha azok nem automatikusan feloldja az ütközést.
+Ezek a minták bemutatják, hogyan lehet olvasni egy tároló ütközéscsatornájából. Ütközések jelenik meg az ütközést hírcsatorna csak ha azok nem tudta feloldani automatikusan, például egy manuális ütközésfeloldási házirend és a nem regisztrált a tárolt eljárás.
 
 ### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK
 
@@ -285,6 +285,10 @@ while conflict:
 
 Ismerje meg a következő Azure Cosmos DB-fogalmak:
 
+* [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
+* [Az alkalmazások több főkiszolgálós konfigurálása](how-to-multi-master.md)
+* [Ügynökönkénti ügyfelek konfigurálása](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Régiók hozzáadása vagy eltávolítása az Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Több főkiszolgálós konfigurálása az alkalmazások a](how-to-multi-master.md).
 * [Particionálás és adatelosztás](partition-data.md)
 * [Az Azure Cosmos DB indexelése](indexing-policies.md)

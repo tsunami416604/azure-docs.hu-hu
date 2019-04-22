@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
 ms.openlocfilehash: f654f33fe03b29a3aa93386d49e8f5a43cffc9c8
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493042"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: A Java IoT Edge-modul fejlesztése és üzembe helyezése a szimulált eszköz
@@ -49,8 +49,8 @@ Fejlesztési erőforrások:
 * A Visual Studio Code-hoz készült [Java-bővítménycsomag](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack).
 * [Az Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) a Visual Studio Code. 
 * A [Java SE Development Kit 10](https://aka.ms/azure-jdks), valamint úgy [állítsa be a `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/), hogy a JDK-telepítésre mutasson.
-* [Maven](https://maven.apache.org/)
-* [Docker CE](https://docs.docker.com/install/)
+* [Maven 3](https://maven.apache.org/)
+* [Docker CE](https://docs.docker.com/install/).
    * Ha Windows-eszközön végzi a fejlesztést, ellenőrizze, hogy a Docker [konfigurálva van-e Linux-tárolók használatára](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers). 
 
 
@@ -324,5 +324,5 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Továbbléphet a következő oktatóanyagokra, és megtudhatja, milyen más módokon alakíthatja üzleti megállapításokká ezeket az adatokat a peremhálózaton az Azure IoT Edge segítségével.
 
 > [!div class="nextstepaction"]
-> [Az SQL Server-adatbázisok a peremhálózaton data Store](tutorial-store-data-sql-server.md)
+> [Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal](tutorial-store-data-sql-server.md)
 

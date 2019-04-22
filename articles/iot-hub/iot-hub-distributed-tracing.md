@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
 ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501366"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Elosztott nyomkövetést (előzetes verzió) az Azure IoT eszköz – felhő üzenetek nyomon követése
@@ -36,7 +36,7 @@ Ebben a cikkben fogja használni a [Azure IoT eszközoldali SDK-t a c nyelvhez k
 
   - **Észak-Európa**
   - **Délkelet-Ázsia**
-  - **USA nyugati régiója, 2.**
+  - **2. nyugati RÉGIÓJA**
 
 - Ez a cikk feltételezi, hogy ismeri a telemetriai üzeneteket küld az IoT hubnak. Győződjön meg arról, hogy befejezte a [Telemetriát C rövid](./quickstart-send-telemetry-c.md).
 

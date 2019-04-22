@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: magoedte
 ms.openlocfilehash: 5f9a225e8a256dd55feadf97f0a7b9f922487a6f
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492804"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Az Azure Log Analytics-ügynököket a naplóadatok gyűjtése
@@ -105,8 +105,7 @@ A Linux-ügynök a proxykiszolgáló van megadva a telepítés során vagy [a te
 |proxyhost | Cím vagy teljes Tartománynevét a proxy server/Log Analytics-átjáró |
 |port | A proxy server/Log Analytics-átjáró opcionális port száma |
 
-Példa:
-`https://user01:password@proxy01.contoso.com:30443`
+Például:`https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
 > Ha például a speciális karakterek használata "\@" meg a jelszót, egy proxy kapcsolat hibaüzenetet kapja, mert az érték nem megfelelően elemzi.  A probléma megkerüléséhez kódolása a jelszót az URL-címet, például egy eszközzel [URLDecode](https://www.urldecoder.org/).  

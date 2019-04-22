@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
 ms.openlocfilehash: 55eee839e24db2ad96eb635adc488e9a119c5907
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501195"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Service Bus-üzenetsorok használata PHP
@@ -35,7 +35,7 @@ Ebben az oktatóanyagban megismerheti, hogyan hozhat létre PHP-alkalmazások ü
 
         > [!NOTE]
         > Létrehozhat egy **várólista** a PHP használatával ebben az oktatóanyagban a Service Bus-névteret. 
-3. [Azure SDK a PHP-hoz](../php-download-sdk.md)
+3. [PHP-hoz készült Azure SDK](../php-download-sdk.md)
 
 ## <a name="create-a-php-application"></a>PHP-alkalmazás létrehozása
 A csak követelmény a PHP-alkalmazás létrehozása, amely hozzáfér az Azure Blob service, az osztályok a hivatkozó a [php-hez készült Azure SDK-t](../php-download-sdk.md) származó a kódon belül. Bármely fejlesztői eszközök segítségével hozzon létre az alkalmazás vagy a Jegyzettömböt.

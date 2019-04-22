@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: ec0c3b7943db87e5c6fb31dc173a5c3b36377e6c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/17/2019
+ms.openlocfilehash: 255f118d6dc6873364c2f8d4569e23c3e54ea83e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855469"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680519"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL-adatbázis hosszú távú megőrzésének kezelése
 
@@ -43,6 +43,9 @@ Konfigurálhatja az SQL Database [automatikus biztonsági másolatok megőrzés�
    ![szabályzatok konfigurálása](./media/sql-database-long-term-retention/ltr-configure-policies.png)
 
 3. Amikor végzett, kattintson a **alkalmaz**.
+
+> [!IMPORTANT]
+> Ha engedélyezi a hosszú távú adatmegőrzési házirend, az első biztonsági mentés számára láthatók és elérhetők a visszaállítandó válhat a legfeljebb 7 napig is eltarthat. Az LTR biztonsági mentési cadance részletekért lásd: [hosszú távú adatmegőrzés](sql-database-long-term-retention.md).
 
 ### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Biztonsági másolatok megtekintéséhez, és állítsa vissza biztonsági másolatból az Azure portal használatával
 

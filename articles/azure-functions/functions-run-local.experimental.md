@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.openlocfilehash: 84c578fdbcfb555bde23d6a9e6f8258259cff8de
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59497100"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
@@ -32,8 +32,8 @@ Függvények a helyi számítógépen, és ezek közzététele az Azure-bA Core 
 > * [Regisztrálja az eseményindítót és a kötési bővítményeket.](#register-extensions)
 > * [Adja meg a tárolási és egyéb kapcsolatok.](#local-settings-file)
 > * [Függvény létrehozása egy eseményindító és egy nyelvspecifikus sablont.](#create-func)
-> * [Függvény helyi futtatása](#start)
-> * [A projekt közzététele az Azure-ban](#publish)
+> * [A függvény helyi futtatása](#start)
+> * [A projekt közzététele az Azure-bA](#publish)
 
 ## <a name="core-tools-versions"></a>Core Tools-verzió
 
@@ -204,7 +204,7 @@ A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterlán
 A függvény alkalmazás beállítások értékeit is elolvashatja a kódban környezeti változókként. További információkért tekintse meg a környezeti változók szakaszban az alábbi nyelvspecifikus referencia-témakörök:
 
 * [C# előre lefordított](functions-dotnet-class-library.md#environment-variables)
-* [C#-szkript (.csx)](functions-reference-csharp.md#environment-variables)
+* [C# script (.csx)](functions-reference-csharp.md#environment-variables)
 * [F#parancsprogram (.fsx)](functions-reference-fsharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
@@ -217,7 +217,7 @@ Ha nincs érvényes tárolási kapcsolati karakterlánc beállítása a [ `Azure
 
 Akkor is, ha a fejlesztés a storage emulatort használja, érdemes teszt egy tényleges storage-kapcsolattal. Ha már rendelkezik [létrehozott egy tárfiókot](../storage/common/storage-create-storage-account.md), olvashatók be egy érvényes tárolási kapcsolati karakterlánc a következő módszerek valamelyikével:
 
-+ Az a [az Azure portal]. Lépjen a tárfiókhoz válassza **hozzáférési kulcsok** a **beállítások**, majd másolja ki az egyik a **kapcsolati karakterlánc** értékeket.
++ Az a [Azure Portal]. Lépjen a tárfiókhoz válassza **hozzáférési kulcsok** a **beállítások**, majd másolja ki az egyik a **kapcsolati karakterlánc** értékeket.
 
   ![Kapcsolati karakterlánc másolása az Azure Portalról](./media/functions-run-local/copy-storage-connection-portal.png)
 
@@ -431,7 +431,7 @@ func azure functionapp publish <FunctionAppName>
 
 Ez a parancs az Azure-ban meglévő függvényalkalmazással tesz közzé. Hiba akkor fordul elő, amikor a `<FunctionAppName>` az előfizetés nem létezik. Megtudhatja, hogyan hozhat létre egy függvényalkalmazást a parancssort vagy terminálablakot az Azure CLI-vel, tekintse meg a [hozzon létre egy Függvényalkalmazást, kiszolgáló nélküli végrehajtáshoz](./scripts/functions-cli-create-serverless.md).
 
-A `publish` parancs feltölti az a funkciók projekt könyvtár tartalmát. Ha törli a fájlokat helyileg, a `publish` parancs nem törli őket az Azure-ból. Használatával törölheti az Azure-ban a [Kudu eszköz](functions-how-to-use-azure-function-app-settings.md#kudu) a a [az Azure portal].
+A `publish` parancs feltölti az a funkciók projekt könyvtár tartalmát. Ha törli a fájlokat helyileg, a `publish` parancs nem törli őket az Azure-ból. Használatával törölheti az Azure-ban a [Kudu eszköz](functions-how-to-use-azure-function-app-settings.md#kudu) a a [Azure Portal].
 
 >[!IMPORTANT]
 > Ha függvényalkalmazást hoz létre az Azure Portalon, akkor verzióját használja, alapértelmezés szerint a függvény futtatókörnyezetét 2.x. Győződjön meg arról, a függvény Alkalmazásverzió használatát, a futtatókörnyezet 1.x kövesse a [verziót futtat 1.x](functions-versions.md#creating-1x-apps).

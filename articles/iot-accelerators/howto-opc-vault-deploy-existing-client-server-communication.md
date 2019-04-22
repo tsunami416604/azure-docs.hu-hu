@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495294"
 ---
 # <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>Az OPC UA biztonságos, ügyfél és az OPC UA-kiszolgáló alkalmazás 
@@ -34,14 +34,14 @@ Az OPC-tároló parancsprogramokat:
 - A környezeti változót `$env:_OPCVAULTID` a karakterlánc, amely lehetővé teszi, hogy újra keresse meg az adatokat az OPC-tárolóban. Azt javasoljuk, hogy értékre állítani egy 6 jegyű számot. A példánkban a "123456" változó használták értékként.
 - Győződjön meg arról, nem a docker-kötetet `opcclient` vagy `opcplc`. Egyeztessen `docker volume ls` , és távolítsa el azokat a `docker volume rm <volumename>`. Szükség lehet az is eltávolítja a tárolók `docker rm <containerid>` , ha a kötetek továbbra is egy tároló által használt.
 
-**Első lépések**
+**Gyors útmutató**
 1. Nyissa meg a [OPC tároló webhely](https://opcvault.azurewebsites.net/)
 
-1. Válassza ezt: `Register New`
+1. A következők szerint válasszon: `Register New`
 
 1. Adja meg az OPC-PLC információkat, a napló kimenetét az előző testbed látható volt `CreateSigningRequest information` terület a szövegbeviteli mezőkbe a `Register New OPC UA Application` lapon jelölje be `Server` ApplicationType.
 
-1. Válassza ezt: `Register`
+1. A következők szerint válasszon: `Register`
 
 1. A következő oldalon `Request New Certificate for OPC UA Application` kiválasztása `Request new KeyPair and Certificate`
 
@@ -51,7 +51,7 @@ Az OPC-tároló parancsprogramokat:
 
 1. A következő oldalon `Generate a new KeyPair and for an OPC UA Application` adja meg `CN=OpcPlc` SubjectName, mint `opcplc-<_OPCVAULTID>` (cserélje le `<_OPCVAULTID>` naplótípussal), tartománynév, válassza ki a `PEM` PrivateKeyFormat, és adjon meg egy jelszót (azt később hivatkoznak rá, `<certpassword-string>`)
 
-1. Válassza ezt: `Generate New KeyPair`
+1. A következők szerint válasszon: `Generate New KeyPair`
 
 1. Most már helyez át előre a `View Certificate Request Details`. Ezen a lapon minden szükséges információját, a tanúsítványok tárolóiban kiépíteni letöltheti `opc-plc`.
 
@@ -75,7 +75,7 @@ Az OPC-tároló parancsprogramokat:
     > [!NOTE] 
     > A jelen forgatókönyvben használatakor, előfordulhat, hogy rendelkezik felismerte, hogy a `<addissuercertbase64-string>` és `<updatecrlbase64-string>` értékek megegyeznek a `opcplc` és `opcclient`. Ez igaz, a használati esetekhez és takaríthat meg időt a lépések végrehajtása közben.
 
-**Első lépések**
+**Gyors útmutató**
 
 Futtassa a következő PowerShell-parancsot a tárház gyökérkönyvtárában található:
 
@@ -136,7 +136,7 @@ Ha ez a kimenet jelenik meg, majd az OPC-PLC van most megbízó az OPC ügyfél 
 
 ### <a name="a-testbed-for-opc-publisher"></a>Egy testbed az OPC-közzétevő ###
 
-**Első lépések**
+**Gyors útmutató**
 
 Futtassa a következő PowerShell-parancsot a tárház gyökérkönyvtárában található:
 ```

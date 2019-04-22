@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.openlocfilehash: 5b7c44d3ea3394ff728adfb9d9fd72293138fb2e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494644"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure folyamatok használatával hozhat létre és HPC-megoldások üzembe helyezése
@@ -51,7 +51,7 @@ A jelen példában használt kódbázis struktúráját a következőhöz;
 Ez a szakasz azt feltételezi, hogy ismeri a verzió-vezérlés és tervezési Resource Manager-sablonok. Ha nem ismeri ezeket a fogalmakat, a következő oldalakon további információt.
 
 * [Mi az, hogy a verziókövetés?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
-* [Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Az Azure Resource Manager-sablonok struktúrája és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 

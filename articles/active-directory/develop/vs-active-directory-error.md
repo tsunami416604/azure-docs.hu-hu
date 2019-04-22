@@ -13,18 +13,18 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ed328b29c853e5ff75d64332f0228277cff90d4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a6f151251d76965cf1bc86216eac15a08f1adbc6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203675"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679108"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Az Azure Active Directory csatlakoztatott szolgáltatás-hibák diagnosztizálása
 
 Előző hitelesítési kód észlelése, miközben az Azure Active Directory connect-kiszolgáló azt észlelte, nem kompatibilis hitelesítési típust.
 
-Előző hitelesítési kód megfelelően észleli a projektben, a projekt kell elkészíteni.  Ha ezt a hibát, és a projektben egy előző hitelesítési kód nem rendelkezik, építse újra, és próbálkozzon újra.
+Előző hitelesítési kód megfelelően észleli a projektben, a projekt kell elkészíteni.  Ha ezt a hibaüzenetet, és a projektben egy előző hitelesítési kód nem rendelkezik, építse újra, és próbálkozzon újra.
 
 ## <a name="project-types"></a>Projekttípus
 
@@ -32,7 +32,7 @@ A csatlakoztatott szolgáltatás ellenőrzi a projekt fejleszt, akkor is a megfe
 
 ## <a name="compatible-authentication-code"></a>Kompatibilis a hitelesítési kód
 
-A csatlakoztatott szolgáltatás hitelesítési beállítások, amelyek korábban konfigurált, vagy a szolgáltatással kompatibilis is keres. Ha minden beállítás megadva, akkor számít párhuzamosan esetet, és a csatlakoztatott szolgáltatás megnyílik a beállítások megjelenítéséhez.  Ha csak néhány beállítás megadva, akkor a hibás esetnek számít.
+A csatlakoztatott szolgáltatás hitelesítési beállítások, amelyek korábban konfigurált, vagy a szolgáltatással kompatibilis is keres. Ha minden beállítás megadva, párhuzamosan eset figyelembe vette, és a csatlakoztatott szolgáltatás megnyílik a beállítások megjelenítéséhez.  Ha csak néhány beállítás megadva, figyelembe vette egy hibaesetét.
 
 MVC-projektben a csatlakoztatott szolgáltatás ellenőrzi az alábbi beállításokat, amelyeket a szolgáltatás előző használatából bármelyikét:
 
@@ -41,7 +41,7 @@ MVC-projektben a csatlakoztatott szolgáltatás ellenőrzi az alábbi beállít�
     <add key="ida:AADInstance" value="" />
     <add key="ida:PostLogoutRedirectUri" value="" />
 
-Emellett a csatlakoztatott szolgáltatás ellenőrzi egy webes API-projektben a következő beállításokat, a szolgáltatás előző használatának eredményeként bármelyikét:
+Is a csatlakoztatott szolgáltatás ellenőrzi a webes API-projektben a következő beállításokat, a szolgáltatás előző használatának eredményeként bármelyikét:
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
@@ -60,7 +60,7 @@ MVC-projektben észleli a Windows-hitelesítés, a csatlakoztatott keres a `auth
 ```xml
 <configuration>
     <system.web>
-        <span style="background-color: yellow"><authentication mode="Windows" /></span>
+        <authentication mode="Windows" />
     </system.web>
 </configuration>
 ```
@@ -70,7 +70,7 @@ Windows-hitelesítést a webes API projektet észleléséhez a csatlakoztatott s
 ```xml
 <Project>
     <PropertyGroup>
-        <span style="background-color: yellow"><IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication></span>
+        <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     </PropertyGroup>
 </Project>
 ```
@@ -79,7 +79,7 @@ Az egyes felhasználói fiókok hitelesítési észleléséhez a csatlakoztatott
 
 ```xml
 <packages>
-    <span style="background-color: yellow"><package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /></span>
+    <package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" />
 </packages>
 ```
 
@@ -88,7 +88,7 @@ A szervezeti fiók hitelesítése egy régi formájában észleléséhez a csatl
 ```xml
 <configuration>
     <appSettings>
-        <span style="background-color: yellow"><add key="ida:Realm" value="***" /></span>
+        <add key="ida:Realm" value="***" />
     </appSettings>
 </configuration>
 ```

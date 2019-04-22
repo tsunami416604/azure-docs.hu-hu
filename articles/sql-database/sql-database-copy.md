@@ -12,12 +12,12 @@ ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/11/2019
-ms.openlocfilehash: 47aa88040b6010aeca4aeed696310505d1e17df9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 363803e9276a8356b52438f251391378c54f1655
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549687"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678938"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Az Azure SQL database tranzakciós szempontból konzisztens másolatot másolása
 
@@ -25,7 +25,7 @@ Az Azure SQL Database egy meglévő Azure SQL database tranzakciós szempontból
 
 ## <a name="overview"></a>Áttekintés
 
-Adatbázis-másolat a Másolás kérés időpontjában a forrásadatbázis pillanatképét. Kiválaszthatja, hogy ugyanazon a kiszolgálón vagy egy másik kiszolgálóra, szolgáltatásszintet és számítási mérete vagy a különböző számítási méret ugyanazon a szolgáltatásszinten (kiadás) belül. A Másolás befejezése után egy teljesen működőképes, független adatbázis válik. Ezen a ponton frissítse vagy Visszaléptetés a bármely verzióra. A bejelentkezések, felhasználók és engedélyek egymástól függetlenül is felügyelhetők.  
+Adatbázis-másolat a Másolás kérés időpontjában a forrásadatbázis pillanatképét. Kiválaszthatja, hogy ugyanazon a kiszolgálón vagy egy másik kiszolgálóra. Is lehet váltani, tartsa szolgáltatásszintet és számítási méret vagy ugyanazon a szolgáltatásszinten (kiadás) belül különböző számítási méret. A Másolás befejezése után egy teljesen működőképes, független adatbázis válik. Ezen a ponton frissítse vagy Visszaléptetés a bármely verzióra. A bejelentkezések, felhasználók és engedélyek egymástól függetlenül is felügyelhetők.  
 
 > [!NOTE]
 > [Adatbázisok biztonsági mentése automatikus](sql-database-automated-backups.md) adatbázis-másolat létrehozásakor használt.

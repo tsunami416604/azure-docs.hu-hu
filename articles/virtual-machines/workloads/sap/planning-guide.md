@@ -18,10 +18,10 @@ ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a9e12171a8596bc9caba3bf9065bbb943139ccde
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501331"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
@@ -628,7 +628,7 @@ A Microsoft Azure egy hálózati infrastruktúra, amely lehetővé teszi, hogy m
 * Létesítmények közötti kapcsolat egy ügyfél a helyszíni hálózat és az Azure-hálózat között
 * Több Azure-régió vagy az adatközpontok az Azure webhelyek közötti kapcsolat
 
-További információ itt található: <https://azure.microsoft.com/documentation/services/virtual-network/>
+További információt itt találhat: <https://azure.microsoft.com/documentation/services/virtual-network/>
 
 Nincsenek neve és IP-feloldás konfigurálása az Azure-ban számos különböző lehetőségeit. Emellett van egy Azure DNS szolgáltatással, amelyre a saját DNS-kiszolgáló beállítása helyett alkalmazható. További információ található [Ez a cikk] [ virtual-networks-manage-dns-in-vnet] és a [ezt oldal](https://azure.microsoft.com/services/dns/).
 
@@ -722,8 +722,7 @@ Express Route használatával egy ExpressRoute-kapcsolatcsoport több Azure-elő
 #### <a name="forced-tunneling-in-case-of-cross-premises"></a>Kényszerített bújtatás esetén a létesítmények közötti
 A virtuális gépek site-to-site, pont – hely vagy az ExpressRoute használatával a helyszíni tartományokhoz való csatlakozás esetén győződjön meg arról, hogy az internetes proxybeállítások első telepítésére ezeken a virtuális gépeken, valamint az összes felhasználót kell. Alapértelmezés szerint az ezeket a virtuális gépek vagy az internet eléréséhez egy böngészőben használó felhasználók szoftvert nem sikerült a vállalat proxyn keresztül, de közvetlenül az Azure-on az interneten keresztül csatlakoznak. De még a proxybeállítást nem 100 %-os megoldást a vállalati proxyn keresztül a forgalom közvetlen óta feladata, a szoftverek és szolgáltatások a proxy kereséséhez. Ha a virtuális Gépen futó szoftver, amely nem végez, illetve a rendszergazda kezeli a beállításokat, az internetre irányuló forgalom is kell újra detoured közvetlenül az Azure-bA az interneten keresztül.
 
-Annak érdekében, hogy az ilyen egy közvetlen internetkapcsolattal, konfigurálhatja a kényszerített bújtatásról helyek közötti kapcsolattal a helyszíni és az Azure között. A kényszerített bújtatás funkció részletes leírása itt van közzétéve.
-<https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
+Annak érdekében, hogy az ilyen egy közvetlen internetkapcsolattal, konfigurálhatja a kényszerített bújtatásról helyek közötti kapcsolattal a helyszíni és az Azure között. A kényszerített bújtatás funkció részletes leírása itt van közzétéve. <https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
 
 Az expressroute-tal a kényszerített bújtatás engedélyezve van a vevők az ExpressRoute BGP-társviszony-létesítési munkamenetek keresztül egy alapértelmezett útvonalat hirdet által.
 
@@ -754,8 +753,7 @@ A nyers döntési fa eldönteni, hogy az SAP-rendszer illeszkedik a Azure Virtua
 
 **1. lépés**: A legfontosabb információt a kezdéshez egy adott SAP-rendszer a SAP követelménye. Az SAP-követelményeknek kell bontható az adatbázis-kezelő és a SAP alkalmazás részét, még akkor is, ha az SAP-rendszer már üzembe helyezett helyszíni 2 szintű konfigurációban. Meglévő rendszerekkel az SAP, gyakran használt hardver kapcsolatos határozza meg vagy meglévő SAP-referenciaalapok alapján. Az eredmények itt található: <https://sap.com/about/benchmark.html>.
 Az újonnan üzembe helyezett SAP-rendszereit érdemes elvégezte a méretezési gyakorlatban kell meghatározni, hogy a rendszer a SAP követelményeinek.
-Lásd még: erre a blogra és a csatolt dokumentumot SAP méretezéshez az Azure-ban:
-<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+Lásd még: erre a blogra és a csatolt dokumentumot SAP méretezéshez az Azure-ban: <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 **2. lépés**: A meglévő rendszerek esetében az i/o-kötet és i/o-műveletek száma másodpercenként a DBMS-kiszolgálón kell mérni. Újonnan tervezett rendszerek esetén a méretezés a gyakorlatban az új rendszer is kell biztosítania az i/o-követelményeket a DBMS oldalon hozzávetőleges ötleteit. Ha nem tudja biztosan, végül a koncepció igazolása magatartási kell.
 
@@ -800,8 +798,7 @@ Részletesebb útmutatást telepítése, frissítése és konfigurálása az Azu
 
 Felhasználói élmény eddig lett, hogy PowerShell (PS) természetesen-e a virtuális gépek üzembe helyezése és egyéni lépéseihez létrehozása a virtuális gépek központi hatékony eszköz. PS parancsmagok lehetőséget a felügyeleti feladatokat az Azure Portalon vagy a PS-parancsmagok is használ kizárólag az Azure-ban az üzembe helyezett megoldások kezelése az SAP-példányok Azure-ban futó ügyfelek használja. Mivel az Azure-ra vonatkozó parancsmagok oszt meg, a több mint 2000 Windows kapcsolatos parancsmagok ugyanazt az elnevezési konvenciót, célszerű ezeket a parancsmagokat a Windows-rendszergazdák egyszerű feladat.
 
-Példa itt talál:
-<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+Példa itt talál: <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 
 Az SAP az Azure Monitoring bővítmény telepítését (című [Azure Monitoring megoldás az SAP] [ planning-guide-9.1] ebben a dokumentumban) csak akkor lehetséges, PowerShell vagy parancssori felület használatával. Ezért azt kötelező való telepítése és konfigurálása a PowerShell vagy parancssori felület üzembe helyezésekor és a egy Azure-beli SAP NetWeaver rendszer felügyelete.  
@@ -1326,8 +1323,7 @@ Tekintse meg a klasszikus modellen és ARM architektúra különbség leírtak s
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Az SAP-rendszerhez, és az SAP grafikus felhasználói felület az internetes kapcsolat konfigurációja
 
-Tekintse meg ebben a cikkben a részleteit, ez a témakör ismerteti:
-<https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+Tekintse meg ebben a cikkben a részleteit, ez a témakör ismerteti: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
 #### <a name="changing-firewall-settings-within-vm"></a>Virtuális gépen a tűzfal beállításainak módosítása
 
@@ -2021,12 +2017,10 @@ Azonban fennállásakor tavaly data center fejlesztett partnerek közös helyek 
 Függ az SAP-konfiguráció (2 szintű vagy 3 szintű) van kiválasztva a biztonsági mentéséhez szükséges lehet. A tartalom a virtuális gép plusz maga az adatbázis biztonsági mentésére. Az adatbázis-kezelő kapcsolatos biztonsági mentések várhatóan adatbázis-módszerekkel együtt kell végrehajtani. A különböző adatbázisokat, részletes leírását található [DBMS útmutató][dbms-guide]. Másrészről az SAP-adatok biztonsági másolat készíthető egy offline módon (beleértve az adatbázisok tartalmát is) ebben a szakaszban leírtak szerint, vagy online a következő szakaszban leírtak szerint.
 
 Az offline biztonsági mentés alapvetően megköveteli a az Azure Portalon a virtuális gép leállítása és a egy példányát az alap Virtuálisgép-lemez és az összes csatlakoztatott lemezek a virtuális géphez. Ezzel a virtuális gép és a kapcsolódó lemezt idő képen egy pont megőrzik. Javasoljuk, hogy a biztonsági másolatok másolása másik Azure Storage-fiókra. Ezért a fejezetben leírt eljárás [lemezek között az Azure Storage-fiókok másolása] [ planning-guide-5.4.2] ebben a dokumentumban a alkalmazni.
-A leállás mellett az Azure Portallal egy is megteheti Powershell vagy parancssori felület a itt leírtak szerint:
-<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
+A leállás mellett az Azure Portallal egy is megteheti Powershell vagy parancssori felület a itt leírtak szerint: <https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
 
 Visszaállítás, az állapotban, amelyek a kiindulási virtuális Gépet, valamint az eredeti lemezek alap virtuális gép törlése, és a csatlakoztatott lemezeket, a mentett lemezek másolása az eredeti Storage-fiókot vagy resource csoport felügyelt lemezek és a rendszer majd újratelepítésével.
-Ez a cikk mutatja be egy példa a folyamat a Powershell parancsfájllal történő:
-<http://www.westerndevs.com/azure-snapshots/>
+Ez a cikk mutatja be egy példa a folyamat a Powershell parancsfájllal történő: <http://www.westerndevs.com/azure-snapshots/>
 
 Ellenőrizze, hogy telepítése egy új SAP-licenccel, mivel visszaállítása egy virtuális gép biztonsági mentése a fent leírt módon létrehoz egy új hardver kulcsot.
 
@@ -2050,8 +2044,7 @@ Más virtuális gépein az SAP-rendszer Azure virtuális gépek biztonsági ment
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Nincs a Linux Windows VSS nem megfelelő. Így csak fájlkonzisztens biztonsági mentés lehetőség, de nem alkalmazásfüggő biztonsági másolatok. Az SAP DBMS biztonsági mentést kell végezni az adatbázis-kezelő szolgáltatással. A fájlrendszer, amely tartalmazza a SAP-kapcsolatos adatokat is mentve, például használatával tar leírtak szerint itt:
-> <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
+> Nincs a Linux Windows VSS nem megfelelő. Így csak fájlkonzisztens biztonsági mentés lehetőség, de nem alkalmazásfüggő biztonsági másolatok. Az SAP DBMS biztonsági mentést kell végezni az adatbázis-kezelő szolgáltatással. A fájlrendszer, amely tartalmazza a SAP-kapcsolatos adatokat is mentve, például használatával tar leírtak szerint itt: <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
 >
 

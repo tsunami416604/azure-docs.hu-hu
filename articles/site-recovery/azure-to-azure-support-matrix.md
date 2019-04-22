@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 0c2ca8c17abd6ac5e540beec1bde715931e022a4
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 58d7aeb3c710610d93eda09b37374a167b444bd0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609404"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679006"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Azure virtuális gépek replikálása egyik régióból a másikba-támogatási mátrixa
 
@@ -225,6 +225,7 @@ Prémium szintű P10 vagy P15 lemez | 16 KB | 4 MB/s |  Lemezenként 336 GB
 Prémium szintű P10 vagy P15 lemez | 32 KB vagy több | 8 MB/s | Lemezenként 672 GB
 Prémium szintű P20, P30, P40 vagy P50 lemez | 8 KB    | 5 MB/s | Lemezenként 421 GB
 Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |20 MB/s | Lemezenként 1684 GB
+
 ## <a name="replicated-machines---networking"></a>A replikált gépek – hálózatkezelés
 **Beállítás** | **Támogatás** | **Részletek**
 --- | --- | ---
@@ -236,6 +237,7 @@ A hálózati adapter NSG-t | Támogatott | Az NSG-t társítson a hálózati ada
 Az alhálózati NSG | Támogatott | Az NSG-KET társíthat az alhálózat egy Azure Automation-szkript használatával a helyreállítási terv.
 Fenntartott (statikus) IP-cím | Támogatott | Ha a forrásoldali virtuális gép hálózati adapter statikus IP-címmel rendelkezik, és a célként megadott alhálózat az azonos rendelkezésre álló IP-címmel rendelkezik, azt hozzá van rendelve, a feladatátvételen átesett virtuális gép.<br/><br/> Ha a célként megadott alhálózat nem rendelkezik elérhető azonos IP-cím, egy alhálózaton elérhető IP-címek a virtuális gép számára van fenntartva.<br/><br/> Azt is beállíthatja egy rögzített IP-cím és alhálózat **replikált elemek** > **beállítások** > **számítás és hálózat**  >  **Hálózati adapterek**.
 Dinamikus IP-cím | Támogatott | Ha a forrás hálózati adapter dinamikus IP-címzés, a hálózati adapter a feladatátvételen átesett virtuális gép is alapértelmezés szerint dinamikus.<br/><br/> Ez módosítható rögzített IP-címmel, ha szükséges.
+Több IP-cím | Nem támogatott | Amikor feladatátvételt hajt végre egy virtuális Gépet, amely a hálózati adapter több IP-címmel rendelkezik, csak az elsődleges IP-címet a hálózati adapter a forrásrégióban másolatok. Több IP-címet hozzárendelni, adja hozzá a virtuális gépek egy [helyreállítási terv](recovery-plan-overview.md) és csatolása egy parancsfájlt, amely további IP-címek hozzárendelése a csomagot, vagy, a módosítást manuálisan vagy egy parancsfájlt a feladatátvételt követően. 
 Traffic Manager     | Támogatott | A Traffic Manager előre is megadhatja, hogy a végpont a forrásrégióban rendszeres időközönként, valamint a végponti feladatátvétel esetén a célrégióban adatforgalmat.
 Azure DNS | Támogatott |
 Egyéni DNS  | Támogatott |

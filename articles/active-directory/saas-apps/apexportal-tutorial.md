@@ -8,19 +8,20 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: db204a46-6460-4ace-bdbb-4353846723ad
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ffd7207367d0bbdd670fb8402775b26952ae5d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d9f83e0b6136a27c0cd519a345e085040f47cc6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852593"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Oktatóanyag: Az Azure Active Directory-integráció Apex-portállal
 
@@ -68,7 +69,7 @@ Azure ad-ben található rekordokra portál integráció konfigurálásához, ho
 
 4. A Keresés mezőbe írja be a **Apex-portál**, jelölje be **Apex-portál** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Az eredmények listájában Apex-portál](common/search-new-app.png)
+    ![Az eredmények listájában Apex-portál](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
@@ -106,9 +107,9 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Apex-portállal, hajtsa vég
 
     ![Apex-portál tartomány és URL-címek egyszeri bejelentkezési adatait](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<customer name>.apexportal.net/saml/sso.aspx`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<customer name>.apexportal.net/saml/sso.aspx`
 
     > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Apex-portál ügyfél-támogatási csapatának](mailto:support@apexanalytix.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
@@ -120,7 +121,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Apex-portállal, hajtsa vég
 6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
 
     | Name (Név) | Adatforrás-attribútum|
-    | ------------------- | -------------------- |
+    | -------- | --------- |
     | KERESZTNÉV | user.givenname |
     | VEZETÉKNÉV | user.surname |
     | LEVELEK | user.mail |
@@ -154,7 +155,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Apex-portállal, hajtsa vég
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
@@ -180,8 +181,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be `brittasimon\@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
@@ -233,4 +233,3 @@ Ha a hozzáférési panelen a Apex-portál csempére kattint, akkor kell is auto
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

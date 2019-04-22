@@ -8,16 +8,16 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f8ddcbcb25dc45ee71304ffa1bc5c0c4d3751b61
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 749e211c9844f644e04d5135f99d71918d65b66b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523732"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680347"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>Függvényalkalmazás integrálása az Azure-beli virtuális hálózathoz
 
-A részletes oktatóanyag bemutatja, hogyan csatlakozhat egy Azure virtuális Hálózatban található erőforrások az Azure Functions használatával.
+Ez az oktatóanyag bemutatja, hogyan csatlakozhat egy Azure virtuális Hálózatban található erőforrások az Azure Functions használatával.
 
 Ebben az oktatóanyagban bevezetjük egy WordPress-webhelyet egy saját, nem – elérhető az internetről, virtuális hálózat egy virtuális gépen. Azt fogja majd függvény üzembe helyezése egy hozzáféréssel rendelkező az internethez és a VNET is. Ez a függvény használjuk a virtuális hálózaton belül üzembe helyezett WordPress webhely az erőforrások eléréséhez.
 

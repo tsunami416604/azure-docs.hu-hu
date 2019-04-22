@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: dbdd0165e276e5c82f8d4c15ef70d3a541d76bc0
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f59f281b1bf7fa2851ab7759a0167b5d39ef44c1
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522196"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678989"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktív tanulás használatával javíthatja a Tudásbázis
 
@@ -156,7 +156,7 @@ Az ügyfélalkalmazás összes kérdést jelenít meg és válassza ki a kérdé
 
 Miután a felhasználó kiválaszt egy meglévő kérdések, az ügyfélalkalmazás küldi a felhasználó által választott visszajelzés a QnA Maker Train API-val. A visszajelzés befejezi az aktív tanulás visszajelzési hurkot. 
 
-Használja a [Azure Bot C# példa](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot) aktív tanulás egy teljes körű forgatókönyvben megtekintéséhez.
+Használja a [Azure Bot minta](https://aka.ms/activelearningsamplebot) aktív tanulás egy teljes körű forgatókönyvben megtekintéséhez.
 
 ## <a name="train-api"></a>Train API
 

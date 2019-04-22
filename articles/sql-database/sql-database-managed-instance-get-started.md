@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 04/10/2019
 ms.openlocfilehash: d94e00c8a475e29ddd671004b8137ba4e6efd107
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495037"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Egy Azure SQL Database felügyelt példány létrehozása
@@ -50,7 +50,7 @@ A következő lépések bemutatják, hogyan hozhat létre felügyelt példányt.
    |**Jelszó**|Bármely érvényes jelszó|A jelszónak legalább 16 karakter hosszúságúnak kell lennie, és teljesítenie kell [a meghatározott összetettségi követelményeket](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
    |**Időzóna**|A felügyelt példány által, az adott időzóna|További információkért lásd: [időzónák](sql-database-managed-instance-timezone.md)|
    |**Rendezés**|A rendezést, hogy a felügyelt példány használni kívánt|Ha az SQL Server adatbázisok áttelepítése, ellenőrizze a forrás rendezést használ `SELECT SERVERPROPERTY(N'Collation')` , és ezt az értéket használja. További információk a Rendezés: [kiszolgálószintű rendezések](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|
-   |**Földrajzi egység**|A helyét, amelyben meg szeretné a felügyelt példány létrehozása|Régiókkal kapcsolatos információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).|
+   |**Hely**|A helyét, amelyben meg szeretné a felügyelt példány létrehozása|Régiókkal kapcsolatos információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).|
    |**Virtuális hálózat**|Ezek közül bármelyikre **új virtuális hálózat létrehozása** vagy egy érvényes virtuális hálózatot, és az alhálózatot.| Hálózat/alhálózat nem érhető el, hogy kell lennie [módosítani a hálózati követelmények teljesítéséhez](sql-database-managed-instance-configure-vnet-subnet.md) az új felügyelt példány cél kiválasztása előtt. A felügyelt példány a hálózati környezet konfigurálásához vonatkozó követelményekkel kapcsolatos információkért lásd: [a felügyelt példány virtuális hálózat konfigurálása](sql-database-managed-instance-connectivity-architecture.md). |
    |**Kapcsolat típusa**|Válassza a Proxy- és átirányítási kapcsolat típusa között|Kapcsolattípusok kapcsolatos további információkért lásd: [Azure SQL-kapcsolódási szabályzat](sql-database-connectivity-architecture.md#connection-policy).|
    |**Erőforráscsoport**|Egy új vagy létező erőforráscsoport|Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|

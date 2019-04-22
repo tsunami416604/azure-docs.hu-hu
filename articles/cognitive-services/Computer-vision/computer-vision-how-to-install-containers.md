@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 3/22/2019
+ms.date: 04/16/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b7e60b4fbdf076c50a7d9a29092de9ab1c32b210
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: aba8f9b2b4e62420ed5d318be40bbc4ada544866
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520649"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679601"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Telepítse és futtassa a szöveg felismerése tárolók
 
@@ -34,7 +34,7 @@ Szöveg felismerése tárolók használata előtt a következő előfeltételekn
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
-|Ismeri fel a szöveg erőforrás |A tároló használatához rendelkeznie kell:<br><br>A [ _szöveg felismerése_ ](vision-api-how-to-topics/howtosubscribe.md) Azure-erőforráshoz tartozó számlázási kulcs és számlázási végpont URI azonosítója. Mindkét értéket az Azure Portalon ismeri fel a szöveg áttekintése és a kulcsok oldalon érhető el, és a tároló indításához szükséges.<br><br>**{BILLING_KEY}** : erőforrás-kulcs<br><br>**{BILLING_ENDPOINT_URI}** : végpont URI-példa: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+|Azure `Cognitive Services` erőforrás |A tároló használatához rendelkeznie kell:<br><br>A _Cognitive Services_ Azure-erőforrás és a kapcsolódó számlázási kulcs a számlázási végpont URI azonosítója. Mindkét értéket érhetők el az erőforrás áttekintése és a kulcsok lapjain, és a tároló indításához szükséges. Hozzá kell adnia a `vision/v2.0` útválasztás az a végpont URI-t, a következő BILLING_ENDPOINT_URI példában látható módon. <br><br>**{BILLING_KEY}** : erőforrás-kulcs<br><br>**{BILLING_ENDPOINT_URI}** : végpont URI-példa: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
 
 
 ## <a name="request-access-to-the-private-container-registry"></a>A privát tárolóregisztrációs hozzáférés kérése
@@ -91,8 +91,10 @@ Használja a [futtatása docker](https://docs.docker.com/engine/reference/comman
 
 | Helyőrző | Érték |
 |-------------|-------|
-|{BILLING_KEY} | Ezt a kulcsot szolgál a tárolót, és az Azure Portalon ismeri fel a szöveg kulcsok lapján található.  |
-|{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját.|
+|{BILLING_KEY} | Ezt a kulcsot a tároló elindításához szolgál, és az Azure-ban elérhető `Cognitive Services` kulcsok oldalán.  |
+|{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját. A példában a következő: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+
+Hozzá kell adnia a `vision/v2.0` útválasztás az a végpont URI-t, a következő BILLING_ENDPOINT_URI példában látható módon.
 
 Cserélje le ezeket a paramétereket a következő példában a saját értékeire `docker run` parancsot.
 

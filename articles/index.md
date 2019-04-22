@@ -7,10 +7,10 @@ ms.topic: hub-page
 featureFlags:
 - clicktale
 ms.openlocfilehash: 3b35608c30262f633af073daacc8795f8eca1e7e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496505"
 ---
 <div id="main" class="v2">
@@ -170,7 +170,7 @@ Node.js</a>
                                                     <li>
                                                         <a class="barLink" href="/go/azure/">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg" alt="">
-Indítás</a>
+Go</a>
                                                     </li>
                                                 </ul></td></tr></table>
                                                <h4>Appmodellek</h4>
@@ -244,7 +244,7 @@ Azure Portal </a>
                                                     <li>
                                                         <a class="barLink" href="https://azure.microsoft.com/features/azure-portal/mobile-app/">
                                                             <img src="https://docs.microsoft.com/media/common/i_mobile-app-developement.svg" alt="">
-Azure Mobile Apps </a>
+Azure mobile app </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -320,7 +320,7 @@ A felhőalapú számítástechnikai alapelvei </a>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/control-azure-services-with-cli/">
                                                             <img src="https://docs.microsoft.com/learn/achievements/control-azure-services-with-cli.svg" alt="">
-Azure-szolgáltatások irányítása a parancssori felülettel </a>
+Azure-szolgáltatások irányítása a parancssori felülettel jelvény </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/automate-azure-tasks-with-powershell/">
@@ -352,7 +352,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                 <a href="#products">Termékek</a>
                 <ul id="products">
                     <li>
-                        <a href="#all">Összes</a>
+                        <a href="#all">Az összes</a>
                         <ul id="all" class="directory">
                             <li>
                                 <div class="group">
@@ -2079,7 +2079,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#network">Hálózat</a>
+                        <a href="#network">Hálózatkezelés</a>
                         <ul id="network" class="cardsA">
                             <li>
                                 <a href="/azure/networking/networking-overview">
@@ -2759,7 +2759,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#mobile">Mobiltelefon</a>
+                        <a href="#mobile">Mobil</a>
                         <ul id="mobile" class="cardsA">
                             <li>
                                 <a href="/azure/app-service-mobile">
@@ -5971,7 +5971,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                 <h3>
 Azure .NET-fejlesztőknek </h3>
                                                 <p>
-                                                    <a href="/dotnet/azure">Bevezetés</a>
+                                                    <a href="/dotnet/azure">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="/dotnet/api/overview/azure/?view=azure-dotnet">API-referencia</a>
@@ -5994,7 +5994,7 @@ Azure .NET-fejlesztőknek </h3>
                                                 <h3>
 Azure Python-fejlesztőknek </h3>
                                                 <p>
-                                                    <a href="/python/azure">Bevezetés</a>
+                                                    <a href="/python/azure">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="/python/api/overview/azure/">API-referencia</a>
@@ -6017,7 +6017,7 @@ Azure Python-fejlesztőknek </h3>
                                                 <h3>
 Azure Node.js-fejlesztőknek </h3>
                                                 <p>
-                                                    <a href="/javascript/azure/">Bevezetés</a>
+                                                    <a href="/javascript/azure/">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="/javascript/api/overview/azure/">API-referencia</a>
@@ -6040,7 +6040,7 @@ Azure Node.js-fejlesztőknek </h3>
                                                 <h3>
 Azure Java-fejlesztőknek </h3>
                                                 <p>
-                                                    <a href="/java/azure">Bevezetés</a>
+                                                    <a href="/java/azure">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="/java/api">API-referencia</a>
@@ -6063,10 +6063,10 @@ Azure Java-fejlesztőknek </h3>
                                                 <h3>
 Azure Go-fejlesztőknek </h3>
                                                 <p>
-                                                    <a href="/go/azure/">Bevezetés</a>
+                                                    <a href="/go/azure/">Első lépések</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">API-hivatkozás</a>
+                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">API-referencia</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6086,7 +6086,7 @@ Azure Go-fejlesztőknek </h3>
                                                 <h3>
 Azure REST API-k </h3>
                                                 <p>
-                                                    <a href="/rest/api">API-hivatkozás</a>
+                                                    <a href="/rest/api">API-referencia</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6111,7 +6111,7 @@ Azure REST API-k </h3>
                                                 <h3>
 Azure CLI </h3>
                                                 <p>
-                                                    <a href="/cli/azure">Bevezetés</a>
+                                                    <a href="/cli/azure">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="/cli/azure/reference-index">Referencia</a>
@@ -6133,7 +6133,7 @@ Azure CLI </h3>
                                             <div class="cardText">
                                                 <h3>Azure PowerShell</h3>
                                                 <p>
-                                                    <a href="/powershell/azure/get-started-azureps">Bevezetés</a>
+                                                    <a href="/powershell/azure/get-started-azureps">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="/powershell/azure/overview">Referencia</a>
@@ -6155,7 +6155,7 @@ Azure CLI </h3>
                                             <div class="cardText">
                                                 <h3>Azure Portal</h3>
                                                 <p>
-                                                    <a href="/azure/azure-portal/">Bevezetés</a>
+                                                    <a href="/azure/azure-portal/">Első lépések</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6174,7 +6174,7 @@ Azure CLI </h3>
                                             <div class="cardText">
                                                 <h3>Azure Mobile Apps</h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/features/azure-portal/mobile-app/">Bevezetés</a>
+                                                    <a href="https://azure.microsoft.com/features/azure-portal/mobile-app/">Első lépések</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6400,7 +6400,7 @@ Service Fabric SDK és -eszközök </h3>
                                                     <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac">A Mac OS X letöltése</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-cli">A Service Fabric parancssori felület letöltése </a>
+                                                    <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-cli">A Service Fabric parancssori felület letöltése</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6447,7 +6447,7 @@ SQL-eszközök </h3>
                                                 <h3>
 Azure Dev Spaces </h3>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces">Bevezetés</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces">Első lépések</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore">Letöltés .NET Core-hoz és VS Code-hoz</a>

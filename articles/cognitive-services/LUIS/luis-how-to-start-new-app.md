@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 72c4f23f47e0a2c6d9a96dbbe36716bc3ab665f1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: daffbe3f3158bb232f7db7ac90d766661e937643
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891429"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679645"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>A LUIS-portálon új LUIS-alkalmazás létrehozása
 Nincsenek többféle módon LUIS-alkalmazások létrehozásához. A LUIS-alkalmazásokon hozhat létre a [LUIS](https://www.luis.ai) portál, vagy a LUIS szerzői [API-k](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
@@ -67,10 +67,19 @@ Hibák a következők:
 
 * Már létezik ilyen nevű alkalmazás. Importálja újra az alkalmazást, és állítsa be a **nem kötelező neve** egy új nevet. 
 
-## <a name="export-app"></a>Alkalmazás exportálása
+## <a name="export-app-for-backup"></a>Biztonsági mentés készült alkalmazás exportálása
 
-1. A **saját alkalmazások** lapon jelölje be **importálása új alkalmazás**.
-1. Az a **importálása új alkalmazás** párbeszédpanelen válassza ki a JSON-fájlt a LUIS alkalmazás meghatározása.
+1. A **saját alkalmazások** lapon jelölje be **exportálása**.
+1. Válassza ki **JSON-fájlként exportálja**. A böngésző letölti az alkalmazás aktív verzióját.
+1. Ez a fájl hozzáadása a biztonsági mentési rendszer archiválása a modellt.
+
+## <a name="export-app-for-containers"></a>Exportálás app for containers szolgáltatásban
+
+1. A **saját alkalmazások** lapon jelölje be **exportálása**.
+1. Válassza ki **tárolóként exportálása** majd válassza ki az exportálni kívánt mely közzétett tárolóhely (éles vagy fázis).
+1. Ezzel a fájllal együtt a [LUIS tároló](luis-container-howto.md). 
+
+    Ha érdekli exportálása egy betanított viszont nem, de a közzétett modell használata a LUIS-tároló, folytassa a **verziók** lapon, és exportálni onnan. 
 
 ## <a name="delete-app"></a>Alkalmazás törlése
 

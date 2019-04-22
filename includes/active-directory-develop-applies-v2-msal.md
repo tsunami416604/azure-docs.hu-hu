@@ -15,13 +15,13 @@ ms.date: 04/12/2019
 ms.author: celested
 ms.custom: include file
 ms.openlocfilehash: 06300f487d11d7f0751a35231aedf389fb3e82b3
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59503015"
 ---
 |   |
 |---|
-| **A következőre érvényes**<br><ul><li>A Microsoft identity platform végpont<li>Microsoft Authentication Library (MSAL) (előzetes verzió)</ul><br>Általánosan elérhető (GA) könyvtár használja az Azure AD-1.0-s verziójú végpont és az Azure AD Authentication Library (ADAL). További információ: [Az 1.0-s verzió ismertetése](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-developers-guide). |
+| **A következőkre vonatkozik:**<br><ul><li>A Microsoft identity platform végpont<li>Microsoft Authentication Library (MSAL) (előzetes verzió)</ul><br>Általánosan elérhető (GA) könyvtár használja az Azure AD-1.0-s verziójú végpont és az Azure AD Authentication Library (ADAL). További információ: [Az 1.0-s verzió ismertetése](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-developers-guide). |
 |   |

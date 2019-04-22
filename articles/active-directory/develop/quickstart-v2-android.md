@@ -18,10 +18,10 @@ ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1f174229da565627c0e5791f53031b338880cb3
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495311"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Gyors útmutató: A felhasználók és a Microsoft Graph API hívása Androidos alkalmazásokból
@@ -70,10 +70,10 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
 > Ahhoz, hogy a rövid útmutatóban szereplő kódminta működjön, hozzá kell adnia egy válasz URL-címet a következő formában: **msal{AppId}://auth** (ahol az {AppId} az alkalmazás azonosítója).
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [A módosítás végrehajtása nekem]()
+> > [A módosítás alkalmazása]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Már be van állítva](media/quickstart-v2-android/green-check.png) az alkalmazás ezekkel az attribútumokkal van konfigurálva.
+> > ![Már konfigurált](media/quickstart-v2-android/green-check.png) Az alkalmazás már konfigurálva van ezekkel az attribútumokkal
 
 #### <a name="step-2-download-the-project"></a>2. lépés: Töltse le a projekt
 
@@ -175,7 +175,7 @@ Ezután inicializálja az MSAL-t az alábbi kóddal:
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 
-Az MSAL jogkivonatok beszerzéséhez használt két módszer van: `acquireToken` és `acquireTokenSilentAsync`
+Az MSAL a következő két metódust használja a jogkivonatok beszerzéséhez: `acquireToken` és `acquireTokenSilentAsync`
 
 #### <a name="getting-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
@@ -221,7 +221,7 @@ if (sample.size() == 1) {
 Próbálja ki az Androidhoz készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 
 > [!div class="nextstepaction"]
-> [Hívja a Graph API-t Androidos oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
+> [A Graph API meghívása – oktatóanyag Androidhoz](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
 
 ### <a name="msal-for-android-library-wiki"></a>Androidhoz készült MSAL-kódtár – wiki
 

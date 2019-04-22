@@ -13,10 +13,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 10/08/2018
 ms.openlocfilehash: ccb78e201b90dfc27f52523348e76da57087bcc8
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494901"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-sql-data-warehouse-ssms-support-for-mfa"></a>Multi-factor Authentication AAD-hitelesítés használata Azure SQL Database és az Azure SQL Data Warehouse (többtényezős hitelesítés támogatása ssms-ben)
@@ -32,8 +32,8 @@ Ebben a cikkben tárgyalt összes a funkciót használja legalább 2017. július
 ## <a name="the-five-authentication-options"></a>Az öt hitelesítési beállítások  
 
 Active Directory univerzális hitelesítéssel a két nem interaktív hitelesítési módszereket támogatja:
-    - `Active Directory - Password` hitelesítés
-    - `Active Directory - Integrated` hitelesítés
+    - `Active Directory - Password` Hitelesítés
+    - `Active Directory - Integrated` Hitelesítés
 
 Nincsenek két nem interaktív hitelesítés modell, amely (ADO.NET, JDCB, ODC, stb.) számos különböző alkalmazásokban használható. Két módszer közül a felugró párbeszédpanel soha nem eredményez: 
 - `Active Directory - Password` 
@@ -71,10 +71,10 @@ Azure AD-felhasználók Azure AD B2B-forgatókönyvekhez vendégként támogatot
 - A konfigurálás lépéseinek végrehajtásához tekintse meg a [konfigurálása az Azure SQL Database többtényezős hitelesítés az SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).
 - Az adatbázishoz való hozzáférés biztosítása más: [Az SQL Database hitelesítése és engedélyezése: Hozzáférés biztosítása](sql-database-manage-logins.md)  
 - Győződjön meg arról, hogy mások csatlakozhatnak a tűzfalon keresztül: [Konfigurálhatja egy Azure SQL Database kiszolgálószintű tűzfalszabályt az Azure portal használatával](sql-database-configure-firewall-settings.md)  
-- [Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse](sql-database-aad-authentication-configure.md)  
+- [Azure Active Directory-hitelesítés konfigurálása és kezelése az SQL Database vagy az SQL Data Warehouse használatával](sql-database-aad-authentication-configure.md)  
 - [A Microsoft SQL Server Adatrétegbeli alkalmazási keretrendszer (17.0.0 a végleges verzió)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)  
-- [Az új Azure SQL-adatbázis BACPAC-fájl importálása](../sql-database/sql-database-import.md)  
-- [Azure SQL-adatbázis exportálása BACPAC-fájlba](../sql-database/sql-database-export.md)  
+- [BACPAC-fájl importálása új Azure SQL Database-adatbázisba](../sql-database/sql-database-import.md)  
+- [Azure SQL Database-adatbázis exportálása BACPAC-fájlba](../sql-database/sql-database-export.md)  
 - C# felület [IUniversalAuthProvider felület](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx)  
 - Használata esetén **Active Directory - univerzális az MFA** hitelesítés ADAL nyomkövetés kiadásától kezdve érhetőek el [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ki alapértelmezés szerint bekapcsolása ADAL nyomkövetésének használatával az **eszközök**, **beállítások** menü alatt **Azure-szolgáltatások**, **Azure felhő**,  **Nyomkövetési szint ADAL kimeneti ablak**, amely lehetővé teszi majd **kimeneti** a a **nézet** menü. A nyomkövetések érhetők el a kimeneti ablakban kiválasztásakor **Azure Active Directoryval opciót**.  

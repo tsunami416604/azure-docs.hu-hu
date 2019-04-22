@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 04/05/2019
+ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7ccf370ae2f3f9add2b73797e8938d4580d81dd
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 2a5fb822a84792cec059aa6c78b66b3a628f25af
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493144"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679278"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -45,6 +45,7 @@ Nem támogatott az Azure-ban Linux rendszerű kiszolgáló disztribúciók nem t
 
 | Linux-disztribúció | Verzió | A kötettípus titkosítás támogatott|
 | --- | --- |--- |
+| Ubuntu | 18.04| Operációsrendszer- és lemez |
 | Ubuntu | 16.04| Operációsrendszer- és lemez |
 | Ubuntu | 14.04.5</br>[az Azure-ban beállított kernel 4.15 vagy újabb frissítése](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Operációsrendszer- és lemez |
 | RHEL | 7.6 | Operációsrendszer- és lemez * |

@@ -15,13 +15,13 @@ ms.date: 04/12/2019
 ms.author: celested
 ms.custom: include file
 ms.openlocfilehash: 127544e6fc4647dbd76c956bdb1085d8454c6fb9
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59502769"
 ---
 |   |
 |---|
-| **A következőre érvényes**<br><ul><li>A Microsoft identity platform végpont</ul> |
+| **A következőkre vonatkozik:**<br><ul><li>A Microsoft identity platform végpont</ul> |
 |   |

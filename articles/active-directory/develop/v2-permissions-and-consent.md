@@ -19,10 +19,10 @@ ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 87103b1052b5d9168928193eacc78a935e68067f
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501246"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és jóváhagyás az a Microsoft identity platform végpont
@@ -40,7 +40,7 @@ A Microsoft identity platform valósítja meg a [OAuth 2.0](active-directory-v2-
 
 * Microsoft Graph: `https://graph.microsoft.com`
 * Az Office 365 Posta API: `https://outlook.office.com`
-* Azure AD Graph: `https://graph.windows.net`
+* Az Azure AD Graph: `https://graph.windows.net`
 
 > [!NOTE]
 > Javasoljuk, hogy a Microsoft Graph használata helyett az Azure AD Graph, az Office 365 Posta API, stb.

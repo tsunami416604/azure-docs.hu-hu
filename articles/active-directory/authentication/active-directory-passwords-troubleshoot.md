@@ -13,10 +13,10 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5adb857e6032e46c31a86685913277ec3eb571be
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496403"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Az önkiszolgáló jelszó-visszaállítás hibaelhárítása
@@ -286,13 +286,13 @@ Megfelelően, hogy tegye fel meg minél részletesebb információt a lehető es
 A következő cikkek nyújtanak jelszó-visszaállítás, az Azure AD-n keresztül további információt:
 
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
-* [Állítsa alaphelyzetbe vagy a jelszó módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
+* [Jelszó visszaállítása vagy módosítása](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Regisztráció önkiszolgáló jelszó-visszaállításra](../user-help/active-directory-passwords-reset-register.md)
-* [Licencelési kérdése van?](concept-sspr-licensing.md)
+* [Kérdése van a licenceléssel kapcsolatban?](concept-sspr-licensing.md)
 * [Milyen adatokat használ az SSPR, és milyen adatokat kell kitöltenie a felhasználók számára?](howto-sspr-authenticationdata.md)
 * [Milyen hitelesítési módszerek érhetők el a felhasználók számára?](concept-sspr-howitworks.md#authentication-methods)
 * [Mik az SSPR szabályzatbeállításai?](concept-sspr-policy.md)
-* [Mi a jelszóvisszaíró, és miért fontos információk?](howto-sspr-writeback.md)
-* [Hogyan jelenthetem a tevékenység az SSPR-ben?](howto-sspr-reporting.md)
-* [Mik azok az összes beállítás az SSPR-ben, és mire azok mean?](concept-sspr-howitworks.md)
-* [Szeretnék feltenni egy kérdést, amely máshol nem szerepelt más](active-directory-passwords-faq.md)
+* [Mi a jelszóvisszaíró, és miért fontos?](howto-sspr-writeback.md)
+* [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](howto-sspr-reporting.md)
+* [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
+* [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)

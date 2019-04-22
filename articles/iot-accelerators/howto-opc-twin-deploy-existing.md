@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 6bdfeefc366734aa10dbaccec69bac8e0b41103f
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493246"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Az OPC-Ikereszköz egy meglévő projekt üzembe helyezése
@@ -140,4 +140,4 @@ AAD-bérlő használatához.
 Most, hogy megtanulhatta, hogyan helyezhet üzembe egy meglévő projekt OPC Ikereszköz, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [Az OPC-ügyfél és az OPC PLC kommunikációjának biztonságossá tétele](howto-opc-vault-deploy-existing-client-plc-communication.md)
+> [Az OPC-ügyfél és az OPC-PLC biztonságos kommunikáció](howto-opc-vault-deploy-existing-client-plc-communication.md)

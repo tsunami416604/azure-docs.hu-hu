@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 11e5a654f2bfcb497eec3a4dfea81f3684f5b551
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 79fe3bce558a8315f5fbf7dbc82a4979e8e24238
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599808"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677442"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Az Azure Traffic Manager az Azure App Service-forgalom szabályozása
 > [!NOTE]
@@ -43,7 +43,7 @@ Az Azure Traffic Manager használ a négy különböző útválasztási módszer
 További információkért lásd: [Traffic Manager útválasztási módszerei](../traffic-manager/traffic-manager-routing-methods.md).
 
 ## <a name="app-service-and-traffic-manager-profiles"></a>App Service-ben és a Traffic Manager-profilok
-Az App Service-alkalmazás forgalom konfigurálásához hozzon létre egy profilt az Azure Traffic Managerben, hogy használja a három közül betölteni a korábban leírt terheléselosztási módszert, és adja hozzá az a végpontok (ebben az esetben az App Service-ben), amelynek a forgalmát szabályozni szeretné a profil. Az alkalmazás állapotát (fut, leállítva vagy törölt) rendszeresen közlik a profilt, hogy az Azure Traffic Manager forgalom ennek megfelelően irányíthatók.
+Az App Service-alkalmazás forgalom konfigurálásához hozzon létre egy profilt az Azure Traffic Managerben, hogy használja a négy egyik betölteni a korábban leírt terheléselosztási módszert, és adja hozzá az a végpontok (ebben az esetben az App Service-ben), amelynek a forgalmát szabályozni szeretné a profil. Az alkalmazás állapotát (fut, leállítva vagy törölt) rendszeresen közlik a profilt, hogy az Azure Traffic Manager forgalom ennek megfelelően irányíthatók.
 
 Ha az Azure Traffic Managerrel, az Azure-ral, vegye figyelembe a következőket:
 

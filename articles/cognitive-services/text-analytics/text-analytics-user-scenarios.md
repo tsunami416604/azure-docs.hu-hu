@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 04/04/2019
 ms.author: aahi
 ms.openlocfilehash: d8f8d110a13e768d93f0be3c4baaf5715436f2ed
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59502482"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Felhasználói bemutató példák a szövegelemzési API
@@ -47,5 +47,5 @@ Felhasználói visszajelzés a termék twitter vagy Facebook-oldalon figyelheti.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mi a Text Analytics API?](overview.md)
+* [Mi az a szövegelemzési API-t?](overview.md)
 * [A Text Analytics API használatával egy kérelem küldéseC#](quickstarts/csharp.md)
