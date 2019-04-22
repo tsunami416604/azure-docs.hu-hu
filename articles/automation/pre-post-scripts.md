@@ -1,22 +1,22 @@
 ---
-title: Konfigurálja az Update Management üzemelő példányon, az Azure-ban (előzetes verzió) előtti és utáni szkriptek
+title: Konfigurálja az Update Management üzembe helyezés az Azure-ban található előtti és utáni szkriptek
 description: Ez a cikk bemutatja, hogyan konfigurálhat és felügyelhet előtti és utáni parancsfájlokat a frissítéstelepítések
 services: automation
 ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/04/2019
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 76cd877380090ccad8b2f7b7dbe79957e0eab5bb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 84df04a6d3fbd634524d3819657860c6a3448d65
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263808"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698741"
 ---
-# <a name="manage-pre-and-post-scripts-preview"></a>Kezelése előtti és utáni parancsfájlokat (előzetes verzió)
+# <a name="manage-pre-and-post-scripts"></a>Kezelése előtti és utáni szkriptek
 
 Előtti és utáni szkriptek lehetővé teszik a PowerShell-forgatókönyvek az Automation-fiókban (előtti feladat) előtt és után (utáni) frissítés központi telepítés. Előtti és utáni parancsfájlokat futtatni, az Azure környezetben, és nem helyileg. Üzem előtti parancsfájlok futtatása a központi telepítési elején. Parancsfájlok a bejegyzés végén az üzemelő példány, és minden konfigurált újraindítása után futtassa.
 
@@ -26,7 +26,7 @@ Egy runbook előtti vagy utáni parancsfájl használható a runbook importálja
 
 ## <a name="using-a-prepost-script"></a>Előkészítő/utólagos parancsfájl használatával
 
-A előtti használja, és vagy post frissítéstelepítés szkriptet, először hozzon létre egy központi telepítést. Válassza ki **előkészítő parancsfájljainak + utáni parancsfájlok (előzetes verzió)**. Ez a művelet megnyitja a **előkészítő parancsfájljainak kiválasztása + utáni parancsfájlok** lapot.  
+A előtti használja, és vagy post frissítéstelepítés szkriptet, először hozzon létre egy központi telepítést. Válassza ki **előkészítő parancsfájljainak + utáni parancsfájlok**. Ez a művelet megnyitja a **előkészítő parancsfájljainak kiválasztása + utáni parancsfájlok** lapot.  
 
 ![Jelölje be a parancsfájlok](./media/pre-post-scripts/select-scripts.png)
 
@@ -206,7 +206,20 @@ $variable = Get-AutomationVariable -Name $runId
 #>      
 ```
 
-## <a name="interacting-with-non-azure-machines"></a>Nem Azure-gépek használata
+## <a name="interacting-with-machines"></a>Gépek használata
+
+Egy runbook az Automation-fiókban, és nem közvetlenül a központi telepítésben a gépeken futtatása előtti és utáni feladatokat. Előtti és utáni feladatokat is Azure környezetében futnak, és nem fér hozzá a nem Azure-beli gépek. A következő szakaszok bemutatják, hogyan kezelheti a gépek közvetlenül,-e egy Azure virtuális Gépen vagy egy nem Azure-beli gép:
+
+### <a name="interacting-with-azure-machines"></a>Azure-beli gépek használata
+
+Előtti és utáni feladatok runbookként futott, natív módon nem futnak az Azure virtuális gépeken a központi telepítésben. Együttműködik az Azure-beli virtuális gépek, a következőkkel kell rendelkeznie:
+
+* Futtató fiók
+* A futtatni kívánt runbook
+
+Azure-beli gépek kommunikál, használjon a [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) parancsmag használatával kommunikálhat az Azure-beli virtuális gépek. Ehhez egy példát, tekintse meg a runbook példát [az Update Management - parancsfájl futtatása paranccsal futtassa](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc).
+
+### <a name="interacting-with-non-azure-machines"></a>Nem Azure-gépek használata
 
 Előtti és utáni feladatokat Azure környezetében futnak, és nem fér hozzá a nem Azure-beli gépek. Együttműködhet a nem Azure-gépeken, a következőkkel kell rendelkeznie:
 
@@ -215,38 +228,7 @@ Előtti és utáni feladatokat Azure környezetében futnak, és nem fér hozzá
 * Helyileg futtatni kívánt runbook
 * Szülő runbook
 
-Nem Azure-gépek kommunikál, a szülő runbook fut Azure környezetben. Ez a forgatókönyv a gyermek runbookot hívja a [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) parancsmagot. Meg kell adnia a `-RunOn` paramétert, és adja meg a parancsfájl futtatása hibrid Runbook-feldolgozó neve.
-
-```powershell
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
-
-Add-AzureRmAccount `
-    -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
-
-$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
-
-$resourceGroup = "AzureAutomationResourceGroup"
-$aaName = "AzureAutomationAccountName"
-
-$output = Start-AzureRmAutomationRunbook -Name "StartService" -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName -RunOn "hybridWorker"
-
-$status = Get-AzureRmAutomationJob -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-while ($status.status -ne "Completed")
-{ 
-    Start-Sleep -Seconds 5
-    $status = Get-AzureRmAutomationJob -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-}
-
-$summary = Get-AzureRmAutomationJobOutput -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-
-if ($summary.Type -eq "Error")
-{
-    Write-Error -Message $summary.Summary
-}
-```
+Nem Azure-gépek kommunikál, a szülő runbook fut Azure környezetben. Ez a forgatókönyv a gyermek runbookot hívja a [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) parancsmagot. Meg kell adnia a `-RunOn` paramétert, és adja meg a parancsfájl futtatása hibrid Runbook-feldolgozó neve. Ehhez egy példát, tekintse meg a runbook példát [Update Management - szkript futtatása helyi](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
 
 ## <a name="abort-patch-deployment"></a>Javítás üzembe helyezés megszakítása
 
@@ -268,5 +250,5 @@ if (<My custom error logic>)
 Folytassa a következő oktatóanyagban megtudhatja, hogyan kezelheti a frissítéseket a Windows virtuális gépek számára.
 
 > [!div class="nextstepaction"]
-> [Azure-beli Windows rendszerű virtuális gépek frissítéseinek és javításainak kezelése](automation-tutorial-update-management.md)
+> [Az Azure Windows rendszerű virtuális gépek frissítéseinek és javításainak kezelése](automation-tutorial-update-management.md)
 

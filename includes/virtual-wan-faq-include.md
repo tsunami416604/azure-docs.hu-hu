@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3fa261c6cb76cb95cffc602e5018e480afbb5dae
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a89a5d753eaa241b11eb4c7eed9500c9715d405d
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890971"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737117"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Mi a különbség egy Azure-beli virtuális hálózati átjáró (VPN Gateway) és egy Azure Virtual WAN-beli VPNGateway között?
 
@@ -81,7 +81,7 @@ Igen. Lásd a [Díjszabás](https://azure.microsoft.com/pricing/details/virtual-
 
 ### <a name="how-do-i-calculate-price-of-a-hub"></a>Hogyan kiszámítja a hub árát?
  
-A szolgáltatás az agyban kellene fizetnie. Például 10 ágak vagy a helyszíni eszközöket szeretne csatlakozni az Azure virtuális WAN lenne hasonló VPN végpontok az agyban csatlakozik. Lehetővé teszi, hogy tegyük fel, hogy 1 skálázási egységére VPN = 500 MB/s, a díjakat $0.361/ óra. Minden kapcsolat díja 0,08/óra. 10-kapcsolatok, a felszámított díj pedig a szolgáltatás/óra lenne $0.361 + $. 8 / hr. Adatforgalmi díjat elhagyó forgalom az azure a alkalmazni. 
+A szolgáltatás az agyban kellene fizetnie. Például 10 ágak vagy a helyszíni eszközöket szeretne csatlakozni az Azure virtuális WAN lenne hasonló VPN végpontok az agyban csatlakozik. Lehetővé teszi, hogy tegyük fel, hogy 1 skálázási egységére VPN = 500 MB/s, a díjakat $0.361/ óra. Minden kapcsolat díja 0,08/óra. 10-kapcsolatok, a felszámított díj pedig a szolgáltatás/óra lenne $0.361 + $. 8 / hr. Az Azure elhagyó forgalomra adatforgalmi díjat a alkalmazni. 
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Hogyan készülhetnek elő a szolgáltatásra a meglévő partnerek listáján még nem szereplő új partnerek?
 

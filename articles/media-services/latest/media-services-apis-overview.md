@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ed10354047060825b4368e02160d4655e33bc8f6
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 5ae7563892cb4792f5c329b2850d7b88d37c0e7d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617396"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698266"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-k
 
@@ -38,7 +38,7 @@ Ha nem biztos abban, hogy rendelkezik-e engedélyekkel hozzon létre egy Azure A
 
 Az alábbi ábrán a számok jelölik a folyamatot a kérelmek időrendi sorrendben:
 
-![Középső rétegbeli alkalmazásokhoz](../previous/media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+![Középső rétegbeli alkalmazásokhoz](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
 1. A középső rétegű alkalmazás, amely a következő paraméterekkel rendelkezik az Azure AD hozzáférési jogkivonatot kér:  
 

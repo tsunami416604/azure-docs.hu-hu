@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
 ms.openlocfilehash: 4923c7f2048b7368af6314d5e2288216115bc3bc
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59052657"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784739"
 ---
-# <a name="cross-network-connectivity"></a>Kereszt-hálózati kapcsolat
+# <a name="cross-network-connectivity"></a>Hálózatok közötti kapcsolatok
 
 A Fabrikam, Inc. rendelkezik egy nagy méretű fizikai jelenlét és az Azure-telepítés az USA keleti régiójában. A Fabrikam rendelkezik háttér-kapcsolattal a helyszíni és Azure expressroute-on keresztül-környezetek között. Ehhez hasonlóan a Contoso Ltd. jelenlét érdekében, illetve az USA nyugati Azure-telepítés rendelkezik. Contoso rendelkezik háttér-kapcsolattal a helyszíni és Azure expressroute-on keresztül-környezetek között.  
 

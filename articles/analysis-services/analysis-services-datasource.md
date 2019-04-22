@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/17/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 374ffc3a9d181d0596b5a4af1cd8082023e227fe
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: ed18fd985173a4d978edccedc8b6e5cf527f16dd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498519"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698725"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Services
 
@@ -81,13 +81,14 @@ Csatlakozás helyszíni erőforrásait és Azure-AS-kiszolgálóhoz szükséges 
 |Salesforce-jelentések<sup>[1](#tab1400b)</sup> |
 |AZ SAP HANA<sup>[1](#tab1400b)</sup>    |  
 |SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
-|SharePoint<sup>[1](#tab1400b)</sup>     |   
+|SharePoint-lista<sup>[1](#tab1400b)</sup>, <sup> [2](#filesSP)</sup>     |   
 |Sybase-adatbázis     |  
 |TXT file  |
 |XML-táblázatok<sup>[1](#tab1400b)</sup>    |  
 ||
  
-<a name="tab1400b">1</a> táblázatos 1400-as és újabb modellek csak.
+<a name="tab1400b">1</a> – táblázatos 1400-as és újabb modellek csak.   
+<a name="filesSP">2</a> – a helyszíni SharePoint-fájlok nem támogatottak.
 
 ## <a name="specifying-a-different-provider"></a>Adjon meg egy másik szolgáltató
 

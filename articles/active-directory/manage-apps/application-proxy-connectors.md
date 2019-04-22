@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f96a67fecead65af28a975267590ebb08c715d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a787e896016b3230d389b2ec140ae6c03477d875
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853008"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684089"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy-összekötők ismertetése
 
@@ -74,6 +74,8 @@ A bérlők számára a több összekötőt az automatikus frissítések minden c
 Amikor frissíti az összekötőt, ha az állásidő fordulhatnak elő:  
 - Csak egy összekötőt rendelkezik javasoljuk, hogy telepít egy második összekötőt és [hozzon létre egy összekötőcsoporthoz](application-proxy-connector-groups.md). Ezzel elkerülheti a kritikus és magasabb rendelkezésre állást biztosít.  
 - Egy összekötő történt egy tranzakció közepén a frissítés megkezdése. Bár a kezdeti tranzakció megszakad, a böngésző automatikusan érdemes újrapróbálkoznia a művelettel, vagy a lap frissítésével. Amikor a kérést a rendszer újraküldi, a forgalmat irányítja a rendszer egy biztonsági mentési összekötőt.
+
+Korábban kiadott verziók és milyen módosítások azok kapcsolatos információkat tartalmazza, lásd: [Application Proxy - Verziókiadások](application-proxy-release-version-history.md).
 
 ## <a name="creating-connector-groups"></a>Összekötő-csoportok létrehozása
 

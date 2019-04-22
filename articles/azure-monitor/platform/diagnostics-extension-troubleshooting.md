@@ -4,17 +4,16 @@ description: Kapcsolatos problémák elhárítása az Azure Virtual Machines, Se
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 07/12/2017
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: f92b2589afc8bf4eba1bfdf421ab27300b41aa91
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.topic: conceptual
+ms.date: 04/17/2019
+ms.author: robb
+ms.openlocfilehash: 81c93900acf2d75eeb8e4fdc8da7d563f3a59595
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822136"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699098"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Az Azure Diagnostics hibaelhárítása
 Ez a cikk ismerteti a hibaelhárítási információkat, amelyek megfelelőek az Azure Diagnostics használatával. Az Azure diagnostics kapcsolatos további információkért lásd: [Azure Diagnostics – áttekintés](diagnostics-extension-overview.md).
@@ -82,7 +81,7 @@ Ha nem szerepel megjeleníthető adat a megadott metrika, ellenőrizze **diagnos
 Ha a konfiguráció megfelelően van-e állítva, de továbbra sem látja a metrikaadatokat, az alábbi irányelvek használatával háríthatja el.
 
 
-## <a name="azure-diagnostics-isnt-starting"></a>Az Azure Diagnostics nem indítása
+## <a name="azure-diagnostics-is-not-starting"></a>Az Azure Diagnostics nem indul el
 További információ az Azure Diagnostics miért nem indult el: a **DiagnosticsPluginLauncher.log** és **DiagnosticsPlugin.log** fájlokat a korábban megadott napló-fájlok helyét.
 
 Ha ezek a naplók alapján `Monitoring Agent not reporting success after launch`, azt jelenti, hogy hiba történt a MonAgentHost.exe indítása. Tekintse meg a naplókat a jelzett helyen `MonAgentHost log file` az előző szakaszban.
@@ -105,9 +104,16 @@ A rendszer, amely eseményadatokat nem jelenik meg a leggyakoribb oka, hogy a st
 
 Megoldás: Javítsa ki a diagnosztikai konfigurációja, majd telepítse újra a diagnosztikát.
 
-Ha a tárfiók megfelelően konfigurálva, a távoli hozzáférés be a számítógépre, és győződjön meg arról, hogy DiagnosticsPlugin.exe és MonAgentCore.exe futnak. Ha nem futnak, kövesse a lépéseket az Azure Diagnostics nem indul el.
+Ha a tárfiók megfelelően konfigurálva, a távoli hozzáférés be a számítógépre, és ellenőrizze, hogy *DiagnosticsPlugin.exe* és *MonAgentCore.exe* futnak. Ha nem futnak, kövesse a [nem indítja el az Azure Diagnostics](#azure-diagnostics-is-not-starting).
 
 Ha a folyamat fut, folytassa a [adatok rögzítése helyben első?](#is-data-getting-captured-locally) , és kövesse az ott található útmutatást.
+
+Ha ez nem oldja meg a problémát, próbálja meg:
+
+1. Az ügynök eltávolítása
+2. C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics könyvtár eltávolítása
+3. Telepítse újra a házirendügynök
+
 
 ### <a name="part-of-the-data-is-missing"></a>Az adatok egy részét hiányzik.
 Ha bizonyos adatokat, de nem az összes, az azt jelenti, hogy a gyűjtemény/átvitel adatfolyamat megfelelően van-e beállítva. Kövesse az itt a struktúrát a probléma szűkítéséhez.

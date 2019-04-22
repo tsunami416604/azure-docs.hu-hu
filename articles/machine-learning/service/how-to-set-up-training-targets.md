@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: d75deaca7ce052d40274f1f57a8f6603a3ecdfd2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 9c97f23c2dfc2b1c0ff794aa20ffb58cd8b8741a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046155"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683902"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak
 
@@ -44,8 +44,8 @@ Az Azure Machine Learning szolgáltatás különböző támogatással rendelkezi
 |[Az Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
 |[Távoli virtuális Gépen](#vm) | ✓ | ✓ | ✓ | ✓ |
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
-|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Az Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Az Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 **Célok több betanítási feladatokhoz felhasználható számítási**. Például ha csatlakoztat egy távoli virtuális Gépen a munkaterülethez, felhasználhatja azt több feladat esetében.
@@ -92,7 +92,7 @@ Használja a számítási céljainak konfigurálhatja ezeket az alábbi szakaszo
 * [Helyi számítógép](#local)
 * [Az Azure Machine Learning Compute](#amlcompute)
 * [Távoli virtuális gépek](#vm)
-* [Azure HDInsight](#hdinsight)
+* [Az Azure HDInsight](#hdinsight)
 
 
 ### <a id="local"></a>Helyi számítógép
@@ -377,7 +377,6 @@ A számítási célokhoz, a munkaterület használatával társított érheti el
 
 További információkért lásd: [erőforrás-kezelés](reference-azure-machine-learning-cli.md#resource-management).
 
-
 ## <a id="submit"></a>Küldje el a betanítási Futtatás
 
 Miután létrehozott egy futtatási konfigurációt, használhatja azt a kísérlet futtatásához.  A kód a minta elküldeni a betanítási Futtatás megegyezik a számítási tárolók összes típusára vonatkozóan:
@@ -385,6 +384,13 @@ Miután létrehozott egy futtatási konfigurációt, használhatja azt a kísér
 1. Hozzon létre egy kísérlet futtatása
 1. Küldje el a futtatást.
 1. Várjon, amíg a Futtatás befejeződik.
+
+> [!IMPORTANT]
+> A betanítási Futtatás elküldésekor egy pillanatképet a betanítási szkriptekhez tartalmazó könyvtárba, és a számítási elküld. Ez is a kísérletet a munkaterületen részeként van tárolva. Ha módosítja a fájlok küldje el a Futtatás, csak a módosult fájlokat fel lesz töltve.
+>
+> Akadályozni, hogy a fájlok a pillanatkép kiterjed, hozzon létre egy [.gitignore](https://git-scm.com/docs/gitignore) vagy `.amlignore` fájlt a könyvtárban, és hozzá tud adni a fájlokat. A `.amlignore` fájlt használja ugyanazt a szintaxist, és trendeket a [.gitignore](https://git-scm.com/docs/gitignore) fájlt. Ha mindkét fájl létezik, a `.amlignore` fájl élvez elsőbbséget.
+> 
+> További információkért lásd: [pillanatképek](concept-azure-machine-learning-architecture.md#snapshot).
 
 ### <a name="create-an-experiment"></a>Kísérlet létrehozása
 
@@ -399,8 +405,6 @@ A kísérlet elküldése egy `ScriptRunConfig` objektum.  Ez az objektum tartalm
 * **source_directory**: A forráskönyvtár a tanítási szkriptet tartalmazó
 * **parancsfájl**: A tanítási szkriptet azonosító
 * **run_config**: A futtatási konfigurációtól, amely viszont meghatározza, hol történik a képzés.
-
-A betanítási Futtatás elküldésekor egy pillanatképet a betanítási szkriptekhez tartalmazó könyvtárba, és a számítási elküld. További információkért lásd: [pillanatképek](concept-azure-machine-learning-architecture.md#snapshot).
 
 Használja például [a helyi tároló](#local) konfiguráció:
 
@@ -418,8 +422,8 @@ Vagy használhatja:
 ## <a name="notebook-examples"></a>A jegyzetfüzet-példák
 
 Tekintse meg ezeket a notebookokat-betanítás a különböző számítási célnak példákat:
-* [how-to-use-azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [útmutatóval-to-használat – azureml/képzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [oktatóanyagok és img-besorolás-1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

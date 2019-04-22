@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: d6c0d04966d3a713493485d52ca4e81ba25ab743
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: 3fd2f257119595311e9d31ad2068fd12c8cf51ee
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521482"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683376"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Telepítse és futtassa a Text Analytics tárolók
 
@@ -36,7 +36,7 @@ Szövegelemzés tárolók használata előtt a következő előfeltételeknek ke
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
-|Text Analytics-erőforrás |A tároló használatához rendelkeznie kell:<br><br>A [ _Szövegelemzés_ ](text-analytics-how-to-access-key.md) Azure-erőforráshoz tartozó számlázási kulcs és számlázási végpont URI azonosítója. Mindkét értéket az Azure Portalon Text Analytics áttekintése és a kulcsok oldalon érhető el, és a tároló indításához szükséges.<br><br>**{BILLING_KEY}** : erőforrás-kulcs<br><br>**{BILLING_ENDPOINT_URI}** : végpont URI-példa: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|`Cognitive Services` Erőforrás |A tároló használatához rendelkeznie kell:<br><br>A [ _Cognitive Services_ ](text-analytics-how-to-access-key.md) Azure-erőforráshoz tartozó számlázási kulcs és számlázási végpont URI azonosítója. Mindkét értéket az Azure Portalon a Cognitive Services áttekintése és a kulcsok oldalon érhető el, és a szükséges, hogy a tárolót. Hozzá kell adnia a `text/analytics/v2.0` útválasztás az a végpont URI-t, a következő BILLING_ENDPOINT_URI példában látható módon.<br><br>**{BILLING_KEY}** : erőforrás-kulcs<br><br>**{BILLING_ENDPOINT_URI}** : végpont URI-példa: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
 
 ### <a name="the-host-computer"></a>A számítógép
 
@@ -112,8 +112,10 @@ Használja a [futtatása docker](https://docs.docker.com/engine/reference/comman
 
 | Helyőrző | Érték |
 |-------------|-------|
-|{BILLING_KEY} | Ezt a kulcsot szolgál a tárolót, és az Azure Portalon Text Analytics kulcsok lapján található.  |
-|{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját az Azure Portalon Text Analytics áttekintése lapon érhető el.|
+|{BILLING_KEY} | Ezt a kulcsot a tárolót szolgál, és az Azure Portalon elérhető `Cognitive Services` kulcsok oldalán.  |
+|{BILLING_ENDPOINT_URI} | A számlázási végpont URI érték érhető el az Azure-beli `Cognitive Services` – áttekintés oldalra. <br><br>Példa:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+
+Hozzá kell adnia a `text/analytics/v2.0` útválasztás az a végpont URI-t, az előző BILLING_ENDPOINT_URI példában látható módon.
 
 Cserélje le ezeket a paramétereket a következő példában a saját értékeire `docker run` parancsot.
 
@@ -159,7 +161,7 @@ A kimenet futtatásakor a tároló [csatlakoztatási](../text-analytics-resource
 
 ## <a name="billing"></a>Számlázás
 
-A Text Analytics tárolók küldés számlázási adatokat az Azure-ba, a használatával egy _Text Analytics_ erőforrást az Azure-fiókjával. 
+A Text Analytics tárolók küldés számlázási adatokat az Azure-ba, a használatával egy _Cognitive Services_ az Azure-fiókjába erőforrás. 
 
 [!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

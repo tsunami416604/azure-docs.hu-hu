@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 35b4777c7de4db1f8514b24e7b1e4d11775d0ca0
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.openlocfilehash: 14d4bf6d7e1d1f474e2388c4e2ce232574ebf0d8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247902"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682797"
 ---
 # <a name="add-an-api-manually"></a>API hozzáadása manuálisan
 
-A cikk bemutatja, hogy az Azure Portal használatával hogyan adhat hozzá egy API-t manuálisan az API Management- (APIM-) példányhoz. Az üres, manuálisan meghatározható API-t gyakran használják API-k szimulálására. További részletek az API-k szimulálásáról: [API-válaszok szimulálása](mock-api-responses.md).
+A jelen cikkben ismertetett lépések bemutatják, hogyan API hozzáadása manuálisan az API Management (APIM) példány az Azure portal használatával. Az üres, manuálisan meghatározható API-t gyakran használják API-k szimulálására. További részletek az API-k szimulálásáról: [API-válaszok szimulálása](mock-api-responses.md).
 
 Ha egy meglévő API-t szeretne importálni, tekintse meg a [kapcsolódó témaköröket](#related-topics).
 
-Ebben a cikkben létrehozunk egy üres API-t, és a [httpbin.org](http://httpbin.org) oldalt (egy nyilvános tesztelési szolgáltatást) háttérrendszeri API-ként határozzuk meg.
+Ebben a cikkben létrehozunk egy üres API-t, és a [httpbin.org](https://httpbin.org) oldalt (egy nyilvános tesztelési szolgáltatást) háttérrendszeri API-ként határozzuk meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
+Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -48,10 +48,10 @@ Végezze el a következő rövid útmutatót: [Azure API Management-példány l�
     |**Name (Név)**|**Érték**|**Leírás**|
     |---|---|---|
     |**Megjelenített név**|„*Üres API*” |Ez a név a fejlesztői portálon jelenik meg.|
-    |**Webszolgáltatás URL-címe** (nem kötelező)| „*http://httpbin.org*”| Ha egy API-t szeretne szimulálni, akkor előfordulhat, hogy nem ad meg semmit ebben a mezőben. <br/>Ebben az esetben mi a következőt adjuk meg: [http://httpbin.org](http://httpbin.org). Ez egy nyilvános tesztelési szolgáltatás. <br/>Ha olyan API-t szeretne importálni, amely automatikusan le van képezve egy háttérrendszerre, tekintse meg a [kapcsolódó témakörök](#related-topics) egyik témakörét.|
+    |**Webszolgáltatás URL-címe** (nem kötelező)| „*https://httpbin.org*”| Ha egy API-t szeretne szimulálni, akkor előfordulhat, hogy nem ad meg semmit ebben a mezőben. <br/>Ebben az esetben mi a következőt adjuk meg: [https://httpbin.org](https://httpbin.org). Ez egy nyilvános tesztelési szolgáltatás. <br/>Ha olyan API-t szeretne importálni, amely automatikusan le van képezve egy háttérrendszerre, tekintse meg a [kapcsolódó témakörök](#related-topics) egyik témakörét.|
     |**URL-séma**|„*HTTPS*”|Ebben az esetben egy biztonságos HTTPS APIM-hozzáférést határozunk meg a háttérrendszerhez, bár magának a háttérrendszernek a hozzáférése nem biztonságos. <br/>Az ilyen forgatókönyveket (HTTPS–HTTP-kapcsolat) nevezzük HTTPS-zárásnak. Akkor lehet rá szükség, ha az API egy virtuális hálózatban található (és így tudja, hogy biztonságos a hozzáférés a HTTPS használata nélkül is). <br/>A „HTTPS-zárás” alkalmazásával számos processzorciklus megspórolható.|
     |**URL-cím utótagja**|„*hbin*”| Az utótag lesz a név, amely azonosítja az API-t ebben az APIM-példányban. Egyedinek kell lennie az APIM-példányon belül.|
-    |**Termékek**|„*Korlátlan*” |Az API egy termékkel való társítással tehető közzé. Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.<br/><br/>A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/>A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így alapértelmezés szerint minden termékre előfizetett.<br/><br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Starter** és **Unlimited**.| 
+    |**Termékek**|„*Korlátlan*” |Az API egy termékkel való társítással tehető közzé. Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.<br/><br/>A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/>A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így alapértelmezés szerint minden termékre előfizetett.<br/><br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Alapszintű** és **korlátlan**.| 
 5. Kattintson a **Létrehozás** gombra.
 
 Ezen a ponton nem lesz olyan művelet az APIM-ban, amely leképeződik a háttérrendszeri API-ra. Ha olyan műveletet hív meg, amely közzé lett téve a háttérrendszeren keresztül, de az APIM-on keresztül nem, a **404**-es hibaüzenetet kapja.

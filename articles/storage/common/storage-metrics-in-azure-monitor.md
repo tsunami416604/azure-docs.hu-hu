@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 426dd265f4d608b8dd3c9ab746479ea103419562
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 244d7fc3caa96173e408a193e13acd656d4a7f77
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579342"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698775"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -342,8 +342,8 @@ Az Azure Storage a következő kapacitási mérőszámot az Azure monitorban biz
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| BlobCapacity | A teljes használható a storage-fiókban lévő blobtárolóba. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 <br/> Dimenzió: BlobType ([definíció](#metrics-dimensions)) |
-| BlobCount    | A storage-fiókban tárolt blob-objektumok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 <br/> Dimenzió: BlobType ([definíció](#metrics-dimensions)) |
+| BlobCapacity | A teljes használható a storage-fiókban lévő blobtárolóba. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 <br/> Méretek: **BlobType**, és **BlobTier** ([definíció](#metrics-dimensions)) |
+| BlobCount    | A storage-fiókban tárolt blob-objektumok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 <br/> Méretek: **BlobType**, és **BlobTier** ([definíció](#metrics-dimensions)) |
 | ContainerCount    | A tárfiókban lévő tárolók száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 | IndexCapacity     | Az ADLS Gen2 hierarchikus Index által felhasznált tárterület mérete <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
@@ -392,11 +392,12 @@ Az Azure Storage támogatja a következő dimenziókat a metrikák az Azure moni
 
 | Dimenzió neve | Leírás |
 | ------------------- | ----------------- |
-| BlobType | A Blob metrikák csak a blob típusa. A támogatott értékek a következők **BlockBlob** és **PageBlob**. Hozzáfűző Blob egy BlockBlob szerepel. |
-| ResponseType | Tranzakció válasz típusa. Az elérhető értékek közé a következők tartoznak: <br/><br/> <li>ServerOtherError: Minden egyéb kiszolgálóoldali hiba, kivéve az ismertetett hibákat </li> <li> ServerBusyError: Hitelesített kérés, amely HTTP 503-as állapotkódot adott vissza. </li> <li> ServerTimeoutError: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Az időtúllépés egy kiszolgálóhiba miatt lépett fel. </li> <li> AuthorizationError: Hitelesített kérés, amely jogosulatlan adathozzáférés vagy egy engedélyezési hiba miatt hiúsult meg. </li> <li> NetworkError: Hitelesített kérés, amely hálózati hibák miatt hiúsult meg. Leggyakrabban akkor fordul elő, ha egy ügyfél idő előtt, az időkorlát letelte előtt zár be egy kapcsolatot. </li> <li>    ClientThrottlingError: Ügyféloldali szabályozási hiba. </li> <li> ClientTimeoutError: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Ha az ügyfél hálózati időkorlátja vagy a kérés időkorlátja a tárolási szolgáltatás által várt értéknél alacsonyabbra van állítva, akkor ez egy várt időtúllépés. Máskülönben a rendszer ServerTimeoutError hibát jelent. </li> <li> ClientOtherError: Minden egyéb ügyféloldali hiba, kivéve az ismertetett hibákat. </li> <li> Sikeres művelet: Sikeres kérelem.|
-| GeoType | A tranzakció elsődleges vagy másodlagos fürtből. Az elérhető értékek a következők: elsődleges és másodlagos. Érvényes írásvédett Georedundáns redundáns Storage(RA-GRS) másodlagos bérlőtől objektumok olvasásakor. |
-| ApiName | Művelet neve. Példa: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Az összes művelet nevekkel kapcsolatban lásd: [dokumentum](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
-| Authentication | A tranzakciók használt hitelesítés típusa. Az elérhető értékek közé a következők tartoznak: <br/> <li>AccountKey: A tranzakció tárfiókkulcs adatokkal van hitelesítve.</li> <li>SAS: A tranzakció közös hozzáférésű jogosultságkódok adatokkal van hitelesítve.</li> <li>OAuth: A tranzakció OAuth hozzáférési tokenek adatokkal van hitelesítve.</li> <li>Névtelen: A tranzakció névtelenül van szükség. Ellenőrzési kérelem nem tartalmazza.</li> <li>AnonymousPreflight: A tranzakció ellenőrzési kérést.</li> |
+| **BlobType** | A Blob metrikák csak a blob típusa. A támogatott értékek a következők **BlockBlob**, **PageBlob**, és **Azure Data Lake Storage**. Hozzáfűző Blob egy BlockBlob szerepel. |
+| **BlobTier** | Az Azure storage kínál különböző elérési szint, amely a leginkább költséghatékony módon blob objektum adatok tárolását is lehetővé teszik. Bővebb információt a [Azure Storage blob szintjének](../blobs/storage-blob-storage-tiers.md). A támogatott értékek a következők: <br/> <li>**Gyakori elérésű**: Gyakori elérésű szint</li> <li>**Ritka elérésű**: Lassú elérési szint</li> <li>**Archív**: Archív szinten</li> <li>**Prémium szintű**: Prémium szintű blokkblobhoz</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Prémium szintű lapblobok réteg típusa</li> <li>**Standard szintű**: Standard lap Blob réteg típusa</li> <li>**Untiered**: Általános célú v1 tárfiók réteg típusa</li> |
+| **GeoType** | A tranzakció elsődleges vagy másodlagos fürtből. A rendelkezésre álló értékek például **elsődleges** és **másodlagos**. Érvényes írásvédett Georedundáns redundáns Storage(RA-GRS) másodlagos bérlőtől objektumok olvasásakor. |
+| **ResponseType** | Tranzakció válasz típusa. Az elérhető értékek közé a következők tartoznak: <br/><br/> <li>**ServerOtherError**: Minden egyéb kiszolgálóoldali hiba, kivéve az ismertetett hibákat </li> <li>**ServerBusyError**: Hitelesített kérés, amely HTTP 503-as állapotkódot adott vissza. </li> <li>**ServerTimeoutError**: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Az időtúllépés egy kiszolgálóhiba miatt lépett fel. </li> <li>**AuthorizationError**: Hitelesített kérés, amely jogosulatlan adathozzáférés vagy egy engedélyezési hiba miatt hiúsult meg. </li> <li>**NetworkError**: Hitelesített kérés, amely hálózati hibák miatt hiúsult meg. Leggyakrabban akkor fordul elő, ha egy ügyfél idő előtt, az időkorlát letelte előtt zár be egy kapcsolatot. </li> <li>**ClientThrottlingError**: Ügyféloldali szabályozási hiba. </li> <li>**ClientTimeoutError**: Hitelesített kérés, amely túllépte az időkorlátot, és HTTP 500-as állapotkódot adott vissza. Ha az ügyfél hálózati időkorlátja vagy a kérés időkorlátja a tárolási szolgáltatás által várt értéknél alacsonyabbra van állítva, akkor ez egy várt időtúllépés. Máskülönben a rendszer ServerTimeoutError hibát jelent. </li> <li>**ClientOtherError**: Minden egyéb ügyféloldali hiba, kivéve az ismertetett hibákat. </li> <li>**Success**: Sikeres kérés</li> |
+| **ApiName** | Művelet neve. Példa: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Az összes művelet nevekkel kapcsolatban lásd: [dokumentum](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
+| **Hitelesítés** | A tranzakciók használt hitelesítés típusa. Az elérhető értékek közé a következők tartoznak: <br/> <li>**AccountKey**: A tranzakció tárfiókkulcs adatokkal van hitelesítve.</li> <li>**SAS**: A tranzakció közös hozzáférésű jogosultságkódok adatokkal van hitelesítve.</li> <li>**OAuth**: A tranzakció OAuth hozzáférési tokenek adatokkal van hitelesítve.</li> <li>**Névtelen**: A tranzakció névtelenül van szükség. Ellenőrzési kérelem nem tartalmazza.</li> <li>**AnonymousPreflight**: A tranzakció ellenőrzési kérést.</li> |
 
 A metrikák támogató dimenziók esetében adja meg a megfelelő mérőszámok értékeit a dimenzió értéket kell. Például, ha megtekinti **tranzakciók** értéket a sikeres válaszok szűrése kell a **ResponseType** dimenzió **sikeres**. Vagy ha megtekinti **BlobCount** érték Blokkblob, meg kell szűrni a **BlobType** dimenzió **BlockBlob**.
 

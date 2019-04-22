@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: e82b9ae96ae43278e22da22702d3d899abadb1b5
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
-ms.translationtype: MT
+ms.openlocfilehash: 9d69a24b106fc39c03b8f95758bc240916023456
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505600"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698315"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
@@ -274,7 +274,7 @@ Az átirányítási idő zónák:
 1. Az Active Directory-kiszolgálón nyissa meg a **Csoportházirend kezelése konzol**.
 2. Bontsa ki a tartomány és a csoportházirend-objektumok.
 3. Kattintson a jobb gombbal a **csoportházirend-objektum** a csoportházirend-beállítások, és válassza ki a létrehozott **szerkesztése**.
-4. Az a **Csoportházirendkezelés-szerkesztő**, navigáljon a **számítógép konfigurációja** > **házirendek** > **felügyeleti Sablonok** > **Windows-összetevők** > **Horizon RDSH-szolgáltatások megtekintése** > **távoli asztali munkamenetgazda Gazdagép** > **eszközök és erőforrások átirányítását**.
+4. Az a **Csoportházirendkezelés-szerkesztő**, navigáljon a **számítógép konfigurációja** > **házirendek** > **felügyeleti Sablonok** > **Windows-összetevők** > **távoli asztali szolgáltatások** > **távoli asztali munkamenetgazda**   >  **Eszközök és erőforrások átirányítását**.
 5. Engedélyezze a **időzóna átirányításához** beállítás.
 
 Ez a parancs a fő rendszerkép időzónák átirányítani a is futtathatja:
@@ -367,8 +367,8 @@ Az alábbi utasításokat követve megtudhatja, hogyan lehet a fő rendszerkép 
 
 Most, hogy van egy rendszerképe, hozzon létre, vagy frissítse a host készletek. Hogyan hozhat létre, és frissítse a host készletek kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal](create-host-pools-arm-template.md)
-- [Oktatóanyag: Gazdagépcsoport létrehozása az Azure Marketplace-en](create-host-pools-azure-marketplace.md)
-- [Gazdagépcsoport létrehozása a PowerShell-lel](create-host-pools-powershell.md)
-- [Felhasználói profil megosztásának beállítása a gazdagépcsoporton](create-host-pools-user-profile.md)
-- [A Windows Virtual Desktop terheléselosztási módjának beállítása](configure-host-pool-load-balancing.md)
+- [Gazdagép-készlet létrehozása egy Azure Resource Manager-sablonnal](create-host-pools-arm-template.md)
+- [Oktatóanyag: Gazdagép-készlet létrehozása az Azure Marketplace-en](create-host-pools-azure-marketplace.md)
+- [Gazdagép-készlet létrehozása a PowerShell-lel](create-host-pools-powershell.md)
+- [A felhasználói profil megosztás gazdagép készlet beállítása](create-host-pools-user-profile.md)
+- [Windows virtuális asztal terheléselosztási módszer konfigurálása](configure-host-pool-load-balancing.md)

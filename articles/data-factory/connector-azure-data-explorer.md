@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 04/16/2019
 ms.author: orspod
-ms.openlocfilehash: 6138fadd060051c1b4264cd844ca2a4b8c28116a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.openlocfilehash: 756ede9cc90655163d6d53aa3ca920d2a15fb43d
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880032"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682491"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása, vagy az Azure az adatkezelőt az Azure Data Factory használatával
 
@@ -38,6 +38,9 @@ Az Azure Data Explorer-összekötő teszi lehetővé tegye a következőket:
 * A céltábla adatok hozzáfűzése, fogadóként.
 
 ## <a name="getting-started"></a>Első lépések
+
+>[!TIP]
+>Az Azure Data Explorer-összekötő használatával, olvassa [és- tárolókról az Azure az adatkezelőt az Azure Data Factory használatával az adatok másolása](../data-explorer/data-factory-load-data.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -141,7 +144,7 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a **típus** tulajdons�
 >[!NOTE]
 >Alapértelmezés szerint az Azure Data Explorer forrás rendelkezik 500 000 rekord vagy 64 MB-os méretkorlátot. Csonkolási nélkül a rekordok lekéréséhez is megadhat `set notruncation;` , a lekérdezés elején. Tekintse meg [lekérdezési korlátok](https://docs.microsoft.com/azure/kusto/concepts/querylimits) a további részleteket.
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -183,7 +186,7 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a type tulajdonság, a 
 | type | A **típus** értékre kell állítani a másolási tevékenység fogadó tulajdonságát: **AzureDataExplorerSink** | Igen |
 | ingestionMappingName | Egy előre létrehozott nevét **[leképezés](/azure/kusto/management/mappings#csv-mapping)** Kusto táblán. Az oszlopok forrásból az Adatkezelőbe az Azure - vonatkozik, amelyek leképezése **[összes támogatott forrás-tárolók/formátumok](copy-activity-overview.md#supported-data-stores-and-formats)** stb formázza a CSV vagy JSON/Avro is beleértve, használhatja a másolási tevékenység [oszlop leképezés](copy-activity-schema-and-type-mapping.md) (név alapján implicit vagy explicit módon konfigurált) és/vagy Azure Data Explorer leképezések. | Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9d67a87b182758e37c9e379a8f96a6540797ce3e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 95ee0a4d5d150741e59c0c2d20abebe9609e179f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482946"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699013"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>A transzparens átjáróként működő IoT Edge-eszköz konfigurálása
 
@@ -260,6 +260,18 @@ Ellenőrizheti, hogy melyik modulokat futtatják egy eszközön, a parancs `iote
    ```
 
 6. Az a **sablon áttekintése** lapon jelölje be **küldés**.
+
+## <a name="open-ports-on-gateway-device"></a>Az átjáróeszközön portok megnyitása
+
+IoT Edge-eszközök nem kell függvényt, hogy bemenő kapcsolatot, mert az IoT hubbal folytatott minden kommunikáció a kimenő kapcsolatok keresztül történik. Azonban átjáróeszközök eltérőek, mert fogadhat üzeneteket az alsóbb rétegbeli eszközök lehetnek.
+
+Egy átjáró forgatókönyv működjön az IoT Edge hubot támogatott protokollok legalább egyikének meg kell nyitni alsóbb rétegbeli eszközök érkező bejövő forgalmat. A támogatott portocols MQTT, AMQP és HTTPS.
+
+| Port | Protokoll |
+| ---- | -------- |
+| 8883 | MQTT |
+| 5671 | AMQP |
+| 443 | HTTPS <br> MQTT+WS <br> AMQP+WS | 
 
 ## <a name="route-messages-from-downstream-devices"></a>Üzenetek továbbítását az alsóbb rétegbeli eszközök
 Az IoT Edge-futtatókörnyezet továbbíthatnak hasonlóan modulok által küldött üzenetek alsóbb rétegbeli eszközök által küldött üzeneteket. Ez lehetővé teszi az átjáró futó, mielőtt bármilyen adatot küld a felhő modulban elemzés végrehajtásához. 

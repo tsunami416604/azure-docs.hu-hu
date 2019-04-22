@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/16/2019
 ms.author: tulasim
-ms.openlocfilehash: d14e2897183a97da5e84a76b699def529f1d167e
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: c18ededc428b215720f8a6a6857a2eabd93bff8b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579410"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683590"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>A Tudásbázis válasz GenerateAnswer API és metaadatok beolvasása
 
@@ -46,7 +46,7 @@ A robot vagy alkalmazás a GenerateAnswer API használatával a Tudásbázisban 
 Miután, közzéteheti a tudásbázist, az a [QnA Maker portal](https://www.qnamaker.ai), vagy a [API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff), kérheti a GenerateAnswer végpont adatait.
 
 A végpont adatait beolvasni:
-1. Jelentkezzen be [ https://www.qnamaker.ai ](https://www.qnamaker.ai).
+1. Jelentkezzen be itt: [https://www.qnamaker.ai](https://www.qnamaker.ai).
 1. A **saját tudásbázisok**, kattintson a **nézet kód** a Tudásbázis számára.
     ![saját tudásbázisok](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. A GenerateAnswer végpontjával kapcsolatos részletek beszerzése.
@@ -64,7 +64,7 @@ A HTTP POST-kérelmet GenerateAnswer hívható meg. Az mintakódot, amely bemuta
 A **kérelem URL-címe** formátuma a következő: 
 
 ```
-https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?isTest=true
+https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
 |HTTP-kérelem tulajdonság|Name (Név)|Typo|Cél|
@@ -84,7 +84,7 @@ JSON-törzse többféle beállításokkal rendelkezik:
 |`top`|választható|egész szám|A kimenetben: rangsorolt eredmények száma. Az alapértelmezett érték az 1.|
 |`userId`|választható|sztring|Azonosíthatja a felhasználó egyedi azonosítója. Ezt az Azonosítót a csevegési naplók lesznek rögzítve.|
 |`isTest`|választható|logikai|Ha igaz érték esetén eredményét adja vissza `testkb` Search-index közzétett index helyett.|
-|`strictFilters`|választható|sztring|Ha meg van adva, arra utasítja a QnA Maker, a választ csak, amelyek rendelkeznek a megadott metaadatok.|
+|`strictFilters`|választható|sztring|Ha meg van adva, arra utasítja a QnA Maker, a választ csak, amelyek rendelkeznek a megadott metaadatok. Használat `none` jelzi a válasz nem fájlmetaadat-szűrők kell rendelkeznie. |
 
 Egy példa JSON-törzse hasonlóan néz ki:
 

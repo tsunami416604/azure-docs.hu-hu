@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn;davberg
-ms.openlocfilehash: a8d071544462361e9750d3fa622467cd0000a040
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 43d0ab6552847df7f1f2a8599dcc7cb9a8fcb57b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056783"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698829"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Számításiteljesítmény-mérési pontszámok számítási a Windows virtuális gépek
-A következő SPECInt számításiteljesítmény-mérési pontszámok megjelenítése az Azure nagy teljesítményű virtuális gép prototípusait Windows Server rendszert futtató számítási teljesítményt. Számításiteljesítmény-mérési pontszámok számítási is elérhetők az [Linux rendszerű virtuális gépek](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+A következő SPECInt számításiteljesítmény-mérési pontszámok megjelenítése az Azure nagy teljesítményű virtuális gép prototípusait Windows Server rendszert futtató számítási teljesítményt. Számításiteljesítmény-mérési pontszámok számítási is elérhetők az [Linux rendszerű virtuális gépek](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 > [!NOTE]
 > A Linux-számokat nemrég frissítve lett-e, és virtuális gépek több átfogó készletét tartalmazzák.
@@ -49,13 +49,13 @@ A következő SPECInt számításiteljesítmény-mérési pontszámok megjelení
 | Standard_D13_v2 |8 |1 |Intel Xeon E5-2673 v3 \@ 2,4 GHz-es |17 |235.8 |3.8 |
 | Standard_D14_v2 |16 |2 |Intel Xeon E5-2673 v3 \@ 2,4 GHz-es |15 |460.8 |6.5 |
 
-## <a name="g-series-gs-series"></a>A G-sorozat, GS-sorozat
+## <a name="g-series-gs-series"></a>G-series, GS-series
 | Méret | Virtuális magok | NUMA-csomópontok | CPU | Futtatások | Átlagos alapdíj | StdDev |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard G1, Standard_GS1 |2 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz-es |31 |71.8 |6.5 |
-| Standard G2, Standard_GS2 |4 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz-es |5 |133.4 |13.0 |
+| Standard_G2, Standard_GS2 |4 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz-es |5 |133.4 |13.0 |
 | Standard G3, Standard_GS3 |8 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz-es |6 |242.3 |6.0 |
-| Standard G4, Standard_GS4 |16 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz-es |15 |398.9 |6.0 |
+| Standard_G4, Standard_GS4 |16 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz-es |15 |398.9 |6.0 |
 | Standard G5, például a Standard_GS5 |32 |2 |Intel Xeon E5-2698B v3 \@ 2 GHz-es |22 |762.8 |3.7 |
 
 ## <a name="h-series"></a>H-sorozat

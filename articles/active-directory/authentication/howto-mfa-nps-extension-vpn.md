@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5ea409b1726e82557b564f93fbd35898e9cf2cb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2674e5ca12269d44e111f140fce77bd8bc0c9ae7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372454"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699115"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA által a hálózati házirend-kiszolgáló-bővítmény használata az Azure-hoz
 
@@ -374,7 +374,7 @@ A szkript használatához adja meg a bővítmény az Azure Active Directory rend
 
 2. A PowerShell parancssorába írja be a **cd "c:\Program Files\Microsoft\AzureMfa\Config"**, majd válassza ki az ENTER billentyűt.
 
-3. Adja meg a következő parancs parancssorba **.\AzureMfsNpsExtnConfigSetup.ps1**, majd válassza ki az ENTER billentyűt. A parancsfájl ellenőrzi, hogy telepítve van-e az Azure AD PowerShell modul. Ha nincs telepítve, a parancsfájl telepíti a modult.
+3. Adja meg a következő parancs parancssorba **.\AzureMfaNpsExtnConfigSetup.ps1**, majd válassza ki az ENTER billentyűt. A parancsfájl ellenőrzi, hogy telepítve van-e az Azure AD PowerShell modul. Ha nincs telepítve, a parancsfájl telepíti a modult.
 
     ![A AzureMfsNpsExtnConfigSetup.ps1 konfigurációs szkript futtatása](./media/howto-mfa-nps-extension-vpn/image38.png)
 

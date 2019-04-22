@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 67f51b078b8e92592e9593d7d254e6985265eee8
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: d701fba39685d781d1a4c2d8a6cf194ca7eb2908
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651269"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683052"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Az Azure Scheduler alapfogalmai, terminológiája és entitásai
 
@@ -39,21 +39,27 @@ A magasabb szinteken a Scheduler REST API ezeket a műveleteket teszi elérhető
 
 ### <a name="job-management"></a>Feladatkezelés
 
-Feladatok létrehozására és szerkesztésére szolgáló műveleteket támogat. Az összes feladatnak egy létező feladatgyűjteményhez kell tartoznia, így nem történhet implicit létrehozás. További információ: [Scheduler REST API – Feladatok](https://docs.microsoft.com/rest/api/scheduler/jobs). Ezen műveletek URI-címe:
+Feladatok létrehozására és szerkesztésére szolgáló műveleteket támogat. Az összes feladatnak egy létező feladatgyűjteményhez kell tartoznia, így nem történhet implicit létrehozás. További információ: [Scheduler REST API – Feladatok](https://docs.microsoft.com/rest/api/scheduler/jobs). A következő műveletek elvégzéséhez URI-cím:
 
-`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`
+```
+https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
+```
 
 ### <a name="job-collection-management"></a>A feladatgyűjtemény kezelése
 
-Feladatok és feladatgyűjtemények létrehozására és szerkesztésére szolgáló műveleteket támogat, amelyek kvótákra és megosztott beállításokra végeznek leképezéseket. Például a kvóták szabják meg a feladatok maximális számát és legkisebb ismétlődési időközt. További információ: [Scheduler REST API –- Feladatgyűjtemények](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Ezen műveletek URI-címe:
+Feladatok és feladatgyűjtemények létrehozására és szerkesztésére szolgáló műveleteket támogat, amelyek kvótákra és megosztott beállításokra végeznek leképezéseket. Például a kvóták szabják meg a feladatok maximális számát és legkisebb ismétlődési időközt. További információ: [Scheduler REST API –- Feladatgyűjtemények](https://docs.microsoft.com/rest/api/scheduler/jobcollections). A következő műveletek elvégzéséhez URI-cím:
 
-`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`
+```
+https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
+```
 
 ### <a name="job-history-management"></a>Feladatelőzmények kezelése
 
-A 60 napos feladat-végrehajtási előzménytörténetet lekérő GET műveletet támogatja, például a végrehajtás során eltelt időt és annak eredményeit is. Az állapot szerinti szűrés érdekében támogatja a lekérdezési sztringek paramétereit. További információ: [Scheduler REST API – Feladatok – Feladatelőzmények listázása](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). A művelet URI-címe:
+A 60 napos feladat-végrehajtási előzménytörténetet lekérő GET műveletet támogatja, például a végrehajtás során eltelt időt és annak eredményeit is. Az állapot szerinti szűrés érdekében támogatja a lekérdezési sztringek paramétereit. További információ: [Scheduler REST API – Feladatok – Feladatelőzmények listázása](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). A következő URI-cím a művelethez:
 
-`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`
+```
+https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
+```
 
 ## <a name="job-types"></a>Feladattípusok
 
@@ -245,7 +251,7 @@ Egy feladat akkor ismétlődik, ha annak JSON-definíciója tartalmazza a **recu
 | **interval** | Nem | 1 és 1000 között, a szélsőértékeket is beleértve | Pozitív egész szám, amely a **frequency** gyakoriságérték alapján meghatározza az egyes előfordulások közötti időegységek számát | 
 | **schedule** | Nem | Változó | Összetettebb és speciális ütemezések részletei. Lásd: **hours**, **minutes**, **weekDays**, **months** és **monthDays** (órák, percek, munkanapok, hónapok és hónap adott napjai) | 
 | **hours** | Nem | 1–24 | A feladat futtatásának időpontját meghatározó órajelek | 
-| **minutes** | Nem | 1–24 | A feladat futtatásának időpontját meghatározó percjelek | 
+| **minutes** | Nem | 0 és 59 | A feladat futtatásának időpontját meghatározó percjelek | 
 | **months** | Nem | 1–12 | A feladat futtatásának időpontját meghatározó hónapok | 
 | **monthDays** | Nem | Változó | A feladat futtatásának időpontját meghatározó hónap napjai | 
 | **weekDays** | Nem | „Monday”, „Tuesday”, „Wednesday”, „Thursday”, „Friday”, „Saturday”, „Sunday” (Hétfő, Kedd, Szerda, Csütörtök, Péntek, Szombat, Vasárnap) | A feladat futtatásának időpontját meghatározó hét napjai | 

@@ -1,9 +1,9 @@
 ---
-title: B sorozatú Azure Windows Virtuálisgép-méretek |} Microsoft Docs
-description: B sorozatú a burstable Azure VM-méretek ismerteti.
+title: Azure Windows VM-méretek – B sorozat |} A Microsoft Docs
+description: A B sorozat – adatlöket-kezelés az Azure Virtuálisgép-méretek ismerteti.
 services: virtual-machines-windows
 documentationcenter: ''
-author: jonbeck7
+author: ayshakeen
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,20 +14,20 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/07/2017
-ms.author: jonbeck
-ms.openlocfilehash: 366981c0a92aab80e4cbc41ff7202be42b386d6a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: ayshak
+ms.openlocfilehash: 8530682baac1544de2c73186b35fdf193e1826bd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30917911"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682916"
 ---
-# <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú burstable virtuálisgép-méretek
+# <a name="b-series-burstable-virtual-machine-sizes"></a>A B sorozat – adatlöket-kezelés virtuálisgép-méretek
 
 [!INCLUDE [virtual-machines-common-b-series-burstable](../../../includes/virtual-machines-common-b-series-burstable.md)]
 
 
-## <a name="other-sizes"></a>Más méretek
+## <a name="other-sizes"></a>További méretek
 - [Általános célú](sizes-general.md)
 - [Számításra optimalizált](sizes-compute.md)
 - [Memóriaoptimalizált](../virtual-machines-windows-sizes-memory.md)
@@ -36,4 +36,4 @@ ms.locfileid: "30917911"
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 
 ## <a name="next-steps"></a>További lépések
-További tudnivalók [Azure számítási egység (ACU)](acu.md) segíthetnek a számítási teljesítmény összehasonlítása Azure termékváltozatok mentén.
+Tudjon meg többet [Azure számítási egységek (ACU)](acu.md) Azure-termékváltozatok hasonlítsa össze a számítási teljesítményt nyújt segítséget.

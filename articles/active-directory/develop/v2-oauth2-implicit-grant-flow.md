@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 453a3316288cbc0b07d82e2fad9ecc7c3d353e9b
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: d517828b30629cd9dfba5459b1d90913d8bc4f77
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501314"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698452"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>A Microsoft identity platform és Implicit folyamat megadása
 
@@ -52,7 +52,7 @@ Az alábbi ábrán látható, hogy a teljes implicit bejelentkezési folyamat n�
 
 ## <a name="send-the-sign-in-request"></a>A bejelentkezési kérelem küldése
 
-Kezdetben beléptetni a felhasználót az alkalmazásba, küldhet egy [OpenID Connect](v2-protocols-oidc.md) engedélyezési kérést és a get- `id_token` a Microsoft identity platform végpontról.
+Kezdetben beléptetni a felhasználót az alkalmazásba, küldhet egy [OpenID Connect](v2-protocols-oidc.md) hitelesítési kérelem és a get- `id_token` a Microsoft identity platform végpontról.
 
 > [!IMPORTANT]
 > Egy azonosító jogkivonat, az alkalmazás regisztrációját a sikeres kérése a [az Azure portal - alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) stránka musí obsahovat a implicit engedélyezési folyamat kiválasztásával megfelelően engedélyezve van **hozzáférési jogkivonatokat** és **Azonosító-jogkivonatokat** alatt a **típusú Implicit engedélyezés** szakaszban. Ha nincs engedélyezve, egy `unsupported_response` visszaadott hiba: **A bemeneti paraméter "response_type" megadott értéke nem engedélyezett ennél az ügyfélnél. Várt érték "code"**

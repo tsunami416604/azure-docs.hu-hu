@@ -1,25 +1,25 @@
 ---
 title: Több főkiszolgálós konfigurálása az Azure Cosmos DB-ben
 description: Az Azure Cosmos DB-ben az alkalmazások több főkiszolgálós konfigurálása
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 2/12/2019
-ms.author: mjbrown
-ms.openlocfilehash: 84c8e2921602bb653c0b1ef0adffd3d89e91bd78
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.date: 04/15/2019
+ms.author: rimman
+ms.openlocfilehash: b862c59002369662d37b6d6a9de28370b0000497
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312140"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682270"
 ---
 # <a name="how-to-configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Több főkiszolgálós konfigurálása az Azure Cosmos DB használó alkalmazásokban
 
-Több főkiszolgálós szolgáltatások használata az alkalmazások a szüksége több naplórekordjait engedélyezheti és konfigurálhatja a többhelyűségével funkció. Tagként az aktuális régióban, ahol az alkalmazás üzemel beállításával van konfigurálva.
+Több főkiszolgálós szolgáltatást használja az alkalmazást, szüksége több naplórekordjait engedélyezése és a többkiszolgálós funkció konfigurálása az Azure Cosmos DB. Többkiszolgálós a régió, ahol az alkalmazás központi telepítése úgy van konfigurálva.
 
 ## <a id="netv2"></a>.NET SDK-val v2
 
-Ahhoz, hogy az alkalmazások csoportban több főkiszolgálós `UseMultipleWriteLocations` igaz értékre, és konfigurálhatja `SetCurrentLocation` , amelyben a rendszer telepíti az alkalmazást, és a rendszer replikálja az Azure Cosmos DB-régió.
+Ahhoz, hogy az alkalmazások csoportban több főkiszolgálós `UseMultipleWriteLocations` igaz értékre, és konfigurálja a `SetCurrentLocation` , amelyben a rendszer telepíti az alkalmazást, és a rendszer replikálja az Azure Cosmos DB-régió.
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy
@@ -43,7 +43,7 @@ CosmosClient client = new CosmosClient(config);
 
 ## <a id="java"></a>Java Async SDK
 
-Ahhoz, hogy az alkalmazások csoportban több főkiszolgálós `policy.setUsingMultipleWriteLocations(true)` igaz értékre, és konfigurálhatja `policy.setPreferredLocations` -régió, amelyben az alkalmazás üzembe helyezéséhez, és a Cosmos DB a rendszer replikálja.
+Ahhoz, hogy az alkalmazások csoportban több főkiszolgálós `policy.setUsingMultipleWriteLocations(true)` és konfigurálása `policy.setPreferredLocations` -régió, amelyben az alkalmazás üzembe helyezéséhez, és a Cosmos DB a rendszer replikálja.
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -89,14 +89,14 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a több főkiszolgálós, globális terjesztés és konzisztencia az Azure Cosmos DB-hez. Lásd az alábbi cikkeket:
+Ezután az alábbi cikkekben olvashat:
 
 * [Munkamenet-jogkivonatok kezeléséhez az Azure Cosmos DB konzisztencia vételéhez](how-to-manage-consistency.md#utilize-session-tokens)
-
 * [Ütközés típusa és a megoldási házirendek az Azure Cosmos DB](conflict-resolution-policies.md)
-
 * [Az Azure Cosmos DB magas rendelkezésre állás](high-availability.md)
-
+* [Az Azure Cosmos DB-ben konzisztenciaszintek](consistency-levels.md)
 * [Az Azure Cosmos DB-ben a megfelelő konzisztenciaszint kiválasztása](consistency-levels-choosing.md)
-
 * [Konzisztencia, a rendelkezésre állás és teljesítmény kompromisszumot kínál a Azure Cosmos DB-ben](consistency-levels-tradeoffs.md)
+* [Kompromisszumot kínál a különböző konzisztenciaszintet rendelkezésre állás és teljesítmény](consistency-levels-tradeoffs.md)
+* [Globálisan a kiosztott átviteli kapacitás méretezése](scaling-throughput.md)
+* [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)

@@ -1,6 +1,6 @@
 ---
 title: Hitelesítés hozzáadása az univerzális Windows Platform (UWP-) alkalmazáshoz |} A Microsoft Docs
-description: 'Ismerje meg, hogyan lehet Azure App Service Mobile Apps segítségével hitelesítheti a felhasználókat az identitás-szolgáltatóktól, beleértve a különféle univerzális Windows Platform (UWP) alkalmazás: aad-ben, Google, Facebook, Twitter vagy Microsoft.'
+description: 'Ismerje meg, hogyan hitelesítheti a felhasználókat az identitás-szolgáltatóktól, beleértve a különféle univerzális Windows Platform (UWP) alkalmazás az Azure App Service Mobile Apps segítségével: Aad-ben, a Google, Facebook, Twitter vagy Microsoft.'
 services: app-service\mobile
 documentationcenter: windows
 author: conceptdev
@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panarasi
-ms.openlocfilehash: 4cc597f8aca13445034c8a1691b41018d4d9bc4b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7caaa1ca4cdaf7290b7ce05d17c07e565e7b51d1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306574"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698676"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Hitelesítés hozzáadása a Windows-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -35,15 +35,13 @@ Ez az oktatóanyag a Mobile Apps – első lépések alapján. Először végezz
 
 Hitelesítésre van szükség, hogy az alkalmazás egy új URL-séma meghatározása. Ez lehetővé teszi a hitelesítési rendszer visszairányítja az alkalmazás a hitelesítési folyamat befejeződése után. Ebben az oktatóanyagban azt használja az URL-séma _appname_ során. Bármely URL-séma választja is használhatja. A mobilalkalmazás egyedinek kell lennie. A kiszolgálói oldalon az átirányítás engedélyezése:
 
-1. Az [Azure Portalon] válassza ki az App Service.
+1. Az a [az Azure portal](https://ms.portal.azure.com), válassza ki az App Service.
 
 2. Kattintson a **hitelesítési / engedélyezési** menüpont.
 
 3. Az a **engedélyezett külső átirányítási URL-címeket**, adja meg `url_scheme_of_your_app://easyauth.callback`.  A **url_scheme_of_your_app** Ez a karakterlánc a következő az URL-séma esetében.  Normál URL-cím-specifikáció (használata betűket és csak számokból állhat, és betűvel kezdődhet) protokoll, érdemes követnie.  Meg kell jegyezze fel a karakterlánc, amely úgy dönt, mert szüksége lesz a mobilalkalmazás-kód az URL-séma több helyen való beállításához.
 
-4. Kattintson az **OK** gombra.
-
-5. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="permissions"></a>A hitelesített felhasználók engedélyeinek korlátozása
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]

@@ -17,20 +17,20 @@ ms.date: 03/19/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd3d5a19e861bd738f3c618610aadb77da30b384
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: b563b0fb8dc12cbdcdd256a97134f9ff02988915
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520343"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698962"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>kézikönyv: A többtényezős hitelesítési regisztrációs házirend konfigurálása
 
-Az Azure AD Identity Protection segítséget az üzembe helyezést (MFA) többtényezős hitelesítési regisztrációs házirend konfigurálásával. Ez a cikk leírja, mi a házirend használható egy konfigurálásának.
+Az Azure AD Identity Protection segít az üzembe helyezést (MFA) többtényezős hitelesítési regisztráció kezelése az MFA-regisztráció megkövetelő szabályzata konfigurálásával. Ez a cikk leírja, mi a házirend használható egy konfigurálásának.
 
 ## <a name="what-is-the-multi-factor-authentication-registration-policy"></a>Mi az a többtényezős hitelesítési regisztrációs házirend?
 
-Az Azure multi-factor authentication a egy módszer annak ellenőrzése, akik, amely több, mint felhasználónév és jelszó szükséges. Biztosít egy második biztonsági szintként, felhasználói bejelentkezéseket és tranzakciókat.  
+Az Azure multi-factor authentication a egy módszer annak ellenőrzése, akik, amely több, mint felhasználónév és jelszó szükséges. Biztosít egy második biztonsági szintként, felhasználói bejelentkezéseket és tranzakciókat. Ahhoz, hogy a felhasználók tudják MFA válaszolniuk akkor először regisztrálnia kell az MFA-hoz. 
 
 Azt javasoljuk, hogy az Azure multi-factor authentication a felhasználók bejelentkezési folyamatába igényel el, mert azt:
 
@@ -39,7 +39,7 @@ Azt javasoljuk, hogy az Azure multi-factor authentication a felhasználók bejel
 - A szervezet védelme és helyreállítása a fiók feltörések előkészítése a kulcsfontosságú szerepet játszik az
 
 
-További részletekért lásd: [Mi az Azure multi-factor Authentication?](../authentication/multi-factor-authentication.md)
+A többtényezős hitelesítés további részletekért lásd: [Mi az Azure multi-factor Authentication?](../authentication/multi-factor-authentication.md)
 
 
 ## <a name="how-do-i-access-the-mfa-registration-policy"></a>Hogyan érhetem el az MFA regisztrációs szabályzatának?
@@ -51,15 +51,15 @@ Az MFA regisztrációs szabályzatának szerepel a **konfigurálása** szakaszá
 
 
 
-## <a name="policy-settings"></a>Szabályzat beállításai
+## <a name="policy-settings"></a>Szabályzatbeállítások
 
-A bejelentkezési kockázati házirend konfigurálásakor kell beállítani:
+Az MFA regisztrációs szabályzatának konfigurálásakor kell beállítani:
 
 - A felhasználók és csoportok, a szabályzat vonatkozik:
 
     ![Felhasználók és csoportok](./media/howto-mfa-policy/11.png)
 
-- Milyen típusú hozzáférést szeretne érvényesíteni:  
+- A vezérlők kényszerítésére követelmény az MFA-regisztráció:  
 
     ![Hozzáférés](./media/howto-mfa-policy/12.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 74525b42445d87923b0bad7a522456257e651d00
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2086813b01de6cd06f3714477e56864b36196382
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856022"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699047"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tároló-üzenetsorok és Service Bus-üzenetsorok összehasonlítása
 Ez a cikk elemzi a közötti különbségeket és hasonlóságokat a Microsoft Azure jelenleg elérhető két típusa: Tároló-üzenetsorok és Service Bus-üzenetsorok. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
@@ -84,7 +84,7 @@ Ez a szakasz az alapvető üzenetsor-kezelési funkciói biztosítják a tárol�
 * A garantált FIFO minta a Service Bus-üzenetsorok üzenet-munkamenetek használatát igényli. Abban az esetben, ha az alkalmazás összeomlik, egy üzenet érkezik feldolgozása közben a **Belepillantás & zárolása** mód, a következő alkalommal, amikor a várólista fogadó fogadja el az üzenetkezelési munkamenet, el is indítja a hibás üzenettel után az idő-az-élettartam (TTL) időszakának lejártáig.
 * Tárolási üzenetsorok támogatására készültek standard üzenetsor-kezelési forgatókönyvek, például a méretezhetőséget és a hibák, hibatűrésének növelése megszakító alkalmazás-összetevők betöltése terheléskiegyenlítést, és a feldolgozási munkafolyamatok kialakítását.
 * Service Bus-üzenetsorok támogatása a *: legalább egyszeri* kézbesítési garanciával. 
-* Üzenetkezelés a Service Bus-munkamenetekkel kontextusában kapcsolatban inkonzisztenciát elkerülhető az a munkamenet-állapot kezelésére az a munkamenet üzenet feladatütemezési képest a folyamatot az alkalmazás-állapotának tárolására, és körül tranzakciók használatával stabilizálódási Beérkezett üzenetek és a munkamenet-állapot frissítése. Az ilyen típusú konzisztencia szolgáltatás időnként feliratú *pontosan-egyszeri feldolgozását* más gyártója által biztosított termékek, de a tranzakció hibák nyilvánvalóan okoz redeliveried üzeneteket, és ezért az előfizetési időszak pontosan nem megfelelő.
+* Üzenetkezelés a Service Bus-munkamenetekkel kontextusában kapcsolatban inkonzisztenciát elkerülhető az a munkamenet-állapot kezelésére az a munkamenet üzenet feladatütemezési képest a folyamatot az alkalmazás-állapotának tárolására, és körül tranzakciók használatával stabilizálódási Beérkezett üzenetek és a munkamenet-állapot frissítése. Az ilyen típusú konzisztencia szolgáltatás időnként feliratú *pontosan-egyszeri feldolgozását* más gyártója által biztosított termékek, de a tranzakció hibák nyilvánvalóan okoz üzenet újbóli kézbesítése, és ezért a kifejezés pontosan nem megfelelő.
 * Tárolási üzenetsorok egységes egy egységes és következetes programozási modell – Blobok, táblák és üzenetsorok fejlesztők számára, és műveleti csapatoknak.
 * Service Bus-üzenetsorok támogatást nyújt a helyi tranzakció környezetében egyetlen üzenetsorhoz.
 * A **fogadása és törlése** Service Bus által támogatott mód lehetővé teszi a csökkentse az üzenetkezelési műveletek száma (és a kapcsolódó költségek) alacsonyabb kézbesítési garanciával rendelkező engedélyezések.

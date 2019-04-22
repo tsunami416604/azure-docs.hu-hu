@@ -8,19 +8,20 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8264159a-11a2-4a8c-8285-4efea0adac8c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/21/2019
+ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aa6a88971ca69fa910435d00722dcdf12db44f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf2576aa112d58e499f0c4a16bf8e9261114974b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880891"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Oktatóanyag: Egyértelmű tekintse át az Azure Active Directory-integráció
 
@@ -38,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Egyértelmű tekintse át az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
 * Egyértelmű tekintse át az egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -118,33 +119,21 @@ Egyértelmű tekintse át az Azure AD egyszeri bejelentkezés konfigurálása, h
     > [!NOTE]
     > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [egyértelmű felülvizsgálati ügyfél-támogatási csapatának](https://clearreview.com/contact/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-6. Egyértelmű felülvizsgálat alkalmazása a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+6. Egyértelmű felülvizsgálat alkalmazása a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. Felülvizsgálat törlése alkalmazás vár **nameidentifier** a leképezendő **user.mail**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése** ikonra, és módosítsa a Attribútumleképzés.
 
     ![image](common/edit-attribute.png)
 
-7. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
-    
-    | Name (Név) | Adatforrás-attribútum | 
-    | ---------------| --------------- |
-    | Azonosító érték neve   | user.mail |
+7. Az a **felhasználói attribútumok & jogcímek** párbeszédpanelen hajtsa végre az alábbi lépéseket:
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson a **Szerkesztés ikon** jobb oldalán található **azonosító értékét nevet**.
 
-    ![image](common/new-save-attribute.png)
+    ![image](./media/clearreview-tutorial/attribute02.png)
 
-    ![image](common/new-attribute-details.png)
+    ![image](./media/clearreview-tutorial/attribute01.png)
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. Az a **forrásattribútum** listáról válassza ki a **user.mail** attribútumérték sorhoz.
 
-    c. Hagyja a **Namespace** üres.
-
-    d. Válassza ki a forrás, **attribútum**.
-
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
-
-    f. Kattintson a **Ok**
-
-    g. Kattintson a **Save** (Mentés) gombra.
+    c. Kattintson a **Save** (Mentés) gombra.
 
 8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -156,7 +145,7 @@ Egyértelmű tekintse át az Azure AD egyszeri bejelentkezés konfigurálása, h
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
@@ -168,7 +157,7 @@ Egyértelmű tekintse át az Azure AD egyszeri bejelentkezés konfigurálása, h
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-3. Válassza ki **módosítása** az oldal alján.
+3. Az a **Integrációk** kattintson a lap alján található szakasz a **módosítása** jobbra található gombra **egyszeri bejelentkezési beállításainak**.
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
@@ -176,7 +165,7 @@ Egyértelmű tekintse át az Azure AD egyszeri bejelentkezés konfigurálása, h
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
-    a. Az a **kiállítójának URL-címe** szövegmező, illessze be az értéket a **Azure Ad-azonosító** Azure Portalról másolt.
+    a. Az a **kiállítójának URL-címe** szövegmező, illessze be az értéket a **az Azure AD-azonosító** Azure Portalról másolt.
 
     b. Az a **SAML-végpont** szövegmező, illessze be az értéket a **bejelentkezési URL-cím** Azure Portalról másolt.  
 
@@ -184,7 +173,7 @@ Egyértelmű tekintse át az Azure AD egyszeri bejelentkezés konfigurálása, h
 
     d. Nyissa meg a letöltött tanúsítvány a Jegyzettömbben, és illessze be a tartalmat a **X.509-tanúsítvány** szövegmezőbe.   
 
-5. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 

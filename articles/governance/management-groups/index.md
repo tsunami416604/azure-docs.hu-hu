@@ -1,12 +1,18 @@
 ---
 title: Erőforrások rendszerezése az Azure Management Groups segítségével – Azure Governance
-description: 'Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.'
+description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
-ms.date: 02/20/2019
+ms.date: 04/17/2019
 ms.author: rithorn
 ms.topic: overview
+ms.openlocfilehash: 157701e826d6a281a60393e1ec270cf061be8214
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699381"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Erőforrások rendszerezése az Azure Management Groups segítségével
 
@@ -37,11 +43,11 @@ Ahelyett, hogy különböző előfizetésekre szkriptelne RBAC-hozzárendelések
 ## <a name="root-management-group-for-each-directory"></a>Az egyes címtárak gyökérszintű felügyeleti csoportja
 
 Minden címtárhoz tartozik egy legfelső szintű, vagy más néven gyökérszintű felügyeleti csoport.
-Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. A gyökérszintű felügyeleti csoport lehetővé teszi globális szabályzatok és RBAC-hozzárendelések címtárszintű alkalmazását. Az [Azure AD globális rendszergazdájának először emelnie kell a jogosultsági szintjét](../../role-based-access-control/elevate-access-global-admin.md), hogy a gyökérszintű csoport tulajdonosa legyen. A csoport tulajdonosaként azután bármilyen RBAC-szerepkört hozzárendelhet a címtár felhasználóihoz vagy csoportjaihoz a hierarchia kezelése érdekében.
+Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a gyökérszintű felügyeleti csoport lehetővé teszi globális szabályzatok és RBAC-hozzárendelések címtárszintű alkalmazását. Az [Azure AD globális rendszergazdájának először emelnie kell a jogosultsági szintjét](../../role-based-access-control/elevate-access-global-admin.md), hogy a Felhasználói hozzáférés adminisztrátora szerepkörrel rendelkezzen a gyökérszintű csoport esetében. A jogosultsági szint emelését követően a rendszergazda bármilyen RBAC-szerepkört hozzárendelhet a címtár felhasználóihoz vagy csoportjaihoz a hierarchia kezelése érdekében. Rendszergazdaként hozzárendelheti saját fiókját a gyökérszintű felügyeleti csoport tulajdonosaként.
 
 ### <a name="important-facts-about-the-root-management-group"></a>A gyökérszintű felügyeleti csoport fontosabb jellemzői
 
-- A gyökérszintű felügyeleti csoport neve és azonosítója alapértelmezés szerint meg van adva. A megjelenített név bármikor módosítható az Azure Portalon.
+- A gyökérszintű felügyeleti csoport neve és azonosítója alapértelmezés szerint meg van adva. A megjelenített név bármikor módosítható az Azure Portalon. A [név módosításához](manage.md#change-the-name-of-a-management-group) a fiókjának a Tulajdonos vagy Közreműködő szerepkörrel kell rendelkeznie a gyökérszintű felügyeleti csoportra vonatkozóan.
   - A név „Bérlői gyökércsoport” lesz.
   - Az azonosító az Azure Active Directory-azonosító lesz.
 - A gyökérszintű felügyeleti csoportot a többi felügyeleti csoporttal szemben nem lehet törölni vagy áthelyezni.  
@@ -63,7 +69,7 @@ A felügyeleti csoportok használatának megkezdésekor először egy beállít�
 
 ## <a name="trouble-seeing-all-subscriptions"></a>Nem látható az összes előfizetés
 
-Néhány címtárban, amelyek az előzetes verzió korai szakaszában (2018. június 25. előtt) kezdtek felügyeleti csoportokat használni, egy probléma jelentkezhet, amelynek következtében a hierarchiában nem található meg minden előfizetés.  Az előfizetéseket a hierarchiába helyező eljárás azután lett megvalósítva, hogy egy szerepkör- vagy szabályzat-hozzárendelés végre lett hajtva a címtár gyökérszintű felügyeleti csoportján.
+Néhány címtárban, amelyek az előzetes verzió korai szakaszában (2018. június 25. előtt) kezdtek felügyeleti csoportokat használni, egy probléma jelentkezhet, amelynek következtében a hierarchiában nem található meg minden előfizetés. Az előfizetéseket a hierarchiába helyező eljárás azután lett megvalósítva, hogy egy szerepkör- vagy szabályzat-hozzárendelés végre lett hajtva a címtár gyökérszintű felügyeleti csoportján. 
 
 ### <a name="how-to-resolve-the-issue"></a>A probléma elhárítása
 

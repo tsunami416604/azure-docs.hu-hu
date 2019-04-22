@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 140c8b2ab9b7985652a6474a1a9373e0d453b9e6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 188a79df99a174436808acd3d964abf9357cf4c0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900726"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699324"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Az Azure Advisor használatával szolgáltatás költségek csökkentése
 
@@ -37,9 +37,9 @@ Az Advisor azonosítja a virtuális hálózat kapuk, amely rendelkezik több min
 
 ## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>Megtakarítást érhet el a használatalapú fizetéses költségekhez képest fenntartott virtuálisgép-példányok vásárlásával
 
-Az Advisor fog tekintse át a virtuális gép használatát az elmúlt 30 napban, és határozza meg, ha pénzt menthető egy Azure foglalás megvásárlásával. Az Advisor bemutatja, a régiók és a méreteket, ahol potenciálisan rendelkezik a legtöbb megtakarítások és jelennek meg azt a becsült megtakarítások a foglalásokat vásárol. 
+Az Advisor fog tekintse át a virtuális gép használatát az elmúlt 30 napban, és határozza meg, ha pénzt menthető egy Azure foglalás megvásárlásával. Az Advisor bemutatja, a régiók és a méreteket, ahol potenciálisan rendelkezik a legtöbb megtakarítások és jelennek meg azt a becsült megtakarítások a foglalásokat vásárol. Az Azure-foglalásokat akkor is előre történő kifizetését a virtuális gépek számára. Új vagy meglévő virtuális gépek, amelyek az azonos méretű és régió szerint a foglalások automatikusan alkalmazza a kedvezményeket jelentenek. [További információ az Azure Reserved VM Instances.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
-Az Azure-foglalásokat akkor is előre történő kifizetését a virtuális gépek számára. Új vagy meglévő virtuális gépek, amelyek az azonos méretű és régió szerint a foglalások automatikusan alkalmazza a kedvezményeket jelentenek. [További információ az Azure Reserved VM Instances.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
+Az Advisor is értesíti Önt a fenntartott példányok, amely rendelkezik a következő 30 nap múlva lejár. Javasolni fogja, hogy ne kelljen fizetnie a használatalapú fizetéshez új fenntartott példányok megvásárlása.
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Társítatlan nyilvános IP-címet törölni pénzt takaríthat meg
 

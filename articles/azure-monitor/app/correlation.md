@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: cc2d45aee170517d7e41cbda6d92bc21067732d1
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 565f08f0c69aef393a9296f3cce90570a3f0bc2c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493637"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683019"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetriai korreláció
 
@@ -143,8 +143,8 @@ A [OpenTracing adatmodell-specifikáció](https://opentracing.io/) és Applicati
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`;  `PageView`                 | `Span` a következővel: `span.kind = server`                  |
-| `Dependency`                          | `Span` a következővel: `span.kind = client`                  |
+| `Request`, `PageView`                 | `Span` a `span.kind = server`                  |
+| `Dependency`                          | `Span` a `span.kind = client`                  |
 | `Id` a `Request` és `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
 | `Operation_ParentId`                  | `Reference` típusú `ChildOf` (a szülő span)   |
@@ -217,7 +217,7 @@ Időnként érdemes testre is szabhatja összetevők nevéhez megjelennek a [Alk
 ## <a name="next-steps"></a>További lépések
 
 - Írási [egyéni telemetriát](../../azure-monitor/app/api-custom-events-metrics.md).
-- Tudjon meg többet [cloud_RoleName beállítás](../../azure-monitor/app/app-map.md#set-cloud_rolename) más SDK-k esetében.
+- Tudjon meg többet [cloud_RoleName beállítás](../../azure-monitor/app/app-map.md#set-cloud-role-name) más SDK-k esetében.
 - Előkészítheti az Application Insights a mikroszolgáltatási összes összetevőjét. Tekintse meg a [által támogatott platformok](../../azure-monitor/app/platforms.md).
 - Tekintse meg a [adatmodell](../../azure-monitor/app/data-model.md) Application Insights-típusokhoz.
 - Ismerje meg, hogyan [bővítése és szűrőtelemetria](../../azure-monitor/app/api-filtering-sampling.md).

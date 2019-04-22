@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 3b2c5f3e02241f8c4e8a9ae87bd7436863243978
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 73fc0d26612d32f2614899c62f680ff9e85d1609
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901525"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698399"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Egyéni a fordítót Hub munkaterületet és projektek áttelepítése
 
@@ -119,6 +119,7 @@ Munkaterület kért / hubról migrálási projekt, ha az áttelepítési előzm�
 Ha azt szeretné, hogy a projektek, betanítások és dokumentumok. áttelepítési jelentés részletesebb, hogy beállítás részleteinek exportálása CSV-fájlként.
 
 ## <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
+* Nyelvi rendszerek még nem párok elérhető egyéni a fordítót csak adatok eléréséhez, vagy megszüntetheti egyéni a fordítót keresztül érhető el. Ezek a projektek a projektek lap "Nem érhető el" lesz megjelölve. Új nyelv párokat az egyéni a fordítót engedélyezésével, a projektek betanítását és üzembe helyezése aktívvá válik. 
 * Áttelepítés egy projektet Hub egyéni a fordítót a nem fog a Hub betanítások vagy projektekhez hatást. Nem töröljük projektek vagy dokumentumok hubról áttelepítés során, és azt nem megszüntetheti a modellek.
 * Csak egyszer áttelepítése projektenként engedélyezettek. Ha ismételje meg a projekt áttelepítés van szüksége, lépjen kapcsolatba velünk a következő címen.
 * Egyéni a fordítót NMT nyelvi párok, illetve onnan angol támogatja. [Támogatott langauges teljes listájának megtekintéséhez](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Hub nem igényel kiindulási modelleket, és ezért a több ezer nyelveket támogatja. Nem támogatott nyelvet párjának, azonban a rendszer csak a dokumentumok az áttelepítéshez és a projekt definíciók áttelepítheti. A Microsoft nem fogja tudni az új modell betanításához. Továbbá ezeket a dokumentumokat és projektek jelenik meg inaktívként annak a megállapítására, hogy nem tudja használni őket most. Támogatás bevezetése esetén ezek projektek és/vagy a dokumentumok, aktív és trainable válnak.

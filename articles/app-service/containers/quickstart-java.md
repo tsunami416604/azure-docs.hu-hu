@@ -1,6 +1,7 @@
 ---
 title: Java-webalkalmazás létrehozása linuxon – az Azure App Service-ben
 description: Ezzel a rövid útmutatóval percek alatt üzembe helyezheti első Hello World Java-alkalmazását a Linuxon futó Azure App Service-ben.
+keywords: azure, app service, web app, linux, java, maven, quickstart
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -15,17 +16,20 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: af1256b4432e42f91209b622239ca55901929a1b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: c97d4a373970514b920581aa258b61c1b1cb978c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544738"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684004"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Gyors útmutató: Egy Java-alkalmazás létrehozása Linuxon futó App Service-ben
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan használhatja a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) együtt a [készült Azure Web Apps (előzetes verzió)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) üzembe Java web archive-(WAR-) fájlt.
-
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan használhatja a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) az a [Azure App Service-ben készült maven bővítmény](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) üzembe Java web archive-(WAR-) fájlt.
+> [!NOTE]
+>
+> Ugyanezt megteheti is népszerű, például az IntelliJ és Eclipse ide használatával. Tekintse meg a következő hasonló dokumentumok [intellij-vel a rövid útmutató az Azure-eszközkészlet](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) vagy [eclipse-ben a rövid útmutató az Azure-eszközkészlet](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
+>
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-java/java-hello-world-in-browser.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -58,15 +62,32 @@ Ezután adja hozzá a következő bővítménydefiníciót a `pom.xml` fájl `<b
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.5.3</version>
+        <version>1.5.4</version>
         <configuration>
+            <!-- Specify v2 schema -->
+            <schemaVersion>v2</schemaVersion>
             <!-- App information -->
+            <subscriptionId>${SUBSCRIPTION_ID}</subscriptionId>
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
    
             <!-- Java Runtime Stack for App on Linux-->
-            <linuxRuntime>tomcat 8.5-jre8</linuxRuntime> 
+            <runtime>
+                <os>linux</os>
+                <javaVersion>jre8</javaVersion>
+                <webContainer>tomcat 8.5</webContainer>
+            </runtime> 
+            <deployment>
+                <resources>
+                    <resource>
+                        <directory>${project.basedir}/target</directory>
+                        <includes>
+                            <include>*.war</include>
+                        </includes>
+                    </resource>
+                </resources>
+            </deployment>
         </configuration>
     </plugin>
 </plugins>
@@ -81,6 +102,7 @@ Frissítse a következő helyőrzőket a bővítmény konfigurációjában:
 
 | Helyőrző | Leírás |
 | ----------- | ----------- |
+| `SUBSCRIPTION_ID` | Egyedi azonosítója annak az előfizetésnek az alkalmazást telepíteni kívánja. Alapértelmezett előfizetés-azonosító megtalálja a Cloud Shellben vagy a parancssori felület használatával a `az account show` parancsot. Az összes rendelkezésre álló előfizetések, használja a `az account list` parancsot.|
 | `RESOURCEGROUP_NAME` | Az új erőforráscsoport, amelyben létrehozza az alkalmazás neve. Ha egy alkalmazás összes erőforrását egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlésével például az alkalmazáshoz társított összes erőforrást törli. Frissítse ezt az értéket egy egyedi új erőforráscsoport-névre, például *TestResources*. Ezt az erőforráscsoport-nevet használjuk egy későbbi szakaszban az összes Azure-erőforrás eltávolításához. |
 | `WEBAPP_NAME` | Az alkalmazás neve lesz az állomásnév az alkalmazás telepítésekor az Azure-ba (WEBAPP_NAME.azurewebsites.net) rész. Frissítse ezt az értéket fogja futtatni a Java-alkalmazás, például új App Service-alkalmazás egyedi nevet *contoso*. |
 | `REGION` | Ha az alkalmazás üzemel, például egy Azure-régió `westus2`. A régiók listáját az `az account list-locations` paranccsal, a Cloud Shellben vagy a CLI-ben kérheti le. |
@@ -111,3 +133,6 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 
 > [!div class="nextstepaction"]
 > [CI/CD a jenkins-szel](/azure/jenkins/deploy-jenkins-app-service-plugin)
+
+> [!div class="nextstepaction"]
+> [Más Azure Java fejlesztői erőforrások](/java/azure/)

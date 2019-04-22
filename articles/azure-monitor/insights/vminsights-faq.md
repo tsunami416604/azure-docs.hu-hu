@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 32f2833b4c1ba77564d5388bc080a7cb32d90201
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ade12225a470b64278b9d27676ceab768f64d904
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243773"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698272"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Az Azure Monitor-beli virtuális gépek (előzetes verzió) gyakran ismételt kérdések
 A Microsoft FAQ az összetevővel kapcsolatos gyakori kérdésekre az Azure Monitor-beli virtuális gépek listája. Ha a megoldásról a további kérdése van, lépjen a [fórum](https://feedback.azure.com/forums/34192--general-feedback) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
@@ -100,7 +100,7 @@ Virtuális gépek térkép funkció az Azure Monitor Service Map alapul, de rend
 * Figyelt virtuális gépek mostantól szerepelnek az ügyfél csoport csomópontot, és a fánkdiagramot az időarány, amíg a figyelt vs nem monitorozott virtuális gépek megjeleníti a csoportban.  Is használható, ha ki van bontva, a csoport a gépek szűréséhez.
 * Figyelt virtuális gépek mostantól beletartoznak a port csoport csomópontok, és a fánkdiagramot az időarány, amíg nem figyelt gépeket figyelt vs megjeleníti a csoportban.  Is használható, ha ki van bontva, a csoport a gépek szűréséhez.
 * A térkép stílus egységesebb Alkalmazástérkép az Application insightsból is frissítve lett.
-* A kiszolgálóoldali panelek frissítve lett-e, de még nem rendelkezik a teljes körű integráció a Szolgáltatástérkép - frissítéskezelés, változáskövetés, biztonsági és ügyfélszolgálat is támogatott. 
+* A kiszolgálóoldali panelek frissítve lett-e, és nem rendelkezik a teljes körű integráció a Szolgáltatástérkép - frissítéskezelés, változáskövetés, biztonsági és ügyfélszolgálat is támogatott. 
 * Leképezni a csoportok és számítógépek kiválasztására vonatkozó beállítás frissítve lett, és már támogatja az előfizetések, erőforráscsoportok, Azure-beli virtuálisgép-méretezési csoportok és a Cloud services.
 * Az Azure Monitor szolgáltatás virtuális gépek térkép nem hozhat létre új Service Map gépcsoportok.  
 
@@ -125,6 +125,12 @@ Fejlesztéseket hajtottunk végre térképhez nagy és összetett konfiguráció
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Miért nem a hálózati diagram a Teljesítmény lapon máshogy néznek ki, mint a hálózati diagram az Azure virtuális gépek – Áttekintés oldalon?
 
 Az Áttekintés oldal egy Azure virtuális gép a gazdagép mérési tevékenység a Vendég virtuális Gépen alapuló diagramot jelenít meg.  A hálózati diagram az Azure virtuális gépek áttekintése a hálózati forgalom, számlázunk csak megjeleníti.  Ez nem tartalmazza a virtuális hálózatok közötti forgalmat.  Az adatok és a virtuális gépek az Azure Monitor látható diagramokat adatait a Vendég virtuális Gépen alapul, és a hálózati diagram, amely a virtuális Gépre, beleértve a virtuális hálózatok közötti kimenő és bejövő összes TCP/IP-forgalmat jeleníti meg.
+
+## <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Hogyan mérik a válaszidő VMConnection tárolja, és a kapcsolat panelen és a munkafüzetekben megjelenő adatokat?
+
+Közelítés elképesztően. Mivel nem alakítsa ki az alkalmazás kódját, hogy nem igazán tudjuk, amikor a kérelem kezdődik, és a válasz érkezésekor. Ehelyett azt vizsgálja meg kapcsolaton keresztül küldött adatok, majd vissza a kapcsolat érkező adatokat. Az ügynök nyomon követi az alábbi küld és fogad és párosítsa őket próbál: sorozata küld, sorozatát követ, kap egy kérés-válasz párosai kerül értelmezésre. Között ezek a műveletek időzítését, a válasz ideje. Ez magában foglalja a késés és a kiszolgáló feldolgozási ideje.
+
+E közelítés jól működik, amelyek a kérelem-válasz alapú protokollok: egyetlen kérelem kerül ki a kapcsolat, és egyetlen válasz érkezik. Ez a helyzet HTTP (S) (nélkül az adatcsatornás feldolgozás), de nem teljesített más protokollokat.
 
 ## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>A korlátozás, ha a Log Analytics ingyenes díjszabással vagyok?
 Ha már konfigurálta az Azure Monitor egy Log Analytics munkaterület használatával a *ingyenes* tarifacsomagban van, az Azure Monitor tartozó virtuális gépek térkép funkció csak öt csatlakoztatott gépek támogatni fogja a munkaterülethez csatlakozik. Ha rendelkezik egy ingyenes munkaterülethez csatlakoztatott öt virtuális gépek, válassza le a virtuális gépek közül, és később fogja összekapcsolni egy új virtuális Gépet, az új virtuális gép nem felügyelt és a térkép oldalon megjelennek.  

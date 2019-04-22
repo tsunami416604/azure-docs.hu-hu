@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b83f5e6735f5b2554af2f5e6c74a7c9095d23fd
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 786ace2ef88fc4b94372041cbdd5bc16586b5193
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579478"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682559"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Gyors útmutató: Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -74,6 +74,7 @@ Válassza a **Hitelesítés** menüt, állítsa be az **Azonosító jogkivonatok
 
 1. Csomagolja ki a zip-fájlt egy helyi mappába a gyökérmappa közelében (például: **C:\Azure-Samples**)
 1. Nyissa meg a megoldást (AppModelv2-WebApp-OpenIDConnect-DotNet.sln) a Visual Studióban.
+1. A Visual Studio verziójától függően szükség lehet a jobb gombbal a projektre a `AppModelv2-WebApp-OpenIDConnect-DotNet` és **visszaállítása NuGet-csomagok**
 1. Szerkessze a **Web.config** fájlt, és cserélje le a `ClientId` és `Tenant` paramétereket az alábbiakkal:
 
     ```xml
@@ -103,7 +104,7 @@ Az ASP.NET-ben az OpenID Connecttel végzett, cookie-alapú hitelesítési folya
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
 Install-Package Microsoft.Owin.Security.Cookies
-Install-Package Microsoft.Owin.Host.SystemWeb
+Install-Package Microsoft.Owin.Host.SystemWeb  
 ```
 
 ### <a name="owin-startup-class"></a>OWIN indítási osztály

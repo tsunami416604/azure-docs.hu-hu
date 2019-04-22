@@ -1,7 +1,7 @@
 ---
 title: Modell értelmezhetősége
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használható az Azure Machine Learning e SDK annak magyarázata, hogy miért a modell előrejelzéseket tesz. Használat során betanítási vagy következtetési tudni, hogy a modell előrejelzéseket tesz.
+description: Megtudhatja, hogyan annak magyarázata, hogy miért a modell lehetővé teszi az Azure Machine Learning e SDK használatával készíthet előrejelzéseket. Használat során betanítási vagy következtetési tudni, hogy a modell előrejelzéseket tesz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 04/09/2019
-ms.openlocfilehash: fbcafb61ecd69f58bb3c14d1b15f36f1b21f2833
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 668551603dfa2a9c42f4538fd9a66ee646e1feb7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494440"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682457"
 ---
-# <a name="azure-machine-learning-interpretability-sdk"></a>Az Azure Machine Learning-e SDK
+# <a name="model-interpretability-with-azure-machine-learning-service"></a>Modell-e az Azure Machine Learning szolgáltatással
 
 Ebben a cikkben, megtudhatja, hogyan annak magyarázata, hogy miért a modell készült-e az előrejelzés elavulttá tette az Azure Machine Learning e SDK használatával. A modell azt ismertetik, hogy fontos a következő okok miatt:
 
@@ -25,9 +25,10 @@ Ebben a cikkben, megtudhatja, hogyan annak magyarázata, hogy miért a modell k�
 * Értenie az adatokhoz, mint szeretné megismerni **lekérdezése a modell a háttérismeretek**. Szükség lehet tájékozott döntést az eszközök **a modell fejlesztéséhez**.
 * Vállalati, ismernie kell **viselkedését a modell a különböző disztribúciók bemeneti** és **hogyan fogja a modell viselkednek meghatározott bevitel elemzése közben**.
 
-Machine learning-e fontos gépi tanulási fejlesztési ciklus két fázisban történik: **képzési** idő és **következtetési** idő:
+Machine learning-e fontos gépi tanulási fejlesztési ciklus két fázisban történik: 
 
 * Során **képzési**: Modell tervezők és értékelők szükséges az érdekelt felek hozhat létre megbízhatósági modell kimenete ismertetik e eszközöket. Is szükségük van a modellbe insights, hogy a modell hibakeresése és megfontoltabb döntéseket hozhat a, hogy a viselkedés megegyezik-e a célokat is. Végül biztosítani kell, hogy a modell nem van-e torzítatlan.
+
 * Során **következtetési**: Előrejelzés kell lennie a személyeknek a modellt használó explainable. Például, miért volt a modell a törlesztés kölcsön megtagadása, vagy előre jelezni, hogy egy befektetési portfólió sorozatéhoz nagyobb eséllyel?
 
 Az Azure Machine Learning e SDK technológiák magában foglalja a Microsoft által kifejlesztett és bevált külső gyártótól származó kódtárakat (például Alakzatadatok és SÁRGÁSZÖLD). Az SDK-t hoz létre egy közös API-t a beépített kódtárak között, és integrálja az Azure Machine Learning-szolgáltatások. Ez az SDK használatával, machine learning-modellek is ismertetik **globálisan az összes adat**, vagy **helyileg, egy adott adatpontot** a legmodernebb technológiák használatával egy könnyen használható és méretezhető módon.
@@ -91,7 +92,7 @@ A beépített intelligencia `TabularExplainer` kifinomultabb fog válni, tovább
 
 Az alábbi ábrán látható a két készletnyi közvetlen és meta explainers közötti kapcsolatot.
 
-[![MTanulási e architektúra achine](./media/machine-learning-interpretability-explainability/interpretability-architecture.png)](./media/machine-learning-interpretability-explainability/interpretability-architecture.png#lightbox)
+[![Machine Learning-e architektúra](./media/machine-learning-interpretability-explainability/interpretability-architecture.png)](./media/machine-learning-interpretability-explainability/interpretability-architecture.png#lightbox)
 
 ### <a name="models-supported"></a>Támogatott modellek
 

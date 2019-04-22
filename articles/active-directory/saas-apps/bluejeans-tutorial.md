@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b22a7a86862f02c3320b7c14cc1ed878a57bd23d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d1c10d9df85b04cf7b8ea7e0020bc8e802a0d5d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901950"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698928"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező BlueJeans
 
@@ -38,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 BlueJeans az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
 * BlueJeans egyszeri bejelentkezéses engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -105,14 +106,16 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés BlueJeans, hajtsa v�
 
 4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![BlueJeans tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-signonurl.png)
+    ![BlueJeans tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<companyname>.BlueJeans.com`
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<companyname>.BlueJeans.com`
+
+    b. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `http://samlsp.bluejeans.com`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [BlueJeans ügyfél-támogatási csapatának](https://support.bluejeans.com/contact) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > A bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [BlueJeans ügyfél-támogatási csapatának](https://support.bluejeans.com/contact) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
@@ -122,7 +125,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés BlueJeans, hajtsa v�
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
@@ -132,11 +135,11 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés BlueJeans, hajtsa v�
 
 2. Lépjen a **rendszergazdai \> CSOPORTBEÁLLÍTÁSOK \> biztonsági**.
 
-    ![Rendszergazdai](./media/bluejeans-tutorial/IC785868.png "rendszergazda")
+    ![Rendszergazdai](./media/bluejeans-tutorial/ic785868.png "rendszergazda")
 
 3. Az a **biztonsági** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Egyszeri bejelentkezési SAML](./media/bluejeans-tutorial/IC785869.png "SAML egyszeri bejelentkezés")
+    ![Egyszeri bejelentkezési SAML](./media/bluejeans-tutorial/ic785869.png "SAML egyszeri bejelentkezés")
 
     a. Válassza ki **egyszeri bejelentkezési SAML**.
 
@@ -144,7 +147,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés BlueJeans, hajtsa v�
 
 4. Helyezze az alábbi lépéseket követve:
 
-    ![Tanúsítvány-elérési út](./media/bluejeans-tutorial/IC785870.png "tanúsítvány elérési útja")
+    ![Tanúsítvány-elérési út](./media/bluejeans-tutorial/ic785870.png "tanúsítvány elérési útja")
 
     a. Kattintson a **fájl kiválasztása**, töltse fel az base-64 kódolású tanúsítványt, az Azure Portalról letöltött.
 
@@ -156,7 +159,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés BlueJeans, hajtsa v�
 
 5. Helyezze az alábbi lépéseket követve:
 
-    ![Módosítások mentése](./media/bluejeans-tutorial/IC785874.png "módosítások mentése")
+    ![Módosítások mentése](./media/bluejeans-tutorial/ic785874.png "módosítások mentése")
 
     a. Az a **felhasználóazonosító** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
@@ -182,8 +185,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be `brittasimon\@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
@@ -225,18 +227,18 @@ Ez a szakasz célja BlueJeans Britta Simon nevű felhasználó létrehozásához
 
 2. Lépjen a **rendszergazdai \> felhasználók kezelése \> felhasználó hozzáadása**.
 
-    ![Rendszergazdai](./media/bluejeans-tutorial/IC785877.png "rendszergazda")
+    ![Rendszergazdai](./media/bluejeans-tutorial/ic785877.png "rendszergazda")
 
-    >[!IMPORTANT]
-    >A **felhasználó hozzáadása** lap csak akkor érhető el, ha az a **biztonsági lapon**, **automatikus kiépítés engedélyezése** nincs bejelölve. 
+    > [!IMPORTANT]
+    > A **felhasználó hozzáadása** lap csak akkor érhető el, ha az a **biztonsági lapon**, **automatikus kiépítés engedélyezése** nincs bejelölve.
 
 3. Az a **felhasználó hozzáadása** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![Felhasználó hozzáadása](./media/bluejeans-tutorial/IC785886.png "felhasználó hozzáadása")
+    ![Felhasználó hozzáadása](./media/bluejeans-tutorial/ic785886.png "felhasználó hozzáadása")
 
     a. A **Utónév** szöveget adja meg például a felhasználó utónevét **Britta**.
 
-    b. A **Vezetéknév** szöveget adja meg például a felhasználó vezetékneve **simon**.
+    b. A **Vezetéknév** szöveget adja meg például a felhasználó vezetékneve **Simon**.
 
     c. A **BlueJeans felhasználónevet válasszon** szöveget adja meg például a felhasználó felhasználóneve **Brittasimon**
 
@@ -244,7 +246,7 @@ Ez a szakasz célja BlueJeans Britta Simon nevű felhasználó létrehozásához
 
     e. A **vállalati** szöveget adja meg a vállalati.
 
-    f. A **E-mail cím** szöveget adja meg az e-mailt, például a felhasználó **brittasimon\@contoso.com**.
+    f. A **E-mail cím** szöveget adja meg az e-mailt, például a felhasználó `brittasimon\@contoso.com`.
 
     g. A **hozzon létre egy BlueJeans értekezlet i.** szöveget adja meg az értekezlet azonosítóját.
 
@@ -252,7 +254,7 @@ Ez a szakasz célja BlueJeans Britta Simon nevű felhasználó létrehozásához
 
     i. Kattintson a **FOLYTATÁS**.
 
-    ![Felhasználó hozzáadása](./media/bluejeans-tutorial/IC785887.png "felhasználó hozzáadása")
+    ![Felhasználó hozzáadása](./media/bluejeans-tutorial/ic785887.png "felhasználó hozzáadása")
 
     J. Kattintson a **felhasználó hozzáadása**.
 
@@ -272,4 +274,3 @@ Ha a hozzáférési panelen a BlueJeans csempére kattint, meg kell lehet automa
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

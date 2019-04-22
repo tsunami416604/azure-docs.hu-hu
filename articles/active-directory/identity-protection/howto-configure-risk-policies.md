@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbc2a1bd8b751ab1b88e54876227892ea3c257a3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cdacdf604ab7a4ded7ddf302a217084630f60b31
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517538"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699031"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>kézikönyv: Kockázati szabályzatainak konfigurálása az Azure Active Directory identity protection (frissítve)
 
@@ -41,7 +41,8 @@ Azure ad-ben elemzi az egyes bejelentkezési felhasználói. Az elemzés célja,
 
 A bejelentkezési kockázati házirend egy automatikus válasz egy konkrét bejelentkezési kockázati szint konfigurálható. A válaszban az erőforrásokhoz való hozzáférés letiltása, vagy átadja a többtényezős hitelesítés (MFA) kihívást eléréséhez szükséges.
 
-   
+Amikor egy felhasználó sikeresen elvégzi az MFA-kérést a bejelentkezési kockázati szabályzat által aktivált, Identity Protection által a bejelentkezéshez származik-e a megbízható felhasználói visszajelzéseket biztosít. Így a bejelentkezési kockázati esemény, amely kiváltotta a többtényezős hitelesítés használatával automatikusan lezárul, és Identity Protection megakadályozza, hogy ez az esemény hozzájárul a jogok kiterjesztését felhasználó kockázati. A bejelentkezési kockázati házirend engedélyezése csökkentheti a kockázatos bejelentkezések nézetben noisiness önálló javítása, amikor a rendszer kéri a multi-factor Authentication a felhasználók, és ezt követően automatikusan bezárja a társított kockázatos bejelentkezés.
+
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Hogyan érhetem el a bejelentkezési kockázati házirend?
    
 A bejelentkezési kockázati házirend van a **konfigurálása** szakaszában a [Azure AD Identity Protection lapról](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).

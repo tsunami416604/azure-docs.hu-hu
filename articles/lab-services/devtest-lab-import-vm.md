@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 4585d151e286917c67586a02539a10ade32bdd4c
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9d5b7f32cb298315a5816562f548bcdafbdeb5cf
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094529"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682308"
 ---
 # <a name="import-vms-from-another-lab-in-azure-devtest-labs"></a>Virtuális gépek importálhat egy másik tesztlabor az Azure DevTest Labs szolgáltatásban
 Az Azure DevTest Labs szolgáltatás jelentős mértékben javítja a virtuális gépek (VM) a fejlesztési és tesztelési tevékenységek felügyeletét. Lehetővé teszi, hogy a virtuális gép áthelyezése egy tesztkörnyezet között, a csapat vagy infrastruktúra-követelmények változnak. Az alábbiakban néhány gyakori forgatókönyvet, ahol előfordulhat, hogy ehhez szükség: 
@@ -42,7 +42,7 @@ Ezenkívül, hogy a virtuális gép importálása egy tesztkörnyezet egy másik
 Jelenleg importálhatja egy virtuális Gépet egy tesztkörnyezet egy másik kizárólag az Azure PowerShell és REST API használatával.
 
 ### <a name="use-powershell"></a>A PowerShell használata
-A PowerShell-parancsfájlt a ImportVirtualMachines.ps1 fájl letöltése [Azure DevTest Lab Git-tárház](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImportVirtualMachines) helyi meghajtójára. 
+A PowerShell-parancsfájlt a ImportVirtualMachines.ps1 fájl letöltése [Azure DevTest Lab Git-tárház](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines) helyi meghajtójára. 
 
 #### <a name="import-a-single-vm"></a>Egyetlen virtuális gép importálása
 Futtassa a ImportVirtualMachines.ps1 cél labor importálja a forrás labor egyetlen virtuális Gépet. Megadhatja, hogy egy új nevet a virtuális gép, amely használatával a DestinationVirtualMachineName paramer másolásakor. 

@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: 0f50ecb086b45cffb4ff27135a26f962c92926bf
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: baa2a09adeba133c5348449b12e037d4a9cb3213
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434461"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683031"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Az Azure DNS-mérőszámok és riasztások
 Az Azure DNS DNS-tartományok egy üzemeltetési szolgáltatás, amely a Microsoft Azure infrastruktúráját használja a névfeloldás. Ez a cikk azt ismerteti, metrikákkal és riasztásokkal az Azure DNS szolgáltatás.
 
 ## <a name="azure-dns-metrics"></a>Az Azure DNS-mérőszámok
 
-Az Azure DNS mérőszámait, és lehetővé teszi adott monitorozhatja azokat a szolgáltatásban üzemeltetett DNS-ügyfelek számára. Emellett az Azure DNS metrikákkal, konfigurálhat és kaphat riasztásokat a lényeges feltételek alapján. A metrikákat keresztül a [Azure Monitor szolgáltatásban](../azure-monitor/index.yml). Az Azure DNS a DNS-zónák az Azure monitoron keresztül a következő metrikákat biztosítja:
+Az Azure DNS mérőszámait és azok a szolgáltatásban üzemeltetett DNS-zónák konkrét elemeit figyelése lehetővé teszi az ügyfelek számára. Emellett az Azure DNS metrikákkal, konfigurálhat és kaphat riasztásokat a lényeges feltételek alapján. A metrikákat keresztül a [Azure Monitor szolgáltatásban](../azure-monitor/index.yml). Az Azure DNS a DNS-zónák az Azure monitoron keresztül a következő metrikákat biztosítja:
 
 -   QueryVolume
 -   RecordSetCount
@@ -40,7 +40,9 @@ A következő metrikákhoz dimenzió részletes szintje DNS-zónát.
 
 ### <a name="query-volume"></a>Lekérdezés kötet
 
-A *lekérdezés kötet* metrika az Azure DNS a DNS-zóna Azure DNS által fogadott DNS-lekérdezések (lekérdezés-forgalom) mennyiségét mutatja. A mértékegységet száma és az összesítés a időn keresztül fogadott összes lekérdezés az összes. Ez a metrika megtekintéséhez jelölje ki a figyelő lapon, az Azure Portalon (előzetes verzió) felületen. Válassza ki a DNS-zónát az erőforrás legördülő listából válassza ki a lekérdezés mennyiségi mérőszám, válassza ki a Sum, az összesítés. Az alábbi képernyőfelvétel egy példa látható.  További információk a Metrikaböngésző élményt és diagramkészítési, lásd: [Azure Monitor Metrikaböngészőjének](../azure-monitor/platform/metrics-charts.md).
+A *lekérdezés kötet* metrika az Azure DNS a DNS-zóna Azure DNS által fogadott DNS-lekérdezések (lekérdezés-forgalom) mennyiségét mutatja. A mértékegységet száma és az összesítés a időn keresztül fogadott összes lekérdezés az összes. 
+
+Ez a metrika megtekintéséhez jelölje ki a figyelő lapon, az Azure Portalon (előzetes verzió) felületen. Válassza ki a DNS-zónát az erőforrás legördülő listából válassza ki a lekérdezés mennyiségi mérőszám, válassza ki a Sum, az összesítés. Az alábbi képernyőfelvétel egy példa látható.  További információk a Metrikaböngésző élményt és diagramkészítési, lásd: [Azure Monitor Metrikaböngészőjének](../azure-monitor/platform/metrics-charts.md).
 
 ![Lekérdezés kötet](./media/dns-alerts-metrics/dns-metrics-query-volume.png)
 
@@ -54,7 +56,7 @@ A *beállítása rekordszám* metrika számát jeleníti meg a rekordhalmazok az
 *Ábra: Az Azure DNS-rekord beállítása száma metrikák*
 
 
-### <a name="record-set-capacity-utilization"></a>Rekordhalmaz-kapacitás használata
+### <a name="record-set-capacity-utilization"></a>Record Set Capacity Utilization
 A *rekord beállítása tárolókapacitás kihasználtságát* az Azure DNS-ben a mérőszám tartalmazza. a DNS-zónák az rekordhalmaz-kapacitás kihasználását. Az Azure DNS minden DNS-zóna van egy rekordhalmaz korlátozás, amely meghatározza a zónában engedélyezett rekordhalmazok maximális számát (lásd: [DNS korlátok](dns-zones-records.md#limits)). Ezért ez a metrika bemutatja, hogyan zárja be, amelyek a rekordhalmaz korlát lenyomásával. Például ha 500 rekordhalmazok konfigurálva a DNS-zónát, és a zóna korlátja az alapértelmezett rekordhalmaz 5000-es, a RecordSetCapacityUtilization metrika jelennek meg az érték 10 %-os (amely 5000 elválasztó 500 által előállított,). A Mértékegység **százalékos** és a **összesítési** típus **maximális**. Ez a metrika megtekintéséhez jelölje ki a figyelő lapon, az Azure Portalon (előzetes verzió) felületen. A DNS-zóna az erőforrás legördülő listából, válassza ki a rekord beállítása kapacitás Utilization metrika válassza ki és a maximális, az összesítést. Az alábbi képernyőfelvétel egy példa látható. További információk a Metrikaböngésző élményt és diagramkészítési, lásd: [Azure Monitor Metrikaböngészőjének](../azure-monitor/platform/metrics-charts.md). 
 
 ![Rekord beállítása száma](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)

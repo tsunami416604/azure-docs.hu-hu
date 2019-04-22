@@ -2,19 +2,19 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 01/07/2019
+ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: c7e5231650ec1afb97a72ec0cf26cb8f80088b63
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a8070d25e2606d8ad72ac231a0a208072c612c5c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440445"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737118"
 ---
 Az utolsó lépés az eszköz szállításának előkészítése. Ebben a lépésben az összes eszközmegosztást offline állapotba helyezi. Ez a folyamat elindítását követően, a megosztások nem érhetők el.
 
 > [!IMPORTANT]
-> Szállításra való szükség, ahogy azt a megőrzendő tartalomként jelöli, amely nem felel meg az Azure elnevezési konvencióinak adatokat. Ez a lépés kihagyása lehetséges adatokat eredményez is feltölthet hibák miatt nem megerősítése adatokat.
+> Szállításra való szükség, ahogy azt a megőrzendő tartalomként jelöli, amely nem felel meg az Azure elnevezési konvencióinak adatokat. Ez a lépés kihagyása lehetséges adatokat eredményez is feltölthet hibák miatt nem megfelelő adatokat.
 
 1. Lépjen a **Prepare to ship** (Szállításra való előkészítés) oldalra, majd kattintson a **Start preparation** (Előkészítés indítása) elemre. Alapértelmezés szerint az ellenőrzőösszegek kiszámítására beágyazva, a szállítás előkészítése során kerül sor. Az ellenőrzőösszeg kiszámítása órát is igénybe vehet attól függően, hogy az adatok mérete nap. 
    

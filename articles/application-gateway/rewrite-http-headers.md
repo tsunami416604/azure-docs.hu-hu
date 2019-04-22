@@ -7,21 +7,23 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/11/2019
 ms.author: absha
-ms.openlocfilehash: efb7b46919066beb1382d70b676a2115ea0fb8ac
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 20c484779e7ffe74ae01e33472b4cf8761d81b66
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544146"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682680"
 ---
-# <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>HTTP-fejlécek átfogalmazás az Application Gateway (nyilvános előzetes verzió)
+# <a name="rewrite-http-headers-with-application-gateway"></a>Az Application Gateway HTTP-fejlécek újraírása
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-HTTP-fejlécek engedélyezése az ügyfél és a kiszolgáló át a kérelem vagy válasz további információkat. A HTTP-fejlécek újraírását segítségével számos fontos forgatókönyv például a biztonsági fejléc mezőket is, például HSTS elvégzéséhez / X-XSS-védelmet, válaszfejléc eltávolítása mezők, amelyek felfedhet bizalmas adatokat, a sztrippelő port adatai X-továbbított – a fejlécek, és így tovább. Az Application gateway támogatja a funkció hozzá, távolíthatja el vagy frissítse a HTTP-kérelmek és válaszfejlécek történt a kérés és válasz-csomagok áthelyezése az ügyfél és a háttérkiszolgáló készletek között. Azt is lehetővé teszi az Ön adja meg annak érdekében, hogy csak bizonyos feltételek teljesülése esetén, a rendszer a megadott fejlécek újraírja feltételeket.
+HTTP-fejlécek engedélyezése az ügyfél és a kiszolgáló át a kérelem vagy válasz további információkat. A HTTP-fejlécek újraírását segítségével számos fontos forgatókönyv például a biztonsági fejléc mezőket is, például HSTS elvégzéséhez / X-XSS-védelem válaszfejléc eltávolítása mezők, amelyek felfedhet bizalmas adatokat, távolítsa el adatait X-továbbított – a fejlécek, és így tovább. Az Application gateway támogatja a funkció hozzá, távolíthatja el vagy frissítse a HTTP-kérelmek és válaszfejlécek történt a kérés és válasz-csomagok áthelyezése az ügyfél és a háttérkiszolgáló készletek között. Ez lehetővé teszi a, adja meg annak érdekében, hogy csak bizonyos feltételek teljesülése esetén, a rendszer a megadott fejlécek újraírja feltételeket. A funkció is támogatja több [kiszolgálói változók](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) ami segít a kérelmek és válaszok, ezáltal lehetővé téve, hogy a nagy teljesítményű újraírási szabályok kapcsolatos további információk tárolására.
 > [!NOTE]
 >
 > A HTTP-fejléc újraírási támogatás érhető el csak a [új Termékváltozat [Standard_V2\]](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
+
+![A fejlécek újraírását](media/rewrite-http-headers/rewrite-headers.png)
 
 ## <a name="headers-supported-for-rewrite"></a>A fejlécek esetében támogatott újraírása
 
@@ -35,7 +37,7 @@ Egy vagy több feltételek teljesülése esetén csak a feltételek kiértékel�
 - A válasz HTTP-fejlécek
 - Application gateway kiszolgálói változók
 
-Egy feltétel segítségével kiértékelheti, hogy a megadott változó megtalálható, hogy a megadott változó pontosan egy adott érték, vagy ha a megadott változó pontosan egy adott minta-e. [Perl kompatibilis reguláris kifejezések (PCRE) könyvtár](https://www.pcre.org/) Reguláriskifejezés-mintának megfelelő feltételeiben végrehajtására szolgál. A reguláris kifejezési szintaxist kapcsolatos további információkért tekintse meg a [Perl reguláris kifejezések ember lap](http://perldoc.perl.org/perlre.html).
+Egy feltétel segítségével kiértékelheti, hogy a megadott változó megtalálható, hogy a megadott változó pontosan egy adott érték, vagy ha a megadott változó pontosan egy adott minta-e. [Perl kompatibilis reguláris kifejezések (PCRE) könyvtár](https://www.pcre.org/) Reguláriskifejezés-mintának megfelelő feltételeiben végrehajtására szolgál. A reguláris kifejezési szintaxist kapcsolatos további információkért tekintse meg a [Perl reguláris kifejezések ember lap](https://perldoc.perl.org/perlre.html).
 
 ## <a name="rewrite-actions"></a>Műveletek újraírása
 
@@ -124,6 +126,18 @@ A probléma megoldhatók az eszköznév beállítása az application gateway tar
 Számos biztonsági rések lehet meghatározni a kérelem-válasz szükséges fejlécek alkalmazásával. Biztonsági fejléc ezek némelyike X-XSS-védelem, a Strict-átviteli-biztonság, a tartalom-Security-házirend, stb. Az application gateway segítségével állítsa be ezeket a fejléceket minden jelöli.
 
 ![Biztonsági fejléc](media/rewrite-http-headers/security-header.png)
+
+### <a name="delete-unwanted-headers"></a>Törölje a nem kívánt fejlécek
+
+Előfordulhat, hogy el kívánja távolítani ezeket a fejléceket, a HTTP-válasz, amelyek feltárják a bizalmas adatokat, például a háttér-kiszolgáló nevét, operációs rendszer, a szalagtár adatait és stb. Az application gateway segítségével távolítsa el ezeket.
+
+![Fejléc törlése](media/rewrite-http-headers/remove-headers.png)
+
+### <a name="check-presence-of-a-header"></a>Fejléc meglétének ellenőrzése
+
+A HTTP- kérés fejlécében vagy kiszolgálói változó meglétének fejléc ki. Ez akkor hasznos, ha szeretne egy fejléc újraírási csak akkor végre egy bizonyos fejlécben megtalálható.
+
+![Fejléc meglétének ellenőrzése](media/rewrite-http-headers/check-presence.png)
 
 ## <a name="limitations"></a>Korlátozások
 

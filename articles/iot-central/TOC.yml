@@ -1,154 +1,147 @@
-items:
 - name: Azure IoT Central dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi az az Azure IoT Central?
-    href: overview-iot-central.md
-  - name: Az IoT-megoldás beállításai
-    href: overview-iot-options.md
-  - name: Felhasználói felület bemutatása
-    href: overview-iot-central-tour.md
+    - name: Mi az az Azure IoT Central?
+      href: overview-iot-central.md
+    - name: Az IoT-megoldás beállításai
+      href: overview-iot-options.md
+    - name: Felhasználói felület bemutatása
+      href: overview-iot-central-tour.md
 - name: Gyors útmutatók
-  items:
-  - name: Új alkalmazás létrehozása
-    href: quick-deploy-iot-central.md
   expanded: true
+  items:
+    - name: Új alkalmazás létrehozása
+      href: quick-deploy-iot-central.md
 - name: Oktatóanyagok
   items:
-  - name: 1 – Új eszköztípus megadása
-    href: tutorial-define-device-type.md
-  - name: 2 – Szabályok konfigurálása
-    href: tutorial-configure-rules.md
-  - name: 3 – Operátori nézet testreszabása
-    href: tutorial-customize-operator.md
-  - name: 4 – Eszközök monitorozása
-    href: tutorial-monitor-devices.md
-  - name: 5 – Eszköz hozzáadása
-    href: tutorial-add-device.md
+    - name: 1 – Új eszköztípus megadása
+      href: tutorial-define-device-type.md
+    - name: 2 – Szabályok konfigurálása
+      href: tutorial-configure-rules.md
+    - name: 3 – Operátori nézet testreszabása
+      href: tutorial-customize-operator.md
+    - name: 4 – Eszközök monitorozása
+      href: tutorial-monitor-devices.md
+    - name: 5 – Eszköz hozzáadása
+      href: tutorial-add-device.md
 - name: Alapelvek
   items:
-  - name: Architektúra
-    href: concepts-architecture.md
-  - name: Kapcsolatok
-    href: concepts-connectivity.md
+    - name: Architektúra
+      href: concepts-architecture.md
+    - name: Kapcsolatok
+      href: concepts-connectivity.md
 - name: Útmutatók
   items:
-  - name: Eszközök csatlakoztatása
-    items:
-    - name: Eszköz kapcsolati sztringjének előállítása
-      href: howto-generate-connection-string.md
-    - name: Node.js (általános) alkalmazás előkészítése és csatlakoztatása
-      href: howto-connect-nodejs.md
-    - name: MXChip IoT DevKit előkészítése és csatlakoztatása
-      href: howto-connect-devkit.md
-    - name: Raspberry Pi (Python) előkészítése és csatlakoztatása
-      href: howto-connect-raspberry-pi-python.md
-    - name: Raspberry Pi (C#) előkészítése és csatlakoztatása
-      href: howto-connect-raspberry-pi-csharp.md
-    - name: Windows IoT Core eszköz előkészítése és csatlakoztatása
-      href: howto-connect-windowsiotcore.md
-    - name: Eszközkapcsolatok monitorozása parancssor használatával
-      href: howto-use-iotc-explorer.md
-  - name: Eszközök kezelése
-    items:
-    - name: Eszközsablon beállítása
-      href: howto-set-up-template.md
-    - name: Eszközök kezelése
-      href: howto-manage-devices.md
-    - name: Feladat futtatása
-      href: howto-run-a-job.md
-    - name: Használatos eszközök készletei
-      href: howto-use-device-sets.md
-    - name: Verzióeszköz-sablon
-      href: howto-version-devicetemplate.md
-  - name: Figyelés és elemzés
-    items:
-    - name: Telemetriaszabály létrehozása
-      href: howto-create-telemetry-rules.md
-    - name: Eseményszabály létrehozása
-      href: howto-create-event-rules.md
-    - name: Eszközadatok elemzése
-      href: howto-create-analytics.md
-  - name: Műveletek és bővíthetőség
-    items:
-    - name: Több művelet csoportosítása szabályokon
-      href: howto-use-action-groups.md
-    - name: Webhookműveletek létrehozása szabályokon
-      href: howto-create-webhooks.md
-    - name: Folyamatok létrehozása a Microsoft Flow-ban
-      href: howto-add-microsoft-flow.md
-    - name: Munkafolyamatok létrehozása az Azure Logic Appsben
-      href: howto-build-azure-logic-apps.md
-    - name: Az Azure Functions aktiválása
-      href: howto-trigger-azure-functions.md
-    - name: Az adatok exportálása
+    - name: Eszközök csatlakoztatása
       items:
-      - name: Exportálás az Event Hubsba és a Service Busba
-        href: howto-export-data-event-hubs-service-bus.md
-      - name: Exportálás a Blob Storage-ba
-        href: howto-export-data-blob-storage.md
-    - name: Adatok vizualizációja a Power BI-ban
-      href: howto-connect-powerbi.md
-    - name: Más IoT-felhők csatlakoztatása
-      href: howto-build-iotc-device-bridge.md
-  - name: Adminisztráció
-    items:
-    - name: Alkalmazás felügyelése
-      href: howto-administer.md
-    - name: Kép előkészítése és feltöltése
-      href: howto-prepare-images.md
-    - name: Kezelés az Azure Portalról
-      href: howto-manage-iot-central-from-portal.md
-    - name: Kezelés az Azure CLI-ből
-      href: howto-manage-iot-central-from-cli.md
-    - name: Kezelés az Azure PowerShellből
-      href: howto-manage-iot-central-from-powershell.md
-    - name: Alkalmazás létrehozása és kezelése CSP-ként
-      href: howto-create-and-manage-applications-as-CSP.md
-    - name: Az alkalmazás irányítópultjának konfigurálása
-      href: howto-configure-homepage.md
-  - name: Személyre szabás
-    items:
-    - name: Saját irányítópultok létrehozása
-      href: howto-personalize-dashboard.md
-    - name: Beállítások kezelése
-      href: howto-manage-preferences.md
+        - name: Eszköz kapcsolati sztringjének előállítása
+          href: howto-generate-connection-string.md
+        - name: Node.js (általános) alkalmazás előkészítése és csatlakoztatása
+          href: howto-connect-nodejs.md
+        - name: MXChip IoT DevKit előkészítése és csatlakoztatása
+          href: howto-connect-devkit.md
+        - name: Raspberry Pi (Python) előkészítése és csatlakoztatása
+          href: howto-connect-raspberry-pi-python.md
+        - name: 'Raspberry Pi (C#) előkészítése és csatlakoztatása'
+          href: howto-connect-raspberry-pi-csharp.md
+        - name: Windows IoT Core eszköz előkészítése és csatlakoztatása
+          href: howto-connect-windowsiotcore.md
+        - name: Eszközkapcsolatok monitorozása parancssor használatával
+          href: howto-use-iotc-explorer.md
+    - name: Eszközök kezelése
+      items:
+        - name: Eszközsablon beállítása
+          href: howto-set-up-template.md
+        - name: Eszközök kezelése
+          href: howto-manage-devices.md
+        - name: Feladat futtatása
+          href: howto-run-a-job.md
+        - name: Használatos eszközök készletei
+          href: howto-use-device-sets.md
+        - name: Verzióeszköz-sablon
+          href: howto-version-devicetemplate.md
+    - name: Figyelés és elemzés
+      items:
+        - name: Telemetriaszabály létrehozása
+          href: howto-create-telemetry-rules.md
+        - name: Eseményszabály létrehozása
+          href: howto-create-event-rules.md
+        - name: Eszközadatok elemzése
+          href: howto-create-analytics.md
+    - name: Műveletek és bővíthetőség
+      items:
+        - name: Több művelet csoportosítása szabályokon
+          href: howto-use-action-groups.md
+        - name: Webhookműveletek létrehozása szabályokon
+          href: howto-create-webhooks.md
+        - name: Folyamatok létrehozása a Microsoft Flow-ban
+          href: howto-add-microsoft-flow.md
+        - name: Munkafolyamatok létrehozása az Azure Logic Appsben
+          href: howto-build-azure-logic-apps.md
+        - name: Az Azure Functions aktiválása
+          href: howto-trigger-azure-functions.md
+        - name: Az adatok exportálása
+          items:
+            - name: Exportálás az Event Hubsba és a Service Busba
+              href: howto-export-data-event-hubs-service-bus.md
+            - name: Exportálás a Blob Storage-ba
+              href: howto-export-data-blob-storage.md
+        - name: Adatok vizualizációja a Power BI-ban
+          href: howto-connect-powerbi.md
+        - name: Más IoT-felhők csatlakoztatása
+          href: howto-build-iotc-device-bridge.md
+    - name: Adminisztráció
+      items:
+        - name: Alkalmazás felügyelése
+          href: howto-administer.md
+        - name: Kép előkészítése és feltöltése
+          href: howto-prepare-images.md
+        - name: Kezelés az Azure Portalról
+          href: howto-manage-iot-central-from-portal.md
+        - name: Kezelés az Azure CLI-ből
+          href: howto-manage-iot-central-from-cli.md
+        - name: Kezelés az Azure PowerShellből
+          href: howto-manage-iot-central-from-powershell.md
+        - name: Alkalmazás létrehozása és kezelése CSP-ként
+          href: howto-create-and-manage-applications-as-CSP.md
+        - name: Az alkalmazás irányítópultjának konfigurálása
+          href: howto-configure-homepage.md
+    - name: Személyre szabás
+      items:
+        - name: Saját irányítópultok létrehozása
+          href: howto-personalize-dashboard.md
+        - name: Beállítások kezelése
+          href: howto-manage-preferences.md
 - name: Kapcsolódó témakörök
   items:
-  - name: Megoldások
-    items:
-    - name: IoT-megoldásgyorsítók
-      href: /azure/iot-suite
-    - name: IoT-központ
-      href: /microsoft-iot-central
-  - name: Platformszolgáltatások
-    items:
-    - name: IoT Hub
-      href: /azure/iot-hub
-    - name: IoT Hub Device Provisioning Service
-      href: /azure/iot-dps
-    - name: Location Based Services
-      href: /azure/location-based-services
-    - name: Szolgáltatási SDK-k
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
-    - name: Time Series Insights
-      href: /azure/time-series-insights
-  - name: Edge
-    items:
-    - name: IoT Edge
-      href: /azure/iot-edge
-    - name: IoT eszközoldali SDK-k
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+    - name: Megoldások
+      items:
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-suite
+        - name: IoT-központ
+          href: /microsoft-iot-central
+    - name: Platformszolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: Szolgáltatási SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT eszközoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: További források
   items:
-  - name: Ügyfelek adatkérései
-    href: iot-central-customer-data-requests.md
-  - name: Támogatott böngészők
-    href: iot-central-supported-browsers.md
-ms.openlocfilehash: 277b1ca0a239bddc02ca32d93ca1ffebbf542240
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59425899"
+    - name: Ügyfelek adatkérései
+      href: iot-central-customer-data-requests.md
+    - name: Támogatott böngészők
+      href: iot-central-supported-browsers.md

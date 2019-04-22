@@ -1,223 +1,216 @@
-items:
 - name: Az Azure Maps dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi az Azure Maps?
-    href: about-azure-maps.md
+    - name: Mi az Azure Maps?
+      href: about-azure-maps.md
 - name: Gyors útmutatók
   items:
-  - name: Webalkalmazás létrehozása
-    href: quick-demo-map-app.md
+    - name: Webalkalmazás létrehozása
+      href: quick-demo-map-app.md
 - name: Oktatóanyagok
   items:
-  - name: Webes SDK – oktatóanyagok
-    items:
-    - name: Hasznos hely keresése
-      href: tutorial-search-location.md
-    - name: Útvonal egy adott úti célhoz
-      href: tutorial-route-location.md
-    - name: Több útvonal utazási mód alapján
-      href: tutorial-prioritized-routes.md
-    - name: Tárolólokátor létrehozása
-      href: tutorial-create-store-locator.md
-  - name: REST API – oktatóanyagok
-    items:
-    - name: Geokerítés beállítása
-      href: tutorial-geofence.md
+    - name: Webes SDK – oktatóanyagok
+      items:
+        - name: Hasznos hely keresése
+          href: tutorial-search-location.md
+        - name: Útvonal egy adott úti célhoz
+          href: tutorial-route-location.md
+        - name: Több útvonal utazási mód alapján
+          href: tutorial-prioritized-routes.md
+        - name: Tárolólokátor létrehozása
+          href: tutorial-create-store-locator.md
+    - name: REST API – oktatóanyagok
+      items:
+        - name: Geokerítés beállítása
+          href: tutorial-geofence.md
 - name: Alapelvek
   items:
-  - name: Hitelesítés az Azure Maps használatával
-    href: azure-maps-authentication.md
-  - name: Az Azure Maps Event Grid-integrációja
-    href: azure-maps-event-grid-integration.md
-  - name: A megfelelő tarifacsomag kiválasztása
-    href: choose-pricing-tier.md
-  - name: Lefedettség
-    items:
-    - name: Geokódolás lefedettsége
-      href: geocoding-coverage.md
-    - name: Forgalmi lefedettség
-      href: traffic-coverage.md
-    - name: Megjelenítési lefedettség
-      href: render-coverage.md
-    - name: Útválasztási lefedettség
-      href: routing-coverage.md
-  - name: Támogatott nyelvek
-    href: supported-languages.md
-  - name: Támogatott térképstílusok
-    href: supported-map-styles.md
-  - name: A webes SDK által támogatott böngészők
-    href: supported-browsers.md
-  - name: Nagyítási szintek és csemperács
-    href: zoom-levels-and-tile-grid.md
+    - name: Hitelesítés az Azure Maps használatával
+      href: azure-maps-authentication.md
+    - name: Az Azure Maps Event Grid-integrációja
+      href: azure-maps-event-grid-integration.md
+    - name: A megfelelő tarifacsomag kiválasztása
+      href: choose-pricing-tier.md
+    - name: Lefedettség
+      items:
+        - name: Geokódolás lefedettsége
+          href: geocoding-coverage.md
+        - name: Forgalmi lefedettség
+          href: traffic-coverage.md
+        - name: Megjelenítési lefedettség
+          href: render-coverage.md
+        - name: Útválasztási lefedettség
+          href: routing-coverage.md
+    - name: Támogatott nyelvek
+      href: supported-languages.md
+    - name: Támogatott térképstílusok
+      href: supported-map-styles.md
+    - name: A webes SDK által támogatott böngészők
+      href: supported-browsers.md
+    - name: Nagyítási szintek és csemperács
+      href: zoom-levels-and-tile-grid.md
 - name: Útmutatók
   items:
-  - name: Maps-fiókok kezelése
-    items:
-    - name: Fiókok kezelése
-      href: how-to-manage-account-keys.md
-    - name: Hitelesítés kezelése
-      href: how-to-manage-authentication.md
-    - name: Tarifacsomag kezelése
-      href: how-to-manage-pricing-tier.md
-    - name: Használati metrikák megtekintése
-      href: how-to-view-api-usage.md
-  - name: Térképadatok lekérése REST API-kból
-    items:
-    - name: Cím keresése
-      href: how-to-search-for-address.md
-    - name: Ajánlott keresési eljárások
-      href: how-to-use-best-practices-for-search.md
-    - name: Egyéni adatok megjelenítése statikus térképen
-      href: how-to-render-custom-data.md
-  - name: Fejlesztés a webes SDK-val
-    items:
-    - name: Térképvezérlő
+    - name: Maps-fiókok kezelése
       items:
-      - name: A térkép vezérlőelem használata
-        href: how-to-use-map-control.md
-      - name: Térkép létrehozása
-        href: map-create.md
-      - name: Térképstílus kiválasztása
-        href: choose-map-style.md
-      - name: Vezérlőelemek hozzáadása a térképhez
-        href: map-add-controls.md
-      - name: Szimbólumréteg hozzáadása
-        href: map-add-pin.md
-      - name: Előugró ablak hozzáadása
-        href: map-add-popup.md
-      - name: Buborékréteg hozzáadása
-        href: map-add-bubble-layer.md
-      - name: Alakzatok hozzáadása
-        href: map-add-shape.md
-      - name: Hőtérképréteg hozzáadása
-        href: map-add-heat-map-layer.md
-      - name: Fürt pontadatai
-        href: clustering-point-data-web-sdk.md
-      - name: Adatvezérelt stíluskifejezések használata
-        href: data-driven-style-expressions-web-sdk.md
-      - name: Kép átfedése
-        href: map-add-image-layer.md
-      - name: Csemperétegek hozzáadása
-        href: map-add-tile-layer.md
-      - name: HTML-jelölők
-        href: map-add-custom-html.md
-      - name: Forgalom megjelenítése
-        href: map-show-traffic.md
-      - name: Vezérlés egérrel
-        href: map-events.md
-      - name: Alkalmazás elérhetővé tétele
-        href: map-accessibility.md
-    - name: Szolgáltatások modul
+        - name: Fiókok kezelése
+          href: how-to-manage-account-keys.md
+        - name: Hitelesítés kezelése
+          href: how-to-manage-authentication.md
+        - name: Tarifacsomag kezelése
+          href: how-to-manage-pricing-tier.md
+        - name: Használati metrikák megtekintése
+          href: how-to-view-api-usage.md
+    - name: Térképadatok lekérése REST API-kból
       items:
-      - name: A szolgáltatásmodul használata
-        href: how-to-use-services-module.md
-      - name: Keresési eredmények megjelenítése
-        href: map-search-location.md
-      - name: Koordináta információinak lekérése
-        href: map-get-information-from-coordinate.md
-      - name: Útvonal megjelenítése A-ból B-be
-        href: map-route.md
-  - name: Fejlesztés az Android SDK-val
-    items:
-    - name: Android-térképvezérlőelemek használata
-      href: how-to-use-android-map-control-library.md
+        - name: Cím keresése
+          href: how-to-search-for-address.md
+        - name: Ajánlott keresési eljárások
+          href: how-to-use-best-practices-for-search.md
+        - name: Egyéni adatok megjelenítése statikus térképen
+          href: how-to-render-custom-data.md
+    - name: Fejlesztés a webes SDK-val
+      items:
+        - name: Térképvezérlő
+          items:
+            - name: A térkép vezérlőelem használata
+              href: how-to-use-map-control.md
+            - name: Térkép létrehozása
+              href: map-create.md
+            - name: Térképstílus kiválasztása
+              href: choose-map-style.md
+            - name: Vezérlőelemek hozzáadása a térképhez
+              href: map-add-controls.md
+            - name: Szimbólumréteg hozzáadása
+              href: map-add-pin.md
+            - name: Előugró ablak hozzáadása
+              href: map-add-popup.md
+            - name: Buborékréteg hozzáadása
+              href: map-add-bubble-layer.md
+            - name: Alakzatok hozzáadása
+              href: map-add-shape.md
+            - name: Hőtérképréteg hozzáadása
+              href: map-add-heat-map-layer.md
+            - name: Fürt pontadatai
+              href: clustering-point-data-web-sdk.md
+            - name: Adatvezérelt stíluskifejezések használata
+              href: data-driven-style-expressions-web-sdk.md
+            - name: Kép átfedése
+              href: map-add-image-layer.md
+            - name: Csemperétegek hozzáadása
+              href: map-add-tile-layer.md
+            - name: HTML-jelölők
+              href: map-add-custom-html.md
+            - name: Forgalom megjelenítése
+              href: map-show-traffic.md
+            - name: Vezérlés egérrel
+              href: map-events.md
+            - name: Alkalmazás elérhetővé tétele
+              href: map-accessibility.md
+        - name: Szolgáltatások modul
+          items:
+            - name: A szolgáltatásmodul használata
+              href: how-to-use-services-module.md
+            - name: Keresési eredmények megjelenítése
+              href: map-search-location.md
+            - name: Koordináta információinak lekérése
+              href: map-get-information-from-coordinate.md
+            - name: Útvonal megjelenítése A-ból B-be
+              href: map-route.md
+    - name: Fejlesztés az Android SDK-val
+      items:
+        - name: Android-térképvezérlőelemek használata
+          href: how-to-use-android-map-control-library.md
 - name: Referencia
   items:
-  - name: API- és paraméterbővítmények
-    items:
-    - name: Járműhasználati modell
-      href: consumption-model.md
-    - name: GeoJSON formátum kiterjesztése
-      href: extend-geojson.md
-    - name: GeoJSON formátum geokerítéssel való ellátása
-      href: geofence-geojson.md
-    - name: Támogatott keresési kategóriák
-      href: supported-search-categories.md
-  - name: REST
-    items:
-    - name: Adatszolgáltatás
-      href: https://docs.microsoft.com/rest/api/maps/data
-    - name: Földrajzi hely szolgáltatás
-      href: https://docs.microsoft.com/rest/api/maps/geolocation
-    - name: Megjelenítő szolgáltatás
-      href: https://docs.microsoft.com/rest/api/maps/render
-    - name: Útvonal szolgáltatás
-      href: https://docs.microsoft.com/rest/api/maps/route
-    - name: Keresési szolgáltatás
-      href: https://docs.microsoft.com/rest/api/maps/search
-    - name: Térbeli szolgáltatás
-      href: https://docs.microsoft.com/rest/api/maps/spatial
-    - name: Időzóna szolgáltatás
-      href: https://docs.microsoft.com/rest/api/maps/timezone
-    - name: Forgalom szolgáltatás
-      href: https://docs.microsoft.com/rest/api/maps/traffic
-    - name: Maps-fiókkezelés
-      href: https://docs.microsoft.com/rest/api/maps-management
-  - name: JavaScript
-    items:
-    - name: Térképvezérlő
-      href: https://docs.microsoft.com/javascript/api/azure-maps-javascript/
-    - name: Szolgáltatásmodul
-      href: https://docs.microsoft.com/javascript/api/azure-maps-rest/
-  - name: Resource Manager-sablon
-    href: /azure/templates/microsoft.maps/accounts
+    - name: API- és paraméterbővítmények
+      items:
+        - name: Járműhasználati modell
+          href: consumption-model.md
+        - name: GeoJSON formátum kiterjesztése
+          href: extend-geojson.md
+        - name: GeoJSON formátum geokerítéssel való ellátása
+          href: geofence-geojson.md
+        - name: Támogatott keresési kategóriák
+          href: supported-search-categories.md
+    - name: REST
+      items:
+        - name: Adatszolgáltatás
+          href: 'https://docs.microsoft.com/rest/api/maps/data'
+        - name: Földrajzi hely szolgáltatás
+          href: 'https://docs.microsoft.com/rest/api/maps/geolocation'
+        - name: Megjelenítő szolgáltatás
+          href: 'https://docs.microsoft.com/rest/api/maps/render'
+        - name: Útvonal szolgáltatás
+          href: 'https://docs.microsoft.com/rest/api/maps/route'
+        - name: Keresési szolgáltatás
+          href: 'https://docs.microsoft.com/rest/api/maps/search'
+        - name: Térbeli szolgáltatás
+          href: 'https://docs.microsoft.com/rest/api/maps/spatial'
+        - name: Időzóna szolgáltatás
+          href: 'https://docs.microsoft.com/rest/api/maps/timezone'
+        - name: Forgalom szolgáltatás
+          href: 'https://docs.microsoft.com/rest/api/maps/traffic'
+        - name: Maps-fiókkezelés
+          href: 'https://docs.microsoft.com/rest/api/maps-management'
+    - name: JavaScript
+      items:
+        - name: Térképvezérlő
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+        - name: Szolgáltatásmodul
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.maps/accounts
 - name: További források
   items:
-  - name: Az Azure Maps használati feltételei
-    href: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31
-  - name: Az Azure Maps árképzése
-    href: https://azure.microsoft.com/pricing/details/azure-maps
-  - name: Díjkalkulátor
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-maps
-  - name: MSDN-fórum
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs
-  - name: Azure Maps-videók
-    href: https://aka.ms/AzureMapsVideos
-  - name: Azure Maps-szószedet
-    href: glossary.md
-  - name: Szolgáltatási hírek
-    href: https://azure.microsoft.com/updates
-  - name: Azure IoT fejlesztői központ
-    href: https://azure.microsoft.com/develop/iot/
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=iot
-  - name: Műszaki esettanulmányok
-    href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
-  - name: Azure Maps az IoT Schoolban
-    href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
+    - name: Az Azure Maps használati feltételei
+      href: 'https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31'
+    - name: Az Azure Maps árképzése
+      href: 'https://azure.microsoft.com/pricing/details/azure-maps'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-maps'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
+    - name: Azure Maps-videók
+      href: 'https://aka.ms/AzureMapsVideos'
+    - name: Azure Maps-szószedet
+      href: glossary.md
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates'
+    - name: Azure IoT fejlesztői központ
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: Műszaki esettanulmányok
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: Azure Maps az IoT Schoolban
+      href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'
 - name: Kapcsolódó témakörök
   items:
-  - name: Megoldások
-    items:
-    - name: IoT-megoldásgyorsítók
-      href: /azure/iot-suite
-    - name: IoT-központ
-      href: https://docs.microsoft.com/microsoft-iot-central/
-  - name: Platformszolgáltatások
-    items:
-    - name: IoT Hub
-      href: /azure/iot-hub
-    - name: IoT Hub Device Provisioning Service
-      href: /azure/iot-dps
-    - name: Maps
-      href: /azure/azure-maps
-    - name: Szolgáltatási SDK-k
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
-    - name: Time Series Insights
-      href: /azure/time-series-insights
-  - name: IoT Edge
-    items:
+    - name: Megoldások
+      items:
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-suite
+        - name: IoT-központ
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Platformszolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Maps
+          href: /azure/azure-maps
+        - name: Szolgáltatási SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
     - name: IoT Edge
-      href: /azure/iot-edge
-    - name: IoT eszközoldali SDK-k
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: 94e02b599bffd24e9c9aa65560e4a74bd05ecea6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263594"
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT eszközoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

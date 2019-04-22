@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ba9f1b3d-a4a0-4ff7-b0e7-428e0ed92142
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 04/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e86ae61a6aec6c546b36c52f3f3875cbebdc838e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b46135366c76abf8da5387ff0698b4dc7634d79c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861927"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698542"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Oktatóanyag: Az Azure Active Directory integrációja az LMS számára
 
@@ -38,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 LMS elháríthatók az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
 * Számára a segítségével egyetlen bejelentkezési engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -120,17 +121,21 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés segítségével elh�
     > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [LMS-ügyfél számára a támogatási csapat](https://support.absorblms.com/hc/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **metaadatainak XML**a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**.
+
+    ![image](common/edit-attribute.png)
+
+6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-6. Az a **elháríthatók LMS beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+7. Az a **elháríthatók LMS beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
@@ -162,7 +167,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés segítségével elh�
 
     d. Az a **mód** jelölje ki **identitás szolgáltató által kezdeményezett**.
 
-    e. Az a **Id tulajdonsága** jelölje ki az Azure AD-ben konfigurált, a felhasználói azonosító attribútum. Például ha *userPrincipalName* van kiválasztva, az Azure AD-ben válassza **felhasználónév**.
+    e. Az a **Id tulajdonsága** jelölje ki az Azure AD-ben konfigurált, a felhasználói azonosító attribútum. Például ha *nameidentifier* van kiválasztva, az Azure AD-ben válassza **felhasználónév**.
 
     f. Válassza ki **Sha256** , egy **aláírás típusát**.
 
@@ -194,7 +199,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőtípus `brittasimon\@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

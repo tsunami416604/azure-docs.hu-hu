@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 7c84a5c39b1a3b4a52505c053fdcfc92030237c3
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: MT
+ms.openlocfilehash: 3f15b6bf5ff3cc1949794ebc1ee2a5f62158cede
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575768"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698622"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET Core-alkalmazást az alkalmazások konfigurálása
 
@@ -110,4 +110,4 @@ Használja a [.NET Core parancssori felület (CLI)](https://docs.microsoft.com/d
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs adattároló és használt, egy .NET Core-konzolalkalmazást keresztül a [alkalmazás konfigurációszolgáltató](https://go.microsoft.com/fwlink/?linkid=2074664). Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
 
 > [!div class="nextstepaction"]
-> [Az Azure-erőforrások integráció felügyelt identitásokból](./integrate-azure-managed-service-identity.md)
+> [Az Azure-erőforrások integráció felügyelt identitásokból](./howto-integrate-azure-managed-service-identity.md)

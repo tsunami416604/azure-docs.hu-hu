@@ -7,14 +7,14 @@ ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 34a63c8f283f24fa58b4e2a41d3a44ff0c8c3c17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 02c7f53c090559ca0ada46ec90de3a44b0518a29
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003466"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683576"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - adatok áttelepítése – ajánlott eljárások
 
@@ -29,8 +29,7 @@ Két fő lehetőség át a helyszíni adatok Azure-környezet van:
     2. Express Route - ExpressRoute egy Azure-szolgáltatás, amely lehetővé teszi, hogy között Microsoft-adatközpontok és infrastruktúra, amely a helyszínen vagy egy közös elhelyezési létesítményből csatlakozó privát kapcsolatok hozhatók létre. Az ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül, és magasabb szintű biztonságra, megbízhatóságra és a kisebb a késésük, mint a szokásos internetkapcsolatoknál megbízhatóbbak kínálnak az interneten keresztül. További információkért lásd: [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
     1. Data Box online adatátvitel – Data Box Edge és a Data Box-átjáró proxyként tárolási átjárók kezelése a hely és az Azure közötti hálózati online adatok átvitel termékek. A Data Box Edge egy helyszíni hálózati eszköz, amely az adatokat az Azure és a helyszín között helyezi át, és az adatok feldolgozásához mesterséges intelligenciát használó peremhálózati számítási megoldást használ. A Data Box Gateway egy tárolóátjáró képességgel rendelkező virtuális berendezés. További információkért lásd: [Azure Data Box dokumentációja – Online átviteli](https://docs.microsoft.com/azure/databox-online/).
 1.  Szállítási adatok offline állapotban
-    1. Importálási / exportálási szolgáltatás – fizikai lemezek küldhet az Azure-ba, és Önnek töltődnek fel. További információkért lásd: [Mi az Azure Import/Export szolgáltatást?](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
-    1. Adatok offline adatátvitel – Data Box, Data Box-lemezek mezőbe, és a Data Box nehéz eszközök segítséget nagy mennyiségű adat átvitele az Azure-ba, amikor a hálózat nincs lehetőség. Ezeket az offline adatátviteli eszközöket az Ön cége és az Azure-adatközpontok között szállítjuk. Az eszközök AES-titkosítást használnak, amelyek a szállítás közben védik az adatait, a feltöltés után pedig alapos megtisztítási folyamaton esnek át, amelynek során minden adata törölve lesz az eszközről. További információkért lásd: [Azure Data Box dokumentációja – Offline Transfer](https://docs.microsoft.com/azure/databox/).
+    1. Adatok offline adatátvitel – Data Box, Data Box-lemezek mezőbe, és a Data Box nehéz eszközök segítséget nagy mennyiségű adat átvitele az Azure-ba, amikor a hálózat nincs lehetőség. Ezeket az offline adatátviteli eszközöket az Ön cége és az Azure-adatközpontok között szállítjuk. Az eszközök AES-titkosítást használnak, amelyek a szállítás közben védik az adatait, a feltöltés után pedig alapos megtisztítási folyamaton esnek át, amelynek során minden adata törölve lesz az eszközről. További információ a Data Box adatátviteli kapcsolat nélküli eszközökön: [Azure Data Box dokumentációja – Offline átviteli](https://docs.microsoft.com/azure/databox/). A Hadoop-fürtök áttelepítése további információkért lásd: [használata Azure Data Box egy helyszíni HDFS-adattár migrálhat az Azure Storage-](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
 
 Az alábbi táblázat a hozzávetőleges adatok átvitel időtartama az adatok mennyisége és a hálózati sávszélesség alapján van. A Data box használja, ha az adatok migrálása várhatóan több mint három hetet igénybe vehet.
 

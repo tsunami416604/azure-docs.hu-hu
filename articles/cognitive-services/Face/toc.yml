@@ -1,118 +1,111 @@
-items:
 - name: A Face API dokumentációja
   href: index.yml
 - name: Áttekintés
-  items:
-  - name: Mi az a Face API?
-    href: Overview.md
   expanded: true
+  items:
+    - name: Mi az a Face API?
+      href: Overview.md
 - name: Gyors útmutatók
   items:
-  - name: Az ügyfél-SDK használata
-    items:
-    - name: Arcok felismerése a képeken
+    - name: Az ügyfél-SDK használata
       items:
-      - name: C#
-        href: QuickStarts/csharp-detect-sdk.md
-      - name: Python
-        href: Tutorials/FaceAPIinPythonTutorial.md
-  - name: A REST API használata
-    items:
-    - name: Arcok felismerése a képeken
+        - name: Arcok felismerése a képeken
+          items:
+            - name: 'C#'
+              href: QuickStarts/csharp-detect-sdk.md
+            - name: Python
+              href: Tutorials/FaceAPIinPythonTutorial.md
+    - name: A REST API használata
       items:
-      - name: C#
-        href: QuickStarts/CSharp.md
-      - name: cURL
-        href: QuickStarts/curl.md
-      - name: Indítás
-        href: QuickStarts/go.md
-      - name: Java
-        href: QuickStarts/Java.md
-      - name: JavaScript
-        href: QuickStarts/JavaScript.md
-      - name: Node.js
-        href: QuickStarts/node.md
-      - name: PHP
-        href: QuickStarts/PHP.md
-      - name: Python
-        href: QuickStarts/Python.md
-      - name: Ruby
-        href: QuickStarts/Ruby.md
+        - name: Arcok felismerése a képeken
+          items:
+            - name: 'C#'
+              href: QuickStarts/CSharp.md
+            - name: cURL
+              href: QuickStarts/curl.md
+            - name: Indítás
+              href: QuickStarts/go.md
+            - name: Java
+              href: QuickStarts/Java.md
+            - name: JavaScript
+              href: QuickStarts/JavaScript.md
+            - name: Node.js
+              href: QuickStarts/node.md
+            - name: PHP
+              href: QuickStarts/PHP.md
+            - name: Python
+              href: QuickStarts/Python.md
+            - name: Ruby
+              href: QuickStarts/Ruby.md
 - name: Oktatóanyagok
   items:
-  - name: Az ügyfél-SDK használata
-    items:
-    - name: C#
-      href: Tutorials/FaceAPIinCSharpTutorial.md
-    - name: Android
-      href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
+    - name: Az ügyfél-SDK használata
+      items:
+        - name: 'C#'
+          href: Tutorials/FaceAPIinCSharpTutorial.md
+        - name: Android
+          href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
 - name: Útmutatók
   items:
-  - name: Arcfelismerés
-    href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-  - name: Arcazonosítás
-    href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
-  - name: Arcok hozzáadása
-    href: Face-API-How-to-Topics/how-to-add-faces.md
-  - name: Arcfelismerési modell megadása
-    href: Face-API-How-to-Topics/specify-recognition-model.md
-  - name: A nagy léptékű funkció használata
-    href: Face-API-How-to-Topics/how-to-use-large-scale.md
-  - name: Videók valós idejű elemzése
-    href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
-  - name: Arcokhoz kapcsolódó adatok migrálása
-    href: Face-API-How-to-Topics/how-to-migrate-face-data.md
-  - name: Tárolók használata
-    items:
-    - name: Tárolók telepítése és futtatása
-      href: face-how-to-install-containers.md
-    - name: Tárolók konfigurálása
-      href: face-resource-container-config.md
-  - name: Face API csatlakoztatott szolgáltatás használata
-    href: vs-face-connected-service.md
+    - name: Arcfelismerés
+      href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
+    - name: Arcazonosítás
+      href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
+    - name: Arcok hozzáadása
+      href: Face-API-How-to-Topics/how-to-add-faces.md
+    - name: Arcfelismerési modell megadása
+      href: Face-API-How-to-Topics/specify-recognition-model.md
+    - name: A nagy léptékű funkció használata
+      href: Face-API-How-to-Topics/how-to-use-large-scale.md
+    - name: Videók valós idejű elemzése
+      href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
+    - name: Arcokhoz kapcsolódó adatok migrálása
+      href: Face-API-How-to-Topics/how-to-migrate-face-data.md
+    - name: Tárolók használata
+      items:
+        - name: Tárolók telepítése és futtatása
+          href: face-how-to-install-containers.md
+        - name: Tárolók konfigurálása
+          href: face-resource-container-config.md
+    - name: Face API csatlakoztatott szolgáltatás használata
+      href: vs-face-connected-service.md
 - name: Példák
   items:
-  - name: Kódminták
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face'
 - name: Referencia
   items:
-  - name: Face API
-    href: APIReference.md
-  - name: SDK-k
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest
-    - name: Python
-      href: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python
-    - name: Indítás
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face
-    - name: Android (Java)
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
-    - name: iOS
-      href: https://github.com/Microsoft/Cognitive-Face-iOS
+    - name: Face API
+      href: APIReference.md
+    - name: SDK-k
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python'
+        - name: Indítás
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
+        - name: Android (Java)
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable'
+        - name: iOS
+          href: 'https://github.com/Microsoft/Cognitive-Face-iOS'
 - name: További források
   items:
-  - name: Szószedet
-    href: Glossary.md
-  - name: GYIK
-    href: FAQ.md
-  - name: Díjszabás és korlátok
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/face-api
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/430315-face-api
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/updates/?product=cognitive-services
-  - name: Régiónkénti rendelkezésre állás
-    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-  - name: Kibocsátási megjegyzések
-    href: ReleaseNotes.md
-ms.openlocfilehash: 1c03cba2c6f318c87a8a060558e2f851b72f70fe
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804786"
+    - name: Szószedet
+      href: Glossary.md
+    - name: GYIK
+      href: FAQ.md
+    - name: Díjszabás és korlátok
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/430315-face-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Kibocsátási megjegyzések
+      href: ReleaseNotes.md

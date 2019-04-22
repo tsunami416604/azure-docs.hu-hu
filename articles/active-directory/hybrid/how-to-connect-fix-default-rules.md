@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f524e8cef3878816cec53575217bdb6d0fd9be7b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 761f3e6e72319a2e63d6b66f2893130ec5a82ebf
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58501256"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698162"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Javítsa ki a módosított alapértelmezett szabályok az Azure AD Connectben
 
@@ -76,12 +76,12 @@ Bejövő szinkronizálási szabály azt jelenti, az attribútum a forrása össz
 
  ![Alapértelmezett szabályok](media/how-to-connect-fix-default-rules/default3a.png)
 
-Adjon nevet a szabálynak, a saját elnevezési konvenciója, itt is használt **egyéni az ad - felhasználó**, ez azt jelenti, hogy a szabály egy egyéni szabályt és az AD-összekötő-térben bejövő szabály a Metaverzumba. 
+Adjon nevet a szabálynak, a saját elnevezési konvenciója, itt is használt **egyéni az ad - felhasználó**, ez azt jelenti, hogy a szabály egy egyéni szabályt és az AD-összekötő-térben bejövő szabály a Metaverzumba.   
 
  ![Alapértelmezett szabályok](media/how-to-connect-fix-default-rules/default3b.png)
 
 Úgy, hogy a szabály a jövőbeli karbantartási egyszerűen, mi az, hogy ez a szabály célját, és miért volt szükség például kell adni a saját a szabály leírását.
-Kiválasztott csatlakoztatott rendszer (erdő) attribútum forrása. Ezután a csatlakoztatott rendszer objektumtípus és a Metaverzum-objektum típusa.
+Válassza ki a csatlakoztatott rendszer (erdő) – az attribútum forrása. Ezután válassza ki a kapcsolódó objektum típusa és a Metaverzum-objektum típusaként.
 
 Adja meg a sorrend érték között, 0 – 99 (az alacsonyabb a szám nagyobb az elsőbbséget). Tartsa meg a többi mező például a "Tag", "Engedélyezése jelszó-szinkronizálás" és "Disabled" alapértelmezettként.
 

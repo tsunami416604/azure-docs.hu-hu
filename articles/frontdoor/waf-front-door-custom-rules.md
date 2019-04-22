@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 04/07/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 744c6fb9235c9daa2d5239ef9fd13679db943650
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59363004"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59783967"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Webalkalmazási tűzfal az Azure bejárati ajtajának egyéni szabályok
 Azure webalkalmazási tűzfal (WAF) bejárati ajtajának szolgáltatással lehetővé teszi, hogy ki férhet hozzá a webes alkalmazások határoz meg a feltételek alapján. Egyéni WAF szabály áll egy prioritást, szabálytípus, egyezési feltételei és a egy műveletet. Egyéni szabályok két típusa van: szabályok és az utolsó korlát szabályok értékelése. Egy match szabály irányítja a hozzáférést alapján a megfelelő feltételek, amíg az arány korlát szabály irányítja a hozzáférést a megfelelő feltételek és a bejövő kérelmek díjszabás alapján. Előfordulhat, hogy a kiértékelt megakadályozása érdekében egy egyéni szabály letiltása, de a konfiguráció továbbra is folyamatosan. Ez a cikk ismerteti a http-paraméterek alapuló egyezés szabályok.

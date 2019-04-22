@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 61466f3574ba7a88665a8d78818d0a4c12716bbf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.openlocfilehash: ca6667a5353d253743a45d5db742811d8e15ed31
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269792"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682117"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció Rackspace SSO-val
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az Azure AD-integráció konfigurálása a Rackspace SSO-val, a következőkre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
 * Rackspace egyszeri bejelentkezés az egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -101,11 +101,21 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Rackspace SSO-val, haj
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az a **alapszintű SAML-konfigurációja** részben, a feltöltési a **szolgáltató metaadatait tartalmazó fájl** , amely innen tölthető le: a [URL-cím](https://login.rackspace.com/federate/sp.xml) , és hajtsa végre az alábbi lépéseket:
 
-    ![Rackspace SSO tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-signonurl.png)
+    a. Kattintson a **metaadatfájl feltöltése**.
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:  `https://login.rackspace.com/federate/`
+    ![image](common/upload-metadata.png)
+
+    b. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
+
+    ![image](common/browse-upload-metadata.png)
+
+    c. A metaadatfájl sikeres feltöltését követően a szükséges URL-cím lekérése automatikusan kitölti a rendszer automatikusan.
+
+    d. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe: `https://login.rackspace.com/federate/`
+
+    ![Rackspace SSO tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-signonurl.png)   
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -143,7 +153,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
@@ -189,7 +199,7 @@ Ha a hozzáférési panelen a Rackspace SSO csempére kattint, meg kell lehet au
 
 - [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

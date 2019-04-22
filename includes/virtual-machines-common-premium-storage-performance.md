@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 12bcf665fafca3df7fc2d21c77c2f8d2fbec84fc
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: c81b0926b88ad2f1dbb3af7c1a2c51e8a79430f9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542366"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737120"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Az Azure premium storage: nagy teljesítményű rendszer tervezése
 
@@ -67,7 +67,7 @@ Késés egy alkalmazás egyetlen kérést kap, küldje el a storage-lemez és az
 
 Ha az alkalmazás magasabb IOPS és átviteli sebesség optimalizálása, negatív hatással lesz a késés, az alkalmazás. Miután az alkalmazás teljesítményének hangolása, mindig értékelje ki a késés nagy késésű váratlan viselkedés elkerülése érdekében az alkalmazás.
 
-A Managed Disksen található következő vezérlési síkjával végzett műveletek is igénybe vehet a lemez tárolási egyik helyről egy másikra mozgása. Ez az előkészített keresztül háttérben történő másolás, amelyek befejezéséhez, általában 24 óránál a lemezeken lévő adatok mennyiségétől függően több órát is igénybe vehet. Ebben az időszakban az alkalmazás tapasztalhatnak magasabb, mint a szokásos olvasási késés, valamint a bizonyos olvasási is első átirányítja az eredeti helyre is hosszabb időt vesz igénybe. Ez nincs hatással az írási késés ebben az időszakban.
+A Managed Disksen található következő vezérlési síkjával végzett műveletek is igénybe vehet a lemez tárolási egyik helyről egy másikra mozgása. Ez az előkészített keresztül háttérben történő másolás, amelyek befejezéséhez, általában 24 óránál a lemezeken lévő adatok mennyiségétől függően több órát is igénybe vehet. Ebben az időszakban az alkalmazás tapasztalhatnak magasabb, mint a szokásos olvasási késés néhány olvasási is első átirányítja az eredeti helyre, és is hosszabb időt vesz igénybe. Ez nincs hatással az írási késés ebben az időszakban.
 
 - Frissítse a tárolás típusát.
 - Válassza le, és a lemez csatolása egy virtuális gépről egy másikra.
@@ -261,7 +261,8 @@ Ne feledje, hogy a prémium szintű tárolólemezeket a standard szintű tárol�
 Nagy virtuális gépek méretezéséhez, az Azure Premium Storage egy többrétegű gyorsítótárazási technológia BlobCache nevű rendelkezik. BlobCache a virtuális gép RAM memória és helyi SSD felhasználja a gyorsítótárazáshoz. Ez a gyorsítótár állandó Premium Storage-lemez és a virtuális gép helyi lemezek érhető el. Alapértelmezés szerint a gyorsítótár beállítás értéke az írási/olvasási operációsrendszer-lemezek és a csak olvasható a Premium Storage-ban üzemeltetett adatlemezek. A lemez engedélyezve van, a prémium szintű tárolólemezeket a gyorsítótárazás, a nagy méretű virtuális gépeket rendkívül magas teljesítményszintet is garantálja az alapul szolgáló lemez teljesítménye keretet túllépő érheti el.
 
 > [!WARNING]
-> Legfeljebb 4 Tib-ra csak a támogatott lemezek gyorsítótárazását.
+> Lemez gyorsítótárazási 4 TiB-nál nagyobb lemezek esetén nem támogatott. Ha több lemez is csatlakozik a virtuális gép minden egyes lemezt, amely 4 Tib-ra vagy kisebb lesz támogatja a gyorsítótárazást.
+>
 > Az Azure-lemez gyorsítótár beállításainak megváltoztatása leválasztja, és újra csatolja a céllemezt. Ha az operációsrendszer-lemez, a virtuális gép újraindul. Állítsa le az összes alkalmazások és szolgáltatások, amelyek hatással lehetnek a megszakítás a lemez gyorsítótár-beállítás módosítása előtt szerint.
 
 BlobCache működésével kapcsolatos további tudnivalókért tekintse meg a belső [Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) blogbejegyzést.
