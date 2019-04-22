@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 91d1369b9197f6ef941d981aa9cf7539b4554d0c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
-ms.translationtype: HT
+ms.openlocfilehash: 67a918b227ad3b33a2f63b17f86b94f36fbc9fa3
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065800"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679125"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>A helyszíni adatátjárót telepíthet az Azure Logic Apps
 
@@ -28,9 +28,9 @@ Az átjáró támogatja a [helyszíni összekötők](../connectors/apis-list.md#
 
 *   BizTalk Server 2016
 *   Fájlrendszer
-*   IBM DB2-HÖZ  
+*   IBM DB2  
 *   IBM Informix
-*   IBM MQ-VAL
+*   IBM MQ
 *   MySQL
 *   Oracle Database
 *   PostgreSQL
@@ -306,7 +306,7 @@ Az átjáró a logikai alkalmazás, az átjáró felhőszolgáltatása, és a he
 
 Az átjáró működik, tűzfalakkal, és csak a kimenő kapcsolatokat használ. Az összes forgalom származik, az átjáró ügynök biztonságos kimenő forgalmát. Az átjáró a helyszíni forrásokból, titkosított csatornákon keresztül az Azure Service Bus továbbítókat. Ez a service bus az átjáró és a hívó közötti csatornát hoz létre, de nem tárol adatokat. Az átjárón keresztül haladó összes adat titkosítva van.
 
-![diagram-for-on-premises-Data-Gateway-flow](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
+![diagram-for-on-premises-data-gateway-flow](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
 Ezeket a lépéseket írja le, mi történik, ha egy felhasználó a felhőben egy helyszíni adatforráshoz csatlakozó elemet használja:
 
@@ -435,26 +435,6 @@ Az átjáró eseménynaplóit megkereséséhez kövesse az alábbi lépéseket:
 
    ![Átjáró Eseménynapló megtekintése](./media/logic-apps-gateway-install/event-viewer.png)
 
-### <a name="telemetry"></a>Telemetria
-
-További figyeléséhez és hibaelhárításához kapcsolja be, és a telemetriai adatok gyűjtésére. 
-
-1. Keresse meg a helyet, a helyszíni adatok átjáró ügyfél, amely általában itt talál: ```C:\Program Files\On-premises data gateway```
-
-   Ellenkező esetben az ügyfél helyének megkereséséhez nyissa meg az ugyanazon a számítógépen a szolgáltatások konzolt, keresse meg **a helyszíni adatátjáró szolgáltatás**, és megtekintheti a **végrehajtható fájl elérési útja** tulajdonság.
-
-2. Nyissa meg a *konfigurációs* fájlt: **Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
-
-3. Módosítsa a **SendTelemetry** értéket a következőre **igaz**:
-
-   ```html
-   <setting name="SendTelemetry" serializeAs="String">
-      <value>true</value>
-   </setting>
-   ```
-
-4. Mentse a módosításokat, és indítsa újra a Windows-szolgáltatás.
-
 ### <a name="review-slow-query-performance"></a>Lassú lekérdezések teljesítményének áttekintése
 
 Ha azt tapasztalja, hogy a lekérdezések lassan futnak az átjárón keresztül, bekapcsolhatja a további naplózás, amely lekérdezéseket és azok időtartamát. Ezek a naplók segíthetnek úgy találja, hogy melyik lekérdezések lassú vagy hosszú ideig futó. A lekérdezési teljesítmény hangolása, előfordulhat, hogy kell például módosítani az adatforrást, módosítsa az indexek az SQL Server-lekérdezéseket.
@@ -526,7 +506,7 @@ Egy lekérdezés időtartamának meghatározásához, kövesse az alábbi lépé
 
 ### <a name="trace-traffic-with-fiddler"></a>Fiddler-nyomkövetés forgalom
 
-[A fiddler](http://www.telerik.com/fiddler) a HTTP-adatforgalom figyelésére telerik ingyenes eszköze. Ez a forgalom áramlását az ügyfélszámítógépen a Power BI szolgáltatással tekintheti meg. Ez a szolgáltatás megjelenítése előfordulhat, hogy a hibák és egyéb kapcsolódó információkat.
+[A fiddler](https://www.telerik.com/fiddler) a HTTP-adatforgalom figyelésére telerik ingyenes eszköze. Ez a forgalom áramlását az ügyfélszámítógépen a Power BI szolgáltatással tekintheti meg. Ez a szolgáltatás megjelenítése előfordulhat, hogy a hibák és egyéb kapcsolódó információkat.
 
 ## <a name="next-steps"></a>További lépések
     

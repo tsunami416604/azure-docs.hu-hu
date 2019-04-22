@@ -518,24 +518,24 @@ Ha és az Azure SQL Database felügyelt példánya a rendszer az adatokat másol
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
-| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| A FILESTREAM attribútum (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
 | money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numerikus |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
-| rowversion |Byte[] |
+| ROWVERSION |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| pénz |Decimal |
 | sql_variant |Object |
-| text |String, Char[] |
+| szöveg |String, Char[] |
 | time |TimeSpan |
-| timestamp |Byte[] |
+| időbélyeg |Byte[] |
 | tinyint |Int16 |
 | uniqueidentifier |Guid |
 | varbinary |Byte[] |

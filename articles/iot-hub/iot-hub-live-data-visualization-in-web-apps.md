@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: b870c432ea8021d9eeb14eec85ff9912b96ddc96
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 070f37a969411cfc4caf5f2d2b089ccfae759ca2
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270880"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683194"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Az Azure App Service Web Apps szolgáltatásának használatát az Azure IoT hub valós idejű érzékelői adatainak megjelenítése
 
@@ -35,7 +35,7 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan jelenítheti meg az IoT hub á
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-* [Az eszköz beállítása](iot-hub-raspberry-pi-kit-node-get-started.md), mely kiterjed a következő követelményeknek:
+* Végezze el a [Raspberry Pi online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyag vagy az eszköz oktatóanyagokban; például [Raspberry Pi és node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ez érvényes a következő követelményeknek:
 
   * Aktív Azure-előfizetéssel
   * Az Iot hub, az előfizetéséhez

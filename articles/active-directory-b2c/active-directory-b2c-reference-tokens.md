@@ -1,109 +1,115 @@
 ---
-title: Jogkivonat-referencia az Azure Active Directory B2C |} A Microsoft Docs
-description: Az Azure Active Directory B2C a kiállított jogkivonatokban típusú
+title: Jogkivonatok – Azure Active Directory B2C – áttekintés |} A Microsoft Docs
+description: További információ az Azure Active Directory B2C-vel használt tokenek.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6a588764908f72607bbb99e9b1ea031182c95e64
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 11361bc6ab75e873e1b4081dcfc6492abc093b54
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166917"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680264"
 ---
-# <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Jogkivonat-referencia
+# <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C jogkivonatok áttekintése
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory B2C (Azure AD B2C-vel) számos különböző típusú biztonsági jogkivonatokat bocsát ki, amint az feldolgozza azokat egyes [hitelesítési folyamat](active-directory-b2c-apps.md). Ez a dokumentum ismerteti a formátumát, a biztonsági jellemzőkkel és a különböző típusú jogkivonat tartalma.
+Az Azure Active Directory B2C (Azure AD) B2C számos különböző típusú biztonsági jogkivonatokat bocsát ki, amint az feldolgozza azokat egyes [hitelesítési folyamat](active-directory-b2c-apps.md). Ez a dokumentum ismerteti a formátumát, a biztonsági jellemzőkkel és a különböző típusú jogkivonat tartalma.
 
-## <a name="types-of-tokens"></a>Jogkivonatok típusai
-Az Azure AD B2C támogatja a [OAuth 2.0 engedélyezési protokollt](active-directory-b2c-reference-protocols.md), amely él mindkét hozzáférési jogkivonatokat és frissítési jogkivonatok. Is támogatja a hitelesítési és bejelentkezési keresztül [OpenID Connect](active-directory-b2c-reference-protocols.md), amely bemutatja, hogy egy harmadik típusú jogkivonat: az azonosító jogkivonat. Mindegyik token jelenik meg a tulajdonosi jogkivonatot.
+## <a name="token-types"></a>Jogkivonat típusa
 
-A tulajdonosi jogkivonatot, amely hozzáférést biztosít a "tulajdonos" védett erőforrásokhoz való könnyű biztonsági jogkivonat. A tulajdonosi minden olyan entitás, amely a token is jelenthet. Az Azure AD B2C először hitelesítenie kell magát egy entitás előtt megkaphatja a tulajdonosi jogkivonattal. De ha a rendszer nem hajtja végre a szükséges lépéseket, biztonságos átvitelét és tárolását a jogkivonatot, azt is lehessen elfogni és egy nem kívánt entitás használja. Néhány biztonsági jogkivonatokat rendelkezik egy beépített mechanizmus megakadályozza az illetéktelen fél használja őket, de ez a mechanizmus nem rendelkezik tulajdonosi jogkivonatokat. Egy biztonságos csatornát, például a transport layer security (HTTPS) kell szállítani.
+Az Azure AD B2C támogatja a [OAuth 2.0 és OpenID Connect protokollok](active-directory-b2c-reference-protocols.md), amely él jogkivonatokat a hitelesítéshez és az erőforrások biztonságos elérését. Az Azure AD B2C-ben használt összes jogkivonatok olyan [JSON webes jogkivonatainak (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) , amelyek tartalmazzák a helyességi feltételek vonatkozó információkat a tulajdonosi és a jogkivonat tárgyában.
 
-Tulajdonosi jogkivonattal továbbított kívül egy biztonságos csatornán, ha egy rosszindulatú fél használhatja a man-in-the-middle támadások beszerezni a jogkivonatot, és a védett erőforrások jogosulatlan elérésére. Biztonsági alapelveket alkalmazható, ha a tulajdonosi jogkivonatokat tárolt vagy későbbi használatra a gyorsítótárba. Mindig győződjön meg arról, hogy az alkalmazás továbbítja, és biztonságosan tárolja a tulajdonosi jogkivonatokat.
+A következő jogkivonatok használhatók az Azure AD B2C-vel folytatott kommunikáció:
 
-A tulajdonosi jogkivonatokat további biztonsági szempontokért lásd: [RFC 6750 5. szakasz](https://tools.ietf.org/html/rfc6750).
+- *Azonosító jogkivonat* –, amely tartalmazza A JWT-jogcímek, használatával azonosítsa azokat a felhasználókat az alkalmazásban. Ez a token biztonságosan küldése az ugyanazon alkalmazás vagy szolgáltatás két összetevői közötti kommunikációhoz HTTP-kérelmekre. Egy azonosító jogkivonat a jogcímek tetszés szerint használhatja. Fiók adatainak megjelenítése, illetve, hogy döntést hozhasson a hozzáférésről az alkalmazások gyakran használják. Azonosító-jogkivonatokat jelentkezett, de nem titkosítottak. Amikor az alkalmazás- vagy API-t kap egy azonosító jogkivonat, azt ellenőrizni kell az aláírás igazolja, hogy a jogkivonat hiteles. Az alkalmazás- vagy API-t is ellenőrizni kell igazolnia, azaz érvényes néhány jogcímeket. A forgatókönyv követelményeitől függően változhat, a jogcímek, az alkalmazások által ellenőrzött, de az alkalmazásnak el kell végeznie minden forgatókönyvben néhány gyakori jogcím ellenőrzések.
+- *Hozzáférési jogkivonat* –, amely tartalmazza A JWT-jogcímek használhatja a saját API-khoz megadott engedélyek azonosításához. Hozzáférési jogkivonatok jelentkezett, de azok nem titkosított. Hozzáférési jogkivonatok az API-k és erőforrás-kiszolgálók elérésére szolgálnak.  Amikor az API-t egy hozzáférési jogkivonatot kap, azt az aláírás igazolja, hogy a token hiteles ellenőrizni kell. Az API-t is ellenőrizni kell igazolnia, azaz érvényes néhány jogcímeket. A forgatókönyv követelményeitől függően változhat, a jogcímek, az alkalmazások által ellenőrzött, de az alkalmazásnak el kell végeznie minden forgatókönyvben néhány gyakori jogcím ellenőrzések.
+- *Frissítési jogkivonat* -frissítési biztonsági jogkivonat segítségével szerezzen új azonosító-jogkivonatokat, és hozzáférési jogkivonatokat az OAuth 2.0 flow-ban. Az alkalmazás hosszú távú hozzáféréssel rendelkező erőforrások felhasználók nevében anélkül, hogy a ezeket a felhasználói nyújtanak. Frissítési biztonsági jogkivonat nem átlátszók az alkalmazáshoz. Azok az Azure AD B2C által kiállított és ellenőrzött és csak az Azure AD B2C-vel értelmezi. Hosszú élettartamú, azonban az alkalmazás nem lehet írni az az elvárás, hogy a frissítési jogkivonatok egy meghatározott ideig tart. Frissítési biztonsági jogkivonat bármely pillanatban a többféle okból lehet érvényteleníteni. Az egyetlen módszer, hogy az alkalmazás tudja, hogy ha egy frissítési jogkivonat érvényes, hogy egy jogkivonat kérése az Azure AD B2C-t, így a beváltáshoz kísérlet. Amikor az ügyfél beváltja az új jogkivonatot egy frissítési jogkivonatot, kap egy új frissítési jogkivonatot a jogkivonat válaszban. Mentse az új frissítési jogkivonatot. Lecseréli a frissítési jogkivonat a kérelemben szereplő korábban használt. Ez a művelet segít garantálni, hogy a frissítési biztonsági jogkivonat érvényes, amíg maradnak. 
 
-Számos, a jogkivonatokat, amely az Azure AD B2C-t használják, mint a JSON webes jogkivonatainak (JWTs). Jwt-t a tömör, URL-cím környezetben is biztonságos módszerrel információk átvitele a két fél között. JWTs jogcímek néven információkat tartalmaznak. Ezek a helyességi feltételek vonatkozó információkat a tulajdonosi és a jogkivonat tárgyában. A jogcímeket JWTs olyan kódolt és továbbítására szerializált JSON-objektumok. Az Azure AD B2C által kiállított JWTs jelentkezett, de nincs titkosítva, mert könnyen vizsgálhatja meg a jwt-t, hibakeresés végrehajtása rajtuk a tartalmát. Több eszköz érhető el, amely ezt teheti meg, beleértve a [jwt.ms](https://jwt.ms). JWTs kapcsolatos további információkért tekintse meg [JWT-specifikációk](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
+## <a name="endpoints"></a>Végpontok
 
-### <a name="id-tokens"></a>Azonosító jogkivonatok
+A [regisztrált alkalmazás](tutorial-register-applications.md) jogkivonatok fogadása és az Azure AD B2C-vel kommunikál a fenti végpontokkal való kérések küldésével:
 
-Egy azonosító jogkivonat egy biztonsági jogkivonatot, amely az alkalmazás fogad az Azure AD B2C formája `/authorize` és `/token` végpontok. Azonosító-jogkivonatokat jelentésekként jelennek meg [JWTs](#types-of-tokens), és használatával azonosítsa azokat a felhasználókat az alkalmazás jogcímeket tartalmaznak. Ha az azonosító-jogkivonatokat szerezte be az `/authorize` végpontot, hogy elkészültek használatával a [implicit folyamat](active-directory-b2c-reference-spa.md), gyakran használt felhasználó jelentkezik be a JavaScript-alapú webes alkalmazások. Ha azonosító-jogkivonatokat a beszerzett a `/token` végpontot, hogy elkészültek használatával a [bizalmas kódfolyamat](active-directory-b2c-reference-oidc.md), amely megőrzi a jogkivonatot a böngészőből rejtett. Ez lehetővé teszi, hogy a jogkivonat biztonságos küldött HTTP-kérések az ugyanazon alkalmazás vagy szolgáltatás két összetevői közötti kommunikációhoz. Egy azonosító jogkivonat a jogcímek tetszés szerint használhatja. Gyakran használják fiók információk megjelenítéséhez vagy egy alkalmazásban a döntést hozhasson a hozzáférésről.  
+- `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
+- `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
 
-Azonosító-jogkivonatokat jelentkezett, de azok jelenleg nem titkosított. Amikor az alkalmazás- vagy API-t kap egy azonosító jogkivonat, kell [érvényesíteni az aláírást](#token-validation) igazolnia, hogy a jogkivonat hiteles-e. Az alkalmazás- vagy API is ellenőrizni kell igazolnia, azaz érvényes néhány jogcímeket. A forgatókönyv követelményeitől függően változhat, a jogcímek, az alkalmazás által ellenőrzött, de az alkalmazás kell végeznie néhány [közös jogcím ellenőrzések](#token-validation) minden forgatókönyvben.
+Biztonsági jogkivonatokat, amely az alkalmazás megkapja az Azure AD B2C-ből származhat a `/authorize` vagy `/token` végpontok. Ha azonosító-jogkivonatokat a beszerzett a `/authorize` végpontot, hogy elkészültek használatával a [implicit folyamat](active-directory-b2c-reference-spa.md), gyakran használt felhasználó jelentkezik be a javascript-alapú webes alkalmazásokhoz. Ha azonosító-jogkivonatokat a beszerzett a `/token` végpontot, hogy elkészültek használatával a [bizalmas kódfolyamat](active-directory-b2c-reference-oidc.md), amely megőrzi a jogkivonatot a böngészőből rejtett.
 
-#### <a name="sample-id-token"></a>Minta azonosító jogkivonat
-```
-// Line breaks for display purposes only
+## <a name="claims"></a>Igénylések
 
-eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IklkVG9rZW5TaWduaW5nS2V5Q29udGFpbmVyIn0.
-eyJleHAiOjE0NDIzNjAwMzQsIm5iZiI6MTQ0MjM1NjQzNCwidmVyIjoiMS4wIiwiaXNzIjoiaHR0cHM6Ly9s
-b2dpbi5taWNyb3NvZnRvbmxpbmUuY29tLzc3NTUyN2ZmLTlhMzctNDMwNy04YjNkLWNjMzExZjU4ZDkyNS92
-Mi4wLyIsImFjciI6ImIyY18xX3NpZ25faW5fc3RvY2siLCJzdWIiOiJOb3Qgc3VwcG9ydGVkIGN1cnJlbnRs
-eS4gVXNlIG9pZCBjbGFpbS4iLCJhdWQiOiI5MGMwZmU2My1iY2YyLTQ0ZDUtOGZiNy1iOGJiYzBiMjlkYzYi
-LCJpYXQiOjE0NDIzNTY0MzQsImF1dGhfdGltZSI6MTQ0MjM1NjQzNCwiaWRwIjoiZmFjZWJvb2suY29tIn0.
-h-uiKcrT882pSKUtWCpj-_3b3vPs3bOWsESAhPMrL-iIIacKc6_uZrWxaWvIYkLra5czBcGKWrYwrAC8ZvQe
-DJWZ50WXQrZYODEW1OUwzaD_I1f1HE0c2uvaWdGXBpDEVdsD3ExKaFlKGjFR2V7F-fPThkVDdKmkUDQX3bVc
-yyj2V2nlCQ9jd7aGnokTPfLfpOjuIrTsAdPcGpe5hfSEuwYDmqOJjGs9Jp1f-eSNEiCDQOaTBSvr479L5ptP
-XWeQZyX2SypN05Rjr05bjZh3j70ZUimiocfJzjibeoDCaQTz907yAg91WYuFOrQxb-5BaUoR7K-O7vxr2M-_
-CQhoFA
+Azure AD B2C-vel való használatakor, teljes mértékben szabályozhatják a jogkivonatok tartalmát. Konfigurálható [felhasználói folyamatok](active-directory-b2c-reference-policies.md) és [egyéni szabályzatok](active-directory-b2c-overview-custom.md) bizonyos csoportok felhasználói adatok küldése a jogcímek, az alkalmazás számára szükséges. Ezeket a jogcímeket is tartalmaznak alapvető tulajdonságok, mint például **displayName** és **emailAddress**. Az alkalmazások használhatják ezeket a jogcímeket biztonságosan a felhasználók és a kérelmek hitelesítéséhez. 
 
-```
+A jogcímek, az ID jogkivonatok nem bármely adott sorrendben adja vissza. A bevezetett új jogcímeket azonosító-jogkivonatokat a tetszőleges időpontban. Az alkalmazás nem szünet, új jogcímeket jelennek meg. Is [egyéni felhasználói attribútumok](active-directory-b2c-reference-custom-attr.md) a jogcímekben.
 
-### <a name="access-tokens"></a>Hozzáférési jogkivonatok
-
-Hozzáférési jogkivonat is egy biztonsági jogkivonatot, amely az alkalmazás fogad az Azure AD B2C formája `/authorize` és `/token` végpontok. Hozzáférési jogkivonatok is jelentésekként jelennek meg [JWTs](#types-of-tokens), és segítségével azonosíthatja a saját API-khoz megadott engedélyek jogcímeket tartalmaznak. Hozzáférési jogkivonatok jelentkezett, de azok jelenleg nem titkosított. Hozzáférési jogkivonatok használandó API-k és erőforrás-kiszolgálók elérésére. Ismerje meg, hogyan [hozzáférési kódok használata](active-directory-b2c-access-tokens.md). 
-
-Az API-t egy hozzáférési jogkivonatot kap, amikor kell [érvényesíteni az aláírást](#token-validation) igazolnia, hogy a jogkivonat hiteles-e. Az API-t is ellenőrizni kell igazolnia, azaz érvényes néhány jogcímeket. A forgatókönyv követelményeitől függően változhat, a jogcímek, az alkalmazás által ellenőrzött, de az alkalmazás kell végeznie néhány [közös jogcím ellenőrzések](#token-validation) minden forgatókönyvben.
-
-### <a name="claims-in-id-and-access-tokens"></a>Azonosító és a hozzáférési jogkivonatokban lévő jogcímek
-
-Azure AD B2C-vel való használatakor, teljes mértékben szabályozhatják a jogkivonatok tartalmát. Konfigurálható [felhasználói folyamatok](active-directory-b2c-reference-policies.md) és egyéni szabályzatok felhasználói bizonyos adatkészletek küldjön a jogcímek az alkalmazáshoz szükséges a műveletek. Ezek a jogcímek tartalmazhatják az alapvető tulajdonságok, például a felhasználó `displayName` és `emailAddress`. Emellett tartalmazhat [egyéni felhasználói attribútumok](active-directory-b2c-reference-custom-attr.md) definiálható a B2C-címtárban. Minden azonosító és a hozzáférési jogkivonatot kapott biztonsággal kapcsolatos jogcímek egy bizonyos készletét tartalmazza. Az alkalmazások használhatják ezeket a jogcímeket biztonságosan a felhasználók és a kérelmek hitelesítéséhez.
-
-Vegye figyelembe, hogy a jogcímek, az ID jogkivonatok nem bármely adott sorrendben adja vissza. Emellett új jogcímeket költségektől azonosító-jogkivonatokat a tetszőleges időpontban. Az alkalmazás kell tilos megszüntetnie, ahogy új jogcímeket jelennek meg. Az alábbiakban szerepel az Azure AD B2C által kiadott azonosítója és a hozzáférési jogkivonatokban várhatóan jogcímeket. Bármilyen további jogcím szabályzatok határozzák meg. Eljárás, próbálja meg illessze be azt a mintául szolgáló azonosító jogkivonat jogcímeiben vizsgálatával [jwt.ms](https://jwt.ms). További részletek találhatók a [OpenID Connect specifikáció](https://openid.net/specs/openid-connect-core-1_0.html).
+Az alábbi táblázat a jogcímeket, hogy várt azonosító-jogkivonatokat, majd elérni az Azure AD B2C által kiállított jogkivonatokban.
 
 | Name (Név) | Jogcím | Példaérték | Leírás |
-| --- | --- | --- | --- |
-| Célközönség |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Célközönség jogcím azonosítja a jogkivonat az illetékes címzett. Az Azure AD B2C-vel a célközönség megegyezik az alkalmazás Alkalmazásazonosító, az alkalmazáshoz, az alkalmazás regisztrációs portálon rendelt. Az alkalmazás kell érvényesíteni ezt az értéket, és elutasítja a tokent, ha nem felel meg. Célközönségét egyenértékű az erőforrás. |
-| Kiállító |`iss` |`https://{tenantname}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |Ez a jogcím azonosítja a biztonsági jogkivonat-szolgáltatás (STS) hoz létre, és a jogkivonatát adja vissza. Az Azure AD-címtárat, amelyben a felhasználó hitelesítési is azonosítja. Az alkalmazás ellenőrizni kell a kibocsátó jogcím győződjön meg arról, hogy a jogkivonat érkezett az Azure Active Directory v2.0-végpontra. |
-| Tulajdonos: |`iat` |`1438535543` |Ez a jogcím az idő, amikor a jogkivonat lett kiállítva, alapidőpont szerint jelöli. |
-| Lejárati idő |`exp` |`1438539443` |A lejárati idő jogcím az idő, amikor a jogkivonat érvénytelenné, alapidőpont szerint jelennek meg. Az alkalmazás használjon ezt az igényt a jogkivonatok élettartamának érvényességének ellenőrzéséhez. |
-| Nem előtt |`nbf` |`1438535543` |Ez a jogcím az idő, amikor a jogkivonat lesz érvényes, alapidőpont szerint kezeli őket. Ez általában a ugyanaz, mint az idő a jogkivonat lett kiállítva. Az alkalmazás használjon ezt az igényt a jogkivonatok élettartamának érvényességének ellenőrzéséhez. |
-| Verzió |`ver` |`1.0` |Ez az azonosító jogkivonat verziója alapján Azure ad-ben. |
-| Kód kivonata |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Csak akkor, ha a jogkivonat az OAuth 2.0 hitelesítési kód együtt kiadott kód kivonatot egy azonosító jogkivonat tartalmazza. Kód kivonatot használható egy engedélyezési kód hitelességének ellenőrzéséhez. Az ellenőrzés elvégzéséhez további részletekért tekintse meg a [OpenID Connect specifikáció](https://openid.net/specs/openid-connect-core-1_0.html).  |
-| Hozzáférési jogkivonat kivonata |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Csak akkor, ha a jogkivonat együtt az OAuth 2.0 hozzáférési jogkivonatban kiadott egy hozzáférési jogkivonat kivonata egy azonosító jogkivonat tartalmazza. Egy hozzáférési jogkivonat kivonata használható hozzáférési jogkivonat hitelességének ellenőrzéséhez. Az ellenőrzés elvégzéséhez további részletekért tekintse meg a [OpenID Connect-specifikáció](https://openid.net/specs/openid-connect-core-1_0.html)  |
-| Nonce |`nonce` |`12345` |Egy egyszeri ismétlésének támadások számának csökkentése érdekében használt stratégiát is. Az alkalmazás is megadhat egy egyszeri egy engedélyezési kérésben a `nonce` lekérdezési paraméter. Az értéknek a kérelem fogja bocsátja ki kívánja módosítani a a `nonce` jogcím csak egy azonosító jogkivonat. Ez lehetővé teszi az alkalmazásba és ellenőrizze az érték azt a kérést, amely az alkalmazás munkamenet az egy adott azonosító jogkivonat társítja a megadott értékkel. Az alkalmazás végre kell hajtania az ellenőrzés az azonosító jogkivonat érvényesítése során. |
-| Tárgy |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |Ez az a arról, hogy mely a token használjon esetleg imperatív állításokat információkat, például az alkalmazás a felhasználó egyszerű. Ez az érték nem módosítható és nem hozzárendelni és újra felhasználható. Az engedélyezési ellenőrzéséhez biztonságosan, például amikor a jogkivonat erőforrások eléréséhez használható. Alapértelmezés szerint megjelenik a tulajdonos jogcímet a felhasználó Objektumazonosítóját. További tudnivalókért lásd: [Azure Active Directory B2C: Jogkivonat, munkamenet és egyszeri bejelentkezés beállításainak](active-directory-b2c-token-session-sso.md). |
-| Hitelesítési környezethez tartozó osztályhivatkozása |`acr` |Nem alkalmazható |Jelenleg nem használt, kivéve a régebbi házirendeket. További tudnivalókért lásd: [Azure Active Directory B2C: Jogkivonat, munkamenet és egyszeri bejelentkezés beállításainak](active-directory-b2c-token-session-sso.md). |
-| Megbízhatósági keretrendszer házirend |`tfp` |`b2c_1_sign_in` |Ez az az azonosító jogkivonat beszerzéséhez használt a házirend nevét. |
-| Hitelesítési idő |`auth_time` |`1438535543` |Ez a jogcím az idő, amikor egy felhasználó legutóbbi megadott hitelesítő adatokat, alapidőpont szerint jelöli. |
+| ---- | ----- | ------------- | ----------- |
+| Célközönség | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | A jogkivonat az illetékes címzett azonosítja. Az Azure AD B2C-vel a célközönségét az alkalmazás azonosítója. Az alkalmazás kell érvényesíteni ezt az értéket, és elutasítja a tokent, ha nem felel meg. Célközönségét egyenértékű az erőforrás. |
+| Kiállító | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Azonosítja a biztonsági jogkivonat-szolgáltatás (STS) hoz létre, és a jogkivonatát adja vissza. A könyvtárat, amelyben a felhasználó hitelesítési is azonosítja. Az alkalmazás a kibocsátó jogcím győződjön meg arról, hogy a jogkivonat származik-e a megfelelő végpontra, ellenőrizni kell. |
+| Tulajdonos: | `iat` | `1438535543` | Az idő, amikor a jogkivonat lett kiállítva, jelöli, alapidőpont szerint. |
+| Lejárati idő | `exp` | `1438539443` | Az idő, amikor a jogkivonat érvénytelen, válik jelöli, alapidőpont szerint. Az alkalmazás használ a ezt az igényt a jogkivonatok élettartamának érvényességének ellenőrzéséhez. |
+| Nem előtt | `nbf` | `1438535543` | Az idő, amikor a jogkivonat érvényes, válik jelöli, alapidőpont szerint. Ez az idő általában a ugyanaz, mint az idő a jogkivonat lett kiállítva. Az alkalmazás használ a ezt az igényt a jogkivonatok élettartamának érvényességének ellenőrzéséhez. |
+| Verzió | `ver` | `1.0` | Az azonosító jogkivonat, az Azure AD B2C által meghatározott verziója. |
+| Kód kivonata | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Csak akkor, ha a jogkivonat az OAuth 2.0 hitelesítési kód együtt kiadott egy azonosító jogkivonat szereplő kód kivonatot. Kód kivonatot használható egy engedélyezési kód hitelességének ellenőrzéséhez. Az ellenőrzéssel kapcsolatos további információkért lásd: a [OpenID Connect specifikáció](https://openid.net/specs/openid-connect-core-1_0.html).  |
+| Hozzáférési jogkivonat kivonata | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Egy hozzáférési jogkivonat-kivonat csak akkor, ha a jogkivonat együtt az OAuth 2.0 hozzáférési jogkivonatban kiadott egy azonosító jogkivonat szerepel. Egy hozzáférési jogkivonat kivonata használható hozzáférési jogkivonat hitelességének ellenőrzéséhez. Az ellenőrzéssel kapcsolatos további információkért lásd: a [OpenID Connect-specifikáció](https://openid.net/specs/openid-connect-core-1_0.html)  |
+| Nonce | `nonce` | `12345` | Egy egyszeri ismétlésének támadások számának csökkentése érdekében használt stratégiát is. Az alkalmazás is megadhat egy egyszeri egy engedélyezési kérésben a `nonce` lekérdezési paraméter. Az értéknek a kérésben bocsásson ki az kívánja módosítani a `nonce` jogcím csak egy azonosító jogkivonat. Ez a jogcím lehetővé teszi, hogy az alkalmazás ellenőrzéséhez az érték a kérésben megadott értékkel. Az alkalmazásoknak végre kell hajtania az ellenőrzés az azonosító jogkivonat érvényesítése során. |
+| Tárgy | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Az egyszerű arról, hogy mely a token használjon esetleg imperatív állításokat információkat, például egy alkalmazás felhasználója. Ez az érték nem módosítható és nem hozzárendelni és újra felhasználható. Az engedélyezési ellenőrzéséhez biztonságosan, például amikor a jogkivonat erőforrások eléréséhez használható. Alapértelmezés szerint megjelenik a tulajdonos jogcímet a felhasználó Objektumazonosítóját. |
+| Hitelesítési környezethez tartozó osztályhivatkozása | `acr` | Nem alkalmazható | Csak a régebbi szabályzatokkal használható. |
+| Megbízhatósági keretrendszer házirend | `tfp` | `b2c_1_signupsignin1` | A szabályzat az azonosító jogkivonat beszerzéséhez használt neve. |
+| Hitelesítési idő | `auth_time` | `1438535543` | Az idő, amikor a felhasználó utoljára megadott hitelesítő adatokat, jelöli, alapidőpont szerint. |
+| Hatókör | `scp` | `Read`| Erőforrás-hozzáférési jogkivonatot az engedélyeket. Több megadott engedélyek szóközzel vannak elválasztva. |
+| Jogosult fél | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | A **Alkalmazásazonosító** az ügyfélalkalmazás által kezdeményezett a kérelmet. |
 
-### <a name="refresh-tokens"></a>Frissítési jogkivonatok
-Frissítési jogkivonatok olyan biztonsági jogkivonatok, amelyek az alkalmazás segítségével szerzi be a új azonosító-jogkivonatokat, és hozzáférési jogkivonatokat az OAuth 2.0 flow-ban. Az alkalmazás a hosszú távú a felhasználók nevében erőforrásokhoz való hozzáférés, anélkül, hogy a ezeket a felhasználói nyújtanak.
+## <a name="configuration"></a>Konfiguráció
 
-Fogadásához egy frissítési jogkivonat a jogkivonat-válasz, az alkalmazás kell igényelnie a `offline_access` hatókör. További információkat talál a `offline_access` hatókörét, tekintse meg a [Azure AD B2C protokollreferenciáját](active-directory-b2c-reference-protocols.md).
+A következő tulajdonságok megegyeznek az használt [kezelheti a biztonsági jogkivonatok élettartamának](configure-tokens.md) Azure AD B2C által kibocsátott:
 
-Frissítési jogkivonatok, és mindig lesz, teljesen átlátszatlan, az alkalmazáshoz. Azok az Azure AD által kiállított és ellenőrzött és értelmezése kizárólag az Azure ad-ben. Hosszú élettartamú, azonban az alkalmazás nem kell írni az az elvárás, hogy a frissítési jogkivonatok egy meghatározott ideig tart. Frissítési biztonsági jogkivonat bármely pillanatban a többféle okból lehet érvényteleníteni. Az egyetlen módszer az alkalmazás tudja, hogy ha egy frissítési jogkivonat érvényes, hogy azáltal, hogy a jogkivonat kérése az Azure AD a beváltáshoz kísérlet.
+- **Hozzáférési és azonosító jogkivonat élettartama (perc)** – a védett erőforrások eléréséhez az OAuth 2.0 tulajdonosi jogkivonat élettartama. Az alapértelmezett érték 60 perc. (A határokat is beleértve) a minimális érték 5 perc. (A szélsőértékek megengedettek) legfeljebb 1440 perc.
 
-Amikor egy új jogkivonatot egy frissítési jogkivonat beváltása (, és ha az alkalmazás megkapta-e a `offline_access` hatókör), a jogkivonat választ kap egy új frissítési jogkivonatot. Mentse az újonnan kiállított frissítési jogkivonatot. A frissítési jogkivonat a kérelemben használt azt kell lecserélnie. Ez segít garantálni, hogy a frissítési biztonsági jogkivonat érvényes, amíg maradnak.
+- **Frissítési jogkivonat élettartama (nap)** – az a maximális időtartam, ameddig egy új hozzáférési vagy azonosító jogkivonat beszerzésére használható a frissítési jogkivonatot. Az adott időszakban is vonatkozik egy új frissítési jogkivonat beszerzéséhez, ha az alkalmazása megkapta-e a `offline_access` hatókör. Az alapértelmezett érték 14 nap. (A határokat is beleértve) a minimális érték egy nap. A (inkluzív) maximális érték 90 napig.
 
-## <a name="token-validation"></a>Érvényesítési jogkivonat
-A jogkivonat érvényesítéséhez, az alkalmazás ellenőrizze az aláírás és a jogcímek jogkivonat.
+- **Frissítési jogkivonat csúszóablak-élettartama (nap)** - e a felhasználónak kötelező hitelesítse magát újra, attól függetlenül, az érvényességi időtartam legutóbbi frissítése az alkalmazás által beszerzett jogkivonattal idő időszak eltelte után. Ez csak biztosítható, hogy ha a kapcsoló beállítása **kötött**. Nagyobb vagy azzal egyenlőnek kell a **frissítési jogkivonat élettartama (nap)** értéket. Ha a kapcsoló beállítása **Unbounded**, nem adhat meg egy adott érték. Az alapértelmezett érték 90 nap. (A határokat is beleértve) a minimális érték egy nap. A (inkluzív) maximális hossz 365 nap során.
 
-Számos nyílt forráskódú kódtár ellenőrzési JWTs, attól függően, a választott nyelven érhetők el. Azt javasoljuk, hogy a saját ellenőrzési logika megvalósítása helyett inkább ezen lehetőségek közül válogathat. Az adatokat az útmutató segítségével megtudhatja, hogyan megfelelően használni az ezeket a kódtárakat.
+A következő használati esetek engedélyezve vannak ezek a tulajdonságok használatával:
 
-### <a name="validate-the-signature"></a>Az aláírás ellenőrzése
-Jwt-t tartalmaz három szegmensek elválasztva a `.` karakter. Az első szegmens a *fejléc*, a második pedig a *törzs*, és a harmadik pedig a *aláírás*. Az aláírás szegmens a token hitelességének ellenőrzéséhez, hogy az alkalmazás által is megbízhatónak használható.
+- Maradjon bejelentkezve a egy mobilalkalmazásba határozatlan ideig felhasználó engedélyezése mindaddig, amíg a felhasználó az alkalmazás folyamatosan aktív. Beállíthat **frissítési jogkivonat csúszóablak-élettartama (nap)** való **Unbounded** a bejelentkezési felhasználói folyamat.
+- Az iparági biztonsági és megfelelőségi követelmények felel meg a megfelelő hozzáférési jogkivonatok élettartamának beállításával.
 
-Az Azure AD B2C-jogkivonatok jelentkezett, iparági szabványnak megfelelő aszimmetrikus titkosítási algoritmusok, például RSA-256 használatával. A fejléc a jogkivonat a token aláírásához használt kulcs és a titkosítási módra vonatkozó információkat tartalmazza:
+Ezek a beállítások a jelszó-átállítási felhasználókövetési adatai nem érhetők el. 
+
+## <a name="compatibility"></a>Kompatibilitás
+
+A következő tulajdonságok megegyeznek az használt [jogkivonat-kompatibilitási kezelése](configure-tokens.md):
+
+- **Kibocsátói (iss) jogcím** – Ez a tulajdonság azonosítja az Azure AD B2C-bérlő, amely kiállította a jogkivonatot. Az alapértelmezett érték `https://<domain>/{B2C tenant GUID}/v2.0/`. Az érték `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` azonosítókat tartalmazza az Azure AD B2C-bérlő és a felhasználói folyamatot, amely a jogkivonat kérése volt használatban. Ha az alkalmazás vagy könyvtár van szüksége az Azure AD B2C-vel meg kell felelnie az a [OpenID Connect-felderítési 1.0 specifikáció](https://openid.net/specs/openid-connect-discovery-1_0.html), használja ezt az értéket.
+
+- **Tárgy (sub) jogcím** – Ez a tulajdonság azonosítja az entitást, amelyhez a token használjon esetleg imperatív állításokat információkat. Az alapértelmezett érték **ObjectID**, amely feltölti a `sub` jogcím a token az a felhasználó Objektumazonosítóját. Az érték **nem támogatott** biztosított csak a visszamenőleges kompatibilitás érdekében. Váltson át a javasolt **ObjectID** , amint tudunk.
+
+- **Házirend Azonosítóját jelölő jogcím** – Ez a tulajdonság azonosítja a jogcímtípus, amelybe a jogkivonat kérése használt szabályzatnév fel van töltve. Az alapértelmezett érték `tfp`. Az érték `acr` biztosított csak a visszamenőleges kompatibilitás érdekében.
+
+## <a name="pass-through"></a>Továbbítás
+
+Felhasználói út indításakor Azure AD B2C hozzáférési jogkivonatot kap Identitásszolgáltatóként. Az Azure AD B2C használja ezt a jogkivonatot a felhasználóval kapcsolatos információk lekéréséhez. Akkor [a felhasználói folyamat jogcím engedélyezése](idp-pass-through-user-flow.md) vagy [jogcím meghatározásához az egyéni házirendek](idp-pass-through-custom.md) a jogkivonat segítségével átadása az alkalmazásokat, amelyek az Azure AD B2C-ben regisztrálja. Az alkalmazás kell használnia egy [v2 felhasználói folyamat](user-flow-versions.md) átadja a token jogcímként előnyeinek kihasználása érdekében.
+
+Az Azure AD B2C jelenleg csak támogatja a hozzáférési jogkivonatot az OAuth 2.0 identitásszolgáltató, például a Facebook és a Google átadása. Minden egyéb identitás-szolgáltatóktól a jogcím vissza üres. 
+
+## <a name="validation"></a>Ellenőrzés
+
+A jogkivonat érvényesítéséhez, az alkalmazás ellenőrizze az aláírás és a jogcímek jogkivonat. Számos nyílt forráskódú kódtár ellenőrzési JWTs, attól függően, a választott nyelven érhetők el. Javasoljuk, hogy a saját ellenőrzési logika megvalósítása helyett inkább ezen lehetőségek közül válogathat.
+
+### <a name="validate-signature"></a>Aláírás ellenőrzése
+
+Jwt-t tartalmaz három szegmensek egy *fejléc*, amely egy *törzs*, és a egy *aláírás*. Az aláírás szegmens a token hitelességének ellenőrzéséhez, hogy az alkalmazás által is megbízhatónak használható. Az Azure AD B2C-jogkivonatok jelentkezett, iparági szabványnak megfelelő aszimmetrikus titkosítási algoritmusok, például RSA-256 használatával. 
+
+A fejléc a jogkivonat a token aláírásához használt kulcs és a titkosítási módra vonatkozó információkat tartalmazza:
 
 ```
 {
@@ -113,44 +119,37 @@ Az Azure AD B2C-jogkivonatok jelentkezett, iparági szabványnak megfelelő aszi
 }
 ```
 
-A `alg` jogcím azt jelzi, hogy a jogkivonat aláírásához használt algoritmust. A `kid` jogcím azt jelzi, hogy a jogkivonat aláírásához használt adott nyilvános kulcs.
+Értékét a **továbbíthatóak** jogcím a token aláírásához használt algoritmust. Értékét a **gyerek** jogcím a token aláírásához használt nyilvános kulcsot. Egy adott időpontban a Azure AD B2C nyilvános-titkos kulcspárok készletét bármelyike segítségével egy tokent jelentkezhetnek be. Az Azure AD B2C rendszeres időközönként forog kulcsok lehetséges készletét. Az alkalmazás automatikusan kezeli a fő módosításokat kell írni. Az Azure AD B2C által használt nyilvános kulcsok frissítései ésszerű gyakoriságot van 24 óránként.
 
-Egy adott időpontban a az Azure AD által meghatározott készlete nyilvános-titkos kulcspárok valamelyikét használja a jogkivonat jelentkezhetnek be. Az Azure AD rendszeres időközönként forog kulcsok lehetséges készletét, így az alkalmazás automatikusan kezeli a fő módosításokat kell írni. Az Azure AD által használt nyilvános kulcsok frissítései ésszerű gyakoriságot van 24 óránként.
-
-Az Azure AD B2C az OpenID Connect metaadatok végpontja van. Ez lehetővé teszi az alkalmazások futtatáskor az Azure AD B2C-vel kapcsolatos információkat lekérni. Ezen információk közé tartozik a végpontokat, a jogkivonat tartalma és a jogkivonat-aláíró kulcsok. A B2C-címtár minden JSON-metaadatok dokumentumok tartalmazza. Például a metaadat-dokumentum számára a `b2c_1_sign_in` szabályzat `fabrikamb2c.onmicrosoft.com` helyen található:
+Az Azure AD B2C az OpenID Connect metaadatok végpontja van. Ezt a végpontot használja, alkalmazásokat kérhetnek futtatáskor az Azure AD B2C-vel kapcsolatos információkat. Ezen információk közé tartozik a végpontokat, a jogkivonat tartalma és a jogkivonat-aláíró kulcsok. Az Azure AD B2C-bérlő minden JSON-metaadatok dokumentumok tartalmazza. A metaadat-dokumentumban több hasznos információt tartalmazó JSON-objektum. A metaadatok tartalmaz **jwks_uri**, révén a hely nyilvános kulcsok készlete, amelyek használhatók a jogkivonatok aláírásához. Ajánlott a hely dinamikusan beolvasni a metaadat-dokumentum és-elemzés, hogy helyet, de itt megadott a **jwks_uri**:
 
 ```
-https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
+https://contoso.b2clogin.com/contoso.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_signupsignin1
 ```
-
-`fabrikamb2c.onmicrosoft.com` a felhasználó hitelesítésére használt B2C-címtár és `b2c_1_sign_in` a házirend, a token beszerzéséhez használt. Mely házirendet egy token aláírásához használt (és, hogy hová lépjen a metaadatok beolvasása), két lehetősége van. Először a szabályzat neve szerepel a `acr` jogcím a jogkivonatban. A JWT törzse ki jogcímeket base-64 dekódolás a szervezet és a JSON-karakterlánc, az eredmények deszerializálása szerint elemezhetők. A `acr` jogcímszabály lesz, amellyel a jogkivonatot kiállítani a házirend nevét.  A másik lehetőség egy kódolása a szabályzatot az értékét a `state` paraméter, amikor a kérelmet, és ezután dekódolni a meghatározásához, hogy mely házirendet lett megadva. Mindkét módszer esetén érvényes.
-
-A metaadat-dokumentumban több hasznos információt tartalmazó JSON-objektum. Ezek közé tartozik az OpenID Connect hitelesítési elvégzéséhez szükséges végpontok helyét. Ezek közé tartozik `jwks_uri`, révén a hely nyilvános kulcsok készlete, amelyek használhatók a jogkivonatok aláírásához. Hogy a hely van az itt elérhető, de a legjobb, ha a hely dinamikusan beolvasni a metaadat-dokumentum segítségével, illetve ki elemzés `jwks_uri`:
-
-```
-https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
-```
-
 A következő URL-címen található JSON-dokumentum összes a nyilvános kulcsot tartalmazza egy adott pillanatban használja. Az alkalmazás használhatja a `kid` jogcím a JWT fejlécében a JSON-dokumentum, amely egy adott token aláírására szolgál ki a nyilvános kulcsot. Aláírás-ellenőrzése végez, majd a megfelelő nyilvános kulcsot és a jelzett algoritmus használatával.
 
-Aláírás-ellenőrzés végrehajtása leírását ez a dokumentum hatókörén kívül esik. Számos nyílt forráskódú kódtár segítséget ezt, ha szüksége lesz rá érhetők el.
+A metaadat-dokumentum számára a `B2C_1_signupsignin1` szabályzat a `contoso.onmicrosoft.com` bérlő a következő helyen található:
 
-### <a name="validate-the-claims"></a>A jogcímek ellenőrzése
-Amikor az alkalmazás- vagy API-t kap egy azonosító jogkivonat, azt az azonosító jogkivonat is végre kell hajtania több ellenőrzi a jogcímek ellen. Ezek közé tartozik, de nem korlátozódnak:
+```
+https://contoso.b2clogin.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_signupsignin1
+```
 
-* A **célközönség** jogcím: Ez ellenőrzi, hogy az azonosító jogkivonat szánták, az alkalmazásnak meg kell adni.
-* A **nem előtt** és **lejárati idő** jogcímek: Ezek győződjön meg arról, hogy az azonosító jogkivonat nem járt le.
-* A **kibocsátó** jogcím: Ez ellenőrzi, hogy a jogkivonat bocsátotta az alkalmazás Azure ad-ben.
-* A **egyszeri**: Ez a stratégia ismétlésének elleni támadások kockázatait.
+Mely házirendet egy token aláírásához használt (és, hogy hová lépjen a metaadatait az), két lehetősége van. Először a szabályzat neve szerepel a `acr` jogcím a jogkivonatban. A JWT törzse ki jogcímeket base-64 dekódolás a szervezet és a JSON-karakterlánc, az eredmények deszerializálása szerint elemezhetők. A `acr` jogcím, amellyel a jogkivonatot kiállítani a házirend nevét. A másik lehetőség, hogy a szabályzatot az értékét kódolása a `state` paraméter, amikor a kérelmet, és ezután dekódolni a meghatározásához, hogy mely házirendet lett megadva. Mindkét módszer esetén érvényes.
 
-Ellenőrzések, végre kell hajtania, az alkalmazás teljes listájáért tekintse meg a [OpenID Connect specifikáció](https://openid.net). Ezeket a jogcímeket várt értéket részletek szerepelnek az előző [jogkivonat szakaszban](#types-of-tokens).  
+Aláírás-ellenőrzés végrehajtása leírását ez a dokumentum hatókörén kívül esik. Számos nyílt forráskódú kódtár segítséget nyújt a jogkivonatot érvényesíteni érhetők el.
 
-## <a name="token-lifetimes"></a>A jogkivonatok élettartama
-A következő jogkivonatok élettartamának tudását további vannak megadva. Ezek segítségével amikor fejlesztésekor és hibakeresésekor alkalmazásokat. Vegye figyelembe, hogy az alkalmazások nem írható várható bármelyik ezek élettartam változatlan marad. Akkor is, és változni fog. Tudjon meg többet a [jogkivonatok élettartamának testreszabása](active-directory-b2c-token-session-sso.md) Azure AD B2C-ben.
+### <a name="validate-claims"></a>Jogcímek ellenőrzése
 
-| Jogkivonat | Élettartam | Leírás |
-| --- | --- | --- |
-| Azonosító jogkivonatok |Egy óra |ID jogkivonatok érvényesek általában egy órán keresztül. A webalkalmazás az élettartam használatával saját munkamenetek karbantartása felhasználókkal (ajánlott). Azt is beállíthatja egy másik munkamenet élettartamára. Ha az alkalmazás egy új azonosító jogkivonat beszerzése, egyszerűen kell ellenőriznie egy új bejelentkezési kérelmet az Azure ad-hez. Ha egy felhasználó érvényes böngésző-munkamenet, az Azure ad-vel rendelkezik, adja meg ismét hitelesítő adatait, előfordulhat, hogy nem szükséges a, hogy a felhasználó. |
-| Frissítési jogkivonatok |Akár 14 nap |A egyetlen frissítési jogkivonatok esetében legfeljebb 14 napig érvényes. Azonban a frissítési jogkivonatok válhat érvénytelen számos oka bármikor. Az alkalmazás továbbra is próbálja használni a frissítési jogkivonatok mindaddig, amíg a kérelem meghiúsul, vagy amíg az alkalmazás egy új lecseréli a frissítési jogkivonatot. A frissítési jogkivonatok is válhatnak, ha 90 napig teljesül, mivel a felhasználó utoljára megadott hitelesítő adatok érvénytelen. |
-| Engedélyezési kód |Öt perc alatt |Engedélyezési kódokat szándékosan rövid ideig tartó. Ezek kell kézbesítésük után azonnal hozzáférési jogkivonatok, azonosító-jogkivonatokat vagy frissítési biztonsági jogkivonat érkezésükkor. |
+Amikor az alkalmazások és API-t kap egy azonosító jogkivonat, azt az azonosító jogkivonat is végre kell hajtania több ellenőrzi a jogcímek ellen. Ellenőrizni kell a következő jogcímek:
+
+- **célközönség** – ellenőrzi, hogy az azonosító jogkivonat szánták, az alkalmazásnak meg kell adni.
+- **nem előtt** és **lejárati idő** – ellenőrzi, hogy az azonosító jogkivonat lejárt még nem.
+- **kiállító** –, hogy a jogkivonat ellenőrzi adta-e az alkalmazás Azure AD B2C-t.
+- **egyszeri** -ismétlésének elleni támadások kockázatait stratégiáját.
+
+Az alkalmazásoknak végre kell hajtania ellenőrzések teljes listájáért tekintse meg a [OpenID Connect specifikáció](https://openid.net).  
+
+## <a name="next-steps"></a>További lépések
+
+Ismerje meg, hogyan [hozzáférési kódok használata](active-directory-b2c-access-tokens.md).
 

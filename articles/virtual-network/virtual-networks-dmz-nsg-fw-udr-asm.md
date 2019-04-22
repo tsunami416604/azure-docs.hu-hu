@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
 ms.openlocfilehash: 668862714b416bd89d3b5f82caf8b0305fccae54
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426528"
 ---
 # <a name="example-3-build-a-perimeter-network-to-protect-networks-with-a-firewall-udr-and-nsgs"></a>3. példa: Hozhat létre egy szegélyhálózaton hálózatok egy tűzfal, udr-t és az NSG-k védelme
@@ -370,7 +370,7 @@ Az alábbiakban az egyes szabályok ebben a példában a végrehajtásához tula
   
   * A webes előtér-szabály:
   
-    ![Firewall Web Rule][12]
+    ![Webes tűzfalszabály][12]
   
     A cél NAT-szabály lehetővé teszi, hogy az alkalmazás tényleges forgalom elérhesse a kiszolgáló. Eltérően a szabályok a biztonsági, felügyeleti és etcetera alkalmazás-szabályok lehetővé teszik a külső felhasználók vagy a szolgáltatások eléréséhez (ok). Ebben a példában egy webkiszolgálón 80,-as porton, amely lehetővé teszi, hogy egyetlen alkalmazás tűzfalszabályt átirányítja a forgalmat, amelynek célja ehelyett a webalkalmazás-kiszolgáló belső IP-címének átirányítása egy külső IP-címet tartalmaz. Az átirányított forgalom munkamenet NAT által újramegfeleltetése alatt a belső kiszolgálónak.
 
@@ -379,7 +379,7 @@ Az alábbiakban az egyes szabályok ebben a példában a végrehajtásához tula
   
   * A háttér-szabály engedélyezi a AppVM01 kiszolgálón, de nem AppVM02 keresztül kommunikáljon a webkiszolgáló **bármely** szolgáltatás:
   
-    ![Firewall AppVM01 Rule][13]
+    ![Tűzfalszabály AppVM01][13]
   
     A pass-szabály lehetővé teszi, hogy a bármely az IIS-kiszolgálón az előtér-alhálózat AppVM01 elérni (10.0.2.5) bármely porton bármely protokoll használatával, hogy az adatok is hozzáférhet a webalkalmazáshoz.
   
@@ -402,7 +402,7 @@ Az alábbiakban az egyes szabályok ebben a példában a végrehajtásához tula
 
 * **DNS-szabály**: A pass-szabály lehetővé teszi, hogy csak (53-as port) a DNS-forgalom számára a DNS-kiszolgáló. Ebben a környezetben a legtöbb forgalmat az előtértől a háttérbe, ez a szabály kifejezetten engedélyezi a DNS-forgalom blokkolva van.
   
-    ![Firewall DNS Rule][15]
+    ![DNS-tűzfalszabály][15]
   
     > [!NOTE]
     > A **kapcsolódási módszert** értékre van állítva `No SNAT` , mert ez a szabály belső IP-cím forgalmat a belső IP-címhez, és nem NAT-n keresztül átirányítási nem szükséges.

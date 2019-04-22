@@ -14,10 +14,10 @@ ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 459758142c94ddfd244df1427dd5632186efc0de
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266930"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
@@ -42,7 +42,7 @@ Amikor létrehoz egy függvényalkalmazást, válassza ki a Functions szolgálta
 
 A Használatalapú csomag használatakor a példányok az Azure Functions-gazdagép dinamikusan hozzáadása és eltávolítása a bejövő események száma alapján. A kiszolgáló nélküli csomag automatikusan skálázható, és kell fizetnie a számítási erőforrásokat, csak akkor, amikor a függvények futnak. A Használatalapú csomag a függvény végrehajtási időkorlátja konfigurálható bizonyos idő után.
 
-Végrehajtások száma, végrehajtási időt, és a használt memória alapján számoljuk. A számlázás belül függvényalkalmazás a függvények összesített érték. További információkért lásd: a [Azure Functions díjszabását ismertető lapon].
+Végrehajtások száma, végrehajtási időt, és a használt memória alapján számoljuk. A számlázás belül függvényalkalmazás a függvények összesített érték. További információkért lásd: a [Az Azure Functions díjszabását ismertető lapon].
 
 A Használatalapú szolgáltatási csomag alapértelmezett és a következő előnyöket biztosítja:
 
@@ -149,7 +149,7 @@ Skálázás tényezők és az eseményindító és a kiválasztott nyelvvel elt�
 
 Különböző triggereket is rendelkezhetnek, különböző méretezési korlátok, valamint a dokumentált alatt:
 
-* [Eseményközpont](functions-bindings-event-hubs.md#trigger---scaling)
+* [Event Hub](functions-bindings-event-hubs.md#trigger---scaling)
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Ajánlott eljárások és minták a méretezhető alkalmazások
 
@@ -157,7 +157,7 @@ Számos szempontot, egy függvényalkalmazást, amelyek befolyásolják, arról,
 
 ### <a name="billing-model"></a>Számlázási modell
 
-A Használatalapú díjcsomag részletes leírása a számlázás a [Azure Functions díjszabását ismertető lapon]. Használati összesített értéket jelenít meg a függvény alkalmazási szintű, és csak a függvénykódot végrehajtott idő számát. A számlázási egység az alábbiak:
+A Használatalapú díjcsomag részletes leírása a számlázás a [Az Azure Functions díjszabását ismertető lapon]. Használati összesített értéket jelenít meg a függvény alkalmazási szintű, és csak a függvénykódot végrehajtott idő számát. A számlázási egység az alábbiak:
 
 * **Erőforrás-használat gigabájtmásodpercben (GB-s)**. Számított, amely a memóriaméret és a egy függvényalkalmazás lévő összes függvény végrehajtási idejének. 
 * **Végrehajtások**. Minden alkalommal, amikor egy függvény végrehajtása, amely egy eseményvezérelt eseményindítóra válasz számítanak.

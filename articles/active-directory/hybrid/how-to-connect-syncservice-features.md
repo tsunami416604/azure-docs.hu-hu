@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82b2b75d5505ddda91232bf1055bd70a68d333d0
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: be67a6f287e2d6e77070928cbe12542857696011
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58792399"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680281"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Az Azure AD Connect szinkronizálási szolgáltatás funkciók
 
@@ -96,7 +96,7 @@ Hagyományosan a UserPrincipalName attribútum a helyszínről a szinkronizálá
 
 További részletekért lásd: [az Office 365, Azure vagy Intune-ban a felhasználónevek nem egyeznek, a helyszíni egyszerű Felhasználónévvel vagy másodlagos bejelentkezési Azonosítót](https://support.microsoft.com/kb/2523192).
 
-Ez a funkció lehetővé teszi, hogy a szinkronizálási motor frissítése a userPrincipalName, amikor megváltozott a helyszínen, és használhatja a Jelszókivonat-szinkronizálás. Ha összevonási használja, ez a funkció nem támogatott.
+Ez a funkció lehetővé teszi, hogy a szinkronizálási motor frissítése a userPrincipalName, amikor megváltozott a helyszíni és jelszó kivonatoló sync vagy az átmenő hitelesítést használ. Ha összevonási használja, ez a funkció nem támogatott.
 
 Ez a funkció a alapértelmezés szerint újonnan jön létre az Azure AD-címtár. Ha ez a funkció engedélyezve van az Ön számára futtatásával tekintheti meg:  
 

@@ -9,22 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: ca9b08cdccd43a093ca8b5001d3e30be0e5258b5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 54a51c567e8dd655ee3a575d1d4887ec6e094e40
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894678"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684056"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
-A Language Understanding (LUIS) tároló betölti a betanított vagy közzétett Language Understanding modell, azaz egy [LUIS-alkalmazásokon](https://www.luis.ai), egy docker-tárolóba, és hozzáférést biztosít a lekérdezés előrejelzéseket a tároló API-ból végpontok. Lekérdezés naplók összegyűjtése a tárolóból, és ezek biztonsági feltöltése az Azure Language Understanding modellre való az alkalmazás előrejelzési pontosság növeléséhez.
+A Language Understanding (LUIS) tároló betölti a betanított vagy közzétett Language Understanding modell, azaz egy [LUIS-alkalmazásokon](https://www.luis.ai), egy docker-tárolóba, és hozzáférést biztosít a lekérdezés előrejelzéseket a tároló API-ból végpontok. Lekérdezés naplók összegyűjtése a tárolóból, és ezeket újra feltölteni a Language Understanding alkalmazásnak, hogy az alkalmazás előrejelzési pontosság növeléséhez.
 
 A következő videó bemutatja a tároló használatával.
 
-[![CCognitive Services bemutató Tárolóstílusok](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[![Cognitive Services tároló bemutató](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -36,7 +36,14 @@ A LUIS-tároló futtatásához az alábbiakkal kell rendelkeznie:
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
-|Language Understanding (LUIS) erőforrás és a társított alkalmazás |A tároló használatához rendelkeznie kell:<br><br>* A [ _Language Understanding_ Azure-erőforrás](luis-how-to-azure-subscription.md), valamint a kapcsolódó végponti kulcs és a végpont URI azonosítója (használja a számlázási végpontként).<br>* Egy betanított vagy a közzétett alkalmazás csomagolt egy csatlakoztatott bemenetként a tárolóhoz, az a társított alkalmazás azonosítóját.<br>* A szerzői műveletek kulcs az alkalmazáscsomag letöltéséhez, akkor használatos, ha ez az API-ból.<br><br>Ezek a követelmények parancssori argumentumok átadása a következő változók használhatók:<br><br>**{AUTHORING_KEY}** : Ez a kulcs segítségével az alkalmazáscsomag beszerzése az intelligens HANGFELISMERÉSI szolgáltatás a felhőben és a lekérdezés naplók feltöltése a felhőbe. A formátum `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Ez az azonosító segítségével válassza ki az alkalmazást. A formátum `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}** : Ez a kulcs segítségével a tárolót. A végpont kulcs két helyen találja. Az első az Azure Portalon a _Language Understanding_ erőforrás kulcsok listája. A végpont kulcs is érhető el a kulcsokat és a végpont a LUIS portál beállítások lapján. Ne használja a kezdő szintű kulcs.<br><br>**{BILLING_ENDPOINT}** : A számlázási végpont értékét az Azure Portalon Language Understanding áttekintése oldalon érhető el. Példa: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>A [és végponti kulcs létrehozási](luis-boundaries.md#key-limits) Ha különböző célokat szolgálnak. Ne alkalmazza őket felcserélhető. |
+|Azure `Cognitive Services` erőforrás- és LUIS [csomagolt alkalmazás](/luis-how-to-start-new-app.md#export-app-for-containers) fájl |A tároló használatához rendelkeznie kell:<br><br>* A _Cognitive Services_ Azure-erőforrás és a kapcsolódó számlázási kulcs a számlázási végpont URI azonosítója. Mindkét értéket érhetők el az erőforrás áttekintése és a kulcsok lapjain, és a tároló indításához szükséges. Hozzá kell adnia a `luis/v2.0` útválasztás az a végpont URI-t, a következő BILLING_ENDPOINT_URI példában látható módon. <br>* Egy betanított vagy a közzétett alkalmazás csomagolt egy csatlakoztatott bemenetként a tárolóhoz, az a társított alkalmazás azonosítóját. A LUIS-portálról vagy a jelentéskészítési API-k a csomagolt fájlt is kap. Csomagolt alkalmazás LUIS, ha a [API-k készítése](#authoring-apis-for-package-file), is szüksége lesz a _kulcs létrehozási_.<br><br>Ezek a követelmények parancssori argumentumok átadása a következő változók használhatók:<br><br>**{AUTHORING_KEY}** : Ez a kulcs segítségével az alkalmazáscsomag beszerzése az intelligens HANGFELISMERÉSI szolgáltatás a felhőben és a lekérdezés naplók feltöltése a felhőbe. A formátum `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Ez az azonosító segítségével válassza ki az alkalmazást. A formátum `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}** : Ez a kulcs segítségével a tárolót. A végpont kulcs két helyen találja. Az első az Azure Portalon a _Cognitive Services_ erőforrás kulcsok listája. A végpont kulcs is érhető el a kulcsokat és a végpont a LUIS portál beállítások lapján. Ne használja a kezdő szintű kulcs.<br><br>**{BILLING_ENDPOINT}** : Példa: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>A [és végponti kulcs létrehozási](luis-boundaries.md#key-limits) Ha különböző célokat szolgálnak. Ne alkalmazza őket felcserélhető. |
+
+### <a name="authoring-apis-for-package-file"></a>Az alkalmazáscsomag-fájl API-k készítése
+
+API-k készítése az alkalmazáscsomagokra vonatkozó:
+
+* [Közzétett csomag API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip)
+* [Nincs közzétéve, csak betanított csomag API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip)
 
 ### <a name="the-host-computer"></a>A számítógép
 
@@ -114,7 +121,7 @@ A LUIS-alkalmazások csomagolása, mielőtt az alábbiakkal kell rendelkeznie:
 
 |Követelmények|Részletek|
 |--|--|
-|Azure _Language Understanding_ erőforrás-példány|Támogatott régiók közé tartozik.<br><br>USA nyugati RÉGIÓJA (```westus```)<br>Nyugat-Európa (```westeurope```)<br>Kelet-Ausztrália (```australiaeast```)|
+|Azure _Cognitive Services_ erőforrás-példány|Támogatott régiók közé tartozik.<br><br>USA nyugati RÉGIÓJA (```westus```)<br>Nyugat-Európa (```westeurope```)<br>Kelet-Ausztrália (```australiaeast```)|
 |Betanított vagy közzétett LUIS-alkalmazás|Nélkül [nem támogatott a függőségek](#unsupported-dependencies). |
 |A hozzáférést a [gazdaszámítógép](#the-host-computer)'s fájlrendszer |A gazdaszámítógép engedélyeznie kell egy [bemeneti csatlakoztatási](luis-container-configuration.md#mount-settings).|
   
@@ -214,7 +221,7 @@ Használja a [futtatása docker](https://docs.docker.com/engine/reference/comman
 | Helyőrző | Érték |
 |-------------|-------|
 |{ENDPOINT_KEY} | Ez a kulcs segítségével a tárolót. Ne használja a kezdő szintű kulcs. |
-|{BILLING_ENDPOINT} | A számlázási végpont értékét az Azure Portalon Language Understanding áttekintése oldalon érhető el.|
+|{BILLING_ENDPOINT} | Az Azure Portalon érhető el a számlázási végpontértéknek `Cognitive Services` – áttekintés oldalra. Hozzá kell adnia a `luis/v2.0` útválasztás, a végpont URI-t, az alábbi példában látható módon: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.|
 
 Cserélje le ezeket a paramétereket a következő példában a saját értékeire `docker run` parancsot.
 
@@ -245,7 +252,7 @@ További [példák](luis-container-configuration.md#example-docker-run-commands)
 
 > [!IMPORTANT]
 > A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](#billing).
-> Apikey tulajdonsággal végzett tesztelése értéke a **kulcs** a kulcsok és a végpontok lapon a LUIS-portálon, és érhető el az Azure Language Understanding Resource kulcsok oldalon is.  
+> Apikey tulajdonsággal végzett tesztelése értéke a **kulcs** a kulcsok és a végpontok lapon a LUIS-portálon, és is elérhető az Azure a `Cognitive Services` erőforráslapján kulcsok.  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -324,7 +331,7 @@ A kimenet futtatásakor a tároló [csatlakoztatási](luis-container-configurati
 
 ## <a name="billing"></a>Számlázás
 
-A számlázási adatokat az Azure-ba, használja a LUIS tároló küld egy _Language Understanding_ erőforrást az Azure-fiókjával. 
+A számlázási adatokat az Azure-ba, használja a LUIS tároló küld egy _Cognitive Services_ erőforrást az Azure-fiókjával. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

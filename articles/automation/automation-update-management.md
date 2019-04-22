@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/09/2019
+ms.date: 04/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39e8c06228381143a6f4975e4d6415799ce16d43
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: b938a2b3ea8ee4ab8bcc594b4b40db9384d22551
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426489"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679074"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -208,9 +208,9 @@ Egy Naplókeresés futtatásához, amely a gép, frissítés vagy telepítés ka
 
 ## <a name="install-updates"></a>Frissítések telepítése
 
-Frissítések értékelni az összes Linux és Windows számítógéphez a munkaterületen, után szükséges frissítések létrehozásával telepíthet egy *frissítéstelepítés*. A frissítéstelepítések egy vagy több számítógép szükséges frissítéseinek ütemezett telepítése. Megadhatja, hogy az érintett foglalandó dátuma és időpontja az üzembe helyezés és a egy számítógép vagy számítógépek csoportja. Számítógépcsoportokkal kapcsolatos további tudnivalókért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md).
+Frissítések értékelni az összes Linux és Windows számítógéphez a munkaterületen, után szükséges frissítések létrehozásával telepíthet egy *frissítéstelepítés*. A Frissítéstelepítések létrehozásához, az Automation-fiók írási hozzáféréssel kell rendelkeznie, és írási hozzáférése az olyan Azure virtuális gépek, amelyek a központi telepítésben lévő célozzák meg. A frissítéstelepítések egy vagy több számítógép szükséges frissítéseinek ütemezett telepítése. Megadhatja, hogy az érintett foglalandó dátuma és időpontja az üzembe helyezés és a egy számítógép vagy számítógépek csoportja. Számítógépcsoportokkal kapcsolatos további tudnivalókért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md).
 
- Ha számítógépcsoportok szerepelnek a, csoporttagság ütemezés létrehozása idején már csak egyszer lesz kiértékelve. A csoportot érintő későbbi változások nem tükrözi. Ez a használati eléréséhez [dinamikus csoportok](#using-dynamic-groups), ezek a csoportok üzembe helyezéskor feloldása és a egy lekérdezés által meghatározott.
+Ha számítógépcsoportok szerepelnek a, csoporttagság ütemezés létrehozása idején már csak egyszer lesz kiértékelve. A csoportot érintő későbbi változások nem tükrözi. Ez a használati eléréséhez [dinamikus csoportok](#using-dynamic-groups), ezek a csoportok üzembe helyezéskor feloldása és a egy lekérdezés által meghatározott, Azure virtuális gépeken futó vagy mentett keresés nem Azure-beli virtuális gépek.
 
 > [!NOTE]
 > Windows virtuális gépek alapértelmezés szerint az Azure Marketplace-ről üzembe helyezett beállítása automatikusan frissítéseket kapjanak a Windows Update szolgáltatás. Ez a viselkedés nem változik, ez a megoldás hozzáadásakor, vagy Windows virtuális gépek felvétele a munkaterülethez. Ha ez a megoldás segítségével aktívan frissítések nem kezeli, az alapértelmezett viselkedést (automatikusan alkalmazza a frissítéseket) vonatkozik.
@@ -219,13 +219,13 @@ Frissítések alkalmazása folyamatban, az ubuntu rendszeren karbantartási idő
 
 Érhetők el az Azure piactéren elérhető igény szerinti Red Hat Enterprise Linux (RHEL) rendszerképekből létrehozott virtuális gépek regisztrálva vannak a hozzáférést a [Red Hat frissítési infrastruktúrához (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) , amely az Azure-ban üzemel. Más Linux-disztribúció a következő támogatott módszerek a terjesztési kell frissíteni a terjesztési online fájl adattárból.
 
-Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések központi telepítésének ütemezése**. A **új frissítéstelepítés** panel nyílik meg. Adja meg az értékeket az alábbi táblázatban leírt tulajdonságokkal, és kattintson a **létrehozás**:
+Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések központi telepítésének ütemezése**. A **új frissítéstelepítés** lap megnyitásakor. Adja meg az értékeket az alábbi táblázatban leírt tulajdonságokkal, és kattintson a **létrehozás**:
 
 | Tulajdonság | Leírás |
 | --- | --- |
 | Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux vagy Windows|
-| A csoportok frissítése (előzetes verzió)|Egy előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezést határoz meg. További tudnivalókért lásd: [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)|
+| Csoport frissítése |Azure-beli gépek előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezés definiálása. </br></br>A nem Azure-gépek esetében válassza ki a meglévő mentett keresést jelöljön ki egy csoportot a nem Azure-beli gépek tartalmazza a központi telepítésben lévő. </br></br>További tudnivalókért lásd: [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)|
 | Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> Számítógépcsoportok létrehozását az Azure Monitor naplóira különböző módszereivel kapcsolatos további információkért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md) |
 |Frissítési besorolások|Válassza ki az összes szükséges|
 |Frissítések belefoglalása vagy kizárása|Ekkor megnyílik a **beszámítása vagy kihagyása** lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. A belefoglalási kezelésének további információkért lásd: [belefoglalási viselkedés](automation-update-management.md#inclusion-behavior) |
@@ -567,7 +567,14 @@ Update
 
 ## <a name="using-dynamic-groups"></a>Dinamikus csoportok
 
-Az Update Management lehetővé teszi egy Azure virtuális gépek dinamikus eszközcsoportot frissítési telepítés céljából. Ezek a csoportok lekérdezéshez, amikor megkezdődik egy központi telepítést, a csoport tagjai értékeli ki. Dinamikus csoportok nem működik a klasszikus virtuális gépeket. A lekérdezés meghatározásakor a következő elemek használható együtt a dinamikus csoport feltöltése
+Az Update Management lehetővé teszi a frissítési telepítések esetén az Azure-ban vagy a nem Azure-beli virtuális gépek dinamikus csoportot célozza. Ezek a csoportok központi telepítéskor értékeli ki, így nem kell hozzáadni a központi telepítés szerkesztése.
+
+> [!NOTE]
+> Frissítéstelepítés létrehozásakor a megfelelő engedélyekkel kell rendelkeznie. További tudnivalókért lásd: [frissítések telepítése](#install-updates).
+
+### <a name="azure-machines"></a>Azure-beli gépek
+
+Ezek a csoportok lekérdezéshez, amikor megkezdődik egy központi telepítést, a csoport tagjai értékeli ki. Dinamikus csoportok nem működik a klasszikus virtuális gépeket. A lekérdezés meghatározásakor a következő elemek használható együtt a dinamikus csoport feltöltése
 
 * Előfizetés
 * Erőforráscsoportok
@@ -579,6 +586,12 @@ Az Update Management lehetővé teszi egy Azure virtuális gépek dinamikus eszk
 Egy dinamikus csoport az eredmények előnézetének megtekintéséhez kattintson a **előzetes** gombra. Ebben az előzetes verzióban jeleníti meg a csoport tagságát ekkor az ebben a példában a címkével ellátott gépek keresésével **szerepkör** egyenlő **BackendServer**. Ha több gépet hozzáadja ezt a címkét, azok hozzáadódik a jövőbeli telepítések a csoporton.
 
 ![csoportok előzetes verzió](./media/automation-update-management/preview-groups.png)
+
+### <a name="non-azure-machines"></a>Nem Azure-gépek
+
+Nem Azure-gépek, a mentett keresések is lehet hivatkozni, a számítógép-csoportok használata a dinamikus csoport létrehozásához. Mentett keresés létrehozása kapcsolatban lásd: [hozzon létre olyan számítógépcsoportot](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). A csoport létrehozása után válassza ki, mentett keresések listájából. Kattintson a **előzetes** az előzetes verzióra az adott időpontban mentett keresés számítógépeire.
+
+![Csoportok kiválasztása](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrálás a System Center Configuration Managerrel
 
@@ -628,7 +641,7 @@ Az Update Management egy virtuális gép eltávolítása:
 Folytassa a következő oktatóanyagban megtudhatja, hogyan kezelheti a frissítéseket a Windows virtuális gépek számára.
 
 > [!div class="nextstepaction"]
-> [Azure-beli Windows rendszerű virtuális gépek frissítéseinek és javításainak kezelése](automation-tutorial-update-management.md)
+> [Az Azure Windows rendszerű virtuális gépek frissítéseinek és javításainak kezelése](automation-tutorial-update-management.md)
 
 * Naplókeresés funkciójával [naplózza az Azure Monitor](../log-analytics/log-analytics-log-searches.md) frissítés részletes adatainak megtekintéséhez.
 * [Riasztások létrehozása](automation-tutorial-update-management.md#configure-alerts) frissítés telepítési állapota.

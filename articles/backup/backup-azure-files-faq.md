@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: backup
 manager: carmonm
 ms.openlocfilehash: 139ce3fd81c14f9bf97e45c8aebb83d2fb1bbe10
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426613"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
@@ -112,6 +112,6 @@ Amikor új házirendet alkalmaznak a fájlmegosztáso(ko)n, az új szabályzat �
 
 ## <a name="see-also"></a>Lásd még
 Ezek az információk kizárólag az Azure Files biztonsági mentésére vonatkoznak, az Azure Backup más területeinek megismeréséhez tekintse át az alábbi Backup GYIK-fejezeteket:
--  [A Recovery Services-tároló – gyakori kérdések](backup-azure-backup-faq.md)
--  [Az Azure VM backup – gyakori kérdések](backup-azure-vm-backup-faq.md)
+-  [Helyreállítási tár – GYIK](backup-azure-backup-faq.md)
+-  [Azure-beli virtuális gép biztonsági mentése – GYIK](backup-azure-vm-backup-faq.md)
 -  [Az Azure Backup ügynöke – GYIK](backup-azure-file-folder-backup-faq.md)

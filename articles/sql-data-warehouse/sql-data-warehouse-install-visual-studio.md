@@ -13,10 +13,10 @@ ms.date: 04/05/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: f67c2a4547ee923e5c1b49302c38693e9ffe87c4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262210"
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>A Visual Studio és az SSDT telepítése SQL Data warehouse-hoz
@@ -25,14 +25,14 @@ Visual Studio 2017 használata alkalmazások fejlesztéséhez az SQL Data wareho
 A Visual Studio és az SSDT együttes használata lehetővé teszi, hogy az SQL Server Object Explorer használatával vizuálisan táblák, nézetek, a tárolt eljárásokat és sok más objektumot az SQL Data Warehouse bemutatása, valamint a lekérdezések futtatása.
 
 > [!NOTE]
-> Az SQL Data Warehouse még nem támogatja a Visual Studio-adatbázisprojekteket. A funkció a rendszeres frissítések fogadásához szavazhat [UserVoice].
+> Az SQL Data Warehouse még nem támogatja a Visual Studio-adatbázisprojekteket. A funkció a rendszeres frissítések fogadásához szavazhat [UserVoice-on].
 > 
 > 
 
 ## <a name="step-1-install-visual-studio"></a>1. lépés: A Visual Studio telepítése
 Az alábbi hivatkozásokból töltse le és telepítse a Visual Studióban. Ha már rendelkezik Visual Studio 2013 vagy újabb verziója, továbbléphet a 2. lépésben, az SSDT telepítése.
 
-1. [Töltse le a Visual Studiót][].
+1. [A Visual Studio letöltése][].
 2. Kövesse a [Installing Visual Studio] [ Installing Visual Studio] útmutatót az MSDN Webhelyén, és válassza az alapértelmezett konfigurációkat.
 
 ## <a name="step-2-install-ssdt"></a>2. lépés: Az SSDT telepítése
@@ -57,4 +57,4 @@ Most, hogy az SSDT legújabb verzióját, készen áll [csatlakozás] [ connect]
 [A Visual Studio letöltése]: https://www.visualstudio.com/downloads/
 [Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
 [SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx
-[UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
+[UserVoice-on]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu

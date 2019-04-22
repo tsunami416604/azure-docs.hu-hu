@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 3cb6f4563cf45b9ccd377dec3db4ebab095c8a09
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 137d7aa48595e3f21ee99c6ebe23babd7a2d32b5
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885434"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677765"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Szövegelemzés a docker-tárolók konfigurálása
 
@@ -31,11 +31,11 @@ Szövegelemzés biztosít az egyes tárolók és a egy közös keretrendszer kon
 
 ## <a name="apikey-configuration-setting"></a>Konfigurációs beállítás apikey tulajdonsággal végzett tesztelése
 
-A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a apikey tulajdonsággal végzett tesztelése és az értéknek kell lennie egy érvényes kulcsot a _Szövegelemzés_ megadott erőforrás a [ `Billing` ](#billing-configuration-setting) konfigurációs beállítás.
+A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a apikey tulajdonsággal végzett tesztelése és az értéknek kell lennie egy érvényes kulcsot a _Cognitive Services_ megadott erőforrás a [ `Billing` ](#billing-configuration-setting) konfigurációs beállítás.
 
 Ez a beállítás a következő helyen található:
 
-* Az Azure Portalon: **Text Analytics** erőforrás-kezelés alatt **kulcsok**
+* Az Azure Portalon: **A cognitive Services** erőforrás-kezelés alatt **kulcsok**
 
 ## <a name="applicationinsights-setting"></a>Applicationinsights – beállítás
 
@@ -43,11 +43,13 @@ Ez a beállítás a következő helyen található:
 
 ## <a name="billing-configuration-setting"></a>Számlázási konfigurációs beállítás
 
-A `Billing` beállítás határozza meg a végpont URI-t, a _Text Analytics_ erőforrást az Azure-ban használt mérni a tároló számlázási adatokat. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie egy érvényes végpont URI-t egy __Szövegelemzés_ erőforrást az Azure-ban. A tároló használati jelentések kapcsolatos 10 – 15 percenként.
+A `Billing` beállítás határozza meg a végpont URI-t, a _Cognitive Services_ erőforrást az Azure-ban használt mérni a tároló számlázási adatokat. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie egy érvényes végpont URI-t egy __Cognitive Services_ erőforrást az Azure-ban. A tároló használati jelentések kapcsolatos 10 – 15 percenként.
 
 Ez a beállítás a következő helyen található:
 
-* Az Azure Portalon: **Text Analytics** áttekintése, címkével `Endpoint`
+* Az Azure Portalon: **A cognitive Services** áttekintése, címkével `Endpoint`
+
+Hozzá kell adnia a `text/analytics/v2.0` útválasztás az a végpont URI-t, a következő BILLING_ENDPOINT_URI példában látható módon.
 
 |Szükséges| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
@@ -89,16 +91,18 @@ Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs
 * **Vonal-folytatási karakter**: Az alábbi szakaszok a docker-parancsokat használhatja a fordított perjel `\`, egy sor folytatási karaktert. Cserélje le, vagy távolítsa el ezt a gazdagép operációs rendszerre vonatkozó követelmények alapján. 
 * **Argument sorrend**: Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a docker-tárolókat.
 
+Hozzá kell adnia a `text/analytics/v2.0` útválasztás az a végpont URI-t, a következő BILLING_ENDPOINT_URI példában látható módon.
+
 Cserélje le a(z)_argument_name_} a saját értékeire:
 
 | Helyőrző | Érték | Formátum vagy példa |
 |-------------|-------|---|
-|{BILLING_KEY} | A végpont kulcs a Text Analytics az Azure Portalon Text Analytics kulcsok lapján található erőforrás. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | A számlázási végpont értékét az Azure Portalon Text Analytics áttekintése lapon érhető el.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|{BILLING_KEY} | A végpont kulcs, a `Cognitive Services` elérhető az Azure-beli erőforrás `Cognitive Services` kulcsok oldalán. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | Az Azure-ban érhető el a számlázási végpontértéknek `Cognitive Services` – áttekintés oldalra.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
 
 > [!IMPORTANT]
 > A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](how-tos/text-analytics-how-to-install-containers.md#billing).
-> Apikey tulajdonsággal végzett tesztelése értéke a **kulcs** a Text Analytics-erőforrás Azure kulcsok lapról. 
+> Apikey tulajdonsággal végzett tesztelése értéke a **kulcs** az Azure `Cognitive Services` erőforráslapján kulcsok. 
 
 ## <a name="keyphrase-extraction-container-docker-examples"></a>Keyphrase kinyerési tároló docker-példák
 

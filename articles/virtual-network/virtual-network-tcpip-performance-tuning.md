@@ -29,10 +29,10 @@ ms.author:
 - btalb
 - prachank
 ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426443"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Az Azure virtuális gépek TCP/IP-teljesítményhangolása
@@ -140,7 +140,7 @@ Hálózati késés szabályozzák a fénysebességgel fiber száloptikás háló
 
 | | | | |
 |-|-|-|-|
-|**Útválasztás**|**Távolság**|**Egyirányú idő**|**RTT**|
+|**útvonal**|**távolságskála**|**Egyirányú idő**|**RTT**|
 |New York, San Francisco|4,148 km-re|21 ms|42 ms|
 |New York-i London|5,585 km-re|28 ms|56 ms|
 |Sydney New York-i|15,993 km-re|80 ms|160 ms|
@@ -376,7 +376,7 @@ További információval a következő cikkek szolgálnak:
 
 - [Az Expressroute hálózati teljesítmény hibaelhárítása](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
 
-- [Hogyan lehet egy virtuális hálózati VPN teljesítményének érvényesítése](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
+- [VPN teljesítményének érvényesítése virtuális hálózaton](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
 
 ### <a name="detect-inefficient-tcp-behaviors"></a>Nem elég hatékony TCP viselkedések észleléséhez
 

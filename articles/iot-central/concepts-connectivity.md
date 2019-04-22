@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425967"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
@@ -156,11 +156,11 @@ Ha egy valódi eszköz csatlakozik az IoT Central alkalmazáshoz, a kiépítési
 
 Az Azure eszközoldali SDK-k ajánlat legegyszerűbb módja az Ön számára az eszköz kód megvalósítását. A következő eszközoldali SDK-k érhetők el:
 
-- [C nyelvhez készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-c)
-- [Pythonhoz készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-python)
-- [Node.js-hez készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-node)
-- [Javához készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-java)
-- [.NET-hez készült Azure IoT SDK](https://github.com/azure/azure-iot-sdk-csharp)
+- [A c nyelvhez készült Azure IoT-SDK](https://github.com/azure/azure-iot-sdk-c)
+- [Azure IoT SDK for Python](https://github.com/azure/azure-iot-sdk-python)
+- [Az Azure IoT SDK for node.js használatával](https://github.com/azure/azure-iot-sdk-node)
+- [A Javához készült Azure IoT-SDK](https://github.com/azure/azure-iot-sdk-java)
+- [Az Azure IoT SDK for .NET csomaggal](https://github.com/azure/azure-iot-sdk-csharp)
 
 Minden egyes eszköz kapcsolódik, amely azonosítja az eszköz egyedi kapcsolati karakterlánc használatával. Egy eszköz csak képes csatlakozni az IoT hub, ha regisztrálva van. Valós eszközöknek az Azure IoT Central-alkalmazást hoz létre, amikor az alkalmazás állít elő, az adatokat, hozhatnak létre egy kapcsolati karakterlánc használatával kell `dps-keygen`.
 
@@ -181,7 +181,7 @@ A következő táblázat összefoglalja, hogyan Azure IoT Central eszközfunkci�
 
 Az eszközoldali SDK-k használatával kapcsolatos további tudnivalókért lásd: egyet az alábbi cikkekben például kód:
 
-- [Egy általános Node.js-ügyfél csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-nodejs.md)
+- [Általános Node.js-ügyfél csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-nodejs.md)
 - [A Raspberry Pi-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-raspberry-pi-python.md)
 - [A DevDiv kit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-devkit.md).
 
@@ -206,6 +206,6 @@ Eszközök és az Azure IoT Central között továbbított összes adat titkosí
 Most, hogy megismerkedett az Azure IoT Central eszközkapcsolat, az alábbiakban a javasolt következő lépések:
 
 - [Készítse elő és DevKit eszköz csatlakoztatása](howto-connect-devkit.md)
-- [Készítse elő és a Raspberry Pi csatlakoztatása](howto-connect-raspberry-pi-python.md)
-- [Egy általános Node.js-ügyfél csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-nodejs.md)
+- [Raspberry Pi előkészítése és csatlakoztatása](howto-connect-raspberry-pi-python.md)
+- [Általános Node.js-ügyfél csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-nodejs.md)
 - [C SDK: Eszköz ügyfél-SDK kiépítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)

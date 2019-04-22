@@ -85,8 +85,8 @@ items:
     href: add-native-application.md
   - name: Korhatáralapú hozzáférés-korlátozás konfigurálása
     href: basic-age-gating.md
-  - name: Jogkivonatok konfigurálása
-    href: active-directory-b2c-token-session-sso.md
+  - name: Munkamenet viselkedésének konfigurálása
+    href: session-behavior.md
   - name: Nyelv testreszabása
     href: active-directory-b2c-reference-language-customization.md
   - name: Jelszó testreszabása
@@ -111,8 +111,6 @@ items:
       href: active-directory-b2c-ui-customization-custom.md
     - name: A felhasználói felület dinamikus testreszabása
       href: active-directory-b2c-ui-customization-custom-dynamic.md
-    - name: Jogkivonatok testreszabása
-      href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
     - name: Egyéni attribútumok meghatározása
       href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
     - name: A bejelentkezve maradás engedélyezése
@@ -147,8 +145,6 @@ items:
         href: active-directory-b2c-custom-setup-twitter-idp.md
     - name: Oldalszerződés
       href: page-contract.md
-    - name: Hozzáférési jogkivonat átadása
-      href: idp-pass-through-custom.md
     - name: Jelszó bonyolultsága
       href: active-directory-b2c-reference-password-complexity-custom.md
     - name: Jelszó módosítása
@@ -159,6 +155,12 @@ items:
         href: active-directory-b2c-custom-setup-adfs2016-idp.md
       - name: Salesforce
         href: active-directory-b2c-setup-sf-app-custom.md
+    - name: Tokenek
+      items:
+      - name: Jogkivonatok testreszabása
+        href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+      - name: Hozzáférési jogkivonat átadása
+        href: idp-pass-through-custom.md
     - name: A felhasználók viselkedésének nyomon követése
       href: active-directory-b2c-custom-guide-eventlogger-appins.md
     - name: Referencia
@@ -272,10 +274,6 @@ items:
       href: active-directory-b2c-devquickstarts-ios.md
     - name: Android az AppAuth használatával
       href: active-directory-b2c-devquickstarts-android.md
-  - name: Hozzáférési jogkivonatok beszerzése
-    href: active-directory-b2c-access-tokens.md
-  - name: Hozzáférési jogkivonat átadása
-    href: idp-pass-through-user-flow.md
   - name: Használat jelentése
     href: active-directory-b2c-reference-usage-reporting-api.md
   - name: Erőforrás tulajdonosának jelszava
@@ -284,6 +282,14 @@ items:
     href: direct-signin.md
   - name: Önkiszolgáló jelszó-visszaállítás beállítása
     href: active-directory-b2c-reference-sspr.md
+  - name: Tokenek
+    items:
+    - name: Jogkivonatok konfigurálása
+      href: configure-tokens.md
+    - name: Hozzáférési jogkivonat átadása
+      href: idp-pass-through-user-flow.md
+    - name: Hozzáférési jogkivonat kérése
+      href: active-directory-b2c-access-tokens.md
   - name: A b2clogin.com használata
     href: b2clogin.md
   - name: Az Azure AD Graph API használata
@@ -326,9 +332,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: cebc59a7d10ce669fd8187687b80f291a07d1c06
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: de9ae82220bd464cbee7345b7f2421d02f0fc545
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886573"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681131"

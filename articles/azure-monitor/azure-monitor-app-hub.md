@@ -11,10 +11,10 @@ ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
 ms.openlocfilehash: 514f0c193dbbca6d8583c9f93feadee3415f163c
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426273"
 ---
 <div id="main" class="v2">
@@ -82,18 +82,18 @@ ms.locfileid: "59426273"
                                                         <h3>Gyors útmutatók</h3>
                                                         <p>
                                                             <a href="./learn/quick-monitor-portal.md">ASP.NET</a><br>
-                                                            <a href="./learn/dotnetcore-quick-start.md">ASP.NET-mag</a><br>
+                                                            <a href="./learn/dotnetcore-quick-start.md">ASP.NET Core</a><br>
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
                                                             <a href="./learn/java-quick-start.md">Java</a><br>
-                                                            <a href="./learn/mobile-center-quickstart.md">Mobiltelefon</a><br>
+                                                            <a href="./learn/mobile-center-quickstart.md">mobil</a><br>
                                                             <a href="./app/website-monitoring.md">Böngésző-és ügyféloldali figyelés</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Oktatóanyagok</h3>
                                                         <p>
                                                             <a href="./learn/tutorial-runtime-exceptions.md">Futásidejű kivételek észlelése és diagnosztizálása</a><br>
-                                                            <a href="./learn/tutorial-performance.md">Keresse meg és teljesítménybeli problémák diagnosztizálása</a><br>
-                                                            <a href="./learn/tutorial-alert.md">A figyelő és alkalmazásállapot-riasztás</a><br>
+                                                            <a href="./learn/tutorial-performance.md">Teljesítményproblémák észlelése és diagnosztizálása</a><br>
+                                                            <a href="./learn/tutorial-alert.md">Alkalmazásállapot-figyelés és riasztások</a><br>
                                                             <a href="./learn/tutorial-users.md">A felhasználói viselkedés megismerésével</a><br>
                                                             <a href="./learn/tutorial-app-dashboards.md">Egyéni irányítópultok létrehozása</a>
                                                             </p>
@@ -108,20 +108,20 @@ ms.locfileid: "59426273"
                                                         <br><br>
                                                         <h3>Automatikus intelligens detektálás</h3>
                                                         <p>
-                                                            <a href="./app/proactive-failure-diagnostics.md">Hibaanomáliák</a><br>
-                                                            <a href="./app/proactive-performance-diagnostics.md">Teljesítményanomáliák</a><br>
+                                                            <a href="./app/proactive-failure-diagnostics.md">Hiba-anomáliák</a><br>
+                                                            <a href="./app/proactive-performance-diagnostics.md">Teljesítmény-anomáliák</a><br>
                                                             <a href="./app/proactive-trace-severity.md">Nyomkövetés teljesítménycsökkenése</a><br>
                                                             <a href="./app/proactive-exception-volume.md">Rendellenes megnövekszik a kivételek</a><br>
                                                             <a href="./app/proactive-potential-memory-leak.md">Memóriavesztés</a><br>
                                                             <a href="./app/proactive-low-utilization-cloud-resources.md">Mérsékelt processzorigény</a><br>
-                                                            <a href="./app/proactive-application-security-detection-pack.md">Biztonsági problémák</a><br>
+                                                            <a href="./app/proactive-application-security-detection-pack.md">Biztonsági kérdések</a><br>
                                                             <a href="./app/proactive-cloud-services.md">Azure Cloud Services</a><br>
                                                             <a href="./app/proactive-arm-config.md">Intelligens detektálás sablonok kezelése</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Leírások</h3>
                                                         <p>
-                                                            <a href="./app/auto-collect-dependencies.md">Függőségek automatikus összegyűjtése</a><br>
+                                                            <a href="./app/auto-collect-dependencies.md">Függőség az automatikus gyűjtés</a><br>
                                                             <a href="./app/correlation.md">Telemetriai korreláció</a><br>
                                                             <a href="./app/nuget.md">NuGet-csomagok</a><br>
                                                             <a href="./app/azure-functions-supported-features.md">Azure Functions</a>
@@ -162,7 +162,7 @@ ms.locfileid: "59426273"
                                                           <h3>.NET Core applications</h3>
                                                         <p>
                                                             <a href="./app/asp-net-core.md">Részletes figyelési konfiguráció</a><br>
-                                                            <a href="./app/profiler-aspnetcore-linux.md">ASP.NET Core profiling</a><br>
+                                                            <a href="./app/profiler-aspnetcore-linux.md">Profilkészítés az ASP.NET Core</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Egyéni események és a mérőszámok</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">Nyissa meg a forrás .NET Core SDK GitHub-adattár</a>
                                                         </p>
@@ -218,7 +218,7 @@ ms.locfileid: "59426273"
                                                         <p>
                                                             <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">Személyes adatok kezelésének alapelveit</a><br>
                                                             <a href="./app/data-retention-privacy.md">Adatgyűjtés, megőrzés, &amp; storage</a><br>
-                                                            <a href="./app/resources-roles-access-control.md">Szerepköralapú hozzáférés</a><br>
+                                                            <a href="./app/resources-roles-access-control.md">Szerepköralapú hozzáférés-</a><br>
                                                             <a href="./app/ip-addresses.md">IP-cím &amp; tűzfal-kivételek</a><br>
                                                             <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Használat és becsült költségek</a>
                                                         </p>

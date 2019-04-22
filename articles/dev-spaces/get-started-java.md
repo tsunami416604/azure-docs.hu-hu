@@ -11,10 +11,10 @@ description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatások
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: mmontwil
 ms.openlocfilehash: b69a793d1d860bf2f2a4d52a92d4bea5cf903c0c
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426307"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Azure fejlesztői szóközöket a Java használatának első lépései
@@ -108,7 +108,7 @@ Már rendelkezik egy helyileg futó alapszintű webalkalmazással. Most olyan ob
     ```
 
 Az Azure CLI `azds prep` parancsa alapértelmezett beállításokkal hoz létre Docker- és Kubernetes-objektumokat:
-* `./Dockerfile` az alkalmazás tárolórendszerképet, és hogyan forráskódját épül, és a tárolóban fut ismerteti.
+* A `./Dockerfile` ismerteti az alkalmazás tárolólemezképét, illetve hogy a forráskód hogyan épül fel és hogyan fut a tárolón belül.
 * A `./charts/webfrontend` alatt található [Helm-diagram](https://docs.helm.sh) ismerteti a konténer Kubernetesben történő üzembe helyezését.
 
 Egyelőre még nem fontos a fájlok teljes tartalmát megérteni. Ugyanakkor azt megjegyeznénk, hogy **használhatja ugyanazokat a Docker és a Kubernetes kóddal való konfigurálási objektumokat a fejlesztéstől kezdve egészen az éles környezetig, így jobb konzisztenciát biztosíthat a különböző környezetekben.**
@@ -148,7 +148,7 @@ Nyissa meg ezt az URL-t egy böngészőablakban, és betöltődik a webalkalmaz�
 > Az Azure Dev Spaces nem csupán a Kubernetesben futó kódok lekérésére szolgál – a segítségével gyorsan és iteratívan lehet megtekinteni a kódmódosítások életbe lépését a felhőben lévő Kubernetes-környezetben.
 
 1. A terminálablakban nyomja le a `Ctrl+C` billentyűkombinációt (az `azds up` leállításához).
-1. Nyissa meg a kódfájl nevű `src/main/java/com/ms/sample/webfrontend/Application.java`, és az üdvözlő üzenet szerkesztése: `return "Hello from webfrontend in Azure!";`
+1. Nyissa meg a `src/main/java/com/ms/sample/webfrontend/Application.java` nevű kódfájlt, és szerkessze az üdvözlőüzenetet: `return "Hello from webfrontend in Azure!";`
 1. Mentse a fájlt.
 1. Futtassa az `azds up` parancsot a terminálablakban.
 
@@ -215,7 +215,7 @@ Ahelyett, hogy a kód minden szerkesztése alkalmával újra létrehozna és üz
 
 Frissítse a webalkalmazást a böngészőben. Az egyedi üzenetnek meg kell jelennie a felhasználói felületen.
 
-**Most már gyorsan Léptetés a kódra, és a hibakeresést közvetlenül a Kubernetes metódus!** A következő részből megtudhatja, hogyan hozhat létre és hívhat meg egy második tárolót.
+**Most tehát rendelkezésére áll egy módszer, amellyel gyorsan iterálhatja a kódot, és közvetlenül a Kubernetesben végezheti a hibakeresést.** A következő részből megtudhatja, hogyan hozhat létre és hívhat meg egy második tárolót.
 
 ## <a name="next-steps"></a>További lépések
 

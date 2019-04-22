@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: cc561bd88c18788be3ed1b9aef8a6a985af8a6f2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2e6bc0fd9de4fdba1188b40c49ebf9459d684d38
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278547"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679992"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Hozzon létre, és a egy machine learning-folyamat futtatása az Azure Machine Learning-SDK használatával
 
@@ -253,8 +253,8 @@ trainStep = PythonScriptStep(
 
 A lépéseket, meghatározása után hozhat létre a folyamat használatával, vagy azok egy részét az ezeket a lépéseket.
 
->[!NOTE]
->Egyetlen fájl vagy adatokat töltenek fel az Azure Machine Learning szolgáltatás határozza meg a lépéseket, vagy a folyamat létrehozását.
+> [!NOTE]
+> Egyetlen fájl vagy adatokat töltenek fel az Azure Machine Learning szolgáltatás határozza meg a lépéseket, vagy a folyamat létrehozását.
 
 ```python
 # list of steps to run
@@ -289,8 +289,12 @@ További információkért lásd: a [azure-folyamat-lépéseket csomag](https://
 
 ## <a name="submit-the-pipeline"></a>Küldje el a folyamat
 
-A folyamat elküldésekor Azure Machine Learning szolgáltatás ellenőrzi az egyes lépések a függőségeket, és feltölti a megadott forráskönyvtár pillanatképét. Ha nincs forráskönyvtár van megadva, az aktuális helyi könyvtárban van feltöltve.
+A folyamat elküldésekor Azure Machine Learning szolgáltatás ellenőrzi az egyes lépések a függőségeket, és feltölti a megadott forráskönyvtár pillanatképét. Ha nincs forráskönyvtár van megadva, az aktuális helyi könyvtárban van feltöltve. A pillanatkép is tárolódik a munkaterületen a kísérlet részeként.
 
+> [!IMPORTANT]
+> Akadályozni, hogy a fájlok a pillanatkép kiterjed, hozzon létre egy [.gitignore](https://git-scm.com/docs/gitignore) vagy `.amlignore` fájlt a könyvtárban, és hozzá tud adni a fájlokat. A `.amlignore` fájlt használja ugyanazt a szintaxist, és trendeket a [.gitignore](https://git-scm.com/docs/gitignore) fájlt. Ha mindkét fájl létezik, a `.amlignore` fájl élvez elsőbbséget.
+>
+> További információkért lásd: [pillanatképek](concept-azure-machine-learning-architecture.md#snapshot).
 
 ```python
 # Submit the pipeline to be run

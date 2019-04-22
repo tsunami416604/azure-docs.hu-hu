@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: 201b438601c9929e5ca3d292f9fc3d7b7ff64de8
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425933"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
@@ -352,14 +352,14 @@ Most, hogy az Azure IoT Central alkalmazásnak csatlakozott egy igazi eszközön
 
 Operátorként a következőket sajátítja el:
 
-* [Eszközök kezelése](howto-manage-devices.md)
-* [Használatos eszközök készletei](howto-use-device-sets.md)
+* [Saját eszközök kezelése](howto-manage-devices.md)
+* [Eszközkészletek használata](howto-use-device-sets.md)
 * [Egyéni elemzések létrehozása](howto-use-device-sets.md)
 
 Eszközfejlesztőként a következőket sajátítja el:
 
 * [Készítse elő és (C) eszköz DevKit csatlakoztatása](howto-connect-devkit.md)
-* [Raspberry Pi (Python) előkészítése és csatlakoztatása](howto-connect-raspberry-pi-python.md)
-* [Raspberry Pi (C#) előkészítése és csatlakoztatása](howto-connect-raspberry-pi-csharp.md)
+* [Készítse elő, és csatlakozzon a Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
+* [Készítse elő és a Raspberry Pi csatlakoztatása (C#)](howto-connect-raspberry-pi-csharp.md)
 * [Készítse elő és a egy Windows 10 IoT core-eszköz csatlakoztatása (C#)](howto-connect-windowsiotcore.md)
-* [Egy általános Node.js-ügyfél csatlakoztatása az Azure IoT Central alkalmazáshoz](howto-connect-nodejs.md)
+* [Általános Node.js-ügyfél csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-nodejs.md)

@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c3148adc42cb4f899a87d894909eedff4c798575
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622195"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680239"
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
@@ -98,7 +98,7 @@ A riasztások konfigurálása:
 
 8. Adjon meg egy nevet, a riasztási szabály leírását, és válassza ki azt a súlyossági szintet. 
 9. Nyomja meg **riasztási szabály létrehozása**.
-10. Most próbáljon meg meghívni a Conference API, API-kulcs nélkül. A riasztás akkor aktiválódik, a rendszergazdák egy e-mailt küld. 
+10. Most próbáljon meg meghívni a Conference API, API-kulcs nélkül. A riasztás akkor aktiválódik, és e-mailt küld a rendszergazdáknak. 
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
 
@@ -183,7 +183,7 @@ Az API Management jelenleg különálló API-kérelmekről kínál óránként k
 | Tulajdonság  | Típus | Leírás |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | logikai | Akkor igaz, ha a befejezett HTTP-kérelem válaszának állapotkódja a 2xx vagy 3xx tartományon belülre esik. |
-| time | dátum-idő | Az átjárótól érkező HTTP-kérelem megérkezésének időbélyegzője |
+| idő- | dátum-idő | Az átjárótól érkező HTTP-kérelem megérkezésének időbélyegzője |
 | operationName | sztring | A „Microsoft.ApiManagement/GatewayLogs” állandó érték |
 | category | sztring | A „GatewayLogs” állandó érték |
 | durationMs | egész szám | A kérelem átjáróhoz való megérkezése és a teljes válasz elküldése között eltelt ezredmásodpercek száma |

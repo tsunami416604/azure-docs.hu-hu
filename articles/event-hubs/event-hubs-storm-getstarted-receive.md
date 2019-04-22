@@ -15,18 +15,21 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3c50916f648a2bce634f7aeb109147a873de1de6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 75a96127c48186befc48b2240f78e49cd5914239
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094610"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679261"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Események fogadása az Event Hubs, az Apache Storm használatával
 
 [Az Apache Storm](https://storm.incubator.apache.org) egy elosztott, valós idejű számítási rendszer, amely leegyszerűsíti a kötetlen adatstreamek megbízható feldolgozása. Ez a szakasz bemutatja, hogyan használhatja az Azure Event Hubs Storm spout események fogadása az Event hubs szolgáltatás. Apache Storm használatával, akkor is feloszthatja az eseményeket ezek különböző csomópontokon üzemelnek több folyamat között. A Storm és az Event Hubs-integráció leegyszerűsíti az eseményforrás, átlátható módon ellenőrzőpontok előrehaladási állapotát a Storm a Zookeeper-telepítés, kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az Event hubs Eseményközpontokból.
 
 Az Event Hubs szolgáltatásról további információt kap a mintákat, tekintse meg a [Event Hubs – áttekintés][Event Hubs overview].
+
+## <a name="prerequisites"></a>Előfeltételek
+Ez a rövid útmutató az megkezdése előtt **Event Hubs-névtér és eseményközpont létrehozása**. Használja a [az Azure portal](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md). 
 
 ## <a name="create-project-and-add-code"></a>Projekt létrehozása és kód hozzáadása
 

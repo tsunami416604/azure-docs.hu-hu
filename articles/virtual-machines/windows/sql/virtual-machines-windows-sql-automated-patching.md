@@ -17,10 +17,10 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 348979a53bff76c85e6d1531bd16cd695145e21b
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425985"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Az SQL Server automatikus javítása az Azure Virtual Machines szolgáltatásban (Resource Manager)
@@ -115,7 +115,7 @@ Ebben a példában alapján, a következő táblázat ismerteti a gyakorlati hat
 
 | Paraméter | Következmény |
 | --- | --- |
-| **dayOfWeek** |Javítások telepítése minden csütörtökön tartjuk. |
+| **DayOfWeek** |Javítások telepítése minden csütörtökön tartjuk. |
 | **MaintenanceWindowStartingHour** |11:00 órakor kezdje a frissítések. |
 | **MaintenanceWindowsDuration** |Javítások követő 120 percen belül kell telepíteni. A kezdési időpont alapján, el kell végezniük 1:00 -kor szerint. |
 | **PatchCategory** |Az egyetlen lehetséges beállítása ez a paraméter **fontos**. Ez fontos; megjelölt Windows-frissítés telepítése ebbe a kategóriába nem szerepelnek az SQL Server frissítéseket nem telepít. |

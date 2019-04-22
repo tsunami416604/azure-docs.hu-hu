@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 602c7385b252daa7db22bd47f43afec3ad072263
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: db8c8de7a8047f7aa6a81f6a3b372d161408f1be
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904202"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679346"
 ---
-# <a name="set-up-a-device-template-new-ui-design"></a>Állítson be egy eszköz sablont (új felhasználói felület tervezése)
+# <a name="set-up-a-device-template"></a>Eszközsablon beállítása
 
 Egy eszköz, amely meghatározza a jellemzőit és a egy eszköz, amely csatlakozik az Azure IoT Central alkalmazáshoz típusú viselkedéseit tervrajz áll.
 
