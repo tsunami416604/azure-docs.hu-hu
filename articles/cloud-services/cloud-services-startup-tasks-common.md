@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916654"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Gyakori Felhőszolgáltatás indítási feladatok
@@ -31,7 +31,7 @@ Lásd: [Ez a cikk](cloud-services-startup-tasks.md) indítási feladatok működ
 > 
 
 ## <a name="define-environment-variables-before-a-role-starts"></a>Környezeti változókat határozhat meg, a szerepkör elindítása előtt
-Ha egy adott tevékenységhez meghatározott környezeti változók van szüksége, használja a [környezet] elem belül a [feladat] elemet.
+Ha egy adott tevékenységhez meghatározott környezeti változók van szüksége, használja a [környezet] elem belül a [Tevékenység] elemet.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -131,7 +131,7 @@ A második tűzfal azt szabályozza, hogy a virtuális gép és a virtuális gé
 
 Az Azure létrehozza a tűzfalszabályok a folyamatok, a szerepkörök belüli használatába. Például amikor egy szolgáltatás vagy program, az Azure automatikusan létrehozza a szükséges tűzfalszabályok, hogy a szolgáltatás az internettel való kommunikációhoz. Azonban ha létrehoz egy szolgáltatást, amely a szerepkör (például egy COM + szolgáltatás vagy a Windows ütemezett feladat) kívül a folyamat elindul, meg kell manuálisan hozzon létre egy tűzfalszabályt, hogy a szolgáltatáshoz való hozzáférés engedélyezése. Ezek a tűzfal-szabályok egy indítási feladat segítségével hozható létre.
 
-Rendelkeznie kell egy indítási feladat, amely létrehoz egy tűzfalszabályt egy [executionContext][feladat] , **emelt szintű**. Adja hozzá a következő indítási feladat a [ServiceDefinition.csdef] fájlt.
+Rendelkeznie kell egy indítási feladat, amely létrehoz egy tűzfalszabályt egy [executionContext][tevékenység] , **emelt szintű**. Adja hozzá a következő indítási feladat a [ServiceDefinition.csdef] fájlt.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -306,7 +306,7 @@ Az indítási feladat eltérő lépésekkel, ha a felhőben, amikor a compute em
 
 Hozzon létre egy környezeti változóhoz a képességgel, amellyel különböző műveleteket hajthat végre a compute emulator és a felhő valósítható meg a [ServiceDefinition.csdef] fájlt. Az indítási feladat egy értéket a környezeti változó tesztelésére.
 
-A környezeti változó létrehozásához adja hozzá a [változó]/[RoleInstanceValue] elemet, és hozzon létre egy XPath értékét `/RoleEnvironment/Deployment/@emulated`. Értékét a **ComputeEmulatorRunning %** környezeti változó `true` használatakor a compute emulator és `false` használatakor a felhő.
+A környezeti változó létrehozásához adja hozzá a [A változó]/[RoleInstanceValue] elemet, és hozzon létre egy XPath értékét `/RoleEnvironment/Deployment/@emulated`. Értékét a **ComputeEmulatorRunning %** környezeti változó `true` használatakor a compute emulator és `false` használatakor a felhő.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -472,12 +472,12 @@ A kimeneti mintát a **StartupLog.txt** fájlt:
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Állítsa be megfelelően az indítási feladatok executionContext
 Állítsa be az indítási feladat a megfelelő jogosultságokat. Néha az indítási feladatok kell futtassa megemelt jogosultságokkal annak ellenére, hogy a szerepkör normál jogosultságokkal futtatja.
 
-A [executionContext][feladat] attribútum állítja be a jogosultsági szintet, az indítási feladat. Használatával `executionContext="limited"` azt jelenti, hogy az indítási feladat a szerepkör azonos jogosultsági szintre. Használatával `executionContext="elevated"` azt jelenti, hogy az indítási feladat rendszergazdai jogosultságokkal rendelkezik, amely lehetővé teszi, hogy a rendszergazdai feladatok elvégzéséhez rendszergazdai jogosultságokkal a szerepköre anélkül indítási feladat.
+A [executionContext][tevékenység] attribútum állítja be a jogosultsági szintet, az indítási feladat. Használatával `executionContext="limited"` azt jelenti, hogy az indítási feladat a szerepkör azonos jogosultsági szintre. Használatával `executionContext="elevated"` azt jelenti, hogy az indítási feladat rendszergazdai jogosultságokkal rendelkezik, amely lehetővé teszi, hogy a rendszergazdai feladatok elvégzéséhez rendszergazdai jogosultságokkal a szerepköre anélkül indítási feladat.
 
 Egy indítási feladat emelt szintű jogosultságok szükségesek, például a egy indítási feladat által használt **AppCmd.exe** kívánja konfigurálni az IIS. **AppCmd.exe** igényel `executionContext="elevated"`.
 
 ### <a name="use-the-appropriate-tasktype"></a>A megfelelő taskType használata
-A [taskType][feladat] attribútum meghatározza, hogy az indítási feladat úgy hajtja végre. Három értékek: **egyszerű**, **háttér**, és **előtérbeli**. A háttér-információkért és előtérben futó feladatok aszinkron módon futnak, és ezután az egyszerű feladatok végrehajtásának szinkron módon egyenként.
+A [taskType][tevékenység] attribútum meghatározza, hogy az indítási feladat úgy hajtja végre. Három értékek: **egyszerű**, **háttér**, és **előtérbeli**. A háttér-információkért és előtérben futó feladatok aszinkron módon futnak, és ezután az egyszerű feladatok végrehajtásának szinkron módon egyenként.
 
 A **egyszerű** indítási feladatok, beállíthatja a sorrend, amelyben a feladatokat a ServiceDefinition.csdef fájlban felsorolt szerint a feladatok futásának sorrendje. Ha egy **egyszerű** feladat nullától eltérő kilépési kódot végződik, akkor az indítási eljárás leáll, és a szerepkör nem indul el.
 
@@ -511,7 +511,7 @@ Tudjon meg többet [feladatok](cloud-services-startup-tasks.md) működik.
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Környezet]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Változó]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
+[A változó]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 [Végpontok]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints

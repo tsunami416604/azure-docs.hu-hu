@@ -8,10 +8,10 @@ ms.date: 12/07/2018
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: d3bfe1b54409fd57f7535bac2362dc7040975061
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877635"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB-elszámolások ismertetése
@@ -94,13 +94,13 @@ Ha, 9:30-tól 100-K RU/s a 200-K RU/s és alacsonyabb, majd kiosztott átviteli 
 
 Tegyük fel, hogy egy Azure Cosmos-tárolóhoz, az USA nyugati RÉGIÓJA. A tároló létrejön az átviteli sebesség 10 K RU/s, és 1 TB adat ebben a hónapban tárolására. Tegyük fel, adjon hozzá három régióban (USA keleti RÉGIÓJA, Észak-Európában és Kelet-Ázsia) az Azure Cosmos-fiókjába, mindegyik ilyen tárolási és átviteli sebesség. Havi számlájának végösszege fog kell (feltéve, hogy az adott hónapban 30 nap). A számla a következőképpen nézne ki: 
 
-|**Elem** |**Felhasználás (havi)** |**Rate (Egységár)** |**Havi költség** |
+|**Elem** |**Felhasználás (havi)** |**Arány** |**Havi költség** |
 |---------|---------|---------|-------|
 |Átviteli sebességre vonatkozó számla az USA nyugati régiójában lévő tároló esetén      | 10 K RU/s * 24 * 30    |0.008 $ / 100 RU/s / óra   |$576|
 |Átviteli sebességre vonatkozó számla 3 további régió esetén – az USA keleti régiója, Észak-Európa, Kelet-Ázsia       | 3 * 10K RU/s * 24 * 30    |0.008 $ / 100 RU/s / óra  |$1,728|
 |Adattárolásra vonatkozó számla az USA nyugati régiójában lévő tároló esetén      | 250 GB    |$ 0,25/GB  |$62.50|
 |Adattárolásra vonatozó számla 3 további régió esetén – az USA keleti régiója, Észak-Európa, Kelet-Ázsia      | 3 * 250 GB    |$ 0,25/GB  |$187.50|
-|**Összes**     |     |  |**$2,554**|
+|**Összesen**     |     |  |**$2,554**|
 
 *Azt is feltételezzük, hogy kimenő forgalmat bonyolít, 100 GB adat minden hónapban replikálja az adatokat az USA keleti RÉGIÓJA, Észak-Európa és Kelet-Ázsia, USA nyugati Régiójában lévő tárolóban. A számlázás kimenő adatátviteli megfelelően.*
 
@@ -108,13 +108,13 @@ Tegyük fel, hogy egy Azure Cosmos-tárolóhoz, az USA nyugati RÉGIÓJA. A tár
 
 Tegyük fel, az USA nyugati Régiójában egy Azure Cosmos-tárolót hoz létre. A tároló létrejön az átviteli sebesség 10 K RU/s, és 1 TB adat ebben a hónapban tárolására. Tegyük fel, adjon hozzá három régióban (USA keleti RÉGIÓJA, Észak-Európa és Kelet-Ázsia) mindegyike ugyanazt a tárhelyet és átviteli sebességet, és szeretné írni, minden régióban az Azure Cosmos-fiókhoz társított tárolókat. Havi számlájának végösszege fog kell (feltéve, hogy az adott hónapban 30 nap) a következő:
 
-|**Elem** |**Felhasználás (havi)**|**Rate (Egységár)** |**Havi költség** |
+|**Elem** |**Felhasználás (havi)**|**Arány** |**Havi költség** |
 |---------|---------|---------|-------|
 |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén       | 10 K RU/s * 24 * 30    |0.016 $ / 100 RU/s / óra    |$1,152 |
 |Átviteli sebességre vonatkozó számla 3 további régió – USA keleti RÉGIÓJA, Észak-Európa és Kelet-Ázsia (az összes régióban is írható) esetén        | (3 + 1) * 10 K RU/s * 24 * 30    |0.016 $ / 100 RU/s / óra   |$4,608 |
 |Adattárolásra vonatkozó számla az USA nyugati régiójában lévő tároló esetén      | 250 GB    |$ 0,25/GB  |$62.50|
 |Adattárolásra vonatozó számla 3 további régió esetén – az USA keleti régiója, Észak-Európa, Kelet-Ázsia      | 3 * 250 GB    |$ 0,25/GB  |$187.50|
-|**Összes**     |     |  |**$6,010**|
+|**Összesen**     |     |  |**$6,010**|
 
 *Azt is feltételezzük, hogy kimenő forgalmat bonyolít, 100 GB adat minden hónapban replikálja az adatokat az USA keleti RÉGIÓJA, Észak-Európa és Kelet-Ázsia, USA nyugati Régiójában lévő tárolóban. A számlázás kimenő adatátviteli megfelelően.*
 
@@ -194,7 +194,7 @@ A teljes havi számla fog kell (feltéve, hogy 30 nap/720 órában az adott hón
 | | |Átviteli sebességre vonatkozó számla 2 további régiók: USA keleti RÉGIÓJA, Észak-Európa (az összes régióban is írható)  |`(1 + 1) * (120 K RU/sec /100 * $0.016) * 200 hours = $1,280`  |$7,680  |
 |[701-720] |D1:20K <br/>D2:50K <br/>C1: -- |Átviteli sebességre vonatkozó számla az USA nyugati RÉGIÓJA (az összes régióban is írható) lévő tároló esetén  |`D1: 20 K RU/sec/100 *$0.016 * 20 hours = $64` <br/>`D2: 50 K RU/sec/100 *$0.016 * 20 hours = $160` |$224  |
 | | |Átviteli sebességre vonatkozó számla 2 további régiók: USA keleti RÉGIÓJA, Észak-Európa (az összes régióban is írható)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |$224  |
-|| |**Teljes havi díj**  | |**$38,688**   |
+|| |**Teljes havi költség**  | |**$38,688**   |
 
 ## <a name="proactively-estimating-your-monthly-bill"></a>Proaktív módon a havi számla becslése  
 
@@ -218,7 +218,7 @@ Vegyünk például egy másik példa, ahol szeretné a proaktív módon megbecs�
 
 Összes RU/mp: 500-as + 400 = 900 óránkénti költség: 900/100 * 0.008 $ $0.072 várható havi díj (31 napos feltételezve) átviteli sebességet =: $0.072 * 24 * 31 = $53.57
 
-**Teljes havi díj**
+**Teljes havi költség**
 
 Havi összköltség = tárolási havi költségek + az átviteli sebesség havi díja a havi költség = 25,00 + 53.57 $ $78.57 =
 
@@ -234,7 +234,7 @@ Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás lehetővé te
 
 A teljes számlája (fenntartott kapacitás) nélküli lenne (feltételezve 30 nap vagy 720 óra): 
 
-|**Régió**| **Az óradíjas ár / 100 RU/s**|**egység (RU/mp)**|**Számlázott összeg (óránként)**| **Számlázott összeg (havonta)**|
+|**Régió**| **Az óradíjas ár / 100 RU/s**|**Egységek (RU/s)**|**Számlázott összeg (óránként)**| **Számlázott összeg (havonta)**|
 |----|----|----|----|----|
 |USA keleti régiója|$0.008 |50 K|$4|$2,880 |
 |Kelet-Japán|$0.009 |50 K| $4.50 |$3,240 |
@@ -248,7 +248,7 @@ Vegyünk például, hogy, hogy inkább is tartalékkapacitást vásárolt. Fennt
 
 Milyen hatékonyan vásárolt $ 8 óránként, 100 ezer RU/s használatával a Listaár az USA keleti régiójában, az árat óránként 6.40 $ értékű kreditet. Majd rajzolhat, az előre fizetett átviteli foglalás az a kiosztott átviteli kapacitás a árakon megfelelő regionális listában állítsa be az előfizetéshez tartozó minden olyan globális Azure-régióban óránkénti alapon. Ebben a példában, amelyben üzembe helyezi az 50 K RU/s egyes az USA keleti RÉGIÓJA és kelet-japán, tudni rajzolása 8,00 $ értékű óránként kiosztott átviteli sebesség, és lesz 0,50 USD / óra (vagy $360/ hónap), a kerettúllépés díjszabása. 
 
-|**Régió**| **Az óradíjas ár / 100 RU/s**|**egység (RU/mp)**| **Számlázott összeg (óránként)**| **Számlázott összeg (havonta)**|
+|**Régió**| **Az óradíjas ár / 100 RU/s**|**Egységek (RU/s)**| **Számlázott összeg (óránként)**| **Számlázott összeg (havonta)**|
 |----|----|----|----|----|
 |USA keleti régiója|$0.008 |50 K|$4|$2,880 |
 |Kelet-Japán|$0.009 |50 K| $4.50 |$3,240 |
