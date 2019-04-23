@@ -9,11 +9,11 @@ ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 0eb47c8ec470ef05f3c6ae37bdc75e5bb1043eb0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735991"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60187675"
 ---
 Ha problémát észlel a megosztott rendszerkép-katalógusokon, rendszerkép-definíciókon vagy rendszerképverziókon végzett műveletek végrehajtásakor, futtassa újból a sikertelen parancsot hibakeresési módban. Hibakeresési mód aktiválása átadásával a **-debug** CLI felülettel és a **-Debug** váltson a PowerShell használatával. Megtaláltuk a hiba, miután kövesse ezt a dokumentumot, a hibák elhárítása.
 
@@ -107,7 +107,7 @@ Megosztott lemezkép-katalógusában, a rendszerkép definíciójában és a lem
 
 Használja a **--bontsa ki a replikáció állapota** jelző ellenőrizheti, ha minden célként megadott régióban replikálás befejeződött. Ha nem, akkor várjon, amíg befejeződik a feladat akár 6 óráig. Ha sikertelen, indítson újra hozhat létre, és a lemezkép-verzió replikálása a parancsot. Ha a rendszerkép verziószámát replikálódnak célrégiók rengeteg, fontolja meg a replikáció fázisban történik.
 
-## <a name="azure-limits-and-quotas"></a>Az Azure korlátai és kvóták 
+## <a name="azure-limits-and-quotas"></a>Az Azure-ra vonatkozó korlátok és kvóták 
 
 [Az Azure korlátai és kvóták](https://docs.microsoft.com/azure/azure-subscription-service-limits) minden megosztott lemezkép-katalógusában, rendszerkép definíciójában és képerőforrások verzióra vonatkoznak. Ellenőrizze, hogy az előfizetések keretein belül vannak. 
 

@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0249d47bad38e29e073e86f89d6ad453950bad44
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726108"
 documentType: LandingData
 title: A Bing News Search API dokumentációja
 titleSuffix: Azure Cognitive Services
 metadata:
-  title: A Bing News Search API dokumentációja – oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs
-  description: Ismerje meg, hogyan kereshet híreket az interneten a Bing News Search API-val.
+  title: 'A Bing News Search API dokumentációja – oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs'
+  description: 'Ismerje meg, hogyan kereshet híreket az interneten a Bing News Search API-val.'
   services: cognitive-services
   author: mikedodaro
   manager: rosh
@@ -22,85 +16,85 @@ metadata:
   ms.date: 01/16/2019
   ms.author: v-gedod
 abstract:
-  description: A Bing News Search API segítségével integrálhatja a Bing hírkeresési képességeit az alkalmazásokba. A lekérdezések API-n keresztüli elküldésével releváns híreket kérhet le több kategóriában és több forrásból, a bing.com/news oldalhoz hasonlóan.
+  description: 'A Bing News Search API segítségével integrálhatja a Bing hírkeresési képességeit az alkalmazásokba. A lekérdezések API-n keresztüli elküldésével releváns híreket kérhet le több kategóriában és több forrásból, a bing.com/news oldalhoz hasonlóan.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-news-search/search-the-web
+            html: <p>A Bing News Search API bemutatása</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Mi az a Bing News Search API?
+          - href: /azure/cognitive-services/bing-news-search/concepts/send-search-queries
+            html: '<p>Megismerheti, hogyan küldhet keresési kéréseket a Bing News Search API-nak.</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Keresési lekérdezések küldése
+          - href: /azure/cognitive-services/bing-news-search/concepts/search-for-news
+            html: '<p>Megtudhatja, hogyan kereshet többféle hírtípust és hírkategóriát.</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Hírek keresése
+  - title: 5 perces gyors útmutatók
     items:
-    - href: /azure/cognitive-services/bing-news-search/search-the-web
-      html: <p>A Bing News Search API bemutatása</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Mi az a Bing News Search API?
-    - href: /azure/cognitive-services/bing-news-search/concepts/send-search-queries
-      html: <p>Megismerheti, hogyan küldhet keresési kéréseket a Bing News Search API-nak.</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Keresési lekérdezések küldése
-    - href: /azure/cognitive-services/bing-news-search/concepts/search-for-news
-      html: <p>Megtudhatja, hogyan kereshet többféle hírtípust és hírkategóriát.</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Hírek keresése
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Hírek keresése az interneten a következőkkel:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Hírek keresése az interneten a következőkkel:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            href: news-search-sdk-quickstart
+            text: 'C&#35;'
+          - image:
+              src: media/index/logo_java.svg
+            href: news-sdk-java-quickstart
+            text: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            href: news-search-sdk-node-quickstart
+            text: Node.js
+          - image:
+              src: media/index/logo_php.svg
+            href: php
+            text: PHP
+          - image:
+              src: media/index/logo_python.svg
+            href: news-sdk-python-quickstart
+            text: Python
+          - image:
+              src: media/index/logo_ruby.svg
+            href: ruby
+            text: Ruby
+  - title: Részletes útmutatók
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      href: news-search-sdk-quickstart
-      text: C&#35;
-    - image:
-        src: media/index/logo_java.svg
-      href: news-sdk-java-quickstart
-      text: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      href: news-search-sdk-node-quickstart
-      text: Node.js
-    - image:
-        src: media/index/logo_php.svg
-      href: php
-      text: PHP
-    - image:
-        src: media/index/logo_python.svg
-      href: news-sdk-python-quickstart
-      text: Python
-    - image:
-        src: media/index/logo_ruby.svg
-      href: ruby
-      text: Ruby
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'A Bing News Search API-t használó alkalmazások fejlesztése:'
-  - type: paragraph
-    text: <a href="tutorial-bing-news-search-single-page-app">Egyoldalas webalkalmazás</a>
-- title: Példák
-  items:
-  - type: paragraph
-    text: 'Példakódok a Bing News Search API-hoz:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'A Bing News Search API-t használó alkalmazások fejlesztése:'
+      - type: paragraph
+        text: <a href="tutorial-bing-news-search-single-page-app">Egyoldalas webalkalmazás</a>
+  - title: Példák
     items:
-    - html: <a href="sdk.md">Kódminták</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Példakódok a Bing News Search API-hoz:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="sdk.md">Kódminták</a>
+  - title: Referencia
     items:
-    - title: API-k
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference">Bing News Search API 7-es verzió</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference">Bing News Search API 5-ös verzió</a></p>
-    - title: SDK-k
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnews?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/newssearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/newssearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/newssearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch">Go</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: parancssori felület
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API-k
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference">Bing News Search API 7-es verzió</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference">Bing News Search API 5-ös verzió</a></p>'
+          - title: SDK-k
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnews?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/newssearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/newssearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-newssearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch">Go</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: parancssori felület
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

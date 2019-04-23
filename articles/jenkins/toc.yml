@@ -1,81 +1,74 @@
-items:
 - name: A Jenkins az Azure-on
   href: index.yml
 - name: Áttekintés
   items:
-  - name: A Jenkins az Azure-on
-    href: overview.md
+    - name: A Jenkins az Azure-on
+      href: overview.md
 - name: Gyors útmutatók
-  items:
-  - name: Jenkins-kiszolgáló létrehozása
-    href: install-jenkins-solution-template.md
   expanded: true
-- name: Oktatóanyagok
   items:
-  - name: 1. Telepítés
-    items:
     - name: Jenkins-kiszolgáló létrehozása
       href: install-jenkins-solution-template.md
-  - name: 2. Konfigurálás
-    items:
-    - name: Méretezés az Azure Container Instances segítségével
-      href: /azure/container-instances/container-instances-jenkins
-      maintainContext: true
-    - name: Skálázás Azure virtuálisgép-ügynökökkel
-      href: jenkins-azure-vm-agents.md
-  - name: 3. CI/CD implementálása
-    items:
-    - name: AKS
+- name: Oktatóanyagok
+  items:
+    - name: 1. Telepítés
       items:
-      - name: CI/CD–Kubernetes
-        href: /azure/aks/jenkins-continuous-deployment
-        maintainContext: true
-      - name: Üzembe helyezés az AKS-ben kék/zöld minta használatával
-        href: jenkins-aks-blue-green-deployment.md
-    - name: App Service
+        - name: Jenkins-kiszolgáló létrehozása
+          href: install-jenkins-solution-template.md
+    - name: 2. Konfigurálás
       items:
-      - name: Azure-erőforrások létrehozás egy folyamat feladatában
-        href: execute-cli-jenkins-pipeline.md
-      - name: Alkalmazás üzembe helyezése a GitHubból az App Service-be
-        href: tutorial-jenkins-deploy-web-app-azure-app-service.md
-    - name: A Jenkins használata az Azure DevOpsszal
-      href: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins
-      maintainContext: true
-    - name: Üzembe helyezés az Azure Functionsben
-      href: jenkins-azure-functions-deploy.md
-    - name: Közzététel az Azure Storage-ban
-      href: /azure/storage/storage-java-jenkins-continuous-integration-solution
-      maintainContext: true
-    - name: CI/CD–Linuxos virtuális gépek
-      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
-      maintainContext: true
-    - name: CI/CD–Service Fabric
-      href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
-      maintainContext: true
+        - name: Méretezés az Azure Container Instances segítségével
+          href: /azure/container-instances/container-instances-jenkins
+          maintainContext: true
+        - name: Skálázás Azure virtuálisgép-ügynökökkel
+          href: jenkins-azure-vm-agents.md
+    - name: 3. CI/CD implementálása
+      items:
+        - name: AKS
+          items:
+            - name: CI/CD–Kubernetes
+              href: /azure/aks/jenkins-continuous-deployment
+              maintainContext: true
+            - name: Üzembe helyezés az AKS-ben kék/zöld minta használatával
+              href: jenkins-aks-blue-green-deployment.md
+        - name: App Service
+          items:
+            - name: Azure-erőforrások létrehozás egy folyamat feladatában
+              href: execute-cli-jenkins-pipeline.md
+            - name: Alkalmazás üzembe helyezése a GitHubból az App Service-be
+              href: tutorial-jenkins-deploy-web-app-azure-app-service.md
+        - name: A Jenkins használata az Azure DevOpsszal
+          href: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins
+          maintainContext: true
+        - name: Üzembe helyezés az Azure Functionsben
+          href: jenkins-azure-functions-deploy.md
+        - name: Közzététel az Azure Storage-ban
+          href: /azure/storage/storage-java-jenkins-continuous-integration-solution
+          maintainContext: true
+        - name: CI/CD–Linuxos virtuális gépek
+          href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+          maintainContext: true
+        - name: CI/CD–Service Fabric
+          href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
+          maintainContext: true
 - name: Használati útmutató
   items:
-  - name: Az App Service beépülő modul használata
-    href: deploy-jenkins-app-service-plugin.md
+    - name: Az App Service beépülő modul használata
+      href: deploy-jenkins-app-service-plugin.md
 - name: Példák
   items:
-  - name: Mintafeladatok és -szkriptek
-    href: https://github.com/azure/jenkins
+    - name: Mintafeladatok és -szkriptek
+      href: 'https://github.com/azure/jenkins'
 - name: További források
   items:
-  - name: Jenkins beépülő modulok az Azure-hoz
-    href: jenkins-plugins.md
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/
-  - name: Jenkins kezdőlap
-    href: https://jenkins.io/
-  - name: Jenkins X kezdőlap
-    href: https://jenkins-x.io
-  - name: Jenkins-architektúra
-    href: /azure/architecture/reference-architectures/jenkins/
-    maintainContext: true
-ms.openlocfilehash: c83891a0037f009d539f2d1101697a554f478b1d
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621362"
+    - name: Jenkins beépülő modulok az Azure-hoz
+      href: jenkins-plugins.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Jenkins kezdőlap
+      href: 'https://jenkins.io/'
+    - name: Jenkins X kezdőlap
+      href: 'https://jenkins-x.io'
+    - name: Jenkins-architektúra
+      href: /azure/architecture/reference-architectures/jenkins/
+      maintainContext: true

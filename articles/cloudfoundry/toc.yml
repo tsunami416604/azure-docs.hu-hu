@@ -1,40 +1,33 @@
-items:
 - name: Cloud Foundry – dokumentáció
   href: index.md
 - name: Gyors útmutatók
-  items:
-  - name: Marketplace-sablon
-    href: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
   expanded: true
+  items:
+    - name: Marketplace-sablon
+      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
 - name: Oktatóanyagok
   items:
-  - name: CF létrehozása az Azure-on
-    href: /azure/cloudfoundry/create-cloud-foundry-on-azure
-  - name: CF-alkalmazás üzembe helyezése az Azure-ban
-    href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
-  - name: Az OSBA használata alkalmazással a PCF-en
-    href: /azure/cloudfoundry/use-osba-pcf-app
-  - name: Cloud Foundry az Azure-on
-    href: /azure/virtual-machines/linux/cloudfoundry-get-started
-  - name: A CF OMS Nozzle üzembe helyezése
-    href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
-  - name: A Cloud Foundry Azure-ral való integrálása
-    href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
+    - name: CF létrehozása az Azure-on
+      href: /azure/cloudfoundry/create-cloud-foundry-on-azure
+    - name: CF-alkalmazás üzembe helyezése az Azure-ban
+      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+    - name: Az OSBA használata alkalmazással a PCF-en
+      href: /azure/cloudfoundry/use-osba-pcf-app
+    - name: Cloud Foundry az Azure-on
+      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+    - name: A CF OMS Nozzle üzembe helyezése
+      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+    - name: A Cloud Foundry Azure-ral való integrálása
+      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
 - name: További források
   items:
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/
-  - name: Cloud Foundry-hely
-    href: https://docs.cloudfoundry.org/
-  - name: CF-alkalmazás telepítése az Azure-ban
-    href: https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html
-  - name: Pivotal és Azure
-    href: https://pivotal.io/partners/microsoft
-  - name: Azure DevOps beépülő modul a CF-hez
-    href: https://github.com/Microsoft/vsts-cloudfoundry
-ms.openlocfilehash: b702d42142bd809e678792f1f07a3e104f1e21c1
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229217"
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Cloud Foundry-hely
+      href: 'https://docs.cloudfoundry.org/'
+    - name: CF-alkalmazás telepítése az Azure-ban
+      href: 'https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html'
+    - name: Pivotal és Azure
+      href: 'https://pivotal.io/partners/microsoft'
+    - name: Azure DevOps beépülő modul a CF-hez
+      href: 'https://github.com/Microsoft/vsts-cloudfoundry'
