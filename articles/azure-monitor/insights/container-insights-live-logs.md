@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: magoedte
 ms.openlocfilehash: 6fe8cccf60e60ada34e3b7847964958cf6e03c4a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904746"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788835"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>Tároló naplók valós időben az Azure Monitor szolgáltatással tárolók (előzetes verzió) megtekintése
 Ez a szolgáltatás, amely jelenleg előzetes verzióban érhető el, az Azure Kubernetes Service (AKS) tároló naplóinak (stdout/stderr) valós idejű betekintést biztosít a kubectl-parancsok futtatása nélkül. Ezt a beállítást, ha új panelen megjelenik a tárolók teljesítmény adattábla alább a **tárolók** megtekintése.  További segítség valós időben kapcsolatos hibák elhárítása a tároló motor által generált élő naplózási jeleníti meg. **Közreműködői** fürterőforrás való hozzáférésre szüksége a funkció működéséhez.

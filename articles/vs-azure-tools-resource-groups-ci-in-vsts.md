@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
 ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047322"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786934"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Az Azure DevOps szolgáltatás használatával Azure erőforráscsoport-telepítési projektek folyamatos integráció
 Azure-sablon üzembe helyezéséhez, feladatokat különböző szakaszaiban: Buildelési, tesztelési, másolása az Azure-ba (más néven "Átmeneti"), és a sablon üzembe helyezése. Sablonok üzembe helyezése az Azure DevOps-szolgáltatásokkal való két különböző módja van. Mindkét módszer ugyanazt az eredményt adja meg, tehát azt, amelyik leginkább megfelel a munkafolyamatot.

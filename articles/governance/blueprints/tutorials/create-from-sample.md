@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: 4f400e45d8defc304cf58c4bd05fa19f16d0501b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59277772"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785966"
 ---
 # <a name="create-an-environment-from-a-blueprint-sample"></a>Tervrajz mintából környezet létrehozása
 
@@ -105,10 +105,10 @@ Miután a tervezet minta másolata sikeresen megtörtént **közzétett**, előf
      |Elemnév|Összetevő típusa|Paraméter neve|Érték|Leírás|
      |-|-|-|-|-|
      |ProdRG resource group|Erőforráscsoport|Name (Név)|ProductionRG|Meghatározza az első erőforráscsoport nevét.|
-     |ProdRG resource group|Erőforráscsoport|Hely|USA nyugati régiója, 2.|Beállítja az első erőforráscsoport helyét.|
+     |ProdRG resource group|Erőforráscsoport|Földrajzi egység|USA nyugati régiója, 2.|Beállítja az első erőforráscsoport helyét.|
      |Közreműködő|Szerepkör-kijelölés|Felhasználó vagy csoport|{ID}|Határozza meg, mely felhasználó vagy csoport megadását a _közreműködői_ szerepkör-hozzárendelés az első erőforráscsoporton belül.|
      |PreProdRG resource group|Erőforráscsoport|Name (Név)|PreProductionRG|Meghatározza a második erőforráscsoport nevét.|
-     |PreProdRG resource group|Erőforráscsoport|Hely|USA nyugati régiója|A második erőforráscsoport helyét is beállítja.|
+     |PreProdRG resource group|Erőforráscsoport|Földrajzi egység|USA nyugati régiója|A második erőforráscsoport helyét is beállítja.|
      |Tulajdonos|Szerepkör-kijelölés|Felhasználó vagy csoport|{ID}|Határozza meg, mely felhasználó vagy csoport megadását a _tulajdonosa_ szerepkör-hozzárendelés a második erőforráscsoporton belül.|
      |Olvasók|Szerepkör-kijelölés|Felhasználó vagy csoport|{ID}|Határozza meg, mely felhasználó vagy csoport megadását a _olvasók_ szerepkör-hozzárendelés a második erőforráscsoporton belül.|
 

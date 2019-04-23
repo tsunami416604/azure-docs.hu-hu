@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/18/2019
 ms.author: borisb
 ms.openlocfilehash: fb3c0e46324a22bdd95bf7d93c28e69c195927e8
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045422"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786033"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux-rendszerképeket az Azure-ban
 Ez a cikk ismerteti az elérhető Red Hat Enterprise Linux (RHEL) rendszerképek mellett saját elnevezési és adatmegőrzési szabályzatok az Azure piactéren.
