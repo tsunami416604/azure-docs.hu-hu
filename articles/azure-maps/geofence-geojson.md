@@ -32,10 +32,10 @@ Az adatok a geokerítésen vagy geokerítések készletét képviseli `Feature` 
 
 | Name (Név) | Typo | Kötelező  | Leírás |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | Dátum és idő  | true | A kezdő dátuma és időpontja az érvényességi időszak. |
-| endTime   | Dátum és idő  | true |  A záró dátuma és időpontja az érvényességi időszak. |
-| recurrenceType | sztring | false |   Az ismétlődési időszak típusa. Az érték lehet `Daily`, `Weekly`, `Monthly`, vagy `Yearly`. Alapértelmezett érték `Daily`.|
-| businessDayOnly | Logikai | false |  Adja meg, hogy az adatok csak érvényes üzleti nap során. Alapértelmezett érték `false`.|
+| startTime | DateTime  | true | A kezdő dátuma és időpontja az érvényességi időszak. |
+| endTime   | DateTime  | true |  A záró dátuma és időpontja az érvényességi időszak. |
+| recurrenceType | string | false |   Az ismétlődési időszak típusa. Az érték lehet `Daily`, `Weekly`, `Monthly`, vagy `Yearly`. Alapértelmezett érték `Daily`.|
+| businessDayOnly | Boolean | false |  Adja meg, hogy az adatok csak érvényes üzleti nap során. Alapértelmezett érték `false`.|
 
 
 * Az összes koordináta értékek helyettesítik [szélesség, hosszúság] meghatározott `WGS84`.
