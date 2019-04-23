@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: bwren
 ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259031"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798476"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Az Azure Monitor log-adatok megtekintésére és elemzésére
 Log Analytics a Teljesítménynapló-adatok kezelése és a lekérdezések létrehozása az Azure monitorban elsődleges élményét. Nyissa meg a Log Analytics **naplók** a a **Azure Monitor** menü. Ismerkedjen meg ezen a portálon, és vizsgálja meg a szolgáltatásokat [Log Analytics első lépései az Azure Portalon](get-started-portal.md).
