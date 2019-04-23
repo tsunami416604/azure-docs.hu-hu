@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.openlocfilehash: 79cb9bb82862f5720d5ec2262ba30dbbcf3e3f66
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006707"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797318"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Hogyan lehet E-mail küldése a SendGrid, a Java használatával Azure-környezetben
 Az alábbi példa bemutatja, hogyan használhatja a SendGrid e-mailek küldése az Azure-ban üzemeltetett weboldalakról. Az eredményül kapott alkalmazás fogja kérni a felhasználót e-mail-értékek, az alábbi képernyőképen látható módon.

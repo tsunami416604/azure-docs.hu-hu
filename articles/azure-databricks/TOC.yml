@@ -1,85 +1,78 @@
-items:
 - name: Az Azure Databricks dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi az az Azure Databricks?
-    href: what-is-azure-databricks.md
+    - name: Mi az az Azure Databricks?
+      href: what-is-azure-databricks.md
 - name: Gyors útmutatók
-  items:
-  - name: Databricks-munkaterület létrehozása – Portal
-    href: quickstart-create-databricks-workspace-portal.md
-  - name: Databricks-munkaterület létrehozása – Resource Manager-sablon
-    href: quickstart-create-databricks-workspace-resource-manager-template.md
-  - name: Databricks-munkaterület létrehozása – virtuális hálózat
-    href: quickstart-create-databricks-workspace-vnet-injection.md
   expanded: true
+  items:
+    - name: Databricks-munkaterület létrehozása – Portal
+      href: quickstart-create-databricks-workspace-portal.md
+    - name: Databricks-munkaterület létrehozása – Resource Manager-sablon
+      href: quickstart-create-databricks-workspace-resource-manager-template.md
+    - name: Databricks-munkaterület létrehozása – virtuális hálózat
+      href: quickstart-create-databricks-workspace-vnet-injection.md
 - name: Oktatóanyagok
   items:
-  - name: Docker-tárolóban futó SQL Server lekérdezése
-    href: vnet-injection-sql-server.md
-  - name: ETL-műveletek végrehajtása
-    href: databricks-extract-load-sql-data-warehouse.md
-  - name: Adatok streamelése az Event Hubs használatával
-    href: databricks-stream-from-eventhubs.md
-  - name: Hangulatelemzés a Cognitive Services használatával
-    href: databricks-sentiment-analysis-cognitive-services.md
-  - name: Adatok streamelése a HDInsight Kafkából
-    href: https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html
+    - name: Docker-tárolóban futó SQL Server lekérdezése
+      href: vnet-injection-sql-server.md
+    - name: ETL-műveletek végrehajtása
+      href: databricks-extract-load-sql-data-warehouse.md
+    - name: Adatok streamelése az Event Hubs használatával
+      href: databricks-stream-from-eventhubs.md
+    - name: Hangulatelemzés a Cognitive Services használatával
+      href: databricks-sentiment-analysis-cognitive-services.md
+    - name: Adatok streamelése a HDInsight Kafkából
+      href: 'https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html'
 - name: Útmutatók
   items:
-  - name: Spark-fürt létrehozása
-    href: https://docs.azuredatabricks.net/user-guide/clusters/index.html
-  - name: Jegyzetfüzetek használata
-    href: https://docs.azuredatabricks.net/user-guide/notebooks/index.html
-  - name: Spark-feladatok futtatása
-    href: https://docs.azuredatabricks.net/user-guide/jobs.html
-  - name: Kapcsolódás adatforrásokhoz
-    href: databricks-connect-to-data-sources.md
-  - name: VNet-injektálás használata
-    href: vnet-injection.md
-  - name: Használat az Azure Data Factoryvel
-    href: ../data-factory/transform-data-using-databricks-notebook.md
-    maintainContext: true
-  - name: Kapcsolódás Excel, R és Python használatával
-    href: connect-databricks-excel-python-r.md
-  - name: A Databricks parancssori felület használata az Azure Cloud Shellből
-    href: databricks-cli-from-azure-cloud-shell.md
-  - name: BI-eszközök használata
-    href: https://docs.azuredatabricks.net/user-guide/bi/index.html
-  - name: Vészhelyreállítás tervezése
-    href: howto-regional-disaster-recovery.md
-  - name: MLflow-útmutató
-    href: https://docs.azuredatabricks.net/applications/mlflow/index.html
+    - name: Spark-fürt létrehozása
+      href: 'https://docs.azuredatabricks.net/user-guide/clusters/index.html'
+    - name: Jegyzetfüzetek használata
+      href: 'https://docs.azuredatabricks.net/user-guide/notebooks/index.html'
+    - name: Spark-feladatok futtatása
+      href: 'https://docs.azuredatabricks.net/user-guide/jobs.html'
+    - name: Kapcsolódás adatforrásokhoz
+      href: databricks-connect-to-data-sources.md
+    - name: VNet-injektálás használata
+      href: vnet-injection.md
+    - name: Használat az Azure Data Factoryvel
+      href: ../data-factory/transform-data-using-databricks-notebook.md
+      maintainContext: true
+    - name: 'Kapcsolódás Excel, R és Python használatával'
+      href: connect-databricks-excel-python-r.md
+    - name: A Databricks parancssori felület használata az Azure Cloud Shellből
+      href: databricks-cli-from-azure-cloud-shell.md
+    - name: BI-eszközök használata
+      href: 'https://docs.azuredatabricks.net/user-guide/bi/index.html'
+    - name: Vészhelyreállítás tervezése
+      href: howto-regional-disaster-recovery.md
+    - name: MLflow-útmutató
+      href: 'https://docs.azuredatabricks.net/applications/mlflow/index.html'
 - name: Referencia
   items:
-  - name: REST API
-    href: /rest/api/databricks
-  - name: Resource Manager-sablon
-    href: /azure/templates/microsoft.databricks/workspaces
+    - name: REST API
+      href: /rest/api/databricks
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.databricks/workspaces
 - name: További források
   items:
-  - name: Gyakori kérdések
-    href: frequently-asked-questions-databricks.md
-  - name: Kibocsátási megjegyzések
-    href: https://docs.azuredatabricks.net/release-notes/index.html
-  - name: A Databricks dokumentációja
-    href: https://docs.azuredatabricks.net/user-guide/index.html
-  - name: R fejlesztői útmutató
-    href: ../machine-learning/r-developers-guide.md
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=analytics
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/databricks/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-databricks
-  - name: Régiónkénti elérhetőség
-    href: https://azure.microsoft.com/regions/services/
-  - name: Támogatási lehetőségek
-    href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 1f0b7bcc369a3f857fe974f8b8ec68b801516589
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256396"
+    - name: Gyakori kérdések
+      href: frequently-asked-questions-databricks.md
+    - name: Kibocsátási megjegyzések
+      href: 'https://docs.azuredatabricks.net/release-notes/index.html'
+    - name: A Databricks dokumentációja
+      href: 'https://docs.azuredatabricks.net/user-guide/index.html'
+    - name: R fejlesztői útmutató
+      href: ../machine-learning/r-developers-guide.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=analytics'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/databricks/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-databricks'
+    - name: Régiónkénti elérhetőség
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Támogatási lehetőségek
+      href: 'https://azure.microsoft.com/support/options/'

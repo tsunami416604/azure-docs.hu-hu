@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
 ms.openlocfilehash: 516df2f6177303987fc0354dde647c1fc26820ef
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918280"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798604"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Az Azure CDN gyorsítótárazási házirend a az Azure Media Services kezelése
 Az Azure Media Services biztosítja a HTTP-alapú adaptív Streamelés és a progresszív letöltés. HTTP-alapú streamelési az előnyökkel, a gyorsítótárazás a proxy- és a CDN-rétegek, valamint a ügyféloldali gyorsítótárazás rugalmasan méretezhető. Streamvégpontok nyújt általános idejű közvetítési lehetőségeket, és HTTP-fejlécek gyorsítótár konfigurációját. Streamvégpontok beállítja a HTTP Cache-Control: max-age és Expires fejlécet. További információt a HTTP-gyorsítótár fejléceket [W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).

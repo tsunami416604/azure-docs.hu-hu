@@ -243,7 +243,7 @@ Az alábbi táblázatban ismertetett feladatok ütemezésének tulajdonságai.
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | schedule name |Egyetlen **neve** entitás az ütemezés nevét. |
-| runbook name |Egyetlen **neve** a runbook nevére entitáshoz.  |
+| runbook name  |Egyetlen **neve** a runbook nevére entitáshoz.  |
 
 
 

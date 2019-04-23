@@ -1,57 +1,50 @@
-items:
 - name: Az Avere vFXT dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi az Azure-hoz készült Avere vFXT?
-    href: avere-vfxt-overview.md
+    - name: Mi az Azure-hoz készült Avere vFXT?
+      href: avere-vfxt-overview.md
 - name: Alapelvek
   items:
-  - name: Az Avere vFXT rendszer megtervezése
-    href: avere-vfxt-deploy-plan.md
-  - name: Az Avere vFXT üzembe helyezésének áttekintése
-    href: avere-vfxt-deploy-overview.md
+    - name: Az Avere vFXT rendszer megtervezése
+      href: avere-vfxt-deploy-plan.md
+    - name: Az Avere vFXT üzembe helyezésének áttekintése
+      href: avere-vfxt-deploy-overview.md
 - name: Útmutatók
   items:
-  - name: Felkészülés az Avere vFXT létrehozására
-    href: avere-vfxt-prereqs.md
-  - name: A vFXT-fürt üzembe helyezése
-    href: avere-vfxt-deploy.md
-  - name: A fürtkonfigurációs eszköz hozzáférése
-    href: avere-vfxt-cluster-gui.md
-  - name: Támogatási feltöltések engedélyezése
-    href: avere-vfxt-enable-support.md
-  - name: A tárolás konfigurálása
-    href: avere-vfxt-add-storage.md
-  - name: Az Avere vFXT-fürt csatlakoztatása
-    href: avere-vfxt-mount-clients.md
-  - name: Adatok áthelyezése az Avere vFXT-fürtbe
-    href: avere-vfxt-data-ingest.md
-  - name: Az Avere vFXT-fürt felügyelete
-    href: avere-vfxt-manage-cluster.md
-  - name: A fürtök finomhangolásának testreszabása
-    href: avere-vfxt-tuning.md
+    - name: Felkészülés az Avere vFXT létrehozására
+      href: avere-vfxt-prereqs.md
+    - name: A vFXT-fürt üzembe helyezése
+      href: avere-vfxt-deploy.md
+    - name: A fürtkonfigurációs eszköz hozzáférése
+      href: avere-vfxt-cluster-gui.md
+    - name: Támogatási feltöltések engedélyezése
+      href: avere-vfxt-enable-support.md
+    - name: A tárolás konfigurálása
+      href: avere-vfxt-add-storage.md
+    - name: Az Avere vFXT-fürt csatlakoztatása
+      href: avere-vfxt-mount-clients.md
+    - name: Adatok áthelyezése az Avere vFXT-fürtbe
+      href: avere-vfxt-data-ingest.md
+    - name: Az Avere vFXT-fürt felügyelete
+      href: avere-vfxt-manage-cluster.md
+    - name: A fürtök finomhangolásának testreszabása
+      href: avere-vfxt-tuning.md
 - name: További források
   items:
-  - name: Segítség a rendszerhez
-    href: avere-vfxt-open-ticket.md
-  - name: Bemutatóprojektek
-    href: avere-vfxt-demo-links.md
-  - name: Gyakori kérdések az Azure-hoz készült Avere vFXT-ről
-    href: avere-vfxt-faq.md
-  - name: További dokumentáció
-    items:
-    - name: Kiegészítő dokumentáció
-      href: avere-vfxt-additional-resources.md
-    - name: Avere-fürt DNS-konfigurációja
-      href: avere-vfxt-configure-dns.md
-    - name: Az Avere vFXT nem tulajdonosi üzembe helyezésének engedélyezése
-      href: avere-vfxt-non-owner.md
-  - name: Tanulmányok
-    href: avere-vfxt-whitepapers.md
-ms.openlocfilehash: df511c29ca2477206e2e4ddf9e1fd440da47dedc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257552"
+    - name: Segítség a rendszerhez
+      href: avere-vfxt-open-ticket.md
+    - name: Bemutatóprojektek
+      href: avere-vfxt-demo-links.md
+    - name: Gyakori kérdések az Azure-hoz készült Avere vFXT-ről
+      href: avere-vfxt-faq.md
+    - name: További dokumentáció
+      items:
+        - name: Kiegészítő dokumentáció
+          href: avere-vfxt-additional-resources.md
+        - name: Avere-fürt DNS-konfigurációja
+          href: avere-vfxt-configure-dns.md
+        - name: Az Avere vFXT nem tulajdonosi üzembe helyezésének engedélyezése
+          href: avere-vfxt-non-owner.md
+    - name: Tanulmányok
+      href: avere-vfxt-whitepapers.md

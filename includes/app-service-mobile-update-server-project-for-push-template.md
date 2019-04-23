@@ -5,11 +5,11 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: c664b089f316255fabc4c8dc36b291d7d63e6280
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890965"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804155"
 ---
 Ebben a szakaszban frissítse kód a meglévő Mobile Apps háttér-projekthez, hogy a leküldéses értesítés küldése, amikor új elem kerül. Ez a folyamat működteti a [sablon](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) funkció lehetővé teszi a platformfüggetlen Azure Notification hubs leküldéses értesítések. A különböző ügyfelek részére regisztrálva van a leküldéses értesítéseket a sablonok használatával, és a egy egyetlen univerzális leküldéses minden ügyfél platformon is elérhető.
 

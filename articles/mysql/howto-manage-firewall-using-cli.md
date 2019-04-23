@@ -8,11 +8,11 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: dca7d09a5358f5e8b4025dc5e35e4465e21d77a2
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59488165"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795440"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Hozzon létre és kezelhető az Azure Database for MySQL tűzfalszabályok az Azure CLI-vel
 Kiszolgálószintű tűzfalszabályok segítségével hozzáférésének kezelése az Azure Database for MySQL-kiszolgáló megadott IP-címet vagy egy IP-címtartományt. Kényelmes megoldás az Azure parancssori felület parancsait használva, létrehozhat, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Azure Database for MySQL-tűzfalak áttekintése, lásd: [, Azure Database for MySQL-kiszolgáló tűzfalszabályainak](./concepts-firewall-rules.md).

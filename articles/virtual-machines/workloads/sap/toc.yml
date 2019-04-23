@@ -1,239 +1,232 @@
-items:
 - name: Áttekintés
   items:
-  - name: Bevezetés
-    href: get-started.md
-  - name: Tanúsítványok
-    href: sap-certifications.md
+    - name: Bevezetés
+      href: get-started.md
+    - name: Tanúsítványok
+      href: sap-certifications.md
 - name: SAP HANA az Azure-ban (nagyméretű példányok)
   items:
-  - name: Áttekintés
-    items:
-    - name: Mi az SAP HANA az Azure-ban (nagy méretű példányok)?
-      href: hana-overview-architecture.md
-    - name: A feltételek megismerése
-      href: hana-know-terms.md
-    - name: Tanúsítvány
-      href: hana-certification.md
-    - name: HLI-hez elérhető termékváltozatok
-      href: hana-available-skus.md
-    - name: Méretezés
-      href: hana-sizing.md
-    - name: Előkészítési követelmények
-      href: hana-onboarding-requirements.md
-    - name: SAP HANA adatszintezés és bővítménycsomópontok
-      href: hana-data-tiering-extension-nodes.md
-    - name: Működési modell és feladatok
-      href: hana-operations-model.md
-  - name: Architektúra
-    items:
-    - name: Általános architektúra
-      href: hana-architecture.md
-    - name: Hálózati architektúra
-      href: hana-network-architecture.md
-    - name: Tároló-architektúra
-      href: hana-storage-architecture.md
-    - name: HLI – támogatott esetek
-      href: hana-supported-scenario.md
-  - name: Infrastruktúra és csatlakozási lehetőségek
-    items:
-    - name: HLI – üzembe helyezés
-      href: hana-overview-infrastructure-connectivity.md
-    - name: Azure-beli virtuális gépek csatlakozása nagy méretű HANA-példányokhoz
-      href: hana-connect-azure-vm-large-instances.md
-    - name: Virtuális hálózat csatlakoztatása nagy méretű HANA-példányokhoz – ExpressRoute
-      href: hana-connect-vnet-express-route.md
-    - name: További hálózati követelmények
-      href: hana-additional-network-requirements.md
-  - name: Az SAP HANA telepítése
-    items:
-    - name: A konfiguráció ellenőrzése
-      href: hana-installation.md
-    - name: Minta HANA-telepítés
-      href: hana-example-installation.md
-  - name: Magas rendelkezésre állás és vészhelyreállítás
-    items:
-    - name: Lehetőségek és megfontolandó szempontok
-      href: hana-overview-high-availability-disaster-recovery.md
-    - name: Biztonsági mentés és visszaállítás
-      href: hana-backup-restore.md
-    - name: Alapelvek és előkészítés
-      href: hana-concept-preparation.md
-    - name: Vészhelyreállítási feladatátvételi eljárás
-      href: hana-failover-procedure.md
-  - name: Hibaelhárítás és monitorozás
-    items:
-    - name: A HLI monitorozása
-      href: troubleshooting-monitoring.md
-    - name: HANA-oldali monitorozás és hibaelhárítás
-      href: hana-monitor-troubleshoot.md
-  - name: Útmutató
-    items:
-    - name: Az Azure HANA nagyméretű példányok vezérlése az Azure Portalon keresztül
-      href: hana-li-portal.md
-    - name: Magas rendelkezésre állás beállítása a STONITH használatával
-      href: ha-setup-with-stonith.md
-    - name: Az operációs rendszer biztonsági mentése II. típusú termékváltozatokhoz
-      href: os-backup-type-ii-skus.md
-    - name: HANA nagyméretű példányainak operációsrendszer-frissítése
-      href: os-upgrade-hana-large-instance.md
-    - name: SMT-kiszolgáló beállítása SUSE Linuxhoz
-      href: hana-setup-smt.md
+    - name: Áttekintés
+      items:
+        - name: Mi az SAP HANA az Azure-ban (nagy méretű példányok)?
+          href: hana-overview-architecture.md
+        - name: A feltételek megismerése
+          href: hana-know-terms.md
+        - name: Tanúsítvány
+          href: hana-certification.md
+        - name: HLI-hez elérhető termékváltozatok
+          href: hana-available-skus.md
+        - name: Méretezés
+          href: hana-sizing.md
+        - name: Előkészítési követelmények
+          href: hana-onboarding-requirements.md
+        - name: SAP HANA adatszintezés és bővítménycsomópontok
+          href: hana-data-tiering-extension-nodes.md
+        - name: Működési modell és feladatok
+          href: hana-operations-model.md
+    - name: Architektúra
+      items:
+        - name: Általános architektúra
+          href: hana-architecture.md
+        - name: Hálózati architektúra
+          href: hana-network-architecture.md
+        - name: Tároló-architektúra
+          href: hana-storage-architecture.md
+        - name: HLI – támogatott esetek
+          href: hana-supported-scenario.md
+    - name: Infrastruktúra és csatlakozási lehetőségek
+      items:
+        - name: HLI – üzembe helyezés
+          href: hana-overview-infrastructure-connectivity.md
+        - name: Azure-beli virtuális gépek csatlakozása nagy méretű HANA-példányokhoz
+          href: hana-connect-azure-vm-large-instances.md
+        - name: Virtuális hálózat csatlakoztatása nagy méretű HANA-példányokhoz – ExpressRoute
+          href: hana-connect-vnet-express-route.md
+        - name: További hálózati követelmények
+          href: hana-additional-network-requirements.md
+    - name: Az SAP HANA telepítése
+      items:
+        - name: A konfiguráció ellenőrzése
+          href: hana-installation.md
+        - name: Minta HANA-telepítés
+          href: hana-example-installation.md
+    - name: Magas rendelkezésre állás és vészhelyreállítás
+      items:
+        - name: Lehetőségek és megfontolandó szempontok
+          href: hana-overview-high-availability-disaster-recovery.md
+        - name: Biztonsági mentés és visszaállítás
+          href: hana-backup-restore.md
+        - name: Alapelvek és előkészítés
+          href: hana-concept-preparation.md
+        - name: Vészhelyreállítási feladatátvételi eljárás
+          href: hana-failover-procedure.md
+    - name: Hibaelhárítás és monitorozás
+      items:
+        - name: A HLI monitorozása
+          href: troubleshooting-monitoring.md
+        - name: HANA-oldali monitorozás és hibaelhárítás
+          href: hana-monitor-troubleshoot.md
+    - name: Útmutató
+      items:
+        - name: Az Azure HANA nagyméretű példányok vezérlése az Azure Portalon keresztül
+          href: hana-li-portal.md
+        - name: Magas rendelkezésre állás beállítása a STONITH használatával
+          href: ha-setup-with-stonith.md
+        - name: Az operációs rendszer biztonsági mentése II. típusú termékváltozatokhoz
+          href: os-backup-type-ii-skus.md
+        - name: HANA nagyméretű példányainak operációsrendszer-frissítése
+          href: os-upgrade-hana-large-instance.md
+        - name: SMT-kiszolgáló beállítása SUSE Linuxhoz
+          href: hana-setup-smt.md
 - name: SAP HANA az Azure-beli virtuális gépeken
   items:
-  - name: Egyetlen példánnyal rendelkező SAP HANA telepítése
-    href: hana-get-started.md
-  - name: S/4 HANA vagy BW/4 HANA SAP CAL üzembehelyezési útmutatója
-    href: cal-s4h.md
-  - name: SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
-    href: hana-vm-operations.md
-  - name: Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
-    items:
-    - name: Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés
-      href: sap-hana-availability-overview.md
-    - name: Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA
-      href: sap-hana-availability-one-region.md
-    - name: Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA
-      href: sap-hana-availability-across-regions.md
-    - name: Az SAP HANA SLES-en végzett rendszerreplikálásának beállítása
-      href: sap-hana-high-availability.md
-    - name: Az SAP HANA RHEL-en végzett rendszerreplikálásának beállítása
-      href: sap-hana-high-availability-rhel.md
-    - name: Az SAP HANA-felskálázás és a Pacemaker on SLES hibaelhárítása
-      href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
-  - name: SAP HANA biztonsági mentés áttekintése
-    href: sap-hana-backup-guide.md
-  - name: SAP HANA fájlszintű biztonsági mentés
-    href: sap-hana-backup-file-level.md
-  - name: SAP HANA-tárhely pillanatképes biztonsági mentései
-    href: sap-hana-backup-storage-snapshots.md
-- name: SAP NetWeaver és Business One az Azure Virtual Machinesban
-  items:
-  - name: SAP számítási feladatok tervezési és üzembehelyezési ellenőrzőlistája
-    href: sap-deployment-checklist.md
-  - name: SAP NetWeaver tervezése és megvalósítása Azure-ban
-    href: planning-guide.md
-  - name: SAP NetWeaver üzembehelyezési útmutató
-    href: deployment-guide.md
-  - name: DBMS üzembehelyezési útmutatók SAP számítási feladatokhoz
-    items:
-    - name: Általános Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
-      href: dbms_guide_general.md
-    - name: SQL Server rendszerű Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
-      href: dbms_guide_sqlserver.md
-    - name: Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
-      href: dbms_guide_oracle.md
-    - name: IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
-      href: dbms_guide_ibm.md
-    - name: Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Serveren
-      href: dbms-guide-ha-ibm.md
-    - name: SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
-      href: dbms_guide_sapase.md
-    - name: SAP MaxDB, liveCache és tartalomkiszolgáló üzembe helyezése az Azure-ban
-      href: dbms_guide_maxdb.md
+    - name: Egyetlen példánnyal rendelkező SAP HANA telepítése
+      href: hana-get-started.md
+    - name: S/4 HANA vagy BW/4 HANA SAP CAL üzembehelyezési útmutatója
+      href: cal-s4h.md
+    - name: SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
+      href: hana-vm-operations.md
     - name: Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
       items:
-      - name: Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés
-        href: sap-hana-availability-overview.md
-      - name: Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA
-        href: sap-hana-availability-one-region.md
-      - name: Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA
-        href: sap-hana-availability-across-regions.md
-  - name: SAP Business One az Azure Virtual Machinesban
-    href: business-one-azure.md
-  - name: SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója
-    href: cal-ides-erp6-erp7-sp3-sql.md
-  - name: Az Azure SAP LaMa összekötője
-    href: lama-installation.md
-  - name: Magas rendelkezésre állás (HA) Windowson és Linuxon
-    items:
-    - name: Áttekintés
-      href: sap-high-availability-guide-start.md
-    - name: Magas rendelkezésre állású architektúra
+        - name: Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés
+          href: sap-hana-availability-overview.md
+        - name: Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA
+          href: sap-hana-availability-one-region.md
+        - name: Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA
+          href: sap-hana-availability-across-regions.md
+        - name: Az SAP HANA SLES-en végzett rendszerreplikálásának beállítása
+          href: sap-hana-high-availability.md
+        - name: Az SAP HANA RHEL-en végzett rendszerreplikálásának beállítása
+          href: sap-hana-high-availability-rhel.md
+        - name: Az SAP HANA-felskálázás és a Pacemaker on SLES hibaelhárítása
+          href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
+    - name: SAP HANA biztonsági mentés áttekintése
+      href: sap-hana-backup-guide.md
+    - name: SAP HANA fájlszintű biztonsági mentés
+      href: sap-hana-backup-file-level.md
+    - name: SAP HANA-tárhely pillanatképes biztonsági mentései
+      href: sap-hana-backup-storage-snapshots.md
+- name: SAP NetWeaver és Business One az Azure Virtual Machinesban
+  items:
+    - name: SAP számítási feladatok tervezési és üzembehelyezési ellenőrzőlistája
+      href: sap-deployment-checklist.md
+    - name: SAP NetWeaver tervezése és megvalósítása Azure-ban
+      href: planning-guide.md
+    - name: SAP NetWeaver üzembehelyezési útmutató
+      href: deployment-guide.md
+    - name: DBMS üzembehelyezési útmutatók SAP számítási feladatokhoz
       items:
-      - name: Magas rendelkezésre állású architektúra és forgatókönyvek
-        href: sap-high-availability-architecture-scenarios.md
-      - name: Magasabb rendelkezésre állású architektúra és forgatókönyvek
-        href: sap-higher-availability-architecture-scenarios.md
-      - name: SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással
-        href: sap-ha-availability-zones.md
-      - name: Magas rendelkezésre állás Windows rendszeren közös lemezzel (A)SCS példányhoz
-        href: sap-high-availability-guide-wsfc-shared-disk.md
-      - name: Magas rendelkezésre állás Windows rendszeren SOFS-fájlmegosztással (A)SCS példányhoz
-        href: sap-high-availability-guide-wsfc-file-share.md
-      - name: Magas rendelkezésre állás SUSE Linux rendszeren (A)SCS példányhoz
-        href: high-availability-guide-suse.md
-      - name: Magas rendelkezésre állás SUSE Linux rendszeren (A)SCS példányhoz Azure NetApp Files szolgáltatással
-        href: high-availability-guide-suse-netapp-files.md
-      - name: Magas rendelkezésre állás Red Hat Enterprise Linux rendszeren (A)SCS példányhoz
-        href: high-availability-guide-rhel.md
-    - name: Az Azure infrastruktúra előkészítése
+        - name: Általános Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
+          href: dbms_guide_general.md
+        - name: SQL Server rendszerű Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
+          href: dbms_guide_sqlserver.md
+        - name: Oracle Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
+          href: dbms_guide_oracle.md
+        - name: IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
+          href: dbms_guide_ibm.md
+        - name: Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Serveren
+          href: dbms-guide-ha-ibm.md
+        - name: SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
+          href: dbms_guide_sapase.md
+        - name: 'SAP MaxDB, liveCache és tartalomkiszolgáló üzembe helyezése az Azure-ban'
+          href: dbms_guide_maxdb.md
+        - name: Az SAP HANA rendelkezésre állása az Azure-beli virtuális gépeken
+          items:
+            - name: Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés
+              href: sap-hana-availability-overview.md
+            - name: Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA
+              href: sap-hana-availability-one-region.md
+            - name: Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA
+              href: sap-hana-availability-across-regions.md
+    - name: SAP Business One az Azure Virtual Machinesban
+      href: business-one-azure.md
+    - name: SAP IDES Windows rendszeren/SQL Server SAP CAL üzembehelyezési útmutatója
+      href: cal-ides-erp6-erp7-sp3-sql.md
+    - name: Az Azure SAP LaMa összekötője
+      href: lama-installation.md
+    - name: Magas rendelkezésre állás (HA) Windowson és Linuxon
       items:
-      - name: Windows közös lemezzel (A)SCS példányhoz
-        href: sap-high-availability-infrastructure-wsfc-shared-disk.md
-      - name: Windows SOFS-fájlmegosztással (A)SCS példányhoz
-        href: sap-high-availability-infrastructure-wsfc-file-share.md
-      - name: Magas rendelkezésre állás NFS-hez Azure-beli virtuális gépeken SLES rendszeren
-        href: high-availability-guide-suse-nfs.md
-      - name: Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez
-        href: high-availability-guide-rhel-glusterfs.md
-      - name: Pacemaker on SLES
-        href: high-availability-guide-suse-pacemaker.md
-      - name: Pacemaker on RHEL
-        href: high-availability-guide-rhel-pacemaker.md
-    - name: SAP-telepítés
-      items:
-      - name: Windows közös lemezzel (A)SCS példányhoz
-        href: sap-high-availability-installation-wsfc-shared-disk.md
-      - name: Windows SOFS-fájlmegosztással (A)SCS példányhoz
-        href: sap-high-availability-installation-wsfc-file-share.md
-      - name: SUSE Linux NFS-sel (A)SCS példányhoz
-        href: high-availability-guide-suse.md
-      - name: SUSE Linux NFS-sel (A)SCS példányhoz Azure NetApp Files szolgáltatással
-        href: high-availability-guide-suse-netapp-files.md
-      - name: Magas rendelkezésre állás SAP NetWeaverhez Red Hat Enterprise Linuxon
-        href: high-availability-guide-rhel.md
-    - name: SAP több biztonsági azonosítóval
-      items:
-      - name: Windows közös lemezzel (A)SCS példányhoz
-        href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
-      - name: Windows SOFS-fájlmegosztással (A)SCS példányhoz
-        href: sap-ascs-ha-multi-sid-wsfc-file-share.md
-  - name: Azure Site Recovery az SAP-vészhelyreállításhoz
-    href: ../../../site-recovery/site-recovery-workload.md#protect-sap
+        - name: Áttekintés
+          href: sap-high-availability-guide-start.md
+        - name: Magas rendelkezésre állású architektúra
+          items:
+            - name: Magas rendelkezésre állású architektúra és forgatókönyvek
+              href: sap-high-availability-architecture-scenarios.md
+            - name: Magasabb rendelkezésre állású architektúra és forgatókönyvek
+              href: sap-higher-availability-architecture-scenarios.md
+            - name: SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással
+              href: sap-ha-availability-zones.md
+            - name: Magas rendelkezésre állás Windows rendszeren közös lemezzel (A)SCS példányhoz
+              href: sap-high-availability-guide-wsfc-shared-disk.md
+            - name: Magas rendelkezésre állás Windows rendszeren SOFS-fájlmegosztással (A)SCS példányhoz
+              href: sap-high-availability-guide-wsfc-file-share.md
+            - name: Magas rendelkezésre állás SUSE Linux rendszeren (A)SCS példányhoz
+              href: high-availability-guide-suse.md
+            - name: Magas rendelkezésre állás SUSE Linux rendszeren (A)SCS példányhoz Azure NetApp Files szolgáltatással
+              href: high-availability-guide-suse-netapp-files.md
+            - name: Magas rendelkezésre állás Red Hat Enterprise Linux rendszeren (A)SCS példányhoz
+              href: high-availability-guide-rhel.md
+        - name: Az Azure infrastruktúra előkészítése
+          items:
+            - name: Windows közös lemezzel (A)SCS példányhoz
+              href: sap-high-availability-infrastructure-wsfc-shared-disk.md
+            - name: Windows SOFS-fájlmegosztással (A)SCS példányhoz
+              href: sap-high-availability-infrastructure-wsfc-file-share.md
+            - name: Magas rendelkezésre állás NFS-hez Azure-beli virtuális gépeken SLES rendszeren
+              href: high-availability-guide-suse-nfs.md
+            - name: Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez
+              href: high-availability-guide-rhel-glusterfs.md
+            - name: Pacemaker on SLES
+              href: high-availability-guide-suse-pacemaker.md
+            - name: Pacemaker on RHEL
+              href: high-availability-guide-rhel-pacemaker.md
+        - name: SAP-telepítés
+          items:
+            - name: Windows közös lemezzel (A)SCS példányhoz
+              href: sap-high-availability-installation-wsfc-shared-disk.md
+            - name: Windows SOFS-fájlmegosztással (A)SCS példányhoz
+              href: sap-high-availability-installation-wsfc-file-share.md
+            - name: SUSE Linux NFS-sel (A)SCS példányhoz
+              href: high-availability-guide-suse.md
+            - name: SUSE Linux NFS-sel (A)SCS példányhoz Azure NetApp Files szolgáltatással
+              href: high-availability-guide-suse-netapp-files.md
+            - name: Magas rendelkezésre állás SAP NetWeaverhez Red Hat Enterprise Linuxon
+              href: high-availability-guide-rhel.md
+        - name: SAP több biztonsági azonosítóval
+          items:
+            - name: Windows közös lemezzel (A)SCS példányhoz
+              href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
+            - name: Windows SOFS-fájlmegosztással (A)SCS példányhoz
+              href: sap-ascs-ha-multi-sid-wsfc-file-share.md
+    - name: Azure Site Recovery az SAP-vészhelyreállításhoz
+      href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
 - name: AAD SAP-identitásintegráció és egyszeri bejelentkezés
   items:
-  - name: Integráció az SAP-felhővel
-    href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-  - name: AAD-integráció az SAP-felhőplatform identitáshitelesítésével
-    href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-  - name: Egyszeri bejelentkezés beállítása az SAP-felhőplatformmal
-    href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-  - name: AAD-integráció az SAP NetWeaverrel
-    href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-  - name: AAD-integráció az SAP Business ByDesignnal
-    href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-  - name: AAD-integráció az SAP HANA DBMS-sel
-    href: ../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-  - name: SAML egyszeri bejelentkezés az SAP Fiori-kezdőpanelen az Azure AD-val
-    href: https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad
+    - name: Integráció az SAP-felhővel
+      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: AAD-integráció az SAP-felhőplatform identitáshitelesítésével
+      href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: Egyszeri bejelentkezés beállítása az SAP-felhőplatformmal
+      href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: AAD-integráció az SAP NetWeaverrel
+      href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: AAD-integráció az SAP Business ByDesignnal
+      href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: AAD-integráció az SAP HANA DBMS-sel
+      href: ../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: SAML egyszeri bejelentkezés az SAP Fiori-kezdőpanelen az Azure AD-val
+      href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
 - name: Azure-szolgáltatások integrálása az SAP-be
   items:
-  - name: Az SAP HANA használata a Power BI Desktopban
-    href: https://docs.microsoft.com/power-bi/desktop-sap-hana
-  - name: A DirectQuery és az SAP HANA
-    href: https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana
-  - name: Az SAP BW Connector használata a Power BI Desktopban
-    href: https://docs.microsoft.com/power-bi/desktop-sap-bw-connector
-  - name: Az Azure Data Factory SAP HANA- és Business Warehouse-adatok integrációját nyújtja
-    href: https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration
+    - name: Az SAP HANA használata a Power BI Desktopban
+      href: 'https://docs.microsoft.com/power-bi/desktop-sap-hana'
+    - name: A DirectQuery és az SAP HANA
+      href: 'https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana'
+    - name: Az SAP BW Connector használata a Power BI Desktopban
+      href: 'https://docs.microsoft.com/power-bi/desktop-sap-bw-connector'
+    - name: Az Azure Data Factory SAP HANA- és Business Warehouse-adatok integrációját nyújtja
+      href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
 - name: További források
   items:
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: b91931661ad91f813ca84e0c9b7bef4b22e2e975
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489036"
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'

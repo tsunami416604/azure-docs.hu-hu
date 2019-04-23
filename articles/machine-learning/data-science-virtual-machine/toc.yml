@@ -1,81 +1,75 @@
-items:
 - name: Adatelemzési virtuális gép dokumentációja
   href: index.yml
+  items: null
 - name: Áttekintés
   items:
-  - name: Mi az az adatelemzési virtuális gép?
-    href: overview.md
-  - name: Mi az a mélytanulási virtuális gép?
-    href: deep-learning-dsvm-overview.md
-  - name: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép?
-    href: geo-ai-dsvm-overview.md
+    - name: Mi az az adatelemzési virtuális gép?
+      href: overview.md
+    - name: Mi az a mélytanulási virtuális gép?
+      href: deep-learning-dsvm-overview.md
+    - name: Mi az a mesterséges intelligenciát használó geo-adatelemzési virtuális gép?
+      href: geo-ai-dsvm-overview.md
 - name: Gyors útmutatók
-  items:
-  - name: Windows rendszerű adatelemzési virtuális gép létrehozása
-    href: provision-vm.md
-  - name: Ubuntu rendszerű adatelemzési virtuális gép létrehozása
-    href: dsvm-ubuntu-intro.md
-  - name: CentOS rendszerű adatelemzési virtuális gép létrehozása
-    href: linux-dsvm-intro.md
-  - name: Mélytanulási virtuális gép létrehozása
-    href: provision-deep-learning-dsvm.md
-  - name: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép létrehozása
-    href: provision-geo-ai-dsvm.md
   expanded: true
+  items:
+    - name: Windows rendszerű adatelemzési virtuális gép létrehozása
+      href: provision-vm.md
+    - name: Ubuntu rendszerű adatelemzési virtuális gép létrehozása
+      href: dsvm-ubuntu-intro.md
+    - name: CentOS rendszerű adatelemzési virtuális gép létrehozása
+      href: linux-dsvm-intro.md
+    - name: Mélytanulási virtuális gép létrehozása
+      href: provision-deep-learning-dsvm.md
+    - name: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép létrehozása
+      href: provision-geo-ai-dsvm.md
 - name: Alapelvek
   items:
-  - name: A DVSM felderítése
-    href: dsvm-tools-overview.md
-  - name: Mély tanulás és mesterségesintelligencia-keretrendszerek
-    href: dsvm-deep-learning-ai-frameworks.md
-  - name: Gépi tanulási és adatelemzési eszközök
-    href: dsvm-ml-data-science-tools.md
-  - name: Nyelvek
-    href: dsvm-languages.md
-  - name: Fejlesztési eszközök
-    href: dsvm-tools-development.md
-  - name: Adatfeldolgozási eszközök
-    href: dsvm-tools-ingestion.md
-  - name: Adatáttekintési és vizualizációs eszközök
-    href: dsvm-tools-explore-and-visualize.md
-  - name: Adatplatformok
-    href: dsvm-data-platforms.md
-  - name: Minták és útmutatók
-    href: dsvm-samples-and-walkthroughs.md
+    - name: A DVSM felderítése
+      href: dsvm-tools-overview.md
+    - name: Mély tanulás és mesterségesintelligencia-keretrendszerek
+      href: dsvm-deep-learning-ai-frameworks.md
+    - name: Gépi tanulási és adatelemzési eszközök
+      href: dsvm-ml-data-science-tools.md
+    - name: Nyelvek
+      href: dsvm-languages.md
+    - name: Fejlesztési eszközök
+      href: dsvm-tools-development.md
+    - name: Adatfeldolgozási eszközök
+      href: dsvm-tools-ingestion.md
+    - name: Adatáttekintési és vizualizációs eszközök
+      href: dsvm-tools-explore-and-visualize.md
+    - name: Adatplatformok
+      href: dsvm-data-platforms.md
+    - name: Minták és útmutatók
+      href: dsvm-samples-and-walkthroughs.md
 - name: Útmutatók
   items:
-  - name: Windows rendszerű adatelemzési virtuális gép használata
-    href: vm-do-ten-things.md
-  - name: Linux rendszerű adatelemzési virtuális gép használata
-    href: linux-dsvm-walkthrough.md
-  - name: Mélytanulási virtuális gép használata
-    href: use-deep-learning-dsvm.md
-  - name: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép használata
-    href: use-geo-ai-dsvm.md
-  - name: Vállalati útmutató
-    items:
-    - name: Áttekintés
-      href: dsvm-enterprise-overview.md
-    - name: Méretezés
-      href: dsvm-pools.md
-    - name: Active Directory-integráció
-      href: dsvm-common-identity.md
-    - name: Biztonságos erőforrás-hozzáférési hitelesítő adatok
-      href: dsvm-secure-access-keys.md
+    - name: Windows rendszerű adatelemzési virtuális gép használata
+      href: vm-do-ten-things.md
+    - name: Linux rendszerű adatelemzési virtuális gép használata
+      href: linux-dsvm-walkthrough.md
+    - name: Mélytanulási virtuális gép használata
+      href: use-deep-learning-dsvm.md
+    - name: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép használata
+      href: use-geo-ai-dsvm.md
+    - name: Vállalati útmutató
+      items:
+        - name: Áttekintés
+          href: dsvm-enterprise-overview.md
+        - name: Méretezés
+          href: dsvm-pools.md
+        - name: Active Directory-integráció
+          href: dsvm-common-identity.md
+        - name: Biztonságos erőforrás-hozzáférési hitelesítő adatok
+          href: dsvm-secure-access-keys.md
 - name: További források
   items:
-  - name: R fejlesztői útmutató
-    href: /azure/architecture/data-guide/technology-choices/r-developers-guide
-    maintainContext: true
-  - name: Blog
-    href: https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/
-  - name: MSDN-fórum
-    href: https://social.microsoft.com/Forums/en-US/home?forum=dsvm
-  - name: Stack Overflow
-    href: https://stackoverflow.com/search?q=dsvm
-ms.openlocfilehash: edb96d185e829cfe76eda4a42776e3b5cfea0153
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495600"
+    - name: R fejlesztői útmutató
+      href: /azure/architecture/data-guide/technology-choices/r-developers-guide
+      maintainContext: true
+    - name: Blog
+      href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
+    - name: MSDN-fórum
+      href: 'https://social.microsoft.com/Forums/en-US/home?forum=dsvm'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=dsvm'

@@ -1,81 +1,74 @@
-items:
 - name: Áttekintés
   items:
-  - name: Mik azok a Power BI munkaterületi gyűjtemények?
-    href: what-are-power-bi-workspace-collections.md
-  - name: A Power BI munkaterületi gyűjtemények újdonságai
-    href: whats-new.md
+    - name: Mik azok a Power BI munkaterületi gyűjtemények?
+      href: what-are-power-bi-workspace-collections.md
+    - name: A Power BI munkaterületi gyűjtemények újdonságai
+      href: whats-new.md
 - name: Bevezetés
   items:
-  - name: Ismerkedés a Power BI munkaterületi gyűjteményekkel
-    href: get-started.md
-  - name: Ismerkedés egy minta segítségével
-    href: get-started-sample.md
-  - name: GYIK
-    href: faq.md
+    - name: Ismerkedés a Power BI munkaterületi gyűjteményekkel
+      href: get-started.md
+    - name: Ismerkedés egy minta segítségével
+      href: get-started-sample.md
+    - name: GYIK
+      href: faq.md
 - name: Útmutató
   items:
-  - name: Tervezés és kialakítás
-    items:
-    - name: Gyakori forgatókönyvek
-      href: scenarios.md
-  - name: Kezelés
-    items:
-    - name: Kapcsolódás adatforráshoz
-      href: connect-datasource.md
-    - name: Power BI-jelentés beágyazása
-      href: embed-report.md
-    - name: Jelentések kezelése
-      href: interact-with-reports.md
-    - name: Új jelentés létrehozása adatkészletből
-      href: create-report-from-dataset.md
-    - name: Jelentések mentése
-      href: save-reports.md
-    - name: Váltás megtekintés és szerkesztés között
-      href: toggle-mode.md
-  - name: Biztonságos
-    items:
-    - name: Hitelesítés és engedélyezés
-      href: app-token-flow.md
-    - name: Sorszintű biztonság a Power BI munkaterületi gyűjteményekkel
-      href: row-level-security.md
+    - name: Tervezés és kialakítás
+      items:
+        - name: Gyakori forgatókönyvek
+          href: scenarios.md
+    - name: Kezelés
+      items:
+        - name: Kapcsolódás adatforráshoz
+          href: connect-datasource.md
+        - name: Power BI-jelentés beágyazása
+          href: embed-report.md
+        - name: Jelentések kezelése
+          href: interact-with-reports.md
+        - name: Új jelentés létrehozása adatkészletből
+          href: create-report-from-dataset.md
+        - name: Jelentések mentése
+          href: save-reports.md
+        - name: Váltás megtekintés és szerkesztés között
+          href: toggle-mode.md
+    - name: Biztonságos
+      items:
+        - name: Hitelesítés és engedélyezés
+          href: app-token-flow.md
+        - name: Sorszintű biztonság a Power BI munkaterületi gyűjteményekkel
+          href: row-level-security.md
 - name: Referencia
   items:
-  - name: Kódminták
-    href: https://azure.microsoft.com/resources/samples/?service=power-bi-embedded
-  - name: PowerShell
-    href: /powershell/module/az.powerbiembedded
-  - name: .NET Azure Resource Manager
-    href: /dotnet/api/microsoft.azure.management.powerbiembedded
-  - name: .NET SDK letöltése
-    href: https://www.nuget.org/profiles/powerbi
-  - name: JavaScript
-    href: https://github.com/Microsoft/PowerBI-JavaScript/wiki
-  - name: Felügyeleti REST API-k
-    href: https://docs.microsoft.com/rest/api/power-bi-workspace-collections/
-  - name: REST API-k
-    href: https://msdn.microsoft.com/library/azure/mt711507.aspx
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=power-bi-embedded'
+    - name: PowerShell
+      href: /powershell/module/az.powerbiembedded
+    - name: .NET Azure Resource Manager
+      href: /dotnet/api/microsoft.azure.management.powerbiembedded
+    - name: .NET SDK letöltése
+      href: 'https://www.nuget.org/profiles/powerbi'
+    - name: JavaScript
+      href: 'https://github.com/Microsoft/PowerBI-JavaScript/wiki'
+    - name: Felügyeleti REST API-k
+      href: 'https://docs.microsoft.com/rest/api/power-bi-workspace-collections/'
+    - name: REST API-k
+      href: 'https://msdn.microsoft.com/library/azure/mt711507.aspx'
 - name: További források
   items:
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
-  - name: JavaScript beágyazási minta
-    href: https://microsoft.github.io/PowerBI-JavaScript/demo/
-  - name: JavaScript Git-adattár
-    href: https://github.com/Microsoft/PowerBI-JavaScript
-  - name: Power BI C# Git-adattár
-    href: https://github.com/Microsoft/PowerBI-CSharp
-  - name: Power BI-közösség
-    href: https://community.powerbi.com/t5/Developer/bd-p/Developer
-  - name: Díjkalkulátor
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Mintaalkalmazás
-    href: https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/powerbi
-ms.openlocfilehash: 5d43ccee59baebec93416845597bf437e57bc46b
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58846488"
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: JavaScript beágyazási minta
+      href: 'https://microsoft.github.io/PowerBI-JavaScript/demo/'
+    - name: JavaScript Git-adattár
+      href: 'https://github.com/Microsoft/PowerBI-JavaScript'
+    - name: 'Power BI C# Git-adattár'
+      href: 'https://github.com/Microsoft/PowerBI-CSharp'
+    - name: Power BI-közösség
+      href: 'https://community.powerbi.com/t5/Developer/bd-p/Developer'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Mintaalkalmazás
+      href: 'https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/powerbi'

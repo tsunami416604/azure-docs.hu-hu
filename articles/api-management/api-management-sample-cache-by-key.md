@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793543"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799184"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Egyedi gyorsítótárazás az Azure API Management szolgáltatásban
 Az Azure API Management szolgáltatás tartalmaz beépített támogatást nyújt a [HTTP-válaszok gyorsítótárazását](api-management-howto-cache.md) kulcsként az erőforrás URL-cím használatával. Kérelemfejlécek használatával módosíthatja a kulcsot a `vary-by` tulajdonságait. Ez akkor hasznos, teljes (más néven reprezentációinak) HTTP-válaszok gyorsítótárazáshoz, de néha hasznos csak gyorsítótár létrehozása egy részét. Az új [gyorsítótár-keresési-érték](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) és [gyorsítótár-tároló-érték](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) szabályzatok lehetővé teszi, hogy tárolására és lekérésére tetszőleges darabok belüli szabályzatdefiníciók adatokat. Ez a képesség is értéket ad hozzá a korábban bevezetett [küldési-kérelmek](/azure/api-management/api-management-advanced-policies#SendRequest) házirend mivel most gyorsítótárazhatja a külső szolgáltatásokhoz érkező válaszokat.

@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: bb8b5f7d6578390fd0f48c3de154cfdb034ac6c1
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851851"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795528"
 ---
 # <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Környezet csatlakoztatása a labor virtuális hálózathoz az Azure DevTest Labs szolgáltatásban
 Az Azure DevTest Labs megkönnyíti a virtuális gépek létrehozásához a tesztkörnyezetben [beépített hálózati](devtest-lab-configure-vnet.md). Van egy nagyszerű fokú rugalmasságot biztosít, lehetővé teszi az [több virtuális gépes környezet létrehozása](devtest-lab-test-env.md). Ez a cikk bemutatja, hogyan környezetben a labor virtuális hálózatot a virtuális gépek csatlakoztatásához. Egy forgatókönyv, ahol a szolgáltatás használata egy SQL Server adatrétegbeli, amely a lab VNet lehetővé tevő teszt virtuális gépek hozzá a laborban csatlakozik az N szintű alkalmazás beállítását.  

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: spelluru
 ms.openlocfilehash: 090236ec3647c7c3e38eb862780a615f854e952b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905800"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795406"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Adja meg a kötelező összetevők a tesztkörnyezethez az Azure DevTest Labs szolgáltatásban
 A labor tulajdonosként minden olyan gép, a lab-ben létrehozott alkalmazott kötelező összetevők is megadhat. Képzelje el egy forgatókönyvet, ahol szeretné az egyes gépek kell csatlakoztatni a vállalati hálózathoz a lab-ben. Ebben az esetben minden labor-felhasználónak kell egy tartományhoz való csatlakozás összetevő hozzáadása a virtuális gép létrehozásakor, győződjön meg arról, hogy a gép csatlakoztatva van a vállalati tartományhoz. Más szóval lab-felhasználó lényegében kellene hozza létre újból a gép abban az esetben, ha elfelejtették a alkalmazni a kötelező összetevők a számítógépen. Labortulajdonosként ellenőrizze a tartományhoz való csatlakozás összetevő egy kötelező összetevő, a tesztkörnyezetben. Ebben a lépésben gondoskodik arról, hogy az egyes gépek csatlakoztatva van a vállalati hálózathoz, és menti az idő és munka a labor-felhasználók számára.

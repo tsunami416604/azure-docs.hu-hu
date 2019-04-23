@@ -1,61 +1,54 @@
-items:
 - name: Windows Virtual Desktop
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mit takar a Windows Virtual Desktop?
-    href: overview.md
+    - name: Mit takar a Windows Virtual Desktop?
+      href: overview.md
 - name: Oktatóanyagok
   items:
-  - name: 1. Bérlő létrehozása a Windows Virtual Desktopon
-    href: tenant-setup-azure-active-directory.md
-  - name: 2. Gazdagépcsoport létrehozása az Azure Marketplace-en
-    href: create-host-pools-azure-marketplace.md
-  - name: 3. Alkalmazáscsoportok kezelése
-    href: manage-app-groups.md
-  - name: 4. Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel
-    href: create-service-principal-role-powershell.md
+    - name: 1. Bérlő létrehozása a Windows Virtual Desktopon
+      href: tenant-setup-azure-active-directory.md
+    - name: 2. Gazdagépcsoport létrehozása az Azure Marketplace-en
+      href: create-host-pools-azure-marketplace.md
+    - name: 3. Alkalmazáscsoportok kezelése
+      href: manage-app-groups.md
+    - name: 4. Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel
+      href: create-service-principal-role-powershell.md
 - name: Használati útmutató
   items:
-  - name: Csatlakozás Windows Virtual Desktop erőforrásaihoz
-    items:
-    - name: Kapcsolódás Windows 7-en és Windows 10-en
-      href: connect-windows-7-and-10.md
-    - name: Kapcsolódás a webügyféllel
-      href: connect-web.md
-  - name: Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal
-    href: create-host-pools-arm-template.md
-  - name: Gazdagépcsoport létrehozása a PowerShell-lel
-    href: create-host-pools-powershell.md
-  - name: Felhasználói profil megosztásának beállítása a gazdagépcsoporton
-    href: create-host-pools-user-profile.md
-  - name: A Windows Virtual Desktop terheléselosztási módjának beállítása
-    href: configure-host-pool-load-balancing.md
-  - name: A diagnosztikai funkcióval kapcsolatos problémák azonosítása
-    href: diagnostics-role-service.md
-  - name: Fő VHD-rendszerkép létrehozása és testreszabása
-    href: set-up-customize-master-image.md
-  - name: Munkamenetgazdák automatikus méretezése
-    href: set-up-scaling-script.md
+    - name: Csatlakozás Windows Virtual Desktop erőforrásaihoz
+      items:
+        - name: Kapcsolódás Windows 7-en és Windows 10-en
+          href: connect-windows-7-and-10.md
+        - name: Kapcsolódás a webügyféllel
+          href: connect-web.md
+    - name: Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal
+      href: create-host-pools-arm-template.md
+    - name: Gazdagépcsoport létrehozása a PowerShell-lel
+      href: create-host-pools-powershell.md
+    - name: Felhasználói profil megosztásának beállítása a gazdagépcsoporton
+      href: create-host-pools-user-profile.md
+    - name: A Windows Virtual Desktop terheléselosztási módjának beállítása
+      href: configure-host-pool-load-balancing.md
+    - name: A diagnosztikai funkcióval kapcsolatos problémák azonosítása
+      href: diagnostics-role-service.md
+    - name: Fő VHD-rendszerkép létrehozása és testreszabása
+      href: set-up-customize-master-image.md
+    - name: Munkamenetgazdák automatikus méretezése
+      href: set-up-scaling-script.md
 - name: Alapelvek
   items:
-  - name: A Windows Virtual Desktop környezete
-    href: environment-setup.md
-  - name: Delegált hozzáférés a Windows Virtual Desktopon
-    href: delegated-access-virtual-desktop.md
-  - name: Gazdagépcsoport terheléselosztási módszerei
-    href: host-pool-load-balancing.md
+    - name: A Windows Virtual Desktop környezete
+      href: environment-setup.md
+    - name: Delegált hozzáférés a Windows Virtual Desktopon
+      href: delegated-access-virtual-desktop.md
+    - name: Gazdagépcsoport terheléselosztási módszerei
+      href: host-pool-load-balancing.md
 - name: Referencia
   items:
-  - name: PowerShell
-    href: /powershell/windows-virtual-desktop/overview
+    - name: PowerShell
+      href: /powershell/windows-virtual-desktop/overview
 - name: További források
   items:
-  - name: Tech Community támogatási csoportja
-    href: https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop
-ms.openlocfilehash: 3f3f332f8ab9b2764dd513777860627dda9b4c45
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496335"
+    - name: Tech Community támogatási csoportja
+      href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
