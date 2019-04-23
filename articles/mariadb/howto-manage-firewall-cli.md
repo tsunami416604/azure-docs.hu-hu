@@ -8,11 +8,11 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.openlocfilehash: 562987b953f0a8a20a917e208f43557bd768c0a0
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495232"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793217"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Hozzon létre és kezelhető az Azure Database for MariaDB tűzfalszabályok az Azure CLI-vel
 Kiszolgálószintű tűzfalszabályok segítségével elérésének kezelése egy Azure Database for MariaDB-kiszolgáló megadott IP-címet vagy egy IP-címtartományt. Kényelmes megoldás az Azure parancssori felület parancsait használva, létrehozhat, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Azure Database for MariaDB tűzfalak áttekintése, lásd: [, Azure Database for MariaDB-kiszolgáló tűzfalszabályainak](./concepts-firewall-rules.md).

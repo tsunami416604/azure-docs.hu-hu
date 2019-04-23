@@ -8,11 +8,11 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: 78f608aedd53aa1071eaf88864f5a63f8f9e6072
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59281199"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791011"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 App Service környezet/SQL-adatbázis-munkaterhelés tervezet minta üzembe helyezése
 
@@ -116,12 +116,12 @@ A következő táblázat felsorolja a tervezet összetevő paraméterek:
 |Elemnév|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
 |Log Analytics-erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-workload-log-rg` , hogy az erőforráscsoport egyedi.|
-|Log Analytics-erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a tervezet paraméterrel.|
+|Log Analytics-erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
 |Log Analytics-sablon|Resource Manager-sablon|Szolgáltatásszint|A Log Analytics-munkaterület szintjének beállítása. Alapértelmezett érték _PerNode_.|
 |Log Analytics-sablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Alapértelmezett érték _365_.|
-|Log Analytics-sablon|Resource Manager-sablon|Hely|A Log Analytics-munkaterület létrehozásához használt régió. Alapértelmezett érték _USA 2. nyugati_.|
+|Log Analytics-sablon|Resource Manager-sablon|Földrajzi egység|A Log Analytics-munkaterület létrehozásához használt régió. Alapértelmezett érték _USA 2. nyugati_.|
 |Hálózati erőforrás-csoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-workload-net-rg` , hogy az erőforráscsoport egyedi.|
-|Hálózati erőforrás-csoport|Erőforráscsoport|Hely|**Zárolt** – a tervezet paraméterrel.|
+|Hálózati erőforrás-csoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
 |Hálózati biztonsági csoport – sablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Alapértelmezett érték _365_.|
 |Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|Azure Firewall magánhálózati IP-címe|Konfigurálja a magánhálózati IP-címét a [Azure tűzfal](../../../../firewall/overview.md). A meghatározott CIDR jelölésrendszer szerint kell _ISO 27001: Megosztott szolgáltatások_ összetevő paraméter **Azure tűzfal alhálózati cím előtagja**. Alapértelmezett érték _címe: 10.0.4.4_.|
 |Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|Megosztott szolgáltatások előfizetés-azonosítója|Engedélyezze a virtuális hálózatok közötti társviszony olyan számítási feladatok és a megosztott szolgáltatások között használt érték.|
@@ -129,13 +129,13 @@ A következő táblázat felsorolja a tervezet összetevő paraméterek:
 |Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|Alhálózati cím alapértelmezett előtagja|A virtuális hálózat alapértelmezett alhálózat CIDR-jelölésrendszerben. Alapértelmezett érték _10.1.0.0/16_.|
 |Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|ADDS IP address|Az első ad hozzá virtuális IP-címe. Ez az érték használható egyéni virtuális hálózat DNS-t.|
 |A Key Vault-erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-workload-kv-rg` , hogy az erőforráscsoport egyedi.|
-|A Key Vault-erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a tervezet paraméterrel.|
+|A Key Vault-erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
 |Kulcstartósablon|Resource Manager-sablon|AAD-objektum-azonosító|A fiókot, amelyet hozzá kell férnie a Key Vault-példány AAD-objektum azonosítója. Nem alapértelmezett értékét, és nem lehet üres. Keresse meg ezt az értéket az Azure Portalról, keresse meg és válassza ki a "Felhasználók" alatt _szolgáltatások_. Használja a _neve_ be a fiók neve szűrését, és válassza ki azt a fiókot. Az a _felhasználói profil_ lapra, jelölje be a "Kattintson a másoláshoz" ikon mellett a _Objektumazonosító_.|
 |Kulcstartósablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Alapértelmezett érték _365_.|
 |Kulcstartósablon|Resource Manager-sablon|Key Vault-termékváltozat|Adja meg a létrehozott Key Vault-Termékváltozat. Alapértelmezett érték _prémium_.|
 |Kulcstartósablon|Resource Manager-sablon|Azure SQL Server-rendszergazda felhasználóneve|Az Azure SQL-kiszolgáló eléréséhez használt felhasználónév. Meg kell egyeznie az azonos tulajdonság értéke **Azure SQL Database sablon**. Alapértelmezett érték _sql-rendszergazda_.|
 |Az Azure SQL Database erőforrás-csoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-workload-azsql-rg` , hogy az erőforráscsoport egyedi.|
-|Az Azure SQL Database erőforrás-csoport|Erőforráscsoport|Hely|**Zárolt** – a tervezet paraméterrel.|
+|Az Azure SQL Database erőforrás-csoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
 |Azure SQL Database-sablon|Resource Manager-sablon|Azure SQL Server-rendszergazda felhasználóneve|A felhasználónév az Azure SQL Serverhez. Meg kell egyeznie az azonos tulajdonság értéke **Key Vault sablon**. Alapértelmezett érték _sql-rendszergazda_.|
 |Azure SQL Database-sablon|Resource Manager-sablon|Az Azure SQL-kiszolgáló-rendszergazdai jelszót (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-Azonosítóját. Használat "/ subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv", és cserélje le `{subscriptionId}` meg előfizetési azonosítóját és `{orgName}` az a  **Szervezet neve** tervezetet paraméter.|
 |Azure SQL Database-sablon|Resource Manager-sablon|Az Azure SQL-kiszolgáló-rendszergazdai jelszót (a kulcstartó titkos kód nevét)|Felhasználónév, az SQL Server rendszergazdájával. Egyeznie kell azzal az értékkel **Key Vault sablon** tulajdonság **Azure SQL-kiszolgáló-rendszergazdai felhasználónevet**.|
@@ -143,7 +143,7 @@ A következő táblázat felsorolja a tervezet összetevő paraméterek:
 |Azure SQL Database-sablon|Resource Manager-sablon|AAD-rendszergazdai objektum azonosítója|Aad-ben objektum azonosítója, amelyet a get hozzá lesz rendelve, egy Active Directory-rendszergazdával. Nem alapértelmezett értékét, és nem lehet üres. Keresse meg ezt az értéket az Azure Portalról, keresse meg és válassza ki a "Felhasználók" alatt _szolgáltatások_. Használja a _neve_ be a fiók neve szűrését, és válassza ki azt a fiókot. Az a _felhasználói profil_ lapra, jelölje be a "Kattintson a másoláshoz" ikon mellett a _Objektumazonosító_.|
 |Azure SQL Database-sablon|Resource Manager-sablon|AAD-rendszergazdai bejelentkezési név|Jelenleg Microsoft-fiókok (például live.com vagy outlook.com) nem állítható be rendszergazdaként Csak a felhasználók és a biztonsági csoporttal a szervezeten belül állíthatók be rendszergazdaként Nem alapértelmezett értékét, és nem lehet üres. Keresse meg ezt az értéket az Azure Portalról, keresse meg és válassza ki a "Felhasználók" alatt _szolgáltatások_. Használja a _neve_ be a fiók neve szűrését, és válassza ki azt a fiókot. Az a _felhasználói profil_ lapon, másolja a _felhasználónév_.|
 |App Service Environment-környezet erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-workload-ase-rg` , hogy az erőforráscsoport egyedi.|
-|App Service Environment-környezet erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a tervezet paraméterrel.|
+|App Service Environment-környezet erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
 |App Service Environment-sablon|Resource Manager-sablon|Tartománynév|Az Active Directory, a példaszkript által létrehozott neve. Alapértelmezett érték _contoso.com_.|
 |App Service Environment-sablon|Resource Manager-sablon|ASE helye|App Service-környezet helyére. Alapértelmezett érték _USA 2. nyugati_.|
 |App Service Environment-sablon|Resource Manager-sablon|Application Gateway-napló megőrzése (nap)|Adatok megőrzése napokban. Alapértelmezett érték _365_.|

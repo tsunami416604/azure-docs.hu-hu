@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: KyleStorck
 ms.openlocfilehash: 7dbf63ba39c5dcdebb363cfc37a45f0216a07497
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495275"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789754"
 ---
 # <a name="project-acoustics-bake-resolution"></a>Projekt Akusztika Bake felbontás
 Ez a fogalmi áttekintés közben Akusztika sütés durva és finom megoldások közötti különbség ismerteti. A munkafolyamat-sütési mintavételek lépés során ezt a beállítást válassza.

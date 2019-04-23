@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049620"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793814"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktúra mint kód
 
@@ -53,7 +53,7 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 
 ## <a name="azure-service-fabric-resources"></a>Azure Service Fabric-erőforrások
 
-Telepíthet alkalmazásokat és szolgáltatásokat az alakzatot a Service Fabric-fürtön az Azure Resource Manageren keresztül. Lásd: [alkalmazások és szolgáltatások Azure Resource Manager-erőforrásként kezelheti](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource) részleteiről. Az alábbi táblázat az ajánlott eljárás a Service Fabric application erőforrásoknál szerepeljenek a Resource Manager-sablon erőforrások.
+Segítségével az Azure Resource Manageren keresztül helyezhet üzembe alkalmazásokat és szolgáltatásokat a Service Fabric-fürtön. Lásd: [alkalmazások és szolgáltatások Azure Resource Manager-erőforrásként kezelheti](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource) részleteiről. Az alábbi táblázat az ajánlott eljárás a Service Fabric application erőforrásoknál szerepeljenek a Resource Manager-sablon erőforrások.
 
 ```json
 {

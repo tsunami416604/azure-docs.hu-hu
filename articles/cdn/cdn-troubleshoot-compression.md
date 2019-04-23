@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: b885098ff0efeb4d723cbaaac46fbb57cb40f2ea
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918824"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790994"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>A CDN-fájlok tömörítési hibáinak elhárítása
 Ez a cikk segít a hibák elhárításában [CDN-fájltömörítés](cdn-improve-performance.md).

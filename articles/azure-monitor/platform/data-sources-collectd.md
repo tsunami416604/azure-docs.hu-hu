@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
 ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426137"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794438"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Összegyűjtött adatok gyűjtésére a Linux-ügynökök az Azure monitorban
 [Összegyűjtött](https://collectd.org/) van egy nyílt forráskódú Linux-démon rendszeres időközönként által gyűjtött teljesítmény-mérőszámok az alkalmazások és a rendszer szintű adatait. Példa alkalmazások közé tartozik, a Java virtuális gép (JVM), a MySQL-kiszolgáló és az nginx-et. Ez a cikk információkat biztosít az Azure monitorban összegyűjtött teljesítményadatok gyűjtését.
