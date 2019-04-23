@@ -1,222 +1,215 @@
-items:
 - name: Az Azure IoT Edge dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Tudnivalók az Azure IoT Edge-ről
-    href: about-iot-edge.md
+    - name: Tudnivalók az Azure IoT Edge-ről
+      href: about-iot-edge.md
 - name: Gyors útmutatók
-  items:
-  - name: Kód üzembe helyezése Linux-eszközön
-    href: quickstart-linux.md
-  - name: Kód üzembe helyezése Windows-eszközön
-    href: quickstart.md
   expanded: true
+  items:
+    - name: Kód üzembe helyezése Linux-eszközön
+      href: quickstart-linux.md
+    - name: Kód üzembe helyezése Windows-eszközön
+      href: quickstart.md
 - name: Oktatóanyagok
   items:
-  - name: Adatok szűrése az Azure Functions segítségével
-    href: tutorial-deploy-function.md
-  - name: Átlagértékek keresése az ASA segítségével
-    href: tutorial-deploy-stream-analytics.md
-  - name: Adatok pontozása az Azure Machine Learning Service-szel
-    href: tutorial-deploy-machine-learning.md
-  - name: Képek besorolása a Custom Vision használatával
-    href: tutorial-deploy-custom-vision.md
-  - name: Adatok helyi tárolása az SQL-lel
-    href: tutorial-store-data-sql-server.md
-  - name: Egyéni kódmodulok fejlesztése
-    items:
-    - name: C#
-      href: tutorial-csharp-module.md
-    - name: Python
-      href: tutorial-python-module.md
-    - name: Node.js
-      href: tutorial-node-module.md
-    - name: Java
-      href: tutorial-java-module.md
-    - name: C#
-      href: tutorial-c-module.md
+    - name: Adatok szűrése az Azure Functions segítségével
+      href: tutorial-deploy-function.md
+    - name: Átlagértékek keresése az ASA segítségével
+      href: tutorial-deploy-stream-analytics.md
+    - name: Adatok pontozása az Azure Machine Learning Service-szel
+      href: tutorial-deploy-machine-learning.md
+    - name: Képek besorolása a Custom Vision használatával
+      href: tutorial-deploy-custom-vision.md
+    - name: Adatok helyi tárolása az SQL-lel
+      href: tutorial-store-data-sql-server.md
+    - name: Egyéni kódmodulok fejlesztése
+      items:
+        - name: 'C#'
+          href: tutorial-csharp-module.md
+        - name: Python
+          href: tutorial-python-module.md
+        - name: Node.js
+          href: tutorial-node-module.md
+        - name: Java
+          href: tutorial-java-module.md
+        - name: 'C#'
+          href: tutorial-c-module.md
 - name: Alapelvek
   items:
-  - name: IoT Edge-futtatókörnyezet
-    href: iot-edge-runtime.md
-  - name: IoT Edge-modulok
-    items:
-    - name: Az Azure IoT Edge-modulok ismertetése
-      href: iot-edge-modules.md
-    - name: Edge-ügynök és hub tulajdonságai
-      href: module-edgeagent-edgehub.md
-  - name: Fejlesztés
-    items:
-    - name: Modulok fejlesztése
-      href: module-development.md
-    - name: Fejlesztési környezet
-      href: development-environment.md
-  - name: Környezet
-    items:
-    - name: Üzembehelyezési jegyzék
-      href: module-composition.md
-    - name: Automatikus üzembe helyezések
-      href: module-deployment-monitoring.md
-  - name: Offline képességek
-    href: offline-capabilities.md
-  - name: IoT Edge-eszköz használata átjáróként
-    href: iot-edge-as-gateway.md
-  - name: Biztonság
-    items:
-    - name: Az Azure IoT Edge védelme
-      href: security.md
-    - name: IoT Edge-biztonságkezelő
-      href: iot-edge-security-manager.md
-    - name: IoT Edge-tanúsítványok
-      href: iot-edge-certs.md
-  - name: Platformtámogatás
-    href: support.md
-  - name: Éles környezetben való üzembe helyezés feladatlistája
-    href: production-checklist.md
-  - name: IoT Edge-szószedet
-    href: iot-edge-glossary.md
+    - name: IoT Edge-futtatókörnyezet
+      href: iot-edge-runtime.md
+    - name: IoT Edge-modulok
+      items:
+        - name: Az Azure IoT Edge-modulok ismertetése
+          href: iot-edge-modules.md
+        - name: Edge-ügynök és hub tulajdonságai
+          href: module-edgeagent-edgehub.md
+    - name: Fejlesztés
+      items:
+        - name: Modulok fejlesztése
+          href: module-development.md
+        - name: Fejlesztési környezet
+          href: development-environment.md
+    - name: Környezet
+      items:
+        - name: Üzembehelyezési jegyzék
+          href: module-composition.md
+        - name: Automatikus üzembe helyezések
+          href: module-deployment-monitoring.md
+    - name: Offline képességek
+      href: offline-capabilities.md
+    - name: IoT Edge-eszköz használata átjáróként
+      href: iot-edge-as-gateway.md
+    - name: Biztonság
+      items:
+        - name: Az Azure IoT Edge védelme
+          href: security.md
+        - name: IoT Edge-biztonságkezelő
+          href: iot-edge-security-manager.md
+        - name: IoT Edge-tanúsítványok
+          href: iot-edge-certs.md
+    - name: Platformtámogatás
+      href: support.md
+    - name: Éles környezetben való üzembe helyezés feladatlistája
+      href: production-checklist.md
+    - name: IoT Edge-szószedet
+      href: iot-edge-glossary.md
 - name: Útmutatók
   items:
-  - name: Edge-eszköz regisztrálása
-    items:
-    - name: Azure Portal
-      href: how-to-register-device-portal.md
-    - name: Azure CLI
-      href: how-to-register-device-cli.md
-    - name: Visual Studio Code
-      href: how-to-register-device-vscode.md
-  - name: Az IoT Edge telepítése és kezelése
-    items:
-    - name: Linux X64
-      href: how-to-install-iot-edge-linux.md
-    - name: Linux ARM32
-      href: how-to-install-iot-edge-linux-arm.md
-    - name: Windows x64
-      href: how-to-install-iot-edge-windows.md
-    - name: Ubuntu rendszerű virtuális gép
-      href: how-to-install-iot-edge-ubuntuvm.md
-    - name: Futtatókörnyezet verziójának frissítése
-      href: how-to-update-iot-edge.md
-  - name: Automatikus regisztráció DPS-sel
-    items:
-    - name: Linux
-      href: how-to-auto-provision-simulated-device-linux.md
-    - name: Windows
-      href: how-to-auto-provision-simulated-device-windows.md
-  - name: Egyéni modulok fejlesztése és hibakeresése
-    items:
-    - name: Visual Studio 2017
-      href: how-to-visual-studio-develop-module.md
-    - name: Visual Studio Code
-      href: how-to-vs-code-develop-module.md
-  - name: Modulok üzembe helyezése
-    items:
-    - name: Azure Portal
-      href: how-to-deploy-modules-portal.md
-    - name: Azure CLI
-      href: how-to-deploy-modules-cli.md
-    - name: Visual Studio Code
-      href: how-to-deploy-modules-vscode.md
-  - name: Nagy léptékű üzembe helyezés és monitorozás
-    items:
-    - name: Azure Portal
-      href: how-to-deploy-monitor.md
-    - name: Azure CLI
-      href: how-to-deploy-monitor-cli.md
-  - name: Edge-eszközök használata átjáróként
-    items:
-    - name: Transzparens átjáró konfigurálása
-      href: how-to-create-transparent-gateway.md
-    - name: Lefelé irányuló eszköz csatlakoztatása
-      href: how-to-connect-downstream-device.md
-    - name: Modbus-protokollnak megfelelő átjáró
-      href: deploy-modbus-gateway.md
-  - name: Proxytámogatás konfigurálása
-    href: how-to-configure-proxy-support.md
-  - name: Adatok tárolása a peremhálózaton
-    items:
-    - name: Azure Blob Storage az IoT Edge-ben
-      href: how-to-store-data-blob.md
-  - name: Kezelés DevOps-eszközökkel
-    items:
-    - name: Azure DevOps Projects
-      href: how-to-devops-project.md
-    - name: Azure DevOps
-      href: how-to-ci-cd.md
-    - name: Jenkinshez készült IoT Edge beépülő modul
-      href: how-to-devops-plugins.md
-  - name: Hibaelhárítás
-    href: troubleshoot.md
+    - name: Edge-eszköz regisztrálása
+      items:
+        - name: Azure Portal
+          href: how-to-register-device-portal.md
+        - name: Azure CLI
+          href: how-to-register-device-cli.md
+        - name: Visual Studio Code
+          href: how-to-register-device-vscode.md
+    - name: Az IoT Edge telepítése és kezelése
+      items:
+        - name: Linux X64
+          href: how-to-install-iot-edge-linux.md
+        - name: Linux ARM32
+          href: how-to-install-iot-edge-linux-arm.md
+        - name: Windows x64
+          href: how-to-install-iot-edge-windows.md
+        - name: Ubuntu rendszerű virtuális gép
+          href: how-to-install-iot-edge-ubuntuvm.md
+        - name: Futtatókörnyezet verziójának frissítése
+          href: how-to-update-iot-edge.md
+    - name: Automatikus regisztráció DPS-sel
+      items:
+        - name: Linux
+          href: how-to-auto-provision-simulated-device-linux.md
+        - name: Windows
+          href: how-to-auto-provision-simulated-device-windows.md
+    - name: Egyéni modulok fejlesztése és hibakeresése
+      items:
+        - name: Visual Studio 2017
+          href: how-to-visual-studio-develop-module.md
+        - name: Visual Studio Code
+          href: how-to-vs-code-develop-module.md
+    - name: Modulok üzembe helyezése
+      items:
+        - name: Azure Portal
+          href: how-to-deploy-modules-portal.md
+        - name: Azure CLI
+          href: how-to-deploy-modules-cli.md
+        - name: Visual Studio Code
+          href: how-to-deploy-modules-vscode.md
+    - name: Nagy léptékű üzembe helyezés és monitorozás
+      items:
+        - name: Azure Portal
+          href: how-to-deploy-monitor.md
+        - name: Azure CLI
+          href: how-to-deploy-monitor-cli.md
+    - name: Edge-eszközök használata átjáróként
+      items:
+        - name: Transzparens átjáró konfigurálása
+          href: how-to-create-transparent-gateway.md
+        - name: Lefelé irányuló eszköz csatlakoztatása
+          href: how-to-connect-downstream-device.md
+        - name: Modbus-protokollnak megfelelő átjáró
+          href: deploy-modbus-gateway.md
+    - name: Proxytámogatás konfigurálása
+      href: how-to-configure-proxy-support.md
+    - name: Adatok tárolása a peremhálózaton
+      items:
+        - name: Azure Blob Storage az IoT Edge-ben
+          href: how-to-store-data-blob.md
+    - name: Kezelés DevOps-eszközökkel
+      items:
+        - name: Azure DevOps Projects
+          href: how-to-devops-project.md
+        - name: Azure DevOps
+          href: how-to-ci-cd.md
+        - name: Jenkinshez készült IoT Edge beépülő modul
+          href: how-to-devops-plugins.md
+    - name: Hibaelhárítás
+      href: troubleshoot.md
 - name: Kapcsolódó témakörök
   items:
-  - name: Megoldások
-    items:
-    - name: IoT-megoldásgyorsítók
-      href: /azure/iot-suite
-    - name: IoT-központ
-      href: https://docs.microsoft.com/microsoft-iot-central/
-  - name: Platformszolgáltatások
-    items:
-    - name: IoT Hub
-      href: /azure/iot-hub
-    - name: IoT Hub Device Provisioning Service
-      href: /azure/iot-dps
-    - name: Maps
-      href: /azure/azure-maps
-    - name: Szolgáltatási SDK-k
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
-    - name: Time Series Insights
-      href: /azure/time-series-insights
-  - name: Edge
-    items:
-    - name: IoT Edge
-      href: /azure/iot-edge
-    - name: IoT eszközoldali SDK-k
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+    - name: Megoldások
+      items:
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-suite
+        - name: IoT-központ
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Platformszolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Maps
+          href: /azure/azure-maps
+        - name: Szolgáltatási SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT eszközoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: További források
   items:
-  - name: Azure IoT-minták C#-hoz (.NET)
-    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/
-  - name: Azure IoT-minták Node.js-hez
-    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-node/
-  - name: Azure IoT-minták Javához
-    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-java/
-  - name: Azure IoT-minták Pythonhoz
-    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-python/
-  - name: Azure IoT-minták iOS platformhoz
-    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/
-  - name: Azure Certified for IoT eszközkatalógus
-    href: https://catalog.azureiotsolutions.com/
-  - name: Azure IoT fejlesztői központ
-    href: https://azure.microsoft.com/develop/iot/
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=iot
-  - name: Azure IoT Edge VS Code-hoz
-    href: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge
-  - name: VS Code-hoz készült Azure IoT Hub Toolkit
-    href: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit
-  - name: DeviceExplorer eszköz
-    href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
-  - name: iothub-diagnostics eszköz
-    href: https://github.com/Azure/iothub-diagnostics
-  - name: MSDN-fórum
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/iot-hub/
-  - name: Díjkalkulátor
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Szolgáltatási hírek
-    href: https://azure.microsoft.com/updates/?product=iot-hub
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-iot-hub
-  - name: Műszaki esettanulmányok
-    href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
-  - name: Videók
-    href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 8cd65cf2752162d2ffe000faf4c94327466edaa5
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850751"
+    - name: 'Azure IoT-minták C#-hoz (.NET)'
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+    - name: Azure IoT-minták Node.js-hez
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+    - name: Azure IoT-minták Javához
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+    - name: Azure IoT-minták Pythonhoz
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+    - name: Azure IoT-minták iOS platformhoz
+      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: Azure Certified for IoT eszközkatalógus
+      href: 'https://catalog.azureiotsolutions.com/'
+    - name: Azure IoT fejlesztői központ
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: Azure IoT Edge VS Code-hoz
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge'
+    - name: VS Code-hoz készült Azure IoT Hub Toolkit
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit'
+    - name: DeviceExplorer eszköz
+      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: iothub-diagnostics eszköz
+      href: 'https://github.com/Azure/iothub-diagnostics'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-iot-hub'
+    - name: Műszaki esettanulmányok
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'

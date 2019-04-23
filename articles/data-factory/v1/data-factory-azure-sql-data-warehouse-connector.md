@@ -153,7 +153,7 @@ GO
 | rejectSampleValue |Mielőtt a PolyBase újraszámítja a visszautasított sorok aránya beolvasandó sorok számát határozza meg. |1, 2, … |Igen, ha **rejectType** van **százalékos aránya** |
 | useTypeDefault |Itt adhatja meg, hogyan szeretné kezelni a PolyBase kér le adatokat a szövegfájl elválasztójellel tagolt szöveges fájlok a hiányzó értékeket.<br/><br/>További tudnivalók a ezt a tulajdonságot a következő argumentumok szakaszában [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |TRUE, False (alapértelmezett) |Nem |
 | writeBatchSize |Adatok beszúrása SQL-táblát, amikor a puffer mérete eléri a writeBatchSize |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
-| writeBatchTimeout |Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot. |Időtartam<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
+| writeBatchTimeout |Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot. |TimeSpan<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink példa
 
@@ -276,9 +276,9 @@ Az alábbi táblázat példákkal szolgál, adja meg a **tableName** az adatkés
 
 | Adatbázis-séma | Tábla neve | Táblanév JSON-tulajdonság |
 | --- | --- | --- |
-| dbo |MyTable |MyTable vagy dbo.MyTable vagy [dbo].[MyTable] |
-| dbo1 |MyTable |dbo1.MyTable vagy [dbo1].[MyTable] |
-| dbo |My.Table |[My.Table] vagy [dbo].[My.Table] |
+| dbo |Táblanév |Táblanév vagy a dbo. Táblanév vagy [dbo]. [Táblanév] |
+| dbo1 |Táblanév |dbo1. Táblanév vagy [dbo1]. [Táblanév] |
+| dbo |My.Table |[My.Table] vagy [dbo]. [My.Table] |
 | dbo1 |My.Table |[dbo1].[My.Table] |
 
 Ha a következő hibát látja, annak oka az lehet a tableName tulajdonsághoz megadott érték problémáját. Tekintse meg a táblázat tartalmazza a megfelelő módszer az adja meg az értékeket a tableName JSON-tulajdonságot.
@@ -306,16 +306,16 @@ A Data Factory a tábla a ugyanazon tábla neve a source data Store céltár hoz
 | BigInt | BigInt |
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
-| Bit | Bit |
+| bit | bit |
 | Decimal | Decimal |
 | Numeric | Decimal |
 | Float | Float |
-| Money | Money |
+| money | money |
 | Real | Real |
 | SmallMoney | SmallMoney |
-| Binary | Binary |
+| binary | binary |
 | Varbinary | Varbinary (legfeljebb 8000-es) |
-| Date | Date |
+| Dátum | Dátum |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | Time | Time |
@@ -324,8 +324,8 @@ A Data Factory a tábla a ugyanazon tábla neve a source data Store céltár hoz
 | Text | Varchar (legfeljebb 8000-es) |
 | NText | NVarChar (legfeljebb 4000-es) |
 | Image | VarBinary (legfeljebb 8000-es) |
-| UniqueIdentifier | UniqueIdentifier |
-| Char | Char |
+| uniqueidentifier | uniqueidentifier |
+| char | char |
 | NChar | NChar |
 | VarChar | VarChar (legfeljebb 8000-es) |
 | NVarChar | NVarChar (legfeljebb 4000-es) |
@@ -354,27 +354,27 @@ A leképezés megegyezik a [SQL Server adattípus-leképezés az ADO.NET](https:
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
-| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| A FILESTREAM attribútum (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
 | money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numerikus |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
-| rowversion |Byte[] |
+| ROWVERSION |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| pénz |Decimal |
 | sql_variant |Object * |
-| text |String, Char[] |
+| szöveg |String, Char[] |
 | time |TimeSpan |
-| timestamp |Byte[] |
+| időbélyeg |Byte[] |
 | tinyint |Byte |
 | uniqueidentifier |Guid |
-| varbinary |Byte[] |
+| Varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
 

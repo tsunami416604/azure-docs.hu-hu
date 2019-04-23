@@ -1,109 +1,102 @@
-items:
 - name: A Custom Vision Service dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi a Custom Vision?
-    href: home.md
+    - name: Mi a Custom Vision?
+      href: home.md
 - name: Gyors útmutatók
   items:
-  - name: A .NET SDK használata
-    items:
-    - name: Képbesorolás
-      href: csharp-tutorial.md
-    - name: Objektumészlelés
-      href: csharp-tutorial-od.md
-  - name: A Python SDK használata
-    items:
-    - name: Képbesorolás
-      href: python-tutorial.md
-    - name: Objektumészlelés
-      href: python-tutorial-od.md
-  - name: A Java SDK használata
-    items:
-    - name: Képbesorolás
-      href: java-tutorial.md
-    - name: Objektumészlelés
-      href: java-tutorial-od.md
-  - name: A Node.js SDK használata
-    items:
-    - name: Képbesorolás
-      href: node-tutorial.md
-    - name: Objektumészlelés
-      href: node-tutorial-object-detection.md
-  - name: A Go SDK használata
-    items:
-    - name: Képbesorolás
-      href: go-tutorial.md
-    - name: Objektumészlelés
-      href: go-tutorial-object-detection.md
+    - name: A .NET SDK használata
+      items:
+        - name: Képbesorolás
+          href: csharp-tutorial.md
+        - name: Objektumészlelés
+          href: csharp-tutorial-od.md
+    - name: A Python SDK használata
+      items:
+        - name: Képbesorolás
+          href: python-tutorial.md
+        - name: Objektumészlelés
+          href: python-tutorial-od.md
+    - name: A Java SDK használata
+      items:
+        - name: Képbesorolás
+          href: java-tutorial.md
+        - name: Objektumészlelés
+          href: java-tutorial-od.md
+    - name: A Node.js SDK használata
+      items:
+        - name: Képbesorolás
+          href: node-tutorial.md
+        - name: Objektumészlelés
+          href: node-tutorial-object-detection.md
+    - name: A Go SDK használata
+      items:
+        - name: Képbesorolás
+          href: go-tutorial.md
+        - name: Objektumészlelés
+          href: go-tutorial-object-detection.md
 - name: Oktatóanyagok
   items:
-  - name: Emblémafelismerő mobileszközökhöz
-    href: logo-detector-mobile.md
+    - name: Emblémafelismerő mobileszközökhöz
+      href: logo-detector-mobile.md
 - name: Útmutatók
   items:
-  - name: Tartalombesoroló létrehozása
-    href: getting-started-build-a-classifier.md
-  - name: Modell tesztelése
-    href: test-your-model.md
-  - name: Tartalombesoroló teljesítményének fokozása
-    href: getting-started-improving-your-classifier.md
-  - name: Előrejelzési API használata
-    href: use-prediction-api.md
-  - name: Modellek exportálása
-    items:
-    - name: Modell exportálása mobileszközre
-      href: export-your-model.md
-    - name: Az ONNX modell és a Windows ML együttes használata
-      href: custom-vision-onnx-windows-ml.md
-    - name: A TensorFlow modell futtatása a Pythonban
-      href: export-model-python.md
-  - name: Fiókadatok exportálása vagy törlése
-    href: ./export-delete-data.md
-  - name: A korlátozott próbaverziós projekt áthelyezése az Azure-ba
-    href: ./move-your-project-to-azure.md
-  - name: Az alkalmazás frissítése a 3.0-s API-ra
-    href: ./update-application-to-3.0-sdk.md
+    - name: Tartalombesoroló létrehozása
+      href: getting-started-build-a-classifier.md
+    - name: Modell tesztelése
+      href: test-your-model.md
+    - name: Tartalombesoroló teljesítményének fokozása
+      href: getting-started-improving-your-classifier.md
+    - name: Előrejelzési API használata
+      href: use-prediction-api.md
+    - name: Modellek exportálása
+      items:
+        - name: Modell exportálása mobileszközre
+          href: export-your-model.md
+        - name: Az ONNX modell és a Windows ML együttes használata
+          href: custom-vision-onnx-windows-ml.md
+        - name: A TensorFlow modell futtatása a Pythonban
+          href: export-model-python.md
+    - name: Fiókadatok exportálása vagy törlése
+      href: ./export-delete-data.md
+    - name: A korlátozott próbaverziós projekt áthelyezése az Azure-ba
+      href: ./move-your-project-to-azure.md
+    - name: Az alkalmazás frissítése a 3.0-s API-ra
+      href: ./update-application-to-3.0-sdk.md
 - name: Referencia
   items:
-  - name: Egyéni vizuális képzési API
-    href: https://go.microsoft.com/fwlink/?linkid=865446
-  - name: Egyéni vizuális előrejelzési API
-    href: https://go.microsoft.com/fwlink/?linkid=865445
-  - name: Szószedet
-    href: glossary-of-terms.md
-  - name: SDK-k
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python
-    - name: Go – Képzés
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training
-    - name: Go – Előrejelzés
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction
+    - name: Egyéni vizuális képzési API
+      href: 'https://go.microsoft.com/fwlink/?linkid=865446'
+    - name: Egyéni vizuális előrejelzési API
+      href: 'https://go.microsoft.com/fwlink/?linkid=865445'
+    - name: Szószedet
+      href: glossary-of-terms.md
+    - name: SDK-k
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python'
+        - name: Go – Képzés
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training'
+        - name: Go – Előrejelzés
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
 - name: További források
   items:
-  - name: Példák
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
-  - name: Korlátok és kvóták
-    href: limits-and-quotas.md
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/598141-custom-vision-service
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/updates/?product=cognitive-services
-  - name: Régiónkénti rendelkezésre állás
-    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-  - name: Kibocsátási megjegyzések
-    href: release-notes.md
-ms.openlocfilehash: df39e49ac586fc8e74a0b94074d94e7a6293e4e5
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044759"
+    - name: Példák
+      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+    - name: Korlátok és kvóták
+      href: limits-and-quotas.md
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Kibocsátási megjegyzések
+      href: release-notes.md
