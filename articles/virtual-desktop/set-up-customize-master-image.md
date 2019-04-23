@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 9d69a24b106fc39c03b8f95758bc240916023456
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aff96931f95442c67d08521e72952dd79dad44e2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698315"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999875"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
@@ -204,7 +204,7 @@ Onedrive vállalati verzió felhasználónként megfelelően telepítve. Ebben a
 5. Onedrive vállalati verzió telepítését a gépenkénti módban a következő parancs futtatásával:
 
     ```batch
-    Run "[staged location]\OneDriveSetup.exe /allusers"
+    Run "[staged location]\OneDriveSetup.exe" /allusers
     ```
 
 6. Konfigurálása a onedrive vállalati verzió indítás bejelentkezés az összes felhasználó számára a következő parancs futtatásával:
@@ -313,7 +313,7 @@ Ez a szakasz ismerteti az alkalmazás és az operációs rendszer konfigurálás
 Visszajelzési központ gyűjteménye, telemetriai adatokat a Windows 10 Enterprise több munkamenet a következő parancs futtatásával:
 
 ```batch
-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection "AllowTelemetry"=dword:00000003
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection "AllowTelemetry"=dword:00000003
 reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /d 3
 ```
 

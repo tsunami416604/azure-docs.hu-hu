@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 56378e94bf448da4c3047c30be3ae25887f113b5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6182662cb0da7fa5bcd3f329ada9ca5851490724
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792217"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007882"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Vizsgálja meg a gyanús IoT-eszköz
 
@@ -43,7 +43,7 @@ Alapértelmezés szerint az IoT ASC tárolja a Log Analytics-munkaterület a biz
 Keresse meg a Log Analytics-munkaterület, társzolgáltatást:
 
 1. Nyissa meg az IoT hubhoz 
-1. Kattintson a **biztonsági**, majd **beállítások**.
+1. A **biztonsági**, kattintson a **áttekintése**, majd válassza ki **beállítások**.
 1. Módosítsa a Log Analytics-munkaterület konfigurációs adatait. 
 1. Kattintson a **Save** (Mentés) gombra. 
 
@@ -94,7 +94,7 @@ Ezen adatok segítségével felderítése:
 
 ### <a name="open-ports"></a>Portok megnyitása
 
-Milyen portokat az eszközön jelenleg használatban van, vagy a használt ki használja az alábbi kql lekérdezés: 
+Ismerje meg, milyen portokat az eszközön jelenleg használatban van, vagy a használt, használja a következő kql lekérdezést: 
 
   ~~~
   let device = "YOUR_DEVICE_ID";
@@ -147,12 +147,12 @@ Ismerje meg, hogy a felhasználók, az eszközre való bejelentkezéshez haszná
 
     Use the query results to discover:
   1. Az eszköz a bejelentkezett felhasználók?
-  2. Jelentkezzen be kell menteniük a bejelentkezett felhasználók?
+  2. Azok a felhasználók, a bejelentkezés lehet a bejelentkezéshez?
   3. A bejelentkezett felhasználók várható vagy váratlan IP-címekről fejeződött csatlakozni?
   
 ### <a name="process-list"></a>Folyamatok listája
 
-Annak megállapítása, hogy a folyamat lista van, mint várt használja a következő kql lekérdezés: 
+Ismerje meg, ha a folyamat lista van-e a várt módon, használja a következő kql lekérdezést: 
 
   ~~~
   let device = "YOUR_DEVICE_ID";
@@ -188,4 +188,5 @@ Annak megállapítása, hogy a folyamat lista van, mint várt használja a köve
   3. Tartalmazott bármely parancssori végrehajtás a megfelelő és a várt argumentum?
 
 ## <a name="next-steps"></a>További lépések
+
 Miután kivizsgálta egy eszköz, és azonosítsa a kockázatok jobban megértette, érdemes figyelembe venni [egyéni riasztások konfigurálása](quickstart-create-custom-alerts.md) javíthatja biztonsági helyzetét IoT megoldás. Ha egy eszköz ügynök még nem rendelkezik, érdemes lehet [egy biztonsági ügynök üzembe helyezése](how-to-deploy-agent.md) vagy [módosítja a konfigurációt egy meglévő eszközt ügynök](how-to-agent-configuration.md) hatékonyságának növelése érdekében. 

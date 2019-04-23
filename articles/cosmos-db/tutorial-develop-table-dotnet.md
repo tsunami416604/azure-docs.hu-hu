@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 03/11/2019
-ms.openlocfilehash: 0f324d39db38b17d436583277d60d87b2878d131
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: f2f207b62522ceef9fe72d47026f4c2f8ed02e3b
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880789"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149597"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>A .NET SDK használatával az Azure Cosmos DB Table API és az Azure Table storage használatának első lépései
 
@@ -170,7 +170,7 @@ public static async Task<CloudTable> CreateTableAsync(string tableName)
 
 Entitások leképezése C# osztályból származtatott egyéni osztály használatával objektumok [TableEntity](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableentity.aspx). Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait.
 
-Kattintson jobb gombbal a projektre **CosmosTableSamples**. Válassza ki **Hozzáadás**, **új mappa** és adja neki **modell**. A modell mappán belül adjon hozzá egy osztályt **CustimerEntity.cs** , és adja hozzá a következő kód azt.
+Kattintson jobb gombbal a projektre **CosmosTableSamples**. Válassza ki **Hozzáadás**, **új mappa** és adja neki **modell**. A modell mappán belül adjon hozzá egy osztályt **CustomerEntity.cs** , és adja hozzá a következő kód azt.
 
 ```csharp
 namespace CosmosTableSamples.Model

@@ -1,21 +1,244 @@
 ---
 title: Megismerheti, hogyan kezelhetők a régiók közötti ütközések az Azure Cosmos DB-ben.
 description: Megismerheti, hogyan kezelhetők az ütközések az Azure Cosmos DB-ben.
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/15/2019
-ms.author: rimman
-ms.openlocfilehash: 6f4e6fce88815490ceffd7456cde045b38e32b29
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 04/16/2019
+ms.author: mjbrown
+ms.openlocfilehash: fb9850548f0bfb71b797830eb0d5fdfddbc32306
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680213"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997019"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben ütközés feloldása szabályzatok kezelése
 
 A többrégiós írási több kliens írna ugyanazon az elemen, ha ütközés fordulhat elő. Ütközés esetén a különböző ütközés feloldása házirendek segítségével tudja feloldani az ütközést. Ez a cikk ismerteti az ütközés feloldása házirendek kezelése.
+
+## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>A wins-utolsó-író ütközésfeloldási házirend létrehozása
+
+Ezek a minták ismertetik, hogyan állítható be a tároló egy wins-utolsó-író ütközésfeloldási házirend. A wins-utolsó-író alapértelmezett elérési útja az időbélyegmezőt vagy a `_ts` tulajdonság. Ez is lehet beállítani egy felhasználó által megadott elérési útra numerikus típusok esetében. Ütközés a legmagasabb érték a wins. Ha az elérési útja nincs beállítva, vagy érvénytelen, a rendszer alapértelmezés szerint `_ts`. Ütközések feloldása az ehhez a szabályzathoz nem jelennek meg a ütközés hírcsatorna. Ez a szabályzat minden API-k által használható.
+
+### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
+
+```csharp
+DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
+  UriFactory.CreateDatabaseUri(this.databaseName), new DocumentCollection
+  {
+      Id = this.lwwCollectionName,
+      ConflictResolutionPolicy = new ConflictResolutionPolicy
+      {
+          Mode = ConflictResolutionMode.LastWriterWins,
+          ConflictResolutionPath = "/myCustomId",
+      },
+  });
+```
+
+### <a id="create-custom-conflict-resolution-policy-lww-java-async"></a>Java Async SDK
+
+```java
+DocumentCollection collection = new DocumentCollection();
+collection.setId(id);
+ConflictResolutionPolicy policy = ConflictResolutionPolicy.createLastWriterWinsPolicy("/myCustomId");
+collection.setConflictResolutionPolicy(policy);
+DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
+```
+
+### <a id="create-custom-conflict-resolution-policy-lww-java-sync"></a>Java Sync SDK
+
+```java
+DocumentCollection lwwCollection = new DocumentCollection();
+lwwCollection.setId(this.lwwCollectionName);
+ConflictResolutionPolicy lwwPolicy = ConflictResolutionPolicy.createLastWriterWinsPolicy("/myCustomId");
+lwwCollection.setConflictResolutionPolicy(lwwPolicy);
+DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, lwwCollection);
+```
+
+### <a id="create-custom-conflict-resolution-policy-lww-javascript"></a>Node.js/JavaScript/TypeScript SDK
+
+```javascript
+const database = client.database(this.databaseName);
+const { container: lwwContainer } = await database.containers.createIfNotExists(
+  {
+    id: this.lwwContainerName,
+    conflictResolutionPolicy: {
+      mode: "LastWriterWins",
+      conflictResolutionPath: "/myCustomId"
+    }
+  }
+);
+```
+
+### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
+
+```python
+udp_collection = {
+                'id': self.udp_collection_name,
+                'conflictResolutionPolicy': {
+                    'mode': 'LastWriterWins',
+                    'conflictResolutionPath': '/myCustomId'
+                    }
+                }
+udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
+```
+
+## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Hozzon létre egy tárolt eljárás használatával egyéni ütközésfeloldási házirend
+
+Ezek a minták bemutatják, hogy az ütközések feloldásához hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz tárolt eljárás használatával. Az ütközések nem jelennek meg az ütközést, kivéve, ha hiba van a tárolt eljárás hírcsatorna. Miután létrehozta a szabályzatot a tárolóval, a tárolt eljárás létrehozásához szükséges. A .NET SDK-t az alábbi minta, amely egy példát mutat be. Ez a szabályzat csak támogatott a Core (SQL) API-t.
+
+### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Mintául szolgáló egyéni ütközésfeloldás tárolt eljárás
+
+Egyéni ütközés feloldása tárolt eljárások használatával kell megvalósítani, az alább látható podpis funkce. A függvény nevét nem kell használatos, ha a tárolt eljárás regisztrálása a tároló neve megfelelően, de egyszerűbb, elnevezési. A következő paramétereket kell bevezetni, ez a tárolt eljárás leírását.
+
+- **incomingItem**: Az elem alatt bevitele vagy a a véglegesítés, hogy az ütközések. A törlési műveletek null értékű.
+- **existingItem**: A jelenleg lefoglalt elemet. A frissítés nem null és a egy beszúrási vagy törlési null értéke.
+- **isTombstone**: Logikai érték, amely azt jelzi, ha a incomingItem ütközik egy korábban törölt elem. Ha az értéke igaz, existingItem is null értékű.
+- **conflictingItems**: Ütköző azonosítójú incomingItem az összes elem a tárolóban vagy más egyedi index tulajdonságokat a véglegesített verzióba tömbje.
+
+> [!IMPORTANT]
+> Ugyanúgy, mint bármely olyan tárolt eljárás az egy egyéni ütközés feloldása eljárást is ugyanazzal a partíciókulccsal rendelkező hozzáférni az adatokhoz és is bármely insert hajtsa végre, frissítenie vagy törölnie az ütközések feloldása műveletet.
+
+
+Ez a minta tárolt eljárás oldja fel az ütközéseket a legkisebb értéket választva a `/myCustomId` elérési útja.
+
+```javascript
+function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
+  var collection = getContext().getCollection();
+
+  if (!incomingItem) {
+      if (existingItem) {
+
+          collection.deleteDocument(existingItem._self, {}, function (err, responseOptions) {
+              if (err) throw err;
+          });
+      }
+  } else if (isTombstone) {
+      // delete always wins.
+  } else {
+      if (existingItem) {
+          if (incomingItem.myCustomId > existingItem.myCustomId) {
+              return; // existing item wins
+          }
+      }
+
+      var i;
+      for (i = 0; i < conflictingItems.length; i++) {
+          if (incomingItem.myCustomId > conflictingItems[i].myCustomId) {
+              return; // existing conflict item wins
+          }
+      }
+
+      // incoming item wins - clear conflicts and replace existing with incoming.
+      tryDelete(conflictingItems, incomingItem, existingItem);
+  }
+
+  function tryDelete(documents, incoming, existing) {
+      if (documents.length > 0) {
+          collection.deleteDocument(documents[0]._self, {}, function (err, responseOptions) {
+              if (err) throw err;
+
+              documents.shift();
+              tryDelete(documents, incoming, existing);
+          });
+      } else if (existing) {
+          collection.replaceDocument(existing._self, incoming,
+              function (err, documentCreated) {
+                  if (err) throw err;
+              });
+      } else {
+          collection.createDocument(collection.getSelfLink(), incoming,
+              function (err, documentCreated) {
+                  if (err) throw err;
+              });
+      }
+  }
+}
+```
+
+### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
+
+```csharp
+DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
+  UriFactory.CreateDatabaseUri(this.databaseName), new DocumentCollection
+  {
+      Id = this.udpCollectionName,
+      ConflictResolutionPolicy = new ConflictResolutionPolicy
+      {
+          Mode = ConflictResolutionMode.Custom,
+          ConflictResolutionProcedure = string.Format("dbs/{0}/colls/{1}/sprocs/{2}", this.databaseName, this.udpCollectionName, "resolver"),
+      },
+  });
+
+//Create the stored procedure
+await clients[0].CreateStoredProcedureAsync(
+UriFactory.CreateStoredProcedureUri(this.databaseName, this.udpCollectionName, "resolver"), new StoredProcedure
+{
+    Id = "resolver",
+    Body = File.ReadAllText(@"resolver.js")
+});
+```
+
+### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK
+
+```java
+DocumentCollection collection = new DocumentCollection();
+collection.setId(id);
+ConflictResolutionPolicy policy = ConflictResolutionPolicy.createCustomPolicy("resolver");
+collection.setConflictResolutionPolicy(policy);
+DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
+```
+
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
+
+### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
+
+```java
+DocumentCollection udpCollection = new DocumentCollection();
+udpCollection.setId(this.udpCollectionName);
+ConflictResolutionPolicy udpPolicy = ConflictResolutionPolicy.createCustomPolicy(
+        String.format("dbs/%s/colls/%s/sprocs/%s", this.databaseName, this.udpCollectionName, "resolver"));
+udpCollection.setConflictResolutionPolicy(udpPolicy);
+DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
+```
+
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
+
+### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
+
+```javascript
+const database = client.database(this.databaseName);
+const { container: udpContainer } = await database.containers.createIfNotExists(
+  {
+    id: this.udpContainerName,
+    conflictResolutionPolicy: {
+      mode: "Custom",
+      conflictResolutionProcedure: `dbs/${this.databaseName}/colls/${
+        this.udpContainerName
+      }/sprocs/resolver`
+    }
+  }
+);
+```
+
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
+
+### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
+
+```python
+udp_collection = {
+  'id': self.udp_collection_name,
+  'conflictResolutionPolicy': {
+      'mode': 'Custom',
+      'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
+      }
+  }
+udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
+```
+
+A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
+
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Egyéni ütközésfeloldási szabályzat létrehozása
 
@@ -82,158 +305,9 @@ manual_collection = {
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Hozzon létre egy tárolt eljárás használatával egyéni ütközésfeloldási házirend
-
-Ezek a minták bemutatják, hogyan állítsa be a tároló egy egyéni ütközésfeloldási házirend tárolt eljárás használatával szeretné feloldani az ütközést. Az ütközések nem jelennek meg az ütközést, kivéve, ha hiba van a tárolt eljárás hírcsatorna.
-
-### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
-
-```csharp
-DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
-  UriFactory.CreateDatabaseUri(this.databaseName), new DocumentCollection
-  {
-      Id = this.udpCollectionName,
-      ConflictResolutionPolicy = new ConflictResolutionPolicy
-      {
-          Mode = ConflictResolutionMode.Custom,
-          ConflictResolutionProcedure = string.Format("dbs/{0}/colls/{1}/sprocs/{2}", this.databaseName, this.udpCollectionName, "resolver"),
-      },
-  });
-```
-
-A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
-
-### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK
-
-```java
-DocumentCollection collection = new DocumentCollection();
-collection.setId(id);
-ConflictResolutionPolicy policy = ConflictResolutionPolicy.createCustomPolicy("resolver");
-collection.setConflictResolutionPolicy(policy);
-DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
-```
-
-A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
-
-### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
-
-```java
-DocumentCollection udpCollection = new DocumentCollection();
-udpCollection.setId(this.udpCollectionName);
-ConflictResolutionPolicy udpPolicy = ConflictResolutionPolicy.createCustomPolicy(
-        String.format("dbs/%s/colls/%s/sprocs/%s", this.databaseName, this.udpCollectionName, "resolver"));
-udpCollection.setConflictResolutionPolicy(udpPolicy);
-DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
-```
-
-A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
-
-### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
-
-```javascript
-const database = client.database(this.databaseName);
-const { container: udpContainer } = await database.containers.createIfNotExists(
-  {
-    id: this.udpContainerName,
-    conflictResolutionPolicy: {
-      mode: "Custom",
-      conflictResolutionProcedure: `dbs/${this.databaseName}/colls/${
-        this.udpContainerName
-      }/sprocs/resolver`
-    }
-  }
-);
-```
-
-A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
-
-### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
-
-```python
-udp_collection = {
-  'id': self.udp_collection_name,
-  'conflictResolutionPolicy': {
-    'mode': 'Custom',
-    'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
-    }
-}
-udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
-```
-
-A tároló létrehozása után létre kell hoznia a `resolver` tárolt eljárást.
-
-## <a name="create-a-last-writer-wins-lww-conflict-resolution-policy"></a>A Wins-utolsó-írója (LWW) ütközésfeloldási házirend létrehozása
-
-Ezek a minták ismertetik, hogyan állítható be a tároló egy wins-utolsó-író ütközésfeloldási házirend. Ha az elérési útja nincs beállítva, vagy érvénytelen, a rendszer alapértelmezés szerint a `_ts` tulajdonság. Ez a tulajdonság az időbélyegmezőt. Az ütközések a ütközés hírcsatorna nem jelennek meg.
-
-### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
-
-```csharp
-DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
-  UriFactory.CreateDatabaseUri(this.databaseName), new DocumentCollection
-  {
-      Id = this.lwwCollectionName,
-      ConflictResolutionPolicy = new ConflictResolutionPolicy
-      {
-          Mode = ConflictResolutionMode.LastWriterWins,
-          ConflictResolutionPath = "/regionId",
-      },
-  });
-```
-
-### <a id="create-custom-conflict-resolution-policy-lww-java-async"></a>Java Async SDK
-
-```java
-DocumentCollection collection = new DocumentCollection();
-collection.setId(id);
-ConflictResolutionPolicy policy = ConflictResolutionPolicy.createLastWriterWinsPolicy(conflictResolutionPath);
-collection.setConflictResolutionPolicy(policy);
-DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
-```
-
-### <a id="create-custom-conflict-resolution-policy-lww-java-sync"></a>Java Sync SDK
-
-```java
-DocumentCollection lwwCollection = new DocumentCollection();
-lwwCollection.setId(this.lwwCollectionName);
-ConflictResolutionPolicy lwwPolicy = ConflictResolutionPolicy.createLastWriterWinsPolicy("/regionId");
-lwwCollection.setConflictResolutionPolicy(lwwPolicy);
-DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, lwwCollection);
-```
-
-### <a id="create-custom-conflict-resolution-policy-lww-javascript"></a>Node.js/JavaScript/TypeScript SDK
-
-```javascript
-const database = client.database(this.databaseName);
-const { container: lwwContainer } = await database.containers.createIfNotExists(
-  {
-    id: this.lwwContainerName,
-    conflictResolutionPolicy: {
-      mode: "LastWriterWins",
-      conflictResolutionPath: "/regionId"
-    }
-  }
-);
-```
-
-Ha kihagyja a `conflictResolutionPath` tulajdonság, a rendszer alapértelmezés szerint a `_ts` tulajdonság.
-
-### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
-
-```python
-udp_collection = {
-                'id': self.udp_collection_name,
-                'conflictResolutionPolicy': {
-                    'mode': 'Custom',
-                    'conflictResolutionProcedure': 'dbs/' + self.database_name + "/colls/" + self.udp_collection_name + '/sprocs/resolver'
-                    }
-                }
-udp_collection = self.try_create_document_collection(create_client, database, udp_collection)
-```
-
 ## <a name="read-from-conflict-feed"></a>Olvasás az ütközéscsatornából
 
-Ezek a minták bemutatják, hogyan lehet olvasni egy tároló ütközéscsatornájából. Ütközések jelenik meg az ütközést hírcsatorna csak ha azok nem tudta feloldani automatikusan, például egy manuális ütközésfeloldási házirend és a nem regisztrált a tárolt eljárás.
+Ezek a minták bemutatják, hogyan lehet olvasni egy tároló ütközéscsatornájából. Ütközések jelenik meg az ütközést, csak akkor, ha azok nem automatikusan feloldja a rendszer, vagy ha egy egyéni ütköző házirendet használó csatorna.
 
 ### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK
 

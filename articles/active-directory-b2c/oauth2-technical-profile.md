@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: fde556c60f823f4bd287ca5672503158c7292f51
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e92378cca445191f42708bd6348b1c75b29da1a1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918926"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009837"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az OAuth2 technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory (Azure AD) B2C az OAuth2 protokoll identitásszolgáltató támogatja. Ez a delegált hitelesítési és engedélyezési elsődleges protokollja. További információkért lásd: a [RFC 6749 az OAuth 2.0 engedélyezési keretrendszer](https://tools.ietf.org/html/rfc6749). Az OAuth2-technikai profilban meg az OAuth2 használatával is összevonható alapú identitásszolgáltató, például a Facebook és a Live.com, így Ön a felhasználók jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
+Az Azure Active Directory (Azure AD) B2C az OAuth2 protokoll identitásszolgáltató támogatja. Az OAuth2 olyan delegált hitelesítési és engedélyezési elsődleges protokollja. További információkért lásd: a [RFC 6749 az OAuth 2.0 engedélyezési keretrendszer](https://tools.ietf.org/html/rfc6749). Az OAuth2 technikai profil az OAuth2 alapján Identitásszolgáltatóként, többek között a Facebookhoz használatával is összevonható. Összevonás az identitásszolgáltatót lehetővé teszi a felhasználóknak, hogy jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
 
 ## <a name="protocol"></a>Protokoll
 
@@ -54,7 +54,7 @@ Az alábbi példa bemutatja a jogcímeket, a Facebook-identitás szolgáltató �
 
 - A **first_name** jogcím van leképezve a **givenName** jogcím.
 - A **first_name** jogcím van leképezve a **Vezetéknév** jogcím.
-- A **displayName** jogcím anélkül, hogy a felhasználónév-leképezés …
+- A **displayName** jogcím-name-leképezés nélkül.
 - A **e-mail** jogcím a felhasználónév-leképezés nélkül.
 
 A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket adja vissza: 
@@ -64,7 +64,7 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="id" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="id" />
   <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="first_name" />
   <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="last_name" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
@@ -90,7 +90,7 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 | ClaimsEndpointFormat | Nem | A formátum lekérdezésisztring-paraméter értéke. Például beállíthatja a értékként `json` a LinkedIn a jogcím-végpont `https://api.linkedin.com/v1/people/~?format=json`. | 
 | ProviderName | Nem | Az identitásszolgáltató neve. |
 | response_mode | Nem | A módszer, amely az identitásszolgáltató nem küldi vissza az eredményt az Azure AD B2C-t használja. A lehetséges értékek: `query`, `form_post` (alapértelmezett), vagy `fragment`. |
-| scope | Nem | A hozzáférési kérés alapján az OAuth2 identity provider specifikáció hatókörét. Például `openid`, `profile`, és `email`. |
+| scope | Nem | A kérelem az OAuth2 identity provider specifikáció alapján meghatározott köre. Például `openid`, `profile`, és `email`. |
 | HttpBinding | Nem | A várt HTTP-kötést a hozzáférési jogkivonatot, és a jogcímek jogkivonat végpontokhoz. A lehetséges értékek: `GET` vagy `POST`.  |
 | ResponseErrorCodeParamName | Nem | Neve a paraméter, amely a HTTP 200 (Ok) keresztül visszaadott hibaüzenet tartalmazza. |
 | ExtraParamsInAccessTokenEndpointResponse | Nem | A válasz, a visszaadható a további paramétereket tartalmaz **AccessTokenEndpoint** néhány identitásszolgáltatók által. Például válasza **AccessTokenEndpoint** például tartalmaz egy kiegészítő paraméterrel `openid`, azaz mellett a access_token a paramétert kötelező megadni egy **ClaimsEndpoint** kérelem lekérdezési karakterlánc. Több paraméterneveket kell escape-karakterrel és a vesszővel elválasztva ',' elválasztó karaktert. |
@@ -102,7 +102,7 @@ A **CryptographicKeys** elem tartalmazza a következő attribútumot:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| client_secret | Igen | A titkos ügyfélkulcsot az identity provider alkalmazás. A titkosítási kulcsot kötelező megadni, ha csak a **response_types** metaadat értéke `code`. Ebben az esetben az Azure AD B2C-vel hívást egy másik az engedélyezési kódot, a hozzáférési jogkivonatot. Ha a metaadat értéke `id_token` kihagyhatja a titkosítási kulcs.  |  
+| client_secret | Igen | A titkos ügyfélkulcsot az identity provider alkalmazás. A titkosítási kulcsot kötelező megadni, ha csak a **response_types** metaadat értéke `code`. Ebben az esetben az Azure AD B2C-vel hívást egy másik az engedélyezési kódot, a hozzáférési jogkivonatot. Ha a metaadat értéke `id_token`, kihagyhatja a titkosítási kulcs. |  
 
 ## <a name="redirect-uri"></a>Átirányítási URI
 

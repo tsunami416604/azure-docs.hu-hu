@@ -3,16 +3,16 @@ title: Az Azure Resource Graph áttekintése
 description: Ismerje meg, hogyan az Azure-erőforrás Graph szolgáltatás lehetővé teszi, hogy nagy mennyiségű erőforrást összetett lekérdezés.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2019
+ms.date: 03/30/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 28efdabc024fd32c83ba966b15284ec6ff368d4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d76a5b32403bd14f18181580f891925130808922
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788994"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002884"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Az Azure-erőforrás Graph szolgáltatás áttekintése
 
@@ -21,11 +21,13 @@ Az Azure Resource Graph egy szolgáltatás az Azure-ban, amelynek rendeltetése 
 - Erőforrások lekérdezése az erőforrás-tulajdonságok alapján végzett összetett szűréssel, csoportosítással és rendezéssel.
 - Erőforrások lépésenkénti kezelése a szabályozási követelmények alapján, és az így előálló kifejezés szabályzatdefinícióvá konvertálása.
 - Szabályzatok alkalmazásából adódó következmények felmérése kiterjedt felhőkörnyezetben.
+- Lehetővé teszi [erőforrás-tulajdonságok módosításait részletezik](./how-to/get-resource-changes.md) (előzetes verzió).
 
 Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 > [!NOTE]
-> Az Azure Resource Graphot használja az Azure Portal új, „Minden erőforrás” tallózására szolgáló felülete. Úgy van kialakítva, hogy az ügyfelek nagy méretű környezetek kezeléséhez szükséges.
+> Az Azure portal "Minden erőforrás" tapasztalható új tallózása és az Azure Policy által használt Azure Erőforrás-grafikon [módosítási előzmények](../policy/how-to/determine-non-compliance.md#change-history-preview).
+> _a diff vizuális_. Úgy van kialakítva, hogy az ügyfelek kezelése nagyméretű környezetekben.
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Hogyan egészíti ki a Resource Graph az Azure Resource Managert
 
@@ -33,13 +35,19 @@ Az Azure Resource Manager jelenleg egy korlátozott erőforrás-gyorsítótárba
 
 Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenkénti hívása nélkül is hozzáférhet az általuk visszaadott tulajdonságokhoz. Támogatott erőforrástípusait listáját, keressen egy **Igen** a a [erőforrások teljes üzemmód telepítéseit](../../azure-resource-manager/complete-mode-deletion.md) tábla.
 
+Az Azure Erőforrás-grafikon a következőket teheti:
+
+- Hozzáférés a anélkül, hogy az egyes hívásokat mindegyik erőforrás-szolgáltató erőforrás-szolgáltató által visszaadott tulajdonságait.
+- Az elmúlt 14 napban tulajdonságok változott az erőforrás végzett módosítási előzmények megtekintése és mikor. (előzetes verzió)
+
 ## <a name="the-query-language"></a>A lekérdezőnyelv
 
 Most, hogy már jobban érti az Azure Resource Graph lényegét, ismerkedjünk meg közelebbről a lekérdezések összeállításával.
 
 Fontos megérteni, hogy az Azure Resource Graph lekérdezési nyelv alapul a [Kusto-lekérdezés nyelvi](../../data-explorer/data-explorer-overview.md) Azure Data Explorer által használt.
 
-Első lépésként olvassa el az Azure Resource Graphfal használható műveleteket és funkciókat ismertető, [a Resource Graph lekérdezőnyelve](./concepts/query-language.md) című cikket. Az erőforrások tallózását az [erőforrások kezeléséről](./concepts/explore-resources.md) szóló cikk írja le.
+Első lépésként olvassa el az Azure Resource Graphfal használható műveleteket és funkciókat ismertető, [a Resource Graph lekérdezőnyelve](./concepts/query-language.md) című cikket.
+Az erőforrások tallózását az [erőforrások kezeléséről](./concepts/explore-resources.md) szóló cikk írja le.
 
 ## <a name="permissions-in-azure-resource-graph"></a>Engedélyek az Azure Resource Graphban
 
@@ -58,7 +66,7 @@ Erőforrás-grafikon támogatja a .NET-hez készült Azure CLI-vel, az Azure Pow
 
 ## <a name="next-steps"></a>További lépések
 
-- Az első lekérdezés futtatása az [Azure CLI-vel](first-query-azurecli.md)
-- Az első lekérdezés futtatása az [Azure PowerShell-lel](first-query-powershell.md)
-- Indulás [Kezdő szintű lekérdezésekkel](./samples/starter.md)
-- Az ismeretek elmélyítése [Haladó szintű lekérdezésekkel](./samples/advanced.md)
+- Az első lekérdezés futtatása [Azure CLI-vel](first-query-azurecli.md).
+- Az első lekérdezés futtatása [Azure PowerShell-lel](first-query-powershell.md).
+- Kezdje [alapszintű lekérdezéseket](./samples/starter.md).
+- A elmélyítse [speciális lekérdezések](./samples/advanced.md).

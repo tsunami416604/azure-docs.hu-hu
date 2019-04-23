@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fca78c86849ef8210bb3aaeb8ad96e1fba3d7c05
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 2fe31271fa84bc4170bd431a4aadbcafc0df9086
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542488"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148968"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Egy közlemény egy laborhoz közzététele az Azure DevTest Labs szolgáltatásban
 
@@ -37,8 +37,8 @@ A közlemény funkció hivatott ideiglenes értesítésekhez használható.  Kö
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Ha szükséges, válassza ki a **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából. (Előfordulhat, hogy a tesztkörnyezet már látható az irányítópult alatt **összes erőforrás**).
-1. Tesztkörnyezetek listájában jelölje ki a labor, amelyekben egy közleményt használni kívánt.  
-1. A laborgyakorlat **áttekintése** területen válassza **Konfigurace a zásady**.  
+1. Tesztkörnyezetek listájában jelölje ki a labor, amelyekben egy közleményt használni kívánt.
+1. A laborgyakorlat **áttekintése** területen válassza **Konfigurace a zásady**.
 
     ![Konfigurace a zásady gomb](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
@@ -83,7 +83,7 @@ Ha már nem szeretné ezt a hirdetményt megjelenítése a labor felhasználóna
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
-Az Azure Resource Manager-sablon része egy közlemény adhatja meg az alábbi példában látható módon: 
+Az Azure Resource Manager-sablon része egy közlemény adhatja meg az alábbi példában látható módon:
 
 ```json
 {
@@ -119,7 +119,7 @@ Az Azure Resource Manager-sablon része egy közlemény adhatja meg az alábbi p
                 "support": {
                     "markdown": "",
                     "enabled": "Enabled"
-                }                
+                }
             },
             "resources": [
                 {
@@ -167,4 +167,4 @@ Az Azure Resource Manager-sablon használatával a következő módokon telepít
 
 ## <a name="next-steps"></a>További lépések
 * Ha módosít, vagy egy tesztlabor házirend beállítása, érdemes egy értesítés tájékoztatja a felhasználót a közzététele. [Szabályzatok és ütemezések beállítása](devtest-lab-set-lab-policy.md) korlátozások és konvenciói nagyobb figyelmet az előfizetésében alkalmazásával testre szabott házirendekkel kapcsolatos információkat nyújt.
-* Fedezze fel a [DevTest Labs Azure Resource Manager gyorsindítási sablon katalógus](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Fedezze fel a [DevTest Labs Azure Resource Manager gyorsindítási sablon katalógus](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

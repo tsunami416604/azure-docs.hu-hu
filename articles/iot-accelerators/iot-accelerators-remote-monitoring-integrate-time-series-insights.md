@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085150"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007474"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Az Azure Time Series Insights integrálása a távoli monitorozással
 
@@ -57,12 +57,12 @@ Ezután helyezze üzembe a Time Series Insights további erőforrásként a táv
 
 1. A Time Series Insights-környezet létrehozásához használja az alábbi táblázatban az értékeket:
 
-    | Beállítás | Érték |
+    | Beállítás | Value |
     | ------- | ----- |
     | Környezet neve | A nevet használja az alábbi képernyőképen **contorosrmtsi**. Válassza ki a saját egyedi nevet, ha e lépés elvégzése után. |
     | Előfizetés | Válassza ki saját Azure-előfizetését a legördülő menüből. |
     | Erőforráscsoport | **Meglévő használata**. Válassza ki a meglévő távoli megfigyelés erőforráscsoport nevét. |
-    | Hely | Használjuk **USA keleti Régiójában**. Ha lehetséges létrehozni a környezetet és a távoli figyelési megoldás ugyanabban a régióban. |
+    | Location egység | Használjuk **USA keleti Régiójában**. Ha lehetséges létrehozni a környezetet és a távoli figyelési megoldás ugyanabban a régióban. |
     | SKU |**S1** |
     | Kapacitás | **1** |
 
@@ -86,7 +86,7 @@ Hozzon létre egy új eseményforrás csatlakozni az IoT hubhoz. Győződjön me
 
 1. Az IoT hub új esemény forrásként konfigurálásához használja az alábbi táblázatban az értékeket:
 
-    | Beállítás | Érték |
+    | Beállítás | Value |
     | ------- | ----- |
     | Eseményforrás neve | A nevet használja az alábbi képernyőképen **contosorm-iot-hub**. Használja a saját egyedi névre, ha e lépés elvégzése után. |
     | Forrás | **IoT Hub** |
@@ -236,6 +236,9 @@ A környezet konfigurálása `basic` a frissített mikroszolgáltatások üzembe
 1. Keresse meg a **ASA-kezelő szolgáltatás** és szerkesztése a docker compose fájl hozzáadásával `PCS_TELEMETRY_STORAGE_TYPE`.
 
 1. Indítsa újra a docker-tárolók használatával `sudo ./start.sh` a virtuális gépről.
+
+> [!NOTE]
+> A környezeti változók a fenti konfigurációs érvényes, a távoli figyelési verziók 1.0.2-es előtt
 
 ### <a name="standard-deployments"></a>Normál telepítések
 

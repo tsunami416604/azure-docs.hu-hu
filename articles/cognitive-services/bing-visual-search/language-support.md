@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 8181fc259ffbed11672fe64a8fc821e234183b72
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.openlocfilehash: 511a95eaea65c1a0e67973ef56942bc05bb43f81
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856852"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002783"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>A Bing Visual Search API nyelvéhez és régiójához támogatása
 
@@ -49,9 +49,9 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Finnország|FI|
 |Franciaország|JK|
 |Németország|DE|
-|Hongkong KKT|HK|
+|Hongkong (KKT)|HK|
 |India|IN|
-|Indonézia|ID|
+|Indonézia|ID (Azonosító)|
 |Olaszország|IT|
 |Japán|JP|
 |Korea|KR|
@@ -93,7 +93,7 @@ Másik lehetőségként megadhatja az országot/régiót használ a `cc` lekérd
 |Finnország|finn|fi-FI|
 |Franciaország|francia|FR-FR|
 |Németország|német|de-DE|
-|Hongkong KKT|Kínai (hagyományos)|zh-HK|
+|Hongkong (KKT)|Kínai (hagyományos)|zh-HK|
 |India|Angol|en-IN|
 |Indonézia|Angol|en-azonosító|
 |Olaszország|olasz|it-IT|

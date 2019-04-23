@@ -1,17 +1,17 @@
 ---
 title: Vészhelyreállítás az Azure-bA az Azure Site Recovery VMware virtuális gépek replikálásának engedélyezése |} A Microsoft Docs
 description: Ez a cikk ismerteti az Azure-bA vész-helyreállítási VMware virtuális gépek engedélyezése az Azure Site Recovery használatával.
-author: mayurigupta13
+author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 3/6/2019
+ms.date: 4/18/2019
 ms.topic: conceptual
-ms.author: mayg
-ms.openlocfilehash: 472ff7810852bd03ef322cd5eb647c3d61f09b01
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
-ms.translationtype: MT
+ms.author: ramamill
+ms.openlocfilehash: ba55afbd62bbbc2290d1daaebf77becc249c1d8b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418108"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004737"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-bA VMware virtuális gépek replikálásának engedélyezése
 
@@ -89,7 +89,7 @@ Ezután ellenőrizze a forrás virtuális gép tulajdonságait. Ne feledje, hogy
     ![Számítási és hálózati tulajdonságok ablak](./media/vmware-azure-enable-replication/vmproperties.png)
 
     * Az Azure virtuális gép neve: Szükség esetén módosítsa a nevét, az Azure követelményeinek.
-    * Virtuális célgép méretét vagy a virtuális gép típusa: A virtuális gépek alapértelmezett mérete a forrás virtuális gép méretét akkor kell kiválasztani a rendszer. Kiválaszthat egy másik Virtuálisgép-méretet, a feladatátvétel előtt bármikor igényei alapján. Vegye figyelembe, hogy a Virtuálisgép-lemez mérete a forráslemez mérete is alapul, és azt csak a feladatátvételt követően módosítható. További tudnivalók a lemezek és IOPS-díjak, [Windows virtuális gép lemezeinek méretezhetőségi és teljesítménycéljai](../virtual-machines/windows/disk-scalability-targets.md).
+    * Virtuális célgép méretét vagy a virtuális gép típusa: A virtuális gépek alapértelmezett mérete a néhány paramétert, amelyek tartalmazzák a lemezek száma, hálózati adapter száma, a Processzor magok száma, memória és elérhető Virtuálisgép-szerepkör méretek cél Azure-régió alapján választják ki. Az Azure Site Recovery kiválasztja az első rendelkezésre álló virtuális gép méretét, amely megfelel az összes feltétel. Kiválaszthat egy másik Virtuálisgép-méretet, a feladatátvétel előtt bármikor igényei alapján. Vegye figyelembe, hogy a Virtuálisgép-lemez mérete a forráslemez mérete is alapul, és azt csak a feladatátvételt követően módosítható. További tudnivalók a lemezek és IOPS-díjak, [Windows virtuális gép lemezeinek méretezhetőségi és teljesítménycéljai](../virtual-machines/windows/disk-scalability-targets.md).
 
     *  Erőforráscsoport: Kiválaszthat egy [erőforráscsoport](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines), amely egy virtuális gépet egy része lesz a feladatátvétel után a. Ezt a beállítást, a feladatátvétel előtt bármikor módosíthatja. A feladatátvételt követően a virtuális gépet telepít át egy másik erőforráscsoportban, ha a virtuális gép védelmi beállításait szünet.
     * Rendelkezésre állási csoporthoz: Kiválaszthat egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) Ha a virtuális gép van szüksége lehet egy feladatátvétel után egy része. Rendelkezésre állási csoport kiválasztásakor tartsa szem előtt az alábbi adatokat:

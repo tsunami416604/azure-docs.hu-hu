@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: e51c56f54a4e30b5e9094388ed92aa0a62ba0840
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cf1bb31614c04d6073bc40c510fc43b2f8e4e189
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796310"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148985"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Egy egyéni rendszerkép-előállító létrehozása az Azure DevTest Labs szolgáltatásban
-Ez a cikk bemutatja, hogyan állítható be egy egyéni rendszerkép gyári elérhető minta parancsfájlok használatával a [Git-tárház](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory).
+Ez a cikk bemutatja, hogyan állítható be egy egyéni rendszerkép gyári elérhető minta parancsfájlok használatával a [Git-tárház](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory).
 
 ## <a name="whats-an-image-factory"></a>Mi az, hogy egy kép gyári?
 Egy rendszerkép factory az olyan konfiguráció, a kód megoldás, amely építésével és értékesítésével a kívánt konfigurációval rendszeres időközönként automatikusan-rendszerképek. A lemezképek lemezkép-előállító mindig naprakészek legyenek, és a folyamatos karbantartás szinte nullára után a teljes folyamat automatikus. És mivel a szükséges konfigurációk már a képen, a manuális konfigurálását a rendszer, az alap operációs rendszerrel egy virtuális gép létrehozása után az időt takaríthat.
@@ -39,7 +39,7 @@ A megoldás lehetővé teszi, hogy a virtuális gépek létrehozása az egyéni 
 
 ![A megoldás magas szintű nézetét](./media/create-image-factory/high-level-view-of-solution.png)
 
-Van egy [DevTest Labs VSTS-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) , amely lehetővé teszi az egyes lépések végrehajtásához: 
+Van egy [DevTest Labs VSTS-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) , amely lehetővé teszi az egyes lépések végrehajtásához:
 
 - Egyéni kép létrehozása
 - Virtuális gép létrehozása

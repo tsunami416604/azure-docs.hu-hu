@@ -1,50 +1,71 @@
 ---
-title: Azure Application Gateway főbb jellemzői
-description: Ez a cikk információt nyújt az Application Gateway Works
+title: Egy application gateway működése
+description: Ez a cikk ismerteti egy application gateway működése
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: bbaf651233d4cebad3f45e5cf3823bcaf6ce38b6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2f27105aed940f0411abaa534cb09adf0be34bfe
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783272"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008313"
 ---
-# <a name="how-application-gateway-works"></a>Az Application Gateway működése
+# <a name="how-an-application-gateway-works"></a>Egy application gateway működése
 
-Ez a cikk bemutatja, hogyan az application gateway elfogadja a bejövő kéréseket, és továbbítja a háttérrendszerhez.
+Ez a cikk bemutatja, hogyan egy application gateway elfogadja a bejövő kérelmeket, és továbbítja a háttérrendszert.
 
-![how-application-gateway-works](./media/how-application-gateway-works/how-application-gateway-works.png)
+![Hogyan egy application gateway elfogadja a kérelmet](./media/how-application-gateway-works/how-application-gateway-works.png)
 
-## <a name="how-a-request-is-accepted"></a>Hogyan egy kérelem elfogadása
+## <a name="how-an-application-gateway-accepts-a-request"></a>Hogyan egy application gateway elfogadja a kérelmet
 
-Egy ügyfél kérelmet küld az application gateway, mielőtt az application gateway tartománynév tartománynévrendszer (DNS) kiszolgáló használatával oldja fel. Mivel az application Gateway átjárók az azure.com tartomány szabályozza Azure-ban, a DNS-bejegyzést. Az Azure DNS az ügyfélnek, amely az IP-címet adja vissza a *előtérbeli IP-cím* az Application Gateway. Az application gateway fogadja a bejövő forgalmat egy vagy több *figyelői*. Egy figyelő olyan logikai entitás, amely ellenőrzi a kapcsolódási kérelmeket. Egy fronted IP-cím, protokoll és port számát, az application Gateway-kapcsolatokat az ügyfelektől van konfigurálva. Webalkalmazási tűzfal (WAF) engedélyezve van, ha az Application Gateway ellenőrzi a kérelemfejlécek és a szervezet (ha van ilyen) szemben a *WAF-szabályok* annak megállapításához, hogy a kérelem kérés - ebben az esetben azt a rendszer átirányítja a háttér – vagy biztonsági fenyegetéseket, amelyben le lesz tiltva a kérelem eset.  
+1. Egy ügyfél kérést küld az application gateway, mielőtt a tartománynév, az application Gateway feloldja a tartománynévrendszer (DNS) kiszolgáló használatával. Az Azure DNS-bejegyzés szabályozza, mivel az összes application Gateway átjárók az azure.com tartomány.
 
-Az Application gateway is használható az alkalmazás belső load balancerhez vagy egy internetkapcsolattal rendelkező application load balancert. Internetkapcsolattal rendelkező application gateway nyilvános IP-címmel rendelkezik. Internetkapcsolattal rendelkező application gateway DNS-neve nyilvánosan feloldható a nyilvános IP-címére. Ezért az internetkapcsolattal rendelkező application Gateway átjárókon is irányíthatja az ügyfelektől érkező kérelmek az interneten keresztül. Belső application Gateway átjárók csak magánhálózati IP-címmel rendelkezik. A belső application gateway DNS-neve nyilvánosan feloldható a magánhálózati IP-címére. Ezért belső terheléselosztók csak irányíthatja az application gateway számára a virtuális hálózathoz hozzáféréssel rendelkező ügyfelek kéréseit. Internetkapcsolattal rendelkező, mind belső, az Application Gateway átjárók a háttérkiszolgálók, privát IP-címek használatával irányíthatja a kérelmeket. A háttérkiszolgálók, ezért nem kell kéréseket fogadni egy belső és a egy internetkapcsolattal rendelkező Application Gateway nyilvános IP-címeket.
+2. Az Azure DNS az IP-címet az ügyfélnek, amely az előtérbeli IP-cím, az application Gateway adja vissza.
 
-## <a name="how-a-request-is-routed"></a>Hogyan van átirányítva a kérelem
+3. Az application gateway egy vagy több figyelői a bejövő forgalmat fogad el. Egy figyelő olyan logikai entitás, amely ellenőrzi a kapcsolódási kérelmeket. Egy fronted IP-cím, protokoll és port számát, az application Gateway-kapcsolatokat az ügyfelektől van konfigurálva.
 
-Ha a kérés, hogy érvényesek legyenek található (vagy ha a WAF nincs engedélyezve), a *kérelemirányítási szabály* társított a *figyelő* meghatározásához abban az esetben a *háttérkészlet* , amely a kérés át szeretné irányítani. A szabályok abban a sorrendben vannak feldolgozva, amelyben a portálon szerepelnek. Alapján a *kérelemirányítási szabály* konfigurálása az application gateway úgy dönt, hogy a kérelmek átirányítása a figyelőn egy adott háttérkészlethez, vagy irányíthatja őket a különböző háttérkészletek függően az URL-címet vagy a *kérelmek átirányítása a* egy másik portra vagy külső helyre
+4. Webalkalmazási tűzfal (WAF) használatban van, ha az application gateway ellenőrzi a kérelemfejléc és a szervezet, ha van ilyen, WAF-szabályok alapján. Ez a művelet meghatározza, hogy a kérelem kérés vagy a biztonsági fenyegetéseket. Ha a kérés érvényes, a háttérrendszer lesz irányítva. A kérés nem érvényes, ha azt le van tiltva, a biztonsági fenyegetéseket.
 
-Egyszer egy *háttérrendszer* *készlet* van kiválasztva, az application gateway egy konfigurálva a készlethez, hogy kifogástalan-e a háttérkiszolgálók (y.y.y.y) elküldi a kérelmet. Határozza meg a kiszolgáló állapotát egy *állapotadat-mintavétel*. Ha a háttérkészlet több kiszolgálót tartalmaz, a az application gateway irányíthatja a kérelmeket a kifogástalan állapotú kiszolgálók között, így terheléselosztást a kérelmek a kiszolgálókon a ciklikus időszeletelés algoritmust használ.
+Az Azure Application Gateway is használható, az alkalmazás belső load balancerhez, vagy egy internetkapcsolattal rendelkező application load balancert. Internetkapcsolattal rendelkező application gateway nyilvános IP-címet használ. Internetkapcsolattal rendelkező application gateway DNS-neve nyilvánosan feloldható a nyilvános IP-címére. Ennek eredményeképpen az internetkapcsolattal rendelkező application Gateway átjárókon is irányítania az ügyfélkérelmeket az internethez.
 
-A háttérkiszolgáló meghatározása után az application gateway a háttérkiszolgáló, a konfiguráció alapján a megnyílik egy új TCP-munkamenet az *HTTP-beállítások*. A *HTTP-beállítások* egy összetevő, amely meghatározza a protokoll, port és más útválasztás kapcsolatos nem beállítását, amelyre szükség az új munkamenetet a háttérkiszolgáló. A port és protokoll, a HTTP-beállítások az határozza meg, hogy az alkalmazás átjáró és a háttérkiszolgáló-kiszolgálók közötti forgalom titkosítva van, így teljes körű SSL megvalósítására, vagy titkosítás nélkül. Az eredeti kérést a háttérkiszolgálónak küldésekor az application gateway figyelembe veszi a HTTP-beállítások felülbírálása az állomásnév, elérési út, protokoll; kapcsolatos bármilyen egyéni konfigurációt fenntartása cookie-alapú munkamenet-affinitást,-kapcsolatának kiürítéséhez, kiválasztotta a megadott állomás nevét a háttérrendszer stb.
+Belső application Gateway átjárók csak magánhálózati IP-címek használata. A belső application gateway DNS-neve nyilvánosan feloldható a magánhálózati IP-címére. Ezért belső terheléselosztók csak irányíthatja az application gateway egy virtuális hálózathoz hozzáféréssel rendelkező ügyfelek kéréseit.
 
-Belső Application Gateway csak magánhálózati IP-címmel rendelkezik. Egy belső Application Gateway DNS-nevét a belső oldható fel a magánhálózati IP-címére. Ezért belső terheléselosztók csak irányíthatja a virtuális hálózathoz hozzáféréssel rendelkező ügyfelek kéréseit az Application Gateway számára.
+Internetkapcsolattal rendelkező, mind a belső alkalmazás átjárók háttérkiszolgálók magánhálózati IP-címek használatával irányíthatja a kérelmeket. Háttérkiszolgálók fogadásához egy belső érkező kérelmeket, vagy egy internetkapcsolattal rendelkező application gateway nyilvános IP-címek nem szükséges.
 
-Ha a háttérkiszolgáló-készletet tartalmaz egy belső feloldható teljes tartománynévnek, vagy magánhálózati IP-cím, az Application Gateway a kérelmet és a háttérkiszolgáló, a példány magánhálózati IP-címek használatával irányítja. Ha a háttérkiszolgáló-készletet tartalmaz külső végpont és a egy külsőleg feloldható teljes tartománynévnek, az Application Gateway a kérelmet és a háttérkiszolgáló előtérbeli nyilvános IP-címére irányítja. A DNS-feloldás a saját DNS-zóna vagy egyéni DNS-kiszolgáló azon alapul, ha konfigurálva, vagy az Azure DNS által biztosított alapértelmezett vesz igénybe. Előtérbeli nyilvános IP-cím még nincs kiépítve, ha egy kimenő külső csatlakoztatásához van hozzárendelve.
+## <a name="how-an-application-gateway-routes-a-request"></a>Hogyan irányítja az application gateway a kérelem
+
+Ha egy kérés érvényességét, vagy egy WAF nem használt, az application gateway a kérés útválasztási szabályt, a figyelő társított értékeli ki. Ez a művelet irányítsa át a kérést, hogy melyik háttérkészlet határozza meg.
+
+Szabályok felsorolás a portálon a rendelés feldolgozása. A kérelem-útválasztási szabály alapján, az application gateway határozza meg, útvonal kéri, hogy különböző háttérkészletek alapján a következő URL-cím vagy egy másik portra kérelmek átirányítása vagy külső a figyelő egy adott háttérkészlethez, az összes kérelem átirányítása hely.
+
+Amikor az application gateway háttérkészlet választja, azt a kérést küld a készletben (y.y.y.y) megfelelően működő háttér-kiszolgálók valamelyikével. Az állapotfigyelő mintavételező határozza meg a kiszolgáló állapotát. Ha a háttérkészlet több kiszolgálót tartalmaz, az application gateway Ciklikus időszeleteléses algoritmust használ irányíthatja a kérelmeket, kifogástalan állapotú kiszolgálók között. Ez elosztja a kérelmeket a kiszolgálókon.
+
+Az application gateway határozza meg a háttérkiszolgáló, megnyílik egy új TCP-munkamenet a HTTP-beállításai alapján a háttér-kiszolgálóval. HTTP-beállítások megadása a protokoll, port és más útválasztás kapcsolatos beállításokat, hozzon létre egy új munkamenetet a háttérkiszolgáló szükséges.
+
+A port és protokoll, a HTTP-beállítások határozza meg, hogy az alkalmazás átjáró és a háttérkiszolgáló-kiszolgálók közötti forgalom titkosítva van (tehát ennek a végpontok közötti SSL) vagy titkosítatlan.
+
+Egy application gateway és a háttérkiszolgáló az eredeti kérést küld, ha a HTTP-beállítások felülbírálása a gazdagépnév, az elérési út és a protokoll kapcsolatos bármilyen egyéni konfigurációt figyelembe veszi. Ez a művelet fenntartja a cookie-alapú munkamenet-affinitást, a kapcsolat kiürítési, állomásnév-kijelölés a háttér, és így tovább.
+
+Belső application gateway csak magánhálózati IP-címeket használ. Belső application gateway DNS neve nem oldható fel a magánhálózati IP-címére. Ennek eredményeképpen belső terheléselosztók is csak irányíthatja a kérelmeket a hozzáféréssel rendelkező ügyfelek számára a virtuális hálózatot az application gateway számára.
+
+ >[!NOTE]
+ >Mindkét internetkapcsolattal rendelkező és a belső application Gateway átjárók irányíthatja a kérelmeket háttérkiszolgálók magánhálózati IP-címek használatával. Ez a művelet történik, ha a a készlet háttérerőforrásra magánhálózati IP-cím, virtuális gép hálózati Adapteres konfiguráció vagy egy belső feloldható címet tartalmaz. Ha a háttérkiszolgáló-készlet:
+> - **Van egy nyilvános végpontot**, az application gateway az előtérbeli nyilvános IP-címet használ a kiszolgáló eléréséhez. Ha nincs előtérbeli nyilvános IP-cím, egy kimenő külső csatlakoztatásához van hozzárendelve.
+> - **Egy belső feloldható teljes tartománynévnek, vagy egy magánhálózati IP-címet tartalmaz**, az application gateway a kérelmet irányítja a háttérkiszolgálón a példány magánhálózati IP-címek használatával.
+> - **Külső végpont és a egy külsőleg feloldható teljes tartalmaz**, az application gateway a kérelmet irányítja a háttérkiszolgáló az előtérbeli nyilvános IP-cím használatával. A DNS-feloldás alapján egy saját DNS-zóna vagy egyéni DNS-kiszolgálót, ha konfigurálva, vagy használja az alapértelmezett Azure által biztosított DNS. Ha nincs előtérbeli nyilvános IP-cím, egy kimenő külső csatlakoztatásához van hozzárendelve.
 
 ### <a name="modifications-to-the-request"></a>A kérelem módosításai
 
-Az Application gateway összes kérésre 4 további fejlécek beszúrása, továbbítja a kéréseket a háttér előtt. Ezek a fejlécek: X – továbbított – a, X továbbított proto, X-továbbított-port és X-eredeti-gazdagép. Az x-továbbított – a fejléc formátuma IP:port vesszővel tagolt listája. Az x továbbított proto érvényes értékei a következők: HTTP vagy HTTPS PROTOKOLLT. X továbbított port portot határozza meg, amelyen a kérelem eléri az application gatewayben. X eredeti állomásfejlécet tartalmaz az eredeti állomásfejlécet, amelyhez a kérés érkezett. Ezt a fejlécet hasznos olyan szituációkra, mint az Azure-webhely-integráció, ahol a bejövő állomásfejléc módosította-e előtt az adatforgalmat, a háttérkiszolgáló. Ha szükséges Ha engedélyezve van a munkamenet-affinitást, majd egy átjáró felügyelt affinitási cookie-k egészül ki. 
+Egy application gateway összes kérésre négy további fejlécek beszúrása, továbbítja a kéréseket a háttér előtt. Ezek a fejlécek: x – továbbított – a, x továbbított proto, x-továbbított-port és x-eredeti-gazdagép. Az x-továbbított – a fejléc formátuma IP:port vesszővel tagolt listája.
 
-Emellett konfigurálhatja a fejlécek használatával módosíthatja az Alkalmazásátjáró [Újraírási HTTP-fejlécek](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) vagy URI elérési útja az elérési út felülbírálás beállítása használatával módosíthatja. Azonban, ha úgy konfigurálva, minden bejövő kérelem küldése a proxyn keresztül, a háttér-jébe.
+Az x továbbított proto érvényes értékei a következők: HTTP vagy HTTPS PROTOKOLLT. X továbbított port meghatározza azt a portot, amelyen a kérelem elérte-e az application gateway. X eredeti állomásfejlécet tartalmaz az eredeti állomásfejlécet, amelyhez a kérés érkezett. Ezt a fejlécet hasznos az Azure-webhelyen integráció, ahol a bejövő állomásfejléc módosította-e előtt az adatforgalmat, a háttérkiszolgáló. Ha a beállítás engedélyezve van a munkamenet-affinitást, majd hozzáadja egy átjáró által kezelt affinitási cookie-k.
 
+Konfigurálhatja az Alkalmazásátjáró fejlécek módosítása használatával [Újraírási HTTP-fejlécek](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) vagy az URI elérési út módosítása egy elérési út-felülírási beállítás használatával. Azonban, ha úgy konfigurálva, az összes beérkező webszolgáltatásokhoz használják proxyként a háttérrendszer.
 
 ## <a name="next-steps"></a>További lépések
 
-Miután megismerkedett az application gateway működéséről, tekintse meg a [Application gateway összetevők](application-gateway-components.md) tudni, hogy annak összetevői részletesebben ismertetik.
+[Application gateway összetevőinek ismertetése](application-gateway-components.md)

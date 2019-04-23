@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 3938427c23993f0546e7df62da88dadaf3353118
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 0a5bbc0bb4b934ae9e60cbd8233b5efbae2a6e6e
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549371"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149283"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC Analytics – gyakori kérdések
 
@@ -130,12 +130,6 @@ Nem. Minden tárfiók, amelyben engedélyezve van a hálózati biztonsági csopo
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Mi történik, ha egy NSG-t, a traffic analytics "Nem található" hiba miatt nem tudja konfigurálni?
 
 Válassza ki a támogatott régiók. Ha egy nem támogatott régió, a "Nem található" hibaüzenetet kap. A támogatott régiók korábban ebben a cikkben szerepel.
-
-## <a name="why-am-i-getting-the-error-failed-to-update-flow-logs-settings-for--internalservererror-when-enabling-nsgs-in-us-gov-virginia"></a>Miért jelenik meg a hiba "folyamatnaplói beállításainak frissítése... sikertelen InternalServerError..." Amikor engedélyezi az NSG (US Gov Virginia)?
-
-Ez az, ha nem áll újra regisztrált US Gov Virginia az előfizetéshez tartozó "Microsoft.Network" erőforrás-szolgáltató egy hiba miatt. A csapata dolgozik ennek a javítást. Áthidaló megoldásként kell [manuálisan regisztrálja újra "Microsoft.Network' RP](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-register-provider-errors). 
-
-Ha a probléma tartósan fennáll, forduljon a támogatási. 
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Mi történik, ha az állapot kapok "nem sikerült betölteni," az NSG-t folyamat-naplók oldalán alatt?
 

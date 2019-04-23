@@ -242,6 +242,9 @@
       href: /azure/templates/microsoft.media/allversions
 - name: További források
   items:
+    - name: Azure Media Services-közösség
+      displayName: 'forums, twitter, feedback'
+      href: media-services-community.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
     - name: Díjszabás

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 536a74046f46c7f83907833846e9ec99e8d8a289
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.openlocfilehash: 36879ad070848f1779804d4eb3958058b9b86689
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370278"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996577"
 ---
 # <a name="azure-maps-render-coverage"></a>Az Azure Maps megjelenítési lefedettség
 
@@ -169,7 +169,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 | Cocos (Keeling)-szigetek   |   | Ø |
 | Koreai Népi Demokratikus Köztársaság |   | Ø |
 | Dokdo and Takeshima       |   | Ø |
-| Hongkong KKT                 | ✓ | ✓ |
+| Hongkong (KKT)             | ✓ | ✓ |
 | India                     | Ø | ✓ | 
 | Indonézia                 | ✓ | ✓ |
 | Irán                      |   | Ø |
@@ -182,7 +182,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 | Kirgizisztán                |   | Ø |
 | Laoszi Népi Demokratikus Köztársaság |   | Ø |
 | Libanon                   | ✓ | ✓ |
-| Makaó                     | ✓ | ✓ |
+| Makaó (KKT)                 | ✓ | ✓ |
 | Malajzia                  | ✓ | ✓ |
 | Maldív-szigetek                  |   | Ø |
 | Mongólia                  |   | Ø |
@@ -276,7 +276,7 @@ A Maps azonban nem rendelkezik azonos szintű információkat és a pontosság m
 | Liechtenstein             | ✓ | ✓ |
 | Litvánia                 | ✓ | ✓ |
 | Luxemburg                | ✓ | ✓ |
-| Macedónia                 | ✓ | ✓ |
+| Észak-Macedónia           | ✓ | ✓ |
 | Málta                     | ✓ | ✓ |
 | Moldova                   | ✓ | ✓ |
 | Monaco                    | ✓ | ✓ |

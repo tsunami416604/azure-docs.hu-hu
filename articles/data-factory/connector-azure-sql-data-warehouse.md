@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 04/19/2019
 ms.author: jingwang
-ms.openlocfilehash: e3fc5a3dc5dc40078ca3a4733f6a2ba11da450f1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: b97d21503e8dcd75906581faf1851533bcd69fa6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681216"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009344"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -399,22 +399,29 @@ További információ a PolyBase használatával hatékonyan betöltése az SQL 
 
 Használatával [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) betöltés nagy mennyiségű adat Azure SQL Data Warehouse-ba, a nagy átviteli sebességű hatékony módja. Átviteli sebesség nagyobb nyereség láthatja az alapértelmezett BULKINSERT mechanizmus helyett a PolyBase használatával. Lásd: [teljesítményfigyelési](copy-activity-performance.md#performance-reference) részletes összehasonlítását. A használati esetek, olvassa [1 TB adat betöltése az Azure SQL Data Warehouse-bA](https://docs.microsoft.com/azure/data-factory/v1/data-factory-load-sql-data-warehouse).
 
-* Ha a forrásadatok az Azure Blob storage vagy az Azure Data Lake Store, és kompatibilis a polybase használatával, a másolási közvetlenül az Azure SQL Data Warehouse a PolyBase használatával formátuma. További információkért lásd:  **[közvetlen másolása a PolyBase használatával](#direct-copy-by-using-polybase)**.
+* Ha a forrásadatok **Azure Blob, az Azure Data Lake Storage Gen1 vagy az Azure Data Lake Storage Gen2**, és a **formátuma kompatibilis a PolyBase**, a másolási tevékenység használatával közvetlenül a PolyBase, hogy az Azure meghívása Az SQL Data Warehouse lekérheti az adatokat a forrásból. További információkért lásd:  **[közvetlen másolása a PolyBase használatával](#direct-copy-by-using-polybase)**.
 * A forrásadattár és formátum a PolyBase által eredetileg nem támogatott, ha a **[szakaszos Másolás a PolyBase használatával](#staged-copy-by-using-polybase)** inkább funkciót. A szakaszos másolás funkciót is, nagyobb átviteli sebességet biztosít. A PolyBase-kompatibilis formátumra alakítja az adatokat automatikusan átalakítja. És az Azure Blob storage-ban tárolja az adatokat. Majd betölti az adatokat az SQL Data Warehouse-bA.
 
 ### <a name="direct-copy-by-using-polybase"></a>Közvetlen másolás a PolyBase használatával
 
-Az SQL Data Warehouse PolyBase támogatja az Azure Blob- és az Azure Data Lake Store közvetlenül. Egyszerű szolgáltatás használja forrásként, és adott fájl formátuma követelményekkel rendelkezik. Ha a forrásadatok megfelel a jelen szakaszban ismertetett feltételeknek, közvetlen másol a forrásadattárból Azure SQL Data Warehouse a polybase szolgáltatást akkor használja. Ellenkező esetben használjon [szakaszos Másolás a PolyBase használatával](#staged-copy-by-using-polybase).
+Az SQL Data Warehouse PolyBase támogatja az Azure Blob, az Azure Data Lake Storage Gen1 és az Azure Data Lake Storage Gen2 közvetlenül. Ha a forrásadatok megfelel a jelen szakaszban ismertetett feltételeknek, a PolyBase használatával az Azure SQL Data Warehouse közvetlenül leképezhesse a forrásadattár másolja. Ellenkező esetben használjon [szakaszos Másolás a PolyBase használatával](#staged-copy-by-using-polybase).
 
 > [!TIP]
-> Adatok másolása hatékonyan Data Lake Store az SQL Data Warehouse, és ismerje meg alaposabban [Azure Data Factory segítségével még egyszerűbben és kényelmes megoldás az adatok alapján tárhat fel, ha a Data Lake Store használatával az SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
+> Hatékony adatok másolása az SQL Data warehouse-ba, és ismerje meg alaposabban [Azure Data Factory segítségével még egyszerűbben és kényelmes megoldás az adatok alapján tárhat fel, ha a Data Lake Store használatával az SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
 
 A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beállításokat, és automatikusan visszavált az adatok áthelyezése a BULKINSERT mechanizmusa.
 
-1. A **forrás társított szolgáltatás** írja be az Azure Blob storage (**Azure BLOB Storage szolgáltatásról**/**AzureStorage**) rendelkező **fiók kulcsos hitelesítés**  vagy az Azure Data Lake Storage Gen1 (**AzureDataLakeStore**) rendelkező **egyszerű szolgáltatásnév hitelesítése**.
-2. A **bemeneti adatkészlet** típus **AzureBlob** vagy **AzureDataLakeStoreFile**. A formátum típusa alapján `type` tulajdonságai **OrcFormat**, **ParquetFormat**, vagy **TextFormat**, az alábbi konfigurációkkal:
+1. A **forrás társított szolgáltatás** van a következő típusok és a hitelesítési módszerek:
 
-   1. `fileName` helyettesítő karaktert tartalmazó szűrő nem tartalmaz.
+    | Támogatott forrás adatokat tároló típusa | Támogatott adatforrás hitelesítési típusa |
+    |:--- |:--- |
+    | [Azure Blob](connector-azure-blob-storage.md) | Fiók kulcsos hitelesítés |
+    | [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md) | Egyszerű szolgáltatásnév hitelesítése |
+    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Fiók kulcsos hitelesítés |
+
+2. A **forrás adatkészlet formátumú** azonban **ParquetFormat**, **OrcFormat**, vagy **TextFormat**, az alábbi konfigurációkkal:
+
+   1. `folderPath` és `fileName` helyettesítő karaktert tartalmazó szűrő nem tartalmaznak.
    2. `rowDelimiter` meg kell **\n**.
    3. `nullValue` vagy értékre van állítva **üres karakterlánc** ("") vagy alapértelmezett, balra, és `treatEmptyAsNull` alapértelmezett, balra, vagy állítsa true.
    4. `encodingName` értéke **utf-8**, amelynek alapértelmezett értéke.
@@ -423,7 +430,7 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
 
       ```json
       "typeProperties": {
-        "folderPath": "<blobpath>",
+        "folderPath": "<path>",
         "format": {
             "type": "TextFormat",
             "columnDelimiter": "<any delimiter>",
@@ -431,10 +438,6 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
             "nullValue": "",
             "encodingName": "utf-8",
             "firstRowAsHeader": <any>
-        },
-        "compression": {
-            "type": "GZip",
-            "level": "Optimal"
         }
       },
       ```
@@ -592,7 +595,7 @@ Másolt adatok vagy az Azure SQL Data Warehouse, a következő hozzárendelések
 | időbélyeg | Byte[] |
 | tinyint | Byte |
 | uniqueidentifier | Guid |
-| varbinary | Byte[] |
+| Varbinary | Byte[] |
 | varchar | String, Char[] |
 | xml | Xml |
 

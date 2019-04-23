@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása, vagy az Azure az adatkezelőt az Azure Data Factory használatával |} A Microsoft Docs
+title: Adatok másolása, vagy az Azure az adatkezelőt az Azure Data Factory használatával
 description: Ismerje meg, hogyan másolhat adatokat, vagy az Azure az adatkezelőt az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: orspod
-ms.openlocfilehash: 756ede9cc90655163d6d53aa3ca920d2a15fb43d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.author: orspodek
+ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682491"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009361"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása, vagy az Azure az adatkezelőt az Azure Data Factory használatával
 
@@ -219,4 +219,7 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a type tulajdonság, a 
 ```
 
 ## <a name="next-steps"></a>További lépések
-A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+
+* A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+
+* Tudjon meg többet [adatok másolása az Azure Data Factory az Azure Data Explorer](/azure/data-explorer/data-factory-load-data).

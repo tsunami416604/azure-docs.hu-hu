@@ -7,17 +7,17 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: juliemsft
-ms.author: jrasnick
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/20/2019
-ms.openlocfilehash: c6dc49204c0a7e1cb0d1116e29746eed2fe52f8d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: MT
+ms.date: 04/18/2019
+ms.openlocfilehash: 471ded9cd94623929630155f1a3c613bf00576a8
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286261"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006250"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások skálázása az Azure SQL Database-ben
 
@@ -27,7 +27,7 @@ Ez a cikk ismerteti a számítási és tárolási erőforrások, elérhető egy 
 > [!IMPORTANT]
 > A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
-## <a name="change-compute-resources-vcores-or-dtus"></a>Módosítsa a számítási erőforrásokat (virtuális magok vagy dtu-k)
+## <a name="change-compute-size-vcores-or-dtus"></a>Számítási méret módosítása (virtuális magok vagy dtu-k)
 
 Miután kiválasztotta a dtu-k vagy a virtuális magok számát, méretezhetők egy önálló adatbázis felfelé vagy lefelé dinamikusan használatával a tényleges tapasztalatok alapján a [az Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [ PowerShell](/powershell/module/az.sql/set-azsqldatabase), a [az Azure CLI](/cli/azure/sql/db#az-sql-db-update), vagy a [REST API-val](https://docs.microsoft.com/rest/api/sql/databases/update).
 
@@ -67,6 +67,37 @@ A késést, módosíthatja a szolgáltatásszintet, vagy egy önálló adatbázi
 > [!TIP]
 > A folyamatban lévő műveletek monitorozására, tekintse meg: [SQL REST API használatával műveleteinek kezelésére](https://docs.microsoft.com/rest/api/sql/operations/list), [kezelése CLI használatával az operations](/cli/azure/sql/db/op), [T-SQL használatával végzett műveletek monitorozására](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) és a következő két PowerShell-parancsokat: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) and [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
+### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Szolgáltatás szintű megváltozik, vagy a számítási műveletek átméretezésekor megszakítása
+
+Szolgáltatási réteg módosítása vagy számítási átméretezésekor műveletet lehet megszakítani.
+
+#### <a name="azure-portal"></a>Azure Portal
+
+Az adatbázis áttekintő paneljén lépjen **értesítések** , és kattintson a csempére, egy folyamatban lévő művelet van megjelölve:
+
+![Folyamatban lévő művelet](media/sql-database-single-database-scale/ongoing-operations.png)
+
+Ezután kattintson a feliratú gomb **megszakíthatja a műveletet**.
+
+![Folyamatban lévő művelet megszakítása](media/sql-database-single-database-scale/cancel-ongoing-operation.png)
+
+#### <a name="powershell"></a>PowerShell
+
+PowerShell parancssori, állítsa be a `$ResourceGroupName`, `$ServerName`, és `$DatabaseName`, majd futtassa a következő parancsot:
+
+```PowerShell
+$OperationName = (az sql db op list --resource-group $ResourceGroupName --server $ServerName --database $DatabaseName --query "[?state=='InProgress'].name" --out tsv)
+if(-not [string]::IsNullOrEmpty($OperationName))
+    {
+        (az sql db op cancel --resource-group $ResourceGroupName --server $ServerName --database $DatabaseName --name $OperationName)
+        "Operation " + $OperationName + " has been canceled"
+    }
+    else
+    {
+        "No service tier change or compute rescaling operation found"
+    }
+```
+
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>További szempontok módosításakor szolgáltatási szint vagy átméretezésekor számítási mérete
 
 - Ha egy magasabb szolgáltatási szintre frissít, vagy méretű számítási, az adatbázis maximális méretét nem növekszik, hacsak Ön kifejezetten megad egy nagyobb méretű (maxsize).
@@ -77,7 +108,7 @@ A késést, módosíthatja a szolgáltatásszintet, vagy egy önálló adatbázi
 - A visszaállítási szolgáltatásajánlatok eltérőek a különböző szolgáltatásszintek esetében. Ha alacsonyabb szolgáltatásszintre a **alapszintű** szinten, és van egy alacsonyabb biztonsági másolatainak megőrzési ideje. Lásd: [az Azure SQL Database biztonsági másolatainak](sql-database-automated-backups.md).
 - Az adatbázis új tulajdonságai csak akkor lesznek alkalmazva, ha a módosítások befejeződtek.
 
-### <a name="billing-during-rescaling"></a>A számlázás során átméretezésekor
+### <a name="billing-during-compute-rescaling"></a>A számlázás során számítási átméretezésekor
 
 Számlázása óránként, a legmagasabb szolgáltatási szintet létezik adatbázis + compute-méretet, létezése alatt, hogy egy óránál kevesebb ideig volt az adatbázis aktív függetlenül. Például ha egy önálló adatbázis létrehozása, és öt perc múlva törli azt a számla egy adatbázisóráért díját tükrözi.
 
@@ -102,9 +133,9 @@ Számlázása óránként, a legmagasabb szolgáltatási szintet létezik adatb�
 > [!IMPORTANT]
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
-## <a name="dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>DTU-alapú vásárlási modell: A P11 és p15-ös, amikor a maximális méret 1 TB-nál nagyobb korlátozások
+## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>P11 és p15-ös megkötések, amikor a maximális méret 1 TB-nál nagyobb
 
-Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, USA nyugati középső Régiója, USA védelmi Minisztériuma régiók és US Government központi. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB. További információkért lásd: [P11 – P15 – aktuális korlátozások](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb). Nagyobb, mint 1 TB-os maximális mérettel P11 és P15 adatbázisokat az alábbi szempontok és korlátozások vonatkoznak:
+Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, USA nyugati középső Régiója, USA védelmi Minisztériuma régiók és US Government központi. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB. Nagyobb, mint 1 TB-os maximális mérettel P11 és P15 adatbázisokat az alábbi szempontok és korlátozások vonatkoznak:
 
 - Ha a P11 és P15-adatbázis maximális méretét minden eddiginél értékre lett állítva egy 1 TB-nál nagyobb, majd is, csak állítani, vagy másolja a P11-es vagy P15-adatbázishoz.  Ezt követően az adatbázis is lehet rescaled a különböző számítási méretre megadott átméretezésekor művelet idején lefoglalt terület mennyisége nem haladja meg az új számítási méretű maximális méretbeli korlátokat.
 - Aktív georeplikáció forgatókönyvek esetén:

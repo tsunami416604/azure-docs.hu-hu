@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/08/2019
+ms.date: 04/18/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 2ab29c6e41204104320f4c2f583a24e53786bf3c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: d0e39f9e24b3c486eccd71eb1c19823cfd33391a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360539"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004771"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -111,7 +111,7 @@ Storage-fiókba új virtuális gépek replikálását csak akkor használható a
 
 ### <a name="can-i-change-the-managed-disk-type-after-machine-is-protected"></a>Módosíthatom a felügyelt lemez típusa, után a gép védelméhez?
 
-Igen, egyszerűen [felügyelt lemez típusának módosítása](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Azonban ha a felügyelt lemez típusa, várjon, amíg új helyreállítási pontot kell létrehozni, ha a feladatátvételi teszt vagy feladatátvétel a váltás után kell.
+Igen, egyszerűen [felügyelt lemez típusának módosítása](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Típusának módosítása előtt győződjön meg arról, hogy az Azure Portalon nyissa meg a felügyelt lemez erőforrás visszavonja az SAS URL-címet a lemez. Az Áttekintés panelen bármely folyamatos Exportálás megszakítása Miután visszavonja a SAS URL-címet, a lemez típusának módosítása a postafiókjába pár percen belül. Azonban ha módosítja a felügyelt lemez típusa, várjon, amíg új helyreállítási pontot kell létrehozni az Azure Site Recovery. Az új helyreállítási pontok használata bármilyen feladatátvételi teszt vagy feladatátvétel a jövőben.
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>Válthatok-e a felügyelt lemezekre történő replikálás nem felügyelt lemezek?
 

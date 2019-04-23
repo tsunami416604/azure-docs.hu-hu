@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: e6ebd4ff465565be49d98162cd9ca67c194593a4
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
-ms.translationtype: MT
+ms.openlocfilehash: 0e2767660edf2a9dbcb8617b07a6b9f71fedb743
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563370"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011243"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Példa: A Computer Vision API meghívása
 
@@ -45,10 +45,9 @@ A funkciók lebontása:
   
 ## <a name="authorize-the-api-call"></a>Engedélyezze az API-hívás
 
-A Computer Vision API minden meghívásához előfizetési kulcs szükséges. Ezt a kulcsot vagy egy lekérdezési karakterlánc paramétereként kell átadni vagy a kérelem fejlécében lehet megadni.
+A Computer Vision API minden meghívásához előfizetési kulcs szükséges. Ezt a kulcsot egy lekérdezésisztring-paraméteren keresztül kell továbbítani, vagy a kérelemfejlécben kell megadni.
 
-Előfizetői kulcs beszerzéséhez, lásd [Előfizetői kulcsok beszerzésének módja](../Vision-API-How-to-Topics/HowToSubscribe.md
-) című témakört.
+Ingyenes próba kulcs beszerzéséhez tekintse meg a [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) előfizetni a Computer Vision, és a kulcs beszerzése.
 
 1. Az előfizetési kulcs lekérdezési karakterláncban történő átadásához lásd az alábbi Computer Vision API példát:
 
@@ -170,7 +169,7 @@ Mező | Typo | Tartalom
 Címkék  | `object` | Felső szintű objektum a címkék tömbjének
 tags[].Name | `string`  | Kulcsszó a címke osztályozótól
 tags[].Score    | `number`  | Megbízhatósági pontszám, 0 és 1 között.
-leírás  | `object` | Felső szintű objektum a leírásnak.
+description  | `object` | Felső szintű objektum a leírásnak.
 description.tags[] |    `string`    | Címkék listája.  Ha a felirat létrehozásához nincs elegendően nagy megbízhatóság, akkor a hívó számára egyedül a címkék adnak elérhető információt.
 description.captions[].text | `string`  | A képet leíró kifejezés.
 description.captions[].confidence   | `number`  | A kifejezéshez tartozó megbízhatóság.

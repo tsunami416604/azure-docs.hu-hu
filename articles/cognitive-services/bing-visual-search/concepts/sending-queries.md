@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 4/03/2019
 ms.author: aahi
-ms.openlocfilehash: 7c6fda2238aa53c4dc1a0f15ef1aaee263e4a8f8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 62d34b859a0cf71320c478b7cab4a2914e5ee308
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489348"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011692"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Keresési lekérdezéseket küld a Bing Visual Search API
 
@@ -73,7 +73,7 @@ A kérelmeket csak HTTP POST kérelemként lehet elküldeni.
 
 Az alábbiakban azok a lekérdezési paraméterek láthatók, amelyeket a kérelemnek meg kell adnia. Tartalmaznia kell legalább a `mkt` lekérdezési paraméter:
 
-| Name (Név) | Érték | Typo | Szükséges |
+| Name (Név) | Value | Typo | Szükséges |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | A két karakter országkódot jelölő, hogy honnan származnak az eredményeket.<br /><br /> Ha beállítja ezt a paramétert, az [Accept-Language](#acceptlanguage) fejlécet is meg kell adnia. A Bing a nyelvek listájának első támogatott nyelvét használja, és kombinálja azt a megadott országkóddal, hogy meghatározza a piacot, ahonnan vissza fogja adni az eredményeket. Ha a nyelvek listája nem tartalmaz támogatott nyelvet, a Bing megkeresi a kérelmet támogató legközelebbi nyelvet és piacot. Másik lehetőségként a megadott piac helyett egy összesített vagy alapértelmezett piacot is használhat az eredmények megszerzéséhez.<br /><br /> Csak akkor használja ezt lekérdezési paramétert és az `Accept-Language` lekérdezési paramétert, ha több nyelvet ad meg, ellenkező esetben az `mkt` és a `setLang` paramétereket használja.<br /><br /> Ez a paraméter és az [mkt](#mkt) lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt. | String | Nem       |
 | <a name="mkt" />mkt   | A piac, ahonnan az eredmények származnak. <br /><br /> **MEGJEGYZÉS:** A piacon, mindig meg kell adni, ha ismert. Ha megadja a piacot, azzal elősegíti, hogy a Bing a kérelmet továbbítva megfelelő, optimális választ adjon vissza.<br /><br /> Ez a paraméter és a [cc](#cc) lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt. | String | Igen      |
@@ -98,7 +98,7 @@ Az alábbiakban azok a fejlécek láthatók, amelyeket a kérelmének meg kell a
 | <a name="location" />X-Search-Location   | Választható kérelemfejléc.<br /><br /> Kulcs/érték párok pontosvesszővel elválasztott listája, amely leírja az ügyfél földrajzi helyét. A Bing arra használja a helyadatokat, hogy meghatározza a biztonságos keresés viselkedését, illetve releváns helyi tartalmakat adjon vissza. A kulcs/érték párt \<kulcs\>:\<érték\> formátumban adja meg. Az alábbiakban láthatja a felhasználó tartózkodási helyének megadására használt kulcsokat.<br /><br /><ul><li>lat – Kötelező. Az ügyfél tartózkodási helyének földrajzi szélessége, fokban megadva. A földrajzi szélesség nem lehet -90,0 foknál kisebb és +90,0 foknál nagyobb. A negatív értékek a déli szélességeket, a pozitív értékek pedig az északi szélességeket jelölik.<br /><br /></li><li>long – Kötelező. Az ügyfél tartózkodási helyének földrajzi hosszúsága, fokban megadva. A földrajzi hosszúság nem lehet -180,0 foknál kisebb és +180,0 foknál nagyobb. A negatív értékek a nyugati hosszúságokat, a pozitív értékek pedig a keleti hosszúságokat jelölik.<br /><br /></li><li>re – Kötelező. A méterben megadott sugár, amely meghatározza a koordináták vízszintes pontosságát. Adja át az eszköz helymeghatározási szolgáltatása által visszaadott értéket. Tipikus értékek 22 m, a GPS és Wi-Fi, esetében a cella tower keresztárfolyam 380 m és az IP-címkeresés 18,000 m lehet.<br /><br /></li><li>ts – Választható. Az UTC UNIX-időbélyeg arról, hogy mikor tartózkodott az ügyfél az adott helyen. (Az UNIX-időbélyeg az 1970. január 1. óta eltelt másodpercek száma).<br /><br /></li><li>head – Választható. Az ügyfél relatív haladási vagy utazási iránya. Az utazás irányt fokban adja meg 0 és 360 között, a tényleges északhoz képest az óramutató járásával megegyező irányban számítva. Csak akkor adja meg ezt a kulcsot, ha az `sp` kulcs értéke nem nulla.<br /><br /></li><li>sp – Választható. A méter per másodpercben megadott horizontális sebesség, amellyel az ügyféleszköz halad.<br /><br /></li><li>alt – Választható. Az ügyféleszköz tengerszint feletti magassága, méterben megadva.<br /><br /></li><li>are – Választható. A méterben megadott sugár, amely meghatározza a koordináták függőleges pontosságát. Csak akkor adja meg ezt a kulcsot, ha az `alt` kulcsot is megadja.<br /><br /></li></ul> **MEGJEGYZÉS:** Bár a kulcsokat számos nem kötelező, a további adatokat ad meg, annál pontosabb helyet eredménye.<br /><br /> **MEGJEGYZÉS:** Bár nem kötelező, csak Ön javasoljuk, hogy mindig adja meg a felhasználó földrajzi helyét. Különösen fontos megadni a helyet, ha az ügyfél IP-címe nem tükrözi pontosan a felhasználó fizikai helyét (például ha az ügyfél VPN-t használ). Az optimális eredmények elérése érdekében, ezt a fejlécet kell tartalmaznia, és a `X-MSEdge-ClientIP` fejlécet, azonban mindenképpen ezt a fejlécet kell tartalmaznia.       |
 
 > [!NOTE]
-> Ne feledje, hogy a [Bing keresési API-t használja, és megjelenítési követelményeihez](/../bing-web-search/use-display-requirements.md) a vonatkozó törvényeket, beleértve a következő fejlécek az vonatkozó megfelelőségének megkövetelése. Egyes joghatóságokban, például Európában vannak olyan követelmények, amelyek előírják a felhasználói hozzájárulás megszerzését a nyomkövető eszközök felhasználói eszközökön való elhelyezése előtt.
+> Ne feledje, hogy a [Bing keresési API-t használja, és megjelenítési követelményeihez](../../bing-web-search/use-display-requirements.md) a vonatkozó törvényeket, beleértve a következő fejlécek az vonatkozó megfelelőségének megkövetelése. Egyes joghatóságokban, például Európában vannak olyan követelmények, amelyek előírják a felhasználói hozzájárulás megszerzését a nyomkövető eszközök felhasználói eszközökön való elhelyezése előtt.
 
 <a name="content-form-types" />
 

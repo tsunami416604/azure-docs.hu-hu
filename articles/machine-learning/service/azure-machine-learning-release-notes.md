@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: e58205e847dbfdae8a114221f9bd56102555eeef
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: MT
+ms.openlocfilehash: 7fc0d3a2e29a2aaa06d88f25828ff676d615939d
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579155"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149564"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -23,12 +23,39 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 + Az Azure Machine Learning [ **fő SDK a Pythonhoz**](https://aka.ms/aml-sdk)
 + Az Azure Machine Learning [ **adat-előkészítési SDK**](https://aka.ms/data-prep-sdk)
 
+## <a name="2019-04-17"></a>2019-04-17
+
+### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Az Azure Machine Learning adat-előkészítési SDK v1.1.2
+
+Megjegyzés: Data Prep Python SDK már nem telepíti a `numpy` és `pandas` csomagokat. Lásd: [frissítése a telepítési utasításokat](https://aka.ms/aml-data-prep-installation).
+
++ **Új funkciók**
+  + Mostantól használhatja a Pivot átalakítás.
+    + Útmutató: [Pivot notebook](https://aka.ms/aml-data-prep-pivot-nb)
+  + Mostantól használhatja a reguláris kifejezések a natív függvények.
+    + Példák:
+      + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
+      + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
+  + Most már használhatja `to_upper`  és `to_lower`  kifejezés nyelv függvényei.
+  + Most láthatja az egyes oszlopok data profil egyedi értékek száma.
+  + A gyakran használt olvasó lépések némelyikét, most adhasson a `infer_column_types` argumentum. Ha a változó értéke `True`, Data Prep megkísérli észlelése és automatikus átalakítás típusú oszlophoz.
+    + `inference_arguments` most már elavult.
+  + Most már hívása `Dataflow.shape`.
+
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + `keep_columns` most már a további választható argumentumot fogad el `validate_column_exists`, amely ellenőrzi, hogy eredményét `keep_columns` oszlopokat tartalmazza.
+  + Minden olvasó lépést (amely beolvasása fájlból) mostantól elfogadják a további nem kötelező argumentum `verify_exists`.
+  + Továbbfejlesztett teljesítmény pandas dataframe a beolvasása, illetve adatokat profilok beolvasása.
+  + Kijavítva a hiba, ahol egyetlen indexszel rendelkező egyetlen lépésben egy adatfolyam a szeletelés sikertelen.
+
 ## <a name="2019-04-15"></a>2019-04-15
 
 ### <a name="azure-portal"></a>Azure Portal
++ **Új funkciók**
   + Egy meglévő parancsfájl futtatása egy meglévő távoli számítási fürtön most küldje el újra. 
   + A folyamatok lapon új paraméterekkel most már futtathatja egy közzétett folyamatot. 
   + Futtatás részletei mostantól támogatja az egy új fájl pillanatfelvételt. A könyvtár pillanatképet egy adott Futtatás elküldésekor tekintheti meg. A notebook, indítsa el a futtató el lett küldve is letöltheti.
+   + Most már visszavonhatja szülő fut az Azure Portalról.
 
 ## <a name="2019-04-08"></a>2019-04-08
 

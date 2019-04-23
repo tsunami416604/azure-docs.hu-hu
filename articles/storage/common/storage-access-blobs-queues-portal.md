@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b56cbfbc9dfde8b1a7d43d55ee85c34fde385902
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 5eba650ac2a052f264d82260e9fc07bf195235da
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58846380"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148934"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Az Azure Portallal blob és üzenetsor adatok elérését
 
@@ -41,13 +41,13 @@ Próbál elérni a blob- vagy várólista adatokat az Azure Portalon, ha a port�
 Blob és üzenetsor adatok eléréséhez az Azure Portalról az Azure AD-fiókot használ, mindkét az alábbi utasításokat kell teljesülniük az Ön számára:
 
 - Az Azure Resource Manager társított meg [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör minimális szintre a tárfiók hatókörrel rendelkező vagy újabb. A **olvasó** szerepkör engedélyt ad a legtöbb korlátozott, de egy másik Azure Resource Manager-szerepkör, amely hozzáférést biztosít a tárfiók kezelési erőforrásainak is fogadható el.
-- Akár egy beépített vagy egyéni szerepkört, blobok és a sorban lévő adatok elérését biztosító Önhöz rendelve.
+- Akár egy beépített vagy egyéni szerepkört, amely hozzáférést biztosít a blob- vagy várólista adataihoz Önhöz rendelve.
 
 A **olvasó** szerepkör-hozzárendelés vagy egy másik Azure-erőforrás-kezelő szerepkör-hozzárendelés azért szükséges, hogy a felhasználó megtekintheti és keresse meg a tárfiók kezelési erőforrásainak az Azure Portalon. A blob és üzenetsor-adatokhoz hozzáférést biztosító RBAC-szerepkörök nem biztosíthat hozzáférést tárfiók kezelési erőforrásainak. A portálon a blob és üzenetsor adatok eléréséhez, a felhasználó engedélyre van szüksége, keresse meg a tárfiók erőforrásainak. Ezzel a követelménnyel kapcsolatban további információkért lásd: [a portál elérésére szolgáló olvasó szerepkört](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
 
 A beépített szerepkörök, amelyek támogatják a blob és üzenetsor-adatokhoz való hozzáférést a következők:
 
-- [Tárolási Blob adatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): A POSIX hozzáférés-vezérlés az Azure Data Lake Storage Gen2 (előzetes verzió).
+- [Tárolási Blob adatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): A POSIX hozzáférés-vezérlés az Azure Data Lake Storage Gen2 esetén.
 - [Storage-Blobadatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Blobok olvasási, írási és törlési engedélyek.
 - [Storage-Blobadatok olvasója](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Blobok csak olvasható engedélyek.
 - [Storage-Üzenetsorbeli adatok Közreműködője](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Olvasási, írási és törlési engedélyek sorra.

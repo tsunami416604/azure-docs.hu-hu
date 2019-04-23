@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 559dd5ecfa4615e42e4f7ac40008e69c9210e2a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 64c2cd0ed1572fdaaa42f4731519ba6d5c320f1c
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799473"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149129"
 ---
 # <a name="registration-management"></a>Regisztrációkezelés
 
@@ -36,11 +36,11 @@ Eszközregisztráció az egy értesítési központ használatával valósíthat
 Egy regisztrációs a Platformértesítési szolgáltatás (PNS) leíró eszközhöz társítja, címkék, és esetleg egy sablont. A PNS-leíró egy amiatt, eszköztoken vagy FCM-regisztrációs azonosító lehet. Címkék segítségével értesítések átirányítása az eszközleírók megfelelő készletét. További információkért lásd: [az Útválasztás és címke kifejezések](notification-hubs-tags-segment-push-message.md). Sablonok regisztrációs átalakítás végrehajtásához használnak. További információért lásd a [Sablonok](notification-hubs-templates-cross-platform-push-messages.md) szakaszt.
 
 > [!NOTE]
-> Az Azure Notification Hubs regisztrációs / 60 címkék legfeljebb támogat.
+> Az Azure Notification Hubs 60 címkék eszközönként legfeljebb támogat.
 
 ### <a name="installations"></a>Telepítések
 
-Egy továbbfejlesztett egy telepítés, amely tartalmaz egy leküldéses tulajdonságcsomagjait regisztrációs kapcsolódó tulajdonságok. Az eszközök regisztrálása a legújabb és legjobb módja. Azonban nem támogatott az ügyféloldali .NET SDK-ban ([Notification Hub SDK háttérbeli műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) kezdődően még.  Ez azt jelenti, ha regisztrál a magáról az ügyféleszközről, meg kellene használnia a [Notification Hubs – REST API](https://msdn.microsoft.com/library/mt621153.aspx) megközelítés telepítések támogatásához. Háttérszolgáltatás használatakor kell tudni használni [Notification Hub SDK háttérbeli műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Egy továbbfejlesztett egy telepítés, amely tartalmaz egy leküldéses tulajdonságcsomagjait regisztrációs kapcsolódó tulajdonságok. Az eszközök regisztrálása a legújabb és legjobb módja. Azonban nem támogatott az ügyféloldali .NET SDK-ban ([Notification Hub SDK háttérbeli műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) kezdődően még.  Ez azt jelenti, ha regisztrál a magáról az ügyféleszközről, meg kellene használnia a [Notification Hubs – REST API](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) megközelítés telepítések támogatásához. Háttérszolgáltatás használatakor kell tudni használni [Notification Hub SDK háttérbeli műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 Fő előnye, hogy telepítések az alábbiak:
 
@@ -48,7 +48,7 @@ Fő előnye, hogy telepítések az alábbiak:
 - A telepítési modell egy speciális címkével formátumot támogatja (`$InstallationId:{INSTALLATION_ID}`), amely lehetővé teszi, hogy közvetlenül az adott eszköz küld értesítést. Például, ha az alkalmazás beállítása a telepítési Azonosítót `joe93developer` az adott eszköz a fejlesztők célként az eszköz egy értesítés küldéséhez a `$InstallationId:{joe93developer}` címke. Ez lehetővé teszi, hogy egy adott eszköz célként ehhez további kódírás nélkül.
 - Telepítés használatával is lehetővé teszi, hogy részleges regisztrációfrissítés. A részleges frissítési telepítés kérése történik a PATCH módszer használatával a [JSON-javítás standard](https://tools.ietf.org/html/rfc6902). Ez akkor hasznos, ha frissíti a címkéket a regisztrációt. Nem kell kérje le a teljes regisztrációját, és küldje el újra a korábbi címkéket.
 
-Telepítés az alábbi tulajdonságokat is tartalmazzák. A telepítési tulajdonságok teljes listáját lásd: [létrehozása vagy a telepítés felülírja a REST API-val](https://msdn.microsoft.com/library/azure/mt621153.aspx) vagy [telepítési tulajdonságok](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
+Telepítés az alábbi tulajdonságokat is tartalmazzák. A telepítési tulajdonságok teljes listáját lásd: [létrehozása vagy a telepítés felülírja a REST API-val](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) vagy [telepítési tulajdonságok](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
 
 ```json
 // Example installation format to show some supported properties

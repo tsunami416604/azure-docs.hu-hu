@@ -1,17 +1,17 @@
 ---
 title: Az Azure Active Directory-szabályzat konfigurálása az Azure Data Catalog
 description: Előfordulhat olyan helyzet állhat elő, ha tud bejelentkezni az Azure Data Catalog portál, de amikor megpróbál bejelentkezni az adatforrás-regisztráló eszköz, hibaüzenetet tapasztal.
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/06/2019
-ms.openlocfilehash: 558f8845f5469bf157188e20f1ec65a07ff8355f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: e69a7e3bd104d0fb82b248b6560d4fd082c88426
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59363026"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996441"
 ---
 # <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory-szabályzat konfigurálása
 

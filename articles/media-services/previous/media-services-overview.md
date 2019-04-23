@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7a98d3acc3f45772f9e28c23a639f495b75bea0a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: efdc3f657712794325f8af6f1b0178915e7a8e6b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850058"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000298"
 ---
 # <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
 
@@ -75,12 +75,6 @@ Az Azure Media Services alapfogalmaiért lásd: [Fogalmak](media-services-concep
 Részletes információkért lásd az [AMS-forgatókönyvek és a funkciók és szolgáltatások az egyes adatközpontokban történő rendelkezésre állását](scenarios-and-availability.md) ismertető cikket.
 
 ## <a name="service-level-agreement-sla"></a>Szolgáltatói szerződés (SLA)
-
-* A Media Services kódolási funkciójához szükséges REST API-tranzakciókhoz 99,9%-os rendelkezésre állást garantálunk.
-* A streamelési funkciók szolgáltatási kéréseinek sikeres kiszolgálására 99,9%-os rendelkezésre állást garantálunk a létező médiatartalmak esetében egy standard vagy prémium szintű streamvégpont megvásárlásakor.
-* Az élő csatornák esetében garantáljuk, hogy a futó csatornák az idő legalább 99,9%-ában elérhetők lesznek kívülről.
-* A Content Protection esetében garantáljuk, hogy a kulcskéréseket az idő 99,9%-ában sikeresen teljesítjük.
-* Az indexelő esetében sikeresen, 99,9%-os rendelkezésre állási garanciával kiszolgáljuk az egy kódolási egységgel feldolgozott indexelési kéréseket.
 
 További információ: [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/)
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: d1e4af6e73c272a7ccc8996b0ccc854be64dd74b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006358"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996747"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Az Azure Data Box Edge rendszerre vonatkozó követelmények
 
@@ -82,7 +82,7 @@ Azt javasoljuk, hogy beállította-e a tűzfalszabályok liberally fix IP-címei
 
 | Az URL-minta                      | Összetevő vagy funkció                     |   
 |----------------------------------|---------------------------------------------|
-| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | A Microsoft a tárolóregisztrációs adatbázis (szükséges)               |
+| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | A Microsoft a tárolóregisztrációs adatbázis (szükséges)               |
 | https://\*.azurecr.io                     | Személyes, mind a külső tároló-beállításjegyzékek (nem kötelező) | 
 | https://\*.azure-devices.net              | Az IoT Hub-hozzáférés (kötelező)                             | 
 
@@ -94,7 +94,7 @@ Azt javasoljuk, hogy beállította-e a tűzfalszabályok liberally fix IP-címei
 
 | Az URL-minta                      | Összetevő vagy funkció                     |  
 |----------------------------------|---------------------------------------------|
-| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | A Microsoft a tárolóregisztrációs adatbázis (szükséges)               |
+| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | A Microsoft a tárolóregisztrációs adatbázis (szükséges)               |
 | https://\*.azure-devices.us              | Az IoT Hub-hozzáférés (kötelező)           |
 | https://\*.azurecr.us                    | Személyes, mind a külső tároló-beállításjegyzékek (nem kötelező) | 
 

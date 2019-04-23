@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 04/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: f5ff43102c42823891f2035c3f577e7def87fcb7
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: dfe2a103005cc48860c7bbeb3036afe94ff3a559
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528237"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004057"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -63,7 +63,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Azure Database for MariaDB
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
-* Az Azure DevOps - szervezetek számára az Azure DevOps nem Microsoft-bővítmény vásárlása kell [megszakítja a vásárlások](https://go.microsoft.com/fwlink/?linkid=871160) előtt azok is a fiók áthelyezése előfizetések között.
+* Az Azure DevOps - lépésekkel [számlázáshoz használható Azure-előfizetést](/azure/devops/organizations/billing/change-azure-subscription?view=azure-devops).
 * Azure Maps
 * Azure Monitor-naplók
 * Azure Relay
@@ -74,7 +74,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Tartalomkézbesítési hálózat (CDN)
 * Cloud Services – lásd: [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
 * Cognitive Services
-* Container Registry – nem lehet áthelyezni egy tároló-beállításjegyzéket, ha a georeplikáció engedélyezve van.
+* Container Registry
 * Tartalommoderátor
 * Cost Management
 * Customer Insights

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 51c45fdb0c96e84d3f37f485279aa805361f3818
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a8132735d1af08055e9341608dcac0564ed4b927
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798929"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996458"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Parancssori eszközök segítségével elindíthatja és leállíthatja a virtuális gépek Azure DevTest Labs szolgáltatásban
 Ez a cikk bemutatja, hogyan elindítani vagy leállítani a virtuális gépek az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet Azure PowerShell vagy az Azure CLI használatával. Ezek a műveletek automatizálása a PowerShell vagy a parancssori felületen parancsfájlok hozhat létre. 
@@ -34,7 +34,7 @@ Azonban bizonyos esetekben előfordulhat, hogy automatizálni szeretné indítá
 - Használhatja a CI/CD-munkafolyamaton belül feladatként indítsa el a folyamat elején, használja a virtuális gépek, a gépek hozhat létre, tesztelje a gépeket vagy infrastruktúrát, majd állítsa le a virtuális gépek, ha a folyamat befejeződött. Ilyen például az egyéni rendszerkép-előállító az Azure DevTest Labs lenne.  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-A következő PowerShell-parancsfájl egy tesztkörnyezetben egy virtuális gép elindul. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azurermps-6.13.0) referenciamodelljének a szkript van. A **ResourceId** paraméter értéke a lab-ben a virtuális gép teljesen minősített erőforrás-azonosító. A **művelet** paraméter, ahol a **Start** vagy **leállítása** beállításainak függően van szükség.
+A következő PowerShell-parancsfájl egy tesztkörnyezetben egy virtuális gép elindul. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) referenciamodelljének a szkript van. A **ResourceId** paraméter értéke a lab-ben a virtuális gép teljesen minősített erőforrás-azonosító. A **művelet** paraméter, ahol a **Start** vagy **leállítása** beállításainak függően van szükség.
 
 ```powershell
 # The id of the subscription

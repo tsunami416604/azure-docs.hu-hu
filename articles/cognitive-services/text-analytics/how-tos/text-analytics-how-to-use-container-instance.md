@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 3541376331725fddcd58d94625f5d761ef159c97
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 95ba3c905541d2168dcbbc1bb2c1bc1d05468cb5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526495"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006420"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>A nyelv észlelése tároló üzembe Azure Kubernetes Service-ben
 
@@ -325,7 +325,7 @@ Ez a szakasz a **kubectl** szeretne beszélni az Azure Kubernetes Service-ben a 
     |Sor 78<br> `image` A tulajdonság|Lemezkép helyét a nyelvi rendszerképet a Tárolóregisztrációs adatbázis<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
     |Sor 95<br> `name` A tulajdonság|A lemezképet tároló beállításjegyzék titkos kulcsát néven `<client-secret>` az egyik előző szakaszban.|
     |Sor 91<br> `apiKey` A tulajdonság|A text analytics-erőforrás kulcsa|
-    |Sor 92<br> `billing` A tulajdonság|A text analytics-erőforrás számlázási végpontját.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+    |Sor 92<br> `billing` A tulajdonság|A text analytics-erőforrás számlázási végpontját.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
     Mivel a **apikey tulajdonsággal végzett tesztelése** és **végpont számlázási** vannak beállítva a Kubernetes vezénylési definíciójának részeként a webhelyet tároló nem szükséges tudni ezeket, vagy adja meg azokat a kérés részeként. Az orchestrator név szerint a nyelv észlelése tároló hivatkozik a webhelyet tároló `language`. 
 

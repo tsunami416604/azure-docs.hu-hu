@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sujayt
-ms.openlocfilehash: 42db22d39a7c87363cf97f874c85955a09cbe653
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: a6c9c690efe8b75cd1a939de1c68cf4e5bd40d70
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651543"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149314"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Hálózatkezelés az Azure-bA replikációs kapcsolatban
 
@@ -48,7 +48,7 @@ URL-alapú tűzfalproxyt használ a kimenő kapcsolat szabályozásához, ha a S
 
 **URL-cím** | **Részletek**  
 --- | ---
-*.blob.core.windows.net | Szükséges, hogy az adatokat a virtuális gépről is írható a gyorsítótárfiók a forrásrégióban. Ha tudja, hogy a gyorsítótár összes storage-fiókok a virtuális gépek számára, akkor engedélyezési lista specifikus tárolási fiók URL-címek (például: cache1.blob.core.windows.net és cache2.blob.core.windows.net) helyett *. blob.core.windows.net
+*.blob.core.windows.net | Szükséges, hogy az adatokat a virtuális gépről is írható a gyorsítótárfiók a forrásrégióban. Ha tudja, hogy a gyorsítótár összes storage-fiókok a virtuális gépek számára, is engedélyezett az adott tárolási fiók URL-címeket (például: cache1.blob.core.windows.net és cache2.blob.core.windows.net) helyett *. blob.core.windows.net
 login.microsoftonline.com | A Site Recovery szolgáltatás URL-címeinek a hitelesítési és engedélyezési szükséges.
 *.hypervrecoverymanager.windowsazure.com | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja fordulhat elő, a virtuális gépről. A megfelelő "Site Recovery IP-cím" is használhatja, ha a tűzfal proxy IP-címeket támogatja.
 *.servicebus.windows.net | Szükséges, hogy a virtuális Gépet a Site Recovery monitorozási és diagnosztikai adatok beírhatók. A megfelelő "Site Recovery figyelési IP-címet" is használhatja, ha a tűzfal proxy IP-címeket támogatja.
@@ -96,13 +96,19 @@ Site Recovery IP-címtartományok a következők:
    Egyesült Királyság 2. déli régiója | 13.87.37.4| 13.87.34.139
    Egyesült Királyság északi régiója | 51.142.209.167 | 13.87.102.68
    Korea középső régiója | 52.231.28.253 | 52.231.32.85
-   Korea déli régiója | 52.231.298.185 | 52.231.200.144
+   Korea déli régiója | 52.231.198.185 | 52.231.200.144
    Közép-Franciaország | 52.143.138.106 | 52.143.136.55
    Dél-Franciaország | 52.136.139.227 |52.136.136.62
    Ausztrália középső| 20.36.34.70 | 20.36.46.142
    Ausztrália 2. középső régiója| 20.36.69.62 | 20.36.74.130
    Dél-Afrika nyugati régiója | 102.133.72.51 | 102.133.26.128
    Dél-Afrika északi régiója | 102.133.160.44 | 102.133.154.128
+   USA-beli államigazgatás – Virginia | 52.227.178.114 | 23.97.0.197
+   US Gov Iowa | 13.72.184.23 | 23.97.16.186
+   USA-beli államigazgatás – Arizona | 52.244.205.45 | 52.244.48.85
+   USA-beli államigazgatás – Texas | 52.238.119.218 | 52.238.116.60
+   US DoD – Kelet | 52.181.164.103 | 52.181.162.129
+   US DoD – Középső régió | 52.182.95.237 | 52.182.90.133
 ## <a name="example-nsg-configuration"></a>Az NSG konfigurálása – példa
 
 Ez a példa bemutatja egy virtuális gép replikálása NSG-szabályok konfigurálása.

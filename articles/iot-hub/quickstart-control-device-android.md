@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: e3b0c0703cb46087db38121055117b50f97ad03f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 4f9f4ccb53f9530122f0a2463f8f45b596856282
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006570"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149682"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Gyors útmutató: A vezérlőelem egy eszköz csatlakozik az IoT hub (Android)
 
@@ -125,15 +125,13 @@ Az eszköz SDK-mintaalkalmazás futtatni a fizikai Android-eszköz vagy egy Andr
    > * Az Android Gradle beépülő modul és a gradle-t a projekt hivatkozott verziók elavultak az Android Studio verziójának. Hajtsa végre a [ezek az utasítások](https://developer.android.com/studio/releases/gradle-plugin) való hivatkozást, és telepítheti a megfelelő verzióját a beépülő modul és a gradle-t a telepítéshez.
    > * A licencszerződés feltételeit, az Android SDK még nincs aláírva. Kövesse az utasításokat a felépítési művelet kimenetében a licencszerződés feltételeit és az SDK letöltéséhez.
 
-
 4. Kattintson a létrehozás befejezése után **futtatása** > **"alkalmazás" futtatása**. Állítsa be az alkalmazást egy fizikai Android-eszköz vagy egy Android-emulátorban való futtatásához. Az Android-alkalmazás futtatása egy fizikai eszközt vagy emulátort a további információkért lásd: [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Ha az alkalmazás betöltött, kattintson a **Start** gombra kattintva indítsa el a telemetriai adatokat küldenek az IoT hubnak:
 
-    ![Alkalmazás](media/quickstart-send-telemetry-android/sample-screenshot.png)
+    ![Ügyfél eszköz android-alkalmazás minta képernyőképe](media/quickstart-control-device-android/sample-screenshot.png)
 
 -Nak kell hagyni a phycial eszközt vagy emulátort a fut a szolgáltatás SDK minta a telemetriai időköz módosítása során futásidejű végrehajtása közben.
-
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
 
@@ -146,12 +144,12 @@ Ebben a szakaszban az Azure Cloud Shell-fogja használni a [IoT-bővítmény](ht
     ```azurecli-interactive
     az iot hub monitor-events --hub-name YourIoTHubName --output table
     ```
+
     Az alábbi képernyőképen az IoT-központ kap az Android-eszköz által küldött telemetriát, a kimenet látható:
 
-      ![Olvassa el az eszköz üzeneteit az Azure CLI használatával](media/quickstart-send-telemetry-android/read-data.png)
+      ![Olvassa el az eszköz üzeneteit az Azure CLI használatával](media/quickstart-control-device-android/read-data.png)
 
 Alapértelmezés szerint a telemetria app telemetriai adatokat küldenek az Androidos eszközről 5 másodpercenként. A következő szakaszban a telemetriai időköz az Android IoT-eszköz frissítéséhez használandó a közvetlen metódus hívása.
-
 
 ## <a name="call-the-direct-method"></a>A közvetlen metódus meghívása
 
@@ -180,7 +178,6 @@ Egy IoT Hub háttérszolgáltatás alkalmazás általában fut a felhőben, kön
    > * Az Android Gradle beépülő modul és a gradle-t a projekt hivatkozott verziók elavultak az Android Studio verziójának. Hajtsa végre a [ezek az utasítások](https://developer.android.com/studio/releases/gradle-plugin) való hivatkozást, és telepítheti a megfelelő verzióját a beépülő modul és a gradle-t a telepítéshez.
    > * A licencszerződés feltételeit, az Android SDK még nincs aláírva. Kövesse az utasításokat a felépítési művelet kimenetében a licencszerződés feltételeit és az SDK letöltéséhez.
 
-
 4. Kattintson a létrehozás befejezése után **futtatása** > **"alkalmazás" futtatása**. Állítsa be az alkalmazás egy külön fizikai Android-eszköz vagy egy Android-emulátorban való futtatásához. Az Android-alkalmazás futtatása egy fizikai eszközt vagy emulátort a további információkért lásd: [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Miután betölti az alkalmazást, frissítse a **üzenetkezelési időköz beállítása** értéket a következőre **1000** , és kattintson a **Invoke**.
@@ -192,8 +189,6 @@ Egy IoT Hub háttérszolgáltatás alkalmazás általában fut a felhőben, kön
 6. Az alkalmazás jelzi, hogy a metódus végre sikeresen vagy sikertelenül nyugtázást fog kapni.
 
     ![Közvetlen metódus nyugtázása](media/quickstart-control-device-android/direct-method-ack.png)
-
-
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

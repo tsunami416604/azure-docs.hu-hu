@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 9d5b7f32cb298315a5816562f548bcdafbdeb5cf
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: cb4a3ec9be82957b4c0366ec232f1147c52d0251
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682308"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148772"
 ---
 # <a name="import-vms-from-another-lab-in-azure-devtest-labs"></a>Virtuális gépek importálhat egy másik tesztlabor az Azure DevTest Labs szolgáltatásban
-Az Azure DevTest Labs szolgáltatás jelentős mértékben javítja a virtuális gépek (VM) a fejlesztési és tesztelési tevékenységek felügyeletét. Lehetővé teszi, hogy a virtuális gép áthelyezése egy tesztkörnyezet között, a csapat vagy infrastruktúra-követelmények változnak. Az alábbiakban néhány gyakori forgatókönyvet, ahol előfordulhat, hogy ehhez szükség: 
+Az Azure DevTest Labs szolgáltatás jelentős mértékben javítja a virtuális gépek (VM) a fejlesztési és tesztelési tevékenységek felügyeletét. Lehetővé teszi, hogy a virtuális gép áthelyezése egy tesztkörnyezet között, a csapat vagy infrastruktúra-követelmények változnak. Az alábbiakban néhány gyakori forgatókönyvet, ahol előfordulhat, hogy ehhez szükség:
 
 - A csapat egy személy a vállalaton belül egy másik csoportba helyezi, és a fejlesztési virtuális gépeket az új csoport laborhoz szeretné.
 - A csoport elérte az előfizetés-szintű kvótát, és szeretné felosztani a csoportok több előfizetést is be.
@@ -42,10 +42,10 @@ Ezenkívül, hogy a virtuális gép importálása egy tesztkörnyezet egy másik
 Jelenleg importálhatja egy virtuális Gépet egy tesztkörnyezet egy másik kizárólag az Azure PowerShell és REST API használatával.
 
 ### <a name="use-powershell"></a>A PowerShell használata
-A PowerShell-parancsfájlt a ImportVirtualMachines.ps1 fájl letöltése [Azure DevTest Lab Git-tárház](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines) helyi meghajtójára. 
+A PowerShell-parancsfájlt a ImportVirtualMachines.ps1 fájl letöltése [Azure DevTest Lab Git-tárház](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines) helyi meghajtójára.
 
 #### <a name="import-a-single-vm"></a>Egyetlen virtuális gép importálása
-Futtassa a ImportVirtualMachines.ps1 cél labor importálja a forrás labor egyetlen virtuális Gépet. Megadhatja, hogy egy új nevet a virtuális gép, amely használatával a DestinationVirtualMachineName paramer másolásakor. 
+Futtassa a ImportVirtualMachines.ps1 cél labor importálja a forrás labor egyetlen virtuális Gépet. Megadhatja, hogy egy új nevet a virtuális gép, amely használatával a DestinationVirtualMachineName paramer másolásakor.
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source VM>" `
@@ -58,7 +58,7 @@ Futtassa a ImportVirtualMachines.ps1 cél labor importálja a forrás labor egye
 
 
 #### <a name="importing-all-vms"></a>Minden virtuális gép importálása
-A ImportVirtualMachines.ps1 parancsfájl futtatásakor, ha nem adja meg a virtuális gép a forrás tesztkörnyezetben, a parancsfájl a forrás tesztlabor virtuális gépeinek importálja a cél tesztkörnyezetben. 
+A ImportVirtualMachines.ps1 parancsfájl futtatásakor, ha nem adja meg a virtuális gép a forrás tesztkörnyezetben, a parancsfájl a forrás tesztlabor virtuális gépeinek importálja a cél tesztkörnyezetben.
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source VM>" `
@@ -68,7 +68,7 @@ A ImportVirtualMachines.ps1 parancsfájl futtatásakor, ha nem adja meg a virtu�
 ```
 
 ### <a name="use-rest-api"></a>A REST API használata
-Indítja el a REST API-t a cél és a cél labor szemben, és adja át a forrás labor, az előfizetés és a virtuális gép adatai meg paraméterként, az alábbi példában látható módon: 
+Indítja el a REST API-t a cél és a cél labor szemben, és adja át a forrás labor, az előfizetés és a virtuális gép adatai meg paraméterként, az alábbi példában látható módon:
 
 ```json
 POST https://management.azure.com/subscriptions/<ID of the target/destination subscription>/resourceGroups/<Name of the resource group that contains the destination lab>/providers/Microsoft.DevTestLab/labs/<Name of the lab to which the VMs are copied>/ImportVirtualMachine?api-version=2017-04-26-preview
@@ -82,5 +82,3 @@ POST https://management.azure.com/subscriptions/<ID of the target/destination su
 
 - További információ a virtuális gép átméretezése: [virtuális gép átméretezése](devtest-lab-resize-vm.md).
 - További információ a virtuális gép újbóli: [egy virtuális gép ismételt üzembe](devtest-lab-redeploy-vm.md).
-
-

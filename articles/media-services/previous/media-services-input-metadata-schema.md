@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: cdca2823962c442c9142fa439795269f419aa489
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
-ms.translationtype: MT
+ms.openlocfilehash: fa4487b07f130947ac5da2a5dbae6776b06acbe7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189682"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009902"
 ---
 # <a name="input-metadata"></a>Bemeneti metaadatok 
 
@@ -179,7 +179,7 @@ Ez a cikk végén található XML példaként lásd: [XML-példa](media-services
 | **Szöveg**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1 a track tartalmaz szöveg jelzi. |
 | **Karaokézom**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1, ez jelenti az karaokézom nyomon követése (háttérben zene, nincs énekhez) jelzi. |
 | **Kényszerített**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1 azt, hogy ez a kényszerített bemutatót. |
-| **HearingImpaired**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1, a hallás, ronthatja az a szám azt, hogy. |
+| **HearingImpaired**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1 jelzi a nagyothalló személyek számára legyen. |
 | **VisualImpaired**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1 a gyengén látók számára ez követése jelzi. |
 | **CleanEffects**<br /><br /> Szükséges |**xs: int** |Ez az attribútum értéke 1 a track rendelkezik tiszta hatások jelzi. |
 | **AttachedPic**<br /><br /> Szükséges |**xs: int** |Ez az attribútum értéke 1 a track rendelkezik képek jelzi. |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 617dbae67c71eac4bfc38de4e63c1ba05516ff61
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
-ms.translationtype: MT
+ms.openlocfilehash: 42fb5d69a1f32d669ad5191e342b3f2f880b8c98
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984050"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006672"
 ---
 # <a name="network-monitoring-solutions"></a>Hálózati megoldások monitorozása 
 
@@ -73,7 +73,7 @@ További információkért tekintse át a következő cikkeket:
 * [Network Performance Monitor for ExpressRoute konfigurálása](../expressroute/how-to-npm.md)
 * [Blogbejegyzés](https://aka.ms/NPMExRmonitorGA)
 
-## <a name="service-connectivity-monitor"></a>Szolgáltatás-összekapcsolhatósági monitor
+## <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
 
 Figyelési szolgáltatás kapcsolata, most tesztelheti az alkalmazások lemezekről és a teljesítmény szűk észleléséhez a helyszíni, a szolgáltató hálózatok és a felhő/titkos adatközpontok.
 
@@ -86,7 +86,7 @@ Figyelési szolgáltatás kapcsolata, most tesztelheti az alkalmazások lemezekr
 
 További információkért tekintse át a következő cikkeket:
 
-* [A Network Performance Monitor konfigurálása Szolgáltatásvégpontok figyeléshez](https://aka.ms/applicationconnectivitymonitorguide)
+* [A Network Performance Monitor konfigurálása Szolgáltatásvégpontok figyeléshez](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [Blogbejegyzés](https://aka.ms/svcendptmonitor)
 
 ## <a name="traffic-analytics"></a>Forgalmi elemzések

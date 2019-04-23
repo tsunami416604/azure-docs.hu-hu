@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: a1743e677e1005e5b4479c1d431b6b8bdbe77c8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: d1db228f4c73cc00cd32ca6ae5b86056db68f05b
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848694"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148951"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux rendszerű virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -43,7 +43,7 @@ Nincsenek számos előnnyel jár, jelentkezzen be az Azure-beli, Linux rendszer�
 
 A következő Linux-disztribúció jelenleg a szolgáltatás az előzetes verzióban támogatja:
 
-| Disztribúció | Verzió |
+| Disztribúció | Version |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -64,7 +64,7 @@ A következő Azure-régiók jelenleg a szolgáltatás az előzetes verzióban t
 
 Ha a helyi telepítése és használata a parancssori felület választja, az oktatóanyaghoz, hogy futnak-e az Azure CLI 2.0.31-es verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gépek létrehozása
+## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
 
 Hozzon létre egy erőforráscsoportot a [az csoport létrehozása](/cli/azure/group#az-group-create), majd hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az-vm-create) támogatott disztribúciójának használatával és a egy támogatott régióban. Az alábbi példa egy nevű virtuális Gépet helyez üzembe *myVM* használó *Ubuntu 16.04 LTS* helyezzen egy erőforráscsoportban nevű *myResourceGroup* a a *southcentralus*  régióban. A következő példákban megadhatja a saját erőforráscsoport és igény szerint egy virtuális gép neve.
 
@@ -83,7 +83,7 @@ A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány p
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Az Azure AD bejelentkezési Virtuálisgép-bővítmény telepítése
 
-Jelentkezzen be egy Linuxos virtuális Gépre az Azure AD hitelesítő adatait, telepítse az Azure Active Directory naplózási Virtuálisgép-bővítményt. A Virtuálisgép-bővítmények olyan kisebb alkalmazásoknál, amelyek az üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosít az Azure-beli virtuális gépeken. Használati [virtuálisgép-bővítmény csoportot az](/cli/azure/vm/extension#az-vm-extension-set) telepítéséhez a *AADLoginForLinux* nevű virtuális gép futtatására szolgáló bővítmény *myVM* a a *myResourceGroup* erőforrás csoport:
+Jelentkezzen be egy Linuxos virtuális Gépre az Azure AD hitelesítő adatait, az Azure Active Directory-bejelentkezés Virtuálisgép-bővítmény telepítése. A Virtuálisgép-bővítmények olyan kisebb alkalmazásoknál, amelyek az üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosít az Azure-beli virtuális gépeken. Használati [virtuálisgép-bővítmény csoportot az](/cli/azure/vm/extension#az-vm-extension-set) telepítéséhez a *AADLoginForLinux* nevű virtuális gép futtatására szolgáló bővítmény *myVM* a a *myResourceGroup* erőforrás csoport:
 
 ```azurecli-interactive
 az vm extension set \

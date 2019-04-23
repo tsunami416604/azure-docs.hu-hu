@@ -1,5 +1,5 @@
 ---
-title: A v2 API által előállított Videóindexelő kimenetének vizsgálata
+title: Vizsgálja meg az Azure Media Services Video Indexer kimeneti v2 API által előállított
 titlesuffix: Azure Media Services
 description: Ez a témakör a Video Indexer kimeneti v2 API által előállított megvizsgálja.
 services: media-services
@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 04/07/2019
 ms.author: juliako
-ms.openlocfilehash: 91cd8ab0565279f88a0949f873d6e44d564427af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: d55e246e6fc3a5eeb182a49d1e159887f66d6872
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280213"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011320"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Az API által előállított Videóindexelő kimenetének vizsgálata
 
@@ -37,8 +37,8 @@ Ez a cikk által visszaadott JSON-tartalmak megvizsgálja a **első videó Index
 |accountId|A lista VI fiók azonosítóját írja.|
 |id|A lista azonosítóját.|
 |név|A lista neve.|
-|leírás|A lista leírása.|
-|Felhasználónév|A felhasználó, aki létrehozta a lista neve.|
+|description|A lista leírása.|
+|userName|A felhasználó, aki létrehozta a lista neve.|
 |létrehozva|A lista létrehozási ideje.|
 |privacyMode|A lista adatvédelmi üzemmód (privát vagy nyilvános).|
 |state|A lista (feltöltött, feldolgozás, feldolgozás, sikertelen, karanténba helyezett).|
@@ -148,7 +148,7 @@ Az insights olyan dimenzió (például, átirat sorok, arcok, márkákat, stb.),
 
 Előfordulhat, hogy egy ARC Azonosítóját, nevét, a miniatűr, más metaadatokat és a historikus példányok listáját (például: 00: 00:05 – 00:00:10, 00:01:00 – 00:02:30 és 00:41:21 – 00:41:49.) Minden historikus példánya további metaadatokat is lehet. Például az arcok téglalap koordinálja (20,230,60,60).
 
-|Verzió|A kód verziója|
+|Version|A kód verziója|
 |---|---|
 |sourceLanguage|A videó Forrásnyelv (feltéve, hogy egy fő nyelvet). Formájában egy [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc.|
 |language|Az insights nyelv (a forrás nyelvről lefordított). Formájában egy [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc.|
@@ -279,40 +279,24 @@ Példa:
 |példányok|Amikor ezt a kulcsszót jelent meg időt a tartományok listája (kulcsszó többször is megjelenhetnek).|
 
 ```json
-"keywords": [
 {
-    "id": 0,
-    "text": "office",
-    "confidence": 1.6666666666666667,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
+    id: 0,
+    text: "technology",
+    confidence: 1,
+    language: "en-US",
+    instances: [{
+            adjustedStart: "0:05:15.782",
+            adjustedEnd: "0:05:16.249",
+            start: "0:05:15.782",
+            end: "0:05:16.249"
     },
     {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    }
-    ]
-},
-{
-    "id": 1,
-    "text": "icons",
-    "confidence": 1.4,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    },
-    {
-        "start": "00:00:13.9900000",
-        "end": "00:00:15.6100000"
-    }
-    ]
+            adjustedStart: "0:04:54.761",
+            adjustedEnd: "0:04:55.228",
+            start: "0:04:54.761",
+            end: "0:04:55.228"
+    }]
 }
-] 
 ```
 
 #### <a name="faces"></a>arcok
@@ -322,7 +306,7 @@ Példa:
 |id|A face azonosítója.|
 |név|A face neve. Lehet "Ismeretlen #0, az azonosított hírességek vagy ügyfél betanított személy.|
 |magabiztosan|Arcok azonosítása magabiztosan.|
-|leírás|A hírességek leírása. |
+|description|A hírességek leírása. |
 |thumbnailId|A miniatűr képét, arc azonosítója.|
 |knownPersonId|Ha ez egy ismert személy, a belső azonosítója.|
 |referenceId|Ha a Bing hírességek, a Bing-azonosító.|
@@ -510,7 +494,7 @@ Példa:
 |név|A márka neve.|
 |referenceId | A márka wikipedia URL-címének utótagja. Például a "Target_Corporation" pedig az utótag [ https://en.wikipedia.org/wiki/Target_Corporation ](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | A márka a Wikipedia URL-címet, ha létezik. Például: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
-|leírás|A márka leírása.|
+|description|A márka leírása.|
 |tags|Előre definiált ez csökkenése társított címkék listája.|
 |magabiztosan|A Video Indexer márka detector használatával (0-1) megbízhatósági értéke.|
 |példányok|A márka időtartományok listája. Minden példány egy brandType, ami azt jelzi, hogy ez csökkenése jelentek meg a szöveges vagy OCR rendelkezik.|

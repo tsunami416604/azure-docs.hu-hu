@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 04/18/2019
 ms.author: danlep
-ms.openlocfilehash: e7155604339bc634078fd022e05ede5f902bc0d8
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
-ms.translationtype: MT
+ms.openlocfilehash: fe129847e685c7151a9b7ad7ea65abbd38530733
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634714"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997070"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Az Azure Container Registry támogatott tartalom formátumban
 
@@ -21,16 +21,19 @@ Az Azure Container Registry egy privát tárház használatával kezelheti a kö
 
 ## <a name="docker-compatible-container-images"></a>A tárolólemezképeket a docker-kompatibilis
 
+A következő Docker-tároló lemezképet formátumok támogatják:
+
 * [Docker rendszerkép jegyzékfájl V2-séma 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
 * [Docker-rendszerkép Manifest V2, séma 2](https://docs.docker.com/registry/spec/manifest-v2-2/) -jegyzékfájl listákat, amelyek lehetővé teszik a beállításjegyzékek egy egyetlen "image: tag" hivatkozás alatt többplatformos képek tartalmaz
 
-* [Nyissa meg a tároló (OCI) kezdeményezés kép fájlformátum specifikációjának](https://github.com/opencontainers/image-spec/blob/master/spec.md) 
+## <a name="oci-images"></a>OCI képek
 
+Az Azure Container Registry is támogatja a lemezképek, amelyek megfelelnek a [Open Container kezdeményezés (OCI) rendszerkép fájlformátum specifikációjának](https://github.com/opencontainers/image-spec/blob/master/spec.md). Csomagolási formátumnak tartalmaznia kell [Singularity lemezkép formátumú (SIF)](https://www.sylabs.io/2018/03/sif-containing-your-containers/).
 
 ## <a name="helm-charts"></a>Helm-diagramok
 
-Az Azure Container Registry is üzemeltethetnek tárolóhelyekkel [Helm-diagramok](https://helm.sh/), a használt gyorsan üzembe helyezheti és kezelheti a Kubernetes alkalmazások csomagolási formátumot. [Helm-ügyfél](https://docs.helm.sh/using_helm/#installing-helm) 2.11.0 verzió vagy újabb támogatott.
+Az Azure Container Registry üzemeltethet tárolóhelyekkel [Helm-diagramok](https://helm.sh/), a használt gyorsan üzembe helyezheti és kezelheti a Kubernetes alkalmazások csomagolási formátumot. [Helm-ügyfél](https://docs.helm.sh/using_helm/#installing-helm) 2.11.0 verzió vagy újabb támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

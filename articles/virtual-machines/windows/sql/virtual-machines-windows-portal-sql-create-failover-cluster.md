@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3bb829e7cc99ee0d6e2d02f7ed3880d6c0226123
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486318"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011367"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SQL Server feladatátvevő Fürtpéldányának konfigurálása
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy SQL Server feladatátvevő fürtbe
 
 Az alábbi ábrán a kész megoldás Azure-beli virtuális gépeken:
 
-![Rendelkezésre állási csoport](./media/virtual-machines-windows-portal-sql-create-failover-cluster/00-sql-fci-s2d-complete-solution.png)
+![Rendelkezésreállási csoport](./media/virtual-machines-windows-portal-sql-create-failover-cluster/00-sql-fci-s2d-complete-solution.png)
 
 Az előző ábrán látható:
 
@@ -64,7 +64,7 @@ Tudnivalók az licencelési SQL Server teljes körű információkért lásd: [d
 
 Az Azure-ban a teljes megoldást hozhat létre egy sablonból. Például egy sablont, a Githubon elérhető [Azure gyorsindítási sablonok](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad). Ebben a példában van kialakítva, vagy nem tesztelt bármely adott számítási feladathoz. A sablon az S2D-tároló áttelepítése a tartományhoz csatlakoztatott, hozzon létre egy SQL Server FCI futtathatja. Kiértékelni a sablon, és módosítsa a célokra.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Nincsenek néhány dolgot tudnia kell, és néhány dolgot, hogy a szükséges helyen, mielőtt folytatja a műveletet.
 
@@ -399,7 +399,7 @@ A load balancer létrehozása:
 
    - **Név**: Az állapotminta neve.
    - **Protokoll**: TCP.
-   - **Port**: Az elérhető TCP-port beállítása. Ezt a portot egy megnyitott tűzfallal portra van szüksége. Használja a [ugyanazt a portot](#ports) a tűzfal beállítása az állapotmintához.
+   - **Port**: Állítsa be a portra a tűzfalon az állapotmintához a létrehozott [ebben a lépésben](#ports). Ez a cikk a példában a TCP-portot használja `59999`.
    - **Intervallum**: 5 másodperc.
    - **Nem kifogástalan állapot küszöbértéke**: 2 egymást követő hibák.
 
@@ -421,7 +421,7 @@ A load balancer létrehozása:
    - **Az állapotfigyelő mintavételező**: Használja az állapotmintát, korábban konfigurált.
    - **Munkamenet megőrzését**: Nincs.
    - **Üresjárat időkorlátja (perc)**: 4.
-   - **Nem fix IP (közvetlen kiszolgálói válasz)**: Engedélyezve
+   - **Nem fix IP (közvetlen kiszolgálói válasz)**: Enabled
 
 1. Kattintson az **OK** gombra.
 

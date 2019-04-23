@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: rimman
-ms.openlocfilehash: 1f8bec6fbf0bce9a3ac272231058a96a5d9e84cc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: ed3a171e60c078975de7003cdf599f0bac62c402
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762497"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004754"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Átviteli sebesség kiosztása tárolókra és adatbázisokra
 
@@ -88,7 +88,7 @@ Az SDK-k használatával programozott módon lekérni a tárolók és a egy adat
 
 Ha a .NET SDK használatával a [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) módszer lehetővé teszi, hogy a minimális átviteli sebesség, tárolók és a egy adatbázis beolvasása. 
 
-A kiosztott átviteli sebesség, tárolók és a egy adatbázis bármikor skálázhatja. A skálázási művelet 4 órán keresztül tétlen időszak után is futtathatja. A tétlen időszak számít, ha az idő időszak, amikor nincs ajánlat a csere művelet (amely tartalmazza a felfelé és lefelé méretezési) egy tároló vagy az adatbázis nem létezik. 
+A kiosztott átviteli sebesség, tárolók és a egy adatbázis bármikor skálázhatja. 
 
 ## <a name="comparison-of-models"></a>Modellek összehasonlítása
 

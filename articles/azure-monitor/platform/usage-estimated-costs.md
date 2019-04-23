@@ -5,16 +5,16 @@ author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 08/11/2018
+ms.date: 04/18/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 2e59699b667215d4b09e4d87c1776431631348e8
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
-ms.translationtype: MT
+ms.openlocfilehash: 7117e7287f601b306893cb02dc5d7599d7c6224d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754245"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007695"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Figyelési használat és becsült költségek az Azure monitorban
 
@@ -102,155 +102,14 @@ Költségbecslési bemutatja ezeket a módosításokat a hatásait.
 
 ## <a name="moving-to-the-new-pricing-model"></a>Az új díjszabási modellre áthelyezése
 
-Ha már eldöntötte, hogy elfogadják az új díjszabási modell egy előfizetéshez, válassza ki a **díjszabási modell kiválasztása** lehetőséget a felső részén a **felhasználás és becsült költségek** oldalon:
+Ha már eldöntötte, hogy elfogadják az új díjszabási modellben az adott előfizetés, nyissa meg minden Application Insights-erőforrást, nyissa meg a **felhasználás és becsült költségek** és ellenőrizze, hogy az alapszintű díjcsomag van, és nyissa meg az egyes Log Analytics munkaterületen, a nyílt minden a **tarifacsomag** lapon, és módosítsa a **GB (2018)** tarifacsomag. 
 
-![Használat monitorozása és a becsült költségekkel kell számolnia az új díjszabási modell képernyőképe](./media/usage-estimated-costs/006.png)
-
-A **díjszabási modell kiválasztása** oldal jelenik meg. Azt az előfizetést, azt az előző lapon tekinthetők meg az egyes listáját jeleníti meg:
-
-![Díjszabási modell kiválasztása képernyőképe](./media/usage-estimated-costs/007.png)
-
-Szeretne áthelyezni egy előfizetés az új díjszabási modellben, csak adja meg a mezőbe, és válassza ki **mentése**. Akkor is lépjen vissza a régi díjszabási modell megegyező módon. Ne feledje, hogy előfizetés-tulajdonosi vagy közreműködői engedélyekkel kell módosítani a díjszabási modellt.
+> [!NOTE]
+> A követelmény, hogy az Application Insights-erőforrások és a egy adott előfizetésen belül a Log Analytics-munkaterületek elfogadják a legújabb díjszabási modell most már el lett távolítva, nagyobb képességeket és a konfiguráció egyszerűbb. 
 
 ## <a name="automate-moving-to-the-new-pricing-model"></a>Az új díjszabási modellre való automatizálásához
 
-Az alábbi parancsfájlok van szükség az Azure PowerShell-modul. Ellenőrizze, hogy a legújabb verziót, tekintse meg a [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps).
+A fentieknek megfelelően, a már nem kell az összes figyelési erőforrások áthelyezése egy adott előfizetés az új díjszabási modellre egyszerre, így a ``migratetonewpricingmodel`` művelet többé nem lesz hatása. Most már továbbléphet az Application Insights-erőforrások és a Log Analytics-munkaterületek külön be a legújabb tarifacsomagban is kapható.  
 
-Miután az Azure PowerShell legújabb verzióját, akkor először futtatni szeretné ``Connect-AzAccount``.
+Ez a változás automatizálása az Application Insights használatával dokumentált [Set-AzureRmApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightspricingplan) a ``-PricingPlan "Basic"`` és a Log Analytics használatával [Set-azurermoperationalinsightsworkspace parancsmagok](https://docs.microsoft.com/powershell/module/AzureRM.OperationalInsights/Set-AzureRmOperationalInsightsWorkspace) a ``-sku "PerGB2018"``. 
 
-``` PowerShell
-# To check if your subscription is eligible to adjust pricing models.
-$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action listmigrationdate `
- -Force
-```
-
-Alatt isGrandFatherableSubscription eredménye IGAZ, azt jelzi, hogy áthelyezhető-e az előfizetés díjszabási modell közötti árképzési modellekkel. Egy értéket a optedInDate hiánya jelenti, hogy ehhez az előfizetéshez jelenleg a régi díjszabási modellre van beállítva.
-
-```
-isGrandFatherableSubscription optedInDate
------------------------------ -----------
-                         True            
-```
-
-Ez az előfizetés áttelepítése az új díjszabási modellre, futtassa:
-
-```powershell
-$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action migratetonewpricingmodel `
- -Force
-```
-
-Ellenőrizze, hogy a módosítás volt sikeres újrafuttatása:
-
-```powershell
-$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action listmigrationdate `
- -Force
-```
-
-Ha az áttelepítés sikeres volt, az eredmény hasonlóan kell kinéznie:
-
-```
-isGrandFatherableSubscription optedInDate                      
------------------------------ -----------                      
-                         True 2018-05-31T13:52:43.3592081+00:00
-```
-
-A optInDate az időbélyeg, ha ez az előfizetés kérte, hogy az új díjszabási modellben már tartalmazza.
-
-Ha szeretne visszatérni a régi díjszabási modell, futtatná:
-
-```powershell
- $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action rollbacktolegacypricingmodel `
- -Force
-```
-
-Ha az előző parancsfájlt, amely rendelkezik majd Újrafuttatja ``-Action listmigrationdate``, ekkor megjelenik egy üres optedInDate érték jelzi az előfizetés a régi díjszabási modellre való lett visszaadva.
-
-Ha több előfizetéssel rendelkezik, hogy migrálni szeretne a ugyanazt bérlőhöz üzemelnek, amely létrehozhatja a saját variant megtalálhatja az alábbi parancsfájlok használatával:
-
-```powershell
-#Query tenant and create an array comprised of all of your tenants subscription IDs
-$TenantId = <Your-tenant-id>
-$Tenant =Get-AzSubscription -TenantId $TenantId
-$Subscriptions = $Tenant.Id
-```
-
-Ellenőrizze, hogy ha a bérlő összes előfizetés jogosultak az új díjszabási modellben, futtathatja:
-
-```powershell
-Foreach ($id in $Subscriptions)
-{
-$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action listmigrationdate `
- -Force
-}
-```
-
-Lehet, hogy a parancsfájl finomított további hozzon létre egy parancsfájlt, amely három tömbök állít elő. Egy tömb összes előfizetés azonosítókat, amelyek állnak ```isGrandFatherableSubscription``` igaz értékre van állítva, és optedInDate jelenleg nem rendelkezik értékkel. Olyan előfizetéseket, jelenleg az új díjszabási modellben a második tömbje. És a egy harmadik tömb kitölti a rendszer csak az előfizetés azonosítókat a bérlőben, amely nem jogosultak az új díjszabási modell:
-
-```powershell
-[System.Collections.ArrayList]$Eligible= @{}
-[System.Collections.ArrayList]$NewPricingEnabled = @{}
-[System.Collections.ArrayList]$NotEligible = @{}
-
-Foreach ($id in $Subscriptions)
-{
-$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-$Result= Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action listmigrationdate `
- -Force
-
-     if ($Result.isGrandFatherableSubscription -eq $True -and [bool]$Result.optedInDate -eq $False)
-     {
-     $Eligible.Add($id)
-     }
-
-     elseif ($Result.isGrandFatherableSubscription -eq $True -and [bool]$Result.optedInDate -eq $True)
-     {
-     $NewPricingEnabled.Add($id)
-     }
-
-     elseif ($Result.isGrandFatherableSubscription -eq $False)
-     {
-     $NotEligible.add($id)
-     }
-}
-```
-
-> [!NOTE]
-> Előfizetések számától függően a a fenti szkript futtatásához időbe telhet. A .add() módszer használata miatt a PowerShell-ablakban fog echo növekvő értékei elemek hozzáadásakor minden tömbbe.
-
-Most, hogy az előfizetések, a három tömbök osztható meg alaposan tekintse át az eredményeket. Érdemes lehet, hogy készítsen biztonsági másolatot a tömbök a tartalmát, így könnyen visszaállíthatja a módosításokat a későbbiekben vissza kívánja. Ha úgy dönt, szeretett volna a jogosult előfizetéseket, amelyek a rendszer jelenleg a régi díjszabási modell az új díjszabási modell Ez a feladat most elvégezhető az átalakítás:
-
-```powershell
-Foreach ($id in $Eligible)
-{
-$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action migratetonewpricingmodel `
- -Force
-}
-
-```

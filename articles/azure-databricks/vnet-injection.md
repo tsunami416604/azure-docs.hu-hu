@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: c29d2e1df0979481c0c8a1e1f2cd4d22b013212a
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227627"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003445"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>A virtuális hálózaton (előzetes verzió) üzembe helyezése az Azure Databricks
 
@@ -37,7 +37,7 @@ Az Azure Portalon az Azure Databricks munkaterületen üzembe helyezési felüle
 
 A virtuális hálózat úgy, hogy az Azure Databricks-munkaterületen az alábbi követelményeknek kell megfelelnie:
 
-### <a name="location"></a>Hely
+### <a name="location"></a>Location egység
 
 A virtuális hálózat az Azure Databricks-munkaterület megegyező helyen kell lennie.
 
@@ -121,7 +121,7 @@ Ha ez a sablon a hálózati biztonsági csoportok sablon nélkül is használ, m
 
 Ha nem használja a [az Azure portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) vagy [Azure Resource Manager-sablonok](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) szeretne létrehozni a hálózati biztonsági csoportok, manuálisan kell engedélyezett a következő forgalmat az alhálózatok.
 
-|Irány|Protokoll|Forrás|Forrásport|Cél|Célport|
+|Direction|Protokoll|Forrás|Forrásport|Cél|Célport|
 |---------|--------|------|-----------|-----------|----------------|
 |Bejövő|\*|VirtualNetwork|\*|\*|\*|
 |Bejövő|\*|Vezérlési sík NAT IP|\*|\*|22|

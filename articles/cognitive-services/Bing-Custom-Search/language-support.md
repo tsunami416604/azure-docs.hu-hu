@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: v-gedod
-ms.openlocfilehash: 942e61b0ee69402d516982c66a852d5e26304809
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.openlocfilehash: e395fc96c560c6c6c1671e472840ba0f2a316d98
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859437"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006777"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>A Bing Custom Search API nyelvéhez és régiójához támogatása
 
@@ -42,9 +42,9 @@ A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást
 |Finnország|FI|
 |Franciaország|JK|
 |Németország|DE|
-|Hongkong KKT|HK|
+|Hongkong (KKT)|HK|
 |India|IN|
-|Indonézia|ID|
+|Indonézia|ID (Azonosító)|
 |Olaszország|IT|
 |Japán|JP|
 |Korea|KR|
@@ -86,7 +86,7 @@ A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást
 |Finnország|finn|fi-FI|
 |Franciaország|francia|FR-FR|
 |Németország|német|de-DE|
-|Hongkong KKT|Kínai (hagyományos)|zh-HK|
+|Hongkong (KKT)|Kínai (hagyományos)|zh-HK|
 |India|Angol|en-IN|
 |Indonézia|Angol|en-azonosító|
 |Olaszország|olasz|it-IT|

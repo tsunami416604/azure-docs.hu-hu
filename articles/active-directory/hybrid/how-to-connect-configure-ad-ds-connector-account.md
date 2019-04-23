@@ -11,12 +11,12 @@ ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6510105af8c019b1aca5333f516a10667edaadb5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 6911b19c680c2fdb8c372347c4dd0fca60bb0e0b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000868"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007559"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Az AD DS-összekötő fiók engedélyeinek konfigurálása 
 
@@ -69,13 +69,19 @@ Get-Command -Module AdSyncConfig
 
 Minden parancsmag ugyanazokat a paramétereket adjon meg az AD DS-összekötő fiók és a egy AdminSDHolder kapcsoló rendelkezik. Az AD DS-összekötő fiókot ad meg, hogy a fiók nevét és a tartományhoz, vagy csak a fiók megadhat megkülönböztető név (DN),
 
-például: 
+például:
 
-`Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName ADaccount -ADConnectorAccountDomain Contoso`
+```powershell
+Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <ADAccountName> -ADConnectorAccountDomain <ADDomainName>
+```
 
-Vagy; 
+Vagy;
 
-`Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADaccount,OU=AADconnect,DC=Contoso,DC=com'`
+```powershell
+Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
+```
+
+Cserélje le `<ADAccountName>`, `<ADDomainName>` és `<ADAccountDN>` a környezetének megfelelő értékekkel.
 
 Abban az esetben, ha nem szeretné a AdminSDHolder tároló engedélyeit, használja a kapcsolót `-SkipAdminSdHolders`. 
 

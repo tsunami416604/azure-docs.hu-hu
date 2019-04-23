@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory-tevékenységnaplók az Azure Monitorban (előzetes verzió) | Microsoft Docs
-description: Bevezetés az Azure Active Directory-tevékenység naplók az Azure Monitor (előzetes verzió)
+title: Az Azure Active Directory-Tevékenységnaplók az Azure Monitor |} A Microsoft Docs
+description: Bevezetés az Azure Active Directory-tevékenység naplózza az Azure monitorban
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0469f69f026c578de9598401e69262279669d19f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 7fbb90e95c07c66f45d49076f0570ac028c37244
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436302"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011401"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure AD-tevékenységnaplók az Azure Monitorban (előzetes verzió)
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Tevékenységnaplók az Azure monitorban
 
-Az Azure Active Directory (Azure AD) tevékenységeket tartalmazó naplók mostantól átirányítása hosszú távú megőrzési és az adatok insights több végpontot is. A nyilvános előzetes verziója az Azure AD-naplók az Azure Monitor lehetővé teszi:
+Az Azure Active Directory (Azure AD) tevékenységeket tartalmazó naplók átirányítása, a hosszú távú megőrzési és az adatok insights több végpontot is. Ez a funkció lehetővé teszi:
 
 * A Tevékenységnaplók archiválása az Azure AD az Azure storage-fiókkal, megőrizni az adatokat hosszú ideig.
 * A Stream az Azure AD-Tevékenységnaplók az Azure event hub Analytics népszerű biztonságiadat- és eseménykezelés (SIEM) eszközökkel, például a Splunk és QRadar.

@@ -1,34 +1,24 @@
 ---
 title: Mi az az Azure Reservations? | Microsoft Docs
 description: További tudnivalók az Azure-foglalásokat és a díjszabás menteni a virtuális gépeken, az SQL-adatbázisok, Azure Cosmos DB és más erőforrás-használati díjak.
-services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 1349a05e1dd235c7b375335ae2c9fed16170a61f
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: b20983c45cd62b9812cdb52de32a6e29da459efe
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649390"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149197"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
 Az Azure-foglalások segítséget pénzt takaríthat meg, egy éves előre és, vagy virtuális gépeket, SQL Database három éves számítási kapacitását, az Azure Cosmos DB átviteli sebesség vagy más Azure-erőforrások. Előre kell fizetnie lehetővé teszi a kedvezményt szeretne kapni a használt erőforrások. Foglalások jelentősen csökkentheti a virtuális gép, SQL-adatbázis számítási erőforrásokat, az Azure Cosmos dB-ben, vagy más erőforrást költségek akár 72 % a használatalapú fizetéssel. Foglalások számlázási engedményt adja meg, és az erőforrások futási állapotát nem befolyásolják.
 
-Vásárolhat egy foglalást a [az Azure portal](https://aka.ms/reservations). További információkért tekintse át a következő cikkeket:
-
-Szolgáltatáscsomagok:
-- [Virtuális gépek az Azure Reserved VM Instances szolgáltatással](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Az Azure Cosmos DB-erőforrásokat az Azure Cosmos DB lefoglalt kapacitás](../cosmos-db/cosmos-db-reserved-capacity.md)
-- [SQL-adatbázis számítási erőforrásokat az Azure SQL Database szolgáltatás számára fenntartott kapacitás](../sql-database/sql-database-reserved-capacity.md)
-
-Szoftverfrissítési csomagok:
-- [Red Hat Azure foglalásai közül szoftvercsomagok – alap](../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Az Azure-foglalások SUSE szoftvercsomagok – alap](../virtual-machines/linux/prepay-suse-software-charges.md)
+Vásárolhat egy foglalást a [az Azure portal](https://aka.ms/reservations).
 
 ## <a name="why-buy-a-reservation"></a>Miért érdemes megvásárolni a foglalást?
 
@@ -41,7 +31,6 @@ Szolgáltatáscsomagok:
 - Fenntartott virtuálisgép-példány: Egy foglalást csak a virtuális gép számítási költségeit tartalmazza. További szoftverek, hálózati vagy tárolási díjakat nem fed le.
 - Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás: A Foglalás átviteli sebesség kiosztott részéért, az erőforrások ismerteti. A tárolási és hálózati díjak nem fedi le.
 - Az SQL Database szolgáltatás számára fenntartott virtuális mag: Csak a számítási költségek is tartalmaz egy foglalást. A licenc külön kell fizetni.
-- Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás: Egy foglalás terjed ki az átviteli sebesség kiosztott részéért, az erőforrások, a tárolási és hálózatkezelési díjakat nem fed le.
 
 Windows virtuális gépek és az SQL Database, a licencelési költségek is foglalkozik [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -53,28 +42,46 @@ Nagyvállalati szerződéssel rendelkező ügyfeleink a nagyvállalati szerződ�
 
 A foglalási kedvezményt csak az Enterprise, a használatalapú fizetés vagy a CSP előfizetéstípusok társított erőforrások vonatkozik.
 
+## <a name="reservation-scope"></a>Foglalás hatóköre
+
+A Foglalás hatóköre határozza meg, amelyekre vonatkozik a foglalási kedvezményt az erőforrásokat. A Foglalás hatóköre a következő értékeket veheti fel:
+
+**A megosztott hatókör** – a foglalási kedvezményt a megfelelő erőforrások támogatásra jogosult előfizetések számlázási környezetében vonatkozik.
+
+- Nagyvállalati szerződéssel rendelkező ügyfeleknek a számlázási környezetben a regisztrációt.
+ Használatalapú fizetéses ügyfelek számára a számlázási hatóköre a fiók rendszergazdája által létrehozott összes jogosult előfizetéssel.
+
+**Egy előfizetés** – a foglalási kedvezményt a megfelelő erőforrások a kijelölt előfizetésben van alkalmazva.
+
+Is [frissítése a hatókör egy foglalás megvásárlása után](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+
+## <a name="discounted-subscription-and-offer-types"></a>Kedvezményes előfizetés és az ajánlat típus
+
+Foglalás kedvezményeket kínálnak típusok, és a alkalmazni a következő jogosult előfizetéseket.
+
+- Nagyvállalati Szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P)
+- Használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR - 0023 P)
+- CSP-előfizetésekben
+
+Egy előfizetésben a más típusú futtató erőforrások nem kapja meg a foglalási kedvezményt.
+
 ## <a name="how-is-a-reservation-billed"></a>Hogyan történik a Foglalás?
 
 A Foglalás díját a fizetési módot az előfizetéshez kötött. Ha egy vállalati előfizetéssel rendelkezik, a fenntartás költsége a pénzügyi kötelezettségvállalási egyenleg vonni. Ha a pénzügyi kötelezettségvállalási egyenleg nem fedi le a fenntartás költsége, a számlázás a kerettúllépést. Ha egy használatalapú fizetéses előfizetésre, azonnal számlázott a hitelkártyát a fiókjában rendelkezik. Ha számla ellenében a számlázás, láthatja a díjak a következő számla.
 
 ## <a name="how-reservation-discount-is-applied"></a>Hogyan alkalmazza a foglalási kedvezményt
 
-A foglalási kedvezményt érvényes erőforrás-használat megfelel az attribútumokat, akkor válassza, ha a foglalást vásárolhat. Az attribútumok közé tartozik a hatókör, ahol a megfelelő virtuális gépek, az SQL adatbázisok, Azure Cosmos DB vagy egyéb erőforrások futtat. Például ha azt szeretné, a foglalási kedvezményt négy Standard D2 virtuális gépek az USA nyugati régiójában, válassza ki az előfizetést, ahol a virtuális gépek futnak. A virtuális gépek futnak, a regisztráció /-fiókon belül különböző előfizetésben található, majd válassza ki azt a hatókört, megosztott. Megosztott hatókör lehetővé teszi, hogy a foglalási kedvezményt a alkalmazni lehet előfizetések között. A hatókör, egy foglalás megvásárlása után módosíthatja. További információkért lásd: [kezelése az Azure-foglalások](billing-manage-reserved-vm-instance.md).
+A foglalási kedvezményt az attribútumokat, akkor válassza, ha a foglalást vásárolhat egyező erőforrás-használat vonatkozik. Az attribútumok közé tartozik a hatókör, ahol a megfelelő virtuális gépek, az SQL adatbázisok, Azure Cosmos DB vagy egyéb erőforrások futtat. Például ha azt szeretné, a foglalási kedvezményt négy Standard D2 virtuális gépek az USA nyugati régiójában, majd válassza ki az előfizetést, ahol a virtuális gépek futnak.
+
+A foglalási kedvezményt a "*használata – it-vagy-elveszíti-it*". Ha nem rendelkezik az erőforrások használata az adott órán belül, majd elveszíti a Foglalás mennyiségét az adott órában. Nem sokat fel nem használt fenntartott órán keresztül továbbítja.
+
+Ha leállítja egy erőforrást, a foglalási kedvezményt automatikusan alkalmazza a megadott hatókörben lévő másik egyező erőforrás. A megadott hatókörben lévő nem megfelelő erőforrások találhatók, akkor a szolgáltatás számára fenntartott órák *elveszett*.
+
+Például előfordulhat, hogy később erőforrás létrehozása és rendelkezik egy megfelelő foglalást, amely a eredményeztek. Ebben a példában a foglalási kedvezményt automatikusan alkalmazza az új egyező erőforrás.
+
+A virtuális gépek futnak, a regisztráció /-fiókon belül különböző előfizetésben található, majd válassza ki azt a hatókört, megosztott. Megosztott hatókör lehetővé teszi, hogy a foglalási kedvezményt a alkalmazni lehet előfizetések között. A hatókör, egy foglalás megvásárlása után módosíthatja. További információkért lásd: [kezelése az Azure-foglalások](billing-manage-reserved-vm-instance.md).
 
 A foglalási kedvezményt csak az Enterprise, a használatalapú fizetés vagy a CSP előfizetéstípusok társított erőforrások vonatkozik. Egy előfizetésben a más típusú futtató erőforrások nem kapja meg a foglalási kedvezményt.
-
-Jobban megérteni, milyen hatással van a foglalások a számlázás, tekintse meg a következő cikkeket:
-
-Szolgáltatáscsomagok:
-
-- [Megismerheti az Azure Reserved VM Instances kedvezmény](billing-understand-vm-reservation-charges.md)
-- [Az Azure a foglalási kedvezményt ismertetése](billing-understand-vm-reservation-charges.md)
-- [Azure Cosmos DB-foglalási kedvezményt ismertetése](billing-understand-cosmosdb-reservation-charges.md)
-
-Szoftverfrissítési csomagok:
-
-- [Red Hat Azure foglalási kedvezményt- és használati ismertetése](billing-understand-rhel-reservation-charges.md)
-- [Az Azure a foglalási kedvezményt- és használati SUSE ismertetése](billing-understand-suse-reservation-charges.md)
 
 ## <a name="when-the-reservation-term-expires"></a>Ha a Foglalás időtartama lejár
 
@@ -96,10 +103,16 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>További lépések
 
-- Kezdő mentése a virtuális gépeken megvásárlásával egy [fenntartott VM-példány](../virtual-machines/windows/prepay-reserved-vm-instances.md), [SQL Database szolgáltatás számára fenntartott kapacitás](../sql-database/sql-database-reserved-capacity.md), vagy [Azure Cosmos DB szolgáltatás számára fenntartott kapacitás](../cosmos-db/cosmos-db-reserved-capacity.md).
 - További információ az Azure-fenntartások a következő cikkekben:
     - [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
     - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
     - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
     - [Windows szoftverek díjait nem tartalmazza a foglalások](billing-reserved-instance-windows-software-costs.md)
-    - [A Partner Center Felhőszolgáltató (CSP) program Azure foglalások](https://docs.microsoft.com/partner-center/azure-reservations)
+    - [A Partner Center Felhőszolgáltató (CSP) program Azure foglalások](/partner-center/azure-reservations)
+
+- További információ a foglalások service-csomagok:
+    - [Virtuális gépek az Azure Reserved VM Instances szolgáltatással](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+    - [Az Azure Cosmos DB-erőforrásokat az Azure Cosmos DB lefoglalt kapacitás](../cosmos-db/cosmos-db-reserved-capacity.md)
+    - [SQL-adatbázis számítási erőforrásokat az Azure SQL Database szolgáltatás számára fenntartott kapacitás](../sql-database/sql-database-reserved-capacity.md) tudjon meg többet a foglalásokat a szoftverfrissítési csomagok:
+    - [Red Hat Azure foglalásai közül szoftvercsomagok – alap](../virtual-machines/linux/prepay-rhel-software-charges.md)
+    - [Az Azure-foglalások SUSE szoftvercsomagok – alap](../virtual-machines/linux/prepay-suse-software-charges.md)

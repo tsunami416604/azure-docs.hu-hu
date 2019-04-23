@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 733d27549542d3ebdd0cfba429aeaaab9f8be473
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.openlocfilehash: 23f0110b3418e2df0434438247340f88678268ad
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370305"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000929"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Az Azure Maps geokódolás lefedettsége
 
@@ -106,14 +106,14 @@ A geocode országban el közúti adatok lefedettsége és a geokódolás pontoss
 | Fidzsi                                                |                  |                |              |      ✓     |          ✓         |
 | Francia Polinézia                                    |                 |                |              |      ✓     |          ✓         |
 | Heard-sziget és McDonald-szigetek                   |                 |                |              |      ✓     |          ✓         |
-| Hongkong KKT                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Hongkong (KKT)                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonézia                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | India                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japán                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
 | Korea                                         |                 |                |              |      ✓     |          ✓         |
 | Laosz                                                |                 |                |              |      ✓     |          ✓         |
-| Makaó                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Makaó (KKT)                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malajzia                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mikronézia                                          |                 |                |              |      ✓     |          ✓         |
 | Mongólia                                            |                 |                |              |      ✓     |          ✓         |
@@ -189,7 +189,7 @@ A geocode országban el közúti adatok lefedettsége és a geokódolás pontoss
 | Liechtenstein                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Litvánia                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Luxemburg                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Macedónia                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Észak-Macedónia                                     |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Málta                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Moldova                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Monaco                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |

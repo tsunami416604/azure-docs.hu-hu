@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 7d38120c530b89230893b85829d201c14a8cba04
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 8167f10391f426c50120a224eea44e6db846fbb1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59697294"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003241"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Gyors útmutató: Alkalmazások konfigurálása az Azure-függvény létrehozása
 
@@ -38,6 +38,14 @@ Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://v
 ## <a name="create-an-app-configuration-store"></a>Hozzon létre egy alkalmazást a konfigurációs adattároló
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. Válassza ki **kulcs/érték Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
+
+    | Kulcs | Value |
+    |---|---|
+    | TestApp:Settings:Message | Azure-alkalmazás-konfigurációs adatait |
+
+    Hagyja **címke** és **tartalomtípus** most üres.
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
@@ -114,4 +122,4 @@ Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://v
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs adattároló, és az egy Azure-függvényt használta azt. Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
 
 > [!div class="nextstepaction"]
-> [Az Azure-erőforrások integráció felügyelt identitásokból](./howto-integrate-azure-managed-service-identity.md)
+> [Felügyelt identitás-integráció](./howto-integrate-azure-managed-service-identity.md)

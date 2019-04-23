@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3217d1cd5585443534dbcc91ae3a12bb01db9a52
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444550"
 documentType: LandingData
 title: Az Azure SQL Database dokumentációja
 metadata:
@@ -17,170 +11,170 @@ metadata:
   ms.service: sql-database
   ms.subservice: service
   ms.tgt_pltfrm: na
-  ms.devlang: 
+  ms.devlang: null
   ms.topic: overview
   ms.date: 03/04/2019
   ms.author: carlrab
 abstract:
-  description: Az Azure SQL Database a Microsoft SQL Server-adatbázismotor legújabb, stabil verzióján alapuló, általános célú, szolgáltatásként nyújtott (DBaaS) relációs adatbázis. Az SQL Database egy nagy teljesítményű, megbízható és biztonságos felhőalapú adatbázis, amely segítségével adatvezérelt alkalmazásokat és webhelyeket hozhat létre egy tetszőleges programozási nyelven, infrastruktúrakezelés nélkül. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
+  description: 'Az Azure SQL Database a Microsoft SQL Server-adatbázismotor legújabb, stabil verzióján alapuló, általános célú, szolgáltatásként nyújtott (DBaaS) relációs adatbázis. Az SQL Database egy nagy teljesítményű, megbízható és biztonságos felhőalapú adatbázis, amely segítségével adatvezérelt alkalmazásokat és webhelyeket hozhat létre egy tetszőleges programozási nyelven, infrastruktúrakezelés nélkül. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png
+      src: 'https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png'
       width: 250
-    title: SQL-adatbázis létrehozása az Azure-ban. (3:12)
-    href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
+    title: 'SQL-adatbázis létrehozása az Azure-ban. (3:12)'
+    href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/sql-database/sql-database-technical-overview
+            html: '<p>PaaS-adatbázis, amely mindig az SQL Server-adatbázismotor legfrissebb stabil verzióján és javított operációs rendszeren fut, 99,99%-os rendelkezésre állással.</p>'
+            image:
+              src: media/index/i_managed.svg
+            title: Teljes körű felügyelet
+          - href: /azure/sql-database/sql-database-service-tiers
+            html: <p>A kedvező árú havi 5 dollárostól a nagy teljesítményű 80 magos adatbázisokig terjedő rugalmas szolgáltatásszintekkel igény szerint módosíthatja az ár-teljesítmény arányt.</p>
+            image:
+              src: media/index/i_perftier.svg
+            title: Ár-/szolgáltatásszintek
+          - href: /azure/sql-database/sql-database-scalability-index
+            html: '<p>Az adatbázisait egyszerűen felskálázhatja vertikálisan vagy horizontálisan, illetve horizontálisan particionálhatja attól függően, hogy mire van szüksége az alkalmazás teljesítményének javításához.</p>'
+            image:
+              src: media/index/i_scale.svg
+            title: Méretezhetőség
+          - href: /azure/sql-database/sql-database-single-index
+            html: '<p>Az SQL Database-kiszolgálón futó önálló adatbázist olyan SaaS-alkalmazásokhoz és mikroszolgáltatásokhoz használhatja, amelyek egyetlen önálló adatbázist igényelnek kiszámítható teljesítményszinttel.</p>'
+            image:
+              src: media/index/i_db.svg
+            title: Önálló adatbázis
+          - href: /azure/sql-database/sql-database-elastic-pool
+            html: '<p>Az SQL Database rugalmas készletei egyszerű, költséghatékony megoldást kínálnak egyszerre több olyan adatbázis kezelésére és méretezésére, amelyek felhasználási igénye nagy mértékben és kiszámíthatatlanul változik.</p>'
+            image:
+              src: media/index/i_elasticpool.svg
+            title: Rugalmas készletek
+          - href: /azure/sql-database/sql-database-managed-instance-index
+            html: <p>A felügyelt példánnyal hozzájuthat az Azure-felhőben működő SQL Server-adatbázismotor egy teljes körűen felügyelt példányához. Így a kód minimális módosításával vagy akár kódváltoztatás nélkül is migrálhat a helyszíni adatbázisokról.</p>
+            image:
+              src: media/index/i_mi.svg
+            title: Felügyelt példány
+          - href: /azure/sql-database/sql-database-paas
+            html: '<p>A beépített magas rendelkezésre állás, az automatikus biztonsági másolatok és a georeplikáció megakadályozza a karbantartási műveletek, illetve infrastruktúra- vagy hardverhibák okozta üzleti leállásokat.</p>'
+            image:
+              src: media/index/gear.svg
+            title: Szolgáltatásként nyújtott platform
+          - href: /azure/sql-database/sql-database-security-index
+            html: '<p>Gondoskodjon adatbázisa védelméről Azure AD-hitelesítéssel, virtuális hálózatokkal, tűzfalakkal és Always Encrypted-kapcsolatokkal. A beépített biztonsági funkciókkal azonosíthatja a fenyegetéseket és a sebezhető pontokat.</p>'
+            image:
+              src: media/index/i_security.svg
+            title: Magas szintű biztonság
+          - href: /azure/sql-database/sql-database-monitoring-tuning-index
+            html: '<p>A beépített monitorozás és intelligens teljesítményhangolás segít jelentősen mérsékelni az adatbázisok működtetésének és kezelésének költségét, ugyanakkor fokozza az alkalmazás teljesítményét és biztonságát.</p>'
+            image:
+              src: media/index/i_intelligence.svg
+            title: Monitorozás és finomhangolás
+  - title: 5 perces gyors útmutatók
     items:
-    - href: /azure/sql-database/sql-database-technical-overview
-      html: <p>PaaS-adatbázis, amely mindig az SQL Server-adatbázismotor legfrissebb stabil verzióján és javított operációs rendszeren fut, 99,99%-os rendelkezésre állással.</p>
-      image:
-        src: media/index/i_managed.svg
-      title: Teljes körű felügyelet
-    - href: /azure/sql-database/sql-database-service-tiers
-      html: <p>A kedvező árú havi 5 dollárostól a nagy teljesítményű 80 magos adatbázisokig terjedő rugalmas szolgáltatásszintekkel igény szerint módosíthatja az ár-teljesítmény arányt.</p>
-      image:
-        src: media/index/i_perftier.svg
-      title: Ár-/szolgáltatásszintek
-    - href: /azure/sql-database/sql-database-scalability-index
-      html: <p>Az adatbázisait egyszerűen felskálázhatja vertikálisan vagy horizontálisan, illetve horizontálisan particionálhatja attól függően, hogy mire van szüksége az alkalmazás teljesítményének javításához.</p>
-      image:
-        src: media/index/i_scale.svg
-      title: Méretezhetőség
-    - href: /azure/sql-database/sql-database-single-index
-      html: <p>Az SQL Database-kiszolgálón futó önálló adatbázist olyan SaaS-alkalmazásokhoz és mikroszolgáltatásokhoz használhatja, amelyek egyetlen önálló adatbázist igényelnek kiszámítható teljesítményszinttel.</p>
-      image:
-        src: media/index/i_db.svg
-      title: Önálló adatbázis
-    - href: /azure/sql-database/sql-database-elastic-pool
-      html: <p>Az SQL Database rugalmas készletei egyszerű, költséghatékony megoldást kínálnak egyszerre több olyan adatbázis kezelésére és méretezésére, amelyek felhasználási igénye nagy mértékben és kiszámíthatatlanul változik.</p>
-      image:
-        src: media/index/i_elasticpool.svg
-      title: Rugalmas készletek
-    - href: /azure/sql-database/sql-database-managed-instance-index
-      html: <p>A felügyelt példánnyal hozzájuthat az Azure-felhőben működő SQL Server-adatbázismotor egy teljes körűen felügyelt példányához. Így a kód minimális módosításával vagy akár kódváltoztatás nélkül is migrálhat a helyszíni adatbázisokról.</p>
-      image:
-        src: media/index/i_mi.svg
-      title: Felügyelt példány
-    - href: /azure/sql-database/sql-database-paas
-      html: <p>A beépített magas rendelkezésre állás, az automatikus biztonsági másolatok és a georeplikáció megakadályozza a karbantartási műveletek, illetve infrastruktúra- vagy hardverhibák okozta üzleti leállásokat.</p>
-      image:
-        src: media/index/gear.svg
-      title: Szolgáltatásként nyújtott platform
-    - href: /azure/sql-database/sql-database-security-index
-      html: <p>Gondoskodjon adatbázisa védelméről Azure AD-hitelesítéssel, virtuális hálózatokkal, tűzfalakkal és Always Encrypted-kapcsolatokkal. A beépített biztonsági funkciókkal azonosíthatja a fenyegetéseket és a sebezhető pontokat.</p>
-      image:
-        src: media/index/i_security.svg
-      title: Magas szintű biztonság
-    - href: /azure/sql-database/sql-database-monitoring-tuning-index
-      html: <p>A beépített monitorozás és intelligens teljesítményhangolás segít jelentősen mérsékelni az adatbázisok működtetésének és kezelésének költségét, ugyanakkor fokozza az alkalmazás teljesítményét és biztonságát.</p>
-      image:
-        src: media/index/i_intelligence.svg
-      title: Monitorozás és finomhangolás
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Az Azure SQL Database lehetővé teszi alapszintű felügyeleti feladatok egyszerű ellátását az Azure Portal, az Azure CLI és az Azure PowerShell segítségével. Az alábbi rövid útmutatókból megtudhatja, hogyan végezhetők el különböző alapszintű felügyeleti feladatok:'
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/portal.svg
-      title: Az Azure Portal
-    - image:
-        src: media/index/cli.svg
-      title: Azure CLI
-    - image:
-        src: media/index/logo_powershell.svg
-      title: PowerShell
-    - image:
-        src: media/index/logo_arm.svg
-      title: Azure Resource Manager-sablon
-    rows:
-    - title: Önálló adatbázis létrehozása
-      values:
-      - href: /azure/sql-database/sql-database-single-database-get-started
-      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
-      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create
-    - title: Rugalmas készlet létrehozása
-      values:
-      - href: /azure/sql-database/sql-database-elastic-pool-manage
-      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
-      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
-    - title: Felügyelt példány létrehozása
-      values:
-      - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
-      - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell.md
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Tudnivalók adatbázisok létrehozásáról, kezeléséről és migrálásáról az SQL Database használatával
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Az Azure SQL Database lehetővé teszi alapszintű felügyeleti feladatok egyszerű ellátását az Azure Portal, az Azure CLI és az Azure PowerShell segítségével. Az alábbi rövid útmutatókból megtudhatja, hogyan végezhetők el különböző alapszintű felügyeleti feladatok:'
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/portal.svg
+            title: Az Azure Portal
+          - image:
+              src: media/index/cli.svg
+            title: Azure CLI
+          - image:
+              src: media/index/logo_powershell.svg
+            title: PowerShell
+          - image:
+              src: media/index/logo_arm.svg
+            title: Azure Resource Manager-sablon
+        rows:
+          - title: Önálló adatbázis létrehozása
+            values:
+              - href: /azure/sql-database/sql-database-single-database-get-started
+              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
+              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
+              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create'
+          - title: Rugalmas készlet létrehozása
+            values:
+              - href: /azure/sql-database/sql-database-elastic-pool-manage
+              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
+              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
+              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create'
+          - title: Felügyelt példány létrehozása
+            values:
+              - href: /azure/sql-database/sql-database-managed-instance-get-started
+              - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
+              - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
+              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
+  - title: Részletes útmutatók
     items:
-    - html: Első lépésként ismerkedjen meg az <a href="/azure/sql-database/sql-database-single-database-quickstart-guide">önálló adatbázisok</a> és a <a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">felügyelt példányok</a> használatával a rövid útmutatók alapján.
-    - html: Új önálló adatbázis sémájának létrehozása és megtervezése az <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> vagy a <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> használatával
-    - html: Létező adatbázis migrálása az Azure-ba egy <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natív SQL Server biztonságimásolat-fájl</a> vagy a <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a> használatával, illetve egy <a href="/azure/sql-database/sql-database-import">BACPAC-fájl importálásával</a>
-    - html: <a href="/azure/sql-database/sql-database-security-tutorial">Az SQL Database adatbázis védelme</a>
-    - html: Globális adatterjesztés <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">földrajzilag elosztott adatbázis</a> használatával
-- title: Fejlessze a készségeit a Microsoft Learnnel
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Tudnivalók adatbázisok létrehozásáról, kezeléséről és migrálásáról az SQL Database használatával'
+      - type: list
+        style: ordered
+        items:
+          - html: Első lépésként ismerkedjen meg az <a href="/azure/sql-database/sql-database-single-database-quickstart-guide">önálló adatbázisok</a> és a <a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">felügyelt példányok</a> használatával a rövid útmutatók alapján.
+          - html: Új önálló adatbázis sémájának létrehozása és megtervezése az <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> vagy a <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> használatával
+          - html: 'Létező adatbázis migrálása az Azure-ba egy <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natív SQL Server biztonságimásolat-fájl</a> vagy a <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a> használatával, illetve egy <a href="/azure/sql-database/sql-database-import">BACPAC-fájl importálásával</a>'
+          - html: <a href="/azure/sql-database/sql-database-security-tutorial">Az SQL Database adatbázis védelme</a>
+          - html: Globális adatterjesztés <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">földrajzilag elosztott adatbázis</a> használatával
+  - title: Fejlessze a készségeit a Microsoft Learnnel
     items:
-    - title: Azure SQL Database-adatbázis üzembe helyezése az alkalmazásadatok tárolásához
-      href: /learn/modules/provision-azure-sql-db/
-      image:
-        src: /learn/achievements/provision-azure-sql-db.svg
-        href: /learn/modules/provision-azure-sql-db/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-sql-database">További interaktív oktatóanyagok...</a>
-- title: Ingyenes Pluralsight videós képzés
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure SQL Database-adatbázis üzembe helyezése az alkalmazásadatok tárolásához
+            href: /learn/modules/provision-azure-sql-db/
+            image:
+              src: /learn/achievements/provision-azure-sql-db.svg
+              href: /learn/modules/provision-azure-sql-db/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-sql-database">További interaktív oktatóanyagok...</a>
+  - title: Ingyenes Pluralsight videós képzés
     items:
-    - title: Fejlesztés a .NET használatával az Azure-ban
-      href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
-- title: Példák
-  items:
-  - type: paragraph
-    text: Szkriptek keresése a gyakori feladatok kezeléséhez.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Fejlesztés a .NET használatával az Azure-ban
+            href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
+  - title: Példák
     items:
-    - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
-    - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Szkriptek keresése a gyakori feladatok kezeléséhez.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
+          - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>
+  - title: Referencia
     items:
-    - title: Parancssor
-      html: <p><a href="/powershell/module/Az.Sql/">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell (Elastic DB)</a></p><p><a href="/cli/azure/sql">Azure CLI</a></p>
-    - title: Nyelvek
-      html: <p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/sql/">REST API-referencia</a></p>
-    - title: SQL Server eszközök
-      html: <p><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server-eszközök</a></p><p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p><p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p><p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p><p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p><p><a href="https://docs.microsoft.com/sql/tools/sqlpackage">SqlPackage</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">SQL-adatbázisok felügyelete – függvénytárcsomag</a></p>
-    - title: SQL Server-illesztőprogramok
-      html: <p><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server-illesztőprogramok</a></p><p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p><p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p><p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: '<p><a href="/powershell/module/Az.Sql/">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell (Elastic DB)</a></p><p><a href="/cli/azure/sql">Azure CLI</a></p>'
+          - title: Nyelvek
+            html: '<p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/sql/">REST API-referencia</a></p>
+          - title: SQL Server eszközök
+            html: '<p><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server-eszközök</a></p><p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p><p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p><p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p><p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p><p><a href="https://docs.microsoft.com/sql/tools/sqlpackage">SqlPackage</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">SQL-adatbázisok felügyelete – függvénytárcsomag</a></p>'
+          - title: SQL Server-illesztőprogramok
+            html: '<p><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server-illesztőprogramok</a></p><p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p><p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p><p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>'

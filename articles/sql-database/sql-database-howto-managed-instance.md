@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 93be58ac231ff2b88c6618c549c9d1975977b91f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/16/2019
+ms.openlocfilehash: 886f06e8640891ac09d1e4624335a7bfebcd3def
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799150"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009378"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Az Azure SQL Database felügyelt példány használatával
 
@@ -36,7 +36,7 @@ Ebben a cikkben különböző útmutatók, a parancsfájlokat és a magyarázat,
 - [Konfigurálja a meglévő virtuális hálózatot és alhálózatot egy felügyelt példány](sql-database-managed-instance-configure-vnet-subnet.md) – Ha meg szeretné konfigurálni a meglévő virtuális hálózatot és alhálózatot, belül a felügyelt példányok üzembe helyezéséhez, itt találja a parancsfájl, amely ellenőrzi a [hálózati követelmények](sql-database-managed-instance-connectivity-architecture.md#network-requirements) és ellenőrizze az alhálózat a követelményeinek megfelelően konfigurálja.
 - [Egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md) – egyéni DNS konfigurálása, ha az egyéni tartományok a külső erőforrások elérését a felügyelt példány db e-mail profilok csatolt kiszolgálón keresztül kell.
 - [Hálózati konfigurációja szinkronizálása](sql-database-managed-instance-sync-network-configuration.md) – Ez akkor fordulhat elő, hogy bár, [az alkalmazás integrálva van az Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md), is&#39;t felügyelt példány kapcsolatot létesíteni. Próbálja meg egyik dolog, hogy a szolgáltatáscsomag fürttaghálózati konfiguráció frissítése.
-- [Felügyeleti végpont IP-címének](sql-database-managed-instance-find-management-endpoint-ip-address.md) – a felügyelt példánynak a felügyeleti célból – csak nyilvános végpontot használja. Megállapíthatja, hogy a felügyeleti végponthoz a szkripttel leírt itt IP-címét.
+- [Felügyeleti végpont IP-címének](sql-database-managed-instance-find-management-endpoint-ip-address.md) – a felügyelt példánynak nyilvános végpontot használ a felügyeleti célból. Megállapíthatja, hogy a felügyeleti végponthoz a szkripttel leírt itt IP-címét.
 - [Beépített tűzfal általi védelem ellenőrzése](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) – a felügyelt példánynak beépített, amely engedélyezi a forgalmat csak a szükséges portokat tűzfal védi. Ellenőrizze, és ellenőrizze a beépített tűzfalszabályok a jelen útmutatóban leírt parancsfájl használatával.
 - [Alkalmazások csatlakoztatása](sql-database-managed-instance-connect-app.md) – a felügyelt példánynak a saját privát Azure magánhálózati IP-címmel rendelkező virtuális hálózat el van helyezve. További információ a különböző minták a felügyelt példányhoz az alkalmazások összekapcsolására.
 

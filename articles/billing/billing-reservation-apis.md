@@ -1,7 +1,6 @@
 ---
 title: API-k a foglalást az Azure automationhöz |} A Microsoft Docs
 description: További információ az Azure API-kat, hogy programozott módon megszerezni a foglalási információkat használhatja.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 7e5697073b9406d915eda99a5e71e3123c48073a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 246278df61d4f13e2634a1cdfc5ff6b635cecbbf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880218"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008211"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>API-k a foglalást az Azure automation
 
@@ -55,7 +54,7 @@ Ha látja, hogy a szervezet foglalások éppen használt alatt:
 
 - Ellenőrizze, hogy a virtuális gépek, amelyek a szervezet által létrehozott felel meg, hogy a Foglalás található a Virtuálisgép-méretet.
 - Ellenőrizze, hogy a példány mérete rugalmasan be van kapcsolva. További információkért lásd: [kezelés foglalások - módosítás optimalizálása beállítás a Reserved VM Instances](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
-- A megosztott szélesebb körben vonatkozik, hogy a foglalás hatókörének módosítása További információkért lásd: [foglalások kezelése – a foglalás hatókörének módosítása](billing-manage-reserved-vm-instance.md#change-the-scope-for-a-reservation).
+- A megosztott szélesebb körben vonatkozik, hogy a foglalás hatókörének módosítása További információkért lásd: [foglalások kezelése – a foglalás hatókörének módosítása](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 - Exchange-a nem használt mennyiség. További információkért lásd: [foglalások - általi hóközi lemondás és cseréje kezelése](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges).
 
 ## <a name="give-access-to-reservations"></a>Hozzáférést biztosít a foglalások
@@ -68,7 +67,7 @@ Minden foglalást listájának lekéréséhez, hogy egy felhasználó rendelkezi
 
 ## <a name="split-or-merge-reservation"></a>Foglalás felosztása és egyesítése
 
-Miután vásárol egy foglalást belül egynél több erőforráspéldány, érdemes a Foglalás példányok hozzárendelése eltérő előfizetésekben. A Foglalás hatóköre módosítható úgy, hogy ugyanabban a számlázási környezetben belüli összes előfizetésre vonatkozik. Azonban a cost management vagy a költségvetés célokra, érdemes lehet az "egy előfizetés" hatókör tartani, és rendelje hozzá a Foglalás példányok egy meghatározott előfizetésre. 
+Miután vásárol egy foglalást belül egynél több erőforráspéldány, érdemes a Foglalás példányok hozzárendelése eltérő előfizetésekben. A Foglalás hatóköre módosítható úgy, hogy ugyanabban a számlázási környezetben belüli összes előfizetésre vonatkozik. Azonban a cost management vagy a költségvetés célokra, érdemes lehet az "egy előfizetés" hatókör tartani, és rendelje hozzá a Foglalás példányok egy meghatározott előfizetésre.
 
 A Foglalás felosztása, az API-val [- foglalás felosztása](/rest/api/reserved-vm-instances/reservation/split). PowerShell-lel is oszthatja a foglalást. További információkért lásd: [foglalások - felosztás foglalás be két foglalást kezelése](billing-manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations).
 
@@ -76,7 +75,7 @@ Két foglalást egyesít egy foglalás megadása, hogy az API-val [foglalás - e
 
 ## <a name="change-scope-for-a-reservation"></a>A foglalás hatókörének módosítása
 
-A Foglalás hatóköre egy előfizetés vagy az összes előfizetést a számlázási környezetben lehet. Egyetlen előfizetéshez állítsa be a hatókört, ha a Foglalás megfeleltetett futó erőforrások a kijelölt előfizetésben. A megosztott hatókör beállítása, ha az Azure megfelel a Foglalás számlázási környezetében előfizetések futtató erőforrások. A számlázási környezetben szolgáltatás függ az előfizetést, amellyel megvásárolni a foglalást. További információkért lásd: [foglalások kezelése – a hatókör módosítása](billing-manage-reserved-vm-instance.md#change-the-scope-for-a-reservation).
+A Foglalás hatóköre egy előfizetés vagy az összes előfizetést a számlázási környezetben lehet. Egyetlen előfizetéshez állítsa be a hatókört, ha a Foglalás megfeleltetett futó erőforrások a kijelölt előfizetésben. A megosztott hatókör beállítása, ha az Azure megfelel a Foglalás számlázási környezetében előfizetések futtató erőforrások. A számlázási környezetben szolgáltatás függ az előfizetést, amellyel megvásárolni a foglalást. További információkért lásd: [foglalások kezelése – a hatókör módosítása](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 
 A hatókör módosítása a programozott módon, az API-val [foglalás - frissítés](/rest/api/reserved-vm-instances/reservation/update).
 

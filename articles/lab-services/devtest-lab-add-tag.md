@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 38ec93afd27ac75a97a28fef59bd10fafdf963c9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: e4d9aeb527461cc7292235fef1de0abdfa4242bd
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247041"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148917"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Címkék hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet
 
@@ -42,8 +42,8 @@ Minden címke épül fel egy **neve**/**érték** pár. Például előfordulhat,
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Ha szükséges, válassza ki a **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából. Előfordulhat, hogy a tesztkörnyezet már látható az irányítópult alatt **összes erőforrás**.
-1. Tesztkörnyezetek listájában jelölje ki a labor létrehozása, amelyben meg szeretné felvenni vagy címkék kezelése.  
-1. A laborgyakorlat **áttekintése** területen válassza **Konfigurace a zásady**.  
+1. Tesztkörnyezetek listájában jelölje ki a labor létrehozása, amelyben meg szeretné felvenni vagy címkék kezelése.
+1. A laborgyakorlat **áttekintése** területen válassza **Konfigurace a zásady**.
 
     ![Konfigurace a zásady gomb](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
@@ -56,7 +56,7 @@ Minden címke épül fel egy **neve**/**érték** pár. Például előfordulhat,
 
 Az alábbi korlátozások érvényesek a címkékre:
 
-* Minden egyes erőforrás vagy erőforráscsoport legfeljebb 15 címkenév/érték párral rendelkezhet. A korlátozás csak a közvetlenül az erőforráscsoportra vagy erőforrásra alkalmazott címkékre érvényes. Az erőforráscsoportok sok olyan erőforrást tartalmazhatnak, amelyek mindegyike 15 címkenév/érték párral rendelkezik. 
+* Minden egyes erőforrás vagy erőforráscsoport legfeljebb 15 címkenév/érték párral rendelkezhet. A korlátozás csak a közvetlenül az erőforráscsoportra vagy erőforrásra alkalmazott címkékre érvényes. Az erőforráscsoportok sok olyan erőforrást tartalmazhatnak, amelyek mindegyike 15 címkenév/érték párral rendelkezik.
 * A címke neve legfeljebb 512 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet. A tárfiókok esetében a címke neve legfeljebb 128 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet.
 * Az egyes erőforráscsoportokra alkalmazott címkéket nem öröklik az adott erőforráscsoportba tartozó erőforrások.
 
@@ -66,4 +66,4 @@ Az alábbi korlátozások érvényesek a címkékre:
 
 ## <a name="next-steps"></a>További lépések
 * Testreszabott házirendek használatával alkalmazhat korlátozások és konvenciói előfizetését. Egy Ön által meghatározott szabályzat szükség lehet, hogy az összes erőforrásnak rendelkeznie kell egy értéket egy adott címkét. További információkért lásd: [szabályzatok és ütemezések beállítása](devtest-lab-set-lab-policy.md).
-* Fedezze fel a [DevTest Labs Azure Resource Manager gyorsindítási sablon katalógus](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Fedezze fel a [DevTest Labs Azure Resource Manager gyorsindítási sablon katalógus](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

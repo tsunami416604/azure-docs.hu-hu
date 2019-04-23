@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 61e76369a4d73bd171c9e5c2462b3f261681ba00
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: bcb154f7cffb92ef23fc2606e1f604bb12f8d1a3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551382"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996611"
 ---
 # <a name="azure-devtest-labs---reference-architecture-for-an-enterprise"></a>Az Azure DevTest Labs - a vállalati a referencia-architektúra
 A cikk ismerteti a referenciaarchitektúra üzembe helyezéséhez az Azure DevTest Labs a vállalaton belül épül. Ez magában foglalja az Express Route, távolról bejelentkezik a virtuális gépek távoli asztali átjáró, kapcsolat az összetevőtárban, privát összetevők és a egy tesztkörnyezetben használt egyéb PaaS-szolgáltatások helyszíni kapcsolatait.
@@ -37,7 +37,7 @@ A referenciaarchitektúrában található fontosabb elemei a következők:
     - Az összes hálózati forgalom, a felhőalapú környezet biztonsági vagy megfelelőségi okokból egy a helyszíni tűzfalon kívüli kényszerítése
 - **Hálózati biztonsági csoportok**: Gyakori módja irányuló forgalom korlátozásához, a felhőalapú környezetét (vagy a felhőalapú környezet) alapján a forrás és cél IP-címek használatára egy [hálózati biztonsági csoport](../virtual-network/security-overview.md). Például így csak a hálózati forgalom származik az a vállalati hálózathoz a labor hálózatokba.
 - **A távoli asztali átjáró**:  Vállalatok általában a vállalati tűzfalon a kimenő távoli asztali kapcsolatok letiltása. A DevTest Labs szolgáltatásban létrehozott felhőalapú környezetre való kapcsolódás engedélyezéséhez többféle módon használatával például egy [távoli asztali átjáró](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture) (engedélyezett átjárókiszolgáló terheléselosztó statikus IP-cím), vagy [irányítja az összes bejövő RDP-forgalmat](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) az expressz útvonal/Site-to-Site VPN-kapcsolaton keresztül. A DevTest Labs a vállalati üzembe helyezés megtervezésekor fontos közös veszi figyelembe.
-- **Az Azure-hálózatok (virtuális hálózatok, alhálózatok)**:  A [az Azure-hálózatok](../networking/networking-overview.md) topológia egy másik kulcsfontosságú eleme az általános DevTest Labs-architektúrát. Lehetővé teszi az erőforrások labs kommunikációhoz (vagy nem), a helyszíni hozzáférés (vagy nem), és internet-hozzáférés (vagy nem). Architektúradiagram tartalmazza a DevTest Labs használják az ügyfelek leggyakoribb módja (keresztül kapcsolódik az összes labs [virtuális hálózatok közötti társviszony-létesítés](../virtual-network/virtual-network-peering-overview.md) használatával egy [küllős modell](/architecture/reference-architectures/hybrid-networking/hub-spoke) expressz útvonal/Site-to-Site VPN-kapcsolat a helyszínen), de DevTest Labs óta használja az Azure-hálózatot közvetlenül nincsenek korlátozásait a hálózati infrastruktúra beállítása.
+- **Az Azure-hálózatok (virtuális hálózatok, alhálózatok)**:  A [az Azure-hálózatok](../networking/networking-overview.md) topológia egy másik kulcsfontosságú eleme az általános DevTest Labs-architektúrát. Lehetővé teszi az erőforrások labs kommunikációhoz (vagy nem), a helyszíni hozzáférés (vagy nem), és internet-hozzáférés (vagy nem). Architektúradiagram tartalmazza a DevTest Labs használják az ügyfelek leggyakoribb módja (keresztül kapcsolódik az összes labs [virtuális hálózatok közötti társviszony-létesítés](../virtual-network/virtual-network-peering-overview.md) használatával egy [küllős modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) expressz útvonal/Site-to-Site VPN-kapcsolat a helyszínen), de DevTest Labs óta használja az Azure-hálózatot közvetlenül nincsenek korlátozásait a hálózati infrastruktúra beállítása.
 - **DevTest Labs**:  DevTest Labs az általános architektúrát kulcsfontosságú része. A szolgáltatással kapcsolatos tudnivalókért lásd: [DevTest Labs](devtest-lab-overview.md).
 - **Virtuális gépek és más erőforrások (SaaS, PaaS, IaaS)**:  A DevTest Labs által támogatott fontosabb számítási feladatokhoz egyik olyan virtuális gépek és egyéb Azure-erőforrások.  DevTest Labs segítségével könnyen és gyorsan (beleértve a virtuális gépek és egyéb Azure-erőforrások) Azure-erőforrásokhoz való hozzáférés biztosítása a vállalati.  További információ az Azure access [fejlesztők](devtest-lab-developer-lab.md) és [tesztelőknek](devtest-lab-test-env.md).
 

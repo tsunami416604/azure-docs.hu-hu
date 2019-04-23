@@ -1,6 +1,6 @@
 ---
-title: Webhookok és Logic Apps vagy az Azure Functions gyakori riasztási sémadefinícióinak
-description: Webhookok és Logic Apps vagy az Azure Functions gyakori riasztási sémadefiníciók ismertetése
+title: Gyakori riasztási sémadefinícióinak Webhookok/Logic Apps vagy az Azure Functions/Automation-Runbookok
+description: Webhookok és Logic Apps vagy az Azure Functions/Automation-Runbookok számára a gyakori riasztási sémadefiníciók ismertetése
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 0ca9d63f62de6a0b2385b3fb9651c34379b846d7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e29a1f5d1e258ab66540010dc12f9326b8fd57a2
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010396"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149410"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
 
-Ez a cikk ismerteti a [gyakori riasztási sémadefiníciók](https://aka.ms/commonAlertSchemaDocs) Webhookok/Logic Apps vagy az Azure Functions. 
+Ez a cikk ismerteti a [gyakori riasztási sémadefiníciók](https://aka.ms/commonAlertSchemaDocs) Webhookok/Logic Apps vagy az Azure Functions/Automation-Runbookok számára. 
 
 ## <a name="overview"></a>Áttekintés
 
@@ -88,7 +88,7 @@ Minden riasztási eseményről ismerteti **érintett erőforrás** és **a riasz
 | originAlertId | A riasztási eseményről, létrehozása, a figyelési szolgáltatás által létrehozott azonosítója. |
 | firedDateTime | Ha a riasztási eseményről lett aktiválva, (UTC) dátuma és időpontja |
 | resolvedDateTime | Dátum-idő, ha a figyelési feltétel, a riasztás példány beállítása "Megoldva" (UTC). Jelenleg csak a metrikákhoz kapcsolódó riasztások vonatkozik.|
-| leírás | A riasztási szabályban meghatározott leírása |
+| description | A riasztási szabályban meghatározott leírása |
 |essentialsVersion| Az essentials szakaszban verziószámát.|
 |alertContextVersion | A alertContext szakaszának verziószám |
 

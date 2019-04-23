@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: magattus
-ms.openlocfilehash: 1370785f730fbbc9ceaea67e4f615de7d2041204
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: MT
+ms.openlocfilehash: 53002fba9883d4ae0276ee1d91e915587f89177b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990612"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007678"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Az Azure CDN lefedettség Metro szerint 
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Ez a cikk felsorolja az aktuális metrót tartalmazó jelenléti pontok (POP) he
 | Afrika | Fokváros, Dél-Afrika<br />Johannesburg, Dél-Afrika | Johannesburg, Dél-Afrika | Dél-Afrika |
 | Közel-Kelet | Dubai, Egyesült Arab Emírségek | Muscat, Omán<br />Fujirah, United Arab Emirates | Katar<br />Egyesült Arab Emírségek |
 | India | Csennai, India<br />Mumbai, India<br />Új-Delhi, India | Bangalore, India<br />Csennai, India<br />Mumbai, India<br />Új-Delhi, India<br /> | India |
-| Ázsia | Hongkong KKT<br />Osaka, Japan<br />Tokió, Japán<br />Kuala Lumpur, Malaysia<br />Manila, Fülöp-szigetek<br />Szingapúr<br />Busan, Dél-Korea<br />Szöul, Dél-Korea<br />Tajpej, Tajvan<br />Bangkok, Thaiföld | Hongkong KKT<br />Batam, Indonézia<br />Dzsakarta, Indonézia<br />Osaka, Japan<br />Tokió, Japán<br />Szingapúr<br />Busan, Dél-Korea<br />Szöul, Dél-Korea<br />Kaohsziung, Tajvan | Hongkong KKT<br />Indonézia<br />Izrael<br />Japán<br />Makao<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Dél-Korea<br />Tajvan<br />Thaiföld<br />Törökország<br />Vietnam |
+| Ázsia | Hongkong (KKT)<br />Osaka, Japan<br />Tokió, Japán<br />Kuala Lumpur, Malaysia<br />Manila, Fülöp-szigetek<br />Szingapúr<br />Busan, Dél-Korea<br />Szöul, Dél-Korea<br />Tajpej, Tajvan<br />Bangkok, Thaiföld | Hongkong (KKT)<br />Batam, Indonézia<br />Dzsakarta, Indonézia<br />Osaka, Japan<br />Tokió, Japán<br />Szingapúr<br />Busan, Dél-Korea<br />Szöul, Dél-Korea<br />Kaohsziung, Tajvan | Hongkong (KKT)<br />Indonézia<br />Izrael<br />Japán<br />Makaó (KKT)<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Dél-Korea<br />Tajvan<br />Thaiföld<br />Törökország<br />Vietnam |
 | Ausztrália és Új-Zéland | Brisbane, Ausztrália<br />Melbourne, Australia<br />Perth, Ausztrália<br />Sydney, Ausztrália<br />Aucklandi, Új-Zéland | Melbourne, Australia<br />Sydney, Ausztrália<br />Aucklandi, Új-Zéland | Ausztrália<br />Új-Zéland |
 
 

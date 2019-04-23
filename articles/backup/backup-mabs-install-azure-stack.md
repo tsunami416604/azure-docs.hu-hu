@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: 8269cde7c1be5ba5671bafdae850d88c43db27ea
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: MT
+ms.openlocfilehash: d3a2ffdedda7f541fb1a3f37a8b40bc7af3dcb57
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497927"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996509"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 
@@ -61,7 +61,7 @@ Ha más virtuális gépekkel megosztva, a storage-fiók mérete és IOPS korlát
 Ideiglenes lemezes tárolás, a felhasználó kötetként érhető el, amely tartalmaz minden egyes Azure Stack-virtuális gép `D:\`. Az Azure Backup által igényelt helyi átmeneti terület beállítható úgy, hogy található `D:\`, és a gyorsítótár helyét is helyezhető `C:\`. Ezzel a módszerrel nem kell faragottnak, erről az Azure Backup Server virtuális géphez csatolt adatlemezek kell.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Biztonsági mentési adatok tárolására, a helyi lemez és az Azure-ban
-Az Azure Backup Server biztonsági mentési adatokat tárolja, az operatív helyreállítás a virtuális géphez csatolt Azure lemezeken történik. Miután a lemezeket és tárolóhelyet a virtuális gép csatlakozik, az Azure Backup Server kezeli storage. A biztonsági mentési adatok tárolási függ a számát és méretét, az egyes csatlakoztatott lemezekkel [Azure Stack virtuális gép](../azure-stack/user/azure-stack-storage-overview.md). Minden egyes Azure Stack virtuális gép mérete rendelkezik a virtuális géphez csatolt lemezek maximális száma. Ha például A2 négy lemezek. A3 nyolc lemezek. A4 16 lemez. Újra a méret és a lemezek számát határozza meg, a biztonsági mentési tárolókészlet méretét.
+Az Azure Backup Server biztonsági mentési adatokat tárolja, az operatív helyreállítás a virtuális géphez csatolt Azure lemezeken történik. Miután a lemezeket és tárolóhelyet a virtuális gép csatlakozik, az Azure Backup Server kezeli storage. A biztonsági mentési adatok tárolási függ a számát és méretét, az egyes csatlakoztatott lemezekkel [Azure Stack virtuális gép](/azure-stack/user/azure-stack-storage-overview). Minden egyes Azure Stack virtuális gép mérete rendelkezik a virtuális géphez csatolt lemezek maximális száma. Ha például A2 négy lemezek. A3 nyolc lemezek. A4 16 lemez. Újra a méret és a lemezek számát határozza meg, a biztonsági mentési tárolókészlet méretét.
 
 > [!IMPORTANT]
 > Érdemes **nem** megőrzése üzemképességet (biztonsági mentés) az Azure Backup Server-csatolású lemezeket öt napnál hosszabb.
@@ -73,7 +73,7 @@ Az Azure-beli biztonsági mentési adatok tárolására, hozzon létre, vagy has
  
 ### <a name="scaling-deployment"></a>Központi telepítés méretezése
 Ha azt szeretné, a telepítés méretezésére az alábbi lehetőségek állnak rendelkezésére:
-  - Vertikális felskálázás – az Azure Backup Server virtuális gépet eltávolít egy sorozat a D sorozat méretének növeléséhez, és a helyi tárhely bővítése [/ az Azure Stack-virtuális gép utasításokat](../azure-stack/user/azure-stack-manage-vm-disks.md).
+  - Vertikális felskálázás – az Azure Backup Server virtuális gépet eltávolít egy sorozat a D sorozat méretének növeléséhez, és a helyi tárhely bővítése [/ az Azure Stack-virtuális gép utasításokat](/azure-stack/user/azure-stack-manage-vm-disks).
   - Adatok kiszervezése – régebbi adatok küldése az Azure-ba, és csak a legújabb adatokat kell az Azure Backup Server csatolt tárhelyen megőrzése.
   - Horizontális felskálázás – adjon hozzá további Azure Backup kiszolgálót a munkaterhelések védelme érdekében.
 

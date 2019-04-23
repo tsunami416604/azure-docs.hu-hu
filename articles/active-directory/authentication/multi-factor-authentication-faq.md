@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 707e0aecdaf2a579d086e012519182078c1a6303
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: e0277180f0d768bbcc83a0d8d05fbc4b8b25301e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313226"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006029"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication – gyakran ismételt kérdések
 
@@ -142,7 +142,7 @@ Ha a szervezet nem rendelkezik a hagyományos, nem kell engedélyezné a felhasz
 > [!NOTE]
 > Az ügyfelek az Office 2013 modern hitelesítés
 >
-> Alkalmazásjelszók csak azért szükséges, modern hitelesítést nem támogató alkalmazások esetében. Office 2013-ügyfelek támogatásához modern hitelesítési protokollok, de konfigurálni kell. Újabb Office-ügyfelek automatikusan támogatják a modern hitelesítési protokollok. További információkért lásd: a [Office 2013 modern hitelesítés nyilvános előzetes verzióra vonatkozó közlemény](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+> Alkalmazásjelszók csak azért szükséges, modern hitelesítést nem támogató alkalmazások esetében. Office 2013-ügyfelek támogatásához modern hitelesítési protokollok, de konfigurálni kell. Most már modern hitelesítést bármely, az Office 2013. március, 2015 vagy újabb frissítést futtató ügyfél számára érhető el. További információkért lásd: a [Office 2013 modern hitelesítés nyilvános előzetes verziójának bejelentése](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
 **K: A felhasználók tegyük fel, hogy nem néha kapnak a szöveges üzenetet, vagy azok válasz kétirányú szöveges üzenet, de az ellenőrzés túllépi az időkorlátot.**
 

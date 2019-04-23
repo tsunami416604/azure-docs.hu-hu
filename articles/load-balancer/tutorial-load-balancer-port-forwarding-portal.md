@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 44b9e592d60c541e6b1e7f0e8c639b641af414e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: db94f1d241223a9c54a6e3d516840dd17fd0c576
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118357"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007508"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Oktatóanyag: Porttovábbítást konfigurálása az Azure Load Balancer a portál használatával
 
@@ -47,7 +47,7 @@ Először hozzon létre egy nyilvános Standard load balancer, amely meg tudja o
 1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Hálózatkezelés** > **Terheléselosztó** elemre.
 2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
 
-    | Beállítás                 | Érték                                              |
+    | Beállítás                 | Value                                              |
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLB* a szövegmezőben.|
@@ -60,7 +60,7 @@ Először hozzon létre egy nyilvános Standard load balancer, amely meg tudja o
     |Rendelkezésre állási zóna| Válassza ki **Zónaredundáns**.    |
      
     >[!NOTE]
-     >Győződjön meg arról, hogy a terheléselosztó és az összes erőforrás létrehozásához, egy helyen, amely támogatja a rendelkezésre állási zónák. További információkért lásd: [rendelkezésre állási zónákat támogató régiók](../availability-zones/az-overview.md#regions-that-support-availability-zones). 
+     >Győződjön meg arról, hogy a terheléselosztó és az összes erőforrás létrehozásához, egy helyen, amely támogatja a rendelkezésre állási zónák. További információkért lásd: [rendelkezésre állási zónákat támogató régiók](../availability-zones/az-overview.md#services-support-by-region). 
 
 3. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.  
   
