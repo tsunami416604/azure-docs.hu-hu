@@ -1,40 +1,33 @@
-items:
 - name: Az Azure Cognitive Services dokumentációja
   href: index.md
 - name: Áttekintés
-  items:
-  - name: Mi a Cognitive Services?
-    href: Welcome.md
-  - name: Nyelvi támogatás
-    href: language-support.md
-  - name: Tárolótámogatás
-    href: cognitive-services-container-support.md
   expanded: true
+  items:
+    - name: Mi a Cognitive Services?
+      href: Welcome.md
+    - name: Nyelvi támogatás
+      href: language-support.md
+    - name: Tárolótámogatás
+      href: cognitive-services-container-support.md
 - name: Gyors útmutatók
   items:
-  - name: Fiók létrehozása
-    href: cognitive-services-apis-create-account.md
-  - name: Hitelesítés
-    href: authentication.md
+    - name: Fiók létrehozása
+      href: cognitive-services-apis-create-account.md
+    - name: Hitelesítés
+      href: authentication.md
 - name: További források
   items:
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=cognitive-services
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/
-  - name: Díjkalkulátor
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Videók
-    href: https://azure.microsoft.com/resources/videos/index/?services=cognitive-services
-  - name: Szolgáltatási hírek
-    href: https://azure.microsoft.com/updates/?product=cognitive-services
-  - name: Etikai kódex
-    href: https://go.microsoft.com/fwlink/?LinkId=698895
-  - name: Tudásbázis
-    href: https://cognitive.uservoice.com/knowledgebase
-ms.openlocfilehash: 975c681b3cd30fe7f5b3bd6cd39371a9d66ff27a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545413"
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Etikai kódex
+      href: 'https://go.microsoft.com/fwlink/?LinkId=698895'
+    - name: Tudásbázis
+      href: 'https://cognitive.uservoice.com/knowledgebase'

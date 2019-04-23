@@ -1,57 +1,51 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3d7b9dff034aca6c7602ea72fadfcdc53b11fe15
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335878"
 documentType: LandingData
 title: Alkalmazáskezelési dokumentáció
 metadata:
   title: Az Azure AD alkalmazáskezelési dokumentációja – Azure Active Directory
-  description: Megtudhatja, hogyan kezelheti és helyezheti üzembe alkalmazásait az Azure Active Directoryval.
+  description: 'Megtudhatja, hogyan kezelheti és helyezheti üzembe alkalmazásait az Azure Active Directoryval.'
   services: active-directory
   author: barbkess
   manager: daveba
   layout: LandingPage
-  ms.assetid: 
+  ms.assetid: null
   ms.service: active-directory
   ms.topic: landing-page
   ms.date: 09/14/2018
   ms.author: barbkess
 abstract:
-  description: Az Azure Active Directory biztonságos és zökkenőmentes hozzáférést nyújt a felhőalapú és helyszíni alkalmazásokhoz. Ezenkívül nincs szükség a jelszavak kezelésére sem. A végfelhasználók egyetlen bejelentkezéssel elérhetik az Office 365-öt és több ezer egyéb alkalmazást. Rövid útmutatóinkból, oktatóanyagainkból és segédleteinkből megtudhatja, hogyan kezelheti és helyezheti üzembe az alkalmazásokat.
+  description: 'Az Azure Active Directory biztonságos és zökkenőmentes hozzáférést nyújt a felhőalapú és helyszíni alkalmazásokhoz. Ezenkívül nincs szükség a jelszavak kezelésére sem. A végfelhasználók egyetlen bejelentkezéssel elérhetik az Office 365-öt és több ezer egyéb alkalmazást. Rövid útmutatóinkból, oktatóanyagainkból és segédleteinkből megtudhatja, hogyan kezelheti és helyezheti üzembe az alkalmazásokat.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: Biztonságos hozzáférés az alkalmazásokhoz az Azure AD-vel (1:47)
-    href: https://youtu.be/BSUuXXcJKCk/
+    title: 'Biztonságos hozzáférés az alkalmazásokhoz az Azure AD-vel (1:47)'
+    href: 'https://youtu.be/BSUuXXcJKCk/'
     width: 250
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: Megtudhatja, hogyan adhat hozzá egy felhasználóknak szánt alkalmazást az Azure Active Directoryn keresztüli hozzáféréshez.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_protect.svg
-      text: Alkalmazás hozzáadása
-      href: https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal
-    - image:
-        src: https://docs.microsoft.com/media/common/i_protect.svg
-      text: Saját alkalmazások megtekintése
-      href: https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Megtudhatja, hogyan biztosíthat egyszerű és biztonságos bejelentkezési folyamatot alkalmazásaiban.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Megtudhatja, hogyan adhat hozzá egy felhasználóknak szánt alkalmazást az Azure Active Directoryn keresztüli hozzáféréshez.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
+            text: Alkalmazás hozzáadása
+            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal'
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
+            text: Saját alkalmazások megtekintése
+            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal'
+  - title: Részletes útmutatók
     items:
-    - html: <a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">A SaaS-alkalmazás oktatóanyagai</a>
-    - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">Egyszeri bejelentkezés konfigurálása</a>
+      - type: paragraph
+        text: 'Megtudhatja, hogyan biztosíthat egyszerű és biztonságos bejelentkezési folyamatot alkalmazásaiban.'
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">A SaaS-alkalmazás oktatóanyagai</a>'
+          - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">Egyszeri bejelentkezés konfigurálása</a>

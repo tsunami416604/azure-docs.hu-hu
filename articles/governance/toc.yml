@@ -1,62 +1,55 @@
-items:
 - name: Az Azure Governance dokumentációja
   href: index.yml
 - name: Áttekintés
-  items:
-  - name: Azure-felügyelet
-    href: azure-management.md
   expanded: true
+  items:
+    - name: Azure-felügyelet
+      href: azure-management.md
 - name: Összetevők és szolgáltatások
-  items:
-  - name: Felügyeleti csoportok
-    items:
-    - name: Áttekintés
-      href: management-groups/index.md
-    - name: Létrehozás
-      href: management-groups/create.md
-    - name: Kezelés
-      href: management-groups/manage.md
-  - name: Erőforrás-diagram
-    href: resource-graph/overview.md
-  - name: Szabályzat
-    href: policy/overview.md
-  - name: Tervek
-    href: blueprints/overview.md
   expanded: true
+  items:
+    - name: Felügyeleti csoportok
+      items:
+        - name: Áttekintés
+          href: management-groups/index.md
+        - name: Létrehozás
+          href: management-groups/create.md
+        - name: Kezelés
+          href: management-groups/manage.md
+    - name: Erőforrás-diagram
+      href: resource-graph/overview.md
+    - name: Szabályzat
+      href: policy/overview.md
+    - name: Tervek
+      href: blueprints/overview.md
 - name: Megvalósítások
-  items:
-  - name: A nagyvállalati felhőmegoldások bevezetése
-    items:
-    - name: Mi az a felhőerőforrás-szabályozás?
-      href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-    - name: Az Azure erőforrás-hozzáférési szabályozása
-      href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
-    - name: Szabályozási terv egyetlen csapathoz
-      href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
-    - name: Szabályozási terv több csapathoz
-      href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
-  - name: Azure Enterprise-szerkezet
-    items:
-    - name: Előíró előfizetés-szabályozás
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-    - name: Azure Enterprise-szerkezet implementálása
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
   expanded: true
+  items:
+    - name: A nagyvállalati felhőmegoldások bevezetése
+      items:
+        - name: Mi az a felhőerőforrás-szabályozás?
+          href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
+        - name: Az Azure erőforrás-hozzáférési szabályozása
+          href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
+        - name: Szabályozási terv egyetlen csapathoz
+          href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
+        - name: Szabályozási terv több csapathoz
+          href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
+    - name: Azure Enterprise-szerkezet
+      items:
+        - name: Előíró előfizetés-szabályozás
+          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
+        - name: Azure Enterprise-szerkezet implementálása
+          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
 - name: További források
   items:
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/
-  - name: Díjkalkulátor
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: User Voice
-    href: https://feedback.azure.com/forums/915958-azure-governance
-  - name: Irányítási videó
-    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
-  - name: A Governance YouTube-csatornája
-    href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
-ms.openlocfilehash: 1d6a62a682762060898d8599c5cee18929ef86e1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673904"
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: User Voice
+      href: 'https://feedback.azure.com/forums/915958-azure-governance'
+    - name: Irányítási videó
+      href: 'https://www.youtube.com/watch?v=MhGbKjlmuRs'
+    - name: A Governance YouTube-csatornája
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'

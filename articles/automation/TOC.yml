@@ -1,295 +1,288 @@
-items:
 - name: Azure Automation felhasználói dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi az Automation?
-    href: automation-intro.md
+    - name: Mi az Automation?
+      href: automation-intro.md
 - name: Gyors útmutatók
-  items:
-  - name: Automation-fiók létrehozása
-    href: automation-quickstart-create-account.md
-  - name: Runbook létrehozása
-    href: automation-quickstart-create-runbook.md
-  - name: DSC-konfiguráció létrehozása
-    displayName: DSC, state configuration, config, node configuration, node
-    href: automation-quickstart-dsc-configuration.md
   expanded: true
+  items:
+    - name: Automation-fiók létrehozása
+      href: automation-quickstart-create-account.md
+    - name: Runbook létrehozása
+      href: automation-quickstart-create-runbook.md
+    - name: DSC-konfiguráció létrehozása
+      href: automation-quickstart-dsc-configuration.md
+      displayName: 'DSC, state configuration, config, node configuration, node'
 - name: Oktatóanyagok
   items:
-  - name: Frissített fájlok nyomon követése figyelőfeladatokkal
-    displayName: hybrid runbook worker, hybrid worker, trigger
-    href: automation-watchers-tutorial.md
-  - name: Virtuális gépek frissítéseinek kezelése
-    displayName: alert, patch
-    href: automation-tutorial-update-management.md
-  - name: Frissítés- és változáskövetés előkészítése runbook alapján
-    href: automation-onboard-solutions.md
-  - name: A szoftver azonosítása a környezetben
-    displayName: inventory
-    href: automation-tutorial-installed-software.md
-  - name: Virtuális gép módosításainak hibaelhárítása
-    displayName: inventory
-    href: automation-tutorial-troubleshoot-changes.md
+    - name: Frissített fájlok nyomon követése figyelőfeladatokkal
+      href: automation-watchers-tutorial.md
+      displayName: 'hybrid runbook worker, hybrid worker, trigger'
+    - name: Virtuális gépek frissítéseinek kezelése
+      href: automation-tutorial-update-management.md
+      displayName: 'alert, patch'
+    - name: Frissítés- és változáskövetés előkészítése runbook alapján
+      href: automation-onboard-solutions.md
+    - name: A szoftver azonosítása a környezetben
+      href: automation-tutorial-installed-software.md
+      displayName: inventory
+    - name: Virtuális gép módosításainak hibaelhárítása
+      href: automation-tutorial-troubleshoot-changes.md
+      displayName: inventory
 - name: Útmutatók
   items:
-  - name: Virtuális gépek indítása és leállítása munkaidőn kívül
-    href: automation-solution-vm-management.md
-  - name: Előkészítés
-    items:
-    - name: Több virtuális gép előkészítése a portálról
-      href: automation-onboard-solutions-from-browse.md
-    - name: Előkészítés Azure-beli virtuális gépről
-      href: automation-onboard-solutions-from-vm.md
-    - name: Előkészítés Automation-fiókból
-      href: automation-onboard-solutions-from-automation-account.md
-  - name: Frissítéskezelés
-    items:
-    - name: A frissítéskezelés áttekintése
-      displayName: dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion
-      href: automation-update-management.md
-    - name: Frissítések kezelése több virtuális gép esetén
-      href: manage-update-multi.md
-    - name: Előzetesen és utólagosan futtatandó szkriptek
-      href: pre-post-scripts.md
-    - name: Üzembe helyezett OMS-frissítések migrálása az Azure-ba
-      href: migrate-oms-update-deployments.md
-    - name: SCCM-integráció frissítéskezeléssel
-      displayName: Configuration Manager
-      href: oms-solution-updatemgmt-sccmintegration.md
-  - name: Változások követése
-    items:
-    - name: Változáskövetés áttekintése
-      displayName: wildcard, recursion, environment variables, registry
-      href: automation-change-tracking.md
-    - name: A nyomon követett fájlok tartalmának megjelenítése
-      displayName: change tracking, hash
-      href: change-tracking-file-contents.md
-  - name: Leltár
-    items:
-    - name: Virtuális gépek kezelése leltár használatával
-      href: automation-vm-inventory.md
-  - name: Hitelesítés és biztonság
-    items:
-    - name: Önálló Automation-fiók létrehozása
-      href: automation-create-standalone-account.md
-    - name: Automation futtató fiók kezelése
-      displayName: certificate renewal
-      href: manage-runas-account.md
-    - name: Hitelesítés beállítása az AWS használatával
-      href: automation-config-aws-account.md
-    - name: Szerepköralapú hozzáférés-vezérlés kezelése
-      displayName: RBAC
-      href: automation-role-based-access-control.md
-  - name: Runbookok
-    items:
-    - name: Runbookok kezelése
-      href: manage-runbooks.md
-    - name: Runbook-típusok
-      displayName: graphical, python, powershell, powershell workflow
-      href: automation-runbook-types.md
-    - name: Runbookok létrehozása
+    - name: Virtuális gépek indítása és leállítása munkaidőn kívül
+      href: automation-solution-vm-management.md
+    - name: Előkészítés
       items:
-      - name: Grafikus runbook
-        href: automation-first-runbook-graphical.md
-      - name: PowerShell-alapú runbook
-        href: automation-first-runbook-textual-powershell.md
-      - name: PowerShell-alapú munkafolyamati runbook
-        href: automation-first-runbook-textual.md
-      - name: Python-runbook
-        href: automation-first-runbook-textual-python2.md
-      - name: Runbookok létrehozása a grafikus runbook SDK-val
-        href: graphical-runbook-sdk.md
-    - name: Runbookok szerkesztése
+        - name: Több virtuális gép előkészítése a portálról
+          href: automation-onboard-solutions-from-browse.md
+        - name: Előkészítés Azure-beli virtuális gépről
+          href: automation-onboard-solutions-from-vm.md
+        - name: Előkészítés Automation-fiókból
+          href: automation-onboard-solutions-from-automation-account.md
+    - name: Frissítéskezelés
       items:
-      - name: Szöveges runbookok szerkesztése
-        displayName: powershell
-        href: automation-edit-textual-runbook.md
-      - name: Grafikus runbookok szerkesztése
-        href: automation-graphical-authoring-intro.md
-    - name: Runbook indítása
-      href: start-runbooks.md
-    - name: Runbook indítása webhookból
-      href: automation-webhooks.md
-    - name: Runbook bemeneti paraméterei
-      displayName: input,json
-      href: runbook-input-parameters.md
-    - name: Hibakezelés grafikus runbookokban
-      href: automation-runbook-graphical-error-handling.md
-    - name: Runbook végrehajtása
-      displayName: fair share, activity log, job
-      href: automation-runbook-execution.md
-    - name: Azure Automation-adatok kezelése
-      displayName: backup
-      href: automation-managing-data.md
-    - name: A PowerShell-munkafolyamat megismerése
-      href: automation-powershell-workflow.md
-    - name: Gyermek runbookok
-      href: automation-child-runbooks.md
-    - name: Runbook kimenete
-      displayName: message streams, progress records, preference
-      href: automation-runbook-output-and-messages.md
-    - name: Verziókövetés integrálása
-      displayName: github, vsts, azure devops, personal access token
-      href: source-control-integration.md
-    - name: Verziókövetés integrálása – régi
-      href: source-control-integration-legacy.md
-      displayname: github
-  - name: hibrid runbook-feldolgozó
-    items:
-    - name: Hibrid runbook-feldolgozó – áttekintés
-      href: automation-hybrid-runbook-worker.md
-    - name: A Windows rendszerű hibrid runbook-feldolgozó üzembe helyezése
-      href: automation-windows-hrw-install.md
-    - name: A Linux rendszerű hibrid runbook-feldolgozó üzembe helyezése
-      displayName: signature validation
-      href: automation-linux-hrw-install.md
-    - name: Runbookok futtatása hibrid runbook-feldolgozón
-      displayName: signed runbooks
-      href: automation-hrw-run-runbooks.md
-  - name: Állapotkonfiguráció
-    displayName: DSC
-    items:
-    - name: Állapotkonfiguráció áttekintése
+        - name: A frissítéskezelés áttekintése
+          href: automation-update-management.md
+          displayName: 'dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion'
+        - name: Frissítések kezelése több virtuális gép esetén
+          href: manage-update-multi.md
+        - name: Előzetesen és utólagosan futtatandó szkriptek
+          href: pre-post-scripts.md
+        - name: Üzembe helyezett OMS-frissítések migrálása az Azure-ba
+          href: migrate-oms-update-deployments.md
+        - name: SCCM-integráció frissítéskezeléssel
+          href: oms-solution-updatemgmt-sccmintegration.md
+          displayName: Configuration Manager
+    - name: Változások követése
+      items:
+        - name: Változáskövetés áttekintése
+          href: automation-change-tracking.md
+          displayName: 'wildcard, recursion, environment variables, registry'
+        - name: A nyomon követett fájlok tartalmának megjelenítése
+          href: change-tracking-file-contents.md
+          displayName: 'change tracking, hash'
+    - name: Leltár
+      items:
+        - name: Virtuális gépek kezelése leltár használatával
+          href: automation-vm-inventory.md
+    - name: Hitelesítés és biztonság
+      items:
+        - name: Önálló Automation-fiók létrehozása
+          href: automation-create-standalone-account.md
+        - name: Automation futtató fiók kezelése
+          href: manage-runas-account.md
+          displayName: certificate renewal
+        - name: Hitelesítés beállítása az AWS használatával
+          href: automation-config-aws-account.md
+        - name: Szerepköralapú hozzáférés-vezérlés kezelése
+          href: automation-role-based-access-control.md
+          displayName: RBAC
+    - name: Runbookok
+      items:
+        - name: Runbookok kezelése
+          href: manage-runbooks.md
+        - name: Runbook-típusok
+          href: automation-runbook-types.md
+          displayName: 'graphical, python, powershell, powershell workflow'
+        - name: Runbookok létrehozása
+          items:
+            - name: Grafikus runbook
+              href: automation-first-runbook-graphical.md
+            - name: PowerShell-alapú runbook
+              href: automation-first-runbook-textual-powershell.md
+            - name: PowerShell-alapú munkafolyamati runbook
+              href: automation-first-runbook-textual.md
+            - name: Python-runbook
+              href: automation-first-runbook-textual-python2.md
+            - name: Runbookok létrehozása a grafikus runbook SDK-val
+              href: graphical-runbook-sdk.md
+        - name: Runbookok szerkesztése
+          items:
+            - name: Szöveges runbookok szerkesztése
+              href: automation-edit-textual-runbook.md
+              displayName: powershell
+            - name: Grafikus runbookok szerkesztése
+              href: automation-graphical-authoring-intro.md
+        - name: Runbook indítása
+          href: start-runbooks.md
+        - name: Runbook indítása webhookból
+          href: automation-webhooks.md
+        - name: Runbook bemeneti paraméterei
+          href: runbook-input-parameters.md
+          displayName: 'input,json'
+        - name: Hibakezelés grafikus runbookokban
+          href: automation-runbook-graphical-error-handling.md
+        - name: Runbook végrehajtása
+          href: automation-runbook-execution.md
+          displayName: 'fair share, activity log, job'
+        - name: Azure Automation-adatok kezelése
+          href: automation-managing-data.md
+          displayName: backup
+        - name: A PowerShell-munkafolyamat megismerése
+          href: automation-powershell-workflow.md
+        - name: Gyermek runbookok
+          href: automation-child-runbooks.md
+        - name: Runbook kimenete
+          href: automation-runbook-output-and-messages.md
+          displayName: 'message streams, progress records, preference'
+        - name: Verziókövetés integrálása
+          href: source-control-integration.md
+          displayName: 'github, vsts, azure devops, personal access token'
+        - name: Verziókövetés integrálása – régi
+          href: source-control-integration-legacy.md
+          displayname: github
+    - name: hibrid runbook-feldolgozó
+      items:
+        - name: Hibrid runbook-feldolgozó – áttekintés
+          href: automation-hybrid-runbook-worker.md
+        - name: A Windows rendszerű hibrid runbook-feldolgozó üzembe helyezése
+          href: automation-windows-hrw-install.md
+        - name: A Linux rendszerű hibrid runbook-feldolgozó üzembe helyezése
+          href: automation-linux-hrw-install.md
+          displayName: signature validation
+        - name: Runbookok futtatása hibrid runbook-feldolgozón
+          href: automation-hrw-run-runbooks.md
+          displayName: signed runbooks
+    - name: Állapotkonfiguráció
       displayName: DSC
-      href: automation-dsc-overview.md
-    - name: Első lépések
-      displayName: DSC
-      href: automation-dsc-getting-started.md
-    - name: Kiszolgálók célállapotba történő konfigurálása és eltéréskezelés az állapotkonfigurációval
-      displayName: DSC, compliance
-      href: tutorial-configure-servers-desired-state.md
-    - name: Gépek előkészítése kezelésre
-      displayName: DSC, state configuration
-      href: automation-dsc-onboarding.md
-    - name: Célállapot-konfigurálók fordítása
-      displayName: state configuration, composite resources, configurationData
-      href: automation-dsc-compile.md
-    - name: DSC-konfigurációk létrehozása összetett erőforrások használatával
-      href: compose-configurationwithcompositeresources.md
-    - name: Folyamatos üzembe helyezés a Chocolatey használatával
-      displayName: dsc, state configuration
-      href: automation-dsc-cd-chocolatey.md
-    - name: Állapotkonfiguráció jelentési adatainak továbbítása az Azure Monitor-naplói felé
-      displayName: DSC
-      href: automation-dsc-diagnostics.md
-  - name: Megosztott erőforrások kezelése
-    items:
-    - name: Ütemezések
-      href: shared-resources/schedules.md
-    - name: Modulok
-      href: shared-resources/modules.md
-    - name: Python 2-csomagok kezelése
-      href: python-packages.md
-    - name: Hitelesítő adatok
-      href: shared-resources/credentials.md
-    - name: Kapcsolatok
-      href: automation-connections.md
-    - name: Tanúsítványok
-      href: shared-resources/certificates.md
-    - name: Változók
-      href: shared-resources/variables.md
-    - name: Azure PowerShell-modulok frissítése
-      href: automation-update-azure-modules.md
-    - name: Az modulok runbookokban
-      href: az-modules.md
-  - name: Forgatókönyvek
-    items:
-    - name: Runbook-katalógus
-      href: automation-runbook-gallery.md
-    - name: Runbookok monitorozása metrikariasztásokkal
-      href: automation-alert-metric.md
-    - name: Runbook indítása Azure-riasztásokból
-      displayName: Monitor, Azure Monitor
-      href: automation-create-alert-triggered-runbook.md
-    - name: Amazon-webszolgáltatásbeli virtuális gép létrehozása
-      href: automation-scenario-aws-deployment.md
-    - name: Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban
-      href: automation-deploy-template-runbook.md
-    - name: Az Azure Automation integrálása az Event Grid és a Microsoft Teams szolgáltatással
-      href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
-    - name: Az Automation-fiók áthelyezése egy másik előfizetésbe
-      href: how-to/move-account.md
-  - name: Figyelés
-    items:
-    - name: Azure Automation-feladat adatainak továbbítása az Azure Monitor-naplói felé
-      href: automation-manage-send-joblogs-log-analytics.md
-  - name: Migrate (Áttelepítés)
-    items:
-    - name: Migrálás az Orchestratorból
-      displayName: SCORCH, runbooks
-      href: automation-orchestrator-migration.md
+      items:
+        - name: Állapotkonfiguráció áttekintése
+          href: automation-dsc-overview.md
+          displayName: DSC
+        - name: Első lépések
+          href: automation-dsc-getting-started.md
+          displayName: DSC
+        - name: Kiszolgálók célállapotba történő konfigurálása és eltéréskezelés az állapotkonfigurációval
+          href: tutorial-configure-servers-desired-state.md
+          displayName: 'DSC, compliance'
+        - name: Gépek előkészítése kezelésre
+          href: automation-dsc-onboarding.md
+          displayName: 'DSC, state configuration'
+        - name: Célállapot-konfigurálók fordítása
+          href: automation-dsc-compile.md
+          displayName: 'state configuration, composite resources, configurationData'
+        - name: DSC-konfigurációk létrehozása összetett erőforrások használatával
+          href: compose-configurationwithcompositeresources.md
+        - name: Folyamatos üzembe helyezés a Chocolatey használatával
+          href: automation-dsc-cd-chocolatey.md
+          displayName: 'dsc, state configuration'
+        - name: Állapotkonfiguráció jelentési adatainak továbbítása az Azure Monitor-naplói felé
+          href: automation-dsc-diagnostics.md
+          displayName: DSC
+    - name: Megosztott erőforrások kezelése
+      items:
+        - name: Ütemezések
+          href: shared-resources/schedules.md
+        - name: Modulok
+          href: shared-resources/modules.md
+        - name: Python 2-csomagok kezelése
+          href: python-packages.md
+        - name: Hitelesítő adatok
+          href: shared-resources/credentials.md
+        - name: Kapcsolatok
+          href: automation-connections.md
+        - name: Tanúsítványok
+          href: shared-resources/certificates.md
+        - name: Változók
+          href: shared-resources/variables.md
+        - name: Azure PowerShell-modulok frissítése
+          href: automation-update-azure-modules.md
+        - name: Az modulok runbookokban
+          href: az-modules.md
+    - name: Forgatókönyvek
+      items:
+        - name: Runbook-katalógus
+          href: automation-runbook-gallery.md
+        - name: Runbookok monitorozása metrikariasztásokkal
+          href: automation-alert-metric.md
+        - name: Runbook indítása Azure-riasztásokból
+          href: automation-create-alert-triggered-runbook.md
+          displayName: 'Monitor, Azure Monitor'
+        - name: Amazon-webszolgáltatásbeli virtuális gép létrehozása
+          href: automation-scenario-aws-deployment.md
+        - name: Azure Resource Manager-sablon üzembe helyezése Azure Automation PowerShell-runbookban
+          href: automation-deploy-template-runbook.md
+        - name: Az Azure Automation integrálása az Event Grid és a Microsoft Teams szolgáltatással
+          href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
+        - name: Az Automation-fiók áthelyezése egy másik előfizetésbe
+          href: how-to/move-account.md
+    - name: Figyelés
+      items:
+        - name: Azure Automation-feladat adatainak továbbítása az Azure Monitor-naplói felé
+          href: automation-manage-send-joblogs-log-analytics.md
+    - name: Migrate (Áttelepítés)
+      items:
+        - name: Migrálás az Orchestratorból
+          href: automation-orchestrator-migration.md
+          displayName: 'SCORCH, runbooks'
 - name: Hibaelhárítás
   items:
-  - name: Előkészítés
-    displayName: troubleshoot
-    href: troubleshoot/onboarding.md
-  - name: Runbookok
-    displayName: troubleshoot
-    href: troubleshoot/runbooks.md
-  - name: Állapotkonfiguráció (DSC)
-    displayName: Desired State Configuration, troubleshoot
-    href: troubleshoot/desired-state-configuration.md
-  - name: hibrid runbook-feldolgozó
-    displayName: troubleshoot, HRW, hybrid worker
-    href: troubleshoot/hybrid-runbook-worker.md
-  - name: Change Tracking és Inventory
-    displayName: troubleshoot
-    href: troubleshoot/change-tracking.md
-  - name: Frissítéskezelés
-    displayName: troubleshoot
-    href: troubleshoot/update-management.md
-  - name: Virtuális gépek indítása és leállítása
-    displayName: start,stop
-    href: troubleshoot/start-stop-vm.md
-  - name: Megosztott erőforrások
-    displayName: module, import
-    href: troubleshoot/shared-resources.md
-  - name: A frissítési ügynökkel kapcsolatos hibák elhárítása
-    items:
-    - name: Windows
-      displayName: update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, windows
-      href: troubleshoot/update-agent-issues.md
-    - name: Linux
-      displayName: update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, linux
-      href: troubleshoot/update-agent-issues-linux.md
+    - name: Előkészítés
+      href: troubleshoot/onboarding.md
+      displayName: troubleshoot
+    - name: Runbookok
+      href: troubleshoot/runbooks.md
+      displayName: troubleshoot
+    - name: Állapotkonfiguráció (DSC)
+      href: troubleshoot/desired-state-configuration.md
+      displayName: 'Desired State Configuration, troubleshoot'
+    - name: hibrid runbook-feldolgozó
+      href: troubleshoot/hybrid-runbook-worker.md
+      displayName: 'troubleshoot, HRW, hybrid worker'
+    - name: Change Tracking és Inventory
+      href: troubleshoot/change-tracking.md
+      displayName: troubleshoot
+    - name: Frissítéskezelés
+      href: troubleshoot/update-management.md
+      displayName: troubleshoot
+    - name: Virtuális gépek indítása és leállítása
+      href: troubleshoot/start-stop-vm.md
+      displayName: 'start,stop'
+    - name: Megosztott erőforrások
+      href: troubleshoot/shared-resources.md
+      displayName: 'module, import'
+    - name: A frissítési ügynökkel kapcsolatos hibák elhárítása
+      items:
+        - name: Windows
+          href: troubleshoot/update-agent-issues.md
+          displayName: 'update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, windows'
+        - name: Linux
+          href: troubleshoot/update-agent-issues-linux.md
+          displayName: 'update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, linux'
 - name: Referencia
   items:
-  - name: Azure PowerShell
-    href: /powershell/module/azurerm.automation
-  - name: Azure PowerShell (klasszikus)
-    href: /powershell/module/azure/?view=azuresmps-3.7.0
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.automation
-  - name: REST
-    href: /rest/api/automation
-  - name: REST (klasszikus)
-    href: https://msdn.microsoft.com/library/azure/mt163781
-  - name: Resource Manager-sablon
-    href: /azure/templates/microsoft.automation/allversions
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.automation
+    - name: Azure PowerShell (klasszikus)
+      href: /powershell/module/azure/?view=azuresmps-3.7.0
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.automation
+    - name: REST
+      href: /rest/api/automation
+    - name: REST (klasszikus)
+      href: 'https://msdn.microsoft.com/library/azure/mt163781'
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.automation/allversions
 - name: További források
   items:
-  - name: Automation bevezető videója
-    href: https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=management-tools&query=automation
-  - name: MSDN-fórum
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/automation/
-  - name: Díjkalkulátor
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Kibocsátási megjegyzések
-    href: https://azure.microsoft.com/updates/?product=automation
-  - name: Szolgáltatási hírek
-    href: https://azure.microsoft.com/updates/?product=automation
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-automation
-  - name: Videók
-    href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: adcd48e69f2a51df9964fb6c2fb0800d7509340d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546314"
+    - name: Automation bevezető videója
+      href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/automation/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Kibocsátási megjegyzések
+      href: 'https://azure.microsoft.com/updates/?product=automation'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=automation'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-automation'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=automation'

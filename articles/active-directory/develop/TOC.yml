@@ -1,450 +1,443 @@
-items:
 - name: A Microsoft identitásplatformja (Azure Active Directory fejlesztők számára)
   href: index.yml
 - name: A Microsoft identitásplatformja
   href: about-microsoft-identity-platform.md
 - name: 1.0-s verzió
-  items:
-  - name: Áttekintés
-    href: v1-overview.md
-  - name: Gyors útmutatók
-    items:
-    - name: Fejlesztési környezet beállítása
-      href: quickstart-create-new-tenant.md
-    - name: Alkalmazás konfigurálása
-      items:
-      - name: Alkalmazás regisztrálása
-        href: quickstart-v1-add-azure-ad-app.md
-      - name: Alkalmazás frissítése
-        href: quickstart-v1-update-azure-ad-app.md
-      - name: Alkalmazás eltávolítása
-        href: quickstart-v1-remove-azure-ad-app.md
-      - name: Alkalmazás regisztrálása (előzetes verzió)
-        href: quickstart-register-app.md
-      - name: Alkalmazás konfigurálása webes API-k elérésére (előzetes verzió)
-        href: quickstart-configure-app-access-web-apis.md
-      - name: Alkalmazás konfigurálása webes API-k felfedésére (előzetes verzió)
-        href: quickstart-configure-app-expose-web-apis.md
-      - name: Alkalmazás által támogatott fiókok módosítása (előzetes verzió)
-        href: quickstart-modify-supported-accounts.md
-      - name: Alkalmazás eltávolítása (előzetes verzió)
-        href: quickstart-remove-app.md
-    - name: Egyoldalas alkalmazások
-      items:
-      - name: AngularJS
-        href: quickstart-v1-angularjs-spa.md
-      - name: JavaScript
-        href: https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi
-    - name: Webalkalmazások
-      items:
-      - name: ASP .NET
-        href: quickstart-v1-aspnet-webapp.md
-      - name: Java
-        href: https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect
-      - name: NodeJS
-        href: https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS
-      - name: Python
-        href: https://github.com/Azure-Samples/active-directory-python-webapp-graphapi
-    - name: Webes API-k
-      items:
-      - name: ASP .NET
-        href: quickstart-v1-dotnet-webapi.md
-      - name: NodeJS
-        href: quickstart-v1-nodejs-webapi.md
-    - name: Mobil- és asztali alkalmazások
-      items:
-      - name: Android
-        href: quickstart-v1-android.md
-      - name: iOS
-        href: quickstart-v1-ios.md
-      - name: Windows asztali .NET
-        href: quickstart-v1-dotnet.md
-      - name: Xamarin
-        href: quickstart-v1-xamarin.md
-    - name: Szolgáltatások közötti
-      href: sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity
-  - name: Példák
-    href: sample-v1-code.md
-  - name: Alapelvek
-    items:
-    - name: Alkalmazástípusok
-      items:
-      - name: Alkalmazástípusok
-        href: app-types.md
-      - name: Egyoldalas alkalmazás
-        href: single-page-application.md
-      - name: Webalkalmazás
-        href: web-app.md
-      - name: Webes API
-        href: web-api.md
-      - name: Mobil- és asztali alkalmazások
-        href: native-app.md
-      - name: Démon vagy kiszolgálóalkalmazás
-        href: service-to-service.md
-    - name: Hitelesítés
-      items:
-      - name: Hitelesítési alapok
-        href: authentication-scenarios.md
-      - name: Az OAuth 2.0 és az OpenID Connect protokoll
-        items:
-        - name: OpenID Connect
-          href: v1-protocols-openid-connect-code.md
-        - name: OAuth 2.0 implicit engedélyezési folyamat
-          href: v1-oauth2-implicit-grant-flow.md
-        - name: Oauth 2.0 hitelesítésikód-engedélyezés
-          href: v1-protocols-oauth-code.md
-        - name: OAuth 2.0-alapú meghatalmazásos folyamat
-          href: v1-oauth2-on-behalf-of-flow.md
-        - name: OAuth 2.0-ügyfél hitelesítő adatainak megadása
-          href: v1-oauth2-client-creds-grant-flow.md
-      - name: SAML 2.0 protokoll
-        items:
-        - name: Egyszeri bejelentkezés
-          href: single-sign-on-saml-protocol.md
-        - name: Kijelentkezés
-          href: single-sign-out-saml-protocol.md
-        - name: Hogyan használja az Azure AD a SAML-protokollt
-          href: active-directory-saml-protocol-reference.md
-      - name: WS-Federation
-        items:
-        - name: Összevonási metaadatok
-          href: azure-ad-federation-metadata.md
-      - name: Aláírókulcs-váltás
-        href: active-directory-signing-key-rollover.md
-      - name: Azonosító jogkivonatok
-        href: id-tokens.md
-      - name: Hozzáférési jogkivonatok
-        href: access-tokens.md
-      - name: Tanúsítványok hitelesítő adatai
-        href: active-directory-certificate-credentials.md
-      - name: SAML-jogkivonatok
-        href: reference-saml-tokens.md
-    - name: Alkalmazáskonfiguráció
-      items:
-      - name: Alkalmazások és szolgáltatásnevek
-        href: app-objects-and-service-principals.md
-      - name: Hogyan és miért adhatók hozzá az alkalmazások az Azure AD szolgáltatáshoz
-        href: active-directory-how-applications-are-added.md
-      - name: Egybérlős és több-bérlős alkalmazások
-        href: single-and-multi-tenant-apps.md
-    - name: Engedélyek és jóváhagyás
-      displayName: Scopes
-      items:
-      - name: Engedélyek és jóváhagyás típusai
-        href: v1-permissions-and-consent.md
-      - name: Jóváhagyási keretrendszer
-        href: consent-framework.md
-      - name: Alkalmazás-jóváhagyási tapasztalatok
-        href: application-consent-experience.md
-    - name: Feltételes hozzáférés
-      href: conditional-access-dev-guide.md
-    - name: Országos felhőkörnyezetek
-      href: authentication-national-cloud.md
-  - name: Útmutatók
-    items:
-    - name: Hitelesítés
-      items:
-      - name: Egyszeri bejelentkezés konfigurálása
-        displayName: SSO
-        items:
-        - name: Egyszeri bejelentkezés engedélyezése Android rendszeren
-          href: howto-v1-enable-sso-android.md
-        - name: Egyszeri bejelentkezés engedélyezése iOS rendszeren
-          href: howto-v1-enable-sso-ios.md
-        - name: SAML-alapú SSO hibakeresése
-          href: howto-v1-debug-saml-sso-issues.md
-      - name: Jogcímek konfigurálása
-        items:
-        - name: Szerepkörjogcímek konfigurálása
-          href: active-directory-enterprise-app-role-management.md
-        - name: Jogcímek testreszabása – portál
-          href: active-directory-saml-claims-customization.md
-        - name: Jogcímek testreszabása – Powershell
-          href: active-directory-claims-mapping.md
-        - name: Nem kötelező jogcímek konfigurálása
-          href: active-directory-optional-claims.md
-        - name: A jogkivonatok élettartamának beállítása
-          href: active-directory-configurable-token-lifetimes.md
-      - name: Ajánlott hibakezelési eljárások az ADAL-hoz
-        href: active-directory-devhowto-adal-error-handling.md
-    - name: Alkalmazáskonfiguráció
-      items:
-      - name: Egybérlős alkalmazás átalakítása több-bérlőssé
-        href: howto-convert-app-to-be-multi-tenant.md
-      - name: Egyszerű szolgáltatás létrehozása
-        items:
-        - name: Az Azure PowerShell használata
-          href: howto-authenticate-service-principal-powershell.md
-        - name: Az Azure Portal használata
-          href: howto-create-service-principal-portal.md
-      - name: Alkalmazás korlátozása felhasználók egy halmazára
-        href: howto-restrict-your-app-to-a-set-of-users.md
-      - name: Alkalmazás-szerepkörök hozzáadása az alkalmazáson belül
-        href: howto-add-app-roles-in-azure-ad-apps.md
-      - name: Védjegyzési útmutató
-        href: howto-add-branding-in-azure-ad-apps.md
-      - name: Szolgáltatási feltételek és adatvédelmi nyilatkozat
-        href: howto-add-terms-of-service-privacy-statement.md
-    - name: A Visual Studio használata
-      items:
-      - name: Az Active Directory csatlakoztatott szolgáltatás használata
-        href: vs-active-directory-add-connected-service.md
-      - name: Bevezetés a .NET MVC-projektek használatába
-        href: vs-active-directory-dotnet-getting-started.md
-      - name: Mi történt a .NET MVC-projektemmel?
-        href: vs-active-directory-dotnet-what-happened.md
-      - name: Bevezetés a WebAPI-projektek használatába
-        href: vs-active-directory-webapi-getting-started.md
-      - name: Mi történt a WebAPI-projektemmel?
-        href: vs-active-directory-webapi-what-happened.md
-      - name: Hiba a hitelesítés észlelésekor
-        href: vs-active-directory-error.md
-    - name: Alkalmazás piacra juttatása
-      items:
-      - name: Közzététel az App Source-ban
-        href: howto-get-appsource-certified.md
-      - name: Közzététel az Azure AD alkalmazáskatalógusban
-        href: howto-app-gallery-listing.md
-      - name: Közzététel az Office 365 Értékesítői információközpontban
-        href: https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
-    - name: Azure Access Control Service
-      displayName: ACS
-      items:
-      - name: Migrálás az Azure Access Control Service-ből
-        href: active-directory-acs-migration.md
-      - name: Letiltott Access Control Service-névterek újraaktiválása
-        href: howto-reactivate-disabled-acs-namespaces.md
-    - name: Az Azure AD Graph API használata
-      href: active-directory-graph-api-quickstart.md
-    - name: AD FS fejlesztőknek
-      href: https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers
-  - name: Referencia
-    items:
-    - name: Hitelesítési tárak
-      displayName: ADAL
-      href: active-directory-authentication-libraries.md
-    - name: Azure AD Graph API
-      href: active-directory-graph-api.md
-    - name: Alkalmazásjegyzék
-      href: reference-app-manifest.md
-    - name: Hitelesítés és hitelesítési hibakódok
-      href: reference-aadsts-error-codes.md
-    - name: Kompatibilitástörő változások
-      href: reference-breaking-changes.md
   expanded: true
+  items:
+    - name: Áttekintés
+      href: v1-overview.md
+    - name: Gyors útmutatók
+      items:
+        - name: Fejlesztési környezet beállítása
+          href: quickstart-create-new-tenant.md
+        - name: Alkalmazás konfigurálása
+          items:
+            - name: Alkalmazás regisztrálása
+              href: quickstart-v1-add-azure-ad-app.md
+            - name: Alkalmazás frissítése
+              href: quickstart-v1-update-azure-ad-app.md
+            - name: Alkalmazás eltávolítása
+              href: quickstart-v1-remove-azure-ad-app.md
+            - name: Alkalmazás regisztrálása (előzetes verzió)
+              href: quickstart-register-app.md
+            - name: Alkalmazás konfigurálása webes API-k elérésére (előzetes verzió)
+              href: quickstart-configure-app-access-web-apis.md
+            - name: Alkalmazás konfigurálása webes API-k felfedésére (előzetes verzió)
+              href: quickstart-configure-app-expose-web-apis.md
+            - name: Alkalmazás által támogatott fiókok módosítása (előzetes verzió)
+              href: quickstart-modify-supported-accounts.md
+            - name: Alkalmazás eltávolítása (előzetes verzió)
+              href: quickstart-remove-app.md
+        - name: Egyoldalas alkalmazások
+          items:
+            - name: AngularJS
+              href: quickstart-v1-angularjs-spa.md
+            - name: JavaScript
+              href: 'https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi'
+        - name: Webalkalmazások
+          items:
+            - name: ASP .NET
+              href: quickstart-v1-aspnet-webapp.md
+            - name: Java
+              href: 'https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect'
+            - name: NodeJS
+              href: 'https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS'
+            - name: Python
+              href: 'https://github.com/Azure-Samples/active-directory-python-webapp-graphapi'
+        - name: Webes API-k
+          items:
+            - name: ASP .NET
+              href: quickstart-v1-dotnet-webapi.md
+            - name: NodeJS
+              href: quickstart-v1-nodejs-webapi.md
+        - name: Mobil- és asztali alkalmazások
+          items:
+            - name: Android
+              href: quickstart-v1-android.md
+            - name: iOS
+              href: quickstart-v1-ios.md
+            - name: Windows asztali .NET
+              href: quickstart-v1-dotnet.md
+            - name: Xamarin
+              href: quickstart-v1-xamarin.md
+        - name: Szolgáltatások közötti
+          href: 'sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity'
+    - name: Példák
+      href: sample-v1-code.md
+    - name: Alapelvek
+      items:
+        - name: Alkalmazástípusok
+          items:
+            - name: Alkalmazástípusok
+              href: app-types.md
+            - name: Egyoldalas alkalmazás
+              href: single-page-application.md
+            - name: Webalkalmazás
+              href: web-app.md
+            - name: Webes API
+              href: web-api.md
+            - name: Mobil- és asztali alkalmazások
+              href: native-app.md
+            - name: Démon vagy kiszolgálóalkalmazás
+              href: service-to-service.md
+        - name: Hitelesítés
+          items:
+            - name: Hitelesítési alapok
+              href: authentication-scenarios.md
+            - name: Az OAuth 2.0 és az OpenID Connect protokoll
+              items:
+                - name: OpenID Connect
+                  href: v1-protocols-openid-connect-code.md
+                - name: OAuth 2.0 implicit engedélyezési folyamat
+                  href: v1-oauth2-implicit-grant-flow.md
+                - name: Oauth 2.0 hitelesítésikód-engedélyezés
+                  href: v1-protocols-oauth-code.md
+                - name: OAuth 2.0-alapú meghatalmazásos folyamat
+                  href: v1-oauth2-on-behalf-of-flow.md
+                - name: OAuth 2.0-ügyfél hitelesítő adatainak megadása
+                  href: v1-oauth2-client-creds-grant-flow.md
+            - name: SAML 2.0 protokoll
+              items:
+                - name: Egyszeri bejelentkezés
+                  href: single-sign-on-saml-protocol.md
+                - name: Kijelentkezés
+                  href: single-sign-out-saml-protocol.md
+                - name: Hogyan használja az Azure AD a SAML-protokollt
+                  href: active-directory-saml-protocol-reference.md
+            - name: WS-Federation
+              items:
+                - name: Összevonási metaadatok
+                  href: azure-ad-federation-metadata.md
+            - name: Aláírókulcs-váltás
+              href: active-directory-signing-key-rollover.md
+            - name: Azonosító jogkivonatok
+              href: id-tokens.md
+            - name: Hozzáférési jogkivonatok
+              href: access-tokens.md
+            - name: Tanúsítványok hitelesítő adatai
+              href: active-directory-certificate-credentials.md
+            - name: SAML-jogkivonatok
+              href: reference-saml-tokens.md
+        - name: Alkalmazáskonfiguráció
+          items:
+            - name: Alkalmazások és szolgáltatásnevek
+              href: app-objects-and-service-principals.md
+            - name: Hogyan és miért adhatók hozzá az alkalmazások az Azure AD szolgáltatáshoz
+              href: active-directory-how-applications-are-added.md
+            - name: Egybérlős és több-bérlős alkalmazások
+              href: single-and-multi-tenant-apps.md
+        - name: Engedélyek és jóváhagyás
+          displayName: Scopes
+          items:
+            - name: Engedélyek és jóváhagyás típusai
+              href: v1-permissions-and-consent.md
+            - name: Jóváhagyási keretrendszer
+              href: consent-framework.md
+            - name: Alkalmazás-jóváhagyási tapasztalatok
+              href: application-consent-experience.md
+        - name: Feltételes hozzáférés
+          href: conditional-access-dev-guide.md
+        - name: Országos felhőkörnyezetek
+          href: authentication-national-cloud.md
+    - name: Útmutatók
+      items:
+        - name: Hitelesítés
+          items:
+            - name: Egyszeri bejelentkezés konfigurálása
+              displayName: SSO
+              items:
+                - name: Egyszeri bejelentkezés engedélyezése Android rendszeren
+                  href: howto-v1-enable-sso-android.md
+                - name: Egyszeri bejelentkezés engedélyezése iOS rendszeren
+                  href: howto-v1-enable-sso-ios.md
+                - name: SAML-alapú SSO hibakeresése
+                  href: howto-v1-debug-saml-sso-issues.md
+            - name: Jogcímek konfigurálása
+              items:
+                - name: Szerepkörjogcímek konfigurálása
+                  href: active-directory-enterprise-app-role-management.md
+                - name: Jogcímek testreszabása – portál
+                  href: active-directory-saml-claims-customization.md
+                - name: Jogcímek testreszabása – Powershell
+                  href: active-directory-claims-mapping.md
+                - name: Nem kötelező jogcímek konfigurálása
+                  href: active-directory-optional-claims.md
+                - name: A jogkivonatok élettartamának beállítása
+                  href: active-directory-configurable-token-lifetimes.md
+            - name: Ajánlott hibakezelési eljárások az ADAL-hoz
+              href: active-directory-devhowto-adal-error-handling.md
+        - name: Alkalmazáskonfiguráció
+          items:
+            - name: Egybérlős alkalmazás átalakítása több-bérlőssé
+              href: howto-convert-app-to-be-multi-tenant.md
+            - name: Egyszerű szolgáltatás létrehozása
+              items:
+                - name: Az Azure PowerShell használata
+                  href: howto-authenticate-service-principal-powershell.md
+                - name: Az Azure Portal használata
+                  href: howto-create-service-principal-portal.md
+            - name: Alkalmazás korlátozása felhasználók egy halmazára
+              href: howto-restrict-your-app-to-a-set-of-users.md
+            - name: Alkalmazás-szerepkörök hozzáadása az alkalmazáson belül
+              href: howto-add-app-roles-in-azure-ad-apps.md
+            - name: Védjegyzési útmutató
+              href: howto-add-branding-in-azure-ad-apps.md
+            - name: Szolgáltatási feltételek és adatvédelmi nyilatkozat
+              href: howto-add-terms-of-service-privacy-statement.md
+        - name: A Visual Studio használata
+          items:
+            - name: Az Active Directory csatlakoztatott szolgáltatás használata
+              href: vs-active-directory-add-connected-service.md
+            - name: Bevezetés a .NET MVC-projektek használatába
+              href: vs-active-directory-dotnet-getting-started.md
+            - name: Mi történt a .NET MVC-projektemmel?
+              href: vs-active-directory-dotnet-what-happened.md
+            - name: Bevezetés a WebAPI-projektek használatába
+              href: vs-active-directory-webapi-getting-started.md
+            - name: Mi történt a WebAPI-projektemmel?
+              href: vs-active-directory-webapi-what-happened.md
+            - name: Hiba a hitelesítés észlelésekor
+              href: vs-active-directory-error.md
+        - name: Alkalmazás piacra juttatása
+          items:
+            - name: Közzététel az App Source-ban
+              href: howto-get-appsource-certified.md
+            - name: Közzététel az Azure AD alkalmazáskatalógusban
+              href: howto-app-gallery-listing.md
+            - name: Közzététel az Office 365 Értékesítői információközpontban
+              href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
+        - name: Azure Access Control Service
+          displayName: ACS
+          items:
+            - name: Migrálás az Azure Access Control Service-ből
+              href: active-directory-acs-migration.md
+            - name: Letiltott Access Control Service-névterek újraaktiválása
+              href: howto-reactivate-disabled-acs-namespaces.md
+        - name: Az Azure AD Graph API használata
+          href: active-directory-graph-api-quickstart.md
+        - name: AD FS fejlesztőknek
+          href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
+    - name: Referencia
+      items:
+        - name: Hitelesítési tárak
+          displayName: ADAL
+          href: active-directory-authentication-libraries.md
+        - name: Azure AD Graph API
+          href: active-directory-graph-api.md
+        - name: Alkalmazásjegyzék
+          href: reference-app-manifest.md
+        - name: Hitelesítés és hitelesítési hibakódok
+          href: reference-aadsts-error-codes.md
+        - name: Kompatibilitástörő változások
+          href: reference-breaking-changes.md
 - name: 2.0-s verzió
-  items:
-  - name: Áttekintés
-    href: v2-overview.md
-  - name: Gyors útmutatók
-    items:
-    - name: Fejlesztési környezet beállítása
-      href: quickstart-create-new-tenant.md
-    - name: Alkalmazás konfigurálása
-      items:
-      - name: Alkalmazás regisztrálása
-        href: quickstart-v2-register-an-app.md
-      - name: Alkalmazás frissítése
-        href: quickstart-v1-update-azure-ad-app.md
-      - name: Alkalmazás eltávolítása
-        href: quickstart-v1-remove-azure-ad-app.md
-      - name: Alkalmazás regisztrálása (előzetes verzió)
-        href: quickstart-register-app.md
-      - name: Alkalmazás konfigurálása webes API-k elérésére (előzetes verzió)
-        href: quickstart-configure-app-access-web-apis.md
-      - name: Alkalmazás konfigurálása webes API-k felfedésére (előzetes verzió)
-        href: quickstart-configure-app-expose-web-apis.md
-      - name: Alkalmazás által támogatott fiókok módosítása (előzetes verzió)
-        href: quickstart-modify-supported-accounts.md
-      - name: Alkalmazás eltávolítása (előzetes verzió)
-        href: quickstart-remove-app.md
-    - name: Egyoldalas alkalmazások
-      items:
-      - name: JavaScript
-        href: quickstart-v2-javascript.md
-    - name: Webalkalmazások
-      items:
-      - name: ASP .NET
-        href: quickstart-v2-aspnet-webapp.md
-      - name: ASP.NET Core
-        href: quickstart-v2-aspnet-core-webapp.md
-      - name: NodeJS
-        href: https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs
-    - name: Webes API-k
-      items:
-      - name: ASP .NET
-        href: https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet
-      - name: ASP.NET Core
-        href: https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2
-    - name: Mobil- és asztali alkalmazások
-      items:
-      - name: Android
-        href: quickstart-v2-android.md
-      - name: iOS
-        href: quickstart-v2-ios.md
-      - name: Univerzális Windows-platform
-        href: quickstart-v2-uwp.md
-      - name: Windows asztali .NET
-        href: quickstart-v2-windows-desktop.md
-    - name: Démonalkalmazások
-      items:
-      - name: .NET Core-konzol (démon)
-        href: quickstart-v2-netcore-daemon.md
-      - name: ASP.NET démon-webalkalmazása
-        href: https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2
-  - name: Oktatóanyagok
-    items:
-    - name: Egyoldalas alkalmazások
-      items:
-      - name: JavaScript
-        href: tutorial-v2-javascript-spa.md
-    - name: Webalkalmazások
-      items:
-      - name: ASP .NET
-        href: tutorial-v2-asp-webapp.md
-    - name: Mobil- és asztali alkalmazások
-      items:
-      - name: Android
-        href: tutorial-v2-android.md
-      - name: iOS
-        href: tutorial-v2-ios.md
-      - name: Univerzális Windows-platform
-        href: tutorial-v2-windows-uwp.md
-      - name: Windows asztali .NET
-        href: tutorial-v2-windows-desktop.md
-  - name: Példák
-    href: sample-v2-code.md
-  - name: Alapelvek
-    items:
-    - name: Döntés az 1.0-s és 2.0-s verzió között
-      href: azure-ad-endpoint-comparison.md
-    - name: Alkalmazástípusok
-      href: v2-app-types.md
-    - name: Hitelesítés
-      items:
-      - name: Hitelesítési alapok
-        href: authentication-scenarios.md
-      - name: Az OAuth 2.0 és az OpenID Connect protokoll
-        href: active-directory-v2-protocols.md
-      - name: OpenID Connect
-        href: v2-protocols-oidc.md
-      - name: OAuth 2.0 implicit engedélyezési folyamat
-        href: v2-oauth2-implicit-grant-flow.md
-      - name: Oauth 2.0 hitelesítésikód-engedélyezés
-        href: v2-oauth2-auth-code-flow.md
-      - name: OAuth 2.0-alapú meghatalmazásos folyamat
-        href: v2-oauth2-on-behalf-of-flow.md
-      - name: OAuth 2.0-ügyfél hitelesítő adatainak megadása
-        href: v2-oauth2-client-creds-grant-flow.md
-      - name: OAuth 2.0 eszközkódfolyamat
-        href: v2-oauth2-device-code.md
-      - name: Oauth 2.0-erőforrástulajdonos jelszavas hitelesítési adatainak megadása
-        href: v2-oauth-ropc.md
-      - name: Aláírókulcs-váltás
-        href: active-directory-signing-key-rollover.md
-      - name: Azonosító jogkivonatok
-        href: id-tokens.md
-      - name: Hozzáférési jogkivonatok
-        href: access-tokens.md
-      - name: Tanúsítványok hitelesítő adatai
-        href: active-directory-certificate-credentials.md
-    - name: Alkalmazáskonfiguráció
-      items:
-      - name: Alkalmazások és szolgáltatásnevek
-        href: app-objects-and-service-principals.md
-      - name: Egybérlős és több-bérlős alkalmazások
-        href: single-and-multi-tenant-apps.md
-    - name: Engedélyek és jóváhagyás
-      displayName: Scopes
-      items:
-      - name: Engedélyek és jóváhagyás típusai
-        href: v2-permissions-and-consent.md
-      - name: Jóváhagyási keretrendszer
-        href: consent-framework.md
-      - name: Alkalmazás-jóváhagyási tapasztalatok
-        href: application-consent-experience.md
-    - name: Országos felhőkörnyezetek
-      href: authentication-national-cloud.md
-  - name: Útmutatók
-    items:
-    - name: Hitelesítés
-      items:
-      - name: Szerepkörjogcímek konfigurálása
-        href: active-directory-enterprise-app-role-management.md
-      - name: Jogcímek testreszabása – Powershell
-        href: active-directory-claims-mapping.md
-      - name: Nem kötelező jogcímek konfigurálása
-        href: active-directory-optional-claims.md
-      - name: A jogkivonatok élettartamának beállítása
-        href: active-directory-configurable-token-lifetimes.md
-    - name: Alkalmazáskonfiguráció
-      items:
-      - name: Egybérlős alkalmazás átalakítása több-bérlőssé
-        href: howto-convert-app-to-be-multi-tenant.md
-      - name: Egyszerű szolgáltatás létrehozása
-        items:
-        - name: Az Azure PowerShell használata
-          href: howto-authenticate-service-principal-powershell.md
-        - name: Az Azure Portal használata
-          href: howto-create-service-principal-portal.md
-      - name: Alkalmazás korlátozása felhasználók egy halmazára
-        href: howto-restrict-your-app-to-a-set-of-users.md
-      - name: Alkalmazás-szerepkörök hozzáadása az alkalmazáson belül
-        href: howto-add-app-roles-in-azure-ad-apps.md
-      - name: Védjegyzési útmutató
-        href: howto-add-branding-in-azure-ad-apps.md
-      - name: Közzétevő tartomány
-        href: howto-configure-publisher-domain.md
-      - name: Szolgáltatási feltételek és adatvédelmi nyilatkozat
-        href: howto-add-terms-of-service-privacy-statement.md
-    - name: A Visual Studio használata
-      items:
-      - name: Az Active Directory csatlakoztatott szolgáltatás használata
-        href: vs-active-directory-add-connected-service.md
-      - name: Bevezetés a .NET MVC-projektek használatába
-        href: vs-active-directory-dotnet-getting-started.md
-      - name: Mi történt a .NET MVC-projektemmel?
-        href: vs-active-directory-dotnet-what-happened.md
-      - name: Bevezetés a WebAPI-projektek használatába
-        href: vs-active-directory-webapi-getting-started.md
-      - name: Mi történt a WebAPI-projektemmel?
-        href: vs-active-directory-webapi-what-happened.md
-      - name: Hiba a hitelesítés észlelésekor
-        href: vs-active-directory-error.md
-  - name: Referencia
-    items:
-    - name: Hitelesítési tárak
-      displayName: MSAL
-      href: reference-v2-libraries.md
-    - name: A Microsoft Graph identitási és hozzáférési API-jai
-      href: https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta
-    - name: Alkalmazásjegyzék
-      href: reference-app-manifest.md
-    - name: Hitelesítés és hitelesítési hibakódok
-      href: reference-aadsts-error-codes.md
-    - name: Kompatibilitástörő változások
-      href: reference-breaking-changes.md
   expanded: true
+  items:
+    - name: Áttekintés
+      href: v2-overview.md
+    - name: Gyors útmutatók
+      items:
+        - name: Fejlesztési környezet beállítása
+          href: quickstart-create-new-tenant.md
+        - name: Alkalmazás konfigurálása
+          items:
+            - name: Alkalmazás regisztrálása
+              href: quickstart-v2-register-an-app.md
+            - name: Alkalmazás frissítése
+              href: quickstart-v1-update-azure-ad-app.md
+            - name: Alkalmazás eltávolítása
+              href: quickstart-v1-remove-azure-ad-app.md
+            - name: Alkalmazás regisztrálása (előzetes verzió)
+              href: quickstart-register-app.md
+            - name: Alkalmazás konfigurálása webes API-k elérésére (előzetes verzió)
+              href: quickstart-configure-app-access-web-apis.md
+            - name: Alkalmazás konfigurálása webes API-k felfedésére (előzetes verzió)
+              href: quickstart-configure-app-expose-web-apis.md
+            - name: Alkalmazás által támogatott fiókok módosítása (előzetes verzió)
+              href: quickstart-modify-supported-accounts.md
+            - name: Alkalmazás eltávolítása (előzetes verzió)
+              href: quickstart-remove-app.md
+        - name: Egyoldalas alkalmazások
+          items:
+            - name: JavaScript
+              href: quickstart-v2-javascript.md
+        - name: Webalkalmazások
+          items:
+            - name: ASP .NET
+              href: quickstart-v2-aspnet-webapp.md
+            - name: ASP.NET Core
+              href: quickstart-v2-aspnet-core-webapp.md
+            - name: NodeJS
+              href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
+        - name: Webes API-k
+          items:
+            - name: ASP .NET
+              href: 'https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet'
+            - name: ASP.NET Core
+              href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
+        - name: Mobil- és asztali alkalmazások
+          items:
+            - name: Android
+              href: quickstart-v2-android.md
+            - name: iOS
+              href: quickstart-v2-ios.md
+            - name: Univerzális Windows-platform
+              href: quickstart-v2-uwp.md
+            - name: Windows asztali .NET
+              href: quickstart-v2-windows-desktop.md
+        - name: Démonalkalmazások
+          items:
+            - name: .NET Core-konzol (démon)
+              href: quickstart-v2-netcore-daemon.md
+            - name: ASP.NET démon-webalkalmazása
+              href: 'https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2'
+    - name: Oktatóanyagok
+      items:
+        - name: Egyoldalas alkalmazások
+          items:
+            - name: JavaScript
+              href: tutorial-v2-javascript-spa.md
+        - name: Webalkalmazások
+          items:
+            - name: ASP .NET
+              href: tutorial-v2-asp-webapp.md
+        - name: Mobil- és asztali alkalmazások
+          items:
+            - name: Android
+              href: tutorial-v2-android.md
+            - name: iOS
+              href: tutorial-v2-ios.md
+            - name: Univerzális Windows-platform
+              href: tutorial-v2-windows-uwp.md
+            - name: Windows asztali .NET
+              href: tutorial-v2-windows-desktop.md
+    - name: Példák
+      href: sample-v2-code.md
+    - name: Alapelvek
+      items:
+        - name: Döntés az 1.0-s és 2.0-s verzió között
+          href: azure-ad-endpoint-comparison.md
+        - name: Alkalmazástípusok
+          href: v2-app-types.md
+        - name: Hitelesítés
+          items:
+            - name: Hitelesítési alapok
+              href: authentication-scenarios.md
+            - name: Az OAuth 2.0 és az OpenID Connect protokoll
+              href: active-directory-v2-protocols.md
+            - name: OpenID Connect
+              href: v2-protocols-oidc.md
+            - name: OAuth 2.0 implicit engedélyezési folyamat
+              href: v2-oauth2-implicit-grant-flow.md
+            - name: Oauth 2.0 hitelesítésikód-engedélyezés
+              href: v2-oauth2-auth-code-flow.md
+            - name: OAuth 2.0-alapú meghatalmazásos folyamat
+              href: v2-oauth2-on-behalf-of-flow.md
+            - name: OAuth 2.0-ügyfél hitelesítő adatainak megadása
+              href: v2-oauth2-client-creds-grant-flow.md
+            - name: OAuth 2.0 eszközkódfolyamat
+              href: v2-oauth2-device-code.md
+            - name: Oauth 2.0-erőforrástulajdonos jelszavas hitelesítési adatainak megadása
+              href: v2-oauth-ropc.md
+            - name: Aláírókulcs-váltás
+              href: active-directory-signing-key-rollover.md
+            - name: Azonosító jogkivonatok
+              href: id-tokens.md
+            - name: Hozzáférési jogkivonatok
+              href: access-tokens.md
+            - name: Tanúsítványok hitelesítő adatai
+              href: active-directory-certificate-credentials.md
+        - name: Alkalmazáskonfiguráció
+          items:
+            - name: Alkalmazások és szolgáltatásnevek
+              href: app-objects-and-service-principals.md
+            - name: Egybérlős és több-bérlős alkalmazások
+              href: single-and-multi-tenant-apps.md
+        - name: Engedélyek és jóváhagyás
+          displayName: Scopes
+          items:
+            - name: Engedélyek és jóváhagyás típusai
+              href: v2-permissions-and-consent.md
+            - name: Jóváhagyási keretrendszer
+              href: consent-framework.md
+            - name: Alkalmazás-jóváhagyási tapasztalatok
+              href: application-consent-experience.md
+        - name: Országos felhőkörnyezetek
+          href: authentication-national-cloud.md
+    - name: Útmutatók
+      items:
+        - name: Hitelesítés
+          items:
+            - name: Szerepkörjogcímek konfigurálása
+              href: active-directory-enterprise-app-role-management.md
+            - name: Jogcímek testreszabása – Powershell
+              href: active-directory-claims-mapping.md
+            - name: Nem kötelező jogcímek konfigurálása
+              href: active-directory-optional-claims.md
+            - name: A jogkivonatok élettartamának beállítása
+              href: active-directory-configurable-token-lifetimes.md
+        - name: Alkalmazáskonfiguráció
+          items:
+            - name: Egybérlős alkalmazás átalakítása több-bérlőssé
+              href: howto-convert-app-to-be-multi-tenant.md
+            - name: Egyszerű szolgáltatás létrehozása
+              items:
+                - name: Az Azure PowerShell használata
+                  href: howto-authenticate-service-principal-powershell.md
+                - name: Az Azure Portal használata
+                  href: howto-create-service-principal-portal.md
+            - name: Alkalmazás korlátozása felhasználók egy halmazára
+              href: howto-restrict-your-app-to-a-set-of-users.md
+            - name: Alkalmazás-szerepkörök hozzáadása az alkalmazáson belül
+              href: howto-add-app-roles-in-azure-ad-apps.md
+            - name: Védjegyzési útmutató
+              href: howto-add-branding-in-azure-ad-apps.md
+            - name: Közzétevő tartomány
+              href: howto-configure-publisher-domain.md
+            - name: Szolgáltatási feltételek és adatvédelmi nyilatkozat
+              href: howto-add-terms-of-service-privacy-statement.md
+        - name: A Visual Studio használata
+          items:
+            - name: Az Active Directory csatlakoztatott szolgáltatás használata
+              href: vs-active-directory-add-connected-service.md
+            - name: Bevezetés a .NET MVC-projektek használatába
+              href: vs-active-directory-dotnet-getting-started.md
+            - name: Mi történt a .NET MVC-projektemmel?
+              href: vs-active-directory-dotnet-what-happened.md
+            - name: Bevezetés a WebAPI-projektek használatába
+              href: vs-active-directory-webapi-getting-started.md
+            - name: Mi történt a WebAPI-projektemmel?
+              href: vs-active-directory-webapi-what-happened.md
+            - name: Hiba a hitelesítés észlelésekor
+              href: vs-active-directory-error.md
+    - name: Referencia
+      items:
+        - name: Hitelesítési tárak
+          displayName: MSAL
+          href: reference-v2-libraries.md
+        - name: A Microsoft Graph identitási és hozzáférési API-jai
+          href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta'
+        - name: Alkalmazásjegyzék
+          href: reference-app-manifest.md
+        - name: Hitelesítés és hitelesítési hibakódok
+          href: reference-aadsts-error-codes.md
+        - name: Kompatibilitástörő változások
+          href: reference-breaking-changes.md
 - name: További források
   items:
-  - name: Szószedet
-    href: developer-glossary.md
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: Azure AD blog
-    href: https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory
-  - name: A Microsoft Identitásplatform fejlesztői blogja
-    href: https://developer.microsoft.com/en-us/identity/blogs/
-  - name: Próbálja ki a Microsofttal való bejelentkezést
-    href: https://azure.microsoft.com/develop/identity/signin/
-  - name: Segítség kérése
-    displayName: support, help options
-    href: developer-support-help-options.md
-  - name: Azure-erőforrások felügyelt identitásai
-    href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: c927668c920302b7e2a52dc1dfd2f463ad3331b7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546148"
+    - name: Szószedet
+      href: developer-glossary.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure AD blog
+      href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
+    - name: A Microsoft Identitásplatform fejlesztői blogja
+      href: 'https://developer.microsoft.com/en-us/identity/blogs/'
+    - name: Próbálja ki a Microsofttal való bejelentkezést
+      href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: Segítség kérése
+      displayName: 'support, help options'
+      href: developer-support-help-options.md
+    - name: Azure-erőforrások felügyelt identitásai
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'

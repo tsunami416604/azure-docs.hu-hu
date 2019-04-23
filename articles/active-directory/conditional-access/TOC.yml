@@ -1,81 +1,74 @@
-items:
 - name: A feltételes hozzáférés dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi a feltételes hozzáférés?
-    href: overview.md
+    - name: Mi a feltételes hozzáférés?
+      href: overview.md
 - name: Gyors útmutatók
   items:
-  - name: MFA megkövetelése adott alkalmazásokhoz
-    href: app-based-mfa.md
-  - name: A használati feltételek elfogadásának kötelezővé tétele
-    href: require-tou.md
-  - name: Hozzáférés letiltása munkameneti kockázat észlelésekor
-    href: app-sign-in-risk.md
+    - name: MFA megkövetelése adott alkalmazásokhoz
+      href: app-based-mfa.md
+    - name: A használati feltételek elfogadásának kötelezővé tétele
+      href: require-tou.md
+    - name: Hozzáférés letiltása munkameneti kockázat észlelésekor
+      href: app-sign-in-risk.md
 - name: Oktatóanyagok
   items:
-  - name: Klasszikus MFA-szabályzatok migrálása
-    href: policy-migration-mfa.md
+    - name: Klasszikus MFA-szabályzatok migrálása
+      href: policy-migration-mfa.md
 - name: Alapelvek
-  items:
-  - name: Alapvető védelem
-    href: baseline-protection.md
-  - name: Feltételek
-    href: conditions.md
-  - name: Helyfeltételek
-    href: location-condition.md
-  - name: Vezérlők
-    href: controls.md
-  - name: Szolgáltatásfüggőségek
-    href: service-dependencies.md
-  - name: Lehetőségelemzési eszköz
-    href: what-if-tool.md
   expanded: false
-- name: Útmutatók
   items:
-  - name: A feltételes hozzáférés üzembe helyezésének megtervezése
-    href: plan-conditional-access.md
-  - name: Ajánlott eljárások
-    href: best-practices.md
-  - name: Régi hitelesítési folyamat letiltása
-    href: block-legacy-authentication.md
-  - name: Az Exchange Online-hoz és a SharePoint Online-hoz való hozzáférés vezérlése
-    href: conditional-access-for-exo-and-spo.md
-  - name: Klasszikus szabályzatok migrálása
-    href: policy-migration.md
-  - name: Jóváhagyott ügyfélalkalmazások megkövetelése
-    href: app-based-conditional-access.md
-  - name: Alkalmazásvédelmi szabályzat megkövetelése
-    href: app-protection-based-conditional-access.md
-  - name: Felügyelt eszközök megkövetelése
-    href: require-managed-devices.md
-  - name: MFA megkövetelése a nem megbízható hálózatokból indított hozzáférési kísérletekhez
-    href: untrusted-networks.md
-  - name: Használati feltételek megkövetelése
-    href: terms-of-use.md
+    - name: Alapvető védelem
+      href: baseline-protection.md
+    - name: Feltételek
+      href: conditions.md
+    - name: Helyfeltételek
+      href: location-condition.md
+    - name: Vezérlők
+      href: controls.md
+    - name: Szolgáltatásfüggőségek
+      href: service-dependencies.md
+    - name: Lehetőségelemzési eszköz
+      href: what-if-tool.md
+- name: Útmutatók
   expanded: true
+  items:
+    - name: A feltételes hozzáférés üzembe helyezésének megtervezése
+      href: plan-conditional-access.md
+    - name: Ajánlott eljárások
+      href: best-practices.md
+    - name: Régi hitelesítési folyamat letiltása
+      href: block-legacy-authentication.md
+    - name: Az Exchange Online-hoz és a SharePoint Online-hoz való hozzáférés vezérlése
+      href: conditional-access-for-exo-and-spo.md
+    - name: Klasszikus szabályzatok migrálása
+      href: policy-migration.md
+    - name: Jóváhagyott ügyfélalkalmazások megkövetelése
+      href: app-based-conditional-access.md
+    - name: Alkalmazásvédelmi szabályzat megkövetelése
+      href: app-protection-based-conditional-access.md
+    - name: Felügyelt eszközök megkövetelése
+      href: require-managed-devices.md
+    - name: MFA megkövetelése a nem megbízható hálózatokból indított hozzáférési kísérletekhez
+      href: untrusted-networks.md
+    - name: Használati feltételek megkövetelése
+      href: terms-of-use.md
 - name: Referencia
   items:
-  - name: Technikai útmutató
-    href: technical-reference.md
+    - name: Technikai útmutató
+      href: technical-reference.md
 - name: További források
   items:
-  - name: Azure visszajelzési fórum
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: MSDN-fórum
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/active-directory/
-  - name: Szolgáltatási hírek
-    href: ../fundamentals/whats-new.md
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-active-directory
-  - name: Videók
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 1db270043ea996b72f47ee00dbd07f1bd33a1e48
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787032"
+    - name: Azure visszajelzési fórum
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+    - name: Szolgáltatási hírek
+      href: ../fundamentals/whats-new.md
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2f8e833088ffdf819e387fd28ae88508d5fe6d00
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519925"
 abstract:
-  description: Megtudhatja, hogyan építhet be intelligens algoritmusokat az alkalmazásokba és webhelyekbe ezekkel az Azure Machine Learning-termékekkel.  Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.
+  description: 'Megtudhatja, hogyan építhet be intelligens algoritmusokat az alkalmazásokba és webhelyekbe ezekkel az Azure Machine Learning-termékekkel.  Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.'
 documentType: LandingData
 metadata:
   author: j-martens
-  description: Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, weboldalakat és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.
+  description: 'Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, weboldalakat és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.'
   ms.author: jmartens
   ms.subservice: core
   ms.date: 12/04/2018
@@ -21,84 +15,84 @@ metadata:
   services: machine-learning
   title: Az Azure Machine Learning dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
 sections:
-- items:
-  - className: cardsM
-    columns: 2
-    items:
-    - href: /azure/machine-learning/service/overview-what-is-azure-ml
-      html: <p>Ismerje meg, hogyan teszik lehetővé ezek a szolgáltatások az adatelemzők számára a mesterségesintelligencia-megoldások fejlesztését és kezelését<br/> az Azure CLI és a Python eszközeinek és kódtárainak, valamint az Azure különböző adatelemzési és számítási szolgáltatásainak használatával. További információ...</p>
-      image:
-        src: /azure/machine-learning/media/index/i_machine-learning.svg
-      title: Azure Machine Learning szolgáltatás
-    style: cards
-    type: list
-- items:
-  - text: 'Az Azure Machine Learning service beállítása és használatának megkezdése:'
-    type: paragraph
-  - text: <b>Rövid útmutatók:</b>
-    type: paragraph
   - items:
-    - html: <a href="service/quickstart-run-cloud-notebook">Kísérlet futtatása a felhőben</a> (nincs szükség telepítésre)
-    - html: <a href="service/quickstart-run-local-notebook">Kísérlet futtatása helyi notebookkiszolgálóval</a> (helyi SDK-telepítés)
-    style: unordered
-    type: list
-  - text: <b>Képbesorolási oktatóanyag MNIST-adatokkal:</b>
-    type: paragraph
+      - className: cardsM
+        columns: 2
+        items:
+          - href: /azure/machine-learning/service/overview-what-is-azure-ml
+            html: '<p>Ismerje meg, hogyan teszik lehetővé ezek a szolgáltatások az adatelemzők számára a mesterségesintelligencia-megoldások fejlesztését és kezelését<br/> az Azure CLI és a Python eszközeinek és kódtárainak, valamint az Azure különböző adatelemzési és számítási szolgáltatásainak használatával. További információ...</p>'
+            image:
+              src: /azure/machine-learning/media/index/i_machine-learning.svg
+            title: Azure Machine Learning szolgáltatás
+        style: cards
+        type: list
   - items:
-    - html: '1. rész: <a href="service/tutorial-train-models-with-aml">Saját modell betanítása</a>'
-    - html: '2. rész: <a href="service/tutorial-deploy-models-with-aml">A modell üzembe helyezése</a>'
-    style: unordered
-    type: list
-  - text: <b>Regressziós modellezési oktatóanyag NYC Taxi adataival:</b>
-    type: paragraph
+      - text: 'Az Azure Machine Learning service beállítása és használatának megkezdése:'
+        type: paragraph
+      - text: '<b>Rövid útmutatók:</b>'
+        type: paragraph
+      - items:
+          - html: <a href="service/quickstart-run-cloud-notebook">Kísérlet futtatása a felhőben</a> (nincs szükség telepítésre)
+          - html: <a href="service/quickstart-run-local-notebook">Kísérlet futtatása helyi notebookkiszolgálóval</a> (helyi SDK-telepítés)
+        style: unordered
+        type: list
+      - text: '<b>Képbesorolási oktatóanyag MNIST-adatokkal:</b>'
+        type: paragraph
+      - items:
+          - html: '1. rész: <a href="service/tutorial-train-models-with-aml">Saját modell betanítása</a>'
+          - html: '2. rész: <a href="service/tutorial-deploy-models-with-aml">A modell üzembe helyezése</a>'
+        style: unordered
+        type: list
+      - text: '<b>Regressziós modellezési oktatóanyag NYC Taxi adataival:</b>'
+        type: paragraph
+      - items:
+          - html: '1. rész: <a href="service/tutorial-data-prep">Adatok előkészítése modellezéshez</a>'
+          - html: '2. rész: <a href="service/tutorial-auto-train-models">Az automatizált gépi tanulás betanítja a modelleket Ön helyett</a>'
+        style: unordered
+        type: list
+      - text: '<b>Modellek felhasználása:</b>'
+        type: paragraph
+      - items:
+          - html: <a href="service/how-to-consume-web-service">Kérés-válasz modell felhasználása</a>
+          - html: <a href="service/how-to-run-batch-predictions">Kötegelt előrejelzések gépi tanulási folyamatokkal</a>
+        style: unordered
+        type: list
+    title: Rövid útmutatók és oktatóanyagok
   - items:
-    - html: '1. rész: <a href="service/tutorial-data-prep">Adatok előkészítése modellezéshez</a>'
-    - html: '2. rész: <a href="service/tutorial-auto-train-models">Az automatizált gépi tanulás betanítja a modelleket Ön helyett</a>'
-    style: unordered
-    type: list
-  - text: <b>Modellek felhasználása:</b>
-    type: paragraph
-  - items:
-    - html: <a href="service/how-to-consume-web-service">Kérés-válasz modell felhasználása</a>
-    - html: <a href="service/how-to-run-batch-predictions">Kötegelt előrejelzések gépi tanulási folyamatokkal</a>
-    style: unordered
-    type: list
-  title: Rövid útmutatók és oktatóanyagok
-- items:
-  - className: cardsM
-    columns: 2
-    items:
-    - href: /azure/cognitive-services/
-      html: <p>Az alkalmazásokhoz, webhelyekhez és robotprogramokhoz tervezett intelligens algoritmusokat biztosító API-k.</p>
-      image:
-        src: /azure/machine-learning/media/index/cognitive-services.png
-      title: Cognitive Services
-    - href: /azure/machine-learning/studio/
-      html: <p>Együttműködést támogató, egérrel kezelhető eszköz az adataira alkalmazható prediktív elemzési megoldások létrehozásához, teszteléséhez és üzembe helyezéséhez R vagy Python használatával. </p>
-      image:
-        src: /azure/machine-learning/media/index/machine-learning-studio.svg
-      title: Azure Machine Learning Studio
-    - href: /sql/advanced-analytics/r/r-services
-      html: <p>Adatbázison belüli elemzés R- és Python-támogatással.</p>
-      image:
-        src: /azure/machine-learning/media/index/logo_sql.png
-      title: SQL Server Machine Learning-szolgáltatások
-    - href: /machine-learning-server/
-      html: <p>Rugalmas vállalati gépi tanulási platform, amely támogatja az R- és Python-környezeteket a Windows-, Linux-, HDInsight Spark- és Hadoop-fürtökön.</p>
-      image:
-        src: /azure/machine-learning/media/index/ml-server.png
-      title: Microsoft Machine Learning-kiszolgáló
-    - href: /azure/machine-learning/team-data-science-process
-      html: <p>Együttműködésen alapuló adatelemzési módszer, amely segít az adatelemző csapatoknak a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósításában.</p>
-      image:
-        src: /azure/machine-learning/media/index/tdsp.png
-      title: Csoportos adatelemzési folyamat
-    - href: /azure/machine-learning/data-science-virtual-machine/
-      html: <p>A Data Science (DSVM) és Deep Learning (DLVM) virtuális gépek használatával szoftverek telepítése és konfigurálása nélkül is kísérletezhet. A népszerű adatelemzési, gépi tanulási és mesterségesintelligencia-eszközök már előre telepítve vannak.</p>
-      image:
-        src: /azure/machine-learning/media/index/virtualmachine.svg
-      title: Adatelemzési virtuális gép
-    style: cards
-    type: list
-  title: Egyéb Microsoft Machine Learning-technológiák
+      - className: cardsM
+        columns: 2
+        items:
+          - href: /azure/cognitive-services/
+            html: '<p>Az alkalmazásokhoz, webhelyekhez és robotprogramokhoz tervezett intelligens algoritmusokat biztosító API-k.</p>'
+            image:
+              src: /azure/machine-learning/media/index/cognitive-services.png
+            title: Cognitive Services
+          - href: /azure/machine-learning/studio/
+            html: "<p>Együttműködést támogató, egérrel kezelhető eszköz az adataira alkalmazható prediktív elemzési megoldások létrehozásához, teszteléséhez és üzembe helyezéséhez R vagy Python használatával.\_</p>"
+            image:
+              src: /azure/machine-learning/media/index/machine-learning-studio.svg
+            title: Azure Machine Learning Studio
+          - href: /sql/advanced-analytics/r/r-services
+            html: <p>Adatbázison belüli elemzés R- és Python-támogatással.</p>
+            image:
+              src: /azure/machine-learning/media/index/logo_sql.png
+            title: SQL Server Machine Learning-szolgáltatások
+          - href: /machine-learning-server/
+            html: '<p>Rugalmas vállalati gépi tanulási platform, amely támogatja az R- és Python-környezeteket a Windows-, Linux-, HDInsight Spark- és Hadoop-fürtökön.</p>'
+            image:
+              src: /azure/machine-learning/media/index/ml-server.png
+            title: Microsoft Machine Learning-kiszolgáló
+          - href: /azure/machine-learning/team-data-science-process
+            html: '<p>Együttműködésen alapuló adatelemzési módszer, amely segít az adatelemző csapatoknak a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósításában.</p>'
+            image:
+              src: /azure/machine-learning/media/index/tdsp.png
+            title: Csoportos adatelemzési folyamat
+          - href: /azure/machine-learning/data-science-virtual-machine/
+            html: '<p>A Data Science (DSVM) és Deep Learning (DLVM) virtuális gépek használatával szoftverek telepítése és konfigurálása nélkül is kísérletezhet. A népszerű adatelemzési, gépi tanulási és mesterségesintelligencia-eszközök már előre telepítve vannak.</p>'
+            image:
+              src: /azure/machine-learning/media/index/virtualmachine.svg
+            title: Adatelemzési virtuális gép
+        style: cards
+        type: list
+    title: Egyéb Microsoft Machine Learning-technológiák
 title: Az Azure Machine Learning dokumentációja

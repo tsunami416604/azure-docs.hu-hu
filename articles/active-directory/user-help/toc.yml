@@ -1,113 +1,106 @@
-items:
 - name: Felhasználói súgódokumentáció
   href: index.md
 - name: Kétlépéses ellenőrzés súgója
   items:
-  - name: Áttekintés
-    href: user-help-two-step-verification-overview.md
-  - name: Saját fiók beállítása
-    href: multi-factor-authentication-end-user-first-time.md
-  - name: Beállítások kezelése
-    href: multi-factor-authentication-end-user-manage-settings.md
-  - name: Segítségkérés
-    href: multi-factor-authentication-end-user-troubleshoot.md
-  - name: Alkalmazásjelszavak kezelése
-    href: multi-factor-authentication-end-user-app-passwords.md
-  - name: A bejelentkezés menete
-    href: user-help-sign-in.md?toc=./toc.json
+    - name: Áttekintés
+      href: user-help-two-step-verification-overview.md
+    - name: Saját fiók beállítása
+      href: multi-factor-authentication-end-user-first-time.md
+    - name: Beállítások kezelése
+      href: multi-factor-authentication-end-user-manage-settings.md
+    - name: Segítségkérés
+      href: multi-factor-authentication-end-user-troubleshoot.md
+    - name: Alkalmazásjelszavak kezelése
+      href: multi-factor-authentication-end-user-app-passwords.md
+    - name: A bejelentkezés menete
+      href: user-help-sign-in.md?toc=./toc.json
 - name: Új jelszó kérésének súgója
   items:
-  - name: Áttekintés
-    href: user-help-password-reset-overview.md
-  - name: Regisztrálás új jelszó kérésére
-    href: active-directory-passwords-reset-register.md
-  - name: Új jelszó kérése
-    href: user-help-reset-password.md
+    - name: Áttekintés
+      href: user-help-password-reset-overview.md
+    - name: Regisztrálás új jelszó kérésére
+      href: active-directory-passwords-reset-register.md
+    - name: Új jelszó kérése
+      href: user-help-reset-password.md
 - name: A Microsoft Authenticator alkalmazás súgója
   items:
-  - name: Áttekintés
-    href: user-help-auth-app-overview.md
-  - name: Az alkalmazás letöltése és telepítése
-    href: user-help-auth-app-download-install.md
-  - name: Fiókok hozzáadásának áttekintése
-    href: user-help-auth-app-add-account-overview.md
-    items:
-    - name: Munkahelyi vagy iskolai fiók hozzáadása
-      href: user-help-auth-app-add-work-school-account.md
-    - name: Személyes Microsoft-fiók hozzáadása
-      href: user-help-auth-app-add-personal-ms-account.md
-    - name: Nem Microsoft-fiók hozzáadása
-      href: user-help-auth-app-add-non-ms-account.md
-    - name: Fiók manuális hozzáadása
-      href: user-help-auth-app-add-account-manual.md
-  - name: Bejelentkezés a Microsoft Authenticator alkalmazással
-    href: user-help-auth-app-sign-in.md
-  - name: Fiókok biztonsági mentése és helyreállítása
-    href: user-help-auth-app-backup-recovery.md
-  - name: GYIK
-    href: user-help-auth-app-faq.md
+    - name: Áttekintés
+      href: user-help-auth-app-overview.md
+    - name: Az alkalmazás letöltése és telepítése
+      href: user-help-auth-app-download-install.md
+    - name: Fiókok hozzáadásának áttekintése
+      href: user-help-auth-app-add-account-overview.md
+      items:
+        - name: Munkahelyi vagy iskolai fiók hozzáadása
+          href: user-help-auth-app-add-work-school-account.md
+        - name: Személyes Microsoft-fiók hozzáadása
+          href: user-help-auth-app-add-personal-ms-account.md
+        - name: Nem Microsoft-fiók hozzáadása
+          href: user-help-auth-app-add-non-ms-account.md
+        - name: Fiók manuális hozzáadása
+          href: user-help-auth-app-add-account-manual.md
+    - name: Bejelentkezés a Microsoft Authenticator alkalmazással
+      href: user-help-auth-app-sign-in.md
+    - name: Fiókok biztonsági mentése és helyreállítása
+      href: user-help-auth-app-backup-recovery.md
+    - name: GYIK
+      href: user-help-auth-app-faq.md
 - name: Saját profil (előzetes verzió) portál súgója
   items:
-  - name: Áttekintés
-    href: myprofile-portal-overview.md
-  - name: Biztonsági adatok kezelése
-    href: user-help-security-info-overview.md
-  - name: Saját szervezetek kezelése
-    href: myprofile-portal-organizations-page.md
-  - name: Csatlakoztatott eszközök kezelése
-    href: myprofile-portal-devices-page.md
-  - name: Adatvédelemmel kapcsolatos információk megtekintése
-    href: myprofile-portal-privacy-page.md
+    - name: Áttekintés
+      href: myprofile-portal-overview.md
+    - name: Biztonsági adatok kezelése
+      href: user-help-security-info-overview.md
+    - name: Saját szervezetek kezelése
+      href: myprofile-portal-organizations-page.md
+    - name: Csatlakoztatott eszközök kezelése
+      href: myprofile-portal-devices-page.md
+    - name: Adatvédelemmel kapcsolatos információk megtekintése
+      href: myprofile-portal-privacy-page.md
 - name: Biztonsági adatok (előzetes verzió) súgója
   items:
-  - name: Áttekintés
-    href: user-help-security-info-overview.md
-  - name: Biztonsági adatok hozzáadása bejelentkezéskor
-    href: security-info-setup-signin.md
-  - name: Biztonsági adatok hozzáadási vagy frissítési metódusainak áttekintése
-    href: security-info-add-update-methods-overview.md
-    items:
-    - name: Hitelesítő alkalmazás beállítása
-      href: security-info-setup-auth-app.md
-    - name: Szöveges üzenetküldés beállítása
-      href: security-info-setup-text-msg.md
-    - name: Telefonhívások beállítása
-      href: security-info-setup-phone-number.md
-    - name: E-mailek beállítása
-      href: security-info-setup-email.md
-    - name: Biztonsági kérdések beállítása
-      href: security-info-setup-questions.md
-  - name: Alkalmazásjelszavak kezelése
-    href: security-info-app-passwords.md
-  - name: A bejelentkezés menete
-    href: user-help-sign-in.md?toc=./toc.json
+    - name: Áttekintés
+      href: user-help-security-info-overview.md
+    - name: Biztonsági adatok hozzáadása bejelentkezéskor
+      href: security-info-setup-signin.md
+    - name: Biztonsági adatok hozzáadási vagy frissítési metódusainak áttekintése
+      href: security-info-add-update-methods-overview.md
+      items:
+        - name: Hitelesítő alkalmazás beállítása
+          href: security-info-setup-auth-app.md
+        - name: Szöveges üzenetküldés beállítása
+          href: security-info-setup-text-msg.md
+        - name: Telefonhívások beállítása
+          href: security-info-setup-phone-number.md
+        - name: E-mailek beállítása
+          href: security-info-setup-email.md
+        - name: Biztonsági kérdések beállítása
+          href: security-info-setup-questions.md
+    - name: Alkalmazásjelszavak kezelése
+      href: security-info-app-passwords.md
+    - name: A bejelentkezés menete
+      href: user-help-sign-in.md?toc=./toc.json
 - name: Eszközkezelés súgója
   items:
-  - name: Áttekintés
-    href: user-help-device-mgmt-overview.md
-  - name: Munkahelyi eszköz csatlakoztatása
-    href: user-help-join-device-on-network.md
-  - name: Személyes eszköz regisztrálása munkavégzéshez
-    href: user-help-register-device-on-network.md
-  - name: Az „Innen nem érheti el” üzenet hibaelhárítása
-    href: user-help-device-remediation.md
+    - name: Áttekintés
+      href: user-help-device-mgmt-overview.md
+    - name: Munkahelyi eszköz csatlakoztatása
+      href: user-help-join-device-on-network.md
+    - name: Személyes eszköz regisztrálása munkavégzéshez
+      href: user-help-register-device-on-network.md
+    - name: Az „Innen nem érheti el” üzenet hibaelhárítása
+      href: user-help-device-remediation.md
 - name: A Saját alkalmazások portál súgója
   items:
-  - name: Áttekintés
-    href: my-apps-portal-end-user-overview.md
-  - name: A Saját alkalmazások portál elérése és használata
-    href: my-apps-portal-end-user-access.md
-  - name: Profil- és fiókadatok frissítése
-    href: my-apps-portal-end-user-update-profile.md
-  - name: A csoporttal kapcsolatos információk frissítése
-    href: my-apps-portal-end-user-groups.md
-  - name: Saját hozzáférés felülvizsgálatainak elvégzése
-    href: my-apps-portal-end-user-access-reviews.md
-  - name: Problémák elhárítása
-    href: my-apps-portal-end-user-troubleshoot.md
-ms.openlocfilehash: be7c20053ab6ee3a18f81aec9dc973a3032aa5c6
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339541"
+    - name: Áttekintés
+      href: my-apps-portal-end-user-overview.md
+    - name: A Saját alkalmazások portál elérése és használata
+      href: my-apps-portal-end-user-access.md
+    - name: Profil- és fiókadatok frissítése
+      href: my-apps-portal-end-user-update-profile.md
+    - name: A csoporttal kapcsolatos információk frissítése
+      href: my-apps-portal-end-user-groups.md
+    - name: Saját hozzáférés felülvizsgálatainak elvégzése
+      href: my-apps-portal-end-user-access-reviews.md
+    - name: Problémák elhárítása
+      href: my-apps-portal-end-user-troubleshoot.md

@@ -1,142 +1,135 @@
-items:
 - name: Tárolópéldányok
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Az Azure Container Instances bemutatása
-    href: container-instances-overview.md
+    - name: Az Azure Container Instances bemutatása
+      href: container-instances-overview.md
 - name: Gyors útmutatók
-  items:
-  - name: Tárolópéldány üzembe helyezése – parancssori felület
-    href: container-instances-quickstart.md
-  - name: Tárolópéldány üzembe helyezése – portál
-    href: container-instances-quickstart-portal.md
-  - name: Tárolópéldány üzembe helyezése – PowerShell
-    href: container-instances-quickstart-powershell.md
   expanded: true
+  items:
+    - name: Tárolópéldány üzembe helyezése – parancssori felület
+      href: container-instances-quickstart.md
+    - name: Tárolópéldány üzembe helyezése – portál
+      href: container-instances-quickstart-portal.md
+    - name: Tárolópéldány üzembe helyezése – PowerShell
+      href: container-instances-quickstart-powershell.md
 - name: Oktatóanyagok
   items:
-  - name: Tárolórendszerkép létrehozása és üzembe helyezése
-    items:
-    - name: 1 – Tárolórendszerkép létrehozása
-      href: container-instances-tutorial-prepare-app.md
-    - name: 2 – Tárolóregisztrációs adatbázis létrehozása
-      href: container-instances-tutorial-prepare-acr.md
-    - name: 3 – Alkalmazás üzembe helyezése
-      href: container-instances-tutorial-deploy-app.md
-  - name: Többtárolós csoport üzembe helyezése
-    items:
-    - name: Tárolócsoport üzembe helyezése – YAML
-      href: container-instances-multi-container-yaml.md
-    - name: Tárolócsoport üzembe helyezése – Resource Manager
-      href: container-instances-multi-container-group.md
+    - name: Tárolórendszerkép létrehozása és üzembe helyezése
+      items:
+        - name: 1 – Tárolórendszerkép létrehozása
+          href: container-instances-tutorial-prepare-app.md
+        - name: 2 – Tárolóregisztrációs adatbázis létrehozása
+          href: container-instances-tutorial-prepare-acr.md
+        - name: 3 – Alkalmazás üzembe helyezése
+          href: container-instances-tutorial-deploy-app.md
+    - name: Többtárolós csoport üzembe helyezése
+      items:
+        - name: Tárolócsoport üzembe helyezése – YAML
+          href: container-instances-multi-container-yaml.md
+        - name: Tárolócsoport üzembe helyezése – Resource Manager
+          href: container-instances-multi-container-group.md
 - name: Példák
   items:
-  - name: Kódminták
-    href: https://azure.microsoft.com/resources/samples/?sort=0&term=aci
-  - name: Resource Manager-sablonok
-    href: container-instances-samples-rm.md
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
+    - name: Resource Manager-sablonok
+      href: container-instances-samples-rm.md
 - name: Alapelvek
   items:
-  - name: Tárolócsoportok
-    href: container-instances-container-groups.md
-  - name: Kvóták és korlátok
-    href: container-instances-quotas.md
-  - name: Régiónkénti elérhetőség
-    href: container-instances-region-availability.md
-  - name: Vezénylőkkel fennálló kapcsolat
-    href: container-instances-orchestrator-relationship.md
+    - name: Tárolócsoportok
+      href: container-instances-container-groups.md
+    - name: Kvóták és korlátok
+      href: container-instances-quotas.md
+    - name: Régiónkénti elérhetőség
+      href: container-instances-region-availability.md
+    - name: Vezénylőkkel fennálló kapcsolat
+      href: container-instances-orchestrator-relationship.md
 - name: Útmutatók
   items:
-  - name: Üzembe helyezés
-    items:
-    - name: Üzembe helyezés virtuális hálózatban (előzetes verzió)
-      href: container-instances-vnet.md
-    - name: Üzembe helyezés az Azure Container Registryből
-      href: container-instances-using-azure-container-registry.md
-  - name: Tárolói forgatókönyvek
-    items:
-    - name: Újraindítási szabályzat beállítása egyszer futó feladatokhoz
-      href: container-instances-restart-policy.md
-    - name: Környezeti változók beállítása (env)
-      href: container-instances-environment-variables.md
-    - name: Tároló belépési pontjának felülbírálása
-      href: container-instances-start-command.md
-    - name: Parancs végrehajtása (exec)
-      href: container-instances-exec.md
-    - name: Jenkins létrehozási feladat futtatása
-      href: container-instances-jenkins.md
-    - name: Felügyelt identitás használata (előzetes verzió)
-      href: container-instances-managed-identity.md
-    - name: GPU-erőforrások használata (előzetes verzió)
-      href: container-instances-gpu.md
-  - name: Adatkötetek csatlakoztatása
-    items:
-    - name: Azure-fájlmegosztás
-      href: container-instances-volume-azure-files.md
-    - name: Titkos
-      href: container-instances-volume-secret.md
-    - name: Üres könyvtár
-      href: container-instances-volume-emptydir.md
-    - name: Klónozott Git-adattár
-      href: container-instances-volume-gitrepo.md
-  - name: Futó tárolók kezelése
-    items:
-    - name: Üzemelési tesztek konfigurálása
-      href: container-instances-liveness-probe.md
-    - name: Tárolók leállítása és indítása
-      href: container-instances-stop-start.md
-    - name: Futó tárolók frissítése
-      href: container-instances-update.md
-  - name: Monitorozás és naplózás
-    items:
-    - name: Processzor- és memóriahasználat monitorozása
-      href: container-instances-monitor.md
-    - name: Tároló naplóinak és eseményeinek lekérése
-      href: container-instances-get-logs.md
-    - name: Naplózás az Azure Log Analytics használatával
-      href: container-instances-log-analytics.md
-  - name: Hibaelhárítás
-    items:
-    - name: Gyakori problémák megoldása
-      href: container-instances-troubleshooting.md
+    - name: Üzembe helyezés
+      items:
+        - name: Üzembe helyezés virtuális hálózatban (előzetes verzió)
+          href: container-instances-vnet.md
+        - name: Üzembe helyezés az Azure Container Registryből
+          href: container-instances-using-azure-container-registry.md
+    - name: Tárolói forgatókönyvek
+      items:
+        - name: Újraindítási szabályzat beállítása egyszer futó feladatokhoz
+          href: container-instances-restart-policy.md
+        - name: Környezeti változók beállítása (env)
+          href: container-instances-environment-variables.md
+        - name: Tároló belépési pontjának felülbírálása
+          href: container-instances-start-command.md
+        - name: Parancs végrehajtása (exec)
+          href: container-instances-exec.md
+        - name: Jenkins létrehozási feladat futtatása
+          href: container-instances-jenkins.md
+        - name: Felügyelt identitás használata (előzetes verzió)
+          href: container-instances-managed-identity.md
+        - name: GPU-erőforrások használata (előzetes verzió)
+          href: container-instances-gpu.md
+    - name: Adatkötetek csatlakoztatása
+      items:
+        - name: Azure-fájlmegosztás
+          href: container-instances-volume-azure-files.md
+        - name: Titkos
+          href: container-instances-volume-secret.md
+        - name: Üres könyvtár
+          href: container-instances-volume-emptydir.md
+        - name: Klónozott Git-adattár
+          href: container-instances-volume-gitrepo.md
+    - name: Futó tárolók kezelése
+      items:
+        - name: Üzemelési tesztek konfigurálása
+          href: container-instances-liveness-probe.md
+        - name: Tárolók leállítása és indítása
+          href: container-instances-stop-start.md
+        - name: Futó tárolók frissítése
+          href: container-instances-update.md
+    - name: Monitorozás és naplózás
+      items:
+        - name: Processzor- és memóriahasználat monitorozása
+          href: container-instances-monitor.md
+        - name: Tároló naplóinak és eseményeinek lekérése
+          href: container-instances-get-logs.md
+        - name: Naplózás az Azure Log Analytics használatával
+          href: container-instances-log-analytics.md
+    - name: Hibaelhárítás
+      items:
+        - name: Gyakori problémák megoldása
+          href: container-instances-troubleshooting.md
 - name: Referencia
   items:
-  - name: Azure CLI
-    href: /cli/azure/container
-  - name: REST
-    href: /rest/api/container-instances
-  - name: PowerShell
-    href: /powershell/module/az.containerinstance
-  - name: .NET
-    href: /dotnet/api/overview/azure/containerinstance
-  - name: Python
-    href: /python/api/overview/azure/containerinstance
-  - name: Java
-    href: /java/api/overview/azure/containerinstance
-  - name: Node.js
-    href: /javascript/api/overview/azure/containerinstances
-  - name: Resource Manager-sablon
-    href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: Azure CLI
+      href: /cli/azure/container
+    - name: REST
+      href: /rest/api/container-instances
+    - name: PowerShell
+      href: /powershell/module/az.containerinstance
+    - name: .NET
+      href: /dotnet/api/overview/azure/containerinstance
+    - name: Python
+      href: /python/api/overview/azure/containerinstance
+    - name: Java
+      href: /java/api/overview/azure/containerinstance
+    - name: Node.js
+      href: /javascript/api/overview/azure/containerinstances
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.containerinstance/containergroups
 - name: További források
   items:
-  - name: Fejlessze a készségeit a Microsoft Learnnel
-    href: /learn/browse/?products=azure-container-instances
-  - name: Régiónkénti elérhetőség
-    href: https://azure.microsoft.com/regions/services/
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/container-instances/
-  - name: Ütemterv
-    href: https://azure.microsoft.com/roadmap/
-  - name: Termékkel kapcsolatos visszajelzés küldése
-    href: https://feedback.azure.com/forums/602224-azure-container-instances
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-container-instances
-  - name: Videók
-    href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
-ms.openlocfilehash: 5a95264c8fc909e58a2db0f423ded86225d5a71c
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608418"
+    - name: Fejlessze a készségeit a Microsoft Learnnel
+      href: /learn/browse/?products=azure-container-instances
+    - name: Régiónkénti elérhetőség
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/container-instances/'
+    - name: Ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Termékkel kapcsolatos visszajelzés küldése
+      href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'

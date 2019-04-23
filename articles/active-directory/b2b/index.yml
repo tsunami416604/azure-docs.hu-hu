@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3399ed71635434bc38d0c989118afb68de9fbd4c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338496"
 documentType: LandingData
 title: Az Azure Active Directory B2B dokumentációja
 metadata:
-  document_id: 
+  document_id: null
   title: Az Azure Active Directory B2B dokumentációja – Azure Active Directory | Microsoft Docs
-  description: Oktatóanyagainkból, rövid útmutatóinkból és ismertetőinkből megtudhatja, hogyan használhatja a B2B vendégfelhasználói hozzáférést arra, hogy külső partnerekkel működhessen együtt, és tartalmakat oszthasson meg velük.
+  description: 'Oktatóanyagainkból, rövid útmutatóinkból és ismertetőinkből megtudhatja, hogyan használhatja a B2B vendégfelhasználói hozzáférést arra, hogy külső partnerekkel működhessen együtt, és tartalmakat oszthasson meg velük.'
   services: active-directory
   ms.subservice: authentication
   author: msmimart
@@ -22,7 +16,7 @@ metadata:
   ms.date: 09/10/2018
   ms.author: mimart
 abstract:
-  description: Ismerje meg, hogyan használható az Azure AD vállalatok közötti (B2B) együttműködési megoldása a vállalati alkalmazások és szolgáltatások vendégfelhasználókkal és tetszőleges külső partnerekkel való megosztására, miközben megőrzi a vállalat adatai feletti irányítást is.  Néhány példa a főbb funkciókra:<ul><li>A vendégfelhasználók egy meghívásból és érvényesítésből álló egyszerű folyamat után máris hozzáférhetnek a számukra engedélyezett erőforrásokhoz.</li><li>A vendégfelhasználók és a külső partnerek Azure AD-n, közösségi e-mail-fiókon vagy tetszőleges identitásszolgáltatón keresztül kezelhetik saját identitásaikat.</li><li>Olyan Azure AD-funkciókkal védheti a vállalati erőforrásokat, mint például a többtényezős hitelesítés.</li><li>API-k használatával testre szabhatja a felületet, például önkiszolgáló portálon keresztüli regisztrációval.</li></ul>Az alábbi forrásanyagokkal gyorsan felkészülhet.
+  description: 'Ismerje meg, hogyan használható az Azure AD vállalatok közötti (B2B) együttműködési megoldása a vállalati alkalmazások és szolgáltatások vendégfelhasználókkal és tetszőleges külső partnerekkel való megosztására, miközben megőrzi a vállalat adatai feletti irányítást is.  Néhány példa a főbb funkciókra:<ul><li>A vendégfelhasználók egy meghívásból és érvényesítésből álló egyszerű folyamat után máris hozzáférhetnek a számukra engedélyezett erőforrásokhoz.</li><li>A vendégfelhasználók és a külső partnerek Azure AD-n, közösségi e-mail-fiókon vagy tetszőleges identitásszolgáltatón keresztül kezelhetik saját identitásaikat.</li><li>Olyan Azure AD-funkciókkal védheti a vállalati erőforrásokat, mint például a többtényezős hitelesítés.</li><li>API-k használatával testre szabhatja a felületet, például önkiszolgáló portálon keresztüli regisztrációval.</li></ul>Az alábbi forrásanyagokkal gyorsan felkészülhet.'
   aside:
     image:
       alt: Az Azure AD B2B értelmezése című videó miniatűrje
@@ -30,32 +24,32 @@ abstract:
       src: ./media/index/video.png
       width: 246
     title: Az Azure AD B2B értelmezése
-    href: https://www.youtube.com/watch?v=AhwrweCBdsc
+    href: 'https://www.youtube.com/watch?v=AhwrweCBdsc'
     width: 246
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: Megtudhatja, hogyan hívhat meg vendégfelhasználókat, és kezdheti meg a vállalatközi együttműködést.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        alt: 
-        src: ./media/index/i_security-management.png
-      text: Vendégfelhasználók hozzáadása az Azure Portalon
-      href: b2b-quickstart-add-guest-users-portal.md
-    - image:
-        alt: 
-        src: ./media/index/i_security-management.png
-      text: Vendégfelhasználó hozzáadása PowerShell-lel
-      href: b2b-quickstart-invite-powershell.md
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Megtudhatja, hogyan adhatja meg a B2B együttműködés beállításait, és hogyan biztosíthatja a vállalati erőforrások védelmét.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Megtudhatja, hogyan hívhat meg vendégfelhasználókat, és kezdheti meg a vállalatközi együttműködést.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: null
+              src: ./media/index/i_security-management.png
+            text: Vendégfelhasználók hozzáadása az Azure Portalon
+            href: b2b-quickstart-add-guest-users-portal.md
+          - image:
+              alt: null
+              src: ./media/index/i_security-management.png
+            text: Vendégfelhasználó hozzáadása PowerShell-lel
+            href: b2b-quickstart-invite-powershell.md
+  - title: Részletes útmutatók
     items:
-    - html: <a href="/azure/active-directory/b2b/tutorial-bulk-invite">B2B vendégfelhasználók tömeges meghívása PowerShell-lel</a>
-    - html: <a href="/azure/active-directory/b2b/b2b-tutorial-require-mfa">Többtényezős hitelesítés kényszerítése B2B vendégfelhasználók számára</a>
+      - type: paragraph
+        text: 'Megtudhatja, hogyan adhatja meg a B2B együttműködés beállításait, és hogyan biztosíthatja a vállalati erőforrások védelmét.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/b2b/tutorial-bulk-invite">B2B vendégfelhasználók tömeges meghívása PowerShell-lel</a>
+          - html: <a href="/azure/active-directory/b2b/b2b-tutorial-require-mfa">Többtényezős hitelesítés kényszerítése B2B vendégfelhasználók számára</a>

@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f03ece417ef5db891efe32a662a092ebf6072b33
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848161"
 documentType: LandingData
 title: Az Azure Data Factory dokumentációja
 metadata:
   title: Az Azure Data Factory dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: Ismerje meg, hogyan telepíthet a helyszíni és felhőalapú erőforrásokba és azokból kivezető automatizált adatfeldolgozási folyamatokat a Data Factory használatával az adatok áthelyezéséhez és elemzésre való előkészítéséhez.
+  description: 'Ismerje meg, hogyan telepíthet a helyszíni és felhőalapú erőforrásokba és azokból kivezető automatizált adatfeldolgozási folyamatokat a Data Factory használatával az adatok áthelyezéséhez és elemzésre való előkészítéséhez.'
   services: data-factory
   author: sharonlo101
   ms.author: shlo
@@ -22,83 +16,83 @@ abstract:
   description: 'Ismerkedjen meg a Data Factory felhőalapú integrációs szolgáltatás használatával, amelynek segítségével adattárolási, -továbbítási és -feldolgozási folyamatokat állíthat össze automatizált adatfeldolgozási folyamatokká. Az oktatóanyagok és az egyéb dokumentáció bemutatják az adatfeldolgozási folyamatok telepítésének és felügyeletének, valamint az adatok az elemzéshez való továbbításának és átalakításának módjait. <p>Ha a Data Factory V1 verzióját használja, lásd: <a href=/azure/data-factory/v1/data-factory-introduction>a V1 dokumentációja</a>.</p>'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: Új képességek a korszerű adatintegrálásra a felhőben (1:19:22)
-    href: https://channel9.msdn.com/Events/Build/2018/BRK2204/player
+    title: 'Új képességek a korszerű adatintegrálásra a felhőben (1:19:22)'
+    href: 'https://channel9.msdn.com/Events/Build/2018/BRK2204/player'
     width: 250
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'A következő rövid útmutatók révén megismerheti, hogyan hozhat létre Data Factory-folyamatokat az adatok továbbítására és feldolgozására:'
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: /azure/data-factory/media/index/portal.svg
-      text: A Data Factory felhasználói felülete
-      href: /azure/data-factory/quickstart-create-data-factory-portal
-    - image:
-        src: /azure/data-factory/media/index/copy-data-tool.png
-      text: Adatok másolása eszköz
-      href: /azure/data-factory/quickstart-create-data-factory-copy-data-tool
-    - image:
-        src: /azure/data-factory/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/data-factory/quickstart-create-data-factory-powershell
-    - image:
-        src: /azure/data-factory/media/index/logo_net.svg
-      text: .NET
-      href: /azure/data-factory/quickstart-create-data-factory-dot-net
-    - image:
-        src: /azure/data-factory/media/index/logo_python.svg
-      text: Python
-      href: /azure/data-factory/quickstart-create-data-factory-python
-    - image:
-        src: /azure/data-factory/media/index/logo_rest.svg
-      text: REST
-      href: /azure/data-factory/quickstart-create-data-factory-rest-api
-    - image:
-        src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
-      text: Resource Manager-sablon
-      href: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Ismerje meg, hogyan hozható létre és figyelhető adat-előállító:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'A következő rövid útmutatók révén megismerheti, hogyan hozhat létre Data Factory-folyamatokat az adatok továbbítására és feldolgozására:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-factory/media/index/portal.svg
+            text: A Data Factory felhasználói felülete
+            href: /azure/data-factory/quickstart-create-data-factory-portal
+          - image:
+              src: /azure/data-factory/media/index/copy-data-tool.png
+            text: Adatok másolása eszköz
+            href: /azure/data-factory/quickstart-create-data-factory-copy-data-tool
+          - image:
+              src: /azure/data-factory/media/index/logo_powershell.svg
+            text: Azure PowerShell
+            href: /azure/data-factory/quickstart-create-data-factory-powershell
+          - image:
+              src: /azure/data-factory/media/index/logo_net.svg
+            text: .NET
+            href: /azure/data-factory/quickstart-create-data-factory-dot-net
+          - image:
+              src: /azure/data-factory/media/index/logo_python.svg
+            text: Python
+            href: /azure/data-factory/quickstart-create-data-factory-python
+          - image:
+              src: /azure/data-factory/media/index/logo_rest.svg
+            text: REST
+            href: /azure/data-factory/quickstart-create-data-factory-rest-api
+          - image:
+              src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
+            text: Resource Manager-sablon
+            href: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
+  - title: Részletes útmutatók
     items:
-    - html: Adatok másolása a felhőben – <a href="/azure/data-factory/tutorial-copy-data-tool">Adatok másolása eszköz</a> | <a href="/azure/data-factory/tutorial-copy-data-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-copy-data-dot-net">.NET</a>
-    - html: Helyszíni adatok másolása a felhőbe – <a href="/azure/data-factory/tutorial-hybrid-copy-data-tool">Adatok másolása eszköz | <a href="/azure/data-factory/tutorial-hybrid-copy-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-hybrid-copy-powershell">Azure PowerShell</a>
-    - html: Adatok tömeges másolása – <a href="/azure/data-factory/tutorial-bulk-copy-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-bulk-copy">Azure PowerShell</a>
-    - html: Adatok fokozatos másolása – <a href="/azure/data-factory/tutorial-incremental-copy-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-incremental-copy-powershell">Azure PowerShell</a>
-    - html: Adatok átalakítása a felhőben a Spark használatával – <a href="/azure/data-factory/tutorial-transform-data-spark-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-transform-data-spark-powershell">Azure PowerShell</a>
-    - html: Adatok átalakítása a virtuális hálózatban – <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
-    - html: Elágaztatás és láncolás hozzáadása – <a href="/azure/data-factory/tutorial-control-flow-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
-    - html: SSIS-csomagok futtatása az Azure-ban – <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
-    - html: Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryben – <a href="/azure/data-factory/continuous-integration-deployment">A Data Factory felhasználói felülete</a>
-- title: Példák
-  items:
-  - type: paragraph
-    text: A következő minták segítségével dolgozhat a Data Factory-val
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Ismerje meg, hogyan hozható létre és figyelhető adat-előállító:'
+      - type: list
+        style: unordered
+        items:
+          - html: Adatok másolása a felhőben – <a href="/azure/data-factory/tutorial-copy-data-tool">Adatok másolása eszköz</a> | <a href="/azure/data-factory/tutorial-copy-data-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-copy-data-dot-net">.NET</a>
+          - html: Helyszíni adatok másolása a felhőbe – <a href="/azure/data-factory/tutorial-hybrid-copy-data-tool">Adatok másolása eszköz | <a href="/azure/data-factory/tutorial-hybrid-copy-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-hybrid-copy-powershell">Azure PowerShell</a>
+          - html: Adatok tömeges másolása – <a href="/azure/data-factory/tutorial-bulk-copy-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-bulk-copy">Azure PowerShell</a>
+          - html: Adatok fokozatos másolása – <a href="/azure/data-factory/tutorial-incremental-copy-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-incremental-copy-powershell">Azure PowerShell</a>
+          - html: Adatok átalakítása a felhőben a Spark használatával – <a href="/azure/data-factory/tutorial-transform-data-spark-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-transform-data-spark-powershell">Azure PowerShell</a>
+          - html: Adatok átalakítása a virtuális hálózatban – <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
+          - html: Elágaztatás és láncolás hozzáadása – <a href="/azure/data-factory/tutorial-control-flow-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
+          - html: SSIS-csomagok futtatása az Azure-ban – <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">A Data Factory felhasználói felülete</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
+          - html: Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryben – <a href="/azure/data-factory/continuous-integration-deployment">A Data Factory felhasználói felülete</a>
+  - title: Példák
     items:
-    - html: <a href="/azure/data-factory/samples-powershell">PowerShell</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: A következő minták segítségével dolgozhat a Data Factory-val
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/data-factory/samples-powershell">PowerShell</a>
+  - title: Referencia
     items:
-    - title: Parancssor
-      html: <p><a href="/powershell/module/az.datafactory/">Azure PowerShell</a></p>
-    - title: Nyelvek
-      html: <p><a href="/dotnet/api/microsoft.azure.management.datafactory">.NET</a></p><p><a href="/python/api/overview/azure/datafactory?view=azure-python">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/datafactory">REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: <p><a href="/powershell/module/az.datafactory/">Azure PowerShell</a></p>
+          - title: Nyelvek
+            html: <p><a href="/dotnet/api/microsoft.azure.management.datafactory">.NET</a></p><p><a href="/python/api/overview/azure/datafactory?view=azure-python">Python</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/datafactory">REST API</a></p>

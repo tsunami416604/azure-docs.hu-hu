@@ -1,100 +1,93 @@
-items:
 - name: A Privileged Identity Management dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi az Azure AD PIM?
-    href: pim-configure.md
+    - name: Mi az Azure AD PIM?
+      href: pim-configure.md
 - name: Alapelvek
   items:
-  - name: Licenckövetelmények
-    href: subscription-requirements.md
-  - name: Nem kezelhető szerepkörök
-    href: pim-roles.md
-  - name: Biztonságos emelt szintű hozzáférés
-    href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
-  - name: MFA és PIM
-    href: pim-how-to-require-mfa.md
-  - name: Áttekintő irányítópultok
-    href: pim-resource-roles-overview-dashboards.md
-  - name: E-mail-értesítések
-    href: pim-email-notifications.md
-  - name: Microsoft Graph API-k
-    href: pim-apis.md
+    - name: Licenckövetelmények
+      href: subscription-requirements.md
+    - name: Nem kezelhető szerepkörök
+      href: pim-roles.md
+    - name: Biztonságos emelt szintű hozzáférés
+      href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+    - name: MFA és PIM
+      href: pim-how-to-require-mfa.md
+    - name: Áttekintő irányítópultok
+      href: pim-resource-roles-overview-dashboards.md
+    - name: E-mail-értesítések
+      href: pim-email-notifications.md
+    - name: Microsoft Graph API-k
+      href: pim-apis.md
 - name: Útmutatók
-  items:
-  - name: PIM üzembe helyezése
-    href: pim-deployment-plan.md
-  - name: Ismerkedés a PIM-mel
-    href: pim-getting-started.md
-  - name: Saját szerepkörök aktiválása
-    items:
-    - name: Saját Azure AD-szerepkörök aktiválása
-      href: pim-how-to-activate-role.md
-    - name: Saját Azure-erőforrásszerepkörök aktiválása
-      href: pim-resource-roles-activate-your-roles.md
-  - name: A PIM konfigurálása
-    items:
-    - name: Adatvédelmi varázsló
-      href: pim-security-wizard.md
-    - name: Az Azure-erőforrások felfedezése
-      href: pim-resource-roles-discover-resources.md
-    - name: Hozzáférés biztosítása mások számára a PIM kezeléséhez
-      href: pim-how-to-give-access-to-pim.md
-    - name: Hozzáférési jogosultságszint emelése az összes előfizetés kezeléséhez
-      href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
-  - name: Az Azure AD-szerepkörök kezelése
-    items:
-    - name: Szerepkörök hozzárendelése
-      href: pim-how-to-add-role-to-user.md
-    - name: Kérések jóváhagyása
-      href: azure-ad-pim-approval-workflow.md
-    - name: Szerepkör-beállítások konfigurálása
-      href: pim-how-to-change-default-settings.md
-    - name: Riasztások konfigurálása
-      href: pim-how-to-configure-security-alerts.md
-    - name: Naplózási előzmények megtekintése
-      href: pim-how-to-use-audit-log.md
-  - name: Azure-erőforrásszerepkörök kezelése
-    items:
-    - name: Szerepkörök hozzárendelése
-      href: pim-resource-roles-assign-roles.md
-    - name: Külső felhasználók meghívása
-      href: pim-resource-roles-external-users.md
-    - name: Kérések jóváhagyása
-      href: pim-resource-roles-approval-workflow.md
-    - name: Szerepkörök meghosszabbítása vagy megújítása
-      href: pim-resource-roles-renew-extend.md
-    - name: Szerepkör-beállítások konfigurálása
-      href: pim-resource-roles-configure-role-settings.md
-    - name: Riasztások konfigurálása
-      href: pim-resource-roles-configure-alerts.md
-    - name: Tevékenység- és naplózási előzmények megtekintése
-      href: azure-pim-resource-rbac.md
-    - name: Egyéni szerepkörök használata
-      href: pim-resource-roles-custom-role-policy.md
-  - name: Hozzáférés áttekintése
-    items:
-    - name: Azure AD-szerepkörök
-      items:
-      - name: Saját Azure AD-szerepkörök áttekintése
-        href: pim-how-to-perform-security-review.md
-      - name: Hozzáférési felülvizsgálat indítása
-        href: pim-how-to-start-security-review.md
-      - name: Hozzáférési felülvizsgálat befejezése
-        href: pim-how-to-complete-review.md
-    - name: Azure-erőforrásszerepkörök
-      items:
-      - name: Saját Azure-erőforrásszerepkörök áttekintése
-        href: pim-resource-roles-perform-access-review.md
-      - name: Hozzáférési felülvizsgálat indítása
-        href: pim-resource-roles-start-access-review.md
-      - name: Hozzáférési felülvizsgálat befejezése
-        href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: 6ccd7b75b356fef6f7c167873e7b00429c6f28a3
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575793"
+  items:
+    - name: PIM üzembe helyezése
+      href: pim-deployment-plan.md
+    - name: Ismerkedés a PIM-mel
+      href: pim-getting-started.md
+    - name: Saját szerepkörök aktiválása
+      items:
+        - name: Saját Azure AD-szerepkörök aktiválása
+          href: pim-how-to-activate-role.md
+        - name: Saját Azure-erőforrásszerepkörök aktiválása
+          href: pim-resource-roles-activate-your-roles.md
+    - name: A PIM konfigurálása
+      items:
+        - name: Adatvédelmi varázsló
+          href: pim-security-wizard.md
+        - name: Az Azure-erőforrások felfedezése
+          href: pim-resource-roles-discover-resources.md
+        - name: Hozzáférés biztosítása mások számára a PIM kezeléséhez
+          href: pim-how-to-give-access-to-pim.md
+        - name: Hozzáférési jogosultságszint emelése az összes előfizetés kezeléséhez
+          href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+    - name: Az Azure AD-szerepkörök kezelése
+      items:
+        - name: Szerepkörök hozzárendelése
+          href: pim-how-to-add-role-to-user.md
+        - name: Kérések jóváhagyása
+          href: azure-ad-pim-approval-workflow.md
+        - name: Szerepkör-beállítások konfigurálása
+          href: pim-how-to-change-default-settings.md
+        - name: Riasztások konfigurálása
+          href: pim-how-to-configure-security-alerts.md
+        - name: Naplózási előzmények megtekintése
+          href: pim-how-to-use-audit-log.md
+    - name: Azure-erőforrásszerepkörök kezelése
+      items:
+        - name: Szerepkörök hozzárendelése
+          href: pim-resource-roles-assign-roles.md
+        - name: Külső felhasználók meghívása
+          href: pim-resource-roles-external-users.md
+        - name: Kérések jóváhagyása
+          href: pim-resource-roles-approval-workflow.md
+        - name: Szerepkörök meghosszabbítása vagy megújítása
+          href: pim-resource-roles-renew-extend.md
+        - name: Szerepkör-beállítások konfigurálása
+          href: pim-resource-roles-configure-role-settings.md
+        - name: Riasztások konfigurálása
+          href: pim-resource-roles-configure-alerts.md
+        - name: Tevékenység- és naplózási előzmények megtekintése
+          href: azure-pim-resource-rbac.md
+        - name: Egyéni szerepkörök használata
+          href: pim-resource-roles-custom-role-policy.md
+    - name: Hozzáférés áttekintése
+      items:
+        - name: Azure AD-szerepkörök
+          items:
+            - name: Saját Azure AD-szerepkörök áttekintése
+              href: pim-how-to-perform-security-review.md
+            - name: Hozzáférési felülvizsgálat indítása
+              href: pim-how-to-start-security-review.md
+            - name: Hozzáférési felülvizsgálat befejezése
+              href: pim-how-to-complete-review.md
+        - name: Azure-erőforrásszerepkörök
+          items:
+            - name: Saját Azure-erőforrásszerepkörök áttekintése
+              href: pim-resource-roles-perform-access-review.md
+            - name: Hozzáférési felülvizsgálat indítása
+              href: pim-resource-roles-start-access-review.md
+            - name: Hozzáférési felülvizsgálat befejezése
+              href: pim-resource-roles-complete-access-review.md
