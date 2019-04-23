@@ -17,11 +17,11 @@ ms.author: celested
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7de892143e1c69953cc60429ea0d24df194f0df
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500481"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795185"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Az Azure AD-alkalmazások hozzájárulási folyamatának ismertetése
 
@@ -50,7 +50,7 @@ A következő ábra és táblázat a beleegyezést kérő építőelemeket infor
 | 2 | Cím | A cím módosításainak alapján, hogy a felhasználók a felhasználó vagy rendszergazda hozzájárulását flow szolgáltatáson keresztül fog. A felhasználói jóváhagyási folyamatot a cím lesz "Engedélyeket kért" pedig a rendszergazdai jóváhagyás folyamatban a cím lesz rendelkeznek egy további sort "A szervezet elfogadás". |
 | 3 | Alkalmazásembléma | Ez a rendszerkép segíthet a felhasználóknak egy vizuális köteg, hogy az alkalmazás az alkalmazás azokat kívánják elérni. Ez a rendszerkép az alkalmazásfejlesztők által biztosított, és a tulajdonjogát, a lemezkép nincs érvényesítve. |
 | 4 | App neve | Ezt az értéket kell tájékoztatják a felhasználókat, hogy mely alkalmazás férhetnek hozzá az adataikhoz. Megjegyzés: ezt a nevet a fejlesztők által biztosított és az alkalmazás neve a tulajdonjogát nem ellenőrzi. |
-| 5 | Publisher domain | Ezt az értéket kell biztosítania a felhasználók értékelhetik a megbízhatósága lehet egy tartomány. Ezt a tartományt a fejlesztők által biztosított, és a rendszer érvényesíti a közzétevő tartomány tulajdonjogát. |
+| 5 | Közzétevő tartomány | Ezt az értéket kell biztosítania a felhasználók értékelhetik a megbízhatósága lehet egy tartomány. Ezt a tartományt a fejlesztők által biztosított, és a rendszer érvényesíti a közzétevő tartomány tulajdonjogát. |
 | 6 | Engedélyek | Ez a lista tartalmazza az ügyfélalkalmazás által kért engedélyeket. Felhasználók mindig ki kell értékelni a típusú tudni, hogy milyen adatok eléréséhez a felhasználók nevében, ha elfogadja őket az ügyfélalkalmazás lesz jogosult a kért engedélyeket. Az alkalmazás fejlesztőjeként célszerű hozzáférés kéréséhez, a minimális jogosultságokkal rendelkező az engedélyeket. |
 | 7 | Engedély leírása | Ez az érték az engedélyeket a szolgáltatás által biztosított. Szeretné az engedély leírása, akkor mellett az engedélyt a sávnyílra kell váltani. |
 | 8 | Alkalmazás-feltételek | Ezeket a feltételeket az alkalmazás és az adatvédelmi nyilatkozat feltételeit hivatkozásokat tartalmaznak. A kiadó felelős szabályainak sbalování a a szolgáltatási feltételeket. Ezenkívül a kiadó felelős a módszert használja, és a felhasználói adatokat az adatvédelmi nyilatkozat a megosztás nyilvánosságra. Ha a közzétevő nem biztosítja ezeket az értékeket mutat, több-bérlős alkalmazásokhoz, félkövér figyelmeztetést a beleegyezést kérő üzenetet a lesz. |
