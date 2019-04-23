@@ -15,20 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/15/2019
 ms.author: jonbeck
-ms.openlocfilehash: 02aa18329dd40ae2d3b0d1e2572ff3f6e2053466
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: MT
+ms.openlocfilehash: a72ff65c7b9434ca2f43e4e4f06fc4e95dfbb4e7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351883"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997342"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Tárolásra optimalizált virtuális gépek méretei
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-storage.md)]
 
-
-
 ## <a name="other-sizes"></a>További méretek
+
 - [Általános célú](sizes-general.md)
 - [Számításra optimalizált](sizes-compute.md)
 - [Memóriaoptimalizált](sizes-memory.md)
@@ -37,4 +36,7 @@ ms.locfileid: "54351883"
 - [Előző generációs szoftvereknél jobban](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>További lépések
+
 Tudjon meg többet [Azure számítási egységek (ACU)](acu.md) Azure-termékváltozatok hasonlítsa össze a számítási teljesítményt nyújt segítséget.
+
+Ismerje meg, hogyan [a Lsv2 sorozatú virtuális gépek teljesítményének optimalizálásához](storage-performance.md).

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1afe1b437d82759cdfd085f018c31db33264dbf5
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 0c93888af16ed7f7162f38c73be5f6330c886c65
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683173"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001575"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorozás és teljesítmény-finomhangolás
 
@@ -85,9 +85,9 @@ Ha azt állapítja meg, hogy rendelkezik-e a futó kapcsolatos teljesítménybel
 > [!IMPORTANT]
 > A T-SQL-lekérdezések a DMV-vel a CPU-kihasználtság problémák elhárításához talál itt [azonosítása CPU-teljesítménnyel kapcsolatos problémák](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
 
-### <a name="troubleshoot-queries-with-parameter-sensitive-query-execution-plan-issues"></a>Lekérdezések paraméter-és nagybetűket lekérdezés végrehajtási terv problémáinak hibaelhárítása
+### <a name="ParamSniffing"></a> Lekérdezések paraméter-és nagybetűket lekérdezés végrehajtási terv problémáinak hibaelhárítása
 
-A paraméter kényes terv (PSP) probléma hivatkozik egy forgatókönyvet, ahol a lekérdezésoptimalizáló állít elő, a lekérdezés végrehajtási terv optimális csak egy adott paraméter értéke (vagy értékek) és a gyorsítótárazott tervet majd nem optimális a felhasznált paraméterértékek egymást követő végrehajtások. A nem optimális tervek majd eredményezhet lekérdezési teljesítményproblémákat és általános számítási feladatok átviteli teljesítménycsökkenést.
+A paraméter kényes terv (PSP) probléma hivatkozik egy forgatókönyvet, ahol a lekérdezésoptimalizáló állít elő, a lekérdezés végrehajtási terv optimális csak egy adott paraméter értéke (vagy értékek) és a gyorsítótárazott tervet majd nem optimális a felhasznált paraméterértékek egymást követő végrehajtások. A nem optimális tervek majd eredményezhet lekérdezési teljesítményproblémákat és általános számítási feladatok átviteli teljesítménycsökkenést. A paraméter-elemző és lekérdezés-feldolgozás további információkért lásd: a [lekérdezés feldolgozása architektúra – útmutató](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide.md7#ParamSniffing).
 
 Nincsenek problémák, egyes társított kompromisszumot kínál a és a hátrányai segítségével több megkerülő megoldások:
 
@@ -102,17 +102,17 @@ Nincsenek problémák, egyes társított kompromisszumot kínál a és a hátrá
 
 Az ilyen típusú problémák megoldása kapcsolatos további információkért lásd:
 
-- Ez [paraméter szag](https://blogs.msdn.microsoft.com/queryoptteam/20../../i-smell-a-parameter/) blogbejegyzés
-- Ez [elefántviselkedési és egeret paraméter elemző](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) blogbejegyzés
-- Ez [paraméterezett lekérdezéseknél terv minőségi és dinamikus sql](https://blogs.msdn.microsoft.com/conor_cunningham_msft/20../../conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) blogbejegyzés
+- Ez [I szag paraméter](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) blogbejegyzés
+- Ez [paraméterezett lekérdezéseknél terv minőségi és dinamikus sql](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) blogbejegyzés
+- Ez [SQL az SQL Server az optimalizálási technikákat lekérdezés: A paraméter Sniffing](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/) blogbejegyzés
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Fordítási tevékenység miatt nem megfelelő paraméterezés hibaelhárítása
 
 Amikor lekérdezést literálok, vagy az adatbázismotor úgy dönt, hogy az utasítás automatikusan paraméterezni, vagy egy felhasználó explicit módon lehet paraméterezni, fordítható számának csökkentése érdekében. Használatával a ugyanazt a mintát, de különböző konstansértékekkel lekérdezés lefordítja nagy számú magas CPU-kihasználtság eredményezhet. Hasonlóképpen csak részben paraméterezni egy lekérdezést, amely folyamatosan literálok lehetnek, ha az adatbázismotorhoz parametrizálja, további.  Az alábbi, például a részlegesen paraméteres lekérdezés:
 
 ```sql
-select * from t1 join t2 on t1.c1=t2.c1
-where t1.c1=@p1 and t2.c2='961C3970-0E54-4E8E-82B6-5545BE897F8F'
+SELECT * FROM t1 JOIN t2 ON t1.c1 = t2.c1
+WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
 A korábbi példában `t1.c1` veszi `@p1` , de `t2.c2` továbbra is igénybe vehet, literal GUID. Ebben az esetben, ha módosítja az értéket `c2`, egy másik lekérdezést, a lekérdezés lesznek kezelve, és a egy új fordítási történik. Az előző példában a fordítások csökkentése érdekében a megoldás az, is paraméterezni a GUID Azonosítót.
@@ -120,24 +120,24 @@ A korábbi példában `t1.c1` veszi `@p1` , de `t2.c2` továbbra is igénybe veh
 A következő lekérdezést a lekérdezések száma lekérdezés kivonata meghatározni, ha a lekérdezés megfelelően paraméterezni, vagy nem jeleníti meg:
 
 ```sql
-   SELECT  TOP 10  
-      q.query_hash
-      , count (distinct p.query_id ) AS number_of_distinct_query_ids
-      , min(qt.query_sql_text) AS sampled_query_text
-   FROM sys.query_store_query_text AS qt
-      JOIN sys.query_store_query AS q
-         ON qt.query_text_id = q.query_text_id
-      JOIN sys.query_store_plan AS p 
-         ON q.query_id = p.query_id
-      JOIN sys.query_store_runtime_stats AS rs 
-         ON rs.plan_id = p.plan_id
-      JOIN sys.query_store_runtime_stats_interval AS rsi
-         ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
-   WHERE
-      rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
-      AND query_parameterization_type_desc IN ('User', 'None')
-   GROUP BY q.query_hash
-   ORDER BY count (distinct p.query_id) DESC
+SELECT  TOP 10  
+  q.query_hash
+  , count (distinct p.query_id ) AS number_of_distinct_query_ids
+  , min(qt.query_sql_text) AS sampled_query_text
+FROM sys.query_store_query_text AS qt
+  JOIN sys.query_store_query AS q
+     ON qt.query_text_id = q.query_text_id
+  JOIN sys.query_store_plan AS p 
+     ON q.query_id = p.query_id
+  JOIN sys.query_store_runtime_stats AS rs 
+     ON rs.plan_id = p.plan_id
+  JOIN sys.query_store_runtime_stats_interval AS rsi
+     ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
+WHERE
+  rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
+  AND query_parameterization_type_desc IN ('User', 'None')
+GROUP BY q.query_hash
+ORDER BY count (distinct p.query_id) DESC
 ```
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>A probléma lekérdezéseket, vagy adjon meg további erőforrások
@@ -183,7 +183,7 @@ A nagy-CPU-környezetben a Query Store és a várakozási statisztikák nem mind
 - Magas – Processzor fogyasztó lekérdezések még folyamatban, és a lekérdezések még nem fejeződött be
 - A nagy-CPU fogyasztó lekérdezések feladatátvétel történt, amikor futottak.
 
-Query Store és várakozási statisztika-követési dinamikus felügyeleti nézetek csak a sikeresen befejezett és időkorlátot lekérdezésekhez eredmények megjelenítése, és ne jelenjen meg az adatokat jelenleg végrehajtás alatt álló utasítások (mindaddig, amíg azok befejezése).  A dinamikus felügyeleti nézet [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) lehetővé teszi, hogy a jelenleg teljesítés alatt lekérdezések és a kapcsolódó feldolgozó idő nyomon követése.
+Query Store és várakozási statisztika-követési dinamikus felügyeleti nézetek csak a sikeresen befejezett és időkorlátot lekérdezésekhez eredmények megjelenítése, és ne jelenjen meg az adatokat jelenleg végrehajtás alatt álló utasítások (mindaddig, amíg azok befejezése). A dinamikus felügyeleti nézet [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) lehetővé teszi, hogy a jelenleg teljesítés alatt lekérdezések és a kapcsolódó feldolgozó idő nyomon követése.
 
 Amint az előző diagramon látható, a leggyakoribb vár a következők:
 
@@ -198,6 +198,8 @@ Amint az előző diagramon látható, a leggyakoribb vár a következők:
 > - [I/o-teljesítménybeli problémák azonosítása](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
 > - [Azonosítsa `tempdb` teljesítménnyel kapcsolatos problémák](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
 > - [Memória biztosítása vár azonosítása](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
+> - [TigerToolbox - feladatot, és a zárolás van életben](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
+> - [TigerToolbox - usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
 ## <a name="improving-database-performance-with-more-resources"></a>További erőforrások az adatbázis teljesítményének növelése
 

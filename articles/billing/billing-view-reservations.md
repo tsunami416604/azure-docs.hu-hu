@@ -1,7 +1,6 @@
 ---
 title: Azure-erőforrások lefoglalását megtekintése |} A Microsoft Docs
 description: Ismerje meg az Azure-foglalások megtekintése az Azure Portalon.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,31 +10,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2018
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: bf18d845b7128c8d6f740555f1a0f791767240ae
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650223"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995523"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Az Azure-foglalások megtekintése az Azure Portalon
 
 Az előfizetés típusa és az engedélyek, függően nincsenek többféle módon megtekintéséhez a foglalást az Azure-hoz.
 
-## <a name="view-reservations-as-owner-or-reader"></a>A foglalások tulajdonosaként vagy olvasó megtekintése
+## <a name="view-purchased-reservations"></a>Foglalások vásárolt megtekintése
 
-Alapértelmezés szerint amikor vásárol egy foglalást, és a fiók rendszergazdája tekintheti meg a foglalást. Ön és fiókadminisztrátori automatikusan a tulajdonos szerepkör kapnak a foglalást. Ahhoz, hogy mások megtekintése a foglalást, hozzá kell adnia azokat egy **tulajdonosa** vagy **olvasó** a foglalást meg. További információkért lásd: [hozzáadása vagy módosítása egy foglalást kezelésére jogosult felhasználók](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
- 
+Alapértelmezés szerint amikor vásárol egy foglalást, és a fiók rendszergazdája tekintheti meg a foglalást. Ön és fiókadminisztrátori automatikusan megkapja a foglalási sorrend és a fenntartás a tulajdonosi szerepkör. Ahhoz, hogy mások megtekintése a foglalást, hozzá kell adnia azokat egy **tulajdonosa** vagy **olvasó** a Foglalás rendelési vagy foglalást.
+
+További információkért lásd: [hozzáadása vagy módosítása egy foglalást kezelésére jogosult felhasználók](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+
 Tulajdonos vagy olvasó, foglalás megtekintése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A Keresés **foglalások**.
-
-    ![Az Azure portál keresési bemutató képernyőkép](./media/billing-view-reservation/portal-reservation-search.png)
-
-1. A foglalások listáját láthatja, amelyekben a tulajdonos vagy olvasó szerepkört.
+2. A Keresés **foglalások**.
+    ![Az Azure portál keresési bemutató képernyőkép](./media/billing-view-reservation/portal-reservation-search.png)  
+3. A listán megjelenik minden foglalást, amelyekben a tulajdonos vagy olvasó szerepkört. Minden egyes foglalás látható az utolsó ismert kihasználtsági százaléka.  
+    ![Foglalások listáját megjelenítő példa](./media/billing-view-reservation/view-reservations.png)
+4. Jelöljön ki egy foglalást, és tekintse meg a kihasználtsági trendek utolsó öt napig.  
+    ![Példa ábrázoló foglalás kihasználtsági trendek](./media/billing-view-reservation/reservation-utilization.png)
+5. Is beszerezheti a [foglalás kihasználtság](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) a fenntartott példány használata API használatával és a [a Microsoft Azure Consumption Insights Power BI-tartalomcsomag](/power-bi/service-connect-to-azure-consumption-insights).
 
 A Foglalás hatóköre módosítani szeretné, ha a Foglalás felosztása vagy módosítása, aki kezelheti a foglalást, lásd: [kezelése az Azure-foglalások](billing-manage-reserved-vm-instance.md).
 
@@ -46,7 +49,7 @@ A Foglalás hatóköre módosítani szeretné, ha a Foglalás felosztása vagy m
 Foglalás tranzakciók megtekintése az Azure Portalon
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A Keresés **Cost Management és számlázás**.
+1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
     ![Az Azure portál keresési bemutató képernyőkép](./media/billing-view-reservation/portal-cm-billing-search.png)
 

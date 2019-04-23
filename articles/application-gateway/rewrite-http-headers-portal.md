@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 9d52114f5d01beca53ed48ee2114dc98cc20f3a2
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 6afc07f98905469b06622e7829ec4a215b94845e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682424"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994605"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>HTTP-kérelmek és válaszfejlécek Azure Application gatewayjel – Azure portal újraírása
 
@@ -24,9 +24,9 @@ Ez a cikk bemutatja, hogyan konfigurálhatja az Azure portal használatával egy
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-Szüksége lesz egy Application Gateway v2 a v1-Termékváltozat nem támogatott Termékváltozat, mivel a fejléc újraírási képessége. Ha nem rendelkezik a v2 szintű Termékváltozatot, hozzon létre egy [Application Gateway v2 szintű Termékváltozatot](<https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps>) megkezdése előtt.
+Szüksége lesz egy Application Gateway v2 a v1-Termékváltozat nem támogatott Termékváltozat, mivel a fejléc újraírási képessége. Ha nem rendelkezik a v2 szintű Termékváltozatot, hozzon létre egy [Application Gateway v2 szintű Termékváltozatot](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) megkezdése előtt.
 
 ## <a name="what-is-required-to-rewrite-a-header"></a>Mi szükséges egy fejléc újraírása
 

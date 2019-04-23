@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a5d34b2964d805cdbeced0d4fad3dd889da9f3e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: b8ee1bdfece35d774cdc79595a495b0b3719a836
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900624"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996645"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Gyors útmutató: IOS-alkalmazás létrehozása az Azure térbeli horgonyok, Objective-C vagy Swift
 
@@ -88,15 +88,15 @@ A következő lépés, hogy a fiók azonosítóját és kulcsát az alkalmazás 
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
-Nyissa meg `iOS/Swift/SampleSwift/ViewController.swift`.
+Nyissa meg `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
 
-Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le `Set me` és a fiókkulcsot.
+Keresse meg a `spatialAnchorsAccountKey` mezőt, és cserélje le `Set me` és a fiókkulcsot.
 
-Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le `Set me` fiók azonosítóval.
+Keresse meg a `spatialAnchorsAccountId` mezőt, és cserélje le `Set me` fiók azonosítóval.
 
 # <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
 
-Nyissa meg `iOS/Objective-C/SampleObjC/ViewController.m`.
+Nyissa meg `iOS/Objective-C/SampleObjC/BaseViewController.m`.
 
 Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le `Set me` és a fiókkulcsot.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: 61f82771e53ac9bb594484b29bb109a03cee674b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: b701183fa270b1aad9a622a21c5ce0795fc8057f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553726"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60012501"
 ---
 #### <a name="process-automation"></a>Folyamatautomatizálás
 
@@ -22,6 +22,7 @@ ms.locfileid: "57553726"
 | Így el lehet egy Azure Automation-fiók (nonscheduled feladat) 30 másodpercenként új feladatok maximális száma |100 |Ha eléri ezt a korlátot, sikertelen, hozzon létre egy feladatot a későbbi kérelmeket. Az ügyfél hibaüzenetet kap.|
 | Az Automation-fiók (nonscheduled feladat) ideje példányát, egyidejűleg futó feladatok maximális száma |200 |Ha eléri ezt a korlátot, sikertelen, hozzon létre egy feladatot a későbbi kérelmeket. Az ügyfél hibaüzenetet kap.|
 | Feladat-metaadatok egy 30 napos gördülő időszakra maximális mérete | 10 GB (4 millió feladatok megközelítőleg)|Ha eléri ezt a korlátot, sikertelen, hozzon létre egy feladatot a későbbi kérelmeket. |
+| Maximális stream korlát|1MB|Egyetlen streammel nem lehet nagyobb, mint 1 MB.|
 | Modulok egy Automation-fiók 30 másodpercenként importálható maximális száma |5 ||
 | Modulok maximális mérete |100 MB ||
 | Feladat futási ideje, ingyenes szint |előfizetés naptári hónapban 500 perc ||

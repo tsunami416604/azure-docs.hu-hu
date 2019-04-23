@@ -1,76 +1,109 @@
 ---
 title: Az Azure Cosmos DB indexelési szabályzatok
-description: Indexelő működésének megismerése az Azure Cosmos DB-hez. Ismerje meg, hogyan konfigurálja, és módosítsa az indexelési házirendet az Automatikus indexelés és jobb teljesítményt nyújt.
-author: rimman
+description: Ismerje meg, hogyan konfigurálja, és módosítsa az alapértelmezett indexelési szabályzat Automatikus indexelés és a nagyobb teljesítmény az Azure Cosmos DB-ben.
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: rimman
-ms.openlocfilehash: 6998db1679e67f8ac4bf7c81ea9373c66a9618ee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.author: thweiss
+ms.openlocfilehash: 67bc3076be91ade140b39b7dd8037299902546a9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278564"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005094"
 ---
-# <a name="index-policy-in-azure-cosmos-db"></a>Az Azure Cosmos DB index házirend
+# <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatok
 
-Felülbírálhatja az alapértelmezett indexelési szabályzat egy Azure Cosmos-tárolón úgy konfigurálja a következő paraméterekkel:
+Az Azure Cosmos DB minden tárolót egy indexelési házirendet, amely előírja, hogy hogyan lehet indexelni a tároló elemek rendelkezik. Alapértelmezett házirend az indexelési újonnan létrehozott tárolók indexek minden elem, tartomány indexei bármilyen karakterlánc vagy szám kényszerítése minden tulajdonsághoz, és a térbeli indexek, az összes GeoJSON-objektum írja be a pont. Ez lehetővé teszi a lekérdezési teljesítmény eléréséhez gondolja át az indexelés és előre Indexkezelés nélkül.
 
-* **Bevonhat vagy kizárhat elemek és elérési utak az indexből**: Zárja ki, vagy adott elemeket tartalmaznak az indexben, helyezze be vagy cserélje le a tárolóban lévő elemek. Akkor is is belefoglalhat vagy kizárhat meghatározott vlastnosti cest Pro hledání/indexelendő egyes tárolók között. Elérési utak tartalmazhat helyettesítő karakterek mintái, például *.
+Bizonyos esetekben érdemes lehet, hogy jobban kockázatiszint-e az automatikus viselkedés felülbírálásához. Egy tároló indexelési házirend beállításával testre szabhatja a *indexelési mód*, és bevonhat vagy kizárhat *tulajdonság elérési utak*.
 
-* **Index típusok konfigurálása**: Emellett tartomány indexelt elérési utak, hozzáadhat más típusú indexeket, például a térbeli.
+## <a name="indexing-mode"></a>Az indexelő mód
 
-* **Index módok konfigurálása**: Az indexelési házirendet egy tároló használatával konfigurálhatja az indexelő mód például *Consistent* vagy *None*.
+Az Azure Cosmos DB két indexelési módot támogat:
 
-## <a name="indexing-modes"></a>Az indexelő módok
+- **Egységes**: Ha egy tároló indexelési szabályzat Consistent úgy van beállítva, az index frissítése szinkron módon létrehozása, frissítése és törölhet elemeket. Ez azt jelenti, hogy a konzisztencia az olvasási lekérdezések lesz a [konzisztencia, a fiókhoz konfigurált](consistency-levels.md).
 
-Az Azure Cosmos DB kétféleképpen indexelési konfigurálható egy Azure Cosmos-tárolón keresztül indexelési házirendet:
+- **Nincs**: Egy tároló indexelési házirendet None értékre van állítva, ha az indexelés van hatékonyan le van tiltva az adott tárolóban. Ez gyakran használják, ha a tárolót használja a másodlagos indexekkel kellene tiszta kulcs-érték tárolóként. Felgyorsítva a tömeges beszúrási műveletek is segít.
 
-* **Egységes**: Ha egy Azure Cosmos-tárolóhoz szabályzat úgy van beállítva *Consistent*, a lekérdezések egy adott tárolón hajtsa végre a megadott pont olvasási műveleteknél a konzisztencia szintjét (például erős, kötött elavulás, munkamenet és végleges). 
+## <a name="including-and-excluding-property-paths"></a>Belefoglalásához és kizárásához tulajdonság elérési utak
 
-  Az index frissítése szinkron módon történik, az elemek frissítése során. Ha például beszúrás, cserélje le, frissítési és törlési műveletek egy elemre eredményez az index frissítése. Egységes indexelő támogatja az egységes lekérdezéseket tárolómappába, mely negatív hatással a lemezírás teljesítménye. Lemezírás teljesítménye csökkentése attól függ, a "az index tartalmazza útvonalak" és "konzisztenciaszinttől." Konzisztens az indexelő mód célja, hogy az index naprakész, és a frissítések, és azonnal-lekérdezések kiszolgálása érdekében.
+Egyéni indexelési házirendet adhat meg, amelyek kifejezetten foglalt vagy zárva az indexelő tulajdonság elérési utak. Indexelt útvonalak száma optimalizálással, csökkentheti a tároló által felhasznált tárterület mennyisége, és növelheti a késést az írási műveletek. Az elérési utak vannak definiálva a következő [az indexelő-áttekintés szakaszban leírt módszer](index-overview.md#from-trees-to-property-paths) az alábbi kiegészítésekkel:
 
-* **Nincs**: Egy tároló, amely tartalmaz egy index mód nincs társítva indexszel rendelkezik. Ez általában akkor használatos, ha az Azure Cosmos-adatbázis egy kulcs-érték tárolóként szolgál, és csak az ID tulajdonság által elért elemek.
+- egy skaláris érték (karakterlánc vagy szám) vezető elérési út végződik `/?`
+- a tömb elemei együtt szolgálhatók keresztül a `/[]` jelölés (helyett `/0`, `/1` stb.)
+- a `/*` helyettesítő karakter is használható a megfelelő elemeket a csomópont alatt
 
-  > [!NOTE]
-  > Mint az indexelési mód konfigurálása a *nincs* létező indexek elvetését a mellékhatása rendelkezik. Ezt a beállítást kell használnia, ha ID használatának megkövetelése a hozzáférési mintákat, vagy önhivatkozást csak.
+Újra véve ugyanebben a példában:
 
-Lekérdezés konzisztenciaszintek hasonló a normál olvasási műveletek karbantartása. Az Azure Cosmos database hibát ad vissza, ha lekérdezheti, ha a tároló, amelyben egy *nincs* indexelési módban. Vizsgálatok az explicit keresztül, a lekérdezéseket hajthat végre **x-ms-documentdb-enable-vizsgálat** fejléc a REST API-ban vagy a **EnableScanInQuery** beállítás kérése a .NET SDK használatával. Néhány lekérdezés hasonló szolgáltatásokat szabályoznak, ORDER BY záradék használata jelenleg nem támogatott **EnableScanInQuery**, mert azok megszabják, hogy a megfelelő index.
+    {
+        "locations": [
+            { "country": "Germany", "city": "Berlin" },
+            { "country": "France", "city": "Paris" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 250 }
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" }
+        ]
+    }
+
+- a `headquarters`a `employees` elérési út `/headquarters/employees/?`
+- a `locations`" `country` elérési út `/locations/[]/country/?`
+- az elérési útját alatt `headquarters` van `/headquarters/*`
+
+Ha egy elérési utat az indexelési házirendet explicit módon szerepel, azt is határozza meg, melyik index típusokat kell alkalmazni az elérési útnak és az egyes index, az adattípus az index vonatkozik:
+
+| Index típusa | Engedélyezett a céloldali adattípusok |
+| --- | --- |
+| Tartomány | Karakterlánc vagy szám |
+| Térbeli | Pont, LineString, vagy sokszög |
+
+Például, hogy tartalmazhatja a `/headquarters/employees/?` elérési útja, és adja meg, amely egy `Range` index kell alkalmazni az adott elérési úttal is `String` és `Number` értékeket.
+
+### <a name="includeexclude-strategy"></a>Stratégia belefoglalása vagy kizárása
+
+A gyökér elérési útját tartalmazza rendelkezik minden olyan indexelési házirend `/*` egy része vagy kizárt elérési utat.
+
+- Elérési utak, amelyeket nem lehet indexelni kell kizárhatja a gyökér elérési útját tartalmazza. Ez a lehetőség az ajánlott módszer lehetővé teszi az Azure Cosmos DB proaktív módon index minden új tulajdonság, amely a modell adhatók hozzá.
+- Zárja ki a gyökér elérési úthoz szelektív elérési utakat indexelni kell felvenni.
+
+Lásd: [ebben a szakaszban](how-to-manage-indexing-policy.md#indexing-policy-examples) házirend példák az indexelés.
 
 ## <a name="modifying-the-indexing-policy"></a>Az indexelési szabályzat módosítása
 
-Az Azure Cosmos DB-tároló az indexelési házirendet bármikor frissítheti. Az indexelési házirendet az Azure Cosmos-tárolókat a változás az alakzat az index módosítása vezethet. Ez a módosítás érinti a indexelhetők elérési utakat, a pontosság és az index magát a konzisztenciájú modellt. Indexelési szabályzat lényegében változását végrehajtásához egy új indexbe a régi index.
+Bármikor frissítheti egy tároló indexelési házirendet [az Azure-portálon vagy valamelyik támogatott SDK-k használatával](how-to-manage-indexing-policy.md). Az indexelési házirendet egy frissítést, a másikat, amely történik online és a helyen, (tehát a művelet során felhasznált nincs további tárhely) a régi indexből átalakítás aktiválása. A régi házirend index hatékony működésének megzavarása nélkül megtesztelheti az írás rendelkezésre állása és a tárolóban kiosztott átviteli átalakítva az új szabályzathoz. Index átalakítási aszinkron művelet, és a végrehajtásához szükséges idő attól függ, a kiosztott átviteli sebesség, azon elemek száma és mérete. 
 
-### <a name="index-transformations"></a>Index átalakítások
+> [!NOTE]
+> Újraindexelését folyamatban van, míg a lekérdezések nesmí vracet a megfelelő eredményeit, és akkor teszi ezt, anélkül, hogy bármilyen hibát adna vissza. Ez azt jelenti, hogy lekérdezési eredmények lehetséges, hogy nem konzisztens az index átalakítás befejeződéséig. Index átalakítási folyamat nyomon lehet [az SDK-k egyikével](how-to-manage-indexing-policy.md).
 
-Az összes index átalakítások online hajtja végre. Az elemek indexelve a régi szabályzatonként hatékony működésének megzavarása nélkül megtesztelheti az írás rendelkezésre állása és a tárolóban kiosztott átviteli átalakításának az új házirend szerint. Konzisztenciájának olvasása és írása a REST API, SDK-k használatával, illetve használatával végrehajtott műveleteket tárolt eljárások és eseményindítók nincs hatással az index átalakítása során.
+Az új indexelési házirend üzemmód Consistent értékre van állítva, ha nincs indexelési szabályzat módosítása alkalmazhatók, amíg folyamatban van az index átalakítást. Egy futó index átalakítás szakadhatnak meg úgy, hogy nincs (amely azonnal, eldobja az index) az indexelési házirend üzemmód.
 
-Indexelési házirend módosítása egy aszinkron művelet, és a művelet végrehajtásához szükséges elemek, a kiosztott átviteli sebesség és az elemek méretének összege számától függ. Amíg újraindexelését folyamatban van, a lekérdezés nesmí vracet minden egyező eredmény, ha a lekérdezések az éppen módosított index használatát, és a lekérdezések nem ad vissza hibát vagy hibákat. Amíg újraindexelését folyamatban van, a lekérdezések végül konzisztens, függetlenül az indexelési módjának saját konfigurációja. Az index után átalakítása befejeződik, továbbra is megtekintheti a konzisztens eredmények. Ez a felületek, például REST API, SDK-k vagy tárolt eljárások és triggerek által kiadott lekérdezésekre vonatkozik. Index átalakítási aszinkron módon történik a háttérben, az adott replika elérhető késztartalék források segítségével replikákon.
+## <a name="indexing-policies-and-ttl"></a>Indexelési szabályzatok és az élettartam szerepel
 
-Az összes index átalakítások helyben történik. Az Azure Cosmos DB nem tart fenn az index két példányban. Ezért semmilyen további lemezterület szükséges vagy index átalakítás során a tárolókat igénybe vett.
+A [idő-az-élettartam (TTL) funkció](time-to-live.md) igényel, az indexelés a tárolón bekapcsolt állapotú lesz aktív. Ez azt jelenti, hogy:
 
-Amikor módosítja az indexelési házirendet, a változások áthelyezése az új indexre a régi index lesznek alkalmazva, és elsősorban az indexelési mód konfigurációk alapul. Az indexelő mód konfigurációk más tulajdonságai, például/kizárt elérési utak, index típusú és a pontosság képest jelentős szerepet játszanak.
+- már nem egy tárolóban, ahol az indexelési mód értéke None, TTL aktiválása
+- nem alkalmas az indexelési üzemmód beállítása None egy tárolón, ahol TTL aktiválva van.
 
-Ha a régi és új szabályzatok használata az indexelés **Consistent** indexelést, az Azure Cosmos database hajt végre egy online index-átalakítást. Egy másik indexelési házirend-módosítások, konzisztens az indexelő mód az átalakítás közben nem lehet alkalmazni. Ha áthelyezi a nincs mód az indexelés, az index azonnal megszakad. Nincs áthelyezése akkor hasznos, ha megszakítja a folyamatban lévő átalakulása és kezdés tiszta lappal egy másik indexelési házirendet.
+Forgatókönyvek, ahol nincs útvonal szükséges indexelése, de az élettartam (TTL) szükséges egy az indexelési házirendet is használhatja:
 
-## <a name="modifying-the-indexing-policy---examples"></a>Az indexelési szabályzat – példák módosítása
+- az indexelő módban a Consistent, és
+- nem található elérési útját, és
+- `/*` mert az csak a kizárt elérési út.
 
-Az alábbiakban a leggyakoribb alkalmazási helyzetei Ha meg szeretné egy indexelési szabályzat frissítése:
+## <a name="obsolete-attributes"></a>Elavult attribútumok
 
-* Ha azt szeretné, hogy a konzisztens eredmények van a normál működés során, hanem térhet vissza a **nincs** során tömeges adatokat importálja az indexelő mód.
+Az indexelési szabályzatok használatakor merülhetnek fel a következő attribútumokat, amelyek már elavult:
 
-* Ha azt szeretné, a jelenlegi Azure-Cosmos-tárolókat az indexelési szolgáltatások használatának megkezdéséhez. Például használja, a térinformatikai lekérdezések, ami megköveteli a térbeli index típusa vagy ORDER BY / tartomány lekérdezések, amelyek igényel a karakterlánc tartomány index ilyen karakterlánc.
-
-* Ha szeretné manuálisan válassza ki a Tulajdonságok indexelni, és módosítsa őket arra, hogy alkalmazkodjanak a számítási feladatok idővel.
-
-* Ha azt szeretné, finomhangolása az indexelési pontosság, a lekérdezési teljesítmény javításához vagy a felhasznált tárterület csökkentése érdekében.
+- `automatic` logikai érték beolvasása egy indexelési házirendet gyökérmappájában van meghatározva. Most már figyelmen kívül hagyja, és a állítható `true`, amikor az eszköz írja elő.
+- `precision` egy szám belefoglalt elérési utak az index szintjén van meghatározva. Most már figyelmen kívül hagyja, és a állítható `-1`, amikor az eszköz írja elő.
+- `hash` az index olyan altípus, amely váltotta fel a tartomány típusa van.
 
 ## <a name="next-steps"></a>További lépések
 
 További információ az indexelő az alábbi cikkeket:
 
-* [Az indexelő áttekintése](index-overview.md)
-* [Index típusa](index-types.md)
-* [Index elérési utak](index-paths.md)
-* [Indexelési házirend kezelése](how-to-manage-indexing-policy.md)
+- [Az indexelő áttekintése](index-overview.md)
+- [Indexelési házirend kezelése](how-to-manage-indexing-policy.md)

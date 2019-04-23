@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: juliako
-ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 4a29da2b070133f87ca5fdab0be607368c83790f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881018"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999450"
 ---
 # <a name="streaming-endpoints"></a>Streamvégpontok
 
@@ -52,7 +52,6 @@ Szolgáltatás|Standard|Prémium
 ---|---|---
 Ingyenes az első 15 nap során| Igen |Nem
 Teljesítmény |Legfeljebb 600 MB/s, amikor az Azure CDN nincs használatban. CDN bevonásával.|200 MB / s folyamatos átviteli egységek (SU). CDN bevonásával.
-SLA | 99.9|99,9 (200 Mbps per SU).
 Tartalomkézbesítési hálózat (CDN)|Az Azure CDN, harmadik féltől származó CDN, vagy nincs CDN.|Az Azure CDN, harmadik féltől származó CDN, vagy nincs CDN.
 Az elszámolás| Napi|Napi
 Dinamikus titkosítás|Igen|Igen
@@ -86,7 +85,7 @@ Ez a szakasz tájékoztatást nyújt a egyes a folyamatos átviteli végponton t
 
     Az alábbiakban a várt DNS-zónák az ellenőrzés rekordban használható különböző Azure-régiókban.
   
-  - Észak-Amerika, Európa, Szingapúr, Hongkong (KKT), illetve japán:
+  - Észak-Amerika, Európa, Szingapúr, Hongkong (KKT), japán:
       
     - `media.azure.net`
     - `verifydns.media.azure.net`

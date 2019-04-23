@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 2abec4d9d74cf58503dec667080f478b1fec06ff
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: 0c654070e2bbeb8ee5dbc64fe9b4f58ee97f2e47
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485152"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000725"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldást használ az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map használatával a kiszolgálókat úgy tekintheti meg, ahogyan azt el szoktuk képzelni: egymással összekapcsolt rendszereket, amelyek kritikus fontosságú szolgáltatásokat tesznek elérhetővé. A Service Map megmutatja a kiszolgálók közötti kapcsolatokat, a folyamatokat, a bejövő és a kimenő kapcsolatok késéseit, valamint minden TCP-vel csatlakoztatott architektúra portjait, és ehhez konfigurációra sincs szükség, csupán telepíteni kell az ügynököt.
@@ -299,22 +299,22 @@ Kezelheti a költségeket és összetettséget, csatlakozási rekordjainak nem f
 
 | Tulajdonság | Leírás |
 |:--|:--|
-|Irány |A kapcsolat irányát, értéke *bejövő* vagy *kimenő* |
-|Gép |A számítógép teljes Tartományneve |
-|Feldolgozás |Identitáskezelési folyamat vagy a csoportok a folyamatok, a kapcsolat kezdeményezése és elfogadása |
-|SourceIp |A forrás IP-címe |
-|DestinationIp |A cél-IP-cím |
-|DestinationPort |A cél-port száma |
-|Protokoll |A kapcsolathoz használt protokoll.  Értékek *tcp*. |
+| `Direction` |A kapcsolat irányát, értéke *bejövő* vagy *kimenő* |
+| `Machine` |A számítógép teljes Tartományneve |
+| `Process` |Identitáskezelési folyamat vagy a csoportok a folyamatok, a kapcsolat kezdeményezése és elfogadása |
+| `SourceIp` |A forrás IP-címe |
+| `DestinationIp` |A cél-IP-cím |
+| `DestinationPort` |A cél-port száma |
+| `Protocol` |A kapcsolathoz használt protokoll.  Értékek *tcp*. |
 
 A fiókra a csoportosítás a hatását, csoportosított fizikai kapcsolatok számával kapcsolatos információkat a rekord a következő tulajdonságok:
 
 | Tulajdonság | Leírás |
 |:--|:--|
-|LinksEstablished |A jelentéskészítési időszakban létesített fizikai hálózati kapcsolatok száma |
-|LinksTerminated |A jelentéskészítési időszakban le lett állítva fizikai hálózati kapcsolatok száma |
-|LinksFailed |A jelentéskészítési időszakban sikertelenül fizikai hálózati kapcsolatok száma. Ez az információ érhető el jelenleg csak a kimenő kapcsolatok számára. |
-|LinksLive |Volt megnyitva a jelentéskészítési időtartomány végén található fizikai hálózati kapcsolatok száma|
+| `LinksEstablished` |A jelentéskészítési időszakban létesített fizikai hálózati kapcsolatok száma |
+| `LinksTerminated` |A jelentéskészítési időszakban le lett állítva fizikai hálózati kapcsolatok száma |
+| `LinksFailed` |A jelentéskészítési időszakban sikertelenül fizikai hálózati kapcsolatok száma. Ez az információ érhető el jelenleg csak a kimenő kapcsolatok számára. |
+| `LinksLive` |Volt megnyitva a jelentéskészítési időtartomány végén található fizikai hálózati kapcsolatok száma|
 
 #### <a name="metrics"></a>Mérőszámok
 
@@ -322,12 +322,12 @@ Mellett száma kapcsolati metrika adatmennyiség kapcsolatos információkat kü
 
 | Tulajdonság | Leírás |
 |:--|:--|
-|BytesSent |A jelentéskészítési időszakban elküldött bájtok száma |
-|BytesReceived |A jelentéskészítési időszakban fogadott bájtok teljes száma |
-|Válaszok |A jelentéskészítési időszakban megfigyelt válaszok száma. 
-|ResponseTimeMax |A legnagyobb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban.  Ha nincs érték a tulajdonság értéke üres.|
-|ResponseTimeMin |A legkisebb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban.  Ha nincs érték a tulajdonság értéke üres.|
-|ResponseTimeSum |Az összes válaszidők összege a jelentéskészítési időszakban megfigyelt (ezredmásodperc).  Ha nincs érték a tulajdonság üres|
+| `BytesSent` |A jelentéskészítési időszakban elküldött bájtok száma |
+| `BytesReceived` |A jelentéskészítési időszakban fogadott bájtok teljes száma |
+| `Responses` |A jelentéskészítési időszakban megfigyelt válaszok száma. 
+| `ResponseTimeMax` |A legnagyobb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban.  Ha nincs érték a tulajdonság értéke üres.|
+| `ResponseTimeMin` |A legkisebb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban.  Ha nincs érték a tulajdonság értéke üres.|
+| `ResponseTimeSum` |Az összes válaszidők összege a jelentéskészítési időszakban megfigyelt (ezredmásodperc).  Ha nincs érték a tulajdonság üres|
 
 A jelentett adatokat harmadik típus a válaszidő - mennyi ideig does egy hívó költségek feldolgozni és a távoli végpont célzottól kapcsolaton keresztül küldött kérés vár. A válaszidő jelentett igaz válaszideje, az alapul szolgáló protokoll becslése. Számított heurisztika alapján a megfigyelési adatok között a forrás és cél végén egy fizikai hálózati kapcsolatot a flow használatával. Elméleti szinten a kérelem utolsó bájtját elhagyja a küldő, és az idő a válasz utolsó bájtját érkezésekor vissza közötti különbség. E két időbélyegek ábrázolni a kérések és válaszok események egy adott fizikai kapcsolathoz szolgálnak. A különbség a kettő válaszideje, egyetlen kérelem jelöli. 
 
@@ -348,26 +348,26 @@ Az egyszerűség kedvéért egy kapcsolat a távoli vég IP-címét a RemoteIp t
 
 | Tulajdonság | Leírás |
 |:--|:--|
-|RemoteCountry |Az üzemeltető RemoteIp ország neve.  Ha például *Egyesült Államok* |
-|RemoteLatitude |A földrajzi szélesség.  Ha például *47.68* |
-|RemoteLongitude |A földrajzi hosszúság.  Ha például *-122.12* |
+| `RemoteCountry` |Az üzemeltető RemoteIp ország neve.  Ha például *Egyesült Államok* |
+| `RemoteLatitude` |A földrajzi szélesség.  Ha például *47.68* |
+| `RemoteLongitude` |A földrajzi hosszúság.  Ha például *-122.12* |
 
 #### <a name="malicious-ip"></a>Kártékony IP-cím
 Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek összevetéssel az ismert kártékony tevékenységek. Ha a RemoteIp kártevőként azonosított a következő tulajdonságok lesz kitöltve (azok üres, ha a IP-cím nem számít rosszindulatú) a rekord a következő tulajdonságai:
 
 | Tulajdonság | Leírás |
 |:--|:--|
-|MaliciousIp |A RemoteIp címe |
-|IndicatorThreadType |Észlelt fenyegetés mutató a következő értékek egyike *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *kártevő*, *adathalász*, *Proxy*, *elleni*, *Megnézendők*.   |
-|Leírás |Az észlelt fenyegetés leírása. |
-|TLPLevel |Közlekedési lámpa protokoll (TLP) szint egyike a meghatározott értékeknek *fehér*, *zöld*, *sárga*, *Red*. |
-|Megbízhatóság |Értékek a következők *0 – 100*. |
-|Severity |Értékek a következők *0 – 5*, ahol *5* van a legsúlyosabb és *0* nem súlyos egyáltalán. Alapértelmezett érték *3*.  |
-|FirstReportedDateTime |Először a szolgáltató jelenteni a kijelző. |
-|LastReportedDateTime |A kijelző Interflow által látott utolsó időpontját. |
-|IsActive |Azt jelzi, hogy a mutatók vannak inaktiválása az *igaz* vagy *hamis* értéket. |
-|ReportReferenceLink |Egy adott rendszernek megfigyelhetőnek kapcsolatos jelentéseket mutató hivatkozásokat tartalmaz. |
-|AdditionalInformation |További információkat biztosít, ha van ilyen, az észlelt fenyegetés kapcsolatban. |
+| `MaliciousIp` |A RemoteIp címe |
+| `IndicatorThreadType` |Észlelt fenyegetés mutató a következő értékek egyike *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *kártevő*, *adathalász*, *Proxy*, *elleni*, *Megnézendők*.   |
+| `Description` |Az észlelt fenyegetés leírása. |
+| `TLPLevel` |Közlekedési lámpa protokoll (TLP) szint egyike a meghatározott értékeknek *fehér*, *zöld*, *sárga*, *Red*. |
+| `Confidence` |Értékek a következők *0 – 100*. |
+| `Severity` |Értékek a következők *0 – 5*, ahol *5* van a legsúlyosabb és *0* nem súlyos egyáltalán. Alapértelmezett érték *3*.  |
+| `FirstReportedDateTime` |Először a szolgáltató jelenteni a kijelző. |
+| `LastReportedDateTime` |A kijelző Interflow által látott utolsó időpontját. |
+| `IsActive` |Azt jelzi, hogy a mutatók vannak inaktiválása az *igaz* vagy *hamis* értéket. |
+| `ReportReferenceLink` |Egy adott rendszernek megfigyelhetőnek kapcsolatos jelentéseket mutató hivatkozásokat tartalmaz. |
+| `AdditionalInformation` |További információkat biztosít, ha van ilyen, az észlelt fenyegetés kapcsolatban. |
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
 Típussal rendelkező rekordok *ServiceMapComputer_CL* rendelkezik a kiszolgálókat a Szolgáltatástérkép-ügynökökkel Hardverleltár-adatait. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
@@ -399,7 +399,7 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| `Type | *ServiceMapProcess_CL* |
+| `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
 | `ResourceId` | A munkaterületen belül a folyamat egyedi azonosítója |
 | `ResourceName_s` | A gépen, amelyen fut a folyamat egyedi azonosítója|

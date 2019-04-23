@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: ca6667a5353d253743a45d5db742811d8e15ed31
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: fd420ea3fc4faae7fe4510a72204d71acaa3549a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682117"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009931"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció Rackspace SSO-val
 
@@ -72,7 +72,7 @@ Az Azure AD integrálása a Rackspace egyszeri bejelentkezés konfigurálásáho
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
 Ebben a szakaszban konfigurálni, és a Rackspace SSO-val az Azure AD egyszeri bejelentkezés tesztelése nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön az Azure AD-felhasználót és a kapcsolódó felhasználó a Rackspace egyszeri bejelentkezési hivatkozás kapcsolata kell hozható létre.
+A Rackspace használata egyszeri bejelentkezéshez, a Rackspace felhasználók automatikusan létrejön az első bejelentkezéskor a Rackspace-portálra. 
 
 Az Azure AD egyszeri bejelentkezés a Rackspace egyszeri bejelentkezés tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
@@ -80,8 +80,8 @@ Az Azure AD egyszeri bejelentkezés a Rackspace egyszeri bejelentkezés tesztel�
 2. **[Egyszeri bejelentkezés Rackspace egyszeri bejelentkezés konfigurálása](#configure-rackspace-sso-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Rackspace SSO tesztfelhasználót](#create-rackspace-sso-test-user)**  – egy megfelelője a Britta Simon Rackspace SSO, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Állítsa be a Rackspace Vezérlőpult attribútumleképzés](#set-up-attribute-mapping-in-the-rackspace-control-panel)**  – Rackspace szerepkörök hozzárendelése az Azure AD-felhasználók.
+1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -121,21 +121,21 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Rackspace SSO-val, haj
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-6. Az a **Rackspace egyszeri bejelentkezés beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
-
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
-
-    a. Bejelentkezési URL
-
-    b. Azure AD-azonosító
-
-    c. Kijelentkezési URL
+Ez a fájl feltöltéséhez szükséges identitás-összevonási beállításait Rackspace feltöltés.
 
 ### <a name="configure-rackspace-sso-single-sign-on"></a>Rackspace SSO egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Rackspace SSO** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Rackspace SSO támogatási csoport ](https://support.rackspace.com/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **Rackspace SSO** oldalán:
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+1. Lásd a dokumentációban a [Identitásszolgáltatóként a Vezérlőpult hozzáadása](https://developer.rackspace.com/docs/rackspace-federation/gettingstarted/add-idp-cp/)
+1. Ez végigvezeti a lépéseket:
+    1. Hozzon létre egy új identitásszolgáltató
+    1. Adjon meg egy e-mail-tartományhoz, amely a felhasználói bejelentkezés a vállalat azonosítására.
+    1. Töltse fel a **összevonási metaadatainak XML** korábban letöltött az Azure Vezérlőpultján.
+
+Ez az Azure és a Rackspace való csatlakozáshoz szükséges alapszintű egyszeri bejelentkezési beállításainak megfelelően konfigurálja.
+
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
@@ -185,15 +185,58 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-### <a name="create-rackspace-sso-test-user"></a>Rackspace SSO tesztfelhasználó létrehozása
+### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>Attribútumleképzés beállítása a Rackspace-Vezérlőpult
 
-Ebben a szakaszban egy Britta Simon nevű Rackspace egyszeri Bejelentkezést a felhasználó hoz létre. Együttműködve [Rackspace SSO támogatási csapatának](https://support.rackspace.com/) a felhasználók hozzáadása a Rackspace SSO-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Használja a Rackspace- **attribútum leképezési házirend** Rackspace szerepkörök és csoportok hozzárendelése az egyszeri bejelentkezés felhasználók. A **attribútum leképezési házirend** Azure AD SAML jogcímek fordítja le a felhasználó konfigurációs mezők Rackspace igényel. További dokumentáció megtalálható a Rackspace [attribútum leképezési alapjai dokumentáció](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/). Néhány szempontot:
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+* Ha azt szeretné, különböző szintű Azure AD-csoportok használata a Rackspace-hozzáférés hozzárendelése, szüksége lesz ahhoz, hogy az Azure-ban a csoportok jogcím **Rackspace SSO** egyszeri bejelentkezés beállításai. A **attribútum leképezési házirend** ezután a rendszer használja ezeket a csoportokat a kívánt Rackspace szerepkörök és csoportok megfelelően:
+
+    ![A csoportok jogcím-beállítások](common/sso-groups-claim.png)
+
+* Alapértelmezés szerint az Azure AD SAML a jogcímek, az a csoport nevét és az egyedi azonosítója az Azure AD-csoportok küld. Azonban a helyszíni Active Directory, az Azure AD szolgáltatással szinkronizál, ha van a lehetőség használatával küldjön a tényleges nevét, a csoportokat:
+
+    ![A csoportok jogcím-beállításai](common/sso-groups-claims-names.png)
+
+Az alábbi példa **attribútum leképezési házirend** mutatja be:
+1. Beállítás a Rackspace felhasználó nevét a `user.name` SAML-kérelmet. Minden olyan jogcímet is használható, de általános, hogy állítsa a bestattempt értékre a felhasználó e-mail-címét tartalmazó.
+1. A Rackspace szerepkörök beállítása `admin` és `billing:admin` a felhasználó által az Azure AD-csoportok, vagy a csoport nevét, vagy a csoport egyedi azonosítója alapján egyeztetésével. A *behelyettesítési* , `"{0}"` a a `roles` mező szolgál, és lesz lecserélve az eredményeit a `remote` kifejezések szabály.
+1. Használatával a `"{D}"` *behelyettesítési alapértelmezett* , hogy a Rackspace keres a szabványos és ismert az SAML exchange SAML-jogcímek mezőket SAML lekéréséhez.
+
+```yaml
+---
+mapping:
+    rules:
+    - local:
+        user:
+          domain: "{D}"
+          name: "{At(http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name)}"
+          email: "{D}"
+          roles:
+              - "{0}"
+          expire: "{D}"
+      remote:
+          - path: |
+              (
+                if (mapping:get-attributes('http://schemas.microsoft.com/ws/2008/06/identity/claims/groups')='7269f9a2-aabb-9393-8e6d-282e0f945985') then ('admin', 'billing:admin') else (),
+                if (mapping:get-attributes('http://schemas.microsoft.com/ws/2008/06/identity/claims/groups')='MyAzureGroup') then ('admin', 'billing:admin') else ()
+              )
+            multiValue: true
+  version: RAX-1
+```
+> [!TIP]
+> Győződjön meg arról, hogy egy egyszerű szövegszerkesztőben, amely ellenőrzi a YAML-szintaxist a házirend-fájl szerkesztése során.
+
+Tekintse meg a Rackspace [attribútum leképezési alapjai dokumentáció](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/) további példákat.
+
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Ha a hozzáférési panelen a Rackspace SSO csempére kattint, meg kell lehet automatikusan bejelentkezett a Rackspace SSO, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+Is használhatja a **ellenőrzése** gombra a **Rackspace SSO** egyszeri bejelentkezés beállításai:
+
+   ![SSO Validate Button](common/sso-validate-sign-on.png)
 
 ## <a name="additional-resources"></a>További források
 

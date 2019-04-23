@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/11/2019
+ms.date: 04/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b938a2b3ea8ee4ab8bcc594b4b40db9384d22551
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: f49b8ef3717675ae6d93d07218a00f2c22890de0
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679074"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149699"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -208,7 +208,7 @@ Egy Naplókeresés futtatásához, amely a gép, frissítés vagy telepítés ka
 
 ## <a name="install-updates"></a>Frissítések telepítése
 
-Frissítések értékelni az összes Linux és Windows számítógéphez a munkaterületen, után szükséges frissítések létrehozásával telepíthet egy *frissítéstelepítés*. A Frissítéstelepítések létrehozásához, az Automation-fiók írási hozzáféréssel kell rendelkeznie, és írási hozzáférése az olyan Azure virtuális gépek, amelyek a központi telepítésben lévő célozzák meg. A frissítéstelepítések egy vagy több számítógép szükséges frissítéseinek ütemezett telepítése. Megadhatja, hogy az érintett foglalandó dátuma és időpontja az üzembe helyezés és a egy számítógép vagy számítógépek csoportja. Számítógépcsoportokkal kapcsolatos további tudnivalókért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md).
+Frissítések értékelni az összes Linux és Windows számítógéphez a munkaterületen, után szükséges frissítések létrehozásával telepíthet egy *frissítéstelepítés*. A Frissítéstelepítések létrehozásához írási hozzáféréssel az Automation-fiók és minden olyan Azure virtuális gépeket, amelyekre vonatkozik a központi telepítésben lévő írási engedéllyel kell rendelkeznie. A frissítéstelepítések egy vagy több számítógép szükséges frissítéseinek ütemezett telepítése. Megadhatja, hogy az érintett foglalandó dátuma és időpontja az üzembe helyezés és a egy számítógép vagy számítógépek csoportja. Számítógépcsoportokkal kapcsolatos további tudnivalókért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md).
 
 Ha számítógépcsoportok szerepelnek a, csoporttagság ütemezés létrehozása idején már csak egyszer lesz kiértékelve. A csoportot érintő későbbi változások nem tükrözi. Ez a használati eléréséhez [dinamikus csoportok](#using-dynamic-groups), ezek a csoportok üzembe helyezéskor feloldása és a egy lekérdezés által meghatározott, Azure virtuális gépeken futó vagy mentett keresés nem Azure-beli virtuális gépek.
 
@@ -333,8 +333,8 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="third-party"></a> A Windows külső javítások
 
-Frissítéskezelés a WSUS támaszkodik, vagy Windows Update javítására irányuló támogatott Windows rendszereken. Eszközök, például a [System Center frissítés-közzétevő](/sccm/sum/tools/updates-publisher
-) (frissítés-közzétevő) lehetővé teszi, hogy a WSUS egyéni frissítések közzétételi. Ebben a forgatókönyvben lehetővé teszi, hogy a frissítéskezelési javítás gépek azok tárházához harmadik felek WSUS használni. Frissítés-közzétevő konfigurálása kapcsolatban lásd: [telepítése az Updates Publisher](/sccm/sum/tools/install-updates-publisher).
+Az Update Management a helyileg konfigurált tárházához javítására támogatott Windows rendszerekre támaszkodik. Ez a WSUS és a Windows Update. Eszközök, például a [System Center frissítés-közzétevő](/sccm/sum/tools/updates-publisher
+) (frissítés-közzétevő) lehetővé teszi, hogy a WSUS egyéni frissítések közzétételi. Ebben a forgatókönyvben lehetővé teszi, hogy a frissítéskezelési javítás gépek, amelyek használják a System Center Configuration Manager, a harmadik felek tárházához. Frissítés-közzétevő konfigurálása kapcsolatban lásd: [telepítése az Updates Publisher](/sccm/sum/tools/install-updates-publisher).
 
 ## <a name="ports"></a>Hálózattervezés
 

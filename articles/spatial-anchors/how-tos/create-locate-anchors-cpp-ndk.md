@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 09809270d6b42a5491d322628f1d98c580f65206
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 7de83b14617245eb2c046eb7cd2f5f26c509517c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915929"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999569"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>Hogyan hozhat létre, és keresse meg a C + Azure térbeli horgonyok használatával horgonyok +/ Szünettel
 
@@ -39,7 +39,7 @@ Ez az útmutató végrehajtásához győződjön meg arról, hogy rendelkezik:
 - Olvassa el a [Azure térbeli kapcsolatok alapjainak áttekintése](../overview.md).
 - Befejeződött az egyik a [5 perces gyors útmutatók](../index.yml).
 - Alapvető ismeretek a C++ és a <a href="https://developer.android.com/ndk/" target="_blank">Androidos natív Development Kit</a>.
-- Alapvető ismeretek <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.5-ös.
+- Alapvető ismeretek <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.7-es.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 

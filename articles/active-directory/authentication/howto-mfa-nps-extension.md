@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d19068e482722bf6cd01e44d27c2719bc419a3
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
-ms.translationtype: MT
+ms.openlocfilehash: a945316df27460fef48a8bb4d43e46d412d2ae81
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564531"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009708"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -76,14 +76,14 @@ Amikor telepíti a bővítményt, az Azure AD-bérlő szükség van a címtár a
 
 A hálózati házirend-kiszolgálónak képesnek kell lennie kommunikálni a következő URL-címek a 80-as és 443-as portokon keresztül.
 
-* https://adnotifications.windowsazure.com  
-* https://login.microsoftonline.com
+* https:\//adnotifications.windowsazure.com  
+* https:\//login.microsoftonline.com
 
 Ezenkívül a következő URL-kapcsolat végrehajtásához szükséges a [beállítása a PowerShell parancsfájl használatával adapter](#run-the-powershell-script)
 
-- https://login.microsoftonline.com
-- https://provisioningapi.microsoftonline.com
-- https://aadcdn.msauth.net
+- https:\//login.microsoftonline.com
+- https:\//provisioningapi.microsoftonline.com
+- https:\//aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
@@ -207,7 +207,7 @@ Miután engedélyezte a többtényezős hitelesítés egy RADIUS-ügyfél, az NP
 
 Ha a multi-factor Authentication nem regisztrált felhasználók, megadhatja, hogy mi történik, ha megpróbálnak hitelesíteni. A beállításjegyzék-beállítással *REQUIRE_USER_MATCH* a beállításjegyzékbeli elérési út *HKLM\Software\Microsoft\AzureMFA* funkció viselkedését vezérlő. Ez a beállítás olyan egyetlen konfigurációs beállítással rendelkezik:
 
-| Kulcs | Érték | Alapértelmezett |
+| Kulcs | Value | Alapértelmezett |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | Nincs beállítva (egyenértékű, True) |
 

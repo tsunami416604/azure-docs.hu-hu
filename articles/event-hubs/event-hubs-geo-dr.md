@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3a7cc7703a6b33eef4c7a10f927b4747bc1d417c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: MT
+ms.openlocfilehash: 56077d018c1ae62809d51fc66d7f5aff93fb4c02
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562190"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002697"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Az Azure Event Hubs - Geo-vészhelyreállítás 
 
@@ -107,7 +107,7 @@ Vegye figyelembe az alábbi szempontokat figyelembe kell venni ebben a kiadásba
 Az Event Hubs Standard Termékváltozat támogatja [rendelkezésre állási zónák](../availability-zones/az-overview.md), így az Azure-régión belüli, meghibásodásoktól elszigetelt helyek. 
 
 > [!NOTE]
-> Az Azure Event Hubs Standard rendelkezésre állási zónák támogatása csak akkor érhető el a [Azure-régiók](../availability-zones/az-overview.md#regions-that-support-availability-zones) ahol jelen-e rendelkezésre állási zónák.
+> Az Azure Event Hubs Standard rendelkezésre állási zónák támogatása csak akkor érhető el a [Azure-régiók](../availability-zones/az-overview.md#services-support-by-region) ahol jelen-e rendelkezésre állási zónák.
 
 Engedélyezheti a rendelkezésre állási zónák a csak az új névterek az Azure portal használatával. Az Event Hubs nem támogatja a meglévő névterek áttelepítésének. Miután engedélyezte a a névtérben nem tiltható le a zone redudancy.
 

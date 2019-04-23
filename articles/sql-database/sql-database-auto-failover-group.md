@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cf163b2b01b4205a4a3d2123263988998130c42a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.date: 04/19/2019
+ms.openlocfilehash: f382cc547640969f934b94405b635c9e84f10791
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848388"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009072"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok segítségével átlátható és koordinált több adatbázis feladatátvételét engedélyezése
 
@@ -40,7 +40,7 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
 ## <a name="auto-failover-group-terminology-and-capabilities"></a>Automatikus feladatátvételi csoport terminológia és képességek
 
-- **Feladatátvételi csoport**
+- **Feladatátvételi csoport (ködlámpák)**
 
   Egy feladatátvételi csoportot belül egyetlen felügyelt példány átveheti egy másik régióba egységként abban az esetben az összes vagy néhány elsődleges adatbázist az elsődleges régióban leállás miatt elérhetetlenné válik, vagy egy SQL Database-kiszolgáló felügyelt adatbázisok egy csoportja.
 
@@ -77,11 +77,11 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
   - **SQL Database-kiszolgáló DNS CNAME-rekordot az olvasási és írási figyelő**
 
-     Egy SQL Database-kiszolgálón, a DNS CNAME-rekordot a feladatátvételi csoport, amely az aktuális elsődleges URL-címre mutat formázott `failover-group-name.database.windows.net`.
+     Egy SQL Database-kiszolgálón, a DNS CNAME-rekordot a feladatátvételi csoport, amely az aktuális elsődleges URL-címre mutat formázott `<fog-name>.database.windows.net`.
 
   - **Felügyelt példány DNS CNAME rekord olvasási és írási figyelőhöz**
 
-     Felügyelt példány, a DNS CNAME-rekordot a feladatátvételi csoport, amely az aktuális elsődleges URL-címre mutat formázott `failover-group-name.zone_id.database.windows.net`.
+     Felügyelt példány, a DNS CNAME-rekordot a feladatátvételi csoport, amely az aktuális elsődleges URL-címre mutat formázott `<fog-name>.zone_id.database.windows.net`.
 
 - **Feladatátvételi csoport csak olvasható figyelője**
 
@@ -89,11 +89,11 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
   - **SQL Database-kiszolgáló DNS CNAME-rekordot a csak olvasási figyelői**
 
-     Egy SQL Database-kiszolgálón, a DNS CNAME-rekordot a csak olvasható figyelőhöz, amely a másodlagos URL-címre mutat formázott `failover-group-name.secondary.database.windows.net`.
+     Egy SQL Database-kiszolgálón, a DNS CNAME-rekordot a csak olvasható figyelőhöz, amely a másodlagos URL-címre mutat formázott `'.secondary.database.windows.net`.
 
   - **Felügyelt példány DNS CNAME rekord a csak olvasási figyelői**
 
-     Felügyelt példány, a DNS CNAME-rekordot a csak olvasható figyelőhöz, amely a másodlagos URL-címre mutat formázott `failover-group-name.zone_id.database.windows.net`.
+     Felügyelt példány, a DNS CNAME-rekordot a csak olvasható figyelőhöz, amely a másodlagos URL-címre mutat formázott `<fog-name>.zone_id.database.windows.net`.
 
 - **Az automatikus feladatátvételi szabályzat**
 
@@ -156,11 +156,11 @@ Amikor egy olyan szolgáltatást tervez az üzletmenet-folytonossági szem előt
 
 - **Olvasási és írási figyelő OLTP-munkaterhelések esetében használjon**
 
-  OLTP műveletek végrehajtásakor használni `failover-group-name.database.windows.net` kiszolgálóként URL-CÍMÉT és a kapcsolatokat a rendszer automatikusan átirányítja az elsődleges. Az URL-cím nem változtatja meg a feladatátvételt követően. Vegye figyelembe, hogy a feladatátvétel magában foglalja a DNS-bejegyzést, így az ügyfél-kapcsolatokat a rendszer átirányítja az új elsődleges csak akkor, ha az ügyfél DNS-gyorsítótár nem frissítik frissítése.
+  OLTP műveletek végrehajtásakor használni `<fog-name>.database.windows.net` kiszolgálóként URL-CÍMÉT és a kapcsolatokat a rendszer automatikusan átirányítja az elsődleges. Az URL-cím nem változtatja meg a feladatátvételt követően. Vegye figyelembe, hogy a feladatátvétel magában foglalja a DNS-bejegyzést, így az ügyfél-kapcsolatokat a rendszer átirányítja az új elsődleges csak akkor, ha az ügyfél DNS-gyorsítótár nem frissítik frissítése.
 
 - **Csak olvasható munkaterhelések esetében használjon csak olvasási figyelői**
 
-  Ha egy logikailag elkülönített csak olvasható számítási feladat, amely tűri az adatok bizonyos frissesség, használhatja a másodlagos adatbázis az alkalmazásban. Csak olvasható munkamenetek használata `failover-group-name.secondary.database.windows.net` mint a kiszolgáló URL-CÍMÉT és a kapcsolat automatikusan irányul, a másodlagos. Emellett ajánlott jelzik a kapcsolati karakterlánc használatával leképezés olvasása **ApplicationIntent = csak olvasható**.
+  Ha egy logikailag elkülönített csak olvasható számítási feladat, amely tűri az adatok bizonyos frissesség, használhatja a másodlagos adatbázis az alkalmazásban. Csak olvasható munkamenetek használata `<fog-name>.secondary.database.windows.net` mint a kiszolgáló URL-CÍMÉT és a kapcsolat automatikusan irányul, a másodlagos. Emellett ajánlott jelzik a kapcsolati karakterlánc használatával leképezés olvasása **ApplicationIntent = csak olvasható**.
 
 - **Elő kell készíteni a teljesítményoptimalizált teljesítménycsökkenése**
 
@@ -206,7 +206,7 @@ Ha az alkalmazás felügyelt példány az adatréteg használja, az üzletmenet 
 
 - **Olvasási és írási figyelő OLTP-munkaterhelések esetében használjon**
 
-  OLTP műveletek végrehajtásakor használni `failover-group-name.zone_id.database.windows.net` kiszolgálóként URL-CÍMÉT és a kapcsolatokat a rendszer automatikusan átirányítja az elsődleges. Az URL-cím nem változtatja meg a feladatátvételt követően. A feladatátvétel magában foglalja a DNS-rekord frissítése, ezért az ügyfélkapcsolatok a rendszer átirányítja az új elsődleges csak akkor, ha az ügyfél DNS-gyorsítótár nem frissítik. Mivel a másodlagos példány közös az elsődleges DNS-zónát, az ügyfélalkalmazás lesz képes újra csatlakozni a SAN tanúsítvány használatával.
+  OLTP műveletek végrehajtásakor használni `<fog-name>.zone_id.database.windows.net` kiszolgálóként URL-CÍMÉT és a kapcsolatokat a rendszer automatikusan átirányítja az elsődleges. Az URL-cím nem változtatja meg a feladatátvételt követően. A feladatátvétel magában foglalja a DNS-rekord frissítése, ezért az ügyfélkapcsolatok a rendszer átirányítja az új elsődleges csak akkor, ha az ügyfél DNS-gyorsítótár nem frissítik. Mivel a másodlagos példány közös az elsődleges DNS-zónát, az ügyfélalkalmazás lesz képes újra csatlakozni a SAN tanúsítvány használatával.
 
 - **Közvetlen csatlakozás a georeplikált másodlagos csak olvasási lekérdezések**
 
@@ -214,8 +214,8 @@ Ha az alkalmazás felügyelt példány az adatréteg használja, az üzletmenet 
 
   > [!NOTE]
   > Az egyes szolgáltatásszintek után az Azure SQL Database használatát támogatja [csak olvasható replikák](sql-database-read-scale-out.md) terheléselosztása csak olvasható lekérdezési számítási feladatok egy csak olvasható replika kapacitását, valamint használatához betölteni a `ApplicationIntent=ReadOnly` paraméter a kapcsolat karakterlánc. Egy georeplikált másodlagos van beállítva, amikor ez a funkció használatával csatlakozni vagy egy csak olvasható replika az elsődleges helyen, illetve a georeplikált helyre.
-  > - Csak olvasható replika az elsődleges helyen csatlakozni, használja `failover-group-name.zone_id.database.windows.net`.
-  > - A másodlagos helyen csak olvasható replika csatlakozni, használja `failover-group-name.secondary.zone_id.database.windows.net`.
+  > - Csak olvasható replika az elsődleges helyen csatlakozni, használja `<fog-name>.zone_id.database.windows.net`.
+  > - A másodlagos helyen csak olvasható replika csatlakozni, használja `<fog-name>.secondary.zone_id.database.windows.net`.
 
 - **Elő kell készíteni a teljesítményoptimalizált teljesítménycsökkenése**
 

@@ -17,18 +17,18 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7ed2830b704d379e2ecc5a5e548f831800af56d
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: d9d2e9aa5e5e805b302763f5417110cdd078eb3b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526384"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997597"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Gyors útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-A jelen rövid útmutatóban szereplő kódmintán azt mutatjuk be, hogyan tud egy Univerzális Windows-platform- (UWP-) alkalmazás felhasználókat bejelentkeztetni személyes, munkahelyi vagy iskolai fiókokkal, lekérni egy hozzáférési jogkivonatot, és meghívni a Microsoft Graph API-t.
+Ebben a rövid kód a minta azt mutatja be, hogyan egy univerzális Windows Platform (UWP) alkalmazás személyes fiókkal rendelkező felhasználók bejelentkezés vagy munkahelyi és iskolai fiókokhoz, hozzáférési jogkivonatot kapjon, és a Microsoft Graph API meghívása tartalmazza.
 
 ![Ez a rövid útmutató által létrehozott mintaalkalmazás működését mutatja](media/quickstart-v2-uwp/uwp-intro.svg)
 
@@ -72,7 +72,7 @@ A jelen rövid útmutatóban szereplő kódmintán azt mutatjuk be, hogyan tud e
 
 #### <a name="step-2-download-your-visual-studio-project"></a>2. lépés: A Visual Studio-projekt letöltése
 
- - [A Visual Studio 2017-projekt letöltése](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+ - [A Visual Studio-projekt letöltése](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
 
@@ -89,7 +89,7 @@ A jelen rövid útmutatóban szereplő kódmintán azt mutatjuk be, hogyan tud e
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 >
 > > [!TIP]
-> > Az értékek azonosításához *Alkalmazásazonosító*, lépjen a a **áttekintése** lap
+> > Az érték *Alkalmazásazonosító*, lépjen a a **áttekintése** szakasz a portálon
 
 #### <a name="step-4-run-your-application"></a>4. lépés: Az alkalmazás futtatása
 
@@ -119,7 +119,7 @@ Az MSAL-re mutató hivatkozás hozzáadásához adja hozzá az alábbi kódot:
 using Microsoft.Identity.Client;
 ```
 
-Ezután inicializálja az MSAL-t az alábbi kóddal:
+Ezt követően az MSAL inicializálva van a következő kód használatával:
 
 ```csharp
 public static IPublicClientApplication PublicClientApp;
@@ -133,11 +133,11 @@ PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 
-Az MSAL segítségével, interaktívan-jogkivonatok beszerzésének két módszer van: `AcquireTokenInteractive` és `AcquireTokenSilent`.
+Az MSAL az UWP-alkalmazás-jogkivonatok beszerzésének két módszer van: `AcquireTokenInteractive` és `AcquireTokenSilent`.
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Bizonyos helyzetekben szükséges a Microsoft identity platform végpont egy felugró ablakban vagy a saját fiók hitelesítő adatainak érvényesítéséhez, vagy beleegyezés keresztül a kényszerítési felhasználók használják. Néhány példa:
+Bizonyos helyzetekben szükséges, hogy a felhasználók a Microsoft identity platform végpont egy felugró ablakban vagy a saját fiók hitelesítő adatainak érvényesítéséhez, vagy beleegyezés keresztül kommunikál. Néhány példa:
 
 - Az első alkalommal jelentkeznek be az alkalmazás
 - Ha a felhasználóknak újból meg kell adniuk a hitelesítési adataikat, mert lejárt a jelszó
@@ -155,7 +155,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
-Nem ajánlott minden egyes alkalommal megkövetelni a felhasználóktól a hitelesítő adatok érvényesítését, amikor hozzá kell férniük egy erőforráshoz. Általában szerencsésebb, ha a jogkivonatok beszerzéséhez és megújításához nincs szükség felhasználói beavatkozásra. Kezdetben használja az `AcquireTokenAsync` metódust, majd a védett erőforrásokhoz való hozzáféréshez szükséges jogkivonatok beszerzéséhez az `AcquireTokenSilent` metódust használhatja:
+Használja a `AcquireTokenSilent` metódus után az eredeti védett erőforrások eléréséhez tokenek beszerzése érdekében `AcquireTokenAsync` metódust. Nem szeretne a felhasználónak a hitelesítő adatok ellenőrzése minden alkalommal, amikor az erőforrás eléréséhez szükséges. A legtöbbször kívánt token beszerzését és -megújítás, felhasználói beavatkozás nélkül
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();

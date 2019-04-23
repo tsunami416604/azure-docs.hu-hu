@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 9b8418dba12748915666c6a91ee65b37c0f59ace
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 026717dff2b6883eb643497dec91226e4afe8133
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804141"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150217"
 ---
-Az Azure storage-adatokhoz való hozzáférést biztosít a következő beépített RBAC-szerepkörök:
+Az Azure beépített RBAC-szerepkörök biztosít az Azure AD-vel blob és üzenetsor-adatokhoz való hozzáférés engedélyezése és az OAuth révén:
 
 - [Tárolási Blob adatok tulajdonosa](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-owner): Állítsa be a tulajdonosi és a POSIX hozzáférés-vezérlés kezelése az Azure Data Lake Storage Gen2 (előzetes verzió). További információkért lásd: [hozzáférés-vezérlés az Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-access-control.md).
 - [Storage-Blobadatok Közreműködője](../articles/role-based-access-control/built-in-roles.md#storage-blob-data-contributor): A Blob storage-erőforrások olvasási, írási és törlési engedélyek használatával.
@@ -25,7 +25,5 @@ Az Azure storage-adatokhoz való hozzáférést biztosít a következő beépít
 - [Tárolási üzenetsor adatok üzenetet feldolgozó](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor): Használja a grant peek, lekérése és törlési jogosultsággal az Azure Storage-üzenetsorok üzenetek.
 - [Tárolási üzenetsor adatok üzenetet küldő](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Engedélyeket adhat hozzá engedélyeket az Azure Storage-üzenetsorok üzenetek.
 
-> [!IMPORTANT]
-> RBAC szerepkör-hozzárendelések propagálása akár öt percet is igénybe vehet.
-
-További információ a beépített szerepkörök határozza meg az Azure Storage, lásd: [megismerheti a szerepkör-definíciók](../articles/role-based-access-control/role-definitions.md#management-and-data-operations-preview). Egyéni RBAC-szerepkörök létrehozásával kapcsolatos információkért lásd: [egyéni szerepkörök létrehozása az Azure szerepköralapú hozzáférés-vezérlés](../articles/role-based-access-control/custom-roles.md). 
+> [!NOTE]
+> Ne feledje, hogy az RBAC szerepkör-hozzárendelések propagálása akár öt percet is igénybe vehet.

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: dfbb31ce9f61ee28fef046120474a6a170906512
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: c179620d6858658dface5f706f7994d51f1a199b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59505575"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997308"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Megnevezett entitások felismerése használata a Text Analytics (előzetes verzió)
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Megnevezett entitások felismerése Szövegelemzés használata
 
-A [entitás Recognition API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) strukturálatlan szöveges vesz igénybe, és egyes JSON-dokumentumok listáját adja vissza használatát entitásokat is tartalmaz, hivatkozásokkal további információhoz a weben (Wikipédia és a Bing). 
+A [nevű entitás Recognition API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) strukturálatlan szöveges vesz igénybe, és egyes JSON-dokumentumok listáját adja vissza használatát entitásokat is tartalmaz, hivatkozásokkal további információhoz a weben (Wikipédia és a Bing). 
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Entitáskapcsolás és nevesített entitások felismerése
 
@@ -28,12 +28,10 @@ A Text Analytics `entities` mindkettő (NER) entitásfelismeréssel és -entitá
 ### <a name="entity-linking"></a>Entitáskapcsolás
 Entitáskapcsolás rendszer azon képessége, azonosíthatja és a egy entitás (például meghatározása-e a "Mars" globális vagy a latin god háború használja) szöveg található az identitás megkülönböztetéséhez. Ez a folyamat, amely felismeri a kapcsolódó entitások – Wikipedia szolgál a Tudásbázisban alapszintű ismerete szükséges a `entities` végpontot Text Analytics.
 
-A Text Analytics [2.0-s verziójú](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634), csak entitáskapcsolás érhető el.
-
 ### <a name="named-entity-recognition-ner"></a>Nevesített entitások felismerése (NER)
 Megnevezett entitások felismerése (NER) rendszer azon képessége, azonosíthatja a szöveg különböző entitásokat, és előre meghatározott osztályokba kategorizálja őket. Az entitások támogatott osztályokat alább láthatók.
 
-A Text Analytics [2.1. dátumú előzetes Sémaverzióra](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634), entitáskapcsolás és nevesített entitások felismerése (NER) érhető el.
+A Text Analytics [2.1-es verzió](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), entitáskapcsolás és nevesített entitások felismerése (NER) érhető el.
 
 ### <a name="language-support"></a>Nyelvi támogatás
 
@@ -44,7 +42,7 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 | Typo  | SubType | Példa |
 |:-----------   |:------------- |:---------|
 | Személy        | N/A\*         | "Jeff", "Bill Gates"     |
-| Földrajzi egység      | N/A\*         | "Redmond, Washington", "Párizs"  |
+| Location egység      | N/A\*         | "Redmond, Washington", "Párizs"  |
 | Szervezet  | N/A\*         | "Microsoft"   |
 | Mennyiség      | Szám        | "6", "hat"     | 
 | Mennyiség      | Százalék    | "50 %", "ötven százalék"| 
@@ -71,7 +69,7 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 
 ## <a name="preparation"></a>Előkészítés
 
-A JSON-dokumentumnak ilyen formátumban kell lennie: azonosító, szöveg, nyelv
+JSON-dokumentumok kell rendelkeznie a következő formátumban: Szöveg, nyelvi azonosító
 
 Lásd: által jelenleg támogatott nyelvek [ebben a listában](../text-analytics-supported-languages.md).
 
@@ -94,16 +92,16 @@ Dokumentum mérete kell lennie a 5,120 karakter / dokumentum, és legfeljebb 100
 
 A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentáció: [Entitáskapcsolási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentáció: [Entitáskapcsolási API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Állítsa be a HTTP-végpontot entitások kinyeréséhez. Tartalmaznia kell a `/entities` erőforrást: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ Állítsa be a HTTP-végpontot entitások kinyeréséhez. Tartalmaznia kell a `/entities` erőforrást: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`
 
 + A kérés fejlécet állítsa be úgy, hogy tartalmazza a Text Analytics műveletekhez a hozzáférési kulcsot. További információkért lásd: [Végpontok és hozzáférési kulcsok megkeresése](text-analytics-how-to-access-key.md).
 
 + A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót
 
 > [!Tip]
-> Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
+> Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
 ## <a name="step-2-post-the-request"></a>2. lépés: A kérelem küldése
 
@@ -280,18 +278,16 @@ Egy példa a kimenetre entitáskapcsolás a következő látható:
 
 Ebben a cikkben megtanulta, fogalmak és a Cognitive Services Text Analytics használatával entitáskapcsolás munkafolyamatokat. Összegezve:
 
-+ [Entitások API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) érhető el a kiválasztott nyelveken.
-+ A kérés törzsében szereplő JSON-dokumentumok azonosítót, szöveget és nyelvkódot tartalmaznak.
++ [Entitások API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) érhető el a kiválasztott nyelveken.
++ A kérelem törzsében szereplő JSON-dokumentumok közé tartozik egy azonosító, a szöveg és a nyelvi kódot.
 + POST-kérés a `/entities` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](text-analytics-how-to-access-key.md) használatával.
 + Válasz kimenete, amely entitáskészlet (beleértve a megbízhatósági pontszámok eltolások és webes hivatkozások, minden egyes dokumentum-azonosító) áll használható bármely alkalmazásban
-
-## <a name="see-also"></a>Lásd még 
-
- [A Text Analytics áttekintése](../overview.md)  
- [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
- [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712) 
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Text Analytics API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)
+> [Text Analytics API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+* [A Text Analytics áttekintése](../overview.md)  
+* [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
+* [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712) 

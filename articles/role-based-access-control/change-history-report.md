@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cab5b9317102a86dd75d2cb7e5a820cf64d2e831
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: b808654baded5bbe721866441a8d1115eff7bcaa
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535546"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997903"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>A Tevékenységnaplók megtekintése az Azure-erőforrások RBAC módosítások
 
@@ -43,7 +43,7 @@ Első lépésként a legegyszerűbb módja, hogy az Azure Portalon a Tevékenys�
 
 A tevékenységnaplóban a portálon számos szűrőket tartalmaz. Az RBAC-kapcsolódó szűrők a következők:
 
-|Szűrés  |Érték  |
+|Szűrés  |Value  |
 |---------|---------|
 |Eseménykategória     | <ul><li>Adminisztratív</li></ul>         |
 |Művelet     | <ul><li>Szerepkör-hozzárendelés létrehozása</li> <li>Szerepkör-hozzárendelés törlése</li> <li>Egyéni szerepkör-definíció létrehozása vagy módosítása</li> <li>Egyéni szerepkör-definíció törlése</li></ul>      |
@@ -66,7 +66,7 @@ Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Act
 Ez a parancs egy erőforráscsoportba tartozó összes szerepkör definíciómódosítások felsorolja az elmúlt hét nap:
 
 ```azurepowershell
-Get-AzLog -ResourceGroupName pharma-sales-projectforecast -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
+Get-AzLog -ResourceGroupName pharma-sales -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
 Ez a parancs felsorolja az összes szerepkör-hozzárendelés és a egy előfizetést az elmúlt hét nap szerepkör definíciójának változásai, és megjeleníti az eredményeket egy listában:
@@ -88,7 +88,7 @@ EventTimestamp          : 4/20/2018 9:18:05 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           requestbody    : {"Id":"22222222-2222-2222-2222-222222222222","Properties":{"PrincipalId":"33333333-3333-3333-3333-333333333333","RoleDefinitionId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers
-                          /Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","Scope":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales-projectforecast"}}
+                          /Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","Scope":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"}}
 
 ```
 
@@ -99,7 +99,7 @@ Az Azure CLI-vel tevékenységeket tartalmazó naplók megtekintéséhez haszná
 Ez a parancs felsorolja a tevékenységnaplókat, az erőforráscsoport, a kezdési időpont óta:
 
 ```azurecli
-az monitor activity-log list --resource-group pharma-sales-projectforecast --start-time 2018-04-20T00:00:00Z
+az monitor activity-log list --resource-group pharma-sales --start-time 2018-04-20T00:00:00Z
 ```
 
 Ez a parancs felsorolja a vizsgálati naplók az engedélyezési erőforrás-szolgáltató a kezdési időpont óta:
@@ -108,7 +108,7 @@ Ez a parancs felsorolja a vizsgálati naplók az engedélyezési erőforrás-szo
 az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
 ```
 
-## <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
+## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
 [Az Azure Monitor naplóira](../log-analytics/log-analytics-overview.md) egy másik eszköz használatával gyűjti össze és elemzi az RBAC-módosítások az összes Azure-erőforrásokhoz. Az Azure Monitor naplóira a következő előnyökkel jár:
 

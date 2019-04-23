@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 8b10cb0d66103410159a09ca156be3ea180c068b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.openlocfilehash: 89e73a4578134493a25ec3cbd2385433a2b36156
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371927"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003498"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Az Azure monitorozási ügynökök 
 A Microsoft Azure több módszert is biztosít a különböző típusú adatok gyűjtésére a Microsoft Windows és az Azure, a helyi adatközpontban vagy egyéb felhőszolgáltatók üzemeltetett Linux rendszerű virtuális gépek. Három különböző típusa érhető el a virtuális gép figyelése ügynökök a következők:
@@ -70,7 +70,7 @@ Korábban, a több Azure-szolgáltatások kötegelve is a *Operations Management
 * Azure-szolgáltatások például [Application Insights](https://docs.microsoft.com/azure/application-insights/) és [az Azure Security Center](https://docs.microsoft.com/azure/security-center/), amelyek natív módon tárolja az adatokat közvetlenül a Log Analytics.  
 
 ## <a name="dependency-agent"></a>Függőségi ügynök
-A függőségi ügynök fejlesztette ki a Service Map megoldást, amely eredetileg kívülről a Microsoft részeként. [A Service Map](../insights/service-map.md) és [-beli virtuális gépek az Azure Monitor](../insights/vminsights-overview.md) használatához a függőségi ügynököt Windows és Linux rendszerű virtuális gépek és a Log Analytics-ügynök felderített összegyűjti az adatokat a virtuális futó folyamatok integrálható gép és a külső folyamatok függőségeit. Ez tárolja ezeket az adatokat a Log Analytics-munkaterületen, és megjeleníti a felderített összekapcsolt összetevőket.
+A függőségi ügynök fejlesztette ki a Service Map megoldást, amely eredetileg nem célja a Microsoft részeként. [A Service Map](../insights/service-map.md) és [-beli virtuális gépek az Azure Monitor](../insights/vminsights-overview.md) használatához a függőségi ügynököt Windows és Linux rendszerű virtuális gépek és a virtuális futó folyamatok detektált adatok gyűjtése a Log Analytics-ügynök integrálható gép és a külső folyamatok függőségeit. Ez tárolja ezeket az adatokat a Log Analytics-munkaterületen, és megjeleníti a felderített összekapcsolt összetevőket.
 
 Ezeket az ügynököket a virtuális gép figyelése valamilyen kombinációját szükség lehet. Az ügynökök is telepíthető egymás mellett az Azure-bővítmény, azonban a Linux, a Log Analytics-ügynököket *kell* telepíthető telepítési ellenkező esetben az első sikertelen lesz. 
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 8e082f15cff616b9dc63fbf4ad51e94d078a04f3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
-ms.translationtype: MT
+ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811290"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995540"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK-val egyéni műveletek követése
 
@@ -131,7 +131,7 @@ Ha [üzenetet kezelő minta](/dotnet/api/microsoft.azure.servicebus.queueclient.
 Ha [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) csomag, további – a következő példák bemutatják, hogyan lehet nyomon követéséhez (és korrelálni) meghívja a Service Bus, Service Bus-üzenetsorba AMQP protokollt használja, és nem az Application Insights üzenetsor-műveletek automatikusan nyomon.
 Korrelációs azonosítók adja át a rendszer az üzenet tulajdonságait.
 
-#### <a name="enqueue"></a>Sorba
+#### <a name="enqueue"></a>Enqueue
 
 ```csharp
 public async Task Enqueue(string payload)
@@ -203,7 +203,7 @@ public async Task Process(BrokeredMessage message)
 }
 ```
 
-### <a name="azure-storage-queue"></a>Az Azure Storage-üzenetsor
+### <a name="azure-storage-queue"></a>Azure Storage queue
 Az alábbi példa bemutatja, hogyan nyomon követheti a [Azure Storage-üzenetsor](../../storage/queues/storage-dotnet-how-to-use-queues.md) műveletek és összevetését telemetriát az előállítói, a fogyasztói és az Azure Storage között. 
 
 A tárolási üzenetsort rendelkezik HTTP API-val. Összes hívás az üzenetsorba kötetblokkok az Application Insights függőségi gyűjtő a HTTP-kéréseket.
@@ -224,7 +224,7 @@ module.Initialize(TelemetryConfiguration.Active);
 
 Érdemes azt is korrelációját, ha az Application Insights Műveletazonosító tárolási kérelem azonosítóval. Információk a beállítása és lekérése a tárolási kérelem ügyfél és a egy kiszolgálói kérelem azonosítója: [figyelése, diagnosztizálása és hibaelhárítása az Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing).
 
-#### <a name="enqueue"></a>Sorba
+#### <a name="enqueue"></a>Enqueue
 Tároló-üzenetsorok támogatják a HTTP API-t, mert az üzenetsorhoz minden művelet automatikusan nyomon követi az Application Insights. Sok esetben elegendő az ebben a kialakítási kell lennie. Azonban korrelációját, ha a feldolgozói oldalon nyomkövetéseket az előállítói nyomkövetések, meg kell kontextust korrelációs hasonlóan, hogyan tesszük azt a HTTP protokoll a korrelációs. 
 
 Ez a példa bemutatja, hogyan nyomon követheti a `Enqueue` műveletet. A következőket teheti:
@@ -281,7 +281,7 @@ A telemetriai adatok mennyiségének csökkentésére az alkalmazás jelentések
 - Szerializálható `yourActivity.Id` helyett a üzenet hasznos adatok `operation.Telemetry.Id`. Is `Activity.Current.Id`.
 
 
-#### <a name="dequeue"></a>Eltávolítása a sorból
+#### <a name="dequeue"></a>Dequeue
 Hasonlóan `Enqueue`, a tárterület üzenetsorával tényleges HTTP-kérelem automatikusan nyomon követi az Application Insights. Azonban a `Enqueue` művelet valószínűleg történik, a szülő a környezetben, például egy bejövő kérelem környezetéből. Application Insights SDK-k automatikusan korrelációját, ha ilyen művelet (és a HTTP-része) a szülő kérelem és egyéb telemetriát jelentett ugyanabban a hatókörben.
 
 A `Dequeue` meglehetősen műveletet. Az Application Insights SDK automatikusan nyomon követi a HTTP-kérelmekre. A korrelációs környezetben azonban azt nem ismert mindaddig, amíg a rendszer elemzi az üzenetet. Nem alkalmas korrelációját, ha a HTTP-kérelem a telemetriát a többi üzenet jelenik meg.
@@ -384,12 +384,13 @@ Az egyes üzenetsorok sorból eltávolítás több üzenetet egy kéréssel. Ily
 Mindegyik üzenet a saját aszinkron átvitelvezérlés fel. További információkért lásd: a [kimenő függőségek követése](#outgoing-dependencies-tracking) szakaszban.
 
 ## <a name="long-running-background-tasks"></a>Hosszan futó háttérfeladatokat
+
 Egyes alkalmazások indítása hosszú ideig futó műveletek, amelyek a felhasználói kérelmek oka lehet. A nyomkövetés/rendszerállapot szempontjából, nem tér kérés és a függőségi rendszerállapot: 
 
 ```csharp
 async Task BackgroundTask()
 {
-    var operation = telemetryClient.StartOperation<RequestTelemetry>(taskName);
+    var operation = telemetryClient.StartOperation<DependencyTelemetry>(taskName);
     operation.Telemetry.Type = "Background";
     try
     {
@@ -414,9 +415,9 @@ async Task BackgroundTask()
 }
 ```
 
-Ebben a példában `telemetryClient.StartOperation` hoz létre `RequestTelemetry` , és kitölti vele a korrelációs környezetet. Tegyük fel, hogy egy szülő művelet bejövő kérelmek, amelyek ütemezve a művelet által létrehozott-e meg. Mindaddig, `BackgroundTask` átvitelvezérlés azonos aszinkron indul el, egy bejövő kérésnek, azt, hogy szülőművelet összefügg. `BackgroundTask` és minden beágyazott telemetriai elem is automatikusan is vonatkozhatnak, és a kérés által okozott, a kérelem befejezése után is.
+Ebben a példában `telemetryClient.StartOperation` hoz létre `DependencyTelemetry` , és kitölti vele a korrelációs környezetet. Tegyük fel, hogy egy szülő művelet bejövő kérelmek, amelyek ütemezve a művelet által létrehozott-e meg. Mindaddig, `BackgroundTask` átvitelvezérlés azonos aszinkron indul el, egy bejövő kérésnek, azt, hogy szülőművelet összefügg. `BackgroundTask` és minden beágyazott telemetriai elem is automatikusan is vonatkozhatnak, és a kérés által okozott, a kérelem befejezése után is.
 
-A feladat indításakor a háttér-szálból, amely nem rendelkezik minden olyan művelet (`Activity`) tartozik, `BackgroundTask` bármelyik szülő nem rendelkezik. Azonban azt is beágyazott műveleteket. A feladat által jelentett összes telemetriai elem lebontva a `RequestTelemetry` létrehozott `BackgroundTask`.
+A feladat indításakor a háttér-szálból, amely nem rendelkezik minden olyan művelet (`Activity`) tartozik, `BackgroundTask` bármelyik szülő nem rendelkezik. Azonban azt is beágyazott műveleteket. A feladat által jelentett összes telemetriai elem lebontva a `DependencyTelemetry` létrehozott `BackgroundTask`.
 
 ## <a name="outgoing-dependencies-tracking"></a>Kimenő függőségek nyomon követése
 Követheti, hogy a saját függőség típusa vagy az Application Insights által nem támogatott művelet.

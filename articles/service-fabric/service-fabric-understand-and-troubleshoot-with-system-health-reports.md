@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 4322fd60bb30b9eb6ac18c72e75127006acf5149
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: caeef04a27cec7bbeda5dd96335d9b7bd1a8eca0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528186"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007457"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Azure Service Fabric-összetevőket meg rendszerállapot-jelentéseket a lehetőségeiből közvetlenül a fürtön lévő összes entitáshoz. A [health Store adatbázisban](service-fabric-health-introduction.md#health-store) hoz létre, és törli az entitásokat a rendszer jelentések alapján. Azt is rendezi őket a hierarchiában, amely entitás interakciót rögzíti.
@@ -29,7 +29,7 @@ Azure Service Fabric-összetevőket meg rendszerállapot-jelentéseket a lehető
 > 
 > 
 
-Rendszerállapot-jelentések betekintést fürt és az alkalmazás funkciói, és problémákat jelző. Alkalmazások és szolgáltatások rendszerállapot-jelentések győződjön meg arról, hogy az entitások vannak megvalósítva, és megfelelően a Service Fabric-perspektívát vezérelhesse. A jelentéseket bármely szolgáltatásállapot-figyelést az üzleti logika, a szolgáltatás vagy a lefagyott folyamatok észlelése nem ad meg. Olyan szolgáltatást gazdagabbá teheti az egészségügyi adatok saját logika információkkal.
+Rendszerállapot-jelentések betekintést fürt és az alkalmazás funkciói, és problémákat jelző. Alkalmazások és szolgáltatások rendszerállapot-jelentések győződjön meg arról, hogy az entitások vannak megvalósítva, és megfelelően a Service Fabric-perspektívát vezérelhesse. A jelentéseket bármely szolgáltatásállapot-figyelést az üzleti logika, a szolgáltatás vagy a nem válaszoló folyamatok észlelése nem ad meg. Olyan szolgáltatást gazdagabbá teheti az egészségügyi adatok saját logika információkkal.
 
 > [!NOTE]
 > Felhasználói watchdogs által küldött rendszerállapot-jelentések láthatók csak *után* a rendszer összetevőit az entitás létrehozását. Egy entitás törlésekor a health Store adatbázisban automatikusan törli a hozzá társított összes rendszerállapot-jelentések. Ugyanez igaz, amikor az entitást egy új példánya jön. Például, ha egy új állapot-nyilvántartó megőrzött replika szolgáltatáspéldány jön létre. A régi példányhoz társított összes jelentés törölve, és a tároló törlődik.

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Metaadatok Azure Storage-rendszerképek létrehozása'
+title: 'Oktatóanyag: Metaadatok az Azure-rendszerképek létrehozása'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban megtudhatja, hogyan integrálható az Azure Computer Vision service webalkalmazásba metaadatok rendszerképek létrehozásához.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: e5124b07a5aff67d53213149565ddae4ea6dda33
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: a755a0bada0dbf6797465ea40ddbb30a84e3f289
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447999"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005990"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Oktatóanyag: A képek metaadatai létrehozni az Azure Storage használata a Computer Vision
 
@@ -52,11 +52,11 @@ Szüksége lesz az Azure-fiókjával; a Computer Vision erőforrás létrehozás
 
 1. Térjen vissza az erőforráscsoport a menüben, majd kattintson az imént létrehozott Computer Vision API-előfizetés. Másolja az URL-CÍMÉT a **végpont** valahol, hogy könnyen hozzáférhet kis idő múlva. Kattintson a **hozzáférési kulcsok megjelenítése**.
 
-    ![A hozzáférési kulcsok megtekintése](../Images/copy-vision-endpoint.png)
+    ![A végpont URL-címe és hozzáférési kulcsok hivatkozás című rész az Azure portal oldalán](../Images/copy-vision-endpoint.png)
 
 1. A következő ablakban másolja a értékét **kulcs 1** a vágólapra.
 
-    ![A hozzáférési kulcs másolása](../Images/copy-vision-key.png)
+    ![A másolási gomb vázolt kulcsok párbeszédpanelen kezelése](../Images/copy-vision-key.png)
 
 ## <a name="add-computer-vision-credentials"></a>Számítógépes Látástechnológia hitelesítő adatainak hozzáadása
 
@@ -136,7 +136,7 @@ Mentse a módosításokat a Visual Studio, és nyomja le az **Ctrl + F5** , ind�
 
 Az összes csatolt metaadatok megtekintéséhez használja az Azure Storage Explorer a storage-tárolót használ a lemezképek zobrazíte. Kattintson a jobb gombbal a blobokat a tárolóba, és válassza ki valamelyik **tulajdonságok**. A párbeszédpanelen látni fogja a kulcs-érték párok listáját. A számítógép által generált Képleírás tárolja a "Caption" elemet, és a keresési kulcsszavak "Tag0", "Tag1," tárolja, és így tovább. Ha elkészült, kattintson a **Mégse** a párbeszédpanel bezárásához.
 
-![Blob metaadatai](../Images/blob-metadata.png)
+![Lemezkép tulajdonságai párbeszédpanelen ablakról, amelyen a felsorolt metaadat-címkéket.](../Images/blob-metadata.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

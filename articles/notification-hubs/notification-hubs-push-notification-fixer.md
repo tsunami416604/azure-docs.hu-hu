@@ -1,5 +1,5 @@
 ---
-title: Diagnosztika az Azure Notification Hubs – elvetett értesítések
+title: Az Azure Notification Hubs elvetett értesítések diagnosztizálása
 description: Megtudhatja, hogyan elvetett értesítések az Azure Notification hubs szolgáltatással kapcsolatos leggyakoribb problémák diagnosztizálásához.
 services: notification-hubs
 documentationcenter: Mobile
@@ -14,59 +14,59 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 4af86025e714c65d0ae225b271a2d0970bb96ee8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 4fc4175c03baa4ddb81507dd4001fcdbe7c7058b
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281641"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149546"
 ---
-# <a name="azure-notification-hubs---diagnose-dropped-notifications"></a>Diagnosztika az Azure Notification Hubs – elvetett értesítések
+# <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Az Azure Notification Hubs elvetett értesítések diagnosztizálása
 
-Azure Notification hubs használatával ügyfeleink a leggyakoribb kérdések egyike hibaelhárítása, amikor egy alkalmazásból küldött értesítő e-nem jelennek meg az ügyféleszközökön. Szeretné tudnia, hol és miért értesítések eldobva, hogyan háríthatja el a problémát. Ez a cikk azonosítja, ezért előfordulhat, hogy első eldobott vagy eszközök által nem kapott értesítések. Ismerje meg, hogyan elemezheti és megállapítani a hiba okát.
+Az Azure Notification hubs szolgáltatással kapcsolatos gyakori kérdés, hogyan lehet a elhárításához, ha az alkalmazás értesítéseit nem jelennek meg az ügyféleszközökön. Ügyfelei tudni szeretnék, hol és miért értesítések eldobva, és hogyan lehet kijavítani a problémát. Ez a cikk azonosítja, ezért előfordulhat, hogy első eldobott vagy eszközök által nem kapott értesítések. Azt is bemutatja, hogyan lehet megállapítani a hiba okát.
 
-Fontos, hogy először tájékozódjon az Notification Hubs szolgáltatás hogyan értesítések leküldi eszközt.
+Fontos, hogy először tájékozódjon az hogyan Notification Hubs leküldéses értesítések eszköz.
 
 ![Notification Hubs-architektúra][0]
 
-Egy tipikus send notification folyamatban az üzenet érkezett a *alkalmazás háttérrendszere* Notification hubs felé. A Notification Hubs a regisztrációkhoz feldolgozást végez. A feldolgozás figyelembe veszi, a konfigurált címkék és a címke kifejezések meghatározásához "célok." Tárolók, amely a leküldéses értesítések fogadásához szükséges összes regisztrációját is. Tyto registrace is kiterjedhet bármely vagy a támogatott platformok: iOS-, Google, Windows, Windows Phone, Kindle és az China Android Baidu.
+Egy tipikus send notification folyamatban az üzenet érkezett a *alkalmazás háttérrendszere* Notification hubs felé. A Notification Hubs dolgozza fel az összes regisztrációját. Figyelembe veszi a konfigurált címkék és a címke kifejezések célok meghatározásához. Célok a regisztrációkat, amely a leküldéses értesítések fogadásához szükséges. Tyto registrace is kiterjedhet a támogatott platformok valamelyikét: Android-, Baidu (Android-eszközök a kínai), Fire operációs rendszer (Amazon) iOS, Windows és Windows Phone.
 
-A létrehozott célokat, az a Notification Hubs szolgáltatás értesítések leküldi a *leküldéses értesítési szolgáltatás* adott eszközplatform számára. Például az Apple Push Notification service (APNs) az Apple és a Firebase Cloud Messaging (FCM) for Google. Notification Hubs leküldéses értesítések elosztja a több köteg regisztrációk. A megfelelő leküldéses értesítési szolgáltatás alapján a hitelesítő adatokat állíthat be az Azure Portalon, a Notification hubs használatával végzi a hitelesítést **értesítési központ konfigurálása**. A leküldéses értesítési szolgáltatás ezután továbbítja az értesítéseket, hogy a megfelelő *ügyféleszközök*.
+A létrehozott célokat, a Notification Hubs leküldéses értesítések értesítések a *leküldéses értesítési szolgáltatás* adott eszközplatform számára. Például az Apple Push Notification service (APNs) az Apple és a Firebase Cloud Messaging (FCM) for Google. Notification Hubs leküldéses értesítések elosztja a több köteg regisztrációk. Az a megfelelő leküldéses értesítési szolgáltatás, állítsa be az Azure Portalon, a hitelesítő adatok alapján hitelesíti **értesítési központ konfigurálása**. A leküldéses értesítési szolgáltatás ezután továbbítja az értesítéseket, hogy a megfelelő *ügyféleszközök*.
 
-A lekérdezésértesítés-kézbesítési szolgáltatás utolsó szakasza történik a platform leküldéses értesítési szolgáltatás és az eszköz között. A leküldéses értesítési folyamat (ügyfél, alkalmazás háttérrendszere, a Notification Hubs és a platform leküldéses értesítési szolgáltatás) négy fő összetevőből bármelyikét bejelentések eldobni kívánt okozhat. A Notification Hubs architektúrájával kapcsolatos további információkért lásd: [Notification Hubs – áttekintés].
+A lekérdezésértesítés-kézbesítési szolgáltatás utolsó szakasza a platform leküldéses értesítési szolgáltatás és az eszköz között van. A lekérdezésértesítés-kézbesítés sikertelen lehet bármelyik négy szakaszai a leküldéses értesítési folyamat (ügyfél, alkalmazás háttérrendszere, a Notification Hubs és a platform leküldéses értesítéseket kezelő szolgáltatása). A Notification Hubs architektúrájával kapcsolatos további információkért lásd: [Notification Hubs – áttekintés].
 
-Az értesítések kézbesítése sikertelen szegné meg a kezdeti tesztelési/előkészítési fázisban. Elvetett értesítések ezen a ponton egy konfigurációs problémát jelezhet. Ha az értesítések küldéséhez hiba történik, éles környezetben, néhány vagy összes értesítést veszhetnek el. Ebben az esetben egy részletesebb alkalmazást vagy az üzenetkezelési minta probléma jelzi.
+Sikertelen értesítések kézbesíthetők szegné meg a kezdeti tesztelési/előkészítési fázisban. Elvetett értesítések ezen a ponton egy konfigurációs problémát jelezhet. Ha az értesítések küldéséhez hiba történik, éles környezetben, vagy azok egy részét az értesítések veszhetnek el. Ebben az esetben egy részletesebb alkalmazást vagy az üzenetkezelési minta probléma jelenik.
 
-A következő szakaszban az értesítések veszhetnek el, és a gyakori a több ritka esetekben megvizsgál.
+A következő szakaszban az értesítések veszhetnek el, és a gyakori, ritka esetekben megvizsgál.
 
-## <a name="notification-hubs-misconfiguration"></a>Notification Hubs helytelen konfiguráció
+## <a name="notification-hubs-misconfiguration"></a>Notification Hubs helytelen konfiguráció ##
 
-Sikeresen küldhetők értesítések a megfelelő leküldéses értesítési szolgáltatásunk, a Notification Hubs szolgáltatás maga az alkalmazás a fejlesztői környezetben hitelesítenie kell. A fejlesztői az adott platform (Google, az Apple, Windows és így tovább) hoz létre egy fejlesztői fiók nevében. A fejlesztő ezután regisztrálja alkalmazását a hitelesítő adatok ered platform.
+Értesítések küldésére a megfelelő leküldéses értesítési szolgáltatásunk, a Notification Hubs hitelesítenie kell magát az alkalmazás környezetében. -A célplatformot notification service (a Microsoft, az Apple, Google stb.) létre kell hoznia egy fejlesztői fiók nevében. Ezt követően regisztrálnia kell az alkalmazás az operációs rendszerben, ahol megkapja a tokenek vagy kulcsok, amellyel a cél PNS dolgozhat.
 
-Platform hitelesítő adatokat hozzá kell adnia az Azure Portalon. Ha nincsenek értesítései az eszköz elérni próbált, az első lépés annak érdekében, hogy a megfelelő hitelesítő adatokat a Notification Hubs vannak-e konfigurálva kell lennie. A hitelesítő adatoknak egyezniük kell az alkalmazás egy platformspecifikus fejlesztői fiók alatt létrehozott.
+Platform hitelesítő adatokat hozzá kell adnia az Azure Portalon. Ha nincsenek értesítései az eszköz elérni próbált, az első lépéseként annak érdekében, hogy a helyes hitelesítő adatok vannak konfigurálva, a Notification hubs használatával. A hitelesítő adatoknak egyezniük kell az alkalmazás egy platformspecifikus fejlesztői fiók alatt létrehozott.
 
 Ez a folyamat befejezéséhez részletes utasításokért lásd: [Azure Notification Hubs használatának első lépései].
 
 Az alábbiakban néhány gyakori konfigurációs hibáinak kereséséhez:
 
-**Általános**
+### <a name="notification-hub-name-location"></a>Értesítési központ neve helye
 
 Győződjön meg arról, hogy az értesítési központ nevére (nélkül elgépelések) megegyezik az egyes helyek:
-   * Ha regisztrálja az ügyfélről.
-   * Ahol, értesítések küldése a háttérrendszerből.
-   * Ha konfigurálta a leküldéses értesítési szolgáltatás hitelesítő adatait.
+   * Kell regisztrálnia az ügyfélről
+   * Amikor értesítések küldése a háttérrendszerből
+   * Ha konfigurálta a leküldéses értesítési szolgáltatás hitelesítő adatai
 
-Győződjön meg arról, hogy a helyes-e közös hozzáférésű jogosultságkódok konfigurációs karakterláncait az ügyfél és az alkalmazás háttérrendszere. Általában a kell használnia **DefaultListenSharedAccessSignature** az ügyfélen, és **DefaultFullSharedAccessSignature** az alkalmazás háttér (engedélyt szeretne értesítéseket küldeni Notification hubs használatával).
+Győződjön meg arról, az ügyfél használja a megfelelő közös hozzáférésű jogosultságkódok konfigurációs karakterláncait, és vissza az alkalmazás befejezése. Általában a kell használnia **DefaultListenSharedAccessSignature** az ügyfélen, és **DefaultFullSharedAccessSignature** az alkalmazás a háttéralkalmazás. Ezzel engedélyt ad értesítések küldését a Notification hubs használatával.
 
-**APN-konfiguráció**
+### <a name="apn-configuration"></a>APN-konfiguráció ###
 
-Két különböző hubs kell megmaradjanak: egy eseményközpont éles környezetben, és a egy másik hub tesztelési. Ez azt jelenti, hogy fel kell töltenie a tanúsítvány egy védőfal mögötti környezet, mint a tanúsítványt és a hubnak, amely az éles környezetben használni kívánja, külön hubra során használt. Ne próbálja a különböző típusú tanúsítványt tölthet fel egy központban. Emiatt előfordulhat, hogy értesítés sikertelen.
+Két különböző hubs kell megmaradjanak: egyet az éles és a egy másik a tesztelés. Fel kell tölteni a tanúsítványt használja, mint az éles környezetben használni kívánt tanúsítvány/hub külön hubra egy védőfal mögötti környezet. Ne próbálja a különböző típusú tanúsítványt tölthet fel egy központban. Értesítési hibákat okozhat.
 
-Ha véletlenül egy központban különböző típusú tanúsítványt feltölteni, javasoljuk, hogy a központ törléséhez, és kezdés tiszta lappal egy új eseményközpont. Ha valamilyen okból nem törölhető, a központ legalább törölnie kell a meglévő regisztrációk a hubról.
+Ha véletlenül egy központban különböző típusú tanúsítványok feltöltése, a központ törléséhez, és kezdés tiszta lappal egy új eseményközpont. Ha valamilyen okból nem törli a hub, legalább törölnie kell a meglévő regisztrációkat az eseményközpontból.
 
-**FCM-konfiguráció**
+### <a name="fcm-configuration"></a>FCM-konfiguráció ###
 
-1. Ügyeljen arra, hogy a *kiszolgálókulcs* beszerzett Firebase megegyezik a server kulcs, amely az Azure Portalon regisztrálta.
+1. Ügyeljen arra, hogy a *kiszolgálókulcs* beszerzett Firebase megegyezik a server kulcsot az Azure Portalon regisztrálta.
 
    ![Firebase kiszolgálókulcs][3]
 
@@ -74,105 +74,105 @@ Ha véletlenül egy központban különböző típusú tanúsítványt feltölte
 
    ![Firebase-projekt azonosítója][1]
 
-## <a name="application-issues"></a>Alkalmazás-hibák
+## <a name="application-issues"></a>Alkalmazás-hibák ##
 
-**Címke és címke kifejezések**
+### <a name="tags-and-tag-expressions"></a>Címke és címke kifejezések ###
 
-A célközönség szegmentálása a címkék vagy a címke kifejezések használatakor, akkor lehet, hogy az értesítés elküldéséhez, amikor nincs célja nem talált a címkék vagy a címke kifejezések, amelyeket a küldési hívás.
+A célközönség szegmentálása a címkék vagy a címke kifejezések használatakor, akkor lehet, hogy az értesítés elküldéséhez, amikor cél nem található. Ez a hiba a megadott címkék és a küldési hívás címke kifejezéseket alapul.
 
-Tekintse át, győződjön meg róla, hogy nincsenek címke értesítés küldése, ha a regisztráció. Majd ellenőrizze, hogy csak az ügyfelekről, amelyek azokat a regisztrációkat az értesítés fogadását.
+Tekintse át a regisztrációk annak érdekében, hogy a címkék felel meg, ha értesítést küld. Majd ellenőrizze, hogy csak azokat a regisztrációkat rendelkező ügyfelek az értesítés fogadását.
 
-Például ha a Notification hubs használatával az összes regisztrációit "Politika" címke használatával végzett és küld értesítést a címkével ellátott "Sport", az értesítés nem a rendszer bármilyen eszközre. Egy összetett esetet is járhat, amelyben regisztrált "Címkét egy" vagy "Címke B" címke kifejezések, de értesítések küldésekor "Címke A & és címke b" cél A cikk későbbi részében öndiagnosztikai tippek szakaszban hogy bemutatják, hogyan regisztrációit, és végezze el az összevetést.
+Tegyük fel például, a Notification hubs használatával az összes regisztrációit használja a címke "Politika". Majd küldünk egy értesítést a címkével ellátott "Sport", ha az nem fog az értesítés bármilyen eszközre. Egy összetett esetet is járhat, ahol regisztrálta "címkével és A" címke kifejezések *vagy* "Címke B", de a megcélzott "Címke A & és címke b" A cikk későbbi részében a öndiagnosztikai tippek a szakasz bemutatja, hogyan regisztrációit, és végezze el az összevetést.
 
-**Sablonokkal kapcsolatos problémák**
+### <a name="template-issues"></a>Sablonokkal kapcsolatos problémák ###
 
 Ha sablonokat használ, győződjön meg arról, hogy kövesse az ismertetett irányelvek [sablonok].
 
-**Érvénytelen a regisztrációk**
+### <a name="invalid-registrations"></a>Érvénytelen a regisztrációk ###
 
-Ha az értesítési központ konfigurálva lett, és minden olyan címkék vagy a címke kifejezések helyesen használták, érvényes cél találhatók. Értesítések ezeken a célokon bA küldendő adattípusokat. A Notification Hubs szolgáltatás majd ki, párhuzamosan több feldolgozási kötegek következik be. Az egyes kötegek üzeneteket küld a regisztrációk készletét.
+Ha az értesítési központ konfigurálva lett, és a címkék vagy a címke kifejezések helyesen használták, érvényes cél találhatók. Értesítések ezeken a célokon bA küldendő adattípusokat. A Notification Hubs majd ki, párhuzamosan több feldolgozási kötegek következik be. Az egyes kötegek üzeneteket küld a regisztrációk készletét.
 
 > [!NOTE]
-> Párhuzamos feldolgozás hajtja végre, mert a sorrendet, amelyben az értesítések kézbesítése nem garantált.
+> A Notification Hubs kötegek párhuzamosan dolgozza fel, mert a sorrendet, amelyben az értesítések kézbesítése nem garantált.
 
-A Notification Hubs az "a legnagyobb egyszer" üzenet kézbesítési modell van optimalizálva. A deduplikáció azt történt kísérlet, úgy, hogy az értesítések egy eszközön egynél többször érkezzenek. Ennek biztosítására, hogy ellenőrizze regisztrációk, és győződjön meg arról, hogy csak egy üzenetet küld eszköz azonosítója, a leküldéses értesítési szolgáltatásunk, az üzenet elküldése előtt.
+A Notification Hubs az ", és a legtöbb – egyszer" üzenet kézbesítési modell van optimalizálva. A deduplikáció azt történt kísérlet, úgy, hogy az értesítések egy eszközön egynél többször érkezzenek. Regisztráció a leküldéses értesítési szolgáltatás való továbbítás előtt küld eszközazonosító csak egy üzenet, hogy be van jelölve.
 
-A leküldéses értesítési szolgáltatás, amelyet ezután fogadja, és a regisztrációk ellenőrzése, hogy az egyes kötegek zajlik, lehetőség, hogy a leküldéses értesítési szolgáltatás egy vagy több regisztrációk hiba észleli a batch szolgáltatásban. Ebben az esetben a leküldéses értesítési szolgáltatásunk, a Notification Hubs hibát ad vissza, és a folyamat leáll. A leküldéses értesítési szolgáltatás a batch teljes mértékben csökken. Ez különösen igaz az apns-sel, amelyeket egy stream TCP protokollt használja.
+A leküldéses értesítési szolgáltatás, amelyet ezután fogadja és érvényesíti a regisztrációkat az egyes kötegek küld. Ez a folyamat során is lehet, hogy a leküldéses értesítési szolgáltatás észlelni fogja a regisztrációk egy vagy több hiba történt, a batch szolgáltatásban. A folyamat leáll, és a leküldéses értesítési szolgáltatás majd hibát ad vissza a Notification hubs használatával. A leküldéses értesítési szolgáltatás a batch teljes mértékben csökken. Ez különösen igaz az apns-sel, amely a stream TCP protokollt használ.
 
-A Microsoft a legtöbb vannak optimalizálva egyszer kézbesítési. Azonban ebben az esetben a hibát okozó regisztráció eltávolítása az adatbázisból. Ezután a többi eszközt, hogy a batch szolgáltatásban a lekérdezésértesítés-kézbesítés próbálkozni.
+Ebben az esetben a hibát okozó regisztrációs eltávolítja az adatbázisból. Ezután a többi eszközt, hogy a batch szolgáltatásban a lekérdezésértesítés-kézbesítés próbálkozni.
 
-A sikertelen kézbesítési kísérlet egy regisztrációs elleni további hiba adatokat kérhet le, használhatja a Notification Hubs – REST API-k [üzenetszintű telemetriai adatokhoz: Értesítési üzenet telemetriai adatokat](https://msdn.microsoft.com/library/azure/mt608135.aspx) és [PNS-visszajelzéseket](https://msdn.microsoft.com/library/azure/mt705560.aspx). A mintakódot, tekintse meg a [küldése REST példa](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/SendRestExample).
+A sikertelen kézbesítési kísérlet egy regisztrációs elleni további hiba adatokat kérhet le, használhatja a Notification Hubs – REST API-k [üzenetszintű telemetriai adatokhoz: Értesítési üzenet telemetriai adatokat](https://msdn.microsoft.com/library/azure/mt608135.aspx) és [PNS-visszajelzéseket](https://msdn.microsoft.com/library/azure/mt705560.aspx). A mintakódot, tekintse meg a [küldése REST példa](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
 
 ## <a name="push-notification-service-issues"></a>Leküldéses értesítési szolgáltatási problémák
 
-Miután az értesítési üzenet érkezett, a platform leküldéses értesítési szolgáltatás, feladata a leküldéses értesítési szolgáltatás kézbesíti az értesítés az eszköz. A Notification Hubs szolgáltatást ezen a ponton a képen kívül esik, és rendelkezik a nem szabályozza, vagy ha az eszköz az értesítést a rendszer továbbítja.
+Miután a leküldéses értesítési szolgáltatás megkapja az értesítést, az értesítés kínál az eszközön. Ezen a ponton a Notification Hubs nem szabályozza, az eszközre az értesítés kézbesítését rendelkezik.
 
-Mivel a platformértesítési szolgáltatásoknak robusztus, értesítések általában a leküldéses értesítési szolgáltatásból eszközök eléréséhez néhány másodpercen belül. Ha a leküldéses értesítési szolgáltatás szabályozza, a Notification Hubs szolgáltatás vonatkozik egy exponenciális visszatartási stratégia. A leküldéses értesítési szolgáltatás 30 percig marad nem érhető el, ha lejár, és dobja el az üzeneteket véglegesen helyen van egy szabályzatot.
+Mivel a platformértesítési szolgáltatásoknak robusztus, értesítések általában néhány másodpercen belül eszközök eléréséhez. A leküldéses értesítési szolgáltatás szabályozza, ha a Notification Hubs egy exponenciális visszatartási stratégia vonatkozik. A leküldéses értesítési szolgáltatás 30 percig marad nem érhető el, ha nincs házirend lejár, és dobja el az üzeneteket véglegesen helye.
 
-Ha leküldéses értesítést küldő szolgáltatás megkísérli az értesítések kézbesítésére, de az eszköz offline állapotban, az értesítést a leküldéses értesítési szolgáltatás egy korlátozott ideig tárolja. Amikor elérhetővé válik az eszköz az értesítés érkezik az eszközön.
+Ha egy leküldéses értesítési szolgáltatás megkísérli az értesítések kézbesítésére, de az eszköz offline állapotban, az értesítést a leküldéses értesítési szolgáltatás tárol. Ez csak egy korlátozott ideig nem történik. Amikor elérhetővé válik az eszköz az értesítés érkezik az eszközön.
 
-Minden alkalmazáshoz csak egy újabb értesítés tárolódik. Ha több értesítések lesznek küldve, amikor egy eszköz offline állapotban van, minden egyes új értesítés hatására elvet előzetes értesítés. Csak a legújabb értesítés tartja nevezzük *összevonási értesítések* az APN, és *dimenziógranularitását* az FCM (összecsukás kulcsot használó). Az eszköz hosszú ideje offline állapotban marad, ha folyamatban van az eszköz eltárolt értesítések elvesznek. További információkért lásd: [APN áttekintése] és [FCM-üzenetek].
+Minden egyes alkalmazás tárolja csak egy újabb értesítés. Ha több értesítések lesznek küldve, amikor egy eszköz offline állapotban van, minden egyes új értesítés eredményezi, az utolsót elvet. Csak a legújabb értesítés tartja nevezzük *egyesítése* az APNs és *összecsukás* az FCM. (FCM összecsukás kulcsot használ.) Ha az eszköz hosszú ideje offline állapotban marad, az eszközön tárolt értesítések törlődik. További információkért lásd: [APNs – áttekintés] és [FCM-üzenetek].
 
-Az Azure Notification Hubs adhat át egy összevonási kulcs használatával egy HTTP-fejlécet az általános SendNotification API-val. Ha például a .NET SDK-hoz, használja `SendNotificationAsync`. A SendNotification API veszi adhatók be HTTP-fejléceket is –, hogy a megfelelő leküldéses értesítési szolgáltatás.
+A Notification Hubs adhat át egy összevonási kulcs használatával egy HTTP-fejlécet az általános SendNotification API-val. Ha például a .NET SDK-hoz, használja `SendNotificationAsync`. A SendNotification API-t is, hogy a megfelelő leküldéses értesítési szolgáltatás átadott HTTP-fejlécek vesz igénybe.
 
 ## <a name="self-diagnosis-tips"></a>Öndiagnosztikai tippek
 
 Az alábbiakban elérési útjait elvetett értesítések a Notification Hubs a probléma alapvető okát.
 
-### <a name="verify-credentials"></a>Hitelesítő adatok ellenőrzése
+### <a name="verify-credentials"></a>Hitelesítő adatok ellenőrzése ###
 
-**Leküldéses értesítési szolgáltatás fejlesztői portálon**
+#### <a name="push-notification-service-developer-portal"></a>Leküldéses értesítési szolgáltatás fejlesztői portálon ####
 
-Ellenőrizze a hitelesítő adatokat a megfelelő leküldéses értesítési szolgáltatás fejlesztői portálon (APNs, FCM, Windows Notification Service, és így tovább). További információkért lásd: [Azure Notification Hubs használatának első lépései].
+Ellenőrizze a hitelesítő adatokat a megfelelő leküldéses értesítési szolgáltatás fejlesztői portálon (APNs, FCM, Windows Notification Service, és így tovább). További információkért lásd: [oktatóanyag: Értesítések küldése az Azure Notification Hubs univerzális Windows-Platformos alkalmazások](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
 
-**Azure Portal**
+#### <a name="azure-portal"></a>Azure Portal ####
 
-Tekintse át és felel meg a hitelesítő adatokat, amelyek kapott, a leküldéses értesítési szolgáltatás fejlesztői portált, az Azure Portalon nyissa meg a **hozzáférési szabályzatok** fülre.
+Tekintse át, és a hitelesítő adatokat a leküldéses értesítési szolgáltatás fejlesztői portálról lekért egyeznek, nyissa meg a **hozzáférési szabályzatok** lap az Azure Portalon.
 
 ![Hozzáférési szabályzatok Azure Portalon][4]
 
 ### <a name="verify-registrations"></a>Ellenőrizze a regisztrációt
 
-**Visual Studio**
+#### <a name="visual-studio"></a>Visual Studio ####
 
-Ha használja a Visual Studio fejlesztési, csatlakozhat Azure-t a Server Explorer megtekintéséhez és kezeléséhez több Azure-szolgáltatásokkal, beleértve a Notification hubs használatával. Ez hasznos elsődlegesen a fejlesztési-tesztelési környezet.
+A Visual Studio Azure megtekintéséhez és kezeléséhez több Azure-szolgáltatásokkal, mint a Notification Hubs a Server Explorer eszközével kapcsolódhat. Ez a parancs elsősorban hasznos a fejlesztési-tesztelési környezet.
 
 ![Visual Studio Server Explorer][9]
 
-Megtekintheti, és a platform natív kategorizálta az központ összes regisztrációja vagy sablon regisztrációs, minden olyan címkék, leküldéses értesítési szolgáltatás azonosítója, regisztrációs azonosító és lejárati dátum kezelése. Ezen az oldalon egy regisztrációs szerkesztheti is. Ez különösen hasznos a címkék szerkesztését.
+Megtekintheti, és minden regisztrációk kezelése a hub. A regisztrációk platform, natív vagy sablon regisztrációs, címkét, leküldéses értesítési szolgáltatás azonosítója, regisztrációs azonosító és lejárati dátum szerint csoportosíthatók. Ezen az oldalon egy regisztrációs szerkesztheti is. Ez különösen hasznos a címkék szerkesztését.
 
-Kattintson a jobb gombbal a **értesítési központ** a a **Server Explorer**, és válassza ki **diagnosztizálása**. 
+Kattintson a jobb gombbal az az értesítési központ **Server Explorer**, és válassza ki **diagnosztizálása**. 
 
-![A Visual Studio - Server Explorer – menü diagnosztizálása](./media/notification-hubs-diagnosing/diagnose-menu.png)
+![Visual Studio Server Explorer: Menü diagnosztizálása](./media/notification-hubs-diagnosing/diagnose-menu.png)
 
-A következő oldal jelenik meg: 
+A következő oldal jelenik meg:
 
-![A Visual Studio - Diagnosztika lap](./media/notification-hubs-diagnosing/diagnose-page.png)
+![Visual Studio: Diagnosztika lap](./media/notification-hubs-diagnosing/diagnose-page.png)
 
-Váltson a **Eszközregisztrációk** oldalon: 
+Váltson a **Eszközregisztrációk** oldalon:
 
-![Visual Studio Device Registrations](./media/notification-hubs-diagnosing/VSRegistrations.png)
+![Visual Studio: Eszközregisztrációk](./media/notification-hubs-diagnosing/VSRegistrations.png)
 
 Használhat **Tesztküldés** lap egy értesítési tesztüzenet küldése:
 
-![Visual Studio – küldés tesztelése](./media/notification-hubs-diagnosing/test-send-vs.png)
+![Visual Studio: Tesztküldés](./media/notification-hubs-diagnosing/test-send-vs.png)
 
 > [!NOTE]
-> A Visual Studio használatával csak a fejlesztés + tesztelés alatt, és a regisztrációk korlátozott számú regisztrációk szerkesztése. Ha a regisztrációk tömeges szerkesztése van szüksége, fontolja meg az exportálás, és importálja a ismertetett regisztrációs funkció [exportálása és módosítása a regisztrációk tömeges](https://msdn.microsoft.com/library/dn790624.aspx).
+> A Visual Studio használatával csak a fejlesztés és tesztelés alatt, és a regisztrációk korlátozott számú regisztrációk szerkesztése. Ha a regisztrációk tömeges szerkesztése van szüksége, fontolja meg az exportálás, és importálja a ismertetett regisztrációs funkció [Útmutató: Exportálása és módosítása a regisztrációk tömeges](https://msdn.microsoft.com/library/dn790624.aspx).
 
-**Service Bus Explorer**
+#### <a name="service-bus-explorer"></a>Service Bus Explorer ####
 
-Sok ügyfél használ [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer) megtekintéséhez és kezeléséhez az értesítési központban. Service Bus Explorerrel egy nyílt forráskódú projekt. 
+Sok ügyfél használ [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer) megtekintése és kezelése a notification hubs használatával. Service Bus Explorerrel egy nyílt forráskódú projekt. 
 
 ### <a name="verify-message-notifications"></a>Ellenőrizze az üzenetben küldött értesítésekről
 
-**Azure Portal**
+#### <a name="azure-portal"></a>Azure Portal ####
 
 Tesztértesítés küldése az ügyfelek számára egy service háttérrendszer városoknak, a nélkül, **támogatás + hibaelhárítás**válassza **Tesztküldés**.
 
 ![Küldési funkciók tesztelése az Azure-ban][7]
 
-**Visual Studio**
+#### <a name="visual-studio"></a>Visual Studio ####
 
 A Visual Studióból tesztértesítések is küldhet.
 
@@ -180,19 +180,19 @@ A Visual Studióból tesztértesítések is küldhet.
 
 A Notification Hubs Visual Studio Server Explorerben való használatával kapcsolatos további információkért tanulmányozza a következő cikkeket:
 
-* [A notification hubs nézet eszközregisztrációk]
+* [A notification hubs eszközregisztrációk megtekintése](https://docs.microsoft.com/en-us/previous-versions/windows/apps/dn792122(v=win.10))
 * [Részletes bemutatása: Visual Studio 2013 Update 2 RC és az Azure SDK 2.3-as verzióját]
 * [A Visual Studio 2013 Update 3 és az Azure SDK 2.4 kibocsátási bejelentése]
 
 ### <a name="debug-failed-notifications-and-review-notification-outcome"></a>Sikertelen értesítések hibakeresése és az értesítés kimenetelét áttekintése
 
-**EnableTestSend tulajdonság**
+#### <a name="enabletestsend-property"></a>EnableTestSend tulajdonság ####
 
-Ha kezdetben Notification hubs szolgáltatással, értesítést küld, az a Notification Hubs feldolgozáshoz sorba állított az értesítés. A Notification Hubs meghatározza, hogy a megfelelő célokat, és ezután elküldi az értesítést a leküldéses értesítési szolgáltatáshoz. Ha a REST API-t vagy bármely, az ügyfél SDK-kat használ, a sikeres, a Küldés hívás visszatérési azt jelenti, hogy csak, hogy az üzenet rendszer sikeresen várólistára helyezte a Notification hubs használatával. Nem kell minden olyan Mi történt, amikor a leküldéses értesítési szolgáltatás végül elküldte az üzenetet a Notification Hubs betekintést.
+Notification hubs szolgáltatással értesítés küldése, amikor az értesítési kezdetben várólistára van állítva. A Notification Hubs meghatározza, hogy a megfelelő célokat, és ezután elküldi az értesítést a leküldéses értesítési szolgáltatáshoz. A REST API-t vagy az ügyfél SDK-k valamelyikét használja, ha a Küldés hívás a visszatérési azt jelenti, hogy csak, hogy az üzenetet a Notification hubs használatával az a várólistára. Mi történt, amikor a Notification Hubs végül küld az értesítés a leküldéses értesítési szolgáltatás betekintést, nem biztosít.
 
-Ha az értesítés nem érkezik meg az ügyféleszközön:, lehetséges, hogy hiba történt, amikor a Notification Hubs próbált kézbesíteni az üzenetet a leküldéses értesítési szolgáltatás. Például a hasznos adatainak mérete meghaladhatja a leküldéses értesítési szolgáltatás által engedélyezett maximális értéket, vagy a hitelesítő adatokat, a Notification Hubs konfigurált valószínűleg érvénytelen.
+Ha nem érkezik meg az értesítést, az ügyféleszközön, előfordulhat, hogy rendelkezik hiba során a Notification Hubs a leküldéses értesítési szolgáltatás kézbesíti. Például a hasznos adatainak mérete meghaladhatja a leküldéses értesítési szolgáltatás által engedélyezett maximális értéket, vagy a hitelesítő adatokat, a Notification Hubs konfigurált valószínűleg érvénytelen.
 
-Információkhoz juthat leküldéses értesítési szolgáltatás hibák, használhatja a [EnableTestSend] tulajdonság. Ez a tulajdonság automatikusan engedélyezve lesz, ha a portálon vagy a Visual Studio ügyfél teszt üzenetet küld. Ez a tulajdonság segítségével részletes hibakeresési információk megjelenítéséhez. A tulajdonság API-kon keresztül is használhatja. Jelenleg ezzel a .NET SDK-ban. Végül Ez hozzáadódik minden ügyfél SDK-k.
+Információkhoz juthat leküldéses értesítési szolgáltatás hibák, használhatja a [EnableTestSend] tulajdonság. Ez a tulajdonság automatikusan engedélyezve lesz, ha a portálon vagy a Visual Studio ügyfél teszt üzenetet küld. Ez a tulajdonság segítségével részletes hibakeresési információk megjelenítéséhez és API-kon keresztül is. Jelenleg ezzel a .NET SDK-ban. Ez hozzáadódik minden ügyfél SDK-k idővel.
 
 Használatához a `EnableTestSend` tulajdonság a REST-hívással hozzáfűzése egy lekérdezési karakterlánc paramétereként nevű *tesztelése* és a küldési hívás vége. Példa:
 
@@ -200,7 +200,7 @@ Használatához a `EnableTestSend` tulajdonság a REST-hívással hozzáfűzése
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
 ```
 
-**Példa (.NET SDK-val)**
+#### <a name="net-sdk-example"></a>Példa .NET SDK-val ####
 
 Íme egy példa (bejelentési) natív felugró értesítés küldése a .NET SDK használatával:
 
@@ -212,7 +212,7 @@ Console.WriteLine(result.State);
 
 A végrehajtás végén `result.State` egyszerűen állapotok `Enqueued`. Az eredményeket nem ad meg minden Mi történt a leküldéses értesítés betekintést.
 
-Ezután használhatja a `EnableTestSend` logikai tulajdonság. Használja a `EnableTestSend` táblafiókhoz tulajdonságot `NotificationHubClient` beolvasni egy részletes állapotadatainak megjelenítéséhez leküldéses értesítési szolgáltatás hibák fordulhatnak elő, amikor az értesítés érkezik. A Küldés hívás adja vissza, mert csak azt követően a Notification Hubs elküldte az értesítést a leküldéses értesítési szolgáltatás a serkenti az eredményt meghatározni a visszaadott további időt igényel.
+Ezután használhatja a `EnableTestSend` logikai tulajdonság. Használja a `EnableTestSend` táblafiókhoz tulajdonságot `NotificationHubClient` beolvasni egy részletes állapotadatainak megjelenítéséhez leküldéses értesítési szolgáltatás hibák fordulhatnak elő, amikor az értesítés érkezik. A Küldés hívás adja vissza, mert először a Notification Hubs a leküldéses értesítési szolgáltatás kézbesíti az értesítés további időt igényel.
 
 ```csharp
     bool enableTestSend = true;
@@ -227,7 +227,7 @@ Ezután használhatja a `EnableTestSend` logikai tulajdonság. Használja a `Ena
     }
 ```
 
-**Kimeneti példa**
+#### <a name="sample-output"></a>Példa kimenet ####
 
 ```text
 DetailedStateAvailable
@@ -236,14 +236,14 @@ windows
 The Token obtained from the Token Provider is wrong
 ```
 
-Az üzenet azt jelzi, hogy érvénytelen hitelesítő adatok vannak konfigurálva, a Notification Hubs vagy a regisztrációkat az agyban a probléma. Azt javasoljuk, hogy törli a regisztrációt, és lehetővé teszik az ügyfél az üzenet elküldése előtt létre újból a regisztrációt.
+Ez az üzenet azt jelzi, hogy a Notification Hubs konfigurált hitelesítő adatok érvénytelenek, vagy az, hogy nincs-e a regisztrációkat az agyban problémáját. Odstranit tuto registraci, és lehetővé teszik az ügyfél az üzenet elküldése előtt létre újból a regisztrációt.
 
 > [!NOTE]
-> Használja a `EnableTestSend` tulajdonság az erősen szabályozott. Használja ezt a beállítást, csak fejlesztési és tesztelési környezetben, és a regisztrációk korlátozott készletével együtt. Legfeljebb 10-eszközökre a hibakeresési értesítéseket küldünk. A hibakeresési küld percenként 10 feldolgozási korlát is van.
+> Használja a `EnableTestSend` tulajdonság az erősen szabályozott. Használja ezt a beállítást, csak fejlesztési és tesztelési környezetben és a egy regisztrációk korlátozott készletével együtt. Hibakeresési értesítések kiküldése legfeljebb 10-eszközökre. Hibakeresési küld legalább 10 percenként feldolgozási is van korlátozva.
 
-### <a name="review-telemetry"></a>Tekintse át a telemetriai adatok
+### <a name="review-telemetry"></a>Tekintse át a telemetriai adatok ###
 
-**Azure Portal**
+#### <a name="azure-portal"></a>Azure Portal ####
 
 A portálon az összes tevékenység gyors áttekintést kaphat az értesítési központban.
 
@@ -251,7 +251,7 @@ A portálon az összes tevékenység gyors áttekintést kaphat az értesítési
 
    ![Notification Hubs – áttekintés irányítópult][5]
 
-2. Az a **figyelő** lapon hozzáadhat számos más platform-specifikus metrikák jobban meg. Tekintse meg kifejezetten a leküldéses értesítési szolgáltatáshoz kapcsolódó esetleges hibákat, ha a Notification Hubs szolgáltatás megpróbálja értesítést küldeni a leküldéses értesítési szolgáltatás visszaadott.
+2. Az a **figyelő** lapon hozzáadhat számos más platform-specifikus metrikák jobban meg. Tekintse meg kifejezetten adja vissza, ha a Notification Hubs értesítést küldeni a leküldéses értesítési szolgáltatás megpróbálja hibákról.
 
    ![Az Azure portal tevékenységnapló][6]
 
@@ -259,14 +259,14 @@ A portálon az összes tevékenység gyors áttekintést kaphat az értesítési
 
 4. Ha az értesítési központ hitelesítési beállításai helytelenek, az üzenet **PNS-hitelesítési hiba** jelenik meg. Fontos ellenőrizni a leküldéses értesítési szolgáltatás hitelesítő adatai jól jelzi.
 
-**Szoftveres hozzáférés**
+#### <a name="programmatic-access"></a>Szoftveres hozzáférés ####
 
-Programozott hozzáféréssel kapcsolatos további információkért lásd: [Telemetria programozott hozzáférés].
+Programozott hozzáféréssel kapcsolatos további információkért lásd: [programozás alapú hozzáférést](https://docs.microsoft.com/en-us/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 
 > [!NOTE]
-> Számos telemetriát funkcióiról, exportálása, például és importálása a regisztrációk és API-k, telemetriai adatok elérését csak a Standard szintű szolgáltatáscsomagban elérhető. Próbálja meg használni, ha ezeket a funkciókat az ingyenes vagy alapszintű szolgáltatásszintet, olyan kivétel üzenetet kap, ha használja az SDK-t, és a egy HTTP 403 (tiltott) hiba közvetlenül a REST API-k az a funkciók használatakor.
+> Számos telemetriát funkcióiról, exportálása, például és importálása a regisztrációk és API-k, telemetriai adatok elérését csak a Standard szintű szolgáltatáscsomagban elérhető. Ha használja ezeket a funkciókat az ingyenes vagy alapszintű szolgáltatásszint, kap egy kivételre vonatkozó üzenet, ha az SDK-t használja. Hiba történt a HTTP 403 (tiltott) kap, közvetlenül a REST API-k az a funkciók használatakor.
 >
-> Telemetria kapcsolatos funkciók használatához előbb ellenőrizze az Azure Portalon, hogy használja a Standard szolgáltatásszinten.  
+> Telemetria kapcsolatos funkciók használatához előbb ellenőrizze az Azure Portalon, a Standard szintű szolgáltatáscsomagban használ-e.  
 
 <!-- IMAGES -->
 [0]: ./media/notification-hubs-diagnosing/Architecture.png
@@ -284,12 +284,12 @@ Programozott hozzáféréssel kapcsolatos további információkért lásd: [Tel
 [Notification Hubs – áttekintés]: notification-hubs-push-notification-overview.md
 [Azure Notification Hubs használatának első lépései]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Sablonok]: https://msdn.microsoft.com/library/dn530748.aspx
-[APNs overview]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
+[APNs – áttekintés]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [FCM-üzenetek]: https://firebase.google.com/docs/cloud-messaging/concept-options
 [Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
 [Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
-[A notification hubs nézet eszközregisztrációk]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
+[View device registrations for notification hubs]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
 [Részletes bemutatása: Visual Studio 2013 Update 2 RC és az Azure SDK 2.3-as verzióját]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
 [A Visual Studio 2013 Update 3 és az Azure SDK 2.4 kibocsátási bejelentése]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
 [EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
-[Telemetria programozott hozzáférés]: https://msdn.microsoft.com/library/azure/dn458823.aspx
+[Programmatic telemetry access]: https://msdn.microsoft.com/library/azure/dn458823.aspx

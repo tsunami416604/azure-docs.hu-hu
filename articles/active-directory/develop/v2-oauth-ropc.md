@@ -1,5 +1,5 @@
 ---
-title: Használja a Microsoft identitásplatformja ROPC használó felhasználók bejelentkeztetéséhez |} Az Azure
+title: Használja a Microsoft identitásplatformja bejelentkezni, a felhasználókat az erőforrás tulajdonosának jelszava hitelesítő adatok (ROPC) megadásával |} Az Azure
 description: Böngésző nélküli hitelesítés támogatása folyamatok használata az erőforrás tulajdonosának jelszava hitelesítő adatok megadásával.
 services: active-directory
 documentationcenter: ''
@@ -12,23 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/20/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c1372263bfa3f684d30ad583bfb6a9d434c3cc2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 9cfa28cae87c8a9a97e1c64b96f75ae4c6eab08d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59499937"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004941"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>A Microsoft identity platform és az OAuth 2.0-s erőforrás tulajdonos jelszavára vonatkozó hitelesítőadat
 
-A Microsoft identity platform támogatja a [erőforrás tulajdonos jelszavára vonatkozó hitelesítőadat (ROPC) biztosítása](https://tools.ietf.org/html/rfc6749#section-4.3), amely lehetővé teszi, hogy az alkalmazás közvetlenül kezeli a jelszavukat a felhasználói bejelentkezés. A ROPC folyamat szükséges nagyfokú megbízhatóság és a felhasználó kapta, és a fejlesztők csak használja ezt a folyamatot nem lehet használni a más, az biztonságosabb, folyamatok.
+A Microsoft identity platform támogatja a [erőforrás tulajdonos jelszavára vonatkozó hitelesítőadat (ROPC) biztosítása](https://tools.ietf.org/html/rfc6749#section-4.3), amely lehetővé teszi, hogy az alkalmazás közvetlenül kezeli a jelszavukat a felhasználói bejelentkezés. A ROPC folyamat szükséges nagyfokú megbízhatóság és a felhasználó kapta, és csak használja ezt a folyamatot, ha más, az biztonságosabb, a folyamatok nem használható.
 
 > [!IMPORTANT]
+>
 > * A Microsoft identity platform végpont ROPC csak az Azure AD-bérlőt, nem személyes fiókokat támogatja. Ez azt jelenti, hogy egy bérlő-specifikus végpontot kell használnia (`https://login.microsoftonline.com/{TenantId_or_Name}`) vagy a `organizations` végpont.
 > * Személyes fiókokat, amelyek ügyfeleinket meghívjuk az Azure AD-bérlő ROPC nem használható.
 > * Fiókok, amelyek nem rendelkeznek a jelszavak ROPC keresztül nem tud bejelentkezni. Ebben az esetben javasoljuk, hogy inkább egy másik folyamat az alkalmazáshoz.
@@ -38,7 +39,7 @@ A Microsoft identity platform támogatja a [erőforrás tulajdonos jelszavára v
 
 Az alábbi ábrán látható a ROPC folyamatot.
 
-![ROPC folyamat](media/v2-oauth2-ropc/v2-oauth-ropc.png)
+![ROPC folyamat](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>Engedélyezési kérés
 
@@ -69,11 +70,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type` | Szükséges | Meg kell `password`. |
 | `username` | Szükséges | A felhasználó e-mail címét. |
 | `password` | Szükséges | A felhasználó jelszavát. |
-| `scope` | Ajánlott | Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md), vagy az alkalmazáshoz szükséges jogosultságokkal. Ezeken a hatókörökön kell kell egyezett bele kelljen egy rendszergazda vagy a felhasználó egy interaktív folyamat. |
+| `scope` | Ajánlott | Szóközzel elválasztott listáját [hatókörök](v2-permissions-and-consent.md), vagy az alkalmazáshoz szükséges jogosultságokkal. A interaktív folyamatban a rendszergazda vagy a felhasználónak jóvá kell hagynia ezeken a hatókörökön előre. |
 
 ### <a name="successful-authentication-response"></a>A sikeres hitelesítési válaszra.
 
-A következő token sikeres válasz egy példát mutat be:
+Az alábbi példa bemutatja a sikeres válasz token:
 
 ```json
 {
@@ -105,7 +106,7 @@ Ha a felhasználó még nem biztosított, a helyes felhasználónevet vagy jelsz
 |------ | ----------- | -------------|
 | `invalid_grant` | A hitelesítés nem sikerült | A hitelesítő adatok hibásak, vagy az ügyfél nem rendelkezik a kért hatókörhöz jóváhagyás. A hatókörök nem kapnak, ha egy `consent_required` hiba adja vissza. Ha ez történik, az ügyfél egy interaktív kérdés egy WebView-t vagy a böngésző használatával kell küldenie a felhasználót. |
 | `invalid_request` | A kérés nem megfelelően állították össze. | Engedélyezési típusa nem támogatott a a `/common` vagy `/consumers` hitelesítési környezeteket.  Használat `/organizations` helyette. |
-| `invalid_client` | Az alkalmazás nem megfelelően van beállítva | Ez akkor fordulhat elő, ha a `allowPublicClient` tulajdonság true a [alkalmazásjegyzék](reference-app-manifest.md). A `allowPublicClient` tulajdonság van szükség, mert a ROPC engedély nem kell átirányítási URI-t. Az Azure AD nem tudja, hogy az alkalmazás egy nyilvános ügyfélalkalmazás vagy bizalmas az ügyfélalkalmazások, kivéve, ha a tulajdonság értéke. Vegye figyelembe, hogy ROPC csak a támogatott nyilvános ügyfélalkalmazások. |
+| `invalid_client` | Az alkalmazás nem megfelelően van beállítva | Ez akkor fordulhat elő, ha a `allowPublicClient` tulajdonság true a [alkalmazásjegyzék](reference-app-manifest.md). A `allowPublicClient` tulajdonság van szükség, mert a ROPC engedély nem kell átirányítási URI-t. Az Azure AD nem tudja, hogy az alkalmazás egy nyilvános ügyfélalkalmazás vagy bizalmas az ügyfélalkalmazások, kivéve, ha a tulajdonság értéke. ROPC csak nyilvános ügyfél alkalmazásai támogatják. |
 
 ## <a name="learn-more"></a>Részletek
 

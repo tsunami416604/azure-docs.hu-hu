@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
-ms.openlocfilehash: cc866691aac884def72030345bb4dfcbe87ea689
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: MT
+ms.openlocfilehash: eac699a68558f0a8c9f94f0a8b75aabee561ebb3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092269"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006000"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Az Azure CDN POP-helyek rövidítés alapján
 > [!div class="op_single_selector"]
@@ -30,71 +30,71 @@ ms.locfileid: "49092269"
 
 Ez a cikk felsorolja a POP-helyek, a jelenléti pontra Irányíthatja rövidítése, rendezve **verizon Azure CDN**.
 
-Rövidítés | Hely | Régió
+Rövidítés | Location egység | Régió
 | --- | --- | --- |
-AGA | Atlanta, Grúzia, USA | Észak-Amerika esetén: keleti parti USA
-AGB | Atlanta, Grúzia, USA | Észak-Amerika esetén: keleti parti USA
+AGA | Atlanta, Grúzia, USA | Észak-Amerika esetén: USA keleti parti
+AGB | Atlanta, Grúzia, USA | Észak-Amerika esetén: USA keleti parti
 AKL | Aucklandi, Új-Zéland | Ázsia
 AMA | Amszterdam, Hollandia | Európa
 AMB | Amszterdam, Hollandia | Európa
 AMS | Amszterdam, Hollandia | Európa
-INFORMÁCIÓ | Stockholm, Svédország | Európa
-ATL | Atlanta, Grúzia, USA | Észak-Amerika esetén: keleti parti USA
+ARN | Stockholm, Svédország | Európa
+ATL | Atlanta, Grúzia, USA | Észak-Amerika esetén: USA keleti parti
 BAQ | Barranquilla, Kolumbia | Latin-Amerika
-BLR | Bangalore-i, India | Ázsia
-BNJ | Amerikai Egyesült Államok New Jersey zártuk | Észak-Amerika esetén: keleti parti USA
-BOS | Boston, Massachusetts, USA | Észak-Amerika esetén: keleti parti USA
+BLR | Bangalore, India | Ázsia
+BNJ | Amerikai Egyesült Államok New Jersey zártuk | Észak-Amerika esetén: USA keleti parti
+BOS | Boston, Massachusetts, USA | Észak-Amerika esetén: USA keleti parti
 BTH | Batam, Indonézia | Ázsia
 BUE | Buenos Aires, Argentína | Latin-Amerika
-BUR | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: nyugati partján USA
+BUR | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: USA nyugati partján
 CDG | Párizs, Franciaország | Európa
 CGH | Sao Paulo, Brazília | Latin-Amerika
 CGK | Dzsakarta, Indonézia | Ázsia
-CHA | Chicago, Illinois, USA | Észak-Amerika esetén: keleti parti USA
-CHB | Chicago, Illinois, USA | Észak-Amerika esetén: keleti parti USA
-CNJ | Amerikai Egyesült Államok New Jersey zártuk | Észak-Amerika esetén: keleti parti USA
+CHA | Chicago, Illinois, USA | Észak-Amerika esetén: USA keleti parti
+CHB | Chicago, Illinois, USA | Észak-Amerika esetén: USA keleti parti
+CNJ | Amerikai Egyesült Államok New Jersey zártuk | Észak-Amerika esetén: USA keleti parti
 CPH | Koppenhága, Dánia | Európa
-CPM | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: nyugati partján USA
-CVA | Ashburn, Virginia, USA | Észak-Amerika esetén: keleti parti USA
-DAA | Dallas, Texas, USA | Észak-Amerika esetén: Központi partján USA
-DAB | Dallas, Texas, USA | Észak-Amerika esetén: Központi partján USA
-KÖZVETLEN GYORSÍTÓTÁR-ELÉRÉS | Ashburn, Virginia, USA | Észak-Amerika esetén: keleti parti USA
-DCB-T | Ashburn, Virginia, USA | Észak-Amerika esetén: keleti parti USA
-DCC | Ashburn, Virginia, USA | Észak-Amerika esetén: keleti parti USA
+CPM | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: USA nyugati partján
+CVA | Ashburn, Virginia, USA | Észak-Amerika esetén: USA keleti parti
+DAA | Dallas, Texas, USA | Észak-Amerika esetén: USA központi part
+DAB | Dallas, Texas, USA | Észak-Amerika esetén: USA központi part
+DCA | Ashburn, Virginia, USA | Észak-Amerika esetén: USA keleti parti
+DCB | Ashburn, Virginia, USA | Észak-Amerika esetén: USA keleti parti
+DCC | Ashburn, Virginia, USA | Észak-Amerika esetén: USA keleti parti
 DEL | Noida, India | Ázsia
-DEN | Denver, Colorado, USA | Észak-Amerika: USA középső régiója
-DFW | Dallas, Texas, USA | Észak-Amerika: USA középső régiója
-EWR | New York, New York-USA | Észak-Amerika esetén: keleti parti USA
+DEN | Denver, Colorado, USA | Észak-Amerika esetén: USA középső régiója
+DFW | Dallas, Texas, USA | Észak-Amerika esetén: USA középső régiója
+EWR | New York, New York-USA | Észak-Amerika esetén: USA keleti parti
 EZE | Buenos Aires, Argentína | Latin-Amerika
 FCN | Frankfurt, Németország | Európa
-FLL | Miami, Florida, USA | Észak-Amerika esetén: keleti parti USA
+FLL | Miami, Florida, USA | Észak-Amerika esetén: USA keleti parti
 FRA | Frankfurt, Németország | Európa
 FRB | Frankfurt, Németország | Európa
 FRC | Frankfurt, Németország | Európa
 FRF | Frankfurt, Németország | Európa
-FTW | Dallas, Texas, USA | Észak-Amerika: USA középső régiója
-FTY | Atlanta, Grúzia, USA | Észak-Amerika esetén: keleti parti USA
-GIG | Río de Janeiro, Brazília | Latin-Amerika
+FTW | Dallas, Texas, USA | Észak-Amerika esetén: USA középső régiója
+FTY | Atlanta, Grúzia, USA | Észak-Amerika esetén: USA keleti parti
+GIG | Rio de Janeiro, Brazília | Latin-Amerika
 GRU | Sao Paulo, Brazília | Latin-Amerika
 HEL | Helsinki, Finnország | Európa
-HHP | Hongkong KKT | Ázsia
-HKC | Hongkong KKT | Ázsia
-HKG | Hongkong KKT | Ázsia
+HHP | Hongkong (KKT) | Ázsia
+HKC | Hongkong (KKT) | Ázsia
+HKG | Hongkong (KKT) | Ázsia
 HND | Tokió, Japán | Ázsia
-IAD | Ashburn, Virginia, USA | Észak-Amerika esetén: keleti parti USA
+IAD | Ashburn, Virginia, USA | Észak-Amerika esetén: USA keleti parti
 ICN | Szöul, Korea | Ázsia
-ITM | Oszaka, japán | Ázsia
-JFK | New York, New York, USA | Észak-Amerika esetén: keleti parti USA
+ITM | Osaka, Japan | Ázsia
+JFK | New York, New York, USA | Észak-Amerika esetén: USA keleti parti
 JNB | Johannesburg, Dél-Afrika | Európa
 KHH | Kaohsziung, Tajvan | Ázsia
-KIX | Oszaka, japán | Ázsia
-LAA | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: nyugati partján USA
-LAB | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: nyugati partján USA
-LAM | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: nyugati partján USA
-LAN | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: nyugati partján USA
-KÉTÉRTELMŰ | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: nyugati partján USA
-SPN | London, Egyesült Királyság | Európa
-LGA | New York, New York, USA | Észak-Amerika esetén: keleti parti USA
+KIX | Osaka, Japan | Ázsia
+LAA | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: USA nyugati partján
+LAB | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: USA nyugati partján
+LAM | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: USA nyugati partján
+LAN | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: USA nyugati partján
+LAX | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: USA nyugati partján
+LCY | London, Egyesült Királyság | Európa
+LGA | New York, New York, USA | Észak-Amerika esetén: USA keleti parti
 LHA | London, Egyesült Királyság | Európa
 LHB | London, Egyesült Királyság | Európa
 LHM | London, Egyesült Királyság | Európa
@@ -104,55 +104,55 @@ LIM | Lima, Peru | Latin-Amerika
 MAA | Csennai, India | Ázsia
 MAD | Madrid, Spanyolország | Európa
 MDE | Medellin, Kolumbia | Latin-Amerika
-MDW | Chicago, Illinois, USA | Észak-Amerika esetén: keleti parti USA
-MEB | Melbourne, Ausztrália | Ázsia
-MEL | Melbourne, Ausztrália | Ázsia
+MDW | Chicago, Illinois, USA | Észak-Amerika esetén: USA keleti parti
+MEB | Melbourne, Australia | Ázsia
+MEL | Melbourne, Australia | Ázsia
 MEX | Mexikóváros, Mexikó | Észak-Amerika
-MIA | Miami, Florida, USA | Észak-Amerika esetén: keleti parti USA
-MIB | Miami, Florida, USA | Észak-Amerika esetén: keleti parti USA
-MIC | Miami, Florida, USA | Észak-Amerika esetén: keleti parti USA
-ASSZONY | Marseille-ben, Franciaország | Európa
+MIA | Miami, Florida, USA | Észak-Amerika esetén: USA keleti parti
+MIB | Miami, Florida, USA | Észak-Amerika esetén: USA keleti parti
+MIC | Miami, Florida, USA | Észak-Amerika esetén: USA keleti parti
+MRS | Marseille, France | Európa
 MXP | Milánó, Olaszország | Európa
 NAG | Mumbai, India | Ázsia
 NDL | Delhi, India | Ázsia
-AZOKAT | Tokió, Japán | Ázsia
-NYA | New York, New York, USA | Észak-Amerika esetén: keleti parti USA
-NYB | New York, New York, USA | Észak-Amerika esetén: keleti parti USA
+NRT | Tokió, Japán | Ázsia
+NYA | New York, New York, USA | Észak-Amerika esetén: USA keleti parti
+NYB | New York, New York, USA | Észak-Amerika esetén: USA keleti parti
 OMM | Muscat, Omán | Közel-Kelet
-SZÓ ERŐSSÉGE | Chicago, Illinois, USA | Észak-Amerika: USA középső régiója
+ORD | Chicago, Illinois, USA | Észak-Amerika esetén: USA középső régiója
 LELTÁR | Párizs, Franciaország | Európa
-OXR | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: nyugati partján USA
-SZEMÉLYES CÍMJEGYZÉK | Párizs, Franciaország | Európa
-PAE | Seattle, Washington, USA | Észak-Amerika esetén: nyugati partján USA
+OXR | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: USA nyugati partján
+PAB | Párizs, Franciaország | Európa
+PAE | Seattle, Washington, USA | Észak-Amerika esetén: USA nyugati partján
 PBC | Pueblai, Mexikó | Észak-Amerika
-PHL | Philadelphia, Pennsylvania, USA | Észak-Amerika esetén: keleti parti USA
+PHL | Philadelphia, Pennsylvania, USA | Észak-Amerika esetén: USA keleti parti
 PNQ | Mumbai, India | Ázsia
 POX | Párizs, Franciaország | Európa
 QRO | Santiago de Querétaro, Mexico | Észak-Amerika
-RHV | A San Jose, California, USA | Észak-Amerika esetén: nyugati partján USA
-AMELYEKET | Río de Janeiro, Brazília | Latin-Amerika
+RHV | A San Jose, California, USA | Észak-Amerika esetén: USA nyugati partján
+RIB | Rio de Janeiro, Brazília | Latin-Amerika
 RIX | Riga, Lettország | Európa
 RTM | Amszterdam, Hollandia | Európa
-SAA | A San Jose, California, USA | Észak-Amerika esetén: nyugati partján USA
-SAB | A San Jose, California, USA | Észak-Amerika esetén: nyugati partján USA
-AZ SCL | Valparaíso, Chile | Latin-Amerika
-TENGER | Seattle, Washington, USA | Észak-Amerika esetén: nyugati partján USA
-SZOLGÁLTATÓ HIVATAL | Seattle, Washington, USA | Észak-Amerika esetén: nyugati partján USA
-MP-BEN | Seattle, Washington, USA | Észak-Amerika esetén: nyugati partján USA
+SAA | A San Jose, California, USA | Észak-Amerika esetén: USA nyugati partján
+SAB | A San Jose, California, USA | Észak-Amerika esetén: USA nyugati partján
+SCL | Valparaíso, Chile | Latin-Amerika
+SEA | Seattle, Washington, USA | Észak-Amerika esetén: USA nyugati partján
+SZOLGÁLTATÓ HIVATAL | Seattle, Washington, USA | Észak-Amerika esetén: USA nyugati partján
+MP-BEN | Seattle, Washington, USA | Észak-Amerika esetén: USA nyugati partján
 GB | Szingapúr | Ázsia
 SIN | Szingapúr | Ázsia
-SJC | A San Jose, California, USA | Észak-Amerika esetén: nyugati partján USA
-SJO | A San Jose, California, USA | Észak-Amerika esetén: nyugati partján USA
+SJC | A San Jose, California, USA | Észak-Amerika esetén: USA nyugati partján
+SJO | A San Jose, California, USA | Észak-Amerika esetén: USA nyugati partján
 ZASTAVIT | Stockholm, Svédország | Európa
 SYD | Sydney, Ausztrália | Ázsia
 TIR | Csennai, India | Ázsia
 TKA | Tokió, Japán | Ázsia
 TKB | Tokió, Japán | Ázsia
 TOJ | Madrid, Spanyolország | Európa
-AZ EGYESÜLT ARAB EMÍRSÉGEK | Fujairah, Egyesült Arab Emírségek | Európa
-UIO | Minden jog fenntartva | Latin-Amerika
+AZ EGYESÜLT ARAB EMÍRSÉGEK | Fujairah, United Arab Emirates | Európa
+UIO | Quito, Ecuador | Latin-Amerika
 VIE | Bécs, Ausztria | Európa
-VNY | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: nyugati partján USA
+VNY | Los Angeles, Kalifornia, USA | Észak-Amerika esetén: USA nyugati partján
 WAW | Varsó, Lengyelország | Európa
 
 

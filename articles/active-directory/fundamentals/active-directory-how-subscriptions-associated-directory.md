@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3322e49c6fdc590b785806f67b5081700bf8b37b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b141de4c22ba1ba1325982d8e027fa46e0909fbb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788630"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009854"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Hozzárendelése vagy Azure-előfizetés hozzáadása az Azure Active Directory-bérlővel
 
@@ -33,7 +33,7 @@ Minden felhasználó rendelkezik-e egy *otthoni* hitelesítési címtárat. Azon
 > 
 > Emellett az Azure Kubernetes Service (AKS)-fürt egy másik előfizetésbe való áthelyezését, vagy a fürt tulajdonos előfizetés áthelyezése egy új bérlőt hatására a fürt elveszítené funkciók miatt elveszett szerepkör-hozzárendelések és a szolgáltatás egyszerű jogosultságokat. Aks-sel kapcsolatos további információkért lásd: [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Mielőtt hozzárendelése, vagy adja hozzá az előfizetés, el kell végeznie az alábbi feladatokat:
 
@@ -76,7 +76,7 @@ Miután egy előfizetés másik címtárhoz történő társításához lehet to
 
 1. Ha bármely kulcstartók, módosítania kell a kulcstartó bérlőazonosítója. További információkért lásd: [egy kulcstartó Bérlőazonosítójának módosítása az előfizetés áthelyezése után](../../key-vault/key-vault-subscription-move-fix.md).
 
-2. Ha regisztrált az Azure Stack ezt az előfizetést, akkor újra regisztrálnia kell. További információkért lásd: [regisztrálása az Azure Stack az Azure-ral](../../azure-stack/azure-stack-registration.md).
+2. Ha regisztrált az Azure Stack ezt az előfizetést, akkor újra regisztrálnia kell. További információkért lásd: [regisztrálása az Azure Stack az Azure-ral](/azure-stack/operator/azure-stack-registration).
 
 
 

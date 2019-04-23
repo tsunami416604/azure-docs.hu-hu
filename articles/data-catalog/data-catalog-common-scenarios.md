@@ -2,18 +2,18 @@
 title: Az Azure Data Catalog gyakori forgatókönyvei
 description: Az Azure Data Catalog, beleértve a regisztrációs és a nagy értékű adatforrásokat, a felderítés engedélyezése az önkiszolgáló üzleti intelligencia, és rögzíteni a meglévő ismeretek szerezhetők az adatforrásokat és a folyamatok gyakori forgatókönyvek áttekintése.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 60930d78-d2d4-4d5d-9651-bdda50b0da0e
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 531c5890cb2164b51d7b383d0b1fdd1b92d9e8eb
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: MT
+ms.openlocfilehash: e95cc64b9086a6fb4c5e2d42521a5fd3f44244ba
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405029"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010806"
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Az Azure Data Catalog gyakori forgatókönyvei
 Ez a cikk bemutatja a gyakori forgatókönyvek, ahol az Azure Data Catalog kihasználása a meglévő adatforrásokat a szervezet segítségére lehetnek.
@@ -34,7 +34,7 @@ Ha elkezdi az Azure Data Cataloggal, azonosítsa és regisztrálja az adatfelhas
 
 Ebben a forgatókönyvben is jár, így egyszerűbb átlátni és elérése a nagy értékű adatforrások ellátása megjegyzésekkel lehetőséget. Ebből a törekvésből egyik legfőbb szempontja, hogy hogyan használói kérhetnek az adatforráshoz való hozzáférés információkat tartalmazzák. Az Azure Data Cataloggal adja meg az e-mail-címét a felhasználó vagy csapat felelős adatforrás-hozzáférés szabályozása, valamint hivatkozásokat a meglévő eszközeivel vagy a dokumentációban vagy szabad szöveg, amely azt ismerteti, hogyan kérést. Ez az információ segít a tagok, aki regisztrált adatforrások felderítését, de még akik nem férhet hozzá az adatokhoz egyszerűen kérjen hozzáférést a folyamatokat, és határozza meg az adatforrások tulajdonosai vezérli az engedélyek.
 
-## <a name="scenario-2-self-service-business-intelligence"></a>2. forgatókönyv: Az önkiszolgáló üzleti intelligencia
+## <a name="scenario-2-self-service-business-intelligence"></a>2. forgatókönyv: Önkiszolgáló üzleti intelligencia
 Bár a hagyományos vállalati üzletiintelligencia megoldásokat továbbra is, amely számos szervezet adatelrendezések felbecsülhetetlen értékű részét, üzleti lépést módosításának által végrehajtott önkiszolgáló BI egyre több fontos. Önkiszolgáló üzleti Intelligencia használatával az információkkal dolgozó szakemberek és adatelemzők hozhat létre saját jelentések, munkafüzetek és az irányítópultok anélkül, hogy az egy központi informatikai csapat vagy folyamatban van, hogy informatikai csapat ütemezés és a rendelkezésre állási korlátozza.
 
 Az önkiszolgáló üzleti Intelligencia funkciók a felhasználók gyakran több forrásból, amelyek közül előfordulhat, hogy rendelkezik korábban nem használt üzleti Intelligencia és elemzés származó adatokat kombinálni. Bár ezek az adatforrások némelyike már ismertek, ez kihívást jelenthet Mi a teendő, keresse meg és kiértékelheti egy adott feladat lehetséges adatforrások felderítését.
@@ -47,7 +47,7 @@ A katalógus tartalmának a szerves növekedési egészíti ki természetes elő
 
 Fontos megjegyezni, hogy bár ebben a forgatókönyvben kifejezetten önkiszolgáló BI összpontosít, az azonos minták és kihívásokat alkalmazni a nagy méretű vállalati BI projektek is. Data Catalog segítségével a szervezet minden erőfeszítés, amely magában foglalja az adatforrás-felderítés manuális folyamat javítja.
 
-## <a name="scenario-3-capturing-tribal-knowledge"></a>3. forgatókönyv: A kollektív tudás összegyűjthető rögzítése
+## <a name="scenario-3-capturing-tribal-knowledge"></a>3. forgatókönyv: A közösségi rögzítése
 Hogyan, hogy milyen adatokat kell tennie a feladat, és hol találja az adatokat?
 
 Ha, hogy a feladat egy ideig, akkor valószínűleg tudnia kell. A tanulási folyamat fokozatos mintajelentéshez, és idővel ismerkedtünk azokat az adatforrásokat, ahhoz, hogy a napi munkára.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 329782a436924355dbdfbb5db260e88795394697
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 74be21629a884313e74a824bb34fb5b66f5db61d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650121"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005998"
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutatóját
 
@@ -302,7 +302,7 @@ A titkosítási magát Ön hozza létre, és a saját titkosítási kulcsok keze
   Ez a cikk ügyféloldali titkosítás magyarázatot nyújt, és példákat talál, a storage ügyféloldali kódtár használatával titkosítása és visszafejtése a négy tárolási szolgáltatások erőforrásait. Azt is az Azure Key Vault ismerteti.
 
 ### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>Az Azure Disk Encryption segítségével a virtuális gépek által használt lemezek titkosítása
-Az Azure Disk Encryption új funkciója. Ez a funkció lehetővé teszi, hogy az operációsrendszer-lemez és adatlemezek az IaaS virtuális gép által használt titkosítását. A Windows a meghajtók titkosítottak, iparági szabványnak megfelelő BitLocker titkosítási technológia használatával. A Linux rendszerre a lemezek titkosítottak, a DM-Crypt technológia használatával. Ez az Azure Key Vault lehetővé teszi a vezérlőelemet és kezelheti a lemeztitkosítási kulcsok van integrálva.
+Az Azure Disk Encryption lehetővé teszi, hogy az operációsrendszer-lemez és adatlemezek az IaaS virtuális gép által használt titkosítását. A Windows a meghajtók titkosítottak, iparági szabványnak megfelelő BitLocker titkosítási technológia használatával. A Linux rendszerre a lemezek titkosítottak, a DM-Crypt technológia használatával. Ez az Azure Key Vault lehetővé teszi a vezérlőelemet és kezelheti a lemeztitkosítási kulcsok van integrálva.
 
 A megoldás a következő esetekben ha engedélyezve vannak a Microsoft Azure IaaS virtuális gépeket támogatja:
 

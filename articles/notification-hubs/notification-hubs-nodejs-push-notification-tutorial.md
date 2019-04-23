@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: d90f23f52ca4c0cce3d853114acf673aa085d3c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: bdeba401e99ad16555b9f6ea00017fc525302983
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889784"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995002"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Leküldéses értesítések küldése az Azure Notification Hubs és a node.js használatával
 
@@ -63,20 +63,19 @@ Az Azure Notification Hubs használatával, letöltheti és használhatja a Node
 > További információ a hivatalos az npm-et telepíti [NPM blog](https://blog.npmjs.org/post/85484771375/how-to-install-npm).
 
 ### <a name="import-the-module"></a>A modul importálása
-
 Egy szövegszerkesztővel, adja hozzá a következő elejéhez a `server.js` fájlt az alkalmazás:
 
-    ```javascript
-    var azure = require('azure');
-    ```
+```javascript
+var azure = require('azure-sb');
+```
 
 ### <a name="set-up-an-azure-notification-hub-connection"></a>Az Azure Notification Hub-kapcsolat beállítása
 
 A `NotificationHubService` objektum lehetővé teszi, hogy a notification hubs használatával. Az alábbi kód létrehoz egy `NotificationHubService` objektum az értesítési központ nevű `hubname`. Tetején adja hozzá a `server.js` fájl, az utasítást, hogy az azure-modul importálása után:
 
-    ```javascript
-    var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
-    ```
+```javascript
+var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
+```
 
 Szerezze be a kapcsolat `connectionstring` értéket a [Azure Portal] a következő lépések végrehajtásával:
 
@@ -111,18 +110,18 @@ Az adattartalom formátuma további információkért lásd: a **adattartalom** 
 
 A következő kódban a `GcmService` példány által elérhetővé tett a `NotificationHubService` minden regisztrált ügyfél leküldéses értesítés küldéséhez.
 
-    ```javascript
-    var payload = {
-      data: {
-        message: 'Hello!'
-      }
-    };
-    notificationHubService.gcm.send(null, payload, function(error){
-      if(!error){
-        //notification sent
-      }
-    });
-    ```
+```javascript
+var payload = {
+  data: {
+    message: 'Hello!'
+  }
+};
+notificationHubService.gcm.send(null, payload, function(error){
+  if(!error){
+    //notification sent
+  }
+});
+```
 
 ### <a name="how-to-send-push-notifications-to-ios-applications"></a>Útmutató: Leküldéses értesítések küldése iOS-alkalmazások
 
@@ -136,16 +135,16 @@ További információ az adattartalom formátuma: A **értesítési tartalom** s
 
 A következő kódban a `ApnsService` példány által elérhetővé tett a `NotificationHubService` riasztási üzenetet küldi el az összes ügyfeleknek:
 
-    ```javascript
-    var payload={
-        alert: 'Hello!'
-      };
-    notificationHubService.apns.send(null, payload, function(error){
-      if(!error){
-         // notification sent
-      }
-    });
-    ```
+```javascript
+var payload={
+    alert: 'Hello!'
+  };
+notificationHubService.apns.send(null, payload, function(error){
+  if(!error){
+      // notification sent
+  }
+});
+```
 
 ### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>Útmutató: Leküldéses értesítések küldésére Windows Phone-alkalmazások
 
@@ -162,14 +161,14 @@ A `MpnsService` objektum tartalmazza a `send` leküldéses értesítések küld�
 
 Az alábbi példa a kódot használja a `MpnsService` példány által elérhetővé tett a `NotificationHubService` bejelentési leküldéses értesítések küldéséhez:
 
-    ```javascript
-    var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
-    notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
-      if(!error){
-        //notification sent
-      }
-    });
-    ```
+```javascript
+var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
+notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
+  if(!error){
+    //notification sent
+  }
+});
+```
 
 ### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>Útmutató: Leküldéses értesítések küldéséhez univerzális Windows Platform (UWP-) alkalmazások
 
@@ -185,14 +184,14 @@ Az érvényes típusok és kérésfejlécek listáját lásd: [leküldéses ért
 
 A következő kódban a `WnsService` példány által elérhetővé tett a `NotificationHubService` egy bejelentési leküldéses értesítést küldhet egy UWP-alkalmazás:
 
-    ```javascript
-    var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
-    notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
-      if(!error){
-         // notification sent
-      }
-    });
-    ```
+```javascript
+var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
+notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
+  if(!error){
+      // notification sent
+  }
+});
+```
 
 ## <a name="next-steps"></a>További lépések
 

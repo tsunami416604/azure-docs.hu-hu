@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8f2a5fdaf2222de7a802e8ff2a1f6fdb37dae4c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 003e9beb3a319802754397efae3b636f51de9e52
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880038"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995897"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Android-alkalmazás létrehozása az Azure térbeli horgonyok
 
-Ez a rövid útmutató bemutatja, hogyan hozzon létre egy Android-alkalmazás a [Azure térbeli horgonyok](../overview.md) Java vagy C + +/ Szünettel. Az Azure térbeli horgonyok platformfüggetlen fejlesztői szolgáltatása lehetővé teszi, hogy a vegyes valóság élmény helyükre kivonatuk eszközök idővel-objektumok segítségével. Ha elkészült, egy ARCore Android-alkalmazást, amely mentheti, és egy térbeli kapcsolati alapot visszahívása lesz.
+Ez a rövid útmutató bemutatja, hogyan hozzon létre egy Android-alkalmazás a [Azure térbeli horgonyok](../overview.md) vagy Java nyelven vagy C++/NDK. Az Azure térbeli horgonyok platformfüggetlen fejlesztői szolgáltatása lehetővé teszi, hogy a vegyes valóság élmény helyükre kivonatuk eszközök idővel-objektumok segítségével. Ha elkészült, egy ARCore Android-alkalmazást, amely mentheti, és egy térbeli kapcsolati alapot visszahívása lesz.
 
 A következőket fogja megtanulni:
 
@@ -37,7 +37,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
   - Ha macOS rendszeren fut, első keresztül a homebrew-val telepített Git. Adja meg a következő parancs a terminál egyetlen sorba: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Ezután futtassa `brew install git`.
   - A Szünettel minta létrehozása, is kell az Android Studióban a Szünettel és a CMake 3.6-os SDK Tools telepítése.
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">engedélyezve fejlesztői</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">képes ARCore</a> Android-eszközön.
-- Az alkalmazás kell céloznia ARCore 1.5-ös (ARCore 1.6-os + támogatása hamarosan elérhető lesz)
+- Az alkalmazás kell céloznia ARCore 1.7-es.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -45,7 +45,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Az Android Szünettel minta létrehozásakor, kell letölteni `arcore_c_api.h` a [Itt](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.5.0/libraries/include/arcore_c_api.h) és elhelyezheti `Android\NDK\libraries\include`.
+Az Android Szünettel minta létrehozásakor, kell letölteni `arcore_c_api.h` a [Itt](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.7.0/libraries/include/arcore_c_api.h) és elhelyezheti `Android\NDK\libraries\include`.
 
 Nyissa meg az Android Studiót.
 

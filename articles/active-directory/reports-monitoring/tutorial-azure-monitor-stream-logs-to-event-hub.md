@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Azure Active Directory-naplók streamelése egy Azure-eseményközpontba (előzetes verzió) | Microsoft Docs
-description: Itt megtudhatja, hogyan állíthatja be az Azure Diagnosticsban az Azure Active Directory-naplók leküldését egy eseményközpontba (előzetes verzió)
+title: Oktatóanyag – Azure event hub jelentkezik Stream Azure Active Directory |} A Microsoft Docs
+description: Ismerje meg, hogyan állítható be az Azure Diagnostics leküldése az Azure Active Directory-naplók egy eseményközpontba
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85a3c43054aeb758eb1e0da9ce1086bfa653180
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 906da7ac6b0086e4efca7c38171668a08f687d19
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436931"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995597"
 ---
-# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>Oktatóanyag: Stream Azure Active Directory-naplók az Azure event hubhoz (előzetes verzió)
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Oktatóanyag: Az Azure event hub Stream Azure Active Directory naplói
 
 Ebben az oktatóanyagban megismerheti, hogyan állíthatja be az Azure Active Directory (Azure AD) naplók streamelése az Azure event hub, az Azure Monitor diagnosztika beállításait. Ezzel a mechanizmussal integrálhatja a naplókat olyan külső biztonságiinformáció- és eseménykezelési (SIEM-) eszközökkel, mint a Splunk és a QRadar.
 

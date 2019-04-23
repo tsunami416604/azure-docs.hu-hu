@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fb7302497d4331a9e39c8a3c50393646b663f7d8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 81aa38c1c7783c7e0357f8f69f4d4484d26873e9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283137"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006950"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-realtimeboard"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RealtimeBoard
 
@@ -131,7 +131,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés RealtimeBoard, hajts
 
 ### <a name="configure-realtimeboard-single-sign-on"></a>RealtimeBoard egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **RealtimeBoard** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [RealtimeBoard támogatása csapat](). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **RealtimeBoard** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** majd megfelelő másolt URL-címek az Azure Portalról RealtimeBoard támogatási csapatával. Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: ''
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c067d6f02ceeca9bf390ab5421dcfe463e9f758d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 63bb5c6338cf230c2bb47cb0a2c03810053f970a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699081"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002578"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Hibaelhárítás a Desired State Configuration (DSC)
 
@@ -41,6 +41,31 @@ Ez a hiba nem oldható fel a tervezett ideiglenes probléma.
 * A parancsmaggal Az "Remove-AzAutomationDscConfiguration" törölni a konfigurációt.
 * Ez a parancsmag a dokumentációban még nem lett frissítve.  Addig olvassa el az AzureRM-modul dokumentációját.
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
+
+### <a name="failed-to-register-agent"></a>Forgatókönyv: Nem sikerült regisztrálni a Dsc-ügynök
+
+#### <a name="issue"></a>Probléma
+
+Amikor megpróbálja futtatni `Set-DscLocalConfigurationManager` vagy egy másik DSC parancsmagot a hibaüzenetet kapja:
+
+```error
+Registration of the Dsc Agent with the server
+https://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000 failed. The
+underlying error is: Failed to register Dsc Agent with AgentId 00000000-0000-0000-0000-000000000000 with the server htt
+ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000/Nodes(AgentId='00000000-0000-0000-0000-000000000000'). .
+    + CategoryInfo          : InvalidResult: (root/Microsoft/...gurationManager:String) [], CimException
+    + FullyQualifiedErrorId : RegisterDscAgentCommandFailed,Microsoft.PowerShell.DesiredStateConfiguration.Commands.Re
+   gisterDscAgentCommand
+    + PSComputerName        : <computerName>
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba általában a tűzfal mögött proxykiszolgálót, vagy más hálózati hibák folyamatban van a gép okozza.
+
+#### <a name="resolution"></a>Megoldás:
+
+Ellenőrizze, hogy a gép a megfelelő végpontokra irányuló hozzáféréssel rendelkezik az Azure Automation DSC, és próbálkozzon újra. Portok és a szükséges címek listája, [hálózattervezés](../automation-dsc-overview.md#network-planning)
 
 ### <a name="failed-not-found"></a>Forgatókönyv: Csomópont "Nem található" hiba miatt sikertelen állapotban van
 

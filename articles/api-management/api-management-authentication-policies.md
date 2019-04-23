@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 4c4c03fffa5786bf3a50f4d2c03511f0a2de0f48
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: 9ee4a9fb5c63061eed32389b5672652aad01208a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250951"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994943"
 ---
 # <a name="api-management-authentication-policies"></a>Az API Management a hitelesítési házirendek
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -29,6 +29,8 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 -   [Az alapszintű hitelesítéshez](api-management-authentication-policies.md#Basic) -háttérszolgáltatás alapszintű hitelesítést használ a hitelesítéshez.  
   
 -   [Ügyféltanúsítvány a hitelesítéshez](api-management-authentication-policies.md#ClientCertificate) -háttérszolgáltatás ügyféltanúsítványok használatát a hitelesítéshez.  
+
+-   [Felügyelt identitás a hitelesítéshez](api-management-authentication-policies.md#ManagedIdentity) -hitelesítéshez a [identitás](../active-directory/managed-identities-azure-resources/overview.md) az API Management szolgáltatás.  
   
 ##  <a name="Basic"></a> Az alapszintű hitelesítés  
  Használja a `authentication-basic` szabályzatot egy háttérszolgáltatás alapszintű hitelesítést használ a hitelesítéshez. Ez a szabályzat hatékonyan állítja be a HTTP-engedélyezési fejléc a házirendben megadott hitelesítő adatok megfelelő értéket.  
@@ -56,7 +58,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
 |felhasználónév|Adja meg a felhasználónevet a alapszintű hitelesítés.|Igen|–|  
-|jelszó|Az alapszintű hitelesítés jelszava.|Igen|–|  
+|password|Az alapszintű hitelesítés jelszava.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -90,7 +92,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|ujjlenyomat|Az ügyféltanúsítvány ujjlenyomatát.|Igen|–|  
+|thumbprint|Az ügyféltanúsítvány ujjlenyomatát.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -98,7 +100,42 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 -   **A házirend-szakaszok:** bejövő  
   
 -   **A házirend-hatókörök:** API  
+
+##  <a name="ManagedIdentity"></a> Felügyelt identitás a hitelesítéshez  
+ Használja a `authentication-managed-identity` szabályzatot egy háttérszolgáltatást, az API Management szolgáltatás a felügyelt identitás használata a hitelesítéshez. Ez a házirend a felügyelt identitás hatékonyan használja hozzáférési jogkivonat beszerzése az Azure Active Directoryból a megadott erőforráshoz való hozzáférést. 
   
+### <a name="policy-statement"></a>Házirendutasítás  
+  
+```xml  
+<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
+```  
+  
+### <a name="example"></a>Példa  
+  
+```xml  
+<authentication-managed-identity resource="https://graph.windows.net" output-token-variable-name="test-access-token" ignore-error="true" /> 
+```  
+  
+### <a name="elements"></a>Elemek  
+  
+|Name (Név)|Leírás|Szükséges|  
+|----------|-----------------|--------------|  
+|authentication-managed-identity |A gyökérelem.|Igen|  
+  
+### <a name="attributes"></a>Attribútumok  
+  
+|Name (Név)|Leírás|Szükséges|Alapértelmezett|  
+|----------|-----------------|--------------|-------------|  
+|erőforrás|karakterlánc. Az Alkalmazásazonosító URI-t a cél webes API-t (védett erőforrás) az Azure Active Directoryban.|Igen|–|  
+|output-token-variable-name|karakterlánc. Neve a környezeti változó, amelyek megkapják a token értékét egy objektumtípust, `string`.|Nem|–|  
+|ignore-error|Logikai érték. Ha beállítása `true`, a házirend folyamat továbbra is fut, még akkor is, ha a hozzáférési jogkivonat nem érik.|Nem|false|  
+  
+### <a name="usage"></a>Használat  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+  
+-   **A házirend-szakaszok:** bejövő  
+  
+-   **A házirend-hatókörök:** globális, termék, API-művelet  
 
 ## <a name="next-steps"></a>További lépések
 Házirendek használata további információkért lásd:

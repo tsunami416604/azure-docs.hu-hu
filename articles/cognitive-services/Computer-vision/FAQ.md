@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 2e04d86e7067db98c8399cfc3e202457b8f253d6
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
-ms.translationtype: MT
+ms.openlocfilehash: 579a47e70f292222914723606d032737b98822bc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351949"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004873"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API – gyakori kérdések
 
@@ -37,28 +37,9 @@ ms.locfileid: "58351949"
 
 -----
 
-**Kérdés**: *Támogatott nyelvek a Computer Vision?*
-
-**válasz**: A támogatott nyelvek közé tartoznak a következők:
-
-| | | Támogatott nyelvek | | |
-|---------------- |------------------ |------------------ |--------------------------- |--------------------
-| Dán (da-DK)  | Holland (Hollandia, NL)     | Angol           | Finn (fi-FI)            |Francia (fr-FR)
-| Német (de-DE)  | Görög (el-GR)     | Magyar (hu-HU) | Olasz (it-IT)            | Japán (ja-JP)
-| Koreai (ko-KR)  | Norwegian (nb-NO) | Lengyel (pl-PL)    | Portugál (pt-BR) (pt-PT) | Orosz (ru-RU)
-| Spanyol (es-ES)   | Svéd (sv-SV)     | Török (tr-TR)   |                            |
-
------
-
 **Kérdés**: *Számítógépes Látástechnológia használható licenc lemezeket olvasni?*
 
 **válasz**: A Vision API-t kínál a helyes szöveg-észlelési OCR-rel, de jelenleg nem optimalizált licenc lemezeket. Folyamatosan keressük szolgáltatásaink javításához és a hozzáadott OCR automatikus licenc blonból elismerési funkciókra vonatkozó kérések listáját.
-
------
-
-**Kérdés**: *A kézírás-felismerés támogatott nyelvek?*
-
-**válasz**: Jelenleg csak angol nyelven támogatott.
 
 -----
 

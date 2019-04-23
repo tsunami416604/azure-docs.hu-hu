@@ -1,24 +1,23 @@
 ---
 title: Az Azure-fenntartások kezelése |} A Microsoft Docs
 description: Ismerje meg, hogyan módosíthatja egy előfizetésre és -hozzáférés kezelése Azure-lefoglalási.
-services: billing
+ms.service: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
 editor: ''
-ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2019
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 1edc15261520d1c2cbf9bf85a62249826edc045b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904441"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994961"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Az Azure-erőforrások foglalások kezelése
 
@@ -29,7 +28,19 @@ Ha az Azure Reserved Virtual Machine Instances vásárolt, módosíthatja az opt
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="change-the-scope-for-a-reservation"></a>A foglalás hatókörének módosítása
+## <a name="reservation-order-and-reservation"></a>Foglalási sorrend és lefoglalása
+
+Ha egy foglalás megvásárlása, két objektum jönnek létre: **Foglalási sorrend** és **foglalás**.
+
+A vásárlás időpontjában a Foglalás rendelési rendelkezik egy foglalás megadása alapján. Műveleteket, mint például a felosztása, egyesítése, részleges visszatérítés vagy exchange hozzon létre új foglalások alatt a **Foglalásrendelés**.
+
+A Foglalás rendelési megtekintéséhez lépjen a **foglalások** > Válassza ki a foglalást, és kattintson a **foglalás rendelési azonosítója**.
+
+![Példa a Foglalás rendelés részleteit megjelenítő Foglalás rendelési azonosítója ](./media/billing-manage-reserved-vm-instance/reservation-order-details.png)
+
+A Foglalás örökli a Foglalás rendelési engedélyeit.
+
+## <a name="change-the-reservation-scope"></a>A foglalás hatókörének módosítása
 
  A foglalási kedvezményt a virtuális gépek, az SQL adatbázisok, Azure Cosmos DB vagy más erőforrások, amelyek egyeznek a Foglalás és a Foglalás hatóköre futtathat vonatkozik. A számlázási környezetben szolgáltatás megvásárolni a foglalást használt előfizetés függ.
 
@@ -47,9 +58,12 @@ A hatókör csak az MS-AZR-0003P vagy az MS-AZR-0023P használatalapú fizetési
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>A foglalást kezelő felhasználók hozzáadása vagy módosítása
 
-Személyek a foglalás szerepköreihez történő hozzáadásával delegálhatja a foglalás kezelését. Alapértelmezés szerint a foglalást megvásárló személy és a fiókadminisztrátor rendelkezik a tulajdonosi szerepkörrel a foglalás esetében.
+Foglalás felügyeleti szerepkörökhöz a foglalásrendelésben vagy a Foglalás személyek hozzáadásával delegálhat. Alapértelmezés szerint a helyezi el a foglalásrendelésben és a fiók rendszergazdája, aki rendelkezik a tulajdonosi szerepkör a foglalásrendelésben és a foglalást.
 
-Akkor is hozzáférésének kezelése foglalások egymástól függetlenül az előfizetést, a foglalási kedvezményt beolvasása. Amikor engedélyezi a valaki engedélyeit egy foglalást, amely nem jogokat őket az előfizetés kezelése céljából. És ha valaki engedélyek belül a Foglalás hatóköre egy előfizetés kezelése céljából, amely nem jogokat őket a Foglalás kezelése.
+Kezelheti az előfizetést, a foglalási kedvezményt első alkalmazástól függetlenül a foglalások rendelések és foglalások hozzáférést. Amikor valaki engedélyezi egy foglalási sorrend vagy a Foglalás kezeléséhez engedélyekkel, azt nem engedélyt őket az előfizetés kezelése céljából. Hasonlóképpen ha valaki a Foglalás hatóköre egy előfizetés kezeléséhez engedélyekkel, azt nem jogokat őket kezelheti a foglalásrendelésben vagy a foglalás.
+
+Egy Exchange-hez vagy a visszatérítés végre, a felhasználó a foglalásrendelésben hozzáféréssel kell rendelkeznie. Engedélyek megadása valaki, célszerű a foglalásrendelésben, nem a Foglalás engedélyeket.
+
 
 A Foglalás kezelési delegálása:
 

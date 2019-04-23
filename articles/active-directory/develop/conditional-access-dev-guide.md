@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c02f094def3828d0839025f4b7dea48ee64adcc8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 3346f7a5af2a22cb7b7ece312fc367a874095668
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543186"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001048"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Feltételes hozzáférés az Azure Active Directory fejlesztői útmutatója
 
@@ -104,7 +104,7 @@ A következő részekben bemutatjuk a gyakori forgatókönyvek összetettebb. A 
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Forgatókönyv: Az alkalmazás végrehajtása a--meghatalmazásos folyamat
 
-Ebben a forgatókönyvben azt végig a helyzet, amelyben egy natív alkalmazást meghív egy webes szolgáltatás és az API is. Ezután a szolgáltatásnak nincs-e ["he a-meghatalmazásos" folyamat egy alsóbb rétegbeli szolgáltatás hívásához. Ebben az esetben azt alkalmazott a feltételes hozzáférési szabályzatot az alárendelt szolgáltatás (Web API 2) és egy kiszolgáló/démon alkalmazások helyett inkább egy natív alkalmazást használ. 
+Ebben a forgatókönyvben azt végig a helyzet, amelyben egy natív alkalmazást meghív egy webes szolgáltatás és az API is. Ez a szolgáltatás hajtja végre, "az a-meghatalmazásos" folyamat egy alsóbb rétegbeli szolgáltatás hívásához. Ebben az esetben azt alkalmazott a feltételes hozzáférési szabályzatot az alárendelt szolgáltatás (Web API 2) és egy kiszolgáló/démon alkalmazások helyett inkább egy natív alkalmazást használ. 
 
 ![Az alkalmazás végrehajtása a alapú meghatalmazásos folyamat diagramja](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -145,7 +145,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ![Az alkalmazás több szolgáltatást egy új jogkivonatot igénylő elérése](./media/conditional-access-dev-guide/app-accessing-multiple-services-new-token.png)
 
-Ha az alkalmazás nem használja az ADAL könyvtár, a jogkivonat beszerzése nem sikerült mindig újra megpróbálja interaktív módon. A interaktív kérelem esetén a végfelhasználónak van a lehetőséget, hogy megfeleljen a feltételes hozzáférés. Ez igaz, ha a kérés nem egy `AcquireTokenSilentAsync` vagy `PromptBehavior.Never` ebben az esetben az alkalmazás kell végrehajtania egy interaktív ```AcquireToken``` a végfelhasználás adni a lehetőséget a szabályzat ahhoz, hogy a kérelmet.
+Ha az alkalmazás nem használja az ADAL könyvtár, a jogkivonat beszerzése nem sikerült mindig újra megpróbálja interaktív módon. A interaktív kérelem esetén a végfelhasználónak van a lehetőséget, hogy megfeleljen a feltételes hozzáférés. Ez igaz, ha a kérés nem egy `AcquireTokenSilentAsync` vagy `PromptBehavior.Never` ebben az esetben az alkalmazás kell végrehajtania egy interaktív ```AcquireToken``` kérelmet a felhasználó a szabályzatának lehetőséget biztosíthat.
 
 ## <a name="scenario-single-page-app-spa-using-adaljs"></a>Forgatókönyv: Egyoldalas alkalmazás (SPA) ADAL.js használatával
 

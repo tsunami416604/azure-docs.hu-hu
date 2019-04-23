@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 9cd9adfd9d882f3781f519846ce22767123da36c
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: f5e75b30a7c196bb238c7bcb9c4704c1aec5e771
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652263"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999123"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>A Bing Web Search API nyelvéhez és régiójához támogatása
 
@@ -40,7 +40,7 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Finnország|FI|
 |Franciaország|JK|
 |Németország|DE|
-|Hongkong KKT|HK|
+|Hongkong (KKT)|HK|
 |India|IN|
 |Indonézia|ID (Azonosító)|
 |Olaszország|IT|
@@ -83,7 +83,7 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Finnország|finn|fi-FI|
 |Franciaország|francia|FR-FR|
 |Németország|német|de-DE|
-|Hongkong KKT|Kínai (hagyományos)|zh-HK|
+|Hongkong (KKT)|Kínai (hagyományos)|zh-HK|
 |India|Angol|en-IN|
 |Indonézia|Angol|en-azonosító|
 |Olaszország|olasz|it-IT|

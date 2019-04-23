@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 01095ac4ed8e362f1a89a53b10b5da6a547feb57
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: MT
+ms.openlocfilehash: 29f98e334b0d2527b5159e1a5394109c5041024a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218634"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000130"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kubernetes-ajánlott eljárások a fürtben lévő keresése
 
@@ -27,7 +27,7 @@ A [kube-advisor eszköz] [ kube-advisor-github] egy egyetlen tároló lehet a f�
 
 ## <a name="running-kube-advisor"></a>Az advisor-kube fut
 
-Az eszköz futtatásához egy konfigurált fürtön [szerepköralapú hozzáférés-vezérlés (RBAC)](aad-integration.md), az alábbi parancsok használatával. Az első parancs létrehoz egy Kubernetes-szolgáltatásfiókot. A második parancs az eszköz fut egy pod a szolgáltatási fiókot használva, és konfigurálja a pod a törlés után kilép. 
+Az eszköz futtatásához egy konfigurált fürtön [szerepköralapú hozzáférés-vezérlés (RBAC)](azure-ad-integration.md), az alábbi parancsok használatával. Az első parancs létrehoz egy Kubernetes-szolgáltatásfiókot. A második parancs az eszköz fut egy pod a szolgáltatási fiókot használva, és konfigurálja a pod a törlés után kilép. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml

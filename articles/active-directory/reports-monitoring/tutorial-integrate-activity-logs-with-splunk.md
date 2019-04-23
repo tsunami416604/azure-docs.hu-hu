@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory-naplók az Azure Monitor (előzetes verzió) használatával Splunk Stream |} A Microsoft Docs
-description: Ismerje meg a Splunk Azure Monitor (előzetes verzió) használatával az Azure Active Directory naplóinak integrálása
+title: Azure Active Directory-naplók az Azure Monitor használatával Splunk Stream |} A Microsoft Docs
+description: Ismerje meg a Splunk Azure Monitor használatával az Azure Active Directory naplóinak integrálása
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94039655a6cbe7878fa1f61ce759485392dc7e98
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 70befad3208f34fe62fbb0a59cea4bf6ea01ce16
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438852"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999518"
 ---
-# <a name="integrate-azure-ad-logs-with-splunk-using-azure-monitor-preview"></a>Az Azure AD-naplók integrálása az Azure Monitor (előzetes verzió) használatával Splunk
+# <a name="integrate-azure-ad-logs-with-splunk-using-azure-monitor"></a>Az Azure AD-naplók integrálása az Azure Monitor használatával Splunk
 
 Ebből a cikkből elsajátíthatja az Azure Active Directory (Azure AD) naplókban Splunk integrálása az Azure Monitor használatával. A naplók átirányítása az Azure event hubhoz, és majd integrálása az event hubs-Splunk.
 

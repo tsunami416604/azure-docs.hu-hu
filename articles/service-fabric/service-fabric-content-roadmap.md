@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: adbe101455bc200bc6be439920736b756f08b695
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: dfe08152f986ccac3dabe7b3bb21e7653ee812a4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667990"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011180"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Így biztosan ismerje meg a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy támadási azonban és sok további.  Ez a cikk egy szinopszist, Service fabric biztosítja, és ismerteti az alapfogalmakat, programozási modelleket, alkalmazás-életciklus során, tesztelés, fürtök és az állapotmonitorozást. Olvassa el a [áttekintése](service-fabric-overview.md) és [Mik azok a mikroszolgáltatások?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk egy átfogó tartalmak listája nem tartalmaz, de a hivatkozások áttekintése és első lépéseket bemutató cikkekben a Service Fabric minden területéhez. 
@@ -165,7 +165,7 @@ Jelentéskészítés teheti meg:
 * Belső watchdogs, amely a Service Fabric-csomópontokon fut, de nem Service Fabric-szolgáltatások vannak implementálva.
 * Az erőforrások (például-figyelési szolgáltatás például Gomez) Service Fabric-fürtön kívül mintavételi külső watchdogs.
 
-Beépített a Service Fabric összetevői health jelentést a fürtben lévő összes entitáshoz. [Rendszerállapot-jelentések](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) fürt és az alkalmazások funkcióit és jelző problémák health segítségével betekintést biztosítanak. Alkalmazások és szolgáltatások rendszerállapot-jelentések győződjön meg arról, hogy az entitások vannak megvalósítva, és megfelelően a Service Fabric-futtatókörnyezet szempontjából vezérelhesse. A jelentések nem biztosít bármely szolgáltatásállapot-figyelést a szolgáltatás üzleti logika vagy lefagyott folyamatok észlelésére. Adott egészségügyi információk hozzáadása a szolgáltatás logikát, [megvalósítása egyéni állapotfigyelő jelentési](service-fabric-report-health.md) a szolgáltatásban.
+Beépített a Service Fabric összetevői health jelentést a fürtben lévő összes entitáshoz. [Rendszerállapot-jelentések](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) fürt és az alkalmazások funkcióit és jelző problémák health segítségével betekintést biztosítanak. Alkalmazások és szolgáltatások rendszerállapot-jelentések győződjön meg arról, hogy az entitások vannak megvalósítva, és megfelelően a Service Fabric-futtatókörnyezet szempontjából vezérelhesse. A jelentések biztosít bármely szolgáltatásállapot-figyelést az üzleti logika, a szolgáltatás, vagy nem észleli a folyamatokat, amelyek már nem válaszol. Adott egészségügyi információk hozzáadása a szolgáltatás logikát, [megvalósítása egyéni állapotfigyelő jelentési](service-fabric-report-health.md) a szolgáltatásban.
 
 A Service Fabric több módot is biztosít [rendszerállapot-jelentések megtekintéséhez](service-fabric-view-entities-aggregated-health.md) összevonva jelenik meg a health Store adatbázisban:
 * [A Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) vagy más vizualizációs eszközökkel.

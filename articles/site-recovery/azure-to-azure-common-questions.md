@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 03/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 66d57677b216130316c6a3ddd9a6cff993540808
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 52a5022b49bac990321c3cf8661aa2a04e93b39a
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649883"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149733"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Gyakori kérdések: Azure – Azure replikálás
 
@@ -67,7 +67,7 @@ A Site Recovery replikálja, és a virtuális gépek helyreállítása ugyanazon
 
 A Site Recovery nem, nem szükséges az internetkapcsolat. Hozzáférést igényelnek a Site Recovery URL-címek és IP-tartományok, említetteknek megfelelően, de [Ez a cikk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges).
 
-### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Replikálhatok külön szinteket külön erőforráscsoportot kellene az alkalmazást? 
+### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Replikálhatok külön szinteket külön erőforráscsoportot kellene az alkalmazást?
 Igen, replikálja az alkalmazást, és ne a vész-helyreállítási konfiguráció külön erőforráscsoportot túl.
 Például egy alkalmazást a minden alkalmazás, db, és külön erőforráscsoportot a webes szint esetében, akkor a elemre kell kattintania, a [replikálás varázsló](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) háromszor való védelme minden szinten. Az ASR replikálja ezeket mindhárom szintet három másik erőforráscsoportban található.
 
@@ -89,11 +89,12 @@ Napjainkban a legtöbb alkalmazás helyreállíthatja jól összeomlás-konziszt
 ### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Mi az az összeomlás-konzisztens helyreállítási pont létrehozásának gyakorisága?
 A Site Recovery 5 percenként összeomlás-konzisztens helyreállítási pont létrehozása.
 
-### <a name="what-is-an-application-consistent-recovery-point"></a>Mi az az alkalmazáskonzisztens helyreállítási pontot? 
-Alkalmazáskonzisztens helyreállítási pontok az alkalmazáskonzisztens pillanatképek jönnek létre. Alkalmazáskonzisztens helyreállítási pontok rögzítése összeomlás-konzisztens pillanatképekkel, a memóriában lévő összes adatot, és minden folyamatban lévő tranzakciót is ugyanazokat az adatokat. Miatt további tartalmak a alkalmazáskonzisztens pillanatképek a legtöbb metódusa vesz, és tegye meg a legrégebb végrehajtásához. Azt javasoljuk, hogy az adatbázis operációs rendszerek és alkalmazások, például az SQL Server alkalmazáskonzisztens helyreállítási pontjait.
+### <a name="what-is-an-application-consistent-recovery-point"></a>Mi az az alkalmazáskonzisztens helyreállítási pontot?
+Alkalmazáskonzisztens helyreállítási pontok az alkalmazáskonzisztens pillanatképek jönnek létre. Alkalmazáskonzisztens helyreállítási pontok rögzítése összeomlás-konzisztens pillanatképekkel, a memóriában lévő összes adatot, és minden folyamatban lévő tranzakciót is ugyanazokat az adatokat.
+Miatt további tartalmak a alkalmazáskonzisztens pillanatképek a legtöbb metódusa vesz, és tegye meg a legrégebb végrehajtásához. Azt javasoljuk, hogy az adatbázis operációs rendszerek és alkalmazások, például az SQL Server alkalmazáskonzisztens helyreállítási pontjait.
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Mit jelent alkalmazásteljesítmény alkalmazáskonzisztens helyreállítási pontokat a hatását?
-Alkalmazáskonzisztens helyreállítási pontok összes adatot a memória és a folyamat rögzíti a mérlegeli igényel a keretrendszert, például VSS letiltásától az alkalmazás windows rendszeren. Ha nagyon gyakran meg lehet a teljesítményt, ha a számítási feladat már nagyon elfoglalt. Általában javasolt nem 1 óra használata kevésbé gyakori alkalmazáskonzisztens helyreállítási pontok adatbázis-számítási feladatokhoz és adatbázis-munkaterhelés esetén is elegendő. 
+Alkalmazáskonzisztens helyreállítási pontok összes adatot a memória és a folyamat rögzíti a mérlegeli igényel a keretrendszert, például VSS letiltásától az alkalmazás windows rendszeren. Ha nagyon gyakran meg lehet a teljesítményt, ha a számítási feladat már nagyon elfoglalt. Általában javasolt nem 1 óra használata kevésbé gyakori alkalmazáskonzisztens helyreállítási pontok adatbázis-számítási feladatokhoz és adatbázis-munkaterhelés esetén is elegendő.
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Mi az a minimális gyakoriságot a alkalmazáskonzisztens helyreállítási pont létrehozásakor?
 A Site Recovery segítségével hoz létre egy alkalmazáskonzisztens helyreállítási pont a minimális gyakoriság (1 óra).
@@ -216,7 +217,11 @@ Azt az adott helyzettől függ. Például ha a forrásrégióban virtuális gép
 Ismételt védelem, miután idő a feladat-visszavételhez hasonlít általában az idő a feladatátvételhez az elsődleges régióból egy másodlagos régióba.
 
 ## <a name="capacity"></a>Kapacitás
-### <a name="does-site-recovery-work-with-reserved-instance"></a>A fenntartott példány működik a Site Recovery?
+
+### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Hogyan kapacitás biztosítható a célrégióban az Azure virtuális gépek?
+Az Azure Site Recovery (ASR) csapat működik együtt a kapacitás Azure fiókkezelési csapat nyújtson hatékony elegendő infrastruktúra kapacitásának tervezése, egy kísérlet annak érdekében, hogy az ASR-hez a vészhelyreállítási védett virtuális gépek helyreállítási sikeresen telepíthető a vész-helyreállítási régióban minden alkalommal, amikor az ASR feladatátvételi műveletek kezdeményeztek.
+
+### <a name="does-site-recovery-work-with-reserved-instances"></a>A fenntartott példányok működik a Site Recovery?
 Igen, akkor is vásárolható [fenntartott példányok](https://azure.microsoft.com/pricing/reserved-vm-instances/) a DR régióban, és automatikus feladatátvételi műveletek fogja használni őket. </br> További konfiguráció nélkül nem szükséges, hogy az ügyfeleknek.
 
 

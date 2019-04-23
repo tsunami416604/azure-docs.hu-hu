@@ -1,20 +1,19 @@
 ---
-title: Az Azure Data Factory adatfolyam származtatott oszlop átalakítása
-description: Az Azure Data Factory adatfolyam származtatott oszlop átalakítása
+title: Az Azure Data Factory, az adatfolyam-leképezés származtatott oszlop átalakítása
+description: Útmutató az Azure Data Factory leképezési Flow származtatott oszlop adatátalakítás nagy mennyiségű adat átalakítására
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: 1335b86431bcf345f452ead0c95926d295ae185f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: MT
+ms.openlocfilehash: f53e122eb1b2a5b6dabb9a44aef42394d0c7edb6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728760"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999484"
 ---
-# <a name="azure-data-factory-data-flow-derived-column-transformation"></a>Az Azure Data Factory adatfolyam származtatott oszlop átalakítása
+# <a name="mapping-data-flow-derived-column-transformation"></a>Az adatfolyam-leképezés származtatott oszlop átalakítása
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -27,3 +26,13 @@ Több származtatott oszlopot művelet egyetlen származtatott oszlopot átalak�
 Az oszlop mezőben válassza ki egy létező oszlop felülírása az új származtatott érték, vagy kattintson a "Hozzon létre új oszlop" egy az újonnan származtatott értéket tartalmazó új oszlop létrehozása.
 
 A kifejezés szövegmező megnyílik a Kifejezésszerkesztő, ahol hozhat létre a kifejezés a származtatott oszlopok kifejezés függvények használatával.
+
+## <a name="column-patterns"></a>Oszlopminták
+
+Ha az oszlopneveket a forrásból származó változót, előfordulhat, hogy szeretné hozhat létre a származtatott oszlop belül átalakítások segítségével oszlop minták nevű oszlopok használata helyett. Tekintse meg a [séma eltéréseket](concepts-data-flow-schema-drift.md) további részleteivel.
+
+![oszlop minta](media/data-flow/columnpattern.png "oszlop minták")
+
+## <a name="next-steps"></a>További lépések
+
+Tudjon meg többet a [adat-előállító kifejezés nyelve átalakítások](http://aka.ms/dataflowexpressions) és a [Kifejezésszerkesztő](concepts-data-flow-expression-builder.md)

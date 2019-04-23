@@ -1,28 +1,28 @@
 ---
 title: Objektum észlelése – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision API használatával objektumfelismerés kapcsolatos fogalmakat.
+description: Ismerje meg az észlelési szolgáltatás a Computer Vision API – a kapcsolódó fogalmak használatát és korlátait.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7e3311aab74f58e3936039393eab76dee12b83ea
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 012ab849c926de332da55361c79c76c5a1311169
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496938"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001847"
 ---
-# <a name="object-detection"></a>Objektumészlelés
+# <a name="detect-common-objects-in-images"></a>Közös objektumok észlelése képeken
 
 Objektumfelismerés hasonlít a [címkézés](concept-tagging-images.md), azonban az API-t adja vissza a határolókeret koordinátái (képpontban) minden egyes objektum található. Például képet tartalmaz egy kutya, cat és személy, ha a hibakeresés művelet felsorolja azokat az objektumokat a a koordináták a képen. Ez a funkció használatával feldolgozni a képet az objektumok közötti kapcsolatok. Azt is lehetővé teszi, hogy vannak-e a képet ugyanazt a címkét több példányát.
 
-A észlelése API objektumok vagy élő dolgot azonosítani a képen alapuló címkék vonatkozik. Ezen a ponton nincs hivatalos a címkézési besorolás és a objektum észlelési besorolás közötti kapcsolat. Elméleti szinten a észlelése API csak megkeresi objektumok és élő dolog, amíg a címke API is használható például a "belső" környezeti feltételek, amelyeket nem a határoló be a honosított.
+A észlelése API objektumok vagy élő dolgot azonosítani a képen alapuló címkék vonatkozik. Jelenleg nincsenek a címkézési besorolás és a objektum észlelési besorolás formális kapcsolatát. Elméleti szinten a észlelése API csak megkeresi objektumok és élő dolog, amíg a címke API is használható például a "belső" környezeti feltételek, amelyeket nem a határoló be a honosított.
 
 ## <a name="object-detection-example"></a>Objektum észlelési példa
 

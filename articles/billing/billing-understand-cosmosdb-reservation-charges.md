@@ -6,19 +6,25 @@ author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/13/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 8386d1c43761cfb27746b003d136419f72d7d4ae
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: d5a13e4466234d73bafe8dbe76cae92955cf64bd
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648537"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010296"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt az Azure Cosmos DB
 
 Miután egy Azure Cosmos DB szolgáltatás számára fenntartott kapacitást vásárol, a rendszer automatikusan alkalmazza a foglalási kedvezményt az Azure Cosmos DB-erőforrásokat, amelyek megfelelnek a attribútumok és a Foglalás mennyiségét. Egy foglalást az Azure Cosmos DB-erőforrásokat az adatátviteli teljesítmény ismerteti. Nem fedi le a szoftvereket, a hálózat, tárolás, vagy előre definiált tároló díjak.
+
+## <a name="how-reservation-discount-is-applied"></a>Hogyan alkalmazza a foglalási kedvezményt
+
+A foglalási kedvezményt a "*használata – it-vagy-elveszíti-it*". Tehát ha az adott órán belül nem rendelkezik megfelelő erőforrásokat, majd elvesznek a foglalási mennyiség az adott órában. Nem sokat fel nem használt fenntartott órán keresztül továbbítja.
+
+Ha leállítja egy erőforrást, a foglalási kedvezményt automatikusan alkalmazza a megadott hatókörben lévő másik egyező erőforrás. A megadott hatókörben lévő nem megfelelő erőforrások találhatók, akkor a szolgáltatás számára fenntartott órák *elveszett*.
 
 ## <a name="reservation-discount-applied-to-azure-cosmos-db-accounts"></a>Azure Cosmos DB-fiókokhoz alkalmazza a foglalási kedvezményt
 

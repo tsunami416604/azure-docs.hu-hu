@@ -1,24 +1,24 @@
 ---
-title: Tároló több web sites – az Azure portal application gateway létrehozása
-description: Ismerje meg, hogyan hozhat létre egy application gateway, amelyen az Azure portal használatával több webhely.
+title: Oktatóanyag – az Azure portal használatával több webhely üzemeltető application gateway létrehozása
+description: Ebben az oktatóanyagban elsajátíthatja, hogyan hozhat létre átjáróalkalmazást, amely az Azure portal használatával több webhely futtatja.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 2/20/2019
+ms.topic: tutorial
+ms.date: 4/18/2019
 ms.author: victorh
-ms.openlocfilehash: 86be94404e7ab492beeebd6a467d23e68e7bce6b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 3e27a79c7a6e3d39679118f532dd464a32463d69
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080167"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999025"
 ---
-# <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Hozzon létre, és több webhely üzemeltetése az Azure Portalon az application gateway konfigurálása
+# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Oktatóanyag: Hozzon létre, és több webhely üzemeltetése az Azure Portalon az application gateway konfigurálása
 
-Használhatja az Azure Portalon [konfigurálása a több webhely üzemeltetése](multiple-site-overview.md) létrehozásakor egy [az application gateway](overview.md). Ez a cikk a háttér-címkészletet a virtuális gépek határozhatók meg. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez a cikk feltételezi, hogy a saját több tartományok és felhasználási mintái *www.contoso.com* és *www.fabrikam.com*.
+Használhatja az Azure Portalon [konfigurálása a több webhely üzemeltetése](multiple-site-overview.md) létrehozásakor egy [az application gateway](overview.md). Ebben az oktatóanyagban a virtual machines használatával háttércímkészletek határozhatók meg. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez az oktatóanyag feltételezi, hogy Ön több tartománnyal rendelkezik. Példaként a *www.contoso.com* és a *www.fabrikam.com* tartományt használja.
 
-Ebben a cikkben az alábbiakkal ismerkedhet meg:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Application Gateway létrehozása
@@ -146,7 +146,7 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
 
 A szabályok a felsorolásuk sorrendjében vannak feldolgozva, és a forgalom az első egyező szabály alapján lesz átirányítva, függetlenül annak sajátlagosságától. Ha például egy adott porton egy alapszintű figyelőt használó és egy többhelyes figyelőt használó szabály is aktív, a többhelyes figyelővel rendelkező szabályt az alapszintű figyelővel rendelkező elé kell venni, hogy a többhelyes szabály a várakozásnak megfelelően működjön. 
 
-Ebben a példában két új szabályt hoz létre, és törli az alkalmazásátjáró létrehozásakor létrehozott alapértelmezett szabályt. 
+Ebben a példában két új szabályokat hozhat létre, és törölje az alapértelmezett szabály létrehozása az application gateway létrehozása során.
 
 1. Kattintson a **szabályok** majd **alapszintű**.
 2. Adja meg *contosoRule* neve.
@@ -179,6 +179,18 @@ Az alkalmazásátjáró nyilvános IP-címmel történő létrehozása után lek
 
     ![Fabrikam webhely tesztelése az alkalmazásátjáróban](./media/create-multiple-sites-portal/application-gateway-iistest2.png)
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs szüksége az application gateway segítségével létrehozott erőforrásokat, távolítsa el az erőforráscsoportot. Az erőforráscsoport eltávolításával is eltávolítja az application gateway és az összes kapcsolódó erőforrás.
+
+Az erőforráscsoport eltávolítása:
+
+1. Az Azure portal bal oldali menüben válassza ki **erőforráscsoportok**.
+2. Az a **erőforráscsoportok** lapon, keressen rá a **myResourceGroupAG** a listában, majd válassza ki azt.
+3. Az a **erőforráscsoport oldalán**válassza **erőforráscsoport törlése**.
+4. Adja meg *myResourceGroupAG* a **írja be az ERŐFORRÁSCSOPORT nevét** majd **törlése**
+
 ## <a name="next-steps"></a>További lépések
 
-[Az App Service az Application Gateway konfigurálása](create-web-app.md)
+> [!div class="nextstepaction"]
+> [További tudnivalók a mi mindent az Azure Application Gateway segítségével](application-gateway-introduction.md)

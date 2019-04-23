@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: fb684a59362e0f7b6ccdc2ca05fda1b89def2835
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
-ms.translationtype: MT
+ms.openlocfilehash: feafb983a7b9e4aea6091753842b03a65ccd3ca5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351847"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001558"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>Videók valós idejű elemzése
 
@@ -194,7 +194,7 @@ A második mintaalkalmazás egy kicsit érdekesebb, és ebben kiválasztható, h
 
 A legtöbb módban látható késés mutatkozik a bal oldali élő videókép és a jobb oldalon megjelenített eredmények közt. Ez a késés az API-kérés feldolgozásának időtartamával egyezik. A kivétel ez alól a "EmotionsWithClientFaceDetect" módban van, amely arcfelismerés helyileg végrehajtja az ügyfélszámítógépen, OpenCV, használó összes lemezképet, a Cognitive Servicesre elküldése előtt. Ezáltal azonnal megjeleníthető a felismert arc, majd az érzelmekkel később kiegészíthető, ha megérkezik az API-hívás eredménye. Ez az alkalmazás a „hibrid” megközelítés lehetőségét mutatja, ahol az egyszerű feldolgozási feladatok elvégezhetők az ügyfélen, majd a Cognitive Services API-k használatával ez szükség szerint kiegészíthető további speciális elemzési műveletekkel.
 
-![Képernyőkép: a kép látható címkék jelennek meg az LiveCameraSample alkalmazás](../../Video/Images/FramebyFrame.jpg)
+![Képernyőkép a LiveCameraSample alkalmazás ábrázoló kép címkékkel jelenik meg](../../Video/Images/FramebyFrame.jpg)
 
 ### <a name="integrating-into-your-codebase"></a>A kódbázisba való integráció
 
@@ -216,7 +216,7 @@ A VideoFrameAnalyzer kép-, hang-, videó- és szövegfelismerési képességei 
 
 ## <a name="summary"></a>Összegzés
 
-Ebben az útmutatóban megismerhette, hogyan futtathat közel valós idejű elemzéseket élő videostreameken a Face, a Computer Vision és az Emotion API-k használatával, és hogy mindennek hogyan láthat neki a mintakód használatával. Most már hozzákezdhet saját alkalmazás fejlesztéséhez is, amelyhez ingyenes API-kulcsokat a [Microsoft Cognitive Services regisztrációs oldalán](https://azure.microsoft.com/try/cognitive-services/) talál. 
+Ebben az útmutatóban megismerhette, hogyan futtathat közel valós idejű elemzéseket élő videostreameken a Face, a Computer Vision és az Emotion API-k használatával, és hogy mindennek hogyan láthat neki a mintakód használatával. Az alkalmazások összeállításának megkezdéséhez [az Azure Cognitive Services regisztrációs oldalán](https://azure.microsoft.com/try/cognitive-services/) talál ingyenes API-kulcsokat. 
 
 Küldheti el nekünk visszajelzést és javaslatok a [GitHub-adattár](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/), vagy további széles körű API visszajelzést a a [UserVoice webhelyén](https://cognitive.uservoice.com/).
 

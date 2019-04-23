@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: cb61366a672a48cdc84e14f40d889e646e0e23b8
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 2f283421a851914822f5b0c9d05ed6bc929d28c4
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545399"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150013"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -130,14 +130,6 @@ Felhasználói hozzáférési engedélyek ellenőrzésére vonatkozó informáci
 ### <a name="enable-network-watcher"></a>A Network Watcher engedélyezése
 
 Elemezze az adatforgalmat, hogy szüksége lesz egy meglévő a network watcher vagy [egy network watcher engedélyezése](network-watcher-create.md) minden régióban, amely rendelkezik NSG-ket, hogy az elemezni kívánt forgalmi a. A TRAFFIC analytics valamelyikében lévő üzemeltetett NSG-k esetén is engedélyezhető a [támogatott régiók](#supported-regions).
-
-### <a name="re-register-the-network-resource-provider"></a>Regisztrálja újra a hálózati erőforrás-szolgáltató
-
-A traffic analytics használata előtt újra kell regisztrálni a hálózati erőforrás-szolgáltató. Kattintson a **Kipróbálom** a következő kód mezőbe az Azure Cloud Shell megnyitásához. A Cloud Shell automatikusan naplózza, hogy az Azure-előfizetéshez. A Cloud Shell megnyitása után adja meg az újbóli regisztrációt a hálózati erőforrás-szolgáltató a következő parancsot:
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
-```
 
 ### <a name="select-a-network-security-group"></a>Válassza ki a hálózati biztonsági csoport
 

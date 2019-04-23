@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 71970a74817665c97a9522fbc9a68dd3834252b9
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: MT
+ms.openlocfilehash: 15b3fb4ae483e5b0e4f930d0dc08de6d198d0e5f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616356"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005247"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA-oldali monitorozás és hibaelhárítás
 
@@ -63,7 +63,7 @@ A gráf betöltése előfordulhat, hogy magas CPU-felhasználás, vagy nagy hasz
 
 ![A gráf betöltése előfordulhat, hogy megjelenítése nagy CPU-felhasználás, vagy magas felhasználás az elmúlt](./media/troubleshooting-monitoring/image4-load-graph.png)
 
-Több oka is, de nem kizárólagosan miatt magas CPU-kihasználtság aktivált riasztás oka: bizonyos tranzakciók, az adatok betöltése, függő feladatok, mennyi ideig fut az SQL-utasításokkal, és a hibás lekérdezési teljesítmény (például az SAP BW on HANA végrehajtása a kockák).
+Több oka is, de nem kizárólagosan miatt magas CPU-kihasználtság aktivált riasztás oka: bizonyos tranzakciók, az adatok betöltése, feladatok, amelyek nem válaszolnak, hosszú ideig futó SQL-utasításokkal, és a hibás lekérdezési teljesítmény (például végrehajtása az SAP BW on HANA kockák).
 
 Tekintse meg a [SAP HANA-hibáinak elhárítása: CPU kapcsolódó okoz, és a megoldások](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) hely részletes hibaelhárítási lépéseket.
 

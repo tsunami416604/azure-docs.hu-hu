@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory-naplók az Azure Monitor (előzetes verzió) használatával SumoLogic Stream |} A Microsoft Docs
-description: 'Útmutató: Azure Active Directory-naplók integrálása az Azure Monitor (előzetes verzió) használatával SumoLogic'
+title: Azure Active Directory-naplók az Azure Monitor használatával SumoLogic Stream |} A Microsoft Docs
+description: 'Útmutató: Azure Active Directory-naplók integrálása az Azure Monitor használatával SumoLogic'
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bed1b96052117534f319bbf9570618e6481032f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 7ccf9cd550b3848be841f193f4ab8a6094cf671d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437208"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008942"
 ---
-# <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor-preview"></a>Azure Active Directory-naplók integrálása az Azure Monitor (előzetes verzió) használatával SumoLogic
+# <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Azure Active Directory-naplók integrálása az Azure Monitor használatával SumoLogic
 
 Ebből a cikkből elsajátíthatja az Azure Active Directory (Azure AD) naplókban integrálása az Azure Monitor használatával SumoLogic. A naplók átirányítása az Azure event hubhoz, és majd integrálása az event hubs-SumoLogic.
 

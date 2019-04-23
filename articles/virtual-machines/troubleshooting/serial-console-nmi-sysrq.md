@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 3a9d3364f9e55611c94797b71b058128ce7c6696
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: MT
+ms.openlocfilehash: 8ae9062a5e154f457f86dd7f3fbed7bda8580c88
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697927"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002108"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Használja a soros konzol SysRq és NMI hívások
 
 ## <a name="system-request-sysrq"></a>Rendszer-kérés (SysRq)
-Egy SysRq sorozata, a Linux-művelet rendszer kerneljének, is aktiválhatja az előre definiált műveletek egy csoportját, amely által ismert kulcsokkal. Ezek a parancsok gyakran használják, ha a virtuális gép hibáinak elhárítása vagy helyreállítási nem hajtható végre hagyományos felügyeleti keresztül (például, ha a virtuális gép lefagyott). Az Azure-soros konzolon SysRq szolgáltatásával tesztkörnyezeteknek lenyomja a SysRq kulcs és a egy fizikai billentyűzeten beírt karakterek.
+Egy SysRq sorozata, a Linux-művelet rendszer kerneljének, is aktiválhatja az előre definiált műveletek egy csoportját, amely által ismert kulcsokkal. Ezek a parancsok gyakran használják, ha a virtuális gép hibáinak elhárítása vagy helyreállítási nem hajtható végre hagyományos felügyeleti keresztül (például, ha a virtuális gép nem válaszol). Az Azure-soros konzolon SysRq szolgáltatásával tesztkörnyezeteknek lenyomja a SysRq kulcs és a egy fizikai billentyűzeten beírt karakterek.
 
 Miután a SysRq feladatütemezési érkezik, a kernel konfigurációs szabályozza hogyan reagál a rendszer. Az engedélyezése és letiltása SysRq információkért lásd: a *SysRq rendszergazdai útmutató* [szöveg](https://aka.ms/kernelorgsysreqdoc) | [markdown](https://aka.ms/linuxsysrq).  
 
@@ -99,7 +99,7 @@ Terjesztésipont-specifikus SysRq és lépések Linux konfigurálása egy össze
 - [Összeomlás-naplók gyűjtését.](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="non-maskable-interrupt-nmi"></a>Non-Maskable Interrupt (NMI) 
-Egy nem maszkolható (NMI) úgy tervezték, hogy hozzon létre egy olyan jelet, hogy a szoftverek virtuális gépi nem figyelmen kívül hagyja. Hagyományosan NMIs figyelje a hardverekkel kapcsolatos problémák szerepelnek, amelyek adott válaszidők szükséges rendszereken voltak használva.  Ma, programozók és a rendszer a rendszergazdák gyakran használnak NMI mechanizmusként javításához vagy hibaelhárítása a rendszerek, amelyek leáll.
+Egy nem maszkolható (NMI) úgy tervezték, hogy hozzon létre egy olyan jelet, hogy a szoftverek virtuális gépi nem figyelmen kívül hagyja. Hagyományosan NMIs figyelje a hardverekkel kapcsolatos problémák szerepelnek, amelyek adott válaszidők szükséges rendszereken voltak használva.  Ma, programozók és a rendszer a rendszergazdák gyakran használnak NMI mechanizmusként javításához vagy hibaelhárítása a rendszerek, amelyek nem válaszolnak.
 
 A soros konzol segítségével egy NMI küldeni egy Azure virtuális gépen a billentyűzet ikon használatával az alább látható a parancssávon. Miután a NMI érkezik, a virtuális gép konfigurációja szabályozza hogyan reagál a rendszer.  Linux operációs rendszerek beállítható úgy, hogy az összeomlási, és a memóriakép létrehozása az operációs rendszer egy NMI kap.
 

@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – archiválása az Azure Active Directory naplózza a tárfiókhoz (előzetes verzió) |} A Microsoft Docs
-description: Itt megtudhatja, hogyan állíthatja be az Azure Diagnosticsban az Azure Active Directory-naplók leküldését egy tárfiókba (előzetes verzió)
+title: Oktatóanyag – archiválása az Azure Active Directory naplók tárfiókba |} A Microsoft Docs
+description: 'Útmutató: Azure Diagnostics beállítása az Azure Active Directory-naplók leküldése egy storage-fiók'
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d34b41e780466d9ab734b9dbd0e58016dba7b10
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 0198fe1ce61c8f78e315d1166a7ea03aae20d592
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434721"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999501"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>Oktatóanyag: Az Azure storage-fiókba (előzetes verzió) az Azure AD-naplóinak archiválása
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Oktatóanyag: Az Azure storage-fiókba az Azure AD-naplóinak archiválása
 
 Az oktatóanyagból megtudhatja, hogyan konfigurálhatja úgy az Azure Monitort, hogy az Azure Active Directory- (Azure AD-) naplókat egy Azure-tárfiókba irányítsa.
 

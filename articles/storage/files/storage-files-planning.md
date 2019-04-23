@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d4361fc37d01b351d20a273aa39f558e9b00faa4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: e2b2621ac8ee5b9ee84aaa978e8b915c98c5b702
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525925"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998459"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -92,20 +92,22 @@ Az Azure Files két teljesítményszinttel kínál: standard és prémium szint�
 |Észak-Európa  | Nem |
 |Nyugat-Európa   | Igen|
 |Délkelet-ázsiai       | Igen|
+|Kelet-Ázsia     | Nem |
 |Kelet-Japán    | Nem |
+|Nyugat-Japán    | Nem |
 |Korea középső régiója | Nem |
 |Kelet-Ausztrália| Nem |
 
 ### <a name="provisioned-shares"></a>Kiépített megosztások
 
-Prémium szintű fájlmegosztások (előzetes verzió) egy rögzített GiB/IOPS/teljesítmény arány alapján vannak üzembe helyezve. Az egyes üzembe helyezett GiB a megosztás fogja kiállítani egy IOPS és 0,1 MiB/s átviteli legfeljebb fájlmegosztás maximális vonatkozó korlátok. Kiépítés engedélyezett minimum 100 GB, a minimális IOPS és átviteli sebesség. Megosztás méretének bármikor, minden alkalommal és csökkent növelhető, de 24 óránként óta az utolsó növelését a csökkenthető.
+Prémium szintű fájlmegosztások (előzetes verzió) egy rögzített GiB/IOPS/teljesítmény arány alapján vannak üzembe helyezve. Az egyes üzembe helyezett GiB a megosztás fogja kiállítani egy IOPS és 0,1 MiB/s átviteli legfeljebb fájlmegosztás maximális vonatkozó korlátok. Kiépítés engedélyezett minimum 100 GB, a minimális IOPS és átviteli sebesség.
 
 Az elérhető legjobb lehetőség alapján minden megosztás is megnövelheti arra GiB kiosztott tárolás három IOPS legfeljebb 60 percet vagy hosszabb ideig a megosztás méretétől függően. Új megosztások indítsa el a teljes burst kreditet kap, a kiépített lemezkapacitás alapján.
 
-Minden megosztás is megnövelheti arra legfeljebb legalább 100 IOPS és a cél 100 MiB/s adatforgalomból. Megosztások ki kell építeni az 1 GIB-ra kerekítve. Minimális mérete 100 GB, a következő méret 101-es GIB és így tovább.
+Megosztások ki kell építeni az 1 GIB-ra kerekítve. Minimális mérete 100 GB, a következő méret 101-es GIB és így tovább.
 
 > [!TIP]
-> Alapkonfiguráció IOPS = 100 + 1 * GiB kiépítve. (Legfeljebb egy legfeljebb 100 000 iops-érték).
+> Alapkonfiguráció iops-érték = 1 * GiB kiépítve. (Legfeljebb egy legfeljebb 100 000 iops-érték).
 >
 > Átmenetileg megnövelhető a korlát = 3 * alapkonfiguráció iops-t. (Legfeljebb egy legfeljebb 100 000 iops-érték).
 >
@@ -113,13 +115,13 @@ Minden megosztás is megnövelheti arra legfeljebb legalább 100 IOPS és a cél
 >
 > bejövő forgalom = 40 MiB/s + 0,04 * kiosztott GiB
 
-Megosztás méretének bármikor, minden alkalommal és csökkent növelhető, de 24 óránként óta az utolsó növelését a csökkenthető. IOPS/átviteli sebesség a módosítások méretének módosítása után 24 órán belül től lép érvénybe.
+Megosztás méretének bármikor növelhető, de csak a legutóbbi növekedés óta 24 óra eltelte után a csökkenthető. Miután kivárja egy méretének növelése nélkül 24 óra, a megosztás méretének, ahányszor mindaddig, amíg újra növelése csökkentheti meg. IOPS/átviteli sebesség a módosítások hatékony lesz méretének módosítása után néhány percen belül.
 
 Az alábbi táblázatban néhány példa az ezekben a képletekben a létesített megosztás méretek mutatja be:
 
 (Méretek kimaradásával egy * következők korlátozott nyilvános előzetes verzióban érhető el)
 
-|Kapacitás (GB) | Alapkonfiguráció IOPS | Hirtelen korlát | Kimenő forgalom (MiB/s) | Bejövő (MiB/s) |
+|Kapacitás (GB) | Alapkonfiguráció IOPS | Sorozatfelvétel IOPS | Kimenő forgalom (MiB/s) | Bejövő (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Legfeljebb 300     | 66   | 44   |
 |500         | 500     | Legfeljebb 1500 felhasználóval   | 90   | 60   |
@@ -136,20 +138,20 @@ Megosztás méretét legfeljebb 5 TiB jelenleg nyilvános előzetes verzióban �
 
 Prémium szintű fájlmegosztásokat is megnövelheti arra az iops-érték legfeljebb három tényező. Tartalékkapacitás automatikusan végbemegy, és működik, a rendszer alapján. Tartalékkapacitás akkor működik a legjobb lehetőség alapján, és a hirtelen korlát nem garantálja, fájlmegosztások is megnövelheti arra *akár* korlátot.
 
-Kreditek öszesítés az adatlöketek kérelemegységeket, minden alkalommal, amikor a fileshares forgalmát alapkonfiguráció iops-érték alatt van. Például egy 100 GB-megosztás rendelkezik 100 alapkonfiguráció iops-t. Ha a megosztáson tényleges forgalom a meghatározott 1 másodperces intervallumban 40 iops-érték volt, majd a fel nem használt iops-érték 60-számlán burst kérelemegységeket. A kreditek majd később során alkalmazandó műveletek túllépné az alapkonfiguráció iops-érték.
+Kreditek öszesítés az adatlöketek kérelemegységeket, minden alkalommal, amikor a fájlmegosztás forgalom alapkonfiguráció iops-érték alatt van. Például egy 100 GB-megosztás rendelkezik 100 alapkonfiguráció iops-t. Ha a megosztáson tényleges forgalom a meghatározott 1 másodperces intervallumban 40 iops-érték volt, majd a fel nem használt iops-érték 60-számlán burst kérelemegységeket. A kreditek majd később során alkalmazandó műveletek túllépné az alapkonfiguráció iops-érték.
 
 > [!TIP]
-> A hirtelen korlát gyűjtő mérete = Baseline_IOPS * 2 * 3600.
+> A hirtelen gyűjtő mérete = Baseline_IOPS * 2 * 3600.
 
-Amikor egy megosztást az alapkonfiguráció iops-érték meghaladja, és hirtelen kérelemegységeket krediteket tartalmaz, a rendszer burst. Megosztások továbbra is folyamatosan mindaddig, amíg vannak hátralévő a kreditek, bár kisebb, mint 50 tiB megosztásokat csak fog maradni, akár egy órára adatlöketek maximális. Nagyobb, mint 50 TiB megosztások technikailag lépheti túl ezt a határt egy óra, fel, ez azonban két óra alapján a feladatokkal kapcsolatos adatlöketek kreditek száma. Minden egyes IO túl az alapkonfiguráció IOPS használ fel egy, és miután az összes kreditet használnak fel a megosztás alaptervhez IOPS adna vissza.
+Amikor egy megosztást az alapkonfiguráció iops-érték meghaladja, és hirtelen kérelemegységeket krediteket tartalmaz, a rendszer burst. Megosztások továbbra is folyamatosan mindaddig, amíg vannak hátralévő a kreditek, bár kisebb, mint 50 TiB megosztásokat csak fog maradni, akár egy órára adatlöketek maximális. Nagyobb, mint 50 TiB megosztások technikailag lépheti túl ezt a határt egy óra, fel, ez azonban két óra alapján a feladatokkal kapcsolatos adatlöketek kreditek száma. Minden egyes IO túl az alapkonfiguráció IOPS használ fel egy, és miután az összes kreditet használnak fel a megosztás alaptervhez IOPS adna vissza.
 
 Megosztás-jóváírások három állapota van:
 
 - Halmoz fel, ha a fájlmegosztás kevesebb, mint az alapkonfiguráció iops-t.
 - Csökkenő, ha a fájlmegosztás tartalékkapacitás van.
-- Fennmaradó nullára állítja, amikor nem krediteket vagy a referenciakonfiguráció IOPS van használatban.
+- Fennmaradó állandó, amikor nem krediteket vagy a referenciakonfiguráció IOPS van használatban.
 
-Új fájlmegosztások alapdíja a krediteket az adatlöketek gyűjtőhöz a teljes számát.
+Új fájlmegosztások alapdíja a krediteket az adatlöketek gyűjtőhöz a teljes számát. Hirtelen kreditek nem fogja azt, ha a megosztás iops-érték alá esnek alapkonfiguráció iops-érték a kiszolgáló által szabályozás miatt.
 
 ## <a name="file-share-redundancy"></a>Fájl megosztási redundancia
 

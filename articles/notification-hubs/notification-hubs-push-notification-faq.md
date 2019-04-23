@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 60dbef0f0d6532c9cd30c59902236b7ae4e70b0e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 642e586371a0ce6abe362f8b10b54bfd8baff678
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524191"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998923"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Az Azure Notification Hubs leküldéses értesítések: Gyakori kérdések
 
@@ -53,17 +53,6 @@ Az alapszintű és standard szintű Notification Hubs vagyis a megfelelően konf
 
 > [!NOTE]
 > Leküldéses értesítések függenek külső Platform Notification System (például az Apple APNS vagy a Google FCM), mert nincs SLA garanciát az üzenetek kézbesítését. A Notification Hubs köteg küld a Platform Notification System (garantált SLA), miután feladata a Platform Notification System rendszerek, hogy a leküldések (nem garantált SLA).
-
-### <a name="which-customers-are-using-notification-hubs"></a>Mely ügyfelek használják a Notification hubs szolgáltatást?
-
-Sok ügyfél a Notification Hubs használatával. Néhány fontosabb meglévőket itt találhatók:
-
-* Sochi 2014: Több száz érdeklődési körök, 3 + millió eszköz és 150 + millió értesítések elküldése két héten belül. [Esettanulmány: Sochi]
-* Skanska: [Esettanulmány: Skanska]
-* Seattle időpontok: [Esettanulmány: Seattle alkalommal]
-* Mural.LY: [Esettanulmány: Mural.LY]
-* 7Digital: [Esettanulmány: 7Digital]
-* A Bing-alkalmazásokat: Több tíz, több millió eszköz naponta 3 millió értesítések küldése.
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Hogyan frissítse vagy Visszaléptetés a központ vagy a névtér másik tarifacsomagra?
 
@@ -219,11 +208,6 @@ Elérheti a mérőszámokat szoftveresen is. További információkért tekintse
 [Azure Portal]: https://portal.azure.com
 [Notification Hubs díjszabása]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[Esettanulmány: Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
-[Esettanulmány: Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
-[Esettanulmány: Seattle alkalommal]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
-[Esettanulmány: Mural.LY]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
-[Esettanulmány: 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [A Notification Hubs – REST API-k]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [A Notification Hubs bevezetés kapcsolatos oktatóanyagok]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Chrome-alkalmazások oktatóanyag]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/

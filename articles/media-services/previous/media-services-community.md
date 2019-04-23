@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: aeaf8fb5112fe9f6d8f2ca77ed9c1fd244fd9603
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 1347e28fe36ffe9595516252aea102d817a705a7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877071"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000045"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-közösség  
 
@@ -37,10 +37,13 @@ Az Azure Media Services (AMS) közösségi oldalai különböző módon kérheti
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="discussion"></a>Hozzászólások
+
 ### <a name="twitter"></a>Twitter
+
 Használja a [ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) twitter-leírót, lépjen kapcsolatba velünk, vagy hajtsa végre a frissítéseket a Twitteren. Használhatja a [ @AzureSupport ](https://twitter.com/azuresupport) twitter-leírót kérjen támogatást a Twitteren.  
 
 ### <a name="online-forums"></a>Online fórumok
+
 A következő fórumok aktuális termékekkel és szolgáltatásokkal kapcsolatos kérdések feltevéséhez használható.
 
 Jelenleg az MSDN a Media Services team elsődleges közösségi fórum.
@@ -48,9 +51,11 @@ Jelenleg az MSDN a Media Services team elsődleges közösségi fórum.
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
 A csapat is figyeli a Stack overflow oldalon az "azure-media-services" címkével ellátott kérdések.
+
 [![Stackoverflow-n](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="contact-the-team"></a>Vegye fel a kapcsolatot a csapattal
+
 Az Azure Media Services az elsődleges támogatási e-mail cím: **amshelp\@microsoft.com**.
 
 Az alábbi táblázat a funkció a sub csoportos e-mail:

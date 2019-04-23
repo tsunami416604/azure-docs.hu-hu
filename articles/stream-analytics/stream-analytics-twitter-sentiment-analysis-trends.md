@@ -9,14 +9,17 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: b5ad1a790f79b11b978c32c5751a6b9333f24c85
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994923"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003700"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-vélemények elemzése az Azure Stream Analytics szolgáltatásban
+
+> [!IMPORTANT] 
+> Twitter-alkalmazás létrehozása már nem érhető el – [apps.twitter.com](https://apps.twitter.com/). Ebben az oktatóanyagban tartalmazza az új Twitter API frissítése folyamatban van.
 
 Ismerje meg, hogyan hozhat létre egy közösségi médiaelemzés sentiment analysis megoldást, és valós idejű Twitter-események Azure Event hubsba. Ezután elemezheti az adatokat, és egy Azure Stream Analytics lekérdezési később tárolja az eredményeket az írási vagy használhatja egy irányítópultot és [Power BI](https://powerbi.com/) valós idejű elemzéseket biztosít.
 
@@ -282,7 +285,7 @@ Az alábbi táblázat a mezők, amelyek részei a streamelési adatok JSON. Nyug
 |Témakör | A témakör, amely megfelel a megadott kulcsszóval.|
 |SentimentScore | A véleménypontszám a Sentiment140|
 |Szerző | A Twitter-leírót a Twitter-üzenetet küldött|
-|Szöveg | A tweet a teljes szervezet|
+|Text | A tweet a teljes szervezet|
 
 
 ## <a name="create-an-output-sink"></a>Hozzon létre egy kimeneti fogadóba

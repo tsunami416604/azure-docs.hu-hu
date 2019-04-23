@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
-ms.date: 03/21/2019
-ms.openlocfilehash: e2304f45cef2db720adf4430868205c00714034f
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.date: 04/19/2019
+ms.openlocfilehash: cc6c93420e939e90e12b989def491199fd2c6b15
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547948"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006998"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Az Azure Machine Learning szolgáltatás munkaterület létrehozása
 
@@ -27,7 +27,9 @@ Ebből a cikkből megismerheti, hogyan hozhat létre egy munkaterületet, ezek a
 * Az Azure Resource Manager-sablon
 * A [az Azure Machine Learning parancssori felület](#cli)
 
-A munkaterületet hoz létre, az itt található lépéseket követve más oktatóanyagok és útmutatók előfeltételként is használható. 
+A munkaterületet hoz létre, az itt található lépéseket követve más oktatóanyagok és útmutatók előfeltételként is használható.
+
+Ha szeretné, hogy egy parancsfájl segítségével automatizált gépi tanulási helyi Python-környezetben beállítása tekintse meg a [Azure/MachineLearningNotebooks GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) útmutatást.  
 
 A munkaterület létrehozásakor a következő Azure-erőforrások lettek hozzáadva, automatikusan (Ha még regionálisan érhető el):
  

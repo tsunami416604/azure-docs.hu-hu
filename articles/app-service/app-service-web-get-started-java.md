@@ -15,27 +15,30 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: seodec18
-ms.openlocfilehash: 6bf0562d222bce07f74ef5355ad0e3d6b8844c33
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 3af585ede27536dfb644dd374e54183c3539d585
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096622"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007355"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Az első Java-webalkalmazás létrehozása az Azure-ban
 
 Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a gyorsútmutató bemutatja, hogyan helyezhet üzembe Java-webalkalmazásokat az App Service-ben a [Java EE-fejlesztőknek készült Eclipse IDE](https://www.eclipse.org/) használatával.
 
-> [!NOTE]
->
-> A rövid útmutató lépései bemutatják, hogyan tehet közzé Java-webalkalmazást az App Service-ben az Eclipse IDE használatával, de az IntelliJ IDEA Ultimate Editiont vagy a Community Editiont is használhatja. További információkat az [Azure-hoz készült Hello World webalkalmazás IntelliJ használatával való létrehozásával](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) foglalkozó témakör tartalmaz.
->
+> [!IMPORTANT]
+> Linuxon futó Azure App Service Emellett lehetőség az a Java webalkalmazásokat natív módon felügyelt Tomcat, a Java SE és WildFly ajánlatok használatával Linux rendszeren. Ha érdekli, az első lépések a linuxon futó App Service-szel, tekintse meg [a rövid útmutató: Egy Java-alkalmazás létrehozása Linuxon futó App Service-ben](containers/quickstart-java.md).
 
 A gyors útmutató befejezését követően alkalmazása webböngészőben megtekintve az alábbi illusztrációra fog hasonlítani:
 
 ![„Hello Azure!” példa webalkalmazás](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+>
+> A rövid útmutató lépései bemutatják, hogyan tehet közzé Java-webalkalmazást az App Service-ben az Eclipse IDE használatával, de az IntelliJ IDEA Ultimate Editiont vagy a Community Editiont is használhatja. További információkat az [Azure-hoz készült Hello World webalkalmazás IntelliJ használatával való létrehozásával](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) foglalkozó témakör tartalmaz.
+>
 
 ## <a name="prerequisites"></a>Előfeltételek
 

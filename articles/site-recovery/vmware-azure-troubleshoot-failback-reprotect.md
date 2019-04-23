@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 57630d1fa95c2133e592f691add8c515ca718afb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 20cb7a446befb1d31f0e069d91d0230fc4a2a901
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833431"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999467"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>A helyszíni feladat-visszavétel az Azure-ból – hibaelhárítás
 
@@ -33,7 +33,7 @@ Ez a hiba akkor fordul elő, ha:
 * Az Azure virtuális gép nem tudja elérni a helyszíni konfigurációs kiszolgálót. A virtuális gép nem felderíthető és a konfigurációs kiszolgáló regisztrálva.
 * Az InMage Scout alkalmazásszolgáltatás nem fut az Azure virtuális gép a feladatátvételt követően. A szolgáltatás a helyszíni konfigurációs kiszolgálóval való kommunikációhoz szükséges.
 
-A probléma megoldásához:
+A probléma megoldása:
 
 * Ellenőrizze, hogy az Azure Virtuálisgép-hálózat lehetővé teszi, hogy az Azure virtuális Gépen a helyszíni konfigurációs kiszolgálóval való kommunikációhoz. A site-to-site VPN beállítása a helyszíni adatközponthoz, vagy az Azure ExpressRoute-kapcsolatok konfigurálása a privát társviszony-létesítést az Azure virtuális gépek a virtuális hálózaton.
 * Ha a virtuális gép kommunikálhat a helyszíni konfigurációs kiszolgálót, jelentkezzen be a virtuális géphez. Ezután ellenőrizze az InMage Scout application szolgáltatást. Ha látja, hogy nem fut, indítsa el manuálisan a szolgáltatást. Ellenőrizze, hogy a szolgáltatás indítási típus beállítása **automatikus**.
@@ -44,7 +44,7 @@ A probléma megoldásához:
 
 A probléma akkor fordulhat elő, ha már van egy virtuális Gépet, amelyhez Ön éppen visszavétel a fő célkiszolgáló ugyanazzal a névvel.
 
-A probléma megoldásához:
+A probléma megoldása:
 
 * Válassza ki egy másik fő célkiszolgálót egy másik gazdagépen, így ismételt védelem hoz létre a gépen egy másik gazdagépre, ahol a nevek nem ütköznek.
 * Emellett használhatja vMotion a fő célkiszolgáló áthelyezése egy másik gazdagépre, ahol a névütközést nem történik meg. Ha a meglévő virtuális gép egy szétszórt gép, nevezze át, hogy az új virtuális gép ugyanazon az ESXi-gazdagépen hozható létre.
@@ -54,9 +54,9 @@ A probléma megoldásához:
 
 **A virtuális gép nem fut, lefagyott állapotban, vagy nem érhető el.**
 
-A probléma megoldásához:
+A probléma megoldása:
 
-Egy átvevő virtuális gép ismételt védelme, hogy az Azure virtuális Gépen kell futnia, hogy a mobilitási szolgáltatás regisztrál a konfigurációs kiszolgálót a helyszínen és a is replikáljon által a folyamat-kiszolgálóval való kommunikációhoz. Ha a gép egy hibás hálózati vagy nem fut (lefagyott állapotban vagy a Leállítás le), a konfigurációs kiszolgáló nem érhető el a mobilitási szolgáltatás a virtuális gépen az ismételt védelem megkezdéséhez.
+Egy átvevő virtuális gép ismételt védelme, hogy az Azure virtuális Gépen kell futnia, hogy a mobilitási szolgáltatás regisztrál a konfigurációs kiszolgálót a helyszínen és a is replikáljon által a folyamat-kiszolgálóval való kommunikációhoz. Ha a gép nem megfelelő hálózatban található, vagy nem futó (nem válaszol, vagy állítsa le), a konfigurációs kiszolgáló nem érhető el a mobilitási szolgáltatás a virtuális gépen az ismételt védelem megkezdéséhez.
 
 * Indítsa újra a virtuális Gépet, így kommunikál a helyszíni elindul.
 * Indítsa újra az ismételt védelmi feladat, az Azure virtuális gép elindítása után.
@@ -78,7 +78,7 @@ Ez a szakasz ismerteti a feladat-visszavétel során esetleg felmerülő gyakori
 
 A hiba akkor fordul elő, amikor a helyszíni virtuális gép egy gazdagépen, amely nem rendelkezik elegendő kiosztott memória van állapotba. 
 
-A probléma megoldásához:
+A probléma megoldása:
 
 * Építhet ki több memóriát az ESXi-gazdagépen.
 * Emellett a vMotion használatával a virtuális gép áthelyezése egy másik ESXi-gazdagép, amely a virtuális gép elegendő memóriával rendelkezik.

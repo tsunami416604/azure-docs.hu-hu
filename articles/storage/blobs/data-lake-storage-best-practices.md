@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: sachins
-ms.openlocfilehash: ad77204f0c5d916b4006ffa68a9608429f93f87a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: MT
+ms.openlocfilehash: e371ac848eff0e66390fe17bc23934725fca35f9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246058"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000606"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 használatának ajánlott eljárásai
 
@@ -35,7 +35,7 @@ A felhasználók hozzáférhetnek a storage-fiókban lévő adatok hierarchikus 
 
 ### <a name="security-for-service-principals"></a>Az egyszerű szolgáltatások biztonsága
 
-Az Azure Active Directory-szolgáltatásnevek általában használják a szolgáltatások, például az Azure Databricks a Data Lake Storage Gen2 hozzáférés az adatokhoz. Sok felhasználónál egy egyetlen Azure Active Directory egyszerű szolgáltatás sebesség már elegendő lehet, és azt is teljes körű jogosultságokkal rendelkeznek a Data Lake Storage Gen2 Filesystem gyökérmappájában. Más ügyfelek különböző szolgáltatásnevekkel, ahol egy fürt az adatokat, és a egy másik fürtöt csak olvasási hozzáféréssel rendelkező teljes hozzáféréssel rendelkezik több fürt szükség lehet. 
+Az Azure Active Directory-szolgáltatásnevek általában használják a szolgáltatások, például az Azure Databricks a Data Lake Storage Gen2 hozzáférés az adatokhoz. Sok felhasználónál egy egyetlen Azure Active Directory egyszerű szolgáltatás sebesség már elegendő lehet, és azt is teljes körű jogosultságokkal rendelkeznek a Data Lake Storage Gen2 fájlrendszer gyökérmappájában. Más ügyfelek különböző szolgáltatásnevekkel, ahol egy fürt az adatokat, és a egy másik fürtöt csak olvasási hozzáféréssel rendelkező teljes hozzáféréssel rendelkezik több fürt szükség lehet. 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Az Azure-szolgáltatásokhoz a Data Lake Storage Gen2 tűzfal engedélyezése
 

@@ -6,20 +6,20 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: cc47ca07a843daf5cc35d23b838761166d39bdcc
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
-ms.translationtype: MT
+ms.openlocfilehash: 5073b68f6ef3de330671e3ea25056e0cae976360
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351371"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000657"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU-erőforrásokat használó tárolópéldányok üzembe helyezése
 
 Bizonyos nagy számítási igényű számítási feladatok futtatásához az Azure Container Instances üzembe helyezése a [tárolócsoportok](container-instances-container-groups.md) a *GPU-erőforrások*. A csoportban található tárolópéldányok tárolókhoz kapcsolódó számítási feladatok, például a CUDA fut, és a deep learning-alkalmazások férhetnek hozzá egy vagy több NVIDIA Tesla gpu.
 
-Ahogyan azt ebben a cikkben, ha telepít egy tárolócsoport használatával adhat hozzá GPU-erőforrások egy [YAML-fájl](container-instances-multi-container-yaml.md) vagy [Resource Manager-sablon](container-instances-multi-container-group.md).
+Ez a cikk bemutatja, hogyan adja hozzá a GPU-erőforrásokat, ha egy tárolócsoport segítségével telepítheti egy [YAML-fájl](container-instances-multi-container-yaml.md) vagy [Resource Manager-sablon](container-instances-multi-container-group.md). GPU-erőforrások is megadhatja, ha telepít egy tárolópéldányt, az Azure portal használatával.
 
 > [!IMPORTANT]
 > Ez a funkció jelenleg előzetes verzióban érhető el, és néhány [korlátozások érvényesek a](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
@@ -61,7 +61,7 @@ GPU-erőforrások üzembe helyezésekor, állítsa be a terhelés, akár a maxim
 
 * **Díjszabás** - tárolócsoportok GPU-erőforrások nélkül, az Azure számlák keresztül használt erőforrások hasonló a *időtartama* egy tárolócsoport GPU-erőforrásokkal. Az időtartam kiszámítása az idő az első tároló rendszerképének lekérni, amíg a tárolócsoport leállításáig számítjuk. Nem tartalmazza a tárolócsoport üzembe is helyezi.
 
-  A tárolócsoportok a GPU-erőforrásokkal, mint a tárolócsoportok nélkül magasabb díjszabás lesz. Lásd: [díjszabás](https://azure.microsoft.com/pricing/details/container-instances/).
+  Lásd: [díjszabás](https://azure.microsoft.com/pricing/details/container-instances/).
 
 * **CUDA illesztőprogramok** – Container instances a GPU-erőforrásokkal előre kiépítve NVIDIA CUDA-illesztőprogramok és tároló-futtatókörnyezet, így használhatja a tárolórendszerképek fejlesztette ki CUDA számítási feladatokhoz.
 

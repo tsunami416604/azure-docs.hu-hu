@@ -1,6 +1,6 @@
 ---
 title: Értesítések küldése az Univerzális Windows-platformon alapuló alkalmazásoknak az Azure Notification Hubs használatával | Microsoft Docs
-description: Ebből az oktatóanyagból elsajátíthatja, hogyan használható az Azure Notification Hubs leküldéses értesítések univerzális platformon futó Windows-alkalmazásra történő küldéséhez.
+description: A fájlmásolás Azure Notification Hubs használatával leküldéses értesítéseket egy univerzális Windows-Platform-alkalmazásból.
 services: notification-hubs
 documentationcenter: windows
 author: jwargo
@@ -15,23 +15,23 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 093528dff09c71b999d58f0285044340fa0ec360
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.openlocfilehash: b9fa54a24c5d96f0d3ad48034907f2c6fe5cb385
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403204"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006930"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>Oktatóanyag: Értesítések küldéséhez univerzális Windows-Platformos alkalmazások az Azure Notification Hubs használatával
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-Ebben az oktatóanyagban egy értesítési központot hoz létre leküldéses értesítések küldéséhez az Univerzális Windows-platformra (UWP) épülő alkalmazásba. Egy üres Windows Áruházbeli alkalmazást fog létrehozni, amely leküldéses értesítéseket fogad a Windows leküldéses értesítési szolgáltatásának (WNS) használatával. Ezt követően az értesítési központ használatával leküldéses értesítéseket tud majd küldeni az alkalmazást futtató összes eszközre.
+Ebben az oktatóanyagban egy értesítési központot hoz létre leküldéses értesítések küldéséhez az Univerzális Windows-platformra (UWP) épülő alkalmazásba. Egy üres Windows Áruházbeli alkalmazást fog létrehozni, amely leküldéses értesítéseket fogad a Windows leküldéses értesítési szolgáltatásának (WNS) használatával. Az értesítési központot, majd leküldéses értesítések küldése az alkalmazást futtató összes eszközre használhatja.
 
 > [!NOTE]
 > Az oktatóanyag teljes kódját megtalálja a [GitHubon](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal).
 
-Ebben az oktatóanyagban a következő lépéseket hajtja végre:
+Tegye a következőket:
 
 > [!div class="checklist"]
 > * Alkalmazás létrehozása a Windows Áruházban
@@ -45,6 +45,11 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 - [Microsoft Visual Studio Community 2015 vagy újabb](https://www.visualstudio.com/products/visual-studio-community-vs).
 - [UWP-alkalmazások telepített fejlesztőeszközei](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
 - Aktív Windows Áruházbeli fiók
+- Ellenőrizze, hogy **értesítéseket kaphat az alkalmazások és más küldők** beállítás engedélyezve van. 
+    - Indítsa el a **beállítások** ablak a számítógépen.
+    - Válassza ki a **rendszer** csempére.
+    - Válassza ki **értesítések és műveletek** a bal oldali menüből. 
+    - Ellenőrizze, hogy a **értesítéseket kaphat az alkalmazások és más küldők** beállítás engedélyezve van. Ha nincs engedélyezve, engedélyezze azt. 
 
 Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, UWP-alkalmazásokkal kapcsolatos Notification Hubs-oktatóanyag elvégzéséhez.
 
@@ -170,8 +175,7 @@ Ha gyorsan le szeretné tesztelni, hogyan fogadja az alkalmazás az értesítés
     ![Értesítési üzenet](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
 ## <a name="next-steps"></a>További lépések
-
-Ebben az oktatóanyagban szórásos értesítéseket küldött az összes Windows rendszerű eszközre a portál vagy egy konzolalkalmazás használatával. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
+Rendelkezik értesítéseket küldött az összes Windows-eszközre a portál vagy egy konzolalkalmazás használatával. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
 
 > [!div class="nextstepaction"]
 >[Leküldéses értesítések küldése adott eszközökre](

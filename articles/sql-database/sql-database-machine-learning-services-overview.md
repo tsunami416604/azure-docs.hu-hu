@@ -1,6 +1,6 @@
 ---
 title: Az Azure SQL Database Machine Learning-szolgáltatások (előzetes verzió) R – áttekintés
-description: Ez a témakör ismerteti az Azure SQL Database Machine Learning-szolgáltatások (az r nyelv), és leírja annak működését.
+description: Ez a cikk ismerteti az Azure SQL Database Machine Learning-szolgáltatások (az r nyelv), és leírja annak működését.
 services: sql-database
 ms.service: sql-database
 ms.custom: ''
@@ -11,12 +11,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: e6d6250da4df6ab267ef28f8f15a73c8cbc68618
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.openlocfilehash: 172bf201e2327f5ae8db0ac3c82f2f07e3f0ffc9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762059"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997478"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Az Azure SQL Database Machine Learning-szolgáltatások (előzetes verzió) R-rel
 
@@ -35,7 +35,7 @@ Machine Learning-szolgáltatások az Azure SQL Database-adatbázis-R-parancsfáj
 
 ## <a name="what-you-can-do-with-r"></a>Teendők, R-rel
 
-Használja az R nyelvvel, hogy a fejlett elemzési és gépi tanulási adatbázison belüli. Ez a képesség számos lehetőséget kínál, számítások és feldolgozása, ahol az adatok találhatók, így nincs szükség az adatok a hálózaton keresztül. Erejével is működésre, a vállalati R-csomagok, hogy a fejlett analitikai ipari méretekben.
+Használja az R nyelvvel, hogy a fejlett elemzési és gépi tanulási adatbázison belüli. Ez a képesség számos lehetőséget kínál, számítások és feldolgozása, ahol az adatok találhatók, így nincs szükség az adatok a hálózaton keresztül. Emellett vállalati R-csomagok hatékonyságát, hogy a fejlett analitikai ipari méretekben használhatja.
 
 Machine Learning-szolgáltatások, R, a Microsoft nagyvállalati R-csomagok az átfedett alap terjesztési tartalmazza. A Microsoft R-függvények és algoritmusokat a méretezés és a prediktív elemzés, statisztikai modellezési, adatvizualizációk és élvonalbeli gépi tanulási algoritmusok segédprogram fejthetők vissza.
 
@@ -49,7 +49,9 @@ Leggyakrabban használt nyílt forráskódú R-csomagok olyan előre telepített
 | [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR az elsődleges tár, ebben a könyvtárban méretezhető R. funkciók a következők közül a legszélesebb körben használt. Ezek a kódtárak adatátalakítások és adatmanipulációs, statisztikai összegzési, vizualizációs és modellezési és elemzések sok formáját találhatók. Ezenkívül ezek a kódtárak függvényei automatikusan elosztják a munkaterhelést párhuzamos feldolgozás, lehetővé teszi az dolgoznak adattömböket koordinált és a számítási motor által kezelt adatok elérhető magok száma. |
 | [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML hozzáadja a gépi tanulási algoritmusok, szövegelemzés, képelemzés és hangulatelemzés egyéni modellek létrehozásának eljárásait. |
 
-Az előre telepített csomag mellett is [további csomagokat telepíteni](sql-database-connect-query-r.md#add-package).
+<!-- Add this back when the new package-related article is written
+In addition to the pre-installed packages, you can [install additional packages](sql-database-quickstart-r-create-script.md#add-a-package).
+-->
 
 <a name="signup"></a>
 
@@ -61,7 +63,7 @@ Ha szeretne regisztrálni a nyilvános előzetes verzió, kövesse az alábbi l�
 
 2. E-mail küldése a Microsoftnak, [ sqldbml@microsoft.com ](mailto:sqldbml@microsoft.com) regisztrálhat a nyilvános előzetes verziója. A Machine Learning Services (with R) nyilvános előzetes verziójának használata az SQL Database-ben alapértelmezés szerint nem engedélyezett.
 
-Miután a programban regisztrált, a Microsoft is megjelenik majd, a nyilvános előzetes verziója és az R engedélyezése a meglévő vagy új adatbázis.
+Ha Ön regisztrálva van a programban, a Microsoft is megjelenik majd, a nyilvános előzetes verziója és az R engedélyezése a meglévő vagy új adatbázis.
 
 Machine Learning-szolgáltatások az r nyelv nem ajánlott az éles számítási feladatok a nyilvános előzetes verzió ideje alatt.
 

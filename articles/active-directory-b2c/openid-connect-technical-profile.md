@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a13ca362bf08b86297641061992f0820f0b624c5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e8bfa5a3e60efe860b5e7197d96ebe5ce3a86030
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916767"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001405"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az OpenId Connect technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory (Azure AD) B2C támogatást biztosít a [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokoll identitásszolgáltató. OpenID Connect 1.0 határozza meg az identitási rétegben OAuth 2.0-s felett, és a legmodernebb a modern hitelesítési protokollok jelöli.  OpenId-kapcsolattal a technikai profilban, akkor is összevonható az OpenId Connect-alapú identitásszolgáltató, például az Azure AD lehetővé teszi felhasználók jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
+Az Azure Active Directory (Azure AD) B2C támogatást biztosít a [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokoll identitásszolgáltató. OpenID Connect 1.0 határozza meg az identitási rétegben OAuth 2.0-s felett, és a legmodernebb a modern hitelesítési protokollok jelöli. OpenId Connect műszaki profillal az OpenId Connect alapú személyazonosság-szolgáltató, például az Azure AD használatával is összevonható. Összevonás az identitásszolgáltatót lehetővé teszi a felhasználóknak, hogy jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
 
 ## <a name="protocol"></a>Protokoll
 
@@ -52,7 +52,7 @@ A **OutputClaimsTransformations** elemet tartalmazhat egy gyűjteményét **Outp
 
 Az alábbi példa bemutatja a Microsoft Account identitásszolgáltató által visszaküldött jogcímek:
 
-- A **sub** jogcímet, amelyet le van képezve a **socialIdpUserId** jogcím.
+- A **sub** jogcímet, amelyet le van képezve a **issuerUserId** jogcím.
 - A **neve** jogcímet, amelyet le van képezve a **displayName** jogcím.
 - A **e-mail** felhasználónevek hozzárendelése nélkül.
 
@@ -65,7 +65,7 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 <OutputClaims>
   <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" />
   <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="sub" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
   <OutputClaim ClaimTypeReferenceId="email" />
 </OutputClaims>
@@ -81,7 +81,7 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 | ProviderName | Nem | Az identitásszolgáltató neve. |
 | response_types | Nem | Válasz típusa az OpenID Connect Core 1.0 specifikáció szerint. A lehetséges értékek: `id_token`, `code`, vagy `token`. |
 | response_mode | Nem | A módszer, amely az identitásszolgáltató nem küldi vissza az eredményt az Azure AD B2C-t használja. A lehetséges értékek: `query`, `form_post` (alapértelmezett), vagy `fragment`. |
-| scope | Nem | A hozzáférési kérelem, az OpenID Connect Core 1.0 specifikáció alapján hatókörét. Például `openid`, `profile`, és `email`. |
+| scope | Nem | A kérelem, az OpenID Connect Core 1.0 specifikáció alapján meghatározott köre. Például `openid`, `profile`, és `email`. |
 | HttpBinding | Nem | A várt HTTP-kötést a hozzáférési jogkivonatot, és a jogcímek jogkivonat végpontokhoz. A lehetséges értékek: `GET` vagy `POST`.  |
 | ValidTokenIssuerPrefixes | Nem | Egy kulcs, amely segítségével jelentkezzen be a bérlők mindegyike egy több-bérlős identitásszolgáltató, például az Azure Active Directory használatakor. |
 | UsePolicyInRedirectUri | Nem | Azt jelzi, hogy egy szabályzatot használja, ha az átirányítási URI-t hozhat létre. Az identitásszolgáltató az alkalmazás konfigurálásakor adja meg az átirányítási URI-t kell. Az átirányítási URI-t mutat az Azure AD B2C- `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` (a login.microsoftonline.com a saját bérlő name.b2clogin.com változhat).  Ha megad `false`, átirányítási URI-t használ minden egyes házirend hozzá kell adnia. Például: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`. |

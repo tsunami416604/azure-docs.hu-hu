@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: spelluru
-ms.openlocfilehash: 28f963ab807cbd679b7efe8b034ab91f2893198e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 6985bd0bbae858ad258e723ef4d6d6d687b2c86e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58659456"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005349"
 ---
 # <a name="enable-and-use-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Engedélyezze, és a távoli asztal használata Linux rendszerű virtuális gépek az Azure Lab Services szolgáltatásban létrehozott tesztkörnyezet
 Ez a cikk bemutatja, hogyan lehet a következő feladatokat végezheti el:
@@ -35,6 +35,7 @@ Labor létrehozása során, engedélyezheti a tanárok **távoli asztali kapcsol
 > [!IMPORTANT] 
 > Engedélyezése **távoli asztali kapcsolat** csak megnyílik a **RDP** portot Linux rendszerű gépeken. Ön, mint a tanári a Linux-gép először SSH használatával csatlakozhat, és az RDP és a grafikus felhasználói Felülettel csomagok telepítése, úgy, hogy a Linux-gép később RDP használatával csatlakozhat. Ezután az **közzététele** a lemezképet, hogy a diákok a tanulói Linux rendszerű virtuális gépekhez az RDP is. 
 
+## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 A távoli asztali kapcsolat jelenleg a következő operációs rendszereken támogatott:
 
 - openSUSE Leap 42.3

@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: tamram
-ms.openlocfilehash: a1a931573967f12eb7abc791bd951dc6e1e9e60b
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: 8dff81d3f3594798a1b08184af0098f3bd86c12c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607398"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011044"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Gyors útmutató: Feltöltése, letöltése és a blobok listázása a Python használatával
 
-Ez a rövid útmutatóban bemutatjuk, hogyan használhatja a Pythont feltöltése, letöltése és listázása az Azure Blob storage tárolóban a blokkblobok használatát támogatják. Blobok egyszerűen objektumokat képes tárolni bármilyen szöveget vagy bináris adatok (például képek, dokumentumok, adatfolyamok, adatok archiválása, stb.) mennyiségét, és nem fájlmegosztások séma nélküli táblák és üzenetsorok az Azure Storage-ban azonosak legyenek. (További információkért lásd: [Azure Storage bemutatása](/azure/storage/common/storage-introduction.md).)
+Ez a rövid útmutatóban bemutatjuk, hogyan használhatja a Pythont feltöltése, letöltése és listázása az Azure Blob storage tárolóban a blokkblobok használatát támogatják. Blobok egyszerűen objektumokat képes tárolni bármilyen szöveget vagy bináris adatok (például képek, dokumentumok, adatfolyamok, adatok archiválása, stb.) mennyiségét, és nem fájlmegosztások séma nélküli táblák és üzenetsorok az Azure Storage-ban azonosak legyenek. (További információkért lásd: [Azure Storage bemutatása](/azure/storage/common/storage-introduction).)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ Ez a parancs a helyi git mappába klónozza az *Azure-Samples/storage-blobs-pyth
 Az alkalmazásban adja meg a tárfiók nevét és a fiókkulcsot, hogy létrehozhasson egy `BlockBlobService` objektumot. Nyissa meg az *example.py* fájlt az IDE Megoldáskezelőjéből. Az `accountname` és az `accountkey` értéket cserélje le a fiók nevére, illetve kulcsára. 
 
 ```python 
-block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
+block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
 ```
 
 ## <a name="run-the-sample"></a>Minta futtatása
@@ -92,11 +92,11 @@ A felhőbeli blobtároló létrehozása után hozza létre a **CloudBlockBlob** 
 Ebben a szakaszban létre fogja hozni az objektumok példányát és egy új tárolót, majd beállítja annak engedélyeit úgy, hogy a blobok nyilvánosak legyenek. A tároló neve **quickstartblobs**. 
 
 ```python 
-# Create the BlockBlockService that is used to call the Blob service for the storage account
-block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
+# Create the BlockBlockService that is used to call the Blob service for the storage account.
+block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
  
 # Create a container called 'quickstartblobs'.
-container_name ='quickstartblobs'
+container_name = 'quickstartblobs'
 block_blob_service.create_container(container_name) 
 
 # Set the permission so the blobs are public.
@@ -106,29 +106,29 @@ block_blob_service.set_container_acl(container_name, public_access=PublicAccess.
 
 A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A leggyakrabban használt elemek a blokkblobok, és ez a gyorsútmutató is ezeket használja.  
 
-Ha szeretne feltölteni egy fájlt a blobba, szüksége lesz a fájl teljes útvonalára, amelyet a helyi meghajtón található könyvtárnév és fájlnév összefűzésével kap meg. Ezt követően feltöltheti a fájlt a megadott útvonalra a `create\_blob\_from\_path` metódus használatával. 
+Ha szeretne feltölteni egy fájlt a blobba, szüksége lesz a fájl teljes útvonalára, amelyet a helyi meghajtón található könyvtárnév és fájlnév összefűzésével kap meg. Ezt követően feltöltheti a fájlt a megadott útvonalra a `create_blob_from_path` metódus használatával. 
 
-A mintakód létrehoz egy, a fel- és letöltéshez használatos helyi fájlt, a `file\_path\_to\_file` jelöli a feltöltendő fájl elérési útját, a `local\_file\_name` pedig a blob nevét. A következő példa feltölti a fájlt a **quickstartblobs** nevű tárolóba.
+A mintakód létrehoz egy helyi fájlt, a fel- és letöltéshez blobnévvel legyen feltöltve a fájl tárolására használható *full_path_to_file* és a nevét, a blob pedig *local_file_name*. A következő példa feltölti a fájlt a **quickstartblobs** nevű tárolóba.
 
 ```python
 # Create a file in Documents to test the upload and download.
-local_path=os.path.expanduser("~\Documents")
-local_file_name ="QuickStart_" + str(uuid.uuid4()) + ".txt"
-full_path_to_file =os.path.join(local_path, local_file_name)
+local_path = os.path.expanduser("~\Documents")
+local_file_name = "QuickStart_" + str(uuid.uuid4()) + ".txt"
+full_path_to_file = os.path.join(local_path, local_file_name)
 
 # Write text to the file.
-file = open(full_path_to_file,  'w')
+file = open(full_path_to_file, 'w')
 file.write("Hello, World!")
 file.close()
 
 print("Temp file = " + full_path_to_file)
 print("\nUploading to Blob storage as blob" + local_file_name)
 
-# Upload the created file, use local_file_name for the blob name
+# Upload the created file, use local_file_name for the blob name.
 block_blob_service.create_blob_from_path(container_name, local_file_name, full_path_to_file)
 ```
 
-A Blob-tárolóval többféle feltöltési módszer használható. Ha például memóriastreamje van, használhatja a `create\_blob\_from\_stream` metódust a `create\_blob\_from\_path` helyett. 
+A Blob-tárolóval többféle feltöltési módszer használható. Ha például memóriastreamje van, használhatja a `create_blob_from_stream` metódust a `create_blob_from_path` helyett. 
 
 A blokkblobok legfeljebb 4,7 TB méretűek lehetnek, és az Excel-munkafüzetektől kezdve a nagyméretű videofájlokig bármit tartalmazhatnak. A lapblobok elsősorban az IaaS virtuális gépek biztonsági mentéséhez szükséges VHD-fájlokhoz használhatók. A hozzáfűző blobok a naplózáshoz használhatók, például amikor egy fájlba szeretne írni, majd folyamatosan újabb információkat szeretne hozzáadni. A blobtárolókban tárolt objektumok a legtöbb esetben blokkblobok.
 
@@ -137,7 +137,7 @@ A blokkblobok legfeljebb 4,7 TB méretűek lehetnek, és az Excel-munkafüzetekt
 Szerezze be a tárolóban található fájlok listáját a `list_blobs` metódussal. A metódus egy generátort ad vissza. A következő kód lekéri a blobok listáját, &mdash;majd végighalad rajtuk&mdash;, és megjeleníti a tárolóban talált blobok nevét.  
 
 ```python
-# List the blobs in the container
+# List the blobs in the container.
 print("\nList blobs in the container")
 generator = block_blob_service.list_blobs(container_name)
 for blob in generator:
@@ -146,21 +146,21 @@ for blob in generator:
 
 ### <a name="download-the-blobs"></a>A blobok letöltése
 
-Blobokat a helyi lemezre a `the get\_blob\_to\_path` metódussal tölthet le. A következő kód letölti az útmutató korábbi fejezetében feltöltött blobot. A blob nevéhez hozzáadja a *_DOWNLOADED* (letöltve) utótagot, így mindkét fájlt láthatja majd a helyi lemezen. 
+Blobokat a helyi lemezre a az `get_blob_to_path` metódust. A következő kód letölti az útmutató korábbi fejezetében feltöltött blobot. A blob nevéhez hozzáadja a *_DOWNLOADED* (letöltve) utótagot, így mindkét fájlt láthatja majd a helyi lemezen. 
 
 ```python
 # Download the blob(s).
 # Add '_DOWNLOADED' as prefix to '.txt' so you can see both files in Documents.
-full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name ,'.txt', '_DOWNLOADED.txt'))
+full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name, '.txt', '_DOWNLOADED.txt'))
 print("\nDownloading blob to " + full_path_to_file2)
 block_blob_service.get_blob_to_path(container_name, local_file_name, full_path_to_file2)
 ```
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a `delete\_container` metódussal. Az egyes fájlok törléséhez használja a `delete\_blob` metódust.
+Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a `delete_container` metódussal. Az egyes fájlok törléséhez használja a `delete_blob` metódust.
 
 ```python
-# Clean up resources. This includes the container and the temp files
+# Clean up resources. This includes the container and the temp files.
 block_blob_service.delete_container(container_name)
 os.remove(full_path_to_file)
 os.remove(full_path_to_file2)

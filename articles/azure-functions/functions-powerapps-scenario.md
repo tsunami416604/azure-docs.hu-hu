@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 49000d4fd61e7cd061b415d50545a7f5ee56f3fb
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: afb97c1c14422f15a3fc2c00b2101c4a36675556
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579123"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002482"
 ---
 # <a name="call-a-function-from-powerapps"></a>Függvény hívása a PowerAppsből
 A [PowerApps](https://powerapps.microsoft.com) platform benne hagyományos alkalmazáskódot nélküli alkalmazásokat hozhat létre üzleti szakértők lett tervezve. Professzionális fejlesztők számára az Azure Functions használatával kiterjesztheti a PowerApps képességeit a technikai részleteket a PowerApps alkalmazáskészítők sikerei védelme során.
@@ -38,6 +38,9 @@ Ebben a témakörben megtudhatja, hogyan lehet:
 > * A vezérlőelemek adatok megtekintése az alkalmazásban.
 > * A vezérlőelemek a függvény meghívása és az adatok megjelenítéséhez.
 > * Futtassa az alkalmazást, annak megállapításához, hogy egy javítási költséghatékony.
+
+> [!IMPORTANT]
+> Az OpenAPI-funkció jelenleg előzetes verzióban és csak verzió érhető el az Azure Functions futtatókörnyezet 1.x.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

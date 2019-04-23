@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: d8640881e83084dac7f4725115f48dcf7d29e787
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 2e580a94e568f201587c06efa827006386cd6bd9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007606"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005009"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Hozzon létre és OpenBSD lemez Rendszerkép feltöltése az Azure-bA
 Ez a cikk bemutatja, hogyan hozhat létre és töltse fel a virtuális merevlemez (VHD), amely tartalmazza az OpenBSD operációs rendszert. Miután feltölti azt, segítségével azt a saját rendszerkép hozzon létre egy virtuális gépet (VM) az Azure-ban az Azure CLI-n keresztül.
@@ -31,7 +31,7 @@ Ez a cikk azt feltételezi, hogy rendelkezik-e a következő elemek:
 
 * **Azure-előfizetés** – Ha nincs fiókja, létrehozhat egyet, néhány perc alatt. Ha rendelkezik MSDN-előfizetéssel, lásd: [havi Azure-kredit a Visual Studio-előfizetők](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Ellenkező esetben megtudhatja, hogyan [hozzon létre egy ingyenes próbafiókot](https://azure.microsoft.com/pricing/free-trial/).  
 * **Az Azure CLI** – ellenőrizze, hogy a legújabb [Azure CLI-vel](/cli/azure/install-azure-cli) telepítve, és az Azure-fiókjával bejelentkezett [az bejelentkezési](/cli/azure/reference-index).
-* **OpenBSD operációs rendszer telepítve van egy .vhd fájl** – egy operációs rendszer támogatott OpenBSD ([6.1-es verzió AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.1/amd64/)) virtuális merevlemezt kell telepíteni. Több eszközt található .vhd fájlok létrehozásához. Például használhatja például a Hyper-V virtualizálási megoldás létrehozása a .vhd fájlt, és az operációs rendszer telepítése. Telepítse és használja a Hyper-V kapcsolatos útmutatásért lásd: [Hyper-V telepítése és a egy virtuális gép létrehozása](https://technet.microsoft.com/library/hh846766.aspx).
+* **OpenBSD operációs rendszer telepítve van egy .vhd fájl** – egy operációs rendszer támogatott OpenBSD ([6.2-es verzió AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.2/amd64/)) virtuális merevlemezt kell telepíteni. Több eszközt található .vhd fájlok létrehozásához. Például használhatja például a Hyper-V virtualizálási megoldás létrehozása a .vhd fájlt, és az operációs rendszer telepítése. Telepítse és használja a Hyper-V kapcsolatos útmutatásért lásd: [Hyper-V telepítése és a egy virtuális gép létrehozása](https://technet.microsoft.com/library/hh846766.aspx).
 
 
 ## <a name="prepare-openbsd-image-for-azure"></a>Az Azure-ban OpenBSD lemezkép előkészítése

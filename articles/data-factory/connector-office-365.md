@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: jingwang
-ms.openlocfilehash: b86aef7de048690d689a87d4fb844f77ea986445
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: MT
+ms.openlocfilehash: 5d2d5948d817cbe80d00b74ef104ebaffcb511fb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297464"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995812"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Adatok másolása az Office 365-ből az Azure-bA az Azure Data Factory (előzetes verzió) használatával 
 
@@ -27,7 +27,7 @@ Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data 
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Most egy másolási tevékenységgel belül is csak **adatok másolása az Office 365-ből [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), és [Azure Data Lake Storage Gen2 () Előzetes verzió)](connector-azure-data-lake-storage.md) JSON formátumban** (setOfObjects típusa). Ha azt szeretné, az Office 365-ba való betöltésének egyéb típusú adattárakban vagy más formátumú, láncolhatja össze az adatokat további tölthet be bármelyikét későbbi másolási tevékenységgel rendelkező első másolási tevékenység a [ADF céltárolót támogatott](copy-activity-overview.md#supported-data-stores-and-formats) (lásd a" fogadóként támogatott"oszlop a"Támogatott adattárak és formázza az"tábla).
+Most egy másolási tevékenységgel belül is csak **adatok másolása az Office 365-ből [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), és [Azure Data Lake Storage Gen2 ](connector-azure-data-lake-storage.md) JSON formátumban** (setOfObjects típusa). Ha azt szeretné, az Office 365-ba való betöltésének egyéb típusú adattárakban vagy más formátumú, láncolhatja össze az adatokat további tölthet be bármelyikét későbbi másolási tevékenységgel rendelkező első másolási tevékenység a [ADF céltárolót támogatott](copy-activity-overview.md#supported-data-stores-and-formats) (lásd a" fogadóként támogatott"oszlop a"Támogatott adattárak és formázza az"tábla).
 
 >[!IMPORTANT]
 >- A data factory és a fogadó adattár tartalmazó Azure-előfizetés, az Office 365-bérlő ugyanahhoz az Azure Active Directory (Azure AD) bérlőhöz kell tartozniuk.

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.openlocfilehash: b5c833798f8533e7c6fbe3595a726ac6ce56e2d2
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: e4bbfdbcf7a295089570d4c8b77b07fd7270b3fd
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682814"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998260"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Az Azure Stream Analytics-feladatok kompatibilitási szintje
 
@@ -75,7 +75,7 @@ További információkért lásd: [térinformatikai szolgáltatások az Azure St
 
 **Előző szintek:** Az upsert viselkedés volt *beszúrása vagy merge*.
 
-**1.2-es szint:** Natív integráció tömeges API cosmos db kimeneti maximalizálja a teljesítményt, és hatékonyan kezeli a kérelmek szabályozása.
+**1.2-es szint:** Natív integráció tömeges API cosmos db kimeneti maximalizálja a teljesítményt, és hatékonyan kezeli a kérelmek szabályozása. További információkért lásd: [az Azure Cosmos DB oldal az Azure Stream Analytics kimeneti](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12).
 
 Az upsert működése *beszúrása vagy lecserélése*.
 

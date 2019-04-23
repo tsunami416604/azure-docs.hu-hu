@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 7f850cdfe99fce81c9be045b4882dc42bf2aa5f0
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 1e5faa8d356b891d825586414c0a1a1b9fa47090
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551097"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001881"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Egyéni Linux-tárolóban konfigurálása az Azure App Service-ben
 
@@ -121,7 +121,9 @@ Többtárolós alkalmazások, mint például a WordPress adattárolásra megfele
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
-Az a *docker-compose.yml* fájlt, és leképezheti a `volumes` beállítást `${WEBAPP_STORAGE_HOME}`. A `WEBAPP_STORAGE_HOME` egy környezeti változó az App Service szolgáltatásban, amely az alkalmazás állandó tárolójára mutat. Példa:
+Az a *docker-compose.yml* fájlt, és leképezheti a `volumes` beállítást `${WEBAPP_STORAGE_HOME}`. 
+
+A `WEBAPP_STORAGE_HOME` egy környezeti változó az App Service szolgáltatásban, amely az alkalmazás állandó tárolójára mutat. Példa:
 
 ```yaml
 wordpress:
@@ -130,6 +132,19 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
+```
+
+### <a name="use-custom-storage-in-docker-compose"></a>Egyéni storage használata a Docker Compose
+
+Az Azure Storage (Azure Blob vagy az Azure-fájlok) az egyéni-azonosító használatával többtárolós alkalmazások csatlakoztathatók. Az egyéni-azonosító neve megtekintéséhez futtassa [ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
+
+Az a *docker-compose.yml* fájlt, és leképezheti a `volumes` beállítást `custom-id`. Példa:
+
+```yaml
+wordpress:
+  image: wordpress:latest
+  volumes:
+  - <custom-id>:<path_in_container>
 ```
 
 ### <a name="preview-limitations"></a>Előzetes verzió korlátozásai

@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: c311eea80c604366196a0725e4f9982bb43f8b5d
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: 4a4b19338d96094f28b4f4bedd8042723f67f10a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59606888"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994775"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Környezeti változók beállítása a container Instances szolgáltatásban
 
@@ -143,14 +143,11 @@ Azure:\
 
 ## <a name="azure-portal-example"></a>Azure portal – példa
 
-Környezeti változók beállítása egy tárolót az Azure Portalon való indításkor, adja meg azokat a **konfigurációs** lapon, a tároló létrehozásakor.
+Környezeti változók beállítása egy tárolót az Azure Portalon való indításkor, adja meg azokat a **speciális** lapon, a tároló létrehozásakor.
 
-A portál telepítésekor jelenleg legfeljebb három változókhoz, és meg kell adnia őket a következő formátumban: `"variableName":"value"`
-
-Látható egy példa, indítsa el a [aci-wordcount] [ aci-wordcount] -tárolóban a *NumWords* és *MinLength* változókat.
-
-1. A **konfigurációs**állítsa be a **újraindítási házirend** való *hiba esetén*
-2. Adja meg `"NumWords":"5"` az első változók **Igen** alatt **adjon hozzá további környezeti változókat**, és adja meg `"MinLength":"8"` a második változó. Válassza ki **OK** a, és ezután üzembe a tárolót.
+1. Az a **speciális** lapon, és állítsa a **újraindítási házirend** való *hiba esetén*
+2. A **környezeti változók**, adja meg `NumWords` értékkel `5` az első változó, és adja meg `MinLength` értékkel `8` a második változó. 
+1. Válassza ki **felülvizsgálat + létrehozása** a, és ezután a a tároló üzembe helyezése.
 
 ![Környezeti változó engedélyezése gombra és a szövegmezők megjelenítő portáloldala][portal-env-vars-01]
 

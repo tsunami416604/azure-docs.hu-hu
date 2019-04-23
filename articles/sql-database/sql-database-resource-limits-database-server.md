@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan,moslake,josack
 manager: craigg
-ms.date: 03/01/2019
-ms.openlocfilehash: 5b11f9bc25cd0fcc8a83a2eeaf5cc1746a63200e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.date: 04/18/2019
+ms.openlocfilehash: 04a5b98daf94275c6a95503c518248abeaeaeaa6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093888"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998277"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Az Azure SQL Database-kiszolgálóhoz tartozó SQL Database erőforráskorlátok
 
@@ -75,7 +75,7 @@ Amikor magas munkamenet vagy feldolgozói kihasználtság, kockázatcsökkentés
 - A számítási erőforrások optimalizálása minden egyes lekérdezés az erőforrás-használat csökkentésére, ha a megnövekedett feldolgozó kihasználtsági oka miatt a versengés a lekérdezéseket. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
 ## <a name="transaction-log-rate-governance"></a>Tranzakciós napló arány Cégirányítási 
-Tranzakciós napló arány cégirányítási egy Azure SQL Database magas Adatbetöltési díjait számoljuk fel, például a kötegelt számítási feladatok esetében korlátozhatja a folyamat insert, SELECT INTO és indexek. Ezek a korlátok követ nyomon és érvényesítése a másodperc törtrésze szintjén, a napló rekord létrehozásakor díjaival, előfordulhat, hogy korlátozó átviteli sebesség függetlenül attól, hogy hány IOs állították adatfájlokat.  Tranzakciódíjak naplófájl létrehozásának jelenleg lineárisan lehessen skálázni addig a pontig, amely a függő hardver, a napló a maximális sebesség engedélyezett 48 MB/s a vcore magok vásárlási modell a folyamatban. 
+Tranzakciós napló arány cégirányítási egy Azure SQL Database magas Adatbetöltési díjait számoljuk fel, például a kötegelt számítási feladatok esetében korlátozhatja a folyamat insert, SELECT INTO és indexek. Ezek a korlátok követ nyomon és érvényesítése a másodperc törtrésze szintjén, a napló rekord létrehozásakor díjaival, előfordulhat, hogy korlátozó átviteli sebesség függetlenül attól, hogy hány IOs állították adatfájlokat.  Tranzakciódíjak naplófájl létrehozásának jelenleg lineárisan lehessen skálázni addig a pontig, amely a függő hardver, a napló a maximális sebesség engedélyezett folyamatban van a virtuális mag modell megvásárlása a 96 MB/s. 
 
 > [!NOTE]
 > A tényleges fizikai IOs, a tranzakciós naplófájlok nem szabályozott, vagy korlátozott. 
@@ -98,7 +98,7 @@ Napló arány vezérlő forgalomformálásra van illesztett keresztül a követk
 |||
 
 Amikor egy napló költési korlát, amely a méretezhetőség kívánt akadályozása, vegye figyelembe a következő beállításokat:
-- Vertikális felskálázás nagyobb csomagra a maximális 48 MB/s log sebesség eléréséhez. 
+- Vertikális felskálázás nagyobb csomagra a maximális 96 MB/s log sebesség eléréséhez. 
 - Adatok betöltése nem átmeneti, ha egy ETL-folyamattal adatokat pl. átmeneti, töltődnek be a tempdb (amely minimálisan kerül). 
 - Elemzési forgatókönyvek esetén töltse be a hatálya alá tartozó fürtözött oszlopcentrikus táblába. Ez csökkenti a szükséges log tömörítés miatt. Ez a módszer megnöveli a CPU-kihasználtság, és csak akkor érvényes, az adatkészleteket, amelyek a fürtözött oszloptár-indexekben. 
 

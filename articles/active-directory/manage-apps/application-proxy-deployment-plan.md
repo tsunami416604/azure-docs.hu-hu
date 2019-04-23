@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04-04-2019
 ms.author: barbaraselden
 ms.reviewer: ''
-ms.openlocfilehash: fe8f9f271599d688878d61aee64273690d02c2b8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 44393f80ab6ea01f0c2f52cb01dcd6241fab3d2d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59685839"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000708"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Az Azure AD-alkalmazásproxy központi telepítésének megtervezése
 
@@ -158,7 +158,7 @@ Az alábbi tervezési elemek növelje a próbaüzem végrehajtását közvetlen�
 3. Ezután adja hozzá a az alkalmazás egyszeri bejelentkezési metódust, és tesztelje újból hozzáférés ellenőrzése.
 4. Alkalmazza a feltételes hozzáférés és a többtényezős hitelesítés szabályzatokat szükség szerint. És hitelesíti a hozzáférést.
 
-**Hibaelhárítási eszközök**: Esetén végzett hibaelhárításhoz, mindig első lépésként hozzáférés ellenőrzése a közzétett alkalmazás az összekötő-gazdagépen a böngészőből, és győződjön meg arról, hogy az alkalmazás a várt módon működik. Az egyszerűbb a telepítőt, a könnyebb megállapítani okát, ezért érdemes próbál reprodukálnia minimális konfigurációval például csak egy összekötőt, és nincs egyszeri Bejelentkezéssel kapcsolatos problémák. Bizonyos esetekben webes hibaelhárító eszközök, például a Telerik Fiddler bizonyíthatja nélkülözhetetlen hozzáférést vagy a tartalom hibaelhárítás proxyn keresztül érhetők el alkalmazások. A fiddler is működhet-e a nyomkövetési és hibakeresési forgalom mobil platformokhoz, például az iOS és Android-proxyként, és szinte bármely, amely konfigurálható proxyn keresztül. Tekintse meg a [hibaelhárítási útmutató](/application-proxy-troubleshoot.md) további információt.
+**Hibaelhárítási eszközök**: Esetén végzett hibaelhárításhoz, mindig első lépésként hozzáférés ellenőrzése a közzétett alkalmazás az összekötő-gazdagépen a böngészőből, és győződjön meg arról, hogy az alkalmazás a várt módon működik. Az egyszerűbb a telepítőt, a könnyebb megállapítani okát, ezért érdemes próbál reprodukálnia minimális konfigurációval például csak egy összekötőt, és nincs egyszeri Bejelentkezéssel kapcsolatos problémák. Bizonyos esetekben webes hibaelhárító eszközök, például a Telerik Fiddler bizonyíthatja nélkülözhetetlen hozzáférést vagy a tartalom hibaelhárítás proxyn keresztül érhetők el alkalmazások. A fiddler is működhet-e a nyomkövetési és hibakeresési forgalom mobil platformokhoz, például az iOS és Android-proxyként, és szinte bármely, amely konfigurálható proxyn keresztül. Tekintse meg a [hibaelhárítási útmutató](application-proxy-troubleshoot.md) további információt.
 
 ## <a name="implement-your-solution"></a>A megoldás megvalósítása
 

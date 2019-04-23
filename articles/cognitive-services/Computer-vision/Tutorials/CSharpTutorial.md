@@ -1,22 +1,22 @@
 ---
 title: 'Minta: Ismerje meg a lemezkép feldolgozási alkalmazásC#'
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Egy egyszerű Windows-alkalmazást, amely a Computer Vision API a Microsoft Cognitive Services bemutatása. OCR végrehajtása, miniatűrök létrehozása és képek vizuális jellemzőinek használata.
+titleSuffix: Azure Cognitive Services
+description: Fedezze fel egy egyszerű Windows-alkalmazást, amely a Computer Vision API az Azure Cognitive Servicesben. OCR végrehajtása, miniatűrök létrehozása és képek vizuális jellemzőinek használata.
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
-ms.date: 02/08/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a23e45cb1e75305f41c81077c90282352327b72d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: MT
+ms.openlocfilehash: 63b5130e3cade54a2fbc432b2391ad3ee1ea8a1a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310943"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004023"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Minta: Ismerje meg a lemezkép feldolgozási alkalmazásC#
 
@@ -33,7 +33,7 @@ Fedezze fel egy egyszerű Windows-alkalmazás, amely hajtsa végre az optikai ka
 A mintaalkalmazás haladóbb győződjön meg arról, hogy teljesítette az alábbi előfeltételek:
 
 * A [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) vagy újabb verzióval kell rendelkeznie.
-* Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Az előfizetői azonosító beszerzéséhez lásd az [előfizetői azonosítók beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
+* Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Megjelenik a származó ingyenes próbaverziós kulcsok [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Másik lehetőségként kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) előfizetni a Computer Vision, és a kulcs beszerzése.
 
 ## <a name="get-the-sample-app"></a>Mintaalkalmazás letöltése
 

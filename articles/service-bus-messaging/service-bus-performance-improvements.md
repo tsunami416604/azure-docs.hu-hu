@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: edd7a397598bcb5941f3ac1b29d385d6eac40f8d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f5ce8a237bc2ba7fe15acfcd6afa0edcda7ef713
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501637"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996022"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény Service Bus-üzenetkezelés használatával
 
@@ -94,6 +94,15 @@ MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
 Kötegelés nem befolyásolja a üzenetkezelési számlázandó műveletek száma, és csak érhető el a Service Bus ügyfél protokoll használatával a [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) könyvtár. A HTTP-protokoll nem támogatja a kötegelés.
+
+> [!NOTE]
+> BatchFlushInterval beállítás biztosítja, hogy a kötegelés implicit módon az alkalmazás szempontjából. vagyis az alkalmazás lehetővé teszi SendAsync() és CompleteAsync() hívja, és nem adott Batch-hívásokat.
+>
+> Explicit ügyfél oldalán kötegelés implementálhatók felügyelniük a metódushívás - alatt 
+> ```csharp
+> Task SendBatchAsync (IEnumerable<BrokeredMessage> messages);
+> ```
+> Itt az üzenetek összesített méretének kisebbnek kell lennie a tarifacsomag által támogatott maximális méretét.
 
 ## <a name="batching-store-access"></a>Kötegelés store-hozzáférés
 

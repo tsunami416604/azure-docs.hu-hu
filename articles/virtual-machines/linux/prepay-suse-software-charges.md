@@ -1,7 +1,6 @@
 ---
-title: SUSE Linux – csomagok – Azure foglalások vásárlásával |} A Microsoft Docs
-description: Ismerje meg, hogyan fizessen elő az a SUSE-használat és megtakarítást érhet el a használatalapú fizetéses költségekhez képest.
-services: virtual-machines-linux
+title: Fizessen elő az szoftvercsomagok – alap - fenntartások Azure |} A Microsoft Docs
+description: Ismerje meg, hogyan lehet szoftverfrissítési csomagok megtakarítást érhet el a használatalapú fizetéses költségekhez képest kifizetése.
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -11,52 +10,62 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/18/2019
-ms.author: yashar
-ms.openlocfilehash: 4f70a34febcf0b39d051053a6ddd9abe5c9a6726
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: MT
+ms.date: 04/12/2019
+ms.author: banders
+ms.openlocfilehash: e15dcdbbcaed32d836bb751ef93ce17e90bd6905
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745979"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011095"
 ---
-# <a name="prepay-for-suse-software-plans-from-azure-reservations"></a>Fizessen elő az Azure foglalásai közül SUSE szoftvercsomagok – alap
+# <a name="prepay-for-azure-software-plans"></a>Fizessen elő az Azure szoftvercsomagok – alap
 
-Fizessen elő a SUSE-használatra vonatkozóan, és megtakarítást érhet el a használatalapú fizetéses költségekhez képest. A kedvezmények csak SUSE-mérőszámok és nem a virtuális gép használatát a alkalmazni. Virtuális gépek külön-külön még nagyobb megtakarítás foglalást vásárolhat.
+Fizessen elő a SUSE és a RedHat szoftver kihasználtságát az Azure-ban, ha pénzt takaríthat meg el a használatalapú fizetéses költségekhez képest. A kedvezmények csak a SUSE és RedHat mérőszámok, és nem a virtuális gép használatát a alkalmazni. Megvásárolhatja a foglalásokat a virtuális gépek külön-külön is a további helymegtakarítás érdekében.
 
-SUSE szoftver tervek az Azure Portalon vásárolhat. A csomag vásárlása:
+SUSE és RedHat szoftverfrissítési csomagok az Azure Portalon vásárolhat. A csomag vásárlása:
 
-- Meg kell egy tulajdonosi szerepkör legalább egy vállalati vagy használatalapú fizetéses előfizetésre.
-- Vállalati előfizetés esetén **fenntartott példányok hozzáadása** engedélyezve kell lennie a [a nagyvállalati szerződések portáljának](https://ea.azure.com). Vagy, ha ez a beállítás le van tiltva, az előfizetés egy nagyvállalati szerződés rendszergazdájának kell lennie.
-- A Cloud Solution Provider (CSP) program a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatja meg a SUSE-csomagok.
+- Legalább egy vállalati vagy használatalapú fizetéses előfizetésre a tulajdonosi szerepkörrel kell rendelkeznie.
+- Vállalati előfizetés esetén a **fenntartott példányok hozzáadása** beállítást engedélyezni kell a [a nagyvállalati szerződések portáljának](https://ea.azure.com/). Ha a beállítás le van tiltva, az előfizetéshez tartozó nagyvállalati szerződés rendszergazdájának kell lennie.
+- A Cloud Solution Provider (CSP) program a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatja meg a szoftverfrissítési csomagok.
 
-## <a name="buy-a-suse-software-plan"></a>SUSE szoftver csomag vásárlása
+## <a name="buy-a-software-plan"></a>Szoftverfrissítési csomag vásárlása
 
-1. Lépjen a [foglalások](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) az Azure Portalon.
-1. Válassza ki **Hozzáadás** , és válassza ki a SUSE Linux.
-1. Adja meg a kötelező mezőket. SUSE Linux rendszerű virtuális gép, megfelelő attribútumait, vásároljon lekérdezi a kedvezményt. A tényleges száma üzemelő példánya, amely a kedvezményt lekérése a hatókör és a kiválasztott mennyiség függenek.
+1. Jelentkezzen be az Azure Portalon, majd [foglalások](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
+2. Kattintson a **Hozzáadás** , és válassza ki a szoftver tervet, amely szeretne vásárolni.
+Adja meg a kötelező mezőket. SUSE Linux rendszerű virtuális gép vagy a RedHat rendszerű virtuális Gépet, amely megfelel az Ön a vásárlás attribútumait lekérdezi a kedvezményt. A tényleges száma üzemelő példánya, amely a kedvezményt lekérése a hatókör és a kiválasztott mennyiség függenek.
+3. Válasszon egy előfizetést. Azt a csomagot szolgál.
+Az előfizetés fizetési módja az előzetes költségek, a Foglalás díját. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR - 0023 P).
+    - Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva.
+    - Használatalapú fizetéses előfizetésre az előfizetés bankkártyával vagy számla ellenében a fizetési módot, a díjakat számlázzuk ki.
+4. Válassza ki a hatókört. A hatókör egy előfizetést vagy több előfizetés (megosztott hatókör) is foglalkozik.
+    - Egyetlen előfizetés – a csomag kedvezményt van alkalmazza a megfelelő használati az előfizetésben.
+    - Közös – a csomag kedvezményt van alkalmazza a megfelelő példányok a számlázási környezetben minden előfizetésben. Nagyvállalati ügyfeleink esetén a számlázási környezetben a regisztráció és az összes előfizetés tartalmazza a regisztrációt. Használatalapú fizetéses ügyfelek számára a számlázási környezetben a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.
+5. Válasszon ki egy terméket, választhat a virtuális gép mérete és a kép típusa. Csak a kiválasztott virtuális gép méretét a kedvezmény érvényes.
+6. Válasszon egy egyéves vagy hároméves kifejezést.
+7. Válassza ki a mennyiség, amely a számlázási kedvezményt kaphat fizetett Virtuálisgép-példányok száma.
+8. Adja hozzá a termék a kosár, tekintse át és beszerzési.
 
-    | Mező      | Leírás|
-    |:------------|:--------------|
-    |Name (Név)        |Ez a vásárlás neve.|
-    |Előfizetés|Ezt a csomagot használt előfizetés. A fizetési módot, az előfizetés fel van töltve a Foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR - 0023 P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|
-    |Hatókör       |A hatókör egy előfizetést vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <ul><li>SUSE Linux használati ebben az előfizetésben egyetlen előfizetés – a csomag kedvezmény érvényes. </li><li>Közös – a csomag rendszer alkalmazza a kedvezményt SUSE Linux-használatra a számlázási környezeten belül minden előfizetésben. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és a regisztráció belüli összes előfizetésre tartalmazza. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.</li></ul>|
-    |Szoftvercsomag     |Válassza ki a SUSE Linux-csomagot. Ennek kiválasztásához [a SUSE Linux Enterprise szoftverfoglalási kedvezményét ismertető részben](../../billing/billing-understand-suse-reservation-charges.md) talál további segítséget.|
-    |Virtuális gép mérete     |SUSE Linux-díjszabás attól függ, hogy a virtuális gép vcpu-k számát. Válassza ki, a SUSE Linux rendszerű virtuális gépeken vcpu-k számát jelenti.|
-    |Időtartam        |Egy vagy három év.|
-    |Mennyiség    |A SUSE Linux tervezése vásárol az virtuális gépek száma. A mennyiség a futó kérheti le a számlázási kedvezményt SUSE Linux-példányok számát.|
-1. Válassza a **Beszerzés** lehetőséget.
-1. Válassza ki **megtekintése a Foglalás** a vásárlás állapotának megjelenítéséhez.
+A foglalási kedvezményt a rendszer automatikusan alkalmazza a szoftver mérőszám, amely előzetesen fizet. Virtuális gép számítási díjakat nem terjed ki a tervet. A virtuális gép foglalások külön-külön is vásárolhat.
 
-A foglalási kedvezményt a rendszer automatikusan alkalmazza minden futó SUSE virtuális gépek, amely megfelel a foglalást. A kedvezmény kizárólag a SUSE-fogyasztásmérő vonatkozik. Ez a csomag nem vonatkozik a virtuális gép számítási díjakat.
+## <a name="discount-applies-to-different-suse-vm-sizes"></a>Különböző méretű SUSE virtuális gépek vonatkozik kedvezmény
 
-## <a name="discount-applies-to-different-vm-sizes-with-instance-size-flexibility"></a>Példány mérete rugalmasan különböző méretű virtuális gépek vonatkozik kedvezmény
+Fenntartott VM-példányok, például a SUSE Linux – csomagok példány mérete rugalmasságot kínálnak. A kedvezmény vonatkozik, akkor is, ha telepít egy virtuális Gépet egy eltérő méretű a beszerezte a SUSE-csomagból. További információkért lásd: [megismerheti, hogyan kell alkalmazni a szoftverfrissítési csomag kedvezményt](../../billing/billing-understand-suse-reservation-charges.md).
 
-Fenntartott VM-példányok, például a SUSE Linux – csomagok rugalmasabbá példány mérete. Ez azt jelenti, hogy a kedvezmény érvényes-e még a SUSE tervből vásárolt egy eltérő méretű virtuális gép telepítésekor. További információkért lásd: [megismerheti, hogyan kell alkalmazni a SUSE Linux Enterprise szoftvert foglalási kedvezményt](../../billing/billing-understand-suse-reservation-charges.md).
+## <a name="redhat-plan-discount"></a>RedHat terv kedvezmény
+
+Csak a Red Hat Enterprise Linux virtuális gépek csomagok érhetők el. A kedvezmény nem vonatkozik, a RedHat Enterprise Linux SAP HANA rendszerű virtuális gépeken vagy RedHat Enterprise Linux SAP Business Apps virtuális gépek.
+
+RedHat terv kedvezmények csak a Virtuálisgép-méretet választhat a vásárlás időpontjában, vonatkoznak. RHEL-csomagok nem térítjük vagy kicserélt vásárlás után.
+
 
 ## <a name="cancellation-and-exchanges-not-allowed"></a>Megszakítás és cseréje nem engedélyezett
 
-A megvásárolt SUSE-csomag nem mondható le és nem cserélhető ki. A használati szokásainak megfelelő csomagot vásárolja meg. Ennek kiválasztásához [a SUSE Linux Enterprise szoftverfoglalási kedvezményét ismertető részben](../../billing/billing-understand-suse-reservation-charges.md) talál további segítséget.
+Nem vonhatja vissza, vagy exchange-SUSE vagy RedHat csomag, amelytől vásárolta. A használati szokásainak megfelelő csomagot vásárolja meg. Mi a vásárlás azonosításához kapcsolatos útmutatásért lásd: [megismerheti, hogyan kell alkalmazni a szoftverfrissítési csomag kedvezményt](../../billing/billing-understand-suse-reservation-charges.md).
+
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -69,7 +78,3 @@ További tudnivalókért tekintse meg a következő cikkeket:
 - [Megismerheti, hogyan kell alkalmazni a SUSE-foglalási kedvezményt](../../billing/billing-understand-suse-reservation-charges.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](../../billing/billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](../../billing/billing-understand-reserved-instance-usage-ea.md)
-
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
-
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

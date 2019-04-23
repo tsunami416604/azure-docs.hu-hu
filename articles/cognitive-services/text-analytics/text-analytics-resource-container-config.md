@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 137d7aa48595e3f21ee99c6ebe23babd7a2d32b5
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 1333aefc145e95223624f42a28ec0bb31ab70065
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677765"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011758"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Szövegelemzés a docker-tárolók konfigurálása
 
@@ -53,7 +53,7 @@ Hozzá kell adnia a `text/analytics/v2.0` útválasztás az a végpont URI-t, a 
 
 |Szükséges| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
-|Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0` |
+|Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.1` |
 
 ## <a name="eula-setting"></a>Licencfeltételek beállítása
 
@@ -98,15 +98,15 @@ Cserélje le a(z)_argument_name_} a saját értékeire:
 | Helyőrző | Érték | Formátum vagy példa |
 |-------------|-------|---|
 |{BILLING_KEY} | A végpont kulcs, a `Cognitive Services` elérhető az Azure-beli erőforrás `Cognitive Services` kulcsok oldalán. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Az Azure-ban érhető el a számlázási végpontértéknek `Cognitive Services` – áttekintés oldalra.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|{BILLING_ENDPOINT_URI} | Az Azure-ban érhető el a számlázási végpontértéknek `Cognitive Services` – áttekintés oldalra.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
 > [!IMPORTANT]
 > A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](how-tos/text-analytics-how-to-install-containers.md#billing).
 > Apikey tulajdonsággal végzett tesztelése értéke a **kulcs** az Azure `Cognitive Services` erőforráslapján kulcsok. 
 
-## <a name="keyphrase-extraction-container-docker-examples"></a>Keyphrase kinyerési tároló docker-példák
+## <a name="key-phrase-extraction-container-docker-examples"></a>A kulcsfontosságú kifejezések kinyerése tároló docker példák
 
-Az alábbi docker-példák a keyphrase kinyerési tároló vannak. 
+Az alábbi docker-példák a kulcsfontosságú kifejezések kinyerése tároló is. 
 
 ### <a name="basic-example"></a>Alapszintű példa 
 

@@ -2,18 +2,18 @@
 title: Az Azure Data Catalog az adatforrások dokumentálása
 description: Útmutató a cikk az Azure Data Catalogban az adategységek dokumentálása kiemelése.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 053b1701-b848-4ada-b726-6f485caa9961
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: a7379ffea173cdae3b10a751b0d83e06e679e3c5
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: MT
+ms.openlocfilehash: 9049e0b25db37f296e27476fbb93418d13c4dcc1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406209"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005276"
 ---
 # <a name="document-data-sources"></a>Adatforrások dokumentálása
 ## <a name="introduction"></a>Bevezetés
@@ -39,9 +39,9 @@ Az előnye, hogy **Azure Data Catalog** dokumentáció lehetővé teszi, hogy a 
 
 A dokumentáció szintjét a jellemzők és a egy tárolón belül táblaséma részletes leírását az eszközintelligencia adattároló érték leíró terjedhet. A dokumentáció szintjét kell meghatározni az üzleti igények szerint. De általában az alábbiakban néhány és dokumentálja az adategységeket a hátrányai:
 
-* A dokumentum csak: az összes tartalom egy helyen, de előfordulhat, hogy nem rendelkezik a szükséges adatokat a felhasználók képesek tájékozott döntés.
-* Csak a táblák dokumentálni: tartalmat adott az adott objektumhoz, de a felhasználók rendelkeznek dokumentumok több helyen.
-* Dokumentum-tárolók és táblák: legátfogóbb módszert használja, de előfordulhat, hogy a dokumentumok több karbantartási használ.
+* Csak a dokumentum: Minden tartalom egy helyen, de előfordulhat, hogy nem rendelkezik a szükséges adatokat a felhasználók képesek tájékozott döntés.
+* A dokumentum csak a táblák: Tartalom adott az adott objektumhoz, de a felhasználók rendelkeznek dokumentumok több helyen.
+* A dokumentum-tárolók és táblák: Legátfogóbb módszert használja, de előfordulhat, hogy a dokumentumok több karbantartási használ.
 
 ## <a name="summary"></a>Összegzés
 Az adatforrások címkézésével **Azure Data Catalog** egy narratíva az adategységekre vonatkozó hozhat létre a lehető legtöbb részletet van szüksége.  Hivatkozások segítségével kapcsolat egy meglévő content tárház, amely egyesíti a már meglévő docs és adategységeket tárolt tartalmakhoz. Miután a felhasználók a megfelelő adategységek felderítése, dokumentáció teljes készletét is rendelkeznek.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: cf90f7231362d147914e22419c9008d2628a483f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 81adf643541b5a4486694026acec49129ef8e5a6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861893"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000623"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB- és .NET
 
@@ -48,8 +48,8 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
      |Kapcsolat módja  |Támogatott protokollok  |Támogatott SDK-k  |API-szolgáltatás portja  |
      |---------|---------|---------|---------|
      |Átjáró  |   HTTPS    |  All SDKS    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Közvetlen    |    HTTPS     |  .NET and Java SDK    |   10 000-20 000 tartományon belüli portok    |
-     |Közvetlen    |     TCP    |  .NET SDK    | 10 000-20 000 tartományon belüli portok |
+     |Direct    |    HTTPS     |  .NET and Java SDK    |   10 000-20 000 tartományon belüli portok    |
+     |Direct    |     TCP    |  .NET SDK    | 10 000-20 000 tartományon belüli portok |
 
      Az Azure Cosmos DB egy egyszerű, és nyissa meg RESTful programozási modellt kínál a HTTPS-kapcsolaton keresztül. Ezenkívül kínál egy hatékony TCP protokoll, amely egyben a RESTful a kommunikációt a modellben, és a .NET ügyféloldali SDK keresztül érhető el. Közvetlen TCP és a HTTPS SSL használata a kezdeti hitelesítésre és a titkosított forgalmat. A legjobb teljesítmény érdekében használja a TCP protokollt, amikor csak lehetséges.
 
@@ -85,6 +85,11 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
 4. **Növelje a szálak/feladatok száma**
 
     Mivel az Azure Cosmos DB-hívások a hálózaton keresztül, szükség lehet a kérelmet párhuzamosság foka változnak, hogy az ügyfélalkalmazás várólistában nagyon rövid ideig várakozik az kérések között. Például ha használ. A NET [párhuzamos feladatok könyvtára](https://msdn.microsoft.com//library/dd460717.aspx), hozzon létre feladatokat az Azure Cosmos DB írása és olvasása 100s sorrendjében.
+
+5. **Gyorsított hálózatkezelés engedélyezéséhez**
+
+   Annak érdekében, hogy a Processzor jitter és késés csökkentése érdekében azt javasoljuk, hogy az ügyfél virtuális gépek gyorsított hálózatkezelés engedélyezve vannak. Tekintse meg a [hozzon létre egy Windows virtuális gép gyorsított hálózatkezelésű](../virtual-network/create-vm-accelerated-networking-powershell.md) vagy [hozzon létre egy Linux rendszerű virtuális gép gyorsított hálózatkezelésű](../virtual-network/create-vm-accelerated-networking-cli.md) cikkek gyorsított hálózatkezelés engedélyezéséhez.
+
 
 ## <a name="sdk-usage"></a>SDK-használata
 1. **A legújabb SDK telepítése**

@@ -6,24 +6,23 @@ documentationcenter: ''
 author: CelesteDG
 manager: mtillman
 editor: ''
-ms.assetid: 780eec4d-7ee1-48b7-b29f-cd0b8cb41ed3
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/20/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14291a6e8f9c4cde3c8777969047ebaa77e42b59
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 703416788d123798774802613d71b30e8fbdaa9b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500447"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999807"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>A Microsoft identity platform és az OAuth 2.0 eszköz kódfolyamat
 
@@ -43,11 +42,11 @@ A Microsoft identity platform támogatja a [eszköz kódmegadás](https://tools.
 
 A teljes eszköz hitelesítésikód-folyamata a következő diagram hasonlóan néz ki. A cikk későbbi részében lépések mindegyikét ismertetünk.
 
-![Eszközkód folyamata](media/v2-oauth2-device-flow/v2-oauth-device-flow.png)
+![Eszközkód folyamata](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
 ## <a name="device-authorization-request"></a>Eszköz engedélyezési kérése
 
-Az ügyfél először ellenőriznie kell az eszköz- és kódot, amelyről a hitelesítési authentication-kiszolgálóval.  Az ügyfél ezt a kérelmet a gyűjti a `/devicecode` végpont. A kéréshez az ügyfél is tartalmaznia kell az engedélyeket kell beszerezni a felhasználó elől.  Attól a pillanattól kezdve a kérelem érkezik, a felhasználó rendelkezik-e bejelentkezni csak 15 perc (a szokásos értéke `expires_in`), így csak ilyen kérést, ha a felhasználó azt jelezte, azok készen jelentkezzen be.
+Az ügyfél először ellenőriznie kell az eszköz- és kódot, amellyel hitelesítését authentication-kiszolgálóval. Az ügyfél ezt a kérelmet a gyűjti a `/devicecode` végpont. A kéréshez az ügyfél is tartalmaznia kell az engedélyeket kell beszerezni a felhasználó elől. Attól a pillanattól kezdve a kérelem érkezik, a felhasználó rendelkezik-e bejelentkezni csak 15 perc (a szokásos értéke `expires_in`), így csak ilyen kérést, ha a felhasználó azt jelezte, azok készen jelentkezzen be.
 
 > [!TIP]
 > Próbálja ki a Postmanben a kérelem végrehajtása!
@@ -76,13 +75,13 @@ A sikeres válasz, hogy a felhasználó jelentkezzen be a szükséges adatokat t
 
 | Paraméter | Formátum | Leírás |
 | ---              | --- | --- |
-|`device_code`     | String | Hosszú karakterlánc, amellyel az ügyfél és az engedélyezési kiszolgáló között a munkamenet ellenőrzése.  Ez szolgál az ügyfél által a hozzáférési jogkivonatot kér az engedélyezési kiszolgálón. |
-|`user_code`       | String | A felhasználó a munkamenet egy másodlagos eszközön azonosításához használt rövid karakterlánc.|
+|`device_code`     | String | Hosszú karakterlánc, amellyel az ügyfél és az engedélyezési kiszolgáló között a munkamenet ellenőrzése. Az ügyfél használja ezt a paramétert, a hozzáférési jogkivonatot kér az engedélyezési kiszolgálón. |
+|`user_code`       | String | Egy rövid karakterlánc jelenik meg a felhasználót, hogy a munkamenet egy másodlagos eszközön azonosítására szolgál.|
 |`verification_uri`| URI | A felhasználónak el kell küldeni az URI a `user_code` annak érdekében, hogy jelentkezzen be. |
-|`verification_uri_complete`|URI| Egy URI egyesítése a `user_code` és a `verification_uri`(például Bluetooth egy eszközre vagy QR-kód) használatával a felhasználó nem szöveges továbbítására szolgál.  |
-|`expires_in`      |  int| Mielőtt másodpercben a `device_code` és `user_code` lejár. |
+|`verification_uri_complete`| URI | Egy URI-t, amely ötvözi az `user_code` és a `verification_uri`(például Bluetooth egy eszközre vagy QR-kód) használatával a felhasználó nem szöveges továbbítására szolgál.  |
+|`expires_in`      | int | Mielőtt másodpercben a `device_code` és `user_code` lejár. |
 |`interval`        | int | Az ügyfélnek várnia kell lekérdezési kérelmek közötti másodpercek számát. |
-| `message`        | String | A felhasználói utasításokat emberek számára olvasható karakterlánc.  Ez azzal kell honosított egy **lekérdezési paraméter** az űrlap a kérésben `?mkt=xx-XX`, a megfelelő nyelvi kulturális környezet kód töltését. |
+| `message`        | String | A felhasználói utasításokat emberek számára olvasható karakterlánc. Ez azzal kell honosított egy **lekérdezési paraméter** az űrlap a kérésben `?mkt=xx-XX`, a megfelelő nyelvi kulturális környezet kód töltését. |
 
 ## <a name="authenticating-the-user"></a>A felhasználó hitelesítése
 
@@ -107,15 +106,14 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 
 ### <a name="expected-errors"></a>Várt hibák
 
-Mivel az eszköz kódfolyamat lekérdezési protokoll, az ügyfél kell várhatóan fogadási hibák, mielőtt a felhasználó hitelesítése befejeződött.  
+Az eszköz kódfolyamat egy olyan lekérdezési protokoll, így az ügyfél kell várhatóan hibák lépnek fel a felhasználó befejezte a hitelesítése előtt.  
 
 | Hiba | Leírás | Ügyfélművelet |
 | ------ | ----------- | -------------|
-| `authorization_pending` | A felhasználó rendelkezik még nem fejeződött be hitelesítéséhez, de nem megszakította a folyamatot. | Ismételje meg a kérelem után legalább `interval` másodperc. |
+| `authorization_pending` | A felhasználó hitelesítése nem fejeződött be, de nem a folyamat megszakadt. | Ismételje meg a kérelem után legalább `interval` másodperc. |
 | `authorization_declined` | A felhasználó a hitelesítési kérelem megtagadva.| Lekérdezés leállítása, és a egy nem hitelesített állapotba visszaállítása.  |
-| `bad_verification_code`|A `device_code` küldött a `/token` végpont nem ismerhető fel. | Győződjön meg arról, hogy az ügyfél a megfelelő elküldése `device_code` a kérésben. |
+| `bad_verification_code`| A `device_code` küldött a `/token` végpont nem ismerhető fel. | Győződjön meg arról, hogy az ügyfél a megfelelő elküldése `device_code` a kérésben. |
 | `expired_token` | Legalább `expires_in` másodperc megfeleltek, és a hitelesítés már nem lehetséges a `device_code`. | Lekérdezés leállítása, és a egy nem hitelesített állapotba visszaállítása. |
-
 
 ### <a name="successful-authentication-response"></a>A sikeres hitelesítési válaszra.
 
@@ -141,4 +139,4 @@ Token sikeres válasz fog kinézni:
 | `id_token`   | JWT | Kiadott, ha az eredeti `scope` paraméter tartalmazza a `openid` hatókör.  |
 | `refresh_token` | Átlátszatlan karakterlánc | Ha kiállított az eredeti `scope` paraméter `offline_access`.  |
 
-A frissítési jogkivonat segítségével szerezzen új hozzáférési jogkivonatok, és frissítési jogkivonatok segítségével részletes leírást talál az ugyanezt a folyamatot a [OAuth kód flow dokumentáció](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  
+A frissítési jogkivonat segítségével szerezzen új hozzáférési jogkivonatok, és frissítési jogkivonatok segítségével dokumentált ugyanezt a folyamatot a [OAuth kód flow dokumentáció](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  

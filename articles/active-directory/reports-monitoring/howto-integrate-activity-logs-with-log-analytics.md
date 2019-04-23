@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor naplóira (előzetes verzió) az Azure Active Directory-naplókat Stream |} A Microsoft Docs
-description: 'Útmutató: Azure Active Directory-naplók integrálása az Azure Monitor naplóira (előzetes verzió)'
+title: Azure Active Directory-naplók az Azure Monitor naplóira Stream |} A Microsoft Docs
+description: 'Útmutató: Azure Active Directory-naplók integrálása az Azure Monitor naplóira'
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 056a529101ffc39170ea057832bcd50b283505be
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436269"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010935"
 ---
-# <a name="integrate-azure-ad-logs-with-azure-monitor-logs-preview"></a>Az Azure AD-naplók integrálása az Azure Monitor naplóira (előzetes verzió)
+# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Az Azure AD-naplók integrálása az Azure Monitor naplóira
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Az Azure Monitor naplóira lehetővé teszi adott események megtalálásához, trendeket elemezhet, és hajtsa végre a korrelációs különböző adatforrások között adatokat lekérdezni. A-integráció az Azure AD-Tevékenységnaplók az Azure Monitor naplóira, most már elvégezheti a feladatok, mint például:
 
@@ -37,8 +39,6 @@ Az Ignite-munkamenetből a következő videó bemutatja, gyakorlati felhasznál�
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
 
 Ebből a cikkből elsajátíthatja az Azure Active Directory (Azure AD)-naplók integrálása az Azure Monitor szolgáltatással.
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="supported-reports"></a>Támogatott jelentések
 
@@ -60,7 +60,7 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 * Egy felhasználó, aki az adott Azure AD-bérlő *globális* vagy *biztonsági rendszergazdája*.
 * Az Azure-előfizetés a Log Analytics-munkaterületet. Ismerje meg, hogyan [hozzon létre egy Log Analytics-munkaterület](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 
-## <a name="send-logs-to-azure-monitor-logs"></a>Naplók elküldése az Azure Monitor naplóira
+## <a name="send-logs-to-azure-monitor"></a>Naplók küldése az Azure monitornak
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 

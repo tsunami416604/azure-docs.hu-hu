@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 1a575a172e4ff567cc20442c7a9779e1d52dbbba
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099984"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996125"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factoryban történő futtatásának biztonsági szempontjai
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -137,9 +137,9 @@ A következő táblázat összefoglalja a hálózaton, és eltérő kombináció
 
 | Forrás      | Cél                              | Hálózati konfiguráció                    | Integrációs modul telepítése                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Helyszíni követelmények | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | IPSec VPN (pont – hely vagy site-to-site) | A saját üzemeltetésű integrációs modult is lehet a helyszínen telepített vagy a virtuális hálózat egy Azure virtuális gépen. |
-| Helyszíni követelmények | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | ExpressRoute (privát társviszony-létesítés)           | A saját üzemeltetésű integrációs modult is lehet a helyszínen telepített vagy a virtuális hálózat egy Azure virtuális gépen. |
-| Helyszíni követelmények | Egy nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (nyilvános társviszony-létesítés)            | A saját üzemeltetésű integrációs modult helyszíni telepítve kell lennie. |
+| Helyszíni követelmények | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | IPSec VPN (pont – hely vagy site-to-site) | A saját üzemeltetésű integrációs modul egy Azure virtuális gépen a virtuális hálózatban kell telepíteni.  |
+| Helyszíni követelmények | Virtuális gépek és felhőszolgáltatások üzembe helyezett virtuális hálózatok | ExpressRoute (privát társviszony-létesítés)           | A saját üzemeltetésű integrációs modul egy Azure virtuális gépen a virtuális hálózatban kell telepíteni.  |
+| Helyszíni követelmények | Egy nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (a Microsoft társviszony-létesítés)            | A saját üzemeltetésű integrációs modult is lehet a telepített helyszíni vagy Azure virtuális géphez. |
 
 Az alábbi képeken az adatok áthelyezése egy helyszíni adatbázisból és az Azure-szolgáltatások között ExpressRoute- és IPSec VPN (az Azure Virtual Network) a saját üzemeltetésű integrációs modul használata:
 
@@ -174,7 +174,7 @@ A következő táblázat tartalmazza a Windows tűzfal bejövő port követelmé
 
 | Bejövő portok | Leírás                              |
 | ------------- | ---------------------------------------- |
-| 8050 (TCP)    | A PowerShell-parancsmag titkosítás szükséges leírtak szerint [adattárak az Azure Data Factory a helyszíni hitelesítő adatok titkosításához](encrypt-credentials-self-hosted-integration-runtime.md), és a hitelesítőadat-kezelő alkalmazást biztonságosan a helyszíni adattárak hitelesítő adatok beállítása a saját üzemeltetésű integrációs modulban. |
+| 8060 (TCP)    | A PowerShell-parancsmag titkosítás szükséges leírtak szerint [adattárak az Azure Data Factory a helyszíni hitelesítő adatok titkosításához](encrypt-credentials-self-hosted-integration-runtime.md), és a hitelesítőadat-kezelő alkalmazást biztonságosan a helyszíni adattárak hitelesítő adatok beállítása a saját üzemeltetésű integrációs modulban. |
 
 ![Átjáró-port követelményei](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
@@ -193,7 +193,7 @@ A következő felhőalapú adattárak van szükség, hogy Ön engedélyezett IP-
 
 **Különböző adat-előállítók között megosztható a saját üzemeltetésű integrációs modul?**
 
-Ez a funkció még nem támogatott. Aktívan dolgozunk rajta.
+Igen. További részleteket [itt](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/) talál.
 
 **Mik azok a saját üzemeltetésű integrációs modul működjön a port követelményei?**
 

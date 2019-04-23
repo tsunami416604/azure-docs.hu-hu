@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 64f78b04d433c81302499addf15c3d19621bbf9f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9838add4f83434848d61f3ae86db71765efdc59a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788343"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995727"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Oktatóanyag: Azure térbeli horgonyok használatával új Android-alkalmazás létrehozásának részletes útmutatóját
 
@@ -57,12 +57,12 @@ Módosítsa `app\manifests\AndroidManifest.xml` tartalmazza a következő bejegy
 </application>
 ```
 
-Módosítsa `Gradle Scripts\build.gradle (Module: app)` tartalmazza a következő bejegyzés. Ez a kód biztosítja, hogy az alkalmazás célozza meg benne ARCore 1.5-ös verziójának (támogatása ARCore 1.6-os + Azure térbeli horgonyok a hamarosan elérhető lesz). A módosítás után előfordulhat, hogy értesítést kap a gradle-t lát szinkronizálni: kattintson a **szinkronizálás**.
+Módosítsa `Gradle Scripts\build.gradle (Module: app)` tartalmazza a következő bejegyzés. Ez a kód gondoskodik arról, hogy az alkalmazás célok 1.7-es ARCore verziója. A módosítás után előfordulhat, hogy értesítést kap a gradle-t lát szinkronizálni: kattintson a **szinkronizálás**.
 
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.5.0'
+    implementation 'com.google.ar:core:1.7.0'
     ...
 }
 ```
@@ -71,7 +71,7 @@ dependencies {
 
 <a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_ </a> egyszerűen lehet renderelni a kibővített valóság alkalmazások, valósághű 3D jelenetek OpenGL elsajátítása nélkül.
 
-Módosítsa `Gradle Scripts\build.gradle (Module: app)` tartalmazza a következő bejegyzéseket. Ez a kód lehetővé teszi az alkalmazások a nyelvi szerkezetek a Java 8, amely `Sceneform` igényel. Is biztosítani fogja az alkalmazás célok `Sceneform` verzió 1.5-ös, mivel az alkalmazás ARCore verziójának egyeznie kell. A módosítás után előfordulhat, hogy értesítést kap a gradle-t lát szinkronizálni: kattintson a **szinkronizálás**.
+Módosítsa `Gradle Scripts\build.gradle (Module: app)` tartalmazza a következő bejegyzéseket. Ez a kód lehetővé teszi az alkalmazások a nyelvi szerkezetek a Java 8, amely `Sceneform` igényel. Is biztosítani fogja az alkalmazás célok `Sceneform` verzió 1.7-es, mivel az alkalmazás ARCore verziójának egyeznie kell. A módosítás után előfordulhat, hogy értesítést kap a gradle-t lát szinkronizálni: kattintson a **szinkronizálás**.
 
 ```
 android {
@@ -85,7 +85,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.5.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.7.0'
     ...
 }
 ```

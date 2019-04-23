@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 11/18/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf777917bc2e09f08cbfaac6334bf9bda198f01
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: a8fefc2eb2e642b5c7ac93b8a1cfc25a54c3b646
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439387"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996169"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai 
 
@@ -174,9 +174,11 @@ Szoftveresen is segítségével végezheti el a bejelentkezési adatokat a [repo
 |81012|Ez nem hiba történik. Ez azt jelzi, hogy az Azure AD bejelentkezni próbáló felhasználó különbözik az eszközbe jelentkezett felhasználótól. Biztonságosan figyelmen kívül hagyhatja ezt a kódot a naplókat.|
 |90010|A kérelem nem támogatott különböző okok miatt. Például a kérés használatával jön létre egy nem támogatott kérelmi metódus (csak POST metódus támogatott), vagy az, hogy a kért jogkivonatot aláíró algoritmus nem támogatott. Lépjen kapcsolatba az alkalmazás fejlesztőjével.|
 |90014| Hiányzik egy kötelező mező protokoll üzenet, forduljon az alkalmazás tulajdonosa. Ha az alkalmazás tulajdonosa, győződjön meg arról, hogy rendelkezik-e a szükséges paramétereket, a bejelentkezési kérelem számára. |
+|90051| Érvénytelen meghatalmazási jogkivonatot. Érvénytelen az országos Felhőbeli azonosítója ({cloudId}) van megadva.|
 |90072| A fióknak rendelkeznie kell adni a bérlőn külső felhasználóként először. Kijelentkezés és bejelentkezés újra egy másik Azure AD-fiókot.|
 |90094| A támogatás rendszergazdai engedélyekkel kell rendelkeznie. Kérje meg a bérlői rendszergazda történő ehhez az alkalmazáshoz.|
 |500133| A helyességi feltétel nem esik az érvényes idő. Győződjön meg arról, hogy a hozzáférési jogkivonat nem járt le, a felhasználó helyességi feltétel használata előtt, vagy kérje meg egy új jogkivonatot.|
+|530021|Alkalmazás nem felel meg a jóváhagyott feltételes hozzáférés alkalmazás követelményeinek.|
 
 ## <a name="next-steps"></a>További lépések
 

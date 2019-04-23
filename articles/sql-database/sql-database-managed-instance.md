@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
-ms.date: 04/08/2019
-ms.openlocfilehash: 15b7bfc9e1d747fcefdbba03ca254a9604197b5f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.date: 04/16/2019
+ms.openlocfilehash: 46c6972e20df69da236c151516d7d889f9db6084
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361823"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002748"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Speciális biztonsági adatokat, a virtuális hálózatok és a közel 100 %-os kompatibilitást SQL Database használata
 
@@ -126,7 +126,7 @@ A felügyelt példány üzembe helyezési lehetőség egyesíti az Azure-felhőb
 Felügyelt példány az Azure-felhőben más bérlőktől származó további biztonsági elkülönítés biztosít. Biztonsági elkülönítés tartalmazza:
 
 - [Natív virtuálishálózat-implementáció](sql-database-managed-instance-connectivity-architecture.md) és a helyszíni környezet Azure Express Route vagy VPN-átjáró használatával való kapcsolódás.
-- SQL-végpont csak egy magánhálózati IP-cím, lehetővé téve a biztonságos kapcsolat a privát Azure vagy hibrid hálózatok keresztül van közzétéve.
+- Alapértelmezett telepítésében az SQL-végpont csak egy magánhálózati IP-cím, lehetővé téve a biztonságos kapcsolat a privát Azure vagy hibrid hálózatok keresztül van közzétéve.
 - Egybérlős dedikált alapjául szolgáló infrastruktúrával (számítási, tárolási).
 
 A következő ábra ismerteti az alkalmazások különféle kapcsolódási lehetőségei:
@@ -226,7 +226,7 @@ A felügyelt példány üzembe helyezési beállítás lehetővé teszi a rendsz
 
 Az alábbi táblázat Transact SQL-n keresztül elérhető számos tulajdonság, hogy észleli, hogy az alkalmazás a felügyelt példány működik, és fontos tulajdonságok beolvasása.
 
-|Tulajdonság|Érték|Megjegyzés|
+|Tulajdonság|Value|Megjegyzés|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ez ugyanaz, mint az SQL Database értéke.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Ez ugyanaz, mint az SQL Database értéke.|

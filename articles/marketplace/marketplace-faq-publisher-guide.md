@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: 2eabe0c234df6165b78e2dc55dcdc73067aabaa6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 34b9fadc976d3f37612f59a7fc8520c48b178f5c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273226"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009029"
 ---
 # <a name="marketplace-faqs"></a>Marketplace – gyakori kérdések
 
@@ -488,7 +488,7 @@ A függőségek kezelése nem automatikus az Azure Piactér-beli előfizetések 
 
 Az Azure Piacteret a következő országokban érhetik el a Microsoft Azure-ügyfelek:
 
-Algéria, Argentína, Ausztrália, Ausztria, Bahrein, Belarusz, Belgium, Brazília, Bulgária, Chile, Ciprus, Costa Rica, Cseh Köztársaság, Dánia, Dél-Afrika, Dél-Korea, Dominikai Köztársaság, Ecuador, Egyesült Arab Emírségek, Egyesült Államok, Egyesült Királyság, Egyiptom, Észtország, Finnország, Franciaország, Fülöp-szigetek, Görögország, Guatemala, Hollandia, Hongkong (KKT), Horvátország, India, Indonézia, Írország, Izland, Izrael, Japán, Jordánia, Kanada, Katar, Kazahsztán, Kenya, Kolumbia, Kuvait, Lengyelország, Lettország, Liechtenstein, Litvánia, Luxemburg, Macedónia V.J.K., Magyarország, Malajzia, Málta, Marokkó, Mexikó, Montenegró, Németország, Nigéria, Norvégia, Olaszország, Omán, Oroszország, Pakisztán, Panama, Paraguay, Peru, Portugália, Puerto Rico, Románia,·Salvador, Spanyolország, Srí Lanka, Svájc, Svédország, Szaúd-Arábia, Szerbia, Szingapúr, Szlovákia, Szlovénia, Tajvan, Thaiföld, Törökország, Trinidad és Tobago, Tunézia, Új-Zéland, Ukrajna, Uruguay és Venezuela.
+Algéria, Argentína, Ausztrália, Ausztria, Bahrein, Belarusz, Belgium, Brazília, Bulgária, Kanada, Chile, Kolumbia, Costa Rica, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Dominikai Köztársaság, Ecuador, Egyiptom, El Salvador, Észtország, Finnország, Franciaország, Németország, Görögország , Guatemala, Hongkong KKT, Magyarország, Izland, India, Indonézia, Írország, Izrael, Olaszország, japán, Jordánia, Kazahsztán, Kenya, Kuvait, Lettország, Liechtenstein, Litvánia, Luxemburg, Macedónia Észak, Malajzia, Málta, Mexikó, Montenegró, Marokkó, Hollandia, új Zélandi, Nigéria, Norvégia, Omán, Pakisztán, Panama, Paraguay, Peru, Fülöp-szigetek, Olaszország, Portugália, Puerto Rico, Katar, Románia, orosz, Szaúd-Arábia, Szerbia, Szingapúr, Szlovákia, Szlovénia, Dél-Afrika, Dél-Korea, Spanyolország, Srí Lanka, Svédország, Svájc, Tajvan, Thaiföld, Trinidad és Tobago, Tunézia, Törökország, Ukrajna, Egyesült Arab Emírségek, Egyesült Királyság, Egyesült Államok, Uruguay, Venezuela.
 
 **Hogyan határozza meg a földrajzi elérhetőséggel foglalkozó részét ahhoz, hogy a különböző országokban értékesítése?**
 

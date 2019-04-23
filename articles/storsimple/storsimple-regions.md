@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 7e35aa8120c455b8cc0d0881a9ceb5120c57deff
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: ff2ea89c257a4941c801f3056450e005a9b37039
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969668"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996050"
 ---
 # <a name="available-regions-for-your-storsimple"></a>A StorSimple az elérhető régiók
 
@@ -45,7 +45,7 @@ Definiálja a régió vagy helyét, és a StorSimple-Eszközkezelő szolgáltat�
 
 Ez egy lista, régiók, ahol a StorSimple-Eszközkezelő szolgáltatás érhető el az Azure nyilvános felhő, és is üzembe helyezhetők.
 
-![storsimple-eszköz-manager-szolgáltatás-területek](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![storsimple-device-manager-service-regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
 Az Azure Government-felhőben a StorSimple-Eszközkezelő szolgáltatás US Gov – Iowa és US Gov Virginia adatközpontokban érhető el.
 
@@ -69,7 +69,7 @@ A StorSimple 8100-as vagy 8600-as fizikai eszköz használata esetén az eszköz
 
 | #  | Ország        | #  | Ország     | #  | Ország      | #  | Ország              |
 |----|----------------|----|-------------|----|--------------|----|----------------------|
-| 1  | Ausztrália      | 16 | Hongkong KKT   | 31 | Új-Zéland  | 46 | Dél-Afrika         |
+| 1  | Ausztrália      | 16 | Hongkong (KKT)| 31 | Új-Zéland  | 46 | Dél-Afrika         |
 | 2  | Ausztria        | 17 | Magyarország     | 32 | Nigéria      | 47 | Dél-Korea          |
 | 3  | Bahrein        | 18 | Izland     | 33 | Norvégia       | 48 | Spanyolország                |
 | 4  | Belgium        | 19 | India       | 34 | Peru         | 49 | Srí Lanka            |
@@ -80,7 +80,7 @@ A StorSimple 8100-as vagy 8600-as fizikai eszköz használata esetén az eszköz
 | 9  | Cseh Köztársaság | 24 | Japán       | 39 | Katar        | 54 | Törökország               |
 | 10 | Dánia        | 25 | Kenya       | 40 | Románia      | 55 | Ukrajna              |
 | 11 | Egyiptom          | 26 | Kuvait      | 41 | Oroszország       | 56 | Egyesült Arab Emírségek |
-| 12 | Finnország        | 27 | Makao       | 42 | Szaúd-Arábia | 57 | Egyesült Királyság       |
+| 12 | Finnország        | 27 | Makaó (KKT)   | 42 | Szaúd-Arábia | 57 | Egyesült Királyság       |
 | 13 | Franciaország         | 28 | Malajzia    | 43 | Szingapúr    | 58 | Egyesült Államok        |
 | 14 | Németország        | 29 | Mexikó      | 44 | Szlovákia     | 59 | Vietnam              |
 | 15 | Görögország         | 30 | Hollandia | 45 | Szlovénia     | 60 | Horvátország              |

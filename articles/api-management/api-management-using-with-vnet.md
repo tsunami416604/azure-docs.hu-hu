@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: db48db5ce9402267570ac9e41f9f4b5bec2781ad
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 532c1051522410c496fb3809c06c7e3a74340adb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527948"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006046"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>A virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az adatok itt az Azure-beli virtuális hálózatok kezdő: [Az Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -74,7 +74,8 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
 
      ![Jelölje ki a VPN][api-management-setup-vpn-select]
 
-5. Kattintson a **mentése** a képernyő tetején.
+5. Kattintson a **mentése** a felső navigációs sávban.
+6. Kattintson a **alkalmaz hálózati konfiguráció** a felső navigációs sávban.
 
 > [!NOTE]
 > Az API Management-példány VIP-címet minden alkalommal, amikor virtuális hálózatok közötti engedélyezett vagy letiltott változik.
@@ -108,7 +109,7 @@ Az alábbiakban olyan gyakori, egy virtuális hálózatban az API Management szo
 
 <a name="required-ports"> </a> Az API Management-szolgáltatáspéldány egy virtuális hálózaton jöhet szóba, ha a rendszer az alábbi táblázatban a portokat használja.
 
-| Forrás / cél port(ok) | Irány          | Átviteli protokoll |   [Szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags) <br> Forrás és cél   | Cél (*)                                                 | Virtuális hálózat típusa |
+| Forrás / cél port(ok) | Direction          | Átviteli protokoll |   [Szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags) <br> Forrás és cél   | Cél (*)                                                 | Virtuális hálózat típusa |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / 80, 443                  | Bejövő            | TCP                | AZ INTERNET / VIRTUAL_NETWORK            | Ügyfél-kommunikációt és az API Management                      | Külső             |
 | * / 3443                     | Bejövő            | TCP                | Az ApiManagement / VIRTUAL_NETWORK       | Az Azure portal, Powershell felügyeleti végponthoz         | Külső és belső  |

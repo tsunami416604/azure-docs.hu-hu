@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6b25da9b2569b0185d41684c45a22a3eb3377511
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: MT
+ms.openlocfilehash: ff7af2204f9e05a1ba4ef800c63c3ad462242350
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313075"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998617"
 ---
 # <a name="detect-color-schemes-in-images"></a>Észlelheti a színsémákat képek
 
@@ -30,7 +30,7 @@ Számítógépes Látástechnológia is egy logikai érték, amely a kép fekete
 
 Az alábbi példában látható a JSON-választ adott vissza, Computer Vision által a példaképen színsémájának észlelése. Ebben az esetben a példaképen nem egy fekete-fehér-rendszerképet, de a domináns előtérbeli és a háttérszínek feketék, és a domináns színek egészére a kép fekete-fehér.
 
-![Hegyvidéki tájkép](./Images/mountain_vista.png)
+![Öltözet hegyi napnyugta, és a egy személy körvonalszerűen:](./Images/mountain_vista.png)
 
 ```json
 {
@@ -54,7 +54,7 @@ Az alábbi példában látható a JSON-választ adott vissza, Computer Vision á
 
 Az alábbi táblázat a visszaadott előtér, háttér és az egyes minta lemezképek lemezkép színeket.
 
-| Kép | Domináns színek |
+| Image | Domináns színek |
 |-------|-----------------|
 |![Egy zöld hátterű fehér flower](./Images/flower.png)| Előtér: Fekete<br/>Háttér: Fehér<br/>Színek: Fekete, a fehér, a zöld|
 ![Állomás keresztül futtató vonaton](./Images/train_station.png) | Előtér: Fekete<br/>Háttér: Fekete<br/>Színek: Fekete |
@@ -63,7 +63,7 @@ Az alábbi táblázat a visszaadott előtér, háttér és az egyes minta lemezk
 
  Az alábbi táblázat a visszaadott Kiemelés színe hexadecimális értékként HTML szín, az egyes példa lemezképek.
 
-| Kép | Kiegészítő szín |
+| Image | Kiegészítő szín |
 |-------|--------------|
 |![Egy személy állandó az egy Hegyi rock napnyugta:](./Images/mountain_vista.png) | #BB6D10 |
 |![Egy zöld hátterű fehér flower](./Images/flower.png) | #C6A205 |
@@ -73,7 +73,7 @@ Az alábbi táblázat a visszaadott előtér, háttér és az egyes minta lemezk
 
 Az alábbi táblázat számítógépes Látástechnológiai fekete-fehér kiértékelése a minta képeket.
 
-| Kép | Fekete-fehér? |
+| Image | Fekete-fehér? |
 |-------|----------------|
 |![Épületek Manhattan a kép fekete-fehér](./Images/bw_buildings.png) | true |
 |![Egy kék ház és az első yard](./Images/house_yard.png) | false |

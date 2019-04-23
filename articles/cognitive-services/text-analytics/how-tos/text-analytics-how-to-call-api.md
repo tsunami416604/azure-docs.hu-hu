@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 9d0a803f8a397d3c24f083188b6186acf4dde809
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 720a6c57d4f1a6079f78244559a25018349bd378
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122875"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011251"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics REST API meghívása
 
@@ -26,7 +26,7 @@ Minden kérelmet tartalmaznia kell a hozzáférési kulccsal és a egy HTTP-vég
 Ne felejtse el, hogy Szövegelemzés állapotmentes-e így nincsenek adategységek kezeléséhez. A szöveges feltöltése, beérkezésekor, elemzi és eredmények azonnal visszatér a hívó alkalmazás.
 
 > [!Tip]
-> Az egyszeri hívás, hogy az API működését, a beépített is küld POST kéréseket **API tesztelési konzollal**, bármely [API dokumentációs oldal](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Nincs beállítva, és mindössze egy hozzáférési kulcsot, és a JSON-dokumentumok illessze be a kérést. 
+> Az egyszeri hívás, hogy az API működését, a beépített is küld POST kéréseket **API tesztelési konzollal**, bármely [API dokumentációs oldal](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Nincs beállítva, és mindössze egy hozzáférési kulcsot, és a JSON-dokumentumok illessze be a kérést. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,10 +60,10 @@ A szolgáltatás fogadja a kérelem legfeljebb 1 MB méretű. Postman (vagy egy 
 
    Erőforrás-végpontok a következők az alábbiak szerint (a saját régiójában eltérhetnek):
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
 
 2. Állítsa be a három kérelemfejlécek:
 
@@ -81,10 +81,10 @@ A szolgáltatás fogadja a kérelem legfeljebb 1 MB méretű. Postman (vagy egy 
 
 5. Illessze be néhány JSON-dokumentumot, amely az importálni kívánt elemzés érvényes formátumban. Egy adott elemzés kapcsolatos további információkért lásd az alábbi témakörök:
 
-   + [Nyelvfelismerés](text-analytics-how-to-language-detection.md)  
-   + [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md)  
-   + [Hangulatelemzés](text-analytics-how-to-sentiment-analysis.md)  
-   + [Entitások felismerése (előzetes verzió)](text-analytics-how-to-entity-linking.md)  
+  + [Nyelvfelismerés](text-analytics-how-to-language-detection.md)  
+  + [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md)  
+  + [Hangulatelemzés](text-analytics-how-to-sentiment-analysis.md)  
+  + [Entitások felismerése](text-analytics-how-to-entity-linking.md)  
 
 
 6. Kattintson a **küldése** a kérelmet küldeni. Percenkénti kérések legfeljebb 100 küldhet. 

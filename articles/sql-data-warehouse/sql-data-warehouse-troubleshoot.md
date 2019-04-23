@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a5b4d9fac1d2fb3ec1a45f34784552b2d41f2cf1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: dc78fbc93d625b39379e07f240eef7fbad10d194
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679329"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003853"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Hibaelhárítás az Azure SQL Data warehouse-bA
 Ez a cikk a gyakori hibaelhárítási kérdések listája.
@@ -33,7 +33,7 @@ Ez a cikk a gyakori hibaelhárítási kérdések listája.
 | Probléma                                                        | Megoldás:                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | A Visual Studio object explorer hiányzik az AAD-felhasználók           | Ez egy ismert probléma.  Áthidaló megoldásként a felhasználók megtekintéséhez [sys.database_principals][sys.database_principals].  Lásd: [hitelesítés az Azure SQL Data Warehouse] [ Authentication to Azure SQL Data Warehouse] tudhat meg többet az Azure Active Directory használatával az SQL Data Warehouse szolgáltatással. |
-| Parancsfájl-kezelési, a parancsfájl-kezelési varázslóval vagy való csatlakozás SSMS manuális lassú, lefagyott vagy előállító hibák | Győződjön meg arról, hogy létrejöttek-e a felhasználók a master adatbázisban. A parancsprogram-beállítások győződjön meg arról is, hogy a motor edition "Microsoft Azure SQL Data Warehouse Edition" van beállítva, és motor-típus: "Microsoft Azure SQL Database". |
+| Parancsfájl-kezelési, a parancsfájl-kezelési varázslóval vagy való csatlakozás SSMS manuális lassú, nem válaszol, vagy hibák előállító | Győződjön meg arról, hogy létrejöttek-e a felhasználók a master adatbázisban. A parancsprogram-beállítások győződjön meg arról is, hogy a motor edition "Microsoft Azure SQL Data Warehouse Edition" van beállítva, és motor-típus: "Microsoft Azure SQL Database". |
 | Parancsfájlok sikertelen létrehozása az ssms-ben                             | Az SQL data warehouse egy parancsfájl generálása sikertelen lesz, ha a beállítás "Generate parancsfájl a függő objektumok" beállítás értéke "True". Áthidaló megoldásként felhasználók kell manuálisan Ugrás a eszközök -> Beállítások -> SQL Server Object Explorer -> Generate parancsfájl a függő beállításokat, és "false" értékűre |
 
 ## <a name="performance"></a>Teljesítmény

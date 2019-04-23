@@ -2,17 +2,17 @@
 title: Tudnivalók az Azure Site Recovery Deployment Planner a Hyper-V virtuális gépek vészhelyreállítása az Azure-bA |} A Microsoft Docs
 description: Ismerje meg az Azure Site Recovery üzembe helyezési Planner Hyper-V vészhelyreállítás az Azure-bA.
 author: mayurigupta13
-manager: garavd
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/18/2019
 ms.author: mayg
-ms.openlocfilehash: 43431c401f13117af1f60d3affd284fc125be7eb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e40a6b69b1cc4785b3055eaa31905c9ee88170e2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360275"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001507"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Tudnivalók az Azure Site Recovery Deployment Planner a Hyper-V vész-helyreállítási az Azure-bA
 
@@ -73,7 +73,7 @@ Az eszköz a következő részleteket biztosítja:
 | | **VMware – Azure** |**Hyper-V – Azure**|**Azure – Azure**|**Hyper-V – másodlagos hely**|**VMware – másodlagos hely**
 --|--|--|--|--|--
 Támogatott esetek |Igen|Igen|Nem|Igen*|Nem
-Támogatott verzió | vCenter 6.5, 6.0 vagy 5.5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
+Támogatott verzió | vCenter 6.7, 6.5-ös, 6.0 vagy 5.5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
 Támogatott konfiguráció|vCenter, ESXi| Hyper-V fürt, Hyper-V gazdagép|NA|Hyper-V fürt, Hyper-V gazdagép|NA|
 Azon kiszolgálók száma, amelyek profilozhatók az Azure Site Recovery Deployment Planner futó példányaihoz |Egyszeres (az egy vCenter Serverhez vagy egy ESXi-kiszolgálóhoz tartozó virtuális gépek profilozhatók egyszerre)|Többszörös (több gazdagéphez vagy gazdagépfürthöz tartozó virtuális gépek profilozhatók egyszerre)| NA |Többszörös (több gazdagéphez vagy gazdagépfürthöz tartozó virtuális gépek profilozhatók egyszerre)| NA
 
@@ -132,7 +132,7 @@ Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az al�
   >Minden új Deployment Planner a .zip fájl összegző frissítését jelenti. Ezért nem kell a legújabb fájlokat a korábbi mappába másolnia. Létrehozhat és használhat egy új mappát is.
 
 ## <a name="version-history"></a>Verzióelőzmények
-Az Azure Site Recovery Deployment Planner eszköz a legújabb verzióra 2.3-as verzióját.
+A legújabb Azure Site Recovery Deployment Planner eszköz verziószáma 2.4.
 Tekintse meg [Azure Site Recovery Deployment Planner verzióelőzményeinek](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) oldal az egyes frissítésekben hozzáadott javításokról.
 
 

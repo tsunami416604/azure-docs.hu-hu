@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 61bb5601cf20e9f6e4fba1300d8f84c9d039e564
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 38a857b1d309b92c48137a46655155e0e131908c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225093"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002680"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer használatának első lépései
 
@@ -99,7 +99,7 @@ Emellett használhatja a tárfiókokat a globális és az országos Azure-ban:
 
 2. A bal oldali panelen most már megjeleníti az összes Azure-fiókot, amelybe bejelentkezett. Egy másik fiókhoz csatlakozáshoz válassza **-fiók hozzáadása**
 
-3. Ha szeretne bejelentkezni egy országos felhőben vagy az Azure Stackkel, kattintson a a **Azure-környezet** legördülő listájában válassza ki a használni kívánt melyik Azure-felhőben. Miután kiválasztotta a környezetben, kattintson a **bejelentkezés...**  gombra. Bejelentkezés az Azure Stackhez, ha [Storage Explorer csatlakoztatása Azure Stack-előfizetéshez](azure-stack/user/azure-stack-storage-connect-se.md) további információt.
+3. Ha szeretne bejelentkezni egy országos felhőben vagy az Azure Stackkel, kattintson a a **Azure-környezet** legördülő listájában válassza ki a használni kívánt melyik Azure-felhőben. Miután kiválasztotta a környezetben, kattintson a **bejelentkezés...**  gombra. Bejelentkezés az Azure Stackhez, ha [Storage Explorer csatlakoztatása Azure Stack-előfizetéshez](/azure-stack/user/azure-stack-storage-connect-se) további információt.
 
     ![Jelentkezzen be a beállítást][2]
 

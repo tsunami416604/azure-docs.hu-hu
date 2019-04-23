@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 64a4e7a181f7bd24e305ef5ee8d3d6657c3f394b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 0ff73e342a668fef6d405783c130cf216f8003b4
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081287"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149968"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékekkel/szolgáltatásokkal csatlakozzon az IT Service Management-összekötő
 Ez a cikk ismerteti az ITSM-termék vagy szolgáltatás és az IT Service Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analytics központilag kezelheti a munkaelemeket. ITSMC kapcsolatos további információkért lásd: [áttekintése](../../azure-monitor/platform/itsmc-overview.md).
@@ -103,7 +103,7 @@ Futtassa a parancsfájlt azáltal, hogy a következő szükséges adatokat:
 
 - Azure-előfizetés részletei
 - Erőforráscsoport neve
-- Hely
+- Location egység
 - A Service Manager-kiszolgálóadatok (kiszolgáló neve, tartomány, felhasználónév és jelszó)
 - A webalkalmazás-hely előtagja
 - A ServiceBus-Namespace.
@@ -185,11 +185,12 @@ A következő szakaszok a ServiceNow-termék csatlakozhat az Azure-ban ITSMC ré
 ### <a name="prerequisites"></a>Előfeltételek
 Ellenőrizze, hogy az alábbi előfeltételek teljesülését:
 - ITSMC telepítve. További információ: [Felvétele az IT Service Management Connector megoldás](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- A ServiceNow támogatott verziók: Kingston, Jakarta, Isztambul, Helsinki, Geneva.
+- A ServiceNow támogatott verziók: London, Kingston, Jakarta, Isztambul, Helsinki, Geneva.
 
 **ServiceNow-rendszergazdák tegye a következőket a ServiceNow-példány az**:
 - Ügyfél-Azonosítóját és ügyfélkulcsát a ServiceNow-termék létrehozásához. Hogyan hozhat létre az ügyfél-azonosítója és kulcsa a további információkért lásd: szükség szerint a következő információkat:
 
+    - [OAuth-ot London beállítása](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth-ot Kingston beállítása](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth-ot Dzsakarta beállítása](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [OAuth-ot Isztambul beállítása](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

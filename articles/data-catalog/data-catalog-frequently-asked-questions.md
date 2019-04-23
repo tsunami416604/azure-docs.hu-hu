@@ -2,18 +2,18 @@
 title: Az Azure Data Catalog – gyakori kérdések
 description: – Gyakori kérdések az Azure Data Catalog, beleértve az adatforrás-felderítés jegyzet és felügyeleti képességeket.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: f08825c17c1ba61fc09edc1d8f2c226af8d4266f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231464"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998453"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Az Azure Data Catalog – gyakori kérdések
 Ez a cikk az Azure Data Catalog szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat ismerteti.
@@ -27,10 +27,10 @@ A Data Catalog kihívásaira az adatforrás-felderítés és az "sötét adatok"
 ## <a name="what-are-its-target-audiences"></a>Mik azok a célközönségekkel?
 A Data Catalog úgy tervezték, technikai és nem technikai jellegű felhasználóhoz, többek között:
 
-* Adatok fejlesztők és az üzleti Intelligencia és elemzés szakemberek: személyek, akik felelősek az adatok és analitika tartalom felhasználásához mások előállító.
-* Adatok megbízott: személyeket, akik rendelkeznek a ismeretek szerezhetők az adatokat, azt jelenti, és hogyan feltétlenül használható.
-* Adatfelhasználók: egyszerűen észlelését, személyek ismertetése, és csatlakozzon a munka elvégzéséhez, az általuk választott eszközzel szükséges adatok.
-* Központi informatikai: ki kell üzleti felhasználók, az adatforrások felderíthető, és akik karban kell tartania a felügyeletet, az adatok használatának módjától keresztül, és ki használja őket.
+* Adatok fejlesztők és az üzleti Intelligencia és elemzés szakemberek: Azok a személyek, akik felelősek az adatok és analitika tartalom felhasználásához mások előállító.
+* Adatok megbízott: Az adatok, azt jelenti, és hogyan célja használandó ismerő személyek.
+* Adatfelhasználók: Könnyedén észlelését, személyek ismertetése, és csatlakozzon a munka elvégzéséhez, az általuk választott eszközzel szükséges adatok.
+* Központi informatikai: Személyek, akik kell adatforrások felderíthető, üzleti felhasználók, és ki kell felügyeletet karbantartása keresztül az adatok használatának módjától, és ki használja őket.
 
 ## <a name="what-is-its-availability-by-region"></a>Mi az a rendelkezésre állása régiónként?
 Data Catalog-szolgáltatások érhetők el jelenleg a következő adatközpontokban:

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 04/19/2019
 ms.author: jingwang
-ms.openlocfilehash: 5e37d9c0c242de1bd95a93f12171a2a4271b064d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 6056df9aa9079887bfb06ca20ad564eb52baff38
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680706"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008698"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a Salesforce-hoz, és az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +35,7 @@ Pontosabban a Salesforce-összekötő támogatja:
 - Salesforce-fejlesztő, Professional, Enterprise vagy korlátlan kiadások.
 - Copying data from and to Salesforce production, sandbox, and custom domain.
 
-A Salesforce-összekötő épül a Salesforce REST API [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) az adatok másolása és [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) az adatok másolása.
+A Salesforce-összekötő a Salesforce REST/tömeges API épül az [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) az adatok másolása és [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) az adatok másolása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -65,7 +65,7 @@ A Salesforce-beli társított szolgáltatás a következő tulajdonságok támog
 | type |A type tulajdonságot állítsa **Salesforce**. |Igen |
 | environmentUrl | Adja meg a Salesforce-példány URL-CÍMÉT. <br> – Alapértelmezett érték a `"https://login.salesforce.com"`. <br> – Adatok másolása a tesztkörnyezetből, adja meg a `"https://test.salesforce.com"`. <br> – Adatok másolása az egyéni tartományt, adja meg, például `"https://[domain].my.salesforce.com"`. |Nem |
 | felhasználónév |Adja meg a felhasználói fiók felhasználói nevét. |Igen |
-| jelszó |Adja meg a felhasználói fiókhoz tartozó jelszót.<br/><br/>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
+| password |Adja meg a felhasználói fiókhoz tartozó jelszót.<br/><br/>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | securityToken |Adja meg a felhasználói fiók biztonsági jogkivonatot. Alaphelyzetbe állítása és a egy biztonsági jogkivonatot beolvasni az utasításokért lásd: [egy biztonsági jogkivonatot beolvasni](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Az általános biztonsági jogkivonatokat kapcsolatos további információkért lásd: [biztonsági és API-val](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, Igen a fogadó Ha a forrás-beli társított szolgáltatás nem rendelkezik az integration runtime |
 
@@ -235,9 +235,9 @@ Adatok másolása a Salesforce-hoz, állítsa a fogadó típusa a másolási tev
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó típusa tulajdonságát állítsa **SalesforceSink**. | Igen |
-| WriteBehavior | Az írási viselkedésének a művelethez.<br/>Engedélyezett értékek a következők **beszúrása** és **Upsert**. | Nem (alapértelmezés szerint a Insert) |
+| writeBehavior | Az írási viselkedésének a művelethez.<br/>Engedélyezett értékek a következők **beszúrása** és **Upsert**. | Nem (alapértelmezés szerint a Insert) |
 | externalIdFieldName | A külsőazonosító-mező az upsert művelet neve. A megadott mezőt kell definiálni a Salesforce-objektum külsőazonosító-mezőjeként"". A megfelelő bemeneti adatokat, nem tartalmazhat NULL értékeket. | Igen, az "Upsert" |
-| WriteBatchSize | A sorok száma az egyes kötegekben lévő a Salesforce-hoz írt adatok. | Nem (az alapértelmezett érték 5 000) |
+| writeBatchSize | A sorok száma az egyes kötegekben lévő a Salesforce-hoz írt adatok. | Nem (az alapértelmezett érték 5 000) |
 | ignoreNullValues | Azt jelzi, hogy a bemeneti adatok NULL értéket figyelmen kívül a írási művelet során.<br/>Engedélyezett értékek a következők **igaz** és **hamis**.<br>- **Igaz**: Hagyja meg az adatokat a rendeltetési objektum változatlan marad, amikor ezt teszi, hogy egy upsert vagy frissítési műveletben. Helyezze be egy meghatározott alapértelmezett értéket, amikor ezt teszi, hogy egy insert művelet.<br/>- **FALSE (hamis)**: Ekkor egy upsert vagy frissítési műveletben, frissítse az adatokat a rendeltetési objektumban NULL. NULL érték szúrható, amikor ezt teszi, hogy egy insert művelet. | Nem (az alapértelmezett érték FALSE (hamis)) |
 
 **Példa: A másolási tevékenység fogadó Salesforce-ban**
@@ -316,7 +316,7 @@ Adatok másolása a Salesforce-ból, ha a Data Factory-közbenső adattípusok a
 | Salesforce-adatok típusa | Data Factory közbenső adattípus |
 |:--- |:--- |
 | Automatikus száma |String |
-| Jelölőnégyzet |Logikai |
+| Jelölőnégyzet |Boolean |
 | Currency (Pénznem) |Decimal |
 | Dátum |DateTime |
 | Dátum/idő |DateTime |
@@ -328,7 +328,7 @@ Adatok másolása a Salesforce-ból, ha a Data Factory-közbenső adattípusok a
 | Százalék |Decimal |
 | Telefonszám |String |
 | Értéklista |String |
-| Szöveg |String |
+| Text |String |
 | Szövegterület |String |
 | Szövegterület (hosszú) |String |
 | Szövegterület (részletes) |String |

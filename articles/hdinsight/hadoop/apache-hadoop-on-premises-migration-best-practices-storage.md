@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: ae435c379a55ee2b3246cb3e757b79295c57988e
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.openlocfilehash: f3ac60eb45c86b6cd2ded0340ac6bde478086464
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338292"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000062"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - storage ajánlott eljárásai
 
@@ -89,9 +89,9 @@ További információkért tekintse át a következő cikkeket:
 - [Data Lake Storage HDInsight-fürtök létrehozása az Azure portal használatával](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Data Lake Storage használata az Azure HDInsight-fürtök](../hdinsight-hadoop-use-data-lake-store.md)
 
-### <a name="azure-data-lake-storage-gen2-preview"></a>Az Azure Data Lake Storage Gen2 (előzetes verzió)
+### <a name="azure-data-lake-storage-gen2"></a>2. generációs Azure Data Lake Storage
 
-Az Azure Data Lake Storage Gen2 a a legújabb tárolási ajánlat és az előzetes verzióban érhető el, ez a cikk írásának időpontjában. Egy Hadoop-kompatibilis fájl rendszer végponttal közvetlenül az Azure Blob Storage-bA integrált Azure Data Lake Storage első generációja a legfontosabb funkcióit, egyesíti. Ez a fejlesztés megbízhatósága és teljesítménye általában csak a helyszíni fájlrendszerek kapcsolódó objektumtár a méretezési csoport és a költség előnyeit ötvözi.
+Az Azure Data Lake Storage Gen2 a a legújabb tárolási megoldás. Egy Hadoop-kompatibilis fájl rendszer végponttal közvetlenül az Azure Blob Storage-bA integrált Azure Data Lake Storage első generációja a legfontosabb funkcióit, egyesíti. Ez a fejlesztés megbízhatósága és teljesítménye általában csak a helyszíni fájlrendszerek kapcsolódó objektumtár a méretezési csoport és a költség előnyeit ötvözi.
 
 A beépített ADLS általános 2 [Azure Blob storage](../../storage/blobs/storage-blobs-introduction.md) , és lehetővé teszi, hogy mindkét fájl rendszer és a objektum tárolási paradigmákat használatával illesztő. A szolgáltatások [Azure Data Lake Storage Gen1](../../data-lake-store/index.md), például a fájlrendszer szemantikáját, fájlszintű biztonsági és méretezési csoport alacsony költségű, többrétegű tárolást, a magas rendelkezésre állás és vész-helyreállítási funkciókat és a egy nagy SDK és eszközök együtt az ökoszisztéma [Azure Blob storage](../../storage/blobs/storage-blobs-introduction.md). A Data Lake Storage Gen2 objektumtárolás az összes minőség hozzáadása egy fájlrendszer felületen előnyei optimalizált elemzési számítási feladatok közben továbbra is.
 
@@ -115,7 +115,7 @@ A következő formátumok egyikét az ADLS Gen2 tárolt adatok elérésére hasz
 
 További információkért tekintse át a következő cikkeket:
 
-- [Bevezetés az Azure Data Lake Storage Gen2 előzetes verzió](../../storage/data-lake-storage/introduction.md)
+- [Bevezetés az Azure Data Lake Storage Gen2-re](../../storage/data-lake-storage/introduction.md)
 - [Az Azure Blob fájlrendszer illesztőprogram (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
 - [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 

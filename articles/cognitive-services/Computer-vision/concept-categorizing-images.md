@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 07fdaa22532f48cc39b6c524d85fdfe625f8b80c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.openlocfilehash: 257da397e11843ee96e93f7b3e9bc5ada29822cf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337132"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995574"
 ---
-# <a name="categorize-images"></a>Képek kategorizálása
+# <a name="categorize-images-by-subject-matter"></a>Képek kategorizálása téma szerint
 
 Címkék és a egy leírást, mellett a Computer Vision észlelt a képet a besorolás-alapú kategóriák adja vissza. Ellentétben a címkék és kategóriák örökletes szülő-gyermek hierarchiában vannak rendezve, és kevesebb ilyen (ellentétben a címkék ezer 86). Alkalmazáskategória-neveket angolul jelennek meg. Kategorizálási teheti meg saját maga, vagy az újabb címke-modell mellett.
 
@@ -53,7 +53,7 @@ A következő JSON-választ mutatja be, milyen számítógépes Látástechnoló
 
 Az alábbi táblázatban egy jellemző kép beállítása és az egyes rendszerképek a Computer Vision által visszaadott kategória mutatja be.
 
-| Kép | Kategória |
+| Image | Category |
 |-------|----------|
 | ![Négy személyt együttesen, egy csomagcsalád feltételéről](./Images/family_photo.png) | people_group |
 | ![Egy grassy mező úgy ételadagot](./Images/cute_dog.png) | animal_dog |

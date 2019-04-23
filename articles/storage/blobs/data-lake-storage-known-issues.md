@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: normesta
-ms.openlocfilehash: 89cfdbdaa034bae5ca736ccb9164255b833ed75d
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
-ms.translationtype: MT
+ms.openlocfilehash: d56fb411eb032e5e6227d68cd8abe02c0e30850b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194708"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006862"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
@@ -47,13 +47,13 @@ Virtuális gép (VM) a nem felügyelt lemezek a letiltott Blob Storage API-k att
 
 A BLOB Storage API-k és az Azure Data Lake Gen2 API-k nem együttműködésre egymással.
 
-Ha az eszközök, alkalmazások, szolgáltatások vagy parancsfájlok, amelyek a Blob API-kkal rendelkezik, és ezek segítségével a fiókjába feltöltött tartalom mindegyikét dolgozni szeretne, majd nem engedélyezi az a Blob storage-fiókjában hierarchikus névtér mindaddig, amíg a Blob API-k válnak együttműködik az Azure Data Lake Gen2 API-k. Hierarchikus névtér nélkül-tárfiókok használata azt jelenti, hogy ezután nem rendelkezik hozzáféréssel a Data Lake Storage Gen2 konkrét funkcióra, például a címtár- és a fájlrendszer hozzáférés-vezérlési listák.
+Ha az eszközök, alkalmazások, szolgáltatások vagy parancsfájlok, amelyek a Blob API-kkal rendelkezik, és ezek segítségével a fiókjába feltöltött tartalom mindegyikét dolgozni szeretne, majd nem engedélyezi az a Blob storage-fiókjában hierarchikus névtér mindaddig, amíg a Blob API-k válnak együttműködik az Azure Data Lake Gen2 API-k. Hierarchikus névtér nélkül-tárfiókok használata azt jelenti, akkor nem rendelkezik hozzáféréssel a Data Lake Storage Gen2 funkciók, például a fájl és könyvtár rendszer hozzáférés-vezérlési listák.
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
 Megtekintéséhez vagy a Data Lake Storage Gen2-fiókok kezelése az Azure Storage Explorer használatával kell rendelkeznie legalább verzió `1.6.0` az eszköz, amely egy [ingyenesen letölthető](https://azure.microsoft.com/features/storage-explorer/).
 
-Vegye figyelembe, hogy a Storage Explorer, az Azure Portalra beágyazott verziója amelyen jelenleg nem támogatja a megtekintése, vagy a hierarchikus névtér szolgáltatás engedélyezve van a Data Lake Storage Gen2-fiókok kezelése.
+Vegye figyelembe, hogy a Storage Explorer, az Azure Portalon történő beágyazott verziója amelyen jelenleg nem támogatja a megtekintése, vagy a hierarchikus névtér szolgáltatás engedélyezve van a Data Lake Storage Gen2-fiókok kezelése.
 
 ## <a name="blob-viewing-tool"></a>BLOB megtekintése eszköz
 

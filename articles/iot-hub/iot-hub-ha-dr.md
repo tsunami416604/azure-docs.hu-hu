@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
-ms.openlocfilehash: 192966eef20ac59ac3a6eb14d7d450357989b851
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 7479d9a230bd28c2ed2e4c8c79ba9301028af36c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879692"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007627"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Az IoT Hub magas rendelkezésre állás és vészhelyreállítás helyreállítási
 
@@ -82,8 +82,6 @@ A manuális feladatátvételt lehetőség mindig használatra attól független�
 > - Vizsgálat működése nem kell végrehajtani a IoT hubok az éles környezetben használt.
 >
 > - Manuális feladatátvétel nem használandó mechanizmusként véglegesen a a hub Azure földrajzilag párosított régiók közötti áttelepítéséhez. Ezzel egy nagyobb késéseket, a régi elsődleges régióban előbbi ellen a hub eszközökön végrehajtott műveletek miatt.
->
-> - Manuális feladatátvétel jelenleg előzetes verzióban érhető el, és nem érhető el a következő Azure-régióban. USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Észak-Európa, Nyugat-Európa, Dél-Brazíliában, USA déli középső RÉGIÓJA.
 
 ### <a name="failback"></a>Feladat-visszavétel
 

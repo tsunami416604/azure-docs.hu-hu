@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ab8a231d4d44cfe2bfaf7c003ca57772a7a1814
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: d230fa97d009f0ee2a3bc86a0b6b7c8d40687a46
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896394"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010279"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Tanúsítványeszközök az Azure Automationben
 
@@ -33,7 +33,7 @@ Az alábbi táblázatban a parancsmagok AzureRM, létrehozása és kezelése aut
 |[New-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/new-azurermautomationcertificate)|Létrehoz egy új tanúsítványt az Azure Automationbe.|
 [Remove-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|Azure Automation tanúsítvány eltávolítása.|
 |[Set-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/set-azurermautomationcertificate)|Egy meglévő, beleértve a tanúsítványfájl feltöltését és a jelszó beállítását a .pfx tanúsítvány tulajdonságainak beállítása.|
-|[Add-AzureCertificate](/previous-versions/azure/dn495214)|Feltölt egy szolgáltatási tanúsítványt a megadott felhőszolgáltatás számára.|
+|[Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate)|Feltölt egy szolgáltatási tanúsítványt a megadott felhőszolgáltatás számára.|
 
 ## <a name="activities"></a>Tevékenységek
 

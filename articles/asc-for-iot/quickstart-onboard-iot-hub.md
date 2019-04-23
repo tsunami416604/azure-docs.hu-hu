@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 59021d09f2af9d430b118acdeb8aa977094e683e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: cac2f740c1b2ae109f29ce44cd035fc6a83dd148
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862386"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010560"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Gyors útmutató: Az IoT Hub szolgáltatás engedélyezése
 
@@ -45,7 +45,7 @@ Ez a cikk az Azure Security Center (ASC) az IoT hub IoT-előzetes szolgáltatás
 Ahhoz, hogy az IoT hub biztonsági, tegye a következőket: 
 
 1. Nyissa meg a **az IoT Hub** az Azure Portalon. 
-2. Válassza ki, és nyissa meg a **biztonsági** a bal oldali menüből. 
+2. Alatt a **biztonsági** menüben kattintson a **áttekintése**, majd kattintson a **Start preview**. 
 3. Válasszon **IoT-biztonság engedélyezése**. 
 4. Adja meg a Log Analytics-munkaterület adatait. 
    - Tárolhatja **nyers események** mellett az alapértelmezett típusokat. Ha tárolási a **nyers események** váltógomb **a**. 

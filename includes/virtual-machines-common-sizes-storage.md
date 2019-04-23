@@ -5,22 +5,27 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/02/2019
+ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c5e6a44409e082f10a532759e3403f6b5801fdca
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 6c83298b102d6782647f3baebf6f98e43cb3ad7f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551546"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011843"
 ---
 Tárolási optimalizált Virtuálisgép-méretek magas lemez-adatátviteli és i/o-e, és ideálisak a Big Data, SQL, nosql-alapú adatbázisok, az adattárházak és nagy tranzakciós adatbázisok.  Ilyenek például Cassandra, MongoDB, Cloudera vagy Redis. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint helyi tároló átviteli sebesség és a hálózati sávszélesség optimalizált méreteire vonatkoztatva számát.
 
 A Lsv2 sorozat funkciók nagy teljesítményű, kis késésű, közvetlenül hozzá van rendelve helyi futó NVMe-tároló a [AMD EPYC &trade; 7551 processzor](https://www.amd.com/en/products/epyc-7000-series) -az összes mag boost 2.55 GHz-es és a egy maximális kiemelése 3.0 GHz-es. Az Lsv2 sorozatú virtuális gépek elérhetőek 8 és 80 vCPU-s méretekben egy párhuzamos többszálas konfigurációban.  A vCPU-nkénti memória 8 GiB, és 8 vCPU-nkét egy 1,92 TB-os NVMe SSD M.2 eszköz, és az L80s v2-nél akár 19,2 TB (10x1,92 TB) is elérhető.
 
 > [!NOTE]
-> A Lsv2 sorozatú virtuális gépek közvetlenül a virtuális Géphez csatolt adatlemezek tartós használata helyett a csomóponton a helyi lemez használatára van optimalizálva. Ez lehetővé teszi a nagyobb IOPs és átviteli sebességet a számítási feladatokhoz. A Lsv2 sorozat nem támogatja a tartós adatlemezek által elérhető IOPS növelése érdekében a helyi gyorsítótárat a létrehozása. A magas teljesítmény és a helyi lemez IOPS teszi NoSQL-tárolókat, mint például az Apache Cassandra- és MongoDB replikálhatja adatait, így több virtuális gép folyamataik megőrzésére a meghiúsulása esetén egyetlen virtuális Gépet, amely ideális a Lsv2 sorozatú virtuális gépek.
+> A Lsv2 sorozatú virtuális gépek közvetlenül a virtuális Géphez csatolt adatlemezek tartós használata helyett a csomóponton a helyi lemez használatára van optimalizálva. Ez lehetővé teszi a nagyobb IOPs és átviteli sebességet a számítási feladatokhoz. A Lsv2 és Ls-sorozat nem támogatja az elérhető IOPs tartós adatlemezek-kal növelni a helyi gyorsítótárat a létrehozása.
+>
+> A magas teljesítmény és a helyi lemez IOPs lehetővé teszi a Lsv2 és Ls-sorozat virtuális gépei NoSQL-tárolókat, mint például az Apache Cassandra- és MongoDB replikálhatja adatait, így több virtuális gép folyamataik megőrzésére a meghiúsulása esetén egyetlen virtuális Gépet, amely ideális.
+>
+> További tudnivalókért lásd: [a Lsv2 sorozatú virtuális gépek teljesítményének optimalizálásához](../articles/virtual-machines/linux/storage-performance.md).  
+
 
 ## <a name="lsv2-series"></a>Lsv2 sorozat
 

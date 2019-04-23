@@ -1,5 +1,5 @@
 ---
-title: Nyomtatott, kézzel írt szöveg – a Computer Vision felismerése
+title: Ismeri fel a nyomtató/kézzel írott szöveget, Computer Vision
 titleSuffix: Azure Cognitive Services
 description: A Computer Vision API használatával képeken nyomtatott és kézzel írt szöveg felismerése kapcsolatos fogalmakat.
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9bb574fcb9782aad41ea0fd276b8addee19caf01
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
-ms.translationtype: MT
+ms.openlocfilehash: f7fd13b0b6df0b07543216e3c612520e528c1176
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588975"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998238"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg felismerése
 
-Számítógépes Látástechnológia számos olyan szolgáltatások észlelését, és nyomtatott vagy a kézírásos rendszerképek megjelenő szöveg kinyerése. Ez hasznos jegyzetelő, orvosi, biztonsági és banki – egyéb felhasználási helyzetek különböző. A következő három szakasz részletes három különböző szövegek felismerése API-k, minden egyes optimalizált különböző használati helyzetekhez.
+Számítógépes Látástechnológia számos olyan szolgáltatások észlelését, és nyomtatott vagy a kézírásos rendszerképek megjelenő szöveg kinyerése. Ez akkor hasznos, a számos célra jegyzetelési, orvosi, biztonsági és banki például. A következő három szakasz részletes három különböző szövegek felismerése API-k, minden egyes optimalizált különböző használati helyzetekhez.
 
 ## <a name="read-api"></a>Elolvashatják az API
 
@@ -45,13 +45,11 @@ Ha egy ingyenes szintű előfizetést használ, a elolvashatják az API csak dol
 
 ## <a name="ocr-optical-character-recognition-api"></a>OCR (optikai karakterfelismerés) API
 
-Computer Vision API-t optikai karakterfelismerés (OCR) olvassa el az API-hoz hasonló, de végrehajtása szinkron módon történik, és a nagy dokumentumok nincs optimalizálva. Egy korábbi modell működését azonban több nyelvet használja.
-
-Optikai Karakterfelismerés 25 nyelveket támogatja: Arab, kínai (egyszerűsített), kínai (hagyományos), Cseh, dán, holland, angol nyelven, finn, francia, német, görög, magyar, olasz, japán, koreai, norvég, lengyel, portugál, román, spanyol, szerb (cirill betűs és Latin), szlovák, spanyol, Svéd és török. Optikai Karakterfelismerés automatikusan észleli az észlelt szöveg nyelvét.
+Computer Vision API-t optikai karakterfelismerés (OCR) olvassa el az API-hoz hasonló, de végrehajtása szinkron módon történik, és a nagy dokumentumok nincs optimalizálva. További nyelvek; használja egy korábbi modell azonban működése Lásd: [nyelvi támogatás](language-support.md#text-recognition) a támogatott nyelvek teljes listáját.
 
 Ha szükséges, optikai Karakterfelismerés visszaadó forgó eltolás a kép vízszintes tengely kapcsolatos fokban kijavítja a elforgatási szögét a felismert szöveget. Optikai Karakterfelismerés is biztosít a keret koordináták minden szó, az alábbi ábrán látható módon.
 
-![Folyamatban van-e forgatni kép ábrázoló diagram és a szöveg, olvassa el és a előrebocsátott](./Images/vision-overview-ocr.png)
+![Folyamatban van-e forgatni kép és a szöveg, olvassa el és a előrebocsátott](./Images/vision-overview-ocr.png)
 
 Tekintse meg a [OCR referenciadokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) további.
 

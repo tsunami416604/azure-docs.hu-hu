@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: c3c5484d865c73a6f478ffc9ad4c3fc86c2c8170
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: MT
+ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59619106"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005366"
 ---
-# <a name="copy-data-from-azure-data-factory-to-azure-data-explorer"></a>Adatok másolása az Azure Data Factory az Azure Data Explorer
+# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása az Azure az adatkezelőt az Azure Data Factory használatával 
 
 Az Azure Data Explorer egy gyors, teljes körűen felügyelt elemzési szolgáltatás adatstreamelési számos más forrásból, például alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű valós idejű elemzés céljából. Iteratív elemezheti adatait, és azonosítja a mintákat és rendellenességeket termékek javítása, növelje a vásárlói élményt, eszközök figyelését, és növeli a műveleteket. Új kérdéseket tehet fel, amelyekre percek alatt választ kaphat. Az Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás az. A szolgáltatás segítségével az Azure Data Explorer adatbázis adatok feltöltéséhez a meglévő rendszerről és időt takaríthat meg az elemzési megoldások készítése során.
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan adatok betöltése az Amazon S3 az Adatkezelőben az
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * [Az Azure Data Explorer fürt és adatbázis](create-cluster-database-portal.md)
-* Amazon S3.
+* Adatok forrását.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
@@ -147,10 +147,6 @@ Az Azure Data Explorer új társított szolgáltatás másolja az adatokat az Az
 
     ![ADX célként megadott adattárba](media/data-factory-load-data/destination-data-store.png)
 
-1. A **a kimeneti fájl vagy mappa kiválasztása**, adja meg a kimeneti mappa nevét, határozza meg a beállításokat, és válassza **tovább**.
-
-    ![Adja meg a kimeneti mappa](media/data-factory-load-data/specify-path.png)
-
 1. A **tábla hozzárendelése**, állítsa be a cél tábla nevét, és válassza ki **tovább**.
 
     ![Cél adatkészlet tábla hozzárendelése](media/data-factory-load-data/destination-dataset-table-mapping.png)
@@ -186,6 +182,8 @@ Az Azure Data Explorer új társított szolgáltatás másolja az adatokat az Az
 
 ## <a name="next-steps"></a>További lépések
 
-* További tudnivalók a társított szolgáltatások, adatkészletek és folyamatok a szerkesztését a [Data Factory felhasználói felülete](/azure/data-factory/quickstart-create-data-factory-portal)
+* További információ a [Azure adatkezelő összekötő](/azure/data-factory/connector-azure-data-explorer) az Azure Data Factoryban.
+
+* További tudnivalók a társított szolgáltatások, adatkészletek és folyamatok a szerkesztését a [Data Factory felhasználói felülete](/azure/data-factory/quickstart-create-data-factory-portal).
 
 * Ismerje meg [Azure adatkezelő lekérdezések](/azure/data-explorer/web-query-data) adatok lekérdezéséhez.

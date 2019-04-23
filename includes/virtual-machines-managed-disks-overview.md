@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4563bb0de688a8328796badffc8a133a33f64fcc
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
-ms.translationtype: MT
+ms.openlocfilehash: 9d96bd76a4d284e9b4390c564446e8b27c43d591
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59566556"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60118599"
 ---
 ## <a name="benefits-of-managed-disks"></a>Felügyelt lemezek előnyei
 
@@ -61,7 +61,7 @@ Ez a lemez maximális kapacitása, 2048 GIB-ra.
 
 ### <a name="temporary-disk"></a>Ideiglenes lemez
 
-Minden virtuális gép egy ideiglenes lemezt, amely nem egy felügyelt lemezt tartalmaz. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok, és csak az adatok, például lapozófájlokat tárolására szolgál. Az ideiglenes lemezen lévő adatok elveszhetnek során egy [karbantartási esemény](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) esemény, vagy ha Ön [egy virtuális gép ismételt üzembe](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Során a virtuális gép sikeres standard újraindítása az ideiglenes meghajtón lévő adatok megmaradnak.
+Minden virtuális gép egy ideiglenes lemezt, amely nem egy felügyelt lemezt tartalmaz. Az ideiglenes lemez rövid távú tárolást biztosít az alkalmazások és folyamatok, és csak az adatok, például lapozófájlokat tárolására szolgál. Az ideiglenes lemezen lévő adatok elveszhetnek során egy [karbantartási esemény](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) esemény, vagy ha Ön [egy virtuális gép ismételt üzembe](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Az Azure Linux rendszerű virtuális gépekhez az ideiglenes lemez /dev/sdb alapértelmezés szerint pedig Windows virtuális gépeken az ideiglenes lemez E: alapértelmezés szerint. A virtuális gép sikeres standard újraindítása, során az ideiglenes lemezen lévő adatok megmaradnak.
 
 ## <a name="managed-disk-snapshots"></a>Felügyelt lemez-pillanatképek
 

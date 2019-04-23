@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 40c5444a54f4e483a9dcacb958c18f66da45019a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 4b8e04babfffaf49d3719d8a7e90af16598814f4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58906123"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998906"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfigurálása – áttekintés
 
@@ -228,9 +228,9 @@ Válassza ki a figyelő átirányítja a forgalmat egy figyelőt a a másikra, a
 ![Application Gateway összetevők párbeszédpanel](./media/configuration-overview/configure-redirection.png)
 
 HTTP – HTTPS átirányítás kapcsolatos további információkért lásd:
-- [Az Azure portal használatával HTTP-HTTP-átirányítás](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [HTTP-HTTP-átirányítás PowerShell-lel](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [Az Azure CLI-vel HTTP a HTTP-átirányítás](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [HTTP – HTTPS átirányítás, az Azure portal használatával](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
+- [HTTP – HTTPS átirányítás PowerShell-lel](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
+- [HTTP – HTTPS átirányítás, az Azure CLI-vel](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
 
 ##### <a name="external-site"></a>Külső webhely
 

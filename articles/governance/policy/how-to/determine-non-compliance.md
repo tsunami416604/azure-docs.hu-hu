@@ -3,16 +3,16 @@ title: A nemmegfelelőség okainak meghatározása
 description: Amikor az erőforrás nem megfelelő, nincsenek számos oka lehet. Ismerje meg, mi okozta a meg nem felelés megtanulhatja, hogyan.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/26/2019
+ms.date: 03/30/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 8a593e92d7f24885c35043b874528e881d2e021e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 0af3fd8596bf558f9d5cc97c95be773aa40954cc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276099"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995007"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -124,6 +124,8 @@ Egy új részeként **nyilvános előzetes verzióban**, az elmúlt 14 napban v�
    ![Szabályzat módosítása előzmények vizuális Diff módosítási előzmények lapon](../media/determine-non-compliance/change-history-visual-diff.png)
 
 A _diff vizuális_ segédeszközökkel erőforrásai azonosításában. A módosítások észlelhetők nem kapcsolódik az erőforrás aktuális megfelelőségi állapotát.
+
+Módosítási előzmények adatok által biztosított [Azure Erőforrás-grafikon](../../resource-graph/overview.md). Ezt az információt az Azure Portalon kívül lekérdezéséhez, lásd: [beolvasása az erőforrás-módosítások](../../resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 04/11/2019
-ms.openlocfilehash: de9eb8ff33dc6d99c386ee92118a2d737ba1e476
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: cb4ff203a69e04aeaff6d446d6ce3719f4158305
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523698"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001082"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database biztonsági lehetőségeinek áttekintése
 
@@ -88,9 +88,9 @@ Az SQL Database naplózási és fenyegetésészlelési képességek biztosítás
 
 Az SQL Database naplózási szolgáltatása nyomon követi az adatbázis-tevékenységekről, és segít fenntartani a biztonsági szabványoknak való megfelelőség rögzíti az adatbázissal kapcsolatos események egy naplófájlba, jelentkezzen be egy ügyfél saját Azure storage-fiók. Naplózás lehetővé teszi, hogy a felhasználók számára az adatbázisban folyamatban lévő tevékenységeket, figyelése, valamint elemezheti és kivizsgálhatja a azonosíthatja a potenciális fenyegetések vagy gyanús visszaélések és szabálysértések. További információ: Ismerkedés az [SQL Database naplózási szolgáltatásával](sql-database-auditing.md).  
 
-### <a name="threat-detection"></a>Fenyegetések észlelése
+### <a name="advanced-threat-protection"></a>Fejlett fenyegetésvédelem
 
-Fenyegetés-észlelési fokozza a naplózási szokatlan jelenség a vizsgálati naplók elemzésével és vélhetően kárt okozó az adatbázisokat elérni vagy kiaknázni próbál. Riasztások jönnek létre a gyanús tevékenységeket és rendellenes hozzáférési mintákat, például az SQL-injektálási támadások, potenciális adatok beszivárgás és találgatásos jelszó támadásokkal szemben. A fenyegetésészlelés riasztásai tekinthetők meg a [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amelyben a gyanús tevékenységek részletes információkat, és javaslatokat további műveletek mellett a fenyegetés megadott vizsgálatra. A fenyegetésészlelés $15/kiszolgálói/hó. Fontos ingyenes az első 60 nap. További információkért lásd: [Ismerkedés az SQL Database Threat detection](sql-database-threat-detection.md).
+Komplex veszélyforrások elleni védelem elemzi az SQL Server-naplók szokatlan jelenség és vélhetően kárt okozó kísérleteket az adatbázisokat elérni vagy kiaknázni észleléséhez. Riasztás gyanús tevékenységek esetén jönnek létre például SQL-injektálás, a lehetséges adatok beszivárgás és találgatásos támadások kényszerítése vagy rendellenességeket a hozzáférési minták olvasásra jogosultság megemeléséről és szegve hitelesítő adatokat használja. A riasztások tekinthetők meg a [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amelyben a gyanús tevékenységek részletes információkat, és javaslatokat további műveletek mellett a fenyegetés megadott vizsgálatra. Komplex veszélyforrások elleni védelem egy további díj kiszolgálónként lehet engedélyezni. További információkért lásd: [Ismerkedés az SQL adatbázis komplex veszélyforrások elleni védelem](sql-database-threat-detection.md).
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 

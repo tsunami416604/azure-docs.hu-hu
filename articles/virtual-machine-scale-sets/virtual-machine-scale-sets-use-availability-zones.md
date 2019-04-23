@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 24cff3a2ec4d0bed7a030ca430eaa698eb4a7325
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 7fa903f65a6c7d244ff424eae4a0def258b50bbc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278768"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994707"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>A rendelkezésre állási zónák használó virtuális gép méretezési csoport létrehozása
 
@@ -62,7 +62,7 @@ Amikor telepít egy virtuálisgép-méretezési csoportot, válassza ki egy rend
 
 Mikor hozzon létre egy méretezési csoportot egy egyetlen zónában, Ön szabályozza, melyik zónába összes Virtuálisgép-példányok futnak, és a méretezési felügyelt és csak a zónán belüli automatikus skálázást alkalmat. Zónaredundáns méretezési lehetővé teszi több zónában kiterjedő egy méretezési csoport létrehozása. Virtuálisgép-példányok létrehozásakor alapértelmezés szerint ezek egyenletesen között oszlanak el zónák. A zónák telefonszámaira megtörténik a működésében zavarokat tapasztalhat, egy méretezési csoportot nem automatikusan horizontális felskálázása kapacitás bővítéséhez. Célszerű lehet a CPU és memória kihasználtsága alapján automatikus skálázási szabályok konfigurálása. Az automatikus skálázási szabályok lehetővé tenné a méretezési csoport Virtuálisgép-példányok, hogy egy zónában egy elvesztését válaszolni a fennmaradó működési zónák új példányok horizontális felskálázásával.
 
-Rendelkezésre állási zónák használatára, a méretezési csoportot kell létrehozni egy [az Azure-régióban támogatott](../availability-zones/az-overview.md#regions-that-support-availability-zones). Létrehozhat egy méretezési csoportot, amely a rendelkezésre állási zónák használja az alábbi módszerek egyikével:
+Rendelkezésre állási zónák használatára, a méretezési csoportot kell létrehozni egy [az Azure-régióban támogatott](../availability-zones/az-overview.md#services-support-by-region). Létrehozhat egy méretezési csoportot, amely a rendelkezésre állási zónák használja az alábbi módszerek egyikével:
 
 - [Azure Portal](#use-the-azure-portal)
 - Azure CLI

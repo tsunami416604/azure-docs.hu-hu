@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 04/15/2019
-ms.openlocfilehash: 708df64802ace17fa77b4e0a695c9f1c3bd18a77
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: 958a3249fd2e8af9faeb827f07efc21c8184a100
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59610225"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006981"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6-os Hive számítási feladatok migrálása HDInsight 4.0-s
 
@@ -54,7 +54,31 @@ A Hive számítási feladatokhoz nem ACID-táblák és-vegyesen tartalmazhatnak.
 alter table myacidtable compact 'major';
 ```
 
-Ez a tömörítés szükség, mert a HDInsight 3.6-os és a HDInsight 4.0 ACID tábla különböző ACID eltérések ismertetése. Tömörítési kényszerít egy tiszta lappal, amelyek a tábla konzisztenciát garantál. A tömörítés után az előző lépéseket a metaadattár és tábla áttelepítési elegendő bármely HDInsight 3.6-os ACID-táblák használata a HDInsight 4.0-s lesz.
+Ez a tömörítés szükség, mert a HDInsight 3.6-os és a HDInsight 4.0 ACID ACID eltérések eltérően ismertetése. Tömörítési kényszerít egy tiszta lappal, amely garantálja a konzisztenciát. 4. szakasz a [Hive-áttelepítési dokumentáció](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-upgrade-major/content/prepare_hive_for_upgrade.html) útmutatást nyújt a HDInsight 3.6-os ACID táblák tömeges tömörítési.
+
+Miután végrehajtotta a metaadattár áttelepítés és a tömörítést, áttelepítheti a tényleges adatraktár. A Hive-adatraktár áttelepítés befejezése a HDInsight 4.0 raktári után a következő tulajdonságokkal:
+
+* A HDInsight 3.6-os külső táblák lesz a HDInsight 4.0 külső táblák
+* A HDInsight 3.6 nem tranzakciós felügyelt táblák lesz a HDInsight 4.0 külső táblák
+* A HDInsight 3.6 tranzakciós felügyelt táblák lesz a HDInsight 4.0 felügyelt táblák
+
+Szükség lehet az adatraktár tulajdonságait módosíthatja a migrálás végrehajtása előtt. Például ha várható, hogy a harmadik fél (például egy HDInsight 3.6-fürt) néhány tábla fogják elérni, hogy a táblázat kell külső az áttelepítés befejeződése után. A HDInsight 4.0-s az összes felügyelt táblák olyan tranzakciós. Ezért a HDInsight 4.0 felügyelt táblák csak legyenek elérhetők a 4.0-s HDInsight-fürtök.
+
+A táblázat tulajdonságai megfelelően vannak beállítva, ha a fürt átjárócsomópontjaihoz SSH-rendszerhéj használata egyik hajtsa végre a Hive-adatraktár áttelepítési eszköz:
+
+1. Csatlakozzon a fürt átjárócsomójával létesített SSH-val. Útmutatásért lásd: [csatlakozhat a HDInsight SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md)
+1. Nyissa meg a bejelentkezési felület a Hive-felhasználóként futtatásával `sudo su - hive`
+1. Határozza meg a Hortonworks Data Platform stack verzió végrehajtásával `ls /usr/hdp`. Ekkor megjelenik a verziószám-karakterlánc, amelyet használnia kell a következő parancsban.
+1. Hajtsa végre a következő parancsot a rendszerhéj. Cserélje le `${{STACK_VERSION}}` az a verzió-karakterlánc, az előző lépésből:
+
+```bash
+/usr/hdp/${{STACK_VERSION}}/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true  -m automatic  automatic  --modifyManagedTables --oldWarehouseRoot /apps/hive/warehouse
+```
+
+Az áttelepítési eszköz befejezése után a Hive-adatraktár HDInsight 4.0-s készen áll. 
+
+> [!Important]
+> A HDInsight 4.0 (többek között táblák 3.6-os áttelepítve) felügyelt táblák nem szabad hozzáférni más szolgáltatások vagy alkalmazások, többek között a HDInsight 3.6-fürt.
 
 ## <a name="secure-hive-across-hdinsight-versions"></a>Biztonságos Hive a HDInsight-verziók között
 
@@ -74,9 +98,9 @@ A HDInsight 4.0-s HiveCLI Beeline lett cserélve. HiveCLI Hiveserver 1 egy thrif
 
 A HDInsight 3.6, a grafikus felhasználói Felülettel-ügyfél használata a Hive-kiszolgáló az Ambari Hive-nézet. HDInsight 4.0 váltja fel a Hive-nézet a Hortonworks Data Analytics Studio (DAS). DAS nem szerepel a HDInsight fürtök out-of-box, és nem a hivatalosan támogatott csomagot. Azonban DAS is telepíthetők a fürtön a következő:
 
-1. Töltse le a [DAS-csomag telepítési parancsfájl](https://hdiconfigactions.blob.core.windows.net/dasinstaller/install-das-mpack.sh) futtató mindkét fürt átjárócsomópontjaihoz. Ez a szkript egy parancsprogram-művelet nem hajtható végre.
-2. Töltse le a [DAS szolgáltatás telepítési parancsfájl](https://hdiconfigactions.blob.core.windows.net/dasinstaller/install-das-component.sh) és futtassa azt egy parancsfájl műveletként. Válassza ki **Átjárócsomópontokra** egy parancsfájl művelet felületen tetszőleges csomópont típusaként.
-3. A parancsprogram-művelet befejeződése után nyissa meg az Ambari, és válassza **Data Analytics Studio** a szolgáltatások listájából. Az összes DAS-szolgáltatás leáll. A jobb felső sarokban válassza **műveletek** és **Start**. Most már hajtsa végre, és hibakeresése a DAS-lekérdezéseket.
+Indítsa el a ellen a fürtön, a "Fő csomópont" szkriptműveletet végrehajtási csomópont típusaként. Illessze be a következő URI-t a szövegmezőbe, "Bash parancsfájl URI" jelölésű: https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
+
+
 
 Miután telepítette DAS, ha nem látja a lekérdezések futtatása után a lekérdezések megjelenítőben, tegye a következőket:
 

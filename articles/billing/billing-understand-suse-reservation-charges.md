@@ -1,7 +1,6 @@
 ---
-title: SUSE foglalási terv kedvezményt és a használat – Azure |} A Microsoft Docs
-description: Ismerje meg, hogyan SUSE terv kedvezmények SUSE szoftver virtuális gépeken.
-services: billing
+title: Szoftverfrissítési csomag kedvezményes – Azure |} A Microsoft Docs
+description: Ismerje meg, hogyan szoftverfrissítési csomag kedvezmények szoftver virtuális gépeken.
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,22 +10,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2018
+ms.date: 04/12/2019
 ms.author: banders
-ms.openlocfilehash: 4305db991a8129b0ae4205300051391df893c52c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: bcbf5ab48f3476a911fc4ade1eb0c395fb335d43
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917787"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002731"
 ---
-# <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Megismerheti, hogyan alkalmazza a a SUSE Linux Enterprise szoftvert foglalási terv kedvezményt van az Azure-hoz
+# <a name="azure-software-plan-discount"></a>Az Azure szoftverfrissítési csomag kedvezmény
 
-SUSE Linux csomagot vásárol, miután a rendszer automatikusan alkalmazza a kedvezményt az üzembe helyezett SUSE virtuális gépek (VM), amelyek megfelelnek a foglalást. A SUSE Linux-csomag magában foglalja a SUSE szoftvert futtat Azure virtuális gép költségét.
+Azure szoftverfrissítési csomag a SUSE és RedHat olyan foglalásokat, hogy üzembe helyezett virtuális gépekre vonatkozik. A szoftverfrissítési csomag kedvezményt alkalmazza a rendszer a szoftverhasználatra üzembe helyezett virtuális gépek, amelyek megfelelnek a foglalást.
 
-A megfelelő SUSE Linux-csomag megvásárlása, szüksége megtudhatja, hogy milyen SUSE virtuális gépek futtatása és a virtuális gépeken vcpu-k számát. Használja az alábbi szakaszok segítségével azonosíthatja a használati CSV-fájlból, mit szeretne vásárolni.
+Virtuális gép leállításakor a rendszer automatikusan alkalmazza kedvezményt egy másik egyező virtuális géphez, ha elérhető. Szoftvercsomag magában foglalja a szoftvert futtató virtuális gép költségét. Egyéb, például számítási, tárolási és hálózati díjak külön-külön számítjuk fel.
 
-## <a name="discount-applies-to-different-vm-sizes"></a>Különböző méretű virtuális gépek vonatkozik kedvezmény
+A megfelelő csomag vásárlásához ki kell a Virtuálisgép-használat és a virtuális gépeken vcpu-k számát. A következő részekben meghatározásához, mit szeretne vásárolni, a használati adatok alapján.
+
+## <a name="how-reservation-discount-is-applied"></a>Hogyan alkalmazza a foglalási kedvezményt
+
+A foglalási kedvezményt a "*használata – it-vagy-elveszíti-it*". Tehát ha az adott órán belül nem rendelkezik megfelelő erőforrásokat, majd elvesznek a foglalási mennyiség az adott órában. Nem sokat fel nem használt fenntartott órán keresztül továbbítja.
+
+Ha leállítja egy erőforrást, a foglalási kedvezményt automatikusan alkalmazza a megadott hatókörben lévő másik egyező erőforrás. A megadott hatókörben lévő nem megfelelő erőforrások találhatók, akkor a szolgáltatás számára fenntartott órák *elveszett*.
+
+## <a name="review-redhat-vm-usage-before-you-buy"></a>Vásárlás előtt tekintse át a RedHat virtuális gép kihasználtsága
+
+A termék nevének lekérése a felhasználás adataiból, és az azonos típusú és méretű a RedHat csomag vásárlása.
+
+Például, ha a használat termék **Red Hat Enterprise Linux - 1-4 vCPU virtuális gépek licenceivel**, meg kell vásárolnia **Red Hat Enterprise Linux** a **1 – 4 vCPU VM**.
+
+<!--ADD RHEL SCREENSHOT -->
+
+## <a name="review-suse-vm-usage-before-you-buy"></a>Vásárlás előtt tekintse át a SUSE virtuális gépek kihasználtsága
+
+A termék nevének lekérése a felhasználás adataiból, és a SUSE-csomag megvásárlása az azonos típusú és méretű.
+
+Például, ha a használat termék **SUSE Linux Enterprise Server prioritás – 2 – 4 vCPU virtuális gépek támogatása**, meg kell vásárolnia **SUSE Linux Enterprise Server prioritású** a **2–4vCPU**.
+
+![Meg kell vásárolnia a termék kiválasztása – példa](./media/billing-understand-suse-reservation-charges/select-suse-linux-enterprise-server-priority-2-4-vcpu.png)
+
+## <a name="discount-applies-to-different-vm-sizes-for-suse-plans"></a>SUSE-csomagok különböző méretű virtuális gépek vonatkozik kedvezmény
 
 Például a Reserved VM Instances, SUSE megtervezése vásárlások rugalmasabbá példány mérete. Ez azt jelenti, hogy a kedvezmény érvényes, még ha telepít egy virtuális Gépet egy másik vCPU-számot. A kedvezmény a szoftvercsomag különböző méretekkel vonatkozik.
 
@@ -38,9 +61,7 @@ Például ha vásárol egy csomag az SUSE Linux Enterprise Server for HPC Priori
 - 1-3 vagy 4 Vcpu, üzembe helyezett virtuális gép
 - vagy 0.77 vagy hamarosan 77: % 5 vagy több vcpu-k rendelkező virtuális gépek.
 
-Az 5 vagy több Vcpu arány, 2.6-os. Ezért a SUSE egy virtuális Gépet az 5 vagy több Vcpu-foglalás egy szoftverköltség, ami körülbelül 77 % csak része ismerteti.
-
-## <a name="understand-suse-vm-usage-before-you-buy"></a>SUSE virtuális gépek használatának megértéséhez, vásárlás előtt
+Az 5 vagy több Vcpu arány, 2.6-os. Ezért a SUSE egy virtuális Gépet az 5 vagy több Vcpu-foglalás szoftverköltség, ami körülbelül 77 % csak része ismerteti.
 
 Az alábbi táblázatokban a szoftverfrissítési csomagok vásárolhat egy foglalást, a kapcsolódó használati mérőszámok és a arányok minden.
 
@@ -122,6 +143,10 @@ Az Azure portal marketplace nevei:
 |SLES 3-4 mag vcpu-k |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1.92308|D4s_v3|
 |SLES 5 + vcpu-k |7b349b65-d906-42e5-833f-b2af38513468|2.30769| D8s_v3|
 
+## <a name="need-help-contact-us"></a>Segítség Kapcsolat
+
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+
 ## <a name="next-steps"></a>További lépések
 
 Foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
@@ -132,7 +157,3 @@ Foglalások kapcsolatos további információkért tekintse meg a következő ci
 - [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
-
-## <a name="need-help-contact-us"></a>Segítség Kapcsolat
-
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

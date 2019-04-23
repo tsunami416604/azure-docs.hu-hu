@@ -14,18 +14,20 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 3f15b6bf5ff3cc1949794ebc1ee2a5f62158cede
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 34eafe8a13d126ebdbb08084d8820646ca43534a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698622"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998090"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET Core-alkalmazást az alkalmazások konfigurálása
 
 Az Azure App konfigurálása felügyelt konfigurációs szolgáltatása az Azure-ban. Könnyedén tárolhatja, és a egy helyet, amely választja el az alkalmazás beállításait kezelheti a kódból használhatja azt. Ez a rövid útmutató bemutatja, hogyan belefoglalhatja a szolgáltatást egy .NET Core-konzolalkalmazást az.
 
 Bármely Kódszerkesztő segítségével ebben a rövid útmutatóban található lépések elvégzése. [A Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, macOS és Linux platformokon az érhető el.
+
+![A rövid útmutató: alkalmazás futtatása](./media/quickstarts/dotnet-core-app-run.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,6 +38,14 @@ Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotn
 ## <a name="create-an-app-configuration-store"></a>Hozzon létre egy alkalmazást a konfigurációs adattároló
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. Válassza ki **kulcs/érték Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
+
+    | Kulcs | Value |
+    |---|---|
+    | TestApp:Settings:Message | Azure-alkalmazás-konfigurációs adatait |
+
+    Hagyja **címke** és **tartalomtípus** most üres.
 
 ## <a name="create-a-net-core-console-app"></a>Hozzon létre egy .NET Core-Konzolalkalmazás
 
@@ -99,8 +109,6 @@ Használja a [.NET Core parancssori felület (CLI)](https://docs.microsoft.com/d
 
         dotnet run
 
-    ![A rövid útmutató: alkalmazás futtatása](./media/quickstarts/dotnet-core-app-run.png)
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
@@ -110,4 +118,4 @@ Használja a [.NET Core parancssori felület (CLI)](https://docs.microsoft.com/d
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs adattároló és használt, egy .NET Core-konzolalkalmazást keresztül a [alkalmazás konfigurációszolgáltató](https://go.microsoft.com/fwlink/?linkid=2074664). Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa a következő oktatóanyag azt mutatja be a hitelesítést.
 
 > [!div class="nextstepaction"]
-> [Az Azure-erőforrások integráció felügyelt identitásokból](./howto-integrate-azure-managed-service-identity.md)
+> [Felügyelt identitás-integráció](./howto-integrate-azure-managed-service-identity.md)

@@ -2,18 +2,18 @@
 title: Hogyan lehet csatlakozni az Azure Data Catalog az adatforrásokat
 description: Útmutató olyan cikk, kiemelve azt, hogyan csatlakozhat az Azure Data Cataloggal felfedezett adatforráshoz.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 973077b56f1a777d917a94f9c1470e6f8c15a489
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: MT
+ms.openlocfilehash: c64340491dba11870364610a6c2ff62e25c1328a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405054"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000572"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Kapcsolódás az adatforrásokhoz
 ## <a name="introduction"></a>Bevezetés
@@ -39,8 +39,8 @@ Ha a "Megnyitás a..." menüjében adatforrások az Azure Data Catalog-portál, 
 | --- | --- | --- |
 | Excel |.odc |Az Excel 2010 vagy újabb |
 | Excel (első 1000) |.odc |Az Excel 2010 vagy újabb |
-| Power Query |.xlsx-fájlba |Az Excel 2016 vagy Excel 2010 vagy a Power Query az Excel-bővítmény az Excel 2013 telepítve van |
-| A Power BI Desktopban |.pbix-fájl |A Power BI Desktop júliusi 2016 vagy újabb |
+| Power Query |.xlsx |Az Excel 2016 vagy Excel 2010 vagy a Power Query az Excel-bővítmény az Excel 2013 telepítve van |
+| A Power BI Desktopban |.pbix |A Power BI Desktop júliusi 2016 vagy újabb |
 | SQL Server Data Tools |vsweb:// |A Visual Studio 2013 Update 4 vagy újabb verzió telepítve van az SQL Server-eszközök |
 | Jelentéskezelő |http:// |Lásd: [SQL Server Reporting Services böngészőkövetelményei](https://technet.microsoft.com/library/ms156511.aspx) |
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
-ms.openlocfilehash: 0f066915046e363932652c104fabe96ed0a9d4c4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 9b86f2e05e2cb42470061bd6398b4200607f2418
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227184"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60012285"
 ---
 1. Hozzon létre egy új alkalmazás-konfigurációs adattároló, jelentkezzen be a [az Azure portal](https://aka.ms/azconfig/portal). A lap bal felső sarkában válassza **+ erőforrás létrehozása**. Az a **keresés a piactéren** mezőbe írja be **Alkalmazáskonfiguráció** nyomja le az Enter billentyűt.
 
@@ -35,14 +35,3 @@ ms.locfileid: "58227184"
 4. Kattintson a **Létrehozás** gombra. A telepítés néhány percet is igénybe vehet.
 
 5. Az üzembe helyezés befejezése után jelölje ki a **beállítások** > **Tárelérési kulcsok**. Jegyezze fel vagy az elsődleges csak olvasható vagy elsődleges írási-olvasási kulcs kapcsolati karakterláncára. Használja ezt a kapcsolati karakterláncot később a létrehozott alkalmazás a konfigurációs adattároló folytatott kommunikációhoz az alkalmazás konfigurálásához.
-
-6. Válassza ki **kulcs/érték Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
-
-    | Kulcs | Érték |
-    |---|---|
-    | TestApp:Settings:BackgroundColor | Fehér |
-    | TestApp:Settings:FontSize | 24 |
-    | TestApp:Settings:FontColor | Fekete |
-    | TestApp:Settings:Message | Azure-alkalmazás-konfigurációs adatait |
-
-    Hagyja **címke** és **tartalomtípus** most üres.

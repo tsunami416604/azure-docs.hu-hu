@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: 8ed3213a40370b1ab2beb15a989a22017b058d65
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: MT
+ms.openlocfilehash: 5e3005eb8f548e562e037431ae5fd89f82ec2100
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812072"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150081"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Oktatóanyag: Az Azure Time Series Insights JavaScript ügyfélkódtár felderítése
 
@@ -28,6 +28,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A TSI mintaalkalmazás.
 > * A TSI JavaScript ügyfélkódtár.
 > * Hogyan használja a mintaalkalmazás a kódtárat a TSI-adatok megjelenítésére.
+
+> [!NOTE]
+> A Time Series Insights minta alkalmazás forrásfájljait található a megadott a [GitHub-mintaadattárból](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
 
 ## <a name="video"></a>Videó: 
 
@@ -57,7 +60,7 @@ Ebben az oktatóanyagban a Time Series Insights mintaalkalmazás használatával
 
 ### <a name="page-source-and-structure"></a>Oldal forrása és struktúrája
 
-Először tekintsük meg a böngészőben renderelt oldal mögött lévő HTML és JavaScript forráskódot. Nem ismertetjük mindegyik elemet, de megismerheti a főbb szakaszokat, így képet kaphat az oldal működéséről:
+Először tekintse a [HTML és JavaScript forráskódját](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html) , amely a böngészőben megjelenített oldal mögött van. Nem ismertetjük mindegyik elemet, de megismerheti a főbb szakaszokat, így képet kaphat az oldal működéséről:
 
 1. Nyissa meg a böngészőben a **Fejlesztői eszközök** lapot. Vizsgálja meg az aktuális oldalt alkotó HTML-elemeket, más néven a HTML- vagy DOM-faszerkezetet.
 
@@ -109,7 +112,7 @@ Ahogy korábban szerepelt, ez a minta egy egyoldalas alkalmazás (SPA), amely az
 
 2. Később az alkalmazás „hozzáférési jogkivonatot” kér az Azure AD-től. A hozzáférési jogkivonat az engedélyek véges készletéhez van kiadva, egy adott szolgáltatás-/API-azonosítóhoz (https://api.timeseries.azure.com). Ez a szolgáltatás-/API-azonosító más néven a jogkivonat „célközönsége”. A jogkivonat engedélyei a bejelentkezett felhasználó nevében vannak kiadva. A szolgáltatás-/API-azonosító az alkalmazás Azure AD regisztrációjában szereplő egy másik tulajdonság. Miután az ADAL visszaadja a hozzáférési jogkivonatot az alkalmazásnak, az „tulajdonosi jogkivonatként” lesz átadva a TSI-szolgáltatási API-k elérésekor.
 
-   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=145-204&highlight=4-9,36-39)]
+   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=4-9,36-39)]
 
 ### <a name="control-identification"></a>A vezérlők azonosítása
 
@@ -191,7 +194,7 @@ Tekintse meg az alkalmazásban bemutatott standard diagramvezérlők mögötti k
 
 Az [Oldal forrása és struktúrája szakasz](#page-source-and-structure) 3. lépésében már látta, hogy a diagramvezérlők sorokba vannak rendezve az oldalon, amelyek mindegyike rendelkezik egy-egy leíró címsorral. Ebben a példában a három kitöltött diagram a „Multiple Chart Types From the Same Data” (Több diagramtípus ugyanazokból az adatokból) cím `<div>` elem alatt szerepel, és a cím alatt található három `<div>` elemhez vannak kötve:
 
-[!code-javascript[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
+[!code-html[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
 
 A JavaScript-kód következő szakasza a korábban leírt mintázatokat használja: összesítő TSI-kifejezések felépítése, azok használata TSI-adatok lekérdezéséhez, illetve a három diagram renderelése. Figyelje meg a `tsiClient.ux` névtérből a megfelelő diagramok létrehozásához és rendereléséhez használt három típust (`LineChart`, `BarChart`, `PieChart`). Azt is figyelje meg, hogy mindhárom diagram ugyanazokat az összesítőkifejezés-adatokat tudja használni (`transformedResult`):
 
@@ -283,9 +286,12 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * API-k használata a TSI JavaScript ügyfélkódtárban.
 > * A JavaScript használata diagramvezérlők létrehozásához és kitöltéséhez TSI-adatokkal.
 
-A fentiekben taglaltak szerint a TSI-mintaalkalmazás bemutató adatkészletet használ. Ha szeretné megtudni, hogy hogyan hozhatja létre saját TSI-környezetét és -adatkészletét, lépjen tovább a következő cikkre:
+Ahogy látható, a TSI mintaalkalmazás bemutató adatkészlet. Ha szeretné megtudni, hogy hogyan hozhatja létre saját TSI-környezetét és -adatkészletét, lépjen tovább a következő cikkre:
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Az Azure Time Series Insights-környezet létrehozása](tutorial-create-populate-tsi-environment.md)
 
+Vagy a TSI minta alkalmazás forrásfájljait megtekintése:
 
+> [!div class="nextstepaction"]
+> [A TSI mintaalkalmazás-adattár](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)

@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
-ms.openlocfilehash: dc8d3c2d400204f53b05bb5536af95679541f3f6
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: MT
+ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305204"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632912"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Térbeli horgonyok erőforrás létrehozása
 
@@ -25,7 +25,7 @@ Válassza ki **térbeli horgonyok**. A párbeszédpanelen válassza ki a **létr
 
 Az a **térbeli horgonyok fiók** párbeszédpanel:
 
-- Adjon meg egy egyedi erőforráscsoport-nevet.
+- Adja meg egy egyedi erőforráscsoport nevét, rendszeres alfanumerikus karakterek használatával.
 - Válassza ki az előfizetést, amelyhez csatolja az erőforrást.
 - Hozzon létre egy erőforráscsoportot kiválasztásával **új létrehozása**. Nevezze el **myResourceGroup** válassza **OK**.
       [!INCLUDE [resource group intro text](resource-group.md)]
@@ -34,7 +34,11 @@ Az a **térbeli horgonyok fiók** párbeszédpanel:
 
    ![Erőforrás létrehozása](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-Az erőforrás létrehozása után megtekintheti az erőforrás-tulajdonságokat. Másolja ki az erőforrás **Fiókazonosító** értékét egy szövegszerkesztőbe, mert később szüksége.
+Az erőforrás létrehozása után az Azure portálon az jelenik meg, hogy a telepítés befejeződött. Kattintson az **Erőforrás megnyitása** elemre.
+
+![Üzembe helyezés kész](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
+
+Ezt követően megtekintheti az erőforrás-tulajdonságok is. Másolja ki az erőforrás **Fiókazonosító** értékét egy szövegszerkesztőbe, mert később szüksége.
 
    ![Erőforrás-tulajdonságok](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 

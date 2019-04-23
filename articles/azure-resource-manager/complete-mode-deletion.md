@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: b38b1af8c72b814813804a49642668c28f3898d6
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: MT
+ms.openlocfilehash: fded37fee844a01f4d51518f2ca56dcf575704b2
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302704"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150149"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Az Azure-erőforrások teljes üzemmód telepítéseit törlését
 Ez a cikk bemutatja, hogyan kezelik az erőforrástípusok a törlés nem, amely egy sablont, amely teljes körű módban üzemel.
@@ -23,24 +23,24 @@ Az erőforrás típusa jelölése `No` automatikusan a rendszer nem törli a sab
 Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse le a [befejezéséhez mód – deletion.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/complete-mode-deletion.csv).
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | DomainServices | Igen | 
 | DomainServices/oucontainer | Nem | 
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | diagnosticSettings | Nem | 
 | diagnosticSettingsCategories | Nem | 
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | supportProviders | Nem | 
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | aadsupportcases | Nem | 
 | addsservices | Nem | 
@@ -52,7 +52,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | services | Nem | 
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Konfigurációk | Nem | 
 | generateRecommendations | Nem | 
@@ -60,7 +60,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | suppressions | Nem | 
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | actionRules | Nem | 
 | riasztások | Nem | 
@@ -72,24 +72,24 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | smartGroups | Nem | 
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | kiszolgáló | Igen | 
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | reportFeedback | Nem | 
 | szolgáltatás | Igen | 
 | validateServiceName | Nem | 
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | attestationProviders | Nem | 
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | classicAdministrators | Nem | 
 | denyAssignments | Nem | 
@@ -104,7 +104,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | roleDefinitions | Nem | 
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | AutomationAccounts | Igen | 
 | automationAccounts/configurations | Igen | 
@@ -114,7 +114,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | automationAccounts/webhooks | Nem | 
 
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Környezetek | Nem | 
 | környezetek és fiókok | Nem | 
@@ -122,24 +122,24 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | környezetek/fiókok/névterek/konfigurációk | Nem | 
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | b2cDirectories | Igen | 
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | regisztrációk | Igen | 
 | registrations/customerSubscriptions | Nem | 
 | regisztrációk/termékek | Nem | 
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | batchAccounts | Igen | 
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | billingAccounts | Nem | 
 | billingAccounts/billingProfiles | Nem | 
@@ -193,18 +193,18 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | usagePlans | Nem | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | mapApis | Igen | 
 | updateCommunicationPreference | Nem | 
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | BizTalk | Igen | 
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | blueprintAssignments | Nem | 
 | blueprintAssignments/assignmentOperations | Nem | 
@@ -215,20 +215,20 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | tervezetek/verziók és összetevők | Nem | 
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | botServices | Igen | 
 | botServices/channels | Nem | 
 | botServices/connections | Nem | 
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Redis | Igen | 
 | RedisConfigDefinition | Nem | 
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | appliedReservations | Nem | 
 | calculatePrice | Nem | 
@@ -247,7 +247,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | validateReservationOrder | Nem | 
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | edgenodes | Nem | 
 | Profilok | Igen | 
@@ -257,14 +257,14 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | validateProbe | Nem | 
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Tanúsítványrendelések | Igen | 
 | Tanúsítványrendelések/tanúsítványok | Nem | 
 | validateCertificateRegistrationInformation | Nem | 
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Képességek | Nem | 
 | domainNames | Nem | 
@@ -283,12 +283,12 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | virtualMachines/diagnosticSettings | Nem | 
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | classicInfrastructureResources | Nem | 
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Képességek | Nem | 
 | expressRouteCrossConnections | Nem | 
@@ -302,10 +302,10 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | virtualNetworks/virtualNetworkPeerings | Nem | 
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Képességek | Nem | 
-| Lemezek | Nem | 
+| lemezek | Nem | 
 | images | Nem | 
 | osImages | Nem | 
 | osPlatformImages | Nem | 
@@ -318,21 +318,21 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | vmImages | Nem | 
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | fiókok | Igen | 
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | RateCard | Nem | 
 | UsageAggregates | Nem | 
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | availabilitySets | Igen | 
-| Lemezek | Igen | 
+| lemezek | Igen | 
 | images | Igen | 
 | restorePointCollections | Igen | 
 | restorePointCollections/restorePoints | Nem | 
@@ -350,7 +350,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | virtualMachineScaleSets/virtualMachines/networkInterfaces | Nem | 
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | AggregatedCost | Nem | 
 | Egyenlegek | Nem | 
@@ -373,13 +373,13 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | UsageDetails | Nem | 
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | containerGroups | Igen | 
 | serviceAssociationLinks | Nem | 
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | beállításjegyzékek | Igen | 
 | beállításjegyzékek/buildek | Nem | 
@@ -405,24 +405,24 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | beállításjegyzékek/webhookok/ping | Nem | 
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | containerServices | Igen | 
 | managedClusters | Igen | 
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | alkalmazások | Igen | 
 | updateCommunicationPreference | Nem | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | fiókok | Igen | 
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Riasztások | Nem | 
 | billingAccounts | Nem | 
@@ -436,7 +436,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Jelentések | Nem | 
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | hubok | Igen | 
 | hubok/authorizationPolicies | Nem | 
@@ -453,33 +453,33 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | hubok/widgetTypes | Nem | 
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | feladatok | Igen | 
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | DataBoxEdgeDevices | Igen | 
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | munkaterületek | Igen | 
 | workspaces/virtualNetworkPeerings | Nem | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | katalógusok | Igen | 
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | connectionManagers | Igen | 
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | dataFactories | Igen | 
 | dataFactories/diagnosticSettings | Nem | 
@@ -488,7 +488,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | előállítók/integrationRuntimes | Nem | 
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | fiókok | Igen | 
 | accounts/dataLakeStoreAccounts | Nem | 
@@ -496,34 +496,34 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | accounts/storageAccounts/containers | Nem | 
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | fiókok | Igen | 
 | accounts/eventGridFilters | Nem | 
 | accounts/firewallRules | Nem | 
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | services | Igen | 
 | Services-projektek | Igen | 
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | kiszolgáló | Igen | 
 | servers/recoverableServers | Nem | 
 | servers/virtualNetworkRules | Nem | 
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | kiszolgáló | Igen | 
 | servers/recoverableServers | Nem | 
 | servers/virtualNetworkRules | Nem | 
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | kiszolgáló | Igen | 
 | kiszolgálók/tanácsadók | Nem | 
@@ -534,7 +534,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | servers/waitStatistics | Nem | 
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | IotHubs | Igen | 
 | IotHubs/eventGridFilters | Nem | 
@@ -542,12 +542,12 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Használati listák | Nem | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Tartományvezérlők | Igen | 
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Laborgyakorlatok | Igen | 
 | labs/serviceRunners | Igen | 
@@ -555,13 +555,13 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Ütemezések | Igen | 
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | databaseAccountNames | Nem | 
 | databaseAccounts | Igen | 
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | tartományok | Igen | 
 | domains/domainOwnershipIdentifiers | Nem | 
@@ -570,14 +570,14 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | validateDomainRegistrationInformation | Nem | 
 
 ## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | lcsprojects | Nem | 
 | lcsprojects/clouddeployments | Nem | 
 | lcsprojects vagy összekötőkkel | Nem | 
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | tartományok | Igen | 
 | tartományok/kapcsolatos témakörök | Nem | 
@@ -587,7 +587,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | topicTypes | Nem | 
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Fürtök | Igen | 
 | névterek | Igen | 
@@ -598,13 +598,13 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | névtér/eventhubs/consumergroups | Nem | 
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | funkciókkal | Nem | 
 | Szolgáltatók | Nem | 
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Regisztrálása | Nem | 
 | galleryitems | Nem | 
@@ -620,29 +620,29 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | retrieveresourcesbyid | Nem | 
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | guestConfigurationAssignments | Nem | 
 | Szoftver | Nem | 
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | hanaInstances | Igen | 
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
-| Fürtök | Igen | 
+| Fürtök | Nem | 
 | fürtök és alkalmazások | Nem | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | feladatok | Igen | 
 
 ## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | labelGroups | Nem | 
 | labelGroups/labels | Nem | 
@@ -651,7 +651,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | labelGroups/labels/subLabels/conditions | Nem | 
 
 ## <a name="microsoftinsights"></a>microsoft.insights
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | actiongroups | Igen | 
 | activityLogAlerts | Igen | 
@@ -683,23 +683,23 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | munkafüzetek | Igen | 
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | diagnosticSettings | Nem | 
 | diagnosticSettingsCategories | Nem | 
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | IoTApps | Igen | 
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Graph | Igen | 
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | deletedVaults | Nem | 
 | tárolók | Igen | 
@@ -707,7 +707,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Tárolók vagy titkos kódokkal | Nem | 
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Fürtök | Igen | 
 | fürt/adatbázis | Nem | 
@@ -715,41 +715,41 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | fürt/adatbázisok/eventhubconnections | Nem | 
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | labaccounts | Igen | 
 | felhasználók | Nem | 
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | fiókok | Igen | 
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | fiókok | Igen | 
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | naplók | Nem | 
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | integrationAccounts | Igen | 
 | A munkafolyamatok | Igen | 
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | commitmentPlans | Igen | 
 | webServices | Igen | 
 | Munkaterületek | Igen | 
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | fiókok | Igen | 
 | fiókok és munkaterületek | Igen | 
@@ -759,24 +759,24 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | teamAccounts/workspaces/projects | Igen | 
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | fiókok | Igen | 
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | munkaterületek | Igen | 
 | munkaterületek és számítási erőforrások | Nem | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Identitások | Nem | 
 | userAssignedIdentities | Igen | 
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | getEntities | Nem | 
 | managementGroups | Nem | 
@@ -785,13 +785,13 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | tenantBackfillStatus | Nem | 
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | fiókok | Igen | 
 | accounts/eventGridFilters | Nem | 
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Ajánlatok | Nem | 
 | offerTypes | Nem | 
@@ -805,19 +805,19 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | termék | Nem | 
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | classicDevServices | Igen | 
 | updateCommunicationPreference | Nem | 
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Szerződések | Nem | 
 | offertypes | Nem | 
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | mediaservices | Igen | 
 | mediaservices/accountFilters | Nem | 
@@ -837,12 +837,12 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | mediaservices/transforms/jobs | Nem | 
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | projektek | Igen | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | applicationGateways | Igen | 
 | applicationSecurityGroups | Igen | 
@@ -868,7 +868,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | dnszones/TXT | Nem | 
 | expressRouteCircuits | Igen | 
 | expressRouteServiceProviders | Nem | 
-| frontdoors | Igen | 
+| frontdoorok | Igen | 
 | frontdoorWebApplicationFirewallPolicies | Igen | 
 | getDnsResourceReference | Nem | 
 | interfaceEndpoints | Igen | 
@@ -903,13 +903,13 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | webApplicationFirewallPolicies | Igen | 
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | névterek | Igen | 
 | névtér/notificationHubs | Igen | 
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | eszközök | Nem | 
 | linkTargets | Nem | 
@@ -920,7 +920,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | munkaterületek és lekérdezési | Nem | 
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | managementassociations | Nem | 
 | managementconfigurations | Igen | 
@@ -928,7 +928,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | megtekintés | Igen | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | policyEvents | Nem | 
 | policyStates | Nem | 
@@ -936,35 +936,35 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | szervizelések | Nem | 
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | a konzolok | Nem | 
 | Az irányítópultok | Igen | 
 | userSettings | Nem | 
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | workspaceCollections | Igen | 
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Kapacitások | Igen | 
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | fiókok | Igen | 
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | backupProtectedItems | Nem | 
 | tárolók | Igen | 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | névterek | Igen | 
 | névtér/szabályok | Nem | 
@@ -974,13 +974,13 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | névtér/wcfrelays/szabályok | Nem | 
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | erőforrások | Nem | 
 | subscriptionsStatus | Nem | 
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | availabilityStatuses | Nem | 
 | childAvailabilityStatuses | Nem | 
@@ -990,7 +990,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | értesítések | Nem | 
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | üzemelő példányok | Nem | 
 | Az operations központi telepítések | Nem | 
@@ -1009,25 +1009,25 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Bérlők | Nem | 
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | alkalmazások | Igen | 
 | saasresources | Nem | 
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | forgalom | Igen | 
 | feladatgyűjtemények | Igen | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | resourceHealthMetadata | Nem | 
 | searchServices | Igen | 
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | advancedThreatProtectionSettings | Nem | 
 | riasztások | Nem | 
@@ -1062,13 +1062,13 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | workspaceSettings | Nem | 
 
 ## <a name="microsoftsecuritygraph"></a>Microsoft.SecurityGraph
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | diagnosticSettings | Nem | 
 | diagnosticSettingsCategories | Nem | 
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | névterek | Igen | 
 | névtér/szabályok | Nem | 
@@ -1083,13 +1083,13 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | premiumMessagingRegions | Nem | 
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Fürtök | Igen | 
 | fürtök és alkalmazások | Nem | 
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | alkalmazások | Igen | 
 | Átjárók | Igen | 
@@ -1098,12 +1098,12 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | volumes | Igen | 
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | SignalR | Igen | 
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | applianceDefinitions | Igen | 
 | készülékek | Igen | 
@@ -1112,7 +1112,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | jitRequests | Igen | 
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | managedInstances | Igen |
 | managedInstances/databases | Igen (lásd az alábbi megjegyzést) |
@@ -1140,14 +1140,14 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | SqlVirtualMachineGroups | Igen | 
 | SqlVirtualMachineGroups/AvailabilityGroupListeners | Nem | 
 | SqlVirtualMachines | Igen | 
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | storageAccounts | Igen | 
 | storageAccounts/blobServices | Nem | 
@@ -1158,7 +1158,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Használati listák | Nem | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | storageSyncServices | Igen | 
 | storageSyncServices/registeredServers | Nem | 
@@ -1168,12 +1168,12 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | storageSyncServices/munkafolyamatok | Nem | 
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | vezetők | Igen | 
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | streamingjobs | Igen (lásd az alábbi megjegyzést) | 
 | streamingjobs/diagnosticSettings | Nem | 
@@ -1182,25 +1182,25 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 > Nem adhat meg egy címkét, streamingjobs futtatásakor. Címke hozzáadásához az erőforrás leállítása.
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | CreateSubscription | Nem | 
 | SubscriptionDefinitions | Nem | 
 | SubscriptionOperations | Nem | 
 
 ## <a name="microsoftsupport"></a>microsoft.support
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | supporttickets | Nem | 
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | providerRegistrations | Igen | 
 | erőforrások | Igen | 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Környezetek | Igen | 
 | környezetek/accessPolicies | Nem | 
@@ -1208,14 +1208,14 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | environments/referenceDataSets | Igen | 
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | account | Igen | 
 | fiók/bővítmény | Igen | 
 | fiók és a projekt | Igen | 
 
 ## <a name="microsoftweb"></a>Microsoft.Web
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | apiManagementAccounts | Nem | 
 | apiManagementAccounts/apiAcls | Nem | 
@@ -1245,7 +1245,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | modulok | Nem | 
 | Kiszolgálófarmok | Igen | 
 | Kiszolgálófarmok/feldolgozó | Nem | 
-| Helyek | Igen | 
+| webhelyek | Igen | 
 | sites/domainOwnershipIdentifiers | Nem | 
 | sites/hostNameBindings | Nem | 
 | helyek és példányok | Nem | 
@@ -1262,18 +1262,18 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | verifyHostingEnvironmentVnet | Nem | 
 
 ## <a name="microsoftwindowsdefenderatp"></a>Microsoft.WindowsDefenderATP
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | diagnosticSettings | Nem | 
 | diagnosticSettingsCategories | Nem | 
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | DeviceServices | Igen | 
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
-| Erőforrás típusa | Teljes mód törlése |
+| Erőforrás típusa | Törlés Teljes mód esetén |
 | ------------- | ----------- |
 | Összetevők | Nem | 
 | componentsSummary | Nem | 

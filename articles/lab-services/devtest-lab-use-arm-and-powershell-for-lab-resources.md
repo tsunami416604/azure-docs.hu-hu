@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2c15cac7897e25018057aa47cc2043050ed0ae5b
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
-ms.translationtype: MT
+ms.openlocfilehash: cb5a08730b47cb5df3116aa4a54554ef0ee6f260
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413200"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149750"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Az Azure Resource Manager-sablonok és PowerShell használatával automatikusan tesztkörnyezetek létrehozása vagy módosítása
 
@@ -28,9 +28,9 @@ DevTest Labs biztosít sok Azure Resource Manager-sablonok és PowerShell-paranc
 Ez a cikk segít a telepítési folyamat, ezek a sablonok és parancsfájlok használatával automatizálhatja a létrehozását, módosítását és központi telepítését a gyakorlatot. Ez a cikk is bemutatja, hol találhatók az egyes gyakori feladatok elvégzéséhez a DevTest Labs szolgáltatásban létrehozott PowerShell használatával kapcsolatos további információk.
 
 ## <a name="step-1-gather-your-templates-and-scripts"></a>1. lépés: Gyűjtse össze a sablonok és parancsfájlok
-Annak előre elkészített [Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) és [PowerShell-parancsfájlok](https://github.com/Azure/azure-devtestlab/tree/master/Scripts) , nyilvános [GitHub-adattár](https://github.com/Azure/azure-devtestlab). Használja őket-van, vagy testre is szabhatja őket az igényeinek, és tárolja őket a saját [privát Git-tárház](devtest-lab-add-artifact-repo.md).
+Annak előre elkészített [Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) és [PowerShell-parancsfájlok](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts) , nyilvános [GitHub-adattár](https://github.com/Azure/azure-devtestlab). Használja őket-van, vagy testre is szabhatja őket az igényeinek, és tárolja őket a saját [privát Git-tárház](devtest-lab-add-artifact-repo.md).
 
-## <a name="step-2-modify-your-azure-resource-manager-template"></a>2. lépés: Az Azure Resource Manager-sablon módosítása
+## <a name="step-2-modify-your-azure-resource-manager-template"></a>2. lépés: Az Azure Resource Manager-sablon módosítása
 A lépéseket követheti [az első Azure Resource Manager-sablon létrehozása](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template) Ha soha nem hozott létre sablon előtt.
 
 Emellett [ajánlott eljárások az Azure Resource Manager-sablonok létrehozására](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) kínál számos irányelvek és javaslatok létrehozása Azure Resource Manager-sablonok, amelyek segítségével a rendszer megbízható és könnyen használható. Általában fog használni egy változata, a megközelítések vagy a megadott példák egyike, és módosítsa a sablon az igényeinek.

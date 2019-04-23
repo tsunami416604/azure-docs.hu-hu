@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: f6693de861658c7174614e80906ee83633fcb313
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 679a1c60e44694bde86cafba21d7f1d2c6fb94d9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58501091"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995625"
 ---
 # <a name="creating-and-using-resource-files"></a>Létrehozásával és használatával Erőforrásfájlok
 
@@ -72,7 +72,7 @@ A SAS URL-cím generálása helyett, hogy engedélyezze a névtelen, nyilvános 
 
 Konfigurálása és a egy SAS URL-cím létrehozása helyett használhatja az Azure storage-tároló neve a Blobadatok eléréséhez. A storage-tárolót az Azure storage-fiókot, amely kapcsolódik a Batch-fiók, más néven a autostorage fiókot kell használni. A tároló nevét egy autostorage fiók használatával lehetővé teszi, hogy átugorja konfigurálni, vagy létrehoz egy SAS URL-címet egy storage-tároló eléréséhez.
 
-Ebben a példában feltételezzük, hogy az erőforrások fájl létrehozásához használt adatok már van Azure Storage-fiókban a Batch-fiókhoz csatolva. Ha autostorage fiók nem rendelkezik, tekintse meg a lépéseket a [Batch-fiók létrehozása](/create-a-batch-account.md) megtudhatja, hogyan hozhat létre, és a egy fiók számára.
+Ebben a példában feltételezzük, hogy az erőforrások fájl létrehozásához használt adatok már van Azure Storage-fiókban a Batch-fiókhoz csatolva. Ha autostorage fiók nem rendelkezik, tekintse meg a lépéseket a [Batch-fiók létrehozása](batch-account-create-portal.md) megtudhatja, hogyan hozhat létre, és a egy fiók számára.
 
 A társított storage-fiók használatával nem kell létrehozni és konfigurálni egy storage-tároló SAS URL-CÍMÉT. Ehelyett adja meg a társított storage-fiókban a tároló nevét.
 

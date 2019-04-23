@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor-naplók (előzetes verzió) használatával az Azure Active Directory-Tevékenységnaplók elemzése |} A Microsoft Docs
-description: Az Azure Monitor-naplók (előzetes verzió) használatával az Azure Active Directory-Tevékenységnaplók elemzése
+title: Az Azure Monitor-naplók használatával az Azure Active Directory-Tevékenységnaplók elemzése |} A Microsoft Docs
+description: Ismerje meg, hogyan elemezheti az Azure Active Directory-Tevékenységnaplók az Azure Monitor-naplók használatával
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: markvi
-ms.reviewer: dhanyahk
+ms.date: 04/18/2019
+ms.author: priyamo
+ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e195dd0e52b4938e829ea0aec1f4cc3ef7107c0
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 1651bb2898a2bd1e3e0c3fbbce77dc4106d76e7a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436806"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005536"
 ---
-# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs-preview"></a>Elemezheti az Azure ad-ben tevékenységeket tartalmazó naplók az Azure Monitor naplóira (előzetes verzió)
+# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Elemezheti az Azure ad-ben tevékenységeket tartalmazó naplók az Azure Monitor naplóira
 
 Miután [integrálása az Azure ad-ben tevékenységeket tartalmazó naplók az Azure Monitor naplóira](howto-integrate-activity-logs-with-log-analytics.md), a teljesítmény az Azure Monitor-naplók segítségével betekintést nyerhet a környezet. Emellett telepíthet a [Log analytics az Azure Active Directory lap megtekintései naplók](howto-install-use-log-analytics-views.md) érheti el a naplózási és bejelentkezési események körül előre elkészített jelentéseket a környezetben.
 

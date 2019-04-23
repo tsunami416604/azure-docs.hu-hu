@@ -10,18 +10,21 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74b099c648fa4dd1c735cc76c82efbc102d9843c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 5e997d9e9f38fee52cd9fc007fe12cac68e3aa5a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443045"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008681"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
 Ez a cikk segít a Change Tracking megoldás használatával könnyedén azonosíthatja a változtatásokat a környezetben. A megoldás nyomon követi a módosításokat a Windows és Linux-szoftver, a Windows és Linux-fájlok, a Windows-beállításkulcsok, a Windows-szolgáltatások és a Linux-démonok. Konfigurációs módosítások azonosítása segíthet a felmerülő működési problémákat.
 
 Telepített szoftverek, Windows-szolgáltatások, Windows-beállításjegyzék és a fájlok és a figyelt kiszolgálókról a Linux-démonok változásokat küldi el a feldolgozás a felhőben az Azure Monitor szolgáltatáshoz. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti. A Change Tracking irányítópultján található információk segítségével könnyen megtekintheti az a kiszolgáló-infrastruktúrájában elvégzett módosítások.
+
+> [!NOTE]
+> Az Azure Automation Change Tracking nyomon követi a módosításokat a virtuális gépeken. Azure Resource Manager tulajdonságváltozások nyomon követéséhez tekintse meg az Azure Resource Graph [módosítási előzmények](../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="supported-windows-operating-systems"></a>A támogatott Windows operációs rendszerek
 
@@ -76,7 +79,7 @@ A következő lépések segítségével nyomon követésének konfigurálása Li
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-|Engedélyezve     | Azt határozza meg, ha a beállítás vonatkozik.        |
+|Enabled     | Azt határozza meg, ha a beállítás vonatkozik.        |
 |Elem neve     | A követendő fájl felhasználóbarát neve.        |
 |Csoport     | Fájlok logikai csoportosítására szolgáló csoportnév.        |
 |Elérési út megadása     | A fájl elérési útja. Például: "/etc/*.conf"       |
@@ -99,7 +102,7 @@ A következő lépéseket követve konfigurálja a fájlok nyomon követése a W
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-|Engedélyezve     | Azt határozza meg, ha a beállítás vonatkozik.        |
+|Enabled     | Azt határozza meg, ha a beállítás vonatkozik.        |
 |Elem neve     | A követendő fájl felhasználóbarát neve.        |
 |Csoport     | Fájlok logikai csoportosítására szolgáló csoportnév.        |
 |Elérési út megadása     | A fájl elérési útja, például: „c:\temp\\\*.txt”<br>Környezeti változók is használhatók, például: „%winDir%\System32\\\*.*”       |
@@ -131,7 +134,7 @@ A következő lépések segítségével Windows-számítógépeket a beállítá
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-|Engedélyezve     | Azt határozza meg, ha a beállítás vonatkozik.        |
+|Enabled     | Azt határozza meg, ha a beállítás vonatkozik.        |
 |Elem neve     | A beállításkulcs követendő rövid neve.        |
 |Csoport     | Beállításkulcsok logikai csoportosítására szolgáló csoportnév.        |
 |Windows-beállításkulcs   | Ellenőrizze a beállításkulcs elérési útja. Példa: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj Folders\Common indítási"      |

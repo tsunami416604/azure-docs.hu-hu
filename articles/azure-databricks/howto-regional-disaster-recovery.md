@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 354f6014e3230b65a0c4f1cd7507e58ca94474dd
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
-ms.translationtype: MT
+ms.openlocfilehash: bd91d9201e81c884b48b41de27146c186eeb9598
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188101"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000844"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Az Azure Databricks-fürtök esetén a regionális vészhelyreállítás
 
@@ -247,7 +247,7 @@ A saját regionális katasztrófa utáni helyreállítás topológia létrehozá
 
 8. **Az Azure blob storage-bA migrálhatja, és csatlakoztatja az Azure Data Lake Store**
 
-   Manuálisan csatlakoztassa újra az összes [Azure Blob storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) és [Azure Data Lake Store (1. generációs)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html) csatlakoztatási pontok Jegyzetfüzet-alapú megoldások használata. A tárolási erőforrások lenne van csatlakoztatva az elsődleges munkaterület, és a másodlagos munkaterületen kell ismételni, amely rendelkezik. Nincsenek külső API csatlakoztatása a van nem.
+   Manuálisan csatlakoztassa újra az összes [Azure Blob storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) és [Azure Data Lake Store (2. generációs)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) csatlakoztatási pontok Jegyzetfüzet-alapú megoldások használata. A tárolási erőforrások lenne van csatlakoztatva az elsődleges munkaterület, és a másodlagos munkaterületen kell ismételni, amely rendelkezik. Nincsenek külső API csatlakoztatása a van nem.
 
 9. **Fürt init parancsfájlok áttelepítése**
 

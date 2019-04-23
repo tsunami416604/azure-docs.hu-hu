@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b402fa754105b734bfc7abbd2790a2a12afc6ff4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 60938f26c27b9f94046b1be8e3d0cb6b247017c9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523358"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997784"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Oktatóanyag: Hozzáférés az Azure AD Graph API-hoz egy Windows VM rendszer által hozzárendelt felügyelt identitásával
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
-Ez az oktatóanyag bemutatja, hogyan férhet hozzá a Microsoft Graph API-hoz és kérheti le annak csoporttagságait egy Windows rendszerű virtuális gép (VM) rendszer által hozzárendelt felügyelt identitásával. Az Azure-erőforrások felügyelt identitásainak kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba.  Ebben az oktatóanyagban a virtuális gép identitásának Azure AD-csoportbeli tagságát kérdezi le. A csoportadatokra gyakran szükség van, például engedélyezési döntések során. A virtuális gép felügyelt identitása a háttérben **szolgáltatásnévként** jelenik meg az Azure AD-ben. Mielőtt elvégzi a csoportlekérdezést, adja hozzá a virtuális gép identitását jelölő szolgáltatásnevet egy Azure AD-beli csoporthoz. Ezt megteheti az Azure PowerShell, az Azure AD PowerShell vagy az Azure CLI segítségével is.
+Az oktatóanyag bemutatja, hogyan érheti el az Azure AD Graph API beolvasni a csoporttagságok alapértelmezett felügyelt identitás Windows virtuális gép (VM) használatával. Az Azure-erőforrások felügyelt identitásainak kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba.  Ebben az oktatóanyagban a virtuális gép identitásának Azure AD-csoportbeli tagságát kérdezi le. A csoportadatokra gyakran szükség van, például engedélyezési döntések során. A virtuális gép felügyelt identitása a háttérben **szolgáltatásnévként** jelenik meg az Azure AD-ben. Mielőtt elvégzi a csoportlekérdezést, adja hozzá a virtuális gép identitását jelölő szolgáltatásnevet egy Azure AD-beli csoporthoz. Ezt megteheti az Azure PowerShell, az Azure AD PowerShell vagy az Azure CLI segítségével is.
 
 > [!div class="checklist"]
 > * Csatlakozás az Azure AD szolgáltatáshoz

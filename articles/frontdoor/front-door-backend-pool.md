@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 2372f49c7280ee5c817f3d2f98cc80a196dae5f5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879199"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000589"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Háttérrendszerek és a háttérkiszolgáló készletek Azure bejárati ajtajának Service-ben
 Ez a cikk csatlakoztatásáról, az alkalmazástelepítés Azure bejárati ajtajának szolgáltatással kapcsolatos fogalmakat ismerteti. Ezen kívül ismerteti a különböző feltételek háttéralkalmazások bejárati ajtajának-konfigurációt.
@@ -26,7 +26,7 @@ A háttérrendszernek megegyezik az alkalmazás központi telepítési példány
 
 Bejárati ajtajának szolgáltatást háttérkiszolgálókon tekintse meg a gazdagép neve vagy a nyilvános IP-címét a alkalmazást, amely is képes kiszolgálni az ügyfélkéréseket. Háttérrendszerek nem tévesztendő össze az adatbázisszint, tárolási szinten, és így tovább. Háttérrendszerek kell kezelni, az alkalmazás háttérrendszere nyilvános végpontjára. Ha egy háttérszolgáltatás bejárati ajtajának háttérkészlet ad hozzá, akkor is fel kell vennie a következő:
 
-- **Háttérbeli gazdagéptípusokkal**. A hozzáadni kívánt erőforrás típusát. Bejárati ajtajának szolgáltatás automatikus felfedezés a háttéralkalmazások, ha az app Service-ben, a felhőalapú szolgáltatás vagy a storage támogatja. Ha azt szeretné, hogy egy másik erőforrás Azure-ban vagy még nem Azure-háttérrendszernek, válassza ki a **egyéni gazdagép**.
+- **Háttérbeli gazdagéptípusokkal**. A hozzáadni kívánt erőforrás típusát. Bejárati ajtajának szolgáltatás támogatja az automatikus felfedezés, az app Service-ben, a felhőalapú szolgáltatás vagy tárolási háttéralkalmazások használatába. Ha azt szeretné, hogy egy másik erőforrás Azure-ban vagy még nem Azure-háttérrendszernek, válassza ki a **egyéni gazdagép**.
 
     >[!IMPORTANT]
     >Konfigurálása során API-k nem ellenőrzése, ha a háttérrendszer bejárati ajtajának környezetből nem érhető el. Győződjön meg arról, hogy bejárati ajtajának elérje a háttérrendszerhez.
@@ -43,7 +43,7 @@ Bejárati ajtajának szolgáltatást háttérkiszolgálókon tekintse meg a gazd
 
 A háttérrendszernek bejárati ajtajának által továbbított kérések tartalmazza a gazdagép fejléc mezőt, a háttérrendszert használó a célként megadott erőforrás lekérése. Ez a mező értéke általában a háttérrendszer URI származik, és állomás és port.
 
-Például a www kérelem\.contoso.com fog rendelkezni a gazdagép fejléc www\.contoso.com. Az Azure portal használatával a háttérbeli konfigurálása, ha az alapértelmezett Ez a mező értéke a háttérrendszer állomásneve. Contoso-westus.azurewebsites.net, az Azure Portalon, a háttér-e töltve háttérrendszer az állomásfejléc értéke lesz a contoso-westus.azurewebsites.net. Azonban használhatja az Azure Resource Manager-sablonok vagy valamilyen más módszerre van adva ez a mező, bejárati ajtajának szolgáltatás elküldi a bejövő állomásnév értékeként a gazdagép-fejléc. Ha a kérés érkezett a www\.contoso.com és a háttérbeli, amely rendelkezik egy üres fejlécmezőt contoso westus.azurewebsites.net, bejárati ajtajának szolgáltatás fogja az állomásfejléc állítja www\.contoso.com.
+Például a www kérelem\.contoso.com fog rendelkezni a gazdagép fejléc www\.contoso.com. Az Azure portal használatával a háttérbeli konfigurálása, ha az alapértelmezett Ez a mező értéke a háttérrendszer állomásneve. Contoso-westus.azurewebsites.net, az Azure Portalon, a háttér-e töltve a háttérrendszer állomásfejléc értéke lesz a contoso-westus.azurewebsites.net. Azonban használhatja az Azure Resource Manager-sablonok vagy valamilyen más módszerre van adva ez a mező, bejárati ajtajának szolgáltatás elküldi a bejövő állomásnév értékeként a gazdagép-fejléc. Ha a kérés érkezett a www\.contoso.com és a háttérbeli, amely rendelkezik egy üres fejlécmezőt contoso westus.azurewebsites.net, bejárati ajtajának szolgáltatás fogja az állomásfejléc állítja www\.contoso.com.
 
 A legtöbb háttéralkalmazások (az Azure Web Apps, a Blob storage és a Cloud Services) az állomásfejlécnek egyeznie a háttérrendszer tartományát. Azonban a frontend gazdagép, amely a háttérbeli irányítja www például egy eltérő állomásnevet használ\.contoso.azurefd.net.
 
@@ -83,7 +83,7 @@ Terheléselosztási beállítások háttérkészlete számára határozzák meg,
 
 - **Minta mérete**. Azonosítja az állapot-mintavételei hány minták kell figyelembe venni háttérrendszer állapotának kiértékelését.
 
-- **A sikeres mintanagyság**. A mintanagyság mint már említettük, kifogástalan állapotú a háttéralkalmazás hívásához szükséges sikeres minták számát határozza meg. Tegyük fel például, hogy egy bejárati ajtajának állapot-mintavételi időköz érték 30 másodperc, a minta mérete 5 másodperc és a sikeres minta mérete 3 másodperc. Minden alkalommal, amikor az egészségügyi kiértékeljük a háttérbeli mintavételei, nézzük meg azt az utolsó öt minták több mint 150 másodpercig (5 x 30). Legalább három sikeres mintavételek szükséges deklarálja a háttérrendszer állapota kifogástalan.
+- **A sikeres mintanagyság**. A mintanagyság mint már említettük, kifogástalan állapotú a háttéralkalmazás hívásához szükséges sikeres minták számát határozza meg. Tegyük fel például, egy bejárati ajtajának állapot-mintavételi időköz érték 30 másodperc, a minta mérete 5 és a sikeres minta mérete 3. Minden alkalommal, amikor az egészségügyi kiértékeljük a háttérbeli mintavételei, nézzük meg azt az utolsó öt minták több mint 150 másodpercig (5 x 30). Legalább három sikeres mintavételek szükséges deklarálja a háttérrendszer állapota kifogástalan.
 
 - **Késés érzékenységi (további késleltetés)**. Meghatározza, hogy kívánja-e a kérés küldése a háttérrendszerek késés mérési érzékenységi tartományon belül, vagy továbbítja a kérést a legközelebbi háttérrendszere bejárati ajtajának.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 94ecf05272ecb29f914bb00fa407a564fef96c17
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: MT
+ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562079"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148832"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Marketo
 
@@ -33,7 +33,7 @@ A Marketo szoftveréből származó adatok másolhatja bármely támogatott foga
 Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
 
 >[!NOTE]
->A Marketo-összekötő a Marketo REST API épül. Vegye figyelembe, hogy rendelkezik-e a Marketo [egyidejű kérelmeinek maximális száma](http://developers.marketo.com/rest-api/) szolgáltatás oldalán. Ha eléri közli, hogy hibákat "hiba történt a REST API-val kísérlet során: Maximális sebesség túllépte a korlátot "100" a "20" másodperc (606) "vagy" hiba történt a REST API-val kísérlet során: Egyidejű hozzáférés korlátozása '10' (615) elérte ", próbálják meg csökkenteni a kérések száma a szolgáltatás egyidejű másolási tevékenység-végrehajtás csökkentése érdekében érdemes lehet.
+>A Marketo-összekötő a Marketo REST API épül. Vegye figyelembe, hogy rendelkezik-e a Marketo [egyidejű kérelmeinek maximális száma](https://developers.marketo.com/rest-api/) szolgáltatás oldalán. Ha eléri közli, hogy hibákat "hiba történt a REST API-val kísérlet során: Maximális sebesség túllépte a korlátot "100" a "20" másodperc (606) "vagy" hiba történt a REST API-val kísérlet során: Egyidejű hozzáférés korlátozása '10' (615) elérte ", próbálják meg csökkenteni a kérések száma a szolgáltatás egyidejű másolási tevékenység-végrehajtás csökkentése érdekében érdemes lehet.
 
 ## <a name="getting-started"></a>Első lépések
 

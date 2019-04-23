@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 33d8f2e7c65a786d1ecb389574fe186efb6fb705
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.openlocfilehash: b17978da3195b364f868d33ab7ad9faa1544e9ec
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630789"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006794"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Stream Azure diagnosztikai naplók a Log Analytics-munkaterületet az Azure monitorban
 
@@ -107,7 +107,7 @@ Mert sok erőforrás küldése adattípusok összes küldött ugyanabban a tábl
  
 A AzureDiagnostics tábla néhány adatot az alábbi módon fog kinézni:  
  
-| ResourceProvider | Kategória | A | B | C | D | E | F | G | H | I |
+| ResourceProvider | Category | A | B | C | D | E | F | G | H | I |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Microsoft.Resource1 | Naplók | x1 | y1 | z1 |
 | Microsoft.Resource2 | Hibanaplókat | | | | q1 | w1 | E1 csomag |
@@ -124,7 +124,7 @@ Az Azure Data Factory, naplók, nagyon részletes készlete miatt egy különös
 - *Semmilyen tevékenységet a folyamat képest van meghatározva. a felhasználó paraméterek*: minden felhasználó egyedi nevű paraméter tevékenység elleni létrehozott egy olyan új oszlop lesz. 
 - *Tevékenység bemeneti és kimeneti*: ezek eltérőek lehetnek a tevékenység-tevékenység, és hozzon létre egy nagy mennyiségű oszlopok részletes jellege miatt. 
  
-Mint a szélesebb körű megkerülő megoldás, az alábbi javaslatokat javasoljuk, hogy az ADF-naplók elkülönítése az esélye, hogy ezek a naplók a munkaterületeken összegyűjtött napló másféle érintő minimalizálása érdekében a saját munkaterületre. Várhatóan rendelkezik összeválogatott naplók elérhető az Azure Data Factory által mid április 2019.
+Mint a szélesebb körű megkerülő megoldás, az alábbi javaslatokat javasoljuk, hogy az ADF-naplók elkülönítése az esélye, hogy ezek a naplók a munkaterületeken összegyűjtött napló másféle érintő minimalizálása érdekében a saját munkaterületre. Várhatóan rendelkezik válogatott naplók az Azure Data Factoryhoz használható hamarosan.
  
 #### <a name="workarounds"></a>Megkerülő megoldások
 Rövid távú, amíg az 500-as oszlopos korlátot újra meg kell határozni, javasoljuk, hogy részletes adattípusok szét az esélye, szerezze meg a korlátot, különálló munkaterületnek.

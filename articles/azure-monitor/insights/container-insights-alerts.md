@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/01/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: ebe2c2b488e3d71597dd24f5504a14dd7ce6671e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bbd7c733c7c089328d2fbe016426fe9de3a6b5ce
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791541"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998651"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Teljesítményproblémák-tárolókhoz az Azure Monitor riasztásainak beállítása
 Az Azure Monitor for containers szolgáltatásban felügyelt Kubernetes-fürtöket üzemeltetett Azure Kubernetes Service (AKS) vagy az Azure Container Instances üzembe helyezett tárolók számítási feladatainak teljesítményét figyeli.
@@ -285,5 +285,5 @@ Kövesse az alábbi lépéseket egy riasztás létrehozása az Azure monitorban 
 
 ## <a name="next-steps"></a>További lépések
 
-* Nézet [lekérdezés példák jelentkezzen](container-insights-analyze.md#search-logs-to-analyze-data) előre definiált lekérdezések és példák kiértékelése és az egyéb értesítési forgatókönyvek testreszabása ismerteti.
-* Az Azure Monitor és egyéb aspektusait az AKS-fürt figyelése kapcsolatos további tudnivalókért lásd: [megtekintése az Azure Kubernetes Service health](container-insights-analyze.md).
+- Nézet [lekérdezés példák jelentkezzen](container-insights-log-search.md#search-logs-to-analyze-data) , előre definiált lekérdezések és példák kiértékelése vagy riasztási, megjelenítése és elemzése a fürtök testreszabásához.
+- Az Azure Monitor és egyéb aspektusait az AKS-fürt figyelése kapcsolatos további tudnivalókért lásd: [megtekintése az Azure Kubernetes Service health](container-insights-analyze.md).

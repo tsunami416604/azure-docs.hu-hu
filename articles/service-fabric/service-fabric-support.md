@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: aa4fd391aef3acf8e72513d91b62c7f16a13062d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: a931de8be07d41cf4daab63aa7691973ee158452
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889437"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005043"
 ---
 # <a name="azure-service-fabric-support-options"></a>Az Azure Service Fabric támogatási lehetőségei
 
@@ -33,6 +33,11 @@ További információk:
  
 - [Az Azure-hoz a Microsoft támogatási](https://azure.microsoft.com/support/plans/?b=16.44).
 - [A Microsoft Premier szintű támogatás](https://support.microsoft.com/en-us/premier).
+
+> [!Note]
+> A bronz megbízhatósági szint futó fürtök csak tesztelési feladatokat futtató teszi lehetővé. Ha problémákat tapasztal a bronz megbízhatósági rendszert futtató fürtre, a Microsoft támogatási csapata nyújt segítséget a probléma kezelése, de nem hajt végre a problémák eredeti okának feltárását. Tekintse meg [a fürt megbízhatósági jellemzőit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) további részletekért.
+>
+> Mi szükséges egy üzemkész fürt kapcsolatos további részletekért tekintse meg a [éles készültségi ellenőrzőlista](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist).
 
 <a id="getlivesitesupportonprem"></a>
 
@@ -49,7 +54,7 @@ További információk:
 
 Nem kell beállítani egy GitHub-adattárat a reporting Service Fabric-problémák.  Azt is aktívan figyeli a következő fórumokban.
 
-### <a name="github-repo"></a>GitHub-adattár 
+### <a name="github-repo"></a>GitHub-tárház 
 
 Azure Service Fabric hibák jelentést [Service-Fabric-hibák git-tárház](https://github.com/Azure/service-fabric-issues). Ebben a tárházban a jelentéskészítési és nyomkövetési problémák az Azure Service Fabric és a kis funkciókérések végzett szól. **Ne használja ezt a webhelyek működés közbeni problémákat**.
 

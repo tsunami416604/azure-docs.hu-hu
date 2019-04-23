@@ -1,7 +1,6 @@
 ---
 title: Önkiszolgáló cseréje és a visszatérítéseket Azure lefoglalási |} A Microsoft Docs
 description: Ismerje meg, hogyan lehet exchange vagy az Azure-foglalások visszatérítés.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -11,20 +10,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/5/2019
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: aa1a218fbf0bc7eacac65b50e4ee1f86791e2b3b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 54578746ea8029a760663edc456660f98358abc5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281981"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009310"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Önkiszolgáló cseréje és a visszatérítéseket Azure lefoglalási
 
 Az Azure-foglalások a változó igényeinek kielégítése érdekében rugalmasságot biztosítanak. Egy másik, azonos típusú foglalás foglalás tudjon cserélni. Egy foglalást, akár 50 000 USD évben is visszatérítés, ha már nincs szüksége.
 
 Önkiszolgáló Exchange-hez és a megszakítási lehetőség nem érhető el, US Government nagyvállalati szerződéssel rendelkező ügyfeleknek. Más US Government előfizetéstípusok, beleértve a használatalapú fizetés és a CSP támogatottak.
+
+Exchange-vagy egy meglévő foglalás visszatérítés ahhoz a Foglalás tulajdonosi hozzáféréssel kell rendelkeznie.
 
 ## <a name="exchange-an-existing-reserved-instance"></a>Exchange-meglévő fenntartott példány
 
@@ -39,7 +40,7 @@ A Foglalás három gyors lépésben is cserél az [az Azure portal](https://port
 
 Visszatérítés egy foglalást, lépjen a **foglalás részletei** kattintson **visszatérítés**.
 
-## <a name="how-return-and-exchange-transactions-are-processed"></a>Hogyan vissza és az exchange-tranzakciók feldolgozása
+## <a name="how-transactions-are-processed"></a>Tranzakciók feldolgozásának módja
 
 Először a Microsoft megszakítja a meglévő foglalási, és a Foglalás időarányosan összeg visszatérítések. Ha egy exchange, az új vásárlási dolgoz fel. A Microsoft az alábbi módszereket, a fiók típusától függően és a fizetési mód használatával visszatérítések folyamatok:
 
@@ -49,7 +50,7 @@ Pénzt adnak hozzá a pénzügyi kötelezettségvállalást a cseréje és díja
 
 Ha az eredeti vásárlást kerettúllépésként történt, a Microsoft jóváírás bocsát ki.
 
-### <a name="pay-as-you-go-invoice-payment-customers-and-cloud-solution-provider-program"></a>Használatalapú fizetéses számlás fizetési ügyfelek számára, és a Cloud solution provider programról
+### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>Használatalapú fizetéses számlás fizetést, és a CSP program
 
 Az eredeti foglalás beszerzési számlát meg lett szakítva, és akkor jön létre az új számla a visszatérítés ellenében. Cserék az új számla mutatja be, és az új vásárlási visszatérítés. A visszatérítés összege módosul a vásárlás ellen. Csak térítjük egy foglalást, ha a időarányos összeg marad a Microsoft, és egy későbbi foglalásvásárlás ellen úgy kell beállítani.
 
@@ -74,7 +75,7 @@ Az eredeti számla meg lett szakítva, és a egy új számlát hoznak létre. A 
 - Csak a Foglalás tulajdonosok visszatérítést tud feldolgozni. [Ismerje meg, hogyan hozzáadása vagy módosítása egy foglalást kezelésére jogosult felhasználók](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 - A Microsoft fenntartja a jogot bármely értéket ad vissza, a 12 %-os napján belül pótdíj díja szerint számítjuk fel, bár a büntetés nem jelenleg díjat számítunk fel.
 
-## <a name="exchange-a-non-premium-storage-vm-reservation-for-a-premium-storage-reservation"></a>Exchange-egy nem prémium szintű tárolás Virtuálisgép-foglalás egy prémium szintű storage-foglalás
+## <a name="exchange-non-premium-storage-for-premium-storage"></a>Exchange a nem prémium szintű storage prémium szintű tárfiók
 
 A virtuális gép méretét, amely nem támogatja a premium storage egy megfelelő Virtuálisgép-méretet, amelyet a megvásárolt foglalás tudjon cserélni. Ha például egy _F1_ számára egy _F1s_. Ahhoz, hogy az exchange, ugorjon a Foglalás részleteit, és kattintson **Exchange**. Az Exchange-hez nem időszak a fenntartott példány visszaállítása, vagy hozzon létre egy új tranzakciót.
 

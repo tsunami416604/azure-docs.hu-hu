@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 04/17/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f4d232d4d6043ede3979db67e5cd35130d931bef
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.openlocfilehash: 008d6d2a9a4a20e9fd083e9e2f009396a7f14df2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369445"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995914"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Gyors útmutató: Üzembe helyezéséhez az Azure-ban az Azure portal használatával
 
@@ -35,31 +35,29 @@ Válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Instanc
 
 ![Új tárolópéldány létrehozásának megkezdése az Azure Portalon][aci-portal-01]
 
-Írja be a következő értékeket a **Tároló neve**, **Tárolórendszerkép**, és **Erőforráscsoport** szövegmezőkbe. A többi értéket hagyja az alapértelmezett értéken, majd válassza az **OK** lehetőséget.
+Az a **alapjai** lapon, a következő értékeket adja a **erőforráscsoport**, **Tárolónév**, és **tárolórendszerkép** szövegmezők. A többi értéket hagyja az alapértelmezett értéken, majd válassza az **OK** lehetőséget.
 
+* Erőforráscsoport: **Új létrehozása** > `myresourcegroup`
 * Tárolónév: `mycontainer`
 * Tárolórendszerkép: `mcr.microsoft.com/azuredocs/aci-helloworld`
-* Erőforráscsoport: **Új létrehozása** > `myResourceGroup`
 
 ![Új tárolópéldány alapbeállításainak konfigurálása az Azure Portalon][aci-portal-03]
 
-Ebben a rövid útmutatóban ne módosítsa az alapértelmezett beállítás a **nyilvános** üzembe helyezéséhez a nyilvános Microsoft `aci-helloworld` kép. Ez a rendszerkép csomagok a node.js-ben, amely egy statikus HTML-oldalt szolgál egy kisméretű webalkalmazást.
+Ez a rövid útmutatóban használja az alapértelmezett **képtípus** beállításaként **nyilvános** üzembe helyezéséhez a nyilvános Microsoft `aci-helloworld` kép. A Linux-rendszerképek a node.js-ben, amely egy statikus HTML-oldalt szolgál egy kisméretű webalkalmazást csomagok.
 
-A **Konfiguráció** területen adjon meg egy **DNS-névcímkét** a tárolónak. Neve az Azure-régió, ahol a tárolópéldányt létrehozza egyedinek kell lennie. A tároló nyilvánosan elérhető az alábbi helyen: `<dns-name-label>.<region>.azurecontainer.io`. Ha „A DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
-
-Hagyja meg a **Konfiguráció** területen található többi beállítás alapértelmezett értékét, majd válassza az **OK** lehetőséget a konfiguráció érvényesítéséhez.
+Az a **hálózatkezelés** adja meg azokat a **DNS-névcímke** a tárolóhoz. Neve az Azure-régió, ahol a tárolópéldányt létrehozza egyedinek kell lennie. A tároló nyilvánosan elérhető az alábbi helyen: `<dns-name-label>.<region>.azurecontainer.io`. Ha „A DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
 ![Új tárolópéldány konfigurálása az Azure Portalon][aci-portal-04]
 
-Miután az érvényesítés befejeződött, egy összefoglalás jelenik meg a tároló beállításairól. Kattintson az **OK** gombra a tároló üzembe helyezési kérelmének elküldéséhez.
+A többi beállítást hagyja alapértelmezett értéken, majd válassza a **felülvizsgálat + létrehozása**.
+
+Miután az érvényesítés befejeződött, egy összefoglalás jelenik meg a tároló beállításairól. Válassza ki **létrehozás** a tároló üzembe helyezési kérelmének elküldéséhez.
 
 ![Új tárolópéldány beállításainak összefoglalása az Azure Portalon][aci-portal-05]
 
 Az üzembe helyezés kezdetekor egy értesítés jelenik meg, amely jelzi, hogy az üzembe helyezés folyamatban van. Amikor a tárolócsoport üzembe helyezése megtörtént, egy újabb értesítés jelenik meg.
 
-![Új tárolópéldány létrehozásának folyamata az Azure Portalon][aci-portal-08]
-
-Nyissa meg a tárolócsoport áttekintését az **Erőforráscsoportok** > **myResourceGroup** > **mycontainer** útvonalon. Jegyezze fel a tárolópéldány teljes tartománynevét (**FQDN**) és **Állapotát**.
+Nyissa meg a tárolócsoport áttekintése az **erőforráscsoportok** > **myresourcegroup** > **mycontainer**. Jegyezze fel a tárolópéldány teljes tartománynevét (**FQDN**) és **Állapotát**.
 
 ![Tárolócsoport áttekintése az Azure Portalon][aci-portal-06]
 

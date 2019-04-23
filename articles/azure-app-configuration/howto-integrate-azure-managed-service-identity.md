@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: c2afc96ca5f7e30d5474f66bdad0cfec88a89580
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 84dddf5ed9c31e8585480319af189d31e39163e5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59700203"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998991"
 ---
 # <a name="tutorial-integrate-with-azure-managed-identities"></a>Oktatóanyag: Integrálása az Azure által felügyelt identitások
 
@@ -194,8 +194,6 @@ A .NET-keretrendszer és a Java Spring alkalmazás konfigurációszolgáltatók 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>További lépések
-
-Ebben az oktatóanyagban egy Azure hozzáadott felügyeltszolgáltatás-identitás leegyszerűsítheti az Alkalmazáskonfigurációt hozzá, és az alkalmazás hitelesítőadat-kezelés javítására. Ismerje meg, hogyan használhatja az Alkalmazáskonfigurációt, folytassa az Azure CLI-minták.
 
 > [!div class="nextstepaction"]
 > [CLI-minták](./cli-samples.md)

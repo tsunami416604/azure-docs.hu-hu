@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: ff8ef576a0dae0f03cc0c80f83ce0c24cf3945a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 40a7bba99068ebc2368e413199cf966bd2e4f25c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093735"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002901"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>Oktatóanyag: Manuális feladatátvétel végrehajtása egy IoT hub (nyilvános előzetes verzió)
 
@@ -49,9 +49,6 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
     **Régió**: Válasszon ki egy közeli régiót, amely része az előzetes verziónak. Ebben az oktatóanyagban a következőt használjuk: `westus2`. A feladatátvétel csak földrajzilag párosított Azure-régiók között hajtható végre. A westus2 régióval földrajzilag párosított régió a WestCentralUS régió.
     
-   > [!NOTE]
-   > Manuális feladatátvétel jelenleg nyilvános előzetes verzióban érhető el, és el *nem* a következő Azure-régióban érhető el: USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Észak-Európa, Nyugat-Európa, Dél-Brazília és USA déli középső RÉGIÓJA.
-
    **IoT hub neve**: Adja meg az IoT hub nevét. A hub nevének globálisan egyedinek kell lennie. 
 
    ![IoT hub létrehozásához az Alapvető beállítások panelt ábrázoló képernyőkép](./media/tutorial-manual-failover/create-hub-02-basics.png)

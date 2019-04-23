@@ -16,18 +16,18 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: ee714cd87676c519c1bbfca2c08b62287299114e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: MT
+ms.openlocfilehash: cdd9910bfef96f56cfa8c8e81363ff9bdb40f444
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700621"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005502"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Linux rendszerű virtuális gép létrehozása egy rendelkezésre állási zónában az Azure CLI-vel
 
 Ez a cikk végigvezeti az Azure CLI használatával egy Linux rendszerű virtuális gép létrehozása az Azure rendelkezésre állási zónában. A [rendelkezésre állási zónák](../../availability-zones/az-overview.md) egy Azure-régió fizikailag elkülönített zónáit jelentik. Az alkalmazások és az adatok védelmét rendelkezésre állási zónákkal biztosíthatja nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére.
 
-Rendelkezésre állási zóna használatához egy [támogatott Azure-régióban](../../availability-zones/az-overview.md#regions-that-support-availability-zones) hozza létre a virtuális gépet.
+Rendelkezésre állási zóna használatához egy [támogatott Azure-régióban](../../availability-zones/az-overview.md#services-support-by-region) hozza létre a virtuális gépet.
 
 Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) és hogy bejelentkezett egy Azure-fiókjába való [az bejelentkezési](/cli/azure/reference-index).
 
@@ -102,7 +102,7 @@ A virtuális gép létrehozása eltarthat néhány percig. A virtuális gép lé
 
 Ha a virtuális gép egy rendelkezésre állási zónában, egy felügyelt lemezt a virtuális gép ugyanabban a rendelkezésre állási zónában jön létre. Alapértelmezés szerint egy nyilvános IP-címet is létrejön a zóna. Az alábbi példák ezeket az erőforrásokat adatainak beolvasása.
 
-Győződjön meg arról, hogy a virtuális gép felügyelt lemez a rendelkezésre állási zónában, használja a [az vm show](/cli/azure/vm) parancsba is, a lemez azonosítóját. Ebben a példában a lemezazonosítót egy változó egy későbbi lépésben használt tárolja. 
+Győződjön meg arról, hogy a virtuális gép felügyelt lemez a rendelkezésre állási zónában, használja a [az vm show](/cli/azure/vm) parancsba is, a lemez azonosítóját. Ebben a példában a Lemezazonosítót egy változó egy későbbi lépésben használt tárolja. 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)

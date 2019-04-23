@@ -7,12 +7,12 @@ ms.date: 04/16/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 5416c576e6392b7c5714ef83f152453aeff8d964
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 40d9aba4ff8fd78f6369729ddc16238e65bfc169
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59685852"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010890"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Problémák diagnosztizálása és hibaelhárítása az Azure Functions az Azure Cosmos DB-eseményindító használata során
 
@@ -31,7 +31,7 @@ Ez a cikk fog mindig tekintse meg az Azure Functions V2, amikor a futtatókörny
 
 A bővítmény csomag a főbb funkciókat, hogy támogatást nyújt az Azure Cosmos DB triggerét és kötéseit. Ezenkívül tartalmazza a [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md), ez akkor hasznos, ha azt szeretné, programozott módon kezelheti az Azure Cosmos DB a eseményindítók és kötések használata nélkül.
 
-Ha a szeretné használni az Azure Cosmos DB SDK-t, győződjön meg arról, hogy nem ad hozzá a projekt NuGet-csomag egy másik hivatkozást. Ehelyett **lehetővé teszik az SDK-leírás keresztül az Azure Functions-kiterjesztési csomag megoldásához**.
+Ha szeretné használni az Azure Cosmos DB SDK, győződjön meg arról, hogy nem ad hozzá a projekt NuGet-csomag egy másik hivatkozást. Ehelyett **lehetővé teszik az SDK-leírás keresztül az Azure Functions-kiterjesztési csomag megoldásához**.
 
 Emellett ha manuálisan hoz létre a saját példányát a [Azure Cosmos DB SDK-ügyfél](./sql-api-sdk-dotnet-core.md), kövesse a mintát, hogy az ügyfél csak egy példánya [egyszeres minta módszerével](../azure-functions/manage-connections.md#documentclient-code-example-c) . Ez a folyamat elkerüli a potenciális szoftvercsatorna problémák egy részét a műveletek.
 

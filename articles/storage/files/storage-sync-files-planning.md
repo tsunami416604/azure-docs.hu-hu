@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: ad3b5a1d684c500eff3d20832d7aa290a13849b9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e5078176b14835938c190daa031c12055ba9ffc3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918637"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996356"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -113,7 +113,7 @@ Az eredmények megjelenítése a fürt megosztott kötetei szolgáltatás:
 ### <a name="system-requirements"></a>Rendszerkövetelmények
 - A Windows Server 2012 R2, Windows Server 2016 vagy Windows Server 2019 futtató kiszolgálón:
 
-    | Verzió | Támogatott termékváltozatok | Támogatott központi telepítési beállítások |
+    | Version | Támogatott termékváltozatok | Támogatott központi telepítési beállítások |
     |---------|----------------|------------------------------|
     | A Windows Server 2019 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
     | Windows Server 2016 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
@@ -242,7 +242,7 @@ Az Azure File Sync csak az alábbi régiókban érhető el:
 | Kelet-Kanada | Quebec város |
 | Közép-India | Pune |
 | USA középső régiója | Iowa |
-| Kelet-Ázsia | Hongkong KKT |
+| Kelet-Ázsia | Hongkong (KKT) |
 | USA keleti régiója | Virginia |
 | USA 2. keleti régiója | Virginia |
 | Kelet-Japán | Tokió, Szaitama |

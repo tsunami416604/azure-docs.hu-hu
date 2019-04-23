@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: 59213c5391b5b652eeead05c4a5af761571fcece
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ec037b16840afe669ac3934beaa832f850cdcfb0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798946"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003683"
 ---
 # <a name="logs-in-azure-monitor"></a>Naplók az Azure Monitorban
 
@@ -112,7 +112,7 @@ Az Azure Monitor naplóadatokat gyűjthet, különböző forrásokból is Azure-
 
 | Adatok | Leírás |
 |:---|:---|
-| Az Azure Monitor for containers szolgáltatásban | Leltár-és teljesítményadatok által gyűjtött [-tárolókhoz az Azure Monitor](../insights/container-insights-overview.md). Lásd: [tároló adatgyűjtési részletei](../insights/container-insights-analyze.md#container-data-collection-details) a táblák listáját. |
+| Azure Monitor tárolókhoz | Leltár-és teljesítményadatok által gyűjtött [-tárolókhoz az Azure Monitor](../insights/container-insights-overview.md). Lásd: [tároló adatgyűjtési részletei](../insights/container-insights-log-search.md#container-records) a táblák listáját. |
 | Azure Monitor virtuális gépekhez | Térkép-és teljesítményadatok által gyűjtött [-beli virtuális gépek az Azure Monitor](../insights/vminsights-overview.md). Lásd: [naplók az Azure Monitor lekérdezni a virtuális gépek](../insights/vminsights-log-search.md) kapcsolatos részleteket az adatok lekérdezéséhez. |
 
 ### <a name="custom"></a>Egyéni 

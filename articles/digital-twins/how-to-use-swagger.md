@@ -9,21 +9,18 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9a1d328f79405b14ffd84e07cb915566bd686c8e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: MT
+ms.openlocfilehash: 1746e1d53be01e6c40b5d1948c666960970b75a0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120954"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001983"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Az Azure digitális Twins Swagger dokumentációja
 
 Minden üzembe helyezett Azure digitális Twins-példány saját automatikusan generált Swagger dokumentációja tartalmazza.
 
 [Swagger](https://swagger.io/), vagy [OpenAPI](https://www.openapis.org/), több egység egy interaktív és nyelvtől referencia erőforrás összetett API információval. Swagger biztosít a kritikus fontosságú – referenciaanyag melyik JSON hasznos adatot, a HTTP-metódusok és a egy API-hoz műveletek végrehajtása az eszközspecifikus végpontokat.
-
-> [!IMPORTANT]
-> A Swagger-hitelesítés támogatása ideiglenesen le van tiltva, a nyilvános előzetes verzióban.
 
 ## <a name="swagger-summary"></a>Swagger-összefoglaló
 
@@ -98,7 +95,42 @@ A példák is hibakódok javításához vagy javítása sikertelen tesztek segí
 Interaktív módon az OAuth 2.0 által védett kérelmek tesztelésével kapcsolatos további tudnivalókért tekintse meg a [dokumentációs](https://swagger.io/docs/specification/authentication/oauth2/).
 
 > [!NOTE]
-> OAuth 2.0 típusú hitelesítés támogatása ideiglenesen le van tiltva, a nyilvános előzetes verzióban.
+> A résztvevő felhasználó, aki létrehozta az Azure digitális Twins erőforrás terület rendszergazdai szerepkör-hozzárendelés lesz, és tudni hozzon létre további szerepkör-hozzárendelések más felhasználók számára.
+
+1. Kövesse a [ebben a rövid útmutatóban](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) hozhat létre egy Azure AD-alkalmazást típusú ***webalkalmazás / API***. Vagy használhat egy meglévő alkalmazás regisztrációja.
+
+2. Vegye fel az alkalmazásregisztráció a következő válasz URL-cím:
+
+    ```plaintext
+    https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
+    ```
+    | Name (Név)  | Csere erre | Példa |
+    |---------|---------|---------|
+    | YOUR_SWAGGER_URL | A felügyeleti REST API dokumentációjában található URL-címe a portálon  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
+
+3. Adja meg az alkalmazást, elérheti az Azure digitális Twins engedélyeket. A **szükséges engedélyek**, adja meg `Azure Digital Twins` válassza **delegált engedélyek**. Válassza ki **engedélyek megadása**.
+
+    ![Az Azure AD-alkalmazásregisztrációk api hozzáadása](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
+
+4. Az OAuth 2.0 implicit engedélyezési folyamat engedélyezése az alkalmazásjegyzék konfigurálása. Kattintson a **Manifest** az alkalmazásjegyzékben, az alkalmazás megnyitásához. Állítsa be *oauth2AllowImplicitFlow* való `true`.
+
+    ![Az Azure AD implicit folyamat](../../includes/media/digital-twins-permissions/aad-app-allow-implicit-flow.png)
+
+5. Másolja ki az Azure AD-alkalmazás azonosítója.
+
+6. Kattintson az Engedélyezés gombra a swagger-lapon.
+
+    ![Swagger gomb engedélyezése](../../includes/media/digital-twins-permissions/swagger-select-authorize-btn.png)
+
+7. Illessze be az Alkalmazásazonosítót a client_id mező.
+
+    ![Swagger client_id mező](../../includes/media/digital-twins-permissions/swagger-auth-form.png)
+
+    ![Swagger-alkalmazás engedélyek megadása](../../includes/media/digital-twins-permissions/swagger-grant-application-permissions.png)
+
+8. Meg kell jelennie a tulajdonosi hitelesítési jogkivonat átadott az engedélyezési fejléc és az eredmény jelenik meg a bejelentkezett felhasználó identitását.
+
+    ![Swagger-jogkivonat eredménye](../../includes/media/digital-twins-permissions/swagger-token-example.png)
 
 ## <a name="next-steps"></a>További lépések
 

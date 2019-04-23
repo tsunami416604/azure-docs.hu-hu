@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/22/2019
-ms.openlocfilehash: 32d5d0d25c843be1cba1916e7679faa930e8e645
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.date: 04/13/2019
+ms.openlocfilehash: d9b9aae8bea323e5aac74a2e317b82d4cb43568f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671798"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60118602"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel
 
@@ -35,6 +35,12 @@ Foglalás javaslatok használhatja annak meghatározásához, a foglalásokat, m
 - Az Azure Advisor biztosít az egyes előfizetések vásárlási javaslatok.  
 - Az API-k segítségével vásárlási javaslatok megosztott hatókörrel és a egy előfizetési hatókört. További információkért lásd: [fenntartott példány vásárlási javaslatok API-k a vállalati ügyfelek](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 - A nagyvállalati szerződéssel rendelkező ügyfelek a beszerzési javaslatok megosztott, és a egy előfizetési hatókört érhetők el, a [Azure Consumption Insights Power BI-tartalomcsomag](/power-bi/service-connect-to-azure-consumption-insights).
+
+### <a name="classic-vms-and-cloud-services"></a>Klasszikus virtuális gépek és felhőszolgáltatások
+
+Fenntartott virtuálisgép-példányok automatikusan mindkét klasszikus virtuális gépekre vonatkozik, és a felhőszolgáltatások, ha a példány mérete rugalmasan engedélyezve van. Nincs semmilyen különleges termékváltozatok klasszikus virtuális gépeket vagy felhőszolgáltatásokat. Azonos virtuális gépek Termékváltozatait vonatkoznak rájuk.
+
+Például előfordulhat, hogy alakíthatja a klasszikus virtuális gépeket és a cloud services az Azure Resource Manager-alapú virtuális gépeket. Ebben a példában a foglalási kedvezményt automatikusan alkalmazza a megfelelő virtuális gépek. Nem kell a *exchange* meglévő fenntartott példány – automatikusan vonatkozik.
 
 ### <a name="analyze-your-usage-information"></a>A használati adatok elemzése
 A használati adatok meghatározásához, hogy melyik foglalásokat, meg kell vásárolnia kell elemezni.
@@ -74,14 +80,8 @@ Fenntartott VM-példányok néhány kivétellel a legtöbb Virtuálisgép-méret
     |Optimalizálás:     |Virtuálisgép-példányok rugalmassága mérete alkalmazza a foglalási kedvezményt többi virtuális géphez ugyanazon [VM-méret csoport](https://aka.ms/RIVMGroups). Kapacitás prioritása priorizálja az Adatközpont-kapacitás az üzemelő példányok. Ez kínál a további megbízhatósági arra, hogy indítsa el a Virtuálisgép-példányok, amikor szüksége van rájuk. Kapacitás prioritása csak akkor használható, ha a Foglalás hatóköre egy előfizetés. |
     |Időtartam        |Egy vagy három év.|
     |Mennyiség    |A Foglalás belül megvásárolt példányok száma. A mennyiség a futó kérheti le a számlázási kedvezményt Virtuálisgép-példányok számát. Például ha 10 Standard_D2 virtuális gépeket futtat az USA keleti régiójában, majd kell megadni mennyiség 10 az összes futó gépek juttatása maximalizálása érdekében. |
-5. Megtekintheti a fenntartás költsége kiválasztásakor **költség kiszámítása**.
 
-    ![A foglalásvásárlás elküldése előtt képernyőképe](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvminstance-purchase.png)
-
-6. Válassza a **Beszerzés** lehetőséget.
-7. Válassza ki **megtekintése a Foglalás** a vásárlás állapotának megjelenítéséhez.
-
-    ![A foglalásvásárlás elküldése után képernyőképe](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvmInstance-submit.png)
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
 ## <a name="change-a-reservation-after-purchase"></a>Egy foglalás megvásárlása után módosítása
 

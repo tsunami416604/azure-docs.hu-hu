@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 9446bbd4783aaf20f1bc9079ec43f7050274bf11
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: MT
+ms.openlocfilehash: a0581ef43e8a3c02126612a21122db559a941370
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095616"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009174"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Az Azure Service Bus Geo-disaster recovery
 
@@ -129,7 +129,7 @@ Vegye figyelembe az alábbi szempontokat figyelembe kell venni ebben a kiadásba
 A Service Bus prémium szintű Termékváltozat is támogatja a [rendelkezésre állási zónák](../availability-zones/az-overview.md), egy Azure-régión belüli, meghibásodásoktól elszigetelt helyek megadása.
 
 > [!NOTE]
-> Az Azure Service Bus prémium szintű rendelkezésre állási zónák támogatása csak érhető el a [Azure-régiók](../availability-zones/az-overview.md#regions-that-support-availability-zones) ahol jelen-e rendelkezésre állási zónák.
+> Az Azure Service Bus prémium szintű rendelkezésre állási zónák támogatása csak érhető el a [Azure-régiók](../availability-zones/az-overview.md#services-support-by-region) ahol jelen-e rendelkezésre állási zónák.
 
 Engedélyezheti a rendelkezésre állási zónák a csak az új névterek az Azure portal használatával. A Service Bus nem támogatja a meglévő névterek áttelepítésének. Miután engedélyezte a a névtérben nem tiltható le a zone redudancy.
 

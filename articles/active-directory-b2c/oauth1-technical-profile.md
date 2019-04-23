@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86de73394d96d1122abce44504d2b0fd99a01841
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 3fe839de8cbaa0b321b0b0602b000b7575224dde
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915782"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010058"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy OAuth1 technikai profil meghatározása
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az Azure Active Directory (Azure AD) B2C támogatást biztosít a [OAuth 1.0-s protokollt](https://tools.ietf.org/html/rfc5849) identitásszolgáltató. Ez a cikk ismerteti, amely támogatja a szabványos protokoll Jogcímszolgáltatók folytatott interakcióra szolgáló technikai profil adatait. OAuth1-a technikai profilban, akkor egy OAuth1 használatával is összevonható az identitásszolgáltató, mint például a Twitter, így Ön a felhasználók jelentkezzen be a meglévő közösségi vagy vállalati identitásokat alapján.
+Az Azure Active Directory (Azure AD) B2C támogatást biztosít a [OAuth 1.0-s protokollt](https://tools.ietf.org/html/rfc5849) identitásszolgáltató. Ez a cikk ismerteti, amely támogatja a szabványos protokoll Jogcímszolgáltatók folytatott interakcióra szolgáló technikai profil adatait. OAuth1 műszaki profillal OAuth1 alapján Identitásszolgáltatóként, mint például a Twitter használatával is összevonható. Összevonás az identitásszolgáltató lehetővé teszi a felhasználóknak, hogy jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
 
 ## <a name="protocol"></a>Protokoll
 
@@ -46,7 +46,7 @@ A **OutputClaimsTransformations** elemet tartalmazhat egy gyűjteményét **Outp
 
 Az alábbi példa bemutatja a jogcímeket, a Twitter-identitás szolgáltató által visszaadott:
 
-- A **user_id** jogcímet, amelyet le van képezve a **socialIdpUserId** jogcím.
+- A **user_id** jogcímet, amelyet le van képezve a **issuerUserId** jogcím.
 - A **screen_name** jogcímet, amelyet le van képezve a **displayName** jogcím.
 - A **e-mail** jogcím a felhasználónév-leképezés nélkül.
 
@@ -57,7 +57,7 @@ A technikai profil is az identitásszolgáltató nem adott vissza jogcímeket ad
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="user_id" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="user_id" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="screen_name" />
   <OutputClaim ClaimTypeReferenceId="email" />
   <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="twitter.com" />
@@ -87,7 +87,7 @@ A **CryptographicKeys** elem tartalmazza a következő attribútumot:
 
 ## <a name="redirect-uri"></a>Átirányítási URI
 
-Az identitásszolgáltató az átirányítási URL-cím konfigurálásakor adja meg a `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Cserélje le **bérlői** a bérlő neve (például: contosob2c.onmicrosoft.com) és **policyId** azonosítóval a szabályzat (például b2c_1a_policy). Az átirányítási URI-t kell lennie az összes kisbetűt. Egy átirányítási UR minden szabályzat, amely az identity provider-bejelentkezés használatához hozzá kell adnia. 
+Az identitásszolgáltató az átirányítási URL-cím konfigurálásakor adja meg a `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`. Cserélje le **bérlői** a bérlő neve (például: contosob2c.onmicrosoft.com) és **policyId** azonosítóval a szabályzat (például b2c_1a_policy). Az átirányítási URI-t kell lennie az összes kisbetűt. Adjon hozzá egy átirányítási URL-címet minden szabályzat, amely az identity provider-bejelentkezés használatához. 
 
 Ha használja a **b2clogin.com** helyett tartományi **login.microsoftonline.com** ügyeljen arra, hogy a b2clogin.com használata helyett login.microsoftonline.com.
 
