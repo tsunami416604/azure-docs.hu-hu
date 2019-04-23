@@ -80,9 +80,9 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Lapozás|[Lapozás](api-management-template-data-model-reference.md#Paging) entitás.|A termékek gyűjtemény lapozási adatait.|  
-|Szűrés|[Szűrés](api-management-template-data-model-reference.md#Filtering) entitás.|A termékek-lista oldalára kapcsolatos információkat.|  
-|Termékek|A gyűjtemény [termék](api-management-template-data-model-reference.md#Product) entitásokat.|Az aktuális felhasználó számára látható termékeket.|  
+|Paging|[Lapozás](api-management-template-data-model-reference.md#Paging) entitás.|A termékek gyűjtemény lapozási adatait.|  
+|Filtering|[Szűrés](api-management-template-data-model-reference.md#Filtering) entitás.|A termékek-lista oldalára kapcsolatos információkat.|  
+|Products|A gyűjtemény [termék](api-management-template-data-model-reference.md#Product) entitásokat.|Az aktuális felhasználó számára látható termékeket.|  
   
 ### <a name="sample-template-data"></a>Mintaadatok sablon  
   
@@ -208,12 +208,12 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 |Product|[A termék](api-management-template-data-model-reference.md#Product)|A megadott termék.|  
 |IsDeveloperSubscribed|logikai|Hogy az aktuális felhasználó a termékre elő van fizetve.|  
 |SubscriptionState|szám|Az előfizetés állapotát. Lehetséges állapotok a következők:<br /><br /> -   `0 - suspended` – az előfizetés le van tiltva, és az előfizető nem hívható meg a termék minden API-k.<br />-   `1 - active` – az előfizetés nem aktív.<br />-   `2 - expired` – az előfizetés elérte a lejárati dátum és az inaktiválva lett.<br />-   `3 - submitted` – az előfizetési kérést, fejlesztője által lett végrehajtva, de még nincs jóváhagyták vagy elutasították.<br />-   `4 - rejected` – az előfizetés kérelem el lett utasítva, egy rendszergazda.<br />-   `5 - cancelled` – az előfizetés a fejlesztői vagy a rendszergazda megszakította.|  
-|Korlátok|tömb|Ez a tulajdonság elavult, és nem használható.|  
+|Limits|tömb|Ez a tulajdonság elavult, és nem használható.|  
 |DelegatedSubscriptionEnabled|logikai|E [delegálás](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) ehhez az előfizetéshez engedélyezve van.|  
 |DelegatedSubscriptionUrl|sztring|Ha a delegálás engedélyezve van, a meghatalmazott előfizetés URL-címe.|  
 |IsAgreed|logikai|Ha a termék használati, hogy az aktuális felhasználó elfogadta a feltételeket.|  
-|Előfizetések|A gyűjtemény [előfizetés összefoglalás](api-management-template-data-model-reference.md#SubscriptionSummary) entitásokat.|Az előfizetések a termékhez.|  
-|API-k|A gyűjtemény [API](api-management-template-data-model-reference.md#API) entitásokat.|A termék API-k.|  
+|Subscriptions|A gyűjtemény [előfizetés összefoglalás](api-management-template-data-model-reference.md#SubscriptionSummary) entitásokat.|Az előfizetések a termékhez.|  
+|Apis|A gyűjtemény [API](api-management-template-data-model-reference.md#API) entitásokat.|A termék API-k.|  
 |CannotAddBecauseSubscriptionNumberLimitReached|logikai|Az aktuális felhasználó-e előfizetni az előfizetésre vonatkozó korlát tekintetében a termék jogosult.|  
 |CannotAddBecauseMultipleSubscriptionsNotAllowed|logikai|Az aktuális felhasználó-e jogosult az előfizetés a termékre, vagy nem engedélyezett több előfizetéssel kapcsolatban.|  
   
