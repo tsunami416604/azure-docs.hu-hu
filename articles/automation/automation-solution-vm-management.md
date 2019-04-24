@@ -248,8 +248,8 @@ Automation két rekordtípust hoz létre a Log Analytics-munkaterület: feladat-
 
 |Tulajdonság | Leírás|
 |----------|----------|
-|Hívó |  A művelet kezdeményezője. Lehetséges értékek: egy e-mail-cím vagy egy ütemezett feladatokat tartalmazó rendszer.|
-|Kategória | Az adattípus besorolása. Az Automation esetében az érték JobLogs.|
+|Caller |  A művelet kezdeményezője. Lehetséges értékek: egy e-mail-cím vagy egy ütemezett feladatokat tartalmazó rendszer.|
+|Category | Az adattípus besorolása. Az Automation esetében az érték JobLogs.|
 |CorrelationId | GUID, a runbook-feladat korrelációs azonosítója.|
 |JobId | GUID, a runbook-feladat azonosítója.|
 |operationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat.|
@@ -269,8 +269,8 @@ Automation két rekordtípust hoz létre a Log Analytics-munkaterület: feladat-
 
 |Tulajdonság | Leírás|
 |----------|----------|
-|Hívó |  A művelet kezdeményezője. Lehetséges értékek: egy e-mail-cím vagy egy ütemezett feladatokat tartalmazó rendszer.|
-|Kategória | Az adattípus besorolása. Az Automation esetében az érték JobStreams.|
+|Caller |  A művelet kezdeményezője. Lehetséges értékek: egy e-mail-cím vagy egy ütemezett feladatokat tartalmazó rendszer.|
+|Category | Az adattípus besorolása. Az Automation esetében az érték JobStreams.|
 |JobId | GUID, a runbook-feladat azonosítója.|
 |operationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat.|
 |ResourceGroup | Meghatározza a runbook-feladat erőforráscsoportjának nevét.|
