@@ -108,8 +108,6 @@
         - name: AKS-fürt törlése
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Azure AD-kompatibilis AKS
-          href: aad-integration.md
         - name: Virtuális csomópontok létrehozása (előzetes verzió)
           items:
             - name: Azure CLI
@@ -172,8 +170,18 @@
           href: control-kubeconfig-access.md
         - name: Podforgalom biztonságossá tétele hálózati szabályzatokkal (előzetes verzió)
           href: use-network-policies.md
+        - name: Podbiztonsági szabályzatok használata
+          href: use-pod-security-policies.md
         - name: A fürt szolgáltatásneve hitelesítő adatainak frissítése
           href: update-credentials.md
+        - name: Azure Active Directory-integráció engedélyezése
+          items:
+            - name: Az Azure parancssori felületének használata
+              href: azure-ad-integration-cli.md
+            - name: Az Azure Portal használata
+              href: azure-ad-integration.md
+        - name: Kubernetes RBAC használata Azure AD-integrációval
+          href: azure-ad-rbac.md
         - name: Hitelesítés az ACR segítségével
           href: ../container-registry/container-registry-auth-aks.md
           maintainContext: true

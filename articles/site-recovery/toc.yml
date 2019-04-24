@@ -29,6 +29,8 @@
           href: azure-to-azure-tutorial-migrate.md
         - name: Azure-beli virtuális gépek áthelyezése rendelkezésre állási zónákba
           href: move-Azure-VMs-AVset-Azone.md
+        - name: Azure-beli virtuális gépek áthelyezése kormányzati és nyilvános régiók között
+          href: region-move-cross-geos.md
     - name: VMware rendszerű virtuális gépek vészhelyreállítása az Azure-ba
       items:
         - name: Az Azure előkészítése
@@ -175,6 +177,10 @@
               href: azure-to-azure-autoupdate.md
             - name: Az Azure Site Recovery frissítései
               href: service-updates-how-to.md
+            - name: Kiszolgálók eltávolítása és a védelem letiltása
+              href: site-recovery-manage-registration-and-protection.md
+            - name: Tároló törlése
+              href: delete-vault.md
     - name: Vészhelyreállítás VMware-ről Azure-ba
       items:
         - name: A hálózat beállítása

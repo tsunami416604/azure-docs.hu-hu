@@ -1,221 +1,210 @@
-items:
 - name: Az Azure Machine Learning service dokumentációja
   href: index.yml
 - name: Áttekintés
-  items:
-  - name: Mi az Azure Machine Learning szolgáltatás?
-    displayName: AML services overview
-    href: overview-what-is-azure-ml.md
-  - name: Mi történt a Workbenchcsel?
-    displayName: desktop ui Workbench upgrade update transfer
-    href: overview-what-happened-to-workbench.md
   expanded: true
+  items:
+    - name: Mi az Azure Machine Learning szolgáltatás?
+      displayName: AML services overview
+      href: overview-what-is-azure-ml.md
+    - name: Mi történt a Workbenchcsel?
+      displayName: desktop ui Workbench upgrade update transfer
+      href: overview-what-happened-to-workbench.md
 - name: Beállítás
   items:
-  - name: Munkaterület létrehozása
-    displayName: install sdk workspace
-    href: setup-create-workspace.md
+    - name: Munkaterület létrehozása
+      displayName: install sdk workspace
+      href: setup-create-workspace.md
 - name: Gyors útmutatók
   items:
-  - name: Kísérletezés felhőbeli jegyzetfüzettel
-    displayName: workspace
-    href: quickstart-run-cloud-notebook.md
-  - name: Kísérletezés helyi jegyzetfüzettel
-    displayName: workspace, install, sdk
-    href: quickstart-run-local-notebook.md
+    - name: Kísérletezés felhőbeli jegyzetfüzettel
+      displayName: workspace
+      href: quickstart-run-cloud-notebook.md
+    - name: Kísérletezés helyi jegyzetfüzettel
+      displayName: 'workspace, install, sdk'
+      href: quickstart-run-local-notebook.md
 - name: Oktatóanyagok
   items:
-  - name: Képbesorolás (MNIST-adatok)
-    items:
-    - name: 1. Modell betanítása
-      displayName: build modeling
-      href: tutorial-train-models-with-aml.md
-    - name: 2. Modell üzembe helyezése
-      href: tutorial-deploy-models-with-aml.md
-  - name: Regresszió (NYC Taxi adatai)
-    items:
-    - name: 1. Adatok előkészítése modellezéshez
-      displayName: data prep
-      href: tutorial-data-prep.md
-    - name: 2. Automatizált gépi tanulási modellek betanítása
-      displayName: automl, automated, auto ml,
-      href: tutorial-auto-train-models.md
+    - name: Képbesorolás (MNIST-adatok)
+      items:
+        - name: 1. Modell betanítása
+          displayName: build modeling
+          href: tutorial-train-models-with-aml.md
+        - name: 2. Modell üzembe helyezése
+          href: tutorial-deploy-models-with-aml.md
+    - name: Regresszió (NYC Taxi adatai)
+      items:
+        - name: 1. Adatok előkészítése modellezéshez
+          displayName: data prep
+          href: tutorial-data-prep.md
+        - name: 2. Automatizált gépi tanulási modellek betanítása
+          displayName: 'automl, automated, auto ml,'
+          href: tutorial-auto-train-models.md
 - name: Példák
-  displayName: example, examples, Jupyter, azure notebooks, python, notebook, GitHub
+  displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples-notebooks.md
 - name: Alapelvek
   items:
-  - name: A szolgáltatás működése
-    displayName: architecture concepts definitions
-    href: concept-azure-machine-learning-architecture.md
-  - name: Automatizált gépi tanulás
-    displayName: automl, auto ml
-    href: concept-automated-ml.md
-  - name: Modellkezelés
-    displayName: deploy, deployment
-    href: concept-model-management-and-deployment.md
-  - name: Modell értelmezhetősége
-    displayName: explainability
-    href: machine-learning-interpretability-explainability.md
-  - name: Gyorsítás FPGA-kkal
-    href: concept-accelerate-with-fpgas.md
-  - name: Machine Learning-folyamatok
-    href: concept-ml-pipelines.md
-  - name: Biztonság
-    items:
-    - name: Vállalati biztonság áttekintése
-      displayName: authorization authentication encryption
-      href: concept-enterprise-security.md
-    - name: Felhasználók és szerepkörök kezelése
-      href: how-to-assign-roles.md
-    - name: Virtuális hálózatok használata
-      displayName: vnet
-      href: how-to-enable-virtual-network.md
-    - name: Webszolgáltatások biztonságossá tétele SSL használatával
-      href: how-to-secure-web-service.md
+    - name: A szolgáltatás működése
+      displayName: architecture concepts definitions
+      href: concept-azure-machine-learning-architecture.md
+    - name: Automatizált gépi tanulás
+      displayName: 'automl, auto ml'
+      href: concept-automated-ml.md
+    - name: Modellkezelés
+      displayName: 'deploy, deployment'
+      href: concept-model-management-and-deployment.md
+    - name: Modell értelmezhetősége
+      displayName: explainability
+      href: machine-learning-interpretability-explainability.md
+    - name: Gyorsítás FPGA-kkal
+      href: concept-accelerate-with-fpgas.md
+    - name: Machine Learning-folyamatok
+      href: concept-ml-pipelines.md
+    - name: Biztonság
+      items:
+        - name: Vállalati biztonság áttekintése
+          displayName: authorization authentication encryption
+          href: concept-enterprise-security.md
+        - name: Felhasználók és szerepkörök kezelése
+          href: how-to-assign-roles.md
+        - name: Virtuális hálózatok használata
+          displayName: vnet
+          href: how-to-enable-virtual-network.md
+        - name: Webszolgáltatások biztonságossá tétele SSL használatával
+          href: how-to-secure-web-service.md
 - name: Útmutatók
   items:
-  - name: Munkaterületek kezelése
-    items:
-    - name: Portál használata a munkaterületekhez
-      href: how-to-manage-workspace.md
-    - name: Resource Manager-sablon használata
-      href: how-to-create-workspace-template.md
-  - name: Fejlesztési környezet beállítása 
-    items:
-    - name: Fejlesztési környezetek konfigurálása
-      displayName: local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB
-      href: how-to-configure-environment.md
-    - name: Visual Studio Code-bővítmény
-      displayName: Visual Studio Code, VSCode, tools, ai, vs
+    - name: Munkaterületek kezelése
       items:
-      - name: Bevezetés
-        href: how-to-vscode-tools.md
-      - name: Betanítás és üzembe helyezés
-        href: how-to-vscode-train-deploy.md
-  - name: Adatok használata
-    displayName: data prep, ETL, ELT, data preparation
-    items:
-    - name: Adatok vizsgálata és előkészítése
-      displayName: data prep, ETL, ELT, data preparation
+        - name: Portál használata a munkaterületekhez
+          href: how-to-manage-workspace.md
+        - name: Resource Manager-sablon használata
+          href: how-to-create-workspace-template.md
+    - name: "Fejlesztési környezet beállítása\_"
       items:
-      - name: Adatok betöltése
-        href: how-to-load-data.md
-      - name: Adatok átalakítása
-        href: how-to-transform-data.md
-      - name: Adatok írása
-        href: how-to-write-data.md
-  - name: Az adattárban található adatok lekérése
-    displayName: blob get fileshare access storage
-    href: how-to-access-data.md
-  - name: Modellek betanítása
-    items:
-    - name: Betanítási környezetek beállítása
-      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight
-      href: how-to-set-up-training-targets.md
-    - name: Becslők létrehozása a betanítás során
-      href: how-to-train-ml-models.md
-    - name: A PyTorch használata
-      href: how-to-train-pytorch.md
-    - name: A TensorFlow és a Keras használata
-      href: how-to-train-tensorflow.md
-    - name: Hiperparaméterek hangolása
-      displayName: parameter
-      href: how-to-tune-hyperparameters.md
-  - name: Kísérletek nyomon követése és monitorozása
-    items:
-    - name: Futtatások indítása, monitorozása vagy megszakítása
-      displayName: cancel, fail, status, child run
-      href: how-to-manage-runs.md
-    - name: A betanítási futtatások mérőszámainak naplózása
-      href: how-to-track-experiments.md
-  - name: Gépi tanulás automatizálása
-    displayName: automl, auto ml
-    items:
-    - name: Automatizált gépi tanulás használata (Python)
-      displayName: SDK automl
-      href: how-to-configure-auto-train.md
-    - name: Távoli számítógépcélok használata
-      displayName: automl automated auto ml
-      href: how-to-auto-train-remote.md
-    - name: Előrejelzési modellek automatikus betanítása
-      displayName: time series
-      href: how-to-auto-train-forecast.md
-  - name: ONNX-modellek
-    href: how-to-build-deploy-onnx.md
-  - name: Modellek üzembe helyezése
-    items:
-    - name: Az üzembe helyezés módja és helye
-      displayName: publish azure kubernetes azure container instances
-      href: how-to-deploy-and-where.md
-    - name: FPGA-k
-      href: how-to-deploy-fpga-web-service.md
-    - name: Hibaelhárítás
-      href: how-to-troubleshoot-deployment.md
-  - name: Webszolgáltatások felhasználása
-    items:
-    - name: Felhasználás valós időben
-      displayName: create client consume request response synchronous
-      href: how-to-consume-web-service.md
-    - name: Köteg-előrejelzések futtatása
-      displayName: score scoring asynchronous consume pipeline
-      href: how-to-run-batch-predictions.md
-  - name: Webszolgáltatások monitorozása
-    items:
-    - name: Modelladatok gyűjtése és kiértékelése
-      displayName: track production
-      href: how-to-enable-data-collection.md
-    - name: Monitorozás az Application Insights segítségével
-      href: how-to-enable-app-insights.md
-  - name: Az első folyamat létrehozása
-    href: how-to-create-your-first-pipeline.md
-  - name: Naplózás engedélyezése
-    displayName: logging
-    href: how-to-enable-logging.md
-  - name: Erőforráskvóták kezelése
-    displayName: limits
-    href: how-to-manage-quotas.md
-  - name: A Machine Learning parancssori felület használata
-    displayName: cli extension command line command-line az ci/cd automate automated
-    href: reference-azure-machine-learning-cli.md
-  - name: Adatok exportálása és törlése
-    displayName: GDPR
-    href: how-to-export-delete-data.md
+        - name: Fejlesztési környezetek konfigurálása
+          displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
+          href: how-to-configure-environment.md
+        - name: Visual Studio Code-bővítmények használata
+          displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
+          href: how-to-vscode-tools.md
+    - name: Adatok használata
+      displayName: 'data prep, ETL, ELT, data preparation'
+      items:
+        - name: Adatok vizsgálata és előkészítése
+          displayName: 'data prep, ETL, ELT, data preparation'
+          items:
+            - name: Adatok betöltése
+              href: how-to-load-data.md
+            - name: Adatok átalakítása
+              href: how-to-transform-data.md
+            - name: Adatok írása
+              href: how-to-write-data.md
+    - name: Az adattárban található adatok lekérése
+      displayName: blob get fileshare access storage
+      href: how-to-access-data.md
+    - name: Modellek betanítása
+      items:
+        - name: Betanítási környezetek beállítása
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-set-up-training-targets.md
+        - name: Becslők létrehozása a betanítás során
+          href: how-to-train-ml-models.md
+        - name: A PyTorch használata
+          href: how-to-train-pytorch.md
+        - name: A TensorFlow és a Keras használata
+          href: how-to-train-tensorflow.md
+        - name: Hiperparaméterek hangolása
+          displayName: parameter
+          href: how-to-tune-hyperparameters.md
+    - name: Kísérletek nyomon követése és monitorozása
+      items:
+        - name: 'Futtatások indítása, monitorozása vagy megszakítása'
+          displayName: 'cancel, fail, status, child run'
+          href: how-to-manage-runs.md
+        - name: A betanítási futtatások mérőszámainak naplózása
+          href: how-to-track-experiments.md
+    - name: Gépi tanulás automatizálása
+      displayName: 'automl, auto ml'
+      items:
+        - name: Automatizált gépi tanulás használata (Python)
+          displayName: SDK automl
+          href: how-to-configure-auto-train.md
+        - name: Távoli számítógépcélok használata
+          displayName: automl automated auto ml
+          href: how-to-auto-train-remote.md
+        - name: Előrejelzési modellek automatikus betanítása
+          displayName: time series
+          href: how-to-auto-train-forecast.md
+    - name: ONNX-modellek
+      href: how-to-build-deploy-onnx.md
+    - name: Modellek üzembe helyezése
+      items:
+        - name: Az üzembe helyezés módja és helye
+          displayName: publish azure kubernetes azure container instances
+          href: how-to-deploy-and-where.md
+        - name: FPGA-k
+          href: how-to-deploy-fpga-web-service.md
+        - name: Hibaelhárítás
+          href: how-to-troubleshoot-deployment.md
+    - name: Webszolgáltatások felhasználása
+      items:
+        - name: Felhasználás valós időben
+          displayName: create client consume request response synchronous
+          href: how-to-consume-web-service.md
+        - name: Köteg-előrejelzések futtatása
+          displayName: score scoring asynchronous consume pipeline
+          href: how-to-run-batch-predictions.md
+    - name: Webszolgáltatások monitorozása
+      items:
+        - name: Modelladatok gyűjtése és kiértékelése
+          displayName: track production
+          href: how-to-enable-data-collection.md
+        - name: Monitorozás az Application Insights segítségével
+          href: how-to-enable-app-insights.md
+    - name: Az első folyamat létrehozása
+      href: how-to-create-your-first-pipeline.md
+    - name: Naplózás engedélyezése
+      displayName: logging
+      href: how-to-enable-logging.md
+    - name: Erőforráskvóták kezelése
+      displayName: limits
+      href: how-to-manage-quotas.md
+    - name: A Machine Learning parancssori felület használata
+      displayName: cli extension command line command-line az ci/cd automate automated
+      href: reference-azure-machine-learning-cli.md
+    - name: Adatok exportálása és törlése
+      displayName: GDPR
+      href: how-to-export-delete-data.md
 - name: Referencia
   items:
-  - name: Machine learning SDK
-    displayName: api core package python
-    href: https://aka.ms/aml-sdk
-  - name: Adat-előkészítési SDK
-    displayName: api preparation package python
-    href: https://aka.ms/data-prep-sdk
-  - name: Monitorozási SDK
-    displayName: api package python monitor
-    href: https://aka.ms/aml-monitoring-sdk
+    - name: Machine learning SDK
+      displayName: api core package python
+      href: 'https://aka.ms/aml-sdk'
+    - name: Adat-előkészítési SDK
+      displayName: api preparation package python
+      href: 'https://aka.ms/data-prep-sdk'
+    - name: Monitorozási SDK
+      displayName: api package python monitor
+      href: 'https://aka.ms/aml-monitoring-sdk'
 - name: További források
   items:
-  - name: Kibocsátási megjegyzések
-    displayName: what's new issues bugs
-    href: azure-machine-learning-release-notes.md
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/machine-learning-services/
-  - name: Régiónkénti rendelkezésre állás
-    href: https://azure.microsoft.com/regions/services/
-  - name: Ismert problémák
-    displayName: bugs errors troubleshoot
-    href: resource-known-issues.md
-  - name: Felhasználói fórum
-    href: https://aka.ms/aml-forum-service
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-machine-learning
-  - name: Machine Learning-termékeink összehasonlítása
-    href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-    maintainContext: true
-ms.openlocfilehash: 647c949a8f999a34963ddfa49f1df8a1606a1295
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521767"
+    - name: Kibocsátási megjegyzések
+      displayName: what's new issues bugs
+      href: azure-machine-learning-release-notes.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Ismert problémák
+      displayName: bugs errors troubleshoot
+      href: resource-known-issues.md
+    - name: Felhasználói fórum
+      href: 'https://aka.ms/aml-forum-service'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
+    - name: Machine Learning-termékeink összehasonlítása
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
+      maintainContext: true

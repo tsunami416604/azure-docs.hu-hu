@@ -138,15 +138,11 @@
         - name: Indexelés
           items:
             - name: Áttekintés
+              displayName: 'range, spatial'
               href: index-overview.md
-            - name: Indexszabályzat
+            - name: Indexelési szabályzatok
               displayName: 'consistent, none'
               href: index-policy.md
-            - name: Indextípusok
-              displayName: 'hash, range, spatial'
-              href: index-types.md
-            - name: Indexek elérési útjai
-              href: index-paths.md
         - name: Csatorna módosítása
           items:
             - name: Áttekintés
@@ -165,6 +161,17 @@
           href: unique-keys.md
         - name: Tranzakciók és optimista egyidejűség vezérlése
           href: database-transactions-optimistic-concurrency.md
+    - name: Csatorna módosítása
+      items:
+        - name: Áttekintés
+          href: change-feed.md
+        - name: Változáscsatorna olvasása
+          href: read-change-feed.md
+        - name: Változáscsatorna feldolgozója
+          href: change-feed-processor.md
+        - name: Az Azure Functions aktiválása
+          displayName: change feed
+          href: change-feed-functions.md
     - name: Kiszolgálóoldali programozás
       items:
         - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények'
@@ -216,7 +223,61 @@
 - name: 'Cassandra, MongoDB és egyéb API-k'
   expanded: true
   items:
-    - name: MongoDB-hez készült Azure Cosmos DB API
+    - name: Cassandra API
+      items:
+        - name: Bevezetés
+          href: cassandra-introduction.md
+        - name: Vonalprotokoll-támogatás
+          href: cassandra-support.md
+        - name: Gyors útmutatók
+          items:
+            - name: .NET
+              href: create-cassandra-dotnet.md
+            - name: Java
+              href: create-cassandra-java.md
+            - name: Node.js
+              href: create-cassandra-nodejs.md
+            - name: Python
+              href: create-cassandra-python.md
+        - name: Oktatóanyagok
+          items:
+            - name: 1 – Adatok létrehozása és kezelése
+              href: create-cassandra-api-account-java.md
+            - name: 2 – Adatok betöltése
+              href: cassandra-api-load-data.md
+            - name: 3 – Adatok lekérdezése
+              href: cassandra-api-query-data.md
+            - name: 4 – Adatok migrálása
+              displayName: import
+              href: cassandra-import-data.md
+        - name: Útmutatók
+          items:
+            - name: A Spring Data tárolása és kezelése
+              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
+              maintainContext: true
+            - name: Cassandra és Spark
+              items:
+                - name: Bevezetés
+                  href: cassandra-spark-generic.md
+                - name: Kapcsolódás Databricks használatával
+                  href: cassandra-spark-databricks.md
+                - name: Kapcsolódás HDInsight használatával
+                  href: cassandra-spark-hdinsight.md
+                - name: Kulcstér és tábla létrehozása
+                  href: cassandra-spark-ddl-ops.md
+                - name: Adat beszúrása
+                  href: cassandra-spark-create-ops.md
+                - name: Adatok olvasása
+                  href: cassandra-spark-read-ops.md
+                - name: Adatok beszúrása és frissítése (upsert)
+                  href: cassandra-spark-upsert-ops.md
+                - name: Adat törlése
+                  href: cassandra-spark-delete-ops.md
+                - name: Összesítési műveletek
+                  href: cassandra-spark-aggregation-ops.md
+                - name: Táblaadatok másolása
+                  href: cassandra-spark-table-copy-ops.md
+    - name: MongoDB API
       items:
         - name: Bevezetés
           href: mongodb-introduction.md
@@ -260,13 +321,18 @@
                   href: tutorial-develop-mongodb-react.md
             - name: 2 – Adatok migrálása
               displayName: import
-              href: 'https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json'
+              href: /azure/dms/tutorial-mongodb-cosmos-db
+              maintainContext: true
             - name: 3 – Adatok lekérdezése
               href: tutorial-query-mongodb.md
             - name: 4 – Adatok globális elosztása
               href: tutorial-global-distribution-mongodb.md
         - name: Útmutatók
           items:
+            - name: Útmutató a migrálást megelőző folyamatokhoz
+              href: mongodb-pre-migration.md
+            - name: Útmutató a migrálást követő folyamatokhoz
+              href: mongodb-post-migration.md
             - name: A kapcsolati sztring lekérése
               href: connect-mongodb-account.md
             - name: Csatlakozás a Studio 3T használatával
@@ -324,60 +390,6 @@
             - name: A Spring Data tárolása és kezelése
               href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
               maintainContext: true
-    - name: Cassandra API
-      items:
-        - name: Bevezetés
-          href: cassandra-introduction.md
-        - name: Vonalprotokoll-támogatás
-          href: cassandra-support.md
-        - name: Gyors útmutatók
-          items:
-            - name: .NET
-              href: create-cassandra-dotnet.md
-            - name: Java
-              href: create-cassandra-java.md
-            - name: Node.js
-              href: create-cassandra-nodejs.md
-            - name: Python
-              href: create-cassandra-python.md
-        - name: Oktatóanyagok
-          items:
-            - name: 1 – Adatok létrehozása és kezelése
-              href: create-cassandra-api-account-java.md
-            - name: 2 – Adatok betöltése
-              href: cassandra-api-load-data.md
-            - name: 3 – Adatok lekérdezése
-              href: cassandra-api-query-data.md
-            - name: 4 – Adatok migrálása
-              displayName: import
-              href: cassandra-import-data.md
-        - name: Útmutatók
-          items:
-            - name: A Spring Data tárolása és kezelése
-              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
-              maintainContext: true
-            - name: Cassandra és Spark
-              items:
-                - name: Bevezetés
-                  href: cassandra-spark-generic.md
-                - name: Kapcsolódás Databricks használatával
-                  href: cassandra-spark-databricks.md
-                - name: Kapcsolódás HDInsight használatával
-                  href: cassandra-spark-hdinsight.md
-                - name: Kulcstér és tábla létrehozása
-                  href: cassandra-spark-ddl-ops.md
-                - name: Adat beszúrása
-                  href: cassandra-spark-create-ops.md
-                - name: Adatok olvasása
-                  href: cassandra-spark-read-ops.md
-                - name: Adatok beszúrása és frissítése (upsert)
-                  href: cassandra-spark-upsert-ops.md
-                - name: Adat törlése
-                  href: cassandra-spark-delete-ops.md
-                - name: Összesítési műveletek
-                  href: cassandra-spark-aggregation-ops.md
-                - name: Táblaadatok másolása
-                  href: cassandra-spark-table-copy-ops.md
     - name: Tábla API
       items:
         - name: Bevezetés
@@ -420,7 +432,8 @@
             - name: Ruby
               href: table-storage-how-to-use-ruby.md
             - name: 'F#'
-              href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+              href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
+              maintainContext: true
         - name: Útmutatók
           items:
             - name: Alkalmazások létrehozása Table API használatával
@@ -483,10 +496,8 @@
           href: storage-explorer.md
         - name: Adatok kezelése az Azure Cosmos Explorerrel
           href: data-explorer.md
-        - name: Indexelés
-          items:
-            - name: Indexelés kezelése
-              href: how-to-manage-indexing-policy.md
+        - name: Indexelési szabályzatok kezelése
+          href: how-to-manage-indexing-policy.md
     - name: Változáscsatorna
       items:
         - name: Több Azure Cosmos DB-eseményindító
@@ -526,7 +537,8 @@
         - name: Diagnosztikai naplózás
           href: logging.md
         - name: Alkalmazásnaplózás a Logic Apps használatával
-          href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
+          href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
+          maintainContext: true
     - name: Figyelés
       items:
         - name: Monitorozás mérőszámokkal
@@ -578,17 +590,21 @@
         - name: Azure App Service
           href: create-website.md
         - name: Azure Search-indexelő
-          href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
+          href: /azure/search/search-howto-index-cosmosdb
+          maintainContext: true
         - name: Azure Functions
           items:
             - name: Kiszolgáló nélküli számítás
               href: serverless-computing-database.md
             - name: Azure Functions-kötések
-              href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
+              href: /azure/azure-functions/functions-bindings-cosmosdb
+              maintainContext: true
         - name: Azure Data Factory
-          href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
+          href: /azure/data-factory/connector-azure-cosmos-db
+          maintainContext: true
         - name: Azure Stream Analytics
-          href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
+          href: '/azure/stream-analytics/stream-analytics-define-outputs#azure-cosmos-db'
+          maintainContext: true
         - name: A Logic Apps és a Service Bus
           href: change-feed-hl7-fhir-logic-apps.md
         - name: Az Azure Event Hubs és az Azure Storage
@@ -601,7 +617,8 @@
         - name: Azure Databricks(Spark-összekötő)
           href: spark-connector.md
         - name: Spark és Kafka
-          href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
+          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
+          maintainContext: true
         - name: ODBC-illesztő
           href: odbc-driver.md
     - name: Tömeges végrehajtói könyvtár

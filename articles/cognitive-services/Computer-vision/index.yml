@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8153bc1865d1c1fbbb1affb950bd5c245d87ad1a
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888916"
 documentType: LandingData
 title: Computer Vision API-dokumentáció
 metadata:
   title: API-dokumentáció – Computer Vision – Azure Cognitive Services | Microsoft Docs
-  description: Ismerje meg, hogyan használható a Computer Vision képek feldolgozására és információ visszaadására. Az oktatóanyagok bemutatják, hogyan hozhat létre az API-t használó alkalmazásokat.
+  description: 'Ismerje meg, hogyan használható a Computer Vision képek feldolgozására és információ visszaadására. Az oktatóanyagok bemutatják, hogyan hozhat létre az API-t használó alkalmazásokat.'
   services: cognitive-services
   author: nitinme
   manager: cgronlun
@@ -22,84 +16,92 @@ metadata:
   ms.author: nitinme
 ms.custom: seodec18
 abstract:
-  description: A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A rövid útmutatók, oktatóanyagok és példák segítségével megismerkedhet a vizuális tartalomelemzés különböző módjaival.
+  description: 'A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A rövid útmutatók, oktatóanyagok és példák segítségével megismerkedhet a vizuális tartalomelemzés különböző módjaival.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: ../media/index/computer-vision-landing-page-video.png
       width: 250
-    title: Intelligens megoldások az alkalmazások a Vision API segítségével (05:41)
-    href: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-put-intelligence-into-your-business-apps/
+    title: 'Intelligens megoldások az alkalmazások a Vision API segítségével (05:41)'
+    href: 'https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-put-intelligence-into-your-business-apps/'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/computer-vision/home
+            html: <p>További információk a Computer Vision API-ról.</p>
+            image:
+              src: ../media/index/i_overview.svg
+              alt: áttekintés ikon
+            title: Mi a Computer Vision?
+          - href: /azure/cognitive-services/computer-vision/concept-recognizing-text
+            html: <p>A szövegfelismeréssel kapcsolatos fogalmak megismerése.</p>
+            image:
+              src: ../media/index/i_tasks.svg
+              alt: feladatlista ikon
+            title: Nyomtatott és kézzel írt szöveg felismerése
+          - href: /azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi
+            html: <p>Ismerje meg a Computer Vision API meghívásának alapjait.</p>
+            image:
+              src: ../media/index/i_tasks.svg
+              alt: feladatlista ikon
+            title: A Computer Vision API meghívása
+  - title: 5 perces gyors útmutatók
     items:
-    - href: /azure/cognitive-services/computer-vision/home
-      html: <p>További információk a Computer Vision API-ról.</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Mi a Computer Vision?
-    - href: /azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe
-      html: <p>Ismerje meg a Computer Vision API előfizetési kulcsainak beszerzési folyamatát.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: A Computer Vision API előfizetési kulcsainak beszerzése
-    - href: /azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi
-      html: <p>Ismerje meg a Computer Vision API meghívásának alapjait.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: A Computer Vision API meghívása
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Képek elemzése, miniatűrök létrehozása és szöveg kinyerése egy képből, az alábbiak használatával:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Képek elemzése, miniatűrök létrehozása és szöveg kinyerése egy képből, az alábbiak használatával:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_Csharp.svg
+            text: 'C&#35;'
+            alt: C Sharp embléma
+            href: quickstarts-sdk/csharp-analyze-sdk
+          - image:
+              src: media/index/logo_java.svg
+            text: Java
+            alt: Java embléma
+            href: QuickStarts/java-analyze
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            alt: Node.js embléma
+            href: QuickStarts/node-analyze
+          - image:
+              src: media/index/logo_python.svg
+            text: Python
+            alt: C Python embléma
+            href: quickstarts-sdk/python-sdk
+          - image:
+              src: media/index/logo_go.svg
+            text: Indítás
+            alt: Go embléma
+            href: QuickStarts/go-analyze
+  - title: Részletes útmutatók
     items:
-    - image:
-        src: media/index/logo_Csharp.svg
-      text: C&#35;
-      href: quickstarts-sdk/csharp-analyze-sdk
-    - image:
-        src: media/index/logo_java.svg
-      text: Java
-      href: QuickStarts/java-analyze
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: QuickStarts/node-analyze
-    - image:
-        src: media/index/logo_python.svg
-      text: Python
-      href: quickstarts-sdk/python-sdk
-    - image:
-        src: media/index/logo_go.svg
-      text: Indítás
-      href: QuickStarts/go-analyze
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Ismerje meg a Computer Visiont használó alkalmazások fejlesztési eljárásait:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Ismerje meg a Computer Visiont használó alkalmazások fejlesztési eljárásait:'
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="Tutorials/CSharpTutorial.md">Computer Vision-alkalmazás készítése C# nyelven</a>'
+  - title: Referencia
     items:
-    - html: <a href="Tutorials/CSharpTutorial.md">Computer Vision-alkalmazás készítése C# nyelven</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: API-k
-      html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44">Computer Vision API 2.0-s verzió</a></p> <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739">Computer Vision API 1.0-s verzió</a></p>
-    - title: SDK-k
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/computervision?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable">Android (Java)</a></p> <p><a href="https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK">Swift</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: parancssori felület
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API-k
+            html: '<p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44">Computer Vision API 2.0-s verzió</a></p> <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739">Computer Vision API 1.0-s verzió</a></p>'
+          - title: SDK-k
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-computervision?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable">Android (Java)</a></p> <p><a href="https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK">Swift</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: parancssori felület
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>'

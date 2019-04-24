@@ -17,6 +17,8 @@
   items:
     - name: Docker-tárolóban futó SQL Server lekérdezése
       href: vnet-injection-sql-server.md
+    - name: Cosmos DB-szolgáltatásvégpont használata
+      href: service-endpoint-cosmosdb.md
     - name: ETL-műveletek végrehajtása
       href: databricks-extract-load-sql-data-warehouse.md
     - name: Adatok streamelése az Event Hubs használatával

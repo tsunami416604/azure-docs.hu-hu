@@ -8,12 +8,12 @@ ms.service: mysql
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
-ms.openlocfilehash: a1d5458a2b815591fc7126d429bd16a718910b30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ff389f52da0db4e394e8f6a6c37955a5f0c3861
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073894"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60475752"
 ---
 # <a name="azure-database-for-mysql-documentation"></a>A MySQL-hez készült Azure Database dokumentációja
 
@@ -21,7 +21,7 @@ A MySQL-hez készült Azure Database egy relációsadatbázis-szolgáltatás, am
 
 ## <a name="5-minute-quickstarts"></a>5 perces gyors útmutatók
 
-További információ az Azure-beli MySQL-adatbázis a következőkkel való létrehozásáról:
+További információ a MySQL Database on Azure a következőkkel való létrehozásáról:
 
 - [Azure Portal](/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)
 - [Azure CLI](/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli)
