@@ -171,7 +171,7 @@ A konfigurációs beállítások [gazdagép állapotfigyelőjét](https://github
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|engedélyezve|true|Itt adhatja meg, hogy engedélyezve van-e a szolgáltatás. | 
+|enabled|true|Itt adhatja meg, hogy engedélyezve van-e a szolgáltatás. | 
 |healthCheckInterval|10 másodperc|A háttérben történő rendszeres egészségügyi közötti időintervallum ellenőrzi. | 
 |healthCheckWindow|2 perc|Egy változó időablakban együtt használható a `healthCheckThreshold` beállítás.| 
 |healthCheckThreshold|6|Az állapot-ellenőrzés maximálisan megengedett számú meghiúsulhat a rendszer kezdeményezi a gazdagép újraindítása előtt.| 
