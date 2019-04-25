@@ -39,10 +39,10 @@ Egy tevékenység: Filter a folyamat segítségével egy kifejezést a bemeneti 
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-név | Neve a `Filter` tevékenység. | Sztring | Igen
+name | Neve a `Filter` tevékenység. | Sztring | Igen
 type | Meg kell **szűrő**. | Sztring | Igen
-feltétel | A bemeneti szűréshez használandó feltétel. | Kifejezés | Igen
-elem | A bemeneti tömb, amelyen szűrőt kell alkalmazni. | Kifejezés | Igen
+condition | A bemeneti szűréshez használandó feltétel. | Kifejezés | Igen
+items | A bemeneti tömb, amelyen szűrőt kell alkalmazni. | Kifejezés | Igen
 
 ## <a name="example"></a>Példa
 
