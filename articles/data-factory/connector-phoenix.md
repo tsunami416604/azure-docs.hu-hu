@@ -3,21 +3,22 @@ title: Adatok másolása az Azure Data Factory használatával Phoenix |} A Micr
 description: Megtudhatja, hogyan másolhat adatokat a Phoenix támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: jingwang
+origin.date: 12/07/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: 012057c7d01924ab1998a010b6ea0c7d83651a4d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017803"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405923"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Phoenix 
 
@@ -45,7 +46,7 @@ A Phoenix társított szolgáltatás a következő tulajdonságok támogatottak:
 | gazdagép | Az IP-cím vagy a gazdagép a Phoenix kiszolgáló neve. (azaz 192.168.222.160)  | Igen |
 | port | A Phoenix-kiszolgálói az ügyfélkapcsolatok figyeléséhez használt TCP portra. Az alapértelmezett érték: 8765. Ha csatlakozik az Azure Hdinsight, meg a 443-as portot. | Nem |
 | httpPath | Részleges URL-cím a Phoenix-kiszolgálóhoz. (azaz /gateway/sandbox/phoenix/version). Adja meg `/hbasephoenix0` Ha Hdinsight-fürt segítségével.  | Nem |
-| authenticationType | A Phoenix-kiszolgálóhoz való csatlakozáshoz használt hitelesítési mechanizmusa. <br/>Engedélyezett értékek a következők: **Névtelen**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
+| authenticationType | A Phoenix-kiszolgálóhoz való csatlakozáshoz használt hitelesítési mechanizmusa. <br/>Engedélyezett értékek a következők: **Anonymous**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Igen |
 | felhasználónév | A Phoenix-kiszolgálóhoz való csatlakozáshoz használt felhasználónév.  | Nem |
 | jelszó | A felhasználónévhez tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Itt adhatja meg, e-kiszolgálóhoz a rendszer SSL használatával titkosítja. Az alapértelmezett értéke FALSE (hamis).  | Nem |
@@ -66,7 +67,7 @@ A Phoenix társított szolgáltatás a következő tulajdonságok támogatottak:
     "properties": {
         "type": "Phoenix",
         "typeProperties": {
-            "host" : "<cluster>.azurehdinsight.net",
+            "host" : "<cluster>.azurehdinsight.cn",
             "port" : "443",
             "httpPath" : "/hbasephoenix0",
             "authenticationType" : "WindowsAzureHDInsightService",

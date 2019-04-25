@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: ergreenl
 ms.openlocfilehash: ba1507cd228b10972fb9e16a316b7f7e20982dbe
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198265"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60416542"
 ---
 # <a name="suspended-domains"></a>Felfüggesztett tartományok
 Ha nem tudja teljesíteni a felügyelt tartomány egy hosszú ideig Azure Active Directory Domain Services (Azure AD DS), a felügyelt tartomány felfüggesztett állapotba helyezi el. Ez a cikk azt ismerteti, miért felügyelt tartományok fel vannak függesztve, és a egy felfüggesztett tartomány javítása.

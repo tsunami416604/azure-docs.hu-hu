@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
 ms.openlocfilehash: e72e6d969649de09389ee38b94e874fad98ee08f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634104"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60409209"
 ---
-# <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Nem tulajdonosai üzembe helyezéséhez Avere vFXT engedélyezése
+# <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Az Avere vFXT nem tulajdonosi üzembe helyezésének engedélyezése
 
 Ezek az utasítások olyan megoldás, amely lehetővé teszi a felhasználói előfizetés nélkül hozhat létre egy Azure rendszer Avere vFXT tulajdonosi jogosultságokkal.
 

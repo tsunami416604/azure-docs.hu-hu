@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2fcf2ef10cbc8f6f54a65e596ea003a98f410a7b
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313294"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60415004"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszóvisszaíró?
 
@@ -59,7 +59,7 @@ A jelszóvisszaíró használandó kell rendelkeznie a következő licenccel, a 
 * A Microsoft 365 E3 vagy A3
 * A Microsoft 365 E5 vagy a5 csomag
 * Microsoft 365 F1
-* Microsoft 365 Business
+* Microsoft 365 Vállalati verzió
 
 > [!WARNING]
 > Önálló Office 365 licencelési csomagok *nem támogatják a "Önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással az"* , és rendelkezik a fenti csomagok keretében, az a funkciók működéséhez szükséges.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 794c78e6e31c58563b68a58774db90af98a44d95
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 289b9b0cb2532069c01fc9c687c844bd917355f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111033"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445685"
 ---
 # <a name="microsoft-trust-center"></a>Microsoft adatvédelmi központ
 Az Azure.com webhelyen az Azure biztonsági információk helyet biztosít a szükséges információkat, megtervezéséhez, tervezési, központi telepítése, konfigurálása, és biztonságosan kezelheti a felhőalapú megoldások. A Microsoft Trust Center az adatokat kell lennie abban, hogy az Azure platform, amelyen futtatja a szolgáltatások biztonságos is van.

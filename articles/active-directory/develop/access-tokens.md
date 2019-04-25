@@ -18,11 +18,11 @@ ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07e140ef9f561625bb89498c6b6591734e8a9b10
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563759"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60411407"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>A Microsoft identity platform hozzáférési jogkivonatok
 
@@ -101,7 +101,7 @@ Jogcím jelen, csak akkor, ha egy érték létezik, és töltse fel. Így az alk
 | `azp` | Karakterlánc, egy GUID Azonosítót | 2.0-s verziójú jogkivonatok csak szerepelnek. Az Alkalmazásazonosítót az ügyfél-token használatával. Az alkalmazás saját maga, vagy egy felhasználó nevében működhet. Az alkalmazás azonosítója általában egy alkalmazás az objektumot határozza meg, de a szolgáltatásnév-objektumot az Azure ad-ben is jelenthet. |
 | `azpacr` | "0", "1" vagy "2" | 2.0-s verziójú jogkivonatok csak szerepelnek. Azt jelzi, hogy az ügyfél hitelesítése. Nyilvános ügyfél az érték "0". Ügyfél-Azonosítóját és ügyfélkulcsát használnak, ha értéke "1". Ha ügyféltanúsítvány a hitelesítéshez használt, az érték "2". |
 | `groups` | JSON-tömböt a GUID azonosítók | A tulajdonos csoporttagságok képviselő objektumazonosítók biztosít. Ezek az értékek egyedi (lásd az Objektumazonosító) és biztonságosan használható például az erőforrás hozzáférési kényszerítése a hozzáférés kezelésében. A csoportok jogcím szerepel a csoportok konfigurálhatóak alkalmazásonkénti particionálja a `groupMembershipClaims` tulajdonságát a [alkalmazásjegyzék](reference-app-manifest.md). NULL értékű kizárja az összes csoport, csak az Active Directory biztonsági csoport tagságát, és a egy értéket "All" lesz tartalmazzák a biztonsági csoportok és az Office 365 terjesztési listák "SecurityGroup" értéket tartalmazza. <br><br>Tekintse meg a `hasgroups` használata részletesen alábbi jogcím a `groups` az implicit engedélyezés jogcím. <br>Más folyamatok Ha a felhasználó szerepel csoportok számának korlátja (SAML, 200 a JWT 150), keresztül haladnak kerettúllépési jogcím hozzáadódik a jogcím-adatforrások, amelyek a Graph-végpont, amely tartalmazza azokat a csoportokat a felhasználó. |
-| `hasgroups` | Logikai | Ha van ilyen, mindig `true`, jelzi, hogy a felhasználó szerepel-e legalább egy csoporthoz. Helyén használt a `groups` JWTs jogcím típusú implicit engedélyezés folyamatokban, ha a teljes csoportok jogcím lenne kiterjesztése a URI töredék kívül eső URL-cím hossza (jelenleg a 6 vagy a további csoportokat). Azt jelzi, hogy az ügyfélnek használnia kell a grafikon, a felhasználói csoportok meghatározására (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
+| `hasgroups` | Boolean | Ha van ilyen, mindig `true`, jelzi, hogy a felhasználó szerepel-e legalább egy csoporthoz. Helyén használt a `groups` JWTs jogcím típusú implicit engedélyezés folyamatokban, ha a teljes csoportok jogcím lenne kiterjesztése a URI töredék kívül eső URL-cím hossza (jelenleg a 6 vagy a további csoportokat). Azt jelzi, hogy az ügyfélnek használnia kell a grafikon, a felhasználói csoportok meghatározására (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
 | `groups:src1` | JSON-objektum | A jogkivonat-kérelmeket, amelyek korlátozott hossza nem (lásd: `hasgroups` fent), de továbbra is túl nagy a jogkivonatot, a felhasználó a teljes csoportok listáját mutató hivatkozást tartalmaz. Az elosztott jogcímként, a SAML helyén új jogcímként JWTs a `groups` jogcím. <br><br>**Példaérték JWT**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
 | `preferred_username` | String | Az elsődleges felhasználónév, amely a felhasználó jelöli. Ez lehet egy e-mail-címet, telefonszámot vagy egy általános felhasználónév nélkül egy megadott formátumban. Az érték mutable és idővel változhatnak. Mivel ezekre kapott válaszokon, ez az érték nem használható az engedélyezési döntésekhez.  Használat a felhasználónév mutatók azonban. A `profile` hatókör szükséges ezt a kérelmet kap. |
 | `name` | String | Itt az emberek számára olvasható érték, amely azonosítja a jogkivonat tárgyában. Az érték nem garantált, hogy egyedi legyen, ezekre kapott válaszokon, és úgy tervezték, hogy csak megjelenítési célokra használható. A `profile` hatókör szükséges ezt a kérelmet kap. |
@@ -135,7 +135,7 @@ A következő jogcímek 1.0-s verziójú jogkivonatok, ha van ilyen fog szerepel
 
 A Microsoft identitások különböző módon, ami fontos lehet az alkalmazás hitelesítheti. A `amr` jogcím egy tömb, amely több elemet is tartalmazhat, mint például `["mfa", "rsa", "pwd"]`, egy jelszó és a hitelesítő alkalmazás használt hitelesítéshez.
 
-| Érték | Leírás |
+| Value | Leírás |
 |-----|-------------|
 | `pwd` | Jelszavas hitelesítést, vagy a felhasználó Microsoft-jelszavát, vagy egy alkalmazás titkos. |
 | `rsa` | Hitelesítés alapján történt a koncepció igazolása RSA-kulcs, például az a [Microsoft Authenticator alkalmazás](https://aka.ms/AA2kvvu). Ez magában foglalja, ha a hitelesítést egy önaláírt JWT végezhető el egy szolgáltatással X509 birtokolt tanúsítványt. |

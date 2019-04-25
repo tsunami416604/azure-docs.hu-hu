@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: df329d42022f4e56b3d6d4d26519acd42caa1ae4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7198e64a11a3aa23643cc2bfb5ecff884c6a1b48
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881821"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445549"
 ---
 # <a name="microsoft-genomics-common-questions"></a>A Microsoft Genomics: Gyakori kérdések
 
@@ -73,6 +73,7 @@ A tárfiók kulcsát a Microsoft Genomics szolgáltatás a bemeneti fájlok olva
 ## <a name="what-genome-references-can-i-use"></a>Milyen genom hivatkozik használható?
 
 Ezek a hivatkozások támogatottak:
+
  |Leírások              | Az érték `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
@@ -84,15 +85,15 @@ Ezek a hivatkozások támogatottak:
 
 msgen tisztában van azzal a konfigurációs fájlok a következő formátumban:
 * Minden beállítás, a kulcs-érték párok rendelkezésre álló értékek, kulcsok egymástól kettősponttal elválasztva.
-Szóközöket a rendszer figyelmen kívül hagyja.
+  Szóközöket a rendszer figyelmen kívül hagyja.
 * Kezdődő sorokat `#` figyelmen kívül hagyja.
 * A hosszú formátumban bármely parancssori argumentum ezért a vezető kötőjelek és kötőjeleket, aláhúzásjeleket a szavak közötti cseréje egy kulcs alakítható ki. Íme néhány átalakítás példa:
 
- |Parancssori argumentum            | A konfigurációs fájl sora |
- |:-------------                   |:-------------                 |
- |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
- |`-k/--access-key KEY`            | *access_key:KEY*              |      
- |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
+  |Parancssori argumentum            | A konfigurációs fájl sora |
+  |:-------------                   |:-------------                 |
+  |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
+  |`-k/--access-key KEY`            | *access_key:KEY*              |      
+  |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
 
 ## <a name="next-steps"></a>További lépések
 

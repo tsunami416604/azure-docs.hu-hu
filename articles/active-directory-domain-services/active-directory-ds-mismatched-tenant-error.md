@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: ergreenl
 ms.openlocfilehash: d3586293574cc71011ad96fece5e5a4fdfa0b70f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191992"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417204"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Nem egyező könyvtár ki a hibákat a meglévő Azure AD Domain Services felügyelt tartományok
 Meglévő Azure AD tartományi szolgáltatásokkal felügyelt tartományban van. Ha az Azure Portalon keresse meg, és megtekintheti a felügyelt tartományhoz, a következő hibaüzenet jelenik meg:

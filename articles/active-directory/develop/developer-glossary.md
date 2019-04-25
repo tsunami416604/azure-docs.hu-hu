@@ -19,11 +19,11 @@ ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma, dadobali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 968da9212b52c1e7ea09d1472b312671c7a73449
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565527"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60410384"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft identity platform fejlesztői szószedet
 
@@ -192,7 +192,7 @@ Egy alkalmazás bejelentkezési funkciójának egyszeri bejelentkezéses (SSO) v
 
 A felhasználó a felhasználói állapot leválasztása unauthenticating folyamata társított a [ügyfélalkalmazás](#client-application) munkamenet során [jelentkezzen be](#sign-in)
 
-## <a name="tenant"></a>bérlő
+## <a name="tenant"></a>tenant
 
 Az Azure AD-címtár példányát az Azure AD-bérlő nevezzük. Számos funkciót, beleértve a biztosít:
 

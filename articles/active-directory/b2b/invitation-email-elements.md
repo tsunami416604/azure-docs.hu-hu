@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295623"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60412836"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívót tartalmazó e - Azure Active Directory elemei
 
@@ -28,7 +28,7 @@ Meghívó e-mailek minősítés kulcsfontosságú ahhoz, hogy a partnerek hajón
 ## <a name="explaining-the-email"></a>Az e-mailben tájékoztatja
 Tekintsünk meg néhány elemét az e-mailt, hogy tudja, hogyan lehet a legjobban a képességeinek használata érdekében.
 
-### <a name="subject"></a>Tárgy
+### <a name="subject"></a>Subject
 Az e-mail tárgyában a következő mintát követi: Meghívót kapott a &lt;tenantname&gt; szervezet
 
 ### <a name="from-address"></a>Feladó címe

@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: deaa6a9ff49fea2093c94a039aab0d7de0c95359
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177117"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417976"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD tartományi szolgáltatásokkal felügyelt tartományban a Csoportházirend-kezelése
 Az Azure Active Directory Domain Services beépített csoportházirend-objektumok (GPO) tartalmazza a "AADDC felhasználók" és "AADDC számítógépek" tárolók. Testre szabhatja a beépített csoportházirend-objektumokat a csoportházirend a felügyelt tartományon. Az "AAD DC rendszergazdák" csoport tagjai ezenkívül a felügyelt tartomány hozhat létre saját egyéni szervezeti egységekhez. Azok is egyéni csoportházirend-objektumok létrehozásához, és hozzárendelheti őket az alábbi egyéni szervezeti egységek. Az "AAD DC rendszergazdák" csoportba tartozó felhasználók kapnak a felügyelt tartomány csoportházirend felügyeleti jogosultságokkal.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 A cikkben szereplő feladatok elvégzéséhez szüksége:
 
 1. Egy érvényes **Azure-előfizetés**.

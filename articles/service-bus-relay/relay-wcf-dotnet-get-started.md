@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: spelluru
 ms.openlocfilehash: ee78227f645cbeded7a5c689750db835faf1055f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728312"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60420145"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>Az Azure Relay WCF közvetítők használata a .NET használatával
 Ez a cikk ismerteti, hogyan használható az Azure Relay szolgáltatásban. A kódminták C# nyelven íródtak, és a Windows Communication Foundation (WCF) API-t használják a Service Bus-összeállításban található bővítményekkel. Az Azure relay kapcsolatos további információkért lásd: a [Azure Relay áttekintése](relay-what-is-it.md).

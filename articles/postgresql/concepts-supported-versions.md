@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 5b06128979bf448a0b85084d5178d9291beb7691
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542789"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60422065"
 ---
 # <a name="supported-postgresql-database-versions"></a>PostgreSQL-adatbázis támogatott verziók
 A Microsoft célja, hogy az Azure Database for PostgreSQL szolgáltatás a PostgreSQL-motor n-2 verzióit támogatja. A verziók lenne, az aktuális főbb verzióhoz az Azure-ban (n) és a két előző főbb verzió (-2).

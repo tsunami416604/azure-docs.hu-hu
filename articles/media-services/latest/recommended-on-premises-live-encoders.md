@@ -10,11 +10,11 @@ ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: c7d895cd87122374a79a520643580a179961fba3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317323"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405358"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Ajánlott élő streamelési kódolók
 
@@ -31,20 +31,20 @@ Valós idejű kódolás a Media Services használatával kapcsolatos részletes 
 
 ## <a name="live-encoders-that-output-rtmp"></a>Élő kódolók képesek RTMP-kimenetre
 
-A Media Services RTMP kimenetként rendelkező következő élő kódolók egyikének használatát javasolja. A támogatott URL-sémák a `rtmp://` vagy `rtmps://`.
+A Media Services a következő, RTMP kimenetű élő kódolók használatát javasolja. A támogatott URL-sémák a `rtmp://` vagy `rtmps://`.
 
 > [!NOTE]
-> Streamelési RTMP-n keresztül, amikor ellenőrizze a tűzfallal és/vagy a proxy beállításait, győződjön meg arról, hogy 1935 és 1936 kimenő TCP-portok nyitva-e.
+> Amikor RTMP-vel streamel, ellenőrizze a tűzfal és/vagy a proxy beállításaiban, hogy az 1935-ös és az 1936-os kimenő TCP-portok nyitva vannak-e.
 
-- Az Adobe Flash Media Live Encoder 3.2-es verzióját
+- Adobe Flash Media Live Encoder 3.2
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Telestream Wirecast 8.1 +
+- Telestream Wirecast 8.1+
 - Telestream Wirecast S
-- Teradek szelet 756
-- A 8000-es TriCaster
+- Teradek Slice 756
+- TriCaster 8000
 - Tricaster Mini HD-4
 - VMIX
 - xStream
@@ -56,9 +56,9 @@ A Media Services a következő élő kódolók többféle sávszélességű Smoo
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
 - Elemental Live
-- Envivio 4Caster C4 csomag általános III.
+- Envivio 4Caster C4 Gen III
 - Az Imagine Communications Selenio MCP3
-- Media Excel élő Hero és a Hero 4 KB-os (UHD/HEVC)
+- Media Excel Hero Live és Hero 4K (UHD/HEVC)
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurálása a helyszíni élő kódoló beállításai
 

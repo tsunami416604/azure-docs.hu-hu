@@ -16,11 +16,11 @@ ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
 ms.openlocfilehash: b5e4ad30a65b25140cfb2c80dd15d8cd28fb827b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850853"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419220"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>A Service Fabric-háló alkalmazás magas rendelkezésre állású Service Fabric Reliable lemez alapú Kötet csatlakoztatásához 
 A tárolóalapú alkalmazások megőrzése állapot gyakori módja, hogy távoli tárolók, például az Azure File Storage vagy az adatbázis, mint például az Azure Cosmos DB. Ezt a szintre váltása költséggel jár, jelentős olvasási és írási késést, a távoli tároló.

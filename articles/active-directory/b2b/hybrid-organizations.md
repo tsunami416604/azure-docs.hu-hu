@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a95b9bc6637526ef0d975815cc88dd084360397
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196909"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60412593"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Az Azure Active Directory B2B együttműködés hibrid cégekhez és vállalkozásokhoz
 

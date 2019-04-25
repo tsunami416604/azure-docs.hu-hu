@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
-ms.openlocfilehash: bf0173f9c9802be689f7f3a893d381a251a2b16a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 794e797e504d6064c13ffe0a4ed131e668d86e97
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701136"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60421607"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Továbbítási hibrid kapcsolatok csomópont API – áttekintés
 
@@ -135,7 +135,7 @@ A konstruktor argumentumai:
 
 `RelayedServer` példányok gridre bocsáthatja ki három eseménynek, amely lehetővé teszi a bejövő kérések kezelésére, kapcsolatokat hozhat létre és hibaállapotok észlel. Elő kell fizetnie a `connect` eseményt üzenetek kezeléséhez. 
 
-##### <a name="headers"></a>fejlécek
+##### <a name="headers"></a>A fejlécek
 
 ```JavaScript 
 function(headers)

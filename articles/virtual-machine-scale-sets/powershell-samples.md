@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3727d2db375847c8df0a96d5721ea3135584eeec
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 23110fb3fc395c3a3a1107ef9ab0d5a93ec8e3f4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976248"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60420257"
 ---
 # <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>Az Azure PowerShell-minták virtuálisgép-méretezési csoportokban.
 
@@ -43,4 +43,4 @@ A következő táblázat az Azure PowerShell használatával létrehozott bash s
 | | |
 
 
-[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]    
+[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]    

@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.openlocfilehash: 3269d38b691ec4dd9573a241c89dadc285787143
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254026"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60408135"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>A Data Lake Tools for Visual Studio telepítése
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studiót Azure Data
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Visual Studio**: Az Express kivételével minden kiadás támogatott.
+* **Visual Studio**: Express kivételével minden kiadás támogatott.
     * Visual Studio 2017
     * Visual Studio 2015
     * Visual Studio 2013
@@ -33,9 +33,9 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studiót Azure Data
 
 Az Azure Data Lake Tools for Visual Studiot a Visual Studio 2017 15.3-as vagy újabb verziói támogatják. Az eszköz az **Adattárolási és -feldolgozási** és az **Azure-fejlesztési** számítási feladat része a Visual Studio telepítőjében. A Visual Studio telepítésének részeként engedélyezze a két számítási feladat egyikét.  
 
-Engedélyezze az **Adattárolási és -feldolgozási** számítási feladatot az itt látható módon: ![Az adattárolási és -feldolgozási számítási feladat engedélyezése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
+Engedélyezze a **adattárolási és feldolgozási** számítási feladat látható módon: ![Adattárolási és -feldolgozási számítási feladat engedélyezése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
 
-Engedélyezze az **Azure-fejlesztési** számítási feladatot az itt látható módon: ![Az Azure-fejlesztési számítási feladat engedélyezése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
+Engedélyezze a **Azure-fejlesztési** számítási feladat látható módon: ![Azure-fejlesztési számítási feladat engedélyezése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>Az Azure Data Lake Tools for Visual Studio 2013 és 2015 telepítése
 

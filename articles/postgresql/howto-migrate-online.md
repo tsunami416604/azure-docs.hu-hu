@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.openlocfilehash: ceb64781dc7e5243f785ad239c24e5f21b0481ce
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543648"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60421220"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Migrálás minimális állásidővel az Azure Database for postgresql-hez
 Hajthat végre PostgreSQL migrálást az Azure Database for postgresql-hez minimális állásidővel segítségével az újonnan bevezetett **folyamatos szinkronizálás képesség** számára a [Azure Database Migration Service](https://aka.ms/get-dms) (DMS) . Ez a funkció az alkalmazás által felmerülő állásidő mennyiségét korlátozza.

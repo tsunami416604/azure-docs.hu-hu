@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: e323a8d71bbffd1d29ad793dff7b5b4a072b6979
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 48377f981e4d2c9ab480a1a734e6207a0246712a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60407911"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurálja a VNet – VNet kapcsolat (klasszikus)
 
@@ -68,7 +68,7 @@ A virtuális hálózatokat a következő okokból érdemes összekapcsolni:
 
 A virtuális hálózatok közötti kapcsolatokról további információt a cikk végén, [A virtuális hálózatok közötti kapcsolatokra vonatkozó szempontok](#faq) című részben talál.
 
-### <a name="before-you-begin"></a>Előkészületek
+### <a name="before-you-begin"></a>Előzetes teendők
 
 Mielőtt megkezdené az ebben a gyakorlatban, töltse le és telepítse az Azure Service Management (SM) PowerShell-parancsmagjainak legújabb verzióját. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál. A lépések többségét használjuk a portálon, de a PowerShell használatával kell létrehozni a virtuális hálózatok közötti kapcsolatok. A kapcsolatok az Azure portal használatával nem hozható létre.
 

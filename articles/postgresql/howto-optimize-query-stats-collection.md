@@ -1,17 +1,18 @@
 ---
 title: Lekérdezési statisztikák gyűjtése az egy Azure Database for PostgreSQL-kiszolgáló optimalizálása
 description: Ez a cikk bemutatja, hogyan optimalizálhatók a lekérdezési statisztikák gyűjtése az egy Azure Database for PostgreSQL-kiszolgálóhoz.
-author: dianaputnam
-ms.author: dianas
+author: WenJason
+ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2018
+origin.date: 10/25/2018
+ms.date: 02/18/2019
 ms.openlocfilehash: 428a22f79008130448bef65f14322d6880b1b367
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814367"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60422703"
 ---
 # <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql-server"></a>Lekérdezési statisztikák gyűjtését az Azure Database for PostgreSQL-kiszolgáló-optimalizálása 
 Ez a cikk ismerteti, hogyan optimalizálható a lekérdezési statisztikák gyűjtését az Azure Database for PostgreSQL-kiszolgálót.

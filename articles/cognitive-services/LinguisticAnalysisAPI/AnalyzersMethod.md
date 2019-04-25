@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/30/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9338e87644554ac8b3121c5341cea6f2bc512a97
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1b33b60f674eebb15fdc6112e1d630b93b98494b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878187"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60404718"
 ---
 # <a name="analyzers-method"></a>Elemző módszer
 
@@ -32,15 +32,17 @@ None
 <br>
 
 ## <a name="response-parameters"></a>Válasz paraméterek
+
 Name (Név) | Típus | Leírás
 -----|------|--------------
 Nyelvek | karakterláncok | két betű ISO nyelvi kód, amelynek segítségével a analyzer listája.
-id   | Karakterlánc | az elemző eszköz egyedi azonosítója
-típusa | Karakterlánc | Itt analyzer széles körű típusa
-Specifikáció | Karakterlánc | a meghatározás az elemző nevét
-Megvalósítása | Karakterlánc | a modell és/vagy az elemző eszköz mögött algoritmus leírása
+id   | string | az elemző eszköz egyedi azonosítója
+típusa | string | Itt analyzer széles körű típusa
+Specifikáció | string | a meghatározás az elemző nevét
+Megvalósítása | string | a modell és/vagy az elemző eszköz mögött algoritmus leírása
 
 <br>
+
 ## <a name="example"></a>Példa
 /Analyzers beolvasása
 

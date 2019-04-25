@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
 ms.openlocfilehash: fbd876ad46342dec7e2e73b92d3aafbd37cc205b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892296"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417282"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Döntse el, ha az Azure AD Domain Services hogyan ideális a használati eset
 Az Azure AD tartományi szolgáltatásokkal telepítheti a számítási feladatokat az Azure infrastruktúra-szolgáltatásokban, ne kelljen foglalkoznia az Azure-ban a személyazonosság-infrastruktúra karbantartása. A felügyelt szolgáltatás üzembe helyezése, és felügyelheti saját tipikus Windows Server Active Directory központi eltér. A szolgáltatás egyszerűen üzembe helyezhetők, és automatizált szolgáltatásállapot-figyelést, a javítási biztosít. Gyakori üzembe helyezési forgatókönyvek támogatása érdekében a szolgáltatás folyamatosan világával.

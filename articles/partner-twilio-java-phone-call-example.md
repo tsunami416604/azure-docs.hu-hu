@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: 0d055b1a78622665137a6abad18681a728ae2b30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010565"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60422653"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>A Twilio használata Java-alkalmazás az Azure-ban a telefonhívás módját
 Az alábbi példa bemutatja, hogyan használhatja a Twilio segítségével az Azure-ban üzemeltetett weboldalakról hívást. Az eredményül kapott alkalmazás fogja kérni a felhasználót, telefonhívás-értékek, az alábbi képernyőképen látható módon.
