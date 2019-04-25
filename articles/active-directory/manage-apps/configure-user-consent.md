@@ -13,11 +13,11 @@ ms.author: celested
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d35f8b440fe748f91c9e01003fe83a3a5343c8df
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203726"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60291585"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>A végfelhasználók beleegyezik abba, hogy egy alkalmazás az Azure Active Directoryban módszer konfigurálása
 Megtudhatja, hogyan konfigurálhatja a felhasználók engedélyt adjanak az Alkalmazásengedélyek módon. Egyszerűsítheti a felhasználói élmény azáltal, hogy biztosítja a rendszergazdai jóváhagyás. Ez a cikk a különböző módokon konfigurálhatja a felhasználói beleegyezés biztosít. A módszerek alkalmazni az Azure Active Directory (Azure AD) bérlő összes végfelhasználók számára. 

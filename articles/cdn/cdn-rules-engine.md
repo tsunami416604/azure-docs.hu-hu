@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
 ms.openlocfilehash: 2ac43b472758f3403bc87bf3d64321eb97109f53
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092396"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60335561"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotorral használatával HTTP a működés felülbírálása
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -102,4 +102,4 @@ Hozzáférhet a rules engine, először jelöljön ki **kezelés** tetején a **
 * [Szabálymotor egyezési feltételei](cdn-rules-engine-reference-match-conditions.md)
 * [Szabálymotor feltételes kifejezései](cdn-rules-engine-reference-conditional-expressions.md)
 * [Szabálymotor funkciói](cdn-rules-engine-reference-features.md)
-* [Azure friday: Az Azure CDN hatékony új prémium szintű szolgáltatásai](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (videó)
+* [Azure fridays-re: Az Azure CDN hatékony új prémium szintű szolgáltatásai](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (videó)

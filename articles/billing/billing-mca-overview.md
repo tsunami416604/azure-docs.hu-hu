@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: ea625a61ed600dbaa22fef85987e9570a6fb7dbc
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337413"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371452"
 ---
 # <a name="get-started-with-your-billing-account-for-a-microsoft-customer-agreement"></a>Ismerkedés az Ön számlázási fiókjához a Microsoft ügyfél-szerződés
 
@@ -30,7 +30,7 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
 
 A Microsoft ügyfél-szerződés az Ön számlázási fiókjához tartalmaz egy vagy több számlázási profilok –, amelyek lehetővé teszik a számlákat és a fizetési módok kezeléséhez. Minden egyes számlázási profil egy vagy több, amelyekkel a számlázási profilja számlán költségek rendszerezése számla szakasz tartalmazza.
 
-Az alábbi ábrán látható egy számlázási fiók, a számlázási profilokat és a számla szakaszok közötti kapcsolat.
+Az alábbi ábrán a számlázási fiók, a számlázási profilok és a számlaszakaszok közötti kapcsolat látható.
 
 ![Bemutató diagram, amelyek a Microsoft vevői szerződés számlázási hierarchia](./media/billing-mca-overview/mca-billing-hierarchy.png)
 
@@ -71,8 +71,8 @@ Az Azure-csomagok automatikusan engedélyezve van egy számlázási profilt hoz 
 
 | Felkészülés             | Meghatározás  |
 |------------------|-------------|
-|A Microsoft Azure-csomagot   | Engedélyezi a felhasználók hozhatnak létre előfizetéseket, amelyek futtathatók a számítási feladatokat. További információkért lásd: [a Microsoft Azure-csomag](https://azure.microsoft.com/offers/ms-azr-0017g/) |
-|Microsoft Azure-csomag fejlesztéshez és teszteléshez | Lehetővé teszi a Visual Studio-előfizetők hozhatnak létre előfizetéseket, amelyek korlátozott fejlesztési vagy tesztelési feladatok. Ezeket az előfizetéseket kaphat további előnyöket, például az alacsonyabb díjszabás, valamint az exkluzív virtuálisgép-lemezképek elérését az Azure Portalon. További információkért lásd: [a Microsoft a Azure DevTest tervezése](https://azure.microsoft.com/offers/ms-azr-0148g/)|
+|Microsoft Azure-csomag   | Engedélyezi a felhasználók hozhatnak létre előfizetéseket, amelyek futtathatók a számítási feladatokat. További információkért lásd: [a Microsoft Azure-csomag](https://azure.microsoft.com/offers/ms-azr-0017g/) |
+|Microsoft Azure-csomag fejlesztéshez/teszteléshez | Lehetővé teszi a Visual Studio-előfizetők hozhatnak létre előfizetéseket, amelyek korlátozott fejlesztési vagy tesztelési feladatok. Ezeket az előfizetéseket kaphat további előnyöket, például az alacsonyabb díjszabás, valamint az exkluzív virtuálisgép-lemezképek elérését az Azure Portalon. További információkért lásd: [a Microsoft a Azure DevTest tervezése](https://azure.microsoft.com/offers/ms-azr-0148g/)|
 
 ## <a name="understand-invoice-sections"></a>Számla szakaszok ismertetése
 

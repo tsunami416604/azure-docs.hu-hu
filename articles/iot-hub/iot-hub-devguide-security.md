@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534361"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60400600"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -134,7 +134,7 @@ A biztonsági jogkivonat formátuma a következő:
 
 Az alábbiakban a várt értékek:
 
-| Érték | Leírás |
+| Value | Leírás |
 | --- | --- |
 | {aláírás} |Egy HMAC-SHA256 aláírás karakterlánccá: `{URL-encoded-resourceURI} + "\n" + expiry`. **Fontos**: A kulcs a Base64 kódolású anyag dekódolni, és a HMAC-SHA256 végzéséhez kulcsaként használt. |
 | {resourceURI} |URI-előtag (szegmens) szerint a végpontot, amely az ezzel a tokennel, az IoT hub (nincs protocol) állomásneve kezdve érhető el. Például: `myHub.azure-devices.net/devices/device1` |

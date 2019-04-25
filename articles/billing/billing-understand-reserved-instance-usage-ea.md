@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: banders
 ms.openlocfilehash: daa7f6a116578fa8d1f2b5bf825a6f4cd48f7f64
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648299"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370702"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>A nagyvállalati beléptetés Azure foglalás használati adatai
 
@@ -31,7 +31,7 @@ Ha beszerezte a foglalást, használatalapú számlázási környezetben, lásd:
 
 A következő szakaszokban feltételezzük, hogy Windows Standard D1 v2 virtuális gép fut a keleti régiójában és az alábbi táblázat a Foglalás információk tűnik:
 
-| Mező | Érték |
+| Mező | Value |
 |---| --- |
 |ReservationId |8f82d880-d33e-4e0d-bcb5-6bcb5de0c719|
 |Mennyiség |1|
@@ -57,7 +57,7 @@ A következő szakaszok példaként az Azure SQL Database használatával a hasz
 
 Tegyük fel, hogy futtatja a keleti régiójában és a foglalási adatokat úgy tűnik, az alábbi táblázat, egy SQL Database Gen 4:
 
-| Mező | Érték |
+| Mező | Value |
 |---| --- |
 |ReservationId |8244e673-83e9-45ad-b54b-3f5295d37cae|
 |Mennyiség |2|

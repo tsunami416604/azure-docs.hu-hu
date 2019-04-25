@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.openlocfilehash: 025a8182d32a7d0d00a48795c848d356eb1c3d4e
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792446"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60396818"
 ---
 # <a name="create-change-or-delete-an-azure-route-table-using-ansible"></a>Létrehozása, módosítása vagy törlése az Azure útválasztási táblázatot az Ansible-lel
 Az Azure automatikusan irányítja az Azure az alhálózatok, virtuális hálózatok közötti adatforgalom és a helyszíni hálózatokkal. Az Azure alapértelmezett útválasztását módosítani szeretné, ha mégis így hozzon létre egy [útvonaltábla](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).

@@ -3,7 +3,7 @@ title: Az Azure Active Directory B2C felhasználói hozzáférés felügyelete |
 description: Ismerje meg, hogyan kiskorúak azonosítása, dátum születési idő és az országot adatok gyűjtése és használati feltételek elfogadása beszerzése az alkalmazás Azure AD B2C használatával.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 2fb9de7781fae51792e2802002a3cf68974dec83
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783735"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60383971"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói hozzáférés felügyelete
 

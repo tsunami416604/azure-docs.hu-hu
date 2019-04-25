@@ -14,11 +14,11 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: aac1ed82a01477b081f4bc146f199eba87d97859
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312138"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309177"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Adatok áthelyezése a Salesforce-ból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -72,7 +72,7 @@ Az alábbi táblázat ismerteti a Salesforce-beli társított szolgáltatás ado
 | type |A type tulajdonságot kell beállítani: **A Salesforce**. |Igen |
 | environmentUrl | Adja meg az URL-címet a Salesforce-példány. <br><br> – Alapértelmezett érték a "https:\//login.salesforce.com". <br> – Adatok másolása a tesztkörnyezetből, adja meg a "https://test.salesforce.com". <br> – Adatok másolása az egyéni tartományt, adja meg, például "https://[domain].my.salesforce.com". |Nem |
 | felhasználónév |Adja meg a felhasználói fiók felhasználói nevét. |Igen |
-| jelszó |Adja meg a felhasználói fiókhoz tartozó jelszót. |Igen |
+| password |Adja meg a felhasználói fiókhoz tartozó jelszót. |Igen |
 | securityToken |Adja meg a felhasználói fiók biztonsági jogkivonatot. Lásd: [biztonsági jogkivonatának beszerzéséhez](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) alaphelyzetbe állítása/lekérése a biztonsági jogkivonat való létrehozásával kapcsolatos útmutatást. Az általános biztonsági jogkivonatokat kapcsolatos további információkért lásd: [biztonsági és API-val](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
@@ -287,7 +287,7 @@ Lásd: [RelationalSource tulajdonságait](#copy-activity-properties) a Relationa
 | Salesforce-típus | . NET-alapú típusa |
 | --- | --- |
 | Automatikus száma |String |
-| Jelölőnégyzet |Logikai |
+| Jelölőnégyzet |Boolean |
 | Currency (Pénznem) |Decimal |
 | Dátum |DateTime |
 | Dátum/idő |DateTime |
@@ -299,7 +299,7 @@ Lásd: [RelationalSource tulajdonságait](#copy-activity-properties) a Relationa
 | Százalék |Decimal |
 | Telefonszám |String |
 | Értéklista |String |
-| Szöveg |String |
+| Text |String |
 | Szövegterület |String |
 | Szövegterület (hosszú) |String |
 | Szövegterület (részletes) |String |

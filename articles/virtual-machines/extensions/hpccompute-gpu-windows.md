@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: roiyz
 ms.openlocfilehash: 5adc86b161770f2502b6ef9cf5ec2189ec3d4f99
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619925"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60388675"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA GPU illesztőprogramjának Windows-bővítmény
 
@@ -35,7 +35,7 @@ Egy bővítmény is érhető el az NVIDIA GPU-illesztők telepítése [Linux N-s
 
 Ez a bővítmény a következő nyílt forráskódú támogatja:
 
-| Disztribúció | Verzió |
+| Disztribúció | Version |
 |---|---|
 | Windows 10 rendszerű (akár 1803 verzió)| Mag |
 | Windows Server 2016 | Mag |
@@ -73,9 +73,9 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | dátum |
-| publisher | Microsoft.HpcCompute | sztring |
-| type | NvidiaGpuDriverWindows | sztring |
+| apiVersion | 2015-06-15 | date |
+| publisher | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
 

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d9055ef11bc5c117efc6d4de87d4ca8ec73a661
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360503"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359024"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -37,7 +37,7 @@ A két-kezdő szabályzat adatokra van szükség két hitelesítési adatok, pé
   * 1. szintű partnertámogatás
   * 2. szintű partnertámogatás
   * Exchange-rendszergazda
-  * Skype Vállalati verzió-rendszergazda
+  * Skype Vállalati verzió rendszergazdája
   * Felhasználói adminisztrátor
   * Címtárírók
   * Globális rendszergazda vagy a vállalati rendszergazda
@@ -45,7 +45,7 @@ A két-kezdő szabályzat adatokra van szükség két hitelesítési adatok, pé
   * Szabályozási ügyintéző
   * Alkalmazás-rendszergazda
   * Biztonsági rendszergazda
-  * Kiemelt szerepkörű rendszergazda
+  * Kiemelt szerepkörgazda
   * Intune-rendszergazda
   * Alkalmazásproxy szolgáltatásadminisztrátora
   * Dynamics 365-rendszergazda

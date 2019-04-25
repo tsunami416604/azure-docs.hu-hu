@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 4b4c6b390e9b3a0cf764f998523fe3c1cdc66026
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997427"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370287"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Hogyan kell alkalmazni a foglalási kedvezményt az Azure SQL Database
 

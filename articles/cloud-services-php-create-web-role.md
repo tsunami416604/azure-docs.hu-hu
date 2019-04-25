@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.openlocfilehash: 83834104dd73e4381947903196ad35c3497b64a1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425676"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337561"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Webes és feldolgozói PHP-szerepkörök létrehozása
 
@@ -26,13 +26,13 @@ ms.locfileid: "52425676"
 
 Ez az útmutató bemutatja, hogyan PHP webes vagy feldolgozói szerepkörök létrehozása a Windows fejlesztői környezetben, a PHP verzióját az elérhető "beépített" verziók közül választhat, a PHP-konfiguráció módosítása, bővítmények engedélyezésével és végül üzembe helyezése az Azure-bA. Emellett bemutatja, hogyan lehet egy webes vagy feldolgozói szerepkör egy PHP-futtatókörnyezet (az egyéni konfigurációs és bővítmények) Ön által használandó konfigurálása.
 
-Az Azure biztosít három számítási modellt alkalmazások futtatásához: az Azure App Service, Azure Virtual Machines és Azure Cloud Servicesben. Mindhárom modell támogatja a PHP. A cloud Services, beleértve a webes és feldolgozói szerepkörök, biztosít *platformszolgáltatás (PaaS)*. Egy felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót az előtéri webalkalmazásokhoz biztosít. Feldolgozói szerepkör aszinkron, hosszan futó vagy bemenettől feladatok felhasználói interakciótól vagy beviteltől független futtathatja.
+Az Azure három számítási modellt kínál az alkalmazások futtatásához: Az Azure App Service, Azure-beli virtuális gépek és az Azure Cloud Services. Mindhárom modell támogatja a PHP. A cloud Services, beleértve a webes és feldolgozói szerepkörök, biztosít *platformszolgáltatás (PaaS)*. Egy felhőszolgáltatásban a webes szerepkör egy külön Internet Information Services (IIS) webkiszolgálót az előtéri webalkalmazásokhoz biztosít. Feldolgozói szerepkör aszinkron, hosszan futó vagy bemenettől feladatok felhasználói interakciótól vagy beviteltől független futtathatja.
 
 Ezek a beállítások kapcsolatos további információkért lásd: [számítási-üzemeltetési lehetőségeinek Azure által biztosított](cloud-services/cloud-services-choose-me.md).
 
 ## <a name="download-the-azure-sdk-for-php"></a>A PHP-hoz készült Azure SDK letöltése
 
-A [php-hez készült Azure SDK-t](php-download-sdk.md) több összetevőből áll. Ez a cikk két fogja használni: az Azure PowerShell és az Azure-emulátorok. Ez a két összetevő a Microsoft Webplatform-telepítőn keresztül is telepíthető. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+A [php-hez készült Azure SDK-t](php-download-sdk.md) több összetevőből áll. Ez a cikk két fogja használni: Az Azure PowerShell és az Azure-emulátorok. Ez a két összetevő a Microsoft Webplatform-telepítőn keresztül is telepíthető. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
 
 ## <a name="create-a-cloud-services-project"></a>A Cloud Services-projekt létrehozása
 

@@ -3,7 +3,7 @@ title: Konfigurálja a munkamenet-viselkedés – Azure Active Directory B2C |} 
 description: Adja meg az Azure Active Directory B2C munkamenet-viselkedés.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 1140a3cbb43e86bf222c73c95a03b11871f7a2d0
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59685923"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60360426"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Munkamenet-viselkedés konfigurálása az Azure Active Directory B2C-vel
 
@@ -56,7 +56,7 @@ A következő használati esetek engedélyezve vannak ezek a tulajdonságok hasz
 6. Válassza ki **tulajdonságok**.
 7. Konfigurálása **webalkalmazás munkamenet élettartama (perc)**, **webalkalmazás munkamenet-időkorlátja**, **egyszeri bejelentkezési konfigurációjának**, és **szükséges azonosító jogkivonat a kijelentkezési kérelmekben**  igény szerint.
 
-    ![Munkamenet-viselkedés konfigurálása](./media/session-behavior/session-behavior.png)
+    ![Munkamenet viselkedésének konfigurálása](./media/session-behavior/session-behavior.png)
     
 8. Kattintson a **Save** (Mentés) gombra.
 

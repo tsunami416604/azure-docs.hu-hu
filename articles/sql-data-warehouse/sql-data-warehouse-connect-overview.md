@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
 ms.openlocfilehash: 85bce59563cf0424816661c97406060bcbb423ec
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460447"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402810"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Csatlakozás az Azure SQL Data Warehouse-hoz
 Csatlakozhat az Azure SQL Data warehouse-bA.
@@ -61,7 +61,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ## <a name="connection-settings"></a>Kapcsolati beállítások
 Az SQL Data Warehouse szabványosít néhány beállítást a csatlakozás és az objektumlétrehozás során. Ezeket a beállításokat nem lehet felülírni, és a következők lehetnek:
 
-| Adatbázis-beállítások | Érték |
+| Adatbázis-beállítások | Value |
 |:--- |:--- |
 | [ANSI_NULLS][ANSI_NULLS] |ON |
 | [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |ON |

@@ -14,11 +14,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 761f3e6e72319a2e63d6b66f2893130ec5a82ebf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698162"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60353056"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Javítsa ki a módosított alapértelmezett szabályok az Azure AD Connectben
 

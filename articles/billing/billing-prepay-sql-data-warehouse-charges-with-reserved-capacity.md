@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 3d56ee99f8056139a234477b6eed93d9fcbe2bbb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013813"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371189"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Fizessen elő az SQL Data Warehouse díjai, hogy a lefoglalt kapacitás
 
@@ -45,7 +45,7 @@ Tegyük fel például, a teljes használat az SQL Data Warehouse: DW3000c. Szere
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/).
 2. Válassza ki **minden szolgáltatás** > **foglalások**.
-3. Válasszon egy előfizetést. Az előfizetés-lista segítségével válassza ki az előfizetést, amellyel a lefoglalt kapacitás kell fizetnie. A fizetési módot, az előfizetés az előzetes költségek, a szolgáltatás számára fenntartott kapacitás után kell fizetni. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR - 0023 P).
+3. Válasszon egy előfizetést. Az előfizetés-lista segítségével válassza ki az előfizetést, amellyel a lefoglalt kapacitás kell fizetnie. A fizetési módot, az előfizetés az előzetes költségek, a szolgáltatás számára fenntartott kapacitás után kell fizetni. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P).
   - Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva.
   - Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.
 4. Válassza ki a hatókört. A hatókör-lista használatával egy előfizetési hatókört válassza.

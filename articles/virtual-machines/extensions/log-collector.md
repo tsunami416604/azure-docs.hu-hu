@@ -1,6 +1,6 @@
 ---
-title: AzureLogCollector Virtuálisgép-bővítmény |} Microsoft Docs
-description: Ismerteti a AzureLogCollector Virtuálisgép-bővítmény, amely a naplófájlok gyűjti, és egyesíti őket az Azure Storage egy helyre.
+title: AzureLogCollector Virtuálisgép-bővítmény |} A Microsoft Docs
+description: Ismerteti a AzureLogCollector Virtuálisgép-bővítmény, amely gyűjti össze a naplófájlokat, és egyesíti azokat az Azure Storage-ban egy helyre.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: squillace
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2016
 ms.author: rasquill
-ms.openlocfilehash: 846fe04146aeba389355b23141cc23e7990d3aa1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 81e8cbafb2be43fd6ac49d403a325b86d1615af5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942647"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387960"
 ---
 # <a name="azurelogcollector-extension"></a>AzureLogCollector Extension
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]

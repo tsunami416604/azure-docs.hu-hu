@@ -9,11 +9,11 @@ ms.date: 02/22/2019
 ms.author: nikiest
 ms.subservice: logs
 ms.openlocfilehash: b6009471048232b52020e4bef6272ed8cb1bd35b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497754"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60345861"
 ---
 # <a name="archive-the-azure-activity-log"></a>Az Azure tevékenységnapló archiválása
 Ebben a cikkben bemutatjuk a használatáról az Azure portal, PowerShell-parancsmagok vagy többplatformos parancssori felület archiválása a [ **Azure-tevékenységnapló** ](../../azure-monitor/platform/activity-logs-overview.md) a storage-fiókban. Ez a beállítás akkor hasznos, ha szeretné megőrizni a naplózási, statikus elemzési és biztonsági mentés (, teljes körűen felügyelve az adatmegőrzési) 90 napnál hosszabb ideig Tevékenységnaplót. Ha csak szeretné megőrizni az események 90 napig, vagy kisebb, nem kell állítania archiválás tárfiókba, mivel a tevékenységnapló eseményei vannak az Azure platformon 90 napig őrizzük meg engedélyezése archiválás nélkül.
@@ -61,7 +61,7 @@ Az alábbi módszerek bármelyikével a tevékenységnapló archiválása, áll�
 | StorageAccountId |Igen |Erőforrás-azonosító, amelyhez tevékenységeket tartalmazó naplók menteni a tárfiók. |
 | Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. Megtekintheti összes régiók listáját az előfizetéshez a `(Get-AzLocation).Location`. |
 | RetentionInDays |Nem |Mely eseményeket meg kell őrizni, 1 és 365 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplók (végtelen). |
-| Kategóriák |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet.  Ha nincs megadva, majd az összes lehetséges az alapértelmezett paraméterértékek |
+| Categories |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet.  Ha nincs megadva, majd az összes lehetséges az alapértelmezett paraméterértékek |
 
 ## <a name="archive-the-activity-log-via-cli"></a>CLI-n keresztül a tevékenységnapló archiválása
 

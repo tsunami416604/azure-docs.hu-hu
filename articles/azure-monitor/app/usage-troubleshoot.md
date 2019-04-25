@@ -14,11 +14,11 @@ ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
 ms.openlocfilehash: eabc47c2acb33d8c6ee03477b5e8c7783edebbb7
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258776"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371852"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Felhasználói viselkedés elemzési eszközök az Application Insights – hibaelhárítás
 Kapcsolatos kérdése van a [felhasználói viselkedés elemzési eszközök az Application Insights](usage-overview.md): [Felhasználók, munkamenetek, események](usage-segmentation.md), [tölcsérek](usage-funnels.md), [felhasználói folyamatok](usage-flows.md), [megőrzési](usage-retention.md), vagy a Kohorszok? Az alábbiakban néhány válasz.

@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/11/2019
-ms.author: pafarley
+origin.date: 02/11/2019
+ms.date: 02/27/2019
+ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 91618b211fdd869daf74491b175d6359ffa3f30c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312191"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60368381"
 ---
 # <a name="describe-images-with-human-readable-language"></a>Képek az emberek számára olvasható nyelv leírása
 
@@ -59,3 +60,5 @@ A következő JSON-választ mutatja be, milyen számítógépes Látástechnoló
 ## <a name="next-steps"></a>További lépések
 
 Fogalmak ismertetése [rendszerképek címkézése](concept-tagging-images.md) és [lemezképek kategorizálásához](concept-categorizing-images.md).
+
+<!-- Update_Description: wording update -->

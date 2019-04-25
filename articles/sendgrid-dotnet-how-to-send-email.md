@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
 ms.openlocfilehash: 91d28802b4af23da5b8060fa7c8f9a7e843a7dab
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840265"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60444879"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Hogyan lehet E-mail küldése a SendGrid használatával az Azure-ral
 ## <a name="overview"></a>Áttekintés
@@ -71,7 +71,7 @@ Adja hozzá a következő kód névtér-deklarációk bármely, amelyben meg sze
     using SendGrid;
     using SendGrid.Helpers.Mail;
 
-## <a name="how-to-create-an-email"></a>How to: hozzon létre egy e-mailt
+## <a name="how-to-create-an-email"></a>Útmutató: Hozzon létre egy e-mailt
 Használja a **SendGridMessage** objektumot hozzon létre egy e-mail-üzenetet. Az üzenet-objektum létrehozása után beállíthatja a tulajdonságok és metódusok, beleértve az e-mailt küldő, az e-mail címzettje és a tulajdonos és az e-mail törzse.
 
 Az alábbi példa bemutatja, hogyan hozhat létre teljes mértékben ki van töltve e-mail objektumot:
@@ -142,7 +142,7 @@ Az alábbi példák bemutatják, hogyan küldése a SendGrid webes API-val egy o
         }
     }
     
-## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Útmutató: e-mail küldéséhez az ASP .NET Core API MailHelper osztály használatával
+## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Útmutató: E-mail küldéséhez az ASP .NET Core API MailHelper osztály használatával
 
 Az alábbi példában is használható az ASP .NET Core API használatával több személy egyetlen e-mail küldéséhez a `MailHelper` osztályát `SendGrid.Helpers.Mail` névtér. Ebben a példában az ASP .NET Core 1.0-t használjuk. 
 
@@ -218,7 +218,7 @@ A vezérlő betöltése után, a `IConfiguration` felületen, használhatjuk a `
        }
     }
     
-## <a name="how-to-add-an-attachment"></a>Útmutató: a melléklet hozzáadása
+## <a name="how-to-add-an-attachment"></a>Útmutató: A melléklet hozzáadása
 A mellékletek meghívásával is hozzáadhatók egy üzenetet a **AddAttachment** metódust, és minimálisan megadása a fájl nevét és a Base64-kódolású tartalmak kíván csatolni. A metódus meghívásának hatására, miután az összes fájl esetében a csatlakoztatni kívánt és használatával több mellékleteket tartalmazhatnak a **AddAttachments** metódust. A következő példa bemutatja egy melléklet hozzáadása:
 
     var banner2 = new Attachment()
@@ -231,7 +231,7 @@ A mellékletek meghívásával is hozzáadhatók egy üzenetet a **AddAttachment
     };
     msg.AddAttachment(banner2);
 
-## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Hogyan: élőlábak, nyomon követés és az analytics engedélyezése a levelezési beállítások használatával
+## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Útmutató: Levelezési beállítások használatával élőlábak, nyomon követés és az analytics engedélyezése
 A SendGrid levelezési beállítások és a nyomon követési beállítások e-mail további funkciókat biztosít. Ezek a beállítások is hozzáadhatók egy e-mail üzenethez ahhoz, hogy bizonyos funkciók, például a kampányban, a Google analytics, előfizetés nyomon követése és így tovább. Alkalmazások teljes listáját lásd: a [beállítások dokumentáció][settings-documentation].
 
 Alkalmazások alkalmazhatók **SendGrid** e-mailek részeként megvalósított metódusok használata a **SendGridMessage** osztály. Az alábbi példák bemutatják, az élőláb, majd kattintson a szűrők követés:
@@ -247,7 +247,7 @@ Az alábbi példák bemutatják, az élőláb, majd kattintson a szűrők követ
 ### <a name="click-tracking"></a>Kattintson a nyomon követés
     msg.SetClickTracking(true);
 
-## <a name="how-to-use-additional-sendgrid-services"></a>How to: további SendGrid-szolgáltatások használata
+## <a name="how-to-use-additional-sendgrid-services"></a>Útmutató: A SendGrid további szolgáltatások használata
 A SendGrid több API-kat és webhookokat használatával kihasználhatja az Azure alkalmazásban további funkciókat kínál. További részletekért tekintse meg a [SendGrid API-referencia][SendGrid API documentation].
 
 ## <a name="next-steps"></a>További lépések

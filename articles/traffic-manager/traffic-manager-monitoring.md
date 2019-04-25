@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: kumud
 ms.openlocfilehash: 083bdf9c5aec640fbbd7757b307ac47178e0b14b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076139"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329921"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager végpont figyelése
 
@@ -69,12 +69,12 @@ Végpont a figyelő állapota, hogy a végpont állapotát jeleníti meg a Traff
 
 | Profil állapota | Végpont állapota | Szolgáltatásvégpont-figyelő állapota | Megjegyzések |
 | --- | --- | --- | --- |
-| Letiltva |Engedélyezve |Inaktív |A profil le van tiltva. Bár a végpont állapotának engedélyezve van, akkor a profil állapota (letiltva) élvez elsőbbséget. A letiltott profilok végpontjai nem figyeli a program. A DNS-lekérdezés egy eredménye NXDOMAIN válaszkódot adja vissza. |
+| Letiltva |Enabled |Inaktív |A profil le van tiltva. Bár a végpont állapotának engedélyezve van, akkor a profil állapota (letiltva) élvez elsőbbséget. A letiltott profilok végpontjai nem figyeli a program. A DNS-lekérdezés egy eredménye NXDOMAIN válaszkódot adja vissza. |
 | &lt;Bármely&gt; |Letiltva |Letiltva |A végpont le van tiltva. Letiltott végpontok nem figyeli a program. A végpont nem szerepel a DNS-reakciókhoz, ezért azt nem forgalom fogadására. |
-| Engedélyezve |Engedélyezve |Online |A végpont számítógép megfigyelés alatt áll, és kifogástalan. Ez a DNS-válaszok tartalmazza, és képes forgalom fogadására. |
-| Engedélyezve |Engedélyezve |Csökkentett teljesítmény |Végpont-figyelési állapot-ellenőrzések sikertelenek. A végpont nem érhető el a DNS-válaszok, és nem érkezik forgalom. <br>Egy kivétel ebben a végpontok összes állapotromlást, ha ebben az esetben ezek mindegyike számítanak a lekérdezésekre adott válaszok a visszaadandó).</br>|
-| Engedélyezve |Engedélyezve |CheckingEndpoint |A végpont figyel, de az első vizsgálat eredményeit még nem lett érkezett. CheckingEndpoint csak átmeneti állapot, amely közvetlenül a hozzáadásával vagy egy végpontot a profilt az engedélyezése után általában akkor fordul elő. Ebben az állapotban a végpont DNS-válaszok szerepel, és képes forgalom fogadására. |
-| Engedélyezve |Engedélyezve |Leállítva |Nem fut a felhőalapú szolgáltatás, vagy a webes alkalmazás, amely a végpontra mutat. Ellenőrizze a felhőalapú szolgáltatás vagy a webes alkalmazás beállításait. Ez is történhet, ha a végpont típusa beágyazott végpont, és a gyermek le van tiltva vagy inaktív. <br>A leállított állapotú végpont nem áll felügyelet. Ez nem szerepel a DNS-válaszok, és nem érkezik a forgalom. Egy kivétel ebben a végpontok összes állapotromlást, ha ebben az esetben ezek mindegyike minősülnek kell visszaadni a lekérdezésekre adott válaszok.</br>|
+| Enabled |Enabled |Online |A végpont számítógép megfigyelés alatt áll, és kifogástalan. Ez a DNS-válaszok tartalmazza, és képes forgalom fogadására. |
+| Enabled |Enabled |Csökkentett teljesítmény |Végpont-figyelési állapot-ellenőrzések sikertelenek. A végpont nem érhető el a DNS-válaszok, és nem érkezik forgalom. <br>Egy kivétel ebben a végpontok összes állapotromlást, ha ebben az esetben ezek mindegyike számítanak a lekérdezésekre adott válaszok a visszaadandó).</br>|
+| Enabled |Enabled |CheckingEndpoint |A végpont figyel, de az első vizsgálat eredményeit még nem lett érkezett. CheckingEndpoint csak átmeneti állapot, amely közvetlenül a hozzáadásával vagy egy végpontot a profilt az engedélyezése után általában akkor fordul elő. Ebben az állapotban a végpont DNS-válaszok szerepel, és képes forgalom fogadására. |
+| Enabled |Enabled |Leállítva |Nem fut a felhőalapú szolgáltatás, vagy a webes alkalmazás, amely a végpontra mutat. Ellenőrizze a felhőalapú szolgáltatás vagy a webes alkalmazás beállításait. Ez is történhet, ha a végpont típusa beágyazott végpont, és a gyermek le van tiltva vagy inaktív. <br>A leállított állapotú végpont nem áll felügyelet. Ez nem szerepel a DNS-válaszok, és nem érkezik a forgalom. Egy kivétel ebben a végpontok összes állapotromlást, ha ebben az esetben ezek mindegyike minősülnek kell visszaadni a lekérdezésekre adott válaszok.</br>|
 
 Hogyan kerül kiszámításra az szolgáltatásvégpont-figyelő állapota a beágyazott végpontokat kapcsolatos részletekért lásd: [beágyazott Traffic Manager-profilok](traffic-manager-nested-profiles.md).
 
@@ -88,10 +88,10 @@ A profil a figyelő állapota konfigurált profil állapota és összes végpont
 | Profil állapota (a be van állítva) | Szolgáltatásvégpont-figyelő állapota | Profil a figyelő állapota | Megjegyzések |
 | --- | --- | --- | --- |
 | Letiltva |&lt;bármely&gt; vagy nincs definiálva végpont a profil. |Letiltva |A profil le van tiltva. |
-| Engedélyezve |Csökkentett teljesítményű legalább egy végpontot az állapotát. |Csökkentett teljesítmény |Tekintse át az egyes végpont állapota értékek megadásával határozza meg, milyen végpontokat további figyelmet igényelnek. |
-| Engedélyezve |Legalább egy végpontot állapota Online. Nincsenek végpontjai csökkentett teljesítményű állapot rendelkezik. |Online |A szolgáltatás fogadja a forgalmat. Nincs szükség további műveletekre. |
-| Engedélyezve |Legalább egy végpontot állapota CheckingEndpoint. Végpontok az Online vagy csökkentett teljesítményű állapotban van. |CheckingEndpoints |Az átmeneti állapot következik be, amikor egy profilt, ha létrehozott vagy engedélyezett. Végpont állapota első alkalommal ellenőrzése. |
-| Engedélyezve |Az állapot a profilban szereplő összes végpont le van tiltva vagy le, vagy a profil nem definiált végpontjainak rendelkezik. |Inaktív |Nincs végpont sem aktív, de a profil még mindig engedélyezve van. |
+| Enabled |Csökkentett teljesítményű legalább egy végpontot az állapotát. |Csökkentett teljesítmény |Tekintse át az egyes végpont állapota értékek megadásával határozza meg, milyen végpontokat további figyelmet igényelnek. |
+| Enabled |Legalább egy végpontot állapota Online. Nincsenek végpontjai csökkentett teljesítményű állapot rendelkezik. |Online |A szolgáltatás fogadja a forgalmat. Nincs szükség további műveletekre. |
+| Enabled |Legalább egy végpontot állapota CheckingEndpoint. Végpontok az Online vagy csökkentett teljesítményű állapotban van. |CheckingEndpoints |Az átmeneti állapot következik be, amikor egy profilt, ha létrehozott vagy engedélyezett. Végpont állapota első alkalommal ellenőrzése. |
+| Enabled |Az állapot a profilban szereplő összes végpont le van tiltva vagy le, vagy a profil nem definiált végpontjainak rendelkezik. |Inaktív |Nincs végpont sem aktív, de a profil még mindig engedélyezve van. |
 
 ## <a name="endpoint-failover-and-recovery"></a>Végponti feladatátvétel és helyreállítás
 

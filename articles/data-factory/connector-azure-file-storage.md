@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: b43532ade35e4e01573abbd3f47d009beadd9c60
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267718"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387842"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Adatok másolása vagy az Azure File Storage az Azure Data Factory használatával
 
@@ -43,7 +43,7 @@ Az Azure File Storage társított szolgáltatás a következő tulajdonságok t�
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **FileServer**. | Igen |
 | gazdagép | Itt adhatja meg, az Azure File Storage-végpont: <br/>– Felhasználói felületén: Adjon meg `\\<storage name>.file.core.windows.net\<file service name>`<br/>-A JSON használatával: `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Igen |
-| felhasználói azonosító | Adja meg a felhasználó elérheti az Azure File Storage mint: <br/>– Felhasználói felületén: Adjon meg `AZURE\<storage name>`<br/>-A JSON használatával: `"userid": "AZURE\\<storage name>"`. | Igen |
+| userid | Adja meg a felhasználó elérheti az Azure File Storage mint: <br/>– Felhasználói felületén: Adjon meg `AZURE\<storage name>`<br/>-A JSON használatával: `"userid": "AZURE\\<storage name>"`. | Igen |
 | jelszó | Adja meg a tárelérési kulcs. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nincs forrás, a fogadó Igen |
 

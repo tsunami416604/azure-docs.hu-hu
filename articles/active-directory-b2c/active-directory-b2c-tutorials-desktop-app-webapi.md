@@ -3,7 +3,7 @@ title: Oktatóanyag – való hozzáférés engedélyezése Egy Node.js webes AP
 description: Arra vonatkozó útmutató, hogyan használhatja az Active Directory B2C-t egy Node.js webes API védelmére és meghívására egy asztali .NET-alkalmazásból.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 90a6a88ff0dc5aab1163e471b24cd1d00e548a1b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755118"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60315932"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Oktatóanyag: Egy Node.js webes API-t egy asztali alkalmazásból az Azure Active Directory B2C használatával való hozzáférés engedélyezése
 
@@ -24,7 +24,7 @@ Az oktatóanyag azt mutatja be, hogyan hívhat meg egy Azure Active Directory (A
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Adjon hozzá egy webes API-alkalmazás
+> * Webes API-alkalmazás hozzáadása
 > * A webes API hatóköreinek konfigurálásáról
 > * Adja meg az engedélyeket a webes API-hoz
 > * A minta az alkalmazás frissítése
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Hajtsa végre a lépéseket és az Előfeltételek [oktatóanyag: Asztali alkalmazás hitelesítés engedélyezése az Azure Active Directory B2C fiókkal rendelkező](active-directory-b2c-tutorials-desktop-app.md).
 
-## <a name="add-a-web-api-application"></a>Adjon hozzá egy webes API-alkalmazás
+## <a name="add-a-web-api-application"></a>Webes API-alkalmazás hozzáadása
 
 Webes API-erőforrásokhoz regisztrálni kell a bérlőn belüli előtt fogadja el, és védett erőforrás-kérelmek megválaszolásához ügyfélalkalmazások, amelyek egy hozzáférési jogkivonatot. 
 
@@ -120,7 +120,7 @@ Az asztali alkalmazás kérést küld a webes API-t, és a bejelentkezett felhas
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Adjon hozzá egy webes API-alkalmazás
+> * Webes API-alkalmazás hozzáadása
 > * A webes API hatóköreinek konfigurálásáról
 > * Adja meg az engedélyeket a webes API-hoz
 > * A minta az alkalmazás frissítése

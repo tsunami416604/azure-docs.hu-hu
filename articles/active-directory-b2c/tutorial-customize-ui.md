@@ -3,19 +3,19 @@ title: Oktatóanyag – testre szabhatja a felhasználói élmények - felület 
 description: Ismerje meg, hogyan szabhatja testre a felhasználói felület az alkalmazások az Azure Active Directory B2C az Azure portal használatával.
 services: B2C
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f3bc1789d0b521b0d91ca42ebe472fed0225d87b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.openlocfilehash: 0996c64acaa5e65061d80974fc428bad2dd8d4ad
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752381"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60360317"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Oktatóanyag: Az Azure Active Directory B2C felhasználói élmények a felület testreszabása
 

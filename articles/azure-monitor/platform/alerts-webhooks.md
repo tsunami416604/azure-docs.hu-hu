@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
-ms.subservice: alerts
+ms.component: alerts
 ms.openlocfilehash: 264f3eb042a3c29523ed93df93dfa6d45c00ae87
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465666"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60345778"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Klasszikus metrikariasztás értesítése egy webhook használatával nem Azure-beli system rendelkezik
 Webhookok használatával irányíthatja a riasztási értesítés az Azure utólagos feldolgozási vagy egyéni műveleteket más rendszerekre. A riasztás egy webhook használatával átirányítása a szolgáltatások által küldött SMS-ezni, hibák, csevegési vagy az üzenetkezelési szolgáltatások révén, vagy a különböző műveleteknél csapat értesítése bejelentkezni. 
@@ -76,7 +76,7 @@ A POST művelet a következő JSON-adattartalom és az összes mérőszám-alap�
 | időbélyeg |I | |Az idő, amelyen a riasztás lett elindítva. |
 | id |I | |Minden riasztási szabály tartozik egy egyedi azonosítót. |
 | név |I | |A riasztás neve. |
-| leírás |I | |A riasztás leírása. |
+| description |I | |A riasztás leírása. |
 | conditionType |I |A metrika esemény |A riasztások két típusok támogatottak: metrika- és esemény. Metrikákhoz kapcsolódó riasztások egy metrikai feltétel teljesülésekor alapulnak. Egy esemény a tevékenységnaplóban miatti riasztás alapul. Ez az érték használatával ellenőrizze-e a riasztás egy metrikát, illetve egy esemény alapul-e. |
 | feltétel |I | |Ellenőrizze, hogy az adott mezők alapján a **conditionType** értéket. |
 | MetricName |A metrikákhoz kapcsolódó riasztások | |A mérőszám, amely meghatározza, mit figyeli a szabály neve. |
@@ -106,4 +106,3 @@ A POST művelet a következő JSON-adattartalom és az összes mérőszám-alap�
 * Ismerje meg, hogyan [Logic Apps-alkalmazás használatával küldjön SMS-t, Twilio-n keresztül az Azure riasztásból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
 * Ismerje meg, hogyan [Logic Apps-alkalmazás használatával egy Slack-üzenet küldése egy Azure-riasztásokból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
 * Ismerje meg, hogyan [üzenet küldése az Azure-üzenetsort származó Azure Logic Apps-alkalmazás használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).
-

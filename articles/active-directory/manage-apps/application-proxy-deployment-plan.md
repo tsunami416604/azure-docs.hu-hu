@@ -16,11 +16,11 @@ ms.date: 04-04-2019
 ms.author: barbaraselden
 ms.reviewer: ''
 ms.openlocfilehash: 44393f80ab6ea01f0c2f52cb01dcd6241fab3d2d
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000708"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60442599"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Az Azure AD-alkalmazásproxy központi telepítésének megtervezése
 

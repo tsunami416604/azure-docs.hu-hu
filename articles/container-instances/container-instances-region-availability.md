@@ -8,11 +8,11 @@ ms.topic: overview
 ms.date: 03/01/2019
 ms.author: danlep
 ms.openlocfilehash: 1ca23a95c746139963aa70ed20bb888152fd5cd8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554526"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60537758"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Erőforrás rendelkezésre állása az Azure Container Instances szolgáltatásban az Azure-régióban
 
@@ -27,7 +27,7 @@ További információ a kvótákkal és egyéb korlátok a központi telepítés
 
 ## <a name="availability---general"></a>Rendelkezésre állás – általános
 
-| Hely | Operációs rendszer | CPU | Memória (GB) |
+| Location egység | Operációs rendszer | CPU | Memória (GB) |
 | -------- | -- | :---: | :-----------: |
 | Kanada középső régiója, USA középső RÉGIÓJA, USA keleti RÉGIÓJA 2, USA déli középső RÉGIÓJA | Linux | 4 | 16 |
 | USA keleti régiója, Észak-Európa, Nyugat-Európa, USA nyugati régiója, USA 2. nyugati régiója | Linux | 4 | 14 |

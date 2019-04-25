@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: cdd83c3ff9d34a5e8b7f2c164136ab82f498ffb5
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60343766"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az SAP HANA
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-sap-hana-connector.md)
 > * [Aktuális verzió](connector-sap-hana.md)
 
@@ -162,23 +162,23 @@ Példatípust az adatok SAP HANA-ból, a következő hozzárendeléseket haszná
 
 | SAP HANA-adattípus | Data factory közbenső adattípus |
 |:--- |:--- |
-| ALPHANUM | Karakterlánc |
+| ALPHANUM | String |
 | BIGINT | Int64 |
-| BLOB | Byte] |
-| LOGIKAI ÉRTÉK | Bájt |
-| CLOB | Byte] |
+| BLOB | Byte[] |
+| LOGIKAI ÉRTÉK | Byte |
+| CLOB | Byte[] |
 | DATE | DateTime |
-| TIZEDES TÖRT | Tizedes tört |
-| DUPLA | Önálló |
+| DECIMAL | Decimal |
+| DUPLA | Single |
 | INT | Int32 |
-| NVARCHAR | Karakterlánc |
-| VALÓDI | Önálló |
+| NVARCHAR | String |
+| VALÓDI | Single |
 | SECONDDATE | DateTime |
 | SMALLINT | Int16 |
-| TIME | Időtartam |
+| TIME | TimeSpan |
 | IDŐBÉLYEG | DateTime |
-| TINYINT | Bájt |
-| VARCHAR | Karakterlánc |
+| TINYINT | Byte |
+| VARCHAR | String |
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 

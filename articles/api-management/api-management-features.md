@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: apimpm
 ms.openlocfilehash: eae36aa6e60e3da03c59952a1d9e035e6a773d2d
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156697"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531072"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Az Azure API Management csomagjairól szolgáltatásalapú összehasonlítása
 
@@ -34,12 +34,12 @@ Minden API Management [tarifacsomag](https://aka.ms/apimpricing) kínál külön
 | Beépített gyorsítótár                                                                               | Nem                            | Igen            | Igen            | Igen            | Igen            |
 | Beépített elemzési                                                                           | Nem                            | Igen            | Igen            | Igen            | Igen            |
 | [Az SSL-beállítások](api-management-howto-manage-protocols-ciphers.md)                             | Nem                            | Igen            | Igen            | Igen            | Igen            |
-| [Külső gyorsítótár](https://aka.ms/apimbyoc)                                                    | Igen                           | Nem<sup>3</sup> | Nem<sup>3</sup> | Nem<sup>3</sup> | Nem<sup>3</sup> |
+| [Külső gyorsítótár](https://aka.ms/apimbyoc)                                                    | Igen                           | No<sup>3</sup> | No<sup>3</sup> | No<sup>3</sup> | No<sup>3</sup> |
 | [Ügyféltanúsítvány-alapú hitelesítés](api-management-howto-mutual-certificates-for-clients.md) | Nem<sup>4</sup>                | Igen            | Igen            | Igen            | Igen            |
 | [Biztonsági mentés és visszaállítás](api-management-howto-disaster-recovery-backup-restore.md)               | Nem                            | Igen            | Igen            | Igen            | Igen            |
 | [Git-felügyeletet](api-management-configuration-repository-git.md)                        | Nem                            | Igen            | Igen            | Igen            | Igen            |
 | Közvetlen felügyelet API                                                                        | Nem                            | Igen            | Igen            | Igen            | Igen            |
-| Az Azure Monitor-naplók és mérőszámok                                                               | Nem<sup>5</sup>                | Igen            | Igen            | Igen            | Igen            |
+| Az Azure Monitor-naplók és mérőszámok                                                               | No<sup>5</sup>                | Igen            | Igen            | Igen            | Igen            |
 
 <sup>1</sup> lehetővé teszi az Azure ad-ben használható (és az Azure AD B2C-t) a felhasználó bejelentkezik a fejlesztői portálon Identitásszolgáltatóként.<br/>
 <sup>2</sup> kapcsolódó funkciókat többek között például felhasználók, csoportok, problémák, alkalmazások és az e-mail-sablonok és értesítések.<br/>

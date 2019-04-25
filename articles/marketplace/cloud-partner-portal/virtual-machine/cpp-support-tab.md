@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 35ac9d0c4b0188724c91cdcf4f33b645dd92e98a
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639833"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60343213"
 ---
 # <a name="virtual-machine-support-tab"></a>Virtuális gép támogatás lap
 
-A **támogatja** lapján a **új ajánlat** lap lehetővé teszi, hogy műszaki és felhasználói erőforrások támogatása az ajánlatot.  Három területre oszlik: **mérnöki**, **ügyfél-támogatási**, és **támogatási URL-címek**.
+A **támogatja** lapján a **új ajánlat** lap lehetővé teszi, hogy műszaki és felhasználói erőforrások támogatása az ajánlatot.  Három lehetőség van osztva: **Mérnöki**, **ügyfél-támogatási**, és **URL-címeket támogatja**.
 
 ![Az új ajánlat képernyőn virtuális gépek támogatási lapja](./media/publishvm_012.png)
 
@@ -41,7 +41,7 @@ Az elemek magyarázata:
 | **Telefonszám**                 | Az ügyfél-támogatási telefonszám                                            |
 | *Támogatja az URL-címek*  | Támogatja a Microsoft fogja használni, amikor az ügyfelek nyissa meg a támogatási jegyeket helyekhez |
 | **Nyilvános Azure**          | Nyilvános internetes támogatási webhely URL-CÍMÉT                                         |
-| **Az Azure Government Cloud**| Kormányzati felhő támogatási webhely URL-CÍMÉT                                        |
+| **Azure Government Cloud**| Kormányzati felhő támogatási webhely URL-CÍMÉT                                        |
 |  |  |
 
 

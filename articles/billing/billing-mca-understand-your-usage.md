@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 8f71f42386ce49d4d7178cb03d28d74edacd7e39
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57836946"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371308"
 ---
 # <a name="understand-terms-on-your-azure-usage-and-charges-csv-for-a-microsoft-customer-agreement"></a>A Microsoft vevői szerződés az Azure-használat és költségek CSV feltételeinek értelmezése
 
@@ -38,17 +38,17 @@ Ha nagyvállalati szerződéssel rendelkező ügyfelek, láthatja, hogy a száml
 
 | Fürt megosztott kötetei szolgáltatás nagyvállalati szerződéssel rendelkező Azure-használat | A Microsoft vevői szerződés program Azure-használat és a fürt megosztott kötetei szolgáltatás díj |
 | --- | --- |
-| Dátum | dátum |
-| Hónap| dátum |
-| Nap | dátum |
-| Év | dátum |
+| Dátum | date |
+| Hónap| date |
+| Nap | date |
+| Év | date |
 | Product | termék |
-| Fogyasztásmérő azonosítója | meterID |
+| Fogyasztásmérő azonosítója | fogyasztásmérő-azonosító |
 | Fogyasztásmérő kategóriája | meterCategory |
 | Fogyasztásmérő alkategóriája | meterSubCategory |
 | Fogyasztásmérő régiója | meterRegion |
 | Fogyasztásmérő neve | meterName |
-| Felhasznált mennyiség | Mennyiség |
+| Felhasznált mennyiség | MENNYISÉG |
 | Erőforrásdíj | effectivePrice | <!-- this was highlighted -->
 | Kiterjesztett költség | költség |
 | Erőforrás helye | resourceLocation |
@@ -59,7 +59,7 @@ Ha nagyvállalati szerződéssel rendelkező ügyfelek, láthatja, hogy a száml
 | További információk | additionalInfo |
 | Címkék | tags |
 | Társzolgáltatás azonosítója | – |
-| Részleg neve | invoiceSection | <!-- this was highlighted -->
+| Részleg neve | számlaszakasz | <!-- this was highlighted -->
 | Költséghely | costCenter |
 | Mértékegység | unitofMeasure |
 | ResourceGroup | resourceGroup |
@@ -86,7 +86,7 @@ billingPeriodStartDate | A számlázási időszak, amelynek a számla jön létr
 billingPeriodEndDate | A számlázási időszak, amelynek a számla jön létre, a záró dátum
 servicePeriodStartDate | A minősítés időszak kezdő dátuma amely definiált és zárolva van, a felhasznált vagy beszerzett szolgáltatás díjszabása
 servicePeriodEndDate | A minősítés időszak vége amely definiált és zárolva van, a felhasznált vagy beszerzett szolgáltatás díjszabása
-dátum | Az Azure-ban és a piactér használat alapú költségek Ez az értékelés dátuma. Egyszeri vásárlások (foglalásokat, Marketplace-en) vagy rögzített ismétlődő költségek (támogatási ajánlatok) Ez a vásárlás időpontjától.
+date | Az Azure-ban és a piactér használat alapú költségek Ez az értékelés dátuma. Egyszeri vásárlások (foglalásokat, Marketplace-en) vagy rögzített ismétlődő költségek (támogatási ajánlatok) Ez a vásárlás időpontjától.
 serviceFamily | A szolgáltatáshoz tartozó szolgáltatás termékcsalád
 productOrderId | A termék sorrendben egyedi azonosítója
 productOrderName | Egyedi nevet a termék sorrend
@@ -102,7 +102,7 @@ termék | A díjakat halmoz fel a termék neve
 előfizetés-azonosító | Az előfizetés, a díjakat halmoz fel egyedi azonosítója
 subscriptionName | A díjakat halmoz fel az előfizetés neve
 reservationId | A megvásárolt foglalás-példány egyedi azonosítója
-reservationName | A megvásárolt foglalás példány neve
+foglalásnév | A megvásárolt foglalás példány neve
 publisherType | Írja be a publisher (értékek: firstParty, thirdPartyReseller, thirdPartyAgency)
 publisherName | Marketplace-szolgáltatások közzétevője
 resourceGroupId | Az erőforráscsoport az erőforráshoz tartozó egyedi azonosítója
@@ -111,7 +111,7 @@ resourceId | Az erőforrás-példány egyedi azonosítója
 resourceType | Erőforrás-példány típusa
 resourceLocation | Az Adatközpont, ahol az erőforrás fut. helyét azonosítja.
 location | Az erőforrás, ha különböző helyeken vannak konfigurálva az azonos régióban normalizált helye
-Mennyiség | Vásárolt, vagy a felhasznált egységek száma
+MENNYISÉG | Vásárolt, vagy a felhasznált egységek száma
 unitOfMeasure | A szolgáltatás számlázási mértékegysége. Például a számítási szolgáltatások díjszabása óradíjalapú.
 chargeType | A díj típusa. Értékek: <ul><li>AsCharged-használat: Vannak a feladatokkal kapcsolatos díjakat alapján az Azure-szolgáltatások használatát. Ez magában foglalja a használati adatainak összevetésére a virtuális gépeket, amelyek miatt a fenntartott példányok nem terheli.</li><li>AsCharged-PurchaseMarketplace: A piactér-beli vásárlásokra egyszeri vagy rögzített ismétlődő díjak</li><li>AsCharged-UsageMarketplace: Marketplace-szolgáltatások, amelyek díja fogyasztás egységek alapján kell fizetni</li></ul>
 isAzureCreditEligible | Azt a jelzőt, amely azt jelzi, hogy a díj a szolgáltatás az Azure-kreditek használatával fizetendő jogosult (értékeket: IGAZ, hamis)

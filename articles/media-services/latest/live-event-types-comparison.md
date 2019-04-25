@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: juliako
 ms.openlocfilehash: 9952a7bbac1eb79de0d3425f839e3bd30196844e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243890"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322284"
 ---
 # <a name="live-event-types-comparison"></a>Élő esemény típusok összehasonlítása
 
@@ -57,7 +57,7 @@ Az alábbi táblázat az élő esemény kétféle funkcióit hasonlítja össze.
 
 ## <a name="system-presets"></a>Rendszer-készletek
 
-Valós idejű kódolás használata esetén (élő esemény beállítása **Standard**), a kódolási előbeállítás határozza meg, hogyan a bejövő streamből több bitsebességre való átkódolása vagy rétegek van kódolva. Jelenleg az egyetlen megengedett érték a készlet *Default720p* (alapértelmezett).
+Élő kódolás használatakor (amikor az élő esemény beállítása **Standard**), a kódolási előbeállítás határozza meg, hogyan van többféle bitsebességbe vagy rétegbe kódolva a bejövő stream. Jelenleg az egyetlen megengedett érték a készlet *Default720p* (alapértelmezett).
 
 **Default720p** lesz a videó kódolandó a következő 6 rétegek.
 
@@ -73,7 +73,7 @@ Valós idejű kódolás használata esetén (élő esemény beállítása **Stan
 | 200 |340 |192 |30 |Magas |Video_340x192_200kbps |
 
 > [!NOTE]
-> Ha egy egyéni, élő kódolási beállításkészletet használja van szüksége, forduljon a amshelp@microsoft.com. Adjon meg a kívánt táblát felbontást és bitsebességre való átkódolása. Győződjön meg arról, hogy csak egy réteg 720 p, és legfeljebb 6 rétegek.
+> Ha egyéni élő kódolási előbeállítást kell használnia, írjon az amshelp@microsoft.com címre. Meg kell adnia a felbontás és a bitsebesség kívánt táblázatát. Győződjön meg arról, hogy csak egy réteg 720p sebességű, és hogy legfeljebb 6 réteg van.
 
 ### <a name="output-audio-stream"></a>Kimeneti Audio Stream
 

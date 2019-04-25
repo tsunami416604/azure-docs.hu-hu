@@ -1,5 +1,5 @@
 ---
-title: 'Kiterjesztheti a helyszíni hálózat az Azure-bA egy privát kapcsolaton keresztül – az ExpressRoute áttekintése: Azure |} A Microsoft Docs'
+title: 'Kiterjesztheti a helyszíni hálózat az Azure-bA egy privát kapcsolaton keresztül – az ExpressRoute áttekintése: Azure | Microsoft Docs'
 description: Az ExpressRoute technikai áttekintése ismerteti, hogyan terjeszthető ki a helyszíni hálózatát az Azure-ra egy ExpressRoute-kapcsolattal egy privát kapcsolaton keresztül.
 services: expressroute
 author: mialdrid
@@ -9,11 +9,11 @@ ms.date: 10/18/2018
 ms.author: mialdrid
 ms.custom: seodec18
 ms.openlocfilehash: 56baabb95a7873b48a27943a58b8e26c56efb6b7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139554"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60364346"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute – áttekintés
 Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure, az Office 365 és a Dynamics 365.

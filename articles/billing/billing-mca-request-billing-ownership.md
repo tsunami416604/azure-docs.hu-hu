@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: be8c7fcebca224196d9eac7d22387989b1bdfd46
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890933"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371924"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-users"></a>Első számlázási tulajdonosi jogokat, más felhasználók az Azure-előfizetések
 
@@ -35,16 +35,16 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
    ![Költségkezelés + számlázás az Azure portál keresési bemutató képernyőkép](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Nyissa meg a számlán szakaszban. A hozzáférést, attól függően szükség lehet jelöljön ki egy számlázási fiók vagy a számlázási profilja. A számlázási fiók vagy a profil, válassza ki a **szakaszok számlázása** és majd egy számla szakaszban.
+3. Lépjen a számlaszakaszra. A hozzáférést, attól függően szükség lehet jelöljön ki egy számlázási fiók vagy a számlázási profilja. A számlázási fiók vagy a profil, válassza ki a **szakaszok számlázása** és majd egy számla szakaszban.
    <!-- Todo - Add a screenshot -->
 
 4. Válassza ki **irányuló kérelmek** bal alsó oldalán.
 
-5. A lap tetején válassza **Hozzáadás**.
+5. Válassza a lap tetején a **Hozzáadás** gombot.
 
 6. Adja meg a számlázási tulajdonosi jogokat a kért felhasználó e-mail-címét. A felhasználó fiókja rendszergazda a Microsoft Online Service Program számlázási fiók vagy a nagyvállalati szerződésben a fiók tulajdonosa kell lennie. További információkért lásd: [a számlázási fiókok megtekintése az Azure Portalon](billing-view-all-accounts.md).
 
@@ -64,11 +64,11 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
    ![Költségkezelés + számlázás az Azure portál keresési bemutató képernyőkép](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Nyissa meg a számlán szakaszban. A hozzáférést, attól függően szükség lehet jelöljön ki egy számlázási fiók vagy a számlázási profilja. A számlázási fiók vagy a profil, válassza ki a **szakaszok számlázása** és majd egy számla szakaszban.
+3. Lépjen a számlaszakaszra. A hozzáférést, attól függően szükség lehet jelöljön ki egy számlázási fiók vagy a számlázási profilja. A számlázási fiók vagy a profil, válassza ki a **szakaszok számlázása** és majd egy számla szakaszban.
    <!-- Todo - Add a screenshot -->
 
 4. Válassza ki **irányuló kérelmek** bal alsó oldalán.

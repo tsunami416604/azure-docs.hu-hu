@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: glenga
 ms.openlocfilehash: 6e8142e391dd02e78be42e1f16ae2626b74c41c3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734470"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325516"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Az Azure Functions runtime verziók bemutatásához
 

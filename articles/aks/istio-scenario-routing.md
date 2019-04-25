@@ -2,17 +2,18 @@
 title: Intelligens az Útválasztás és az Azure Kubernetes Service (AKS) Istio tesztcsoportos kiadások
 description: Ismerje meg, hogyan használható Istio intelligens útválasztást és a tesztcsoportos kiadások, az Azure Kubernetes Service (AKS)-fürt üzembe helyezése
 services: container-service
-author: paulbouwer
+author: rockboyfor
 ms.service: container-service
 ms.topic: article
-ms.date: 12/3/2018
-ms.author: pabouwer
+origin.date: 12/03/2018
+ms.date: 03/04/2019
+ms.author: v-yeche
 ms.openlocfilehash: 0a4e5e7e310a9949ee59291c2032eafda46955a9
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892313"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60465893"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligens útválasztást és a tesztcsoportos kiadások használata Istio Azure Kubernetes Service (AKS)
 
@@ -28,7 +29,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Az alkalmazás egy canary kiadás bevezetése
 > * A bevezetés véglegesítése
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ebben a cikkben részletes lépései azt feltételezik, hogy létrehozott egy AKS-fürt (Kubernetes 1.10 és újabb, az RBAC engedélyezve), és kiépített egy `kubectl` kapcsolatot a fürttel. A fürtben telepített Istio is szükséges.
 
@@ -128,7 +129,7 @@ Containers:
     Image:         mcr.microsoft.com/aks/samples/voting/app:1.0
     ...
   istio-proxy:
-    Image:         docker.io/istio/proxyv2:1.0.4
+    Image:         dockerhub.azk8s.cn/istio/proxyv2:1.0.4
 [...]
 ```
 
@@ -254,7 +255,7 @@ Könnyebben jelenítheti meg, hogy mi most csak kapcsolódóak pedig az verzió 
 
 Jelenítheti meg, hogy Ön már csak kapcsolódóak pedig az verzió *1.1* , a *szavazási analytics* összetevő az alábbiak szerint. Ne felejtse a saját Istio bejövő átjáró IP-címét:
 
-```azurecli-interactive
+```azurecli
 INGRESS_IP=52.187.250.239
 for i in {1..5}; do curl -si $INGRESS_IP | grep results; done
 ```
@@ -340,7 +341,7 @@ deployment.apps/voting-app-2-0 created
 
 Várja meg, amíg az összes verzió *2.0* podok is futnak. Használja a [kubectl get pods] [ kubectl-get] parancsot minden podok megtekintéséhez a *szavazási* névtér:
 
-```azurecli-interactive
+```azurecli
 kubectl get pods --namespace voting
 ```
 

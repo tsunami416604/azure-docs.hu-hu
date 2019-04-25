@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
 ms.openlocfilehash: 2bdcd4c504822a2e60156b0ac565465e0cf23a85
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358524"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60388811"
 ---
 # <a name="use-habitat-to-deploy-your-application-to-azure"></a>Az alkalmazás telepítése az Azure a Habitat használatával
 [Habitat](https://www.habitat.sh/) az alkalmazás csomagolás és a futtatókörnyezet rendszer, amely az alkalmazás és az automation együtt üzembe helyezési egységként bundles. Ezzel létrehozza az alkalmazás, így lehetővé teszi egy újraírási nélkül telepíthetők tárolók, virtuális gépek, operációs rendszer nélküli vagy PaaS, vagy újracsomagolás ultimate hordozhatóságát.

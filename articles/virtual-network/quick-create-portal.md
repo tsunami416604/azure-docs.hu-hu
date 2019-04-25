@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: jdial
 ms.openlocfilehash: 346299dff8354bfca56a1f348c8f66e90da89632
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020829"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60391403"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Gyors útmutató: Virtuális hálózat létrehozása az Azure Portallal
 
@@ -43,7 +43,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     | Címtér | Adja meg *10.1.0.0/16*. |
     | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza ki **új létrehozása**, adja meg *myResourceGroup*, majd **OK**. |
-    | Hely | Válassza az **USA keleti régiója** lehetőséget.|
+    | Location egység | Válassza az **USA keleti régiója** lehetőséget.|
     | Alhálózat - név | Adja meg *myVirtualSubnet*. |
     | Alhálózat – címtartomány | Adja meg *10.1.0.0/24*. |
 
@@ -59,7 +59,7 @@ Hozzon létre két virtuális gépet a virtuális hálózaton:
 
 1. A **hozzon létre egy virtuális gép – alapvető**, adja meg vagy válassza ki ezt az információt:
 
-    | Beállítás | Érték |
+    | Beállítás | Value |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
     | Előfizetés | Válassza ki előfizetését. |
@@ -68,7 +68,7 @@ Hozzon létre két virtuális gépet a virtuális hálózaton:
     | Virtuális gép neve | Adja meg *myVm1*. |
     | Régió | Válassza az **USA keleti régiója** lehetőséget. |
     | Rendelkezésre állási beállításai | Hagyja meg az alapértelmezett **szükséges infrastruktúra redundancia**. |
-    | Kép | Hagyja meg az alapértelmezett **Windows Server 2016 Datacenter**. |
+    | Image | Hagyja meg az alapértelmezett **Windows Server 2016 Datacenter**. |
     | Méret | Hagyja meg az alapértelmezett **Standard DS1 v2**. |
     | **RENDSZERGAZDAI FIÓK** |  |
     | Felhasználónév | Adjon meg egy tetszőleges felhasználónevet. |

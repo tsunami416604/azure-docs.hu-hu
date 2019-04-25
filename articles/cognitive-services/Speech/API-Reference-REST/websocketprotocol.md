@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076190"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515326"
 ---
 # <a name="bing-speech-websocket-protocol"></a>A Bing Speech WebSocket protokoll
 
@@ -150,7 +150,7 @@ A fő, a szolgáltatásoknak az ügyfél által küldött üzenetek `speech.conf
 
 A következő fejlécek az összes ügyfél által kezdeményezett szükségesek.
 
-| Fejléc | Érték |
+| Fejléc | Value |
 |----|----|
 | Útvonal | Ebben a dokumentumban meghatározottak szerint az üzenet elérési út |
 | X-RequestId | A "no-dash" formátumban UUID |
@@ -174,12 +174,12 @@ Az ügyfelek *kell* küldése egy `speech.config` azokat a csatlakozást beszéd
 
 | Mező | Leírás |
 |----|----|
-| WebSocket-üzenetek kódolása | Szöveg |
+| WebSocket-üzenetek kódolása | Text |
 | Törzs | A tartalom egy JSON-struktúrát |
 
 #### <a name="required-message-headers"></a>Szükséges fejlécek
 
-| Fejléc neve | Érték |
+| Fejléc neve | Value |
 |----|----|
 | Útvonal | `speech.config` |
 | X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
@@ -243,14 +243,14 @@ Beszédszolgáltatás használja az első `audio` üzenet, amely tartalmaz egy e
 
 | Mező | Leírás |
 |-------------|----------------|
-| WebSocket-üzenetek kódolása | Bináris |
+| WebSocket-üzenetek kódolása | binary |
 | Törzs | A hang adattömbök bináris adatait. Maximális mérete 8192 bájt. |
 
 #### <a name="required-message-headers"></a>Szükséges fejlécek
 
 A következő fejléceket szükség az összes `audio` üzeneteket.
 
-| Fejléc         |  Érték     |
+| Fejléc         |  Value     |
 | ------------- | ---------------- |
 | Útvonal | `audio` |
 | X-RequestId | A "no-dash" formátumban UUID |
@@ -307,7 +307,7 @@ Az automatikus beszédfelismerés ideális megoldást készíthet, az alkalmazá
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
+| WebSocket-üzenetek kódolása | Text |
 | Útvonal | `telemetry` |
 | X-időbélyeg | Ügyfél UTC óra ISO 8601 formátumú időbélyeg |
 | Content-Type | `application/json` |
@@ -329,7 +329,7 @@ A `speech.startDetected` az üzenet azt jelzi, hogy beszédszolgáltatás az aud
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
+| WebSocket-üzenetek kódolása | Text |
 | Útvonal | `speech.startDetected` |
 | Content-Type | az Application/json; charset = utf-8 |
 | Törzs | A JSON-szerkezet speech kezdetét észlelésekor a feltételek kapcsolatos információkat tartalmazó. A *eltolás* ebben a struktúrában mező eltolását (100 nanoszekundumos egységekben) Ha speech észlelt az audio-adatfolyamot, a stream elején viszonyítva. |
@@ -354,7 +354,7 @@ Beszédfelismerés, során beszédszolgáltatás rendszeres időközönként ál
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
+| WebSocket-üzenetek kódolása | Text |
 | Útvonal | `speech.hypothesis` |
 | X-RequestId | A "no-dash" formátumban UUID |
 | Content-Type | application/json |
@@ -386,7 +386,7 @@ Amikor beszédszolgáltatás határozza meg, hogy arról, hogy vannak-e elegend�
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
+| WebSocket-üzenetek kódolása | Text |
 | Útvonal | `speech.phrase` |
 | Content-Type | application/json |
 | Törzs | A beszédfelismerés kifejezés JSON-struktúra |
@@ -414,7 +414,7 @@ A `speech.endDetected` üzenet Megadja, hogy az ügyfélalkalmazás álljon le, 
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
+| WebSocket-üzenetek kódolása | Text |
 | Útvonal | `speech.endDetected` |
 | Törzs | A JSON-szerkezet, amely tartalmazza az eltolást, beszéd végén észlelésekor. Az eltolás jelenik meg az 100 nanoszekundumos egységek eltolás kezdete és hang felismerés szolgálja ki. |
 | Content-Type | az Application/json; charset = utf-8 |
@@ -439,7 +439,7 @@ A `turn.start` jelzi a egy kapcsolja be a szolgáltatás szempontjából. A `tur
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
+| WebSocket-üzenetek kódolása | Text |
 | Útvonal | `turn.start` |
 | Content-Type | az Application/json; charset = utf-8 |
 | Törzs | JSON-struktúra |
@@ -466,7 +466,7 @@ A `turn.end` szempontjából a szolgáltatás egy kapcsolja végén jelzi. A `tu
 
 | Mező | Leírás |
 | ------------- | ---------------- |
-| WebSocket-üzenetek kódolása | Szöveg |
+| WebSocket-üzenetek kódolása | Text |
 | Útvonal | `turn.end` |
 | Törzs | None |
 

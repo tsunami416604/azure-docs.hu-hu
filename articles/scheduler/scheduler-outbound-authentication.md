@@ -9,17 +9,17 @@ ms.reviewer: klam
 ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 88f2fe0781bad4b652826b6a8d1961dd39b063e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 42d6ec93a3382f494b49fb574c4aee5e8eec142a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993333"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60344347"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Kimenő hitelesítés az Azure Scheduler
 
 > [!IMPORTANT]
-> [Az Azure Logic Apps](../logic-apps/logic-apps-overview.md) kivezetjük, az Azure Scheduler lecseréli. Feladatok ütemezése [helyette próbálkozzon az Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> A kivezetésre kerülő Azure Scheduler helyébe az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) lép. Feladatok ütemezéséhez [próbálja ki inkább az Azure Logic Apps szolgáltatást](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
 Az Azure Scheduler-feladatok, például a más Azure-szolgáltatások, a Salesforce.com, a Facebook és a biztonságos egyéni webhelyek hitelesítést igénylő szolgáltatásokat lehet. A hívott szolgáltatás megállapíthatja, hogy a Scheduler-feladat hozzáférhet-e a kért erőforrások. 
 
@@ -48,7 +48,7 @@ Hitelesítés hozzáadása során a `ClientCertificate` modellezheti, adja meg, 
 |---------|----------|-------------|
 | **hitelesítési** (elem) | A hitelesítési objektumot az ügyfél SSL-tanúsítvány használata |
 | **type** | Igen | A hitelesítési típus. Az ügyfél SSL-tanúsítványok, tulajdonság értéke `ClientCertificate`. |
-| **PFX** | Igen | A PFX-fájlt base64-kódolású tartalma |
+| **pfx** | Igen | A PFX-fájlt base64-kódolású tartalma |
 | **jelszó** | Igen | A jelszót a PFX-fájl eléréséhez |
 ||| 
 
@@ -287,9 +287,9 @@ Hitelesítés hozzáadása során a `ActiveDirectoryOAuth` modellezheti, adja me
 | **hitelesítési** (elem) | Igen | A hitelesítési objektumot ActiveDirectoryOAuth hitelesítés használatával |
 | **type** | Igen | A hitelesítési típus. A ActiveDirectoryOAuth hitelesítéshez, az értéke `ActiveDirectoryOAuth`. |
 | **bérlő** | Igen | A bérlőazonosító az Azure AD-bérlővel. Az Azure AD-bérlő esetében a bérlőazonosító megkereséséhez futtassa `Get-AzureAccount` az Azure PowerShellben. |
-| **Célközönség** | Igen | Ez az érték `https://management.core.windows.net/`. | 
-| **ClientId** | Igen | Az Azure AD-alkalmazás az ügyfél-azonosítója | 
-| **Titkos kulcs** | Igen | A titkos kulcsot a jogkivonatot kér az ügyfél számára | 
+| **audience** | Igen | Ez az érték `https://management.core.windows.net/`. | 
+| **clientId** | Igen | Az Azure AD-alkalmazás az ügyfél-azonosítója | 
+| **secret** | Igen | A titkos kulcsot a jogkivonatot kér az ügyfél számára | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Választörzs - Active Directory OAuth
@@ -301,8 +301,8 @@ Kérelmet küldött a hitelesítési adatokat, akkor a válasz ezek hitelesíté
 | **hitelesítési** (elem) | A hitelesítési objektumot ActiveDirectoryOAuth hitelesítés használatával |
 | **type** | A hitelesítési típus. A ActiveDirectoryOAuth hitelesítéshez, az értéke `ActiveDirectoryOAuth`. | 
 | **bérlő** | Az Azure AD-bérlő a bérlő azonosítója |
-| **Célközönség** | Ez az érték `https://management.core.windows.net/`. |
-| **ClientId** | Az Azure AD-alkalmazás az ügyfél-azonosítója |
+| **audience** | Ez az érték `https://management.core.windows.net/`. |
+| **clientId** | Az Azure AD-alkalmazás az ügyfél-azonosítója |
 ||| 
 
 ### <a name="sample-rest-request---active-directory-oauth"></a>Példa REST-kérelem - Active Directory OAuth

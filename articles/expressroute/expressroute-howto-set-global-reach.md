@@ -9,17 +9,17 @@ ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
 ms.openlocfilehash: 8ea3b3580cb70d0453a5ec6a38f6063788ebf7f4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082024"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60364771"
 ---
 # <a name="configure-expressroute-global-reach"></a>Az ExpressRoute Global Reach konfigurálása
 
 Ez a cikk segít az ExpressRoute globális elérhetőségű PowerShell-lel konfigurálja. További információkért lásd: [ExpressRouteRoute globális elérhetőségű](expressroute-global-reach.md).
 
- ## <a name="before-you-begin"></a>Előkészületek
+ ## <a name="before-you-begin"></a>Előzetes teendők
 
 Mielőtt elkezdené a konfigurációt, ellenőrizze az alábbiakat:
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897452"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369970"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>A Microsoft Azure-számla feltételeinek értelmezése
 
@@ -31,7 +31,7 @@ Vegye figyelembe, hogy néhány dolgot:
 
 -   Akár 24 óra az előző számlázási időszak végén a előfordulhat, hogy az aktuális számlán jelennek meg.
 
--   A nemzetközi ügyfeleknek szóló számlázási kimutatásokon szereplő díjak csak becslések. A bankok különböző költségeket a pénznemváltás is.
+-   A nemzetközi ügyfeleknek szóló számlázási kimutatásokon szereplő díjak csak becslések. Előfordulhat, hogy a bankok eltérő díjakat számítanak fel az átváltási árfolyamokhoz.
 
 >[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
@@ -107,7 +107,7 @@ A következő táblázat ismerteti a használati díjak oszlopfejlécek jelenik 
 | Tartalmazza |A mérőszám, amely tartalmazza az aktuális elszámolási időszakban érvényes díjmentesen mennyisége |
 | Billable (Számlázandó) |A felhasznált mennyiség és a foglalt mennyiség közötti különbséget mutatja. Ez a mennyiség díjköteles. A használatalapú fizetés, amelyek nem tartalmaz az ajánlat keretében elérhető ez a mennyiség megegyezik a felhasznált mennyiség |
 | Rate (Egységár) |A sebesség díját a számlázható egység |
-| Érték |A Rate oszlop Kerettúllépés mennyiség oszlop szorzása eredménye látható. A felhasznált mennyiség nem haladja meg a foglalt mennyiséget, ha ott nem költségekkel ebben az oszlopban. |
+| Value |A Rate oszlop Kerettúllépés mennyiség oszlop szorzása eredménye látható. A felhasznált mennyiség nem haladja meg a foglalt mennyiséget, ha ott nem költségekkel ebben az oszlopban. |
 | Rész összesen |Minden a költségek előtti adózási a számlázási időszak összege |
 | Teljes összeg százalékában |Adózás a számlázási időszak után a díjak összege |
 

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: 115a459c6a9e4ea96931c89272a49396f0656258
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993343"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60362211"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>1 – példa hozhat létre egy egyszerű Szegélyhálózat NSG-k használata a klasszikus PowerShell-lel
 [Térjen vissza a biztonsági határ ajánlott eljárások lap][HOME]

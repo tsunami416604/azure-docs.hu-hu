@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
 ms.openlocfilehash: 3163b33f69f4cc2d6cd4127253c7b6fadfddd6b0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994231"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60324038"
 ---
 # <a name="azure-cdn-rules-engine-reference"></a>Az Azure CDN szabálymotor-referencia
 Ez a cikk felsorolja a részletes leírását, a rendelkezésre álló egyezési feltételei és a szolgáltatások esetében az Azure Content Delivery Network (CDN) [szabálymotorral](cdn-rules-engine.md).
