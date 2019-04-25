@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: banders
 ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652535"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370356"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>A használatalapú fizetéses előfizetést Azure foglalás használati adatai
 
@@ -33,7 +33,7 @@ Ez a cikk azt feltételezi, hogy a Foglalás egyetlen előfizetéshez van alkalm
 
 A következő szakaszokban feltételezzük, hogy futtatja a keleti régiójában és a fenntartott virtuális gép példány adatokat úgy tűnik, az alábbi táblázat a Standard_DS1_v2 Windows virtuális gépek:
 
-| Mező | Érték |
+| Mező | Value |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
 |Mennyiség |1|
@@ -68,7 +68,7 @@ A következő szakaszok példaként az Azure SQL Database használatával a hasz
 
 Tegyük fel, hogy futtatja a keleti régiójában és a foglalási adatokat úgy tűnik, az alábbi táblázat, egy SQL Database Gen 4:
 
-| Mező | Érték |
+| Mező | Value |
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Mennyiség |2|

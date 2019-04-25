@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 34829482e570354c1ab1e1fd6cec0c96b993cd83
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58167031"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60403925"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>A Service Bus AMQP 1.0-támogatás
 Az Azure Service Bus felhőalapú szolgáltatás és a helyszíni [Service Bus Windows Server (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) támogatja a speciális üzenet sorba rendezését AMQP protokoll 1.0-t. Az AMQP lehetővé teszi többplatformos hibrid alkalmazások egy nyílt szabványú protokoll használatával hozhat létre. Alkalmazások, amelyek különböző nyelv és keretrendszer használatával készült, és a különböző operációs rendszereket futtató összetevők használatával hozhatnak létre. Ezeket az összetevőket a Service Bus, és zökkenőmentesen kapcsolódik az összes alkalmazásközi strukturált üzleti hatékonyan és teljes visszaadása.

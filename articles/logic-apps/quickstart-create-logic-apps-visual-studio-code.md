@@ -11,13 +11,13 @@ ms.reviewer: klam, deli, LADocs
 ms.suite: integration
 ms.date: 10/05/2018
 ms.openlocfilehash: 0fec590523fa130af2e5670a92914c056df289d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229617"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60512242"
 ---
-# <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Rövid útmutató: Létrehozása és kezelése, automatikus logic app-munkafolyamatok – Visual Studio Code
+# <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Gyors útmutató: Létrehozása és kezelése, automatikus logic app-munkafolyamatok – Visual Studio Code
 
 A [Azure Logic Apps](../logic-apps/logic-apps-overview.md) és a Visual Studio Code-ban hozhat létre és kezelheti a logic apps, amelyek segítségével automatizálhatja a feladatokat, a munkafolyamatok és folyamatok, alkalmazások, adatok, rendszerek és szolgáltatások integrálásához a különböző szervezetek és vállalatok számára. A rövid útmutató bemutatja, hogyan hozhat létre, és használata a kód-alapú élményen keresztül a munkafolyamat-definíciós séma JavaScript Object Notation (JSON) logikaialkalmazás-munkafolyamat definíciók szerkesztéséhez. Emellett használhatja a már üzembe helyezte a meglévő logic apps <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> a felhőben. 
 

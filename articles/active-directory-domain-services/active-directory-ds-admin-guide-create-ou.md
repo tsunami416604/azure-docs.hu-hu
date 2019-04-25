@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: 33c4264d9aeffb721cd2d44df6d551126782f0e1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165710"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417868"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Hozzon létre egy szervezeti egység (OU) a az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 Az Azure AD Domain Services felügyelt tartomány "AADDC számítógépek" és "AADDC felhasználók" nevű, illetve két beépített tárolók közé tartozik. A "AADDC számítógépek" tároló rendelkezik minden olyan számítógép, a felügyelt tartományhoz csatlakoztatott számítógép-objektumai. A "AADDC felhasználók" tároló tartalmazza a felhasználók és csoportok az Azure AD-bérlőben. Alkalmanként lehet a felügyelt tartomány számítási feladatok üzembe helyezéséhez a szolgáltatásfiókok létrehozásához szükséges. Erre a célra hozzon létre egy egyéni szervezeti egység (OU) a felügyelt tartományon, és a szervezeti egységre belül szolgáltatásfiókok létrehozása. Ez a cikk bemutatja, hogyan hozhat létre egy szervezeti Egységet a felügyelt tartományra.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 A cikkben szereplő feladatok elvégzéséhez szüksége:
 
 1. Egy érvényes **Azure-előfizetés**.

@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 0fc82229e158ed35b97203b11d08841c683c45ce
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809918"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60398065"
 ---
 <a name="app-publishing-steps"></a>Alkalmazás közzétételének lépései
 ====================
@@ -84,7 +84,7 @@ Ezeket a lépéseket általában eltarthat egy adott héten, és nem szükséges
 Az ajánlat rajta a végső feldolgozási keresztül történik. Az alkalmazás megfelelt a marketing és a műszaki ellenőrzési, de most már készen áll az alkalmazás forrás legyen rajta a végső feldolgozási keresztül kell haladnia.
 
 
-**Élő**
+**Live**
 
 Az ajánlat már élő az appsource-ban, és ügyfelek megtekinthetik, és helyezze üzembe az alkalmazást a Microsoft Dynamics 365 Business Central-előfizetésekben is. A kapcsolatot a arról tájékoztatja, hogy az alkalmazás közzétett alkalmazás forrás, kapni fog egy e-mailt. Bármikor minden ajánlatok lapján kattintson, és megnézheti az állapotukat minden az ajánlat, a jobb oldali oszlopban található. Kattintson az állapotadatokra kattintva részletesen ismertetjük az ajánlat közzétételi folyamat állapotát a.
 

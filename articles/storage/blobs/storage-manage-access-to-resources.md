@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: e27be86a7a14a38c5083949a1a7255574d2d0dc6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3996f22db2f5dc597939995a2699c4fe228821e3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956081"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392559"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Tárolók és blobok névtelen olvasási hozzáférésének kezelése
 Engedélyezheti a névtelen, nyilvános olvasási hozzáférést a tárolóhoz és annak blobjaihoz, az Azure Blob storage-ban. Ezzel a módszerrel csak olvasási hozzáféréssel ezekhez az erőforrásokhoz a fiókkulcs megosztása nélkül, és anélkül, hogy egy közös hozzáférésű jogosultságkód (SAS) adhat meg.
@@ -24,9 +24,9 @@ Alapértelmezés szerint egy tárolót, és minden benne lévő blobok érhetik 
 
 Konfigurálhat egy tárolót a következő engedélyekkel:
 
-* **Nincs nyilvános olvasási hozzáférés:** a tárolóhoz és annak blobjaihoz elérhetők, csak a tárfiók tulajdonosa. Ez az összes új tárolók alapértelmezett.
-* **Nyilvános olvasási hozzáférés csak blobok:** a tárolóban található Blobok névtelen kérelem által is olvasható, de adatokat tároló nem érhető el. Ügyfelek névtelen nem lehet számba venni a a tárolóban lévő blobokat.
-* **Teljes nyilvános olvasási hozzáférés:** minden tároló és blobnév adat névtelen kérelem által olvasható. Ügyfelek névtelen kérelem által a tárolóban található blobok enumerálása, de nem sikerült felsorolni a tárfiókban lévő tárolók.
+* **Nincs nyilvános olvasási hozzáférés:** A tárolóhoz és annak blobjaihoz csak a tárfiók tulajdonosa férhet. Ez az összes új tárolók alapértelmezett.
+* **Nyilvános olvasási hozzáférés csak blobok esetén:** A tárolóban található blobok névtelen kérelem által is olvasható, de adatokat tároló nem érhető el. Ügyfelek névtelen nem lehet számba venni a a tárolóban lévő blobokat.
+* **Teljes körű nyilvános olvasási hozzáférés:** Az összes tárolót és Blobadatok névtelen kérelem által olvasható. Ügyfelek névtelen kérelem által a tárolóban található blobok enumerálása, de nem sikerült felsorolni a tárfiókban lévő tárolók.
 
 A következő segítségével a tároló engedélyeinek beállítása:
 
@@ -119,16 +119,16 @@ Az alábbi táblázatban látható, hogy mely műveletek előfordulhat, hogy hí
 | Tároló létrehozása |Csak a tulajdonosa |Csak a tulajdonosa |
 | A tároló tulajdonságainak beolvasása |Összes |Csak a tulajdonosa |
 | Tároló metaadatainak beolvasása |Összes |Csak a tulajdonosa |
-| Állítsa be a tároló metaadatai |Csak a tulajdonosa |Csak a tulajdonosa |
+| Set Container Metadata |Csak a tulajdonosa |Csak a tulajdonosa |
 | Tároló ACL lekérése |Csak a tulajdonosa |Csak a tulajdonosa |
-| ACL tároló beállítása |Csak a tulajdonosa |Csak a tulajdonosa |
+| Set Container ACL |Csak a tulajdonosa |Csak a tulajdonosa |
 | Tároló törlése |Csak a tulajdonosa |Csak a tulajdonosa |
 | Blobok listázása |Összes |Csak a tulajdonosa |
 | Put Blob |Csak a tulajdonosa |Csak a tulajdonosa |
 | A Blob lekérése |Összes |Összes |
 | A Blob tulajdonságainak lekérése |Összes |Összes |
 | A Blob tulajdonságainak megadása |Csak a tulajdonosa |Csak a tulajdonosa |
-| A Blob metaadatainak beolvasása |Összes |Összes |
+| Blob metaadatainak beolvasása |Összes |Összes |
 | Állítsa be a Blob metaadatai |Csak a tulajdonosa |Csak a tulajdonosa |
 | PUT letiltása |Csak a tulajdonosa |Csak a tulajdonosa |
 | (Csak a véglegesített blokkolja) blokk-lista lekérése |Összes |Összes |
@@ -140,7 +140,7 @@ Az alábbi táblázatban látható, hogy mely műveletek előfordulhat, hogy hí
 | Címbérleti Blobhoz |Csak a tulajdonosa |Csak a tulajdonosa |
 | PUT lap |Csak a tulajdonosa |Csak a tulajdonosa |
 | Laptartomány-beolvasási |Összes |Összes |
-| Hozzáfűző Blob |Csak a tulajdonosa |Csak a tulajdonosa |
+| Blob hozzáfűzése |Csak a tulajdonosa |Csak a tulajdonosa |
 
 ## <a name="next-steps"></a>További lépések
 

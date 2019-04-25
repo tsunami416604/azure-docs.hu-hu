@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100479"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60498831"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram metódus
 
@@ -30,7 +30,7 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 
 ## <a name="request-parameters"></a>A kérés paraméterei
 
-Name (Név)  |Érték | Kötelező?  |Leírás
+Name (Név)  |Value | Kötelező?  |Leírás
 -----------|----------|--------|----------
 **kifejezés**    |Szöveges karakterlánc | Igen  |A lekérdezési kifejezés, amely meghatározza az entitásokat, amelyen hisztogramok kiszámításához.
 **model** |Szöveges karakterlánc | Nem |Válassza ki a modellt, amely a lekérdezni kívánt nevét.  Jelenleg az alapértelmezett érték *legújabb*.

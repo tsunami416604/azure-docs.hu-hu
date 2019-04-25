@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 3/12/2019
 ms.author: mayg
 ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60482931"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Ismételt védelme, és a egy helyszíni helyhez vissza gépek feladatai az Azure-bA a feladatátvételt követően
 
@@ -22,7 +22,7 @@ Röviden tekintse meg a következő videó bemutatja, hogyan a feladatátvételt
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ha egy sablont a virtuális gépek létrehozásakor, győződjön meg arról, hogy minden virtuális gép rendelkezik-e a saját UUID azonosító, a lemezek. Ha a helyszíni virtuális gép UUID ütközik a fő célkiszolgáló UUID, mert mindkettő egy sablon alapján létrehozott, az ismételt védelem sikertelen lesz. Helyezze üzembe, amely nem az azonos sablon alapján létrehozott egy másik fő célkiszolgálót. Tekintse meg az alábbi információkat:
 - Ha a feladat-visszavételhez egy másik vCenter, ügyeljen arra, hogy az új vCenter és a fő célkiszolgáló felderítése történik meg. Egy tipikus tünete, hogy állomásához nem érhetők el, vagy nem láthatók a a **ismételt védelme** párbeszédpanel bezárásához.

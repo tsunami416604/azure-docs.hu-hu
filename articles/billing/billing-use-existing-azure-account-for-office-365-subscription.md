@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: b67f3c590be290515329af390b4d3d79a9746112
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339227"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369889"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Office 365-előfizetéssel, az Azure-fiókkal regisztrálhat
 Ha Ön Azure-előfizető, használhatja az Azure-fiókjába az Office 365-előfizetéssel regisztrálhat. Ha Ön Azure-előfizetéssel rendelkező egy szervezet része, a felhasználók számára az Office 365-előfizetés a meglévő Azure Active Directoryban (Azure AD) is létrehozhat. Iratkozzon fel az Office 365-fiókkal, amely az Azure Active Directory-bérlő globális rendszergazdai vagy számlázási rendszergazdájának-engedélyekkel rendelkezik. További információkért lásd: [ellenőrizze a saját fiók engedélyeit az Azure ad-ben](#RoleInAzureAD) és [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).

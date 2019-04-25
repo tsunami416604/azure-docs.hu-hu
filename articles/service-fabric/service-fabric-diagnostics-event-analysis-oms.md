@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
 ms.openlocfilehash: ba4923edbc59f0e6650fda1a71e1c4f79b884cf2
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662159"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60393494"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Esemény elemzése és képi megjelenítése a Azure Monitor naplóira
  Az Azure Monitor naplóira gyűjti és elemzi az alkalmazások és szolgáltatások a felhőben üzemeltetett származó telemetriai adatok, és segítséget nyújtanak a rendelkezésre állás és teljesítmény maximalizálása elemzésére szolgáló eszközöket biztosít. Ez a cikk ismerteti, hogyan lekérdezéseket futtathat az Azure Monitor-naplók elemzése és hibaelhárítása, mi történik a fürtön. Az alábbi gyakori kérdések foglalkozik:

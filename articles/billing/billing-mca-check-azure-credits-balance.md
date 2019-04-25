@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544596"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60372266"
 ---
 # <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>Nyomon követheti az Azure kreditegyenlegét Microsoft Ügyfélszerződéséhez
 
@@ -33,11 +33,11 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
 
 1. Jelentkezzen be az [Azure Portalra]( https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
    ![Képernyőkép a Keresés a portál a Költségkezelés + számlázás](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. Nyissa meg a számlázási profilja. A hozzáférést, attól függően szükség lehet egy számlázási fiók kiválasztása. Válassza ki a számlázási fiók **profilok számlázási** és a egy számlázási profilja majd.
+3. Lépjen a számlázási profilra. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot. Válassza ki a számlázási fiók **profilok számlázási** és a egy számlázási profilja majd.
 
 4. Válassza ki **az Azure-kreditek**.
 

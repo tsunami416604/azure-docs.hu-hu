@@ -16,14 +16,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: kumud
-ms.openlocfilehash: 888808c94115e2ea136e90eb635faf28e7d92fd2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: 121d3f941f3d00373bd2821534c3e601107e97e6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431018"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506960"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI-példaszkript: Forgalom terheléselosztása virtuális gépekre magas rendelkezésre álláshoz
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Az Azure CLI-példaszkript: Bejövő forgalmának terheléselosztása virtuális gépek magas rendelkezésre állás érdekében
 
 A CLI-példaszkript minden összetevőt létrehoz, amelyre szükség van több, magas rendelkezésre állásra és terheléselosztásra konfigurált Ubuntu rendszerű virtuális gép futtatásához egy adott rendelkezésre állási zónán belül. A szkript futtatása után három virtuális géppel rendelkezik majd, amelyek egy régió ugyanazon rendelkezésre állási zónájában találhatók, és egy standard Azure Load Balanceren keresztül érhetők el. 
 

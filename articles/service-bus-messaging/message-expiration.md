@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 1ea645ee53f91a62bd49fb1da0d44e2962708b88
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856961"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402768"
 ---
 # <a name="message-expiration-time-to-live"></a>Üzenetek lejárata (élettartama)
 
@@ -69,7 +69,7 @@ A **autoDeleteOnIdle** tulajdonságot kell beállítani egy Azure Resource Manag
     - Nem küld  
     - Nincsenek frissítések a témakörbe  
     - Ütemezett üzenetek 
-- Előfizetések
+- Subscriptions
     - Nem kap  
     - Az előfizetés nincs frissítései  
     - Nincs új szabály az előfizetéshez történő hozzáadása  

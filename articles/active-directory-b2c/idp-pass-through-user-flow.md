@@ -3,7 +3,7 @@ title: Egy hozzáférési jogkivonatot a felhasználó a folyamatokon keresztül
 description: Ismerje meg, hogyan adhat át egy hozzáférési jogkivonatot keresztül OAuth2.0 identitásszolgáltatókhoz való jogcímként az Azure Active Directory B2C felhasználói folyamatokban.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 7863bea9f3fe6ef146dc1e1f2b29bbfda09a9d6d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683634"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397243"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Felhasználói folyamat segítségével egy hozzáférési jogkivonatot át alkalmazását az Azure Active Directory B2C-vel
 

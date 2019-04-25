@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 82139178d4c1db4774d539180e41e49699d8ee12
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174214"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60382462"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Az Azure AD Connect szinkronizálási objektum-szinkronizálás hibaelhárítása
 Ez a cikk lépéseit kapcsolatos hibák elhárításának felügyeltobjektum-szinkronizációs a hibaelhárítási feladat használatával. Az az Azure Active Directory (Azure AD) Connect hibaelhárítási kipróbálásához, tekintse meg a [Ez a rövid videó](https://aka.ms/AADCTSVideo).

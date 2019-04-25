@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c2c5006eb050b70b783ab8199724e0e98766381
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358107"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359353"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>A felhőalapú Azure multi-factor Authentication tervezése
 
@@ -237,7 +237,7 @@ Ha egy hálózati házirend-kiszolgáló példány telepítve van, vagy használ
 
 Válassza ki, mi történik, ha a felhasználók, amely nincs regisztrálva a többtényezős hitelesítéssel próbál hitelesítést. A beállításjegyzék-beállítással `REQUIRE_USER_MATCH` a beállításjegyzékbeli elérési út `HKLM\Software\Microsoft\AzureMFA` funkció viselkedését vezérlő. Ezzel a beállítással rendelkezik olyan egyetlen konfigurációs beállítással.
 
-| Kulcs | Érték | Alapértelmezett |
+| Kulcs | Value | Alapértelmezett |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | TRUE / FALSE (HAMIS) | Nincs beállítva (egyenértékű, True) |
 
@@ -304,7 +304,7 @@ Jelentések az Azure MFA-hoz
 
 Az Azure multi-factor Authentication az Azure Portalon keresztül jelentéseket biztosítja:
 
-| Jelentés | Földrajzi egység | Leírás |
+| Jelentés | Location egység | Leírás |
 | --- | --- | --- |
 | Használat és a csalási riasztás | Az Azure AD > bejelentkezések | Információt nyújt az általános használat – felhasználói összefoglalás és felhasználói adatait; csakúgy, mint a megadott dátumtartományban küldött visszaélési riasztások előzményeit. |
 

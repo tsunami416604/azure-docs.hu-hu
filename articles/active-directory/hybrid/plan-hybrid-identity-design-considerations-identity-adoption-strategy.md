@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 73d64cac3812d8daf8ac34b93c91338e1dfab88a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193483"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381964"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>A hibrid identitás bevezetési stratégia kidolgozása
 Ebben a feladatban a hibrid identitáskezelési megoldás, amely aktorcsoportot tárgyalt, az üzleti igényeknek hibrid identitás bevezetési stratégiája határozza meg:

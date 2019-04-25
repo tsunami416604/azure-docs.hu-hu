@@ -2,20 +2,21 @@
 title: További tudnivalók az Azure SQL Data Warehouse-műveletek |} A Microsoft Docs
 description: 'Az SQL Data Warehouse rugalmassága lehetővé teszi, hogy növelje, csökkentse vagy szüneteltesse a számítási teljesítményt az adattárházegységek (DWU-k) csúszkájával. Ez a cikk az adatraktárak mérőszámait ismerteti, és azt, hogy azok milyen kapcsolatban vannak a DWU-kkal. '
 services: sql-data-warehouse
-author: kevinvngo
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: design
-ms.date: 04/17/2018
-ms.author: kevin
+ms.component: design
+origin.date: 04/17/2018
+ms.date: 11/12/2018
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: f0489d9c018abac380cd0f8b1aa51fa5bb81707a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463616"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531184"
 ---
 # <a name="data-warehouse-workload"></a>Adatraktár-számítási feladat
 Az adatraktár-számítási feladat minden olyan műveletre utal, amelyet egy adatraktárral végeznek. Az adatraktár-számítási feladat magában foglalja az adatok betöltését az adatraktárba, az elemzések végrehajtását, a jelentések készítését az adatraktárról, az adatraktárban lévő adatok kezelését és az adatok adatraktárból történő exportálását. Az összetevők terjedelme és mélysége gyakran arányos az adatraktár érettségi szintjével.

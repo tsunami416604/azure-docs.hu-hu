@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267038"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60347691"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Egy előző verzióról a legújabbra frissítése
 Ez a témakör ismerteti a különböző módszereket, amelyek segítségével az Azure Active Directory (Azure AD) Connect-telepítésre frissítsen a legújabb verziót. Azt javasoljuk, hogy őrizze meg magát a kiadások, az Azure AD Connect az aktuális. Is szereplő lépések segítségével a [párhuzamos migrálás](#swing-migration) szakaszt, ha létrehoz egy jelentős konfigurációs módosítást.

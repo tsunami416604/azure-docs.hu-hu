@@ -19,11 +19,11 @@ ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d976a43173ce4f9deee0a723a895b40678e173b3
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437883"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60250502"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML-protokoll
 
@@ -50,7 +50,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | Paraméter |  | Leírás |
 | --- | --- | --- |
 | ID (Azonosító) | Szükséges | Azure ad-ben ezt az attribútumot használja feltölti a `InResponseTo` a visszaadott válasz attribútum. Azonosító kell nem kezdődhet számmal, így egy általános stratégia az, hogy egy karakterlánc, például a "id" egy GUID azonosító karakterlánc-ábrázolásra jogosultságokat. Ha például `id6c1c178c166d486687be4aaf5e482730` van egy érvényes azonosítót. |
-| Verzió | Szükséges | Ezt a paramétert kell megadni **2.0**. |
+| Version | Szükséges | Ezt a paramétert kell megadni **2.0**. |
 | IssueInstant | Szükséges | Egy dátum/idő karakterlánc UTC értékkel és [oda-vissza formátumot ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure ad-ben az ilyen típusú dátum/idő értéket vár, de nem értékeli, vagy használja az értéket. |
 | AssertionConsumerServiceUrl | Optional | Ha meg van adva, ezt a paramétert meg kell egyeznie a `RedirectUri` a felhőalapú szolgáltatás, az Azure ad-ben. |
 | ForceAuthn | Optional | Ez egy olyan logikai érték. Ha az értéke igaz, az azt jelenti, hogy a felhasználónak meg kell változtatniuk a újra hitelesíteni kell, még akkor is, ha rendelkezik egy érvényes Azure AD-munkamenetet. |
@@ -100,7 +100,7 @@ Ha meg van adva, nem tartalmazza a `ProxyCount` attribútum, `IDPListOption` vag
 ### <a name="signature"></a>Aláírás
 Nem tartalmazza a `Signature` elemében `AuthnRequest` elemek, az Azure AD nem támogatja az aláírt hitelesítési kéréseket.
 
-### <a name="subject"></a>Tárgy
+### <a name="subject"></a>Subject
 Az Azure AD figyelmen kívül hagyja a `Subject` eleme `AuthnRequest` elemeket.
 
 ## <a name="response"></a>Válasz
@@ -211,7 +211,7 @@ A digitális aláírását létrehozó, Azure ad-ben a aláíró kulcs használ 
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Tárgy
+#### <a name="subject"></a>Subject
 
 Megadja az egyszerű, amely az utasításokat a helyességi feltétel tárgya. Tartalmaz egy `NameID` elemet, amely a hitelesített felhasználó jelöli. A `NameID` egy célzott azonosítója, amely csak a szolgáltató, amely a jogkivonat célközönség van irányítva. Állandó – visszavonhatók, de soha nem kell hozzárendelni. Emellett akkor is nem átlátszó, abban, hogy a felhasználóval kapcsolatos semmit nem fed, és nem használható azonosító attribútum lekérdezések.
 

@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
-ms.openlocfilehash: 86bb7e736754cbc6a93bba5fff5d8d1877b1e3b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e85cfb6d7b44924ce7f17fdedb7f1b52350ab598
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916580"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392398"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Tulajdonságok és metaadatok beállítása és lekérése
 
@@ -27,7 +27,7 @@ Tulajdonság és a metaadatok értékek tárolási erőforrás beolvasásakor k�
 > [!IMPORTANT]
 > Ha azt tapasztalja, hogy vlastnost nebo metaadatok értékek tárolási erőforrás nem lett feltöltve, ellenőrizze, hogy a kód meghívja a **FetchAttributes** vagy **FetchAttributesAsync** metódust.
 >
-> Metaadatok név/érték párok érvényes HTTP-fejléceket, és ezért meg kell felelnie, HTTP-fejlécek vonatkozó összes korlátozás. Metaadatneveknek egyedieknek kell lenniük a HTTP-fejlécet az érvényes nevek, csak ASCII-karaktereket tartalmazhat, és kell-e kezelni a kis-és. Nem ASCII-karaktereket tartalmazó metaadatértékeket Base64-kódolású vagy URL-kódolású kell lennie.
+> Metaadatok név/érték párok érvényes HTTP-fejléceket, és ezért meg kell felelnie, HTTP-fejlécek vonatkozó összes korlátozás. Metaadatneveknek egyedieknek kell lenniük érvényes HTTP-fejléc nevét, és érvényes C# azonosítókat, csak ASCII-karaktereket tartalmazhat, és a kis-és kell kezelni. Nem ASCII-karaktereket tartalmazó metaadatértékeket Base64-kódolású vagy URL-kódolású kell lennie.
 
 ## <a name="setting-and-retrieving-properties"></a>Beállítási és lekérési tulajdonságai
 Tulajdonságértékek lekéréséhez hívja meg a **FetchAttributesAsync** metódust a blob vagy a tároló feltöltéséhez a tulajdonságait, majd olvassa el az értékeket.

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/03/2019
 ms.author: aschhab
 ms.openlocfilehash: 85d24a9e7c753ec5dba80c4f259dd3fb51d9c14b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58910045"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402785"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>Az Azure Service Bus AMQP-hibák
 Ez a cikk ismerteti az egyes a hibákat, amikor az Azure Service Bus AMQP használatával. A szolgáltatás az összes standard viselkedéseinek. Azáltal, hogy a hívások küldése/fogadása a kapcsolat/hivatkozásra, amely automatikusan létrehozza a kapcsolat elkerülheti azokat.

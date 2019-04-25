@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: d96d75f4f2623476f7af4e6eea930c1f2c503e3a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226913"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306951"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Az Azure virtuális gépek helyi Linux-jelszó alaphelyzetbe állítása
 
@@ -106,4 +106,4 @@ Nem tud bejelentkezni a virtuális Gépet, és megjelenik az üzenet, amely azt 
 
 * [Hibaelhárítás Azure virtuális Gépen egy másik Azure virtuális gép operációsrendszer-lemez csatolása](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 
-* [Az Azure CLI: Hogyan lehet törölni, és helyezze újra üzembe a virtuális gép VHD-ből](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)
+* [Azure CLI: Törölhet, és helyezze újra üzembe a virtuális gép VHD-ből](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)

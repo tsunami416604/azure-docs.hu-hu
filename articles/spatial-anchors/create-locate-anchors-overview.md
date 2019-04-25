@@ -9,11 +9,11 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 780c3da24d20418919670f09aa064003e3d96b90
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629663"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332010"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Hogyan hozhat létre, és keresse meg a horgonyok Azure térbeli horgonyok használatával
 
@@ -37,7 +37,7 @@ További információkért folytassa a fejlesztési környezet kiválasztásáva
 > [Java Android rendszeren](how-tos/create-locate-anchors-java.md)
 
 > [!div class="nextstepaction"]
-> [C + +/ Szünettel androidon](how-tos/create-locate-anchors-cpp-ndk.md)
+> [C++/ Szünettel androidon](how-tos/create-locate-anchors-cpp-ndk.md)
 
 > [!div class="nextstepaction"]
-> [C + +/ a HoloLens WinRT](how-tos/create-locate-anchors-cpp-winrt.md)
+> [C++/ A HoloLens WinRT](how-tos/create-locate-anchors-cpp-winrt.md)

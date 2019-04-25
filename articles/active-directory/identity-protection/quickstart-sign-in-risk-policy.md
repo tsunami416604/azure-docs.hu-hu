@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f5127342f97a90103ef56efbd7465832440ec0f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521806"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381830"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Gyors útmutató: Letiltja a hozzáférést az Azure Active Directory Identity Protection egy munkamenet kockázati észlelésekor  
 
@@ -67,7 +67,7 @@ Ebben a rövid útmutatóban a forgatókönyvet használja a bejelentkezési Tor
 
 Ez a szakasz bemutatja, hogyan hozhat létre a szükséges bejelentkezési kockázat feltételes hozzáférési szabályzat. Állítsa be a szabályzat:
 
-|Beállítás |Érték|
+|Beállítás |Value|
 |---     | --- |
 | Felhasználók  | Alain Charon  |
 | Feltételek | Bejelentkezési kockázati, közepes és afeletti |

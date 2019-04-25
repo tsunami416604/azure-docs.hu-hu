@@ -3,7 +3,7 @@ title: Egyéni házirendek, az alapszintű csomag az Azure Active Directory B2C 
 description: A témakör az Azure Active Directory B2C-vel egyéni szabályzatok.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: dbd57e53fbaec4368e3c8ce9600bce1d37bcab8f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173207"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317326"
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Az Azure AD B2C-vel egyéni szabályzat alapszintű csomag az egyéni szabályzatok ismertetése
 

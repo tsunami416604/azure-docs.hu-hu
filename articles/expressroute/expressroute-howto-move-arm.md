@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 7bd554896d739a567d04e7b978fba72960762805
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 11a84d4ced3232102d262352b84abe1f813e2406
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111361"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60365180"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Az ExpressRoute-Kapcsolatcsoportok áthelyezése a klasszikusból Resource Manager-alapú üzemi modellbe PowerShell-lel
 
 Szeretne használni egy ExpressRoute-kapcsolatcsoportot a klasszikus és Resource Manager üzembe helyezési modellel, a kapcsolatcsoport kell áthelyezni a Resource Manager-alapú üzemi modellbe. A következő szakaszok segítenek a kapcsolatcsoport áthelyezése a PowerShell használatával.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

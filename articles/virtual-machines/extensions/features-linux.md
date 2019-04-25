@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.openlocfilehash: bf6eca33eb1448eb84065fb7fe184d01e77feb61
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036992"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387272"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuális gépi bővítmények és szolgáltatások linuxhoz
 
@@ -72,7 +72,7 @@ Bővítménycsomagok letöltődnek az Azure Storage-bővítmény adattárból, �
 
 ## <a name="discover-vm-extensions"></a>Fedezze fel a Virtuálisgép-bővítmények
 
-Számos különböző Virtuálisgép-bővítmények Azure virtuális gépekhez való használatra érhetők el. Teljes listájának megtekintéséhez használja [az vm-bővítmény képlista](/cli/azure/vm/extension/image#az-vm-extension-image-list). Az alábbi példa felsorolja az összes rendelkezésre álló bővítményeket a *westus* helye:
+Az Azure-beli virtuális gépekhez számos különböző virtuális gépi bővítmény érhető el. Teljes listájának megtekintéséhez használja [az vm-bővítmény képlista](/cli/azure/vm/extension/image#az-vm-extension-image-list). Az alábbi példa felsorolja az összes rendelkezésre álló bővítményeket a *westus* helye:
 
 ```azurecli
 az vm extension image list --location westus --output table
@@ -84,7 +84,7 @@ Azure Virtuálisgép-bővítmények futtassa a meglévő virtuális gépeken, am
 
 Az alábbi módszerek bővítmény egy meglévő virtuális gép futtatásához használható.
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Az Azure Virtuálisgép-bővítmények a meglévő virtuális gép is futtatható a [az virtuálisgép-bővítmény csoportot](/cli/azure/vm/extension#az-vm-extension-set) parancsot. Az alábbi példa egy nevű virtuális gép fut az egyéni szkriptek bővítménye *myVM* nevű erőforráscsoportból *myResourceGroup*:
 
@@ -222,7 +222,7 @@ Az ügynökök és a bővítmények ossza meg az azonos frissítési mechanizmus
 Ha egy frissítés érhető el, csak telepíti a rendszer a virtuális gépen, és megváltoznak a bővítmények és más virtuális gép adatmodell változásainak, mint például:
 
 - Adatlemezek
-- Kiterjesztések
+- Bővítmények
 - Rendszerindítási diagnosztika tároló
 - Vendég-operációsrendszer titkok
 - Virtuális gép mérete

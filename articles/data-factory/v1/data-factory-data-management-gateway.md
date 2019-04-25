@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487787"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60489549"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -367,7 +367,7 @@ Figyelési tulajdonság | Leírás
 :------------------ | :----------
 Name (Név) | A logikai átjáró és a csomópontok kívánt átjáróval társított neve. Csomópont egy helyszíni Windows-gépen, amelyen az átjáró telepítve. Egynél több csomópont (legfeljebb négy csomópont) az egyetlen logikai átjáró, amely további információkért lásd: [Data Management Gateway - magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
 status | A logikai átjáró és az átjáró csomópontok állapotát. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért lásd: [átjáró állapota](#gateway-status) szakaszban.
-Verzió | A logikai átjáró, és minden egyes átjárócsomópont verzióját mutatja. A logikai átjáró verziója határozza meg a csoport csomópontjának többsége verzióján alapul. Ha nincs a logikai átjáró beállításai, és verzió száma azonos a logikai átjáró függvény csak a csomópontok különböző verziójú csomópontok megfelelően. Mások a korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés nem működik).
+Version | A logikai átjáró, és minden egyes átjárócsomópont verzióját mutatja. A logikai átjáró verziója határozza meg a csoport csomópontjának többsége verzióján alapul. Ha nincs a logikai átjáró beállításai, és verzió száma azonos a logikai átjáró függvény csak a csomópontok különböző verziójú csomópontok megfelelően. Mások a korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés nem működik).
 Elérhető memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték közel valós idejű pillanatképet.
 Processzorkihasználtság | CPU-kihasználtság egy átjáró-csomópont. Ez az érték közel valós idejű pillanatképet.
 Hálózatkezelés (In/Out) | A hálózathasználat egy átjáró-csomópont. Ez az érték közel valós idejű pillanatképet.

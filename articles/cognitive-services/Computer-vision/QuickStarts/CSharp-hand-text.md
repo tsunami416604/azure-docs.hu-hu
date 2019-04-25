@@ -12,11 +12,11 @@ ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: c1ad38b6dbf4914d3126f2c9166813c286762079
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009616"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60409124"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c-in-computer-vision"></a>Gyors útmutató: A REST API használatával kézzel írt szöveg kinyerése és C# a Computer Vision
 

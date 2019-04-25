@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: eb6184e10d38cdcfad7070663e36f6610d009cdb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880755"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371359"
 ---
 # <a name="understand-the-terms-in-your-price-sheet-for-a-microsoft-customer-agreement"></a>A Microsoft vevői szerződés feltételeit az árlista ismertetése
 
@@ -53,7 +53,7 @@ Az alábbi szakasz ismerteti a Microsoft Ügyfélszerződéséhez árlista láth
 | tierMinimumUnits  | Határozza meg az alsó határ értékének a réteg tartomány, amelyhez árak vannak definiálva. Például ha a tartomány 0 és 100 közötti, tierMinimumUnits lehet 0.  |
 | effectiveStartDate  | Kezdő dátum, amikor az ár életbe lép. |
 | effectiveEndDate  | A tényleges árat záró dátuma. |
-| Egységár  | Ár / egység (nem a tényleges erősségét fejezi ki ár) számlázási időpontjában, adott sorrendben mérőszám és a termék nevét.  Megjegyzés: Az ár a lehetőség nem azonos szolgáltatásszinten különbözeti árak szolgáltatások esetén letölti az hatékony árát a használat részleteiről.  Esetén a díjszabás a többrétegű szolgáltatások a tényleges árat erősségét fejezi ki arány szolgáltatásszinten, és nem jelenik meg a vonatkozó szint egységárat. A kevert ára vagy hatékony ára (ahol minden szint tartalmaz egy adott egységár) több szolgáltatásszinten átfedés felhasznált mennyiség nettó ára. |
+| egységár  | Ár / egység (nem a tényleges erősségét fejezi ki ár) számlázási időpontjában, adott sorrendben mérőszám és a termék nevét.  Megjegyzés: Az ár a lehetőség nem azonos szolgáltatásszinten különbözeti árak szolgáltatások esetén letölti az hatékony árát a használat részleteiről.  Esetén a díjszabás a többrétegű szolgáltatások a tényleges árat erősségét fejezi ki arány szolgáltatásszinten, és nem jelenik meg a vonatkozó szint egységárat. A kevert ára vagy hatékony ára (ahol minden szint tartalmaz egy adott egységár) több szolgáltatásszinten átfedés felhasznált mennyiség nettó ára. |
 | basePrice  | A ár időpontjában az ügyfél bejelentkezik, vagy ha a bejelentkezés után elindítja a időben ár szolgáltatás mérőszám.   |
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése

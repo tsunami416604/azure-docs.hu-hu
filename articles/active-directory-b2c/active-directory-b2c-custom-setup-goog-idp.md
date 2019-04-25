@@ -3,7 +3,7 @@ title: Jelentkezzen be egy Google-fiókot az Azure Active Directory B2C-vel egy�
 description: Állítson be egy Google-fiókkal az Azure Active Directory B2C-vel egyéni szabályzatok használatával.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 09/20/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 30f3301fd404f23705e8ba04dc750cb82eed89b7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009259"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387105"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezést egy Google-fiókot az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
 ms.openlocfilehash: 8f1320db0af85f6c83a9daf8e17a691336c9b251
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58164459"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60335478"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Az Azure Machine Learning-modellek frissítése az Update-erőforrástevékenység
 Ez a cikk a fő Azure Data Factory - integráció a cikk az Azure Machine Learning egészíti ki: [Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása](transform-data-using-machine-learning.md). Ha ezt még nem tette meg, ez a cikk elolvasása előtt tekintse át a fő cikket.
@@ -60,7 +60,7 @@ A következő JSON-kódrészlet definiál egy Azure Machine Learning Batch Execu
 | Tulajdonság                      | Leírás                              | Szükséges |
 | :---------------------------- | :--------------------------------------- | :------- |
 | név                          | A folyamat a tevékenység neve     | Igen      |
-| leírás                   | A tevékenység leírása leíró szöveg.  | Nem       |
+| description                   | A tevékenység leírása leíró szöveg.  | Nem       |
 | type                          | Az Azure Machine Learning Update Resource-tevékenységek, a tevékenység típusa van **AzureMLUpdateResource**. | Igen      |
 | linkedServiceName             | Az Azure Machine Learning társított szolgáltatás updateResourceEndpoint tulajdonsága tartalmaz. | Igen      |
 | trainedModelName              | A Web Service kísérletben frissíteni kell a Trained Model-modul neve | Igen      |

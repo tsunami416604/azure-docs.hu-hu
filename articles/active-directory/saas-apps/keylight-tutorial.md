@@ -16,11 +16,11 @@ ms.date: 07/05/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4bc5121f6604fae9a28b52db1bfb308d7cdb968d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205086"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60264290"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező LockPath Keylight
 

@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.openlocfilehash: 69a76ae9d6f355fe401b438ec2ab89d6606ba46c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463480"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402334"
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>Az SQL Data Warehouse beállítások szerint
 Ötletek a csoport beállításai az Azure SQL Data Warehouse által használható megoldások fejlesztéséhez.

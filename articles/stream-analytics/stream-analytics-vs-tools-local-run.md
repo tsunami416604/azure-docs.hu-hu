@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: cc4372a8a8a8f39bf4f77f637b459c5281b8852d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1b86085a76f5ff87147db9dbd0a584784f5e4a2e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299525"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60308391"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Stream Analytics-lekérdezések Visual studióval helyileg tesztelése
 
@@ -52,7 +52,7 @@ A kimenet táblázatos formában közvetlenül a Visual Studióból lehet megtek
 
 A kimeneti elérési út a konzol kimenetében található. Nyomja le bármelyik billentyűt, nyissa meg az eredményt mappát.
    
-![Helyi Futtatás](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-02.png)
+![Helyi futtatás](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-02.png)
    
 Ellenőrizze az eredményeket a helyi mappában.
    
@@ -75,6 +75,6 @@ Láthatja, hogy a folyamatot a a **kimeneti** ablak.
 ## <a name="next-steps"></a>További lépések
 
 * [A Visual Studio használata az Azure Stream Analytics-feladatok megtekintése](stream-analytics-vs-tools.md)
-* [Gyors útmutató: Hozzon létre egy Stream Analytics-feladatot a Visual Studio használatával](stream-analytics-quick-create-vs.md)
-* [Oktatóanyag: Az Azure Stream Analytics-feladat CI/CD Azure DevOps használatával való üzembe helyezése](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [Rövid útmutató: A Visual Studio használatával a Stream Analytics-feladat létrehozása](stream-analytics-quick-create-vs.md)
+* [Oktatóanyag: Üzembe helyezés az Azure Stream Analytics-feladat a CI/CD Azure DevOps használatával](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Folyamatos integráció és fejlesztés a Stream Analytics eszközeivel](stream-analytics-tools-for-visual-studio-cicd.md)

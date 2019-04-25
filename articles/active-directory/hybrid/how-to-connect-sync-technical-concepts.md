@@ -4,24 +4,24 @@ description: Ismerteti a technikai Azure AD Connect szinkronizálása.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 731cfeb3-beaf-4d02-aef4-b02a8f99fd11
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 01/15/2018
-ms.subservice: hybrid
-ms.author: billmath
-ms.collection: M365-identity-device-management
+ms.topic: article
+origin.date: 01/15/2018
+ms.date: 11/12/2018
+ms.component: hybrid
+ms.author: v-junlch
 ms.openlocfilehash: b8ec4a6100cfbb4419d7e30f4b97589113b88939
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164328"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60347574"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Az Azure AD Connect szinkronizálása: Műszaki fogalmak
 Ebben a cikkben található egy összefoglaló az a témakör [ismertetése architektúra](how-to-connect-sync-technical-concepts.md).
@@ -34,11 +34,11 @@ Az alábbi szakaszok a metakönyvtár szinkronizálási fogalmak vezetnek be.
 
 A következő szakaszok további információt a FIM szinkronizálási szolgáltatás a következő szempontokat:
 
-* Összekötő
-* Attribútumfolyam
-* Összekötő-térben
-* Metaverzum
-* Kiépítés
+- Összekötő
+- Attribútumfolyam
+- Összekötő-térben
+- Metaverzum
+- Kiépítés
 
 ## <a name="connector"></a>Összekötő
 A csatlakoztatott címtárban folytatott kommunikációhoz használt kódmodulokat összekötők (korábbi nevén felügyeleti ügynökök (MAs)) nevezzük.
@@ -87,8 +87,9 @@ Ez természetüknél fogva hoz létre hivatkozást, és Attribútumfolyam kétir
 Minden alkalommal, amikor egy szabály határozza meg, hogy egy új összekötőtér objektuma kell létrehozni, kiépítés nevezzük. Azonban ez a művelet csak kerül sor az összekötőtérben belül, mert azt nem vállalunk a csatlakoztatott adatforrásba mindaddig, amíg az exportálás történik.
 
 ## <a name="additional-resources"></a>További források
-* [Az Azure AD Connect szinkronizálása: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
-* [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
+- [Az Azure AD Connect szinkronizálása: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
+- [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-aadsync-technical-concepts/ic750598.png
+

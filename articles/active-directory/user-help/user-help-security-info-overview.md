@@ -13,11 +13,11 @@ ms.date: 02/11/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 234c7244f438926f43ddf31234a38c9034a6ca52
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453229"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60473230"
 ---
 # <a name="security-info-preview-overview"></a>Biztonsági adatok (előzetes verzió) áttekintése
 Beállíthatja a kétlépéses ellenőrzés és a jelszó-visszaállítást a biztonsági adatait a **biztonsági adatok** lapot. Is a biztonsági adatok szerkesztése és az oldal az alapértelmezett mód megváltoztatása

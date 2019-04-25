@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: magoedte
 ms.openlocfilehash: 66fc55d8c3dbb8487d1e796d5f30b08a94f717f6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013896"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60494770"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>A tárolók az Azure Monitor naplók lekérdezése
 A tárolók az Azure Monitor tárológazdagép és tárolók állapotinformációkat, teljesítmény-mérőszámok és leltári adatok gyűjt, és továbbítja azokat a Log Analytics-munkaterületet az Azure monitorban. Az adatgyűjtés percen át 3 percenként történik. Ezek az adatok érhető el [lekérdezés](../../azure-monitor/log-query/log-query-overview.md) az Azure monitorban. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.

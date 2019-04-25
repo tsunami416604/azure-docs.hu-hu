@@ -14,11 +14,11 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 537ee35e96a41cd02605319e244d39c6567c3bf1
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337203"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60344588"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Rbac-RÓL és az Azure Resource Manager-sablonok használatával Azure-erőforrásokhoz való hozzáférés kezelése
 
@@ -252,5 +252,5 @@ Az Azure CLI használatával az előző sablon üzembe helyezéséhez kövesse a
 ## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
-- [Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md)
+- [Az Azure Resource Manager-sablonok struktúrája és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/?term=rbac)

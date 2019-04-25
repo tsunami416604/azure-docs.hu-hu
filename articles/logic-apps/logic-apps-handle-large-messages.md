@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
 ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303790"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Az Azure Logic Apps darabolás nagyméretű üzenetek kezelése
 
@@ -117,18 +117,18 @@ Ezeket a lépéseket ismertetik a részletes folyamat, Logic Apps számára a lo
 
 1. A logikai alkalmazás küld egy kezdeti HTTP POST és PUT kérés az üzenettörzse üres. A kérelem fejlécét, ezt a tartalmat, amely a logikai alkalmazás szeretne feltölteni tömbökben kapcsolatos információkat tartalmazza:
 
-   | A Logic Apps fejlécmezőt kérése | Érték | Típus | Leírás |
+   | A Logic Apps fejlécmezőt kérése | Value | Typo | Leírás |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-átviteli-mód** | darabolásos | Sztring | Azt jelzi, hogy a tartalom tömbökben van feltöltve. |
+   | **x-ms-transfer-mode** | darabolásos | String | Azt jelzi, hogy a tartalom tömbökben van feltöltve. |
    | **x-ms-content-length** | <*tartalom-hossza*> | Egész szám | A teljes tartalom mérete (bájt) darabolás előtt |
    ||||
 
 2. A végpont válaszol "200" sikeres állapotkód és a nem kötelező információkkal:
 
-   | Végpont válasz fejléce mező | Típus | Szükséges | Leírás |
+   | Végpont válasz fejléce mező | Typo | Kötelező | Leírás |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-adattömbméret** | Egész szám | Nem | A javasolt adatrészlet mérete (bájt) |
-   | **Hely** | Sztring | Nem | Az URL-címét, hova küldhetők a HTTP-javítás üzenetek |
+   | **x-ms-chunk-size** | Egész szám | Nem | A javasolt adatrészlet mérete (bájt) |
+   | **Hely** | String | Nem | Az URL-címét, hova küldhetők a HTTP-javítás üzenetek |
    ||||
 
 3. A logikai alkalmazás hoz létre, és ezt az információt az egyes küldi az üzeneteket követő HTTP PATCH:
@@ -137,11 +137,11 @@ Ezeket a lépéseket ismertetik a részletes folyamat, Logic Apps számára a lo
 
    * Ezek az egyes javítás üzenetben küldött tartalom adattömb fejléc részleteit:
 
-     | A Logic Apps fejlécmezőt kérése | Érték | Típus | Leírás |
+     | A Logic Apps fejlécmezőt kérése | Value | Typo | Leírás |
      |---------------------------------|-------|------|-------------|
-     | **Content-Range** | <*Címtartomány*> | Sztring | A bájttartomány számára a tartalom darabban, beleértve a kezdő érték, a befejezési értéket, és a teljes tartalom méretét, például: "bájtok száma 0-1023/10100 =" |
-     | **A Content-Type** | <*a Content-type*> | Sztring | A darabolt tartalmának típusa |
-     | **Content-Length** | <*tartalom-hossza*> | Sztring | A hosszát mérete (bájt) a aktuální Blok dat |
+     | **Content-Range** | <*range*> | String | A bájttartomány számára a tartalom darabban, beleértve a kezdő érték, a befejezési értéket, és a teljes tartalom méretét, például: "bájtok száma 0-1023/10100 =" |
+     | **A Content-Type** | <*content-type*> | String | A darabolt tartalmának típusa |
+     | **Content-Length** | <*tartalom-hossza*> | String | A hosszát mérete (bájt) a aktuální Blok dat |
      |||||
 
 4. Után minden PATCH-kérés a végpont megerősíti, hogy az egyes adattömbök fogadását a "200" állapotkód válaszolva.

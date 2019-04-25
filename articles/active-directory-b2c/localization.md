@@ -3,7 +3,7 @@ title: A honosítás – az Azure Active Directory B2C |} A Microsoft Docs
 description: Adja meg a honosítás elem egyéni szabályzat az Azure Active Directory B2C-t.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 8f252b536c80ad997f3c0eb10b10d5cb8c330fc6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187555"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60401748"
 ---
 # <a name="localization"></a>Honosítás
 
@@ -41,7 +41,7 @@ A **honosítási** elem tartalmazza a következő attribútumokat:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Engedélyezve | Nem | A lehetséges értékek: `true` vagy `false`. |
+| Enabled | Nem | A lehetséges értékek: `true` vagy `false`. |
 
 A **honosítási** elem a következő XML-elemeket tartalmazza
 
@@ -110,7 +110,7 @@ A **elem** elem tartalmazza a következő attribútumokat:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Szöveg | Igen | A megjelenített felhasználóbarát mezőnevét karakterlánc, hogy megjelenjen-e a felhasználó a felhasználói felületen ezt a lehetőséget választja. |
+| Text | Igen | A megjelenített felhasználóbarát mezőnevét karakterlánc, hogy megjelenjen-e a felhasználó a felhasználói felületen ezt a lehetőséget választja. |
 | Value | Igen | A karakterlánc jogcím társított Ez a beállítás értéke. |
 
 Az alábbi példa bemutatja a használatát a **LocalizedCollections** elemet. Tartalmaz két **LocalizedCollection** elemeit, így az angol és spanyol egy másik. Mindkettő a **korlátozás** gyűjtemény a jogcím `Gender` az angol és spanyol elemek listáját.

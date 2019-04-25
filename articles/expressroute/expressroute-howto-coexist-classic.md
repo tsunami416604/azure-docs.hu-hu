@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute- és helyek közötti VPN-kapcsolatok konfigurálása – a párhuzamos telephelyközi: klasszikus: Azure |} A Microsoft Docs'
+title: 'Az ExpressRoute és Site-to-Site VPN-kapcsolatok konfigurálása – a párhuzamos telephelyközi: klasszikus: Azure | Microsoft Docs'
 description: A cikk bemutatja az ExpressRoute- és egy helyek közötti VPN-kapcsolat konfigurálását, amelyek párhuzamosan használhatók a klasszikus üzembehelyezési modellben.
 documentationcenter: na
 services: expressroute
@@ -10,11 +10,11 @@ ms.date: 12/06/2018
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: 70e7c689acac094890545ac1e65374e9377a0be0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084209"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370423"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Párhuzamos ExpressRoute- és párhuzamos helyek közötti kapcsolatok konfigurálása (klasszikus)
 > [!div class="op_single_selector"]

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: c22ba0b57ed1161e1f7e2082d2ba21f27b656da1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121570"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402683"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>A Microsoft Azure Service Bus AMQP 1.0-s: kérés-válasz alapú műveletek
 
@@ -134,7 +134,7 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:renew-lock`|  
+|művelet|string|Igen|`com.microsoft:renew-lock`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
  A kérelem üzenet törzse egy egy leképezés a következő bejegyzéseket tartalmazó amqp-érték szakaszból áll:  
@@ -154,7 +154,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült.|  
-|statusDescription|sztring|Nem|Az állapot leírása.|  
+|statusDescription|string|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében egy egy leképezés a következő bejegyzéseket tartalmazó amqp-érték szakaszból áll:  
   
@@ -172,7 +172,7 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:peek-message`|  
+|művelet|string|Igen|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
@@ -189,7 +189,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: Rendben – a további üzeneteket tartalmaz<br /><br /> 204: Nincs tartalom – nincs további üzenetek|  
-|statusDescription|sztring|Nem|Az állapot leírása.|  
+|statusDescription|string|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
   
@@ -213,7 +213,7 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:schedule-message`|  
+|művelet|string|Igen|`com.microsoft:schedule-message`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
@@ -226,10 +226,10 @@ A térkép egy üzenetet jelző tartalmaznia kell az alábbi bejegyzéseket:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|message-id|sztring|Igen|`amqpMessage.Properties.MessageId` karakterlánc|  
-|munkamenet-azonosító|sztring|Nem|`amqpMessage.Properties.GroupId as string`|  
-|partition-key|sztring|Nem|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
-|via-partition-key|sztring|Nem|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
+|message-id|string|Igen|`amqpMessage.Properties.MessageId` karakterlánc|  
+|munkamenet-azonosító|string|Nem|`amqpMessage.Properties.GroupId as string`|  
+|partition-key|string|Nem|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
+|via-partition-key|string|Nem|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
 |message|Megjeleníti a tömb|Igen|Az AMQP 1.0-s átviteli kódolt üzenet.|  
   
 #### <a name="response"></a>Válasz  
@@ -239,7 +239,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült.|  
-|statusDescription|sztring|Nem|Az állapot leírása.|  
+|statusDescription|string|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** egy leképezés a következő bejegyzéseket tartalmazó szakasz:  
   
@@ -257,7 +257,7 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:cancel-scheduled-message`|  
+|művelet|string|Igen|`com.microsoft:cancel-scheduled-message`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
@@ -273,7 +273,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült.|  
-|statusDescription|sztring|Nem|Az állapot leírása.|  
+|statusDescription|string|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** egy leképezés a következő bejegyzéseket tartalmazó szakasz:  
   
@@ -293,14 +293,14 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:renew-session-lock`|  
+|művelet|string|Igen|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|munkamenet-azonosító|sztring|Igen|Munkamenet-azonosítót.|  
+|munkamenet-azonosító|string|Igen|Munkamenet-azonosítót.|  
   
 #### <a name="response"></a>Válasz  
 
@@ -309,7 +309,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: Rendben – a további üzeneteket tartalmaz<br /><br /> 204: Nincs tartalom – nincs további üzenetek|  
-|statusDescription|sztring|Nem|Az állapot leírása.|  
+|statusDescription|string|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** egy leképezés a következő bejegyzéseket tartalmazó szakasz:  
   
@@ -327,7 +327,7 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:peek-message`|  
+|művelet|string|Igen|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
@@ -336,7 +336,7 @@ A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó sza
 |---------|----------------|--------------|--------------------|  
 |from-sequence-number|hosszú|Igen|Indítsa el a betekintés, amely feladatütemezést.|  
 |üzenetszám|int|Igen|Belepillantás üzenetek maximális száma.|  
-|munkamenet-azonosító|sztring|Igen|Munkamenet-azonosítót.|  
+|munkamenet-azonosító|string|Igen|Munkamenet-azonosítót.|  
   
 #### <a name="response"></a>Válasz  
 
@@ -345,7 +345,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: Rendben – a további üzeneteket tartalmaz<br /><br /> 204: Nincs tartalom – nincs további üzenetek|  
-|statusDescription|sztring|Nem|Az állapot leírása.|  
+|statusDescription|string|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** egy leképezés a következő bejegyzéseket tartalmazó szakasz:  
   
@@ -369,14 +369,14 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:set-session-state`|  
+|művelet|string|Igen|`com.microsoft:set-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|munkamenet-azonosító|sztring|Igen|Munkamenet-azonosítót.|  
+|munkamenet-azonosító|string|Igen|Munkamenet-azonosítót.|  
 |a munkamenet-állapot|bájttömb|Igen|Bináris adat nem átlátszó.|  
   
 #### <a name="response"></a>Válasz  
@@ -386,7 +386,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
-|statusDescription|sztring|Nem|Az állapot leírása.|  
+|statusDescription|string|Nem|Az állapot leírása.|  
   
 ### <a name="get-session-state"></a>A munkamenet-állapot lekérése  
 
@@ -398,14 +398,14 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:get-session-state`|  
+|művelet|string|Igen|`com.microsoft:get-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|munkamenet-azonosító|sztring|Igen|Munkamenet-azonosítót.|  
+|munkamenet-azonosító|string|Igen|Munkamenet-azonosítót.|  
   
 #### <a name="response"></a>Válasz  
 
@@ -414,7 +414,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
-|statusDescription|sztring|Nem|Az állapot leírása.|  
+|statusDescription|string|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
   
@@ -432,7 +432,7 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:get-message-sessions`|  
+|művelet|string|Igen|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
@@ -450,7 +450,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: Rendben – a további üzeneteket tartalmaz<br /><br /> 204: Nincs tartalom – nincs további üzenetek|  
-|statusDescription|sztring|Nem|Az állapot leírása.|  
+|statusDescription|string|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
   
@@ -469,14 +469,14 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:add-rule`|  
+|művelet|string|Igen|`com.microsoft:add-rule`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|szabály neve|sztring|Igen|Szabály neve nem az előfizetés és a témakör neve együtt.|  
+|szabály neve|string|Igen|Szabály neve nem az előfizetés és a témakör neve együtt.|  
 |szabály leírása|térkép|Igen|A szabály a következő szakaszban megadott leírása.|  
   
 A **szabályleírás** térkép tartalmaznia kell a következő bejegyzéseket, ahol **sql-szűrő** és **korrelációs szűrő** kölcsönösen kizárják egymást:  
@@ -491,27 +491,27 @@ Az sql-szűrő térkép tartalmaznia kell az alábbi bejegyzéseket:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|kifejezés|sztring|Igen|SQL szűrőkifejezést.|  
+|kifejezés|string|Igen|SQL szűrőkifejezést.|  
   
 A **korrelációs szűrő** térkép tartalmaznia kell legalább egy, az alábbi bejegyzéseket:  
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|korrelációs azonosító|sztring|Nem||  
-|message-id|sztring|Nem||  
-|erre:|sztring|Nem||  
-|Válasz címzettje|sztring|Nem||  
-|label|sztring|Nem||  
-|munkamenet-azonosító|sztring|Nem||  
-|válasz a munkamenet azonosítója|sztring|Nem||  
-|content-type|sztring|Nem||  
+|korrelációs azonosító|string|Nem||  
+|message-id|string|Nem||  
+|erre:|string|Nem||  
+|Válasz címzettje|string|Nem||  
+|label|string|Nem||  
+|munkamenet-azonosító|string|Nem||  
+|válasz a munkamenet azonosítója|string|Nem||  
+|content-type|string|Nem||  
 |properties|térkép|Nem|A Service Bus Maps [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).|  
   
 A **sql szabályművelet** térkép tartalmaznia kell az alábbi bejegyzéseket:  
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|kifejezés|sztring|Igen|SQL-műveleti kifejezés.|  
+|kifejezés|string|Igen|SQL-műveleti kifejezés.|  
   
 #### <a name="response"></a>Válasz  
 
@@ -520,7 +520,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
-|statusDescription|sztring|Nem|Az állapot leírása.|  
+|statusDescription|string|Nem|Az állapot leírása.|  
   
 ### <a name="remove-rule"></a>Szabály eltávolítása  
   
@@ -530,14 +530,14 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:remove-rule`|  
+|művelet|string|Igen|`com.microsoft:remove-rule`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|szabály neve|sztring|Igen|Szabály neve nem az előfizetés és a témakör neve együtt.|  
+|szabály neve|string|Igen|Szabály neve nem az előfizetés és a témakör neve együtt.|  
   
 #### <a name="response"></a>Válasz  
 
@@ -546,7 +546,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
-|statusDescription|sztring|Nem|Az állapot leírása.|  
+|statusDescription|string|Nem|Az állapot leírása.|  
   
 ### <a name="get-rules"></a>Szabályok beolvasása
 
@@ -556,7 +556,7 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:enumerate-rules`|  
+|művelet|string|Igen|`com.microsoft:enumerate-rules`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
 
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
@@ -587,11 +587,11 @@ A tömb minden egyes leképező bejegyzés a következő tulajdonságokat tartal
 |---------|----------------|--------------|--------------------|  
 | 0 | itt ismertetett objektumok tömbje | Igen | `filter` alábbiakban meghatározottak szerint. |
 | 1 | tömb leírt objektum | Igen | `ruleAction` alábbiakban meghatározottak szerint. |
-| 2 | sztring | Igen | a szabály nevét. |
+| 2 | string | Igen | a szabály nevét. |
 
 `filter` lehet, a következő típusok egyikét:
 
-| Leíró neve | Leíró kód | Érték |
+| Leíró neve | Leíró kód | Value |
 | --- | --- | ---|
 | `com.microsoft:sql-filter:list` | 0x000001370000006 | SQL-szűrőkkel |
 | `com.microsoft:correlation-filter:list` | 0x000001370000009 | Korrelációs szűrő |
@@ -602,25 +602,25 @@ A tömb minden egyes leképező bejegyzés a következő tulajdonságokat tartal
 
 |Index|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-| 0 | sztring | Igen | SQL-szűrőkkel kifejezés |
+| 0 | string | Igen | SQL-szűrőkkel kifejezés |
 
 `com.microsoft:correlation-filter:list` a leírt tömbből, amely tartalmazza a következő:
 
 |Index (ha létezik)|Érték típusa|Érték tartalma|  
 |---------|----------------|--------------|
-| 0 | sztring | Korrelációs azonosító |
-| 1 | sztring | Üzenet azonosítója |
-| 2 | sztring | Művelet |
-| 3 | sztring | Válasz címzettje |
-| 4 | sztring | Címke |
-| 5 | sztring | Munkamenet azonosítója |
-| 6 | sztring | Válasz címzettjének munkamenet-azonosítója|
-| 7 | sztring | Tartalomtípus |
+| 0 | string | Korrelációs azonosító |
+| 1 | string | Üzenet azonosítója |
+| 2 | string | Művelet |
+| 3 | string | Válasz címzettje |
+| 4 | string | Címke |
+| 5 | string | Munkamenet azonosítója |
+| 6 | string | Válasz címzettjének munkamenet-azonosítója|
+| 7 | string | Tartalomtípus |
 | 8 | Térkép | Térkép az alkalmazás által meghatározott tulajdonságai |
 
 `ruleAction` a következők valamelyike lehet:
 
-| Leíró neve | Leíró kód | Érték |
+| Leíró neve | Leíró kód | Value |
 | --- | --- | ---|
 | `com.microsoft:empty-rule-action:list` | 0x0000013700000005 | Üres szabály hatására végrehajtott művelet – nincs jelen szabály hatására végrehajtott művelet |
 | `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | SQL Rule Action |
@@ -639,7 +639,7 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:receive-by-sequence-number`|  
+|művelet|string|Igen|`com.microsoft:receive-by-sequence-number`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
@@ -656,7 +656,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
-|statusDescription|sztring|Nem|Az állapot leírása.|  
+|statusDescription|string|Nem|Az állapot leírása.|  
   
 A válaszüzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
   
@@ -681,17 +681,17 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:update-disposition`|  
+|művelet|string|Igen|`com.microsoft:update-disposition`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|állapot törlése|sztring|Igen|completed<br /><br /> elhagyott<br /><br /> Felfüggesztve|  
+|állapot törlése|string|Igen|completed<br /><br /> elhagyott<br /><br /> Felfüggesztve|  
 |Lock-jogkivonatok|uuid tömbje|Igen|Üzenet zárolási jogkivonat intézkedési állapotának frissítése.|  
-|deadletter-reason|sztring|Nem|Ha disposition állapot értéke lehet beállítani **felfüggesztve**.|  
-|deadletter-description|sztring|Nem|Ha disposition állapot értéke lehet beállítani **felfüggesztve**.|  
+|deadletter-reason|string|Nem|Ha disposition állapot értéke lehet beállítani **felfüggesztve**.|  
+|deadletter-description|string|Nem|Ha disposition állapot értéke lehet beállítani **felfüggesztve**.|  
 |properties-to-modify|térkép|Nem|Listája a Service Bus közvetítőalapú üzenet tulajdonságainak módosításához.|  
   
 #### <a name="response"></a>Válasz  
@@ -701,7 +701,7 @@ A válaszüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Igen|HTTP-válaszkód [RFC2616]<br /><br /> 200: OK – sikeres, ellenkező esetben nem sikerült|  
-|statusDescription|sztring|Nem|Az állapot leírása.|
+|statusDescription|string|Nem|Az állapot leírása.|
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
 ms.openlocfilehash: dd3b693271326c85688a275a65b67ad6257220e3
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024764"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60400694"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Az Azure IoT eszközoldali SDK-t a C – további információ az Iothubclientről
 
@@ -62,7 +62,7 @@ Nincsenek kiegészítő funkciók ezen API-k mindegyikéhez:
 * IoTHubClient\_LL\_CreateFromConnectionString
 * IoTHubClient\_LL\_SendEventAsync
 * IoTHubClient\_LL\_SetMessageCallback
-* Iothubclientről\_LL\_megszüntetése
+* IoTHubClient\_LL\_Destroy
 
 Ezek a függvények minden beágyazott **LL** az API-név. Más a **LL** része a név, ezek közül minden függvény paraméterei azonosak, mint a nem LL. Azonban ezek a függvények viselkedését különbözik a egyik fontos módja.
 
@@ -128,8 +128,8 @@ Bármelyik lehetőséget választja, modell mindenképpen legyen, következetese
 
 * IoTHubClient\_LL\_SendEventAsync
 * IoTHubClient\_LL\_SetMessageCallback
-* Iothubclientről\_LL\_megszüntetése
-* Iothubclientről\_LL\_DoWork
+* IoTHubClient\_LL\_Destroy
+* IoTHubClient\_LL\_DoWork
 
 Ennek az ellenkezője is igaz. Ha először a **Iothubclientről\_CreateFromConnectionString**, majd a nem – z összes API-k használatával bármilyen további feldolgozást.
 
@@ -235,7 +235,7 @@ Az argumentumok **Iothubclientről\_CreateFromConnectionString** az eszköz kapc
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
-Nincsenek négy információt a következő karakterláncot: az IoT Hub nevét, az IoT Hub-utótagot, Eszközazonosítót és megosztott elérési kulcsával. A teljesen minősített tartománynevét (FQDN), az IoT hub beszerzett, az Azure Portalon az IoT hub-példány létrehozásakor – ez lehetővé teszi az IoT hub nevére (az FQDN első része) és az IoT hub utótagot (a többi része a teljes tartománynév). Is számíthat az Eszközazonosítót és a közös hozzáférési kulcs regisztrálja az eszközt az IoT Hub (leírtak szerint a [előző cikk](iot-hub-device-sdk-c-intro.md)).
+Nincsenek négy információt a következő karakterláncot: IoT Hub nevére, az IoT Hub utótag, Eszközazonosítót és megosztott elérési kulcsával. A teljesen minősített tartománynevét (FQDN), az IoT hub beszerzett, az Azure Portalon az IoT hub-példány létrehozásakor – ez lehetővé teszi az IoT hub nevére (az FQDN első része) és az IoT hub utótagot (a többi része a teljes tartománynév). Is számíthat az Eszközazonosítót és a közös hozzáférési kulcs regisztrálja az eszközt az IoT Hub (leírtak szerint a [előző cikk](iot-hub-device-sdk-c-intro.md)).
 
 **Iothubclientről\_CreateFromConnectionString** egyik módja a kódtár inicializálása. Igény szerint hozhat létre egy új **IOTHUB\_ügyfél\_KEZELNI** az eszköz kapcsolati karakterláncának helyett ezeket az egyes paraméterek használatával. Ez úgy érhető el, a következő kóddal:
 
