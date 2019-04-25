@@ -1,97 +1,90 @@
-items:
 - name: A Video Indexer dokumentációja
   href: ./index.yml
 - name: Áttekintés
   items:
-  - name: Mi az a Video Indexer?
-    href: video-indexer-overview.md
+    - name: Mi az a Video Indexer?
+      href: video-indexer-overview.md
 - name: Gyors útmutatók
-  items:
-  - name: Bevezetés
-    href: video-indexer-get-started.md
   expanded: true
+  items:
+    - name: Bevezetés
+      href: video-indexer-get-started.md
 - name: Oktatóanyagok
   items:
-  - name: A Video Indexer API használata
-    href: video-indexer-use-apis.md
+    - name: A Video Indexer API használata
+      href: video-indexer-use-apis.md
 - name: Alapelvek
   href: video-indexer-concepts.md
   items:
-  - name: A Video Indexer és a Media Services előzetes beállításainak összehasonlítása
-    href: compare-video-indexer-with-media-services-presets.md
-  - name: Több bérlő kezelése
-    href: manage-multiple-tenants.md
-  - name: Tartalommodellek testreszabása
-    items:
-    - name: Márkák
-      href: customize-brands-model-overview.md
-    - name: Nyelv
-      href: customize-language-model-overview.md
-    - name: Személy
-      href: customize-person-model-overview.md
+    - name: A Video Indexer és a Media Services előzetes beállításainak összehasonlítása
+      href: compare-video-indexer-with-media-services-presets.md
+    - name: Több bérlő kezelése
+      href: manage-multiple-tenants.md
+    - name: Tartalommodellek testreszabása
+      items:
+        - name: Márkák
+          href: customize-brands-model-overview.md
+        - name: Nyelv
+          href: customize-language-model-overview.md
+        - name: Személy
+          href: customize-person-model-overview.md
 - name: Útmutatók
   items:
-  - name: Csatlakozás az Azure szolgáltatáshoz
-    href: connect-to-azure.md
-  - name: Az Azure-hoz csatlakoztatott fiók kezelése
-    href: manage-account-connected-to-azure.md
-  - name: Videók feltöltése és indexálása az API használatával
-    href: upload-index-videos.md
-  - name: A Video Indexer kimenetének vizsgálata
-    href: video-indexer-output-json-v2.md
-  - name: Pontos időpontok keresése videókban
-    href: video-indexer-search.md
-  - name: Jelenetek, felvételek és kulcsképkockák
-    href: scenes-shots-keyframes.md
-  - name: Video Indexer-elemzések megtekintése és szerkesztése
-    href: video-indexer-view-edit.md
-  - name: Szerkesztő használata projektek létrehozásához
-    href: use-editor-create-project.md
-  - name: Videóelemzések létrehozása meglévő videókból
-    href: video-indexer-create-new.md
-  - name: Widgetek beágyazása az alkalmazásba
-    href: video-indexer-embed-widgets.md
-  - name: Tartalommodellek testreszabása
-    items:
-    - name: Személy
+    - name: Csatlakozás az Azure szolgáltatáshoz
+      href: connect-to-azure.md
+    - name: Az Azure-hoz csatlakoztatott fiók kezelése
+      href: manage-account-connected-to-azure.md
+    - name: Videók feltöltése és indexálása az API használatával
+      href: upload-index-videos.md
+    - name: A Video Indexer kimenetének vizsgálata
+      href: video-indexer-output-json-v2.md
+    - name: Pontos időpontok keresése videókban
+      href: video-indexer-search.md
+    - name: 'Jelenetek, felvételek és kulcsképkockák'
+      href: scenes-shots-keyframes.md
+    - name: Video Indexer-elemzések megtekintése és szerkesztése
+      href: video-indexer-view-edit.md
+    - name: Szerkesztő használata projektek létrehozásához
+      href: use-editor-create-project.md
+    - name: Videóelemzések létrehozása meglévő videókból
+      href: video-indexer-create-new.md
+    - name: Widgetek beágyazása az alkalmazásba
+      href: video-indexer-embed-widgets.md
+    - name: Tartalommodellek testreszabása
       items:
-      - name: a Video Indexer webhely használatával
-        href: customize-person-model-with-website.md
-      - name: a Video Indexer API használatával
-        href: customize-person-model-with-api.md
-    - name: Márkák
-      items:
-      - name: a Video Indexer webhely használatával
-        href: customize-brands-model-with-website.md
-      - name: a Video Indexer API használatával
-        href: customize-brands-model-with-api.md
-    - name: Nyelv
-      items:
-      - name: a Video Indexer webhely használatával
-        href: customize-language-model-with-website.md
-      - name: a Video Indexer API használatával
-        href: customize-language-model-with-api.md
+        - name: Személy
+          items:
+            - name: a Video Indexer webhely használatával
+              href: customize-person-model-with-website.md
+            - name: a Video Indexer API használatával
+              href: customize-person-model-with-api.md
+        - name: Márkák
+          items:
+            - name: a Video Indexer webhely használatával
+              href: customize-brands-model-with-website.md
+            - name: a Video Indexer API használatával
+              href: customize-brands-model-with-api.md
+        - name: Nyelv
+          items:
+            - name: a Video Indexer webhely használatával
+              href: customize-language-model-with-website.md
+            - name: a Video Indexer API használatával
+              href: customize-language-model-with-api.md
 - name: Referencia
   items:
-  - name: Video Indexer API
-    href: https://api-portal.videoindexer.ai/
+    - name: Video Indexer API
+      href: 'https://api-portal.videoindexer.ai/'
 - name: További források
   items:
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=web-mobile
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/media-services/
-  - name: Régiónkénti rendelkezésre állás
-    href: https://azure.microsoft.com/regions/services/
-  - name: Régiók
-    href: regions.md
-  - name: Gyakori kérdések
-    href: faq.md
-  - name: Megfelelőség
-    href: https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942
-ms.openlocfilehash: f6caade807d37dfbf38e3f0dd47ab7f801c36a9a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793336"
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Régiók
+      href: regions.md
+    - name: Gyakori kérdések
+      href: faq.md
+    - name: Megfelelőség
+      href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'

@@ -1,69 +1,63 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8ca48ec812c2c9ea4b6aac814c77f0554bd9ae0a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765698"
 documentType: LandingData
 title: Terraform az Azure-ban – dokumentáció
 metadata:
-  title: Terraform az Azure-ban – dokumentáció – oktatóanyagok, minták, referenciák és forrásanyagok
+  title: 'Terraform az Azure-ban – dokumentáció – oktatóanyagok, minták, referenciák és forrásanyagok'
   description: Útmutató a Terraform használatához virtuális gépek és egyéb infrastruktúra megbízható kiépítéséhez az Azure-ban.
   services: terraform
   ms.service: azure
-  keywords: terraform, azure, devops, oktatóanyagok, minták, referencia
+  keywords: 'terraform, azure, devops, oktatóanyagok, minták, referencia'
   author: tomarchermsft
   manager: jeconnoc
   ms.author: tarcher
   ms.topic: landing-page
   ms.date: 08/31/2018
 abstract:
-  description: A Terraform segítségével megbízhatóan hozhat létre infrastruktúrákat az Azure-on, továbbá elvégezheti azok verziószámozását. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre erőforrásokat, használhatja a Terraform moduljait és tarthatja karban az infrastruktúráját kód használatával.
+  description: 'A Terraform segítségével megbízhatóan hozhat létre infrastruktúrákat az Azure-on, továbbá elvégezheti azok verziószámozását. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre erőforrásokat, használhatja a Terraform moduljait és tarthatja karban az infrastruktúráját kód használatával.'
 sections:
-- title: Gyors útmutatók
-  items:
-  - type: paragraph
-    text: A Terraform konfigurálása és felhasználása Linux rendszerű virtuális gépek Azure-ban való létrehozására.
-  - type: list
-    style: icon48
+  - title: Gyors útmutatók
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/media/index/azure_dev-9.svg
-      text: A Terraform telepítése és konfigurálása
-      href: https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure
-    - image:
-        src: https://docs.microsoft.com/azure/media/index/VirtualMachine.svg
-      text: Linux rendszerű virtuális gép létrehozása
-      href: https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Tudja meg, hogyan hozhat létre Azure számítási és hálózatkezelési infrastruktúrát kódból a Terraform használatával.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: A Terraform konfigurálása és felhasználása Linux rendszerű virtuális gépek Azure-ban való létrehozására.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/media/index/azure_dev-9.svg'
+            text: A Terraform telepítése és konfigurálása
+            href: 'https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure'
+          - image:
+              src: 'https://docs.microsoft.com/azure/media/index/VirtualMachine.svg'
+            text: Linux rendszerű virtuális gép létrehozása
+            href: 'https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm'
+  - title: Részletes útmutatók
     items:
-    - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks">Kubernetes-fürt létrehozása az AKS használatával</a>.
-    - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-aks-applicationgateway-ingress">Kubernetes-fürt létrehozása az Application Gateway használatával, amely bejövőforgalom-vezérlőként használható az AKS-sel</a>.
-    - html: <a href="/azure/terraform/terraform-vm-msi">MSI-hitelesítéssel rendelkező Terraform virtuális gép létrehozása Azure Marketplace-rendszerképpel</a>.
-    - html: <a href="/azure/terraform/terraform-create-vm-cluster-module">Elosztott terhelésű virtuálisgép-fürt létrehozása az Azure Terraform moduljaival</a>.
-    - html: <a href="/azure/terraform/terraform-create-vm-cluster-with-infrastructure">Elosztott terhelésű virtuálisgép-fürt létrehozása az Azure Cloud Shellben</a>.
-    - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl">Virtuálisgép-méretezési csoport konfigurálása hálózatkezeléssel és tárolással</a>
-    - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-using-packer-hcl">Virtuálisgép-méretezési csoport kiépítése Packer egyéni rendszerképpel</a>
-- title: Példák
-  items:
-  - type: paragraph
-    text: Példa konfigurációs sablonok általános üzembehelyezési feladatokhoz.
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Tudja meg, hogyan hozhat létre Azure számítási és hálózatkezelési infrastruktúrát kódból a Terraform használatával.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks">Kubernetes-fürt létrehozása az AKS használatával</a>.
+          - html: '<a href="/azure/terraform/terraform-create-k8s-cluster-with-aks-applicationgateway-ingress">Kubernetes-fürt létrehozása az Application Gateway használatával, amely bejövőforgalom-vezérlőként használható az AKS-sel</a>.'
+          - html: <a href="/azure/terraform/terraform-vm-msi">MSI-hitelesítéssel rendelkező Terraform virtuális gép létrehozása Azure Marketplace-rendszerképpel</a>.
+          - html: <a href="/azure/terraform/terraform-create-vm-cluster-module">Elosztott terhelésű virtuálisgép-fürt létrehozása az Azure Terraform moduljaival</a>.
+          - html: <a href="/azure/terraform/terraform-create-vm-cluster-with-infrastructure">Elosztott terhelésű virtuálisgép-fürt létrehozása az Azure Cloud Shellben</a>.
+          - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl">Virtuálisgép-méretezési csoport konfigurálása hálózatkezeléssel és tárolással</a>
+          - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-using-packer-hcl">Virtuálisgép-méretezési csoport kiépítése Packer egyéni rendszerképpel</a>
+  - title: Példák
     items:
-    - html: <a href="https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples">GitHubon</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Példa konfigurációs sablonok általános üzembehelyezési feladatokhoz.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples">GitHubon</a>'
+  - title: Referencia
     items:
-    - title: Az Azure Terraform moduljai
-      html: <p><a href="https://registry.terraform.io/modules/Azure/database/azurerm">Azure RM adatbázishoz</a></p><p><a href="https://registry.terraform.io/modules/Azure/loadbalancer">Azure RM a Load Balancerhez</a></p><p><a href="https://registry.terraform.io/modules/Azure/computegroup">Azure RM számítási csoport</a></p><p><a href="https://registry.terraform.io/modules/Azure/network">Azure RM-hálózat</a></p><p><a href="https://registry.terraform.io/modules/Azure/compute">Azure RM-számítás</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Az Azure Terraform moduljai
+            html: '<p><a href="https://registry.terraform.io/modules/Azure/database/azurerm">Azure RM adatbázishoz</a></p><p><a href="https://registry.terraform.io/modules/Azure/loadbalancer">Azure RM a Load Balancerhez</a></p><p><a href="https://registry.terraform.io/modules/Azure/computegroup">Azure RM számítási csoport</a></p><p><a href="https://registry.terraform.io/modules/Azure/network">Azure RM-hálózat</a></p><p><a href="https://registry.terraform.io/modules/Azure/compute">Azure RM-számítás</a></p>'

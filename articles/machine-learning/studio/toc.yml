@@ -1,197 +1,190 @@
-items:
 - name: A Machine Learning Studio dokumentációja
   href: index.yml
 - name: Áttekintés
-  items:
-  - name: Machine Learning Studio
-    displayName: overview
-    href: what-is-ml-studio.md
-  - name: Machine Learning-termékeink összehasonlítása
-    href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-    maintainContext: true
   expanded: true
+  items:
+    - name: Machine Learning Studio
+      displayName: overview
+      href: what-is-ml-studio.md
+    - name: Machine Learning-termékeink összehasonlítása
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
+      maintainContext: true
 - name: Oktatóanyagok
   items:
-  - name: Az első kísérlet létrehozása
-    displayName: quickstart
-    href: create-experiment.md
-  - name: Prediktív megoldás létrehozása
-    items:
-    - name: 1 – Kísérlet létrehozása
-      href: tutorial-part1-credit-risk.md
-    - name: 2 – Betanítás és kiértékelés
-      href: tutorial-part2-credit-risk-train.md
-    - name: 3 – Webszolgáltatás üzembe helyezése
-      href: tutorial-part3-credit-risk-deploy.md
+    - name: Az első kísérlet létrehozása
+      displayName: quickstart
+      href: create-experiment.md
+    - name: Prediktív megoldás létrehozása
+      items:
+        - name: 1 – Kísérlet létrehozása
+          href: tutorial-part1-credit-risk.md
+        - name: 2 – Betanítás és kiértékelés
+          href: tutorial-part2-credit-risk-train.md
+        - name: 3 – Webszolgáltatás üzembe helyezése
+          href: tutorial-part3-credit-risk-deploy.md
 - name: Példák
   items:
-  - name: Elérhető adathalmazok
-    href: use-sample-datasets.md
-  - name: Azure AI katalógus
-    href: gallery-how-to-use-contribute-publish.md
+    - name: Elérhető adathalmazok
+      href: use-sample-datasets.md
+    - name: Azure AI katalógus
+      href: gallery-how-to-use-contribute-publish.md
 - name: Alapelvek
   items:
-  - name: Adatelemzés kezdőknek
-    items:
-    - name: 1 – Öt kérdés
-      href: data-science-for-beginners-the-5-questions-data-science-answers.md
-    - name: 2 – Készen állnak az adatok?
-      href: data-science-for-beginners-is-your-data-ready-for-data-science.md
-    - name: 3 – Megfelelő kérdések feltevése
-      href: data-science-for-beginners-ask-a-question-you-can-answer-with-data.md
-    - name: 4 – Válasz előrejelzése
-      href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
-    - name: 5 – Mások munkájának felhasználása
-      href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
-  - name: Modellkezelés
-    displayName: deploy, consume, web service
-    href: deploy-consume-web-service-guide.md
+    - name: Adatelemzés kezdőknek
+      items:
+        - name: 1 – Öt kérdés
+          href: data-science-for-beginners-the-5-questions-data-science-answers.md
+        - name: 2 – Készen állnak az adatok?
+          href: data-science-for-beginners-is-your-data-ready-for-data-science.md
+        - name: 3 – Megfelelő kérdések feltevése
+          href: data-science-for-beginners-ask-a-question-you-can-answer-with-data.md
+        - name: 4 – Válasz előrejelzése
+          href: data-science-for-beginners-predict-an-answer-with-a-simple-model.md
+        - name: 5 – Mások munkájának felhasználása
+          href: data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md
+    - name: Modellkezelés
+      displayName: 'deploy, consume, web service'
+      href: deploy-consume-web-service-guide.md
 - name: Útmutatók
   items:
-  - name: Munkaterületek kezelése
-    items:
-    - name: Létrehozás
-      href: create-workspace.md
-    - name: Kezelés
-      href: manage-workspace.md
-    - name: Hibaelhárítás
-      href: troubleshooting-creating-ml-workspace.md
-    - name: Üzembe helyezés az ARM használatával
-      href: deploy-with-resource-manager-template.md
-  - name: Betanítási adatok importálása
-    items:
-    - name: Adatok importálása
-      href: import-data.md
-    - name: Adatok használata helyszíni SQL-ből
-      displayName: on-premises
-      href: use-data-from-an-on-premises-sql-server.md
-  - name: Modellek betanítása
-    items:
-    - name: Életciklus-felügyelet kipróbálása
-      href: version-control.md
-    - name: Kísérletismétlések kezelése
-      href: manage-experiment-iterations.md
-    - name: Modellek létrehozása a PowerShell-lel
-      displayName: endpoint, endpoints
-      href: create-models-and-endpoints-with-powershell.md
-    - name: Kísérletek kipróbálása az AI katalógusban
-      displayName: gallery
-      href: sample-experiments.md
-    - name: Eredmények kiértékelése és értelmezése
+    - name: Munkaterületek kezelése
       items:
-      - name: Teljesítmény kiértékelése
-        href: evaluate-model-performance.md
-      - name: Paraméterek optimalizálása
-        displayName: optimization
-        href: algorithm-parameters-optimize.md
-      - name: Eredmények értelmezése
-        href: interpret-model-results.md
-      - name: Hibakeresés
-        href: debug-models.md
-    - name: Modellek újratanítása
+        - name: Létrehozás
+          href: create-workspace.md
+        - name: Kezelés
+          href: manage-workspace.md
+        - name: Hibaelhárítás
+          href: troubleshooting-creating-ml-workspace.md
+        - name: Üzembe helyezés az ARM használatával
+          href: deploy-with-resource-manager-template.md
+    - name: Betanítási adatok importálása
       items:
-      - name: „Új” webszolgáltatások
-        href: retrain-machine-learning-model.md
-      - name: Klasszikus webszolgáltatások
-        href: retrain-classic-web-service.md
-    - name: Az R és a Python használata
+        - name: Adatok importálása
+          href: import-data.md
+        - name: Adatok használata helyszíni SQL-ből
+          displayName: on-premises
+          href: use-data-from-an-on-premises-sql-server.md
+    - name: Modellek betanítása
       items:
-      - name: Bevezetés az R nyelv használatába
-        href: r-get-started.md
-      - name: R-szkriptek végrehajtása
-        href: extend-your-experiment-with-r.md
-      - name: Egyéni R-modulok létrehozása
-        href: custom-r-modules.md
-      - name: Python-szkriptek végrehajtása
-        href: execute-python-scripts.md
-  - name: Algoritmus kiválasztása
-    items:
-    - name: Algoritmusok kiválasztása
-      href: algorithm-choice.md
-    - name: Algoritmus-adatlap
-      href: algorithm-cheat-sheet.md
-    - name: Algoritmuspéldák
-      displayName: infographic, studio basics
-      href: basics-infographic-with-algorithm-examples.md
-  - name: Modellek üzembe helyezése
-    items:
-    - name: Webszolgáltatás üzembe helyezése
-      displayName: publish, multiple regions
-      href: publish-a-machine-learning-web-service.md
-    - name: Működés
-      href: model-progression-experiment-to-web-service.md
-    - name: Felkészülés az üzembe helyezésre
-      href: convert-training-experiment-to-scoring-experiment.md
-    - name: Külső adatok használata
-      displayName: import, export
-      href: web-services-that-use-import-export-modules.md
-    - name: Webszolgáltatás-paraméterek használata
-      href: web-service-parameters.md
-    - name: Naplózás engedélyezése
-      href: web-services-logging.md
-  - name: Webszolgáltatások kezelése
-    items:
-    - name: A Web Services portál használata
-      href: manage-new-webservice.md
-    - name: Kezelés API-kkal
-      displayName: endpoint, endpoints
-      href: manage-web-service-endpoints-using-api-management.md
-    - name: Végpontok létrehozása
-      displayName: scale, scaling
-      href: create-endpoint.md
-  - name: Modellek felhasználása
-    items:
-    - name: Áttekintés
-      href: consume-web-services.md
-    - name: Excel használata
-      href: consuming-from-excel.md
-    - name: Excel-bővítmény használata
-      href: excel-add-in-for-web-services.md
-    - name: Batch-készlet használata
-      href: dedicated-capacity-for-bes-jobs.md
-  - name: Használati esetek
-    items:
-    - name: Ügyfélforgalom
-      href: azure-ml-customer-churn-scenario.md
-    - name: Hangulatelemzés
-      href: text-analytics-module-tutorial.md
-    - name: Elemzések migrálása Excelből a Studióba
-      href: linear-regression-in-azure.md
-  - name: Ügyféladatok törlése és exportálása
-    items:
-    - name: Studio-adatok
-      displayName: export
-      href: export-delete-personal-data-dsr.md
-    - name: Katalógusadatok
-      displayName: export
-      href: ai-gallery-control-personal-data-dsr.md
+        - name: Életciklus-felügyelet kipróbálása
+          href: version-control.md
+        - name: Kísérletismétlések kezelése
+          href: manage-experiment-iterations.md
+        - name: Modellek létrehozása a PowerShell-lel
+          displayName: 'endpoint, endpoints'
+          href: create-models-and-endpoints-with-powershell.md
+        - name: Kísérletek kipróbálása az AI katalógusban
+          displayName: gallery
+          href: sample-experiments.md
+        - name: Eredmények kiértékelése és értelmezése
+          items:
+            - name: Teljesítmény kiértékelése
+              href: evaluate-model-performance.md
+            - name: Paraméterek optimalizálása
+              displayName: optimization
+              href: algorithm-parameters-optimize.md
+            - name: Eredmények értelmezése
+              href: interpret-model-results.md
+            - name: Hibakeresés
+              href: debug-models.md
+        - name: Modellek újratanítása
+          items:
+            - name: „Új” webszolgáltatások
+              href: retrain-machine-learning-model.md
+            - name: Klasszikus webszolgáltatások
+              href: retrain-classic-web-service.md
+        - name: Az R és a Python használata
+          items:
+            - name: Bevezetés az R nyelv használatába
+              href: r-get-started.md
+            - name: R-szkriptek végrehajtása
+              href: extend-your-experiment-with-r.md
+            - name: Egyéni R-modulok létrehozása
+              href: custom-r-modules.md
+            - name: Python-szkriptek végrehajtása
+              href: execute-python-scripts.md
+    - name: Algoritmus kiválasztása
+      items:
+        - name: Algoritmusok kiválasztása
+          href: algorithm-choice.md
+        - name: Algoritmus-adatlap
+          href: algorithm-cheat-sheet.md
+        - name: Algoritmuspéldák
+          displayName: 'infographic, studio basics'
+          href: basics-infographic-with-algorithm-examples.md
+    - name: Modellek üzembe helyezése
+      items:
+        - name: Webszolgáltatás üzembe helyezése
+          displayName: 'publish, multiple regions'
+          href: publish-a-machine-learning-web-service.md
+        - name: Működés
+          href: model-progression-experiment-to-web-service.md
+        - name: Felkészülés az üzembe helyezésre
+          href: convert-training-experiment-to-scoring-experiment.md
+        - name: Külső adatok használata
+          displayName: 'import, export'
+          href: web-services-that-use-import-export-modules.md
+        - name: Webszolgáltatás-paraméterek használata
+          href: web-service-parameters.md
+        - name: Naplózás engedélyezése
+          href: web-services-logging.md
+    - name: Webszolgáltatások kezelése
+      items:
+        - name: A Web Services portál használata
+          href: manage-new-webservice.md
+        - name: Kezelés API-kkal
+          displayName: 'endpoint, endpoints'
+          href: manage-web-service-endpoints-using-api-management.md
+        - name: Végpontok létrehozása
+          displayName: 'scale, scaling'
+          href: create-endpoint.md
+    - name: Modellek felhasználása
+      items:
+        - name: Áttekintés
+          href: consume-web-services.md
+        - name: Excel használata
+          href: consuming-from-excel.md
+        - name: Excel-bővítmény használata
+          href: excel-add-in-for-web-services.md
+        - name: Batch-készlet használata
+          href: dedicated-capacity-for-bes-jobs.md
+    - name: Használati esetek
+      items:
+        - name: Ügyfélforgalom
+          href: azure-ml-customer-churn-scenario.md
+        - name: Hangulatelemzés
+          href: text-analytics-module-tutorial.md
+        - name: Elemzések migrálása Excelből a Studióba
+          href: linear-regression-in-azure.md
+    - name: Ügyféladatok törlése és exportálása
+      items:
+        - name: Studio-adatok
+          displayName: export
+          href: export-delete-personal-data-dsr.md
+        - name: Katalógusadatok
+          displayName: export
+          href: ai-gallery-control-personal-data-dsr.md
 - name: Referencia
   items:
-  - name: Algoritmusokra és modulokra vonatkozó referenciák
-    href: /azure/machine-learning/studio-module-reference/machine-learning-studio-algorithm-and-module-help
-  - name: Azure PowerShell-modulok
-    href: powershell-module.md
-  - name: Webszolgáltatás hibakódjai
-    href: web-service-error-codes.md
-  - name: REST-felügyeleti API-k
-    href: /rest/api/machinelearning
+    - name: Algoritmusokra és modulokra vonatkozó referenciák
+      href: /azure/machine-learning/studio-module-reference/machine-learning-studio-algorithm-and-module-help
+    - name: Azure PowerShell-modulok
+      href: powershell-module.md
+    - name: Webszolgáltatás hibakódjai
+      href: web-service-error-codes.md
+    - name: REST-felügyeleti API-k
+      href: /rest/api/machinelearning
 - name: További források
   items:
-  - name: Szolgáltatási hírek
-    href: https://azure.microsoft.com/updates/?product=machine-learning-studio
-  - name: Támogatás kérése
-    href: support-aml-studio.md
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/
-  - name: Régiónkénti rendelkezésre állás
-    href: https://azure.microsoft.com/regions/services/
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/machine-learning/
-  - name: Egyéni neurális hálózatok (Net#)
-    href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: 4dacfd217bf089dac87128107901a17805117b4e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183781"
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=machine-learning-studio'
+    - name: Támogatás kérése
+      href: support-aml-studio.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+    - name: 'Egyéni neurális hálózatok (Net#)'
+      href: azure-ml-netsharp-reference-guide.md

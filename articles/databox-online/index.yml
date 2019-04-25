@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 376f2bd792cb1b3190507f5571a8b7a33daf2542
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439115"
 documentType: LandingData
 title: Azure Data Box-dokumentáció – Online adatátvitel
 metadata:
   title: Azure Data Box-dokumentáció – Online adatátvitel
-  description: A Data Box-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja, amellyel gyorsan, olcsón és megbízható módon vihet át adatokat az Azure-ba.
+  description: 'A Data Box-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja, amellyel gyorsan, olcsón és megbízható módon vihet át adatokat az Azure-ba.'
   services: databox
   author: alkohli
   manager: twooley
@@ -19,27 +13,27 @@ metadata:
   ms.date: 03/25/2019
   ms.author: alkohli
 abstract:
-  description: Az Azure Data Box termékcsaláddal gyorsan, olcsón és megbízható módon vihet át több száz terabájtnyi adatot az Azure-ba. A Data Box-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja.<p>A Data Box Gateway használatával elküldheti az adatokat a felhőben történő archiválásra, vészhelyreállításra vagy felhőszintű feldolgozásra.  A Data Box Edge használatával szűrheti, elemezheti és átalakíthatja az adatokat az Azure-ba való átvitelük során.</p><p>Útmutatóinkból megismerheti, hogyan használhatja a Data Box Gateway és a Data Box Edge szolgáltatást hálózatalapú adatátvitelhez.</p>
+  description: 'Az Azure Data Box termékcsaláddal gyorsan, olcsón és megbízható módon vihet át több száz terabájtnyi adatot az Azure-ba. A Data Box-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja.<p>A Data Box Gateway használatával elküldheti az adatokat a felhőben történő archiválásra, vészhelyreállításra vagy felhőszintű feldolgozásra.  A Data Box Edge használatával szűrheti, elemezheti és átalakíthatja az adatokat az Azure-ba való átvitelük során.</p><p>Útmutatóinkból megismerheti, hogyan használhatja a Data Box Gateway és a Data Box Edge szolgáltatást hálózatalapú adatátvitelhez.</p>'
 sections:
-- title: Oktatóanyagok
-  items:
-  - type: paragraph
-    text: <b>A Data Box Gatewayhez</b>
-  - type: list
-    style: ordered
+  - title: Oktatóanyagok
     items:
-    - html: <a href="data-box-gateway-deploy-prep">Az Azure Data Box Gateway üzembe helyezésének előkészítése</a>
-    - html: <a href="data-box-gateway-deploy-provision-hyperv">Az Azure Data Box Gateway üzembe helyezése a Hyper-V-ben</a>
-    - html: <a href="data-box-gateway-deploy-provision-vmware">Az Azure Data Box Gateway üzembe helyezése a VMware-ben</a>
-    - html: <a href="data-box-gateway-deploy-connect-setup-activate">Az Azure Data Box Gateway csatlakoztatása, konfigurálása és aktiválása</a>
-    - html: <a href="data-box-gateway-deploy-add-shares">Adatok átvitele az Azure Data Factory Gatewayjel</a>
-  - type: paragraph
-    text: <b>A Data Box Edge-hez</b>
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="data-box-edge-deploy-prep">Az Azure Data Box Edge üzembe helyezésének előkészítése</a>
-    - html: <a href="data-box-edge-deploy-install">Az Azure Data Box Edge telepítése</a>
-    - html: <a href="data-box-edge-deploy-connect-setup-activate">Az Azure Data Box Edge csatlakoztatása, konfigurálása és aktiválása</a>
-    - html: <a href="data-box-edge-deploy-add-shares">Adatok átvitele az Azure Data Box Edge-el</a>
-    - html: <a href="data-box-edge-deploy-configure-compute">Adatok átalakítása az Azure Data Box Edge-el</a>
+      - type: paragraph
+        text: <b>A Data Box Gatewayhez</b>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="data-box-gateway-deploy-prep">Az Azure Data Box Gateway üzembe helyezésének előkészítése</a>
+          - html: <a href="data-box-gateway-deploy-provision-hyperv">Az Azure Data Box Gateway üzembe helyezése a Hyper-V-ben</a>
+          - html: <a href="data-box-gateway-deploy-provision-vmware">Az Azure Data Box Gateway üzembe helyezése a VMware-ben</a>
+          - html: '<a href="data-box-gateway-deploy-connect-setup-activate">Az Azure Data Box Gateway csatlakoztatása, konfigurálása és aktiválása</a>'
+          - html: <a href="data-box-gateway-deploy-add-shares">Adatok átvitele az Azure Data Factory Gatewayjel</a>
+      - type: paragraph
+        text: <b>A Data Box Edge-hez</b>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="data-box-edge-deploy-prep">Az Azure Data Box Edge üzembe helyezésének előkészítése</a>
+          - html: <a href="data-box-edge-deploy-install">Az Azure Data Box Edge telepítése</a>
+          - html: '<a href="data-box-edge-deploy-connect-setup-activate">Az Azure Data Box Edge csatlakoztatása, konfigurálása és aktiválása</a>'
+          - html: <a href="data-box-edge-deploy-add-shares">Adatok átvitele az Azure Data Box Edge-el</a>
+          - html: <a href="data-box-edge-deploy-configure-compute">Adatok átalakítása az Azure Data Box Edge-el</a>
