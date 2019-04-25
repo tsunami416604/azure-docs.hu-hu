@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8edbfd118bd6ec2641372ce69fdff475f8376948
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407017"
 documentType: LandingData
 title: A Bing Autosuggest dokumentációja
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: A Bing Autosuggest dokumentációja – oktatóanyagok, rövid útmutatók és API-referencia | Microsoft Docs
-  description: Útmutató a Bing Autosuggest API használatához, amellyel javasolt lekérdezéseket jeleníthet meg egy részleges lekérdezés alapján. Az oktatóanyagok bemutatják, hogyan hozhat létre a szolgáltatást használó alkalmazásokat.
+  title: 'A Bing Autosuggest dokumentációja – oktatóanyagok, rövid útmutatók és API-referencia | Microsoft Docs'
+  description: 'Útmutató a Bing Autosuggest API használatához, amellyel javasolt lekérdezéseket jeleníthet meg egy részleges lekérdezés alapján. Az oktatóanyagok bemutatják, hogyan hozhat létre a szolgáltatást használó alkalmazásokat.'
   services: cognitive-services
   author: aahill
   manager: nitinme
@@ -22,77 +16,77 @@ metadata:
   ms.date: 02/20/2019
   ms.author: aahi
 abstract:
-  description: A Bing Autosuggest API-val egy részleges keresési lekérdezéskifejezést küldhet el a Bingnek, és visszakaphatja azon javasolt lekérdezések listáját, amelyekre más felhasználók rákerestek.  Amikor például a felhasználók beírják a keresőkifejezés egyes karaktereit, meghívhatja ezt az API-t, amely a keresőmező legördülő listáját feltölti javaslatokkal. Ismerje meg rövid útmutatóink, oktatóanyagaink és példáink segítségével az Autosuggest API használatának módját.
+  description: 'A Bing Autosuggest API-val egy részleges keresési lekérdezéskifejezést küldhet el a Bingnek, és visszakaphatja azon javasolt lekérdezések listáját, amelyekre más felhasználók rákerestek.  Amikor például a felhasználók beírják a keresőkifejezés egyes karaktereit, meghívhatja ezt az API-t, amely a keresőmező legördülő listáját feltölti javaslatokkal. Ismerje meg rövid útmutatóink, oktatóanyagaink és példáink segítségével az Autosuggest API használatának módját.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-autosuggest/get-suggested-search-terms
+            html: <p>Tudnivalók a Bing Autosuggest API-ról</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Mi az a Bing Autosuggest API?
+          - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
+            html: '<p>Megismerheti, hogyan kaphat valós idejű keresési javaslatokat</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Javaslatok a Bing Autosuggest API-tól
+          - href: /azure/cognitive-services/bing-autosuggest/language-support
+            html: '<p>Megtudhatja, mely nyelveket támogatja az API.</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Támogatott nyelvek
+  - title: 5 perces gyors útmutatók
     items:
-    - href: /azure/cognitive-services/bing-autosuggest/get-suggested-search-terms
-      html: <p>Tudnivalók a Bing Autosuggest API-ról</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Mi az a Bing Autosuggest API?
-    - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
-      html: <p>Megismerheti, hogyan kaphat valós idejű keresési javaslatokat</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Javaslatok a Bing Autosuggest API-tól
-    - href: /azure/cognitive-services/bing-autosuggest/language-support
-      html: <p>Megtudhatja, mely nyelveket támogatja az API.</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Támogatott nyelvek
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Bevezetés a Bing Autosuggest API használatába egy lekérdezés végrehajtásával és a JSON-válasz megtekintésével:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Bevezetés a Bing Autosuggest API használatába egy lekérdezés végrehajtásával és a JSON-válasz megtekintésével:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            href: quickstarts/csharp
+            text: 'C&#35;'
+          - image:
+              src: media/index/logo_java.svg
+            href: quickstarts/java
+            text: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            href: quickstarts/nodejs
+            text: Node.js
+          - image:
+              src: media/index/logo_php.svg
+            href: quickstarts/php
+            text: PHP
+          - image:
+              src: media/index/logo_python.svg
+            href: quickstarts/python
+            text: Python
+          - image:
+              src: media/index/logo_ruby.svg
+            href: quickstarts/ruby
+            text: Ruby
+  - title: Részletes útmutatók
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      href: quickstarts/csharp
-      text: C&#35;
-    - image:
-        src: media/index/logo_java.svg
-      href: quickstarts/java
-      text: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      href: quickstarts/nodejs
-      text: Node.js
-    - image:
-        src: media/index/logo_php.svg
-      href: quickstarts/php
-      text: PHP
-    - image:
-        src: media/index/logo_python.svg
-      href: quickstarts/python
-      text: Python
-    - image:
-        src: media/index/logo_ruby.svg
-      href: quickstarts/ruby
-      text: Ruby
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'További információ a Bing Autosuggest API-t használó alkalmazások fejlesztéséről:'
-  - type: paragraph
-    text: <a href="tutorials/autosuggest.md">Egyoldalas webalkalmazás</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'További információ a Bing Autosuggest API-t használó alkalmazások fejlesztéséről:'
+      - type: paragraph
+        text: <a href="tutorials/autosuggest.md">Egyoldalas webalkalmazás</a>
+  - title: Referencia
     items:
-    - title: API-k
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference">Bing Autosuggest API 7-es verzió</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference">Bing Autosuggest API 5-ös verzió</p>
-    - title: SDK-k
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet">.NET</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/autosuggest?view=azure-java-stable">Java</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: parancssori felület
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API-k
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference">Bing Autosuggest API 7-es verzió</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference">Bing Autosuggest API 5-ös verzió</p>'
+          - title: SDK-k
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet">.NET</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/autosuggest?view=azure-java-stable">Java</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: parancssori felület
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8eb7d6e920f09d6ad230813503a7cf942427ea80
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227849"
 documentType: LandingData
 title: A QnA Maker dokumentációja
 metadata:
   title: A QnA Maker dokumentációja – Microsoft Cognitive Services | Microsoft Docs
-  description: Megismerheti a QnA Maker szolgáltatást, illetve hogy a szolgáltatás tudásbázisai hogyan működnek a kérdésekkel és válaszokkal.
+  description: 'Megismerheti a QnA Maker szolgáltatást, illetve hogy a szolgáltatás tudásbázisai hogyan működnek a kérdésekkel és válaszokkal.'
   services: cognitive-services
   author: tulasim88
   manager: cgronlun
@@ -21,79 +15,79 @@ metadata:
   ms.date: 12/18/2018
   ms.author: tulasim
 abstract:
-  description: A QnA Maker egy olyan felhőalapú API-szolgáltatás, amely egy beszélgetés típusú, kérdésekből és válaszokból álló réteget hoz létre az adatok alapján. A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. A QnA Maker szolgáltatás egyezteti a felhasználók természetes nyelvi kérdéseit a Tudásbázisban szereplő kérdésekkel és válaszokkal, majd a lehető legjobban megfelelő választ adja vissza.
+  description: 'A QnA Maker egy olyan felhőalapú API-szolgáltatás, amely egy beszélgetés típusú, kérdésekből és válaszokból álló réteget hoz létre az adatok alapján. A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. A QnA Maker szolgáltatás egyezteti a felhasználók természetes nyelvi kérdéseit a Tudásbázisban szereplő kérdésekkel és válaszokkal, majd a lehető legjobban megfelelő választ adja vissza.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: ../media/index/qnamaker-landing-page-video.png
       width: 250
-    title: Robot létrehozása percek alatt a QnA Maker használatával (8:54)
-    href: https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker
+    title: 'Robot létrehozása percek alatt a QnA Maker használatával (8:54)'
+    href: 'https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/qnamaker/overview/overview
+            html: <p>Megismerkedhet a QnA Maker használatával.</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Mi a QnA Maker?
+          - href: /azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base
+            html: '<p>Megismerkedhet a tudásbázisok létrehozásával, betanításával és közzétételével.</p>'
+            image:
+              src: ../media/index/i_tasks.svg
+            title: 'Tudásbázis létrehozása, betanítása és közzététele'
+          - href: /azure/cognitive-services/qnamaker/concepts/data-sources-supported
+            html: <p>Megismerkedhet a tudásbázisok közzétételével.</p>
+            image:
+              src: ../media/index/i_tasks.svg
+            title: Az adatforrások ismertetése
+  - title: 5 perces gyors útmutatók
     items:
-    - href: /azure/cognitive-services/qnamaker/overview/overview
-      html: <p>Megismerkedhet a QnA Maker használatával.</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Mi a QnA Maker?
-    - href: /azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base
-      html: <p>Megismerkedhet a tudásbázisok létrehozásával, betanításával és közzétételével.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: Tudásbázis létrehozása, betanítása és közzététele
-    - href: /azure/cognitive-services/qnamaker/concepts/data-sources-supported
-      html: <p>Megismerkedhet a tudásbázisok közzétételével.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: Az adatforrások ismertetése
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Tudásbázis létrehozása a kérdés-válasz tartalmakhoz:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Tudásbázis létrehozása a kérdés-válasz tartalmakhoz:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_Csharp.svg
+            text: 'C&#35;'
+            href: Quickstarts/create-new-kb-csharp
+          - image:
+              src: media/index/Go-Logo_Blue.svg
+            text: Indítás
+            href: Quickstarts/create-new-kb-go
+          - image:
+              src: media/index/logo_java.svg
+            text: Java
+            href: Quickstarts/create-new-kb-java
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            href: Quickstarts/create-new-kb-nodejs
+          - image:
+              src: media/index/logo_python.svg
+            text: Python
+            href: Quickstarts/create-new-kb-python
+  - title: Részletes útmutatók
     items:
-    - image:
-        src: media/index/logo_Csharp.svg
-      text: C&#35;
-      href: Quickstarts/create-new-kb-csharp
-    - image:
-        src: media/index/Go-Logo_Blue.svg
-      text: Indítás
-      href: Quickstarts/create-new-kb-go
-    - image:
-        src: media/index/logo_java.svg
-      text: Java
-      href: Quickstarts/create-new-kb-java
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: Quickstarts/create-new-kb-nodejs
-    - image:
-        src: media/index/logo_python.svg
-      text: Python
-      href: Quickstarts/create-new-kb-python
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'További információ a QnA Makert használó alkalmazások fejlesztéséről:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'További információ a QnA Makert használó alkalmazások fejlesztéséről:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal">Tudásbázis létrehozása és kérdések megválaszolása</a></li>
+          - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-qna-bot">QnA Maker-robot létrehozása</a></li>
+  - title: Referencia
     items:
-    - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal">Tudásbázis létrehozása és kérdések megválaszolása</a></li>
-    - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-qna-bot">QnA Maker-robot létrehozása</a></li>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: API
-      html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff">QnA Maker API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API
+            html: '<p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff">QnA Maker API</a></p>'

@@ -11,7 +11,7 @@ ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "58762939"
@@ -248,8 +248,8 @@ Automation két rekordtípust hoz létre a Log Analytics-munkaterület: feladat-
 
 |Tulajdonság | Leírás|
 |----------|----------|
-|Caller |  A művelet kezdeményezője. Lehetséges értékek: egy e-mail-cím vagy egy ütemezett feladatokat tartalmazó rendszer.|
-|Category | Az adattípus besorolása. Az Automation esetében az érték JobLogs.|
+|Hívó |  A művelet kezdeményezője. Lehetséges értékek: egy e-mail-cím vagy egy ütemezett feladatokat tartalmazó rendszer.|
+|Kategória | Az adattípus besorolása. Az Automation esetében az érték JobLogs.|
 |CorrelationId | GUID, a runbook-feladat korrelációs azonosítója.|
 |JobId | GUID, a runbook-feladat azonosítója.|
 |operationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat.|
@@ -269,8 +269,8 @@ Automation két rekordtípust hoz létre a Log Analytics-munkaterület: feladat-
 
 |Tulajdonság | Leírás|
 |----------|----------|
-|Caller |  A művelet kezdeményezője. Lehetséges értékek: egy e-mail-cím vagy egy ütemezett feladatokat tartalmazó rendszer.|
-|Category | Az adattípus besorolása. Az Automation esetében az érték JobStreams.|
+|Hívó |  A művelet kezdeményezője. Lehetséges értékek: egy e-mail-cím vagy egy ütemezett feladatokat tartalmazó rendszer.|
+|Kategória | Az adattípus besorolása. Az Automation esetében az érték JobStreams.|
 |JobId | GUID, a runbook-feladat azonosítója.|
 |operationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat.|
 |ResourceGroup | Meghatározza a runbook-feladat erőforráscsoportjának nevét.|
