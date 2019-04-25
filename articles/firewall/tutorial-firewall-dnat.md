@@ -9,11 +9,11 @@ ms.date: 11/28/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: df57faad770b252228b6c55d4caff775acfe3594
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531164"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60192935"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Oktatóanyag: Bejövő forgalom szűrése az Azure Firewall DNAT-tal az Azure Portalon
 
@@ -153,7 +153,7 @@ Az üzembe helyezés befejeztével jegyezze fel a virtuális gép magánhálóza
    |Name (Név)     |FW-DNAT-test|
    |Előfizetés     |\<az Ön előfizetése\>|
    |Erőforráscsoport     |**Meglévő használata**: RG-DNAT-Test |
-   |Hely     |Válassza a korábban használt helyet|
+   |Location egység     |Válassza a korábban használt helyet|
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**: VN-Hub|
    |Nyilvános IP-cím     |**Új létrehozása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
 

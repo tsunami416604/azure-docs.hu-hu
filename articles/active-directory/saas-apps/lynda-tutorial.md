@@ -16,11 +16,11 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f20c917a889450f0eacd34e86683b4346681cfc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258844"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60257857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Lynda.com
 

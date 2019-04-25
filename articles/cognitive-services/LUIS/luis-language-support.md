@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
 ms.openlocfilehash: 10fe5d90e7a7a59a1b543209a37b998376fdda1e
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757658"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60196218"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelvéhez és régiójához támogatása
 
@@ -99,7 +99,7 @@ Machine learning alkalmazásához, LUIS bontja az utterance (kifejezés) [jogkiv
 
 A következő kulturális környezetek egyéni tokenizer verziójával rendelkezik:
 
-|Kulturális környezet|Verzió|Cél|
+|Kulturális környezet|Version|Cél|
 |--|--|--|
 |német<br>`de-de`|1.0.0|Szavak tokenizes halmazra őket egy machine learning-alapú jogkivonatokat létrehozó, amely próbál meg bontja a egyetlen összetevőből összetett szavak használatával.<br>Ha a felhasználó `Ich fahre einen krankenwagen` az utterance (kifejezés), mint szolgáltatás engedélyezve van `Ich fahre einen kranken wagen`. A jelölés, így `kranken` és `wagen` különböző entitásokként egymástól függetlenül.|
 |német<br>`de-de`|1.0.1|A tárolóhelyek halmazra tokenizes a szavakat.<br> Ha a felhasználó `Ich fahre einen krankenwagen` utterance (kifejezés) egy, az egyes marad. Így `krankenwagen` egyetlen entitás van megjelölve. |

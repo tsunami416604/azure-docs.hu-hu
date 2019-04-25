@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f795571de275453738d23e80885f4d9006ca3a20
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804450"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60195017"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Egyéni szerepkörök az Azure-erőforrásokhoz
 
@@ -111,7 +111,7 @@ Akárcsak a beépített szerepkörök a `AssignableScopes` tulajdonság határoz
 | Egyéni szerepkör megtekintése | `Microsoft.Authorization/ roleDefinition/read` | Ez a művelet egy hatókörben engedéllyel rendelkező felhasználók megtekinthetik az adott hatókörben hozzárendelés elérhető egyéni szerepkört. Összes beépített szerepkört engedélyezése egyéni szerepkörök hozzárendelés elérhető legyen. |
 
 ## <a name="next-steps"></a>További lépések
-- [Hozzon létre egyéni szerepkörök az Azure-erőforrások Azure PowerShell-lel](custom-roles-powershell.md)
-- [Egyéni szerepkörök az Azure CLI használatával Azure-erőforrások létrehozása](custom-roles-cli.md)
+- [Egyéni szerepkörök létrehozása Azure-erőforrásokhoz az Azure PowerShell használatával](custom-roles-powershell.md)
+- [Egyéni szerepkörök létrehozása Azure-erőforrásokhoz az Azure CLI használatával](custom-roles-cli.md)
 - [Megismerheti az Azure-erőforrások szerepkör-definíciók](role-definitions.md)
 - [Az RBAC hibaelhárítása az Azure-erőforrásokhoz](troubleshooting.md)

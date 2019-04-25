@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883299"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60195293"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Biztonság az Azure Data Lake Storage Gen1
 Sok vállalat is kihasználhatja a big data-analitika, amelyekkel az intelligens döntések üzleti elemzések készítése. Egy szervezet rendelkezhet egy összetett és szabályozott környezettel, és az egyre növekvő számú különböző felhasználók. A vállalatok számára, győződjön meg arról, hogy kritikus fontosságú üzleti adatokat tárolja biztonságosabban, és egyéni felhasználók számára a hozzáférést a megfelelő szintű, elengedhetetlen, hogy. Az Azure Data Lake Storage Gen1 célja biztonsági követelményeknek. Ez a cikk többek között a Data Lake Storage Gen1 biztonsági funkcióinak bemutatása:

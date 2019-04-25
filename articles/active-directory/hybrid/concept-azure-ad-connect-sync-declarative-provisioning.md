@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171825"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60246321"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Az Azure AD Connect szinkronizálása: A deklaratív üzembe helyezés ismertetése
 Ez a témakör ismerteti az Azure AD Connect konfigurációs modell. A modell a deklaratív kiépítés neve, és lehetővé teszi, hogy olyan konfigurációs módosítást egyszerű. Sok-sok dolog ebben a témakörben leírt speciális és a legtöbb ügyfél forgatókönyvhöz nem szükséges.

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 7f793741638db5196bbf8bcd97e7f42d79548f0b
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565161"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60255516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>Oktatóanyag: Manabi zsebébe tenni az Azure Active Directory-integráció
 

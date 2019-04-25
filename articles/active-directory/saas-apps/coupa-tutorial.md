@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4156ef264069b5f926f28f766a201dceb29a512b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 29ca16e149852d044fdd6f6ea0baf0b11ccb75cf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834795"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60280851"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Coupa
 
@@ -114,16 +114,16 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Coupa, hajtsa végre
 
     | Környezet  | URL-cím |
     |:-------------|----|
-    | Védőfal | `devsso35.coupahost.com`|
-    | Production | `prdsso40.coupahost.com`|
+    | Védőfal | `sso-stg1.coupahost.com`|
+    | Production | `sso-prd1.coupahost.com`|
     | | |
 
     c. Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címe:
 
     | Környezet | URL-cím |
     |------------- |----|
-    | Védőfal | `https://devsso35.coupahost.com/sp/ACS.saml2`|
-    | Production | `https://prdsso40.coupahost.com/sp/ACS.saml2`|
+    | Védőfal | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
+    | Production | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 
 4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.

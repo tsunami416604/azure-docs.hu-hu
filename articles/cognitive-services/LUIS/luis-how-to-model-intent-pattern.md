@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: 202b9632b7a7faaf955874a0300edbe5134b7fa1
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521254"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60196709"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Az előrejelzési pontosság növeléséhez minták hozzáadása
 Miután a LUIS-alkalmazásokon végpont utterances megkapja, egy [minta](luis-concept-patterns.md) növelve előrejelzés pontosságát, hogy egy mintát szórendjét és a word választási lehetőség felfedéséhez megcímkézzen számára. Minták használata adott [szintaxis](luis-concept-patterns.md#pattern-syntax) helyét jelzi: [entitások](luis-concept-entity-types.md), entitás [szerepkörök](luis-concept-roles.md), és nem kötelező szöveg.

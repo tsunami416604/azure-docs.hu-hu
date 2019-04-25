@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: raynew
 ms.openlocfilehash: dff3c96cf3ac8eea7c1160ee1834cc70390c0333
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652637"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533181"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -21,13 +21,13 @@ ms.locfileid: "58652637"
 
 ### <a name="i-am-using-the-ova-that-continuously-discovers-my-on-premises-environment-but-the-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Az OVA, amely folyamatosan felderíti a helyszíni környezetben használom, de a saját helyszíni környezetben törölt virtuális gépek továbbra is alatt látható a portálon.
 
-A folyamatos felderítési berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
+A folyamatos felderítési berendezés a teljesítményadatok folyamatos gyűjtését végzi, és nem észleli a konfiguráció változását a helyszíni környezetben (például virtuális gépek hozzáadását és törlését, lemezek hozzáadását stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
 
-- További elemek (virtuális gépek, lemezek, magok stb.): A változásoknak az Azure Portalon, a felderítés a készülék leállítása és a majd indítsa el újra. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
+- Elemek (virtuális gépek, lemezek, magok stb.) hozzáadása: Ezeknek a módosításoknak az Azure Portalon való tükrözéséhez állítsa le, majd indítsa újra a felderítést a berendezésen. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
 
    ![Felderítés leállítása](./media/troubleshooting-general/stop-discovery.png)
 
-- Virtuális gépek törlése: Lehet a célja, a készülék virtuális gépek törlése nem tükrözi, akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
+- A virtuális gépek törlése: A berendezés kialakítása miatt a virtuális gépek törlése akkor sem lesz látható, ha leállítja, majd újraindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
 
 ### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Az Azure Migrate projektek és társított Log Analytics-munkaterület törlése
 
@@ -82,7 +82,7 @@ Ha nem tudja az értékelési jelentés exportálása a portálról, próbálkoz
 
 ### <a name="performance-data-for-cpu-memory-and-disks-is-showing-up-as-zeroes"></a>Nullaként jelennek teljesítményadatokat CPU, memória és lemezek
 
-Az Azure Migrate folyamatosan profilokat a helyszíni környezetben, a helyszíni virtuális gépek teljesítményadatok gyűjtése. Ha most indította el a környezet felderítését, várjon, amíg legalább egy napját a teljesítményadat-gyűjtés elvégezni kívánt szeretne. Az értékelés egy nap várakozás nélkül jön létre, ha a teljesítmény-mérőszámok jelennek meg nullaként. Miután kivárja egy napon, egy új értékelés létrehozása, vagy a meglévő értékelés frissítése az értékelési jelentés a "Újraszámítása" lehetőség használatával.
+Az Azure Migrate folyamatosan készít profilokat a helyszíni környezetről a helyszíni virtuális gépek teljesítményadatainak gyűjtéséhez. Ha most indította el a környezet felderítését, várjon legalább egy napot a teljesítményadatok gyűjtésének befejeződéséhez. Ha az értékelés egy napi várakozás nélkül jön létre, a teljesítménymetrikák nullaként fognak megjelenni. Egy napi várakozás után létrehozhat egy új értékelést, vagy frissítheti a meglévőt az értékelési jelentésben található „Újraszámítás” lehetőség használatával.
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>Migrálási projekt, hogyan állapítható meg a felderített metaadatokat lenne tárolásához pontos Azure-régió létrehozása során egy Azure földrajzi meg?
 

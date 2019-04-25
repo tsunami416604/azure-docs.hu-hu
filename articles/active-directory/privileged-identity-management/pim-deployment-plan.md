@@ -15,11 +15,11 @@ ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578195"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60440613"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Az Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
@@ -186,7 +186,7 @@ Fontos rangsorolására védelme az Azure AD-szerepkörök, amelyek a legtöbb e
 1. Biztonsági olvasó
 1. Szolgáltatás-rendszergazda
 1. Számlázási rendszergazda
-1. Skype Vállalati verzió-rendszergazda
+1. Skype Vállalati verzió rendszergazdája
 
 > [!TIP]
 > :heavy_check_mark: **A Microsoft javasolja** kezelhetők a globális rendszergazdák és a PIM használatával az első lépés, azok, amelyekre a teheti meg, a legtöbb kárt Ha sérül a biztonsági rendszergazdák.

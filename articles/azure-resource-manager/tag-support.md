@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
 ms.openlocfilehash: dd6836ef4f859ce77c1a56095d32373d8e08f468
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60388063"
 ---
 # <a name="tag-support-for-azure-resources"></a>Az Azure-erőforrások címkék támogatása
 Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource-group-using-tags.md).
@@ -301,7 +301,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | Képességek | Nem | 
-| Lemezek | Nem | 
+| lemezek | Nem | 
 | images | Nem | 
 | osImages | Nem | 
 | osPlatformImages | Nem | 
@@ -328,7 +328,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Támogatja a címkék |
 | ------------- | ----------- |
 | availabilitySets | Igen | 
-| Lemezek | Igen | 
+| lemezek | Igen | 
 | images | Igen | 
 | restorePointCollections | Igen | 
 | restorePointCollections/restorePoints | Nem | 
@@ -864,7 +864,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | dnszones/TXT | Nem | 
 | expressRouteCircuits | Igen | 
 | expressRouteServiceProviders | Nem | 
-| frontdoors | Igen | 
+| frontdoorok | Igen | 
 | frontdoorWebApplicationFirewallPolicies | Igen | 
 | getDnsResourceReference | Nem | 
 | interfaceEndpoints | Igen | 
@@ -1241,7 +1241,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | modulok | Nem | 
 | Kiszolgálófarmok | Igen | 
 | Kiszolgálófarmok/feldolgozó | Nem | 
-| Helyek | Igen | 
+| webhelyek | Igen | 
 | sites/domainOwnershipIdentifiers | Nem | 
 | sites/hostNameBindings | Nem | 
 | helyek és példányok | Nem | 

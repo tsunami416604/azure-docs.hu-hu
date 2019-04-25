@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: yizhon
 ms.openlocfilehash: 5256a58a2b68584888abcac915392d8e389e9772
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054537"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60399368"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Fejlesztés a mobil eszközök Azure IoT SDK-k használatával
 
@@ -29,7 +29,7 @@ Az Azure IoT Hub C SDK a különböző platformokon maximális hordozhatóságot
 
 Ezek a dokumentációra végig, hogyan hozhat létre egy alkalmazást vagy service-alkalmazás iOS-eszközön:
 
-* [Gyors útmutató: Telemetria küldése egy eszközről IoT hubra](quickstart-send-telemetry-ios.md)  
+* [Rövid útmutató: Telemetria küldése egy eszközről IoT hubra](quickstart-send-telemetry-ios.md)  
 * [Üzenetküldés a felhőből az eszközre az IoT hub](iot-hub-ios-swift-c2d.md) 
 
 ### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Fejlesztés az Azure IoT Hub CocoaPod kódtárak használatával
@@ -47,8 +47,8 @@ Az Azure IoT Hub Java SDK támogatja az Android platformhoz.  A megadott API-ver
 
 Ezek a dokumentációra végig, hogyan hozhat létre egy alkalmazást vagy a szolgáltatás alkalmazás Android-eszközön gradle-t és az Android Studio segítségével:
 
-* [Gyors útmutató: Telemetria küldése egy eszközről IoT hubra](quickstart-send-telemetry-android.md)  
-* [Gyors útmutató: Eszköz vezérlése](quickstart-control-device-android.md) 
+* [Rövid útmutató: Telemetria küldése egy eszközről IoT hubra](quickstart-send-telemetry-android.md)  
+* [Rövid útmutató: Eszköz vezérlése](quickstart-control-device-android.md) 
 
 ## <a name="next-steps"></a>További lépések
 

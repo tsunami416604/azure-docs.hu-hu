@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: a8132735d1af08055e9341608dcac0564ed4b927
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996458"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60236680"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Parancssori eszközök segítségével elindíthatja és leállíthatja a virtuális gépek Azure DevTest Labs szolgáltatásban
 Ez a cikk bemutatja, hogyan elindítani vagy leállítani a virtuális gépek az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet Azure PowerShell vagy az Azure CLI használatával. Ezek a műveletek automatizálása a PowerShell vagy a parancssori felületen parancsfájlok hozhat létre. 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
 ms.openlocfilehash: c57550a8b683ad8f184884374c4f09216417fc40
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995622"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60236396"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Csatlakozás az Azure Databricks a Excel-, Python vagy R
 
@@ -54,7 +54,7 @@ Egy adatforrás neve (DSN) egy adott adatforrásra vonatkozó információkat ta
 
     Az alábbi táblázat az értékeket a párbeszédpanelen adja meg az információkat.
     
-    |Mező  | Érték  |
+    |Mező  | Value  |
     |---------|---------|
     |**Adatforrás neve**     | Adja meg az adatforrás nevét.        |
     |**Host(s)**     | Adja meg a Databricks-munkaterület kimásolt érték *kiszolgáló állomásnevét*.        |
@@ -82,7 +82,7 @@ Ebben a szakaszban, kér le adatot az Azure Databricks a Microsoft Excel formát
 
 2. Az a **származó ODBC** párbeszédpanelen válassza ki a korábban létrehozott Adatforrásnevet, majd kattintson **OK**.
 
-    ![Válassza ki a DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "DSN kiválasztása")
+    ![Select DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "Select DSN")
 
 3. Ha a rendszer kéri a hitelesítő adatokat, a felhasználó nevét adja meg **token**. A jelszó adja meg a token értékét, a Databricks-munkaterület lekért.
 

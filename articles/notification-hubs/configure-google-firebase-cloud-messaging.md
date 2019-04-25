@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: jowargo
 ms.openlocfilehash: d200f5746d5f7c62ff3a52873d5d5d6c3e1322dc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488371"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60239184"
 ---
 # <a name="configure-google-firebase-cloud-messaging-fcm-settings-for-a-notification-hub-in-the-azure-portal"></a>Egy értesítési központ Google Firebase Cloud Messaging (FCM) beállításainak konfigurálása az Azure Portalon
 Ez a cikk bemutatja, hogyan Google Firebase Cloud Messaging (FCM) az Azure notification hub beállításainak konfigurálása az Azure portal használatával.  

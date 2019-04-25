@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7181c91424e1d905329eefd13f926d0b2700081
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e1ed419892412c1fb9334fed74b82c53154723ed
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864974"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252421"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Egy nem felügyelt Virtuálisgép-rendszerkép létrehozása Azure virtuális gépből
 
@@ -29,7 +29,7 @@ Ez a cikk ismerteti a storage-fiókot használni. Azt javasoljuk, hogy használt
 
 Ez a cikk bemutatja, hogyan általánosított Azure VM-lemezkép létrehozása az Azure PowerShell használatával egy storage-fiók használatával. Ezután használhatja a kép egy másik virtuális gép létrehozásához. A rendszerkép tartalmazza az operációsrendszer-lemez és a virtuális géphez csatolt adatlemezek. A kép nem tartalmazza a virtuális hálózati erőforrásokat, úgy kell beállítani ezeket az erőforrásokat, ha az új virtuális Gépet hoz létre. 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="generalize-the-vm"></a>A virtuális gép általánosítása 
 Ez a szakasz bemutatja, hogyan általánossá tétele a Windows virtuális gép lemezképként való használatra. Virtuális gép általánosítása eltávolít minden személyes fiókadatot, többek között, és előkészíti a számítógépet, hogy képként használni. További információ a Sysprepről: [Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).

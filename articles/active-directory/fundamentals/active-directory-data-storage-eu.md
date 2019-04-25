@@ -13,11 +13,11 @@ ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b21f82dc0a1eb8edf571da13e0d34fecae5f401b
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337685"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60249720"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Az Európai ügyfelek az Azure Active Directory Identity adattárolás
 Az Azure Active Directory (Azure AD) segítségével, amely a szervezet erőforrásaihoz biztonságossá intelligens megoldásokkal vezérelt hozzáférési szabályzatokat hozhat létre, így kezelheti a felhasználói identitásokat. Az identitásadatok tárolásának helye a szervezete által a szolgáltatásra történő előfizetéskor megadott cím alapján lesz meghatározva. Azaz amikor például az Office 365-re vagy az Azure-ra előfizetett. Ha pontosan szeretné meghatározni az identitásadatok helyét, tekintse meg a Microsoft biztonsági és adatkezelési központ [az adatok tárolási helyével](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) foglalkozó szakaszát.

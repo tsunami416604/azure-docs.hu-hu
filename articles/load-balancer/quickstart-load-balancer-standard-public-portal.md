@@ -16,11 +16,11 @@ ms.date: 03/11/2019
 ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 77e322e32d19433d9ce4629c2e04c8bbd7e17f3f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57858235"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405524"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Gyors útmutató: Standard Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure Portal használatával.
 
@@ -39,7 +39,7 @@ Ebben a szakaszban egy Standard Load Balancer, amellyel a virtuális gépek terh
 1. A képernyő bal felső sarkában válassza **erőforrás létrehozása** > **hálózatkezelés** > **terheléselosztó**.
 2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
 
-    | Beállítás                 | Érték                                              |
+    | Beállítás                 | Value                                              |
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *myResourceGroupSLB* a szövegmezőben.|
@@ -78,7 +78,7 @@ Engedélyezi a Load Balancer monitorozhassa az alkalmazás állapotát, állapot
     | Name (Név) | Adja meg *myHealthProbe*. |
     | Protokoll | Válassza ki **HTTP**. |
     | Port | Adja meg *80-as*.|
-    | Intervallum | Adja meg *15* számú **időköz** mintavételi kísérletek közötti másodpercek alatt. |
+    | Interval | Adja meg *15* számú **időköz** mintavételi kísérletek közötti másodpercek alatt. |
     | Nem kifogástalan állapot küszöbértéke | Válassza ki *2* számú **nem kifogástalan állapot küszöbértéke** vagy egymást követő mintavételi hiba, amely előtt a virtuális gép nem megfelelő állapotúnak számít.|
     | Állapotadat-mintavétel | Válassza ki *myHealthProbe*. |
 4. Kattintson az **OK** gombra.
@@ -116,7 +116,7 @@ Ebben a szakaszban egy virtuális hálózat létrehozása, hozzon létre két vi
     | Címtér | Adja meg *10.1.0.0/16*. |
     | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza ki a meglévő erőforrás - *myResourceGroupSLB*. |
-    | Hely | Válassza a **Nyugat-Európa** régiót.|
+    | Location egység | Válassza a **Nyugat-Európa** régiót.|
     | Alhálózat - név | Adja meg a *myBackendSubnet* értéket. |
     | Alhálózat – címtartomány | Adja meg *10.1.0.0/24*. |
 1. Hagyja meg az alapértelmezett beállításokat, és válassza ki a többi **létrehozás**.

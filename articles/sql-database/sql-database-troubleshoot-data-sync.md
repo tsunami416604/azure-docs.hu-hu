@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
 ms.openlocfilehash: 4e2808378834a0270586ce674e1043ca443320c5
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539632"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60331196"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása
 

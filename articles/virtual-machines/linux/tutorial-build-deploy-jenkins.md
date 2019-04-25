@@ -14,11 +14,11 @@ ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
 ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901423"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60478367"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Oktatóanyag: Alkalmazás üzembe helyezése az Azure-beli Linux rendszerű virtuális gépek használatával a Jenkins és az Azure DevOps-szolgáltatásokkal
 
@@ -38,7 +38,7 @@ egy Linux rendszerű virtuális gépeket tartalmazó [üzembehelyezési csoportb
 > * Hozzon létre egy Azure-folyamatok kiadási folyamatot.
 > * Manuális és CI által kiváltott üzembe helyezések végrehajtása.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 * Egy Jenkins-kiszolgálóhoz történő hozzáférés szükséges. Ha még nem hozott létre Jenkins-kiszolgálót, lásd: [Jenkins-főkiszolgáló létrehozása Azure virtuális gépen](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
 

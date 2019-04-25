@@ -16,11 +16,11 @@ ms.date: 07/14/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20a3144f2a8727420803034426106a29a7924727
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167303"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60258574"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező LiquidFiles
 

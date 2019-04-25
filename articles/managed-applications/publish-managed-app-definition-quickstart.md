@@ -10,11 +10,11 @@ ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: 1f80d7e63d994f0e3eb3733b99afaa1b056f4686
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804912"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252396"
 ---
 # <a name="publish-an-azure-managed-application-definition"></a>Azure-beli felügyelt alkalmazásdefiníció közzététele
 
@@ -68,9 +68,9 @@ A parancs befejeződésekor egy felügyeltalkalmazás-definíció található az
 
 Íme néhány az előző példában használt paraméterek közül:
 
-* **resource-group**: Annak az erőforráscsoportnak a neve, ahol létrejött a felügyelt alkalmazás definíciója.
-* **lock-level**: A felügyelt erőforráscsoporton elhelyezett zárolás típusa. Megakadályozza, hogy az ügyfél nemkívánatos műveleteket hajtson végre ezen az erőforráscsoporton. Jelenleg a ReadOnly az egyetlen támogatott zárolási szint. Amikor a ReadOnly van megadva, az ügyfél csak olvashatja a felügyelt erőforráscsoportban lévő erőforrásokat. A kezelt erőforráscsoporthoz hozzáféréssel rendelkező közzétevői identitások mentesítve vannak a zárolás alól.
-* **authorizations**: A felügyelt erőforráscsoporthoz való engedély biztosításához használt résztvevő-azonosítót és szerepkördefiníció-azonosítót ismerteti. `<principalId>:<roleDefinitionId>` formátumban van megadva. Ha egynél több érték szükséges, adja meg azokat a következő formátumban: `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Az értékeket szóközzel kell elválasztani egymástól.
+* **resource-group**: Az erőforráscsoport, amelyben létrehozza a felügyelt alkalmazás definíciójának neve.
+* **Zárolási szint**: A felügyelt erőforráscsoporton elhelyezett zárolás a típusa. Megakadályozza, hogy az ügyfél nemkívánatos műveleteket hajtson végre ezen az erőforráscsoporton. Jelenleg a ReadOnly az egyetlen támogatott zárolási szint. Amikor a ReadOnly van megadva, az ügyfél csak olvashatja a felügyelt erőforráscsoportban lévő erőforrásokat. A kezelt erőforráscsoporthoz hozzáféréssel rendelkező közzétevői identitások mentesítve vannak a zárolás alól.
+* **engedélyek**: A résztvevő-azonosító és a szerepkör-definíció azonosítója, amely a felügyelt erőforráscsoporthoz való engedély biztosításához használt ismerteti. `<principalId>:<roleDefinitionId>` formátumban van megadva. Ha egynél több érték szükséges, adja meg azokat a következő formátumban: `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Az értékeket szóközzel kell elválasztani egymástól.
 * **package-file-uri**: A szükséges fájlokat tartalmazó .zip csomag helye. A csomagnak tartalmaznia kell a **mainTemplate.json** és a **createUiDefinition.json** fájlt. A **mainTemplate.json** határozza meg a felügyelt alkalmazás részeként létrehozott Azure-erőforrásokat. A sablon pont olyan, mint egy átlagos Resource Manager-sablon. A **createUiDefinition.json** hozza létre a felhasználói felületet a felügyelt alkalmazást a portálon keresztül létrehozó felhasználók számára.
 
 ## <a name="next-steps"></a>További lépések
@@ -78,4 +78,4 @@ A parancs befejeződésekor egy felügyeltalkalmazás-definíció található az
 Sikeresen közzétette a felügyelt alkalmazás definícióját. Most megismerheti, hogyan helyezheti üzembe a definíció egyik példányát.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Szolgáltatáskatalógusban elérhető alkalmazás telepítése](deploy-service-catalog-quickstart.md)
+> [Rövid útmutató: Szolgáltatási katalógus-alkalmazás üzembe helyezése](deploy-service-catalog-quickstart.md)

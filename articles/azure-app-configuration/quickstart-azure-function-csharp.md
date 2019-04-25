@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 8167f10391f426c50120a224eea44e6db846fbb1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 914fe30e0b474f5d2c3ca14be6a6eb2e13cfdbf8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003241"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60202788"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Gyors útmutató: Alkalmazások konfigurálása az Azure-függvény létrehozása
 
@@ -59,7 +59,7 @@ Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://v
     Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
     ```
 
-2. Nyissa meg *Function1.cs*, és vegyen fel egy hivatkozást az alkalmazás konfigurációs .NET Core konfigurációszolgáltatót.
+2. Nyissa meg *Function1.cs*, és vegyen fel egy hivatkozást a .NET Core alkalmazás konfigurációszolgáltatót.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;

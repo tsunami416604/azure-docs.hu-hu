@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000589"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60193713"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Háttérrendszerek és a háttérkiszolgáló készletek Azure bejárati ajtajának Service-ben
 Ez a cikk csatlakoztatásáról, az alkalmazástelepítés Azure bejárati ajtajának szolgáltatással kapcsolatos fogalmakat ismerteti. Ezen kívül ismerteti a különböző feltételek háttéralkalmazások bejárati ajtajának-konfigurációt.

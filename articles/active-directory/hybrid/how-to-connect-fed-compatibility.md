@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54f5090101c486562e33de56402db348c6038c8a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178216"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60244765"
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Az Azure AD összevonás kompatibilitási listája
 Az Azure Active Directory egyszeri bejelentkezést biztosít, és a bővített alkalmazás hozzáférés-biztonságot Office 365-höz és más Microsoft Online services hibrid és a csak felhőalapú megvalósításokhoz, anélkül, hogy bármely harmadik féltől származó megoldás. Office 365-höz, például a Microsoft Online szolgáltatásaihoz, a legtöbb integrálja az Azure Active Directory címtárszolgáltatásokat, a hitelesítés és engedélyezés a. Egyszeri bejelentkezés több ezer SaaS-alkalmazásokat is biztosít az Azure Active Directory, és a helyszíni webalkalmazásokat. Tekintse meg az Azure Active Directory [alkalmazáskatalógusában](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) támogatott SaaS-alkalmazásokhoz. 

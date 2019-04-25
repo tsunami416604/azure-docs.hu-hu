@@ -13,12 +13,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d5fd6041f21700ffddd3b2c4755b7ce01691681e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5298721b7f60cec677c22faf1b35011aab02defb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304098"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60204418"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>ASP.NET-webalkalmazás közzététele az Azure virtuális géphez a Visual Studióból
 
@@ -80,7 +80,7 @@ Most már sikeresen közzétette a webalkalmazást az Azure virtuális gépeken.
 
 A publish varázsló befejezése után a közzétételi oldalon nyílik meg a dokumentumot a kiválasztott új közzétételi profilt.
 
-### <a name="re-publish"></a>Tegye közzé újra
+### <a name="re-publish"></a>Re-publish
 
 Válassza ki a frissítések közzétételéhez a webes alkalmazások, a **közzététel** a közzétételi oldalon gombjára.  
 - Ha a rendszer kéri, adja meg a felhasználónevet és jelszót.  

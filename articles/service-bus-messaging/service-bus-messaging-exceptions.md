@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
 ms.openlocfilehash: b90e87310bf6dec505176b7f4d4cb9e15ac57c20
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60307777"
 ---
 # <a name="service-bus-messaging-exceptions"></a>A Service Bus-alapú üzenetkezelés kivételei
 Ez a cikk néhány a Microsoft Azure Service Bus-üzenetkezelés API-k által előállított kivételeket sorolja fel. Ez a hivatkozás változhatnak, ezért vissza frissítések keresése.
@@ -62,7 +62,7 @@ A következő táblázat felsorolja az üzenetkezelési kivételtípusok, és az
 | [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |Egy megpróbálta tranzakciót, amelynek bizonytalan, vagy kísérlet történik a tranzakció véglegesítése és bizonytalan válik a tranzakciót. |Az alkalmazásnak kell kezelnie (mint egy különleges esetben), a kivétel, mert a tranzakció előfordulhat, hogy már véglegesített. |- |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
-[QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) azt jelzi, hogy egy adott entitáshoz tartozó kvóta túl lett lépve.
+A [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) kivétel azt jelzi, hogy túllépte az adott entitáshoz tartozó kvótát.
 
 ### <a name="queues-and-topics"></a>Üzenetsorok és témakörök
 Az üzenetsoroktól és témaköröktől esetén ez gyakran a várólista méretét. A hiba üzenettulajdonság tartalmaz további részleteket az alábbi példában látható módon:

@@ -1,7 +1,6 @@
 ---
 title: Ambari-nézetek – Azure HDInsight használatának engedélyezése a felhasználók
 description: ESP engedélyezve-fürtök kezelése a HDInsight az Ambari felhasználói és engedélyeket.
-services: hdinsight
 author: maxluk
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
 ms.openlocfilehash: cf001d86356f4dd5fd3735803f0e329aa1e0940d
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224022"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60254813"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Az Apache Ambari Views használatának engedélyezése felhasználók számára
 

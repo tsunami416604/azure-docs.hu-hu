@@ -15,11 +15,11 @@ ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 501c5ffa86f2360e44c187e087f7285bbf4084fd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482963"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60477704"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Nagyméretű HANA-példányokhoz tartozó támogatott esetek
 Ez a dokumentum ismerteti a támogatott forgatókönyveket az architektúra részleteivel együtt a HANA nagyméretű példányok (HLI) számára.

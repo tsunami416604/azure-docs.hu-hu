@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
 ms.openlocfilehash: 481b643f2f7201a2a1745c7aef9ddd81883da020
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60498526"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Az Azure Key Vault Analytics megoldás az Azure monitorban
 
@@ -108,7 +108,7 @@ Az Azure Key Vault megoldás elemzi a rekord, amelynek típusa a **KeyVaults** ,
 | Typo |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
 | CallerIpAddress |A kérést leadó ügyfél IP-címe |
-| Kategória | *AuditEvent* |
+| Category | *AuditEvent* |
 | CorrelationId |Egy nem kötelező GUID, amelyet az ügyfél alkalmazhat az ügyféloldali és a szolgáltatásoldali (Key Vault) naplók egyeztetéséhez. |
 | DurationMs |A REST API-kérelem végrehajtásának ideje ezredmásodpercben. Ezúttal nem tartalmazza a hálózati késés, így előfordulhat, hogy az idő az ügyféloldalon mérő nem egyezik a most. |
 | httpStatusCode_d |A kérelem által visszaadott HTTP-állapotkódot (például *200*) |

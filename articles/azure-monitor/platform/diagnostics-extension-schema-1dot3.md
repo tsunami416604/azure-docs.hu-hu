@@ -10,11 +10,11 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59497083"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60238055"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Az Azure Diagnostics 1.3 és újabb konfigurációs séma
 > [!NOTE]
@@ -644,12 +644,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Attribútum|Typo|Leírás|  
 |---------------|----------|-----------------|  
-|**name**|sztring|A sinkname azonosító karakterlánc.|  
+|**name**|string|A sinkname azonosító karakterlánc.|  
 
 |Elem|Typo|Leírás|  
 |-------------|----------|-----------------|  
-|**Application Insights**|sztring|Csak akkor, amikor adatokat küld az Application Insights használja. Egy olyan aktív az Application Insights-fiók, amely hozzáfér a kialakítási kulcsot tartalmaz.|  
-|**csatornák**|sztring|Minden további szűréshez, amely a stream, amikor az egyik|  
+|**Application Insights**|string|Csak akkor, amikor adatokat küld az Application Insights használja. Egy olyan aktív az Application Insights-fiók, amely hozzáfér a kialakítási kulcsot tartalmaz.|  
+|**csatornák**|string|Minden további szűréshez, amely a stream, amikor az egyik|  
 
 ## <a name="channels-element"></a>Csatornák elem  
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - fogadó - csatornák*
@@ -660,7 +660,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elem|Typo|Leírás|  
 |-------------|----------|-----------------|  
-|**Channel**|sztring|Lásd: leírás máshol ezen az oldalon.|  
+|**Channel**|string|Lásd: leírás máshol ezen az oldalon.|  
 
 ## <a name="channel-element"></a>Csatorna elem
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - fogadó - csatornák - csatorna*

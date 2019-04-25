@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
 ms.openlocfilehash: 772b9b191a2e6464ff481ff6661308e00ef6033a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545433"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60535320"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása (Common Data Service) Dynamics 365 vagy Dynamics CRM-hez és az Azure Data Factory használatával
 
@@ -66,7 +66,7 @@ A Dynamics-társított szolgáltatást a következő tulajdonságok támogatotta
 | serviceUri | A szolgáltatás URL-címét a Dynamics-példányt, pl. `https://adfdynamics.crm.dynamics.com`. | Igen |
 | authenticationType | A hitelesítési típus, a Dynamics-kiszolgálóhoz való csatlakozáshoz. Adja meg **"Office 365"** Dynamics online. | Igen |
 | felhasználónév | Adja meg a felhasználónevet, Dynamics csatlakozni. | Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, Igen a fogadó Ha a forrás-beli társított szolgáltatás nem rendelkezik egy saját üzemeltetésű integrációs |
 
 >[!IMPORTANT]
@@ -114,7 +114,7 @@ A Dynamics-társított szolgáltatást a következő tulajdonságok támogatotta
 | Cégnév | A szervezet neve, a Dynamics-példány. | Igen |
 | authenticationType | A hitelesítési típus, a Dynamics-kiszolgálóhoz való csatlakozáshoz. Adja meg **"internetes telepítés"** Dynamics helyszíni az internetes Elérésű. | Igen |
 | felhasználónév | Adja meg a felhasználónevet, Dynamics csatlakozni. | Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Válassza ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik a másolási tevékenység végrehajtásakor az adatok másolása innen lekéréses – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |
+| password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Válassza ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik a másolási tevékenység végrehajtásakor az adatok másolása innen lekéréses – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, a fogadó Igen |
 
 >[!IMPORTANT]
@@ -275,8 +275,8 @@ Adatok másolása a Dynamics, állítsa a fogadó típusa a másolási tevékeny
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó típusa tulajdonságát állítsa **DynamicsSink**. | Igen |
-| WriteBehavior | A művelet írási viselkedését.<br/>Az érték engedélyezett **"Upsert"**. | Igen |
-| WriteBatchSize | A sorok száma az egyes kötegekben lévő Dynamics írt adatok. | Nem (az alapértelmezett érték 10) |
+| writeBehavior | A művelet írási viselkedését.<br/>Az érték engedélyezett **"Upsert"**. | Igen |
+| writeBatchSize | A sorok száma az egyes kötegekben lévő Dynamics írt adatok. | Nem (az alapértelmezett érték 10) |
 | ignoreNullValues | Azt jelzi, hogy a bemeneti adatok (kivéve a kulcsmezők) null értéket figyelmen kívül a írási művelet során.<br/>Engedélyezett értékek a következők **igaz** és **hamis**.<br>- **Igaz**: Hagyja meg az adatokat a rendeltetési objektum változatlan marad, ha így tesz, upsert/frissítés művelet. Helyezze be egy meghatározott alapértelmezett értéket, amikor ezt teszi, hogy egy insert művelet.<br/>- **FALSE (hamis)**: Frissítse az adatokat a rendeltetési objektumban NULL upsert/frissítés művelet végrehajtásakor. NULL érték szúrható, amikor ezt teszi, hogy egy insert művelet. | Nem (az alapértelmezett érték FALSE (hamis)) |
 
 >[!NOTE]
@@ -329,15 +329,15 @@ A Data Factory megfelelő adattípusokat konfigurálja a forrás Dynamics adatt�
 | Dynamics-adattípus | Data Factory közbenső adattípus | Forrásként támogatott | Fogadóként támogatott |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Hosszú | ✓ | ✓ |
-| AttributeTypeCode.Boolean | Logikai | ✓ | ✓ |
+| AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
 | AttributeType.Customer | Guid | ✓ | | 
-| AttributeType.DateTime | Dátum és idő | ✓ | ✓ |
+| AttributeType.DateTime | DateTime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
 | AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | Guid | ✓ | ✓ (a kapcsolódó egyetlen cél) |
-| AttributeType.ManagedProperty | Logikai | ✓ | |
+| AttributeType.ManagedProperty | Boolean | ✓ | |
 | AttributeType.Memo | String | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |

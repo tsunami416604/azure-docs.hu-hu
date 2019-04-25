@@ -14,13 +14,13 @@ ms.workload: na
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0412d55fe60524cde404e6a640723d3259e020e1
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586240"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251392"
 ---
-# <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo felhasználói felületi elemben
+# <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI element
 A Windows és Linux-jelszavak és a nyilvános SSH-kulcsokat a beépített ellenőrzési vezérlőelemek csoport.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
@@ -31,11 +31,11 @@ A Windows, a felhasználók számára::
 
 Kiválasztott jelszóval rendelkező Linux-alapú felhasználók lásd:
 
-![Microsoft.Compute.CredentialsCombo Linux-jelszó](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+![Microsoft.Compute.CredentialsCombo Linux password](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
 
 Az SSH nyilvános kulcs kiválasztott Linux felhasználók lásd:
 
-![Microsoft.Compute.CredentialsCombo Linux kulcs](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
+![Microsoft.Compute.CredentialsCombo Linux key](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Séma
 Windows használja a következő mintát követik:

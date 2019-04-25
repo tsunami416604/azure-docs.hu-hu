@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 90d1d752481ada33c038ab563f6bd0d3bf5fad08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f2110a749c41f59b11a6d400faa2e42e751305fe
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086802"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251077"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Virtuális gép létrehozása a tárfiókban lévő speciális virtuális merevlemezből
 
@@ -31,7 +31,7 @@ Erre két lehetősége van:
 * [VHD feltöltése](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
 * [Másolja a VHD-t a meglévő Azure virtuális gépek](sa-create-vm-specialized.md#option-2-copy-the-vhd-from-an-existing-azure-vm)
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 
 ## <a name="option-1-upload-a-specialized-vhd"></a>Option 1: Egyéni VHD feltöltése
@@ -110,7 +110,7 @@ A hálózati kapcsolat és a VHD-fájl méretétől függően ez a parancs is ig
 
 Virtuális merevlemez másolhatja, amikor egy új, ismétlődő virtuális Gépet hoz létre egy másik tárfiókba.
 
-### <a name="before-you-begin"></a>Előkészületek
+### <a name="before-you-begin"></a>Előzetes teendők
 Győződjön meg arról, hogy Ön:
 
 * Kapcsolatos információkkal rendelkezzen a **forrás- és storage-fiókok**. A forrás virtuális gép szüksége lesz a storage-fiók és a tároló nevét. Általában a tároló neve lesz **VHD-k**. Emellett szüksége lesz a cél tárfiók. Ha még nem rendelkezik egy, létrehozhat egyet vagy a portál használatával (**minden szolgáltatás** > tárfiókok > hozzáadása) vagy a [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) parancsmagot. 

@@ -1,19 +1,19 @@
 ---
 title: Egyéni metrikák az Azure-beli erőforráshoz küldeni az Azure Monitor metrika tároló egy REST API-val
 description: Egyéni metrikák az Azure-beli erőforráshoz küldeni az Azure Monitor metrika tároló egy REST API-val
-author: anirudhcavale
+author: lingliw
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: ancav
+ms.date: 04/12/19
+ms.author: v-lingwu
 ms.subservice: metrics
 ms.openlocfilehash: aa842979bf86410e9dab97d6209f336eb6b02bd3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621906"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60253868"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Egyéni metrikák az Azure-beli erőforráshoz küldeni az Azure Monitor metrika tároló egy REST API-val
 
@@ -39,7 +39,7 @@ Adja meg az 1, figyelési metrikákat közzétevő, az erőforrás kívánt grid
 Nyisson meg egy parancssort, és futtassa a következő parancsot:
 
 ```shell
-curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step>" -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
+curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step> " -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
 ```
 Mentse a hozzáférési jogkivonatot a válaszból.
 
@@ -77,7 +77,7 @@ Mentse a hozzáférési jogkivonatot a válaszból.
     } 
     ``` 
 
-1. A parancssori ablakban a metrikaadatok közzététele: 
+2. A parancssori ablakban a metrikaadatok közzététele: 
    - **azureRegion**. Meg kell egyeznie az erőforrás metrikáit, Ön kibocsátó a telepítési régió. 
    - **erőforrás-azonosító**.  Erőforrás-azonosító az Azure-erőforrás a mutatószám követi nyomon.  
    - **Hozzáférési tokent**. Illessze be a jogkivonatot, korábban beszerzett.
@@ -85,8 +85,8 @@ Mentse a hozzáférési jogkivonatot a válaszból.
      ```Shell 
      curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
      ```
-1. Módosítsa a timestamp és a JSON-fájlban szereplő értékek. 
-1. Ismételje meg az előző két lépést néhány alkalommal, így adatokat kell néhány percig.
+3. Módosítsa a timestamp és a JSON-fájlban szereplő értékek. 
+4. Ismételje meg az előző két lépést néhány alkalommal, így adatokat kell néhány percig.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás 
 Ha a folyamat néhány részét tartalmazó hibaüzenet kap, vegye figyelembe a következő hibaelhárítási információk:
@@ -119,4 +119,3 @@ Ha a folyamat néhány részét tartalmazó hibaüzenet kap, vegye figyelembe a 
  
 ## <a name="next-steps"></a>További lépések
 - Tudjon meg többet [egyéni metrikákat](../../azure-monitor/platform/metrics-custom-overview.md).
-

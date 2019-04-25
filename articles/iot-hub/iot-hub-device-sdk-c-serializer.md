@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
 ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024864"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60399236"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Azure IoT eszközoldali SDK-t a C – további információ a szerializálóról
 
@@ -64,21 +64,21 @@ Mi nem mutatja be ezt a mintát olyan további adatokat az SDK által támogatot
 
 Az alábbi adattípusok használatával létrehozott modellek támogatottak a **szerializáló** könyvtár:
 
-| Típus | Leírás |
+| Typo | Leírás |
 | --- | --- |
 | double |kétszeres pontosságú lebegőpontos számot |
 | int |32 bites egész számot |
 | lebegőpontos |egyszeres pontosságú lebegőpontos számot |
-| hossz |hosszú egész szám |
+| hosszú |hosszú egész szám |
 | int8\_t |8 bites egész számot |
 | Int16\_t |16 bites egész számot |
 | Int32\_t |32 bites egész számot |
 | Int64\_t |64 bites egész számot |
-| Logikai |logikai |
+| bool |logikai |
 | ascii\_char\_ptr |ASCII-karakterlánc |
 | EDM\_DÁTUM\_IDŐ\_ELTOLÁSA |dátum-idő eltolása |
 | EDM\_GUID |GUID |
-| EDM\_BINÁRIS |Bináris |
+| EDM\_BINARY |binary |
 | DEKLARÁLJA\_STRUCT |Az összetett típus |
 
 Kezdjük az utolsó adattípus. A **DECLARE\_STRUCT** lehetővé teszi összetett adattípusok, amely a többi típusokban csoportosításán alapulnak. Ez a csoportosítás lehetővé számunkra, hogy a modell a következőhöz hasonló:
@@ -233,7 +233,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-Vegye figyelembe, hogy a modell tartalmazza-e két adatesemények: **hőmérséklet** és **páratartalom**. Ellentétben az előző példák az egyes eseményeket típus egy meghatározott struktúra **DECLARE\_STRUCT**. **TemperatureEvent** magában foglalja a hőmérséklet a mérés és a egy időbélyegzőt adnak; **HumidityEvent** páratartalom mérték és egy időbélyegzőt adnak tartalmazza. Ez a modell a fent leírt forgatókönyv az adatok természetes módon biztosít számunkra. A felhőbe küldünk egy eseményt, amikor az időbélyegző/hőmérséklet vagy páratartalom/timestamp párt vagy küldünk.
+Vegye figyelembe, hogy a modell tartalmazza-e két adatok esemény: **Hőmérséklet** és **páratartalom**. Ellentétben az előző példák az egyes eseményeket típus egy meghatározott struktúra **DECLARE\_STRUCT**. **TemperatureEvent** magában foglalja a hőmérséklet a mérés és a egy időbélyegzőt adnak; **HumidityEvent** páratartalom mérték és egy időbélyegzőt adnak tartalmazza. Ez a modell a fent leírt forgatókönyv az adatok természetes módon biztosít számunkra. A felhőbe küldünk egy eseményt, amikor az időbélyegző/hőmérséklet vagy páratartalom/timestamp párt vagy küldünk.
 
 Egy hőmérsékleti esemény is küldünk a felhőbe, például a következő kód használatával:
 
@@ -514,7 +514,7 @@ Ha egy üzenetet küld az eszközökre, tennénk keresztül az Azure IoT service
 {"Name" : "", "Parameters" : "" }
 ```
 
-JSON-szerializált objektum, két tulajdonságokkal küld: **neve** neve, a művelet (üzenet) és **paraméterek** tartalmazza a művelet paramétereit.
+JSON-szerializált objektum, két tulajdonságokkal küld: **Név** neve, a művelet (üzenet) és **paraméterek** tartalmazza a művelet paramétereit.
 
 Például meghívása **SetAirResistance** ezt az üzenetet küld egy eszköz:
 
@@ -615,7 +615,7 @@ Leírtak szerint egy [előző cikk](iot-hub-device-sdk-c-iothubclient.md), funkc
 * IoTHubClient\_CreateFromConnectionString
 * IoTHubClient\_SendEventAsync
 * IoTHubClient\_SetMessageCallback
-* Iothubclientről\_megszüntetése
+* IoTHubClient\_Destroy
 
 Ezen API-k találja meg a **simplesample\_amqp**.
 
@@ -624,7 +624,7 @@ Emellett van egy ehhez hasonló alacsonyabb szintű API-k készlete.
 * IoTHubClient\_LL\_CreateFromConnectionString
 * IoTHubClient\_LL\_SendEventAsync
 * IoTHubClient\_LL\_SetMessageCallback
-* Iothubclientről\_LL\_megszüntetése
+* IoTHubClient\_LL\_Destroy
 
 Vegye figyelembe, hogy az alacsonyabb szintű API-k pontosan ugyanúgy működnek, a fenti cikkekben leírtak szerint. Az első API-k készlete használhatja, ha azt szeretné, hogy eseményeket küldő és fogadó üzenetek kezelésére egy háttérszálból történik. Ha azt szeretné, hogy mikor küldött és fogadott adatok az IoT hubról explicit szabályozhatja a második API-k készlete használhatja. Bármelyik munkahelyi API-k készlete egyaránt jól az a **szerializáló** könyvtár.
 

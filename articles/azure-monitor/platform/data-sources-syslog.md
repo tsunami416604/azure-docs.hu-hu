@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: magoedte
 ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372301"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60240859"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog-adatforrások az Azure monitorban
 Syslog-esemény naplózása protokoll, amely Linux közös. Alkalmazások küld üzeneteket, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtő lett elküldve. A Linuxhoz készült Log Analytics-ügynök telepítve van, konfigurálja a továbbított üzenetek az ügynöknek a helyi Syslog démon. Az ügynök ezután elküldi az üzenetet az Azure Monitor, ahol létrejön egy megfelelő bejegyzés.  

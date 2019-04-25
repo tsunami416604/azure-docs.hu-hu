@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: jowargo
 ms.openlocfilehash: 1c76b44438e6527439d0a370c92f4120424b8da5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488357"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60240315"
 ---
 # <a name="configure-microsoft-push-notification-service-mpns-settings-for-a-notification-hub-in-the-azure-portal"></a>Egy értesítési központ a Microsoft leküldéses értesítési szolgáltatásának (MPNS) beállításainak konfigurálása az Azure Portalon
 Ez a cikk bemutatja, hogyan konfigurálhatja az Azure notification hub beállításai a Microsoft leküldéses értesítési szolgáltatásának (MPNS) az Azure portal használatával. 

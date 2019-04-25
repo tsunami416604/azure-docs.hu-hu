@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: yegu
 ms.openlocfilehash: 3aa2e9e773eb0c07b5f10a57dabf1138b9f3f288
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232909"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60232916"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>A Redis az Azure Cache ASP.NET kimenetigyorsítótár-szolgáltatója
 A redis Cache kimeneti gyorsítótár-szolgáltatóját egy folyamaton tárolási mechanizmus kimeneti gyorsítótár adatainak. Ezeket az adatokat a kifejezetten a teljes HTTP-válaszok (kimeneti gyorsítótár oldalon). A szolgáltató rendkívüli az új kimeneti gyorsítótár szolgáltató indításkiterjesztési pont az ASP.NET 4 verzióban jelent meg.

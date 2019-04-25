@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287264"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60254065"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Egyéni metrikák az Azure monitorban
 
@@ -38,7 +38,7 @@ Hitelesíteni a kérelmet, az Azure Monitor ellenőrzi az alkalmazás jogkivonat
 > [!NOTE]  
 > Ha egy Azure ad-ben jogkivonat kibocsátható egyéni metrikákat kér, gondoskodjon arról, hogy a közönség, vagy a jogkivonatot a rendszer lekéri az erőforrás https://monitoring.azure.com/. Így feltétlenül foglalja bele a záró "/"karaktert.
 
-### <a name="subject"></a>Tárgy
+### <a name="subject"></a>Subject
 Ez a tulajdonság melyik Azure-erőforrás azonosítója, az egyéni metrika jelentett rögzíti. Ez az információ kódolva legyen kerül sor az API-hívás URL-címét. Minden API csak küldhet metrikaértékek egy egyetlen Azure-beli erőforráshoz.
 
 > [!NOTE]  
@@ -181,7 +181,7 @@ A nyilvános előzetes során tegyenek közzé egyéni metrikákat csak egy Azur
 ## <a name="quotas-and-limits"></a>Kvóták és korlátok
 Az Azure Monitor ír elő a következő használati korlátokkal, egyéni metrikákra vonatkozóan:
 
-|Kategória|Korlát|
+|Category|Korlát|
 |---|---|
 |Adatsorozat/előfizetés/régió aktív idő|50,000|
 |Dimenzió kulcsai metrikánként|10|

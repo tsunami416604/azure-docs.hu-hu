@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 21d6c1671c57341d785c002f360c05cc5c610657
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551619"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371620"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>A számla a költségek rendszerezéséhez szakaszok létrehozása
 
@@ -30,7 +30,7 @@ Hozzon létre egy számla szakaszt, lennie kell egy **számlázási profiltulajd
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
    ![Az Azure portál keresési bemutató képernyőkép](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
 
@@ -38,7 +38,7 @@ Hozzon létre egy számla szakaszt, lennie kell egy **számlázási profiltulajd
 
    ![Az Azure portál keresési bemutató képernyőkép](./media/billing-mca-section-invoice/billing-mca-list-invoice-sections.png)
 
-4. A lap tetején válassza **Hozzáadás**.
+4. Válassza a lap tetején a **Hozzáadás** gombot.
 
 5. Adja meg a számlán szakasz nevét.
 

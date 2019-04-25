@@ -17,11 +17,11 @@ ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 2543ffb20c4e7da840201cfd3be04505515458a6
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539360"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60478776"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Oktatóanyag – Cloud-init használata az Azure-ban először induló linuxos virtuális gépek testreszabásához
 
@@ -45,7 +45,7 @@ A cloud-init különböző disztribúciókon is működik. Például nem kell az
 
 A partnereinkkel dolgozunk rajta, hogy egyre több általuk biztosított Azure-rendszerkép tartalmazza a cloud-init eszközt. Az alábbi táblázat a cloud-init jelenlegi elérhetőségét ismerteti az Azure-platformrendszerképeken:
 
-| Alias | Közzétevő | Ajánlat | SKU | Verzió |
+| Alias | Közzétevő | Ajánlat | SKU | Version |
 |:--- |:--- |:--- |:--- |:--- |
 | UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |legújabb |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |legújabb |

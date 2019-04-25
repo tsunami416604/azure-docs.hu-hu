@@ -19,11 +19,11 @@ ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50b223e428c8f0b1f0c26e7c73e79a503a7c0121
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211053"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251471"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Az Azure Active Directory (AD) OAuth2 típusú implicit engedélyezés folyamat ismertetése
 

@@ -13,11 +13,11 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192574"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60295372"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Az Azure AD Connect teljesítményét befolyásoló tényezők
 
@@ -104,7 +104,7 @@ A szinkronizálási folyamat modul a következő teljesítmény jellemzőkkel re
 * Exportálás az is lineáris.
 * A szinkronizálás más objektumok hivatkozó objektumok száma alapján exponenciálisan növekszik. Csoport tagságát, beágyazott csoportokat kell a fő teljesítményre gyakorolt hatás, mert a tagjaik tekintse meg a felhasználói objektumok vagy más csoportokhoz. Ezeket a hivatkozásokat kell található, és a befejezéséhez a szinkronizálási ciklus MV a tényleges objektumra hivatkozik.
 
-### <a name="filtering"></a>Szűrés
+### <a name="filtering"></a>Filtering
 
 Az importálni kívánt Active Directory-topológia mérete a szám egy tényező befolyásolta a teljesítményt és a teljes időtartama a kiépítési motor belső összetevőinek vesz igénybe.
 

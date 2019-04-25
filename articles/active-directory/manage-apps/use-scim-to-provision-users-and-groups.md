@@ -17,11 +17,11 @@ ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a404b5e6769c7bb91b4f7b5830cea18372ec456d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59007152"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60291416"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból
 
@@ -1245,7 +1245,7 @@ Felhasználóicsoport-erőforrások azonosítja a séma azonosító `urn:ietf:pa
 | streetAddress |.streetAddress címek [típus eq "work"] |
 | Vezetéknév |name.familyName |
 | Telefonszám – |phoneNumbers [típus eq "work"] .value |
-| felhasználó-PrincipalName |Felhasználónév |
+| felhasználó-PrincipalName |userName |
 
 ### <a name="table-2-default-group-attribute-mapping"></a>2. táblázat: Alapértelmezett csoport attribútumleképezés
 

@@ -13,11 +13,11 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e5d1546c658631911f25c43e94275f00c7a5140
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901882"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60474590"
 ---
 # <a name="set-up-security-info-preview-to-use-security-questions"></a>Biztonsági adatok (előzetes verzió) beállítása a biztonsági kérdések használata
 Követheti a következő lépésekkel adhatja hozzá a jelszó-visszaállítási mód. Miután beállította a először, visszatérhet a **biztonsági adatok** lap hozzáadása, frissítése vagy törlése a biztonsági információkat.

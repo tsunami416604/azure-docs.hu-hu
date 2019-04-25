@@ -12,11 +12,11 @@ ms.date: 04/16/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: aba8f9b2b4e62420ed5d318be40bbc4ada544866
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679601"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203153"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Telepítse és futtassa a szöveg felismerése tárolók
 
@@ -89,7 +89,7 @@ Ha a tároló a [gazdaszámítógép](#the-host-computer), a következő eljár�
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancsot a tároló futtatásához. A parancs paraméterei a következők:
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
 |{BILLING_KEY} | Ezt a kulcsot a tároló elindításához szolgál, és az Azure-ban elérhető `Cognitive Services` kulcsok oldalán.  |
 |{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját. A példában a következő: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|

@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
 ms.openlocfilehash: 5b3c6c99b05320ee53c3ff49f5c299650c32e939
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498332"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60440823"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Állítsa le a virtuális gép használatával felügyelt identitások bővítményt, és elkezdheti az Azure Instance Metadata szolgáltatás
 
@@ -95,7 +95,7 @@ A virtuálisgép-méretezési csoport létrehozásához állítsa be a bővítm�
 
 A virtuális gépi bővítmény kiépítése a DNS-keresési hibák miatt meghiúsulhat. Ha ez történik, indítsa újra a virtuális gépet, és próbálkozzon újra. 
 
-### <a name="remove-the-extension"></a>Távolítsa el a bővítményt 
+### <a name="remove-the-extension"></a>A bővítmény eltávolítása 
 A bővítmény eltávolításához használja `-n ManagedIdentityExtensionForWindows` vagy `-n ManagedIdentityExtensionForLinux` kapcsoló (virtuális gép függően) és [vm-bővítmény törlése az](https://docs.microsoft.com/cli/azure/vm/), vagy [az vmss-bővítmény törlése](https://docs.microsoft.com/cli/azure/vmss) a virtuálisgép-méretezési csoport Beállítja az Azure CLI használatával vagy `Remove-AzVMExtension` PowerShell:
 
 ```azurecli-interactive

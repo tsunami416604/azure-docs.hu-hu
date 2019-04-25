@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 93dd5372bffb278894987cd3cc2b8322cbc5e577
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: cf012a452d1e43134d955e03ccf34e153b1282ad
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679679"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60253830"
 ---
 # <a name="common-security-attributes-for-azure-backup"></a>Gyakori biztonsági attribútumok az Azure Backuphoz
 
@@ -36,10 +36,10 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatásvégpont-támogatás| Nem |  |
+| Szolgáltatási végpont támogatás| Nem |  |
 | vNET-injektálási támogatás| Nem |  |
-| Hálózatelkülönítés / tűzfalas támogatása| Igen | Kényszerített bújtatás támogatott virtuális gépek biztonsági mentését. Kényszerített bújtatás virtuális gépeken belül futó munkaterhelések esetében nem támogatott. |
-| Kényszerített bújtatás támogatása | Nem |  |
+| Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | Kényszerített bújtatás támogatott virtuális gépek biztonsági mentését. Kényszerített bújtatás virtuális gépeken belül futó munkaterhelések esetében nem támogatott. |
+| Kényszerített bújtatás támogatása| Nem |  |
 
 ## <a name="detection"></a>Észlelés
 
@@ -47,20 +47,20 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 |---|---|--|
 | Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | A log Analytics diagnosztikai naplóinak keresztül támogatott. Lásd: [figyelése az Azure Backup-alapú számítási feladatokat a Log Analytics által védett](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) további információt. |
 
-## <a name="iam-support"></a>IAM-támogatás
+## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hozzáférés-kezelés – hitelesítés| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
-| Hozzáférés-kezelés – engedélyezés| Igen | Létrehozott ügyfél és a beépített RBAC-szerepkör használja. Lásd: [Use Role-Based hozzáférés-vezérlés kezelése az Azure Backup helyreállítási pontok](/azure/backup/backup-rbac-rs-vault) további információt. |
+| Authentication| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
+| Engedélyezés| Igen | Létrehozott ügyfél és a beépített RBAC-szerepkör használja. Lásd: [Use Role-Based hozzáférés-vezérlés kezelése az Azure Backup helyreállítási pontok](/azure/backup/backup-rbac-rs-vault) további információt. |
 
 
 ## <a name="audit-trail"></a>Auditnapló
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő/felügyeleti naplózás és a naplózási tervezése| Igen | Tevékenységnaplók az Azure Portalról az összes aktivált ügyfelek műveletek naplózása. |
-| Adatok naplózása és naplózási adatsík| Nem | Az Azure Backup az adatsík nem közvetlenül érhető el.  |
+| Vezérlő és a felügyeleti sík naplózási és naplózása| Igen | Tevékenységnaplók az Azure Portalról az összes aktivált ügyfelek műveletek naplózása. |
+| Adatsík naplózása és naplózása| Nem | Az Azure Backup az adatsík nem közvetlenül érhető el.  |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 

@@ -2,19 +2,26 @@
 title: Java felhasználói függvény (UDF) az Apache Hive a HDInsight – Azure
 description: Ismerje meg, hogyan hozhat létre egy Java-alapú felhasználói függvény (UDF), amely az Apache Hive együttműködve. Ebben a példában UDF alakít egy szöveges karakterláncot kisbetűssé tábláját.
 services: hdinsight
-author: hrasheed-msft
-ms.reviewer: jasonh
+documentationcenter: ''
+author: Blackmist
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
+ms.devlang: java
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
+ms.tgt_pltfrm: na
+ms.workload: big-data
+origin.date: 03/21/2019
+ms.date: 04/29/2019
+ms.author: v-yiso
 ms.openlocfilehash: b8417fe4c15259a7fd485254cf9edd2c8c082e92
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629697"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60537632"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Használja a Java UDF-ben az Apache Hive a HDInsight
 
@@ -194,13 +201,13 @@ Cserélje le az alábbi parancsokat, `sshuser` Ha különböző tényleges felha
 2. Használja a `scp` parancsot a fájl átmásolása a HDInsight-fürt a következő parancs beírásával:
 
     ```cmd
-    scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
+    scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight
     ```
 
 3. Csatlakozzon a fürthöz SSH használatával a következő parancs beírásával:
 
     ```cmd
-    ssh sshuser@mycluster-ssh.azurehdinsight.net
+    ssh sshuser@mycluster-ssh.azurehdinsight.cn
     ```
 
 4. A megnyitott SSH-munkamenetből másolja a jar-fájlt HDInsight tároló.

@@ -16,11 +16,11 @@ ms.date: 08/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86f2dfaf281130115ff04ff84b413e224f54cfcf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168340"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60268024"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jda-cloud"></a>Oktatóanyag: Az Azure Active Directory-integráció JDA felhővel
 

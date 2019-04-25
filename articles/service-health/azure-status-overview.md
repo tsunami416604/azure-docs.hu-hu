@@ -15,11 +15,11 @@ ms.workload: Supportability
 ms.date: 02/11/2019
 ms.author: stbaron
 ms.openlocfilehash: 6054b33e4068d36c5bfbb80120086a92a03525c8
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097508"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506784"
 ---
 # <a name="azure-status"></a>Az Azure állapota
 [Az Azure állapota](https://azure.microsoft.com/status/) nyújt Azure-szolgáltatások és régiók globális nézet készítése. Az Azure állapota a szolgáltatás rendelkezésre állására Press információkat szerezhet. Az Azure állapota minden olyan szolgáltatás, amely a szolgáltatás állapotát, valamint a széleskörű hatással van az incidensek jelentés megtekintéséhez mindenki számára érhető el. Ha Ön egy jelenlegi Azure-felhasználó, azonban Határozottan javasoljuk, hogy használja a személyre szabott élmény az [Azure Service Health](https://aka.ms/azureservicehealth). Az Azure Service Health összes valamilyen okból kimaradás lép, a közelgő tervezett karbantartáshoz tevékenységeket és a szolgáltatás tanácsadók tartalmazza.

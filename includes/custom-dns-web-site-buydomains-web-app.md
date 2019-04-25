@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
 ms.openlocfilehash: ce949caa2b80c08f1015ee21c00197d6a95103c2
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564855"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531101"
 ---
 Ha azt szeretné, hogy a tartományhoz, megvásárolhatja a tartományok [Azure felügyeleti portálján](https://portal.azure.com) közvetlenül. A következő lépések segítségével tartománynév vásárlása és hozzárendelése a webalkalmazáshoz.
 
@@ -31,7 +31,7 @@ Ha azt szeretné, hogy a tartományhoz, megvásárolhatja a tartományok [Azure 
    ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-4.png)
    
    ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-5.png)
-7. Sikeresen megrendelt egy tartományhoz, ha a tartomány kezelése, és rendelje hozzá a webalkalmazáshoz. Kattintson a **"..."** tartományához jobb oldalán. Akkor **vásárlás** vagy **kezelés tartomány**. Kattintson a **kezelés tartomány**, akkor azt is kötése **altartomány** a web App on **kezelés tartományi** panelen.
+7. If you successfully ordered a domain, you can manage the domain and assign to your web app. Kattintson a **"..."** tartományához jobb oldalán. Akkor **vásárlás** vagy **kezelés tartomány**. Kattintson a **kezelés tartomány**, akkor azt is kötése **altartomány** a web App on **kezelés tartományi** panelen.
    
     ![](./media/custom-dns-web-site/dncmntask-cname-buydomains-6.png)
    

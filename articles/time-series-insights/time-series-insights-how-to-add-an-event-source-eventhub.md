@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: d4a80358535429f53b582abe8560757028159070
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557784"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60197847"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Event hub-eseményforrás hozzáadása a Time Series Insights-környezethez
 
@@ -108,5 +108,7 @@ Az event hubs egy új felhasználói csoport hozzáadása:
 ## <a name="next-steps"></a>További lépések
 
 * [Adathozzáférési házirendek meghatározása](time-series-insights-data-access.md) védi az adatait.
+
 * [Események küldése](time-series-insights-send-events.md) esemény forrását.
+
 * A környezet eléréséhez a [Time Series Insights explorer](https://insights.timeseries.azure.com).

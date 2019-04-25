@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd26fa53c91c53893c7f326afda5158fa430be1e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188137"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60248149"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>A felhasználók számára az Azure Active Directory rendszergazda és a nem rendszergazdai szerepkörök hozzárendelése
 Ha egy felhasználó a szervezet Azure Active Directory (Azure AD) erőforrásainak kezelésére szóló engedélyre van szüksége, hozzá kell rendelnie a felhasználó egy megfelelő szerepkört az Azure AD-ben a felhasználó beleegyezését kéri az hajtsa végre a műveleteket alapján.

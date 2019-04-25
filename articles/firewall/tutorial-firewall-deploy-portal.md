@@ -9,11 +9,11 @@ ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492311"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60194212"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -102,7 +102,7 @@ Most hozza létre a helyettesítő és a számítási feladatokat futtató virtu
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet a Kiemeltek listából.
 3. Adja meg a következő értékeket a virtuális gép számára:
 
-   |Beállítás  |Érték  |
+   |Beállítás  |Value  |
    |---------|---------|
    |Erőforráscsoport     |**Test-FW-RG**|
    |Virtuális gép neve     |**SRV-Jump**|
@@ -123,7 +123,7 @@ Most hozza létre a helyettesítő és a számítási feladatokat futtató virtu
 
 Az alábbi táblázat az információk segítségével állítsa be egy másik virtuális gép nevű **Srv-munkahelyi**. A többi beállítás ugyanaz, mint az Srv-Jump virtuális gép esetében.
 
-|Beállítás  |Érték  |
+|Beállítás  |Value  |
 |---------|---------|
 |Alhálózat|**Munkaterhelés-SN**|
 |Nyilvános IP-cím|**Nincsenek**|
@@ -138,12 +138,12 @@ Helyezze üzembe a tűzfalat a virtuális hálózaton.
 3. Válassza ki **tűzfal** majd **létrehozás**.
 4. A **Tűzfal létrehozása** oldalon konfigurálja a tűzfalat a következő táblázatban található értékekkel:
 
-   |Beállítás  |Érték  |
+   |Beállítás  |Value  |
    |---------|---------|
    |Előfizetés     |\<az Ön előfizetése\>|
    |Erőforráscsoport     |**Test-FW-RG** |
    |Name (Név)     |**Test-FW01**|
-   |Földrajzi egység     |Válassza a korábban használt helyet|
+   |Location egység     |Válassza a korábban használt helyet|
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**: **Test-FW-VN**|
    |Nyilvános IP-cím     |**Új létrehozása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
 

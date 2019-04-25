@@ -14,11 +14,11 @@ ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: e1d119f3c7c5d6dbdb570d362c53b80dad7886bd
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149002"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60198037"
 ---
 # <a name="set-up-azure-devtest-labs-infrastructure-in-your-enterprise"></a>A vállalat az Azure DevTest Labs-infrastruktúra beállítása
 Akik vállalatok gyorsan vezetnek be a felhő a [előnyöket](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) , amelyek rugalmasságot, a rugalmasságot és költséghatékonyságot tartalmaznak. Gyakori az első lépés a felhő segítségével az ügyfelek számára, hogy indítsa el a fejlesztési és tesztelési számítási feladatokkal.  DevTest Labs lehetőséget nyújt a [funkciók](devtest-lab-concepts.md) , amely a vállalati és a támogatási előnyökkel [vállalati fejlesztési-Tesztelési forgatókönyvek kulcsának](devtest-lab-guidance-get-started.md).

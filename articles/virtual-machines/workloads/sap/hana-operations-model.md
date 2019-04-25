@@ -15,13 +15,13 @@ ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 36a648e2d46cce96a8ff663f45ccf45326898a84
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417006"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60477876"
 ---
-# <a name="operations-model-and-responsibilities"></a>Működési modellt és felelősségek
+# <a name="operations-model-and-responsibilities"></a>Működési modell és feladatok
 
 A szolgáltatás az SAP HANA az Azure-ban (nagyméretű példányok) a megadott Azure IaaS-szolgáltatások igazodik. Kap egy nagyméretű HANA-példány, az SAP HANA-hoz optimalizált telepített operációs rendszer egy példánya. Mint az Azure IaaS virtuális gépeket, műveletek, az operációs rendszer korlátozására, valamilyen más szoftvert telepítenie, HANA telepítése, az operációs rendszer és a HANA operációs és frissítése az operációs rendszer és a HANA feladata a. A Microsoft nem érvényben lévő, az operációs rendszer és a HANA-frissítéseket.
 

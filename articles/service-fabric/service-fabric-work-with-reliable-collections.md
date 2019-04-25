@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/22/2019
 ms.author: aljo
 ms.openlocfilehash: bb99e5984f91edb0cf40f3bdc485624b9ec59833
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872687"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506739"
 ---
 # <a name="working-with-reliable-collections"></a>A Reliable Collections használata
 A Service Fabric a .NET-fejlesztők számára a Reliable Collections-n keresztül elérhető állapot-nyilvántartó programozási modellt biztosít. Pontosabban a Service Fabric megbízható szótárban és megbízható várólista osztályokat biztosít. Ha használja ezeket az osztályokat, az állapot van particionálva (a méretezhetőség érdekében), replikálni (a rendelkezésre állás érdekében), és (az ACID szemantika) egy partíción belül. Most egy megbízható szótárban objektum egy tipikus használati tekintse meg, és tekintse meg az aktuális ténylegesen műveletet.

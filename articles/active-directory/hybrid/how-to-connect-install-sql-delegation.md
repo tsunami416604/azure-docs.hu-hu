@@ -12,23 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/26/2018
+origin.date: 02/26/2018
+ms.date: 04/09/2019
 ms.subservice: hybrid
-ms.author: billmath
+ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092582"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60243549"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Telepítse az Azure AD Connect SQL-lel delegált rendszergazdai engedélyekkel
 Az Azure AD Connect legújabb buildjének, mielőtt felügyeleti delegálás, SQL, a szükséges konfigurációk központi telepítésekor nem támogatott.  Felhasználók számára az Azure AD Connect telepítése szükséges az SQL Server kiszolgáló (SA) rendszergazdai jogosultságokkal rendelkezik.
 
 Az Azure AD Connect legújabb kiadása most kiépítése az adatbázis is az SQL-rendszergazda által sávon kívül végrehajtott és az Azure AD Connect rendszergazdája az adatbázis-tulajdonosi jogosultságok telepítve.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 Ez a funkció használatához szüksége, vegye figyelembe, hogy több mozgó részből áll, és mindegyik is igénybe vehet a szervezet egy másik rendszergazdája.  Az alábbi táblázat foglalja össze az egyes szerepkörök és üzembe helyezése az Azure AD Connect ezzel a funkcióval a feladataik.
 
 |Szerepkör|Leírás|
@@ -67,3 +68,5 @@ Abban az esetben, ha az SQL-rendszergazda rendelkezik ADSync-adatbázis biztons�
 - [Első lépések az Azure AD Connecttel a gyorsbeállítások használatával](how-to-connect-install-express.md)
 - [Az Azure AD Connect testreszabott telepítése](how-to-connect-install-custom.md)
 - [Az Azure AD Connect telepítése meglévő ADSync-adatbázis használatával](how-to-connect-install-existing-database.md)  
+
+<!-- Update_Description: wording update -->

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: be8d4172476ca0613e80e62739b9ab36f8ab4c3b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881154"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60197737"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -41,9 +41,9 @@ Ebben a cikkben megismerkedhet a .NET SDK használata a szolgáltatások közöt
 2. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
 3. Az **Új projekt** területen írja be vagy válassza ki az alábbi értékeket:
 
-   | Tulajdonság | Érték |
+   | Tulajdonság | Value |
    | --- | --- |
-   | Kategória |Sablonok/Visual C#/Windows |
+   | Category |Sablonok/Visual C#/Windows |
    | Sablon |Konzolalkalmazás |
    | Name (Név) |CreateADLApplication |
 4. A projekt létrehozásához kattintson az **OK** gombra.

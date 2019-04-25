@@ -12,11 +12,11 @@ ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: e732417daada836dc7de58fadf69e8edb4ebcb14
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244640"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60240741"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-python"></a>A QnA Maker REST API használata pythonnal
 <a name="HOLTop"></a>

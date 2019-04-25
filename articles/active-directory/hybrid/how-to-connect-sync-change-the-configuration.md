@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122977"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60244332"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: Módosítsa az alapértelmezett konfiguráció
 Ez a cikk az a célja, hogy végigvezetik az Azure Active Directory (Azure AD) Connect-szinkronizálás az alapértelmezett konfiguráció módosításához. Néhány gyakori helyzet biztosítja a lépéseket. A Tudásbázis a képes egyszerű módosítja a saját konfigurációjával, a saját üzleti szabályok alapján kell lennie.
@@ -266,7 +266,7 @@ A bejövő szinkronizálási szabály lehetővé teszi a áramlanak a forrásatt
 3. Kattintson a **új szabály hozzáadása** gombra egy új bejövő szabály létrehozásához.
 4. Alatt a **leírás** lapra, adja meg a következő konfigurációt:
 
-    | Attribútum | Érték | Részletek |
+    | Attribútum | Value | Részletek |
     | --- | --- | --- |
     | Name (Név) | *Adjon meg egy nevet* | Ha például *a az AD-ből – felhasználói UserType* |
     | Leírás | *Adjon meg egy leírást* |  |
@@ -278,7 +278,7 @@ A bejövő szinkronizálási szabály lehetővé teszi a áramlanak a forrásatt
 
 5. Nyissa meg a **Scoping szűrő** lapra, és adjon hozzá egy **egyetlen hatókörkezelési Szűrőcsoport** az alábbi záradékkal:
 
-    | Attribútum | Művelet | Érték |
+    | Attribútum | Művelet | Value |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | Felhasználó\_ |
 
@@ -288,7 +288,7 @@ A bejövő szinkronizálási szabály lehetővé teszi a áramlanak a forrásatt
 
     | Folyamat típusát | Célattribútum | Forrás | Miután a alkalmazni | Egyesítési típus |
     | --- | --- | --- | --- | --- |
-    | Közvetlen | UserType | extensionAttribute1 | Nincs bejelölve | Frissítés |
+    | Direct | UserType | extensionAttribute1 | Nincs bejelölve | Frissítés |
 
     Egy másik példa szeretné a UserType attribútuma értéke célosztályából más tulajdonságok alapján. Például szeretné szinkronizálni a minden felhasználó vendégként, ha a helyszíni AD userPrincipalName attribútum végződik tartományrészt <em>@partners.fabrikam123.org</em>. Egy kifejezés hasonló valósíthatja meg:
 
@@ -308,7 +308,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 3. Kattintson a **új szabály hozzáadása** gombra.
 4. Alatt a **leírás** lapra, adja meg a következő konfigurációt:
 
-    | Attribútum | Érték | Részletek |
+    | Attribútum | Value | Részletek |
     | ----- | ------ | --- |
     | Name (Név) | *Adjon meg egy nevet* | Ha például *vette az aad-ben – a felhasználó a UserType* |
     | Leírás | *Adjon meg egy leírást* ||
@@ -320,7 +320,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
 5. Nyissa meg a **Scoping szűrő** lapra, és adjon hozzá egy **egyetlen hatókörkezelési Szűrőcsoport** két záradékai:
 
-    | Attribútum | Művelet | Érték |
+    | Attribútum | Művelet | Value |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |
@@ -331,7 +331,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
     | Folyamat típusát | Célattribútum | Forrás | Miután a alkalmazni | Egyesítési típus |
     | --- | --- | --- | --- | --- |
-    | Közvetlen | UserType | UserType | Nincs bejelölve | Frissítés |
+    | Direct | UserType | UserType | Nincs bejelölve | Frissítés |
 
 7. Kattintson a **Hozzáadás** a kimenő szabály létrehozásához.
 

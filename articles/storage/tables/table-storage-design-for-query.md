@@ -9,11 +9,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 97373f6f0138d3ed8028ed4327b7e6cf90ad76a7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470739"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325867"
 ---
 # <a name="design-for-querying"></a>Tervezés lekérdezéshez
 TABLE service megoldások nagy igényű, nagy írási vagy a kettő kombinációját olvashatók. Ez a cikk a Table szolgáltatás hatékonyan támogatja az olvasási műveletek tervezésekor figyelembe kell vennie a következő szempontokat összpontosít. Arról, hogy támogatja az olvasási műveletek hatékony terv általában is az írási műveletek hatékony. Előfordulhatnak azonban olyan szempontokat is figyelembe kell vennie, amikor támogatásához tervezése írási művelet, a cikkben tárgyalt [adatmódosítás kialakítása](table-storage-design-for-modification.md).

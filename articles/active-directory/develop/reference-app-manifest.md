@@ -19,11 +19,11 @@ ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17b7a383eb8df8fcfd358bce226168e5fbeb42f7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009395"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60298291"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Az Azure Active Directory-manifest aplikace
 

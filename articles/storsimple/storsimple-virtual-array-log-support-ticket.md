@@ -1,6 +1,6 @@
 ---
-title: Támogatási jegy keresztül StorSimple Device Manager naplózása |} Microsoft Docs
-description: Ismerteti a StorSimple Device Manager funkció felderítésére, és ismerteti a StorSimple virtuális tömb hibaelhárítás céljából.
+title: Támogatási jegyek rögzítése keresztül a StorSimple Device Manager |} A Microsoft Docs
+description: Ismerteti a StorSimple-Eszközkezelő diagnosztizálása képesség, és azt ismerteti, hogyan használhatja a StorSimple Virtual Array hibaelhárítása.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 658afbc178814389fefd7941e2ca030741bd08e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ac87bbf5089dd20b8c6eeec0b970a7767b3dcda
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875913"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60302591"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>A StorSimple Device Manager szolgáltatás használatára egy támogatási kérést a StorSimple virtuális tömb
+# <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével egy támogatási jegyet a StorSimple virtuális tömb
 
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple Device Manager lehetővé teszi a **új támogatási kérelem jelentkezzen** belül a szolgáltatás összefoglaló panelre. Ez a cikk azt ismerteti, hogyan új támogatási kérelem jelentkezhetnek, és a portálon az életciklus kezeléséhez.
+A StorSimple-Eszközkezelő lehetővé teszi, hogy **egy új támogatási jegyet** belül a szolgáltatásösszegző panel. Ez a cikk azt ismerteti, hogyan lehet egy új támogatási jegyet, és kezelheti a portálon az életciklusa.
 
 ## <a name="new-support-request"></a>Új támogatási kérelem
 
-Attól függően, a [támogatási csomag](https://azure.microsoft.com/support/plans/), egy problémát a támogatási jegyeket hozhatja létre a StorSimple virtuális tömbben közvetlenül a StorSimple Device Manager szolgáltatás összefoglaló panelre.
+Attól függően, hogy a [támogatási csomag](https://azure.microsoft.com/support/plans/), a StorSimple Virtual array közvetlenül a StorSimple-Eszközkezelő szolgáltatás összefoglalás panelén a hozhat létre támogatási jegyeket, egy adott probléma megoldásához.
 
 #### <a name="to-log-a-new-request"></a>Egy új kérelmet bejelentkezni
 
-1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. A Szolgáltatásbeállítások összefoglaló panelen keresse meg **támogatási + hibaelhárítás** szakaszt, és kattintson a **új támogatja a kérelem**.
+1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. A szolgáltatás összefoglalás panelén beállításait, lépjen a **támogatás + hibaelhárítás** szakaszt, és kattintson a **új támogatási kérelem**.
    
     ![Új támogatási kérelem](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
 2. Az a **alapjai** panelen tegye a következőket:
 
-    1. Az a **típusú** legördülő listában válassza ki **műszaki**. 
+    1. Az a **Problématípus** legördülő listában válassza **technikai**. 
     
-    2. Az aktuális **előfizetés**, **szolgáltatás** típus, és a **erőforrás** (a StorSimple eszköz kezelő szolgáltatás) közül automatikusan választ. 
+    2. Az aktuális **előfizetés**, **szolgáltatás** típusát, és a **erőforrás** (StorSimple-Eszközkezelő szolgáltatás) a rendszer automatikusan kiválasztja. 
 
-    3. Adjon meg egy vagy több eszköz regisztrálva érintő problémákat tapasztal a szolgáltatás.
+    3. Adja meg a szolgáltatás, amely a problémákat tapasztal, amikor egy vagy több eszköz regisztrálva.
 
-    4. Válasszon egy megfelelő **támogatási csomag** Ha több tervek az Ön előfizetéséhez rendelve van. Szüksége van ahhoz, hogy technikai támogatási szolgálatával fizetős támogatási csomagot.
+    4. Válasszon egy megfelelő **támogatási csomag** Ha több csomagok az Ön előfizetéséhez rendelve van. Szüksége lesz egy fizetős támogatási csomag ahhoz, hogy technikai támogatást.
 
-3. A **2. lépés**, válassza ki a **súlyossági** , és adja meg, ha a probléma a tömb vagy a StorSimple Device Manager szolgáltatással kapcsolatos. Válassza ki, egy **kategória** ehhez adja ki, és adjon meg több **részletek** a problémával kapcsolatos.
+3. A **2. lépés**, válassza ki a **súlyossági** , és adja meg, ha a problémát a tömbben, vagy a StorSimple-Eszközkezelő szolgáltatás kapcsolódik-e. Válassza ki, egy **kategória** ehhez adja ki, és adja meg a további **részletek** a problémával kapcsolatban.
    
     ![Új támogatási kérelem](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
-4. A **3. lépés**, adja meg a kapcsolattartási adatait. Microsoft Support ezen információk használatával érheti el, további információt, a diagnosztikai és a megoldás.
+4. A **3. lépés**, adja meg a kapcsolattartási adatokat. A Microsoft Support ezen információk használatával kapcsolatos további információkat, a diagnosztikai és a megoldási Önnel.
    
     ![Új támogatási kérelem](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
-## <a name="manage-a-support-request"></a>Egy támogatási kérést kezelése
+## <a name="manage-a-support-request"></a>Egy támogatási jegy kezelése
 
 A támogatási jegy létrehozása után a jegyet a teljes életciklusán keresztül kezelheti a portálon.
 
-#### <a name="to-manage-your-support-requests"></a>A támogatási kérelmek kezelése
+#### <a name="to-manage-your-support-requests"></a>A támogatási kérések kezelése
 
-Ahhoz, hogy a Súgó és támogatás oldalra, keresse meg **Tallózás > Súgó + támogatás**.
+A Súgó és támogatási oldallal lekéréséhez lépjen **Tallózás > Súgó + támogatás**.
 
-![Támogatási kérelmek kezelése](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
+![Támogatási kérések kezelése](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan [diagnosztizálhatja és a StorSimple virtuális tömb kapcsolatos problémák megoldásához](storsimple-virtual-array-diagnose-problems.md)
+Ismerje meg, hogyan [a StorSimple Virtual array kapcsolatos problémák diagnosztizálása és megoldása](storsimple-virtual-array-diagnose-problems.md)
 

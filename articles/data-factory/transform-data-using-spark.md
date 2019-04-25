@@ -12,11 +12,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: cdf4dba3996668b3c9fe31df10050ff2cbff6cb3
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576200"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387825"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Adatok átalakítása a Spark-tevékenység használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -63,7 +63,7 @@ A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulaj
 | Tulajdonság              | Leírás                              | Szükséges |
 | --------------------- | ---------------------------------------- | -------- |
 | név                  | A folyamat a tevékenység neve.    | Igen      |
-| leírás           | A tevékenység leírása leíró szöveg.  | Nem       |
+| description           | A tevékenység leírása leíró szöveg.  | Nem       |
 | type                  | A Spark-tevékenység a tevékenység típus HDInsightSpark. | Igen      |
 | linkedServiceName     | A HDInsight Spark társított szolgáltatás, amelyen futtatja a Spark-program neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
 | SparkJobLinkedService | Az Azure Storage társított szolgáltatás, amely tartalmazza a Spark, feladat-fájlt, a függőségeket és a naplókat.  Ha nem ad meg egy értéket ehhez a tulajdonsághoz, a HDInsight-fürthöz társított tárolót használja. Ez a tulajdonság értéke csak lehet az Azure Storage társított szolgáltatása. | Nem       |

@@ -9,11 +9,11 @@ ms.date: 02/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
 ms.openlocfilehash: d9c607114d6c6c56c25303a88dcc11f4ab804eb4
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404337"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60367988"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Az ExpressRoute virtuális hálózati átjáróinak ismertetése
 A virtuális hálózati átjáró Azure virtuális hálózatok közötti hálózati adatforgalom elküldésére használatosak, és a helyszínek. A virtuális hálózati átjáró használható a forgalom az ExpressRoute vagy VPN-forgalmat. Ez a cikk az ExpressRoute virtuális hálózati átjárók összpontosít, és tartalmazza a termékváltozatok kapcsolatos információkat, a Termékváltozat és átjárótípusok becsült teljesítmény.

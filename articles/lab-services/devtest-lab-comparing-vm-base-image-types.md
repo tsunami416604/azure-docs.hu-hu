@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 37288fd4a9c7558d05728b8ce03df505117e0232
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ae7556eda817b9eb7be84f9d4a23ea91d3d5440d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611270"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311318"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Egyéni rendszerképek és a DevTest Labs szolgáltatásban létrehozott képletek összehasonlítása
 Mindkét [egyéni rendszerképek](devtest-lab-create-template.md) és [képletek](devtest-lab-manage-formulas.md) alapjait, használható [létrehozott új virtuális gépek](devtest-lab-add-vm.md). Azonban a kulcs megkülönböztetése egyéni rendszerképek és képletek, hogy egy egyéni rendszerkép egyszerűen alapuló rendszerképet a virtuális merevlemez, egy rendszerképet a virtuális merevlemez alapján pedig egy képlet *mellett* előre konfigurált beállítások – például a virtuális gép méretét, a virtuális hálózathoz, alhálózat és összetevőket. Ezek a beállítások előre konfigurált alapértelmezett értékekkel, amely a virtuális gép létrehozásakor felülbírálható beállítása. Ez a cikk ismerteti azokat a (szakemberek számára) előnyeit és hátrányait (hátrányai) használatával egyéni képek és képletek használatával.

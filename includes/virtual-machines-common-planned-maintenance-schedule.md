@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c7fe0d6f8e03501cca7a8b98f95286b6a21c0476
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735724"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60232795"
 ---
 ## <a name="multi-and-single-instance-vms"></a>Többszörös és egypéldányos virtuális gépek
 Számos szolgáltatást használó ügyfeleink az Azure száma szerint, kritikus fontosságú, hogy azok ütemezhető a virtuális gépek tervezett karbantartás miatt az állásidő--rendelkezéseinknek körülbelül 15 perc –, amelyek akkor fordul elő, karbantartás során. Használhatja a rendelkezésre állási csoportok segítségével szabályozhatja, amikor az üzembe helyezett virtuális gépek megkapják a tervezett karbantartás.

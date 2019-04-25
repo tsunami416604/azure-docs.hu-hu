@@ -11,11 +11,11 @@ description: Ismerteti az Open Service Broker az Azure-adatbázishoz használt a
 keywords: A Pivotal Cloud Foundry-hoz, a Cloud Foundry, nyissa meg a Service Brokert, az Open Service Broker for Azure
 tags: Cloud-Foundry
 ms.openlocfilehash: d553cd09ef42e47e3a10fb96039063b8aae665cb
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258871"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60197215"
 ---
 # <a name="tutorial-use-an-open-service-broker-for-azure-database-with-an-application-on-pivotal-cloud-foundry"></a>Oktatóanyag: Az Open Service Broker használata egy alkalmazás és a Pivotal Cloud Foundry az Azure-adatbázis
 

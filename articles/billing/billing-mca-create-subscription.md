@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 105b8481486c088a05e3acb95081d3ee55b55f52
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897103"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60372028"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>További Azure-előfizetés létrehozása a Microsoft ügyfél-szerződés
 
@@ -59,15 +59,15 @@ Adja hozzá a felhasználókat, az Azure-előfizetés és közös kiindulópontk
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
    ![Képernyőkép a Keresés az előfizetések a portálon](./media/billing-mca-create-subscription/billing-search-cost-management-billing.png)
 
-3. Nyissa meg a számlán szakaszban. A hozzáférést, attól függően szükség lehet jelöljön ki egy számlázási fiók vagy a számlázási profilja. A számlázási fiók vagy a profil, válassza ki a **szakaszok számlázása** és majd egy számla szakaszban.
+3. Lépjen a számlaszakaszra. A hozzáférést, attól függően szükség lehet jelöljön ki egy számlázási fiók vagy a számlázási profilja. A számlázási fiók vagy a profil, válassza ki a **szakaszok számlázása** és majd egy számla szakaszban.
 
 4. Válassza ki **hozzáférés-kezelés (IAM)** bal felső oldalán.
 
-5. A lap tetején válassza **Hozzáadás**.
+5. Válassza a lap tetején a **Hozzáadás** gombot.
 
 6. Válassza ki **Azure-előfizetés létrehozója** szerepkörhöz.
 

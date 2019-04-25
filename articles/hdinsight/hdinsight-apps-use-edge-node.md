@@ -1,7 +1,6 @@
 ---
 title: Üres élcsomópontok használata a HDInsight - Azure Apache Hadoop-fürtök
 description: Hogyan lehet üres élcsomópontot hozzáadni egy HDInsight-fürtöt, amely ügyfélként is használható, és ezután teszt/állomás a HDInsight-alkalmazások.
-services: hdinsight
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
@@ -10,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.openlocfilehash: aa9cdbaece2714dd4869268f394e6840fe42edda
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225399"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60253543"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Üres élcsomópontok használata a HDInsight Apache Hadoop-fürtök
 

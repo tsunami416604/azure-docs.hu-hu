@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196368"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381586"
 ---
-# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Átmeneti kiszolgáló és a vészhelyreállítás
+# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Kiszolgáló- és vészhelyreállítás előkészítése
 Átmeneti környezetű üzemmód egy kiszolgálóval módosítja a konfigurációt, és a módosítások előnézetének megtekintése, mielőtt aktívvá tétele a-kiszolgáló. Azt is lehetővé teszi teljes importálást és teljes szinkronizálást, győződjön meg arról, hogy minden módosítás várhatóan előtt ezeket a módosításokat éles környezetben való futtatásához.
 
 ## <a name="staging-mode"></a>Átmeneti mód
@@ -73,8 +73,8 @@ Van már előkészített exportálási módosítja az Azure AD és a helyszíni 
 
 #### <a name="verify"></a>Ellenőrzés
 1. Indítsa el a parancssort, és nyissa meg `%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Futtassa: `csexport "Name of Connector" %temp%\export.xml /f:x` Az összekötő neve szinkronizálási szolgáltatás található. A "contoso.com – AAD" hasonló névvel rendelkezik az Azure ad-hez.
-3. Futtassa: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` A % temp % export.csv, amely a Microsoft Excelben megvizsgálhatók nevű fájllal rendelkezik. Ez a fájl tartalmazza, amelyek az exportálni kívánt összes módosítást.
+2. Futtassa a következőt: `csexport "Name of Connector" %temp%\export.xml /f:x` Az összekötő neve szinkronizálási szolgáltatás található. A "contoso.com – AAD" hasonló névvel rendelkezik az Azure ad-hez.
+3. Futtassa a következőt: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` A % temp % export.csv, amely a Microsoft Excelben megvizsgálhatók nevű fájllal rendelkezik. Ez a fájl tartalmazza, amelyek az exportálni kívánt összes módosítást.
 4. Hajtsa végre a módosításokat az adatok vagy konfiguráció, és futtassa ezeket a lépéseket újra (importálás és szinkronizálás, és győződjön meg arról) mindaddig, amíg a változtatásokat, hogy exportálni kívánt várható.
 
 **A export.csv fájl ismertetése** a fájlt a legtöbb értetődő. Néhány rövidítések a megértése érdekében:

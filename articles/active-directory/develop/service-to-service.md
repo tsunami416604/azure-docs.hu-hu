@@ -7,22 +7,22 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.subservice: develop
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: celested
+origin.date: 09/24/2018
+ms.date: 11/07/2018
+ms.author: v-junlch
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0ced89ce97d5f22270d9968fdeb0ddb3fad1e4e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194988"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252038"
 ---
 # <a name="service-to-service-apps"></a>Szolgáltatások – alkalmazások
 
@@ -63,8 +63,8 @@ Tekintse meg a Kódminták démon vagy kiszolgálói alkalmazás webes API-forga
 
 ## <a name="app-registration"></a>Appok regisztrálása
 
-* Egyetlen bérlő – az alkalmazás azonosítóját és a delegált felhasználó identitás esetben a démon, vagy server alkalmazást regisztrálni kell ugyanabban a címtárban az Azure ad-ben. A webes API elérhetővé engedélykészletet, amelyek segítségével korlátozhatja a démon, vagy az erőforrásokhoz való hozzáférése konfigurálható. Ha egy meghatalmazott felhasználói identitástípus használatban van, a kiszolgálói alkalmazás kell válassza ki a kívánt engedélyekkel a "Engedélyeket az egyéb alkalmazások" legördülő menüből az Azure Portalon. Ebben a lépésben nincs szükség, ha az identitás alkalmazástípus használatban van.
-* Több-bérlős-First, a démon vagy kiszolgálói alkalmazás jelzi a megfelelő működéséhez szükséges engedélyekkel van konfigurálva. Szükséges engedélyek listája egy párbeszédpanel jelenik meg, amikor egy felhasználó vagy rendszergazda a célkönyvtárban duplikátum beleegyezésével az alkalmazáshoz, ami lehetővé teszi a szervezet számára elérhető. Egyes alkalmazások csak a felhasználói szintű engedélyeket, amelyeket a szervezet bármely felhasználója jóváhagyhat van szükségük. Más alkalmazások szükséges rendszergazdai engedélyekkel, amelyek a szervezet egy felhasználója nem járulhatnak hozzá. Csak egy könyvtár rendszergazda engedélyezheti, hogy ez a jogosultsági szint szükséges alkalmazásokat. Amikor a felhasználó vagy rendszergazda hozzájárul, mind a webes API-k a címtárban van regisztrálva.
+- Egyetlen bérlő – az alkalmazás azonosítóját és a delegált felhasználó identitás esetben a démon, vagy server alkalmazást regisztrálni kell ugyanabban a címtárban az Azure ad-ben. A webes API elérhetővé engedélykészletet, amelyek segítségével korlátozhatja a démon, vagy az erőforrásokhoz való hozzáférése konfigurálható. Ha egy meghatalmazott felhasználói identitástípus használatban van, a kiszolgálói alkalmazás kell válassza ki a kívánt engedélyekkel a "Engedélyeket az egyéb alkalmazások" legördülő menüből az Azure Portalon. Ebben a lépésben nincs szükség, ha az identitás alkalmazástípus használatban van.
+- Több-bérlős-First, a démon vagy kiszolgálói alkalmazás jelzi a megfelelő működéséhez szükséges engedélyekkel van konfigurálva. Szükséges engedélyek listája egy párbeszédpanel jelenik meg, amikor egy felhasználó vagy rendszergazda a célkönyvtárban duplikátum beleegyezésével az alkalmazáshoz, ami lehetővé teszi a szervezet számára elérhető. Egyes alkalmazások csak a felhasználói szintű engedélyeket, amelyeket a szervezet bármely felhasználója jóváhagyhat van szükségük. Más alkalmazások szükséges rendszergazdai engedélyekkel, amelyek a szervezet egy felhasználója nem járulhatnak hozzá. Csak egy könyvtár rendszergazda engedélyezheti, hogy ez a jogosultsági szint szükséges alkalmazásokat. Amikor a felhasználó vagy rendszergazda hozzájárul, mind a webes API-k a címtárban van regisztrálva.
 
 ## <a name="token-expiration"></a>Jogkivonat lejáratáról
 
@@ -74,3 +74,4 @@ Az első alkalmazás eléréséhez a JWT jogkivonat a hozzáférési kód haszn�
 
 - További információk egyéb [alkalmazástípusok és forgatókönyvek](app-types.md)
 - További tudnivalók az Azure AD [hitelesítés alapjai](authentication-scenarios.md)
+

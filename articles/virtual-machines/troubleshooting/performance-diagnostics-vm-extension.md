@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002731"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60307908"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>A teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény Windows
 
@@ -109,7 +109,7 @@ Kövesse ezeket az utasításokat a bővítmény telepíthető Windows virtuáli
     > [!NOTE]
     > A bővítmény akkor fut, amikor a kiépítés sikeres volt. Két percet vesz igénybe, vagy kevesebb, az alapszintű forgatókönyv végrehajtásához. Más esetekben futtatja az időtartam a telepítés során megadott keresztül.
 
-## <a name="remove-the-extension"></a>Távolítsa el a bővítményt
+## <a name="remove-the-extension"></a>A bővítmény eltávolítása
 Távolítsa el a bővítményt a virtuális gépről, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), válassza ki a virtuális gépet, ahonnan a távolítsa el a bővítményt, majd válassza a **bővítmények** panelen. 

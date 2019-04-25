@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
 ms.openlocfilehash: b7ec3a6919a27633fc36ba7fb1551ead10e06ffe
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769446"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542713"
 ---
-# <a name="virtual-machine-vcpu-quotas"></a>Virtuális gép vCPU-kvóták
+# <a name="virtual-machine-vcpu-quotas"></a>Virtuális gépek vCPU-kvótái
 
 A virtuális gépek és a virtual machine scale sets vCPU-kvóták minden egyes előfizetés, az egyes régiókban két szinten vannak rendezve. Az első szinten az összes regionális vcpu-k, a második rétegű pedig a különböző virtuális gép mérete családba tartozó magok például a D-sorozat vcpu-k. A virtuális gép nem haladhatja meg a vCPU-kvóta virtuálisgépméret-családhoz tartozó vagy a teljes regionális vCPU-kvóta bármikor az új virtuális gép van telepítve a vcpu-k. Ha ezeket a kvótákat valamelyikét túllépése esetén a virtuális gép üzembe helyezése nem engedélyezett lesz. Emellett van egy régióban található virtuális gépek a teljes számára vonatkozó kvótát. Az egyes kvóta részletei láthatók a **használat + kvóták** szakaszában a **előfizetés** lapját a [az Azure portal](https://portal.azure.com), vagy lekérdezheti az Azure az értékek PARANCSSORI FELÜLET.
 

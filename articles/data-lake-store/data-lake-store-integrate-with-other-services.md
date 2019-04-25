@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: e28863f9980d6403bef1f88de01b7a9b5271b444
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879302"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60197085"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Az Azure Data Lake Storage Gen1 integrálása más Azure-szolgáltatások
 Az Azure Data Lake Storage Gen1 széles körének forgatókönyvek engedélyezése más Azure-szolgáltatásokkal együtt is használható. A következő cikket a Data Lake Storage Gen1 integrálható legyen az szolgáltatásokat sorolja fel.

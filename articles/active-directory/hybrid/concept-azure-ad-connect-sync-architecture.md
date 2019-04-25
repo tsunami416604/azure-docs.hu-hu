@@ -4,24 +4,24 @@ description: Ez a témakör ismerteti az Azure AD Connect-szinkronizálás archi
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 465bcbe9-3bdd-4769-a8ca-f8905abf426d
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 07/13/2017
-ms.subservice: hybrid
-ms.author: billmath
-ms.collection: M365-identity-device-management
+ms.topic: article
+origin.date: 07/13/2017
+ms.date: 11/08/2018
+ms.component: hybrid
+ms.author: v-junlch
 ms.openlocfilehash: 60a648b24ad16c1b5ea404b5ad9f1f18fd5041da
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193849"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60245976"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Az Azure AD Connect szinkronizálása: Az architektúra ismertetése
 Ez a témakör ismerteti az alapszintű architektúra az Azure AD Connect szinkronizálási szolgáltatás. Bizonyos szempontokból hasonlít az rövidítés a MIIS 2003 ILM 2007 és a FIM 2010. Az Azure AD Connect szinkronizálása, ezek a technológiák rendszergazdánál veszi kezdetét. Ha ismeri az esetleges technológiák korábbi, ez a témakör tartalma lesz ismeretlen az Ön számára is. Ha most ismerkedik a szinkronizáláshoz, majd a témakör Önnek szól. Azonban nincs olyan követelmény tudni, hogy ez a témakör a testreszabási (néven a szinkronizálási motor ebben a témakörben) az Azure AD Connect szinkronizálásának részleteit.
@@ -49,8 +49,8 @@ Ha a csatlakoztatott adatforrás szerkezeti összetevők, például a partíció
 ### <a name="internal-structure-of-the-sync-engine-namespace"></a>A szinkronizálási motor névtér belső szerkezetét
 A teljes szinkronizálási motor névtér áll a két névtér, amely a azonosító adatok tárolására. A két névtér a következők:
 
-* Az összekötő-térben (CS)
-* A metaverzum (MV)
+- Az összekötő-térben (CS)
+- A metaverzum (MV)
 
 A **összekötőterében** van egy átmeneti területre, amely tartalmazza a kijelölt objektumokat a csatlakoztatott adatforrás és a attribútum belefoglalási listán megadott attribútumok ábrázolásai. A szinkronizálási motor használja az összekötőtérben, határozza meg, mi változott a csatlakoztatott adatforráshoz, és a bejövő változások előkészítéséhez. A szinkronizálási motor az összekötőtérben is használja a csatlakoztatott adatforrás exportálási kimenő módosítások előkészítéséhez. A szinkronizálási motor tart fenn, az egyes összekötők különböző összekötőtérben, egy átmeneti területre.
 
@@ -72,8 +72,8 @@ Amikor a szinkronizálási motor kommunikál a csatlakoztatott adatforráshoz, b
 
 Összes objektumot az összekötőtérben két attribútumokkal rendelkezik:
 
-* Egy globálisan egyedi azonosítóját (GUID)
-* A megkülönböztető név (DN)
+- Egy globálisan egyedi azonosítóját (GUID)
+- A megkülönböztető név (DN)
 
 Ha a csatlakoztatott adatforrás objektumhoz rendeli hozzá egy egyedi attribútumot, majd objektumot az összekötőtérben is lehet horgonyattribútum. A forráshorgony attribútumának egyedileg azonosít egy objektumot, a csatlakoztatott adatforrás. A szinkronizálási motor a forráshorgony használatával keresse meg ezt az objektumot a megfelelő megfelelője a csatlakoztatott adatforrás. A szinkronizálási motor azt feltételezi, hogy az objektum a forráshorgony soha nem módosul az objektum élettartama során.
 
@@ -83,8 +83,8 @@ Ebben az esetben a horgony épül fel egy vagy több egyedi attribútum egy obje
 
 Egy összekötőtér objektuma a következők egyike lehet:
 
-* Egy előkészítési objektum
-* Helyőrző
+- Egy előkészítési objektum
+- Helyőrző
 
 ### <a name="staging-objects"></a>Átmeneti objektumok
 Egy előkészítési objektum egy példányát a kijelölt objektumtípusok a csatlakoztatott adatforrásból jelöli. A GUID Azonosítót és a megkülönböztető név kívül egy átmeneti mindig objektumnak egy értéket, amely azt jelzi, hogy az objektum típusának.
@@ -145,9 +145,9 @@ Az import-objektum összekapcsolható objektumként jön létre. Exportálás ob
 ## <a name="sync-engine-identity-management-process"></a>Szinkronizálási motor identity management folyamat
 Az identity management folyamat azt szabályozza, hogy hogyan frissül a azonosító adatok különböző csatlakoztatott adatforrások között. Identitáskezelés három folyamat történik:
 
-* Importálás
-* Szinkronizálás
-* Exportálás
+- Importálás
+- Szinkronizálás
+- Exportálás
 
 Az importálási folyamat során a szinkronizálási motor kiértékeli a bejövő azonosító adatokat a csatlakoztatott adatforrás. Észlel, amikor, vagy új előkészítési objektumot hoz létre vagy frissíti a meglévő átmeneti objektumot az összekötőtérben, a szinkronizáláshoz.
 
@@ -164,34 +164,34 @@ Az importálási folyamat során a szinkronizálási motor kiértékeli az azono
 
 Előkészítési objektumot az összekötőtérben szinkronizálás előtt, amelyet a szinkronizálási motor csak a megváltozott azonosító adatok feldolgozhatja. Ez a folyamat az alábbi előnyöket nyújtja:
 
-* **Hatékony szinkronizálási**. A szinkronizálás során feldolgozott adatok mennyisége másodpercekre csökken.
-* **Hatékony újraszinkronizálás**. Módosíthatja, miként szinkronizálási motor dolgozza fel azonosító adatokat anélkül, hogy a szinkronizálási motor az adatforráshoz történő újracsatlakozás.
-* **Szinkronizálási kipróbálásában való**. Megtekintheti, hogy ellenőrizze, hogy helyesek-e az identitás-kezelési folyamat a feltételezéseket-szinkronizálás.
+- **Hatékony szinkronizálási**. A szinkronizálás során feldolgozott adatok mennyisége másodpercekre csökken.
+- **Hatékony újraszinkronizálás**. Módosíthatja, miként szinkronizálási motor dolgozza fel azonosító adatokat anélkül, hogy a szinkronizálási motor az adatforráshoz történő újracsatlakozás.
+- **Szinkronizálási kipróbálásában való**. Megtekintheti, hogy ellenőrizze, hogy helyesek-e az identitás-kezelési folyamat a feltételezéseket-szinkronizálás.
 
 A szinkronizálási motor minden objektumhoz, az összekötő a megadott, először megpróbálja megkeresni a reprezentációja az objektumot az összekötőtérben, az összekötő. A szinkronizálási motor megvizsgálja az összes előkészítési objektumot az összekötőtérben, és próbál meg megtalálni egy megfelelő átmeneti objektum, amely rendelkezik egy megfelelő a forráshorgony attribútuma. Ha nincs meglévő átmeneti objektum nem a megfelelő a forráshorgony attribútuma, a szinkronizálási motor megpróbálja megkeresni a megfelelő átmeneti objektumokat megkülönböztető ugyanazzal a névvel.
 
 Ha a szinkronizálási motor egy előkészítési objektumot, amely megfelel a megkülönböztető név alapján, de nem a forráshorgony talál, a következő különleges történik:
 
-* Ha az objektumot az összekötőtérben található nincs kapcsolati rendelkezik, akkor a szinkronizálási motor eltávolítja ezt az objektumot az összekötőtérben, és a metaverzum-objektum, csatolt jelöli **ismételje meg a következő szinkronizálás futtatása a kiépítés**. Ezután az importálás új objektumot hoz létre.
-* Ha az objektumot az összekötőtérben található horgonyra, majd a szinkronizálási motor feltételezi, hogy ez az objektum van vagy átnevezték vagy törölték a csatlakoztatott címtárban. Az összekötőtér objektuma ideiglenes, új megkülönböztető nevét, hogy azt úgy végezheti el a bejövő objektum internetzónához. A régi objektum válik **átmeneti**, Várakozás az összekötő importálja a átnevezése vagy törlése elhárításához.
+- Ha az objektumot az összekötőtérben található nincs kapcsolati rendelkezik, akkor a szinkronizálási motor eltávolítja ezt az objektumot az összekötőtérben, és a metaverzum-objektum, csatolt jelöli **ismételje meg a következő szinkronizálás futtatása a kiépítés**. Ezután az importálás új objektumot hoz létre.
+- Ha az objektumot az összekötőtérben található horgonyra, majd a szinkronizálási motor feltételezi, hogy ez az objektum van vagy átnevezték vagy törölték a csatlakoztatott címtárban. Az összekötőtér objektuma ideiglenes, új megkülönböztető nevét, hogy azt úgy végezheti el a bejövő objektum internetzónához. A régi objektum válik **átmeneti**, Várakozás az összekötő importálja a átnevezése vagy törlése elhárításához.
 
 A szinkronizálási motor megkeresi az objektumhoz, az összekötő a megadott egy előkészítési objektumot, ha meghatározza, hogy milyen típusú módosításokat a alkalmazni. Például a szinkronizálási motor előfordulhat, hogy nevezze át vagy törölje az objektumot a csatlakoztatott adatforrás, vagy csak, előfordulhat, hogy frissítse az objektum attribútumértékek.
 
 A frissített adatok átmeneti objektumok importálása folyamatban vannak megjelölve. Különböző típusú függőben lévő importálás érhetők el. Az importálási folyamat eredményétől függően egy előkészítési objektumot az összekötőtérben van függőben lévő importálás típusok a következők egyikét:
 
-* **Nincs**. Sem az átmeneti tárolási objektum attribútumainak módosítása nélkül érhető el. A szinkronizálási motor nem jelző ilyen módon függőben lévő importálás.
-* **Adjon hozzá**. Az előkészítési objektum egy új importálás objektumot az összekötőtérben. A szinkronizálási motor megőrzendő tartalomként jelöli meg a típus, függőben lévő importálás metaverzumban található további feldolgozás céljából.
-* **Frissítés**. A szinkronizálási motor megkeresi a megfelelő átmeneti objektumot az összekötőtérben, és a függőben lévő importálás típusként megőrzendő tartalomként jelöli meg, hogy az attribútumok frissítései dolgozhatók fel a metaverzumba. Frissítések tartalmazza az objektum átnevezését.
-* **Törlés**. A szinkronizálási motor megkeresi a megfelelő átmeneti objektumot az összekötőtérben, és a függőben lévő importálás típusként megőrzendő tartalomként jelöli meg, hogy a csatlakoztatott objektum törölhetők.
-* **Törlés és hozzáadása**. A szinkronizálási motor megkeresi a megfelelő átmeneti objektumokat az összekötőtérben, de az objektum típusa nem egyezik. Ebben az esetben a törlés – hozzáadása módosítás elő van készítve. A törlés – hozzáadása a szinkronizálási motor módosítása azt jelzi, hogy az objektum teljes újraszinkronizálását kell fordul elő, mert más-más részhalmazához szabályok vonatkoznak ezt az objektumot adja meg az objektum módosításokat.
+- **Nincs**. Sem az átmeneti tárolási objektum attribútumainak módosítása nélkül érhető el. A szinkronizálási motor nem jelző ilyen módon függőben lévő importálás.
+- **Adjon hozzá**. Az előkészítési objektum egy új importálás objektumot az összekötőtérben. A szinkronizálási motor megőrzendő tartalomként jelöli meg a típus, függőben lévő importálás metaverzumban található további feldolgozás céljából.
+- **Frissítés**. A szinkronizálási motor megkeresi a megfelelő átmeneti objektumot az összekötőtérben, és a függőben lévő importálás típusként megőrzendő tartalomként jelöli meg, hogy az attribútumok frissítései dolgozhatók fel a metaverzumba. Frissítések tartalmazza az objektum átnevezését.
+- **Törlés**. A szinkronizálási motor megkeresi a megfelelő átmeneti objektumot az összekötőtérben, és a függőben lévő importálás típusként megőrzendő tartalomként jelöli meg, hogy a csatlakoztatott objektum törölhetők.
+- **Törlés és hozzáadása**. A szinkronizálási motor megkeresi a megfelelő átmeneti objektumokat az összekötőtérben, de az objektum típusa nem egyezik. Ebben az esetben a törlés – hozzáadása módosítás elő van készítve. A törlés – hozzáadása a szinkronizálási motor módosítása azt jelzi, hogy az objektum teljes újraszinkronizálását kell fordul elő, mert más-más részhalmazához szabályok vonatkoznak ezt az objektumot adja meg az objektum módosításokat.
 
 Átmeneti objektumok függőben lévő importálás állapotát beállításával, mert ezzel tehát lehetővé teszi, hogy a rendszer csak azokat az objektumokat, amely rendelkezik a módosított adatokat feldolgozza a szinkronizálás során feldolgozott adatok mennyisége jelentős csökkentése érdekében.
 
 ### <a name="synchronization-process"></a>Szinkronizálási folyamat
 Szinkronizálás két kapcsolódó folyamatok áll:
 
-* Bejövő szinkronizálás, a metaverzumba tartalmának frissítésekor az összekötőtérben adatok felhasználásával.
-* Kimenő szinkronizálási, az összekötőtérben tartalmának frissítésekor metaverzumban található adatok használatával.
+- Bejövő szinkronizálás, a metaverzumba tartalmának frissítésekor az összekötőtérben adatok felhasználásával.
+- Kimenő szinkronizálási, az összekötőtérben tartalmának frissítésekor metaverzumban található adatok használatával.
 
 Az összekötőtérben előkészített információk segítségével a bejövő szinkronizálási folyamat hoz létre a metaverzumba az adatokat a csatlakoztatott adatforrások tárolt, az integrált áttekintése. Az összes előkészítési objektumok vagy csak azokat a függőben lévő importálás adatokkal vannak összesítve, a szabály konfigurációjától függően.
 
@@ -203,9 +203,9 @@ Bejövő szinkronizálási az integrált nézet az azonosító adatokat a csatla
 
 Bejövő szinkronizálási tartalmazza a következő eljárásokat:
 
-* **Kiépítés** (más néven **leképezése** Ha fontos különbséget tenni ezt a folyamatot a kimenő szinkronizálási létesítési). A szinkronizálási motor hoz létre egy új metaverzum-objektum alapú előkészítési objektum, és összekapcsolja őket. Ennek megfelelő ítélet objektumszintű művelet.
-* **Csatlakozás**. A szinkronizálási motor egy átmeneti objektumra hivatkozik, egy meglévő metaverzum-objektum. Egy összekapcsolás objektumszintű művelet.
-* **Attribútumfolyam importálása**. A szinkronizálási motor frissíti az attribútumértékek Attribútumfolyam, az a metaverzum-objektum neve. Importálási Attribútumfolyam egy attribútum-szintű művelet, amely egy előkészítési objektum és a metaverzum-objektum közötti kapcsolat szükséges.
+- **Kiépítés** (más néven **leképezése** Ha fontos különbséget tenni ezt a folyamatot a kimenő szinkronizálási létesítési). A szinkronizálási motor hoz létre egy új metaverzum-objektum alapú előkészítési objektum, és összekapcsolja őket. Ennek megfelelő ítélet objektumszintű művelet.
+- **Csatlakozás**. A szinkronizálási motor egy átmeneti objektumra hivatkozik, egy meglévő metaverzum-objektum. Egy összekapcsolás objektumszintű művelet.
+- **Attribútumfolyam importálása**. A szinkronizálási motor frissíti az attribútumértékek Attribútumfolyam, az a metaverzum-objektum neve. Importálási Attribútumfolyam egy attribútum-szintű művelet, amely egy előkészítési objektum és a metaverzum-objektum közötti kapcsolat szükséges.
 
 Ennek megfelelő ítélet metaverzumban található objektumokat hoz létre egyetlen folyamat. Üzembe helyezése csak a kilépett objektumok importálása objektumok van hatással. Során kiépítését a szinkronizálási motor létrehozza a metaverzum-objektum, amely felel meg az objektumtípus az importálás objektum, és mindkét objektum, így a csatlakoztatott objektum létrehozása közötti kapcsolatot létesít.
 
@@ -223,17 +223,17 @@ Kimenő szinkronizálási frissítéseket objektumok exportálása, amikor metav
 
 Kimenő szinkronizálási három folyamat rendelkezik:
 
-* **Kiépítés**
-* **A megszüntetés**
-* **Attribútumfolyam exportálása**
+- **Kiépítés**
+- **A megszüntetés**
+- **Attribútumfolyam exportálása**
 
 Kiépítés és megszüntetés mindkét objektumszintű műveletek, amelyek. Megszüntetés attól függ, hogy csak a kiépítés is kezdeményezhető, mivel kiépítése. Megszüntetés akkor aktiválódik, amikor a kiépítés eltávolítja a metaverzum-objektum és a egy exportálási objektum közötti kapcsolat.
 
 Kiépítés mindig aktiválódik, ha a módosítások érvénybe lépnek a metaverzumban található objektumok. Módosítások metaverzum-objektum, amikor a szinkronizálási motor hajthatja végre az alábbi műveletek bármelyikét a kiépítési folyamat részeként:
 
-* Hozzon létre a csatlakoztatott objektumainak, ahol a metaverzum-objektum egy újonnan létrehozott exportálási objektum kapcsolódik.
-* Nevezze át a csatlakoztatott objektum.
-* Tartományról való leválasztás metaverzum-objektum és az objektumok létrehozása kilépett objektum közötti hivatkozásokat.
+- Hozzon létre a csatlakoztatott objektumainak, ahol a metaverzum-objektum egy újonnan létrehozott exportálási objektum kapcsolódik.
+- Nevezze át a csatlakoztatott objektum.
+- Tartományról való leválasztás metaverzum-objektum és az objektumok létrehozása kilépett objektum közötti hivatkozásokat.
 
 Szükséges, hozzon létre egy új összekötő-objektumot a szinkronizálási motor, az átmeneti tárolási objektum, amely a metaverzum-objektum kapcsolódik-e mindig exportálási objektumot, mert az objektum még nem létezik a csatlakoztatott adatforrás.
 
@@ -260,4 +260,5 @@ Például ha a szinkronizálási motor exportálja értéke 5, a csatlakoztatott
 Tudjon meg többet a [Azure AD Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációja.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).
+
 

@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
 ms.openlocfilehash: 122282d168246e34aaa4a6369f7433b167355887
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152994"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60416738"
 ---
 # <a name="configure-dns-to-access-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Biztonságos LDAP (LDAPS) használatával az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz eléréséhez DNS konfigurálása
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 Teljes [3. feladat: az Azure portal használatával a felügyelt tartomány secure LDAP engedélyezése](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 
-## <a name="task-4-configure-dns-to-access-the-managed-domain-from-the-internet"></a>4. feladat: A felügyelt tartomány elérését az internetről érkező DNS konfigurálása
+## <a name="task-4-configure-dns-to-access-the-managed-domain-from-the-internet"></a>4. feladat: A DNS konfigurálása a felügyelt tartomány internetről való elérésére
 > [!TIP]
 > **Nem kötelező feladat** – Ha nem tervezi elérni a felügyelt tartományra LDAPS-t az interneten keresztül, hagyja ki ezt a konfigurációs feladatot.
 >

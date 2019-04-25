@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
 ms.openlocfilehash: 40ff2339ad34a72079109317bf0a89dfbc6458e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60232761"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez
 
@@ -229,7 +229,7 @@ Ha egy lemezt egy virtuális Géphez van csatlakoztatva, bizonyos API-műveletek
 
 Az alábbi korlátozások érvényesek a prémium szintű storage blob-pillanatfelvételek:
 
-| Prémium szintű tárolási kapacitása | Érték |
+| Prémium szintű tárolási kapacitása | Value |
 | --- | --- |
 | Blobonkénti pillanatképek maximális száma | 100 |
 | A pillanatképek a tárfiókok kapacitásával<br>(Az adatok a pillanatképek csak tartalmazza. Nem tartalmaznak adatokat alap blob.) | 10 TB |
@@ -259,7 +259,7 @@ A Premium Storage skálázhatósági célértékét beállítása minden prémiu
 
 Az Azure Premium Storage a következő Linux-disztribúciók ellenőrzése. A jobb teljesítmény és a Premium Storage stabilitását azt javasoljuk, frissítse a virtuális gépek ezen verziói legalább egyik (vagy újabb verzióra). A legújabb Linux Integration Services (LIS), 4.0, az Azure-hoz szükséges néhány verziójára. Töltse le, és a egy terjesztési telepítéséhez, az alábbi táblázatban szereplő hivatkozásra. Hogy képek hozzáadása a listához, hogy végezze el az érvényesítési. Vegye figyelembe, hogy az ellenőrzések megjelenítése, hogy a teljesítmény változhat az egyes lemezképek. Teljesítmény függ a számítási feladatok jellemzői, és a lemezkép-beállításokat. Különböző képek amelyek ideálisak a különböző típusú számítási feladatokat.
 
-| Disztribúció | Verzió | Támogatott kernelverzióra | Részletek |
+| Disztribúció | Version | Támogatott kernelverzióra | Részletek |
 | --- | --- | --- | --- |
 | Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
 | Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |

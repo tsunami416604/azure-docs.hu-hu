@@ -1,7 +1,6 @@
 ---
 title: Az Azure HDInsight-alkalmazások közzététele
 description: Ismerje meg, hogyan hozhat létre egy HDInsight-alkalmazás, és közzé kell tennie az Azure piactéren.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,11 +9,11 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: fd6d47d8300872f5bcdf36aec492289f93858504
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814190"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60253505"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Egy HDInsight-alkalmazás közzététele az Azure Marketplace-en
 Egy Azure HDInsight alkalmazást is telepítheti egy Linux-alapú HDInsight-fürtön. Ebből a cikkből megtudhatja, hogyan HDInsight alkalmazás közzététele az Azure piactéren. Az Azure Marketplace közzétételi kapcsolatos általános információkért lásd: [-ajánlat közzététele az Azure Marketplace-en](../marketplace/marketplace-publishers-guide.md).

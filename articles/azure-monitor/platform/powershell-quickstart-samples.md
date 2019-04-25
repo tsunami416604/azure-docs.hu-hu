@@ -9,11 +9,11 @@ ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
 ms.openlocfilehash: 59cb14c86963d956b0bd63f65b10776dff4aa97f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698076"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452721"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Az Azure Monitor PowerShell gyors üzembe helyezési minták
 Ez a cikk mutatja, a minta PowerShell-parancsok segítségével elérheti az Azure Monitor-funkciók.
@@ -140,7 +140,7 @@ E-mailt és webhookot tulajdonságok használatával hozhat létre `New-AzAlertR
 
 A következő táblázat ismerteti a használt paraméterek és értékek metrikával riasztás létrehozásához.
 
-| paraméter | érték |
+| paraméter | value |
 | --- | --- |
 | Name (Név) |simpletestdiskwrite |
 | Ez a riasztási szabály helye |USA keleti régiója |

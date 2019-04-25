@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 73a19fa97a898e2c51912a18f46751e855ee0303
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272087"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60273327"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Oktatóanyag: Az Azure Active Directory-integráció a IMPAC kockázati Managerrel
 

@@ -9,11 +9,11 @@ ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 16f3ad1aa037dca2e7b8c3e68ae952c27b952711
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103026"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60366480"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoporttal
 
@@ -84,19 +84,19 @@ Ezen a lapon **szolgáltató állapota** információt nyújt a szolgáltatói o
 Amikor létrehoz egy új ExpressRoute-kapcsolatcsoportot, a kapcsolatcsoport a következő állapotban van:
 
 Szolgáltató állapota: Nincs kiépítve<BR>
-Kapcsolatcsoport állapota: Engedélyezve
+Kapcsolatcsoport állapota: Enabled
 
 ![Üzembe helyezési folyamatának elindításához](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 A kapcsolatcsoport változik a következő állapotot, amikor a kapcsolatszolgáltató van folyamatban, amely lehetővé teszi az Ön számára:
 
 Szolgáltató állapota: Kiépítés<BR>
-Kapcsolatcsoport állapota: Engedélyezve
+Kapcsolatcsoport állapota: Enabled
 
 ExpressRoute-kapcsolatcsoport segítségével tudja meg a következő állapotban kell lennie:
 
 Szolgáltató állapota: Kiépítve<BR>
-Kapcsolatcsoport állapota: Engedélyezve
+Kapcsolatcsoport állapota: Enabled
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Rendszeresen ellenőrizze a kapcsolatcsoport kulcs állapotát és az állapot
 

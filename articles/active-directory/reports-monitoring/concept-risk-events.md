@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02fc505c8f14f4cc0e486502060a16af47c68bbc
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 4afcbffa778c902c1b32979c69ca91ab0955f739
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439022"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60286860"
 ---
 # <a name="azure-active-directory-risk-events"></a>Az Azure Active Directory kockázati eseményei
 
@@ -52,7 +52,7 @@ Jelenleg az Azure Active Directory észleli hat kockázati események típusai:
 Az insight észlelt kockázati eseményekhez kap az Azure AD-előfizetéshez vannak kötve. 
 
 * Az a **Azure AD Premium P2 kiadás**, a legrészletesebb információkat minden mögöttes észlelés kap. 
-* Az a **Azure AD Premium P1 edition**, a kockázati esemény jelenik meg, amelyek nem tartoznak a licenc **bejelentkezési további észlelt kockázattal rendelkező**.
+* Az a **Azure AD Premium P1 edition**, a speciális észlelések (például ismeretlen bejelentkezési tulajdonságok) a licenc nem tartoznak, és a név alatt jelenik meg **bejelentkezési további észlelt kockázattal rendelkező** . Ezenkívül a kockázati szint és a kockázati részletes mezők rejtve maradnak.
 
 Kockázati események már észlelését jelöli, fontos szempont a védelmet nyújtanak a, miközben lehetősége is van manuálisan ismertetésére vagy megvalósítása az automatikus reakciók feltételes hozzáférési szabályzatok konfigurálásával. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 

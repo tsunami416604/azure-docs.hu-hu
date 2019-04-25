@@ -16,11 +16,11 @@ ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 203c082275dc75a7dcf948eb42a383300955f355
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57858099"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60281141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comm100-live-chat"></a>Oktatóanyag: Az Azure Active Directory-integráció az Comm100 élő csevegés
 

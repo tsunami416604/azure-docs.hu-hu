@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
 ms.openlocfilehash: f9cbf5033d0ffb84959de94db052626dd1d131c8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997952"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311273"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 Customer Engagement kirakat részletei lap
 
@@ -52,7 +52,7 @@ Ha a következő táblázat ismerteti ezen a lapon a mezőket:
 |    **Mező**          |  **Leírás**               |
 |  ---------------      |  ---------------               |
 |  Ágazatok           | Válassza ki a iparágak (legfeljebb két), amely a legjobb alkalmazást igazodnak-e. Ha nincs érvényes, kiválaszthatja a nulla beállítások.  |
-|  Kategóriák           | Válassza ki, amely az alkalmazás a kategóriák. Válassza ki egy és három beállításai között.  |
+|  Categories           | Válassza ki, amely az alkalmazás a kategóriák. Válassza ki egy és három beállításai között.  |
 |  Alkalmazástípus             | Válassza ki a próbaverziót, amelyen engedélyezve van az alkalmazás az appsource-ban. **Ingyenes** azt jelzi, hogy az alkalmazás; díjmentesen használható **Próbaverziós** azt jelzi, hogy az ügyfelek egy rövid ideig; díjmentesen kipróbálhatja az alkalmazás és **kapcsolatfelvételi** azt jelzi, hogy ügyfeleink is kérhető az appsource-ban az alkalmazás-próbaverzióra.  |
 | Az alkalmazáshoz Súgó hivatkozásra | Online dokumentáció vagy az alkalmazás más Súgó-erőforrás URL-címe  |
 | Támogatott országok/régiók | Egy felugró párbeszédpanel lehetővé teszi, hogy a választott a földrajzi régióban, ahol az alkalmazás érhető el.  Globális terjesztés az alapértelmezett érték. |

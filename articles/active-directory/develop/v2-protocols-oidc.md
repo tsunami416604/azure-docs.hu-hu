@@ -19,11 +19,11 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2f4a7f2a4fe0e1ca455b1140e83f31f6b30a7511
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523460"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60250078"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>A Microsoft identity platform és az OpenID Connect protokollal
 
@@ -52,7 +52,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 A `{tenant}` négy értékek valamelyikét hajthatja végre:
 
-| Érték | Leírás |
+| Value | Leírás |
 | --- | --- |
 | `common` |Személyes Microsoft-fiókkal és az Azure AD-ből egy munkahelyi vagy iskolai fiókkal rendelkező felhasználók jelentkezhetnek be az alkalmazáshoz. |
 | `organizations` |Csak a felhasználók munkahelyi vagy iskolai fiókok Azure AD-ből az alkalmazás jelentkezhetnek be. |

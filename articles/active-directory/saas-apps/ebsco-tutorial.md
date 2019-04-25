@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 2753daf225016d3bd8e07383193a1260b40a36d5
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564975"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60280183"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező EBSCO
 

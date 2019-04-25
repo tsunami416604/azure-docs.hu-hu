@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: kumud
 ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53142019"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60516682"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Hozzon létre egy nyilvános load balancer konfigurálása IPv6-tal Azure CLI használatával
 
@@ -46,11 +46,11 @@ A következő lépésekkel egy nyilvános terheléselosztó létrehozása az Azu
 
 A terheléselosztó üzembe helyezéséhez, hozzon létre és konfigurálja a következő objektumokat:
 
-* **Előtérbeli IP-konfigurációhoz**: a bejövő hálózati forgalomhoz nyilvános IP-címeket tartalmazza.
-* **Háttér címkészletet**: hálózati adaptereket (NIC) tartalmaz a virtuális gépek a terheléselosztóról érkező hálózati forgalom fogadására.
-* **Terheléselosztási szabályok**: olyan szabályokat, amelyek a terheléselosztó nyilvános portját a háttér-címkészletben levő porthoz tartalmaz.
-* **Bejövő NAT-szabályok**: tartalmazza a hálózati címfordítás (NAT) szabályait, amelyek a terheléselosztó nyilvános portjait egy adott virtuális gép a háttér-címkészletben levő porthoz.
-* **Mintavételek**: a háttér-címkészletet a virtuálisgép-példányok rendelkezésre állásának ellenőrzésére használt állapotfigyelő mintavételezőket tartalmaz.
+* **Előtérbeli IP-konfigurációhoz**: A bejövő hálózati forgalomhoz nyilvános IP-címeket tartalmazza.
+* **Háttér címkészletet**: Hálózati adaptereket (NIC) tartalmaz a virtuális gépek a terheléselosztóról érkező hálózati forgalom fogadására.
+* **Terheléselosztási szabályok**: Olyan szabályokat, amelyek a terheléselosztó nyilvános portját a háttér-címkészletben levő porthoz tartalmaz.
+* **Bejövő NAT-szabályok**: Hálózati címfordítás (NAT) szabályait, amelyek a terheléselosztó nyilvános portjait egy adott virtuális gép a háttér-címkészletben levő porthoz tartalmazza.
+* **Mintavételek**: A háttér-címkészletet a virtuálisgép-példányok rendelkezésre állásának ellenőrzésére használt állapotfigyelő mintavételezőket tartalmaz.
 
 ## <a name="set-up-azure-cli"></a>Az Azure parancssori felület beállítása
 

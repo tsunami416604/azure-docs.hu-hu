@@ -13,11 +13,11 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 8036a8694bb8c8d0db236eba831f13dc2bf47d0a
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576820"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311665"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Adatok átalakítása a Databricks-jegyzetfüzet futtatása
 
@@ -60,7 +60,7 @@ A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulaj
 |Tulajdonság|Leírás|Szükséges|
 |---|---|---|
 |név|A folyamat a tevékenység neve.|Igen|
-|leírás|A tevékenység leírása leíró szöveg.|Nem|
+|description|A tevékenység leírása leíró szöveg.|Nem|
 |type|Databricks-jegyzetfüzetek tevékenységeit tevékenység típus DatabricksNotebook.|Igen|
 |linkedServiceName|Amelyen futtatja a Databricks-jegyzetfüzetek Databricks társított szolgáltatás neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.|Igen|
 |notebookPath|A jegyzetfüzet futtatása a Databricks-munkaterület az abszolút elérési útja. Az elérési út perjellel kell kezdődnie.|Igen|

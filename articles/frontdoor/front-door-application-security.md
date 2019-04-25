@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: c7b99548e2fe1ad0c1cab39953e28a97e7ebff4b
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984388"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60193917"
 ---
 # <a name="application-layer-security-with-front-door"></a>A bejárati ajtajának alkalmazásbiztonsági réteg
 Azure bejárati ajtajának Service lehetővé teszi a webes alkalmazás védelmi funkció révén a webes alkalmazások és a hálózati támadások és SQL-injektálás vagy az idegen hely parancsfájl-kezelési (XSS) gyakori webes biztonsági rések támadások ellen. Engedélyezett http (s) az előtér-kiszolgálókon, bejárati ajtajának application layer biztonsági globálisan elosztott és mindig, leállításával rosszindulatú támadások, az Azure hálózati peremhálózati, milyen távolságra származó a háttérrendszerekre. A fokozott biztonság és a teljesítmény optimalizálása bejárati ajtajának gyors biztosít, és biztonságos webes élmény a végfelhasználók számára.

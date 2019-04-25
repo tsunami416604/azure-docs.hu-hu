@@ -11,11 +11,11 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279873"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311940"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Áttelepítés a nagyvállalati szerződés a Microsoft ügyfél-megállapodás API-k
 
@@ -180,14 +180,14 @@ A tulajdonság nevét, amely tartalmazza a használati rekordokból álló tömb
 | Használt szolgáltatás | consumedService | Pontos karakterlánc-értékek eltérőek lehetnek. |
 | Használt szolgáltatás azonosítója | None | &nbsp; |
 | Költséghely | costCenter | &nbsp; |
-| Dátum- és usageStartDate | dátum | &nbsp;  |
+| Dátum- és usageStartDate | date | &nbsp;  |
 | Nap | None | Kezdő dátum naponta elemzi. |
 | Részleg azonosítója | invoiceSectionId | Pontos értékek eltérőek. |
 | Részleg neve | invoiceSectionName | Pontos karakterlánc-értékek eltérőek lehetnek. Szükség esetén konfigurálja a számla szakaszok a részlegek, megfelelően. |
 | ExtendedCost és költség | costInBillingCurrency | &nbsp;  |
 | Példány azonosítója | resourceId | &nbsp;  |
 | Ismétlődő költség | None | &nbsp;  |
-| Földrajzi egység | location | &nbsp;  |
+| Location egység | location | &nbsp;  |
 | Fogyasztásmérő kategóriája | meterCategory | Pontos karakterlánc-értékek eltérőek lehetnek. |
 | Fogyasztásmérő azonosítója | meterId | Pontos karakterlánc-értékek eltérnek. |
 | Fogyasztásmérő neve | meterName | Pontos karakterlánc-értékek eltérőek lehetnek. |
@@ -218,7 +218,7 @@ A tulajdonság nevét, amely tartalmazza a használati rekordokból álló tömb
 | Előfizetés neve | subscriptionName | &nbsp;  |
 | Címkék | tags | A tags tulajdonságnak gyökérobjektum, hogy a beágyazott properties tulajdonság nem érvényes. |
 | Mértékegység | unitOfMeasure | Pontos karakterlánc-értékek eltérnek. |
-| usageEndDate | dátum | &nbsp;  |
+| usageEndDate | date | &nbsp;  |
 | Év | None | Kezdő dátum az év elemzi. |
 | (új) | billingCurrency | A díj használt pénznem. |
 | (új) | billingProfileId | A számlázási profilja (megegyezik a regisztrációs) egyedi azonosítója. |

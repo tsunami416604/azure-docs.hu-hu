@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: lyrana
 ms.openlocfilehash: 4ea4479d77e06940bed50859341952ffbcbbda46
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711055"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533827"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>Csatlakozás és hitelesítés API-k
 
@@ -25,11 +25,11 @@ Az alkalmazás vagy szolgáltatás az Azure AD-vel történő integrálásához 
 
 [Öt elsődleges alkalmazási](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) az Azure AD által támogatott:
 
-* Egyoldalas alkalmazás (SPA): egy felhasználónak szüksége van a bejelentkezni egy egyoldalas alkalmazás Azure AD által védett.
-* Webes alkalmazás webböngészőben: egy felhasználónak jelentkezzen be az Azure AD által védett webalkalmazás van szüksége.
-* Natív alkalmazás webes API-hoz: egy natív alkalmazást, amely egy telefonon, táblagépen vagy számítógépen futtat egy felhasználói erőforrásokat lekérni a webes API-k az Azure AD által védett hitelesítenie kell.
-* Webes alkalmazás webes API-hoz: webalkalmazás kell-erőforrásokat az Azure AD által biztonságossá tett webes API.
-* Webes API-hoz démon vagy a kiszolgáló alkalmazása: egy démon, alkalmazás vagy a nem a webes felhasználói felületének kiszolgálói alkalmazás kell-erőforrásokat az Azure AD által biztonságossá tett webes API.
+* Egyoldalas alkalmazás (SPA): A felhasználónak kell jelentkezzen be egy egyoldalas alkalmazás Azure AD által védett.
+* Webböngésző-webalkalmazáshoz: A felhasználónak kell egy Azure AD által védett webes alkalmazásba való bejelentkezés.
+* Natív alkalmazás webes API-hoz: Egy natív alkalmazást, amely egy telefonon, táblagépen vagy számítógépen futtat egy felhasználói erőforrásokat lekérni a webes API-k az Azure AD által védett hitelesítenie kell.
+* A webalkalmazás, webes API-hoz: Egy webalkalmazás kell kapnia az erőforrások az Azure AD által biztonságossá tett webes API.
+* Alkalmazás démon, vagy egy kiszolgáló webes API-hoz: A démon alkalmazások vagy kiszolgálói alkalmazás nem a webes felhasználói felület kell erőforrások lekérése az Azure AD által védett webes API-hoz.
 
 A Windows Azure-hitelesítési tár az Active Directory-jogkivonatok beszerzésére számos lehetőséget kínál. A szalagtár és a kód minták a részletekért lásd: [Ez a cikk](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
 

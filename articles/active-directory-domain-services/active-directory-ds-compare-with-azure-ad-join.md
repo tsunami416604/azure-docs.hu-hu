@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: ergreenl
 ms.openlocfilehash: d4f50ea89f2623d387fb77acb09e609def547468
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178936"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359432"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Válasszon az Azure Active Directory join és az Azure Active Directory Domain Services
 Ez a cikk ismerteti az Azure Active Directory (AD) való csatlakozás és az Azure AD tartományi szolgáltatások és a választja, a használati esetek alapján segít közötti különbségeket.
@@ -58,7 +58,7 @@ A tartományhoz csatlakozó a felhasználói hitelesítés NTLM vagy Kerberos-hi
 |:---| --- | --- |
 | Az eszköz által vezérelt | Azure AD | Az Azure AD tartományi szolgáltatásokkal felügyelt tartományban |
 | A címtárban ábrázolás | Eszközobjektumok az Azure AD-címtárban. | Számítógép-objektumok az AAD-DS-ben a felügyelt tartományban. |
-| Hitelesítés | OAuth és OpenID Connect-alapú protokollok | A Kerberos, NTLM-protokollok |
+| Authentication | OAuth és OpenID Connect-alapú protokollok | A Kerberos, NTLM-protokollok |
 | Kezelés | Az Intune mobileszköz-felügyeleti (MDM) szoftver | Csoportházirend |
 | Hálózat | Az interneten keresztül működik | Szükséges a gépet a felügyelt tartomány ugyanazon virtuális hálózaton.|
 | Ideális választás... | Végfelhasználói mobil- vagy asztali eszközök | Server virtual machines gépek az Azure-ban |

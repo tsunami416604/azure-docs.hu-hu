@@ -3,7 +3,7 @@ title: Események az Application Insights az Azure Active Directory B2C használ
 description: Ismerje meg az eseménynaplókat az Application insights szolgáltatásban az Azure AD B2C felhasználói utak engedélyezése egyéni házirendek (előzetes verzió) használatával.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
@@ -11,11 +11,11 @@ ms.date: 10/12/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 51342a7544295b465d1f2dfc3e1b27d8285b3588
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403816"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60384816"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Nyomon követheti a felhasználói viselkedés az Azure Active Directory B2C az Application Insights használatával
 

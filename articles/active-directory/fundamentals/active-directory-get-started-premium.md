@@ -14,11 +14,11 @@ ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed01b2b122724ba1428fb685bb3f1f52b7099a7b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287060"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60249666"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Regisztráljon az Azure Active Directory Premium-kiadások
 Vásárol, és a prémium szintű Azure Active Directory (Azure AD) kiadások társítása az Azure-előfizetés. Ha új Azure-előfizetés létrehozására van szüksége, aktiválnia kell a licenccsomagját és az Azure AD-szolgáltatás hozzáférését is.

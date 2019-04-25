@@ -1,6 +1,6 @@
 ---
-title: Az Azure szakasz felhasználói felületi elem |} Microsoft Docs
-description: Azure-portálon a Microsoft.Common.Section felhasználói felületi elem ismerteti.
+title: Az Azure szakasz felhasználói felületi elemben |} A Microsoft Docs
+description: Az Azure portal a Microsoft.Common.Section felhasználói felületi elem ismerteti.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 90ffae3dd8b05041c34d766e464eb68f793f6066
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c89b45dd4d8e6c2964f3d2bcbb6c3cef445c79e6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062978"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251911"
 ---
-# <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section felhasználói felületi elem
-A vezérlő, amely csoportosítja a fejléc alatt egy vagy több elemet.
+# <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI element
+Egy olyan vezérlőelem, amely egy vagy több elemet a fejléc alatt csoportosítja.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
 ![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
@@ -49,18 +49,18 @@ A vezérlő, amely csoportosítja a fejléc alatt egy vagy több elemet.
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- `elements` rendelkeznie kell legalább egy elemet, és rendelkezhetnek kivételével minden elemtípus `Microsoft.Common.Section`.
+- `elements` rendelkeznie kell legalább egy elemet, és lehet kivételével minden elemtípus `Microsoft.Common.Section`.
 - Ez az elem nem támogatja a `toolTip` tulajdonság.
 
 ## <a name="sample-output"></a>Példa kimenet
-A kimeneti értékek elemek eléréséhez `elements`, használja a [basics()](create-uidefinition-functions.md#basics) vagy [steps()](create-uidefinition-functions.md#steps) funkciók és felépítését:
+A kimeneti értékeket az elemek eléréséhez `elements`, használja a [basics()](create-uidefinition-functions.md#basics) vagy [steps()](create-uidefinition-functions.md#steps) függvények és felépítését:
 
 ```json
 steps('configuration').section1.text1
 ```
 
-Típusú elemek `Microsoft.Common.Section` nincs kimeneti értékűek magukat.
+Elementy typu `Microsoft.Common.Section` nincsenek kimeneti értékekre is van.
 
 ## <a name="next-steps"></a>További lépések
-* A bevezetést UI-definíciók létrehozásáról lásd: [Ismerkedés a CreateUiDefinition](create-uidefinition-overview.md).
-* Általános tulajdonságok felhasználói felületi elemei ismertetését lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
+* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).

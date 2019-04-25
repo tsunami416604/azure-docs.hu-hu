@@ -3,7 +3,7 @@ title: Dátum-jogcímek átalakítása példák az identitás élmény keretrend
 description: Dátum jogcímek átalakítása példák az identitás élmény keretrendszer sémát az Azure Active Directory B2C a.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: d36abb669490b3d3f6818c018b3844a82ecd0617
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564789"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60384234"
 ---
 # <a name="date-claims-transformations"></a>Dátum jogcím-átalakítás
 
@@ -29,8 +29,8 @@ Ellenőrzi, hogy egy dátum és idő jogcím (karakterlánc) adattípusa későb
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | leftOperand | sztring | Első jogcím típusa, amely a második jogcím későbbinek kell lennie. |
-| Bemeneti jogcím | rightOperand | sztring | Második jogcím típusa, ami az első jogcím korábbinak kell lennie. |
+| Bemeneti jogcím | leftOperand | string | Első jogcím típusa, amely a második jogcím későbbinek kell lennie. |
+| Bemeneti jogcím | rightOperand | string | Második jogcím típusa, ami az első jogcím korábbinak kell lennie. |
 | InputParameter | AssertIfEqualTo | logikai | Itt adhatja meg, hogy ezt az előfeltételt kell átadnia, ha a bal oldali operandusához megegyezik a jobb oldali operandusnak. |
 | InputParameter | AssertIfRightOperandIsNotPresent | logikai | Itt adhatja meg, hogy ezt az előfeltételt kell átadnia, ha a jobb oldali operandusa nem található. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | Itt adhatja meg, hogy a kettő között ezredmásodpercben kell figyelembe venni az időpontokat időpontok egyenlő (például fiók torzulása óráját). |
@@ -91,7 +91,7 @@ Konvertálja a **dátum** takar, egy **DateTime** takar. A jogcímek átalakít�
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | Bemeneti jogcím | dátum | A ClaimType konvertálni. |
+| Bemeneti jogcím | Bemeneti jogcím | date | A ClaimType konvertálni. |
 | OutputClaim | outputClaim | Dátum és idő | A takar, amelyek a ClaimsTransformation meghívása után jön létre. |
 
 A következő példa bemutatja a jogcím átalakítása `dateOfBirth` (dátum adattípusú) egy másik jogcímek `dateOfBirthWithTime` (dátum/idő adattípussal).
@@ -143,7 +143,7 @@ Megállapításához, hogy egy dátum és idő később korábbi vagy azzal egye
 | ---- | ----------------------- | --------- | ----- |
 | Bemeneti jogcím | firstDateTime | Dátum és idő | Első dátuma és időpontja korábbi vagy későbbi, mint a második dátum és idő akár összehasonlítására. NULL érték kivételt jelez. |
 | Bemeneti jogcím | secondDateTime | Dátum és idő | A második dátum és idő korábbi vagy későbbi, mint az első dateTime akár összehasonlítására. NULL érték az aktuális datetTime számít. |
-| InputParameter | Operátor | sztring | Következő értékek egyikét: ugyanazt, későbbi, mint vagy régebbi. |
+| InputParameter | Operátor | string | Következő értékek egyikét: ugyanazt, későbbi, mint vagy régebbi. |
 | InputParameter | timeSpanInSeconds | int | Adja hozzá a timespan első dátuma és időpontja. |
 | OutputClaim | Eredmény | logikai | A takar, amelyek a ClaimsTransformation meghívása után jön létre. |
 

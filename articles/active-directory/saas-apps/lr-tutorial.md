@@ -17,11 +17,11 @@ ms.date: 03/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cddd239bba7d9b0f0a90e23f146263777806b187
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192302"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60256260"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező LoginRadius
 

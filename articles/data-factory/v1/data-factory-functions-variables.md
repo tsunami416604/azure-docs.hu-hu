@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523936"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486515"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Az Azure Data Factory - függvények és rendszerváltozók
 > [!NOTE]
@@ -78,11 +78,11 @@ Lásd: [egyéni dátum- és időformátum karakterláncokat](https://msdn.micros
 ### <a name="functions"></a>Functions
 Az alábbi táblázatok sorolják fel az Azure Data Factoryban összes funkció áttekintésével:
 
-| Kategória | Függvény | Paraméterek | Leírás |
+| Category | Függvény | Paraméterek | Leírás |
 | --- | --- | --- | --- |
 | Time |AddHours(X,Y) |X: DateTime <br/><br/>Y: int |Hozzáadja az adott idő alatt X Y óra. <br/><br/>Például: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Time |AddMinutes(X,Y) |X: DateTime <br/><br/>Y: int |X Y perc hozzá.<br/><br/>Például: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour(X) |X: Dátum és idő |Lekérdezi a kezdési időpontot az X óra összetevőjét által jelölt óra. <br/><br/>Például: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Time |StartOfHour(X) |X: DateTime |Lekérdezi a kezdési időpontot az X óra összetevőjét által jelölt óra. <br/><br/>Például: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Dátum |AddDays(X,Y) |X: DateTime<br/><br/>Y: int |X, Y napot ad. <br/><br/>Példa: 9/15/2013 du. 12:00:00 + 2 nap = 9/17/2013 12:00:00 PM.<br/><br/>Akkor is napok kivonása túl negatív számként Y megadásával.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Dátum |AddMonths(X,Y) |X: DateTime<br/><br/>Y: int |X Y hónap hozzáadása.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Hónap túl kivonása Y-t egy negatív szám adja meg.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Dátum |AddQuarters(X,Y) |X: DateTime <br/><br/>Y: int |Y hozzáadja * X 3 hónap.<br/><br/>Például: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
@@ -97,7 +97,7 @@ Az alábbi táblázatok sorolják fel az Azure Data Factoryban összes funkció 
 | Dátum |StartOfDay(X) |X: DateTime |Lekérdezi a nap összetevőt X paraméter által jelölt nap kezdete.<br/><br/>Példa: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
 | DateTime |FROM(X) |X: String |Egy dátum-idő X karakterláncot elemezni. |
 | DateTime |Ticks(X) |X: DateTime |Lekérdezi a órajel során végbemenő X paraméter tulajdonságát. Egy osztásjelek 100 nanoszekundumban egyenlő. Ez a tulajdonság értékét a számát, amely 12:00:00 éjféltől. január 1. óta eltelt 0001 jelöli. |
-| Szöveg |Format(X) |X: Karakterlánc-változóhoz |Formázza a szöveget (használata `\\'` escape-kombinációt `'` karakter).|
+| Text |Format(X) |X: Karakterlánc-változóhoz |Formázza a szöveget (használata `\\'` escape-kombinációt `'` karakter).|
 
 > [!IMPORTANT]
 > Egy másik függvényen belül a funkció használatakor nem kell használni **$$** a belső függvény előtag. For example: $$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)). Ebben a példában láthatja, hogy **$$** előtag nem használatos a **Time.AddHours** függvény. 

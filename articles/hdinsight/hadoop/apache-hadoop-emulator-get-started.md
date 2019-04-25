@@ -3,7 +3,6 @@ title: Ismerje meg, az Apache Hadoop-tesztkörnyezet - emulátor – Azure HDIns
 description: 'Az Apache Hadoop-ökoszisztéma használatáról tanulási indításához állíthat be egy Hadoop-tesztkörnyezet a hortonworks által biztosított-beli virtuális gépen. '
 keywords: hadoop-emulátorban, a hadoop-tesztkörnyezet
 ms.reviewer: jasonh
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
@@ -11,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
 ms.openlocfilehash: 1da676787eeee1eb75095a5e3a6b3f40056567ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60536312"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Az Apache Hadoop-tesztkörnyezet, egy-egy virtuális gépen emulátoron használatának első lépései
 

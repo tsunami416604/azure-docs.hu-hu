@@ -16,11 +16,11 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 49e70eab0b9824742a67e4446c5ff6f0a9a366ec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894665"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60275599"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Oktatóanyag: Az Azure Active Directory integrációja az üzemeltetett grafit
 

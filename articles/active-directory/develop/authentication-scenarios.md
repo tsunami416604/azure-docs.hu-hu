@@ -19,11 +19,11 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1d54347b9a3ccc72cfd5b88400d699d93132fbf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785570"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299888"
 ---
 # <a name="what-is-authentication"></a>Mi a hitelesítés?
 
@@ -130,7 +130,7 @@ Az alábbi táblázat röviden a Microsoft identity platform által kibocsátott
 | Bérlőazonosító | A jogkivonatot kibocsátó címtárbérlő megváltoztathatatlan egyedi azonosítóját adja meg. |
 | Jogkivonat élettartama | A jogkivonat érvényességi idejét határozza meg. |
 | Felhasználó egyszerű neve | Az alany egyszerű felhasználónevét adja meg. |
-| Verzió | A jogkivonat verziószámát adja meg. |
+| Version | A jogkivonat verziószámát adja meg. |
 
 ## <a name="next-steps"></a>További lépések
 

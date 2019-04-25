@@ -7,18 +7,18 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/02/2018
 ms.openlocfilehash: e79c83ecb17c4dcd11f7ccbecded59e7d1d13dfd
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542461"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60525775"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>A MySQL-adatbázis migrálása az Azure Database for MySQL-hez memóriakép és visszaállítás használatával
 Ez a cikk azt ismerteti, biztonsági mentése és visszaállítása-adatbázisok az Azure Database for MySQL-hez két gyakori módjai
 - Memóriakép és visszaállítás a parancssorból (használatával az mysqldump) 
 - Memóriakép és visszaállítás PHPMyAdmin használatával 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 Ez az útmutató elvégezhető, szüksége lesz:
 - [Az Azure-adatbázis létrehozása MySQL-kiszolgálóhoz - Azure-portálon](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) parancssori segédprogram olyan gépre telepíteni.
@@ -106,7 +106,7 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p test
 
 ## <a name="export-using-phpmyadmin"></a>Exportálás PHPMyAdmin használatával
 Szeretné exportálni, előfordulhat, hogy a már telepített helyi környezete általános eszköz phpMyAdmin használhatja. A MySQL-adatbázis PHPMyAdmin használatával exportálása:
-1. Nyissa meg a phpMyAdmin.
+1. Open phpMyAdmin.
 2. Válassza ki az adatbázist. Kattintson a bal oldali listában található az adatbázis nevét. 
 3. Kattintson a **exportálása** hivatkozásra. Az adatbázis-memóriakép megtekintéséhez megjelenik egy új lap.
 4. Az exportálási területen kattintson a **válassza ki az összes** hivatkozás kiválasztása a táblák az adatbázisban. 
@@ -115,7 +115,7 @@ Szeretné exportálni, előfordulhat, hogy a már telepített helyi környezete 
 
 ## <a name="import-using-phpmyadmin"></a>Importálás PHPMyAdmin használatával
 Az adatbázis importálása a hasonló exportálása. A következő műveleteket hajthatja végre:
-1. Nyissa meg a phpMyAdmin. 
+1. Open phpMyAdmin. 
 2. A phpMyAdmin telepítőjében kattintson **Hozzáadás** hozzáadása az Azure Database for MySQL-kiszolgálóhoz. Adja meg a kapcsolat adatait, és a bejelentkezési adatait.
 3. Hozzon létre egy megfelelő nevű lapfüleken adatbázist, és jelölje ki a képernyő a bal oldalon. A meglévő adatbázis újraírási, kattintson az adatbázis nevét, jelölje be a tábla neve melletti jelölőnégyzeteket, majd válassza **Drop** törli a meglévő táblákat. 
 4. Kattintson a **SQL** hivatkozásra kattintva megjelenítheti az oldal, ahol az SQL-parancsokat beírhatja, vagy az SQL-fájl feltöltése. 

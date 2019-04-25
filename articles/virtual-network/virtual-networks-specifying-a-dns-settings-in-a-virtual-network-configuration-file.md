@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
 ms.openlocfilehash: 36f7ed9b02b66718327c1a05a6cf29eedf39e7a5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248385"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60232867"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>DNS-beállítások megadása egy virtuális hálózat konfigurációs fájljában
-A hálózati konfigurációs fájlt tartalmaz két elemet, adja meg a tartománynévrendszer (DNS) beállítások segítségével: **DnsServers** és **DnsServerRef**. DNS-kiszolgálók listáját hozzáadhat saját IP-címek megadásával és nevek hivatkozhat a **DnsServers** elemet. Ezután egy **DnsServerRef** elemet adja meg, melyik DNS-kiszolgálói bejegyzésekkel az DnsServers elemből használják a virtuális hálózaton belüli különböző hálózati helyek.
+A hálózati konfigurációs fájlt a két elemet, adja meg a tartománynévrendszer (DNS) beállítások segítségével rendelkezik: **DnsServers** és **DnsServerRef**. DNS-kiszolgálók listáját hozzáadhat saját IP-címek megadásával és nevek hivatkozhat a **DnsServers** elemet. Ezután egy **DnsServerRef** elemet adja meg, melyik DNS-kiszolgálói bejegyzésekkel az DnsServers elemből használják a virtuális hálózaton belüli különböző hálózati helyek.
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 

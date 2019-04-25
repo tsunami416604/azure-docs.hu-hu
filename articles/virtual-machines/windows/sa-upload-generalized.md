@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cd81eb3d62332bba67f0056a6f7b49279bc50c4f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5b38d022d372e7d35ba2dbeaef90660ce95f73fa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788812"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60250729"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Általános VHD feltöltése az új virtuális gép létrehozása Azure-bA
 
@@ -31,7 +31,7 @@ Ha szeretne egy virtuális gép létrehozása speciális virtuális merevlemezb�
 
 Ez a témakör ismerteti a storage-fiókot használni, de javasoljuk, hogy ügyfeleink áthelyezése a Managed Disks használata esetén inkább. Bemutatja, hogyan készítheti elő, töltse fel, és hozzon létre egy új virtuális gép felügyelt lemezeket használ a teljes lépésenkénti útmutatóért lásd: [létrehozása általános virtuális merevlemezből új virtuális gép az Azure Managed Disks-bA feltöltött](upload-generalized-managed.md).
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="prepare-the-vm"></a>A virtuális gép előkészítése
 

@@ -16,11 +16,11 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202486"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60472453"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele
 
@@ -82,7 +82,7 @@ Már az Azure-szolgáltatások vagy az Office 365-bérlő kezelése esetén nem 
 Ha a tartománynév tulajdonjogának ellenőrzéséhez az Azure AD a tartománynév távolít el a nem felügyelt bérlőt, és áthelyezi a meglévő bérlőhöz. Külső rendszergazdai átvétellel egy nem felügyelt címtár DNS TXT érvényesítési leírt eljárást belső rendszergazdai átvétellel van szükség. A különbség az, hogy a következő vannak is átkerül a tartomány nevét:
 
 - Felhasználók
-- Előfizetések
+- Subscriptions
 - Licenc-hozzárendelések
 
 ### <a name="support-for-external-admin-takeover"></a>Külső rendszergazdai átvétellel támogatása
