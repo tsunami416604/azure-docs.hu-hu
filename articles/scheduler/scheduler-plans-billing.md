@@ -9,23 +9,23 @@ ms.reviewer: klam
 ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 74f13628b62d53a84b4d19255a30a6bc4a7367ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3a8664497d3d082ec1c7f584188854991e872d50
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974289"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60344308"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Csomagok és számlázás az Azure Scheduler
 
 > [!IMPORTANT]
-> [Az Azure Logic Apps](../logic-apps/logic-apps-overview.md) kivezetjük, az Azure Scheduler lecseréli. Feladatok ütemezése [helyette próbálkozzon az Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> A kivezetésre kerülő Azure Scheduler helyébe az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) lép. Feladatok ütemezéséhez [próbálja ki inkább az Azure Logic Apps szolgáltatást](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
 ## <a name="job-collection-plans"></a>Feladat gyűjtési terveket
 
 Az Azure Scheduler feladatgyűjtemények feladatok egy adott számot tartalmaz. A feladatgyűjtemény a számlázható entitás, és Standard, P10 prémium és P20 prémium szintű csomagokat, amelyek leírását itt érhető el: 
 
-| Feladatgyűjtemény | Maximális feladatok száma gyűjteményenként | Ismétlődési maximum | Feladatgyűjtemények maximális száma előfizetésenként | Korlátok | 
+| Feladatgyűjtemény | Maximális feladatok száma gyűjteményenként | Ismétlődési maximum | Feladatgyűjtemények maximális száma előfizetésenként | Limits | 
 |:--- |:--- |:--- |:--- |:--- |
 | **Standard** | 50 feladatok száma gyűjteményenként | Egy tranzakció percenként. Nem futtatható, mint egy perc alatt egy gyakrabban feladatok. | Azure-előfizetések Standard akár 100 feladatgyűjtemény rendelkezhet. | A Scheduler teljes funkciókészlete a hozzáférést | 
 | **P10 prémium** | 50 feladatok száma gyűjteményenként | Egy tranzakció percenként. Nem futtatható, mint egy perc alatt egy gyakrabban feladatok. | Minden Azure-előfizetés legfeljebb 10 000 P10 prémium feladatgyűjtemény rendelkezhet. A további gyűjteményekhez <a href="mailto:wapteams@microsoft.com">lépjen kapcsolatba velünk</a>. | A Scheduler teljes funkciókészlete a hozzáférést |

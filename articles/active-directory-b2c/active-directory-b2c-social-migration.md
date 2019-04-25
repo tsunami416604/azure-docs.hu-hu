@@ -3,7 +3,7 @@ title: Az Azure Active Directory B2C közösségi identitású felhasználók á
 description: Alapfogalmakat tárgyalja a közösségi identitású felhasználók Azure AD B2C-be Graph API-val, az áttelepítés.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 12b464d9b6bd09acb9c93ab1de0ba178f28a778a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894901"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316102"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Felhasználók migrálása közösségi identitásokkal
 Ha azt tervezi, az identitásszolgáltató migrálása az Azure AD B2C-vel, szükség lehet a közösségi identitású felhasználók áttelepítése. Ez a cikk azt ismerteti, hogyan telepítheti át meglévő közösségi identitások fiókokat, például: Facebook, a LinkedIn, a Microsoft és a Google fiókok Azure AD B2C-t. Ez a cikk az összevont identitások kialakítása, is vonatkozik, azonban ezek áttelepítések kevésbé gyakoriak.

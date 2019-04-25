@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: kumud
 ms.openlocfilehash: 6dea36afd3a426bbbd0c28a96f21ccad1a82ea88
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997993"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329859"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Oktatóanyag: Javíthatja a Traffic Managert használva a webhely-válasz
 
@@ -61,7 +61,7 @@ Ebben a szakaszban két virtuális gépet hoz létre az **USA keleti régiója**
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Erőforráscsoport| Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupTM1* nevet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+    |Location egység| Válassza az **USA keleti régiója** lehetőséget.|
     |||
 
 4. Válasszon egy virtuálisgép-méretet a **Méret kiválasztása** alatt.
@@ -78,10 +78,10 @@ Ebben a szakaszban két virtuális gépet hoz létre az **USA keleti régiója**
 
 7. Végezze el ismét az 1–6. lépést az alábbi módosításokkal:
 
-    |Beállítás|Érték|
+    |Beállítás|Value|
     |---|---|
     |Erőforráscsoport | Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupTM2* nevet.|
-    |Hely|Nyugat-Európa|
+    |Location egység|Nyugat-Európa|
     |Virtuális gép neve | myIISVMWEurope|
     |Virtuális hálózat | Válassza a **Virtuális hálózat** elemet a **Virtuális hálózat létrehozása** területen. A **Név** szakaszban adja meg a *myVNet2* kifejezést, az alhálózat nevének pedig a  *mySubnet* kifejezést.|
     |||
@@ -154,7 +154,7 @@ Ebben a szakaszban létrehoz egy virtuális Gépet (*mVMEastUS* és *myVMWestEur
 
 7. Végezze el ismét az 1–5. lépést az alábbi módosításokkal:
 
-    |Beállítás|Érték|
+    |Beállítás|Value|
     |---|---|
     |Virtuális gép neve | *myVMWEurope*|
     |Erőforráscsoport | Válassza a **Meglévő** lehetőséget, majd írja be a *myResourceGroupTM2* kifejezést|
@@ -175,7 +175,7 @@ Hozzon létre egy Traffic Manager-profilt, amely irányítja a felhasználói ad
     | Útválasztási metódus          | Válassza ki a **teljesítmény** esetén használt útválasztási módszer.                                       |
     | Előfizetés            | Válassza ki előfizetését.                          |
     | Erőforráscsoport          | Válassza ki **új létrehozása** , és adja meg *myResourceGroupTM1*. |
-    | Hely                | Válassza az **USA keleti régiója** lehetőséget. Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan üzembe helyezendő Traffic Manager-profilra.                              |
+    | Location egység                | Válassza az **USA keleti régiója** lehetőséget. Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan üzembe helyezendő Traffic Manager-profilra.                              |
     |
 
     ![Traffic Manager-profil létrehozása](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-profile.png)
@@ -188,7 +188,7 @@ Adja hozzá a két virtuális gép fut az IIS-kiszolgálók – *myIISVMEastUS* 
 2. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok**, majd a **Hozzáadás** elemre.
 3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza az **OK** elemet:
 
-    | Beállítás                 | Érték                                              |
+    | Beállítás                 | Value                                              |
     | ---                     | ---                                                |
     | Typo                    | Azure-végpont                                   |
     | Name (Név)           | myEastUSEndpoint                                        |

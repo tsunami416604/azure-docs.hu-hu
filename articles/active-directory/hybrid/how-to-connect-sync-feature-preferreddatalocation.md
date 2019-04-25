@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118442"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60348177"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Az Azure Active Directory Connect szinkronizálási szolgáltatás: Konfigurálja az Office 365-erőforrások adatainak előnyben részesített helye
 Ez a témakör az a célja, hogy végigvezetik az attribútum a adatainak előnyben részesített helye konfigurálása az Azure Active Directory (Azure AD) Connect-szinkronizálás. Amikor valaki használ Multi-földrajzi funkciókat az Office 365-ben, ez az attribútum használatával a földrajzi helymeghatározás, a felhasználó Office 365-adatokat jelöl ki. (A használati *régió* és *földrajzi* azonos értelemben használják.)
@@ -124,7 +124,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért
 3. Egy új bejövő szabály létrehozásához válassza **új szabály hozzáadása**.
 4. Alatt a **leírás** lapra, adja meg a következő konfigurációt:
 
-    | Attribútum | Érték | Részletek |
+    | Attribútum | Value | Részletek |
     | --- | --- | --- |
     | Name (Név) | *Adjon meg egy nevet* | Például "az ad-felhasználó preferredDataLocation" |
     | Leírás | *Adjon meg egy egyéni leírást* |  |
@@ -139,7 +139,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért
 
     | Folyamat típusát | Célattribútum | Forrás | Miután a alkalmazni | Egyesítési típus |
     | --- | --- | --- | --- | --- |
-    |Közvetlen | preferredDataLocation | Válassza ki az adatforrás-attribútum | Nincs bejelölve | Frissítés |
+    |Direct | preferredDataLocation | Válassza ki az adatforrás-attribútum | Nincs bejelölve | Frissítés |
 
 7. A bejövő szabály létrehozásához válassza **Hozzáadás**.
 
@@ -153,7 +153,7 @@ A kimenő szinkronizálási szabály lehetővé teszi a metaverzumba, hogy a flo
 3. Válassza ki **új szabály hozzáadása**.
 4. Alatt a **leírás** lapra, adja meg a következő konfigurációt:
 
-    | Attribútum | Érték | Részletek |
+    | Attribútum | Value | Részletek |
     | ----- | ------ | --- |
     | Name (Név) | *Adjon meg egy nevet* | Például "ki az Azure AD-felhasználó preferredDataLocation" |
     | Leírás | *Adjon meg egy leírást* ||
@@ -165,7 +165,7 @@ A kimenő szinkronizálási szabály lehetővé teszi a metaverzumba, hogy a flo
 
 5. Nyissa meg a **Scoping szűrő** lapra, és két záradékai egy egyetlen hatókörkezelési Szűrőcsoport hozzáadása:
 
-    | Attribútum | Művelet | Érték |
+    | Attribútum | Művelet | Value |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |
@@ -176,7 +176,7 @@ A kimenő szinkronizálási szabály lehetővé teszi a metaverzumba, hogy a flo
 
     | Folyamat típusát | Célattribútum | Forrás | Miután a alkalmazni | Egyesítési típus |
     | --- | --- | --- | --- | --- |
-    | Közvetlen | preferredDataLocation | preferredDataLocation | Nincs bejelölve | Frissítés |
+    | Direct | preferredDataLocation | preferredDataLocation | Nincs bejelölve | Frissítés |
 
 7. Bezárás **Hozzáadás** a kimenő szabály létrehozásához.
 

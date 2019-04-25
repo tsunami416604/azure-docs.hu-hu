@@ -10,11 +10,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 83742a4f82fb4d67fd258ff0d242847eab634c78
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402285"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60334120"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Webhelynaplók elemzése az Azure Data Lake Analytics használatával
 Ismerje meg, hogyan használja a Data Lake Analytics különösen tudni, mely hivatkozók hibába ütközött a hibákat, a webhelyén való hozzáféréskor webhelynaplók elemzése.

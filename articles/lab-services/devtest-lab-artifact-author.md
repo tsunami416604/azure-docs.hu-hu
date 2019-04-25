@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116826"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311124"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>A DevTest Labs szolgáltatásban virtuális gép egyéni összetevők létrehozása
 
@@ -57,7 +57,7 @@ Az alábbi példa bemutatja az alapvető szerkezete egy csomagdefiníciós fájl
 | --- | --- | --- |
 | $schema |Nem |A JSON-fájl helyét. A JSON-fájl segítségével ellenőrizheti a csomagdefiníciós fájl érvényességét. |
 | cím |Igen |A lab-ben jelenik meg az összetevő neve. |
-| leírás |Igen |A lehívandó összetevő jelenik meg a labor leírása. |
+| description |Igen |A lehívandó összetevő jelenik meg a labor leírása. |
 | iconUri |Nem |URI-ját az ikon jelenik meg a tesztkörnyezetben. |
 | targetOsType |Igen |Az operációs rendszer a virtuális gép, amelyen telepítve van-e az összetevő. Támogatott kapcsolók a következők: Windows és Linux rendszereken. |
 | paraméterek |Nem |Az összetevő telepítési parancs egy gépen való futtatásakor biztosított értékeket. Ennek segítségével testre szabhatja az összetevő. |
@@ -80,7 +80,7 @@ Paraméterek megadásához használja az alábbi struktúrával:
 | --- | --- | --- |
 | type |Igen |A paraméter értékének típusa. Tekintse meg az alábbi lista az engedélyezett típusok esetében. |
 | displayName |Igen |A lab-ben a felhasználó számára megjelenő paraméter neve. |
-| leírás |Igen |A lab-ben megjelenő paraméter leírása. |
+| description |Igen |A lab-ben megjelenő paraméter leírása. |
 
 Engedélyezett típusok a következők:
 

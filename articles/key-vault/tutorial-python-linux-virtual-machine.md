@@ -13,11 +13,11 @@ ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
 ms.openlocfilehash: b7077653ec959f99491cecd71573c091772448f4
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60461059"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Oktatóanyag: Linux rendszerű virtuális gép és a egy Python-alkalmazás titkos kulcsok tárolására az Azure Key Vault használatával
 
@@ -28,7 +28,7 @@ Ebben az oktatóanyagban beállította egy Azure-webalkalmazás Azure-Kulcstart�
 > [!div class="checklist"]
 > * Kulcstartó létrehozása
 > * A key vaultban lévő titkos Store
-> * Linuxos virtuális gépek létrehozása
+> * Linuxos virtuális gép létrehozása
 > * Engedélyezze a [identitás](../active-directory/managed-identities-azure-resources/overview.md) a virtuális gép
 > * A szükséges a Konzolalkalmazás adatokat olvasni a key vault-engedélyek megadására
 > * A key vault titkos kulcs lekérése
@@ -98,7 +98,7 @@ Egy titkos kulcs hozzáadásával mutatjuk be ennek működését. Érdemes tár
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gépek létrehozása
+## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
 
 A virtuális gép létrehozása a `az vm create` parancsot.
 

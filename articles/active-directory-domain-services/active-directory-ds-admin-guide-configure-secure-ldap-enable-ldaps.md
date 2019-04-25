@@ -16,15 +16,15 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
 ms.openlocfilehash: df189e405dcd5277c1ccbd94e9d5d302660be79b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359827"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Engedélyezze a biztonságos LDAP (LDAPS-t) számára az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 Teljes [2. feladat – exportálja a secure LDAP-tanúsítványt egy. PFX-fájl](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md).
 
 

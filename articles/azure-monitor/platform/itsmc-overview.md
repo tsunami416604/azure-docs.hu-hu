@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118050"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60395805"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás az Azure ITSM-eszközeit IT Service Management-összekötő használatával
 
@@ -192,7 +192,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Lezárta
 - Forrás
 - Társítás
-- Kategória
+- Category
 - Cím
 - Leírás
 - Létrehozás dátuma
@@ -215,7 +215,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Társítás
 - Cím
 - Typo
-- Kategória
+- Category
 - Állapot
 - Eszkalálás
 - Ütközés állapota
@@ -249,7 +249,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s  | Lezárta |
 | Source_s| Kapcsolattartó típusa |
 | AssignedTo_s | Hozzárendelve a következőhöz:  |
-| Category_s | Kategória |
+| Category_s | Category |
 | Title_s|  Rövid leírás |
 | Description_s|  Megjegyzések |
 | CreatedDate_t|  Megnyitva |
@@ -267,7 +267,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | Hozzárendelve a következőhöz:  |
 | Title_s|  Rövid leírás |
 | Type_s|  Typo |
-| Category_s|  Kategória |
+| Category_s|  Category |
 | CRState_s|  Állapot|
 | Urgency_s|  Sürgősség |
 | Priority_s| Prioritás|

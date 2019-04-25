@@ -3,7 +3,7 @@ title: Webes bejelentkezés OpenID Connect – Azure Active Directory B2C-|} A M
 description: Az OpenID Connect hitelesítési protokoll használatával az Azure Active Directory B2C webes alkalmazásokat hozhat létre.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 6285a90a9dca305f3a9cd909af6c084c747daf99
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679057"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317122"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webalkalmazás-bejelentkezés OpenID-kapcsolattal az Azure Active Directory B2C-vel
 

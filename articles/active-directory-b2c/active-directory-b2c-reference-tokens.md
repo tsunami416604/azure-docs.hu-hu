@@ -3,7 +3,7 @@ title: Jogkivonatok – Azure Active Directory B2C – áttekintés |} A Microso
 description: További információ az Azure Active Directory B2C-vel használt tokenek.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 11361bc6ab75e873e1b4081dcfc6492abc093b54
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680264"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316935"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C jogkivonatok áttekintése
 
@@ -57,11 +57,11 @@ Az alábbi táblázat a jogcímeket, hogy várt azonosító-jogkivonatokat, majd
 | Tulajdonos: | `iat` | `1438535543` | Az idő, amikor a jogkivonat lett kiállítva, jelöli, alapidőpont szerint. |
 | Lejárati idő | `exp` | `1438539443` | Az idő, amikor a jogkivonat érvénytelen, válik jelöli, alapidőpont szerint. Az alkalmazás használ a ezt az igényt a jogkivonatok élettartamának érvényességének ellenőrzéséhez. |
 | Nem előtt | `nbf` | `1438535543` | Az idő, amikor a jogkivonat érvényes, válik jelöli, alapidőpont szerint. Ez az idő általában a ugyanaz, mint az idő a jogkivonat lett kiállítva. Az alkalmazás használ a ezt az igényt a jogkivonatok élettartamának érvényességének ellenőrzéséhez. |
-| Verzió | `ver` | `1.0` | Az azonosító jogkivonat, az Azure AD B2C által meghatározott verziója. |
+| Version | `ver` | `1.0` | Az azonosító jogkivonat, az Azure AD B2C által meghatározott verziója. |
 | Kód kivonata | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Csak akkor, ha a jogkivonat az OAuth 2.0 hitelesítési kód együtt kiadott egy azonosító jogkivonat szereplő kód kivonatot. Kód kivonatot használható egy engedélyezési kód hitelességének ellenőrzéséhez. Az ellenőrzéssel kapcsolatos további információkért lásd: a [OpenID Connect specifikáció](https://openid.net/specs/openid-connect-core-1_0.html).  |
 | Hozzáférési jogkivonat kivonata | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Egy hozzáférési jogkivonat-kivonat csak akkor, ha a jogkivonat együtt az OAuth 2.0 hozzáférési jogkivonatban kiadott egy azonosító jogkivonat szerepel. Egy hozzáférési jogkivonat kivonata használható hozzáférési jogkivonat hitelességének ellenőrzéséhez. Az ellenőrzéssel kapcsolatos további információkért lásd: a [OpenID Connect-specifikáció](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Nonce | `nonce` | `12345` | Egy egyszeri ismétlésének támadások számának csökkentése érdekében használt stratégiát is. Az alkalmazás is megadhat egy egyszeri egy engedélyezési kérésben a `nonce` lekérdezési paraméter. Az értéknek a kérésben bocsásson ki az kívánja módosítani a `nonce` jogcím csak egy azonosító jogkivonat. Ez a jogcím lehetővé teszi, hogy az alkalmazás ellenőrzéséhez az érték a kérésben megadott értékkel. Az alkalmazásoknak végre kell hajtania az ellenőrzés az azonosító jogkivonat érvényesítése során. |
-| Tárgy | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Az egyszerű arról, hogy mely a token használjon esetleg imperatív állításokat információkat, például egy alkalmazás felhasználója. Ez az érték nem módosítható és nem hozzárendelni és újra felhasználható. Az engedélyezési ellenőrzéséhez biztonságosan, például amikor a jogkivonat erőforrások eléréséhez használható. Alapértelmezés szerint megjelenik a tulajdonos jogcímet a felhasználó Objektumazonosítóját. |
+| Subject | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Az egyszerű arról, hogy mely a token használjon esetleg imperatív állításokat információkat, például egy alkalmazás felhasználója. Ez az érték nem módosítható és nem hozzárendelni és újra felhasználható. Az engedélyezési ellenőrzéséhez biztonságosan, például amikor a jogkivonat erőforrások eléréséhez használható. Alapértelmezés szerint megjelenik a tulajdonos jogcímet a felhasználó Objektumazonosítóját. |
 | Hitelesítési környezethez tartozó osztályhivatkozása | `acr` | Nem alkalmazható | Csak a régebbi szabályzatokkal használható. |
 | Megbízhatósági keretrendszer házirend | `tfp` | `b2c_1_signupsignin1` | A szabályzat az azonosító jogkivonat beszerzéséhez használt neve. |
 | Hitelesítési idő | `auth_time` | `1438535543` | Az idő, amikor a felhasználó utoljára megadott hitelesítő adatokat, jelöli, alapidőpont szerint. |

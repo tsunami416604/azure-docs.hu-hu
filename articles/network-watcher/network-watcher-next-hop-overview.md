@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 40f1790806aac6756979f28ad29442b7abf96019
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096891"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532305"
 ---
 # <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Használja a következő ugrás virtuális gép útválasztási problémáinak diagnosztizálása
 

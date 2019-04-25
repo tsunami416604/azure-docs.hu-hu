@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
 ms.openlocfilehash: 2e580a94e568f201587c06efa827006386cd6bd9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005009"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60327680"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Hozzon létre és OpenBSD lemez Rendszerkép feltöltése az Azure-bA
 Ez a cikk bemutatja, hogyan hozhat létre és töltse fel a virtuális merevlemez (VHD), amely tartalmazza az OpenBSD operációs rendszert. Miután feltölti azt, segítségével azt a saját rendszerkép hozzon létre egy virtuális gépet (VM) az Azure-ban az Azure CLI-n keresztül.

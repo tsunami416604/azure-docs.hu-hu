@@ -10,23 +10,23 @@ ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 373ce1d10af87603b1bdd6339c94891187c35d8c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295368"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332652"
 ---
 # <a name="recommended-on-premises-encoders"></a>Ajánlott helyszíni kódolók
 Amikor az élő adások online közvetítése az Azure Media Services, megadhatja, hogyan történjen a csatorna a bemeneti streamet. Ha egy a helyszíni kódolót használata élő kódolás csatornát választja, a kódoló leküldéses egy kiváló minőségű egyszeres átviteli sebességű streamet kimenetként. Ha egy a helyszíni kódolót használata a pass-csatornán keresztül, a kódoló leküldéses egy többszörös sávszélességű streamet az összes kívánt kimeneti minőség kimenetként. További információkért lásd: [az élő adások online közvetítése a helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).
 
 Az Azure Media Services javasolja, hogy valamelyik a következő élő kódolók képesek kimenetként RTMP rendelkezik:
-- Az Adobe Flash Media Live Encoder 3.2-es verzióját
+- Adobe Flash Media Live Encoder 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast 8.1 +
+- Telestream Wirecast 8.1+
 - Telestream Wirecast S
-- Teradek szelet 756
-- A 8000-es TriCaster
+- Teradek Slice 756
+- TriCaster 8000
 - Tricaster Mini HD-4
 - OBS Studio
 - VMIX
@@ -34,11 +34,11 @@ Az Azure Media Services javasolja, hogy valamelyik a következő élő kódolók
 - Switcher Studio (iOS)
 
 Az Azure Media Services a következő élő kódolók többféle sávszélességű töredezett-MP4 (Smooth Streaming) kimenetként rendelkező egyikének használatát javasolja:
-- Media Excel élő Hero és a Hero 4 KB-os (UHD/HEVC)
+- Media Excel Hero Live és Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
 - Elemental Live
-- Envivio 4Caster C4 csomag általános III.
+- Envivio 4Caster C4 Gen III
 - Az Imagine Communications Selenio MCP3
 
 > [!NOTE]

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90a624a6b3b4696899af0d8606f653df260cc201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60348280"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Használja az Azure AD Connect telepítési típusának kiválasztása
 Az Azure AD Connect két telepítési típussal rendelkezik az új telepítéshez: Gyors vagy egyéni. Ez a témakör segít eldönteni, melyik lehetőség a telepítés során használandó.
@@ -35,7 +35,7 @@ Feltételezi:
 - Van egy vállalati rendszergazdai fiók is használhatja a telepítéshez.
 - Kevesebb mint 100 000 objektummal rendelkezik a helyszíni Active Directoryban.
 
-A következőket kínálja:
+A következőket nyújtja:
 
 - [A Jelszókivonat-szinkronizálás](how-to-connect-password-hash-synchronization.md) a helyszínről az Azure AD egyszeri bejelentkezés.
 - A konfiguráció, amely szinkronizálja [felhasználók, csoportok, partnerek és a Windows 10-számítógépeket](concept-azure-ad-connect-sync-default-configuration.md).

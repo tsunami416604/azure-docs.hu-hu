@@ -3,7 +3,7 @@ title: Regisztráció és bejelentkezés OpenID Connect – Azure Active Directo
 description: Állítsa be regisztráció és bejelentkezés OpenID-kapcsolattal az Azure Active Directory B2C használatával.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: de0c866889f15f096bea26915f58cd4e268dfed3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428755"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316323"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés a OpenID-kapcsolattal az Azure Active Directory B2C beállítása
 

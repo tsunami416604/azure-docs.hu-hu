@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 04/22/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fbb90e95c07c66f45d49076f0570ac028c37244
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 894c42e4102a3565ff43798d33afb4046fda76bd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011401"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60286694"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Tevékenységnaplók az Azure monitorban
 
@@ -72,14 +72,14 @@ Ha már rendelkezik Azure AD-licenccel, egy Azure-előfizetésre lesz szüksége
 
 Minden auditnapló-esemény körülbelül 2 KB adattárhelyet foglal el. Egy 100 000 felhasználót számláló bérlőhöz, amely naponta körülbelül 1,5 millió eseményt hoz létre, hozzávetőleg napi 3 GB adattárhelyre lesz szüksége. Mivel az írási műveletek hozzávetőleg ötperces kötegekben történnek, havonta várhatóan körülbelül 9000 írási művelettel számolhat. 
 
-Az alábbi táblázat tartalmaz egy költségbecslést a bérlő méretének függvényében egy általános célú v2-es tárfiókra az USA nyugati régiójában, legalább egyéves megőrzéssel. Az [Azure Storage-díjkalkulátor](https://azure.microsoft.com/pricing/details/storage/blobs/) használatával ennél pontosabb becslést is készíthet az alkalmazása várható adatmennyiségéről. 
+Az alábbi táblázat tartalmaz egy költségbecslést a bérlő méretének függvényében egy általános célú v2-es tárfiókra az USA nyugati régiójában, legalább egyéves megőrzéssel. Az [Azure Storage-díjkalkulátor](https://azure.microsoft.com/pricing/details/storage/blobs/) használatával ennél pontosabb becslést is készíthet az alkalmazása várható adatmennyiségéről. A táblázat csak a feldolgozási és tárolási költségek, és nem az előfizetés költségét tartalmazza. 
 
-| Naplókategória | Felhasználók száma | Napi események | Havi adatmennyiség (becsült) | Havi költség (becsült) | Éves költség (becsült) |
-|--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
-| Naplózás | 100 000 | 1,5&nbsp;millió | 90 GB | 1,93 dollár | 23,12 dollár |
-| Naplózás | 1,000 | 15 000 | 900 MB | 0,02 dollár | 0,24 dollár |
-| Bejelentkezések | 1,000 | 34 800 | 4 GB | 0,13 dollár | 1,56 dollár |
-| Bejelentkezések | 100 000 | 15&nbsp;millió | 1,7 TB | 35,41 dollár | 424,92 dollár | 
+
+| Naplókategória       | Felhasználók száma | Napi események | Esemény havonta (30 nap) | (Est.) USD havi költség |
+| ---                | ---             | ---            | ---                        | ---                          | 
+| Naplózási és bejelentkezések | 100 000         | 16,500,000     | 495,000,000                | $1093                        |
+| Naplózás              | 100 000         | 1,500,000      | 45,000,000                 | $246.66                      |
+| Bejelentkezések           | 100 000         | 15,000,000     | 450,000,000                | $847.28                      |
 
 
 ### <a name="event-hub-messages-for-activity-logs"></a>Tevékenységnaplók eseményközpont-üzenetei

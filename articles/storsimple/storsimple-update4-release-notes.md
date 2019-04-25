@@ -1,5 +1,5 @@
 ---
-title: A StorSimple 8000 Series Update 4 kibocsátási megjegyzései |} Microsoft Docs
+title: A StorSimple 8000 Series Update 4 kibocsátási megjegyzései |} A Microsoft Docs
 description: Az új funkciók, problémák és megoldások ismerteti a StorSimple 8000 Series Update 4.
 services: storsimple
 documentationcenter: NA
@@ -14,81 +14,81 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: f4db5a49b71b0c384da7af2b90bd5426a4f35c72
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34058148"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60530990"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>A StorSimple 8000 Series Update 4 kibocsátási megjegyzései
 
 ## <a name="overview"></a>Áttekintés
 
-Az alábbi kibocsátási megjegyzések új szolgáltatásait ismerteti, és a StorSimple 8000 Series Update 4 a kritikus megnyitott problémák azonosításához. Ebben a kiadásban szereplő StorSimple szoftverfrissítések listáját is tartalmaznak. 
+A következő kiadási megjegyzések az új funkciók ismertetik, és a StorSimple 8000 Series Update 4 a kritikus fontosságú megoldatlan problémák azonosításához. Ebben a kiadásban a StorSimple szoftver frissítések listáját is tartalmaznak. 
 
-4. frissítés bármely kiadásban (GA) vagy frissítés 0,1 futtató keresztül frissítés 3.1 StorSimple eszközre alkalmazhatók. Az eszköz Update 4 társított verziója 6.3.9600.17820.
+4. frissítéssel bármilyen kiadásban elérhetővé tétel (GA) vagy 0.1-es frissítés keresztül frissítés 3.1-et futtató StorSimple-eszközre alkalmazhatók. Az eszközhöz társított Update 4 verziószáma 6.3.9600.17820.
 
-Tekintse át a kibocsátási megjegyzések a StorSimple megoldásban a frissítés telepítése előtt található információkat.
+Tekintse át a kibocsátási megjegyzések a StorSimple-megoldásban a frissítés telepítése előtt található információkat.
 
 > [!IMPORTANT]
-> * Update 4 eszköz szoftver, a legpontosabb Beállításhoz belső vezérlőprogram, LSI illesztőprogram és belső vezérlőprogramjának, lemez belső vezérlőprogram, Storport és Spaceport, biztonsági és más operációs rendszer frissítése érdekében rendelkezik. Ez a frissítés körülbelül 4 órát vesz igénybe. Vezérlőprogram-frissítés zavaró frissítésről, és az eszköz egy leállásának eredményez. Azt javasoljuk, hogy az eszköz naprakész állapotban tartása érdekében Update 4 alkalmaz. 
-> * Új kiadásokban nem láthatók frissítések azonnal, mert a frissítések fázisokra bontva történő bevezetéséhez végezzük. Néhány napot várni, és a frissítések újra ezeket a majd vizsgálatát hamarosan elérhető lesz.
+> * 4. frissítéssel eszköz szoftverének, USM belső vezérlőprogram, LSI-illesztőprogram és a belső vezérlőprogram, lemezfirmware, Storport és Spaceport, biztonsági és más operációs rendszer frissítése rendelkezik. Ez a frissítés körülbelül 4 óra vesz igénybe. Lemezfirmware-frissítés zavart okozó frissítést, és az eszköz egy állásidőt eredményez. Azt javasoljuk, hogy alkalmazza-e az eszköz naprakészen tartani Update 4. 
+> * Az új kiadásokhoz, akkor előfordulhat, hogy nem jelenik meg frissítések azonnal, mivel egy fázisokra bontva történő bevezetéséhez a frissítések végzünk. Néhány napot várni, és ezeket újra, majd frissítéskeresés hamarosan elérhetővé válik.
 
 ## <a name="whats-new-in-update-4"></a>What's new in Update 4
 
-A következő fontos fejlesztést tartalmaz, és hibajavítások Update 4 végzett.
+A következő kulcsfontosságú fejlesztések és hibajavítások az Update 4 került sor.
 
-* **Azure ad automatikus terület-visszanyerést algoritmusok** – a frissítés 4, az automatizált terület-visszanyerést algoritmusok továbbfejlesztett úgy, hogy a hely visszanyerése ciklusok alapján a várt regenerált rendelkezésre álló terület a felhőben. 
+* **Intelligensebb automatikus terület-visszaigénylést algoritmusok** – a frissítés 4, az algoritmusokat a továbbfejlesztett módosítsa a hely visszanyerése ciklusok alapján a várható regenerált szabad terület a felhőben beállításainak automatikus terület-visszanyerést. 
 
-* **A helyileg rögzített kötetekhez a teljesítményt javító** – Update 4 forgatókönyvekben, amelyek magas adatfeldolgozást (kötetméretet hasonló adatok) helyileg rögzített kötetekhez teljesítménye javult.
+* **A helyileg rögzített kötetekhez teljesítményjavítás** – Update 4 javult a teljesítmény helyileg rögzített kötetek forgatókönyvekben, amelyek magas adatbetöltés (kötet mérete hasonló adatok).
 
-* **Heatmap-alapú visszaállítási** -a következő a vészhelyreállítás (DR), a korábbi kiadásokban az adatok a felhőben, a lassú teljesítmény eredményezve hozzáférési minták alapján lett visszaállítva. 
+* **Intenzitástérkép-alapú visszaállítási** – a vészhelyreállítás (DR), a következő, a korábbi kiadásokban az adatok a felhőből az adathozzáférési mintáknak megfelelően lassú teljesítményt eredményez visszaállítva. 
 
-    Egy új szolgáltatást tartalmazza az Update 4, hogy nyomon követi a gyakran használt adatok egy heatmap létrehozásához, ha az eszköz használata előtt a vész-Helyreállítási (az adattömbök leggyakrabban használt rendelkezik nagy kisebb adattömbök szolgálja, míg az alacsony tűz rendelkezik). StorSimple DR, miután a heatmap használja a automatikusan visszaállítani, és az adatokat a felhőből rehydrate. 
+    Egy új szolgáltatást tartalmazza az Update 4, hogy nyomon követi a gyakran használt adatok egy intenzitástérkép létrehozásához, amikor az eszköz előtt DR használatban van (leggyakrabban használt adattömbök nagy van, mivel kisebb használt adattömbök alacsony megadott hőtérképrészlet rendelkezik). DR-után a StorSimple az intenzitástérkép az automatikus visszaállítása és a felhőbeli adatok rehidratálási. 
 
-    A visszaállítás jelenleg alapú heatmap szolgálhatnak. Lekérdezési és alapú heatmap visszaállítása és rehidratálása szakítsa további információkért látogasson el [StorSimple parancsmag-referencia a Windows PowerShell](https://technet.microsoft.com/library/dn688168.aspx).
+    Az összes visszaállítások immár alapú intenzitástérkép visszaállítás. Hogyan alapú intenzitástérkép visszaállítása és a rehidratálás feladatok megszakítása és további információkért látogasson el [Windows PowerShell-parancsmag-referencia a StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 
-* **StorSimple diagnosztikai eszköz** – az Update 4, a StorSimple diagnosztikai eszköz kiadásra könnyen diagnosztizálására engedélyezéséhez és a rendszer, a hálózati, a teljesítmény és a hardver összetevő állapota kapcsolatos problémák hibaelhárításához. Ezt az eszközt a StorSimple fut a Windows PowerShell segítségével. További információkért látogasson el [StorSimple diagnosztikai eszköz használata – hibaelhárítás](storsimple-8000-diagnostics.md).
+* **A StorSimple-Diagnostics eszköz** – az Update 4, a StorSimple-Diagnostics eszköz kiadásra, hogy könnyen diagnosztizálásához és kapcsolatos hibák elhárítása kapcsolódó rendszer, a hálózat, a teljesítmény és a hardver összetevő állapotát. Ez az eszköz fut a Windows PowerShell storsimple-höz készült. További információért ugorjon [hibaelhárítása a StorSimple diagnosztikai eszköz használata](storsimple-8000-diagnostics.md).
 
-* **Felhasználóifelület-alapú StorSimple áttelepítési eszköz** -előtti ebben a kiadásban az áttelepítést 5000-7000-es sorozatból szükséges a felhasználók egy része az az Azure PowerShell felületéről áttelepítési munkafolyamat végrehajtásához. Ebben a kiadásban egy könnyen kezelhető grafikus felhasználói felületű StorSimple áttelepítési eszköz szeretné elérhetővé tenni a áttelepítési ugyanabban a munkafolyamatban elősegítésére támogatáshoz. Ez az eszköz a helyreállítási gyűjtők összevonása lehetővé. 
+* **Felhasználóifelület-alapú StorSimple áttelepítési eszköz** -előtt ebben a kiadásban 5000 – 7000 sorozatú származó adatok áttelepítése a felhasználók egy része a migrálási munkafolyamat az Azure PowerShell-felületén végrehajtásához szükséges. Ebben a kiadásban egy könnyen használható felületen StorSimple áttelepítési eszköz legyen elérhető támogatás megkönnyítése érdekében a migrálás ugyanabban a munkafolyamatban. Ez az eszköz esetén, a helyreállítási gyűjtő számára is lehetővé teheti. 
 
-* **FIPS-kapcsolatos módosítások** - e és újabb verziók esetében a kiadási, FIPS a StorSimple 8000 sorozat eszközeire alapértelmezés szerint engedélyezve van, az a Microsoft Azure Government és az Azure nyilvánosfelhő-fiókokat.
+* **FIPS-vel kapcsolatos módosításokat** - e és újabb verziók esetében kiadás, FIPS az a StorSimple 8000 sorozatú eszközök alapértelmezés szerint engedélyezve van, a Microsoft Azure Government és az Azure nyilvános felhő fiókok esetében.
 
-* **Módosításainak frissítésére** -ebben a kiadásban hibák frissítése kapcsolatos hibák kijavítása.
+* **Frissítse a módosítások** – ebben a kiadásban a hibák frissítése kapcsolatos hibák kijavítása megtörtént.
 
-* **Riasztás a lemezhibák** -egy új riasztás, amely figyelmezteti a felhasználót a közelgő lemezhiba jelenik meg ebben a kiadásban. Ha ezt a riasztást, lépjen kapcsolatba a Microsoft Support küldje el a cserelemezt. További információkért látogasson el [hardver riasztások a StorSimple eszköz](storsimple-8000-manage-alerts.md#hardware-alerts).
+* **Riasztás a lemezhiba** – ebben a kiadásban új riasztás, amely figyelmezteti a felhasználót a közelgő lemezhiba kerül. Ha ez a riasztás tapasztal, forduljon a Microsoft Support tehetnek a cserelemezt. További információért ugorjon [a StorSimple eszköz hardveres riasztások](storsimple-8000-manage-alerts.md#hardware-alerts).
 
-* **Tartományvezérlő helyettesítő módosítások** -parancsmag, amely lehetővé teszi a felhasználó a vezérlő cseréjét állapotának lekérdezése egészül ki ebben a kiadásban. További információkért látogasson el a [lekérdezés tartományvezérlő helyettesítő állapotát parancsmag](https://technet.microsoft.com/library/dn688168.aspx).
+* **Vezérlő cseréje módosítások** – ebben a kiadásban olyan parancsmagot, amely lehetővé teszi, hogy a felhasználót, hogy a tartományvezérlő cseréjét állapotának lekérdezése kerül. További információkért látogasson el a [lekérdezés vezérlő cseréje állapota parancsmag](https://technet.microsoft.com/library/dn688168.aspx).
 
 
 ## <a name="issues-fixed-in-update-4"></a>Az Update 4 megoldott problémák
 
-A következő táblázat összefoglalja az Update 4 javított problémák.    
+Az alábbi táblázat a Update 4 javított hibák összegzését tartalmazza.    
 
 | Nem | Szolgáltatás | Probléma | Fizikai eszköz vonatkozik | Virtuális eszköz vonatkozik |
 | --- | --- | --- | --- | --- |
-| 1 |Feladatátvétel |A korábbi verzióban a feladatátvétel történt a megfigyelt az ügyfél telephelyén tisztítással kapcsolatos problémát. Ez a probléma fennáll ebben a kiadásban. |Igen |Igen |
-| 2 |Helyileg rögzített kötetek |A korábbi változatban egy problémát a kapcsolódó kötetek létrehozását a helyileg rögzített kötetekhez, amely kötet létrehozása sikertelen volt. Ez a probléma volt legfelső szintű okozott, és ebben a kiadásban rögzített. |Igen |Nem |
-| 3 |Támogatási csomag |Az előző kiadása nem voltak támogatási csomag, amely egy System.OutOfMemory kivétel vagy más hibák, és egy támogatási csomag létrehozását hibát okozott kapcsolatos problémák. Ezek a hibák ebben a kiadásban rögzítettek. |Igen |Igen |
-| 4 |Figyelés |Korábbi változatban nincs diagramok helyileg figyelésével kapcsolatos problémát rögzített kötetek ahol EB fogyasztás volt látható. Ez a hiba megoldását az ebben a kiadásban. |Igen |Igen |
-| 5 |Migrálás |Korábbi változatban több problémák merültek 5000-7000-es sorozatból 8000 sorozat eszközeire való áttelepítés megbízhatóságát kapcsolódik. Ebben a kiadásban rendelkezik foglalkoztak. ezeket a problémákat. |Igen |Igen |
-| 6 |Frissítés |A korábbi kiadásokban, ha egy frissítés sikertelen volt, a tartományvezérlők kerülne helyreállítási módba, és ezért a felhasználó a frissítés nem folytatható, és forduljon a Microsoft Support kell. <br> Ez a viselkedés ebben a kiadásban megváltozott. Ha a felhasználó egy frissítési hiba után mindkét vezérlőhöz (Update 4) azonos verziója fut, a tartományvezérlők ne lépje helyreállítási módba. Ha a felhasználó ezt a hibát észlel, azt javasoljuk, hogy azok egy kis türelmet, és ismételje meg a frissítést. Az ismételt próbálkozás sikeres volt. Ha nem sikerül az újra gombra, majd azok lépjen kapcsolatba Microsoft Support. |Igen |Igen |
+| 1 |Feladatátvétel |A korábbi kiadásokban a feladatátvétel után hiba történt az ügyfél telephelyén megfigyelt tisztítással kapcsolatos. Ebben a kiadásban a probléma megoldódik. |Igen |Igen |
+| 2 |Helyileg rögzített kötetek |A korábbi változatban hiba történt a kapcsolódó kötetek létrehozását a helyileg rögzített kötetekhez, amely a kötet létrehozása hibákat eredményez. Ez a probléma alapvető oka volt, és javítva a kiadásban. |Igen |Nem |
+| 3 |Támogatási csomag |Az előző verzió, a támogatási csomagot, amely egy System.OutOfMemory kivétel vagy egyéb támogatási csomag létrehozása hibát eredményez hibákat eredményez kapcsolatos problémák voltak. A programhibákat ebben a kiadásban. |Igen |Igen |
+| 4 |Figyelés |Az előző verzió, a hiba diagramok helyileg monitoring szolgáltatással kapcsolatos probléma rögzített kötetekről ahol EB fogyasztás volt látható. Ez a hiba megoldódott-e ebben a kiadásban. |Igen |Igen |
+| 5 |Migrálás |Előző kiadásban számos, a 8000-es sorozatú eszközökön 5000 – 7000 sorozatú áttelepítési megbízhatóságát kapcsolatos problémák voltak. Ezek a problémák rendelkezik foglalkoztak ebben a kiadásban. |Igen |Igen |
+| 6 |Frissítés |A korábbi kiadásokban, ha egy frissítési hiba lépett fel, a tartományvezérlők akkor lépnek helyreállítási módba, és ezért a felhasználó a frissítés nem folytatható, és forduljon a Microsoft Support kellene. <br> Ez a viselkedés ebben a kiadásban módosítva lett. Ha a felhasználó rendelkezik frissítési hiba fordul elő, ha mindkét vezérlő ugyanazt a verziót (4-es frissítést) futnak, a vezérlők nem lépnek helyreállítási módba. Ha a felhasználó ezt a hibát észlel, azt javasoljuk, hogy Várjon, amíg egy kis, és próbálkozzon újra a frissítést. Az újrapróbálkozás telepítés sikeres lehet. Ha az újrapróbálkozás nem sikerül, majd, forduljon a Microsoft Support. |Igen |Igen |
 
 
-## <a name="known-issues-in-update-4-from-previous-releases"></a>A korábbi kiadásokból származó Update 4 kapcsolatos ismert problémák
+## <a name="known-issues-in-update-4-from-previous-releases"></a>A korábbi kiadások Update 4 ismert problémái
 
-Nincsenek új ismert problémák a frissítési 4. A korábbi kiadásokból származó Update 4 átkerülnek problémák listáját itt [Update 3 kibocsátási megjegyzések](storsimple-update3-release-notes.md#known-issues-in-update-3).
+Nincsenek új ismert problémák az Update 4. A korábbi kiadások Update 4 áthozva problémák listája, nyissa meg [Update 3 kibocsátási megjegyzések](storsimple-update3-release-notes.md#known-issues-in-update-3).
 
-## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>Soros csatlakozású SCSI (SAS) vezérlő és a belső vezérlőprogram frissítések Update 4
+## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>Soros csatlakozású SCSI (SAS) vezérlő és belső vezérlőprogramja frissítéseinek az a 4. frissítés
 
-Ebben a kiadásban a vezérlő és LSI illesztőprogram és a belső vezérlőprogram frissítések rendelkezik. Ezek a frissítések telepítéséről további információkért lásd: [Update 4 telepítése](storsimple-install-update-4.md) a StorSimple eszköz.
+Ebben a kiadásban a SAS-vezérlő és LSI illesztőprogram és belső vezérlőprogramja frissítéseinek rendelkezik. Ezek a frissítések telepítésével kapcsolatos további információkért lásd: [telepítse Update 4-es](storsimple-install-update-4.md) a StorSimple eszközön.
 
 ## <a name="virtual-device-updates-in-update-4"></a>Az Update 4 virtuális eszköz frissítése
 
-A frissítés nem alkalmazható a StorSimple felhő készülék (más néven a virtuális eszköz). Új virtuális eszközök kell létrehozni. 
+A StorSimple Cloud Appliance eszköz (más néven a virtuális eszköz) nem lehet alkalmazni ezt a frissítést. Új virtuális eszközök kell létrehozni. 
 
 ## <a name="next-step"></a>Következő lépés
 
-Megtudhatja, hogyan [Update 4 telepítése](storsimple-install-update-4.md) a StorSimple eszköz.
+Ismerje meg, hogyan [telepítse Update 4-es](storsimple-install-update-4.md) a StorSimple eszközön.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 45e595e932c4e7070836372a4fd48791f68c5e08
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d28710bf249bd940ae9d685560e9f7140234e3a1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761565"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318714"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Hibaelhárítás Windows virtuális gépek az operációsrendszer-lemez egy helyreállítási virtuális Géphez az Azure PowerShell használatával történő csatlakoztatásával
 Ha a Windows virtuális gép (VM) az Azure-ban egy indítási vagy hibát észlel, szükség lehet a hibaelhárítási lépésekkel magán a lemezen. Ilyenek például egy sikertelen alkalmazásfrissítés megakadályozza, hogy a virtuális gép képes arra, hogy sikeresen lenne. Ez a cikk részletesen bemutatja az Azure PowerShell használatával csatlakoztassa a lemezt egy másik Windows virtuális géphez, javítsa ki a hibákat, majd javítsa ki az eredeti virtuális Gépet. 
@@ -26,7 +26,7 @@ Ha a Windows virtuális gép (VM) az Azure-ban egy indítási vagy hibát észle
 > [!Important]
 > Ebben a cikkben a parancsfájlok csak használó virtuális gépeknél [Managed Disk](../windows/managed-disks-overview.md). 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="recovery-process-overview"></a>Helyreállítási folyamat áttekintése
 Azure PowerShell használatával most már az operációsrendszer-lemez módosítása egy virtuális géphez. Már nincs szükségünk, törölje és hozza létre újra a virtuális Gépet.

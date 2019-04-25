@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017616"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486464"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Az adatkezelési átjáró kibocsátási megjegyzései
 > [!NOTE]
@@ -70,7 +70,7 @@ A Microsoft több karbantartása a kibocsátási megjegyzéseket itt. Legújabb 
 - Egy új tömörítési formátumot támogatja: A ZIP (Deflate)
 
 ### <a name="enhancements-"></a>Fejlesztések-
-- A teljesítmény javítása a fogadó Oracle, HDFS-forrás.
+- Performance improvement for Oracle Sink, HDFS source.
 - Az átjáró automatikus hibajavítás frissíti, az átjáró párhuzamos feldolgozási kapacitást.
 
 

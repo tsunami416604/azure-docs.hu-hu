@@ -12,11 +12,11 @@ ms.date: 01/10/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: a28445199c47c666fb2323a70317f81f3302c765
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877099"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60539162"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Mi az a Bing News Search API?
 
@@ -28,7 +28,7 @@ Vegye figyelembe, hogy a Bing News Search API hírkeresési eredményeket csak b
 
 Bár a Bing News Search API elsősorban talál, és adja vissza a kapcsolódó hírek, számos funkciót biztosít a intelligens és összpontosítás hírek lekéréséhez a weben.
 
-|Funkció  |Leírás  |
+|Szolgáltatás  |Leírás  |
 |---------|---------|
 |[Javasolhat, és a keresési feltételek használata](concepts/search-for-news.md#suggest-and-use-search-terms)     | A keresési élmény javításához használatával a [a Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) a javasolt keresési kifejezéseket, éppen gépelt megjelenítéséhez.         |
 |[Általános hírek](concepts/search-for-news.md#get-general-news)     | Hírek keresése egy keresési lekérdezést küld a Bing News Search API, és visszaállítani híreket cikkek listáját.           |

@@ -9,11 +9,11 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549354"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311641"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -287,7 +287,7 @@ A következő példában `concat` a címkék a mező keresési értékét nevű 
 }
 ```
 
-### <a name="value"></a>Érték
+### <a name="value"></a>Value
 
 Feltételek is alakítható használatával **érték**. **érték** feltételek alapján ellenőrzi [paraméterek](#parameters), [sablonfüggvények támogatott](#policy-functions), vagy literálok lehetnek.
 **érték** van párosítva bármely támogatott [feltétel](#conditions).

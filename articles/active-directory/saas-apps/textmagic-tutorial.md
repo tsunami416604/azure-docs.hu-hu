@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 66d0d791e4f32fc0828d400db7b59d836d221aee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261802"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60315642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TextMagic
 

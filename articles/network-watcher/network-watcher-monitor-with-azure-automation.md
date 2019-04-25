@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 4995d7ae846652c374a289603f29f88f6f56dfef
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 476fc9aa98eef300b981d2009fcee9244db25e8a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485493"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532947"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>A Network Watcher troubleshooting VPN-átjárók figyelése
 
@@ -37,7 +37,7 @@ Ebben a forgatókönyvben lesz:
 - Hozzon létre egy runbook meghívása a `Start-AzureRmNetworkWatcherResourceTroubleshooting` parancsmagot, hogy a kapcsolat állapotának hibaelhárítása
 - Ütemezés összekapcsolása a runbook
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ebben a forgatókönyvben a Kezdés előtt az alábbi előfeltételekkel kell rendelkeznie:
 

@@ -9,11 +9,11 @@ ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: 8afaeaea3c8ceb0de33147e70e00f3f57c857ca7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883157"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60344156"
 ---
 Hozzon létre egy virtuális gépet (VM), indítsa újra a leállított (felszabadított) virtuális gépek vagy virtuális gép átméretezése, a Microsoft Azure számítási erőforrásokat, amelyek az előfizetés foglal le. A Microsoft folyamatosan fektet be a további infrastruktúra és a szolgáltatások győződjön meg arról, hogy mindig van összes virtuális gép típusát támogatja az ügyfelek igényei szerint. Azonban alkalmanként tapasztalhat erőforrás foglalási hibák miatt az adott régióban található Azure-szolgáltatások iránti igény példa nélküli növekedését tapasztaltuk. Ez a probléma akkor fordulhat elő, amikor megpróbálja létrehozni, vagy indítsa el a virtuális gépek egy régióban, amíg a virtuális gépek a következő hibakóddal és üzenet megjelenítése:
 

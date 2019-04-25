@@ -13,11 +13,11 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017259"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318478"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Egy HTTP-forrásból származó adatok áthelyezése az Azure Data Factory használatával
 
@@ -69,7 +69,7 @@ HTTP összekötőt a helyszíni adatforrások hitelesítő adatok beállításá
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | felhasználónév | A felhasználónév, a HTTP-végpont elérésére használhat. | Igen |
-| jelszó | A felhasználó jelszava (**felhasználónév**). | Igen |
+| password | A felhasználó jelszava (**felhasználónév**). | Igen |
 
 **Példa: Alapszintű, kivonatoló vagy Windows-hitelesítés használatával**
 
@@ -98,7 +98,7 @@ Alapszintű hitelesítés használatához állítsa **authenticationType** való
 | --- | --- | --- |
 | embeddedCertData | Bináris adatok a PFX-fájl Base-64 kódolású tartalmát. | Adja meg **embeddedCertData** vagy **certThumbprint** |
 | certThumbprint | Az átjáró számítógépre tanúsítványtár telepített tanúsítvány ujjlenyomatával. Csak akkor, amikor adatokat másol egy helyszíni HTTP-forrás vonatkoznak. | Adja meg **embeddedCertData** vagy **certThumbprint** |
-| jelszó | A tanúsítványhoz tartozó jelszót. | Nem |
+| password | A tanúsítványhoz tartozó jelszót. | Nem |
 
 Ha **certThumbprint** hitelesítést és a tanúsítvány a helyi számítógép személyes tárolójában van telepítve, olvasási engedélyek hozzárendelése az átjárószolgáltatás számára:
 
@@ -161,7 +161,7 @@ A **typeProperties** szakasz eltér az egyes adatkészlet. A **typeProperties** 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** az adatkészlet értékre kell állítani **Http**. | Igen |
-| relativeurl tulajdonságok közül | Az erőforrás, amely tartalmazza az adatok relatív URL-CÍMÉT. Az elérési út nincs megadva, csak az URL-cím a társított szolgáltatás definíciójában megadott használ. <br><br> Egy dinamikus URL-cím létrehozásához, használhatja a [Data Factory-függvények és rendszerváltozók](data-factory-functions-variables.md). Példa: **relativeurl tulajdonságok közül**: **$$Text.Format ("/ saját/jelentés? hónap = {0: yyyy}-{0:MM} & fmt = csv", SliceStart)**. | Nem |
+| relativeUrl | Az erőforrás, amely tartalmazza az adatok relatív URL-CÍMÉT. Az elérési út nincs megadva, csak az URL-cím a társított szolgáltatás definíciójában megadott használ. <br><br> Egy dinamikus URL-cím létrehozásához, használhatja a [Data Factory-függvények és rendszerváltozók](data-factory-functions-variables.md). Példa: **relativeurl tulajdonságok közül**: **$$Text.Format ("/ saját/jelentés? hónap = {0: yyyy}-{0:MM} & fmt = csv", SliceStart)**. | Nem |
 | requestMethod | A HTTP-metódust. Engedélyezett értékek a következők **első** és **POST**. | Nem <br />(alapértelmezett érték a **első**) |
 | additionalHeaders | További HTTP-kérelemfejlécek. | Nem |
 | RequestBody | A HTTP-kérelem törzsét. | Nem |
@@ -223,7 +223,7 @@ Jelenleg Ha a másolási tevékenység forrása a **HttpSource** írja be a köv
 
 | Tulajdonság | Leírás | Szükséges |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | Az időtúllépés (a **TimeSpan** érték) válaszol a HTTP-kérelem. Az időkorlát kapott választ, nem választ adatokat olvasni az időkorlátot. | Nem<br />(alapértelmezett érték: **00: 01:40**) |
+| httpRequestTimeout | Az időtúllépés (a **TimeSpan** érték) válaszol a HTTP-kérelem. Az időkorlát kapott választ, nem választ adatokat olvasni az időkorlátot. | Nem<br />(alapértelmezett érték: **00:01:40**) |
 
 ## <a name="supported-file-and-compression-formats"></a>Támogatott fájl- és tömörítési formátumok
 

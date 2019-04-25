@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d533e6aac9ae1a486d018414a86a9dc3fe742c2
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521907"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60294284"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Mi az Azure Active Directory Identity Protection (frissíthetők)?
 

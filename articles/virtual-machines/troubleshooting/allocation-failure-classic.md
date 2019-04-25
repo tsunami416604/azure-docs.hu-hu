@@ -13,11 +13,11 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 7cd7897e3a0b940bbc636b2fbc3dbbc13b7cf540
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748425"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60505541"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Foglalási hibák esetét a klasszikus üzemi modellben meghatározott hibaelhárítási lépéseket
 
@@ -25,7 +25,7 @@ Az alábbiakban gyakori foglalási forgatókönyvek, amelyek egy foglalási kér
 
 - Méretezze át a virtuális Gépet vagy virtuális gépekre vagy szerepkörpéldányokra hozzáadása egy meglévő felhőszolgáltatáshoz
 - Részlegesen leállított (felszabadított) virtuális gépek újraindítása
-- Teljes körűen leállított (felszabadított) virtuális gépek újraindítása
+- Teljesen leállított (felszabadított) virtuális gépek újraindítása
 - Átmeneti és éles üzemelő példányok (csak szolgáltatásként nyújtott platformon)
 - Affinitáscsoport (virtuális gép vagy szolgáltatás közelségi)
 - Kapcsolat – csoport-alapú virtuális hálózat
@@ -70,7 +70,7 @@ Ha elfogadható, használjon egy másik virtuális IP-CÍMEK, törölje a leáll
 * A meglévő felhőalapú szolgáltatást használ egy regionális virtuális hálózat, az új felhőszolgáltatásra egyszerűen adja hozzá ugyanahhoz a virtuális hálózathoz.
 * Ha a meglévő felhőszolgáltatás nem használja a regionális virtuális hálózat, hozzon létre egy új virtuális hálózatot az új felhőalapú szolgáltatás, majd [a meglévő virtuális hálózat csatlakoztatása az új virtuális hálózat](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). Tudjon meg többet [regionális virtuális hálózatok](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
 
-## <a name="restart-fully-stopped-deallocated-vms"></a>Teljes körűen leállított (felszabadított) virtuális gépek újraindítása
+## <a name="restart-fully-stopped-deallocated-vms"></a>Teljesen leállított (felszabadított) virtuális gépek újraindítása
 **Hiba történt**
 
 GeneralError *
@@ -116,7 +116,7 @@ New_General * vagy New_VMSizeNotSupported *
 
 **Fürt rögzítés okát**
 
-Regionális virtuális hálózatok jelentek meg, mielőtt kellett egy virtuális hálózat társítása az affinitáscsoportot. Ennek eredményeképpen számítási erőforrásokat helyez el az affinitáscsoportot nézve kötelezőnek ismeri az azonos megkötések leírtak szerint a "foglalási forgatókönyv: affinitáscsoport (virtuális gép vagy szolgáltatás közelségi)" című fenti szakaszban. A számítási erőforrásokat egy fürtben vannak társítva.
+Regionális virtuális hálózatok jelentek meg, mielőtt kellett egy virtuális hálózat társítása az affinitáscsoportot. Ennek eredményeképpen számítási erőforrásokat helyez el az affinitáscsoportot nézve kötelezőnek ismeri az azonos megkötések leírtak szerint a "foglalási forgatókönyv: Az affinitáscsoport (virtuális gép vagy szolgáltatás közelségi) "című fenti szakaszban. A számítási erőforrásokat egy fürtben vannak társítva.
 
 **Megkerülő megoldás**
 

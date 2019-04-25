@@ -10,11 +10,11 @@ ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: c2d577bd4c89046136a3465ff554e9662dd0ce19
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478127"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60396163"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>A gyakori elérésű útvonal az Azure Diagnostics-adatok streamelés az Event Hubs használatával
 Az Azure diagnosztikai metrikák és naplók gyűjtésére felhőalapú szolgáltatások virtuális gépeken (VM) és az eredmények átvitele az Azure Storage rugalmas megoldásokat kínál. A 2016. március (SDK 2.9) időkereten belül kezdődően Diagnostics küldése az vlastní zdroje dat és adatátvitel gyakori elérésű útvonal másodpercek használatával [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).

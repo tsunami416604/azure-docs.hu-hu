@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: af36f033dbca6c9f594b3568bfe7567a959e2d2f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4b4d2e2099f0d49c7dd9a150ac659ffde62eaa21
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237152"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506413"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Windows virtuális gépek az Azure-ban a távoli asztali kapcsolatok problémáinak részletes hibaelhárítási lépései
 Ez a cikk diagnosztizálhatja és megoldhatja az Azure-beli virtuális gépek Windows-alapú összetett távoli asztal-hibák részletes hibaelhárítási lépéseket.
@@ -64,7 +64,7 @@ A távoli asztali ügyfél nem lehet elérni a távoli asztali szolgáltatás a 
 * [Hálózati biztonsági csoportok](#source-4-network-security-groups)
 * [Windows-alapú Azure virtuális gép](#source-5-windows-based-azure-vm)
 
-## <a name="source-1-remote-desktop-client-computer"></a>1. forrás: Távoli asztali ügyfél számítógép
+## <a name="source-1-remote-desktop-client-computer"></a>1. forrás: Távoli asztali ügyfél-számítógépen
 Győződjön meg arról, hogy a számítógép kezdeményezhetik egy másik a helyszínen, Windows-alapú számítógép távoli asztali kapcsolatok.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_1.png)
@@ -99,18 +99,18 @@ A klasszikus üzemi modellel létrehozott virtuális gép esetében ellenőrizze
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
 
 > [!NOTE]
-> A Resource Managerben létrehozott virtuális gépek, hagyja ki [forrás 4: a hálózati biztonsági csoportok](#source-4-network-security-groups).
+> A Resource Managerben létrehozott virtuális gépek, hagyja ki [forrás 4: Hálózati biztonsági csoportok](#source-4-network-security-groups).
 
 Ha nem rendelkezik az ugyanazon a felhőszolgáltatáson vagy virtuális hálózat egy másik virtuális géphez, hozzon létre egyet. Kövesse a [Windows Azure-ban futó virtuális gép létrehozása](../virtual-machines-windows-hero-tutorial.md). Törölje a tesztcélú virtuális gépet, a teszt befejeződése után.
 
 Ha egy virtuális géphez ugyanazon a felhőszolgáltatáson vagy virtuális hálózati távoli asztalon keresztül kapcsolódhatnak, ellenőrizze ezeket a beállításokat:
 
-* A végpont-konfiguráció a távoli asztali forgalmat a cél virtuális Gépen: a végpont a privát TCP-portot meg kell egyeznie a TCP-portot, amelyen a virtuális gép távoli asztali szolgáltatás figyel (alapértelmezés: 3389).
-* Az ACL-t a cél virtuális Gépre a távoli asztali forgalmat végpont: hozzáférés-vezérlési listák lehetővé teszik annak megadását engedélyezett vagy tiltott bejövő forgalom az internetről, a forrás IP-címe alapján. Helytelenül konfigurált hozzáférés-vezérlési listák megakadályozhatja a bejövő távoli asztali forgalmat a végponthoz. Ellenőrizze a hozzáférés-vezérlési listák, győződjön meg arról, hogy a proxy a nyilvános IP-címekről érkező bejövő forgalmat, vagy más biztonsági kiszolgáló engedélyezve van. További információkért lásd: [Mi az a hálózati hozzáférés-vezérlési lista (ACL)?](../../virtual-network/virtual-networks-acl.md)
+* A végpont-konfiguráció a távoli asztali forgalmat a cél virtuális Gépen: A végpont a privát TCP-portot meg kell egyeznie a TCP-portot, amelyen a virtuális gép távoli asztali szolgáltatás figyel (alapértelmezés: 3389).
+* A hozzáférés-Vezérlési a távoli asztali forgalmat végpont a cél virtuális Gépen: Hozzáférés-vezérlési listák lehetővé teszik, hogy adja meg engedélyezett vagy tiltott bejövő forgalom az internetről, a forrás IP-címe alapján. Helytelenül konfigurált hozzáférés-vezérlési listák megakadályozhatja a bejövő távoli asztali forgalmat a végponthoz. Ellenőrizze a hozzáférés-vezérlési listák, győződjön meg arról, hogy a proxy a nyilvános IP-címekről érkező bejövő forgalmat, vagy más biztonsági kiszolgáló engedélyezve van. További információkért lásd: [Mi az a hálózati hozzáférés-vezérlési lista (ACL)?](../../virtual-network/virtual-networks-acl.md)
 
 Ellenőrizze, hogy a végpont-e a probléma forrása, távolítsa el a jelenlegi végpont, és hozzon létre egy újat egy véletlenszerű portot kiválasztása külső portszám 49152 – 65535 közötti tartományban. További információkért lásd: [beállítása a virtuális gép végpontjainak](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="source-4-network-security-groups"></a>4. forrás: A hálózati biztonsági csoportok
+## <a name="source-4-network-security-groups"></a>4. forrás: Network Security Groups (Hálózati biztonsági csoportok)
 Hálózati biztonsági csoportok engedélyezése az engedélyezett bejövő és kimenő forgalom részletesebb vezérléshez. Alhálózatok átfedés szabályokat hozhat létre, és a felhőalapú szolgáltatások Azure-beli virtuális hálózathoz.
 
 Az [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) győződjön meg róla, hogy a hálózati biztonsági csoportok szabályai nem blokkolják a virtuális gépek kimenő és bejövő forgalmát. Emellett áttekintheti az érvényben lévő biztonsági csoport szabályai annak biztosítása érdekében a bejövő "Engedélyezés" NSG-t a szabály létezik, és van priorizálva (alapértelmezés: 3389) RDP-portra. További információkért lásd: [használatával érvényes biztonsági szabályokat a virtuális gép forgalom áramlása](../../virtual-network/diagnose-network-traffic-filter-problem.md).

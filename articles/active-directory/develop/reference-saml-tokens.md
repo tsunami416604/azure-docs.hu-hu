@@ -19,11 +19,11 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a77118edd08faf6d40897a916ee85e2b6e20d3bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103451"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60298257"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Az Azure AD SAML-jogkivonatok referenciájából
 
@@ -47,7 +47,7 @@ Az Azure Active Directory (Azure AD) számos különböző típusú feldolgozás
 > |Name (Név) | `unique_name` |A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantált egy bérlőn belül egyedinek kell lennie, és célja, hogy csak megjelenítési célokra használhatók. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |Objektumazonosító | `oid` |Tartalmazza az objektum egyedi azonosítója az Azure ad-ben. Ez az érték nem módosítható és nem hozzárendelni és újra felhasználható. Az Objektumazonosító segítségével azonosíthatja a lekérdezésekben az Azure AD-objektum. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |Szerepkörök | `roles` |Az összes alkalmazás-szerepkörök, amelyek a tárgy megkapta-e közvetlen és közvetett csoporttagság, és a szerepköralapú hozzáférés-vezérlés kikényszerítésére használható jelöli. Alkalmazás-szerepkörök keresztül definiált alkalmazás alapon, az `appRoles` az alkalmazásjegyzékben tulajdonságát. A `value` egyes alkalmazás-szerepkörökhöz tulajdonság értékét, amely a szerepkör jogcím jelenik meg. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
-> |Tárgy | `sub` |Az egyszerű arról, hogy mely a token használjon esetleg imperatív állításokat információkat, például a felhasználó az alkalmazás azonosítja. Ez az érték nem módosítható és nem lehet hozzárendelni, vagy újra felhasználhatók, tehát használat biztonságosan hitelesítési ellenőrzések elvégzéséhez. A tulajdonos mindig szerepel a jogkivonatokat az Azure AD-problémák, mert javasoljuk ennek az értéknek egy általános célú engedélyezési rendszerben. <br> `SubjectConfirmation` jogcím nem áll. Leírja, hogyan ellenőrzése a jogkivonat tárgyában. `Bearer` azt jelzi, hogy a jogkivonat birtokában megerősíti a tulajdonos. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
+> |Subject | `sub` |Az egyszerű arról, hogy mely a token használjon esetleg imperatív állításokat információkat, például a felhasználó az alkalmazás azonosítja. Ez az érték nem módosítható és nem lehet hozzárendelni, vagy újra felhasználhatók, tehát használat biztonságosan hitelesítési ellenőrzések elvégzéséhez. A tulajdonos mindig szerepel a jogkivonatokat az Azure AD-problémák, mert javasoljuk ennek az értéknek egy általános célú engedélyezési rendszerben. <br> `SubjectConfirmation` jogcím nem áll. Leírja, hogyan ellenőrzése a jogkivonat tárgyában. `Bearer` azt jelzi, hogy a jogkivonat birtokában megerősíti a tulajdonos. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
 > |Bérlőazonosító | `tid` |Nem módosítható, egyszer használatos azonosító, amely azonosítja a directory-bérlővel, amely kiállította a jogkivonatot. Ez az érték használatával egy több-bérlős alkalmazásban a bérlő-specifikus directory erőforrásainak eléréséhez. Ez az érték segítségével például a bérlő a Graph API-hívással azonosíthatja. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
 > |Jogkivonat élettartama | `nbf`, `exp` |A jogkivonat érvényességi idejét határozza meg. A szolgáltatás, amely érvényesíti a jogkivonatot kell győződjön meg arról, hogy az aktuális dátumot a jogkivonat élettartamát, más azt kell utasítania a token belül van-e. A szolgáltatás lehetővé teheti a akár öt percet a jogkivonat élettartama tartományon kívül áthidalhatók az idő ("idő döntés") a különbségeket az Azure AD között és a szolgáltatás. | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
 

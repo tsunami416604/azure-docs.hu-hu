@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc6c937e37ebb7919ca271e765ad6460c104e43b
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: b420999dad6f34e4868013e2d466d8bacb60b2c6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405045"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306036"
 ---
 # <a name="common-parameters-and-headers"></a>Gyakori paraméterek és fejlécek
 
@@ -45,8 +45,8 @@ A szolgáltatás által használt HTTP-állapotkódok sikerességét vagy sikert
 
 |Elem neve | Typo | Leírás |
 |---|---|---|
-| Kód | sztring | Hiba történt a típusa.|
-| message | sztring | Mi okozta a hibát leírása. |
+| Kód | string | Hiba történt a típusa.|
+| message | string | Mi okozta a hibát leírása. |
 
 
 

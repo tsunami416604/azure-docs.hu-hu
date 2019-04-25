@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: magoedte
 ms.openlocfilehash: d137576b4beb5cf36dce99ffb1869049f37b60b2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881265"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60494643"
 ---
 # <a name="overview-of-monitoring-containers-in-azure"></a>Az Azure-beli tárolók áttekintése
 Az Azure-ban, hatékonyan monitorozni és kezelni a számítási feladatok Azure-tárolók Kubernetes vagy a Docker telepítve. Fontos tudni, hogyan tárolók, mikroszolgáltatások több alkalmazással rendelkező végez annak érdekében, hogy egy megbízható szolgáltatás biztosításához ipari méretekben, és a figyelési csomag támogatja. Ez a cikk röviden áttekinti az a felügyeleti és monitorozási képességeket nyújt az Azure segítségével megismerheti azokat, és amelyek megfelelőek az igényei alapján.

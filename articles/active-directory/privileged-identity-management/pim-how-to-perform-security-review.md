@@ -15,11 +15,11 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 66f16e02716ceb94d2c8b10bb246a13dc566229c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578312"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60287812"
 ---
 # <a name="perform-an-access-review-of-my-azure-ad-roles-in-pim"></a>A PIM a saját Azure AD-szerepkörök hozzáférési felülvizsgálat végrehajtása
 Az Azure Active Directory (AD) Privileged Identity Management (PIM) egyszerűbbé teszi, hogy hogyan kezelhetik a vállalatok számára az erőforrások az Azure AD és más Microsoft online szolgáltatásaihoz, például az Office 365 vagy a Microsoft Intune emelt szintű hozzáférés.  

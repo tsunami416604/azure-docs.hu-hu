@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894546"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371811"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>A Microsoft vevői szerződés számlázási fiók beállítása
 
@@ -205,11 +205,11 @@ A telepítés befejezéséhez hozzáférésre van szüksége az új számlázás
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
    ![Az Azure portál keresési bemutató képernyőkép](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. Válassza ki a számlázási profilt. A hozzáférést, attól függően szükség lehet egy számlázási fiók kiválasztása. Válassza ki a számlázási fiók **profilok számlázási** és majd a számlázási profilja.
+3. Válassza ki a számlázási profilt. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot. Válassza ki a számlázási fiók **profilok számlázási** és majd a számlázási profilja.
 
 4. Válassza ki **Azure-előfizetések** bal oldalán.
 
@@ -221,11 +221,11 @@ Az új számlázási fiók érdekében átalakulnak a nagyvállalati szerződés
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
    ![Az Azure portál keresési bemutató képernyőkép](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. Válassza ki a számlát szakaszt. A hozzáférést, attól függően szükség lehet egy számlázási fiók és a egy számlázási profilja kiválasztásához.  Válassza ki a számlázási fiók vagy a számlázási profilja **szakaszok számlázása** és majd egy számla szakaszban.
+3. Válassza ki a számlát szakaszt. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot vagy számlázási profilt.  Válassza ki a számlázási fiók vagy a számlázási profilja **szakaszok számlázása** és majd egy számla szakaszban.
 
     ![Számla szakasz post átmenet listáját bemutató képernyőkép](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
 
@@ -241,11 +241,11 @@ Az Azure foglalásokat, hogy az új számlázási fiók kerülnek át a nagyvál
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
    ![Az Azure portál keresési bemutató képernyőkép](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. Válassza ki a létrehozott regisztrációjához számlázási profilt. A hozzáférést, attól függően szükség lehet egy számlázási fiók kiválasztása.  Válassza ki a számlázási fiók **profilok számlázási** és majd a számlázási profilja.
+3. Válassza ki a létrehozott regisztrációjához számlázási profilt. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot.  Válassza ki a számlázási fiók **profilok számlázási** és majd a számlázási profilja.
 
 4. Válassza ki **hozzáférés-vezérlés (IAM)** bal oldalán.
 
@@ -257,7 +257,7 @@ Vállalati rendszergazdák profil tulajdonosai a vállalati rendszergazdák csak
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
    ![Az Azure portál keresési bemutató képernyőkép](./media/billing-mca-setup-account/billing-search-cost-management-billing.png).
 

@@ -11,11 +11,11 @@ ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
 ms.openlocfilehash: c17cb13bff0ea9eb3b0bb2caf5bb527fa3958428
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402700"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Mi az új Azure SQL Data warehouse? 2018. május 
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 május. 

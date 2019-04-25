@@ -3,7 +3,7 @@ title: Általános jogcímek átalakítása példák az identitás élmény kere
 description: Az identitás élmény keretrendszer sémát az Azure Active Directory B2C általános jogcímek átalakítása példákat.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 6a9a819e75e487999a2b50ae758b8d9c6c716a4f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084895"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397158"
 ---
 # <a name="general-claims-transformations"></a>Általános jogcímek átalakítása
 
@@ -58,10 +58,10 @@ A megadott egyszerű szöveges a védőérték és a titkos kulcs kivonata.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | egyszerű szöveg | sztring | A bemeneti jogcímek titkosítását |
-| Bemeneti jogcím | Salt érték | sztring | A védőérték paramétert. Létrehozhat egy véletlenszerű értéket használ `CreateRandomString` jogcím-átalakítás. |
-| InputParameter | randomizerSecret | sztring | Egy meglévő Azure AD B2C mutat **Szabályzatbejegyzések**. Hozzon létre egy újat: Válassza ki az Azure AD B2C-bérlőben **B2C-beállítások > identitás-kezelőfelületi keretrendszer**. Válassza ki **Szabályzatbejegyzések** a elérhető a bérlői kulcsok megtekintéséhez. Válassza a **Hozzáadás** lehetőséget. A **beállítások**válassza **manuális**. Adjon meg egy nevet (a B2C_1A_ automatikusan hozzáadhatók előtag.). Titkos kód mezőben adja meg minden olyan titkos kulcsot szeretné használni, például a 1234567890. A kulcshasználat, válassza ki a **titkos**. Kattintson a **Létrehozás** gombra. |
-| OutputClaim | Ujjlenyomat | sztring | Az a jogcím-átalakítás után előállított takar meghívása. A konfigurált jogcímszabályok a `plaintext` bemeneti jogcím. |
+| Bemeneti jogcím | egyszerű szöveg | string | A bemeneti jogcímek titkosítását |
+| Bemeneti jogcím | Salt érték | string | A védőérték paramétert. Létrehozhat egy véletlenszerű értéket használ `CreateRandomString` jogcím-átalakítás. |
+| InputParameter | randomizerSecret | string | Egy meglévő Azure AD B2C mutat **Szabályzatbejegyzések**. Hozzon létre egy újat: Válassza ki az Azure AD B2C-bérlőben **B2C-beállítások > identitás-kezelőfelületi keretrendszer**. Válassza ki **Szabályzatbejegyzések** a elérhető a bérlői kulcsok megtekintéséhez. Válassza a **Hozzáadás** lehetőséget. A **beállítások**válassza **manuális**. Adjon meg egy nevet (a B2C_1A_ automatikusan hozzáadhatók előtag.). Titkos kód mezőben adja meg minden olyan titkos kulcsot szeretné használni, például a 1234567890. A kulcshasználat, válassza ki a **titkos**. Kattintson a **Létrehozás** gombra. |
+| OutputClaim | Ujjlenyomat | string | Az a jogcím-átalakítás után előállított takar meghívása. A konfigurált jogcímszabályok a `plaintext` bemeneti jogcím. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">

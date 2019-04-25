@@ -16,11 +16,11 @@ ms.date: 02/21/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 82b568d5a6abae1f061166afc1c80ef639df036c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249024"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371546"
 ---
 # <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>A Microsoft vevői szerződés hatálya alá tartozó adó dokumentumok megtekintése
 
@@ -31,9 +31,9 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
 A tulajdonos, közreműködő, olvasó vagy számla ellenében Manager a számlázási profil megtekintése és letöltése adó dokumentumok kell lennie. További számlázási szerepkörökkel kapcsolatban a Microsoft ügyfél-megállapodások esetén, lásd: [számlázási profil szerepkörök és feladatok](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 <!-- TO DO: add link to manage access doc for MCA -->
 
-1. A Keresés **Cost Management és számlázás**.
+1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 2. Válassza ki a számlázási profilt.
-3. Válassza ki **számlákat**.
+3. Válassza ki a **Számlák** elemet.
 4. A számla rács megkeresi a letölteni kívánt adó dokumentumhoz tartozó számla.
 5. Kattintson a három (`...`) a sor végén található.
 6. Válassza ki **adó dokumentum**. Az ország, a számlázási profilja, attól függően több adó dokumentum / az invoice merülhetnek fel.

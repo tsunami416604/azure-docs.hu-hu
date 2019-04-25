@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
 ms.openlocfilehash: 3b90ae3e9808b22b6d6c41e3ac11bec0293bd4bf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107882"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60326110"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Egy Always On rendelkezésre állási csoport terheléselosztó konfigurálása az Azure-ban
 Ez a cikk bemutatja egy SQL Server Always On rendelkezésre állási csoport terheléselosztó létrehozása az Azure virtual machines szolgáltatásban, amely futtatja az Azure Resource Manager. Rendelkezésre állási csoport terheléselosztó van szükség, ha az SQL Server-példányok Azure-beli virtuális gépeken. A terheléselosztó IP-címét a rendelkezésre állási csoport figyelőjének tárolja. Ha egy rendelkezésre állási csoportban több régióban is kiterjed, minden egyes régió egy terheléselosztó van szüksége.
@@ -63,7 +63,7 @@ Először hozza létre a terheléselosztót.
 
 5. Az a **terheléselosztó létrehozása** párbeszédpanelen adja meg a terheléselosztó a következő:
 
-   | Beállítás | Érték |
+   | Beállítás | Value |
    | --- | --- |
    | **Name (Név)** |A load balancer jelölő szöveges nevét. Ha például **sqlLB**. |
    | **Típus** |**Belső**: A legtöbb megvalósításokban belső terheléselosztó, amely lehetővé teszi az alkalmazások az adott virtuális hálózaton belül kapcsolódni a rendelkezésre állási csoporthoz.  </br> **Külső**: Lehetővé teszi az alkalmazások szeretne csatlakozni a nyilvános internetkapcsolaton keresztül a rendelkezésre állási csoportot. |
@@ -109,7 +109,7 @@ A mintavétel határozza meg, hogyan Azure ellenőrzi az SQL Server-példányoka
 
 3. A mintavétel konfigurálása a **mintavétel hozzáadása** panelen. A mintavétel konfigurálásához kövesse az alábbi értékeket:
 
-   | Beállítás | Érték |
+   | Beállítás | Value |
    | --- | --- |
    | **Name (Név)** |A mintavétel jelölő szöveges nevét. Ha például **SQLAlwaysOnEndPointProbe**. |
    | **Protocol (Protokoll)** |**TCP** |
@@ -135,7 +135,7 @@ A terheléselosztási szabályok konfigurálása, hogy a terheléselosztó hogya
 
 3. Az a **terheléselosztási szabályok hozzáadása** panelen konfigurálja a terheléselosztási szabály. Használja a következő beállításokat: 
 
-   | Beállítás | Érték |
+   | Beállítás | Value |
    | --- | --- |
    | **Name (Név)** |A terheléselosztási szabályok jelölő szöveges nevét. Ha például **SQLAlwaysOnEndPointListener**. |
    | **Protocol (Protokoll)** |**TCP** |
@@ -221,7 +221,7 @@ Az IP-címet ad hozzá egy terheléselosztó és az Azure portal, tegye a követ
 
 7. Állapotadat-mintavétel hozzáadása a következő beállításokkal:
 
-   |Beállítás |Érték
+   |Beállítás |Value
    |:-----|:----
    |**Name (Név)** |A mintavétel azonosító nevet.
    |**Protocol (Protokoll)** |TCP
@@ -235,7 +235,7 @@ Az IP-címet ad hozzá egy terheléselosztó és az Azure portal, tegye a követ
 
 10. Adja meg az új terheléselosztási szabályt a következő beállításokkal:
 
-    |Beállítás |Érték
+    |Beállítás |Value
     |:-----|:----
     |**Name (Név)** |A terheléselosztási szabályt azonosító nevet. 
     |**Előtérbeli IP-cím** |Válassza ki a létrehozott IP-cím. 
@@ -246,7 +246,7 @@ Az IP-címet ad hozzá egy terheléselosztó és az Azure portal, tegye a követ
     |**Állapotadat-mintavétel** |Válassza ki a létrehozott mintavételt.
     |**Munkamenet megőrzését** |None
     |**Üresjárat időkorlátja (perc)** |Alapértelmezett (4)
-    |**Nem fix IP (közvetlen kiszolgálói válasz)** | Engedélyezve
+    |**Nem fix IP (közvetlen kiszolgálói válasz)** | Enabled
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>Az új IP-címet használja a rendelkezésre állási csoport konfigurálása
 
@@ -284,7 +284,7 @@ Ha egy elosztott rendelkezésre állási csoport rendelkezésre állási csoport
 
 1. A terheléselosztási szabály a következő beállításokkal hozza létre:
 
-   |Beállítás |Érték
+   |Beállítás |Value
    |:-----|:----
    |**Name (Név)** |A terheléselosztási szabályt az elosztott rendelkezésre állási csoporthoz azonosító nevet. 
    |**Előtérbeli IP-cím** |Az azonos előtérbeli IP-cím a rendelkezésre állási csoportot használja.
@@ -295,7 +295,7 @@ Ha egy elosztott rendelkezésre állási csoport rendelkezésre állási csoport
    |**Állapotadat-mintavétel** |Válassza ki a létrehozott mintavételt.
    |**Munkamenet megőrzését** |None
    |**Üresjárat időkorlátja (perc)** |Alapértelmezett (4)
-   |**Nem fix IP (közvetlen kiszolgálói válasz)** | Engedélyezve
+   |**Nem fix IP (közvetlen kiszolgálói válasz)** | Enabled
 
 Ismételje meg ezeket a lépéseket a terheléselosztó a többi rendelkezésre állási csoportok, amelyek az elosztott rendelkezésre állási csoportok részt.
 

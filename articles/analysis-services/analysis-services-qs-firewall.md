@@ -9,13 +9,13 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 198e7d8d32e7142a266881e2f4ddbc3ed573c521
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187283"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533885"
 ---
-# <a name="quickstart-configure-server-firewall---portal"></a>Gyors útmutató: Kiszolgálótűzfal - portál konfigurálása
+# <a name="quickstart-configure-server-firewall---portal"></a>Gyors útmutató: Kiszolgáló tűzfalának konfigurálása – Portal
 
 Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgáló tűzfalának konfigurálásában. A kiszolgáló és az adatok védelmének fontos része egy tűzfal engedélyezése és IP-címtartományok konfigurálása csak a kiszolgálóhoz hozzáférő számítógépek számára.
 

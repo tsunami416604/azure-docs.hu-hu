@@ -2,17 +2,18 @@
 title: Belső terheléselosztó létrehozása az Azure Kubernetes Service (AKS)
 description: Ismerje meg, hogyan hozhat létre és tölthet fel szolgáltatásokat az Azure Kubernetes Service (AKS) egy belső terheléselosztó használata.
 services: container-service
-author: iainfoulds
+author: rockboyfor
 ms.service: container-service
 ms.topic: article
-ms.date: 03/04/2019
-ms.author: iainfou
+origin.date: 03/04/2019
+ms.date: 04/08/2019
+ms.author: v-yeche
 ms.openlocfilehash: a26eab83f567a46f613e3bfda95fd99aba2b79c0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404314"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60465546"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Belső terheléselosztó az Azure Kubernetes Service (AKS) használatához
 
@@ -21,7 +22,7 @@ Az alkalmazások az Azure Kubernetes Service (AKS) való hozzáférés korlátoz
 > [!NOTE]
 > Az Azure Load Balancer érhető el két termékváltozata - *alapszintű* és *Standard*. Az AKS jelenleg támogatja a *alapszintű* Termékváltozat. Ha használni szeretné a *Standard* SKU, használhatja a felsőbb rétegbeli [aks-motor][aks-engine]. További információkért lásd: [Azure load balancer Termékváltozat összehasonlító][azure-lb-comparison].
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
@@ -144,10 +145,10 @@ További tudnivalók a Kubernetes-szolgáltatás, a [Kubernetes services dokumen
 
 <!-- LINKS - Internal -->
 [advanced-networking]: configure-azure-cni.md
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[az-aks-show]: https://docs.azure.cn/zh-cn/cli/aks?view=azure-cli-latest#az-aks-show
+[az-role-assignment-create]: https://docs.azure.cn/zh-cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
 [azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus
 [use-kubenet]: configure-kubenet.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[install-azure-cli]: /cli/azure/install-azure-cli
+[install-azure-cli]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest

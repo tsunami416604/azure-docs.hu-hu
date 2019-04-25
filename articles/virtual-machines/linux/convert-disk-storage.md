@@ -3,8 +3,8 @@ title: Azure konvertálása felügyelt lemezes tárhely standardról prémium va
 description: Azure konvertálása felügyelt lemezes tárhely standardról prémium vagy standard az Azure CLI-vel.
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 18730f662f36000e1efc826c35bebde79dbf0e79
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60328782"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure konvertálása felügyelt lemezes tárhely standardról prémium vagy standard
 
@@ -29,7 +29,7 @@ Négy [lemeztípus](disks-types.md) az Azure-ban felügyelt lemezek: Ultranagy a
 
 Ez a cikk bemutatja, hogyan átalakítása felügyelt lemezek standardról prémium vagy standard az Azure parancssori felület használatával. Telepítse vagy frissítse az eszközt, tekintse meg [Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 * Lemez konvertálása újra kell indítani a virtuális gép (VM), így megfelelően időzítse a lemezes tárolás áttelepítése során egy már létező karbantartási időszakra.
 * Nem felügyelt lemezek első [konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md) úgy válthat a tárolási lehetőségek között.

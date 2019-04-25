@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173334"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60347804"
 ---
 # <a name="more-details-about-features-in-preview"></a>További információt az előzetes verzió szolgáltatásai
 Ez a témakör ismerteti a szolgáltatások használatának jelenleg előzetes verzióban érhető el.

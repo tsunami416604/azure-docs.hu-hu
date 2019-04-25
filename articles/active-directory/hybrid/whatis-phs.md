@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f588115e38ded07b79568c91b8d166949b34a886
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179178"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60294933"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Mi az Azure AD-vel a Jelszókivonat-szinkronizálás?
 A Jelszókivonat-szinkronizálás a hibrid identitás elvégzéséhez szükséges bejelentkezési módszerek egyike. Az Azure AD Connect szinkronizálja a kivonat, a kivonat, a jelszó egy helyszíni Active Directory-példányból egy felhőalapú Azure AD-példányt.

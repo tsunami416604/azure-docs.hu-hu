@@ -17,11 +17,11 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 37057e531ea8387fbed84c9b03bbfb9c14d160ea
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574960"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60287574"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review-in-pim"></a>Hozzáférési felülvizsgálat végrehajtása a PIM erőforrás irányítópultok segítségével
 
@@ -43,4 +43,4 @@ Alább a diagramok és a felhasználóknak és csoportoknak az új szerepkör-ho
 
 ## <a name="next-steps"></a>További lépések
 
-- [A PIM az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat indítása](pim-resource-roles-start-access-review.md) 
+- [Azure-erőforrásszerepkörök hozzáférési felülvizsgálatának indítása a PIM szolgáltatásban](pim-resource-roles-start-access-review.md) 

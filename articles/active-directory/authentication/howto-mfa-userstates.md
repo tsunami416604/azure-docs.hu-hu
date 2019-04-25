@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2d5a196af8ee6a7d41833185136a76255be4082a
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371747"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60358991"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzést igénylése
 
@@ -44,7 +44,7 @@ Felhasználói fiókok az Azure multi-factor Authentication az alábbi három j�
 | status | Leírás | A böngészőn kívüli alkalmazások érintett | Az érintett alkalmazások | Modern hitelesítés nélküli érintett |
 |:---:|:---:|:---:|:--:|:--:|
 | Letiltva |Az Azure MFA-ban nem regisztrált új felhasználó alapértelmezett állapota. |Nem |Nem |Nem |
-| Engedélyezve |A felhasználó az Azure MFA-ban regisztrált, de nincs regisztrálva. Amikor legközelebb bejelentkeznek a regisztrációs kapnak. |Nem.  Ezek továbbra is használhatók, amíg a regisztrációs folyamat befejezése. | Igen. A munkamenet lejárata után az Azure MFA-regisztráció szükség.| Igen. A hozzáférési jogkivonat lejárata után az Azure MFA-regisztráció szükség. |
+| Enabled |A felhasználó az Azure MFA-ban regisztrált, de nincs regisztrálva. Amikor legközelebb bejelentkeznek a regisztrációs kapnak. |Nem.  Ezek továbbra is használhatók, amíg a regisztrációs folyamat befejezése. | Igen. A munkamenet lejárata után az Azure MFA-regisztráció szükség.| Igen. A hozzáférési jogkivonat lejárata után az Azure MFA-regisztráció szükség. |
 | Kényszerítve |A felhasználó előfizetett, és az Azure MFA-hoz a regisztrációs folyamat befejeződött. |Igen. Alkalmazások alkalmazásjelszavakra. |Igen. Az Azure MFA szükség a bejelentkezéskor. | Igen. Az Azure MFA szükség a bejelentkezéskor. |
 
 A felhasználói állapot tükrözi, hogy egy rendszergazda regisztrálta őket az Azure MFA-ban, és hogy azokat tölteni a regisztrációs folyamat.
@@ -82,7 +82,7 @@ Miután engedélyezte a felhasználókat, értesítse őket e-mailen keresztül.
 
 A felhasználói állapot módosítása használatával [az Azure AD PowerShell](/powershell/azure/overview), módosítsa `$st.State`. Nincsenek három lehetséges állapota:
 
-* Engedélyezve
+* Enabled
 * Kényszerítve
 * Letiltva  
 

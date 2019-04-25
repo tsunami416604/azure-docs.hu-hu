@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aba12a2bca882b5f0e6e95d8e4f6014b318a12e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 58ca814551d8c7d309328f236052e1d07ac6f035
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119734"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60469128"
 ---
 # <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Alkalmazás-rendszergazdai szerepkörök az Azure Active Directoryban delegálása
 
@@ -58,7 +58,7 @@ Amikor egy felhasználó egy alkalmazás regisztrál, a rendszer automatikusan f
 
 ## <a name="delegate-app-ownership"></a>Delegált alkalmazás tulajdonosa
 
-Az alkalmazástulajdonosok és az alkalmazás regisztrációs tulajdonosai egyes kezelheti csak az alkalmazás alkalmazások vagy a saját alkalmazásregisztrációk. Például amikor hozzáadja a Salesforce alkalmazás tulajdonosát, a tulajdonos kezelheti a hozzáférést és konfigurációja a Salesforce-ban, de nem minden más alkalmazást. Egy alkalmazás számos tulajdonosokkal rendelkezhetnek, és a felhasználó lehet számos alkalmazás tulajdonosa.
+Az alkalmazástulajdonosok és az alkalmazás regisztrációs tulajdonosai egyes kezelheti csak az alkalmazások vagy a saját alkalmazásregisztrációk. Például amikor hozzáadja a Salesforce alkalmazás tulajdonosát, a tulajdonos kezelheti a hozzáférést és konfigurációja a Salesforce-ban, de nem minden más alkalmazást. Egy alkalmazás számos tulajdonosokkal rendelkezhetnek, és a felhasználó lehet számos alkalmazás tulajdonosa.
 
 Az alkalmazás tulajdonosa végezheti el:
 

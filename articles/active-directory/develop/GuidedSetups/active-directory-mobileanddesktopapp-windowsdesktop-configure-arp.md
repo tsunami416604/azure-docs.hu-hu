@@ -17,11 +17,11 @@ ms.author: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc9b5cbc4904c6b2238e56742381feb4d2811437
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195821"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60301141"
 ---
 # <a name="add-the-applications-registration-information-to-your-app"></a>Az alkalmazás regisztrációs adatok hozzáadása az alkalmazáshoz
 Ebben a lépésben kell hozzáadnia az alkalmazásazonosítót a projekthez.

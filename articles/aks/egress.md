@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: iainfou
 ms.openlocfilehash: 6612d801804cdd1e092b50977230f24b378e64ba
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407136"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60466426"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>A kimenő forgalmat az Azure Kubernetes Service (AKS) egy statikus nyilvános IP-cím használata
 
@@ -20,7 +20,7 @@ Alapértelmezés szerint a kimenő IP-cím az Azure Kubernetes Service (AKS) fü
 
 Ez a cikk bemutatja, hogyan hozhat létre és használhat egy statikus nyilvános IP-címet a kimenő forgalmat az AKS-fürtben való használatra.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 

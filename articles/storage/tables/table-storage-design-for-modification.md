@@ -9,11 +9,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: e993d169025f9b76c5e813bae31ca6cb2a39ba71
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809518"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325884"
 ---
 # <a name="design-for-data-modification"></a>Tervezés adatmódosításhoz
 Ez a cikk a Beszúrás, frissítés, optimalizálásával kapcsolatos kialakítási szempontok koncentrál, és törli. Bizonyos esetekben kell kiértékelni kompromisszumot kötni a tervek, melyek optimalizálják az ellen, melyek optimalizálják az adatok módosítását, ugyanúgy, mint a relációs adatbázisok tervek (bár a technika kezeléséhez a Tervező feláldozását tervek között eltér a relációs adatbázis). A szakasz Table tervezési minták for a Table service néhány részletes tervezési minták ismerteti, és kiemeli a néhányat ezek skálán. A gyakorlatban tapasztalni fogja, hogy sok műveletekhez optimalizálva entitások lekérdezése is esetén működik megfelelően entitások módosítása.  

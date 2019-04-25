@@ -18,11 +18,11 @@ ms.date: 01/30/2019
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6c80ee5d2a4d72be131c6a781cf793d1981e780
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521074"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60353267"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
 Forrásul vagy a biztonsági másolat a Windows 10-es beállítások teljes listáját a következő: 
@@ -76,7 +76,7 @@ Nem hordozhatók a beállításokat, vagy szinkronizálási csoporthoz nem fog t
 | **Alkalmazáslista**: a telepített alkalmazások listája |X |biztonsági mentés |Egyéb |
 | **Bluetooth**: az összes Bluetooth-beállítások |X |X | |
 | **Parancssor**: Parancsot a parancssorba "Alapértelmezett" beállítások |Szinkronizálás |X |Belső |
-| **hitelesítő adatok**: Hitelesítő adatok Széfjét |Szinkronizálás |Szinkronizálás |jelszó |
+| **hitelesítő adatok**: Hitelesítő adatok Széfjét |Szinkronizálás |Szinkronizálás |password |
 | **Dátum, idő és régióját**: automatikus idő (Internet idő szinkronizálása) |Szinkronizálás |Szinkronizálás |language |
 | **Dátum, idő és régióját**: 24 órás formátumban |Szinkronizálás |X |language |
 | **Dátum, idő és régióját**: dátum és idő |Szinkronizálás |X |language |

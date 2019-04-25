@@ -16,11 +16,11 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361370"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60468317"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök az Azure Active Directory felügyeleti feladat
 
@@ -115,8 +115,8 @@ Az összes konfiguráció olvasása | A rendszer Active Directory Tartományi sz
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Eszköz letiltása | Felhőbeli eszközrendszergazda | 
-Eszköz engedélyezése | Felhőbeli eszközrendszergazda | 
+Eszköz letiltása | Felhőeszköz-rendszergazda | 
+Eszköz engedélyezése | Felhőeszköz-rendszergazda | 
 Alapszintű konfiguráció olvasása | Felhasználói szerepkör alapértelmezés ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Olvassa el a BitLocker-kulcsok | Biztonsági olvasó | Jelszókezelő, a biztonsági rendszergazda
 
@@ -247,8 +247,8 @@ Az összes konfiguráció olvasása | Biztonsági rendszergazda | Felhasználói
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Felhasználók szerepkörökhöz rendelése | Kiemelt szerepkörű rendszergazda | 
-Szerepkör-beállítások konfigurálása | Kiemelt szerepkörű rendszergazda | 
+Felhasználók szerepkörökhöz rendelése | Kiemelt szerepkörgazda | 
+Szerepkör-beállítások konfigurálása | Kiemelt szerepkörgazda | 
 Naplózási tevékenység megtekintése | Biztonsági olvasó | 
 Nézet szerepkörtagságai | Biztonsági olvasó | 
 
@@ -256,7 +256,7 @@ Nézet szerepkörtagságai | Biztonsági olvasó |
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Szerepkör-hozzárendelések kezelése | Kiemelt szerepkörű rendszergazda | 
+Szerepkör-hozzárendelések kezelése | Kiemelt szerepkörgazda | 
 Azure AD-szerepkörhöz olvasási hozzáférési felülvizsgálata  | Biztonsági olvasó | Biztonsági rendszergazda, a kiemelt szerepkörű rendszergazda
 Az összes konfiguráció olvasása | Felhasználói szerepkör alapértelmezés ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 
@@ -314,7 +314,7 @@ Olvassa el a kockázatosként megjelölt felhasználók | Biztonsági olvasó |
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Felhasználó hozzáadása a címtárbeli szerepkört | Kiemelt szerepkörű rendszergazda | 
+Felhasználó hozzáadása a címtárbeli szerepkört | Kiemelt szerepkörgazda | 
 Tag hozzáadása a csoporthoz | Felhasználói adminisztrátor | 
 Licenc hozzárendelése | Licencadminisztrátor | Felhasználói adminisztrátor
 Vendég-felhasználó létrehozása | Vendég meghívója | Felhasználói adminisztrátor

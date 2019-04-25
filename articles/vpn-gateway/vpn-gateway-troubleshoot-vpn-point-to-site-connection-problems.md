@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2018
 ms.author: genli
 ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492379"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60457476"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítás: Az Azure pont – hely kapcsolati problémák
 
@@ -45,7 +45,7 @@ A probléma megoldásához kövesse az alábbi lépéseket:
 
 2. Győződjön meg arról, hogy a megfelelő helyen vannak a következő tanúsítványok:
 
-    | Tanúsítvány | Földrajzi egység |
+    | Tanúsítvány | Location egység |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuális felhasználó\személyes\tanúsítványok útvonalon |
     | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
@@ -122,7 +122,7 @@ Ha a VPN-ügyfél használatával Azure-beli virtuális hálózathoz csatlakozni
 
 1. Győződjön meg arról, hogy a megfelelő helyen vannak a következő tanúsítványok:
 
-    | Tanúsítvány | Földrajzi egység |
+    | Tanúsítvány | Location egység |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktuális felhasználó\személyes\tanúsítványok útvonalon |
     | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|

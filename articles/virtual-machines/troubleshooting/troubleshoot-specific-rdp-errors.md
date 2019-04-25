@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f4d733e29d2ba8213e1832f2c604b726283ab3e1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417395"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318697"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Adott Azure-beli Windows virtuális gép RDP-hibaüzenetek elhárítása
 Egy adott hibaüzenet jelenhet meg az Azure-beli Windows virtuális gépek (VM) a távoli asztali kapcsolat használata esetén. Ez a cikk a Gyakori hibaüzenetek észlelt, és a hibaelhárítási lépéseket a problémák megoldásához némelyike részletezi. Ha problémái vannak a virtuális Géphez csatlakozni RDP-vel de ne nem egy adott hibaüzenetet kapja, lásd: a [hibaelhárítási útmutató a távoli asztal](troubleshoot-rdp-connection.md).
@@ -31,7 +31,7 @@ Információ a konkrét hibaüzeneteket tekintse meg a következőket:
 * [A távoli munkamenet megszakadt, mert nem találhatók távoli asztali licenckiszolgáló kiszolgálók érhető el, amely licencet biztosíthatna](#rdplicense).
 * [Távoli asztal nem találja a számítógép "name"](#rdpname).
 * [Hitelesítési hiba történt. Nem lehet kapcsolódni a helyi biztonsági szervezet](#rdpauth).
-* [Windows biztonsági hiba: nem működött a hitelesítő adatok](#wincred).
+* [Windows biztonsági hiba: A hitelesítő adatok nem működött](#wincred).
 * [A számítógép nem lehet kapcsolódni a távoli számítógép](#rdpconnect).
 
 <a id="rdplicense"></a>
@@ -50,7 +50,7 @@ További információkért tekintse meg a következő blogbejegyzésben: [Azure 
 <a id="rdpname"></a>
 
 ## <a name="remote-desktop-cant-find-the-computer-name"></a>Távoli asztal nem találja a "name" számítógépen.
-OK: A számítógép a távoli asztali ügyfél nem oldható fel a beállításait, az RDP-fájlt a számítógép nevét.
+OK: A számítógép a távoli asztali ügyfél beállításait, az RDP-fájlt a számítógép neve nem oldható fel.
 
 Lehetséges megoldások:
 
@@ -70,7 +70,7 @@ A cím része az RDP-fájl tartalmaz:
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Hitelesítési hiba történt. Nem lehet kapcsolódni a helyi biztonsági szervezet.
 OK: A cél virtuális gép nem található a biztonsági szervezettől a felhasználó hitelesítő adatait részét.
 
-Ha a felhasználónév neve a *SecurityAuthority*\\*felhasználónév* (Példa: corp\felhasználó1), a *SecurityAuthority* rész nem a virtuális gép számítógép neve (a helyi biztonsági szervezettől) vagy egy Active Directory-tartomány nevét.
+Ha a felhasználónév neve a *SecurityAuthority*\\*felhasználónév* (Példa: A corp\felhasználó1), a *SecurityAuthority* rész nem a virtuális gép számítógép nevét (a helyi biztonsági szervezettől) vagy egy Active Directory-tartomány nevét.
 
 Lehetséges megoldások:
 
@@ -80,7 +80,7 @@ Lehetséges megoldások:
 
 <a id="wincred"></a>
 
-## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows biztonsági hiba: nem működött a hitelesítő adatait.
+## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows biztonsági hiba: Nem működött a hitelesítő adatait.
 OK: A céloldali virtuális Gépet nem lehet érvényesíteni a fiók nevét és jelszavát.
 
 A Windows-alapú számítógépek ellenőrizheti a helyi vagy tartományi fiók hitelesítő adatait.

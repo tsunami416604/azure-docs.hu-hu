@@ -16,25 +16,25 @@ ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 7aaf4be23c806dda621430c4d1b0c142f41feb1f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49090382"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60323872"
 ---
-# <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Oktatóanyag – Tárolóblobok elérése egyéni Azure CDN-tartomány használatával HTTPS-en keresztül
+# <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Oktatóanyag: Tárolási blobok elérése az Azure CDN egyéni tartományon használatával HTTPS-kapcsolaton keresztül
 
 Miután integrálta az Azure Storage-fiókot az Azure Content Delivery Network (CDN) hálózattal, hozzáadhat egy egyéni tartományt, és engedélyezheti a HTTPS-t a tartományon az egyéni blobtároló végpontjához. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először integrálnia kell az Azure Storage-fiókot az Azure CDN-nel. További információért lásd az [Oktatóanyag: Azure Storage-fiók integrálása az Azure CDN-nel](cdn-create-a-storage-account-with-cdn.md) című cikket.
+Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először integrálnia kell az Azure Storage-fiókot az Azure CDN-nel. További információkért lásd: [a rövid útmutató: Az Azure storage-fiók integrálása az Azure CDN](cdn-create-a-storage-account-with-cdn.md).
 
 ## <a name="add-a-custom-domain"></a>Egyéni tartomány hozzáadása
-Miután létrehoz egy CDN-végpontot a profiljában, a végpont neve – amely az azureedge.net altartománya – része lesz annak az URL-címnek, amelyre alapértelmezés szerint a rendszer a CDN-tartalmat irányítja. Emellett lehetősége van arra, hogy CDN-végpontot rendeljen egy egyéni tartományhoz. Így a tartalom továbbításakor az egyéni tartomány neve szerepel majd az URL-ben a végpont neve helyett. Ha egyéni tartományt szeretne hozzáadni a végponthoz kövesse az [Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md) című oktatóanyagban szereplő utasításokat.
+Miután létrehoz egy CDN-végpontot a profiljában, a végpont neve – amely az azureedge.net altartománya – része lesz annak az URL-címnek, amelyre alapértelmezés szerint a rendszer a CDN-tartalmat irányítja. Emellett lehetősége van arra, hogy CDN-végpontot rendeljen egy egyéni tartományhoz. Így a tartalom továbbításakor az egyéni tartomány neve szerepel majd az URL-ben a végpont neve helyett. Egyéni tartomány hozzáadása a végpontra, kövesse az utasításokat ebben az oktatóanyagban: [Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md).
 
 ## <a name="configure-https"></a>HTTPS konfigurálása
-A HTTPS-protokoll egyéni tartományon belüli használatával biztosítható, hogy a bizalmas adatokat a rendszer biztonságosan, TLS/SSL-titkosításon keresztül továbbítsa az interneten. Amikor a böngésző HTTPS-protokollal kapcsolódik egy webhelyhez, akkor ellenőrzi a webhely biztonsági tanúsítványát, és megállapítja, hogy azt arra jogosult hitelesítésszolgáltató adta-e ki. Ha az egyéni tartományon szeretné konfigurálni a HTTPS-t, kövesse a [HTTPS konfigurálása Azure CDN egyéni tartományon](cdn-custom-ssl.md) című oktatóanyag lépéseit.
+A HTTPS-protokoll egyéni tartományon belüli használatával biztosítható, hogy a bizalmas adatokat a rendszer biztonságosan, TLS/SSL-titkosításon keresztül továbbítsa az interneten. Amikor a böngésző HTTPS-protokollal kapcsolódik egy webhelyhez, akkor ellenőrzi a webhely biztonsági tanúsítványát, és megállapítja, hogy azt arra jogosult hitelesítésszolgáltató adta-e ki. Az egyéni tartomány HTTPS konfigurálásához kövesse az utasításokat ebben az oktatóanyagban: [HTTPS konfigurálása Azure CDN egyéni tartományon](cdn-custom-ssl.md).
 
 ## <a name="shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok
 Ha a Blob Storage-végpont a névtelen olvasási hozzáférések elutasítására van konfigurálva, akkor minden, az egyéni tartományhoz küldött kérésben meg kell adnia egy [közös hozzáférésű jogosultságkód (SAS-)](cdn-sas-storage-support.md) tokent. Alapértelmezés szerint a Blob Storage-végpontok nem engedélyezik a névtelen olvasási hozzáférést. Az SAS-szel kapcsolatos további információkért lásd a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../storage/blobs/storage-manage-access-to-resources.md) foglalkozó témakört.
@@ -56,7 +56,7 @@ Ha a blobokat az Azure CDN-en keresztül éri el, akkor a [Blob Storage díjszab
 Ha például rendelkezik egy Storage-fiókkal az Egyesült Államokban, amelyhez az Azure CDN-en keresztül fér hozzá, és valaki Európából az Azure CDN-en keresztül megkísérli az ott található blobok egyikéhez való hozzáférést, az Azure CDN először megkeresi az Európához legközelebb eső POP-kiszolgálót a blob számára. Ha megtalálta, az Azure CDN hozzáfér a blob másolatához, és a CDN díjszabását használja, mert a hozzáférés az Azure CDN-en történik. Ha nem talál ilyet, az Azure CDN átmásolja a blobot a POP-kiszolgálóra, amely a Blob Storage díjszabásában megadott kimenő forgalmi és tranzakciós díjakat vonja maga után, majd a POP-kiszolgálón hozzáfér a fájlhoz, amelyre már az Azure CDN díjszabása vonatkozik.
 
 ## <a name="next-steps"></a>További lépések
-[Oktatóanyag: Azure CDN gyorsítótárazási szabályainak beállítása](cdn-caching-rules-tutorial.md)
+[Oktatóanyag: Azure CDN gyorsítótárazási szabályok beállítása](cdn-caching-rules-tutorial.md)
 
 
 

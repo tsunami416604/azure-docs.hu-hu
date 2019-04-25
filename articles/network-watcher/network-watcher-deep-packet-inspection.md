@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 1c30e679b250c2d6c6b03a1fe5d70dbd06acf052
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818362"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60535720"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>A csomagok vizsgálata az Azure Network Watcher
 
 Az a Network Watcher packet capture funkciójának használatával, kezdeményezni, és az Azure virtuális gépeken a portálról, PowerShell, CLI-t, és az SDK-t és a REST API-val programozott módon való rögzítését munkameneteket kezelhessen. A csomagrögzítés teszi lehetővé azáltal, hogy az adatokat, azonnal használható formátumban szintű csomagadatok igénylő forgatókönyvek. Vizsgálhatja meg az adatok szabadon elérhető eszközök használatával, vizsgálja meg a kommunikációt a virtuális gépek küldött, és betekintést nyerhet a hálózati forgalmat. Rögzítési csomagadatok néhány példa használati módjai többek között: hálózati vagy alkalmazás kapcsolatos problémák kivizsgálása, hálózati való visszaélés és a behatolás kísérletek észlelésekor vagy jogszabályoknak való megfelelőség fenntartásával. Ebben a cikkben bemutatjuk, hogyan biztosítják a Network Watcher packet rögzítési fájlt megnyitni egy népszerű, nyílt forráskódú eszköz segítségével. Egy kapcsolat késési kiszámításához, rendellenes forgalom azonosítására és vizsgálja meg a hálózati statisztika példákat is biztosít.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk a korábban futtatott csomagrögzítés végighalad néhány előre konfigurált forgatókönyvet. Ezek a forgatókönyvek bemutatják, csomagrögzítés áttekintésével elérhető funkciókat. Ebben a forgatókönyvben használt [WireShark](https://www.wireshark.org/) a csomagrögzítés vizsgálhatja meg.
 

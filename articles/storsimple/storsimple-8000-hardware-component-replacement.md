@@ -16,11 +16,11 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433654"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60321732"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>A StorSimple 8000 sorozatú eszköz a hardverkomponensek cseréje
 
@@ -34,7 +34,7 @@ A hardver összetevő helyettesítő oktatóanyagok ismertetik a hardverösszete
 ### <a name="safety-icon-conventions"></a>Biztonsági ikon konvenciók
 A következő táblázat ismerteti az ezekben az oktatóanyagokban használt biztonsági ikonokat. Figyeljen biztonsági ikonok távolítsa el, és cserélje le a alkatrészek lépésein.
 
-| Ikon | Szöveg | További információ |
+| Ikon | Text | További információ |
 |:--- |:--- |:--- |
 | ![Figyelmeztetés ikon](./media/storsimple-hardware-component-replacement/Warning.png) |**DANGER!** |Azt jelzi, hogy a veszélyes helyzet eredményező, ha nem kerülni, halála vagy komoly kárt. Ez a jel szó a rendkívüli helyzetekben korlátozódik. |
 | ![Figyelmeztetés ikon](./media/storsimple-hardware-component-replacement/Warning.png) |**FIGYELMEZTETÉS!** |Azt jelzi, hogy nem elkerülhető, ha a haláleset vagy komoly kárt okozhat a veszélyes helyzet. |
@@ -46,7 +46,7 @@ A következő táblázat ismerteti az ezekben az oktatóanyagokban használt biz
 | ![Olvasható utasítások ikon](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**Először olvassa el az összes utasításokat** | |
 | ![Tipp veszély ikon](./media/storsimple-hardware-component-replacement/TipHazard.png) |**Veszély tipp** | |
 
-### <a name="before-you-begin"></a>Előkészületek
+### <a name="before-you-begin"></a>Előzetes teendők
 Ismerje meg az eszköz és a biztonsági ikonok a jelen oktatóanyagban használt biztonsági információ. Lépjen a [biztonságosan telepítéséhez, és a StorSimple-eszköz üzemeltetéséhez](storsimple-safety.md) teljes körű információkat. Ne feledje el áttekinteni a [biztonsági óvintézkedések](storsimple-safety.md#handling-precautions) előtt, a StorSimple-eszköz kezeléséhez.
 
 Mielőtt megkísérli cserélje le egy összetevő, vegye figyelembe a következőket.

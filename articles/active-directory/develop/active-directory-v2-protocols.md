@@ -19,11 +19,11 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dad05221376fa5871aadf6d89dcb15dff55a6dfa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490714"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60300171"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>A Microsoft identity platform protokollok
 
@@ -64,7 +64,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 Ha a `{tenant}` négy különböző értékek valamelyikét hajthatja végre:
 
-| Érték | Leírás |
+| Value | Leírás |
 | --- | --- |
 | `common` | Lehetővé teszi, hogy a személyes Microsoft-fiókok és a munkahelyi vagy iskolai fiókokkal rendelkező felhasználók jelentkezhetnek be az alkalmazás Azure AD-ből. |
 | `organizations` | Lehetővé teszi, hogy csak a munkahelyi vagy iskolai fiókkal rendelkező felhasználók jelentkezhetnek be az alkalmazás Azure AD-ből. |

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/10/2019
 ms.author: aljo
 ms.openlocfilehash: 46c9b37e9bb8613b34dea6705320f5689eeb51d8
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526537"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60386822"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
 Ez a cikk ismerteti a Service Fabric-fürtöt, amely testre szabható a különböző fabric beállításait. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. További információkért lásd: [egy Azure-fürtön konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Az önálló fürtök esetén, testre szabható beállítások frissítése a *ClusterConfig.json* fájl- és a egy konfigurálási frissítse a fürtön. További információkért lásd: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -378,7 +378,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 
 | **A paraméter** | **Megengedett értékek** | **Szabályzat frissítése** | **Útmutató vagy rövid leírása** |
 | --- | --- | --- | --- |
-|Engedélyezve |Bool, alapértelmezett érték a False (hamis) |Statikus|A ImageStoreService Enabled jelzőt. Alapértelmezett: False (hamis) |
+|Enabled |Bool, alapértelmezett érték a False (hamis) |Statikus|A ImageStoreService Enabled jelzőt. Alapértelmezett: False (hamis) |
 |MinReplicaSetSize | Int, alapértelmezett érték 3 |Statikus|A MinReplicaSetSize ImageStoreService számára. |
 |PlacementConstraints | sztring, alapértelmezett érték a "" |Statikus| A PlacementConstraints ImageStoreService számára. |
 |QuorumLossWaitDuration | Idő (másodpercben), alapértelmezett érték a MaxValue |Statikus| Adja meg az időtartam másodpercben. A QuorumLossWaitDuration ImageStoreService számára. |

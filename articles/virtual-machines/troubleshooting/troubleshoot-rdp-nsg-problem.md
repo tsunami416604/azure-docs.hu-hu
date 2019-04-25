@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
 ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52954612"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318935"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nem lehet távoli csatlakozás egy virtuális Gépet, mert az RDP-port nincs engedélyezve az NSG-t
 
@@ -43,13 +43,13 @@ Ahhoz, hogy az RDP-portra egy NSG-ben, kövesse az alábbi lépéseket:
 4. A **bejövőport-szabályok**, ellenőrizze-e a port RDP megfelelően van-e beállítva. A következő egy példa a konfigurációs: 
 
     **Prioritás**: 300 </br>
-    **Port**: 3389-es </br>
+    **Port**: 3389 </br>
     **Név**: Port_3389 </br>
-    **Port**: 3389-es </br>
+    **Port**: 3389 </br>
     **Protokoll**: TCP </br>
-    **Forrás**: összes </br>
-    **Célok**: összes </br>
-    **A művelet**: engedélyezése </br>
+    **forrás**: Bármelyik </br>
+    **Célok**: Bármelyik </br>
+    **A művelet**: Engedélyezés </br>
 
 Ha a forrás IP-címet ad meg, ez a beállítás lehetővé teszi, hogy csak a megadott IP-címet vagy IP-címtartományt a virtuális Géphez való csatlakozáshoz érkező forgalmat. Győződjön meg arról, hogy az RDP-munkamenet elindításához használja a számítógépet a tartományba esik.
 

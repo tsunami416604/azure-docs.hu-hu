@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: robb
 ms.openlocfilehash: 81c93900acf2d75eeb8e4fdc8da7d563f3a59595
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699098"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60395050"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Az Azure Diagnostics hibaelhárítása
 Ez a cikk ismerteti a hibaelhárítási információkat, amelyek megfelelőek az Azure Diagnostics használatával. Az Azure diagnostics kapcsolatos további információkért lásd: [Azure Diagnostics – áttekintés](diagnostics-extension-overview.md).

@@ -14,11 +14,11 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4aba7aadbe92b6c4f0ab417785e230bb6a6823df
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523426"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486583"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Adatok áthelyezése egy FTP-kiszolgálóról az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -69,7 +69,7 @@ A következő táblázat ismerteti a JSON-elemeket egy társított FTP-szolgált
 | gazdagép |Adja meg a nevét vagy az FTP-kiszolgáló IP-címét. |Igen |&nbsp; |
 | authenticationType |Adja meg a hitelesítés típusát. |Igen |Alapszintű, a névtelen |
 | felhasználónév |Adja meg a felhasználót, ki férhet hozzá az FTP-kiszolgáló. |Nem |&nbsp; |
-| jelszó |Adja meg a jelszót a felhasználó (felhasználónév). |Nem |&nbsp; |
+| password |Adja meg a jelszót a felhasználó (felhasználónév). |Nem |&nbsp; |
 | encryptedCredential |Adja meg a titkosított hitelesítő adatokat, az FTP-kiszolgáló eléréséhez. |Nem |&nbsp; |
 | átjáró neve |Az adatkezelési átjáró egy helyszíni FTP-kiszolgálóhoz való csatlakozáshoz adja meg az átjárója nevére. |Nem |&nbsp; |
 | port |Adja meg a portot, amelyet az FTP-kiszolgáló figyel. |Nem |21 |

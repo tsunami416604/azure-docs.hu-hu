@@ -17,11 +17,11 @@ ms.date: 09/04/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6695fe4854c6d91d3d2ba671104d1b481721356c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162271"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60517823"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező SpaceIQ
 

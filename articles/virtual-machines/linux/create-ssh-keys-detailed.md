@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: danlep
 ms.openlocfilehash: 3784dd701b3ac44971e134f1b160fcfe2de2d9b3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731801"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60328697"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Részletes lépései: Létrehozása és kezelése az SSH-kulcsokat a hitelesítéshez a Linux rendszerű virtuális gép az Azure-ban 
 Egy secure shell-(SSH) kulcspárt létrehozhat egy Linuxos virtuális gép az Azure-ban alapértelmezés szerint az SSH-kulcsokat használnak a hitelesítéshez, aminek köszönhetően nincs szükség jelszavakra a bejelentkezéshez. Az Azure Portallal, Azure CLI-vel, Resource Managerrel létrehozott virtuális gépek sablonokat, vagy más eszközök lehetnek a nyilvános SSH-kulcsot a központi telepítést, amely állítja be az SSH-kapcsolatok SSH hitelesítés részeként. 

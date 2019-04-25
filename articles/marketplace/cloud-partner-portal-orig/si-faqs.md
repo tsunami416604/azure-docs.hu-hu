@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
 ms.openlocfilehash: ec7fc3a7877cf0bffac0043a74c34d6f0f04826b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810893"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60362373"
 ---
 <a name="seller-insights-faq"></a>Értékesítői Insights – gyakori kérdések
 ===================
@@ -36,7 +36,7 @@ A cikk azon a metrikaértékek a tranzakció fájlban található [értékesít�
 <a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Ügyfél részletek megtekintése, amelyhez I korábban lett fizetett tranzakciók
 -------------------------------------------------------------
 
-A tranzakciók küldenie jóváhagyásra cége kifizetési modulból a letöltés után keresse meg a címkével ellátott oszlop **küldenie jóváhagyásra cége kifizetési állapot**, és alkalmazza a szűrőt, hogy csak a "Out fizetős." értéket jeleníti meg A következő oszlopok jelenik meg a vásárlói adatokat tartalmazó: **cégnév**, **ügyfél e-mailek**, **vevői ország**, **ügyfélállapota**, és **ügyfél irányítószám**.
+A tranzakciók küldenie jóváhagyásra cége kifizetési modulból a letöltés után keresse meg a címkével ellátott oszlop **küldenie jóváhagyásra cége kifizetési állapot**, és alkalmazza a szűrőt, hogy csak a "Out fizetős." értéket jeleníti meg Az alábbi oszlopok jelennek meg a vásárlói adatokat tartalmazó: **Cég neve**, **ügyfél e-mailek**, **vevői ország**, **ügyfél állapota**, és **ügyfél irányítószám**.
 
 
 <a name="calculate-my-open-accounts-receivable"></a>Saját nyílt Kinnlevőségek kiszámítása
@@ -48,7 +48,7 @@ A tranzakciók küldenie jóváhagyásra cége kifizetési modulból a letölté
 <a name="calculate-revenue-by-customer-usage-period"></a>Ügyfél használati időszak alapján számítja ki az bevétel
 ------------------------------------------
 
-A tranzakciók küldenie jóváhagyásra cége kifizetési modulból a letöltés után keresse meg a címkével ellátott oszlop **tranzakció állapota**, és az érték "Fizetős" szűréséhez.   Minden tranzakció felsorolt, a címkével ellátott oszlop **küldenie jóváhagyásra cége kifizetési összeg (számítógép)** is fizetett összeg jelöli.  Becsülje meg a tranzakcióhoz tartozó használati időszak, használja az oszlop **terhelés dátuma**, azaz az időszak, amelyekre vonatkozik a tranzakció használatának utolsó napján egy Bezárás előállításához.
+A tranzakciók küldenie jóváhagyásra cége kifizetési modulból a letöltés után keresse meg a címkével ellátott oszlop **tranzakció állapota**, és az érték "Fizetős" szűréséhez.   Minden tranzakció felsorolt, a címkével ellátott oszlop **küldenie jóváhagyásra cége kifizetési összeg (számítógép)** is fizetett összeg jelöli.  Becsülje meg a tranzakcióhoz tartozó használati időszak, használja az oszlop **terhelés dátuma**, azaz az időszak, amelyekre vonatkozik a tranzakció használatának utolsó napján egy Bezárás előállításához.
 
 
 <a name="calculate-your-bad-debt"></a>A tapasztalta kiszámítása

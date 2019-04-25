@@ -1,7 +1,6 @@
 ---
 title: A vállalati biztonsági csomaggal – Azure HDInsight az Apache Kafka-szabályzatok konfigurálása
 description: Megtudhatja, hogyan konfigurálhat Apache Ranger-házirendeket a Kafkához az Azure HDInsightban az Enterprise Security Package csomaggal.
-services: hdinsight
 ms.service: hdinsight
 author: mamccrea
 ms.author: mamccrea
@@ -9,11 +8,11 @@ ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.openlocfilehash: 381958b462b668447a6548029a1be616df7a3a4b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750222"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60536395"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Az Apache Kafka-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal (előzetes verzió)
 
@@ -27,7 +26,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Témakörök létrehozása egy Kafka-fürtön
 > * Ranger-házirendek tesztelése
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 

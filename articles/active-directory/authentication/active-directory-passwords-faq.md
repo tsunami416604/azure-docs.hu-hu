@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb825a193071d263d800dafdd6296246eb74aec
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 77154ef35242c55724becb77595dbd5ecf8a4da9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878193"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359058"
 ---
 # <a name="password-management-frequently-asked-questions"></a>A jelszókezelés – gyakori kérdések
 
@@ -46,7 +46,7 @@ Ez a GYIK a következő részekre van felosztva:
   >
 * **K:  Is jelszó alaphelyzetbe állítása adatok is meghatározása a felhasználók nevében?**
 
-  > **V:** Igen, ehhez az Azure AD Connect, a PowerShell, a [az Azure portal](https://portal.azure.com), vagy az Office 365 felügyeleti központban. További információkért lásd: [adatokat használják az Azure AD önkiszolgáló jelszó-visszaállítási](howto-sspr-authenticationdata.md).
+  > **V:** Igen, ehhez az Azure AD Connect, a PowerShell, a [az Azure portal](https://portal.azure.com), vagy a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com). További információkért lásd: [adatokat használják az Azure AD önkiszolgáló jelszó-visszaállítási](howto-sspr-authenticationdata.md).
   >
   >
 * **K:  Képes biztonsági kérdéseket a helyszíni adatok szinkronizálása?**

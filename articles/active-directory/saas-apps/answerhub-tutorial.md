@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e05f865f0fd76e93b92f3bb09f1babd780074065
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 52c49bdd51bda7876d19a681bde79c9dbeeb4ea7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442579"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60284612"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AnswerHub
 
@@ -184,7 +184,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon @< yourcompanydomain.extension >**.  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@< yourcompanydomain.extension >**.  
     Például: BrittaSimon@contoso.com.
 
     c. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.

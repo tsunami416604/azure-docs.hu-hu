@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: a143fc6d9dbd78ae365f943a00ac9f8492d5e51c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897146"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369624"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>A Microsoft Azure a részletes használati költségek feltételeinek értelmezése 
 
@@ -57,7 +57,7 @@ A részletes használati adatok CSV-fájl felső részén látható a szolgálta
 |Overage (Kereten túli díjak) |A mérőszám díjat a kötelezettségvállalás összege a 6 vagy 12 hónapos kötelezettségvállaláshoz tartozó keretet túllépő jeleníti meg |
 |Commitment Rate (Keretkihasználtság) |Megjeleníti a keretkihasználtság mértékében a teljes mennyiségnek a 6 vagy 12 hónapos kötelezettségvállaláshoz alapján |
 |Rate (Egységár) |A sebesség díját a számlázható egység |
-|Érték |A Rate oszlop Kerettúllépés mennyiség oszlop szorzása eredménye látható. A felhasznált mennyiség nem haladja meg a foglalt mennyiséget, ha ott nem költségekkel ebben az oszlopban. |
+|Value |A Rate oszlop Kerettúllépés mennyiség oszlop szorzása eredménye látható. A felhasznált mennyiség nem haladja meg a foglalt mennyiséget, ha ott nem költségekkel ebben az oszlopban. |
 
 ### <a name="daily-usage"></a>Napi forgalom
 

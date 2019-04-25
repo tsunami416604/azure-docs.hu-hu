@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: juliako
 ms.openlocfilehash: ad8e84d84665b20bfff53cf09473bc8bce9760d8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916036"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322487"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő Stream a az Azure Media Services v3
 
@@ -53,13 +53,13 @@ Egy élő eseményt két típus egyike lehet: csatlakoztatott mind az élő kód
 
 ### <a name="pass-through"></a>Továbbítás
 
-![az átmenő](./media/live-streaming/pass-through.svg)
+![átmenő típusú](./media/live-streaming/pass-through.svg)
 
 A továbbított **élő esemény** használatakor a helyszíni élő kódoló használatával létrehoz egy többféle sávszélességű videóstreamet, amelyet elküld az élő eseménynek bemeneti adatként (RTMP vagy darabolt MP4 protokollal). Az élő esemény ezután további feldolgozás nélkül továbbítja a bejövő videóstreameket. Az ilyen egy csatlakoztatott élő esemény hosszú ideig futó élő események van optimalizálva, vagy 24 x 365 lineáris élő adatfolyam. 
 
 ### <a name="live-encoding"></a>Live Encoding  
 
-![Live encoding](./media/live-streaming/live-encoding.svg)
+![live encoding](./media/live-streaming/live-encoding.svg)
 
 Amikor élő kódolást alkalmaz a Media Services használatával, úgy konfigurálja a helyszíni élő kódolót, hogy egyféle sávszélességű videót küldjön bemeneti adatként az élő eseménynek (RTMP vagy darabolt Mp4 protokollal). Az élő esemény egy [többféle sávszélességű videóstreammé](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) kódolja ezt a bejövő egyféle sávszélességű streamet, így az olyan protokollokkal továbbítható a lejátszóeszközökre, mint az MPEG-DASH, a HLS és a Smooth Streaming. 
 

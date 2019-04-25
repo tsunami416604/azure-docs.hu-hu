@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 05/21/2018
 ms.author: spelluru
 ms.openlocfilehash: 964f5624a3a588a1520a08365c5fa9c783114e48
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958830"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303740"
 ---
 # <a name="introduction-to-classroom-labs"></a>Az osztályterem-tesztkörnyezetek bemutatása
 Az Azure Lab Services lehetővé teszi egy osztályterem-tesztkörnyezet gyors beállítását a felhőben. Az oktató létrehoz egy osztályterem-tesztkörnyezetet, Windows vagy Linux rendszerű virtuális gépeket épít ki, telepíti a szükséges szoftvereket és eszközöket a tesztkörnyezetben, és elérhetővé teszi őket a diákok számára. A diákok osztályterem-tesztkörnyezetben található virtuális gépekhez csatlakoznak, és a projektjeikhez, feladataikhoz vagy osztálytermi gyakorlataikhoz használják őket. 
@@ -31,7 +31,7 @@ Az Azure Lab Services egy felügyelt szolgáltatás, ami azt jelenti, hogy a ki�
 ## <a name="simple-experience-for-your-lab-users"></a>A lab felhasználói élményét, egyszerű 
 A tesztkörnyezethez azok a felhasználók azonnali az erőforrások eléréséről a gyakorlatot belül biztosíthat számukra. Csak akkor kell azok teljes hozzáféréssel rendelkezik az több labs virtuális gépek teljes listájának megtekintéséhez jelentkezzen be. A csatlakozni a virtuális géphez, és megkezdheti a munkát egy egyetlen gombra kattintva törölheti. A felhasználóknak nem kell a szolgáltatás használatához Azure-előfizetések. 
 
-## <a name="cost-optimization-and-tracking"></a>Költségek optimalizálása és nyomon követése  
+## <a name="cost-optimization-and-tracking"></a>Költségoptimalizálás és -elemzés  
 Kordában tarthatja ellenőrzés pontosan hány órát a tesztlabor a felhasználók használhatják a virtuális gépek szabályozásával. Állítsa be a laborban ütemezéseket, hogy a felhasználók a virtuális gépek csak a kijelölt időszeletek során használ, vagy ütemezhet automatikus leállítás beállítása és kezdési idejét. Nyomon követheti az egyes felhasználók használati és korlátokat.
 
 ## <a name="next-steps"></a>További lépések

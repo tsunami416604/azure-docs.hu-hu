@@ -3,7 +3,7 @@ title: Naplózási minták és a definíciók bejelentkezik az Azure Active Dire
 description: Útmutató és -példák az Azure AD B2C-naplók elérése a.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
@@ -11,11 +11,11 @@ ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 117d58f6f56fe1b24539c7bfe950f1a23d6de51a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003599"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317672"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Auditnaplók eléréséhez az Azure AD B2C-vel
 

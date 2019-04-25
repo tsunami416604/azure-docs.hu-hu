@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 11/14/2018
 ms.author: jonbeck
 ms.openlocfilehash: 75333332c118e85bbe1ceb31b206360ce5ed3897
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819212"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60540233"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Az Azure-ban Linux rendszerű virtuális gépek méretei
 Ez a cikk ismerteti az elérhető méretek és a beállításokat az Azure virtuális gépeket, a Linux-alkalmazások és számítási feladatok futtatására használhatja. Érdemes figyelembe vennie, ha tervezi az ezekkel az erőforrásokkal való telepítésével kapcsolatos megfontolások is tartalmazza. Ez a cikk érhető el is [Windows virtuális gépek](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

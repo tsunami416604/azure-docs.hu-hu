@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: ce88dcaedf32f293fc121cda2a088388c99badee
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603827"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337518"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Az Azure Cloud Services áttekintése
 Az Azure Cloud Services egyik példája egy [szolgáltatásként nyújtott platformon](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Például [Azure App Service](../app-service/overview.md), ez a technológia úgy tervezték, hogy skálázható, megbízható és költséghatékony működéséhez alkalmazások támogatása. Ugyanolyan módon, hogy App Service-ben üzemeltetett virtuális gépeken (VM), tehát túl van az Azure Cloud Servicesben. Azonban hogy jobban szabályozhatja a virtuális gépeket. Azure Cloud Services szolgáltatást használó virtuális gépek is telepíthető a saját szoftvereit, és távolról elérheti azokat.

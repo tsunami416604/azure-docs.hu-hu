@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
 ms.openlocfilehash: f44a6b825f9e8871bb7d7877ebd1821038b45f65
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004873"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392381"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Gyors útmutató: Feltöltése, letöltése és a Java Storage SDK V10 használatával blobok listázása
 

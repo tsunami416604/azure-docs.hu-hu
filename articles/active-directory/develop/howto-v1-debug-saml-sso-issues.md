@@ -17,17 +17,17 @@ ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9fcc6cb40d83c06a1c9f0a97c72565464e74e655
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336074"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299667"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazások hibakeresése
 
 Ismerje meg, hogyan keresheti meg és javítsa ki [egyszeri bejelentkezési](../manage-apps/what-is-single-sign-on.md) problémák, amelyek támogatják az alkalmazások az Azure Active Directoryban (Azure AD) [Security Assertion Markup Language (SAML) 2.0-s](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language). 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Javasoljuk, hogy telepíti a [saját alkalmazások biztonságos bejelentkezési bővítménye](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension). A bővítmény megkönnyíti a gyűjtse össze a SAML-kérelmet, és az SAML-válasz információt, amit keresett való egyetlen bejelentkezéssel kapcsolatos problémák elhárítása. Abban az esetben, ha nem telepíti a bővítményt, a Ez a cikk bemutatja, hogyan és a bővítmény telepítése anélkül problémák megoldásához.
 

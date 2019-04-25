@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 8bee2e2038ee39c777e1ca09994ad21872d2029a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530058"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337340"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Az Azure Cloud Services-szerepkörök csatlakozik az Azure AD Domain Controller egyéni
 Mi lesz először beállítása egy virtuális hálózatot (VNet) az Azure-ban. Majd hozzáadjuk egy Active Directory tartományvezérlővel (egy Azure virtuális gépen található) a virtuális hálózathoz. Ezután azt fogja hozzáadása meglévő felhőszolgáltatásokhoz tartozó szerepkörök az előre létrehozott virtuális hálózathoz, majd csatlakoztassa őket a tartományvezérlő.

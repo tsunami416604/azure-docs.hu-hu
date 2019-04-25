@@ -3,7 +3,7 @@ title: Az engedélyezési kód folyamata – Azure Active Directory B2C |} A Mic
 description: Ismerje meg, hogyan hozhat létre webalkalmazásokat az Azure AD B2C-vel és az OpenID Connect hitelesítési protokoll használatával.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 02/19/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 4ee67f07965036a71151d7b6a5092b9a76d94999
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428686"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317156"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>OAuth 2.0 hitelesítési kódfolyamat az Azure Active Directory B2C-vel
 

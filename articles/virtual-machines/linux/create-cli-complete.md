@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
 ms.openlocfilehash: eb4c5897cdadecd074c2764faceeed13f4c724c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008735"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60328637"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes Linux rendszerű virtuális gép létrehozása az Azure CLI-vel
 Gyorsan létrehozhat egy virtuális gépet (VM) az Azure-ban, használhatja egy egyetlen Azure CLI-paranccsal, amely minden szükséges támogató erőforrások létrehozása az alapértelmezett értékeket használja. Erőforrások, például egy virtuális hálózat, nyilvános IP-cím és hálózati biztonsági csoport szabályait a rendszer automatikusan létrehozza. Az éles környezet még nagyobb mértékben használja, előfordulhat, hogy a kívánt időben az erőforrások létrehozásához, és hozzáadhatja őket a virtuális gépek. Ez a cikk végigvezeti egy virtuális Gépet, és a támogató erőforrások egyenként mindegyike létrehozása.

@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47273bf687d88e82afba5de878f08bd53422479c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204770"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381329"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás az identitáskezelési követelmények meghatározása
 A hibrid identitáskezelési megoldás kialakításának első lépéseként feladata annak megállapítása, hogy ez a megoldás kihasználva lesz az üzleti szervezet követelményeinek.  Hibrid identitás (támogatott összes egyéb felhőalapú megoldások azáltal, hogy hitelesítés) támogató szerepkörként elindul, és mutat be olyan új és érdekes képességeket biztosítanak, zárolásának feloldása új számítási feladatok, a felhasználók számára.  Ezek a számítási feladatok vagy szolgáltatások, a felhasználók elfogadják kívánt fogja diktálni a hibrid identitás követelményeinek.  Ezek a szolgáltatások és számítási feladatok kell kihasználva hibrid identitás a helyszínen és a felhőben.  

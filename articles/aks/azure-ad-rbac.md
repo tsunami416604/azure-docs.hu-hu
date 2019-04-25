@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
 ms.openlocfilehash: e974c47d1dfb04f66b622c64a7143d00de87c4cb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013976"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60467544"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Szerepköralapú hozzáférés-vezérlés és az Azure Active Directory-identitásokkal használatával az Azure Kubernetes Service-fürt erőforrásokhoz való hozzáférés vezérlése
 

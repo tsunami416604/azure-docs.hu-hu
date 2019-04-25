@@ -10,16 +10,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309231"
 ---
 # <a name="deprecated-run-applications-in-kubernetes"></a>(ELAVULT) Alkalmazások futtatása a Kubernetesben
 
 > [!TIP]
-> Ebben az oktatóanyagban, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [oktatóanyag: alkalmazások futtatása az Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-application.md).
+> Ebben az oktatóanyagban, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [oktatóanyag: Alkalmazások futtatása az Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-application.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -34,7 +34,7 @@ Az ezt követő oktatóanyagokban horizontálisan felskálázzuk és frissítjü
 
 Ez az oktatóanyag feltételezi, hogy ismeri a Kubernetes alapvető fogalmait. A Kubernetesszel kapcsolatos részletes információkat a [Kubernetes dokumentációjában](https://kubernetes.io/docs/home/) találja.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt. 
 

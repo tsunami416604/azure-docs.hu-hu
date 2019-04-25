@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
 ms.openlocfilehash: 205a8dae55394a82a60f54ed32bad95324a59517
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996930"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60324255"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Az Azure CDN szabálymotor funkciói
 Ez a cikk felsorolja a részletes leírását az elérhető funkciók az Azure Content Delivery Network (CDN) [Szabálymotorral](cdn-rules-engine.md).
@@ -183,9 +183,9 @@ Name (Név) | Cél
 ### <a name="age-response-header"></a>Kor válaszfejléc
 **Célú**: Meghatározza, hogy egy kora válasz fejléce szerepel-e a válasz a kérelmezőnek küldött.
 
-Érték|Eredmény
+Value|Eredmény
 --|--
-Engedélyezve | A válasz a kérelmezőnek küldött az életkor válasz fejléce tartalmazza.
+Enabled | A válasz a kérelmezőnek küldött az életkor válasz fejléce tartalmazza.
 Letiltva | A válasz a kérelmezőnek küldött az életkor válaszfejléc nem tartozik.
 
 **Alapértelmezett viselkedés**: Letiltott.
@@ -200,9 +200,9 @@ Letiltva | A válasz a kérelmezőnek küldött az életkor válaszfejléc nem t
 
 Sávszélesség-szabályozási paraméterek határozza meg, hogy az ügyfél által kért adatátviteli sebesség korlátozva, egy egyéni sebessége.
 
-Érték|Eredmény
+Value|Eredmény
 --|--
-Engedélyezve|Lehetővé teszi, hogy tartsa tiszteletben a sávszélesség-szabályozási kérelmek kre.
+Enabled|Lehetővé teszi, hogy tartsa tiszteletben a sávszélesség-szabályozási kérelmek kre.
 Letiltva|A kapcsolódási pontokat figyelmen kívül hagyja a sávszélesség-szabályozási paraméterek okoz. A kért tartalomkézbesítés általában (vagyis a sávszélesség szabályozása nélkül).
 
 **Alapértelmezett viselkedés:** engedélyezve van.
@@ -232,9 +232,9 @@ Prebuf másodperc|Ehhez a beállításhoz a POP-Okba annak Várjon, amíg folyam
 ### <a name="bypass-cache"></a>Gyorsítótár megkerülése
 **Cél:** határozza meg, hogy a kérelem kell gyorsítótárazásának megkerülése.
 
-Érték|Eredmény
+Value|Eredmény
 --|--
-Engedélyezve|Akkor is, ha a tartalom volt előzőleg gyorsítótárazott POP hatására a térhet a forráskiszolgáló minden kérelemhez.
+Enabled|Akkor is, ha a tartalom volt előzőleg gyorsítótárazott POP hatására a térhet a forráskiszolgáló minden kérelemhez.
 Letiltva|POP hatására a gyorsítótár üzletszabályzata előírja a válaszfejlécek meghatározott gyorsítótár-eszközökhöz.
 
 **Alapértelmezett viselkedés:**
@@ -294,7 +294,7 @@ Legfontosabb tudnivalókat:
 
 Ezt a konfigurációtípust elérése a legegyszerűbb módja, hogy helyezze el a külső Max-Age és a Cache-Control fejléc-kezelés szolgáltatások ugyanabban az utasításban.
 
-Érték|Eredmény
+Value|Eredmény
 --|--
 Felülírás|Biztosítja, hogy a következő műveletek történnek:<br/> -Felülírja a `Cache-Control` a forráskiszolgáló által generált fejléc. <br/>-Hozzáadja a `Cache-Control` a külső Max-Age szolgáltatást, hogy a válasz által előállított fejléc.
 Átengedéses|Biztosítja, hogy a `Cache-Control` fejléc a külső Max-Age funkció által előállított soha nem kerül a választ. <br/> Ha a forráskiszolgáló eredményez olyan `Cache-Control` fejléc haladnak keresztül a végfelhasználók számára. <br/> Ha a forráskiszolgáló nem eredményez olyan `Cache-Control` fejléc, akkor ez a beállítás okozhat a válaszfejléc nem tartalmazza egy `Cache-Control` fejléc.
@@ -431,9 +431,9 @@ Részleges gyorsítótár-tévesztés általában akkor fordul elő, miután egy
 
 Tartsa meg az alapértelmezett konfiguráció, a HTTP nagy platformon, mert ezzel csökkenti a vásárlói forráskiszolgálóig terhelését, és növeli a sebességet, amellyel az ügyfelek a tartalom letöltése.
 
-Érték|Eredmény
+Value|Eredmény
 --|--
-Engedélyezve|Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett viselkedést, hogy kényszerített kezdeményezéséhez egy háttérbeli adatbeolvasás az eszköz a forráskiszolgálóról a jelenléti pont. Amely után az eszköz lesz a helyi gyorsítótárban a jelenléti pont.
+Enabled|Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett viselkedést, hogy kényszerített kezdeményezéséhez egy háttérbeli adatbeolvasás az eszköz a forráskiszolgálóról a jelenléti pont. Amely után az eszköz lesz a helyi gyorsítótárban a jelenléti pont.
 Letiltva|Megakadályozza, hogy a POP hajt végre egy háttérbeli adatbeolvasás az eszközre. Az eredménye, hogy a következő kérelmet az adott eszköz régió hatására POP kérhet, az ügyfél eredeti kiszolgálóra.
 
 **Alapértelmezett viselkedés:** engedélyezve van.
@@ -534,9 +534,9 @@ Hibakeresési fejlécek kérheti többek között a következő fejlécére, és
 
 X-EK-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
-Érték|Eredmény
+Value|Eredmény
 -|-
-Engedélyezve|Hibakeresési gyorsítótár válaszfejlécek kérelmek választ küld, amely tartalmazza az X-EK-Debug fejléc.
+Enabled|Hibakeresési gyorsítótár válaszfejlécek kérelmek választ küld, amely tartalmazza az X-EK-Debug fejléc.
 Letiltva|Az X-EK-Debug válaszfejléc nem kerülnek bele a választ.
 
 **Alapértelmezett viselkedés:** letiltva.
@@ -591,9 +591,9 @@ A módját, mely gyorsítótárban beállítások nyomon követi, mert ez a funk
 ### <a name="deny-access-403"></a>Engedélyezi a hozzáférést (403)
 **Célú**: Azt határozza meg, hogy összes kérelem egy 403 Tiltott válasz a rendszer elutasítja.
 
-Érték | Eredmény
+Value | Eredmény
 ------|-------
-Engedélyezve| Hatására az összes kérelem, amelyek megfelelnek a megfelelési feltételek, a rendszer elutasítja a 403 Tiltott válasz.
+Enabled| Hatására az összes kérelem, amelyek megfelelnek a megfelelési feltételek, a rendszer elutasítja a 403 Tiltott válasz.
 Letiltva| Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett viselkedést, hogy a forrás-kiszolgáló meghatározni a visszaadott válasz.
 
 **Alapértelmezett viselkedés**: Letiltva
@@ -611,7 +611,7 @@ Letiltva| Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett 
 
 Ezt a konfigurációtípust elérése a legegyszerűbb módja, hogy helyezze el a külső Max-Age és a fejléc-kezelés lejár szolgáltatások ugyanabban az utasításban.
 
-Érték|Eredmény
+Value|Eredmény
 --|--
 Felülírás|Biztosítja, hogy a következő műveletek kerül sor:<br/>-Felülírja a `Expires` a forráskiszolgáló által generált fejléc.<br/>-Hozzáadja a `Expires` a külső Max-Age szolgáltatást, hogy a válasz által előállított fejléc.
 Átengedéses|Biztosítja, hogy a `Expires` fejléc a külső Max-Age funkció által előállított soha nem kerül a választ. <br/> Ha a forráskiszolgáló hoz létre egy `Expires` fejléc, akkor továbbítja a végfelhasználók számára. <br/>Ha a forráskiszolgáló nem eredményez olyan `Expires` fejléc, akkor ez a beállítás okozhat a válaszfejléc nem tartalmazza egy `Expires` fejléc.
@@ -651,9 +651,9 @@ Legfontosabb tudnivalókat:
 
 - Kérelmek csak átirányíthatóak edge CNAME-rekordokat, amelyek megfelelnek a ugyanarra a platformra.
 
-Érték|Eredmény
+Value|Eredmény
 -|-
-Engedélyezve|Átirányítható a kérelmeket.
+Enabled|Átirányítható a kérelmeket.
 Letiltva|Kérelmek nem irányítja át.
 
 **Alapértelmezett viselkedés:** letiltva.
@@ -724,9 +724,9 @@ Legfontosabb tudnivalókat:
 
 No-cache kérelem akkor történik, ha a HTTP ügyfél küld egy `Cache-Control: no-cache` és/vagy `Pragma: no-cache` a HTTP-kérelem fejléce.
 
-Érték|Eredmény
+Value|Eredmény
 --|--
-Engedélyezve|Lehetővé teszi, hogy egy HTTP-alapú no-cache az eredeti kiszolgálóra továbbítja a kéréseket, és a forráskiszolgáló adja vissza a válaszfejlécek, és a szervezet a jelenléti pontra Irányíthatja át a HTTP-ügyfélnek.
+Enabled|Lehetővé teszi, hogy egy HTTP-alapú no-cache az eredeti kiszolgálóra továbbítja a kéréseket, és a forráskiszolgáló adja vissza a válaszfejlécek, és a szervezet a jelenléti pontra Irányíthatja át a HTTP-ügyfélnek.
 Letiltva|Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett viselkedést, hogy megakadályozza, hogy a no-cache kérelmeket az eredeti kiszolgálóra továbbítva.
 
 Minden éles forgalom azt javasoljuk, hagyja üresen ezt a szolgáltatást le van tiltva alapértelmezett állapotában. Ellenkező esetben szerverek fog védelme nem biztosítható felhasználók, akik véletlenül indíthat sok no-cache kérelem weblapok frissítésekor vagy a számos népszerű médialejátszókhoz, amely kódolása a no-cache fejlécet minden videó kérelem küldése. Ez a funkció azonban bizonyos nem éles átmeneti, vagy a tesztelés könyvtárak, annak érdekében, hogy friss tartalom igény szerinti lekérése a forráskiszolgálóról a alkalmazni hasznos lehet.
@@ -786,9 +786,9 @@ A módját, mely gyorsítótárban beállítások nyomon követi, mert ez a funk
 
 Alapértelmezés szerint a megadott bájttartomány-kérés csatlakozási pont nem tud teljesíteni, és a egy If-tartomány kérelem fejléce mező nincs meghatározva az állapotkódot adott vissza.
 
-Érték|Eredmény
+Value|Eredmény
 -|-
-Engedélyezve|Megakadályozza, hogy a POP egy 416 kért tartomány nem teljesíthető állapotkód: Érvénytelen bájttartomány irányuló válaszol. Ehelyett a kiszolgálók nyújthat a kért objektumhoz, és térjen vissza a 200-as rendben az ügyfél.
+Enabled|Megakadályozza, hogy a POP egy 416 kért tartomány nem teljesíthető állapotkód: Érvénytelen bájttartomány irányuló válaszol. Ehelyett a kiszolgálók nyújthat a kért objektumhoz, és térjen vissza a 200-as rendben az ügyfél.
 Letiltva|Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett viselkedést, hogy tartsa tiszteletben a 416 kért tartomány nem teljesíthető állapotkód:.
 
 **Alapértelmezett viselkedés:** letiltva.
@@ -847,9 +847,9 @@ A módját, mely gyorsítótárban beállítások nyomon követi, mert ez a funk
 ### <a name="log-query-string"></a>Napló lekérdezési karakterlánc
 **Cél:** meghatározza, hogy e egy lekérdezési karakterláncot az URL-cím, a naplók elérése és tárolni.
 
-Érték|Eredmény
+Value|Eredmény
 -|-
-Engedélyezve|Egy hozzáférési napló URL-címek dokumentálásakor lehetővé teszi, hogy a lekérdezési karakterláncok tárolására. Ha egy URL-cím nem tartalmaz egy lekérdezési karakterláncot, majd ezt a beállítást nem lesz egy hatása.
+Enabled|Egy hozzáférési napló URL-címek dokumentálásakor lehetővé teszi, hogy a lekérdezési karakterláncok tárolására. Ha egy URL-cím nem tartalmaz egy lekérdezési karakterláncot, majd ezt a beállítást nem lesz egy hatása.
 Letiltva|Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett viselkedést, hogy egy hozzáférési napló URL-címek rögzítésekor a lekérdezési karakterláncok kihagyása.
 
 **Alapértelmezett viselkedés:** letiltva.
@@ -945,7 +945,7 @@ Legfontosabb tudnivalókat:
     - content-encoding
     - tartalom-hossza
     - tartalom-tartomány
-    - dátum
+    - date
     - kiszolgáló
     - bemutató
     - transfer-encoding
@@ -965,9 +965,9 @@ Legfontosabb tudnivalókat:
 
 A részleges gyorsítótár majd használhatók az adott tartalomhoz új kérések teljesítéséhez, mindaddig, amíg a rendszer teljes mértékben gyorsítótárazza a kért tartalmat.
 
-Érték|Eredmény
+Value|Eredmény
 -|-
-Engedélyezve|Kérelmek hozhat létre részben a gyorsítótárazott tartalmat.
+Enabled|Kérelmek hozhat létre részben a gyorsítótárazott tartalmat.
 Letiltva|Kérelmek csak hozhat létre egy teljes körűen gyorsítótárazott verziója a kért tartalmat.
 
 **Alapértelmezett viselkedés:** letiltva.
@@ -1023,9 +1023,9 @@ Az alapértelmezett listát a következő HTTP-fejléceket tartalmazza:
 
 Érvényes értékek a következők:
 
-Érték|Eredmény
+Value|Eredmény
 --|--
-Engedélyezve|Az eszköz refetch a forráskiszolgálóról a POP okoz.
+Enabled|Az eszköz refetch a forráskiszolgálóról a POP okoz.
 Letiltva|Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett viselkedést, hogy érvényes gyorsítótár eszközök kérésre kiszolgálására.
 
 Ez a funkció a megfelelő gyorsítótárazási és a tartalomkézbesítési nem kötelező, de hasznos megoldás lehet. Például a dinamikus tartalom generátorok a szerverek véletlenül eredményezhet 0 bájtos válaszok küldött-kre történő propagálása. Az ilyen típusú válaszok a rendszer jellemzően gyorsítótárzza a POP-k által. Ha tudja, hogy, hogy a 0 bájtos válasz soha nem egy érvényes válasz 
@@ -1086,9 +1086,9 @@ Győződjön meg arról, hogy a megadott fejléc neve nem egyezik a következő 
 ### <a name="stale-content-delivery-on-error"></a>Hiba történt a régi Tartalomkézbesítési
 **Cél:** határozza meg, hogy lejárt gyorsítótárazott tartalmat kézbesíti a rendszer hiba esetén gyorsítótár újbóli ellenőrzése során, vagy az ügyfél forráskiszolgálóról a lekért tartalom lekérésekor.
 
-Érték|Eredmény
+Value|Eredmény
 -|-
-Engedélyezve|Elavult tartalomkézbesítés a kérelmezőnek egy-a forrás-kiszolgálóhoz való csatlakozás során hiba esetén.
+Enabled|Elavult tartalomkézbesítés a kérelmezőnek egy-a forrás-kiszolgálóhoz való csatlakozás során hiba esetén.
 Letiltva|A forráskiszolgáló hiba történt a kérelmező lesznek továbbítva.
 
 **Alapértelmezett viselkedés:** letiltva
@@ -1126,9 +1126,9 @@ A token értékeinek titkosítására és visszafejtésére használt titkosít�
 
 Ez a funkció élvez a URL-újraíró funkció kivételével a legtöbb funkciót.
 
-Érték | Eredmény
+Value | Eredmény
 ------|---------
-Engedélyezve | A kért tartalmat a jogkivonat-alapú hitelesítés védi. Csak olyan ügyfelektől, amelyek meg egy érvényes jogkivonatot, és megfeleljenek a kérelmeket fogja figyelembe. FTP-tranzakciók jogkivonat-alapú hitelesítés nem tartoznak.
+Enabled | A kért tartalmat a jogkivonat-alapú hitelesítés védi. Csak olyan ügyfelektől, amelyek meg egy érvényes jogkivonatot, és megfeleljenek a kérelmeket fogja figyelembe. FTP-tranzakciók jogkivonat-alapú hitelesítés nem tartoznak.
 Letiltva| Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett viselkedést, hogy a jogkivonat-alapú hitelesítés konfiguráció meghatározásához, hogy egy kérés biztonságát engedélyezése.
 
 #### <a name="compatibility"></a>Kompatibilitás
@@ -1198,9 +1198,9 @@ Ez a funkció által érintett paraméterei a következők:
 
 Érvényes értékek a következők:
 
-Érték|Eredmény
+Value|Eredmény
 ---|----
-Engedélyezve|Hatására a POP egyezőek URL-címek Jogkivonatos hitelesítési paraméterek összehasonlításakor.
+Enabled|Hatására a POP egyezőek URL-címek Jogkivonatos hitelesítési paraméterek összehasonlításakor.
 Letiltva|Visszaállítja az alapértelmezett viselkedést. Alapértelmezés szerint olyan URL-cím összehasonlítások jogkivonat-hitelesítés lehet a kis-és nagybetűket.
 
 **Alapértelmezett viselkedés:** letiltva.
@@ -1219,9 +1219,9 @@ Legfontosabb tudnivalókat:
 - Az érték a beállítás nem állítható be "ec_token."
 - Ellenőrizze, hogy a meghatározott érték változatban neve csak érvényes URL-karaktereket.
 
-Érték|Eredmény
+Value|Eredmény
 ----|----
-Engedélyezve|Az érték a beállítás határozza meg a lekérdezési karakterlánc paraméterének neve, amelyen keresztül a jogkivonatok meg kell határozni.
+Enabled|Az érték a beállítás határozza meg a lekérdezési karakterlánc paraméterének neve, amelyen keresztül a jogkivonatok meg kell határozni.
 Letiltva|A jogkivonat a kérelem URL-címében nem definiált lekérdezési karakterlánc paraméterként adhatók meg.
 
 **Alapértelmezett viselkedés:** letiltva. A jogkivonat a kérelem URL-címében nem definiált lekérdezési karakterlánc paraméterként adhatók meg.

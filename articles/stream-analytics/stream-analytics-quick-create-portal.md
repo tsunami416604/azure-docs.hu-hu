@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 7762a48fd34973872fe4d0b00906a03a18d52867
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311925"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60398220"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával
+# <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Gyors útmutató: Stream Analytics-feladat létrehozása az Azure portal használatával
 
 Az útmutató azt mutatja be, hogy hogyan kezdhet hozzá egy Stream Analytics-feladat létrehozásához. Ebben a rövid útmutatóban a Stream Analytics-feladat, amely beolvassa a valós idejű streamelési adatok és a egy nagyobb, mint 27 hőmérséklet-szűrők üzenetek határozhatók meg. A Stream Analytics-feladat adatokat olvasni az IoT Hub device, átalakítja az adatokat, és írhat vissza az adatokat blob Storage-tárolóba. A rövid útmutatóban használt bemeneti adatok egy Raspberry Pi online szimulátor hozza létre. 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
@@ -44,7 +44,7 @@ Mielőtt meghatározná a Stream Analytics-feladat, készítse elő az adatokat,
 
    ![IoT Hub létrehozása](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
-4. Válassza ki **tovább: állítsa be, mérete és méretezése**.
+4. Válassza ki **tovább: Állítsa be, mérete és méretezése**.
 
 5. Válasszon **tarifacsomag és méretet**. Ez a rövid útmutatóhoz válassza a **F1 – ingyenes** réteg, ha továbbra is elérhető az előfizetésén. További információkért lásd: [IoT Hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -91,7 +91,7 @@ Mielőtt meghatározná a Stream Analytics-feladat, készítse elő az adatokat,
    |Feladat neve   |  MyASAJob   |   Adjon meg egy nevet a Stream Analytics-feladat azonosításához. A Stream Analytics-feladat neve csak alfanumerikus karaktereket, kötőjeleket és aláhúzásjeleket tartalmazhat, és legalább 3, de legfeljebb 63 karakter hosszúságú lehet. |
    |Előfizetés  | \<Az Ön előfizetése\> |  Válassza ki a feladathoz használni kívánt Azure-előfizetést. |
    |Erőforráscsoport   |   asaquickstart-resourcegroup  |   Válassza ki ugyanazt az erőforráscsoportot, az IoT hubhoz. |
-   |Hely  |  \<Válassza ki a felhasználóihoz legközelebb eső régiót\> | Válassza ki azt a földrajzi helyet, ahol a Stream Analytics-feladatot üzemeltetni szeretné. A nagyobb teljesítmény és az adatátviteli díjak csökkentése érdekében válassza a felhasználóihoz legközelebb eső helyet. |
+   |Location egység  |  \<Válassza ki a felhasználóihoz legközelebb eső régiót\> | Válassza ki azt a földrajzi helyet, ahol a Stream Analytics-feladatot üzemeltetni szeretné. A nagyobb teljesítmény és az adatátviteli díjak csökkentése érdekében válassza a felhasználóihoz legközelebb eső helyet. |
    |Streamelési egységek  | 1  |   A streamelési egységek a feladatok végrehajtásához felhasznált számítási erőforrásokat jelölik. Ez az érték alapértelmezés szerint 1. A streamelési egységek skálázásával kapcsolatos további tudnivalókért olvassa el a [Skálázás streamelési egységekkel](stream-analytics-streaming-unit-consumption.md) című cikket.   |
    |Üzemeltetési környezet  |  Felhő  |   A Stream Analytics-feladatok a felhőben vagy a peremhálózaton is üzembe helyezhetők. Felhőbe történő telepítéskor az Azure Cloudba telepítheti a feladatot, Edge esetén pedig egy IoT Edge-eszközre. |
 

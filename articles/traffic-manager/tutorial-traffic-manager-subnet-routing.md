@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 2cd3fdc9387952277c25fa07c62a0faae2993089
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 16822a4928f0a68146bdb55f5bab4dd99df6236b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478246"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329543"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Forgalom adott végpontokba történő irányítása felhasználói alhálózatok alapján a Traffic Managerben
 
@@ -67,8 +67,9 @@ Ebben a szakaszban két virtuális gépet hoz létre az **USA keleti régiója**
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Erőforráscsoport| Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupTM1* nevet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+    |Location egység| Válassza az **USA keleti régiója** lehetőséget.|
     |||
+
 4. Válasszon egy virtuálisgép-méretet a **Méret kiválasztása** alatt.
 5. Válassza ki az alábbi értékeket a **Beállítások** területen, majd kattintson az **OK** gombra:
     
@@ -78,17 +79,19 @@ Ebben a szakaszban két virtuális gépet hoz létre az **USA keleti régiója**
     |Hálózati biztonsági csoport|Válassza az **Alapszintű** lehetőséget, majd a **Nyilvános bejövő portok kiválasztása** legördülő menüben válassza a **HTTP** és az **RDP** lehetőségeket |
     |Rendszerindítási diagnosztika|Válassza a **Letiltva** lehetőséget.|
     |||
+
 6. Az **Összegzés** lap **Létrehozás** területén kattintson a **Létrehozás** elemre a virtuális gép üzembe helyezésének megkezdéséhez.
 
 7. Végezze el ismét az 1–6. lépést az alábbi módosításokkal:
 
-    |Beállítás|Érték|
+    |Beállítás|Value|
     |---|---|
     |Erőforráscsoport | Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupTM2* nevet.|
-    |Hely|Nyugat-Európa|
+    |Location egység|Nyugat-Európa|
     |Virtuális gép neve | ProdWebsite|
     |Virtuális hálózat | Válassza a **Virtuális hálózat** elemet a **Virtuális hálózat létrehozása** területen. A **Név** szakaszban adja meg a *myVNet2* kifejezést, az alhálózat nevének pedig a  *mySubnet* kifejezést.|
     |||
+
 8. A virtuális gépek létrehozása néhány percet vesz igénybe. Csak akkor folytassa a következő lépésekkel, ha már mindkét virtuális gép létrejött.
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>Az IIS telepítése és az alapértelmezett webhely testreszabása
@@ -152,6 +155,7 @@ Ebben a szakaszban mindkét Azure-régióban (**az USA keleti régiója** és **
 
 4. Válasszon egy virtuálisgép-méretet a **Méret kiválasztása** alatt.
 5. Válassza ki az alábbi értékeket a **Beállítások** területen, majd kattintson az **OK** gombra:
+
     |Beállítás|Érték|
     |---|---|
     |Virtuális hálózat| Válassza a **Virtuális hálózat** elemet a **Virtuális hálózat létrehozása** területen. A **Név** szakaszban adja meg a *myVNet3* kifejezést, az alhálózat nevének pedig a  *mySubnet3* kifejezést.|
@@ -163,7 +167,7 @@ Ebben a szakaszban mindkét Azure-régióban (**az USA keleti régiója** és **
 
 7. Végezze el ismét az 1–5. lépést az alábbi módosításokkal:
 
-    |Beállítás|Érték|
+    |Beállítás|Value|
     |---|---|
     |Virtuális gép neve | *UserVMEurope*|
     |Erőforráscsoport | Válassza a **Meglévő** lehetőséget, majd írja be a *myResourceGroupTM2* kifejezést|
@@ -177,6 +181,7 @@ Létrehozhat egy Traffic Manager-profilt, amellyel a kérés forrás IP-címe al
 
 1. A képernyő bal felső részén válassza az **Erőforrás létrehozása** > **Hálózat** > **Traffic Manager-profil** > **Létrehozás** elemet.
 2. A **Traffic Manager-profil létrehozása** területen adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza a **Létrehozás** elemet:
+
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Name (Név)                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
@@ -196,9 +201,9 @@ Adja hozzá az IIS-kiszolgálót futtató virtuális gépeket (*InternalWebsite*
 2. A **Traffic Manager-profil** panel **Beállítások** szakaszában kattintson a **Végpontok**, majd a **Hozzáadás** elemre.
 3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza az **OK** elemet:
 
-    | Beállítás                 | Érték                                              |
+    | Beállítás                 | Value                                              |
     | ---                     | ---                                                |
-    | Típus                    | Azure-végpont                                   |
+    | Typo                    | Azure-végpont                                   |
     | Name (Név)           | myInternalWebSiteEndpoint                                        |
     | Célerőforrás típusa           | Nyilvános IP-cím                          |
     | Célerőforrás          | **Válasszon nyilvános IP-címet**, így megjelenítheti az azonos előfizetéshez tartozó, nyilvános IP-címmel rendelkező erőforrások listáját. Az **Erőforrás** területen válassza ki az *InternalWebsite-ip* nevű nyilvános IP-címet. Ez az USA keleti régiójában található IIS-kiszolgáló virtuális gépének nyilvános IP-címe.|

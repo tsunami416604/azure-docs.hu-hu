@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
 ms.openlocfilehash: d93de4ff3f6dd00ac049ea9d83aebb7aad07137e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883287"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60539009"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Szövegfelolvasás – gyakori kérdések
 
 Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse meg az [más támogatási lehetőségeket](support.md).
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 **K: Mi a különbség, standard beszédfelismerési modellek és a egy egyéni beszédfelismerési modell között?**
 
@@ -63,5 +63,5 @@ További szolgáltatások segítő szkripteket a rögzítés lehetőséget bizto
 
 ## <a name="next-steps"></a>További lépések
 
-* [Hibaelhárítás](troubleshooting.md)
+* [hibaelhárítással](troubleshooting.md)
 * [Kibocsátási megjegyzések](releasenotes.md)

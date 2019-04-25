@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: dbab2aaab2c12bef07748f54e5864d042f1c982a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333564"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60302499"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>A StorSimple-Eszközkezelő szolgáltatás használata a StorSimple Virtual Array feladatok megtekintése
 ## <a name="overview"></a>Áttekintés
@@ -59,7 +59,7 @@ Hajtsa végre az alábbi lépéseket az összes feladat részleteinek megtekint�
 #### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Ha a virtuális gép fel van függesztve, a hipervizorban lévő feladat sikertelen
 Ha egy feladat a folyamatban van a StorSimple Virtual Array és az eszköz (hipervizoron üzembe helyezett virtuális gép) fel van függesztve, a nagyobb, mint 15 perc, a feladat sikertelen lesz. Ez a StorSimple Virtual Array idő miatt folyamatban van a Microsoft Azure időt szinkronizálva. 
 
-Látni fogja a következő hibával: "az eszközön beállított idő nincs szinkronizálva a Microsoft Azure idő szerint több mint 15 perc. Győződjön meg arról, hogy a hipervizor és az eszköz hányszor szinkronizálva legyenek az NTP-kiszolgálót. Győződjön meg arról, hogy nincsenek kapcsolódási problémák. Kapcsolódási problémák elhárításához futtasson diagnosztikai teszteket a helyi webes felhasználói felületen, a virtuális eszköz."
+A következő hiba jelenik meg: "Az eszközön beállított idő nincs szinkronizálva a Microsoft Azure idő szerint több mint 15 perc. Győződjön meg arról, hogy a hipervizor és az eszköz hányszor szinkronizálva legyenek az NTP-kiszolgálót. Győződjön meg arról, hogy nincsenek kapcsolódási problémák. Kapcsolódási problémák elhárításához futtasson diagnosztikai teszteket a helyi webes felhasználói felületen, a virtuális eszköz."
 
 Ezek a hibák biztonsági mentés, visszaállítás, frissítési és feladatátvételi feladatok vonatkoznak. Ha a virtuális gép kiépítése a Hyper-V, a gép idejét idővel szinkronizálja a hipervizor. Után történik, hogy indítsa újra a feladatot.
 

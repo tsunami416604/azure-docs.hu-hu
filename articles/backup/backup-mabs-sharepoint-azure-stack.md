@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: adigan
 ms.openlocfilehash: a52f42fb194d2f39861a57c95a664ad57b4f91d1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895872"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60500765"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>A SharePoint-farmok biztonsági mentéséhez az Azure Stackben
 Biztonsági mentést a SharePoint-farmok Azure Stack a Microsoft Azure-ba, hogy készítsen biztonsági mentést más adatforrásokhoz ugyanolyan módon a Microsoft Azure Backup Server (MABS) használatával. Az Azure Backup rugalmasan hozhat létre naponta a biztonsági mentési ütemezés, heti, havi vagy éves biztonsági mentési mutat, és különböző biztonsági mentési pontok megőrzése házirend lehetőséget kínál fel. Azt is lehetővé teszi a helyi lemez másolatot pedig gyors helyreállítási idő célkitűzései (RTO) tárolására, és tárolja a másolatokat az Azure-bA gazdaságos, hosszú távú megőrzésének.
@@ -21,7 +21,7 @@ Biztonsági mentést a SharePoint-farmok Azure Stack a Microsoft Azure-ba, hogy 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>A SharePoint támogatott verziója, és a kapcsolódó védelmi forgatókönyvek
 A MABS az Azure Backup a következő eseteket támogatja:
 
-| Számítási feladat | Verzió | A SharePoint-környezet | Védelem és helyreállítás |
+| Számítási feladat | Version | A SharePoint-környezet | Védelem és helyreállítás |
 | --- | --- | --- | --- |
 | SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010 |Azure Stack virtuális gépként üzembe helyezett SharePoint <br> -------------- <br> SQL AlwaysOn | Helyreállítási beállítások SharePoint-Farm védelme: Helyreállítási farm, adatbázis és a lemez-helyreállítási pontokból fájl vagy listaelem.  Helyreállítási farm, adatbázis és az Azure helyreállítási pontokból. |
 

@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
 ms.openlocfilehash: f69a7f9ca94c0a83098300f01e9413b342bd4ae8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389372"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397941"
 ---
 <a name="how-to-fill-out-the-storefront-details-form"></a>Hogyan kell kitölteni a kirakat részletek képernyő
 ===========================================
@@ -42,7 +42,7 @@ Ez a leírás megjelenik az appsource-on, alatt a **kínál összefoglaló**. Is
 
 Válassza ki az iparág legjobb igazított az alkalmazást. Az alkalmazás több iparágban vonatkozik, ha ezt üresen hagyhatja
 
-### <a name="categories"></a>Kategóriák
+### <a name="categories"></a>Categories
 
 Válassza ki, amely az alkalmazás a kategóriák. Válasszon ki legalább egy kategóriát, és legfeljebb három. Gondosan választható, mert az ügyfelek az appsource-on a kategóriák alapján kereshet
 
@@ -117,13 +117,13 @@ Adja meg a használati feltételeket az alkalmazáshoz. Appsource-on ügyfelei e
 
 Egy adott támogatási oldal nyújt a felhasználók más-más kapcsolattartási beállításokat kell lennie. Támogatás telefonon, e-mailt, keresztül tartalmazza, és ideális működés közbeni csevegés, ha lehetséges.
 
-### <a name="lead-destination"></a>Cél vezethet
+### <a name="lead-destination"></a>Lead Destination
 
-Válassza ki a CRM-rendszerrel, ahol vezető rendszer tárolja. Válassza ki \"Azure Table\" itt, ha rendelkezik ilyennel, a következő CRM rendszereket: Salesforce, a Marketo, a Microsoft Dynamics CRM-hez. A CRM-rendszerrel, itt, ahol írunk a végfelhasználók számára, hogy kipróbálják az alkalmazását az appsource-ban (érdeklődők) részleteit. Attól függően, a CRM-rendszerrel választja kattintson a megfelelő URL-címet, végezze el a következő mezők információt
+Válassza ki a CRM-rendszerrel, ahol vezető rendszer tárolja. Válassza ki \"Azure Table\" itt, ha rendelkezik ilyennel, a következő CRM rendszereket: A Salesforce, a Marketo, a Microsoft Dynamics CRM. A CRM-rendszerrel, itt, ahol írunk a végfelhasználók számára, hogy kipróbálják az alkalmazását az appsource-ban (érdeklődők) részleteit. Attól függően, a CRM-rendszerrel választja kattintson a megfelelő URL-címet, végezze el a következő mezők információt
 
 -   [Azure-tábla](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 -   [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
--   [A Microsoft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
+-   [Microsoft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
 -   [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md)
 
 Következő lépés az alkalmazások közzététele folytatásához.

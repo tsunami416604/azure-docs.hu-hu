@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 53a262af421dd986e6b70af173a6e8b3f7c06f64
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798759"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60527298"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Az XPath környezeti változóban tegye elérhetővé a szerepkör konfigurációs beállításai
 A cloud service feldolgozó vagy a webes szerepkör szolgáltatásdefiníciós fájl környezeti változókként közzéteheti a futásidejű konfigurációs értékeket. Az alábbi XPath-értékeket támogatja (amelyek megfelelnek az API-értéket).

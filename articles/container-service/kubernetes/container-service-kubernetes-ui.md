@@ -10,11 +10,11 @@ ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: c3a79b2e4fab807613a54d2792f5f5b97570293b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996135"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309661"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(ELAVULT) Az Azure Container Service Kubernetes webes felhasználói felület használatával
 
@@ -63,7 +63,7 @@ Ez kell nyisson meg egy webböngészőt, úgy konfigurálva, hogy a helyi szám�
 ### <a name="create-and-expose-a-service"></a>Hozzon létre, és a szolgáltatás elérhetővé
 1. A Kubernetes webes felhasználói felületen kattintson **létrehozás** gombra a jobb felső ablakban.
 
-    ![Kubernetes felhasználói felület létrehozása](./media/container-service-kubernetes-ui/create.png)
+    ![Kubernetes Create UI](./media/container-service-kubernetes-ui/create.png)
 
     Egy az alkalmazás létrehozásának megkezdéséhez ahol párbeszédpanel megnyílik.
 
@@ -109,7 +109,7 @@ Mellett futnak a tárolók, a Kubernetes felhasználói felület hozott létre e
 
 Kattintson a bal oldali navigációs ablaktáblában **szolgáltatások** megtekintéséhez az összes szolgáltatás (lehetnek csak egy).
 
-![Kubernetes-szolgáltatás](./media/container-service-kubernetes-ui/service-deployed.png)
+![Kubernetes Services](./media/container-service-kubernetes-ui/service-deployed.png)
 
 Nézetben megtekintheti a szolgáltatáshoz egy külső végponttal (IP-cím), amely ki van osztva.
 Ha az IP-cím gombra kattint, megtekintheti a a terheléselosztó mögött futó Nginx-tároló.

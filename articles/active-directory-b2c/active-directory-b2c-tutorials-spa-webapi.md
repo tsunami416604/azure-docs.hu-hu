@@ -3,7 +3,7 @@ title: Oktatóanyag – való hozzáférés engedélyezése egy ASP.NET Core web
 description: Arra vonatkozó útmutató, hogyan használhatja az Active Directory B2C-t egy .NET Core webes API védelmére és meghívására egy egyoldalas alkalmazásból.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 13cbf1e81e0d203c181efb0881ec2a437cbaef24
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752177"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60315660"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Oktatóanyag: Az ASP.NET Core webes API-t egy egyoldalas alkalmazás Azure Active Directory B2C használatával való hozzáférés engedélyezése
 
@@ -24,7 +24,7 @@ Ez az oktatóanyag bemutatja, hogyan hívhat meg egy Azure Active Directory (Azu
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Adjon hozzá egy webes API-alkalmazás
+> * Webes API-alkalmazás hozzáadása
 > * A webes API hatóköreinek konfigurálásáról
 > * Adja meg az engedélyeket a webes API-hoz
 > * A minta az alkalmazás konfigurálása
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Hajtsa végre a lépéseket és az Előfeltételek [oktatóanyag: Egyoldalas alkalmazás hitelesítés engedélyezése az Azure Active Directory B2C fiókkal rendelkező](active-directory-b2c-tutorials-spa.md).
 
-## <a name="add-a-web-api-application"></a>Adjon hozzá egy webes API-alkalmazás
+## <a name="add-a-web-api-application"></a>Webes API-alkalmazás hozzáadása
 
 Webes API-erőforrásokhoz regisztrálni kell a bérlőn belüli előtt fogadja el, és védett erőforrás-kérelmek megválaszolásához ügyfélalkalmazások, amelyek egy hozzáférési jogkivonatot.
 
@@ -174,7 +174,7 @@ Miután regisztrált egy felhasználói fiókot vagy bejelentkezett eggyel, a mi
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Adjon hozzá egy webes API-alkalmazás
+> * Webes API-alkalmazás hozzáadása
 > * A webes API hatóköreinek konfigurálásáról
 > * Adja meg az engedélyeket a webes API-hoz
 > * A minta az alkalmazás konfigurálása

@@ -12,11 +12,11 @@ ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21c197dace3088ceb89270b7e3e8a1b91e9c8ebc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176560"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60292809"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Valós idejű hozzáférés az alkalmazásfigyelés konfigurálása a Microsoft Cloud App Security és az Azure Active Directory
 Konfigurálja a Microsoft Cloud App Security (MCAS) használata az Azure Active Directoryban (Azure AD) egy helyszíni alkalmazás valós idejű monitorozásra. MCAS használja a feltételes hozzáférést biztosító alkalmazás-vezérlő figyeléséhez, és valós idejű vezérlés munkamenetek feltételes hozzáférési szabályzatok alapján. Ezek a szabályzatok a helyszíni alkalmazások az Azure Active Directoryban (Azure AD) alkalmazásproxy használó alkalmazhat.

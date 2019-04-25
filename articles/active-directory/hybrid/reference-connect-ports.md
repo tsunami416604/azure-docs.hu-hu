@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48d2ef0de9ae59e63cd9957200c46c788e2d785f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184082"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387306"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Hibrid identitás – szükséges portok és protokollok
 A következő dokumentum a technikai útmutató a szükséges portok és protokollok a hibrid identitáskezelési megoldás megvalósítása. Használja a következő ábra és a kapcsolódó táblázat.
