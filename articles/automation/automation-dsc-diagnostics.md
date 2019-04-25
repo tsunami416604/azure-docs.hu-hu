@@ -135,9 +135,9 @@ Diagnosztika az Azure Automation szolgáltatást két kategóriája rögzíti az
 | DscReportStatus |Hogy a megfelelőségi ellenőrzés sikeresen lefutott. |
 | ConfigurationMode | Hogyan a konfiguráció alkalmazása a csomópontra. Lehetséges értékek a következők __"ApplyOnly"__,__"ApplyandMonitior"__, és __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: DSC konfigurációjának alkalmazására szolgál, és nem módosítja a további, kivéve, ha egy új konfigurációt a célcsomópont, vagy ha egy kiszolgálóról kéri le egy új konfiguráció leküldésekor. Új konfiguráció kezdeti léptetés DSC nem ellenőrzi az előzőleg konfigurált állapotba való eltéréseket. DSC megkísérli a alkalmazni a konfigurációt, egészen addig, amíg a sikeres előtt __ApplyOnly__ lép érvénybe. </li><li> __ApplyAndMonitor__: Ez az alapértelmezett érték. Az LCM vonatkozik minden új konfigurációt. Új konfiguráció, kezdeti alkalmazása után a a célcsomópont drifts a kívánt állapotból, ha DSC jelentések naplók az eltérést. DSC megkísérli a alkalmazni a konfigurációt, egészen addig, amíg a sikeres előtt __ApplyAndMonitor__ lép érvénybe.</li><li>__ApplyAndAutoCorrect__: DSC vonatkozik minden új konfigurációt. Kezdeti alkalmazását követően az új konfiguráció a célcsomópont drifts a kívánt állapotból, ha DSC-jelentések a naplókban az eltérés, és majd újra alkalmazza arra a jelenlegi konfiguráció.</li></ul> |
 | HostName_s | A felügyelt csomópont neve. |
-| IP-cím | A kezelt csomópontok IPv4-címét. |
-| Kategória | DscNodeStatus |
-| Erőforrás | Az Azure Automation-fiók neve. |
+| IPAddress | A kezelt csomópontok IPv4-címét. |
+| Category | DscNodeStatus |
+| Resource | Az Azure Automation-fiók neve. |
 | Tenant_g | A hívónak a bérlői azonosító GUID. |
 | NodeId_g |A kezelt csomópontok azonosító GUID. |
 | DscReportId_g |GUID, a jelentés azonosítja. |
@@ -162,8 +162,8 @@ Diagnosztika az Azure Automation szolgáltatást két kategóriája rögzíti az
 | OperationName |DscResourceStatusData|
 | ResultType |Az erőforrás-e megfelelő. |
 | NodeName_s |A felügyelt csomópont neve. |
-| Kategória | DscNodeStatus |
-| Erőforrás | Az Azure Automation-fiók neve. |
+| Category | DscNodeStatus |
+| Resource | Az Azure Automation-fiók neve. |
 | Tenant_g | A hívónak a bérlői azonosító GUID. |
 | NodeId_g |A kezelt csomópontok azonosító GUID. |
 | DscReportId_g |GUID, a jelentés azonosítja. |
