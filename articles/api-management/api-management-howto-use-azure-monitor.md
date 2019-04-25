@@ -183,7 +183,7 @@ Az API Management jelenleg különálló API-kérelmekről kínál óránként k
 | Tulajdonság  | Típus | Leírás |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | logikai | Akkor igaz, ha a befejezett HTTP-kérelem válaszának állapotkódja a 2xx vagy 3xx tartományon belülre esik. |
-| idő- | dátum-idő | Az átjárótól érkező HTTP-kérelem megérkezésének időbélyegzője |
+| time | dátum-idő | Az átjárótól érkező HTTP-kérelem megérkezésének időbélyegzője |
 | operationName | sztring | A „Microsoft.ApiManagement/GatewayLogs” állandó érték |
 | category | sztring | A „GatewayLogs” állandó érték |
 | durationMs | egész szám | A kérelem átjáróhoz való megérkezése és a teljes válasz elküldése között eltelt ezredmásodpercek száma |
@@ -213,7 +213,7 @@ Az API Management jelenleg különálló API-kérelmekről kínál óránként k
 | userId | sztring | Az aktuális kérelem felhasználói entitásának azonosítója | 
 | apimSubscriptionId | sztring | Az aktuális kérelem előfizetési entitásának azonosítója | 
 | backendId | sztring | Az aktuális kérelem háttérentitásának azonosítója | 
-| LastError | objektum | A legutóbbi kérelemfeldolgozási hiba | 
+| lastError | objektum | A legutóbbi kérelemfeldolgozási hiba | 
 | elapsed | egész szám | A kérelem átjáróhoz való megérkezése és a hiba felbukkanása között eltelt ezredmásodpercek száma | 
 | source | sztring | A hibát okozó házirend vagy belső feldolgozáskezelő neve | 
 | scope | sztring | A hibát okozó házirendet tartalmazó szabályzatdokumentum hatóköre | 
