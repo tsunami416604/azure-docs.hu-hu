@@ -2,19 +2,20 @@
 title: MongoDB-alkalmazáshoz az Azure PowerShell parancsfájl-Get Azure Cosmos DB kapcsolati karakterlánc
 description: Azure PowerShell-példaszkript – Azure Cosmos DB kapcsolati sztring lekérése MongoDB-alkalmazáshoz
 ms.service: cosmos-db
-author: SnehaGunda
-ms.author: sngun
+author: rockboyfor
+ms.author: v-yeche
 ms.subservice: cosmosdb-sql
 ms.devlang: PowerShell
 ms.topic: sample
-ms.date: 05/10/2017
+origin.date: 05/10/2017
+ms.date: 04/15/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 70b48b16a0fcc54025101e61aec3715fb91fea86
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500312"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60446125"
 ---
 # <a name="get-an-azure-cosmos-db-connection-string-for-mongodb-apps-using-powershell"></a>Azure Cosmos DB kapcsolati sztring lekérése MongoDB-alkalmazáshoz a PowerShell használatával
 
@@ -26,7 +27,49 @@ Ez a példa egy Azure Cosmos DB kapcsolati sztringet kér le MongoDB-alkalmazás
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-powershell[main](../../../powershell_scripts/cosmosdb/get-mongodb-connection-string/get-mongodb-connection-string.ps1?highlight=37-41 "Get the MongoDB connection string from an Azure Cosmos DB account")]
+```powershell
+# Set the Azure resource group name and location
+$resourceGroupName = "myResourceGroup"
+$resourceGroupLocation = "chinanorth"
+
+# Create the resource group
+New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
+
+# Database name
+$DBName = "testdb"
+
+# Write and read locations and priorities for the database
+$locations = @(@{"locationName"="chinanorth"; 
+                 "failoverPriority"=0}, 
+               @{"locationName"="chinaeast"; 
+                  "failoverPriority"=1})
+
+# Consistency policy
+$consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness"; 
+                       "maxIntervalInSeconds"="10"; 
+                       "maxStalenessPrefix"="200"}
+
+# DB properties
+$DBProperties = @{"databaseAccountOfferType"="Standard";
+                  "locations"=$locations; 
+                  "consistencyPolicy"=$consistencyPolicy}
+
+# Create the database
+New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+                    -ApiVersion "2015-04-08" `
+                    -ResourceGroupName $resourceGroupName `
+                    -Location $resourceGroupLocation `
+                    -Name $DBName `
+                    -Kind "MongoDB" `
+                    -PropertyObject $DBProperties
+
+# Retrieve a connection string that can be used by a MongoDB client
+Invoke-AzResourceAction -Action listConnectionStrings `
+    -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+    -ApiVersion "2015-04-08" `
+    -ResourceGroupName $resourceGroupName `
+    -Name $DBName
+```
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
@@ -53,3 +96,5 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
 További Azure Cosmos DB PowerShell-példaszkripteket az [Azure Cosmos DB PowerShell-szkriptek között](../powershell-samples.md) találhat.
+
+<!-- Update_Description: update meta properties, update link -->

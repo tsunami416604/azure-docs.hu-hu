@@ -12,11 +12,11 @@ ms.date: 03/23/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: b2e956b099022751712f96ab0b15aa57c752b458
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873376"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405256"
 ---
 # <a name="analyzer-names"></a>Elemző nevek
 
@@ -27,7 +27,7 @@ Egy némileg összetettebb elnevezési struktúráját elemzők, hogy mindkét e
 Elemző nevek négy részből áll: egy Azonosítót, egy objektumtípust, specifikáció és implementációja.
 A szerepkör minden egyes összetevő van megadva.
 
-## <a name="id"></a>ID
+## <a name="id"></a>ID (Azonosító)
 Először egy analyzer rendelkezik-e; egyedi azonosító egy GUID Azonosítót.
 Ezek GUID viszonylag ritkán kell módosítani, de az egyetlen módszer egy adott elemző eszköz egyedi ismertetik.
 

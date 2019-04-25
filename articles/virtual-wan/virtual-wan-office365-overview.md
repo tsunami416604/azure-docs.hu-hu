@@ -7,14 +7,14 @@ services: virtual-wan
 ms.topic: article
 ms.date: 9/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: 815b91295540e93f8f0ffbc002fcf02ce1c13365
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cb91c1364a91c101ecf8362acd7aab01440143fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992676"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60458587"
 ---
-# <a name="office-365-control-plane-in-virtual-wan"></a>Az Office 365 vezérlősík a virtuális WAN
+# <a name="office-365-control-plane-in-virtual-wan"></a>Office 365-vezérlősík a Virtual WAN-ban
 
 Virtuális WAN ügyfelek SDWAN jelölje ki az eszközöket az O365 Internet kiscsoportos szabályzatokat megbízható adatforgalomhoz konfigurálhat az Azure Portalon. Ez lehetővé teszi:
 - Adja meg a Microsoft hálózati közeli felhasználói jogosultságot ad az optimális felhasználói élmény O365 forgalmat.

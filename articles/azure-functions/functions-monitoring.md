@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
 ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565963"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406753"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -148,7 +148,7 @@ A modul biztosítja a `customDimensions.LogLevel` és `customDimensions.Category
 
 Az Application Insights egyéni konfiguráció nélkül is használhatja. Az alapértelmezett konfigurációt eredményezhet nagy mennyiségű adat. Ha egy Visual Studio Azure-előfizetést használ, a adatkorlátjának előfordulhat, hogy eléri az Application Insights. Ez a cikk későbbi részében, megtudhatja, hogyan konfigurálja, és testre szabhatja az adatokat, amelyek a függvények küldenek az Application Insights. A függvényalkalmazás a naplózás úgy van konfigurálva az a [host.json] fájlt.
 
-### <a name="categories"></a>Kategóriák
+### <a name="categories"></a>Categories
 
 Az Azure Functions naplózó tartalmaz egy *kategória* minden napló. A kategória azt jelzi, hogy melyik része a futtatókörnyezet kód vagy a függvénykódot okkal készítette el a naplóban. 
 

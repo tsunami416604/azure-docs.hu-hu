@@ -15,11 +15,11 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10a78df5169741371c122971afa47cb53ecc5a64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450668"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60471642"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -40,7 +40,7 @@ A tagsági szabály, amely automatikusan feltölti a felhasználók vagy eszköz
 
 * Tulajdonság
 * Művelet
-* Érték
+* Value
 
 A kifejezés a kijelzők sorrendje fontosak szintaktikai hibák elkerülése érdekében.
 
@@ -60,7 +60,7 @@ Zárójelek egyetlen kifejezés nem kötelezően megadandó jellegűek. A tagsá
 
 Három feltételtípus tulajdonságok, a tagsági szabály létrehozására használható.
 
-* Logikai
+* Boolean
 * String
 * Karakterlánc-gyűjtemény
 

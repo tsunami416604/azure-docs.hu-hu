@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/30/2019
 tags: connectors
 ms.openlocfilehash: 24963a35bc3e54b2d140bf4ed1d169b213bd9b2a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60448047"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Veszélyforrások elleni védelem növelheti a biztonsági műveletek integrálása a Microsoft Graph biztonság és az Azure Logic Apps
 
@@ -36,7 +36,7 @@ Microsoft Graph-biztonsággal kapcsolatos további információkért tekintse me
 
 * A Microsoft Graph-Security-összekötő használatához rendelkeznie kell *explicit módon megadott* része az Azure Active Directory (AD) bérlő rendszergazdai jóváhagyást, a [Microsoft Graph biztonsági hitelesítési követelmények ](https://aka.ms/graphsecurityauth). A jóváhagyás szükséges, a Microsoft Graph Security connector Alkalmazásazonosítót és nevet, amely is található a [az Azure portal](https://portal.azure.com):
 
-   | Tulajdonság | Érték |
+   | Tulajdonság | Value |
    |----------|-------|
    | **Alkalmazás neve** | `MicrosoftGraphSecurityConnector` |
    | **Alkalmazás azonosítója** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |

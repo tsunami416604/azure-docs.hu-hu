@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
 ms.openlocfilehash: 9e29b08da35b9fd2f479f1d4e3b0d89ed881344b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902001"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60326421"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady Windows 10-es Streaming
 
 Az Azure Media Services támogatja a DRM-védelemmel rendelkező offline letöltési/lejátszását. Ez a cikk ismerteti az Azure Media Services for Windows 10-es vagy PlayReady ügyfelek offline támogatást. IOS/FairPlay és Android/Widevine eszközökhöz az alábbi cikkekben olvashat bővebben az offline mód támogatása:
 
-- [Offline FairPlay Streaming iOS-hez](offline-fairplay-for-ios.md)
+- [Offline FairPlay-streamelés iOS-hez](offline-fairplay-for-ios.md)
 - [Offline Widevine androidhoz Streaming](offline-widevine-for-android.md)
 
 ## <a name="overview"></a>Áttekintés
@@ -122,4 +122,4 @@ Mivel a videó alatt PlayReady-védelmet, a képernyőképen nem lesz képes a v
 
 ## <a name="next-steps"></a>További lépések
 
-[Egy DRM-mel a content protection rendszert a hozzáférés-vezérléssel](design-multi-drm-system-with-access-control.md)
+[Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](design-multi-drm-system-with-access-control.md)

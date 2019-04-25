@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275735"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318352"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
@@ -125,22 +125,22 @@ Windows virtuális gép, a lemezek vagy a tárolási készletek konfigurációt,
 | A következő helyen nyomkövetési                       |                            |                                    |                          |                      | Igen                  |
 | StorPort-nyomkövetés                    |                            |                                    |                          |                      | Igen                  |
 | Hálózati nyomkövetés                     |                            |                                    |                          | Igen                  | Igen                  |
-| A Diskspd referenciaalap nyomkövetési ***       |                            | Igen                                |                          |                      |                      |
+| A Diskspd referenciaalap nyomkövetési x       |                            | Igen                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Teljesítménybeli problémák diagnosztizálása a nyomkövetési (*)
 
 Az adatok gyűjtéséhez és a folyamatban lévő teljesítménybeli problémák diagnosztizálása a háttérben fut, egy szabályalapú motor. A következő szabályok jelenleg támogatja:
 
-- HighCpuUsage szabály: magas CPU-használat időszakok észleli, és a felső CPU-használat fogyasztók megjelenítése az érintett időszakokban.
-- HighDiskUsage szabály: időszakai méretű fizikai lemezen észleli, és bemutatja az első lemez használati fogyasztók az érintett időszakokban.
-- HighResolutionDiskMetric szabály: Megjeleníti az egyes fizikai lemezek 50 ezredmásodperc IOPS, az átviteli sebesség és az i/o várakozási ideje metrika. Segít gyorsan azonosítani az időszakok szabályozás lemez.
-- HighMemoryUsage szabály: magas memória időszakai észleli, és bemutatja a felső memória használati fogyasztók az érintett időszakokban.
+- HighCpuUsage szabály: Magas CPU-használat időszakok észleli, és a felső CPU-használat fogyasztók megjelenítése az érintett időszakokban.
+- HighDiskUsage szabály: Észleli a időszakai méretű fizikai lemezeken, és bemutatja az első lemez használati fogyasztók az érintett időszakokban.
+- HighResolutionDiskMetric szabály: Az egyes fizikai lemezek 50 ezredmásodperc IOPS, az átviteli sebesség és az i/o várakozási ideje metrika mutatja. Segít gyorsan azonosítani az időszakok szabályozás lemez.
+- HighMemoryUsage szabály: Magas memória időszakai észleli, és bemutatja a felső memória használati fogyasztók az érintett időszakokban.
 
 > [!NOTE] 
 > Jelenleg a Windows-verziókat, amelyek tartalmazzák a .NET-keretrendszer 4.5-ös vagy újabb verziói támogatottak.
 
-### <a name="performance-counter-trace-"></a>Teljesítmény-számláló nyomkövetési (\*\*)
+### <a name="performance-counter-trace-"></a>Teljesítmény-számláló nyomkövetési (*)
 
 Gyűjti a következő teljesítményszámlálókkal:
 
@@ -150,13 +150,13 @@ Gyűjti a következő teljesítményszámlálókkal:
 
 #### <a name="for-sql-server-instances"></a>Az SQL Server-példányok
 - \SQL server: Buffer Manager \SQLServer:Resource készlet statisztikák és \SQLServer:SQL Statistics\
-- \SQLServer:Locks, \SQLServer:General, statisztika
+- \SQLServer:Locks, \SQLServer:General, Statistics
 - \SQLServer:Access Methods
 
 #### <a name="for-azure-files"></a>Az Azure Files szolgáltatáshoz
 \SMB Ügyfélmegosztások
 
-### <a name="diskspd-benchmark-trace-"></a>A Diskspd referenciaalap nyomkövetési (\*\*\*)
+### <a name="diskspd-benchmark-trace-"></a>A Diskspd referenciaalap nyomkövetési (*)
 A Diskspd-i/o terhelési tesztek (operációsrendszer-lemez [írási] és [olvasási/írási] készlet meghajtók)
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>A PerfInsights eszköz futtatásához a virtuális Gépen
@@ -167,7 +167,7 @@ A Diskspd-i/o terhelési tesztek (operációsrendszer-lemez [írási] és [olvas
 
 -  Ezzel az eszközzel kell futtatni a virtuális gépen, amely rendelkezik a teljesítménnyel kapcsolatos problémák. 
 
--  A következő operációs rendszerek támogatottak: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016; Windows 8.1 és Windows 10-es.
+-  A következő operációs rendszerek támogatottak: A Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016-ban; Windows 8.1 és Windows 10-es.
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Lehetséges problémákat, amikor az eszközt futtatja az éles virtuális gépek
 
@@ -300,7 +300,7 @@ A **diagnosztikai** lapon információt tartalmaz a Processzor, lemez és a mem�
 
 A Diskspd egy olyan tárolási terhelés készítő és a teljesítmény vizsgálati eszköz a Microsoft. További információkért lásd: [Diskspd](https://github.com/Microsoft/diskspd).
 
-### <a name="xperf"></a>Következő helyen
+### <a name="xperf"></a>Xperf
 
 Következő helyen egy olyan parancssori eszköz rögzíthesse a hívásláncokat, a a Windows-teljesítmény eszközkészletéből. További információkért lásd: [Windows Performance Toolkit – a következő helyen](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
 

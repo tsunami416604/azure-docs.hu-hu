@@ -3,7 +3,7 @@ title: Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata
 description: Ismerje meg, hogy az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure Active Directory B2C-t.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 265f1405a8779cdca101f18cf37b64f1933c2ff3
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400762"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419184"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata az Azure Active Directory B2C egy egyéni házirend használatával konfigurálja
 
@@ -267,11 +267,11 @@ A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan AP
 - Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével.
 - Cserélje le `B2C_1A_ROPC_Auth` az erőforrás tulajdonosa hitelesítő adatok jelszóházirend teljes nevét.
 
-| Kulcs | Érték |
+| Kulcs | Value |
 | --- | ----- |
 | felhasználónév | `user-account` |
-| jelszó | `password1` |
-| grant_type | jelszó |
+| password | `password1` |
+| grant_type | password |
 | scope | openid `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | token id_token |
@@ -312,7 +312,7 @@ Itt látható egy hasonló a POST híváson hozhatnak létre. Az adatokat haszn�
 - Cserélje le `your-tenant-name` az Azure AD B2C-bérlő nevével.
 - Cserélje le `B2C_1A_ROPC_Auth` az erőforrás tulajdonosa hitelesítő adatok jelszóházirend teljes nevét.
 
-| Kulcs | Érték |
+| Kulcs | Value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

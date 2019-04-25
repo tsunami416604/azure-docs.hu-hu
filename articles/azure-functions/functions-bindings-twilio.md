@@ -13,11 +13,11 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc6ca29af1866c5d26d3b73b26121451440c4dac
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993063"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306653"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>A Twilio-kötést az Azure Functions
 
@@ -404,11 +404,11 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**type**|**type**| Meg kell `twilioSms`.|
 |**direction**|**direction**| Meg kell `out`.|
 |**name**|**name**| A Twilio SMS-üzenetben a függvény kódját a használt változó neve. |
-|**accountSid**|**accountSidSetting**| **accountSidSetting**| Ez az érték TwilioAccountSid kell állítani a Twilio-fiók Sid például tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsTwilioAccountSid". |
-|**authToken**|**authTokenSetting**|**authTokenSetting**| Ez az érték TwilioAccountAuthToken kell állítani a Twilio hitelesítési jogkivonat például tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsTwilioAuthToken". |
+|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ez az érték TwilioAccountSid kell állítani a Twilio-fiók Sid például tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsTwilioAccountSid". |
+|**authToken**|**authTokenSetting**|**AuthTokenSetting**| Ez az érték TwilioAccountAuthToken kell állítani a Twilio hitelesítési jogkivonat például tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsTwilioAuthToken". |
 |**A**| NA – adja meg a kódot | **Címzett**| Ez az érték a telefonszámot, amelyet elküld a SMS szöveg értéke.|
-|**A**|**A** | **A**| Ez az érték a telefonszámot, amelyet az SMS szöveges is küld értéke.|
-|**Törzs**|**Törzs** | **Törzs**| Ez az érték használható az SMS-üzenetben keményen code, ha nem szeretne dinamikusan állítsa a függvény a kódban. |  
+|**from**|**from** | **A**| Ez az érték a telefonszámot, amelyet az SMS szöveges is küld értéke.|
+|**body**|**body** | **Törzs**| Ez az érték használható az SMS-üzenetben keményen code, ha nem szeretne dinamikusan állítsa a függvény a kódban. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

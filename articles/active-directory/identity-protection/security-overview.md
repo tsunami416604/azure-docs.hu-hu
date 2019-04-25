@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 610668768c7baca13cb60caf1d810cced31ebec3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516433"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452941"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Az Azure Active Directory Identity Protection – biztonsági áttekintés
 
@@ -69,7 +69,7 @@ A "Nem védett kockázatos bejelentkezések" csempe sikeres, valós idejű kock�
 Az "Örökölt hitelesítés" csempe örökölt hitelesítések száma az elmúlt egy hétben a szervezet jeleníti meg. Az örökölt hitelesítési protokollok nem támogatja a modern biztonsági módszerek, például egy MFA. Az örökölt hitelesítési megelőzése érdekében a feltételes hozzáférési szabályzat is alkalmazhat. Az "Örökölt hitelesítés" csempére kattintás átirányítja Önt a "Identity biztonságos pontszámot".
 
 
-### <a name="identity-secure-score"></a>Biztonságos identitás-pontszám
+### <a name="identity-secure-score"></a>Identitásbiztonsági pontszám
 
 Az identitás biztonságos pontszám méri, és összehasonlítja az iparági minták meg biztonsági állapotát. Ha az "Identity biztonságos pontszám (előzetes verzió)" csempére kattint, az "Identity biztonságos pontszám (előzetes verzió)" panel, ahol további biztonsági helyzetét növelésével kapcsolatos átirányítja.
 

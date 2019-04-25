@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0522311c12da8416504a6d502e1e2247ff8ce15b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 256ca5c2f26a6bac6bdfd09e4dd6294ec5a569ca
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104148"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60292197"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Egy Microsoft-alkalmazásba történő bejelentkezésnél
 
@@ -31,7 +31,7 @@ Hogy egy felhasználó kaphat-e a Microsoft által közzétett alkalmazás háro
 
 -   Az Office 365 vagy más fizetős csomagok az alkalmazások, felhasználók kapjanak hozzáférést keresztül **licenc-hozzárendelés** közvetlenül a saját felhasználói fiókot, vagy egy csoport, a Csoportalapú licenc-hozzárendelés funkcióval.
 
--   A alkalmazások számára, amely közzéteszi a Microsoft vagy egy harmadik féltől származó megkötések nélkül bárki használandó, felhasználókat lehet, hogy hozzáférést keresztül **felhasználói beleegyezés**. This0 azt jelenti, hogy azok jelentkezzen be az alkalmazás Azure AD munkahelyi vagy iskolai fiókjával, és lehetővé teszi, hogy a fiók lehet elérni egyes adatok korlátozott készletét.
+-   A alkalmazások számára, amely közzéteszi a Microsoft vagy egy harmadik féltől származó megkötések nélkül bárki használandó, felhasználókat lehet, hogy hozzáférést keresztül **felhasználói beleegyezés**. Ez azt jelenti, hogy azok jelentkezzen be az alkalmazás Azure AD munkahelyi vagy iskolai fiókjával, és lehetővé teszi, hogy a fiók lehet elérni egyes adatok korlátozott készletét.
 
 -   A alkalmazások számára, amely közzéteszi a Microsoft vagy a 3. fél megkötések nélkül bárki használandó, felhasználókat lehet, hogy is hozzáférhetnek, keresztül **rendszergazdai jóváhagyást**. Ez azt jelenti, hogy a rendszergazda azt észlelte, az alkalmazás által a szervezet minden tagja használhatók, így jelentkezzen be az alkalmazás egy globális rendszergazdai fiókkal, és a hozzáférési jogot a szervezet minden tagja.
 

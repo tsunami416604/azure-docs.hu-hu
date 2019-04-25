@@ -13,11 +13,11 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9c6faff10f68d720bc3c86a191e4cd1b1f9abdc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123606"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60475237"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Állítsa be a biztonsági adatok (előzetes verzió) a bejelentkezési oldal használatával
 Ezeket a lépéseket követheti, ha az kéri, jelentkezzen be munkahelyi vagy iskolai fiókjával után azonnal a biztonsági adatok beállításához.

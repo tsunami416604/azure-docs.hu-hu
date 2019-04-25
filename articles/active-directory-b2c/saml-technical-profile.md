@@ -3,7 +3,7 @@ title: Egy egyéni házirendek az Azure Active Directory B2C egy SAML-alapú tec
 description: Adja meg az Azure Active Directory B2C egyéni házirendet egy SAML-alapú technikai profilban.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
@@ -11,11 +11,11 @@ ms.date: 12/21/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: b0d1722df2bfe5116de2676dfc930d6050731bbd
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005026"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60418225"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy SAML-alapú technikai profilban meghatározása
 

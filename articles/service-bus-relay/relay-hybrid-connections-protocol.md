@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: clemensv
-ms.openlocfilehash: 913e702cc72472e81937bfe3b0939695daadc011
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: e96d0103a03e841f39e8adb88215f6d6e24a305a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543523"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60420043"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Az Azure Relay hibrid kapcsolatai protokoll
 
@@ -221,7 +221,7 @@ Ha hiba történik, a szolgáltatás is válasz a következő:
 
 | Kód | Hiba          | Leírás
 | ---- | -------------- | -----------------------------------
-| 403  | Tiltott      | Az URL-cím érvénytelen, nem.
+| 403  | Tiltott      | Az URL-cím érvénytelen.
 | 500  | Belső hiba | Hiba történt a szolgáltatásban
 
  A kapcsolat létrejötte után a kiszolgáló leáll a WebSocket, amikor a küldő WebSocket kikapcsolják, vagy a következő állapotkóddal:
@@ -243,8 +243,8 @@ Ha hiba történik, a szolgáltatás is válasz a következő:
 
 | Param                   | Szükséges | Leírás                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| SB-hibrid kapcsolat-állapotkód        | Igen      | Numerikus HTTP-állapotkódot.                |
-| SB-hibrid kapcsolat-statusDescription | Igen      | Emberi olvasható ok az elutasítás. |
+| sb-hc-statusCode        | Igen      | Numerikus HTTP-állapotkódot.                |
+| sb-hc-statusDescription | Igen      | Emberi olvasható ok az elutasítás. |
 
 Az eredményül kapott URI szolgál majd WebSocket kapcsolatot létesíteni.
 
@@ -252,7 +252,7 @@ Befejezése megfelelően, a kézfogás szándékosan sikertelen lesz, a HTTP-hib
 
 | Kód | Hiba          | Leírás                          |
 | ---- | -------------- | ------------------------------------ |
-| 403  | Tiltott      | Az URL-cím érvénytelen, nem.                |
+| 403  | Tiltott      | Az URL-cím érvénytelen.                |
 | 500  | Belső hiba | Probléma merült fel a szolgáltatásban. |
 
 #### <a name="request-message"></a>Kérelem üzenet

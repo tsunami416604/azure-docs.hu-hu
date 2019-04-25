@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
 ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283477"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60323824"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Az Azure CDN szabálymotorral feltételeknek megfelelő 
 Ez a cikk felsorolja az elérhető egyezési feltételei számára az Azure Content Delivery Network (CDN) a részletes leírását [szabálymotorral](cdn-rules-engine.md).
@@ -752,7 +752,7 @@ Legfontosabb tudnivalókat:
 
 A minta konfigurációkat az alábbi táblázat azt feltételezik, hogy a match feltétel teljesül-e, amikor egy kérelem megfelel a megadott URL-minta:
 
-Érték                   | A viszonyítva    | Eredmény 
+Value                   | A viszonyítva    | Eredmény 
 ------------------------|----------------|-------
 */test.html */test.php  | Legfelső szintű vagy a forrás | Ez a minta egyezik "test.html" vagy "test.php" bármelyik mappájában nevű eszközök kérelmek szerint.
 /80ABCD/origin/text/*   | Gyökér           | Ez a minta egyezik, ha a kért objektum megfelel a következő feltételeknek: <br />-Kell lennie, egy ügyfél forrás neve "origin". <br />– A relatív elérési út "szöveg." nevű mappát kell kezdődnie. A kért objektumhoz, vagy lehetnek a "text" mappában vagy egy rekurzív almappája.
@@ -868,7 +868,7 @@ Legfontosabb tudnivalókat:
 #### <a name="sample-scenarios"></a>Használati példák
 A következő példa bemutatja, hogy ez a beállítás működéséről adott helyzetekben:
 
-Name (Név)  | Érték |  Eredmény
+Name (Név)  | Value |  Eredmény
 ------|-------|--------
 Felhasználó  | János   | Ez a minta egyezik a kért URL-cím lekérdezési karakterlánc esetén "? felhasználói János =."
 Felhasználó  | *     | Ez a minta egyezik, ha a kért URL-cím lekérdezési karakterláncot tartalmaz egy felhasználó paramétert.
@@ -895,7 +895,7 @@ Legfontosabb tudnivalókat:
     
 - Bizonyos karakterek megkövetelése URL-Címének kódolása. A százalékos szimbólum URL-címét használja a következő karakterek kódolása:
 
-   Karakter | URL-Címének kódolása | Érték
+   Karakter | URL-Címének kódolása | Value
    ----------|--------------|------
    Űr     | %20          | \%20
    &         | %25          | \%25
@@ -906,7 +906,7 @@ Legfontosabb tudnivalókat:
 
    Példa:
 
-   Érték | -Ként 
+   Value | -Ként 
    ------|---------------
    \\+    | +
    \\\\+   | \\+

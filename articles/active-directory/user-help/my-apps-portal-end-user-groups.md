@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5af86ad12eed4901e577149b9f20216d5004663b
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 578ca5fa1de338a92280e2dc7cc252fb616e2111
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340461"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60483346"
 ---
 # <a name="update-your-groups-info-from-the-my-apps-portal"></a>A csoportok adatait, a saját alkalmazások portál frissítése
 A munkahelyi vagy iskolai fiók használata a web-alapú **saját alkalmazások** portálon megtekintheti, és indítsa el a számos szervezet felhőalapú alkalmazásokat, a profil és fiók információk megjelenítéséhez frissíteni, a **csoportok** információkat, és végrehajtásához **hozzáférési felülvizsgálatokkal** az alkalmazások és a csoportokat. Ha nem rendelkezik hozzáféréssel a **saját alkalmazások** portál, forduljon a Segélyszolgálathoz engedélyt.
@@ -53,17 +53,19 @@ Ha a rendszergazda engedélyt adott megtekintéséhez a **csoportok** csempén i
 
     - **Tekintse át a saját csoportok.** A szervezeten belüli saját nézet csoportot tájékozódhat a **saját csoportok** területen. Egy adott csoport nevének kijelölésekor nyújt további információt a csoport, beleértve a csoport típusának, tagok száma, az illesztési házirendet és az aktív tagok listája.
 
-    - **Hozzon létre egy új csoportot.** Új csoport létrehozása az Ön a tulajdonosa az a **saját csoportok** területen. Adott lépéseiért lásd: [hozzon létre egy új csoportot](#create-a-new-group) című szakaszát.
+    - **Hozzon létre egy új csoportot.** Új csoport létrehozása az Ön a tulajdonosa az a **saját csoportok** területen. Adott lépéseiért lásd: a [hozzon létre egy új csoportot](#create-a-new-group) című szakaszát.
 
-    - **Módosítsa egy meglévő csoportot.** A saját csoportok adatainak szerkesztése. Adott lépéseiért lásd: [szerkesztheti a meglévő csoport](#edit-an-existing-group) című szakaszát.
+    - **Módosítsa egy meglévő csoportot.** A saját csoportok adatainak szerkesztése. Adott lépéseiért lásd: a [szerkesztheti a meglévő csoport](#edit-an-existing-group) című szakaszát.
 
-    - **Tagok hozzáadása vagy eltávolítása.** Tagok hozzáadása vagy eltávolítása a saját csoportok. Adott lépéseiért lásd: [hozzáadása vagy eltávolítása tag](#add-or-remove-a-member) című szakaszát.
+    - **Tagok hozzáadása vagy eltávolítása.** Tagok hozzáadása vagy eltávolítása a saját csoportok. Adott lépéseiért lásd: a [hozzáadása vagy eltávolítása tag](#add-or-remove-a-member) című szakaszát.
 
-    - **Csoport törlése.** Saját csoportok törlése. Adott lépéseiért lásd: [csoport törléséhez](#delete-a-group) című szakaszát.
+    - **Újítsa meg az Office 365-csoportot.** Ha vállalata engedélyezi, az Office 365-csoportok újíthatja meg. Adott lépéseiért lásd: a [újítsa meg az Office 365-csoportot](#renew-an-office-365-group) című szakaszát. 
+
+    - **Csoport törlése.** Saját csoportok törlése. Adott lépéseiért lásd: a [csoport törléséhez](#delete-a-group) című szakaszát.
 
     - **Tekintse át a csoportokat egy részét.** A neveket, minden olyan csoportok, amelyhez Ön a tagja a **csoporttagságok** területen. Egy adott csoport nevének kijelölésekor nyújt további információt a csoport, beleértve a csoport típusának, tagok száma, az illesztési házirendet és az aktív tagok listája.
 
-    - **Csatlakozás a csoporthoz.** Csatlakozás meglévő csoporthoz, amelyhez még nem tagja, az a **csoporttagságok** területen. Adott lépéseiért lásd: [csatlakozás meglévő csoporthoz](#join-an-existing-group).
+    - **Csatlakozás a csoporthoz.** Csatlakozás meglévő csoporthoz, amelyhez még nem tagja, az a **csoporttagságok** területen. Adott lépéseiért lásd: a [csatlakozás meglévő csoporthoz](#join-an-existing-group).
 
 ## <a name="create-a-new-group"></a>Új csoport létrehozása
 1. Az a **csoportok** lapon jelölje be **hozzon létre egy csoportot** származó a **saját csoportok** területen.
@@ -117,6 +119,18 @@ Adja hozzá, vagy a tagok eltávolítása a saját csoportok bármelyikéhez.
 3. Ha véletlenül a tag hozzáadva, vagy ha tagja a szervezet rendelkezik marad, a tag kiválasztásával eltávolíthatja **tag eltávolítása** a a tag neve melletti a *&lt;csoportnév&gt;* lapot.
 
     ![Távolítsa el a tagja, az Eltávolítás hivatkozás kiemelésével](media/my-apps-portal/my-apps-portal-remove-member-link.png)
+
+## <a name="renew-an-office-365-group"></a>Office 365-csoport megújítása
+Ha vállalata engedélyezi, Office 365-csoportot, a lejárati dátum kiterjesztése újíthatja meg.
+
+### <a name="to-renew-a-group"></a>Csoport megújítása
+1. Válassza ki a megújítását, és válassza ki a kívánt Office 365-csoportot **megújítása csoport**.
+
+    ![Újítsa meg az Office 365-csoportot, kiterjesztik annak lejárati idejét](media/my-apps-portal/my-apps-portal-renew-group-link.png)
+
+2. Kattintson a **OK** gombra kattintva zárja be a megerősítést kérő üzenet.
+
+    Miután frissíti az oldalt, látni fogja a frissített **utolsó megújítani** és **csoport lejárati** dátumok.
 
 ## <a name="delete-a-group"></a>Csoport törlése
 Saját csoportok bármelyike bármikor törölheti. Azonban ha véletlenül törli a csoportot fogja akkor hozza létre és felhasználókat adhatnának újra.

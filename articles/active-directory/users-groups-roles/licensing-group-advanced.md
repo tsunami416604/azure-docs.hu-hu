@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d2faefd8443383e7afff8e3729bf6f1cf25c3a7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 24bf8e7cf103d583cf6604e0c529ad4ea267ce84
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887024"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60471906"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátait és ismert problémák csoportok használata kezelheti az Azure Active Directory licencelése
 
@@ -216,7 +216,7 @@ Ha Csoportalapú licencelést használ, célszerű Ismerkedjen meg az alábbi li
 
 - A funkció csak akkor használható a biztonsági csoportok és az Office 365-csoportokat, amelyek rendelkeznek a securityEnabled = TRUE.
 
-- A [Office 365 felügyeleti portálján](https://portal.office.com ) jelenleg nem támogatja a Csoportalapú licencelés. Ha egy felhasználói licenccel örököl egy csoportot, ez a licenc jelenik meg az Office rendszergazdai portál egy felhasználói licenccel. Ha megpróbálja módosítani a licencet, vagy próbálja meg eltávolítani a licencet, a portál hibaüzenetet ad vissza. Az örökölt csoportok licenceire közvetlenül a felhasználó nem módosítható.
+- A [Microsoft 365 felügyeleti központban](https://admin.microsoft.com) jelenleg nem támogatja a Csoportalapú licencelés. Ha egy felhasználói licenccel örököl egy csoportot, ez a licenc jelenik meg az Office rendszergazdai portál egy felhasználói licenccel. Ha megpróbálja módosítani a licencet, vagy próbálja meg eltávolítani a licencet, a portál hibaüzenetet ad vissza. Az örökölt csoportok licenceire közvetlenül a felhasználó nem módosítható.
 
 - Licencek hozzárendelve, vagy módosította egy nagy méretű csoport (például 100 000 felhasználó), amikor azt sikerült hatással a teljesítményre. Pontosabban, a módosításokat az Azure AD-automatizálás által generált mennyisége negatív hatással lehet a az Azure AD közötti címtár-szinkronizálás teljesítménye és a helyszíni rendszerekben.
 

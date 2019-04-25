@@ -16,11 +16,11 @@ ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ee322dd3ff6ccd68b09645fb46b1488b17819bb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871689"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60440415"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy használatával a helyszíni alkalmazásokhoz való bejelentkezésnél
 
@@ -34,27 +34,27 @@ Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémá
   * [Hozzáférek az alkalmazáshoz, de az alkalmazás betöltése túl sokáig tart](application-proxy-page-load-speed-problem.md)
   * [Hozzáférek az alkalmazáshoz, de az alkalmazás oldalán található hivatkozások nem működnek](application-proxy-page-links-broken-problem.md)
 
-## <a name="im-having-a-connectivity-problem-my-application"></a>A csatlakozási problémát tapasztalok az alkalmazásom
+## <a name="im-having-a-connectivity-problem-my-application"></a>Kapcsolati probléma van az alkalmazásommal
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * [Nem tudom, milyen portokat nyissak meg az alkalmazáshoz](application-proxy-connectivity-ports-how-to.md)
   * [Problémát tapasztalok, mert az alkalmazáshoz tartozó összekötőcsoportban nem volt működő összekötő](application-proxy-connectivity-no-working-connector.md)
 
-## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>Problémát tapasztalok a felügyeleti portálon az Azure AD-alkalmazásproxy konfigurálása során
+## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>Probléma lépett fel az Azure AD-alkalmazásproxy konfigurálásakor a rendszergazdai portálon
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * [Problémát tapasztalok egy alkalmazásproxy-alkalmazás konfigurálásánál](application-proxy-config-how-to.md)
   * [Nem tudom, hogy kell beállítani az egyszeri bejelentkezést az alkalmazásproxy-alkalmazáshoz](application-proxy-config-sso-how-to.md)
   * [Problémát tapasztalok, amikor alkalmazást hozok létre a felügyeleti portálon](application-proxy-config-problem.md)
 
-## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>Problémát tapasztalok egy tudja beállítani a háttér-hitelesítést az alkalmazáshoz
+## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>Probléma lépett fel az alkalmazásomhoz való háttér-hitelesítés beállításakor
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * [Nem tudom, hogy kell konfigurálni a Kerberos általi korlátozott delegálást](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
   * [Nem tudom, hogy kell konfigurálni az alkalmazást a PingAccess segítségével ](application-proxy-back-end-ping-access-how-to.md)
 
-## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>Olyan problémát tapasztalok, amikor bejelentkezik az alkalmazásom
+## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>Probléma lépett fel az alkalmazásomba történő bejelentkezés során
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * ["Can't Access this Corporate Application" (Nem lehet hozzáférni ehhez a céges alkalmazáshoz) hibaüzenet jelenik meg](application-proxy-sign-in-bad-gateway-timeout-error.md)
 
-## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Problémát tapasztalok az alkalmazásproxy-ügynök Összekötőjével probléma
+## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Problémát tapasztalok az alkalmazásproxy-ügynök összekötőjével
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
   * [Problémát tapasztalok az alkalmazásproxy-ügynök Összekötőjével telepítésével kapcsolatos problémák](application-proxy-connector-installation-problem.md)
 

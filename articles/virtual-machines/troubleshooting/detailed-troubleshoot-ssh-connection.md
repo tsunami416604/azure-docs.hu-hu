@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: aedf06c5a5e225f0cafb81b17923d6c742da69eb
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418262"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60506243"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Az SSH részletes hibaelhárítási lépései Linux rendszerű virtuális gép az Azure-ban való csatlakozással kapcsolatos problémákat
 Nincsenek számos oka lehet, hogy az SSH-ügyfél nem képes elérni a virtuális gép SSH-szolgáltatást. Ha követte, minél több keresztül [hibaelhárítási lépések általános SSH](troubleshoot-ssh-connection.md), a csatlakozási probléma további hibaelhárításához kell. Ez a cikk végigvezeti a felhasználót az részletes hibaelhárítási lépések meghatározásához, ahol az SSH-kapcsolat nem működik, és a megoldásának módjával.
@@ -55,7 +55,7 @@ Az SSH-ügyfél, a számítógép csatlakozni az SSH-szolgáltatást az Azure vi
 * [Hálózati biztonsági csoportok](#source-4-network-security-groups)
 * [Linux-alapú Azure virtuális Gépen](#source-5-linux-based-azure-virtual-machine)
 
-## <a name="source-1-ssh-client-computer"></a>1. forrás: SSH ügyfélszámítógép
+## <a name="source-1-ssh-client-computer"></a>1. forrás: SSH-ügyfélszámítógép
 A számítógép a hiba forrását a hibát, ellenőrizze, hogy azt egy másik helyszíni-, Linux-alapú számítógép SSH-kapcsolatok kezdeményezhetik.
 
 ![Ábra, amely kiemeli az SSH-ügyfél számítógép összetevői](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot2.png)
@@ -77,7 +77,7 @@ Ha a tanúsítvány alapú hitelesítést használ, ellenőrizze, hogy ezeket az
 * Chmod 644 ~/.ssh/known_hosts (tartalmazza a gazdagépek, amelyek SSH-n keresztül csatlakozott)
 
 ## <a name="source-2-organization-edge-device"></a>2. forrás: Szervezet edge-eszköz
-A szervezet kiküszöbölése peremhálózati eszköz, a hiba okának győződjön meg arról, hogy egy számítógép közvetlenül csatlakozik az internethez végezhet SSH-kapcsolatok az Azure virtuális gép. Ha a virtuális gép site-to-site VPN vagy az Azure ExpressRoute-kapcsolaton keresztül ér el, akkor ugorjon a [forrás 4: hálózati biztonsági csoportok](#nsg).
+A szervezet kiküszöbölése peremhálózati eszköz, a hiba okának győződjön meg arról, hogy egy számítógép közvetlenül csatlakozik az internethez végezhet SSH-kapcsolatok az Azure virtuális gép. Ha a virtuális gép site-to-site VPN vagy az Azure ExpressRoute-kapcsolaton keresztül ér el, akkor ugorjon a [forrás 4: Hálózati biztonsági csoportok](#nsg).
 
 ![Ábra, amely kiemeli a szervezet a peremhálózati eszköz](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
@@ -93,7 +93,7 @@ Javítsa ki a szervezet a peremhálózati eszközökre, hogy az internetes SSH-f
 
 ## <a name="source-3-cloud-service-endpoint-and-acl"></a>3. forrás: Cloud service-végpont és ACL-JEI
 > [!NOTE]
-> Ebből a forrásból csak a klasszikus üzemi modell használatával létrehozott virtuális gépek vonatkozik. A virtuális gépek Resource Manager használatával létrehozott, hagyja ki [forrás 4: hálózati biztonsági csoportok](#nsg).
+> Ebből a forrásból csak a klasszikus üzemi modell használatával létrehozott virtuális gépek vonatkozik. A virtuális gépek Resource Manager használatával létrehozott, hagyja ki [4 forrás: Hálózati biztonsági csoportok](#nsg).
 
 A cloud service-végpont és ACL-JEI nyilvánvaló, hogy a hiba forrását, győződjön meg arról, hogy egy másik Azure virtuális Géphez ugyanazon a virtuális hálózaton csatlakozhat SSH-val is.
 
@@ -110,7 +110,7 @@ Nyilvánvaló, hogy a végpont a probléma forrását, távolítsa el a jelenleg
 
 <a id="nsg"></a>
 
-## <a name="source-4-network-security-groups"></a>4. forrás: Hálózati biztonsági csoportok
+## <a name="source-4-network-security-groups"></a>4. forrás: Network security groups (Hálózati biztonsági csoportok)
 Hálózati biztonsági csoportok lehetővé teszik az engedélyezett bejövő és kimenő forgalom pontosabban szabályozhatja. Létrehozhat szabályokat, amelyek span alhálózatok és a felhőalapú szolgáltatások Azure-beli virtuális hálózathoz. Ellenőrizze a hálózati biztonsági csoport szabályait, győződjön meg arról, hogy engedélyezve van-e az SSH-forgalom az Internet felé és felől.
 További információkért lásd: [hálózati biztonsági csoportokkal kapcsolatos](../../virtual-network/security-overview.md).
 

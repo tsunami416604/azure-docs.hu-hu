@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.openlocfilehash: 1a811d3d0796b37053ffbabf56b63b4e4f68e203
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524072"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60500214"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Szabályzat-hozzárendelés nem megfelelő erőforrások azonosításához használatával a Resource Manager-sablon létrehozása
 
@@ -41,11 +41,11 @@ Itt látható a sablon egy példányát:
 
 1. Válassza ki vagy adja meg a következő értékeket:
 
-   | Name (Név) | Érték |
+   | Name (Név) | Value |
    |------|-------|
    | Előfizetés | Válassza ki az Azure-előfizetését. |
    | Erőforráscsoport | Válassza ki **új létrehozása**, adjon meg egy nevet, és válassza **OK**. A képernyőképen az erőforráscsoport neve van *mypolicyquickstart\<MMDD dátum > rg*. |
-   | Földrajzi egység | Válasszon régiót. Ha például **USA középső RÉGIÓJA**. |
+   | Location egység | Válasszon régiót. Ha például **USA középső RÉGIÓJA**. |
    | Szabályzat-hozzárendelés neve | Adja meg a szabályzat-hozzárendelés neve. A szabályzat definíciója megjelenített is használhatja, ha azt szeretné. Ha például **felügyelt lemezeket nem használó virtuális gépek naplózása**. |
    | Rg neve | Adja meg, ahol szeretné a szabályzat hozzárendelése egy erőforráscsoport-nevet. Ez a rövid útmutatóban használja az alapértelmezett értéket **[resourceGroup () .név]**. **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)**  egy sablon-függvény, amely lekéri az erőforráscsoportot. |
    | Szabályzatdefiníció azonosítója | Specify **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**. |

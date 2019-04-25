@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 7e058b7cebb9c2cdc3fb8b97bf99554b2f26dd8c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: d6d3a7111f3a5e49e32eba8ca4f09d692538cb87
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121575"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60428028"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>EDI-üzenetek küldése kötegekben kereskedelmi partnerekkel az Azure Logic Apps
 
@@ -59,13 +59,13 @@ A batch fogadóhoz, adja meg a kötegelt módban, a neve, a kiadási feltételek
 
 2. [A logikai alkalmazáshoz csatolni az integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-3. A Logic Apps Designer, adja hozzá a **Batch** eseményindító, amely elindítja a logikai alkalmazás munkafolyamatának. A Keresés mezőbe írja be a "batch" szűrőként. Válassza ki a következő eseményindítót: **Batch-üzenetek**
+3. A Logic Apps Designer, adja hozzá a **Batch** eseményindító, amely elindítja a logikai alkalmazás munkafolyamatának. A Keresés mezőbe írja be a "batch" szűrőként. Ez az eseményindító kiválasztása: **Kötegelt üzenetek**
 
    ![Batch-eseményindító hozzáadása](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
 4. Állítsa be a batch-fogadó tulajdonságokat: 
 
-   | Tulajdonság | Érték | Megjegyzések | 
+   | Tulajdonság | Value | Megjegyzések | 
    |----------|-------|-------|
    | **Kötegelt mód** | Beágyazott |  |  
    | **Kötegnév** | TestBatch | Csak a rendelkezésre álló **beágyazott** kötegelt mód | 
@@ -84,7 +84,7 @@ A batch fogadóhoz, adja meg a kötegelt módban, a neve, a kiadási feltételek
 
    1. A batch-eseményindító területén válassza a **új lépés**.
 
-   2. A Keresés mezőbe írja be az "X 12 batch" szűrőként, és válassza ki ezt a műveletet (bármilyen verzió): **kötegelt kódolás <*verzió*>-X12** 
+   2. A Keresés mezőbe írja be az "X 12 batch" szűrőként, és válassza ki ezt a műveletet (bármilyen verzió): **Kötegelt kódolás <*verzió*>-X12** 
 
       ![Válassza ki a X12 művelet kötegelt kódolása](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
 
@@ -118,7 +118,7 @@ Ahhoz, hogy a batch-fogadó működik megfelelően, hozzáadhat egy HTTP-művele
 
 1. A X12 alatt kódolása a művelet, válassza a **új lépés**. 
 
-2. A Keresés mezőbe írja be a "http" szűrőként. Válassza a következő műveletet: **HTTP - HTTP**
+2. A Keresés mezőbe írja be a "http" szűrőként. Ez a művelet kiválasztása: **HTTP - HTTP**
     
    ![Válassza ki a HTTP-művelet](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action.png)
 
@@ -127,7 +127,7 @@ Ahhoz, hogy a batch-fogadó működik megfelelően, hozzáadhat egy HTTP-művele
    | Tulajdonság | Leírás | 
    |----------|-------------|
    | **Metódus** | Válassza ki a listáról, **POST**. | 
-   | **URI-t** | A kérelem bin URI generálása, és adja meg az URI-ra ebben a mezőben. | 
+   | **Uri** | A kérelem bin URI generálása, és adja meg az URI-ra ebben a mezőben. | 
    | **Törzs** | Ebben a mezőben kattintson, és miután megnyílik a dinamikus tartalmú listából, válassza ki a **törzs** jogkivonatot, amely megjelenik a szakaszt, **kötegelt kódolás a Szerződés neve szerint**. <p>Ha nem látja a **törzs** token melletti **kötegelt kódolás a Szerződés neve szerint**, jelölje be **Továbbiak**. | 
    ||| 
 
@@ -149,9 +149,9 @@ Most hozzon létre egy vagy több logikai alkalmazásokat, amelyek üzeneteket k
 
 * Ellenőrizze, hogy a batch fogadó és a batch küldő megosztása megegyező Azure-régióban *és* Azure-előfizetést. Ha nem, a batch fogadó a batch küldő létrehozásakor, mert azok még nem látható, egymáshoz nem választhat.
 
-1. Egy másik logikai alkalmazás létrehozása ezen a néven: "SendX12MessagesToBatch" 
+1. Hozzon létre egy másik logikai alkalmazást ezen a néven: "SendX12MessagesToBatch" 
 
-2. A Keresés mezőbe írja be a "Amikor egy http-kérelem" szűrőként. Válassza ki a következő eseményindítót: **amikor egy HTTP-kérés fogadásakor.** 
+2. A Keresés mezőbe írja be a "Amikor egy http-kérelem" szűrőként. Ez az eseményindító kiválasztása: **HTTP-kérés fogadásakor** 
    
    ![A kérelem típusú trigger hozzáadása](./media/logic-apps-scenario-EDI-send-batch-messages/add-request-trigger-sender.png)
 
@@ -160,7 +160,7 @@ Most hozzon létre egy vagy több logikai alkalmazásokat, amelyek üzeneteket k
    1. A HTTP-kérelem művelet alatt válassza **új lépés**.
 
    2. A Keresés mezőbe írja be a "batch" szűrőként. 
-   Válassza ki a **műveletek** listában, és válassza ki a következő műveletet: **válassza ki egy kötegtriggert - kötegelendő üzenetek küldése a Logic Apps-munkafolyamatot**
+   Válassza ki a **műveletek** listában, és válassza ki a következő műveletet: **Válassza ki egy kötegtriggert - kötegelendő üzenetek küldése a Logic Apps-munkafolyamatot**
 
       ![Válassza a "Válasszon egy kötegtriggert tartalmazó Logic Apps-munkafolyamatot"](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-trigger.png)
 
@@ -168,7 +168,7 @@ Most hozzon létre egy vagy több logikai alkalmazásokat, amelyek üzeneteket k
 
       ![Válassza ki a "batch fogadó" logikai alkalmazás](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Válassza a következő műveletet: **Batch_messages - <*a batch-fogadó*>**
+   4. Ez a művelet kiválasztása: **Batch_messages - <*a batch-fogadó*>**
 
       !["Batch_messages" művelet kiválasztása](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
@@ -176,7 +176,7 @@ Most hozzon létre egy vagy több logikai alkalmazásokat, amelyek üzeneteket k
 
    | Tulajdonság | Leírás | 
    |----------|-------------| 
-   | **Kötegnév** | A batch-nevét, a fogadó logikai alkalmazást, amely ebben a példában "TestBatch" által definiált <p>**Fontos**: batch-név futásidőben beolvassa érvényesítve, és meg kell egyeznie a fogadó logikai alkalmazás által megadott név. A batch nevének módosítása hatására a batch küldő sikertelen. | 
+   | **Kötegnév** | A batch-nevét, a fogadó logikai alkalmazást, amely ebben a példában "TestBatch" által definiált <p>**Fontos**: Batch-név futásidőben érvényesíti lekérdezi, és meg kell egyeznie a fogadó logikai alkalmazás által megadott név. A batch nevének módosítása hatására a batch küldő sikertelen. | 
    | **Üzenet tartalma** | A tartalom is szeretne küldeni, az üzenet, amely a **törzs** token ebben a példában | 
    ||| 
    

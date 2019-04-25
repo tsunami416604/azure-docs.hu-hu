@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.openlocfilehash: 8c3ef3f115d37400eb72fdaca5df4f326382df5c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871638"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60520054"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések használatának első lépései
 

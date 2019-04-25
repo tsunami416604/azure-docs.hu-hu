@@ -14,11 +14,11 @@ ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 77e3e07be7abaa6e91d8f3909f5271dfc263be17
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162305"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60475373"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Mit jelent számomra az Azure Multi-Factor Authentication?
 Tegyük fel, hogy kapott egy e-mailt az informatikai részlegről vagy a főnökétől, amely szerint további biztonsági ellenőrzést adtak a fiókjához.  Mit jelent ez?

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 7b47d4fc3aa4a1a50e441e668a856703c67045ae
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 3ceaed2b1e27a1f5b910865f6e9d0e70ef347b71
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59581009"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515396"
 ---
 # <a name="webhooks-for-speech-services"></a>Webhookok az beszédszolgáltatások
 
@@ -38,6 +38,8 @@ Következő lépésként hozzunk létre egy webhook.
 ## <a name="create-a-webhook"></a>A webhook létrehozása
 
 Hozzunk létre egy webhookot az-offline beszédátírási. A forgatókönyv: egy felhasználó egy hosszú ideig futó hangfájl, amelyek szeretnék lefényképezze aszinkron módon történik a Batch Beszédátírási API-val rendelkezik. 
+
+A web hook POST https:// létrehozása<region>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
 
 A kérelem konfigurációs paramétereket JSON-fájlként áll rendelkezésre:
 
@@ -133,6 +135,50 @@ Egy POST kérést küld a regisztrált URL-címet, ha az előfizetett esemény t
 ### <a name="run-a-test"></a>Egy teszt futtatása
 
 Gyors teszteléséhez teheti meg az webhelyen https://bin.webhookrelay.com. Innen szerezheti be hívás URL-címek paraméterként átadni egy webhookot, a dokumentum a korábban ismertetett létrehozásához a HTTP POST használatával biztonsági másolatot.
+
+Kattintson a gyűjtő létrehozása, és kövesse a képernyőn megjelenő egy hook beszerzésére vonatkozó utasításokat. Ezen a lapon található információk segítségével regisztrálja a hook a Speech szolgáltatással. A továbbítási hasznos üzenet - válaszul beszédátírási keresi befejezése után a következő:
+
+```json
+{
+    "results": [],
+    "recordingsUrls": [
+        "my recording URL"
+    ],
+    "models": [
+        {
+            "modelKind": "AcousticAndLanguage",
+            "datasets": [],
+            "id": "a09c8c8b-1090-443c-895c-3b1cf442dec4",
+            "createdDateTime": "2019-03-26T12:48:46Z",
+            "lastActionDateTime": "2019-03-26T14:04:47Z",
+            "status": "Succeeded",
+            "locale": "en-US",
+            "name": "v4.13 Unified",
+            "description": "Unified",
+            "properties": {
+                "Purpose": "OnlineTranscription,BatchTranscription,LanguageAdaptation",
+                "ModelClass": "unified-v4"
+            }
+        }
+    ],
+    "statusMessage": "None.",
+    "id": "d41615e1-a60e-444b-b063-129649810b3a",
+    "createdDateTime": "2019-04-16T09:35:51Z",
+    "lastActionDateTime": "2019-04-16T09:38:09Z",
+    "status": "Succeeded",
+    "locale": "en-US",
+    "name": "Simple transcription",
+    "description": "Simple transcription description",
+    "properties": {
+        "PunctuationMode": "DictatedAndAutomatic",
+        "ProfanityFilterMode": "Masked",
+        "AddWordLevelTimestamps": "True",
+        "AddSentiment": "True",
+        "Duration": "00:00:02"
+    }
+}
+```
+Az üzenet a rögzítés URL-cím és a modellek segítségével, hogy felvételt lefényképezze tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 

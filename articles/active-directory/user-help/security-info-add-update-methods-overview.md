@@ -13,11 +13,11 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 115354985284b090fef890068ade6ddaf5867f04
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56457677"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60474110"
 ---
 # <a name="overview-about-changing-your-security-info-preview-methods-and-information"></a>A security info (előzetes verzió) módszerekkel és információkkal módosításával áttekintése
 Hozzáadása, szerkesztése, törlése, és módosítsa az alapértelmezett biztonsági adatai módszer belül a **biztonsági adatok** oldalakat. További információ az egyes módszerek és az adatok módosítása a cikke társított, metódus-alapú.
@@ -25,7 +25,7 @@ Hozzáadása, szerkesztése, törlése, és módosítsa az alapértelmezett bizt
 ## <a name="two-factor-verification-versus-password-reset-authentication"></a>Kéttényezős hitelesítési és a jelszó alaphelyzetbe állítása hitelesítési
 Biztonsági adatok módszerek használhatók a mindkét kétfaktoros ellenőrzéshez és a jelszó-visszaállítás. Azonban nem az összes módszer is használható.
 
-|Módszer|Használt|
+|Módszer|Alkalmazási cél|
 |------|--------|
 |Hitelesítő alkalmazás|Kéttényezős hitelesítési és a jelszó alaphelyzetbe állítása hitelesítési.|
 |SMS-EK|Kéttényezős hitelesítési és a jelszó alaphelyzetbe állítása hitelesítési.|

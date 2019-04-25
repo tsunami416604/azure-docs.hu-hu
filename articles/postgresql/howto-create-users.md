@@ -1,17 +1,19 @@
 ---
 title: Felhasználók létrehozása az Azure Database for PostgreSQL-kiszolgáló
 description: Ez a cikk bemutatja, hogyan kommunikálhat egy Azure Database for PostgreSQL-kiszolgáló új felhasználói fiókokat hozhat létre.
-author: rachel-msft
-ms.author: raagyema
+author: WenJason
+ms.author: v-jay
+editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/16/2018
+origin.date: 10/16/2018
+ms.date: 12/03/2018
 ms.openlocfilehash: 33c107c46b314136fa3d43f8e7881e096afa374c
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351082"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60422270"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Felhasználók létrehozása az Azure Database for PostgreSQL-kiszolgáló 
 Ez a cikk bemutatja, hogyan hozhat létre felhasználókat az Azure Database for PostgreSQL-kiszolgálóhoz.
@@ -72,7 +74,7 @@ A kiszolgálói rendszergazdai felhasználói fiókkal használható további fe
 5. Jelentkezzen be a kiszolgálóra, adja meg a kijelölt adatbázis, az új felhasználónévvel és jelszóval. Ez a példa bemutatja a psql parancssor. Ezzel a paranccsal kéri a felhasználónévhez tartozó jelszót. Cserélje le a saját kiszolgáló nevét, az adatbázis neve és a felhasználó neve.
 
    ```azurecli-interactive
-   psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=db_user@mydemoserver --dbname=newdb
+   psql --host=mydemoserver.postgres.database.chinacloudapi.cn --port=5432 --username=db_user@mydemoserver --dbname=newdb
    ```
 
 ## <a name="next-steps"></a>További lépések

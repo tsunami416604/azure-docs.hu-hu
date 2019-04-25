@@ -3,7 +3,7 @@ title: Oktatóanyag – ASP.NET webes API hozzáférés engedélyezése – Azur
 description: Az Active Directory B2C használata az ASP.NET webes API védelmére és meghívására egy ASP.NET-webalkalmazás oktatóanyag.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: cc4db0f2fe8f5db41f6e8332a398029bd105f3af
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756342"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60315585"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Oktatóanyag: Hozzáférés biztosítása az ASP.NET webes API-hoz az Azure Active Directory B2C használatával
 
@@ -24,7 +24,7 @@ Ez az oktatóanyag bemutatja, hogyan hívhat meg egy védett webes API-erőforr�
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Adjon hozzá egy webes API-alkalmazás
+> * Webes API-alkalmazás hozzáadása
 > * A webes API hatóköreinek konfigurálásáról
 > * Adja meg az engedélyeket a webes API-hoz
 > * A minta az alkalmazás konfigurálása
@@ -35,7 +35,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Hajtsa végre a lépéseket és az Előfeltételek [oktatóanyag: Egy webalkalmazás, Azure Active Directory B2C használatával hitelesítés engedélyezése](active-directory-b2c-tutorials-web-app.md).
 
-## <a name="add-a-web-api-application"></a>Adjon hozzá egy webes API-alkalmazás
+## <a name="add-a-web-api-application"></a>Webes API-alkalmazás hozzáadása
 
 Webes API-erőforrásokhoz regisztrálni kell a bérlőn belüli előtt fogadja el, és védett erőforrás-kérelmek megválaszolásához ügyfélalkalmazások, amelyek egy hozzáférési jogkivonatot.
 
@@ -152,7 +152,7 @@ Amikor létrehoz egy feladatlista elemet, a webes alkalmazás kérést küld a w
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Adjon hozzá egy webes API-alkalmazás
+> * Webes API-alkalmazás hozzáadása
 > * A webes API hatóköreinek konfigurálásáról
 > * Adja meg az engedélyeket a webes API-hoz
 > * A minta az alkalmazás konfigurálása

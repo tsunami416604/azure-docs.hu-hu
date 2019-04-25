@@ -16,11 +16,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 934562147fedcc81b16fd1ad2534af5662ef4b78
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436829"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60437676"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Az Azure Active Directory Power BI-tartalomcsomag használata
 
@@ -59,7 +59,7 @@ Egy konkrét dátumra vagy helyre kattintva is szűrheti az eredményeket.
 
 - Felhasználónév
 - IP-cím
-- Hely 
+- Location egység 
 - Bejelentkezési állapot 
 
 **SSPR tölcsér**: Ez a jelentés segítségével megismerheti, hogyan használja az SSPR-eszközből a szervezeten belül. Megtekintheti, hogy hány új jelszót igényeltek az SSPR-eszközből, és ezek közül hány sikeres volt. Többet tudhat meg a jelszó-visszaállítási hibák is, és miért történt az egyes hibák ismertetése. 

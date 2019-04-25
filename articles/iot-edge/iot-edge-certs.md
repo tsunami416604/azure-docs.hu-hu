@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 91cde6965f3635d6d2acfaf581f570779020f8ff
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232226"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445297"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Az Azure IoT Edge-tanúsítvány felhasználási részletek
 
@@ -118,7 +118,7 @@ Láthatja, hogy megjelenjen a képernyőképen tanúsítvány mélysége hierarc
 | Köztes Hitelesítésszolgáltatói tanúsítvány | Az Azure IoT Hub köztes tanúsítvány csak tesztelési                                                                 |
 | Eszköz Hitelesítésszolgáltatói tanúsítvány       | iotgateway.CA ("iotgateway" lett átadva a állomásnévként < átjáró > kényelem és parancsfájlok)      |
 | Számítási feladatok Hitelesítésszolgáltatói tanúsítvány     | iotedge munkaterhelés hitelesítésszolgáltató                                                                                       |
-| Az IoT Edge hubot kiszolgálói tanúsítvány | (az állomásnév megegyezik a config.yaml) iotedgegw.local                                                |
+| IoT Edge Hub Server Certificate | (az állomásnév megegyezik a config.yaml) iotedgegw.local                                                |
 
 ## <a name="next-steps"></a>További lépések
 

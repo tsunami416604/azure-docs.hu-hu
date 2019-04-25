@@ -16,17 +16,17 @@ ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
 ms.openlocfilehash: 637ad62744affa37630df9c841f3c7529674e788
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122909"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60418173"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
 Ez a cikk bemutatja, hogyan lehet engedélyezni az Azure Active Directory Domain Services (Azure AD DS) az Azure portal használatával.
 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 A cikkben szereplő feladatok végrehajtásához szükséges:
 
 * Egy érvényes **Azure-előfizetés**.
@@ -64,7 +64,7 @@ Az a **alapjai** oldal a varázslóban adja meg a felügyelt tartományhoz tarto
    > * **Beépített tartománynév:** Alapértelmezés szerint a varázsló a címtár alapértelmezett/beépített-a tartomány nevét adja meg (az egy **. onmicrosoft.com** utótag) az Ön számára. Ha engedélyezése a felügyelt tartomány secure LDAP-hozzáférését az interneten keresztül lehetőséget választja, a várt egy nyilvános DNS-rekord létrehozása és egy biztonságos LDAP-tanúsítvány beszerzése a tartománynévhez tartozó nyilvános Hitelesítésszolgáltatótól származó problémákat. A Microsoft tulajdonában lévő a *.onmicrosoft.com* tartomány és a hitelesítésszolgáltatók nem tanúsítványokat kiállítják majd ezt a tartományt szavatolja.
    > * **Egyéni tartománynevek:** Egyéni tartománynevet is beírhat. Ebben a példában az egyéni tartománynév a *contoso100.com*.
    > * **A nem irányítható tartományutótagok:** Általában nem ajánlott olyan nem átirányítható tartománynév utótagja. Például érdemes ne hozzon létre egy tartomány DNS tartomány neve "contoso.local". A ".local" DNS-utótag nem irányítható, és a DNS-feloldás problémákat okozhatnak.
-   > * **Tartománynév előtagja korlátozások:** A megadott tartománynév előtagja (a *contoso100.com* tartománynévben például a contoso100 tag) legfeljebb 15 karaktert tartalmazhat. Nem hozható létre egy felügyelt tartomány egy előtagja 15 karakternél hosszabb.
+   > * **Tartománynév előtagja korlátozások:** A megadott tartománynév előtagja (a *contoso100.com* tartománynévben például a *contoso100* tag) legfeljebb 15 karaktert tartalmazhat. Nem hozható létre egy felügyelt tartomány egy előtagja 15 karakternél hosszabb.
    > * **Hálózat neve ütközik:** Ellenőrizze, hogy a felügyelt tartomány számára választott DNS-tartománynév még nem létezik a virtuális hálózatban. Különösen azt ellenőrizze, hogy:
    >     * Már rendelkezik Active Directory-tartományban, azonos DNS-tartománynévvel a virtuális hálózaton.
    >     * A virtuális hálózat, ahol a felügyelt tartomány engedélyezni szeretné a helyszíni hálózathoz egy VPN-kapcsolattal rendelkezik. Ebben a forgatókönyvben ugyanazt a DNS-tartománynév-tartomány nem rendelkezik a helyszíni hálózaton biztosítása.

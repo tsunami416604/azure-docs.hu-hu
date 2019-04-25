@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fa36a3c1eb6bda109c7985fa7cade496d2ccf9f4
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 3ccfc38136ba3e8ec7c6130658032b7565988e5c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677799"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60461407"
 ---
 # <a name="common-security-attributes-for-azure-key-vault"></a>Az Azure Key Vault közös biztonsági attribútumok
 
@@ -36,10 +36,10 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatásvégpont-támogatás| Igen | Virtuális hálózat (Vnet) Szolgáltatásvégpontok használatával. |
+| Szolgáltatási végpont támogatás| Igen | Virtuális hálózat (Vnet) Szolgáltatásvégpontok használatával. |
 | vNET-injektálási támogatás| Nem |  |
-| Hálózatelkülönítés / tűzfalas támogatása| Igen | Virtuális hálózatok közötti tűzfalszabályok használatával. |
-| Kényszerített bújtatás támogatása | Nem |  |
+| Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | Virtuális hálózatok közötti tűzfalszabályok használatával. |
+| Kényszerített bújtatás támogatása| Nem |  |
 
 ## <a name="detection"></a>Észlelés
 
@@ -47,12 +47,12 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 |---|---|--|
 | Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | A Log Analytics használatával. |
 
-## <a name="iam-support"></a>IAM-támogatás
+## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hozzáférés-kezelés – hitelesítés| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
-| Hozzáférés-kezelés – engedélyezés| Igen | Kulcstartó hozzáférési házirendjének használatával. |
+| Authentication| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
+| Engedélyezés| Igen | Kulcstartó hozzáférési házirendjének használatával. |
 
 
 ## <a name="audit-trail"></a>Auditnapló
@@ -60,7 +60,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
 | Ellenőrzés/felügyeleti naplózás és a naplózási adatsík| Igen | A Log Analytics használatával. |
-| Adatok naplózása és naplózási adatsík| Igen | A Log Analytics használatával. |
+| Adatsík naplózása és naplózása| Igen | A Log Analytics használatával. |
 
 ## <a name="access-controls"></a>Hozzáférés-szabályozás
 

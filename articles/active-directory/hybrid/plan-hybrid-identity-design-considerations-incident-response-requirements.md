@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 32efe76ac2fce4c4541287e96c3a495f3eb9031b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60455805"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Hibrid identitáskezelési megoldás incidensválasz-követelmények meghatározása
 Nagy- vagy közepes szervezetek nagy valószínűséggel fog rendelkezni a [biztonsági incidensek megoldási](https://technet.microsoft.com/library/cc700825.aspx) segítségével történő informatikai műveleteket ennek megfelelően az incidens szintjét. Az identitáskezelési rendszerekkel az incidensmegoldási folyamat során fontos összetevője azért használható ki végzett egy adott művelet a célon azonosítása érdekében. A hibrid identitáskezelési megoldás, amely jól használható a figyelési és jelentéskészítési képességeket biztosít képesnek kell lennie az informatikai műveletek azonosításához és elhárításához szükséges potenciális fenyegetést. Egy tipikus incidensmegoldási terv a csomag részeként a következő fázisok fog rendelkezni:

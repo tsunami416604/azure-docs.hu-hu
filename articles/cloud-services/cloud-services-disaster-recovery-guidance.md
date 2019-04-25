@@ -1,6 +1,6 @@
 ---
-title: Mi a teendő, ha az Azure szolgáltatás, amely hatással van az Azure Felhőszolgáltatások megszűnésének |} Microsoft Docs
-description: Ismerje meg, mi a teendő, hatással van az Azure Cloud Services Azure-szolgáltatások becsukódjon.
+title: Mi a teendő, ha meghibásodik egy Azure-szolgáltatás megszakadása, ami hatással van az Azure Cloud Servicesben |} A Microsoft Docs
+description: Ismerje meg, mi a teendő az Azure szolgáltatáskimaradás, amely hatással van az Azure Cloud Services működésében.
 services: cloud-services
 documentationcenter: ''
 author: mmccrory
@@ -14,49 +14,50 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: mmccrory
-ms.openlocfilehash: 7028417c95aa6969793c00d0bb270c96e56164fb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4b355a779a2e9f78f4cbf8ed5425200ce1df2f1d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337263"
 ---
-# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Mi a teendő, ha az Azure szolgáltatás megszűnésének, amely hatással van az Azure Cloud Services csomag
-A Microsoft dolgozunk merevlemez győződjön meg arról, hogy a szolgáltatások mindig rendelkezésre álló újból. Kényszeríti a befolyásolható néha hatással velünk, hogy a nem tervezett szolgáltatás megszakadása miatt.
+# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Mi a teendő, ha meghibásodik egy Azure-szolgáltatás megszakadása, ami hatással van az Azure Cloud Services
+A Microsoft dolgozunk, hogy szolgáltatásaink mindig elérhető, amikor szüksége van rájuk. Kényszeríti a befolyásolható néha hatással velünk a kapcsolatot, hogy a nem tervezett szolgáltatáskimaradás miatt.
 
-A Microsoft egy szolgáltatási szint szerződés (SLA) biztosít hasznos üzemidő és csatlakozási kötelezettségvállalást a hozzá tartozó szolgáltatások. Az SLA-t az egyes Azure-szolgáltatások található [Azure szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/).
+A Microsoft szolgáltatói szerződés (SLA) biztosít a szolgáltatások üzemidejével és elérhetőségével vonatkozó kötelezettségvállalást. A szolgáltatói szerződés tartalmazza az egyes Azure-szolgáltatások található [Azure szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/).
 
-Azure már számos beépített platform szolgáltatást, amely támogatja a magas rendelkezésre állású alkalmazások. További információk a szolgáltatásokról, olvassa el a [vész-helyreállítási és magas rendelkezésre állás a Azure-alkalmazások](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+Az Azure már számos beépített platformfunkciók támogatja a magas rendelkezésre állású alkalmazások. Ezek a szolgáltatások kapcsolatos további információkért olvassa el a [vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-Ez a cikk egy valódi katasztrófa utáni helyreállítása vonatkozik, amikor egy teljes régió kimaradás jelentős természeti katasztrófa vagy a széles körű szolgáltatás megszakítás miatt. Ezek ritkán fordul elő eseményeket, de előbb elő kell készítenie az, hogy van-e egy teljes terület kimaradás lehetőséget. Ha egy teljes terület a szolgáltatás szüneteltetése, a helyileg redundáns másolatait az adatok akkor ideiglenesen nem érhető el. Ha engedélyezett a georeplikáció, az Azure Storage blobs és táblák három további másolatot tárol egy másik régióban. Teljes regionális kimaradás vagy az elsődleges régióban nincs helyreállítható katasztrófa esetén, Azure amelyek összes DNS-bejegyzéseket, a georeplikált régióban.
+Ez a cikk ismerteti a valódi vész-helyreállítási helyzetekre, amikor egy teljes régió kimaradás jelentős természeti katasztrófa vagy széles körű szolgáltatás megszakadása miatt. Ezek ritkán fordul elő, de a lehetőségét, hogy nincs-e egy teljes régióra kimaradás elő kell készítenie. Ha egy teljes régió a szolgáltatáskimaradás, az adatokat a helyileg redundáns másolatait szeretné ideiglenesen nem érhető el. Ha engedélyezte a georeplikáció, az Azure Storage-blobok és táblák három további másolatot készít egy másik régióban vannak tárolva. Az Azure teljes regionális kimaradás vagy vészhelyzet az elsődleges régió nem helyreállítható, ha ismételten leképezett összes DNS-bejegyzéseket, a georeplikált régióba.
 
 > [!NOTE]
-> Vegye figyelembe, hogy nem tudja befolyásolni bármely ezt a folyamatot, és csak megtörténik az Adatközpont kiterjedő szolgáltatás üzemzavarokhoz vezethet. Ebből kifolyólag kell is használ, más alkalmazás-specifikus biztonsági stratégiák a legmagasabb rendelkezésre állásának eléréséhez. További információkért lásd: [vész-helyreállítási és magas rendelkezésre állás a Microsoft Azure épülő alkalmazások](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Ha szeretné tudni a saját feladatátvételi hatással, érdemes használni a [írásvédett georedundáns tárolás (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage), amely az adatok írásvédett másolatot készít egy másik régióban.
+> Vegye figyelembe, hogy nem kell minden olyan ezt a folyamatot szabályozhatja, akkor történik az adatközpontra kiterjedő szolgáltatáskimaradás. Ez az oka meg kell is támaszkodik más alkalmazás-specifikus biztonsági mentési stratégia a legmagasabb szintű rendelkezésre állás elérése érdekében. További információkért lásd: [vészhelyreállítás és magas rendelkezésre állás a Microsoft Azure-alapú alkalmazásokhoz](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md). Ha meg szeretné tudni a saját feladatátvételi hatással, érdemes használja a [írásvédett georedundáns tárolás (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage), amely az adatok írásvédett másolatot készít egy másik régióban.
 >
 >
 
 
-## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>1. lehetőség: A biztonsági mentési központi telepítés keresztül Azure Traffic Manager használata
-A legtöbb hatékony vész-helyreállítási megoldást magában foglalja a karbantartása több különböző régiókban az alkalmazás központi telepítését, majd használatával [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) át tudja irányítani a forgalmat közöttük. Az Azure Traffic Manager biztosít több [útválasztási metódusait](../traffic-manager/traffic-manager-routing-methods.md), így dönthet úgy, hogy az elsődleges, illetve biztonsági mentési modell segítségével központi telepítések felügyeletéhez szükséges, vagy ossza fel a forgalom közöttük.
+## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>Option 1: Azure Traffic Manager biztonsági mentési központi telepítése
+A legtöbb robusztus vészhelyreállítási megoldás magában foglalja a fenntartja az alkalmazás különböző régiókban lévő több központi telepítést, majd a használatával [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) forgalomnak közöttük. Az Azure Traffic Manager biztosít több [útválasztási metódusait](../traffic-manager/traffic-manager-routing-methods.md), így kiválaszthatja, hogy e felosztása közöttük a forgalom vagy az elsődleges, illetve biztonsági mentési modell segítségével központi telepítések felügyeletéhez szükséges.
 
-![Azure Cloud Services az Azure Traffic Manager régiók közötti terheléselosztás](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
+![Azure Cloud Services terheléselosztási régióban az Azure Traffic Managerrel](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
 
-A leggyorsabb válasz egy régiót elvész, fontos, hogy konfigurálja a Traffic Manager [végpontmonitoring kijelző](../traffic-manager/traffic-manager-monitoring.md).
+A leggyorsabb választ, egy régióban elvesztése, fontos, hogy a Traffic Manager konfigurálása [végpont-monitorozás](../traffic-manager/traffic-manager-monitoring.md).
 
-## <a name="option-2-deploy-your-application-to-a-new-region"></a>2. lehetőség: Az alkalmazás egy új régióban üzembe helyezése
-Több aktív központi telepítés fenntartása, lásd: az előző beállítás azt eredményezi, a folyamatban lévő többletköltséggel azok háromszorosa. Ha a helyreállítási idő célkitűzése (RTO) elég rugalmas, és az eredeti kódja vagy lefordított Cloud Services csomag van, az az alkalmazás egy új példányának létrehozása egy másik régióban, és frissítse a DNS-rekordokat úgy, hogy az új központi telepítés mutasson.
+## <a name="option-2-deploy-your-application-to-a-new-region"></a>Option 2: Az alkalmazás egy új régióban üzembe helyezéséhez
+Több aktív üzemelő példányok fenntartása az előző beállítás leírtak szerint tekintetében további folyamatos költségeket. Ha a helyreállítási időre vonatkozó célkitűzés (RTO) elég rugalmas, és az eredeti kódot vagy a lefordított Cloud Services csomag rendelkezik, hozzon létre egy új példányát az alkalmazás egy másik régióban, és a DNS-rekordok átirányítása az új üzemelő példány frissítése.
 
-Egy felhőalapú szolgáltatás alkalmazás létrehozását és telepítését kapcsolatos további részletekért lásd: [létrehozásáról és központi telepítése egy felhőalapú szolgáltatás](cloud-services-how-to-create-deploy-portal.md).
+Hozzon létre, és a egy cloud service-alkalmazás üzembe helyezése kapcsolatos további részletekért lásd: [hogyan hozhat létre és telepíthet egy felhőszolgáltatást](cloud-services-how-to-create-deploy-portal.md).
 
-Attól függően, hogy az alkalmazás-adatforrások szükség lehet az alkalmazási adatforrás esetében a helyreállítási eljárások ellenőrzése.
+Az alkalmazás-adatforrások, attól függően szükség lehet az alkalmazás adatforrásának helyreállítási eljárások ellenőrzése.
 
-* Az Azure Storage adatforrásokat, lásd: [Azure Storage replikációs](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) ellenőrizni a rendelkezésre álló lehetőségek az alkalmazáshoz kiválasztott replikációs minta alapján.
-* SQL-adatbázis adatforrások, olvassa el a [áttekintése: üzleti folytonossági és az adatbázis katasztrófa utáni helyreállítás az SQL Database Felhőbeli](../sql-database/sql-database-business-continuity.md) ellenőrizni a rendelkezésre álló lehetőségek alapján az alkalmazás a választott replikációs modell.
+* Azure Storage-adatforrások esetében lásd: [Azure Storage replikáció](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) ellenőrizze az elérhető lehetőségek a kiválasztott replikációs modell az alkalmazás alapján.
+* SQL-adatbázis-forrásokhoz, olvassa el a [áttekintése: A felhő üzleti folytonossági és adatbázis katasztrófa utáni helyreállítás az SQL Database](../sql-database/sql-database-business-continuity.md) ellenőrizze az elérhető lehetőségek a kiválasztott replikációs modell az alkalmazás alapján.
 
 
-## <a name="option-3-wait-for-recovery"></a>3. lehetőség: Várjon, amíg a helyreállítás
-Ebben az esetben nincs teendő beavatkozást, de a szolgáltatás nem lesz elérhető a régió visszaállításáig. A szolgáltatás jelenlegi állapota tekintheti meg a [Azure az állapotjelző irányítópulthoz](https://azure.microsoft.com/status/).
+## <a name="option-3-wait-for-recovery"></a>3. lehetőség: Várjon, amíg a helyreállítási
+Ebben az esetben az Ön részéről semmit nem kell, de a szolgáltatás nem lesz elérhető a régióban visszaállításáig. A szolgáltatás aktuális állapotát megtekintheti a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/).
 
 ## <a name="next-steps"></a>További lépések
-A vész-helyreállítási és a magas rendelkezésre állási stratégiájának megvalósításához kapcsolatos további információkért lásd: [vész-helyreállítási és magas rendelkezésre állás a Azure-alkalmazások](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+A vészhelyreállítás és magas rendelkezésre állási stratégiájának megvalósításához kapcsolatos további információkért lásd: [vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-A felhő platform képességei részletes műszaki megértése elkészítéséhez lásd [Azure rugalmassági műszaki útmutatót](../resiliency/resiliency-technical-guidance.md).
+Egy cloud-platform képességei részletes műszaki ismerete fejlesztése, lásd: [műszaki útmutatást az Azure rugalmassága](../resiliency/resiliency-technical-guidance.md).

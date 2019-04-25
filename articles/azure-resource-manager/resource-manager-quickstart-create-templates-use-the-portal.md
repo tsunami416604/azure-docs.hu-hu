@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 84025953e74cb2ace358aa041f55dc1498d22f2f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4fe859b1343e2aea71bd41a3b7742a29bbff389f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079060"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60464158"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Gyors útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával
 
@@ -42,7 +42,7 @@ Számos sablon tapasztalt fejlesztők sablonjainak előállítása, amikor azok 
     ![Azure-tárfiókok létrehozása az Azure Portalon](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 3. Adja meg a következő információkat:
 
-    |Name (Név)|Érték|
+    |Name (Név)|Value|
     |----|----|
     |**Erőforráscsoport**|Válassza ki **új létrehozása**, és adja meg a kiválasztott erőforráscsoport nevét. A képernyőképen az erőforráscsoport neve *mystorage1016rg*. Erőforráscsoport egy olyan tároló, az Azure-erőforrásokhoz. Erőforráscsoport megkönnyíti az Azure-erőforrások kezeléséhez. |
     |**Name (Név)**|Adjon meg egy egyedi nevet a tárfiók. A tárfiók nevének egyedinek kell lennie Azure összes, és hogy az csak kisbetűket és számokat tartalmaz. Nevének 3 – 24 karakter hosszúnak kell lennie. Ha a helyen a "a"mystorage1016"tárfióknév már foglalt" szövegű hibaüzenetet kap, próbálja meg használni  **&lt;a neve > tároló&lt;MMDD a mai dátumra >**, például  **johndolestorage1016**. További információkért lásd: [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions).|
@@ -153,7 +153,7 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
 8. Kattintson a **Mentés** gombra.
 9. Írja be a következő értékeket:
 
-    |Name (Név)|Érték|
+    |Name (Név)|Value|
     |----|----|
     |**Erőforráscsoport**|Válassza ki az előző szakaszban létrehozott az erőforráscsoport nevét. |
     |**Hely**|Válassza ki a tárfiók helyét. Ha például **USA középső RÉGIÓJA**. |

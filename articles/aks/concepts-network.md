@@ -2,17 +2,18 @@
 title: Alapelvei – az Azure Kubernetes-szolgáltatás (AKS-) hálózat
 description: További információ az Azure Kubernetes Service (AKS), beleértve a kubenet és Azure CNI hálózatkezelés, bejövő tartományvezérlők, terheléselosztókat és statikus IP-címek hálózati.
 services: container-service
-author: iainfoulds
+author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.author: iainfou
+origin.date: 02/28/2019
+ms.date: 04/08/2019
+ms.author: v-yeche
 ms.openlocfilehash: cbdbf7dcd6269991d23c61d316dcee68e6678171
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175666"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60467242"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazások az Azure Kubernetes Service (AKS) hálózati fogalmai
 
@@ -64,6 +65,7 @@ Az aks-ben helyezhető üzembe egy fürtöt, amely a következő két hálózati
 - *Kubenet* hálózat - erőforrások általában létrehozza és beállítja, az AKS-fürt üzembe lesz helyezve a hálózaton.
 - *Az Azure Container hálózati adapter (CNI)* hálózati használata – az AKS-fürt csatlakozik-e meglévő virtuális hálózati erőforrásokat és konfigurációkat.
 
+<a name="kubenet-basic-networking"></a>
 ### <a name="kubenet-basic-networking"></a>Hálózatkezelés Kubenet (alapszintű)
 
 A *kubenet* hálózatkezelés lehetőség az AKS-fürt létrehozása az alapértelmezett konfigurációja. A *kubenet*, csomópontok IP-cím lekérése az Azure virtuális hálózat alhálózatához. Podok logikailag különböző címtér az IP-címet kapnak a csomópontok az Azure virtuális hálózat alhálózatához. Hálózati címfordítás (NAT) majd van konfigurálva, így a podok elérheti az erőforrásokat az Azure-beli virtuális hálózaton. A forgalmat a forrás IP-címe NAT lenne a csomópont elsődleges IP-cím.
@@ -72,6 +74,7 @@ Csomópontok használata a [kubenet] [ kubenet] Kubernetes beépülő modult. Ha
 
 További információkért lásd: [konfigurálni az AKS-fürt hálózati kubenet][aks-configure-kubenet-networking].
 
+<a name="azure-cni-advanced-networking"></a>
 ### <a name="azure-cni-advanced-networking"></a>Azure CNI (advanced) networking
 
 Az Azure CNI minden pod IP-címet kap az alhálózatról, és közvetlenül is elérhetők. Ezen IP-címek a hálózati hely belül egyedinek kell lennie, és előre kell készülni. Minden egyes csomópont rendelkezik egy konfigurációs paraméter, amely támogatja a podok maximális számát. IP-címek száma csomópontonként megfelelőjét majd számára vannak fenntartva meghozni a csomóponton. Ez a megközelítés további tervezést igényel, és IP-cím Erőforrásfogyás vagy kell építeni a teljesítményszinten növekedésével nagyobb alhálózat a fürtök gyakran vezet.
@@ -139,7 +142,10 @@ További kapcsolódó ajánlott eljárások: [ajánlott eljárások a hálózati
 
 <!-- LINKS - Internal -->
 [aks-http-routing]: http-application-routing.md
-[aks-ingress-tls]: ingress.md
+[aks-ingress-tls]: ingress-tls.md
+
+<!--Mooncake : URL redirect to ingress-tls.md-->
+
 [aks-configure-kubenet-networking]: configure-kubenet.md
 [aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md

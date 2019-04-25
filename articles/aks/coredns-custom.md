@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: jnoller
 ms.openlocfilehash: 9186c5ff7c6fbc68487a1ccff0fc1d2d1478df79
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58405842"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60466448"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Az Azure Kubernetes Service CoreDNS testreszabása
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan ConfigMaps használandó testreszabási lehetősége
 > [!NOTE]
 > `kube-dns` ajánlott különböző [testreszabási lehetőségek] [ kubednsblog] Kubernetes konfigurációs térkép-n keresztül. CoreDNS van **nem** visszamenőleg kompatibilis a kube-dns. Korábban már használt testreszabások CoreDNS való használatra kell frissíteni.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [az aks-rövid-cli] vagy [az Azure Portalon] [az aks – rövid útmutató – portal].
 

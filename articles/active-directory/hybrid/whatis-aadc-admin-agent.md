@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e33143626e136523b4af086e841b92e9ad30fa86
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577609"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60295006"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Mi az az Azure AD Connect felügyeleti ügynök? 
 Az Azure AD Connect felügyeleti ügynök része egy új Azure Active Directory Connect, amely egy Azure Active Directory Connect-kiszolgálón telepítve van. Adott adatok gyűjtését az Active Directory-környezetet, amelynek segítségével a Microsoft támogatási szakértője hibák elhárításához, ha a támogatási eset nyitása szolgál.

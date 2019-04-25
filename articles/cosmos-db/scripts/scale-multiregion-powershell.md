@@ -3,18 +3,19 @@ title: Azure PowerShell-Példaszkript – többrégiós replikáció az Azure Co
 description: Azure PowerShell-példaszkript – Többrégiós replikáció az Azure Cosmos DB-ben
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-author: SnehaGunda
-ms.author: sngun
+author: rockboyfor
+ms.author: v-yeche
 ms.devlang: PowerShell
 ms.topic: sample
-ms.date: 05/10/2017
+origin.date: 05/10/2017
+ms.date: 04/15/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 02628401bed6e65784bf7ddc4a7082f617640cf9
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496144"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60448469"
 ---
 # <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-powershell"></a>Egy Azure Cosmos DB-adatbázisfiók replikálása több régióban és a feladatátvételi prioritások konfigurálása a PowerShell használatával
 
@@ -26,7 +27,80 @@ Ez a példa replikál bármilyen Azure Cosmos DB-adatbázisfiókot több régió
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-powershell[main](../../../powershell_scripts/cosmosdb/replicate-database-multiple-regions/replicate-database-multiple-regions.ps1?highlight=37-44,47-48,51-55 "Replicate an Azure Cosmos DB account across multiple regions")]
+<!--First make chinaeast2 as wirte region-->
+<!--Second make chinanorth as write region-->
+<!--Last add chinanorth2 new region-->
+
+```powershell
+# Set the Azure resource group name and location
+$resourceGroupName = "myResourceGroup"
+$resourceGroupLocation = "chinaeast2"
+
+# Database name
+$DBName = "testdb"
+# Distribution locations
+$locations = @(@{"locationName"="chinaeast"; 
+                 "failoverPriority"=2},
+               @{"locationName"="chinanorth"; 
+                 "failoverPriority"=1},
+               @{"locationName"="chinaeast2"; 
+                 "failoverPriority"=0})
+
+
+# Create the resource group
+New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
+
+# Consistency policy
+$consistencyPolicy = @{"maxIntervalInSeconds"="10"; 
+                       "maxStalenessPrefix"="200"}
+
+# DB properties
+$DBProperties = @{"databaseAccountOfferType"="Standard";
+                  "Kind"="GlobalDocumentDB"; 
+                  "locations"=$locations; 
+                  "consistencyPolicy"=$consistencyPolicy;}
+
+# Create the database
+New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+                    -ApiVersion "2015-04-08" `
+                    -ResourceGroupName $resourceGroupName `
+                    -Location $resourceGroupLocation `
+                    -Name $DBName `
+                    -PropertyObject $DBProperties
+
+# Update failoverpolicy to make China North as a write region
+$NewfailoverPolicies = @(@{"locationName"="chinanorth"; "failoverPriority"=0}, @{"locationName"="chinaeast2"; "failoverPriority"=1}, @{"locationName"="chinaeast"; "failoverPriority"=2} )
+
+Invoke-AzResourceAction `
+    -Action failoverPriorityChange `
+    -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+    -ApiVersion "2015-04-08" `
+    -ResourceGroupName $resourceGroupName `
+    -Name $DBName `
+    -Parameters @{"failoverPolicies"=$NewfailoverPolicies}
+
+# Add a new locations with priorities
+$newLocations = @(@{"locationName"="chinanorth"; 
+                 "failoverPriority"=0},
+               @{"locationName"="chinaeast"; 
+                 "failoverPriority"=1},
+               @{"locationName"="chinanorth2"; 
+                 "failoverPriority"=2},
+               @{"locationName"="chinaeast2";
+                 "failoverPriority"=3})
+
+# Updated properties
+$updateDBProperties = @{"databaseAccountOfferType"="Standard";
+                        "locations"=$newLocations;}
+
+# Update the database with the properties
+Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+    -ApiVersion "2015-04-08" `
+    -ResourceGroupName $resourceGroupName `
+    -Name $DBName `
+    -PropertyObject $UpdateDBProperties
+
+```
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
@@ -53,3 +127,5 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
 További Azure Cosmos DB PowerShell-példaszkripteket az [Azure Cosmos DB PowerShell-szkriptek között](../powershell-samples.md) találhat.
+
+<!-- Update_Description: update meta properties -->

@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 952a8aa2dbfdabfb7f0df198a7453b847c33f7e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019079"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486974"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Az Azure Data Factory - ügyfelekről készült esettanulmányok
 Data Factory egy felhőalapú felügyeleti szolgáltatás, amely automatizálja az adatáthelyezési és -adatok átalakítása az. Ügyfeleink számos iparággal használatával a Data Factory és más Azure-szolgáltatások saját elemzési folyamatok alakíthatók ki, és az üzleti problémák megoldásában.  Közvetlenül az ügyfeleinktől megtudhatja, hogyan és miért használják a Data Factoryban.
@@ -35,7 +35,7 @@ Data Factory egy felhőalapú felügyeleti szolgáltatás, amely automatizálja 
 ## <a name="alaska-airlines"></a>Alaska Airlines
 [Légitársaság használt táblagépek, hogy vonzóbbá szükségszerű Szórakozás Cloud Services](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
 
-## <a name="tacoma-public-schools"></a>Tata nyilvános iskolák
+## <a name="tacoma-public-schools"></a>Tacoma public schools
 [Tanulói jelkiesés kockázatokat, felhőanalitika diploma megszerzésének fizetendő díjak növelése előrejelzése](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20703)
 
 ## <a name="real-madrid-fc"></a>A Real Madrid FC

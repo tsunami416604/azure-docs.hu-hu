@@ -17,11 +17,11 @@ ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: acccc553c5b63b2acd0f9793b0397b25145449dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699330"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60477436"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban
 Ez a cikk útmutatást nyújt az Azure-infrastruktúra beállítása és működtetése az Azure-beli natív virtuális gépek (VM) üzembe helyezett SAP HANA rendszereit. A cikk emellett tartalmaz az SAP HANA kibővített M128s VM-termékváltozat-konfigurációs adatait. Ez a cikk nem helyettesítik a standard szintű SAP dokumentációját, amely magában foglalja az alábbi tartalommal:

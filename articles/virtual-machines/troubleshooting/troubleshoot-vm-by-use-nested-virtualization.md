@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005598"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60444375"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>A beágyazott virtualizálás az Azure-ban az Azure virtuális gép hiba elhárítása
 
@@ -35,13 +35,13 @@ Csatlakoztatja a hibás virtuális Gépnek, a mentési virtuális Gépet a köve
 
 -   A mentési VM ugyanolyan típusú (Standard vagy prémium szintű) Tárfiók kell használnia, mint a virtuális gép hibás.
 
-## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>1. lépés: Mentő virtuális gép létrehozása és Hyper-V szerepkör telepítése
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>1. lépés: Mentési virtuális gép létrehozása és Hyper-V szerepkör telepítése
 
 1.  Hozzon létre egy új mentési virtuális Gépet:
 
     -  Operációs rendszer: Windows Server 2016 Datacenter
 
-    -  Méret: Bármely v3-as sorozat legalább két mag, hogy támogatja a beágyazott virtualizálás. További információkért lásd: [bemutatjuk az új Dv3 és Ev3 Virtuálisgép-méretek](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
+    -  Méret: Minden legalább két maggal, amely támogatja a beágyazott virtualizálás v3-as sorozat. További információkért lásd: [bemutatjuk az új Dv3 és Ev3 Virtuálisgép-méretek](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
 
     -  Azonos helyen, Tárfiók, és erőforráscsoporthoz tartozik, mint a hibás virtuális Gépnek.
 
@@ -71,7 +71,7 @@ Csatlakoztatja a hibás virtuális Gépnek, a mentési virtuális Gépet a köve
 
 13. Lehetővé teszi a Hyper-V szerepkör telepítése a kiszolgálón. Ez eltarthat néhány percig, és a kiszolgáló automatikusan újraindul.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>2. lépés: A hibás virtuális Gépnek a mentési virtuális gép Hyper-V kiszolgálón hozzon létre.
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>2. lépés: A mentési virtuális gép Hyper-V kiszolgálón a problémát a virtuális gép létrehozása
 
 1.  Rögzítse a hibás virtuális Gépnek a lemez nevét, és ezután törölje a hibás virtuális Gépnek. Győződjön meg arról, hogy őrizze meg az összes csatlakoztatott lemezek. 
 
@@ -122,7 +122,7 @@ Csatlakoztatja a hibás virtuális Gépnek, a mentési virtuális Gépet a köve
 
 19. Most már használhatja a virtuális gépen a helyszíni virtuális gépként. Sikerült hajtsa végre a szükséges hibaelhárítási lépéseket.
 
-## <a name="step-3-re-create-your-azure-vm-in-azure"></a>3. lépés: Hozzon létre újra az Azure virtuális Gépen az Azure-ban
+## <a name="step-3-re-create-your-azure-vm-in-azure"></a>3. lépés: Hozza létre az Azure virtuális gépek az Azure-ban
 
 1.  Online állapotba a virtuális gép kap, miután állítsa le a virtuális gép a Hyper-V kezelőjében.
 

@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310017"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60483193"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Az alkalmazás a közzétételi portál beállítása
 
@@ -106,7 +106,7 @@ Ez az a leírást, amely megjelenik az alkalmazás részletei lapon. Engedélyez
 
 Válassza ki az iparág legjobb igazított az alkalmazást. Ha az alkalmazás vonatkozik több iparágban is ezt üresen hagyja.
 
-### <a name="categories"></a>Kategóriák
+### <a name="categories"></a>Categories
 
 Válassza ki, amely az alkalmazás a kategóriák. Válasszon legfeljebb 3.
 

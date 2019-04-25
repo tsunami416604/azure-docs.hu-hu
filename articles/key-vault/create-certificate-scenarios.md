@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 854d0e8f6927c9ce4855435a02b4819055111ceb
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407901"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306019"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Tanúsítvány-létrehozás monitorozása és kezelése
 A következőkre vonatkozik: Azure
@@ -417,7 +417,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|Elem neve|Szükséges|Typo|Verzió|Leírás|
+|Elem neve|Szükséges|Typo|Version|Leírás|
 |------------------|--------------|----------|-------------|-----------------|
 |x5c|Igen|tömb|\<Bemutatkozik a verzió >|X509 tanúsítványlánc, base 64 karakterlánc-tömbben.|
 

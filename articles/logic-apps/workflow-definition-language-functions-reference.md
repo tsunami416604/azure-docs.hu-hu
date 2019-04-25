@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
 ms.openlocfilehash: d7ea62c51065cbe85a905b4ff78743fdc11c1e10
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618209"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60502265"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Az Azure Logic Apps és Microsoft Flow munkafolyamat-definíciós nyelv-funkciók dokumentációja
 
@@ -641,14 +641,14 @@ addProperty(<object>, '<property>', <value>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*Objektum*> | Igen | Objektum | A JSON-objektum, amelyen kívánt tulajdonság hozzáadása |
+| <*Objektum*> | Igen | Object | A JSON-objektum, amelyen kívánt tulajdonság hozzáadása |
 | <*A tulajdonság*> | Igen | String | A hozzáadandó tulajdonság nevét |
 | <*value*> | Igen | Bármelyik | A tulajdonság értéke |
 |||||
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | Objektum | A frissített JSON-objektum és a megadott tulajdonság |
+| <*updated-object*> | Object | A frissített JSON-objektum és a megadott tulajdonság |
 ||||
 
 *Példa*
@@ -759,12 +759,12 @@ and(<expression1>, <expression2>, ...)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*Kifejezés1*>, <*Kifejezés2*>,... | Igen | Logikai | Ellenőrizze a kifejezések |
+| <*Kifejezés1*>, <*Kifejezés2*>,... | Igen | Boolean | Ellenőrizze a kifejezések |
 |||||
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | -----| ----------- |
-| IGAZ vagy hamis | Logikai | Igaz értéket ad vissza ha összes kifejezés igaz. Vissza a False (hamis), ha legalább egy kifejezés false (hamis). |
+| IGAZ vagy hamis | Boolean | Igaz értéket ad vissza ha összes kifejezés igaz. Vissza a False (hamis), ha legalább egy kifejezés false (hamis). |
 ||||
 
 *1. példa*
@@ -926,7 +926,7 @@ base64ToString('aGVsbG8=')
 
 <a name="binary"></a>
 
-### <a name="binary"></a>Bináris
+### <a name="binary"></a>binary
 
 A bináris verzió egy karakterláncot ad vissza.
 
@@ -1005,7 +1005,7 @@ body('Get_user')
 
 <a name="bool"></a>
 
-### <a name="bool"></a>logikai
+### <a name="bool"></a>bool
 
 A logikai értéket verziót adja vissza.
 
@@ -1020,7 +1020,7 @@ bool(<value>)
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| IGAZ vagy hamis | Logikai | A megadott értéket a logikai verziójára |
+| IGAZ vagy hamis | Boolean | A megadott értéket a logikai verziójára |
 ||||
 
 *Példa*
@@ -1131,7 +1131,7 @@ Ez a függvény kifejezetten, a gyűjtemény típusaival működik:
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| IGAZ vagy hamis | Logikai | Igaz értéket ad vissza, ha az elem található. Vissza false (hamis) Ha nem található. |
+| IGAZ vagy hamis | Boolean | Igaz értéket ad vissza, ha az elem található. Vissza false (hamis) Ha nem található. |
 ||||
 
 *1. példa*
@@ -1678,7 +1678,7 @@ empty([<collection>])
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| IGAZ vagy hamis | Logikai | Igaz értéket ad vissza üres a gyűjtemény esetén. Vissza a hamis értéket, ha nem üres. |
+| IGAZ vagy hamis | Boolean | Igaz értéket ad vissza üres a gyűjtemény esetén. Vissza a hamis értéket, ha nem üres. |
 ||||
 
 *Példa*
@@ -1715,7 +1715,7 @@ endsWith('<text>', '<searchText>')
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| IGAZ vagy hamis  | Logikai | Igaz értéket ad vissza, ha a befejezési karakterláncrészletet található. Vissza false (hamis) Ha nem található. |
+| IGAZ vagy hamis  | Boolean | Igaz értéket ad vissza, ha a befejezési karakterláncrészletet található. Vissza false (hamis) Ha nem található. |
 ||||
 
 *1. példa*
@@ -1756,7 +1756,7 @@ equals('<object1>', '<object2>')
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| IGAZ vagy hamis | Logikai | Igaz értéket ad vissza, ha mindkét egyenértékűek. Vissza a hamis értéket, ha nem megfelelő. |
+| IGAZ vagy hamis | Boolean | Igaz értéket ad vissza, ha mindkét egyenértékűek. Vissza a hamis értéket, ha nem megfelelő. |
 ||||
 
 *Példa*
@@ -1826,7 +1826,7 @@ float('<value>')
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| <*float-value*> | Lebegőpontos | A lebegőpontos szám a megadott karakterlánc |
+| <*float-value*> | Float | A lebegőpontos szám a megadott karakterlánc |
 ||||
 
 *Példa*
@@ -2041,7 +2041,7 @@ greater('<value>', '<compareTo>')
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| IGAZ vagy hamis | Logikai | Igaz értéket ad vissza az első érték nagyobb, mint a második érték esetén. Vissza a False (hamis), amikor az első érték egyenlő vagy kisebb, mint a második érték. |
+| IGAZ vagy hamis | Boolean | Igaz értéket ad vissza az első érték nagyobb, mint a második érték esetén. Vissza a False (hamis), amikor az első érték egyenlő vagy kisebb, mint a második érték. |
 ||||
 
 *Példa*
@@ -2078,7 +2078,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| IGAZ vagy hamis | Logikai | Igaz értéket ad vissza, ha az első érték kisebb, mint a második érték egyenlő. Hamis értéket, ha az első érték kisebb, mint a második érték visszaadása. |
+| IGAZ vagy hamis | Boolean | Igaz értéket ad vissza, ha az első érték kisebb, mint a második érték egyenlő. Hamis értéket, ha az első érték kisebb, mint a második érték visszaadása. |
 ||||
 
 *Példa*
@@ -2144,7 +2144,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*kifejezés*> | Igen | Logikai | Ellenőrizze, hogy a kifejezés |
+| <*kifejezés*> | Igen | Boolean | Ellenőrizze, hogy a kifejezés |
 | <*valueIfTrue*> | Igen | Bármelyik | A visszatérési érték, ha a kifejezés igaz |
 | <*valueIfFalse*> | Igen | Bármelyik | A visszatérési érték, amikor a kifejezés értéke FALSE (hamis) |
 |||||
@@ -2530,7 +2530,7 @@ less('<value>', '<compareTo>')
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| IGAZ vagy hamis | Logikai | IGAZ, ha az első érték kisebb, mint a második érték visszaadása. Vissza a False (hamis), amikor az első érték egyenlő vagy nagyobb, mint a második érték. |
+| IGAZ vagy hamis | Boolean | IGAZ, ha az első érték kisebb, mint a második érték visszaadása. Vissza a False (hamis), amikor az első érték egyenlő vagy nagyobb, mint a második érték. |
 ||||
 
 *Példa*
@@ -2567,7 +2567,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| IGAZ vagy hamis  | Logikai | Igaz értéket ad vissza, ha az első érték kisebb vagy egyenlő a második érték. Vissza a False (hamis), ha az első érték nagyobb, mint a második érték. |
+| IGAZ vagy hamis  | Boolean | Igaz értéket ad vissza, ha az első érték kisebb vagy egyenlő a második érték. Vissza a False (hamis), ha az első érték nagyobb, mint a második érték. |
 ||||
 
 *Példa*
@@ -2773,12 +2773,12 @@ not(<expression>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*kifejezés*> | Igen | Logikai | Ellenőrizze, hogy a kifejezés |
+| <*kifejezés*> | Igen | Boolean | Ellenőrizze, hogy a kifejezés |
 |||||
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| IGAZ vagy hamis | Logikai | Igaz értéket ad vissza, ha a kifejezés értéke hamis. Vissza a False (hamis), ha a kifejezés igaz. |
+| IGAZ vagy hamis | Boolean | Igaz értéket ad vissza, ha a kifejezés értéke hamis. Vissza a False (hamis), ha a kifejezés igaz. |
 ||||
 
 *1. példa*
@@ -2822,12 +2822,12 @@ or(<expression1>, <expression2>, ...)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*Kifejezés1*>, <*Kifejezés2*>,... | Igen | Logikai | Ellenőrizze a kifejezések |
+| <*Kifejezés1*>, <*Kifejezés2*>,... | Igen | Boolean | Ellenőrizze a kifejezések |
 |||||
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| IGAZ vagy hamis | Logikai | Igaz értéket ad vissza, ha legalább egy kifejezés értéke true. Vissza a False (hamis), amikor összes kifejezés false (hamis). |
+| IGAZ vagy hamis | Boolean | Igaz értéket ad vissza, ha legalább egy kifejezés értéke true. Vissza a False (hamis), amikor összes kifejezés false (hamis). |
 ||||
 
 *1. példa*
@@ -3002,13 +3002,13 @@ removeProperty(<object>, '<property>')
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*Objektum*> | Igen | Objektum | Ha el kívánja távolítani a tulajdonságot a JSON-objektum |
+| <*Objektum*> | Igen | Object | Ha el kívánja távolítani a tulajdonságot a JSON-objektum |
 | <*A tulajdonság*> | Igen | String | Az eltávolítandó tulajdonság nevét |
 |||||
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | Objektum | A frissített JSON-objektum anélkül, hogy a megadott tulajdonság |
+| <*updated-object*> | Object | A frissített JSON-objektum anélkül, hogy a megadott tulajdonság |
 ||||
 
 *Példa*
@@ -3032,14 +3032,14 @@ setProperty(<object>, '<property>', <value>)
 
 | Paraméter | Szükséges | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*Objektum*> | Igen | Objektum | A JSON-objektum szeretné állítani, amelynek tulajdonsága |
+| <*Objektum*> | Igen | Object | A JSON-objektum szeretné állítani, amelynek tulajdonsága |
 | <*A tulajdonság*> | Igen | String | A meglévő vagy új beállítandó tulajdonság nevét |
 | <*value*> | Igen | Bármelyik | Az érték a megadott tulajdonság beállítása |
 |||||
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | Objektum | A frissített JSON-objektum, amelynek tulajdonsága |
+| <*updated-object*> | Object | A frissített JSON-objektum, amelynek tulajdonsága |
 ||||
 
 *Példa*
@@ -3226,7 +3226,7 @@ startsWith('<text>', '<searchText>')
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| IGAZ vagy hamis  | Logikai | Igaz értéket ad vissza, ha a kiindulási karakterláncrészletet található. Vissza false (hamis) Ha nem található. |
+| IGAZ vagy hamis  | Boolean | Igaz értéket ad vissza, ha a kiindulási karakterláncrészletet található. Vissza false (hamis) Ha nem található. |
 ||||
 
 *1. példa*
@@ -3251,7 +3251,7 @@ startsWith('hello world', 'greetings')
 
 <a name="string"></a>
 
-### <a name="string"></a>sztring
+### <a name="string"></a>string
 
 A karakterlánc-verziót egy értéket ad vissza.
 
@@ -4106,7 +4106,7 @@ xml('<value>')
 
 | Vrácená hodnota | Typo | Leírás |
 | ------------ | ---- | ----------- |
-| <*xml-version*> | Objektum | A megadott karakterlánc vagy JSON-objektum a kódolt XML |
+| <*xml-version*> | Object | A megadott karakterlánc vagy JSON-objektum a kódolt XML |
 ||||
 
 *1. példa*

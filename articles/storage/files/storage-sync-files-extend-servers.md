@@ -2,18 +2,18 @@
 title: Oktatóanyag – kiterjesztése az Azure File Sync Windows-fájlkiszolgálók |} A Microsoft Docs
 description: Ismerje meg, hogyan bővítheti az Azure File Sync Windows-fájlkiszolgálók elejétől a végéig.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: tutorial
 ms.date: 10/23/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049149"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60461916"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Oktatóanyag: Windows-fájlkiszolgálók kiterjesztése az Azure File Sync használatával
 
@@ -218,7 +218,7 @@ Az Azure File Sync üzembe helyezéséhez először helyez egy **Társzinkroniz�
 
    A megnyíló panelen adja meg a következőket:
 
-   | Érték | Leírás |
+   | Value | Leírás |
    | ----- | ----- |
    | **Name (Név)** | A Társzinkronizálási szolgáltatás egyedi neve (előfizetésenként).<br><br>Használat _afssyncservice02_ ehhez az oktatóanyaghoz. |
    | **Előfizetés** | Az Azure-előfizetés ehhez az oktatóanyaghoz használja. |
@@ -264,7 +264,7 @@ A kiszolgáló regisztrációs felhasználói felület automatikusan meg kell az
 
    | | |
    | ----- | ----- |
-   | Érték | Leírás |
+   | Value | Leírás |
    | **Azure előfizetés** | Az előfizetés, amely tartalmazza a Társzinkronizálási szolgáltatást ehhez az oktatóanyaghoz. |
    | **Erőforráscsoport** | A Storage Sync Service tartalmazó erőforráscsoportot. Használat _afsresgroup101918_ ehhez az oktatóanyaghoz. |
    | **Társzinkronizálási szolgáltatás** | A Társzinkronizálási szolgáltatás neve. Használat _afssyncservice02_ ehhez az oktatóanyaghoz. |
@@ -283,7 +283,7 @@ A szinkronizálási csoport határozza meg fájlok egy halmazára a szinkronizá
 
 1. Adja meg a szinkronizálási csoport létrehozása a felhőbeli végpont a következő információkat:
 
-   | Érték | Leírás |
+   | Value | Leírás |
    | ----- | ----- |
    | **Szinkronizálási csoport neve** | A Társzinkronizálási szolgáltatáson belül egyedinek kell lennie a névnek, de lehet bármilyen Ön számára logikus név. Használat *afssyncgroup* ehhez az oktatóanyaghoz.|
    | **Előfizetés** | Az előfizetés, ahova a Társzinkronizálási szolgáltatást telepítette ehhez az oktatóanyaghoz. |
@@ -306,7 +306,7 @@ Kiszolgálói végpont egy adott helyen, egy regisztrált kiszolgálón jelöli.
 
    | | |
    | ----- | ----- |
-   | Érték | Leírás |
+   | Value | Leírás |
    | **Regisztrált kiszolgáló** | A létrehozott kiszolgáló nevét. Használat *afsvm101918* ehhez az oktatóanyaghoz. |
    | **Elérési út** | A Windows Server meghajtó elérési útját a létrehozott. Használat *f:\filestosync* ebben az oktatóanyagban. |
    | **Felhőbeli rétegzés** | Hagyja letiltott állapotban az oktatóanyaghoz. |

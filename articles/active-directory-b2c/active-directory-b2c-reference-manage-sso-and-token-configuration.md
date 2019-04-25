@@ -7,15 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/09/2018
-ms.author: davidmu
+origin.date: 10/09/2018
+ms.date: 04/01/2019
+ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856359"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317173"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés és egyéni szabályzatok használatával az Azure Active Directory B2C jogkivonat testreszabása kezelése
 
@@ -100,3 +101,4 @@ A következő értékeket az előző példában vannak konfigurálva:
 - **Egyszeri bejelentkezés (SSO)** – egyszeri bejelentkezés van konfigurálva a **SingleSignOn**. Az érvényes értékek a következők `Tenant`, `Application`, `Policy`, és `Suppressed`. 
 - **Webalkalmazás munkamenet élettartama (perc)** – a web app-munkamenet élettartama van beállítva a **SessionExpiryInSeconds** elemet. Az alapértelmezett érték 86 400 másodperc (1440 perc).
 - **Webes alkalmazás munkamenet időtúllépésének** – a webes alkalmazás munkamenet időkorlátja van beállítva a **SessionExpiryType** elemet. Az érvényes értékek a következők `Absolute` és `Rolling`.
+

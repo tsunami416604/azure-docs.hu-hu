@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
 ms.openlocfilehash: 6436193dadb5933074fdce861a31672a0f4849de
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227335"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313153"
 ---
 # <a name="demo-password-reset"></a>Bemutató: Új jelszó létrehozása
 Ez az oktatóanyag bemutatja egy egyszerű technikai támogatás robot, amelyek segíthetnek a jelszó-visszaállítási Beszélgetéstanuló működteti. A robot modell további folyamatok nem triviális párbeszédpanel, és több kapcsolja többek között az out-a-domain osztályok feladatütemezések. A feladat kód vagy entitások nélkül is elvégezhető.

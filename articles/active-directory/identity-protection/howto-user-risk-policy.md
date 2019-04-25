@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b94e9b7267c956c07f4171f8cce46c6159affd90
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518405"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60459706"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>kézikönyv: A felhasználói kockázati szabályzat konfigurálása
 
@@ -50,7 +50,7 @@ A bejelentkezési kockázati házirend van a **konfigurálása** szakaszában a 
 
 
 
-## <a name="policy-settings"></a>Szabályzat beállításai
+## <a name="policy-settings"></a>Szabályzatbeállítások
 
 A bejelentkezési kockázati házirend konfigurálásakor kell beállítani:
 

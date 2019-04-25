@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 542505c5a6c3af91669ebe28287ae6e1477e214d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 8f5b470cb3f75f434033a245f4aaa185aeb665c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487176"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325938"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Az Azure-beli virtuális gépek különböző régiókban Always On rendelkezésre állási csoport konfigurálása
 
@@ -31,7 +31,7 @@ Ez a cikk az Azure Virtual Machines Resource Manager módra vonatkozik.
 
 Az alábbi képen látható a gyakori telepítési egy rendelkezésre állási csoport Azure-beli virtuális gépeken:
 
-   ![Rendelkezésre állási csoport](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic.png)
+   ![Rendelkezésreállási csoport](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic.png)
 
 A központi telepítésben lévő összes virtuális gépet egy Azure-régióban vannak. A rendelkezésre állási csoport replikái lehet szinkron véglegesítést SQL-1 és az SQL-2 automatikus feladatátvétellel. Ez az architektúra hozhat létre, tekintse meg a [rendelkezésre állási csoport sablon vagy az oktatóanyagban](virtual-machines-windows-portal-sql-availability-group-overview.md).
 
@@ -53,7 +53,7 @@ Ha rendelkezésre állási csoport replikái az Azure virtuális gépek eltérő
 
 Az alábbi ábrán látható a hálózatok közötti kommunikáció módját az adatközpontok között.
 
-   ![Rendelkezésre állási csoport](./media/virtual-machines-windows-portal-sql-availability-group-dr/01-vpngateway-example.png)
+   ![Rendelkezésreállási csoport](./media/virtual-machines-windows-portal-sql-availability-group-dr/01-vpngateway-example.png)
 
 >[!IMPORTANT]
 >Ez az architektúra a kimenő adatforgalmi díjat az Azure-régiók között replikált adatok tekintetében. Lásd: [sávszélesség díjszabás](https://azure.microsoft.com/pricing/details/bandwidth/).  
@@ -119,7 +119,7 @@ A replika létrehozásához egy távoli adatközpontban, tegye a következőket:
 
    Az alábbi képernyőfelvételen egy megfelelően konfigurált IP-cím fürt erőforrás:
 
-   ![Rendelkezésre állási csoport](./media/virtual-machines-windows-portal-sql-availability-group-dr/50-configure-dependency-multiple-ip.png)
+   ![Rendelkezésreállási csoport](./media/virtual-machines-windows-portal-sql-availability-group-dr/50-configure-dependency-multiple-ip.png)
 
    >[!IMPORTANT]
    >A fürterőforrás-csoport tartalmazza az IP-címe. IP-címe. a figyelő ügyfél-hozzáférési pont a függőségekkel. Használja a **vagy** operátor szerepel a fürtkonfiguráció függőség.
@@ -165,7 +165,7 @@ A távoli régióba figyelő kapcsolat teszteléséhez, adhatók át a replikát
 
 Kapcsolat tesztelése után lépjen vissza az elsődleges replika az elsődleges adatközpont és a rendelkezésre állási mód állítsa vissza a rendes működési beállításait. Az alábbi táblázat a jelen dokumentumban ismertetett architektúra normál működési beállításai láthatók:
 
-| Hely | Server-példány | Szerepkör | Rendelkezésre állási mód | Feladatátvételi mód
+| Location egység | Server-példány | Szerepkör | Rendelkezésre állási mód | Feladatátvételi mód
 | ----- | ----- | ----- | ----- | -----
 | Elsődleges adatközpont | SQL-1 | Elsődleges | Szinkron | Automatikus
 | Elsődleges adatközpont | SQL-2 | Másodlagos | Szinkron | Automatikus

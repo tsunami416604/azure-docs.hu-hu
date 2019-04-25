@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.openlocfilehash: dec0b8bcd5a0e0d20ead5b149405e3716589ba53
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995728"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60478241"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Telepítse és konfigurálja az Azure-beli Linuxos virtuális gép kapcsolódni a távoli asztal
 Linux rendszerű virtuális gépek (VM) az Azure-ban általában kezelhetők a parancssorból a secure shell-(SSH) kapcsolatot használ. Ha új, Linux, illetve gyors hibaelhárítási forgatókönyveket, a távoli asztal használata egyszerűbb lehet. Ez a cikk részletesen bemutatja egy asztali környezet telepítéséhez és konfigurálásához ([xfce](https://www.xfce.org)) és a távoli asztal ([xrdp](http://www.xrdp.org)) a Linux rendszerű virtuális gép a Resource Manager üzemi modell használatával.

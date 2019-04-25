@@ -12,11 +12,11 @@ ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: f8b89b9a1354345235bacd227270c214f1a65799
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007431"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60408750"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-with-nodejs-in-computer-vision"></a>Gyors útmutató: A REST API használatával Node.js-szel a Computer Vision egy távoli kép elemzése
 

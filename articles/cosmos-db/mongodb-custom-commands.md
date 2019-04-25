@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876888"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60446584"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-bővítmény parancsai használatával a mongodb-hez az Azure Cosmos DB API-ban tárolt adatok kezelése 
 
@@ -45,7 +45,7 @@ A következő táblázat ismerteti a paraméterek belül a parancsot:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-| CustomAction   |  sztring  |   Neve az egyéni parancs "CreateDatabase" kell lennie.      |
+| CustomAction   |  string  |   Neve az egyéni parancs "CreateDatabase" kell lennie.      |
 | offerThroughput | int  | Kiosztott átviteli sebesség, amelyet az adatbázis. Ez a paraméter nem kötelező. |
 
 ### <a name="output"></a>Kimenet
@@ -87,7 +87,7 @@ A következő táblázat ismerteti a paraméterek belül a parancsot:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-| CustomAction    |    sztring     |   Az egyéni parancs neve. "UpdateDatabase" kell lennie.      |
+| CustomAction    |    string     |   Az egyéni parancs neve. "UpdateDatabase" kell lennie.      |
 |  offerThroughput   |  int       |     Új kiosztott átviteli sebesség, amely beállítja az adatbázison.    |
 
 ### <a name="output"></a>Kimenet
@@ -120,7 +120,7 @@ A következő táblázat ismerteti a paraméterek belül a parancsot:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-|  CustomAction   |   sztring      |   Az egyéni parancs neve. "GetDatabase" kell lennie.|
+|  CustomAction   |   string      |   Az egyéni parancs neve. "GetDatabase" kell lennie.|
         
 ### <a name="output"></a>Kimenet
 
@@ -162,10 +162,10 @@ A következő táblázat ismerteti a paraméterek belül a parancsot:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-| CustomAction    | sztring | Az egyéni parancs neve. "CreateDatabase" kell lennie.     |
-| gyűjtemény      | sztring | A gyűjtemény neve                                   |
+| CustomAction    | string | Az egyéni parancs neve. "CreateDatabase" kell lennie.     |
+| gyűjtemény      | string | A gyűjtemény neve                                   |
 | offerThroughput | int    | Kiosztott átviteli sebesség beállítása az adatbázison. Ez egy nem kötelező paraméter |
-| shardKey        | sztring | Szilánkleképezés-kulcs elérési útja horizontálisan skálázott gyűjtemények. Ez egy nem kötelező paraméter |
+| shardKey        | string | Szilánkleképezés-kulcs elérési útja horizontálisan skálázott gyűjtemények. Ez egy nem kötelező paraméter |
 
 ### <a name="output"></a>Kimenet
 
@@ -207,8 +207,8 @@ A következő táblázat ismerteti a paraméterek belül a parancsot:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-|  CustomAction   |   sztring      |   Az egyéni parancs neve. "UpdateCollection" kell lennie.      |
-|  gyűjtemény   |   sztring      |   A gyűjtemény neve.       |
+|  CustomAction   |   string      |   Az egyéni parancs neve. "UpdateCollection" kell lennie.      |
+|  gyűjtemény   |   string      |   A gyűjtemény neve.       |
 | offerThroughput   |int|   Kiosztott átviteli sebesség beállítása a gyűjteményben.|
 
 ## <a name="output"></a>Kimenet
@@ -242,8 +242,8 @@ A következő táblázat ismerteti a paraméterek belül a parancsot:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-| CustomAction    |   sztring      |   Az egyéni parancs neve. "GetCollection" kell lennie.      |
-| gyűjtemény    |    sztring     |    A gyűjtemény neve.     |
+| CustomAction    |   string      |   Az egyéni parancs neve. "GetCollection" kell lennie.      |
+| gyűjtemény    |    string     |    A gyűjtemény neve.     |
 
 ### <a name="output"></a>Kimenet
 

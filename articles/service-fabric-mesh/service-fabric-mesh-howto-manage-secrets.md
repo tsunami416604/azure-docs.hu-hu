@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
 ms.openlocfilehash: 36d0b49f1b9fb1ca5d13283146d134137a5cb028
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900641"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419067"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric háló titkos Alkalmazáskulcsok kezelése
 Titkos kódok Service Fabric-háló támogatja az Azure-erőforrások. Service Fabric-háló titkos lehet például a storage kapcsolati karakterláncok, jelszavak és egyéb értékek, amelyek tárolása és biztonságosan továbbítani kell bizalmas információkat. Ez a cikk bemutatja, hogyan használhatja a Service Fabric biztonságos Store szolgáltatás üzembe helyezése és karbantartása a titkos kulcsok.

@@ -10,11 +10,11 @@ ms.author: your-msft-alias
 author: your-github-account-name
 ms.date: 04/10/2018
 ms.openlocfilehash: e38a7e2bc55b4cc4b60984d355efad097ac7b068
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249794"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60481997"
 ---
 # <a name="this-is-the-h1-and-the-article-title-that-shows-on-the-web"></a>Ez a művelet a H1 és a cikk címe, amely megjeleníti a weben
 
@@ -35,7 +35,7 @@ Ez a tábla fejléceit rendelkezik:
 |1. oszlop  |Column2  |Column3  |
 |---------|---------|---------|
 |Row1|1. érték|A érték|
-|Row2|2. érték|B értéke|
+|Row2|2. érték|B értéke|
 |Row3|3. érték|C érték|
 
 ## <a name="section-here-h2"></a>Itt a H2 szakasz

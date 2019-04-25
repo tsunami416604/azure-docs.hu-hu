@@ -16,11 +16,11 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5773924e98b7ea13c180979dba1325eb8919ff3a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090627"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60469895"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 Ez a cikk útmutatást az Azure Active Directory (Azure AD) PowerShell-parancsmagok használatával hozhat létre, és a csoportokat. Ez a tartalom csak az Office 365-csoportok (más néven egyesített csoportok) vonatkozik. 
@@ -95,18 +95,18 @@ Az alábbiakban a Group.Unified SettingsTemplate megadott beállítások. Hiány
 
 | **Beállítás** | **Leírás** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>Típus: Logikai<li>Alapértelmezett: True (Igaz) |A jelzőt, amely azt jelzi, hogy az Office 365-csoport létrehozása engedélyezett-e a címtárban nem rendszergazdai felhasználók által. Ezt a beállítást nem szükséges egy Azure Active Directory Premium P1-licencet.|
+|  <ul><li>EnableGroupCreation<li>Típus: Boolean<li>Alapértelmezett: True (Igaz) |A jelzőt, amely azt jelzi, hogy az Office 365-csoport létrehozása engedélyezett-e a címtárban nem rendszergazdai felhasználók által. Ezt a beállítást nem szükséges egy Azure Active Directory Premium P1-licencet.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Típus: String<li>Alapértelmezett érték: "" |A biztonsági csoport, amelynek a tagjai hozhatnak létre az Office 365-csoportok GUID akkor is, ha EnableGroupCreation == false. |
 |  <ul><li>UsageGuidelinesUrl<li>Típus: String<li>Alapértelmezett érték: "" |A Csoporthasználati mutató hivatkozást. |
 |  <ul><li>ClassificationDescriptions<li>Típus: String<li>Alapértelmezett érték: "" | Besorolási leírások vesszővel tagolt listája. ClassificationDescriptions értéke csak érvényes a következő formátumban:<br>$setting ["ClassificationDescriptions"] = "Besorolást: leírás, besorolási: Description"<br>ahol a besorolás megegyezik a ClassificationList a karakterláncokat.|
 |  <ul><li>DefaultClassification<li>Típus: String<li>Alapértelmezett érték: "" | A besorolás, amely használható az alapértelmezett besorolást egy csoportot, ha nem.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Típus: String<li>Alapértelmezett érték: "" | Egy legfeljebb 64 karakter hosszúságú, amely meghatározza az Office 365-csoportok konfigurált elnevezési karakterlánc. További információkért lásd: [Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Típus: String<li>Alapértelmezett érték: "" | Vesszővel tagolt karakterláncot, amely a felhasználók csoport a nevek és aliasok használata nem fog tudni kifejezések közül. További információkért lásd: [Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése](groups-naming-policy.md). |
-| <ul><li>EnableMSStandardBlockedWords<li>Típus: Logikai<li>Alapértelmezett: "False" | Ne használja
-|  <ul><li>AllowGuestsToBeGroupOwner<li>Típus: Logikai<li>Alapértelmezett: False (Hamis) | Logikai érték-e a vendégfelhasználó lehet-e a csoport tulajdonosa jelzi. |
-|  <ul><li>AllowGuestsToAccessGroups<li>Típus: Logikai<li>Alapértelmezett: True (Igaz) | Jelző logikai érték beolvasása e vendég felhasználók még az Office 365-csoportok tartalomhoz való hozzáférését.  Ezt a beállítást nem szükséges egy Azure Active Directory Premium P1-licencet.|
+| <ul><li>EnableMSStandardBlockedWords<li>Típus: Boolean<li>Alapértelmezett: "False" | Ne használja
+|  <ul><li>AllowGuestsToBeGroupOwner<li>Típus: Boolean<li>Alapértelmezett: False (Hamis) | Logikai érték-e a vendégfelhasználó lehet-e a csoport tulajdonosa jelzi. |
+|  <ul><li>AllowGuestsToAccessGroups<li>Típus: Boolean<li>Alapértelmezett: True (Igaz) | Jelző logikai érték beolvasása e vendég felhasználók még az Office 365-csoportok tartalomhoz való hozzáférését.  Ezt a beállítást nem szükséges egy Azure Active Directory Premium P1-licencet.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Típus: String<li>Alapértelmezett érték: "" | A Vendég használati útmutató mutató URL-címe |
-|  <ul><li>AllowToAddGuests<li>Típus: Logikai<li>Alapértelmezett: True (Igaz) | Egy logikai jelző Vendégek hozzáadása a címtárhoz engedélyezett-e.|
+|  <ul><li>AllowToAddGuests<li>Típus: Boolean<li>Alapértelmezett: True (Igaz) | Egy logikai jelző Vendégek hozzáadása a címtárhoz engedélyezett-e.|
 |  <ul><li>ClassificationList<li>Típus: String<li>Alapértelmezett érték: "" |Az Office 365-csoportokra alkalmazható érvényes osztályozási értékeket vesszővel tagolt listája. |
 
 ## <a name="read-settings-at-the-directory-level"></a>A könyvtár szintjén beállítások beolvasása

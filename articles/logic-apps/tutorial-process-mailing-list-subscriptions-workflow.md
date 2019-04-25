@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.openlocfilehash: b48ecce1c87c0a29996e437d621c3ce396a84856
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232664"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60503468"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Levelezőlistára vonatkozó kérelmek kezelése az Azure Logic Apps használatával
 
@@ -59,7 +59,7 @@ Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Port
 
    ![Logikai alkalmazás adatainak megadása](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
-   | Beállítás | Érték | Leírás | 
+   | Beállítás | Value (Díj) | Leírás | 
    | ------- | ----- | ----------- | 
    | **Name (Név)** | LA-MailingList | A logikai alkalmazás neve | 
    | **Előfizetés** | <*your-Azure-subscription-name*> | Az Azure-előfizetés neve | 
@@ -79,7 +79,7 @@ Minden logikai alkalmazást egy eseményindítónak kell indítania, amely akkor
 
 1. A tervezőben írja be az „e-mail érkezésekor” kifejezést a keresőmezőbe. Válassza ki a triggert az e-mail-szolgáltatóhoz: **<*az-e-mail-szolgáltatója*> - Új e-mail érkezésekor**.
    
-   ![Válassza ezt az eseményindítót az e-mail-szolgáltatónál: „Új e-mail érkezésekor”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
+   ![Válassza ki ezt az eseményindítót az e-mail-szolgáltatónál: "Új e-mail érkezésekor"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
 
    * Munkahelyi vagy iskolai Azure-fiókok esetében válassza az Office 365 Outlookot.
    * Személyes Microsoft-fiókok esetében válassza az Outlook.com-összekötőt.
@@ -92,7 +92,7 @@ Minden logikai alkalmazást egy eseményindítónak kell indítania, amely akkor
 
       ![A mappa, az időtartam és a gyakoriság megadása az e-mailek ellenőrzéséhez](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | Beállítás | Érték | Leírás | 
+      | Beállítás | Value (Díj) | Leírás | 
       | ------- | ----- | ----------- | 
       | **Mappa** | Beérkezett üzenetek | A monitorozni kívánt e-mail-mappa | 
       | **Intervallum** | 1 | Az ellenőrzések között kivárt intervallumok száma | 
@@ -124,7 +124,7 @@ Most, hogy van egy triggere, adjon hozzá egy [műveletet](../logic-apps/logic-a
 
    ![Jóváhagyó e-mail beállításainak megadása](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
 
-   | Beállítás | Érték | Leírás | 
+   | Beállítás | Value (Díj) | Leírás | 
    | ------- | ----- | ----------- | 
    | **Címzett** | <*jóváhagyó-e-mail-címe*> | A jóváhagyó e-mail-címe. Tesztelési célokra használhatja a saját címét. | 
    | **Felhasználói választási lehetőségek** | Jóváhagyás, Elutasítás | A válaszlehetőségek, amelyek közül a jóváhagyó választhat. Alapértelmezés szerint a jóváhagyó a „Jóváhagyás” és az „Elutasítás” közül választhat. | 
@@ -183,7 +183,7 @@ Ezután adja meg a műveletet, amelyet a logikai alkalmazás végrehajt, amikor 
 Ezután adjon hozzá egy műveletet, amely hozzáadja a jóváhagyott tagot a levelezőlistához.
 
 1. A feltétel **Ha igaz** ágában válassza a **Művelet hozzáadása** lehetőséget.
-Keressen rá a „mailchimp” kifejezésre, majd válassza a következő műveletet: **MailChimp – Tag hozzáadása a listához**
+Keresse meg a "mailchimp", és válassza a következő műveletet: **MailChimp – tag hozzáadása listához**
 
    ![A MailChimp – Tag hozzáadása a listához lehetőség kiválasztása](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -193,7 +193,7 @@ Keressen rá a „mailchimp” kifejezésre, majd válassza a következő művel
 
    ![A Tag hozzáadása listához művelet adatainak megadása](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | Beállítás | Érték | Leírás | 
+   | Beállítás | Value (Díj) | Leírás | 
    | ------- | ----- | ----------- | 
    | **Listaazonosító** | test-members-ML | A MailChimp-levelezőlista neve | 
    | **Állapot** | feliratkozva | Az új tag feliratkozási állapota. További információ: <a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">Feliratkozók kezelése a MailChimp API-val</a>. | 
@@ -245,11 +245,11 @@ Ezután állítsa be az elküldendő e-maileket, amelyek arról értesítik, hog
 
    ![Adja meg a sikeres műveletet jelző e-mail információit](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
-   | Beállítás | Érték | Leírás | 
+   | Beállítás | Value (Díj) | Leírás | 
    | ------- | ----- | ----------- | 
    | **Címzett** | <*your-email-address*> | Az e-mail-cím, amelyre a sikeres műveletet jelző e-mail érkezik. Tesztelési célokra használhatja a saját e-mail-címét. | 
-   | **Tárgy** | <*subject-for-success-email*> | A sikeres műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget, és válassza ki a megadott mezőt a paraméterlista vagy a dinamikus tartalomlista **Tag hozzáadása listához** részén: <p>„Sikerült! „Tag hozzáadva a „test-members-ML” listához: **e-mail-cím**” | 
-   | **Törzs** | <*body-for-success-email*> | A sikeres műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget, és válassza ki a megadott mezőket a paraméterlista vagy a dinamikus tartalomlista **Tag hozzáadása listához** részén:  <p>„Új tag csatlakozott a „test-members-ML” listához: **e-mail-cím**”</br>„Tag csatlakozási állapota: **állapot**” | 
+   | **Tárgy** | <*subject-for-success-email*> | A sikeres műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget, és válassza ki a megadott mezőt a paraméterlista vagy a dinamikus tartalomlista **Tag hozzáadása listához** részén: <p>„Sikerült! A tag hozzáadva a "test-members-ml"listához: **E-mail-cím**" | 
+   | **Törzs** | <*body-for-success-email*> | A sikeres műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget, és válassza ki a megadott mezőket a paraméterlista vagy a dinamikus tartalomlista **Tag hozzáadása listához** részén:  <p>"Új tag csatlakozott a"test-members-ml listához": **E-mail-cím**"</br>"Tag jóváhagyás állapota: **Állapot**" | 
    | | | | 
 
 5. Mentse a logikai alkalmazást.
@@ -270,10 +270,10 @@ Ezután állítsa be az elküldendő e-maileket, amelyek arról értesítik, hog
 
    ![Adja meg a sikeres műveletet jelző e-mail információit](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
-   | Beállítás | Érték | Leírás | 
+   | Beállítás | Value (Díj) | Leírás | 
    | ------- | ----- | ----------- | 
    | **Címzett** | <*your-email-address*> | Az e-mail-cím, amelyre a sikertelen műveletet jelző e-mail érkezik. Tesztelési célokra használhatja a saját e-mail-címét. | 
-   | **Tárgy** | <*subject-for-failure-email*> | A sikertelen műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget, és válassza ki a megadott mezőt a paraméterlista vagy a dinamikus tartalomlista **Tag hozzáadása listához** részén: <p>„A művelet sikertelen. A következő tag nem lett hozzáadva a „test-members-ML” listához: **e-mail-cím**” | 
+   | **Tárgy** | <*subject-for-failure-email*> | A sikertelen műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget, és válassza ki a megadott mezőt a paraméterlista vagy a dinamikus tartalomlista **Tag hozzáadása listához** részén: <p>"Nem sikerült, tag nem lett hozzáadva a"test-members-ml "listához: **E-mail-cím**" | 
    | **Törzs** | <*body-for-failure-email*> | A sikertelen műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget: <p>„Lehet, hogy a tag már létezik. Ellenőrizze a MailChimp-fiókját.” | 
    | | | | 
 

@@ -16,11 +16,11 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 11138857e33eec0f854ddb61956ea24c858c49a5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258986"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531026"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>A StorSimple 8000 sorozatú eszköz kibocsátási megjegyzései 1.2-es frissítés
 
@@ -67,7 +67,7 @@ Az alábbi táblázat összefoglalja az 1.2-es, 1.1-es és 1-frissítésekben ki
 | Nem. | Szolgáltatás | Probléma | Kijavítva a frissítés | Fizikai eszköz vonatkozik | Virtuális eszköz vonatkozik |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell-bővítménye |Ha egy felhasználó távolról elérhető a StorSimple-eszköz storsimple-höz készült Windows PowerShell használatával, és majd a varázsló elindítása, egy összeomlási, amint Data 0 IP volt bemeneti történt. 1. frissítés most javítja ezt a hibát. |1. frissítés |Igen |Igen |
-| 2 |Gyári beállítások visszaállítása |Bizonyos esetekben hajtotta végre a gyári beállítások visszaállítása, ha a StorSimple eszköz elakadt vált, és ez az üzenet jelenik meg: **gyári alaphelyzetbe állítása folyamatban van (8. fázis)**. Ez azért történt, miközben folyamatban volt a parancsmag lenyomása CTRL + C billentyűkombinációt. Most már rögzített ezt a hibát. |1. frissítés |Igen |Nem |
+| 2 |Gyári beállítások visszaállítása |Bizonyos esetekben a gyári beállítások visszaállításakor végrehajtását a a StorSimple-eszköz elakadt vált, és ez az üzenet jelenik meg: **Gyári visszaállítás van folyamatban (8. fázis)**. Ez azért történt, miközben folyamatban volt a parancsmag lenyomása CTRL + C billentyűkombinációt. Most már rögzített ezt a hibát. |1. frissítés |Igen |Nem |
 | 3 |Gyári beállítások visszaállítása |Egy hibás kettős vezérlők gyári beállítások visszaállítása, miután a is engedélyezett folytatásához az eszközök regisztrációját. Ennek következtében nem támogatott rendszerben. Az 1. frissítésben egy hibaüzenet jelenik meg, és a regisztráció le van tiltva az eszközön, hogy rendelkezik egy sikertelen gyári beállítások visszaállítása. |1. frissítés |Igen |Nem |
 | 4 |Gyári beállítások visszaállítása |Bizonyos esetekben hamis pozitív eltérés riasztásokat is következik be. 1. frissítést futtató eszközök már nem lesznek generálva riasztások helytelen eltérés. |1. frissítés |Igen |Nem |
 | 5 |Gyári beállítások visszaállítása |Gyári beállítások visszaállítása befejezése előtt megszakadt, ha az eszköz a megadott helyreállítási módban, és nem engedélyezte a storsimple-höz készült Windows PowerShell eléréséhez. Most már rögzített ezt a hibát. |1. frissítés |Igen |Nem |
@@ -92,7 +92,7 @@ Az alábbi táblázat összefoglalja az ismert problémákról, ebben a kiadásb
 | 6 |Webproxy |-E a webproxy konfigurálása a megadott protokoll HTTPS-t, az eszköz-to-service kommunikációs hatással lesz, és kerül, hogy az eszköz offline állapotban van. Támogatási csomag is jön létre, a folyamat, jelentős erőforrásokat az eszközön. |Győződjön meg arról, hogy a webalkalmazás-proxy URL-címe van-e a HTTP protokoll megadott. További információ: [Configure web proxy for your device](storsimple-configure-web-proxy.md) (Webproxy beállítása az eszközhöz). |Igen |Nem |
 | 7 |Webproxy |Ha konfigurálja, és engedélyezze a webalkalmazás-proxy egy regisztrált eszközön, majd kell indítania az aktív vezérlőn az eszközön. | |Igen |Nem |
 | 8 |Felhőalapú nagy késést és nagy i/o-munkaterhelés |A StorSimple eszköz (sorrendben másodperc) nagyon magas felhőalapú késéseket és nagy i/o-munkaterhelés ütközik, amikor az eszköz köteteihez egy csökkentett teljesítményű állapotba kerülnek, és az i/o "az eszköz nem áll készen" hiba miatt sikertelenek lehetnek. |Szüksége lesz, manuálisan indítsa újra a eszközvezérlők vagy helyreállíthatja az ebben a helyzetben eszköz feladatátvételt hajt végre. |Igen |Nem |
-| 9 |Azure PowerShell |A StorSimple parancsmag használatakor **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - először a 1 - Wait** jelölje ki az első objektumot, így hozhat létre egy új **VolumeContainer** objektum, a parancsmag az összes található objektumokat adja vissza. |Használó zárójelek között a következő parancsmagot: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - First 1 - Wait** |Igen |Igen |
+| 9 |Azure PowerShell |A StorSimple parancsmag használatakor **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - először a 1 - Wait** jelölje ki az első objektumot, így hozhat létre egy új **VolumeContainer** objektum, a parancsmag az összes található objektumokat adja vissza. |A következő zárójelben használó parancsmagot: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |Igen |Igen |
 | 10 |Migrálás |Több kötettárolóba továbbítódnak az áttelepítéshez, a DRÓN legfrissebb biztonsági mentés esetén csak az első kötettároló esetén pontosak. Az első 4 biztonsági másolatok az első kötettároló áttelepítésük párhuzamos áttelepítés fogja elindítani. |Azt javasoljuk, hogy egyszerre egy kötettárolót át. |Igen |Nem |
 | 11 |Migrálás |A visszaállítás után kötetek nem adódnak hozzá a biztonsági mentési szabályzat vagy a virtuális lemez csoport. |Ezen kötetek hozzáadása a biztonsági mentési szabályzatot a biztonsági másolatok létrehozásához kell. |Igen |Igen |
 | 12 |Migrálás |Az áttelepítés befejezése után az 5000/7000 sorozat eszköz nem kell elérni az áttelepített adatokat tárolókat. |Azt javasoljuk, hogy az áttelepítés befejezése és véglegesített után törölje az áttelepített adatokat tárolókat. |Igen |Nem |

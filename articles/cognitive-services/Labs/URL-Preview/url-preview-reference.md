@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
 ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104709"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60462588"
 ---
 # <a name="project-url-preview-v7-reference"></a>Projekt URL-cím előnézete v7-referencia
 
@@ -73,7 +73,7 @@ Az alábbiakban a fejlécek, köztük a kérést és választ.
 ## <a name="query-parameters"></a>Lekérdezési paraméterek
 A kérelem lekérdezési paraméterek tartalmazhat. Tekintse meg a szükséges oszlop, paraméter szükséges. URL-címet kell kódolása a lekérdezési paramétereket. A lekérdezés egy http vagy https sémával; abszolút URL-CÍMNEK kell lennie. nem támogatjuk a relatív URL-címeket vagy más rendszerek például az ftp: / /
 
-|Name (Név)|Érték|Typo|Szükséges|
+|Name (Név)|Value|Typo|Szükséges|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|A piac, ahonnan az eredmények származnak. <br /><br />Tekintse meg piaci kódok piaci a lehetséges értékek listáját.<br /><br /> **MEGJEGYZÉS:** Az URL-cím előzetes API jelenleg csak támogatja a földrajzi RÉGIÓJA és az angol nyelvű.<br /><br />|String|Igen|
 |<a name="query" />q|Az előzetes verzióra az URL-cím|String|Igen|
@@ -83,7 +83,7 @@ A kérelem lekérdezési paraméterek tartalmazhat. Tekintse meg a szükséges o
 ## <a name="response-objects"></a>Válasz objektumok
 A válasz sémája vagy egy [weblap] vagy byl vrácen Prvek, ahogy a webes keresési API-t. Ha a kérelem meghiúsul, a legfelső szintű objektum a [byl vrácen Prvek](#errorresponse) objektum.
 
-|Objektum|Leírás|
+|Object|Leírás|
 |------------|-----------------|
 |[WebPage](#webpage)|Legfelső szintű JSON-objektum, amely tartalmazza az előzetes verzió attribútumai.|
 
@@ -102,7 +102,7 @@ Határozza meg a következő hiba történt.
 ### <a name="errorresponse"></a>Byl vrácen Prvek
 A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem teljesíthető.
 
-|Name (Név)|Érték|Typo|
+|Name (Név)|Value|Typo|
 |----------|-----------|----------|
 |_type|Mutató típusa.|String|
 |<a name="errors" />Hibák|Miért nem sikerült a kérelem miatt hibák listája.|[Error](#error)[]|
@@ -110,16 +110,16 @@ A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem telj
 ### <a name="webpage"></a>WebPage
 Meghatározza, milyen kapcsolatos információkat egy előzetes verzióban érhető el a weblapot.
 
-|Name (Név)|Érték|Typo|
+|Name (Név)|Value|Typo|
 |----------|-----------|----------|
 |név|Az oldal címe, nem feltétlenül a HTML-cím|String|
 |url|Az URL-cím, amely ténylegesen volt bejárt (kérelem előfordulhat, hogy felvette a átirányítások)|String|
-|leírás|Az oldal és a tartalom rövid leírása|String|
+|description|Az oldal és a tartalom rövid leírása|String|
 |isFamilyFriendly|A legpontosabb a webes index; eleme valós idejű fetches tegye alapján kizárólag az URL-címet, és nem az oldal tartalmát az észlelés|logikai|
 |primaryImageOfPage/contentUrl|Tartalmazza az előzetes verzióban érhető el egy reprezentatív kép URL-címe|String|
 
 ### <a name="identifiable"></a>Azonosításra alkalmas
-|Name (Név)|Érték|Typo|
+|Name (Név)|Value|Typo|
 |-------------|-----------------|----------|
 |id|Egy erőforrás-azonosítója|String|
 
