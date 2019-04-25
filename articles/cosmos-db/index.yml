@@ -1,192 +1,186 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 43740118c4379c3b30843575840a000e89cd820b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294994"
 documentType: LandingData
 title: Azure Cosmos DB-dokumentáció
 metadata:
   document_id: e77bd640-1036-8b31-955c-a2cc990c69a1
-  title: Azure Cosmos DB-dokumentáció – oktatóanyagok, API-referencia
-  description: Ismerje meg, hogyan építhet fel globálisan elosztott, többmodelles adatbázisokat az Azure Cosmos DB használatával. Az oktatóanyagok bemutatják a dokumentum-, kulcs/érték- és Graph-adatbázisok felépítésének és lekérdezésének folyamatát.
+  title: 'Azure Cosmos DB-dokumentáció – oktatóanyagok, API-referencia'
+  description: 'Ismerje meg, hogyan építhet fel globálisan elosztott, többmodelles adatbázisokat az Azure Cosmos DB használatával. Az oktatóanyagok bemutatják a dokumentum-, kulcs/érték- és Graph-adatbázisok felépítésének és lekérdezésének folyamatát.'
   author: SnehaGunda
   ms.author: sngun
   ms.service: cosmos-db
   ms.topic: landing-page
   ms.date: 04/26/2018
 abstract:
-  description: Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás, amely dokumentum és kulcs–érték típusú, valamint széles oszlopú és gráfadatbázisokat támogat. Ismerje meg, hogyan használhatja az Azure Cosmos DB szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
+  description: 'Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis-szolgáltatás, amely dokumentum és kulcs–érték típusú, valamint széles oszlopú és gráfadatbázisokat támogat. Ismerje meg, hogyan használhatja az Azure Cosmos DB szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: Globális léptékű mobilalkalmazások létrehozása percek alatt (16:17)
-    href: https://azure.microsoft.com/resources/videos/build-2017-azure-cosmos-db-build-planet-scale-mobile-apps-in-minutes/
+    title: 'Globális léptékű mobilalkalmazások létrehozása percek alatt (16:17)'
+    href: 'https://azure.microsoft.com/resources/videos/build-2017-azure-cosmos-db-build-planet-scale-mobile-apps-in-minutes/'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cosmos-db/distribute-data-globally/
+            html: '<p>A globális terjesztés, a particionálás, a kiépített átviteli sebesség, az indexelés és az Azure Cosmos DB API-kra vonatkozó egyéb fogalmak ismertetése.</p>'
+            image:
+              src: media/index/azure-cosmos-db-icon.png
+            title: Alapelvek
+          - href: /azure/cosmos-db/sql-api-query-reference/
+            html: '<p>Ha új, nem relációs dokumentum-adatbázist kíván létrehozni, és ismerős SQL-szintaxissal kíván lekérdezéseket végrehajtani, használja az SQL API-t.</p>'
+            image:
+              src: media/index/sql-api.svg
+            title: SQL API
+          - href: /azure/cosmos-db/graph-introduction/
+            html: '<p>Ha az entitások közötti kapcsolatok modellezésére és bejárására hoz létre egy Graph-adatbázist, használja a Gremlin API-t.</p>'
+            image:
+              src: media/index/graph-api.svg
+            title: Gremlin API
+          - href: /azure/cosmos-db/mongodb-introduction/
+            html: '<p>Ha egy MongoDB-adatbázisból migrál adatokat az Azure Cosmos DB teljes mértékben felügyelt szolgáltatásába, használja a MongoDB-hez készült Azure Cosmos DB API-t.</p>'
+            image:
+              src: media/index/mongodb-api.svg
+            title: MongoDB-hez készült Azure Cosmos DB API
+          - href: /azure/cosmos-db/table-introduction/
+            html: '<p>Ha az Azure Table Storage-ból migrál adatokat az Azure Cosmos DB prémium táblázatajánlatba, használja a Table API-t.</p>'
+            image:
+              src: media/index/table-api.svg
+            title: Tábla API
+          - href: /azure/cosmos-db/cassandra-introduction/
+            html: '<p>Ha a Cassandrából migrál adatokat az Azure Cosmos DB teljes mértékben felügyelt szolgáltatásába, használja a Cassandra API-t.</p>'
+            image:
+              src: media/index/cassandra-api.png
+            title: Cassandra API
+  - title: 5 perces gyors útmutatók
     items:
-    - href: /azure/cosmos-db/distribute-data-globally/
-      html: <p>A globális terjesztés, a particionálás, a kiépített átviteli sebesség, az indexelés és az Azure Cosmos DB API-kra vonatkozó egyéb fogalmak ismertetése.</p>
-      image:
-        src: media/index/azure-cosmos-db-icon.png
-      title: Alapelvek
-    - href: /azure/cosmos-db/sql-api-query-reference/
-      html: <p>Ha új, nem relációs dokumentum-adatbázist kíván létrehozni, és ismerős SQL-szintaxissal kíván lekérdezéseket végrehajtani, használja az SQL API-t.</p>
-      image:
-        src: media/index/sql-api.svg
-      title: SQL API
-    - href: /azure/cosmos-db/graph-introduction/
-      html: <p>Ha az entitások közötti kapcsolatok modellezésére és bejárására hoz létre egy Graph-adatbázist, használja a Gremlin API-t.</p>
-      image:
-        src: media/index/graph-api.svg
-      title: Gremlin API
-    - href: /azure/cosmos-db/mongodb-introduction/
-      html: <p>Ha egy MongoDB-adatbázisból migrál adatokat az Azure Cosmos DB teljes mértékben felügyelt szolgáltatásába, használja a MongoDB-hez készült Azure Cosmos DB API-t.</p>
-      image:
-        src: media/index/mongodb-api.svg
-      title: MongoDB-hez készült Azure Cosmos DB API
-    - href: /azure/cosmos-db/table-introduction/
-      html: <p>Ha az Azure Table Storage-ból migrál adatokat az Azure Cosmos DB prémium táblázatajánlatba, használja a Table API-t.</p>
-      image:
-        src: media/index/table-api.svg
-      title: Tábla API
-    - href: /azure/cosmos-db/cassandra-introduction/
-      html: <p>Ha a Cassandrából migrál adatokat az Azure Cosmos DB teljes mértékben felügyelt szolgáltatásába, használja a Cassandra API-t.</p>
-      image:
-        src: media/index/cassandra-api.png
-      title: Cassandra API
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Megismerheti, hogyan hozhat létre egy globálisan elosztott adatbázist az Azure Cosmos DB-vel és a következő többmodelles API-kra vonatkozó rövid útmutatók használatával:'
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/logo_java.svg
-      title: Java
-    - image:
-        src: media/index/logo_net.svg
-      title: .NET
-    - image:
-        src: media/index/logo_nodejs.svg
-      title: Node.js
-    - image:
-        src: media/index/logo_python.svg
-      title: Python
-    - image:
-        src: media/index/logo_gremlin.svg
-      title: Gremlin
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_gopher.svg
-      title: Indítás
-    - image:
-        src: media/index/logo_xamarin.svg
-      title: Xamarin
-    rows:
-    - title: SQL API
-      values:
-      - href: /azure/cosmos-db/create-sql-api-java
-      - href: /azure/cosmos-db/create-sql-api-dotnet
-      - href: /azure/cosmos-db/create-sql-api-nodejs
-      - href: /azure/cosmos-db/create-sql-api-python
-      - href: 
-      - href: 
-      - href: /azure/cosmos-db/create-sql-api-xamarin-dotnet
-    - title: API a MongoDB-hez
-      values:
-      - href: /azure/cosmos-db/create-mongodb-java
-      - href: /azure/cosmos-db/create-mongodb-dotnet
-      - href: /azure/cosmos-db/create-mongodb-nodejs
-      - href: /azure/cosmos-db/create-mongodb-flask
-      - href: 
-      - href: /azure/cosmos-db/create-mongodb-golang
-      - href: /azure/cosmos-db/create-mongodb-xamarin
-    - title: Gremlin API
-      values:
-      - href: /azure/cosmos-db/create-graph-java
-      - href: /azure/cosmos-db/create-graph-dotnet
-      - href: /azure/cosmos-db/create-graph-nodejs
-      - href: /azure/cosmos-db/create-graph-python
-      - href: /azure/cosmos-db/create-graph-gremlin-console
-      - href: 
-      - href: 
-    - title: Tábla API
-      values:
-      - href: /azure/cosmos-db/create-table-java
-      - href: /azure/cosmos-db/create-table-dotnet
-      - href: /azure/cosmos-db/create-table-nodejs
-      - href: /azure/cosmos-db/create-table-python
-      - href: 
-      - href: 
-      - href: 
-    - title: Cassandra API
-      values:
-      - href: /azure/cosmos-db/create-cassandra-java
-      - href: /azure/cosmos-db/create-cassandra-dotnet
-      - href: /azure/cosmos-db/create-cassandra-nodejs
-      - href: /azure/cosmos-db/create-cassandra-python
-      - href: 
-      - href: 
-      - href: 
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Megismerheti, hogyan fejleszthet alkalmazásokat az Azure Cosmos DB&#58; használatával
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Megismerheti, hogyan hozhat létre egy globálisan elosztott adatbázist az Azure Cosmos DB-vel és a következő többmodelles API-kra vonatkozó rövid útmutatók használatával:'
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/logo_java.svg
+            title: Java
+          - image:
+              src: media/index/logo_net.svg
+            title: .NET
+          - image:
+              src: media/index/logo_nodejs.svg
+            title: Node.js
+          - image:
+              src: media/index/logo_python.svg
+            title: Python
+          - image:
+              src: media/index/logo_gremlin.svg
+            title: Gremlin
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_gopher.svg'
+            title: Indítás
+          - image:
+              src: media/index/logo_xamarin.svg
+            title: Xamarin
+        rows:
+          - title: SQL API
+            values:
+              - href: /azure/cosmos-db/create-sql-api-java
+              - href: /azure/cosmos-db/create-sql-api-dotnet
+              - href: /azure/cosmos-db/create-sql-api-nodejs
+              - href: /azure/cosmos-db/create-sql-api-python
+              - href: null
+              - href: null
+              - href: /azure/cosmos-db/create-sql-api-xamarin-dotnet
+          - title: API a MongoDB-hez
+            values:
+              - href: /azure/cosmos-db/create-mongodb-java
+              - href: /azure/cosmos-db/create-mongodb-dotnet
+              - href: /azure/cosmos-db/create-mongodb-nodejs
+              - href: /azure/cosmos-db/create-mongodb-flask
+              - href: null
+              - href: /azure/cosmos-db/create-mongodb-golang
+              - href: /azure/cosmos-db/create-mongodb-xamarin
+          - title: Gremlin API
+            values:
+              - href: /azure/cosmos-db/create-graph-java
+              - href: /azure/cosmos-db/create-graph-dotnet
+              - href: /azure/cosmos-db/create-graph-nodejs
+              - href: /azure/cosmos-db/create-graph-python
+              - href: /azure/cosmos-db/create-graph-gremlin-console
+              - href: null
+              - href: null
+          - title: Tábla API
+            values:
+              - href: /azure/cosmos-db/create-table-java
+              - href: /azure/cosmos-db/create-table-dotnet
+              - href: /azure/cosmos-db/create-table-nodejs
+              - href: /azure/cosmos-db/create-table-python
+              - href: null
+              - href: null
+              - href: null
+          - title: Cassandra API
+            values:
+              - href: /azure/cosmos-db/create-cassandra-java
+              - href: /azure/cosmos-db/create-cassandra-dotnet
+              - href: /azure/cosmos-db/create-cassandra-nodejs
+              - href: /azure/cosmos-db/create-cassandra-python
+              - href: null
+              - href: null
+              - href: null
+  - title: Részletes útmutatók
     items:
-    - html: Alkalmazások fejlesztése az Azure Cosmos DB használatával&#58; <a href="/azure/cosmos-db/tutorial-develop-sql-api-dotnet">SQL</a> | <a href="/azure/cosmos-db/tutorial-develop-mongodb-nodejs">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-develop-table-dotnet">Table</a> | <a href="/azure/cosmos-db/tutorial-develop-graph-dotnet">Gremlin</a> | <a href="https://aka.ms/cassandratutorial">Cassandra</a>
-    - html: Adatok migrálása az Azure Cosmos DB-be&#58; <a href="import-data">SQL</a> | <a href="mongodb-migrate">MongoDB</a> | <a href="https://aka.ms/tableapiimporttool">Table</a> | <a href="https://aka.ms/cassandraimport">Cassandra</a>
-    - html: Adatok lekérdezése az Azure Cosmos DB-vel&#58; <a href="/azure/cosmos-db/tutorial-query-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-query-table">Table</a> | <a href="/azure/cosmos-db/tutorial-query-graph">Gremlin</a>
-    - html: Globális adatbázis-replikáció az Azure Cosmos DB-vel&#58; <a href="/azure/cosmos-db/tutorial-global-distribution-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a>
-    - html: <a href="local-emulator">Alkalmazás helyszíni fejlesztése az emulátor használatával</a>
-    - html: <a href="/azure/cosmos-db/tutorial-functions-http-trigger">HTTP eseményindító létrehozása Azure Cosmos DB bemeneti kötéssel</a>
-- title: Fejlessze a készségeit a Microsoft Learnnel
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Megismerheti, hogyan fejleszthet alkalmazásokat az Azure Cosmos DB&#58; használatával'
+      - type: list
+        style: ordered
+        items:
+          - html: 'Alkalmazások fejlesztése az Azure Cosmos DB használatával&#58; <a href="/azure/cosmos-db/tutorial-develop-sql-api-dotnet">SQL</a> | <a href="/azure/cosmos-db/tutorial-develop-mongodb-nodejs">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-develop-table-dotnet">Table</a> | <a href="/azure/cosmos-db/tutorial-develop-graph-dotnet">Gremlin</a> | <a href="https://aka.ms/cassandratutorial">Cassandra</a>'
+          - html: 'Adatok migrálása az Azure Cosmos DB-be&#58; <a href="import-data">SQL</a> | <a href="mongodb-migrate">MongoDB</a> | <a href="https://aka.ms/tableapiimporttool">Table</a> | <a href="https://aka.ms/cassandraimport">Cassandra</a>'
+          - html: 'Adatok lekérdezése az Azure Cosmos DB-vel&#58; <a href="/azure/cosmos-db/tutorial-query-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-query-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-query-table">Table</a> | <a href="/azure/cosmos-db/tutorial-query-graph">Gremlin</a>'
+          - html: 'Globális adatbázis-replikáció az Azure Cosmos DB-vel&#58; <a href="/azure/cosmos-db/tutorial-global-distribution-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a>'
+          - html: <a href="local-emulator">Alkalmazás helyszíni fejlesztése az emulátor használatával</a>
+          - html: <a href="/azure/cosmos-db/tutorial-functions-http-trigger">HTTP eseményindító létrehozása Azure Cosmos DB bemeneti kötéssel</a>
+  - title: Fejlessze a készségeit a Microsoft Learnnel
     items:
-    - title: " Skálázható Azure Cosmos-adatbázis létrehozása"
-      href: /learn/modules/create-cosmos-db-for-scale/
-      image:
-        src: /learn/achievements/create-cosmos-db-for-scale.svg
-        href: /learn/modules/create-cosmos-db-for-scale/
-    - title: Adatok beszúrása és lekérdezése az Azure Cosmos-adatbázisban
-      href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
-      image:
-        src: /learn/achievements/access-data-with-cosmos-db-and-sql-api.svg
-        href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
-    - title: .NET Core-alkalmazás fejlesztése az Azure Cosmos DB számára a Visual Studio Code-ban
-      href: /learn/modules/build-cosmos-db-app-with-vscode
-      image:
-        src: /learn/achievements/build-cosmos-db-app-with-vscode.svg
-        href: /learn/modules/build-cosmos-db-app-with-vscode
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-cosmos-db">További interaktív oktatóanyagok...</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: "\_Skálázható Azure Cosmos-adatbázis létrehozása"
+            href: /learn/modules/create-cosmos-db-for-scale/
+            image:
+              src: /learn/achievements/create-cosmos-db-for-scale.svg
+              href: /learn/modules/create-cosmos-db-for-scale/
+          - title: Adatok beszúrása és lekérdezése az Azure Cosmos-adatbázisban
+            href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
+            image:
+              src: /learn/achievements/access-data-with-cosmos-db-and-sql-api.svg
+              href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
+          - title: .NET Core-alkalmazás fejlesztése az Azure Cosmos DB számára a Visual Studio Code-ban
+            href: /learn/modules/build-cosmos-db-app-with-vscode
+            image:
+              src: /learn/achievements/build-cosmos-db-app-with-vscode.svg
+              href: /learn/modules/build-cosmos-db-app-with-vscode
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-cosmos-db">További interaktív oktatóanyagok...</a>
+  - title: Referencia
     items:
-    - title: SQL API
-      html: <p><a href="/rest/api/cosmos-db/">REST</a></p><p><a href="https://aka.ms/acdbnetref">.NET</a></p><p><a href="sql-api-sdk-dotnet-changefeed">.NET – Csatorna módosítása</a></p><p><a href="https://aka.ms/acdbnetcoreref">.NET Core</a></p><p><a href="https://aka.ms/acdbnoderef">Node.js</a></p><p><a href="https://aka.ms/acdbjavaref">Java</a></p><p><a href="https://aka.ms/acdbpythonref">Python</a></p><p><a href="/rest/api/cosmos-db-resource-provider/">REST erőforrás-szolgáltató</a></p><p><a href="sql-api-sql-query-reference">SQL</a></p>
-    - title: MongoDB-hez készült Azure Cosmos DB API
-      html: <p><a href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">Wire Protocol</a></p><p><a href="https://mongodb.github.io/node-mongodb-native/ ">Node.js</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>
-    - title: Tábla API
-      html: <p><a href="/rest/api/storageservices/fileservices/Table-Service-Concepts">REST</a></p><p><a href="/azure/cosmos-db/table-sdk-dotnet">.NET</a></p><p><a href="/azure/cosmos-db/table-sdk-nodejs">Node.js</a></p><p><a href="/azure/cosmos-db/table-sdk-java">Java</a></p><p><a href="/azure/cosmos-db/table-sdk-python">Python</a></p>
-    - title: Gremlin API
-      html: <p><a href="https://tinkerpop.apache.org/docs/current/reference/">Gremlin</a></p><p><a href="/azure/cosmos-db/graph-sdk-dotnet">.NET</a></p><p><a href="https://github.com/ZEROFAIL/goblin">Python</a></p><p><a href="https://tinkerpop.apache.org/docs/current/reference/#connecting-via-java">Java</a></p><p><a href="https://github.com/jbmusso/gremlin-javascript">JavaScript</a></p>
-    - title: Cassandra API
-      html: <p><a href="https://github.com/datastax/nodejs-driver">Node.js</a></p><p><a href="https://github.com/datastax/python-driver">Python</a></p><p><a href="https://github.com/datastax/java-driver">Java</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: SQL API
+            html: '<p><a href="/rest/api/cosmos-db/">REST</a></p><p><a href="https://aka.ms/acdbnetref">.NET</a></p><p><a href="sql-api-sdk-dotnet-changefeed">.NET – Csatorna módosítása</a></p><p><a href="https://aka.ms/acdbnetcoreref">.NET Core</a></p><p><a href="https://aka.ms/acdbnoderef">Node.js</a></p><p><a href="https://aka.ms/acdbjavaref">Java</a></p><p><a href="https://aka.ms/acdbpythonref">Python</a></p><p><a href="/rest/api/cosmos-db-resource-provider/">REST erőforrás-szolgáltató</a></p><p><a href="sql-api-sql-query-reference">SQL</a></p>'
+          - title: MongoDB-hez készült Azure Cosmos DB API
+            html: '<p><a href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">Wire Protocol</a></p><p><a href="https://mongodb.github.io/node-mongodb-native/ ">Node.js</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>'
+          - title: Tábla API
+            html: <p><a href="/rest/api/storageservices/fileservices/Table-Service-Concepts">REST</a></p><p><a href="/azure/cosmos-db/table-sdk-dotnet">.NET</a></p><p><a href="/azure/cosmos-db/table-sdk-nodejs">Node.js</a></p><p><a href="/azure/cosmos-db/table-sdk-java">Java</a></p><p><a href="/azure/cosmos-db/table-sdk-python">Python</a></p>
+          - title: Gremlin API
+            html: '<p><a href="https://tinkerpop.apache.org/docs/current/reference/">Gremlin</a></p><p><a href="/azure/cosmos-db/graph-sdk-dotnet">.NET</a></p><p><a href="https://github.com/ZEROFAIL/goblin">Python</a></p><p><a href="https://tinkerpop.apache.org/docs/current/reference/#connecting-via-java">Java</a></p><p><a href="https://github.com/jbmusso/gremlin-javascript">JavaScript</a></p>'
+          - title: Cassandra API
+            html: '<p><a href="https://github.com/datastax/nodejs-driver">Node.js</a></p><p><a href="https://github.com/datastax/python-driver">Python</a></p><p><a href="https://github.com/datastax/java-driver">Java</a></p>'

@@ -1,251 +1,244 @@
-items:
 - name: Azure DB for PostgreSQL-dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Mi az az Azure DB for PostgreSQL?
-    href: overview.md
+    - name: Mi az az Azure DB for PostgreSQL?
+      href: overview.md
 - name: Gyors útmutatók
-  items:
-  - name: DB létrehozása – portál
-    href: quickstart-create-server-database-portal.md
-  - name: DB létrehozása – Azure CLI
-    href: quickstart-create-server-database-azure-cli.md
-  - name: DB létrehozása – Azure CLI „up” parancsa
-    href: quickstart-create-server-up-azure-cli.md
-  - name: Csatlakozás és lekérdezés
-    items:
-    - name: Python
-      href: connect-python.md
-    - name: Node.js
-      href: connect-nodejs.md
-    - name: Java
-      href: connect-java.md
-    - name: Ruby
-      href: connect-ruby.md
-    - name: PHP
-      href: connect-php.md
-    - name: .NET
-      href: connect-csharp.md
-    - name: Indítás
-      href: connect-go.md
   expanded: true
+  items:
+    - name: DB létrehozása – portál
+      href: quickstart-create-server-database-portal.md
+    - name: DB létrehozása – Azure CLI
+      href: quickstart-create-server-database-azure-cli.md
+    - name: DB létrehozása – Azure CLI „up” parancsa
+      href: quickstart-create-server-up-azure-cli.md
+    - name: Csatlakozás és lekérdezés
+      items:
+        - name: Python
+          href: connect-python.md
+        - name: Node.js
+          href: connect-nodejs.md
+        - name: Java
+          href: connect-java.md
+        - name: Ruby
+          href: connect-ruby.md
+        - name: PHP
+          href: connect-php.md
+        - name: .NET
+          href: connect-csharp.md
+        - name: Indítás
+          href: connect-go.md
 - name: Oktatóanyagok
   items:
-  - name: 1 – Adatbázis-tervezés
-    items:
-    - name: Azure Portal
-      href: tutorial-design-database-using-azure-portal.md
-    - name: Azure CLI
-      href: tutorial-design-database-using-azure-cli.md
-  - name: 2 – Webapptervezés – Python
-    href: ../app-service/containers/tutorial-python-postgresql-app.md
-    maintainContext: true
-  - name: 3 – Monitorozás és hangolás
-    href: tutorial-monitor-and-tune.md
+    - name: 1 – Adatbázis-tervezés
+      items:
+        - name: Azure Portal
+          href: tutorial-design-database-using-azure-portal.md
+        - name: Azure CLI
+          href: tutorial-design-database-using-azure-cli.md
+    - name: 2 – Webapptervezés – Python
+      href: ../app-service/containers/tutorial-python-postgresql-app.md
+      maintainContext: true
+    - name: 3 – Monitorozás és hangolás
+      href: tutorial-monitor-and-tune.md
 - name: Példák
   items:
-  - name: Azure CLI
-    href: sample-scripts-azure-cli.md
+    - name: Azure CLI
+      href: sample-scripts-azure-cli.md
 - name: Alapelvek
   items:
-  - name: Adatbázis és kiszolgálók
-    items:
-    - name: Kiszolgálók
-      href: concepts-servers.md
-    - name: Támogatott verziók
-      href: concepts-supported-versions.md
-    - name: PostgreSQL-bővítmények
-      href: concepts-extensions.md
-    - name: Magas rendelkezésre állás
-      href: concepts-high-availability.md
-  - name: További források
-    items:
-    - name: Árképzési szintek
-      href: concepts-pricing-tiers.md
-    - name: Korlátok
-      href: concepts-limits.md
-  - name: Adathozzáférés és -biztonság
-    items:
-    - name: Tűzfalszabályok
-      href: concepts-firewall-rules.md
-    - name: Az SSL konfigurálása
-      href: concepts-ssl-connection-security.md
-    - name: Fejlett fenyegetésvédelem
-      href: concepts-data-access-and-security-threat-protection.md
-    - name: VNet
-      href: concepts-data-access-and-security-vnet.md
-  - name: Az üzletmenet folytonossága
-    items:
-    - name: Áttekintés
-      href: concepts-business-continuity.md
-    - name: Biztonsági mentés és visszaállítás
-      href: concepts-backup.md
-  - name: Figyelés és hangolás
-    items:
+    - name: Adatbázis és kiszolgálók
+      items:
+        - name: Kiszolgálók
+          href: concepts-servers.md
+        - name: Támogatott verziók
+          href: concepts-supported-versions.md
+        - name: PostgreSQL-bővítmények
+          href: concepts-extensions.md
+        - name: Magas rendelkezésre állás
+          href: concepts-high-availability.md
+    - name: További források
+      items:
+        - name: Árképzési szintek
+          href: concepts-pricing-tiers.md
+        - name: Korlátok
+          href: concepts-limits.md
+    - name: Adathozzáférés és -biztonság
+      items:
+        - name: Tűzfalszabályok
+          href: concepts-firewall-rules.md
+        - name: Az SSL konfigurálása
+          href: concepts-ssl-connection-security.md
+        - name: Fejlett fenyegetésvédelem
+          href: concepts-data-access-and-security-threat-protection.md
+        - name: VNet
+          href: concepts-data-access-and-security-vnet.md
+    - name: Az üzletmenet folytonossága
+      items:
+        - name: Áttekintés
+          href: concepts-business-continuity.md
+        - name: Biztonsági mentés és visszaállítás
+          href: concepts-backup.md
     - name: Figyelés és hangolás
-      href: concepts-monitoring.md
-    - name: Kiszolgálói naplók
-      href: concepts-server-logs.md
-    - name: Lekérdezéstár
       items:
-      - name: Lekérdezéstár
-        href: concepts-query-store.md
-      - name: Lekérdezéstár – használati forgatókönyvek
-        href: concepts-query-store-scenarios.md
-      - name: Ajánlott eljárások a lekérdezéstár használatához
-        href: concepts-query-store-best-practices.md
-    - name: Lekérdezési terheléselemző
-      href: concepts-query-performance-insight.md
-    - name: Teljesítménnyel kapcsolatos javaslatok
-      href: concepts-performance-recommendations.md
-  - name: Fejlesztés
-    items:
-    - name: Adatkapcsolattárak
-      href: concepts-connection-libraries.md
-    - name: Kapcsolat rugalmassága
-      href: concepts-connectivity.md
-    - name: Fejlesztés az Azure Kubernetes Service (AKS) használatával
-      href: concepts-aks.md
-    - name: Java
+        - name: Figyelés és hangolás
+          href: concepts-monitoring.md
+        - name: Kiszolgálói naplók
+          href: concepts-server-logs.md
+        - name: Lekérdezéstár
+          items:
+            - name: Lekérdezéstár
+              href: concepts-query-store.md
+            - name: Lekérdezéstár – használati forgatókönyvek
+              href: concepts-query-store-scenarios.md
+            - name: Ajánlott eljárások a lekérdezéstár használatához
+              href: concepts-query-store-best-practices.md
+        - name: Lekérdezési terheléselemző
+          href: concepts-query-performance-insight.md
+        - name: Teljesítménnyel kapcsolatos javaslatok
+          href: concepts-performance-recommendations.md
+    - name: Fejlesztés
       items:
-      - name: A Spring Data JDBC konfigurálása
-        href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
-      - name: A Spring Data JPA konfigurálása
-        href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
-  - name: Replikáció
-    items:
-    - name: Olvasási replikák
-      href: concepts-read-replicas.md
+        - name: Adatkapcsolattárak
+          href: concepts-connection-libraries.md
+        - name: Kapcsolat rugalmassága
+          href: concepts-connectivity.md
+        - name: Fejlesztés az Azure Kubernetes Service (AKS) használatával
+          href: concepts-aks.md
+        - name: Java
+          items:
+            - name: A Spring Data JDBC konfigurálása
+              href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+            - name: A Spring Data JPA konfigurálása
+              href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
+    - name: Replikáció
+      items:
+        - name: Olvasási replikák
+          href: concepts-read-replicas.md
 - name: Útmutatók
   items:
-  - name: Felhasználók létrehozása
-    href: howto-create-users.md
-  - name: Optimalizálás
-    items:
-    - name: Tömeges beszúrások
-      href: howto-optimize-bulk-inserts.md
-    - name: Autovacuum
-      href: howto-optimize-autovacuum.md
-    - name: Statisztikák gyűjteményének lekérdezése
-      href: howto-optimize-query-stats-collection.md
-    - name: TOAST-tábla stratégiája
-      href: howto-optimize-query-time-with-toast-table-storage-strategy.md
-  - name: Tűzfal kezelése
-    items:
-    - name: Azure Portal
-      href: howto-manage-firewall-using-portal.md
-    - name: Azure CLI
-      href: howto-manage-firewall-using-cli.md
-  - name: Kiszolgáló visszaállítása
-    items:
-    - name: Azure Portal
-      href: howto-restore-server-portal.md
-    - name: Azure CLI
-      href: howto-restore-server-cli.md
-  - name: Adatbázisok migrálása
-    items:
-    - name: Memóriakép és visszaállítás
-      href: howto-migrate-using-dump-and-restore.md
-    - name: Importálás és exportálás
-      href: howto-migrate-using-export-and-import.md
-    - name: Migrálás minimális állásidővel
-      href: howto-migrate-online.md
-  - name: Kiszolgáló paramétereinek konfigurálása
-    items:
-    - name: Azure Portal
-      href: howto-configure-server-parameters-using-portal.md
-    - name: Azure CLI
-      href: howto-configure-server-parameters-using-cli.md
-  - name: Hozzáférés a kiszolgálói naplókhoz
-    items:
-    - name: Azure Portal
-      href: howto-configure-server-logs-in-portal.md
-    - name: Azure CLI
-      href: howto-configure-server-logs-using-cli.md
-  - name: Figyelés
-    items:
-    - name: Riasztások létrehozása metrikákhoz
-      href: howto-alert-on-metric.md
-  - name: Hibaelhárítás
-    items:
-    - name: Csatlakozási hibák elhárítása
-      href: howto-troubleshoot-common-connection-issues.md
-  - name: Fejlett fenyegetésvédelem
-    items:
-    - name: Azure Portal
-      href: howto-database-threat-protection-portal.md
-  - name: Virtual Network
-    items:
-    - name: Azure Portal
-      href: howto-manage-vnet-using-portal.md
-    - name: Azure CLI
-      href: howto-manage-vnet-using-cli.md
-  - name: Kiszolgáló újraindítása
-    items:
-    - name: Azure Portal
-      href: howto-restart-server-portal.md
-    - name: Azure CLI
-      href: howto-restart-server-cli.md
-  - name: Replikáció
-    items:
-    - name: Olvasási replikák kezelése az Azure Portalon
-      href: howto-read-replicas-portal.md
-    - name: Olvasási replikák kezelése az Azure CLI-n
-      href: howto-read-replicas-cli.md
+    - name: Felhasználók létrehozása
+      href: howto-create-users.md
+    - name: Optimalizálás
+      items:
+        - name: Tömeges beszúrások
+          href: howto-optimize-bulk-inserts.md
+        - name: Autovacuum
+          href: howto-optimize-autovacuum.md
+        - name: Statisztikák gyűjteményének lekérdezése
+          href: howto-optimize-query-stats-collection.md
+        - name: TOAST-tábla stratégiája
+          href: howto-optimize-query-time-with-toast-table-storage-strategy.md
+    - name: Tűzfal kezelése
+      items:
+        - name: Azure Portal
+          href: howto-manage-firewall-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-firewall-using-cli.md
+    - name: Kiszolgáló visszaállítása
+      items:
+        - name: Azure Portal
+          href: howto-restore-server-portal.md
+        - name: Azure CLI
+          href: howto-restore-server-cli.md
+    - name: Adatbázisok migrálása
+      items:
+        - name: Memóriakép és visszaállítás
+          href: howto-migrate-using-dump-and-restore.md
+        - name: Importálás és exportálás
+          href: howto-migrate-using-export-and-import.md
+        - name: Migrálás minimális állásidővel
+          href: howto-migrate-online.md
+    - name: Kiszolgáló paramétereinek konfigurálása
+      items:
+        - name: Azure Portal
+          href: howto-configure-server-parameters-using-portal.md
+        - name: Azure CLI
+          href: howto-configure-server-parameters-using-cli.md
+    - name: Hozzáférés a kiszolgálói naplókhoz
+      items:
+        - name: Azure Portal
+          href: howto-configure-server-logs-in-portal.md
+        - name: Azure CLI
+          href: howto-configure-server-logs-using-cli.md
+    - name: Figyelés
+      items:
+        - name: Riasztások létrehozása metrikákhoz
+          href: howto-alert-on-metric.md
+    - name: Hibaelhárítás
+      items:
+        - name: Csatlakozási hibák elhárítása
+          href: howto-troubleshoot-common-connection-issues.md
+    - name: Fejlett fenyegetésvédelem
+      items:
+        - name: Azure Portal
+          href: howto-database-threat-protection-portal.md
+    - name: Virtual Network
+      items:
+        - name: Azure Portal
+          href: howto-manage-vnet-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-vnet-using-cli.md
+    - name: Kiszolgáló újraindítása
+      items:
+        - name: Azure Portal
+          href: howto-restart-server-portal.md
+        - name: Azure CLI
+          href: howto-restart-server-cli.md
+    - name: Replikáció
+      items:
+        - name: Olvasási replikák kezelése az Azure Portalon
+          href: howto-read-replicas-portal.md
+        - name: Olvasási replikák kezelése az Azure CLI-n
+          href: howto-read-replicas-cli.md
 - name: Referencia
   items:
-  - name: Azure CLI
-    href: /cli/azure/postgres
-  - name: REST API
-    href: /rest/api/postgresql
-  - name: Resource Manager-sablon
-    href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Azure CLI
+      href: /cli/azure/postgres
+    - name: REST API
+      href: /rest/api/postgresql
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.dbforpostgresql/allversions
 - name: További források
   items:
-  - name: Fejlessze a készségeit a Microsoft Learnnel
-    href: /learn/browse/
-  - name: Üzembehelyezési sablonok
-    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=databases
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/postgresql/
-  - name: MSDN-fórum
-    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-database-postgresql
-  - name: Videók
-    items:
-    - name: Termékvideók
-      href: videos.md
-    - name: Útmutató videósorozat
+    - name: Fejlessze a készségeit a Microsoft Learnnel
+      href: /learn/browse/
+    - name: Üzembehelyezési sablonok
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/postgresql/'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-database-postgresql'
+    - name: Videók
       items:
-      - name: Ismerje meg a termékek jellemzőit és előnyeit
-        href: https://aka.ms/postg-intro-vid
-      - name: PostgreSQL-alkalmazások migrálása az Azure-ba
-        href: https://aka.ms/postg-migrate-vid
-      - name: Intelligens alkalmazások létrehozása a Cognitive Services szolgáltatással
-        href: https://aka.ms/postg-cogsvs-vid
-      - name: Tárolók csatlakoztatása az OSBA használatával
-        href: https://aka.ms/postg-osba-vid
-      - name: Az alkalmazások adatainak csatlakoztatása a Power BI-hoz
-        href: https://aka.ms/postg-powerbi-vid
-  - name: Visszajelzési fórum
-    href: https://feedback.azure.com/forums/597976-azure-database-for-postgresql
-  - name: Régiónkénti elérhetőség
-    href: https://azure.microsoft.com/regions/services/
-  - name: Támogatási lehetőségek
-    href: https://azure.microsoft.com/support/options/
-  - name: Ügyfelek történetei
-    href: https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"
-  - name: Partnerek
-    href: partners-migration-postgresql.md
-  - name: Adatbázis-migrálási útmutató
-    href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 5958953a879a84a3a0b78b91ca276ad4bf48fc00
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629191"
+        - name: Termékvideók
+          href: videos.md
+        - name: Útmutató videósorozat
+          items:
+            - name: Ismerje meg a termékek jellemzőit és előnyeit
+              href: 'https://aka.ms/postg-intro-vid'
+            - name: PostgreSQL-alkalmazások migrálása az Azure-ba
+              href: 'https://aka.ms/postg-migrate-vid'
+            - name: Intelligens alkalmazások létrehozása a Cognitive Services szolgáltatással
+              href: 'https://aka.ms/postg-cogsvs-vid'
+            - name: Tárolók csatlakoztatása az OSBA használatával
+              href: 'https://aka.ms/postg-osba-vid'
+            - name: Az alkalmazások adatainak csatlakoztatása a Power BI-hoz
+              href: 'https://aka.ms/postg-powerbi-vid'
+    - name: Visszajelzési fórum
+      href: 'https://feedback.azure.com/forums/597976-azure-database-for-postgresql'
+    - name: Régiónkénti elérhetőség
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Támogatási lehetőségek
+      href: 'https://azure.microsoft.com/support/options/'
+    - name: Ügyfelek történetei
+      href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"'
+    - name: Partnerek
+      href: partners-migration-postgresql.md
+    - name: Adatbázis-migrálási útmutató
+      href: 'https://datamigration.microsoft.com/'

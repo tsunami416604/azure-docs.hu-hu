@@ -1,96 +1,89 @@
-items:
 - name: Terraform az Azure-ban – dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Az Azure-on futtatott Terraform ismertetése
-    href: terraform-overview.md
+    - name: Az Azure-on futtatott Terraform ismertetése
+      href: terraform-overview.md
 - name: Gyors útmutatók
-  items:
-  - name: Több előfizetéses alkalmazás létrehozása
-    href: terrafom-quickstart.md
-  - name: A Terraform telepítése és konfigurálása
-    href: /azure/virtual-machines/linux/terraform-install-configure
-    maintainContext: true
-  - name: Linux rendszerű virtuális gép létrehozása
-    href: /azure/virtual-machines/linux/terraform-create-complete-vm
-    maintainContext: true
   expanded: true
+  items:
+    - name: Több előfizetéses alkalmazás létrehozása
+      href: terrafom-quickstart.md
+    - name: A Terraform telepítése és konfigurálása
+      href: /azure/virtual-machines/linux/terraform-install-configure
+      maintainContext: true
+    - name: Linux rendszerű virtuális gép létrehozása
+      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      maintainContext: true
 - name: Oktatóanyagok
   items:
-  - name: App Service
-    items:
-    - name: Terraform- és Azure-szolgáltatók üzembe helyezési pontjai
-      href: terraform-slot-walkthru.md
-  - name: Containers
-    items:
-    - name: Kubernetes-fürt létrehozása az AKS használatával
-      href: terraform-create-k8s-cluster-with-tf-and-aks.md
-    - name: Kubernetes-fürt létrehozása az Application Gateway használatával, amely bejövőforgalom-vezérlőként használható az AKS-sel
-      href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
-  - name: Infrastruktúra
-    items:
-    - name: Engedélyezett MSI-vel rendelkező Terraform virtuális gép létrehozása
-      href: terraform-vm-msi.md
-    - name: Virtuálisgép-fürt létrehozása Terraform-modulokkal
-      href: terraform-create-vm-cluster-module.md
-    - name: Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
-      href: terraform-create-vm-cluster-with-infrastructure.md
-    - name: VM-méretezési készlet kiépítése infrastruktúrával
-      href: terraform-create-vm-scaleset-network-disks-hcl.md
-    - name: VM-méretezési készlet kiépítése Packer egyéni rendszerképpel
-      href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
-  - name: Hálózatok
-    items:
-    - name: Küllős topológia
+    - name: App Service
       items:
-      - name: 1. Küllős topológia létrehozása
-        href: terraform-hub-spoke-introduction.md
-      - name: 2. Helyszíni virtuális hálózat létrehozása
-        href: terraform-hub-spoke-on-prem.md
-      - name: 3. Központi virtuális hálózat létrehozása
-        href: terraform-hub-spoke-hub-network.md
-      - name: 4. Központi virtuális hálózati berendezés létrehozása
-        href: terraform-hub-spoke-hub-nva.md
-      - name: 5. Küllős hálózat létrehozása
-        href: terraform-hub-spoke-spoke-network.md
-      - name: 6. Hálózati topológia kapcsolatának ellenőrzése
-        href: terraform-hub-spoke-validation.md
-  - name: Eszközök
-    items:
-    - name: A Visual Studio Code Terraform bővítményének telepítése
-      href: terraform-vscode-extension.md
-    - name: Alapszintű Terraform-sablon létrehozása a Yeoman használatával
-      href: terraform-vscode-module-generator.md
-    - name: Terraform-modulok tesztelése Terratest használatával
-      href: terratest-in-terraform-modules.md
+        - name: Terraform- és Azure-szolgáltatók üzembe helyezési pontjai
+          href: terraform-slot-walkthru.md
+    - name: Containers
+      items:
+        - name: Kubernetes-fürt létrehozása az AKS használatával
+          href: terraform-create-k8s-cluster-with-tf-and-aks.md
+        - name: 'Kubernetes-fürt létrehozása az Application Gateway használatával, amely bejövőforgalom-vezérlőként használható az AKS-sel'
+          href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
+    - name: Infrastruktúra
+      items:
+        - name: Engedélyezett MSI-vel rendelkező Terraform virtuális gép létrehozása
+          href: terraform-vm-msi.md
+        - name: Virtuálisgép-fürt létrehozása Terraform-modulokkal
+          href: terraform-create-vm-cluster-module.md
+        - name: Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
+          href: terraform-create-vm-cluster-with-infrastructure.md
+        - name: VM-méretezési készlet kiépítése infrastruktúrával
+          href: terraform-create-vm-scaleset-network-disks-hcl.md
+        - name: VM-méretezési készlet kiépítése Packer egyéni rendszerképpel
+          href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+    - name: Hálózatok
+      items:
+        - name: Küllős topológia
+          items:
+            - name: 1. Küllős topológia létrehozása
+              href: terraform-hub-spoke-introduction.md
+            - name: 2. Helyszíni virtuális hálózat létrehozása
+              href: terraform-hub-spoke-on-prem.md
+            - name: 3. Központi virtuális hálózat létrehozása
+              href: terraform-hub-spoke-hub-network.md
+            - name: 4. Központi virtuális hálózati berendezés létrehozása
+              href: terraform-hub-spoke-hub-nva.md
+            - name: 5. Küllős hálózat létrehozása
+              href: terraform-hub-spoke-spoke-network.md
+            - name: 6. Hálózati topológia kapcsolatának ellenőrzése
+              href: terraform-hub-spoke-validation.md
+    - name: Eszközök
+      items:
+        - name: A Visual Studio Code Terraform bővítményének telepítése
+          href: terraform-vscode-extension.md
+        - name: Alapszintű Terraform-sablon létrehozása a Yeoman használatával
+          href: terraform-vscode-module-generator.md
+        - name: Terraform-modulok tesztelése Terratest használatával
+          href: terratest-in-terraform-modules.md
 - name: Példák
   items:
-  - name: Konfigurációs sablonok
-    href: https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples
+    - name: Konfigurációs sablonok
+      href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
 - name: Alapelvek
   items:
-  - name: Azure Cloud Shell-integráció
-    href: terraform-cloud-shell.md
+    - name: Azure Cloud Shell-integráció
+      href: terraform-cloud-shell.md
 - name: Útmutatók
   items:
-  - name: Állapot tárolása az Azure Storage-ban
-    href: terraform-backend.md
+    - name: Állapot tárolása az Azure Storage-ban
+      href: terraform-backend.md
 - name: Referencia
   items:
-  - name: Azure-modulok beállításjegyzéke
-    href: https://registry.terraform.io/modules/Azure
-  - name: Terraform-referencia
-    href: https://aka.ms/terraform
+    - name: Azure-modulok beállításjegyzéke
+      href: 'https://registry.terraform.io/modules/Azure'
+    - name: Terraform-referencia
+      href: 'https://aka.ms/terraform'
 - name: További források
   items:
-  - name: Azure és Terraform
-    href: https://azure.microsoft.com/solutions/devops/terraform/
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: d83e1cbd4f3cd5d8a0a9ec167e197b53f20e0630
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999444"
+    - name: Azure és Terraform
+      href: 'https://azure.microsoft.com/solutions/devops/terraform/'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'

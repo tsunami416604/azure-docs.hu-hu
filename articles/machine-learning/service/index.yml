@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a97c11b49574d0014ea7fa97f42420b22f9568d7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371156"
 documentType: LandingData
 title: Az Azure Machine Learning szolgáltatás dokumentációja
 metadata:
   title: Az Azure Machine Learning szolgáltatás dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: Az Azure Machine Learning szolgáltatás SDK-kat és szolgáltatásokat biztosít a gépi tanulási modellek gyors betanításához és üzembe helyezéséhez, valamint az adatok előkészítéséhez. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn. Első lépések az útmutatókkal és oktatóanyagokkal.
+  description: 'Az Azure Machine Learning szolgáltatás SDK-kat és szolgáltatásokat biztosít a gépi tanulási modellek gyors betanításához és üzembe helyezéséhez, valamint az adatok előkészítéséhez. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn. Első lépések az útmutatókkal és oktatóanyagokkal.'
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -22,60 +16,60 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Az Azure Machine Learning szolgáltatás SDK-kat és szolgáltatásokat biztosít a gépi tanulási modellek gyors betanításához és üzembe helyezéséhez, valamint az adatok előkészítéséhez. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn. Első lépések az útmutatókkal és oktatóanyagokkal.
+  description: 'Az Azure Machine Learning szolgáltatás SDK-kat és szolgáltatásokat biztosít a gépi tanulási modellek gyors betanításához és üzembe helyezéséhez, valamint az adatok előkészítéséhez. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn. Első lépések az útmutatókkal és oktatóanyagokkal.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 130
       src: media/index/video.png
       width: 250
-    title: Videó megtekintése (9:58)
-    href: https://www.youtube.com/watch?v=GBDSBInvz08
+    title: 'Videó megtekintése (9:58)'
+    href: 'https://www.youtube.com/watch?v=GBDSBInvz08'
     width: 250
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'Miután   <a href="setup-create-workspace">létrehozott egy munkaterületet</a> az Azure Machine Learning service-hez, a következő rövid útmutatókhoz kezdhet hozzá:'
-  - type: list
-    style: unordered
+  - title: 5 perces gyors útmutatók
     items:
-    - html: <a href="quickstart-run-cloud-notebook">Kísérlet futtatása a felhőben</a> (nincs szükség telepítésre).
-    - html: <a href="quickstart-run-local-notebook">Kísérlet futtatása helyi notebookkiszolgáló használatával</a> (helyi SDK telepítésével).
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: 'Megtudhatja, hogyan készítheti elő adatait és kísérleteit, illetve hogyan taníthatja be és működtetheti gépi tanulási modelljeit:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: "Miután \_ <a href=\"setup-create-workspace\">létrehozott egy munkaterületet</a> az Azure Machine Learning service-hez, a következő rövid útmutatókhoz kezdhet hozzá:"
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="quickstart-run-cloud-notebook">Kísérlet futtatása a felhőben</a> (nincs szükség telepítésre).
+          - html: <a href="quickstart-run-local-notebook">Kísérlet futtatása helyi notebookkiszolgáló használatával</a> (helyi SDK telepítésével).
+  - title: Részletes útmutatók
     items:
-    - html: Képbesorolási modellek <a href="tutorial-train-models-with-aml">betanítása</a> és <a href="tutorial-deploy-models-with-aml">üzembe helyezése</a> (<b>kétrészes sorozat</b>).
-    - html: <a href="tutorial-data-prep">Adatok előkészítése</a> és <a href="tutorial-auto-train-models">automatizált gépi tanulás használata</a> regressziós modellek betanításához és hangolásához (<b>kétrészes sorozat</b>).
-- title: Példák
-  items:
-  - type: paragraph
-    text: Keressen <a href="samples-notebooks">Jupyter-notebookokat</a>, amelyekkel megismerkedhet a szolgáltatással a GitHubon.
-- title: Referencia
-  items:
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Megtudhatja, hogyan készítheti elő adatait és kísérleteit, illetve hogyan taníthatja be és működtetheti gépi tanulási modelljeit:'
+      - type: list
+        style: unordered
+        items:
+          - html: Képbesorolási modellek <a href="tutorial-train-models-with-aml">betanítása</a> és <a href="tutorial-deploy-models-with-aml">üzembe helyezése</a> (<b>kétrészes sorozat</b>).
+          - html: <a href="tutorial-data-prep">Adatok előkészítése</a> és <a href="tutorial-auto-train-models">automatizált gépi tanulás használata</a> regressziós modellek betanításához és hangolásához (<b>kétrészes sorozat</b>).
+  - title: Példák
     items:
-    - html: '<a href="https://aka.ms/aml-sdk">Fő Python SDK</a>: többek között fő funkciók, automatizált gépi tanulás és folyamatok'
-    - html: '<a href="https://aka.ms/data-prep-sdk">Adatok előkészítése</a> a Python SDK-val: adatok előkészítése és átalakítása'
-    - html: '<a href="https://aka.ms/aml-monitoring-sdk">Monitorozás</a> a Python SDK-val: adatok gyűjtése üzembe helyezett webszolgáltatásokon'
-- title: Egyéb Azure Machine Learning-technológiák
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Keressen <a href="samples-notebooks">Jupyter-notebookokat</a>, amelyekkel megismerkedhet a szolgáltatással a GitHubon.'
+  - title: Referencia
     items:
-    - title: Azure Machine Learning Studio
-      href: /azure/machine-learning/studio/
-      image:
-        src: media/index/machine-learning-studio.svg
-        href: /azure/machine-learning/studio/
-    - title: Adatelemzési virtuális gép
-      href: /azure/machine-learning/data-science-virtual-machine/
-      image:
-        src: media/index/virtual-machines.svg
-        href: /azure/machine-learning/data-science-virtual-machine/
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://aka.ms/aml-sdk">Fő Python SDK</a>: többek között fő funkciók, automatizált gépi tanulás és folyamatok'
+          - html: '<a href="https://aka.ms/data-prep-sdk">Adatok előkészítése</a> a Python SDK-val: adatok előkészítése és átalakítása'
+          - html: '<a href="https://aka.ms/aml-monitoring-sdk">Monitorozás</a> a Python SDK-val: adatok gyűjtése üzembe helyezett webszolgáltatásokon'
+  - title: Egyéb Azure Machine Learning-technológiák
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure Machine Learning Studio
+            href: /azure/machine-learning/studio/
+            image:
+              src: media/index/machine-learning-studio.svg
+              href: /azure/machine-learning/studio/
+          - title: Adatelemzési virtuális gép
+            href: /azure/machine-learning/data-science-virtual-machine/
+            image:
+              src: media/index/virtual-machines.svg
+              href: /azure/machine-learning/data-science-virtual-machine/

@@ -1,115 +1,108 @@
-items:
 - name: Az Azure felügyelt alkalmazások dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-  - name: Tudnivalók a felügyelt alkalmazásokról
-    href: overview.md
+    - name: Tudnivalók a felügyelt alkalmazásokról
+      href: overview.md
 - name: Gyors útmutatók
-  items:
-  - name: Alkalmazásdefiníció közzététele
-    href: publish-managed-app-definition-quickstart.md
-  - name: Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése
-    href: deploy-service-catalog-quickstart.md
   expanded: true
+  items:
+    - name: Alkalmazásdefiníció közzététele
+      href: publish-managed-app-definition-quickstart.md
+    - name: Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése
+      href: deploy-service-catalog-quickstart.md
 - name: Oktatóanyagok
   items:
-  - name: Definíciós fájlok létrehozása
-    href: publish-service-catalog-app.md
-  - name: Piactéren elérhető alkalmazás közzététele
-    href: publish-marketplace-app.md
+    - name: Definíciós fájlok létrehozása
+      href: publish-service-catalog-app.md
+    - name: Piactéren elérhető alkalmazás közzététele
+      href: publish-marketplace-app.md
 - name: Példák
   items:
-  - name: Azure CLI
-    href: cli-samples.md
-  - name: Azure PowerShell
-    href: powershell-samples.md
-  - name: Felügyelt alkalmazási megoldások
-    href: sample-projects.md
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
+    - name: Felügyelt alkalmazási megoldások
+      href: sample-projects.md
 - name: Útmutatók
   items:
-  - name: Kiadók
-    items:
-    - name: Portálfelület létrehozása
-      href: create-uidefinition-overview.md
-    - name: A portálfelület tesztelése
-      href: test-createuidefinition.md
-    - name: Kezelt erőforrások frissítése
-      href: update-managed-resources.md
-    - name: Alkalmazásdefiníció közzététele a portál használatával
-      href: publish-portal.md
-    - name: Key Vaultból származó titkos kulcs használata
-      href: key-vault-access.md
-  - name: Fogyasztók
-    items:
-    - name: Felügyelt alkalmazások monitorozása
-      href: monitor-managed-application-portal.md
+    - name: Kiadók
+      items:
+        - name: Portálfelület létrehozása
+          href: create-uidefinition-overview.md
+        - name: A portálfelület tesztelése
+          href: test-createuidefinition.md
+        - name: Kezelt erőforrások frissítése
+          href: update-managed-resources.md
+        - name: Alkalmazásdefiníció közzététele a portál használatával
+          href: publish-portal.md
+        - name: Key Vaultból származó titkos kulcs használata
+          href: key-vault-access.md
+    - name: Fogyasztók
+      items:
+        - name: Felügyelt alkalmazások monitorozása
+          href: monitor-managed-application-portal.md
 - name: Referencia
   items:
-  - name: Azure CLI
-    href: /cli/azure/managedapp
-  - name: PowerShell
-    href: /powershell/module/az.resources
-  - name: REST
-    href: /rest/api/resources/
-  - name: Felhasználó felület funkciói
-    href: create-uidefinition-functions.md
-  - name: Felhasználó felület elemei
-    href: create-uidefinition-elements.md
-    items:
-    - name: Közös
+    - name: Azure CLI
+      href: /cli/azure/managedapp
+    - name: PowerShell
+      href: /powershell/module/az.resources
+    - name: REST
+      href: /rest/api/resources/
+    - name: Felhasználó felület funkciói
+      href: create-uidefinition-functions.md
+    - name: Felhasználó felület elemei
+      href: create-uidefinition-elements.md
       items:
-      - name: DropDown
-        href: microsoft-common-dropdown.md
-      - name: FileUpload
-        href: microsoft-common-fileupload.md
-      - name: InfoBox
-        href: microsoft-common-infobox.md
-      - name: OptionsGroup
-        href: microsoft-common-optionsgroup.md
-      - name: PasswordBox
-        href: microsoft-common-passwordbox.md
-      - name: Section
-        href: microsoft-common-section.md
-      - name: TextBlock
-        href: microsoft-common-textblock.md
-      - name: TextBox
-        href: microsoft-common-textbox.md
-    - name: Compute
-      items:
-      - name: CredentialsCombo
-        href: microsoft-compute-credentialscombo.md
-      - name: SizeSelector
-        href: microsoft-compute-sizeselector.md
-      - name: UserNameTextBox
-        href: microsoft-compute-usernametextbox.md
-    - name: Network (Hálózat)
-      items:
-      - name: PublicIPAddressCombo
-        href: microsoft-network-publicipaddresscombo.md
-      - name: VirtualNetworkCombo
-        href: microsoft-network-virtualnetworkcombo.md
-    - name: Storage
-      items:
-      - name: MultiStorageAccountCombo
-        href: microsoft-storage-multistorageaccountcombo.md
-      - name: StorageAccountSelector
-        href: microsoft-storage-storageaccountselector.md
+        - name: Közös
+          items:
+            - name: DropDown
+              href: microsoft-common-dropdown.md
+            - name: FileUpload
+              href: microsoft-common-fileupload.md
+            - name: InfoBox
+              href: microsoft-common-infobox.md
+            - name: OptionsGroup
+              href: microsoft-common-optionsgroup.md
+            - name: PasswordBox
+              href: microsoft-common-passwordbox.md
+            - name: Section
+              href: microsoft-common-section.md
+            - name: TextBlock
+              href: microsoft-common-textblock.md
+            - name: TextBox
+              href: microsoft-common-textbox.md
+        - name: Compute
+          items:
+            - name: CredentialsCombo
+              href: microsoft-compute-credentialscombo.md
+            - name: SizeSelector
+              href: microsoft-compute-sizeselector.md
+            - name: UserNameTextBox
+              href: microsoft-compute-usernametextbox.md
+        - name: Network (Hálózat)
+          items:
+            - name: PublicIPAddressCombo
+              href: microsoft-network-publicipaddresscombo.md
+            - name: VirtualNetworkCombo
+              href: microsoft-network-virtualnetworkcombo.md
+        - name: Storage
+          items:
+            - name: MultiStorageAccountCombo
+              href: microsoft-storage-multistorageaccountcombo.md
+            - name: StorageAccountSelector
+              href: microsoft-storage-storageaccountselector.md
 - name: További források
   items:
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/managed-applications/
-  - name: Díjkalkulátor
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Ajánlott eljárások Resource Manager-sablonokhoz
-    href: https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md
-  - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-managedapps
-ms.openlocfilehash: e5ed2bab25c8140d12517e4757c028a7c6dd85d9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402014"
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Ajánlott eljárások Resource Manager-sablonokhoz
+      href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'

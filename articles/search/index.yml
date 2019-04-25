@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8385fe5ecb9a6e17d872795ba4eff5c038e4df47
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199869"
 documentType: LandingData
 title: Azure Search-dokumentáció
 metadata:
-  document_id: 
-  title: Az Azure Search dokumentációja – oktatóanyagok, gyors útmutatók és API-referenciák
-  description: Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal.
+  document_id: null
+  title: 'Az Azure Search dokumentációja – oktatóanyagok, gyors útmutatók és API-referenciák'
+  description: 'Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal.'
   services: search
   author: HeidiSteen
   manager: cgronlun
@@ -20,55 +14,55 @@ metadata:
   ms.date: 01/18/2019
   ms.author: heidist
 abstract:
-  description: Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Az új kognitív keresés előzetes verziója.</b></a> Egy kiadás előtti verziójú REST API-val mesterséges intelligencia által vezérelt algoritmusokat társíthat az indexelési folyamathoz. Az adatok kinyerésével és a természetes nyelvi és képfeldolgozással a nyers, strukturálatlan tartalmak kereshető tartalmakká alakíthatóak egy Azure Search-indexben. <p/>Megismerkedhet a kognitív kereséssel az <a href="/azure/search/cognitive-search-quickstart-blob">erőforrások és a mintaadatok</a> használatával, vagy többet tudhat meg a <a href="/azure/search/cognitive-search-concept-intro">fogalmakat</a> ismertető cikkben.
+  description: 'Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Az új kognitív keresés előzetes verziója.</b></a> Egy kiadás előtti verziójú REST API-val mesterséges intelligencia által vezérelt algoritmusokat társíthat az indexelési folyamathoz. Az adatok kinyerésével és a természetes nyelvi és képfeldolgozással a nyers, strukturálatlan tartalmak kereshető tartalmakká alakíthatóak egy Azure Search-indexben. <p/>Megismerkedhet a kognitív kereséssel az <a href="/azure/search/cognitive-search-quickstart-blob">erőforrások és a mintaadatok</a> használatával, vagy többet tudhat meg a <a href="/azure/search/cognitive-search-concept-intro">fogalmakat</a> ismertető cikkben.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png
+      src: 'https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png'
       width: 250
-    title: Mi az az Azure Search? (1:27)
-    href: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
+    title: 'Mi az az Azure Search? (1:27)'
+    href: 'https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player'
     width: 250
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: A portálon egy keresési szolgáltatással kezdhet, majd indexeket határozhat meg, tölthet be és kérhet le C# vagy REST nyelven.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: /azure/search/media/index/portal.svg
-      text: Azure Portal
-      href: https://docs.microsoft.com/azure/search/search-create-service-portal
-    - image:
-        src: /azure/search/media/index/logo_Csharp.svg
-      text: .NET
-      href: https://docs.microsoft.com/azure/search/search-create-index-dotnet
-    - image:
-        src: /azure/search/media/index/rest.svg
-      text: REST
-      href: https://docs.microsoft.com/azure/search/search-fiddler
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: .NET vagy REST nyelven kódolhat, vagy kipróbálhatja a portálon a gyors fogalomtesztelést.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'A portálon egy keresési szolgáltatással kezdhet, majd indexeket határozhat meg, tölthet be és kérhet le C# vagy REST nyelven.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/search/media/index/portal.svg
+            text: Azure Portal
+            href: 'https://docs.microsoft.com/azure/search/search-create-service-portal'
+          - image:
+              src: /azure/search/media/index/logo_Csharp.svg
+            text: .NET
+            href: 'https://docs.microsoft.com/azure/search/search-create-index-dotnet'
+          - image:
+              src: /azure/search/media/index/rest.svg
+            text: REST
+            href: 'https://docs.microsoft.com/azure/search/search-fiddler'
+  - title: Részletes útmutatók
     items:
-    - html: <a href="/azure/search/cognitive-search-tutorial-blob">Indexelés mesterséges intelligenciával (Cognitive Services)</a>
-    - html: <a href="/azure/search/search-howto-dotnet-sdk">Az Azure Search használata a .NET-tel</a>
-    - html: <a href="/azure/search/search-indexer-tutorial">Azure SQL Database-tartalom indexelése a .NET-tel</a>
-    - html: <a href="/azure/search/search-semi-structured-data">Részben strukturált adatok indexelése az Azure Blob Storage-ban a REST-tel</a>
-    - html: <a href="/azure/search/search-get-started-portal">A portál használata indexeléshez és lekérdezésteszteléshez</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: '.NET vagy REST nyelven kódolhat, vagy kipróbálhatja a portálon a gyors fogalomtesztelést.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/search/cognitive-search-tutorial-blob">Indexelés mesterséges intelligenciával (Cognitive Services)</a>
+          - html: <a href="/azure/search/search-howto-dotnet-sdk">Az Azure Search használata a .NET-tel</a>
+          - html: <a href="/azure/search/search-indexer-tutorial">Azure SQL Database-tartalom indexelése a .NET-tel</a>
+          - html: <a href="/azure/search/search-semi-structured-data">Részben strukturált adatok indexelése az Azure Blob Storage-ban a REST-tel</a>
+          - html: <a href="/azure/search/search-get-started-portal">A portál használata indexeléshez és lekérdezésteszteléshez</a>
+  - title: Referencia
     items:
-    - title: Nyelvek
-      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (Felügyelet)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (Felügyelet)</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/searchservice">Szolgáltatási API-referencia</a></p><p><a href="/rest/api/searchmanagement">Felügyeleti API-referencia</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Nyelvek
+            html: '<p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (Felügyelet)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (Felügyelet)</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/searchservice">Szolgáltatási API-referencia</a></p><p><a href="/rest/api/searchmanagement">Felügyeleti API-referencia</a></p>

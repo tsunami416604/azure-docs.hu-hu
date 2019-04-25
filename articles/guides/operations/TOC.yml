@@ -21,7 +21,7 @@
         - name: Azure Stack
           items:
             - name: Az Azure Stack üzembe helyezésének áttekintése
-              href: /azure-stack/asdk/asdk-download
+              href: ../../azure-stack/azure-stack-deploy-overview.md
         - name: Azure Backup
           items:
             - name: Biztonsági másolat készítése egy virtuális gépről az Azure Portalon

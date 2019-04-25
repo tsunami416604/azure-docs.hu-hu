@@ -1,77 +1,70 @@
-items:
 - name: Az Azure Security Center (ASC) for IoT előzetes verziójának dokumentációja
   href: index.yml
 - name: Áttekintés
   href: overview.md
   items:
-  - name: Megoldásarchitektúra
-    href: architecture.md
-  - name: Biztonsági ügynökök
-    href: security-agent-architecture.md
-  - name: Biztonsági Edge-modul
-    href: security-edge-architecture.md
-  - name: A szolgáltatás előfeltételei
-    href: service-prerequisites.md
-  - name: Ismerkedés az ASC for IoT használatával
-    href: getting-started.md
+    - name: Megoldásarchitektúra
+      href: architecture.md
+    - name: Biztonsági ügynökök
+      href: security-agent-architecture.md
+    - name: Biztonsági Edge-modul
+      href: security-edge-architecture.md
+    - name: A szolgáltatás előfeltételei
+      href: service-prerequisites.md
+    - name: Ismerkedés az ASC for IoT használatával
+      href: getting-started.md
 - name: Gyors útmutatók
-  items:
-  - name: Az ASC for IoT engedélyezése az IoT Hubban
-    href: quickstart-onboard-iot-hub.md
-  - name: A megoldás konfigurálása
-    href: quickstart-configure-your-solution.md
-  - name: ASC for IoT-ikermodul létrehozása
-    href: quickstart-create-security-twin.md
-  - name: Egyéni biztonsági riasztások létrehozása
-    href: quickstart-create-custom-alerts.md
   expanded: true
+  items:
+    - name: Az ASC for IoT engedélyezése az IoT Hubban
+      href: quickstart-onboard-iot-hub.md
+    - name: A megoldás konfigurálása
+      href: quickstart-configure-your-solution.md
+    - name: ASC for IoT-ikermodul létrehozása
+      href: quickstart-create-security-twin.md
+    - name: Egyéni biztonsági riasztások létrehozása
+      href: quickstart-create-custom-alerts.md
 - name: Alapelvek
   items:
-  - name: Biztonsági ügynök hitelesítése
-    href: concept-security-agent-authentication-methods.md
-  - name: Biztonsági modul
-    href: concept-security-module.md
-  - name: Biztonsági riasztások
-    href: concept-security-alerts.md
-  - name: Biztonsági javaslatok
-    href: concept-recommendations.md
-  - name: Díjszabás és kapcsolódó költségek
-    href: concept-pricing.md
+    - name: Biztonsági ügynök hitelesítése
+      href: concept-security-agent-authentication-methods.md
+    - name: Biztonsági modul
+      href: concept-security-module.md
+    - name: Biztonsági riasztások
+      href: concept-security-alerts.md
+    - name: Biztonsági javaslatok
+      href: concept-recommendations.md
+    - name: Díjszabás és kapcsolódó költségek
+      href: concept-pricing.md
 - name: Útmutatók
   items:
-  - name: Melyik ügynököt telepítsem?
-    items:
-    - name: Üzembe helyezendő ügynök kiválasztása
-      href: how-to-deploy-agent.md
-    - name: C#-alapú biztonsági ügynök üzembe helyezése Windows-eszközön
-      href: how-to-deploy-windows-cs.md
-    - name: C#-alapú biztonsági ügynök üzembe helyezése Linux-eszközön
-      href: how-to-deploy-linux-cs.md
-    - name: C-alapú biztonsági ügynök üzembe helyezése Linux-eszközön
-      href: how-to-deploy-linux-c.md
-  - name: Biztonsági Edge-modul üzembe helyezése
-    href: how-to-deploy-edge.md
-  - name: Biztonsági ügynökök konfigurálása
-    href: how-to-agent-configuration.md
-  - name: Saját biztonsági üzenetek küldése
-    href: how-to-send-security-messages.md
-  - name: Hozzáférés a nyers biztonsági adatokhoz
-    href: how-to-security-data-access.md
-  - name: Eszköz vizsgálata
-    href: how-to-investigate-device.md
+    - name: Melyik ügynököt telepítsem?
+      items:
+        - name: Üzembe helyezendő ügynök kiválasztása
+          href: how-to-deploy-agent.md
+        - name: 'C#-alapú biztonsági ügynök üzembe helyezése Windows-eszközön'
+          href: how-to-deploy-windows-cs.md
+        - name: 'C#-alapú biztonsági ügynök üzembe helyezése Linux-eszközön'
+          href: how-to-deploy-linux-cs.md
+        - name: C-alapú biztonsági ügynök üzembe helyezése Linux-eszközön
+          href: how-to-deploy-linux-c.md
+    - name: Biztonsági Edge-modul üzembe helyezése
+      href: how-to-deploy-edge.md
+    - name: Biztonsági ügynökök konfigurálása
+      href: how-to-agent-configuration.md
+    - name: Saját biztonsági üzenetek küldése
+      href: how-to-send-security-messages.md
+    - name: Hozzáférés a nyers biztonsági adatokhoz
+      href: how-to-security-data-access.md
+    - name: Eszköz vizsgálata
+      href: how-to-investigate-device.md
 - name: További források
   items:
-  - name: Gyakori kérdések
-    href: resources-frequently-asked-questions.md
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: Azure biztonsági, adatvédelmi és megfelelőségi blog
-    href: http://blogs.msdn.com/b/azuresecurity/
-  - name: Régiónkénti rendelkezésre állás
-    href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 1d9d2b51fb1a07081c4ac2f4b115363c74cca6d0
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754580"
+    - name: Gyakori kérdések
+      href: resources-frequently-asked-questions.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: 'Azure biztonsági, adatvédelmi és megfelelőségi blog'
+      href: 'http://blogs.msdn.com/b/azuresecurity/'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/regions/services/'

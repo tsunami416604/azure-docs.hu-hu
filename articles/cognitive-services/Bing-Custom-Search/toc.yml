@@ -1,119 +1,112 @@
-items:
 - name: A Bing Custom Search dokumentációja
   href: index.yml
 - name: Áttekintés
-  items:
-  - name: Mi az a Bing Custom Search API?
-    href: overview.md
-  - name: Bing Search API-k összehasonlítása
-    href: ../Bing-Web-Search/bing-api-comparison.md
-    maintainContext: true
   expanded: true
+  items:
+    - name: Mi az a Bing Custom Search API?
+      href: overview.md
+    - name: Bing Search API-k összehasonlítása
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
 - name: Gyors útmutatók
-  items:
-  - name: Egyéni keresési példány létrehozása
-    href: quick-start.md
-  - name: Keresési eredmények lekérése a példányból
-    items:
-    - name: REST API
-      items:
-      - name: A C# használata
-        href: call-endpoint-csharp.md
-      - name: A Java használata
-        href: call-endpoint-java.md
-      - name: A Node.js használata
-        href: call-endpoint-nodejs.md
-      - name: A Python használata
-        href: call-endpoint-python.md
-    - name: SDK
-      items:
-      - name: A C# használata
-        href: sdk-csharp-quick-start.md
-      - name: A Python használata
-        href: sdk-python-quickstart.md
   expanded: true
+  items:
+    - name: Egyéni keresési példány létrehozása
+      href: quick-start.md
+    - name: Keresési eredmények lekérése a példányból
+      items:
+        - name: REST API
+          items:
+            - name: 'A C# használata'
+              href: call-endpoint-csharp.md
+            - name: A Java használata
+              href: call-endpoint-java.md
+            - name: A Node.js használata
+              href: call-endpoint-nodejs.md
+            - name: A Python használata
+              href: call-endpoint-python.md
+        - name: SDK
+          items:
+            - name: 'A C# használata'
+              href: sdk-csharp-quick-start.md
+            - name: A Python használata
+              href: sdk-python-quickstart.md
 - name: Oktatóanyagok
   items:
-  - name: Custom Search-webhely létrehozása
-    href: ./tutorials/custom-search-web-page.md
+    - name: Custom Search-webhely létrehozása
+      href: ./tutorials/custom-search-web-page.md
 - name: Példák
   items:
-  - name: Kódminták
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
 - name: Útmutatók
   items:
-  - name: Egyéni keresési élmény konfigurálása
-    href: define-your-custom-view.md
-  - name: Egyéni keresési élmény meghívása
-    href: search-your-custom-view.md
-  - name: Üzemeltetett felhasználói felület konfigurálása és integrálása
-    href: hosted-ui.md
-  - name: Egyéni keresési példány megosztása
-    href: share-your-custom-search.md
-  - name: Képek lekérése a keresési példányból
-    href: get-images-from-instance.md
-  - name: Videók lekérése a keresési példányból
-    href: get-videos-from-instance.md
-  - name: Egyéni automatikus kiegészítési élmény konfigurálása
-    href: define-custom-suggestions.md
-  - name: Találatok kiemelésének kezelése
-    href: hit-highlighting.md
-  - name: Lapozás a webhelyek között
-    href: page-webpages.md
+    - name: Egyéni keresési élmény konfigurálása
+      href: define-your-custom-view.md
+    - name: Egyéni keresési élmény meghívása
+      href: search-your-custom-view.md
+    - name: Üzemeltetett felhasználói felület konfigurálása és integrálása
+      href: hosted-ui.md
+    - name: Egyéni keresési példány megosztása
+      href: share-your-custom-search.md
+    - name: Képek lekérése a keresési példányból
+      href: get-images-from-instance.md
+    - name: Videók lekérése a keresési példányból
+      href: get-videos-from-instance.md
+    - name: Egyéni automatikus kiegészítési élmény konfigurálása
+      href: define-custom-suggestions.md
+    - name: Találatok kiemelésének kezelése
+      href: hit-highlighting.md
+    - name: Lapozás a webhelyek között
+      href: page-webpages.md
 - name: Referencia
   items:
-  - name: Bing Custom Autosuggest API-referencia
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference
-  - name: Bing Custom Image Search API-referencia
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference
-  - name: Bing Custom Search API-referencia
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference
-  - name: Bing Custom Video Search API-referencia
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference
-  - name: Bing Search API – követelmények használata és megjelenítése
-    href: ../Bing-Web-Search/use-display-requirements.md
-    maintainContext: true
-  - name: SDK-k
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet
-    - name: Java – Egyéni keresés
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customsearch?view=azure-java-stable
-    - name: Java – Egyéni képkeresés
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customimagesearch?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customsearch?view=azure-node-latest
-    - name: Go – Egyéni keresés
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch
-    - name: Go – Egyéni képkeresés
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch
+    - name: Bing Custom Autosuggest API-referencia
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference'
+    - name: Bing Custom Image Search API-referencia
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference'
+    - name: Bing Custom Search API-referencia
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference'
+    - name: Bing Custom Video Search API-referencia
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference'
+    - name: Bing Search API – követelmények használata és megjelenítése
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
+    - name: SDK-k
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet'
+        - name: Java – Egyéni keresés
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customsearch?view=azure-java-stable'
+        - name: Java – Egyéni képkeresés
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customimagesearch?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customsearch?view=azure-node-latest'
+        - name: Go – Egyéni keresés
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch'
+        - name: Go – Egyéni képkeresés
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch'
 - name: További források
   items:
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/598147-bing-custom-search-api
-  - name: Stack Overflow
-    href: https://stackoverflow.com/search?q=bing+custom+search
-  - name: Régiónkénti rendelkezésre állás
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/
-  - name: Tudásbázis
-    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
-  - name: API-kulcs beszerzése
-    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api
-  - name: Próbálja ki!
-    href: https://aka.ms/bingcustomsearchtryit
-  - name: Bing Custom Search-végpont
-    href: endpoint-custom.md
-  - name: Nyelvi és régiós támogatás
-    href: language-support.md
-ms.openlocfilehash: eee327b77fa3c0d46d47bb3ac6644fb175249618
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568886"
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598147-bing-custom-search-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+custom+search'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Tudásbázis
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: API-kulcs beszerzése
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api'
+    - name: Próbálja ki!
+      href: 'https://aka.ms/bingcustomsearchtryit'
+    - name: Bing Custom Search-végpont
+      href: endpoint-custom.md
+    - name: Nyelvi és régiós támogatás
+      href: language-support.md

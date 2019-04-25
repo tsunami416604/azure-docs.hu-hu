@@ -12,11 +12,11 @@ ms.date: 02/21/2019
 ms.author: v-jansko
 ms.custom: seodec18
 ms.openlocfilehash: cc795d6b164a97351ec8806c6b7c8bed0c0c1266
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793989"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60336745"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>Word igazítás információk fogadása
 
@@ -26,7 +26,7 @@ Igazítás információk fogadását, a fordítás módszert használja, és a v
 ## <a name="alignment-information-format"></a>Zarovnání információ formátuma
 Igazítás, egy karakterlánc értékét a forrás minden szót a következő formátumban adja vissza. Az információk minden egyes szó egy szóközt, beleértve a nem szóközzel elválasztott nyelvet (szkriptek) kínai választják el:
 
-[[SourceTextStartIndex]\:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
+[[SourceTextStartIndex]: [SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
 Példa igazítás karakterlánc: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
 
