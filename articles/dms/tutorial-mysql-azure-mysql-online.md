@@ -13,7 +13,7 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.openlocfilehash: b39ce138677fc8933b62bd999f20abc21c0ae690
 ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2019
 ms.locfileid: "59617954"
@@ -239,7 +239,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
  
 2.  Mindenképpen állítsa le a forrásadatbázis összes bejövő tranzakcióját, és várjon, amíg a **Függőben lévő módosítások** számlálója **0**-t nem mutat.
 3.  Kattintson a **Megerősítés**, majd az **Alkalmaz** gombra.
-4. Ha az adatbázis migrálási állapota **Befejezve** értékre vált, csatlakoztassa alkalmazásait az új Azure SQL Database-céladatbázishoz.
+4. Ha az adatbázis migrálási állapota **Befejezve** értékre vált, csatlakoztassa alkalmazásait az új Azure SQL-céladatbázishoz.
  
 ## <a name="next-steps"></a>További lépések
 - Az Azure Database for MySQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for MySQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-mysql-online.md).

@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: 46a620900896d07273da22e53171330b85d3f1ec
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360195"
@@ -108,7 +108,7 @@ Ha meg szeretne áttelepítést végezni egy meglévő helyszíni vagy SQL Serve
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Számítási feladatok, amelyek rugalmas készletek az erőforrások
 
-A készleteket nagy számú, speciális felhasználási mintákkal rendelkező adatbázishoz tervezték. Egy adott adatbázis esetében ez a minta egy viszonylag rendszertelen kiugró kihasználtság jellemzi az alacsony kihasználtságú átlagos jellemzi. Az SQL Database automatikusan kiértékeli az SQL Database-kiszolgálók adatbázisainak erőforrás-használati előzményeit, és felajánlja a megfelelő készletkonfigurációt az Azure Portalon. További információkért lásd: [Mikor érdemes rugalmas készletet használni?](sql-database-elastic-pool.md)
+A készleteket nagy számú, speciális felhasználási mintákkal rendelkező adatbázishoz tervezték. Egy adott adatbázis esetében ez a minta egy viszonylag rendszertelen kiugró kihasználtság jellemzi az alacsony kihasználtságú átlagos jellemzi. Az SQL Database automatikusan kiértékeli az SQL-adatbáziskiszolgálók adatbázisainak erőforrás-használati előzményeit, és felajánlja a megfelelő készletkonfigurációt az Azure Portalon. További információkért lásd: [Mikor érdemes rugalmas készletet használni?](sql-database-elastic-pool.md)
 
 ## <a name="purchase-model-frequently-asked-questions-faq"></a>Beszerzési modell – gyakori kérdések (GYIK)
 

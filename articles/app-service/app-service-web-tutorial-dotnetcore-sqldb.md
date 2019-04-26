@@ -16,7 +16,7 @@ ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: c83e14d65b30775f0dad54ab9ade1a7bed5ac821
 ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/13/2019
 ms.locfileid: "59548867"
@@ -89,7 +89,7 @@ Ha bármikor le szeretné állítani a .NET Core-t, nyomja meg a `Ctrl+C` billen
 
 Ebben a lépésben egy SQL Database-adatbázist hozhat létre az Azure-ban. Miután az alkalmazás üzembe lett helyezve az Azure-ban, ezt a felhőadatbázist használja.
 
-Ez az oktatóanyag az SQL Database-hez az [Azure SQL Database-t](/azure/sql-database/) használja.
+Ez az oktatóanyag az SQL-adatbázisokhoz az [Azure SQL Database-t](/azure/sql-database/) használja.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -128,7 +128,7 @@ Az SQL Database logikai kiszolgáló létrehozása után az Azure CLI az alábbi
 
 ### <a name="configure-a-server-firewall-rule"></a>Konfiguráljon egy kiszolgálói tűzfalszabályt
 
-Hozzon létre egy [Azure SQL Database kiszolgálószintű tűzfalszabályt](../sql-database/sql-database-firewall-configure.md) az [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) parancs használatával. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. 
+Hozzon létre egy [kiszolgálószintű Azure SQL Database-tűzfalszabályt](../sql-database/sql-database-firewall-configure.md) az [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) parancs használatával. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva. 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0

@@ -16,14 +16,14 @@ ms.date: 05/18/2018
 ms.author: aljo
 ms.openlocfilehash: 33f742c7de340df41f5d946c891e9896d7d2a012
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048469"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Oktatóanyag: Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre
 
-Ez az oktatóanyag bemutatja, hogyan helyezhet tárolóba egy meglévő ASP.NET-alkalmazást és csomagot Service Fabric-alkalmazásként.  Futtassa a tárolókat helyileg egy Service Fabric fejlesztési fürtön, és telepítse az alkalmazást az Azure-ba.  Az alkalmazás [Azure SQL Database](/azure/sql-database/sql-database-technical-overview)-adatbázisban őrzi meg az adatokat. 
+Ez az oktatóanyag bemutatja, hogyan helyezhet tárolóba egy meglévő ASP.NET-alkalmazást és csomagot Service Fabric-alkalmazásként.  Futtassa a tárolókat helyileg egy Service Fabric fejlesztési fürtön, és telepítse az alkalmazást az Azure-ba.  Az alkalmazás [Azure SQL-adatbázisban](/azure/sql-database/sql-database-technical-overview) őrzi meg az adatokat. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -64,7 +64,7 @@ A tároló készen áll a Service Fabric-alkalmazásban való létrehozásra és
 ## <a name="create-an-azure-sql-db"></a>Azure SQL-adatbázis létrehozása
 A Fabrikam Fiber CallCenter alkalmazás éles futtatásakor az adatokat egy adatbázisban kell tárolni. Jelenleg nincs mód az állandó adatok biztosítására egy tárolóban, ezért nem tárolhat éles adatokat az SQL Serveren egy tárolóban.
 
-Javasoljuk, hogy használjon egy [Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell)-adatbázist. Egy felügyelt SQL Server-adatbázis Azure-ban való létrehozásához és futtatásához hajtsa végre az alábbi szkriptet.  Szükség esetén módosítsa a szkript változóit. A *clientIP* a fejlesztői számítógépe IP-címe. Jegyezze fel a kiszolgáló, a parancsfájl által használt kimeneti adattípus neve. 
+Javasoljuk, hogy használjon egy [Azure SQL-adatbázist](/azure/sql-database/sql-database-get-started-powershell). Egy felügyelt SQL Server-adatbázis Azure-ban való létrehozásához és futtatásához hajtsa végre az alábbi szkriptet.  Szükség esetén módosítsa a szkript változóit. A *clientIP* a fejlesztői számítógépe IP-címe. Jegyezze fel a kiszolgáló, a parancsfájl által használt kimeneti adattípus neve. 
 
 ```powershell
 $subscriptionID="<subscription ID>"

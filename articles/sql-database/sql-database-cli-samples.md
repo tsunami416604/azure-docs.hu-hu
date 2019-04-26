@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-példaszkriptek az SQL Database-hez | Microsoft Docs
-description: Az Azure CLI-példaszkriptek bemutatják Azure SQL Database-kiszolgálók, rugalmas készletek, adatbázisok és tűzfalak létrehozásának és felügyeletének folyamatát.
+description: Az Azure CLI-példaszkriptek bemutatják Azure SQL-adatbáziskiszolgálók, rugalmas készletek, adatbázisok és tűzfalak létrehozásának és felügyeletének folyamatát.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 02/03/2019
 ms.openlocfilehash: 7a1132b5857cf6c54d0566ca29bb76ce1ef88513
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359447"

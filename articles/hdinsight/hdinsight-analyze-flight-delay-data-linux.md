@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Hajtsa végre a kinyerési, átalakítási, betöltési (ETL) operations Hive használata a HDInsight – Azure '
-description: Megtudhatja, hogyan nyerhet ki adatokat egy nyers CSV-adatkészletből, hogyan alakíthatja át az adatokat a Hive on HDInsight használatával, és hogyan töltheti be őket az Azure SQL Database-be az Apache Sqoop segítségével.
+description: Megtudhatja, hogyan nyerhet ki adatokat egy nyers CSV-adatkészletből, hogyan alakíthatja át az adatokat a Hive on HDInsight használatával, és hogyan töltheti be őket az Azure SQL-adatbázisba az Apache Sqoop segítségével.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -11,7 +11,7 @@ ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
 ms.openlocfilehash: b8a45f3014b3fd5d0f5592b3f9bd408fc37b387b
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57999956"
@@ -30,7 +30,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Az adatok feltöltése egy HDInsight-fürtre
 > * Az adatok átalakítása a Hive használatával
 > * Tábla létrehozása az Azure SQL Database-ben
-> * Az adatok exportálása az Azure SQL Database-be a Sqoop segítségével
+> * Az adatok exportálása az Azure SQL-adatbázisba a Sqoop segítségével
 
 
 Az alábbi ábrán egy tipikus ETL-alkalmazásfolyam látható.
@@ -43,7 +43,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 * **Egy Linux-alapú Hadoop-fürt a HDInsighton**. Lásd: [HDInsight az Apache Hadoop használatának első lépései](hadoop/apache-hadoop-linux-tutorial-get-started.md) bemutatjuk, hogyan hozhat létre egy új Linux-alapú HDInsight-fürt számára.
 
-* **Azure SQL Database** Egy Azure SQL Database-t használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL Database az Azure Portalon történő létrehozását](../sql-database/sql-database-get-started.md) ismertető cikket.
+* **Azure SQL Database** Egy Azure SQL-adatbázist használ céladattárként. Ha még nem rendelkezik SQL-adatbázissal, olvassa el az [Azure SQL-adatbázis az Azure Portalon történő létrehozását](../sql-database/sql-database-get-started.md) ismertető cikket.
 
 * **Azure parancssori felület (CLI)**. Ha még nem telepítette az Azure CLI-t, a lépéseket [az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikkben találja.
 
@@ -207,7 +207,7 @@ A Hive-feladat keretében importálja az adatokat a .csv fájlból egy **Delays*
 
 ## <a name="create-a-sql-database-table"></a>SQL Database-tábla létrehozása
 
-Ez a szakasz feltételezi, hogy korábban már létrehozott egy Azure SQL Database-t. Ha még nem rendelkezik SQL-adatbázissal, hozzon létre egyet az [Azure SQL Database az Azure Portalon történő létrehozását](../sql-database/sql-database-get-started.md) ismertető cikkben leírt módon.
+Ez a szakasz feltételezi, hogy korábban már létrehozott egy Azure SQL-adatbázist. Ha még nem rendelkezik SQL-adatbázissal, hozzon létre egyet az [Azure SQL-adatbázis az Azure Portalon történő létrehozását](../sql-database/sql-database-get-started.md) ismertető cikkben leírt módon.
 
 Ha már van egy SQL-adatbázisa, le kell kérnie a kiszolgáló nevét. A kiszolgáló nevének megkereséséhez az [Azure Portalon](https://portal.azure.com) válassza ki az **SQL-adatbázisok** elemet, majd végezzen szűrést a használni kívánt adatbázis nevére. A kiszolgáló neve a **Kiszolgáló neve** oszlopban látható.
 
@@ -223,7 +223,7 @@ Ha már van egy SQL-adatbázisa, le kell kérnie a kiszolgáló nevét. A kiszol
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-3. A telepítés végeztével futtassa a következő parancsot az SQL Database-kiszolgálóhoz való csatlakozáshoz. Cserélje le a **serverName** kifejezést az SQL Database-kiszolgáló nevére. Cserélje le az **adminLogin** és **adminPassword** kifejezést az SQL Database-hez tartozó bejelentkezési adataira. Cserélje le a **databaseName** kifejezést az adatbázis nevére.
+3. A telepítés végeztével futtassa a következő parancsot az SQL-adatbáziskiszolgálóhoz való csatlakozáshoz. Cserélje le a **serverName** kifejezést az SQL-adatbáziskiszolgáló nevére. Cserélje le az **adminLogin** és **adminPassword** kifejezést az SQL Database-hez tartozó bejelentkezési adataira. Cserélje le a **databaseName** kifejezést az adatbázis nevére.
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -p 1433 -D <databaseName>
@@ -272,7 +272,7 @@ Ha már van egy SQL-adatbázisa, le kell kérnie a kiszolgáló nevét. A kiszol
 
 ## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Adatok exportálása az SQL database az Apache Sqoop használatával
 
-Az előző szakaszok során átmásolta az átalakított adatokat a következő helyre: `/tutorials/flightdelays/output`. Ebben a szakaszban a Sqoop segítségével fogja exportálni az adatokat a „/tutorials/flightdelays/output” helyről az Azure SQL Database-ben létrehozott táblába. 
+Az előző szakaszok során átmásolta az átalakított adatokat a következő helyre: `/tutorials/flightdelays/output`. Ebben a szakaszban a Sqoop segítségével fogja exportálni az adatokat a „/tutorials/flightdelays/output” helyről az Azure SQL-adatbázisban létrehozott táblába. 
 
 1. A következő paranccsal ellenőrizze, hogy a Sqoop látja-e az SQL-adatbázist:
 
