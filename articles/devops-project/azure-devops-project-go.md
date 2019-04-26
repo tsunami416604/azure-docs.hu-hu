@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: A Go programnyelv CI/CD-folyamat létrehozása az Azure DevOps Projects használatával'
+title: 'Gyors útmutató: A Go programnyelv CI/CD-folyamat létrehozása az Azure DevOps Projects használatával'
 description: A DevOps Projects megkönnyíti az Azure használatának első lépéseit. Ez segít egy Go programozási nyelvet web Apps néhány gyors lépésben az Azure-szolgáltatások indítása.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -18,11 +18,11 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: ca068b39c222a210e261234a132a0506f6b023bb
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263751"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60554974"
 ---
 # <a name="create-a-cicd-pipeline-for-go-by-using-azure-devops-projects"></a>A CI/CD-folyamat létrehozása a Góhoz készült Azure DevOps Projects használatával
 

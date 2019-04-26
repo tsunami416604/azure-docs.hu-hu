@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: dccb91c782408a5fed5c3ef1b68f9918823ce402
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: MT
+ms.openlocfilehash: 29d53c7fbd26d3c8e2356ce82ff25c7e1b165728
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38544023"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60540979"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Csatlakozás az SQL Server vagy az Azure SQL Database az Azure Logic Apps
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan férhet hozzá adataihoz a logikai alkalmazást az S
 
 Futtassa, amikor az SQL database-ben vagy más rendszerekben, például a Dynamics CRM Online események által kiváltott logic Apps alkalmazásokat hozhat létre. A logic apps is beolvasása, helyezze be, és törli az adatokat SQL-lekérdezések és tárolt eljárások végrehajtása mellett. Ha például hozhat létre egy logikai alkalmazást, amely automatikusan ellenőrzi az új rekordok a Dynamics CRM Online-ban, elemeket ad hozzá az SQL database-új rekordokat, és ezután elküldi az e-mailes riasztásokhoz.
 
-Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Összekötő-specifikus technikai tudnivalókért tekintse meg a <a href="https://docs.microsoft.com/connectors/sql/" target="blank">SQL Server-összekötő-referencia</a>.
+Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Összekötő-specifikus technikai tudnivalókért tekintse meg a <a href="https://docs.microsoft.com/connectors/sql/" target="blank">SQL Server-összekötő-referencia</a>.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +56,7 @@ Az Azure Logic Appsben, mindegyik logikai alkalmazásnak kell kezdődnie, egy [e
 
 2. A keresőmezőbe írja be az "sql server" szűrőként. Az eseményindítók listáról válassza ki a kívánt SQL-eseményindítóhoz. 
 
-   Ebben a példában válassza ki a következő eseményindítót: **SQL Server - elem létrehozásakor**
+   Ebben a példában ez az eseményindító kiválasztása: **Az SQL Server - elem létrehozásakor**
 
    ![Válassza ki az "SQL Server - elem létrehozásakor" eseményindító](./media/connectors-create-api-sqlazure/sql-server-trigger.png)
 
@@ -94,7 +94,7 @@ Az Azure Logic Apps- [művelet](../logic-apps/logic-apps-overview.md#logic-app-c
 
 2. A keresőmezőbe írja be az "sql server" szűrőként. A műveletek listáról válassza ki a használni kívánt SQL semmit. 
 
-   Ebben a példában válassza ezt a műveletet, mely egyetlen rekord: **SQL Server - sor beolvasása**
+   Ebben a példában válassza ki ezt a műveletet, amely beolvas egy egyetlen rekordot: **Az SQL Server - sor beolvasása**
 
    ![Adja meg az "sql server", "SQL Server - sor beolvasása" kiválasztása](./media/connectors-create-api-sqlazure/select-sql-get-row.png) 
 

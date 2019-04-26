@@ -8,11 +8,11 @@ ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
 ms.openlocfilehash: 2823cee863941926fffe332295328d6ecfb54001
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264726"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60546369"
 ---
 # <a name="sample---allowed-region-locations"></a>Minta - engedélyezett helyek régió
 
@@ -52,7 +52,7 @@ A szabályzat paramétereit Azure CLI és Azure PowerShell segítségével megha
 
 ## <a name="parameters"></a>Paraméterek
 
-|Name (Név) |Typo |Mező |Leírás |
+|Name (Név) |Típus |Mező |Leírás |
 |---|---|---|---|
 |listOfAllowedLocations |Tömb |helyek |Engedélyezett helyek listája|
 

@@ -3,8 +3,8 @@ title: Az Azure Network Watcher képességeinek használatához szükséges enge
 description: Ismerje meg, mely az Azure szerepköralapú hozzáférés-vezérlési engedélyekkel Network watcherről használata szükséges.
 services: network-watcher
 documentationcenter: ''
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: ''
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: 429f7862901814fbd2017c395706fbfa2c345f72
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434579"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60652894"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Szerepköralapú hozzáférés-vezérlési engedélyekkel kell használnia a Network watcherről
 
@@ -33,7 +33,7 @@ Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy cs
 | Microsoft.Network/networkWatchers/write                             | Létrehozni vagy frissíteni a network watchert                             |
 | Microsoft.Network/networkWatchers/delete                            | A hálózati figyelő törlése                                       |
 
-## <a name="nsg-flow-logs"></a>NSG-Folyamatnaplók
+## <a name="nsg-flow-logs"></a>NSG-folyamat-naplók
 
 | Műveletek                                                              | Name (Név)                                                           |
 | ---------                                                           | -------------                                                  |
@@ -48,7 +48,7 @@ Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy cs
 | Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | Lekérdezési eredmények kapcsolat teszt hibáinak elhárítása                |
 | Microsoft.Network/networkWatchers/troubleshoot/action               | Futtassa a kapcsolat tesztelése hibaelhárítása                             |
 
-## <a name="connection-monitor"></a>A kapcsolatfigyelő
+## <a name="connection-monitor"></a>Kapcsolatfigyelő
 
 | Műveletek                                                              | Name (Név)                                                           |
 | ---------                                                           | -------------                                                  |
@@ -103,7 +103,7 @@ Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy cs
 
 Network Watcher-funkciókkal is szükséges a következő műveleteket:
 
-- Microsoft.Authorization/ \* /olvasási
+- Microsoft.Authorization/\*/Read
 - Microsoft.Resources/subscriptions/resourceGroups/Read
 - Microsoft.Storage/storageAccounts/Read
 - Microsoft.Storage/storageAccounts/listServiceSas/Action

@@ -3,8 +3,8 @@ title: Virtuális hálózati átjáró és az Azure Network Watcher – REST has
 description: Jelen lap bemutatja, hogyan háríthatók el a virtuális hálózati átjárók és kapcsolatok az Azure Network Watcher REST használatával
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: 1276d1e581caf477449ce9a4c928d4493a6354d3
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487600"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60683206"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Virtuális hálózati átjáró és az Azure Network Watcher segítségével kapcsolatok hibaelhárítása
 
@@ -36,7 +36,7 @@ Ez a cikk végigvezeti a különböző felügyeleti feladatok, amelyek jelenleg 
 - [**A virtuális hálózati átjáró hibáinak elhárítása**](#troubleshoot-a-virtual-network-gateway)
 - [**Kapcsolat hibaelhárítása**](#troubleshoot-connections)
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 ARMclient hívás a REST API, PowerShell-lel történik. ARMClient megtalálható a chocolatey [ARMClient a chocolatey-t](https://chocolatey.org/packages/ARMClient)
 

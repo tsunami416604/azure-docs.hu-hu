@@ -16,11 +16,11 @@ ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
 ms.openlocfilehash: e3fcc8be68282f6ce491ff49f0dc5059d79fa98f
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730941"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60550115"
 ---
 # <a name="what-is-azure-batch"></a>Mi az Azure Batch?
 

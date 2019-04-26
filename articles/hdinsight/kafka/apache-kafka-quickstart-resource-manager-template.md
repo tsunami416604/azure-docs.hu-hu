@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.openlocfilehash: c1b8f711a6984a6134e6df0ae6ae12bf0b62cc0d
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757677"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60640151"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Gyors útmutató: Hozzon létre egy Apache Kafka HDInsight-fürtön
 
@@ -56,7 +56,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre [Apache Kafka](h
     | --- | --- |
     | Előfizetés | Az Azure-előfizetése. |
     | Erőforráscsoport | Az az erőforráscsoport, amelyben a fürt létrejön. |
-    | Hely | Az az Azure-régió, amelyben a fürt létrejön. |
+    | Location egység | Az az Azure-régió, amelyben a fürt létrejön. |
     | Fürt neve | A Kafka-fürt neve. |
     | Fürt bejelentkezési felhasználóneve | A fürtön futtatott HTTPs-alapú szolgáltatásokba való bejelentkezéshez használt fióknév. |
     | Fürt bejelentkezési jelszava | A bejelentkezési felhasználónévhez tartozó jelszó. |

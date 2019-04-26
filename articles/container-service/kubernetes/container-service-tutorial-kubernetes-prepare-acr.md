@@ -10,11 +10,11 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657399"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60641177"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>(ELAVULT) Üzembe helyezése és használata Azure Container Registrybe
 
@@ -32,7 +32,7 @@ Az Azure Container Registry (ACR) egy Azure-alapú privát regisztrációs adatb
 
 Az ezt követő oktatóanyagokban ezt az ACR-példányt integráljuk egy Azure Container Service-beli Kubernetes-fürttel. 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az [előző lépésben](./container-service-tutorial-kubernetes-prepare-app.md) létrehoztunk egy tárolórendszerképet egy egyszerű Azure-szavazóalkalmazáshoz. Ha még nem hozta létre az Azure-szavazóalkalmazás rendszerképét, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása](./container-service-tutorial-kubernetes-prepare-app.md) részhez.
 

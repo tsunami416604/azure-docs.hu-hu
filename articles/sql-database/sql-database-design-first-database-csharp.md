@@ -11,11 +11,11 @@ ms.reviewer: carlrab
 manager: craigg-msft
 ms.date: 02/08/2019
 ms.openlocfilehash: ce46a6b8d4e2bc57625f9202349718dfbaedc660
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995683"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553207"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Oktatóanyag: Az Azure SQL Database C belül egy önálló adatbázis relációs adatbázis tervezése&#x23; és az ADO.NET
 
@@ -67,7 +67,7 @@ Kövesse az alábbi lépéseket egy üres önálló adatbázis létrehozása.
     ![adatbázis-kiszolgáló létrehozása](./media/sql-database-design-first-database/create-database-server.png)
 
 5. Kattintson a **Kiválasztás** gombra.
-6. Kattintson a **Tarifacsomag** parancsra a szolgáltatásszint, a DTU-k vagy virtuális magok száma és a tárterületméret megadásához. Előfordulhat, hogy fedezze fel a lehetőségeket a dtu-k/virtuális magok és a storage, amely az egyes szolgáltatásszinteken elérhető.
+6. Kattintson a **Tarifacsomag** parancsra a szolgáltatási szint, a DTU-k vagy virtuális magok száma és a tárterületméret megadásához. Előfordulhat, hogy fedezze fel a lehetőségeket a dtu-k/virtuális magok és a storage, amely az egyes szolgáltatásszinteken elérhető.
 
     A szolgáltatási rétegben kiválasztása után a dtu-k vagy virtuális magok számát, és a tárterületméret kattintson **alkalmaz**.
 
@@ -92,7 +92,7 @@ Az SQL Database szolgáltatás a kiszolgáló szintjén hoz létre egy IP-tűzfa
 
    ![kiszolgáló neve](./media/sql-database-design-first-database/server-name.png)
 
-3. Kattintson a **Kiszolgálótűzfal beállítása** lehetőségre az eszköztáron. Megnyílik az SQL Database kiszolgálóhoz tartozó **Tűzfalbeállítások** oldal.
+3. Kattintson a **Kiszolgálótűzfal beállítása** lehetőségre az eszköztáron. Megnyílik az SQL-adatbáziskiszolgálóhoz tartozó **Tűzfalbeállítások** oldal.
 
    ![kiszolgálószintű IP-tűzfalszabály](./media/sql-database-design-first-database/server-firewall-rule.png)
 

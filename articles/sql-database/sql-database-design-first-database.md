@@ -11,11 +11,11 @@ ms.reviewer: v-masebo
 manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: 3ca17ae905fff0911b58a0d336e0899ff385085c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990479"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60556744"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Oktatóanyag: Egyetlen adatbázisban az SSMS használatával Azure SQL Database relációs adatbázis tervezése
 
@@ -77,7 +77,7 @@ Kövesse az alábbi lépéseket egy üres önálló adatbázis létrehozása.
     ![adatbázis-kiszolgáló létrehozása](./media/sql-database-design-first-database/create-database-server.png)
 
 5. Kattintson a **Kiválasztás** gombra.
-6. Kattintson a **Tarifacsomag** parancsra a szolgáltatásszint, a DTU-k vagy virtuális magok száma és a tárterületméret megadásához. Előfordulhat, hogy fedezze fel a lehetőségeket a dtu-k/virtuális magok és a storage, amely az egyes szolgáltatásszinteken elérhető.
+6. Kattintson a **Tarifacsomag** parancsra a szolgáltatási szint, a DTU-k vagy virtuális magok száma és a tárterületméret megadásához. Előfordulhat, hogy fedezze fel a lehetőségeket a dtu-k/virtuális magok és a storage, amely az egyes szolgáltatásszinteken elérhető.
 
     A szolgáltatási rétegben kiválasztása után a dtu-k vagy virtuális magok számát, és a tárterületméret kattintson **alkalmaz**.
 
@@ -102,7 +102,7 @@ Az SQL Database szolgáltatás a kiszolgáló szintjén hoz létre egy IP-tűzfa
 
    ![kiszolgáló neve](./media/sql-database-design-first-database/server-name.png)
 
-3. Kattintson a **Kiszolgálótűzfal beállítása** lehetőségre az eszköztáron. Megnyílik az SQL Database kiszolgálóhoz tartozó **Tűzfalbeállítások** oldal.
+3. Kattintson a **Kiszolgálótűzfal beállítása** lehetőségre az eszköztáron. Megnyílik az SQL-adatbáziskiszolgálóhoz tartozó **Tűzfalbeállítások** oldal.
 
    ![kiszolgálószintű IP-tűzfalszabály](./media/sql-database-design-first-database/server-firewall-rule.png)
 
@@ -151,7 +151,7 @@ A [Transact-SQL](/sql/t-sql/language-reference) használatával hozzon létre eg
 - Személy
 - Kurzus
 - Hallgató
-- Kredit
+- Kreditösszeg
 
 Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymáshoz. Ezen táblázatok némelyike más táblák oszlopaira hivatkozik. Például a *tanulói* táblára hivatkozik az *PersonId* oszlopa a *személy* tábla. Tanulmányozza a diagramot az ebben az oktatóanyagban szereplő táblák kapcsolatainak megértéséhez. A hatékony adatbázistáblák létrehozásának részleteiért lásd: [Hatékony adatbázistáblák létrehozása](https://msdn.microsoft.com/library/cc505842.aspx). Az adattípusok kiválasztására vonatkozó további információkért lásd: [Adattípusok](/sql/t-sql/data-types/data-types-transact-sql).
 
@@ -227,10 +227,10 @@ Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymásho
 4. Hajtsa végre az alábbi parancsokat a táblákat, és cserélje le az értékeket a Mintaadat beszúrásához *kiszolgáló*, *adatbázis*, *felhasználói*, és *jelszó* azokra az értékekre a környezethez.
 
    ```cmd
-   bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Person in SamplePersonData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Student in SampleStudentData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Credit in SampleCreditData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Course in SampleCourseData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Person in SamplePersonData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Student in SampleStudentData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Credit in SampleCreditData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
    ```
 
 Ezzel mintaadatokat töltött be a korábban létrehozott táblákba.
