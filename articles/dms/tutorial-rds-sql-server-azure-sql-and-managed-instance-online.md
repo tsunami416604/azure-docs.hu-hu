@@ -64,7 +64,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - Győződjön meg arról, hogy a virtuális hálózatok közötti hálózati biztonsági csoport szabályai nem blokkolják a következő bejövő kommunikációs portokat, Azure Database Migration Service: 443, 53, 9354, 445, 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse az SQL-kiszolgáló forrását, amely alapértelmezés szerint az 1433-as TCP-port.
-- Hozzon létre egy kiszolgálószintű [tűzfalszabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure), hogy az Azure SQL Database Migration Service hozzáférhessen a céladatbázisokhoz. Adja meg az Azure Database Migration Service-hez használt virtuális hálózat alhálózati tartományát.
+- Hozzon létre egy kiszolgálószintű [tűzfalszabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) az Azure SQL-adatbáziskiszolgáló számára, hogy az Azure SQL Database Migration Service hozzáférhessen a céladatbázisokhoz. Adja meg az Azure Database Migration Service-hez használt virtuális hálózat alhálózati tartományát.
 - Győződjön meg arról, hogy a távoli asztali szolgáltatások SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatok társítva, egy olyan fiókkal, amely a "db_owner" adatbázis-szerepkörök, amelyek az áttelepíteni kívánt összes adatbázis és a "Processadmin" kiszolgálói szerepkör tagja.
 - Győződjön meg arról, hogy a cél Azure SQL Database-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezik-e adatbázis VEZÉRLÉSE engedéllyel a cél Azure SQL-adatbázisok és a sysadmin (rendszergazda) szerepkör tagjának, ha az áttelepítés az Azure SQL Database felügyelt példánya.
 - A forrás SQL Server távoli asztali szolgáltatások kell lennie az SQL Server 2012 vagy újabb verzió. A futó SQL Server-példány verziójának megállapításához lásd [az SQL Server és összetevői verziójának, kiadásának és frissítési szintjének megállapításával](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an) foglalkozó cikket.
@@ -85,9 +85,9 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
     @supports_net_changes = 1 --for PK table 1, non PK tables 0
     GO
     ```
-- Tiltsa le az adatbázistriggereket az Azure SQL Database-céladatbázisban.
+- Tiltsa le az adatbázistriggereket az Azure SQL-céladatbázisban.
     > [!NOTE]
-    > Az Azure SQL Database-céladatbázis triggereit az alábbi lekérdezéssel keresheti meg:
+    > Az Azure SQL-céladatbázis triggereit az alábbi lekérdezéssel keresheti meg:
     ```
     Use <Database name>
     select * from sys.triggers
@@ -99,7 +99,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 A séma migrálása az Azure SQL Database a DMA segítségével.
 
 > [!NOTE]
-> Mielőtt létrehozna egy migrálási projektet a DMA-ban, győződjön meg arról, hogy az előfeltételekben meghatározottak alapján már létrehozott egy Azure SQL Database-adatbázist. Az ebben az oktatóanyagban az Azure SQL Database nevére azt feltételezi, hogy **AdventureWorks2012**, de megadhat bármilyen kívánt nevét.
+> Mielőtt létrehozna egy migrálási projektet a DMA-ban, győződjön meg arról, hogy az előfeltételekben meghatározottak alapján már létrehozott egy Azure SQL-adatbázist. Az ebben az oktatóanyagban az Azure SQL Database nevére azt feltételezi, hogy **AdventureWorks2012**, de megadhat bármilyen kívánt nevét.
 
 Az **AdventureWorks2012** séma Azure SQL Database-be való migrálásához végezze el a következő lépéseket:
 
@@ -222,7 +222,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
    ![Forrás részletei](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-source-details3.png)
 
 ## <a name="specify-target-details"></a>Cél adatainak megadása
-1. Válassza a **Mentés** lehetőséget, majd a **Migrálási cél részletei** képernyőn adja meg a célul szolgáló Azure SQL Database Server kapcsolati adatait. Ez a cél az az Azure SQL Database, amelyen üzembe helyezte az **AdventureWorks2012** sémát a DMA-val.
+1. Válassza a **Mentés** lehetőséget, majd a **Migrálási cél részletei** képernyőn adja meg a célul szolgáló Azure SQL-adatbáziskiszolgáló kapcsolati adatait. Ez a cél az az Azure SQL Database, amelyen üzembe helyezte az **AdventureWorks2012** sémát a DMA-val.
 
     ![Cél kiválasztása](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-select-target3.png)
 
@@ -275,7 +275,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
  
 2.  Mindenképpen állítsa le a forrásadatbázis összes bejövő tranzakcióját, és várjon, amíg a **Függőben lévő módosítások** számlálója **0**-t nem mutat.
 3.  Kattintson a **Megerősítés**, majd az **Alkalmaz** gombra.
-4. Ha az adatbázis migrálási állapota **Befejezve** értékre vált, csatlakoztassa alkalmazásait az új Azure SQL Database-céladatbázishoz.
+4. Ha az adatbázis migrálási állapota **Befejezve** értékre vált, csatlakoztassa alkalmazásait az új Azure SQL-céladatbázishoz.
  
     ![Tevékenység állapota: Befejezve](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-completed.png)
 

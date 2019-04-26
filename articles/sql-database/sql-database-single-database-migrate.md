@@ -59,7 +59,7 @@ Az alábbi lista az importálási teljesítmény optimalizálására vonatkozó 
 - Tiltsa le az automatikus statisztikákat a migrálás alatt.
 - Particionálja a táblákat és az indexeket.
 - Vesse el, majd a folyamat befejezése után hozza létre újra az indexelt nézeteket.
-- A ritkán lekérdezett előzményadatokat helyezze át másik adatbázisba, majd telepítse át ezeket az előzményadatokat egy külön Azure SQL Database-adatbázisba. Ezután lekérdezheti ezeket az előzményadatokat a [rugalmas lekérdezések](sql-database-elastic-query-overview.md) használatával.
+- A ritkán lekérdezett előzményadatokat helyezze át másik adatbázisba, majd telepítse át ezeket az előzményadatokat egy külön Azure SQL-adatbázisba. Ezután lekérdezheti ezeket az előzményadatokat a [rugalmas lekérdezések](sql-database-elastic-query-overview.md) használatával.
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>A teljesítmény optimalizálása a migrálás befejezése után
 
