@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következő elemek:
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
-- Azure SQL Database-adatbázis. Egy használati létrehozása
+- Azure SQL-adatbázis. Egy használati létrehozása
   - [Portál](sql-database-single-database-get-started.md)
   - [Parancssori felület](sql-database-cli-samples.md)
   - [PowerShell](sql-database-powershell-samples.md)
