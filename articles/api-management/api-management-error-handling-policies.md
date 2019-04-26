@@ -79,13 +79,13 @@ A `on-error` házirend szakasz használható a hatókörben. API-közzétevők k
   
 | Name (Név)     | Típus   | Leírás                                                                                               | Szükséges |
 |----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| Forrás   | sztring | Ahol a hiba történt az elem nevét. Lehet, vagy a házirend, vagy a beépített folyamat nevét.     | Igen      |
-| Ok   | sztring | Gépet-barát hibakód, amely hibakezelés lesznek használva.                                       | Nem       |
-| Üzenet  | sztring | Emberek számára olvasható hiba leírása.                                                                         | Igen      |
-| Hatókör    | sztring | Ha a hiba történt, ezért lehet egy "globális", "termék", "api" vagy "művelet" hatókör neve | Nem       |
-| Section  | sztring | Ha hiba történt a szakasz nevét. A lehetséges értékek: "bejövő", "Háttér", "kimenő" vagy "error".       | Nem       |
-| Útvonal     | sztring | Meghatározza a beágyazott házirend, például "[3] válasszon / amikor [2]".                                                        | Nem       |
-| PolicyId | sztring | Az érték a `id` attribútumot, ha meg van adva, a házirend, ahol a hiba történt az ügyfél által             | Nem       |
+| `Source`   | sztring | Ahol a hiba történt az elem nevét. Lehet, vagy a házirend, vagy a beépített folyamat nevét.     | Igen      |
+| `Reason`   | sztring | Gépet-barát hibakód, amely hibakezelés lesznek használva.                                       | Nem       |
+| `Message`  | sztring | Emberek számára olvasható hiba leírása.                                                                         | Igen      |
+| `Scope`    | sztring | Ha a hiba történt, ezért lehet egy "globális", "termék", "api" vagy "művelet" hatókör neve | Nem       |
+| `Section`  | sztring | Ha hiba történt a szakasz nevét. A lehetséges értékek: "bejövő", "Háttér", "kimenő" vagy "error".       | Nem       |
+| `Path`     | sztring | Meghatározza a beágyazott házirend, például "[3] válasszon / amikor [2]".                                                        | Nem       |
+| `PolicyId` | sztring | Az érték a `id` attribútumot, ha meg van adva, a házirend, ahol a hiba történt az ügyfél által             | Nem       |
 
 > [!TIP]
 > Az állapotkód: környezet keresztül érheti el. Response.StatusCode.  
