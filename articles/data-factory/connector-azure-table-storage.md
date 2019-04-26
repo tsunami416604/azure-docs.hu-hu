@@ -49,7 +49,7 @@ Az Azure Storage társított szolgáltatása a fiókkulcs használatával hozhat
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot állítsa **AzureTableStorage**. |Igen |
-| kapcsolati Sztringje | Adja meg a connectionString tulajdonság tárolási való csatlakozáshoz szükséges információk. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Fiókkulcs is helyezheti az Azure Key Vaultban, és lehúzhassa a `accountKey` konfigurációs ki a kapcsolati karakterláncot. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. |Igen |
+| connectionString | Adja meg a connectionString tulajdonság tárolási való csatlakozáshoz szükséges információk. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Fiókkulcs is helyezheti az Azure Key Vaultban, és lehúzhassa a `accountKey` konfigurációs ki a kapcsolati karakterláncot. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. |Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 >[!NOTE]
@@ -266,7 +266,7 @@ Adatok másolása az Azure Table, állítsa be a fogadó típusa a másolási te
 | azureTablePartitionKeyName |Adja meg az oszlop, amelynek az értékekkel, partíciókulcsok nevét. Ha nincs megadva, a partíciós kulcs "AzureTableDefaultPartitionKeyValue" lesz. |Nem |
 | azureTableRowKeyName |Adja meg az oszlop, amelynek oszlop értékeit a sor kulcsaként használt nevét. Ha nincs megadva, használjon egy GUID Azonosítót minden egyes sorára. |Nem |
 | azureTableInsertType |Adatok beszúrása az Azure Table a módot. Ez a tulajdonság szabja meg, hogy rendelkeznek-e létező sorok egyeztetésével partíció-és a kimeneti tábla cserélni vagy egyesített értékekre. <br/><br/>Engedélyezett értékek a következők **egyesítési** (alapértelmezett), és **cseréje**. <br/><br> Ez a beállítás vonatkozik sorszinten a táblázatok szintjén nem. Sem a beállítás törli a kimeneti tábla sorait, amelyek a bemeneti adatok nem léteznek. A merge, és cserélje le beállításait működését kapcsolatos további információkért lásd: [entity Insert vagy merge](https://msdn.microsoft.com/library/azure/hh452241.aspx) és [helyezze be vagy cserélje le az entitás](https://msdn.microsoft.com/library/azure/hh452242.aspx). |Nem |
-| WriteBatchSize |Szúr be az Azure Table adatokat, amikor writeBatchSize vagy writeBatchTimeout találati.<br/>Megengedett értékek: egész szám (sorok száma). |Nem (az alapértelmezett érték 10 000) |
+| writeBatchSize |Szúr be az Azure Table adatokat, amikor writeBatchSize vagy writeBatchTimeout találati.<br/>Megengedett értékek: egész szám (sorok száma). |Nem (az alapértelmezett érték 10 000) |
 | writeBatchTimeout |Szúr be az Azure Table adatokat, amikor writeBatchSize vagy writeBatchTimeout találati.<br/>Megengedett értékek: időtartam. Például "00: 20:00" (20 percig). |Nem (az alapértelmezett érték 90 másodperc alatt, a storage-kliens alapértelmezett időkorlátja) |
 
 **Példa**
