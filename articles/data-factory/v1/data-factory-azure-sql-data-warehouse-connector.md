@@ -276,9 +276,9 @@ Az alábbi táblázat példákkal szolgál, adja meg a **tableName** az adatkés
 
 | Adatbázis-séma | Tábla neve | Táblanév JSON-tulajdonság |
 | --- | --- | --- |
-| dbo |Táblanév |Táblanév vagy a dbo. Táblanév vagy [dbo]. [Táblanév] |
-| dbo1 |Táblanév |dbo1. Táblanév vagy [dbo1]. [Táblanév] |
-| dbo |My.Table |[My.Table] vagy [dbo]. [My.Table] |
+| dbo |MyTable |MyTable vagy dbo.MyTable vagy [dbo].[MyTable] |
+| dbo1 |MyTable |dbo1.MyTable vagy [dbo1].[MyTable] |
+| dbo |My.Table |[My.Table] vagy [dbo].[My.Table] |
 | dbo1 |My.Table |[dbo1].[My.Table] |
 
 Ha a következő hibát látja, annak oka az lehet a tableName tulajdonsághoz megadott érték problémáját. Tekintse meg a táblázat tartalmazza a megfelelő módszer az adja meg az értékeket a tableName JSON-tulajdonságot.
