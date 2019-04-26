@@ -1,6 +1,6 @@
 ---
 title: Indexelők indexelőtámogatást adatforrások - indexelés során Azure keresése
-description: Feltérképezi az Azure SQL Database, az Azure Cosmos DB vagy az Azure Storage tárolókat a kereshető adatok kinyeréséhez és az Azure Search-index feltöltéséhez.
+description: Feltérképezi az Azure SQL-adatbázist, az Azure Cosmos DB vagy az Azure Storage tárolókat a kereshető adatok kinyeréséhez és az Azure Search-index feltöltéséhez.
 author: HeidiSteen
 manager: cgronlun
 services: search

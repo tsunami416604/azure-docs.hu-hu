@@ -1,6 +1,6 @@
 ---
-title: PowerShell-példaszinkronizálás több Azure SQL Database-adatbázis között | Microsoft Docs
-description: Azure PowerShell-példaszkript több Azure SQL Database-adatbázis közötti szinkronizáláshoz
+title: PowerShell-példaszinkronizálás több Azure SQL-adatbázis között | Microsoft Docs
+description: Azure PowerShell-példaszkript több Azure SQL-adatbázis közötti szinkronizáláshoz
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -21,7 +21,7 @@ ms.locfileid: "60387877"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz
  
-Ez a PowerShell-példa több Azure SQL Database-adatbázis közötti szinkronizáláshoz konfigurálja a Data Syncet.
+Ez a PowerShell-példa több Azure SQL-adatbázis közötti szinkronizáláshoz konfigurálja a Data Syncet.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
