@@ -27,10 +27,10 @@ Minden API Management-szolgáltatáspéldány tulajdonságok gyűjteménye, kulc
 
 | Attribútum | Typo | Leírás |
 | --- | --- | --- |
-| Megjelenített név |sztring |Alfanumerikus sztring, amellyel hivatkozni lehet a tulajdonságra a szabályzatokban. |
-| Érték |sztring |A tulajdonság értéke. Nem lehet üres vagy állhatnak csak térközökből. |
-|Titkos|logikai|Meghatározza, hogy az érték egy titkos kulcs-e, és a rendszer titkosítsa-e.|
-| Címkék |sztringek tömbje |Nem kötelező, címkék, akkor használható a tulakdonságlista szűréséhez. |
+| `Display name` |sztring |Alfanumerikus sztring, amellyel hivatkozni lehet a tulajdonságra a szabályzatokban. |
+| `Value` |sztring |A tulajdonság értéke. Nem lehet üres vagy állhatnak csak térközökből. |
+| `Secret` |logikai|Meghatározza, hogy az érték egy titkos kulcs-e, és a rendszer titkosítsa-e.|
+| `Tags` |sztringek tömbje |Nem kötelező, címkék, akkor használható a tulakdonságlista szűréséhez. |
 
 ![Névvel ellátott értékek](./media/api-management-howto-properties/named-values.png)
 
