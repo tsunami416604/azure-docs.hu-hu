@@ -1,6 +1,6 @@
 ---
 title: PowerShell-példa – Helyszíni szinkronizálás az SQL Database és az SQL Server között | Microsoft Docs
-description: Azure PowerShell-példaszkript egy Azure SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz
+description: Azure PowerShell-példaszkript egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 031a23016abb5b0d8c4c6ebd7213bb24cf3c53cb
 ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58487651"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz
 
-Ez a PowerShell-példa egy Azure SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz konfigurálja a Data Syncet. 
+Ez a PowerShell-példa egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz konfigurálja a Data Syncet. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

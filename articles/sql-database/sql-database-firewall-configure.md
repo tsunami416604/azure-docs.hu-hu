@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 513836257a292069da709ad7a71e480f2b4d069d
 ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/13/2019
 ms.locfileid: "59549729"
@@ -75,7 +75,7 @@ Amikor egy számítógép megpróbál csatlakozni az adatbázis-kiszolgálóhoz 
 
 ### <a name="connecting-from-azure"></a>Csatlakozás az Azure-ból
 
-Annak engedélyezéséhez, hogy az Azure-alkalmazások csatlakozhassanak az Azure SQL Serverhez, engedélyezni kell az Azure-kapcsolatokat. Amikor egy Azure-alkalmazás megkísérel csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezve vannak-e. Kezdő és záró egyenlő 0.0.0.0 címet tartalmazó tűzfalbeállítás jelzi, hogy az Azure-kapcsolatok engedélyezettek. Ha a csatlakozási kísérlet nem engedélyezett, a kérés nem éri el az Azure SQL Database-kiszolgálót.
+Annak engedélyezéséhez, hogy az Azure-alkalmazások csatlakozhassanak az Azure SQL Serverhez, engedélyezni kell az Azure-kapcsolatokat. Amikor egy Azure-alkalmazás megkísérel csatlakozni az adatbázis-kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezve vannak-e. Kezdő és záró egyenlő 0.0.0.0 címet tartalmazó tűzfalbeállítás jelzi, hogy az Azure-kapcsolatok engedélyezettek. Ha a csatlakozási kísérlet nem engedélyezett, a kérés nem éri el az Azure SQL-adatbáziskiszolgálót.
 
 > [!IMPORTANT]
 > Ez a beállítás konfigurálja a tűzfalat arra, hogy engedélyezzen minden, az Azure felől érkező kapcsolatot, beleértve a más ügyfelek előfizetéseiből érkező kapcsolatokat is. Ezen beállítás kiválasztásakor győződjön meg arról, hogy a bejelentkezési és felhasználói engedélyei a hozzáféréseket az arra jogosult felhasználókra korlátozzák.

@@ -155,7 +155,7 @@ Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 8. Jelölje be az **Azure-szolgáltatások kiszolgálói hozzáférésének engedélyezése** jelölőnégyzetet.
 9. Kattintson a **Kiválasztás** elemre az új kiszolgáló kijelöléséhez.
 
-    ![Új SQL Database-kiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
+    ![Új SQL-adatbáziskiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
 10. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása

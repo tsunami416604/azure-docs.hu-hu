@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Hozzon létre egy Azure Data Factory-folyamatot a REST API használatával |} A Microsoft Docs'
-description: Az oktatóanyagban a REST API használatával hoz létre egy másolási tevékenységgel rendelkező Azure Data Factory-folyamatot az adatok Azure Blob Storage-ból Azure SQL Database-be való másolásához.
+description: Az oktatóanyagban a REST API használatával hoz létre egy másolási tevékenységgel rendelkező Azure Data Factory-folyamatot az adatok Azure Blob Storage-tárból egy Azure SQL-adatbázisba való másolásához.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -16,7 +16,7 @@ ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d83b659cc04218fad66ea95216e69682b265dc83
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "58077802"
@@ -37,7 +37,7 @@ ms.locfileid: "58077802"
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [másolási tevékenység oktatóanyagát](../quickstart-create-data-factory-rest-api.md). 
 
-A cikk útmutatást nyújt adat-előállítók REST API használatával való létrehozására olyan folyamatokkal, amelyek az Azure Blob Storage-ból másolnak adatokat az Azure SQL Database-be. Ha még csak ismerkedik az Azure Data Factory szolgáltatással, olvassa el a [Bevezetés az Azure Data Factory használatába](data-factory-introduction.md) című cikket az oktatóanyag elvégzése előtt.   
+A cikk útmutatást nyújt adat-előállítók REST API használatával való létrehozására olyan folyamatokkal, amelyek az Azure Blob Storage-tárból másolnak adatokat egy Azure SQL-adatbázisba. Ha még csak ismerkedik az Azure Data Factory szolgáltatással, olvassa el a [Bevezetés az Azure Data Factory használatába](data-factory-introduction.md) című cikket az oktatóanyag elvégzése előtt.   
 
 Ebben az oktatóanyagban egy folyamatot egy tevékenységgel rendelkező létrehozása: Másolási tevékenység. A másolási tevékenység adatokat másol a forrásadattárból egy támogatott fogadó adattárba. A forrásként és fogadóként támogatott adattárak listájáért lásd: [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats). A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md).
 
@@ -224,7 +224,7 @@ Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságoka
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| type | A type tulajdonság beállítása **AzureSqlTable**, mert az adatok másolása az Azure SQL Database egyik táblájába történik. |
+| type | A type tulajdonság beállítása **AzureSqlTable**, mert az adatok másolása az Azure SQL-adatbázis egyik táblájába történik. |
 | linkedServiceName | A korábban létrehozott **AzureSqlLinkedService** szolgáltatásra hivatkozik. |
 | tableName | Azt a **táblát** határozza meg, amelybe a rendszer az adatokat másolja. | 
 | frequency/interval | A frequency (gyakoriság) értéke **Hour** (Óra), az interval (időköz) értéke pedig **1**, azaz a rendszer a kimeneti szeleteket **óránként** állítja elő a folyamat kezdő és befejező időpontja közti időszakban (és nem azon kívül).  |
@@ -383,7 +383,7 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
 
 Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Ebben a tárfiókban hozta létre a tárolót, és ebbe töltötte fel az adatokat az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként.   
 
-Az AzureSqlLinkedService az Azure SQL Database-t társítja az adat-előállítóval. A blobtárolóból másolt adatokat a rendszer ebben az adatbázisban tárolja. Az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként létrehozta az emp táblát az adatbázisban.  
+Az AzureSqlLinkedService az Azure SQL-adatbázist társítja az adat-előállítóval. A blobtárolóból másolt adatokat a rendszer ebben az adatbázisban tárolja. Az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként létrehozta az emp táblát az adatbázisban.  
 
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage társított szolgáltatás létrehozása
 Ebben a lépésben társítja az Azure Storage-fiókot az adat-előállítóval. Ebben a szakaszban megadhatja az Azure-tárfiók nevét és kulcsát. Az Azure Storage társított szolgáltatás definiálásához használt JSON-tulajdonságokkal kapcsolatos információkért tekintse meg az [Azure Storage társított szolgáltatás](data-factory-azure-blob-connector.md#azure-storage-linked-service) című szakaszt.  
@@ -424,11 +424,11 @@ Ebben a lépésben társítani fogja az Azure SQL-adatbázist az adat-előállí
     ```
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
-Az előző lépésben létrehozta az Azure Storage-fiók és az Azure SQL Database összekapcsolását végző társított szolgáltatásokat. Ebben a lépésben két adatkészletet határoz meg – AzureBlobInput és AzureSqlOutput néven –, amelyek az AzureStorageLinkedService és az AzureSqlLinkedService szolgáltatás által hivatkozott bemeneti és kimeneti adatokat jelölik.
+Az előző lépésben létrehozta az Azure Storage-fiók és az Azure SQL-adatbázis összekapcsolását végző társított szolgáltatásokat. Ebben a lépésben két adatkészletet határoz meg – AzureBlobInput és AzureSqlOutput néven –, amelyek az AzureStorageLinkedService és az AzureSqlLinkedService szolgáltatás által hivatkozott bemeneti és kimeneti adatokat jelölik.
 
 Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure Storage-fiók csatlakoztatásához használ. A bemeneti blob adatkészlete (AzureBlobInput) pedig a tárolót és a bemeneti adatokat tartalmazó mappát határozza meg.  
 
-Ehhez hasonlóan az Azure SQL Database társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure SQL Database csatlakoztatásához használ. Az SQL-tábla kimeneti adatkészlete (OututDataset) határozza meg azt az adatbázistáblát, amelybe a rendszer a blobtárolóból származó adatokat másolja. 
+Ehhez hasonlóan az Azure SQL Database társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure SQL-adatbázishoz való csatlakoztatáshoz használ. Az SQL-tábla kimeneti adatkészlete (OututDataset) határozza meg azt az adatbázistáblát, amelybe a rendszer a blobtárolóból származó adatokat másolja. 
 
 ### <a name="create-input-dataset"></a>Bemeneti adatkészlet létrehozása
 Ebben a lépésben hozza létre az AzureBlobInput nevű adatkészletet, amely az AzureStorageLinkedService társított szolgáltatás által hivatkozott Azure Storage blobtárolójának (adftutorial) gyökérmappájában található blobfájlra mutat (emp.txt). Ha nem ad meg értéket a fájlnévnek (vagy kihagyja azt), a rendszer a bemeneti mappában található összes blob adatát a célhelyre másolja. Ebben az oktatóanyagban a fileName értékét adja meg. 
@@ -489,7 +489,7 @@ Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Az oktatóanyagb
     Write-Host $results
     ```
 
-**Gratulálunk!** Sikeresen létrehozott egy Azure-adatelőállítót, amelyhez adatokat az Azure Blob Storage-ből az Azure SQL-adatbázisba másoló adatcsatorna tartozik.
+**Gratulálunk!** Sikeresen létrehozott egy Azure-adatelőállítót, amelyhez adatokat az Azure Blob Storage-tárból egy Azure SQL-adatbázisba másoló adatcsatorna tartozik.
 
 ## <a name="monitor-pipeline"></a>Folyamat figyelése
 Ebben a lépésben a Data Factory REST API segítségével figyelheti meg az adatcsatorna által készített szeleteket.
@@ -527,7 +527,7 @@ Az oktatóanyag során a REST API segítségével létrehozott egy Azure-adatel�
 1. Létrehozott egy Azure **data factoryt**.
 2. **Társított szolgáltatásokat** hozott létre:
    1. Egy Azure Storage társított szolgáltatást a bemeneti adatokat tároló Azure Storage-fiók csatlakoztatásához.     
-   2. Egy Azure SQL társított szolgáltatást a kimeneti adatokat tároló Azure SQL Database csatlakoztatásához. 
+   2. Egy Azure SQL társított szolgáltatást a kimeneti adatokat tároló Azure SQL-adatbázis csatlakoztatásához. 
 3. **Adatkészleteket** hozott létre, amelyek az adatcsatorna bemeneti és kimeneti adatait írják le.
 4. Létrehozott egy másolási tevékenységgel ellátott **adatcsatornát**, ahol a BlobSource a forrás, az SqlSink pedig a fogadó. 
 

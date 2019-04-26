@@ -85,13 +85,13 @@
           href: sql-database-design-first-database-csharp.md
     - name: Migrálás az SQL Database-be
       items:
-        - name: Migrálás önálló/készletezett adatbázisba DMS használatával
+        - name: Migrálás önálló/rugalmas készletbe helyezett adatbázisba DMS használatával
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
         - name: Migrálás felügyelt példányra DMS használatával
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
     - name: Biztonság az SQL Database-ben
       items:
-        - name: Önálló és készletbe vont adatbázisok biztonsága
+        - name: Önálló és rugalmas készletbe helyezett adatbázisok biztonsága
           href: sql-database-security-tutorial.md
         - name: Felügyelt példányok biztonsága
           href: sql-database-managed-instance-aad-security-tutorial.md
@@ -118,21 +118,22 @@
           href: sql-database-purchase-models.md
         - name: vCore-alapú modell
           href: sql-database-service-tiers-vcore.md
-        - name: DTU szolgáltatásszint
+        - name: DTU szolgáltatási szint
           href: sql-database-service-tiers-dtu.md
         - name: Előre fizetés fenntartott kapacitásért
           href: sql-database-reserved-capacity.md
-        - name: Migrálás prémium RS szolgáltatásszintről
+        - name: Migrálás prémium RS szolgáltatási szintről
           href: sql-database-service-tiers-prs.md
     - name: Számítás és tárolás
       items:
         - name: Áttekintés
           href: sql-database-service-tiers-general-purpose-business-critical.md
-        - name: Általános célú/Standard szolgáltatásszint
+          displayName: provisioned compute tier
+        - name: Általános célú/Standard szolgáltatási szint
           href: sql-database-service-tier-general-purpose.md
-        - name: Üzleti szempontból kritikus/Prémium szolgáltatásszint
+        - name: Üzleti szempontból kritikus/Prémium szolgáltatási szint
           href: sql-database-service-tier-business-critical.md
-        - name: Rugalmas skálázás szolgáltatásszint
+        - name: Rugalmas skálázás szolgáltatási szint
           href: sql-database-service-tier-hyperscale.md
         - name: Rugalmas skálázással kapcsolatos gyakori kérdések
           href: sql-database-service-tier-hyperscale-faq.md
@@ -369,7 +370,7 @@
       items:
         - name: Áttekintés
           href: sql-database-howto-single-database.md
-        - name: Migrálás önálló/készletbe vont adatbázisba
+        - name: Migrálás önálló/rugalmas készletbe helyezett adatbázisba
           href: sql-database-single-database-migrate.md
         - name: SQL-adatbázis kezelése migrálás után
           href: sql-database-manage-after-migration.md

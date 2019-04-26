@@ -69,7 +69,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse az SQL-kiszolgáló forrását, amely alapértelmezés szerint az 1433-as TCP-port.
 - Ha több megnevezett SQL Server-példányt futtat dinamikus portokkal, előnyös lehet engedélyezni az SQL Browser Service-t, és engedélyezni a tűzfalakon keresztül az 1434-es UDP-porthoz való hozzáférést. Így az Azure Database Migration Service a forráskiszolgálón található megnevezett példányhoz férhet hozzá.
 - Ha tűzfalkészüléket használ a forrásadatbázis(ok) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia annak engedélyezéséhez, hogy az Azure Database Migration Service a migrálás céljából hozzáférhessen a forrásadatbázis(ok)hoz.
-- Hozzon létre egy kiszolgálószintű [tűzfalszabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure), hogy az Azure SQL Database Migration Service hozzáférhessen a céladatbázisokhoz. Adja meg az Azure Database Migration Service-hez használt virtuális hálózat alhálózati tartományát.
+- Hozzon létre egy kiszolgálószintű [tűzfalszabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) az Azure SQL-adatbáziskiszolgáló számára, hogy az Azure SQL Database Migration Service hozzáférhessen a céladatbázisokhoz. Adja meg az Azure Database Migration Service-hez használt virtuális hálózat alhálózati tartományát.
 - Gondoskodjon róla, hogy a forrásként szolgáló SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) engedélyekkel.
 - Gondoskodjon róla, hogy a forrásként szolgáló Azure SQL Database-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek CONTROL DATABASE engedéllyel a célként szolgáló Azure SQL adatbázisokban.
 - A forrás SQL Servernek 2005-ös vagy újabb verziójúnak kell lennie. A futó SQL Server-példány verziójának megállapításához lásd [az SQL Server és összetevői verziójának, kiadásának és frissítési szintjének megállapításával](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an) foglalkozó cikket.
@@ -109,9 +109,9 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
     Ha a terjesztés nincs beállítva, tehát ha a fenti parancs kimenetében a terjesztői kiszolgálónál NULL érték jelenik meg, akkor konfigurálja a terjesztést a [terjesztés konfigurálását](https://docs.microsoft.com/sql/relational-databases/replication/configure-publishing-and-distribution?view=sql-server-2017) ismertető cikk útmutatása alapján.
 
-- Tiltsa le az adatbázistriggereket az Azure SQL Database-céladatbázisban.
+- Tiltsa le az adatbázistriggereket az Azure SQL-céladatbázisban.
     >[!NOTE]
-    > Az Azure SQL Database-céladatbázis triggereit az alábbi lekérdezéssel keresheti meg:
+    > Az Azure SQL-céladatbázis triggereit az alábbi lekérdezéssel keresheti meg:
 
     ```sql
     Use <Database name>
@@ -159,7 +159,7 @@ A helyszíni adatbázis felméréséhez hajtsa végre a következő lépéseket:
 Miután nem okoz gondot az értékelés az és DMA meggyőződött arról, hogy a kijelölt adatbázis egy önálló adatbázis vagy készletezett Azure SQL Database-adatbázishoz való migrálásának egy működőképes jelölt, használja a séma migrálása az Azure SQL Database.
 
 > [!NOTE]
-> Mielőtt létrehozna egy migrálási projektet a DMA-ban, győződjön meg arról, hogy az előfeltételekben meghatározottak alapján már létrehozott egy Azure SQL Database-adatbázist. Ebben az oktatóanyagban az Azure SQL Database neve **AdventureWorksAzure**, de megadhat bármilyen másik nevet is.
+> Mielőtt létrehozna egy migrálási projektet a DMA-ban, győződjön meg arról, hogy az előfeltételekben meghatározottak alapján már létrehozott egy Azure SQL-adatbázist. Ebben az oktatóanyagban az Azure SQL Database neve **AdventureWorksAzure**, de megadhat bármilyen másik nevet is.
 > [!IMPORTANT]
 > Az SSIS használata, ha a DMA jelenleg nem támogatja az áttelepítés forrás SSISDB, de, ugyanakkor az SSIS-projektek/csomagok a cél Azure SQL Database által üzemeltetett SSISDB. SSIS-csomagok áttelepítése kapcsolatos további információkért tekintse meg a cikket [áttelepítése az SQL Server Integration Services-csomagok az Azure-bA](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
 
@@ -178,7 +178,7 @@ Miután nem okoz gondot az értékelés az és DMA meggyőződött arról, hogy 
 
     ![Data Migration Assistant forráskapcsolati adatok](media/tutorial-sql-server-to-azure-sql-online/dma-source-connect.png)
 
-6. Válassza a **Tovább** lehetőséget. A **Csatlakozás célkiszolgálóhoz** területen alatt adja meg az Azure SQL Database célkapcsolati adatait, válassza a **Csatlakozás** lehetőséget, majd válassza ki azt az **AdventureWorksAzure** adatbázist, amelyet az Azure SQL Database-ben előzetesen kiépített.
+6. Válassza a **Tovább** lehetőséget. A **Csatlakozás célkiszolgálóhoz** területen adja meg az Azure SQL Database célkapcsolati adatait, válassza a **Csatlakozás** lehetőséget, majd válassza ki azt az **AdventureWorksAzure** adatbázist, amelyet az Azure SQL Database-ben előzetesen kiépített.
 
     ![Data Migration Assistant célkapcsolati adatok](media/tutorial-sql-server-to-azure-sql-online/dma-target-connect.png)
 
@@ -287,7 +287,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 ## <a name="specify-target-details"></a>Cél adatainak megadása
 
-1. Válassza a **Mentés** lehetőséget, majd a **Migrálási cél részletei** képernyőn adja meg a célul szolgáló Azure SQL Database Server kapcsolati adatait. Ez a cél az az Azure SQL Database, amelyen üzembe helyezte az **AdventureWorks2012** sémát a DMA-val.
+1. Válassza a **Mentés** lehetőséget, majd a **Migrálási cél részletei** képernyőn adja meg a célul szolgáló Azure SQL-adatbáziskiszolgáló kapcsolati adatait. Ez a cél az az Azure SQL Database, amelyen üzembe helyezte az **AdventureWorks2012** sémát a DMA-val.
 
     ![Cél kiválasztása](media/tutorial-sql-server-to-azure-sql-online/dms-select-target3.png)
 
@@ -333,7 +333,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 
 2. Mindenképpen állítsa le a forrásadatbázis összes bejövő tranzakcióját, és várjon, amíg a **Függőben lévő módosítások** számlálója **0**-t nem mutat.
 3. Kattintson a **Megerősítés**, majd az **Alkalmaz** gombra.
-4. Ha az adatbázis migrálási állapota **Befejezve** értékre vált, csatlakoztassa alkalmazásait az új Azure SQL Database-céladatbázishoz.
+4. Ha az adatbázis migrálási állapota **Befejezve** értékre vált, csatlakoztassa alkalmazásait az új Azure SQL-céladatbázishoz.
 
     ![Tevékenység állapota: Befejezve](media/tutorial-sql-server-to-azure-sql-online/dms-activity-completed.png)
 

@@ -14,7 +14,7 @@ ms.date: 01/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 718e34cdba31b3b747ebb5c10f5c5708c0572448
 ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/06/2019
 ms.locfileid: "57436595"
@@ -57,7 +57,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 **A forrás Azure SQL Database előkészítése**:
 
-Hozzon létre egy Azure SQL Database-adatbázist az Adventure Works LT mintaadataival az [Azure SQL Database létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikk alapján. Ez az oktatóanyag a mintaadatbázisban található összes táblát átmásolja egy SQL Data Warehouse-ba.
+Hozzon létre egy Azure SQL-adatbázist az Adventure Works LT mintaadataival az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikk alapján. Ez az oktatóanyag a mintaadatbázisban található összes táblát átmásolja egy SQL Data Warehouse-ba.
 
 **A fogadó Azure SQL Data Warehouse előkészítése**:
 
@@ -120,7 +120,7 @@ Ebben az oktatóanyagban létrehoz három társított szolgáltatást a forrás,
 1. Hozzon létre egy JSON-fájlt **AzureSqlDatabaseLinkedService.json** a **C:\ADFv2TutorialBulkCopy** mappában az alábbi tartalommal: (Hozza létre az adfv2tutorialbulkcopy nevű mappát, ha ezt még nem létezik.)
 
     > [!IMPORTANT]
-    > A fájl mentése előtt a &lt;servername&gt;, &lt;databasename&gt;, &lt;username&gt;@&lt;servername&gt; és &lt;password&gt; értékeket cserélje le az Azure SQL Database értékeire.
+    > A fájl mentése előtt a &lt;servername&gt;, &lt;databasename&gt;, &lt;username&gt;@&lt;servername&gt; és &lt;password&gt; értékeket cserélje le az Azure SQL-adatbázis értékeire.
 
     ```json
     {
@@ -159,7 +159,7 @@ Ebben az oktatóanyagban létrehoz három társított szolgáltatást a forrás,
 1. Hozzon létre egy **AzureSqlDWLinkedService.json** nevű JSON-fájlt a **C:\ADFv2TutorialBulkCopy** mappában a következő tartalommal:
 
     > [!IMPORTANT]
-    > A fájl mentése előtt a &lt;servername&gt;, &lt;databasename&gt;, &lt;username&gt;@&lt;servername&gt; és &lt;password&gt; értékeket cserélje le az Azure SQL Database értékeire.
+    > A fájl mentése előtt a &lt;servername&gt;, &lt;databasename&gt;, &lt;username&gt;@&lt;servername&gt; és &lt;password&gt; értékeket cserélje le az Azure SQL-adatbázis értékeire.
 
     ```json
     {

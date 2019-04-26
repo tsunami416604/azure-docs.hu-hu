@@ -15,7 +15,7 @@ ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: 26aa8b17917e92a0bcb2393ac3f5d69a70dceefe
 ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/06/2019
 ms.locfileid: "57453711"
@@ -39,7 +39,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 - Győződjön meg arról, hogy az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás engedélyezve van az adatbázis-kiszolgálón. Ez nem érvényes akkor, amikor az Azure SQL Database-t virtuális hálózati szolgáltatásvégpontokkal/felügyelt példánnyal használja az SSISDB üzemeltetésére. További információkért lásd: [Az Azure SQL-adatbázis védelme](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Ezzel a beállítással engedélyezheti a PowerShell-lel [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule). 
 - Vegye fel az ügyfélszámítógép IP-címét vagy az ügyfélszámítógép IP-címét tartalmazó IP-címtartományt az ügyfél IP-címeinek listájára az adatbázis-kiszolgáló tűzfalbeállításainál. További információkért lásd: [Kiszolgáló- és adatbázisszintű Azure SQL Database-tűzfalszabályok](../sql-database/sql-database-firewall-configure.md). 
 - Az adatbázis-kiszolgálóhoz SQL-hitelesítéssel, a kiszolgálói rendszergazdai hitelesítő adataival vagy Azure Active Directory- (AAD-) hitelesítéssel, az Azure Data Factory (ADF) felügyelt identitásával csatlakozhat.  Az utóbbi esetében hozzá kell adnia az ADF felügyelt identitását egy AAD-csoporthoz, amely rendelkezik engedélyekkel az adatbázis-kiszolgálóhoz, lásd: [Azure SSIS integrációs modul létrehozása AAD-hitelesítéssel](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
-- Győződjön meg arról, hogy az Azure SQL Database-kiszolgálóján nincs SSIS-katalógus (SSISDB-adatbázis). Az Azure-SSIS IR üzembe helyezése nem támogatja a meglévő SSIS-katalógusok használatát. 
+- Győződjön meg arról, hogy az Azure SQL-adatbáziskiszolgálóján nincs SSIS-katalógus (SSISDB-adatbázis). Az Azure-SSIS IR üzembe helyezése nem támogatja a meglévő SSIS-katalógusok használatát. 
 
 > [!NOTE]
 > - Ha kíváncsi azon Azure-régiók listájára, amelyekben a Data Factory és az Azure-SSIS integrációs modul jelenleg elérhető, tekintse meg az [ADF és az SSIS integrációs modul régió szerinti elérhetőségét](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 
@@ -164,7 +164,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
    > [!IMPORTANT]
    > A folyamat elvégzése hozzávetőleg 20–30 percet vesz igénybe.
    >
-   > A Data Factory szolgáltatás csatlakozik az Azure SQL Database-kiszolgálóhoz, és előkészíti az SSIS-katalógust (SSISDB-adatbázist). 
+   > A Data Factory szolgáltatás csatlakozik az Azure SQL-adatbáziskiszolgálóhoz, és előkészíti az SSIS-katalógust (SSISDB-adatbázist). 
    > 
    > Amikor üzembe helyez egy Azure-SSIS integrációs modul egy példányát, az Azure Feature Pack for SSIS és az Access Redistributable is telepítve lesz. Ezek az összetevők biztosítják a csatlakozást az Excel- és Access-fájlokhoz és különböző Azure-adatforrásokhoz a beépített összetevők által támogatott adatforrások mellett. Ezenkívül további összetevőket is telepíthet. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md). 
 
@@ -177,7 +177,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
    ![A Műveletek oszlopban szereplő hivatkozások](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-actions.png) 
 
 ## <a name="deploy-ssis-packages"></a>SSIS-csomagok üzembe helyezése
-Most az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) segítségével helyezze üzembe az SSIS-csomagokat az Azure-ban. Csatlakozzon ahhoz az Azure SQL Database-kiszolgálóhoz, amelyen az SSIS-katalógus (SSISDB-adatbázis) található. Az Azure SQL Database nevének formátuma a következő: `<servername>.database.windows.net`. 
+Most az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) segítségével helyezze üzembe az SSIS-csomagokat az Azure-ban. Csatlakozzon ahhoz az Azure SQL-adatbáziskiszolgálóhoz, amelyen az SSIS-katalógus (SSISDB-adatbázis) található. Az Azure SQL-adatbáziskiszolgáló nevének formátuma a következő: `<servername>.database.windows.net`. 
 
 Lásd az SSIS dokumentációjának alábbi cikkeit: 
 

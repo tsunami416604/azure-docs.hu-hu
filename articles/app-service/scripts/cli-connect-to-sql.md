@@ -18,7 +18,7 @@ ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: e23ef4a12182aaeb6db84615106ed4e8919938bf
 ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/19/2018
 ms.locfileid: "53634252"
@@ -48,8 +48,8 @@ Ez a szkript a következő parancsokat használja egy erőforráscsoport, az App
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
-| [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) | Létrehoz egy SQL Database-kiszolgálót.  |
-| [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) | Létrehoz egy új adatbázist az SQL Database-kiszolgálóval. |
+| [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) | Létrehoz egy SQL-adatbáziskiszolgálót.  |
+| [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) | Létrehoz egy új adatbázist az SQL-adatbáziskiszolgálóval. |
 | [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) | Létrehozza egy adatbázis kapcsolati sztringjét. |
 | [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Létrehozza vagy frissíti az App Service-alkalmazások tartozó alkalmazásbeállítást. Az alkalmazásbeállítások környezeti változókként érhetők el az alkalmazás számára. |
 

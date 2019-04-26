@@ -18,7 +18,7 @@ ms.author: cfowler
 ms.custom: mvc
 ms.openlocfilehash: d0c38b69d8cb2fda85a85fd27f0a5b26da51b699
 ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/12/2019
 ms.locfileid: "56106205"
@@ -52,8 +52,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Létrehoz egy App Service-csomagot. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Létrehoz egy App Service-alkalmazást. |
-| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database-kiszolgálót. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Létrehoz egy tűzfalszabályt egy SQL Database-kiszolgáló számára. |
+| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL-adatbáziskiszolgálót. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Létrehoz egy tűzfalszabályt egy SQL-adatbáziskiszolgáló számára. |
 | [New-AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | Létrehoz egy adatbázist vagy egy rugalmas adatbázist. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Módosítja egy App Service-alkalmazás konfigurációja. |
 

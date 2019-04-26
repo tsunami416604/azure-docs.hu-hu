@@ -18,7 +18,7 @@ ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: e90880aeaae17c80d6714f917f2ea849c953711f
 ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/06/2019
 ms.locfileid: "55755408"
@@ -40,7 +40,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="vm-networking-overview"></a>Virtuális gépek hálózatkezelése – áttekintés
 
-Az Azure virtuális hálózatok biztonságos hálózati kapcsolatokat tesznek lehetővé virtuális gépek, az internet és más Azure-szolgáltatások (pl. az Azure SQL Database-adatbázis) között. A virtuális hálózatok alhálózatnak nevezett logikai szegmensekre oszthatók. Az alhálózatok segítségével szabályozható a hálózati forgalom, valamint biztonsági határként is használhatók. Egy virtuális géphez a telepítéskor általában egy virtuális hálózati adapter tartozik, amely egy alhálózathoz csatlakozik.
+Az Azure virtuális hálózatok biztonságos hálózati kapcsolatokat tesznek lehetővé virtuális gépek, az internet és más Azure-szolgáltatások (pl. az Azure SQL-adatbázis) között. A virtuális hálózatok alhálózatnak nevezett logikai szegmensekre oszthatók. Az alhálózatok segítségével szabályozható a hálózati forgalom, valamint biztonsági határként is használhatók. Egy virtuális géphez a telepítéskor általában egy virtuális hálózati adapter tartozik, amely egy alhálózathoz csatlakozik.
 
 Az oktatóanyag végéig a következő virtuális hálózati erőforrások jönnek létre:
 

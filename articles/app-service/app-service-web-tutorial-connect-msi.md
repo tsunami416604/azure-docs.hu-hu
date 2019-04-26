@@ -16,7 +16,7 @@ ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: dd84f9b3b68d7a34903241caed7f1f93e685fb57
 ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58482523"
@@ -83,7 +83,7 @@ A következő lépésben engedélyezi az adatbázis-hozzáférést az alkalmazá
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>
 ```
 
-A felügyelt identitás ezentúl hozzáférhet az Azure SQL Database-kiszolgálójához.
+A felügyelt identitás ezentúl hozzáférhet az Azure SQL-adatbáziskiszolgálójához.
 
 ## <a name="modify-connection-string"></a>Kapcsolati sztring módosítása
 
@@ -155,7 +155,7 @@ Most már ugyanúgy szerkesztheti a feladatlistát, mint korábban.
 
 ## <a name="grant-minimal-privileges-to-identity"></a>Minimális jogosultságok engedélyezése az identitáshoz
 
-Az előző lépések során valószínűleg észrevette, hogy a felügyelt identitása Azure AD-rendszergazdaként kapcsolódik az SQL Serverhez. Ahhoz, hogy engedélyezze a minimális jogosultságokat a felügyelt identitásához, Azure AD-rendszergazdaként kell bejelentkeznie az Azure SQL Database-kiszolgálóba, majd hozzá kell adnia egy Azure Active Directory-csoportot, amely a felügyelt identitást tartalmazza. 
+Az előző lépések során valószínűleg észrevette, hogy a felügyelt identitása Azure AD-rendszergazdaként kapcsolódik az SQL Serverhez. Ahhoz, hogy engedélyezze a minimális jogosultságokat a felügyelt identitásához, Azure AD-rendszergazdaként kell bejelentkeznie az Azure SQL-adatbáziskiszolgálóba, majd hozzá kell adnia egy Azure Active Directory-csoportot, amely a felügyelt identitást tartalmazza. 
 
 ### <a name="add-managed-identity-to-an-azure-active-directory-group"></a>A felügyelt identitás hozzáadása egy Azure Active Directory-csoporthoz
 
@@ -172,7 +172,7 @@ Ha minden egyes parancsnál meg szeretné tekinteni a JSON-kimenetet, hagyja el 
 
 ### <a name="reconfigure-azure-ad-administrator"></a>Az Azure AD-rendszergazda újrakonfigurálása
 
-Előzőleg Azure AD-rendszergazdaként rendelte hozzá a felügyelt identitást az SQL Database-hez. Ezt az identitást nem használhatja interaktív bejelentkezéshez (adatbázis-felhasználók hozzáadásához), ezért az igazi Azure AD-felhasználóját kell használnia. Az Azure AD-felhasználója hozzáadásához kövesse az [Azure Active Directory-rendszergazda az Azure SQL Database-kiszolgálóhoz való regisztrálása ](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) témakörrel foglalkozó szakasz lépéseit. 
+Előzőleg Azure AD-rendszergazdaként rendelte hozzá a felügyelt identitást az SQL Database-hez. Ezt az identitást nem használhatja interaktív bejelentkezéshez (adatbázis-felhasználók hozzáadásához), ezért az igazi Azure AD-felhasználóját kell használnia. Az Azure AD-felhasználója hozzáadásához kövesse az [Azure Active Directory-rendszergazda az Azure SQL-adatbáziskiszolgálóhoz való regisztrálása ](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) témakörrel foglalkozó szakasz lépéseit. 
 
 > [!IMPORTANT]
 > Miután hozzáadta, ne távolítsa el az Azure AD-rendszergazda számára az SQL Database, kivéve, ha le szeretné tiltani az Azure AD-hozzáférés az SQL Database teljesen (az összes Azure AD-fiókok).

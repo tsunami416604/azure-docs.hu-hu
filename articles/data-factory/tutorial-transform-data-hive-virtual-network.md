@@ -87,7 +87,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     ```powershell
     $pipelineName = "MyHivePipeline" # 
     ```
-4. Adja meg a saját üzemeltetésű integrációs modul nevét. Egy saját üzemeltetésű integrációs modulra van szükség, amikor az adat-előállítónak egy virtuális hálózaton belüli erőforrásokhoz (pl. Azure SQL Database) kell hozzáférnie. 
+4. Adja meg a saját üzemeltetésű integrációs modul nevét. Egy saját üzemeltetésű integrációs modulra van szükség, amikor az adat-előállítónak egy virtuális hálózaton belüli erőforrásokhoz (pl. Azure SQL-adatbázis) kell hozzáférnie. 
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
