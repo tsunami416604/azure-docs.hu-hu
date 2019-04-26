@@ -39,7 +39,7 @@ Ez az oktatóanyag megmutatja, hogyan másolhat adatokat egy Azure Blob Storage-
 
 Az Azure Data Factory **Másolás varázslójával** gyorsan létrehozhat egy olyan adatátviteli folyamatot, amely a támogatott forrásadattárból adatokat másol a támogatott céladattárba. Ezért azt javasoljuk, hogy a varázsló segítségével első lépésként hozzon létre mintafolyamatot az adatátviteli forgatókönyvhöz. A forrásként és célként támogatott adattárak listáját a [támogatott adattárakról](data-factory-data-movement-activities.md#supported-data-stores-and-formats) szóló témakörben találja.  
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure data factoryt, indíthatja el a Másolás varázslót, és végigvezeti az adatfeldolgozási/-átviteli forgatókönyv részletes ismertetését tartalmazó lépések sorozatán. Amikor befejezte a varázsló lépéseit, a varázsló automatikusan létrehoz egy másolási tevékenységet tartalmazó folyamatot, amelynek során az adatokat átmásolja egy Azure Blob Storage-ból egy Azure SQL Databese-be. A másolási tevékenységről további információk az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben találhatók.
+Ez az oktatóanyag bemutatja, hogyan hozhat létre Azure data factoryt, indíthatja el a Másolás varázslót, és végigvezeti az adatfeldolgozási/-átviteli forgatókönyv részletes ismertetését tartalmazó lépések sorozatán. Amikor befejezte a varázsló lépéseit, a varázsló automatikusan létrehoz egy másolási tevékenységet tartalmazó folyamatot, amelynek során az adatokat átmásolja egy Azure Blob Storage-tárból egy Azure SQL-adatbázisba. A másolási tevékenységről további információk az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben találhatók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzése előtt hajtsa végre [Az oktatóanyag áttekintése](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című cikkben előfeltételként felsorolt lépéseket.
@@ -112,7 +112,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
 8. A Destination data store (Céladattár) oldalon válassza ki az **Azure SQL Database** csempét, majd kattintson a **Next** (Tovább) gombra.
    
     ![Copy (Másolás) eszköz – Choose destination store (Céltár kiválasztása) oldal](./media/data-factory-copy-data-wizard-tutorial/choose-destination-store.png)
-9. A **Specify the Azure SQL database** (Az Azure SQL Database megadása) oldalon:
+9. A **Specify the Azure SQL database** (Az Azure SQL-adatbázis megadása) oldalon:
    
    1. Adja meg az **AzureSqlLinkedService** nevet a **Connection name** (Kapcsolat neve) mezőben.
    2. Győződjön meg arról, hogy a **Server/database selection method** (Kiszolgáló-/adatbázis-kiválasztási módszer) mezőben a **From Azure subscriptions** (Azure-előfizetésekből) lehetőség van kiválasztva.
@@ -121,7 +121,7 @@ Ebben a lépésben az Azure Portal használatával létrehozza az **ADFTutorialD
    5. Adja meg a **felhasználónevet** és a **jelszót**.
    6. Kattintson a **tovább**.  
       
-      ![Copy (Másolás) eszköz – specify Azure SQL database (Az Azure SQL Database megadása) oldal](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
+      ![Copy (Másolás) eszköz – specify Azure SQL database (Az Azure SQL-adatbázis megadása) oldal](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. A **Table mapping** (Tábla-hozzárendelés) oldalon válassza ki a legördülő listából az **emp** beállítást a **Destination** (Cél) mezőhöz, és kattintson a **lefelé mutató nyílra** (opcionális) a séma és az adatok előnézetének megtekintéséhez.
     
      ![Copy (Másolás) eszköz – Table mapping (Tábla-hozzárendelés) oldal](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 
