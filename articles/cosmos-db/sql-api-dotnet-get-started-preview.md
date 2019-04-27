@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
 ms.openlocfilehash: a942f91dfa03eea2d9dc14b4b44e2ef5ee57c1ba
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078635"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60686751"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Adatkezelés az Azure Cosmos DB SQL API-fiók (a SDK verziója 3 előzetes verzió) egy .NET-Konzolalkalmazás létrehozása
 

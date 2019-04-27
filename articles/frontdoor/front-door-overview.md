@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/29/2018
 ms.author: sharadag
-ms.openlocfilehash: 346fa5721df6c9ce0cf355adea21f59c93a394a9
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 2d4c93b7ef707f5b09bc2f5f93d56c50c1bb3458
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040482"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736326"
 ---
 # <a name="what-is-azure-front-door-service"></a>Mi az az Azure Front Door Service?
 Az Azure Front Door Service segítségével meghatározhatja, felügyelheti és monitorozhatja a webes forgalmának globális forgalomirányítását, optimalizálhatja annak teljesítményét, és azonnali globális feladatátvétellel magas rendelkezésre állást biztosíthat. A Front Door használatával a globális (több régióban található) fogyasztói és nagyvállalati alkalmazásait olyan robusztus, nagy teljesítményű, személyre szabott és modern alkalmazásokká, API-kká és tartalmakká alakíthatja, amelyek az Azure-on keresztül elérhetik a globális közönségüket.
@@ -75,5 +75,5 @@ Díjszabási információkért tekintse meg [A Front Door díjszabása](https://
 
 ## <a name="next-steps"></a>További lépések
 
-- Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
-- A [Front Door működésének](front-door-routing-architecture.md) megismerése.
+- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

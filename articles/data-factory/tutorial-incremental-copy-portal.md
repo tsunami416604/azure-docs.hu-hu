@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
 ms.openlocfilehash: 1bc4bd9b95dc7e45b9b90fbe096ed71c5aa9bedf
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447240"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60571298"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Adatok növekményes betöltése egy Azure SQL Database-adatbázisból egy Azure Blob Storage-tárolóba
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Adatok növekményes betöltése egy Azure SQL-adatbázisból egy Azure Blob Storage-tárolóba
 Az oktatóanyag során egy Azure adat-előállítót hoz majd létre egy olyan folyamattal, amely módosított adatokat tölt be egy Azure SQL-adatbázisban lévő táblából egy Azure Blob Storage-tárolóba. 
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -201,7 +201,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 7. Az adatkészlet tulajdonságainak ablakában a **Watermarkdataset** értéket adja meg **névként**.
 
    ![Küszöbérték-adatkészlet – név](./media/tutorial-incremental-copy-portal/watermark-dataset-name.png)
-8. Váltson a **Kapcsolat** lapra, majd kattintson az **+ Új** gombra, hogy kapcsolatot létesítsen az Azure SQL Database-adatbázissal (létrehozzon egy társított szolgáltatást). 
+8. Váltson a **Kapcsolat** lapra, majd kattintson az **+ Új** gombra, hogy kapcsolatot létesítsen az Azure SQL-adatbázissal (létrehozzon egy társított szolgáltatást). 
 
    ![Új társított szolgáltatás gomb](./media/tutorial-incremental-copy-portal/watermark-dataset-new-connection-button.png)
 9. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
@@ -210,7 +210,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     2. A **kiszolgáló nevénél** válassza ki az Azure SQL Servert.
     3. Adja meg a **felhasználó a nevét**az Azure SQL Serverhez való hozzáféréshez. 
     4. Adja meg a felhasználónévhez tartozó **jelszót**. 
-    5. Az Azure SQL Database-adatbázis kapcsolatának teszteléséhez kattintson a **Kapcsolat tesztelése** elemre.
+    5. Az Azure SQL-adatbázis kapcsolatának teszteléséhez kattintson a **Kapcsolat tesztelése** elemre.
     6. Kattintson a **Save** (Mentés) gombra.
     7. A **Kapcsolat** lapon ellenőrizze, hogy az **AzureSqlDatabaseLinkedService** lehetőség van-e kiválasztva **társított szolgáltatásként**.
        

@@ -3,17 +3,17 @@ title: Az Azure IoT Hub Device Provisioning Service áttekintése | Microsoft Do
 description: A Device Provisioning Service és az IoT Hub használatával az Azure-ban történő eszközregisztrációt írja le.
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 12/05/2017
 ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 89e0b6b5bedf36c89bf3a54f4baf42f7019625c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051467"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60746075"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Eszközregisztráció az Azure IoT Hub Device Provisioning Service használatával
 A Microsoft Azure integrált nyilvános felhőszolgáltatások széles skáláját biztosítja, az IoT-megoldásokkal kapcsolatos igények teljes körű kielégítése céljából. Az IoT Hub Device Provisioning Service az IoT Hub segítő szolgáltatása, amely emberi beavatkozás nélkül teszi lehetővé a megfelelő IoT Hubon való érintésmentes, igény szerinti üzembe helyezést, így az ügyfelek eszközök millióit építhetik ki biztonságos és méretezhető módon.

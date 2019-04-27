@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: erhopf
 ms.openlocfilehash: f7f8e86f17b0fdb715afc96dba80db0746440cef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078125"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60653298"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Oktatóanyag: A WPF-fordítási alkalmazás létrehozása
 
@@ -244,7 +244,7 @@ A projekt összes van beágyazva a `MainWindow : Window` osztály. Először adj
 
 A kód blokk azt már deklarálva két tagváltozók elérhető nyelveket a fordítás adatait tartalmazzák:
 
-| Változó | Typo | Leírás |
+| Változó | Típus | Leírás |
 |----------|------|-------------|
 |`languageCodes` | karakterláncok tömbje |C nyelvkódok aches. A Translator szolgáltatás rövid kódokat használ a nyelvek azonosítására (például: `en` = angol). |
 |`languageCodesAndTitles` | Rendezett szótár | A felhasználói felületen megjelenő „felhasználóbarát” neveket képezi le az API által használt rövid kódokra. Az elemeket betűrendbe rendezi, és nem veszi figyelembe a nagy- és kisbetűket. |

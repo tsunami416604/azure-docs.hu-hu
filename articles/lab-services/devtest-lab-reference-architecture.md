@@ -14,11 +14,11 @@ ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: bcb154f7cffb92ef23fc2606e1f604bb12f8d1a3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996611"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561514"
 ---
 # <a name="azure-devtest-labs---reference-architecture-for-an-enterprise"></a>Az Azure DevTest Labs - a vállalati a referencia-architektúra
 A cikk ismerteti a referenciaarchitektúra üzembe helyezéséhez az Azure DevTest Labs a vállalaton belül épül. Ez magában foglalja az Express Route, távolról bejelentkezik a virtuális gépek távoli asztali átjáró, kapcsolat az összetevőtárban, privát összetevők és a egy tesztkörnyezetben használt egyéb PaaS-szolgáltatások helyszíni kapcsolatait.

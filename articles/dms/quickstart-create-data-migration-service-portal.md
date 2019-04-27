@@ -12,11 +12,11 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.openlocfilehash: af5ffdb1c1f030c2bbc0616d027c06b59f1a34de
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177466"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60767759"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Gyors útmutató: Az Azure Portallal létrehozhat egy Azure Database Migration Service-példányt.
 Ebben a rövid útmutatóban az Azure Portal használatával létrehozhat egy Azure Database Migration Service-példányt.  A szolgáltatás létrehozása után a használatával a helyi SQL Serverből migrálhat adatokat egy Azure SQL-adatbázisba.

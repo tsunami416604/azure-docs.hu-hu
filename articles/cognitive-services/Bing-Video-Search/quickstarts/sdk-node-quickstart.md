@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
 ms.openlocfilehash: ffd03a900ec304a930dfc64e7860e28e0374da55
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863755"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824337"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Gyors útmutató: Hajtsa végre a videókeresési Bing Video Search SDK-val a node.js-ben
 

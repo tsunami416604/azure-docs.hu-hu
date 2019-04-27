@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: diberry
 ms.openlocfilehash: e05998f74223ead6bb4e94b86469e51791e0263f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678564"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60599374"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker-tárolók konfigurálása 
 
@@ -67,7 +67,7 @@ Ez a beállítás a következő helyen található:
 Ne felejtse el bevenni a `luis/v2.0` útválasztási az URL-cím, az alábbi táblázatban látható módon:
 
 
-|Szükséges| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 

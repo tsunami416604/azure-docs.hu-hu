@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: panosper
 ms.openlocfilehash: 24b98ce8cd2c587f0d39390954eb8a64747ca2ab
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868327"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60654004"
 ---
 # <a name="creating-custom-voice-fonts"></a>Egyéni hangtípust létrehozása
 
@@ -33,7 +33,7 @@ Az Azure-fiók és a Speech service-előfizetés szükséges. [Hozzon létre egy
 
 2. Lépjen a fiók neve, a jobb felső sarokban, alatt **előfizetések**.
 
-    ![Előfizetések](media/custom-voice/subscriptions.png)
+    ![Subscriptions](media/custom-voice/subscriptions.png)
 
 3. Az előfizetések oldalán válassza ki a **csatlakozás meglévő előfizetés**. Vegye figyelembe, hogy beszédszolgáltatások támogatja-e a különböző régiókban. Ellenőrizze a régió, ahol az előfizetési kulcs lett létrehozva, és győződjön meg arról, hogy kapcsolódni a kulcsot a megfelelő alárendelt portálon.  
 

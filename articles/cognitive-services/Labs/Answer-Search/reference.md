@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527319"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60721011"
 ---
 # <a name="project-answer-search-v7-reference"></a>Projekt válaszkeresés v7-referencia
 
@@ -83,7 +83,7 @@ Az alábbiakban a fejlécek, köztük a kérést és választ.
 A kérelem lekérdezési paraméterek tartalmazhat. Tekintse meg a szükséges oszlop, paraméter szükséges. URL-címet kell kódolása a lekérdezési paramétereket.  
   
   
-|Name (Név)|Érték|Typo|Szükséges|  
+|Name (Név)|Érték|Típus|Kötelező|  
 |----------|-----------|----------|--------------|  
 |<a name="mkt" />mkt|A piac, ahonnan az eredmények származnak. <br /><br />Tekintse meg piaci kódok piaci a lehetséges értékek listáját.<br /><br /> **MEGJEGYZÉS:** Az URL-cím előzetes API jelenleg csak támogatja az en-us piacon és a nyelvet.<br /><br />|String|Igen|  
 |<a name="query" />q|Az előzetes verzióra az URL-cím|String|Igen|  
@@ -96,7 +96,7 @@ A kérelem lekérdezési paraméterek tartalmazhat. Tekintse meg a szükséges o
 A válasz sémája vagy egy [weblap] vagy byl vrácen Prvek, ahogy a webes keresési API-t. Ha a kérelem meghiúsul, a legfelső szintű objektum a [byl vrácen Prvek](#errorresponse) objektum.
 
 
-|Objektum|Leírás|  
+|Object|Leírás|  
 |------------|-----------------|  
 |[Weblap]|Legfelső szintű JSON-objektum, amely tartalmazza az előzetes verzió attribútumai.|  
 |[Fact]|Legfelső szintű JSON-objektum, amely tartalmazza a tényeket.| 
@@ -106,7 +106,7 @@ A válasz sémája vagy egy [weblap] vagy byl vrácen Prvek, ahogy a webes keres
 ### <a name="error"></a>Hiba  
 Határozza meg a következő hiba történt.  
   
-|Elem|Leírás|Typo|  
+|Elem|Leírás|Típus|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />Kód|A hiba kódja, amely azonosítja a hiba kategóriáját. Lehetséges kódok listáját lásd: [hibakódok](#error-codes).|String|  
 |<a name="error-message" />üzenet|A hiba leírása.|String|  
@@ -119,7 +119,7 @@ Határozza meg a következő hiba történt.
 ### <a name="errorresponse"></a>Byl vrácen Prvek  
 A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem teljesíthető.  
   
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Mutató típusa.|String|  
 |<a name="errors" />Hibák|Miért nem sikerült a kérelem miatt hibák listája.|[Hiba történt](#error)|  
@@ -129,7 +129,7 @@ A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem telj
 ### <a name="license"></a>Licenc  
 Határozza meg a licenc, amely alatt a szöveges vagy fénykép használható.  
   
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |név|A licenc neve.|String|  
 |url|Egy webhely, ahol a felhasználó kaphat-e további információ a licenc URL-címe.<br /><br /> A nevét és URL-cím használatával hivatkozás létrehozása.|String|  
@@ -138,19 +138,19 @@ Határozza meg a licenc, amely alatt a szöveges vagy fénykép használható.
 ### <a name="licenseattribution"></a>LicenseAttribution  
 Licenc tesznek elérhetővé; ilyenek szerződéses szabályt definiálja.  
   
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Típus mutató LicenseAttribution értékre van állítva.|String|  
 |licenc|A licenc, amely alatt a tartalom is használható.|[Licenc](#license)|  
 |licenseNotice|A licenc mellett a megcélzott mező megjelenítéséhez. Ha például "CC biztonsági Társítás licenc szöveg".<br /><br /> A licenc nevét és URL-címet használja a `license` mezőt, a webhely, amelyen a licenc részleteit mutató hivatkozás létrehozása. Ezután cserélje le a licenc neve az a `licenseNotice` karakterláncot (például CC-a-SA) az újonnan létrehozott hivatkozás.|String|  
-|mustBeCloseToContent|Logikai érték, amely meghatározza, hogy a szabály a tartalmát kell helyezni a közelében a mezőt, amely a szabály vonatkozik. Ha **igaz**, a tartalma közelében kell elhelyezni. Ha **hamis**, vagy ez a mező nem létezik, a tartalmát a hívó belátása szerint is elhelyezhető.|Logikai|  
+|mustBeCloseToContent|Logikai érték, amely meghatározza, hogy a szabály a tartalmát kell helyezni a közelében a mezőt, amely a szabály vonatkozik. Ha **igaz**, a tartalma közelében kell elhelyezni. Ha **hamis**, vagy ez a mező nem létezik, a tartalmát a hívó belátása szerint is elhelyezhető.|Boolean|  
 |targetPropertyName|Az a mező neve, amely a szabály vonatkozik.|String|  
   
 
 ### <a name="link"></a>Hivatkozás  
 Az összetevők a hivatkozás határozza meg.  
   
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Mutató típusa.|String|  
 |szöveg|A megjelenítendő szöveg.|String|  
@@ -160,10 +160,10 @@ Az összetevők a hivatkozás határozza meg.
 ### <a name="linkattribution"></a>LinkAttribution  
 Hivatkozás tesznek elérhetővé; ilyenek szerződéses szabályt definiálja.  
   
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Típus mutató LinkAttribution értékre van állítva.|String|  
-|mustBeCloseToContent|Logikai érték, amely meghatározza, hogy a szabály a tartalmát kell helyezni a közelében a mezőt, amely a szabály vonatkozik. Ha **igaz**, a tartalma közelében kell elhelyezni. Ha **hamis**, vagy ez a mező nem létezik, a tartalmát a hívó belátása szerint is elhelyezhető.|Logikai|  
+|mustBeCloseToContent|Logikai érték, amely meghatározza, hogy a szabály a tartalmát kell helyezni a közelében a mezőt, amely a szabály vonatkozik. Ha **igaz**, a tartalma közelében kell elhelyezni. Ha **hamis**, vagy ez a mező nem létezik, a tartalmát a hívó belátása szerint is elhelyezhető.|Boolean|  
 |targetPropertyName|Az a mező neve, amely a szabály vonatkozik.<br /><br /> Ha egy cél nincs megadva, a tesznek elérhetővé; ilyenek az entitás egészére vonatkozik, és közvetlenül az a entitás bemutató következő üzenetnek kell megjelennie. Ha több szöveg- és tesznek elérhetővé; ilyenek szabály, amely nem adja meg a cél, kell összefűzni őket és megjeleníti őket használatával egy "adatait:" címkét. Például "származó adatok < szolgáltató Név1\> &#124; < szolgáltató name2\>".|String|  
 |szöveg|A felhasználási szöveg.|String|  
 |url|A szolgáltató webhelyéről URL-címe. Használat `text` és hivatkozás létrehozása URL-CÍMÉT.|String|  
@@ -172,10 +172,10 @@ Hivatkozás tesznek elérhetővé; ilyenek szerződéses szabályt definiálja.
 ### <a name="mediaattribution"></a>MediaAttribution  
 Határozza meg az adathordozó felhasználási szerződéses szabály.  
   
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Típus mutató MediaAttribution értékre van állítva.|String|  
-|mustBeCloseToContent|Logikai érték, amely meghatározza, hogy a szabály a tartalmát kell helyezni a közelében a mezőt, amely a szabály vonatkozik. Ha **igaz**, a tartalma közelében kell elhelyezni. Ha **hamis**, vagy ez a mező nem létezik, a tartalmát a hívó belátása szerint is elhelyezhető.|Logikai|  
+|mustBeCloseToContent|Logikai érték, amely meghatározza, hogy a szabály a tartalmát kell helyezni a közelében a mezőt, amely a szabály vonatkozik. Ha **igaz**, a tartalma közelében kell elhelyezni. Ha **hamis**, vagy ez a mező nem létezik, a tartalmát a hívó belátása szerint is elhelyezhető.|Boolean|  
 |targetPropertyName|Az a mező neve, amely a szabály vonatkozik.|String|  
 |url|A médiatartalmak hivatkozás létrehozásához használt URL-címe. Például ha a cél egy képet, lenne használhatja az URL-címet, hogy a kép kattintható.|String|  
   
@@ -186,7 +186,7 @@ Határozza meg a kiadó.
   
 Vegye figyelembe, hogy a közzétevő neve vagy a webhely vagy mindkét előfordulhat, hogy biztosítani.  
   
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |név|A közzétevő nevét.|String|  
 |url|A kiadó webhelye URL-címe.<br /><br /> Vegye figyelembe, hogy a közzétevő nem ad egy webhelyet.|String|  
@@ -196,11 +196,11 @@ Vegye figyelembe, hogy a közzétevő neve vagy a webhely vagy mindkét előford
 ### <a name="webpage"></a>WebPage  
 Meghatározza, milyen kapcsolatos információkat egy előzetes verzióban érhető el a weblapot.  
   
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|
 |név|Az oldal címe, nem feltétlenül a HTML-cím|String|
 |url|Az URL-cím, amely ténylegesen volt bejárt (kérelem előfordulhat, hogy felvette a átirányítások)|String|  
-|leírás|Az oldal és a tartalom rövid leírása|String|  
+|description|Az oldal és a tartalom rövid leírása|String|  
 |isFamilyFriendly|A legpontosabb a webes index; eleme valós idejű fetches tegye alapján kizárólag az URL-címet, és nem az oldal tartalmát az észlelés|logikai|
 |primaryImageOfPage/contentUrl|Tartalmazza az előzetes verzióban érhető el egy reprezentatív kép URL-címe|String| 
   
@@ -208,36 +208,36 @@ Meghatározza, milyen kapcsolatos információkat egy előzetes verzióban érhe
 ### <a name="querycontext"></a>QueryContext  
 Meghatározza a Bing a kéréshez használt lekérdezési környezet.  
   
-|Elem|Leírás|Typo|  
+|Elem|Leírás|Típus|  
 |-------------|-----------------|----------|  
-|adultIntent|Logikai érték, amely azt jelzi, hogy a megadott lekérdezés felnőtteknek szánt tartalom. Az érték **igaz** amennyiben a lekérdezés felnőtteknek szánt; ellenkező esetben **hamis**.|Logikai|  
+|adultIntent|Logikai érték, amely azt jelzi, hogy a megadott lekérdezés felnőtteknek szánt tartalom. Az érték **igaz** amennyiben a lekérdezés felnőtteknek szánt; ellenkező esetben **hamis**.|Boolean|  
 |alterationOverrideQuery|A lekérdezési karakterlánc használatával kényszerítheti a Bing, az eredeti karakterlánc használatához. Például, ha a lekérdezési karakterlánc *saling szélirányban fekvő*, a felülbírálási karakterlánc lesz *+ saling szélirányban fekvő*. Ne felejtse el a lekérdezési karakterláncot, amelynek eredménye kódolása *% 2Bsaling + szélirányban fekvő*.<br /><br /> Ez a mező része, csak akkor, ha az eredeti lekérdezési karakterláncot tartalmaz egy gépelési hibát.|String|  
 |alteredQuery|A lekérdezési karakterlánc, a lekérdezés végrehajtása a Bing által használt. Bing formában lekérdezési karakterláncot használ, ha az eredeti lekérdezési karakterláncot a helyesírási hibákat tartalmaz. Például, ha a lekérdezési karakterlánc `saling downwind`, a módosított lekérdezési karakterlánc lesz `sailing downwind`.<br /><br /> Ez a mező része, csak akkor, ha az eredeti lekérdezési karakterláncot tartalmaz egy gépelési hibát.|String|  
-|askUserForLocation|Logikai érték, amely azt jelzi, hogy szükséges-e a Bing pontos eredményeket a felhasználó földrajzi helye. Ha a felhasználó földrajzi helye az a [X-MSEdge-Ügyfélip](#clientip) és [hely keresése X](#location) fejlécek, figyelmen kívül hagyhatja ezt a mezőt.<br /><br /> Hely figyelembe lekérdezésekhez, például az "a mai időjárás-" vagy "éttermek a közelben", amelyet a felhasználó földrajzi helye pontos eredményeket kell Ez a mező értéke **igaz**.<br /><br /> Hely figyelembe lekérdezések, amelyek tartalmazzák a helyre (például "Seattle weather"), ez a mező értéke **hamis**. Ez a mező értéke is **hamis** lekérdezések, amelyek nem helyfüggő, például a "ajánlott eladók".|Logikai|  
+|askUserForLocation|Logikai érték, amely azt jelzi, hogy szükséges-e a Bing pontos eredményeket a felhasználó földrajzi helye. Ha a felhasználó földrajzi helye az a [X-MSEdge-Ügyfélip](#clientip) és [hely keresése X](#location) fejlécek, figyelmen kívül hagyhatja ezt a mezőt.<br /><br /> Hely figyelembe lekérdezésekhez, például az "a mai időjárás-" vagy "éttermek a közelben", amelyet a felhasználó földrajzi helye pontos eredményeket kell Ez a mező értéke **igaz**.<br /><br /> Hely figyelembe lekérdezések, amelyek tartalmazzák a helyre (például "Seattle weather"), ez a mező értéke **hamis**. Ez a mező értéke is **hamis** lekérdezések, amelyek nem helyfüggő, például a "ajánlott eladók".|Boolean|  
 |originalQuery|A kérésben megadott lekérdezési karakterlánc.|String|  
 
 ### <a name="identifiable"></a>Azonosításra alkalmas
 
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |-------------|-----------------|----------|
 |id|Egy erőforrás-azonosítója|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Határozza meg a keresési eredmények csoport, mint például mainline.
 
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |-------------|-----------------|----------|
 |elem|Keresési eredmények megjelennek a csoport listája.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Határozza meg a keresési eredmény elemek megjelenítéséhez.
 
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |-------------|-----------------|----------|
 |resultIndex|A cikk a válasz megjelenítéséhez a nulla alapú indexét. A cikk nem tartalmazza ezt a mezőt, a válasz jelennek meg az összes elemet. Például megjelenítik az összes hírek a hírek választ.|Egész szám|
 |answerType|A válasz, amely tartalmazza az elem megjelenítésére. Ha például híreket.<br /><br />A típus használatával találja a választ a SearchResponse objektumban. A típus egy SearchResponse mező nevét.<br /><br /> Azonban a választípushoz használja, csak akkor, ha ez az objektum tartalmazza az érték mezőbe; Ellenkező esetben figyelmen kívül hagyhatja azt.|String|
 |textualIndex|Az index a textualAnswers megjelenítése a válaszról.| Előjel nélküli egész szám|
-|érték|Az azonosítója, amely azonosítja a válasz megjelenítéséhez vagy egy elemet a válasz megjelenítéséhez. Ha az azonosító azonosítja a választ, a válasz elemek megjelenítése.|Azonosításra alkalmas|
+|value|Az azonosítója, amely azonosítja a válasz megjelenítéséhez vagy egy elemet a válasz megjelenítéséhez. Ha az azonosító azonosítja a választ, a válasz elemek megjelenítése.|Azonosításra alkalmas|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 Határozza meg, ahol a keresési eredmények lap tartalmának kell helyezni, és milyen sorrendben.  
@@ -254,16 +254,16 @@ Meghatározza a legfelső szintű objektum, amely a válasz tartalmazza, ha a k�
   
 Vegye figyelembe, hogy a szolgáltatás egy szolgáltatásmegtagadási támadást gyanítja, ha a kérés sikeres lesz (HTTP-állapotkód: a 200-as rendben); azonban a válasz törzse üres lesz.  
   
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Írja be a mutatót, amely SearchResponse van beállítva.|String|  
-|WebPage|JSON-objektum, amely meghatározza az előzetes verzió|sztring|  
+|WebPage|JSON-objektum, amely meghatározza az előzetes verzió|string|  
   
   
 ### <a name="textattribution"></a>TextAttribution  
 Egyszerű szöveges tesznek elérhetővé; ilyenek szerződéses szabályt definiálja.  
   
-|Name (Név)|Érték|Typo|  
+|Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |_type|Típus mutató TextAttribution értékre van állítva.|String|  
 |szöveg|A felhasználási szöveg.<br /><br /> Szöveg tesznek elérhetővé; ilyenek az entitás egészére vonatkozik, és közvetlenül az a entitás bemutató következő üzenetnek kell megjelennie. Ha több szöveg vagy hivatkozás tesznek elérhetővé; ilyenek szabályt, amely nem adja meg a cél, kell összefűzni őket és megjeleníti őket használatával egy "adatait:" címkét.|String| 

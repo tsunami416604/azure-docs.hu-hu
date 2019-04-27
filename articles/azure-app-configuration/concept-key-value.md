@@ -4,20 +4,20 @@ description: Konfigurációs adatok tárolási módját az Azure-alkalmazások k
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
-manager: balans
+manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.devlang: na
 ms.topic: overview
 ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 24216d1bf82789d2d0fc312d9af4c06fa3c8cf4e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 39367cbe6c001fc782fd899ee3a99b37ece70a77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011282"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60741189"
 ---
 # <a name="key-value-store"></a>Kulcs-érték tároló
 
@@ -45,29 +45,27 @@ Kulcsokat az Alkalmazáskonfigurációt számos módon hierarchikusan rendezhet�
 
 Íme néhány példa hogyan strukturálhatja a kulcsnevek hierarchiára:
 
-* A környezetek alapján
-
-        AppName:Test:DB:Endpoint
-        AppName:Staging:DB:Endpoint
-        AppName:Production:DB:Endpoint
-
 * A Komponensszolgáltatások alapján
 
-        AppName:Service1:Test:DB:Endpoint
-        AppName:Service1:Staging:DB:Endpoint
-        AppName:Service1:Production:DB:Endpoint
-        AppName:Service2:Test:DB:Endpoint
-        AppName:Service2:Staging:DB:Endpoint
-        AppName:Service2:Production:DB:Endpoint
+        AppName:Service1:ApiEndpoint
+        AppName:Service2:ApiEndpoint
 
 * A telepítési régió alapján
 
-        AppName:Production:Region1:DB:Endpoint
-        AppName:Production:Region2:DB:Endpoint
+        AppName:Region1:DbEndpoint
+        AppName:Region2:DbEndpoint
+
+### <a name="label-keys"></a>Címke kulcsok
+
+Az alkalmazás konfigurációs értékek igény szerint rendelkezhet egy címke attribútum. Címkék segítségével különbséget tenni a kulcs értékeit ugyanazzal a kulccsal. A kulcs *app1* , a címkék *A* és *B* forms-alkalmazás a konfigurációs adattárolónál a két külön kulcs. Alapértelmezés szerint a kulcs értékét a címke az üres, vagy `null`.
+
+Címke hozzon létre egy kulcsot változatának kényelmes módot biztosít. Egyik gyakori felhasználási címkéket, hogy adja meg az ugyanazon kulcshoz több környezetet:
+
+    Key = AppName:DbEndpoint & Label = Test
+    Key = AppName:DbEndpoint & Label = Staging
+    Key = AppName:DbEndpoint & Label = Production
 
 ### <a name="version-key-values"></a>Verzió kulcsértékek
-
-Az alkalmazás konfigurációs értékek igény szerint rendelkezhet egy címke attribútum. Címkék segítségével különbséget tenni a kulcs értékeit ugyanazzal a kulccsal. A kulcs *app1* , a címkék *v1* és *v2* két külön kulcsérték-alkalmazás a konfigurációs adattárolónál az űrlapon. Alapértelmezés szerint a kulcs értékét a címke az üres, vagy `null`.
 
 Alkalmazáskonfiguráció éppen módosított automatikusan nem verzió kulcs értékeit. Címkék használata arra, hogy a kulcs értékét több verzióját. Például megadhatja, hogy egy alkalmazás verziószáma, vagy egy adott build társított egy Git véglegesítési Azonosítóját, a címkék értékek azonosításához.
 

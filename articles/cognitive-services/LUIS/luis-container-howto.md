@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
 ms.openlocfilehash: 93803a7d885bb68c1d5d6637eaf90fb090dabeb2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60598796"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A LUIS-tároló futtatásához az alábbiakkal kell rendelkeznie: 
 
-|Szükséges|Cél|
+|Kötelező|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
@@ -168,7 +168,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Helyőrző | Value |
+| Helyőrző | Érték |
 |-------------|-------|
 |{APPLICATION_ID} | A közzétett a LUIS-alkalmazás azonosítója. |
 |{APPLICATION_ENVIRONMENT} | A környezet a közzétett LUIS-alkalmazás. Használja a következő értékek egyikét:<br/>```PRODUCTION```<br/>```STAGING``` |
@@ -196,7 +196,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Helyőrző | Value |
+| Helyőrző | Érték |
 |-------------|-------|
 |{APPLICATION_ID} | A betanított LUIS-alkalmazás Alkalmazásazonosítója. |
 |{APPLICATION_VERSION} | Az alkalmazás verziója a betanított LUIS-alkalmazás. |
@@ -218,7 +218,7 @@ Sikeres művelet esetén a válasz a LUIS alkalmazáscsomag-fájl. Mentse a fáj
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancsot a tároló futtatásához. A parancs paraméterei a következők:
 
-| Helyőrző | Value |
+| Helyőrző | Érték |
 |-------------|-------|
 |{ENDPOINT_KEY} | Ez a kulcs segítségével a tárolót. Ne használja a kezdő szintű kulcs. |
 |{BILLING_ENDPOINT} | Az Azure Portalon érhető el a számlázási végpontértéknek `Cognitive Services` – áttekintés oldalra. Hozzá kell adnia a `luis/v2.0` útválasztás, a végpont URI-t, az alábbi példában látható módon: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.|
@@ -269,13 +269,13 @@ Használja a gazdagép `https://localhost:5000`, API-k tároló.
 
 A lekérdezési paraméterek konfigurálása módját és a lekérdezésekre adott válaszok adja vissza:
 
-|Lekérdezési paraméter|Typo|Cél|
+|Lekérdezési paraméter|Típus|Cél|
 |--|--|--|
 |`q`|string|A felhasználó utterance (kifejezés).|
 |`timezoneOffset`|szám|A timezoneOffset lehetővé teszi, hogy [időzóna módosítása](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) az előre összeállított entitások datetimeV2 használják.|
-|`verbose`|boolean|Adja vissza minden leképezések és eredményeiket, ha a beállítása igaz értékre. Alapértelmezett érték FALSE (hamis), csak a felső leképezést ad vissza.|
-|`staging`|boolean|Átmeneti környezet eredményei, ha az értéket ad vissza lekérdezés beállítása igaz értékre. |
-|`log`|boolean|Lekérdezések, amellyel a rendszer később [aktív tanulás](luis-how-to-review-endpoint-utterances.md). Alapértelmezett érték az igaz.|
+|`verbose`|logikai|Adja vissza minden leképezések és eredményeiket, ha a beállítása igaz értékre. Alapértelmezett érték FALSE (hamis), csak a felső leképezést ad vissza.|
+|`staging`|logikai|Átmeneti környezet eredményei, ha az értéket ad vissza lekérdezés beállítása igaz értékre. |
+|`log`|logikai|Lekérdezések, amellyel a rendszer később [aktív tanulás](luis-how-to-review-endpoint-utterances.md). Alapértelmezett érték az igaz.|
 
 ### <a name="query-published-app"></a>Közzétett alkalmazás lekérdezése
 
